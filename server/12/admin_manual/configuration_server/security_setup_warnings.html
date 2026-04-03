@@ -1,0 +1,365 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Warnings on Admin Page &#8212; Nextcloud 12 Server Administration Manual 12 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/main.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '12',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.1.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Using the occ Command" href="occ_command.html" />
+    <link rel="prev" title="Server Configuration" href="index.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#1d2d44">
+<link rel="shortcut icon" href="https://nextcloud.com/wp-content/themes/next/assets/img/common/favicon.png" />
+<link rel="apple-touch-icon-precomposed" href="https://nextcloud.com/wp-content/themes/next/assets/img/common/favicon.png" />
+<!-- Piwik -->
+<script type="text/javascript">
+    var _paq = _paq || [];
+    _paq.push(['trackPageView']);
+    _paq.push(['enableLinkTracking']);
+    (function() {
+        var u="//stats.nextcloud.com/";
+        _paq.push(['setTrackerUrl', u+'piwik.php']);
+        _paq.push(['setSiteId', 3]);
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+        g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+    })();
+</script>
+<noscript><p><img src="//stats.nextcloud.com/piwik.php?idsite=3" style="border:0;" alt="" /></p></noscript>
+<!-- End Piwik Code -->
+
+  </head>
+  <body role="document">
+
+<header class="banner navbar navbar-default navbar-static-top" role="banner">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+       <a class="brand" href="http://nextcloud.com/" rel="home" title="Nextcloud.com"><img class="logo" src="../_static/img/logo.svg" itemprop="logo"></a>
+    </div>
+
+    <nav class="collapse navbar-collapse" role="navigation">
+      <ul id="menu-header" class="nav navbar-nav">
+          <li><a target="_blank" href="https://demo.nextcloud.com">Demo</a></li>
+          <li><a href="https://nextcloud.com/news/">News</a></li>
+          <li><a href="https://nextcloud.com/features/">Features</a></li>
+          <li><a href="https://nextcloud.com/about/">About us</a></li>
+          <li><a href="https://nextcloud.com/contribute/">Get involved</a></li>
+          <li><a href="https://nextcloud.com/support/">Support</a></li>
+          <li><a href="https://nextcloud.com/enterprise/">Enterprise</a></li>
+          <li class="menu-install"><a href="https://nextcloud.com/install/">Download</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+<div class="container" style="background-color: #E6C4C2;color: #b10000;border: #b10000 2px solid;border-right: none;border-left: none;padding: 15px 10px;">You are reading an outdated version of this documentation. Please check out the <a href="https://docs.nextcloud.com/server/stable/admin_manual/" style="
+color: rgb(177,0,0);text-decoration: underline;">latest version</a> of the server administration manual.</div>
+
+
+
+<div class="wrap container not-front">
+  <div class="content row">
+  <main class="main">
+    <div class="row page-content-header">
+      <div class="col-md-6">
+        <h1><a href="../contents.html">Nextcloud 12 Server Administration Manual</a></h1>
+      </div>
+      <div class="col-md-5 col-md-offset-1">
+      
+        <form class="headersearch" style="margin: 16px 0;" action="../search.html" method="get">
+        <input type="text" value="" name="q" id="q" class="form-control" /> 
+        <button  class="btn btn-default" type="submit" id="searchsubmit">Search</button>
+        </form>
+      
+      </div>
+    </div>
+    
+			<div class="row">
+				<div class="col-md-3">
+					<div class="sidebar">
+							<div class="menu-support-container">
+								<ul id="menu-support" class="menu">
+									<ul>
+										
+<li><a href="../contents.html">Table of Contents</a></li>
+									</ul>
+                  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Server Configuration</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Warnings on Admin Page</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#cache-warnings">Cache Warnings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#transactional-file-locking-is-disabled">Transactional file locking is disabled</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#you-are-accessing-this-site-via-http">You are accessing this site via HTTP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-test-with-getenv-path-only-returns-an-empty-response">The test with getenv(&#8220;PATH&#8221;) only returns an empty response</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-strict-transport-security-http-header-is-not-configured">The &#8220;Strict-Transport-Security&#8221; HTTP header is not configured</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#dev-urandom-is-not-readable-by-php">/dev/urandom is not readable by PHP</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#your-web-server-is-not-yet-set-up-properly-to-allow-file-synchronization">Your Web server is not yet set up properly to allow file synchronization</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#outdated-nss-openssl-version">Outdated NSS / OpenSSL version</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#your-web-server-is-not-set-up-properly-to-resolve-well-known-caldav-or-well-known-carddav">Your Web server is not set up properly to resolve /.well-known/caldav/ or /.well-known/carddav/</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#some-files-have-not-passed-the-integrity-check">Some files have not passed the integrity check</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#your-database-does-not-run-with-read-commited-transaction-isolation-level">Your database does not run with &#8220;READ COMMITED&#8221; transaction isolation level</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="occ_command.html">Using the occ Command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="activity_configuration.html">Configuring the Activity App</a></li>
+<li class="toctree-l2"><a class="reference internal" href="caching_configuration.html">Configuring Memory Caching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="background_jobs_configuration.html">Defining Background Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_sample_php_parameters.html">Config.php Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="email_configuration.html">Email Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="external_sites.html">Linking External Sites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="language_configuration.html">Language Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logging_configuration.html">Logging Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="harden_server.html">Hardening and Security Guidance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reverse_proxy_configuration.html">Reverse Proxy Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="thirdparty_php_configuration.html">Using Third Party PHP Components</a></li>
+<li class="toctree-l2"><a class="reference internal" href="automatic_configuration.html">Automatic Configuration Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="server_tuning.html">Server Tuning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="theming.html">Theming</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_user/index.html">User Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_files/index.html">File Sharing and Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../file_workflows/index.html">File workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_database/index.html">Database Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_mimetypes/index.html">Mimetypes Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../maintenance/index.html">Maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../issues/index.html">Issues and Troubleshooting</a></li>
+</ul>
+
+								</ul>
+							</div>
+					</div>
+				</div>
+        
+
+				<div class="col-md-9">
+					<div class="page-content">
+            
+<ul class="prevnext-title list-unstyled list-inline">
+  <li class="prev">
+    <a href="index.html" title="Previous Chapter: Server Configuration"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; Server Configuration</span>
+    </a>
+  </li>
+  <li class="next">
+    <a href="occ_command.html" title="Next Chapter: Using the occ Command"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">Using the occ Command &raquo;</span>
+    </a>
+  </li>
+</ul>
+						
+  <div class="section" id="warnings-on-admin-page">
+<h1>Warnings on Admin Page<a class="headerlink" href="#warnings-on-admin-page" title="Permalink to this headline">¶</a></h1>
+<p>Your Nextcloud server has a built-in configuration checker, and it reports its
+findings at the top of your Admin page. These are some of the warnings you
+might see, and what to do about them.</p>
+<div class="figure">
+<img alt="../_images/security-setup-warning-1.png" src="../_images/security-setup-warning-1.png" />
+</div>
+<p>You can use the  <a class="reference external" href="https://scan.nextcloud.com">Nextcloud Security Scan</a> to see
+if your system is up to date and well secured. We have ran this scan over public
+IP addresses in the past to try and reach out to <a class="reference external" href="https://nextcloud.com/blog/nextcloud-releases-security-scanner-to-help-protect-private-clouds/">extremely outdated systems</a>
+and might again in the future. Please, protect your privacy and keep your server
+up to date! Privacy means little without security.</p>
+<div class="section" id="cache-warnings">
+<h2>Cache Warnings<a class="headerlink" href="#cache-warnings" title="Permalink to this headline">¶</a></h2>
+<p>&#8220;No memory cache has been configured. To enhance your performance please
+configure a memcache if available.&#8221; Nextcloud supports multiple php caching
+extensions:</p>
+<ul class="simple">
+<li>APCu (minimum required PHP extension version 4.0.6)</li>
+<li>Memcached</li>
+<li>Redis (minimum required PHP extension version: 2.2.6)</li>
+</ul>
+<p>You will see this warning if you have no caches installed and enabled, or if
+your cache does not have the required minimum version installed; older versions
+are disabled because of performance problems.</p>
+<p>If you see &#8220;<em>{Cache}</em> below version <em>{Version}</em> is installed. for stability and
+performance reasons we recommend to update to a newer <em>{Cache}</em> version&#8221; then
+you need to upgrade, or, if you&#8217;re not using it, remove it.</p>
+<p>You are not required to use any caches, but caches improve server performance.
+See <a class="reference internal" href="caching_configuration.html"><span class="doc">Configuring Memory Caching</span></a>.</p>
+</div>
+<div class="section" id="transactional-file-locking-is-disabled">
+<h2>Transactional file locking is disabled<a class="headerlink" href="#transactional-file-locking-is-disabled" title="Permalink to this headline">¶</a></h2>
+<p>&#8220;Transactional file locking is disabled, this might lead to issues with race
+conditions.&#8221;</p>
+<p>Please see <a class="reference internal" href="../configuration_files/files_locking_transactional.html"><span class="doc">Transactional File Locking</span></a> on how
+to correctly configure your environment for transactional file locking.</p>
+</div>
+<div class="section" id="you-are-accessing-this-site-via-http">
+<h2>You are accessing this site via HTTP<a class="headerlink" href="#you-are-accessing-this-site-via-http" title="Permalink to this headline">¶</a></h2>
+<p>&#8220;You are accessing this site via HTTP. We strongly suggest you configure your
+server to require using HTTPS instead.&#8221; Please take this warning seriously;
+using HTTPS is a fundamental security measure. You must configure your Web
+server to support it, and then there are some settings in the <strong>Security</strong>
+section of your Nextcloud Admin page to enable. The following pages
+describe how to enable HTTPS on the Apache and Nginx Web servers.</p>
+<p><a class="reference internal" href="../installation/source_installation.html#enabling-ssl-label"><span class="std std-ref">Enabling SSL</span></a> (on Apache)</p>
+<p><a class="reference internal" href="harden_server.html#use-https-label"><span class="std std-ref">Use HTTPS</span></a></p>
+<p><a class="reference internal" href="../installation/nginx.html"><span class="doc">Nginx Configuration</span></a></p>
+</div>
+<div class="section" id="the-test-with-getenv-path-only-returns-an-empty-response">
+<h2>The test with getenv(&#8220;PATH&#8221;) only returns an empty response<a class="headerlink" href="#the-test-with-getenv-path-only-returns-an-empty-response" title="Permalink to this headline">¶</a></h2>
+<p>Some environments are not passing a valid PATH variable to Nextcloud. The
+<a class="reference internal" href="../installation/source_installation.html#php-fpm-tips-label"><span class="std std-ref">php-fpm Configuration Notes</span></a> provides the information about how to configure your
+environment.</p>
+</div>
+<div class="section" id="the-strict-transport-security-http-header-is-not-configured">
+<h2>The &#8220;Strict-Transport-Security&#8221; HTTP header is not configured<a class="headerlink" href="#the-strict-transport-security-http-header-is-not-configured" title="Permalink to this headline">¶</a></h2>
+<p>&#8220;The &#8220;Strict-Transport-Security&#8221; HTTP header is not configured to least &#8220;15552000&#8221; seconds.
+For enhanced security we recommend enabling HSTS as described in our security tips.&#8221;</p>
+<p>The HSTS header needs to be configured within your Web server by following the
+<a class="reference internal" href="harden_server.html#enable-hsts-label"><span class="std std-ref">Enable HTTP Strict Transport Security</span></a> documentation</p>
+</div>
+<div class="section" id="dev-urandom-is-not-readable-by-php">
+<h2>/dev/urandom is not readable by PHP<a class="headerlink" href="#dev-urandom-is-not-readable-by-php" title="Permalink to this headline">¶</a></h2>
+<p>&#8220;/dev/urandom is not readable by PHP which is highly discouraged for security reasons.
+Further information can be found in our documentation.&#8221;</p>
+<p>This message is another one which needs to be taken seriously. Please have a look
+at the <a class="reference internal" href="harden_server.html#dev-urandom-label"><span class="std std-ref">Give PHP read access to /dev/urandom</span></a> documentation.</p>
+</div>
+<div class="section" id="your-web-server-is-not-yet-set-up-properly-to-allow-file-synchronization">
+<h2>Your Web server is not yet set up properly to allow file synchronization<a class="headerlink" href="#your-web-server-is-not-yet-set-up-properly-to-allow-file-synchronization" title="Permalink to this headline">¶</a></h2>
+<p>&#8220;Your web server is not yet set up properly to allow file synchronization because
+the WebDAV interface seems to be broken.&#8221;</p>
+<p>At the ownCloud community forums a larger <a class="reference external" href="https://forum.owncloud.org/viewtopic.php?f=17&amp;t=7536">FAQ</a>
+is maintained containing various information and debugging hints.</p>
+</div>
+<div class="section" id="outdated-nss-openssl-version">
+<h2>Outdated NSS / OpenSSL version<a class="headerlink" href="#outdated-nss-openssl-version" title="Permalink to this headline">¶</a></h2>
+<p>&#8220;cURL is using an outdated OpenSSL version (OpenSSL/$version). Please update your
+operating system or features such as installing and updating apps via the app store
+or Federated Cloud Sharing will not work reliably.&#8221;</p>
+<p>&#8220;cURL is using an outdated NSS version (NSS/$version). Please update your operating
+system or features such as installing and updating apps via the app store or Federated
+Cloud Sharing will not work reliably.&#8221;</p>
+<p>There are known bugs in older OpenSSL and NSS versions leading to misbehavior in
+combination with remote hosts using SNI. A technology used by most of the HTTPS
+websites. To ensure that Nextcloud will work properly you need to update OpenSSL
+to at least 1.0.2b or 1.0.1d. For NSS the patch version depends on your distribution
+and an heuristic is running the test which actually reproduces the bug. There
+are distributions such as RHEL/CentOS which have this backport still <a class="reference external" href="https://bugzilla.redhat.com/show_bug.cgi?id=1241172">pending</a>.</p>
+</div>
+<div class="section" id="your-web-server-is-not-set-up-properly-to-resolve-well-known-caldav-or-well-known-carddav">
+<h2>Your Web server is not set up properly to resolve /.well-known/caldav/ or /.well-known/carddav/<a class="headerlink" href="#your-web-server-is-not-set-up-properly-to-resolve-well-known-caldav-or-well-known-carddav" title="Permalink to this headline">¶</a></h2>
+<p>Both URLs need to be correctly redirected to the DAV endpoint of Nextcloud. Please
+refer to <a class="reference internal" href="../issues/general_troubleshooting.html#service-discovery-label"><span class="std std-ref">Service discovery</span></a> for more info.</p>
+</div>
+<div class="section" id="some-files-have-not-passed-the-integrity-check">
+<h2>Some files have not passed the integrity check<a class="headerlink" href="#some-files-have-not-passed-the-integrity-check" title="Permalink to this headline">¶</a></h2>
+<p>Please refer to the <a class="reference internal" href="../issues/code_signing.html#code-signing-fix-warning-label"><span class="std std-ref">Fixing Invalid Code Integrity Messages</span></a> documentation how to debug this issue.</p>
+</div>
+<div class="section" id="your-database-does-not-run-with-read-commited-transaction-isolation-level">
+<h2>Your database does not run with &#8220;READ COMMITED&#8221; transaction isolation level<a class="headerlink" href="#your-database-does-not-run-with-read-commited-transaction-isolation-level" title="Permalink to this headline">¶</a></h2>
+<p>&#8220;Your database does not run with &#8220;READ COMMITED&#8221; transaction isolation level.
+This can cause problems when multiple actions are executed in parallel.&#8221;</p>
+<p>Please refer to <a class="reference internal" href="../configuration_database/linux_database_configuration.html#db-transaction-label"><span class="std std-ref">Database &#8220;READ COMMITED&#8221; transaction isolation level</span></a> how to configure your database for this requirement.</p>
+</div>
+</div>
+
+
+            
+<ul class="prevnext-title list-unstyled list-inline">
+  <li class="prev">
+    <a href="index.html" title="Previous Chapter: Server Configuration"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; Server Configuration</span>
+    </a>
+  </li>
+  <li class="next">
+    <a href="occ_command.html" title="Next Chapter: Using the occ Command"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">Using the occ Command &raquo;</span>
+    </a>
+  </li>
+</ul>
+					</div>
+				</div>
+			</div>
+  </main>  
+  </div>
+</div>
+<div class="container">
+<div class="row">
+    <div class="col-lg-12 footer-social-icons">
+      <p class="text-center"><a target="_blank" href="https://plus.google.com/104036748063781940910/about"><img width=50 src="../_static/img/social/googleplus.svg" title="Follow us on Google Plus!" alt="Follow us on Google Plus!"></img></a>
+      <a target="_blank" href="https://www.facebook.com/Nextclouders"><img width=50 src="../_static/img/social/facebook.svg" title="Like our facebook page!" alt="Like our facebook page!"></img></a>
+      <a target="_blank" href="https://twitter.com/Nextclouders"><img width=50 src="../_static/img/social/twitter.svg" title="Subscribe to our twitter channel!" alt="Subscribe to our twitter channel!"></img></a>
+      <a target="_blank" href="https://nextcloud.com/blogfeed"><img class="img-circle" width=50 src="../_static/img/social/rss.svg" title="Subscribe to our news feed!" alt="Subscribe to our news feed!"></img></a>
+      <a target="_blank" href="https://newsletter.nextcloud.com/"><img class="img-circle" width=50 src="../_static/img/social/mail.svg"  title="Subscribe to our newsletter!" alt="Subscribe to our newsletter!"></img></a></p>
+    </div>
+    <div class="text-center">
+      <p>All documentation licensed under the <a href="https://creativecommons.org/licenses/by/3.0/us/">Creative Commons Attribution 3.0 Unported license</a>.</p>
+      <p><a href="https://github.com/nextcloud/documentation/graphs/contributors">See who contributed to our documentation/credits</a>.</p>
+    </div>
+</div>
+</div>
+<footer class="content-info" role="contentinfo">
+<div class="container">
+   <div class="row">
+     <div class="col-sm-2 col-sm-offset-1">
+        <div class="footer-nav">
+          <h4>About Nextcloud</h4>
+          <ul id="menu-about" class="menu">
+            <li><a href="https://nextcloud.com/about/">About us</a></li>
+            <li><a href="https://nextcloud.com/contact/">Contact us</a></li>
+            <li><a href="https://nextcloud.com/press/">Press</a></li>
+            <li><a href="https://nextcloud.com/privacy/">Privacy policy</a></li>
+          </ul>
+        </div>
+     </div>
+     <div class="col-sm-2 col-sm-offset-2">
+     </div>
+     <div class="col-sm-2 col-sm-offset-2">
+        <div class="footer-nav">
+          <h4>Interact</h4>
+          <ul id="menu-interact" class="menu">
+            <li class="menu-irc-channel"><a href="https://webchat.freenode.net/?channels=nextcloud">IRC Channel</a></li>
+            <li class="menu-forums"><a href="https://help.nextcloud.com/">Forums</a></li>
+          </ul>
+        </div>
+     </div>
+   </div>
+   <div class="row">
+      <div class="col-lg-12 footer-text">
+        <p>
+              &copy; Copyright 2012-2017, The Nextcloud developers.  <small><a href="https://nextcloud.com/impressum">Legal Notice</a></small><br/>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+  </body>
+</html>

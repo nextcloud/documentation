@@ -1,0 +1,149 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+ShareHelper
+===========
+
+
+.. php:namespace:: OC\Share20
+
+.. php:class:: ShareHelper
+
+
+	:Source:
+		`lib/private/Share20/ShareHelper.php#34 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share20/ShareHelper.php#L34>`_
+	
+	:Implements:
+		:php:interface:`OCP\\Share\\IShareHelper` 
+	
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $shareManager)
+	
+		:Source:
+			`lib/private/Share20/ShareHelper.php#39 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share20/ShareHelper.php#L39>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getPathsForAccessList( $node)
+	
+		:Source:
+			`lib/private/Share20/ShareHelper.php#47 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share20/ShareHelper.php#L47>`_
+		
+		
+		:Parameters:
+			* **$node** (:any:`OCP\\Files\\Node <OCP\\Files\\Node>`)  
+
+		
+		:Returns: array \[ users =\> \[Mapping $uid =\> $pathForUser\], remotes =\> \[Mapping $cloudId =\> $pathToMountRoot\]\]
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected getPathsForUsers( $node, $users)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Sample:
+			| $users = \[
+			|   \'test1\' =\> \[\'node\_id\' =\> 16, \'node\_path\' =\> \'/foo\'\],
+			|   \'test2\' =\> \[\'node\_id\' =\> 23, \'node\_path\' =\> \'/bar\'\],
+			|   \'test3\' =\> \[\'node\_id\' =\> 42, \'node\_path\' =\> \'/cat\'\],
+			|   \'test4\' =\> \[\'node\_id\' =\> 48, \'node\_path\' =\> \'/dog\'\],
+			| \];
+			
+			| Node tree:
+			| \- SixTeen is the parent of TwentyThree
+			| \- TwentyThree is the parent of FortyTwo
+			| \- FortyEight does not exist
+			| 
+			| $return = \[
+			|   \'test1\' =\> \'/foo/TwentyThree/FortyTwo\',
+			|   \'test2\' =\> \'/bar/FortyTwo\',
+			|   \'test3\' =\> \'/cat\',
+			| \],
+			
+		
+		:Source:
+			`lib/private/Share20/ShareHelper.php#88 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share20/ShareHelper.php#L88>`_
+		
+		
+		:Parameters:
+			* **$node** (:any:`OCP\\Files\\Node <OCP\\Files\\Node>`)  
+			* **$users** (array[])  
+
+		
+		:Returns: array 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected getPathsForRemotes( $node, $remotes)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Sample:
+			| $remotes = \[
+			|   \'test1\' =\> \[\'node\_id\' =\> 16, \'token\' =\> \'t1\'\],
+			|   \'test2\' =\> \[\'node\_id\' =\> 23, \'token\' =\> \'t2\'\],
+			|   \'test3\' =\> \[\'node\_id\' =\> 42, \'token\' =\> \'t3\'\],
+			|   \'test4\' =\> \[\'node\_id\' =\> 48, \'token\' =\> \'t4\'\],
+			| \];
+			
+			| Node tree:
+			| \- SixTeen is the parent of TwentyThree
+			| \- TwentyThree is the parent of FortyTwo
+			| \- FortyEight does not exist
+			| 
+			| $return = \[
+			|   \'test1\' =\> \[\'token\' =\> \'t1\', \'node\_path\' =\> \'/SixTeen\'\],
+			|   \'test2\' =\> \[\'token\' =\> \'t2\', \'node\_path\' =\> \'/SixTeen/TwentyThree\'\],
+			|   \'test3\' =\> \[\'token\' =\> \'t3\', \'node\_path\' =\> \'/SixTeen/TwentyThree/FortyTwo\'\],
+			| \],
+			
+		
+		:Source:
+			`lib/private/Share20/ShareHelper.php#169 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share20/ShareHelper.php#L169>`_
+		
+		
+		:Parameters:
+			* **$node** (:any:`OCP\\Files\\Node <OCP\\Files\\Node>`)  
+			* **$remotes** (array[])  
+
+		
+		:Returns: array 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected getMountedPath( $node)
+	
+		:Source:
+			`lib/private/Share20/ShareHelper.php#214 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share20/ShareHelper.php#L214>`_
+		
+		
+		:Parameters:
+			* **$node** (:any:`OCP\\Files\\Node <OCP\\Files\\Node>`)  
+
+		
+		:Returns: string 
+	
+	
+

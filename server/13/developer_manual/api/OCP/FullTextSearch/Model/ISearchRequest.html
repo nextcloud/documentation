@@ -1,0 +1,1069 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>ISearchRequest &mdash; Nextcloud 13 Developer Manual 13 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../../../',
+              VERSION:'13',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="IIndex" href="IIndex.html" />
+    <link rel="prev" title="IIndexOptions" href="IIndexOptions.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html">
+          
+
+          
+            
+            <img src="../../../../_static/logo-white.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../general/index.html">General contributor guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/startapp.html">Create an app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/init.html">Navigation and pre-app configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/info.html">App metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/classloader.html">Classloader</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/request.html">Request lifecycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/routes.html">Routing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/middleware.html">Middleware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/container.html">Container</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/controllers.html">Controllers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/api.html">RESTful API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/templates.html">Templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/js.html">JavaScript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/css.html">CSS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/l10n.html">Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/theming.html">Theming support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/schema.html">Database schema</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/database.html">Database access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/filesystem.html">Filesystem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/appdata.html">AppData</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/users.html">User management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/two-factor-provider.html">Two-factor providers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/hooks.html">Hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/backgroundjobs.html">Background jobs (Cron)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/settings.html">Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/logging.html">Logging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/migrations.html">Migrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/repair.html">Repair steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/publishing.html">App store publishing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/code_signing.html">Code signing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../design/index.html">Design guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../android_library/index.html">Android application development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../client_apis/index.html">Client APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../core/translation.html">Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../core/unit-testing.html">Unit-Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../core/theming.html">Theming Nextcloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../core/externalapi.html">External API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../core/ocs-share-api.html">OCS Share API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../core/index.html">Core development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bugtracker/index.html">Bugtracker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../commun/index.html">Help and communication</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../../api.html">API Documentation</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../../../api.html#php-public-api">PHP public API</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../../index.html">/OCP namespace</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="../../index.html#namespaces">Namespaces</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../index.html#interfaces">Interfaces</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../index.html#classes">Classes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api.html#php-class-reference">PHP class reference</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">Nextcloud 13 Developer Manual</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../../../api.html">API Documentation</a> &raquo;</li>
+        
+          <li><a href="../../index.html">OCP</a> &raquo;</li>
+        
+          <li><a href="../index.html">FullTextSearch</a> &raquo;</li>
+        
+          <li><a href="index.html">Model</a> &raquo;</li>
+        
+      <li>ISearchRequest</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/nextcloud/documentation/edit/stable13/developer_manual/api/OCP/FullTextSearch/Model/ISearchRequest.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="phpdoctorst section" id="namespace-OCP\FullTextSearch\Model">
+<span id="isearchrequest"></span><h1>ISearchRequest<a class="headerlink" href="#namespace-OCP\FullTextSearch\Model" title="Permalink to this headline">¶</a></h1>
+<dl class="interface">
+<dt id="OCP\FullTextSearch\Model\ISearchRequest">
+<em class="property">interface </em><code class="descclassname">OCP\FullTextSearch\Model\</code><code class="descname">ISearchRequest</code><a class="headerlink" href="#OCP\FullTextSearch\Model\ISearchRequest" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Interface ISearchRequest</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">When a search request is initiated, from a request from the front-end or using</div>
+<div class="line">the IFullTextSearchManager::search() method, FullTextSearch will create a</div>
+<div class="line">SearchRequest object, based on this interface.</div>
+<div class="line"><br /></div>
+<div class="line">The object will be passed to the targeted Content Provider so it can convert</div>
+<div class="line">search options using available method.</div>
+<div class="line"><br /></div>
+<div class="line">The object is then encapsulated in a SearchResult and send to the</div>
+<div class="line">Search Platform.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/ISearchRequest.php#L46">lib/public/FullTextSearch/Model/ISearchRequest.php#46</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<div class="section" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h2>
+<dl class="public method">
+<dt id="OCP\FullTextSearch\Model\ISearchRequest::getSize">
+<em class="property">public </em><code class="descclassname">OCP\FullTextSearch\Model\ISearchRequest::</code><code class="descname">getSize</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\FullTextSearch\Model\ISearchRequest::getSize" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Get the maximum number of results to be returns by the Search Platform.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/ISearchRequest.php#L56">lib/public/FullTextSearch/Model/ISearchRequest.php#56</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body">15.0.0</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\FullTextSearch\Model\ISearchRequest::getPage">
+<em class="property">public </em><code class="descclassname">OCP\FullTextSearch\Model\ISearchRequest::</code><code class="descname">getPage</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\FullTextSearch\Model\ISearchRequest::getPage" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Get the current page.</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">Used by pagination.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/ISearchRequest.php#L67">lib/public/FullTextSearch/Model/ISearchRequest.php#67</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body">15.0.0</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\FullTextSearch\Model\ISearchRequest::getAuthor">
+<em class="property">public </em><code class="descclassname">OCP\FullTextSearch\Model\ISearchRequest::</code><code class="descname">getAuthor</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\FullTextSearch\Model\ISearchRequest::getAuthor" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Get the author of the request.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/ISearchRequest.php#L77">lib/public/FullTextSearch/Model/ISearchRequest.php#77</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body">15.0.0</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">string</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\FullTextSearch\Model\ISearchRequest::getSearch">
+<em class="property">public </em><code class="descclassname">OCP\FullTextSearch\Model\ISearchRequest::</code><code class="descname">getSearch</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\FullTextSearch\Model\ISearchRequest::getSearch" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Get the searched string.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/ISearchRequest.php#L86">lib/public/FullTextSearch/Model/ISearchRequest.php#86</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body">15.0.0</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">string</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\FullTextSearch\Model\ISearchRequest::setSearch">
+<em class="property">public </em><code class="descclassname">OCP\FullTextSearch\Model\ISearchRequest::</code><code class="descname">setSearch</code><span class="sig-paren">(</span><em>$search</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\FullTextSearch\Model\ISearchRequest::setSearch" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Set the searched string.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/ISearchRequest.php#L97">lib/public/FullTextSearch/Model/ISearchRequest.php#97</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$search</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body"><p class="first">17.0.0</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#OCP\FullTextSearch\Model\ISearchRequest" title="OCP\FullTextSearch\Model\ISearchRequest"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\FullTextSearch\Model\ISearchRequest</span></code></a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\FullTextSearch\Model\ISearchRequest::addSearch">
+<em class="property">public </em><code class="descclassname">OCP\FullTextSearch\Model\ISearchRequest::</code><code class="descname">addSearch</code><span class="sig-paren">(</span><em>$search</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\FullTextSearch\Model\ISearchRequest::addSearch" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Extends the searched string.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/ISearchRequest.php#L108">lib/public/FullTextSearch/Model/ISearchRequest.php#108</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$search</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body"><p class="first">17.0.0</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#OCP\FullTextSearch\Model\ISearchRequest" title="OCP\FullTextSearch\Model\ISearchRequest"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\FullTextSearch\Model\ISearchRequest</span></code></a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\FullTextSearch\Model\ISearchRequest::getOption">
+<em class="property">public </em><code class="descclassname">OCP\FullTextSearch\Model\ISearchRequest::</code><code class="descname">getOption</code><span class="sig-paren">(</span><em>$option</em>, <em>$default=&quot;&quot;</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\FullTextSearch\Model\ISearchRequest::getOption" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Get the value of an option (as string).</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/ISearchRequest.php#L121">lib/public/FullTextSearch/Model/ISearchRequest.php#121</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$option</strong> (string)</li>
+<li><strong>$default</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body"><p class="first">15.0.0</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">string</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\FullTextSearch\Model\ISearchRequest::getOptionArray">
+<em class="property">public </em><code class="descclassname">OCP\FullTextSearch\Model\ISearchRequest::</code><code class="descname">getOptionArray</code><span class="sig-paren">(</span><em>$option</em>, <em>$default=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\FullTextSearch\Model\ISearchRequest::getOptionArray" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Get the value of an option (as array).</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/ISearchRequest.php#L133">lib/public/FullTextSearch/Model/ISearchRequest.php#133</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$option</strong> (string)</li>
+<li><strong>$default</strong> (array)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body"><p class="first">15.0.0</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">array</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\FullTextSearch\Model\ISearchRequest::addPart">
+<em class="property">public </em><code class="descclassname">OCP\FullTextSearch\Model\ISearchRequest::</code><code class="descname">addPart</code><span class="sig-paren">(</span><em>$part</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\FullTextSearch\Model\ISearchRequest::addPart" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Limit the search to a part of the document.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/ISearchRequest.php#L145">lib/public/FullTextSearch/Model/ISearchRequest.php#145</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$part</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body"><p class="first">15.0.0</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#OCP\FullTextSearch\Model\ISearchRequest" title="OCP\FullTextSearch\Model\ISearchRequest"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\FullTextSearch\Model\ISearchRequest</span></code></a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\FullTextSearch\Model\ISearchRequest::setParts">
+<em class="property">public </em><code class="descclassname">OCP\FullTextSearch\Model\ISearchRequest::</code><code class="descname">setParts</code><span class="sig-paren">(</span><em>$parts</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\FullTextSearch\Model\ISearchRequest::setParts" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Limit the search to an array of parts of the document.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/ISearchRequest.php#L156">lib/public/FullTextSearch/Model/ISearchRequest.php#156</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$parts</strong> (array)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body"><p class="first">15.0.0</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#OCP\FullTextSearch\Model\ISearchRequest" title="OCP\FullTextSearch\Model\ISearchRequest"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\FullTextSearch\Model\ISearchRequest</span></code></a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\FullTextSearch\Model\ISearchRequest::getParts">
+<em class="property">public </em><code class="descclassname">OCP\FullTextSearch\Model\ISearchRequest::</code><code class="descname">getParts</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\FullTextSearch\Model\ISearchRequest::getParts" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Get the parts the search is limited to.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/ISearchRequest.php#L165">lib/public/FullTextSearch/Model/ISearchRequest.php#165</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body">15.0.0</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">array</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\FullTextSearch\Model\ISearchRequest::addMetaTag">
+<em class="property">public </em><code class="descclassname">OCP\FullTextSearch\Model\ISearchRequest::</code><code class="descname">addMetaTag</code><span class="sig-paren">(</span><em>$tag</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\FullTextSearch\Model\ISearchRequest::addMetaTag" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Limit the search to a specific meta tag.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/ISearchRequest.php#L177">lib/public/FullTextSearch/Model/ISearchRequest.php#177</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$tag</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body"><p class="first">15.0.0</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#OCP\FullTextSearch\Model\ISearchRequest" title="OCP\FullTextSearch\Model\ISearchRequest"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\FullTextSearch\Model\ISearchRequest</span></code></a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\FullTextSearch\Model\ISearchRequest::getMetaTags">
+<em class="property">public </em><code class="descclassname">OCP\FullTextSearch\Model\ISearchRequest::</code><code class="descname">getMetaTags</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\FullTextSearch\Model\ISearchRequest::getMetaTags" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Get the meta tags the search is limited to.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/ISearchRequest.php#L186">lib/public/FullTextSearch/Model/ISearchRequest.php#186</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body">15.0.0</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">array</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\FullTextSearch\Model\ISearchRequest::setMetaTags">
+<em class="property">public </em><code class="descclassname">OCP\FullTextSearch\Model\ISearchRequest::</code><code class="descname">setMetaTags</code><span class="sig-paren">(</span><em>$tags</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\FullTextSearch\Model\ISearchRequest::setMetaTags" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Limit the search to an array of meta tags.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/ISearchRequest.php#L197">lib/public/FullTextSearch/Model/ISearchRequest.php#197</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$tags</strong> (array)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body"><p class="first">15.0.0</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#OCP\FullTextSearch\Model\ISearchRequest" title="OCP\FullTextSearch\Model\ISearchRequest"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\FullTextSearch\Model\ISearchRequest</span></code></a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\FullTextSearch\Model\ISearchRequest::addSubTag">
+<em class="property">public </em><code class="descclassname">OCP\FullTextSearch\Model\ISearchRequest::</code><code class="descname">addSubTag</code><span class="sig-paren">(</span><em>$source</em>, <em>$tag</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\FullTextSearch\Model\ISearchRequest::addSubTag" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Limit the search to a specific sub tag.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/ISearchRequest.php#L210">lib/public/FullTextSearch/Model/ISearchRequest.php#210</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$source</strong> (string)</li>
+<li><strong>$tag</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body"><p class="first">15.0.0</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#OCP\FullTextSearch\Model\ISearchRequest" title="OCP\FullTextSearch\Model\ISearchRequest"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\FullTextSearch\Model\ISearchRequest</span></code></a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\FullTextSearch\Model\ISearchRequest::getSubTags">
+<em class="property">public </em><code class="descclassname">OCP\FullTextSearch\Model\ISearchRequest::</code><code class="descname">getSubTags</code><span class="sig-paren">(</span><em>$formatted</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\FullTextSearch\Model\ISearchRequest::getSubTags" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Get the sub tags the search is limited to.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/ISearchRequest.php#L221">lib/public/FullTextSearch/Model/ISearchRequest.php#221</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$formatted</strong> (bool)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body"><p class="first">15.0.0</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">array</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\FullTextSearch\Model\ISearchRequest::setSubTags">
+<em class="property">public </em><code class="descclassname">OCP\FullTextSearch\Model\ISearchRequest::</code><code class="descname">setSubTags</code><span class="sig-paren">(</span><em>$tags</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\FullTextSearch\Model\ISearchRequest::setSubTags" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Limit the search to an array of sub tags.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/ISearchRequest.php#L232">lib/public/FullTextSearch/Model/ISearchRequest.php#232</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$tags</strong> (array)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body"><p class="first">15.0.0</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#OCP\FullTextSearch\Model\ISearchRequest" title="OCP\FullTextSearch\Model\ISearchRequest"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\FullTextSearch\Model\ISearchRequest</span></code></a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\FullTextSearch\Model\ISearchRequest::addLimitField">
+<em class="property">public </em><code class="descclassname">OCP\FullTextSearch\Model\ISearchRequest::</code><code class="descname">addLimitField</code><span class="sig-paren">(</span><em>$field</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\FullTextSearch\Model\ISearchRequest::addLimitField" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Limit the search to a specific field of the mapping, using a full string.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/ISearchRequest.php#L244">lib/public/FullTextSearch/Model/ISearchRequest.php#244</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$field</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body"><p class="first">15.0.0</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#OCP\FullTextSearch\Model\ISearchRequest" title="OCP\FullTextSearch\Model\ISearchRequest"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\FullTextSearch\Model\ISearchRequest</span></code></a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\FullTextSearch\Model\ISearchRequest::getLimitFields">
+<em class="property">public </em><code class="descclassname">OCP\FullTextSearch\Model\ISearchRequest::</code><code class="descname">getLimitFields</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\FullTextSearch\Model\ISearchRequest::getLimitFields" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Get the fields the search is limited to.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/ISearchRequest.php#L253">lib/public/FullTextSearch/Model/ISearchRequest.php#253</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body">15.0.0</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">array</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\FullTextSearch\Model\ISearchRequest::addWildcardField">
+<em class="property">public </em><code class="descclassname">OCP\FullTextSearch\Model\ISearchRequest::</code><code class="descname">addWildcardField</code><span class="sig-paren">(</span><em>$field</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\FullTextSearch\Model\ISearchRequest::addWildcardField" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Limit the search to a specific field of the mapping, using a wildcard on</div>
+<div class="line">the search string.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/ISearchRequest.php#L266">lib/public/FullTextSearch/Model/ISearchRequest.php#266</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$field</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body"><p class="first">15.0.0</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#OCP\FullTextSearch\Model\ISearchRequest" title="OCP\FullTextSearch\Model\ISearchRequest"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\FullTextSearch\Model\ISearchRequest</span></code></a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\FullTextSearch\Model\ISearchRequest::getWildcardFields">
+<em class="property">public </em><code class="descclassname">OCP\FullTextSearch\Model\ISearchRequest::</code><code class="descname">getWildcardFields</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\FullTextSearch\Model\ISearchRequest::getWildcardFields" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Get the limit to field of the mapping.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/ISearchRequest.php#L275">lib/public/FullTextSearch/Model/ISearchRequest.php#275</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body">15.0.0</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">array</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\FullTextSearch\Model\ISearchRequest::addRegexFilters">
+<em class="property">public </em><code class="descclassname">OCP\FullTextSearch\Model\ISearchRequest::</code><code class="descname">addRegexFilters</code><span class="sig-paren">(</span><em>$filters</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\FullTextSearch\Model\ISearchRequest::addRegexFilters" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Filter the results, based on a group of field, using regex</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/ISearchRequest.php#L287">lib/public/FullTextSearch/Model/ISearchRequest.php#287</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$filters</strong> (array)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body"><p class="first">15.0.0</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#OCP\FullTextSearch\Model\ISearchRequest" title="OCP\FullTextSearch\Model\ISearchRequest"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\FullTextSearch\Model\ISearchRequest</span></code></a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\FullTextSearch\Model\ISearchRequest::getRegexFilters">
+<em class="property">public </em><code class="descclassname">OCP\FullTextSearch\Model\ISearchRequest::</code><code class="descname">getRegexFilters</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\FullTextSearch\Model\ISearchRequest::getRegexFilters" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Get the regex filters the search is limit to.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/ISearchRequest.php#L296">lib/public/FullTextSearch/Model/ISearchRequest.php#296</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body">15.0.0</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">array</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\FullTextSearch\Model\ISearchRequest::addWildcardFilter">
+<em class="property">public </em><code class="descclassname">OCP\FullTextSearch\Model\ISearchRequest::</code><code class="descname">addWildcardFilter</code><span class="sig-paren">(</span><em>$filter</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\FullTextSearch\Model\ISearchRequest::addWildcardFilter" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Filter the results, based on a group of field, using wildcard</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/ISearchRequest.php#L308">lib/public/FullTextSearch/Model/ISearchRequest.php#308</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$filter</strong> (array)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body"><p class="first">15.0.0</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#OCP\FullTextSearch\Model\ISearchRequest" title="OCP\FullTextSearch\Model\ISearchRequest"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\FullTextSearch\Model\ISearchRequest</span></code></a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\FullTextSearch\Model\ISearchRequest::getWildcardFilters">
+<em class="property">public </em><code class="descclassname">OCP\FullTextSearch\Model\ISearchRequest::</code><code class="descname">getWildcardFilters</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\FullTextSearch\Model\ISearchRequest::getWildcardFilters" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Get the wildcard filters the search is limit to.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/ISearchRequest.php#L317">lib/public/FullTextSearch/Model/ISearchRequest.php#317</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body">15.0.0</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">array</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\FullTextSearch\Model\ISearchRequest::addField">
+<em class="property">public </em><code class="descclassname">OCP\FullTextSearch\Model\ISearchRequest::</code><code class="descname">addField</code><span class="sig-paren">(</span><em>$field</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\FullTextSearch\Model\ISearchRequest::addField" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Add an extra field to the search.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/ISearchRequest.php#L329">lib/public/FullTextSearch/Model/ISearchRequest.php#329</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$field</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body"><p class="first">15.0.0</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#OCP\FullTextSearch\Model\ISearchRequest" title="OCP\FullTextSearch\Model\ISearchRequest"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\FullTextSearch\Model\ISearchRequest</span></code></a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\FullTextSearch\Model\ISearchRequest::getFields">
+<em class="property">public </em><code class="descclassname">OCP\FullTextSearch\Model\ISearchRequest::</code><code class="descname">getFields</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\FullTextSearch\Model\ISearchRequest::getFields" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Get the list of extra field to search into.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/ISearchRequest.php#L338">lib/public/FullTextSearch/Model/ISearchRequest.php#338</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body">15.0.0</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">array</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\FullTextSearch\Model\ISearchRequest::addSimpleQuery">
+<em class="property">public </em><code class="descclassname">OCP\FullTextSearch\Model\ISearchRequest::</code><code class="descname">addSimpleQuery</code><span class="sig-paren">(</span><em>$query</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\FullTextSearch\Model\ISearchRequest::addSimpleQuery" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Add a MUST search on an extra field</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/ISearchRequest.php#L350">lib/public/FullTextSearch/Model/ISearchRequest.php#350</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$query</strong> (<a class="reference internal" href="ISearchRequestSimpleQuery.html#OCP\FullTextSearch\Model\ISearchRequestSimpleQuery" title="OCP\FullTextSearch\Model\ISearchRequestSimpleQuery"><code class="xref any php php-trait docutils literal"><span class="pre">OCP\FullTextSearch\Model\ISearchRequestSimpleQuery</span></code></a>)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference internal" href="#OCP\FullTextSearch\Model\ISearchRequest" title="OCP\FullTextSearch\Model\ISearchRequest"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\FullTextSearch\Model\ISearchRequest</span></code></a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">17.0.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\FullTextSearch\Model\ISearchRequest::getSimpleQueries">
+<em class="property">public </em><code class="descclassname">OCP\FullTextSearch\Model\ISearchRequest::</code><code class="descname">getSimpleQueries</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\FullTextSearch\Model\ISearchRequest::getSimpleQueries" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Get the list of queries on extra field.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/ISearchRequest.php#L359">lib/public/FullTextSearch/Model/ISearchRequest.php#359</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="ISearchRequestSimpleQuery.html#OCP\FullTextSearch\Model\ISearchRequestSimpleQuery" title="OCP\FullTextSearch\Model\ISearchRequestSimpleQuery"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\FullTextSearch\Model\ISearchRequestSimpleQuery[]</span></code></a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">17.0.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="IIndex.html" class="btn btn-neutral float-right" title="IIndex" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="IIndexOptions.html" class="btn btn-neutral float-left" title="IIndexOptions" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021 Nextcloud GmbH.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: 13
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/13/developer_manual">13</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/14/developer_manual">14</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/15/developer_manual">15</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/developer_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/developer_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+   
+
+</body>
+</html>

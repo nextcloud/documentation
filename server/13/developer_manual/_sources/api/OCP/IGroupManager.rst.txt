@@ -1,0 +1,279 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IGroupManager
+=============
+
+
+.. php:namespace:: OCP
+
+.. php:interface:: IGroupManager
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Class Manager
+		
+		| Hooks available in scope \\OC\\Group:
+		| \- preAddUser\(\\OC\\Group\\Group $group, \\OC\\User\\User $user\)
+		| \- postAddUser\(\\OC\\Group\\Group $group, \\OC\\User\\User $user\)
+		| \- preRemoveUser\(\\OC\\Group\\Group $group, \\OC\\User\\User $user\)
+		| \- postRemoveUser\(\\OC\\Group\\Group $group, \\OC\\User\\User $user\)
+		| \- preDelete\(\\OC\\Group\\Group $group\)
+		| \- postDelete\(\\OC\\Group\\Group $group\)
+		| \- preCreate\(string $groupId\)
+		| \- postCreate\(\\OC\\Group\\Group $group\)
+		
+	
+	:Source:
+		`lib/public/IGroupManager.php#48 <https://github.com/nextcloud/server/blob/stable13/lib/public/IGroupManager.php#L48>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public isBackendUsed( $backendClass)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Checks whether a given backend is used
+			
+		
+		:Source:
+			`lib/public/IGroupManager.php#56 <https://github.com/nextcloud/server/blob/stable13/lib/public/IGroupManager.php#L56>`_
+		
+		
+		:Parameters:
+			* **$backendClass** (string)  Full classname including complete namespace
+
+		
+		:Returns: bool 
+		:Since: 8.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public addBackend( $backend)
+	
+		:Source:
+			`lib/public/IGroupManager.php#62 <https://github.com/nextcloud/server/blob/stable13/lib/public/IGroupManager.php#L62>`_
+		
+		
+		:Parameters:
+			* **$backend** (:any:`OCP\\GroupInterface <OCP\\GroupInterface>`)  
+
+		
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public clearBackends()
+	
+		:Source:
+			`lib/public/IGroupManager.php#67 <https://github.com/nextcloud/server/blob/stable13/lib/public/IGroupManager.php#L67>`_
+		
+		
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getBackends()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the active backends
+			
+		
+		:Source:
+			`lib/public/IGroupManager.php#74 <https://github.com/nextcloud/server/blob/stable13/lib/public/IGroupManager.php#L74>`_
+		
+		
+		:Returns: :any:`\\OCP\\GroupInterface\[\] <OCP\\GroupInterface>` 
+		:Since: 13.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public get( $gid)
+	
+		:Source:
+			`lib/public/IGroupManager.php#81 <https://github.com/nextcloud/server/blob/stable13/lib/public/IGroupManager.php#L81>`_
+		
+		
+		:Parameters:
+			* **$gid** (string)  
+
+		
+		:Returns: :any:`\\OCP\\IGroup <OCP\\IGroup>` | null 
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public groupExists( $gid)
+	
+		:Source:
+			`lib/public/IGroupManager.php#88 <https://github.com/nextcloud/server/blob/stable13/lib/public/IGroupManager.php#L88>`_
+		
+		
+		:Parameters:
+			* **$gid** (string)  
+
+		
+		:Returns: bool 
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public createGroup( $gid)
+	
+		:Source:
+			`lib/public/IGroupManager.php#95 <https://github.com/nextcloud/server/blob/stable13/lib/public/IGroupManager.php#L95>`_
+		
+		
+		:Parameters:
+			* **$gid** (string)  
+
+		
+		:Returns: :any:`\\OCP\\IGroup <OCP\\IGroup>` | null 
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public search( $search, $limit=null, $offset=null)
+	
+		:Source:
+			`lib/public/IGroupManager.php#104 <https://github.com/nextcloud/server/blob/stable13/lib/public/IGroupManager.php#L104>`_
+		
+		
+		:Parameters:
+			* **$search** (string)  
+			* **$limit** (int)  
+			* **$offset** (int)  
+
+		
+		:Returns: :any:`\\OCP\\IGroup\[\] <OCP\\IGroup>` 
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getUserGroups( $user=null)
+	
+		:Source:
+			`lib/public/IGroupManager.php#111 <https://github.com/nextcloud/server/blob/stable13/lib/public/IGroupManager.php#L111>`_
+		
+		
+		:Parameters:
+			* **$user** (:any:`OCP\\IUser <OCP\\IUser>` | null)  
+
+		
+		:Returns: :any:`\\OCP\\IGroup\[\] <OCP\\IGroup>` 
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getUserGroupIds( $user)
+	
+		:Source:
+			`lib/public/IGroupManager.php#118 <https://github.com/nextcloud/server/blob/stable13/lib/public/IGroupManager.php#L118>`_
+		
+		
+		:Parameters:
+			* **$user** (:any:`OCP\\IUser <OCP\\IUser>`)  
+
+		
+		:Returns: string[] with group names
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public displayNamesInGroup( $gid, $search="", $limit=\-1, $offset=0)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get a list of all display names in a group
+			
+		
+		:Source:
+			`lib/public/IGroupManager.php#130 <https://github.com/nextcloud/server/blob/stable13/lib/public/IGroupManager.php#L130>`_
+		
+		
+		:Parameters:
+			* **$gid** (string)  
+			* **$search** (string)  
+			* **$limit** (int)  
+			* **$offset** (int)  
+
+		
+		:Returns: array an array of display names \(value\) and user ids \(key\)
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isAdmin( $userId)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Checks if a userId is in the admin group
+			
+		
+		:Source:
+			`lib/public/IGroupManager.php#138 <https://github.com/nextcloud/server/blob/stable13/lib/public/IGroupManager.php#L138>`_
+		
+		
+		:Parameters:
+			* **$userId** (string)  
+
+		
+		:Returns: bool if admin
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isInGroup( $userId, $group)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Checks if a userId is in a group
+			
+		
+		:Source:
+			`lib/public/IGroupManager.php#147 <https://github.com/nextcloud/server/blob/stable13/lib/public/IGroupManager.php#L147>`_
+		
+		
+		:Parameters:
+			* **$userId** (string)  
+			* **$group** (string)  
+
+		
+		:Returns: bool if in group
+		:Since: 8.0.0 
+	
+	
+

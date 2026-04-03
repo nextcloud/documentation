@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Encrypting Your Nextcloud Files &#8212; Nextcloud 12 User Manual 12 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/main.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '12',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.1.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Using Federation Shares" href="federated_cloud_sharing.html" />
+    <link rel="prev" title="Desktop and Mobile Synchronization" href="desktop_mobile_sync.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#1d2d44">
+<link rel="shortcut icon" href="https://nextcloud.com/wp-content/themes/next/assets/img/common/favicon.png" />
+<link rel="apple-touch-icon-precomposed" href="https://nextcloud.com/wp-content/themes/next/assets/img/common/favicon.png" />
+<!-- Piwik -->
+<script type="text/javascript">
+    var _paq = _paq || [];
+    _paq.push(['trackPageView']);
+    _paq.push(['enableLinkTracking']);
+    (function() {
+        var u="//stats.nextcloud.com/";
+        _paq.push(['setTrackerUrl', u+'piwik.php']);
+        _paq.push(['setSiteId', 3]);
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+        g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+    })();
+</script>
+<noscript><p><img src="//stats.nextcloud.com/piwik.php?idsite=3" style="border:0;" alt="" /></p></noscript>
+<!-- End Piwik Code -->
+
+  </head>
+  <body role="document">
+
+<header class="banner navbar navbar-default navbar-static-top" role="banner">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+       <a class="brand" href="http://nextcloud.com/" rel="home" title="Nextcloud.com"><img class="logo" src="../_static/img/logo.svg" itemprop="logo"></a>
+    </div>
+
+    <nav class="collapse navbar-collapse" role="navigation">
+      <ul id="menu-header" class="nav navbar-nav">
+          <li><a target="_blank" href="https://demo.nextcloud.com">Demo</a></li>
+          <li><a href="https://nextcloud.com/news/">News</a></li>
+          <li><a href="https://nextcloud.com/features/">Features</a></li>
+          <li><a href="https://nextcloud.com/about/">About us</a></li>
+          <li><a href="https://nextcloud.com/contribute/">Get involved</a></li>
+          <li><a href="https://nextcloud.com/support/">Support</a></li>
+          <li><a href="https://nextcloud.com/enterprise/">Enterprise</a></li>
+          <li class="menu-install"><a href="https://nextcloud.com/install/">Download</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+
+<div class="container" style="background-color: #E6C4C2;color: #b10000;border: #b10000 2px solid;border-right: none;border-left: none;padding: 15px 10px;">You are reading an outdated version of this documentation. Please check out the <a href="https://docs.nextcloud.com/server/stable/user_manual/" style="
+color: rgb(177,0,0);text-decoration: underline;">latest version</a> of the user manual.</div>
+
+
+
+
+<div class="wrap container not-front">
+  <div class="content row">
+  <main class="main">
+    <div class="row page-content-header">
+      <div class="col-md-6">
+        <h1><a href="../contents.html">Nextcloud 12 User Manual</a></h1>
+      </div>
+      <div class="col-md-5 col-md-offset-1">
+      
+        <form class="headersearch" style="margin: 16px 0;" action="../search.html" method="get">
+        <input type="text" value="" name="q" id="q" class="form-control" /> 
+        <button  class="btn btn-default" type="submit" id="searchsubmit">Search</button>
+        </form>
+      
+      </div>
+    </div>
+    
+			<div class="row">
+				<div class="col-md-3">
+					<div class="sidebar">
+							<div class="menu-support-container">
+								<ul id="menu-support" class="menu">
+									<ul>
+										
+<li><a href="../contents.html">Table of Contents</a></li>
+									</ul>
+                  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Nextcloud 12 User Manual Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../whats_new.html">What&#8217;s New for Users in Nextcloud 12</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">The Nextcloud Web Interface</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Files &amp; Synchronization</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="access_webgui.html">Accessing your Files Using the Nextcloud Web Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="access_webdav.html">Accessing Nextcloud Files Using WebDAV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gallery_app.html">Gallery App</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deleted_file_management.html">Managing Deleted Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="desktop_mobile_sync.html">Desktop and Mobile Synchronization</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Encrypting Your Nextcloud Files</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#encryption-faq">Encryption FAQ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#using-encryption">Using Encryption</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sharing-encrypted-files">Sharing Encrypted Files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#files-not-encrypted">Files Not Encrypted</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="federated_cloud_sharing.html">Using Federation Shares</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_drop.html">Making Anonymous Uploads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="large_file_upload.html">Large File Uploads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quota.html">Storage Quota</a></li>
+<li class="toctree-l2"><a class="reference internal" href="version_control.html">Version Control</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../pim/index.html">Contacts &amp; Calendar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Setting Your Preferences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Using two-factor authentication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Manage Connected Browsers and Devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">External Storage</a></li>
+</ul>
+
+								</ul>
+							</div>
+					</div>
+				</div>
+        
+
+				<div class="col-md-9">
+					<div class="page-content">
+            
+<ul class="prevnext-title list-unstyled list-inline">
+  <li class="prev">
+    <a href="desktop_mobile_sync.html" title="Previous Chapter: Desktop and Mobile Synchronization"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; Desktop and M...</span>
+    </a>
+  </li>
+  <li class="next">
+    <a href="federated_cloud_sharing.html" title="Next Chapter: Using Federation Shares"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">Using Federat... &raquo;</span>
+    </a>
+  </li>
+</ul>
+						
+  <div class="section" id="encrypting-your-nextcloud-files">
+<h1>Encrypting Your Nextcloud Files<a class="headerlink" href="#encrypting-your-nextcloud-files" title="Permalink to this headline">¶</a></h1>
+<p>Nextcloud includes an Encryption app, and when it is enabled by your Nextcloud
+administrator all of your Nextcloud data files are automatically encrypted.
+Encryption is server-wide, so when it is enabled you cannot choose to keep your
+files unencrypted. You don&#8217;t have to do anything special, as it uses your
+Nextcloud login as the password for your unique private encryption key. Just log
+in and out and manage and share your files as you normally do, and you can
+still change your password whenever you want.</p>
+<p>Its main purpose is to encrypt files on remote storage services that are
+connected to your Nextcloud server, such as Dropbox and Google Drive. This is an
+easy and seamless way to protect your files on remote storage. You can share
+your remote files through Nextcloud in the usual way, however you cannot share
+your encrypted files directly from Dropbox, Google Drive, or whatever remote
+service you are using, because the encryption keys are stored on your Nextcloud
+server, and are never exposed to outside service providers.</p>
+<p>If your Nextcloud server is not connected to any remote storage services, then
+it is better to use some other form of encryption such as file-level or whole
+disk encryption. Because the keys are kept on your Nextcloud server, it is
+possible for your Nextcloud admin to snoop in your files, and if the server is
+compromised the intruder may get access to your files. (Read
+<a class="reference external" href="https://owncloud.org/blog/how-owncloud-uses-encryption-to-protect-your-data/">How Nextcloud uses encryption to protect your data</a>
+to learn more.)</p>
+<div class="section" id="encryption-faq">
+<h2>Encryption FAQ<a class="headerlink" href="#encryption-faq" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="how-can-encryption-be-disabled">
+<h3>How Can Encryption Be Disabled?<a class="headerlink" href="#how-can-encryption-be-disabled" title="Permalink to this headline">¶</a></h3>
+<p>The only way to disable encryption is to run the <a class="reference external" href="https://docs.nextcloud.org/server/12/admin_manual/configuration_server/occ_command.html#encryption-label">&#8220;decrypt all&#8221;</a>.</p>
+<p>script, which decrypts all files and disables encryption.</p>
+</div>
+<div class="section" id="is-it-possible-to-disable-encryption-with-the-recovery-key">
+<h3>Is It Possible To Disable Encryption With The Recovery Key?<a class="headerlink" href="#is-it-possible-to-disable-encryption-with-the-recovery-key" title="Permalink to this headline">¶</a></h3>
+<p>Yes, <em>if</em> every user uses the <a class="reference external" href="https://docs.nextcloud.com/server/12/admin_manual/configuration_files/encryption_configuration.html#enabling-users-file-recovery-keys">file recovery key</a>,  <a class="reference external" href="https://docs.nextcloud.org/server/12/admin_manual/configuration_server/occ_command.html#encryption-label">&#8220;decrypt all&#8221;</a> will use it to decrypt all files.</p>
+</div>
+<div class="section" id="can-encryption-be-disabled-without-the-users-password">
+<h3>Can Encryption Be Disabled Without The User’s Password?<a class="headerlink" href="#can-encryption-be-disabled-without-the-users-password" title="Permalink to this headline">¶</a></h3>
+<p>If you don&#8217;t have the users password or <a class="reference external" href="https://docs.nextcloud.com/server/12/admin_manual/configuration_files/encryption_configuration.html#enabling-users-file-recovery-keys">file recovery key</a>.</p>
+<p>then there is no way to decrypt all files. What&#8217;s
+more, running it on login would be dangerous, because you would most likely run
+into timeouts.</p>
+</div>
+<div class="section" id="is-it-planned-to-move-this-to-the-next-user-login-or-a-background-job">
+<h3>Is It Planned To Move This To The Next User Login Or A Background Job?<a class="headerlink" href="#is-it-planned-to-move-this-to-the-next-user-login-or-a-background-job" title="Permalink to this headline">¶</a></h3>
+<p>If we did that, then we would need to store your login password in the database.
+This could be seen as a security issue, so nothing like that is planned.</p>
+</div>
+<div class="section" id="is-group-sharing-possible-with-the-recovery-key">
+<h3>Is Group Sharing Possible With The Recovery Key?<a class="headerlink" href="#is-group-sharing-possible-with-the-recovery-key" title="Permalink to this headline">¶</a></h3>
+<p>If you mean adding users to groups and make it magically work? No. This only
+works with the master key.</p>
+</div>
+</div>
+<div class="section" id="using-encryption">
+<h2>Using Encryption<a class="headerlink" href="#using-encryption" title="Permalink to this headline">¶</a></h2>
+<p>Nextcloud encryption is pretty much set it and forget it, but you have a few
+options you can use.</p>
+<p>When your Nextcloud admin enables encryption for the first time, you must log
+out and then log back in to create your encryption keys and encrypt your files.
+When encryption has been enabled on your Nextcloud server you will see a yellow
+banner on your Files page warning you to log out and then log back in.</p>
+<div class="figure">
+<img alt="../_images/encryption1.png" src="../_images/encryption1.png" />
+</div>
+<p>When you log back in it takes a few minutes to work, depending on how many
+files you have, and then you are returned to your default Nextcloud page.</p>
+<div class="figure">
+<img alt="../_images/encryption2.png" src="../_images/encryption2.png" />
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">You must never lose your Nextcloud password, because you will lose
+access to your files. Though there is an optional recovery option that your
+Nextcloud administrator may enable; see the Recovery Key Password section
+(below) to learn about this.</p>
+</div>
+</div>
+<div class="section" id="sharing-encrypted-files">
+<h2>Sharing Encrypted Files<a class="headerlink" href="#sharing-encrypted-files" title="Permalink to this headline">¶</a></h2>
+<p>Only users who have private encryption keys have access to shared encrypted
+files and folders. Users who have not yet created their private encryption keys
+will not have access to encrypted shared files; they will see folders and
+filenames, but will not be able to open or download the files. They will see a
+yellow warning banner that says &#8220;Encryption App is enabled but your keys are not
+initialized, please log-out and log-in again.&#8221;</p>
+<p>Share owners may need to re-share files after encryption is enabled; users
+trying to access the share will see a message advising them to ask the share
+owner to re-share the file with them. For individual shares, un-share and
+re-share the file. For group shares, share with any individuals who can&#8217;t access
+the share. This updates the encryption, and then the share owner can remove the
+individual shares.</p>
+<div class="section" id="recovery-key-password">
+<h3>Recovery Key Password<a class="headerlink" href="#recovery-key-password" title="Permalink to this headline">¶</a></h3>
+<p>If your Nextcloud administrator has enabled the recovery key feature, you can
+choose to use this feature for your account. If you enable &#8220;Password recovery&#8221;
+the administrator can read your data with a special password. This feature
+enables the administrator to recover your files in the event you lose your
+Nextcloud password. If the recovery key is not enabled, then there is no way to
+restore your files if you lose your login password.</p>
+<div class="figure">
+<img alt="../_images/encryption3.png" src="../_images/encryption3.png" />
+</div>
+</div>
+</div>
+<div class="section" id="files-not-encrypted">
+<h2>Files Not Encrypted<a class="headerlink" href="#files-not-encrypted" title="Permalink to this headline">¶</a></h2>
+<p>Only the data in your files is encrypted, and not the filenames or folder
+structures. These files are never encrypted:</p>
+<ul class="simple">
+<li>Old files in the trash bin.</li>
+<li>Image thumbnails from the Gallery app.</li>
+<li>Previews from the Files app.</li>
+<li>The search index from the full text search app.</li>
+<li>Third-party app data</li>
+</ul>
+<p>There may be other files that are not encrypted; only files that are exposed to
+third-party storage providers are guaranteed to be encrypted.</p>
+<div class="section" id="change-private-key-password">
+<h3>Change Private Key Password<a class="headerlink" href="#change-private-key-password" title="Permalink to this headline">¶</a></h3>
+<p>This option is only available if your log-in password, but not your encryption
+password, was changed by your administrator. This can occur if your Nextcloud
+provider uses an external user back-end (for example, LDAP) and changed your
+login password using that back-end configuration. In this case, you can set
+your encryption password to your new login password by providing your old and
+new login password. The Encryption app works only if your login password and
+your encryption password are identical.</p>
+</div>
+</div>
+</div>
+
+
+            
+<ul class="prevnext-title list-unstyled list-inline">
+  <li class="prev">
+    <a href="desktop_mobile_sync.html" title="Previous Chapter: Desktop and Mobile Synchronization"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; Desktop and M...</span>
+    </a>
+  </li>
+  <li class="next">
+    <a href="federated_cloud_sharing.html" title="Next Chapter: Using Federation Shares"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">Using Federat... &raquo;</span>
+    </a>
+  </li>
+</ul>
+					</div>
+				</div>
+			</div>
+  </main>  
+  </div>
+</div>
+<div class="container">
+<div class="row">
+    <div class="col-lg-12 footer-social-icons">
+      <p class="text-center"><a target="_blank" href="https://plus.google.com/104036748063781940910/about"><img width=50 src="../_static/img/social/googleplus.svg" title="Follow us on Google Plus!" alt="Follow us on Google Plus!"></img></a>
+      <a target="_blank" href="https://www.facebook.com/Nextclouders"><img width=50 src="../_static/img/social/facebook.svg" title="Like our facebook page!" alt="Like our facebook page!"></img></a>
+      <a target="_blank" href="https://twitter.com/Nextclouders"><img width=50 src="../_static/img/social/twitter.svg" title="Subscribe to our twitter channel!" alt="Subscribe to our twitter channel!"></img></a>
+      <a target="_blank" href="https://nextcloud.com/blogfeed"><img class="img-circle" width=50 src="../_static/img/social/rss.svg" title="Subscribe to our news feed!" alt="Subscribe to our news feed!"></img></a>
+      <a target="_blank" href="https://newsletter.nextcloud.com/"><img class="img-circle" width=50 src="../_static/img/social/mail.svg"  title="Subscribe to our newsletter!" alt="Subscribe to our newsletter!"></img></a></p>
+    </div>
+    <div class="text-center">
+      <p>All documentation licensed under the <a href="https://creativecommons.org/licenses/by/3.0/us/">Creative Commons Attribution 3.0 Unported license</a>.</p>
+      <p><a href="https://github.com/nextcloud/documentation/graphs/contributors">See who contributed to our documentation/credits</a>.</p>
+    </div>
+</div>
+</div>
+<footer class="content-info" role="contentinfo">
+<div class="container">
+   <div class="row">
+     <div class="col-sm-2 col-sm-offset-1">
+        <div class="footer-nav">
+          <h4>About Nextcloud</h4>
+          <ul id="menu-about" class="menu">
+            <li><a href="https://nextcloud.com/about/">About us</a></li>
+            <li><a href="https://nextcloud.com/contact/">Contact us</a></li>
+            <li><a href="https://nextcloud.com/press/">Press</a></li>
+            <li><a href="https://nextcloud.com/privacy/">Privacy policy</a></li>
+          </ul>
+        </div>
+     </div>
+     <div class="col-sm-2 col-sm-offset-2">
+     </div>
+     <div class="col-sm-2 col-sm-offset-2">
+        <div class="footer-nav">
+          <h4>Interact</h4>
+          <ul id="menu-interact" class="menu">
+            <li class="menu-irc-channel"><a href="https://webchat.freenode.net/?channels=nextcloud">IRC Channel</a></li>
+            <li class="menu-forums"><a href="https://help.nextcloud.com/">Forums</a></li>
+          </ul>
+        </div>
+     </div>
+   </div>
+   <div class="row">
+      <div class="col-lg-12 footer-text">
+        <p>
+              &copy; Copyright 2012-2017, The Nextcloud developers.  <small><a href="https://nextcloud.com/impressum">Legal Notice</a></small><br/>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+  </body>
+</html>

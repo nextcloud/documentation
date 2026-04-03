@@ -1,0 +1,83 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+OC\_EventSource
+===============
+
+
+.. php:class:: OC_EventSource
+
+
+	.. rst-class:: phpdoc-description
+	
+		| wrapper for server side events \(https://en\.wikipedia\.org/wiki/Server\-sent\_events\)
+		| includes a fallback for older browsers and IE
+		
+		| use server side events with caution, to many open requests can hang the server
+		
+	
+	:Source:
+		`lib/private/legacy/OC_EventSource.php#36 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_EventSource.php#L36>`_
+	
+	:Implements:
+		:php:interface:`OCP\\IEventSource` 
+	
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: protected
+
+	.. php:method:: protected init()
+	
+		:Source:
+			`lib/private/legacy/OC_EventSource.php#52 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_EventSource.php#L52>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public send( $type, $data=\\null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| send a message to the client
+			
+		
+		:Source:
+			`lib/private/legacy/OC_EventSource.php#103 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_EventSource.php#L103>`_
+		
+		
+		:Parameters:
+			* **$type** (string)  
+			* **$data** (mixed)  
+
+		
+		:Throws: :any:`\\BadMethodCallException <BadMethodCallException>` if only one parameter is given, a typeless message will be send with that parameter as data
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public close()
+	
+		.. rst-class:: phpdoc-description
+		
+			| close the connection of the event source
+			
+		
+		:Source:
+			`lib/private/legacy/OC_EventSource.php#129 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_EventSource.php#L129>`_
+		
+		
+	
+	
+

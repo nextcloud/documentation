@@ -1,0 +1,93 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+LocalTempFileTrait
+==================
+
+
+.. php:namespace:: OC\Files\Storage
+
+.. php:trait:: LocalTempFileTrait
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Storage backend class for providing common filesystem operation methods
+		| which are not storage\-backend specific\.
+		
+		| \\OC\\Files\\Storage\\Common is never used directly; it is extended by all other
+		| storage backends, where its methods may be overridden, and additional
+		| \(backend\-specific\) methods are defined\.
+		| 
+		| Some \\OC\\Files\\Storage\\Common methods call functions which are first defined
+		| in classes which extend it, e\.g\. $this\-\>stat\(\) \.
+		
+	
+	:Source:
+		`lib/private/Files/Storage/LocalTempFileTrait.php#38 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/LocalTempFileTrait.php#L38>`_
+	
+
+Properties
+----------
+
+.. php:attr:: protected static cachedFiles
+
+	:Source:
+		`lib/private/Files/Storage/LocalTempFileTrait.php#41 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/LocalTempFileTrait.php#L41>`_
+	
+	:Type: string[] 
+
+
+Methods
+-------
+
+.. rst-class:: protected
+
+	.. php:method:: protected getCachedFile( $path)
+	
+		:Source:
+			`lib/private/Files/Storage/LocalTempFileTrait.php#47 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/LocalTempFileTrait.php#L47>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected removeCachedFile( $path)
+	
+		:Source:
+			`lib/private/Files/Storage/LocalTempFileTrait.php#57 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/LocalTempFileTrait.php#L57>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected toTmpFile( $path)
+	
+		:Source:
+			`lib/private/Files/Storage/LocalTempFileTrait.php#65 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/LocalTempFileTrait.php#L65>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: string 
+	
+	
+

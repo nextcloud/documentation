@@ -1,0 +1,252 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+PermissionsMask
+===============
+
+
+.. php:namespace:: OC\Files\Storage\Wrapper
+
+.. php:class:: PermissionsMask
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Mask the permissions of a storage
+		
+		| This can be used to restrict update, create, delete and/or share permissions of a storage
+		| 
+		| Note that the read permissions can\'t be masked
+		
+	
+	:Source:
+		`lib/private/Files/Storage/Wrapper/PermissionsMask.php#41 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/PermissionsMask.php#L41>`_
+	
+	:Parent:
+		:php:class:`OC\\Files\\Storage\\Wrapper\\Wrapper`
+	
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $arguments)
+	
+		:Source:
+			`lib/private/Files/Storage/Wrapper/PermissionsMask.php#53 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/PermissionsMask.php#L53>`_
+		
+		
+		:Parameters:
+			* **$arguments** (array)  ['storage' => $storage, 'mask' => $mask]
+			
+			$storage: The storage the permissions mask should be applied on
+			$mask: The permission bits that should be kept, a combination of the \OCP\Constant::PERMISSION_ constants
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isUpdatable( $path)
+	
+		:Source:
+			`lib/private/Files/Storage/Wrapper/PermissionsMask.php#62 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/PermissionsMask.php#L62>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isCreatable( $path)
+	
+		:Source:
+			`lib/private/Files/Storage/Wrapper/PermissionsMask.php#66 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/PermissionsMask.php#L66>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isDeletable( $path)
+	
+		:Source:
+			`lib/private/Files/Storage/Wrapper/PermissionsMask.php#70 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/PermissionsMask.php#L70>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isSharable( $path)
+	
+		:Source:
+			`lib/private/Files/Storage/Wrapper/PermissionsMask.php#74 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/PermissionsMask.php#L74>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getPermissions( $path)
+	
+		:Source:
+			`lib/private/Files/Storage/Wrapper/PermissionsMask.php#78 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/PermissionsMask.php#L78>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public rename( $path1, $path2)
+	
+		:Source:
+			`lib/private/Files/Storage/Wrapper/PermissionsMask.php#82 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/PermissionsMask.php#L82>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public copy( $path1, $path2)
+	
+		:Source:
+			`lib/private/Files/Storage/Wrapper/PermissionsMask.php#90 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/PermissionsMask.php#L90>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public touch( $path, $mtime=null)
+	
+		:Source:
+			`lib/private/Files/Storage/Wrapper/PermissionsMask.php#94 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/PermissionsMask.php#L94>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public mkdir( $path)
+	
+		:Source:
+			`lib/private/Files/Storage/Wrapper/PermissionsMask.php#99 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/PermissionsMask.php#L99>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public rmdir( $path)
+	
+		:Source:
+			`lib/private/Files/Storage/Wrapper/PermissionsMask.php#103 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/PermissionsMask.php#L103>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public unlink( $path)
+	
+		:Source:
+			`lib/private/Files/Storage/Wrapper/PermissionsMask.php#107 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/PermissionsMask.php#L107>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public file_put_contents( $path, $data)
+	
+		:Source:
+			`lib/private/Files/Storage/Wrapper/PermissionsMask.php#111 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/PermissionsMask.php#L111>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public fopen( $path, $mode)
+	
+		:Source:
+			`lib/private/Files/Storage/Wrapper/PermissionsMask.php#116 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/PermissionsMask.php#L116>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getCache( $path="", $storage=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get a cache instance for the storage
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/PermissionsMask.php#132 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/PermissionsMask.php#L132>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: :any:`\\OC\\Files\\Cache\\Cache <OC\\Files\\Cache\\Cache>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getMetaData( $path)
+	
+		:Source:
+			`lib/private/Files/Storage/Wrapper/PermissionsMask.php#140 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/PermissionsMask.php#L140>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getScanner( $path="", $storage=null)
+	
+		:Source:
+			`lib/private/Files/Storage/Wrapper/PermissionsMask.php#150 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/PermissionsMask.php#L150>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getDirectoryContent( $directory)
+	
+		:Source:
+			`lib/private/Files/Storage/Wrapper/PermissionsMask.php#157 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/PermissionsMask.php#L157>`_
+		
+		
+	
+	
+

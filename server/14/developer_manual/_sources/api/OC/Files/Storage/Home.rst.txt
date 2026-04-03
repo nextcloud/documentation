@@ -1,0 +1,155 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+Home
+====
+
+
+.. php:namespace:: OC\Files\Storage
+
+.. php:class:: Home
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Specialized version of Local storage for home directory usage
+		
+	
+	:Source:
+		`lib/private/Files/Storage/Home.php#34 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Home.php#L34>`_
+	
+	:Parent:
+		:php:class:`OC\\Files\\Storage\\Local`
+	
+	:Implements:
+		:php:interface:`OCP\\Files\\IHomeStorage` 
+	
+
+Properties
+----------
+
+.. php:attr:: protected static id
+
+	:Source:
+		`lib/private/Files/Storage/Home.php#38 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Home.php#L38>`_
+	
+	:Type: string 
+
+
+.. php:attr:: protected static user
+
+	:Source:
+		`lib/private/Files/Storage/Home.php#43 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Home.php#L43>`_
+	
+	:Type: :any:`\\OC\\User\\User <OC\\User\\User>` 
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $arguments)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Construct a Home storage instance
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Home.php#51 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Home.php#L51>`_
+		
+		
+		:Parameters:
+			* **$arguments** (array)  array with "user" containing the
+			storage owner
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getId()
+	
+		:Source:
+			`lib/private/Files/Storage/Home.php#59 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Home.php#L59>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getCache( $path="", $storage=null)
+	
+		:Source:
+			`lib/private/Files/Storage/Home.php#66 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Home.php#L66>`_
+		
+		
+		:Returns: :any:`\\OC\\Files\\Cache\\HomeCache <OC\\Files\\Cache\\HomeCache>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getPropagator( $storage=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get a propagator instance for the cache
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Home.php#82 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Home.php#L82>`_
+		
+		
+		:Parameters:
+			
+			
+		
+		:Returns: :any:`\\OC\\Files\\Cache\\Propagator <OC\\Files\\Cache\\Propagator>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getUser()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the owner of this home storage
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Home.php#98 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Home.php#L98>`_
+		
+		
+		:Returns: :any:`\\OC\\User\\User <OC\\User\\User>` owner of this home storage
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getOwner( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get the owner of a path
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Home.php#108 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Home.php#L108>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  The path to get the owner
+
+		
+		:Returns: string uid or false
+	
+	
+

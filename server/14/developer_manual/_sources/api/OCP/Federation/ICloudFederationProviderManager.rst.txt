@@ -1,0 +1,182 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+ICloudFederationProviderManager
+===============================
+
+
+.. php:namespace:: OCP\Federation
+
+.. php:interface:: ICloudFederationProviderManager
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Class ICloudFederationProviderManager
+		
+		| Manage cloud federation providers
+		
+	
+	:Implemented by:
+		:php:class:`OC\\Federation\\CloudFederationProviderManager` 
+	
+	
+	:Source:
+		`lib/public/Federation/ICloudFederationProviderManager.php#35 <https://github.com/nextcloud/server/blob/stable13/lib/public/Federation/ICloudFederationProviderManager.php#L35>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public addCloudFederationProvider( $resourceType, $displayName, $callback)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Registers an callback function which must return an cloud federation provider
+			
+		
+		:Source:
+			`lib/public/Federation/ICloudFederationProviderManager.php#47 <https://github.com/nextcloud/server/blob/stable13/lib/public/Federation/ICloudFederationProviderManager.php#L47>`_
+		
+		
+		:Parameters:
+			* **$resourceType** (string)  which resource type does the provider handles
+			* **$displayName** (string)  user facing name of the federated share provider
+			* **$callback** (callable)  
+
+		
+		:Throws: :any:`\\OCP\\Federation\\Exceptions\\ProviderAlreadyExistsException <OCP\\Federation\\Exceptions\\ProviderAlreadyExistsException>` 
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public removeCloudFederationProvider( $resourceType)
+	
+		.. rst-class:: phpdoc-description
+		
+			| remove cloud federation provider
+			
+		
+		:Source:
+			`lib/public/Federation/ICloudFederationProviderManager.php#56 <https://github.com/nextcloud/server/blob/stable13/lib/public/Federation/ICloudFederationProviderManager.php#L56>`_
+		
+		
+		:Parameters:
+			* **$resourceType** (string)  
+
+		
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getAllCloudFederationProviders()
+	
+		.. rst-class:: phpdoc-description
+		
+			| get a list of all cloudFederationProviders
+			
+		
+		:Source:
+			`lib/public/Federation/ICloudFederationProviderManager.php#65 <https://github.com/nextcloud/server/blob/stable13/lib/public/Federation/ICloudFederationProviderManager.php#L65>`_
+		
+		
+		:Returns: array \[resourceType =\> \[\'resourceType\' =\> $resourceType, \'displayName\' =\> $displayName, \'callback\' =\> callback\]\]
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getCloudFederationProvider( $resourceType)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get a specific cloud federation provider
+			
+		
+		:Source:
+			`lib/public/Federation/ICloudFederationProviderManager.php#76 <https://github.com/nextcloud/server/blob/stable13/lib/public/Federation/ICloudFederationProviderManager.php#L76>`_
+		
+		
+		:Parameters:
+			* **$resourceType** (string)  
+
+		
+		:Returns: :any:`\\OCP\\Federation\\ICloudFederationProvider <OCP\\Federation\\ICloudFederationProvider>` 
+		:Throws: :any:`\\OCP\\Federation\\Exceptions\\ProviderDoesNotExistsException <OCP\\Federation\\Exceptions\\ProviderDoesNotExistsException>` 
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public sendShare( $share)
+	
+		.. rst-class:: phpdoc-description
+		
+			| send federated share
+			
+		
+		:Source:
+			`lib/public/Federation/ICloudFederationProviderManager.php#86 <https://github.com/nextcloud/server/blob/stable13/lib/public/Federation/ICloudFederationProviderManager.php#L86>`_
+		
+		
+		:Parameters:
+			* **$share** (:any:`OCP\\Federation\\ICloudFederationShare <OCP\\Federation\\ICloudFederationShare>`)  
+
+		
+		:Returns: mixed 
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public sendNotification( $url, $notification)
+	
+		.. rst-class:: phpdoc-description
+		
+			| send notification about existing share
+			
+		
+		:Source:
+			`lib/public/Federation/ICloudFederationProviderManager.php#97 <https://github.com/nextcloud/server/blob/stable13/lib/public/Federation/ICloudFederationProviderManager.php#L97>`_
+		
+		
+		:Parameters:
+			* **$url** (string)  
+			* **$notification** (:any:`OCP\\Federation\\ICloudFederationNotification <OCP\\Federation\\ICloudFederationNotification>`)  
+
+		
+		:Returns: mixed 
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isReady()
+	
+		.. rst-class:: phpdoc-description
+		
+			| check if the new cloud federation API is ready to be used
+			
+		
+		:Source:
+			`lib/public/Federation/ICloudFederationProviderManager.php#106 <https://github.com/nextcloud/server/blob/stable13/lib/public/Federation/ICloudFederationProviderManager.php#L106>`_
+		
+		
+		:Returns: bool 
+		:Since: 14.0.0 
+	
+	
+

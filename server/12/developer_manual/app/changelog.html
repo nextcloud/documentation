@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Changelog &#8212; Nextcloud Developer Manual 12 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/main.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '12',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.1.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Tutorial" href="tutorial.html" />
+    <link rel="prev" title="App Development" href="index.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#1d2d44">
+<link rel="shortcut icon" href="https://nextcloud.com/wp-content/themes/next/assets/img/common/favicon.png" />
+<link rel="apple-touch-icon-precomposed" href="https://nextcloud.com/wp-content/themes/next/assets/img/common/favicon.png" />
+<!-- Piwik -->
+<script type="text/javascript">
+    var _paq = _paq || [];
+    _paq.push(['trackPageView']);
+    _paq.push(['enableLinkTracking']);
+    (function() {
+        var u="//stats.nextcloud.com/";
+        _paq.push(['setTrackerUrl', u+'piwik.php']);
+        _paq.push(['setSiteId', 3]);
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+        g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+    })();
+</script>
+<noscript><p><img src="//stats.nextcloud.com/piwik.php?idsite=3" style="border:0;" alt="" /></p></noscript>
+<!-- End Piwik Code -->
+
+  </head>
+  <body role="document">
+
+<header class="banner navbar navbar-default navbar-static-top" role="banner">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+       <a class="brand" href="http://nextcloud.com/" rel="home" title="Nextcloud.com"><img class="logo" src="../_static/img/logo.svg" itemprop="logo"></a>
+    </div>
+
+    <nav class="collapse navbar-collapse" role="navigation">
+      <ul id="menu-header" class="nav navbar-nav">
+          <li><a target="_blank" href="https://demo.nextcloud.com">Demo</a></li>
+          <li><a href="https://nextcloud.com/news/">News</a></li>
+          <li><a href="https://nextcloud.com/features/">Features</a></li>
+          <li><a href="https://nextcloud.com/about/">About us</a></li>
+          <li><a href="https://nextcloud.com/contribute/">Get involved</a></li>
+          <li><a href="https://nextcloud.com/support/">Support</a></li>
+          <li><a href="https://nextcloud.com/enterprise/">Enterprise</a></li>
+          <li class="menu-install"><a href="https://nextcloud.com/install/">Download</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+
+
+<div class="container" style="background-color: #E6C4C2;color: #b10000;border: #b10000 2px solid;border-right: none;border-left: none;padding: 15px 10px;">You are reading an outdated version of this documentation. Please check out the <a href="https://docs.nextcloud.com/server/stable/developer_manual/" style="
+color: rgb(177,0,0);text-decoration: underline;">latest version</a> of the developer manual.</div>
+
+
+
+
+
+<div class="wrap container not-front">
+  <div class="content row">
+  <main class="main">
+    <div class="row page-content-header">
+      <div class="col-md-6">
+        <h1><a href="../index.html">Nextcloud Developer Manual</a></h1>
+      </div>
+      <div class="col-md-5 col-md-offset-1">
+      
+        <form class="headersearch" style="margin: 16px 0;" action="../search.html" method="get">
+        <input type="text" value="" name="q" id="q" class="form-control" /> 
+        <button  class="btn btn-default" type="submit" id="searchsubmit">Search</button>
+        </form>
+      
+      </div>
+    </div>
+    
+			<div class="row">
+				<div class="col-md-3">
+					<div class="sidebar">
+							<div class="menu-support-container">
+								<ul id="menu-support" class="menu">
+									<ul>
+										
+<li><a href="../index.html">Table of Contents</a></li>
+									</ul>
+                  <ul>
+<li class="toctree-l1"><a class="reference internal" href="../general/index.html">General Contributor Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">App Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../design/index.html">Design Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../android_library/index.html">Android Application Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client_apis/index.html">Client APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../core/index.html">Core Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bugtracker/index.html">Bugtracker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../commun/index.html">Help and Communication</a></li>
+</ul>
+
+								</ul>
+							</div>
+					</div>
+				</div>
+        
+
+				<div class="col-md-9">
+					<div class="page-content">
+            
+<ul class="prevnext-title list-unstyled list-inline">
+  <li class="prev">
+    <a href="index.html" title="Previous Chapter: App Development"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; App Development</span>
+    </a>
+  </li>
+  <li class="next">
+    <a href="tutorial.html" title="Next Chapter: Tutorial"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">Tutorial &raquo;</span>
+    </a>
+  </li>
+</ul>
+						
+  <div class="section" id="changelog">
+<h1>Changelog<a class="headerlink" href="#changelog" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="deprecations">
+<h2>Deprecations<a class="headerlink" href="#deprecations" title="Permalink to this headline">¶</a></h2>
+<p>This is a deprecation roadmap which lists all current deprecation targets and will be updated from release to release. This lists the year when a specific method or class will be removed.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Deprecations on interfaces also affect the implementing classes!</p>
+</div>
+<div class="section" id="id1">
+<h3>2018<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><strong>OCP\App::setActiveNavigationEntry</strong> has been deprecated in favour of <strong>\OCP\INavigationManager</strong></li>
+<li><strong>OCP\BackgroundJob::registerJob</strong> has been deprecated in favour of <strong>OCP\BackgroundJob\IJobList</strong></li>
+<li><strong>OCP\Contacts</strong> functions has been deprecated in favour of <strong>\OCP\Contacts\IManager</strong></li>
+<li><strong>OCP\DB</strong> functions have been deprecated in favour of the ones in <strong>\OCP\IDBConnection</strong></li>
+<li><strong>OCP\Files::tmpFile</strong> has been deprecated in favour of <strong>\OCP\ITempManager::getTemporaryFile</strong></li>
+<li><strong>OCP\Files::tmpFolder</strong> has been deprecated in favour of <strong>\OCP\ITempManager::getTemporaryFolder</strong></li>
+<li><strong>\OCP\IServerContainer::getDb</strong> has been deprecated in favour of <strong>\OCP\IServerContainer::getDatabaseConnection</strong></li>
+<li><strong>\OCP\IServerContainer::getHTTPHelper</strong> has been deprecated in favour of <strong>\OCP\Http\Client\IClientService</strong></li>
+<li>Legacy applications not using the AppFramework are now likely to use the deprecated <strong>OCP\JSON</strong> and <strong>OCP\Response</strong> code:<ul>
+<li><strong>\OCP\JSON</strong> has been completely deprecated in favour of the AppFramework. Developers shall use the AppFramework instead of using the legacy <strong>OCP\JSON</strong> code. This allows testable controllers and is highly encouraged.</li>
+<li><strong>\OCP\Response</strong> has been completely deprecated in favour of the AppFramework. Developers shall use the AppFramework instead of using the legacy <strong>OCP\JSON</strong> code. This allows testable controllers and is highly encouraged.</li>
+</ul>
+</li>
+<li>Diverse <strong>OCP\Users</strong> function got deprecated in favour of <strong>OCP\IUserManager</strong>:<ul>
+<li><strong>OCP\Users::getUsers</strong> has been deprecated in favour of <strong>OCP\IUserManager::search</strong></li>
+<li><strong>OCP\Users::getDisplayName</strong> has been deprecated in favour of <strong>OCP\IUserManager::getDisplayName</strong></li>
+<li><strong>OCP\Users::getDisplayNames</strong> has been deprecated in favour of <strong>OCP\IUserManager::searchDisplayName</strong></li>
+<li><strong>OCP\Users::userExists</strong> has been deprecated in favour of <strong>OCP\IUserManager::userExists</strong></li>
+</ul>
+</li>
+<li>Various static <strong>OCP\Util</strong> functions have been deprecated:<ul>
+<li><strong>OCP\Util::linkToRoute</strong> has been deprecated in favour of <strong>\OCP\IURLGenerator::linkToRoute</strong></li>
+<li><strong>OCP\Util::linkTo</strong> has been deprecated in favour of <strong>\OCP\IURLGenerator::linkTo</strong></li>
+<li><strong>OCP\Util::imagePath</strong> has been deprecated in favour of <strong>\OCP\IURLGenerator::imagePath</strong></li>
+<li><strong>OCP\Util::isValidPath</strong> has been deprecated in favour of <strong>\OCP\IURLGenerator::imagePath</strong></li>
+</ul>
+</li>
+<li><a class="reference external" href="https://github.com/nextcloud/server/blob/stable9/lib/public/appframework/iappcontainer.php">OCP\AppFramework\IAppContainer</a>: methods <strong>getCoreApi</strong> and <strong>log</strong></li>
+<li><a class="reference external" href="https://github.com/nextcloud/server/blob/stable9/lib/public/appframework/iapi.php">OCP\AppFramework\IApi</a>: full class</li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h3>2017<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><strong>OCP\IDb</strong>: This interface and the implementing classes will be removed in favor of <strong>OCP\IDbConnection</strong>. Various layers in between have also been removed to be consistent with the PDO classes. This leads to the following changes:</li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li>Replace all calls on the db using <strong>getInsertId</strong> with <strong>lastInsertId</strong></li>
+<li>Replace all calls on the db using <strong>prepareQuery</strong> with <strong>prepare</strong></li>
+<li>The <strong>__construct</strong> method of <strong>OCP\AppFramework\Db\Mapper</strong> no longer requires an instance of <strong>OCP\IDb</strong> but an instance of <strong>OCP\IDbConnection</strong></li>
+<li>The <strong>execute</strong> method on <strong>OCP\AppFramework\Db\Mapper</strong> no longer returns an instance of <strong>OC_DB_StatementWrapper</strong> but an instance of <strong>PDOStatement</strong></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id3">
+<h3>2016<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>The following methods have been moved into the <strong>OCP\Template::&lt;method&gt;</strong> class instead of being namespaced directly:</li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li><strong>OCP\image_path</strong></li>
+<li><strong>OCP\mimetype_icon</strong></li>
+<li><strong>OCP\preview_icon</strong></li>
+<li><strong>OCP\publicPreview_icon</strong></li>
+<li><strong>OCP\human_file_size</strong></li>
+<li><strong>OCP\relative_modified_date</strong></li>
+<li><strong>OCP\html_select_options</strong></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><strong>OCP\simple_file_size</strong> has been deprecated in favour of <strong>OCP\Template::human_file_size</strong></li>
+<li>The <strong>OCP\PERMISSION_&lt;permission&gt;</strong> and <strong>OCP\FILENAME_INVALID_CHARS</strong> have been moved to <strong>OCP\Constants::&lt;old name&gt;</strong></li>
+<li>The <strong>OC_GROUP_BACKEND_&lt;method&gt;</strong> and <strong>OC_USER_BACKEND_&lt;method&gt;</strong> have been moved to <strong>OC_Group_Backend::&lt;method&gt;</strong> and <strong>OC_User_Backend::&lt;method&gt;</strong> respectively</li>
+<li><a class="reference external" href="https://github.com/nextcloud/server/blob/stable9/lib/public/appframework/controller.php">OCP\AppFramework\Controller</a>: methods <strong>params</strong>, <strong>getParams</strong>, <strong>method</strong>, <strong>getUploadedFile</strong>, <strong>env</strong>, <strong>cookie</strong>, <strong>render</strong></li>
+</ul>
+</div>
+<div class="section" id="id4">
+<h3>2015<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><a class="reference external" href="https://github.com/nextcloud/server/commit/909a53e087b7815ba9cd814eb6c22845ef5b48c7">\OC\Preferences</a> and <a class="reference external" href="https://github.com/nextcloud/server/commit/4df7c0a1ed52ed1922116686cb5ad8da2544c997">\OC_Preferences</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+            
+<ul class="prevnext-title list-unstyled list-inline">
+  <li class="prev">
+    <a href="index.html" title="Previous Chapter: App Development"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; App Development</span>
+    </a>
+  </li>
+  <li class="next">
+    <a href="tutorial.html" title="Next Chapter: Tutorial"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">Tutorial &raquo;</span>
+    </a>
+  </li>
+</ul>
+					</div>
+				</div>
+			</div>
+  </main>  
+  </div>
+</div>
+<div class="container">
+<div class="row">
+    <div class="col-lg-12 footer-social-icons">
+      <p class="text-center"><a target="_blank" href="https://plus.google.com/104036748063781940910/about"><img width=50 src="../_static/img/social/googleplus.svg" title="Follow us on Google Plus!" alt="Follow us on Google Plus!"></img></a>
+      <a target="_blank" href="https://www.facebook.com/Nextclouders"><img width=50 src="../_static/img/social/facebook.svg" title="Like our facebook page!" alt="Like our facebook page!"></img></a>
+      <a target="_blank" href="https://twitter.com/Nextclouders"><img width=50 src="../_static/img/social/twitter.svg" title="Subscribe to our twitter channel!" alt="Subscribe to our twitter channel!"></img></a>
+      <a target="_blank" href="https://nextcloud.com/blogfeed"><img class="img-circle" width=50 src="../_static/img/social/rss.svg" title="Subscribe to our news feed!" alt="Subscribe to our news feed!"></img></a>
+      <a target="_blank" href="https://newsletter.nextcloud.com/"><img class="img-circle" width=50 src="../_static/img/social/mail.svg"  title="Subscribe to our newsletter!" alt="Subscribe to our newsletter!"></img></a></p>
+    </div>
+    <div class="text-center">
+      <p>All documentation licensed under the <a href="https://creativecommons.org/licenses/by/3.0/us/">Creative Commons Attribution 3.0 Unported license</a>.</p>
+      <p><a href="https://github.com/nextcloud/documentation/graphs/contributors">See who contributed to our documentation/credits</a>.</p>
+    </div>
+</div>
+</div>
+<footer class="content-info" role="contentinfo">
+<div class="container">
+   <div class="row">
+     <div class="col-sm-2 col-sm-offset-1">
+        <div class="footer-nav">
+          <h4>About Nextcloud</h4>
+          <ul id="menu-about" class="menu">
+            <li><a href="https://nextcloud.com/about/">About us</a></li>
+            <li><a href="https://nextcloud.com/contact/">Contact us</a></li>
+            <li><a href="https://nextcloud.com/press/">Press</a></li>
+            <li><a href="https://nextcloud.com/privacy/">Privacy policy</a></li>
+          </ul>
+        </div>
+     </div>
+     <div class="col-sm-2 col-sm-offset-2">
+     </div>
+     <div class="col-sm-2 col-sm-offset-2">
+        <div class="footer-nav">
+          <h4>Interact</h4>
+          <ul id="menu-interact" class="menu">
+            <li class="menu-irc-channel"><a href="https://webchat.freenode.net/?channels=nextcloud">IRC Channel</a></li>
+            <li class="menu-forums"><a href="https://help.nextcloud.com/">Forums</a></li>
+          </ul>
+        </div>
+     </div>
+   </div>
+   <div class="row">
+      <div class="col-lg-12 footer-text">
+        <p>
+              &copy; Copyright 2012-2017, The Nextcloud developers.  <small><a href="https://nextcloud.com/impressum">Legal Notice</a></small><br/>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+  </body>
+</html>

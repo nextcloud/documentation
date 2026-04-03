@@ -1,0 +1,430 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+Util
+====
+
+
+.. php:namespace:: OC\Encryption
+
+.. php:class:: Util
+
+
+	:Source:
+		`lib/private/Encryption/Util.php#40 <https://github.com/nextcloud/server/blob/stable13/lib/private/Encryption/Util.php#L40>`_
+	
+
+Constants
+---------
+
+.. php:const:: HEADER_START = HBEGIN
+
+	:Source:
+		`lib/private/Encryption/Util.php#41 <https://github.com/nextcloud/server/blob/stable13/lib/private/Encryption/Util.php#L41>`_
+	
+
+
+.. php:const:: HEADER_END = HEND
+
+	:Source:
+		`lib/private/Encryption/Util.php#42 <https://github.com/nextcloud/server/blob/stable13/lib/private/Encryption/Util.php#L42>`_
+	
+
+
+.. php:const:: HEADER_PADDING_CHAR = \-
+
+	:Source:
+		`lib/private/Encryption/Util.php#43 <https://github.com/nextcloud/server/blob/stable13/lib/private/Encryption/Util.php#L43>`_
+	
+
+
+.. php:const:: HEADER_ENCRYPTION_MODULE_KEY = oc\_encryption\_module
+
+	:Source:
+		`lib/private/Encryption/Util.php#45 <https://github.com/nextcloud/server/blob/stable13/lib/private/Encryption/Util.php#L45>`_
+	
+
+
+Properties
+----------
+
+.. php:attr:: protected static headerSize
+
+	.. rst-class:: phpdoc-description
+	
+		| block size will always be 8192 for a PHP stream
+		
+	
+	:Source:
+		`lib/private/Encryption/Util.php#52 <https://github.com/nextcloud/server/blob/stable13/lib/private/Encryption/Util.php#L52>`_
+	
+	:See: :any:`https://bugs\.php\.net/bug\.php?id=21641 <https://bugs\.php\.net/bug\.php?id=21641>` 
+	:Type: int 
+
+
+.. php:attr:: protected static blockSize
+
+	.. rst-class:: phpdoc-description
+	
+		| block size will always be 8192 for a PHP stream
+		
+	
+	:Source:
+		`lib/private/Encryption/Util.php#59 <https://github.com/nextcloud/server/blob/stable13/lib/private/Encryption/Util.php#L59>`_
+	
+	:See: :any:`https://bugs\.php\.net/bug\.php?id=21641 <https://bugs\.php\.net/bug\.php?id=21641>` 
+	:Type: int 
+
+
+.. php:attr:: protected static rootView
+
+	:Source:
+		`lib/private/Encryption/Util.php#62 <https://github.com/nextcloud/server/blob/stable13/lib/private/Encryption/Util.php#L62>`_
+	
+	:Type: :any:`\\OC\\Files\\View <OC\\Files\\View>` 
+
+
+.. php:attr:: protected static ocHeaderKeys
+
+	:Source:
+		`lib/private/Encryption/Util.php#65 <https://github.com/nextcloud/server/blob/stable13/lib/private/Encryption/Util.php#L65>`_
+	
+	:Type: array 
+
+
+.. php:attr:: protected static userManager
+
+	:Source:
+		`lib/private/Encryption/Util.php#68 <https://github.com/nextcloud/server/blob/stable13/lib/private/Encryption/Util.php#L68>`_
+	
+	:Type: :any:`\\OC\\User\\Manager <OC\\User\\Manager>` 
+
+
+.. php:attr:: protected static config
+
+	:Source:
+		`lib/private/Encryption/Util.php#71 <https://github.com/nextcloud/server/blob/stable13/lib/private/Encryption/Util.php#L71>`_
+	
+	:Type: :any:`\\OCP\\IConfig <OCP\\IConfig>` 
+
+
+.. php:attr:: protected static excludedPaths
+
+	:Source:
+		`lib/private/Encryption/Util.php#74 <https://github.com/nextcloud/server/blob/stable13/lib/private/Encryption/Util.php#L74>`_
+	
+	:Type: array paths excluded from encryption
+
+
+.. php:attr:: protected static groupManager
+
+	:Source:
+		`lib/private/Encryption/Util.php#77 <https://github.com/nextcloud/server/blob/stable13/lib/private/Encryption/Util.php#L77>`_
+	
+	:Type: :any:`\\OC\\Group\\Manager <OC\\Group\\Manager>` 
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $rootView, $userManager, $groupManager, $config)
+	
+		:Source:
+			`lib/private/Encryption/Util.php#86 <https://github.com/nextcloud/server/blob/stable13/lib/private/Encryption/Util.php#L86>`_
+		
+		
+		:Parameters:
+			* **$rootView** (:any:`OC\\Files\\View <OC\\Files\\View>`)  
+			* **$userManager** (:any:`OC\\User\\Manager <OC\\User\\Manager>`)  
+			* **$groupManager** (:any:`OC\\Group\\Manager <OC\\Group\\Manager>`)  
+			* **$config** (:any:`OCP\\IConfig <OCP\\IConfig>`)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getEncryptionModuleId( $header=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| read encryption module ID from header
+			
+		
+		:Source:
+			`lib/private/Encryption/Util.php#112 <https://github.com/nextcloud/server/blob/stable13/lib/private/Encryption/Util.php#L112>`_
+		
+		
+		:Parameters:
+			* **$header** (array)  
+
+		
+		:Returns: string 
+		:Throws: :any:`\\OC\\Encryption\\Exceptions\\ModuleDoesNotExistsException <OC\\Encryption\\Exceptions\\ModuleDoesNotExistsException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public createHeader( $headerData, $encryptionModule)
+	
+		.. rst-class:: phpdoc-description
+		
+			| create header for encrypted file
+			
+		
+		:Source:
+			`lib/private/Encryption/Util.php#140 <https://github.com/nextcloud/server/blob/stable13/lib/private/Encryption/Util.php#L140>`_
+		
+		
+		:Parameters:
+			* **$headerData** (array)  
+			* **$encryptionModule** (:any:`OCP\\Encryption\\IEncryptionModule <OCP\\Encryption\\IEncryptionModule>`)  
+
+		
+		:Returns: string 
+		:Throws: :any:`\\OC\\Encryption\\Exceptions\\EncryptionHeaderToLargeException <OC\\Encryption\\Exceptions\\EncryptionHeaderToLargeException>` if header has to many arguments
+		:Throws: :any:`\\OC\\Encryption\\Exceptions\\EncryptionHeaderKeyExistsException <OC\\Encryption\\Exceptions\\EncryptionHeaderKeyExistsException>` if header key is already in use
+		:Throws: :any:`\\OC\\Encryption\\Exceptions\\EncryptionHeaderToLargeException <OC\\Encryption\\Exceptions\\EncryptionHeaderToLargeException>` if header has to many arguments
+		:Throws: :any:`\\OC\\Encryption\\Exceptions\\EncryptionHeaderKeyExistsException <OC\\Encryption\\Exceptions\\EncryptionHeaderKeyExistsException>` if header key is already in use
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getAllFiles( $dir)
+	
+		.. rst-class:: phpdoc-description
+		
+			| go recursively through a dir and collect all files and sub files\.
+			
+		
+		:Source:
+			`lib/private/Encryption/Util.php#165 <https://github.com/nextcloud/server/blob/stable13/lib/private/Encryption/Util.php#L165>`_
+		
+		
+		:Parameters:
+			* **$dir** (string)  relative to the users files folder
+
+		
+		:Returns: array with list of files relative to the users files folder
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isFile( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| check if it is a file uploaded by the user stored in data/user/files
+			| or a metadata file
+			
+		
+		:Source:
+			`lib/private/Encryption/Util.php#192 <https://github.com/nextcloud/server/blob/stable13/lib/private/Encryption/Util.php#L192>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  relative to the data/ folder
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getHeaderSize()
+	
+		.. rst-class:: phpdoc-description
+		
+			| return size of encryption header
+			
+		
+		:Source:
+			`lib/private/Encryption/Util.php#205 <https://github.com/nextcloud/server/blob/stable13/lib/private/Encryption/Util.php#L205>`_
+		
+		
+		:Returns: int 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getBlockSize()
+	
+		.. rst-class:: phpdoc-description
+		
+			| return size of block read by a PHP stream
+			
+		
+		:Source:
+			`lib/private/Encryption/Util.php#214 <https://github.com/nextcloud/server/blob/stable13/lib/private/Encryption/Util.php#L214>`_
+		
+		
+		:Returns: int 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getUidAndFilename( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get the owner and the path for the file relative to the owners files folder
+			
+		
+		:Source:
+			`lib/private/Encryption/Util.php#225 <https://github.com/nextcloud/server/blob/stable13/lib/private/Encryption/Util.php#L225>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: array 
+		:Throws: :any:`\\BadMethodCallException <BadMethodCallException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public stripPartialFileExtension( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Remove \.path extension from a file path
+			
+		
+		:Source:
+			`lib/private/Encryption/Util.php#248 <https://github.com/nextcloud/server/blob/stable13/lib/private/Encryption/Util.php#L248>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  Path that may identify a .part file
+
+		
+		:Returns: string File path without \.part extension
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getUserWithAccessToMountPoint( $users, $groups)
+	
+		:Source:
+			`lib/private/Encryption/Util.php#267 <https://github.com/nextcloud/server/blob/stable13/lib/private/Encryption/Util.php#L267>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isSystemWideMountPoint( $path, $uid)
+	
+		.. rst-class:: phpdoc-description
+		
+			| check if the file is stored on a system wide mount point
+			
+		
+		:Source:
+			`lib/private/Encryption/Util.php#300 <https://github.com/nextcloud/server/blob/stable13/lib/private/Encryption/Util.php#L300>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  relative to /data/user with leading '/'
+			* **$uid** (string)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isExcluded( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| check if it is a path which is excluded by ownCloud from encryption
+			
+		
+		:Source:
+			`lib/private/Encryption/Util.php#343 <https://github.com/nextcloud/server/blob/stable13/lib/private/Encryption/Util.php#L343>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public recoveryEnabled( $uid)
+	
+		.. rst-class:: phpdoc-description
+		
+			| check if recovery key is enabled for user
+			
+		
+		:Source:
+			`lib/private/Encryption/Util.php#380 <https://github.com/nextcloud/server/blob/stable13/lib/private/Encryption/Util.php#L380>`_
+		
+		
+		:Parameters:
+			* **$uid** (string)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setKeyStorageRoot( $root)
+	
+		.. rst-class:: phpdoc-description
+		
+			| set new key storage root
+			
+		
+		:Source:
+			`lib/private/Encryption/Util.php#391 <https://github.com/nextcloud/server/blob/stable13/lib/private/Encryption/Util.php#L391>`_
+		
+		
+		:Parameters:
+			* **$root** (string)  new key store root relative to the data folder
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getKeyStorageRoot()
+	
+		.. rst-class:: phpdoc-description
+		
+			| get key storage root
+			
+		
+		:Source:
+			`lib/private/Encryption/Util.php#400 <https://github.com/nextcloud/server/blob/stable13/lib/private/Encryption/Util.php#L400>`_
+		
+		
+		:Returns: string key storage root
+	
+	
+

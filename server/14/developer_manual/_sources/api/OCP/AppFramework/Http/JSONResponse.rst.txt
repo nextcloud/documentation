@@ -1,0 +1,128 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+JSONResponse
+============
+
+
+.. php:namespace:: OCP\AppFramework\Http
+
+.. php:class:: JSONResponse
+
+
+	.. rst-class:: phpdoc-description
+	
+		| A renderer for JSON calls
+		
+	
+	:Source:
+		`lib/public/AppFramework/Http/JSONResponse.php#42 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Http/JSONResponse.php#L42>`_
+	
+	:Parent:
+		:php:class:`OCP\\AppFramework\\Http\\Response`
+	
+
+Properties
+----------
+
+.. php:attr:: protected static data
+
+	.. rst-class:: phpdoc-description
+	
+		| response data
+		
+	
+	:Source:
+		`lib/public/AppFramework/Http/JSONResponse.php#48 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Http/JSONResponse.php#L48>`_
+	
+	:Type: array | object 
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $data=\[\], $statusCode=\\OCP\\AppFramework\\Http::STATUS\_OK)
+	
+		.. rst-class:: phpdoc-description
+		
+			| constructor of JSONResponse
+			
+		
+		:Source:
+			`lib/public/AppFramework/Http/JSONResponse.php#57 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Http/JSONResponse.php#L57>`_
+		
+		
+		:Parameters:
+			* **$data** (array | object)  the object or array that should be transformed
+			* **$statusCode** (int)  the Http status code, defaults to 200
+
+		
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public render()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the rendered json
+			
+		
+		:Source:
+			`lib/public/AppFramework/Http/JSONResponse.php#72 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Http/JSONResponse.php#L72>`_
+		
+		
+		:Returns: string the rendered json
+		:Since: 6.0.0 
+		:Throws: :any:`\\Exception <Exception>` If data could not get encoded
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setData( $data)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Sets values in the data json array
+			
+		
+		:Source:
+			`lib/public/AppFramework/Http/JSONResponse.php#89 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Http/JSONResponse.php#L89>`_
+		
+		
+		:Parameters:
+			* **$data** (array | object)  an array or object which will be transformed
+			to JSON
+
+		
+		:Returns: :any:`\\OCP\\AppFramework\\Http\\JSONResponse <OCP\\AppFramework\\Http\\JSONResponse>` Reference to this object
+		:Since: 6.0.0 \- return value was added in 7\.0\.0
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getData()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Used to get the set parameters
+			
+		
+		:Source:
+			`lib/public/AppFramework/Http/JSONResponse.php#101 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Http/JSONResponse.php#L101>`_
+		
+		
+		:Returns: array the data
+		:Since: 6.0.0 
+	
+	
+

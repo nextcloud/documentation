@@ -1,0 +1,165 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IContainer
+==========
+
+
+.. php:namespace:: OCP
+
+.. php:interface:: IContainer
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Class IContainer
+		
+		| IContainer is the basic interface to be used for any internal dependency injection mechanism
+		
+	
+	:Implemented by:
+		:php:class:`OC\\AppFramework\\Utility\\SimpleContainer` 
+	
+	
+	:Source:
+		`lib/public/IContainer.php#52 <https://github.com/nextcloud/server/blob/stable13/lib/public/IContainer.php#L52>`_
+	
+	:Parent:
+		:php:interface:`Psr\\Container\\ContainerInterface`
+	
+
+Methods
+-------
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public resolve( $name)
+	
+		:Source:
+			`lib/public/IContainer.php#68 <https://github.com/nextcloud/server/blob/stable13/lib/public/IContainer.php#L68>`_
+		
+		
+		:Parameters:
+			* **$name** (string)  the class name to resolve
+
+		
+		:Returns: :any:`\\stdClass <stdClass>` 
+		:Since: 8.2.0 
+		:Deprecated: 20.0.0 use \\Psr\\Container\\ContainerInterface::get
+		:Throws: :any:`\\Psr\\Container\\ContainerExceptionInterface <Psr\\Container\\ContainerExceptionInterface>` if the class could not be found or instantiated
+		:Throws: :any:`\\OCP\\AppFramework\\QueryException <OCP\\AppFramework\\QueryException>` if the class could not be found or instantiated
+		:Throws: :any:`\\Psr\\Container\\ContainerExceptionInterface <Psr\\Container\\ContainerExceptionInterface>` if the class could not be found or instantiated
+		:Throws: :any:`\\OCP\\AppFramework\\QueryException <OCP\\AppFramework\\QueryException>` if the class could not be found or instantiated
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public query( $name, $autoload=true)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Look up a service for a given name in the container\.
+			
+		
+		:Source:
+			`lib/public/IContainer.php#85 <https://github.com/nextcloud/server/blob/stable13/lib/public/IContainer.php#L85>`_
+		
+		
+		:Parameters:
+			* **$name** (string)  
+			* **$autoload** (bool)  Should we try to autoload the service. If we are trying to resolve built in types this makes no sense for example
+
+		
+		:Returns: mixed 
+		:Throws: :any:`\\Psr\\Container\\ContainerExceptionInterface <Psr\\Container\\ContainerExceptionInterface>` if the query could not be resolved
+		:Throws: :any:`\\OCP\\AppFramework\\QueryException <OCP\\AppFramework\\QueryException>` if the query could not be resolved
+		:Throws: :any:`\\Psr\\Container\\ContainerExceptionInterface <Psr\\Container\\ContainerExceptionInterface>` if the query could not be resolved
+		:Throws: :any:`\\OCP\\AppFramework\\QueryException <OCP\\AppFramework\\QueryException>` if the query could not be resolved
+		:Since: 6.0.0 
+		:Deprecated: 20.0.0 use \\Psr\\Container\\ContainerInterface::get
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public registerParameter( $name, $value)
+	
+		.. rst-class:: phpdoc-description
+		
+			| A value is stored in the container with it\'s corresponding name
+			
+		
+		:Source:
+			`lib/public/IContainer.php#96 <https://github.com/nextcloud/server/blob/stable13/lib/public/IContainer.php#L96>`_
+		
+		
+		:Parameters:
+			* **$name** (string)  
+			* **$value** (mixed)  
+
+		
+		:Returns: void 
+		:Since: 6.0.0 
+		:Deprecated: 20.0.0 use \\OCP\\AppFramework\\Bootstrap\\IRegistrationContext::registerParameter
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public registerService( $name, $closure, $shared=true)
+	
+		.. rst-class:: phpdoc-description
+		
+			| A service is registered in the container where a closure is passed in which will actually
+			| create the service on demand\.
+			
+			| In case the parameter $shared is set to true \(the default usage\) the once created service will remain in
+			| memory and be reused on subsequent calls\.
+			| In case the parameter is false the service will be recreated on every call\.
+			
+		
+		:Source:
+			`lib/public/IContainer.php#112 <https://github.com/nextcloud/server/blob/stable13/lib/public/IContainer.php#L112>`_
+		
+		
+		:Parameters:
+			* **$name** (string)  
+			* **$closure** (:any:`Closure <Closure>`)  
+			* **$shared** (bool)  
+
+		
+		:Returns: void 
+		:Since: 6.0.0 
+		:Deprecated: 20.0.0 use \\OCP\\AppFramework\\Bootstrap\\IRegistrationContext::registerService
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public registerAlias( $alias, $target)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Shortcut for returning a service from a service under a different key,
+			| e\.g\. to tell the container to return a class when queried for an
+			| interface
+			
+		
+		:Source:
+			`lib/public/IContainer.php#123 <https://github.com/nextcloud/server/blob/stable13/lib/public/IContainer.php#L123>`_
+		
+		
+		:Parameters:
+			* **$alias** (string)  the alias that should be registered
+			* **$target** (string)  the target that should be resolved instead
+
+		
+		:Since: 8.2.0 
+		:Deprecated: 20.0.0 use \\OCP\\AppFramework\\Bootstrap\\IRegistrationContext::registerServiceAlias
+	
+	
+

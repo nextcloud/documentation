@@ -1,0 +1,115 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+SystemTagsEntityEvent
+=====================
+
+
+.. php:namespace:: OCP\SystemTag
+
+.. php:class:: SystemTagsEntityEvent
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Class SystemTagsEntityEvent
+		
+	
+	:Source:
+		`lib/public/SystemTag/SystemTagsEntityEvent.php#38 <https://github.com/nextcloud/server/blob/stable13/lib/public/SystemTag/SystemTagsEntityEvent.php#L38>`_
+	
+	:Parent:
+		:php:class:`OCP\\EventDispatcher\\Event`
+	
+
+Constants
+---------
+
+.. php:const:: EVENT_ENTITY = OCP\\SystemTag\\ISystemTagManager::registerEntity
+
+	:Source:
+		`lib/public/SystemTag/SystemTagsEntityEvent.php#43 <https://github.com/nextcloud/server/blob/stable13/lib/public/SystemTag/SystemTagsEntityEvent.php#L43>`_
+	
+	:Deprecated: 22.0.0 
+
+
+Properties
+----------
+
+.. php:attr:: protected static event
+
+	:Source:
+		`lib/public/SystemTag/SystemTagsEntityEvent.php#46 <https://github.com/nextcloud/server/blob/stable13/lib/public/SystemTag/SystemTagsEntityEvent.php#L46>`_
+	
+	:Type: string 
+
+
+.. php:attr:: protected static collections
+
+	:Source:
+		`lib/public/SystemTag/SystemTagsEntityEvent.php#48 <https://github.com/nextcloud/server/blob/stable13/lib/public/SystemTag/SystemTagsEntityEvent.php#L48>`_
+	
+	:Type: :any:`\\Closure\[\] <Closure>` 
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $event)
+	
+		.. rst-class:: phpdoc-description
+		
+			| SystemTagsEntityEvent constructor\.
+			
+		
+		:Source:
+			`lib/public/SystemTag/SystemTagsEntityEvent.php#56 <https://github.com/nextcloud/server/blob/stable13/lib/public/SystemTag/SystemTagsEntityEvent.php#L56>`_
+		
+		
+		:Parameters:
+			* **$event** (string)  
+
+		
+		:Since: 9.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public addEntityCollection( $name, $entityExistsFunction)
+	
+		:Source:
+			`lib/public/SystemTag/SystemTagsEntityEvent.php#70 <https://github.com/nextcloud/server/blob/stable13/lib/public/SystemTag/SystemTagsEntityEvent.php#L70>`_
+		
+		
+		:Parameters:
+			* **$name** (string)  
+			* **$entityExistsFunction** (:any:`Closure <Closure>`)  The closure should take one
+			argument, which is the id of the entity, that tags
+			should be handled for. The return should then be bool,
+			depending on whether tags are allowed (true) or not.
+
+		
+		:Throws: :any:`\\OutOfBoundsException <OutOfBoundsException>` when the entity name is already taken
+		:Since: 9.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getEntityCollections()
+	
+		:Source:
+			`lib/public/SystemTag/SystemTagsEntityEvent.php#82 <https://github.com/nextcloud/server/blob/stable13/lib/public/SystemTag/SystemTagsEntityEvent.php#L82>`_
+		
+		
+		:Returns: :any:`\\Closure\[\] <Closure>` 
+		:Since: 9.1.0 
+	
+	
+

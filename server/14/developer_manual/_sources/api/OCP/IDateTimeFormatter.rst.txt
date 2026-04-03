@@ -1,0 +1,235 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IDateTimeFormatter
+==================
+
+
+.. php:namespace:: OCP
+
+.. php:interface:: IDateTimeFormatter
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Interface IDateTimeFormatter
+		
+	
+	:Implemented by:
+		:php:class:`OC\\DateTimeFormatter` 
+	
+	
+	:Source:
+		`lib/public/IDateTimeFormatter.php#32 <https://github.com/nextcloud/server/blob/stable13/lib/public/IDateTimeFormatter.php#L32>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public formatDate( $timestamp, $format=long, $timeZone=null, $l=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Formats the date of the given timestamp
+			
+		
+		:Source:
+			`lib/public/IDateTimeFormatter.php#48 <https://github.com/nextcloud/server/blob/stable13/lib/public/IDateTimeFormatter.php#L48>`_
+		
+		
+		:Parameters:
+			* **$timestamp** (int | :any:`\\DateTime <DateTime>`)  
+			* **$format** (string)  Either 'full', 'long', 'medium' or 'short'
+			full:	e.g. 'EEEE, MMMM d, y'	=> 'Wednesday, August 20, 2014'
+			long:	e.g. 'MMMM d, y'		=> 'August 20, 2014'
+			medium:	e.g. 'MMM d, y'			=> 'Aug 20, 2014'
+			short:	e.g. 'M/d/yy'			=> '8/20/14'
+			The exact format is dependent on the language
+			* **$timeZone** (:any:`DateTimeZone <DateTimeZone>` | null)  The timezone to use
+			* **$l** (:any:`OCP\\IL10N <OCP\\IL10N>` | null)  The locale to use
+
+		
+		:Returns: string Formatted date string
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public formatDateRelativeDay( $timestamp, $format=long, $timeZone=null, $l=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Formats the date of the given timestamp
+			
+		
+		:Source:
+			`lib/public/IDateTimeFormatter.php#66 <https://github.com/nextcloud/server/blob/stable13/lib/public/IDateTimeFormatter.php#L66>`_
+		
+		
+		:Parameters:
+			* **$timestamp** (int | :any:`\\DateTime <DateTime>`)  
+			* **$format** (string)  Either 'full', 'long', 'medium' or 'short'
+			full:	e.g. 'EEEE, MMMM d, y'	=> 'Wednesday, August 20, 2014'
+			long:	e.g. 'MMMM d, y'		=> 'August 20, 2014'
+			medium:	e.g. 'MMM d, y'			=> 'Aug 20, 2014'
+			short:	e.g. 'M/d/yy'			=> '8/20/14'
+			The exact format is dependent on the language
+				Uses 'Today', 'Yesterday' and 'Tomorrow' when applicable
+			* **$timeZone** (:any:`DateTimeZone <DateTimeZone>` | null)  The timezone to use
+			* **$l** (:any:`OCP\\IL10N <OCP\\IL10N>` | null)  The locale to use
+
+		
+		:Returns: string Formatted relative date string
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public formatDateSpan( $timestamp, $baseTimestamp=null, $l=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Gives the relative date of the timestamp
+			| Only works for past dates
+			
+		
+		:Source:
+			`lib/public/IDateTimeFormatter.php#81 <https://github.com/nextcloud/server/blob/stable13/lib/public/IDateTimeFormatter.php#L81>`_
+		
+		
+		:Parameters:
+			* **$timestamp** (int | :any:`\\DateTime <DateTime>`)  
+			* **$baseTimestamp** (int | :any:`\\DateTime <DateTime>` | null)  Timestamp to compare $timestamp against, defaults to current time
+			* **$l** (:any:`OCP\\IL10N <OCP\\IL10N>` | null)  The locale to use
+
+		
+		:Returns: string Dates returned are:
+			<  1 month	=\> Today, Yesterday, n days ago
+			< 13 month	=\> last month, n months ago
+			\>= 13 month	=\> last year, n years ago
+		
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public formatTime( $timestamp, $format=medium, $timeZone=null, $l=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Formats the time of the given timestamp
+			
+		
+		:Source:
+			`lib/public/IDateTimeFormatter.php#98 <https://github.com/nextcloud/server/blob/stable13/lib/public/IDateTimeFormatter.php#L98>`_
+		
+		
+		:Parameters:
+			* **$timestamp** (int | :any:`\\DateTime <DateTime>`)  
+			* **$format** (string)  Either 'full', 'long', 'medium' or 'short'
+			full:	e.g. 'h:mm:ss a zzzz'	=> '11:42:13 AM GMT+0:00'
+			long:	e.g. 'h:mm:ss a z'		=> '11:42:13 AM GMT'
+			medium:	e.g. 'h:mm:ss a'		=> '11:42:13 AM'
+			short:	e.g. 'h:mm a'			=> '11:42 AM'
+			The exact format is dependent on the language
+			* **$timeZone** (:any:`DateTimeZone <DateTimeZone>` | null)  The timezone to use
+			* **$l** (:any:`OCP\\IL10N <OCP\\IL10N>` | null)  The locale to use
+
+		
+		:Returns: string Formatted time string
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public formatTimeSpan( $timestamp, $baseTimestamp=null, $l=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Gives the relative past time of the timestamp
+			
+		
+		:Source:
+			`lib/public/IDateTimeFormatter.php#115 <https://github.com/nextcloud/server/blob/stable13/lib/public/IDateTimeFormatter.php#L115>`_
+		
+		
+		:Parameters:
+			* **$timestamp** (int | :any:`\\DateTime <DateTime>`)  
+			* **$baseTimestamp** (int | :any:`\\DateTime <DateTime>` | null)  Timestamp to compare $timestamp against, defaults to current time
+			* **$l** (:any:`OCP\\IL10N <OCP\\IL10N>` | null)  The locale to use
+
+		
+		:Returns: string Dates returned are:
+			< 60 sec	=\> seconds ago
+			<  1 hour	=\> n minutes ago
+			<  1 day	=\> n hours ago
+			<  1 month	=\> Yesterday, n days ago
+			< 13 month	=\> last month, n months ago
+			\>= 13 month	=\> last year, n years ago
+		
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public formatDateTime( $timestamp, $formatDate=long, $formatTime=medium, $timeZone=null, $l=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Formats the date and time of the given timestamp
+			
+		
+		:Source:
+			`lib/public/IDateTimeFormatter.php#128 <https://github.com/nextcloud/server/blob/stable13/lib/public/IDateTimeFormatter.php#L128>`_
+		
+		
+		:Parameters:
+			* **$timestamp** (int | :any:`\\DateTime <DateTime>`)  
+			* **$formatDate** (string)  See formatDate() for description
+			* **$formatTime** (string)  See formatTime() for description
+			* **$timeZone** (:any:`DateTimeZone <DateTimeZone>` | null)  The timezone to use
+			* **$l** (:any:`OCP\\IL10N <OCP\\IL10N>` | null)  The locale to use
+
+		
+		:Returns: string Formatted date and time string
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public formatDateTimeRelativeDay( $timestamp, $formatDate=long, $formatTime=medium, $timeZone=null, $l=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Formats the date and time of the given timestamp
+			
+		
+		:Source:
+			`lib/public/IDateTimeFormatter.php#142 <https://github.com/nextcloud/server/blob/stable13/lib/public/IDateTimeFormatter.php#L142>`_
+		
+		
+		:Parameters:
+			* **$timestamp** (int | :any:`\\DateTime <DateTime>`)  
+			* **$formatDate** (string)  See formatDate() for description
+			Uses 'Today', 'Yesterday' and 'Tomorrow' when applicable
+			* **$formatTime** (string)  See formatTime() for description
+			* **$timeZone** (:any:`DateTimeZone <DateTimeZone>` | null)  The timezone to use
+			* **$l** (:any:`OCP\\IL10N <OCP\\IL10N>` | null)  The locale to use
+
+		
+		:Returns: string Formatted relative date and time string
+		:Since: 8.0.0 
+	
+	
+

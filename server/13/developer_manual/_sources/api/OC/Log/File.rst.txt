@@ -1,0 +1,121 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+File
+====
+
+
+.. php:namespace:: OC\Log
+
+.. php:class:: File
+
+
+	.. rst-class:: phpdoc-description
+	
+		| logging utilities
+		
+		| Log is saved at data/nextcloud\.log \(on default\)
+		
+	
+	:Source:
+		`lib/private/Log/File.php#51 <https://github.com/nextcloud/server/blob/stable13/lib/private/Log/File.php#L51>`_
+	
+	:Parent:
+		:php:class:`OC\\Log\\LogDetails`
+	
+	:Implements:
+		:php:interface:`OCP\\Log\\IWriter` :php:interface:`OCP\\Log\\IFileBased` 
+	
+
+Properties
+----------
+
+.. php:attr:: protected static logFile
+
+	:Source:
+		`lib/private/Log/File.php#53 <https://github.com/nextcloud/server/blob/stable13/lib/private/Log/File.php#L53>`_
+	
+	:Type: string 
+
+
+.. php:attr:: protected static logFileMode
+
+	:Source:
+		`lib/private/Log/File.php#55 <https://github.com/nextcloud/server/blob/stable13/lib/private/Log/File.php#L55>`_
+	
+	:Type: int 
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $path, $fallbackPath, $config)
+	
+		:Source:
+			`lib/private/Log/File.php#59 <https://github.com/nextcloud/server/blob/stable13/lib/private/Log/File.php#L59>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public write( $app, $message, $level)
+	
+		.. rst-class:: phpdoc-description
+		
+			| write a message in the log
+			
+		
+		:Source:
+			`lib/private/Log/File.php#83 <https://github.com/nextcloud/server/blob/stable13/lib/private/Log/File.php#L83>`_
+		
+		
+		:Parameters:
+			* **$app** (string)  
+			* **$message** (string | array)  
+			* **$level** (int)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getEntries( $limit=50, $offset=0)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get entries from the log in reverse chronological order
+			
+		
+		:Source:
+			`lib/private/Log/File.php#110 <https://github.com/nextcloud/server/blob/stable13/lib/private/Log/File.php#L110>`_
+		
+		
+		:Parameters:
+			* **$limit** (int)  
+			* **$offset** (int)  
+
+		
+		:Returns: array 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getLogFilePath()
+	
+		:Source:
+			`lib/private/Log/File.php#155 <https://github.com/nextcloud/server/blob/stable13/lib/private/Log/File.php#L155>`_
+		
+		
+		:Returns: string 
+	
+	
+

@@ -1,0 +1,106 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+RemoteWipe
+==========
+
+
+.. php:namespace:: OC\Authentication\Token
+
+.. php:class:: RemoteWipe
+
+
+	:Source:
+		`lib/private/Authentication/Token/RemoteWipe.php#40 <https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/RemoteWipe.php#L40>`_
+	
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $tokenProvider, $eventDispatcher, $logger)
+	
+		:Source:
+			`lib/private/Authentication/Token/RemoteWipe.php#51 <https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/RemoteWipe.php#L51>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public markTokenForWipe( $token)
+	
+		:Source:
+			`lib/private/Authentication/Token/RemoteWipe.php#66 <https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/RemoteWipe.php#L66>`_
+		
+		
+		:Parameters:
+			* **$token** (:any:`OC\\Authentication\\Token\\IToken <OC\\Authentication\\Token\\IToken>`)  
+
+		
+		:Returns: bool 
+		:Throws: :any:`\\OC\\Authentication\\Exceptions\\InvalidTokenException <OC\\Authentication\\Exceptions\\InvalidTokenException>` 
+		:Throws: :any:`\\OC\\Authentication\\Exceptions\\WipeTokenException <OC\\Authentication\\Exceptions\\WipeTokenException>` 
+		:Throws: :any:`\\OC\\Authentication\\Exceptions\\InvalidTokenException <OC\\Authentication\\Exceptions\\InvalidTokenException>` 
+		:Throws: :any:`\\OC\\Authentication\\Exceptions\\WipeTokenException <OC\\Authentication\\Exceptions\\WipeTokenException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public markAllTokensForWipe( $user)
+	
+		:Source:
+			`lib/private/Authentication/Token/RemoteWipe.php#82 <https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/RemoteWipe.php#L82>`_
+		
+		
+		:Parameters:
+			* **$user** (:any:`OCP\\IUser <OCP\\IUser>`)  
+
+		
+		:Returns: bool true if any tokens have been marked for remote wipe
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public start( $token)
+	
+		:Source:
+			`lib/private/Authentication/Token/RemoteWipe.php#109 <https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/RemoteWipe.php#L109>`_
+		
+		
+		:Parameters:
+			* **$token** (string)  
+
+		
+		:Returns: bool whether wiping was started
+		:Throws: :any:`\\OC\\Authentication\\Exceptions\\InvalidTokenException <OC\\Authentication\\Exceptions\\InvalidTokenException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public finish( $token)
+	
+		:Source:
+			`lib/private/Authentication/Token/RemoteWipe.php#135 <https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/RemoteWipe.php#L135>`_
+		
+		
+		:Parameters:
+			* **$token** (string)  
+
+		
+		:Returns: bool whether wiping could be finished
+		:Throws: :any:`\\OC\\Authentication\\Exceptions\\InvalidTokenException <OC\\Authentication\\Exceptions\\InvalidTokenException>` 
+	
+	
+

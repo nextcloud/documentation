@@ -1,0 +1,866 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+Event
+=====
+
+
+.. php:namespace:: OC\Activity
+
+.. php:class:: Event
+
+
+	:Source:
+		`lib/private/Activity/Event.php#36 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/Event.php#L36>`_
+	
+	:Implements:
+		:php:interface:`OCP\\Activity\\IEvent` 
+	
+
+Properties
+----------
+
+.. php:attr:: protected static app
+
+	:Source:
+		`lib/private/Activity/Event.php#39 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/Event.php#L39>`_
+	
+	:Type: string 
+
+
+.. php:attr:: protected static type
+
+	:Source:
+		`lib/private/Activity/Event.php#41 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/Event.php#L41>`_
+	
+	:Type: string 
+
+
+.. php:attr:: protected static affectedUser
+
+	:Source:
+		`lib/private/Activity/Event.php#43 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/Event.php#L43>`_
+	
+	:Type: string 
+
+
+.. php:attr:: protected static author
+
+	:Source:
+		`lib/private/Activity/Event.php#45 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/Event.php#L45>`_
+	
+	:Type: string 
+
+
+.. php:attr:: protected static timestamp
+
+	:Source:
+		`lib/private/Activity/Event.php#47 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/Event.php#L47>`_
+	
+	:Type: int 
+
+
+.. php:attr:: protected static subject
+
+	:Source:
+		`lib/private/Activity/Event.php#49 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/Event.php#L49>`_
+	
+	:Type: string 
+
+
+.. php:attr:: protected static subjectParameters
+
+	:Source:
+		`lib/private/Activity/Event.php#51 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/Event.php#L51>`_
+	
+	:Type: array 
+
+
+.. php:attr:: protected static subjectParsed
+
+	:Source:
+		`lib/private/Activity/Event.php#53 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/Event.php#L53>`_
+	
+	:Type: string 
+
+
+.. php:attr:: protected static subjectRich
+
+	:Source:
+		`lib/private/Activity/Event.php#55 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/Event.php#L55>`_
+	
+	:Type: string 
+
+
+.. php:attr:: protected static subjectRichParameters
+
+	:Source:
+		`lib/private/Activity/Event.php#57 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/Event.php#L57>`_
+	
+	:Type: array 
+
+
+.. php:attr:: protected static message
+
+	:Source:
+		`lib/private/Activity/Event.php#59 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/Event.php#L59>`_
+	
+	:Type: string 
+
+
+.. php:attr:: protected static messageParameters
+
+	:Source:
+		`lib/private/Activity/Event.php#61 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/Event.php#L61>`_
+	
+	:Type: array 
+
+
+.. php:attr:: protected static messageParsed
+
+	:Source:
+		`lib/private/Activity/Event.php#63 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/Event.php#L63>`_
+	
+	:Type: string 
+
+
+.. php:attr:: protected static messageRich
+
+	:Source:
+		`lib/private/Activity/Event.php#65 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/Event.php#L65>`_
+	
+	:Type: string 
+
+
+.. php:attr:: protected static messageRichParameters
+
+	:Source:
+		`lib/private/Activity/Event.php#67 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/Event.php#L67>`_
+	
+	:Type: array 
+
+
+.. php:attr:: protected static objectType
+
+	:Source:
+		`lib/private/Activity/Event.php#69 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/Event.php#L69>`_
+	
+	:Type: string 
+
+
+.. php:attr:: protected static objectId
+
+	:Source:
+		`lib/private/Activity/Event.php#71 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/Event.php#L71>`_
+	
+	:Type: int 
+
+
+.. php:attr:: protected static objectName
+
+	:Source:
+		`lib/private/Activity/Event.php#73 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/Event.php#L73>`_
+	
+	:Type: string 
+
+
+.. php:attr:: protected static link
+
+	:Source:
+		`lib/private/Activity/Event.php#75 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/Event.php#L75>`_
+	
+	:Type: string 
+
+
+.. php:attr:: protected static icon
+
+	:Source:
+		`lib/private/Activity/Event.php#77 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/Event.php#L77>`_
+	
+	:Type: string 
+
+
+.. php:attr:: protected static generateNotification
+
+	:Source:
+		`lib/private/Activity/Event.php#79 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/Event.php#L79>`_
+	
+	:Type: bool 
+
+
+.. php:attr:: protected static child
+
+	:Source:
+		`lib/private/Activity/Event.php#82 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/Event.php#L82>`_
+	
+	:Type: :any:`\\OCP\\Activity\\IEvent <OCP\\Activity\\IEvent>` | null 
+
+
+.. php:attr:: protected static richValidator
+
+	:Source:
+		`lib/private/Activity/Event.php#84 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/Event.php#L84>`_
+	
+	:Type: :any:`\\OCP\\RichObjectStrings\\IValidator <OCP\\RichObjectStrings\\IValidator>` 
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $richValidator)
+	
+		:Source:
+			`lib/private/Activity/Event.php#89 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/Event.php#L89>`_
+		
+		
+		:Parameters:
+			* **$richValidator** (:any:`OCP\\RichObjectStrings\\IValidator <OCP\\RichObjectStrings\\IValidator>`)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setApp( $app)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set the app of the activity
+			
+		
+		:Source:
+			`lib/private/Activity/Event.php#101 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/Event.php#L101>`_
+		
+		
+		:Parameters:
+			* **$app** (string)  
+
+		
+		:Returns: :any:`\\OCP\\Activity\\IEvent <OCP\\Activity\\IEvent>` 
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` if the app id is invalid
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getApp()
+	
+		:Source:
+			`lib/private/Activity/Event.php#112 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/Event.php#L112>`_
+		
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setType( $type)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set the type of the activity
+			
+		
+		:Source:
+			`lib/private/Activity/Event.php#124 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/Event.php#L124>`_
+		
+		
+		:Parameters:
+			* **$type** (string)  
+
+		
+		:Returns: :any:`\\OCP\\Activity\\IEvent <OCP\\Activity\\IEvent>` 
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` if the type is invalid
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getType()
+	
+		:Source:
+			`lib/private/Activity/Event.php#135 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/Event.php#L135>`_
+		
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setAffectedUser( $affectedUser)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set the affected user of the activity
+			
+		
+		:Source:
+			`lib/private/Activity/Event.php#147 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/Event.php#L147>`_
+		
+		
+		:Parameters:
+			* **$affectedUser** (string)  
+
+		
+		:Returns: :any:`\\OCP\\Activity\\IEvent <OCP\\Activity\\IEvent>` 
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` if the affected user is invalid
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getAffectedUser()
+	
+		:Source:
+			`lib/private/Activity/Event.php#158 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/Event.php#L158>`_
+		
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setAuthor( $author)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set the author of the activity
+			
+		
+		:Source:
+			`lib/private/Activity/Event.php#170 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/Event.php#L170>`_
+		
+		
+		:Parameters:
+			* **$author** (string)  
+
+		
+		:Returns: :any:`\\OCP\\Activity\\IEvent <OCP\\Activity\\IEvent>` 
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` if the author is invalid
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getAuthor()
+	
+		:Source:
+			`lib/private/Activity/Event.php#181 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/Event.php#L181>`_
+		
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setTimestamp( $timestamp)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set the timestamp of the activity
+			
+		
+		:Source:
+			`lib/private/Activity/Event.php#193 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/Event.php#L193>`_
+		
+		
+		:Parameters:
+			* **$timestamp** (int)  
+
+		
+		:Returns: :any:`\\OCP\\Activity\\IEvent <OCP\\Activity\\IEvent>` 
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` if the timestamp is invalid
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getTimestamp()
+	
+		:Source:
+			`lib/private/Activity/Event.php#201 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/Event.php#L201>`_
+		
+		
+		:Returns: int 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setSubject( $subject, $parameters=\[\])
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set the subject of the activity
+			
+		
+		:Source:
+			`lib/private/Activity/Event.php#214 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/Event.php#L214>`_
+		
+		
+		:Parameters:
+			* **$subject** (string)  
+			* **$parameters** (array)  
+
+		
+		:Returns: :any:`\\OCP\\Activity\\IEvent <OCP\\Activity\\IEvent>` 
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` if the subject or parameters are invalid
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getSubject()
+	
+		:Source:
+			`lib/private/Activity/Event.php#226 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/Event.php#L226>`_
+		
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getSubjectParameters()
+	
+		:Source:
+			`lib/private/Activity/Event.php#233 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/Event.php#L233>`_
+		
+		
+		:Returns: array 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setParsedSubject( $subject)
+	
+		:Source:
+			`lib/private/Activity/Event.php#243 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/Event.php#L243>`_
+		
+		
+		:Parameters:
+			* **$subject** (string)  
+
+		
+		:Returns: $this 
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` if the subject is invalid
+		:Since: 11.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getParsedSubject()
+	
+		:Source:
+			`lib/private/Activity/Event.php#255 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/Event.php#L255>`_
+		
+		
+		:Returns: string 
+		:Since: 11.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setRichSubject( $subject, $parameters=\[\])
+	
+		:Source:
+			`lib/private/Activity/Event.php#266 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/Event.php#L266>`_
+		
+		
+		:Parameters:
+			* **$subject** (string)  
+			* **$parameters** (array)  
+
+		
+		:Returns: $this 
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` if the subject or parameters are invalid
+		:Since: 11.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getRichSubject()
+	
+		:Source:
+			`lib/private/Activity/Event.php#280 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/Event.php#L280>`_
+		
+		
+		:Returns: string 
+		:Since: 11.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getRichSubjectParameters()
+	
+		:Source:
+			`lib/private/Activity/Event.php#288 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/Event.php#L288>`_
+		
+		
+		:Returns: array[] 
+		:Since: 11.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setMessage( $message, $parameters=\[\])
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set the message of the activity
+			
+		
+		:Source:
+			`lib/private/Activity/Event.php#301 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/Event.php#L301>`_
+		
+		
+		:Parameters:
+			* **$message** (string)  
+			* **$parameters** (array)  
+
+		
+		:Returns: :any:`\\OCP\\Activity\\IEvent <OCP\\Activity\\IEvent>` 
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` if the message or parameters are invalid
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getMessage()
+	
+		:Source:
+			`lib/private/Activity/Event.php#313 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/Event.php#L313>`_
+		
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getMessageParameters()
+	
+		:Source:
+			`lib/private/Activity/Event.php#320 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/Event.php#L320>`_
+		
+		
+		:Returns: array 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setParsedMessage( $message)
+	
+		:Source:
+			`lib/private/Activity/Event.php#330 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/Event.php#L330>`_
+		
+		
+		:Parameters:
+			* **$message** (string)  
+
+		
+		:Returns: $this 
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` if the message is invalid
+		:Since: 11.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getParsedMessage()
+	
+		:Source:
+			`lib/private/Activity/Event.php#339 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/Event.php#L339>`_
+		
+		
+		:Returns: string 
+		:Since: 11.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setRichMessage( $message, $parameters=\[\])
+	
+		:Source:
+			`lib/private/Activity/Event.php#350 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/Event.php#L350>`_
+		
+		
+		:Parameters:
+			* **$message** (string)  
+			* **$parameters** (array)  
+
+		
+		:Returns: $this 
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` if the subject or parameters are invalid
+		:Since: 11.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getRichMessage()
+	
+		:Source:
+			`lib/private/Activity/Event.php#361 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/Event.php#L361>`_
+		
+		
+		:Returns: string 
+		:Since: 11.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getRichMessageParameters()
+	
+		:Source:
+			`lib/private/Activity/Event.php#369 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/Event.php#L369>`_
+		
+		
+		:Returns: array[] 
+		:Since: 11.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setObject( $objectType, $objectId, $objectName="")
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set the object of the activity
+			
+		
+		:Source:
+			`lib/private/Activity/Event.php#383 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/Event.php#L383>`_
+		
+		
+		:Parameters:
+			* **$objectType** (string)  
+			* **$objectId** (int)  
+			* **$objectName** (string)  
+
+		
+		:Returns: :any:`\\OCP\\Activity\\IEvent <OCP\\Activity\\IEvent>` 
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` if the object is invalid
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getObjectType()
+	
+		:Source:
+			`lib/private/Activity/Event.php#399 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/Event.php#L399>`_
+		
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getObjectId()
+	
+		:Source:
+			`lib/private/Activity/Event.php#406 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/Event.php#L406>`_
+		
+		
+		:Returns: int 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getObjectName()
+	
+		:Source:
+			`lib/private/Activity/Event.php#413 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/Event.php#L413>`_
+		
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setLink( $link)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set the link of the activity
+			
+		
+		:Source:
+			`lib/private/Activity/Event.php#425 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/Event.php#L425>`_
+		
+		
+		:Parameters:
+			* **$link** (string)  
+
+		
+		:Returns: :any:`\\OCP\\Activity\\IEvent <OCP\\Activity\\IEvent>` 
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` if the link is invalid
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getLink()
+	
+		:Source:
+			`lib/private/Activity/Event.php#436 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/Event.php#L436>`_
+		
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setIcon( $icon)
+	
+		:Source:
+			`lib/private/Activity/Event.php#446 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/Event.php#L446>`_
+		
+		
+		:Parameters:
+			* **$icon** (string)  
+
+		
+		:Returns: $this 
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` if the icon is invalid
+		:Since: 11.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getIcon()
+	
+		:Source:
+			`lib/private/Activity/Event.php#458 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/Event.php#L458>`_
+		
+		
+		:Returns: string 
+		:Since: 11.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setChildEvent( $child)
+	
+		:Source:
+			`lib/private/Activity/Event.php#467 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/Event.php#L467>`_
+		
+		
+		:Parameters:
+			* **$child** (:any:`OCP\\Activity\\IEvent <OCP\\Activity\\IEvent>`)  
+
+		
+		:Returns: $this 
+		:Since: 11.0.0 \- Since 15\.0\.0 returns $this
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getChildEvent()
+	
+		:Source:
+			`lib/private/Activity/Event.php#476 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/Event.php#L476>`_
+		
+		
+		:Returns: :any:`\\OCP\\Activity\\IEvent <OCP\\Activity\\IEvent>` | null 
+		:Since: 11.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isValid()
+	
+		:Source:
+			`lib/private/Activity/Event.php#484 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/Event.php#L484>`_
+		
+		
+		:Returns: bool 
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isValidParsed()
+	
+		:Source:
+			`lib/private/Activity/Event.php#496 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/Event.php#L496>`_
+		
+		
+		:Returns: bool 
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected isValidCommon()
+	
+		:Source:
+			`lib/private/Activity/Event.php#520 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/Event.php#L520>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setGenerateNotification( $generate)
+	
+		:Source:
+			`lib/private/Activity/Event.php#539 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/Event.php#L539>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getGenerateNotification()
+	
+		:Source:
+			`lib/private/Activity/Event.php#544 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/Event.php#L544>`_
+		
+		
+	
+	
+

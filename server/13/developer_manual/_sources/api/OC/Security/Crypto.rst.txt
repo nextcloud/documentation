@@ -1,0 +1,118 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+Crypto
+======
+
+
+.. php:namespace:: OC\Security
+
+.. php:class:: Crypto
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Class Crypto provides a high\-level encryption layer using AES\-CBC\. If no key has been provided
+		| it will use the secret defined in config\.php as key\. Additionally the message will be HMAC\'d\.
+		
+		| Usage:
+		| $encryptWithDefaultPassword = \\OC::$server\-\>getCrypto\(\)\-\>encrypt\(\'EncryptedText\'\);
+		| $encryptWithCustompassword = \\OC::$server\-\>getCrypto\(\)\-\>encrypt\(\'EncryptedText\', \'password\'\);
+		
+	
+	:Source:
+		`lib/private/Security/Crypto.php#49 <https://github.com/nextcloud/server/blob/stable13/lib/private/Security/Crypto.php#L49>`_
+	
+	:Implements:
+		:php:interface:`OCP\\Security\\ICrypto` 
+	
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $config)
+	
+		:Source:
+			`lib/private/Security/Crypto.php#61 <https://github.com/nextcloud/server/blob/stable13/lib/private/Security/Crypto.php#L61>`_
+		
+		
+		:Parameters:
+			* **$config** (:any:`OCP\\IConfig <OCP\\IConfig>`)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public calculateHMAC( $message, $password="")
+	
+		:Source:
+			`lib/private/Security/Crypto.php#71 <https://github.com/nextcloud/server/blob/stable13/lib/private/Security/Crypto.php#L71>`_
+		
+		
+		:Parameters:
+			* **$message** (string)  The message to authenticate
+			* **$password** (string)  Password to use (defaults to `secret` in config.php)
+
+		
+		:Returns: string Calculated HMAC
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public encrypt( $plaintext, $password="")
+	
+		.. rst-class:: phpdoc-description
+		
+			| Encrypts a value and adds an HMAC \(Encrypt\-Then\-MAC\)
+			
+		
+		:Source:
+			`lib/private/Security/Crypto.php#90 <https://github.com/nextcloud/server/blob/stable13/lib/private/Security/Crypto.php#L90>`_
+		
+		
+		:Parameters:
+			* **$plaintext** (string)  
+			* **$password** (string)  Password to encrypt, if not specified the secret from config.php will be taken
+
+		
+		:Returns: string Authenticated ciphertext
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public decrypt( $authenticatedCiphertext, $password="")
+	
+		.. rst-class:: phpdoc-description
+		
+			| Decrypts a value and verifies the HMAC \(Encrypt\-Then\-Mac\)
+			
+		
+		:Source:
+			`lib/private/Security/Crypto.php#115 <https://github.com/nextcloud/server/blob/stable13/lib/private/Security/Crypto.php#L115>`_
+		
+		
+		:Parameters:
+			* **$authenticatedCiphertext** (string)  
+			* **$password** (string)  Password to encrypt, if not specified the secret from config.php will be taken
+
+		
+		:Returns: string plaintext
+		:Throws: :any:`\\Exception <Exception>` If the HMAC does not match
+		:Throws: :any:`\\Exception <Exception>` If the decryption failed
+		:Throws: :any:`\\Exception <Exception>` If the HMAC does not match
+		:Throws: :any:`\\Exception <Exception>` If the decryption failed
+	
+	
+

@@ -1,0 +1,564 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+Node
+====
+
+
+.. php:namespace:: OCP\Files
+
+.. php:interface:: Node
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Interface Node
+		
+	
+	:Implemented by:
+		:php:class:`OC\\Files\\Node\\Node` 
+	
+	
+	:Source:
+		`lib/public/Files/Node.php#46 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Node.php#L46>`_
+	
+	:Parent:
+		:php:interface:`OCP\\Files\\FileInfo`
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public move( $targetPath)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Move the file or folder to a new location
+			
+		
+		:Source:
+			`lib/public/Files/Node.php#58 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Node.php#L58>`_
+		
+		
+		:Parameters:
+			* **$targetPath** (string)  the absolute target path
+
+		
+		:Returns: :any:`\\OCP\\Files\\Node <OCP\\Files\\Node>` 
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+		:Throws: :any:`\\OCP\\Files\\NotPermittedException <OCP\\Files\\NotPermittedException>` if move not allowed or failed
+		:Throws: :any:`\\OCP\\Lock\\LockedException <OCP\\Lock\\LockedException>` 
+		:Throws: :any:`\\OCP\\Files\\InvalidPathException <OCP\\Files\\InvalidPathException>` 
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+		:Throws: :any:`\\OCP\\Files\\NotPermittedException <OCP\\Files\\NotPermittedException>` if move not allowed or failed
+		:Throws: :any:`\\OCP\\Lock\\LockedException <OCP\\Lock\\LockedException>` 
+		:Throws: :any:`\\OCP\\Files\\InvalidPathException <OCP\\Files\\InvalidPathException>` 
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+		:Throws: :any:`\\OCP\\Files\\NotPermittedException <OCP\\Files\\NotPermittedException>` if move not allowed or failed
+		:Throws: :any:`\\OCP\\Lock\\LockedException <OCP\\Lock\\LockedException>` 
+		:Throws: :any:`\\OCP\\Files\\InvalidPathException <OCP\\Files\\InvalidPathException>` 
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+		:Throws: :any:`\\OCP\\Files\\NotPermittedException <OCP\\Files\\NotPermittedException>` if move not allowed or failed
+		:Throws: :any:`\\OCP\\Lock\\LockedException <OCP\\Lock\\LockedException>` 
+		:Throws: :any:`\\OCP\\Files\\InvalidPathException <OCP\\Files\\InvalidPathException>` 
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public delete()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Delete the file or folder
+			
+		
+		:Source:
+			`lib/public/Files/Node.php#69 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Node.php#L69>`_
+		
+		
+		:Returns: void 
+		:Throws: :any:`\\OCP\\Files\\NotPermittedException <OCP\\Files\\NotPermittedException>` 
+		:Throws: :any:`\\OCP\\Files\\InvalidPathException <OCP\\Files\\InvalidPathException>` 
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+		:Throws: :any:`\\OCP\\Files\\NotPermittedException <OCP\\Files\\NotPermittedException>` 
+		:Throws: :any:`\\OCP\\Files\\InvalidPathException <OCP\\Files\\InvalidPathException>` 
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+		:Throws: :any:`\\OCP\\Files\\NotPermittedException <OCP\\Files\\NotPermittedException>` 
+		:Throws: :any:`\\OCP\\Files\\InvalidPathException <OCP\\Files\\InvalidPathException>` 
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public copy( $targetPath)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Cope the file or folder to a new location
+			
+		
+		:Source:
+			`lib/public/Files/Node.php#78 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Node.php#L78>`_
+		
+		
+		:Parameters:
+			* **$targetPath** (string)  the absolute target path
+
+		
+		:Returns: :any:`\\OCP\\Files\\Node <OCP\\Files\\Node>` 
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public touch( $mtime=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Change the modified date of the file or folder
+			| If $mtime is omitted the current time will be used
+			
+		
+		:Source:
+			`lib/public/Files/Node.php#91 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Node.php#L91>`_
+		
+		
+		:Parameters:
+			* **$mtime** (int)  (optional) modified date as unix timestamp
+
+		
+		:Throws: :any:`\\OCP\\Files\\InvalidPathException <OCP\\Files\\InvalidPathException>` 
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+		:Throws: :any:`\\OCP\\Files\\NotPermittedException <OCP\\Files\\NotPermittedException>` 
+		:Throws: :any:`\\OCP\\Files\\InvalidPathException <OCP\\Files\\InvalidPathException>` 
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+		:Throws: :any:`\\OCP\\Files\\NotPermittedException <OCP\\Files\\NotPermittedException>` 
+		:Throws: :any:`\\OCP\\Files\\InvalidPathException <OCP\\Files\\InvalidPathException>` 
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+		:Throws: :any:`\\OCP\\Files\\NotPermittedException <OCP\\Files\\NotPermittedException>` 
+		:Returns: void 
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getStorage()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the storage backend the file or folder is stored on
+			
+		
+		:Source:
+			`lib/public/Files/Node.php#100 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Node.php#L100>`_
+		
+		
+		:Returns: :any:`\\OCP\\Files\\Storage <OCP\\Files\\Storage>` 
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getPath()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the full path of the file or folder
+			
+		
+		:Source:
+			`lib/public/Files/Node.php#108 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Node.php#L108>`_
+		
+		
+		:Returns: string 
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getInternalPath()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the path of the file or folder relative to the mountpoint of it\'s storage
+			
+		
+		:Source:
+			`lib/public/Files/Node.php#116 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Node.php#L116>`_
+		
+		
+		:Returns: string 
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getId()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the internal file id for the file or folder
+			
+		
+		:Source:
+			`lib/public/Files/Node.php#126 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Node.php#L126>`_
+		
+		
+		:Returns: int 
+		:Throws: :any:`\\OCP\\Files\\InvalidPathException <OCP\\Files\\InvalidPathException>` 
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+		:Throws: :any:`\\OCP\\Files\\InvalidPathException <OCP\\Files\\InvalidPathException>` 
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public stat()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get metadata of the file or folder
+			| The returned array contains the following values:
+			|  \- mtime
+			|  \- size
+			
+		
+		:Source:
+			`lib/public/Files/Node.php#137 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Node.php#L137>`_
+		
+		
+		:Returns: array 
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getMTime()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the modified date of the file or folder as unix timestamp
+			
+		
+		:Source:
+			`lib/public/Files/Node.php#147 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Node.php#L147>`_
+		
+		
+		:Returns: int 
+		:Throws: :any:`\\OCP\\Files\\InvalidPathException <OCP\\Files\\InvalidPathException>` 
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+		:Throws: :any:`\\OCP\\Files\\InvalidPathException <OCP\\Files\\InvalidPathException>` 
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getSize( $includeMounts=true)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the size of the file or folder in bytes
+			
+		
+		:Source:
+			`lib/public/Files/Node.php#158 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Node.php#L158>`_
+		
+		
+		:Parameters:
+			* **$includeMounts** (bool)  
+
+		
+		:Returns: int 
+		:Throws: :any:`\\OCP\\Files\\InvalidPathException <OCP\\Files\\InvalidPathException>` 
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+		:Throws: :any:`\\OCP\\Files\\InvalidPathException <OCP\\Files\\InvalidPathException>` 
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getEtag()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the Etag of the file or folder
+			| The Etag is an string id used to detect changes to a file or folder,
+			| every time the file or folder is changed the Etag will change to
+			
+		
+		:Source:
+			`lib/public/Files/Node.php#170 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Node.php#L170>`_
+		
+		
+		:Returns: string 
+		:Throws: :any:`\\OCP\\Files\\InvalidPathException <OCP\\Files\\InvalidPathException>` 
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+		:Throws: :any:`\\OCP\\Files\\InvalidPathException <OCP\\Files\\InvalidPathException>` 
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getPermissions()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the permissions of the file or folder as a combination of one or more of the following constants:
+			|  \- \\OCP\\Constants::PERMISSION\_READ
+			|  \- \\OCP\\Constants::PERMISSION\_UPDATE
+			|  \- \\OCP\\Constants::PERMISSION\_CREATE
+			|  \- \\OCP\\Constants::PERMISSION\_DELETE
+			|  \- \\OCP\\Constants::PERMISSION\_SHARE
+			
+		
+		:Source:
+			`lib/public/Files/Node.php#186 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Node.php#L186>`_
+		
+		
+		:Returns: int 
+		:Throws: :any:`\\OCP\\Files\\InvalidPathException <OCP\\Files\\InvalidPathException>` 
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+		:Throws: :any:`\\OCP\\Files\\InvalidPathException <OCP\\Files\\InvalidPathException>` 
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+		:Since: 6.0.0 \- namespace of constants has changed in 8\.0\.0
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isReadable()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check if the file or folder is readable
+			
+		
+		:Source:
+			`lib/public/Files/Node.php#196 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Node.php#L196>`_
+		
+		
+		:Returns: bool 
+		:Throws: :any:`\\OCP\\Files\\InvalidPathException <OCP\\Files\\InvalidPathException>` 
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+		:Throws: :any:`\\OCP\\Files\\InvalidPathException <OCP\\Files\\InvalidPathException>` 
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isUpdateable()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check if the file or folder is writable
+			
+		
+		:Source:
+			`lib/public/Files/Node.php#206 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Node.php#L206>`_
+		
+		
+		:Returns: bool 
+		:Throws: :any:`\\OCP\\Files\\InvalidPathException <OCP\\Files\\InvalidPathException>` 
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+		:Throws: :any:`\\OCP\\Files\\InvalidPathException <OCP\\Files\\InvalidPathException>` 
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isDeletable()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check if the file or folder is deletable
+			
+		
+		:Source:
+			`lib/public/Files/Node.php#216 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Node.php#L216>`_
+		
+		
+		:Returns: bool 
+		:Throws: :any:`\\OCP\\Files\\InvalidPathException <OCP\\Files\\InvalidPathException>` 
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+		:Throws: :any:`\\OCP\\Files\\InvalidPathException <OCP\\Files\\InvalidPathException>` 
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isShareable()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check if the file or folder is shareable
+			
+		
+		:Source:
+			`lib/public/Files/Node.php#226 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Node.php#L226>`_
+		
+		
+		:Returns: bool 
+		:Throws: :any:`\\OCP\\Files\\InvalidPathException <OCP\\Files\\InvalidPathException>` 
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+		:Throws: :any:`\\OCP\\Files\\InvalidPathException <OCP\\Files\\InvalidPathException>` 
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getParent()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the parent folder of the file or folder
+			
+		
+		:Source:
+			`lib/public/Files/Node.php#234 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Node.php#L234>`_
+		
+		
+		:Returns: :any:`\\OCP\\Files\\Folder <OCP\\Files\\Folder>` 
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getName()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the filename of the file or folder
+			
+		
+		:Source:
+			`lib/public/Files/Node.php#242 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Node.php#L242>`_
+		
+		
+		:Returns: string 
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public lock( $type)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Acquire a lock on this file or folder\.
+			
+			| A shared \(read\) lock will prevent any exclusive \(write\) locks from being created but any number of shared locks
+			| can be active at the same time\.
+			| An exclusive lock will prevent any other lock from being created \(both shared and exclusive\)\.
+			| 
+			| A locked exception will be thrown if any conflicting lock already exists
+			| 
+			| Note that this uses mandatory locking, if you acquire an exclusive lock on a file it will block \*all\*
+			| other operations for that file, even within the same php process\.
+			| 
+			| Acquiring any lock on a file will also create a shared lock on all parent folders of that file\.
+			| 
+			| Note that in most cases you won\'t need to manually manage the locks for any files you\'re working with,
+			| any filesystem operation will automatically acquire the relevant locks for that operation\.
+			
+		
+		:Source:
+			`lib/public/Files/Node.php#265 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Node.php#L265>`_
+		
+		
+		:Parameters:
+			* **$type** (int)  \OCP\Lock\ILockingProvider::LOCK_SHARED or \OCP\Lock\ILockingProvider::LOCK_EXCLUSIVE
+
+		
+		:Throws: :any:`\\OCP\\Lock\\LockedException <OCP\\Lock\\LockedException>` 
+		:Since: 9.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public changeLock( $targetType)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check the type of an existing lock\.
+			
+			| A shared lock can be changed to an exclusive lock is there is exactly one shared lock on the file,
+			| an exclusive lock can always be changed to a shared lock since there can only be one exclusive lock int he first place\.
+			| 
+			| A locked exception will be thrown when these preconditions are not met\.
+			| Note that this is also the case if no existing lock exists for the file\.
+			
+		
+		:Source:
+			`lib/public/Files/Node.php#280 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Node.php#L280>`_
+		
+		
+		:Parameters:
+			* **$targetType** (int)  \OCP\Lock\ILockingProvider::LOCK_SHARED or \OCP\Lock\ILockingProvider::LOCK_EXCLUSIVE
+
+		
+		:Throws: :any:`\\OCP\\Lock\\LockedException <OCP\\Lock\\LockedException>` 
+		:Since: 9.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public unlock( $type)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Release an existing lock\.
+			
+			| This will also free up the shared locks on any parent folder that were automatically acquired when locking the file\.
+			| 
+			| Note that this method will not give any sort of error when trying to free a lock that doesn\'t exist\.
+			
+		
+		:Source:
+			`lib/public/Files/Node.php#293 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Node.php#L293>`_
+		
+		
+		:Parameters:
+			* **$type** (int)  \OCP\Lock\ILockingProvider::LOCK_SHARED or \OCP\Lock\ILockingProvider::LOCK_EXCLUSIVE
+
+		
+		:Throws: :any:`\\OCP\\Lock\\LockedException <OCP\\Lock\\LockedException>` 
+		:Since: 9.1.0 
+	
+	
+

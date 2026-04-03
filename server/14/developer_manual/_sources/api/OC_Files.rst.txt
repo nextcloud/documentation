@@ -1,0 +1,98 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+OC\_Files
+=========
+
+
+.. php:class:: OC_Files
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Class for file server access
+		
+	
+	:Source:
+		`lib/private/legacy/OC_Files.php#52 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Files.php#L52>`_
+	
+
+Constants
+---------
+
+.. php:const:: FILE = 1
+
+	:Source:
+		`lib/private/legacy/OC_Files.php#53 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Files.php#L53>`_
+	
+
+
+.. php:const:: ZIP_FILES = 2
+
+	:Source:
+		`lib/private/legacy/OC_Files.php#54 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Files.php#L54>`_
+	
+
+
+.. php:const:: ZIP_DIR = 3
+
+	:Source:
+		`lib/private/legacy/OC_Files.php#55 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Files.php#L55>`_
+	
+
+
+.. php:const:: UPLOAD_MIN_LIMIT_BYTES = 1048576
+
+	:Source:
+		`lib/private/legacy/OC_Files.php#57 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Files.php#L57>`_
+	
+
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: public static
+
+	.. php:method:: public static get( $dir, $files, $params=\\null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| return the content of a file or return a zip file containing multiple files
+			
+		
+		:Source:
+			`lib/private/legacy/OC_Files.php#110 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Files.php#L110>`_
+		
+		
+		:Parameters:
+			* **$dir** (string)  
+			* **$files** (string)  ; separated list of files to download
+			* **$params** (array)  ; 'head' boolean to only send header of the request ; 'range' http range header
+
+		
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static lockFiles( $view, $dir, $files)
+	
+		:Source:
+			`lib/private/legacy/OC_Files.php#385 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Files.php#L385>`_
+		
+		
+		:Parameters:
+			* **$view** (:any:`OC\\Files\\View <OC\\Files\\View>`)  
+			* **$dir** (string)  
+			* **$files** (string[] | string)  
+
+		
+	
+	
+

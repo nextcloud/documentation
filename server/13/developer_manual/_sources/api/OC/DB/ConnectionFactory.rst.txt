@@ -1,0 +1,183 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+ConnectionFactory
+=================
+
+
+.. php:namespace:: OC\DB
+
+.. php:class:: ConnectionFactory
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Takes care of creating and configuring Doctrine connections\.
+		
+	
+	:Source:
+		`lib/private/DB/ConnectionFactory.php#42 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/ConnectionFactory.php#L42>`_
+	
+
+Constants
+---------
+
+.. php:const:: DEFAULT_DBNAME = owncloud
+
+	:Source:
+		`lib/private/DB/ConnectionFactory.php#44 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/ConnectionFactory.php#L44>`_
+	
+	:Type: string default database name
+
+
+.. php:const:: DEFAULT_DBTABLEPREFIX = oc\_
+
+	:Source:
+		`lib/private/DB/ConnectionFactory.php#47 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/ConnectionFactory.php#L47>`_
+	
+	:Type: string default database table prefix
+
+
+Properties
+----------
+
+.. php:attr:: protected static defaultConnectionParams
+
+	:Source:
+		`lib/private/DB/ConnectionFactory.php#55 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/ConnectionFactory.php#L55>`_
+	
+	:Type: array Array mapping DBMS type to default connection parameters passed to
+		\\Doctrine\\DBAL\\DriverManager::getConnection\(\)\.
+	
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $systemConfig)
+	
+		.. rst-class:: phpdoc-description
+		
+			| ConnectionFactory constructor\.
+			
+		
+		:Source:
+			`lib/private/DB/ConnectionFactory.php#88 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/ConnectionFactory.php#L88>`_
+		
+		
+		:Parameters:
+			* **$systemConfig** (:any:`OC\\SystemConfig <OC\\SystemConfig>`)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getDefaultConnectionParams( $type)
+	
+		:Source:
+			`lib/private/DB/ConnectionFactory.php#101 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/ConnectionFactory.php#L101>`_
+		
+		
+		:Parameters:
+			* **$type** (string)  DBMS type
+
+		
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` If $type is invalid
+		:Returns: array Default connection parameters\.
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getConnection( $type, $additionalConnectionParams)
+	
+		:Source:
+			`lib/private/DB/ConnectionFactory.php#123 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/ConnectionFactory.php#L123>`_
+		
+		
+		:Parameters:
+			* **$type** (string)  DBMS type
+			* **$additionalConnectionParams** (array)  Additional connection parameters
+
+		
+		:Returns: :any:`\\OC\\DB\\Connection <OC\\DB\\Connection>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public normalizeType( $type)
+	
+		:Source:
+			`lib/private/DB/ConnectionFactory.php#171 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/ConnectionFactory.php#L171>`_
+		
+		
+		:Parameters:
+			* **$type** (string)  DBMS type
+
+		
+		:Returns: string Normalized DBMS type
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isValidType( $type)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Checks whether the specified DBMS type is valid\.
+			
+		
+		:Source:
+			`lib/private/DB/ConnectionFactory.php#181 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/ConnectionFactory.php#L181>`_
+		
+		
+		:Parameters:
+			* **$type** (string)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public createConnectionParams()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Create the connection parameters for the config
+			
+		
+		:Source:
+			`lib/private/DB/ConnectionFactory.php#191 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/ConnectionFactory.php#L191>`_
+		
+		
+		:Returns: array 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected splitHostFromPortAndSocket( $host)
+	
+		:Source:
+			`lib/private/DB/ConnectionFactory.php#240 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/ConnectionFactory.php#L240>`_
+		
+		
+		:Parameters:
+			* **$host** (string)  
+
+		
+		:Returns: array 
+	
+	
+

@@ -1,0 +1,191 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+Cache
+=====
+
+
+.. php:namespace:: OC\Memcache
+
+.. rst-class::  abstract
+
+.. php:class:: Cache
+
+
+	:Source:
+		`lib/private/Memcache/Cache.php#28 <https://github.com/nextcloud/server/blob/stable13/lib/private/Memcache/Cache.php#L28>`_
+	
+	:Implements:
+		:php:interface:`ArrayAccess` :php:interface:`OCP\\ICache` 
+	
+
+Properties
+----------
+
+.. php:attr:: protected static prefix
+
+	:Source:
+		`lib/private/Memcache/Cache.php#32 <https://github.com/nextcloud/server/blob/stable13/lib/private/Memcache/Cache.php#L32>`_
+	
+	:Type: string 
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $prefix="")
+	
+		:Source:
+			`lib/private/Memcache/Cache.php#37 <https://github.com/nextcloud/server/blob/stable13/lib/private/Memcache/Cache.php#L37>`_
+		
+		
+		:Parameters:
+			* **$prefix** (string)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getPrefix()
+	
+		:Source:
+			`lib/private/Memcache/Cache.php#44 <https://github.com/nextcloud/server/blob/stable13/lib/private/Memcache/Cache.php#L44>`_
+		
+		
+		:Returns: string Prefix used for caching purposes
+	
+	
+
+.. rst-class:: public abstract
+
+	.. php:method:: public abstract get( $key)
+	
+		:Source:
+			`lib/private/Memcache/Cache.php#52 <https://github.com/nextcloud/server/blob/stable13/lib/private/Memcache/Cache.php#L52>`_
+		
+		
+		:Parameters:
+			* **$key** (string)  
+
+		
+		:Returns: mixed 
+	
+	
+
+.. rst-class:: public abstract
+
+	.. php:method:: public abstract set( $key, $value, $ttl=0)
+	
+		:Source:
+			`lib/private/Memcache/Cache.php#60 <https://github.com/nextcloud/server/blob/stable13/lib/private/Memcache/Cache.php#L60>`_
+		
+		
+		:Parameters:
+			* **$key** (string)  
+			* **$value** (mixed)  
+			* **$ttl** (int)  
+
+		
+		:Returns: mixed 
+	
+	
+
+.. rst-class:: public abstract
+
+	.. php:method:: public abstract hasKey( $key)
+	
+		:Source:
+			`lib/private/Memcache/Cache.php#66 <https://github.com/nextcloud/server/blob/stable13/lib/private/Memcache/Cache.php#L66>`_
+		
+		
+		:Parameters:
+			* **$key** (string)  
+
+		
+		:Returns: mixed 
+	
+	
+
+.. rst-class:: public abstract
+
+	.. php:method:: public abstract remove( $key)
+	
+		:Source:
+			`lib/private/Memcache/Cache.php#72 <https://github.com/nextcloud/server/blob/stable13/lib/private/Memcache/Cache.php#L72>`_
+		
+		
+		:Parameters:
+			* **$key** (string)  
+
+		
+		:Returns: mixed 
+	
+	
+
+.. rst-class:: public abstract
+
+	.. php:method:: public abstract clear( $prefix="")
+	
+		:Source:
+			`lib/private/Memcache/Cache.php#78 <https://github.com/nextcloud/server/blob/stable13/lib/private/Memcache/Cache.php#L78>`_
+		
+		
+		:Parameters:
+			* **$prefix** (string)  
+
+		
+		:Returns: mixed 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public offsetExists( $offset)
+	
+		:Source:
+			`lib/private/Memcache/Cache.php#82 <https://github.com/nextcloud/server/blob/stable13/lib/private/Memcache/Cache.php#L82>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public offsetSet( $offset, $value)
+	
+		:Source:
+			`lib/private/Memcache/Cache.php#86 <https://github.com/nextcloud/server/blob/stable13/lib/private/Memcache/Cache.php#L86>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public offsetGet( $offset)
+	
+		:Source:
+			`lib/private/Memcache/Cache.php#90 <https://github.com/nextcloud/server/blob/stable13/lib/private/Memcache/Cache.php#L90>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public offsetUnset( $offset)
+	
+		:Source:
+			`lib/private/Memcache/Cache.php#94 <https://github.com/nextcloud/server/blob/stable13/lib/private/Memcache/Cache.php#L94>`_
+		
+		
+	
+	
+

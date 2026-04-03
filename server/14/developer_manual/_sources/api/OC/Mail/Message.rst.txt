@@ -1,0 +1,442 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+Message
+=======
+
+
+.. php:namespace:: OC\Mail
+
+.. php:class:: Message
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Class Message provides a wrapper around SwiftMail
+		
+	
+	:Source:
+		`lib/private/Mail/Message.php#45 <https://github.com/nextcloud/server/blob/stable13/lib/private/Mail/Message.php#L45>`_
+	
+	:Implements:
+		:php:interface:`OCP\\Mail\\IMessage` 
+	
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $swiftMessage, $plainTextOnly)
+	
+		:Source:
+			`lib/private/Mail/Message.php#51 <https://github.com/nextcloud/server/blob/stable13/lib/private/Mail/Message.php#L51>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public attach( $attachment)
+	
+		:Source:
+			`lib/private/Mail/Message.php#61 <https://github.com/nextcloud/server/blob/stable13/lib/private/Mail/Message.php#L61>`_
+		
+		
+		:Parameters:
+			* **$attachment** (:any:`OCP\\Mail\\IAttachment <OCP\\Mail\\IAttachment>`)  
+
+		
+		:Returns: $this 
+		:Since: 13.0.0 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected convertAddresses( $addresses)
+	
+		.. rst-class:: phpdoc-description
+		
+			| SwiftMailer does currently not work with IDN domains, this function therefore converts the domains
+			| FIXME: Remove this once SwiftMailer supports IDN
+			
+		
+		:Source:
+			`lib/private/Mail/Message.php#74 <https://github.com/nextcloud/server/blob/stable13/lib/private/Mail/Message.php#L74>`_
+		
+		
+		:Parameters:
+			* **$addresses** (array)  Array of mail addresses, key will get converted
+
+		
+		:Returns: array Converted addresses if \`idn\_to\_ascii\` exists
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setFrom( $addresses)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set the from address of this message\.
+			
+			| If no "From" address is used \\OC\\Mail\\Mailer will use mail\_from\_address and mail\_domain from config\.php
+			
+		
+		:Source:
+			`lib/private/Mail/Message.php#104 <https://github.com/nextcloud/server/blob/stable13/lib/private/Mail/Message.php#L104>`_
+		
+		
+		:Parameters:
+			* **$addresses** (array)  Example: array('sender@domain.org', 'other@domain.org' => 'A name')
+
+		
+		:Returns: $this 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getFrom()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the from address of this message\.
+			
+		
+		:Source:
+			`lib/private/Mail/Message.php#116 <https://github.com/nextcloud/server/blob/stable13/lib/private/Mail/Message.php#L116>`_
+		
+		
+		:Returns: array 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setReplyTo( $addresses)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set the Reply\-To address of this message
+			
+		
+		:Source:
+			`lib/private/Mail/Message.php#126 <https://github.com/nextcloud/server/blob/stable13/lib/private/Mail/Message.php#L126>`_
+		
+		
+		:Parameters:
+			* **$addresses** (array)  
+
+		
+		:Returns: $this 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getReplyTo()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the Reply\-To address of this message
+			
+		
+		:Source:
+			`lib/private/Mail/Message.php#138 <https://github.com/nextcloud/server/blob/stable13/lib/private/Mail/Message.php#L138>`_
+		
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setTo( $recipients)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set the to addresses of this message\.
+			
+		
+		:Source:
+			`lib/private/Mail/Message.php#148 <https://github.com/nextcloud/server/blob/stable13/lib/private/Mail/Message.php#L148>`_
+		
+		
+		:Parameters:
+			* **$recipients** (array)  Example: array('recipient@domain.org', 'other@domain.org' => 'A name')
+
+		
+		:Returns: $this 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getTo()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the to address of this message\.
+			
+		
+		:Source:
+			`lib/private/Mail/Message.php#160 <https://github.com/nextcloud/server/blob/stable13/lib/private/Mail/Message.php#L160>`_
+		
+		
+		:Returns: array 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setCc( $recipients)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set the CC recipients of this message\.
+			
+		
+		:Source:
+			`lib/private/Mail/Message.php#170 <https://github.com/nextcloud/server/blob/stable13/lib/private/Mail/Message.php#L170>`_
+		
+		
+		:Parameters:
+			* **$recipients** (array)  Example: array('recipient@domain.org', 'other@domain.org' => 'A name')
+
+		
+		:Returns: $this 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getCc()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the cc address of this message\.
+			
+		
+		:Source:
+			`lib/private/Mail/Message.php#182 <https://github.com/nextcloud/server/blob/stable13/lib/private/Mail/Message.php#L182>`_
+		
+		
+		:Returns: array 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setBcc( $recipients)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set the BCC recipients of this message\.
+			
+		
+		:Source:
+			`lib/private/Mail/Message.php#192 <https://github.com/nextcloud/server/blob/stable13/lib/private/Mail/Message.php#L192>`_
+		
+		
+		:Parameters:
+			* **$recipients** (array)  Example: array('recipient@domain.org', 'other@domain.org' => 'A name')
+
+		
+		:Returns: $this 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getBcc()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the Bcc address of this message\.
+			
+		
+		:Source:
+			`lib/private/Mail/Message.php#204 <https://github.com/nextcloud/server/blob/stable13/lib/private/Mail/Message.php#L204>`_
+		
+		
+		:Returns: array 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setSubject( $subject)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set the subject of this message\.
+			
+		
+		:Source:
+			`lib/private/Mail/Message.php#214 <https://github.com/nextcloud/server/blob/stable13/lib/private/Mail/Message.php#L214>`_
+		
+		
+		:Parameters:
+			* **$subject** (string)  
+
+		
+		:Returns: :any:`\\OCP\\Mail\\IMessage <OCP\\Mail\\IMessage>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getSubject()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the from subject of this message\.
+			
+		
+		:Source:
+			`lib/private/Mail/Message.php#224 <https://github.com/nextcloud/server/blob/stable13/lib/private/Mail/Message.php#L224>`_
+		
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setPlainBody( $body)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set the plain\-text body of this message\.
+			
+		
+		:Source:
+			`lib/private/Mail/Message.php#234 <https://github.com/nextcloud/server/blob/stable13/lib/private/Mail/Message.php#L234>`_
+		
+		
+		:Parameters:
+			* **$body** (string)  
+
+		
+		:Returns: $this 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getPlainBody()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the plain body of this message\.
+			
+		
+		:Source:
+			`lib/private/Mail/Message.php#244 <https://github.com/nextcloud/server/blob/stable13/lib/private/Mail/Message.php#L244>`_
+		
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setHtmlBody( $body)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set the HTML body of this message\. Consider also sending a plain\-text body instead of only an HTML one\.
+			
+		
+		:Source:
+			`lib/private/Mail/Message.php#254 <https://github.com/nextcloud/server/blob/stable13/lib/private/Mail/Message.php#L254>`_
+		
+		
+		:Parameters:
+			* **$body** (string)  
+
+		
+		:Returns: $this 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setSwiftMessage( $swiftMessage)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get\'s the underlying SwiftMessage
+			
+		
+		:Source:
+			`lib/private/Mail/Message.php#265 <https://github.com/nextcloud/server/blob/stable13/lib/private/Mail/Message.php#L265>`_
+		
+		
+		:Parameters:
+			* **$swiftMessage** (:any:`Swift\_Message <Swift\_Message>`)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getSwiftMessage()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get\'s the underlying SwiftMessage
+			
+		
+		:Source:
+			`lib/private/Mail/Message.php#273 <https://github.com/nextcloud/server/blob/stable13/lib/private/Mail/Message.php#L273>`_
+		
+		
+		:Returns: :any:`\\Swift\_Message <Swift\_Message>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setBody( $body, $contentType)
+	
+		:Source:
+			`lib/private/Mail/Message.php#282 <https://github.com/nextcloud/server/blob/stable13/lib/private/Mail/Message.php#L282>`_
+		
+		
+		:Parameters:
+			* **$body** (string)  
+			* **$contentType** (string)  
+
+		
+		:Returns: $this 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public useTemplate( $emailTemplate)
+	
+		:Source:
+			`lib/private/Mail/Message.php#293 <https://github.com/nextcloud/server/blob/stable13/lib/private/Mail/Message.php#L293>`_
+		
+		
+		:Parameters:
+			* **$emailTemplate** (:any:`OCP\\Mail\\IEMailTemplate <OCP\\Mail\\IEMailTemplate>`)  
+
+		
+		:Returns: $this 
+	
+	
+

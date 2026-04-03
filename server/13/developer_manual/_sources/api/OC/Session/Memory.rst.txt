@@ -1,0 +1,182 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+Memory
+======
+
+
+.. php:namespace:: OC\Session
+
+.. php:class:: Memory
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Class Internal
+		
+		| store session data in an in\-memory array, not persistent
+		
+	
+	:Source:
+		`lib/private/Session/Memory.php#44 <https://github.com/nextcloud/server/blob/stable13/lib/private/Session/Memory.php#L44>`_
+	
+	:Parent:
+		:php:class:`OC\\Session\\Session`
+	
+
+Properties
+----------
+
+.. php:attr:: protected static data
+
+	:Source:
+		`lib/private/Session/Memory.php#45 <https://github.com/nextcloud/server/blob/stable13/lib/private/Session/Memory.php#L45>`_
+	
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $name)
+	
+		:Source:
+			`lib/private/Session/Memory.php#47 <https://github.com/nextcloud/server/blob/stable13/lib/private/Session/Memory.php#L47>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public set( $key, $value)
+	
+		:Source:
+			`lib/private/Session/Memory.php#56 <https://github.com/nextcloud/server/blob/stable13/lib/private/Session/Memory.php#L56>`_
+		
+		
+		:Parameters:
+			* **$key** (string)  
+			* **$value** (int)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public get( $key)
+	
+		:Source:
+			`lib/private/Session/Memory.php#65 <https://github.com/nextcloud/server/blob/stable13/lib/private/Session/Memory.php#L65>`_
+		
+		
+		:Parameters:
+			* **$key** (string)  
+
+		
+		:Returns: mixed 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public exists( $key)
+	
+		:Source:
+			`lib/private/Session/Memory.php#76 <https://github.com/nextcloud/server/blob/stable13/lib/private/Session/Memory.php#L76>`_
+		
+		
+		:Parameters:
+			* **$key** (string)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public remove( $key)
+	
+		:Source:
+			`lib/private/Session/Memory.php#83 <https://github.com/nextcloud/server/blob/stable13/lib/private/Session/Memory.php#L83>`_
+		
+		
+		:Parameters:
+			* **$key** (string)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public clear()
+	
+		:Source:
+			`lib/private/Session/Memory.php#88 <https://github.com/nextcloud/server/blob/stable13/lib/private/Session/Memory.php#L88>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public regenerateId( $deleteOldSession=true, $updateToken=false)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Stub since the session ID does not need to get regenerated for the cache
+			
+		
+		:Source:
+			`lib/private/Session/Memory.php#97 <https://github.com/nextcloud/server/blob/stable13/lib/private/Session/Memory.php#L97>`_
+		
+		
+		:Parameters:
+			* **$deleteOldSession** (bool)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getId()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Wrapper around session\_id
+			
+		
+		:Source:
+			`lib/private/Session/Memory.php#107 <https://github.com/nextcloud/server/blob/stable13/lib/private/Session/Memory.php#L107>`_
+		
+		
+		:Returns: string 
+		:Throws: :any:`\\OCP\\Session\\Exceptions\\SessionNotAvailableException <OCP\\Session\\Exceptions\\SessionNotAvailableException>` 
+		:Since: 9.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public reopen()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Helper function for PHPUnit execution \- don\'t use in non\-test code
+			
+		
+		:Source:
+			`lib/private/Session/Memory.php#114 <https://github.com/nextcloud/server/blob/stable13/lib/private/Session/Memory.php#L114>`_
+		
+		
+	
+	
+

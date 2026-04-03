@@ -1,0 +1,192 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+SystemConfig
+============
+
+
+.. php:namespace:: OC
+
+.. php:class:: SystemConfig
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Class which provides access to the system config values stored in config\.php
+		| Internal class for bootstrap only\.
+		
+		| fixes cyclic DI: AllConfig needs AppConfig needs Database needs AllConfig
+		
+	
+	:Source:
+		`lib/private/SystemConfig.php#37 <https://github.com/nextcloud/server/blob/stable13/lib/private/SystemConfig.php#L37>`_
+	
+
+Properties
+----------
+
+.. php:attr:: protected static sensitiveValues
+
+	:Source:
+		`lib/private/SystemConfig.php#40 <https://github.com/nextcloud/server/blob/stable13/lib/private/SystemConfig.php#L40>`_
+	
+	:Type: array 
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $config)
+	
+		:Source:
+			`lib/private/SystemConfig.php#92 <https://github.com/nextcloud/server/blob/stable13/lib/private/SystemConfig.php#L92>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getKeys()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Lists all available config keys
+			
+		
+		:Source:
+			`lib/private/SystemConfig.php#100 <https://github.com/nextcloud/server/blob/stable13/lib/private/SystemConfig.php#L100>`_
+		
+		
+		:Returns: array an array of key names
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setValue( $key, $value)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Sets a new system wide value
+			
+		
+		:Source:
+			`lib/private/SystemConfig.php#110 <https://github.com/nextcloud/server/blob/stable13/lib/private/SystemConfig.php#L110>`_
+		
+		
+		:Parameters:
+			* **$key** (string)  the key of the value, under which will be saved
+			* **$value** (mixed)  the value that should be stored
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setValues( $configs)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Sets and deletes values and writes the config\.php
+			
+		
+		:Source:
+			`lib/private/SystemConfig.php#120 <https://github.com/nextcloud/server/blob/stable13/lib/private/SystemConfig.php#L120>`_
+		
+		
+		:Parameters:
+			* **$configs** (array)  Associative array with `key => value` pairs
+			If value is null, the config key will be deleted
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getValue( $key, $default="")
+	
+		.. rst-class:: phpdoc-description
+		
+			| Looks up a system wide defined value
+			
+		
+		:Source:
+			`lib/private/SystemConfig.php#131 <https://github.com/nextcloud/server/blob/stable13/lib/private/SystemConfig.php#L131>`_
+		
+		
+		:Parameters:
+			* **$key** (string)  the key of the value, under which it was saved
+			* **$default** (mixed)  the default value to be returned if the value isn't set
+
+		
+		:Returns: mixed the value or $default
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getFilteredValue( $key, $default="")
+	
+		.. rst-class:: phpdoc-description
+		
+			| Looks up a system wide defined value and filters out sensitive data
+			
+		
+		:Source:
+			`lib/private/SystemConfig.php#142 <https://github.com/nextcloud/server/blob/stable13/lib/private/SystemConfig.php#L142>`_
+		
+		
+		:Parameters:
+			* **$key** (string)  the key of the value, under which it was saved
+			* **$default** (mixed)  the default value to be returned if the value isn't set
+
+		
+		:Returns: mixed the value or $default
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public deleteValue( $key)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Delete a system wide defined value
+			
+		
+		:Source:
+			`lib/private/SystemConfig.php#157 <https://github.com/nextcloud/server/blob/stable13/lib/private/SystemConfig.php#L157>`_
+		
+		
+		:Parameters:
+			* **$key** (string)  the key of the value, under which it was saved
+
+		
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected removeSensitiveValue( $keysToRemove, $value)
+	
+		:Source:
+			`lib/private/SystemConfig.php#166 <https://github.com/nextcloud/server/blob/stable13/lib/private/SystemConfig.php#L166>`_
+		
+		
+		:Parameters:
+			* **$keysToRemove** (bool | array)  
+			* **$value** (mixed)  
+
+		
+		:Returns: mixed 
+	
+	
+

@@ -1,0 +1,130 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+CORSMiddleware
+==============
+
+
+.. php:namespace:: OC\AppFramework\Middleware\Security
+
+.. php:class:: CORSMiddleware
+
+
+	.. rst-class:: phpdoc-description
+	
+		| This middleware sets the correct CORS headers on a response if the
+		| controller has the @CORS annotation\. This is needed for webapps that want
+		| to access an API and don\'t run on the same domain, see
+		| https://developer\.mozilla\.org/en\-US/docs/Web/HTTP/Access\_control\_CORS
+		
+	
+	:Source:
+		`lib/private/AppFramework/Middleware/Security/CORSMiddleware.php#47 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Middleware/Security/CORSMiddleware.php#L47>`_
+	
+	:Parent:
+		:php:class:`OCP\\AppFramework\\Middleware`
+	
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $request, $reflector, $session, $throttler)
+	
+		:Source:
+			`lib/private/AppFramework/Middleware/Security/CORSMiddleware.php#63 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Middleware/Security/CORSMiddleware.php#L63>`_
+		
+		
+		:Parameters:
+			* **$request** (:any:`OCP\\IRequest <OCP\\IRequest>`)  
+			* **$reflector** (:any:`OC\\AppFramework\\Utility\\ControllerMethodReflector <OC\\AppFramework\\Utility\\ControllerMethodReflector>`)  
+			* **$session** (:any:`OC\\User\\Session <OC\\User\\Session>`)  
+			* **$throttler** (:any:`OC\\Security\\Bruteforce\\Throttler <OC\\Security\\Bruteforce\\Throttler>`)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public beforeController( $controller, $methodName)
+	
+		.. rst-class:: phpdoc-description
+		
+			| This is being run in normal order before the controller is being
+			| called which allows several modifications and checks
+			
+		
+		:Source:
+			`lib/private/AppFramework/Middleware/Security/CORSMiddleware.php#83 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Middleware/Security/CORSMiddleware.php#L83>`_
+		
+		
+		:Parameters:
+			* **$controller** (:any:`OCP\\AppFramework\\Controller <OCP\\AppFramework\\Controller>`)  the controller that is being called
+			* **$methodName** (string)  the name of the method that will be called on
+			the controller
+
+		
+		:Throws: :any:`\\OC\\AppFramework\\Middleware\\Security\\Exceptions\\SecurityException <OC\\AppFramework\\Middleware\\Security\\Exceptions\\SecurityException>` 
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public afterController( $controller, $methodName, $response)
+	
+		.. rst-class:: phpdoc-description
+		
+			| This is being run after a successful controllermethod call and allows
+			| the manipulation of a Response object\. The middleware is run in reverse order
+			
+		
+		:Source:
+			`lib/private/AppFramework/Middleware/Security/CORSMiddleware.php#113 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Middleware/Security/CORSMiddleware.php#L113>`_
+		
+		
+		:Parameters:
+			* **$controller** (:any:`OCP\\AppFramework\\Controller <OCP\\AppFramework\\Controller>`)  the controller that is being called
+			* **$methodName** (string)  the name of the method that will be called on
+			the controller
+			* **$response** (:any:`OCP\\AppFramework\\Http\\Response <OCP\\AppFramework\\Http\\Response>`)  the generated response from the controller
+
+		
+		:Returns: :any:`\\OCP\\AppFramework\\Http\\Response <OCP\\AppFramework\\Http\\Response>` a Response object
+		:Throws: :any:`\\OC\\AppFramework\\Middleware\\Security\\Exceptions\\SecurityException <OC\\AppFramework\\Middleware\\Security\\Exceptions\\SecurityException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public afterException( $controller, $methodName, $exception)
+	
+		.. rst-class:: phpdoc-description
+		
+			| If an SecurityException is being caught return a JSON error response
+			
+		
+		:Source:
+			`lib/private/AppFramework/Middleware/Security/CORSMiddleware.php#146 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Middleware/Security/CORSMiddleware.php#L146>`_
+		
+		
+		:Parameters:
+			* **$controller** (:any:`OCP\\AppFramework\\Controller <OCP\\AppFramework\\Controller>`)  the controller that is being called
+			* **$methodName** (string)  the name of the method that will be called on
+			the controller
+			* **$exception** (:any:`Exception <Exception>`)  the thrown exception
+
+		
+		:Throws: :any:`\\Exception <Exception>` the passed in exception if it can\'t handle it
+		:Returns: :any:`\\OCP\\AppFramework\\Http\\Response <OCP\\AppFramework\\Http\\Response>` a Response object or null in case that the exception could not be handled
+	
+	
+

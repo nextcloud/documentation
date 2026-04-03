@@ -1,0 +1,173 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+Manager
+=======
+
+
+.. php:namespace:: OC\Calendar
+
+.. php:class:: Manager
+
+
+	:Source:
+		`lib/private/Calendar/Manager.php#29 <https://github.com/nextcloud/server/blob/stable13/lib/private/Calendar/Manager.php#L29>`_
+	
+	:Implements:
+		:php:interface:`OCP\\Calendar\\IManager` 
+	
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public search( $pattern, $searchProperties=\[\], $options=\[\], $limit=null, $offset=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| This function is used to search and find objects within the user\'s calendars\.
+			
+			| In case $pattern is empty all events/journals/todos will be returned\.
+			
+		
+		:Source:
+			`lib/private/Calendar/Manager.php#54 <https://github.com/nextcloud/server/blob/stable13/lib/private/Calendar/Manager.php#L54>`_
+		
+		
+		:Parameters:
+			* **$pattern** (string)  which should match within the $searchProperties
+			* **$searchProperties** (array)  defines the properties within the query pattern should match
+			* **$options** (array)  - optional parameters:
+			['timerange' => ['start' => new DateTime(...), 'end' => new DateTime(...)]]
+			* **$limit** (int | null)  - limit number of search results
+			* **$offset** (int | null)  - offset for paging of search results
+
+		
+		:Returns: array an array of events/journals/todos which are arrays of arrays of key\-value\-pairs
+		:Since: 13.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isEnabled()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check if calendars are available
+			
+		
+		:Source:
+			`lib/private/Calendar/Manager.php#74 <https://github.com/nextcloud/server/blob/stable13/lib/private/Calendar/Manager.php#L74>`_
+		
+		
+		:Returns: bool true if enabled, false if not
+		:Since: 13.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public registerCalendar( $calendar)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Registers a calendar
+			
+		
+		:Source:
+			`lib/private/Calendar/Manager.php#85 <https://github.com/nextcloud/server/blob/stable13/lib/private/Calendar/Manager.php#L85>`_
+		
+		
+		:Parameters:
+			* **$calendar** (:any:`OCP\\Calendar\\ICalendar <OCP\\Calendar\\ICalendar>`)  
+
+		
+		:Returns: void 
+		:Since: 13.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public unregisterCalendar( $calendar)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Unregisters a calendar
+			
+		
+		:Source:
+			`lib/private/Calendar/Manager.php#96 <https://github.com/nextcloud/server/blob/stable13/lib/private/Calendar/Manager.php#L96>`_
+		
+		
+		:Parameters:
+			* **$calendar** (:any:`OCP\\Calendar\\ICalendar <OCP\\Calendar\\ICalendar>`)  
+
+		
+		:Returns: void 
+		:Since: 13.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public register( $callable)
+	
+		.. rst-class:: phpdoc-description
+		
+			| In order to improve lazy loading a closure can be registered which will be called in case
+			| calendars are actually requested
+			
+		
+		:Source:
+			`lib/private/Calendar/Manager.php#108 <https://github.com/nextcloud/server/blob/stable13/lib/private/Calendar/Manager.php#L108>`_
+		
+		
+		:Parameters:
+			* **$callable** (:any:`Closure <Closure>`)  
+
+		
+		:Returns: void 
+		:Since: 13.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getCalendars()
+	
+		:Source:
+			`lib/private/Calendar/Manager.php#116 <https://github.com/nextcloud/server/blob/stable13/lib/private/Calendar/Manager.php#L116>`_
+		
+		
+		:Returns: :any:`\\OCP\\Calendar\\ICalendar\[\] <OCP\\Calendar\\ICalendar>` 
+		:Since: 13.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public clear()
+	
+		.. rst-class:: phpdoc-description
+		
+			| removes all registered calendar instances
+			
+		
+		:Source:
+			`lib/private/Calendar/Manager.php#127 <https://github.com/nextcloud/server/blob/stable13/lib/private/Calendar/Manager.php#L127>`_
+		
+		
+		:Returns: void 
+		:Since: 13.0.0 
+	
+	
+

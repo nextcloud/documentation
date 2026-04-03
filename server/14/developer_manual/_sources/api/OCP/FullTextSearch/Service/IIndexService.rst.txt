@@ -1,0 +1,147 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IIndexService
+=============
+
+
+.. php:namespace:: OCP\FullTextSearch\Service
+
+.. php:interface:: IIndexService
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Interface IIndexService
+		
+	
+	:Source:
+		`lib/public/FullTextSearch/Service/IIndexService.php#37 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Service/IIndexService.php#L37>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public createIndex( $providerId, $documentId, $userId, $status)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Create an Index
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/Service/IIndexService.php#51 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Service/IIndexService.php#L51>`_
+		
+		
+		:Parameters:
+			* **$providerId** (string)  
+			* **$documentId** (string)  
+			* **$userId** (string)  
+			* **$status** (int)  
+
+		
+		:Since: 15.0.1 
+		:Returns: :any:`\\OCP\\FullTextSearch\\Model\\IIndex <OCP\\FullTextSearch\\Model\\IIndex>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getIndex( $providerId, $documentId)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Retrieve an Index from the database, based on the Id of the Provider
+			| and the Id of the Document
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/Service/IIndexService.php#65 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Service/IIndexService.php#L65>`_
+		
+		
+		:Parameters:
+			* **$providerId** (string)  
+			* **$documentId** (string)  
+
+		
+		:Since: 15.0.0 
+		:Returns: :any:`\\OCP\\FullTextSearch\\Model\\IIndex <OCP\\FullTextSearch\\Model\\IIndex>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public updateIndexStatus( $providerId, $documentId, $status, $reset=false)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Update the status of an Index\. status is a bit flag, setting $reset to
+			| true will reset the status to the value defined in the parameter\.
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/Service/IIndexService.php#79 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Service/IIndexService.php#L79>`_
+		
+		
+		:Parameters:
+			* **$providerId** (string)  
+			* **$documentId** (string)  
+			* **$status** (int)  
+			* **$reset** (bool)  
+
+		
+		:Since: 15.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public updateIndexesStatus( $providerId, $documentIds, $status, $reset=false)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Update the status of an array of Index\. status is a bit flag, setting $reset to
+			| true will reset the status to the value defined in the parameter\.
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/Service/IIndexService.php#93 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Service/IIndexService.php#L93>`_
+		
+		
+		:Parameters:
+			* **$providerId** (string)  
+			* **$documentIds** (array)  
+			* **$status** (int)  
+			* **$reset** (bool)  
+
+		
+		:Since: 15.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public updateIndexes( $indexes)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Update an array of Index\.
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/Service/IIndexService.php#103 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Service/IIndexService.php#L103>`_
+		
+		
+		:Parameters:
+			* **$indexes** (array)  
+
+		
+		:Since: 15.0.0 
+	
+	
+

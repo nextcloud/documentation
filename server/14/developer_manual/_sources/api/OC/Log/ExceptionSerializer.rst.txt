@@ -1,0 +1,110 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+ExceptionSerializer
+===================
+
+
+.. php:namespace:: OC\Log
+
+.. php:class:: ExceptionSerializer
+
+
+	:Source:
+		`lib/private/Log/ExceptionSerializer.php#38 <https://github.com/nextcloud/server/blob/stable13/lib/private/Log/ExceptionSerializer.php#L38>`_
+	
+
+Constants
+---------
+
+.. php:const:: methodsWithSensitiveParameters = \[
+    // Session/User
+    completeLogin,
+    login,
+    checkPassword,
+    checkPasswordNoLogging,
+    loginWithPassword,
+    updatePrivateKeyPassword,
+    validateUserPass,
+    loginWithToken,
+    \{closure\},
+    createSessionToken,
+    // Provisioning
+    addUser,
+    // TokenProvider
+    getToken,
+    isTokenPassword,
+    getPassword,
+    decryptPassword,
+    logClientIn,
+    generateToken,
+    validateToken,
+    // TwoFactorAuth
+    solveChallenge,
+    verifyChallenge,
+    // ICrypto
+    calculateHMAC,
+    encrypt,
+    decrypt,
+    // LoginController
+    tryLogin,
+    confirmPassword,
+    // LDAP
+    bind,
+    areCredentialsValid,
+    invokeLDAPMethod,
+    // Encryption
+    storeKeyPair,
+    setupUser,
+    checkSignature,
+    // files\_external: OCA\\Files\_External\\MountConfig
+    getBackendStatus,
+    // files\_external: UserStoragesController
+    update,
+    // Preview providers, don\'t log big data strings
+    imagecreatefromstring,
+\]
+
+	:Source:
+		`lib/private/Log/ExceptionSerializer.php#39 <https://github.com/nextcloud/server/blob/stable13/lib/private/Log/ExceptionSerializer.php#L39>`_
+	
+
+
+.. php:const:: methodsWithSensitiveParametersByClass = \[\\OC\\Core\\Controller\\SetupController::class =\> \[run, display, loadAutoConfig\], \\OC\\Setup::class =\> \[install\], \\OC\\Security\\IdentityProof\\Key::class =\> \[\_\_construct\]\]
+
+	:Source:
+		`lib/private/Log/ExceptionSerializer.php#104 <https://github.com/nextcloud/server/blob/stable13/lib/private/Log/ExceptionSerializer.php#L104>`_
+	
+
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $systemConfig)
+	
+		:Source:
+			`lib/private/Log/ExceptionSerializer.php#100 <https://github.com/nextcloud/server/blob/stable13/lib/private/Log/ExceptionSerializer.php#L100>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public serializeException( $exception)
+	
+		:Source:
+			`lib/private/Log/ExceptionSerializer.php#192 <https://github.com/nextcloud/server/blob/stable13/lib/private/Log/ExceptionSerializer.php#L192>`_
+		
+		
+	
+	
+

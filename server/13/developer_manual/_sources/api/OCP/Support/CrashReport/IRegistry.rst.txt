@@ -1,0 +1,120 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IRegistry
+=========
+
+
+.. php:namespace:: OCP\Support\CrashReport
+
+.. php:interface:: IRegistry
+
+
+	:Implemented by:
+		:php:class:`OC\\Support\\CrashReport\\Registry` 
+	
+	
+	:Source:
+		`lib/public/Support/CrashReport/IRegistry.php#37 <https://github.com/nextcloud/server/blob/stable13/lib/public/Support/CrashReport/IRegistry.php#L37>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public register( $reporter)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Register a reporter instance
+			
+		
+		:Source:
+			`lib/public/Support/CrashReport/IRegistry.php#48 <https://github.com/nextcloud/server/blob/stable13/lib/public/Support/CrashReport/IRegistry.php#L48>`_
+		
+		
+		:Parameters:
+			* **$reporter** (:any:`OCP\\Support\\CrashReport\\IReporter <OCP\\Support\\CrashReport\\IReporter>`)  
+
+		
+		:Since: 13.0.0 
+		:Deprecated: 20.0.0 use IRegistrationContext::registerCrashReporter
+		:See: :any:`\\OCP\\Support\\CrashReport\\IRegistrationContext::registerCrashReporter\(\) <OCP\\Support\\CrashReport\\IRegistrationContext::registerCrashReporter\(\)>` 
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public delegateBreadcrumb( $message, $category, $context=\[\])
+	
+		.. rst-class:: phpdoc-description
+		
+			| Delegate breadcrumb collection to all registered reporters
+			
+		
+		:Source:
+			`lib/public/Support/CrashReport/IRegistry.php#60 <https://github.com/nextcloud/server/blob/stable13/lib/public/Support/CrashReport/IRegistry.php#L60>`_
+		
+		
+		:Parameters:
+			* **$message** (string)  
+			* **$category** (string)  
+			* **$context** (array)  
+
+		
+		:Deprecated:  used internally only
+		:Since: 15.0.0 
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public delegateReport( $exception, $context=\[\])
+	
+		.. rst-class:: phpdoc-description
+		
+			| Delegate crash reporting to all registered reporters
+			
+		
+		:Source:
+			`lib/public/Support/CrashReport/IRegistry.php#71 <https://github.com/nextcloud/server/blob/stable13/lib/public/Support/CrashReport/IRegistry.php#L71>`_
+		
+		
+		:Parameters:
+			* **$exception** (:any:`Exception <Exception>` | :any:`\\Throwable <Throwable>`)  
+			* **$context** (array)  
+
+		
+		:Deprecated:  used internally only
+		:Since: 13.0.0 
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public delegateMessage( $message, $context=\[\])
+	
+		.. rst-class:: phpdoc-description
+		
+			| Delegate a message to all reporters that implement IMessageReporter
+			
+		
+		:Source:
+			`lib/public/Support/CrashReport/IRegistry.php#84 <https://github.com/nextcloud/server/blob/stable13/lib/public/Support/CrashReport/IRegistry.php#L84>`_
+		
+		
+		:Parameters:
+			* **$message** (string)  
+			* **$context** (array)  
+
+		
+		:Returns: void 
+		:Deprecated:  used internally only
+		:Since: 17.0.0 
+	
+	
+

@@ -1,0 +1,91 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+ILockingStorage
+===============
+
+
+.. php:namespace:: OCP\Files\Storage
+
+.. php:interface:: ILockingStorage
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Storage backends that require explicit locking
+		
+		| Storage backends implementing this interface do not need to implement their own locking implementation but should use the provided lockingprovider instead
+		| The implementation of the locking methods only need to map internal storage paths to "lock keys"
+		
+	
+	:Implemented by:
+		:php:class:`OC\\Files\\Storage\\Wrapper\\Wrapper` :php:class:`OC\\Files\\Storage\\Common` 
+	
+	
+	:Source:
+		`lib/public/Files/Storage/ILockingStorage.php#36 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Storage/ILockingStorage.php#L36>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public acquireLock( $path, $type, $provider)
+	
+		:Source:
+			`lib/public/Files/Storage/ILockingStorage.php#44 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Storage/ILockingStorage.php#L44>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  The path of the file to acquire the lock for
+			* **$type** (int)  \OCP\Lock\ILockingProvider::LOCK_SHARED or \OCP\Lock\ILockingProvider::LOCK_EXCLUSIVE
+			* **$provider** (:any:`OCP\\Lock\\ILockingProvider <OCP\\Lock\\ILockingProvider>`)  
+
+		
+		:Throws: :any:`\\OCP\\Lock\\LockedException <OCP\\Lock\\LockedException>` 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public releaseLock( $path, $type, $provider)
+	
+		:Source:
+			`lib/public/Files/Storage/ILockingStorage.php#53 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Storage/ILockingStorage.php#L53>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  The path of the file to acquire the lock for
+			* **$type** (int)  \OCP\Lock\ILockingProvider::LOCK_SHARED or \OCP\Lock\ILockingProvider::LOCK_EXCLUSIVE
+			* **$provider** (:any:`OCP\\Lock\\ILockingProvider <OCP\\Lock\\ILockingProvider>`)  
+
+		
+		:Throws: :any:`\\OCP\\Lock\\LockedException <OCP\\Lock\\LockedException>` 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public changeLock( $path, $type, $provider)
+	
+		:Source:
+			`lib/public/Files/Storage/ILockingStorage.php#62 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Storage/ILockingStorage.php#L62>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  The path of the file to change the lock for
+			* **$type** (int)  \OCP\Lock\ILockingProvider::LOCK_SHARED or \OCP\Lock\ILockingProvider::LOCK_EXCLUSIVE
+			* **$provider** (:any:`OCP\\Lock\\ILockingProvider <OCP\\Lock\\ILockingProvider>`)  
+
+		
+		:Throws: :any:`\\OCP\\Lock\\LockedException <OCP\\Lock\\LockedException>` 
+		:Since: 9.0.0 
+	
+	
+

@@ -1,0 +1,128 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+OC\_Hook
+========
+
+
+.. php:class:: OC_Hook
+
+
+	:Source:
+		`lib/private/legacy/OC_Hook.php#35 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Hook.php#L35>`_
+	
+
+Properties
+----------
+
+.. php:attr:: public thrownExceptions
+
+	:Source:
+		`lib/private/legacy/OC_Hook.php#36 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Hook.php#L36>`_
+	
+
+
+Methods
+-------
+
+.. rst-class:: public static
+
+	.. php:method:: public static connect( $signalClass, $signalName, $slotClass, $slotName)
+	
+		.. rst-class:: phpdoc-description
+		
+			| connects a function to a hook
+			
+		
+		:Source:
+			`lib/private/legacy/OC_Hook.php#53 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Hook.php#L53>`_
+		
+		
+		:Parameters:
+			* **$signalClass** (string)  class name of emitter
+			* **$signalName** (string)  name of signal
+			* **$slotClass** (string | object)  class name of slot
+			* **$slotName** (string)  name of slot
+
+		
+		:Returns: bool This function makes it very easy to connect to use hooks\.
+			
+			TODO: write example
+		
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static emit( $signalClass, $signalName, $params=\[\])
+	
+		.. rst-class:: phpdoc-description
+		
+			| emits a signal
+			
+		
+		:Source:
+			`lib/private/legacy/OC_Hook.php#93 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Hook.php#L93>`_
+		
+		
+		:Parameters:
+			* **$signalClass** (string)  class name of emitter
+			* **$signalName** (string)  name of signal
+			* **$params** (mixed)  default: array() array with additional data
+
+		
+		:Returns: bool true if slots exists or false if not
+		:Throws: :any:`\\OC\\HintException <OC\\HintException>` 
+		:Throws: :any:`\\OC\\ServerNotAvailableException <OC\\ServerNotAvailableException>` Emits a signal\. To get data from the slot use references\!
+			
+			TODO: write example
+		
+		:Throws: :any:`\\OC\\HintException <OC\\HintException>` 
+		:Throws: :any:`\\OC\\ServerNotAvailableException <OC\\ServerNotAvailableException>` Emits a signal\. To get data from the slot use references\!
+			
+			TODO: write example
+		
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static clear( $signalClass="", $signalName="")
+	
+		.. rst-class:: phpdoc-description
+		
+			| clear hooks
+			
+		
+		:Source:
+			`lib/private/legacy/OC_Hook.php#131 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Hook.php#L131>`_
+		
+		
+		:Parameters:
+			* **$signalClass** (string)  
+			* **$signalName** (string)  
+
+		
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static getHooks()
+	
+		.. rst-class:: phpdoc-description
+		
+			| DO NOT USE\!
+			| For unit tests ONLY\!
+			
+		
+		:Source:
+			`lib/private/legacy/OC_Hook.php#147 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Hook.php#L147>`_
+		
+		
+	
+	
+

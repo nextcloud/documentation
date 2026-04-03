@@ -1,0 +1,59 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IDiscoveryService
+=================
+
+
+.. php:namespace:: OCP\OCS
+
+.. php:interface:: IDiscoveryService
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Interface IDiscoveryService
+		
+		| Allows you to discover OCS end\-points on a remote server
+		
+	
+	:Implemented by:
+		:php:class:`OC\\OCS\\DiscoveryService` 
+	
+	
+	:Source:
+		`lib/public/OCS/IDiscoveryService.php#38 <https://github.com/nextcloud/server/blob/stable13/lib/public/OCS/IDiscoveryService.php#L38>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public discover( $remote, $service, $skipCache=false)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Discover OCS end\-points
+			
+			| If no valid discovery data is found the defaults are returned
+			
+		
+		:Source:
+			`lib/public/OCS/IDiscoveryService.php#52 <https://github.com/nextcloud/server/blob/stable13/lib/public/OCS/IDiscoveryService.php#L52>`_
+		
+		
+		:Parameters:
+			* **$remote** (string)  
+			* **$service** (string)  the service you want to discover
+			* **$skipCache** (bool)  We won't check if the data is in the cache. This is useful if a background job is updating the status - Added in 14.0.0
+
+		
+		:Since: 12.0.0 
+		:Returns: array 
+	
+	
+

@@ -1,0 +1,228 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+ArrayCache
+==========
+
+
+.. php:namespace:: OC\Memcache
+
+.. php:class:: ArrayCache
+
+
+	:Source:
+		`lib/private/Memcache/ArrayCache.php#30 <https://github.com/nextcloud/server/blob/stable13/lib/private/Memcache/ArrayCache.php#L30>`_
+	
+	:Parent:
+		:php:class:`OC\\Memcache\\Cache`
+	
+	:Implements:
+		:php:interface:`OCP\\IMemcache` 
+	
+	:Used traits:
+		:php:trait:`OC\\Memcache\\CADTrait` 
+	
+
+Properties
+----------
+
+.. php:attr:: protected static cachedData
+
+	:Source:
+		`lib/private/Memcache/ArrayCache.php#32 <https://github.com/nextcloud/server/blob/stable13/lib/private/Memcache/ArrayCache.php#L32>`_
+	
+	:Type: array Array with the cached data
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public get( $key)
+	
+		.. rst-class:: phpdoc-description
+		
+			| \{@inheritDoc\}
+			
+		
+		:Source:
+			`lib/private/Memcache/ArrayCache.php#39 <https://github.com/nextcloud/server/blob/stable13/lib/private/Memcache/ArrayCache.php#L39>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public set( $key, $value, $ttl=0)
+	
+		.. rst-class:: phpdoc-description
+		
+			| \{@inheritDoc\}
+			
+		
+		:Source:
+			`lib/private/Memcache/ArrayCache.php#49 <https://github.com/nextcloud/server/blob/stable13/lib/private/Memcache/ArrayCache.php#L49>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public hasKey( $key)
+	
+		.. rst-class:: phpdoc-description
+		
+			| \{@inheritDoc\}
+			
+		
+		:Source:
+			`lib/private/Memcache/ArrayCache.php#57 <https://github.com/nextcloud/server/blob/stable13/lib/private/Memcache/ArrayCache.php#L57>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public remove( $key)
+	
+		.. rst-class:: phpdoc-description
+		
+			| \{@inheritDoc\}
+			
+		
+		:Source:
+			`lib/private/Memcache/ArrayCache.php#64 <https://github.com/nextcloud/server/blob/stable13/lib/private/Memcache/ArrayCache.php#L64>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public clear( $prefix="")
+	
+		.. rst-class:: phpdoc-description
+		
+			| \{@inheritDoc\}
+			
+		
+		:Source:
+			`lib/private/Memcache/ArrayCache.php#72 <https://github.com/nextcloud/server/blob/stable13/lib/private/Memcache/ArrayCache.php#L72>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public add( $key, $value, $ttl=0)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set a value in the cache if it\'s not already stored
+			
+		
+		:Source:
+			`lib/private/Memcache/ArrayCache.php#94 <https://github.com/nextcloud/server/blob/stable13/lib/private/Memcache/ArrayCache.php#L94>`_
+		
+		
+		:Parameters:
+			* **$key** (string)  
+			* **$value** (mixed)  
+			* **$ttl** (int)  Time To Live in seconds. Defaults to 60*60*24
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public inc( $key, $step=1)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Increase a stored number
+			
+		
+		:Source:
+			`lib/private/Memcache/ArrayCache.php#110 <https://github.com/nextcloud/server/blob/stable13/lib/private/Memcache/ArrayCache.php#L110>`_
+		
+		
+		:Parameters:
+			* **$key** (string)  
+			* **$step** (int)  
+
+		
+		:Returns: int \| bool
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public dec( $key, $step=1)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Decrease a stored number
+			
+		
+		:Source:
+			`lib/private/Memcache/ArrayCache.php#128 <https://github.com/nextcloud/server/blob/stable13/lib/private/Memcache/ArrayCache.php#L128>`_
+		
+		
+		:Parameters:
+			* **$key** (string)  
+			* **$step** (int)  
+
+		
+		:Returns: int \| bool
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public cas( $key, $old, $new)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Compare and set
+			
+		
+		:Source:
+			`lib/private/Memcache/ArrayCache.php#146 <https://github.com/nextcloud/server/blob/stable13/lib/private/Memcache/ArrayCache.php#L146>`_
+		
+		
+		:Parameters:
+			* **$key** (string)  
+			* **$old** (mixed)  
+			* **$new** (mixed)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static isAvailable()
+	
+		.. rst-class:: phpdoc-description
+		
+			| \{@inheritDoc\}
+			
+		
+		:Source:
+			`lib/private/Memcache/ArrayCache.php#157 <https://github.com/nextcloud/server/blob/stable13/lib/private/Memcache/ArrayCache.php#L157>`_
+		
+		
+	
+	
+

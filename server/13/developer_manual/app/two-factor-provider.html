@@ -1,0 +1,397 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Two-factor providers &mdash; Nextcloud 13 Developer Manual 13 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'13',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Hooks" href="hooks.html" />
+    <link rel="prev" title="User management" href="users.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../general/index.html">General contributor guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="startapp.html">Create an app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="init.html">Navigation and pre-app configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info.html">App metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="classloader.html">Classloader</a></li>
+<li class="toctree-l1"><a class="reference internal" href="request.html">Request lifecycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="routes.html">Routing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="middleware.html">Middleware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="container.html">Container</a></li>
+<li class="toctree-l1"><a class="reference internal" href="controllers.html">Controllers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">RESTful API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="templates.html">Templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="js.html">JavaScript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="css.html">CSS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="l10n.html">Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="theming.html">Theming support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="schema.html">Database schema</a></li>
+<li class="toctree-l1"><a class="reference internal" href="database.html">Database access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="filesystem.html">Filesystem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appdata.html">AppData</a></li>
+<li class="toctree-l1"><a class="reference internal" href="users.html">User management</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Two-factor providers</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#implementing-a-simple-two-factor-auth-provider">Implementing a simple two-factor auth provider</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#registering-a-two-factor-auth-provider">Registering a two-factor auth provider</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="hooks.html">Hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="backgroundjobs.html">Background jobs (Cron)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="settings.html">Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logging.html">Logging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migrations.html">Migrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="repair.html">Repair steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="publishing.html">App store publishing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="code_signing.html">Code signing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../design/index.html">Design guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../android_library/index.html">Android application development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client_apis/index.html">Client APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../core/translation.html">Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../core/unit-testing.html">Unit-Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../core/theming.html">Theming Nextcloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../core/externalapi.html">External API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../core/ocs-share-api.html">OCS Share API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../core/index.html">Core development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bugtracker/index.html">Bugtracker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../commun/index.html">Help and communication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API Documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Nextcloud 13 Developer Manual</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">App development</a> &raquo;</li>
+        
+      <li>Two-factor providers</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/nextcloud/documentation/edit/stable13/developer_manual/app/two-factor-provider.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="two-factor-providers">
+<h1>Two-factor providers<a class="headerlink" href="#two-factor-providers" title="Permalink to this headline">¶</a></h1>
+<p>Two-factor auth providers apps are used to plug custom second factors into the Nextcloud core. The following
+code was taken from the <a class="reference external" href="https://github.com/ChristophWurst/twofactor_test">two-factor test app</a>.</p>
+<div class="section" id="implementing-a-simple-two-factor-auth-provider">
+<h2>Implementing a simple two-factor auth provider<a class="headerlink" href="#implementing-a-simple-two-factor-auth-provider" title="Permalink to this headline">¶</a></h2>
+<p>Two-factor auth providers must implement the <code class="docutils literal"><span class="pre">OCP\Authentication\TwoFactorAuth\IProvider</span></code> interface. The
+example below shows a minimalistic example of such a provider.</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">OCA\TwoFactor_Test\Provider</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCP\Authentication\TwoFactorAuth\IProvider</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\IUser</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\Template</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">TwoFactorTestProvider</span> <span class="k">implements</span> <span class="nx">IProvider</span> <span class="p">{</span>
+
+        <span class="sd">/**</span>
+<span class="sd">         * Get unique identifier of this 2FA provider</span>
+<span class="sd">         *</span>
+<span class="sd">         * @return string</span>
+<span class="sd">         */</span>
+        <span class="k">public</span> <span class="k">function</span> <span class="nf">getId</span><span class="p">()</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="s1">&#39;test&#39;</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="sd">/**</span>
+<span class="sd">         * Get the display name for selecting the 2FA provider</span>
+<span class="sd">         *</span>
+<span class="sd">         * @return string</span>
+<span class="sd">         */</span>
+        <span class="k">public</span> <span class="k">function</span> <span class="nf">getDisplayName</span><span class="p">()</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="s1">&#39;Test&#39;</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="sd">/**</span>
+<span class="sd">         * Get the description for selecting the 2FA provider</span>
+<span class="sd">         *</span>
+<span class="sd">         * @return string</span>
+<span class="sd">         */</span>
+        <span class="k">public</span> <span class="k">function</span> <span class="nf">getDescription</span><span class="p">()</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="s1">&#39;Use a test provider&#39;</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="sd">/**</span>
+<span class="sd">         * Get the template for rending the 2FA provider view</span>
+<span class="sd">         *</span>
+<span class="sd">         * @param IUser $user</span>
+<span class="sd">         * @return Template</span>
+<span class="sd">         */</span>
+        <span class="k">public</span> <span class="k">function</span> <span class="nf">getTemplate</span><span class="p">(</span><span class="nx">IUser</span> <span class="nv">$user</span><span class="p">)</span> <span class="p">{</span>
+                <span class="c1">// If necessary, this is also the place where you might want</span>
+                <span class="c1">// to send out a code via e-mail or SMS.</span>
+
+                <span class="c1">// &#39;challenge&#39; is the name of the template</span>
+                <span class="k">return</span> <span class="k">new</span> <span class="nx">Template</span><span class="p">(</span><span class="s1">&#39;twofactor_test&#39;</span><span class="p">,</span> <span class="s1">&#39;challenge&#39;</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="sd">/**</span>
+<span class="sd">         * Verify the given challenge</span>
+<span class="sd">         *</span>
+<span class="sd">         * @param IUser $user</span>
+<span class="sd">         * @param string $challenge</span>
+<span class="sd">         */</span>
+        <span class="k">public</span> <span class="k">function</span> <span class="nf">verifyChallenge</span><span class="p">(</span><span class="nx">IUser</span> <span class="nv">$user</span><span class="p">,</span> <span class="nv">$challenge</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nv">$challenge</span> <span class="o">===</span> <span class="s1">&#39;passme&#39;</span><span class="p">)</span> <span class="p">{</span>
+                        <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+                <span class="p">}</span>
+                <span class="k">return</span> <span class="k">false</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="sd">/**</span>
+<span class="sd">         * Decides whether 2FA is enabled for the given user</span>
+<span class="sd">         *</span>
+<span class="sd">         * @param IUser $user</span>
+<span class="sd">         * @return boolean</span>
+<span class="sd">         */</span>
+        <span class="k">public</span> <span class="k">function</span> <span class="nf">isTwoFactorAuthEnabledForUser</span><span class="p">(</span><span class="nx">IUser</span> <span class="nv">$user</span><span class="p">)</span> <span class="p">{</span>
+                <span class="c1">// 2FA is enforced for all users</span>
+                <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+        <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="registering-a-two-factor-auth-provider">
+<h2>Registering a two-factor auth provider<a class="headerlink" href="#registering-a-two-factor-auth-provider" title="Permalink to this headline">¶</a></h2>
+<p>You need to inform the Nextcloud core that the app provides two-factor auth functionality. Two-factor
+providers are registered via <code class="docutils literal"><span class="pre">info.xml</span></code>.</p>
+<div class="highlight-XML"><div class="highlight"><pre><span></span><span class="nt">&lt;two-factor-providers&gt;</span>
+        <span class="nt">&lt;provider&gt;</span>OCA\TwoFactor_Test\Provider\TwoFactorTestProvider<span class="nt">&lt;/provider&gt;</span>
+<span class="nt">&lt;/two-factor-providers&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="hooks.html" class="btn btn-neutral float-right" title="Hooks" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="users.html" class="btn btn-neutral float-left" title="User management" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021 Nextcloud GmbH.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: 13
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/13/developer_manual">13</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/14/developer_manual">14</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/15/developer_manual">15</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/developer_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/developer_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+   
+
+</body>
+</html>

@@ -1,0 +1,102 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+SearchComposer
+==============
+
+
+.. php:namespace:: OC\Search
+
+.. php:class:: SearchComposer
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Queries individual \\OCP\\Search\\IProvider implementations and composes a
+		| unified search result for the user\'s search term
+		
+		| The search process is generally split into two steps
+		| 
+		|   1\. Get a list of provider \(\`getProviders\`\)
+		|   2\. Get search results of each provider \(\`search\`\)
+		| 
+		| The reasoning behind this is that the runtime complexity of a combined search
+		| result would be O\(n\) and linearly grow with each provider added\. This comes
+		| from the nature of php where we can\'t concurrently fetch the search results\.
+		| So we offload the concurrency the client application \(e\.g\. JavaScript in the
+		| browser\) and let it first get the list of providers to then fetch all results
+		| concurrently\. The client is free to decide whether all concurrent search
+		| results are awaited or shown as they come in\.
+		
+	
+	:Source:
+		`lib/private/Search/SearchComposer.php#61 <https://github.com/nextcloud/server/blob/stable13/lib/private/Search/SearchComposer.php#L61>`_
+	
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $bootstrapCoordinator, $container, $logger)
+	
+		:Source:
+			`lib/private/Search/SearchComposer.php#75 <https://github.com/nextcloud/server/blob/stable13/lib/private/Search/SearchComposer.php#L75>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getProviders( $route, $routeParameters)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get a list of all provider IDs & Names for the consecutive calls to \`search\`
+			| Sort the list by the order property
+			
+		
+		:Source:
+			`lib/private/Search/SearchComposer.php#121 <https://github.com/nextcloud/server/blob/stable13/lib/private/Search/SearchComposer.php#L121>`_
+		
+		
+		:Parameters:
+			* **$route** (string)  the route the user is currently at
+			* **$routeParameters** (array)  the parameters of the route the user is currently at
+
+		
+		:Returns: array 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public search( $user, $providerId, $query)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Query an individual search provider for results
+			
+		
+		:Source:
+			`lib/private/Search/SearchComposer.php#154 <https://github.com/nextcloud/server/blob/stable13/lib/private/Search/SearchComposer.php#L154>`_
+		
+		
+		:Parameters:
+			* **$user** (:any:`OCP\\IUser <OCP\\IUser>`)  
+			* **$providerId** (string)  one of the IDs received by `getProviders`
+			* **$query** (:any:`OCP\\Search\\ISearchQuery <OCP\\Search\\ISearchQuery>`)  
+
+		
+		:Returns: :any:`\\OCP\\Search\\SearchResult <OCP\\Search\\SearchResult>` 
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` when the $providerId does not correspond to a registered provider
+	
+	
+

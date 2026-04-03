@@ -1,0 +1,65 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IContactsStore
+==============
+
+
+.. php:namespace:: OCP\Contacts\ContactsMenu
+
+.. php:interface:: IContactsStore
+
+
+	:Implemented by:
+		:php:class:`OC\\Contacts\\ContactsMenu\\ContactsStore` 
+	
+	
+	:Source:
+		`lib/public/Contacts/ContactsMenu/IContactsStore.php#32 <https://github.com/nextcloud/server/blob/stable13/lib/public/Contacts/ContactsMenu/IContactsStore.php#L32>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public getContacts( $user, $filter, $limit=null, $offset=null)
+	
+		:Source:
+			`lib/public/Contacts/ContactsMenu/IContactsStore.php#43 <https://github.com/nextcloud/server/blob/stable13/lib/public/Contacts/ContactsMenu/IContactsStore.php#L43>`_
+		
+		
+		:Parameters:
+			* **$user** (:any:`OCP\\IUser <OCP\\IUser>`)  
+			* **$filter** (string)  
+			* **$limit** (int)  added 19.0.2
+			* **$offset** (int)  added 19.0.2
+
+		
+		:Returns: :any:`\\OCP\\Contacts\\ContactsMenu\\IEntry\[\] <OCP\\Contacts\\ContactsMenu\\IEntry>` 
+		:Since: 13.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public findOne( $user, $shareType, $shareWith)
+	
+		:Source:
+			`lib/public/Contacts/ContactsMenu/IContactsStore.php#53 <https://github.com/nextcloud/server/blob/stable13/lib/public/Contacts/ContactsMenu/IContactsStore.php#L53>`_
+		
+		
+		:Parameters:
+			* **$user** (:any:`OCP\\IUser <OCP\\IUser>`)  
+			* **$shareType** (int)  
+			* **$shareWith** (string)  
+
+		
+		:Returns: :any:`\\OCP\\Contacts\\ContactsMenu\\IEntry <OCP\\Contacts\\ContactsMenu\\IEntry>` | null 
+		:Since: 13.0.0 
+	
+	
+

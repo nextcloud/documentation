@@ -1,0 +1,117 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+Section
+=======
+
+
+.. php:namespace:: OC\Settings
+
+.. php:class:: Section
+
+
+	:Source:
+		`lib/private/Settings/Section.php#30 <https://github.com/nextcloud/server/blob/stable13/lib/private/Settings/Section.php#L30>`_
+	
+	:Implements:
+		:php:interface:`OCP\\Settings\\IIconSection` 
+	
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $id, $name, $priority, $icon="")
+	
+		:Source:
+			`lib/private/Settings/Section.php#46 <https://github.com/nextcloud/server/blob/stable13/lib/private/Settings/Section.php#L46>`_
+		
+		
+		:Parameters:
+			* **$id** (string)  
+			* **$name** (string)  
+			* **$priority** (int)  
+			* **$icon** (string)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getID()
+	
+		.. rst-class:: phpdoc-description
+		
+			| returns the ID of the section\. It is supposed to be a lower case string,
+			| e\.g\. \'ldap\'
+			
+		
+		:Source:
+			`lib/private/Settings/Section.php#59 <https://github.com/nextcloud/server/blob/stable13/lib/private/Settings/Section.php#L59>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getName()
+	
+		.. rst-class:: phpdoc-description
+		
+			| returns the translated name as it should be displayed, e\.g\. \'LDAP / AD
+			| integration\'\. Use the L10N service to translate it\.
+			
+		
+		:Source:
+			`lib/private/Settings/Section.php#69 <https://github.com/nextcloud/server/blob/stable13/lib/private/Settings/Section.php#L69>`_
+		
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getPriority()
+	
+		:Source:
+			`lib/private/Settings/Section.php#80 <https://github.com/nextcloud/server/blob/stable13/lib/private/Settings/Section.php#L80>`_
+		
+		
+		:Returns: int whether the form should be rather on the top or bottom of
+			the settings navigation\. The sections are arranged in ascending order of
+			the priority values\. It is required to return a value between 0 and 99\.
+			
+			E\.g\.: 70
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getIcon()
+	
+		.. rst-class:: phpdoc-description
+		
+			| returns the relative path to an 16\*16 icon describing the section\.
+			
+			| e\.g\. \'/core/img/places/files\.svg\'
+			
+		
+		:Source:
+			`lib/private/Settings/Section.php#91 <https://github.com/nextcloud/server/blob/stable13/lib/private/Settings/Section.php#L91>`_
+		
+		
+		:Since: 12 
+	
+	
+

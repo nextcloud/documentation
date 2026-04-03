@@ -1,0 +1,633 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+ISearchRequest
+==============
+
+
+.. php:namespace:: OCP\FullTextSearch\Model
+
+.. php:interface:: ISearchRequest
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Interface ISearchRequest
+		
+		| When a search request is initiated, from a request from the front\-end or using
+		| the IFullTextSearchManager::search\(\) method, FullTextSearch will create a
+		| SearchRequest object, based on this interface\.
+		| 
+		| The object will be passed to the targeted Content Provider so it can convert
+		| search options using available method\.
+		| 
+		| The object is then encapsulated in a SearchResult and send to the
+		| Search Platform\.
+		
+	
+	:Source:
+		`lib/public/FullTextSearch/Model/ISearchRequest.php#46 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/ISearchRequest.php#L46>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public getSize()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the maximum number of results to be returns by the Search Platform\.
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/Model/ISearchRequest.php#56 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/ISearchRequest.php#L56>`_
+		
+		
+		:Since: 15.0.0 
+		:Returns: int 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getPage()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the current page\.
+			
+			| Used by pagination\.
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/Model/ISearchRequest.php#67 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/ISearchRequest.php#L67>`_
+		
+		
+		:Since: 15.0.0 
+		:Returns: int 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getAuthor()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the author of the request\.
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/Model/ISearchRequest.php#77 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/ISearchRequest.php#L77>`_
+		
+		
+		:Since: 15.0.0 
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getSearch()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the searched string\.
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/Model/ISearchRequest.php#86 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/ISearchRequest.php#L86>`_
+		
+		
+		:Since: 15.0.0 
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setSearch( $search)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set the searched string\.
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/Model/ISearchRequest.php#97 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/ISearchRequest.php#L97>`_
+		
+		
+		:Parameters:
+			* **$search** (string)  
+
+		
+		:Since: 17.0.0 
+		:Returns: :any:`\\OCP\\FullTextSearch\\Model\\ISearchRequest <OCP\\FullTextSearch\\Model\\ISearchRequest>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public addSearch( $search)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Extends the searched string\.
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/Model/ISearchRequest.php#108 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/ISearchRequest.php#L108>`_
+		
+		
+		:Parameters:
+			* **$search** (string)  
+
+		
+		:Since: 17.0.0 
+		:Returns: :any:`\\OCP\\FullTextSearch\\Model\\ISearchRequest <OCP\\FullTextSearch\\Model\\ISearchRequest>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getOption( $option, $default="")
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the value of an option \(as string\)\.
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/Model/ISearchRequest.php#121 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/ISearchRequest.php#L121>`_
+		
+		
+		:Parameters:
+			* **$option** (string)  
+			* **$default** (string)  
+
+		
+		:Since: 15.0.0 
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getOptionArray( $option, $default=\[\])
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the value of an option \(as array\)\.
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/Model/ISearchRequest.php#133 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/ISearchRequest.php#L133>`_
+		
+		
+		:Parameters:
+			* **$option** (string)  
+			* **$default** (array)  
+
+		
+		:Since: 15.0.0 
+		:Returns: array 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public addPart( $part)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Limit the search to a part of the document\.
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/Model/ISearchRequest.php#145 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/ISearchRequest.php#L145>`_
+		
+		
+		:Parameters:
+			* **$part** (string)  
+
+		
+		:Since: 15.0.0 
+		:Returns: :any:`\\OCP\\FullTextSearch\\Model\\ISearchRequest <OCP\\FullTextSearch\\Model\\ISearchRequest>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setParts( $parts)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Limit the search to an array of parts of the document\.
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/Model/ISearchRequest.php#156 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/ISearchRequest.php#L156>`_
+		
+		
+		:Parameters:
+			* **$parts** (array)  
+
+		
+		:Since: 15.0.0 
+		:Returns: :any:`\\OCP\\FullTextSearch\\Model\\ISearchRequest <OCP\\FullTextSearch\\Model\\ISearchRequest>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getParts()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the parts the search is limited to\.
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/Model/ISearchRequest.php#165 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/ISearchRequest.php#L165>`_
+		
+		
+		:Since: 15.0.0 
+		:Returns: array 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public addMetaTag( $tag)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Limit the search to a specific meta tag\.
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/Model/ISearchRequest.php#177 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/ISearchRequest.php#L177>`_
+		
+		
+		:Parameters:
+			* **$tag** (string)  
+
+		
+		:Since: 15.0.0 
+		:Returns: :any:`\\OCP\\FullTextSearch\\Model\\ISearchRequest <OCP\\FullTextSearch\\Model\\ISearchRequest>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getMetaTags()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the meta tags the search is limited to\.
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/Model/ISearchRequest.php#186 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/ISearchRequest.php#L186>`_
+		
+		
+		:Since: 15.0.0 
+		:Returns: array 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setMetaTags( $tags)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Limit the search to an array of meta tags\.
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/Model/ISearchRequest.php#197 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/ISearchRequest.php#L197>`_
+		
+		
+		:Parameters:
+			* **$tags** (array)  
+
+		
+		:Since: 15.0.0 
+		:Returns: :any:`\\OCP\\FullTextSearch\\Model\\ISearchRequest <OCP\\FullTextSearch\\Model\\ISearchRequest>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public addSubTag( $source, $tag)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Limit the search to a specific sub tag\.
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/Model/ISearchRequest.php#210 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/ISearchRequest.php#L210>`_
+		
+		
+		:Parameters:
+			* **$source** (string)  
+			* **$tag** (string)  
+
+		
+		:Since: 15.0.0 
+		:Returns: :any:`\\OCP\\FullTextSearch\\Model\\ISearchRequest <OCP\\FullTextSearch\\Model\\ISearchRequest>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getSubTags( $formatted)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the sub tags the search is limited to\.
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/Model/ISearchRequest.php#221 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/ISearchRequest.php#L221>`_
+		
+		
+		:Parameters:
+			* **$formatted** (bool)  
+
+		
+		:Since: 15.0.0 
+		:Returns: array 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setSubTags( $tags)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Limit the search to an array of sub tags\.
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/Model/ISearchRequest.php#232 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/ISearchRequest.php#L232>`_
+		
+		
+		:Parameters:
+			* **$tags** (array)  
+
+		
+		:Since: 15.0.0 
+		:Returns: :any:`\\OCP\\FullTextSearch\\Model\\ISearchRequest <OCP\\FullTextSearch\\Model\\ISearchRequest>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public addLimitField( $field)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Limit the search to a specific field of the mapping, using a full string\.
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/Model/ISearchRequest.php#244 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/ISearchRequest.php#L244>`_
+		
+		
+		:Parameters:
+			* **$field** (string)  
+
+		
+		:Since: 15.0.0 
+		:Returns: :any:`\\OCP\\FullTextSearch\\Model\\ISearchRequest <OCP\\FullTextSearch\\Model\\ISearchRequest>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getLimitFields()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the fields the search is limited to\.
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/Model/ISearchRequest.php#253 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/ISearchRequest.php#L253>`_
+		
+		
+		:Since: 15.0.0 
+		:Returns: array 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public addWildcardField( $field)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Limit the search to a specific field of the mapping, using a wildcard on
+			| the search string\.
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/Model/ISearchRequest.php#266 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/ISearchRequest.php#L266>`_
+		
+		
+		:Parameters:
+			* **$field** (string)  
+
+		
+		:Since: 15.0.0 
+		:Returns: :any:`\\OCP\\FullTextSearch\\Model\\ISearchRequest <OCP\\FullTextSearch\\Model\\ISearchRequest>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getWildcardFields()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the limit to field of the mapping\.
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/Model/ISearchRequest.php#275 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/ISearchRequest.php#L275>`_
+		
+		
+		:Since: 15.0.0 
+		:Returns: array 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public addRegexFilters( $filters)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Filter the results, based on a group of field, using regex
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/Model/ISearchRequest.php#287 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/ISearchRequest.php#L287>`_
+		
+		
+		:Parameters:
+			* **$filters** (array)  
+
+		
+		:Since: 15.0.0 
+		:Returns: :any:`\\OCP\\FullTextSearch\\Model\\ISearchRequest <OCP\\FullTextSearch\\Model\\ISearchRequest>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getRegexFilters()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the regex filters the search is limit to\.
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/Model/ISearchRequest.php#296 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/ISearchRequest.php#L296>`_
+		
+		
+		:Since: 15.0.0 
+		:Returns: array 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public addWildcardFilter( $filter)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Filter the results, based on a group of field, using wildcard
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/Model/ISearchRequest.php#308 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/ISearchRequest.php#L308>`_
+		
+		
+		:Parameters:
+			* **$filter** (array)  
+
+		
+		:Since: 15.0.0 
+		:Returns: :any:`\\OCP\\FullTextSearch\\Model\\ISearchRequest <OCP\\FullTextSearch\\Model\\ISearchRequest>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getWildcardFilters()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the wildcard filters the search is limit to\.
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/Model/ISearchRequest.php#317 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/ISearchRequest.php#L317>`_
+		
+		
+		:Since: 15.0.0 
+		:Returns: array 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public addField( $field)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Add an extra field to the search\.
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/Model/ISearchRequest.php#329 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/ISearchRequest.php#L329>`_
+		
+		
+		:Parameters:
+			* **$field** (string)  
+
+		
+		:Since: 15.0.0 
+		:Returns: :any:`\\OCP\\FullTextSearch\\Model\\ISearchRequest <OCP\\FullTextSearch\\Model\\ISearchRequest>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getFields()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the list of extra field to search into\.
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/Model/ISearchRequest.php#338 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/ISearchRequest.php#L338>`_
+		
+		
+		:Since: 15.0.0 
+		:Returns: array 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public addSimpleQuery( $query)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Add a MUST search on an extra field
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/Model/ISearchRequest.php#350 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/ISearchRequest.php#L350>`_
+		
+		
+		:Parameters:
+			* **$query** (:any:`OCP\\FullTextSearch\\Model\\ISearchRequestSimpleQuery <OCP\\FullTextSearch\\Model\\ISearchRequestSimpleQuery>`)  
+
+		
+		:Returns: :any:`\\OCP\\FullTextSearch\\Model\\ISearchRequest <OCP\\FullTextSearch\\Model\\ISearchRequest>` 
+		:Since: 17.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getSimpleQueries()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the list of queries on extra field\.
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/Model/ISearchRequest.php#359 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/ISearchRequest.php#L359>`_
+		
+		
+		:Returns: :any:`\\OCP\\FullTextSearch\\Model\\ISearchRequestSimpleQuery\[\] <OCP\\FullTextSearch\\Model\\ISearchRequestSimpleQuery>` 
+		:Since: 17.0.0 
+	
+	
+

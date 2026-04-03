@@ -1,0 +1,209 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IManager
+========
+
+
+.. php:namespace:: OCP\Notification
+
+.. php:interface:: IManager
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Interface IManager
+		
+	
+	:Implemented by:
+		:php:class:`OC\\Notification\\Manager` 
+	
+	
+	:Source:
+		`lib/public/Notification/IManager.php#34 <https://github.com/nextcloud/server/blob/stable13/lib/public/Notification/IManager.php#L34>`_
+	
+	:Parent:
+		:php:interface:`OCP\\Notification\\IApp`
+	
+	:Parent:
+		:php:interface:`OCP\\Notification\\INotifier`
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public registerApp( $appClass)
+	
+		:Source:
+			`lib/public/Notification/IManager.php#40 <https://github.com/nextcloud/server/blob/stable13/lib/public/Notification/IManager.php#L40>`_
+		
+		
+		:Parameters:
+			* **$appClass** (string)  The service must implement IApp, otherwise a
+			\InvalidArgumentException is thrown later
+
+		
+		:Since: 17.0.0 
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public registerNotifier( $service, $info)
+	
+		:Source:
+			`lib/public/Notification/IManager.php#50 <https://github.com/nextcloud/server/blob/stable13/lib/public/Notification/IManager.php#L50>`_
+		
+		
+		:Parameters:
+			* **$service** (:any:`Closure <Closure>`)  The service must implement INotifier, otherwise a
+			\InvalidArgumentException is thrown later
+			* **$info** (:any:`Closure <Closure>`)  An array with the keys 'id' and 'name' containing
+			the app id and the app name
+
+		
+		:Deprecated: 17.0.0 use registerNotifierService instead\.
+		:Since: 8.2.0 \- Parameter $info was added in 9\.0\.0
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public registerNotifierService( $notifierService)
+	
+		:Source:
+			`lib/public/Notification/IManager.php#58 <https://github.com/nextcloud/server/blob/stable13/lib/public/Notification/IManager.php#L58>`_
+		
+		
+		:Parameters:
+			* **$notifierService** (string)  The service must implement INotifier, otherwise a
+			\InvalidArgumentException is thrown later
+
+		
+		:Since: 17.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getNotifiers()
+	
+		:Source:
+			`lib/public/Notification/IManager.php#64 <https://github.com/nextcloud/server/blob/stable13/lib/public/Notification/IManager.php#L64>`_
+		
+		
+		:Returns: :any:`\\OCP\\Notification\\INotifier\[\] <OCP\\Notification\\INotifier>` 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public createNotification()
+	
+		:Source:
+			`lib/public/Notification/IManager.php#70 <https://github.com/nextcloud/server/blob/stable13/lib/public/Notification/IManager.php#L70>`_
+		
+		
+		:Returns: :any:`\\OCP\\Notification\\INotification <OCP\\Notification\\INotification>` 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public hasNotifiers()
+	
+		:Source:
+			`lib/public/Notification/IManager.php#76 <https://github.com/nextcloud/server/blob/stable13/lib/public/Notification/IManager.php#L76>`_
+		
+		
+		:Returns: bool 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setPreparingPushNotification( $preparingPushNotification)
+	
+		:Source:
+			`lib/public/Notification/IManager.php#82 <https://github.com/nextcloud/server/blob/stable13/lib/public/Notification/IManager.php#L82>`_
+		
+		
+		:Parameters:
+			* **$preparingPushNotification** (bool)  
+
+		
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isPreparingPushNotification()
+	
+		:Source:
+			`lib/public/Notification/IManager.php#88 <https://github.com/nextcloud/server/blob/stable13/lib/public/Notification/IManager.php#L88>`_
+		
+		
+		:Returns: bool 
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public dismissNotification( $notification)
+	
+		:Source:
+			`lib/public/Notification/IManager.php#93 <https://github.com/nextcloud/server/blob/stable13/lib/public/Notification/IManager.php#L93>`_
+		
+		
+		:Since: 18.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public defer()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Start deferring notifications until \`flush\(\)\` is called
+			
+			| The calling app should only "flush" when it got returned true on the defer call,
+			| otherwise another app is deferring the sending already\.
+			
+		
+		:Source:
+			`lib/public/Notification/IManager.php#103 <https://github.com/nextcloud/server/blob/stable13/lib/public/Notification/IManager.php#L103>`_
+		
+		
+		:Returns: bool 
+		:Since: 20.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public flush()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Send all deferred notifications that have been stored since \`defer\(\)\` was called
+			
+		
+		:Source:
+			`lib/public/Notification/IManager.php#110 <https://github.com/nextcloud/server/blob/stable13/lib/public/Notification/IManager.php#L110>`_
+		
+		
+		:Since: 20.0.0 
+	
+	
+

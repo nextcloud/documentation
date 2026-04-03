@@ -1,0 +1,136 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+AFilesDocument
+==============
+
+
+.. php:namespace:: OCP\Files_FullTextSearch\Model
+
+.. rst-class::  abstract
+
+.. php:class:: AFilesDocument
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Abstract Class AFilesDocument
+		
+		| This is mostly used by 3rd party apps that want to complete the IIndexDocument
+		| with more information about a file before its index:
+		| 
+		|    \\OC::$server\-\>getEventDispatcher\(\)\-\>addListener\(
+		|        \'\\OCA\\Files\_FullTextSearch::onFileIndexing\',
+		|        function\(GenericEvent $e\) \{
+		|            //@var \\OCP\\Files\\Node $file
+		|            $file = $e\-\>getArgument\(\'file\'\);
+		| 
+		|            // @var \\OCP\\Files\_FullTextSearch\\Model\\AFilesDocument $document
+		|            $document = $e\-\>getArgument\(\'document\'\);
+		|        \}
+		|    \);
+		
+	
+	:Source:
+		`lib/public/Files_FullTextSearch/Model/AFilesDocument.php#52 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files_FullTextSearch/Model/AFilesDocument.php#L52>`_
+	
+	:Parent:
+		:php:class:`OC\\FullTextSearch\\Model\\IndexDocument`
+	
+
+Methods
+-------
+
+.. rst-class:: public abstract
+
+	.. php:method:: public abstract getOwnerId()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the owner of the document/file\.
+			
+		
+		:Source:
+			`lib/public/Files_FullTextSearch/Model/AFilesDocument.php#62 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files_FullTextSearch/Model/AFilesDocument.php#L62>`_
+		
+		
+		:Since: 15.0.0 
+		:Returns: string 
+	
+	
+
+.. rst-class:: public abstract
+
+	.. php:method:: public abstract getViewerId()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the current viewer of the document/file\.
+			
+		
+		:Source:
+			`lib/public/Files_FullTextSearch/Model/AFilesDocument.php#72 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files_FullTextSearch/Model/AFilesDocument.php#L72>`_
+		
+		
+		:Since: 15.0.0 
+		:Returns: string 
+	
+	
+
+.. rst-class:: public abstract
+
+	.. php:method:: public abstract getType()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the type of the document/file\.
+			
+		
+		:Source:
+			`lib/public/Files_FullTextSearch/Model/AFilesDocument.php#82 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files_FullTextSearch/Model/AFilesDocument.php#L82>`_
+		
+		
+		:Since: 15.0.0 
+		:Returns: string \\OCP\\Files\\FileInfo::TYPE\_FILE\|\\OCP\\Files\\FileInfo::TYPE\_FOLDER
+	
+	
+
+.. rst-class:: public abstract
+
+	.. php:method:: public abstract getMimetype()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the mimetype of the document/file\.
+			
+		
+		:Source:
+			`lib/public/Files_FullTextSearch/Model/AFilesDocument.php#92 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files_FullTextSearch/Model/AFilesDocument.php#L92>`_
+		
+		
+		:Since: 15.0.0 
+		:Returns: string 
+	
+	
+
+.. rst-class:: public abstract
+
+	.. php:method:: public abstract getPath()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the path of the document/file\.
+			
+		
+		:Source:
+			`lib/public/Files_FullTextSearch/Model/AFilesDocument.php#101 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files_FullTextSearch/Model/AFilesDocument.php#L101>`_
+		
+		
+		:Since: 15.0.0 
+		:Returns: string 
+	
+	
+

@@ -1,0 +1,49 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IProvider
+=========
+
+
+.. php:namespace:: OCP\Activity
+
+.. php:interface:: IProvider
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Interface IProvider
+		
+	
+	:Source:
+		`lib/public/Activity/IProvider.php#31 <https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IProvider.php#L31>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public parse( $language, $event, $previousEvent=null)
+	
+		:Source:
+			`lib/public/Activity/IProvider.php#42 <https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IProvider.php#L42>`_
+		
+		
+		:Parameters:
+			* **$language** (string)  The language which should be used for translating, e.g. "en"
+			* **$event** (:any:`OCP\\Activity\\IEvent <OCP\\Activity\\IEvent>`)  The current event which should be parsed
+			* **$previousEvent** (:any:`OCP\\Activity\\IEvent <OCP\\Activity\\IEvent>` | null)  A potential previous event which you can combine with the current one.
+			To do so, simply use setChildEvent($previousEvent) after setting the
+			combined subject on the current event.
+
+		
+		:Returns: :any:`\\OCP\\Activity\\IEvent <OCP\\Activity\\IEvent>` 
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` Should be thrown if your provider does not know this event
+		:Since: 11.0.0 
+	
+	
+

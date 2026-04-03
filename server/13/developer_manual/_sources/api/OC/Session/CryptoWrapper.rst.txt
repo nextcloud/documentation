@@ -1,0 +1,125 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+CryptoWrapper
+=============
+
+
+.. php:namespace:: OC\Session
+
+.. php:class:: CryptoWrapper
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Class CryptoWrapper provides some rough basic level of additional security by
+		| storing the session data in an encrypted form\.
+		
+		| The content of the session is encrypted using another cookie sent by the browser\.
+		| One should note that an adversary with access to the source code or the system
+		| memory is still able to read the original session ID from the users\' request\.
+		| This thus can not be considered a strong security measure one should consider
+		| it as an additional small security obfuscation layer to comply with compliance
+		| guidelines\.
+		| 
+		| TODO: Remove this in a future release with an approach such as
+		| https://github\.com/owncloud/core/pull/17866
+		
+	
+	:Source:
+		`lib/private/Session/CryptoWrapper.php#51 <https://github.com/nextcloud/server/blob/stable13/lib/private/Session/CryptoWrapper.php#L51>`_
+	
+
+Constants
+---------
+
+.. php:const:: COOKIE_NAME = oc\_sessionPassphrase
+
+	:Source:
+		`lib/private/Session/CryptoWrapper.php#52 <https://github.com/nextcloud/server/blob/stable13/lib/private/Session/CryptoWrapper.php#L52>`_
+	
+
+
+Properties
+----------
+
+.. php:attr:: protected static config
+
+	:Source:
+		`lib/private/Session/CryptoWrapper.php#55 <https://github.com/nextcloud/server/blob/stable13/lib/private/Session/CryptoWrapper.php#L55>`_
+	
+	:Type: :any:`\\OCP\\IConfig <OCP\\IConfig>` 
+
+
+.. php:attr:: protected static session
+
+	:Source:
+		`lib/private/Session/CryptoWrapper.php#57 <https://github.com/nextcloud/server/blob/stable13/lib/private/Session/CryptoWrapper.php#L57>`_
+	
+	:Type: :any:`\\OCP\\ISession <OCP\\ISession>` 
+
+
+.. php:attr:: protected static crypto
+
+	:Source:
+		`lib/private/Session/CryptoWrapper.php#59 <https://github.com/nextcloud/server/blob/stable13/lib/private/Session/CryptoWrapper.php#L59>`_
+	
+	:Type: :any:`\\OCP\\Security\\ICrypto <OCP\\Security\\ICrypto>` 
+
+
+.. php:attr:: protected static random
+
+	:Source:
+		`lib/private/Session/CryptoWrapper.php#61 <https://github.com/nextcloud/server/blob/stable13/lib/private/Session/CryptoWrapper.php#L61>`_
+	
+	:Type: :any:`\\OCP\\Security\\ISecureRandom <OCP\\Security\\ISecureRandom>` 
+
+
+.. php:attr:: protected static passphrase
+
+	:Source:
+		`lib/private/Session/CryptoWrapper.php#63 <https://github.com/nextcloud/server/blob/stable13/lib/private/Session/CryptoWrapper.php#L63>`_
+	
+	:Type: string 
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $config, $crypto, $random, $request)
+	
+		:Source:
+			`lib/private/Session/CryptoWrapper.php#71 <https://github.com/nextcloud/server/blob/stable13/lib/private/Session/CryptoWrapper.php#L71>`_
+		
+		
+		:Parameters:
+			* **$config** (:any:`OCP\\IConfig <OCP\\IConfig>`)  
+			* **$crypto** (:any:`OCP\\Security\\ICrypto <OCP\\Security\\ICrypto>`)  
+			* **$random** (:any:`OCP\\Security\\ISecureRandom <OCP\\Security\\ISecureRandom>`)  
+			* **$request** (:any:`OCP\\IRequest <OCP\\IRequest>`)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public wrapSession( $session)
+	
+		:Source:
+			`lib/private/Session/CryptoWrapper.php#111 <https://github.com/nextcloud/server/blob/stable13/lib/private/Session/CryptoWrapper.php#L111>`_
+		
+		
+		:Parameters:
+			* **$session** (:any:`OCP\\ISession <OCP\\ISession>`)  
+
+		
+		:Returns: :any:`\\OCP\\ISession <OCP\\ISession>` 
+	
+	
+

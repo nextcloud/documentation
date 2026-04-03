@@ -1,0 +1,186 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+GuestAvatar
+===========
+
+
+.. php:namespace:: OC\Avatar
+
+.. php:class:: GuestAvatar
+
+
+	.. rst-class:: phpdoc-description
+	
+		| This class represents a guest user\'s avatar\.
+		
+	
+	:Source:
+		`lib/private/Avatar/GuestAvatar.php#35 <https://github.com/nextcloud/server/blob/stable13/lib/private/Avatar/GuestAvatar.php#L35>`_
+	
+	:Parent:
+		:php:class:`OC\\Avatar\\Avatar`
+	
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $userDisplayName, $logger)
+	
+		.. rst-class:: phpdoc-description
+		
+			| GuestAvatar constructor\.
+			
+		
+		:Source:
+			`lib/private/Avatar/GuestAvatar.php#49 <https://github.com/nextcloud/server/blob/stable13/lib/private/Avatar/GuestAvatar.php#L49>`_
+		
+		
+		:Parameters:
+			* **$userDisplayName** (string)  The guest user display name
+			* **$logger** (:any:`Psr\\Log\\LoggerInterface <Psr\\Log\\LoggerInterface>`)  The logger
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public exists()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Tests if the user has an avatar\.
+			
+		
+		:Source:
+			`lib/private/Avatar/GuestAvatar.php#59 <https://github.com/nextcloud/server/blob/stable13/lib/private/Avatar/GuestAvatar.php#L59>`_
+		
+		
+		:Returns: bool Guests always have an avatar\.
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getDisplayName()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the guest user display name\.
+			
+		
+		:Source:
+			`lib/private/Avatar/GuestAvatar.php#68 <https://github.com/nextcloud/server/blob/stable13/lib/private/Avatar/GuestAvatar.php#L68>`_
+		
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public set( $data)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Setting avatars isn\'t implemented for guests\.
+			
+		
+		:Source:
+			`lib/private/Avatar/GuestAvatar.php#78 <https://github.com/nextcloud/server/blob/stable13/lib/private/Avatar/GuestAvatar.php#L78>`_
+		
+		
+		:Parameters:
+			* **$data** (:any:`OCP\\IImage <OCP\\IImage>` | resource | string)  
+
+		
+		:Returns: void 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public remove()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Removing avatars isn\'t implemented for guests\.
+			
+		
+		:Source:
+			`lib/private/Avatar/GuestAvatar.php#85 <https://github.com/nextcloud/server/blob/stable13/lib/private/Avatar/GuestAvatar.php#L85>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getFile( $size)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Generates an avatar for the guest\.
+			
+		
+		:Source:
+			`lib/private/Avatar/GuestAvatar.php#95 <https://github.com/nextcloud/server/blob/stable13/lib/private/Avatar/GuestAvatar.php#L95>`_
+		
+		
+		:Parameters:
+			* **$size** (int)  The desired image size.
+
+		
+		:Returns: :any:`\\OCP\\Files\\SimpleFS\\InMemoryFile <OCP\\Files\\SimpleFS\\InMemoryFile>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public userChanged( $feature, $oldValue, $newValue)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Updates the display name if changed\.
+			
+		
+		:Source:
+			`lib/private/Avatar/GuestAvatar.php#108 <https://github.com/nextcloud/server/blob/stable13/lib/private/Avatar/GuestAvatar.php#L108>`_
+		
+		
+		:Parameters:
+			* **$feature** (string)  The changed feature
+			* **$oldValue** (mixed)  The previous value
+			* **$newValue** (mixed)  The new value
+
+		
+		:Returns: void 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isCustomAvatar()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Guests don\'t have custom avatars\.
+			
+		
+		:Source:
+			`lib/private/Avatar/GuestAvatar.php#119 <https://github.com/nextcloud/server/blob/stable13/lib/private/Avatar/GuestAvatar.php#L119>`_
+		
+		
+		:Returns: bool 
+	
+	
+

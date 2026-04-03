@@ -1,0 +1,190 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IDashboardManager
+=================
+
+
+.. php:namespace:: OCP\Dashboard
+
+.. php:interface:: IDashboardManager
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Interface IDashboardManager
+		
+		| IDashboardManager should be used to manage widget from the backend\.
+		| The call can be done from any Service\.
+		
+	
+	:Implemented by:
+		:php:class:`OC\\Dashboard\\DashboardManager` 
+	
+	
+	:Source:
+		`lib/public/Dashboard/IDashboardManager.php#45 <https://github.com/nextcloud/server/blob/stable13/lib/public/Dashboard/IDashboardManager.php#L45>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public registerWidgetsService( $widgetsService)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Register a IWidgetsService\.
+			
+		
+		:Source:
+			`lib/public/Dashboard/IDashboardManager.php#56 <https://github.com/nextcloud/server/blob/stable13/lib/public/Dashboard/IDashboardManager.php#L56>`_
+		
+		
+		:Parameters:
+			* **$widgetsService** (:any:`OCP\\Dashboard\\Service\\IWidgetsService <OCP\\Dashboard\\Service\\IWidgetsService>`)  
+
+		
+		:Since: 15.0.0 
+		:Deprecated: 20.0.0 
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public registerEventsService( $eventsService)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Register a IEventsService\.
+			
+		
+		:Source:
+			`lib/public/Dashboard/IDashboardManager.php#67 <https://github.com/nextcloud/server/blob/stable13/lib/public/Dashboard/IDashboardManager.php#L67>`_
+		
+		
+		:Parameters:
+			* **$eventsService** (:any:`OCP\\Dashboard\\Service\\IEventsService <OCP\\Dashboard\\Service\\IEventsService>`)  
+
+		
+		:Since: 15.0.0 
+		:Deprecated: 20.0.0 
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public getWidgetConfig( $widgetId, $userId)
+	
+		.. rst-class:: phpdoc-description
+		
+			| returns the OCP\\Dashboard\\Model\\IWidgetConfig for a widgetId and userId\.
+			
+		
+		:Source:
+			`lib/public/Dashboard/IDashboardManager.php#84 <https://github.com/nextcloud/server/blob/stable13/lib/public/Dashboard/IDashboardManager.php#L84>`_
+		
+		
+		:Parameters:
+			* **$widgetId** (string)  
+			* **$userId** (string)  
+
+		
+		:See: :any:`\\OCP\\Dashboard\\Model\\IWidgetConfig <OCP\\Dashboard\\Model\\IWidgetConfig>` 
+		:Since: 15.0.0 
+		:Deprecated: 20.0.0 
+		:Throws: :any:`\\OCP\\Dashboard\\Exceptions\\DashboardAppNotAvailableException <OCP\\Dashboard\\Exceptions\\DashboardAppNotAvailableException>` 
+		:Returns: :any:`\\OCP\\Dashboard\\Model\\IWidgetConfig <OCP\\Dashboard\\Model\\IWidgetConfig>` 
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public createUsersEvent( $widgetId, $users, $payload, $uniqueId="")
+	
+		.. rst-class:: phpdoc-description
+		
+			| Create push notifications for users\.
+			
+			| $payload is an array that will be send to the Javascript method
+			| called on push\.
+			| $uniqueId needs to be used if you send the push to multiples users
+			| and multiples groups so that one user does not have duplicate
+			| notifications\.
+			| 
+			| Push notifications are created in database and broadcast to user
+			| that are running dashboard\.
+			
+		
+		:Source:
+			`lib/public/Dashboard/IDashboardManager.php#107 <https://github.com/nextcloud/server/blob/stable13/lib/public/Dashboard/IDashboardManager.php#L107>`_
+		
+		
+		:Parameters:
+			* **$widgetId** (string)  
+			* **$users** (array)  
+			* **$payload** (array)  
+			* **$uniqueId** (string)  
+
+		
+		:Since: 15.0.0 
+		:Deprecated: 20.0.0 
+		:Throws: :any:`\\OCP\\Dashboard\\Exceptions\\DashboardAppNotAvailableException <OCP\\Dashboard\\Exceptions\\DashboardAppNotAvailableException>` 
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public createGroupsEvent( $widgetId, $groups, $payload, $uniqueId="")
+	
+		.. rst-class:: phpdoc-description
+		
+			| Create push notifications for groups\. \(ie\. createUsersEvent\(\)\)
+			
+		
+		:Source:
+			`lib/public/Dashboard/IDashboardManager.php#122 <https://github.com/nextcloud/server/blob/stable13/lib/public/Dashboard/IDashboardManager.php#L122>`_
+		
+		
+		:Parameters:
+			* **$widgetId** (string)  
+			* **$groups** (array)  
+			* **$payload** (array)  
+			* **$uniqueId** (string)  
+
+		
+		:Since: 15.0.0 
+		:Deprecated: 20.0.0 
+		:Throws: :any:`\\OCP\\Dashboard\\Exceptions\\DashboardAppNotAvailableException <OCP\\Dashboard\\Exceptions\\DashboardAppNotAvailableException>` 
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public createGlobalEvent( $widgetId, $payload, $uniqueId="")
+	
+		.. rst-class:: phpdoc-description
+		
+			| Create push notifications for everyone\. \(ie\. createUsersEvent\(\)\)
+			
+		
+		:Source:
+			`lib/public/Dashboard/IDashboardManager.php#136 <https://github.com/nextcloud/server/blob/stable13/lib/public/Dashboard/IDashboardManager.php#L136>`_
+		
+		
+		:Parameters:
+			* **$widgetId** (string)  
+			* **$payload** (array)  
+			* **$uniqueId** (string)  
+
+		
+		:Since: 15.0.0 
+		:Deprecated: 20.0.0 
+		:Throws: :any:`\\OCP\\Dashboard\\Exceptions\\DashboardAppNotAvailableException <OCP\\Dashboard\\Exceptions\\DashboardAppNotAvailableException>` 
+	
+	
+

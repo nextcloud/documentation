@@ -1,0 +1,290 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IClient
+=======
+
+
+.. php:namespace:: OCP\Http\Client
+
+.. php:interface:: IClient
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Interface IClient
+		
+	
+	:Implemented by:
+		:php:class:`OC\\Http\\Client\\Client` 
+	
+	
+	:Source:
+		`lib/public/Http/Client/IClient.php#35 <https://github.com/nextcloud/server/blob/stable13/lib/public/Http/Client/IClient.php#L35>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public get( $uri, $options=\[\])
+	
+		.. rst-class:: phpdoc-description
+		
+			| Sends a GET request
+			
+		
+		:Source:
+			`lib/public/Http/Client/IClient.php#65 <https://github.com/nextcloud/server/blob/stable13/lib/public/Http/Client/IClient.php#L65>`_
+		
+		
+		:Parameters:
+			* **$uri** (string)  
+			* **$options** (array)  Array such as
+			'query' => [
+			    'field' => 'abc',
+			    'other_field' => '123',
+			    'file_name' => fopen('/path/to/file', 'r'),
+			],
+			'headers' => [
+			    'foo' => 'bar',
+			],
+			'cookies' => ['
+			    'foo' => 'bar',
+			],
+			'allow_redirects' => [
+			     'max'       => 10,  // allow at most 10 redirects.
+			     'strict'    => true,     // use "strict" RFC compliant redirects.
+			     'referer'   => true,     // add a Referer header
+			     'protocols' => ['https'] // only allow https URLs
+			],
+			'sink' => '/path/to/file', // save to a file or a stream
+			'verify' => true, // bool or string to CA file
+			'debug' => true,
+
+		
+		:Returns: :any:`\\OCP\\Http\\Client\\IResponse <OCP\\Http\\Client\\IResponse>` 
+		:Throws: :any:`\\Exception <Exception>` If the request could not get completed
+		:Since: 8.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public head( $uri, $options=\[\])
+	
+		.. rst-class:: phpdoc-description
+		
+			| Sends a HEAD request
+			
+		
+		:Source:
+			`lib/public/Http/Client/IClient.php#90 <https://github.com/nextcloud/server/blob/stable13/lib/public/Http/Client/IClient.php#L90>`_
+		
+		
+		:Parameters:
+			* **$uri** (string)  
+			* **$options** (array)  Array such as
+			'headers' => [
+			    'foo' => 'bar',
+			],
+			'cookies' => ['
+			    'foo' => 'bar',
+			],
+			'allow_redirects' => [
+			     'max'       => 10,  // allow at most 10 redirects.
+			     'strict'    => true,     // use "strict" RFC compliant redirects.
+			     'referer'   => true,     // add a Referer header
+			     'protocols' => ['https'] // only allow https URLs
+			],
+			'sink' => '/path/to/file', // save to a file or a stream
+			'verify' => true, // bool or string to CA file
+			'debug' => true,
+
+		
+		:Returns: :any:`\\OCP\\Http\\Client\\IResponse <OCP\\Http\\Client\\IResponse>` 
+		:Throws: :any:`\\Exception <Exception>` If the request could not get completed
+		:Since: 8.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public post( $uri, $options=\[\])
+	
+		.. rst-class:: phpdoc-description
+		
+			| Sends a POST request
+			
+		
+		:Source:
+			`lib/public/Http/Client/IClient.php#120 <https://github.com/nextcloud/server/blob/stable13/lib/public/Http/Client/IClient.php#L120>`_
+		
+		
+		:Parameters:
+			* **$uri** (string)  
+			* **$options** (array)  Array such as
+			'body' => [
+			    'field' => 'abc',
+			    'other_field' => '123',
+			    'file_name' => fopen('/path/to/file', 'r'),
+			],
+			'headers' => [
+			    'foo' => 'bar',
+			],
+			'cookies' => ['
+			    'foo' => 'bar',
+			],
+			'allow_redirects' => [
+			     'max'       => 10,  // allow at most 10 redirects.
+			     'strict'    => true,     // use "strict" RFC compliant redirects.
+			     'referer'   => true,     // add a Referer header
+			     'protocols' => ['https'] // only allow https URLs
+			],
+			'sink' => '/path/to/file', // save to a file or a stream
+			'verify' => true, // bool or string to CA file
+			'debug' => true,
+
+		
+		:Returns: :any:`\\OCP\\Http\\Client\\IResponse <OCP\\Http\\Client\\IResponse>` 
+		:Throws: :any:`\\Exception <Exception>` If the request could not get completed
+		:Since: 8.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public put( $uri, $options=\[\])
+	
+		.. rst-class:: phpdoc-description
+		
+			| Sends a PUT request
+			
+		
+		:Source:
+			`lib/public/Http/Client/IClient.php#150 <https://github.com/nextcloud/server/blob/stable13/lib/public/Http/Client/IClient.php#L150>`_
+		
+		
+		:Parameters:
+			* **$uri** (string)  
+			* **$options** (array)  Array such as
+			'body' => [
+			    'field' => 'abc',
+			    'other_field' => '123',
+			    'file_name' => fopen('/path/to/file', 'r'),
+			],
+			'headers' => [
+			    'foo' => 'bar',
+			],
+			'cookies' => ['
+			    'foo' => 'bar',
+			],
+			'allow_redirects' => [
+			     'max'       => 10,  // allow at most 10 redirects.
+			     'strict'    => true,     // use "strict" RFC compliant redirects.
+			     'referer'   => true,     // add a Referer header
+			     'protocols' => ['https'] // only allow https URLs
+			],
+			'sink' => '/path/to/file', // save to a file or a stream
+			'verify' => true, // bool or string to CA file
+			'debug' => true,
+
+		
+		:Returns: :any:`\\OCP\\Http\\Client\\IResponse <OCP\\Http\\Client\\IResponse>` 
+		:Throws: :any:`\\Exception <Exception>` If the request could not get completed
+		:Since: 8.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public delete( $uri, $options=\[\])
+	
+		.. rst-class:: phpdoc-description
+		
+			| Sends a DELETE request
+			
+		
+		:Source:
+			`lib/public/Http/Client/IClient.php#180 <https://github.com/nextcloud/server/blob/stable13/lib/public/Http/Client/IClient.php#L180>`_
+		
+		
+		:Parameters:
+			* **$uri** (string)  
+			* **$options** (array)  Array such as
+			'body' => [
+			    'field' => 'abc',
+			    'other_field' => '123',
+			    'file_name' => fopen('/path/to/file', 'r'),
+			],
+			'headers' => [
+			    'foo' => 'bar',
+			],
+			'cookies' => ['
+			    'foo' => 'bar',
+			],
+			'allow_redirects' => [
+			     'max'       => 10,  // allow at most 10 redirects.
+			     'strict'    => true,     // use "strict" RFC compliant redirects.
+			     'referer'   => true,     // add a Referer header
+			     'protocols' => ['https'] // only allow https URLs
+			],
+			'sink' => '/path/to/file', // save to a file or a stream
+			'verify' => true, // bool or string to CA file
+			'debug' => true,
+
+		
+		:Returns: :any:`\\OCP\\Http\\Client\\IResponse <OCP\\Http\\Client\\IResponse>` 
+		:Throws: :any:`\\Exception <Exception>` If the request could not get completed
+		:Since: 8.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public options( $uri, $options=\[\])
+	
+		.. rst-class:: phpdoc-description
+		
+			| Sends a options request
+			
+		
+		:Source:
+			`lib/public/Http/Client/IClient.php#210 <https://github.com/nextcloud/server/blob/stable13/lib/public/Http/Client/IClient.php#L210>`_
+		
+		
+		:Parameters:
+			* **$uri** (string)  
+			* **$options** (array)  Array such as
+			'body' => [
+			    'field' => 'abc',
+			    'other_field' => '123',
+			    'file_name' => fopen('/path/to/file', 'r'),
+			],
+			'headers' => [
+			    'foo' => 'bar',
+			],
+			'cookies' => ['
+			    'foo' => 'bar',
+			],
+			'allow_redirects' => [
+			     'max'       => 10,  // allow at most 10 redirects.
+			     'strict'    => true,     // use "strict" RFC compliant redirects.
+			     'referer'   => true,     // add a Referer header
+			     'protocols' => ['https'] // only allow https URLs
+			],
+			'sink' => '/path/to/file', // save to a file or a stream
+			'verify' => true, // bool or string to CA file
+			'debug' => true,
+
+		
+		:Returns: :any:`\\OCP\\Http\\Client\\IResponse <OCP\\Http\\Client\\IResponse>` 
+		:Throws: :any:`\\Exception <Exception>` If the request could not get completed
+		:Since: 8.1.0 
+	
+	
+

@@ -1,0 +1,363 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Configuring Object Storage as Primary Storage &mdash; Nextcloud 14 Administration Manual 14 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'14',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../contents.html">
+          
+
+          
+            
+            <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_server/index.html">Server configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_user/index.html">User management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">File sharing and management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../file_workflows/index.html">File workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_database/index.html">Database configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_mimetypes/index.html">Mimetypes management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../maintenance/index.html">Maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../issues/index.html">Issues and troubleshooting</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud 14 Administration Manual</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../contents.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Configuring Object Storage as Primary Storage</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/nextcloud/documentation/edit/stable14/admin_manual/configuration_files/primary_storage.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="configuring-object-storage-as-primary-storage">
+<h1>Configuring Object Storage as Primary Storage<a class="headerlink" href="#configuring-object-storage-as-primary-storage" title="Permalink to this headline">¶</a></h1>
+<p>Nextcloud allows to configure object storages like OpenStack Swift or
+Amazon Simple Storage Service (S3) or any compatible S3-implementation
+(e.g. Minio or Ceph Object Gateway) as primary storage replacing the default
+storage of files.</p>
+<p>By default, files are stored in <code class="code docutils literal"><span class="pre">nextcloud/data</span></code> or another directory configured
+in the <code class="code docutils literal"><span class="pre">config.php</span></code> of your Nextcloud instance. This data directory might
+still be used for compatibility reasons)</p>
+<div class="section" id="implications">
+<h2>Implications<a class="headerlink" href="#implications" title="Permalink to this headline">¶</a></h2>
+<p>When using an object store as primary storage, Nextcloud assumes exclusive access
+over the bucket being used.</p>
+<p>Contrary to using an object store as external storage, when an object store is used
+as primary storage, no metadata (names, directory structures, etc) is stored in the
+object store. The metadata is only stored in the database and the object store only
+holds the file content by unique identifier.</p>
+<p>Because of this primary object stores usually perform better than when using the same
+object store as external storage but it restricts being able to access the files from
+outside of Nextcloud.</p>
+</div>
+<div class="section" id="configuration">
+<h2>Configuration<a class="headerlink" href="#configuration" title="Permalink to this headline">¶</a></h2>
+<p>Primary object stores need to be configured in <code class="code docutils literal"><span class="pre">config.php</span></code> by specifying
+the objectstore backend and any backend specific configuration.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Configuring a primary object store on an existing Nextcloud instance will
+make all existing files on the instance inaccessible.</p>
+</div>
+<p>The configuration has the following structure:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="s1">&#39;objectstore&#39;</span> <span class="o">=&gt;</span> <span class="n">array</span><span class="p">(</span>
+        <span class="s1">&#39;class&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Object</span><span class="se">\\</span><span class="s1">Storage</span><span class="se">\\</span><span class="s1">Backend</span><span class="se">\\</span><span class="s1">Class&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;arguments&#39;</span> <span class="o">=&gt;</span> <span class="n">array</span><span class="p">(</span>
+                <span class="o">...</span>
+        <span class="p">),</span>
+<span class="p">),</span>
+</pre></div>
+</div>
+<div class="section" id="openstack-swift">
+<h3>OpenStack Swift<a class="headerlink" href="#openstack-swift" title="Permalink to this headline">¶</a></h3>
+<p>The OpenStack Swift backend mounts a container on an OpenStack Object Storage
+server into the virtual filesystem.</p>
+<p>The class to be used is <code class="code docutils literal"><span class="pre">\\OC\\Files\\ObjectStore\\Swift</span></code></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="s1">&#39;objectstore&#39;</span> <span class="o">=&gt;</span> <span class="n">array</span><span class="p">(</span>
+        <span class="s1">&#39;class&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;</span><span class="se">\\</span><span class="s1">OC</span><span class="se">\\</span><span class="s1">Files</span><span class="se">\\</span><span class="s1">ObjectStore</span><span class="se">\\</span><span class="s1">Swift&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;arguments&#39;</span> <span class="o">=&gt;</span> <span class="n">array</span><span class="p">(</span>
+                <span class="s1">&#39;username&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;username&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;password&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;Secr3tPaSSWoRdt7&#39;</span><span class="p">,</span>
+                <span class="o">//</span> <span class="n">the</span> <span class="n">container</span> <span class="n">to</span> <span class="n">store</span> <span class="n">the</span> <span class="n">data</span> <span class="ow">in</span>
+                <span class="s1">&#39;bucket&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;nextcloud&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;autocreate&#39;</span> <span class="o">=&gt;</span> <span class="n">true</span><span class="p">,</span>
+                <span class="s1">&#39;region&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;RegionOne&#39;</span><span class="p">,</span>
+                <span class="o">//</span> <span class="n">The</span> <span class="n">Identity</span> <span class="o">/</span> <span class="n">Keystone</span> <span class="n">endpoint</span>
+                <span class="s1">&#39;url&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;http://example.com/v2.0&#39;</span><span class="p">,</span>
+                <span class="o">//</span> <span class="n">optional</span> <span class="n">on</span> <span class="n">some</span> <span class="n">swift</span> <span class="n">implementations</span>
+                <span class="s1">&#39;tenantName&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;username&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;serviceName&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;swift&#39;</span><span class="p">,</span>
+                <span class="o">//</span> <span class="n">The</span> <span class="n">Interface</span> <span class="o">/</span> <span class="n">url</span> <span class="n">Type</span><span class="p">,</span> <span class="n">optional</span>
+                <span class="s1">&#39;urlType&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;internal&#39;</span>
+        <span class="p">),</span>
+<span class="p">),</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="simple-storage-service-s3">
+<h3>Simple Storage Service (S3)<a class="headerlink" href="#simple-storage-service-s3" title="Permalink to this headline">¶</a></h3>
+<p>The simple storage service (S3) backend mounts a bucket on an Amazon S3 object
+storage or compatible implementation (e.g. Minio or Ceph Object Gateway) into the
+virtual filesystem.</p>
+<p>The class to be used is <code class="code docutils literal"><span class="pre">\\OC\\Files\\ObjectStore\\S3</span></code></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="s1">&#39;objectstore&#39;</span> <span class="o">=&gt;</span> <span class="n">array</span><span class="p">(</span>
+        <span class="s1">&#39;class&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;</span><span class="se">\\</span><span class="s1">OC</span><span class="se">\\</span><span class="s1">Files</span><span class="se">\\</span><span class="s1">ObjectStore</span><span class="se">\\</span><span class="s1">S3&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;arguments&#39;</span> <span class="o">=&gt;</span> <span class="n">array</span><span class="p">(</span>
+                <span class="s1">&#39;bucket&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;nextcloud&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;autocreate&#39;</span> <span class="o">=&gt;</span> <span class="n">true</span><span class="p">,</span>
+                <span class="s1">&#39;key&#39;</span>    <span class="o">=&gt;</span> <span class="s1">&#39;EJ39ITYZEUH5BGWDRUFY&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;secret&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;M5MrXTRjkyMaxXPe2FRXMTfTfbKEnZCu+7uRTVSj&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;hostname&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;example.com&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;port&#39;</span> <span class="o">=&gt;</span> <span class="mi">1234</span><span class="p">,</span>
+                <span class="s1">&#39;use_ssl&#39;</span> <span class="o">=&gt;</span> <span class="n">true</span><span class="p">,</span>
+                <span class="s1">&#39;region&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;optional&#39;</span><span class="p">,</span>
+                <span class="o">//</span> <span class="n">required</span> <span class="k">for</span> <span class="n">some</span> <span class="n">non</span> <span class="n">Amazon</span> <span class="n">S3</span> <span class="n">implementations</span>
+                <span class="s1">&#39;use_path_style&#39;</span><span class="o">=&gt;</span><span class="n">true</span>
+        <span class="p">),</span>
+<span class="p">),</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Not all configuration options are required for all S3 servers. Overriding
+the hostname, port and region of your S3 server is only required for
+non-Amazon implementations, which in turn usually don&#8217;t require the region to be set.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last"><code class="code docutils literal"><span class="pre">use_path_style</span></code> is usually not required (and is, in fact, incompatible
+with newer Amazon datacenters), but can be used with non-Amazon servers
+where the DNS infrastructure cannot be controlled. Ordinarily, requests
+will be made with <a class="reference external" href="http://bucket.hostname.domain/">http://bucket.hostname.domain/</a>, but with path style enabled,
+requests are made with <a class="reference external" href="http://hostname.domain/bucket">http://hostname.domain/bucket</a> instead.</p>
+</div>
+</div>
+</div>
+<div class="section" id="multibucket-object-store">
+<h2>Multibucket Object Store<a class="headerlink" href="#multibucket-object-store" title="Permalink to this headline">¶</a></h2>
+<p>It&#8217;s possible to configure Nextcloud to distribute it&#8217;s data over multiple buckets
+for scalability purpose. You can find out more information about upscaling with
+object storage and Nextcloud in the
+<a class="reference external" href="https://portal.nextcloud.com/article/object-store-as-primary-storage-16.html">Nextcloud customer portal</a>.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021 Nextcloud GmbH.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: 14
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/14/admin_manual">14</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/15/admin_manual">15</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/16/admin_manual">16</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/admin_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/admin_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+   
+
+</body>
+</html>

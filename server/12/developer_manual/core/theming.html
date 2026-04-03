@@ -1,0 +1,482 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Theming Nextcloud &#8212; Nextcloud Developer Manual 12 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/main.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '12',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.1.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="App config" href="configfile.html" />
+    <link rel="prev" title="Unit-Testing" href="unit-testing.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#1d2d44">
+<link rel="shortcut icon" href="https://nextcloud.com/wp-content/themes/next/assets/img/common/favicon.png" />
+<link rel="apple-touch-icon-precomposed" href="https://nextcloud.com/wp-content/themes/next/assets/img/common/favicon.png" />
+<!-- Piwik -->
+<script type="text/javascript">
+    var _paq = _paq || [];
+    _paq.push(['trackPageView']);
+    _paq.push(['enableLinkTracking']);
+    (function() {
+        var u="//stats.nextcloud.com/";
+        _paq.push(['setTrackerUrl', u+'piwik.php']);
+        _paq.push(['setSiteId', 3]);
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+        g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+    })();
+</script>
+<noscript><p><img src="//stats.nextcloud.com/piwik.php?idsite=3" style="border:0;" alt="" /></p></noscript>
+<!-- End Piwik Code -->
+
+  </head>
+  <body role="document">
+
+<header class="banner navbar navbar-default navbar-static-top" role="banner">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+       <a class="brand" href="http://nextcloud.com/" rel="home" title="Nextcloud.com"><img class="logo" src="../_static/img/logo.svg" itemprop="logo"></a>
+    </div>
+
+    <nav class="collapse navbar-collapse" role="navigation">
+      <ul id="menu-header" class="nav navbar-nav">
+          <li><a target="_blank" href="https://demo.nextcloud.com">Demo</a></li>
+          <li><a href="https://nextcloud.com/news/">News</a></li>
+          <li><a href="https://nextcloud.com/features/">Features</a></li>
+          <li><a href="https://nextcloud.com/about/">About us</a></li>
+          <li><a href="https://nextcloud.com/contribute/">Get involved</a></li>
+          <li><a href="https://nextcloud.com/support/">Support</a></li>
+          <li><a href="https://nextcloud.com/enterprise/">Enterprise</a></li>
+          <li class="menu-install"><a href="https://nextcloud.com/install/">Download</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+
+
+<div class="container" style="background-color: #E6C4C2;color: #b10000;border: #b10000 2px solid;border-right: none;border-left: none;padding: 15px 10px;">You are reading an outdated version of this documentation. Please check out the <a href="https://docs.nextcloud.com/server/stable/developer_manual/" style="
+color: rgb(177,0,0);text-decoration: underline;">latest version</a> of the developer manual.</div>
+
+
+
+
+
+<div class="wrap container not-front">
+  <div class="content row">
+  <main class="main">
+    <div class="row page-content-header">
+      <div class="col-md-6">
+        <h1><a href="../index.html">Nextcloud Developer Manual</a></h1>
+      </div>
+      <div class="col-md-5 col-md-offset-1">
+      
+        <form class="headersearch" style="margin: 16px 0;" action="../search.html" method="get">
+        <input type="text" value="" name="q" id="q" class="form-control" /> 
+        <button  class="btn btn-default" type="submit" id="searchsubmit">Search</button>
+        </form>
+      
+      </div>
+    </div>
+    
+			<div class="row">
+				<div class="col-md-3">
+					<div class="sidebar">
+							<div class="menu-support-container">
+								<ul id="menu-support" class="menu">
+									<ul>
+										
+<li><a href="../index.html">Table of Contents</a></li>
+									</ul>
+                  <ul>
+<li class="toctree-l1"><a class="reference internal" href="../general/index.html">General Contributor Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/index.html">App Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../design/index.html">Design Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../android_library/index.html">Android Application Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client_apis/index.html">Client APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Core Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bugtracker/index.html">Bugtracker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../commun/index.html">Help and Communication</a></li>
+</ul>
+
+								</ul>
+							</div>
+					</div>
+				</div>
+        
+
+				<div class="col-md-9">
+					<div class="page-content">
+            
+<ul class="prevnext-title list-unstyled list-inline">
+  <li class="prev">
+    <a href="unit-testing.html" title="Previous Chapter: Unit-Testing"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; Unit-Testing</span>
+    </a>
+  </li>
+  <li class="next">
+    <a href="configfile.html" title="Next Chapter: App config"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">App config &raquo;</span>
+    </a>
+  </li>
+</ul>
+						
+  <div class="section" id="theming-nextcloud">
+<h1>Theming Nextcloud<a class="headerlink" href="#theming-nextcloud" title="Permalink to this headline">¶</a></h1>
+<p>Themes can be used to customize the look and feel of Nextcloud.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This is an advanced way of theming Nextcloud; the Nextcloud team recommends instead the use of the <a class="reference external" href="https://docs.nextcloud.com/server/12/admin_manual/configuration_server/theming.html" title="(in Nextcloud 12 Server Administration Manual v12)"><span>Theming</span></a> app which, when enabled, can be accessed from the Admin settings.</p>
+</div>
+</div>
+<div class="section" id="getting-started">
+<h1>Getting started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h1>
+<p>A good idea to get started with a dynamically created website is to inspect it with <strong>web developer tools</strong>, that are found in almost any browser. They show the generated HTML and the CSS Code that the client/browser is receiving:
+With this facts you can easily determine where the following object-related attributes for the phenomenons are settled:</p>
+<ul class="simple">
+<li>place</li>
+<li>colour</li>
+<li>links</li>
+<li>graphics</li>
+</ul>
+<p>The next thing you should do, before starting any changes, is to make a backup of your current theme(s), e.g.:</p>
+<ul class="simple">
+<li>cd …/nextcloud/themes</li>
+<li>cp -r example mytheme</li>
+</ul>
+</div>
+<div class="section" id="creating-and-activating-a-new-theme">
+<h1>Creating and activating a new theme<a class="headerlink" href="#creating-and-activating-a-new-theme" title="Permalink to this headline">¶</a></h1>
+<p>There are two basic ways of creating new themings:</p>
+<ul class="simple">
+<li>doing all new from scratch</li>
+<li>starting from an existing theme or the example theme and doing everything step by step and more experimentally</li>
+</ul>
+<p>Depending on how you created your new theme it will be necessary to:</p>
+<ul class="simple">
+<li>put a new theme into the /themes folder. The theme can be activated by putting <code class="docutils literal"><span class="pre">'theme'</span> <span class="pre">=&gt;</span> <span class="pre">'MyTheme'</span></code> into the <code class="docutils literal"><span class="pre">/config/config.php</span></code> file.</li>
+<li>make your changes in the <code class="docutils literal"><span class="pre">/themes/MyTheme</span></code> folder</li>
+<li>make sure that the theming app is disabled</li>
+</ul>
+</div>
+<div class="section" id="structure">
+<h1>Structure<a class="headerlink" href="#structure" title="Permalink to this headline">¶</a></h1>
+<p>The folder structure of a theme is exactly the same as the main Nextcloud
+structure. You can override js files, images, translations and templates with
+own versions. CSS files are loaded additionally to the default files so you can
+override CSS properties. CSS files and the standard pictures that are used reside
+for example in /nextcloud/core/ and /nextcloud/settings/ in these sub folders:</p>
+<ul class="simple">
+<li>css = style sheets</li>
+<li>js = JavaScripts</li>
+<li>img = images</li>
+<li>l10n = translation files</li>
+<li>templates = PHP and HTML template files</li>
+</ul>
+</div>
+<div class="section" id="notes-for-updates">
+<span id="id1"></span><h1>Notes for Updates<a class="headerlink" href="#notes-for-updates" title="Permalink to this headline">¶</a></h1>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">With Nextcloud 12, CSS files have been merged into one server.css so in order to keep your theme working you should consolidate your existing css styles into a server.css file. As for the example theme the styles.css file has been renamed to server.css.</p>
+</div>
+<p>It is not recommended to the user to perform adaptations inside the
+folder <code class="docutils literal"><span class="pre">/themes/example</span></code> because files inside this folder might get
+replaced during the next Nextcloud update process.</p>
+<p>During an update, files might get changed within the core and settings
+folders. This could result in problems because your template files will
+not &#8216;know&#8217; about these changes and therefore must be manually merged with
+the updated core file or simply be deleted (or renamed for a test).</p>
+<p>For example if <code class="docutils literal"><span class="pre">/settings/templates/apps.php</span></code> gets updated by a new
+Nextcloud version, and you have a <code class="docutils literal"><span class="pre">/themes/MyTheme/settings/templates/apps.php</span></code>
+in your template, you must merge the changes that where made within the update
+with the ones you did in your template.</p>
+<p>But this is unlikely and will be mentioned in the Nextcloud release notes if it occurs.</p>
+</div>
+<div class="section" id="how-to-change-images-and-the-logo">
+<h1>How to change images and the logo<a class="headerlink" href="#how-to-change-images-and-the-logo" title="Permalink to this headline">¶</a></h1>
+<p>A new logo which you may want to insert can be added as follows:</p>
+<div class="section" id="figure-out-the-path-of-the-old-logo">
+<h2>Figure out the path of the old logo<a class="headerlink" href="#figure-out-the-path-of-the-old-logo" title="Permalink to this headline">¶</a></h2>
+<p>Replace the old picture, which position you found out as described under 1.3. by adding an extension in case you want to re-use it later.</p>
+</div>
+<div class="section" id="creating-an-own-logo">
+<h2>Creating an own logo<a class="headerlink" href="#creating-an-own-logo" title="Permalink to this headline">¶</a></h2>
+<p>If you want to do a quick exchange like (1) it&#8217;s important to know the size of the picture before you start creating an own logo:</p>
+<ul class="simple">
+<li>Go to the place in the filesystem, that has been shown by the web developer tool/s</li>
+<li>You can look up sizing in most cases via the file properties inside your file-manager</li>
+<li>Create an own picture/logo with the same size as the original photo</li>
+</ul>
+<p>The (main) pictures that can be found inside Nextcloud standard theming are the following:</p>
+<ul class="simple">
+<li>The logo at the login-page above the credentials-box and in the header:               …/nextcloud/themes/default/core/img/logo.svg</li>
+</ul>
+</div>
+<div class="section" id="inserting-your-new-logo">
+<h2>Inserting your new logo<a class="headerlink" href="#inserting-your-new-logo" title="Permalink to this headline">¶</a></h2>
+<p>Inserting a new logo into an existing theme is as simple as replacing the old logo with the new (generated) one.
+You can use: scalable vector graphics (.svg) or common graphics formats for the Internet such as portable network graphics (.png) or .jpeg.
+Just insert the new created picture by using the unchanged name of the old picture.</p>
+<p>The app icons can also be overwritten in a theme. To change for example the app icon of the activity app you need to overwrite it by saving the new image to …/nextcloud/themes/default/apps/activity/img/activity.svg.</p>
+</div>
+<div class="section" id="changing-favicon">
+<h2>Changing favicon<a class="headerlink" href="#changing-favicon" title="Permalink to this headline">¶</a></h2>
+<p>For compatibility with older browsers, favicon (the image that appears in your browser tab) uses .../nextcloud/core/img/favicon.ico.</p>
+<p>To customize favicon for MyTheme:</p>
+<ul class="simple">
+<li>Create a version of your logo in .ico format</li>
+<li>Store your custom favicon as .../nextcloud/themes/MyTheme/core/img/favicon.ico</li>
+<li>Include .../nextcloud/themes/MyTheme/core/img/favicon.svg and favicon.png to cover any future updates to favicon handling.</li>
+</ul>
+</div>
+<div class="section" id="changing-the-default-colours">
+<h2>Changing the default colours<a class="headerlink" href="#changing-the-default-colours" title="Permalink to this headline">¶</a></h2>
+<p>You can inject custom variables into the SCSS generator to apply colors to the default css code by adding the following method to defaults.php:</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="x">public function getScssVariables() {</span>
+<span class="x">    return [</span>
+<span class="x">        &#39;color-primary&#39; =&gt; &#39;#745bca&#39;</span>
+<span class="x">    ];</span>
+<span class="x">}</span>
+</pre></div>
+</div>
+<p>The following variables can be overwritten:</p>
+<ul class="simple">
+<li>color-main-text</li>
+<li>color-main-background</li>
+<li>color-primary</li>
+<li>color-primary-text</li>
+<li>color-error</li>
+<li>color-warning</li>
+<li>color-success</li>
+<li>color-loading</li>
+<li>color-loading-dark</li>
+<li>color-box-shadow</li>
+</ul>
+<p>With a web-developer tool like Mozilla-Inspector, you also get easily displayed the color of the background you clicked on.
+On the top of the login page you can see a case- distinguished setting for different browsers:</p>
+<div class="highlight-css"><div class="highlight"><pre><span></span><span class="c">/* HEADERS */</span>
+<span class="o">...</span>
+<span class="nt">body-login</span> <span class="p">{</span>
+  <span class="k">background</span><span class="p">:</span> <span class="mh">#1d2d42</span><span class="p">;</span> <span class="c">/* Old browsers */</span>
+  <span class="k">background</span><span class="p">:</span> <span class="bp">-moz-</span><span class="nb">linear-gradient</span><span class="p">(</span><span class="kc">top</span><span class="p">,</span> <span class="mh">#33537a</span> <span class="mi">0</span><span class="kt">%</span><span class="p">,</span> <span class="mh">#1d2d42</span>  <span class="mi">100</span><span class="kt">%</span><span class="p">);</span> <span class="c">/* FF3.6+ */</span>
+  <span class="k">background</span><span class="p">:</span> <span class="bp">-webkit-</span><span class="nf">gradient</span><span class="p">(</span><span class="kc">linear</span><span class="p">,</span> <span class="kc">left</span> <span class="kc">top</span><span class="p">,</span> <span class="kc">left</span> <span class="kc">bottom</span><span class="p">,</span> <span class="kc">color</span><span class="o">-</span><span class="nf">stop</span><span class="p">(</span><span class="mi">0</span><span class="kt">%</span><span class="p">,</span><span class="mh">#F1B3A4</span><span class="p">),</span> <span class="kc">color</span><span class="o">-</span><span class="nf">stop</span><span class="p">(</span><span class="mi">100</span><span class="kt">%</span><span class="p">,</span><span class="mh">#1d2d42</span><span class="p">));</span> <span class="c">/* Chrome,Safari4+ */</span>
+  <span class="k">background</span><span class="p">:</span> <span class="bp">-webkit-</span><span class="nb">linear-gradient</span><span class="p">(</span><span class="kc">top</span><span class="p">,</span> <span class="mh">#33537a</span> <span class="mi">0</span><span class="kt">%</span><span class="p">,</span><span class="mh">#1d2d42</span> <span class="mi">100</span><span class="kt">%</span><span class="p">);</span> <span class="c">/* Chrome10+,Safari5.1+ */</span>
+  <span class="k">background</span><span class="p">:</span> <span class="bp">-o-</span><span class="nb">linear-gradient</span><span class="p">(</span><span class="kc">top</span><span class="p">,</span> <span class="mh">#33537a</span> <span class="mi">0</span><span class="kt">%</span><span class="p">,</span><span class="mh">#1d2d42</span> <span class="mi">100</span><span class="kt">%</span><span class="p">);</span> <span class="c">/* Opera11.10+ */</span>
+  <span class="k">background</span><span class="p">:</span> <span class="bp">-ms-</span><span class="nb">linear-gradient</span><span class="p">(</span><span class="kc">top</span><span class="p">,</span> <span class="mh">#33537a</span> <span class="mi">0</span><span class="kt">%</span><span class="p">,</span><span class="mh">#1d2d42</span> <span class="mi">100</span><span class="kt">%</span><span class="p">);</span> <span class="c">/* IE10+ */</span>
+  <span class="k">background</span><span class="p">:</span> <span class="nb">linear-gradient</span><span class="p">(</span><span class="kc">top</span><span class="p">,</span> <span class="mh">#33537a</span> <span class="mi">0</span><span class="kt">%</span><span class="p">,</span><span class="mh">#1d2d42</span> <span class="mi">100</span><span class="kt">%</span><span class="p">);</span> <span class="c">/* W3C */</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The different background-assignments indicate the headers for a lot of different browser types. What you most likely want to do is change the #35537a (lighter blue) and #ld2d42 (dark blue) color to the colours of our choice. In some older and other browsers there is just one color, but in the rest showing gradients is possible.
+The login page background is a horizontal gradient. The first hex number, #35537a, is the top color of the gradient at the login screen. The second hex number, #ld2d42, is the bottom color of the gradient at the login screen.
+The gradient in top of the normal view after login is also defined by these CSS-settings, so that they take effect in logged in situation as well.
+Change these colors to the hex color of your choice.
+As usual:</p>
+<ul class="simple">
+<li>the first two figures give the intensity of the red channel,</li>
+<li>the second two give the green intensity and the</li>
+<li>third pair gives the blue value.</li>
+</ul>
+<p>Save your CSS-file and refresh to see the new login screen.
+The other major color scheme is the blue header bar on the main navigation page once you log in to Nextcloud.
+This color we will change with the above as well.
+Save the file and refresh the browser for the changes to take effect.</p>
+</div>
+</div>
+<div class="section" id="how-to-change-translations">
+<h1>How to change translations<a class="headerlink" href="#how-to-change-translations" title="Permalink to this headline">¶</a></h1>
+<p>You can override the translation of single strings within your theme. Simply
+create the same folder structure within your theme folder for the language file
+you want to override. Only the changed strings need to be added to that file; for
+all other terms the shipped translation will be used.</p>
+<p>If you want to override the translation of the term &#8220;Download&#8221; within the
+<code class="docutils literal"><span class="pre">files</span></code> app for the language <code class="docutils literal"><span class="pre">de</span></code> you need to create the file
+<code class="docutils literal"><span class="pre">themes/THEME_NAME/apps/files/l10n/de.js</span></code> and put the following code in:</p>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="nx">OC</span><span class="p">.</span><span class="nx">L10N</span><span class="p">.</span><span class="nx">register</span><span class="p">(</span>
+  <span class="s2">&quot;files&quot;</span><span class="p">,</span>
+  <span class="p">{</span>
+    <span class="s2">&quot;Download&quot;</span> <span class="o">:</span> <span class="s2">&quot;Herunterladen&quot;</span>
+  <span class="p">},</span>
+  <span class="s2">&quot;nplurals=2; plural=(n != 1);&quot;</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>Additionally you need to create another file
+<code class="docutils literal"><span class="pre">themes/THEME_NAME/apps/files/l10n/de.json</span></code> with the same translations that
+look like this:</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;translations&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;Download&quot;</span> <span class="p">:</span> <span class="s2">&quot;Herunterladen&quot;</span>
+  <span class="p">},</span>
+  <span class="nt">&quot;pluralForm&quot;</span> <span class="p">:</span><span class="s2">&quot;nplurals=2; plural=(n != 1);&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Both files (<code class="docutils literal"><span class="pre">.js</span></code> and <code class="docutils literal"><span class="pre">.json</span></code>) are needed with the same translations,
+because the first is needed to enable translations in the JavaScript code and
+the second one is read by the PHP code and provides the data for translated
+terms in there.</p>
+</div>
+<div class="section" id="how-to-update-custom-mimetype-icons">
+<h1>How to update custom mimetype icons<a class="headerlink" href="#how-to-update-custom-mimetype-icons" title="Permalink to this headline">¶</a></h1>
+<p>The following command is required to run after adding custom mimetype icons to your theme:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>sudo -u www-data php occ maintenance:mimetype:update-js
+</pre></div>
+</div>
+</div>
+<div class="section" id="how-to-change-names-slogans-and-urls">
+<h1>How to change names, slogans and URLs<a class="headerlink" href="#how-to-change-names-slogans-and-urls" title="Permalink to this headline">¶</a></h1>
+<p>The Nextcloud theming allows a lot of the names that are shown on the web interface to be changed. It&#8217;s also possible to change the URLs to the documentation or the Android/iOS apps.</p>
+<p>This can be done with a file named <code class="docutils literal"><span class="pre">defaults.php</span></code> within the root of the theme. You can find it in the example theme (<em>/themes/example/defaults.php</em>). In there you need to specify a class named <code class="docutils literal"><span class="pre">OC_Theme</span></code> and need to implement the methods you want to overwrite:</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="x">class OC_Theme {</span>
+<span class="x">  public function getAndroidClientUrl() {</span>
+<span class="x">    return &#39;https://play.google.com/store/apps/details?id=com.nextcloud.client&#39;;</span>
+<span class="x">  }</span>
+
+<span class="x">  public function getName() {</span>
+<span class="x">    return &#39;Nextcloud&#39;;</span>
+<span class="x">  }</span>
+<span class="x">}</span>
+</pre></div>
+</div>
+<p>Each method should return a string. Following methods are available:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">getAndroidClientUrl</span></code></li>
+<li><code class="docutils literal"><span class="pre">getBaseUrl</span></code></li>
+<li><code class="docutils literal"><span class="pre">getDocBaseUrl</span></code></li>
+<li><code class="docutils literal"><span class="pre">getEntity</span></code></li>
+<li><code class="docutils literal"><span class="pre">getName</span></code></li>
+<li><code class="docutils literal"><span class="pre">getHTMLName</span></code></li>
+<li><code class="docutils literal"><span class="pre">getiOSClientUrl</span></code></li>
+<li><code class="docutils literal"><span class="pre">getiTunesAppId</span></code></li>
+<li><code class="docutils literal"><span class="pre">getLogoClaim</span></code></li>
+<li><code class="docutils literal"><span class="pre">getLongFooter</span></code></li>
+<li><code class="docutils literal"><span class="pre">getMailHeaderColor</span></code></li>
+<li><code class="docutils literal"><span class="pre">getSyncClientUrl</span></code></li>
+<li><code class="docutils literal"><span class="pre">getTitle</span></code></li>
+<li><code class="docutils literal"><span class="pre">getShortFooter</span></code></li>
+<li><code class="docutils literal"><span class="pre">getSlogan</span></code></li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Only these methods are available in the templates, because we internally wrap around hardcoded method names.</p>
+</div>
+<p>One exception is the method <code class="docutils literal"><span class="pre">buildDocLinkToKey</span></code> which gets passed in a key as first parameter. For core we do something like this to build the documentation link:</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="x">public function buildDocLinkToKey($key) {</span>
+<span class="x">  return $this-&gt;getDocBaseUrl() . &#39;/server/9.0/go.php?to=&#39; . $key;</span>
+<span class="x">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="testing-the-new-theme-out">
+<h1>Testing the new theme out<a class="headerlink" href="#testing-the-new-theme-out" title="Permalink to this headline">¶</a></h1>
+<p>There are different options for doing so:</p>
+<ul class="simple">
+<li>If you&#8217;re using a tool like the Inspector tools inside Mozilla, you can test out the CSS-Styles immediately inside the css-attributes, while looking at them.</li>
+<li>If you have a developing/testing server as described in 1. you can test out the effects in a real environment permanently.</li>
+</ul>
+</div>
+
+
+            
+<ul class="prevnext-title list-unstyled list-inline">
+  <li class="prev">
+    <a href="unit-testing.html" title="Previous Chapter: Unit-Testing"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; Unit-Testing</span>
+    </a>
+  </li>
+  <li class="next">
+    <a href="configfile.html" title="Next Chapter: App config"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">App config &raquo;</span>
+    </a>
+  </li>
+</ul>
+					</div>
+				</div>
+			</div>
+  </main>  
+  </div>
+</div>
+<div class="container">
+<div class="row">
+    <div class="col-lg-12 footer-social-icons">
+      <p class="text-center"><a target="_blank" href="https://plus.google.com/104036748063781940910/about"><img width=50 src="../_static/img/social/googleplus.svg" title="Follow us on Google Plus!" alt="Follow us on Google Plus!"></img></a>
+      <a target="_blank" href="https://www.facebook.com/Nextclouders"><img width=50 src="../_static/img/social/facebook.svg" title="Like our facebook page!" alt="Like our facebook page!"></img></a>
+      <a target="_blank" href="https://twitter.com/Nextclouders"><img width=50 src="../_static/img/social/twitter.svg" title="Subscribe to our twitter channel!" alt="Subscribe to our twitter channel!"></img></a>
+      <a target="_blank" href="https://nextcloud.com/blogfeed"><img class="img-circle" width=50 src="../_static/img/social/rss.svg" title="Subscribe to our news feed!" alt="Subscribe to our news feed!"></img></a>
+      <a target="_blank" href="https://newsletter.nextcloud.com/"><img class="img-circle" width=50 src="../_static/img/social/mail.svg"  title="Subscribe to our newsletter!" alt="Subscribe to our newsletter!"></img></a></p>
+    </div>
+    <div class="text-center">
+      <p>All documentation licensed under the <a href="https://creativecommons.org/licenses/by/3.0/us/">Creative Commons Attribution 3.0 Unported license</a>.</p>
+      <p><a href="https://github.com/nextcloud/documentation/graphs/contributors">See who contributed to our documentation/credits</a>.</p>
+    </div>
+</div>
+</div>
+<footer class="content-info" role="contentinfo">
+<div class="container">
+   <div class="row">
+     <div class="col-sm-2 col-sm-offset-1">
+        <div class="footer-nav">
+          <h4>About Nextcloud</h4>
+          <ul id="menu-about" class="menu">
+            <li><a href="https://nextcloud.com/about/">About us</a></li>
+            <li><a href="https://nextcloud.com/contact/">Contact us</a></li>
+            <li><a href="https://nextcloud.com/press/">Press</a></li>
+            <li><a href="https://nextcloud.com/privacy/">Privacy policy</a></li>
+          </ul>
+        </div>
+     </div>
+     <div class="col-sm-2 col-sm-offset-2">
+     </div>
+     <div class="col-sm-2 col-sm-offset-2">
+        <div class="footer-nav">
+          <h4>Interact</h4>
+          <ul id="menu-interact" class="menu">
+            <li class="menu-irc-channel"><a href="https://webchat.freenode.net/?channels=nextcloud">IRC Channel</a></li>
+            <li class="menu-forums"><a href="https://help.nextcloud.com/">Forums</a></li>
+          </ul>
+        </div>
+     </div>
+   </div>
+   <div class="row">
+      <div class="col-lg-12 footer-text">
+        <p>
+              &copy; Copyright 2012-2017, The Nextcloud developers.  <small><a href="https://nextcloud.com/impressum">Legal Notice</a></small><br/>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+  </body>
+</html>

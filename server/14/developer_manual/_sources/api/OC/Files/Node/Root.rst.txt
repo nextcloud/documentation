@@ -1,0 +1,548 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+Root
+====
+
+
+.. php:namespace:: OC\Files\Node
+
+.. php:class:: Root
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Class Root
+		
+		| Hooks available in scope \\OC\\Files
+		| \- preWrite\(\\OCP\\Files\\Node $node\)
+		| \- postWrite\(\\OCP\\Files\\Node $node\)
+		| \- preCreate\(\\OCP\\Files\\Node $node\)
+		| \- postCreate\(\\OCP\\Files\\Node $node\)
+		| \- preDelete\(\\OCP\\Files\\Node $node\)
+		| \- postDelete\(\\OCP\\Files\\Node $node\)
+		| \- preTouch\(\\OC\\FilesP\\Node $node, int $mtime\)
+		| \- postTouch\(\\OCP\\Files\\Node $node\)
+		| \- preCopy\(\\OCP\\Files\\Node $source, \\OCP\\Files\\Node $target\)
+		| \- postCopy\(\\OCP\\Files\\Node $source, \\OCP\\Files\\Node $target\)
+		| \- preRename\(\\OCP\\Files\\Node $source, \\OCP\\Files\\Node $target\)
+		| \- postRename\(\\OCP\\Files\\Node $source, \\OCP\\Files\\Node $target\)
+		
+	
+	:Source:
+		`lib/private/Files/Node/Root.php#66 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Root.php#L66>`_
+	
+	:Parent:
+		:php:class:`OC\\Files\\Node\\Folder`
+	
+	:Implements:
+		:php:interface:`OCP\\Files\\IRootFolder` 
+	
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $manager, $view, $user, $userMountCache, $logger, $userManager)
+	
+		:Source:
+			`lib/private/Files/Node/Root.php#90 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Root.php#L90>`_
+		
+		
+		:Parameters:
+			* **$manager** (:any:`OC\\Files\\Mount\\Manager <OC\\Files\\Mount\\Manager>`)  
+			* **$view** (:any:`OC\\Files\\View <OC\\Files\\View>`)  
+			* **$user** (:any:`OC\\User\\User <OC\\User\\User>` | null)  
+			* **$userMountCache** (:any:`OCP\\Files\\Config\\IUserMountCache <OCP\\Files\\Config\\IUserMountCache>`)  
+			* **$logger** (:any:`OCP\\ILogger <OCP\\ILogger>`)  
+			* **$userManager** (:any:`OCP\\IUserManager <OCP\\IUserManager>`)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getUser()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the user for which the filesystem is setup
+			
+		
+		:Source:
+			`lib/private/Files/Node/Root.php#111 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Root.php#L111>`_
+		
+		
+		:Returns: :any:`\\OC\\User\\User <OC\\User\\User>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public listen( $scope, $method, $callback)
+	
+		:Source:
+			`lib/private/Files/Node/Root.php#120 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Root.php#L120>`_
+		
+		
+		:Parameters:
+			* **$scope** (string)  
+			* **$method** (string)  
+			* **$callback** (callable)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public removeListener( $scope=null, $method=null, $callback=null)
+	
+		:Source:
+			`lib/private/Files/Node/Root.php#129 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Root.php#L129>`_
+		
+		
+		:Parameters:
+			* **$scope** (string)  optional
+			* **$method** (string)  optional
+			* **$callback** (callable)  optional
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public emit( $scope, $method, $arguments=\[\])
+	
+		:Source:
+			`lib/private/Files/Node/Root.php#138 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Root.php#L138>`_
+		
+		
+		:Parameters:
+			* **$scope** (string)  
+			* **$method** (string)  
+			* **$arguments** (:any:`OC\\Files\\Node\\Node\[\] <OC\\Files\\Node\\Node>`)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public mount( $storage, $mountPoint, $arguments=\[\])
+	
+		:Source:
+			`lib/private/Files/Node/Root.php#147 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Root.php#L147>`_
+		
+		
+		:Parameters:
+			* **$storage** (:any:`OC\\Files\\Storage\\Storage <OC\\Files\\Storage\\Storage>`)  
+			* **$mountPoint** (string)  
+			* **$arguments** (array)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getMount( $mountPoint)
+	
+		:Source:
+			`lib/private/Files/Node/Root.php#156 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Root.php#L156>`_
+		
+		
+		:Parameters:
+			* **$mountPoint** (string)  
+
+		
+		:Returns: :any:`\\OC\\Files\\Mount\\MountPoint <OC\\Files\\Mount\\MountPoint>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getMountsIn( $mountPoint)
+	
+		:Source:
+			`lib/private/Files/Node/Root.php#164 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Root.php#L164>`_
+		
+		
+		:Parameters:
+			* **$mountPoint** (string)  
+
+		
+		:Returns: :any:`\\OC\\Files\\Mount\\MountPoint\[\] <OC\\Files\\Mount\\MountPoint>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getMountByStorageId( $storageId)
+	
+		:Source:
+			`lib/private/Files/Node/Root.php#172 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Root.php#L172>`_
+		
+		
+		:Parameters:
+			* **$storageId** (string)  
+
+		
+		:Returns: :any:`\\OC\\Files\\Mount\\MountPoint\[\] <OC\\Files\\Mount\\MountPoint>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getMountByNumericStorageId( $numericId)
+	
+		:Source:
+			`lib/private/Files/Node/Root.php#180 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Root.php#L180>`_
+		
+		
+		:Parameters:
+			* **$numericId** (int)  
+
+		
+		:Returns: :any:`\\OC\\Files\\Mount\\MountPoint\[\] <OC\\Files\\Mount\\MountPoint>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public unMount( $mount)
+	
+		:Source:
+			`lib/private/Files/Node/Root.php#187 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Root.php#L187>`_
+		
+		
+		:Parameters:
+			* **$mount** (:any:`OC\\Files\\Mount\\MountPoint <OC\\Files\\Mount\\MountPoint>`)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public get( $path)
+	
+		:Source:
+			`lib/private/Files/Node/Root.php#197 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Root.php#L197>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+		:Throws: :any:`\\OCP\\Files\\NotPermittedException <OCP\\Files\\NotPermittedException>` 
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+		:Throws: :any:`\\OCP\\Files\\NotPermittedException <OCP\\Files\\NotPermittedException>` 
+		:Returns: :any:`\\OC\\Files\\Node\\Node <OC\\Files\\Node\\Node>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public rename( $targetPath)
+	
+		:Source:
+			`lib/private/Files/Node/Root.php#219 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Root.php#L219>`_
+		
+		
+		:Parameters:
+			* **$targetPath** (string)  
+
+		
+		:Throws: :any:`\\OCP\\Files\\NotPermittedException <OCP\\Files\\NotPermittedException>` 
+		:Returns: :any:`\\OC\\Files\\Node\\Node <OC\\Files\\Node\\Node>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public delete()
+	
+		:Source:
+			`lib/private/Files/Node/Root.php#223 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Root.php#L223>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public copy( $targetPath)
+	
+		:Source:
+			`lib/private/Files/Node/Root.php#232 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Root.php#L232>`_
+		
+		
+		:Parameters:
+			* **$targetPath** (string)  
+
+		
+		:Throws: :any:`\\OCP\\Files\\NotPermittedException <OCP\\Files\\NotPermittedException>` 
+		:Returns: :any:`\\OC\\Files\\Node\\Node <OC\\Files\\Node\\Node>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public touch( $mtime=null)
+	
+		:Source:
+			`lib/private/Files/Node/Root.php#240 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Root.php#L240>`_
+		
+		
+		:Parameters:
+			* **$mtime** (int)  
+
+		
+		:Throws: :any:`\\OCP\\Files\\NotPermittedException <OCP\\Files\\NotPermittedException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getStorage()
+	
+		:Source:
+			`lib/private/Files/Node/Root.php#248 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Root.php#L248>`_
+		
+		
+		:Returns: :any:`\\OC\\Files\\Storage\\Storage <OC\\Files\\Storage\\Storage>` 
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getPath()
+	
+		:Source:
+			`lib/private/Files/Node/Root.php#255 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Root.php#L255>`_
+		
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getInternalPath()
+	
+		:Source:
+			`lib/private/Files/Node/Root.php#262 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Root.php#L262>`_
+		
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getId()
+	
+		:Source:
+			`lib/private/Files/Node/Root.php#269 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Root.php#L269>`_
+		
+		
+		:Returns: int 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public stat()
+	
+		:Source:
+			`lib/private/Files/Node/Root.php#276 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Root.php#L276>`_
+		
+		
+		:Returns: array 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getMTime()
+	
+		:Source:
+			`lib/private/Files/Node/Root.php#283 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Root.php#L283>`_
+		
+		
+		:Returns: int 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getSize( $includeMounts=true)
+	
+		:Source:
+			`lib/private/Files/Node/Root.php#291 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Root.php#L291>`_
+		
+		
+		:Parameters:
+			* **$includeMounts** (bool)  
+
+		
+		:Returns: int 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getEtag()
+	
+		:Source:
+			`lib/private/Files/Node/Root.php#298 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Root.php#L298>`_
+		
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getPermissions()
+	
+		:Source:
+			`lib/private/Files/Node/Root.php#305 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Root.php#L305>`_
+		
+		
+		:Returns: int 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isReadable()
+	
+		:Source:
+			`lib/private/Files/Node/Root.php#312 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Root.php#L312>`_
+		
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isUpdateable()
+	
+		:Source:
+			`lib/private/Files/Node/Root.php#319 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Root.php#L319>`_
+		
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isDeletable()
+	
+		:Source:
+			`lib/private/Files/Node/Root.php#326 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Root.php#L326>`_
+		
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isShareable()
+	
+		:Source:
+			`lib/private/Files/Node/Root.php#333 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Root.php#L333>`_
+		
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getParent()
+	
+		:Source:
+			`lib/private/Files/Node/Root.php#341 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Root.php#L341>`_
+		
+		
+		:Returns: :any:`\\OC\\Files\\Node\\Node <OC\\Files\\Node\\Node>` 
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getName()
+	
+		:Source:
+			`lib/private/Files/Node/Root.php#348 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Root.php#L348>`_
+		
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getUserFolder( $userId)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns a view to user\'s files folder
+			
+		
+		:Source:
+			`lib/private/Files/Node/Root.php#360 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Root.php#L360>`_
+		
+		
+		:Parameters:
+			* **$userId** (string)  user ID
+
+		
+		:Returns: :any:`\\OCP\\Files\\Folder <OCP\\Files\\Folder>` 
+		:Throws: :any:`\\OC\\User\\NoUserException <OC\\User\\NoUserException>` 
+		:Throws: :any:`\\OCP\\Files\\NotPermittedException <OCP\\Files\\NotPermittedException>` 
+		:Throws: :any:`\\OC\\User\\NoUserException <OC\\User\\NoUserException>` 
+		:Throws: :any:`\\OCP\\Files\\NotPermittedException <OCP\\Files\\NotPermittedException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public clearCache()
+	
+		:Source:
+			`lib/private/Files/Node/Root.php#396 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Root.php#L396>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getUserMountCache()
+	
+		:Source:
+			`lib/private/Files/Node/Root.php#400 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Root.php#L400>`_
+		
+		
+	
+	
+

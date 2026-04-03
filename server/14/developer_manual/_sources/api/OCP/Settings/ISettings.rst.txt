@@ -1,0 +1,66 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+ISettings
+=========
+
+
+.. php:namespace:: OCP\Settings
+
+.. php:interface:: ISettings
+
+
+	:Source:
+		`lib/public/Settings/ISettings.php#32 <https://github.com/nextcloud/server/blob/stable13/lib/public/Settings/ISettings.php#L32>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public getForm()
+	
+		:Source:
+			`lib/public/Settings/ISettings.php#38 <https://github.com/nextcloud/server/blob/stable13/lib/public/Settings/ISettings.php#L38>`_
+		
+		
+		:Returns: :any:`\\OCP\\AppFramework\\Http\\TemplateResponse <OCP\\AppFramework\\Http\\TemplateResponse>` returns the instance with all parameters set, ready to be rendered
+		:Since: 9.1 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getSection()
+	
+		:Source:
+			`lib/public/Settings/ISettings.php#44 <https://github.com/nextcloud/server/blob/stable13/lib/public/Settings/ISettings.php#L44>`_
+		
+		
+		:Returns: string | null the section ID, e\.g\. \'sharing\' or null to not show the setting
+		:Since: 9.1 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getPriority()
+	
+		:Source:
+			`lib/public/Settings/ISettings.php#54 <https://github.com/nextcloud/server/blob/stable13/lib/public/Settings/ISettings.php#L54>`_
+		
+		
+		:Returns: int whether the form should be rather on the top or bottom of
+			the admin section\. The forms are arranged in ascending order of the
+			priority values\. It is required to return a value between 0 and 100\.
+			
+			E\.g\.: 70
+		
+		:Since: 9.1 
+	
+	
+

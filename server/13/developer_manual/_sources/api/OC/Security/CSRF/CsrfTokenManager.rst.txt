@@ -1,0 +1,117 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+CsrfTokenManager
+================
+
+
+.. php:namespace:: OC\Security\CSRF
+
+.. php:class:: CsrfTokenManager
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Class CsrfTokenManager is the manager for all CSRF token related activities\.
+		
+	
+	:Source:
+		`lib/private/Security/CSRF/CsrfTokenManager.php#37 <https://github.com/nextcloud/server/blob/stable13/lib/private/Security/CSRF/CsrfTokenManager.php#L37>`_
+	
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $tokenGenerator, $storageInterface)
+	
+		:Source:
+			`lib/private/Security/CSRF/CsrfTokenManager.php#49 <https://github.com/nextcloud/server/blob/stable13/lib/private/Security/CSRF/CsrfTokenManager.php#L49>`_
+		
+		
+		:Parameters:
+			* **$tokenGenerator** (:any:`OC\\Security\\CSRF\\CsrfTokenGenerator <OC\\Security\\CSRF\\CsrfTokenGenerator>`)  
+			* **$storageInterface** (:any:`OC\\Security\\CSRF\\TokenStorage\\SessionStorage <OC\\Security\\CSRF\\TokenStorage\\SessionStorage>`)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getToken()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the current CSRF token, if none set it will create a new one\.
+			
+		
+		:Source:
+			`lib/private/Security/CSRF/CsrfTokenManager.php#60 <https://github.com/nextcloud/server/blob/stable13/lib/private/Security/CSRF/CsrfTokenManager.php#L60>`_
+		
+		
+		:Returns: :any:`\\OC\\Security\\CSRF\\CsrfToken <OC\\Security\\CSRF\\CsrfToken>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public refreshToken()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Invalidates any current token and sets a new one\.
+			
+		
+		:Source:
+			`lib/private/Security/CSRF/CsrfTokenManager.php#81 <https://github.com/nextcloud/server/blob/stable13/lib/private/Security/CSRF/CsrfTokenManager.php#L81>`_
+		
+		
+		:Returns: :any:`\\OC\\Security\\CSRF\\CsrfToken <OC\\Security\\CSRF\\CsrfToken>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public removeToken()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Remove the current token from the storage\.
+			
+		
+		:Source:
+			`lib/private/Security/CSRF/CsrfTokenManager.php#91 <https://github.com/nextcloud/server/blob/stable13/lib/private/Security/CSRF/CsrfTokenManager.php#L91>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isTokenValid( $token)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Verifies whether the provided token is valid\.
+			
+		
+		:Source:
+			`lib/private/Security/CSRF/CsrfTokenManager.php#102 <https://github.com/nextcloud/server/blob/stable13/lib/private/Security/CSRF/CsrfTokenManager.php#L102>`_
+		
+		
+		:Parameters:
+			* **$token** (:any:`OC\\Security\\CSRF\\CsrfToken <OC\\Security\\CSRF\\CsrfToken>`)  
+
+		
+		:Returns: bool 
+	
+	
+

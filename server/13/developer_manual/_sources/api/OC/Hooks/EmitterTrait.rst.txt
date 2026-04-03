@@ -1,0 +1,87 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+EmitterTrait
+============
+
+
+.. php:namespace:: OC\Hooks
+
+.. php:trait:: EmitterTrait
+
+
+	:Source:
+		`lib/private/Hooks/EmitterTrait.php#30 <https://github.com/nextcloud/server/blob/stable13/lib/private/Hooks/EmitterTrait.php#L30>`_
+	
+
+Properties
+----------
+
+.. php:attr:: protected static listeners
+
+	:Source:
+		`lib/private/Hooks/EmitterTrait.php#35 <https://github.com/nextcloud/server/blob/stable13/lib/private/Hooks/EmitterTrait.php#L35>`_
+	
+	:Type: callable[][] 
+
+
+Methods
+-------
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public listen( $scope, $method, $callback)
+	
+		:Source:
+			`lib/private/Hooks/EmitterTrait.php#43 <https://github.com/nextcloud/server/blob/stable13/lib/private/Hooks/EmitterTrait.php#L43>`_
+		
+		
+		:Parameters:
+			* **$scope** (string)  
+			* **$method** (string)  
+			* **$callback** (callable)  
+
+		
+		:Deprecated: 18.0.0 use \\OCP\\EventDispatcher\\IEventDispatcher::addListener
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public removeListener( $scope=null, $method=null, $callback=null)
+	
+		:Source:
+			`lib/private/Hooks/EmitterTrait.php#59 <https://github.com/nextcloud/server/blob/stable13/lib/private/Hooks/EmitterTrait.php#L59>`_
+		
+		
+		:Parameters:
+			* **$scope** (string)  optional
+			* **$method** (string)  optional
+			* **$callback** (callable)  optional
+
+		
+		:Deprecated: 18.0.0 use \\OCP\\EventDispatcher\\IEventDispatcher::removeListener
+	
+	
+
+.. rst-class:: protected deprecated
+
+	.. php:method:: protected emit( $scope, $method, $arguments=\[\])
+	
+		:Source:
+			`lib/private/Hooks/EmitterTrait.php#103 <https://github.com/nextcloud/server/blob/stable13/lib/private/Hooks/EmitterTrait.php#L103>`_
+		
+		
+		:Parameters:
+			* **$scope** (string)  
+			* **$method** (string)  
+			* **$arguments** (array)  optional
+
+		
+		:Deprecated: 18.0.0 use \\OCP\\EventDispatcher\\IEventDispatcher::dispatchTyped
+	
+	
+

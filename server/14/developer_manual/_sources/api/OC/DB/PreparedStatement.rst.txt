@@ -1,0 +1,149 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+PreparedStatement
+=================
+
+
+.. php:namespace:: OC\DB
+
+.. php:class:: PreparedStatement
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Adapts our public API to what doctrine/dbal exposed with 2\.6
+		
+		| The old dbal statement had stateful methods e\.g\. to fetch data from an executed
+		| prepared statement\. To provide backwards compatibility to apps we need to make
+		| this class stateful\. As soon as those now deprecated exposed methods are gone,
+		| we can limit the API of this adapter to the methods that map to the direct dbal
+		| methods without much magic\.
+		
+	
+	:Source:
+		`lib/private/DB/PreparedStatement.php#44 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/PreparedStatement.php#L44>`_
+	
+	:Implements:
+		:php:interface:`OCP\\DB\\IPreparedStatement` 
+	
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $statement)
+	
+		:Source:
+			`lib/private/DB/PreparedStatement.php#52 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/PreparedStatement.php#L52>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public closeCursor()
+	
+		:Source:
+			`lib/private/DB/PreparedStatement.php#56 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/PreparedStatement.php#L56>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public fetch( $fetchMode=\\PDO::FETCH\_ASSOC)
+	
+		:Source:
+			`lib/private/DB/PreparedStatement.php#62 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/PreparedStatement.php#L62>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public fetchAll( $fetchMode=\\PDO::FETCH\_ASSOC)
+	
+		:Source:
+			`lib/private/DB/PreparedStatement.php#66 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/PreparedStatement.php#L66>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public fetchColumn()
+	
+		:Source:
+			`lib/private/DB/PreparedStatement.php#70 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/PreparedStatement.php#L70>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public fetchOne()
+	
+		:Source:
+			`lib/private/DB/PreparedStatement.php#74 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/PreparedStatement.php#L74>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public bindValue( $param, $value, $type=\\Doctrine\\DBAL\\ParameterType::STRING)
+	
+		:Source:
+			`lib/private/DB/PreparedStatement.php#78 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/PreparedStatement.php#L78>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public bindParam( $param, &$variable, $type=\\Doctrine\\DBAL\\ParameterType::STRING, $length=null)
+	
+		:Source:
+			`lib/private/DB/PreparedStatement.php#82 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/PreparedStatement.php#L82>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public execute( $params=null)
+	
+		:Source:
+			`lib/private/DB/PreparedStatement.php#86 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/PreparedStatement.php#L86>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public rowCount()
+	
+		:Source:
+			`lib/private/DB/PreparedStatement.php#90 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/PreparedStatement.php#L90>`_
+		
+		
+	
+	
+

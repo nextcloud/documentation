@@ -1,0 +1,215 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IMountManager
+=============
+
+
+.. php:namespace:: OCP\Files\Mount
+
+.. php:interface:: IMountManager
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Interface IMountManager
+		
+		| Manages all mounted storages in the system
+		
+	
+	:Implemented by:
+		:php:class:`OC\\Files\\Mount\\Manager` 
+	
+	
+	:Source:
+		`lib/public/Files/Mount/IMountManager.php#36 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Mount/IMountManager.php#L36>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public addMount( $mount)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Add a new mount
+			
+		
+		:Source:
+			`lib/public/Files/Mount/IMountManager.php#44 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Mount/IMountManager.php#L44>`_
+		
+		
+		:Parameters:
+			* **$mount** (:any:`OCP\\Files\\Mount\\IMountPoint <OCP\\Files\\Mount\\IMountPoint>`)  
+
+		
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public removeMount( $mountPoint)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Remove a mount
+			
+		
+		:Source:
+			`lib/public/Files/Mount/IMountManager.php#52 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Mount/IMountManager.php#L52>`_
+		
+		
+		:Parameters:
+			* **$mountPoint** (string)  
+
+		
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public moveMount( $mountPoint, $target)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Change the location of a mount
+			
+		
+		:Source:
+			`lib/public/Files/Mount/IMountManager.php#61 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Mount/IMountManager.php#L61>`_
+		
+		
+		:Parameters:
+			* **$mountPoint** (string)  
+			* **$target** (string)  
+
+		
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public find( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Find the mount for $path
+			
+		
+		:Source:
+			`lib/public/Files/Mount/IMountManager.php#70 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Mount/IMountManager.php#L70>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: :any:`\\OCP\\Files\\Mount\\IMountPoint <OCP\\Files\\Mount\\IMountPoint>` | null 
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public findIn( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Find all mounts in $path
+			
+		
+		:Source:
+			`lib/public/Files/Mount/IMountManager.php#79 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Mount/IMountManager.php#L79>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: :any:`\\OCP\\Files\\Mount\\IMountPoint\[\] <OCP\\Files\\Mount\\IMountPoint>` 
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public clear()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Remove all registered mounts
+			
+		
+		:Source:
+			`lib/public/Files/Mount/IMountManager.php#86 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Mount/IMountManager.php#L86>`_
+		
+		
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public findByStorageId( $id)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Find mounts by storage id
+			
+		
+		:Source:
+			`lib/public/Files/Mount/IMountManager.php#95 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Mount/IMountManager.php#L95>`_
+		
+		
+		:Parameters:
+			* **$id** (string)  
+
+		
+		:Returns: :any:`\\OCP\\Files\\Mount\\IMountPoint\[\] <OCP\\Files\\Mount\\IMountPoint>` 
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getAll()
+	
+		:Source:
+			`lib/public/Files/Mount/IMountManager.php#101 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Mount/IMountManager.php#L101>`_
+		
+		
+		:Returns: :any:`\\OCP\\Files\\Mount\\IMountPoint\[\] <OCP\\Files\\Mount\\IMountPoint>` 
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public findByNumericId( $id)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Find mounts by numeric storage id
+			
+		
+		:Source:
+			`lib/public/Files/Mount/IMountManager.php#110 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Mount/IMountManager.php#L110>`_
+		
+		
+		:Parameters:
+			* **$id** (int)  
+
+		
+		:Returns: :any:`\\OCP\\Files\\Mount\\IMountPoint\[\] <OCP\\Files\\Mount\\IMountPoint>` 
+		:Since: 8.2.0 
+	
+	
+

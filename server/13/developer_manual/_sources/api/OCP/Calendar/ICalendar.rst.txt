@@ -1,0 +1,111 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+ICalendar
+=========
+
+
+.. php:namespace:: OCP\Calendar
+
+.. php:interface:: ICalendar
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Interface ICalendar
+		
+	
+	:Source:
+		`lib/public/Calendar/ICalendar.php#32 <https://github.com/nextcloud/server/blob/stable13/lib/public/Calendar/ICalendar.php#L32>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public getKey()
+	
+		:Source:
+			`lib/public/Calendar/ICalendar.php#38 <https://github.com/nextcloud/server/blob/stable13/lib/public/Calendar/ICalendar.php#L38>`_
+		
+		
+		:Returns: string defining the technical unique key
+		:Since: 13.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getDisplayName()
+	
+		.. rst-class:: phpdoc-description
+		
+			| In comparison to getKey\(\) this function returns a human readable \(maybe translated\) name
+			
+		
+		:Source:
+			`lib/public/Calendar/ICalendar.php#45 <https://github.com/nextcloud/server/blob/stable13/lib/public/Calendar/ICalendar.php#L45>`_
+		
+		
+		:Returns: null | string 
+		:Since: 13.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getDisplayColor()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Calendar color
+			
+		
+		:Source:
+			`lib/public/Calendar/ICalendar.php#52 <https://github.com/nextcloud/server/blob/stable13/lib/public/Calendar/ICalendar.php#L52>`_
+		
+		
+		:Returns: null | string 
+		:Since: 13.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public search( $pattern, $searchProperties=\[\], $options=\[\], $limit=null, $offset=null)
+	
+		:Source:
+			`lib/public/Calendar/ICalendar.php#64 <https://github.com/nextcloud/server/blob/stable13/lib/public/Calendar/ICalendar.php#L64>`_
+		
+		
+		:Parameters:
+			* **$pattern** (string)  which should match within the $searchProperties
+			* **$searchProperties** (array)  defines the properties within the query pattern should match
+			* **$options** (array)  - optional parameters:
+			['timerange' => ['start' => new DateTime(...), 'end' => new DateTime(...)]]
+			* **$limit** (int | null)  - limit number of search results
+			* **$offset** (int | null)  - offset for paging of search results
+
+		
+		:Returns: array an array of events/journals/todos which are arrays of key\-value\-pairs
+		:Since: 13.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getPermissions()
+	
+		:Source:
+			`lib/public/Calendar/ICalendar.php#70 <https://github.com/nextcloud/server/blob/stable13/lib/public/Calendar/ICalendar.php#L70>`_
+		
+		
+		:Returns: int build up using \\OCP\\Constants
+		:Since: 13.0.0 
+	
+	
+

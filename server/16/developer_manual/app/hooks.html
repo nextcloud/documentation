@@ -1,0 +1,447 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Hooks &mdash; Nextcloud latest Developer Manual latest documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'latest',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Background jobs (Cron)" href="backgroundjobs.html" />
+    <link rel="prev" title="Two-factor providers" href="two-factor-provider.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../general/index.html">General contributor guidelines</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">App development</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="npm.html">NPM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="requests/index.html">Request lifecycle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="view/index.html">View</a></li>
+<li class="toctree-l2"><a class="reference internal" href="storage/index.html">Storage and database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html">Changelog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classloader.html">Classloader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="code_signing.html">Code signing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="info.html">App metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="init.html">Navigation and pre-app configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="publishing.html">App store publishing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="users.html">User management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="two-factor-provider.html">Two-factor providers</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Hooks</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#available-hooks">Available hooks</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#session">Session</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#usermanager">UserManager</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#groupmanager">GroupManager</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#filesystem-root">Filesystem root</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#filesystem-scanner">Filesystem scanner</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="backgroundjobs.html">Background jobs (Cron)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="settings.html">Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notifications.html">Notifications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logging.html">Logging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="repair.html">Repair steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="publicpage.html">Public Pages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="testing.html">Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html">API Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../design/index.html">Design guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../android_library/index.html">Android application development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client_apis/index.html">Client APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../core/index.html">Core development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bugtracker/index.html">Bugtracker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../commun/index.html">Help and communication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API Documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Nextcloud latest Developer Manual</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">App development</a> &raquo;</li>
+        
+      <li>Hooks</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/nextcloud/documentation/edit/master/developer_manual/app/hooks.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="hooks">
+<h1>Hooks<a class="headerlink" href="#hooks" title="Permalink to this headline">¶</a></h1>
+<p>Hooks are used to execute code before or after an event has occurred. This is for instance useful to run cleanup code after users, groups or files have been deleted. Hooks should be registered in the <a class="reference internal" href="init.html"><span class="doc">app.php</span></a>:</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="k">namespace</span> <span class="nx">OCA\MyApp\AppInfo</span><span class="p">;</span>
+
+<span class="nv">$app</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Application</span><span class="p">();</span>
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">getContainer</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="s1">&#39;UserHooks&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">register</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>The hook logic should be in a separate class that is being registered in the <a class="reference internal" href="requests/container.html"><span class="doc">Container</span></a>:</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="k">namespace</span> <span class="nx">OCA\MyApp\AppInfo</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">\OCP\AppFramework\App</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">\OCA\MyApp\Hooks\UserHooks</span><span class="p">;</span>
+
+
+<span class="k">class</span> <span class="nc">Application</span> <span class="k">extends</span> <span class="nx">App</span> <span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="k">array</span> <span class="nv">$urlParams</span><span class="o">=</span><span class="k">array</span><span class="p">()){</span>
+        <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">(</span><span class="s1">&#39;myapp&#39;</span><span class="p">,</span> <span class="nv">$urlParams</span><span class="p">);</span>
+
+        <span class="nv">$container</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getContainer</span><span class="p">();</span>
+
+        <span class="sd">/**</span>
+<span class="sd">         * Controllers</span>
+<span class="sd">         */</span>
+        <span class="nv">$container</span><span class="o">-&gt;</span><span class="na">registerService</span><span class="p">(</span><span class="s1">&#39;UserHooks&#39;</span><span class="p">,</span> <span class="k">function</span><span class="p">(</span><span class="nv">$c</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="k">new</span> <span class="nx">UserHooks</span><span class="p">(</span>
+                <span class="nv">$c</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="s1">&#39;ServerContainer&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">getUserManager</span><span class="p">()</span>
+            <span class="p">);</span>
+        <span class="p">});</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="k">namespace</span> <span class="nx">OCA\MyApp\Hooks</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\IUserManager</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">UserHooks</span> <span class="p">{</span>
+
+    <span class="k">private</span> <span class="nv">$userManager</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">IUserManager</span> <span class="nv">$userManager</span><span class="p">){</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">userManager</span> <span class="o">=</span> <span class="nv">$userManager</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">register</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nv">$callback</span> <span class="o">=</span> <span class="k">function</span><span class="p">(</span><span class="nv">$user</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// your code that executes before $user is deleted</span>
+        <span class="p">};</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">userManager</span><span class="o">-&gt;</span><span class="na">listen</span><span class="p">(</span><span class="s1">&#39;\OC\User&#39;</span><span class="p">,</span> <span class="s1">&#39;preDelete&#39;</span><span class="p">,</span> <span class="nv">$callback</span><span class="p">);</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="section" id="available-hooks">
+<h2>Available hooks<a class="headerlink" href="#available-hooks" title="Permalink to this headline">¶</a></h2>
+<p>The scope is the first parameter that is passed to the <strong>listen</strong> method, the second parameter is the method and the third one the callback that should be executed once the hook is being called, e.g.:</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+
+<span class="c1">// listen on user predelete</span>
+<span class="nv">$callback</span> <span class="o">=</span> <span class="k">function</span><span class="p">(</span><span class="nv">$user</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// your code that executes before $user is deleted</span>
+<span class="p">};</span>
+<span class="nv">$userManager</span><span class="o">-&gt;</span><span class="na">listen</span><span class="p">(</span><span class="s1">&#39;\OC\User&#39;</span><span class="p">,</span> <span class="s1">&#39;preDelete&#39;</span><span class="p">,</span> <span class="nv">$callback</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Hooks can also be removed by using the <strong>removeListener</strong> method on the object:</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+
+<span class="c1">// delete previous callback</span>
+<span class="nv">$userManager</span><span class="o">-&gt;</span><span class="na">removeListener</span><span class="p">(</span><span class="k">null</span><span class="p">,</span> <span class="k">null</span><span class="p">,</span> <span class="nv">$callback</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>The following hooks are available:</p>
+<div class="section" id="session">
+<h3>Session<a class="headerlink" href="#session" title="Permalink to this headline">¶</a></h3>
+<p>Injectable from the ServerContainer by calling the method <strong>getUserSession()</strong>.</p>
+<p>Hooks available in scope <strong>\OC\User</strong>:</p>
+<ul class="simple">
+<li><strong>preSetPassword</strong> (\OC\User\User $user, string $password, string $recoverPassword)</li>
+<li><strong>postSetPassword</strong> (\OC\User\User $user, string $password, string $recoverPassword)</li>
+<li><strong>changeUser</strong> (\OC\User\User $user, string $feature, string $value)</li>
+<li><strong>preDelete</strong> (\OC\User\User $user)</li>
+<li><strong>postDelete</strong> (\OC\User\User $user)</li>
+<li><strong>preCreateUser</strong> (string $uid, string $password)</li>
+<li><strong>postCreateUser</strong> (\OC\User\User $user)</li>
+<li><strong>preLogin</strong> (string $user, string $password)</li>
+<li><strong>postLogin</strong> (\OC\User\User $user, string $password)</li>
+<li><strong>logout</strong> ()</li>
+</ul>
+</div>
+<div class="section" id="usermanager">
+<h3>UserManager<a class="headerlink" href="#usermanager" title="Permalink to this headline">¶</a></h3>
+<p>Injectable from the ServerContainer by calling the method <strong>getUserManager()</strong>.</p>
+<p>Hooks available in scope <strong>\OC\User</strong>:</p>
+<ul class="simple">
+<li><strong>preSetPassword</strong> (\OC\User\User $user, string $password, string $recoverPassword)</li>
+<li><strong>postSetPassword</strong> (\OC\User\User $user, string $password, string $recoverPassword)</li>
+<li><strong>preDelete</strong> (\OC\User\User $user)</li>
+<li><strong>postDelete</strong> (\OC\User\User $user)</li>
+<li><strong>preCreateUser</strong> (string $uid, string $password)</li>
+<li><strong>postCreateUser</strong> (\OC\User\User $user, string $password)</li>
+</ul>
+</div>
+<div class="section" id="groupmanager">
+<h3>GroupManager<a class="headerlink" href="#groupmanager" title="Permalink to this headline">¶</a></h3>
+<p>Hooks available in scope <strong>\OC\Group</strong>:</p>
+<ul class="simple">
+<li><strong>preAddUser</strong> (\OC\Group\Group $group, \OC\User\User $user)</li>
+<li><strong>postAddUser</strong> (\OC\Group\Group $group, \OC\User\User $user)</li>
+<li><strong>preRemoveUser</strong> (\OC\Group\Group $group, \OC\User\User $user)</li>
+<li><strong>postRemoveUser</strong> (\OC\Group\Group $group, \OC\User\User $user)</li>
+<li><strong>preDelete</strong> (\OC\Group\Group $group)</li>
+<li><strong>postDelete</strong> (\OC\Group\Group $group)</li>
+<li><strong>preCreate</strong> (string $groupId)</li>
+<li><strong>postCreate</strong> (\OC\Group\Group $group)</li>
+</ul>
+</div>
+<div class="section" id="filesystem-root">
+<h3>Filesystem root<a class="headerlink" href="#filesystem-root" title="Permalink to this headline">¶</a></h3>
+<p>Injectable from the ServerContainer by calling the method <strong>getRootFolder()</strong>, <strong>getUserFolder()</strong> or <strong>getAppFolder()</strong>.</p>
+<p>Filesystem hooks available in scope <strong>\OC\Files</strong>:</p>
+<ul class="simple">
+<li><strong>preWrite</strong> (\OCP\Files\Node $node)</li>
+<li><strong>postWrite</strong> (\OCP\Files\Node $node)</li>
+<li><strong>preCreate</strong> (\OCP\Files\Node $node)</li>
+<li><strong>postCreate</strong> (\OCP\Files\Node $node)</li>
+<li><strong>preDelete</strong> (\OCP\Files\Node $node)</li>
+<li><strong>postDelete</strong> (\OCP\Files\Node $node)</li>
+<li><strong>preTouch</strong> (\OCP\Files\Node $node, int $mtime)</li>
+<li><strong>postTouch</strong> (\OCP\Files\Node $node)</li>
+<li><strong>preCopy</strong> (\OCP\Files\Node $source, \OCP\Files\Node $target)</li>
+<li><strong>postCopy</strong> (\OCP\Files\Node $source, \OCP\Files\Node $target)</li>
+<li><strong>preRename</strong> (\OCP\Files\Node $source, \OCP\Files\Node $target)</li>
+<li><strong>postRename</strong> (\OCP\Files\Node $source, \OCP\Files\Node $target)</li>
+</ul>
+</div>
+<div class="section" id="filesystem-scanner">
+<h3>Filesystem scanner<a class="headerlink" href="#filesystem-scanner" title="Permalink to this headline">¶</a></h3>
+<p>Filesystem scanner hooks available in scope <strong>\OC\Files\Utils\Scanner</strong>:</p>
+<ul class="simple">
+<li><strong>scanFile</strong> (string $absolutePath)</li>
+<li><strong>scanFolder</strong> (string $absolutePath)</li>
+<li><strong>postScanFile</strong> (string $absolutePath)</li>
+<li><strong>postScanFolder</strong> (string $absolutePath)</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="backgroundjobs.html" class="btn btn-neutral float-right" title="Background jobs (Cron)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="two-factor-provider.html" class="btn btn-neutral float-left" title="Two-factor providers" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021 Nextcloud GmbH.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/16/developer_manual">16</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/17/developer_manual">17</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/18/developer_manual">18</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/developer_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/developer_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+   
+
+</body>
+</html>

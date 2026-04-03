@@ -1,0 +1,130 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+DateTimeZone
+============
+
+
+.. php:namespace:: OC
+
+.. php:class:: DateTimeZone
+
+
+	:Source:
+		`lib/private/DateTimeZone.php#33 <https://github.com/nextcloud/server/blob/stable13/lib/private/DateTimeZone.php#L33>`_
+	
+	:Implements:
+		:php:interface:`OCP\\IDateTimeZone` 
+	
+
+Properties
+----------
+
+.. php:attr:: protected static config
+
+	:Source:
+		`lib/private/DateTimeZone.php#35 <https://github.com/nextcloud/server/blob/stable13/lib/private/DateTimeZone.php#L35>`_
+	
+	:Type: :any:`\\OCP\\IConfig <OCP\\IConfig>` 
+
+
+.. php:attr:: protected static session
+
+	:Source:
+		`lib/private/DateTimeZone.php#38 <https://github.com/nextcloud/server/blob/stable13/lib/private/DateTimeZone.php#L38>`_
+	
+	:Type: :any:`\\OCP\\ISession <OCP\\ISession>` 
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $config, $session)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Constructor
+			
+		
+		:Source:
+			`lib/private/DateTimeZone.php#46 <https://github.com/nextcloud/server/blob/stable13/lib/private/DateTimeZone.php#L46>`_
+		
+		
+		:Parameters:
+			* **$config** (:any:`OCP\\IConfig <OCP\\IConfig>`)  
+			* **$session** (:any:`OCP\\ISession <OCP\\ISession>`)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getTimeZone( $timestamp=false)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the timezone of the current user, based on his session information and config data
+			
+		
+		:Source:
+			`lib/private/DateTimeZone.php#57 <https://github.com/nextcloud/server/blob/stable13/lib/private/DateTimeZone.php#L57>`_
+		
+		
+		:Parameters:
+			* **$timestamp** (bool | int)  
+
+		
+		:Returns: :any:`\\DateTimeZone <DateTimeZone>` 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected guessTimeZoneFromOffset( $offset, $timestamp)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Guess the DateTimeZone for a given offset
+			
+			| We first try to find a Etc/GMT\* timezone, if that does not exist,
+			| we try to find it manually, before falling back to UTC\.
+			
+		
+		:Source:
+			`lib/private/DateTimeZone.php#84 <https://github.com/nextcloud/server/blob/stable13/lib/private/DateTimeZone.php#L84>`_
+		
+		
+		:Parameters:
+			* **$offset** (mixed)  
+			* **$timestamp** (bool | int)  
+
+		
+		:Returns: :any:`\\DateTimeZone <DateTimeZone>` 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected getDefaultTimeZone()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the default timezone of the server
+			
+			| Falls back to UTC if it is not yet set\.
+			
+		
+		:Source:
+			`lib/private/DateTimeZone.php#126 <https://github.com/nextcloud/server/blob/stable13/lib/private/DateTimeZone.php#L126>`_
+		
+		
+		:Returns: string 
+	
+	
+

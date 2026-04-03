@@ -1,0 +1,175 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IManager
+========
+
+
+.. php:namespace:: OCP\Encryption
+
+.. php:interface:: IManager
+
+
+	.. rst-class:: phpdoc-description
+	
+		| This class provides access to files encryption apps\.
+		
+	
+	:Implemented by:
+		:php:class:`OC\\Encryption\\Manager` 
+	
+	
+	:Source:
+		`lib/public/Encryption/IManager.php#36 <https://github.com/nextcloud/server/blob/stable13/lib/public/Encryption/IManager.php#L36>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public isEnabled()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check if encryption is available \(at least one encryption module needs to be enabled\)
+			
+		
+		:Source:
+			`lib/public/Encryption/IManager.php#44 <https://github.com/nextcloud/server/blob/stable13/lib/public/Encryption/IManager.php#L44>`_
+		
+		
+		:Returns: bool true if enabled, false if not
+		:Since: 8.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public registerEncryptionModule( $id, $displayName, $callback)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Registers an callback function which must return an encryption module instance
+			
+		
+		:Source:
+			`lib/public/Encryption/IManager.php#55 <https://github.com/nextcloud/server/blob/stable13/lib/public/Encryption/IManager.php#L55>`_
+		
+		
+		:Parameters:
+			* **$id** (string)  
+			* **$displayName** (string)  
+			* **$callback** (callable)  
+
+		
+		:Throws: :any:`\\OC\\Encryption\\Exceptions\\ModuleAlreadyExistsException <OC\\Encryption\\Exceptions\\ModuleAlreadyExistsException>` 
+		:Since: 8.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public unregisterEncryptionModule( $moduleId)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Unregisters an encryption module
+			
+		
+		:Source:
+			`lib/public/Encryption/IManager.php#63 <https://github.com/nextcloud/server/blob/stable13/lib/public/Encryption/IManager.php#L63>`_
+		
+		
+		:Parameters:
+			* **$moduleId** (string)  
+
+		
+		:Since: 8.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getEncryptionModules()
+	
+		.. rst-class:: phpdoc-description
+		
+			| get a list of all encryption modules
+			
+		
+		:Source:
+			`lib/public/Encryption/IManager.php#71 <https://github.com/nextcloud/server/blob/stable13/lib/public/Encryption/IManager.php#L71>`_
+		
+		
+		:Returns: array \[id =\> \[\'id\' =\> $id, \'displayName\' =\> $displayName, \'callback\' =\> callback\]\]
+		:Since: 8.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getEncryptionModule( $moduleId="")
+	
+		.. rst-class:: phpdoc-description
+		
+			| get a specific encryption module
+			
+		
+		:Source:
+			`lib/public/Encryption/IManager.php#82 <https://github.com/nextcloud/server/blob/stable13/lib/public/Encryption/IManager.php#L82>`_
+		
+		
+		:Parameters:
+			* **$moduleId** (string)  Empty to get the default module
+
+		
+		:Returns: :any:`\\OCP\\Encryption\\IEncryptionModule <OCP\\Encryption\\IEncryptionModule>` 
+		:Throws: :any:`\\OC\\Encryption\\Exceptions\\ModuleDoesNotExistsException <OC\\Encryption\\Exceptions\\ModuleDoesNotExistsException>` 
+		:Since: 8.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getDefaultEncryptionModuleId()
+	
+		.. rst-class:: phpdoc-description
+		
+			| get default encryption module Id
+			
+		
+		:Source:
+			`lib/public/Encryption/IManager.php#90 <https://github.com/nextcloud/server/blob/stable13/lib/public/Encryption/IManager.php#L90>`_
+		
+		
+		:Returns: string 
+		:Since: 8.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setDefaultEncryptionModule( $moduleId)
+	
+		.. rst-class:: phpdoc-description
+		
+			| set default encryption module Id
+			
+		
+		:Source:
+			`lib/public/Encryption/IManager.php#99 <https://github.com/nextcloud/server/blob/stable13/lib/public/Encryption/IManager.php#L99>`_
+		
+		
+		:Parameters:
+			* **$moduleId** (string)  
+
+		
+		:Returns: string 
+		:Since: 8.1.0 
+	
+	
+

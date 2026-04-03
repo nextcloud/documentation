@@ -1,0 +1,736 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>IManager &mdash; Nextcloud 13 Developer Manual 13 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../../',
+              VERSION:'13',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="ActivitySettings" href="ActivitySettings.html" />
+    <link rel="prev" title="ISetting" href="ISetting.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html">
+          
+
+          
+            
+            <img src="../../../_static/logo-white.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../general/index.html">General contributor guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/startapp.html">Create an app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/init.html">Navigation and pre-app configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/info.html">App metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/classloader.html">Classloader</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/request.html">Request lifecycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/routes.html">Routing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/middleware.html">Middleware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/container.html">Container</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/controllers.html">Controllers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/api.html">RESTful API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/templates.html">Templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/js.html">JavaScript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/css.html">CSS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/l10n.html">Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/theming.html">Theming support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/schema.html">Database schema</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/database.html">Database access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/filesystem.html">Filesystem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/appdata.html">AppData</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/users.html">User management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/two-factor-provider.html">Two-factor providers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/hooks.html">Hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/backgroundjobs.html">Background jobs (Cron)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/settings.html">Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/logging.html">Logging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/migrations.html">Migrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/repair.html">Repair steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/publishing.html">App store publishing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/code_signing.html">Code signing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../design/index.html">Design guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../android_library/index.html">Android application development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../client_apis/index.html">Client APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../core/translation.html">Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../core/unit-testing.html">Unit-Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../core/theming.html">Theming Nextcloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../core/externalapi.html">External API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../core/ocs-share-api.html">OCS Share API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../core/index.html">Core development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../bugtracker/index.html">Bugtracker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../commun/index.html">Help and communication</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../api.html">API Documentation</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../../api.html#php-public-api">PHP public API</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../index.html">/OCP namespace</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="../index.html#namespaces">Namespaces</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../index.html#interfaces">Interfaces</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../index.html#classes">Classes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#php-class-reference">PHP class reference</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Nextcloud 13 Developer Manual</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../../api.html">API Documentation</a> &raquo;</li>
+        
+          <li><a href="../index.html">OCP</a> &raquo;</li>
+        
+          <li><a href="index.html">Activity</a> &raquo;</li>
+        
+      <li>IManager</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/nextcloud/documentation/edit/stable13/developer_manual/api/OCP/Activity/IManager.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="phpdoctorst section" id="namespace-OCP\Activity">
+<span id="imanager"></span><h1>IManager<a class="headerlink" href="#namespace-OCP\Activity" title="Permalink to this headline">¶</a></h1>
+<dl class="interface">
+<dt id="OCP\Activity\IManager">
+<em class="property">interface </em><code class="descclassname">OCP\Activity\</code><code class="descname">IManager</code><a class="headerlink" href="#OCP\Activity\IManager" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Interface IManager</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Implemented by:</th><td class="field-body"><a class="reference internal" href="../../OC/Activity/Manager.html#OC\Activity\Manager" title="OC\Activity\Manager"><code class="xref php php-class docutils literal"><span class="pre">OC\Activity\Manager</span></code></a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IManager.php#L37">lib/public/Activity/IManager.php#37</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<div class="section" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h2>
+<dl class="public method">
+<dt id="OCP\Activity\IManager::generateEvent">
+<em class="property">public </em><code class="descclassname">OCP\Activity\IManager::</code><code class="descname">generateEvent</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Activity\IManager::generateEvent" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Generates a new IEvent object</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">Make sure to call at least the following methods before sending it to the</div>
+<div class="line">app with via the publish() method:</div>
+<div class="line-block">
+<div class="line">- setApp()</div>
+<div class="line">- setType()</div>
+<div class="line">- setAffectedUser()</div>
+<div class="line">- setSubject()</div>
+<div class="line">- setObject()</div>
+</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IManager.php#L52">lib/public/Activity/IManager.php#52</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="IEvent.html#OCP\Activity\IEvent" title="OCP\Activity\IEvent"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Activity\IEvent</span></code></a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">8.2.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\Activity\IManager::publish">
+<em class="property">public </em><code class="descclassname">OCP\Activity\IManager::</code><code class="descname">publish</code><span class="sig-paren">(</span><em>$event</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Activity\IManager::publish" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Publish an event to the activity consumers</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">Make sure to call at least the following methods before sending an Event:</div>
+<div class="line">- setApp()</div>
+<div class="line">- setType()</div>
+<div class="line">- setAffectedUser()</div>
+<div class="line">- setSubject()</div>
+<div class="line">- setObject()</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IManager.php#L68">lib/public/Activity/IManager.php#68</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$event</strong> (<a class="reference internal" href="IEvent.html#OCP\Activity\IEvent" title="OCP\Activity\IEvent"><code class="xref any php php-trait docutils literal"><span class="pre">OCP\Activity\IEvent</span></code></a>)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><code class="xref any docutils literal"><span class="pre">\BadMethodCallException</span></code> if required values have not been set</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">8.2.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\Activity\IManager::registerConsumer">
+<em class="property">public </em><code class="descclassname">OCP\Activity\IManager::</code><code class="descname">registerConsumer</code><span class="sig-paren">(</span><em>$callable</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Activity\IManager::registerConsumer" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">In order to improve lazy loading a closure can be registered which will be called in case</div>
+<div class="line">activity consumers are actually requested</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">$callable has to return an instance of \OCP\Activity\IConsumer</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IManager.php#L79">lib/public/Activity/IManager.php#79</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$callable</strong> (<code class="xref any docutils literal"><span class="pre">Closure</span></code>)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">6.0.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\Activity\IManager::registerFilter">
+<em class="property">public </em><code class="descclassname">OCP\Activity\IManager::</code><code class="descname">registerFilter</code><span class="sig-paren">(</span><em>$filter</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Activity\IManager::registerFilter" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IManager.php#L85">lib/public/Activity/IManager.php#85</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$filter</strong> (string)  Class must implement OCAActivityIFilter</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">11.0.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\Activity\IManager::getFilters">
+<em class="property">public </em><code class="descclassname">OCP\Activity\IManager::</code><code class="descname">getFilters</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Activity\IManager::getFilters" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IManager.php#L91">lib/public/Activity/IManager.php#91</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="IFilter.html#OCP\Activity\IFilter" title="OCP\Activity\IFilter"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Activity\IFilter[]</span></code></a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">11.0.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\Activity\IManager::getFilterById">
+<em class="property">public </em><code class="descclassname">OCP\Activity\IManager::</code><code class="descname">getFilterById</code><span class="sig-paren">(</span><em>$id</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Activity\IManager::getFilterById" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IManager.php#L99">lib/public/Activity/IManager.php#99</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$id</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference internal" href="IFilter.html#OCP\Activity\IFilter" title="OCP\Activity\IFilter"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Activity\IFilter</span></code></a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><code class="xref any docutils literal"><span class="pre">\InvalidArgumentException</span></code> when the filter was not found</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">11.0.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\Activity\IManager::registerSetting">
+<em class="property">public </em><code class="descclassname">OCP\Activity\IManager::</code><code class="descname">registerSetting</code><span class="sig-paren">(</span><em>$setting</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Activity\IManager::registerSetting" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IManager.php#L105">lib/public/Activity/IManager.php#105</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$setting</strong> (string)  Class must implement OCAActivityISetting</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">11.0.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\Activity\IManager::getSettings">
+<em class="property">public </em><code class="descclassname">OCP\Activity\IManager::</code><code class="descname">getSettings</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Activity\IManager::getSettings" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IManager.php#L111">lib/public/Activity/IManager.php#111</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="ActivitySettings.html#OCP\Activity\ActivitySettings" title="OCP\Activity\ActivitySettings"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Activity\ActivitySettings[]</span></code></a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">11.0.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\Activity\IManager::registerProvider">
+<em class="property">public </em><code class="descclassname">OCP\Activity\IManager::</code><code class="descname">registerProvider</code><span class="sig-paren">(</span><em>$provider</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Activity\IManager::registerProvider" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IManager.php#L117">lib/public/Activity/IManager.php#117</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$provider</strong> (string)  Class must implement OCAActivityIProvider</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">11.0.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\Activity\IManager::getProviders">
+<em class="property">public </em><code class="descclassname">OCP\Activity\IManager::</code><code class="descname">getProviders</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Activity\IManager::getProviders" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IManager.php#L123">lib/public/Activity/IManager.php#123</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="IProvider.html#OCP\Activity\IProvider" title="OCP\Activity\IProvider"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Activity\IProvider[]</span></code></a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">11.0.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\Activity\IManager::getSettingById">
+<em class="property">public </em><code class="descclassname">OCP\Activity\IManager::</code><code class="descname">getSettingById</code><span class="sig-paren">(</span><em>$id</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Activity\IManager::getSettingById" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IManager.php#L131">lib/public/Activity/IManager.php#131</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$id</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference internal" href="ActivitySettings.html#OCP\Activity\ActivitySettings" title="OCP\Activity\ActivitySettings"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Activity\ActivitySettings</span></code></a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><code class="xref any docutils literal"><span class="pre">\InvalidArgumentException</span></code> when the setting was not found</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">11.0.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\Activity\IManager::setFormattingObject">
+<em class="property">public </em><code class="descclassname">OCP\Activity\IManager::</code><code class="descname">setFormattingObject</code><span class="sig-paren">(</span><em>$type</em>, <em>$id</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Activity\IManager::setFormattingObject" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IManager.php#L138">lib/public/Activity/IManager.php#138</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$type</strong> (string)</li>
+<li><strong>$id</strong> (int)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">8.2.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\Activity\IManager::isFormattingFilteredObject">
+<em class="property">public </em><code class="descclassname">OCP\Activity\IManager::</code><code class="descname">isFormattingFilteredObject</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Activity\IManager::isFormattingFilteredObject" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IManager.php#L144">lib/public/Activity/IManager.php#144</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">bool</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">8.2.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\Activity\IManager::setRequirePNG">
+<em class="property">public </em><code class="descclassname">OCP\Activity\IManager::</code><code class="descname">setRequirePNG</code><span class="sig-paren">(</span><em>$status</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Activity\IManager::setRequirePNG" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IManager.php#L150">lib/public/Activity/IManager.php#150</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$status</strong> (bool)  Set to true, when parsing events should not use SVG icons</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">12.0.1</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\Activity\IManager::getRequirePNG">
+<em class="property">public </em><code class="descclassname">OCP\Activity\IManager::</code><code class="descname">getRequirePNG</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Activity\IManager::getRequirePNG" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IManager.php#L156">lib/public/Activity/IManager.php#156</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">bool</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">12.0.1</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\Activity\IManager::setCurrentUserId">
+<em class="property">public </em><code class="descclassname">OCP\Activity\IManager::</code><code class="descname">setCurrentUserId</code><span class="sig-paren">(</span><em>$currentUserId=null</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Activity\IManager::setCurrentUserId" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Set the user we need to use</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IManager.php#L165">lib/public/Activity/IManager.php#165</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$currentUserId</strong> (string | null)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><code class="xref any docutils literal"><span class="pre">\UnexpectedValueException</span></code> If the user is invalid</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">9.0.1</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\Activity\IManager::getCurrentUserId">
+<em class="property">public </em><code class="descclassname">OCP\Activity\IManager::</code><code class="descname">getCurrentUserId</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Activity\IManager::getCurrentUserId" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Get the user we need to use</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">Either the user is logged in, or we try to get it from the token</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IManager.php#L176">lib/public/Activity/IManager.php#176</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">string</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Throws:</th><td class="field-body"><code class="xref any docutils literal"><span class="pre">\UnexpectedValueException</span></code> If the token is invalid, does not exist or is not unique</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body">8.1.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="ActivitySettings.html" class="btn btn-neutral float-right" title="ActivitySettings" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="ISetting.html" class="btn btn-neutral float-left" title="ISetting" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021 Nextcloud GmbH.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: 13
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/13/developer_manual">13</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/14/developer_manual">14</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/15/developer_manual">15</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/developer_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/developer_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+   
+
+</body>
+</html>

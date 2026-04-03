@@ -1,0 +1,771 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+OC\_App
+=======
+
+
+.. php:class:: OC_App
+
+
+	.. rst-class:: phpdoc-description
+	
+		| This class manages the apps\. It allows them to register and integrate in the
+		| ownCloud ecosystem\. Furthermore, this class is responsible for installing,
+		| upgrading and removing apps\.
+		
+	
+	:Source:
+		`lib/private/legacy/OC_App.php#71 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_App.php#L71>`_
+	
+
+Constants
+---------
+
+.. php:const:: supportedApp = 300
+
+	:Source:
+		`lib/private/legacy/OC_App.php#78 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_App.php#L78>`_
+	
+
+
+.. php:const:: officialApp = 200
+
+	:Source:
+		`lib/private/legacy/OC_App.php#79 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_App.php#L79>`_
+	
+
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: public static
+
+	.. php:method:: public static cleanAppId( $app)
+	
+		.. rst-class:: phpdoc-description
+		
+			| clean the appId
+			
+		
+		:Source:
+			`lib/private/legacy/OC_App.php#90 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_App.php#L90>`_
+		
+		
+		:Parameters:
+			* **$app** (string)  AppId that needs to be cleaned
+
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static isAppLoaded( $app)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check if an app is loaded
+			
+		
+		:Source:
+			`lib/private/legacy/OC_App.php#100 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_App.php#L100>`_
+		
+		
+		:Parameters:
+			* **$app** (string)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static loadApps( $types=\[\])
+	
+		.. rst-class:: phpdoc-description
+		
+			| loads all apps
+			
+		
+		:Source:
+			`lib/private/legacy/OC_App.php#116 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_App.php#L116>`_
+		
+		
+		:Parameters:
+			* **$types** (string[])  
+
+		
+		:Returns: bool This function walks through the ownCloud directory and loads all apps
+			it can find\. A directory contains an app if the file /appinfo/info\.xml
+			exists\.
+			
+			if $types is set to non\-empty array, only apps of those types will be loaded
+		
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static loadApp( $app)
+	
+		.. rst-class:: phpdoc-description
+		
+			| load a single app
+			
+		
+		:Source:
+			`lib/private/legacy/OC_App.php#159 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_App.php#L159>`_
+		
+		
+		:Parameters:
+			* **$app** (string)  
+
+		
+		:Throws: :any:`\\Exception <Exception>` 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static registerAutoloading( $app, $path, $force=\\false)
+	
+		:Source:
+			`lib/private/legacy/OC_App.php#269 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_App.php#L269>`_
+		
+		
+		:Parameters:
+			* **$app** (string)  
+			* **$path** (string)  
+			* **$force** (bool)  
+
+		
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static isType( $app, $types)
+	
+		.. rst-class:: phpdoc-description
+		
+			| check if an app is of a specific type
+			
+		
+		:Source:
+			`lib/private/legacy/OC_App.php#313 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_App.php#L313>`_
+		
+		
+		:Parameters:
+			* **$app** (string)  
+			* **$types** (array)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static setAppTypes( $app)
+	
+		.. rst-class:: phpdoc-description
+		
+			| read app types from info\.xml and cache them in the database
+			
+		
+		:Source:
+			`lib/private/legacy/OC_App.php#345 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_App.php#L345>`_
+		
+		
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static getEnabledApps( $forceRefresh=\\false, $all=\\false)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns apps enabled for the current user\.
+			
+		
+		:Source:
+			`lib/private/legacy/OC_App.php#378 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_App.php#L378>`_
+		
+		
+		:Parameters:
+			* **$forceRefresh** (bool)  whether to refresh the cache
+			* **$all** (bool)  whether to return apps for all users, not only the
+			currently logged in one
+
+		
+		:Returns: string[] 
+	
+	
+
+.. rst-class:: public static deprecated
+
+	.. php:method:: public static isEnabled( $app)
+	
+		.. rst-class:: phpdoc-description
+		
+			| checks whether or not an app is enabled
+			
+		
+		:Source:
+			`lib/private/legacy/OC_App.php#413 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_App.php#L413>`_
+		
+		
+		:Parameters:
+			* **$app** (string)  app
+
+		
+		:Returns: bool 
+		:Deprecated: 13.0.0 use \\OC::$server\-\>getAppManager\(\)\-\>isEnabledForUser\($appId\)
+			
+			This function checks whether or not an app is enabled\.
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public enable( $appId, $groups=\[\])
+	
+		.. rst-class:: phpdoc-description
+		
+			| enables an app
+			
+		
+		:Source:
+			`lib/private/legacy/OC_App.php#427 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_App.php#L427>`_
+		
+		
+		:Parameters:
+			* **$appId** (string)  
+			* **$groups** (array)  (optional) when set, only these groups will have access to the app
+
+		
+		:Throws: :any:`\\Exception <Exception>` 
+		:Returns: void This function set an app as enabled in appconfig\.
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static getInstallPath()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the path where to install apps
+			
+		
+		:Source:
+			`lib/private/legacy/OC_App.php#462 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_App.php#L462>`_
+		
+		
+		:Returns: string | bool 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static findAppInDirectories( $appId)
+	
+		.. rst-class:: phpdoc-description
+		
+			| search for an app in all app\-directories
+			
+		
+		:Source:
+			`lib/private/legacy/OC_App.php#484 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_App.php#L484>`_
+		
+		
+		:Parameters:
+			* **$appId** (string)  
+
+		
+		:Returns: bool | string 
+	
+	
+
+.. rst-class:: public static deprecated
+
+	.. php:method:: public static getAppPath( $appId)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the directory for the given app\.
+			
+			| If the app is defined in multiple directories, the first one is taken\. \(false if not found\)
+			
+		
+		:Source:
+			`lib/private/legacy/OC_App.php#535 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_App.php#L535>`_
+		
+		
+		:Parameters:
+			* **$appId** (string)  
+
+		
+		:Returns: string | bool 
+		:Deprecated: 11.0.0 use \\OC::$server\-\>getAppManager\(\)\-\>getAppPath\(\)
+	
+	
+
+.. rst-class:: public static deprecated
+
+	.. php:method:: public static getAppWebPath( $appId)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the path for the given app on the access
+			| If the app is defined in multiple directories, the first one is taken\. \(false if not found\)
+			
+		
+		:Source:
+			`lib/private/legacy/OC_App.php#554 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_App.php#L554>`_
+		
+		
+		:Parameters:
+			* **$appId** (string)  
+
+		
+		:Returns: string | bool 
+		:Deprecated: 18.0.0 use \\OC::$server\-\>getAppManager\(\)\-\>getAppWebPath\(\)
+	
+	
+
+.. rst-class:: public static deprecated
+
+	.. php:method:: public static getAppVersion( $appId, $useCache=\\true)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get the last version of the app from appinfo/info\.xml
+			
+		
+		:Source:
+			`lib/private/legacy/OC_App.php#569 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_App.php#L569>`_
+		
+		
+		:Parameters:
+			* **$appId** (string)  
+			* **$useCache** (bool)  
+
+		
+		:Returns: string 
+		:Deprecated: 14.0.0 use \\OC::$server\-\>getAppManager\(\)\-\>getAppVersion\(\)
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static getAppVersionByPath( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get app\'s version based on it\'s path
+			
+		
+		:Source:
+			`lib/private/legacy/OC_App.php#579 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_App.php#L579>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public static deprecated
+
+	.. php:method:: public static getAppInfo( $appId, $path=\\false, $lang=\\null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Read all app metadata from the info\.xml file
+			
+		
+		:Source:
+			`lib/private/legacy/OC_App.php#596 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_App.php#L596>`_
+		
+		
+		:Parameters:
+			* **$appId** (string)  id of the app or the path of the info.xml file
+			* **$path** (bool)  
+			* **$lang** (string)  
+
+		
+		:Returns: array | null 
+		:Deprecated: 14.0.0 use \\OC::$server\-\>getAppManager\(\)\-\>getAppInfo\(\)
+	
+	
+
+.. rst-class:: public static deprecated
+
+	.. php:method:: public static getNavigation()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the navigation
+			
+		
+		:Source:
+			`lib/private/legacy/OC_App.php#611 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_App.php#L611>`_
+		
+		
+		:Returns: array 
+		:Deprecated: 14.0.0 use \\OC::$server\-\>getNavigationManager\(\)\-\>getAll\(\)
+			
+			This function returns an array containing all entries added\. The
+			entries are sorted by the key \'order\' ascending\. Additional to the keys
+			given for each app the following keys exist:
+			  \- active: boolean, signals if the user is on this navigation entry
+		
+	
+	
+
+.. rst-class:: public static deprecated
+
+	.. php:method:: public static getSettingsNavigation()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the Settings Navigation
+			
+		
+		:Source:
+			`lib/private/legacy/OC_App.php#624 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_App.php#L624>`_
+		
+		
+		:Returns: string[] 
+		:Deprecated: 14.0.0 use \\OC::$server\-\>getNavigationManager\(\)\-\>getAll\(\'settings\'\)
+			
+			This function returns an array containing all settings pages added\. The
+			entries are sorted by the key \'order\' ascending\.
+		
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static getCurrentApp()
+	
+		.. rst-class:: phpdoc-description
+		
+			| get the id of loaded app
+			
+		
+		:Source:
+			`lib/private/legacy/OC_App.php#633 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_App.php#L633>`_
+		
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static getForms( $type)
+	
+		:Source:
+			`lib/private/legacy/OC_App.php#655 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_App.php#L655>`_
+		
+		
+		:Parameters:
+			* **$type** (string)  
+
+		
+		:Returns: array 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static registerAdmin( $app, $page)
+	
+		.. rst-class:: phpdoc-description
+		
+			| register an admin form to be shown
+			
+		
+		:Source:
+			`lib/private/legacy/OC_App.php#679 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_App.php#L679>`_
+		
+		
+		:Parameters:
+			* **$app** (string)  
+			* **$page** (string)  
+
+		
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static registerPersonal( $app, $page)
+	
+		.. rst-class:: phpdoc-description
+		
+			| register a personal form to be shown
+			
+		
+		:Source:
+			`lib/private/legacy/OC_App.php#688 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_App.php#L688>`_
+		
+		
+		:Parameters:
+			* **$app** (string)  
+			* **$page** (string)  
+
+		
+	
+	
+
+.. rst-class:: public static deprecated
+
+	.. php:method:: public static registerLogIn( $entry)
+	
+		:Source:
+			`lib/private/legacy/OC_App.php#696 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_App.php#L696>`_
+		
+		
+		:Parameters:
+			* **$entry** (array)  
+
+		
+		:Deprecated: 20.0.0 Please register your alternative login option using the registerAlternativeLogin\(\) on the RegistrationContext in your Application class implementing the OCP\\Authentication\\IAlternativeLogin interface
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static getAlternativeLogIns()
+	
+		:Source:
+			`lib/private/legacy/OC_App.php#704 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_App.php#L704>`_
+		
+		
+		:Returns: array 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static getAllApps()
+	
+		.. rst-class:: phpdoc-description
+		
+			| get a list of all apps in the apps folder
+			
+		
+		:Source:
+			`lib/private/legacy/OC_App.php#755 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_App.php#L755>`_
+		
+		
+		:Returns: string[] an array of app names \(string IDs\)
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public listAllApps()
+	
+		.. rst-class:: phpdoc-description
+		
+			| List all apps, this is used in apps\.php
+			
+		
+		:Source:
+			`lib/private/legacy/OC_App.php#784 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_App.php#L784>`_
+		
+		
+		:Returns: array 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static shouldUpgrade( $app)
+	
+		:Source:
+			`lib/private/legacy/OC_App.php#871 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_App.php#L871>`_
+		
+		
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static isAppCompatible( $ocVersion, $appInfo, $ignoreMax=\\false)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check whether the current ownCloud version matches the given
+			| application\'s version requirements\.
+			
+			| The comparison is made based on the number of parts that the
+			| app info version has\. For example for ownCloud 6\.0\.3 if the
+			| app info version is expecting version 6\.0, the comparison is
+			| made on the first two parts of the ownCloud version\.
+			| This means that it\'s possible to specify "requiremin" =\> 6
+			| and "requiremax" =\> 6 and it will still match ownCloud 6\.0\.3\.
+			
+		
+		:Source:
+			`lib/private/legacy/OC_App.php#921 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_App.php#L921>`_
+		
+		
+		:Parameters:
+			* **$ocVersion** (string)  ownCloud version to check against
+			* **$appInfo** (array)  app info (from xml)
+
+		
+		:Returns: bool true if compatible, otherwise false
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static getAppVersions()
+	
+		.. rst-class:: phpdoc-description
+		
+			| get the installed version of all apps
+			
+		
+		:Source:
+			`lib/private/legacy/OC_App.php#960 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_App.php#L960>`_
+		
+		
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static updateApp( $appId)
+	
+		.. rst-class:: phpdoc-description
+		
+			| update the database for the app and call the update script
+			
+		
+		:Source:
+			`lib/private/legacy/OC_App.php#976 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_App.php#L976>`_
+		
+		
+		:Parameters:
+			* **$appId** (string)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static executeRepairSteps( $appId, $steps)
+	
+		:Source:
+			`lib/private/legacy/OC_App.php#1043 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_App.php#L1043>`_
+		
+		
+		:Parameters:
+			* **$appId** (string)  
+			* **$steps** (string[])  
+
+		
+		:Throws: :any:`\\OC\\NeedsUpdateException <OC\\NeedsUpdateException>` 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static setupBackgroundJobs( $jobs)
+	
+		:Source:
+			`lib/private/legacy/OC_App.php#1066 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_App.php#L1066>`_
+		
+		
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static getStorage( $appId)
+	
+		:Source:
+			`lib/private/legacy/OC_App.php#1090 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_App.php#L1090>`_
+		
+		
+		:Parameters:
+			* **$appId** (string)  
+
+		
+		:Returns: :any:`\\OC\\Files\\View <OC\\Files\\View>` | bool 
+	
+	
+
+.. rst-class:: protected static
+
+	.. php:method:: protected static findBestL10NOption( $options, $lang)
+	
+		:Source:
+			`lib/private/legacy/OC_App.php#1108 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_App.php#L1108>`_
+		
+		
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static parseAppInfo( $data, $lang=\\null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| parses the app data array and enhanced the \'description\' value
+			
+		
+		:Source:
+			`lib/private/legacy/OC_App.php#1165 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_App.php#L1165>`_
+		
+		
+		:Parameters:
+			* **$data** (array)  the app data
+			* **$lang** (string)  
+
+		
+		:Returns: array improved app data
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static checkAppDependencies( $config, $l, $info, $ignoreMax)
+	
+		:Source:
+			`lib/private/legacy/OC_App.php#1189 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_App.php#L1189>`_
+		
+		
+		:Parameters:
+			* **$config** (:any:`OCP\\IConfig <OCP\\IConfig>`)  
+			* **$l** (:any:`OCP\\IL10N <OCP\\IL10N>`)  
+			* **$info** (array)  
+
+		
+		:Throws: :any:`\\Exception <Exception>` 
+	
+	
+

@@ -1,0 +1,420 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+OC\_Helper
+==========
+
+
+.. php:class:: OC_Helper
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Collection of useful functions
+		
+	
+	:Source:
+		`lib/private/legacy/OC_Helper.php#53 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Helper.php#L53>`_
+	
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: public static
+
+	.. php:method:: public static humanFileSize( $bytes)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Make a human file size
+			
+		
+		:Source:
+			`lib/private/legacy/OC_Helper.php#63 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Helper.php#L63>`_
+		
+		
+		:Parameters:
+			* **$bytes** (int)  file size in bytes
+
+		
+		:Returns: string a human readable file size
+			
+			Makes 2048 to 2 kB\.
+		
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static computerFileSize( $str)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Make a computer file size
+			
+		
+		:Source:
+			`lib/private/legacy/OC_Helper.php#100 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Helper.php#L100>`_
+		
+		
+		:Parameters:
+			* **$str** (string)  file size in human readable format
+
+		
+		:Returns: float | bool a file size in bytes
+			
+			Makes 2kB to 2048\.
+			
+			Inspired by: https://www\.php\.net/manual/en/function\.filesize\.php\#92418
+		
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static copyr( $src, $dest)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Recursive copying of folders
+			
+		
+		:Source:
+			`lib/private/legacy/OC_Helper.php#139 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Helper.php#L139>`_
+		
+		
+		:Parameters:
+			* **$src** (string)  source folder
+			* **$dest** (string)  target folder
+
+		
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static rmdirr( $dir, $deleteSelf=\\true)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Recursive deletion of folders
+			
+		
+		:Source:
+			`lib/private/legacy/OC_Helper.php#161 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Helper.php#L161>`_
+		
+		
+		:Parameters:
+			* **$dir** (string)  path to the folder
+			* **$deleteSelf** (bool)  if set to false only the content of the folder will be deleted
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public static deprecated
+
+	.. php:method:: public static getFileTemplateManager()
+	
+		:Source:
+			`lib/private/legacy/OC_Helper.php#197 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Helper.php#L197>`_
+		
+		
+		:Deprecated: 18.0.0 
+		:Returns: :any:`\\OC\\Files\\Type\\TemplateManager <OC\\Files\\Type\\TemplateManager>` 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static canExecute( $name, $path=\\false)
+	
+		.. rst-class:: phpdoc-description
+		
+			| detect if a given program is found in the search PATH
+			
+		
+		:Source:
+			`lib/private/legacy/OC_Helper.php#213 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Helper.php#L213>`_
+		
+		
+		:Parameters:
+			* **$name** (string)  
+			* **$path** (bool)  
+
+		
+		:Returns: bool true if executable program found in path
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static streamCopy( $source, $target)
+	
+		.. rst-class:: phpdoc-description
+		
+			| copy the contents of one stream to another
+			
+		
+		:Source:
+			`lib/private/legacy/OC_Helper.php#250 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Helper.php#L250>`_
+		
+		
+		:Parameters:
+			* **$source** (resource)  
+			* **$target** (resource)  
+
+		
+		:Returns: array the number of bytes copied and result
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static buildNotExistingFileName( $path, $filename)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Adds a suffix to the name in case the file exists
+			
+		
+		:Source:
+			`lib/private/legacy/OC_Helper.php#283 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Helper.php#L283>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+			* **$filename** (string)  
+
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static buildNotExistingFileNameForView( $path, $filename, $view)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Adds a suffix to the name in case the file exists
+			
+		
+		:Source:
+			`lib/private/legacy/OC_Helper.php#295 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Helper.php#L295>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+			* **$filename** (string)  
+
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static mb_array_change_key_case( $input, $case=\\MB\_CASE\_LOWER, $encoding=UTF\-8)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns an array with all keys from input lowercased or uppercased\. Numbered indices are left as is\.
+			
+		
+		:Source:
+			`lib/private/legacy/OC_Helper.php#347 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Helper.php#L347>`_
+		
+		
+		:Parameters:
+			* **$input** (array)  The array to work on
+			* **$case** (int)  Either MB_CASE_UPPER or MB_CASE_LOWER (default)
+			* **$encoding** (string)  The encoding parameter is the character encoding. Defaults to UTF-8
+
+		
+		:Returns: array Returns an array with all keys from input lowercased or uppercased\. Numbered indices are left as is\.
+			based on https://www\.php\.net/manual/en/function\.array\-change\-key\-case\.php\#107715
+		
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static recursiveArraySearch( $haystack, $needle, $index=\\null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| performs a search in a nested array
+			
+		
+		:Source:
+			`lib/private/legacy/OC_Helper.php#367 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Helper.php#L367>`_
+		
+		
+		:Parameters:
+			* **$haystack** (array)  the array to be searched
+			* **$needle** (string)  the search string
+			* **$index** (mixed)  optional, only search this key name
+
+		
+		:Returns: mixed the key of the matching field, otherwise false
+			
+			performs a search in a nested array
+			
+			taken from https://www\.php\.net/manual/en/function\.array\-search\.php\#97645
+		
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static maxUploadFilesize( $dir, $freeSpace=\\null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| calculates the maximum upload size respecting system settings, free space and user quota
+			
+		
+		:Source:
+			`lib/private/legacy/OC_Helper.php#389 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Helper.php#L389>`_
+		
+		
+		:Parameters:
+			* **$dir** (string)  the current folder where the user currently operates
+			* **$freeSpace** (int)  the number of bytes free on the storage holding $dir, if not set this will be received from the storage directly
+
+		
+		:Returns: int number of bytes representing
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static freeSpace( $dir)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Calculate free space left within user quota
+			
+		
+		:Source:
+			`lib/private/legacy/OC_Helper.php#402 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Helper.php#L402>`_
+		
+		
+		:Parameters:
+			* **$dir** (string)  the current folder where the user currently operates
+
+		
+		:Returns: int number of bytes representing
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static uploadLimit()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Calculate PHP upload limit
+			
+		
+		:Source:
+			`lib/private/legacy/OC_Helper.php#417 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Helper.php#L417>`_
+		
+		
+		:Returns: int PHP upload file size limit
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static is_function_enabled( $function_name)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Checks if a function is available
+			
+		
+		:Source:
+			`lib/private/legacy/OC_Helper.php#436 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Helper.php#L436>`_
+		
+		
+		:Parameters:
+			* **$function_name** (string)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static findBinaryPath( $program)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Try to find a program
+			
+		
+		:Source:
+			`lib/private/legacy/OC_Helper.php#460 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Helper.php#L460>`_
+		
+		
+		:Parameters:
+			* **$program** (string)  
+
+		
+		:Returns: null | string 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static getStorageInfo( $path, $rootInfo=\\null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Calculate the disc space for the given path
+			
+			| BEWARE: this requires that Util::setupFS\(\) was called
+			| already \!
+			
+		
+		:Source:
+			`lib/private/legacy/OC_Helper.php#487 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Helper.php#L487>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+			* **$rootInfo** (:any:`OCP\\Files\\FileInfo <OCP\\Files\\FileInfo>`)  (optional)
+
+		
+		:Returns: array 
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static isReadOnlyConfigEnabled()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns whether the config file is set manually to read\-only
+			
+		
+		:Source:
+			`lib/private/legacy/OC_Helper.php#610 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Helper.php#L610>`_
+		
+		
+		:Returns: bool 
+	
+	
+

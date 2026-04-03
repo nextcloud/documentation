@@ -1,0 +1,137 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+KnownUserService
+================
+
+
+.. php:namespace:: OC\KnownUser
+
+.. php:class:: KnownUserService
+
+
+	:Source:
+		`lib/private/KnownUser/KnownUserService.php#26 <https://github.com/nextcloud/server/blob/stable13/lib/private/KnownUser/KnownUserService.php#L26>`_
+	
+
+Properties
+----------
+
+.. php:attr:: protected static mapper
+
+	:Source:
+		`lib/private/KnownUser/KnownUserService.php#28 <https://github.com/nextcloud/server/blob/stable13/lib/private/KnownUser/KnownUserService.php#L28>`_
+	
+	:Type: :any:`\\OC\\KnownUser\\KnownUserMapper <OC\\KnownUser\\KnownUserMapper>` 
+
+
+.. php:attr:: protected static knownUsers
+
+	:Source:
+		`lib/private/KnownUser/KnownUserService.php#30 <https://github.com/nextcloud/server/blob/stable13/lib/private/KnownUser/KnownUserService.php#L30>`_
+	
+	:Type: array 
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $mapper)
+	
+		:Source:
+			`lib/private/KnownUser/KnownUserService.php#32 <https://github.com/nextcloud/server/blob/stable13/lib/private/KnownUser/KnownUserService.php#L32>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public deleteKnownTo( $knownTo)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Delete all matches where the given user is the owner of the phonebook
+			
+		
+		:Source:
+			`lib/private/KnownUser/KnownUserService.php#42 <https://github.com/nextcloud/server/blob/stable13/lib/private/KnownUser/KnownUserService.php#L42>`_
+		
+		
+		:Parameters:
+			* **$knownTo** (string)  
+
+		
+		:Returns: int Number of deleted matches
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public deleteByContactUserId( $contactUserId)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Delete all matches where the given user is the one in the phonebook
+			
+		
+		:Source:
+			`lib/private/KnownUser/KnownUserService.php#52 <https://github.com/nextcloud/server/blob/stable13/lib/private/KnownUser/KnownUserService.php#L52>`_
+		
+		
+		:Parameters:
+			* **$contactUserId** (string)  
+
+		
+		:Returns: int Number of deleted matches
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public storeIsKnownToUser( $knownTo, $contactUserId)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Store a match because $knownTo has $contactUserId in his phonebook
+			
+		
+		:Source:
+			`lib/private/KnownUser/KnownUserService.php#62 <https://github.com/nextcloud/server/blob/stable13/lib/private/KnownUser/KnownUserService.php#L62>`_
+		
+		
+		:Parameters:
+			* **$knownTo** (string)  User id of the owner of the phonebook
+			* **$contactUserId** (string)  User id of the contact in the phonebook
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isKnownToUser( $knownTo, $contactUserId)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check if $contactUserId is in the phonebook of $knownTo
+			
+		
+		:Source:
+			`lib/private/KnownUser/KnownUserService.php#76 <https://github.com/nextcloud/server/blob/stable13/lib/private/KnownUser/KnownUserService.php#L76>`_
+		
+		
+		:Parameters:
+			* **$knownTo** (string)  User id of the owner of the phonebook
+			* **$contactUserId** (string)  User id of the contact in the phonebook
+
+		
+		:Returns: bool 
+	
+	
+

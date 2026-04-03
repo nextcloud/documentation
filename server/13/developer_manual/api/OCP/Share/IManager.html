@@ -1,0 +1,1380 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>IManager &mdash; Nextcloud 13 Developer Manual 13 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../../',
+              VERSION:'13',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="IShare" href="IShare.html" />
+    <link rel="prev" title="IShareProvider" href="IShareProvider.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html">
+          
+
+          
+            
+            <img src="../../../_static/logo-white.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../general/index.html">General contributor guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/startapp.html">Create an app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/init.html">Navigation and pre-app configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/info.html">App metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/classloader.html">Classloader</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/request.html">Request lifecycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/routes.html">Routing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/middleware.html">Middleware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/container.html">Container</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/controllers.html">Controllers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/api.html">RESTful API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/templates.html">Templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/js.html">JavaScript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/css.html">CSS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/l10n.html">Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/theming.html">Theming support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/schema.html">Database schema</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/database.html">Database access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/filesystem.html">Filesystem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/appdata.html">AppData</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/users.html">User management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/two-factor-provider.html">Two-factor providers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/hooks.html">Hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/backgroundjobs.html">Background jobs (Cron)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/settings.html">Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/logging.html">Logging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/migrations.html">Migrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/repair.html">Repair steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/publishing.html">App store publishing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/code_signing.html">Code signing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../design/index.html">Design guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../android_library/index.html">Android application development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../client_apis/index.html">Client APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../core/translation.html">Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../core/unit-testing.html">Unit-Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../core/theming.html">Theming Nextcloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../core/externalapi.html">External API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../core/ocs-share-api.html">OCS Share API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../core/index.html">Core development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../bugtracker/index.html">Bugtracker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../commun/index.html">Help and communication</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../api.html">API Documentation</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../../api.html#php-public-api">PHP public API</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../index.html">/OCP namespace</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="../index.html#namespaces">Namespaces</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../index.html#interfaces">Interfaces</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../index.html#classes">Classes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#php-class-reference">PHP class reference</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Nextcloud 13 Developer Manual</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../../api.html">API Documentation</a> &raquo;</li>
+        
+          <li><a href="../index.html">OCP</a> &raquo;</li>
+        
+          <li><a href="index.html">Share</a> &raquo;</li>
+        
+      <li>IManager</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/nextcloud/documentation/edit/stable13/developer_manual/api/OCP/Share/IManager.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="phpdoctorst section" id="namespace-OCP\Share">
+<span id="imanager"></span><h1>IManager<a class="headerlink" href="#namespace-OCP\Share" title="Permalink to this headline">¶</a></h1>
+<dl class="interface">
+<dt id="OCP\Share\IManager">
+<em class="property">interface </em><code class="descclassname">OCP\Share\</code><code class="descname">IManager</code><a class="headerlink" href="#OCP\Share\IManager" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Interface IManager</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Implemented by:</th><td class="field-body"><a class="reference internal" href="../../OC/Share20/Manager.html#OC\Share20\Manager" title="OC\Share20\Manager"><code class="xref php php-class docutils literal"><span class="pre">OC\Share20\Manager</span></code></a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IManager.php#L44">lib/public/Share/IManager.php#44</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<div class="section" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h2>
+<dl class="public method">
+<dt id="OCP\Share\IManager::createShare">
+<em class="property">public </em><code class="descclassname">OCP\Share\IManager::</code><code class="descname">createShare</code><span class="sig-paren">(</span><em>$share</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Share\IManager::createShare" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Create a Share</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IManager.php#L54">lib/public/Share/IManager.php#54</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$share</strong> (<a class="reference internal" href="IShare.html#OCP\Share\IShare" title="OCP\Share\IShare"><code class="xref any php php-trait docutils literal"><span class="pre">OCP\Share\IShare</span></code></a>)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference internal" href="IShare.html#OCP\Share\IShare" title="OCP\Share\IShare"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Share\IShare</span></code></a> The share object</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><code class="xref any docutils literal"><span class="pre">\Exception</span></code></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">9.0.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\Share\IManager::updateShare">
+<em class="property">public </em><code class="descclassname">OCP\Share\IManager::</code><code class="descname">updateShare</code><span class="sig-paren">(</span><em>$share</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Share\IManager::updateShare" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Update a share.</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">The target of the share can&#8217;t be changed this way: use moveShare</div>
+<div class="line">The share can&#8217;t be removed this way (permission 0): use deleteShare</div>
+<div class="line">The state can&#8217;t be changed this way: use acceptShare</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IManager.php#L67">lib/public/Share/IManager.php#67</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$share</strong> (<a class="reference internal" href="IShare.html#OCP\Share\IShare" title="OCP\Share\IShare"><code class="xref any php php-trait docutils literal"><span class="pre">OCP\Share\IShare</span></code></a>)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference internal" href="IShare.html#OCP\Share\IShare" title="OCP\Share\IShare"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Share\IShare</span></code></a> The share object</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><code class="xref any docutils literal"><span class="pre">\InvalidArgumentException</span></code></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">9.0.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\Share\IManager::acceptShare">
+<em class="property">public </em><code class="descclassname">OCP\Share\IManager::</code><code class="descname">acceptShare</code><span class="sig-paren">(</span><em>$share</em>, <em>$recipientId</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Share\IManager::acceptShare" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Accept a share.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IManager.php#L78">lib/public/Share/IManager.php#78</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$share</strong> (<a class="reference internal" href="IShare.html#OCP\Share\IShare" title="OCP\Share\IShare"><code class="xref any php php-trait docutils literal"><span class="pre">OCP\Share\IShare</span></code></a>)</li>
+<li><strong>$recipientId</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference internal" href="IShare.html#OCP\Share\IShare" title="OCP\Share\IShare"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Share\IShare</span></code></a> The share object</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><code class="xref any docutils literal"><span class="pre">\InvalidArgumentException</span></code></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">18.0.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\Share\IManager::deleteShare">
+<em class="property">public </em><code class="descclassname">OCP\Share\IManager::</code><code class="descname">deleteShare</code><span class="sig-paren">(</span><em>$share</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Share\IManager::deleteShare" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Delete a share</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IManager.php#L88">lib/public/Share/IManager.php#88</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$share</strong> (<a class="reference internal" href="IShare.html#OCP\Share\IShare" title="OCP\Share\IShare"><code class="xref any php php-trait docutils literal"><span class="pre">OCP\Share\IShare</span></code></a>)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><a class="reference internal" href="Exceptions/ShareNotFound.html#OCP\Share\Exceptions\ShareNotFound" title="OCP\Share\Exceptions\ShareNotFound"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Share\Exceptions\ShareNotFound</span></code></a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><code class="xref any docutils literal"><span class="pre">\InvalidArgumentException</span></code></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><a class="reference internal" href="Exceptions/ShareNotFound.html#OCP\Share\Exceptions\ShareNotFound" title="OCP\Share\Exceptions\ShareNotFound"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Share\Exceptions\ShareNotFound</span></code></a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><code class="xref any docutils literal"><span class="pre">\InvalidArgumentException</span></code></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">9.0.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\Share\IManager::deleteFromSelf">
+<em class="property">public </em><code class="descclassname">OCP\Share\IManager::</code><code class="descname">deleteFromSelf</code><span class="sig-paren">(</span><em>$share</em>, <em>$recipientId</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Share\IManager::deleteFromSelf" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Unshare a file as the recipient.</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">This can be different from a regular delete for example when one of</div>
+<div class="line">the users in a groups deletes that share. But the provider should</div>
+<div class="line">handle this.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IManager.php#L100">lib/public/Share/IManager.php#100</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$share</strong> (<a class="reference internal" href="IShare.html#OCP\Share\IShare" title="OCP\Share\IShare"><code class="xref any php php-trait docutils literal"><span class="pre">OCP\Share\IShare</span></code></a>)</li>
+<li><strong>$recipientId</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">9.0.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\Share\IManager::restoreShare">
+<em class="property">public </em><code class="descclassname">OCP\Share\IManager::</code><code class="descname">restoreShare</code><span class="sig-paren">(</span><em>$share</em>, <em>$recipientId</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Share\IManager::restoreShare" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Restore the share when it has been deleted</div>
+<div class="line">Certain share types can be restored when they have been deleted</div>
+<div class="line">but the provider should properly handle this\</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IManager.php#L114">lib/public/Share/IManager.php#114</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$share</strong> (<a class="reference internal" href="IShare.html#OCP\Share\IShare" title="OCP\Share\IShare"><code class="xref any php php-trait docutils literal"><span class="pre">OCP\Share\IShare</span></code></a>)  The share to restore</li>
+<li><strong>$recipientId</strong> (string)  The user to restore the share for</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference internal" href="IShare.html#OCP\Share\IShare" title="OCP\Share\IShare"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Share\IShare</span></code></a> The restored share object</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><a class="reference internal" href="Exceptions/GenericShareException.html#OCP\Share\Exceptions\GenericShareException" title="OCP\Share\Exceptions\GenericShareException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Share\Exceptions\GenericShareException</span></code></a> In case restoring the share failed</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">14.0.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\Share\IManager::moveShare">
+<em class="property">public </em><code class="descclassname">OCP\Share\IManager::</code><code class="descname">moveShare</code><span class="sig-paren">(</span><em>$share</em>, <em>$recipientId</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Share\IManager::moveShare" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Move the share as a recipient of the share.</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">This is updating the share target. So where the recipient has the share mounted.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IManager.php#L126">lib/public/Share/IManager.php#126</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$share</strong> (<a class="reference internal" href="IShare.html#OCP\Share\IShare" title="OCP\Share\IShare"><code class="xref any php php-trait docutils literal"><span class="pre">OCP\Share\IShare</span></code></a>)</li>
+<li><strong>$recipientId</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference internal" href="IShare.html#OCP\Share\IShare" title="OCP\Share\IShare"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Share\IShare</span></code></a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><code class="xref any docutils literal"><span class="pre">\InvalidArgumentException</span></code> If $share is a link share or the $recipient does not match</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">9.0.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\Share\IManager::getSharesInFolder">
+<em class="property">public </em><code class="descclassname">OCP\Share\IManager::</code><code class="descname">getSharesInFolder</code><span class="sig-paren">(</span><em>$userId</em>, <em>$node</em>, <em>$reshares=false</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Share\IManager::getSharesInFolder" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Get all shares shared by (initiated) by the provided user in a folder.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IManager.php#L137">lib/public/Share/IManager.php#137</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$userId</strong> (string)</li>
+<li><strong>$node</strong> (<a class="reference internal" href="../Files/Folder.html#OCP\Files\Folder" title="OCP\Files\Folder"><code class="xref any php php-trait docutils literal"><span class="pre">OCP\Files\Folder</span></code></a>)</li>
+<li><strong>$reshares</strong> (bool)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference internal" href="IShare.html#OCP\Share\IShare" title="OCP\Share\IShare"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Share\IShare[][]</span></code></a> [$fileId =&gt; IShare[], ...]</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">11.0.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\Share\IManager::getSharesBy">
+<em class="property">public </em><code class="descclassname">OCP\Share\IManager::</code><code class="descname">getSharesBy</code><span class="sig-paren">(</span><em>$userId</em>, <em>$shareType</em>, <em>$path=null</em>, <em>$reshares=false</em>, <em>$limit=50</em>, <em>$offset=0</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Share\IManager::getSharesBy" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Get shares shared by (initiated) by the provided user.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IManager.php#L151">lib/public/Share/IManager.php#151</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$userId</strong> (string)</li>
+<li><strong>$shareType</strong> (int)</li>
+<li><strong>$path</strong> (<a class="reference internal" href="../Files/Node.html#OCP\Files\Node" title="OCP\Files\Node"><code class="xref any php php-trait docutils literal"><span class="pre">OCP\Files\Node</span></code></a> | null)</li>
+<li><strong>$reshares</strong> (bool)</li>
+<li><strong>$limit</strong> (int)  The maximum number of returned results, -1 for all results</li>
+<li><strong>$offset</strong> (int)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference internal" href="IShare.html#OCP\Share\IShare" title="OCP\Share\IShare"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Share\IShare[]</span></code></a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">9.0.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\Share\IManager::getSharedWith">
+<em class="property">public </em><code class="descclassname">OCP\Share\IManager::</code><code class="descname">getSharedWith</code><span class="sig-paren">(</span><em>$userId</em>, <em>$shareType</em>, <em>$node=null</em>, <em>$limit=50</em>, <em>$offset=0</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Share\IManager::getSharedWith" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Get shares shared with $user.</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">Filter by $node if provided</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IManager.php#L165">lib/public/Share/IManager.php#165</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$userId</strong> (string)</li>
+<li><strong>$shareType</strong> (int)</li>
+<li><strong>$node</strong> (<a class="reference internal" href="../Files/Node.html#OCP\Files\Node" title="OCP\Files\Node"><code class="xref any php php-trait docutils literal"><span class="pre">OCP\Files\Node</span></code></a> | null)</li>
+<li><strong>$limit</strong> (int)  The maximum number of shares returned, -1 for all</li>
+<li><strong>$offset</strong> (int)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference internal" href="IShare.html#OCP\Share\IShare" title="OCP\Share\IShare"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Share\IShare[]</span></code></a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">9.0.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\Share\IManager::getDeletedSharedWith">
+<em class="property">public </em><code class="descclassname">OCP\Share\IManager::</code><code class="descname">getDeletedSharedWith</code><span class="sig-paren">(</span><em>$userId</em>, <em>$shareType</em>, <em>$node=null</em>, <em>$limit=50</em>, <em>$offset=0</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Share\IManager::getDeletedSharedWith" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Get deleted shares shared with $user.</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">Filter by $node if provided</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IManager.php#L179">lib/public/Share/IManager.php#179</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$userId</strong> (string)</li>
+<li><strong>$shareType</strong> (int)</li>
+<li><strong>$node</strong> (<a class="reference internal" href="../Files/Node.html#OCP\Files\Node" title="OCP\Files\Node"><code class="xref any php php-trait docutils literal"><span class="pre">OCP\Files\Node</span></code></a> | null)</li>
+<li><strong>$limit</strong> (int)  The maximum number of shares returned, -1 for all</li>
+<li><strong>$offset</strong> (int)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference internal" href="IShare.html#OCP\Share\IShare" title="OCP\Share\IShare"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Share\IShare[]</span></code></a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">14.0.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\Share\IManager::getShareById">
+<em class="property">public </em><code class="descclassname">OCP\Share\IManager::</code><code class="descname">getShareById</code><span class="sig-paren">(</span><em>$id</em>, <em>$recipient=null</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Share\IManager::getShareById" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Retrieve a share by the share id.</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">If the recipient is set make sure to retrieve the file for that user.</div>
+<div class="line">This makes sure that if a user has moved/deleted a group share this</div>
+<div class="line">is reflected.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IManager.php#L193">lib/public/Share/IManager.php#193</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$id</strong> (string)</li>
+<li><strong>$recipient</strong> (string | null)  userID of the recipient</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference internal" href="IShare.html#OCP\Share\IShare" title="OCP\Share\IShare"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Share\IShare</span></code></a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><a class="reference internal" href="Exceptions/ShareNotFound.html#OCP\Share\Exceptions\ShareNotFound" title="OCP\Share\Exceptions\ShareNotFound"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Share\Exceptions\ShareNotFound</span></code></a></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">9.0.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\Share\IManager::getShareByToken">
+<em class="property">public </em><code class="descclassname">OCP\Share\IManager::</code><code class="descname">getShareByToken</code><span class="sig-paren">(</span><em>$token</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Share\IManager::getShareByToken" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Get the share by token possible with password</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IManager.php#L203">lib/public/Share/IManager.php#203</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$token</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference internal" href="IShare.html#OCP\Share\IShare" title="OCP\Share\IShare"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Share\IShare</span></code></a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><a class="reference internal" href="Exceptions/ShareNotFound.html#OCP\Share\Exceptions\ShareNotFound" title="OCP\Share\Exceptions\ShareNotFound"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Share\Exceptions\ShareNotFound</span></code></a></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">9.0.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\Share\IManager::checkPassword">
+<em class="property">public </em><code class="descclassname">OCP\Share\IManager::</code><code class="descname">checkPassword</code><span class="sig-paren">(</span><em>$share</em>, <em>$password</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Share\IManager::checkPassword" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Verify the password of a public share</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IManager.php#L213">lib/public/Share/IManager.php#213</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$share</strong> (<a class="reference internal" href="IShare.html#OCP\Share\IShare" title="OCP\Share\IShare"><code class="xref any php php-trait docutils literal"><span class="pre">OCP\Share\IShare</span></code></a>)</li>
+<li><strong>$password</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">bool</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">9.0.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\Share\IManager::userDeleted">
+<em class="property">public </em><code class="descclassname">OCP\Share\IManager::</code><code class="descname">userDeleted</code><span class="sig-paren">(</span><em>$uid</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Share\IManager::userDeleted" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">The user with UID is deleted.</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">All share providers have to cleanup the shares with this user as well</div>
+<div class="line">as shares owned by this user.</div>
+<div class="line">Shares only initiated by this user are fine.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IManager.php#L224">lib/public/Share/IManager.php#224</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$uid</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">9.1.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\Share\IManager::groupDeleted">
+<em class="property">public </em><code class="descclassname">OCP\Share\IManager::</code><code class="descname">groupDeleted</code><span class="sig-paren">(</span><em>$gid</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Share\IManager::groupDeleted" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">The group with $gid is deleted</div>
+<div class="line">We need to clear up all shares to this group</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IManager.php#L233">lib/public/Share/IManager.php#233</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$gid</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">9.1.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\Share\IManager::userDeletedFromGroup">
+<em class="property">public </em><code class="descclassname">OCP\Share\IManager::</code><code class="descname">userDeletedFromGroup</code><span class="sig-paren">(</span><em>$uid</em>, <em>$gid</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Share\IManager::userDeletedFromGroup" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">The user $uid is deleted from the group $gid</div>
+<div class="line">All user specific group shares have to be removed</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IManager.php#L243">lib/public/Share/IManager.php#243</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$uid</strong> (string)</li>
+<li><strong>$gid</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">9.1.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\Share\IManager::getAccessList">
+<em class="property">public </em><code class="descclassname">OCP\Share\IManager::</code><code class="descname">getAccessList</code><span class="sig-paren">(</span><em>$path</em>, <em>$recursive=true</em>, <em>$currentAccess=false</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Share\IManager::getAccessList" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Get access list to a path. This means</div>
+<div class="line">all the users that can access a given path.</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">Consider:</div>
+<div class="line">-root</div>
+<div class="line">|-folder1 (23)</div>
+<div class="line-block">
+<div class="line">|-folder2 (32)</div>
+<div class="line-block">
+<div class="line">|-fileA (42)</div>
+<div class="line"><br /></div>
+</div>
+</div>
+<div class="line">fileA is shared with user1 and <a class="reference external" href="mailto:user1&#37;&#52;&#48;server1">user1<span>&#64;</span>server1</a></div>
+<div class="line">folder2 is shared with group2 (user4 is a member of group2)</div>
+<div class="line">folder1 is shared with user2 (renamed to &#8220;folder (1)&#8221;) and <a class="reference external" href="mailto:user2&#37;&#52;&#48;server2">user2<span>&#64;</span>server2</a></div>
+<div class="line"><br /></div>
+<div class="line">Then the access list to &#8216;/folder1/folder2/fileA&#8217; with $currentAccess is:</div>
+<div class="line">[</div>
+<div class="line-block">
+<div class="line">users  =&gt; [</div>
+<div class="line-block">
+<div class="line">&#8216;user1&#8217; =&gt; [&#8216;node_id&#8217; =&gt; 42, &#8216;node_path&#8217; =&gt; &#8216;/fileA&#8217;],</div>
+<div class="line">&#8216;user4&#8217; =&gt; [&#8216;node_id&#8217; =&gt; 32, &#8216;node_path&#8217; =&gt; &#8216;/folder2&#8217;],</div>
+<div class="line">&#8216;user2&#8217; =&gt; [&#8216;node_id&#8217; =&gt; 23, &#8216;node_path&#8217; =&gt; &#8216;/folder (1)&#8217;],</div>
+</div>
+<div class="line">],</div>
+<div class="line">remote =&gt; [</div>
+<div class="line-block">
+<div class="line"><a class="reference external" href="mailto:'user1&#37;&#52;&#48;server1">'user1<span>&#64;</span>server1</a>&#8216; =&gt; [&#8216;node_id&#8217; =&gt; 42, &#8216;token&#8217; =&gt; &#8216;SeCr3t&#8217;],</div>
+<div class="line"><a class="reference external" href="mailto:'user2&#37;&#52;&#48;server2">'user2<span>&#64;</span>server2</a>&#8216; =&gt; [&#8216;node_id&#8217; =&gt; 23, &#8216;token&#8217; =&gt; &#8216;FooBaR&#8217;],</div>
+</div>
+<div class="line">],</div>
+<div class="line">public =&gt; bool</div>
+<div class="line">mail =&gt; bool</div>
+</div>
+<div class="line">]</div>
+<div class="line"><br /></div>
+<div class="line">The access list to &#8216;/folder1/folder2/fileA&#8217; **without** $currentAccess is:</div>
+<div class="line">[</div>
+<div class="line-block">
+<div class="line">users  =&gt; [&#8216;user1&#8217;, &#8216;user2&#8217;, &#8216;user4&#8217;],</div>
+<div class="line">remote =&gt; bool,</div>
+<div class="line">public =&gt; bool</div>
+<div class="line">mail =&gt; bool</div>
+</div>
+<div class="line">]</div>
+<div class="line"><br /></div>
+<div class="line">This is required for encryption/activity</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IManager.php#L290">lib/public/Share/IManager.php#290</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$path</strong> (<a class="reference internal" href="../Files/Node.html#OCP\Files\Node" title="OCP\Files\Node"><code class="xref any php php-trait docutils literal"><span class="pre">OCP\Files\Node</span></code></a>)</li>
+<li><strong>$recursive</strong> (bool)  Should we check all parent folders as well</li>
+<li><strong>$currentAccess</strong> (bool)  Should the user have currently access to the file</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">array</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">12</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\Share\IManager::newShare">
+<em class="property">public </em><code class="descclassname">OCP\Share\IManager::</code><code class="descname">newShare</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Share\IManager::newShare" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Instantiates a new share object. This is to be passed to</div>
+<div class="line">createShare.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IManager.php#L299">lib/public/Share/IManager.php#299</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="IShare.html#OCP\Share\IShare" title="OCP\Share\IShare"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Share\IShare</span></code></a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">9.0.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\Share\IManager::shareApiEnabled">
+<em class="property">public </em><code class="descclassname">OCP\Share\IManager::</code><code class="descname">shareApiEnabled</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Share\IManager::shareApiEnabled" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Is the share API enabled</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IManager.php#L307">lib/public/Share/IManager.php#307</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">bool</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">9.0.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\Share\IManager::shareApiAllowLinks">
+<em class="property">public </em><code class="descclassname">OCP\Share\IManager::</code><code class="descname">shareApiAllowLinks</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Share\IManager::shareApiAllowLinks" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Is public link sharing enabled</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IManager.php#L315">lib/public/Share/IManager.php#315</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">bool</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">9.0.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\Share\IManager::shareApiLinkEnforcePassword">
+<em class="property">public </em><code class="descclassname">OCP\Share\IManager::</code><code class="descname">shareApiLinkEnforcePassword</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Share\IManager::shareApiLinkEnforcePassword" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Is password on public link requires</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IManager.php#L323">lib/public/Share/IManager.php#323</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">bool</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">9.0.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\Share\IManager::shareApiLinkDefaultExpireDate">
+<em class="property">public </em><code class="descclassname">OCP\Share\IManager::</code><code class="descname">shareApiLinkDefaultExpireDate</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Share\IManager::shareApiLinkDefaultExpireDate" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Is default expire date enabled</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IManager.php#L331">lib/public/Share/IManager.php#331</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">bool</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">9.0.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\Share\IManager::shareApiLinkDefaultExpireDateEnforced">
+<em class="property">public </em><code class="descclassname">OCP\Share\IManager::</code><code class="descname">shareApiLinkDefaultExpireDateEnforced</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Share\IManager::shareApiLinkDefaultExpireDateEnforced" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Is default expire date enforced</div>
+<div class="line">`</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IManager.php#L339">lib/public/Share/IManager.php#339</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">bool</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">9.0.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\Share\IManager::shareApiLinkDefaultExpireDays">
+<em class="property">public </em><code class="descclassname">OCP\Share\IManager::</code><code class="descname">shareApiLinkDefaultExpireDays</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Share\IManager::shareApiLinkDefaultExpireDays" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Number of default expire days</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IManager.php#L347">lib/public/Share/IManager.php#347</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">int</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">9.0.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\Share\IManager::shareApiLinkAllowPublicUpload">
+<em class="property">public </em><code class="descclassname">OCP\Share\IManager::</code><code class="descname">shareApiLinkAllowPublicUpload</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Share\IManager::shareApiLinkAllowPublicUpload" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Allow public upload on link shares</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IManager.php#L355">lib/public/Share/IManager.php#355</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">bool</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">9.0.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\Share\IManager::shareWithGroupMembersOnly">
+<em class="property">public </em><code class="descclassname">OCP\Share\IManager::</code><code class="descname">shareWithGroupMembersOnly</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Share\IManager::shareWithGroupMembersOnly" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">check if user can only share with group members</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IManager.php#L362">lib/public/Share/IManager.php#362</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">bool</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">9.0.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\Share\IManager::allowGroupSharing">
+<em class="property">public </em><code class="descclassname">OCP\Share\IManager::</code><code class="descname">allowGroupSharing</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Share\IManager::allowGroupSharing" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Check if users can share with groups</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IManager.php#L369">lib/public/Share/IManager.php#369</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">bool</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">9.0.1</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\Share\IManager::allowEnumeration">
+<em class="property">public </em><code class="descclassname">OCP\Share\IManager::</code><code class="descname">allowEnumeration</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Share\IManager::allowEnumeration" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Check if user enumeration is allowed</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IManager.php#L377">lib/public/Share/IManager.php#377</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">bool</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">19.0.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\Share\IManager::limitEnumerationToGroups">
+<em class="property">public </em><code class="descclassname">OCP\Share\IManager::</code><code class="descname">limitEnumerationToGroups</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Share\IManager::limitEnumerationToGroups" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Check if user enumeration is limited to the users groups</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IManager.php#L385">lib/public/Share/IManager.php#385</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">bool</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">19.0.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\Share\IManager::limitEnumerationToPhone">
+<em class="property">public </em><code class="descclassname">OCP\Share\IManager::</code><code class="descname">limitEnumerationToPhone</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Share\IManager::limitEnumerationToPhone" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Check if user enumeration is limited to the phonebook matches</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IManager.php#L393">lib/public/Share/IManager.php#393</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">bool</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">21.0.1</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\Share\IManager::allowEnumerationFullMatch">
+<em class="property">public </em><code class="descclassname">OCP\Share\IManager::</code><code class="descname">allowEnumerationFullMatch</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Share\IManager::allowEnumerationFullMatch" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Check if user enumeration is allowed to return on full match</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IManager.php#L401">lib/public/Share/IManager.php#401</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">bool</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">21.0.1</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\Share\IManager::sharingDisabledForUser">
+<em class="property">public </em><code class="descclassname">OCP\Share\IManager::</code><code class="descname">sharingDisabledForUser</code><span class="sig-paren">(</span><em>$userId</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Share\IManager::sharingDisabledForUser" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Check if sharing is disabled for the given user</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IManager.php#L410">lib/public/Share/IManager.php#410</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$userId</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">bool</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">9.0.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\Share\IManager::outgoingServer2ServerSharesAllowed">
+<em class="property">public </em><code class="descclassname">OCP\Share\IManager::</code><code class="descname">outgoingServer2ServerSharesAllowed</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Share\IManager::outgoingServer2ServerSharesAllowed" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Check if outgoing server2server shares are allowed</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IManager.php#L417">lib/public/Share/IManager.php#417</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">bool</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">9.0.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\Share\IManager::outgoingServer2ServerGroupSharesAllowed">
+<em class="property">public </em><code class="descclassname">OCP\Share\IManager::</code><code class="descname">outgoingServer2ServerGroupSharesAllowed</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Share\IManager::outgoingServer2ServerGroupSharesAllowed" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Check if outgoing server2server shares are allowed</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IManager.php#L424">lib/public/Share/IManager.php#424</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">bool</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">14.0.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\Share\IManager::shareProviderExists">
+<em class="property">public </em><code class="descclassname">OCP\Share\IManager::</code><code class="descname">shareProviderExists</code><span class="sig-paren">(</span><em>$shareType</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Share\IManager::shareProviderExists" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Check if a given share provider exists</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IManager.php#L433">lib/public/Share/IManager.php#433</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$shareType</strong> (int)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">bool</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">11.0.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\Share\IManager::registerShareProvider">
+<em class="property">public </em><code class="descclassname">OCP\Share\IManager::</code><code class="descname">registerShareProvider</code><span class="sig-paren">(</span><em>$shareProviderClass</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Share\IManager::registerShareProvider" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IManager.php#L439">lib/public/Share/IManager.php#439</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$shareProviderClass</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">21.0.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\Share\IManager::getAllShares">
+<em class="property">public </em><code class="descclassname">OCP\Share\IManager::</code><code class="descname">getAllShares</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Share\IManager::getAllShares" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IManager.php#L451">lib/public/Share/IManager.php#451</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><code class="xref any docutils literal"><span class="pre">iterable</span></code></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">18.0.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="IShare.html" class="btn btn-neutral float-right" title="IShare" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="IShareProvider.html" class="btn btn-neutral float-left" title="IShareProvider" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021 Nextcloud GmbH.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: 13
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/13/developer_manual">13</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/14/developer_manual">14</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/15/developer_manual">15</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/developer_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/developer_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+   
+
+</body>
+</html>

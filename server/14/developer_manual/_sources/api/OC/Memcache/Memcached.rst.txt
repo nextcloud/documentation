@@ -1,0 +1,195 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+Memcached
+=========
+
+
+.. php:namespace:: OC\Memcache
+
+.. php:class:: Memcached
+
+
+	:Source:
+		`lib/private/Memcache/Memcached.php#38 <https://github.com/nextcloud/server/blob/stable13/lib/private/Memcache/Memcached.php#L38>`_
+	
+	:Parent:
+		:php:class:`OC\\Memcache\\Cache`
+	
+	:Implements:
+		:php:interface:`OCP\\IMemcache` 
+	
+	:Used traits:
+		:php:trait:`OC\\Memcache\\CASTrait` :php:trait:`OC\\Memcache\\CADTrait` 
+	
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $prefix="")
+	
+		:Source:
+			`lib/private/Memcache/Memcached.php#48 <https://github.com/nextcloud/server/blob/stable13/lib/private/Memcache/Memcached.php#L48>`_
+		
+		
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected getNameSpace()
+	
+		.. rst-class:: phpdoc-description
+		
+			| entries in XCache gets namespaced to prevent collisions between owncloud instances and users
+			
+		
+		:Source:
+			`lib/private/Memcache/Memcached.php#98 <https://github.com/nextcloud/server/blob/stable13/lib/private/Memcache/Memcached.php#L98>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public get( $key)
+	
+		:Source:
+			`lib/private/Memcache/Memcached.php#102 <https://github.com/nextcloud/server/blob/stable13/lib/private/Memcache/Memcached.php#L102>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public set( $key, $value, $ttl=0)
+	
+		:Source:
+			`lib/private/Memcache/Memcached.php#111 <https://github.com/nextcloud/server/blob/stable13/lib/private/Memcache/Memcached.php#L111>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public hasKey( $key)
+	
+		:Source:
+			`lib/private/Memcache/Memcached.php#123 <https://github.com/nextcloud/server/blob/stable13/lib/private/Memcache/Memcached.php#L123>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public remove( $key)
+	
+		:Source:
+			`lib/private/Memcache/Memcached.php#128 <https://github.com/nextcloud/server/blob/stable13/lib/private/Memcache/Memcached.php#L128>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public clear( $prefix="")
+	
+		:Source:
+			`lib/private/Memcache/Memcached.php#136 <https://github.com/nextcloud/server/blob/stable13/lib/private/Memcache/Memcached.php#L136>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public add( $key, $value, $ttl=0)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set a value in the cache if it\'s not already stored
+			
+		
+		:Source:
+			`lib/private/Memcache/Memcached.php#170 <https://github.com/nextcloud/server/blob/stable13/lib/private/Memcache/Memcached.php#L170>`_
+		
+		
+		:Parameters:
+			* **$key** (string)  
+			* **$value** (mixed)  
+			* **$ttl** (int)  Time To Live in seconds. Defaults to 60*60*24
+
+		
+		:Returns: bool 
+		:Throws: :any:`\\Exception <Exception>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public inc( $key, $step=1)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Increase a stored number
+			
+		
+		:Source:
+			`lib/private/Memcache/Memcached.php#185 <https://github.com/nextcloud/server/blob/stable13/lib/private/Memcache/Memcached.php#L185>`_
+		
+		
+		:Parameters:
+			* **$key** (string)  
+			* **$step** (int)  
+
+		
+		:Returns: int \| bool
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public dec( $key, $step=1)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Decrease a stored number
+			
+		
+		:Source:
+			`lib/private/Memcache/Memcached.php#203 <https://github.com/nextcloud/server/blob/stable13/lib/private/Memcache/Memcached.php#L203>`_
+		
+		
+		:Parameters:
+			* **$key** (string)  
+			* **$step** (int)  
+
+		
+		:Returns: int \| bool
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static isAvailable()
+	
+		:Source:
+			`lib/private/Memcache/Memcached.php#213 <https://github.com/nextcloud/server/blob/stable13/lib/private/Memcache/Memcached.php#L213>`_
+		
+		
+	
+	
+

@@ -1,0 +1,164 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+SystemTagObjectMapper
+=====================
+
+
+.. php:namespace:: OC\SystemTag
+
+.. php:class:: SystemTagObjectMapper
+
+
+	:Source:
+		`lib/private/SystemTag/SystemTagObjectMapper.php#41 <https://github.com/nextcloud/server/blob/stable13/lib/private/SystemTag/SystemTagObjectMapper.php#L41>`_
+	
+	:Implements:
+		:php:interface:`OCP\\SystemTag\\ISystemTagObjectMapper` 
+	
+
+Constants
+---------
+
+.. php:const:: RELATION_TABLE = systemtag\_object\_mapping
+
+	:Source:
+		`lib/private/SystemTag/SystemTagObjectMapper.php#42 <https://github.com/nextcloud/server/blob/stable13/lib/private/SystemTag/SystemTagObjectMapper.php#L42>`_
+	
+
+
+Properties
+----------
+
+.. php:attr:: protected static tagManager
+
+	:Source:
+		`lib/private/SystemTag/SystemTagObjectMapper.php#45 <https://github.com/nextcloud/server/blob/stable13/lib/private/SystemTag/SystemTagObjectMapper.php#L45>`_
+	
+	:Type: :any:`\\OCP\\SystemTag\\ISystemTagManager <OCP\\SystemTag\\ISystemTagManager>` 
+
+
+.. php:attr:: protected static connection
+
+	:Source:
+		`lib/private/SystemTag/SystemTagObjectMapper.php#48 <https://github.com/nextcloud/server/blob/stable13/lib/private/SystemTag/SystemTagObjectMapper.php#L48>`_
+	
+	:Type: :any:`\\OCP\\IDBConnection <OCP\\IDBConnection>` 
+
+
+.. php:attr:: protected static dispatcher
+
+	:Source:
+		`lib/private/SystemTag/SystemTagObjectMapper.php#51 <https://github.com/nextcloud/server/blob/stable13/lib/private/SystemTag/SystemTagObjectMapper.php#L51>`_
+	
+	:Type: :any:`\\Symfony\\Component\\EventDispatcher\\EventDispatcherInterface <Symfony\\Component\\EventDispatcher\\EventDispatcherInterface>` 
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $connection, $tagManager, $dispatcher)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Constructor\.
+			
+		
+		:Source:
+			`lib/private/SystemTag/SystemTagObjectMapper.php#60 <https://github.com/nextcloud/server/blob/stable13/lib/private/SystemTag/SystemTagObjectMapper.php#L60>`_
+		
+		
+		:Parameters:
+			* **$connection** (:any:`OCP\\IDBConnection <OCP\\IDBConnection>`)  database connection
+			* **$tagManager** (:any:`OCP\\SystemTag\\ISystemTagManager <OCP\\SystemTag\\ISystemTagManager>`)  system tag manager
+			* **$dispatcher** (:any:`Symfony\\Component\\EventDispatcher\\EventDispatcherInterface <Symfony\\Component\\EventDispatcher\\EventDispatcherInterface>`)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getTagIdsForObjects( $objIds, $objectType)
+	
+		.. rst-class:: phpdoc-description
+		
+			| \{@inheritdoc\}
+			
+		
+		:Source:
+			`lib/private/SystemTag/SystemTagObjectMapper.php#69 <https://github.com/nextcloud/server/blob/stable13/lib/private/SystemTag/SystemTagObjectMapper.php#L69>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getObjectIdsForTags( $tagIds, $objectType, $limit=0, $offset="")
+	
+		.. rst-class:: phpdoc-description
+		
+			| \{@inheritdoc\}
+			
+		
+		:Source:
+			`lib/private/SystemTag/SystemTagObjectMapper.php#105 <https://github.com/nextcloud/server/blob/stable13/lib/private/SystemTag/SystemTagObjectMapper.php#L105>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public assignTags( $objId, $objectType, $tagIds)
+	
+		.. rst-class:: phpdoc-description
+		
+			| \{@inheritdoc\}
+			
+		
+		:Source:
+			`lib/private/SystemTag/SystemTagObjectMapper.php#144 <https://github.com/nextcloud/server/blob/stable13/lib/private/SystemTag/SystemTagObjectMapper.php#L144>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public unassignTags( $objId, $objectType, $tagIds)
+	
+		.. rst-class:: phpdoc-description
+		
+			| \{@inheritdoc\}
+			
+		
+		:Source:
+			`lib/private/SystemTag/SystemTagObjectMapper.php#185 <https://github.com/nextcloud/server/blob/stable13/lib/private/SystemTag/SystemTagObjectMapper.php#L185>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public haveTag( $objIds, $objectType, $tagId, $all=true)
+	
+		.. rst-class:: phpdoc-description
+		
+			| \{@inheritdoc\}
+			
+		
+		:Source:
+			`lib/private/SystemTag/SystemTagObjectMapper.php#213 <https://github.com/nextcloud/server/blob/stable13/lib/private/SystemTag/SystemTagObjectMapper.php#L213>`_
+		
+		
+	
+	
+

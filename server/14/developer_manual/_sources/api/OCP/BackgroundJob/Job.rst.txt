@@ -1,0 +1,197 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+Job
+===
+
+
+.. php:namespace:: OCP\BackgroundJob
+
+.. rst-class::  abstract
+
+.. php:class:: Job
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Base class for background jobs
+		
+		| This is here if you want to do advanced stuff in your background jobs\.
+		| For the most common use cases have a look at QueuedJob and TimedJob
+		
+	
+	:Source:
+		`lib/public/BackgroundJob/Job.php#41 <https://github.com/nextcloud/server/blob/stable13/lib/public/BackgroundJob/Job.php#L41>`_
+	
+	:Implements:
+		:php:interface:`OCP\\BackgroundJob\\IJob` 
+	
+
+Properties
+----------
+
+.. php:attr:: protected static id
+
+	:Source:
+		`lib/public/BackgroundJob/Job.php#44 <https://github.com/nextcloud/server/blob/stable13/lib/public/BackgroundJob/Job.php#L44>`_
+	
+	:Type: int 
+
+
+.. php:attr:: protected static lastRun
+
+	:Source:
+		`lib/public/BackgroundJob/Job.php#47 <https://github.com/nextcloud/server/blob/stable13/lib/public/BackgroundJob/Job.php#L47>`_
+	
+	:Type: int 
+
+
+.. php:attr:: protected static argument
+
+	:Source:
+		`lib/public/BackgroundJob/Job.php#50 <https://github.com/nextcloud/server/blob/stable13/lib/public/BackgroundJob/Job.php#L50>`_
+	
+	:Type: mixed 
+
+
+.. php:attr:: protected static time
+
+	:Source:
+		`lib/public/BackgroundJob/Job.php#53 <https://github.com/nextcloud/server/blob/stable13/lib/public/BackgroundJob/Job.php#L53>`_
+	
+	:Type: :any:`\\OCP\\AppFramework\\Utility\\ITimeFactory <OCP\\AppFramework\\Utility\\ITimeFactory>` 
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $time)
+	
+		:Source:
+			`lib/public/BackgroundJob/Job.php#58 <https://github.com/nextcloud/server/blob/stable13/lib/public/BackgroundJob/Job.php#L58>`_
+		
+		
+		:Since: 15.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public execute( $jobList, $logger=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| The function to prepare the execution of the job\.
+			
+		
+		:Source:
+			`lib/public/BackgroundJob/Job.php#71 <https://github.com/nextcloud/server/blob/stable13/lib/public/BackgroundJob/Job.php#L71>`_
+		
+		
+		:Parameters:
+			* **$jobList** (:any:`OCP\\BackgroundJob\\IJobList <OCP\\BackgroundJob\\IJobList>`)  
+			* **$logger** (:any:`OCP\\ILogger <OCP\\ILogger>` | null)  
+
+		
+		:Since: 15.0.0 
+	
+	
+
+.. rst-class:: public final
+
+	.. php:method:: public final setId( $id)
+	
+		:Source:
+			`lib/public/BackgroundJob/Job.php#98 <https://github.com/nextcloud/server/blob/stable13/lib/public/BackgroundJob/Job.php#L98>`_
+		
+		
+		:Since: 15.0.0 
+	
+	
+
+.. rst-class:: public final
+
+	.. php:method:: public final setLastRun( $lastRun)
+	
+		:Source:
+			`lib/public/BackgroundJob/Job.php#105 <https://github.com/nextcloud/server/blob/stable13/lib/public/BackgroundJob/Job.php#L105>`_
+		
+		
+		:Since: 15.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setArgument( $argument)
+	
+		:Source:
+			`lib/public/BackgroundJob/Job.php#112 <https://github.com/nextcloud/server/blob/stable13/lib/public/BackgroundJob/Job.php#L112>`_
+		
+		
+		:Since: 15.0.0 
+	
+	
+
+.. rst-class:: public final
+
+	.. php:method:: public final getId()
+	
+		:Source:
+			`lib/public/BackgroundJob/Job.php#119 <https://github.com/nextcloud/server/blob/stable13/lib/public/BackgroundJob/Job.php#L119>`_
+		
+		
+		:Since: 15.0.0 
+	
+	
+
+.. rst-class:: public final
+
+	.. php:method:: public final getLastRun()
+	
+		:Source:
+			`lib/public/BackgroundJob/Job.php#126 <https://github.com/nextcloud/server/blob/stable13/lib/public/BackgroundJob/Job.php#L126>`_
+		
+		
+		:Since: 15.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getArgument()
+	
+		:Source:
+			`lib/public/BackgroundJob/Job.php#133 <https://github.com/nextcloud/server/blob/stable13/lib/public/BackgroundJob/Job.php#L133>`_
+		
+		
+		:Since: 15.0.0 
+	
+	
+
+.. rst-class:: protected abstract
+
+	.. php:method:: protected abstract run( $argument)
+	
+		.. rst-class:: phpdoc-description
+		
+			| The actual function that is called to run the job
+			
+		
+		:Source:
+			`lib/public/BackgroundJob/Job.php#144 <https://github.com/nextcloud/server/blob/stable13/lib/public/BackgroundJob/Job.php#L144>`_
+		
+		
+		:Parameters:
+			* **$argument**  
+
+		
+		:Since: 15.0.0 
+	
+	
+

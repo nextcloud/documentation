@@ -1,0 +1,113 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+Search
+======
+
+
+.. php:namespace:: OC
+
+.. php:class:: Search
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Provide an interface to all search providers
+		
+	
+	:Source:
+		`lib/private/Search.php#38 <https://github.com/nextcloud/server/blob/stable13/lib/private/Search.php#L38>`_
+	
+	:Implements:
+		:php:interface:`OCP\\ISearch` 
+	
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public searchPaged( $query, $inApps=\[\], $page=1, $size=30)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Search all providers for $query
+			
+		
+		:Source:
+			`lib/private/Search.php#51 <https://github.com/nextcloud/server/blob/stable13/lib/private/Search.php#L51>`_
+		
+		
+		:Parameters:
+			* **$query** (string)  
+			* **$inApps** (string[])  optionally limit results to the given apps
+			* **$page** (int)  pages start at page 1
+
+		
+		:Returns: array An array of OC\\Search\\Result\'s
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public clearProviders()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Remove all registered search providers
+			
+		
+		:Source:
+			`lib/private/Search.php#78 <https://github.com/nextcloud/server/blob/stable13/lib/private/Search.php#L78>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public removeProvider( $provider)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Remove one existing search provider
+			
+		
+		:Source:
+			`lib/private/Search.php#87 <https://github.com/nextcloud/server/blob/stable13/lib/private/Search.php#L87>`_
+		
+		
+		:Parameters:
+			* **$provider** (string)  class name of a OC\Search\Provider
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public registerProvider( $class, $options=\[\])
+	
+		.. rst-class:: phpdoc-description
+		
+			| Register a new search provider to search with
+			
+		
+		:Source:
+			`lib/private/Search.php#103 <https://github.com/nextcloud/server/blob/stable13/lib/private/Search.php#L103>`_
+		
+		
+		:Parameters:
+			* **$class** (string)  class name of a OC\Search\Provider
+			* **$options** (array)  optional
+
+		
+	
+	
+

@@ -1,0 +1,174 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+Migrator
+========
+
+
+.. php:namespace:: OC\DB
+
+.. php:class:: Migrator
+
+
+	:Source:
+		`lib/private/DB/Migrator.php#46 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/Migrator.php#L46>`_
+	
+
+Properties
+----------
+
+.. php:attr:: protected static connection
+
+	:Source:
+		`lib/private/DB/Migrator.php#49 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/Migrator.php#L49>`_
+	
+	:Type: :any:`\\Doctrine\\DBAL\\Connection <Doctrine\\DBAL\\Connection>` 
+
+
+.. php:attr:: protected static config
+
+	:Source:
+		`lib/private/DB/Migrator.php#52 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/Migrator.php#L52>`_
+	
+	:Type: :any:`\\OCP\\IConfig <OCP\\IConfig>` 
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $connection, $config, $dispatcher=null)
+	
+		:Source:
+			`lib/private/DB/Migrator.php#65 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/Migrator.php#L65>`_
+		
+		
+		:Parameters:
+			* **$connection** (:any:`Doctrine\\DBAL\\Connection <Doctrine\\DBAL\\Connection>`)  
+			* **$config** (:any:`OCP\\IConfig <OCP\\IConfig>`)  
+			* **$dispatcher** (:any:`Symfony\\Component\\EventDispatcher\\EventDispatcherInterface <Symfony\\Component\\EventDispatcher\\EventDispatcherInterface>`)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public migrate( $targetSchema)
+	
+		:Source:
+			`lib/private/DB/Migrator.php#78 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/Migrator.php#L78>`_
+		
+		
+		:Parameters:
+			* **$targetSchema** (:any:`Doctrine\\DBAL\\Schema\\Schema <Doctrine\\DBAL\\Schema\\Schema>`)  
+
+		
+		:Throws: :any:`\\Doctrine\\DBAL\\Exception <Doctrine\\DBAL\\Exception>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public generateChangeScript( $targetSchema)
+	
+		:Source:
+			`lib/private/DB/Migrator.php#87 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/Migrator.php#L87>`_
+		
+		
+		:Parameters:
+			* **$targetSchema** (:any:`Doctrine\\DBAL\\Schema\\Schema <Doctrine\\DBAL\\Schema\\Schema>`)  
+
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public createSchema()
+	
+		:Source:
+			`lib/private/DB/Migrator.php#102 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/Migrator.php#L102>`_
+		
+		
+		:Throws: :any:`\\Doctrine\\DBAL\\Exception <Doctrine\\DBAL\\Exception>` 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected getDiff( $targetSchema, $connection)
+	
+		:Source:
+			`lib/private/DB/Migrator.php#119 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/Migrator.php#L119>`_
+		
+		
+		:Parameters:
+			* **$targetSchema** (:any:`Doctrine\\DBAL\\Schema\\Schema <Doctrine\\DBAL\\Schema\\Schema>`)  
+			* **$connection** (:any:`Doctrine\\DBAL\\Connection <Doctrine\\DBAL\\Connection>`)  
+
+		
+		:Returns: :any:`\\Doctrine\\DBAL\\Schema\\SchemaDiff <Doctrine\\DBAL\\Schema\\SchemaDiff>` 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected applySchema( $targetSchema, $connection=null)
+	
+		:Source:
+			`lib/private/DB/Migrator.php#165 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/Migrator.php#L165>`_
+		
+		
+		:Parameters:
+			* **$targetSchema** (:any:`Doctrine\\DBAL\\Schema\\Schema <Doctrine\\DBAL\\Schema\\Schema>`)  
+			* **$connection** (:any:`Doctrine\\DBAL\\Connection <Doctrine\\DBAL\\Connection>`)  
+
+		
+		:Throws: :any:`\\Doctrine\\DBAL\\Exception <Doctrine\\DBAL\\Exception>` 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected convertStatementToScript( $statement)
+	
+		:Source:
+			`lib/private/DB/Migrator.php#190 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/Migrator.php#L190>`_
+		
+		
+		:Parameters:
+			* **$statement**  
+
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected getFilterExpression()
+	
+		:Source:
+			`lib/private/DB/Migrator.php#197 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/Migrator.php#L197>`_
+		
+		
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected emit( $sql, $step, $max)
+	
+		:Source:
+			`lib/private/DB/Migrator.php#201 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/Migrator.php#L201>`_
+		
+		
+	
+	
+

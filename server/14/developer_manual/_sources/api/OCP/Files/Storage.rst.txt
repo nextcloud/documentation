@@ -1,0 +1,993 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+Storage
+=======
+
+
+.. php:namespace:: OCP\Files
+
+.. php:interface:: Storage
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Provide a common interface to all different storage options
+		
+		| All paths passed to the storage are relative to the storage and should NOT have a leading slash\.
+		
+	
+	:Source:
+		`lib/public/Files/Storage.php#55 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Storage.php#L55>`_
+	
+	:Parent:
+		:php:interface:`OCP\\Files\\Storage\\IStorage`
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $parameters)
+	
+		.. rst-class:: phpdoc-description
+		
+			| $parameters is a free form array with the configuration options needed to construct the storage
+			
+		
+		:Source:
+			`lib/public/Files/Storage.php#62 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Storage.php#L62>`_
+		
+		
+		:Parameters:
+			* **$parameters** (array)  
+
+		
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getId()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the identifier for the storage,
+			| the returned id should be the same for every storage object that is created with the same parameters
+			| and two storage objects with the same id should refer to two storages that display the same files\.
+			
+		
+		:Source:
+			`lib/public/Files/Storage.php#72 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Storage.php#L72>`_
+		
+		
+		:Returns: string 
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public mkdir( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| see https://www\.php\.net/manual/en/function\.mkdir\.php
+			| implementations need to implement a recursive mkdir
+			
+		
+		:Source:
+			`lib/public/Files/Storage.php#82 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Storage.php#L82>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: bool 
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public rmdir( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| see https://www\.php\.net/manual/en/function\.rmdir\.php
+			
+		
+		:Source:
+			`lib/public/Files/Storage.php#91 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Storage.php#L91>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: bool 
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public opendir( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| see https://www\.php\.net/manual/en/function\.opendir\.php
+			
+		
+		:Source:
+			`lib/public/Files/Storage.php#100 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Storage.php#L100>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: resource | bool 
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public is_dir( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| see https://www\.php\.net/manual/en/function\.is\-dir\.php
+			
+		
+		:Source:
+			`lib/public/Files/Storage.php#109 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Storage.php#L109>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: bool 
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public is_file( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| see https://www\.php\.net/manual/en/function\.is\-file\.php
+			
+		
+		:Source:
+			`lib/public/Files/Storage.php#118 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Storage.php#L118>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: bool 
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public stat( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| see https://www\.php\.net/manual/en/function\.stat\.php
+			| only the following keys are required in the result: size and mtime
+			
+		
+		:Source:
+			`lib/public/Files/Storage.php#128 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Storage.php#L128>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: array | bool 
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public filetype( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| see https://www\.php\.net/manual/en/function\.filetype\.php
+			
+		
+		:Source:
+			`lib/public/Files/Storage.php#137 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Storage.php#L137>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: string | bool 
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public filesize( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| see https://www\.php\.net/manual/en/function\.filesize\.php
+			| The result for filesize when called on a folder is required to be 0
+			
+		
+		:Source:
+			`lib/public/Files/Storage.php#147 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Storage.php#L147>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: int | bool 
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isCreatable( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| check if a file can be created in $path
+			
+		
+		:Source:
+			`lib/public/Files/Storage.php#156 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Storage.php#L156>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: bool 
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isReadable( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| check if a file can be read
+			
+		
+		:Source:
+			`lib/public/Files/Storage.php#165 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Storage.php#L165>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: bool 
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isUpdatable( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| check if a file can be written to
+			
+		
+		:Source:
+			`lib/public/Files/Storage.php#174 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Storage.php#L174>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: bool 
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isDeletable( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| check if a file can be deleted
+			
+		
+		:Source:
+			`lib/public/Files/Storage.php#183 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Storage.php#L183>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: bool 
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isSharable( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| check if a file can be shared
+			
+		
+		:Source:
+			`lib/public/Files/Storage.php#192 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Storage.php#L192>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: bool 
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getPermissions( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get the full permissions of a path\.
+			
+			| Should return a combination of the PERMISSION\_ constants defined in lib/public/constants\.php
+			
+		
+		:Source:
+			`lib/public/Files/Storage.php#202 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Storage.php#L202>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: int 
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public file_exists( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| see https://www\.php\.net/manual/en/function\.file\_exists\.php
+			
+		
+		:Source:
+			`lib/public/Files/Storage.php#211 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Storage.php#L211>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: bool 
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public filemtime( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| see https://www\.php\.net/manual/en/function\.filemtime\.php
+			
+		
+		:Source:
+			`lib/public/Files/Storage.php#220 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Storage.php#L220>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: int | bool 
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public file_get_contents( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| see https://www\.php\.net/manual/en/function\.file\_get\_contents\.php
+			
+		
+		:Source:
+			`lib/public/Files/Storage.php#229 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Storage.php#L229>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: string | bool 
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public file_put_contents( $path, $data)
+	
+		.. rst-class:: phpdoc-description
+		
+			| see https://www\.php\.net/manual/en/function\.file\_put\_contents\.php
+			
+		
+		:Source:
+			`lib/public/Files/Storage.php#239 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Storage.php#L239>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+			* **$data** (mixed)  
+
+		
+		:Returns: int | bool 
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public unlink( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| see https://www\.php\.net/manual/en/function\.unlink\.php
+			
+		
+		:Source:
+			`lib/public/Files/Storage.php#248 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Storage.php#L248>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: bool 
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public rename( $path1, $path2)
+	
+		.. rst-class:: phpdoc-description
+		
+			| see https://www\.php\.net/manual/en/function\.rename\.php
+			
+		
+		:Source:
+			`lib/public/Files/Storage.php#258 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Storage.php#L258>`_
+		
+		
+		:Parameters:
+			* **$path1** (string)  
+			* **$path2** (string)  
+
+		
+		:Returns: bool 
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public copy( $path1, $path2)
+	
+		.. rst-class:: phpdoc-description
+		
+			| see https://www\.php\.net/manual/en/function\.copy\.php
+			
+		
+		:Source:
+			`lib/public/Files/Storage.php#268 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Storage.php#L268>`_
+		
+		
+		:Parameters:
+			* **$path1** (string)  
+			* **$path2** (string)  
+
+		
+		:Returns: bool 
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public fopen( $path, $mode)
+	
+		.. rst-class:: phpdoc-description
+		
+			| see https://www\.php\.net/manual/en/function\.fopen\.php
+			
+		
+		:Source:
+			`lib/public/Files/Storage.php#278 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Storage.php#L278>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+			* **$mode** (string)  
+
+		
+		:Returns: resource | bool 
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getMimeType( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get the mimetype for a file or folder
+			| The mimetype for a folder is required to be "httpd/unix\-directory"
+			
+		
+		:Source:
+			`lib/public/Files/Storage.php#288 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Storage.php#L288>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: string | bool 
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public hash( $type, $path, $raw=false)
+	
+		.. rst-class:: phpdoc-description
+		
+			| see https://www\.php\.net/manual/en/function\.hash\-file\.php
+			
+		
+		:Source:
+			`lib/public/Files/Storage.php#299 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Storage.php#L299>`_
+		
+		
+		:Parameters:
+			* **$type** (string)  
+			* **$path** (string)  
+			* **$raw** (bool)  
+
+		
+		:Returns: string | bool 
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public free_space( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| see https://www\.php\.net/manual/en/function\.free\_space\.php
+			
+		
+		:Source:
+			`lib/public/Files/Storage.php#308 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Storage.php#L308>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: int | bool 
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public search( $query)
+	
+		.. rst-class:: phpdoc-description
+		
+			| search for occurrences of $query in file names
+			
+		
+		:Source:
+			`lib/public/Files/Storage.php#317 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Storage.php#L317>`_
+		
+		
+		:Parameters:
+			* **$query** (string)  
+
+		
+		:Returns: array | bool 
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public touch( $path, $mtime=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| see https://www\.php\.net/manual/en/function\.touch\.php
+			| If the backend does not support the operation, false should be returned
+			
+		
+		:Source:
+			`lib/public/Files/Storage.php#328 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Storage.php#L328>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+			* **$mtime** (int)  
+
+		
+		:Returns: bool 
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getLocalFile( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get the path to a local version of the file\.
+			
+			| The local version of the file can be temporary and doesn\'t have to be persistent across requests
+			
+		
+		:Source:
+			`lib/public/Files/Storage.php#338 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Storage.php#L338>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: string | bool 
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public hasUpdated( $path, $time)
+	
+		.. rst-class:: phpdoc-description
+		
+			| check if a file or folder has been updated since $time
+			
+		
+		:Source:
+			`lib/public/Files/Storage.php#351 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Storage.php#L351>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+			* **$time** (int)  
+
+		
+		:Returns: bool 
+		:Since: 6.0.0 hasUpdated for folders should return at least true if a file inside the folder is add, removed or renamed\.
+			returning true for other changes in the folder is optional
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getETag( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get the ETag for a file or folder
+			
+		
+		:Source:
+			`lib/public/Files/Storage.php#360 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Storage.php#L360>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: string | bool 
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isLocal()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns whether the storage is local, which means that files
+			| are stored on the local filesystem instead of remotely\.
+			
+			| Calling getLocalFile\(\) for local storages should always
+			| return the local files, whereas for non\-local storages
+			| it might return a temporary file\.
+			
+		
+		:Source:
+			`lib/public/Files/Storage.php#372 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Storage.php#L372>`_
+		
+		
+		:Returns: bool true if the files are stored locally, false otherwise
+		:Since: 7.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public instanceOfStorage( $class)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check if the storage is an instance of $class or is a wrapper for a storage that is an instance of $class
+			
+		
+		:Source:
+			`lib/public/Files/Storage.php#381 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Storage.php#L381>`_
+		
+		
+		:Parameters:
+			* **$class** (string)  
+
+		
+		:Returns: bool 
+		:Since: 7.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getDirectDownload( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| A custom storage implementation can return an url for direct download of a give file\.
+			
+			| For now the returned array can hold the parameter url \- in future more attributes might follow\.
+			
+		
+		:Source:
+			`lib/public/Files/Storage.php#392 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Storage.php#L392>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: array | bool 
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public verifyPath( $path, $fileName)
+	
+		:Source:
+			`lib/public/Files/Storage.php#401 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Storage.php#L401>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  the path of the target folder
+			* **$fileName** (string)  the name of the file itself
+
+		
+		:Returns: void 
+		:Throws: :any:`\\OCP\\Files\\InvalidPathException <OCP\\Files\\InvalidPathException>` 
+		:Since: 8.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public copyFromStorage( $sourceStorage, $sourceInternalPath, $targetInternalPath)
+	
+		:Source:
+			`lib/public/Files/Storage.php#410 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Storage.php#L410>`_
+		
+		
+		:Parameters:
+			* **$sourceStorage** (:any:`OCP\\Files\\Storage\\IStorage <OCP\\Files\\Storage\\IStorage>`)  
+			* **$sourceInternalPath** (string)  
+			* **$targetInternalPath** (string)  
+
+		
+		:Returns: bool 
+		:Since: 8.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public moveFromStorage( $sourceStorage, $sourceInternalPath, $targetInternalPath)
+	
+		:Source:
+			`lib/public/Files/Storage.php#419 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Storage.php#L419>`_
+		
+		
+		:Parameters:
+			* **$sourceStorage** (:any:`OCP\\Files\\Storage\\IStorage <OCP\\Files\\Storage\\IStorage>`)  
+			* **$sourceInternalPath** (string)  
+			* **$targetInternalPath** (string)  
+
+		
+		:Returns: bool 
+		:Since: 8.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public acquireLock( $path, $type, $provider)
+	
+		:Source:
+			`lib/public/Files/Storage.php#428 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Storage.php#L428>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  The path of the file to acquire the lock for
+			* **$type** (int)  \OCP\Lock\ILockingProvider::LOCK_SHARED or \OCP\Lock\ILockingProvider::LOCK_EXCLUSIVE
+			* **$provider** (:any:`OCP\\Lock\\ILockingProvider <OCP\\Lock\\ILockingProvider>`)  
+
+		
+		:Throws: :any:`\\OCP\\Lock\\LockedException <OCP\\Lock\\LockedException>` 
+		:Since: 8.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public releaseLock( $path, $type, $provider)
+	
+		:Source:
+			`lib/public/Files/Storage.php#437 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Storage.php#L437>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  The path of the file to acquire the lock for
+			* **$type** (int)  \OCP\Lock\ILockingProvider::LOCK_SHARED or \OCP\Lock\ILockingProvider::LOCK_EXCLUSIVE
+			* **$provider** (:any:`OCP\\Lock\\ILockingProvider <OCP\\Lock\\ILockingProvider>`)  
+
+		
+		:Throws: :any:`\\OCP\\Lock\\LockedException <OCP\\Lock\\LockedException>` 
+		:Since: 8.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public changeLock( $path, $type, $provider)
+	
+		:Source:
+			`lib/public/Files/Storage.php#446 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Storage.php#L446>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  The path of the file to change the lock for
+			* **$type** (int)  \OCP\Lock\ILockingProvider::LOCK_SHARED or \OCP\Lock\ILockingProvider::LOCK_EXCLUSIVE
+			* **$provider** (:any:`OCP\\Lock\\ILockingProvider <OCP\\Lock\\ILockingProvider>`)  
+
+		
+		:Throws: :any:`\\OCP\\Lock\\LockedException <OCP\\Lock\\LockedException>` 
+		:Since: 8.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public test()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Test a storage for availability
+			
+		
+		:Source:
+			`lib/public/Files/Storage.php#454 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Storage.php#L454>`_
+		
+		
+		:Since: 8.2.0 
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getAvailability()
+	
+		:Source:
+			`lib/public/Files/Storage.php#460 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Storage.php#L460>`_
+		
+		
+		:Since: 8.2.0 
+		:Returns: array \[ available, last\_checked \]
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setAvailability( $isAvailable)
+	
+		:Source:
+			`lib/public/Files/Storage.php#466 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Storage.php#L466>`_
+		
+		
+		:Parameters:
+			* **$isAvailable** (bool)  
+
+		
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public needsPartFile()
+	
+		:Source:
+			`lib/public/Files/Storage.php#468 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Storage.php#L468>`_
+		
+		
+	
+	
+

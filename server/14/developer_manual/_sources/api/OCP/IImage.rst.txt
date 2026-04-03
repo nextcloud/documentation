@@ -1,0 +1,482 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IImage
+======
+
+
+.. php:namespace:: OCP
+
+.. php:interface:: IImage
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Class for basic image manipulation
+		
+	
+	:Implemented by:
+		:php:class:`OC\_Image` 
+	
+	
+	:Source:
+		`lib/public/IImage.php#33 <https://github.com/nextcloud/server/blob/stable13/lib/public/IImage.php#L33>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public valid()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Determine whether the object contains an image resource\.
+			
+		
+		:Source:
+			`lib/public/IImage.php#40 <https://github.com/nextcloud/server/blob/stable13/lib/public/IImage.php#L40>`_
+		
+		
+		:Returns: bool 
+		:Since: 8.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public mimeType()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the MIME type of the image or an empty string if no image is loaded\.
+			
+		
+		:Source:
+			`lib/public/IImage.php#48 <https://github.com/nextcloud/server/blob/stable13/lib/public/IImage.php#L48>`_
+		
+		
+		:Returns: string 
+		:Since: 8.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public width()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the width of the image or \-1 if no image is loaded\.
+			
+		
+		:Source:
+			`lib/public/IImage.php#56 <https://github.com/nextcloud/server/blob/stable13/lib/public/IImage.php#L56>`_
+		
+		
+		:Returns: int 
+		:Since: 8.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public height()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the height of the image or \-1 if no image is loaded\.
+			
+		
+		:Source:
+			`lib/public/IImage.php#64 <https://github.com/nextcloud/server/blob/stable13/lib/public/IImage.php#L64>`_
+		
+		
+		:Returns: int 
+		:Since: 8.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public widthTopLeft()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the width when the image orientation is top\-left\.
+			
+		
+		:Source:
+			`lib/public/IImage.php#72 <https://github.com/nextcloud/server/blob/stable13/lib/public/IImage.php#L72>`_
+		
+		
+		:Returns: int 
+		:Since: 8.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public heightTopLeft()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the height when the image orientation is top\-left\.
+			
+		
+		:Source:
+			`lib/public/IImage.php#80 <https://github.com/nextcloud/server/blob/stable13/lib/public/IImage.php#L80>`_
+		
+		
+		:Returns: int 
+		:Since: 8.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public show( $mimeType=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Outputs the image\.
+			
+		
+		:Source:
+			`lib/public/IImage.php#89 <https://github.com/nextcloud/server/blob/stable13/lib/public/IImage.php#L89>`_
+		
+		
+		:Parameters:
+			* **$mimeType** (string)  
+
+		
+		:Returns: bool 
+		:Since: 8.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public save( $filePath=null, $mimeType=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Saves the image\.
+			
+		
+		:Source:
+			`lib/public/IImage.php#99 <https://github.com/nextcloud/server/blob/stable13/lib/public/IImage.php#L99>`_
+		
+		
+		:Parameters:
+			* **$filePath** (string)  
+			* **$mimeType** (string)  
+
+		
+		:Returns: bool 
+		:Since: 8.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public resource()
+	
+		:Source:
+			`lib/public/IImage.php#105 <https://github.com/nextcloud/server/blob/stable13/lib/public/IImage.php#L105>`_
+		
+		
+		:Returns: resource Returns the image resource in any\.
+		:Since: 8.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public dataMimeType()
+	
+		:Source:
+			`lib/public/IImage.php#111 <https://github.com/nextcloud/server/blob/stable13/lib/public/IImage.php#L111>`_
+		
+		
+		:Returns: string Returns the raw data mimetype
+		:Since: 13.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public data()
+	
+		:Source:
+			`lib/public/IImage.php#117 <https://github.com/nextcloud/server/blob/stable13/lib/public/IImage.php#L117>`_
+		
+		
+		:Returns: string Returns the raw image data\.
+		:Since: 8.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getOrientation()
+	
+		.. rst-class:: phpdoc-description
+		
+			| \(I\'m open for suggestions on better method name ;\)
+			| Get the orientation based on EXIF data\.
+			
+		
+		:Source:
+			`lib/public/IImage.php#126 <https://github.com/nextcloud/server/blob/stable13/lib/public/IImage.php#L126>`_
+		
+		
+		:Returns: int The orientation or \-1 if no EXIF data is available\.
+		:Since: 8.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public fixOrientation()
+	
+		.. rst-class:: phpdoc-description
+		
+			| \(I\'m open for suggestions on better method name ;\)
+			| Fixes orientation based on EXIF data\.
+			
+		
+		:Source:
+			`lib/public/IImage.php#135 <https://github.com/nextcloud/server/blob/stable13/lib/public/IImage.php#L135>`_
+		
+		
+		:Returns: bool 
+		:Since: 8.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public resize( $maxSize)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Resizes the image preserving ratio\.
+			
+		
+		:Source:
+			`lib/public/IImage.php#144 <https://github.com/nextcloud/server/blob/stable13/lib/public/IImage.php#L144>`_
+		
+		
+		:Parameters:
+			* **$maxSize** (int)  The maximum size of either the width or height.
+
+		
+		:Returns: bool 
+		:Since: 8.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public preciseResize( $width, $height)
+	
+		:Source:
+			`lib/public/IImage.php#152 <https://github.com/nextcloud/server/blob/stable13/lib/public/IImage.php#L152>`_
+		
+		
+		:Parameters:
+			* **$width** (int)  
+			* **$height** (int)  
+
+		
+		:Returns: bool 
+		:Since: 8.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public centerCrop( $size=0)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Crops the image to the middle square\. If the image is already square it just returns\.
+			
+		
+		:Source:
+			`lib/public/IImage.php#161 <https://github.com/nextcloud/server/blob/stable13/lib/public/IImage.php#L161>`_
+		
+		
+		:Parameters:
+			* **$size** (int)  maximum size for the result (optional)
+
+		
+		:Returns: bool for success or failure
+		:Since: 8.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public crop( $x, $y, $w, $h)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Crops the image from point $x$y with dimension $wx$h\.
+			
+		
+		:Source:
+			`lib/public/IImage.php#173 <https://github.com/nextcloud/server/blob/stable13/lib/public/IImage.php#L173>`_
+		
+		
+		:Parameters:
+			* **$x** (int)  Horizontal position
+			* **$y** (int)  Vertical position
+			* **$w** (int)  Width
+			* **$h** (int)  Height
+
+		
+		:Returns: bool for success or failure
+		:Since: 8.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public fitIn( $maxWidth, $maxHeight)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Resizes the image to fit within a boundary while preserving ratio\.
+			
+		
+		:Source:
+			`lib/public/IImage.php#183 <https://github.com/nextcloud/server/blob/stable13/lib/public/IImage.php#L183>`_
+		
+		
+		:Parameters:
+			* **$maxWidth** (int)  
+			* **$maxHeight** (int)  
+
+		
+		:Returns: bool 
+		:Since: 8.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public scaleDownToFit( $maxWidth, $maxHeight)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Shrinks the image to fit within a boundary while preserving ratio\.
+			
+		
+		:Source:
+			`lib/public/IImage.php#193 <https://github.com/nextcloud/server/blob/stable13/lib/public/IImage.php#L193>`_
+		
+		
+		:Parameters:
+			* **$maxWidth** (int)  
+			* **$maxHeight** (int)  
+
+		
+		:Returns: bool 
+		:Since: 8.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public copy()
+	
+		.. rst-class:: phpdoc-description
+		
+			| create a copy of this image
+			
+		
+		:Source:
+			`lib/public/IImage.php#201 <https://github.com/nextcloud/server/blob/stable13/lib/public/IImage.php#L201>`_
+		
+		
+		:Returns: :any:`\\OCP\\IImage <OCP\\IImage>` 
+		:Since: 19.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public cropCopy( $x, $y, $w, $h)
+	
+		.. rst-class:: phpdoc-description
+		
+			| create a new cropped copy of this image
+			
+		
+		:Source:
+			`lib/public/IImage.php#213 <https://github.com/nextcloud/server/blob/stable13/lib/public/IImage.php#L213>`_
+		
+		
+		:Parameters:
+			* **$x** (int)  Horizontal position
+			* **$y** (int)  Vertical position
+			* **$w** (int)  Width
+			* **$h** (int)  Height
+
+		
+		:Returns: :any:`\\OCP\\IImage <OCP\\IImage>` 
+		:Since: 19.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public preciseResizeCopy( $width, $height)
+	
+		.. rst-class:: phpdoc-description
+		
+			| create a new resized copy of this image
+			
+		
+		:Source:
+			`lib/public/IImage.php#223 <https://github.com/nextcloud/server/blob/stable13/lib/public/IImage.php#L223>`_
+		
+		
+		:Parameters:
+			* **$width** (int)  
+			* **$height** (int)  
+
+		
+		:Returns: :any:`\\OCP\\IImage <OCP\\IImage>` 
+		:Since: 19.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public resizeCopy( $maxSize)
+	
+		.. rst-class:: phpdoc-description
+		
+			| create a new resized copy of this image
+			
+		
+		:Source:
+			`lib/public/IImage.php#232 <https://github.com/nextcloud/server/blob/stable13/lib/public/IImage.php#L232>`_
+		
+		
+		:Parameters:
+			* **$maxSize** (int)  The maximum size of either the width or height.
+
+		
+		:Returns: :any:`\\OCP\\IImage <OCP\\IImage>` 
+		:Since: 19.0.0 
+	
+	
+

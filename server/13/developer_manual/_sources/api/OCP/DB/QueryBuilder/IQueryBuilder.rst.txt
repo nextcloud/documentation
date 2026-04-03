@@ -1,0 +1,1613 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IQueryBuilder
+=============
+
+
+.. php:namespace:: OCP\DB\QueryBuilder
+
+.. php:interface:: IQueryBuilder
+
+
+	.. rst-class:: phpdoc-description
+	
+		| This class provides a wrapper around Doctrine\'s QueryBuilder
+		
+	
+	:Implemented by:
+		:php:class:`OC\\DB\\QueryBuilder\\QueryBuilder` 
+	
+	
+	:Source:
+		`lib/public/DB/QueryBuilder/IQueryBuilder.php#41 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L41>`_
+	
+
+Constants
+---------
+
+.. php:const:: PARAM_NULL = \\PDO::PARAM\_NULL
+
+	:Source:
+		`lib/public/DB/QueryBuilder/IQueryBuilder.php#46 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L46>`_
+	
+	:Since: 9.0.0 
+
+
+.. php:const:: PARAM_BOOL = \\PDO::PARAM\_BOOL
+
+	:Source:
+		`lib/public/DB/QueryBuilder/IQueryBuilder.php#50 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L50>`_
+	
+	:Since: 9.0.0 
+
+
+.. php:const:: PARAM_INT = \\PDO::PARAM\_INT
+
+	:Source:
+		`lib/public/DB/QueryBuilder/IQueryBuilder.php#54 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L54>`_
+	
+	:Since: 9.0.0 
+
+
+.. php:const:: PARAM_STR = \\PDO::PARAM\_STR
+
+	:Source:
+		`lib/public/DB/QueryBuilder/IQueryBuilder.php#58 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L58>`_
+	
+	:Since: 9.0.0 
+
+
+.. php:const:: PARAM_LOB = \\PDO::PARAM\_LOB
+
+	:Source:
+		`lib/public/DB/QueryBuilder/IQueryBuilder.php#62 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L62>`_
+	
+	:Since: 9.0.0 
+
+
+.. php:const:: PARAM_DATE = datetime
+
+	:Source:
+		`lib/public/DB/QueryBuilder/IQueryBuilder.php#66 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L66>`_
+	
+	:Since: 9.0.0 
+
+
+.. php:const:: PARAM_INT_ARRAY = \\Doctrine\\DBAL\\Connection::PARAM\_INT\_ARRAY
+
+	:Source:
+		`lib/public/DB/QueryBuilder/IQueryBuilder.php#71 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L71>`_
+	
+	:Since: 9.0.0 
+
+
+.. php:const:: PARAM_STR_ARRAY = \\Doctrine\\DBAL\\Connection::PARAM\_STR\_ARRAY
+
+	:Source:
+		`lib/public/DB/QueryBuilder/IQueryBuilder.php#75 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L75>`_
+	
+	:Since: 9.0.0 
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public automaticTablePrefix( $enabled)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Enable/disable automatic prefixing of table names with the oc\_ prefix
+			
+		
+		:Source:
+			`lib/public/DB/QueryBuilder/IQueryBuilder.php#85 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L85>`_
+		
+		
+		:Parameters:
+			* **$enabled** (bool)  If set to true table names will be prefixed with the
+			owncloud database prefix automatically.
+
+		
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public expr()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Gets an ExpressionBuilder used for object\-oriented construction of query expressions\.
+			
+			| This producer method is intended for convenient inline usage\. Example:
+			| 
+			| <code\>
+			|     $qb = $conn\-\>getQueryBuilder\(\)
+			|         \-\>select\(\'u\'\)
+			|         \-\>from\(\'users\', \'u\'\)
+			|         \-\>where\($qb\-\>expr\(\)\-\>eq\(\'u\.id\', 1\)\);
+			| </code\>
+			| 
+			| For more complex expression construction, consider storing the expression
+			| builder object in a local variable\.
+			
+		
+		:Source:
+			`lib/public/DB/QueryBuilder/IQueryBuilder.php#104 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L104>`_
+		
+		
+		:Returns: :any:`\\OCP\\DB\\QueryBuilder\\IExpressionBuilder <OCP\\DB\\QueryBuilder\\IExpressionBuilder>` 
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public func()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Gets an FunctionBuilder used for object\-oriented construction of query functions\.
+			
+			| This producer method is intended for convenient inline usage\. Example:
+			| 
+			| <code\>
+			|     $qb = $conn\-\>getQueryBuilder\(\)
+			|         \-\>select\(\'u\'\)
+			|         \-\>from\(\'users\', \'u\'\)
+			|         \-\>where\($qb\-\>fun\(\)\-\>md5\(\'u\.id\'\)\);
+			| </code\>
+			| 
+			| For more complex function construction, consider storing the function
+			| builder object in a local variable\.
+			
+		
+		:Source:
+			`lib/public/DB/QueryBuilder/IQueryBuilder.php#123 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L123>`_
+		
+		
+		:Returns: :any:`\\OCP\\DB\\QueryBuilder\\IFunctionBuilder <OCP\\DB\\QueryBuilder\\IFunctionBuilder>` 
+		:Since: 12.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getType()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Gets the type of the currently built query\.
+			
+		
+		:Source:
+			`lib/public/DB/QueryBuilder/IQueryBuilder.php#131 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L131>`_
+		
+		
+		:Returns: int 
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getConnection()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Gets the associated DBAL Connection for this query builder\.
+			
+		
+		:Source:
+			`lib/public/DB/QueryBuilder/IQueryBuilder.php#139 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L139>`_
+		
+		
+		:Returns: :any:`\\OCP\\IDBConnection <OCP\\IDBConnection>` 
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getState()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Gets the state of this query builder instance\.
+			
+		
+		:Source:
+			`lib/public/DB/QueryBuilder/IQueryBuilder.php#147 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L147>`_
+		
+		
+		:Returns: int Either QueryBuilder::STATE\_DIRTY or QueryBuilder::STATE\_CLEAN\.
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public execute()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Executes this query using the bound parameters and their types\.
+			
+			| Uses \{@see \\OCP\\DB\\QueryBuilder\\Connection::executeQuery\} for select statements and \{@see \\OCP\\DB\\QueryBuilder\\Connection::executeStatement\}
+			| for insert, update and delete statements\.
+			| 
+			| Warning: until Nextcloud 20, this method could return a \\Doctrine\\DBAL\\Driver\\Statement but since
+			|          that interface changed in a breaking way the adapter \\OCP\\DB\\QueryBuilder\\IStatement is returned
+			|          to bridge old code to the new API
+			
+		
+		:Source:
+			`lib/public/DB/QueryBuilder/IQueryBuilder.php#164 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L164>`_
+		
+		
+		:Returns: :any:`\\OCP\\DB\\IResult <OCP\\DB\\IResult>` | int 
+		:Throws: :any:`\\OCP\\DB\\Exception <OCP\\DB\\Exception>` since 21\.0\.0
+		:Since: 8.2.0 
+		:Deprecated: 22.0.0 Use executeQuery or executeUpdate
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public executeQuery()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Execute for select statements
+			
+		
+		:Source:
+			`lib/public/DB/QueryBuilder/IQueryBuilder.php#175 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L175>`_
+		
+		
+		:Returns: :any:`\\OCP\\DB\\IResult <OCP\\DB\\IResult>` 
+		:Since: 22.0.0 
+		:Throws: :any:`\\OCP\\DB\\Exception <OCP\\DB\\Exception>` 
+		:Throws: :any:`\\RuntimeException <RuntimeException>` in case of usage with non select query
+		:Throws: :any:`\\OCP\\DB\\Exception <OCP\\DB\\Exception>` 
+		:Throws: :any:`\\RuntimeException <RuntimeException>` in case of usage with non select query
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public executeStatement()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Execute insert, update and delete statements
+			
+		
+		:Source:
+			`lib/public/DB/QueryBuilder/IQueryBuilder.php#186 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L186>`_
+		
+		
+		:Returns: int the number of affected rows
+		:Since: 22.0.0 
+		:Throws: :any:`\\OCP\\DB\\Exception <OCP\\DB\\Exception>` 
+		:Throws: :any:`\\RuntimeException <RuntimeException>` in case of usage with select query
+		:Throws: :any:`\\OCP\\DB\\Exception <OCP\\DB\\Exception>` 
+		:Throws: :any:`\\RuntimeException <RuntimeException>` in case of usage with select query
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getSQL()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Gets the complete SQL string formed by the current specifications of this QueryBuilder\.
+			
+			| <code\>
+			|     $qb = $conn\-\>getQueryBuilder\(\)
+			|         \-\>select\(\'u\'\)
+			|         \-\>from\(\'User\', \'u\'\)
+			|     echo $qb\-\>getSQL\(\); // SELECT u FROM User u
+			| </code\>
+			
+		
+		:Source:
+			`lib/public/DB/QueryBuilder/IQueryBuilder.php#201 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L201>`_
+		
+		
+		:Returns: string The SQL query string\.
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setParameter( $key, $value, $type=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Sets a query parameter for the query being constructed\.
+			
+			| <code\>
+			|     $qb = $conn\-\>getQueryBuilder\(\)
+			|         \-\>select\(\'u\'\)
+			|         \-\>from\(\'users\', \'u\'\)
+			|         \-\>where\(\'u\.id = :user\_id\'\)
+			|         \-\>setParameter\(\':user\_id\', 1\);
+			| </code\>
+			
+		
+		:Source:
+			`lib/public/DB/QueryBuilder/IQueryBuilder.php#221 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L221>`_
+		
+		
+		:Parameters:
+			* **$key** (string | int)  The parameter position or name.
+			* **$value** (mixed)  The parameter value.
+			* **$type** (string | null | int)  One of the IQueryBuilder::PARAM_* constants.
+
+		
+		:Returns: $this This QueryBuilder instance\.
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setParameters( $params, $types=\[\])
+	
+		.. rst-class:: phpdoc-description
+		
+			| Sets a collection of query parameters for the query being constructed\.
+			
+			| <code\>
+			|     $qb = $conn\-\>getQueryBuilder\(\)
+			|         \-\>select\(\'u\'\)
+			|         \-\>from\(\'users\', \'u\'\)
+			|         \-\>where\(\'u\.id = :user\_id1 OR u\.id = :user\_id2\'\)
+			|         \-\>setParameters\(array\(
+			|             \':user\_id1\' =\> 1,
+			|             \':user\_id2\' =\> 2
+			|         \)\);
+			| </code\>
+			
+		
+		:Source:
+			`lib/public/DB/QueryBuilder/IQueryBuilder.php#243 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L243>`_
+		
+		
+		:Parameters:
+			* **$params** (array)  The query parameters to set.
+			* **$types** (array)  The query parameters types to set.
+
+		
+		:Returns: $this This QueryBuilder instance\.
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getParameters()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Gets all defined query parameters for the query being constructed indexed by parameter index or name\.
+			
+		
+		:Source:
+			`lib/public/DB/QueryBuilder/IQueryBuilder.php#251 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L251>`_
+		
+		
+		:Returns: array The currently defined query parameters indexed by parameter index or name\.
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getParameter( $key)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Gets a \(previously set\) query parameter of the query being constructed\.
+			
+		
+		:Source:
+			`lib/public/DB/QueryBuilder/IQueryBuilder.php#261 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L261>`_
+		
+		
+		:Parameters:
+			* **$key** (mixed)  The key (index or name) of the bound parameter.
+
+		
+		:Returns: mixed The value of the bound parameter\.
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getParameterTypes()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Gets all defined query parameter types for the query being constructed indexed by parameter index or name\.
+			
+		
+		:Source:
+			`lib/public/DB/QueryBuilder/IQueryBuilder.php#269 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L269>`_
+		
+		
+		:Returns: array The currently defined query parameter types indexed by parameter index or name\.
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getParameterType( $key)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Gets a \(previously set\) query parameter type of the query being constructed\.
+			
+		
+		:Source:
+			`lib/public/DB/QueryBuilder/IQueryBuilder.php#279 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L279>`_
+		
+		
+		:Parameters:
+			* **$key** (mixed)  The key (index or name) of the bound parameter type.
+
+		
+		:Returns: mixed The value of the bound parameter type\.
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setFirstResult( $firstResult)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Sets the position of the first result to retrieve \(the "offset"\)\.
+			
+		
+		:Source:
+			`lib/public/DB/QueryBuilder/IQueryBuilder.php#289 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L289>`_
+		
+		
+		:Parameters:
+			* **$firstResult** (int)  The first result to return.
+
+		
+		:Returns: $this This QueryBuilder instance\.
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getFirstResult()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Gets the position of the first result the query object was set to retrieve \(the "offset"\)\.
+			
+			| Returns NULL if \{@link setFirstResult\} was not applied to this QueryBuilder\.
+			
+		
+		:Source:
+			`lib/public/DB/QueryBuilder/IQueryBuilder.php#298 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L298>`_
+		
+		
+		:Returns: int The position of the first result\.
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setMaxResults( $maxResults)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Sets the maximum number of results to retrieve \(the "limit"\)\.
+			
+		
+		:Source:
+			`lib/public/DB/QueryBuilder/IQueryBuilder.php#308 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L308>`_
+		
+		
+		:Parameters:
+			* **$maxResults** (int)  The maximum number of results to retrieve.
+
+		
+		:Returns: $this This QueryBuilder instance\.
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getMaxResults()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Gets the maximum number of results the query object was set to retrieve \(the "limit"\)\.
+			
+			| Returns NULL if \{@link setMaxResults\} was not applied to this query builder\.
+			
+		
+		:Source:
+			`lib/public/DB/QueryBuilder/IQueryBuilder.php#317 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L317>`_
+		
+		
+		:Returns: int | null The maximum number of results\.
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public select( ...$selects)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Specifies an item that is to be returned in the query result\.
+			
+			| Replaces any previously specified selections, if any\.
+			| 
+			| <code\>
+			|     $qb = $conn\-\>getQueryBuilder\(\)
+			|         \-\>select\(\'u\.id\', \'p\.id\'\)
+			|         \-\>from\(\'users\', \'u\'\)
+			|         \-\>leftJoin\(\'u\', \'phonenumbers\', \'p\', \'u\.id = p\.user\_id\'\);
+			| </code\>
+			
+		
+		:Source:
+			`lib/public/DB/QueryBuilder/IQueryBuilder.php#337 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L337>`_
+		
+		
+		:Parameters:
+			* **$selects** (mixed)  The selection expressions.
+
+		
+		:Returns: $this This QueryBuilder instance\.
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public selectAlias( $select, $alias)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Specifies an item that is to be returned with a different name in the query result\.
+			
+			| <code\>
+			|     $qb = $conn\-\>getQueryBuilder\(\)
+			|         \-\>selectAlias\(\'u\.id\', \'user\_id\'\)
+			|         \-\>from\(\'users\', \'u\'\)
+			|         \-\>leftJoin\(\'u\', \'phonenumbers\', \'p\', \'u\.id = p\.user\_id\'\);
+			| </code\>
+			
+		
+		:Source:
+			`lib/public/DB/QueryBuilder/IQueryBuilder.php#358 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L358>`_
+		
+		
+		:Parameters:
+			* **$select** (mixed)  The selection expressions.
+			* **$alias** (string)  The column alias used in the constructed query.
+
+		
+		:Returns: $this This QueryBuilder instance\.
+		:Since: 8.2.1 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public selectDistinct( $select)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Specifies an item that is to be returned uniquely in the query result\.
+			
+			| <code\>
+			|     $qb = $conn\-\>getQueryBuilder\(\)
+			|         \-\>selectDistinct\(\'type\'\)
+			|         \-\>from\(\'users\'\);
+			| </code\>
+			
+		
+		:Source:
+			`lib/public/DB/QueryBuilder/IQueryBuilder.php#376 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L376>`_
+		
+		
+		:Parameters:
+			* **$select** (mixed)  The selection expressions.
+
+		
+		:Returns: $this This QueryBuilder instance\.
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public addSelect( ...$select)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Adds an item that is to be returned in the query result\.
+			
+			| <code\>
+			|     $qb = $conn\-\>getQueryBuilder\(\)
+			|         \-\>select\(\'u\.id\'\)
+			|         \-\>addSelect\(\'p\.id\'\)
+			|         \-\>from\(\'users\', \'u\'\)
+			|         \-\>leftJoin\(\'u\', \'phonenumbers\', \'u\.id = p\.user\_id\'\);
+			| </code\>
+			
+		
+		:Source:
+			`lib/public/DB/QueryBuilder/IQueryBuilder.php#396 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L396>`_
+		
+		
+		:Parameters:
+			* **$select** (mixed)  The selection expression.
+
+		
+		:Returns: $this This QueryBuilder instance\.
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public delete( $delete=null, $alias=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Turns the query being built into a bulk delete query that ranges over
+			| a certain table\.
+			
+			| <code\>
+			|     $qb = $conn\-\>getQueryBuilder\(\)
+			|         \-\>delete\(\'users\', \'u\'\)
+			|         \-\>where\(\'u\.id = :user\_id\'\);
+			|         \-\>setParameter\(\':user\_id\', 1\);
+			| </code\>
+			
+		
+		:Source:
+			`lib/public/DB/QueryBuilder/IQueryBuilder.php#417 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L417>`_
+		
+		
+		:Parameters:
+			* **$delete** (string)  The table whose rows are subject to the deletion.
+			* **$alias** (string)  The table alias used in the constructed query.
+
+		
+		:Returns: $this This QueryBuilder instance\.
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public update( $update=null, $alias=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Turns the query being built into a bulk update query that ranges over
+			| a certain table
+			
+			| <code\>
+			|     $qb = $conn\-\>getQueryBuilder\(\)
+			|         \-\>update\(\'users\', \'u\'\)
+			|         \-\>set\(\'u\.password\', md5\(\'password\'\)\)
+			|         \-\>where\(\'u\.id = ?\'\);
+			| </code\>
+			
+		
+		:Source:
+			`lib/public/DB/QueryBuilder/IQueryBuilder.php#438 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L438>`_
+		
+		
+		:Parameters:
+			* **$update** (string)  The table whose rows are subject to the update.
+			* **$alias** (string)  The table alias used in the constructed query.
+
+		
+		:Returns: $this This QueryBuilder instance\.
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public insert( $insert=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Turns the query being built into an insert query that inserts into
+			| a certain table
+			
+			| <code\>
+			|     $qb = $conn\-\>getQueryBuilder\(\)
+			|         \-\>insert\(\'users\'\)
+			|         \-\>values\(
+			|             array\(
+			|                 \'name\' =\> \'?\',
+			|                 \'password\' =\> \'?\'
+			|             \)
+			|         \);
+			| </code\>
+			
+		
+		:Source:
+			`lib/public/DB/QueryBuilder/IQueryBuilder.php#462 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L462>`_
+		
+		
+		:Parameters:
+			* **$insert** (string)  The table into which the rows should be inserted.
+
+		
+		:Returns: $this This QueryBuilder instance\.
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public from( $from, $alias=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Creates and adds a query root corresponding to the table identified by the
+			| given alias, forming a cartesian product with any existing query roots\.
+			
+			| <code\>
+			|     $qb = $conn\-\>getQueryBuilder\(\)
+			|         \-\>select\(\'u\.id\'\)
+			|         \-\>from\(\'users\', \'u\'\)
+			| </code\>
+			
+		
+		:Source:
+			`lib/public/DB/QueryBuilder/IQueryBuilder.php#482 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L482>`_
+		
+		
+		:Parameters:
+			* **$from** (string)  The table.
+			* **$alias** (string | null)  The alias of the table.
+
+		
+		:Returns: $this This QueryBuilder instance\.
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public join( $fromAlias, $join, $alias, $condition=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Creates and adds a join to the query\.
+			
+			| <code\>
+			|     $qb = $conn\-\>getQueryBuilder\(\)
+			|         \-\>select\(\'u\.name\'\)
+			|         \-\>from\(\'users\', \'u\'\)
+			|         \-\>join\(\'u\', \'phonenumbers\', \'p\', \'p\.is\_primary = 1\'\);
+			| </code\>
+			
+		
+		:Source:
+			`lib/public/DB/QueryBuilder/IQueryBuilder.php#507 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L507>`_
+		
+		
+		:Parameters:
+			* **$fromAlias** (string)  The alias that points to a from clause.
+			* **$join** (string)  The table name to join.
+			* **$alias** (string)  The alias of the join table.
+			* **$condition** (string | :any:`\\OCP\\DB\\QueryBuilder\\ICompositeExpression <OCP\\DB\\QueryBuilder\\ICompositeExpression>` | null)  The condition for the join.
+
+		
+		:Returns: $this This QueryBuilder instance\.
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public innerJoin( $fromAlias, $join, $alias, $condition=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Creates and adds a join to the query\.
+			
+			| <code\>
+			|     $qb = $conn\-\>getQueryBuilder\(\)
+			|         \-\>select\(\'u\.name\'\)
+			|         \-\>from\(\'users\', \'u\'\)
+			|         \-\>innerJoin\(\'u\', \'phonenumbers\', \'p\', \'p\.is\_primary = 1\'\);
+			| </code\>
+			
+		
+		:Source:
+			`lib/public/DB/QueryBuilder/IQueryBuilder.php#532 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L532>`_
+		
+		
+		:Parameters:
+			* **$fromAlias** (string)  The alias that points to a from clause.
+			* **$join** (string)  The table name to join.
+			* **$alias** (string)  The alias of the join table.
+			* **$condition** (string | :any:`\\OCP\\DB\\QueryBuilder\\ICompositeExpression <OCP\\DB\\QueryBuilder\\ICompositeExpression>` | null)  The condition for the join.
+
+		
+		:Returns: $this This QueryBuilder instance\.
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public leftJoin( $fromAlias, $join, $alias, $condition=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Creates and adds a left join to the query\.
+			
+			| <code\>
+			|     $qb = $conn\-\>getQueryBuilder\(\)
+			|         \-\>select\(\'u\.name\'\)
+			|         \-\>from\(\'users\', \'u\'\)
+			|         \-\>leftJoin\(\'u\', \'phonenumbers\', \'p\', \'p\.is\_primary = 1\'\);
+			| </code\>
+			
+		
+		:Source:
+			`lib/public/DB/QueryBuilder/IQueryBuilder.php#557 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L557>`_
+		
+		
+		:Parameters:
+			* **$fromAlias** (string)  The alias that points to a from clause.
+			* **$join** (string)  The table name to join.
+			* **$alias** (string)  The alias of the join table.
+			* **$condition** (string | :any:`\\OCP\\DB\\QueryBuilder\\ICompositeExpression <OCP\\DB\\QueryBuilder\\ICompositeExpression>` | null)  The condition for the join.
+
+		
+		:Returns: $this This QueryBuilder instance\.
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public rightJoin( $fromAlias, $join, $alias, $condition=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Creates and adds a right join to the query\.
+			
+			| <code\>
+			|     $qb = $conn\-\>getQueryBuilder\(\)
+			|         \-\>select\(\'u\.name\'\)
+			|         \-\>from\(\'users\', \'u\'\)
+			|         \-\>rightJoin\(\'u\', \'phonenumbers\', \'p\', \'p\.is\_primary = 1\'\);
+			| </code\>
+			
+		
+		:Source:
+			`lib/public/DB/QueryBuilder/IQueryBuilder.php#582 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L582>`_
+		
+		
+		:Parameters:
+			* **$fromAlias** (string)  The alias that points to a from clause.
+			* **$join** (string)  The table name to join.
+			* **$alias** (string)  The alias of the join table.
+			* **$condition** (string | :any:`\\OCP\\DB\\QueryBuilder\\ICompositeExpression <OCP\\DB\\QueryBuilder\\ICompositeExpression>` | null)  The condition for the join.
+
+		
+		:Returns: $this This QueryBuilder instance\.
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public set( $key, $value)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Sets a new value for a column in a bulk update query\.
+			
+			| <code\>
+			|     $qb = $conn\-\>getQueryBuilder\(\)
+			|         \-\>update\(\'users\', \'u\'\)
+			|         \-\>set\(\'u\.password\', md5\(\'password\'\)\)
+			|         \-\>where\(\'u\.id = ?\'\);
+			| </code\>
+			
+		
+		:Source:
+			`lib/public/DB/QueryBuilder/IQueryBuilder.php#603 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L603>`_
+		
+		
+		:Parameters:
+			* **$key** (string)  The column to set.
+			* **$value** (:any:`OCP\\DB\\QueryBuilder\\ILiteral <OCP\\DB\\QueryBuilder\\ILiteral>` | :any:`\\OCP\\DB\\QueryBuilder\\IParameter <OCP\\DB\\QueryBuilder\\IParameter>` | :any:`\\OCP\\DB\\QueryBuilder\\IQueryFunction <OCP\\DB\\QueryBuilder\\IQueryFunction>` | string)  The value, expression, placeholder, etc.
+
+		
+		:Returns: $this This QueryBuilder instance\.
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public where( ...$predicates)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Specifies one or more restrictions to the query result\.
+			
+			| Replaces any previously specified restrictions, if any\.
+			| 
+			| <code\>
+			|     $qb = $conn\-\>getQueryBuilder\(\)
+			|         \-\>select\(\'u\.name\'\)
+			|         \-\>from\(\'users\', \'u\'\)
+			|         \-\>where\(\'u\.id = ?\'\);
+			| 
+			|     // You can optionally programatically build and/or expressions
+			|     $qb = $conn\-\>getQueryBuilder\(\);
+			| 
+			|     $or = $qb\-\>expr\(\)\-\>orx\(\);
+			|     $or\-\>add\($qb\-\>expr\(\)\-\>eq\(\'u\.id\', 1\)\);
+			|     $or\-\>add\($qb\-\>expr\(\)\-\>eq\(\'u\.id\', 2\)\);
+			| 
+			|     $qb\-\>update\(\'users\', \'u\'\)
+			|         \-\>set\(\'u\.password\', md5\(\'password\'\)\)
+			|         \-\>where\($or\);
+			| </code\>
+			
+		
+		:Source:
+			`lib/public/DB/QueryBuilder/IQueryBuilder.php#634 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L634>`_
+		
+		
+		:Parameters:
+			* **$predicates** (mixed)  The restriction predicates.
+
+		
+		:Returns: $this This QueryBuilder instance\.
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public andWhere( ...$where)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Adds one or more restrictions to the query results, forming a logical
+			| conjunction with any previously specified restrictions\.
+			
+			| <code\>
+			|     $qb = $conn\-\>getQueryBuilder\(\)
+			|         \-\>select\(\'u\'\)
+			|         \-\>from\(\'users\', \'u\'\)
+			|         \-\>where\(\'u\.username LIKE ?\'\)
+			|         \-\>andWhere\(\'u\.is\_active = 1\'\);
+			| </code\>
+			
+		
+		:Source:
+			`lib/public/DB/QueryBuilder/IQueryBuilder.php#657 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L657>`_
+		
+		
+		:Parameters:
+			* **$where** (mixed)  The query restrictions.
+
+		
+		:Returns: $this This QueryBuilder instance\.
+		:See: :any:`\\OCP\\DB\\QueryBuilder\\where\(\) <OCP\\DB\\QueryBuilder\\where\(\)>` 
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public orWhere( ...$where)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Adds one or more restrictions to the query results, forming a logical
+			| disjunction with any previously specified restrictions\.
+			
+			| <code\>
+			|     $qb = $conn\-\>getQueryBuilder\(\)
+			|         \-\>select\(\'u\.name\'\)
+			|         \-\>from\(\'users\', \'u\'\)
+			|         \-\>where\(\'u\.id = 1\'\)
+			|         \-\>orWhere\(\'u\.id = 2\'\);
+			| </code\>
+			
+		
+		:Source:
+			`lib/public/DB/QueryBuilder/IQueryBuilder.php#680 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L680>`_
+		
+		
+		:Parameters:
+			* **$where** (mixed)  The WHERE statement.
+
+		
+		:Returns: $this This QueryBuilder instance\.
+		:See: :any:`\\OCP\\DB\\QueryBuilder\\where\(\) <OCP\\DB\\QueryBuilder\\where\(\)>` 
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public groupBy( ...$groupBys)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Specifies a grouping over the results of the query\.
+			
+			| Replaces any previously specified groupings, if any\.
+			| 
+			| <code\>
+			|     $qb = $conn\-\>getQueryBuilder\(\)
+			|         \-\>select\(\'u\.name\'\)
+			|         \-\>from\(\'users\', \'u\'\)
+			|         \-\>groupBy\(\'u\.id\'\);
+			| </code\>
+			
+		
+		:Source:
+			`lib/public/DB/QueryBuilder/IQueryBuilder.php#700 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L700>`_
+		
+		
+		:Parameters:
+			* **$groupBys** (mixed)  The grouping expression.
+
+		
+		:Returns: $this This QueryBuilder instance\.
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public addGroupBy( ...$groupBy)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Adds a grouping expression to the query\.
+			
+			| <code\>
+			|     $qb = $conn\-\>getQueryBuilder\(\)
+			|         \-\>select\(\'u\.name\'\)
+			|         \-\>from\(\'users\', \'u\'\)
+			|         \-\>groupBy\(\'u\.lastLogin\'\);
+			|         \-\>addGroupBy\(\'u\.createdAt\'\)
+			| </code\>
+			
+		
+		:Source:
+			`lib/public/DB/QueryBuilder/IQueryBuilder.php#720 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L720>`_
+		
+		
+		:Parameters:
+			* **$groupBy** (mixed)  The grouping expression.
+
+		
+		:Returns: $this This QueryBuilder instance\.
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setValue( $column, $value)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Sets a value for a column in an insert query\.
+			
+			| <code\>
+			|     $qb = $conn\-\>getQueryBuilder\(\)
+			|         \-\>insert\(\'users\'\)
+			|         \-\>values\(
+			|             array\(
+			|                 \'name\' =\> \'?\'
+			|             \)
+			|         \)
+			|         \-\>setValue\(\'password\', \'?\'\);
+			| </code\>
+			
+		
+		:Source:
+			`lib/public/DB/QueryBuilder/IQueryBuilder.php#745 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L745>`_
+		
+		
+		:Parameters:
+			* **$column** (string)  The column into which the value should be inserted.
+			* **$value** (:any:`OCP\\DB\\QueryBuilder\\IParameter <OCP\\DB\\QueryBuilder\\IParameter>` | string)  The value that should be inserted into the column.
+
+		
+		:Returns: $this This QueryBuilder instance\.
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public values( $values)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Specifies values for an insert query indexed by column names\.
+			
+			| Replaces any previous values, if any\.
+			| 
+			| <code\>
+			|     $qb = $conn\-\>getQueryBuilder\(\)
+			|         \-\>insert\(\'users\'\)
+			|         \-\>values\(
+			|             array\(
+			|                 \'name\' =\> \'?\',
+			|                 \'password\' =\> \'?\'
+			|             \)
+			|         \);
+			| </code\>
+			
+		
+		:Source:
+			`lib/public/DB/QueryBuilder/IQueryBuilder.php#769 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L769>`_
+		
+		
+		:Parameters:
+			* **$values** (array)  The values to specify for the insert query indexed by column names.
+
+		
+		:Returns: $this This QueryBuilder instance\.
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public having( ...$having)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Specifies a restriction over the groups of the query\.
+			
+			| Replaces any previous having restrictions, if any\.
+			
+		
+		:Source:
+			`lib/public/DB/QueryBuilder/IQueryBuilder.php#782 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L782>`_
+		
+		
+		:Parameters:
+			* **$having** (mixed)  The restriction over the groups.
+
+		
+		:Returns: $this This QueryBuilder instance\.
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public andHaving( ...$having)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Adds a restriction over the groups of the query, forming a logical
+			| conjunction with any existing having restrictions\.
+			
+		
+		:Source:
+			`lib/public/DB/QueryBuilder/IQueryBuilder.php#795 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L795>`_
+		
+		
+		:Parameters:
+			* **$having** (mixed)  The restriction to append.
+
+		
+		:Returns: $this This QueryBuilder instance\.
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public orHaving( ...$having)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Adds a restriction over the groups of the query, forming a logical
+			| disjunction with any existing having restrictions\.
+			
+		
+		:Source:
+			`lib/public/DB/QueryBuilder/IQueryBuilder.php#808 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L808>`_
+		
+		
+		:Parameters:
+			* **$having** (mixed)  The restriction to add.
+
+		
+		:Returns: $this This QueryBuilder instance\.
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public orderBy( $sort, $order=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Specifies an ordering for the query results\.
+			
+			| Replaces any previously specified orderings, if any\.
+			
+		
+		:Source:
+			`lib/public/DB/QueryBuilder/IQueryBuilder.php#823 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L823>`_
+		
+		
+		:Parameters:
+			* **$sort** (string)  The ordering expression.
+			* **$order** (string)  The ordering direction.
+
+		
+		:Returns: $this This QueryBuilder instance\.
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public addOrderBy( $sort, $order=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Adds an ordering to the query results\.
+			
+		
+		:Source:
+			`lib/public/DB/QueryBuilder/IQueryBuilder.php#837 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L837>`_
+		
+		
+		:Parameters:
+			* **$sort** (string)  The ordering expression.
+			* **$order** (string)  The ordering direction.
+
+		
+		:Returns: $this This QueryBuilder instance\.
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getQueryPart( $queryPartName)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Gets a query part by its name\.
+			
+		
+		:Source:
+			`lib/public/DB/QueryBuilder/IQueryBuilder.php#847 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L847>`_
+		
+		
+		:Parameters:
+			* **$queryPartName** (string)  
+
+		
+		:Returns: mixed 
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getQueryParts()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Gets all query parts\.
+			
+		
+		:Source:
+			`lib/public/DB/QueryBuilder/IQueryBuilder.php#855 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L855>`_
+		
+		
+		:Returns: array 
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public resetQueryParts( $queryPartNames=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Resets SQL parts\.
+			
+		
+		:Source:
+			`lib/public/DB/QueryBuilder/IQueryBuilder.php#865 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L865>`_
+		
+		
+		:Parameters:
+			* **$queryPartNames** (array | null)  
+
+		
+		:Returns: $this This QueryBuilder instance\.
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public resetQueryPart( $queryPartName)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Resets a single SQL part\.
+			
+		
+		:Source:
+			`lib/public/DB/QueryBuilder/IQueryBuilder.php#875 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L875>`_
+		
+		
+		:Parameters:
+			* **$queryPartName** (string)  
+
+		
+		:Returns: $this This QueryBuilder instance\.
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public createNamedParameter( $value, $type=self::PARAM\_STR, $placeHolder=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Creates a new named parameter and bind the value $value to it\.
+			
+			| This method provides a shortcut for PDOStatement::bindValue
+			| when using prepared statements\.
+			| 
+			| The parameter $value specifies the value that you want to bind\. If
+			| $placeholder is not provided bindValue\(\) will automatically create a
+			| placeholder for you\. An automatic placeholder will be of the name
+			| \':dcValue1\', \':dcValue2\' etc\.
+			| 
+			| For more information see \{@link https://www\.php\.net/pdostatement\-bindparam\}
+			| 
+			| Example:
+			| <code\>
+			| $value = 2;
+			| $q\-\>eq\( \'id\', $q\-\>bindValue\( $value \) \);
+			| $stmt = $q\-\>executeQuery\(\); // executed with \'id = 2\'
+			| </code\>
+			
+		
+		:Source:
+			`lib/public/DB/QueryBuilder/IQueryBuilder.php#909 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L909>`_
+		
+		
+		:Parameters:
+			* **$value** (mixed)  
+			* **$type** (mixed)  
+			* **$placeHolder** (string)  The name to bind with. The string must start with a colon ':'.
+
+		
+		:License: New BSD License
+		:Returns: :any:`\\OCP\\DB\\QueryBuilder\\IParameter <OCP\\DB\\QueryBuilder\\IParameter>` 
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public createPositionalParameter( $value, $type=self::PARAM\_STR)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Creates a new positional parameter and bind the given value to it\.
+			
+			| Attention: If you are using positional parameters with the query builder you have
+			| to be very careful to bind all parameters in the order they appear in the SQL
+			| statement , otherwise they get bound in the wrong order which can lead to serious
+			| bugs in your code\.
+			| 
+			| Example:
+			| <code\>
+			|  $qb = $conn\-\>getQueryBuilder\(\);
+			|  $qb\-\>select\(\'u\.\*\'\)
+			|     \-\>from\(\'users\', \'u\'\)
+			|     \-\>where\(\'u\.username = \' \. $qb\-\>createPositionalParameter\(\'Foo\', IQueryBuilder::PARAM\_STR\)\)
+			|     \-\>orWhere\(\'u\.username = \' \. $qb\-\>createPositionalParameter\(\'Bar\', IQueryBuilder::PARAM\_STR\)\)
+			| </code\>
+			
+		
+		:Source:
+			`lib/public/DB/QueryBuilder/IQueryBuilder.php#936 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L936>`_
+		
+		
+		:Parameters:
+			* **$value** (mixed)  
+			* **$type** (int)  
+
+		
+		:Returns: :any:`\\OCP\\DB\\QueryBuilder\\IParameter <OCP\\DB\\QueryBuilder\\IParameter>` 
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public createParameter( $name)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Creates a new parameter
+			
+			| Example:
+			| <code\>
+			|  $qb = $conn\-\>getQueryBuilder\(\);
+			|  $qb\-\>select\(\'u\.\*\'\)
+			|     \-\>from\(\'users\', \'u\'\)
+			|     \-\>where\(\'u\.username = \' \. $qb\-\>createParameter\(\'name\'\)\)
+			|     \-\>setParameter\(\'name\', \'Bar\', IQueryBuilder::PARAM\_STR\)\)
+			| </code\>
+			
+		
+		:Source:
+			`lib/public/DB/QueryBuilder/IQueryBuilder.php#957 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L957>`_
+		
+		
+		:Parameters:
+			* **$name** (string)  
+
+		
+		:Returns: :any:`\\OCP\\DB\\QueryBuilder\\IParameter <OCP\\DB\\QueryBuilder\\IParameter>` 
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public createFunction( $call)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Creates a new function
+			
+			| Attention: Column names inside the call have to be quoted before hand
+			| 
+			| Example:
+			| <code\>
+			|  $qb = $conn\-\>getQueryBuilder\(\);
+			|  $qb\-\>select\($qb\-\>createFunction\(\'COUNT\(\*\)\'\)\)
+			|     \-\>from\(\'users\', \'u\'\)
+			|  echo $qb\-\>getSQL\(\); // SELECT COUNT\(\*\) FROM \`users\` u
+			| </code\>
+			| <code\>
+			|  $qb = $conn\-\>getQueryBuilder\(\);
+			|  $qb\-\>select\($qb\-\>createFunction\(\'COUNT\(\`column\`\)\'\)\)
+			|     \-\>from\(\'users\', \'u\'\)
+			|  echo $qb\-\>getSQL\(\); // SELECT COUNT\(\`column\`\) FROM \`users\` u
+			| </code\>
+			
+		
+		:Source:
+			`lib/public/DB/QueryBuilder/IQueryBuilder.php#985 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L985>`_
+		
+		
+		:Parameters:
+			* **$call** (string)  
+
+		
+		:Returns: :any:`\\OCP\\DB\\QueryBuilder\\IQueryFunction <OCP\\DB\\QueryBuilder\\IQueryFunction>` 
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getLastInsertId()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Used to get the id of the last inserted element
+			
+		
+		:Source:
+			`lib/public/DB/QueryBuilder/IQueryBuilder.php#993 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L993>`_
+		
+		
+		:Returns: int 
+		:Throws: :any:`\\BadMethodCallException <BadMethodCallException>` When being called before an insert query has been run\.
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getTableName( $table)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the table name quoted and with database prefix as needed by the implementation
+			
+		
+		:Source:
+			`lib/public/DB/QueryBuilder/IQueryBuilder.php#1002 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L1002>`_
+		
+		
+		:Parameters:
+			* **$table** (string)  
+
+		
+		:Returns: string 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getColumnName( $column, $tableAlias="")
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the column name quoted and with table alias prefix as needed by the implementation
+			
+		
+		:Source:
+			`lib/public/DB/QueryBuilder/IQueryBuilder.php#1012 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L1012>`_
+		
+		
+		:Parameters:
+			* **$column** (string)  
+			* **$tableAlias** (string)  
+
+		
+		:Returns: string 
+		:Since: 9.0.0 
+	
+	
+

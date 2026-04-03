@@ -1,0 +1,728 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>ObjectStoreStorage &mdash; Nextcloud 13 Developer Manual 13 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../../../',
+              VERSION:'13',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="Mapper" href="Mapper.html" />
+    <link rel="prev" title="ObjectStore" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html">
+          
+
+          
+            
+            <img src="../../../../_static/logo-white.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../general/index.html">General contributor guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/startapp.html">Create an app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/init.html">Navigation and pre-app configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/info.html">App metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/classloader.html">Classloader</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/request.html">Request lifecycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/routes.html">Routing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/middleware.html">Middleware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/container.html">Container</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/controllers.html">Controllers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/api.html">RESTful API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/templates.html">Templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/js.html">JavaScript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/css.html">CSS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/l10n.html">Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/theming.html">Theming support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/schema.html">Database schema</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/database.html">Database access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/filesystem.html">Filesystem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/appdata.html">AppData</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/users.html">User management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/two-factor-provider.html">Two-factor providers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/hooks.html">Hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/backgroundjobs.html">Background jobs (Cron)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/settings.html">Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/logging.html">Logging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/migrations.html">Migrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/repair.html">Repair steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/publishing.html">App store publishing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/code_signing.html">Code signing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../design/index.html">Design guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../android_library/index.html">Android application development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../client_apis/index.html">Client APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../core/translation.html">Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../core/unit-testing.html">Unit-Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../core/theming.html">Theming Nextcloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../core/externalapi.html">External API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../core/ocs-share-api.html">OCS Share API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../core/index.html">Core development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bugtracker/index.html">Bugtracker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../commun/index.html">Help and communication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api.html">API Documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">Nextcloud 13 Developer Manual</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../../../api.html">API Documentation</a> &raquo;</li>
+        
+          <li><a href="../../../index.html">\</a> &raquo;</li>
+        
+          <li><a href="../../index.html">OC</a> &raquo;</li>
+        
+          <li><a href="../index.html">Files</a> &raquo;</li>
+        
+          <li><a href="index.html">ObjectStore</a> &raquo;</li>
+        
+      <li>ObjectStoreStorage</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/nextcloud/documentation/edit/stable13/developer_manual/api/OC/Files/ObjectStore/ObjectStoreStorage.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="phpdoctorst section" id="namespace-OC\Files\ObjectStore">
+<span id="objectstorestorage"></span><h1>ObjectStoreStorage<a class="headerlink" href="#namespace-OC\Files\ObjectStore" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="OC\Files\ObjectStore\ObjectStoreStorage">
+<em class="property">class </em><code class="descclassname">OC\Files\ObjectStore\</code><code class="descname">ObjectStoreStorage</code><a class="headerlink" href="#OC\Files\ObjectStore\ObjectStoreStorage" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/ObjectStore/ObjectStoreStorage.php#L45">lib/private/Files/ObjectStore/ObjectStoreStorage.php#45</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parent:</th><td class="field-body"><a class="reference internal" href="../Storage/Common.html#OC\Files\Storage\Common" title="OC\Files\Storage\Common"><code class="xref php php-class docutils literal"><span class="pre">OC\Files\Storage\Common</span></code></a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Used traits:</th><td class="field-body"><a class="reference internal" href="../Storage/PolyFill/CopyDirectory.html#OC\Files\Storage\PolyFill\CopyDirectory" title="OC\Files\Storage\PolyFill\CopyDirectory"><code class="xref php php-trait docutils literal"><span class="pre">OC\Files\Storage\PolyFill\CopyDirectory</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<div class="section" id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h2>
+<dl class="attr">
+<dt id="OC\Files\ObjectStore\ObjectStoreStorage::$objectStore">
+<em class="property">protected </em><em class="property">static </em><em class="property">property </em><code class="descclassname">OC\Files\ObjectStore\ObjectStoreStorage::$</code><code class="descname">objectStore</code><a class="headerlink" href="#OC\Files\ObjectStore\ObjectStoreStorage::$objectStore" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/ObjectStore/ObjectStoreStorage.php#L51">lib/private/Files/ObjectStore/ObjectStoreStorage.php#51</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body"><a class="reference internal" href="../../../OCP/Files/ObjectStore/IObjectStore.html#OCP\Files\ObjectStore\IObjectStore" title="OCP\Files\ObjectStore\IObjectStore"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\ObjectStore\IObjectStore</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attr">
+<dt id="OC\Files\ObjectStore\ObjectStoreStorage::$id">
+<em class="property">protected </em><em class="property">static </em><em class="property">property </em><code class="descclassname">OC\Files\ObjectStore\ObjectStoreStorage::$</code><code class="descname">id</code><a class="headerlink" href="#OC\Files\ObjectStore\ObjectStoreStorage::$id" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/ObjectStore/ObjectStoreStorage.php#L55">lib/private/Files/ObjectStore/ObjectStoreStorage.php#55</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body">string</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attr">
+<dt id="OC\Files\ObjectStore\ObjectStoreStorage::$user">
+<em class="property">protected </em><em class="property">static </em><em class="property">property </em><code class="descclassname">OC\Files\ObjectStore\ObjectStoreStorage::$</code><code class="descname">user</code><a class="headerlink" href="#OC\Files\ObjectStore\ObjectStoreStorage::$user" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/ObjectStore/ObjectStoreStorage.php#L59">lib/private/Files/ObjectStore/ObjectStoreStorage.php#59</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body"><a class="reference internal" href="../../User/User.html#OC\User\User" title="OC\User\User"><code class="xref any php php-trait docutils literal"><span class="pre">\OC\User\User</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h2>
+<dl class="public method">
+<dt id="OC\Files\ObjectStore\ObjectStoreStorage::__construct">
+<em class="property">public </em><code class="descclassname">OC\Files\ObjectStore\ObjectStoreStorage::</code><code class="descname">__construct</code><span class="sig-paren">(</span><em>$params</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\ObjectStore\ObjectStoreStorage::__construct" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/ObjectStore/ObjectStoreStorage.php#L65">lib/private/Files/ObjectStore/ObjectStoreStorage.php#65</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\ObjectStore\ObjectStoreStorage::mkdir">
+<em class="property">public </em><code class="descclassname">OC\Files\ObjectStore\ObjectStoreStorage::</code><code class="descname">mkdir</code><span class="sig-paren">(</span><em>$path</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\ObjectStore\ObjectStoreStorage::mkdir" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/ObjectStore/ObjectStoreStorage.php#L87">lib/private/Files/ObjectStore/ObjectStoreStorage.php#87</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\ObjectStore\ObjectStoreStorage::getScanner">
+<em class="property">public </em><code class="descclassname">OC\Files\ObjectStore\ObjectStoreStorage::</code><code class="descname">getScanner</code><span class="sig-paren">(</span><em>$path=&quot;&quot;</em>, <em>$storage=null</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\ObjectStore\ObjectStoreStorage::getScanner" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Object Stores use a NoopScanner because metadata is directly stored in</div>
+<div class="line">the file cache and cannot really scan the filesystem. The storage passed in is not used anywhere.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/ObjectStore/ObjectStoreStorage.php#L155">lib/private/Files/ObjectStore/ObjectStoreStorage.php#155</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$path</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><a class="reference internal" href="NoopScanner.html#OC\Files\ObjectStore\NoopScanner" title="OC\Files\ObjectStore\NoopScanner"><code class="xref any php php-trait docutils literal"><span class="pre">\OC\Files\ObjectStore\NoopScanner</span></code></a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\ObjectStore\ObjectStoreStorage::getId">
+<em class="property">public </em><code class="descclassname">OC\Files\ObjectStore\ObjectStoreStorage::</code><code class="descname">getId</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\ObjectStore\ObjectStoreStorage::getId" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/ObjectStore/ObjectStoreStorage.php#L165">lib/private/Files/ObjectStore/ObjectStoreStorage.php#165</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\ObjectStore\ObjectStoreStorage::rmdir">
+<em class="property">public </em><code class="descclassname">OC\Files\ObjectStore\ObjectStoreStorage::</code><code class="descname">rmdir</code><span class="sig-paren">(</span><em>$path</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\ObjectStore\ObjectStoreStorage::rmdir" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/ObjectStore/ObjectStoreStorage.php#L169">lib/private/Files/ObjectStore/ObjectStoreStorage.php#169</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\ObjectStore\ObjectStoreStorage::unlink">
+<em class="property">public </em><code class="descclassname">OC\Files\ObjectStore\ObjectStoreStorage::</code><code class="descname">unlink</code><span class="sig-paren">(</span><em>$path</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\ObjectStore\ObjectStoreStorage::unlink" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/ObjectStore/ObjectStoreStorage.php#L202">lib/private/Files/ObjectStore/ObjectStoreStorage.php#202</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\ObjectStore\ObjectStoreStorage::stat">
+<em class="property">public </em><code class="descclassname">OC\Files\ObjectStore\ObjectStoreStorage::</code><code class="descname">stat</code><span class="sig-paren">(</span><em>$path</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\ObjectStore\ObjectStoreStorage::stat" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/ObjectStore/ObjectStoreStorage.php#L228">lib/private/Files/ObjectStore/ObjectStoreStorage.php#228</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\ObjectStore\ObjectStoreStorage::getPermissions">
+<em class="property">public </em><code class="descclassname">OC\Files\ObjectStore\ObjectStoreStorage::</code><code class="descname">getPermissions</code><span class="sig-paren">(</span><em>$path</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\ObjectStore\ObjectStoreStorage::getPermissions" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/ObjectStore/ObjectStoreStorage.php#L238">lib/private/Files/ObjectStore/ObjectStoreStorage.php#238</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\ObjectStore\ObjectStoreStorage::getURN">
+<em class="property">public </em><code class="descclassname">OC\Files\ObjectStore\ObjectStoreStorage::</code><code class="descname">getURN</code><span class="sig-paren">(</span><em>$fileId</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\ObjectStore\ObjectStoreStorage::getURN" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Override this method if you need a different unique resource identifier for your object storage implementation.</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">The default implementations just appends the fileId to &#8216;<a class="reference external" href="urn:oid">urn:oid</a>:&#8217;. Make sure the URN is unique over all users.</div>
+<div class="line">You may need a mapping table to store your URN if it cannot be generated from the fileid.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/ObjectStore/ObjectStoreStorage.php#L256">lib/private/Files/ObjectStore/ObjectStoreStorage.php#256</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$fileId</strong> (int)  the fileid</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">null | string the unified resource name used to identify the object</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\ObjectStore\ObjectStoreStorage::opendir">
+<em class="property">public </em><code class="descclassname">OC\Files\ObjectStore\ObjectStoreStorage::</code><code class="descname">opendir</code><span class="sig-paren">(</span><em>$path</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\ObjectStore\ObjectStoreStorage::opendir" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/ObjectStore/ObjectStoreStorage.php#L263">lib/private/Files/ObjectStore/ObjectStoreStorage.php#263</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\ObjectStore\ObjectStoreStorage::filetype">
+<em class="property">public </em><code class="descclassname">OC\Files\ObjectStore\ObjectStoreStorage::</code><code class="descname">filetype</code><span class="sig-paren">(</span><em>$path</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\ObjectStore\ObjectStoreStorage::filetype" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/ObjectStore/ObjectStoreStorage.php#L280">lib/private/Files/ObjectStore/ObjectStoreStorage.php#280</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\ObjectStore\ObjectStoreStorage::fopen">
+<em class="property">public </em><code class="descclassname">OC\Files\ObjectStore\ObjectStoreStorage::</code><code class="descname">fopen</code><span class="sig-paren">(</span><em>$path</em>, <em>$mode</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\ObjectStore\ObjectStoreStorage::fopen" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/ObjectStore/ObjectStoreStorage.php#L293">lib/private/Files/ObjectStore/ObjectStoreStorage.php#293</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\ObjectStore\ObjectStoreStorage::file_exists">
+<em class="property">public </em><code class="descclassname">OC\Files\ObjectStore\ObjectStoreStorage::</code><code class="descname">file_exists</code><span class="sig-paren">(</span><em>$path</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\ObjectStore\ObjectStoreStorage::file_exists" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/ObjectStore/ObjectStoreStorage.php#L361">lib/private/Files/ObjectStore/ObjectStoreStorage.php#361</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\ObjectStore\ObjectStoreStorage::rename">
+<em class="property">public </em><code class="descclassname">OC\Files\ObjectStore\ObjectStoreStorage::</code><code class="descname">rename</code><span class="sig-paren">(</span><em>$source</em>, <em>$target</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\ObjectStore\ObjectStoreStorage::rename" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/ObjectStore/ObjectStoreStorage.php#L366">lib/private/Files/ObjectStore/ObjectStoreStorage.php#366</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\ObjectStore\ObjectStoreStorage::getMimeType">
+<em class="property">public </em><code class="descclassname">OC\Files\ObjectStore\ObjectStoreStorage::</code><code class="descname">getMimeType</code><span class="sig-paren">(</span><em>$path</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\ObjectStore\ObjectStoreStorage::getMimeType" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/ObjectStore/ObjectStoreStorage.php#L375">lib/private/Files/ObjectStore/ObjectStoreStorage.php#375</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\ObjectStore\ObjectStoreStorage::touch">
+<em class="property">public </em><code class="descclassname">OC\Files\ObjectStore\ObjectStoreStorage::</code><code class="descname">touch</code><span class="sig-paren">(</span><em>$path</em>, <em>$mtime=null</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\ObjectStore\ObjectStoreStorage::touch" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/ObjectStore/ObjectStoreStorage.php#L380">lib/private/Files/ObjectStore/ObjectStoreStorage.php#380</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\ObjectStore\ObjectStoreStorage::writeBack">
+<em class="property">public </em><code class="descclassname">OC\Files\ObjectStore\ObjectStoreStorage::</code><code class="descname">writeBack</code><span class="sig-paren">(</span><em>$tmpFile</em>, <em>$path</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\ObjectStore\ObjectStoreStorage::writeBack" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/ObjectStore/ObjectStoreStorage.php#L423">lib/private/Files/ObjectStore/ObjectStoreStorage.php#423</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\ObjectStore\ObjectStoreStorage::hasUpdated">
+<em class="property">public </em><code class="descclassname">OC\Files\ObjectStore\ObjectStoreStorage::</code><code class="descname">hasUpdated</code><span class="sig-paren">(</span><em>$path</em>, <em>$time</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\ObjectStore\ObjectStoreStorage::hasUpdated" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">external changes are not supported, exclusive access to the object storage is assumed</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/ObjectStore/ObjectStoreStorage.php#L435">lib/private/Files/ObjectStore/ObjectStoreStorage.php#435</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$path</strong> (string)</li>
+<li><strong>$time</strong> (int)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\ObjectStore\ObjectStoreStorage::needsPartFile">
+<em class="property">public </em><code class="descclassname">OC\Files\ObjectStore\ObjectStoreStorage::</code><code class="descname">needsPartFile</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\ObjectStore\ObjectStoreStorage::needsPartFile" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/ObjectStore/ObjectStoreStorage.php#L439">lib/private/Files/ObjectStore/ObjectStoreStorage.php#439</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\ObjectStore\ObjectStoreStorage::file_put_contents">
+<em class="property">public </em><code class="descclassname">OC\Files\ObjectStore\ObjectStoreStorage::</code><code class="descname">file_put_contents</code><span class="sig-paren">(</span><em>$path</em>, <em>$data</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\ObjectStore\ObjectStoreStorage::file_put_contents" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/ObjectStore/ObjectStoreStorage.php#L443">lib/private/Files/ObjectStore/ObjectStoreStorage.php#443</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\ObjectStore\ObjectStoreStorage::writeStream">
+<em class="property">public </em><code class="descclassname">OC\Files\ObjectStore\ObjectStoreStorage::</code><code class="descname">writeStream</code><span class="sig-paren">(</span><em>$path</em>, <em>$stream</em>, <em>$size=null</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\ObjectStore\ObjectStoreStorage::writeStream" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/ObjectStore/ObjectStoreStorage.php#L450">lib/private/Files/ObjectStore/ObjectStoreStorage.php#450</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\ObjectStore\ObjectStoreStorage::getObjectStore">
+<em class="property">public </em><code class="descclassname">OC\Files\ObjectStore\ObjectStoreStorage::</code><code class="descname">getObjectStore</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\ObjectStore\ObjectStoreStorage::getObjectStore" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/ObjectStore/ObjectStoreStorage.php#L531">lib/private/Files/ObjectStore/ObjectStoreStorage.php#531</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\ObjectStore\ObjectStoreStorage::copyFromStorage">
+<em class="property">public </em><code class="descclassname">OC\Files\ObjectStore\ObjectStoreStorage::</code><code class="descname">copyFromStorage</code><span class="sig-paren">(</span><em>$sourceStorage</em>, <em>$sourceInternalPath</em>, <em>$targetInternalPath</em>, <em>$preserveMtime=false</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\ObjectStore\ObjectStoreStorage::copyFromStorage" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/ObjectStore/ObjectStoreStorage.php#L535">lib/private/Files/ObjectStore/ObjectStoreStorage.php#535</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\ObjectStore\ObjectStoreStorage::copy">
+<em class="property">public </em><code class="descclassname">OC\Files\ObjectStore\ObjectStoreStorage::</code><code class="descname">copy</code><span class="sig-paren">(</span><em>$path1</em>, <em>$path2</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\ObjectStore\ObjectStoreStorage::copy" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/ObjectStore/ObjectStoreStorage.php#L548">lib/private/Files/ObjectStore/ObjectStoreStorage.php#548</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="Mapper.html" class="btn btn-neutral float-right" title="Mapper" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="index.html" class="btn btn-neutral float-left" title="ObjectStore" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021 Nextcloud GmbH.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: 13
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/13/developer_manual">13</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/14/developer_manual">14</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/15/developer_manual">15</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/developer_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/developer_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+   
+
+</body>
+</html>

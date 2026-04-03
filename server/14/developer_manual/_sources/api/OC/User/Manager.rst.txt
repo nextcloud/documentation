@@ -1,0 +1,512 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+Manager
+=======
+
+
+.. php:namespace:: OC\User
+
+.. php:class:: Manager
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Class Manager
+		
+		| Hooks available in scope \\OC\\User:
+		| \- preSetPassword\(\\OC\\User\\User $user, string $password, string $recoverPassword\)
+		| \- postSetPassword\(\\OC\\User\\User $user, string $password, string $recoverPassword\)
+		| \- preDelete\(\\OC\\User\\User $user\)
+		| \- postDelete\(\\OC\\User\\User $user\)
+		| \- preCreateUser\(string $uid, string $password\)
+		| \- postCreateUser\(\\OC\\User\\User $user, string $password\)
+		| \- change\(\\OC\\User\\User $user\)
+		| \- assignedUserId\(string $uid\)
+		| \- preUnassignedUserId\(string $uid\)
+		| \- postUnassignedUserId\(string $uid\)
+		
+	
+	:Source:
+		`lib/private/User/Manager.php#73 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/Manager.php#L73>`_
+	
+	:Parent:
+		:php:class:`OC\\Hooks\\PublicEmitter`
+	
+	:Implements:
+		:php:interface:`OCP\\IUserManager` 
+	
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $config, $oldDispatcher, $cacheFactory, $eventDispatcher)
+	
+		:Source:
+			`lib/private/User/Manager.php#96 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/Manager.php#L96>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getBackends()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the active backends
+			
+		
+		:Source:
+			`lib/private/User/Manager.php#115 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/Manager.php#L115>`_
+		
+		
+		:Returns: :any:`\\OCP\\UserInterface\[\] <OCP\\UserInterface>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public registerBackend( $backend)
+	
+		.. rst-class:: phpdoc-description
+		
+			| register a user backend
+			
+		
+		:Source:
+			`lib/private/User/Manager.php#124 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/Manager.php#L124>`_
+		
+		
+		:Parameters:
+			* **$backend** (:any:`OCP\\UserInterface <OCP\\UserInterface>`)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public removeBackend( $backend)
+	
+		.. rst-class:: phpdoc-description
+		
+			| remove a user backend
+			
+		
+		:Source:
+			`lib/private/User/Manager.php#133 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/Manager.php#L133>`_
+		
+		
+		:Parameters:
+			* **$backend** (:any:`OCP\\UserInterface <OCP\\UserInterface>`)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public clearBackends()
+	
+		.. rst-class:: phpdoc-description
+		
+			| remove all user backends
+			
+		
+		:Source:
+			`lib/private/User/Manager.php#143 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/Manager.php#L143>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public get( $uid)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get a user by user id
+			
+		
+		:Source:
+			`lib/private/User/Manager.php#154 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/Manager.php#L154>`_
+		
+		
+		:Parameters:
+			* **$uid** (string)  
+
+		
+		:Returns: :any:`\\OC\\User\\User <OC\\User\\User>` | null Either the user or null if the specified user does not exist
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected getUserObject( $uid, $backend, $cacheUser=true)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get or construct the user object
+			
+		
+		:Source:
+			`lib/private/User/Manager.php#193 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/Manager.php#L193>`_
+		
+		
+		:Parameters:
+			* **$uid** (string)  
+			* **$backend** (:any:`OCP\\UserInterface <OCP\\UserInterface>`)  
+			* **$cacheUser** (bool)  If false the newly created user object will not be cached
+
+		
+		:Returns: :any:`\\OC\\User\\User <OC\\User\\User>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public userExists( $uid)
+	
+		.. rst-class:: phpdoc-description
+		
+			| check if a user exists
+			
+		
+		:Source:
+			`lib/private/User/Manager.php#215 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/Manager.php#L215>`_
+		
+		
+		:Parameters:
+			* **$uid** (string)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public checkPassword( $loginName, $password)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check if the password is valid for the user
+			
+		
+		:Source:
+			`lib/private/User/Manager.php#227 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/Manager.php#L227>`_
+		
+		
+		:Parameters:
+			* **$loginName** (string)  
+			* **$password** (string)  
+
+		
+		:Returns: mixed the User object on success, false otherwise
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public checkPasswordNoLogging( $loginName, $password)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check if the password is valid for the user
+			
+		
+		:Source:
+			`lib/private/User/Manager.php#245 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/Manager.php#L245>`_
+		
+		
+		:Parameters:
+			* **$loginName** (string)  
+			* **$password** (string)  
+
+		
+		:Returns: :any:`\\OCP\\IUser <OCP\\IUser>` | bool the User object on success, false otherwise
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public search( $pattern, $limit=null, $offset=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| search by user id
+			
+		
+		:Source:
+			`lib/private/User/Manager.php#283 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/Manager.php#L283>`_
+		
+		
+		:Parameters:
+			* **$pattern** (string)  
+			* **$limit** (int)  
+			* **$offset** (int)  
+
+		
+		:Returns: :any:`\\OC\\User\\User\[\] <OC\\User\\User>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public searchDisplayName( $pattern, $limit=null, $offset=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| search by displayName
+			
+		
+		:Source:
+			`lib/private/User/Manager.php#312 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/Manager.php#L312>`_
+		
+		
+		:Parameters:
+			* **$pattern** (string)  
+			* **$limit** (int)  
+			* **$offset** (int)  
+
+		
+		:Returns: :any:`\\OC\\User\\User\[\] <OC\\User\\User>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public searchKnownUsersByDisplayName( $searcher, $pattern, $limit=null, $offset=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Search known users \(from phonebook sync\) by displayName
+			
+		
+		:Source:
+			`lib/private/User/Manager.php#342 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/Manager.php#L342>`_
+		
+		
+		:Parameters:
+			* **$searcher** (string)  
+			* **$pattern** (string)  
+			* **$limit** (int | null)  
+			* **$offset** (int | null)  
+
+		
+		:Returns: :any:`\\OCP\\IUser\[\] <OCP\\IUser>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public createUser( $uid, $password)
+	
+		:Source:
+			`lib/private/User/Manager.php#374 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/Manager.php#L374>`_
+		
+		
+		:Parameters:
+			* **$uid** (string)  
+			* **$password** (string)  
+
+		
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` 
+		:Returns: bool | :any:`\\OCP\\IUser <OCP\\IUser>` the created user or false
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public createUserFromBackend( $uid, $password, $backend)
+	
+		:Source:
+			`lib/private/User/Manager.php#410 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/Manager.php#L410>`_
+		
+		
+		:Parameters:
+			* **$uid** (string)  
+			* **$password** (string)  
+			* **$backend** (:any:`OCP\\UserInterface <OCP\\UserInterface>`)  
+
+		
+		:Returns: :any:`\\OCP\\IUser <OCP\\IUser>` | null 
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public countUsers( $hasLoggedIn=false)
+	
+		.. rst-class:: phpdoc-description
+		
+			| returns how many users per backend exist \(if supported by backend\)
+			
+		
+		:Source:
+			`lib/private/User/Manager.php#473 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/Manager.php#L473>`_
+		
+		
+		:Parameters:
+			* **$hasLoggedIn** (bool)  when true only users that have a lastLogin
+			entry in the preferences table will be affected
+
+		
+		:Returns: array | int an array of backend class as key and count number as value
+			if $hasLoggedIn is true only an int is returned
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public countUsersOfGroups( $groups)
+	
+		.. rst-class:: phpdoc-description
+		
+			| returns how many users per backend exist in the requested groups \(if supported by backend\)
+			
+		
+		:Source:
+			`lib/private/User/Manager.php#505 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/Manager.php#L505>`_
+		
+		
+		:Parameters:
+			* **$groups** (:any:`OCP\\IGroup\[\] <OCP\\IGroup>`)  an array of gid to search in
+
+		
+		:Returns: array | int an array of backend class as key and count number as value
+			if $hasLoggedIn is true only an int is returned
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public callForAllUsers( $callback, $search="", $onlySeen=false)
+	
+		.. rst-class:: phpdoc-description
+		
+			| The callback is executed for each user on each backend\.
+			
+			| If the callback returns false no further users will be retrieved\.
+			
+		
+		:Source:
+			`lib/private/User/Manager.php#526 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/Manager.php#L526>`_
+		
+		
+		:Parameters:
+			* **$callback** (:any:`Closure <Closure>`)  
+			* **$search** (string)  
+			* **$onlySeen** (bool)  when true only users that have a lastLogin entry
+			in the preferences table will be affected
+
+		
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public countDisabledUsers()
+	
+		.. rst-class:: phpdoc-description
+		
+			| returns how many users are disabled
+			
+		
+		:Source:
+			`lib/private/User/Manager.php#557 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/Manager.php#L557>`_
+		
+		
+		:Returns: int 
+		:Since: 12.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public countDisabledUsersOfGroups( $groups)
+	
+		.. rst-class:: phpdoc-description
+		
+			| returns how many users are disabled in the requested groups
+			
+		
+		:Source:
+			`lib/private/User/Manager.php#586 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/Manager.php#L586>`_
+		
+		
+		:Parameters:
+			* **$groups** (array)  groupids to search
+
+		
+		:Returns: int 
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public countSeenUsers()
+	
+		.. rst-class:: phpdoc-description
+		
+			| returns how many users have logged in once
+			
+		
+		:Source:
+			`lib/private/User/Manager.php#615 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/Manager.php#L615>`_
+		
+		
+		:Returns: int 
+		:Since: 11.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public callForSeenUsers( $callback)
+	
+		:Source:
+			`lib/private/User/Manager.php#636 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/Manager.php#L636>`_
+		
+		
+		:Parameters:
+			* **$callback** (:any:`Closure <Closure>`)  
+
+		
+		:Since: 11.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getByEmail( $email)
+	
+		:Source:
+			`lib/private/User/Manager.php#702 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/Manager.php#L702>`_
+		
+		
+		:Parameters:
+			* **$email** (string)  
+
+		
+		:Returns: :any:`\\OCP\\IUser\[\] <OCP\\IUser>` 
+		:Since: 9.1.0 
+	
+	
+

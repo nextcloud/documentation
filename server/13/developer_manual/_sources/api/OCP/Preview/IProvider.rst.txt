@@ -1,0 +1,92 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IProvider
+=========
+
+
+.. php:namespace:: OCP\Preview
+
+.. php:interface:: IProvider
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Interface IProvider
+		
+	
+	:Implemented by:
+		:php:class:`OC\\Preview\\Provider` 
+	
+	
+	:Source:
+		`lib/public/Preview/IProvider.php#34 <https://github.com/nextcloud/server/blob/stable13/lib/public/Preview/IProvider.php#L34>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public getMimeType()
+	
+		:Source:
+			`lib/public/Preview/IProvider.php#39 <https://github.com/nextcloud/server/blob/stable13/lib/public/Preview/IProvider.php#L39>`_
+		
+		
+		:Returns: string Regex with the mimetypes that are supported by this provider
+		:Since: 8.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isAvailable( $file)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check if a preview can be generated for $path
+			
+		
+		:Source:
+			`lib/public/Preview/IProvider.php#48 <https://github.com/nextcloud/server/blob/stable13/lib/public/Preview/IProvider.php#L48>`_
+		
+		
+		:Parameters:
+			* **$file** (:any:`OCP\\Files\\FileInfo <OCP\\Files\\FileInfo>`)  
+
+		
+		:Returns: bool 
+		:Since: 8.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getThumbnail( $path, $maxX, $maxY, $scalingup, $fileview)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get thumbnail for file at path $path
+			
+		
+		:Source:
+			`lib/public/Preview/IProvider.php#61 <https://github.com/nextcloud/server/blob/stable13/lib/public/Preview/IProvider.php#L61>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  Path of file
+			* **$maxX** (int)  The maximum X size of the thumbnail. It can be smaller depending on the shape of the image
+			* **$maxY** (int)  The maximum Y size of the thumbnail. It can be smaller depending on the shape of the image
+			* **$scalingup** (bool)  Disable/Enable upscaling of previews
+			* **$fileview** (:any:`OC\\Files\\View <OC\\Files\\View>`)  fileview object of user folder
+
+		
+		:Returns: bool | :any:`\\OCP\\IImage <OCP\\IImage>` false if no preview was generated
+		:Since: 8.1.0 
+	
+	
+

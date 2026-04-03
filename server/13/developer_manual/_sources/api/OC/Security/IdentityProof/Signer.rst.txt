@@ -1,0 +1,86 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+Signer
+======
+
+
+.. php:namespace:: OC\Security\IdentityProof
+
+.. php:class:: Signer
+
+
+	:Source:
+		`lib/private/Security/IdentityProof/Signer.php#35 <https://github.com/nextcloud/server/blob/stable13/lib/private/Security/IdentityProof/Signer.php#L35>`_
+	
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $keyManager, $timeFactory, $userManager)
+	
+		:Source:
+			`lib/private/Security/IdentityProof/Signer.php#48 <https://github.com/nextcloud/server/blob/stable13/lib/private/Security/IdentityProof/Signer.php#L48>`_
+		
+		
+		:Parameters:
+			* **$keyManager** (:any:`OC\\Security\\IdentityProof\\Manager <OC\\Security\\IdentityProof\\Manager>`)  
+			* **$timeFactory** (:any:`OCP\\AppFramework\\Utility\\ITimeFactory <OCP\\AppFramework\\Utility\\ITimeFactory>`)  
+			* **$userManager** (:any:`OCP\\IUserManager <OCP\\IUserManager>`)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public sign( $type, $data, $user)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns a signed blob for $data
+			
+		
+		:Source:
+			`lib/private/Security/IdentityProof/Signer.php#64 <https://github.com/nextcloud/server/blob/stable13/lib/private/Security/IdentityProof/Signer.php#L64>`_
+		
+		
+		:Parameters:
+			* **$type** (string)  
+			* **$data** (array)  
+			* **$user** (:any:`OCP\\IUser <OCP\\IUser>`)  
+
+		
+		:Returns: array \[\'message\', \'signature\'\]
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public verify( $data)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Whether the data is signed properly
+			
+		
+		:Source:
+			`lib/private/Security/IdentityProof/Signer.php#86 <https://github.com/nextcloud/server/blob/stable13/lib/private/Security/IdentityProof/Signer.php#L86>`_
+		
+		
+		:Parameters:
+			* **$data** (array)  
+
+		
+		:Returns: bool 
+	
+	
+

@@ -1,0 +1,202 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+UserMountCache
+==============
+
+
+.. php:namespace:: OC\Files\Config
+
+.. php:class:: UserMountCache
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Cache mounts points per user in the cache so we can easilly look them up
+		
+	
+	:Source:
+		`lib/private/Files/Config/UserMountCache.php#49 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Config/UserMountCache.php#L49>`_
+	
+	:Implements:
+		:php:interface:`OCP\\Files\\Config\\IUserMountCache` 
+	
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $connection, $userManager, $logger)
+	
+		.. rst-class:: phpdoc-description
+		
+			| UserMountCache constructor\.
+			
+		
+		:Source:
+			`lib/private/Files/Config/UserMountCache.php#85 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Config/UserMountCache.php#L85>`_
+		
+		
+		:Parameters:
+			* **$connection** (:any:`OCP\\IDBConnection <OCP\\IDBConnection>`)  
+			* **$userManager** (:any:`OCP\\IUserManager <OCP\\IUserManager>`)  
+			* **$logger** (:any:`OCP\\ILogger <OCP\\ILogger>`)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public registerMounts( $user, $mounts)
+	
+		:Source:
+			`lib/private/Files/Config/UserMountCache.php#93 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Config/UserMountCache.php#L93>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getMountsForUser( $user)
+	
+		:Source:
+			`lib/private/Files/Config/UserMountCache.php#230 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Config/UserMountCache.php#L230>`_
+		
+		
+		:Parameters:
+			* **$user** (:any:`OCP\\IUser <OCP\\IUser>`)  
+
+		
+		:Returns: :any:`\\OCP\\Files\\Config\\ICachedMountInfo\[\] <OCP\\Files\\Config\\ICachedMountInfo>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getMountsForStorageId( $numericStorageId, $user=null)
+	
+		:Source:
+			`lib/private/Files/Config/UserMountCache.php#252 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Config/UserMountCache.php#L252>`_
+		
+		
+		:Parameters:
+			* **$numericStorageId** (int)  
+			* **$user** (string | null)  limit the results to a single user
+
+		
+		:Returns: :any:`\\OC\\Files\\Config\\CachedMountInfo\[\] <OC\\Files\\Config\\CachedMountInfo>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getMountsForRootId( $rootFileId)
+	
+		:Source:
+			`lib/private/Files/Config/UserMountCache.php#274 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Config/UserMountCache.php#L274>`_
+		
+		
+		:Parameters:
+			* **$rootFileId** (int)  
+
+		
+		:Returns: :any:`\\OC\\Files\\Config\\CachedMountInfo\[\] <OC\\Files\\Config\\CachedMountInfo>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getMountsForFileId( $fileId, $user=null)
+	
+		:Source:
+			`lib/private/Files/Config/UserMountCache.php#323 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Config/UserMountCache.php#L323>`_
+		
+		
+		:Parameters:
+			* **$fileId** (int)  
+			* **$user** (string | null)  optionally restrict the results to a single user
+
+		
+		:Returns: :any:`\\OCP\\Files\\Config\\ICachedMountFileInfo\[\] <OCP\\Files\\Config\\ICachedMountFileInfo>` 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public removeUserMounts( $user)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Remove all cached mounts for a user
+			
+		
+		:Source:
+			`lib/private/Files/Config/UserMountCache.php#371 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Config/UserMountCache.php#L371>`_
+		
+		
+		:Parameters:
+			* **$user** (:any:`OCP\\IUser <OCP\\IUser>`)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public removeUserStorageMount( $storageId, $userId)
+	
+		:Source:
+			`lib/private/Files/Config/UserMountCache.php#379 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Config/UserMountCache.php#L379>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public remoteStorageMounts( $storageId)
+	
+		:Source:
+			`lib/private/Files/Config/UserMountCache.php#388 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Config/UserMountCache.php#L388>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getUsedSpaceForUsers( $users)
+	
+		:Source:
+			`lib/private/Files/Config/UserMountCache.php#400 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Config/UserMountCache.php#L400>`_
+		
+		
+		:Parameters:
+			* **$users** (array)  
+
+		
+		:Returns: array 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public clear()
+	
+		:Source:
+			`lib/private/Files/Config/UserMountCache.php#434 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Config/UserMountCache.php#L434>`_
+		
+		
+	
+	
+

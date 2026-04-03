@@ -1,0 +1,171 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+DefaultTokenMapper
+==================
+
+
+.. php:namespace:: OC\Authentication\Token
+
+.. php:class:: DefaultTokenMapper
+
+
+	:Source:
+		`lib/private/Authentication/Token/DefaultTokenMapper.php#41 <https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/DefaultTokenMapper.php#L41>`_
+	
+	:Parent:
+		:php:class:`OCP\\AppFramework\\Db\\QBMapper`
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $db)
+	
+		:Source:
+			`lib/private/Authentication/Token/DefaultTokenMapper.php#42 <https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/DefaultTokenMapper.php#L42>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public invalidate( $token)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Invalidate \(delete\) a given token
+			
+		
+		:Source:
+			`lib/private/Authentication/Token/DefaultTokenMapper.php#51 <https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/DefaultTokenMapper.php#L51>`_
+		
+		
+		:Parameters:
+			* **$token** (string)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public invalidateOld( $olderThan, $remember=\\OC\\Authentication\\Token\\IToken::DO\_NOT\_REMEMBER)
+	
+		:Source:
+			`lib/private/Authentication/Token/DefaultTokenMapper.php#64 <https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/DefaultTokenMapper.php#L64>`_
+		
+		
+		:Parameters:
+			* **$olderThan** (int)  
+			* **$remember** (int)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getToken( $token)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the user UID for the given token
+			
+		
+		:Source:
+			`lib/private/Authentication/Token/DefaultTokenMapper.php#82 <https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/DefaultTokenMapper.php#L82>`_
+		
+		
+		:Parameters:
+			* **$token** (string)  
+
+		
+		:Throws: :any:`\\OCP\\AppFramework\\Db\\DoesNotExistException <OCP\\AppFramework\\Db\\DoesNotExistException>` 
+		:Returns: :any:`\\OC\\Authentication\\Token\\DefaultToken <OC\\Authentication\\Token\\DefaultToken>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getTokenById( $id)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the token for $id
+			
+		
+		:Source:
+			`lib/private/Authentication/Token/DefaultTokenMapper.php#106 <https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/DefaultTokenMapper.php#L106>`_
+		
+		
+		:Parameters:
+			* **$id** (int)  
+
+		
+		:Throws: :any:`\\OCP\\AppFramework\\Db\\DoesNotExistException <OCP\\AppFramework\\Db\\DoesNotExistException>` 
+		:Returns: :any:`\\OC\\Authentication\\Token\\DefaultToken <OC\\Authentication\\Token\\DefaultToken>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getTokenByUser( $uid)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get all tokens of a user
+			
+			| The provider may limit the number of result rows in case of an abuse
+			| where a high number of \(session\) tokens is generated
+			
+		
+		:Source:
+			`lib/private/Authentication/Token/DefaultTokenMapper.php#132 <https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/DefaultTokenMapper.php#L132>`_
+		
+		
+		:Parameters:
+			* **$uid** (string)  
+
+		
+		:Returns: :any:`\\OC\\Authentication\\Token\\DefaultToken\[\] <OC\\Authentication\\Token\\DefaultToken>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public deleteById( $uid, $id)
+	
+		:Source:
+			`lib/private/Authentication/Token/DefaultTokenMapper.php#151 <https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/DefaultTokenMapper.php#L151>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public deleteByName( $name)
+	
+		.. rst-class:: phpdoc-description
+		
+			| delete all auth token which belong to a specific client if the client was deleted
+			
+		
+		:Source:
+			`lib/private/Authentication/Token/DefaultTokenMapper.php#166 <https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/DefaultTokenMapper.php#L166>`_
+		
+		
+		:Parameters:
+			* **$name** (string)  
+
+		
+	
+	
+

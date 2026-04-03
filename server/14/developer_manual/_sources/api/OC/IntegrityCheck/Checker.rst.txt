@@ -1,0 +1,265 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+Checker
+=======
+
+
+.. php:namespace:: OC\IntegrityCheck
+
+.. php:class:: Checker
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Class Checker handles the code signing using X\.509 and RSA\. ownCloud ships with
+		| a public root certificate certificate that allows to issue new certificates that
+		| will be trusted for signing code\. The CN will be used to verify that a certificate
+		| given to a third\-party developer may not be used for other applications\. For
+		| example the author of the application "calendar" would only receive a certificate
+		| only valid for this application\.
+		
+	
+	:Source:
+		`lib/private/IntegrityCheck/Checker.php#60 <https://github.com/nextcloud/server/blob/stable13/lib/private/IntegrityCheck/Checker.php#L60>`_
+	
+
+Constants
+---------
+
+.. php:const:: CACHE_KEY = oc\.integritycheck\.checker
+
+	:Source:
+		`lib/private/IntegrityCheck/Checker.php#61 <https://github.com/nextcloud/server/blob/stable13/lib/private/IntegrityCheck/Checker.php#L61>`_
+	
+
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $environmentHelper, $fileAccessHelper, $appLocator, $config, $cacheFactory, $appManager, $mimeTypeDetector)
+	
+		:Source:
+			`lib/private/IntegrityCheck/Checker.php#86 <https://github.com/nextcloud/server/blob/stable13/lib/private/IntegrityCheck/Checker.php#L86>`_
+		
+		
+		:Parameters:
+			* **$environmentHelper** (:any:`OC\\IntegrityCheck\\Helpers\\EnvironmentHelper <OC\\IntegrityCheck\\Helpers\\EnvironmentHelper>`)  
+			* **$fileAccessHelper** (:any:`OC\\IntegrityCheck\\Helpers\\FileAccessHelper <OC\\IntegrityCheck\\Helpers\\FileAccessHelper>`)  
+			* **$appLocator** (:any:`OC\\IntegrityCheck\\Helpers\\AppLocator <OC\\IntegrityCheck\\Helpers\\AppLocator>`)  
+			* **$config** (:any:`OCP\\IConfig <OCP\\IConfig>` | null)  
+			* **$cacheFactory** (:any:`OCP\\ICacheFactory <OCP\\ICacheFactory>`)  
+			* **$appManager** (:any:`OCP\\App\\IAppManager <OCP\\App\\IAppManager>` | null)  
+			* **$mimeTypeDetector** (:any:`OCP\\Files\\IMimeTypeDetector <OCP\\Files\\IMimeTypeDetector>`)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isCodeCheckEnforced()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Whether code signing is enforced or not\.
+			
+		
+		:Source:
+			`lib/private/IntegrityCheck/Checker.php#107 <https://github.com/nextcloud/server/blob/stable13/lib/private/IntegrityCheck/Checker.php#L107>`_
+		
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public writeAppSignature( $path, $certificate, $privateKey)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Write the signature of the app in the specified folder
+			
+		
+		:Source:
+			`lib/private/IntegrityCheck/Checker.php#251 <https://github.com/nextcloud/server/blob/stable13/lib/private/IntegrityCheck/Checker.php#L251>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+			* **$certificate** (:any:`phpseclib\\File\\X509 <phpseclib\\File\\X509>`)  
+			* **$privateKey** (:any:`phpseclib\\Crypt\\RSA <phpseclib\\Crypt\\RSA>`)  
+
+		
+		:Throws: :any:`\\Exception <Exception>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public writeCoreSignature( $certificate, $rsa, $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Write the signature of core
+			
+		
+		:Source:
+			`lib/private/IntegrityCheck/Checker.php#281 <https://github.com/nextcloud/server/blob/stable13/lib/private/IntegrityCheck/Checker.php#L281>`_
+		
+		
+		:Parameters:
+			* **$certificate** (:any:`phpseclib\\File\\X509 <phpseclib\\File\\X509>`)  
+			* **$rsa** (:any:`phpseclib\\Crypt\\RSA <phpseclib\\Crypt\\RSA>`)  
+			* **$path** (string)  
+
+		
+		:Throws: :any:`\\Exception <Exception>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public hasPassedCheck()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Whether the code integrity check has passed successful or not
+			
+		
+		:Source:
+			`lib/private/IntegrityCheck/Checker.php#428 <https://github.com/nextcloud/server/blob/stable13/lib/private/IntegrityCheck/Checker.php#L428>`_
+		
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getResults()
+	
+		:Source:
+			`lib/private/IntegrityCheck/Checker.php#440 <https://github.com/nextcloud/server/blob/stable13/lib/private/IntegrityCheck/Checker.php#L440>`_
+		
+		
+		:Returns: array 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public verifyAppSignature( $appId, $path="", $forceVerify=false)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Verify the signature of $appId\. Returns an array with the following content:
+			| \[
+			| 	\'FILE\_MISSING\' =\>
+			| 	\[
+			| 		\'filename\' =\> \[
+			| 			\'expected\' =\> \'expectedSHA512\',
+			| 			\'current\' =\> \'currentSHA512\',
+			| 		\],
+			| 	\],
+			| 	\'EXTRA\_FILE\' =\>
+			| 	\[
+			| 		\'filename\' =\> \[
+			| 			\'expected\' =\> \'expectedSHA512\',
+			| 			\'current\' =\> \'currentSHA512\',
+			| 		\],
+			| 	\],
+			| 	\'INVALID\_HASH\' =\>
+			| 	\[
+			| 		\'filename\' =\> \[
+			| 			\'expected\' =\> \'expectedSHA512\',
+			| 			\'current\' =\> \'currentSHA512\',
+			| 		\],
+			| 	\],
+			| \]
+			
+			| Array may be empty in case no problems have been found\.
+			
+		
+		:Source:
+			`lib/private/IntegrityCheck/Checker.php#512 <https://github.com/nextcloud/server/blob/stable13/lib/private/IntegrityCheck/Checker.php#L512>`_
+		
+		
+		:Parameters:
+			* **$appId** (string)  
+			* **$path** (string)  Optional path. If none is given it will be guessed.
+			* **$forceVerify** (bool)  
+
+		
+		:Returns: array 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public verifyCoreSignature()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Verify the signature of core\. Returns an array with the following content:
+			| \[
+			| 	\'FILE\_MISSING\' =\>
+			| 	\[
+			| 		\'filename\' =\> \[
+			| 			\'expected\' =\> \'expectedSHA512\',
+			| 			\'current\' =\> \'currentSHA512\',
+			| 		\],
+			| 	\],
+			| 	\'EXTRA\_FILE\' =\>
+			| 	\[
+			| 		\'filename\' =\> \[
+			| 			\'expected\' =\> \'expectedSHA512\',
+			| 			\'current\' =\> \'currentSHA512\',
+			| 		\],
+			| 	\],
+			| 	\'INVALID\_HASH\' =\>
+			| 	\[
+			| 		\'filename\' =\> \[
+			| 			\'expected\' =\> \'expectedSHA512\',
+			| 			\'current\' =\> \'currentSHA512\',
+			| 		\],
+			| 	\],
+			| \]
+			
+			| Array may be empty in case no problems have been found\.
+			
+		
+		:Source:
+			`lib/private/IntegrityCheck/Checker.php#566 <https://github.com/nextcloud/server/blob/stable13/lib/private/IntegrityCheck/Checker.php#L566>`_
+		
+		
+		:Returns: array 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public runInstanceVerification()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Verify the core code of the instance as well as all applicable applications
+			| and store the results\.
+			
+		
+		:Source:
+			`lib/private/IntegrityCheck/Checker.php#590 <https://github.com/nextcloud/server/blob/stable13/lib/private/IntegrityCheck/Checker.php#L590>`_
+		
+		
+	
+	
+

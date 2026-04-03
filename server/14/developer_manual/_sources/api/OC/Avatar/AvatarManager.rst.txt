@@ -1,0 +1,118 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+AvatarManager
+=============
+
+
+.. php:namespace:: OC\Avatar
+
+.. php:class:: AvatarManager
+
+
+	.. rst-class:: phpdoc-description
+	
+		| This class implements methods to access Avatar functionality
+		
+	
+	:Source:
+		`lib/private/Avatar/AvatarManager.php#54 <https://github.com/nextcloud/server/blob/stable13/lib/private/Avatar/AvatarManager.php#L54>`_
+	
+	:Implements:
+		:php:interface:`OCP\\IAvatarManager` 
+	
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $userSession, $userManager, $appData, $l, $logger, $config, $accountManager, $knownUserService)
+	
+		:Source:
+			`lib/private/Avatar/AvatarManager.php#80 <https://github.com/nextcloud/server/blob/stable13/lib/private/Avatar/AvatarManager.php#L80>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getAvatar( $userId)
+	
+		.. rst-class:: phpdoc-description
+		
+			| return a user specific instance of \\OCP\\IAvatar
+			
+		
+		:Source:
+			`lib/private/Avatar/AvatarManager.php#108 <https://github.com/nextcloud/server/blob/stable13/lib/private/Avatar/AvatarManager.php#L108>`_
+		
+		
+		:Parameters:
+			* **$userId** (string)  the ownCloud user id
+
+		
+		:See: :any:`\\OCP\\IAvatar <OCP\\IAvatar>` 
+		:Returns: :any:`\\OCP\\IAvatar <OCP\\IAvatar>` 
+		:Throws: :any:`\\Exception <Exception>` In case the username is potentially dangerous
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` In case there is no user folder yet
+		:Throws: :any:`\\Exception <Exception>` In case the username is potentially dangerous
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` In case there is no user folder yet
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public clearCachedAvatars()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Clear generated avatars
+			
+		
+		:Source:
+			`lib/private/Avatar/AvatarManager.php#151 <https://github.com/nextcloud/server/blob/stable13/lib/private/Avatar/AvatarManager.php#L151>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public deleteUserAvatar( $userId)
+	
+		:Source:
+			`lib/private/Avatar/AvatarManager.php#164 <https://github.com/nextcloud/server/blob/stable13/lib/private/Avatar/AvatarManager.php#L164>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getGuestAvatar( $name)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns a GuestAvatar\.
+			
+		
+		:Source:
+			`lib/private/Avatar/AvatarManager.php#184 <https://github.com/nextcloud/server/blob/stable13/lib/private/Avatar/AvatarManager.php#L184>`_
+		
+		
+		:Parameters:
+			* **$name** (string)  The guest name, e.g. "Albert".
+
+		
+		:Returns: :any:`\\OCP\\IAvatar <OCP\\IAvatar>` 
+	
+	
+

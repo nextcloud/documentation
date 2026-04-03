@@ -1,0 +1,71 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IEntityEvent
+============
+
+
+.. php:namespace:: OCP\WorkflowEngine
+
+.. php:interface:: IEntityEvent
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Interface IEntityEvent
+		
+		| represents an entitiy event that is dispatched via EventDispatcher
+		
+	
+	:Implemented by:
+		:php:class:`OCP\\WorkflowEngine\\GenericEntityEvent` 
+	
+	
+	:Source:
+		`lib/public/WorkflowEngine/IEntityEvent.php#37 <https://github.com/nextcloud/server/blob/stable13/lib/public/WorkflowEngine/IEntityEvent.php#L37>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public getDisplayName()
+	
+		.. rst-class:: phpdoc-description
+		
+			| returns a translated name to be presented in the web interface\.
+			
+			| Example: "created" \(en\), "kreita" \(eo\)
+			
+		
+		:Source:
+			`lib/public/WorkflowEngine/IEntityEvent.php#45 <https://github.com/nextcloud/server/blob/stable13/lib/public/WorkflowEngine/IEntityEvent.php#L45>`_
+		
+		
+		:Since: 18.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getEventName()
+	
+		.. rst-class:: phpdoc-description
+		
+			| returns the event name that is emitted by the EventDispatcher, e\.g\.:
+			
+			| Example: "OCA\\MyApp\\Factory\\Cats::postCreated"
+			
+		
+		:Source:
+			`lib/public/WorkflowEngine/IEntityEvent.php#54 <https://github.com/nextcloud/server/blob/stable13/lib/public/WorkflowEngine/IEntityEvent.php#L54>`_
+		
+		
+		:Since: 18.0.0 
+	
+	
+

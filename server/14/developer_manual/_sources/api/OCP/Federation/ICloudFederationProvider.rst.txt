@@ -1,0 +1,128 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+ICloudFederationProvider
+========================
+
+
+.. php:namespace:: OCP\Federation
+
+.. php:interface:: ICloudFederationProvider
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Interface ICloudFederationProvider
+		
+		| Enable apps to create their own cloud federation provider
+		
+	
+	:Source:
+		`lib/public/Federation/ICloudFederationProvider.php#42 <https://github.com/nextcloud/server/blob/stable13/lib/public/Federation/ICloudFederationProvider.php#L42>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public getShareType()
+	
+		.. rst-class:: phpdoc-description
+		
+			| get the name of the share type, handled by this provider
+			
+		
+		:Source:
+			`lib/public/Federation/ICloudFederationProvider.php#51 <https://github.com/nextcloud/server/blob/stable13/lib/public/Federation/ICloudFederationProvider.php#L51>`_
+		
+		
+		:Returns: string 
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public shareReceived( $share)
+	
+		.. rst-class:: phpdoc-description
+		
+			| share received from another server
+			
+		
+		:Source:
+			`lib/public/Federation/ICloudFederationProvider.php#63 <https://github.com/nextcloud/server/blob/stable13/lib/public/Federation/ICloudFederationProvider.php#L63>`_
+		
+		
+		:Parameters:
+			* **$share** (:any:`OCP\\Federation\\ICloudFederationShare <OCP\\Federation\\ICloudFederationShare>`)  
+
+		
+		:Returns: string provider specific unique ID of the share
+		:Throws: :any:`\\OCP\\Federation\\Exceptions\\ProviderCouldNotAddShareException <OCP\\Federation\\Exceptions\\ProviderCouldNotAddShareException>` 
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public notificationReceived( $notificationType, $providerId, $notification)
+	
+		.. rst-class:: phpdoc-description
+		
+			| notification received from another server
+			
+		
+		:Source:
+			`lib/public/Federation/ICloudFederationProvider.php#80 <https://github.com/nextcloud/server/blob/stable13/lib/public/Federation/ICloudFederationProvider.php#L80>`_
+		
+		
+		:Parameters:
+			* **$notificationType** (string)  (e.g SHARE_ACCEPTED)
+			* **$providerId** (string)  share ID
+			* **$notification** (array)  provider specific notification
+
+		
+		:Returns: array $data send back to sender
+		:Throws: :any:`\\OCP\\Share\\Exceptions\\ShareNotFound <OCP\\Share\\Exceptions\\ShareNotFound>` 
+		:Throws: :any:`\\OCP\\Federation\\Exceptions\\ActionNotSupportedException <OCP\\Federation\\Exceptions\\ActionNotSupportedException>` 
+		:Throws: :any:`\\OCP\\Federation\\Exceptions\\BadRequestException <OCP\\Federation\\Exceptions\\BadRequestException>` 
+		:Throws: :any:`\\OCP\\Federation\\Exceptions\\AuthenticationFailedException <OCP\\Federation\\Exceptions\\AuthenticationFailedException>` 
+		:Throws: :any:`\\OCP\\Share\\Exceptions\\ShareNotFound <OCP\\Share\\Exceptions\\ShareNotFound>` 
+		:Throws: :any:`\\OCP\\Federation\\Exceptions\\ActionNotSupportedException <OCP\\Federation\\Exceptions\\ActionNotSupportedException>` 
+		:Throws: :any:`\\OCP\\Federation\\Exceptions\\BadRequestException <OCP\\Federation\\Exceptions\\BadRequestException>` 
+		:Throws: :any:`\\OCP\\Federation\\Exceptions\\AuthenticationFailedException <OCP\\Federation\\Exceptions\\AuthenticationFailedException>` 
+		:Throws: :any:`\\OCP\\Share\\Exceptions\\ShareNotFound <OCP\\Share\\Exceptions\\ShareNotFound>` 
+		:Throws: :any:`\\OCP\\Federation\\Exceptions\\ActionNotSupportedException <OCP\\Federation\\Exceptions\\ActionNotSupportedException>` 
+		:Throws: :any:`\\OCP\\Federation\\Exceptions\\BadRequestException <OCP\\Federation\\Exceptions\\BadRequestException>` 
+		:Throws: :any:`\\OCP\\Federation\\Exceptions\\AuthenticationFailedException <OCP\\Federation\\Exceptions\\AuthenticationFailedException>` 
+		:Throws: :any:`\\OCP\\Share\\Exceptions\\ShareNotFound <OCP\\Share\\Exceptions\\ShareNotFound>` 
+		:Throws: :any:`\\OCP\\Federation\\Exceptions\\ActionNotSupportedException <OCP\\Federation\\Exceptions\\ActionNotSupportedException>` 
+		:Throws: :any:`\\OCP\\Federation\\Exceptions\\BadRequestException <OCP\\Federation\\Exceptions\\BadRequestException>` 
+		:Throws: :any:`\\OCP\\Federation\\Exceptions\\AuthenticationFailedException <OCP\\Federation\\Exceptions\\AuthenticationFailedException>` 
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getSupportedShareTypes()
+	
+		.. rst-class:: phpdoc-description
+		
+			| get the supported share types, e\.g\. "user", "group", etc\.
+			
+		
+		:Source:
+			`lib/public/Federation/ICloudFederationProvider.php#89 <https://github.com/nextcloud/server/blob/stable13/lib/public/Federation/ICloudFederationProvider.php#L89>`_
+		
+		
+		:Returns: array 
+		:Since: 14.0.0 
+	
+	
+

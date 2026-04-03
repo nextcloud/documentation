@@ -1,0 +1,202 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IManager
+========
+
+
+.. php:namespace:: OCP\Calendar
+
+.. php:interface:: IManager
+
+
+	.. rst-class:: phpdoc-description
+	
+		| This class provides access to the Nextcloud CalDAV backend\.
+		
+		| Use this class exclusively if you want to access calendars\.
+		| 
+		| Events/Journals/Todos in general will be expressed as an array of key\-value\-pairs\.
+		| The keys will match the property names defined in https://tools\.ietf\.org/html/rfc5545
+		| 
+		| \[
+		|   \'id\' =\> 123,
+		|   \'type\' =\> \'VEVENT\',
+		|   \'calendar\-key\' =\> 42,
+		|   \'objects\' =\> \[
+		|     \[
+		|       \'SUMMARY\' =\> \[\'FooBar\', \[\]\],
+		|       \'DTSTART\' =\> \[\'20171001T123456\', \[\'TZID\' =\> \'EUROPE/BERLIN\'\]\],
+		|       \'DURATION\' =\> \[\'P1D\', \[\]\],
+		| 	     \'ATTENDEE\' =\> \[
+		|         \[\'mailto:bla@blub\.com\', \[\'CN\' =\> \'Mr\. Bla Blub\'\]\]
+		|       \],
+		|       \'VALARM\' =\> \[
+		| 	       \[
+		|           \'TRIGGER\' =\> \[\'19980101T050000Z\', \[\'VALUE\' =\> DATE\-TIME\]\]
+		|         \]
+		|       \]
+		|     \],
+		|   \]
+		| \]
+		
+	
+	:Implemented by:
+		:php:class:`OC\\Calendar\\Manager` 
+	
+	
+	:Source:
+		`lib/public/Calendar/IManager.php#57 <https://github.com/nextcloud/server/blob/stable13/lib/public/Calendar/IManager.php#L57>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public search( $pattern, $searchProperties=\[\], $options=\[\], $limit=null, $offset=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| This function is used to search and find objects within the user\'s calendars\.
+			
+			| In case $pattern is empty all events/journals/todos will be returned\.
+			
+		
+		:Source:
+			`lib/public/Calendar/IManager.php#72 <https://github.com/nextcloud/server/blob/stable13/lib/public/Calendar/IManager.php#L72>`_
+		
+		
+		:Parameters:
+			* **$pattern** (string)  which should match within the $searchProperties
+			* **$searchProperties** (array)  defines the properties within the query pattern should match
+			* **$options** (array)  - optional parameters:
+			['timerange' => ['start' => new DateTime(...), 'end' => new DateTime(...)]]
+			* **$limit** (int | null)  - limit number of search results
+			* **$offset** (int | null)  - offset for paging of search results
+
+		
+		:Returns: array an array of events/journals/todos which are arrays of arrays of key\-value\-pairs
+		:Since: 13.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isEnabled()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check if calendars are available
+			
+		
+		:Source:
+			`lib/public/Calendar/IManager.php#80 <https://github.com/nextcloud/server/blob/stable13/lib/public/Calendar/IManager.php#L80>`_
+		
+		
+		:Returns: bool true if enabled, false if not
+		:Since: 13.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public registerCalendar( $calendar)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Registers a calendar
+			
+		
+		:Source:
+			`lib/public/Calendar/IManager.php#89 <https://github.com/nextcloud/server/blob/stable13/lib/public/Calendar/IManager.php#L89>`_
+		
+		
+		:Parameters:
+			* **$calendar** (:any:`OCP\\Calendar\\ICalendar <OCP\\Calendar\\ICalendar>`)  
+
+		
+		:Returns: void 
+		:Since: 13.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public unregisterCalendar( $calendar)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Unregisters a calendar
+			
+		
+		:Source:
+			`lib/public/Calendar/IManager.php#98 <https://github.com/nextcloud/server/blob/stable13/lib/public/Calendar/IManager.php#L98>`_
+		
+		
+		:Parameters:
+			* **$calendar** (:any:`OCP\\Calendar\\ICalendar <OCP\\Calendar\\ICalendar>`)  
+
+		
+		:Returns: void 
+		:Since: 13.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public register( $callable)
+	
+		.. rst-class:: phpdoc-description
+		
+			| In order to improve lazy loading a closure can be registered which will be called in case
+			| calendars are actually requested
+			
+		
+		:Source:
+			`lib/public/Calendar/IManager.php#108 <https://github.com/nextcloud/server/blob/stable13/lib/public/Calendar/IManager.php#L108>`_
+		
+		
+		:Parameters:
+			* **$callable** (:any:`Closure <Closure>`)  
+
+		
+		:Returns: void 
+		:Since: 13.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getCalendars()
+	
+		:Source:
+			`lib/public/Calendar/IManager.php#114 <https://github.com/nextcloud/server/blob/stable13/lib/public/Calendar/IManager.php#L114>`_
+		
+		
+		:Returns: :any:`\\OCP\\Calendar\\ICalendar\[\] <OCP\\Calendar\\ICalendar>` 
+		:Since: 13.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public clear()
+	
+		.. rst-class:: phpdoc-description
+		
+			| removes all registered calendar instances
+			
+		
+		:Source:
+			`lib/public/Calendar/IManager.php#121 <https://github.com/nextcloud/server/blob/stable13/lib/public/Calendar/IManager.php#L121>`_
+		
+		
+		:Returns: void 
+		:Since: 13.0.0 
+	
+	
+

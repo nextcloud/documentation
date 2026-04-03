@@ -1,0 +1,87 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IPropagator
+===========
+
+
+.. php:namespace:: OCP\Files\Cache
+
+.. php:interface:: IPropagator
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Propagate etags and mtimes within the storage
+		
+	
+	:Implemented by:
+		:php:class:`OC\\Files\\Cache\\Propagator` 
+	
+	
+	:Source:
+		`lib/public/Files/Cache/IPropagator.php#30 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Cache/IPropagator.php#L30>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public beginBatch()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Mark the beginning of a propagation batch
+			
+			| Note that not all cache setups support propagation in which case this will be a noop
+			| 
+			| Batching for cache setups that do support it has to be explicit since the cache state is not fully consistent
+			| before the batch is committed\.
+			
+		
+		:Source:
+			`lib/public/Files/Cache/IPropagator.php#41 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Cache/IPropagator.php#L41>`_
+		
+		
+		:Since: 9.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public commitBatch()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Commit the active propagation batch
+			
+		
+		:Source:
+			`lib/public/Files/Cache/IPropagator.php#48 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Cache/IPropagator.php#L48>`_
+		
+		
+		:Since: 9.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public propagateChange( $internalPath, $time)
+	
+		:Source:
+			`lib/public/Files/Cache/IPropagator.php#55 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Cache/IPropagator.php#L55>`_
+		
+		
+		:Parameters:
+			* **$internalPath** (string)  
+			* **$time** (int)  
+
+		
+		:Since: 9.0.0 
+	
+	
+

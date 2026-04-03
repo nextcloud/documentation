@@ -1,0 +1,365 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+OC\_User
+========
+
+
+.. php:class:: OC_User
+
+
+	.. rst-class:: phpdoc-description
+	
+		| This class provides wrapper methods for user management\. Multiple backends are
+		| supported\. User management operations are delegated to the configured backend for
+		| execution\.
+		
+		| Note that &run is deprecated and won\'t work anymore\.
+		| 
+		| Hooks provided:
+		|   pre\_createUser\(&run, uid, password\)
+		|   post\_createUser\(uid, password\)
+		|   pre\_deleteUser\(&run, uid\)
+		|   post\_deleteUser\(uid\)
+		|   pre\_setPassword\(&run, uid, password, recoveryPassword\)
+		|   post\_setPassword\(uid, password, recoveryPassword\)
+		|   pre\_login\(&run, uid, password\)
+		|   post\_login\(uid\)
+		|   logout\(\)
+		
+	
+	:Source:
+		`lib/private/legacy/OC_User.php#59 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_User.php#L59>`_
+	
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: public static
+
+	.. php:method:: public static useBackend( $backend=database)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Adds the backend to the list of used backends
+			
+		
+		:Source:
+			`lib/private/legacy/OC_User.php#76 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_User.php#L76>`_
+		
+		
+		:Parameters:
+			* **$backend** (string | :any:`\\OCP\\UserInterface <OCP\\UserInterface>`)  default: database The backend to use for user management
+
+		
+		:Returns: bool Set the User Authentication Module
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static clearBackends()
+	
+		.. rst-class:: phpdoc-description
+		
+			| remove all used backends
+			
+		
+		:Source:
+			`lib/private/legacy/OC_User.php#113 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_User.php#L113>`_
+		
+		
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static setupBackends()
+	
+		.. rst-class:: phpdoc-description
+		
+			| setup the configured backends in config\.php
+			
+		
+		:Source:
+			`lib/private/legacy/OC_User.php#122 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_User.php#L122>`_
+		
+		
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static loginWithApache( $backend)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Try to login a user, assuming authentication
+			| has already happened \(e\.g\. via Single Sign On\)\.
+			
+			| Log in a user and regenerate a new session\.
+			
+		
+		:Source:
+			`lib/private/legacy/OC_User.php#162 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_User.php#L162>`_
+		
+		
+		:Parameters:
+			* **$backend** (:any:`OCP\\Authentication\\IApacheBackend <OCP\\Authentication\\IApacheBackend>`)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static handleApacheAuth()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Verify with Apache whether user is authenticated\.
+			
+		
+		:Source:
+			`lib/private/legacy/OC_User.php#205 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_User.php#L205>`_
+		
+		
+		:Returns: bool | null true: authenticated
+			false: not authenticated
+			null: not handled / no backend available
+		
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static setUserId( $uid)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Sets user id for session and triggers emit
+			
+		
+		:Source:
+			`lib/private/legacy/OC_User.php#226 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_User.php#L226>`_
+		
+		
+		:Parameters:
+			* **$uid** (string)  
+
+		
+	
+	
+
+.. rst-class:: public static deprecated
+
+	.. php:method:: public static isLoggedIn()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check if the user is logged in, considers also the HTTP basic credentials
+			
+		
+		:Source:
+			`lib/private/legacy/OC_User.php#242 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_User.php#L242>`_
+		
+		
+		:Deprecated:  use \\OC::$server\-\>getUserSession\(\)\-\>isLoggedIn\(\)
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static setIncognitoMode( $status)
+	
+		.. rst-class:: phpdoc-description
+		
+			| set incognito mode, e\.g\. if a user wants to open a public link
+			
+		
+		:Source:
+			`lib/private/legacy/OC_User.php#251 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_User.php#L251>`_
+		
+		
+		:Parameters:
+			* **$status** (bool)  
+
+		
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static isIncognitoMode()
+	
+		.. rst-class:: phpdoc-description
+		
+			| get incognito mode status
+			
+		
+		:Source:
+			`lib/private/legacy/OC_User.php#260 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_User.php#L260>`_
+		
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static getLogoutUrl( $urlGenerator)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the current logout URL valid for the currently logged\-in user
+			
+		
+		:Source:
+			`lib/private/legacy/OC_User.php#270 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_User.php#L270>`_
+		
+		
+		:Parameters:
+			* **$urlGenerator** (:any:`OCP\\IURLGenerator <OCP\\IURLGenerator>`)  
+
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static isAdminUser( $uid)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check if the user is an admin user
+			
+		
+		:Source:
+			`lib/private/legacy/OC_User.php#296 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_User.php#L296>`_
+		
+		
+		:Parameters:
+			* **$uid** (string)  uid of the admin
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static getUser()
+	
+		.. rst-class:: phpdoc-description
+		
+			| get the user id of the user currently logged in\.
+			
+		
+		:Source:
+			`lib/private/legacy/OC_User.php#311 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_User.php#L311>`_
+		
+		
+		:Returns: string | bool uid or false
+	
+	
+
+.. rst-class:: public static deprecated
+
+	.. php:method:: public static getDisplayName( $uid=\\null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get the display name of the user currently logged in\.
+			
+		
+		:Source:
+			`lib/private/legacy/OC_User.php#328 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_User.php#L328>`_
+		
+		
+		:Parameters:
+			* **$uid** (string)  
+
+		
+		:Returns: string | bool uid or false
+		:Deprecated: 8.1.0 fetch \\OCP\\IUser \(has getDisplayName\(\)\) by using method
+			get\(\) of \\OCP\\IUserManager \- \\OC::$server\-\>getUserManager\(\)
+		
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static setPassword( $uid, $password, $recoveryPassword=\\null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set password
+			
+		
+		:Source:
+			`lib/private/legacy/OC_User.php#356 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_User.php#L356>`_
+		
+		
+		:Parameters:
+			* **$uid** (string)  The username
+			* **$password** (string)  The new password
+			* **$recoveryPassword** (string)  for the encryption app to reset encryption keys
+
+		
+		:Returns: bool Change the password of a user
+	
+	
+
+.. rst-class:: public static deprecated
+
+	.. php:method:: public static getHome( $uid)
+	
+		:Source:
+			`lib/private/legacy/OC_User.php#372 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_User.php#L372>`_
+		
+		
+		:Parameters:
+			* **$uid** (string)  The username
+
+		
+		:Returns: string returns the path to the users home directory
+		:Deprecated:  Use \\OC::$server\-\>getUserManager\-\>getHome\(\)
+	
+	
+
+.. rst-class:: public static deprecated
+
+	.. php:method:: public static getDisplayNames( $search="", $limit=\\null, $offset=\\null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get a list of all users display name
+			
+		
+		:Source:
+			`lib/private/legacy/OC_User.php#392 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_User.php#L392>`_
+		
+		
+		:Parameters:
+			* **$search** (string)  
+			* **$limit** (int)  
+			* **$offset** (int)  
+
+		
+		:Returns: array associative array with all display names \(value\) and corresponding uids \(key\)
+			
+			Get a list of all display names and user ids\.
+		
+		:Deprecated:  Use \\OC::$server\-\>getUserManager\-\>searchDisplayName\($search, $limit, $offset\) instead\.
+	
+	
+

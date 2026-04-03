@@ -1,0 +1,1827 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Filesystem &mdash; Nextcloud 13 Developer Manual 13 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../../',
+              VERSION:'13',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="FullTextSearch" href="../FullTextSearch/index.html" />
+    <link rel="prev" title="FileInfo" href="FileInfo.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html">
+          
+
+          
+            
+            <img src="../../../_static/logo-white.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../general/index.html">General contributor guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/startapp.html">Create an app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/init.html">Navigation and pre-app configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/info.html">App metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/classloader.html">Classloader</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/request.html">Request lifecycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/routes.html">Routing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/middleware.html">Middleware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/container.html">Container</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/controllers.html">Controllers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/api.html">RESTful API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/templates.html">Templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/js.html">JavaScript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/css.html">CSS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/l10n.html">Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/theming.html">Theming support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/schema.html">Database schema</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/database.html">Database access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/filesystem.html">Filesystem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/appdata.html">AppData</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/users.html">User management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/two-factor-provider.html">Two-factor providers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/hooks.html">Hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/backgroundjobs.html">Background jobs (Cron)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/settings.html">Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/logging.html">Logging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/migrations.html">Migrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/repair.html">Repair steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/publishing.html">App store publishing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/code_signing.html">Code signing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../design/index.html">Design guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../android_library/index.html">Android application development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../client_apis/index.html">Client APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../core/translation.html">Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../core/unit-testing.html">Unit-Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../core/theming.html">Theming Nextcloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../core/externalapi.html">External API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../core/ocs-share-api.html">OCS Share API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../core/index.html">Core development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../bugtracker/index.html">Bugtracker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../commun/index.html">Help and communication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api.html">API Documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Nextcloud 13 Developer Manual</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../../api.html">API Documentation</a> &raquo;</li>
+        
+          <li><a href="../../index.html">\</a> &raquo;</li>
+        
+          <li><a href="../index.html">OC</a> &raquo;</li>
+        
+          <li><a href="index.html">Files</a> &raquo;</li>
+        
+      <li>Filesystem</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/nextcloud/documentation/edit/stable13/developer_manual/api/OC/Files/Filesystem.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="phpdoctorst section" id="namespace-OC\Files">
+<span id="filesystem"></span><h1>Filesystem<a class="headerlink" href="#namespace-OC\Files" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="OC\Files\Filesystem">
+<em class="property">class </em><code class="descclassname">OC\Files\</code><code class="descname">Filesystem</code><a class="headerlink" href="#OC\Files\Filesystem" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L73">lib/private/Files/Filesystem.php#73</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<div class="section" id="constants">
+<h2>Constants<a class="headerlink" href="#constants" title="Permalink to this headline">¶</a></h2>
+<dl class="const">
+<dt>
+<code class="descname">CLASSNAME = OC_Filesystem</code></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">classname which used for hooks handling</div>
+<div class="line">used as signalclass in OC_Hooks::emit()</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L96">lib/private/Files/Filesystem.php#96</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="const">
+<dt>
+<code class="descname">signal_rename = rename</code></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">signalname emitted before file renaming</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L104">lib/private/Files/Filesystem.php#104</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="const">
+<dt>
+<code class="descname">signal_post_rename = post_rename</code></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">signal emitted after file renaming</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L112">lib/private/Files/Filesystem.php#112</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="const">
+<dt>
+<code class="descname">signal_create = create</code></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">signal emitted before file/dir creation</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L120">lib/private/Files/Filesystem.php#120</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="const">
+<dt>
+<code class="descname">signal_post_create = post_create</code></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">signal emitted after file/dir creation</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L128">lib/private/Files/Filesystem.php#128</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="const">
+<dt>
+<code class="descname">signal_copy = copy</code></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">signal emits before file/dir copy</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L137">lib/private/Files/Filesystem.php#137</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="const">
+<dt>
+<code class="descname">signal_post_copy = post_copy</code></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">signal emits after file/dir copy</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L145">lib/private/Files/Filesystem.php#145</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="const">
+<dt>
+<code class="descname">signal_write = write</code></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">signal emits before file/dir save</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L153">lib/private/Files/Filesystem.php#153</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="const">
+<dt>
+<code class="descname">signal_post_write = post_write</code></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">signal emits after file/dir save</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L160">lib/private/Files/Filesystem.php#160</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="const">
+<dt>
+<code class="descname">signal_update = update</code></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">signal emitted before file/dir update</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L168">lib/private/Files/Filesystem.php#168</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="const">
+<dt>
+<code class="descname">signal_post_update = post_update</code></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">signal emitted after file/dir update</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L176">lib/private/Files/Filesystem.php#176</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="const">
+<dt>
+<code class="descname">signal_read = read</code></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">signal emits when reading file/dir</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L183">lib/private/Files/Filesystem.php#183</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="const">
+<dt>
+<code class="descname">signal_delete = delete</code></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">signal emits when removing file/dir</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L190">lib/private/Files/Filesystem.php#190</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="const">
+<dt>
+<code class="descname">signal_param_path = path</code></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">parameters definitions for signals</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L195">lib/private/Files/Filesystem.php#195</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="const">
+<dt>
+<code class="descname">signal_param_oldpath = oldpath</code></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L196">lib/private/Files/Filesystem.php#196</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="const">
+<dt>
+<code class="descname">signal_param_newpath = newpath</code></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L197">lib/private/Files/Filesystem.php#197</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="const">
+<dt>
+<code class="descname">signal_param_run = run</code></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">run - changing this flag to false in hook handler will cancel event</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L202">lib/private/Files/Filesystem.php#202</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="const">
+<dt>
+<code class="descname">signal_create_mount = create_mount</code></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L204">lib/private/Files/Filesystem.php#204</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="const">
+<dt>
+<code class="descname">signal_delete_mount = delete_mount</code></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L205">lib/private/Files/Filesystem.php#205</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="const">
+<dt>
+<code class="descname">signal_param_mount_type = mounttype</code></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L206">lib/private/Files/Filesystem.php#206</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="const">
+<dt>
+<code class="descname">signal_param_users = users</code></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L207">lib/private/Files/Filesystem.php#207</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h2>
+<dl class="attr">
+<dt id="OC\Files\Filesystem::$loaded">
+<em class="property">public </em><em class="property">property </em><code class="descclassname">OC\Files\Filesystem::$</code><code class="descname">loaded</code><a class="headerlink" href="#OC\Files\Filesystem::$loaded" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L80">lib/private/Files/Filesystem.php#80</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h2>
+<dl class="public static method">
+<dt id="OC\Files\Filesystem::logWarningWhenAddingStorageWrapper">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC\Files\Filesystem::</code><code class="descname">logWarningWhenAddingStorageWrapper</code><span class="sig-paren">(</span><em>$shouldLog</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Filesystem::logWarningWhenAddingStorageWrapper" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L222">lib/private/Files/Filesystem.php#222</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$shouldLog</strong> (bool)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">bool previous value</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC\Files\Filesystem::addStorageWrapper">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC\Files\Filesystem::</code><code class="descname">addStorageWrapper</code><span class="sig-paren">(</span><em>$wrapperName</em>, <em>$wrapper</em>, <em>$priority=50</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Filesystem::addStorageWrapper" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L233">lib/private/Files/Filesystem.php#233</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>$wrapperName</strong> (string)</li>
+<li><strong>$wrapper</strong> (callable)</li>
+<li><strong>$priority</strong> (int)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC\Files\Filesystem::getLoader">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC\Files\Filesystem::</code><code class="descname">getLoader</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Filesystem::getLoader" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Returns the storage factory</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L253">lib/private/Files/Filesystem.php#253</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="../../OCP/Files/Storage/IStorageFactory.html#OCP\Files\Storage\IStorageFactory" title="OCP\Files\Storage\IStorageFactory"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\Storage\IStorageFactory</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC\Files\Filesystem::getMountManager">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC\Files\Filesystem::</code><code class="descname">getMountManager</code><span class="sig-paren">(</span><em>$user=&quot;&quot;</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Filesystem::getMountManager" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Returns the mount manager</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L265">lib/private/Files/Filesystem.php#265</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="Mount/Manager.html#OC\Files\Mount\Manager" title="OC\Files\Mount\Manager"><code class="xref any php php-trait docutils literal"><span class="pre">\OC\Files\Mount\Manager</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC\Files\Filesystem::getMountPoint">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC\Files\Filesystem::</code><code class="descname">getMountPoint</code><span class="sig-paren">(</span><em>$path</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Filesystem::getMountPoint" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">get the mountpoint of the storage object for a path</div>
+<div class="line">( note: because a storage is not always mounted inside the fakeroot, the</div>
+<div class="line">returned mountpoint is relative to the absolute root of the filesystem</div>
+<div class="line">and doesn&#8217;t take the chroot into account )</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L281">lib/private/Files/Filesystem.php#281</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$path</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">string</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC\Files\Filesystem::getMountPoints">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC\Files\Filesystem::</code><code class="descname">getMountPoints</code><span class="sig-paren">(</span><em>$path</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Filesystem::getMountPoints" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">get a list of all mount points in a directory</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L299">lib/private/Files/Filesystem.php#299</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$path</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">string[]</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC\Files\Filesystem::getStorage">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC\Files\Filesystem::</code><code class="descname">getStorage</code><span class="sig-paren">(</span><em>$mountPoint</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Filesystem::getStorage" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">get the storage mounted at $mountPoint</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L317">lib/private/Files/Filesystem.php#317</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$mountPoint</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><a class="reference internal" href="Storage/Storage.html#OC\Files\Storage\Storage" title="OC\Files\Storage\Storage"><code class="xref any php php-trait docutils literal"><span class="pre">\OC\Files\Storage\Storage</span></code></a> | null</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC\Files\Filesystem::getMountByStorageId">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC\Files\Filesystem::</code><code class="descname">getMountByStorageId</code><span class="sig-paren">(</span><em>$id</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Filesystem::getMountByStorageId" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L329">lib/private/Files/Filesystem.php#329</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$id</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><a class="reference internal" href="Mount/MountPoint.html#OC\Files\Mount\MountPoint" title="OC\Files\Mount\MountPoint"><code class="xref any php php-trait docutils literal"><span class="pre">\OC\Files\Mount\MountPoint[]</span></code></a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC\Files\Filesystem::getMountByNumericId">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC\Files\Filesystem::</code><code class="descname">getMountByNumericId</code><span class="sig-paren">(</span><em>$id</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Filesystem::getMountByNumericId" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L340">lib/private/Files/Filesystem.php#340</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$id</strong> (int)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><a class="reference internal" href="Mount/MountPoint.html#OC\Files\Mount\MountPoint" title="OC\Files\Mount\MountPoint"><code class="xref any php php-trait docutils literal"><span class="pre">\OC\Files\Mount\MountPoint[]</span></code></a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC\Files\Filesystem::resolvePath">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC\Files\Filesystem::</code><code class="descname">resolvePath</code><span class="sig-paren">(</span><em>$path</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Filesystem::resolvePath" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">resolve a path to a storage and internal path</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L353">lib/private/Files/Filesystem.php#353</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$path</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">array an array consisting of the storage and the internal path</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC\Files\Filesystem::init">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC\Files\Filesystem::</code><code class="descname">init</code><span class="sig-paren">(</span><em>$user</em>, <em>$root</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Filesystem::init" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L365">lib/private/Files/Filesystem.php#365</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC\Files\Filesystem::initMountManager">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC\Files\Filesystem::</code><code class="descname">initMountManager</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Filesystem::initMountManager" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L384">lib/private/Files/Filesystem.php#384</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC\Files\Filesystem::initMountPoints">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC\Files\Filesystem::</code><code class="descname">initMountPoints</code><span class="sig-paren">(</span><em>$user=&quot;&quot;</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Filesystem::initMountPoints" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Initialize system and personal mount points for a user</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L396">lib/private/Files/Filesystem.php#396</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$user</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Throws:</th><td class="field-body"><p class="first last"><a class="reference internal" href="../User/NoUserException.html#OC\User\NoUserException" title="OC\User\NoUserException"><code class="xref any php php-trait docutils literal"><span class="pre">\OC\User\NoUserException</span></code></a> if the user is not available</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC\Files\Filesystem::getView">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC\Files\Filesystem::</code><code class="descname">getView</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Filesystem::getView" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">get the default filesystem view</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L497">lib/private/Files/Filesystem.php#497</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="View.html#OC\Files\View" title="OC\Files\View"><code class="xref any php php-trait docutils literal"><span class="pre">\OC\Files\View</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC\Files\Filesystem::tearDown">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC\Files\Filesystem::</code><code class="descname">tearDown</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Filesystem::tearDown" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">tear down the filesystem, removing all storage providers</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L504">lib/private/Files/Filesystem.php#504</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC\Files\Filesystem::getRoot">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC\Files\Filesystem::</code><code class="descname">getRoot</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Filesystem::getRoot" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">get the relative path of the root data directory for the current user</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L516">lib/private/Files/Filesystem.php#516</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">string Returns path like /admin/files</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC\Files\Filesystem::clearMounts">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC\Files\Filesystem::</code><code class="descname">clearMounts</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Filesystem::clearMounts" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">clear all mounts and storage backends</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L526">lib/private/Files/Filesystem.php#526</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC\Files\Filesystem::mount">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC\Files\Filesystem::</code><code class="descname">mount</code><span class="sig-paren">(</span><em>$class</em>, <em>$arguments</em>, <em>$mountpoint</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Filesystem::mount" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">mount an \OC\Files\Storage\Storage in our virtual filesystem</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L540">lib/private/Files/Filesystem.php#540</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>$class</strong> (<a class="reference internal" href="Storage/Storage.html#OC\Files\Storage\Storage" title="OC\Files\Storage\Storage"><code class="xref any php php-trait docutils literal"><span class="pre">OC\Files\Storage\Storage</span></code></a> | string)</li>
+<li><strong>$arguments</strong> (array)</li>
+<li><strong>$mountpoint</strong> (string)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC\Files\Filesystem::getLocalFile">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC\Files\Filesystem::</code><code class="descname">getLocalFile</code><span class="sig-paren">(</span><em>$path</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Filesystem::getLocalFile" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">return the path to a local version of the file</div>
+<div class="line">we need this because we can&#8217;t know if a file is stored local or not from</div>
+<div class="line">outside the filestorage and for some purposes a local file is needed</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L556">lib/private/Files/Filesystem.php#556</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$path</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">string</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC\Files\Filesystem::getLocalFolder">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC\Files\Filesystem::</code><code class="descname">getLocalFolder</code><span class="sig-paren">(</span><em>$path</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Filesystem::getLocalFolder" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L564">lib/private/Files/Filesystem.php#564</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$path</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">string</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC\Files\Filesystem::getLocalPath">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC\Files\Filesystem::</code><code class="descname">getLocalPath</code><span class="sig-paren">(</span><em>$path</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Filesystem::getLocalPath" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">return path to file which reflects one visible in browser</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L574">lib/private/Files/Filesystem.php#574</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$path</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">string</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC\Files\Filesystem::isValidPath">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC\Files\Filesystem::</code><code class="descname">isValidPath</code><span class="sig-paren">(</span><em>$path</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Filesystem::isValidPath" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">check if the requested path is valid</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L589">lib/private/Files/Filesystem.php#589</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$path</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC\Files\Filesystem::isBlacklisted">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC\Files\Filesystem::</code><code class="descname">isBlacklisted</code><span class="sig-paren">(</span><em>$data</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Filesystem::isBlacklisted" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">checks if a file is blacklisted for storage in the filesystem</div>
+<div class="line">Listens to write and rename hooks</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L606">lib/private/Files/Filesystem.php#606</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>$data</strong> (array)  from hook</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC\Files\Filesystem::isFileBlacklisted">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC\Files\Filesystem::</code><code class="descname">isFileBlacklisted</code><span class="sig-paren">(</span><em>$filename</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Filesystem::isFileBlacklisted" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L623">lib/private/Files/Filesystem.php#623</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$filename</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC\Files\Filesystem::isIgnoredDir">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC\Files\Filesystem::</code><code class="descname">isIgnoredDir</code><span class="sig-paren">(</span><em>$dir</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Filesystem::isIgnoredDir" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">check if the directory should be ignored when scanning</div>
+<div class="line">NOTE: the special directories . and .</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">. would cause never ending recursion</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L638">lib/private/Files/Filesystem.php#638</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$dir</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC\Files\Filesystem::mkdir">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC\Files\Filesystem::</code><code class="descname">mkdir</code><span class="sig-paren">(</span><em>$path</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Filesystem::mkdir" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">following functions are equivalent to their php builtin equivalents for arguments/return values.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L648">lib/private/Files/Filesystem.php#648</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC\Files\Filesystem::rmdir">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC\Files\Filesystem::</code><code class="descname">rmdir</code><span class="sig-paren">(</span><em>$path</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Filesystem::rmdir" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L652">lib/private/Files/Filesystem.php#652</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC\Files\Filesystem::is_dir">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC\Files\Filesystem::</code><code class="descname">is_dir</code><span class="sig-paren">(</span><em>$path</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Filesystem::is_dir" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L656">lib/private/Files/Filesystem.php#656</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC\Files\Filesystem::is_file">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC\Files\Filesystem::</code><code class="descname">is_file</code><span class="sig-paren">(</span><em>$path</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Filesystem::is_file" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L660">lib/private/Files/Filesystem.php#660</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC\Files\Filesystem::stat">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC\Files\Filesystem::</code><code class="descname">stat</code><span class="sig-paren">(</span><em>$path</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Filesystem::stat" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L664">lib/private/Files/Filesystem.php#664</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC\Files\Filesystem::filetype">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC\Files\Filesystem::</code><code class="descname">filetype</code><span class="sig-paren">(</span><em>$path</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Filesystem::filetype" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L668">lib/private/Files/Filesystem.php#668</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC\Files\Filesystem::filesize">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC\Files\Filesystem::</code><code class="descname">filesize</code><span class="sig-paren">(</span><em>$path</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Filesystem::filesize" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L672">lib/private/Files/Filesystem.php#672</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC\Files\Filesystem::readfile">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC\Files\Filesystem::</code><code class="descname">readfile</code><span class="sig-paren">(</span><em>$path</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Filesystem::readfile" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L676">lib/private/Files/Filesystem.php#676</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC\Files\Filesystem::isCreatable">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC\Files\Filesystem::</code><code class="descname">isCreatable</code><span class="sig-paren">(</span><em>$path</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Filesystem::isCreatable" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L680">lib/private/Files/Filesystem.php#680</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC\Files\Filesystem::isReadable">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC\Files\Filesystem::</code><code class="descname">isReadable</code><span class="sig-paren">(</span><em>$path</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Filesystem::isReadable" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L684">lib/private/Files/Filesystem.php#684</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC\Files\Filesystem::isUpdatable">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC\Files\Filesystem::</code><code class="descname">isUpdatable</code><span class="sig-paren">(</span><em>$path</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Filesystem::isUpdatable" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L688">lib/private/Files/Filesystem.php#688</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC\Files\Filesystem::isDeletable">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC\Files\Filesystem::</code><code class="descname">isDeletable</code><span class="sig-paren">(</span><em>$path</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Filesystem::isDeletable" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L692">lib/private/Files/Filesystem.php#692</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC\Files\Filesystem::isSharable">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC\Files\Filesystem::</code><code class="descname">isSharable</code><span class="sig-paren">(</span><em>$path</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Filesystem::isSharable" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L696">lib/private/Files/Filesystem.php#696</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC\Files\Filesystem::file_exists">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC\Files\Filesystem::</code><code class="descname">file_exists</code><span class="sig-paren">(</span><em>$path</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Filesystem::file_exists" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L700">lib/private/Files/Filesystem.php#700</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC\Files\Filesystem::filemtime">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC\Files\Filesystem::</code><code class="descname">filemtime</code><span class="sig-paren">(</span><em>$path</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Filesystem::filemtime" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L704">lib/private/Files/Filesystem.php#704</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC\Files\Filesystem::touch">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC\Files\Filesystem::</code><code class="descname">touch</code><span class="sig-paren">(</span><em>$path</em>, <em>$mtime=null</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Filesystem::touch" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L708">lib/private/Files/Filesystem.php#708</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC\Files\Filesystem::file_get_contents">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC\Files\Filesystem::</code><code class="descname">file_get_contents</code><span class="sig-paren">(</span><em>$path</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Filesystem::file_get_contents" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L715">lib/private/Files/Filesystem.php#715</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">string</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC\Files\Filesystem::file_put_contents">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC\Files\Filesystem::</code><code class="descname">file_put_contents</code><span class="sig-paren">(</span><em>$path</em>, <em>$data</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Filesystem::file_put_contents" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L719">lib/private/Files/Filesystem.php#719</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC\Files\Filesystem::unlink">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC\Files\Filesystem::</code><code class="descname">unlink</code><span class="sig-paren">(</span><em>$path</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Filesystem::unlink" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L723">lib/private/Files/Filesystem.php#723</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC\Files\Filesystem::rename">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC\Files\Filesystem::</code><code class="descname">rename</code><span class="sig-paren">(</span><em>$path1</em>, <em>$path2</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Filesystem::rename" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L727">lib/private/Files/Filesystem.php#727</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC\Files\Filesystem::copy">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC\Files\Filesystem::</code><code class="descname">copy</code><span class="sig-paren">(</span><em>$path1</em>, <em>$path2</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Filesystem::copy" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L731">lib/private/Files/Filesystem.php#731</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC\Files\Filesystem::fopen">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC\Files\Filesystem::</code><code class="descname">fopen</code><span class="sig-paren">(</span><em>$path</em>, <em>$mode</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Filesystem::fopen" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L735">lib/private/Files/Filesystem.php#735</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC\Files\Filesystem::toTmpFile">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC\Files\Filesystem::</code><code class="descname">toTmpFile</code><span class="sig-paren">(</span><em>$path</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Filesystem::toTmpFile" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L742">lib/private/Files/Filesystem.php#742</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">string</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC\Files\Filesystem::fromTmpFile">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC\Files\Filesystem::</code><code class="descname">fromTmpFile</code><span class="sig-paren">(</span><em>$tmpFile</em>, <em>$path</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Filesystem::fromTmpFile" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L746">lib/private/Files/Filesystem.php#746</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC\Files\Filesystem::getMimeType">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC\Files\Filesystem::</code><code class="descname">getMimeType</code><span class="sig-paren">(</span><em>$path</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Filesystem::getMimeType" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L750">lib/private/Files/Filesystem.php#750</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC\Files\Filesystem::hash">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC\Files\Filesystem::</code><code class="descname">hash</code><span class="sig-paren">(</span><em>$type</em>, <em>$path</em>, <em>$raw=false</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Filesystem::hash" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L754">lib/private/Files/Filesystem.php#754</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC\Files\Filesystem::free_space">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC\Files\Filesystem::</code><code class="descname">free_space</code><span class="sig-paren">(</span><em>$path=/</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Filesystem::free_space" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L758">lib/private/Files/Filesystem.php#758</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC\Files\Filesystem::search">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC\Files\Filesystem::</code><code class="descname">search</code><span class="sig-paren">(</span><em>$query</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Filesystem::search" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L762">lib/private/Files/Filesystem.php#762</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC\Files\Filesystem::searchByMime">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC\Files\Filesystem::</code><code class="descname">searchByMime</code><span class="sig-paren">(</span><em>$query</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Filesystem::searchByMime" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L769">lib/private/Files/Filesystem.php#769</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>$query</strong> (string)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC\Files\Filesystem::searchByTag">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC\Files\Filesystem::</code><code class="descname">searchByTag</code><span class="sig-paren">(</span><em>$tag</em>, <em>$userId</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Filesystem::searchByTag" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L778">lib/private/Files/Filesystem.php#778</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$tag</strong> (string | int)  name or tag id</li>
+<li><strong>$userId</strong> (string)  owner of the tags</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><a class="reference internal" href="FileInfo.html#OC\Files\FileInfo" title="OC\Files\FileInfo"><code class="xref any php php-trait docutils literal"><span class="pre">\OC\Files\FileInfo[]</span></code></a> array or file info</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC\Files\Filesystem::hasUpdated">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC\Files\Filesystem::</code><code class="descname">hasUpdated</code><span class="sig-paren">(</span><em>$path</em>, <em>$time</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Filesystem::hasUpdated" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">check if a file or folder has been updated since $time</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L789">lib/private/Files/Filesystem.php#789</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$path</strong> (string)</li>
+<li><strong>$time</strong> (int)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC\Files\Filesystem::normalizePath">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC\Files\Filesystem::</code><code class="descname">normalizePath</code><span class="sig-paren">(</span><em>$path</em>, <em>$stripTrailingSlash=true</em>, <em>$isAbsolutePath=false</em>, <em>$keepUnicode=false</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Filesystem::normalizePath" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Fix common problems with a file path</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L802">lib/private/Files/Filesystem.php#802</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$path</strong> (string)</li>
+<li><strong>$stripTrailingSlash</strong> (bool)  whether to strip the trailing slash</li>
+<li><strong>$isAbsolutePath</strong> (bool)  whether the given path is absolute</li>
+<li><strong>$keepUnicode</strong> (bool)  true to disable unicode normalization</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">string</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC\Files\Filesystem::getFileInfo">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC\Files\Filesystem::</code><code class="descname">getFileInfo</code><span class="sig-paren">(</span><em>$path</em>, <em>$includeMountPoints=true</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Filesystem::getFileInfo" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">get the filesystem info</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L863">lib/private/Files/Filesystem.php#863</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$path</strong> (string)</li>
+<li><strong>$includeMountPoints</strong> (bool)  whether to add mountpoint sizes,</li>
+</ul>
+<p>defaults to true</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><a class="reference internal" href="FileInfo.html#OC\Files\FileInfo" title="OC\Files\FileInfo"><code class="xref any php php-trait docutils literal"><span class="pre">\OC\Files\FileInfo</span></code></a> | bool False if file does not exist</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC\Files\Filesystem::putFileInfo">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC\Files\Filesystem::</code><code class="descname">putFileInfo</code><span class="sig-paren">(</span><em>$path</em>, <em>$data</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Filesystem::putFileInfo" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">change file metadata</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L876">lib/private/Files/Filesystem.php#876</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$path</strong> (string)</li>
+<li><strong>$data</strong> (array)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">int returns the fileid of the updated file</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC\Files\Filesystem::getDirectoryContent">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC\Files\Filesystem::</code><code class="descname">getDirectoryContent</code><span class="sig-paren">(</span><em>$directory</em>, <em>$mimetype_filter=&quot;&quot;</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Filesystem::getDirectoryContent" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">get the content of a directory</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L887">lib/private/Files/Filesystem.php#887</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$directory</strong> (string)  path under datadirectory</li>
+<li><strong>$mimetype_filter</strong> (string)  limit returned content to this mimetype or mimepart</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><a class="reference internal" href="FileInfo.html#OC\Files\FileInfo" title="OC\Files\FileInfo"><code class="xref any php php-trait docutils literal"><span class="pre">\OC\Files\FileInfo[]</span></code></a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC\Files\Filesystem::getPath">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC\Files\Filesystem::</code><code class="descname">getPath</code><span class="sig-paren">(</span><em>$id</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Filesystem::getPath" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Get the path of a file by id</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">Note that the resulting path is not guaranteed to be unique for the id, multiple paths can point to the same file</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L900">lib/private/Files/Filesystem.php#900</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$id</strong> (int)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><a class="reference internal" href="../../OCP/Files/NotFoundException.html#OCP\Files\NotFoundException" title="OCP\Files\NotFoundException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\NotFoundException</span></code></a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">string</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC\Files\Filesystem::getOwner">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC\Files\Filesystem::</code><code class="descname">getOwner</code><span class="sig-paren">(</span><em>$path</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Filesystem::getOwner" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Get the owner for a file or folder</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L910">lib/private/Files/Filesystem.php#910</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$path</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">string</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC\Files\Filesystem::getETag">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC\Files\Filesystem::</code><code class="descname">getETag</code><span class="sig-paren">(</span><em>$path</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Filesystem::getETag" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">get the ETag for a file or folder</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L920">lib/private/Files/Filesystem.php#920</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$path</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">string</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../FullTextSearch/index.html" class="btn btn-neutral float-right" title="FullTextSearch" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="FileInfo.html" class="btn btn-neutral float-left" title="FileInfo" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021 Nextcloud GmbH.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: 13
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/13/developer_manual">13</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/14/developer_manual">14</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/15/developer_manual">15</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/developer_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/developer_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+   
+
+</body>
+</html>

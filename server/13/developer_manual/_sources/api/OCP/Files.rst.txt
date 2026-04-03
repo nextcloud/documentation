@@ -1,0 +1,165 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+Files
+=====
+
+
+.. php:namespace:: OCP
+
+.. php:class:: Files
+
+
+	.. rst-class:: phpdoc-description
+	
+		| This class provides access to the internal filesystem abstraction layer\. Use
+		| this class exlusively if you want to access files
+		
+	
+	:Source:
+		`lib/public/Files.php#51 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files.php#L51>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public static deprecated
+
+	.. php:method:: public static rmdirr( $dir)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Recusive deletion of folders
+			
+		
+		:Source:
+			`lib/public/Files.php#58 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files.php#L58>`_
+		
+		
+		:Returns: bool 
+		:Since: 5.0.0 
+		:Deprecated: 14.0.0 
+	
+	
+
+.. rst-class:: public static deprecated
+
+	.. php:method:: public static getMimeType( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the mimetype form a local file
+			
+		
+		:Source:
+			`lib/public/Files.php#70 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files.php#L70>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: string does NOT work for ownClouds filesystem, use OC\_FileSystem::getMimeType instead
+		:Since: 5.0.0 
+		:Deprecated: 14.0.0 
+	
+	
+
+.. rst-class:: public static deprecated
+
+	.. php:method:: public static searchByMime( $mimetype)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Search for files by mimetype
+			
+		
+		:Source:
+			`lib/public/Files.php#81 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files.php#L81>`_
+		
+		
+		:Parameters:
+			* **$mimetype** (string)  
+
+		
+		:Returns: array 
+		:Since: 6.0.0 
+		:Deprecated: 14.0.0 
+	
+	
+
+.. rst-class:: public static deprecated
+
+	.. php:method:: public static streamCopy( $source, $target)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Copy the contents of one stream to another
+			
+		
+		:Source:
+			`lib/public/Files.php#93 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files.php#L93>`_
+		
+		
+		:Parameters:
+			* **$source** (resource)  
+			* **$target** (resource)  
+
+		
+		:Returns: int the number of bytes copied
+		:Since: 5.0.0 
+		:Deprecated: 14.0.0 
+	
+	
+
+.. rst-class:: public static deprecated
+
+	.. php:method:: public static buildNotExistingFileName( $path, $filename)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Adds a suffix to the name in case the file exists
+			
+		
+		:Source:
+			`lib/public/Files.php#106 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files.php#L106>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+			* **$filename** (string)  
+
+		
+		:Returns: string 
+		:Since: 5.0.0 
+		:Deprecated: 14.0.0 use getNonExistingName of the OCP\\Files\\Folder object
+	
+	
+
+.. rst-class:: public static deprecated
+
+	.. php:method:: public static getStorage( $app)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Gets the Storage for an app \- creates the needed folder if they are not
+			| existent
+			
+		
+		:Source:
+			`lib/public/Files.php#118 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files.php#L118>`_
+		
+		
+		:Parameters:
+			* **$app** (string)  
+
+		
+		:Returns: :any:`\\OC\\Files\\View <OC\\Files\\View>` 
+		:Since: 5.0.0 
+		:Deprecated: 14.0.0 use IAppData instead
+	
+	
+

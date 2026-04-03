@@ -1,0 +1,726 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Scanner &mdash; Nextcloud 14 Developer Manual 14 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../../../',
+              VERSION:'14',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="Watcher" href="Watcher.html" />
+    <link rel="prev" title="HomePropagator" href="HomePropagator.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html">
+          
+
+          
+            
+            <img src="../../../../_static/logo-white.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../general/index.html">General contributor guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/startapp.html">Create an app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/init.html">Navigation and pre-app configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/info.html">App metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/classloader.html">Classloader</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/request.html">Request lifecycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/routes.html">Routing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/middleware.html">Middleware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/container.html">Container</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/controllers.html">Controllers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/api.html">RESTful API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/templates.html">Templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/js.html">JavaScript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/css.html">CSS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/l10n.html">Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/theming.html">Theming support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/schema.html">Database schema</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/database.html">Database access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/filesystem.html">Filesystem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/appdata.html">AppData</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/users.html">User management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/two-factor-provider.html">Two-factor providers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/hooks.html">Hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/backgroundjobs.html">Background jobs (Cron)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/settings.html">Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/logging.html">Logging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/migrations.html">Migrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/repair.html">Repair steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/publishing.html">App store publishing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/code_signing.html">Code signing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../design/index.html">Design guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../android_library/index.html">Android application development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../client_apis/index.html">Client APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../core/index.html">Core development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bugtracker/index.html">Bugtracker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../commun/index.html">Help and communication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api.html">API Documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">Nextcloud 14 Developer Manual</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../../../api.html">API Documentation</a> &raquo;</li>
+        
+          <li><a href="../../../index.html">\</a> &raquo;</li>
+        
+          <li><a href="../../index.html">OC</a> &raquo;</li>
+        
+          <li><a href="../index.html">Files</a> &raquo;</li>
+        
+          <li><a href="index.html">Cache</a> &raquo;</li>
+        
+      <li>Scanner</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/nextcloud/documentation/edit/stable14/developer_manual/api/OC/Files/Cache/Scanner.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="phpdoctorst section" id="namespace-OC\Files\Cache">
+<span id="scanner"></span><h1>Scanner<a class="headerlink" href="#namespace-OC\Files\Cache" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="OC\Files\Cache\Scanner">
+<em class="property">class </em><code class="descclassname">OC\Files\Cache\</code><code class="descname">Scanner</code><a class="headerlink" href="#OC\Files\Cache\Scanner" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Class Scanner</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">Hooks available in scope \OC\Files\Cache\Scanner:</div>
+<div class="line">- scanFile(string $path, string $storageId)</div>
+<div class="line">- scanFolder(string $path, string $storageId)</div>
+<div class="line">- postScanFile(string $path, string $storageId)</div>
+<div class="line">- postScanFolder(string $path, string $storageId)</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Scanner.php#L58">lib/private/Files/Cache/Scanner.php#58</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parent:</th><td class="field-body"><a class="reference internal" href="../../Hooks/BasicEmitter.html#OC\Hooks\BasicEmitter" title="OC\Hooks\BasicEmitter"><code class="xref php php-class docutils literal"><span class="pre">OC\Hooks\BasicEmitter</span></code></a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Implements:</th><td class="field-body"><a class="reference internal" href="../../../OCP/Files/Cache/IScanner.html#OCP\Files\Cache\IScanner" title="OCP\Files\Cache\IScanner"><code class="xref php php-interface docutils literal"><span class="pre">OCP\Files\Cache\IScanner</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<div class="section" id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h2>
+<dl class="attr">
+<dt id="OC\Files\Cache\Scanner::$storage">
+<em class="property">protected </em><em class="property">static </em><em class="property">property </em><code class="descclassname">OC\Files\Cache\Scanner::$</code><code class="descname">storage</code><a class="headerlink" href="#OC\Files\Cache\Scanner::$storage" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Scanner.php#L62">lib/private/Files/Cache/Scanner.php#62</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body"><a class="reference internal" href="../Storage/Storage.html#OC\Files\Storage\Storage" title="OC\Files\Storage\Storage"><code class="xref any php php-trait docutils literal"><span class="pre">\OC\Files\Storage\Storage</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attr">
+<dt id="OC\Files\Cache\Scanner::$storageId">
+<em class="property">protected </em><em class="property">static </em><em class="property">property </em><code class="descclassname">OC\Files\Cache\Scanner::$</code><code class="descname">storageId</code><a class="headerlink" href="#OC\Files\Cache\Scanner::$storageId" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Scanner.php#L67">lib/private/Files/Cache/Scanner.php#67</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body">string</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attr">
+<dt id="OC\Files\Cache\Scanner::$cache">
+<em class="property">protected </em><em class="property">static </em><em class="property">property </em><code class="descclassname">OC\Files\Cache\Scanner::$</code><code class="descname">cache</code><a class="headerlink" href="#OC\Files\Cache\Scanner::$cache" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Scanner.php#L72">lib/private/Files/Cache/Scanner.php#72</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body"><a class="reference internal" href="Cache.html#OC\Files\Cache\Cache" title="OC\Files\Cache\Cache"><code class="xref any php php-trait docutils literal"><span class="pre">\OC\Files\Cache\Cache</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attr">
+<dt id="OC\Files\Cache\Scanner::$cacheActive">
+<em class="property">protected </em><em class="property">static </em><em class="property">property </em><code class="descclassname">OC\Files\Cache\Scanner::$</code><code class="descname">cacheActive</code><a class="headerlink" href="#OC\Files\Cache\Scanner::$cacheActive" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Scanner.php#L77">lib/private/Files/Cache/Scanner.php#77</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body">bool If true, perform cache operations, if false, do not affect cache</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attr">
+<dt id="OC\Files\Cache\Scanner::$useTransactions">
+<em class="property">protected </em><em class="property">static </em><em class="property">property </em><code class="descclassname">OC\Files\Cache\Scanner::$</code><code class="descname">useTransactions</code><a class="headerlink" href="#OC\Files\Cache\Scanner::$useTransactions" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Scanner.php#L82">lib/private/Files/Cache/Scanner.php#82</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body">bool whether to use transactions</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attr">
+<dt id="OC\Files\Cache\Scanner::$lockingProvider">
+<em class="property">protected </em><em class="property">static </em><em class="property">property </em><code class="descclassname">OC\Files\Cache\Scanner::$</code><code class="descname">lockingProvider</code><a class="headerlink" href="#OC\Files\Cache\Scanner::$lockingProvider" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Scanner.php#L87">lib/private/Files/Cache/Scanner.php#87</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body"><a class="reference internal" href="../../../OCP/Lock/ILockingProvider.html#OCP\Lock\ILockingProvider" title="OCP\Lock\ILockingProvider"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Lock\ILockingProvider</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h2>
+<dl class="public method">
+<dt id="OC\Files\Cache\Scanner::__construct">
+<em class="property">public </em><code class="descclassname">OC\Files\Cache\Scanner::</code><code class="descname">__construct</code><span class="sig-paren">(</span><em>$storage</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Cache\Scanner::__construct" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Scanner.php#L89">lib/private/Files/Cache/Scanner.php#89</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\Cache\Scanner::setUseTransactions">
+<em class="property">public </em><code class="descclassname">OC\Files\Cache\Scanner::</code><code class="descname">setUseTransactions</code><span class="sig-paren">(</span><em>$useTransactions</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Cache\Scanner::setUseTransactions" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Whether to wrap the scanning of a folder in a database transaction</div>
+<div class="line">On default transactions are used</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Scanner.php#L103">lib/private/Files/Cache/Scanner.php#103</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>$useTransactions</strong> (bool)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="protected method">
+<dt id="OC\Files\Cache\Scanner::getData">
+<em class="property">protected </em><code class="descclassname">OC\Files\Cache\Scanner::</code><code class="descname">getData</code><span class="sig-paren">(</span><em>$path</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Cache\Scanner::getData" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">get all the metadata of a file or folder</div>
+<div class="line">*</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Scanner.php#L114">lib/private/Files/Cache/Scanner.php#114</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$path</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">array | null an array of metadata of the file</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\Cache\Scanner::scanFile">
+<em class="property">public </em><code class="descclassname">OC\Files\Cache\Scanner::</code><code class="descname">scanFile</code><span class="sig-paren">(</span><em>$file</em>, <em>$reuseExisting=0</em>, <em>$parentId=-1</em>, <em>$cacheData=null</em>, <em>$lock=true</em>, <em>$data=null</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Cache\Scanner::scanFile" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">scan a single file and store it in the cache</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Scanner.php#L134">lib/private/Files/Cache/Scanner.php#134</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$file</strong> (string)</li>
+<li><strong>$reuseExisting</strong> (int)</li>
+<li><strong>$parentId</strong> (int)</li>
+<li><strong>$cacheData</strong> (array | null | bool)  existing data in the cache for the file to be scanned</li>
+<li><strong>$lock</strong> (bool)  set to false to disable getting an additional read lock during scanning</li>
+<li><strong>$data</strong> (null)  the metadata for the file, as returned by the storage</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">array | null an array of metadata of the scanned file</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><p class="first last"><a class="reference internal" href="../../../OCP/Lock/LockedException.html#OCP\Lock\LockedException" title="OCP\Lock\LockedException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Lock\LockedException</span></code></a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="protected method">
+<dt id="OC\Files\Cache\Scanner::removeFromCache">
+<em class="property">protected </em><code class="descclassname">OC\Files\Cache\Scanner::</code><code class="descname">removeFromCache</code><span class="sig-paren">(</span><em>$path</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Cache\Scanner::removeFromCache" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Scanner.php#L270">lib/private/Files/Cache/Scanner.php#270</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="protected method">
+<dt id="OC\Files\Cache\Scanner::addToCache">
+<em class="property">protected </em><code class="descclassname">OC\Files\Cache\Scanner::</code><code class="descname">addToCache</code><span class="sig-paren">(</span><em>$path</em>, <em>$data</em>, <em>$fileId=-1</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Cache\Scanner::addToCache" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Scanner.php#L284">lib/private/Files/Cache/Scanner.php#284</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$path</strong> (string)</li>
+<li><strong>$data</strong> (array)</li>
+<li><strong>$fileId</strong> (int)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">int the id of the added file</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="protected method">
+<dt id="OC\Files\Cache\Scanner::updateCache">
+<em class="property">protected </em><code class="descclassname">OC\Files\Cache\Scanner::</code><code class="descname">updateCache</code><span class="sig-paren">(</span><em>$path</em>, <em>$data</em>, <em>$fileId=-1</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Cache\Scanner::updateCache" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Scanner.php#L307">lib/private/Files/Cache/Scanner.php#307</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>$path</strong> (string)</li>
+<li><strong>$data</strong> (array)</li>
+<li><strong>$fileId</strong> (int)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\Cache\Scanner::scan">
+<em class="property">public </em><code class="descclassname">OC\Files\Cache\Scanner::</code><code class="descname">scan</code><span class="sig-paren">(</span><em>$path</em>, <em>$recursive=self::SCAN_RECURSIVE</em>, <em>$reuse=-1</em>, <em>$lock=true</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Cache\Scanner::scan" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">scan a folder and all it&#8217;s children</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Scanner.php#L328">lib/private/Files/Cache/Scanner.php#328</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$path</strong> (string)</li>
+<li><strong>$recursive</strong> (bool)</li>
+<li><strong>$reuse</strong> (int)</li>
+<li><strong>$lock</strong> (bool)  set to false to disable getting an additional read lock during scanning</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">array | null an array of the meta data of the scanned file or folder</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="protected method">
+<dt id="OC\Files\Cache\Scanner::getExistingChildren">
+<em class="property">protected </em><code class="descclassname">OC\Files\Cache\Scanner::</code><code class="descname">getExistingChildren</code><span class="sig-paren">(</span><em>$folderId</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Cache\Scanner::getExistingChildren" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Get the children currently in the cache</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Scanner.php#L361">lib/private/Files/Cache/Scanner.php#361</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$folderId</strong> (int)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">array[]</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="protected method">
+<dt id="OC\Files\Cache\Scanner::scanChildren">
+<em class="property">protected </em><code class="descclassname">OC\Files\Cache\Scanner::</code><code class="descname">scanChildren</code><span class="sig-paren">(</span><em>$path</em>, <em>$recursive=self::SCAN_RECURSIVE</em>, <em>$reuse=-1</em>, <em>$folderId=null</em>, <em>$lock=true</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Cache\Scanner::scanChildren" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">scan all the files and folders in a folder</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Scanner.php#L380">lib/private/Files/Cache/Scanner.php#380</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$path</strong> (string)</li>
+<li><strong>$recursive</strong> (bool)</li>
+<li><strong>$reuse</strong> (int)</li>
+<li><strong>$folderId</strong> (int)  id for the folder to be scanned</li>
+<li><strong>$lock</strong> (bool)  set to false to disable getting an additional read lock during scanning</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">int the size of the scanned folder or -1 if the size is unknown at this stage</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC\Files\Cache\Scanner::isPartialFile">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC\Files\Cache\Scanner::</code><code class="descname">isPartialFile</code><span class="sig-paren">(</span><em>$file</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Cache\Scanner::isPartialFile" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">check if the file should be ignored when scanning</div>
+<div class="line">NOTE: files with a &#8216;.part&#8217; extension are ignored as well!</div>
+<div class="line-block">
+<div class="line">prevents unfinished put requests to be scanned</div>
+</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Scanner.php#L488">lib/private/Files/Cache/Scanner.php#488</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$file</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\Cache\Scanner::backgroundScan">
+<em class="property">public </em><code class="descclassname">OC\Files\Cache\Scanner::</code><code class="descname">backgroundScan</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Cache\Scanner::backgroundScan" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">walk over any folders that are not fully scanned yet and scan them</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Scanner.php#L502">lib/private/Files/Cache/Scanner.php#502</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\Cache\Scanner::setCacheActive">
+<em class="property">public </em><code class="descclassname">OC\Files\Cache\Scanner::</code><code class="descname">setCacheActive</code><span class="sig-paren">(</span><em>$active</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Cache\Scanner::setCacheActive" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Set whether the cache is affected by scan operations</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Scanner.php#L543">lib/private/Files/Cache/Scanner.php#543</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>$active</strong> (bool)  The active state of the cache</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="Watcher.html" class="btn btn-neutral float-right" title="Watcher" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="HomePropagator.html" class="btn btn-neutral float-left" title="HomePropagator" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021 Nextcloud GmbH.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: 14
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/14/developer_manual">14</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/15/developer_manual">15</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/16/developer_manual">16</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/developer_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/developer_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+   
+
+</body>
+</html>

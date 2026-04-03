@@ -1,0 +1,259 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+Collection
+==========
+
+
+.. php:namespace:: OC\Collaboration\Resources
+
+.. php:class:: Collection
+
+
+	:Source:
+		`lib/private/Collaboration/Resources/Collection.php#40 <https://github.com/nextcloud/server/blob/stable13/lib/private/Collaboration/Resources/Collection.php#L40>`_
+	
+	:Implements:
+		:php:interface:`OCP\\Collaboration\\Resources\\ICollection` 
+	
+
+Properties
+----------
+
+.. php:attr:: protected static manager
+
+	:Source:
+		`lib/private/Collaboration/Resources/Collection.php#43 <https://github.com/nextcloud/server/blob/stable13/lib/private/Collaboration/Resources/Collection.php#L43>`_
+	
+	:Type: :any:`\\OCP\\Collaboration\\Resources\\IManager <OCP\\Collaboration\\Resources\\IManager>` | :any:`\\OC\\Collaboration\\Resources\\Manager <OC\\Collaboration\\Resources\\Manager>` 
+
+
+.. php:attr:: protected static connection
+
+	:Source:
+		`lib/private/Collaboration/Resources/Collection.php#46 <https://github.com/nextcloud/server/blob/stable13/lib/private/Collaboration/Resources/Collection.php#L46>`_
+	
+	:Type: :any:`\\OCP\\IDBConnection <OCP\\IDBConnection>` 
+
+
+.. php:attr:: protected static id
+
+	:Source:
+		`lib/private/Collaboration/Resources/Collection.php#49 <https://github.com/nextcloud/server/blob/stable13/lib/private/Collaboration/Resources/Collection.php#L49>`_
+	
+	:Type: int 
+
+
+.. php:attr:: protected static name
+
+	:Source:
+		`lib/private/Collaboration/Resources/Collection.php#52 <https://github.com/nextcloud/server/blob/stable13/lib/private/Collaboration/Resources/Collection.php#L52>`_
+	
+	:Type: string 
+
+
+.. php:attr:: protected static userForAccess
+
+	:Source:
+		`lib/private/Collaboration/Resources/Collection.php#55 <https://github.com/nextcloud/server/blob/stable13/lib/private/Collaboration/Resources/Collection.php#L55>`_
+	
+	:Type: :any:`\\OCP\\IUser <OCP\\IUser>` | null 
+
+
+.. php:attr:: protected static access
+
+	:Source:
+		`lib/private/Collaboration/Resources/Collection.php#58 <https://github.com/nextcloud/server/blob/stable13/lib/private/Collaboration/Resources/Collection.php#L58>`_
+	
+	:Type: bool | null 
+
+
+.. php:attr:: protected static resources
+
+	:Source:
+		`lib/private/Collaboration/Resources/Collection.php#61 <https://github.com/nextcloud/server/blob/stable13/lib/private/Collaboration/Resources/Collection.php#L61>`_
+	
+	:Type: :any:`\\OCP\\Collaboration\\Resources\\IResource\[\] <OCP\\Collaboration\\Resources\\IResource>` 
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $manager, $connection, $id, $name, $userForAccess=null, $access=null)
+	
+		:Source:
+			`lib/private/Collaboration/Resources/Collection.php#63 <https://github.com/nextcloud/server/blob/stable13/lib/private/Collaboration/Resources/Collection.php#L63>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getId()
+	
+		:Source:
+			`lib/private/Collaboration/Resources/Collection.php#84 <https://github.com/nextcloud/server/blob/stable13/lib/private/Collaboration/Resources/Collection.php#L84>`_
+		
+		
+		:Returns: int 
+		:Since: 16.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getName()
+	
+		:Source:
+			`lib/private/Collaboration/Resources/Collection.php#92 <https://github.com/nextcloud/server/blob/stable13/lib/private/Collaboration/Resources/Collection.php#L92>`_
+		
+		
+		:Returns: string 
+		:Since: 16.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setName( $name)
+	
+		:Source:
+			`lib/private/Collaboration/Resources/Collection.php#100 <https://github.com/nextcloud/server/blob/stable13/lib/private/Collaboration/Resources/Collection.php#L100>`_
+		
+		
+		:Parameters:
+			* **$name** (string)  
+
+		
+		:Since: 16.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getResources()
+	
+		:Source:
+			`lib/private/Collaboration/Resources/Collection.php#114 <https://github.com/nextcloud/server/blob/stable13/lib/private/Collaboration/Resources/Collection.php#L114>`_
+		
+		
+		:Returns: :any:`\\OCP\\Collaboration\\Resources\\IResource\[\] <OCP\\Collaboration\\Resources\\IResource>` 
+		:Since: 16.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public addResource( $resource)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Adds a resource to a collection
+			
+		
+		:Source:
+			`lib/private/Collaboration/Resources/Collection.php#129 <https://github.com/nextcloud/server/blob/stable13/lib/private/Collaboration/Resources/Collection.php#L129>`_
+		
+		
+		:Parameters:
+			* **$resource** (:any:`OCP\\Collaboration\\Resources\\IResource <OCP\\Collaboration\\Resources\\IResource>`)  
+
+		
+		:Throws: :any:`\\OCP\\Collaboration\\Resources\\ResourceException <OCP\\Collaboration\\Resources\\ResourceException>` when the resource is already part of the collection
+		:Since: 16.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public removeResource( $resource)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Removes a resource from a collection
+			
+		
+		:Source:
+			`lib/private/Collaboration/Resources/Collection.php#161 <https://github.com/nextcloud/server/blob/stable13/lib/private/Collaboration/Resources/Collection.php#L161>`_
+		
+		
+		:Parameters:
+			* **$resource** (:any:`OCP\\Collaboration\\Resources\\IResource <OCP\\Collaboration\\Resources\\IResource>`)  
+
+		
+		:Since: 16.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public canAccess( $user)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Can a user/guest access the collection
+			
+		
+		:Source:
+			`lib/private/Collaboration/Resources/Collection.php#187 <https://github.com/nextcloud/server/blob/stable13/lib/private/Collaboration/Resources/Collection.php#L187>`_
+		
+		
+		:Parameters:
+			* **$user** (:any:`OCP\\IUser <OCP\\IUser>` | null)  
+
+		
+		:Returns: bool 
+		:Since: 16.0.0 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected canUserAccess( $user)
+	
+		:Source:
+			`lib/private/Collaboration/Resources/Collection.php#194 <https://github.com/nextcloud/server/blob/stable13/lib/private/Collaboration/Resources/Collection.php#L194>`_
+		
+		
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected canGuestAccess()
+	
+		:Source:
+			`lib/private/Collaboration/Resources/Collection.php#206 <https://github.com/nextcloud/server/blob/stable13/lib/private/Collaboration/Resources/Collection.php#L206>`_
+		
+		
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected isSameResource( $resource1, $resource2)
+	
+		:Source:
+			`lib/private/Collaboration/Resources/Collection.php#218 <https://github.com/nextcloud/server/blob/stable13/lib/private/Collaboration/Resources/Collection.php#L218>`_
+		
+		
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected removeCollection()
+	
+		:Source:
+			`lib/private/Collaboration/Resources/Collection.php#223 <https://github.com/nextcloud/server/blob/stable13/lib/private/Collaboration/Resources/Collection.php#L223>`_
+		
+		
+	
+	
+

@@ -1,0 +1,531 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Galerie-App &mdash; Nextcloud latest Benutzerhandbuch latest documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'latest',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Gelöschte Dateien verwalten" href="deleted_file_management.html" />
+    <link rel="prev" title="Zugriff auf Nextcloud-Dateien mit WebDAV" href="access_webdav.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../contents.html">
+          
+
+          
+            
+            <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Nextcloud latest Benutzerhandbuch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../whats_new.html">Neuerungen in Nextcloud latest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">Die Nextcloud Web-Oberfläche</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Dateien &amp; Synchronisierung</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="access_webgui.html">Dateizugriff mit der Nextcloud Web-Oberfläche</a></li>
+<li class="toctree-l2"><a class="reference internal" href="access_webdav.html">Zugriff auf Nextcloud-Dateien mit WebDAV</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Galerie-App</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#benutzerdefinierte-konfiguration">Benutzerdefinierte Konfiguration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#eigenschaften">Eigenschaften</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#konfiguration">Konfiguration</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#format">Format</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#grundgerust">Grundgerüst</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#unterstutzte-variablen">Unterstützte Variablen</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#anmerkungen">Anmerkungen</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#beispiele">Beispiele</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mogliche-zukunftige-erweiterungen">Mögliche zukünftige Erweiterungen</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="deleted_file_management.html">Gelöschte Dateien verwalten</a></li>
+<li class="toctree-l2"><a class="reference internal" href="desktop_mobile_sync.html">Synchronisieren mit der Desktop- und Mobile-App</a></li>
+<li class="toctree-l2"><a class="reference internal" href="encrypting_files.html">Verschlüsseln Ihrer Daten in Nextcloud</a></li>
+<li class="toctree-l2"><a class="reference internal" href="federated_cloud_sharing.html">Federated-Sharing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_drop.html">Anonymes Hochladen erlauben</a></li>
+<li class="toctree-l2"><a class="reference internal" href="large_file_upload.html">Hochladen großer Dateien</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quota.html">Speicherkontingent</a></li>
+<li class="toctree-l2"><a class="reference internal" href="version_control.html">Versionsverwaltung</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../pim/index.html">Kontake &amp; Kalender</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Eigene Einstellungen vornehmen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Zwei-Faktor-Authentifizierung verwenden</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Verbundene Browser und Geräte verwalten</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">Externer Speicher</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest Benutzerhandbuch</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../contents.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Dateien &amp; Synchronisierung</a> &raquo;</li>
+        
+      <li>Galerie-App</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/nextcloud/documentation/edit/master/user_manual_de/files/gallery_app.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="galerie-app">
+<h1>Galerie-App<a class="headerlink" href="#galerie-app" title="Permalink to this headline">¶</a></h1>
+<p>Die &#8220;Bilder&#8221;-App wurde umgeschrieben, verbessert und wird nun die &#8220;Galerie&#8221;-App
+genannt. Es werden nun mehrere Bildformate, sowie Sortierung, Zoom und Scrollen
+unterstützt. Erweiterte Anpassungen können über eine einfache Textdatei
+erstellt werden.</p>
+<p>Auf Ihrer Nextcloud-Hauptseite befindet sich in der rechten oberen Ecke unter
+dem Benutzernamen ein kleines Symbol, mit dem schnell zwischen der Galerie und der
+Dateiansicht gewechselt werden kann. Die &#8220;Galerie&#8221;-App findet automatisch alle
+Bilder in Ihren Nextcloud-Ordnern und erstellt eine Miniaturansicht inklusive
+dem Ordnernamen. Klicken Sie auf die Ordner mit der Miniaturansicht, um die
+Ordner mit den Inhalten zu öffnen. Mit den beiden Symbole an der linken oberen
+Ecke, lässt sich der Inhalt alphabetisch oder nach Datum sortieren.</p>
+<div class="figure">
+<img alt="Galerie und Miniaturansichten." src="../_images/gallery-1.png" />
+</div>
+<p>Öffnen Sie die &#8220;Dateien&#8221;-App und wählen Sie ein beliebiges Bild, um es im
+Diashow-Modus anzusehen. Der Diashow-Modus hat folgenden Funktionen:
+Tasten am linken und rechten Rand um zwischen den Bildern zu wechseln, eine
+Diashow-Taste an der unteren rechten Ecke, sowie Tasten zum Löschen oder
+Verlassen des Diashow-Modus in der oberen rechten Ecke.</p>
+<div class="figure">
+<img alt="Galerie Diashow-Modus." src="../_images/gallery-2.png" />
+</div>
+<div class="section" id="benutzerdefinierte-konfiguration">
+<h2>Benutzerdefinierte Konfiguration<a class="headerlink" href="#benutzerdefinierte-konfiguration" title="Permalink to this headline">¶</a></h2>
+<p>Ein Galerie-Album kann mit einer einfachen Textdatei namens <strong>gallery.cnf</strong>
+angepasst werden. Die Konfigurations-Datei wird mit der Markup-Sprache <a class="reference external" href="https://en.wikipedia.org/wiki/YAML">Yaml</a> erstellt. Es können mehrere
+<strong>gallery.cnf</strong> erstellt werden. Eine im Stammordner die globale Funktionen
+definiert und weitere jeweils in ihren Unterordner.</p>
+<div class="section" id="eigenschaften">
+<h3>Eigenschaften<a class="headerlink" href="#eigenschaften" title="Permalink to this headline">¶</a></h3>
+<p>Die folgenden allgemeinen Funktionen sind derzeit implementiert:</p>
+<ul class="simple">
+<li>Native SVG-Unterstützung.</li>
+<li>Zugang zu externen Freigaben.</li>
+</ul>
+<p>Die folgenden Album-Funktionen sind derzeit implementiert:</p>
+<ul class="simple">
+<li>Hinzufügen eines Links zu einer Datei mit einer Beschreibung.</li>
+<li>Die Eingabe einer einfachen Copyright-Erklärung direkt in der Konfigurationsdatei.</li>
+<li>Hinzufügen eines Links zu einer Datei, die eine Copyright-Erklärung enthält.</li>
+<li>Definieren der Sortierung und Reihenfolge.</li>
+<li>Definieren der Hintergrundfarbe.</li>
+<li>Definieren, ob Unteralben die Konfiguration übernehmen.</li>
+</ul>
+<p>Die folgenden Diashow-Funktionen sind derzeit implementiert:</p>
+<ul class="simple">
+<li>Eine Taste, die den Hintergrund im Diashow-Modus auf schwarz oder weiß setzt.
+(für Bilder mit transparenten Hintergründen)</li>
+</ul>
+</div>
+<div class="section" id="konfiguration">
+<h3>Konfiguration<a class="headerlink" href="#konfiguration" title="Permalink to this headline">¶</a></h3>
+<p>Die Konfigurationsdatei muss <strong>gallery.cnf</strong> lauten, damit diese vom System
+erkannt wird. Um die globale Funktionen zu aktivieren, platzieren Sie eine Datei
+im Stammordner. Der Stammordner ist in der Web-Oberfläche durch das Haus-Symbol
+dargestellt. Weitere Konfigurationsdateien können einzeln auf Unterordner verteilt
+werden.</p>
+<p>(Dies wird in <code class="docutils literal"><span class="pre">data/&lt;benutzer&gt;/files/</span></code> abgelegt.) Siehe <a class="reference internal" href="#supported-variables-label"><span class="std std-ref">Beispiel unten</span></a> in dem Abschnitt <strong>Globale Funktionen</strong>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Damit die Änderungen übernommen werden, muss die Nextcloud-Seite
+neu geladen werden.</p>
+</div>
+</div>
+<div class="section" id="format">
+<h3>Format<a class="headerlink" href="#format" title="Permalink to this headline">¶</a></h3>
+<p>UTF-8, <strong>ohne BOM</strong>. Eine von der Nextcloud Web-Oberfläche erstellte Datei
+funktioniert.</p>
+</div>
+<div class="section" id="grundgerust">
+<h3>Grundgerüst<a class="headerlink" href="#grundgerust" title="Permalink to this headline">¶</a></h3>
+<p>Sie sollten einen Kommentar in die Datei einfügen, um deren Nutzen kurz zu
+erklären. Kommentare beginnen mit einem &#8220;#&#8221;.</p>
+<p>Der Abstand wird mit 2 Leerzeichen erstellt. <strong>Verwenden Sie keine Tabulatoren.</strong></p>
+<p>Ein Blick in die Dokumentation für die <a class="reference external" href="http://symfony.com/doc/current/components/yaml/yaml_format.html">YAML Formatierung</a> hilft Fehler
+zu beheben.</p>
+<p>Ein Beispiel für die <cite>gallery.cnf</cite>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span> # Gallery configuration file
+ # Created on 31 Jan 2016 by Nextcloud User
+features:
+  external_shares: yes
+  native_svg: yes
+  background_colour_toggle: yes
+design:
+  background: &quot;#ff9f00&quot;
+  inherit: yes
+information:
+  description: This is an **album description** which is only shown if there
+  is no `description_link`
+  description_link: readme.md
+  copyright: Copyright 2003-2016 [interfaSys sàrl](http://www.interfasys.ch),
+  Switzerland
+  copyright_link: copyright.md
+  inherit: yes
+sorting:
+  type: date
+  order: des
+  inherit: yes
+</pre></div>
+</div>
+</div>
+<div class="section" id="unterstutzte-variablen">
+<span id="supported-variables-label"></span><h3>Unterstützte Variablen<a class="headerlink" href="#unterstutzte-variablen" title="Permalink to this headline">¶</a></h3>
+<p><strong>Globale Funktionen</strong></p>
+<p>Legen Sie diese in Ihrem Stammordner der Nextcloud ab.</p>
+<ul class="simple">
+<li><strong>external_shares</strong>: Bei der Verwendung der <strong>files_external</strong>-App,
+können Sie den Wert in ihrer globalen-Konfigurationsdatei auf <strong>yes</strong>
+setzen, um Bilder aus externen Speichern zu laden.</li>
+<li><strong>native_svg</strong>: Sollen SVG-Bilder im Web-Browser angezeigt werden, setzen Sie
+den Wert in ihrer globalen-Konfigurationsdatei auf <strong>yes</strong>. Dies kann ein
+Sicherheitsrisiko darstellen, wenn Sie Ihren SVG-Dateien nicht vollständig
+vertrauen können.</li>
+<li><strong>background_colour_toggle</strong>: Möchten Sie den Hintergrund für transparente
+Bilder im Diashow-Modus mit einem Knopfdruck zwischen schwarz und weiß
+umschalten, setzen Sie den Wert in ihrer globalen-Konfigurationsdatei auf
+<strong>yes</strong>.</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Externe Freigaben sind 20-50 Mal langsamer als lokale Freigaben.
+Die Wartezeit kann sehr lange sein, bis schließlich alle Bilder aus externen
+Quellen angezeigt werden.</p>
+</div>
+<p><strong>Album-Konfiguration</strong></p>
+<p>Jedes Album kann mit den folgenden Konfigurationsvariablen personalisiert werden.
+Verwenden Sie den Parameter <strong>inherit</strong>, um Konfigurationen an Unteralben
+weiterzugeben.</p>
+<p><strong>Design</strong></p>
+<ul class="simple">
+<li><strong>background</strong>: definiert die Farbe des Hintergrunds der Bilderwand in der
+&#8220;Galerie&#8221;-App, wobei die RGB-hexadezimale (<strong>&#8220;#ffa033&#8221;</strong>) Darstellung einer
+Farbe verwendet wird. Die Farbe wird vom System nicht erkannnt,
+wenn keine Anführungszeichen um den Wert gesetzt werden. Bei Verwendung
+dieser Funktion wird dringend empfohlen, das benutzerdefinierte Design mit
+einem CSS Ladeindikator zu erweitern. <a class="reference external" href="http://paletton.com/">Dieses Farbrad</a>
+zeigt Ihnen die RGB-Werte für die gewünschte Farbe an.</li>
+<li><strong>inherit</strong>: Auf <strong>yes</strong> setzen, wenn Unterordner diesen Teil der
+Konfiguration übernehmen sollen.</li>
+</ul>
+<p><strong>Album-Darstellung</strong></p>
+<ul class="simple">
+<li><strong>description</strong>: Ein mit Markdown formatierter String, der in der Info-Box
+angezeigt wird. Er kann sich über mehrere Zeilen mit den Yaml-Markern
+ausbreiten.</li>
+<li><strong>description_link</strong>: Eine Markdown-Datei, die sich innerhalb des Albums
+befindet, die wiederum analysiert und in der Info-Box anstelle der
+normalen Beschreibung angezeigt wird.</li>
+<li><strong>copyright</strong>: Eine mit Markdown formatierte Zeichenfolge. Links zu externen
+Ressourcen werden hierbei unterstützt.</li>
+<li><strong>copyright_link</strong>: Jede Datei (z.B. copyright.html) wird aus einem Album
+automatisch heruntergeladen, wenn der Benutzer auf den Link klickt.</li>
+<li><strong>inherit</strong>: Auf <strong>yes</strong> setzen, wenn Unterordner diesen Teil der
+Konfiguration übernehmen sollen.</li>
+</ul>
+<p>Siehe <a class="reference external" href="http://www.markitdown.net/markdown">http://www.markitdown.net/markdown</a> für die Markdown-Syntax.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Wenn Sie die <strong>copyright_link</strong> Variable nutzen, fügen Sie keine
+weiteren Links in &#8220;copyright&#8221; hinzu.</p>
+</div>
+<p><strong>Sortieren</strong></p>
+<ul class="simple">
+<li><strong>sorting</strong>: <strong>date</strong> oder <strong>name</strong>. <strong>date</strong> funktioniert nur für Dateien.</li>
+<li><strong>sort_order</strong>: <strong>asc</strong> oder <strong>des</strong> (aufsteigend / absteigend).</li>
+<li><strong>inherit</strong>: Auf <strong>yes</strong> setzen, wenn Unterordner diesen Teil der
+Konfiguration übernehmen sollen.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="anmerkungen">
+<h2>Anmerkungen<a class="headerlink" href="#anmerkungen" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Wenn nur die Sortiervariable <strong>type</strong> gesetzt ist, wird die
+standard-Sortierreihenfolge verwendet.</li>
+<li>Wenn nur die Sortiervariable <strong>order</strong> gefunden wurde, wird die
+Sortierkonfiguration ignoriert und das Skript sucht nach einer gültigen
+Konfiguration in den höheren Ordnern.</li>
+<li>Um eine Funktion wie natives SVG in einer öffentlichen Freigabe zu aktivieren,
+müssen Sie in diesem Ordner eine Konfigurationsdatei erstellen, die diese
+Funktion enthält.</li>
+<li>Wenn Sie einen Ordner öffentlich freigeben, vergessen Sie nicht, alle Dateien,
+die Sie verknüpfen (z.B. description.md oder copyright.md) innerhalb des
+freigegebenen Ordners hinzuzufügen. Benutzer, die im übergeordneten Ordner
+gespeichert sind, haben ansonsten auf Dateien keinen Zugriff.</li>
+<li>Mit der Option einen ganzen Ordner als Archiv herunterzuladen, bietet es
+sich an, alle Dateien in einen freigegebenen Ordner zu bündeln. Dies ist
+komfortabler als eine separate Konfigurationsdatei anzulegen.</li>
+</ul>
+</div>
+<div class="section" id="beispiele">
+<h2>Beispiele<a class="headerlink" href="#beispiele" title="Permalink to this headline">¶</a></h2>
+<p><strong>Einfaches Sortieren</strong></p>
+<p>Gilt nur für den aktuellen Ordner:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># Galerie-Konfigurationsdatei</span>
+  <span class="n">sorting</span><span class="p">:</span>
+  <span class="nb">type</span><span class="p">:</span> <span class="n">date</span>
+  <span class="n">order</span><span class="p">:</span> <span class="n">asc</span>
+</pre></div>
+</div>
+<p>Kurze Beschreibung und Verweis auf das Copyright-Dokument, gilt für den
+aktuellen Ordner und alle seine Unterordner. Die nächsten Zeilen zeigen die
+Syntax, die Sie verwenden können, um eine Beschreibung über mehrere Zeilen
+zu erweitern:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># Galerie-Konfigurationsdatei</span>
+  <span class="n">information</span><span class="p">:</span>
+  <span class="n">description</span><span class="p">:</span> <span class="o">|</span> <span class="c1"># La Maison Bleue, Winter &#39;16</span>
+    <span class="n">This</span> <span class="ow">is</span> <span class="n">our</span> <span class="n">Winter</span> <span class="mi">2016</span> <span class="n">collection</span> <span class="n">shot</span> <span class="ow">in</span> <span class="o">**</span><span class="n">Kyoto</span><span class="o">**</span>
+    <span class="n">Visit</span> <span class="n">our</span> <span class="p">[</span><span class="n">website</span><span class="p">](</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">secretdesigner</span><span class="o">.</span><span class="n">ninja</span><span class="p">)</span> <span class="k">for</span> <span class="n">more</span> <span class="n">information</span>
+  <span class="n">copyright</span><span class="p">:</span> <span class="n">Copyright</span> <span class="mi">2015</span> <span class="n">La</span> <span class="n">Maison</span> <span class="n">Bleue</span><span class="p">,</span> <span class="n">France</span>
+  <span class="n">copyright_link</span><span class="p">:</span> <span class="n">copyright_2015_lmb</span><span class="o">.</span><span class="n">html</span>
+  <span class="n">inherit</span><span class="p">:</span> <span class="n">yes</span>
+</pre></div>
+</div>
+<p><strong>Bilder von externen Nextcloud-Instanzen laden</strong></p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Funktionen können nur im Stammordner definiert werden.</p>
+</div>
+<p>Sie können Elemente der Standardkonfiguration zu derselben Konfigurationsdatei
+hinzufügen:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># Galerie-Konfigurationsdatei</span>
+  <span class="n">features</span><span class="p">:</span>
+  <span class="n">external_shares</span><span class="p">:</span> <span class="n">yes</span>
+</pre></div>
+</div>
+<p><strong>Aktivieren von systemeigenem SVG</strong></p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Spezielle Funktionen können nur im Stammordner definiert werden.</p>
+</div>
+<p>Sie können Elemente der Standardkonfiguration zu derselben Konfigurationsdatei
+hinzufügen:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># Galerie-Konfigurationsdatei</span>
+ <span class="n">features</span><span class="p">:</span>
+ <span class="n">native_svg</span><span class="p">:</span> <span class="n">yes</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="mogliche-zukunftige-erweiterungen">
+<h2>Mögliche zukünftige Erweiterungen<a class="headerlink" href="#mogliche-zukunftige-erweiterungen" title="Permalink to this headline">¶</a></h2>
+<p>Verschiedene Sortierparameter für Alben.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="deleted_file_management.html" class="btn btn-neutral float-right" title="Gelöschte Dateien verwalten" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="access_webdav.html" class="btn btn-neutral float-left" title="Zugriff auf Nextcloud-Dateien mit WebDAV" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021 Nextcloud GmbH.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/16/user_manual_de">16</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/17/user_manual_de">17</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/18/user_manual_de">18</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/19/user_manual_de">19</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/user_manual_de">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/user_manual_de">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+   
+
+</body>
+</html>

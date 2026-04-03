@@ -1,0 +1,141 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+Manager
+=======
+
+
+.. php:namespace:: OC\Calendar\Room
+
+.. php:class:: Manager
+
+
+	:Source:
+		`lib/private/Calendar/Room/Manager.php#31 <https://github.com/nextcloud/server/blob/stable13/lib/private/Calendar/Room/Manager.php#L31>`_
+	
+	:Implements:
+		:php:interface:`OCP\\Calendar\\Room\\IManager` 
+	
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $server)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Manager constructor\.
+			
+		
+		:Source:
+			`lib/private/Calendar/Room/Manager.php#47 <https://github.com/nextcloud/server/blob/stable13/lib/private/Calendar/Room/Manager.php#L47>`_
+		
+		
+		:Parameters:
+			* **$server** (:any:`OCP\\IServerContainer <OCP\\IServerContainer>`)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public registerBackend( $backendClass)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Registers a resource backend
+			
+		
+		:Source:
+			`lib/private/Calendar/Room/Manager.php#58 <https://github.com/nextcloud/server/blob/stable13/lib/private/Calendar/Room/Manager.php#L58>`_
+		
+		
+		:Parameters:
+			* **$backendClass** (string)  
+
+		
+		:Returns: void 
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public unregisterBackend( $backendClass)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Unregisters a resource backend
+			
+		
+		:Source:
+			`lib/private/Calendar/Room/Manager.php#69 <https://github.com/nextcloud/server/blob/stable13/lib/private/Calendar/Room/Manager.php#L69>`_
+		
+		
+		:Parameters:
+			* **$backendClass** (string)  
+
+		
+		:Returns: void 
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getBackends()
+	
+		:Source:
+			`lib/private/Calendar/Room/Manager.php#78 <https://github.com/nextcloud/server/blob/stable13/lib/private/Calendar/Room/Manager.php#L78>`_
+		
+		
+		:Returns: :any:`\\OCP\\Calendar\\Room\\IBackend\[\] <OCP\\Calendar\\Room\\IBackend>` 
+		:Throws: :any:`\\OCP\\AppFramework\\QueryException <OCP\\AppFramework\\QueryException>` 
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getBackend( $backendId)
+	
+		:Source:
+			`lib/private/Calendar/Room/Manager.php#95 <https://github.com/nextcloud/server/blob/stable13/lib/private/Calendar/Room/Manager.php#L95>`_
+		
+		
+		:Parameters:
+			* **$backendId** (string)  
+
+		
+		:Throws: :any:`\\OCP\\AppFramework\\QueryException <OCP\\AppFramework\\QueryException>` 
+		:Returns: :any:`\\OCP\\Calendar\\Room\\IBackend <OCP\\Calendar\\Room\\IBackend>` | null 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public clear()
+	
+		.. rst-class:: phpdoc-description
+		
+			| removes all registered backend instances
+			
+		
+		:Source:
+			`lib/private/Calendar/Room/Manager.php#111 <https://github.com/nextcloud/server/blob/stable13/lib/private/Calendar/Room/Manager.php#L111>`_
+		
+		
+		:Returns: void 
+		:Since: 14.0.0 
+	
+	
+

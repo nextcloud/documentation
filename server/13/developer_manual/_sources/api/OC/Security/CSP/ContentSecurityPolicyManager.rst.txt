@@ -1,0 +1,95 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+ContentSecurityPolicyManager
+============================
+
+
+.. php:namespace:: OC\Security\CSP
+
+.. php:class:: ContentSecurityPolicyManager
+
+
+	:Source:
+		`lib/private/Security/CSP/ContentSecurityPolicyManager.php#37 <https://github.com/nextcloud/server/blob/stable13/lib/private/Security/CSP/ContentSecurityPolicyManager.php#L37>`_
+	
+	:Implements:
+		:php:interface:`OCP\\Security\\IContentSecurityPolicyManager` 
+	
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $dispatcher)
+	
+		:Source:
+			`lib/private/Security/CSP/ContentSecurityPolicyManager.php#44 <https://github.com/nextcloud/server/blob/stable13/lib/private/Security/CSP/ContentSecurityPolicyManager.php#L44>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public addDefaultPolicy( $policy)
+	
+		.. rst-class:: phpdoc-description
+		
+			| \{@inheritdoc\}
+			
+		
+		:Source:
+			`lib/private/Security/CSP/ContentSecurityPolicyManager.php#49 <https://github.com/nextcloud/server/blob/stable13/lib/private/Security/CSP/ContentSecurityPolicyManager.php#L49>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getDefaultPolicy()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the configured default policy\. This is not in the public namespace
+			| as it is only supposed to be used by core itself\.
+			
+		
+		:Source:
+			`lib/private/Security/CSP/ContentSecurityPolicyManager.php#59 <https://github.com/nextcloud/server/blob/stable13/lib/private/Security/CSP/ContentSecurityPolicyManager.php#L59>`_
+		
+		
+		:Returns: :any:`\\OCP\\AppFramework\\Http\\ContentSecurityPolicy <OCP\\AppFramework\\Http\\ContentSecurityPolicy>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public mergePolicies( $defaultPolicy, $originalPolicy)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Merges the first given policy with the second one
+			
+		
+		:Source:
+			`lib/private/Security/CSP/ContentSecurityPolicyManager.php#77 <https://github.com/nextcloud/server/blob/stable13/lib/private/Security/CSP/ContentSecurityPolicyManager.php#L77>`_
+		
+		
+		:Parameters:
+			* **$defaultPolicy** (:any:`OCP\\AppFramework\\Http\\ContentSecurityPolicy <OCP\\AppFramework\\Http\\ContentSecurityPolicy>`)  
+			* **$originalPolicy** (:any:`OCP\\AppFramework\\Http\\EmptyContentSecurityPolicy <OCP\\AppFramework\\Http\\EmptyContentSecurityPolicy>`)  
+
+		
+		:Returns: :any:`\\OCP\\AppFramework\\Http\\ContentSecurityPolicy <OCP\\AppFramework\\Http\\ContentSecurityPolicy>` 
+	
+	
+

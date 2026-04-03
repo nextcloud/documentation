@@ -1,0 +1,491 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Example installation on CentOS 8 &mdash; Nextcloud latest Administration Manual latest documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'latest',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Nextcloud configuration" href="../configuration_server/index.html" />
+    <link rel="prev" title="Example installation on Ubuntu 18.04 LTS" href="example_ubuntu.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../contents.html">
+          
+
+          
+            
+            <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_schedule.html">Maintenance and release schedule</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Installation and server configuration</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="system_requirements.html">System requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deployment_recommendations.html">Deployment recommendations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="source_installation.html">Installation on Linux</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation_wizard.html">Installation wizard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command_line_installation.html">Installing from command line</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apps_supported.html">Supported apps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="selinux_configuration.html">SELinux configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nginx.html">Nginx configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="harden_server.html">Hardening and security guidance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="server_tuning.html">Server tuning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="example_ubuntu.html">Example installation on Ubuntu 18.04 LTS</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Example installation on CentOS 8</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#apache">Apache</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#php">PHP</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#setting-up-remirepo-with-php-7-4">Setting up remirepo with PHP 7.4</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#installing-php-and-the-required-modules">Installing PHP and the required modules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#manually-building-redis-imagick-optional">Manually building redis/imagick (optional)</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#database">Database</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#redis">Redis</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_server/index.html">Nextcloud configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../apps_management.html">Apps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_user/index.html">User management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_files/index.html">File sharing and management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../file_workflows/index.html">File workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_database/index.html">Database configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_mimetypes/index.html">Mimetypes management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../maintenance/index.html">Maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../issues/index.html">Issues and troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gdpr/index.html">GDPR</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest Administration Manual</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../contents.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Installation and server configuration</a> &raquo;</li>
+        
+      <li>Example installation on CentOS 8</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/nextcloud/documentation/edit/master/admin_manual/installation/example_centos.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="example-installation-on-centos-8">
+<span id="centos7-installation-label"></span><h1>Example installation on CentOS 8<a class="headerlink" href="#example-installation-on-centos-8" title="Permalink to this headline">¶</a></h1>
+<p>In this install tutorial we will be deploying CentOS 8, PHP 7.4, MariaDB, Redis as memcache and Nextcloud running on Apache.</p>
+<p>Start off by installing a CentOS 8 minimal install. This should provide a sufficient platform to run a successful Nextcloud instance.</p>
+<p>First install some dependencies you will be needing during installation, but which will also be useful in every day use situations:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">dnf</span> <span class="n">install</span> <span class="o">-</span><span class="n">y</span> <span class="n">epel</span><span class="o">-</span><span class="n">release</span> <span class="n">yum</span><span class="o">-</span><span class="n">utils</span> <span class="n">unzip</span> <span class="n">curl</span> <span class="n">wget</span> \
+<span class="n">bash</span><span class="o">-</span><span class="n">completion</span> <span class="n">policycoreutils</span><span class="o">-</span><span class="n">python</span><span class="o">-</span><span class="n">utils</span> <span class="n">mlocate</span> <span class="n">bzip2</span>
+</pre></div>
+</div>
+<p>Now make sure your system is up to date:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">dnf</span> <span class="n">update</span> <span class="o">-</span><span class="n">y</span>
+</pre></div>
+</div>
+<div class="section" id="apache">
+<h2>Apache<a class="headerlink" href="#apache" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">dnf</span> <span class="n">install</span> <span class="o">-</span><span class="n">y</span> <span class="n">httpd</span>
+</pre></div>
+</div>
+<p>See <span class="xref std std-ref">apache-web-server-configuration</span> for details.</p>
+<p>Make sure the apache web service is enabled and started:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">systemctl</span> <span class="n">enable</span> <span class="n">httpd</span><span class="o">.</span><span class="n">service</span>
+<span class="n">systemctl</span> <span class="n">start</span> <span class="n">httpd</span><span class="o">.</span><span class="n">service</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="php">
+<h2>PHP<a class="headerlink" href="#php" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">CentOS 8 doesn&#8217;t come with packages for the redis and imagick php extensions.
+Those can either be installed using pecl. Apart from the official PHP packages there are 3rdparty
+repositories available at <code class="docutils literal"><span class="pre">https://rpms.remirepo.net</span></code>. Using remirepo you can also install the
+latest PHP version instead of the standard shipped one.</p>
+</div>
+<div class="section" id="setting-up-remirepo-with-php-7-4">
+<h3>Setting up remirepo with PHP 7.4<a class="headerlink" href="#setting-up-remirepo-with-php-7-4" title="Permalink to this headline">¶</a></h3>
+<p>More details can be found on <code class="docutils literal"><span class="pre">https://blog.remirepo.net/pages/Config-en</span></code></p>
+<p>Command to install the EPEL repository configuration package:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">dnf</span> <span class="n">install</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">dl</span><span class="o">.</span><span class="n">fedoraproject</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">pub</span><span class="o">/</span><span class="n">epel</span><span class="o">/</span><span class="n">epel</span><span class="o">-</span><span class="n">release</span><span class="o">-</span><span class="n">latest</span><span class="o">-</span><span class="mf">8.</span><span class="n">noarch</span><span class="o">.</span><span class="n">rpm</span>
+</pre></div>
+</div>
+<p>Command to install the Remi repository configuration package:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">dnf</span> <span class="n">install</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">rpms</span><span class="o">.</span><span class="n">remirepo</span><span class="o">.</span><span class="n">net</span><span class="o">/</span><span class="n">enterprise</span><span class="o">/</span><span class="n">remi</span><span class="o">-</span><span class="n">release</span><span class="o">-</span><span class="mf">8.</span><span class="n">rpm</span>
+</pre></div>
+</div>
+<p>Command to install the yum-utils package (for the yum-config-manager command):</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">dnf</span> <span class="n">install</span> <span class="n">yum</span><span class="o">-</span><span class="n">utils</span>
+</pre></div>
+</div>
+<p>You want a single version which means replacing base packages from the distribution. Packages have the same name than the base repository, ie php-<a href="#id1"><span class="problematic" id="id2">*</span></a>. Some common dependencies are available in remi-safe repository, which is enabled by default.</p>
+<p>You have to enable the module stream for 7.4:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">dnf</span> <span class="n">module</span> <span class="n">reset</span> <span class="n">php</span>
+<span class="n">dnf</span> <span class="n">module</span> <span class="n">install</span> <span class="n">php</span><span class="p">:</span><span class="n">remi</span><span class="o">-</span><span class="mf">7.4</span>
+<span class="n">dnf</span> <span class="n">update</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="installing-php-and-the-required-modules">
+<h3>Installing PHP and the required modules<a class="headerlink" href="#installing-php-and-the-required-modules" title="Permalink to this headline">¶</a></h3>
+<p>Next install the PHP modules needed for this install. Remember, because this is a limited basic install, we only install the neccessary modules, not all of them. If you are making a more complete install, please refer to PHP module list in the source installation documentation, <a class="reference internal" href="source_installation.html"><span class="doc">Installation on Linux</span></a>.:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">dnf</span> <span class="n">install</span> <span class="o">-</span><span class="n">y</span> <span class="n">php</span> <span class="n">php</span><span class="o">-</span><span class="n">gd</span> <span class="n">php</span><span class="o">-</span><span class="n">mbstring</span> <span class="n">php</span><span class="o">-</span><span class="n">intl</span> \
+    <span class="n">php</span><span class="o">-</span><span class="n">pecl</span><span class="o">-</span><span class="n">apcu</span> <span class="n">php</span><span class="o">-</span><span class="n">mysqlnd</span> <span class="n">php</span><span class="o">-</span><span class="n">opcache</span> <span class="n">php</span><span class="o">-</span><span class="n">json</span> <span class="n">php</span><span class="o">-</span><span class="nb">zip</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="manually-building-redis-imagick-optional">
+<h3>Manually building redis/imagick (optional)<a class="headerlink" href="#manually-building-redis-imagick-optional" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">dnf</span> <span class="n">install</span> <span class="o">-</span><span class="n">y</span> <span class="n">php</span><span class="o">-</span><span class="n">pear</span> <span class="n">gcc</span> <span class="n">curl</span><span class="o">-</span><span class="n">devel</span> <span class="n">php</span><span class="o">-</span><span class="n">devel</span> <span class="n">zlib</span><span class="o">-</span><span class="n">devel</span> <span class="n">pcre</span><span class="o">-</span><span class="n">devel</span> <span class="n">make</span>
+<span class="n">pecl</span> <span class="n">install</span> <span class="n">redis</span>
+
+<span class="n">dnf</span> <span class="n">config</span><span class="o">-</span><span class="n">manager</span> <span class="o">--</span><span class="nb">set</span><span class="o">-</span><span class="n">enabled</span> <span class="n">PowerTools</span>
+<span class="n">dnf</span> <span class="n">install</span> <span class="o">-</span><span class="n">y</span> <span class="n">Imagemagick</span> <span class="n">ImageMagick</span><span class="o">-</span><span class="n">devel</span>
+<span class="n">pecl</span> <span class="n">install</span> <span class="n">imagick</span>
+</pre></div>
+</div>
+<p>After installing the extensions make sure to load the extensions in your php.ini file with:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">extension</span><span class="o">=</span><span class="n">redis</span><span class="o">.</span><span class="n">so</span>
+<span class="n">extension</span><span class="o">=</span><span class="n">imagick</span><span class="o">.</span><span class="n">so</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="database">
+<h2>Database<a class="headerlink" href="#database" title="Permalink to this headline">¶</a></h2>
+<p>As mentioned, we will be using MySQL/MariaDB as our database.:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">dnf</span> <span class="n">install</span> <span class="o">-</span><span class="n">y</span> <span class="n">mariadb</span> <span class="n">mariadb</span><span class="o">-</span><span class="n">server</span>
+</pre></div>
+</div>
+<p>Make sure the database service is enabled to start at boot time.:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">systemctl</span> <span class="n">enable</span> <span class="n">mariadb</span><span class="o">.</span><span class="n">service</span>
+<span class="n">systemctl</span> <span class="n">start</span> <span class="n">mariadb</span><span class="o">.</span><span class="n">service</span>
+</pre></div>
+</div>
+<p>Improve MariaDB security.:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">mysql_secure_installation</span>
+</pre></div>
+</div>
+<p>After you have done this, make sure you create a database with a username and password so that
+Nextcloud will have access to it. For further details on database setup and configuration,</p>
+<blockquote>
+<div>see the <a class="reference internal" href="../configuration_database/linux_database_configuration.html"><span class="doc">Database configuration</span></a> documentation.</div></blockquote>
+</div>
+<div class="section" id="redis">
+<h2>Redis<a class="headerlink" href="#redis" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">dnf</span> <span class="n">install</span> <span class="o">-</span><span class="n">y</span> <span class="n">redis</span>
+<span class="n">systemctl</span> <span class="n">enable</span> <span class="n">redis</span><span class="o">.</span><span class="n">service</span>
+<span class="n">systemctl</span> <span class="n">start</span> <span class="n">redis</span><span class="o">.</span><span class="n">service</span>
+</pre></div>
+</div>
+<p><strong>Installing Nextcloud</strong></p>
+<p>Nearly there, so keep at it, you are doing great!</p>
+<p>Now download the archive of the latest Nextcloud version:</p>
+<ul>
+<li><p class="first">Go to the <a class="reference external" href="https://nextcloud.com/install">Nextcloud Download Page</a>.</p>
+</li>
+<li><p class="first">Go to <strong>Download Nextcloud Server &gt; Download &gt; Archive file for
+server owners</strong> and download either the tar.bz2 or .zip archive.</p>
+</li>
+<li><p class="first">This downloads a file named nextcloud-x.y.z.tar.bz2 or nextcloud-x.y.z.zip
+(where x.y.z is the version number).</p>
+</li>
+<li><p class="first">Download its corresponding checksum file, e.g. nextcloud-x.y.z.tar.bz2.md5,
+or nextcloud-x.y.z.tar.bz2.sha256.</p>
+</li>
+<li><p class="first">Verify the MD5 or SHA256 sum:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">md5sum</span> <span class="o">-</span><span class="n">c</span> <span class="n">nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">bz2</span><span class="o">.</span><span class="n">md5</span> <span class="o">&lt;</span> <span class="n">nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">bz2</span>
+<span class="n">sha256sum</span> <span class="o">-</span><span class="n">c</span> <span class="n">nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">bz2</span><span class="o">.</span><span class="n">sha256</span> <span class="o">&lt;</span> <span class="n">nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">bz2</span>
+<span class="n">md5sum</span>  <span class="o">-</span><span class="n">c</span> <span class="n">nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">.</span><span class="n">zip</span><span class="o">.</span><span class="n">md5</span> <span class="o">&lt;</span> <span class="n">nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">.</span><span class="n">zip</span>
+<span class="n">sha256sum</span>  <span class="o">-</span><span class="n">c</span> <span class="n">nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">.</span><span class="n">zip</span><span class="o">.</span><span class="n">sha256</span> <span class="o">&lt;</span> <span class="n">nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">.</span><span class="n">zip</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">You may also verify the PGP signature:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">download</span><span class="o">.</span><span class="n">nextcloud</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">server</span><span class="o">/</span><span class="n">releases</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">bz2</span><span class="o">.</span><span class="n">asc</span>
+<span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">nextcloud</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">.</span><span class="n">asc</span>
+<span class="n">gpg</span> <span class="o">--</span><span class="kn">import</span> <span class="nn">nextcloud.asc</span>
+<span class="n">gpg</span> <span class="o">--</span><span class="n">verify</span> <span class="n">nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">bz2</span><span class="o">.</span><span class="n">asc</span> <span class="n">nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">bz2</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<p>For the sake of the walk-through, we grabbed the latest version of Nextcloud in the form a zip file, confirmed the download with the above-mentioned command, and now we will extract it:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">unzip</span> <span class="n">nextcloud</span><span class="o">-*.</span><span class="n">zip</span>
+</pre></div>
+</div>
+<p>Copy the content over to the root directory of your webserver. In our case, we are using apache so it will be <code class="docutils literal"><span class="pre">/var/www/html/</span></code>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cp</span> <span class="o">-</span><span class="n">R</span> <span class="n">nextcloud</span><span class="o">/</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">html</span><span class="o">/</span>
+</pre></div>
+</div>
+<p>During the install process, no data folder is created, so we will create one manually to help with the installation wizard:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">html</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">data</span>
+</pre></div>
+</div>
+<p>Make sure that apache has read and write access to the whole nextcloud folder:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">chown</span> <span class="o">-</span><span class="n">R</span> <span class="n">apache</span><span class="p">:</span><span class="n">apache</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">html</span><span class="o">/</span><span class="n">nextcloud</span>
+</pre></div>
+</div>
+<p>Restart apache:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">systemctl</span> <span class="n">restart</span> <span class="n">httpd</span><span class="o">.</span><span class="n">service</span>
+</pre></div>
+</div>
+<p>Create a firewall rule for access to apache:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">firewall</span><span class="o">-</span><span class="n">cmd</span> <span class="o">--</span><span class="n">zone</span><span class="o">=</span><span class="n">public</span> <span class="o">--</span><span class="n">add</span><span class="o">-</span><span class="n">service</span><span class="o">=</span><span class="n">http</span> <span class="o">--</span><span class="n">permanent</span>
+<span class="n">firewall</span><span class="o">-</span><span class="n">cmd</span> <span class="o">--</span><span class="n">reload</span>
+</pre></div>
+</div>
+<p><strong>SELinux</strong></p>
+<p>Again, there is an extensive write-up done on SELinux which can be found at <a class="reference internal" href="selinux_configuration.html"><span class="doc">SELinux configuration</span></a>, so if you are using SELinux in Enforcing mode, please run the commands suggested on that page.
+The following commands only refers to this tutorial:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">semanage</span> <span class="n">fcontext</span> <span class="o">-</span><span class="n">a</span> <span class="o">-</span><span class="n">t</span> <span class="n">httpd_sys_rw_content_t</span> <span class="s1">&#39;/var/www/html/nextcloud/data(/.*)?&#39;</span>
+<span class="n">semanage</span> <span class="n">fcontext</span> <span class="o">-</span><span class="n">a</span> <span class="o">-</span><span class="n">t</span> <span class="n">httpd_sys_rw_content_t</span> <span class="s1">&#39;/var/www/html/nextcloud/config(/.*)?&#39;</span>
+<span class="n">semanage</span> <span class="n">fcontext</span> <span class="o">-</span><span class="n">a</span> <span class="o">-</span><span class="n">t</span> <span class="n">httpd_sys_rw_content_t</span> <span class="s1">&#39;/var/www/html/nextcloud/apps(/.*)?&#39;</span>
+<span class="n">semanage</span> <span class="n">fcontext</span> <span class="o">-</span><span class="n">a</span> <span class="o">-</span><span class="n">t</span> <span class="n">httpd_sys_rw_content_t</span> <span class="s1">&#39;/var/www/html/nextcloud/.htaccess&#39;</span>
+<span class="n">semanage</span> <span class="n">fcontext</span> <span class="o">-</span><span class="n">a</span> <span class="o">-</span><span class="n">t</span> <span class="n">httpd_sys_rw_content_t</span> <span class="s1">&#39;/var/www/html/nextcloud/.user.ini&#39;</span>
+<span class="n">semanage</span> <span class="n">fcontext</span> <span class="o">-</span><span class="n">a</span> <span class="o">-</span><span class="n">t</span> <span class="n">httpd_sys_rw_content_t</span> <span class="s1">&#39;/var/www/html/nextcloud/3rdparty/aws/aws-sdk-php/src/data/logs(/.*)?&#39;</span>
+
+<span class="n">restorecon</span> <span class="o">-</span><span class="n">R</span> <span class="s1">&#39;/var/www/html/nextcloud/&#39;</span>
+
+<span class="n">setsebool</span> <span class="o">-</span><span class="n">P</span> <span class="n">httpd_can_network_connect</span> <span class="n">on</span>
+</pre></div>
+</div>
+<p>If you need more SELinux configs, refer to the above-mentioned URL, return to this tutorial.</p>
+<p>Once done with with SELinux, please head over to <code class="docutils literal"><span class="pre">http://your.server.com/nextcloud</span></code> and follow the steps as found <a class="reference internal" href="installation_wizard.html"><span class="doc">Installation wizard</span></a>, where it will explain to you exactly how to proceed with the final part of the install, which is done as admin user through your web browser.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If you use this tutorial, and you see warnings in the web browser after installation about <code class="docutils literal"><span class="pre">OPcache</span></code> not being enabled or configured correctly, you need to make the suggested changes in <code class="docutils literal"><span class="pre">/etc/opt/rh/rh-php72/php.d/10-opcache.ini</span></code> for the errors to disappear. These warnings will be on the Admin page, under Basic settings.</p>
+</div>
+<p>Because we used <code class="docutils literal"><span class="pre">Redis</span></code> as a memcache, you will need a config similar to the following example in <code class="docutils literal"><span class="pre">/var/www/html/nextcloud/config/config.php</span></code> which is auto-generated when you run the online installation wizard mentioned earlier.</p>
+<p>Example config:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="s1">&#39;memcache.distributed&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;\OC\Memcache\Redis&#39;</span><span class="p">,</span>
+<span class="s1">&#39;memcache.locking&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;\OC\Memcache\Redis&#39;</span><span class="p">,</span>
+<span class="s1">&#39;memcache.local&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;\OC\Memcache\APCu&#39;</span><span class="p">,</span>
+<span class="s1">&#39;redis&#39;</span> <span class="o">=&gt;</span> <span class="n">array</span><span class="p">(</span>
+  <span class="s1">&#39;host&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;localhost&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;port&#39;</span> <span class="o">=&gt;</span> <span class="mi">6379</span><span class="p">,</span>
+<span class="p">),</span>
+</pre></div>
+</div>
+<p>Remember, this tutorial is only for a basic setup of Nextcloud on CentOS 8, with PHP 7.4. If you are going to use more features like LDAP or Single Sign On, you will need additional PHP modules as well as extra configurations. So please visit the rest of the Admin manual, <a class="reference internal" href="../index.html"><span class="doc">Introduction</span></a>, for detailed descriptions on how to get this done.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../configuration_server/index.html" class="btn btn-neutral float-right" title="Nextcloud configuration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="example_ubuntu.html" class="btn btn-neutral float-left" title="Example installation on Ubuntu 18.04 LTS" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021 Nextcloud GmbH.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/16/admin_manual">16</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/17/admin_manual">17</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/18/admin_manual">18</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/19/admin_manual">19</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/admin_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/admin_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+   
+
+</body>
+</html>

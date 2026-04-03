@@ -1,0 +1,191 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+Resource
+========
+
+
+.. php:namespace:: OC\Collaboration\Resources
+
+.. php:class:: Resource
+
+
+	:Source:
+		`lib/private/Collaboration/Resources/Resource.php#36 <https://github.com/nextcloud/server/blob/stable13/lib/private/Collaboration/Resources/Resource.php#L36>`_
+	
+	:Implements:
+		:php:interface:`OCP\\Collaboration\\Resources\\IResource` 
+	
+
+Properties
+----------
+
+.. php:attr:: protected static manager
+
+	:Source:
+		`lib/private/Collaboration/Resources/Resource.php#39 <https://github.com/nextcloud/server/blob/stable13/lib/private/Collaboration/Resources/Resource.php#L39>`_
+	
+	:Type: :any:`\\OCP\\Collaboration\\Resources\\IManager <OCP\\Collaboration\\Resources\\IManager>` 
+
+
+.. php:attr:: protected static connection
+
+	:Source:
+		`lib/private/Collaboration/Resources/Resource.php#42 <https://github.com/nextcloud/server/blob/stable13/lib/private/Collaboration/Resources/Resource.php#L42>`_
+	
+	:Type: :any:`\\OCP\\IDBConnection <OCP\\IDBConnection>` 
+
+
+.. php:attr:: protected static type
+
+	:Source:
+		`lib/private/Collaboration/Resources/Resource.php#45 <https://github.com/nextcloud/server/blob/stable13/lib/private/Collaboration/Resources/Resource.php#L45>`_
+	
+	:Type: string 
+
+
+.. php:attr:: protected static id
+
+	:Source:
+		`lib/private/Collaboration/Resources/Resource.php#48 <https://github.com/nextcloud/server/blob/stable13/lib/private/Collaboration/Resources/Resource.php#L48>`_
+	
+	:Type: string 
+
+
+.. php:attr:: protected static userForAccess
+
+	:Source:
+		`lib/private/Collaboration/Resources/Resource.php#51 <https://github.com/nextcloud/server/blob/stable13/lib/private/Collaboration/Resources/Resource.php#L51>`_
+	
+	:Type: :any:`\\OCP\\IUser <OCP\\IUser>` | null 
+
+
+.. php:attr:: protected static access
+
+	:Source:
+		`lib/private/Collaboration/Resources/Resource.php#54 <https://github.com/nextcloud/server/blob/stable13/lib/private/Collaboration/Resources/Resource.php#L54>`_
+	
+	:Type: bool | null 
+
+
+.. php:attr:: protected static data
+
+	:Source:
+		`lib/private/Collaboration/Resources/Resource.php#57 <https://github.com/nextcloud/server/blob/stable13/lib/private/Collaboration/Resources/Resource.php#L57>`_
+	
+	:Type: array | null 
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $manager, $connection, $type, $id, $userForAccess=null, $access=null)
+	
+		:Source:
+			`lib/private/Collaboration/Resources/Resource.php#59 <https://github.com/nextcloud/server/blob/stable13/lib/private/Collaboration/Resources/Resource.php#L59>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getType()
+	
+		:Source:
+			`lib/private/Collaboration/Resources/Resource.php#79 <https://github.com/nextcloud/server/blob/stable13/lib/private/Collaboration/Resources/Resource.php#L79>`_
+		
+		
+		:Returns: string 
+		:Since: 16.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getId()
+	
+		:Source:
+			`lib/private/Collaboration/Resources/Resource.php#87 <https://github.com/nextcloud/server/blob/stable13/lib/private/Collaboration/Resources/Resource.php#L87>`_
+		
+		
+		:Returns: string 
+		:Since: 16.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getRichObject()
+	
+		:Source:
+			`lib/private/Collaboration/Resources/Resource.php#95 <https://github.com/nextcloud/server/blob/stable13/lib/private/Collaboration/Resources/Resource.php#L95>`_
+		
+		
+		:Returns: array 
+		:Since: 16.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public canAccess( $user)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Can a user/guest access the resource
+			
+		
+		:Source:
+			`lib/private/Collaboration/Resources/Resource.php#110 <https://github.com/nextcloud/server/blob/stable13/lib/private/Collaboration/Resources/Resource.php#L110>`_
+		
+		
+		:Parameters:
+			* **$user** (:any:`OCP\\IUser <OCP\\IUser>` | null)  
+
+		
+		:Returns: bool 
+		:Since: 16.0.0 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected canUserAccess( $user)
+	
+		:Source:
+			`lib/private/Collaboration/Resources/Resource.php#117 <https://github.com/nextcloud/server/blob/stable13/lib/private/Collaboration/Resources/Resource.php#L117>`_
+		
+		
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected canGuestAccess()
+	
+		:Source:
+			`lib/private/Collaboration/Resources/Resource.php#129 <https://github.com/nextcloud/server/blob/stable13/lib/private/Collaboration/Resources/Resource.php#L129>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getCollections()
+	
+		:Source:
+			`lib/private/Collaboration/Resources/Resource.php#145 <https://github.com/nextcloud/server/blob/stable13/lib/private/Collaboration/Resources/Resource.php#L145>`_
+		
+		
+		:Returns: :any:`\\OCP\\Collaboration\\Resources\\ICollection\[\] <OCP\\Collaboration\\Resources\\ICollection>` 
+		:Since: 16.0.0 
+	
+	
+

@@ -1,0 +1,75 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IEventMerger
+============
+
+
+.. php:namespace:: OCP\Activity
+
+.. php:interface:: IEventMerger
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Interface EventMerger
+		
+	
+	:Implemented by:
+		:php:class:`OC\\Activity\\EventMerger` 
+	
+	
+	:Source:
+		`lib/public/Activity/IEventMerger.php#31 <https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IEventMerger.php#L31>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public mergeEvents( $mergeParameter, $event, $previousEvent=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Combines two events when possible to have grouping:
+			
+			| Example1: Two events with subject \'\{user\} created \{file\}\' and
+			| $mergeParameter file with different file and same user will be merged
+			| to \'\{user\} created \{file1\} and \{file2\}\' and the childEvent on the return
+			| will be set, if the events have been merged\.
+			| 
+			| Example2: Two events with subject \'\{user\} created \{file\}\' and
+			| $mergeParameter file with same file and same user will be merged to
+			| \'\{user\} created \{file1\}\' and the childEvent on the return will be set, if
+			| the events have been merged\.
+			| 
+			| The following requirements have to be met, in order to be merged:
+			| \- Both events need to have the same \`getApp\(\)\`
+			| \- Both events must not have a message \`getMessage\(\)\`
+			| \- Both events need to have the same subject \`getSubject\(\)\`
+			| \- Both events need to have the same object type \`getObjectType\(\)\`
+			| \- The time difference between both events must not be bigger then 3 hours
+			| \- Only up to 5 events can be merged\.
+			| \- All parameters apart from such starting with $mergeParameter must be
+			|   the same for both events\.
+			
+		
+		:Source:
+			`lib/public/Activity/IEventMerger.php#62 <https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IEventMerger.php#L62>`_
+		
+		
+		:Parameters:
+			* **$mergeParameter** (string)  
+			* **$event** (:any:`OCP\\Activity\\IEvent <OCP\\Activity\\IEvent>`)  
+			* **$previousEvent** (:any:`OCP\\Activity\\IEvent <OCP\\Activity\\IEvent>` | null)  
+
+		
+		:Returns: :any:`\\OCP\\Activity\\IEvent <OCP\\Activity\\IEvent>` 
+		:Since: 11.0 
+	
+	
+

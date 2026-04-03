@@ -1,0 +1,1272 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>IEvent &mdash; Nextcloud 14 Developer Manual 14 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../../',
+              VERSION:'14',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="ISetting" href="ISetting.html" />
+    <link rel="prev" title="IExtension" href="IExtension.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html">
+          
+
+          
+            
+            <img src="../../../_static/logo-white.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../general/index.html">General contributor guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/startapp.html">Create an app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/init.html">Navigation and pre-app configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/info.html">App metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/classloader.html">Classloader</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/request.html">Request lifecycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/routes.html">Routing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/middleware.html">Middleware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/container.html">Container</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/controllers.html">Controllers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/api.html">RESTful API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/templates.html">Templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/js.html">JavaScript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/css.html">CSS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/l10n.html">Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/theming.html">Theming support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/schema.html">Database schema</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/database.html">Database access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/filesystem.html">Filesystem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/appdata.html">AppData</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/users.html">User management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/two-factor-provider.html">Two-factor providers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/hooks.html">Hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/backgroundjobs.html">Background jobs (Cron)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/settings.html">Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/logging.html">Logging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/migrations.html">Migrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/repair.html">Repair steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/publishing.html">App store publishing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/code_signing.html">Code signing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../design/index.html">Design guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../android_library/index.html">Android application development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../client_apis/index.html">Client APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../core/index.html">Core development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../bugtracker/index.html">Bugtracker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../commun/index.html">Help and communication</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../api.html">API Documentation</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../../api.html#php-public-api">PHP public API</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../index.html">/OCP namespace</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="../index.html#namespaces">Namespaces</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../index.html#interfaces">Interfaces</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../index.html#classes">Classes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../api.html#php-class-reference">PHP class reference</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Nextcloud 14 Developer Manual</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../../api.html">API Documentation</a> &raquo;</li>
+        
+          <li><a href="../index.html">OCP</a> &raquo;</li>
+        
+          <li><a href="index.html">Activity</a> &raquo;</li>
+        
+      <li>IEvent</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/nextcloud/documentation/edit/stable14/developer_manual/api/OCP/Activity/IEvent.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="phpdoctorst section" id="namespace-OCP\Activity">
+<span id="ievent"></span><h1>IEvent<a class="headerlink" href="#namespace-OCP\Activity" title="Permalink to this headline">¶</a></h1>
+<dl class="interface">
+<dt id="OCP\Activity\IEvent">
+<em class="property">interface </em><code class="descclassname">OCP\Activity\</code><code class="descname">IEvent</code><a class="headerlink" href="#OCP\Activity\IEvent" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Interface IEvent</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Implemented by:</th><td class="field-body"><a class="reference internal" href="../../OC/Activity/Event.html#OC\Activity\Event" title="OC\Activity\Event"><code class="xref php php-class docutils literal"><span class="pre">OC\Activity\Event</span></code></a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IEvent.php#L44">lib/public/Activity/IEvent.php#44</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<div class="section" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h2>
+<dl class="public method">
+<dt id="OCP\Activity\IEvent::setApp">
+<em class="property">public </em><code class="descclassname">OCP\Activity\IEvent::</code><code class="descname">setApp</code><span class="sig-paren">(</span><em>$app</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Activity\IEvent::setApp" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Set the app of the activity</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IEvent.php#L53">lib/public/Activity/IEvent.php#53</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$app</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference internal" href="#OCP\Activity\IEvent" title="OCP\Activity\IEvent"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Activity\IEvent</span></code></a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><code class="xref any docutils literal"><span class="pre">\InvalidArgumentException</span></code> if the app id is invalid</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">8.2.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\Activity\IEvent::setType">
+<em class="property">public </em><code class="descclassname">OCP\Activity\IEvent::</code><code class="descname">setType</code><span class="sig-paren">(</span><em>$type</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Activity\IEvent::setType" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Set the type of the activity</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IEvent.php#L63">lib/public/Activity/IEvent.php#63</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$type</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference internal" href="#OCP\Activity\IEvent" title="OCP\Activity\IEvent"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Activity\IEvent</span></code></a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><code class="xref any docutils literal"><span class="pre">\InvalidArgumentException</span></code> if the type is invalid</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">8.2.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\Activity\IEvent::setAffectedUser">
+<em class="property">public </em><code class="descclassname">OCP\Activity\IEvent::</code><code class="descname">setAffectedUser</code><span class="sig-paren">(</span><em>$user</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Activity\IEvent::setAffectedUser" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Set the affected user of the activity</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IEvent.php#L73">lib/public/Activity/IEvent.php#73</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$user</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference internal" href="#OCP\Activity\IEvent" title="OCP\Activity\IEvent"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Activity\IEvent</span></code></a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><code class="xref any docutils literal"><span class="pre">\InvalidArgumentException</span></code> if the affected user is invalid</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">8.2.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\Activity\IEvent::setAuthor">
+<em class="property">public </em><code class="descclassname">OCP\Activity\IEvent::</code><code class="descname">setAuthor</code><span class="sig-paren">(</span><em>$author</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Activity\IEvent::setAuthor" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Set the author of the activity</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IEvent.php#L83">lib/public/Activity/IEvent.php#83</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$author</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference internal" href="#OCP\Activity\IEvent" title="OCP\Activity\IEvent"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Activity\IEvent</span></code></a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><code class="xref any docutils literal"><span class="pre">\InvalidArgumentException</span></code> if the author is invalid</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">8.2.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\Activity\IEvent::setTimestamp">
+<em class="property">public </em><code class="descclassname">OCP\Activity\IEvent::</code><code class="descname">setTimestamp</code><span class="sig-paren">(</span><em>$timestamp</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Activity\IEvent::setTimestamp" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Set the author of the activity</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IEvent.php#L93">lib/public/Activity/IEvent.php#93</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$timestamp</strong> (int)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference internal" href="#OCP\Activity\IEvent" title="OCP\Activity\IEvent"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Activity\IEvent</span></code></a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><code class="xref any docutils literal"><span class="pre">\InvalidArgumentException</span></code> if the timestamp is invalid</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">8.2.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\Activity\IEvent::setSubject">
+<em class="property">public </em><code class="descclassname">OCP\Activity\IEvent::</code><code class="descname">setSubject</code><span class="sig-paren">(</span><em>$subject</em>, <em>$parameters=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Activity\IEvent::setSubject" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Set the subject of the activity</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IEvent.php#L104">lib/public/Activity/IEvent.php#104</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$subject</strong> (string)</li>
+<li><strong>$parameters</strong> (array)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference internal" href="#OCP\Activity\IEvent" title="OCP\Activity\IEvent"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Activity\IEvent</span></code></a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><code class="xref any docutils literal"><span class="pre">\InvalidArgumentException</span></code> if the subject or parameters are invalid</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">8.2.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\Activity\IEvent::setParsedSubject">
+<em class="property">public </em><code class="descclassname">OCP\Activity\IEvent::</code><code class="descname">setParsedSubject</code><span class="sig-paren">(</span><em>$subject</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Activity\IEvent::setParsedSubject" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Set a parsed subject</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">HTML is not allowed in the parsed subject and will be escaped</div>
+<div class="line">automatically by the clients. You can use the RichObjectString system</div>
+<div class="line">provided by the Nextcloud server to highlight important parameters via</div>
+<div class="line">the setRichSubject method, but make sure, that a plain text message is</div>
+<div class="line">always set via setParsedSubject, to support clients which can not handle</div>
+<div class="line">rich strings.</div>
+<div class="line"><br /></div>
+<div class="line">See <a class="reference external" href="https://github.com/nextcloud/server/issues/1706">https://github.com/nextcloud/server/issues/1706</a> for more information.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IEvent.php#L123">lib/public/Activity/IEvent.php#123</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$subject</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">$this</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><code class="xref any docutils literal"><span class="pre">\InvalidArgumentException</span></code> if the subject is invalid</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">11.0.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\Activity\IEvent::getParsedSubject">
+<em class="property">public </em><code class="descclassname">OCP\Activity\IEvent::</code><code class="descname">getParsedSubject</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Activity\IEvent::getParsedSubject" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IEvent.php#L129">lib/public/Activity/IEvent.php#129</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">string</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">11.0.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\Activity\IEvent::setRichSubject">
+<em class="property">public </em><code class="descclassname">OCP\Activity\IEvent::</code><code class="descname">setRichSubject</code><span class="sig-paren">(</span><em>$subject</em>, <em>$parameters=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Activity\IEvent::setRichSubject" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Set a RichObjectString subject</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">HTML is not allowed in the rich subject and will be escaped automatically</div>
+<div class="line">by the clients, but you can use the RichObjectString system provided by</div>
+<div class="line">the Nextcloud server to highlight important parameters.</div>
+<div class="line">Also make sure, that a plain text subject is always set via</div>
+<div class="line">setParsedSubject, to support clients which can not handle rich strings.</div>
+<div class="line"><br /></div>
+<div class="line">See <a class="reference external" href="https://github.com/nextcloud/server/issues/1706">https://github.com/nextcloud/server/issues/1706</a> for more information.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IEvent.php#L148">lib/public/Activity/IEvent.php#148</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$subject</strong> (string)</li>
+<li><strong>$parameters</strong> (array)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">$this</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><code class="xref any docutils literal"><span class="pre">\InvalidArgumentException</span></code> if the subject or parameters are invalid</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">11.0.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\Activity\IEvent::getRichSubject">
+<em class="property">public </em><code class="descclassname">OCP\Activity\IEvent::</code><code class="descname">getRichSubject</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Activity\IEvent::getRichSubject" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IEvent.php#L154">lib/public/Activity/IEvent.php#154</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">string</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">11.0.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\Activity\IEvent::getRichSubjectParameters">
+<em class="property">public </em><code class="descclassname">OCP\Activity\IEvent::</code><code class="descname">getRichSubjectParameters</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Activity\IEvent::getRichSubjectParameters" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IEvent.php#L160">lib/public/Activity/IEvent.php#160</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">array[]</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">11.0.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\Activity\IEvent::setMessage">
+<em class="property">public </em><code class="descclassname">OCP\Activity\IEvent::</code><code class="descname">setMessage</code><span class="sig-paren">(</span><em>$message</em>, <em>$parameters=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Activity\IEvent::setMessage" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Set the message of the activity</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IEvent.php#L171">lib/public/Activity/IEvent.php#171</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$message</strong> (string)</li>
+<li><strong>$parameters</strong> (array)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference internal" href="#OCP\Activity\IEvent" title="OCP\Activity\IEvent"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Activity\IEvent</span></code></a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><code class="xref any docutils literal"><span class="pre">\InvalidArgumentException</span></code> if the message or parameters are invalid</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">8.2.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\Activity\IEvent::setParsedMessage">
+<em class="property">public </em><code class="descclassname">OCP\Activity\IEvent::</code><code class="descname">setParsedMessage</code><span class="sig-paren">(</span><em>$message</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Activity\IEvent::setParsedMessage" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Set a parsed message</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">HTML is not allowed in the parsed message and will be escaped</div>
+<div class="line">automatically by the clients. You can use the RichObjectString system</div>
+<div class="line">provided by the Nextcloud server to highlight important parameters via</div>
+<div class="line">the setRichMessage method, but make sure, that a plain text message is</div>
+<div class="line">always set via setParsedMessage, to support clients which can not handle</div>
+<div class="line">rich strings.</div>
+<div class="line"><br /></div>
+<div class="line">See <a class="reference external" href="https://github.com/nextcloud/server/issues/1706">https://github.com/nextcloud/server/issues/1706</a> for more information.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IEvent.php#L190">lib/public/Activity/IEvent.php#190</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$message</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">$this</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><code class="xref any docutils literal"><span class="pre">\InvalidArgumentException</span></code> if the message is invalid</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">11.0.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\Activity\IEvent::getParsedMessage">
+<em class="property">public </em><code class="descclassname">OCP\Activity\IEvent::</code><code class="descname">getParsedMessage</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Activity\IEvent::getParsedMessage" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IEvent.php#L196">lib/public/Activity/IEvent.php#196</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">string</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">11.0.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\Activity\IEvent::setRichMessage">
+<em class="property">public </em><code class="descclassname">OCP\Activity\IEvent::</code><code class="descname">setRichMessage</code><span class="sig-paren">(</span><em>$message</em>, <em>$parameters=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Activity\IEvent::setRichMessage" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Set a RichObjectString message</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">HTML is not allowed in the rich message and will be escaped automatically</div>
+<div class="line">by the clients, but you can use the RichObjectString system provided by</div>
+<div class="line">the Nextcloud server to highlight important parameters.</div>
+<div class="line">Also make sure, that a plain text message is always set via</div>
+<div class="line">setParsedMessage, to support clients which can not handle rich strings.</div>
+<div class="line"><br /></div>
+<div class="line">See <a class="reference external" href="https://github.com/nextcloud/server/issues/1706">https://github.com/nextcloud/server/issues/1706</a> for more information.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IEvent.php#L215">lib/public/Activity/IEvent.php#215</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$message</strong> (string)</li>
+<li><strong>$parameters</strong> (array)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">$this</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><code class="xref any docutils literal"><span class="pre">\InvalidArgumentException</span></code> if the message or parameters are invalid</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">11.0.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\Activity\IEvent::getRichMessage">
+<em class="property">public </em><code class="descclassname">OCP\Activity\IEvent::</code><code class="descname">getRichMessage</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Activity\IEvent::getRichMessage" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IEvent.php#L221">lib/public/Activity/IEvent.php#221</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">string</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">11.0.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\Activity\IEvent::getRichMessageParameters">
+<em class="property">public </em><code class="descclassname">OCP\Activity\IEvent::</code><code class="descname">getRichMessageParameters</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Activity\IEvent::getRichMessageParameters" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IEvent.php#L227">lib/public/Activity/IEvent.php#227</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">array[]</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">11.0.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\Activity\IEvent::setObject">
+<em class="property">public </em><code class="descclassname">OCP\Activity\IEvent::</code><code class="descname">setObject</code><span class="sig-paren">(</span><em>$objectType</em>, <em>$objectId</em>, <em>$objectName=&quot;&quot;</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Activity\IEvent::setObject" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Set the object of the activity</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IEvent.php#L239">lib/public/Activity/IEvent.php#239</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$objectType</strong> (string)</li>
+<li><strong>$objectId</strong> (int)</li>
+<li><strong>$objectName</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference internal" href="#OCP\Activity\IEvent" title="OCP\Activity\IEvent"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Activity\IEvent</span></code></a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><code class="xref any docutils literal"><span class="pre">\InvalidArgumentException</span></code> if the object is invalid</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">8.2.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\Activity\IEvent::setLink">
+<em class="property">public </em><code class="descclassname">OCP\Activity\IEvent::</code><code class="descname">setLink</code><span class="sig-paren">(</span><em>$link</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Activity\IEvent::setLink" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Set the link of the activity</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IEvent.php#L249">lib/public/Activity/IEvent.php#249</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$link</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference internal" href="#OCP\Activity\IEvent" title="OCP\Activity\IEvent"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Activity\IEvent</span></code></a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><code class="xref any docutils literal"><span class="pre">\InvalidArgumentException</span></code> if the link is invalid</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">8.2.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\Activity\IEvent::getApp">
+<em class="property">public </em><code class="descclassname">OCP\Activity\IEvent::</code><code class="descname">getApp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Activity\IEvent::getApp" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IEvent.php#L255">lib/public/Activity/IEvent.php#255</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">string</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">8.2.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\Activity\IEvent::getType">
+<em class="property">public </em><code class="descclassname">OCP\Activity\IEvent::</code><code class="descname">getType</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Activity\IEvent::getType" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IEvent.php#L261">lib/public/Activity/IEvent.php#261</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">string</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">8.2.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\Activity\IEvent::getAffectedUser">
+<em class="property">public </em><code class="descclassname">OCP\Activity\IEvent::</code><code class="descname">getAffectedUser</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Activity\IEvent::getAffectedUser" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IEvent.php#L267">lib/public/Activity/IEvent.php#267</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">string</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">8.2.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\Activity\IEvent::getAuthor">
+<em class="property">public </em><code class="descclassname">OCP\Activity\IEvent::</code><code class="descname">getAuthor</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Activity\IEvent::getAuthor" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IEvent.php#L273">lib/public/Activity/IEvent.php#273</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">string</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">8.2.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\Activity\IEvent::getTimestamp">
+<em class="property">public </em><code class="descclassname">OCP\Activity\IEvent::</code><code class="descname">getTimestamp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Activity\IEvent::getTimestamp" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IEvent.php#L279">lib/public/Activity/IEvent.php#279</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">int</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">8.2.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\Activity\IEvent::getSubject">
+<em class="property">public </em><code class="descclassname">OCP\Activity\IEvent::</code><code class="descname">getSubject</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Activity\IEvent::getSubject" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IEvent.php#L285">lib/public/Activity/IEvent.php#285</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">string</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">8.2.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\Activity\IEvent::getSubjectParameters">
+<em class="property">public </em><code class="descclassname">OCP\Activity\IEvent::</code><code class="descname">getSubjectParameters</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Activity\IEvent::getSubjectParameters" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IEvent.php#L291">lib/public/Activity/IEvent.php#291</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">array</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">8.2.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\Activity\IEvent::getMessage">
+<em class="property">public </em><code class="descclassname">OCP\Activity\IEvent::</code><code class="descname">getMessage</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Activity\IEvent::getMessage" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IEvent.php#L297">lib/public/Activity/IEvent.php#297</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">string</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">8.2.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\Activity\IEvent::getMessageParameters">
+<em class="property">public </em><code class="descclassname">OCP\Activity\IEvent::</code><code class="descname">getMessageParameters</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Activity\IEvent::getMessageParameters" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IEvent.php#L303">lib/public/Activity/IEvent.php#303</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">array</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">8.2.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\Activity\IEvent::getObjectType">
+<em class="property">public </em><code class="descclassname">OCP\Activity\IEvent::</code><code class="descname">getObjectType</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Activity\IEvent::getObjectType" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IEvent.php#L309">lib/public/Activity/IEvent.php#309</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">string</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">8.2.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\Activity\IEvent::getObjectId">
+<em class="property">public </em><code class="descclassname">OCP\Activity\IEvent::</code><code class="descname">getObjectId</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Activity\IEvent::getObjectId" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IEvent.php#L315">lib/public/Activity/IEvent.php#315</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">int</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">8.2.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\Activity\IEvent::getObjectName">
+<em class="property">public </em><code class="descclassname">OCP\Activity\IEvent::</code><code class="descname">getObjectName</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Activity\IEvent::getObjectName" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IEvent.php#L321">lib/public/Activity/IEvent.php#321</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">string</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">8.2.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\Activity\IEvent::getLink">
+<em class="property">public </em><code class="descclassname">OCP\Activity\IEvent::</code><code class="descname">getLink</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Activity\IEvent::getLink" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IEvent.php#L327">lib/public/Activity/IEvent.php#327</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">string</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">8.2.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\Activity\IEvent::setIcon">
+<em class="property">public </em><code class="descclassname">OCP\Activity\IEvent::</code><code class="descname">setIcon</code><span class="sig-paren">(</span><em>$icon</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Activity\IEvent::setIcon" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IEvent.php#L335">lib/public/Activity/IEvent.php#335</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$icon</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">$this</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><code class="xref any docutils literal"><span class="pre">\InvalidArgumentException</span></code> if the icon is invalid</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">11.0.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\Activity\IEvent::getIcon">
+<em class="property">public </em><code class="descclassname">OCP\Activity\IEvent::</code><code class="descname">getIcon</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Activity\IEvent::getIcon" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IEvent.php#L341">lib/public/Activity/IEvent.php#341</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">string</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">11.0.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\Activity\IEvent::setChildEvent">
+<em class="property">public </em><code class="descclassname">OCP\Activity\IEvent::</code><code class="descname">setChildEvent</code><span class="sig-paren">(</span><em>$child</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Activity\IEvent::setChildEvent" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IEvent.php#L348">lib/public/Activity/IEvent.php#348</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$child</strong> (<a class="reference internal" href="#OCP\Activity\IEvent" title="OCP\Activity\IEvent"><code class="xref any php php-trait docutils literal"><span class="pre">OCP\Activity\IEvent</span></code></a>)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">$this</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">11.0.0 - Since 15.0.0 returns $this</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\Activity\IEvent::getChildEvent">
+<em class="property">public </em><code class="descclassname">OCP\Activity\IEvent::</code><code class="descname">getChildEvent</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Activity\IEvent::getChildEvent" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IEvent.php#L354">lib/public/Activity/IEvent.php#354</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="#OCP\Activity\IEvent" title="OCP\Activity\IEvent"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Activity\IEvent</span></code></a> | null</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">11.0.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\Activity\IEvent::isValid">
+<em class="property">public </em><code class="descclassname">OCP\Activity\IEvent::</code><code class="descname">isValid</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Activity\IEvent::isValid" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IEvent.php#L360">lib/public/Activity/IEvent.php#360</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">bool</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">11.0.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\Activity\IEvent::isValidParsed">
+<em class="property">public </em><code class="descclassname">OCP\Activity\IEvent::</code><code class="descname">isValidParsed</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Activity\IEvent::isValidParsed" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IEvent.php#L366">lib/public/Activity/IEvent.php#366</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">bool</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">11.0.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\Activity\IEvent::setGenerateNotification">
+<em class="property">public </em><code class="descclassname">OCP\Activity\IEvent::</code><code class="descname">setGenerateNotification</code><span class="sig-paren">(</span><em>$generate</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Activity\IEvent::setGenerateNotification" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Set whether or not a notification should be automatically generated for this activity.</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">Set this to `false` if the app already generates a notification for the event.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IEvent.php#L377">lib/public/Activity/IEvent.php#377</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$generate</strong> (bool)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference internal" href="#OCP\Activity\IEvent" title="OCP\Activity\IEvent"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Activity\IEvent</span></code></a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">20.0.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\Activity\IEvent::getGenerateNotification">
+<em class="property">public </em><code class="descclassname">OCP\Activity\IEvent::</code><code class="descname">getGenerateNotification</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Activity\IEvent::getGenerateNotification" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">whether or not a notification should be automatically generated for this activity.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IEvent.php#L385">lib/public/Activity/IEvent.php#385</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">bool</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">20.0.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="ISetting.html" class="btn btn-neutral float-right" title="ISetting" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="IExtension.html" class="btn btn-neutral float-left" title="IExtension" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021 Nextcloud GmbH.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: 14
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/14/developer_manual">14</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/15/developer_manual">15</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/16/developer_manual">16</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/developer_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/developer_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+   
+
+</body>
+</html>

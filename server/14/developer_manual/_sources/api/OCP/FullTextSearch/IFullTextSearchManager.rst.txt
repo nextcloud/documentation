@@ -1,0 +1,304 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IFullTextSearchManager
+======================
+
+
+.. php:namespace:: OCP\FullTextSearch
+
+.. php:interface:: IFullTextSearchManager
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Interface IFullTextSearchManager
+		
+		| Should be used to manage FullTextSearch from the app that contains your
+		| Content Provider/Search Platform\.
+		
+	
+	:Implemented by:
+		:php:class:`OC\\FullTextSearch\\FullTextSearchManager` 
+	
+	
+	:Source:
+		`lib/public/FullTextSearch/IFullTextSearchManager.php#44 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/IFullTextSearchManager.php#L44>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public registerProviderService( $providerService)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Register a IProviderService\.
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/IFullTextSearchManager.php#54 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/IFullTextSearchManager.php#L54>`_
+		
+		
+		:Parameters:
+			* **$providerService** (:any:`OCP\\FullTextSearch\\Service\\IProviderService <OCP\\FullTextSearch\\Service\\IProviderService>`)  
+
+		
+		:Since: 15.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public registerIndexService( $indexService)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Register a IIndexService\.
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/IFullTextSearchManager.php#63 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/IFullTextSearchManager.php#L63>`_
+		
+		
+		:Parameters:
+			* **$indexService** (:any:`OCP\\FullTextSearch\\Service\\IIndexService <OCP\\FullTextSearch\\Service\\IIndexService>`)  
+
+		
+		:Since: 15.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public registerSearchService( $searchService)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Register a ISearchService\.
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/IFullTextSearchManager.php#72 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/IFullTextSearchManager.php#L72>`_
+		
+		
+		:Parameters:
+			* **$searchService** (:any:`OCP\\FullTextSearch\\Service\\ISearchService <OCP\\FullTextSearch\\Service\\ISearchService>`)  
+
+		
+		:Since: 15.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isAvailable()
+	
+		.. rst-class:: phpdoc-description
+		
+			| returns true is Full Text Search is available \(app is present and Service
+			| are registered\)
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/IFullTextSearchManager.php#82 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/IFullTextSearchManager.php#L82>`_
+		
+		
+		:Since: 16.0.0 
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public addJavascriptAPI()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Add the Javascript API in the navigation page of an app\.
+			
+			| Needed to replace the default search\.
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/IFullTextSearchManager.php#91 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/IFullTextSearchManager.php#L91>`_
+		
+		
+		:Since: 15.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isProviderIndexed( $providerId)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check if the provider $providerId is already indexed\.
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/IFullTextSearchManager.php#103 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/IFullTextSearchManager.php#L103>`_
+		
+		
+		:Parameters:
+			* **$providerId** (string)  
+
+		
+		:Since: 15.0.0 
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getIndex( $providerId, $documentId)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Retrieve an Index from the database, based on the Id of the Provider
+			| and the Id of the Document
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/IFullTextSearchManager.php#117 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/IFullTextSearchManager.php#L117>`_
+		
+		
+		:Parameters:
+			* **$providerId** (string)  
+			* **$documentId** (string)  
+
+		
+		:Since: 15.0.0 
+		:Returns: :any:`\\OCP\\FullTextSearch\\Model\\IIndex <OCP\\FullTextSearch\\Model\\IIndex>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public createIndex( $providerId, $documentId, $userId, $status=0)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Create a new Index\.
+			
+			| This method must be called when a new document is created\.
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/IFullTextSearchManager.php#134 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/IFullTextSearchManager.php#L134>`_
+		
+		
+		:Parameters:
+			* **$providerId** (string)  
+			* **$documentId** (string)  
+			* **$userId** (string)  
+			* **$status** (int)  
+
+		
+		:Since: 15.0.0 
+		:Returns: :any:`\\OCP\\FullTextSearch\\Model\\IIndex <OCP\\FullTextSearch\\Model\\IIndex>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public updateIndexStatus( $providerId, $documentId, $status, $reset=false)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Update the status of an Index\. status is a bitflag, setting $reset to
+			| true will reset the status to the value defined in the parameter\.
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/IFullTextSearchManager.php#148 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/IFullTextSearchManager.php#L148>`_
+		
+		
+		:Parameters:
+			* **$providerId** (string)  
+			* **$documentId** (string)  
+			* **$status** (int)  
+			* **$reset** (bool)  
+
+		
+		:Since: 15.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public updateIndexesStatus( $providerId, $documentIds, $status, $reset=false)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Update the status of an array of Index\. status is a bit flag, setting $reset to
+			| true will reset the status to the value defined in the parameter\.
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/IFullTextSearchManager.php#162 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/IFullTextSearchManager.php#L162>`_
+		
+		
+		:Parameters:
+			* **$providerId** (string)  
+			* **$documentIds** (array)  
+			* **$status** (int)  
+			* **$reset** (bool)  
+
+		
+		:Since: 15.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public updateIndexes( $indexes)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Update an array of Index\.
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/IFullTextSearchManager.php#171 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/IFullTextSearchManager.php#L171>`_
+		
+		
+		:Parameters:
+			* **$indexes** (:any:`OCP\\FullTextSearch\\Model\\IIndex\[\] <OCP\\FullTextSearch\\Model\\IIndex>`)  
+
+		
+		:Since: 15.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public search( $request, $userId="")
+	
+		.. rst-class:: phpdoc-description
+		
+			| Search using an array as request\. If $userId is empty, will use the
+			| current session\.
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/IFullTextSearchManager.php#185 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/IFullTextSearchManager.php#L185>`_
+		
+		
+		:Parameters:
+			* **$request** (array)  
+			* **$userId** (string)  
+
+		
+		:See: :any:`\\OCP\\FullTextSearch\\ISearchService::generateSearchRequest <OCP\\FullTextSearch\\ISearchService::generateSearchRequest>` 
+		:Since: 15.0.0 
+		:Returns: :any:`\\OCP\\FullTextSearch\\Model\\ISearchResult\[\] <OCP\\FullTextSearch\\Model\\ISearchResult>` 
+	
+	
+

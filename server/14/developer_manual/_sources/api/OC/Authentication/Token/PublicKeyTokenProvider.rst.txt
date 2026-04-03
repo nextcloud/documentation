@@ -1,0 +1,227 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+PublicKeyTokenProvider
+======================
+
+
+.. php:namespace:: OC\Authentication\Token
+
+.. php:class:: PublicKeyTokenProvider
+
+
+	:Source:
+		`lib/private/Authentication/Token/PublicKeyTokenProvider.php#45 <https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/PublicKeyTokenProvider.php#L45>`_
+	
+	:Implements:
+		:php:interface:`OC\\Authentication\\Token\\IProvider` 
+	
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $mapper, $crypto, $config, $logger, $time)
+	
+		:Source:
+			`lib/private/Authentication/Token/PublicKeyTokenProvider.php#64 <https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/PublicKeyTokenProvider.php#L64>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public generateToken( $token, $uid, $loginName, $password, $name, $type=\\OC\\Authentication\\Token\\IToken::TEMPORARY\_TOKEN, $remember=\\OC\\Authentication\\Token\\IToken::DO\_NOT\_REMEMBER)
+	
+		.. rst-class:: phpdoc-description
+		
+			| \{@inheritDoc\}
+			
+		
+		:Source:
+			`lib/private/Authentication/Token/PublicKeyTokenProvider.php#81 <https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/PublicKeyTokenProvider.php#L81>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getToken( $tokenId)
+	
+		:Source:
+			`lib/private/Authentication/Token/PublicKeyTokenProvider.php#97 <https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/PublicKeyTokenProvider.php#L97>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getTokenById( $tokenId)
+	
+		:Source:
+			`lib/private/Authentication/Token/PublicKeyTokenProvider.php#127 <https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/PublicKeyTokenProvider.php#L127>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public renewSessionToken( $oldSessionId, $sessionId)
+	
+		:Source:
+			`lib/private/Authentication/Token/PublicKeyTokenProvider.php#150 <https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/PublicKeyTokenProvider.php#L150>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public invalidateToken( $token)
+	
+		:Source:
+			`lib/private/Authentication/Token/PublicKeyTokenProvider.php#180 <https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/PublicKeyTokenProvider.php#L180>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public invalidateTokenById( $uid, $id)
+	
+		:Source:
+			`lib/private/Authentication/Token/PublicKeyTokenProvider.php#186 <https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/PublicKeyTokenProvider.php#L186>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public invalidateOldTokens()
+	
+		:Source:
+			`lib/private/Authentication/Token/PublicKeyTokenProvider.php#192 <https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/PublicKeyTokenProvider.php#L192>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public updateToken( $token)
+	
+		:Source:
+			`lib/private/Authentication/Token/PublicKeyTokenProvider.php#203 <https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/PublicKeyTokenProvider.php#L203>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public updateTokenActivity( $token)
+	
+		:Source:
+			`lib/private/Authentication/Token/PublicKeyTokenProvider.php#212 <https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/PublicKeyTokenProvider.php#L212>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getTokenByUser( $uid)
+	
+		:Source:
+			`lib/private/Authentication/Token/PublicKeyTokenProvider.php#231 <https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/PublicKeyTokenProvider.php#L231>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getPassword( $savedToken, $tokenId)
+	
+		:Source:
+			`lib/private/Authentication/Token/PublicKeyTokenProvider.php#235 <https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/PublicKeyTokenProvider.php#L235>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setPassword( $token, $tokenId, $password)
+	
+		:Source:
+			`lib/private/Authentication/Token/PublicKeyTokenProvider.php#251 <https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/PublicKeyTokenProvider.php#L251>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public rotate( $token, $oldTokenId, $newTokenId)
+	
+		:Source:
+			`lib/private/Authentication/Token/PublicKeyTokenProvider.php#270 <https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/PublicKeyTokenProvider.php#L270>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public convertToken( $defaultToken, $token, $password)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Convert a DefaultToken to a publicKeyToken
+			| This will also be updated directly in the Database
+			
+		
+		:Source:
+			`lib/private/Authentication/Token/PublicKeyTokenProvider.php#331 <https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/PublicKeyTokenProvider.php#L331>`_
+		
+		
+		:Throws: :any:`\\RuntimeException <RuntimeException>` when OpenSSL reports a problem
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public markPasswordInvalid( $token, $tokenId)
+	
+		:Source:
+			`lib/private/Authentication/Token/PublicKeyTokenProvider.php#403 <https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/PublicKeyTokenProvider.php#L403>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public updatePasswords( $uid, $password)
+	
+		:Source:
+			`lib/private/Authentication/Token/PublicKeyTokenProvider.php#414 <https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/PublicKeyTokenProvider.php#L414>`_
+		
+		
+	
+	
+

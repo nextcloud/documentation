@@ -1,0 +1,332 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+WidgetSetup
+===========
+
+
+.. php:namespace:: OCP\Dashboard\Model
+
+.. rst-class::  final
+
+.. php:class:: WidgetSetup
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Interface WidgetSetup
+		
+		| A widget must create an WidgetSetup object and returns it in the
+		| IDashboardWidget::getWidgetSetup method\.
+		
+	
+	:Source:
+		`lib/public/Dashboard/Model/WidgetSetup.php#45 <https://github.com/nextcloud/server/blob/stable13/lib/public/Dashboard/Model/WidgetSetup.php#L45>`_
+	
+	:Implements:
+		:php:interface:`JsonSerializable` 
+	
+
+Constants
+---------
+
+.. php:const:: SIZE_TYPE_MIN = min
+
+	:Source:
+		`lib/public/Dashboard/Model/WidgetSetup.php#46 <https://github.com/nextcloud/server/blob/stable13/lib/public/Dashboard/Model/WidgetSetup.php#L46>`_
+	
+
+
+.. php:const:: SIZE_TYPE_MAX = max
+
+	:Source:
+		`lib/public/Dashboard/Model/WidgetSetup.php#47 <https://github.com/nextcloud/server/blob/stable13/lib/public/Dashboard/Model/WidgetSetup.php#L47>`_
+	
+
+
+.. php:const:: SIZE_TYPE_DEFAULT = default
+
+	:Source:
+		`lib/public/Dashboard/Model/WidgetSetup.php#48 <https://github.com/nextcloud/server/blob/stable13/lib/public/Dashboard/Model/WidgetSetup.php#L48>`_
+	
+
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public getSize( $type)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the defined size for a specific type \(min, max, default\)
+			| Returns an array:
+			| \[
+			|   \'width\' =\> width,
+			|   \'height\' =\> height
+			| \]
+			
+		
+		:Source:
+			`lib/public/Dashboard/Model/WidgetSetup.php#83 <https://github.com/nextcloud/server/blob/stable13/lib/public/Dashboard/Model/WidgetSetup.php#L83>`_
+		
+		
+		:Parameters:
+			* **$type** (string)  
+
+		
+		:Since: 15.0.0 
+		:Deprecated: 20.0.0 
+		:Returns: array 
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public getSizes()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns all sizes defined for the widget\.
+			
+		
+		:Source:
+			`lib/public/Dashboard/Model/WidgetSetup.php#99 <https://github.com/nextcloud/server/blob/stable13/lib/public/Dashboard/Model/WidgetSetup.php#L99>`_
+		
+		
+		:Since: 15.0.0 
+		:Deprecated: 20.0.0 
+		:Returns: array 
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public addSize( $type, $width, $height)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Add a new size to the setup\.
+			
+		
+		:Source:
+			`lib/public/Dashboard/Model/WidgetSetup.php#115 <https://github.com/nextcloud/server/blob/stable13/lib/public/Dashboard/Model/WidgetSetup.php#L115>`_
+		
+		
+		:Parameters:
+			* **$type** (string)  
+			* **$width** (int)  
+			* **$height** (int)  
+
+		
+		:Since: 15.0.0 
+		:Deprecated: 20.0.0 
+		:Returns: :any:`\\OCP\\Dashboard\\Model\\WidgetSetup <OCP\\Dashboard\\Model\\WidgetSetup>` 
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public getMenuEntries()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns menu entries\.
+			
+		
+		:Source:
+			`lib/public/Dashboard/Model/WidgetSetup.php#132 <https://github.com/nextcloud/server/blob/stable13/lib/public/Dashboard/Model/WidgetSetup.php#L132>`_
+		
+		
+		:Since: 15.0.0 
+		:Deprecated: 20.0.0 
+		:Returns: array 
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public addMenuEntry( $function, $icon, $text)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Add a menu entry to the widget\.
+			
+			| $function is the Javascript function to be called when clicking the
+			|           menu entry\.
+			| $icon is the css class of the icon\.
+			| $text is the display name of the menu entry\.
+			
+		
+		:Source:
+			`lib/public/Dashboard/Model/WidgetSetup.php#152 <https://github.com/nextcloud/server/blob/stable13/lib/public/Dashboard/Model/WidgetSetup.php#L152>`_
+		
+		
+		:Parameters:
+			* **$function** (string)  
+			* **$icon** (string)  
+			* **$text** (string)  
+
+		
+		:Since: 15.0.0 
+		:Deprecated: 20.0.0 
+		:Returns: :any:`\\OCP\\Dashboard\\Model\\WidgetSetup <OCP\\Dashboard\\Model\\WidgetSetup>` 
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public addDelayedJob( $function, $delay)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Add a delayed job to the widget\.
+			
+			| $function is the Javascript function to be called\.
+			| $delay is the time in seconds between each call\.
+			
+		
+		:Source:
+			`lib/public/Dashboard/Model/WidgetSetup.php#177 <https://github.com/nextcloud/server/blob/stable13/lib/public/Dashboard/Model/WidgetSetup.php#L177>`_
+		
+		
+		:Parameters:
+			* **$function** (string)  
+			* **$delay** (int)  
+
+		
+		:Since: 15.0.0 
+		:Deprecated: 20.0.0 
+		:Returns: :any:`\\OCP\\Dashboard\\Model\\WidgetSetup <OCP\\Dashboard\\Model\\WidgetSetup>` 
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public getDelayedJobs()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get delayed jobs\.
+			
+		
+		:Source:
+			`lib/public/Dashboard/Model/WidgetSetup.php#194 <https://github.com/nextcloud/server/blob/stable13/lib/public/Dashboard/Model/WidgetSetup.php#L194>`_
+		
+		
+		:Since: 15.0.0 
+		:Deprecated: 20.0.0 
+		:Returns: array 
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public getPush()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the push function, called when an event is send to the front\-end
+			
+		
+		:Source:
+			`lib/public/Dashboard/Model/WidgetSetup.php#207 <https://github.com/nextcloud/server/blob/stable13/lib/public/Dashboard/Model/WidgetSetup.php#L207>`_
+		
+		
+		:Since: 15.0.0 
+		:Deprecated: 20.0.0 
+		:Returns: string 
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public setPush( $function)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set the Javascript function to be called when an event is pushed to the
+			| frontend\.
+			
+		
+		:Source:
+			`lib/public/Dashboard/Model/WidgetSetup.php#222 <https://github.com/nextcloud/server/blob/stable13/lib/public/Dashboard/Model/WidgetSetup.php#L222>`_
+		
+		
+		:Parameters:
+			* **$function** (string)  
+
+		
+		:Since: 15.0.0 
+		:Deprecated: 20.0.0 
+		:Returns: :any:`\\OCP\\Dashboard\\Model\\WidgetSetup <OCP\\Dashboard\\Model\\WidgetSetup>` 
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public getDefaultSettings()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the default settings for a widget\.
+			
+		
+		:Source:
+			`lib/public/Dashboard/Model/WidgetSetup.php#237 <https://github.com/nextcloud/server/blob/stable13/lib/public/Dashboard/Model/WidgetSetup.php#L237>`_
+		
+		
+		:Since: 15.0.0 
+		:Deprecated: 20.0.0 
+		:Returns: array 
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public setDefaultSettings( $settings)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set the default settings for a widget\.
+			
+			| This method is used by the Dashboard app, using the settings created
+			| using WidgetSetting
+			
+		
+		:Source:
+			`lib/public/Dashboard/Model/WidgetSetup.php#255 <https://github.com/nextcloud/server/blob/stable13/lib/public/Dashboard/Model/WidgetSetup.php#L255>`_
+		
+		
+		:Parameters:
+			* **$settings** (array)  
+
+		
+		:See: :any:`\\OCP\\Dashboard\\Model\\WidgetSetting <OCP\\Dashboard\\Model\\WidgetSetting>` 
+		:Since: 15.0.0 
+		:Deprecated: 20.0.0 
+		:Returns: :any:`\\OCP\\Dashboard\\Model\\WidgetSetup <OCP\\Dashboard\\Model\\WidgetSetup>` 
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public jsonSerialize()
+	
+		:Source:
+			`lib/public/Dashboard/Model/WidgetSetup.php#268 <https://github.com/nextcloud/server/blob/stable13/lib/public/Dashboard/Model/WidgetSetup.php#L268>`_
+		
+		
+		:Since: 15.0.0 
+		:Deprecated: 20.0.0 
+		:Returns: array 
+	
+	
+

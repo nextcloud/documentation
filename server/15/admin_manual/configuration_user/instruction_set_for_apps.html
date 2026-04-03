@@ -1,0 +1,455 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Instruction set for apps &mdash; Nextcloud 15 Administration Manual 15 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'15',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="File sharing and management" href="../configuration_files/index.html" />
+    <link rel="prev" title="Instruction set for groups" href="instruction_set_for_groups.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../contents.html">
+          
+
+          
+            
+            <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_schedule.html">Maintenance and release schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation and server configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_server/index.html">Nextcloud configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../apps_management.html">Apps management</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">User management</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="user_configuration.html">User management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reset_admin_password.html">Resetting a lost admin password</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reset_user_password.html">Resetting a user password</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_password_policy.html">User password policy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="two_factor-auth.html">Two-factor authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_auth_ftp_smb_imap.html">User authentication with IMAP, SMB, FTP and others</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_auth_ldap.html">User authentication with LDAP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_auth_ldap_cleanup.html">LDAP user cleanup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_auth_ldap_api.html">The LDAP configuration API</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="user_provisioning_api.html">User provisioning API</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="instruction_set_for_users.html">Instruction set for users</a></li>
+<li class="toctree-l3"><a class="reference internal" href="instruction_set_for_groups.html">Instruction set for groups</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Instruction set for apps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#getlist-of-apps">Getlist of apps</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#get-app-info">Get app info</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#enable-an-app">Enable an app</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#disable-an-app">Disable an app</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_files/index.html">File sharing and management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../file_workflows/index.html">File workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_database/index.html">Database configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_mimetypes/index.html">Mimetypes management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../maintenance/index.html">Maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../issues/index.html">Issues and troubleshooting</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud 15 Administration Manual</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../contents.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">User management</a> &raquo;</li>
+        
+          <li><a href="user_provisioning_api.html">User provisioning API</a> &raquo;</li>
+        
+      <li>Instruction set for apps</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/nextcloud/documentation/edit/stable15/admin_manual/configuration_user/instruction_set_for_apps.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="instruction-set-for-apps">
+<h1>Instruction set for apps<a class="headerlink" href="#instruction-set-for-apps" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="getlist-of-apps">
+<h2>Getlist of apps<a class="headerlink" href="#getlist-of-apps" title="Permalink to this headline">¶</a></h2>
+<p>Returns a list of apps installed on the Nextcloud server. Authentication is done
+by sending a Basic HTTP Authorization
+header.</p>
+<p><strong>Syntax: ocs/v1.php/cloud/apps/</strong></p>
+<ul class="simple">
+<li>HTTP method: GET</li>
+<li>url argument: filter, string - optional (<code class="docutils literal"><span class="pre">enabled</span></code> or <code class="docutils literal"><span class="pre">disabled</span></code>)</li>
+</ul>
+<p>Status codes:</p>
+<ul class="simple">
+<li>100 - successful</li>
+<li>101 - invalid input data</li>
+</ul>
+<div class="section" id="example">
+<h3>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ curl -X GET http://admin:secret@example.com/ocs/v1.php/cloud/apps?filter=enabled
+</pre></div>
+</div>
+<ul class="simple">
+<li>Gets enabled apps</li>
+</ul>
+</div>
+<div class="section" id="xml-output">
+<h3>XML output<a class="headerlink" href="#xml-output" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span class="nt">&lt;ocs&gt;</span>
+  <span class="nt">&lt;meta&gt;</span>
+    <span class="nt">&lt;statuscode&gt;</span>100<span class="nt">&lt;/statuscode&gt;</span>
+    <span class="nt">&lt;status&gt;</span>ok<span class="nt">&lt;/status&gt;</span>
+  <span class="nt">&lt;/meta&gt;</span>
+  <span class="nt">&lt;data&gt;</span>
+    <span class="nt">&lt;apps&gt;</span>
+      <span class="nt">&lt;element&gt;</span>files<span class="nt">&lt;/element&gt;</span>
+      <span class="nt">&lt;element&gt;</span>provisioning_api<span class="nt">&lt;/element&gt;</span>
+    <span class="nt">&lt;/apps&gt;</span>
+  <span class="nt">&lt;/data&gt;</span>
+<span class="nt">&lt;/ocs&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="get-app-info">
+<h2>Get app info<a class="headerlink" href="#get-app-info" title="Permalink to this headline">¶</a></h2>
+<p>Provides information on a specific application. Authentication is done by
+sending a Basic HTTP Authorization header.</p>
+<p><strong>Syntax: ocs/v1.php/cloud/apps/{appid}</strong></p>
+<ul class="simple">
+<li>HTTP method: GET</li>
+</ul>
+<p>Status codes:</p>
+<ul class="simple">
+<li>100 - successful</li>
+</ul>
+<div class="section" id="id1">
+<h3>Example<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ curl -X GET http://admin:secret@example.com/ocs/v1.php/cloud/apps/files
+</pre></div>
+</div>
+<ul class="simple">
+<li>Get app info for the <code class="docutils literal"><span class="pre">files</span></code> app</li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h3>XML output<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span class="nt">&lt;ocs&gt;</span>
+  <span class="nt">&lt;meta&gt;</span>
+    <span class="nt">&lt;statuscode&gt;</span>100<span class="nt">&lt;/statuscode&gt;</span>
+    <span class="nt">&lt;status&gt;</span>ok<span class="nt">&lt;/status&gt;</span>
+  <span class="nt">&lt;/meta&gt;</span>
+  <span class="nt">&lt;data&gt;</span>
+    <span class="nt">&lt;info/&gt;</span>
+    <span class="nt">&lt;remote&gt;</span>
+      <span class="nt">&lt;files&gt;</span>appinfo/remote.php<span class="nt">&lt;/files&gt;</span>
+      <span class="nt">&lt;webdav&gt;</span>appinfo/remote.php<span class="nt">&lt;/webdav&gt;</span>
+      <span class="nt">&lt;filesync&gt;</span>appinfo/filesync.php<span class="nt">&lt;/filesync&gt;</span>
+    <span class="nt">&lt;/remote&gt;</span>
+    <span class="nt">&lt;public/&gt;</span>
+    <span class="nt">&lt;id&gt;</span>files<span class="nt">&lt;/id&gt;</span>
+    <span class="nt">&lt;name&gt;</span>Files<span class="nt">&lt;/name&gt;</span>
+    <span class="nt">&lt;description&gt;</span>File Management<span class="nt">&lt;/description&gt;</span>
+    <span class="nt">&lt;licence&gt;</span>AGPL<span class="nt">&lt;/licence&gt;</span>
+    <span class="nt">&lt;author&gt;</span>Robin Appelman<span class="nt">&lt;/author&gt;</span>
+    <span class="nt">&lt;require&gt;</span>4.9<span class="nt">&lt;/require&gt;</span>
+    <span class="nt">&lt;shipped&gt;</span>true<span class="nt">&lt;/shipped&gt;</span>
+    <span class="nt">&lt;standalone&gt;&lt;/standalone&gt;</span>
+    <span class="nt">&lt;default_enable&gt;&lt;/default_enable&gt;</span>
+    <span class="nt">&lt;types&gt;</span>
+      <span class="nt">&lt;element&gt;</span>filesystem<span class="nt">&lt;/element&gt;</span>
+    <span class="nt">&lt;/types&gt;</span>
+  <span class="nt">&lt;/data&gt;</span>
+<span class="nt">&lt;/ocs&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="enable-an-app">
+<h2>Enable an app<a class="headerlink" href="#enable-an-app" title="Permalink to this headline">¶</a></h2>
+<p>Enable an app.  Authentication is done by sending a Basic HTTP Authorization
+header.</p>
+<p><strong>Syntax: ocs/v1.php/cloud/apps/{appid}</strong></p>
+<ul class="simple">
+<li>HTTP method: POST</li>
+</ul>
+<p>Status codes:</p>
+<ul class="simple">
+<li>100 - successful</li>
+</ul>
+<div class="section" id="id3">
+<h3>Example<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ curl -X POST http://admin:secret@example.com/ocs/v1.php/cloud/apps/files_texteditor
+</pre></div>
+</div>
+<ul class="simple">
+<li>Enable the <code class="docutils literal"><span class="pre">files_texteditor</span></code> app</li>
+</ul>
+</div>
+<div class="section" id="id4">
+<h3>XML output<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span class="nt">&lt;ocs&gt;</span>
+  <span class="nt">&lt;meta&gt;</span>
+    <span class="nt">&lt;statuscode&gt;</span>100<span class="nt">&lt;/statuscode&gt;</span>
+    <span class="nt">&lt;status&gt;</span>ok<span class="nt">&lt;/status&gt;</span>
+  <span class="nt">&lt;/meta&gt;</span>
+<span class="nt">&lt;/ocs&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="disable-an-app">
+<h2>Disable an app<a class="headerlink" href="#disable-an-app" title="Permalink to this headline">¶</a></h2>
+<p>Disables the specified app. Authentication is
+done by sending a Basic HTTP Authorization header.</p>
+<p><strong>Syntax: ocs/v1.php/cloud/apps/{appid}</strong></p>
+<ul class="simple">
+<li>HTTP method: DELETE</li>
+</ul>
+<p>Status codes:</p>
+<ul class="simple">
+<li>100 - successful</li>
+</ul>
+<div class="section" id="id5">
+<h3>Example<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ curl -X DELETE http://admin:secret@example.com/ocs/v1.php/cloud/apps/files_texteditor
+</pre></div>
+</div>
+<ul class="simple">
+<li>Disable the <code class="docutils literal"><span class="pre">files_texteditor</span></code> app</li>
+</ul>
+</div>
+<div class="section" id="id6">
+<h3>XML output<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span class="nt">&lt;ocs&gt;</span>
+  <span class="nt">&lt;meta&gt;</span>
+    <span class="nt">&lt;statuscode&gt;</span>100<span class="nt">&lt;/statuscode&gt;</span>
+    <span class="nt">&lt;status&gt;</span>ok<span class="nt">&lt;/status&gt;</span>
+  <span class="nt">&lt;/meta&gt;</span>
+<span class="nt">&lt;/ocs&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../configuration_files/index.html" class="btn btn-neutral float-right" title="File sharing and management" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="instruction_set_for_groups.html" class="btn btn-neutral float-left" title="Instruction set for groups" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021 Nextcloud GmbH.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: 15
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/15/admin_manual">15</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/16/admin_manual">16</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/17/admin_manual">17</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/admin_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/admin_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+   
+
+</body>
+</html>

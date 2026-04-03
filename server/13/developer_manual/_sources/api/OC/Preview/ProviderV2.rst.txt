@@ -1,0 +1,145 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+ProviderV2
+==========
+
+
+.. php:namespace:: OC\Preview
+
+.. rst-class::  abstract
+
+.. php:class:: ProviderV2
+
+
+	:Source:
+		`lib/private/Preview/ProviderV2.php#34 <https://github.com/nextcloud/server/blob/stable13/lib/private/Preview/ProviderV2.php#L34>`_
+	
+	:Implements:
+		:php:interface:`OCP\\Preview\\IProviderV2` 
+	
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $options=\[\])
+	
+		.. rst-class:: phpdoc-description
+		
+			| Constructor
+			
+		
+		:Source:
+			`lib/private/Preview/ProviderV2.php#44 <https://github.com/nextcloud/server/blob/stable13/lib/private/Preview/ProviderV2.php#L44>`_
+		
+		
+		:Parameters:
+			* **$options** (array)  
+
+		
+	
+	
+
+.. rst-class:: public abstract
+
+	.. php:method:: public abstract getMimeType()
+	
+		:Source:
+			`lib/private/Preview/ProviderV2.php#51 <https://github.com/nextcloud/server/blob/stable13/lib/private/Preview/ProviderV2.php#L51>`_
+		
+		
+		:Returns: string Regex with the mimetypes that are supported by this provider
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isAvailable( $file)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check if a preview can be generated for $path
+			
+		
+		:Source:
+			`lib/private/Preview/ProviderV2.php#59 <https://github.com/nextcloud/server/blob/stable13/lib/private/Preview/ProviderV2.php#L59>`_
+		
+		
+		:Parameters:
+			* **$file** (:any:`OCP\\Files\\FileInfo <OCP\\Files\\FileInfo>`)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public abstract
+
+	.. php:method:: public abstract getThumbnail( $file, $maxX, $maxY)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get thumbnail for file at path $path
+			
+		
+		:Source:
+			`lib/private/Preview/ProviderV2.php#72 <https://github.com/nextcloud/server/blob/stable13/lib/private/Preview/ProviderV2.php#L72>`_
+		
+		
+		:Parameters:
+			* **$file** (:any:`OCP\\Files\\File <OCP\\Files\\File>`)  
+			* **$maxX** (int)  The maximum X size of the thumbnail. It can be smaller depending on the shape of the image
+			* **$maxY** (int)  The maximum Y size of the thumbnail. It can be smaller depending on the shape of the image
+
+		
+		:Returns: null | :any:`\\OCP\\IImage <OCP\\IImage>` false if no preview was generated
+		:Since: 17.0.0 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected getLocalFile( $file, $maxSize=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get a path to either the local file or temporary file
+			
+		
+		:Source:
+			`lib/private/Preview/ProviderV2.php#81 <https://github.com/nextcloud/server/blob/stable13/lib/private/Preview/ProviderV2.php#L81>`_
+		
+		
+		:Parameters:
+			* **$file** (:any:`OCP\\Files\\File <OCP\\Files\\File>`)  
+			* **$maxSize** (int)  maximum size for temporary files
+
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected cleanTmpFiles()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Clean any generated temporary files
+			
+		
+		:Source:
+			`lib/private/Preview/ProviderV2.php#103 <https://github.com/nextcloud/server/blob/stable13/lib/private/Preview/ProviderV2.php#L103>`_
+		
+		
+	
+	
+

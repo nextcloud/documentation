@@ -1,0 +1,355 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Installing PHP 7.0 on RHEL 7 and CentOS 7 &mdash; Nextcloud 13 Administration Manual 13 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'13',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="SELinux configuration" href="selinux_configuration.html" />
+    <link rel="prev" title="Installing PHP 5.6 on RHEL 6/7 and CentOS 6/7" href="php_56_installation.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../contents.html">
+          
+
+          
+            
+            <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes.html">Release notes</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Installation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="system_requirements.html">System requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deployment_recommendations.html">Deployment recommendations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="source_installation.html">Installation on Linux</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation_wizard.html">Installation wizard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command_line_installation.html">Installing from command line</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apps_management_installation.html">Installing and managing apps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apps_supported.html">Supported apps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="php_56_installation.html">Installing PHP 5.6 on RHEL 6/7 and CentOS 6/7</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Installing PHP 7.0 on RHEL 7 and CentOS 7</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#rhel-7-upgrade-to-php-7-0">RHEL 7 Upgrade to PHP 7.0</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#centos-7-upgrade-to-php-7-0">CentOS 7 Upgrade to PHP 7.0</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="selinux_configuration.html">SELinux configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nginx.html">Nginx configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_server/index.html">Server configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_user/index.html">User management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_files/index.html">File sharing and management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../file_workflows/index.html">File workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_database/index.html">Database configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_mimetypes/index.html">Mimetypes management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../maintenance/index.html">Maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../issues/index.html">Issues and troubleshooting</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud 13 Administration Manual</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../contents.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Installation</a> &raquo;</li>
+        
+      <li>Installing PHP 7.0 on RHEL 7 and CentOS 7</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/nextcloud/documentation/edit/stable13/admin_manual/installation/php_70_installation.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="installing-php-7-0-on-rhel-7-and-centos-7">
+<h1>Installing PHP 7.0 on RHEL 7 and CentOS 7<a class="headerlink" href="#installing-php-7-0-on-rhel-7-and-centos-7" title="Permalink to this headline">¶</a></h1>
+<p>PHP 5.4 has been end-of-life since September 2015 and is no longer supported by the PHP team. RHEL 7 still ships with PHP 5.4, and Red Hat supports it. Nextcloud 11+ requires PHP 5.6 or better, so upgrading to 5.6 is required. For more information see <a class="reference internal" href="php_56_installation.html#label-php56installation"><span class="std std-ref">Installing PHP 5.6 on RHEL 6/7 and CentOS 6/7</span></a>. However, it is highly recommended to upgrade to PHP 7.0+ for best security and performance.</p>
+<p><strong>Before upgrading, evaluate all of your PHP apps for compatibility with PHP 7.0.</strong></p>
+<div class="section" id="rhel-7-upgrade-to-php-7-0">
+<h2>RHEL 7 Upgrade to PHP 7.0<a class="headerlink" href="#rhel-7-upgrade-to-php-7-0" title="Permalink to this headline">¶</a></h2>
+<p>To upgrade to PHP 7.0, you must use the Software Collections (SCL) repository to be in compliance with your RHEL support contract, and not any other third-party repository. Follow these steps to install PHP 7.0 from SCL. First you must use your Subscription Manager to enable SCL:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">subscription</span><span class="o">-</span><span class="n">manager</span> <span class="n">repos</span> <span class="o">--</span><span class="n">enable</span> <span class="n">rhel</span><span class="o">-</span><span class="n">server</span><span class="o">-</span><span class="n">rhscl</span><span class="o">-</span><span class="mi">7</span><span class="o">-</span><span class="n">eus</span><span class="o">-</span><span class="n">rpms</span>
+</pre></div>
+</div>
+<p>Then install PHP 7.0 and these modules:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">yum</span> <span class="n">install</span> <span class="n">rh</span><span class="o">-</span><span class="n">php70</span> <span class="n">rh</span><span class="o">-</span><span class="n">php70</span><span class="o">-</span><span class="n">php</span> <span class="n">rh</span><span class="o">-</span><span class="n">php70</span><span class="o">-</span><span class="n">php</span><span class="o">-</span><span class="n">gd</span> <span class="n">rh</span><span class="o">-</span><span class="n">php70</span><span class="o">-</span><span class="n">php</span><span class="o">-</span><span class="n">mbstring</span>
+</pre></div>
+</div>
+<p>You must also install the updated database module for your database. This installs the new PHP 7.0 module for MySQL/MariaDB:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">yum</span> <span class="n">install</span> <span class="n">rh</span><span class="o">-</span><span class="n">php70</span><span class="o">-</span><span class="n">php</span><span class="o">-</span><span class="n">mysqlnd</span>
+</pre></div>
+</div>
+<p>If you are using the Nextcloud LDAP app, you need this module:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">yum</span> <span class="n">install</span> <span class="n">rh</span><span class="o">-</span><span class="n">php70</span><span class="o">-</span><span class="n">php</span><span class="o">-</span><span class="n">ldap</span>
+</pre></div>
+</div>
+<p>Disable loading the old PHP Apache modules by changing their names:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">mv</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">httpd</span><span class="o">/</span><span class="n">conf</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="n">php</span><span class="o">.</span><span class="n">conf</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">httpd</span><span class="o">/</span><span class="n">conf</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="n">php54</span><span class="o">.</span><span class="n">off</span>
+<span class="n">mv</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">httpd</span><span class="o">/</span><span class="n">conf</span><span class="o">.</span><span class="n">modules</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="mi">10</span><span class="o">-</span><span class="n">php</span><span class="o">.</span><span class="n">conf</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">httpd</span><span class="o">/</span><span class="n">conf</span><span class="o">.</span><span class="n">modules</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="mi">10</span><span class="o">-</span><span class="n">php54</span><span class="o">.</span><span class="n">off</span>
+</pre></div>
+</div>
+<p>Symlink the PHP 7.0 Apache modules into place:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ln</span> <span class="o">-</span><span class="n">s</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">rh</span><span class="o">/</span><span class="n">httpd24</span><span class="o">/</span><span class="n">root</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">httpd</span><span class="o">/</span><span class="n">conf</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="n">rh</span><span class="o">-</span><span class="n">php70</span><span class="o">-</span><span class="n">php</span><span class="o">.</span><span class="n">conf</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">httpd</span><span class="o">/</span><span class="n">conf</span><span class="o">.</span><span class="n">d</span><span class="o">/</span>
+<span class="n">ln</span> <span class="o">-</span><span class="n">s</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">rh</span><span class="o">/</span><span class="n">httpd24</span><span class="o">/</span><span class="n">root</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">httpd</span><span class="o">/</span><span class="n">conf</span><span class="o">.</span><span class="n">modules</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="mi">15</span><span class="o">-</span><span class="n">rh</span><span class="o">-</span><span class="n">php70</span><span class="o">-</span><span class="n">php</span><span class="o">.</span><span class="n">conf</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">httpd</span><span class="o">/</span><span class="n">conf</span><span class="o">.</span><span class="n">modules</span><span class="o">.</span><span class="n">d</span><span class="o">/</span>
+<span class="n">ln</span> <span class="o">-</span><span class="n">s</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">rh</span><span class="o">/</span><span class="n">httpd24</span><span class="o">/</span><span class="n">root</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">httpd</span><span class="o">/</span><span class="n">modules</span><span class="o">/</span><span class="n">librh</span><span class="o">-</span><span class="n">php70</span><span class="o">-</span><span class="n">php7</span><span class="o">.</span><span class="n">so</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">httpd</span><span class="o">/</span><span class="n">modules</span><span class="o">/</span>
+</pre></div>
+</div>
+<p>Then restart Apache:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">service</span> <span class="n">httpd</span> <span class="n">restart</span>
+</pre></div>
+</div>
+<p>Verify with <code class="docutils literal"><span class="pre">phpinfo</span></code> that your Apache server is using PHP 7.0 and loading the
+correct modules; see <a class="reference internal" href="../issues/general_troubleshooting.html#label-phpinfo"><span class="std std-ref">PHP version and information</span></a> to learn how to use phpinfo.</p>
+</div>
+<div class="section" id="centos-7-upgrade-to-php-7-0">
+<h2>CentOS 7 Upgrade to PHP 7.0<a class="headerlink" href="#centos-7-upgrade-to-php-7-0" title="Permalink to this headline">¶</a></h2>
+<p>To upgrade to PHP 7.0, use the Red Hat Software Collections (SCL) repository.</p>
+<p><strong>Before upgrading, evaluate all of your PHP apps for compatibility with PHP 7.0.</strong></p>
+<p>Follow these steps to install PHP 7.0 from SCL. First install the SCL repository:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">yum</span> <span class="n">install</span> <span class="n">centos</span><span class="o">-</span><span class="n">release</span><span class="o">-</span><span class="n">scl</span>
+</pre></div>
+</div>
+<p>Then install PHP 7.0 and these modules:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">yum</span> <span class="n">install</span> <span class="n">rh</span><span class="o">-</span><span class="n">php70</span> <span class="n">rh</span><span class="o">-</span><span class="n">php70</span><span class="o">-</span><span class="n">php</span> <span class="n">rh</span><span class="o">-</span><span class="n">php70</span><span class="o">-</span><span class="n">php</span><span class="o">-</span><span class="n">gd</span> <span class="n">rh</span><span class="o">-</span><span class="n">php70</span><span class="o">-</span><span class="n">php</span><span class="o">-</span><span class="n">mbstring</span>
+</pre></div>
+</div>
+<p>You must also install the updated database module for your database. This installs the new PHP 7.0 module for MySQL/MariaDB:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">yum</span> <span class="n">install</span> <span class="n">rh</span><span class="o">-</span><span class="n">php70</span><span class="o">-</span><span class="n">php</span><span class="o">-</span><span class="n">mysqlnd</span>
+</pre></div>
+</div>
+<p>If you are using the Nextcloud LDAP app, you need this module:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">yum</span> <span class="n">install</span> <span class="n">rh</span><span class="o">-</span><span class="n">php70</span><span class="o">-</span><span class="n">php</span><span class="o">-</span><span class="n">ldap</span>
+</pre></div>
+</div>
+<p>Disable loading the old PHP Apache modules by changing their names:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">mv</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">httpd</span><span class="o">/</span><span class="n">conf</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="n">php</span><span class="o">.</span><span class="n">conf</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">httpd</span><span class="o">/</span><span class="n">conf</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="n">php54</span><span class="o">.</span><span class="n">off</span>
+<span class="n">mv</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">httpd</span><span class="o">/</span><span class="n">conf</span><span class="o">.</span><span class="n">modules</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="mi">10</span><span class="o">-</span><span class="n">php</span><span class="o">.</span><span class="n">conf</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">httpd</span><span class="o">/</span><span class="n">conf</span><span class="o">.</span><span class="n">modules</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="mi">10</span><span class="o">-</span><span class="n">php54</span><span class="o">.</span><span class="n">off</span>
+</pre></div>
+</div>
+<p>Symlink the PHP 7.0 Apache modules into place:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ln</span> <span class="o">-</span><span class="n">s</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">rh</span><span class="o">/</span><span class="n">httpd24</span><span class="o">/</span><span class="n">root</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">httpd</span><span class="o">/</span><span class="n">conf</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="n">rh</span><span class="o">-</span><span class="n">php70</span><span class="o">-</span><span class="n">php</span><span class="o">.</span><span class="n">conf</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">httpd</span><span class="o">/</span><span class="n">conf</span><span class="o">.</span><span class="n">d</span><span class="o">/</span>
+<span class="n">ln</span> <span class="o">-</span><span class="n">s</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">rh</span><span class="o">/</span><span class="n">httpd24</span><span class="o">/</span><span class="n">root</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">httpd</span><span class="o">/</span><span class="n">conf</span><span class="o">.</span><span class="n">modules</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="mi">15</span><span class="o">-</span><span class="n">rh</span><span class="o">-</span><span class="n">php70</span><span class="o">-</span><span class="n">php</span><span class="o">.</span><span class="n">conf</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">httpd</span><span class="o">/</span><span class="n">conf</span><span class="o">.</span><span class="n">modules</span><span class="o">.</span><span class="n">d</span><span class="o">/</span>
+<span class="n">ln</span> <span class="o">-</span><span class="n">s</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">rh</span><span class="o">/</span><span class="n">httpd24</span><span class="o">/</span><span class="n">root</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">httpd</span><span class="o">/</span><span class="n">modules</span><span class="o">/</span><span class="n">librh</span><span class="o">-</span><span class="n">php70</span><span class="o">-</span><span class="n">php7</span><span class="o">.</span><span class="n">so</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">httpd</span><span class="o">/</span><span class="n">modules</span><span class="o">/</span>
+</pre></div>
+</div>
+<p>Then restart Apache:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">service</span> <span class="n">httpd</span> <span class="n">restart</span>
+</pre></div>
+</div>
+<p>Verify with <code class="docutils literal"><span class="pre">phpinfo</span></code> that your Apache server is using PHP 7.0 and loading the
+correct modules; see <a class="reference internal" href="../issues/general_troubleshooting.html#label-phpinfo"><span class="std std-ref">PHP version and information</span></a> to learn how to use <code class="docutils literal"><span class="pre">phpinfo</span></code>.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="selinux_configuration.html" class="btn btn-neutral float-right" title="SELinux configuration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="php_56_installation.html" class="btn btn-neutral float-left" title="Installing PHP 5.6 on RHEL 6/7 and CentOS 6/7" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021 Nextcloud GmbH.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: 13
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/13/admin_manual">13</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/14/admin_manual">14</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/15/admin_manual">15</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/admin_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/admin_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+   
+
+</body>
+</html>

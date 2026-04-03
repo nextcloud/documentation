@@ -1,0 +1,333 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+Archive
+=======
+
+
+.. php:namespace:: OC\Archive
+
+.. rst-class::  abstract
+
+.. php:class:: Archive
+
+
+	:Source:
+		`lib/private/Archive/Archive.php#33 <https://github.com/nextcloud/server/blob/stable13/lib/private/Archive/Archive.php#L33>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public abstract
+
+	.. php:method:: public abstract __construct( $source)
+	
+		:Source:
+			`lib/private/Archive/Archive.php#37 <https://github.com/nextcloud/server/blob/stable13/lib/private/Archive/Archive.php#L37>`_
+		
+		
+		:Parameters:
+			* **$source**  
+
+		
+	
+	
+
+.. rst-class:: public abstract
+
+	.. php:method:: public abstract addFolder( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| add an empty folder to the archive
+			
+		
+		:Source:
+			`lib/private/Archive/Archive.php#43 <https://github.com/nextcloud/server/blob/stable13/lib/private/Archive/Archive.php#L43>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public abstract
+
+	.. php:method:: public abstract addFile( $path, $source="")
+	
+		.. rst-class:: phpdoc-description
+		
+			| add a file to the archive
+			
+		
+		:Source:
+			`lib/private/Archive/Archive.php#50 <https://github.com/nextcloud/server/blob/stable13/lib/private/Archive/Archive.php#L50>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+			* **$source** (string)  either a local file or string data
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public abstract
+
+	.. php:method:: public abstract rename( $source, $dest)
+	
+		.. rst-class:: phpdoc-description
+		
+			| rename a file or folder in the archive
+			
+		
+		:Source:
+			`lib/private/Archive/Archive.php#57 <https://github.com/nextcloud/server/blob/stable13/lib/private/Archive/Archive.php#L57>`_
+		
+		
+		:Parameters:
+			* **$source** (string)  
+			* **$dest** (string)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public abstract
+
+	.. php:method:: public abstract filesize( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get the uncompressed size of a file in the archive
+			
+		
+		:Source:
+			`lib/private/Archive/Archive.php#63 <https://github.com/nextcloud/server/blob/stable13/lib/private/Archive/Archive.php#L63>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: int 
+	
+	
+
+.. rst-class:: public abstract
+
+	.. php:method:: public abstract mtime( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get the last modified time of a file in the archive
+			
+		
+		:Source:
+			`lib/private/Archive/Archive.php#69 <https://github.com/nextcloud/server/blob/stable13/lib/private/Archive/Archive.php#L69>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: int 
+	
+	
+
+.. rst-class:: public abstract
+
+	.. php:method:: public abstract getFolder( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get the files in a folder
+			
+		
+		:Source:
+			`lib/private/Archive/Archive.php#75 <https://github.com/nextcloud/server/blob/stable13/lib/private/Archive/Archive.php#L75>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: array 
+	
+	
+
+.. rst-class:: public abstract
+
+	.. php:method:: public abstract getFiles()
+	
+		.. rst-class:: phpdoc-description
+		
+			| get all files in the archive
+			
+		
+		:Source:
+			`lib/private/Archive/Archive.php#80 <https://github.com/nextcloud/server/blob/stable13/lib/private/Archive/Archive.php#L80>`_
+		
+		
+		:Returns: array 
+	
+	
+
+.. rst-class:: public abstract
+
+	.. php:method:: public abstract getFile( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get the content of a file
+			
+		
+		:Source:
+			`lib/private/Archive/Archive.php#86 <https://github.com/nextcloud/server/blob/stable13/lib/private/Archive/Archive.php#L86>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public abstract
+
+	.. php:method:: public abstract extractFile( $path, $dest)
+	
+		.. rst-class:: phpdoc-description
+		
+			| extract a single file from the archive
+			
+		
+		:Source:
+			`lib/private/Archive/Archive.php#93 <https://github.com/nextcloud/server/blob/stable13/lib/private/Archive/Archive.php#L93>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+			* **$dest** (string)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public abstract
+
+	.. php:method:: public abstract extract( $dest)
+	
+		.. rst-class:: phpdoc-description
+		
+			| extract the archive
+			
+		
+		:Source:
+			`lib/private/Archive/Archive.php#99 <https://github.com/nextcloud/server/blob/stable13/lib/private/Archive/Archive.php#L99>`_
+		
+		
+		:Parameters:
+			* **$dest** (string)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public abstract
+
+	.. php:method:: public abstract fileExists( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| check if a file or folder exists in the archive
+			
+		
+		:Source:
+			`lib/private/Archive/Archive.php#105 <https://github.com/nextcloud/server/blob/stable13/lib/private/Archive/Archive.php#L105>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public abstract
+
+	.. php:method:: public abstract remove( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| remove a file or folder from the archive
+			
+		
+		:Source:
+			`lib/private/Archive/Archive.php#111 <https://github.com/nextcloud/server/blob/stable13/lib/private/Archive/Archive.php#L111>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public abstract
+
+	.. php:method:: public abstract getStream( $path, $mode)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get a file handler
+			
+		
+		:Source:
+			`lib/private/Archive/Archive.php#118 <https://github.com/nextcloud/server/blob/stable13/lib/private/Archive/Archive.php#L118>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+			* **$mode** (string)  
+
+		
+		:Returns: bool | resource 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public addRecursive( $path, $source)
+	
+		.. rst-class:: phpdoc-description
+		
+			| add a folder and all its content
+			
+		
+		:Source:
+			`lib/private/Archive/Archive.php#124 <https://github.com/nextcloud/server/blob/stable13/lib/private/Archive/Archive.php#L124>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+			* **$source** (string)  
+
+		
+	
+	
+

@@ -1,0 +1,84 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IInitialStateService
+====================
+
+
+.. php:namespace:: OCP
+
+.. php:interface:: IInitialStateService
+
+
+	:Implemented by:
+		:php:class:`OC\\InitialStateService` 
+	
+	
+	:Source:
+		`lib/public/IInitialStateService.php#37 <https://github.com/nextcloud/server/blob/stable13/lib/public/IInitialStateService.php#L37>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public provideInitialState( $appName, $key, $data)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Allows an app to provide its initial state to the template system\.
+			
+			| Use this if you know your initial state sill be used for example if
+			| you are in the render function of you controller\.
+			
+		
+		:Source:
+			`lib/public/IInitialStateService.php#52 <https://github.com/nextcloud/server/blob/stable13/lib/public/IInitialStateService.php#L52>`_
+		
+		
+		:Parameters:
+			* **$appName** (string)  
+			* **$key** (string)  
+			* **$data** (bool | int | float | string | array | :any:`\\JsonSerializable <JsonSerializable>`)  
+
+		
+		:Since: 16.0.0 
+		:Deprecated: 21 Use OCP\\AppFramework\\Services\\IInitialState or OCP\\AppFramework\\Services\\InitialStateProvider
+		:See: :any:`\\OCP\\AppFramework\\Services\\IInitialState::provideInitialState\(\) <OCP\\AppFramework\\Services\\IInitialState::provideInitialState\(\)>` 
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public provideLazyInitialState( $appName, $key, $closure)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Allows an app to provide its initial state via a lazy method\.
+			
+			| This will call the closure when the template is being generated\.
+			| Use this if your app is injected into pages\. Since then the render method
+			| is not called explicitly\. But we do not want to load the state on webdav
+			| requests for example\.
+			
+		
+		:Source:
+			`lib/public/IInitialStateService.php#70 <https://github.com/nextcloud/server/blob/stable13/lib/public/IInitialStateService.php#L70>`_
+		
+		
+		:Parameters:
+			* **$appName** (string)  
+			* **$key** (string)  
+			* **$closure** (:any:`Closure <Closure>`)  returns a primitive or an object that implements JsonSerializable
+
+		
+		:Since: 16.0.0 
+		:Deprecated: 21 Use OCP\\AppFramework\\Services\\IInitialState or OCP\\AppFramework\\Services\\InitialStateProvider
+		:See: :any:`\\OCP\\AppFramework\\Services\\IInitialState::provideLazyInitialState\(\) <OCP\\AppFramework\\Services\\IInitialState::provideLazyInitialState\(\)>` 
+	
+	
+

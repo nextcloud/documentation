@@ -1,0 +1,194 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+ISystemTagObjectMapper
+======================
+
+
+.. php:namespace:: OCP\SystemTag
+
+.. php:interface:: ISystemTagObjectMapper
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Public interface to access and manage system\-wide tags\.
+		
+	
+	:Implemented by:
+		:php:class:`OC\\SystemTag\\SystemTagObjectMapper` 
+	
+	
+	:Source:
+		`lib/public/SystemTag/ISystemTagObjectMapper.php#35 <https://github.com/nextcloud/server/blob/stable13/lib/public/SystemTag/ISystemTagObjectMapper.php#L35>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public getTagIdsForObjects( $objIds, $objectType)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get a list of tag ids for the given object ids\.
+			
+			| This returns an array that maps object id to tag ids
+			| \[
+			|   1 =\> array\(\'id1\', \'id2\'\),
+			|   2 =\> array\(\'id3\', \'id2\'\),
+			|   3 =\> array\(\'id5\'\),
+			|   4 =\> array\(\)
+			| \]
+			| 
+			| Untagged objects will have an empty array associated\.
+			
+		
+		:Source:
+			`lib/public/SystemTag/ISystemTagObjectMapper.php#58 <https://github.com/nextcloud/server/blob/stable13/lib/public/SystemTag/ISystemTagObjectMapper.php#L58>`_
+		
+		
+		:Parameters:
+			* **$objIds** (string | array)  object ids
+			* **$objectType** (string)  object type
+
+		
+		:Returns: array with object id as key and an array
+			of tag ids as value
+		
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getObjectIdsForTags( $tagIds, $objectType, $limit=0, $offset="")
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get a list of objects tagged with $tagIds\.
+			
+		
+		:Source:
+			`lib/public/SystemTag/ISystemTagObjectMapper.php#77 <https://github.com/nextcloud/server/blob/stable13/lib/public/SystemTag/ISystemTagObjectMapper.php#L77>`_
+		
+		
+		:Parameters:
+			* **$tagIds** (string | array)  Tag id or array of tag ids.
+			* **$objectType** (string)  object type
+			* **$limit** (int)  Count of object ids you want to get
+			* **$offset** (string)  The last object id you already received
+
+		
+		:Returns: string[] array of object ids or empty array if none found
+		:Throws: :any:`\\OCP\\SystemTag\\TagNotFoundException <OCP\\SystemTag\\TagNotFoundException>` if at least one of the
+			given tags does not exist
+		
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` When a limit is specified together with
+			multiple tag ids
+		
+		:Throws: :any:`\\OCP\\SystemTag\\TagNotFoundException <OCP\\SystemTag\\TagNotFoundException>` if at least one of the
+			given tags does not exist
+		
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` When a limit is specified together with
+			multiple tag ids
+		
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public assignTags( $objId, $objectType, $tagIds)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Assign the given tags to the given object\.
+			
+			| If at least one of the given tag ids doesn\'t exist, none of the tags
+			| will be assigned\.
+			| 
+			| If the relationship already existed, fail silently\.
+			
+		
+		:Source:
+			`lib/public/SystemTag/ISystemTagObjectMapper.php#96 <https://github.com/nextcloud/server/blob/stable13/lib/public/SystemTag/ISystemTagObjectMapper.php#L96>`_
+		
+		
+		:Parameters:
+			* **$objId** (string)  object id
+			* **$objectType** (string)  object type
+			* **$tagIds** (string | array)  tag id or array of tag ids to assign
+
+		
+		:Throws: :any:`\\OCP\\SystemTag\\TagNotFoundException <OCP\\SystemTag\\TagNotFoundException>` if at least one of the
+			given tags does not exist
+		
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public unassignTags( $objId, $objectType, $tagIds)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Unassign the given tags from the given object\.
+			
+			| If at least one of the given tag ids doesn\'t exist, none of the tags
+			| will be unassigned\.
+			| 
+			| If the relationship did not exist in the first place, fail silently\.
+			
+		
+		:Source:
+			`lib/public/SystemTag/ISystemTagObjectMapper.php#115 <https://github.com/nextcloud/server/blob/stable13/lib/public/SystemTag/ISystemTagObjectMapper.php#L115>`_
+		
+		
+		:Parameters:
+			* **$objId** (string)  object id
+			* **$objectType** (string)  object type
+			* **$tagIds** (string | array)  tag id or array of tag ids to unassign
+
+		
+		:Throws: :any:`\\OCP\\SystemTag\\TagNotFoundException <OCP\\SystemTag\\TagNotFoundException>` if at least one of the
+			given tags does not exist
+		
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public haveTag( $objIds, $objectType, $tagId, $all=true)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Checks whether the given objects have the given tag\.
+			
+		
+		:Source:
+			`lib/public/SystemTag/ISystemTagObjectMapper.php#133 <https://github.com/nextcloud/server/blob/stable13/lib/public/SystemTag/ISystemTagObjectMapper.php#L133>`_
+		
+		
+		:Parameters:
+			* **$objIds** (string | array)  object ids
+			* **$objectType** (string)  object type
+			* **$tagId** (string)  tag id to check
+			* **$all** (bool)  true to check that ALL objects have the tag assigned,
+			false to check that at least ONE object has the tag.
+
+		
+		:Returns: bool true if the condition set by $all is matched, false
+			otherwise
+		
+		:Throws: :any:`\\OCP\\SystemTag\\TagNotFoundException <OCP\\SystemTag\\TagNotFoundException>` if the tag does not exist
+		:Since: 9.0.0 
+	
+	
+

@@ -1,0 +1,1052 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Session &mdash; Nextcloud 14 Developer Manual 14 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../../',
+              VERSION:'14',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="User" href="User.html" />
+    <link rel="prev" title="NoUserException" href="NoUserException.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html">
+          
+
+          
+            
+            <img src="../../../_static/logo-white.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../general/index.html">General contributor guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/startapp.html">Create an app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/init.html">Navigation and pre-app configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/info.html">App metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/classloader.html">Classloader</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/request.html">Request lifecycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/routes.html">Routing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/middleware.html">Middleware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/container.html">Container</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/controllers.html">Controllers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/api.html">RESTful API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/templates.html">Templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/js.html">JavaScript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/css.html">CSS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/l10n.html">Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/theming.html">Theming support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/schema.html">Database schema</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/database.html">Database access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/filesystem.html">Filesystem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/appdata.html">AppData</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/users.html">User management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/two-factor-provider.html">Two-factor providers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/hooks.html">Hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/backgroundjobs.html">Background jobs (Cron)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/settings.html">Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/logging.html">Logging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/migrations.html">Migrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/repair.html">Repair steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/publishing.html">App store publishing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/code_signing.html">Code signing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../design/index.html">Design guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../android_library/index.html">Android application development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../client_apis/index.html">Client APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../core/index.html">Core development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../bugtracker/index.html">Bugtracker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../commun/index.html">Help and communication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api.html">API Documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Nextcloud 14 Developer Manual</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../../api.html">API Documentation</a> &raquo;</li>
+        
+          <li><a href="../../index.html">\</a> &raquo;</li>
+        
+          <li><a href="../index.html">OC</a> &raquo;</li>
+        
+          <li><a href="index.html">User</a> &raquo;</li>
+        
+      <li>Session</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/nextcloud/documentation/edit/stable14/developer_manual/api/OC/User/Session.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="phpdoctorst section" id="namespace-OC\User">
+<span id="session"></span><h1>Session<a class="headerlink" href="#namespace-OC\User" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="OC\User\Session">
+<em class="property">class </em><code class="descclassname">OC\User\</code><code class="descname">Session</code><a class="headerlink" href="#OC\User\Session" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Class Session</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">Hooks available in scope \OC\User:</div>
+<div class="line">- preSetPassword(\OC\User\User $user, string $password, string $recoverPassword)</div>
+<div class="line">- postSetPassword(\OC\User\User $user, string $password, string $recoverPassword)</div>
+<div class="line">- preDelete(\OC\User\User $user)</div>
+<div class="line">- postDelete(\OC\User\User $user)</div>
+<div class="line">- preCreateUser(string $uid, string $password)</div>
+<div class="line">- postCreateUser(\OC\User\User $user)</div>
+<div class="line">- assignedUserId(string $uid)</div>
+<div class="line">- preUnassignedUserId(string $uid)</div>
+<div class="line">- postUnassignedUserId(string $uid)</div>
+<div class="line">- preLogin(string $user, string $password)</div>
+<div class="line">- postLogin(\OC\User\User $user, string $loginName, string $password, boolean $isTokenLogin)</div>
+<div class="line">- preRememberedLogin(string $uid)</div>
+<div class="line">- postRememberedLogin(\OC\User\User $user)</div>
+<div class="line">- logout()</div>
+<div class="line">- postLogout()</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/User/Session.php#L92">lib/private/User/Session.php#92</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Implements:</th><td class="field-body"><a class="reference internal" href="../../OCP/IUserSession.html#OCP\IUserSession" title="OCP\IUserSession"><code class="xref php php-interface docutils literal"><span class="pre">OCP\IUserSession</span></code></a> <a class="reference internal" href="../Hooks/Emitter.html#OC\Hooks\Emitter" title="OC\Hooks\Emitter"><code class="xref php php-interface docutils literal"><span class="pre">OC\Hooks\Emitter</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<div class="section" id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h2>
+<dl class="attr">
+<dt id="OC\User\Session::$activeUser">
+<em class="property">protected </em><em class="property">static </em><em class="property">property </em><code class="descclassname">OC\User\Session::$</code><code class="descname">activeUser</code><a class="headerlink" href="#OC\User\Session::$activeUser" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/User/Session.php#L110">lib/private/User/Session.php#110</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body"><a class="reference internal" href="User.html#OC\User\User" title="OC\User\User"><code class="xref any php php-trait docutils literal"><span class="pre">\OC\User\User</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h2>
+<dl class="public method">
+<dt id="OC\User\Session::__construct">
+<em class="property">public </em><code class="descclassname">OC\User\Session::</code><code class="descname">__construct</code><span class="sig-paren">(</span><em>$manager</em>, <em>$session</em>, <em>$timeFactory</em>, <em>$tokenProvider</em>, <em>$config</em>, <em>$random</em>, <em>$lockdownManager</em>, <em>$logger</em>, <em>$dispatcher</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\User\Session::__construct" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/User/Session.php#L133">lib/private/User/Session.php#133</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>$manager</strong> (<a class="reference internal" href="Manager.html#OC\User\Manager" title="OC\User\Manager"><code class="xref any php php-trait docutils literal"><span class="pre">OC\User\Manager</span></code></a>)</li>
+<li><strong>$session</strong> (<a class="reference internal" href="../../OCP/ISession.html#OCP\ISession" title="OCP\ISession"><code class="xref any php php-trait docutils literal"><span class="pre">OCP\ISession</span></code></a>)</li>
+<li><strong>$timeFactory</strong> (<a class="reference internal" href="../../OCP/AppFramework/Utility/ITimeFactory.html#OCP\AppFramework\Utility\ITimeFactory" title="OCP\AppFramework\Utility\ITimeFactory"><code class="xref any php php-trait docutils literal"><span class="pre">OCP\AppFramework\Utility\ITimeFactory</span></code></a>)</li>
+<li><strong>$tokenProvider</strong> (<a class="reference internal" href="../Authentication/Token/IProvider.html#OC\Authentication\Token\IProvider" title="OC\Authentication\Token\IProvider"><code class="xref any php php-trait docutils literal"><span class="pre">OC\Authentication\Token\IProvider</span></code></a>)</li>
+<li><strong>$config</strong> (<a class="reference internal" href="../../OCP/IConfig.html#OCP\IConfig" title="OCP\IConfig"><code class="xref any php php-trait docutils literal"><span class="pre">OCP\IConfig</span></code></a>)</li>
+<li><strong>$random</strong> (<a class="reference internal" href="../../OCP/Security/ISecureRandom.html#OCP\Security\ISecureRandom" title="OCP\Security\ISecureRandom"><code class="xref any php php-trait docutils literal"><span class="pre">OCP\Security\ISecureRandom</span></code></a>)</li>
+<li><strong>$lockdownManager</strong> (<a class="reference internal" href="../../OCP/Lockdown/ILockdownManager.html#OCP\Lockdown\ILockdownManager" title="OCP\Lockdown\ILockdownManager"><code class="xref any php php-trait docutils literal"><span class="pre">OCP\Lockdown\ILockdownManager</span></code></a>)</li>
+<li><strong>$logger</strong> (<a class="reference internal" href="../../OCP/ILogger.html#OCP\ILogger" title="OCP\ILogger"><code class="xref any php php-trait docutils literal"><span class="pre">OCP\ILogger</span></code></a>)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\User\Session::setTokenProvider">
+<em class="property">public </em><code class="descclassname">OC\User\Session::</code><code class="descname">setTokenProvider</code><span class="sig-paren">(</span><em>$provider</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\User\Session::setTokenProvider" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/User/Session.php#L157">lib/private/User/Session.php#157</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>$provider</strong> (<a class="reference internal" href="../Authentication/Token/IProvider.html#OC\Authentication\Token\IProvider" title="OC\Authentication\Token\IProvider"><code class="xref any php php-trait docutils literal"><span class="pre">OC\Authentication\Token\IProvider</span></code></a>)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\User\Session::listen">
+<em class="property">public </em><code class="descclassname">OC\User\Session::</code><code class="descname">listen</code><span class="sig-paren">(</span><em>$scope</em>, <em>$method</em>, <em>$callback</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\User\Session::listen" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/User/Session.php#L166">lib/private/User/Session.php#166</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>$scope</strong> (string)</li>
+<li><strong>$method</strong> (string)</li>
+<li><strong>$callback</strong> (callable)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\User\Session::removeListener">
+<em class="property">public </em><code class="descclassname">OC\User\Session::</code><code class="descname">removeListener</code><span class="sig-paren">(</span><em>$scope=null</em>, <em>$method=null</em>, <em>$callback=null</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\User\Session::removeListener" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/User/Session.php#L175">lib/private/User/Session.php#175</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>$scope</strong> (string)  optional</li>
+<li><strong>$method</strong> (string)  optional</li>
+<li><strong>$callback</strong> (callable)  optional</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\User\Session::getManager">
+<em class="property">public </em><code class="descclassname">OC\User\Session::</code><code class="descname">getManager</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\User\Session::getManager" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">get the manager object</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/User/Session.php#L184">lib/private/User/Session.php#184</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="Manager.html#OC\User\Manager" title="OC\User\Manager"><code class="xref any php php-trait docutils literal"><span class="pre">\OC\User\Manager</span></code></a> | <a class="reference internal" href="../Hooks/PublicEmitter.html#OC\Hooks\PublicEmitter" title="OC\Hooks\PublicEmitter"><code class="xref any php php-trait docutils literal"><span class="pre">\OC\Hooks\PublicEmitter</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\User\Session::getSession">
+<em class="property">public </em><code class="descclassname">OC\User\Session::</code><code class="descname">getSession</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\User\Session::getSession" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">get the session object</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/User/Session.php#L193">lib/private/User/Session.php#193</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="../../OCP/ISession.html#OCP\ISession" title="OCP\ISession"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\ISession</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\User\Session::setSession">
+<em class="property">public </em><code class="descclassname">OC\User\Session::</code><code class="descname">setSession</code><span class="sig-paren">(</span><em>$session</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\User\Session::setSession" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">set the session object</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/User/Session.php#L202">lib/private/User/Session.php#202</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>$session</strong> (<a class="reference internal" href="../../OCP/ISession.html#OCP\ISession" title="OCP\ISession"><code class="xref any php php-trait docutils literal"><span class="pre">OCP\ISession</span></code></a>)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\User\Session::setUser">
+<em class="property">public </em><code class="descclassname">OC\User\Session::</code><code class="descname">setUser</code><span class="sig-paren">(</span><em>$user</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\User\Session::setUser" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">set the currently active user</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/User/Session.php#L215">lib/private/User/Session.php#215</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>$user</strong> (<a class="reference internal" href="../../OCP/IUser.html#OCP\IUser" title="OCP\IUser"><code class="xref any php php-trait docutils literal"><span class="pre">OCP\IUser</span></code></a> | null)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\User\Session::getUser">
+<em class="property">public </em><code class="descclassname">OC\User\Session::</code><code class="descname">getUser</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\User\Session::getUser" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">get the current active user</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/User/Session.php#L229">lib/private/User/Session.php#229</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="../../OCP/IUser.html#OCP\IUser" title="OCP\IUser"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\IUser</span></code></a> | null Current user, otherwise null</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="protected method">
+<dt id="OC\User\Session::validateSession">
+<em class="property">protected </em><code class="descclassname">OC\User\Session::</code><code class="descname">validateSession</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\User\Session::validateSession" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Validate whether the current session is valid</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">- For token-authenticated clients, the token validity is checked</div>
+<div class="line">- For browsers, the session token validity is checked</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/User/Session.php#L255">lib/private/User/Session.php#255</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\User\Session::isLoggedIn">
+<em class="property">public </em><code class="descclassname">OC\User\Session::</code><code class="descname">isLoggedIn</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\User\Session::isLoggedIn" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Checks whether the user is logged in</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/User/Session.php#L280">lib/private/User/Session.php#280</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">bool if logged in</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\User\Session::setLoginName">
+<em class="property">public </em><code class="descclassname">OC\User\Session::</code><code class="descname">setLoginName</code><span class="sig-paren">(</span><em>$loginName</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\User\Session::setLoginName" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">set the login name</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/User/Session.php#L294">lib/private/User/Session.php#294</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>$loginName</strong> (string | null)  for the logged in user</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\User\Session::getLoginName">
+<em class="property">public </em><code class="descclassname">OC\User\Session::</code><code class="descname">getLoginName</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\User\Session::getLoginName" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">get the login name of the current user</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/User/Session.php#L307">lib/private/User/Session.php#307</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">string</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\User\Session::getImpersonatingUserID">
+<em class="property">public </em><code class="descclassname">OC\User\Session::</code><code class="descname">getImpersonatingUserID</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\User\Session::getImpersonatingUserID" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/User/Session.php#L324">lib/private/User/Session.php#324</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">null | string</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\User\Session::setImpersonatingUserID">
+<em class="property">public </em><code class="descclassname">OC\User\Session::</code><code class="descname">setImpersonatingUserID</code><span class="sig-paren">(</span><em>$useCurrentUser=true</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\User\Session::setImpersonatingUserID" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/User/Session.php#L328">lib/private/User/Session.php#328</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="protected method">
+<dt id="OC\User\Session::setToken">
+<em class="property">protected </em><code class="descclassname">OC\User\Session::</code><code class="descname">setToken</code><span class="sig-paren">(</span><em>$token</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\User\Session::setToken" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">set the token id</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/User/Session.php#L346">lib/private/User/Session.php#346</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>$token</strong> (int | null)  that was used to log in</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\User\Session::login">
+<em class="property">public </em><code class="descclassname">OC\User\Session::</code><code class="descname">login</code><span class="sig-paren">(</span><em>$uid</em>, <em>$password</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\User\Session::login" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">try to log in with the provided credentials</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/User/Session.php#L362">lib/private/User/Session.php#362</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$uid</strong> (string)</li>
+<li><strong>$password</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">bool | null</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><p class="first last"><a class="reference internal" href="LoginException.html#OC\User\LoginException" title="OC\User\LoginException"><code class="xref any php php-trait docutils literal"><span class="pre">\OC\User\LoginException</span></code></a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\User\Session::completeLogin">
+<em class="property">public </em><code class="descclassname">OC\User\Session::</code><code class="descname">completeLogin</code><span class="sig-paren">(</span><em>$user</em>, <em>$loginDetails</em>, <em>$regenerateSessionId=true</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\User\Session::completeLogin" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/User/Session.php#L377">lib/private/User/Session.php#377</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$user</strong> (<a class="reference internal" href="../../OCP/IUser.html#OCP\IUser" title="OCP\IUser"><code class="xref any php php-trait docutils literal"><span class="pre">OCP\IUser</span></code></a>)</li>
+<li><strong>$loginDetails</strong> (array)</li>
+<li><strong>$regenerateSessionId</strong> (bool)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">bool returns true if login successful or an exception otherwise</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><p class="first last"><a class="reference internal" href="LoginException.html#OC\User\LoginException" title="OC\User\LoginException"><code class="xref any php php-trait docutils literal"><span class="pre">\OC\User\LoginException</span></code></a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\User\Session::logClientIn">
+<em class="property">public </em><code class="descclassname">OC\User\Session::</code><code class="descname">logClientIn</code><span class="sig-paren">(</span><em>$user</em>, <em>$password</em>, <em>$request</em>, <em>$throttler</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\User\Session::logClientIn" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Tries to log in a client</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">Checks token auth enforced</div>
+<div class="line">Checks 2FA enabled</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/User/Session.php#L437">lib/private/User/Session.php#437</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$user</strong> (string)</li>
+<li><strong>$password</strong> (string)</li>
+<li><strong>$request</strong> (<a class="reference internal" href="../../OCP/IRequest.html#OCP\IRequest" title="OCP\IRequest"><code class="xref any php php-trait docutils literal"><span class="pre">OCP\IRequest</span></code></a>)</li>
+<li><strong>$throttler</strong> (<a class="reference internal" href="../Security/Bruteforce/Throttler.html#OC\Security\Bruteforce\Throttler" title="OC\Security\Bruteforce\Throttler"><code class="xref any php php-trait docutils literal"><span class="pre">OC\Security\Bruteforce\Throttler</span></code></a>)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><a class="reference internal" href="LoginException.html#OC\User\LoginException" title="OC\User\LoginException"><code class="xref any php php-trait docutils literal"><span class="pre">\OC\User\LoginException</span></code></a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><a class="reference internal" href="../Authentication/Exceptions/PasswordLoginForbiddenException.html#OC\Authentication\Exceptions\PasswordLoginForbiddenException" title="OC\Authentication\Exceptions\PasswordLoginForbiddenException"><code class="xref any php php-trait docutils literal"><span class="pre">\OC\Authentication\Exceptions\PasswordLoginForbiddenException</span></code></a></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><a class="reference internal" href="LoginException.html#OC\User\LoginException" title="OC\User\LoginException"><code class="xref any php php-trait docutils literal"><span class="pre">\OC\User\LoginException</span></code></a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><a class="reference internal" href="../Authentication/Exceptions/PasswordLoginForbiddenException.html#OC\Authentication\Exceptions\PasswordLoginForbiddenException" title="OC\Authentication\Exceptions\PasswordLoginForbiddenException"><code class="xref any php php-trait docutils literal"><span class="pre">\OC\Authentication\Exceptions\PasswordLoginForbiddenException</span></code></a></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="protected method">
+<dt id="OC\User\Session::supportsCookies">
+<em class="property">protected </em><code class="descclassname">OC\User\Session::</code><code class="descname">supportsCookies</code><span class="sig-paren">(</span><em>$request</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\User\Session::supportsCookies" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/User/Session.php#L490">lib/private/User/Session.php#490</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="protected method">
+<dt id="OC\User\Session::isTwoFactorEnforced">
+<em class="property">protected </em><code class="descclassname">OC\User\Session::</code><code class="descname">isTwoFactorEnforced</code><span class="sig-paren">(</span><em>$username</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\User\Session::isTwoFactorEnforced" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/User/Session.php#L502">lib/private/User/Session.php#502</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\User\Session::isTokenPassword">
+<em class="property">public </em><code class="descclassname">OC\User\Session::</code><code class="descname">isTokenPassword</code><span class="sig-paren">(</span><em>$password</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\User\Session::isTokenPassword" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Check if the given &#8216;password&#8217; is actually a device token</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/User/Session.php#L530">lib/private/User/Session.php#530</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$password</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">bool</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><p class="first last"><a class="reference internal" href="../Authentication/Exceptions/ExpiredTokenException.html#OC\Authentication\Exceptions\ExpiredTokenException" title="OC\Authentication\Exceptions\ExpiredTokenException"><code class="xref any php php-trait docutils literal"><span class="pre">\OC\Authentication\Exceptions\ExpiredTokenException</span></code></a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="protected method">
+<dt id="OC\User\Session::prepareUserLogin">
+<em class="property">protected </em><code class="descclassname">OC\User\Session::</code><code class="descname">prepareUserLogin</code><span class="sig-paren">(</span><em>$firstTimeLogin</em>, <em>$refreshCsrfToken=true</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\User\Session::prepareUserLogin" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/User/Session.php#L545">lib/private/User/Session.php#545</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\User\Session::tryBasicAuthLogin">
+<em class="property">public </em><code class="descclassname">OC\User\Session::</code><code class="descname">tryBasicAuthLogin</code><span class="sig-paren">(</span><em>$request</em>, <em>$throttler</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\User\Session::tryBasicAuthLogin" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Tries to login the user with HTTP Basic Authentication</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/User/Session.php#L581">lib/private/User/Session.php#581</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$request</strong> (<a class="reference internal" href="../../OCP/IRequest.html#OCP\IRequest" title="OCP\IRequest"><code class="xref any php php-trait docutils literal"><span class="pre">OCP\IRequest</span></code></a>)</li>
+<li><strong>$throttler</strong> (<a class="reference internal" href="../Security/Bruteforce/Throttler.html#OC\Security\Bruteforce\Throttler" title="OC\Security\Bruteforce\Throttler"><code class="xref any php php-trait docutils literal"><span class="pre">OC\Security\Bruteforce\Throttler</span></code></a>)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">bool if the login was successful</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\User\Session::createSessionToken">
+<em class="property">public </em><code class="descclassname">OC\User\Session::</code><code class="descname">createSessionToken</code><span class="sig-paren">(</span><em>$request</em>, <em>$uid</em>, <em>$loginName</em>, <em>$password=null</em>, <em>$remember=\OC\Authentication\Token\IToken::DO_NOT_REMEMBER</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\User\Session::createSessionToken" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Create a new session token for the given user credentials</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/User/Session.php#L680">lib/private/User/Session.php#680</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$request</strong> (<a class="reference internal" href="../../OCP/IRequest.html#OCP\IRequest" title="OCP\IRequest"><code class="xref any php php-trait docutils literal"><span class="pre">OCP\IRequest</span></code></a>)</li>
+<li><strong>$uid</strong> (string)  user UID</li>
+<li><strong>$loginName</strong> (string)  login name</li>
+<li><strong>$password</strong> (string)</li>
+<li><strong>$remember</strong> (int)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\User\Session::tryTokenLogin">
+<em class="property">public </em><code class="descclassname">OC\User\Session::</code><code class="descname">tryTokenLogin</code><span class="sig-paren">(</span><em>$request</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\User\Session::tryTokenLogin" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Tries to login the user with auth token header</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/User/Session.php#L817">lib/private/User/Session.php#817</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$request</strong> (<a class="reference internal" href="../../OCP/IRequest.html#OCP\IRequest" title="OCP\IRequest"><code class="xref any php php-trait docutils literal"><span class="pre">OCP\IRequest</span></code></a>)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\User\Session::loginWithCookie">
+<em class="property">public </em><code class="descclassname">OC\User\Session::</code><code class="descname">loginWithCookie</code><span class="sig-paren">(</span><em>$uid</em>, <em>$currentToken</em>, <em>$oldSessionId</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\User\Session::loginWithCookie" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">perform login using the magic cookie (remember login)</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/User/Session.php#L861">lib/private/User/Session.php#861</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$uid</strong> (string)  the username</li>
+<li><strong>$currentToken</strong> (string)</li>
+<li><strong>$oldSessionId</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\User\Session::createRememberMeToken">
+<em class="property">public </em><code class="descclassname">OC\User\Session::</code><code class="descname">createRememberMeToken</code><span class="sig-paren">(</span><em>$user</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\User\Session::createRememberMeToken" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/User/Session.php#L912">lib/private/User/Session.php#912</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>$user</strong> (<a class="reference internal" href="../../OCP/IUser.html#OCP\IUser" title="OCP\IUser"><code class="xref any php php-trait docutils literal"><span class="pre">OCP\IUser</span></code></a>)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\User\Session::logout">
+<em class="property">public </em><code class="descclassname">OC\User\Session::</code><code class="descname">logout</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\User\Session::logout" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">logout the user from the session</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/User/Session.php#L921">lib/private/User/Session.php#921</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\User\Session::setMagicInCookie">
+<em class="property">public </em><code class="descclassname">OC\User\Session::</code><code class="descname">setMagicInCookie</code><span class="sig-paren">(</span><em>$username</em>, <em>$token</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\User\Session::setMagicInCookie" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Set cookie value to use in next page load</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/User/Session.php#L944">lib/private/User/Session.php#944</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>$username</strong> (string)  username to be set</li>
+<li><strong>$token</strong> (string)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\User\Session::unsetMagicInCookie">
+<em class="property">public </em><code class="descclassname">OC\User\Session::</code><code class="descname">unsetMagicInCookie</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\User\Session::unsetMagicInCookie" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Remove cookie for &#8220;remember username&#8221;</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/User/Session.php#L991">lib/private/User/Session.php#991</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\User\Session::updateSessionTokenPassword">
+<em class="property">public </em><code class="descclassname">OC\User\Session::</code><code class="descname">updateSessionTokenPassword</code><span class="sig-paren">(</span><em>$password</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\User\Session::updateSessionTokenPassword" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Update password of the browser session token if there is one</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/User/Session.php#L1013">lib/private/User/Session.php#1013</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>$password</strong> (string)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\User\Session::updateTokens">
+<em class="property">public </em><code class="descclassname">OC\User\Session::</code><code class="descname">updateTokens</code><span class="sig-paren">(</span><em>$uid</em>, <em>$password</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\User\Session::updateTokens" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/User/Session.php#L1025">lib/private/User/Session.php#1025</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="User.html" class="btn btn-neutral float-right" title="User" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="NoUserException.html" class="btn btn-neutral float-left" title="NoUserException" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021 Nextcloud GmbH.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: 14
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/14/developer_manual">14</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/15/developer_manual">15</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/16/developer_manual">16</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/developer_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/developer_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+   
+
+</body>
+</html>

@@ -1,0 +1,122 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IEntity
+=======
+
+
+.. php:namespace:: OCP\WorkflowEngine
+
+.. php:interface:: IEntity
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Interface IEntity
+		
+		| This interface represents an entity that supports events the workflow engine
+		| can listen to\. For example a file with the create, update, etc\. events\.
+		| 
+		| Ensure to listen to \'OCP/WorkflowEngine::loadEntities\' for registering your
+		| entities\.
+		
+	
+	:Source:
+		`lib/public/WorkflowEngine/IEntity.php#42 <https://github.com/nextcloud/server/blob/stable13/lib/public/WorkflowEngine/IEntity.php#L42>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public getName()
+	
+		.. rst-class:: phpdoc-description
+		
+			| returns a translated name to be presented in the web interface\.
+			
+			| Example: "File" \(en\), "Dosiero" \(eo\)
+			
+		
+		:Source:
+			`lib/public/WorkflowEngine/IEntity.php#51 <https://github.com/nextcloud/server/blob/stable13/lib/public/WorkflowEngine/IEntity.php#L51>`_
+		
+		
+		:Since: 18.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getIcon()
+	
+		.. rst-class:: phpdoc-description
+		
+			| returns the URL to the icon of the entity for display in the web interface\.
+			
+			| Usually, the implementation would utilize the \`imagePath\(\)\` method of the
+			| \`\\OCP\\IURLGenerator\` instance and simply return its result\.
+			| 
+			| Example implementation: return $this\-\>urlGenerator\-\>imagePath\(\'myApp\', \'cat\.svg\'\);
+			
+		
+		:Source:
+			`lib/public/WorkflowEngine/IEntity.php#63 <https://github.com/nextcloud/server/blob/stable13/lib/public/WorkflowEngine/IEntity.php#L63>`_
+		
+		
+		:Since: 18.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getEvents()
+	
+		.. rst-class:: phpdoc-description
+		
+			| returns a list of supported events
+			
+		
+		:Source:
+			`lib/public/WorkflowEngine/IEntity.php#71 <https://github.com/nextcloud/server/blob/stable13/lib/public/WorkflowEngine/IEntity.php#L71>`_
+		
+		
+		:Returns: :any:`\\OCP\\WorkflowEngine\\IEntityEvent\[\] <OCP\\WorkflowEngine\\IEntityEvent>` 
+		:Since: 18.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public prepareRuleMatcher( $ruleMatcher, $eventName, $event)
+	
+		:Source:
+			`lib/public/WorkflowEngine/IEntity.php#76 <https://github.com/nextcloud/server/blob/stable13/lib/public/WorkflowEngine/IEntity.php#L76>`_
+		
+		
+		:Since: 18.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isLegitimatedForUserId( $userId)
+	
+		.. rst-class:: phpdoc-description
+		
+			| returns whether the provided user id is allowed to run a flow against
+			| the known context
+			
+		
+		:Source:
+			`lib/public/WorkflowEngine/IEntity.php#84 <https://github.com/nextcloud/server/blob/stable13/lib/public/WorkflowEngine/IEntity.php#L84>`_
+		
+		
+		:Since: 18.0.0 
+	
+	
+

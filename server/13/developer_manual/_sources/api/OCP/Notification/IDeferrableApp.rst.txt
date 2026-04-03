@@ -1,0 +1,64 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IDeferrableApp
+==============
+
+
+.. php:namespace:: OCP\Notification
+
+.. php:interface:: IDeferrableApp
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Interface IDeferrableApp
+		
+	
+	:Source:
+		`lib/public/Notification/IDeferrableApp.php#34 <https://github.com/nextcloud/server/blob/stable13/lib/public/Notification/IDeferrableApp.php#L34>`_
+	
+	:Parent:
+		:php:interface:`OCP\\Notification\\IApp`
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public defer()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Start deferring notifications until \`flush\(\)\` is called
+			
+		
+		:Source:
+			`lib/public/Notification/IDeferrableApp.php#40 <https://github.com/nextcloud/server/blob/stable13/lib/public/Notification/IDeferrableApp.php#L40>`_
+		
+		
+		:Since: 20.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public flush()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Send all deferred notifications that have been stored since \`defer\(\)\` was called
+			
+		
+		:Source:
+			`lib/public/Notification/IDeferrableApp.php#47 <https://github.com/nextcloud/server/blob/stable13/lib/public/Notification/IDeferrableApp.php#L47>`_
+		
+		
+		:Since: 20.0.0 
+	
+	
+

@@ -1,0 +1,58 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+SecureRandom
+============
+
+
+.. php:namespace:: OC\Security
+
+.. php:class:: SecureRandom
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Class SecureRandom provides a wrapper around the random\_int function to generate
+		| secure random strings\. For PHP 7 the native CSPRNG is used, older versions do
+		| use a fallback\.
+		
+		| Usage:
+		| \\OC::$server\-\>getSecureRandom\(\)\-\>generate\(10\);
+		
+	
+	:Source:
+		`lib/private/Security/SecureRandom.php#42 <https://github.com/nextcloud/server/blob/stable13/lib/private/Security/SecureRandom.php#L42>`_
+	
+	:Implements:
+		:php:interface:`OCP\\Security\\ISecureRandom` 
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public generate( $length, $characters=ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789\+/)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Generate a random string of specified length\.
+			
+		
+		:Source:
+			`lib/private/Security/SecureRandom.php#50 <https://github.com/nextcloud/server/blob/stable13/lib/private/Security/SecureRandom.php#L50>`_
+		
+		
+		:Parameters:
+			* **$length** (int)  The length of the generated string
+			* **$characters** (string)  An optional list of characters to use if no character list is
+			specified all valid base64 characters are used.
+
+		
+		:Returns: string 
+	
+	
+

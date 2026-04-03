@@ -1,0 +1,729 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+OC\_Image
+=========
+
+
+.. php:class:: OC_Image
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Class for basic image manipulation
+		
+	
+	:Source:
+		`lib/private/legacy/OC_Image.php#48 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Image.php#L48>`_
+	
+	:Implements:
+		:php:interface:`OCP\\IImage` 
+	
+
+Properties
+----------
+
+.. php:attr:: protected static resource
+
+	:Source:
+		`lib/private/legacy/OC_Image.php#50 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Image.php#L50>`_
+	
+	:Type: bool | resource 
+
+
+.. php:attr:: protected static imageType
+
+	:Source:
+		`lib/private/legacy/OC_Image.php#52 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Image.php#L52>`_
+	
+	:Type: int 
+
+
+.. php:attr:: protected static mimeType
+
+	:Source:
+		`lib/private/legacy/OC_Image.php#54 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Image.php#L54>`_
+	
+	:Type: string 
+
+
+.. php:attr:: protected static bitDepth
+
+	:Source:
+		`lib/private/legacy/OC_Image.php#56 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Image.php#L56>`_
+	
+	:Type: int 
+
+
+.. php:attr:: protected static filePath
+
+	:Source:
+		`lib/private/legacy/OC_Image.php#58 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Image.php#L58>`_
+	
+	:Type: null | string 
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $imageRef=\\null, $logger=\\null, $config=\\null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Constructor\.
+			
+		
+		:Source:
+			`lib/private/legacy/OC_Image.php#77 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Image.php#L77>`_
+		
+		
+		:Parameters:
+			* **$imageRef** (resource | string)  The path to a local file, a base64 encoded string or a resource created by
+			an imagecreate* function.
+			* **$logger** (:any:`OCP\\ILogger <OCP\\ILogger>`)  
+			* **$config** (:any:`OCP\\IConfig <OCP\\IConfig>`)  
+
+		
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` in case the $imageRef parameter is not null
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public valid()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Determine whether the object contains an image resource\.
+			
+		
+		:Source:
+			`lib/private/legacy/OC_Image.php#101 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Image.php#L101>`_
+		
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public mimeType()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the MIME type of the image or an empty string if no image is loaded\.
+			
+		
+		:Source:
+			`lib/private/legacy/OC_Image.php#117 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Image.php#L117>`_
+		
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public width()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the width of the image or \-1 if no image is loaded\.
+			
+		
+		:Source:
+			`lib/private/legacy/OC_Image.php#126 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Image.php#L126>`_
+		
+		
+		:Returns: int 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public height()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the height of the image or \-1 if no image is loaded\.
+			
+		
+		:Source:
+			`lib/private/legacy/OC_Image.php#135 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Image.php#L135>`_
+		
+		
+		:Returns: int 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public widthTopLeft()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the width when the image orientation is top\-left\.
+			
+		
+		:Source:
+			`lib/private/legacy/OC_Image.php#144 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Image.php#L144>`_
+		
+		
+		:Returns: int 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public heightTopLeft()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the height when the image orientation is top\-left\.
+			
+		
+		:Source:
+			`lib/private/legacy/OC_Image.php#168 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Image.php#L168>`_
+		
+		
+		:Returns: int 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public show( $mimeType=\\null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Outputs the image\.
+			
+		
+		:Source:
+			`lib/private/legacy/OC_Image.php#193 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Image.php#L193>`_
+		
+		
+		:Parameters:
+			* **$mimeType** (string)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public save( $filePath=\\null, $mimeType=\\null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Saves the image\.
+			
+		
+		:Source:
+			`lib/private/legacy/OC_Image.php#209 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Image.php#L209>`_
+		
+		
+		:Parameters:
+			* **$filePath** (string)  
+			* **$mimeType** (string)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public __invoke()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Prints the image when called as $image\(\)\.
+			
+		
+		:Source:
+			`lib/private/legacy/OC_Image.php#307 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Image.php#L307>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setResource( $resource)
+	
+		:Source:
+			`lib/private/legacy/OC_Image.php#315 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Image.php#L315>`_
+		
+		
+		:Parameters:
+			
+			
+		
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` in case the supplied resource does not have the type "gd"
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public resource()
+	
+		:Source:
+			`lib/private/legacy/OC_Image.php#332 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Image.php#L332>`_
+		
+		
+		:Returns: resource Returns the image resource in any\.
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public dataMimeType()
+	
+		:Source:
+			`lib/private/legacy/OC_Image.php#340 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Image.php#L340>`_
+		
+		
+		:Returns: string Returns the mimetype of the data\. Returns the empty string
+			if the data is not valid\.
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public data()
+	
+		:Source:
+			`lib/private/legacy/OC_Image.php#358 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Image.php#L358>`_
+		
+		
+		:Returns: null | string Returns the raw image data\.
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public __toString()
+	
+		:Source:
+			`lib/private/legacy/OC_Image.php#392 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Image.php#L392>`_
+		
+		
+		:Returns: string \- base64 encoded, which is suitable for embedding in a VCard\.
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected getJpegQuality()
+	
+		:Source:
+			`lib/private/legacy/OC_Image.php#399 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Image.php#L399>`_
+		
+		
+		:Returns: int | null 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getOrientation()
+	
+		.. rst-class:: phpdoc-description
+		
+			| \(I\'m open for suggestions on better method name ;\)
+			| Get the orientation based on EXIF data\.
+			
+		
+		:Source:
+			`lib/private/legacy/OC_Image.php#413 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Image.php#L413>`_
+		
+		
+		:Returns: int The orientation or \-1 if no EXIF data is available\.
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public readExif( $data)
+	
+		:Source:
+			`lib/private/legacy/OC_Image.php#445 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Image.php#L445>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public fixOrientation()
+	
+		.. rst-class:: phpdoc-description
+		
+			| \(I\'m open for suggestions on better method name ;\)
+			| Fixes orientation based on EXIF data\.
+			
+		
+		:Source:
+			`lib/private/legacy/OC_Image.php#471 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Image.php#L471>`_
+		
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public loadFromFileHandle( $handle)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Loads an image from an open file handle\.
+			
+			| It is the responsibility of the caller to position the pointer at the correct place and to close the handle again\.
+			
+		
+		:Source:
+			`lib/private/legacy/OC_Image.php#542 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Image.php#L542>`_
+		
+		
+		:Parameters:
+			* **$handle** (resource)  
+
+		
+		:Returns: resource | bool An image resource or false on error
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public loadFromFile( $imagePath=\\false)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Loads an image from a local file\.
+			
+		
+		:Source:
+			`lib/private/legacy/OC_Image.php#556 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Image.php#L556>`_
+		
+		
+		:Parameters:
+			* **$imagePath** (bool | string)  The path to a local file.
+
+		
+		:Returns: bool | resource An image resource or false on error
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public loadFromData( $str)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Loads an image from a string of data\.
+			
+		
+		:Source:
+			`lib/private/legacy/OC_Image.php#664 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Image.php#L664>`_
+		
+		
+		:Parameters:
+			* **$str** (string)  A string of image data as read from a file.
+
+		
+		:Returns: bool | resource An image resource or false on error
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public loadFromBase64( $str)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Loads an image from a base64 encoded string\.
+			
+		
+		:Source:
+			`lib/private/legacy/OC_Image.php#690 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Image.php#L690>`_
+		
+		
+		:Parameters:
+			* **$str** (string)  A string base64 encoded string of image data.
+
+		
+		:Returns: bool | resource An image resource or false on error
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public resize( $maxSize)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Resizes the image preserving ratio\.
+			
+		
+		:Source:
+			`lib/private/legacy/OC_Image.php#870 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Image.php#L870>`_
+		
+		
+		:Parameters:
+			* **$maxSize** (int)  The maximum size of either the width or height.
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public preciseResize( $width, $height)
+	
+		:Source:
+			`lib/private/legacy/OC_Image.php#906 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Image.php#L906>`_
+		
+		
+		:Parameters:
+			* **$width** (int)  
+			* **$height** (int)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public preciseResizeNew( $width, $height)
+	
+		:Source:
+			`lib/private/legacy/OC_Image.php#919 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Image.php#L919>`_
+		
+		
+		:Parameters:
+			* **$width** (int)  
+			* **$height** (int)  
+
+		
+		:Returns: resource \| bool
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public centerCrop( $size=0)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Crops the image to the middle square\. If the image is already square it just returns\.
+			
+		
+		:Source:
+			`lib/private/legacy/OC_Image.php#954 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Image.php#L954>`_
+		
+		
+		:Parameters:
+			* **$size** (int)  maximum size for the result (optional)
+
+		
+		:Returns: bool for success or failure
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public crop( $x, $y, $w, $h)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Crops the image from point $x$y with dimension $wx$h\.
+			
+		
+		:Source:
+			`lib/private/legacy/OC_Image.php#1015 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Image.php#L1015>`_
+		
+		
+		:Parameters:
+			* **$x** (int)  Horizontal position
+			* **$y** (int)  Vertical position
+			* **$w** (int)  Width
+			* **$h** (int)  Height
+
+		
+		:Returns: bool for success or failure
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public cropNew( $x, $y, $w, $h)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Crops the image from point $x$y with dimension $wx$h\.
+			
+		
+		:Source:
+			`lib/private/legacy/OC_Image.php#1031 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Image.php#L1031>`_
+		
+		
+		:Parameters:
+			* **$x** (int)  Horizontal position
+			* **$y** (int)  Vertical position
+			* **$w** (int)  Width
+			* **$h** (int)  Height
+
+		
+		:Returns: resource \| bool
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public fitIn( $maxWidth, $maxHeight)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Resizes the image to fit within a boundary while preserving ratio\.
+			
+			| Warning: Images smaller than $maxWidth x $maxHeight will end up being scaled up
+			
+		
+		:Source:
+			`lib/private/legacy/OC_Image.php#1068 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Image.php#L1068>`_
+		
+		
+		:Parameters:
+			* **$maxWidth** (int)  
+			* **$maxHeight** (int)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public scaleDownToFit( $maxWidth, $maxHeight)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Shrinks larger images to fit within specified boundaries while preserving ratio\.
+			
+		
+		:Source:
+			`lib/private/legacy/OC_Image.php#1091 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Image.php#L1091>`_
+		
+		
+		:Parameters:
+			* **$maxWidth** (int)  
+			* **$maxHeight** (int)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public copy()
+	
+		:Source:
+			`lib/private/legacy/OC_Image.php#1106 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Image.php#L1106>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public cropCopy( $x, $y, $w, $h)
+	
+		:Source:
+			`lib/private/legacy/OC_Image.php#1123 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Image.php#L1123>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public preciseResizeCopy( $width, $height)
+	
+		:Source:
+			`lib/private/legacy/OC_Image.php#1133 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Image.php#L1133>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public resizeCopy( $maxSize)
+	
+		:Source:
+			`lib/private/legacy/OC_Image.php#1143 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Image.php#L1143>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public copyResize( $maxSize)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Resizes the image preserving ratio, returning a new copy
+			
+		
+		:Source:
+			`lib/private/legacy/OC_Image.php#1160 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Image.php#L1160>`_
+		
+		
+		:Parameters:
+			* **$maxSize** (int)  The maximum size of either the width or height.
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public destroy()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Destroys the current image and resets the object
+			
+		
+		:Source:
+			`lib/private/legacy/OC_Image.php#1166 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Image.php#L1166>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public __destruct()
+	
+		:Source:
+			`lib/private/legacy/OC_Image.php#1173 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Image.php#L1173>`_
+		
+		
+	
+	
+

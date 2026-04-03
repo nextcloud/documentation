@@ -1,0 +1,297 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+Mapper
+======
+
+
+.. php:namespace:: OCP\AppFramework\Db
+
+.. rst-class::  abstract
+
+.. php:class:: Mapper
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Simple parent class for inheriting your data access layer from\. This class
+		| may be subject to change in the future
+		
+	
+	:Source:
+		`lib/public/AppFramework/Db/Mapper.php#39 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Db/Mapper.php#L39>`_
+	
+
+Properties
+----------
+
+.. php:attr:: protected static tableName
+
+	:Source:
+		`lib/public/AppFramework/Db/Mapper.php#40 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Db/Mapper.php#L40>`_
+	
+
+
+.. php:attr:: protected static entityClass
+
+	:Source:
+		`lib/public/AppFramework/Db/Mapper.php#41 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Db/Mapper.php#L41>`_
+	
+
+
+.. php:attr:: protected static db
+
+	:Source:
+		`lib/public/AppFramework/Db/Mapper.php#42 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Db/Mapper.php#L42>`_
+	
+
+
+Methods
+-------
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public __construct( $db, $tableName, $entityClass=null)
+	
+		:Source:
+			`lib/public/AppFramework/Db/Mapper.php#52 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Db/Mapper.php#L52>`_
+		
+		
+		:Parameters:
+			* **$db** (:any:`OCP\\IDBConnection <OCP\\IDBConnection>`)  Instance of the Db abstraction layer
+			* **$tableName** (string)  the name of the table. set this to allow entity
+			* **$entityClass** (string)  the name of the entity that the sql should be
+			mapped to queries without using sql
+
+		
+		:Since: 7.0.0 
+		:Deprecated: 14.0.0 Move over to QBMapper
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public getTableName()
+	
+		:Source:
+			`lib/public/AppFramework/Db/Mapper.php#71 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Db/Mapper.php#L71>`_
+		
+		
+		:Returns: string the table name
+		:Since: 7.0.0 
+		:Deprecated: 14.0.0 Move over to QBMapper
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public delete( $entity)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Deletes an entity from the table
+			
+		
+		:Source:
+			`lib/public/AppFramework/Db/Mapper.php#83 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Db/Mapper.php#L83>`_
+		
+		
+		:Parameters:
+			* **$entity** (:any:`OCP\\AppFramework\\Db\\Entity <OCP\\AppFramework\\Db\\Entity>`)  the entity that should be deleted
+
+		
+		:Returns: :any:`\\OCP\\AppFramework\\Db\\Entity <OCP\\AppFramework\\Db\\Entity>` the deleted entity
+		:Since: 7.0.0 \- return value added in 8\.1\.0
+		:Deprecated: 14.0.0 Move over to QBMapper
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public insert( $entity)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Creates a new entry in the db from an entity
+			
+		
+		:Source:
+			`lib/public/AppFramework/Db/Mapper.php#98 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Db/Mapper.php#L98>`_
+		
+		
+		:Parameters:
+			* **$entity** (:any:`OCP\\AppFramework\\Db\\Entity <OCP\\AppFramework\\Db\\Entity>`)  the entity that should be created
+
+		
+		:Returns: :any:`\\OCP\\AppFramework\\Db\\Entity <OCP\\AppFramework\\Db\\Entity>` the saved entity with the set id
+		:Since: 7.0.0 
+		:Deprecated: 14.0.0 Move over to QBMapper
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public update( $entity)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Updates an entry in the db from an entity
+			
+		
+		:Source:
+			`lib/public/AppFramework/Db/Mapper.php#147 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Db/Mapper.php#L147>`_
+		
+		
+		:Parameters:
+			* **$entity** (:any:`OCP\\AppFramework\\Db\\Entity <OCP\\AppFramework\\Db\\Entity>`)  the entity that should be created
+
+		
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` if entity has no id
+		:Returns: :any:`\\OCP\\AppFramework\\Db\\Entity <OCP\\AppFramework\\Db\\Entity>` the saved entity with the set id
+		:Since: 7.0.0 \- return value was added in 8\.0\.0
+		:Deprecated: 14.0.0 Move over to QBMapper
+	
+	
+
+.. rst-class:: protected deprecated
+
+	.. php:method:: protected execute( $sql, $params=\[\], $limit=null, $offset=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Runs an sql query
+			
+		
+		:Source:
+			`lib/public/AppFramework/Db/Mapper.php#236 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Db/Mapper.php#L236>`_
+		
+		
+		:Parameters:
+			* **$sql** (string)  the prepare string
+			* **$params** (array)  the params which should replace the ? in the sql query
+			* **$limit** (int)  the maximum number of rows
+			* **$offset** (int)  from which row we want to start
+
+		
+		:Returns: :any:`\\PDOStatement <PDOStatement>` the database query result
+		:Since: 7.0.0 
+		:Deprecated: 14.0.0 Move over to QBMapper
+	
+	
+
+.. rst-class:: protected deprecated
+
+	.. php:method:: protected findOneQuery( $sql, $params=\[\], $limit=null, $offset=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns an db result and throws exceptions when there are more or less
+			| results
+			
+		
+		:Source:
+			`lib/public/AppFramework/Db/Mapper.php#272 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Db/Mapper.php#L272>`_
+		
+		
+		:Parameters:
+			* **$sql** (string)  the sql query
+			* **$params** (array)  the parameters of the sql query
+			* **$limit** (int)  the maximum number of rows
+			* **$offset** (int)  from which row we want to start
+
+		
+		:See: :any:`\\OCP\\AppFramework\\Db\\findEntity <OCP\\AppFramework\\Db\\findEntity>` 
+		:Throws: :any:`\\OCP\\AppFramework\\Db\\DoesNotExistException <OCP\\AppFramework\\Db\\DoesNotExistException>` if the item does not exist
+		:Throws: :any:`\\OCP\\AppFramework\\Db\\MultipleObjectsReturnedException <OCP\\AppFramework\\Db\\MultipleObjectsReturnedException>` if more than one item exist
+		:Throws: :any:`\\OCP\\AppFramework\\Db\\DoesNotExistException <OCP\\AppFramework\\Db\\DoesNotExistException>` if the item does not exist
+		:Throws: :any:`\\OCP\\AppFramework\\Db\\MultipleObjectsReturnedException <OCP\\AppFramework\\Db\\MultipleObjectsReturnedException>` if more than one item exist
+		:Returns: array the result as row
+		:Since: 7.0.0 
+		:Deprecated: 14.0.0 Move over to QBMapper
+	
+	
+
+.. rst-class:: protected deprecated
+
+	.. php:method:: protected mapRowToEntity( $row)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Creates an entity from a row\. Automatically determines the entity class
+			| from the current mapper name \(MyEntityMapper \-\> MyEntity\)
+			
+		
+		:Source:
+			`lib/public/AppFramework/Db/Mapper.php#325 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Db/Mapper.php#L325>`_
+		
+		
+		:Parameters:
+			* **$row** (array)  the row which should be converted to an entity
+
+		
+		:Returns: :any:`\\OCP\\AppFramework\\Db\\Entity <OCP\\AppFramework\\Db\\Entity>` the entity
+		:Since: 7.0.0 
+		:Deprecated: 14.0.0 Move over to QBMapper
+	
+	
+
+.. rst-class:: protected deprecated
+
+	.. php:method:: protected findEntities( $sql, $params=\[\], $limit=null, $offset=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Runs a sql query and returns an array of entities
+			
+		
+		:Source:
+			`lib/public/AppFramework/Db/Mapper.php#340 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Db/Mapper.php#L340>`_
+		
+		
+		:Parameters:
+			* **$sql** (string)  the prepare string
+			* **$params** (array)  the params which should replace the ? in the sql query
+			* **$limit** (int)  the maximum number of rows
+			* **$offset** (int)  from which row we want to start
+
+		
+		:Returns: array all fetched entities
+		:Since: 7.0.0 
+		:Deprecated: 14.0.0 Move over to QBMapper
+	
+	
+
+.. rst-class:: protected deprecated
+
+	.. php:method:: protected findEntity( $sql, $params=\[\], $limit=null, $offset=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns an db result and throws exceptions when there are more or less
+			| results
+			
+		
+		:Source:
+			`lib/public/AppFramework/Db/Mapper.php#368 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Db/Mapper.php#L368>`_
+		
+		
+		:Parameters:
+			* **$sql** (string)  the sql query
+			* **$params** (array)  the parameters of the sql query
+			* **$limit** (int)  the maximum number of rows
+			* **$offset** (int)  from which row we want to start
+
+		
+		:Throws: :any:`\\OCP\\AppFramework\\Db\\DoesNotExistException <OCP\\AppFramework\\Db\\DoesNotExistException>` if the item does not exist
+		:Throws: :any:`\\OCP\\AppFramework\\Db\\MultipleObjectsReturnedException <OCP\\AppFramework\\Db\\MultipleObjectsReturnedException>` if more than one item exist
+		:Throws: :any:`\\OCP\\AppFramework\\Db\\DoesNotExistException <OCP\\AppFramework\\Db\\DoesNotExistException>` if the item does not exist
+		:Throws: :any:`\\OCP\\AppFramework\\Db\\MultipleObjectsReturnedException <OCP\\AppFramework\\Db\\MultipleObjectsReturnedException>` if more than one item exist
+		:Returns: :any:`\\OCP\\AppFramework\\Db\\Entity <OCP\\AppFramework\\Db\\Entity>` the entity
+		:Since: 7.0.0 
+		:Deprecated: 14.0.0 Move over to QBMapper
+	
+	
+

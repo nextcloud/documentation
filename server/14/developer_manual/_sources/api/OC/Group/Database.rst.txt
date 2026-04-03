@@ -1,0 +1,356 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+Database
+========
+
+
+.. php:namespace:: OC\Group
+
+.. php:class:: Database
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Class for group management in a SQL Database \(e\.g\. MySQL, SQLite\)
+		
+	
+	:Source:
+		`lib/private/Group/Database.php#64 <https://github.com/nextcloud/server/blob/stable13/lib/private/Group/Database.php#L64>`_
+	
+	:Parent:
+		:php:class:`OCP\\Group\\Backend\\ABackend`
+	
+	:Implements:
+		:php:interface:`OCP\\Group\\Backend\\IAddToGroupBackend` :php:interface:`OCP\\Group\\Backend\\ICountDisabledInGroup` :php:interface:`OCP\\Group\\Backend\\ICountUsersBackend` :php:interface:`OCP\\Group\\Backend\\ICreateGroupBackend` :php:interface:`OCP\\Group\\Backend\\IDeleteGroupBackend` :php:interface:`OCP\\Group\\Backend\\IGetDisplayNameBackend` :php:interface:`OCP\\Group\\Backend\\IGroupDetailsBackend` :php:interface:`OCP\\Group\\Backend\\IRemoveFromGroupBackend` :php:interface:`OCP\\Group\\Backend\\ISetDisplayNameBackend` :php:interface:`OCP\\Group\\Backend\\INamedBackend` 
+	
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $dbConn=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| \\OC\\Group\\Database constructor\.
+			
+		
+		:Source:
+			`lib/private/Group/Database.php#87 <https://github.com/nextcloud/server/blob/stable13/lib/private/Group/Database.php#L87>`_
+		
+		
+		:Parameters:
+			* **$dbConn** (:any:`OCP\\IDBConnection <OCP\\IDBConnection>` | null)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public createGroup( $gid)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Try to create a new group
+			
+		
+		:Source:
+			`lib/private/Group/Database.php#108 <https://github.com/nextcloud/server/blob/stable13/lib/private/Group/Database.php#L108>`_
+		
+		
+		:Parameters:
+			* **$gid** (string)  The name of the group to create
+
+		
+		:Returns: bool Tries to create a new group\. If the group name already exists, false will
+			be returned\.
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public deleteGroup( $gid)
+	
+		.. rst-class:: phpdoc-description
+		
+			| delete a group
+			
+		
+		:Source:
+			`lib/private/Group/Database.php#138 <https://github.com/nextcloud/server/blob/stable13/lib/private/Group/Database.php#L138>`_
+		
+		
+		:Parameters:
+			* **$gid** (string)  gid of the group to delete
+
+		
+		:Returns: bool Deletes a group and removes it from the group\_user\-table
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public inGroup( $uid, $gid)
+	
+		.. rst-class:: phpdoc-description
+		
+			| is user in group?
+			
+		
+		:Source:
+			`lib/private/Group/Database.php#173 <https://github.com/nextcloud/server/blob/stable13/lib/private/Group/Database.php#L173>`_
+		
+		
+		:Parameters:
+			* **$uid** (string)  uid of the user
+			* **$gid** (string)  gid of the group
+
+		
+		:Returns: bool Checks whether the user is member of a group or not\.
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public addToGroup( $uid, $gid)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Add a user to a group
+			
+		
+		:Source:
+			`lib/private/Group/Database.php#198 <https://github.com/nextcloud/server/blob/stable13/lib/private/Group/Database.php#L198>`_
+		
+		
+		:Parameters:
+			* **$uid** (string)  Name of the user to add to group
+			* **$gid** (string)  Name of the group in which add the user
+
+		
+		:Returns: bool Adds a user to a group\.
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public removeFromGroup( $uid, $gid)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Removes a user from a group
+			
+		
+		:Source:
+			`lib/private/Group/Database.php#222 <https://github.com/nextcloud/server/blob/stable13/lib/private/Group/Database.php#L222>`_
+		
+		
+		:Parameters:
+			* **$uid** (string)  Name of the user to remove from group
+			* **$gid** (string)  Name of the group from which remove the user
+
+		
+		:Returns: bool removes the user from a group\.
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getUserGroups( $uid)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get all groups a user belongs to
+			
+		
+		:Source:
+			`lib/private/Group/Database.php#242 <https://github.com/nextcloud/server/blob/stable13/lib/private/Group/Database.php#L242>`_
+		
+		
+		:Parameters:
+			* **$uid** (string)  Name of the user
+
+		
+		:Returns: array an array of group names
+			
+			This function fetches all groups a user belongs to\. It does not check
+			if the user exists at all\.
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getGroups( $search="", $limit=null, $offset=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get a list of all groups
+			
+		
+		:Source:
+			`lib/private/Group/Database.php#280 <https://github.com/nextcloud/server/blob/stable13/lib/private/Group/Database.php#L280>`_
+		
+		
+		:Parameters:
+			* **$search** (string)  
+			* **$limit** (int)  
+			* **$offset** (int)  
+
+		
+		:Returns: array an array of group names
+			
+			Returns a list with all groups
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public groupExists( $gid)
+	
+		.. rst-class:: phpdoc-description
+		
+			| check if a group exists
+			
+		
+		:Source:
+			`lib/private/Group/Database.php#315 <https://github.com/nextcloud/server/blob/stable13/lib/private/Group/Database.php#L315>`_
+		
+		
+		:Parameters:
+			* **$gid** (string)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public usersInGroup( $gid, $search="", $limit=\-1, $offset=0)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get a list of all users in a group
+			
+		
+		:Source:
+			`lib/private/Group/Database.php#349 <https://github.com/nextcloud/server/blob/stable13/lib/private/Group/Database.php#L349>`_
+		
+		
+		:Parameters:
+			* **$gid** (string)  
+			* **$search** (string)  
+			* **$limit** (int)  
+			* **$offset** (int)  
+
+		
+		:Returns: array an array of user ids
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public countUsersInGroup( $gid, $search="")
+	
+		.. rst-class:: phpdoc-description
+		
+			| get the number of all users matching the search string in a group
+			
+		
+		:Source:
+			`lib/private/Group/Database.php#400 <https://github.com/nextcloud/server/blob/stable13/lib/private/Group/Database.php#L400>`_
+		
+		
+		:Parameters:
+			* **$gid** (string)  
+			* **$search** (string)  
+
+		
+		:Returns: int 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public countDisabledInGroup( $gid)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get the number of disabled users in a group
+			
+		
+		:Source:
+			`lib/private/Group/Database.php#434 <https://github.com/nextcloud/server/blob/stable13/lib/private/Group/Database.php#L434>`_
+		
+		
+		:Parameters:
+			
+			
+		
+		:Returns: int 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getDisplayName( $gid)
+	
+		:Source:
+			`lib/private/Group/Database.php#459 <https://github.com/nextcloud/server/blob/stable13/lib/private/Group/Database.php#L459>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getGroupDetails( $gid)
+	
+		:Source:
+			`lib/private/Group/Database.php#478 <https://github.com/nextcloud/server/blob/stable13/lib/private/Group/Database.php#L478>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setDisplayName( $gid, $displayName)
+	
+		:Source:
+			`lib/private/Group/Database.php#487 <https://github.com/nextcloud/server/blob/stable13/lib/private/Group/Database.php#L487>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getBackendName()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Backend name to be shown in group management
+			
+		
+		:Source:
+			`lib/private/Group/Database.php#513 <https://github.com/nextcloud/server/blob/stable13/lib/private/Group/Database.php#L513>`_
+		
+		
+		:Returns: string the name of the backend to be shown
+		:Since: 21.0.0 
+	
+	
+

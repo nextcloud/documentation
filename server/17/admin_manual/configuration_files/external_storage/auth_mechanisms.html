@@ -1,0 +1,343 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>External Storage authentication mechanisms &mdash; Nextcloud latest Administration Manual latest documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'latest',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Encryption configuration" href="../encryption_configuration.html" />
+    <link rel="prev" title="WebDAV" href="webdav.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../contents.html">
+          
+
+          
+            
+            <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../release_notes.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../release_schedule.html">Maintenance and release schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../installation/index.html">Installation and server configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../configuration_server/index.html">Nextcloud configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../apps_management.html">Apps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../configuration_user/index.html">User management</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">File sharing and management</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../file_sharing_configuration.html">File Sharing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../federated_cloud_sharing_configuration.html">Configuring Federation Sharing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../big_file_upload_configuration.html">Uploading big files &gt; 512MB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../default_files_configuration.html">Providing default files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../primary_storage.html">Configuring Object Storage as Primary Storage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../external_storage_configuration_gui.html">Configuring External Storage (GUI)</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">External Storage authentication mechanisms</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#special-mechanisms">Special mechanisms</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#password-based-mechanisms">Password-based mechanisms</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#public-key-mechanisms">Public-key mechanisms</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../encryption_configuration.html">Encryption configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../encryption_details.html">Encryption details</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../files_locking_transactional.html">Transactional file locking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../previews_configuration.html">Previews configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../file_versioning.html">Controlling file versions and aging</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../file_workflows/index.html">File workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../groupware/index.html">Groupware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../configuration_database/index.html">Database configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../configuration_mimetypes/index.html">Mimetypes management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../maintenance/index.html">Maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../issues/index.html">Issues and troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gdpr/index.html">GDPR</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../contents.html">Nextcloud latest Administration Manual</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../contents.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">File sharing and management</a> &raquo;</li>
+        
+      <li>External Storage authentication mechanisms</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/nextcloud/documentation/edit/master/admin_manual/configuration_files/external_storage/auth_mechanisms.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="external-storage-authentication-mechanisms">
+<h1>External Storage authentication mechanisms<a class="headerlink" href="#external-storage-authentication-mechanisms" title="Permalink to this headline">¶</a></h1>
+<p>Nextcloud storage backends accept one or more authentication schemes such as
+passwords, OAuth, or token-based, to name a few examples. Each authentication
+scheme may be implemented by combining multiple authentication mechanisms. Different
+mechanisms require different configuration parameters, depending on their
+behavior.</p>
+<div class="figure">
+<img alt="Authentication types" src="../../_images/authentication-types.png" />
+</div>
+<div class="section" id="special-mechanisms">
+<h2>Special mechanisms<a class="headerlink" href="#special-mechanisms" title="Permalink to this headline">¶</a></h2>
+<p>The <strong>None</strong> authentication mechanism requires no configuration parameters, and
+is used when a backend requires no authentication.</p>
+<p>The <strong>Built-in</strong> authentication mechanism itself requires no configuration
+parameters, but is used as a placeholder for legacy storages that have not been
+migrated to the new system and do not take advantage of generic authentication
+mechanisms. The authentication parameters are provided directly by the backend.</p>
+</div>
+<div class="section" id="password-based-mechanisms">
+<h2>Password-based mechanisms<a class="headerlink" href="#password-based-mechanisms" title="Permalink to this headline">¶</a></h2>
+<p>The <strong>Username and password</strong> mechanism requires a manually-defined username and
+password. These get passed directly to the backend and are specified during the
+setup of the mount point.</p>
+<p>The <strong>Log-in credentials, save in session</strong> mechanism uses the Nextcloud login
+credentials of the user to connect to the storage. These are not stored anywhere
+on the server, but rather in the user session, giving increased security.
+This method has some important drawbacks, since Nextcloud has no access to the storage
+credentials and therefore cannot perform any background tasks on the storage:</p>
+<ul class="simple">
+<li>Sharing is disabled</li>
+<li>Background file scanning does not work</li>
+<li>Desktop and mobile clients that use tokens to authenticate can not access those shares</li>
+<li>Other services that might request the file through a different request like Collabora Online or OnlyOffice will not be able to open files from that storage</li>
+<li>The method cannot be used with SAML authentication, because Nextcloud does not get a hold of any credentials whatsoever</li>
+</ul>
+<p>The <strong>Log-in credentials, save in database</strong> mechanism uses the Nextcloud login
+credentials of the user to connect to the storage. These are stored in the
+database encrypted with the shared secret. This allows to share files from
+within this mount point.</p>
+<p>The <strong>User entered, store in database</strong> mechanism work in the same way as the
+&#8220;Username and password&#8221; mechanism but the credentials need to be specified by
+each user individually. Before the first access to that mount point the user
+will be prompted to enter the credentials.</p>
+<p>The <strong>Global credentials</strong> mechanism uses the general input field for &#8220;Global
+credentials&#8221; in the external storage settings section as source for the
+credentials instead of individual credentials for a mount point.</p>
+</div>
+<div class="section" id="public-key-mechanisms">
+<h2>Public-key mechanisms<a class="headerlink" href="#public-key-mechanisms" title="Permalink to this headline">¶</a></h2>
+<p>Currently only the RSA mechanism is implemented, where a public/private
+keypair is generated by Nextcloud and the public half shown in the GUI. The keys
+are generated in the SSH format, and are currently 1024 bits in length. Keys
+can be regenerated with a button in the GUI.</p>
+<div class="figure">
+<img alt="Form on admin page for generating RSA keys." src="../../_images/auth_rsa.png" />
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../encryption_configuration.html" class="btn btn-neutral float-right" title="Encryption configuration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="webdav.html" class="btn btn-neutral float-left" title="WebDAV" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021 Nextcloud GmbH.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/16/admin_manual">16</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/17/admin_manual">17</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/18/admin_manual">18</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/19/admin_manual">19</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/admin_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/admin_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+   
+
+</body>
+</html>

@@ -1,0 +1,294 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+OC\_Template
+============
+
+
+.. php:class:: OC_Template
+
+
+	.. rst-class:: phpdoc-description
+	
+		| This class provides the templates for ownCloud\.
+		
+	
+	:Source:
+		`lib/private/legacy/OC_Template.php#49 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Template.php#L49>`_
+	
+	:Parent:
+		:php:class:`OC\\Template\\Base`
+	
+
+Properties
+----------
+
+.. php:attr:: protected static app
+
+	:Source:
+		`lib/private/legacy/OC_Template.php#61 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Template.php#L61>`_
+	
+	:Type: string 
+
+
+.. php:attr:: protected initTemplateEngineFirstRun
+
+	:Source:
+		`lib/private/legacy/OC_Template.php#63 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Template.php#L63>`_
+	
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $app, $name, $renderAs=\\OCP\\AppFramework\\Http\\TemplateResponse::RENDER\_AS\_BLANK, $registerCall=\\true)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Constructor
+			
+		
+		:Source:
+			`lib/private/legacy/OC_Template.php#76 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Template.php#L76>`_
+		
+		
+		:Parameters:
+			* **$app** (string)  app providing the template
+			* **$name** (string)  of the template file (without suffix)
+			* **$renderAs** (string)  If $renderAs is set, OC_Template will try to
+			produce a full page in the according layout. For
+			now, $renderAs can be set to "guest", "user" or
+			"admin".
+			* **$registerCall** (bool)  = true
+
+		
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static initTemplateEngine( $renderAs)
+	
+		:Source:
+			`lib/private/legacy/OC_Template.php#102 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Template.php#L102>`_
+		
+		
+		:Parameters:
+			* **$renderAs** (string)  
+
+		
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected findTemplate( $theme, $app, $name)
+	
+		.. rst-class:: phpdoc-description
+		
+			| find the template with the given name
+			
+		
+		:Source:
+			`lib/private/legacy/OC_Template.php#144 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Template.php#L144>`_
+		
+		
+		:Parameters:
+			* **$theme** (string)  
+			* **$app** (string)  
+			* **$name** (string)  of the template file (without suffix)
+			
+			Will select the template file for the selected theme.
+			Checking all the possible locations.
+
+		
+		:Returns: string[] 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public addHeader( $tag, $attributes, $text=\\null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Add a custom element to the header
+			
+		
+		:Source:
+			`lib/private/legacy/OC_Template.php#164 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Template.php#L164>`_
+		
+		
+		:Parameters:
+			* **$tag** (string)  tag name of the element
+			* **$attributes** (array)  array of attributes for the element
+			* **$text** (string)  the text content for the element. If $text is null then the
+			element will be written as empty element. So use "" to get a closing tag.
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public fetchPage( $additionalParams=\\null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Process the template
+			
+		
+		:Source:
+			`lib/private/legacy/OC_Template.php#179 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Template.php#L179>`_
+		
+		
+		:Returns: string This function process the template\. If $this\-\>renderAs is set, it
+			will produce a full page\.
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public inc( $file, $additionalParams=\\null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Include template
+			
+		
+		:Source:
+			`lib/private/legacy/OC_Template.php#227 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Template.php#L227>`_
+		
+		
+		:Parameters:
+			* **$file** (string)  
+			* **$additionalParams** (array | null)  
+
+		
+		:Returns: string returns content of included template
+			
+			Includes another template\. use <?php echo $this\-\>inc\(\'template\'\); ?\> to
+			do this\.
+		
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static printUserPage( $application, $name, $parameters=\[\])
+	
+		.. rst-class:: phpdoc-description
+		
+			| Shortcut to print a simple page for users
+			
+		
+		:Source:
+			`lib/private/legacy/OC_Template.php#238 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Template.php#L238>`_
+		
+		
+		:Parameters:
+			* **$application** (string)  The application we render the template for
+			* **$name** (string)  Name of the template
+			* **$parameters** (array)  Parameters for the template
+
+		
+		:Returns: bool | null 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static printAdminPage( $application, $name, $parameters=\[\])
+	
+		.. rst-class:: phpdoc-description
+		
+			| Shortcut to print a simple page for admins
+			
+		
+		:Source:
+			`lib/private/legacy/OC_Template.php#253 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Template.php#L253>`_
+		
+		
+		:Parameters:
+			* **$application** (string)  The application we render the template for
+			* **$name** (string)  Name of the template
+			* **$parameters** (array)  Parameters for the template
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static printGuestPage( $application, $name, $parameters=\[\])
+	
+		.. rst-class:: phpdoc-description
+		
+			| Shortcut to print a simple page for guests
+			
+		
+		:Source:
+			`lib/private/legacy/OC_Template.php#268 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Template.php#L268>`_
+		
+		
+		:Parameters:
+			* **$application** (string)  The application we render the template for
+			* **$name** (string)  Name of the template
+			* **$parameters** (array | string)  Parameters for the template
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static printErrorPage( $error_msg, $hint="", $statusCode=500)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Print a fatal error page and terminates the script
+			
+		
+		:Source:
+			`lib/private/legacy/OC_Template.php#283 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Template.php#L283>`_
+		
+		
+		:Parameters:
+			* **$error_msg** (string)  The error message to show
+			* **$hint** (string)  An optional hint message - needs to be properly escape
+			* **$statusCode** (int)  
+
+		
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static printExceptionErrorPage( $exception, $statusCode=503)
+	
+		.. rst-class:: phpdoc-description
+		
+			| print error page using Exception details
+			
+		
+		:Source:
+			`lib/private/legacy/OC_Template.php#318 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Template.php#L318>`_
+		
+		
+		:Parameters:
+			* **$exception** (:any:`Exception <Exception>` | :any:`\\Throwable <Throwable>`)  
+			* **$statusCode** (int)  
+
+		
+		:Returns: bool | string 
+	
+	
+

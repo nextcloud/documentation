@@ -1,0 +1,145 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IEventLogger
+============
+
+
+.. php:namespace:: OCP\Diagnostics
+
+.. php:interface:: IEventLogger
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Interface IEventLogger
+		
+	
+	:Implemented by:
+		:php:class:`OC\\Diagnostics\\EventLogger` 
+	
+	
+	:Source:
+		`lib/public/Diagnostics/IEventLogger.php#32 <https://github.com/nextcloud/server/blob/stable13/lib/public/Diagnostics/IEventLogger.php#L32>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public start( $id, $description)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Mark the start of an event setting its ID $id and providing event description $description\.
+			
+		
+		:Source:
+			`lib/public/Diagnostics/IEventLogger.php#40 <https://github.com/nextcloud/server/blob/stable13/lib/public/Diagnostics/IEventLogger.php#L40>`_
+		
+		
+		:Parameters:
+			* **$id** (string)  
+			* **$description** (string)  
+
+		
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public end( $id)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Mark the end of an event with specific ID $id, marked by start\(\) method\.
+			
+			| Ending event should store \\OCP\\Diagnostics\\IEvent to
+			| be returned with getEvents\(\) method\.
+			
+		
+		:Source:
+			`lib/public/Diagnostics/IEventLogger.php#50 <https://github.com/nextcloud/server/blob/stable13/lib/public/Diagnostics/IEventLogger.php#L50>`_
+		
+		
+		:Parameters:
+			* **$id** (string)  
+
+		
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public log( $id, $description, $start, $end)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Mark the start and the end of an event with specific ID $id and description $description,
+			| explicitly marking start and end of the event, represented by $start and $end timestamps\.
+			
+			| Logging event should store \\OCP\\Diagnostics\\IEvent to
+			| be returned with getEvents\(\) method\.
+			
+		
+		:Source:
+			`lib/public/Diagnostics/IEventLogger.php#64 <https://github.com/nextcloud/server/blob/stable13/lib/public/Diagnostics/IEventLogger.php#L64>`_
+		
+		
+		:Parameters:
+			* **$id** (string)  
+			* **$description** (string)  
+			* **$start** (float)  
+			* **$end** (float)  
+
+		
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getEvents()
+	
+		.. rst-class:: phpdoc-description
+		
+			| This method should return all \\OCP\\Diagnostics\\IEvent objects stored using
+			| start\(\)/end\(\) or log\(\) methods
+			
+		
+		:Source:
+			`lib/public/Diagnostics/IEventLogger.php#73 <https://github.com/nextcloud/server/blob/stable13/lib/public/Diagnostics/IEventLogger.php#L73>`_
+		
+		
+		:Returns: :any:`\\OCP\\Diagnostics\\IEvent\[\] <OCP\\Diagnostics\\IEvent>` 
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public activate()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Activate the module for the duration of the request\. Deactivated module
+			| does not create and store \\OCP\\Diagnostics\\IEvent objects\.
+			
+			| Only activated module should create and store objects to be
+			| returned with getEvents\(\) call\.
+			
+		
+		:Source:
+			`lib/public/Diagnostics/IEventLogger.php#83 <https://github.com/nextcloud/server/blob/stable13/lib/public/Diagnostics/IEventLogger.php#L83>`_
+		
+		
+		:Since: 12.0.0 
+	
+	
+

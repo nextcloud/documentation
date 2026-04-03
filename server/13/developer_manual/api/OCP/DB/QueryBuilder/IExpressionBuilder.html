@@ -1,0 +1,1163 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>IExpressionBuilder &mdash; Nextcloud 13 Developer Manual 13 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../../../',
+              VERSION:'13',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="IParameter" href="IParameter.html" />
+    <link rel="prev" title="IFunctionBuilder" href="IFunctionBuilder.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html">
+          
+
+          
+            
+            <img src="../../../../_static/logo-white.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../general/index.html">General contributor guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/startapp.html">Create an app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/init.html">Navigation and pre-app configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/info.html">App metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/classloader.html">Classloader</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/request.html">Request lifecycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/routes.html">Routing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/middleware.html">Middleware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/container.html">Container</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/controllers.html">Controllers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/api.html">RESTful API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/templates.html">Templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/js.html">JavaScript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/css.html">CSS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/l10n.html">Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/theming.html">Theming support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/schema.html">Database schema</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/database.html">Database access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/filesystem.html">Filesystem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/appdata.html">AppData</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/users.html">User management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/two-factor-provider.html">Two-factor providers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/hooks.html">Hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/backgroundjobs.html">Background jobs (Cron)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/settings.html">Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/logging.html">Logging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/migrations.html">Migrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/repair.html">Repair steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/publishing.html">App store publishing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/code_signing.html">Code signing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../design/index.html">Design guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../android_library/index.html">Android application development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../client_apis/index.html">Client APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../core/translation.html">Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../core/unit-testing.html">Unit-Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../core/theming.html">Theming Nextcloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../core/externalapi.html">External API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../core/ocs-share-api.html">OCS Share API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../core/index.html">Core development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bugtracker/index.html">Bugtracker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../commun/index.html">Help and communication</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../../api.html">API Documentation</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../../../api.html#php-public-api">PHP public API</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../../index.html">/OCP namespace</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="../../index.html#namespaces">Namespaces</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../index.html#interfaces">Interfaces</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../index.html#classes">Classes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api.html#php-class-reference">PHP class reference</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">Nextcloud 13 Developer Manual</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../../../api.html">API Documentation</a> &raquo;</li>
+        
+          <li><a href="../../index.html">OCP</a> &raquo;</li>
+        
+          <li><a href="../index.html">DB</a> &raquo;</li>
+        
+          <li><a href="index.html">QueryBuilder</a> &raquo;</li>
+        
+      <li>IExpressionBuilder</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/nextcloud/documentation/edit/stable13/developer_manual/api/OCP/DB/QueryBuilder/IExpressionBuilder.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="phpdoctorst section" id="namespace-OCP\DB\QueryBuilder">
+<span id="iexpressionbuilder"></span><h1>IExpressionBuilder<a class="headerlink" href="#namespace-OCP\DB\QueryBuilder" title="Permalink to this headline">¶</a></h1>
+<dl class="interface">
+<dt id="OCP\DB\QueryBuilder\IExpressionBuilder">
+<em class="property">interface </em><code class="descclassname">OCP\DB\QueryBuilder\</code><code class="descname">IExpressionBuilder</code><a class="headerlink" href="#OCP\DB\QueryBuilder\IExpressionBuilder" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">This class provides a wrapper around Doctrine&#8217;s ExpressionBuilder</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Implemented by:</th><td class="field-body"><a class="reference internal" href="../../../OC/DB/QueryBuilder/ExpressionBuilder/ExpressionBuilder.html#OC\DB\QueryBuilder\ExpressionBuilder\ExpressionBuilder" title="OC\DB\QueryBuilder\ExpressionBuilder\ExpressionBuilder"><code class="xref php php-class docutils literal"><span class="pre">OC\DB\QueryBuilder\ExpressionBuilder\ExpressionBuilder</span></code></a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IExpressionBuilder.php#L38">lib/public/DB/QueryBuilder/IExpressionBuilder.php#38</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<div class="section" id="constants">
+<h2>Constants<a class="headerlink" href="#constants" title="Permalink to this headline">¶</a></h2>
+<dl class="const">
+<dt>
+<code class="descname">EQ = \Doctrine\DBAL\Query\Expression\ExpressionBuilder::EQ</code></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IExpressionBuilder.php#L42">lib/public/DB/QueryBuilder/IExpressionBuilder.php#42</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body">9.0.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="const">
+<dt>
+<code class="descname">NEQ = \Doctrine\DBAL\Query\Expression\ExpressionBuilder::NEQ</code></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IExpressionBuilder.php#L46">lib/public/DB/QueryBuilder/IExpressionBuilder.php#46</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body">9.0.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="const">
+<dt>
+<code class="descname">LT = \Doctrine\DBAL\Query\Expression\ExpressionBuilder::LT</code></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IExpressionBuilder.php#L50">lib/public/DB/QueryBuilder/IExpressionBuilder.php#50</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body">9.0.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="const">
+<dt>
+<code class="descname">LTE = \Doctrine\DBAL\Query\Expression\ExpressionBuilder::LTE</code></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IExpressionBuilder.php#L54">lib/public/DB/QueryBuilder/IExpressionBuilder.php#54</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body">9.0.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="const">
+<dt>
+<code class="descname">GT = \Doctrine\DBAL\Query\Expression\ExpressionBuilder::GT</code></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IExpressionBuilder.php#L58">lib/public/DB/QueryBuilder/IExpressionBuilder.php#58</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body">9.0.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="const">
+<dt>
+<code class="descname">GTE = \Doctrine\DBAL\Query\Expression\ExpressionBuilder::GTE</code></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IExpressionBuilder.php#L62">lib/public/DB/QueryBuilder/IExpressionBuilder.php#62</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body">9.0.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h2>
+<dl class="public method">
+<dt id="OCP\DB\QueryBuilder\IExpressionBuilder::andX">
+<em class="property">public </em><code class="descclassname">OCP\DB\QueryBuilder\IExpressionBuilder::</code><code class="descname">andX</code><span class="sig-paren">(</span><em>...$x</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\DB\QueryBuilder\IExpressionBuilder::andX" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Creates a conjunction of the given boolean expressions.</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">Example:</div>
+<div class="line"><br /></div>
+<div class="line">[php]</div>
+<div class="line">// (u.type = ?) AND (u.role = ?)</div>
+<div class="line">$expr-&gt;andX(&#8216;u.type = ?&#8217;, &#8216;u.role = ?&#8217;));</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IExpressionBuilder.php#L81">lib/public/DB/QueryBuilder/IExpressionBuilder.php#81</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$x</strong> (mixed)  Optional clause. Defaults = null, but requires</li>
+</ul>
+<p>at least one defined when converting to string.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference internal" href="ICompositeExpression.html#OCP\DB\QueryBuilder\ICompositeExpression" title="OCP\DB\QueryBuilder\ICompositeExpression"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\DB\QueryBuilder\ICompositeExpression</span></code></a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">8.2.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\DB\QueryBuilder\IExpressionBuilder::orX">
+<em class="property">public </em><code class="descclassname">OCP\DB\QueryBuilder\IExpressionBuilder::</code><code class="descname">orX</code><span class="sig-paren">(</span><em>...$x</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\DB\QueryBuilder\IExpressionBuilder::orX" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Creates a disjunction of the given boolean expressions.</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">Example:</div>
+<div class="line"><br /></div>
+<div class="line">[php]</div>
+<div class="line">// (u.type = ?) OR (u.role = ?)</div>
+<div class="line">$qb-&gt;where($qb-&gt;expr()-&gt;orX(&#8216;u.type = ?&#8217;, &#8216;u.role = ?&#8217;));</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IExpressionBuilder.php#L100">lib/public/DB/QueryBuilder/IExpressionBuilder.php#100</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$x</strong> (mixed)  Optional clause. Defaults = null, but requires</li>
+</ul>
+<p>at least one defined when converting to string.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference internal" href="ICompositeExpression.html#OCP\DB\QueryBuilder\ICompositeExpression" title="OCP\DB\QueryBuilder\ICompositeExpression"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\DB\QueryBuilder\ICompositeExpression</span></code></a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">8.2.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\DB\QueryBuilder\IExpressionBuilder::comparison">
+<em class="property">public </em><code class="descclassname">OCP\DB\QueryBuilder\IExpressionBuilder::</code><code class="descname">comparison</code><span class="sig-paren">(</span><em>$x</em>, <em>$operator</em>, <em>$y</em>, <em>$type=null</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\DB\QueryBuilder\IExpressionBuilder::comparison" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Creates a comparison expression.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IExpressionBuilder.php#L119">lib/public/DB/QueryBuilder/IExpressionBuilder.php#119</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$x</strong> (mixed)  The left expression.</li>
+<li><strong>$operator</strong> (string)  One of the IExpressionBuilder::* constants.</li>
+<li><strong>$y</strong> (mixed)  The right expression.</li>
+<li><strong>$type</strong> (mixed | null)  one of the IQueryBuilder::PARAM_* constants</li>
+</ul>
+<p>required when comparing text fields for oci compatibility</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">string</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">8.2.0 - Parameter $type was added in 9.0.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\DB\QueryBuilder\IExpressionBuilder::eq">
+<em class="property">public </em><code class="descclassname">OCP\DB\QueryBuilder\IExpressionBuilder::</code><code class="descname">eq</code><span class="sig-paren">(</span><em>$x</em>, <em>$y</em>, <em>$type=null</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\DB\QueryBuilder\IExpressionBuilder::eq" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Creates an equality comparison expression with the given arguments.</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">First argument is considered the left expression and the second is the right expression.</div>
+<div class="line">When converted to string, it will generated a &lt;left expr&gt; = &lt;right expr&gt;. Example:</div>
+<div class="line"><br /></div>
+<div class="line-block">
+<div class="line">[php]</div>
+<div class="line">// u.id = ?</div>
+<div class="line">$expr-&gt;eq(&#8216;u.id&#8217;, &#8216;?&#8217;);</div>
+</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IExpressionBuilder.php#L143">lib/public/DB/QueryBuilder/IExpressionBuilder.php#143</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$x</strong> (mixed)  The left expression.</li>
+<li><strong>$y</strong> (mixed)  The right expression.</li>
+<li><strong>$type</strong> (mixed | null)  one of the IQueryBuilder::PARAM_* constants</li>
+</ul>
+<p>required when comparing text fields for oci compatibility</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">string</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">8.2.0 - Parameter $type was added in 9.0.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\DB\QueryBuilder\IExpressionBuilder::neq">
+<em class="property">public </em><code class="descclassname">OCP\DB\QueryBuilder\IExpressionBuilder::</code><code class="descname">neq</code><span class="sig-paren">(</span><em>$x</em>, <em>$y</em>, <em>$type=null</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\DB\QueryBuilder\IExpressionBuilder::neq" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Creates a non equality comparison expression with the given arguments.</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">First argument is considered the left expression and the second is the right expression.</div>
+<div class="line">When converted to string, it will generated a &lt;left expr&gt; &lt;&gt; &lt;right expr&gt;. Example:</div>
+<div class="line"><br /></div>
+<div class="line-block">
+<div class="line">[php]</div>
+<div class="line">// u.id &lt;&gt; 1</div>
+<div class="line">$q-&gt;where($q-&gt;expr()-&gt;neq(&#8216;u.id&#8217;, &#8216;1&#8217;));</div>
+</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IExpressionBuilder.php#L166">lib/public/DB/QueryBuilder/IExpressionBuilder.php#166</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$x</strong> (mixed)  The left expression.</li>
+<li><strong>$y</strong> (mixed)  The right expression.</li>
+<li><strong>$type</strong> (mixed | null)  one of the IQueryBuilder::PARAM_* constants</li>
+</ul>
+<p>required when comparing text fields for oci compatibility</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">string</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">8.2.0 - Parameter $type was added in 9.0.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\DB\QueryBuilder\IExpressionBuilder::lt">
+<em class="property">public </em><code class="descclassname">OCP\DB\QueryBuilder\IExpressionBuilder::</code><code class="descname">lt</code><span class="sig-paren">(</span><em>$x</em>, <em>$y</em>, <em>$type=null</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\DB\QueryBuilder\IExpressionBuilder::lt" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Creates a lower-than comparison expression with the given arguments.</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">First argument is considered the left expression and the second is the right expression.</div>
+<div class="line">When converted to string, it will generated a &lt;left expr&gt; &lt; &lt;right expr&gt;. Example:</div>
+<div class="line"><br /></div>
+<div class="line-block">
+<div class="line">[php]</div>
+<div class="line">// u.id &lt; ?</div>
+<div class="line">$q-&gt;where($q-&gt;expr()-&gt;lt(&#8216;u.id&#8217;, &#8216;?&#8217;));</div>
+</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IExpressionBuilder.php#L189">lib/public/DB/QueryBuilder/IExpressionBuilder.php#189</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$x</strong> (mixed)  The left expression.</li>
+<li><strong>$y</strong> (mixed)  The right expression.</li>
+<li><strong>$type</strong> (mixed | null)  one of the IQueryBuilder::PARAM_* constants</li>
+</ul>
+<p>required when comparing text fields for oci compatibility</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">string</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">8.2.0 - Parameter $type was added in 9.0.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\DB\QueryBuilder\IExpressionBuilder::lte">
+<em class="property">public </em><code class="descclassname">OCP\DB\QueryBuilder\IExpressionBuilder::</code><code class="descname">lte</code><span class="sig-paren">(</span><em>$x</em>, <em>$y</em>, <em>$type=null</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\DB\QueryBuilder\IExpressionBuilder::lte" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Creates a lower-than-equal comparison expression with the given arguments.</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">First argument is considered the left expression and the second is the right expression.</div>
+<div class="line">When converted to string, it will generated a &lt;left expr&gt; &lt;= &lt;right expr&gt;. Example:</div>
+<div class="line"><br /></div>
+<div class="line-block">
+<div class="line">[php]</div>
+<div class="line">// u.id &lt;= ?</div>
+<div class="line">$q-&gt;where($q-&gt;expr()-&gt;lte(&#8216;u.id&#8217;, &#8216;?&#8217;));</div>
+</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IExpressionBuilder.php#L212">lib/public/DB/QueryBuilder/IExpressionBuilder.php#212</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$x</strong> (mixed)  The left expression.</li>
+<li><strong>$y</strong> (mixed)  The right expression.</li>
+<li><strong>$type</strong> (mixed | null)  one of the IQueryBuilder::PARAM_* constants</li>
+</ul>
+<p>required when comparing text fields for oci compatibility</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">string</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">8.2.0 - Parameter $type was added in 9.0.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\DB\QueryBuilder\IExpressionBuilder::gt">
+<em class="property">public </em><code class="descclassname">OCP\DB\QueryBuilder\IExpressionBuilder::</code><code class="descname">gt</code><span class="sig-paren">(</span><em>$x</em>, <em>$y</em>, <em>$type=null</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\DB\QueryBuilder\IExpressionBuilder::gt" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Creates a greater-than comparison expression with the given arguments.</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">First argument is considered the left expression and the second is the right expression.</div>
+<div class="line">When converted to string, it will generated a &lt;left expr&gt; &gt; &lt;right expr&gt;. Example:</div>
+<div class="line"><br /></div>
+<div class="line-block">
+<div class="line">[php]</div>
+<div class="line">// u.id &gt; ?</div>
+<div class="line">$q-&gt;where($q-&gt;expr()-&gt;gt(&#8216;u.id&#8217;, &#8216;?&#8217;));</div>
+</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IExpressionBuilder.php#L235">lib/public/DB/QueryBuilder/IExpressionBuilder.php#235</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$x</strong> (mixed)  The left expression.</li>
+<li><strong>$y</strong> (mixed)  The right expression.</li>
+<li><strong>$type</strong> (mixed | null)  one of the IQueryBuilder::PARAM_* constants</li>
+</ul>
+<p>required when comparing text fields for oci compatibility</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">string</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">8.2.0 - Parameter $type was added in 9.0.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\DB\QueryBuilder\IExpressionBuilder::gte">
+<em class="property">public </em><code class="descclassname">OCP\DB\QueryBuilder\IExpressionBuilder::</code><code class="descname">gte</code><span class="sig-paren">(</span><em>$x</em>, <em>$y</em>, <em>$type=null</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\DB\QueryBuilder\IExpressionBuilder::gte" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Creates a greater-than-equal comparison expression with the given arguments.</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">First argument is considered the left expression and the second is the right expression.</div>
+<div class="line">When converted to string, it will generated a &lt;left expr&gt; &gt;= &lt;right expr&gt;. Example:</div>
+<div class="line"><br /></div>
+<div class="line-block">
+<div class="line">[php]</div>
+<div class="line">// u.id &gt;= ?</div>
+<div class="line">$q-&gt;where($q-&gt;expr()-&gt;gte(&#8216;u.id&#8217;, &#8216;?&#8217;));</div>
+</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IExpressionBuilder.php#L258">lib/public/DB/QueryBuilder/IExpressionBuilder.php#258</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$x</strong> (mixed)  The left expression.</li>
+<li><strong>$y</strong> (mixed)  The right expression.</li>
+<li><strong>$type</strong> (mixed | null)  one of the IQueryBuilder::PARAM_* constants</li>
+</ul>
+<p>required when comparing text fields for oci compatibility</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">string</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">8.2.0 - Parameter $type was added in 9.0.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\DB\QueryBuilder\IExpressionBuilder::isNull">
+<em class="property">public </em><code class="descclassname">OCP\DB\QueryBuilder\IExpressionBuilder::</code><code class="descname">isNull</code><span class="sig-paren">(</span><em>$x</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\DB\QueryBuilder\IExpressionBuilder::isNull" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Creates an IS NULL expression with the given arguments.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IExpressionBuilder.php#L270">lib/public/DB/QueryBuilder/IExpressionBuilder.php#270</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$x</strong> (string | <a class="reference internal" href="ILiteral.html#OCP\DB\QueryBuilder\ILiteral" title="OCP\DB\QueryBuilder\ILiteral"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\DB\QueryBuilder\ILiteral</span></code></a> | <a class="reference internal" href="IParameter.html#OCP\DB\QueryBuilder\IParameter" title="OCP\DB\QueryBuilder\IParameter"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\DB\QueryBuilder\IParameter</span></code></a> | <a class="reference internal" href="IQueryFunction.html#OCP\DB\QueryBuilder\IQueryFunction" title="OCP\DB\QueryBuilder\IQueryFunction"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\DB\QueryBuilder\IQueryFunction</span></code></a>)  The field in string format to be restricted by IS NULL.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">string</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">8.2.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\DB\QueryBuilder\IExpressionBuilder::isNotNull">
+<em class="property">public </em><code class="descclassname">OCP\DB\QueryBuilder\IExpressionBuilder::</code><code class="descname">isNotNull</code><span class="sig-paren">(</span><em>$x</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\DB\QueryBuilder\IExpressionBuilder::isNotNull" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Creates an IS NOT NULL expression with the given arguments.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IExpressionBuilder.php#L282">lib/public/DB/QueryBuilder/IExpressionBuilder.php#282</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$x</strong> (string | <a class="reference internal" href="ILiteral.html#OCP\DB\QueryBuilder\ILiteral" title="OCP\DB\QueryBuilder\ILiteral"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\DB\QueryBuilder\ILiteral</span></code></a> | <a class="reference internal" href="IParameter.html#OCP\DB\QueryBuilder\IParameter" title="OCP\DB\QueryBuilder\IParameter"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\DB\QueryBuilder\IParameter</span></code></a> | <a class="reference internal" href="IQueryFunction.html#OCP\DB\QueryBuilder\IQueryFunction" title="OCP\DB\QueryBuilder\IQueryFunction"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\DB\QueryBuilder\IQueryFunction</span></code></a>)  The field in string format to be restricted by IS NOT NULL.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">string</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">8.2.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\DB\QueryBuilder\IExpressionBuilder::like">
+<em class="property">public </em><code class="descclassname">OCP\DB\QueryBuilder\IExpressionBuilder::</code><code class="descname">like</code><span class="sig-paren">(</span><em>$x</em>, <em>$y</em>, <em>$type=null</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\DB\QueryBuilder\IExpressionBuilder::like" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Creates a LIKE() comparison expression with the given arguments.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IExpressionBuilder.php#L299">lib/public/DB/QueryBuilder/IExpressionBuilder.php#299</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$x</strong> (<a class="reference internal" href="ILiteral.html#OCP\DB\QueryBuilder\ILiteral" title="OCP\DB\QueryBuilder\ILiteral"><code class="xref any php php-trait docutils literal"><span class="pre">OCP\DB\QueryBuilder\ILiteral</span></code></a> | <a class="reference internal" href="IParameter.html#OCP\DB\QueryBuilder\IParameter" title="OCP\DB\QueryBuilder\IParameter"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\DB\QueryBuilder\IParameter</span></code></a> | <a class="reference internal" href="IQueryFunction.html#OCP\DB\QueryBuilder\IQueryFunction" title="OCP\DB\QueryBuilder\IQueryFunction"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\DB\QueryBuilder\IQueryFunction</span></code></a> | string)  Field in string format to be inspected by LIKE() comparison.</li>
+<li><strong>$y</strong> (mixed)  Argument to be used in LIKE() comparison.</li>
+<li><strong>$type</strong> (mixed | null)  one of the IQueryBuilder::PARAM_* constants</li>
+</ul>
+<p>required when comparing text fields for oci compatibility</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">string</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">8.2.0 - Parameter $type was added in 9.0.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\DB\QueryBuilder\IExpressionBuilder::notLike">
+<em class="property">public </em><code class="descclassname">OCP\DB\QueryBuilder\IExpressionBuilder::</code><code class="descname">notLike</code><span class="sig-paren">(</span><em>$x</em>, <em>$y</em>, <em>$type=null</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\DB\QueryBuilder\IExpressionBuilder::notLike" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Creates a NOT LIKE() comparison expression with the given arguments.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IExpressionBuilder.php#L316">lib/public/DB/QueryBuilder/IExpressionBuilder.php#316</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$x</strong> (<a class="reference internal" href="ILiteral.html#OCP\DB\QueryBuilder\ILiteral" title="OCP\DB\QueryBuilder\ILiteral"><code class="xref any php php-trait docutils literal"><span class="pre">OCP\DB\QueryBuilder\ILiteral</span></code></a> | <a class="reference internal" href="IParameter.html#OCP\DB\QueryBuilder\IParameter" title="OCP\DB\QueryBuilder\IParameter"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\DB\QueryBuilder\IParameter</span></code></a> | <a class="reference internal" href="IQueryFunction.html#OCP\DB\QueryBuilder\IQueryFunction" title="OCP\DB\QueryBuilder\IQueryFunction"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\DB\QueryBuilder\IQueryFunction</span></code></a> | string)  Field in string format to be inspected by NOT LIKE() comparison.</li>
+<li><strong>$y</strong> (mixed)  Argument to be used in NOT LIKE() comparison.</li>
+<li><strong>$type</strong> (mixed | null)  one of the IQueryBuilder::PARAM_* constants</li>
+</ul>
+<p>required when comparing text fields for oci compatibility</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">string</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">8.2.0 - Parameter $type was added in 9.0.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\DB\QueryBuilder\IExpressionBuilder::iLike">
+<em class="property">public </em><code class="descclassname">OCP\DB\QueryBuilder\IExpressionBuilder::</code><code class="descname">iLike</code><span class="sig-paren">(</span><em>$x</em>, <em>$y</em>, <em>$type=null</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\DB\QueryBuilder\IExpressionBuilder::iLike" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Creates a ILIKE() comparison expression with the given arguments.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IExpressionBuilder.php#L333">lib/public/DB/QueryBuilder/IExpressionBuilder.php#333</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$x</strong> (string)  Field in string format to be inspected by ILIKE() comparison.</li>
+<li><strong>$y</strong> (mixed)  Argument to be used in ILIKE() comparison.</li>
+<li><strong>$type</strong> (mixed | null)  one of the IQueryBuilder::PARAM_* constants</li>
+</ul>
+<p>required when comparing text fields for oci compatibility</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">string</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">9.0.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\DB\QueryBuilder\IExpressionBuilder::in">
+<em class="property">public </em><code class="descclassname">OCP\DB\QueryBuilder\IExpressionBuilder::</code><code class="descname">in</code><span class="sig-paren">(</span><em>$x</em>, <em>$y</em>, <em>$type=null</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\DB\QueryBuilder\IExpressionBuilder::in" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Creates a IN () comparison expression with the given arguments.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IExpressionBuilder.php#L350">lib/public/DB/QueryBuilder/IExpressionBuilder.php#350</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$x</strong> (<a class="reference internal" href="ILiteral.html#OCP\DB\QueryBuilder\ILiteral" title="OCP\DB\QueryBuilder\ILiteral"><code class="xref any php php-trait docutils literal"><span class="pre">OCP\DB\QueryBuilder\ILiteral</span></code></a> | <a class="reference internal" href="IParameter.html#OCP\DB\QueryBuilder\IParameter" title="OCP\DB\QueryBuilder\IParameter"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\DB\QueryBuilder\IParameter</span></code></a> | <a class="reference internal" href="IQueryFunction.html#OCP\DB\QueryBuilder\IQueryFunction" title="OCP\DB\QueryBuilder\IQueryFunction"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\DB\QueryBuilder\IQueryFunction</span></code></a> | string)  The field in string format to be inspected by IN() comparison.</li>
+<li><strong>$y</strong> (<a class="reference internal" href="ILiteral.html#OCP\DB\QueryBuilder\ILiteral" title="OCP\DB\QueryBuilder\ILiteral"><code class="xref any php php-trait docutils literal"><span class="pre">OCP\DB\QueryBuilder\ILiteral</span></code></a> | <a class="reference internal" href="IParameter.html#OCP\DB\QueryBuilder\IParameter" title="OCP\DB\QueryBuilder\IParameter"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\DB\QueryBuilder\IParameter</span></code></a> | <a class="reference internal" href="IQueryFunction.html#OCP\DB\QueryBuilder\IQueryFunction" title="OCP\DB\QueryBuilder\IQueryFunction"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\DB\QueryBuilder\IQueryFunction</span></code></a> | string | array)  The placeholder or the array of values to be used by IN() comparison.</li>
+<li><strong>$type</strong> (mixed | null)  one of the IQueryBuilder::PARAM_* constants</li>
+</ul>
+<p>required when comparing text fields for oci compatibility</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">string</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">8.2.0 - Parameter $type was added in 9.0.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\DB\QueryBuilder\IExpressionBuilder::notIn">
+<em class="property">public </em><code class="descclassname">OCP\DB\QueryBuilder\IExpressionBuilder::</code><code class="descname">notIn</code><span class="sig-paren">(</span><em>$x</em>, <em>$y</em>, <em>$type=null</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\DB\QueryBuilder\IExpressionBuilder::notIn" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Creates a NOT IN () comparison expression with the given arguments.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IExpressionBuilder.php#L367">lib/public/DB/QueryBuilder/IExpressionBuilder.php#367</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$x</strong> (<a class="reference internal" href="ILiteral.html#OCP\DB\QueryBuilder\ILiteral" title="OCP\DB\QueryBuilder\ILiteral"><code class="xref any php php-trait docutils literal"><span class="pre">OCP\DB\QueryBuilder\ILiteral</span></code></a> | <a class="reference internal" href="IParameter.html#OCP\DB\QueryBuilder\IParameter" title="OCP\DB\QueryBuilder\IParameter"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\DB\QueryBuilder\IParameter</span></code></a> | <a class="reference internal" href="IQueryFunction.html#OCP\DB\QueryBuilder\IQueryFunction" title="OCP\DB\QueryBuilder\IQueryFunction"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\DB\QueryBuilder\IQueryFunction</span></code></a> | string)  The field in string format to be inspected by NOT IN() comparison.</li>
+<li><strong>$y</strong> (<a class="reference internal" href="ILiteral.html#OCP\DB\QueryBuilder\ILiteral" title="OCP\DB\QueryBuilder\ILiteral"><code class="xref any php php-trait docutils literal"><span class="pre">OCP\DB\QueryBuilder\ILiteral</span></code></a> | <a class="reference internal" href="IParameter.html#OCP\DB\QueryBuilder\IParameter" title="OCP\DB\QueryBuilder\IParameter"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\DB\QueryBuilder\IParameter</span></code></a> | <a class="reference internal" href="IQueryFunction.html#OCP\DB\QueryBuilder\IQueryFunction" title="OCP\DB\QueryBuilder\IQueryFunction"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\DB\QueryBuilder\IQueryFunction</span></code></a> | string | array)  The placeholder or the array of values to be used by NOT IN() comparison.</li>
+<li><strong>$type</strong> (mixed | null)  one of the IQueryBuilder::PARAM_* constants</li>
+</ul>
+<p>required when comparing text fields for oci compatibility</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">string</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">8.2.0 - Parameter $type was added in 9.0.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\DB\QueryBuilder\IExpressionBuilder::emptyString">
+<em class="property">public </em><code class="descclassname">OCP\DB\QueryBuilder\IExpressionBuilder::</code><code class="descname">emptyString</code><span class="sig-paren">(</span><em>$x</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\DB\QueryBuilder\IExpressionBuilder::emptyString" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Creates a $x = &#8216;&#8217; statement, because Oracle needs a different check</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IExpressionBuilder.php#L378">lib/public/DB/QueryBuilder/IExpressionBuilder.php#378</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$x</strong> (string | <a class="reference internal" href="ILiteral.html#OCP\DB\QueryBuilder\ILiteral" title="OCP\DB\QueryBuilder\ILiteral"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\DB\QueryBuilder\ILiteral</span></code></a> | <a class="reference internal" href="IParameter.html#OCP\DB\QueryBuilder\IParameter" title="OCP\DB\QueryBuilder\IParameter"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\DB\QueryBuilder\IParameter</span></code></a> | <a class="reference internal" href="IQueryFunction.html#OCP\DB\QueryBuilder\IQueryFunction" title="OCP\DB\QueryBuilder\IQueryFunction"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\DB\QueryBuilder\IQueryFunction</span></code></a>)  The field in string format to be inspected by the comparison.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">string</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">13.0.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\DB\QueryBuilder\IExpressionBuilder::nonEmptyString">
+<em class="property">public </em><code class="descclassname">OCP\DB\QueryBuilder\IExpressionBuilder::</code><code class="descname">nonEmptyString</code><span class="sig-paren">(</span><em>$x</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\DB\QueryBuilder\IExpressionBuilder::nonEmptyString" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Creates a `$x &lt;&gt; &#8216;&#8217;` statement, because Oracle needs a different check</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IExpressionBuilder.php#L389">lib/public/DB/QueryBuilder/IExpressionBuilder.php#389</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$x</strong> (string | <a class="reference internal" href="ILiteral.html#OCP\DB\QueryBuilder\ILiteral" title="OCP\DB\QueryBuilder\ILiteral"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\DB\QueryBuilder\ILiteral</span></code></a> | <a class="reference internal" href="IParameter.html#OCP\DB\QueryBuilder\IParameter" title="OCP\DB\QueryBuilder\IParameter"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\DB\QueryBuilder\IParameter</span></code></a> | <a class="reference internal" href="IQueryFunction.html#OCP\DB\QueryBuilder\IQueryFunction" title="OCP\DB\QueryBuilder\IQueryFunction"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\DB\QueryBuilder\IQueryFunction</span></code></a>)  The field in string format to be inspected by the comparison.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">string</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">13.0.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\DB\QueryBuilder\IExpressionBuilder::bitwiseAnd">
+<em class="property">public </em><code class="descclassname">OCP\DB\QueryBuilder\IExpressionBuilder::</code><code class="descname">bitwiseAnd</code><span class="sig-paren">(</span><em>$x</em>, <em>$y</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\DB\QueryBuilder\IExpressionBuilder::bitwiseAnd" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Creates a bitwise AND comparison</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IExpressionBuilder.php#L403">lib/public/DB/QueryBuilder/IExpressionBuilder.php#403</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$x</strong> (string | <a class="reference internal" href="ILiteral.html#OCP\DB\QueryBuilder\ILiteral" title="OCP\DB\QueryBuilder\ILiteral"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\DB\QueryBuilder\ILiteral</span></code></a>)  The field or value to check</li>
+<li><strong>$y</strong> (int)  Bitmap that must be set</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference internal" href="IQueryFunction.html#OCP\DB\QueryBuilder\IQueryFunction" title="OCP\DB\QueryBuilder\IQueryFunction"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\DB\QueryBuilder\IQueryFunction</span></code></a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">12.0.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\DB\QueryBuilder\IExpressionBuilder::bitwiseOr">
+<em class="property">public </em><code class="descclassname">OCP\DB\QueryBuilder\IExpressionBuilder::</code><code class="descname">bitwiseOr</code><span class="sig-paren">(</span><em>$x</em>, <em>$y</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\DB\QueryBuilder\IExpressionBuilder::bitwiseOr" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Creates a bitwise OR comparison</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IExpressionBuilder.php#L416">lib/public/DB/QueryBuilder/IExpressionBuilder.php#416</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$x</strong> (string | <a class="reference internal" href="ILiteral.html#OCP\DB\QueryBuilder\ILiteral" title="OCP\DB\QueryBuilder\ILiteral"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\DB\QueryBuilder\ILiteral</span></code></a>)  The field or value to check</li>
+<li><strong>$y</strong> (int)  Bitmap that must be set</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference internal" href="IQueryFunction.html#OCP\DB\QueryBuilder\IQueryFunction" title="OCP\DB\QueryBuilder\IQueryFunction"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\DB\QueryBuilder\IQueryFunction</span></code></a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">12.0.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\DB\QueryBuilder\IExpressionBuilder::literal">
+<em class="property">public </em><code class="descclassname">OCP\DB\QueryBuilder\IExpressionBuilder::</code><code class="descname">literal</code><span class="sig-paren">(</span><em>$input</em>, <em>$type=null</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\DB\QueryBuilder\IExpressionBuilder::literal" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Quotes a given input parameter.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IExpressionBuilder.php#L430">lib/public/DB/QueryBuilder/IExpressionBuilder.php#430</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$input</strong> (mixed)  The parameter to be quoted.</li>
+<li><strong>$type</strong> (mixed | null)  One of the IQueryBuilder::PARAM_* constants</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference internal" href="ILiteral.html#OCP\DB\QueryBuilder\ILiteral" title="OCP\DB\QueryBuilder\ILiteral"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\DB\QueryBuilder\ILiteral</span></code></a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">8.2.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\DB\QueryBuilder\IExpressionBuilder::castColumn">
+<em class="property">public </em><code class="descclassname">OCP\DB\QueryBuilder\IExpressionBuilder::</code><code class="descname">castColumn</code><span class="sig-paren">(</span><em>$column</em>, <em>$type</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\DB\QueryBuilder\IExpressionBuilder::castColumn" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Returns a IQueryFunction that casts the column to the given type</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IExpressionBuilder.php#L443">lib/public/DB/QueryBuilder/IExpressionBuilder.php#443</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$column</strong> (string)</li>
+<li><strong>$type</strong> (mixed)  One of IQueryBuilder::PARAM_*</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference internal" href="IQueryFunction.html#OCP\DB\QueryBuilder\IQueryFunction" title="OCP\DB\QueryBuilder\IQueryFunction"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\DB\QueryBuilder\IQueryFunction</span></code></a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">9.0.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="IParameter.html" class="btn btn-neutral float-right" title="IParameter" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="IFunctionBuilder.html" class="btn btn-neutral float-left" title="IFunctionBuilder" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021 Nextcloud GmbH.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: 13
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/13/developer_manual">13</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/14/developer_manual">14</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/15/developer_manual">15</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/developer_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/developer_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+   
+
+</body>
+</html>

@@ -1,0 +1,393 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Configuring Federation Sharing &mdash; Nextcloud 13 Administration Manual 13 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'13',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Uploading big files &gt; 512MB" href="big_file_upload_configuration.html" />
+    <link rel="prev" title="File Sharing" href="file_sharing_configuration.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../contents.html">
+          
+
+          
+            
+            <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_server/index.html">Server configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_user/index.html">User management</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">File sharing and management</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="file_sharing_configuration.html">File Sharing</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Configuring Federation Sharing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#creating-a-new-federation-share">Creating a new Federation Share</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuring-trusted-nextcloud-servers">Configuring trusted Nextcloud servers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#creating-federation-shares-via-public-link-share">Creating Federation Shares via public Link Share</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuration-tips">Configuration tips</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="big_file_upload_configuration.html">Uploading big files &gt; 512MB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="default_files_configuration.html">Providing default files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="external_storage_configuration_gui.html">Configuring External Storage (GUI)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="external_storage_configuration.html">Configuring External Storage (configuration file)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="external_storage/auth_mechanisms.html">External Storage authentication mechanisms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="encryption_configuration.html">Encryption configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="files_locking_transactional.html">Transactional file locking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="previews_configuration.html">Previews configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_versioning.html">Controlling file versions and aging</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../file_workflows/index.html">File workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_database/index.html">Database configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_mimetypes/index.html">Mimetypes management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../maintenance/index.html">Maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../issues/index.html">Issues and troubleshooting</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud 13 Administration Manual</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../contents.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">File sharing and management</a> &raquo;</li>
+        
+      <li>Configuring Federation Sharing</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/nextcloud/documentation/edit/stable13/admin_manual/configuration_files/federated_cloud_sharing_configuration.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="configuring-federation-sharing">
+<h1>Configuring Federation Sharing<a class="headerlink" href="#configuring-federation-sharing" title="Permalink to this headline">¶</a></h1>
+<p>Federated Cloud Sharing is now managed by the Federation app (9.0+), and is
+now called Federation sharing. When you enable the Federation app you can
+easily and securely link file shares between Nextcloud servers, in effect
+creating a cloud of Nextclouds.</p>
+<div class="section" id="creating-a-new-federation-share">
+<span id="label-direct-share-link"></span><h2>Creating a new Federation Share<a class="headerlink" href="#creating-a-new-federation-share" title="Permalink to this headline">¶</a></h2>
+<p>Follow these steps to create a new Federation share between two Nextcloud
+servers. This requires no action by the user on the remote server; all it takes
+is a few steps on the originating server.</p>
+<ol class="arabic simple">
+<li>Enable the Federation app.</li>
+<li>Go to your Nextcloud Admin page and scroll to the Sharing
+section. Verify that <strong>Allow users on this server to send shares to other
+servers</strong> and <strong>Allow users on this server to receive shares from other
+servers</strong> are enabled.</li>
+<li>Now go to the Federation
+section. By default, <strong>Add server automatically once a federated share was
+created successfully</strong> is checked. The Federation app supports creating a
+list of trusted Nextcloud servers, which allows the trusted servers to
+exchange user directories and auto-complete the names of external users when
+you create shares. If you do not want this enabled, then un-check it.</li>
+</ol>
+<div class="figure">
+<img alt="../_images/federation-0.png" src="../_images/federation-0.png" />
+</div>
+<ol class="arabic simple" start="4">
+<li>Now go to your Files page and select a folder to share. Click the share
+icon, and then enter the username and URL of the user on the remote Nextcloud
+server. In this example, that is <code class="docutils literal"><span class="pre">freda&#64;https://example.com/nextcloud</span></code>.
+When Nextcloud verifies the link, it displays it with the <strong>(remote)</strong> label.
+Click on this label to establish the link.</li>
+</ol>
+<div class="figure">
+<img alt="../_images/federation-2.png" src="../_images/federation-2.png" />
+</div>
+<ol class="arabic simple" start="5">
+<li>When the link is successfully completed, you have a single share option,
+and that is <strong>can edit</strong>.</li>
+</ol>
+<div class="figure">
+<img alt="../_images/federation-3.png" src="../_images/federation-3.png" />
+</div>
+<p>You may disconnect the share at any time by clicking the trash can icon.</p>
+</div>
+<div class="section" id="configuring-trusted-nextcloud-servers">
+<h2>Configuring trusted Nextcloud servers<a class="headerlink" href="#configuring-trusted-nextcloud-servers" title="Permalink to this headline">¶</a></h2>
+<p>You may create a list of trusted Nextcloud servers for Federation sharing. This
+allows your linked Nextcloud servers to share user directories, and to auto-fill
+user names in share dialogs. If <strong>Add server automatically once a federated
+share was created successfully</strong> is enabled on your Admin page, servers will be
+automatically added to your trusted list when you create new Federation shares.</p>
+<p>You may also enter Nextcloud server URLs in the <strong>Add Nextcloud Server</strong> field.
+The yellow light indicates a successful connection, with no user names
+exchanged. The green light indicates a successful connection with user names
+exchanged. A red light means the connection failed.</p>
+<div class="figure">
+<img alt="../_images/federation-1.png" src="../_images/federation-1.png" />
+</div>
+</div>
+<div class="section" id="creating-federation-shares-via-public-link-share">
+<span id="label-public-link-share"></span><h2>Creating Federation Shares via public Link Share<a class="headerlink" href="#creating-federation-shares-via-public-link-share" title="Permalink to this headline">¶</a></h2>
+<p>Check the <code class="docutils literal"><span class="pre">Share</span> <span class="pre">Link</span></code> checkbox to expose more sharing options (which are
+described more fully in <a class="reference internal" href="file_sharing_configuration.html"><span class="doc">File Sharing</span></a>). You may create a
+Federation share by allowing Nextcloud to create a public link for you, and then
+email it to the person you want to create the share with.</p>
+<div class="figure">
+<img alt="../_images/create_public_share-6.png" src="../_images/create_public_share-6.png" />
+</div>
+<p>You may optionally set a password and expiration date on it. When your recipient
+receives your email they must click the link, or copy it to a Web
+browser. They will see a page displaying a thumbnail of the file, with a button
+to <strong>Add to your Nextcloud</strong>.</p>
+<div class="figure">
+<img alt="../_images/create_public_share-8.png" src="../_images/create_public_share-8.png" />
+</div>
+<p>Your recipient should click the <strong>Add to your Nextcloud</strong> button. On the next
+screen your recipient needs to enter the URL to their Nextcloud
+server, and then press the return key.</p>
+<div class="figure">
+<img alt="../_images/create_public_share-9.png" src="../_images/create_public_share-9.png" />
+</div>
+<p>Your recipient has to take one more step, and that is to confirm creating the
+federated cloud share link by clicking the <strong>Add remote share</strong> button.</p>
+<div class="figure">
+<img alt="../_images/create_public_share-10.png" src="../_images/create_public_share-10.png" />
+</div>
+<p>Un-check the <code class="docutils literal"><span class="pre">Share</span> <span class="pre">Link</span></code> checkbox to disable any federated cloud share
+created this way.</p>
+</div>
+<div class="section" id="configuration-tips">
+<h2>Configuration tips<a class="headerlink" href="#configuration-tips" title="Permalink to this headline">¶</a></h2>
+<p>The Sharing section on your Admin page allows you to control how your users
+manage federated cloud shares:</p>
+<ul class="simple">
+<li>Check <code class="docutils literal"><span class="pre">Enforce</span> <span class="pre">password</span> <span class="pre">protection</span></code> to require passwords on link shares.</li>
+<li>Check <code class="docutils literal"><span class="pre">Set</span> <span class="pre">default</span> <span class="pre">expiration</span> <span class="pre">date</span></code> to require an expiration date on link
+shares.</li>
+<li>Check <code class="docutils literal"><span class="pre">Allow</span> <span class="pre">public</span> <span class="pre">uploads</span></code> to allow two-way file sharing.</li>
+</ul>
+<p>Your Apache Web server must have <code class="docutils literal"><span class="pre">mod_rewrite</span></code> enabled, and you must have
+<code class="docutils literal"><span class="pre">trusted_domains</span></code> correctly configured in <code class="docutils literal"><span class="pre">config.php</span></code> to allow external
+connections (see <a class="reference internal" href="../installation/installation_wizard.html"><span class="doc">Installation wizard</span></a>). Consider also
+enabling SSL to encrypt all traffic between your servers .</p>
+<p>Your Nextcloud server creates the share link from the URL that you used to log
+into the server, so make sure that you log into your server using a URL that is
+accessible to your users. For example, if you log in via its LAN IP address,
+such as <code class="docutils literal"><span class="pre">http://192.168.10.50</span></code>, then your share URL will be something like
+<code class="docutils literal"><span class="pre">http://192.168.10.50/nextcloud/index.php/s/jWfCfTVztGlWTJe</span></code>, which is not
+accessible outside of your LAN. This also applies to using the server name; for
+access outside of your LAN you need to use a fully-qualified domain name such as
+<code class="docutils literal"><span class="pre">http://myserver.example.com</span></code>, rather than <code class="docutils literal"><span class="pre">http://myserver</span></code>.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="big_file_upload_configuration.html" class="btn btn-neutral float-right" title="Uploading big files &gt; 512MB" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="file_sharing_configuration.html" class="btn btn-neutral float-left" title="File Sharing" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021 Nextcloud GmbH.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: 13
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/13/admin_manual">13</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/14/admin_manual">14</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/15/admin_manual">15</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/admin_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/admin_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+   
+
+</body>
+</html>

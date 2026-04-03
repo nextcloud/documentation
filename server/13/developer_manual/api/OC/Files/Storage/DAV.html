@@ -1,0 +1,1216 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>DAV &mdash; Nextcloud 13 Developer Manual 13 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../../../',
+              VERSION:'13',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="StorageFactory" href="StorageFactory.html" />
+    <link rel="prev" title="Temporary" href="Temporary.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html">
+          
+
+          
+            
+            <img src="../../../../_static/logo-white.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../general/index.html">General contributor guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/startapp.html">Create an app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/init.html">Navigation and pre-app configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/info.html">App metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/classloader.html">Classloader</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/request.html">Request lifecycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/routes.html">Routing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/middleware.html">Middleware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/container.html">Container</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/controllers.html">Controllers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/api.html">RESTful API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/templates.html">Templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/js.html">JavaScript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/css.html">CSS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/l10n.html">Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/theming.html">Theming support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/schema.html">Database schema</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/database.html">Database access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/filesystem.html">Filesystem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/appdata.html">AppData</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/users.html">User management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/two-factor-provider.html">Two-factor providers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/hooks.html">Hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/backgroundjobs.html">Background jobs (Cron)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/settings.html">Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/logging.html">Logging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/migrations.html">Migrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/repair.html">Repair steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/publishing.html">App store publishing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/code_signing.html">Code signing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../design/index.html">Design guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../android_library/index.html">Android application development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../client_apis/index.html">Client APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../core/translation.html">Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../core/unit-testing.html">Unit-Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../core/theming.html">Theming Nextcloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../core/externalapi.html">External API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../core/ocs-share-api.html">OCS Share API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../core/index.html">Core development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bugtracker/index.html">Bugtracker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../commun/index.html">Help and communication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api.html">API Documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">Nextcloud 13 Developer Manual</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../../../api.html">API Documentation</a> &raquo;</li>
+        
+          <li><a href="../../../index.html">\</a> &raquo;</li>
+        
+          <li><a href="../../index.html">OC</a> &raquo;</li>
+        
+          <li><a href="../index.html">Files</a> &raquo;</li>
+        
+          <li><a href="index.html">Storage</a> &raquo;</li>
+        
+      <li>DAV</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/nextcloud/documentation/edit/stable13/developer_manual/api/OC/Files/Storage/DAV.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="phpdoctorst section" id="namespace-OC\Files\Storage">
+<span id="dav"></span><h1>DAV<a class="headerlink" href="#namespace-OC\Files\Storage" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="OC\Files\Storage\DAV">
+<em class="property">class </em><code class="descclassname">OC\Files\Storage\</code><code class="descname">DAV</code><a class="headerlink" href="#OC\Files\Storage\DAV" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Class DAV</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/DAV.php#L67">lib/private/Files/Storage/DAV.php#67</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parent:</th><td class="field-body"><a class="reference internal" href="Common.html#OC\Files\Storage\Common" title="OC\Files\Storage\Common"><code class="xref php php-class docutils literal"><span class="pre">OC\Files\Storage\Common</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<div class="section" id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h2>
+<dl class="attr">
+<dt id="OC\Files\Storage\DAV::$password">
+<em class="property">protected </em><em class="property">static </em><em class="property">property </em><code class="descclassname">OC\Files\Storage\DAV::$</code><code class="descname">password</code><a class="headerlink" href="#OC\Files\Storage\DAV::$password" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/DAV.php#L69">lib/private/Files/Storage/DAV.php#69</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body">string</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attr">
+<dt id="OC\Files\Storage\DAV::$user">
+<em class="property">protected </em><em class="property">static </em><em class="property">property </em><code class="descclassname">OC\Files\Storage\DAV::$</code><code class="descname">user</code><a class="headerlink" href="#OC\Files\Storage\DAV::$user" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/DAV.php#L71">lib/private/Files/Storage/DAV.php#71</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body">string</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attr">
+<dt id="OC\Files\Storage\DAV::$authType">
+<em class="property">protected </em><em class="property">static </em><em class="property">property </em><code class="descclassname">OC\Files\Storage\DAV::$</code><code class="descname">authType</code><a class="headerlink" href="#OC\Files\Storage\DAV::$authType" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/DAV.php#L73">lib/private/Files/Storage/DAV.php#73</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body">string | null</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attr">
+<dt id="OC\Files\Storage\DAV::$host">
+<em class="property">protected </em><em class="property">static </em><em class="property">property </em><code class="descclassname">OC\Files\Storage\DAV::$</code><code class="descname">host</code><a class="headerlink" href="#OC\Files\Storage\DAV::$host" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/DAV.php#L75">lib/private/Files/Storage/DAV.php#75</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body">string</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attr">
+<dt id="OC\Files\Storage\DAV::$secure">
+<em class="property">protected </em><em class="property">static </em><em class="property">property </em><code class="descclassname">OC\Files\Storage\DAV::$</code><code class="descname">secure</code><a class="headerlink" href="#OC\Files\Storage\DAV::$secure" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/DAV.php#L77">lib/private/Files/Storage/DAV.php#77</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attr">
+<dt id="OC\Files\Storage\DAV::$root">
+<em class="property">protected </em><em class="property">static </em><em class="property">property </em><code class="descclassname">OC\Files\Storage\DAV::$</code><code class="descname">root</code><a class="headerlink" href="#OC\Files\Storage\DAV::$root" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/DAV.php#L79">lib/private/Files/Storage/DAV.php#79</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body">string</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attr">
+<dt id="OC\Files\Storage\DAV::$certPath">
+<em class="property">protected </em><em class="property">static </em><em class="property">property </em><code class="descclassname">OC\Files\Storage\DAV::$</code><code class="descname">certPath</code><a class="headerlink" href="#OC\Files\Storage\DAV::$certPath" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/DAV.php#L81">lib/private/Files/Storage/DAV.php#81</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body">string</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attr">
+<dt id="OC\Files\Storage\DAV::$ready">
+<em class="property">protected </em><em class="property">static </em><em class="property">property </em><code class="descclassname">OC\Files\Storage\DAV::$</code><code class="descname">ready</code><a class="headerlink" href="#OC\Files\Storage\DAV::$ready" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/DAV.php#L83">lib/private/Files/Storage/DAV.php#83</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attr">
+<dt id="OC\Files\Storage\DAV::$client">
+<em class="property">protected </em><em class="property">static </em><em class="property">property </em><code class="descclassname">OC\Files\Storage\DAV::$</code><code class="descname">client</code><a class="headerlink" href="#OC\Files\Storage\DAV::$client" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/DAV.php#L85">lib/private/Files/Storage/DAV.php#85</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body"><code class="xref any docutils literal"><span class="pre">\Sabre\DAV\Client</span></code></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attr">
+<dt id="OC\Files\Storage\DAV::$statCache">
+<em class="property">protected </em><em class="property">static </em><em class="property">property </em><code class="descclassname">OC\Files\Storage\DAV::$</code><code class="descname">statCache</code><a class="headerlink" href="#OC\Files\Storage\DAV::$statCache" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/DAV.php#L87">lib/private/Files/Storage/DAV.php#87</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body"><code class="xref any docutils literal"><span class="pre">\OC\MemCache\ArrayCache</span></code></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attr">
+<dt id="OC\Files\Storage\DAV::$httpClientService">
+<em class="property">protected </em><em class="property">static </em><em class="property">property </em><code class="descclassname">OC\Files\Storage\DAV::$</code><code class="descname">httpClientService</code><a class="headerlink" href="#OC\Files\Storage\DAV::$httpClientService" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/DAV.php#L89">lib/private/Files/Storage/DAV.php#89</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body"><a class="reference internal" href="../../../OCP/Http/Client/IClientService.html#OCP\Http\Client\IClientService" title="OCP\Http\Client\IClientService"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Http\Client\IClientService</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attr">
+<dt id="OC\Files\Storage\DAV::$certManager">
+<em class="property">protected </em><em class="property">static </em><em class="property">property </em><code class="descclassname">OC\Files\Storage\DAV::$</code><code class="descname">certManager</code><a class="headerlink" href="#OC\Files\Storage\DAV::$certManager" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/DAV.php#L91">lib/private/Files/Storage/DAV.php#91</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body"><a class="reference internal" href="../../../OCP/ICertificateManager.html#OCP\ICertificateManager" title="OCP\ICertificateManager"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\ICertificateManager</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h2>
+<dl class="public method">
+<dt id="OC\Files\Storage\DAV::__construct">
+<em class="property">public </em><code class="descclassname">OC\Files\Storage\DAV::</code><code class="descname">__construct</code><span class="sig-paren">(</span><em>$params</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Storage\DAV::__construct" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/DAV.php#L97">lib/private/Files/Storage/DAV.php#97</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$params</strong> (array)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Throws:</th><td class="field-body"><p class="first last"><code class="xref any docutils literal"><span class="pre">\Exception</span></code></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="protected method">
+<dt id="OC\Files\Storage\DAV::init">
+<em class="property">protected </em><code class="descclassname">OC\Files\Storage\DAV::</code><code class="descname">init</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Storage\DAV::init" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/DAV.php#L135">lib/private/Files/Storage/DAV.php#135</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\Storage\DAV::clearStatCache">
+<em class="property">public </em><code class="descclassname">OC\Files\Storage\DAV::</code><code class="descname">clearStatCache</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Storage\DAV::clearStatCache" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Clear the stat cache</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/DAV.php#L172">lib/private/Files/Storage/DAV.php#172</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\Storage\DAV::getId">
+<em class="property">public </em><code class="descclassname">OC\Files\Storage\DAV::</code><code class="descname">getId</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Storage\DAV::getId" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line"><a class="reference external" href="mailto:{&#37;&#52;&#48;inheritdoc">{<span>&#64;</span>inheritdoc</a>}</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/DAV.php#L177">lib/private/Files/Storage/DAV.php#177</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\Storage\DAV::createBaseUri">
+<em class="property">public </em><code class="descclassname">OC\Files\Storage\DAV::</code><code class="descname">createBaseUri</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Storage\DAV::createBaseUri" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line"><a class="reference external" href="mailto:{&#37;&#52;&#48;inheritdoc">{<span>&#64;</span>inheritdoc</a>}</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/DAV.php#L182">lib/private/Files/Storage/DAV.php#182</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\Storage\DAV::mkdir">
+<em class="property">public </em><code class="descclassname">OC\Files\Storage\DAV::</code><code class="descname">mkdir</code><span class="sig-paren">(</span><em>$path</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Storage\DAV::mkdir" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line"><a class="reference external" href="mailto:{&#37;&#52;&#48;inheritdoc">{<span>&#64;</span>inheritdoc</a>}</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/DAV.php#L192">lib/private/Files/Storage/DAV.php#192</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\Storage\DAV::rmdir">
+<em class="property">public </em><code class="descclassname">OC\Files\Storage\DAV::</code><code class="descname">rmdir</code><span class="sig-paren">(</span><em>$path</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Storage\DAV::rmdir" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line"><a class="reference external" href="mailto:{&#37;&#52;&#48;inheritdoc">{<span>&#64;</span>inheritdoc</a>}</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/DAV.php#L203">lib/private/Files/Storage/DAV.php#203</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\Storage\DAV::opendir">
+<em class="property">public </em><code class="descclassname">OC\Files\Storage\DAV::</code><code class="descname">opendir</code><span class="sig-paren">(</span><em>$path</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Storage\DAV::opendir" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line"><a class="reference external" href="mailto:{&#37;&#52;&#48;inheritdoc">{<span>&#64;</span>inheritdoc</a>}</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/DAV.php#L215">lib/private/Files/Storage/DAV.php#215</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="protected method">
+<dt id="OC\Files\Storage\DAV::propfind">
+<em class="property">protected </em><code class="descclassname">OC\Files\Storage\DAV::</code><code class="descname">propfind</code><span class="sig-paren">(</span><em>$path</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Storage\DAV::propfind" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Propfind call with cache handling.</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">First checks if information is cached.</div>
+<div class="line">If not, request it from the server then store to cache.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/DAV.php#L262">lib/private/Files/Storage/DAV.php#262</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$path</strong> (string)  path to propfind</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">array | bool propfind response or false if the entry was not found</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><p class="first last"><code class="xref any docutils literal"><span class="pre">\Sabre\HTTP\ClientHttpException</span></code></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\Storage\DAV::filetype">
+<em class="property">public </em><code class="descclassname">OC\Files\Storage\DAV::</code><code class="descname">filetype</code><span class="sig-paren">(</span><em>$path</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Storage\DAV::filetype" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line"><a class="reference external" href="mailto:{&#37;&#52;&#48;inheritdoc">{<span>&#64;</span>inheritdoc</a>}</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/DAV.php#L299">lib/private/Files/Storage/DAV.php#299</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\Storage\DAV::file_exists">
+<em class="property">public </em><code class="descclassname">OC\Files\Storage\DAV::</code><code class="descname">file_exists</code><span class="sig-paren">(</span><em>$path</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Storage\DAV::file_exists" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line"><a class="reference external" href="mailto:{&#37;&#52;&#48;inheritdoc">{<span>&#64;</span>inheritdoc</a>}</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/DAV.php#L318">lib/private/Files/Storage/DAV.php#318</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\Storage\DAV::unlink">
+<em class="property">public </em><code class="descclassname">OC\Files\Storage\DAV::</code><code class="descname">unlink</code><span class="sig-paren">(</span><em>$path</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Storage\DAV::unlink" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line"><a class="reference external" href="mailto:{&#37;&#52;&#48;inheritdoc">{<span>&#64;</span>inheritdoc</a>}</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/DAV.php#L337">lib/private/Files/Storage/DAV.php#337</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\Storage\DAV::fopen">
+<em class="property">public </em><code class="descclassname">OC\Files\Storage\DAV::</code><code class="descname">fopen</code><span class="sig-paren">(</span><em>$path</em>, <em>$mode</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Storage\DAV::fopen" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line"><a class="reference external" href="mailto:{&#37;&#52;&#48;inheritdoc">{<span>&#64;</span>inheritdoc</a>}</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/DAV.php#L347">lib/private/Files/Storage/DAV.php#347</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\Storage\DAV::writeBack">
+<em class="property">public </em><code class="descclassname">OC\Files\Storage\DAV::</code><code class="descname">writeBack</code><span class="sig-paren">(</span><em>$tmpFile</em>, <em>$path</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Storage\DAV::writeBack" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/DAV.php#L422">lib/private/Files/Storage/DAV.php#422</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>$tmpFile</strong> (string)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\Storage\DAV::free_space">
+<em class="property">public </em><code class="descclassname">OC\Files\Storage\DAV::</code><code class="descname">free_space</code><span class="sig-paren">(</span><em>$path</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Storage\DAV::free_space" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line"><a class="reference external" href="mailto:{&#37;&#52;&#48;inheritdoc">{<span>&#64;</span>inheritdoc</a>}</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/DAV.php#L428">lib/private/Files/Storage/DAV.php#428</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\Storage\DAV::touch">
+<em class="property">public </em><code class="descclassname">OC\Files\Storage\DAV::</code><code class="descname">touch</code><span class="sig-paren">(</span><em>$path</em>, <em>$mtime=null</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Storage\DAV::touch" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line"><a class="reference external" href="mailto:{&#37;&#52;&#48;inheritdoc">{<span>&#64;</span>inheritdoc</a>}</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/DAV.php#L448">lib/private/Files/Storage/DAV.php#448</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\Storage\DAV::file_put_contents">
+<em class="property">public </em><code class="descclassname">OC\Files\Storage\DAV::</code><code class="descname">file_put_contents</code><span class="sig-paren">(</span><em>$path</em>, <em>$data</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Storage\DAV::file_put_contents" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/DAV.php#L493">lib/private/Files/Storage/DAV.php#493</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$path</strong> (string)</li>
+<li><strong>$data</strong> (mixed)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">int | bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="protected method">
+<dt id="OC\Files\Storage\DAV::uploadFile">
+<em class="property">protected </em><code class="descclassname">OC\Files\Storage\DAV::</code><code class="descname">uploadFile</code><span class="sig-paren">(</span><em>$path</em>, <em>$target</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Storage\DAV::uploadFile" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/DAV.php#L504">lib/private/Files/Storage/DAV.php#504</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>$path</strong> (string)</li>
+<li><strong>$target</strong> (string)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\Storage\DAV::rename">
+<em class="property">public </em><code class="descclassname">OC\Files\Storage\DAV::</code><code class="descname">rename</code><span class="sig-paren">(</span><em>$path1</em>, <em>$path2</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Storage\DAV::rename" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line"><a class="reference external" href="mailto:{&#37;&#52;&#48;inheritdoc">{<span>&#64;</span>inheritdoc</a>}</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/DAV.php#L523">lib/private/Files/Storage/DAV.php#523</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\Storage\DAV::copy">
+<em class="property">public </em><code class="descclassname">OC\Files\Storage\DAV::</code><code class="descname">copy</code><span class="sig-paren">(</span><em>$path1</em>, <em>$path2</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Storage\DAV::copy" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line"><a class="reference external" href="mailto:{&#37;&#52;&#48;inheritdoc">{<span>&#64;</span>inheritdoc</a>}</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/DAV.php#L555">lib/private/Files/Storage/DAV.php#555</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\Storage\DAV::stat">
+<em class="property">public </em><code class="descclassname">OC\Files\Storage\DAV::</code><code class="descname">stat</code><span class="sig-paren">(</span><em>$path</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Storage\DAV::stat" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line"><a class="reference external" href="mailto:{&#37;&#52;&#48;inheritdoc">{<span>&#64;</span>inheritdoc</a>}</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/DAV.php#L584">lib/private/Files/Storage/DAV.php#584</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\Storage\DAV::getMimeType">
+<em class="property">public </em><code class="descclassname">OC\Files\Storage\DAV::</code><code class="descname">getMimeType</code><span class="sig-paren">(</span><em>$path</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Storage\DAV::getMimeType" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line"><a class="reference external" href="mailto:{&#37;&#52;&#48;inheritdoc">{<span>&#64;</span>inheritdoc</a>}</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/DAV.php#L601">lib/private/Files/Storage/DAV.php#601</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\Storage\DAV::getMimeTypeFromRemote">
+<em class="property">public </em><code class="descclassname">OC\Files\Storage\DAV::</code><code class="descname">getMimeTypeFromRemote</code><span class="sig-paren">(</span><em>$path</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Storage\DAV::getMimeTypeFromRemote" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/DAV.php#L610">lib/private/Files/Storage/DAV.php#610</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\Storage\DAV::cleanPath">
+<em class="property">public </em><code class="descclassname">OC\Files\Storage\DAV::</code><code class="descname">cleanPath</code><span class="sig-paren">(</span><em>$path</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Storage\DAV::cleanPath" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/DAV.php#L638">lib/private/Files/Storage/DAV.php#638</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$path</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">string</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="protected method">
+<dt id="OC\Files\Storage\DAV::encodePath">
+<em class="property">protected </em><code class="descclassname">OC\Files\Storage\DAV::</code><code class="descname">encodePath</code><span class="sig-paren">(</span><em>$path</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Storage\DAV::encodePath" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">URL encodes the given path but keeps the slashes</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/DAV.php#L653">lib/private/Files/Storage/DAV.php#653</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$path</strong> (string)  to encode</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">string encoded path</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="protected method">
+<dt id="OC\Files\Storage\DAV::simpleResponse">
+<em class="property">protected </em><code class="descclassname">OC\Files\Storage\DAV::</code><code class="descname">simpleResponse</code><span class="sig-paren">(</span><em>$method</em>, <em>$path</em>, <em>$body</em>, <em>$expected</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Storage\DAV::simpleResponse" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/DAV.php#L667">lib/private/Files/Storage/DAV.php#667</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$method</strong> (string)</li>
+<li><strong>$path</strong> (string)</li>
+<li><strong>$body</strong> (string | resource | null)</li>
+<li><strong>$expected</strong> (int)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">bool</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><a class="reference internal" href="../../../OCP/Files/StorageInvalidException.html#OCP\Files\StorageInvalidException" title="OCP\Files\StorageInvalidException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\StorageInvalidException</span></code></a></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><a class="reference internal" href="../../../OCP/Files/StorageNotAvailableException.html#OCP\Files\StorageNotAvailableException" title="OCP\Files\StorageNotAvailableException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\StorageNotAvailableException</span></code></a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><a class="reference internal" href="../../../OCP/Files/StorageInvalidException.html#OCP\Files\StorageInvalidException" title="OCP\Files\StorageInvalidException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\StorageInvalidException</span></code></a></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Throws:</th><td class="field-body"><p class="first last"><a class="reference internal" href="../../../OCP/Files/StorageNotAvailableException.html#OCP\Files\StorageNotAvailableException" title="OCP\Files\StorageNotAvailableException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\StorageNotAvailableException</span></code></a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC\Files\Storage\DAV::checkDependencies">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC\Files\Storage\DAV::</code><code class="descname">checkDependencies</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Storage\DAV::checkDependencies" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">check if curl is installed</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/DAV.php#L689">lib/private/Files/Storage/DAV.php#689</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\Storage\DAV::isUpdatable">
+<em class="property">public </em><code class="descclassname">OC\Files\Storage\DAV::</code><code class="descname">isUpdatable</code><span class="sig-paren">(</span><em>$path</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Storage\DAV::isUpdatable" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line"><a class="reference external" href="mailto:{&#37;&#52;&#48;inheritdoc">{<span>&#64;</span>inheritdoc</a>}</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/DAV.php#L694">lib/private/Files/Storage/DAV.php#694</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\Storage\DAV::isCreatable">
+<em class="property">public </em><code class="descclassname">OC\Files\Storage\DAV::</code><code class="descname">isCreatable</code><span class="sig-paren">(</span><em>$path</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Storage\DAV::isCreatable" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line"><a class="reference external" href="mailto:{&#37;&#52;&#48;inheritdoc">{<span>&#64;</span>inheritdoc</a>}</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/DAV.php#L699">lib/private/Files/Storage/DAV.php#699</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\Storage\DAV::isSharable">
+<em class="property">public </em><code class="descclassname">OC\Files\Storage\DAV::</code><code class="descname">isSharable</code><span class="sig-paren">(</span><em>$path</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Storage\DAV::isSharable" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line"><a class="reference external" href="mailto:{&#37;&#52;&#48;inheritdoc">{<span>&#64;</span>inheritdoc</a>}</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/DAV.php#L704">lib/private/Files/Storage/DAV.php#704</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\Storage\DAV::isDeletable">
+<em class="property">public </em><code class="descclassname">OC\Files\Storage\DAV::</code><code class="descname">isDeletable</code><span class="sig-paren">(</span><em>$path</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Storage\DAV::isDeletable" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line"><a class="reference external" href="mailto:{&#37;&#52;&#48;inheritdoc">{<span>&#64;</span>inheritdoc</a>}</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/DAV.php#L709">lib/private/Files/Storage/DAV.php#709</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\Storage\DAV::getPermissions">
+<em class="property">public </em><code class="descclassname">OC\Files\Storage\DAV::</code><code class="descname">getPermissions</code><span class="sig-paren">(</span><em>$path</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Storage\DAV::getPermissions" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line"><a class="reference external" href="mailto:{&#37;&#52;&#48;inheritdoc">{<span>&#64;</span>inheritdoc</a>}</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/DAV.php#L714">lib/private/Files/Storage/DAV.php#714</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\Storage\DAV::getETag">
+<em class="property">public </em><code class="descclassname">OC\Files\Storage\DAV::</code><code class="descname">getETag</code><span class="sig-paren">(</span><em>$path</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Storage\DAV::getETag" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line"><a class="reference external" href="mailto:{&#37;&#52;&#48;inheritdoc">{<span>&#64;</span>inheritdoc</a>}</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/DAV.php#L733">lib/private/Files/Storage/DAV.php#733</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="protected method">
+<dt id="OC\Files\Storage\DAV::parsePermissions">
+<em class="property">protected </em><code class="descclassname">OC\Files\Storage\DAV::</code><code class="descname">parsePermissions</code><span class="sig-paren">(</span><em>$permissionsString</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Storage\DAV::parsePermissions" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/DAV.php#L754">lib/private/Files/Storage/DAV.php#754</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$permissionsString</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">int</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\Storage\DAV::hasUpdated">
+<em class="property">public </em><code class="descclassname">OC\Files\Storage\DAV::</code><code class="descname">hasUpdated</code><span class="sig-paren">(</span><em>$path</em>, <em>$time</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Storage\DAV::hasUpdated" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">check if a file or folder has been updated since $time</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/DAV.php#L780">lib/private/Files/Storage/DAV.php#780</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$path</strong> (string)</li>
+<li><strong>$time</strong> (int)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><a class="reference internal" href="../../../OCP/Files/StorageNotAvailableException.html#OCP\Files\StorageNotAvailableException" title="OCP\Files\StorageNotAvailableException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\StorageNotAvailableException</span></code></a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="protected method">
+<dt id="OC\Files\Storage\DAV::convertException">
+<em class="property">protected </em><code class="descclassname">OC\Files\Storage\DAV::</code><code class="descname">convertException</code><span class="sig-paren">(</span><em>$e</em>, <em>$path=&quot;&quot;</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Storage\DAV::convertException" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Interpret the given exception and decide whether it is due to an</div>
+<div class="line">unavailable storage, invalid storage or other.</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">This will either throw StorageInvalidException, StorageNotAvailableException</div>
+<div class="line">or do nothing.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/DAV.php#L846">lib/private/Files/Storage/DAV.php#846</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$e</strong> (<code class="xref any docutils literal"><span class="pre">Exception</span></code>)  sabre exception</li>
+<li><strong>$path</strong> (string)  optional path from the operation</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><a class="reference internal" href="../../../OCP/Files/StorageInvalidException.html#OCP\Files\StorageInvalidException" title="OCP\Files\StorageInvalidException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\StorageInvalidException</span></code></a> if the storage is invalid, for example
+when the authentication expired or is invalid</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><a class="reference internal" href="../../../OCP/Files/StorageNotAvailableException.html#OCP\Files\StorageNotAvailableException" title="OCP\Files\StorageNotAvailableException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\StorageNotAvailableException</span></code></a> if the storage is not available,
+which might be temporary</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><a class="reference internal" href="../../../OCP/Files/ForbiddenException.html#OCP\Files\ForbiddenException" title="OCP\Files\ForbiddenException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\ForbiddenException</span></code></a> if the action is not allowed</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><a class="reference internal" href="../../../OCP/Files/StorageInvalidException.html#OCP\Files\StorageInvalidException" title="OCP\Files\StorageInvalidException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\StorageInvalidException</span></code></a> if the storage is invalid, for example
+when the authentication expired or is invalid</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><a class="reference internal" href="../../../OCP/Files/StorageNotAvailableException.html#OCP\Files\StorageNotAvailableException" title="OCP\Files\StorageNotAvailableException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\StorageNotAvailableException</span></code></a> if the storage is not available,
+which might be temporary</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><a class="reference internal" href="../../../OCP/Files/ForbiddenException.html#OCP\Files\ForbiddenException" title="OCP\Files\ForbiddenException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\ForbiddenException</span></code></a> if the action is not allowed</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><a class="reference internal" href="../../../OCP/Files/StorageInvalidException.html#OCP\Files\StorageInvalidException" title="OCP\Files\StorageInvalidException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\StorageInvalidException</span></code></a> if the storage is invalid, for example
+when the authentication expired or is invalid</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><a class="reference internal" href="../../../OCP/Files/StorageNotAvailableException.html#OCP\Files\StorageNotAvailableException" title="OCP\Files\StorageNotAvailableException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\StorageNotAvailableException</span></code></a> if the storage is not available,
+which might be temporary</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Throws:</th><td class="field-body"><p class="first last"><a class="reference internal" href="../../../OCP/Files/ForbiddenException.html#OCP\Files\ForbiddenException" title="OCP\Files\ForbiddenException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\ForbiddenException</span></code></a> if the action is not allowed</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="StorageFactory.html" class="btn btn-neutral float-right" title="StorageFactory" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="Temporary.html" class="btn btn-neutral float-left" title="Temporary" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021 Nextcloud GmbH.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: 13
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/13/developer_manual">13</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/14/developer_manual">14</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/15/developer_manual">15</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/developer_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/developer_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+   
+
+</body>
+</html>

@@ -1,0 +1,138 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+OCSController
+=============
+
+
+.. php:namespace:: OCP\AppFramework
+
+.. rst-class::  abstract
+
+.. php:class:: OCSController
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Base class to inherit your controllers from that are used for RESTful APIs
+		
+	
+	:Source:
+		`lib/public/AppFramework/OCSController.php#44 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/OCSController.php#L44>`_
+	
+	:Parent:
+		:php:class:`OCP\\AppFramework\\ApiController`
+	
+
+Constants
+---------
+
+.. php:const:: RESPOND_UNAUTHORISED = 997
+
+	:Source:
+		`lib/public/AppFramework/OCSController.php#45 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/OCSController.php#L45>`_
+	
+
+
+.. php:const:: RESPOND_SERVER_ERROR = 996
+
+	:Source:
+		`lib/public/AppFramework/OCSController.php#46 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/OCSController.php#L46>`_
+	
+
+
+.. php:const:: RESPOND_NOT_FOUND = 998
+
+	:Source:
+		`lib/public/AppFramework/OCSController.php#47 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/OCSController.php#L47>`_
+	
+
+
+.. php:const:: RESPOND_UNKNOWN_ERROR = 999
+
+	:Source:
+		`lib/public/AppFramework/OCSController.php#48 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/OCSController.php#L48>`_
+	
+
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $appName, $request, $corsMethods=PUT, POST, GET, DELETE, PATCH, $corsAllowedHeaders=Authorization, Content\-Type, Accept, $corsMaxAge=1728000)
+	
+		.. rst-class:: phpdoc-description
+		
+			| constructor of the controller
+			
+		
+		:Source:
+			`lib/public/AppFramework/OCSController.php#67 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/OCSController.php#L67>`_
+		
+		
+		:Parameters:
+			* **$appName** (string)  the name of the app
+			* **$request** (:any:`OCP\\IRequest <OCP\\IRequest>`)  an instance of the request
+			* **$corsMethods** (string)  comma separated string of HTTP verbs which
+			should be allowed for websites or webapps when calling your API, defaults to
+			'PUT, POST, GET, DELETE, PATCH'
+			* **$corsAllowedHeaders** (string)  comma separated string of HTTP headers
+			which should be allowed for websites or webapps when calling your API,
+			defaults to 'Authorization, Content-Type, Accept'
+			* **$corsMaxAge** (int)  number in seconds how long a preflighted OPTIONS
+			request should be cached, defaults to 1728000 seconds
+
+		
+		:Since: 8.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setOCSVersion( $version)
+	
+		:Source:
+			`lib/public/AppFramework/OCSController.php#87 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/OCSController.php#L87>`_
+		
+		
+		:Parameters:
+			* **$version** (int)  
+
+		
+		:Since: 11.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public buildResponse( $response, $format=xml)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Since the OCS endpoints default to XML we need to find out the format
+			| again
+			
+		
+		:Source:
+			`lib/public/AppFramework/OCSController.php#101 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/OCSController.php#L101>`_
+		
+		
+		:Parameters:
+			* **$response** (mixed)  the value that was returned from a controller and
+			is not a Response instance
+			* **$format** (string)  the format for which a formatter has been registered
+
+		
+		:Throws: :any:`\\DomainException <DomainException>` if format does not match a registered formatter
+		:Returns: :any:`\\OCP\\AppFramework\\Http\\Response <OCP\\AppFramework\\Http\\Response>` 
+		:Since: 9.1.0 
+	
+	
+

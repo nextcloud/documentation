@@ -1,0 +1,219 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+Backend
+=======
+
+
+.. php:namespace:: OC\Group
+
+.. rst-class::  abstract
+
+.. php:class:: Backend
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Abstract base class for user management
+		
+	
+	:Source:
+		`lib/private/Group/Backend.php#31 <https://github.com/nextcloud/server/blob/stable13/lib/private/Group/Backend.php#L31>`_
+	
+	:Implements:
+		:php:interface:`OCP\\GroupInterface` 
+	
+
+Constants
+---------
+
+.. php:const:: NOT_IMPLEMENTED = \-501
+
+	.. rst-class:: phpdoc-description
+	
+		| error code for functions not provided by the group backend
+		
+	
+	:Source:
+		`lib/private/Group/Backend.php#35 <https://github.com/nextcloud/server/blob/stable13/lib/private/Group/Backend.php#L35>`_
+	
+
+
+Properties
+----------
+
+.. php:attr:: protected static possibleActions
+
+	:Source:
+		`lib/private/Group/Backend.php#37 <https://github.com/nextcloud/server/blob/stable13/lib/private/Group/Backend.php#L37>`_
+	
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public getSupportedActions()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get all supported actions
+			
+		
+		:Source:
+			`lib/private/Group/Backend.php#54 <https://github.com/nextcloud/server/blob/stable13/lib/private/Group/Backend.php#L54>`_
+		
+		
+		:Returns: int bitwise\-or\'ed actions
+			
+			Returns the supported actions as int to be
+			compared with \\OC\\Group\\Backend::CREATE\_GROUP etc\.
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public implementsActions( $actions)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check if backend implements actions
+			
+		
+		:Source:
+			`lib/private/Group/Backend.php#73 <https://github.com/nextcloud/server/blob/stable13/lib/private/Group/Backend.php#L73>`_
+		
+		
+		:Parameters:
+			* **$actions** (int)  bitwise-or'ed actions
+
+		
+		:Returns: bool Returns the supported actions as int to be
+			compared with \\OC\\Group\\Backend::CREATE\_GROUP etc\.
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public inGroup( $uid, $gid)
+	
+		.. rst-class:: phpdoc-description
+		
+			| is user in group?
+			
+		
+		:Source:
+			`lib/private/Group/Backend.php#85 <https://github.com/nextcloud/server/blob/stable13/lib/private/Group/Backend.php#L85>`_
+		
+		
+		:Parameters:
+			* **$uid** (string)  uid of the user
+			* **$gid** (string)  gid of the group
+
+		
+		:Returns: bool Checks whether the user is member of a group or not\.
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getUserGroups( $uid)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get all groups a user belongs to
+			
+		
+		:Source:
+			`lib/private/Group/Backend.php#97 <https://github.com/nextcloud/server/blob/stable13/lib/private/Group/Backend.php#L97>`_
+		
+		
+		:Parameters:
+			* **$uid** (string)  Name of the user
+
+		
+		:Returns: array an array of group names
+			
+			This function fetches all groups a user belongs to\. It does not check
+			if the user exists at all\.
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getGroups( $search="", $limit=\-1, $offset=0)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get a list of all groups
+			
+		
+		:Source:
+			`lib/private/Group/Backend.php#111 <https://github.com/nextcloud/server/blob/stable13/lib/private/Group/Backend.php#L111>`_
+		
+		
+		:Parameters:
+			* **$search** (string)  
+			* **$limit** (int)  
+			* **$offset** (int)  
+
+		
+		:Returns: array an array of group names
+			
+			Returns a list with all groups
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public groupExists( $gid)
+	
+		.. rst-class:: phpdoc-description
+		
+			| check if a group exists
+			
+		
+		:Source:
+			`lib/private/Group/Backend.php#120 <https://github.com/nextcloud/server/blob/stable13/lib/private/Group/Backend.php#L120>`_
+		
+		
+		:Parameters:
+			* **$gid** (string)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public usersInGroup( $gid, $search="", $limit=\-1, $offset=0)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get a list of all users in a group
+			
+		
+		:Source:
+			`lib/private/Group/Backend.php#132 <https://github.com/nextcloud/server/blob/stable13/lib/private/Group/Backend.php#L132>`_
+		
+		
+		:Parameters:
+			* **$gid** (string)  
+			* **$search** (string)  
+			* **$limit** (int)  
+			* **$offset** (int)  
+
+		
+		:Returns: array an array of user ids
+	
+	
+

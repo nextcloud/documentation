@@ -1,0 +1,243 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IManager
+========
+
+
+.. php:namespace:: OCP\Collaboration\Resources
+
+.. php:interface:: IManager
+
+
+	:Implemented by:
+		:php:class:`OC\\Collaboration\\Resources\\Manager` 
+	
+	
+	:Source:
+		`lib/public/Collaboration/Resources/IManager.php#36 <https://github.com/nextcloud/server/blob/stable13/lib/public/Collaboration/Resources/IManager.php#L36>`_
+	
+	:Parent:
+		:php:interface:`OCP\\Collaboration\\Resources\\IProvider`
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public getCollection( $id)
+	
+		:Source:
+			`lib/public/Collaboration/Resources/IManager.php#44 <https://github.com/nextcloud/server/blob/stable13/lib/public/Collaboration/Resources/IManager.php#L44>`_
+		
+		
+		:Parameters:
+			* **$id** (int)  
+
+		
+		:Returns: :any:`\\OCP\\Collaboration\\Resources\\ICollection <OCP\\Collaboration\\Resources\\ICollection>` 
+		:Throws: :any:`\\OCP\\Collaboration\\Resources\\CollectionException <OCP\\Collaboration\\Resources\\CollectionException>` when the collection could not be found
+		:Since: 16.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getCollectionForUser( $id, $user)
+	
+		:Source:
+			`lib/public/Collaboration/Resources/IManager.php#53 <https://github.com/nextcloud/server/blob/stable13/lib/public/Collaboration/Resources/IManager.php#L53>`_
+		
+		
+		:Parameters:
+			* **$id** (int)  
+			* **$user** (:any:`OCP\\IUser <OCP\\IUser>` | null)  
+
+		
+		:Returns: :any:`\\OCP\\Collaboration\\Resources\\ICollection <OCP\\Collaboration\\Resources\\ICollection>` 
+		:Throws: :any:`\\OCP\\Collaboration\\Resources\\CollectionException <OCP\\Collaboration\\Resources\\CollectionException>` when the collection could not be found
+		:Since: 16.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public newCollection( $name)
+	
+		:Source:
+			`lib/public/Collaboration/Resources/IManager.php#60 <https://github.com/nextcloud/server/blob/stable13/lib/public/Collaboration/Resources/IManager.php#L60>`_
+		
+		
+		:Parameters:
+			* **$name** (string)  
+
+		
+		:Returns: :any:`\\OCP\\Collaboration\\Resources\\ICollection <OCP\\Collaboration\\Resources\\ICollection>` 
+		:Since: 16.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public canAccessCollection( $collection, $user)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Can a user/guest access the collection
+			
+		
+		:Source:
+			`lib/public/Collaboration/Resources/IManager.php#70 <https://github.com/nextcloud/server/blob/stable13/lib/public/Collaboration/Resources/IManager.php#L70>`_
+		
+		
+		:Parameters:
+			* **$collection** (:any:`OCP\\Collaboration\\Resources\\ICollection <OCP\\Collaboration\\Resources\\ICollection>`)  
+			* **$user** (:any:`OCP\\IUser <OCP\\IUser>` | null)  
+
+		
+		:Returns: bool 
+		:Since: 16.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public invalidateAccessCacheForUser( $user)
+	
+		:Source:
+			`lib/public/Collaboration/Resources/IManager.php#76 <https://github.com/nextcloud/server/blob/stable13/lib/public/Collaboration/Resources/IManager.php#L76>`_
+		
+		
+		:Parameters:
+			* **$user** (:any:`OCP\\IUser <OCP\\IUser>` | null)  
+
+		
+		:Since: 16.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public invalidateAccessCacheForResource( $resource)
+	
+		:Source:
+			`lib/public/Collaboration/Resources/IManager.php#82 <https://github.com/nextcloud/server/blob/stable13/lib/public/Collaboration/Resources/IManager.php#L82>`_
+		
+		
+		:Parameters:
+			* **$resource** (:any:`OCP\\Collaboration\\Resources\\IResource <OCP\\Collaboration\\Resources\\IResource>`)  
+
+		
+		:Since: 16.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public invalidateAccessCacheForResourceByUser( $resource, $user)
+	
+		:Source:
+			`lib/public/Collaboration/Resources/IManager.php#89 <https://github.com/nextcloud/server/blob/stable13/lib/public/Collaboration/Resources/IManager.php#L89>`_
+		
+		
+		:Parameters:
+			* **$resource** (:any:`OCP\\Collaboration\\Resources\\IResource <OCP\\Collaboration\\Resources\\IResource>`)  
+			* **$user** (:any:`OCP\\IUser <OCP\\IUser>` | null)  
+
+		
+		:Since: 16.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public invalidateAccessCacheForProvider( $provider)
+	
+		:Source:
+			`lib/public/Collaboration/Resources/IManager.php#95 <https://github.com/nextcloud/server/blob/stable13/lib/public/Collaboration/Resources/IManager.php#L95>`_
+		
+		
+		:Parameters:
+			* **$provider** (:any:`OCP\\Collaboration\\Resources\\IProvider <OCP\\Collaboration\\Resources\\IProvider>`)  
+
+		
+		:Since: 16.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public invalidateAccessCacheForProviderByUser( $provider, $user)
+	
+		:Source:
+			`lib/public/Collaboration/Resources/IManager.php#102 <https://github.com/nextcloud/server/blob/stable13/lib/public/Collaboration/Resources/IManager.php#L102>`_
+		
+		
+		:Parameters:
+			* **$provider** (:any:`OCP\\Collaboration\\Resources\\IProvider <OCP\\Collaboration\\Resources\\IProvider>`)  
+			* **$user** (:any:`OCP\\IUser <OCP\\IUser>` | null)  
+
+		
+		:Since: 16.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public createResource( $type, $id)
+	
+		:Source:
+			`lib/public/Collaboration/Resources/IManager.php#110 <https://github.com/nextcloud/server/blob/stable13/lib/public/Collaboration/Resources/IManager.php#L110>`_
+		
+		
+		:Parameters:
+			* **$type** (string)  
+			* **$id** (string)  
+
+		
+		:Returns: :any:`\\OCP\\Collaboration\\Resources\\IResource <OCP\\Collaboration\\Resources\\IResource>` 
+		:Since: 16.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getResourceForUser( $type, $id, $user)
+	
+		:Source:
+			`lib/public/Collaboration/Resources/IManager.php#120 <https://github.com/nextcloud/server/blob/stable13/lib/public/Collaboration/Resources/IManager.php#L120>`_
+		
+		
+		:Parameters:
+			* **$type** (string)  
+			* **$id** (string)  
+			* **$user** (:any:`OCP\\IUser <OCP\\IUser>` | null)  
+
+		
+		:Returns: :any:`\\OCP\\Collaboration\\Resources\\IResource <OCP\\Collaboration\\Resources\\IResource>` 
+		:Throws: :any:`\\OCP\\Collaboration\\Resources\\ResourceException <OCP\\Collaboration\\Resources\\ResourceException>` 
+		:Since: 16.0.0 
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public registerResourceProvider( $provider)
+	
+		:Source:
+			`lib/public/Collaboration/Resources/IManager.php#127 <https://github.com/nextcloud/server/blob/stable13/lib/public/Collaboration/Resources/IManager.php#L127>`_
+		
+		
+		:Parameters:
+			* **$provider** (string)  
+
+		
+		:Since: 16.0.0 
+		:Deprecated: 18.0.0 Use IProviderManager::registerResourceProvider instead
+	
+	
+

@@ -1,0 +1,276 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+Storage
+=======
+
+
+.. php:namespace:: OC\Files\Storage
+
+.. php:interface:: Storage
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Provide a common interface to all different storage options
+		
+		| All paths passed to the storage are relative to the storage and should NOT have a leading slash\.
+		
+	
+	:Implemented by:
+		:php:class:`OC\\Files\\Storage\\Wrapper\\Wrapper` :php:class:`OC\\Files\\Storage\\Common` 
+	
+	
+	:Source:
+		`lib/private/Files/Storage/Storage.php#35 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Storage.php#L35>`_
+	
+	:Parent:
+		:php:interface:`OCP\\Files\\Storage`
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public getCache( $path="", $storage=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get a cache instance for the storage
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Storage.php#44 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Storage.php#L44>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: :any:`\\OC\\Files\\Cache\\Cache <OC\\Files\\Cache\\Cache>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getScanner( $path="", $storage=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get a scanner instance for the storage
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Storage.php#53 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Storage.php#L53>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: :any:`\\OC\\Files\\Cache\\Scanner <OC\\Files\\Cache\\Scanner>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getOwner( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get the user id of the owner of a file or folder
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Storage.php#62 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Storage.php#L62>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getWatcher( $path="", $storage=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get a watcher instance for the cache
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Storage.php#71 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Storage.php#L71>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: :any:`\\OC\\Files\\Cache\\Watcher <OC\\Files\\Cache\\Watcher>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getPropagator( $storage=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get a propagator instance for the cache
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Storage.php#79 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Storage.php#L79>`_
+		
+		
+		:Parameters:
+			
+			
+		
+		:Returns: :any:`\\OC\\Files\\Cache\\Propagator <OC\\Files\\Cache\\Propagator>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getUpdater( $storage=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get a updater instance for the cache
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Storage.php#87 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Storage.php#L87>`_
+		
+		
+		:Parameters:
+			
+			
+		
+		:Returns: :any:`\\OC\\Files\\Cache\\Updater <OC\\Files\\Cache\\Updater>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getStorageCache()
+	
+		:Source:
+			`lib/private/Files/Storage/Storage.php#92 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Storage.php#L92>`_
+		
+		
+		:Returns: :any:`\\OC\\Files\\Cache\\Storage <OC\\Files\\Cache\\Storage>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getMetaData( $path)
+	
+		:Source:
+			`lib/private/Files/Storage/Storage.php#98 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Storage.php#L98>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: array | null 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public acquireLock( $path, $type, $provider)
+	
+		:Source:
+			`lib/private/Files/Storage/Storage.php#106 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Storage.php#L106>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  The path of the file to acquire the lock for
+			* **$type** (int)  \OCP\Lock\ILockingProvider::LOCK_SHARED or \OCP\Lock\ILockingProvider::LOCK_EXCLUSIVE
+			* **$provider** (:any:`OCP\\Lock\\ILockingProvider <OCP\\Lock\\ILockingProvider>`)  
+
+		
+		:Throws: :any:`\\OCP\\Lock\\LockedException <OCP\\Lock\\LockedException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public releaseLock( $path, $type, $provider)
+	
+		:Source:
+			`lib/private/Files/Storage/Storage.php#114 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Storage.php#L114>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  The path of the file to release the lock for
+			* **$type** (int)  \OCP\Lock\ILockingProvider::LOCK_SHARED or \OCP\Lock\ILockingProvider::LOCK_EXCLUSIVE
+			* **$provider** (:any:`OCP\\Lock\\ILockingProvider <OCP\\Lock\\ILockingProvider>`)  
+
+		
+		:Throws: :any:`\\OCP\\Lock\\LockedException <OCP\\Lock\\LockedException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public changeLock( $path, $type, $provider)
+	
+		:Source:
+			`lib/private/Files/Storage/Storage.php#122 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Storage.php#L122>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  The path of the file to change the lock for
+			* **$type** (int)  \OCP\Lock\ILockingProvider::LOCK_SHARED or \OCP\Lock\ILockingProvider::LOCK_EXCLUSIVE
+			* **$provider** (:any:`OCP\\Lock\\ILockingProvider <OCP\\Lock\\ILockingProvider>`)  
+
+		
+		:Throws: :any:`\\OCP\\Lock\\LockedException <OCP\\Lock\\LockedException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getDirectoryContent( $directory)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the contents of a directory with metadata
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Storage.php#140 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Storage.php#L140>`_
+		
+		
+		:Parameters:
+			* **$directory** (string)  
+
+		
+		:Returns: :any:`\\Traversable <Traversable>` an iterator, containing file metadata
+			
+			The metadata array will contain the following fields
+			
+			\- name
+			\- mimetype
+			\- mtime
+			\- size
+			\- etag
+			\- storage\_mtime
+			\- permissions
+		
+	
+	
+

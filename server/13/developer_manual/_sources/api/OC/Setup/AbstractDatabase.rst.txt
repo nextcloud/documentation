@@ -1,0 +1,182 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+AbstractDatabase
+================
+
+
+.. php:namespace:: OC\Setup
+
+.. rst-class::  abstract
+
+.. php:class:: AbstractDatabase
+
+
+	:Source:
+		`lib/private/Setup/AbstractDatabase.php#40 <https://github.com/nextcloud/server/blob/stable13/lib/private/Setup/AbstractDatabase.php#L40>`_
+	
+
+Properties
+----------
+
+.. php:attr:: protected static trans
+
+	:Source:
+		`lib/private/Setup/AbstractDatabase.php#43 <https://github.com/nextcloud/server/blob/stable13/lib/private/Setup/AbstractDatabase.php#L43>`_
+	
+	:Type: :any:`\\OCP\\IL10N <OCP\\IL10N>` 
+
+
+.. php:attr:: protected static dbUser
+
+	:Source:
+		`lib/private/Setup/AbstractDatabase.php#45 <https://github.com/nextcloud/server/blob/stable13/lib/private/Setup/AbstractDatabase.php#L45>`_
+	
+	:Type: string 
+
+
+.. php:attr:: protected static dbPassword
+
+	:Source:
+		`lib/private/Setup/AbstractDatabase.php#47 <https://github.com/nextcloud/server/blob/stable13/lib/private/Setup/AbstractDatabase.php#L47>`_
+	
+	:Type: string 
+
+
+.. php:attr:: protected static dbName
+
+	:Source:
+		`lib/private/Setup/AbstractDatabase.php#49 <https://github.com/nextcloud/server/blob/stable13/lib/private/Setup/AbstractDatabase.php#L49>`_
+	
+	:Type: string 
+
+
+.. php:attr:: protected static dbHost
+
+	:Source:
+		`lib/private/Setup/AbstractDatabase.php#51 <https://github.com/nextcloud/server/blob/stable13/lib/private/Setup/AbstractDatabase.php#L51>`_
+	
+	:Type: string 
+
+
+.. php:attr:: protected static dbPort
+
+	:Source:
+		`lib/private/Setup/AbstractDatabase.php#53 <https://github.com/nextcloud/server/blob/stable13/lib/private/Setup/AbstractDatabase.php#L53>`_
+	
+	:Type: string 
+
+
+.. php:attr:: protected static tablePrefix
+
+	:Source:
+		`lib/private/Setup/AbstractDatabase.php#55 <https://github.com/nextcloud/server/blob/stable13/lib/private/Setup/AbstractDatabase.php#L55>`_
+	
+	:Type: string 
+
+
+.. php:attr:: protected static config
+
+	:Source:
+		`lib/private/Setup/AbstractDatabase.php#57 <https://github.com/nextcloud/server/blob/stable13/lib/private/Setup/AbstractDatabase.php#L57>`_
+	
+	:Type: :any:`\\OC\\SystemConfig <OC\\SystemConfig>` 
+
+
+.. php:attr:: protected static logger
+
+	:Source:
+		`lib/private/Setup/AbstractDatabase.php#59 <https://github.com/nextcloud/server/blob/stable13/lib/private/Setup/AbstractDatabase.php#L59>`_
+	
+	:Type: :any:`\\Psr\\Log\\LoggerInterface <Psr\\Log\\LoggerInterface>` 
+
+
+.. php:attr:: protected static random
+
+	:Source:
+		`lib/private/Setup/AbstractDatabase.php#61 <https://github.com/nextcloud/server/blob/stable13/lib/private/Setup/AbstractDatabase.php#L61>`_
+	
+	:Type: :any:`\\OCP\\Security\\ISecureRandom <OCP\\Security\\ISecureRandom>` 
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $trans, $config, $logger, $random)
+	
+		:Source:
+			`lib/private/Setup/AbstractDatabase.php#63 <https://github.com/nextcloud/server/blob/stable13/lib/private/Setup/AbstractDatabase.php#L63>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public validate( $config)
+	
+		:Source:
+			`lib/private/Setup/AbstractDatabase.php#70 <https://github.com/nextcloud/server/blob/stable13/lib/private/Setup/AbstractDatabase.php#L70>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public initialize( $config)
+	
+		:Source:
+			`lib/private/Setup/AbstractDatabase.php#85 <https://github.com/nextcloud/server/blob/stable13/lib/private/Setup/AbstractDatabase.php#L85>`_
+		
+		
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected connect( $configOverwrite=\[\])
+	
+		:Source:
+			`lib/private/Setup/AbstractDatabase.php#112 <https://github.com/nextcloud/server/blob/stable13/lib/private/Setup/AbstractDatabase.php#L112>`_
+		
+		
+		:Parameters:
+			* **$configOverwrite** (array)  
+
+		
+		:Returns: :any:`\\OC\\DB\\Connection <OC\\DB\\Connection>` 
+	
+	
+
+.. rst-class:: public abstract
+
+	.. php:method:: public abstract setupDatabase( $userName)
+	
+		:Source:
+			`lib/private/Setup/AbstractDatabase.php#147 <https://github.com/nextcloud/server/blob/stable13/lib/private/Setup/AbstractDatabase.php#L147>`_
+		
+		
+		:Parameters:
+			* **$userName** (string)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public runMigrations()
+	
+		:Source:
+			`lib/private/Setup/AbstractDatabase.php#149 <https://github.com/nextcloud/server/blob/stable13/lib/private/Setup/AbstractDatabase.php#L149>`_
+		
+		
+	
+	
+

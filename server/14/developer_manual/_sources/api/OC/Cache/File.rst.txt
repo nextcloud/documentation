@@ -1,0 +1,182 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+File
+====
+
+
+.. php:namespace:: OC\Cache
+
+.. php:class:: File
+
+
+	:Source:
+		`lib/private/Cache/File.php#39 <https://github.com/nextcloud/server/blob/stable13/lib/private/Cache/File.php#L39>`_
+	
+	:Implements:
+		:php:interface:`OCP\\ICache` 
+	
+
+Properties
+----------
+
+.. php:attr:: protected static storage
+
+	:Source:
+		`lib/private/Cache/File.php#42 <https://github.com/nextcloud/server/blob/stable13/lib/private/Cache/File.php#L42>`_
+	
+	:Type: :any:`\\OC\\Files\\View <OC\\Files\\View>` 
+
+
+Methods
+-------
+
+.. rst-class:: protected
+
+	.. php:method:: protected getStorage()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the cache storage for the logged in user
+			
+		
+		:Source:
+			`lib/private/Cache/File.php#51 <https://github.com/nextcloud/server/blob/stable13/lib/private/Cache/File.php#L51>`_
+		
+		
+		:Returns: :any:`\\OC\\Files\\View <OC\\Files\\View>` cache storage
+		:Throws: :any:`\\OC\\ForbiddenException <OC\\ForbiddenException>` 
+		:Throws: :any:`\\OC\\User\\NoUserException <OC\\User\\NoUserException>` 
+		:Throws: :any:`\\OC\\ForbiddenException <OC\\ForbiddenException>` 
+		:Throws: :any:`\\OC\\User\\NoUserException <OC\\User\\NoUserException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public get( $key)
+	
+		:Source:
+			`lib/private/Cache/File.php#75 <https://github.com/nextcloud/server/blob/stable13/lib/private/Cache/File.php#L75>`_
+		
+		
+		:Parameters:
+			* **$key** (string)  
+
+		
+		:Returns: mixed | null 
+		:Throws: :any:`\\OC\\ForbiddenException <OC\\ForbiddenException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public size( $key)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the size of the stored/cached data
+			
+		
+		:Source:
+			`lib/private/Cache/File.php#90 <https://github.com/nextcloud/server/blob/stable13/lib/private/Cache/File.php#L90>`_
+		
+		
+		:Parameters:
+			* **$key** (string)  
+
+		
+		:Returns: int 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public set( $key, $value, $ttl=0)
+	
+		:Source:
+			`lib/private/Cache/File.php#106 <https://github.com/nextcloud/server/blob/stable13/lib/private/Cache/File.php#L106>`_
+		
+		
+		:Parameters:
+			* **$key** (string)  
+			* **$value** (mixed)  
+			* **$ttl** (int)  
+
+		
+		:Returns: bool | mixed 
+		:Throws: :any:`\\OC\\ForbiddenException <OC\\ForbiddenException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public hasKey( $key)
+	
+		:Source:
+			`lib/private/Cache/File.php#133 <https://github.com/nextcloud/server/blob/stable13/lib/private/Cache/File.php#L133>`_
+		
+		
+		:Parameters:
+			* **$key** (string)  
+
+		
+		:Returns: bool 
+		:Throws: :any:`\\OC\\ForbiddenException <OC\\ForbiddenException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public remove( $key)
+	
+		:Source:
+			`lib/private/Cache/File.php#146 <https://github.com/nextcloud/server/blob/stable13/lib/private/Cache/File.php#L146>`_
+		
+		
+		:Parameters:
+			* **$key** (string)  
+
+		
+		:Returns: bool | mixed 
+		:Throws: :any:`\\OC\\ForbiddenException <OC\\ForbiddenException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public clear( $prefix="")
+	
+		:Source:
+			`lib/private/Cache/File.php#159 <https://github.com/nextcloud/server/blob/stable13/lib/private/Cache/File.php#L159>`_
+		
+		
+		:Parameters:
+			* **$prefix** (string)  
+
+		
+		:Returns: bool 
+		:Throws: :any:`\\OC\\ForbiddenException <OC\\ForbiddenException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public gc()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Runs GC
+			
+		
+		:Source:
+			`lib/private/Cache/File.php#178 <https://github.com/nextcloud/server/blob/stable13/lib/private/Cache/File.php#L178>`_
+		
+		
+		:Throws: :any:`\\OC\\ForbiddenException <OC\\ForbiddenException>` 
+	
+	
+

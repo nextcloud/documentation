@@ -1,0 +1,89 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+INotifier
+=========
+
+
+.. php:namespace:: OCP\Notification
+
+.. php:interface:: INotifier
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Interface INotifier
+		
+	
+	:Implemented by:
+		:php:class:`OC\\Authentication\\Notifications\\Notifier` 
+	
+	
+	:Source:
+		`lib/public/Notification/INotifier.php#33 <https://github.com/nextcloud/server/blob/stable13/lib/public/Notification/INotifier.php#L33>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public getID()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Identifier of the notifier, only use \[a\-z0\-9\_\]
+			
+		
+		:Source:
+			`lib/public/Notification/INotifier.php#41 <https://github.com/nextcloud/server/blob/stable13/lib/public/Notification/INotifier.php#L41>`_
+		
+		
+		:Returns: string 
+		:Since: 17.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getName()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Human readable name describing the notifier
+			
+		
+		:Source:
+			`lib/public/Notification/INotifier.php#49 <https://github.com/nextcloud/server/blob/stable13/lib/public/Notification/INotifier.php#L49>`_
+		
+		
+		:Returns: string 
+		:Since: 17.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public prepare( $notification, $languageCode)
+	
+		:Source:
+			`lib/public/Notification/INotifier.php#59 <https://github.com/nextcloud/server/blob/stable13/lib/public/Notification/INotifier.php#L59>`_
+		
+		
+		:Parameters:
+			* **$notification** (:any:`OCP\\Notification\\INotification <OCP\\Notification\\INotification>`)  
+			* **$languageCode** (string)  The code of the language that should be used to prepare the notification
+
+		
+		:Returns: :any:`\\OCP\\Notification\\INotification <OCP\\Notification\\INotification>` 
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` When the notification was not prepared by a notifier
+		:Throws: :any:`\\OCP\\Notification\\AlreadyProcessedException <OCP\\Notification\\AlreadyProcessedException>` When the notification is not needed anymore and should be deleted
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` When the notification was not prepared by a notifier
+		:Throws: :any:`\\OCP\\Notification\\AlreadyProcessedException <OCP\\Notification\\AlreadyProcessedException>` When the notification is not needed anymore and should be deleted
+		:Since: 9.0.0 
+	
+	
+

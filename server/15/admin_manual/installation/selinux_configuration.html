@@ -1,0 +1,419 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>SELinux configuration &mdash; Nextcloud 15 Administration Manual 15 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'15',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Nginx configuration" href="nginx.html" />
+    <link rel="prev" title="Installing PHP 7.2 on RHEL 7 and CentOS 7" href="php_72_installation.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../contents.html">
+          
+
+          
+            
+            <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_schedule.html">Maintenance and release schedule</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Installation and server configuration</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="system_requirements.html">System requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deployment_recommendations.html">Deployment recommendations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="source_installation.html">Installation on Linux</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation_wizard.html">Installation wizard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command_line_installation.html">Installing from command line</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apps_supported.html">Supported apps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="php_72_installation.html">Installing PHP 7.2 on RHEL 7 and CentOS 7</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">SELinux configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#enable-updates-via-the-web-interface">Enable updates via the web interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#disallow-write-access-to-the-whole-web-directory">Disallow write access to the whole web directory</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#allow-access-to-a-remote-database">Allow access to a remote database</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#allow-access-to-ldap-server">Allow access to LDAP server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#allow-access-to-remote-network">Allow access to remote network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#allow-access-to-network-memcache">Allow access to network memcache</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#allow-access-to-smtp-sendmail">Allow access to SMTP/sendmail</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#allow-access-to-cifs-smb">Allow access to CIFS/SMB</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#allow-access-to-fusefs">Allow access to FuseFS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#allow-access-to-gpg-for-rainloop">Allow access to GPG for Rainloop</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#troubleshooting">Troubleshooting</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="nginx.html">Nginx configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="harden_server.html">Hardening and security guidance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="server_tuning.html">Server tuning</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_server/index.html">Nextcloud configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../apps_management.html">Apps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_user/index.html">User management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_files/index.html">File sharing and management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../file_workflows/index.html">File workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_database/index.html">Database configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_mimetypes/index.html">Mimetypes management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../maintenance/index.html">Maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../issues/index.html">Issues and troubleshooting</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud 15 Administration Manual</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../contents.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Installation and server configuration</a> &raquo;</li>
+        
+      <li>SELinux configuration</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/nextcloud/documentation/edit/stable15/admin_manual/installation/selinux_configuration.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="selinux-configuration">
+<span id="selinux-config-label"></span><h1>SELinux configuration<a class="headerlink" href="#selinux-configuration" title="Permalink to this headline">¶</a></h1>
+<p>When you have SELinux enabled on your Linux distribution, you may run into
+permissions problems after a new Nextcloud installation, and see <code class="docutils literal"><span class="pre">permission</span>
+<span class="pre">denied</span></code> errors in your Nextcloud logs.</p>
+<p>The following settings should work for most SELinux systems that use the
+default distro profiles. Run these commands as root, and remember to adjust the filepaths
+in these examples for your installation:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">semanage</span> <span class="n">fcontext</span> <span class="o">-</span><span class="n">a</span> <span class="o">-</span><span class="n">t</span> <span class="n">httpd_sys_rw_content_t</span> <span class="s1">&#39;/var/www/html/nextcloud/data(/.*)?&#39;</span>
+<span class="n">semanage</span> <span class="n">fcontext</span> <span class="o">-</span><span class="n">a</span> <span class="o">-</span><span class="n">t</span> <span class="n">httpd_sys_rw_content_t</span> <span class="s1">&#39;/var/www/html/nextcloud/config(/.*)?&#39;</span>
+<span class="n">semanage</span> <span class="n">fcontext</span> <span class="o">-</span><span class="n">a</span> <span class="o">-</span><span class="n">t</span> <span class="n">httpd_sys_rw_content_t</span> <span class="s1">&#39;/var/www/html/nextcloud/apps(/.*)?&#39;</span>
+<span class="n">semanage</span> <span class="n">fcontext</span> <span class="o">-</span><span class="n">a</span> <span class="o">-</span><span class="n">t</span> <span class="n">httpd_sys_rw_content_t</span> <span class="s1">&#39;/var/www/html/nextcloud/.htaccess&#39;</span>
+<span class="n">semanage</span> <span class="n">fcontext</span> <span class="o">-</span><span class="n">a</span> <span class="o">-</span><span class="n">t</span> <span class="n">httpd_sys_rw_content_t</span> <span class="s1">&#39;/var/www/html/nextcloud/.user.ini&#39;</span>
+<span class="n">semanage</span> <span class="n">fcontext</span> <span class="o">-</span><span class="n">a</span> <span class="o">-</span><span class="n">t</span> <span class="n">httpd_sys_rw_content_t</span> <span class="s1">&#39;/var/www/html/nextcloud/3rdparty/aws/aws-sdk-php/src/data/logs(/.*)?&#39;</span>
+
+<span class="n">restorecon</span> <span class="o">-</span><span class="n">Rv</span> <span class="s1">&#39;/var/www/html/nextcloud/&#39;</span>
+</pre></div>
+</div>
+<p>If you uninstall Nextcloud you need to remove the Nextcloud directory labels. To do
+this execute the following commands as root after uninstalling Nextcloud:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">semanage</span> <span class="n">fcontext</span> <span class="o">-</span><span class="n">d</span> <span class="s1">&#39;/var/www/html/nextcloud/data(/.*)?&#39;</span>
+<span class="n">semanage</span> <span class="n">fcontext</span> <span class="o">-</span><span class="n">d</span> <span class="s1">&#39;/var/www/html/nextcloud/config(/.*)?&#39;</span>
+<span class="n">semanage</span> <span class="n">fcontext</span> <span class="o">-</span><span class="n">d</span> <span class="s1">&#39;/var/www/html/nextcloud/apps(/.*)?&#39;</span>
+<span class="n">semanage</span> <span class="n">fcontext</span> <span class="o">-</span><span class="n">d</span> <span class="s1">&#39;/var/www/html/nextcloud/.htaccess&#39;</span>
+<span class="n">semanage</span> <span class="n">fcontext</span> <span class="o">-</span><span class="n">d</span> <span class="s1">&#39;/var/www/html/nextcloud/.user.ini&#39;</span>
+
+<span class="n">restorecon</span> <span class="o">-</span><span class="n">Rv</span> <span class="s1">&#39;/var/www/html/nextcloud/&#39;</span>
+</pre></div>
+</div>
+<p>If you have customized SELinux policies and these examples do not work, you must give the
+HTTP server write access to these directories:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">html</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">data</span>
+<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">html</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">config</span>
+<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">html</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">apps</span>
+</pre></div>
+</div>
+<div class="section" id="enable-updates-via-the-web-interface">
+<h2>Enable updates via the web interface<a class="headerlink" href="#enable-updates-via-the-web-interface" title="Permalink to this headline">¶</a></h2>
+<p>To enable updates via the web interface, you may need this to enable writing to the directories:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">setsebool</span> <span class="n">httpd_unified</span> <span class="n">on</span>
+</pre></div>
+</div>
+<p>When the update is completed, disable write access:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">setsebool</span> <span class="o">-</span><span class="n">P</span>  <span class="n">httpd_unified</span>  <span class="n">off</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="disallow-write-access-to-the-whole-web-directory">
+<h2>Disallow write access to the whole web directory<a class="headerlink" href="#disallow-write-access-to-the-whole-web-directory" title="Permalink to this headline">¶</a></h2>
+<p>For security reasons it&#8217;s suggested to disable write access to all folders in /var/www/ (default):</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">setsebool</span> <span class="o">-</span><span class="n">P</span>  <span class="n">httpd_unified</span>  <span class="n">off</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="allow-access-to-a-remote-database">
+<h2>Allow access to a remote database<a class="headerlink" href="#allow-access-to-a-remote-database" title="Permalink to this headline">¶</a></h2>
+<p>An additional setting is needed if your installation is connecting to a remote database:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">setsebool</span> <span class="o">-</span><span class="n">P</span> <span class="n">httpd_can_network_connect_db</span> <span class="n">on</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="allow-access-to-ldap-server">
+<h2>Allow access to LDAP server<a class="headerlink" href="#allow-access-to-ldap-server" title="Permalink to this headline">¶</a></h2>
+<p>Use this setting to allow LDAP connections:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">setsebool</span> <span class="o">-</span><span class="n">P</span> <span class="n">httpd_can_connect_ldap</span> <span class="n">on</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="allow-access-to-remote-network">
+<h2>Allow access to remote network<a class="headerlink" href="#allow-access-to-remote-network" title="Permalink to this headline">¶</a></h2>
+<p>Nextcloud requires access to remote networks for functions such as Server-to-Server sharing, external storages or
+the app store. To allow this access use the following setting:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">setsebool</span> <span class="o">-</span><span class="n">P</span> <span class="n">httpd_can_network_connect</span> <span class="n">on</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="allow-access-to-network-memcache">
+<h2>Allow access to network memcache<a class="headerlink" href="#allow-access-to-network-memcache" title="Permalink to this headline">¶</a></h2>
+<p>This setting is not required if <code class="docutils literal"><span class="pre">httpd_can_network_connect</span></code> is already on:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">setsebool</span> <span class="o">-</span><span class="n">P</span> <span class="n">httpd_can_network_memcache</span> <span class="n">on</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="allow-access-to-smtp-sendmail">
+<h2>Allow access to SMTP/sendmail<a class="headerlink" href="#allow-access-to-smtp-sendmail" title="Permalink to this headline">¶</a></h2>
+<p>If you want to allow Nextcloud to send out e-mail notifications via sendmail you need
+to use the following setting:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">setsebool</span> <span class="o">-</span><span class="n">P</span> <span class="n">httpd_can_sendmail</span> <span class="n">on</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="allow-access-to-cifs-smb">
+<h2>Allow access to CIFS/SMB<a class="headerlink" href="#allow-access-to-cifs-smb" title="Permalink to this headline">¶</a></h2>
+<p>If you have placed your datadir on a CIFS/SMB share use the following setting:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">setsebool</span> <span class="o">-</span><span class="n">P</span> <span class="n">httpd_use_cifs</span> <span class="n">on</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="allow-access-to-fusefs">
+<h2>Allow access to FuseFS<a class="headerlink" href="#allow-access-to-fusefs" title="Permalink to this headline">¶</a></h2>
+<p>If your data folder resides on a Fuse Filesystem (e.g. EncFS etc), this setting is required as well:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">setsebool</span> <span class="o">-</span><span class="n">P</span> <span class="n">httpd_use_fusefs</span> <span class="n">on</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="allow-access-to-gpg-for-rainloop">
+<h2>Allow access to GPG for Rainloop<a class="headerlink" href="#allow-access-to-gpg-for-rainloop" title="Permalink to this headline">¶</a></h2>
+<p>If you use a the rainloop webmail client app which supports GPG/PGP, you might need this:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">setsebool</span> <span class="o">-</span><span class="n">P</span> <span class="n">httpd_use_gpg</span> <span class="n">on</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="troubleshooting">
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this headline">¶</a></h2>
+<p>For general Troubleshooting of SELinux and its profiles try to install the
+package <code class="docutils literal"><span class="pre">setroubleshoot</span></code> and run:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sealert</span> <span class="o">-</span><span class="n">a</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">log</span><span class="o">/</span><span class="n">audit</span><span class="o">/</span><span class="n">audit</span><span class="o">.</span><span class="n">log</span> <span class="o">&gt;</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">mylogfile</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<p>to get a report which helps you configuring your SELinux profiles.</p>
+<p>Another tool for troubleshooting is to enable a single ruleset for your
+Nextcloud directory:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">semanage</span> <span class="n">fcontext</span> <span class="o">-</span><span class="n">a</span> <span class="o">-</span><span class="n">t</span> <span class="n">httpd_sys_rw_content_t</span> <span class="s1">&#39;/var/www/html/nextcloud(/.*)?&#39;</span>
+<span class="n">restorecon</span> <span class="o">-</span><span class="n">RF</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">html</span><span class="o">/</span><span class="n">nextcloud</span>
+</pre></div>
+</div>
+<p>It is much stronger security to have a more fine-grained ruleset as in the
+examples at the beginning, so use this only for testing and troubleshooting. It
+has a similar effect to disabling SELinux, so don&#8217;t use it on production
+systems.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="nginx.html" class="btn btn-neutral float-right" title="Nginx configuration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="php_72_installation.html" class="btn btn-neutral float-left" title="Installing PHP 7.2 on RHEL 7 and CentOS 7" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021 Nextcloud GmbH.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: 15
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/15/admin_manual">15</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/16/admin_manual">16</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/17/admin_manual">17</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/admin_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/admin_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+   
+
+</body>
+</html>

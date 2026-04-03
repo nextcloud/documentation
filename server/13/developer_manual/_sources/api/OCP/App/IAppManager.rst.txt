@@ -1,0 +1,394 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IAppManager
+===========
+
+
+.. php:namespace:: OCP\App
+
+.. php:interface:: IAppManager
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Interface IAppManager
+		
+	
+	:Implemented by:
+		:php:class:`OC\\App\\AppManager` 
+	
+	
+	:Source:
+		`lib/public/App/IAppManager.php#42 <https://github.com/nextcloud/server/blob/stable13/lib/public/App/IAppManager.php#L42>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public getAppInfo( $appId, $path=false, $lang=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the app information from "appinfo/info\.xml"\.
+			
+		
+		:Source:
+			`lib/public/App/IAppManager.php#51 <https://github.com/nextcloud/server/blob/stable13/lib/public/App/IAppManager.php#L51>`_
+		
+		
+		:Parameters:
+			* **$appId** (string)  
+
+		
+		:Returns: mixed 
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getAppVersion( $appId, $useCache=true)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the app information from "appinfo/info\.xml"\.
+			
+		
+		:Source:
+			`lib/public/App/IAppManager.php#61 <https://github.com/nextcloud/server/blob/stable13/lib/public/App/IAppManager.php#L61>`_
+		
+		
+		:Parameters:
+			* **$appId** (string)  
+			* **$useCache** (bool)  
+
+		
+		:Returns: string 
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isEnabledForUser( $appId, $user=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check if an app is enabled for user
+			
+		
+		:Source:
+			`lib/public/App/IAppManager.php#71 <https://github.com/nextcloud/server/blob/stable13/lib/public/App/IAppManager.php#L71>`_
+		
+		
+		:Parameters:
+			* **$appId** (string)  
+			* **$user** (:any:`OCP\\IUser <OCP\\IUser>`)  (optional) if not defined, the currently loggedin user will be used
+
+		
+		:Returns: bool 
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isInstalled( $appId)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check if an app is enabled in the instance
+			
+			| Notice: This actually checks if the app is enabled and not only if it is installed\.
+			
+		
+		:Source:
+			`lib/public/App/IAppManager.php#82 <https://github.com/nextcloud/server/blob/stable13/lib/public/App/IAppManager.php#L82>`_
+		
+		
+		:Parameters:
+			* **$appId** (string)  
+
+		
+		:Returns: bool 
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public enableApp( $appId, $forceEnable=false)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Enable an app for every user
+			
+		
+		:Source:
+			`lib/public/App/IAppManager.php#92 <https://github.com/nextcloud/server/blob/stable13/lib/public/App/IAppManager.php#L92>`_
+		
+		
+		:Parameters:
+			* **$appId** (string)  
+			* **$forceEnable** (bool)  
+
+		
+		:Throws: :any:`\\OCP\\App\\AppPathNotFoundException <OCP\\App\\AppPathNotFoundException>` 
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public hasProtectedAppType( $types)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Whether a list of types contains a protected app type
+			
+		
+		:Source:
+			`lib/public/App/IAppManager.php#101 <https://github.com/nextcloud/server/blob/stable13/lib/public/App/IAppManager.php#L101>`_
+		
+		
+		:Parameters:
+			* **$types** (string[])  
+
+		
+		:Returns: bool 
+		:Since: 12.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public enableAppForGroups( $appId, $groups, $forceEnable=false)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Enable an app only for specific groups
+			
+		
+		:Source:
+			`lib/public/App/IAppManager.php#112 <https://github.com/nextcloud/server/blob/stable13/lib/public/App/IAppManager.php#L112>`_
+		
+		
+		:Parameters:
+			* **$appId** (string)  
+			* **$groups** (:any:`OCP\\IGroup\[\] <OCP\\IGroup>`)  
+			* **$forceEnable** (bool)  
+
+		
+		:Throws: :any:`\\Exception <Exception>` 
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public disableApp( $appId, $automaticDisabled=false)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Disable an app for every user
+			
+		
+		:Source:
+			`lib/public/App/IAppManager.php#121 <https://github.com/nextcloud/server/blob/stable13/lib/public/App/IAppManager.php#L121>`_
+		
+		
+		:Parameters:
+			* **$appId** (string)  
+			* **$automaticDisabled** (bool)  
+
+		
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getAppPath( $appId)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the directory for the given app\.
+			
+		
+		:Source:
+			`lib/public/App/IAppManager.php#131 <https://github.com/nextcloud/server/blob/stable13/lib/public/App/IAppManager.php#L131>`_
+		
+		
+		:Parameters:
+			* **$appId** (string)  
+
+		
+		:Returns: string 
+		:Since: 11.0.0 
+		:Throws: :any:`\\OCP\\App\\AppPathNotFoundException <OCP\\App\\AppPathNotFoundException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getAppWebPath( $appId)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the web path for the given app\.
+			
+		
+		:Source:
+			`lib/public/App/IAppManager.php#141 <https://github.com/nextcloud/server/blob/stable13/lib/public/App/IAppManager.php#L141>`_
+		
+		
+		:Parameters:
+			* **$appId** (string)  
+
+		
+		:Returns: string 
+		:Since: 18.0.0 
+		:Throws: :any:`\\OCP\\App\\AppPathNotFoundException <OCP\\App\\AppPathNotFoundException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getEnabledAppsForUser( $user)
+	
+		.. rst-class:: phpdoc-description
+		
+			| List all apps enabled for a user
+			
+		
+		:Source:
+			`lib/public/App/IAppManager.php#150 <https://github.com/nextcloud/server/blob/stable13/lib/public/App/IAppManager.php#L150>`_
+		
+		
+		:Parameters:
+			* **$user** (:any:`OCP\\IUser <OCP\\IUser>`)  
+
+		
+		:Returns: string[] 
+		:Since: 8.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getInstalledApps()
+	
+		.. rst-class:: phpdoc-description
+		
+			| List all installed apps
+			
+		
+		:Source:
+			`lib/public/App/IAppManager.php#158 <https://github.com/nextcloud/server/blob/stable13/lib/public/App/IAppManager.php#L158>`_
+		
+		
+		:Returns: string[] 
+		:Since: 8.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public clearAppsCache()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Clear the cached list of apps when enabling/disabling an app
+			
+		
+		:Source:
+			`lib/public/App/IAppManager.php#164 <https://github.com/nextcloud/server/blob/stable13/lib/public/App/IAppManager.php#L164>`_
+		
+		
+		:Since: 8.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isShipped( $appId)
+	
+		:Source:
+			`lib/public/App/IAppManager.php#171 <https://github.com/nextcloud/server/blob/stable13/lib/public/App/IAppManager.php#L171>`_
+		
+		
+		:Parameters:
+			* **$appId** (string)  
+
+		
+		:Returns: bool 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getAlwaysEnabledApps()
+	
+		:Source:
+			`lib/public/App/IAppManager.php#177 <https://github.com/nextcloud/server/blob/stable13/lib/public/App/IAppManager.php#L177>`_
+		
+		
+		:Returns: string[] 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getEnabledAppsForGroup( $group)
+	
+		:Source:
+			`lib/public/App/IAppManager.php#184 <https://github.com/nextcloud/server/blob/stable13/lib/public/App/IAppManager.php#L184>`_
+		
+		
+		:Parameters:
+			* **$group** (:any:`OCP\\IGroup <OCP\\IGroup>`)  
+
+		
+		:Returns: string[] 
+		:Since: 17.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getAutoDisabledApps()
+	
+		:Source:
+			`lib/public/App/IAppManager.php#190 <https://github.com/nextcloud/server/blob/stable13/lib/public/App/IAppManager.php#L190>`_
+		
+		
+		:Returns: array 
+		:Since: 17.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getAppRestriction( $appId)
+	
+		:Source:
+			`lib/public/App/IAppManager.php#197 <https://github.com/nextcloud/server/blob/stable13/lib/public/App/IAppManager.php#L197>`_
+		
+		
+		:Parameters:
+			* **$appId** (string)  
+
+		
+		:Returns: string[] 
+		:Since: 17.0.0 
+	
+	
+

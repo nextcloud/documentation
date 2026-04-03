@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Using two-factor authentication &#8212; Nextcloud 12 User Manual 12 documentation</title>
+    
+    <link rel="stylesheet" href="_static/" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/main.min.css" type="text/css" />
+    <link rel="stylesheet" href="_static/styles.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '12',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-3.1.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="_static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Manage Connected Browsers and Devices" href="session_management.html" />
+    <link rel="prev" title="Setting Your Preferences" href="userpreferences.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#1d2d44">
+<link rel="shortcut icon" href="https://nextcloud.com/wp-content/themes/next/assets/img/common/favicon.png" />
+<link rel="apple-touch-icon-precomposed" href="https://nextcloud.com/wp-content/themes/next/assets/img/common/favicon.png" />
+<!-- Piwik -->
+<script type="text/javascript">
+    var _paq = _paq || [];
+    _paq.push(['trackPageView']);
+    _paq.push(['enableLinkTracking']);
+    (function() {
+        var u="//stats.nextcloud.com/";
+        _paq.push(['setTrackerUrl', u+'piwik.php']);
+        _paq.push(['setSiteId', 3]);
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+        g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+    })();
+</script>
+<noscript><p><img src="//stats.nextcloud.com/piwik.php?idsite=3" style="border:0;" alt="" /></p></noscript>
+<!-- End Piwik Code -->
+
+  </head>
+  <body role="document">
+
+<header class="banner navbar navbar-default navbar-static-top" role="banner">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+       <a class="brand" href="http://nextcloud.com/" rel="home" title="Nextcloud.com"><img class="logo" src="_static/img/logo.svg" itemprop="logo"></a>
+    </div>
+
+    <nav class="collapse navbar-collapse" role="navigation">
+      <ul id="menu-header" class="nav navbar-nav">
+          <li><a target="_blank" href="https://demo.nextcloud.com">Demo</a></li>
+          <li><a href="https://nextcloud.com/news/">News</a></li>
+          <li><a href="https://nextcloud.com/features/">Features</a></li>
+          <li><a href="https://nextcloud.com/about/">About us</a></li>
+          <li><a href="https://nextcloud.com/contribute/">Get involved</a></li>
+          <li><a href="https://nextcloud.com/support/">Support</a></li>
+          <li><a href="https://nextcloud.com/enterprise/">Enterprise</a></li>
+          <li class="menu-install"><a href="https://nextcloud.com/install/">Download</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+
+<div class="container" style="background-color: #E6C4C2;color: #b10000;border: #b10000 2px solid;border-right: none;border-left: none;padding: 15px 10px;">You are reading an outdated version of this documentation. Please check out the <a href="https://docs.nextcloud.com/server/stable/user_manual/" style="
+color: rgb(177,0,0);text-decoration: underline;">latest version</a> of the user manual.</div>
+
+
+
+
+<div class="wrap container not-front">
+  <div class="content row">
+  <main class="main">
+    <div class="row page-content-header">
+      <div class="col-md-6">
+        <h1><a href="contents.html">Nextcloud 12 User Manual</a></h1>
+      </div>
+      <div class="col-md-5 col-md-offset-1">
+      
+        <form class="headersearch" style="margin: 16px 0;" action="search.html" method="get">
+        <input type="text" value="" name="q" id="q" class="form-control" /> 
+        <button  class="btn btn-default" type="submit" id="searchsubmit">Search</button>
+        </form>
+      
+      </div>
+    </div>
+    
+			<div class="row">
+				<div class="col-md-3">
+					<div class="sidebar">
+							<div class="menu-support-container">
+								<ul id="menu-support" class="menu">
+									<ul>
+										
+<li><a href="contents.html">Table of Contents</a></li>
+									</ul>
+                  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="index.html">Nextcloud 12 User Manual Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="whats_new.html">What&#8217;s New for Users in Nextcloud 12</a></li>
+<li class="toctree-l1"><a class="reference internal" href="webinterface.html">The Nextcloud Web Interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="files/index.html">Files &amp; Synchronization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pim/index.html">Contacts &amp; Calendar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="userpreferences.html">Setting Your Preferences</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Using two-factor authentication</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#configuring-two-factor-authentication">Configuring two-factor authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#recovery-codes-in-case-you-lost-your-2nd-factor">Recovery codes in case you lost your 2nd factor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#logging-in-with-two-factor-authentication">Logging in with two-factor authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#using-client-applications-with-two-factor-authentication">Using client applications with two-factor authentication</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="session_management.html">Manage Connected Browsers and Devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="external_storage/index.html">External Storage</a></li>
+</ul>
+
+								</ul>
+							</div>
+					</div>
+				</div>
+        
+
+				<div class="col-md-9">
+					<div class="page-content">
+            
+<ul class="prevnext-title list-unstyled list-inline">
+  <li class="prev">
+    <a href="userpreferences.html" title="Previous Chapter: Setting Your Preferences"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; Setting Your ...</span>
+    </a>
+  </li>
+  <li class="next">
+    <a href="session_management.html" title="Next Chapter: Manage Connected Browsers and Devices"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">Manage Connec... &raquo;</span>
+    </a>
+  </li>
+</ul>
+						
+  <div class="section" id="using-two-factor-authentication">
+<h1>Using two-factor authentication<a class="headerlink" href="#using-two-factor-authentication" title="Permalink to this headline">¶</a></h1>
+<p>Two-factor authentication (2FA) is a way to protect your Nextcloud account
+against unauthorized access. It works by requiring two different &#8216;proofs&#8217; of
+your identity. For example, <em>something you know</em> (like a password) and
+<em>something you have</em> like a physical key. Typically, the first factor is a
+password like you already have and the second can be a text message you
+receive or a code you generate on your phone or another device
+(<em>something you have</em>). Nextcloud supports a variety of 2nd factors and
+more can be added.</p>
+<p>Once a two-factor authentication app has been enabled by your administrator
+you can enable and configure it in <a class="reference internal" href="userpreferences.html"><span class="doc">Setting Your Preferences</span></a>. Below you can
+see how.</p>
+<div class="section" id="configuring-two-factor-authentication">
+<h2>Configuring two-factor authentication<a class="headerlink" href="#configuring-two-factor-authentication" title="Permalink to this headline">¶</a></h2>
+<p>In your Personal Settings look up the Second-factor Auth setting. In this
+example this is TOTP, a Google Authenticator compatible time based code.</p>
+<div class="figure">
+<img alt="TOTP configuration." src="_images/totp_enable.png" />
+</div>
+<p>You will see your secret and a QR code which can be scanned by the TOTP app
+on your phone (or another device). Depending on the app or tool, type in the
+code or scan the QR and your device will show a login code which changes
+every 30 seconds.</p>
+</div>
+<div class="section" id="recovery-codes-in-case-you-lost-your-2nd-factor">
+<h2>Recovery codes in case you lost your 2nd factor<a class="headerlink" href="#recovery-codes-in-case-you-lost-your-2nd-factor" title="Permalink to this headline">¶</a></h2>
+<p>You should always generate backup codes for 2FA. If your 2nd factor device
+gets stolen or is not working, you will be able to use one of these codes to
+unlock your account. It effectively functions as a backup 2nd factor. To
+get the backup codes, go to your Personal Settings and look under Second-factor
+Auth settings. Choose <em>Generate backup codes</em>.</p>
+<div class="figure">
+<img alt="2FA backup code generator" src="_images/2fa_backupcode_1.png" />
+</div>
+<p>You will then be presented with a list of one-time-use backup codes.</p>
+<div class="figure">
+<img alt="2FA backup codes" src="_images/2fa_backupcode_2.png" />
+</div>
+<p>You should put these codes in a safe spot, somewhere you can find them. Don&#8217;t
+put them together with your 2nd factor like your mobile phone but make sure that
+if you lose one, you still have the other. Keeping them at home is probably
+the best thing to do.</p>
+</div>
+<div class="section" id="logging-in-with-two-factor-authentication">
+<h2>Logging in with two-factor authentication<a class="headerlink" href="#logging-in-with-two-factor-authentication" title="Permalink to this headline">¶</a></h2>
+<p>After you have logged out and need to log in again, you will see a request to
+enter the TOTP code in your browser. Just enter your code:</p>
+<div class="figure">
+<img alt="Entering TOTP code at login." src="_images/totp_login_2.png" />
+</div>
+<p>If the code was correct you will be redirected to your Nextcloud account.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Since the code is time-based, it’s important that your server’s and
+your smartphone’s clock are almost in sync. A time drift of a few seconds
+won’t be a problem.</p>
+</div>
+</div>
+<div class="section" id="using-client-applications-with-two-factor-authentication">
+<h2>Using client applications with two-factor authentication<a class="headerlink" href="#using-client-applications-with-two-factor-authentication" title="Permalink to this headline">¶</a></h2>
+<p>Once you have enabled 2FA, your clients will no longer be able to connect with
+just your password unless they also have support for two-factor authentication.
+To solve this, you should generate device specific passwords for them. See
+<a class="reference internal" href="session_management.html"><span class="doc">Manage Connected Browsers and Devices</span></a> for more information on how to do this.</p>
+</div>
+</div>
+
+
+            
+<ul class="prevnext-title list-unstyled list-inline">
+  <li class="prev">
+    <a href="userpreferences.html" title="Previous Chapter: Setting Your Preferences"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; Setting Your ...</span>
+    </a>
+  </li>
+  <li class="next">
+    <a href="session_management.html" title="Next Chapter: Manage Connected Browsers and Devices"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">Manage Connec... &raquo;</span>
+    </a>
+  </li>
+</ul>
+					</div>
+				</div>
+			</div>
+  </main>  
+  </div>
+</div>
+<div class="container">
+<div class="row">
+    <div class="col-lg-12 footer-social-icons">
+      <p class="text-center"><a target="_blank" href="https://plus.google.com/104036748063781940910/about"><img width=50 src="_static/img/social/googleplus.svg" title="Follow us on Google Plus!" alt="Follow us on Google Plus!"></img></a>
+      <a target="_blank" href="https://www.facebook.com/Nextclouders"><img width=50 src="_static/img/social/facebook.svg" title="Like our facebook page!" alt="Like our facebook page!"></img></a>
+      <a target="_blank" href="https://twitter.com/Nextclouders"><img width=50 src="_static/img/social/twitter.svg" title="Subscribe to our twitter channel!" alt="Subscribe to our twitter channel!"></img></a>
+      <a target="_blank" href="https://nextcloud.com/blogfeed"><img class="img-circle" width=50 src="_static/img/social/rss.svg" title="Subscribe to our news feed!" alt="Subscribe to our news feed!"></img></a>
+      <a target="_blank" href="https://newsletter.nextcloud.com/"><img class="img-circle" width=50 src="_static/img/social/mail.svg"  title="Subscribe to our newsletter!" alt="Subscribe to our newsletter!"></img></a></p>
+    </div>
+    <div class="text-center">
+      <p>All documentation licensed under the <a href="https://creativecommons.org/licenses/by/3.0/us/">Creative Commons Attribution 3.0 Unported license</a>.</p>
+      <p><a href="https://github.com/nextcloud/documentation/graphs/contributors">See who contributed to our documentation/credits</a>.</p>
+    </div>
+</div>
+</div>
+<footer class="content-info" role="contentinfo">
+<div class="container">
+   <div class="row">
+     <div class="col-sm-2 col-sm-offset-1">
+        <div class="footer-nav">
+          <h4>About Nextcloud</h4>
+          <ul id="menu-about" class="menu">
+            <li><a href="https://nextcloud.com/about/">About us</a></li>
+            <li><a href="https://nextcloud.com/contact/">Contact us</a></li>
+            <li><a href="https://nextcloud.com/press/">Press</a></li>
+            <li><a href="https://nextcloud.com/privacy/">Privacy policy</a></li>
+          </ul>
+        </div>
+     </div>
+     <div class="col-sm-2 col-sm-offset-2">
+     </div>
+     <div class="col-sm-2 col-sm-offset-2">
+        <div class="footer-nav">
+          <h4>Interact</h4>
+          <ul id="menu-interact" class="menu">
+            <li class="menu-irc-channel"><a href="https://webchat.freenode.net/?channels=nextcloud">IRC Channel</a></li>
+            <li class="menu-forums"><a href="https://help.nextcloud.com/">Forums</a></li>
+          </ul>
+        </div>
+     </div>
+   </div>
+   <div class="row">
+      <div class="col-lg-12 footer-text">
+        <p>
+              &copy; Copyright 2012-2017, The Nextcloud developers.  <small><a href="https://nextcloud.com/impressum">Legal Notice</a></small><br/>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+  </body>
+</html>

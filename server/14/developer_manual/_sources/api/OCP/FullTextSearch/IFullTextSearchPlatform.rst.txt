@@ -1,0 +1,321 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IFullTextSearchPlatform
+=======================
+
+
+.. php:namespace:: OCP\FullTextSearch
+
+.. php:interface:: IFullTextSearchPlatform
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Interface IFullTextSearchPlatform
+		
+		| This interface must be use when creating a Search Platform for FullTextSearch\.
+		| 
+		| A Search Platform is an extension to the FullTextSearch that will act as a
+		| a gateway between FullTextSearch and a search server \(ie\. ElasticSearch,
+		| Solr, \.\.\.\)
+		| 
+		| Multiple Search Platform can exist at the same time in Nextcloud, however only
+		| one Search Platform will be used by FullTextSearch\.
+		| Administrator must select at least one Search Platform to be used by
+		| FullTextSearch in the admin settings page\.
+		| 
+		| The content provided by FullTextSearch comes in chunk from multiple Content
+		| Provider\. Each chunk is identified by the ID of the Content Provider, and the
+		| ID of the document\.
+		| 
+		| 
+		| To oversimplify the mechanism:
+		| 
+		| \- When indexing, FullTextSearch will send providerId, documentId, content\.
+		| \- When searching within the content of a Content Provider, identified by its
+		|   providerId, FullTextSearch expect documentId as result\.
+		| 
+		| 
+		| The Search Platform ia a PHP class that implement this interface and is defined
+		| in appinfo/info\.xml of the app that contains that class:
+		| 
+		|    <fulltextsearch\>
+		|      <platform\>OCA\\YourApp\\YourSearchPlatform</platform\>
+		|    </fulltextsearch\>
+		| 
+		| Multiple Search Platform can be defined in a single app\.
+		
+	
+	:Source:
+		`lib/public/FullTextSearch/IFullTextSearchPlatform.php#73 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/IFullTextSearchPlatform.php#L73>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public getId()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Must returns a unique Id used to identify the Search Platform\.
+			
+			| Id must contains only alphanumeric chars, with no space\.
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/IFullTextSearchPlatform.php#84 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/IFullTextSearchPlatform.php#L84>`_
+		
+		
+		:Since: 15.0.0 
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getName()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Must returns a descriptive name of the Search Platform\.
+			
+			| This is used mainly in the admin settings page to display the list of
+			| available Search Platform
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/IFullTextSearchPlatform.php#96 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/IFullTextSearchPlatform.php#L96>`_
+		
+		
+		:Since: 15.0.0 
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getConfiguration()
+	
+		.. rst-class:: phpdoc-description
+		
+			| should returns the current configuration of the Search Platform\.
+			
+			| This is used to display the configuration when using the
+			| \./occ fulltextsearch:check command line\.
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/IFullTextSearchPlatform.php#108 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/IFullTextSearchPlatform.php#L108>`_
+		
+		
+		:Since: 15.0.0 
+		:Returns: array 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setRunner( $runner)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set the wrapper of the currently executed process\.
+			
+			| Because the index process can be long and heavy, and because errors can
+			| be encountered during the process, the IRunner is a wrapper that allow the
+			| Search Platform to communicate with the process initiated by
+			| FullTextSearch\.
+			| 
+			| The IRunner is coming with some methods so the Search Platform can
+			| returns important information and errors to be displayed to the admin\.
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/IFullTextSearchPlatform.php#125 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/IFullTextSearchPlatform.php#L125>`_
+		
+		
+		:Parameters:
+			* **$runner** (:any:`OCP\\FullTextSearch\\Model\\IRunner <OCP\\FullTextSearch\\Model\\IRunner>`)  
+
+		
+		:Since: 15.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public loadPlatform()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Called when FullTextSearch is loading your Search Platform\.
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/IFullTextSearchPlatform.php#133 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/IFullTextSearchPlatform.php#L133>`_
+		
+		
+		:Since: 15.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public testPlatform()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Called to check that your Search Platform is correctly configured and that
+			| This is also the right place to check that the Search Service is available\.
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/IFullTextSearchPlatform.php#144 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/IFullTextSearchPlatform.php#L144>`_
+		
+		
+		:Since: 15.0.0 
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public initializeIndex()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Called before an index is initiated\.
+			
+			| Best place to initiate some stuff on the Search Server \(mapping, \.\.\.\)
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/IFullTextSearchPlatform.php#153 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/IFullTextSearchPlatform.php#L153>`_
+		
+		
+		:Since: 15.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public resetIndex( $providerId)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Reset the indexes for a specific providerId\.
+			
+			| $providerId can be \'all\' if it is a global reset\.
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/IFullTextSearchPlatform.php#164 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/IFullTextSearchPlatform.php#L164>`_
+		
+		
+		:Parameters:
+			* **$providerId** (string)  
+
+		
+		:Since: 15.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public deleteIndexes( $indexes)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Deleting some IIndex, sent in an array
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/IFullTextSearchPlatform.php#176 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/IFullTextSearchPlatform.php#L176>`_
+		
+		
+		:Parameters:
+			* **$indexes** (:any:`OCP\\FullTextSearch\\Model\\IIndex\[\] <OCP\\FullTextSearch\\Model\\IIndex>`)  
+
+		
+		:See: :any:`\\OCP\\FullTextSearch\\Model\\IIndex <OCP\\FullTextSearch\\Model\\IIndex>` 
+		:Since: 15.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public indexDocument( $document)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Indexing a document\.
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/IFullTextSearchPlatform.php#190 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/IFullTextSearchPlatform.php#L190>`_
+		
+		
+		:Parameters:
+			* **$document** (:any:`OCP\\FullTextSearch\\Model\\IIndexDocument <OCP\\FullTextSearch\\Model\\IIndexDocument>`)  
+
+		
+		:See: :any:`\\OCP\\FullTextSearch\\IndexDocument <OCP\\FullTextSearch\\IndexDocument>` 
+		:Since: 15.0.0 
+		:Returns: :any:`\\OCP\\FullTextSearch\\Model\\IIndex <OCP\\FullTextSearch\\Model\\IIndex>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public searchRequest( $result, $access)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Searching documents, ISearchResult should be updated with the result of
+			| the search\.
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/IFullTextSearchPlatform.php#202 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/IFullTextSearchPlatform.php#L202>`_
+		
+		
+		:Parameters:
+			* **$result** (:any:`OCP\\FullTextSearch\\Model\\ISearchResult <OCP\\FullTextSearch\\Model\\ISearchResult>`)  
+			* **$access** (:any:`OCP\\FullTextSearch\\Model\\IDocumentAccess <OCP\\FullTextSearch\\Model\\IDocumentAccess>`)  
+
+		
+		:Since: 15.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getDocument( $providerId, $documentId)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Return a document based on its Id and the Provider\.
+			
+			| This is used when an admin execute \./occ fulltextsearch:document:platform
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/IFullTextSearchPlatform.php#216 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/IFullTextSearchPlatform.php#L216>`_
+		
+		
+		:Parameters:
+			* **$providerId** (string)  
+			* **$documentId** (string)  
+
+		
+		:Since: 15.0.0 
+		:Returns: :any:`\\OCP\\FullTextSearch\\Model\\IIndexDocument <OCP\\FullTextSearch\\Model\\IIndexDocument>` 
+	
+	
+

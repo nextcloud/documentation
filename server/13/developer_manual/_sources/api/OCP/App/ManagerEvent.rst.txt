@@ -1,0 +1,160 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+ManagerEvent
+============
+
+
+.. php:namespace:: OCP\App
+
+.. php:class:: ManagerEvent
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Class ManagerEvent
+		
+	
+	:Source:
+		`lib/public/App/ManagerEvent.php#34 <https://github.com/nextcloud/server/blob/stable13/lib/public/App/ManagerEvent.php#L34>`_
+	
+	:Parent:
+		:php:class:`OCP\\EventDispatcher\\Event`
+	
+
+Constants
+---------
+
+.. php:const:: EVENT_APP_ENABLE = OCP\\App\\IAppManager::enableApp
+
+	:Source:
+		`lib/public/App/ManagerEvent.php#38 <https://github.com/nextcloud/server/blob/stable13/lib/public/App/ManagerEvent.php#L38>`_
+	
+	:Deprecated: 22.0.0 
+
+
+.. php:const:: EVENT_APP_ENABLE_FOR_GROUPS = OCP\\App\\IAppManager::enableAppForGroups
+
+	:Source:
+		`lib/public/App/ManagerEvent.php#43 <https://github.com/nextcloud/server/blob/stable13/lib/public/App/ManagerEvent.php#L43>`_
+	
+	:Deprecated: 22.0.0 
+
+
+.. php:const:: EVENT_APP_DISABLE = OCP\\App\\IAppManager::disableApp
+
+	:Source:
+		`lib/public/App/ManagerEvent.php#48 <https://github.com/nextcloud/server/blob/stable13/lib/public/App/ManagerEvent.php#L48>`_
+	
+	:Deprecated: 22.0.0 
+
+
+.. php:const:: EVENT_APP_UPDATE = OCP\\App\\IAppManager::updateApp
+
+	:Source:
+		`lib/public/App/ManagerEvent.php#54 <https://github.com/nextcloud/server/blob/stable13/lib/public/App/ManagerEvent.php#L54>`_
+	
+	:Since: 9.1.0 
+	:Deprecated: 22.0.0 
+
+
+Properties
+----------
+
+.. php:attr:: protected static event
+
+	:Source:
+		`lib/public/App/ManagerEvent.php#57 <https://github.com/nextcloud/server/blob/stable13/lib/public/App/ManagerEvent.php#L57>`_
+	
+	:Type: string 
+
+
+.. php:attr:: protected static appID
+
+	:Source:
+		`lib/public/App/ManagerEvent.php#59 <https://github.com/nextcloud/server/blob/stable13/lib/public/App/ManagerEvent.php#L59>`_
+	
+	:Type: string 
+
+
+.. php:attr:: protected static groups
+
+	:Source:
+		`lib/public/App/ManagerEvent.php#61 <https://github.com/nextcloud/server/blob/stable13/lib/public/App/ManagerEvent.php#L61>`_
+	
+	:Type: :any:`\\OCP\\IGroup\[\] <OCP\\IGroup>` | null 
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $event, $appID, $groups=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| DispatcherEvent constructor\.
+			
+		
+		:Source:
+			`lib/public/App/ManagerEvent.php#71 <https://github.com/nextcloud/server/blob/stable13/lib/public/App/ManagerEvent.php#L71>`_
+		
+		
+		:Parameters:
+			* **$event** (string)  
+			* **$appID**  
+			* **$groups** (:any:`OCP\\IGroup\[\] <OCP\\IGroup>` | null)  
+
+		
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getEvent()
+	
+		:Source:
+			`lib/public/App/ManagerEvent.php#81 <https://github.com/nextcloud/server/blob/stable13/lib/public/App/ManagerEvent.php#L81>`_
+		
+		
+		:Returns: string 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getAppID()
+	
+		:Source:
+			`lib/public/App/ManagerEvent.php#89 <https://github.com/nextcloud/server/blob/stable13/lib/public/App/ManagerEvent.php#L89>`_
+		
+		
+		:Returns: string 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getGroups()
+	
+		.. rst-class:: phpdoc-description
+		
+			| returns the group Ids
+			
+		
+		:Source:
+			`lib/public/App/ManagerEvent.php#98 <https://github.com/nextcloud/server/blob/stable13/lib/public/App/ManagerEvent.php#L98>`_
+		
+		
+		:Returns: string[] 
+		:Since: 9.0.0 
+	
+	
+

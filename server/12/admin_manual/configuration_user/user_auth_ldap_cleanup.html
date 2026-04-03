@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>LDAP User Cleanup &#8212; Nextcloud 12 Server Administration Manual 12 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/main.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '12',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.1.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="LDAP Configuration API" href="user_auth_ldap_api.html" />
+    <link rel="prev" title="User Authentication with LDAP" href="user_auth_ldap.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#1d2d44">
+<link rel="shortcut icon" href="https://nextcloud.com/wp-content/themes/next/assets/img/common/favicon.png" />
+<link rel="apple-touch-icon-precomposed" href="https://nextcloud.com/wp-content/themes/next/assets/img/common/favicon.png" />
+<!-- Piwik -->
+<script type="text/javascript">
+    var _paq = _paq || [];
+    _paq.push(['trackPageView']);
+    _paq.push(['enableLinkTracking']);
+    (function() {
+        var u="//stats.nextcloud.com/";
+        _paq.push(['setTrackerUrl', u+'piwik.php']);
+        _paq.push(['setSiteId', 3]);
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+        g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+    })();
+</script>
+<noscript><p><img src="//stats.nextcloud.com/piwik.php?idsite=3" style="border:0;" alt="" /></p></noscript>
+<!-- End Piwik Code -->
+
+  </head>
+  <body role="document">
+
+<header class="banner navbar navbar-default navbar-static-top" role="banner">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+       <a class="brand" href="http://nextcloud.com/" rel="home" title="Nextcloud.com"><img class="logo" src="../_static/img/logo.svg" itemprop="logo"></a>
+    </div>
+
+    <nav class="collapse navbar-collapse" role="navigation">
+      <ul id="menu-header" class="nav navbar-nav">
+          <li><a target="_blank" href="https://demo.nextcloud.com">Demo</a></li>
+          <li><a href="https://nextcloud.com/news/">News</a></li>
+          <li><a href="https://nextcloud.com/features/">Features</a></li>
+          <li><a href="https://nextcloud.com/about/">About us</a></li>
+          <li><a href="https://nextcloud.com/contribute/">Get involved</a></li>
+          <li><a href="https://nextcloud.com/support/">Support</a></li>
+          <li><a href="https://nextcloud.com/enterprise/">Enterprise</a></li>
+          <li class="menu-install"><a href="https://nextcloud.com/install/">Download</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+<div class="container" style="background-color: #E6C4C2;color: #b10000;border: #b10000 2px solid;border-right: none;border-left: none;padding: 15px 10px;">You are reading an outdated version of this documentation. Please check out the <a href="https://docs.nextcloud.com/server/stable/admin_manual/" style="
+color: rgb(177,0,0);text-decoration: underline;">latest version</a> of the server administration manual.</div>
+
+
+
+<div class="wrap container not-front">
+  <div class="content row">
+  <main class="main">
+    <div class="row page-content-header">
+      <div class="col-md-6">
+        <h1><a href="../contents.html">Nextcloud 12 Server Administration Manual</a></h1>
+      </div>
+      <div class="col-md-5 col-md-offset-1">
+      
+        <form class="headersearch" style="margin: 16px 0;" action="../search.html" method="get">
+        <input type="text" value="" name="q" id="q" class="form-control" /> 
+        <button  class="btn btn-default" type="submit" id="searchsubmit">Search</button>
+        </form>
+      
+      </div>
+    </div>
+    
+			<div class="row">
+				<div class="col-md-3">
+					<div class="sidebar">
+							<div class="menu-support-container">
+								<ul id="menu-support" class="menu">
+									<ul>
+										
+<li><a href="../contents.html">Table of Contents</a></li>
+									</ul>
+                  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_server/index.html">Server Configuration</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">User Management</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="user_configuration.html">User Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reset_admin_password.html">Resetting a Lost Admin Password</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reset_user_password.html">Resetting a User Password</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_password_policy.html">User Password Policy App</a></li>
+<li class="toctree-l2"><a class="reference internal" href="two_factor-auth.html">Two Factor Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_auth_ftp_smb_imap.html">User Authentication with IMAP, SMB, and FTP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_auth_ldap.html">User Authentication with LDAP</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">LDAP User Cleanup</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#deleting-local-nextcloud-users">Deleting Local Nextcloud Users</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="user_auth_ldap_api.html">LDAP Configuration API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_provisioning_api.html">User Provisioning API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_files/index.html">File Sharing and Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../file_workflows/index.html">File workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_database/index.html">Database Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_mimetypes/index.html">Mimetypes Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../maintenance/index.html">Maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../issues/index.html">Issues and Troubleshooting</a></li>
+</ul>
+
+								</ul>
+							</div>
+					</div>
+				</div>
+        
+
+				<div class="col-md-9">
+					<div class="page-content">
+            
+<ul class="prevnext-title list-unstyled list-inline">
+  <li class="prev">
+    <a href="user_auth_ldap.html" title="Previous Chapter: User Authentication with LDAP"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; User Authenti...</span>
+    </a>
+  </li>
+  <li class="next">
+    <a href="user_auth_ldap_api.html" title="Next Chapter: LDAP Configuration API"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">LDAP Configur... &raquo;</span>
+    </a>
+  </li>
+</ul>
+						
+  <div class="section" id="ldap-user-cleanup">
+<h1>LDAP User Cleanup<a class="headerlink" href="#ldap-user-cleanup" title="Permalink to this headline">¶</a></h1>
+<p>LDAP User Cleanup is a new feature in the <code class="docutils literal"><span class="pre">LDAP</span> <span class="pre">user</span> <span class="pre">and</span> <span class="pre">group</span> <span class="pre">backend</span></code>
+application. LDAP User Cleanup is a background process that automatically
+searches the Nextcloud LDAP mappings table, and verifies if the LDAP users are
+still available. Any users that are not available are marked as <code class="docutils literal"><span class="pre">deleted</span></code> in
+the <code class="docutils literal"><span class="pre">oc_preferences</span></code> database table. Then you can run a command to display
+this table, displaying only the users marked as <code class="docutils literal"><span class="pre">deleted</span></code>, and then you have
+the option of removing their data from your Nextcloud data directory.</p>
+<p>These items are removed upon cleanup:</p>
+<ul class="simple">
+<li>Local Nextcloud group assignments</li>
+<li>User preferences (DB table <code class="docutils literal"><span class="pre">oc_preferences</span></code>)</li>
+<li>User&#8217;s Nextcloud home folder</li>
+<li>User&#8217;s corresponding entry in <code class="docutils literal"><span class="pre">oc_storages</span></code></li>
+</ul>
+<p>There are two prerequisites for LDAP User Cleanup to operate:</p>
+<ol class="arabic simple">
+<li>Set <code class="docutils literal"><span class="pre">ldapUserCleanupInterval</span></code> in <code class="docutils literal"><span class="pre">config.php</span></code> to your desired check
+interval in minutes. The default is 51 minutes.</li>
+<li>All configured LDAP connections are enabled and operating correctly. As users
+can exist on multiple LDAP servers, you want to be sure that all of your
+LDAP servers are available so that a user on a temporarily disconnected LDAP
+server is not marked as <code class="docutils literal"><span class="pre">deleted</span></code>.</li>
+</ol>
+<p>The background process examines 50 users at a time, and runs at the interval you
+configured with <code class="docutils literal"><span class="pre">ldapUserCleanupInterval</span></code>. For example, if you have 200 LDAP
+users and your <code class="docutils literal"><span class="pre">ldapUserCleanupInterval</span></code> is 20 minutes, the process will
+examine the first 50 users, then 20 minutes later the next 50 users, and 20
+minutes later the next 50, and so on.</p>
+<p>There are two <code class="docutils literal"><span class="pre">occ</span></code> commands to use for examining a table of users marked as
+deleted, and then manually deleting them.  The <code class="docutils literal"><span class="pre">occ</span></code> command is in your
+Nextcloud directory, for example <code class="docutils literal"><span class="pre">/var/www/nextcloud/occ</span></code>, and it must be run as
+your HTTP user. To learn more about <code class="docutils literal"><span class="pre">occ</span></code>, see
+<a class="reference internal" href="../configuration_server/occ_command.html"><span class="doc">Using the occ Command</span></a>.</p>
+<p>These examples are for Ubuntu Linux:</p>
+<ol class="arabic simple">
+<li><code class="docutils literal"><span class="pre">sudo</span> <span class="pre">-u</span> <span class="pre">www-data</span> <span class="pre">php</span> <span class="pre">occ</span> <span class="pre">ldap:show-remnants</span></code> displays a table with all
+users that have been marked as deleted, and their LDAP data.</li>
+<li><code class="docutils literal"><span class="pre">sudo</span> <span class="pre">-u</span> <span class="pre">www-data</span> <span class="pre">php</span> <span class="pre">occ</span> <span class="pre">user:delete</span> <span class="pre">[user]</span></code> removes the user&#8217;s data from the
+Nextcloud data directory.</li>
+</ol>
+<p>This example shows what the table of users marked as <code class="docutils literal"><span class="pre">deleted</span></code> looks like:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo -u www-data php occ ldap:show-remnants
++-----------------+-----------------+------------------+--------------------------------------+
+| Nextcloud name  | Display Name    | LDAP UID         | LDAP DN                              |
++-----------------+-----------------+------------------+--------------------------------------+
+| aaliyah_brown   | aaliyah brown   | aaliyah_brown    | uid=aaliyah_brown,ou=people,dc=com   |
+| aaliyah_hammes  | aaliyah hammes  | aaliyah_hammes   | uid=aaliyah_hammes,ou=people,dc=com  |
+| aaliyah_johnston| aaliyah johnston| aaliyah_johnston | uid=aaliyah_johnston,ou=people,dc=com|
+| aaliyah_kunze   | aaliyah kunze   | aaliyah_kunze    | uid=aaliyah_kunze,ou=people,dc=com   |
++-----------------+-----------------+------------------+--------------------------------------+
+</pre></div>
+</div>
+<p>Then you can run <code class="docutils literal"><span class="pre">sudo</span> <span class="pre">-u</span> <span class="pre">www-data</span> <span class="pre">php</span> <span class="pre">occ</span> <span class="pre">user:delete</span> <span class="pre">aaliyah_brown</span></code> to delete
+user aaliyah_brown. You must use the user&#8217;s Nextcloud name.</p>
+<div class="section" id="deleting-local-nextcloud-users">
+<h2>Deleting Local Nextcloud Users<a class="headerlink" href="#deleting-local-nextcloud-users" title="Permalink to this headline">¶</a></h2>
+<p>You may also use <code class="docutils literal"><span class="pre">occ</span> <span class="pre">user:delete</span> <span class="pre">[user]</span></code> to remove a local Nextcloud user;
+this removes their user account and their data.</p>
+</div>
+</div>
+
+
+            
+<ul class="prevnext-title list-unstyled list-inline">
+  <li class="prev">
+    <a href="user_auth_ldap.html" title="Previous Chapter: User Authentication with LDAP"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; User Authenti...</span>
+    </a>
+  </li>
+  <li class="next">
+    <a href="user_auth_ldap_api.html" title="Next Chapter: LDAP Configuration API"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">LDAP Configur... &raquo;</span>
+    </a>
+  </li>
+</ul>
+					</div>
+				</div>
+			</div>
+  </main>  
+  </div>
+</div>
+<div class="container">
+<div class="row">
+    <div class="col-lg-12 footer-social-icons">
+      <p class="text-center"><a target="_blank" href="https://plus.google.com/104036748063781940910/about"><img width=50 src="../_static/img/social/googleplus.svg" title="Follow us on Google Plus!" alt="Follow us on Google Plus!"></img></a>
+      <a target="_blank" href="https://www.facebook.com/Nextclouders"><img width=50 src="../_static/img/social/facebook.svg" title="Like our facebook page!" alt="Like our facebook page!"></img></a>
+      <a target="_blank" href="https://twitter.com/Nextclouders"><img width=50 src="../_static/img/social/twitter.svg" title="Subscribe to our twitter channel!" alt="Subscribe to our twitter channel!"></img></a>
+      <a target="_blank" href="https://nextcloud.com/blogfeed"><img class="img-circle" width=50 src="../_static/img/social/rss.svg" title="Subscribe to our news feed!" alt="Subscribe to our news feed!"></img></a>
+      <a target="_blank" href="https://newsletter.nextcloud.com/"><img class="img-circle" width=50 src="../_static/img/social/mail.svg"  title="Subscribe to our newsletter!" alt="Subscribe to our newsletter!"></img></a></p>
+    </div>
+    <div class="text-center">
+      <p>All documentation licensed under the <a href="https://creativecommons.org/licenses/by/3.0/us/">Creative Commons Attribution 3.0 Unported license</a>.</p>
+      <p><a href="https://github.com/nextcloud/documentation/graphs/contributors">See who contributed to our documentation/credits</a>.</p>
+    </div>
+</div>
+</div>
+<footer class="content-info" role="contentinfo">
+<div class="container">
+   <div class="row">
+     <div class="col-sm-2 col-sm-offset-1">
+        <div class="footer-nav">
+          <h4>About Nextcloud</h4>
+          <ul id="menu-about" class="menu">
+            <li><a href="https://nextcloud.com/about/">About us</a></li>
+            <li><a href="https://nextcloud.com/contact/">Contact us</a></li>
+            <li><a href="https://nextcloud.com/press/">Press</a></li>
+            <li><a href="https://nextcloud.com/privacy/">Privacy policy</a></li>
+          </ul>
+        </div>
+     </div>
+     <div class="col-sm-2 col-sm-offset-2">
+     </div>
+     <div class="col-sm-2 col-sm-offset-2">
+        <div class="footer-nav">
+          <h4>Interact</h4>
+          <ul id="menu-interact" class="menu">
+            <li class="menu-irc-channel"><a href="https://webchat.freenode.net/?channels=nextcloud">IRC Channel</a></li>
+            <li class="menu-forums"><a href="https://help.nextcloud.com/">Forums</a></li>
+          </ul>
+        </div>
+     </div>
+   </div>
+   <div class="row">
+      <div class="col-lg-12 footer-text">
+        <p>
+              &copy; Copyright 2012-2017, The Nextcloud developers.  <small><a href="https://nextcloud.com/impressum">Legal Notice</a></small><br/>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+  </body>
+</html>

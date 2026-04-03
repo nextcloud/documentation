@@ -1,0 +1,101 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IBootContext
+============
+
+
+.. php:namespace:: OCP\AppFramework\Bootstrap
+
+.. php:interface:: IBootContext
+
+
+	:Implemented by:
+		:php:class:`OC\\AppFramework\\Bootstrap\\BootContext` 
+	
+	
+	:Source:
+		`lib/public/AppFramework/Bootstrap/IBootContext.php#38 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Bootstrap/IBootContext.php#L38>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public getAppContainer()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get hold of the app\'s container
+			
+			| Useful to register and query app\-specific services
+			
+		
+		:Source:
+			`lib/public/AppFramework/Bootstrap/IBootContext.php#48 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Bootstrap/IBootContext.php#L48>`_
+		
+		
+		:Returns: :any:`\\OCP\\AppFramework\\IAppContainer <OCP\\AppFramework\\IAppContainer>` 
+		:Since: 20.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getServerContainer()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get hold of the server DI container
+			
+			| Useful to register and query system\-wide services
+			
+		
+		:Source:
+			`lib/public/AppFramework/Bootstrap/IBootContext.php#58 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Bootstrap/IBootContext.php#L58>`_
+		
+		
+		:Returns: :any:`\\OCP\\IServerContainer <OCP\\IServerContainer>` 
+		:Since: 20.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public injectFn( $fn)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Invoke the given callable and inject all parameters based on their types
+			| and names
+			
+			| Note: when used with methods, make sure they are public or use \\Closure::fromCallable
+			| to wrap the private method call, e\.g\.
+			|  \* \`$context\-\>injectFn\(\[$obj, \'publicMethod\'\]\)\`
+			|  \* \`$context\-\>injectFn\(\[$this, \'publicMethod\'\]\)\`
+			|  \* \`$context\-\>injectFn\(\\Closure::fromCallable\(\[$this, \'privateMethod\'\]\)\)\`
+			| 
+			| Note: the app container will be queried
+			
+		
+		:Source:
+			`lib/public/AppFramework/Bootstrap/IBootContext.php#78 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Bootstrap/IBootContext.php#L78>`_
+		
+		
+		:Parameters:
+			* **$fn** (callable)  
+
+		
+		:Throws: :any:`\\Psr\\Container\\ContainerExceptionInterface <Psr\\Container\\ContainerExceptionInterface>` if at least one of the parameter can\'t be resolved
+		:Throws: :any:`\\Throwable <Throwable>` any error the function invocation might cause
+		:Throws: :any:`\\Psr\\Container\\ContainerExceptionInterface <Psr\\Container\\ContainerExceptionInterface>` if at least one of the parameter can\'t be resolved
+		:Throws: :any:`\\Throwable <Throwable>` any error the function invocation might cause
+		:Returns: mixed | null the return value of the invoked function, if any
+		:Since: 20.0.0 
+	
+	
+

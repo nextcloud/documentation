@@ -1,0 +1,279 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+SearchOption
+============
+
+
+.. php:namespace:: OC\FullTextSearch\Model
+
+.. rst-class::  final
+
+.. php:class:: SearchOption
+
+
+	:Source:
+		`lib/private/FullTextSearch/Model/SearchOption.php#39 <https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/Model/SearchOption.php#L39>`_
+	
+	:Implements:
+		:php:interface:`OCP\\FullTextSearch\\Model\\ISearchOption` :php:interface:`JsonSerializable` 
+	
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $name="", $title="", $type="", $size="", $placeholder="")
+	
+		.. rst-class:: phpdoc-description
+		
+			| ISearchOption constructor\.
+			
+			| Some value can be setduring the creation of the object\.
+			
+		
+		:Source:
+			`lib/private/FullTextSearch/Model/SearchOption.php#120 <https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/Model/SearchOption.php#L120>`_
+		
+		
+		:Parameters:
+			* **$name** (string)  
+			* **$title** (string)  
+			* **$type** (string)  
+			* **$size** (string)  
+			* **$placeholder** (string)  
+
+		
+		:Since: 15.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setName( $name)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set the name/key of the option\.
+			
+			| The string should only contains alphanumerical chars and underscore\.
+			| The key can be retrieve when using ISearchRequest::getOption
+			
+		
+		:Source:
+			`lib/private/FullTextSearch/Model/SearchOption.php#142 <https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/Model/SearchOption.php#L142>`_
+		
+		
+		:Parameters:
+			* **$name** (string)  
+
+		
+		:See: :any:`\\OC\\FullTextSearch\\Model\\ISearchRequest::getOption <OC\\FullTextSearch\\Model\\ISearchRequest::getOption>` 
+		:Since: 15.0.0 
+		:Returns: :any:`\\OCP\\FullTextSearch\\Model\\ISearchOption <OCP\\FullTextSearch\\Model\\ISearchOption>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getName()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the name/key of the option\.
+			
+		
+		:Source:
+			`lib/private/FullTextSearch/Model/SearchOption.php#155 <https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/Model/SearchOption.php#L155>`_
+		
+		
+		:Since: 15.0.0 
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setTitle( $title)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set the title/display name of the option\.
+			
+		
+		:Source:
+			`lib/private/FullTextSearch/Model/SearchOption.php#169 <https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/Model/SearchOption.php#L169>`_
+		
+		
+		:Parameters:
+			* **$title** (string)  
+
+		
+		:Since: 15.0.0 
+		:Returns: :any:`\\OCP\\FullTextSearch\\Model\\ISearchOption <OCP\\FullTextSearch\\Model\\ISearchOption>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getTitle()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the title of the option\.
+			
+		
+		:Source:
+			`lib/private/FullTextSearch/Model/SearchOption.php#182 <https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/Model/SearchOption.php#L182>`_
+		
+		
+		:Since: 15.0.0 
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setType( $type)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set the type of the option\.
+			
+			| $type can be ISearchOption::CHECKBOX or ISearchOption::INPUT
+			
+		
+		:Source:
+			`lib/private/FullTextSearch/Model/SearchOption.php#197 <https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/Model/SearchOption.php#L197>`_
+		
+		
+		:Parameters:
+			* **$type** (string)  
+
+		
+		:Since: 15.0.0 
+		:Returns: :any:`\\OCP\\FullTextSearch\\Model\\ISearchOption <OCP\\FullTextSearch\\Model\\ISearchOption>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getType()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the type of the option\.
+			
+		
+		:Source:
+			`lib/private/FullTextSearch/Model/SearchOption.php#210 <https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/Model/SearchOption.php#L210>`_
+		
+		
+		:Since: 15.0.0 
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setSize( $size)
+	
+		.. rst-class:: phpdoc-description
+		
+			| In case of Type is INPUT, set the size of the input field\.
+			
+			| Value can be ISearchOption::INPUT\_SMALL or not defined\.
+			
+		
+		:Source:
+			`lib/private/FullTextSearch/Model/SearchOption.php#225 <https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/Model/SearchOption.php#L225>`_
+		
+		
+		:Parameters:
+			* **$size** (string)  
+
+		
+		:Since: 15.0.0 
+		:Returns: :any:`\\OCP\\FullTextSearch\\Model\\ISearchOption <OCP\\FullTextSearch\\Model\\ISearchOption>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getSize()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the size of the INPUT\.
+			
+		
+		:Source:
+			`lib/private/FullTextSearch/Model/SearchOption.php#238 <https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/Model/SearchOption.php#L238>`_
+		
+		
+		:Since: 15.0.0 
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setPlaceholder( $placeholder)
+	
+		.. rst-class:: phpdoc-description
+		
+			| In case of Type is , set the placeholder to be displayed in the input
+			| field\.
+			
+		
+		:Source:
+			`lib/private/FullTextSearch/Model/SearchOption.php#253 <https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/Model/SearchOption.php#L253>`_
+		
+		
+		:Parameters:
+			* **$placeholder** (string)  
+
+		
+		:Since: 15.0.0 
+		:Returns: :any:`\\OCP\\FullTextSearch\\Model\\ISearchOption <OCP\\FullTextSearch\\Model\\ISearchOption>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getPlaceholder()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the placeholder\.
+			
+		
+		:Source:
+			`lib/private/FullTextSearch/Model/SearchOption.php#266 <https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/Model/SearchOption.php#L266>`_
+		
+		
+		:Since: 15.0.0 
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public jsonSerialize()
+	
+		:Source:
+			`lib/private/FullTextSearch/Model/SearchOption.php#276 <https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/Model/SearchOption.php#L276>`_
+		
+		
+		:Since: 15.0.0 
+		:Returns: array 
+	
+	
+

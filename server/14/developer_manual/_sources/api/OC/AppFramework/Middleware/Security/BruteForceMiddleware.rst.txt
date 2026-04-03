@@ -1,0 +1,103 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+BruteForceMiddleware
+====================
+
+
+.. php:namespace:: OC\AppFramework\Middleware\Security
+
+.. php:class:: BruteForceMiddleware
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Class BruteForceMiddleware performs the bruteforce protection for controllers
+		| that are annotated with @BruteForceProtection\(action=$action\) whereas $action
+		| is the action that should be logged within the database\.
+		
+	
+	:Source:
+		`lib/private/AppFramework/Middleware/Security/BruteForceMiddleware.php#50 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Middleware/Security/BruteForceMiddleware.php#L50>`_
+	
+	:Parent:
+		:php:class:`OCP\\AppFramework\\Middleware`
+	
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $controllerMethodReflector, $throttler, $request)
+	
+		:Source:
+			`lib/private/AppFramework/Middleware/Security/BruteForceMiddleware.php#63 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Middleware/Security/BruteForceMiddleware.php#L63>`_
+		
+		
+		:Parameters:
+			* **$controllerMethodReflector** (:any:`OC\\AppFramework\\Utility\\ControllerMethodReflector <OC\\AppFramework\\Utility\\ControllerMethodReflector>`)  
+			* **$throttler** (:any:`OC\\Security\\Bruteforce\\Throttler <OC\\Security\\Bruteforce\\Throttler>`)  
+			* **$request** (:any:`OCP\\IRequest <OCP\\IRequest>`)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public beforeController( $controller, $methodName)
+	
+		.. rst-class:: phpdoc-description
+		
+			| \{@inheritDoc\}
+			
+		
+		:Source:
+			`lib/private/AppFramework/Middleware/Security/BruteForceMiddleware.php#74 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Middleware/Security/BruteForceMiddleware.php#L74>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public afterController( $controller, $methodName, $response)
+	
+		.. rst-class:: phpdoc-description
+		
+			| \{@inheritDoc\}
+			
+		
+		:Source:
+			`lib/private/AppFramework/Middleware/Security/BruteForceMiddleware.php#86 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Middleware/Security/BruteForceMiddleware.php#L86>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public afterException( $controller, $methodName, $exception)
+	
+		:Source:
+			`lib/private/AppFramework/Middleware/Security/BruteForceMiddleware.php#104 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Middleware/Security/BruteForceMiddleware.php#L104>`_
+		
+		
+		:Parameters:
+			* **$controller** (:any:`OCP\\AppFramework\\Controller <OCP\\AppFramework\\Controller>`)  
+			* **$methodName** (string)  
+			* **$exception** (:any:`Exception <Exception>`)  
+
+		
+		:Throws: :any:`\\Exception <Exception>` 
+		:Returns: :any:`\\OCP\\AppFramework\\Http\\Response <OCP\\AppFramework\\Http\\Response>` 
+	
+	
+

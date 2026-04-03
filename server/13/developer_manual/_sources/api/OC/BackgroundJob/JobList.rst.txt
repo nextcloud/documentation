@@ -1,0 +1,265 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+JobList
+=======
+
+
+.. php:namespace:: OC\BackgroundJob
+
+.. php:class:: JobList
+
+
+	:Source:
+		`lib/private/BackgroundJob/JobList.php#42 <https://github.com/nextcloud/server/blob/stable13/lib/private/BackgroundJob/JobList.php#L42>`_
+	
+	:Implements:
+		:php:interface:`OCP\\BackgroundJob\\IJobList` 
+	
+
+Properties
+----------
+
+.. php:attr:: protected static connection
+
+	:Source:
+		`lib/private/BackgroundJob/JobList.php#45 <https://github.com/nextcloud/server/blob/stable13/lib/private/BackgroundJob/JobList.php#L45>`_
+	
+	:Type: :any:`\\OCP\\IDBConnection <OCP\\IDBConnection>` 
+
+
+.. php:attr:: protected static config
+
+	:Source:
+		`lib/private/BackgroundJob/JobList.php#48 <https://github.com/nextcloud/server/blob/stable13/lib/private/BackgroundJob/JobList.php#L48>`_
+	
+
+
+.. php:attr:: protected static timeFactory
+
+	:Source:
+		`lib/private/BackgroundJob/JobList.php#51 <https://github.com/nextcloud/server/blob/stable13/lib/private/BackgroundJob/JobList.php#L51>`_
+	
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $connection, $config, $timeFactory)
+	
+		:Source:
+			`lib/private/BackgroundJob/JobList.php#58 <https://github.com/nextcloud/server/blob/stable13/lib/private/BackgroundJob/JobList.php#L58>`_
+		
+		
+		:Parameters:
+			* **$connection** (:any:`OCP\\IDBConnection <OCP\\IDBConnection>`)  
+			* **$config** (:any:`OCP\\IConfig <OCP\\IConfig>`)  
+			* **$timeFactory** (:any:`OCP\\AppFramework\\Utility\\ITimeFactory <OCP\\AppFramework\\Utility\\ITimeFactory>`)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public add( $job, $argument=null)
+	
+		:Source:
+			`lib/private/BackgroundJob/JobList.php#68 <https://github.com/nextcloud/server/blob/stable13/lib/private/BackgroundJob/JobList.php#L68>`_
+		
+		
+		:Parameters:
+			* **$job** (:any:`OCP\\BackgroundJob\\IJob <OCP\\BackgroundJob\\IJob>` | string)  
+			* **$argument** (mixed)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public remove( $job, $argument=null)
+	
+		:Source:
+			`lib/private/BackgroundJob/JobList.php#97 <https://github.com/nextcloud/server/blob/stable13/lib/private/BackgroundJob/JobList.php#L97>`_
+		
+		
+		:Parameters:
+			* **$job** (:any:`OCP\\BackgroundJob\\IJob <OCP\\BackgroundJob\\IJob>` | string)  
+			* **$argument** (mixed)  
+
+		
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected removeById( $id)
+	
+		:Source:
+			`lib/private/BackgroundJob/JobList.php#117 <https://github.com/nextcloud/server/blob/stable13/lib/private/BackgroundJob/JobList.php#L117>`_
+		
+		
+		:Parameters:
+			* **$id** (int)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public has( $job, $argument)
+	
+		.. rst-class:: phpdoc-description
+		
+			| check if a job is in the list
+			
+		
+		:Source:
+			`lib/private/BackgroundJob/JobList.php#131 <https://github.com/nextcloud/server/blob/stable13/lib/private/BackgroundJob/JobList.php#L131>`_
+		
+		
+		:Parameters:
+			* **$job** (:any:`OCP\\BackgroundJob\\IJob <OCP\\BackgroundJob\\IJob>` | string)  
+			* **$argument** (mixed)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public getAll()
+	
+		.. rst-class:: phpdoc-description
+		
+			| get all jobs in the list
+			
+		
+		:Source:
+			`lib/private/BackgroundJob/JobList.php#160 <https://github.com/nextcloud/server/blob/stable13/lib/private/BackgroundJob/JobList.php#L160>`_
+		
+		
+		:Returns: :any:`\\OCP\\BackgroundJob\\IJob\[\] <OCP\\BackgroundJob\\IJob>` 
+		:Deprecated: 9.0.0 \- This method is dangerous since it can cause load and
+			memory problems when creating too many instances\.
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getNext()
+	
+		.. rst-class:: phpdoc-description
+		
+			| get the next job in the list
+			
+		
+		:Source:
+			`lib/private/BackgroundJob/JobList.php#183 <https://github.com/nextcloud/server/blob/stable13/lib/private/BackgroundJob/JobList.php#L183>`_
+		
+		
+		:Returns: :any:`\\OCP\\BackgroundJob\\IJob <OCP\\BackgroundJob\\IJob>` | null 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getById( $id)
+	
+		:Source:
+			`lib/private/BackgroundJob/JobList.php#239 <https://github.com/nextcloud/server/blob/stable13/lib/private/BackgroundJob/JobList.php#L239>`_
+		
+		
+		:Parameters:
+			* **$id** (int)  
+
+		
+		:Returns: :any:`\\OCP\\BackgroundJob\\IJob <OCP\\BackgroundJob\\IJob>` | null 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setLastJob( $job)
+	
+		.. rst-class:: phpdoc-description
+		
+			| set the job that was last ran
+			
+		
+		:Source:
+			`lib/private/BackgroundJob/JobList.php#292 <https://github.com/nextcloud/server/blob/stable13/lib/private/BackgroundJob/JobList.php#L292>`_
+		
+		
+		:Parameters:
+			* **$job** (:any:`OCP\\BackgroundJob\\IJob <OCP\\BackgroundJob\\IJob>`)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public unlockJob( $job)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Remove the reservation for a job
+			
+		
+		:Source:
+			`lib/private/BackgroundJob/JobList.php#302 <https://github.com/nextcloud/server/blob/stable13/lib/private/BackgroundJob/JobList.php#L302>`_
+		
+		
+		:Parameters:
+			* **$job** (:any:`OCP\\BackgroundJob\\IJob <OCP\\BackgroundJob\\IJob>`)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setLastRun( $job)
+	
+		.. rst-class:: phpdoc-description
+		
+			| set the lastRun of $job to now
+			
+		
+		:Source:
+			`lib/private/BackgroundJob/JobList.php#315 <https://github.com/nextcloud/server/blob/stable13/lib/private/BackgroundJob/JobList.php#L315>`_
+		
+		
+		:Parameters:
+			* **$job** (:any:`OCP\\BackgroundJob\\IJob <OCP\\BackgroundJob\\IJob>`)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setExecutionTime( $job, $timeTaken)
+	
+		:Source:
+			`lib/private/BackgroundJob/JobList.php#327 <https://github.com/nextcloud/server/blob/stable13/lib/private/BackgroundJob/JobList.php#L327>`_
+		
+		
+		:Parameters:
+			* **$job** (:any:`OCP\\BackgroundJob\\IJob <OCP\\BackgroundJob\\IJob>`)  
+			* **$timeTaken**  
+
+		
+	
+	
+

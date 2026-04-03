@@ -1,0 +1,113 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+DiscoveryService
+================
+
+
+.. php:namespace:: OC\OCS
+
+.. php:class:: DiscoveryService
+
+
+	:Source:
+		`lib/private/OCS/DiscoveryService.php#39 <https://github.com/nextcloud/server/blob/stable13/lib/private/OCS/DiscoveryService.php#L39>`_
+	
+	:Implements:
+		:php:interface:`OCP\\OCS\\IDiscoveryService` 
+	
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $cacheFactory, $clientService)
+	
+		:Source:
+			`lib/private/OCS/DiscoveryService.php#51 <https://github.com/nextcloud/server/blob/stable13/lib/private/OCS/DiscoveryService.php#L51>`_
+		
+		
+		:Parameters:
+			* **$cacheFactory** (:any:`OCP\\ICacheFactory <OCP\\ICacheFactory>`)  
+			* **$clientService** (:any:`OCP\\Http\\Client\\IClientService <OCP\\Http\\Client\\IClientService>`)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public discover( $remote, $service, $skipCache=false)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Discover OCS end\-points
+			
+			| If no valid discovery data is found the defaults are returned
+			
+		
+		:Source:
+			`lib/private/OCS/DiscoveryService.php#69 <https://github.com/nextcloud/server/blob/stable13/lib/private/OCS/DiscoveryService.php#L69>`_
+		
+		
+		:Parameters:
+			* **$remote** (string)  
+			* **$service** (string)  the service you want to discover
+			* **$skipCache** (bool)  We won't check if the data is in the cache. This is usefull if a background job is updating the status
+
+		
+		:Returns: array 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected getEndpoints( $decodedServices, $service)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get requested end\-points from the requested service
+			
+		
+		:Source:
+			`lib/private/OCS/DiscoveryService.php#111 <https://github.com/nextcloud/server/blob/stable13/lib/private/OCS/DiscoveryService.php#L111>`_
+		
+		
+		:Parameters:
+			* **$decodedServices** (array)  
+			* **$service** (string)  
+
+		
+		:Returns: array 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected isSafeUrl( $url)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns whether the specified URL includes only safe characters, if not
+			| returns false
+			
+		
+		:Source:
+			`lib/private/OCS/DiscoveryService.php#132 <https://github.com/nextcloud/server/blob/stable13/lib/private/OCS/DiscoveryService.php#L132>`_
+		
+		
+		:Parameters:
+			* **$url** (string)  
+
+		
+		:Returns: bool 
+	
+	
+

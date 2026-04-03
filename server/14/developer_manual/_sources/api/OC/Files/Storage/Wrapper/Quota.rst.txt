@@ -1,0 +1,232 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+Quota
+=====
+
+
+.. php:namespace:: OC\Files\Storage\Wrapper
+
+.. php:class:: Quota
+
+
+	:Source:
+		`lib/private/Files/Storage/Wrapper/Quota.php#40 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Quota.php#L40>`_
+	
+	:Parent:
+		:php:class:`OC\\Files\\Storage\\Wrapper\\Wrapper`
+	
+
+Properties
+----------
+
+.. php:attr:: protected static quota
+
+	:Source:
+		`lib/private/Files/Storage/Wrapper/Quota.php#45 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Quota.php#L45>`_
+	
+	:Type: int 
+
+
+.. php:attr:: protected static sizeRoot
+
+	:Source:
+		`lib/private/Files/Storage/Wrapper/Quota.php#50 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Quota.php#L50>`_
+	
+	:Type: string 
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $parameters)
+	
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Quota.php#57 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Quota.php#L57>`_
+		
+		
+		:Parameters:
+			* **$parameters** (array)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getQuota()
+	
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Quota.php#67 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Quota.php#L67>`_
+		
+		
+		:Returns: int quota value
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected getSize( $path, $storage=null)
+	
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Quota.php#75 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Quota.php#L75>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+			* **$storage** (:any:`OC\\Files\\Storage\\Storage <OC\\Files\\Storage\\Storage>`)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public free_space( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get free space as limited by the quota
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Quota.php#103 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Quota.php#L103>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: int | bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public file_put_contents( $path, $data)
+	
+		.. rst-class:: phpdoc-description
+		
+			| see https://www\.php\.net/manual/en/function\.file\_put\_contents\.php
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Quota.php#131 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Quota.php#L131>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+			* **$data** (mixed)  
+
+		
+		:Returns: int | bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public copy( $source, $target)
+	
+		.. rst-class:: phpdoc-description
+		
+			| see https://www\.php\.net/manual/en/function\.copy\.php
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Quota.php#147 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Quota.php#L147>`_
+		
+		
+		:Parameters:
+			* **$source** (string)  
+			* **$target** (string)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public fopen( $path, $mode)
+	
+		.. rst-class:: phpdoc-description
+		
+			| see https://www\.php\.net/manual/en/function\.fopen\.php
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Quota.php#163 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Quota.php#L163>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+			* **$mode** (string)  
+
+		
+		:Returns: resource | bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public copyFromStorage( $sourceStorage, $sourceInternalPath, $targetInternalPath)
+	
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Quota.php#205 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Quota.php#L205>`_
+		
+		
+		:Parameters:
+			* **$sourceStorage** (:any:`OCP\\Files\\Storage\\IStorage <OCP\\Files\\Storage\\IStorage>`)  
+			* **$sourceInternalPath** (string)  
+			* **$targetInternalPath** (string)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public moveFromStorage( $sourceStorage, $sourceInternalPath, $targetInternalPath)
+	
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Quota.php#220 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Quota.php#L220>`_
+		
+		
+		:Parameters:
+			* **$sourceStorage** (:any:`OCP\\Files\\Storage\\IStorage <OCP\\Files\\Storage\\IStorage>`)  
+			* **$sourceInternalPath** (string)  
+			* **$targetInternalPath** (string)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public mkdir( $path)
+	
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Quota.php#229 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Quota.php#L229>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public touch( $path, $mtime=null)
+	
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Quota.php#238 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Quota.php#L238>`_
+		
+		
+	
+	
+

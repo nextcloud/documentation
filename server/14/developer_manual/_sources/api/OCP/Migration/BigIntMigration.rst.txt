@@ -1,0 +1,61 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+BigIntMigration
+===============
+
+
+.. php:namespace:: OCP\Migration
+
+.. rst-class::  abstract
+
+.. php:class:: BigIntMigration
+
+
+	:Source:
+		`lib/public/Migration/BigIntMigration.php#34 <https://github.com/nextcloud/server/blob/stable13/lib/public/Migration/BigIntMigration.php#L34>`_
+	
+	:Parent:
+		:php:class:`OCP\\Migration\\SimpleMigrationStep`
+	
+
+Methods
+-------
+
+.. rst-class:: protected abstract
+
+	.. php:method:: protected abstract getColumnsByTable()
+	
+		:Source:
+			`lib/public/Migration/BigIntMigration.php#41 <https://github.com/nextcloud/server/blob/stable13/lib/public/Migration/BigIntMigration.php#L41>`_
+		
+		
+		:Returns: array Returns an array with the following structure
+			\[\'table1\' =\> \[\'column1\', \'column2\'\], \.\.\.\]
+		
+		:Since: 13.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public changeSchema( $output, $schemaClosure, $options)
+	
+		:Source:
+			`lib/public/Migration/BigIntMigration.php#50 <https://github.com/nextcloud/server/blob/stable13/lib/public/Migration/BigIntMigration.php#L50>`_
+		
+		
+		:Parameters:
+			* **$output** (:any:`OCP\\Migration\\IOutput <OCP\\Migration\\IOutput>`)  
+			* **$schemaClosure** (:any:`Closure <Closure>`)  The `\Closure` returns a `ISchemaWrapper`
+			* **$options** (array)  
+
+		
+		:Returns: null | :any:`\\OCP\\DB\\ISchemaWrapper <OCP\\DB\\ISchemaWrapper>` 
+		:Since: 13.0.0 
+	
+	
+

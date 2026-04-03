@@ -1,0 +1,375 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+PreviewManager
+==============
+
+
+.. php:namespace:: OC
+
+.. php:class:: PreviewManager
+
+
+	:Source:
+		`lib/private/PreviewManager.php#46 <https://github.com/nextcloud/server/blob/stable13/lib/private/PreviewManager.php#L46>`_
+	
+	:Implements:
+		:php:interface:`OCP\\IPreview` 
+	
+
+Properties
+----------
+
+.. php:attr:: protected static config
+
+	:Source:
+		`lib/private/PreviewManager.php#48 <https://github.com/nextcloud/server/blob/stable13/lib/private/PreviewManager.php#L48>`_
+	
+	:Type: :any:`\\OCP\\IConfig <OCP\\IConfig>` 
+
+
+.. php:attr:: protected static rootFolder
+
+	:Source:
+		`lib/private/PreviewManager.php#51 <https://github.com/nextcloud/server/blob/stable13/lib/private/PreviewManager.php#L51>`_
+	
+	:Type: :any:`\\OCP\\Files\\IRootFolder <OCP\\Files\\IRootFolder>` 
+
+
+.. php:attr:: protected static appData
+
+	:Source:
+		`lib/private/PreviewManager.php#54 <https://github.com/nextcloud/server/blob/stable13/lib/private/PreviewManager.php#L54>`_
+	
+	:Type: :any:`\\OCP\\Files\\IAppData <OCP\\Files\\IAppData>` 
+
+
+.. php:attr:: protected static eventDispatcher
+
+	:Source:
+		`lib/private/PreviewManager.php#57 <https://github.com/nextcloud/server/blob/stable13/lib/private/PreviewManager.php#L57>`_
+	
+	:Type: :any:`\\Symfony\\Component\\EventDispatcher\\EventDispatcherInterface <Symfony\\Component\\EventDispatcher\\EventDispatcherInterface>` 
+
+
+.. php:attr:: protected static providerListDirty
+
+	:Source:
+		`lib/private/PreviewManager.php#66 <https://github.com/nextcloud/server/blob/stable13/lib/private/PreviewManager.php#L66>`_
+	
+	:Type: bool 
+
+
+.. php:attr:: protected static registeredCoreProviders
+
+	:Source:
+		`lib/private/PreviewManager.php#69 <https://github.com/nextcloud/server/blob/stable13/lib/private/PreviewManager.php#L69>`_
+	
+	:Type: bool 
+
+
+.. php:attr:: protected static providers
+
+	:Source:
+		`lib/private/PreviewManager.php#72 <https://github.com/nextcloud/server/blob/stable13/lib/private/PreviewManager.php#L72>`_
+	
+	:Type: array 
+
+
+.. php:attr:: protected static mimeTypeSupportMap
+
+	:Source:
+		`lib/private/PreviewManager.php#75 <https://github.com/nextcloud/server/blob/stable13/lib/private/PreviewManager.php#L75>`_
+	
+	:Type: array mime type =\> support status
+
+
+.. php:attr:: protected static defaultProviders
+
+	:Source:
+		`lib/private/PreviewManager.php#78 <https://github.com/nextcloud/server/blob/stable13/lib/private/PreviewManager.php#L78>`_
+	
+	:Type: array 
+
+
+.. php:attr:: protected static userId
+
+	:Source:
+		`lib/private/PreviewManager.php#81 <https://github.com/nextcloud/server/blob/stable13/lib/private/PreviewManager.php#L81>`_
+	
+	:Type: string 
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $config, $rootFolder, $appData, $eventDispatcher, $helper, $userId)
+	
+		.. rst-class:: phpdoc-description
+		
+			| PreviewManager constructor\.
+			
+		
+		:Source:
+			`lib/private/PreviewManager.php#92 <https://github.com/nextcloud/server/blob/stable13/lib/private/PreviewManager.php#L92>`_
+		
+		
+		:Parameters:
+			* **$config** (:any:`OCP\\IConfig <OCP\\IConfig>`)  
+			* **$rootFolder** (:any:`OCP\\Files\\IRootFolder <OCP\\Files\\IRootFolder>`)  
+			* **$appData** (:any:`OCP\\Files\\IAppData <OCP\\Files\\IAppData>`)  
+			* **$eventDispatcher** (:any:`Symfony\\Component\\EventDispatcher\\EventDispatcherInterface <Symfony\\Component\\EventDispatcher\\EventDispatcherInterface>`)  
+			* **$userId** (string)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public registerProvider( $mimeTypeRegex, $callable)
+	
+		.. rst-class:: phpdoc-description
+		
+			| In order to improve lazy loading a closure can be registered which will be
+			| called in case preview providers are actually requested
+			
+			| $callable has to return an instance of \\OCP\\Preview\\IProvider or \\OCP\\Preview\\IProviderV2
+			
+		
+		:Source:
+			`lib/private/PreviewManager.php#116 <https://github.com/nextcloud/server/blob/stable13/lib/private/PreviewManager.php#L116>`_
+		
+		
+		:Parameters:
+			* **$mimeTypeRegex** (string)  Regex with the mime types that are supported by this provider
+			* **$callable** (:any:`Closure <Closure>`)  
+
+		
+		:Returns: void 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getProviders()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get all providers
+			
+		
+		:Source:
+			`lib/private/PreviewManager.php#132 <https://github.com/nextcloud/server/blob/stable13/lib/private/PreviewManager.php#L132>`_
+		
+		
+		:Returns: array 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public hasProviders()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Does the manager have any providers
+			
+		
+		:Source:
+			`lib/private/PreviewManager.php#151 <https://github.com/nextcloud/server/blob/stable13/lib/private/PreviewManager.php#L151>`_
+		
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getPreview( $file, $width=\-1, $height=\-1, $crop=false, $mode=\\OCP\\IPreview::MODE\_FILL, $mimeType=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns a preview of a file
+			
+			| The cache is searched first and if nothing usable was found then a preview is
+			| generated by one of the providers
+			
+		
+		:Source:
+			`lib/private/PreviewManager.php#189 <https://github.com/nextcloud/server/blob/stable13/lib/private/PreviewManager.php#L189>`_
+		
+		
+		:Parameters:
+			* **$file** (:any:`OCP\\Files\\File <OCP\\Files\\File>`)  
+			* **$width** (int)  
+			* **$height** (int)  
+			* **$crop** (bool)  
+			* **$mode** (string)  
+			* **$mimeType** (string)  
+
+		
+		:Returns: :any:`\\OCP\\Files\\SimpleFS\\ISimpleFile <OCP\\Files\\SimpleFS\\ISimpleFile>` 
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` if the preview would be invalid \(in case the original image is invalid\)
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` if the preview would be invalid \(in case the original image is invalid\)
+		:Since: 11.0.0 \- \\InvalidArgumentException was added in 12\.0\.0
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public generatePreviews( $file, $specifications, $mimeType=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Generates previews of a file
+			
+		
+		:Source:
+			`lib/private/PreviewManager.php#204 <https://github.com/nextcloud/server/blob/stable13/lib/private/PreviewManager.php#L204>`_
+		
+		
+		:Parameters:
+			* **$file** (:any:`OCP\\Files\\File <OCP\\Files\\File>`)  
+			* **$specifications** (array)  
+			* **$mimeType** (string)  
+
+		
+		:Returns: :any:`\\OCP\\Files\\SimpleFS\\ISimpleFile <OCP\\Files\\SimpleFS\\ISimpleFile>` the last preview that was generated
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` if the preview would be invalid \(in case the original image is invalid\)
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` if the preview would be invalid \(in case the original image is invalid\)
+		:Since: 19.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isMimeSupported( $mimeType=\*)
+	
+		.. rst-class:: phpdoc-description
+		
+			| returns true if the passed mime type is supported
+			
+		
+		:Source:
+			`lib/private/PreviewManager.php#214 <https://github.com/nextcloud/server/blob/stable13/lib/private/PreviewManager.php#L214>`_
+		
+		
+		:Parameters:
+			* **$mimeType** (string)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isAvailable( $file)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check if a preview can be generated for a file
+			
+		
+		:Source:
+			`lib/private/PreviewManager.php#241 <https://github.com/nextcloud/server/blob/stable13/lib/private/PreviewManager.php#L241>`_
+		
+		
+		:Parameters:
+			* **$file** (:any:`OCP\\Files\\FileInfo <OCP\\Files\\FileInfo>`)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected getEnabledDefaultProvider()
+	
+		.. rst-class:: phpdoc-description
+		
+			| List of enabled default providers
+			
+			| The following providers are enabled by default:
+			|  \- OC\\Preview\\PNG
+			|  \- OC\\Preview\\JPEG
+			|  \- OC\\Preview\\GIF
+			|  \- OC\\Preview\\BMP
+			|  \- OC\\Preview\\HEIC
+			|  \- OC\\Preview\\XBitmap
+			|  \- OC\\Preview\\MarkDown
+			|  \- OC\\Preview\\MP3
+			|  \- OC\\Preview\\TXT
+			| 
+			| The following providers are disabled by default due to performance or privacy concerns:
+			|  \- OC\\Preview\\Font
+			|  \- OC\\Preview\\Illustrator
+			|  \- OC\\Preview\\Movie
+			|  \- OC\\Preview\\MSOfficeDoc
+			|  \- OC\\Preview\\MSOffice2003
+			|  \- OC\\Preview\\MSOffice2007
+			|  \- OC\\Preview\\OpenDocument
+			|  \- OC\\Preview\\PDF
+			|  \- OC\\Preview\\Photoshop
+			|  \- OC\\Preview\\Postscript
+			|  \- OC\\Preview\\StarOffice
+			|  \- OC\\Preview\\SVG
+			|  \- OC\\Preview\\TIFF
+			
+		
+		:Source:
+			`lib/private/PreviewManager.php#304 <https://github.com/nextcloud/server/blob/stable13/lib/private/PreviewManager.php#L304>`_
+		
+		
+		:Returns: array 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected registerCoreProvider( $class, $mimeType, $options=\[\])
+	
+		.. rst-class:: phpdoc-description
+		
+			| Register the default providers \(if enabled\)
+			
+		
+		:Source:
+			`lib/private/PreviewManager.php#340 <https://github.com/nextcloud/server/blob/stable13/lib/private/PreviewManager.php#L340>`_
+		
+		
+		:Parameters:
+			* **$class** (string)  
+			* **$mimeType** (string)  
+
+		
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected registerCoreProviders()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Register the default providers \(if enabled\)
+			
+		
+		:Source:
+			`lib/private/PreviewManager.php#351 <https://github.com/nextcloud/server/blob/stable13/lib/private/PreviewManager.php#L351>`_
+		
+		
+	
+	
+

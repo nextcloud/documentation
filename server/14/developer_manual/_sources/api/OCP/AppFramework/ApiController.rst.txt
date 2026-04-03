@@ -1,0 +1,83 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+ApiController
+=============
+
+
+.. php:namespace:: OCP\AppFramework
+
+.. rst-class::  abstract
+
+.. php:class:: ApiController
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Base class to inherit your controllers from that are used for RESTful APIs
+		
+	
+	:Source:
+		`lib/public/AppFramework/ApiController.php#39 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/ApiController.php#L39>`_
+	
+	:Parent:
+		:php:class:`OCP\\AppFramework\\Controller`
+	
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $appName, $request, $corsMethods=PUT, POST, GET, DELETE, PATCH, $corsAllowedHeaders=Authorization, Content\-Type, Accept, $corsMaxAge=1728000)
+	
+		.. rst-class:: phpdoc-description
+		
+			| constructor of the controller
+			
+		
+		:Source:
+			`lib/public/AppFramework/ApiController.php#58 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/ApiController.php#L58>`_
+		
+		
+		:Parameters:
+			* **$appName** (string)  the name of the app
+			* **$request** (:any:`OCP\\IRequest <OCP\\IRequest>`)  an instance of the request
+			* **$corsMethods** (string)  comma separated string of HTTP verbs which
+			should be allowed for websites or webapps when calling your API, defaults to
+			'PUT, POST, GET, DELETE, PATCH'
+			* **$corsAllowedHeaders** (string)  comma separated string of HTTP headers
+			which should be allowed for websites or webapps when calling your API,
+			defaults to 'Authorization, Content-Type, Accept'
+			* **$corsMaxAge** (int)  number in seconds how long a preflighted OPTIONS
+			request should be cached, defaults to 1728000 seconds
+
+		
+		:Since: 7.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public preflightedCors()
+	
+		.. rst-class:: phpdoc-description
+		
+			| This method implements a preflighted cors response for you that you can
+			| link to for the options request
+			
+		
+		:Source:
+			`lib/public/AppFramework/ApiController.php#79 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/ApiController.php#L79>`_
+		
+		
+		:Since: 7.0.0 
+	
+	
+

@@ -1,0 +1,263 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+PsrLoggerAdapter
+================
+
+
+.. php:namespace:: OC\Log
+
+.. rst-class::  final
+
+.. php:class:: PsrLoggerAdapter
+
+
+	:Source:
+		`lib/private/Log/PsrLoggerAdapter.php#38 <https://github.com/nextcloud/server/blob/stable13/lib/private/Log/PsrLoggerAdapter.php#L38>`_
+	
+	:Implements:
+		:php:interface:`Psr\\Log\\LoggerInterface` :php:interface:`OCP\\Log\\IDataLogger` 
+	
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $logger)
+	
+		:Source:
+			`lib/private/Log/PsrLoggerAdapter.php#43 <https://github.com/nextcloud/server/blob/stable13/lib/private/Log/PsrLoggerAdapter.php#L43>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public emergency( $message, $context=\[\])
+	
+		.. rst-class:: phpdoc-description
+		
+			| System is unusable\.
+			
+		
+		:Source:
+			`lib/private/Log/PsrLoggerAdapter.php#59 <https://github.com/nextcloud/server/blob/stable13/lib/private/Log/PsrLoggerAdapter.php#L59>`_
+		
+		
+		:Parameters:
+			* **$message** (string)  
+			* **$context** (array)  
+
+		
+		:Returns: void 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public alert( $message, $context=\[\])
+	
+		.. rst-class:: phpdoc-description
+		
+			| Action must be taken immediately\.
+			
+			| Example: Entire website down, database unavailable, etc\. This should
+			| trigger the SMS alerts and wake you up\.
+			
+		
+		:Source:
+			`lib/private/Log/PsrLoggerAdapter.php#84 <https://github.com/nextcloud/server/blob/stable13/lib/private/Log/PsrLoggerAdapter.php#L84>`_
+		
+		
+		:Parameters:
+			* **$message** (string)  
+			* **$context** (array)  
+
+		
+		:Returns: void 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public critical( $message, $context=\[\])
+	
+		.. rst-class:: phpdoc-description
+		
+			| Critical conditions\.
+			
+			| Example: Application component unavailable, unexpected exception\.
+			
+		
+		:Source:
+			`lib/private/Log/PsrLoggerAdapter.php#108 <https://github.com/nextcloud/server/blob/stable13/lib/private/Log/PsrLoggerAdapter.php#L108>`_
+		
+		
+		:Parameters:
+			* **$message** (string)  
+			* **$context** (array)  
+
+		
+		:Returns: void 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public error( $message, $context=\[\])
+	
+		.. rst-class:: phpdoc-description
+		
+			| Runtime errors that do not require immediate action but should typically
+			| be logged and monitored\.
+			
+		
+		:Source:
+			`lib/private/Log/PsrLoggerAdapter.php#131 <https://github.com/nextcloud/server/blob/stable13/lib/private/Log/PsrLoggerAdapter.php#L131>`_
+		
+		
+		:Parameters:
+			* **$message** (string)  
+			* **$context** (array)  
+
+		
+		:Returns: void 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public warning( $message, $context=\[\])
+	
+		.. rst-class:: phpdoc-description
+		
+			| Exceptional occurrences that are not errors\.
+			
+			| Example: Use of deprecated APIs, poor use of an API, undesirable things
+			| that are not necessarily wrong\.
+			
+		
+		:Source:
+			`lib/private/Log/PsrLoggerAdapter.php#156 <https://github.com/nextcloud/server/blob/stable13/lib/private/Log/PsrLoggerAdapter.php#L156>`_
+		
+		
+		:Parameters:
+			* **$message** (string)  
+			* **$context** (array)  
+
+		
+		:Returns: void 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public notice( $message, $context=\[\])
+	
+		.. rst-class:: phpdoc-description
+		
+			| Normal but significant events\.
+			
+		
+		:Source:
+			`lib/private/Log/PsrLoggerAdapter.php#178 <https://github.com/nextcloud/server/blob/stable13/lib/private/Log/PsrLoggerAdapter.php#L178>`_
+		
+		
+		:Parameters:
+			* **$message** (string)  
+			* **$context** (array)  
+
+		
+		:Returns: void 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public info( $message, $context=\[\])
+	
+		.. rst-class:: phpdoc-description
+		
+			| Interesting events\.
+			
+			| Example: User logs in, SQL logs\.
+			
+		
+		:Source:
+			`lib/private/Log/PsrLoggerAdapter.php#202 <https://github.com/nextcloud/server/blob/stable13/lib/private/Log/PsrLoggerAdapter.php#L202>`_
+		
+		
+		:Parameters:
+			* **$message** (string)  
+			* **$context** (array)  
+
+		
+		:Returns: void 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public debug( $message, $context=\[\])
+	
+		.. rst-class:: phpdoc-description
+		
+			| Detailed debug information\.
+			
+		
+		:Source:
+			`lib/private/Log/PsrLoggerAdapter.php#224 <https://github.com/nextcloud/server/blob/stable13/lib/private/Log/PsrLoggerAdapter.php#L224>`_
+		
+		
+		:Parameters:
+			* **$message** (string)  
+			* **$context** (array)  
+
+		
+		:Returns: void 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public log( $level, $message, $context=\[\])
+	
+		.. rst-class:: phpdoc-description
+		
+			| Logs with an arbitrary level\.
+			
+		
+		:Source:
+			`lib/private/Log/PsrLoggerAdapter.php#249 <https://github.com/nextcloud/server/blob/stable13/lib/private/Log/PsrLoggerAdapter.php#L249>`_
+		
+		
+		:Parameters:
+			* **$level** (mixed)  
+			* **$message** (string)  
+			* **$context** (array)  
+
+		
+		:Returns: void 
+		:Throws: :any:`\\Psr\\Log\\InvalidArgumentException <Psr\\Log\\InvalidArgumentException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public logData( $message, $data, $context=\[\])
+	
+		:Source:
+			`lib/private/Log/PsrLoggerAdapter.php#266 <https://github.com/nextcloud/server/blob/stable13/lib/private/Log/PsrLoggerAdapter.php#L266>`_
+		
+		
+	
+	
+

@@ -1,0 +1,1243 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+Filesystem
+==========
+
+
+.. php:namespace:: OC\Files
+
+.. php:class:: Filesystem
+
+
+	:Source:
+		`lib/private/Files/Filesystem.php#73 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L73>`_
+	
+
+Constants
+---------
+
+.. php:const:: CLASSNAME = OC\_Filesystem
+
+	.. rst-class:: phpdoc-description
+	
+		| classname which used for hooks handling
+		| used as signalclass in OC\_Hooks::emit\(\)
+		
+	
+	:Source:
+		`lib/private/Files/Filesystem.php#96 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L96>`_
+	
+
+
+.. php:const:: signal_rename = rename
+
+	.. rst-class:: phpdoc-description
+	
+		| signalname emitted before file renaming
+		
+	
+	:Source:
+		`lib/private/Files/Filesystem.php#104 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L104>`_
+	
+
+
+.. php:const:: signal_post_rename = post\_rename
+
+	.. rst-class:: phpdoc-description
+	
+		| signal emitted after file renaming
+		
+	
+	:Source:
+		`lib/private/Files/Filesystem.php#112 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L112>`_
+	
+
+
+.. php:const:: signal_create = create
+
+	.. rst-class:: phpdoc-description
+	
+		| signal emitted before file/dir creation
+		
+	
+	:Source:
+		`lib/private/Files/Filesystem.php#120 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L120>`_
+	
+
+
+.. php:const:: signal_post_create = post\_create
+
+	.. rst-class:: phpdoc-description
+	
+		| signal emitted after file/dir creation
+		
+	
+	:Source:
+		`lib/private/Files/Filesystem.php#128 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L128>`_
+	
+
+
+.. php:const:: signal_copy = copy
+
+	.. rst-class:: phpdoc-description
+	
+		| signal emits before file/dir copy
+		
+	
+	:Source:
+		`lib/private/Files/Filesystem.php#137 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L137>`_
+	
+
+
+.. php:const:: signal_post_copy = post\_copy
+
+	.. rst-class:: phpdoc-description
+	
+		| signal emits after file/dir copy
+		
+	
+	:Source:
+		`lib/private/Files/Filesystem.php#145 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L145>`_
+	
+
+
+.. php:const:: signal_write = write
+
+	.. rst-class:: phpdoc-description
+	
+		| signal emits before file/dir save
+		
+	
+	:Source:
+		`lib/private/Files/Filesystem.php#153 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L153>`_
+	
+
+
+.. php:const:: signal_post_write = post\_write
+
+	.. rst-class:: phpdoc-description
+	
+		| signal emits after file/dir save
+		
+	
+	:Source:
+		`lib/private/Files/Filesystem.php#160 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L160>`_
+	
+
+
+.. php:const:: signal_update = update
+
+	.. rst-class:: phpdoc-description
+	
+		| signal emitted before file/dir update
+		
+	
+	:Source:
+		`lib/private/Files/Filesystem.php#168 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L168>`_
+	
+
+
+.. php:const:: signal_post_update = post\_update
+
+	.. rst-class:: phpdoc-description
+	
+		| signal emitted after file/dir update
+		
+	
+	:Source:
+		`lib/private/Files/Filesystem.php#176 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L176>`_
+	
+
+
+.. php:const:: signal_read = read
+
+	.. rst-class:: phpdoc-description
+	
+		| signal emits when reading file/dir
+		
+	
+	:Source:
+		`lib/private/Files/Filesystem.php#183 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L183>`_
+	
+
+
+.. php:const:: signal_delete = delete
+
+	.. rst-class:: phpdoc-description
+	
+		| signal emits when removing file/dir
+		
+	
+	:Source:
+		`lib/private/Files/Filesystem.php#190 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L190>`_
+	
+
+
+.. php:const:: signal_param_path = path
+
+	.. rst-class:: phpdoc-description
+	
+		| parameters definitions for signals
+		
+	
+	:Source:
+		`lib/private/Files/Filesystem.php#195 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L195>`_
+	
+
+
+.. php:const:: signal_param_oldpath = oldpath
+
+	:Source:
+		`lib/private/Files/Filesystem.php#196 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L196>`_
+	
+
+
+.. php:const:: signal_param_newpath = newpath
+
+	:Source:
+		`lib/private/Files/Filesystem.php#197 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L197>`_
+	
+
+
+.. php:const:: signal_param_run = run
+
+	.. rst-class:: phpdoc-description
+	
+		| run \- changing this flag to false in hook handler will cancel event
+		
+	
+	:Source:
+		`lib/private/Files/Filesystem.php#202 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L202>`_
+	
+
+
+.. php:const:: signal_create_mount = create\_mount
+
+	:Source:
+		`lib/private/Files/Filesystem.php#204 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L204>`_
+	
+
+
+.. php:const:: signal_delete_mount = delete\_mount
+
+	:Source:
+		`lib/private/Files/Filesystem.php#205 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L205>`_
+	
+
+
+.. php:const:: signal_param_mount_type = mounttype
+
+	:Source:
+		`lib/private/Files/Filesystem.php#206 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L206>`_
+	
+
+
+.. php:const:: signal_param_users = users
+
+	:Source:
+		`lib/private/Files/Filesystem.php#207 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L207>`_
+	
+
+
+Properties
+----------
+
+.. php:attr:: public loaded
+
+	:Source:
+		`lib/private/Files/Filesystem.php#80 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L80>`_
+	
+
+
+Methods
+-------
+
+.. rst-class:: public static
+
+	.. php:method:: public static logWarningWhenAddingStorageWrapper( $shouldLog)
+	
+		:Source:
+			`lib/private/Files/Filesystem.php#222 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L222>`_
+		
+		
+		:Parameters:
+			* **$shouldLog** (bool)  
+
+		
+		:Returns: bool previous value
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static addStorageWrapper( $wrapperName, $wrapper, $priority=50)
+	
+		:Source:
+			`lib/private/Files/Filesystem.php#233 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L233>`_
+		
+		
+		:Parameters:
+			* **$wrapperName** (string)  
+			* **$wrapper** (callable)  
+			* **$priority** (int)  
+
+		
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static getLoader()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the storage factory
+			
+		
+		:Source:
+			`lib/private/Files/Filesystem.php#253 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L253>`_
+		
+		
+		:Returns: :any:`\\OCP\\Files\\Storage\\IStorageFactory <OCP\\Files\\Storage\\IStorageFactory>` 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static getMountManager( $user="")
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the mount manager
+			
+		
+		:Source:
+			`lib/private/Files/Filesystem.php#265 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L265>`_
+		
+		
+		:Returns: :any:`\\OC\\Files\\Mount\\Manager <OC\\Files\\Mount\\Manager>` 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static getMountPoint( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get the mountpoint of the storage object for a path
+			| \( note: because a storage is not always mounted inside the fakeroot, the
+			| returned mountpoint is relative to the absolute root of the filesystem
+			| and doesn\'t take the chroot into account \)
+			
+		
+		:Source:
+			`lib/private/Files/Filesystem.php#281 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L281>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static getMountPoints( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get a list of all mount points in a directory
+			
+		
+		:Source:
+			`lib/private/Files/Filesystem.php#299 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L299>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: string[] 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static getStorage( $mountPoint)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get the storage mounted at $mountPoint
+			
+		
+		:Source:
+			`lib/private/Files/Filesystem.php#317 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L317>`_
+		
+		
+		:Parameters:
+			* **$mountPoint** (string)  
+
+		
+		:Returns: :any:`\\OC\\Files\\Storage\\Storage <OC\\Files\\Storage\\Storage>` | null 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static getMountByStorageId( $id)
+	
+		:Source:
+			`lib/private/Files/Filesystem.php#329 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L329>`_
+		
+		
+		:Parameters:
+			* **$id** (string)  
+
+		
+		:Returns: :any:`\\OC\\Files\\Mount\\MountPoint\[\] <OC\\Files\\Mount\\MountPoint>` 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static getMountByNumericId( $id)
+	
+		:Source:
+			`lib/private/Files/Filesystem.php#340 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L340>`_
+		
+		
+		:Parameters:
+			* **$id** (int)  
+
+		
+		:Returns: :any:`\\OC\\Files\\Mount\\MountPoint\[\] <OC\\Files\\Mount\\MountPoint>` 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static resolvePath( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| resolve a path to a storage and internal path
+			
+		
+		:Source:
+			`lib/private/Files/Filesystem.php#353 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L353>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: array an array consisting of the storage and the internal path
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static init( $user, $root)
+	
+		:Source:
+			`lib/private/Files/Filesystem.php#365 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L365>`_
+		
+		
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static initMountManager()
+	
+		:Source:
+			`lib/private/Files/Filesystem.php#384 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L384>`_
+		
+		
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static initMountPoints( $user="")
+	
+		.. rst-class:: phpdoc-description
+		
+			| Initialize system and personal mount points for a user
+			
+		
+		:Source:
+			`lib/private/Files/Filesystem.php#396 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L396>`_
+		
+		
+		:Parameters:
+			* **$user** (string)  
+
+		
+		:Throws: :any:`\\OC\\User\\NoUserException <OC\\User\\NoUserException>` if the user is not available
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static getView()
+	
+		.. rst-class:: phpdoc-description
+		
+			| get the default filesystem view
+			
+		
+		:Source:
+			`lib/private/Files/Filesystem.php#497 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L497>`_
+		
+		
+		:Returns: :any:`\\OC\\Files\\View <OC\\Files\\View>` 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static tearDown()
+	
+		.. rst-class:: phpdoc-description
+		
+			| tear down the filesystem, removing all storage providers
+			
+		
+		:Source:
+			`lib/private/Files/Filesystem.php#504 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L504>`_
+		
+		
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static getRoot()
+	
+		.. rst-class:: phpdoc-description
+		
+			| get the relative path of the root data directory for the current user
+			
+		
+		:Source:
+			`lib/private/Files/Filesystem.php#516 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L516>`_
+		
+		
+		:Returns: string Returns path like /admin/files
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static clearMounts()
+	
+		.. rst-class:: phpdoc-description
+		
+			| clear all mounts and storage backends
+			
+		
+		:Source:
+			`lib/private/Files/Filesystem.php#526 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L526>`_
+		
+		
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static mount( $class, $arguments, $mountpoint)
+	
+		.. rst-class:: phpdoc-description
+		
+			| mount an \\OC\\Files\\Storage\\Storage in our virtual filesystem
+			
+		
+		:Source:
+			`lib/private/Files/Filesystem.php#540 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L540>`_
+		
+		
+		:Parameters:
+			* **$class** (:any:`OC\\Files\\Storage\\Storage <OC\\Files\\Storage\\Storage>` | string)  
+			* **$arguments** (array)  
+			* **$mountpoint** (string)  
+
+		
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static getLocalFile( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| return the path to a local version of the file
+			| we need this because we can\'t know if a file is stored local or not from
+			| outside the filestorage and for some purposes a local file is needed
+			
+		
+		:Source:
+			`lib/private/Files/Filesystem.php#556 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L556>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static getLocalFolder( $path)
+	
+		:Source:
+			`lib/private/Files/Filesystem.php#564 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L564>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static getLocalPath( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| return path to file which reflects one visible in browser
+			
+		
+		:Source:
+			`lib/private/Files/Filesystem.php#574 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L574>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static isValidPath( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| check if the requested path is valid
+			
+		
+		:Source:
+			`lib/private/Files/Filesystem.php#589 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L589>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static isBlacklisted( $data)
+	
+		.. rst-class:: phpdoc-description
+		
+			| checks if a file is blacklisted for storage in the filesystem
+			| Listens to write and rename hooks
+			
+		
+		:Source:
+			`lib/private/Files/Filesystem.php#606 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L606>`_
+		
+		
+		:Parameters:
+			* **$data** (array)  from hook
+
+		
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static isFileBlacklisted( $filename)
+	
+		:Source:
+			`lib/private/Files/Filesystem.php#623 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L623>`_
+		
+		
+		:Parameters:
+			* **$filename** (string)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static isIgnoredDir( $dir)
+	
+		.. rst-class:: phpdoc-description
+		
+			| check if the directory should be ignored when scanning
+			| NOTE: the special directories \. and \.
+			
+			| \. would cause never ending recursion
+			
+		
+		:Source:
+			`lib/private/Files/Filesystem.php#638 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L638>`_
+		
+		
+		:Parameters:
+			* **$dir** (string)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static mkdir( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| following functions are equivalent to their php builtin equivalents for arguments/return values\.
+			
+		
+		:Source:
+			`lib/private/Files/Filesystem.php#648 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L648>`_
+		
+		
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static rmdir( $path)
+	
+		:Source:
+			`lib/private/Files/Filesystem.php#652 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L652>`_
+		
+		
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static is_dir( $path)
+	
+		:Source:
+			`lib/private/Files/Filesystem.php#656 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L656>`_
+		
+		
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static is_file( $path)
+	
+		:Source:
+			`lib/private/Files/Filesystem.php#660 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L660>`_
+		
+		
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static stat( $path)
+	
+		:Source:
+			`lib/private/Files/Filesystem.php#664 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L664>`_
+		
+		
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static filetype( $path)
+	
+		:Source:
+			`lib/private/Files/Filesystem.php#668 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L668>`_
+		
+		
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static filesize( $path)
+	
+		:Source:
+			`lib/private/Files/Filesystem.php#672 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L672>`_
+		
+		
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static readfile( $path)
+	
+		:Source:
+			`lib/private/Files/Filesystem.php#676 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L676>`_
+		
+		
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static isCreatable( $path)
+	
+		:Source:
+			`lib/private/Files/Filesystem.php#680 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L680>`_
+		
+		
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static isReadable( $path)
+	
+		:Source:
+			`lib/private/Files/Filesystem.php#684 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L684>`_
+		
+		
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static isUpdatable( $path)
+	
+		:Source:
+			`lib/private/Files/Filesystem.php#688 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L688>`_
+		
+		
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static isDeletable( $path)
+	
+		:Source:
+			`lib/private/Files/Filesystem.php#692 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L692>`_
+		
+		
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static isSharable( $path)
+	
+		:Source:
+			`lib/private/Files/Filesystem.php#696 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L696>`_
+		
+		
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static file_exists( $path)
+	
+		:Source:
+			`lib/private/Files/Filesystem.php#700 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L700>`_
+		
+		
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static filemtime( $path)
+	
+		:Source:
+			`lib/private/Files/Filesystem.php#704 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L704>`_
+		
+		
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static touch( $path, $mtime=null)
+	
+		:Source:
+			`lib/private/Files/Filesystem.php#708 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L708>`_
+		
+		
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static file_get_contents( $path)
+	
+		:Source:
+			`lib/private/Files/Filesystem.php#715 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L715>`_
+		
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static file_put_contents( $path, $data)
+	
+		:Source:
+			`lib/private/Files/Filesystem.php#719 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L719>`_
+		
+		
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static unlink( $path)
+	
+		:Source:
+			`lib/private/Files/Filesystem.php#723 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L723>`_
+		
+		
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static rename( $path1, $path2)
+	
+		:Source:
+			`lib/private/Files/Filesystem.php#727 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L727>`_
+		
+		
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static copy( $path1, $path2)
+	
+		:Source:
+			`lib/private/Files/Filesystem.php#731 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L731>`_
+		
+		
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static fopen( $path, $mode)
+	
+		:Source:
+			`lib/private/Files/Filesystem.php#735 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L735>`_
+		
+		
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static toTmpFile( $path)
+	
+		:Source:
+			`lib/private/Files/Filesystem.php#742 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L742>`_
+		
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static fromTmpFile( $tmpFile, $path)
+	
+		:Source:
+			`lib/private/Files/Filesystem.php#746 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L746>`_
+		
+		
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static getMimeType( $path)
+	
+		:Source:
+			`lib/private/Files/Filesystem.php#750 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L750>`_
+		
+		
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static hash( $type, $path, $raw=false)
+	
+		:Source:
+			`lib/private/Files/Filesystem.php#754 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L754>`_
+		
+		
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static free_space( $path=/)
+	
+		:Source:
+			`lib/private/Files/Filesystem.php#758 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L758>`_
+		
+		
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static search( $query)
+	
+		:Source:
+			`lib/private/Files/Filesystem.php#762 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L762>`_
+		
+		
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static searchByMime( $query)
+	
+		:Source:
+			`lib/private/Files/Filesystem.php#769 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L769>`_
+		
+		
+		:Parameters:
+			* **$query** (string)  
+
+		
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static searchByTag( $tag, $userId)
+	
+		:Source:
+			`lib/private/Files/Filesystem.php#778 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L778>`_
+		
+		
+		:Parameters:
+			* **$tag** (string | int)  name or tag id
+			* **$userId** (string)  owner of the tags
+
+		
+		:Returns: :any:`\\OC\\Files\\FileInfo\[\] <OC\\Files\\FileInfo>` array or file info
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static hasUpdated( $path, $time)
+	
+		.. rst-class:: phpdoc-description
+		
+			| check if a file or folder has been updated since $time
+			
+		
+		:Source:
+			`lib/private/Files/Filesystem.php#789 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L789>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+			* **$time** (int)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static normalizePath( $path, $stripTrailingSlash=true, $isAbsolutePath=false, $keepUnicode=false)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Fix common problems with a file path
+			
+		
+		:Source:
+			`lib/private/Files/Filesystem.php#802 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L802>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+			* **$stripTrailingSlash** (bool)  whether to strip the trailing slash
+			* **$isAbsolutePath** (bool)  whether the given path is absolute
+			* **$keepUnicode** (bool)  true to disable unicode normalization
+
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static getFileInfo( $path, $includeMountPoints=true)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get the filesystem info
+			
+		
+		:Source:
+			`lib/private/Files/Filesystem.php#863 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L863>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+			* **$includeMountPoints** (bool)  whether to add mountpoint sizes,
+			defaults to true
+
+		
+		:Returns: :any:`\\OC\\Files\\FileInfo <OC\\Files\\FileInfo>` | bool False if file does not exist
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static putFileInfo( $path, $data)
+	
+		.. rst-class:: phpdoc-description
+		
+			| change file metadata
+			
+		
+		:Source:
+			`lib/private/Files/Filesystem.php#876 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L876>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+			* **$data** (array)  
+
+		
+		:Returns: int returns the fileid of the updated file
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static getDirectoryContent( $directory, $mimetype_filter="")
+	
+		.. rst-class:: phpdoc-description
+		
+			| get the content of a directory
+			
+		
+		:Source:
+			`lib/private/Files/Filesystem.php#887 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L887>`_
+		
+		
+		:Parameters:
+			* **$directory** (string)  path under datadirectory
+			* **$mimetype_filter** (string)  limit returned content to this mimetype or mimepart
+
+		
+		:Returns: :any:`\\OC\\Files\\FileInfo\[\] <OC\\Files\\FileInfo>` 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static getPath( $id)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the path of a file by id
+			
+			| Note that the resulting path is not guaranteed to be unique for the id, multiple paths can point to the same file
+			
+		
+		:Source:
+			`lib/private/Files/Filesystem.php#900 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L900>`_
+		
+		
+		:Parameters:
+			* **$id** (int)  
+
+		
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+		:Returns: string 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static getOwner( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the owner for a file or folder
+			
+		
+		:Source:
+			`lib/private/Files/Filesystem.php#910 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L910>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static getETag( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get the ETag for a file or folder
+			
+		
+		:Source:
+			`lib/private/Files/Filesystem.php#920 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Filesystem.php#L920>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: string 
+	
+	
+

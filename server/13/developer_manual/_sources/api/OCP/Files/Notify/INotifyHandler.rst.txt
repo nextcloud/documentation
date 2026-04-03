@@ -1,0 +1,91 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+INotifyHandler
+==============
+
+
+.. php:namespace:: OCP\Files\Notify
+
+.. php:interface:: INotifyHandler
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Provides access to detected changes in the storage by either actively listening
+		| or getting the list of changes that happened in the background
+		
+	
+	:Source:
+		`lib/public/Files/Notify/INotifyHandler.php#32 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Notify/INotifyHandler.php#L32>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public listen( $callback)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Start listening for update notifications
+			
+			| The provided callback will be called for every incoming notification with the following parameters
+			|  \- IChange\|IRenameChange $change
+			| 
+			| Note that this call is blocking and will not exit on it\'s own, to stop listening for notifications return \`false\` from the callback
+			
+		
+		:Source:
+			`lib/public/Files/Notify/INotifyHandler.php#45 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Notify/INotifyHandler.php#L45>`_
+		
+		
+		:Parameters:
+			* **$callback** (callable)  
+
+		
+		:Since: 12.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getChanges()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get all changes detected since the start of the notify process or the last call to getChanges
+			
+		
+		:Source:
+			`lib/public/Files/Notify/INotifyHandler.php#54 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Notify/INotifyHandler.php#L54>`_
+		
+		
+		:Returns: :any:`\\OCP\\Files\\Notify\\IChange\[\] <OCP\\Files\\Notify\\IChange>` 
+		:Since: 12.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public stop()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Stop listening for changes
+			
+			| Note that any pending changes will be discarded
+			
+		
+		:Source:
+			`lib/public/Files/Notify/INotifyHandler.php#63 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Notify/INotifyHandler.php#L63>`_
+		
+		
+		:Since: 12.0.0 
+	
+	
+

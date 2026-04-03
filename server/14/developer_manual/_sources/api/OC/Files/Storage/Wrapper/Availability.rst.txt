@@ -1,0 +1,658 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+Availability
+============
+
+
+.. php:namespace:: OC\Files\Storage\Wrapper
+
+.. php:class:: Availability
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Availability checker for storages
+		
+		| Throws a StorageNotAvailableException for storages with known failures
+		
+	
+	:Source:
+		`lib/private/Files/Storage/Wrapper/Availability.php#40 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Availability.php#L40>`_
+	
+	:Parent:
+		:php:class:`OC\\Files\\Storage\\Wrapper\\Wrapper`
+	
+
+Constants
+---------
+
+.. php:const:: RECHECK_TTL_SEC = 600
+
+	:Source:
+		`lib/private/Files/Storage/Wrapper/Availability.php#41 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Availability.php#L41>`_
+	
+
+
+Properties
+----------
+
+.. php:attr:: protected static config
+
+	:Source:
+		`lib/private/Files/Storage/Wrapper/Availability.php#44 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Availability.php#L44>`_
+	
+	:Type: :any:`\\OCP\\IConfig <OCP\\IConfig>` 
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $parameters)
+	
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Availability.php#46 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Availability.php#L46>`_
+		
+		
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static shouldRecheck( $availability)
+	
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Availability.php#51 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Availability.php#L51>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public mkdir( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| \{@inheritdoc\}
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Availability.php#99 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Availability.php#L99>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public rmdir( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| \{@inheritdoc\}
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Availability.php#109 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Availability.php#L109>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public opendir( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| \{@inheritdoc\}
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Availability.php#119 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Availability.php#L119>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public is_dir( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| \{@inheritdoc\}
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Availability.php#129 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Availability.php#L129>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public is_file( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| \{@inheritdoc\}
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Availability.php#139 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Availability.php#L139>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public stat( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| \{@inheritdoc\}
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Availability.php#149 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Availability.php#L149>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public filetype( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| \{@inheritdoc\}
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Availability.php#159 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Availability.php#L159>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public filesize( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| \{@inheritdoc\}
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Availability.php#169 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Availability.php#L169>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isCreatable( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| \{@inheritdoc\}
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Availability.php#179 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Availability.php#L179>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isReadable( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| \{@inheritdoc\}
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Availability.php#189 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Availability.php#L189>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isUpdatable( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| \{@inheritdoc\}
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Availability.php#199 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Availability.php#L199>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isDeletable( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| \{@inheritdoc\}
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Availability.php#209 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Availability.php#L209>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isSharable( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| \{@inheritdoc\}
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Availability.php#219 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Availability.php#L219>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getPermissions( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| \{@inheritdoc\}
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Availability.php#229 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Availability.php#L229>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public file_exists( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| \{@inheritdoc\}
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Availability.php#239 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Availability.php#L239>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public filemtime( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| \{@inheritdoc\}
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Availability.php#252 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Availability.php#L252>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public file_get_contents( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| \{@inheritdoc\}
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Availability.php#262 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Availability.php#L262>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public file_put_contents( $path, $data)
+	
+		.. rst-class:: phpdoc-description
+		
+			| \{@inheritdoc\}
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Availability.php#272 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Availability.php#L272>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public unlink( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| \{@inheritdoc\}
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Availability.php#282 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Availability.php#L282>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public rename( $path1, $path2)
+	
+		.. rst-class:: phpdoc-description
+		
+			| \{@inheritdoc\}
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Availability.php#292 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Availability.php#L292>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public copy( $path1, $path2)
+	
+		.. rst-class:: phpdoc-description
+		
+			| \{@inheritdoc\}
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Availability.php#302 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Availability.php#L302>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public fopen( $path, $mode)
+	
+		.. rst-class:: phpdoc-description
+		
+			| \{@inheritdoc\}
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Availability.php#312 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Availability.php#L312>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getMimeType( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| \{@inheritdoc\}
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Availability.php#322 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Availability.php#L322>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public hash( $type, $path, $raw=false)
+	
+		.. rst-class:: phpdoc-description
+		
+			| \{@inheritdoc\}
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Availability.php#332 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Availability.php#L332>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public free_space( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| \{@inheritdoc\}
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Availability.php#342 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Availability.php#L342>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public search( $query)
+	
+		.. rst-class:: phpdoc-description
+		
+			| \{@inheritdoc\}
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Availability.php#352 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Availability.php#L352>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public touch( $path, $mtime=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| \{@inheritdoc\}
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Availability.php#362 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Availability.php#L362>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getLocalFile( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| \{@inheritdoc\}
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Availability.php#372 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Availability.php#L372>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public hasUpdated( $path, $time)
+	
+		.. rst-class:: phpdoc-description
+		
+			| \{@inheritdoc\}
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Availability.php#382 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Availability.php#L382>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getOwner( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| \{@inheritdoc\}
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Availability.php#392 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Availability.php#L392>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getETag( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| \{@inheritdoc\}
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Availability.php#401 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Availability.php#L401>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getDirectDownload( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| \{@inheritdoc\}
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Availability.php#411 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Availability.php#L411>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public copyFromStorage( $sourceStorage, $sourceInternalPath, $targetInternalPath)
+	
+		.. rst-class:: phpdoc-description
+		
+			| \{@inheritdoc\}
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Availability.php#421 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Availability.php#L421>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public moveFromStorage( $sourceStorage, $sourceInternalPath, $targetInternalPath)
+	
+		.. rst-class:: phpdoc-description
+		
+			| \{@inheritdoc\}
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Availability.php#431 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Availability.php#L431>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getMetaData( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| \{@inheritdoc\}
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Availability.php#441 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Availability.php#L441>`_
+		
+		
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected setUnavailable( $e)
+	
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Availability.php#453 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Availability.php#L453>`_
+		
+		
+		:Throws: :any:`\\OCP\\Files\\StorageNotAvailableException <OCP\\Files\\StorageNotAvailableException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getDirectoryContent( $directory)
+	
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Availability.php#468 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Availability.php#L468>`_
+		
+		
+	
+	
+

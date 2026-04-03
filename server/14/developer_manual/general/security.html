@@ -1,0 +1,530 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Security guidelines &mdash; Nextcloud 14 Developer Manual 14 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'14',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Coding style &amp; general guidelines" href="codingguidelines.html" />
+    <link rel="prev" title="Development environment" href="devenv.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">General contributor guidelines</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="code-of-conduct.html">Community code of conduct</a></li>
+<li class="toctree-l2"><a class="reference internal" href="devenv.html">Development environment</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Security guidelines</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#sql-injection">SQL injection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cross-site-scripting">Cross site scripting</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#templates">Templates</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#javascript">JavaScript</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#clickjacking">Clickjacking</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#code-executions-file-inclusions">Code executions / file inclusions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#directory-traversal">Directory traversal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#shell-injection">Shell injection</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#auth-bypass-privilege-escalations">Auth bypass / privilege escalations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sensitive-data-exposure">Sensitive data exposure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cross-site-request-forgery">Cross site request forgery</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#unvalidated-redirects">Unvalidated redirects</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#getting-help">Getting help</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="codingguidelines.html">Coding style &amp; general guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="performance.html">Performance considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging.html">Debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backporting.html">Backporting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../app/changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/startapp.html">Create an app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/init.html">Navigation and pre-app configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/info.html">App metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/classloader.html">Classloader</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/request.html">Request lifecycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/routes.html">Routing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/middleware.html">Middleware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/container.html">Container</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/controllers.html">Controllers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/api.html">RESTful API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/templates.html">Templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/js.html">JavaScript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/css.html">CSS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/l10n.html">Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/theming.html">Theming support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/schema.html">Database schema</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/database.html">Database access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/filesystem.html">Filesystem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/appdata.html">AppData</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/users.html">User management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/two-factor-provider.html">Two-factor providers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/hooks.html">Hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/backgroundjobs.html">Background jobs (Cron)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/settings.html">Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/logging.html">Logging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/migrations.html">Migrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/repair.html">Repair steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/publishing.html">App store publishing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/code_signing.html">Code signing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../design/index.html">Design guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../android_library/index.html">Android application development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client_apis/index.html">Client APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../core/index.html">Core development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bugtracker/index.html">Bugtracker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../commun/index.html">Help and communication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API Documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Nextcloud 14 Developer Manual</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">General contributor guidelines</a> &raquo;</li>
+        
+      <li>Security guidelines</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/nextcloud/documentation/edit/stable14/developer_manual/general/security.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="security-guidelines">
+<h1>Security guidelines<a class="headerlink" href="#security-guidelines" title="Permalink to this headline">¶</a></h1>
+<p>This guideline highlights some of the most common security problems and how to prevent them. Please review your app if it contains any of the following security holes.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last"><strong>Program defensively</strong>: for instance always check for CSRF or escape strings, even if you do not need it. This prevents future problems where you might miss a change that leads to a security hole.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">All App Framework security features depend on the call of the controller through <code class="xref php php-meth docutils literal"><span class="pre">OCA\AppFramework\App::main</span></code>. If the controller method is executed directly, no security checks are being performed!</p>
+</div>
+<div class="section" id="sql-injection">
+<h2>SQL injection<a class="headerlink" href="#sql-injection" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="http://en.wikipedia.org/wiki/SQL_injection">SQL Injection</a> occurs when SQL query strings are concatenated with variables.</p>
+<p>To prevent this, always use prepared queries:</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="nv">$sql</span> <span class="o">=</span> <span class="s1">&#39;SELECT * FROM `users` WHERE `id` = ?&#39;</span><span class="p">;</span>
+<span class="nv">$query</span> <span class="o">=</span> <span class="nx">\OCP\DB</span><span class="o">::</span><span class="na">prepare</span><span class="p">(</span><span class="nv">$sql</span><span class="p">);</span>
+<span class="nv">$params</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="nv">$result</span> <span class="o">=</span> <span class="nv">$query</span><span class="o">-&gt;</span><span class="na">execute</span><span class="p">(</span><span class="nv">$params</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>If the App Framework is used, write SQL queries like this in a class that extends the Mapper:</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="c1">// inside a child mapper class</span>
+<span class="nv">$sql</span> <span class="o">=</span> <span class="s1">&#39;SELECT * FROM `users` WHERE `id` = ?&#39;</span><span class="p">;</span>
+<span class="nv">$params</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+<span class="nv">$result</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">execute</span><span class="p">(</span><span class="nv">$sql</span><span class="p">,</span> <span class="nv">$params</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="cross-site-scripting">
+<h2>Cross site scripting<a class="headerlink" href="#cross-site-scripting" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="http://en.wikipedia.org/wiki/Cross-site_scripting">Cross site scripting</a> happens when user input is passed directly to templates. A potential attacker might be able to inject HTML/JavaScript into the page to steal the users session, log keyboard entries, even perform DDOS attacks on other websites or other malicious actions.</p>
+<p>Despite the fact that Nextcloud uses Content-Security-Policy to prevent the execution of inline JavaScript code developers are still required to prevent XSS. CSP is just another layer of defense that is not implemented in all web browsers.</p>
+<p>To prevent XSS in your app you have to sanitize the templates and all JavaScripts which performs a DOM manipulation.</p>
+<div class="section" id="templates">
+<h3>Templates<a class="headerlink" href="#templates" title="Permalink to this headline">¶</a></h3>
+<p>Let&#8217;s assume you use the following example in your application:</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="k">echo</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;username&#39;</span><span class="p">];</span>
+</pre></div>
+</div>
+<p>An attacker might now easily send the user a link to:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>app.php?username=&lt;script src=&quot;attacker.tld&quot;&gt;&lt;/script&gt;
+</pre></div>
+</div>
+<p>to overtake the user account. The same problem occurs when outputting content from the database or any other location that is writable by users.</p>
+<p>Another attack vector that is often overlooked is XSS in <strong>href</strong> attributes. HTML allows to execute JavaScript in href attributes like this:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s2">&quot;javascript:alert(&#39;xss&#39;)&quot;</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>To prevent XSS in your app, <strong>never use echo, print() or &lt;%=</strong> - use <strong>p()</strong> instead which will sanitize the input. Also <strong>validate URLs to start with the expected protocol</strong> (starts with http for instance)!</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Should you ever require to print something unescaped, double check if it is really needed. If there is no other way (e.g. when including of subtemplates) use <cite>print_unescaped</cite>  with care.</p>
+</div>
+</div>
+<div class="section" id="javascript">
+<h3>JavaScript<a class="headerlink" href="#javascript" title="Permalink to this headline">¶</a></h3>
+<p>Avoid manipulating the HTML directly via JavaScript, this often leads to XSS since people often forget to sanitize variables:</p>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">html</span> <span class="o">=</span> <span class="s1">&#39;&lt;li&gt;&#39;</span> <span class="o">+</span> <span class="nx">username</span> <span class="o">+</span> <span class="s1">&#39;&lt;/li&gt;&quot;&#39;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>If you <strong>really</strong> want to use JavaScript for something like this use <cite>escapeHTML</cite> to sanitize the variables:</p>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">html</span> <span class="o">=</span> <span class="s1">&#39;&lt;li&gt;&#39;</span> <span class="o">+</span> <span class="nx">escapeHTML</span><span class="p">(</span><span class="nx">username</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;&lt;/li&gt;&#39;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>An even better way to make your app safer is to use the jQuery built-in function <strong>$.text()</strong> instead of <strong>$.html()</strong>.</p>
+<p><strong>DON&#8217;T</strong></p>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="nx">messageTd</span><span class="p">.</span><span class="nx">html</span><span class="p">(</span><span class="nx">username</span><span class="p">);</span>
+</pre></div>
+</div>
+<p><strong>DO</strong></p>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="nx">messageTd</span><span class="p">.</span><span class="nx">text</span><span class="p">(</span><span class="nx">username</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>It may also be wise to choose a proper JavaScript framework like AngularJS which automatically  handles the JavaScript escaping for you.</p>
+</div>
+</div>
+<div class="section" id="clickjacking">
+<h2>Clickjacking<a class="headerlink" href="#clickjacking" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="http://en.wikipedia.org/wiki/Clickjacking">Clickjacking</a> tricks the user to click into an invisible iframe to perform an arbitrary action (e.g. delete an user account)</p>
+<p>To prevent such attacks Nextcloud sends the <cite>X-Frame-Options</cite> header to all template responses. Don&#8217;t remove this header if you don&#8217;t really need it!</p>
+<p>This is already built into Nextcloud in <a class="reference internal" href="../api/OC_Template.html#OC_Template" title="OC_Template"><code class="xref php php-class docutils literal"><span class="pre">OC_Template</span></code></a>.</p>
+</div>
+<div class="section" id="code-executions-file-inclusions">
+<h2>Code executions / file inclusions<a class="headerlink" href="#code-executions-file-inclusions" title="Permalink to this headline">¶</a></h2>
+<p>Code Execution means that an attacker is able to include an arbitrary PHP file. This PHP file runs with all the privileges granted to the normal application and can do an enormous amount of damage.</p>
+<p>Code executions and file inclusions can be easily prevented by <strong>never</strong> allowing user-input to run through the following functions:</p>
+<ul class="simple">
+<li><strong>include()</strong></li>
+<li><strong>require()</strong></li>
+<li><strong>require_once()</strong></li>
+<li><strong>eval()</strong></li>
+<li><strong>fopen()</strong></li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Also <strong>never</strong> allow the user to upload files into a folder which is reachable from the URL!</p>
+</div>
+<p><strong>DON&#8217;T</strong></p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="k">require</span><span class="p">(</span><span class="s2">&quot;/includes/&quot;</span> <span class="o">.</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;file&#39;</span><span class="p">]);</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If you have to pass user input to a potentially dangerous function, double check to be sure that there is no other way. If it is not possible otherwise sanitize every user parameter and ask people to audit your sanitize function.</p>
+</div>
+</div>
+<div class="section" id="directory-traversal">
+<h2>Directory traversal<a class="headerlink" href="#directory-traversal" title="Permalink to this headline">¶</a></h2>
+<p>Very often developers forget about sanitizing the file path (removing all \ and /), this allows an attacker to traverse through directories on the server which opens several potential attack vectors including privilege escalations, code executions or file disclosures.</p>
+<p><strong>DON&#8217;T</strong></p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="nv">$username</span> <span class="o">=</span> <span class="nx">OC_User</span><span class="o">::</span><span class="na">getUser</span><span class="p">();</span>
+<span class="nb">fopen</span><span class="p">(</span><span class="s2">&quot;/data/&quot;</span> <span class="o">.</span> <span class="nv">$username</span> <span class="o">.</span> <span class="s2">&quot;/&quot;</span> <span class="o">.</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;file&#39;</span><span class="p">]</span> <span class="o">.</span> <span class="s2">&quot;.txt&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p><strong>DO</strong></p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="nv">$username</span> <span class="o">=</span> <span class="nx">OC_User</span><span class="o">::</span><span class="na">getUser</span><span class="p">();</span>
+<span class="nv">$file</span> <span class="o">=</span> <span class="nb">str_replace</span><span class="p">(</span><span class="k">array</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="s1">&#39;\\&#39;</span><span class="p">),</span> <span class="s1">&#39;&#39;</span><span class="p">,</span>  <span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;file&#39;</span><span class="p">]);</span>
+<span class="nb">fopen</span><span class="p">(</span><span class="s2">&quot;/data/&quot;</span> <span class="o">.</span> <span class="nv">$username</span> <span class="o">.</span> <span class="s2">&quot;/&quot;</span> <span class="o">.</span> <span class="nv">$file</span> <span class="o">.</span> <span class="s2">&quot;.txt&quot;</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">PHP also interprets the backslash (\) in paths, don&#8217;t forget to replace it too!</p>
+</div>
+</div>
+<div class="section" id="shell-injection">
+<h2>Shell injection<a class="headerlink" href="#shell-injection" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="http://en.wikipedia.org/wiki/Code_injection#Shell_injection">Shell Injection</a> occurs if PHP code executes shell commands (e.g. running a latex compiler). Before doing this, check if there is a PHP library that already provides the needed functionality. If you really need to execute a command be aware that you have to escape every user parameter passed to one of these functions:</p>
+<ul class="simple">
+<li><strong>exec()</strong></li>
+<li><strong>shell_exec()</strong></li>
+<li><strong>passthru()</strong></li>
+<li><strong>proc_open()</strong></li>
+<li><strong>system()</strong></li>
+<li><strong>popen()</strong></li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Please require/request additional programmers to audit your escape function.</p>
+</div>
+<p>Without escaping the user input this will allow an attacker to execute arbitrary shell commands on your server.</p>
+<p>PHP offers the following functions to escape user input:</p>
+<ul class="simple">
+<li><strong>escapeshellarg()</strong>: Escape a string to be used as a shell argument</li>
+<li><strong>escapeshellcmd()</strong>: Escape shell metacharacters</li>
+</ul>
+<p><strong>DON&#8217;T</strong></p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="nb">system</span><span class="p">(</span><span class="s1">&#39;ls &#39;</span><span class="o">.</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;dir&#39;</span><span class="p">]);</span>
+</pre></div>
+</div>
+<p><strong>DO</strong></p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="nb">system</span><span class="p">(</span><span class="s1">&#39;ls &#39;</span><span class="o">.</span><span class="nb">escapeshellarg</span><span class="p">(</span><span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;dir&#39;</span><span class="p">]));</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="auth-bypass-privilege-escalations">
+<h2>Auth bypass / privilege escalations<a class="headerlink" href="#auth-bypass-privilege-escalations" title="Permalink to this headline">¶</a></h2>
+<p>Auth bypass/privilege escalations happen when a user is able to perform unauthorized actions.</p>
+<p>Nextcloud offers three simple checks:</p>
+<ul class="simple">
+<li><strong>OCP\JSON::checkLoggedIn()</strong>: Checks if the logged in user is logged in</li>
+<li><strong>OCP\JSON::checkAdminUser()</strong>: Checks if the logged in user has admin privileges</li>
+<li><strong>OCP\JSON::checkSubAdminUser()</strong>: Checks if the logged in user has group admin privileges</li>
+</ul>
+<p>Using the App Framework, these checks are already automatically performed for each request and have to be explicitly turned off by using annotations above your controller method,  see <a class="reference internal" href="../app/controllers.html"><span class="doc">Controllers</span></a>.</p>
+<p>Additionally always check if the user has the right to perform that action. (e.g. a user should not be able to delete other users&#8217; bookmarks).</p>
+</div>
+<div class="section" id="sensitive-data-exposure">
+<h2>Sensitive data exposure<a class="headerlink" href="#sensitive-data-exposure" title="Permalink to this headline">¶</a></h2>
+<p>Always store user data or configuration files in safe locations, e.g. <strong>nextcloud/data/</strong> and not in the webroot where they can be accessed by anyone using a web browser.</p>
+</div>
+<div class="section" id="cross-site-request-forgery">
+<h2>Cross site request forgery<a class="headerlink" href="#cross-site-request-forgery" title="Permalink to this headline">¶</a></h2>
+<p>Using <a class="reference external" href="http://en.wikipedia.org/wiki/Cross-site_request_forgery">CSRF</a> one can trick a user into executing a request that he did not want to make. Thus every POST and GET request needs to be protected against it. The only places where no CSRF checks are needed are in the main template, which is rendering the application, or in externally callable interfaces.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Submitting a form is also a POST/GET request!</p>
+</div>
+<p>To prevent CSRF in an app, be sure to call the following method at the top of all your files:</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="nx">OCP\JSON</span><span class="o">::</span><span class="na">callCheck</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>If you are using the App Framework, every controller method is automatically checked for CSRF unless you explicitly exclude it by setting the &#64;NoCSRFRequired annotation before the controller method, see <a class="reference internal" href="../app/controllers.html"><span class="doc">Controllers</span></a></p>
+</div>
+<div class="section" id="unvalidated-redirects">
+<h2>Unvalidated redirects<a class="headerlink" href="#unvalidated-redirects" title="Permalink to this headline">¶</a></h2>
+<p>This is more of an annoyance than a critical security vulnerability since it may be used for social engineering or phishing.</p>
+<p>Always validate the URL before redirecting if the requested URL is on the same domain or an allowed resource.</p>
+<p><strong>DON&#8217;T</strong></p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="nb">header</span><span class="p">(</span><span class="s1">&#39;Location:&#39;</span><span class="o">.</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;redirectURL&#39;</span><span class="p">]);</span>
+</pre></div>
+</div>
+<p><strong>DO</strong></p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="nb">header</span><span class="p">(</span><span class="s1">&#39;Location: https://example.com&#39;</span><span class="o">.</span> <span class="nv">$_GET</span><span class="p">[</span><span class="s1">&#39;redirectURL&#39;</span><span class="p">]);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="getting-help">
+<h2>Getting help<a class="headerlink" href="#getting-help" title="Permalink to this headline">¶</a></h2>
+<p>If you need help to ensure that a function is secure please ask on our <a class="reference external" href="https://help.nextcloud.com">forum</a> or on our IRC channel <strong>#nextcloud-dev</strong> on <strong>irc.freenode.net</strong>.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="codingguidelines.html" class="btn btn-neutral float-right" title="Coding style &amp; general guidelines" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="devenv.html" class="btn btn-neutral float-left" title="Development environment" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021 Nextcloud GmbH.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: 14
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/14/developer_manual">14</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/15/developer_manual">15</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/16/developer_manual">16</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/developer_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/developer_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+   
+
+</body>
+</html>

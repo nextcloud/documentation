@@ -1,0 +1,631 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+Connection
+==========
+
+
+.. php:namespace:: OC\DB
+
+.. php:class:: Connection
+
+
+	:Source:
+		`lib/private/DB/Connection.php#59 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/Connection.php#L59>`_
+	
+	:Parent:
+		:php:class:`Doctrine\\DBAL\\Connection`
+	
+
+Properties
+----------
+
+.. php:attr:: protected static tablePrefix
+
+	:Source:
+		`lib/private/DB/Connection.php#61 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/Connection.php#L61>`_
+	
+	:Type: string 
+
+
+.. php:attr:: protected static adapter
+
+	:Source:
+		`lib/private/DB/Connection.php#64 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/Connection.php#L64>`_
+	
+	:Type: :any:`\\OC\\DB\\Adapter <OC\\DB\\Adapter>` 
+
+
+.. php:attr:: protected static lockedTable
+
+	:Source:
+		`lib/private/DB/Connection.php#72 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/Connection.php#L72>`_
+	
+
+
+.. php:attr:: protected static queriesBuilt
+
+	:Source:
+		`lib/private/DB/Connection.php#75 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/Connection.php#L75>`_
+	
+	:Type: int 
+
+
+.. php:attr:: protected static queriesExecuted
+
+	:Source:
+		`lib/private/DB/Connection.php#78 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/Connection.php#L78>`_
+	
+	:Type: int 
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public connect()
+	
+		:Source:
+			`lib/private/DB/Connection.php#83 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/Connection.php#L83>`_
+		
+		
+		:Throws: :any:`\\Doctrine\\DBAL\\Exception <Doctrine\\DBAL\\Exception>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getStats()
+	
+		:Source:
+			`lib/private/DB/Connection.php#92 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/Connection.php#L92>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getQueryBuilder()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns a QueryBuilder for the connection\.
+			
+		
+		:Source:
+			`lib/private/DB/Connection.php#102 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/Connection.php#L102>`_
+		
+		
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public createQueryBuilder()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Gets the QueryBuilder for the connection\.
+			
+		
+		:Source:
+			`lib/private/DB/Connection.php#117 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/Connection.php#L117>`_
+		
+		
+		:Returns: :any:`\\Doctrine\\DBAL\\Query\\QueryBuilder <Doctrine\\DBAL\\Query\\QueryBuilder>` 
+		:Deprecated:  please use $this\-\>getQueryBuilder\(\) instead
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public getExpressionBuilder()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Gets the ExpressionBuilder for the connection\.
+			
+		
+		:Source:
+			`lib/private/DB/Connection.php#130 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/Connection.php#L130>`_
+		
+		
+		:Returns: :any:`\\Doctrine\\DBAL\\Query\\Expression\\ExpressionBuilder <Doctrine\\DBAL\\Query\\Expression\\ExpressionBuilder>` 
+		:Deprecated:  please use $this\-\>getQueryBuilder\(\)\-\>expr\(\) instead
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected getCallerBacktrace()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the file and line that called the method where \`getCallerBacktrace\(\)\` was used
+			
+		
+		:Source:
+			`lib/private/DB/Connection.php#142 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/Connection.php#L142>`_
+		
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getPrefix()
+	
+		:Source:
+			`lib/private/DB/Connection.php#157 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/Connection.php#L157>`_
+		
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $params, $driver, $config=null, $eventManager=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Initializes a new instance of the Connection class\.
+			
+		
+		:Source:
+			`lib/private/DB/Connection.php#170 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/Connection.php#L170>`_
+		
+		
+		:Parameters:
+			* **$params** (array)  The connection parameters.
+			* **$driver** (:any:`Doctrine\\DBAL\\Driver <Doctrine\\DBAL\\Driver>`)  
+			* **$config** (:any:`Doctrine\\DBAL\\Configuration <Doctrine\\DBAL\\Configuration>`)  
+			* **$eventManager** (:any:`Doctrine\\Common\\EventManager <Doctrine\\Common\\EventManager>`)  
+
+		
+		:Throws: :any:`\\Exception <Exception>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public prepare( $statement, $limit=null, $offset=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Prepares an SQL statement\.
+			
+		
+		:Source:
+			`lib/private/DB/Connection.php#199 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/Connection.php#L199>`_
+		
+		
+		:Parameters:
+			* **$statement** (string)  The SQL statement to prepare.
+			* **$limit** (int)  
+			* **$offset** (int)  
+
+		
+		:Returns: :any:`\\Doctrine\\DBAL\\Statement <Doctrine\\DBAL\\Statement>` The prepared statement\.
+		:Throws: :any:`\\Doctrine\\DBAL\\Exception <Doctrine\\DBAL\\Exception>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public executeQuery( $sql, $params=\[\], $types=\[\], $qcp=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Executes an, optionally parametrized, SQL query\.
+			
+			| If the query is parametrized, a prepared statement is used\.
+			| If an SQLLogger is configured, the execution is logged\.
+			
+		
+		:Source:
+			`lib/private/DB/Connection.php#228 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/Connection.php#L228>`_
+		
+		
+		:Parameters:
+			* **$sql** (string)  The SQL query to execute.
+			* **$params** (array)  The parameters to bind to the query, if any.
+			* **$types** (array)  The types the previous parameters are in.
+			* **$qcp** (:any:`Doctrine\\DBAL\\Cache\\QueryCacheProfile <Doctrine\\DBAL\\Cache\\QueryCacheProfile>` | null)  The query cache profile, optional.
+
+		
+		:Returns: :any:`\\Doctrine\\DBAL\\Result <Doctrine\\DBAL\\Result>` The executed statement\.
+		:Throws: :any:`\\Doctrine\\DBAL\\Exception <Doctrine\\DBAL\\Exception>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public executeUpdate( $sql, $params=\[\], $types=\[\])
+	
+		:Source:
+			`lib/private/DB/Connection.php#238 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/Connection.php#L238>`_
+		
+		
+		:Throws: :any:`\\Doctrine\\DBAL\\Exception <Doctrine\\DBAL\\Exception>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public executeStatement( $sql, $params=\[\], $types=\[\])
+	
+		.. rst-class:: phpdoc-description
+		
+			| Executes an SQL INSERT/UPDATE/DELETE query with the given parameters
+			| and returns the number of affected rows\.
+			
+			| This method supports PDO binding types as well as DBAL mapping types\.
+			
+		
+		:Source:
+			`lib/private/DB/Connection.php#259 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/Connection.php#L259>`_
+		
+		
+		:Parameters:
+			* **$sql** (string)  The SQL query.
+			* **$params** (array)  The query parameters.
+			* **$types** (array)  The parameter types.
+
+		
+		:Returns: int The number of affected rows\.
+		:Throws: :any:`\\Doctrine\\DBAL\\Exception <Doctrine\\DBAL\\Exception>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public lastInsertId( $seqName=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the ID of the last inserted row, or the last value from a sequence object,
+			| depending on the underlying driver\.
+			
+			| Note: This method may not return a meaningful or consistent result across different drivers,
+			| because the underlying database may not even support the notion of AUTO\_INCREMENT/IDENTITY
+			| columns or sequences\.
+			
+		
+		:Source:
+			`lib/private/DB/Connection.php#279 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/Connection.php#L279>`_
+		
+		
+		:Parameters:
+			* **$seqName** (string)  Name of the sequence object from which the ID should be returned.
+
+		
+		:Returns: string the last inserted ID\.
+		:Throws: :any:`\\Doctrine\\DBAL\\Exception <Doctrine\\DBAL\\Exception>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public realLastInsertId( $seqName=null)
+	
+		:Source:
+			`lib/private/DB/Connection.php#290 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/Connection.php#L290>`_
+		
+		
+		:Throws: :any:`\\Doctrine\\DBAL\\Exception <Doctrine\\DBAL\\Exception>` 
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public insertIfNotExist( $table, $input, $compare=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Insert a row if the matching row does not exists\. To accomplish proper race condition avoidance
+			| it is needed that there is also a unique constraint on the values\. Then this method will
+			| catch the exception and return 0\.
+			
+		
+		:Source:
+			`lib/private/DB/Connection.php#308 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/Connection.php#L308>`_
+		
+		
+		:Parameters:
+			* **$table** (string)  The table name (will replace *PREFIX* with the actual prefix)
+			* **$input** (array)  data that should be inserted into the table  (column name => value)
+			* **$compare** (array | null)  List of values that should be checked for "if not exists"
+			If this is null or an empty array, all keys of $input will be compared
+			Please note: text fields (clob) must not be used in the compare array
+
+		
+		:Returns: int number of inserted rows
+		:Throws: :any:`\\Doctrine\\DBAL\\Exception <Doctrine\\DBAL\\Exception>` 
+		:Deprecated: 15.0.0 \- use unique index and "try \{ $db\-\>insert\(\) \} catch \(UniqueConstraintViolationException $e\) \}" instead, because it is more reliable and does not have the risk for deadlocks \- see https://github\.com/nextcloud/server/pull/12371
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public insertIgnoreConflict( $table, $values)
+	
+		:Source:
+			`lib/private/DB/Connection.php#312 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/Connection.php#L312>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setValues( $table, $keys, $values, $updatePreconditionValues=\[\])
+	
+		.. rst-class:: phpdoc-description
+		
+			| Insert or update a row value
+			
+		
+		:Source:
+			`lib/private/DB/Connection.php#337 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/Connection.php#L337>`_
+		
+		
+		:Parameters:
+			* **$table** (string)  
+			* **$keys** (array)  (column name => value)
+			* **$values** (array)  (column name => value)
+			* **$updatePreconditionValues** (array)  ensure values match preconditions (column name => value)
+
+		
+		:Returns: int number of new rows
+		:Throws: :any:`\\Doctrine\\DBAL\\Exception <Doctrine\\DBAL\\Exception>` 
+		:Throws: :any:`\\OCP\\PreConditionNotMetException <OCP\\PreConditionNotMetException>` 
+		:Throws: :any:`\\Doctrine\\DBAL\\Exception <Doctrine\\DBAL\\Exception>` 
+		:Throws: :any:`\\OCP\\PreConditionNotMetException <OCP\\PreConditionNotMetException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public lockTable( $tableName)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Create an exclusive read\+write lock on a table
+			
+		
+		:Source:
+			`lib/private/DB/Connection.php#391 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/Connection.php#L391>`_
+		
+		
+		:Parameters:
+			* **$tableName** (string)  
+
+		
+		:Throws: :any:`\\BadMethodCallException <BadMethodCallException>` When trying to acquire a second lock
+		:Throws: :any:`\\Doctrine\\DBAL\\Exception <Doctrine\\DBAL\\Exception>` 
+		:Throws: :any:`\\BadMethodCallException <BadMethodCallException>` When trying to acquire a second lock
+		:Throws: :any:`\\Doctrine\\DBAL\\Exception <Doctrine\\DBAL\\Exception>` 
+		:Since: 9.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public unlockTable()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Release a previous acquired lock again
+			
+		
+		:Source:
+			`lib/private/DB/Connection.php#407 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/Connection.php#L407>`_
+		
+		
+		:Throws: :any:`\\Doctrine\\DBAL\\Exception <Doctrine\\DBAL\\Exception>` 
+		:Since: 9.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getError()
+	
+		.. rst-class:: phpdoc-description
+		
+			| returns the error code and message as a string for logging
+			| works with DoctrineException
+			
+		
+		:Source:
+			`lib/private/DB/Connection.php#417 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/Connection.php#L417>`_
+		
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public errorCode()
+	
+		:Source:
+			`lib/private/DB/Connection.php#428 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/Connection.php#L428>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public errorInfo()
+	
+		:Source:
+			`lib/private/DB/Connection.php#432 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/Connection.php#L432>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public dropTable( $table)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Drop a table from the database if it exists
+			
+		
+		:Source:
+			`lib/private/DB/Connection.php#443 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/Connection.php#L443>`_
+		
+		
+		:Parameters:
+			* **$table** (string)  table name without the prefix
+
+		
+		:Throws: :any:`\\Doctrine\\DBAL\\Exception <Doctrine\\DBAL\\Exception>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public tableExists( $table)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check if a table exists
+			
+		
+		:Source:
+			`lib/private/DB/Connection.php#459 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/Connection.php#L459>`_
+		
+		
+		:Parameters:
+			* **$table** (string)  table name without the prefix
+
+		
+		:Returns: bool 
+		:Throws: :any:`\\Doctrine\\DBAL\\Exception <Doctrine\\DBAL\\Exception>` 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected replaceTablePrefix( $statement)
+	
+		:Source:
+			`lib/private/DB/Connection.php#470 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/Connection.php#L470>`_
+		
+		
+		:Parameters:
+			* **$statement** (string)  
+
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public inTransaction()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check if a transaction is active
+			
+		
+		:Source:
+			`lib/private/DB/Connection.php#480 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/Connection.php#L480>`_
+		
+		
+		:Returns: bool 
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public escapeLikeParameter( $param)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Escape a parameter to be used in a LIKE query
+			
+		
+		:Source:
+			`lib/private/DB/Connection.php#490 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/Connection.php#L490>`_
+		
+		
+		:Parameters:
+			* **$param** (string)  
+
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public supports4ByteText()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check whether or not the current database support 4byte wide unicode
+			
+		
+		:Source:
+			`lib/private/DB/Connection.php#500 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/Connection.php#L500>`_
+		
+		
+		:Returns: bool 
+		:Since: 11.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public createSchema()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Create the schema of the connected database
+			
+		
+		:Source:
+			`lib/private/DB/Connection.php#514 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/Connection.php#L514>`_
+		
+		
+		:Returns: :any:`\\Doctrine\\DBAL\\Schema\\Schema <Doctrine\\DBAL\\Schema\\Schema>` 
+		:Throws: :any:`\\Doctrine\\DBAL\\Exception <Doctrine\\DBAL\\Exception>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public migrateToSchema( $toSchema)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Migrate the database to the given schema
+			
+		
+		:Source:
+			`lib/private/DB/Connection.php#526 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/Connection.php#L526>`_
+		
+		
+		:Parameters:
+			* **$toSchema** (:any:`Doctrine\\DBAL\\Schema\\Schema <Doctrine\\DBAL\\Schema\\Schema>`)  
+
+		
+		:Throws: :any:`\\Doctrine\\DBAL\\Exception <Doctrine\\DBAL\\Exception>` 
+	
+	
+

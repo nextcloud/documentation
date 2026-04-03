@@ -1,0 +1,551 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Namespaces &mdash; Nextcloud 13 Developer Manual 13 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'13',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../general/index.html">General contributor guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/startapp.html">Create an app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/init.html">Navigation and pre-app configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/info.html">App metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/classloader.html">Classloader</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/request.html">Request lifecycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/routes.html">Routing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/middleware.html">Middleware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/container.html">Container</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/controllers.html">Controllers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/api.html">RESTful API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/templates.html">Templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/js.html">JavaScript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/css.html">CSS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/l10n.html">Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/theming.html">Theming support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/schema.html">Database schema</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/database.html">Database access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/filesystem.html">Filesystem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/appdata.html">AppData</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/users.html">User management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/two-factor-provider.html">Two-factor providers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/hooks.html">Hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/backgroundjobs.html">Background jobs (Cron)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/settings.html">Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/logging.html">Logging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/migrations.html">Migrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/repair.html">Repair steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/publishing.html">App store publishing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/code_signing.html">Code signing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../design/index.html">Design guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../android_library/index.html">Android application development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client_apis/index.html">Client APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../core/translation.html">Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../core/unit-testing.html">Unit-Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../core/theming.html">Theming Nextcloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../core/externalapi.html">External API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../core/ocs-share-api.html">OCS Share API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../core/index.html">Core development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bugtracker/index.html">Bugtracker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../commun/index.html">Help and communication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API Documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Nextcloud 13 Developer Manual</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Namespaces</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/nextcloud/documentation/edit/stable13/developer_manual/api/index-namespaces-all.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="phpdoctorst section" id="namespaces">
+<span id="id1"></span><h1>Namespaces<a class="headerlink" href="#namespaces" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">\</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/index.html">\OC</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OCP/index.html">\OCP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OCP/Accounts/index.html">\OCP\Accounts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OCP/Activity/index.html">\OCP\Activity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OCP/App/index.html">\OCP\App</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OCP/AppFramework/index.html">\OCP\AppFramework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OCP/AppFramework/Bootstrap/index.html">\OCP\AppFramework\Bootstrap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OCP/AppFramework/Db/index.html">\OCP\AppFramework\Db</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OCP/AppFramework/Http/index.html">\OCP\AppFramework\Http</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OCP/AppFramework/Http/Events/index.html">\OCP\AppFramework\Http\Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OCP/AppFramework/Http/Template/index.html">\OCP\AppFramework\Http\Template</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OCP/AppFramework/OCS/index.html">\OCP\AppFramework\OCS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OCP/AppFramework/Services/index.html">\OCP\AppFramework\Services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OCP/AppFramework/Utility/index.html">\OCP\AppFramework\Utility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OCP/Authentication/index.html">\OCP\Authentication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OCP/Authentication/Events/index.html">\OCP\Authentication\Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OCP/Authentication/Exceptions/index.html">\OCP\Authentication\Exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OCP/Authentication/LoginCredentials/index.html">\OCP\Authentication\LoginCredentials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OCP/Authentication/TwoFactorAuth/index.html">\OCP\Authentication\TwoFactorAuth</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OCP/BackgroundJob/index.html">\OCP\BackgroundJob</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OCP/Broadcast/Events/index.html">\OCP\Broadcast\Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OCP/Calendar/index.html">\OCP\Calendar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OCP/Calendar/Resource/index.html">\OCP\Calendar\Resource</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OCP/Calendar/Room/index.html">\OCP\Calendar\Room</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OCP/Capabilities/index.html">\OCP\Capabilities</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OCP/Collaboration/AutoComplete/index.html">\OCP\Collaboration\AutoComplete</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OCP/Collaboration/Collaborators/index.html">\OCP\Collaboration\Collaborators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OCP/Collaboration/Resources/index.html">\OCP\Collaboration\Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OCP/Command/index.html">\OCP\Command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OCP/Comments/index.html">\OCP\Comments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OCP/Console/index.html">\OCP\Console</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OCP/Contacts/index.html">\OCP\Contacts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OCP/Contacts/ContactsMenu/index.html">\OCP\Contacts\ContactsMenu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OCP/Contacts/Events/index.html">\OCP\Contacts\Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OCP/DB/index.html">\OCP\DB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OCP/DB/QueryBuilder/index.html">\OCP\DB\QueryBuilder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OCP/Dashboard/index.html">\OCP\Dashboard</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OCP/Dashboard/Exceptions/index.html">\OCP\Dashboard\Exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OCP/Dashboard/Model/index.html">\OCP\Dashboard\Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OCP/Dashboard/Service/index.html">\OCP\Dashboard\Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OCP/Diagnostics/index.html">\OCP\Diagnostics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OCP/DirectEditing/index.html">\OCP\DirectEditing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OCP/Encryption/index.html">\OCP\Encryption</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OCP/Encryption/Exceptions/index.html">\OCP\Encryption\Exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OCP/Encryption/Keys/index.html">\OCP\Encryption\Keys</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OCP/EventDispatcher/index.html">\OCP\EventDispatcher</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OCP/Federation/index.html">\OCP\Federation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OCP/Federation/Exceptions/index.html">\OCP\Federation\Exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OCP/Files/index.html">\OCP\Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OCP/Files/Cache/index.html">\OCP\Files\Cache</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OCP/Files/Config/index.html">\OCP\Files\Config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OCP/Files/Events/index.html">\OCP\Files\Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OCP/Files/Events/Node/index.html">\OCP\Files\Events\Node</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OCP/Files/Mount/index.html">\OCP\Files\Mount</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OCP/Files/Notify/index.html">\OCP\Files\Notify</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OCP/Files/ObjectStore/index.html">\OCP\Files\ObjectStore</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OCP/Files/Search/index.html">\OCP\Files\Search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OCP/Files/SimpleFS/index.html">\OCP\Files\SimpleFS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OCP/Files/Storage/index.html">\OCP\Files\Storage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OCP/Files/Template/index.html">\OCP\Files\Template</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OCP/Files_FullTextSearch/Model/index.html">\OCP\Files_FullTextSearch\Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OCP/FullTextSearch/index.html">\OCP\FullTextSearch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OCP/FullTextSearch/Exceptions/index.html">\OCP\FullTextSearch\Exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OCP/FullTextSearch/Model/index.html">\OCP\FullTextSearch\Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OCP/FullTextSearch/Service/index.html">\OCP\FullTextSearch\Service</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OCP/GlobalScale/index.html">\OCP\GlobalScale</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OCP/Group/index.html">\OCP\Group</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OCP/Group/Backend/index.html">\OCP\Group\Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OCP/Group/Events/index.html">\OCP\Group\Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OCP/Http/Client/index.html">\OCP\Http\Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OCP/Http/WellKnown/index.html">\OCP\Http\WellKnown</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OCP/L10N/index.html">\OCP\L10N</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OCP/LDAP/index.html">\OCP\LDAP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OCP/Lock/index.html">\OCP\Lock</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OCP/Lockdown/index.html">\OCP\Lockdown</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OCP/Log/index.html">\OCP\Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OCP/Log/Audit/index.html">\OCP\Log\Audit</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OCP/Mail/index.html">\OCP\Mail</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OCP/Mail/Events/index.html">\OCP\Mail\Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OCP/Migration/index.html">\OCP\Migration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OCP/Notification/index.html">\OCP\Notification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OCP/OCS/index.html">\OCP\OCS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OCP/Preview/index.html">\OCP\Preview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OCP/Remote/index.html">\OCP\Remote</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OCP/Remote/Api/index.html">\OCP\Remote\Api</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OCP/RichObjectStrings/index.html">\OCP\RichObjectStrings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OCP/Route/index.html">\OCP\Route</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OCP/Search/index.html">\OCP\Search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OCP/Security/index.html">\OCP\Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OCP/Security/Bruteforce/index.html">\OCP\Security\Bruteforce</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OCP/Security/CSP/index.html">\OCP\Security\CSP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OCP/Security/Events/index.html">\OCP\Security\Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OCP/Security/FeaturePolicy/index.html">\OCP\Security\FeaturePolicy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OCP/Session/Exceptions/index.html">\OCP\Session\Exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OCP/Settings/index.html">\OCP\Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OCP/Share/index.html">\OCP\Share</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OCP/Share/Events/index.html">\OCP\Share\Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OCP/Share/Exceptions/index.html">\OCP\Share\Exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OCP/Support/CrashReport/index.html">\OCP\Support\CrashReport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OCP/Support/Subscription/index.html">\OCP\Support\Subscription</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OCP/Support/Subscription/Exception/index.html">\OCP\Support\Subscription\Exception</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OCP/SystemTag/index.html">\OCP\SystemTag</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OCP/User/index.html">\OCP\User</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OCP/UserStatus/index.html">\OCP\UserStatus</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OCP/User/Backend/index.html">\OCP\User\Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OCP/User/Events/index.html">\OCP\User\Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OCP/WorkflowEngine/index.html">\OCP\WorkflowEngine</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OCP/WorkflowEngine/EntityContext/index.html">\OCP\WorkflowEngine\EntityContext</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OCP/WorkflowEngine/Events/index.html">\OCP\WorkflowEngine\Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/Accounts/index.html">\OC\Accounts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/Activity/index.html">\OC\Activity</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/App/index.html">\OC\App</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/AppFramework/index.html">\OC\AppFramework</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/AppFramework/Bootstrap/index.html">\OC\AppFramework\Bootstrap</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/AppFramework/DependencyInjection/index.html">\OC\AppFramework\DependencyInjection</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/AppFramework/Http/index.html">\OC\AppFramework\Http</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/AppFramework/Middleware/index.html">\OC\AppFramework\Middleware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/AppFramework/Middleware/PublicShare/index.html">\OC\AppFramework\Middleware\PublicShare</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/AppFramework/Middleware/PublicShare/Exceptions/index.html">\OC\AppFramework\Middleware\PublicShare\Exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/AppFramework/Middleware/Security/index.html">\OC\AppFramework\Middleware\Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/AppFramework/Middleware/Security/Exceptions/index.html">\OC\AppFramework\Middleware\Security\Exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/AppFramework/OCS/index.html">\OC\AppFramework\OCS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/AppFramework/Routing/index.html">\OC\AppFramework\Routing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/AppFramework/Services/index.html">\OC\AppFramework\Services</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/AppFramework/Utility/index.html">\OC\AppFramework\Utility</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/App/AppStore/Bundles/index.html">\OC\App\AppStore\Bundles</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/App/AppStore/Fetcher/index.html">\OC\App\AppStore\Fetcher</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/App/AppStore/Version/index.html">\OC\App\AppStore\Version</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/Archive/index.html">\OC\Archive</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/Authentication/Events/index.html">\OC\Authentication\Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/Authentication/Exceptions/index.html">\OC\Authentication\Exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/Authentication/Listeners/index.html">\OC\Authentication\Listeners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/Authentication/Login/index.html">\OC\Authentication\Login</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/Authentication/LoginCredentials/index.html">\OC\Authentication\LoginCredentials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/Authentication/Notifications/index.html">\OC\Authentication\Notifications</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/Authentication/Token/index.html">\OC\Authentication\Token</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/Authentication/TwoFactorAuth/index.html">\OC\Authentication\TwoFactorAuth</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/Authentication/TwoFactorAuth/Db/index.html">\OC\Authentication\TwoFactorAuth\Db</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/Authentication/WebAuthn/index.html">\OC\Authentication\WebAuthn</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/Authentication/WebAuthn/Db/index.html">\OC\Authentication\WebAuthn\Db</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/Avatar/index.html">\OC\Avatar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/BackgroundJob/index.html">\OC\BackgroundJob</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/BackgroundJob/Legacy/index.html">\OC\BackgroundJob\Legacy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/Broadcast/Events/index.html">\OC\Broadcast\Events</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/Cache/index.html">\OC\Cache</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/Calendar/index.html">\OC\Calendar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/Calendar/Resource/index.html">\OC\Calendar\Resource</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/Calendar/Room/index.html">\OC\Calendar\Room</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/Collaboration/AutoComplete/index.html">\OC\Collaboration\AutoComplete</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/Collaboration/Collaborators/index.html">\OC\Collaboration\Collaborators</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/Collaboration/Resources/index.html">\OC\Collaboration\Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/Command/index.html">\OC\Command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/Comments/index.html">\OC\Comments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/Console/index.html">\OC\Console</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/Contacts/ContactsMenu/index.html">\OC\Contacts\ContactsMenu</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/Contacts/ContactsMenu/Actions/index.html">\OC\Contacts\ContactsMenu\Actions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/Contacts/ContactsMenu/Providers/index.html">\OC\Contacts\ContactsMenu\Providers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/DB/index.html">\OC\DB</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/DB/Exceptions/index.html">\OC\DB\Exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/DB/QueryBuilder/index.html">\OC\DB\QueryBuilder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/DB/QueryBuilder/ExpressionBuilder/index.html">\OC\DB\QueryBuilder\ExpressionBuilder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/DB/QueryBuilder/FunctionBuilder/index.html">\OC\DB\QueryBuilder\FunctionBuilder</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/Dashboard/index.html">\OC\Dashboard</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/Diagnostics/index.html">\OC\Diagnostics</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/DirectEditing/index.html">\OC\DirectEditing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/Encryption/index.html">\OC\Encryption</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/Encryption/Exceptions/index.html">\OC\Encryption\Exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/Encryption/Keys/index.html">\OC\Encryption\Keys</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/EventDispatcher/index.html">\OC\EventDispatcher</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/Federation/index.html">\OC\Federation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/Files/index.html">\OC\Files</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/Files/AppData/index.html">\OC\Files\AppData</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/Files/Cache/index.html">\OC\Files\Cache</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/Files/Cache/Wrapper/index.html">\OC\Files\Cache\Wrapper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/Files/Config/index.html">\OC\Files\Config</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/Files/Mount/index.html">\OC\Files\Mount</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/Files/Node/index.html">\OC\Files\Node</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/Files/Notify/index.html">\OC\Files\Notify</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/Files/ObjectStore/index.html">\OC\Files\ObjectStore</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/Files/Search/index.html">\OC\Files\Search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/Files/SimpleFS/index.html">\OC\Files\SimpleFS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/Files/Storage/index.html">\OC\Files\Storage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/Files/Storage/PolyFill/index.html">\OC\Files\Storage\PolyFill</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/Files/Storage/Wrapper/index.html">\OC\Files\Storage\Wrapper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/Files/Stream/index.html">\OC\Files\Stream</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/Files/Template/index.html">\OC\Files\Template</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/Files/Type/index.html">\OC\Files\Type</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/Files/Utils/index.html">\OC\Files\Utils</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/FullTextSearch/index.html">\OC\FullTextSearch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/FullTextSearch/Model/index.html">\OC\FullTextSearch\Model</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/GlobalScale/index.html">\OC\GlobalScale</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/Group/index.html">\OC\Group</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/Hooks/index.html">\OC\Hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/Http/index.html">\OC\Http</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/Http/Client/index.html">\OC\Http\Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/Http/WellKnown/index.html">\OC\Http\WellKnown</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/IntegrityCheck/index.html">\OC\IntegrityCheck</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/IntegrityCheck/Exceptions/index.html">\OC\IntegrityCheck\Exceptions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/IntegrityCheck/Helpers/index.html">\OC\IntegrityCheck\Helpers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/IntegrityCheck/Iterator/index.html">\OC\IntegrityCheck\Iterator</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/KnownUser/index.html">\OC\KnownUser</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/L10N/index.html">\OC\L10N</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/LDAP/index.html">\OC\LDAP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/Lock/index.html">\OC\Lock</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/Lockdown/index.html">\OC\Lockdown</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/Lockdown/Filesystem/index.html">\OC\Lockdown\Filesystem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/Log/index.html">\OC\Log</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/Mail/index.html">\OC\Mail</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/Memcache/index.html">\OC\Memcache</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/Migration/index.html">\OC\Migration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/Notification/index.html">\OC\Notification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/OCS/index.html">\OC\OCS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/Preview/index.html">\OC\Preview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/Preview/Storage/index.html">\OC\Preview\Storage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/Remote/index.html">\OC\Remote</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/Remote/Api/index.html">\OC\Remote\Api</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/Repair/index.html">\OC\Repair</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/Repair/NC11/index.html">\OC\Repair\NC11</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/Repair/NC13/index.html">\OC\Repair\NC13</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/Repair/NC14/index.html">\OC\Repair\NC14</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/Repair/NC16/index.html">\OC\Repair\NC16</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/Repair/NC18/index.html">\OC\Repair\NC18</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/Repair/NC20/index.html">\OC\Repair\NC20</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/Repair/NC21/index.html">\OC\Repair\NC21</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/Repair/NC22/index.html">\OC\Repair\NC22</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/Repair/Owncloud/index.html">\OC\Repair\Owncloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/RichObjectStrings/index.html">\OC\RichObjectStrings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/Route/index.html">\OC\Route</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/Search/index.html">\OC\Search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/Search/Provider/index.html">\OC\Search\Provider</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/Search/Result/index.html">\OC\Search\Result</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/Security/index.html">\OC\Security</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/Security/Bruteforce/index.html">\OC\Security\Bruteforce</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/Security/CSP/index.html">\OC\Security\CSP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/Security/CSRF/index.html">\OC\Security\CSRF</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/Security/CSRF/TokenStorage/index.html">\OC\Security\CSRF\TokenStorage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/Security/FeaturePolicy/index.html">\OC\Security\FeaturePolicy</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/Security/IdentityProof/index.html">\OC\Security\IdentityProof</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/Security/Normalizer/index.html">\OC\Security\Normalizer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/Security/RateLimiting/index.html">\OC\Security\RateLimiting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/Security/RateLimiting/Backend/index.html">\OC\Security\RateLimiting\Backend</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/Security/RateLimiting/Exception/index.html">\OC\Security\RateLimiting\Exception</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/Session/index.html">\OC\Session</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/Settings/index.html">\OC\Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/Setup/index.html">\OC\Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/Share/index.html">\OC\Share</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/Share20/index.html">\OC\Share20</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/Share20/Exception/index.html">\OC\Share20\Exception</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/Support/CrashReport/index.html">\OC\Support\CrashReport</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/Support/Subscription/index.html">\OC\Support\Subscription</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/SystemTag/index.html">\OC\SystemTag</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/Tagging/index.html">\OC\Tagging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/Template/index.html">\OC\Template</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/Updater/index.html">\OC\Updater</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/User/index.html">\OC\User</a></li>
+<li class="toctree-l1"><a class="reference internal" href="OC/UserStatus/index.html">\OC\UserStatus</a></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021 Nextcloud GmbH.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: 13
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/13/developer_manual">13</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/14/developer_manual">14</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/15/developer_manual">15</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/developer_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/developer_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+   
+
+</body>
+</html>

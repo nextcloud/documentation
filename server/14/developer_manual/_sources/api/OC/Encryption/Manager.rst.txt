@@ -1,0 +1,325 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+Manager
+=======
+
+
+.. php:namespace:: OC\Encryption
+
+.. php:class:: Manager
+
+
+	:Source:
+		`lib/private/Encryption/Manager.php#40 <https://github.com/nextcloud/server/blob/stable13/lib/private/Encryption/Manager.php#L40>`_
+	
+	:Implements:
+		:php:interface:`OCP\\Encryption\\IManager` 
+	
+
+Properties
+----------
+
+.. php:attr:: protected static encryptionModules
+
+	:Source:
+		`lib/private/Encryption/Manager.php#43 <https://github.com/nextcloud/server/blob/stable13/lib/private/Encryption/Manager.php#L43>`_
+	
+	:Type: array 
+
+
+.. php:attr:: protected static config
+
+	:Source:
+		`lib/private/Encryption/Manager.php#46 <https://github.com/nextcloud/server/blob/stable13/lib/private/Encryption/Manager.php#L46>`_
+	
+	:Type: :any:`\\OCP\\IConfig <OCP\\IConfig>` 
+
+
+.. php:attr:: protected static logger
+
+	:Source:
+		`lib/private/Encryption/Manager.php#49 <https://github.com/nextcloud/server/blob/stable13/lib/private/Encryption/Manager.php#L49>`_
+	
+	:Type: :any:`\\OCP\\ILogger <OCP\\ILogger>` 
+
+
+.. php:attr:: protected static l
+
+	:Source:
+		`lib/private/Encryption/Manager.php#52 <https://github.com/nextcloud/server/blob/stable13/lib/private/Encryption/Manager.php#L52>`_
+	
+	:Type: :any:`\\OC\\Encryption\\Il10n <OC\\Encryption\\Il10n>` 
+
+
+.. php:attr:: protected static rootView
+
+	:Source:
+		`lib/private/Encryption/Manager.php#55 <https://github.com/nextcloud/server/blob/stable13/lib/private/Encryption/Manager.php#L55>`_
+	
+	:Type: :any:`\\OC\\Files\\View <OC\\Files\\View>` 
+
+
+.. php:attr:: protected static util
+
+	:Source:
+		`lib/private/Encryption/Manager.php#58 <https://github.com/nextcloud/server/blob/stable13/lib/private/Encryption/Manager.php#L58>`_
+	
+	:Type: :any:`\\OC\\Encryption\\Util <OC\\Encryption\\Util>` 
+
+
+.. php:attr:: protected static arrayCache
+
+	:Source:
+		`lib/private/Encryption/Manager.php#61 <https://github.com/nextcloud/server/blob/stable13/lib/private/Encryption/Manager.php#L61>`_
+	
+	:Type: :any:`\\OC\\Memcache\\ArrayCache <OC\\Memcache\\ArrayCache>` 
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $config, $logger, $l10n, $rootView, $util, $arrayCache)
+	
+		:Source:
+			`lib/private/Encryption/Manager.php#71 <https://github.com/nextcloud/server/blob/stable13/lib/private/Encryption/Manager.php#L71>`_
+		
+		
+		:Parameters:
+			* **$config** (:any:`OCP\\IConfig <OCP\\IConfig>`)  
+			* **$logger** (:any:`OCP\\ILogger <OCP\\ILogger>`)  
+			* **$l10n** (:any:`OCP\\IL10N <OCP\\IL10N>`)  
+			* **$rootView** (:any:`OC\\Files\\View <OC\\Files\\View>`)  
+			* **$util** (:any:`OC\\Encryption\\Util <OC\\Encryption\\Util>`)  
+			* **$arrayCache** (:any:`OC\\Memcache\\ArrayCache <OC\\Memcache\\ArrayCache>`)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isEnabled()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check if encryption is enabled
+			
+		
+		:Source:
+			`lib/private/Encryption/Manager.php#86 <https://github.com/nextcloud/server/blob/stable13/lib/private/Encryption/Manager.php#L86>`_
+		
+		
+		:Returns: bool true if enabled, false if not
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isReady()
+	
+		.. rst-class:: phpdoc-description
+		
+			| check if new encryption is ready
+			
+		
+		:Source:
+			`lib/private/Encryption/Manager.php#102 <https://github.com/nextcloud/server/blob/stable13/lib/private/Encryption/Manager.php#L102>`_
+		
+		
+		:Returns: bool 
+		:Throws: :any:`\\OC\\ServiceUnavailableException <OC\\ServiceUnavailableException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isReadyForUser( $user)
+	
+		:Source:
+			`lib/private/Encryption/Manager.php#113 <https://github.com/nextcloud/server/blob/stable13/lib/private/Encryption/Manager.php#L113>`_
+		
+		
+		:Parameters:
+			* **$user** (string)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public registerEncryptionModule( $id, $displayName, $callback)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Registers an callback function which must return an encryption module instance
+			
+		
+		:Source:
+			`lib/private/Encryption/Manager.php#137 <https://github.com/nextcloud/server/blob/stable13/lib/private/Encryption/Manager.php#L137>`_
+		
+		
+		:Parameters:
+			* **$id** (string)  
+			* **$displayName** (string)  
+			* **$callback** (callable)  
+
+		
+		:Throws: :any:`\\OC\\Encryption\\Exceptions\\ModuleAlreadyExistsException <OC\\Encryption\\Exceptions\\ModuleAlreadyExistsException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public unregisterEncryptionModule( $moduleId)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Unregisters an encryption module
+			
+		
+		:Source:
+			`lib/private/Encryption/Manager.php#160 <https://github.com/nextcloud/server/blob/stable13/lib/private/Encryption/Manager.php#L160>`_
+		
+		
+		:Parameters:
+			* **$moduleId** (string)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getEncryptionModules()
+	
+		.. rst-class:: phpdoc-description
+		
+			| get a list of all encryption modules
+			
+		
+		:Source:
+			`lib/private/Encryption/Manager.php#169 <https://github.com/nextcloud/server/blob/stable13/lib/private/Encryption/Manager.php#L169>`_
+		
+		
+		:Returns: array \[id =\> \[\'id\' =\> $id, \'displayName\' =\> $displayName, \'callback\' =\> callback\]\]
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getEncryptionModule( $moduleId="")
+	
+		.. rst-class:: phpdoc-description
+		
+			| get a specific encryption module
+			
+		
+		:Source:
+			`lib/private/Encryption/Manager.php#180 <https://github.com/nextcloud/server/blob/stable13/lib/private/Encryption/Manager.php#L180>`_
+		
+		
+		:Parameters:
+			* **$moduleId** (string)  
+
+		
+		:Returns: :any:`\\OCP\\Encryption\\IEncryptionModule <OCP\\Encryption\\IEncryptionModule>` 
+		:Throws: :any:`\\OC\\Encryption\\Exceptions\\ModuleDoesNotExistsException <OC\\Encryption\\Exceptions\\ModuleDoesNotExistsException>` 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected getDefaultEncryptionModule()
+	
+		.. rst-class:: phpdoc-description
+		
+			| get default encryption module
+			
+		
+		:Source:
+			`lib/private/Encryption/Manager.php#200 <https://github.com/nextcloud/server/blob/stable13/lib/private/Encryption/Manager.php#L200>`_
+		
+		
+		:Returns: :any:`\\OCP\\Encryption\\IEncryptionModule <OCP\\Encryption\\IEncryptionModule>` 
+		:Throws: :any:`\\OC\\Encryption\\Exceptions\\ModuleDoesNotExistsException <OC\\Encryption\\Exceptions\\ModuleDoesNotExistsException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setDefaultEncryptionModule( $moduleId)
+	
+		.. rst-class:: phpdoc-description
+		
+			| set default encryption module Id
+			
+		
+		:Source:
+			`lib/private/Encryption/Manager.php#221 <https://github.com/nextcloud/server/blob/stable13/lib/private/Encryption/Manager.php#L221>`_
+		
+		
+		:Parameters:
+			* **$moduleId** (string)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getDefaultEncryptionModuleId()
+	
+		.. rst-class:: phpdoc-description
+		
+			| get default encryption module Id
+			
+		
+		:Source:
+			`lib/private/Encryption/Manager.php#237 <https://github.com/nextcloud/server/blob/stable13/lib/private/Encryption/Manager.php#L237>`_
+		
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setupStorage()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Add storage wrapper
+			
+		
+		:Source:
+			`lib/private/Encryption/Manager.php#244 <https://github.com/nextcloud/server/blob/stable13/lib/private/Encryption/Manager.php#L244>`_
+		
+		
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected isKeyStorageReady()
+	
+		.. rst-class:: phpdoc-description
+		
+			| check if key storage is ready
+			
+		
+		:Source:
+			`lib/private/Encryption/Manager.php#258 <https://github.com/nextcloud/server/blob/stable13/lib/private/Encryption/Manager.php#L258>`_
+		
+		
+		:Returns: bool 
+	
+	
+

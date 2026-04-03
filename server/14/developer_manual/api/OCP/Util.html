@@ -1,0 +1,1308 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Util &mdash; Nextcloud 14 Developer Manual 14 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'14',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Template" href="Template.html" />
+    <link rel="prev" title="Constants" href="Constants.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html">
+          
+
+          
+            
+            <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../general/index.html">General contributor guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app/changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app/tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app/startapp.html">Create an app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app/init.html">Navigation and pre-app configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app/info.html">App metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app/classloader.html">Classloader</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app/request.html">Request lifecycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app/routes.html">Routing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app/middleware.html">Middleware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app/container.html">Container</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app/controllers.html">Controllers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app/api.html">RESTful API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app/templates.html">Templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app/js.html">JavaScript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app/css.html">CSS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app/l10n.html">Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app/theming.html">Theming support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app/schema.html">Database schema</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app/database.html">Database access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app/configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app/filesystem.html">Filesystem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app/appdata.html">AppData</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app/users.html">User management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app/two-factor-provider.html">Two-factor providers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app/hooks.html">Hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app/backgroundjobs.html">Background jobs (Cron)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app/settings.html">Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app/logging.html">Logging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app/migrations.html">Migrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app/repair.html">Repair steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app/testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app/publishing.html">App store publishing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app/code_signing.html">Code signing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../design/index.html">Design guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../android_library/index.html">Android application development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../client_apis/index.html">Client APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../core/index.html">Core development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../bugtracker/index.html">Bugtracker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../commun/index.html">Help and communication</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../api.html">API Documentation</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../api.html#php-public-api">PHP public API</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">/OCP namespace</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="index.html#namespaces">Namespaces</a></li>
+<li class="toctree-l4"><a class="reference internal" href="index.html#interfaces">Interfaces</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="index.html#classes">Classes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../api.html#php-class-reference">PHP class reference</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Nextcloud 14 Developer Manual</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../api.html">API Documentation</a> &raquo;</li>
+        
+          <li><a href="index.html">OCP</a> &raquo;</li>
+        
+      <li>Util</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/nextcloud/documentation/edit/stable14/developer_manual/api/OCP/Util.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="phpdoctorst section" id="namespace-OCP">
+<span id="util"></span><h1>Util<a class="headerlink" href="#namespace-OCP" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="OCP\Util">
+<em class="property">class </em><code class="descclassname">OCP\</code><code class="descname">Util</code><a class="headerlink" href="#OCP\Util" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">This class provides different helper functions to make the life of a developer easier</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Util.php#L61">lib/public/Util.php#61</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<div class="section" id="constants">
+<h2>Constants<a class="headerlink" href="#constants" title="Permalink to this headline">¶</a></h2>
+<dl class="const">
+<dt>
+<code class="descname">DEBUG = 0</code></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Util.php#L65">lib/public/Util.php#65</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Deprecated:</th><td class="field-body">14.0.0 use \OCP\ILogger::DEBUG</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="const">
+<dt>
+<code class="descname">INFO = 1</code></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Util.php#L69">lib/public/Util.php#69</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Deprecated:</th><td class="field-body">14.0.0 use \OCP\ILogger::INFO</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="const">
+<dt>
+<code class="descname">WARN = 2</code></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Util.php#L73">lib/public/Util.php#73</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Deprecated:</th><td class="field-body">14.0.0 use \OCP\ILogger::WARN</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="const">
+<dt>
+<code class="descname">ERROR = 3</code></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Util.php#L77">lib/public/Util.php#77</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Deprecated:</th><td class="field-body">14.0.0 use \OCP\ILogger::ERROR</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="const">
+<dt>
+<code class="descname">FATAL = 4</code></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Util.php#L81">lib/public/Util.php#81</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Deprecated:</th><td class="field-body">14.0.0 use \OCP\ILogger::FATAL</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h2>
+<dl class="attr">
+<dt id="OCP\Util::$needUpgradeCache">
+<em class="property">protected </em><em class="property">property </em><code class="descclassname">OCP\Util::$</code><code class="descname">needUpgradeCache</code><a class="headerlink" href="#OCP\Util::$needUpgradeCache" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Util.php#L510">lib/public/Util.php#510</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h2>
+<dl class="public static method">
+<dt id="OCP\Util::getVersion">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OCP\Util::</code><code class="descname">getVersion</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Util::getVersion" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">get the current installed version of Nextcloud</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Util.php#L91">lib/public/Util.php#91</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">array</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">4.0.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OCP\Util::hasExtendedSupport">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OCP\Util::</code><code class="descname">hasExtendedSupport</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Util::hasExtendedSupport" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Util.php#L98">lib/public/Util.php#98</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body">17.0.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OCP\Util::setChannel">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OCP\Util::</code><code class="descname">setChannel</code><span class="sig-paren">(</span><em>$channel</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Util::setChannel" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Set current update channel</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Util.php#L113">lib/public/Util.php#113</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$channel</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">8.1.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OCP\Util::getChannel">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OCP\Util::</code><code class="descname">getChannel</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Util::getChannel" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Get current update channel</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Util.php#L122">lib/public/Util.php#122</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">string</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">8.1.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static deprecated method">
+<dt id="OCP\Util::writeLog">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OCP\Util::</code><code class="descname">writeLog</code><span class="sig-paren">(</span><em>$app</em>, <em>$message</em>, <em>$level</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Util::writeLog" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">write a message in the log</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Util.php#L134">lib/public/Util.php#134</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$app</strong> (string)</li>
+<li><strong>$message</strong> (string)</li>
+<li><strong>$level</strong> (int)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body"><p class="first">4.0.0</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Deprecated:</th><td class="field-body"><p class="first last">13.0.0 use log of \OCP\ILogger</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static deprecated method">
+<dt id="OCP\Util::isSharingDisabledForUser">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OCP\Util::</code><code class="descname">isSharingDisabledForUser</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Util::isSharingDisabledForUser" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">check if sharing is disabled for the current user</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Util.php#L146">lib/public/Util.php#146</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">bool</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">7.0.0</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Deprecated:</th><td class="field-body">9.1.0 Use \OC::$server-&gt;getShareManager()-&gt;sharingDisabledForUser</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OCP\Util::getL10N">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OCP\Util::</code><code class="descname">getL10N</code><span class="sig-paren">(</span><em>$application</em>, <em>$language=null</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Util::getL10N" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">get l10n object</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Util.php#L166">lib/public/Util.php#166</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$application</strong> (string)</li>
+<li><strong>$language</strong> (string | null)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference internal" href="IL10N.html#OCP\IL10N" title="OCP\IL10N"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\IL10N</span></code></a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">6.0.0 - parameter $language was added in 8.0.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OCP\Util::addStyle">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OCP\Util::</code><code class="descname">addStyle</code><span class="sig-paren">(</span><em>$application</em>, <em>$file=null</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Util::addStyle" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">add a css file</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Util.php#L176">lib/public/Util.php#176</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$application</strong> (string)</li>
+<li><strong>$file</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">4.0.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OCP\Util::addScript">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OCP\Util::</code><code class="descname">addScript</code><span class="sig-paren">(</span><em>$application</em>, <em>$file=null</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Util::addScript" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">add a javascript file</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Util.php#L186">lib/public/Util.php#186</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$application</strong> (string)</li>
+<li><strong>$file</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">4.0.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OCP\Util::addTranslations">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OCP\Util::</code><code class="descname">addTranslations</code><span class="sig-paren">(</span><em>$application</em>, <em>$languageCode=null</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Util::addTranslations" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Add a translation JS file</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Util.php#L196">lib/public/Util.php#196</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$application</strong> (string)  application id</li>
+<li><strong>$languageCode</strong> (string)  language code, defaults to the current locale</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">8.0.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OCP\Util::addHeader">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OCP\Util::</code><code class="descname">addHeader</code><span class="sig-paren">(</span><em>$tag</em>, <em>$attributes</em>, <em>$text=null</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Util::addHeader" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Add a custom element to the header</div>
+<div class="line">If $text is null then the element will be written as empty element.</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">So use &#8220;&#8221; to get a closing tag.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Util.php#L209">lib/public/Util.php#209</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$tag</strong> (string)  tag name of the element</li>
+<li><strong>$attributes</strong> (array)  array of attributes for the element</li>
+<li><strong>$text</strong> (string)  the text content for the element</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">4.0.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OCP\Util::linkToAbsolute">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OCP\Util::</code><code class="descname">linkToAbsolute</code><span class="sig-paren">(</span><em>$app</em>, <em>$file</em>, <em>$args=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Util::linkToAbsolute" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Creates an absolute url to the given app and file.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Util.php#L222">lib/public/Util.php#222</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$app</strong> (string)  app</li>
+<li><strong>$file</strong> (string)  file</li>
+<li><strong>$args</strong> (array)  array with param=&gt;value, will be appended to the returned url</li>
+</ul>
+<p>The value of $args will be urlencoded</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">string the url</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">4.0.0 - parameter $args was added in 4.5.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OCP\Util::linkToRemote">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OCP\Util::</code><code class="descname">linkToRemote</code><span class="sig-paren">(</span><em>$service</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Util::linkToRemote" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Creates an absolute url for remote use.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Util.php#L235">lib/public/Util.php#235</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$service</strong> (string)  id</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">string the url</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">4.0.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static deprecated method">
+<dt id="OCP\Util::linkToPublic">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OCP\Util::</code><code class="descname">linkToPublic</code><span class="sig-paren">(</span><em>$service</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Util::linkToPublic" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Creates an absolute url for public use</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Util.php#L250">lib/public/Util.php#250</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$service</strong> (string)  id</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">string the url</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first">4.5.0</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Deprecated:</th><td class="field-body"><p class="first last">15.0.0 - use OCP\IURLGenerator</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OCP\Util::getServerHostName">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OCP\Util::</code><code class="descname">getServerHostName</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Util::getServerHostName" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Returns the server host name without an eventual port number</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Util.php#L263">lib/public/Util.php#263</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">string the server hostname</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">5.0.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OCP\Util::getDefaultEmailAddress">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OCP\Util::</code><code class="descname">getDefaultEmailAddress</code><span class="sig-paren">(</span><em>$user_part</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Util::getDefaultEmailAddress" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Returns the default email address</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Util.php#L289">lib/public/Util.php#289</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$user_part</strong> (string)  the user part of the address</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">string the default email address</p>
+<p>Assembles a default email address (using the server hostname
+and the given user part, and returns it
+Example: when given lostpassword-noreply as $user_part param,</p>
+<blockquote>
+<div><p>and is currently accessed via http(s)://example.com/,
+it would return <a class="reference external" href="mailto:'lostpassword-noreply&#37;&#52;&#48;example&#46;com">'lostpassword-noreply<span>&#64;</span>example<span>&#46;</span>com</a>&#8216;</p>
+</div></blockquote>
+<p>If the configuration value &#8216;mail_from_address&#8217; is set in
+config.php, this value will override the $user_part that
+is passed to this function</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">5.0.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OCP\Util::humanFileSize">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OCP\Util::</code><code class="descname">humanFileSize</code><span class="sig-paren">(</span><em>$bytes</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Util::humanFileSize" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Make a human file size (2048 to 2 kB)</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Util.php#L311">lib/public/Util.php#311</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$bytes</strong> (int)  file size in bytes</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">string a human readable file size</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">4.0.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OCP\Util::computerFileSize">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OCP\Util::</code><code class="descname">computerFileSize</code><span class="sig-paren">(</span><em>$str</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Util::computerFileSize" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Make a computer file size (2 kB to 2048)</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Util.php#L323">lib/public/Util.php#323</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$str</strong> (string)  file size in a fancy format</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">float a file size in bytes</p>
+<p>Inspired by: <a class="reference external" href="https://www.php.net/manual/en/function.filesize.php">https://www.php.net/manual/en/function.filesize.php</a>#92418</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">4.0.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static deprecated method">
+<dt id="OCP\Util::connectHook">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OCP\Util::</code><code class="descname">connectHook</code><span class="sig-paren">(</span><em>$signalClass</em>, <em>$signalName</em>, <em>$slotClass</em>, <em>$slotName</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Util::connectHook" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">connects a function to a hook</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Util.php#L342">lib/public/Util.php#342</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$signalClass</strong> (string)  class name of emitter</li>
+<li><strong>$signalName</strong> (string)  name of signal</li>
+<li><strong>$slotClass</strong> (string | object)  class name of slot</li>
+<li><strong>$slotName</strong> (string)  name of slot</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">bool This function makes it very easy to connect to use hooks.</p>
+<p>TODO: write example</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first">4.0.0</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Deprecated:</th><td class="field-body"><p class="first last">21.0.0 use \OCP\EventDispatcher\IEventDispatcher::addListener</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static deprecated method">
+<dt id="OCP\Util::emitHook">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OCP\Util::</code><code class="descname">emitHook</code><span class="sig-paren">(</span><em>$signalclass</em>, <em>$signalname</em>, <em>$params=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Util::emitHook" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Emits a signal. To get data from the slot use references!</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Util.php#L357">lib/public/Util.php#357</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$signalclass</strong> (string)  class name of emitter</li>
+<li><strong>$signalname</strong> (string)  name of signal</li>
+<li><strong>$params</strong> (array)  default: array() array with additional data</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">bool true if slots exists or false if not</p>
+<p>TODO: write example</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first">4.0.0</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Deprecated:</th><td class="field-body"><p class="first last">21.0.0 use \OCP\EventDispatcher\IEventDispatcher::dispatchTypedEvent</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OCP\Util::callRegister">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OCP\Util::</code><code class="descname">callRegister</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Util::callRegister" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Register an get/post call. This is important to prevent CSRF attacks</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Util.php#L373">lib/public/Util.php#373</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body">4.5.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OCP\Util::sanitizeHTML">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OCP\Util::</code><code class="descname">sanitizeHTML</code><span class="sig-paren">(</span><em>$value</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Util::sanitizeHTML" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Used to sanitize HTML</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">This function is used to sanitize HTML and should be applied on any</div>
+<div class="line">string or array of strings before displaying it on a web page.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Util.php#L390">lib/public/Util.php#390</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$value</strong> (string | array)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">string | array an array of sanitized strings or a single sanitized string, depends on the input parameter.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">4.5.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OCP\Util::encodePath">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OCP\Util::</code><code class="descname">encodePath</code><span class="sig-paren">(</span><em>$component</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Util::encodePath" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Public function to encode url parameters</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">This function is used to encode path to file before output.</div>
+<div class="line">Encoding is done according to RFC 3986 with one exception:</div>
+<div class="line">Character &#8216;/&#8217; is preserved as is.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Util.php#L405">lib/public/Util.php#405</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$component</strong> (string)  part of URI to encode</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">string</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">6.0.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OCP\Util::mb_array_change_key_case">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OCP\Util::</code><code class="descname">mb_array_change_key_case</code><span class="sig-paren">(</span><em>$input</em>, <em>$case=MB_CASE_LOWER</em>, <em>$encoding=UTF-8</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Util::mb_array_change_key_case" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Returns an array with all keys from input lowercased or uppercased. Numbered indices are left as is.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Util.php#L418">lib/public/Util.php#418</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$input</strong> (array)  The array to work on</li>
+<li><strong>$case</strong> (int)  Either MB_CASE_UPPER or MB_CASE_LOWER (default)</li>
+<li><strong>$encoding</strong> (string)  The encoding parameter is the character encoding. Defaults to UTF-8</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">array</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">4.5.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static deprecated method">
+<dt id="OCP\Util::recursiveArraySearch">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OCP\Util::</code><code class="descname">recursiveArraySearch</code><span class="sig-paren">(</span><em>$haystack</em>, <em>$needle</em>, <em>$index=null</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Util::recursiveArraySearch" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">performs a search in a nested array</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Util.php#L432">lib/public/Util.php#432</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$haystack</strong> (array)  the array to be searched</li>
+<li><strong>$needle</strong> (string)  the search string</li>
+<li><strong>$index</strong> (mixed)  optional, only search this key name</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">mixed the key of the matching field, otherwise false</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first">4.5.0</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Deprecated:</th><td class="field-body"><p class="first last">15.0.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OCP\Util::maxUploadFilesize">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OCP\Util::</code><code class="descname">maxUploadFilesize</code><span class="sig-paren">(</span><em>$dir</em>, <em>$free=null</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Util::maxUploadFilesize" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">calculates the maximum upload size respecting system settings, free space and user quota</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Util.php#L444">lib/public/Util.php#444</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$dir</strong> (string)  the current folder where the user currently operates</li>
+<li><strong>$free</strong> (int)  the number of bytes free on the storage holding $dir, if not set this will be received from the storage directly</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">int number of bytes representing</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">5.0.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OCP\Util::freeSpace">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OCP\Util::</code><code class="descname">freeSpace</code><span class="sig-paren">(</span><em>$dir</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Util::freeSpace" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Calculate free space left within user quota</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Util.php#L454">lib/public/Util.php#454</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$dir</strong> (string)  the current folder where the user currently operates</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">int number of bytes representing</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">7.0.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OCP\Util::uploadLimit">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OCP\Util::</code><code class="descname">uploadLimit</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Util::uploadLimit" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Calculate PHP upload limit</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Util.php#L464">lib/public/Util.php#464</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">int number of bytes representing</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">7.0.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static deprecated method">
+<dt id="OCP\Util::isValidFileName">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OCP\Util::</code><code class="descname">isValidFileName</code><span class="sig-paren">(</span><em>$file</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Util::isValidFileName" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Returns whether the given file name is valid</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Util.php#L476">lib/public/Util.php#476</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$file</strong> (string)  file name to check</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">bool true if the file name is valid, false otherwise</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Deprecated:</th><td class="field-body"><p class="first">8.1.0 use \OC\Files\View::verifyPath()</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">7.0.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OCP\Util::naturalSortCompare">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OCP\Util::</code><code class="descname">naturalSortCompare</code><span class="sig-paren">(</span><em>$a</em>, <em>$b</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Util::naturalSortCompare" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Compare two strings to provide a natural sort</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Util.php#L488">lib/public/Util.php#488</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$a</strong> (string)  first string to compare</li>
+<li><strong>$b</strong> (string)  second string to compare</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">int -1 if $b comes before $a, 1 if $a comes before $b
+or 0 if the strings are identical</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">7.0.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OCP\Util::isPublicLinkPasswordRequired">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OCP\Util::</code><code class="descname">isPublicLinkPasswordRequired</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Util::isPublicLinkPasswordRequired" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">check if a password is required for each public link</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Util.php#L497">lib/public/Util.php#497</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">bool</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">7.0.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OCP\Util::isDefaultExpireDateEnforced">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OCP\Util::</code><code class="descname">isDefaultExpireDateEnforced</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Util::isDefaultExpireDateEnforced" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">check if share API enforces a default expire date</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Util.php#L506">lib/public/Util.php#506</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">bool</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">8.0.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OCP\Util::needUpgrade">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OCP\Util::</code><code class="descname">needUpgrade</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Util::needUpgrade" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Checks whether the current version needs upgrade.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Util.php#L518">lib/public/Util.php#518</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">bool true if upgrade is needed, false otherwise</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">7.0.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="Template.html" class="btn btn-neutral float-right" title="Template" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="Constants.html" class="btn btn-neutral float-left" title="Constants" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021 Nextcloud GmbH.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: 14
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/14/developer_manual">14</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/15/developer_manual">15</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/16/developer_manual">16</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/developer_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/developer_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+   
+
+</body>
+</html>

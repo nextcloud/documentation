@@ -1,0 +1,110 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+ISecureRandom
+=============
+
+
+.. php:namespace:: OCP\Security
+
+.. php:interface:: ISecureRandom
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Class SecureRandom provides a wrapper around the random\_int function to generate
+		| secure random strings\. For PHP 7 the native CSPRNG is used, older versions do
+		| use a fallback\.
+		
+		| Usage:
+		| \\OC::$server\-\>getSecureRandom\(\)\-\>generate\(10\);
+		
+	
+	:Implemented by:
+		:php:class:`OC\\Security\\SecureRandom` 
+	
+	
+	:Source:
+		`lib/public/Security/ISecureRandom.php#42 <https://github.com/nextcloud/server/blob/stable13/lib/public/Security/ISecureRandom.php#L42>`_
+	
+
+Constants
+---------
+
+.. php:const:: CHAR_UPPER = ABCDEFGHIJKLMNOPQRSTUVWXYZ
+
+	.. rst-class:: phpdoc-description
+	
+		| Flags for characters that can be used for <code\>generate\($length, $characters\)</code\>
+		
+	
+	:Source:
+		`lib/public/Security/ISecureRandom.php#47 <https://github.com/nextcloud/server/blob/stable13/lib/public/Security/ISecureRandom.php#L47>`_
+	
+
+
+.. php:const:: CHAR_LOWER = abcdefghijklmnopqrstuvwxyz
+
+	:Source:
+		`lib/public/Security/ISecureRandom.php#48 <https://github.com/nextcloud/server/blob/stable13/lib/public/Security/ISecureRandom.php#L48>`_
+	
+
+
+.. php:const:: CHAR_DIGITS = 0123456789
+
+	:Source:
+		`lib/public/Security/ISecureRandom.php#49 <https://github.com/nextcloud/server/blob/stable13/lib/public/Security/ISecureRandom.php#L49>`_
+	
+
+
+.. php:const:: CHAR_SYMBOLS = \!\\"\#$%&\\\'\(\)\*\+,\-\./:;<=\>?@\[\\\]^\_\`\{\|\}~
+
+	:Source:
+		`lib/public/Security/ISecureRandom.php#50 <https://github.com/nextcloud/server/blob/stable13/lib/public/Security/ISecureRandom.php#L50>`_
+	
+
+
+.. php:const:: CHAR_HUMAN_READABLE = abcdefgijkmnopqrstwxyzABCDEFGHJKLMNPQRSTWXYZ23456789
+
+	.. rst-class:: phpdoc-description
+	
+		| Characters that can be used for <code\>generate\($length, $characters\)</code\>, to
+		| generate human readable random strings\. Lower\- and upper\-case characters and digits
+		| are included\. Characters which are ambiguous are excluded, such as I, l, and 1 and so on\.
+		
+	
+	:Source:
+		`lib/public/Security/ISecureRandom.php#57 <https://github.com/nextcloud/server/blob/stable13/lib/public/Security/ISecureRandom.php#L57>`_
+	
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public generate( $length, $characters=ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789\+/)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Generate a random string of specified length\.
+			
+		
+		:Source:
+			`lib/public/Security/ISecureRandom.php#67 <https://github.com/nextcloud/server/blob/stable13/lib/public/Security/ISecureRandom.php#L67>`_
+		
+		
+		:Parameters:
+			* **$length** (int)  The length of the generated string
+			* **$characters** (string)  An optional list of characters to use if no character list is
+			specified all valid base64 characters are used.
+
+		
+		:Returns: string 
+		:Since: 8.0.0 
+	
+	
+

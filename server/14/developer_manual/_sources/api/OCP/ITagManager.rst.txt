@@ -1,0 +1,65 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+ITagManager
+===========
+
+
+.. php:namespace:: OCP
+
+.. php:interface:: ITagManager
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Factory class creating instances of \\OCP\\ITags
+		
+		| A tag can be e\.g\. \'Family\', \'Work\', \'Chore\', \'Special Occation\' or
+		| anything else that is either parsed from a vobject or that the user chooses
+		| to add\.
+		| Tag names are not case\-sensitive, but will be saved with the case they
+		| are entered in\. If a user already has a tag \'family\' for a type, and
+		| tries to add a tag named \'Family\' it will be silently ignored\.
+		
+	
+	:Implemented by:
+		:php:class:`OC\\TagManager` 
+	
+	
+	:Source:
+		`lib/public/ITagManager.php#49 <https://github.com/nextcloud/server/blob/stable13/lib/public/ITagManager.php#L49>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public load( $type, $defaultTags=\[\], $includeShared=false, $userId=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Create a new \\OCP\\ITags instance and load tags from db for the current user\.
+			
+		
+		:Source:
+			`lib/public/ITagManager.php#63 <https://github.com/nextcloud/server/blob/stable13/lib/public/ITagManager.php#L63>`_
+		
+		
+		:Parameters:
+			* **$type** (string)  The type identifier e.g. 'contact' or 'event'.
+			* **$defaultTags** (array)  An array of default tags to be used if none are stored.
+			* **$includeShared** (bool)  Whether to include tags for items shared with this user by others. - always false since 20.0.0
+			* **$userId** (string)  user for which to retrieve the tags, defaults to the currently
+			logged in user
+
+		
+		:See: :any:`\\OCP\\ITags <OCP\\ITags>` 
+		:Returns: :any:`\\OCP\\ITags <OCP\\ITags>` 
+		:Since: 6.0.0 \- parameter $includeShared and $userId were added in 8\.0\.0 \- $includeShared is always false since 20\.0\.0
+	
+	
+

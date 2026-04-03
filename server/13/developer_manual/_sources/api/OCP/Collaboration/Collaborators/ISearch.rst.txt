@@ -1,0 +1,69 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+ISearch
+=======
+
+
+.. php:namespace:: OCP\Collaboration\Collaborators
+
+.. php:interface:: ISearch
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Interface ISearch
+		
+	
+	:Implemented by:
+		:php:class:`OC\\Collaboration\\Collaborators\\Search` 
+	
+	
+	:Source:
+		`lib/public/Collaboration/Collaborators/ISearch.php#31 <https://github.com/nextcloud/server/blob/stable13/lib/public/Collaboration/Collaborators/ISearch.php#L31>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public search( $search, $shareTypes, $lookup, $limit, $offset)
+	
+		:Source:
+			`lib/public/Collaboration/Collaborators/ISearch.php#41 <https://github.com/nextcloud/server/blob/stable13/lib/public/Collaboration/Collaborators/ISearch.php#L41>`_
+		
+		
+		:Parameters:
+			* **$search** (string)  
+			* **$shareTypes** (array)  
+			* **$lookup** (bool)  
+			* **$limit** (int)  
+			* **$offset** (int)  
+
+		
+		:Returns: array with two elements, 1st ISearchResult as array, 2nd a bool indicating whether more result are available
+		:Since: 13.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public registerPlugin( $pluginInfo)
+	
+		:Source:
+			`lib/public/Collaboration/Collaborators/ISearch.php#48 <https://github.com/nextcloud/server/blob/stable13/lib/public/Collaboration/Collaborators/ISearch.php#L48>`_
+		
+		
+		:Parameters:
+			* **$pluginInfo** (array)  with keys 'shareType' containing the name of a corresponding constant in \OCP\Share and
+			'class' with the class name of the plugin
+
+		
+		:Since: 13.0.0 
+	
+	
+

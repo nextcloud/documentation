@@ -1,0 +1,88 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+ISearchService
+==============
+
+
+.. php:namespace:: OCP\FullTextSearch\Service
+
+.. php:interface:: ISearchService
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Interface ISearchService
+		
+	
+	:Source:
+		`lib/public/FullTextSearch/Service/ISearchService.php#38 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Service/ISearchService.php#L38>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public generateSearchRequest( $request)
+	
+		.. rst-class:: phpdoc-description
+		
+			| generate a search request, based on an array:
+			
+			| $request =
+			|   \[
+			|        \'providers\' =\>    \(string/array\) \'all\'
+			|        \'author\' =\>       \(string\) owner of the document\.
+			|        \'search\' =\>       \(string\) search string,
+			|        \'size\' =\>         \(int\) number of items to be return
+			|        \'page\' =\>         \(int\) page
+			|        \'parts\' =\>        \(array\) parts of document to search within,
+			|        \'options\' =       \(array\) search options,
+			|        \'tags\'     =\>     \(array\) tags,
+			|        \'metatags\' =\>     \(array\) metatags,
+			|        \'subtags\'  =\>     \(array\) subtags
+			|   \]
+			| 
+			| \'providers\' can be an array of providerIds
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/Service/ISearchService.php#66 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Service/ISearchService.php#L66>`_
+		
+		
+		:Parameters:
+			* **$request** (array)  
+
+		
+		:Since: 15.0.0 
+		:Returns: :any:`\\OCP\\FullTextSearch\\Model\\ISearchRequest <OCP\\FullTextSearch\\Model\\ISearchRequest>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public search( $userId, $searchRequest)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Search documents
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/Service/ISearchService.php#79 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Service/ISearchService.php#L79>`_
+		
+		
+		:Parameters:
+			* **$userId** (string)  
+			* **$searchRequest** (:any:`OCP\\FullTextSearch\\Model\\ISearchRequest <OCP\\FullTextSearch\\Model\\ISearchRequest>`)  
+
+		
+		:Since: 15.0.0 
+		:Returns: :any:`\\OCP\\FullTextSearch\\Model\\ISearchResult\[\] <OCP\\FullTextSearch\\Model\\ISearchResult>` 
+	
+	
+

@@ -1,0 +1,75 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IEventSource
+============
+
+
+.. php:namespace:: OCP
+
+.. php:interface:: IEventSource
+
+
+	.. rst-class:: phpdoc-description
+	
+		| wrapper for server side events \(http://en\.wikipedia\.org/wiki/Server\-sent\_events\)
+		| includes a fallback for older browsers and IE
+		
+		| use server side events with caution, to many open requests can hang the server
+		| 
+		| The event source will initialize the connection to the client when the first data is sent
+		
+	
+	:Implemented by:
+		:php:class:`OC\_EventSource` 
+	
+	
+	:Source:
+		`lib/public/IEventSource.php#35 <https://github.com/nextcloud/server/blob/stable13/lib/public/IEventSource.php#L35>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public send( $type, $data=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| send a message to the client
+			
+		
+		:Source:
+			`lib/public/IEventSource.php#45 <https://github.com/nextcloud/server/blob/stable13/lib/public/IEventSource.php#L45>`_
+		
+		
+		:Parameters:
+			* **$type** (string)  
+			* **$data** (mixed)  if only one parameter is given, a typeless message will be send with that parameter as data
+
+		
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public close()
+	
+		.. rst-class:: phpdoc-description
+		
+			| close the connection of the event source
+			
+		
+		:Source:
+			`lib/public/IEventSource.php#51 <https://github.com/nextcloud/server/blob/stable13/lib/public/IEventSource.php#L51>`_
+		
+		
+		:Since: 8.0.0 
+	
+	
+

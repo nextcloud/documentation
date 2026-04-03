@@ -1,0 +1,103 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+User
+====
+
+
+.. php:namespace:: OCP
+
+.. php:class:: User
+
+
+	.. rst-class:: phpdoc-description
+	
+		| This class provides access to the user management\. You can get information
+		| about the currently logged in user and the permissions for example
+		
+	
+	:Source:
+		`lib/public/User.php#46 <https://github.com/nextcloud/server/blob/stable13/lib/public/User.php#L46>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public static deprecated
+
+	.. php:method:: public static getUser()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the user id of the user currently logged in\.
+			
+		
+		:Source:
+			`lib/public/User.php#53 <https://github.com/nextcloud/server/blob/stable13/lib/public/User.php#L53>`_
+		
+		
+		:Returns: string uid or false
+		:Deprecated: 8.0.0 Use \\OC::$server\-\>getUserSession\(\)\-\>getUser\(\)\-\>getUID\(\)
+		:Since: 5.0.0 
+	
+	
+
+.. rst-class:: public static deprecated
+
+	.. php:method:: public static isLoggedIn()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check if the user is logged in
+			
+		
+		:Source:
+			`lib/public/User.php#63 <https://github.com/nextcloud/server/blob/stable13/lib/public/User.php#L63>`_
+		
+		
+		:Returns: bool 
+		:Since: 5.0.0 
+		:Deprecated: 13.0.0 Use annotation based ACLs from the AppFramework instead
+	
+	
+
+.. rst-class:: public static deprecated
+
+	.. php:method:: public static checkAdminUser()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check if the user is a admin, redirects to home if not
+			
+		
+		:Source:
+			`lib/public/User.php#72 <https://github.com/nextcloud/server/blob/stable13/lib/public/User.php#L72>`_
+		
+		
+		:Since: 5.0.0 
+		:Deprecated: 13.0.0 Use annotation based ACLs from the AppFramework instead
+	
+	
+
+.. rst-class:: public static deprecated
+
+	.. php:method:: public static checkLoggedIn()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check if the user is logged in, redirects to home if not\. With
+			| redirect URL parameter to the request URI\.
+			
+		
+		:Source:
+			`lib/public/User.php#82 <https://github.com/nextcloud/server/blob/stable13/lib/public/User.php#L82>`_
+		
+		
+		:Since: 5.0.0 
+		:Deprecated: 13.0.0 Use annotation based ACLs from the AppFramework instead
+	
+	
+

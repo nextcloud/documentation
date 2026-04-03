@@ -1,0 +1,121 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+App
+===
+
+
+.. php:namespace:: OC\AppFramework
+
+.. php:class:: App
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Entry point for every request in your app\. You can consider this as your
+		| public static void main\(\) method
+		
+		| Handles all the dependency injection, controllers and output flow
+		
+	
+	:Source:
+		`lib/private/AppFramework/App.php#51 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/App.php#L51>`_
+	
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: public static
+
+	.. php:method:: public static buildAppNamespace( $appId, $topNamespace=OCA\\)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Turns an app id into a namespace by either reading the appinfo\.xml\'s
+			| namespace tag or uppercasing the appid\'s first letter
+			
+		
+		:Source:
+			`lib/private/AppFramework/App.php#64 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/App.php#L64>`_
+		
+		
+		:Parameters:
+			* **$appId** (string)  the app id
+			* **$topNamespace** (string)  the namespace which should be prepended to
+			the transformed app id, defaults to OCA\
+
+		
+		:Returns: string the starting namespace for the app
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static getAppIdForClass( $className, $topNamespace=OCA\\)
+	
+		:Source:
+			`lib/private/AppFramework/App.php#92 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/App.php#L92>`_
+		
+		
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static main( $controllerName, $methodName, $container, $urlParams=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Shortcut for calling a controller method and printing the result
+			
+		
+		:Source:
+			`lib/private/AppFramework/App.php#116 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/App.php#L116>`_
+		
+		
+		:Parameters:
+			* **$controllerName** (string)  the name of the controller under which it is
+			stored in the DI container
+			* **$methodName** (string)  the method that you want to call
+			* **$container** (:any:`OC\\AppFramework\\DependencyInjection\\DIContainer <OC\\AppFramework\\DependencyInjection\\DIContainer>`)  an instance of a pimple container.
+			* **$urlParams** (array)  list of URL parameters (optional)
+
+		
+		:Throws: :any:`\\OC\\HintException <OC\\HintException>` 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static part( $controllerName, $methodName, $urlParams, $container)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Shortcut for calling a controller method and printing the result\.
+			
+			| Similar to App:main except that no headers will be sent\.
+			| This should be used for example when registering sections via
+			| \\OC\\AppFramework\\Core\\API::registerAdmin\(\)
+			
+		
+		:Source:
+			`lib/private/AppFramework/App.php#224 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/App.php#L224>`_
+		
+		
+		:Parameters:
+			* **$controllerName** (string)  the name of the controller under which it is
+			stored in the DI container
+			* **$methodName** (string)  the method that you want to call
+			* **$urlParams** (array)  an array with variables extracted from the routes
+			* **$container** (:any:`OC\\AppFramework\\DependencyInjection\\DIContainer <OC\\AppFramework\\DependencyInjection\\DIContainer>`)  an instance of a pimple container.
+
+		
+	
+	
+

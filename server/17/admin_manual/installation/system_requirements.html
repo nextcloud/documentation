@@ -1,0 +1,407 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>System requirements &mdash; Nextcloud latest Administration Manual latest documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'latest',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Deployment recommendations" href="deployment_recommendations.html" />
+    <link rel="prev" title="Installation and server configuration" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../contents.html">
+          
+
+          
+            
+            <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_schedule.html">Maintenance and release schedule</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Installation and server configuration</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">System requirements</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#server">Server</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#memory">Memory</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#database-requirements-for-mysql-mariadb">Database requirements for MySQL / MariaDB</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#desktop-client">Desktop client</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mobile-apps">Mobile apps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#web-browser">Web browser</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="deployment_recommendations.html">Deployment recommendations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="source_installation.html">Installation on Linux</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation_wizard.html">Installation wizard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command_line_installation.html">Installing from command line</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apps_supported.html">Supported apps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="php_72_installation.html">Installing PHP 7.2 on RHEL 7 and CentOS 7</a></li>
+<li class="toctree-l2"><a class="reference internal" href="selinux_configuration.html">SELinux configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nginx.html">Nginx configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="harden_server.html">Hardening and security guidance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="server_tuning.html">Server tuning</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_server/index.html">Nextcloud configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../apps_management.html">Apps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_user/index.html">User management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_files/index.html">File sharing and management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../file_workflows/index.html">File workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_database/index.html">Database configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_mimetypes/index.html">Mimetypes management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../maintenance/index.html">Maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../issues/index.html">Issues and troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gdpr/index.html">GDPR</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest Administration Manual</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../contents.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Installation and server configuration</a> &raquo;</li>
+        
+      <li>System requirements</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/nextcloud/documentation/edit/master/admin_manual/installation/system_requirements.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="system-requirements">
+<h1>System requirements<a class="headerlink" href="#system-requirements" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="server">
+<h2>Server<a class="headerlink" href="#server" title="Permalink to this headline">¶</a></h2>
+<p>For best performance, stability and functionality we have documented some recommendations for running a Nextcloud server.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If you plan a setup for your organization and you rely on professional deployment consulting (e.g. efficient and
+reliable scaling) and support, we strongly recommend you to check out our <a class="reference external" href="https://nextcloud.com/enterprise/">enterprise support</a>.</p>
+</div>
+<table border="1" class="docutils">
+<colgroup>
+<col width="20%" />
+<col width="80%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Platform</th>
+<th class="head">Options</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>Operating System</td>
+<td><ul class="first last simple">
+<li><strong>Ubuntu 18.04 LTS</strong> (recommended)</li>
+<li><strong>Red Hat Enterprise Linux 8</strong> (recommended)</li>
+<li>Debian 10 (Buster)</li>
+<li>SUSE Linux Enterprise Server 15</li>
+<li>openSUSE Leap 42.1+</li>
+<li>CentOS 8</li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td>Database</td>
+<td><ul class="first last simple">
+<li><strong>MySQL 5.7+ or MariaDB 10.2+</strong> (recommended)</li>
+<li>Oracle Database 11g (<em>only as part of an enterprise subscription</em>)</li>
+<li>PostgreSQL 9.5/9.6/10/11</li>
+<li>SQLite (<em>only recommended for testing and minimal-instances</em>)</li>
+</ul>
+</td>
+</tr>
+<tr class="row-even"><td>Webserver</td>
+<td><ul class="first last simple">
+<li><strong>Apache 2.4 with</strong> <code class="docutils literal"><span class="pre">mod_php</span></code> <strong>or</strong> <code class="docutils literal"><span class="pre">php-fpm</span></code> (recommended)</li>
+<li>nginx with <code class="docutils literal"><span class="pre">php-fpm</span></code></li>
+</ul>
+</td>
+</tr>
+<tr class="row-odd"><td>PHP Runtime</td>
+<td><ul class="first last simple">
+<li>7.1</li>
+<li><strong>7.2</strong> (<em>recommended</em>)</li>
+<li><strong>7.3</strong> (<em>recommended</em>)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<p>See <a class="reference internal" href="source_installation.html"><span class="doc">Installation on Linux</span></a> for minimum PHP-modules and additional software for installing Nextcloud.</p>
+<div class="section" id="memory">
+<h3>Memory<a class="headerlink" href="#memory" title="Permalink to this headline">¶</a></h3>
+<p>Memory requirements for running a Nextcloud server are greatly variable,
+depending on the numbers of users, apps, files and volume of server activity.</p>
+<p>Nextcloud needs a minimum of <strong>128MB</strong> RAM, and we recommend a minimum of <strong>512MB</strong>.</p>
+</div>
+<div class="section" id="database-requirements-for-mysql-mariadb">
+<h3>Database requirements for MySQL / MariaDB<a class="headerlink" href="#database-requirements-for-mysql-mariadb" title="Permalink to this headline">¶</a></h3>
+<p>The following is currently required if you&#8217;re running Nextcloud together with a MySQL / MariaDB database:</p>
+<ul class="simple">
+<li>InnoDB storage engine (MyISAM is not supported)</li>
+<li>&#8220;READ COMMITED&#8221; transaction isolation level (See: <a class="reference internal" href="../configuration_database/linux_database_configuration.html#db-transaction-label"><span class="std std-ref">Database &#8220;READ COMMITTED&#8221; transaction isolation level</span></a>)</li>
+<li>Disabled or BINLOG_FORMAT = ROW configured Binary Logging (See: <a class="reference external" href="https://dev.mysql.com/doc/refman/5.7/en/binary-log-formats.html">https://dev.mysql.com/doc/refman/5.7/en/binary-log-formats.html</a>)</li>
+<li>For <strong>Emoji (UTF8 4-byte) support</strong> see <a class="reference internal" href="../configuration_database/mysql_4byte_support.html"><span class="doc">Enabling MySQL 4-byte support</span></a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="desktop-client">
+<h2>Desktop client<a class="headerlink" href="#desktop-client" title="Permalink to this headline">¶</a></h2>
+<p>We strongly recommend using the latest version of your operating system to get the full and most stable experience out
+of our clients.</p>
+<ul class="simple">
+<li><strong>Windows</strong> 7+</li>
+<li><strong>macOS</strong> Lion (10.7)+ (64-bit only)</li>
+<li><strong>Linux</strong> (CentOS 6.5+, Ubuntu 14.04+, Fedora 21+, openSUSE 13, SUSE Linux Enterprise 11 SP3+, Debian 8 (Jessie)+, Red Hat
+Enterprise Linux 7)</li>
+</ul>
+</div>
+<div class="section" id="mobile-apps">
+<h2>Mobile apps<a class="headerlink" href="#mobile-apps" title="Permalink to this headline">¶</a></h2>
+<p>We strongly recommend using the latest version of your mobile operating system to get the full and most stable experience out
+of our mobile apps.</p>
+<ul class="simple">
+<li><strong>iOS</strong> 11.x+</li>
+<li><strong>Android</strong> 4.x+</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The separate Nextcloud Talk app requires iOS 10.x+ or Android 5.x+.</p>
+</div>
+</div>
+<div class="section" id="web-browser">
+<h2>Web browser<a class="headerlink" href="#web-browser" title="Permalink to this headline">¶</a></h2>
+<p>For the best experience with the Nextcloud web interface, we recommend that you use the latest and supported version
+of a browser from this list, or one based on those:</p>
+<ul class="simple">
+<li>Microsoft <strong>Internet Explorer 11</strong> (latest version)</li>
+<li>Microsoft <strong>Edge</strong></li>
+<li>Mozilla <strong>Firefox</strong></li>
+<li>Google <strong>Chrome</strong>/Chromium</li>
+<li>Apple <strong>Safari</strong></li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If you want to use Nextcloud Talk you should use Mozilla <strong>Firefox</strong> 52+ or Google <strong>Chrome</strong>/Chromium 49+ to have
+the full experience with video calls and screensharing. Google Chrome/Chromium requires an additional plugin for
+screensharing.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="deployment_recommendations.html" class="btn btn-neutral float-right" title="Deployment recommendations" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="index.html" class="btn btn-neutral float-left" title="Installation and server configuration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021 Nextcloud GmbH.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/16/admin_manual">16</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/17/admin_manual">17</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/18/admin_manual">18</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/19/admin_manual">19</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/admin_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/admin_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+   
+
+</body>
+</html>

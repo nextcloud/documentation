@@ -1,0 +1,2434 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>IQueryBuilder &mdash; Nextcloud 13 Developer Manual 13 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../../../',
+              VERSION:'13',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="IFunctionBuilder" href="IFunctionBuilder.html" />
+    <link rel="prev" title="QueryBuilder" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html">
+          
+
+          
+            
+            <img src="../../../../_static/logo-white.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../../general/index.html">General contributor guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/startapp.html">Create an app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/init.html">Navigation and pre-app configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/info.html">App metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/classloader.html">Classloader</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/request.html">Request lifecycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/routes.html">Routing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/middleware.html">Middleware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/container.html">Container</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/controllers.html">Controllers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/api.html">RESTful API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/templates.html">Templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/js.html">JavaScript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/css.html">CSS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/l10n.html">Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/theming.html">Theming support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/schema.html">Database schema</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/database.html">Database access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/filesystem.html">Filesystem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/appdata.html">AppData</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/users.html">User management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/two-factor-provider.html">Two-factor providers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/hooks.html">Hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/backgroundjobs.html">Background jobs (Cron)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/settings.html">Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/logging.html">Logging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/migrations.html">Migrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/repair.html">Repair steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/publishing.html">App store publishing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/code_signing.html">Code signing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../design/index.html">Design guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../android_library/index.html">Android application development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../client_apis/index.html">Client APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../core/translation.html">Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../core/unit-testing.html">Unit-Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../core/theming.html">Theming Nextcloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../core/externalapi.html">External API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../core/ocs-share-api.html">OCS Share API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../core/index.html">Core development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bugtracker/index.html">Bugtracker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../commun/index.html">Help and communication</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../../../api.html">API Documentation</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../../../api.html#php-public-api">PHP public API</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="../../index.html">/OCP namespace</a><ul class="current">
+<li class="toctree-l4 current"><a class="reference internal" href="../../index.html#namespaces">Namespaces</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../index.html#interfaces">Interfaces</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../index.html#classes">Classes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../api.html#php-class-reference">PHP class reference</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">Nextcloud 13 Developer Manual</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../../../api.html">API Documentation</a> &raquo;</li>
+        
+          <li><a href="../../index.html">OCP</a> &raquo;</li>
+        
+          <li><a href="../index.html">DB</a> &raquo;</li>
+        
+          <li><a href="index.html">QueryBuilder</a> &raquo;</li>
+        
+      <li>IQueryBuilder</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/nextcloud/documentation/edit/stable13/developer_manual/api/OCP/DB/QueryBuilder/IQueryBuilder.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="phpdoctorst section" id="namespace-OCP\DB\QueryBuilder">
+<span id="iquerybuilder"></span><h1>IQueryBuilder<a class="headerlink" href="#namespace-OCP\DB\QueryBuilder" title="Permalink to this headline">¶</a></h1>
+<dl class="interface">
+<dt id="OCP\DB\QueryBuilder\IQueryBuilder">
+<em class="property">interface </em><code class="descclassname">OCP\DB\QueryBuilder\</code><code class="descname">IQueryBuilder</code><a class="headerlink" href="#OCP\DB\QueryBuilder\IQueryBuilder" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">This class provides a wrapper around Doctrine&#8217;s QueryBuilder</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Implemented by:</th><td class="field-body"><a class="reference internal" href="../../../OC/DB/QueryBuilder/QueryBuilder.html#OC\DB\QueryBuilder\QueryBuilder" title="OC\DB\QueryBuilder\QueryBuilder"><code class="xref php php-class docutils literal"><span class="pre">OC\DB\QueryBuilder\QueryBuilder</span></code></a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L41">lib/public/DB/QueryBuilder/IQueryBuilder.php#41</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<div class="section" id="constants">
+<h2>Constants<a class="headerlink" href="#constants" title="Permalink to this headline">¶</a></h2>
+<dl class="const">
+<dt>
+<code class="descname">PARAM_NULL = \PDO::PARAM_NULL</code></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L46">lib/public/DB/QueryBuilder/IQueryBuilder.php#46</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body">9.0.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="const">
+<dt>
+<code class="descname">PARAM_BOOL = \PDO::PARAM_BOOL</code></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L50">lib/public/DB/QueryBuilder/IQueryBuilder.php#50</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body">9.0.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="const">
+<dt>
+<code class="descname">PARAM_INT = \PDO::PARAM_INT</code></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L54">lib/public/DB/QueryBuilder/IQueryBuilder.php#54</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body">9.0.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="const">
+<dt>
+<code class="descname">PARAM_STR = \PDO::PARAM_STR</code></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L58">lib/public/DB/QueryBuilder/IQueryBuilder.php#58</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body">9.0.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="const">
+<dt>
+<code class="descname">PARAM_LOB = \PDO::PARAM_LOB</code></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L62">lib/public/DB/QueryBuilder/IQueryBuilder.php#62</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body">9.0.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="const">
+<dt>
+<code class="descname">PARAM_DATE = datetime</code></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L66">lib/public/DB/QueryBuilder/IQueryBuilder.php#66</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body">9.0.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="const">
+<dt>
+<code class="descname">PARAM_INT_ARRAY = \Doctrine\DBAL\Connection::PARAM_INT_ARRAY</code></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L71">lib/public/DB/QueryBuilder/IQueryBuilder.php#71</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body">9.0.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="const">
+<dt>
+<code class="descname">PARAM_STR_ARRAY = \Doctrine\DBAL\Connection::PARAM_STR_ARRAY</code></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L75">lib/public/DB/QueryBuilder/IQueryBuilder.php#75</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body">9.0.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h2>
+<dl class="public method">
+<dt id="OCP\DB\QueryBuilder\IQueryBuilder::automaticTablePrefix">
+<em class="property">public </em><code class="descclassname">OCP\DB\QueryBuilder\IQueryBuilder::</code><code class="descname">automaticTablePrefix</code><span class="sig-paren">(</span><em>$enabled</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\DB\QueryBuilder\IQueryBuilder::automaticTablePrefix" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Enable/disable automatic prefixing of table names with the oc_ prefix</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L85">lib/public/DB/QueryBuilder/IQueryBuilder.php#85</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$enabled</strong> (bool)  If set to true table names will be prefixed with the</li>
+</ul>
+<p>owncloud database prefix automatically.</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">8.2.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\DB\QueryBuilder\IQueryBuilder::expr">
+<em class="property">public </em><code class="descclassname">OCP\DB\QueryBuilder\IQueryBuilder::</code><code class="descname">expr</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\DB\QueryBuilder\IQueryBuilder::expr" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Gets an ExpressionBuilder used for object-oriented construction of query expressions.</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">This producer method is intended for convenient inline usage. Example:</div>
+<div class="line"><br /></div>
+<div class="line">&lt;code&gt;</div>
+<div class="line-block">
+<div class="line">$qb = $conn-&gt;getQueryBuilder()</div>
+<div class="line-block">
+<div class="line">-&gt;select(&#8216;u&#8217;)</div>
+<div class="line">-&gt;from(&#8216;users&#8217;, &#8216;u&#8217;)</div>
+<div class="line">-&gt;where($qb-&gt;expr()-&gt;eq(&#8216;u.id&#8217;, 1));</div>
+</div>
+</div>
+<div class="line">&lt;/code&gt;</div>
+<div class="line"><br /></div>
+<div class="line">For more complex expression construction, consider storing the expression</div>
+<div class="line">builder object in a local variable.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L104">lib/public/DB/QueryBuilder/IQueryBuilder.php#104</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="IExpressionBuilder.html#OCP\DB\QueryBuilder\IExpressionBuilder" title="OCP\DB\QueryBuilder\IExpressionBuilder"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\DB\QueryBuilder\IExpressionBuilder</span></code></a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">8.2.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\DB\QueryBuilder\IQueryBuilder::func">
+<em class="property">public </em><code class="descclassname">OCP\DB\QueryBuilder\IQueryBuilder::</code><code class="descname">func</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\DB\QueryBuilder\IQueryBuilder::func" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Gets an FunctionBuilder used for object-oriented construction of query functions.</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">This producer method is intended for convenient inline usage. Example:</div>
+<div class="line"><br /></div>
+<div class="line">&lt;code&gt;</div>
+<div class="line-block">
+<div class="line">$qb = $conn-&gt;getQueryBuilder()</div>
+<div class="line-block">
+<div class="line">-&gt;select(&#8216;u&#8217;)</div>
+<div class="line">-&gt;from(&#8216;users&#8217;, &#8216;u&#8217;)</div>
+<div class="line">-&gt;where($qb-&gt;fun()-&gt;md5(&#8216;u.id&#8217;));</div>
+</div>
+</div>
+<div class="line">&lt;/code&gt;</div>
+<div class="line"><br /></div>
+<div class="line">For more complex function construction, consider storing the function</div>
+<div class="line">builder object in a local variable.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L123">lib/public/DB/QueryBuilder/IQueryBuilder.php#123</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="IFunctionBuilder.html#OCP\DB\QueryBuilder\IFunctionBuilder" title="OCP\DB\QueryBuilder\IFunctionBuilder"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\DB\QueryBuilder\IFunctionBuilder</span></code></a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">12.0.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\DB\QueryBuilder\IQueryBuilder::getType">
+<em class="property">public </em><code class="descclassname">OCP\DB\QueryBuilder\IQueryBuilder::</code><code class="descname">getType</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\DB\QueryBuilder\IQueryBuilder::getType" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Gets the type of the currently built query.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L131">lib/public/DB/QueryBuilder/IQueryBuilder.php#131</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">int</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">8.2.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\DB\QueryBuilder\IQueryBuilder::getConnection">
+<em class="property">public </em><code class="descclassname">OCP\DB\QueryBuilder\IQueryBuilder::</code><code class="descname">getConnection</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\DB\QueryBuilder\IQueryBuilder::getConnection" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Gets the associated DBAL Connection for this query builder.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L139">lib/public/DB/QueryBuilder/IQueryBuilder.php#139</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="../../IDBConnection.html#OCP\IDBConnection" title="OCP\IDBConnection"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\IDBConnection</span></code></a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">8.2.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\DB\QueryBuilder\IQueryBuilder::getState">
+<em class="property">public </em><code class="descclassname">OCP\DB\QueryBuilder\IQueryBuilder::</code><code class="descname">getState</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\DB\QueryBuilder\IQueryBuilder::getState" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Gets the state of this query builder instance.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L147">lib/public/DB/QueryBuilder/IQueryBuilder.php#147</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">int Either QueryBuilder::STATE_DIRTY or QueryBuilder::STATE_CLEAN.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">8.2.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public deprecated method">
+<dt id="OCP\DB\QueryBuilder\IQueryBuilder::execute">
+<em class="property">public </em><code class="descclassname">OCP\DB\QueryBuilder\IQueryBuilder::</code><code class="descname">execute</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\DB\QueryBuilder\IQueryBuilder::execute" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Executes this query using the bound parameters and their types.</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">Uses <a class="reference external" href="mailto:{&#37;&#52;&#48;see">{<span>&#64;</span>see</a> \OCP\DB\QueryBuilder\Connection::executeQuery} for select statements and <a class="reference external" href="mailto:{&#37;&#52;&#48;see">{<span>&#64;</span>see</a> \OCP\DB\QueryBuilder\Connection::executeStatement}</div>
+<div class="line">for insert, update and delete statements.</div>
+<div class="line"><br /></div>
+<div class="line">Warning: until Nextcloud 20, this method could return a \Doctrine\DBAL\Driver\Statement but since</div>
+<div class="line-block">
+<div class="line">that interface changed in a breaking way the adapter \OCP\DB\QueryBuilder\IStatement is returned</div>
+<div class="line">to bridge old code to the new API</div>
+</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L164">lib/public/DB/QueryBuilder/IQueryBuilder.php#164</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="../IResult.html#OCP\DB\IResult" title="OCP\DB\IResult"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\DB\IResult</span></code></a> | int</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Throws:</th><td class="field-body"><a class="reference internal" href="../Exception.html#OCP\DB\Exception" title="OCP\DB\Exception"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\DB\Exception</span></code></a> since 21.0.0</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body">8.2.0</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Deprecated:</th><td class="field-body">22.0.0 Use executeQuery or executeUpdate</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\DB\QueryBuilder\IQueryBuilder::executeQuery">
+<em class="property">public </em><code class="descclassname">OCP\DB\QueryBuilder\IQueryBuilder::</code><code class="descname">executeQuery</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\DB\QueryBuilder\IQueryBuilder::executeQuery" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Execute for select statements</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L175">lib/public/DB/QueryBuilder/IQueryBuilder.php#175</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="../IResult.html#OCP\DB\IResult" title="OCP\DB\IResult"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\DB\IResult</span></code></a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">22.0.0</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><a class="reference internal" href="../Exception.html#OCP\DB\Exception" title="OCP\DB\Exception"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\DB\Exception</span></code></a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Throws:</th><td class="field-body"><code class="xref any docutils literal"><span class="pre">\RuntimeException</span></code> in case of usage with non select query</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><a class="reference internal" href="../Exception.html#OCP\DB\Exception" title="OCP\DB\Exception"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\DB\Exception</span></code></a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Throws:</th><td class="field-body"><code class="xref any docutils literal"><span class="pre">\RuntimeException</span></code> in case of usage with non select query</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\DB\QueryBuilder\IQueryBuilder::executeStatement">
+<em class="property">public </em><code class="descclassname">OCP\DB\QueryBuilder\IQueryBuilder::</code><code class="descname">executeStatement</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\DB\QueryBuilder\IQueryBuilder::executeStatement" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Execute insert, update and delete statements</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L186">lib/public/DB/QueryBuilder/IQueryBuilder.php#186</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">int the number of affected rows</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">22.0.0</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><a class="reference internal" href="../Exception.html#OCP\DB\Exception" title="OCP\DB\Exception"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\DB\Exception</span></code></a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Throws:</th><td class="field-body"><code class="xref any docutils literal"><span class="pre">\RuntimeException</span></code> in case of usage with select query</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><a class="reference internal" href="../Exception.html#OCP\DB\Exception" title="OCP\DB\Exception"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\DB\Exception</span></code></a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Throws:</th><td class="field-body"><code class="xref any docutils literal"><span class="pre">\RuntimeException</span></code> in case of usage with select query</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\DB\QueryBuilder\IQueryBuilder::getSQL">
+<em class="property">public </em><code class="descclassname">OCP\DB\QueryBuilder\IQueryBuilder::</code><code class="descname">getSQL</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\DB\QueryBuilder\IQueryBuilder::getSQL" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Gets the complete SQL string formed by the current specifications of this QueryBuilder.</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">&lt;code&gt;</div>
+<div class="line-block">
+<div class="line">$qb = $conn-&gt;getQueryBuilder()</div>
+<div class="line-block">
+<div class="line">-&gt;select(&#8216;u&#8217;)</div>
+<div class="line">-&gt;from(&#8216;User&#8217;, &#8216;u&#8217;)</div>
+</div>
+<div class="line">echo $qb-&gt;getSQL(); // SELECT u FROM User u</div>
+</div>
+<div class="line">&lt;/code&gt;</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L201">lib/public/DB/QueryBuilder/IQueryBuilder.php#201</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">string The SQL query string.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">8.2.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\DB\QueryBuilder\IQueryBuilder::setParameter">
+<em class="property">public </em><code class="descclassname">OCP\DB\QueryBuilder\IQueryBuilder::</code><code class="descname">setParameter</code><span class="sig-paren">(</span><em>$key</em>, <em>$value</em>, <em>$type=null</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\DB\QueryBuilder\IQueryBuilder::setParameter" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Sets a query parameter for the query being constructed.</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">&lt;code&gt;</div>
+<div class="line-block">
+<div class="line">$qb = $conn-&gt;getQueryBuilder()</div>
+<div class="line-block">
+<div class="line">-&gt;select(&#8216;u&#8217;)</div>
+<div class="line">-&gt;from(&#8216;users&#8217;, &#8216;u&#8217;)</div>
+<div class="line">-&gt;where(&#8216;u.id = :user_id&#8217;)</div>
+<div class="line">-&gt;setParameter(&#8216;:user_id&#8217;, 1);</div>
+</div>
+</div>
+<div class="line">&lt;/code&gt;</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L221">lib/public/DB/QueryBuilder/IQueryBuilder.php#221</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$key</strong> (string | int)  The parameter position or name.</li>
+<li><strong>$value</strong> (mixed)  The parameter value.</li>
+<li><strong>$type</strong> (string | null | int)  One of the IQueryBuilder::PARAM_* constants.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">$this This QueryBuilder instance.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">8.2.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\DB\QueryBuilder\IQueryBuilder::setParameters">
+<em class="property">public </em><code class="descclassname">OCP\DB\QueryBuilder\IQueryBuilder::</code><code class="descname">setParameters</code><span class="sig-paren">(</span><em>$params</em>, <em>$types=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\DB\QueryBuilder\IQueryBuilder::setParameters" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Sets a collection of query parameters for the query being constructed.</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">&lt;code&gt;</div>
+<div class="line-block">
+<div class="line">$qb = $conn-&gt;getQueryBuilder()</div>
+<div class="line-block">
+<div class="line">-&gt;select(&#8216;u&#8217;)</div>
+<div class="line">-&gt;from(&#8216;users&#8217;, &#8216;u&#8217;)</div>
+<div class="line">-&gt;where(&#8216;u.id = :user_id1 OR u.id = :user_id2&#8217;)</div>
+<div class="line">-&gt;setParameters(array(</div>
+<div class="line-block">
+<div class="line">&#8216;:user_id1&#8217; =&gt; 1,</div>
+<div class="line">&#8216;:user_id2&#8217; =&gt; 2</div>
+</div>
+<div class="line">));</div>
+</div>
+</div>
+<div class="line">&lt;/code&gt;</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L243">lib/public/DB/QueryBuilder/IQueryBuilder.php#243</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$params</strong> (array)  The query parameters to set.</li>
+<li><strong>$types</strong> (array)  The query parameters types to set.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">$this This QueryBuilder instance.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">8.2.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\DB\QueryBuilder\IQueryBuilder::getParameters">
+<em class="property">public </em><code class="descclassname">OCP\DB\QueryBuilder\IQueryBuilder::</code><code class="descname">getParameters</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\DB\QueryBuilder\IQueryBuilder::getParameters" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Gets all defined query parameters for the query being constructed indexed by parameter index or name.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L251">lib/public/DB/QueryBuilder/IQueryBuilder.php#251</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">array The currently defined query parameters indexed by parameter index or name.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">8.2.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\DB\QueryBuilder\IQueryBuilder::getParameter">
+<em class="property">public </em><code class="descclassname">OCP\DB\QueryBuilder\IQueryBuilder::</code><code class="descname">getParameter</code><span class="sig-paren">(</span><em>$key</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\DB\QueryBuilder\IQueryBuilder::getParameter" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Gets a (previously set) query parameter of the query being constructed.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L261">lib/public/DB/QueryBuilder/IQueryBuilder.php#261</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$key</strong> (mixed)  The key (index or name) of the bound parameter.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">mixed The value of the bound parameter.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">8.2.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\DB\QueryBuilder\IQueryBuilder::getParameterTypes">
+<em class="property">public </em><code class="descclassname">OCP\DB\QueryBuilder\IQueryBuilder::</code><code class="descname">getParameterTypes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\DB\QueryBuilder\IQueryBuilder::getParameterTypes" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Gets all defined query parameter types for the query being constructed indexed by parameter index or name.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L269">lib/public/DB/QueryBuilder/IQueryBuilder.php#269</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">array The currently defined query parameter types indexed by parameter index or name.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">8.2.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\DB\QueryBuilder\IQueryBuilder::getParameterType">
+<em class="property">public </em><code class="descclassname">OCP\DB\QueryBuilder\IQueryBuilder::</code><code class="descname">getParameterType</code><span class="sig-paren">(</span><em>$key</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\DB\QueryBuilder\IQueryBuilder::getParameterType" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Gets a (previously set) query parameter type of the query being constructed.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L279">lib/public/DB/QueryBuilder/IQueryBuilder.php#279</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$key</strong> (mixed)  The key (index or name) of the bound parameter type.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">mixed The value of the bound parameter type.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">8.2.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\DB\QueryBuilder\IQueryBuilder::setFirstResult">
+<em class="property">public </em><code class="descclassname">OCP\DB\QueryBuilder\IQueryBuilder::</code><code class="descname">setFirstResult</code><span class="sig-paren">(</span><em>$firstResult</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\DB\QueryBuilder\IQueryBuilder::setFirstResult" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Sets the position of the first result to retrieve (the &#8220;offset&#8221;).</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L289">lib/public/DB/QueryBuilder/IQueryBuilder.php#289</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$firstResult</strong> (int)  The first result to return.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">$this This QueryBuilder instance.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">8.2.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\DB\QueryBuilder\IQueryBuilder::getFirstResult">
+<em class="property">public </em><code class="descclassname">OCP\DB\QueryBuilder\IQueryBuilder::</code><code class="descname">getFirstResult</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\DB\QueryBuilder\IQueryBuilder::getFirstResult" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Gets the position of the first result the query object was set to retrieve (the &#8220;offset&#8221;).</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">Returns NULL if <a class="reference external" href="mailto:{&#37;&#52;&#48;link">{<span>&#64;</span>link</a> setFirstResult} was not applied to this QueryBuilder.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L298">lib/public/DB/QueryBuilder/IQueryBuilder.php#298</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">int The position of the first result.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">8.2.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\DB\QueryBuilder\IQueryBuilder::setMaxResults">
+<em class="property">public </em><code class="descclassname">OCP\DB\QueryBuilder\IQueryBuilder::</code><code class="descname">setMaxResults</code><span class="sig-paren">(</span><em>$maxResults</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\DB\QueryBuilder\IQueryBuilder::setMaxResults" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Sets the maximum number of results to retrieve (the &#8220;limit&#8221;).</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L308">lib/public/DB/QueryBuilder/IQueryBuilder.php#308</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$maxResults</strong> (int)  The maximum number of results to retrieve.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">$this This QueryBuilder instance.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">8.2.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\DB\QueryBuilder\IQueryBuilder::getMaxResults">
+<em class="property">public </em><code class="descclassname">OCP\DB\QueryBuilder\IQueryBuilder::</code><code class="descname">getMaxResults</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\DB\QueryBuilder\IQueryBuilder::getMaxResults" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Gets the maximum number of results the query object was set to retrieve (the &#8220;limit&#8221;).</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">Returns NULL if <a class="reference external" href="mailto:{&#37;&#52;&#48;link">{<span>&#64;</span>link</a> setMaxResults} was not applied to this query builder.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L317">lib/public/DB/QueryBuilder/IQueryBuilder.php#317</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">int | null The maximum number of results.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">8.2.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\DB\QueryBuilder\IQueryBuilder::select">
+<em class="property">public </em><code class="descclassname">OCP\DB\QueryBuilder\IQueryBuilder::</code><code class="descname">select</code><span class="sig-paren">(</span><em>...$selects</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\DB\QueryBuilder\IQueryBuilder::select" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Specifies an item that is to be returned in the query result.</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">Replaces any previously specified selections, if any.</div>
+<div class="line"><br /></div>
+<div class="line">&lt;code&gt;</div>
+<div class="line-block">
+<div class="line">$qb = $conn-&gt;getQueryBuilder()</div>
+<div class="line-block">
+<div class="line">-&gt;select(&#8216;u.id&#8217;, &#8216;p.id&#8217;)</div>
+<div class="line">-&gt;from(&#8216;users&#8217;, &#8216;u&#8217;)</div>
+<div class="line">-&gt;leftJoin(&#8216;u&#8217;, &#8216;phonenumbers&#8217;, &#8216;p&#8217;, &#8216;u.id = p.user_id&#8217;);</div>
+</div>
+</div>
+<div class="line">&lt;/code&gt;</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L337">lib/public/DB/QueryBuilder/IQueryBuilder.php#337</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$selects</strong> (mixed)  The selection expressions.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">$this This QueryBuilder instance.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">8.2.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\DB\QueryBuilder\IQueryBuilder::selectAlias">
+<em class="property">public </em><code class="descclassname">OCP\DB\QueryBuilder\IQueryBuilder::</code><code class="descname">selectAlias</code><span class="sig-paren">(</span><em>$select</em>, <em>$alias</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\DB\QueryBuilder\IQueryBuilder::selectAlias" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Specifies an item that is to be returned with a different name in the query result.</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">&lt;code&gt;</div>
+<div class="line-block">
+<div class="line">$qb = $conn-&gt;getQueryBuilder()</div>
+<div class="line-block">
+<div class="line">-&gt;selectAlias(&#8216;u.id&#8217;, &#8216;user_id&#8217;)</div>
+<div class="line">-&gt;from(&#8216;users&#8217;, &#8216;u&#8217;)</div>
+<div class="line">-&gt;leftJoin(&#8216;u&#8217;, &#8216;phonenumbers&#8217;, &#8216;p&#8217;, &#8216;u.id = p.user_id&#8217;);</div>
+</div>
+</div>
+<div class="line">&lt;/code&gt;</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L358">lib/public/DB/QueryBuilder/IQueryBuilder.php#358</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$select</strong> (mixed)  The selection expressions.</li>
+<li><strong>$alias</strong> (string)  The column alias used in the constructed query.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">$this This QueryBuilder instance.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">8.2.1</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\DB\QueryBuilder\IQueryBuilder::selectDistinct">
+<em class="property">public </em><code class="descclassname">OCP\DB\QueryBuilder\IQueryBuilder::</code><code class="descname">selectDistinct</code><span class="sig-paren">(</span><em>$select</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\DB\QueryBuilder\IQueryBuilder::selectDistinct" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Specifies an item that is to be returned uniquely in the query result.</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">&lt;code&gt;</div>
+<div class="line-block">
+<div class="line">$qb = $conn-&gt;getQueryBuilder()</div>
+<div class="line-block">
+<div class="line">-&gt;selectDistinct(&#8216;type&#8217;)</div>
+<div class="line">-&gt;from(&#8216;users&#8217;);</div>
+</div>
+</div>
+<div class="line">&lt;/code&gt;</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L376">lib/public/DB/QueryBuilder/IQueryBuilder.php#376</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$select</strong> (mixed)  The selection expressions.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">$this This QueryBuilder instance.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">9.0.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\DB\QueryBuilder\IQueryBuilder::addSelect">
+<em class="property">public </em><code class="descclassname">OCP\DB\QueryBuilder\IQueryBuilder::</code><code class="descname">addSelect</code><span class="sig-paren">(</span><em>...$select</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\DB\QueryBuilder\IQueryBuilder::addSelect" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Adds an item that is to be returned in the query result.</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">&lt;code&gt;</div>
+<div class="line-block">
+<div class="line">$qb = $conn-&gt;getQueryBuilder()</div>
+<div class="line-block">
+<div class="line">-&gt;select(&#8216;u.id&#8217;)</div>
+<div class="line">-&gt;addSelect(&#8216;p.id&#8217;)</div>
+<div class="line">-&gt;from(&#8216;users&#8217;, &#8216;u&#8217;)</div>
+<div class="line">-&gt;leftJoin(&#8216;u&#8217;, &#8216;phonenumbers&#8217;, &#8216;u.id = p.user_id&#8217;);</div>
+</div>
+</div>
+<div class="line">&lt;/code&gt;</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L396">lib/public/DB/QueryBuilder/IQueryBuilder.php#396</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$select</strong> (mixed)  The selection expression.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">$this This QueryBuilder instance.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">8.2.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\DB\QueryBuilder\IQueryBuilder::delete">
+<em class="property">public </em><code class="descclassname">OCP\DB\QueryBuilder\IQueryBuilder::</code><code class="descname">delete</code><span class="sig-paren">(</span><em>$delete=null</em>, <em>$alias=null</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\DB\QueryBuilder\IQueryBuilder::delete" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Turns the query being built into a bulk delete query that ranges over</div>
+<div class="line">a certain table.</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">&lt;code&gt;</div>
+<div class="line-block">
+<div class="line">$qb = $conn-&gt;getQueryBuilder()</div>
+<div class="line-block">
+<div class="line">-&gt;delete(&#8216;users&#8217;, &#8216;u&#8217;)</div>
+<div class="line">-&gt;where(&#8216;u.id = :user_id&#8217;);</div>
+<div class="line">-&gt;setParameter(&#8216;:user_id&#8217;, 1);</div>
+</div>
+</div>
+<div class="line">&lt;/code&gt;</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L417">lib/public/DB/QueryBuilder/IQueryBuilder.php#417</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$delete</strong> (string)  The table whose rows are subject to the deletion.</li>
+<li><strong>$alias</strong> (string)  The table alias used in the constructed query.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">$this This QueryBuilder instance.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">8.2.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\DB\QueryBuilder\IQueryBuilder::update">
+<em class="property">public </em><code class="descclassname">OCP\DB\QueryBuilder\IQueryBuilder::</code><code class="descname">update</code><span class="sig-paren">(</span><em>$update=null</em>, <em>$alias=null</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\DB\QueryBuilder\IQueryBuilder::update" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Turns the query being built into a bulk update query that ranges over</div>
+<div class="line">a certain table</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">&lt;code&gt;</div>
+<div class="line-block">
+<div class="line">$qb = $conn-&gt;getQueryBuilder()</div>
+<div class="line-block">
+<div class="line">-&gt;update(&#8216;users&#8217;, &#8216;u&#8217;)</div>
+<div class="line">-&gt;set(&#8216;u.password&#8217;, md5(&#8216;password&#8217;))</div>
+<div class="line">-&gt;where(&#8216;u.id = ?&#8217;);</div>
+</div>
+</div>
+<div class="line">&lt;/code&gt;</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L438">lib/public/DB/QueryBuilder/IQueryBuilder.php#438</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$update</strong> (string)  The table whose rows are subject to the update.</li>
+<li><strong>$alias</strong> (string)  The table alias used in the constructed query.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">$this This QueryBuilder instance.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">8.2.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\DB\QueryBuilder\IQueryBuilder::insert">
+<em class="property">public </em><code class="descclassname">OCP\DB\QueryBuilder\IQueryBuilder::</code><code class="descname">insert</code><span class="sig-paren">(</span><em>$insert=null</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\DB\QueryBuilder\IQueryBuilder::insert" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Turns the query being built into an insert query that inserts into</div>
+<div class="line">a certain table</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">&lt;code&gt;</div>
+<div class="line-block">
+<div class="line">$qb = $conn-&gt;getQueryBuilder()</div>
+<div class="line-block">
+<div class="line">-&gt;insert(&#8216;users&#8217;)</div>
+<div class="line">-&gt;values(</div>
+<div class="line-block">
+<div class="line">array(</div>
+<div class="line-block">
+<div class="line">&#8216;name&#8217; =&gt; &#8216;?&#8217;,</div>
+<div class="line">&#8216;password&#8217; =&gt; &#8216;?&#8217;</div>
+</div>
+<div class="line">)</div>
+</div>
+<div class="line">);</div>
+</div>
+</div>
+<div class="line">&lt;/code&gt;</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L462">lib/public/DB/QueryBuilder/IQueryBuilder.php#462</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$insert</strong> (string)  The table into which the rows should be inserted.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">$this This QueryBuilder instance.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">8.2.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\DB\QueryBuilder\IQueryBuilder::from">
+<em class="property">public </em><code class="descclassname">OCP\DB\QueryBuilder\IQueryBuilder::</code><code class="descname">from</code><span class="sig-paren">(</span><em>$from</em>, <em>$alias=null</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\DB\QueryBuilder\IQueryBuilder::from" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Creates and adds a query root corresponding to the table identified by the</div>
+<div class="line">given alias, forming a cartesian product with any existing query roots.</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">&lt;code&gt;</div>
+<div class="line-block">
+<div class="line">$qb = $conn-&gt;getQueryBuilder()</div>
+<div class="line-block">
+<div class="line">-&gt;select(&#8216;u.id&#8217;)</div>
+<div class="line">-&gt;from(&#8216;users&#8217;, &#8216;u&#8217;)</div>
+</div>
+</div>
+<div class="line">&lt;/code&gt;</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L482">lib/public/DB/QueryBuilder/IQueryBuilder.php#482</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$from</strong> (string)  The table.</li>
+<li><strong>$alias</strong> (string | null)  The alias of the table.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">$this This QueryBuilder instance.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">8.2.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\DB\QueryBuilder\IQueryBuilder::join">
+<em class="property">public </em><code class="descclassname">OCP\DB\QueryBuilder\IQueryBuilder::</code><code class="descname">join</code><span class="sig-paren">(</span><em>$fromAlias</em>, <em>$join</em>, <em>$alias</em>, <em>$condition=null</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\DB\QueryBuilder\IQueryBuilder::join" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Creates and adds a join to the query.</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">&lt;code&gt;</div>
+<div class="line-block">
+<div class="line">$qb = $conn-&gt;getQueryBuilder()</div>
+<div class="line-block">
+<div class="line">-&gt;select(&#8216;u.name&#8217;)</div>
+<div class="line">-&gt;from(&#8216;users&#8217;, &#8216;u&#8217;)</div>
+<div class="line">-&gt;join(&#8216;u&#8217;, &#8216;phonenumbers&#8217;, &#8216;p&#8217;, &#8216;p.is_primary = 1&#8217;);</div>
+</div>
+</div>
+<div class="line">&lt;/code&gt;</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L507">lib/public/DB/QueryBuilder/IQueryBuilder.php#507</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$fromAlias</strong> (string)  The alias that points to a from clause.</li>
+<li><strong>$join</strong> (string)  The table name to join.</li>
+<li><strong>$alias</strong> (string)  The alias of the join table.</li>
+<li><strong>$condition</strong> (string | <a class="reference internal" href="ICompositeExpression.html#OCP\DB\QueryBuilder\ICompositeExpression" title="OCP\DB\QueryBuilder\ICompositeExpression"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\DB\QueryBuilder\ICompositeExpression</span></code></a> | null)  The condition for the join.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">$this This QueryBuilder instance.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">8.2.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\DB\QueryBuilder\IQueryBuilder::innerJoin">
+<em class="property">public </em><code class="descclassname">OCP\DB\QueryBuilder\IQueryBuilder::</code><code class="descname">innerJoin</code><span class="sig-paren">(</span><em>$fromAlias</em>, <em>$join</em>, <em>$alias</em>, <em>$condition=null</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\DB\QueryBuilder\IQueryBuilder::innerJoin" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Creates and adds a join to the query.</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">&lt;code&gt;</div>
+<div class="line-block">
+<div class="line">$qb = $conn-&gt;getQueryBuilder()</div>
+<div class="line-block">
+<div class="line">-&gt;select(&#8216;u.name&#8217;)</div>
+<div class="line">-&gt;from(&#8216;users&#8217;, &#8216;u&#8217;)</div>
+<div class="line">-&gt;innerJoin(&#8216;u&#8217;, &#8216;phonenumbers&#8217;, &#8216;p&#8217;, &#8216;p.is_primary = 1&#8217;);</div>
+</div>
+</div>
+<div class="line">&lt;/code&gt;</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L532">lib/public/DB/QueryBuilder/IQueryBuilder.php#532</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$fromAlias</strong> (string)  The alias that points to a from clause.</li>
+<li><strong>$join</strong> (string)  The table name to join.</li>
+<li><strong>$alias</strong> (string)  The alias of the join table.</li>
+<li><strong>$condition</strong> (string | <a class="reference internal" href="ICompositeExpression.html#OCP\DB\QueryBuilder\ICompositeExpression" title="OCP\DB\QueryBuilder\ICompositeExpression"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\DB\QueryBuilder\ICompositeExpression</span></code></a> | null)  The condition for the join.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">$this This QueryBuilder instance.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">8.2.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\DB\QueryBuilder\IQueryBuilder::leftJoin">
+<em class="property">public </em><code class="descclassname">OCP\DB\QueryBuilder\IQueryBuilder::</code><code class="descname">leftJoin</code><span class="sig-paren">(</span><em>$fromAlias</em>, <em>$join</em>, <em>$alias</em>, <em>$condition=null</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\DB\QueryBuilder\IQueryBuilder::leftJoin" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Creates and adds a left join to the query.</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">&lt;code&gt;</div>
+<div class="line-block">
+<div class="line">$qb = $conn-&gt;getQueryBuilder()</div>
+<div class="line-block">
+<div class="line">-&gt;select(&#8216;u.name&#8217;)</div>
+<div class="line">-&gt;from(&#8216;users&#8217;, &#8216;u&#8217;)</div>
+<div class="line">-&gt;leftJoin(&#8216;u&#8217;, &#8216;phonenumbers&#8217;, &#8216;p&#8217;, &#8216;p.is_primary = 1&#8217;);</div>
+</div>
+</div>
+<div class="line">&lt;/code&gt;</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L557">lib/public/DB/QueryBuilder/IQueryBuilder.php#557</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$fromAlias</strong> (string)  The alias that points to a from clause.</li>
+<li><strong>$join</strong> (string)  The table name to join.</li>
+<li><strong>$alias</strong> (string)  The alias of the join table.</li>
+<li><strong>$condition</strong> (string | <a class="reference internal" href="ICompositeExpression.html#OCP\DB\QueryBuilder\ICompositeExpression" title="OCP\DB\QueryBuilder\ICompositeExpression"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\DB\QueryBuilder\ICompositeExpression</span></code></a> | null)  The condition for the join.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">$this This QueryBuilder instance.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">8.2.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\DB\QueryBuilder\IQueryBuilder::rightJoin">
+<em class="property">public </em><code class="descclassname">OCP\DB\QueryBuilder\IQueryBuilder::</code><code class="descname">rightJoin</code><span class="sig-paren">(</span><em>$fromAlias</em>, <em>$join</em>, <em>$alias</em>, <em>$condition=null</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\DB\QueryBuilder\IQueryBuilder::rightJoin" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Creates and adds a right join to the query.</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">&lt;code&gt;</div>
+<div class="line-block">
+<div class="line">$qb = $conn-&gt;getQueryBuilder()</div>
+<div class="line-block">
+<div class="line">-&gt;select(&#8216;u.name&#8217;)</div>
+<div class="line">-&gt;from(&#8216;users&#8217;, &#8216;u&#8217;)</div>
+<div class="line">-&gt;rightJoin(&#8216;u&#8217;, &#8216;phonenumbers&#8217;, &#8216;p&#8217;, &#8216;p.is_primary = 1&#8217;);</div>
+</div>
+</div>
+<div class="line">&lt;/code&gt;</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L582">lib/public/DB/QueryBuilder/IQueryBuilder.php#582</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$fromAlias</strong> (string)  The alias that points to a from clause.</li>
+<li><strong>$join</strong> (string)  The table name to join.</li>
+<li><strong>$alias</strong> (string)  The alias of the join table.</li>
+<li><strong>$condition</strong> (string | <a class="reference internal" href="ICompositeExpression.html#OCP\DB\QueryBuilder\ICompositeExpression" title="OCP\DB\QueryBuilder\ICompositeExpression"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\DB\QueryBuilder\ICompositeExpression</span></code></a> | null)  The condition for the join.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">$this This QueryBuilder instance.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">8.2.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\DB\QueryBuilder\IQueryBuilder::set">
+<em class="property">public </em><code class="descclassname">OCP\DB\QueryBuilder\IQueryBuilder::</code><code class="descname">set</code><span class="sig-paren">(</span><em>$key</em>, <em>$value</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\DB\QueryBuilder\IQueryBuilder::set" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Sets a new value for a column in a bulk update query.</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">&lt;code&gt;</div>
+<div class="line-block">
+<div class="line">$qb = $conn-&gt;getQueryBuilder()</div>
+<div class="line-block">
+<div class="line">-&gt;update(&#8216;users&#8217;, &#8216;u&#8217;)</div>
+<div class="line">-&gt;set(&#8216;u.password&#8217;, md5(&#8216;password&#8217;))</div>
+<div class="line">-&gt;where(&#8216;u.id = ?&#8217;);</div>
+</div>
+</div>
+<div class="line">&lt;/code&gt;</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L603">lib/public/DB/QueryBuilder/IQueryBuilder.php#603</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$key</strong> (string)  The column to set.</li>
+<li><strong>$value</strong> (<a class="reference internal" href="ILiteral.html#OCP\DB\QueryBuilder\ILiteral" title="OCP\DB\QueryBuilder\ILiteral"><code class="xref any php php-trait docutils literal"><span class="pre">OCP\DB\QueryBuilder\ILiteral</span></code></a> | <a class="reference internal" href="IParameter.html#OCP\DB\QueryBuilder\IParameter" title="OCP\DB\QueryBuilder\IParameter"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\DB\QueryBuilder\IParameter</span></code></a> | <a class="reference internal" href="IQueryFunction.html#OCP\DB\QueryBuilder\IQueryFunction" title="OCP\DB\QueryBuilder\IQueryFunction"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\DB\QueryBuilder\IQueryFunction</span></code></a> | string)  The value, expression, placeholder, etc.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">$this This QueryBuilder instance.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">8.2.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\DB\QueryBuilder\IQueryBuilder::where">
+<em class="property">public </em><code class="descclassname">OCP\DB\QueryBuilder\IQueryBuilder::</code><code class="descname">where</code><span class="sig-paren">(</span><em>...$predicates</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\DB\QueryBuilder\IQueryBuilder::where" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Specifies one or more restrictions to the query result.</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">Replaces any previously specified restrictions, if any.</div>
+<div class="line"><br /></div>
+<div class="line">&lt;code&gt;</div>
+<div class="line-block">
+<div class="line">$qb = $conn-&gt;getQueryBuilder()</div>
+<div class="line-block">
+<div class="line">-&gt;select(&#8216;u.name&#8217;)</div>
+<div class="line">-&gt;from(&#8216;users&#8217;, &#8216;u&#8217;)</div>
+<div class="line">-&gt;where(&#8216;u.id = ?&#8217;);</div>
+<div class="line"><br /></div>
+</div>
+<div class="line">// You can optionally programatically build and/or expressions</div>
+<div class="line">$qb = $conn-&gt;getQueryBuilder();</div>
+<div class="line"><br /></div>
+<div class="line">$or = $qb-&gt;expr()-&gt;orx();</div>
+<div class="line">$or-&gt;add($qb-&gt;expr()-&gt;eq(&#8216;u.id&#8217;, 1));</div>
+<div class="line">$or-&gt;add($qb-&gt;expr()-&gt;eq(&#8216;u.id&#8217;, 2));</div>
+<div class="line"><br /></div>
+<div class="line">$qb-&gt;update(&#8216;users&#8217;, &#8216;u&#8217;)</div>
+<div class="line-block">
+<div class="line">-&gt;set(&#8216;u.password&#8217;, md5(&#8216;password&#8217;))</div>
+<div class="line">-&gt;where($or);</div>
+</div>
+</div>
+<div class="line">&lt;/code&gt;</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L634">lib/public/DB/QueryBuilder/IQueryBuilder.php#634</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$predicates</strong> (mixed)  The restriction predicates.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">$this This QueryBuilder instance.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">8.2.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\DB\QueryBuilder\IQueryBuilder::andWhere">
+<em class="property">public </em><code class="descclassname">OCP\DB\QueryBuilder\IQueryBuilder::</code><code class="descname">andWhere</code><span class="sig-paren">(</span><em>...$where</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\DB\QueryBuilder\IQueryBuilder::andWhere" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Adds one or more restrictions to the query results, forming a logical</div>
+<div class="line">conjunction with any previously specified restrictions.</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">&lt;code&gt;</div>
+<div class="line-block">
+<div class="line">$qb = $conn-&gt;getQueryBuilder()</div>
+<div class="line-block">
+<div class="line">-&gt;select(&#8216;u&#8217;)</div>
+<div class="line">-&gt;from(&#8216;users&#8217;, &#8216;u&#8217;)</div>
+<div class="line">-&gt;where(&#8216;u.username LIKE ?&#8217;)</div>
+<div class="line">-&gt;andWhere(&#8216;u.is_active = 1&#8217;);</div>
+</div>
+</div>
+<div class="line">&lt;/code&gt;</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L657">lib/public/DB/QueryBuilder/IQueryBuilder.php#657</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$where</strong> (mixed)  The query restrictions.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">$this This QueryBuilder instance.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">See:</th><td class="field-body"><p class="first"><code class="xref any docutils literal"><span class="pre">\OCP\DB\QueryBuilder\where()</span></code></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">8.2.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\DB\QueryBuilder\IQueryBuilder::orWhere">
+<em class="property">public </em><code class="descclassname">OCP\DB\QueryBuilder\IQueryBuilder::</code><code class="descname">orWhere</code><span class="sig-paren">(</span><em>...$where</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\DB\QueryBuilder\IQueryBuilder::orWhere" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Adds one or more restrictions to the query results, forming a logical</div>
+<div class="line">disjunction with any previously specified restrictions.</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">&lt;code&gt;</div>
+<div class="line-block">
+<div class="line">$qb = $conn-&gt;getQueryBuilder()</div>
+<div class="line-block">
+<div class="line">-&gt;select(&#8216;u.name&#8217;)</div>
+<div class="line">-&gt;from(&#8216;users&#8217;, &#8216;u&#8217;)</div>
+<div class="line">-&gt;where(&#8216;u.id = 1&#8217;)</div>
+<div class="line">-&gt;orWhere(&#8216;u.id = 2&#8217;);</div>
+</div>
+</div>
+<div class="line">&lt;/code&gt;</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L680">lib/public/DB/QueryBuilder/IQueryBuilder.php#680</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$where</strong> (mixed)  The WHERE statement.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">$this This QueryBuilder instance.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">See:</th><td class="field-body"><p class="first"><code class="xref any docutils literal"><span class="pre">\OCP\DB\QueryBuilder\where()</span></code></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">8.2.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\DB\QueryBuilder\IQueryBuilder::groupBy">
+<em class="property">public </em><code class="descclassname">OCP\DB\QueryBuilder\IQueryBuilder::</code><code class="descname">groupBy</code><span class="sig-paren">(</span><em>...$groupBys</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\DB\QueryBuilder\IQueryBuilder::groupBy" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Specifies a grouping over the results of the query.</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">Replaces any previously specified groupings, if any.</div>
+<div class="line"><br /></div>
+<div class="line">&lt;code&gt;</div>
+<div class="line-block">
+<div class="line">$qb = $conn-&gt;getQueryBuilder()</div>
+<div class="line-block">
+<div class="line">-&gt;select(&#8216;u.name&#8217;)</div>
+<div class="line">-&gt;from(&#8216;users&#8217;, &#8216;u&#8217;)</div>
+<div class="line">-&gt;groupBy(&#8216;u.id&#8217;);</div>
+</div>
+</div>
+<div class="line">&lt;/code&gt;</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L700">lib/public/DB/QueryBuilder/IQueryBuilder.php#700</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$groupBys</strong> (mixed)  The grouping expression.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">$this This QueryBuilder instance.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">8.2.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\DB\QueryBuilder\IQueryBuilder::addGroupBy">
+<em class="property">public </em><code class="descclassname">OCP\DB\QueryBuilder\IQueryBuilder::</code><code class="descname">addGroupBy</code><span class="sig-paren">(</span><em>...$groupBy</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\DB\QueryBuilder\IQueryBuilder::addGroupBy" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Adds a grouping expression to the query.</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">&lt;code&gt;</div>
+<div class="line-block">
+<div class="line">$qb = $conn-&gt;getQueryBuilder()</div>
+<div class="line-block">
+<div class="line">-&gt;select(&#8216;u.name&#8217;)</div>
+<div class="line">-&gt;from(&#8216;users&#8217;, &#8216;u&#8217;)</div>
+<div class="line">-&gt;groupBy(&#8216;u.lastLogin&#8217;);</div>
+<div class="line">-&gt;addGroupBy(&#8216;u.createdAt&#8217;)</div>
+</div>
+</div>
+<div class="line">&lt;/code&gt;</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L720">lib/public/DB/QueryBuilder/IQueryBuilder.php#720</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$groupBy</strong> (mixed)  The grouping expression.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">$this This QueryBuilder instance.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">8.2.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\DB\QueryBuilder\IQueryBuilder::setValue">
+<em class="property">public </em><code class="descclassname">OCP\DB\QueryBuilder\IQueryBuilder::</code><code class="descname">setValue</code><span class="sig-paren">(</span><em>$column</em>, <em>$value</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\DB\QueryBuilder\IQueryBuilder::setValue" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Sets a value for a column in an insert query.</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">&lt;code&gt;</div>
+<div class="line-block">
+<div class="line">$qb = $conn-&gt;getQueryBuilder()</div>
+<div class="line-block">
+<div class="line">-&gt;insert(&#8216;users&#8217;)</div>
+<div class="line">-&gt;values(</div>
+<div class="line-block">
+<div class="line">array(</div>
+<div class="line-block">
+<div class="line">&#8216;name&#8217; =&gt; &#8216;?&#8217;</div>
+</div>
+<div class="line">)</div>
+</div>
+<div class="line">)</div>
+<div class="line">-&gt;setValue(&#8216;password&#8217;, &#8216;?&#8217;);</div>
+</div>
+</div>
+<div class="line">&lt;/code&gt;</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L745">lib/public/DB/QueryBuilder/IQueryBuilder.php#745</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$column</strong> (string)  The column into which the value should be inserted.</li>
+<li><strong>$value</strong> (<a class="reference internal" href="IParameter.html#OCP\DB\QueryBuilder\IParameter" title="OCP\DB\QueryBuilder\IParameter"><code class="xref any php php-trait docutils literal"><span class="pre">OCP\DB\QueryBuilder\IParameter</span></code></a> | string)  The value that should be inserted into the column.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">$this This QueryBuilder instance.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">8.2.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\DB\QueryBuilder\IQueryBuilder::values">
+<em class="property">public </em><code class="descclassname">OCP\DB\QueryBuilder\IQueryBuilder::</code><code class="descname">values</code><span class="sig-paren">(</span><em>$values</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\DB\QueryBuilder\IQueryBuilder::values" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Specifies values for an insert query indexed by column names.</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">Replaces any previous values, if any.</div>
+<div class="line"><br /></div>
+<div class="line">&lt;code&gt;</div>
+<div class="line-block">
+<div class="line">$qb = $conn-&gt;getQueryBuilder()</div>
+<div class="line-block">
+<div class="line">-&gt;insert(&#8216;users&#8217;)</div>
+<div class="line">-&gt;values(</div>
+<div class="line-block">
+<div class="line">array(</div>
+<div class="line-block">
+<div class="line">&#8216;name&#8217; =&gt; &#8216;?&#8217;,</div>
+<div class="line">&#8216;password&#8217; =&gt; &#8216;?&#8217;</div>
+</div>
+<div class="line">)</div>
+</div>
+<div class="line">);</div>
+</div>
+</div>
+<div class="line">&lt;/code&gt;</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L769">lib/public/DB/QueryBuilder/IQueryBuilder.php#769</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$values</strong> (array)  The values to specify for the insert query indexed by column names.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">$this This QueryBuilder instance.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">8.2.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\DB\QueryBuilder\IQueryBuilder::having">
+<em class="property">public </em><code class="descclassname">OCP\DB\QueryBuilder\IQueryBuilder::</code><code class="descname">having</code><span class="sig-paren">(</span><em>...$having</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\DB\QueryBuilder\IQueryBuilder::having" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Specifies a restriction over the groups of the query.</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">Replaces any previous having restrictions, if any.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L782">lib/public/DB/QueryBuilder/IQueryBuilder.php#782</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$having</strong> (mixed)  The restriction over the groups.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">$this This QueryBuilder instance.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">8.2.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\DB\QueryBuilder\IQueryBuilder::andHaving">
+<em class="property">public </em><code class="descclassname">OCP\DB\QueryBuilder\IQueryBuilder::</code><code class="descname">andHaving</code><span class="sig-paren">(</span><em>...$having</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\DB\QueryBuilder\IQueryBuilder::andHaving" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Adds a restriction over the groups of the query, forming a logical</div>
+<div class="line">conjunction with any existing having restrictions.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L795">lib/public/DB/QueryBuilder/IQueryBuilder.php#795</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$having</strong> (mixed)  The restriction to append.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">$this This QueryBuilder instance.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">8.2.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\DB\QueryBuilder\IQueryBuilder::orHaving">
+<em class="property">public </em><code class="descclassname">OCP\DB\QueryBuilder\IQueryBuilder::</code><code class="descname">orHaving</code><span class="sig-paren">(</span><em>...$having</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\DB\QueryBuilder\IQueryBuilder::orHaving" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Adds a restriction over the groups of the query, forming a logical</div>
+<div class="line">disjunction with any existing having restrictions.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L808">lib/public/DB/QueryBuilder/IQueryBuilder.php#808</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$having</strong> (mixed)  The restriction to add.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">$this This QueryBuilder instance.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">8.2.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\DB\QueryBuilder\IQueryBuilder::orderBy">
+<em class="property">public </em><code class="descclassname">OCP\DB\QueryBuilder\IQueryBuilder::</code><code class="descname">orderBy</code><span class="sig-paren">(</span><em>$sort</em>, <em>$order=null</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\DB\QueryBuilder\IQueryBuilder::orderBy" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Specifies an ordering for the query results.</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">Replaces any previously specified orderings, if any.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L823">lib/public/DB/QueryBuilder/IQueryBuilder.php#823</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$sort</strong> (string)  The ordering expression.</li>
+<li><strong>$order</strong> (string)  The ordering direction.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">$this This QueryBuilder instance.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">8.2.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\DB\QueryBuilder\IQueryBuilder::addOrderBy">
+<em class="property">public </em><code class="descclassname">OCP\DB\QueryBuilder\IQueryBuilder::</code><code class="descname">addOrderBy</code><span class="sig-paren">(</span><em>$sort</em>, <em>$order=null</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\DB\QueryBuilder\IQueryBuilder::addOrderBy" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Adds an ordering to the query results.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L837">lib/public/DB/QueryBuilder/IQueryBuilder.php#837</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$sort</strong> (string)  The ordering expression.</li>
+<li><strong>$order</strong> (string)  The ordering direction.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">$this This QueryBuilder instance.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">8.2.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\DB\QueryBuilder\IQueryBuilder::getQueryPart">
+<em class="property">public </em><code class="descclassname">OCP\DB\QueryBuilder\IQueryBuilder::</code><code class="descname">getQueryPart</code><span class="sig-paren">(</span><em>$queryPartName</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\DB\QueryBuilder\IQueryBuilder::getQueryPart" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Gets a query part by its name.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L847">lib/public/DB/QueryBuilder/IQueryBuilder.php#847</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$queryPartName</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">mixed</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">8.2.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\DB\QueryBuilder\IQueryBuilder::getQueryParts">
+<em class="property">public </em><code class="descclassname">OCP\DB\QueryBuilder\IQueryBuilder::</code><code class="descname">getQueryParts</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\DB\QueryBuilder\IQueryBuilder::getQueryParts" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Gets all query parts.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L855">lib/public/DB/QueryBuilder/IQueryBuilder.php#855</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">array</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">8.2.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\DB\QueryBuilder\IQueryBuilder::resetQueryParts">
+<em class="property">public </em><code class="descclassname">OCP\DB\QueryBuilder\IQueryBuilder::</code><code class="descname">resetQueryParts</code><span class="sig-paren">(</span><em>$queryPartNames=null</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\DB\QueryBuilder\IQueryBuilder::resetQueryParts" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Resets SQL parts.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L865">lib/public/DB/QueryBuilder/IQueryBuilder.php#865</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$queryPartNames</strong> (array | null)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">$this This QueryBuilder instance.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">8.2.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\DB\QueryBuilder\IQueryBuilder::resetQueryPart">
+<em class="property">public </em><code class="descclassname">OCP\DB\QueryBuilder\IQueryBuilder::</code><code class="descname">resetQueryPart</code><span class="sig-paren">(</span><em>$queryPartName</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\DB\QueryBuilder\IQueryBuilder::resetQueryPart" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Resets a single SQL part.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L875">lib/public/DB/QueryBuilder/IQueryBuilder.php#875</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$queryPartName</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">$this This QueryBuilder instance.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">8.2.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\DB\QueryBuilder\IQueryBuilder::createNamedParameter">
+<em class="property">public </em><code class="descclassname">OCP\DB\QueryBuilder\IQueryBuilder::</code><code class="descname">createNamedParameter</code><span class="sig-paren">(</span><em>$value</em>, <em>$type=self::PARAM_STR</em>, <em>$placeHolder=null</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\DB\QueryBuilder\IQueryBuilder::createNamedParameter" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Creates a new named parameter and bind the value $value to it.</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">This method provides a shortcut for PDOStatement::bindValue</div>
+<div class="line">when using prepared statements.</div>
+<div class="line"><br /></div>
+<div class="line">The parameter $value specifies the value that you want to bind. If</div>
+<div class="line">$placeholder is not provided bindValue() will automatically create a</div>
+<div class="line">placeholder for you. An automatic placeholder will be of the name</div>
+<div class="line">&#8216;:dcValue1&#8217;, &#8216;:dcValue2&#8217; etc.</div>
+<div class="line"><br /></div>
+<div class="line">For more information see <a class="reference external" href="mailto:{&#37;&#52;&#48;link">{<span>&#64;</span>link</a> <a class="reference external" href="https://www.php.net/pdostatement-bindparam">https://www.php.net/pdostatement-bindparam</a>}</div>
+<div class="line"><br /></div>
+<div class="line">Example:</div>
+<div class="line">&lt;code&gt;</div>
+<div class="line">$value = 2;</div>
+<div class="line">$q-&gt;eq( &#8216;id&#8217;, $q-&gt;bindValue( $value ) );</div>
+<div class="line">$stmt = $q-&gt;executeQuery(); // executed with &#8216;id = 2&#8217;</div>
+<div class="line">&lt;/code&gt;</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L909">lib/public/DB/QueryBuilder/IQueryBuilder.php#909</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$value</strong> (mixed)</li>
+<li><strong>$type</strong> (mixed)</li>
+<li><strong>$placeHolder</strong> (string)  The name to bind with. The string must start with a colon &#8216;:&#8217;.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">License:</th><td class="field-body"><p class="first">New BSD License</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference internal" href="IParameter.html#OCP\DB\QueryBuilder\IParameter" title="OCP\DB\QueryBuilder\IParameter"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\DB\QueryBuilder\IParameter</span></code></a></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">8.2.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\DB\QueryBuilder\IQueryBuilder::createPositionalParameter">
+<em class="property">public </em><code class="descclassname">OCP\DB\QueryBuilder\IQueryBuilder::</code><code class="descname">createPositionalParameter</code><span class="sig-paren">(</span><em>$value</em>, <em>$type=self::PARAM_STR</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\DB\QueryBuilder\IQueryBuilder::createPositionalParameter" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Creates a new positional parameter and bind the given value to it.</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">Attention: If you are using positional parameters with the query builder you have</div>
+<div class="line">to be very careful to bind all parameters in the order they appear in the SQL</div>
+<div class="line">statement , otherwise they get bound in the wrong order which can lead to serious</div>
+<div class="line">bugs in your code.</div>
+<div class="line"><br /></div>
+<div class="line">Example:</div>
+<div class="line">&lt;code&gt;</div>
+<div class="line-block">
+<div class="line">$qb = $conn-&gt;getQueryBuilder();</div>
+<div class="line">$qb-&gt;select(&#8216;u.*&#8217;)</div>
+<div class="line-block">
+<div class="line">-&gt;from(&#8216;users&#8217;, &#8216;u&#8217;)</div>
+<div class="line">-&gt;where(&#8216;u.username = &#8216; . $qb-&gt;createPositionalParameter(&#8216;Foo&#8217;, IQueryBuilder::PARAM_STR))</div>
+<div class="line">-&gt;orWhere(&#8216;u.username = &#8216; . $qb-&gt;createPositionalParameter(&#8216;Bar&#8217;, IQueryBuilder::PARAM_STR))</div>
+</div>
+</div>
+<div class="line">&lt;/code&gt;</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L936">lib/public/DB/QueryBuilder/IQueryBuilder.php#936</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$value</strong> (mixed)</li>
+<li><strong>$type</strong> (int)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference internal" href="IParameter.html#OCP\DB\QueryBuilder\IParameter" title="OCP\DB\QueryBuilder\IParameter"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\DB\QueryBuilder\IParameter</span></code></a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">8.2.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\DB\QueryBuilder\IQueryBuilder::createParameter">
+<em class="property">public </em><code class="descclassname">OCP\DB\QueryBuilder\IQueryBuilder::</code><code class="descname">createParameter</code><span class="sig-paren">(</span><em>$name</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\DB\QueryBuilder\IQueryBuilder::createParameter" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Creates a new parameter</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">Example:</div>
+<div class="line">&lt;code&gt;</div>
+<div class="line-block">
+<div class="line">$qb = $conn-&gt;getQueryBuilder();</div>
+<div class="line">$qb-&gt;select(&#8216;u.*&#8217;)</div>
+<div class="line-block">
+<div class="line">-&gt;from(&#8216;users&#8217;, &#8216;u&#8217;)</div>
+<div class="line">-&gt;where(&#8216;u.username = &#8216; . $qb-&gt;createParameter(&#8216;name&#8217;))</div>
+<div class="line">-&gt;setParameter(&#8216;name&#8217;, &#8216;Bar&#8217;, IQueryBuilder::PARAM_STR))</div>
+</div>
+</div>
+<div class="line">&lt;/code&gt;</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L957">lib/public/DB/QueryBuilder/IQueryBuilder.php#957</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$name</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference internal" href="IParameter.html#OCP\DB\QueryBuilder\IParameter" title="OCP\DB\QueryBuilder\IParameter"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\DB\QueryBuilder\IParameter</span></code></a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">8.2.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\DB\QueryBuilder\IQueryBuilder::createFunction">
+<em class="property">public </em><code class="descclassname">OCP\DB\QueryBuilder\IQueryBuilder::</code><code class="descname">createFunction</code><span class="sig-paren">(</span><em>$call</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\DB\QueryBuilder\IQueryBuilder::createFunction" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Creates a new function</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">Attention: Column names inside the call have to be quoted before hand</div>
+<div class="line"><br /></div>
+<div class="line">Example:</div>
+<div class="line">&lt;code&gt;</div>
+<div class="line-block">
+<div class="line">$qb = $conn-&gt;getQueryBuilder();</div>
+<div class="line">$qb-&gt;select($qb-&gt;createFunction(&#8216;COUNT(*)&#8217;))</div>
+<div class="line-block">
+<div class="line">-&gt;from(&#8216;users&#8217;, &#8216;u&#8217;)</div>
+</div>
+<div class="line">echo $qb-&gt;getSQL(); // SELECT COUNT(*) FROM `users` u</div>
+</div>
+<div class="line">&lt;/code&gt;</div>
+<div class="line">&lt;code&gt;</div>
+<div class="line-block">
+<div class="line">$qb = $conn-&gt;getQueryBuilder();</div>
+<div class="line">$qb-&gt;select($qb-&gt;createFunction(&#8216;COUNT(`column`)&#8217;))</div>
+<div class="line-block">
+<div class="line">-&gt;from(&#8216;users&#8217;, &#8216;u&#8217;)</div>
+</div>
+<div class="line">echo $qb-&gt;getSQL(); // SELECT COUNT(`column`) FROM `users` u</div>
+</div>
+<div class="line">&lt;/code&gt;</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L985">lib/public/DB/QueryBuilder/IQueryBuilder.php#985</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$call</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference internal" href="IQueryFunction.html#OCP\DB\QueryBuilder\IQueryFunction" title="OCP\DB\QueryBuilder\IQueryFunction"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\DB\QueryBuilder\IQueryFunction</span></code></a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">8.2.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\DB\QueryBuilder\IQueryBuilder::getLastInsertId">
+<em class="property">public </em><code class="descclassname">OCP\DB\QueryBuilder\IQueryBuilder::</code><code class="descname">getLastInsertId</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\DB\QueryBuilder\IQueryBuilder::getLastInsertId" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Used to get the id of the last inserted element</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L993">lib/public/DB/QueryBuilder/IQueryBuilder.php#993</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">int</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Throws:</th><td class="field-body"><code class="xref any docutils literal"><span class="pre">\BadMethodCallException</span></code> When being called before an insert query has been run.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body">9.0.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\DB\QueryBuilder\IQueryBuilder::getTableName">
+<em class="property">public </em><code class="descclassname">OCP\DB\QueryBuilder\IQueryBuilder::</code><code class="descname">getTableName</code><span class="sig-paren">(</span><em>$table</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\DB\QueryBuilder\IQueryBuilder::getTableName" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Returns the table name quoted and with database prefix as needed by the implementation</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L1002">lib/public/DB/QueryBuilder/IQueryBuilder.php#1002</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$table</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">string</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">9.0.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OCP\DB\QueryBuilder\IQueryBuilder::getColumnName">
+<em class="property">public </em><code class="descclassname">OCP\DB\QueryBuilder\IQueryBuilder::</code><code class="descname">getColumnName</code><span class="sig-paren">(</span><em>$column</em>, <em>$tableAlias=&quot;&quot;</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\DB\QueryBuilder\IQueryBuilder::getColumnName" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Returns the column name quoted and with table alias prefix as needed by the implementation</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IQueryBuilder.php#L1012">lib/public/DB/QueryBuilder/IQueryBuilder.php#1012</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$column</strong> (string)</li>
+<li><strong>$tableAlias</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">string</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">9.0.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="IFunctionBuilder.html" class="btn btn-neutral float-right" title="IFunctionBuilder" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="index.html" class="btn btn-neutral float-left" title="QueryBuilder" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021 Nextcloud GmbH.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: 13
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/13/developer_manual">13</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/14/developer_manual">14</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/15/developer_manual">15</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/developer_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/developer_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+   
+
+</body>
+</html>

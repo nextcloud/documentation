@@ -1,0 +1,158 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+Streamer
+========
+
+
+.. php:namespace:: OC
+
+.. php:class:: Streamer
+
+
+	:Source:
+		`lib/private/Streamer.php#41 <https://github.com/nextcloud/server/blob/stable13/lib/private/Streamer.php#L41>`_
+	
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $request, $size, $numberOfFiles)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Streamer constructor\.
+			
+		
+		:Source:
+			`lib/private/Streamer.php#56 <https://github.com/nextcloud/server/blob/stable13/lib/private/Streamer.php#L56>`_
+		
+		
+		:Parameters:
+			* **$request** (:any:`OCP\\IRequest <OCP\\IRequest>`)  
+			* **$size** (int)  The size of the files in bytes
+			* **$numberOfFiles** (int)  The number of files (and directories) that will
+			be included in the streamed file
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public sendHeaders( $name)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Send HTTP headers
+			
+		
+		:Source:
+			`lib/private/Streamer.php#97 <https://github.com/nextcloud/server/blob/stable13/lib/private/Streamer.php#L97>`_
+		
+		
+		:Parameters:
+			* **$name** (string)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public addDirRecursive( $dir, $internalDir="")
+	
+		.. rst-class:: phpdoc-description
+		
+			| Stream directory recursively
+			
+		
+		:Source:
+			`lib/private/Streamer.php#110 <https://github.com/nextcloud/server/blob/stable13/lib/private/Streamer.php#L110>`_
+		
+		
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+		:Throws: :any:`\\OCP\\Files\\NotPermittedException <OCP\\Files\\NotPermittedException>` 
+		:Throws: :any:`\\OCP\\Files\\InvalidPathException <OCP\\Files\\InvalidPathException>` 
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+		:Throws: :any:`\\OCP\\Files\\NotPermittedException <OCP\\Files\\NotPermittedException>` 
+		:Throws: :any:`\\OCP\\Files\\InvalidPathException <OCP\\Files\\InvalidPathException>` 
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+		:Throws: :any:`\\OCP\\Files\\NotPermittedException <OCP\\Files\\NotPermittedException>` 
+		:Throws: :any:`\\OCP\\Files\\InvalidPathException <OCP\\Files\\InvalidPathException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public addFileFromStream( $stream, $internalName, $size, $time)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Add a file to the archive at the specified location and file name\.
+			
+		
+		:Source:
+			`lib/private/Streamer.php#156 <https://github.com/nextcloud/server/blob/stable13/lib/private/Streamer.php#L156>`_
+		
+		
+		:Parameters:
+			* **$stream** (string)  Stream to read data from
+			* **$internalName** (string)  Filepath and name to be used in the archive.
+			* **$size** (int)  Filesize
+			* **$time** (int | bool)  File mtime as int, or false
+
+		
+		:Returns: bool $success
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public addEmptyDir( $dirName)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Add an empty directory entry to the archive\.
+			
+		
+		:Source:
+			`lib/private/Streamer.php#177 <https://github.com/nextcloud/server/blob/stable13/lib/private/Streamer.php#L177>`_
+		
+		
+		:Parameters:
+			* **$dirName** (string)  Directory Path and name to be added to the archive.
+
+		
+		:Returns: bool $success
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public finalize()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Close the archive\.
+			
+			| A closed archive can no longer have new files added to it\. After
+			| closing, the file is completely written to the output stream\.
+			
+		
+		:Source:
+			`lib/private/Streamer.php#187 <https://github.com/nextcloud/server/blob/stable13/lib/private/Streamer.php#L187>`_
+		
+		
+		:Returns: bool $success
+	
+	
+

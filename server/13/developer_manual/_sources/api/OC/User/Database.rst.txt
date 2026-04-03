@@ -1,0 +1,388 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+Database
+========
+
+
+.. php:namespace:: OC\User
+
+.. php:class:: Database
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Class for user management in a SQL Database \(e\.g\. MySQL, SQLite\)
+		
+	
+	:Source:
+		`lib/private/User/Database.php#80 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/Database.php#L80>`_
+	
+	:Parent:
+		:php:class:`OCP\\User\\Backend\\ABackend`
+	
+	:Implements:
+		:php:interface:`OCP\\User\\Backend\\ICreateUserBackend` :php:interface:`OCP\\User\\Backend\\ISetPasswordBackend` :php:interface:`OCP\\User\\Backend\\ISetDisplayNameBackend` :php:interface:`OCP\\User\\Backend\\IGetDisplayNameBackend` :php:interface:`OCP\\User\\Backend\\ICheckPasswordBackend` :php:interface:`OCP\\User\\Backend\\IGetHomeBackend` :php:interface:`OCP\\User\\Backend\\ICountUsersBackend` :php:interface:`OCP\\User\\Backend\\ISearchKnownUsersBackend` :php:interface:`OCP\\User\\Backend\\IGetRealUIDBackend` 
+	
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $eventDispatcher=null, $table=users)
+	
+		.. rst-class:: phpdoc-description
+		
+			| \\OC\\User\\Database constructor\.
+			
+		
+		:Source:
+			`lib/private/User/Database.php#108 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/Database.php#L108>`_
+		
+		
+		:Parameters:
+			* **$eventDispatcher** (:any:`OCP\\EventDispatcher\\IEventDispatcher <OCP\\EventDispatcher\\IEventDispatcher>`)  
+			* **$table** (string)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public createUser( $uid, $password)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Create a new user
+			
+		
+		:Source:
+			`lib/private/User/Database.php#133 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/Database.php#L133>`_
+		
+		
+		:Parameters:
+			* **$uid** (string)  The username of the user to create
+			* **$password** (string)  The password of the new user
+
+		
+		:Returns: bool Creates a new user\. Basic checking of username is done in OC\_User
+			itself, not in its subclasses\.
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public deleteUser( $uid)
+	
+		.. rst-class:: phpdoc-description
+		
+			| delete a user
+			
+		
+		:Source:
+			`lib/private/User/Database.php#166 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/Database.php#L166>`_
+		
+		
+		:Parameters:
+			* **$uid** (string)  The username of the user to delete
+
+		
+		:Returns: bool Deletes a user
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setPassword( $uid, $password)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set password
+			
+		
+		:Source:
+			`lib/private/User/Database.php#201 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/Database.php#L201>`_
+		
+		
+		:Parameters:
+			* **$uid** (string)  The username
+			* **$password** (string)  The new password
+
+		
+		:Returns: bool Change the password of a user
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setDisplayName( $uid, $displayName)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set display name
+			
+		
+		:Source:
+			`lib/private/User/Database.php#225 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/Database.php#L225>`_
+		
+		
+		:Parameters:
+			* **$uid** (string)  The username
+			* **$displayName** (string)  The new display name
+
+		
+		:Returns: bool Change the display name of a user
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getDisplayName( $uid)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get display name of the user
+			
+		
+		:Source:
+			`lib/private/User/Database.php#249 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/Database.php#L249>`_
+		
+		
+		:Parameters:
+			* **$uid** (string)  user ID of the user
+
+		
+		:Returns: string display name
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getDisplayNames( $search="", $limit=null, $offset=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get a list of all display names and user ids\.
+			
+		
+		:Source:
+			`lib/private/User/Database.php#263 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/Database.php#L263>`_
+		
+		
+		:Parameters:
+			* **$search** (string)  
+			* **$limit** (int | null)  
+			* **$offset** (int | null)  
+
+		
+		:Returns: array an array of all displayNames \(value\) and the corresponding uids \(key\)
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public searchKnownUsersByDisplayName( $searcher, $pattern, $limit=null, $offset=null)
+	
+		:Source:
+			`lib/private/User/Database.php#303 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/Database.php#L303>`_
+		
+		
+		:Parameters:
+			* **$searcher** (string)  
+			* **$pattern** (string)  
+			* **$limit** (int | null)  
+			* **$offset** (int | null)  
+
+		
+		:Returns: array 
+		:Since: 21.0.1 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public checkPassword( $loginName, $password)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check if the password is correct
+			
+		
+		:Source:
+			`lib/private/User/Database.php#345 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/Database.php#L345>`_
+		
+		
+		:Parameters:
+			* **$loginName** (string)  The loginname
+			* **$password** (string)  The password
+
+		
+		:Returns: string Check if the password is correct without logging in the user
+			returns the user id or false
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getUsers( $search="", $limit=null, $offset=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get a list of all users
+			
+		
+		:Source:
+			`lib/private/User/Database.php#425 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/Database.php#L425>`_
+		
+		
+		:Parameters:
+			* **$search** (string)  
+			* **$limit** (null | int)  
+			* **$offset** (null | int)  
+
+		
+		:Returns: string[] an array of all uids
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public userExists( $uid)
+	
+		.. rst-class:: phpdoc-description
+		
+			| check if a user exists
+			
+		
+		:Source:
+			`lib/private/User/Database.php#442 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/Database.php#L442>`_
+		
+		
+		:Parameters:
+			* **$uid** (string)  the username
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getHome( $uid)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get the user\'s home directory
+			
+		
+		:Source:
+			`lib/private/User/Database.php#453 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/Database.php#L453>`_
+		
+		
+		:Parameters:
+			* **$uid** (string)  the username
+
+		
+		:Returns: string | bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public hasUserListings()
+	
+		:Source:
+			`lib/private/User/Database.php#464 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/Database.php#L464>`_
+		
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public countUsers()
+	
+		.. rst-class:: phpdoc-description
+		
+			| counts the users in the database
+			
+		
+		:Source:
+			`lib/private/User/Database.php#473 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/Database.php#L473>`_
+		
+		
+		:Returns: int | bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public loginName2UserName( $loginName)
+	
+		.. rst-class:: phpdoc-description
+		
+			| returns the username for the given login name in the correct casing
+			
+		
+		:Source:
+			`lib/private/User/Database.php#490 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/Database.php#L490>`_
+		
+		
+		:Parameters:
+			* **$loginName** (string)  
+
+		
+		:Returns: string | bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getBackendName()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Backend name to be shown in user management
+			
+		
+		:Source:
+			`lib/private/User/Database.php#503 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/Database.php#L503>`_
+		
+		
+		:Returns: string the name of the backend to be shown
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static preLoginNameUsedAsUserName( $param)
+	
+		:Source:
+			`lib/private/User/Database.php#507 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/Database.php#L507>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getRealUID( $uid)
+	
+		:Source:
+			`lib/private/User/Database.php#525 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/Database.php#L525>`_
+		
+		
+	
+	
+

@@ -1,0 +1,287 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IEMailTemplate
+==============
+
+
+.. php:namespace:: OCP\Mail
+
+.. php:interface:: IEMailTemplate
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Interface IEMailTemplate
+		
+		| Interface to a class that allows to build HTML emails
+		| 
+		| Example:
+		| 
+		| <?php
+		| 
+		| $emailTemplate = new EMailTemplate\($this\-\>defaults, $this\-\>urlGenerator, $this\-\>l10n\);
+		| 
+		| $emailTemplate\-\>addHeader\(\);
+		| $emailTemplate\-\>addHeading\(\'Welcome aboard\'\);
+		| $emailTemplate\-\>addBodyText\(\'Welcome to your Nextcloud account, you can add, protect, and share your data\.\'\);
+		| 
+		| $emailTemplate\-\>addBodyButtonGroup\(
+		|     \'Set your password\', \'https://example\.org/resetPassword/q1234567890qwertz\',
+		|     \'Install Client\', \'https://nextcloud\.com/install/\#install\-clients\'
+		| \);
+		| 
+		| $emailTemplate\-\>addFooter\(\'Optional footer text\'\);
+		| 
+		| $htmlContent = $emailTemplate\-\>renderHtml\(\);
+		| $plainContent = $emailTemplate\-\>renderText\(\);
+		
+	
+	:Implemented by:
+		:php:class:`OC\\Mail\\EMailTemplate` 
+	
+	
+	:Source:
+		`lib/public/Mail/IEMailTemplate.php#60 <https://github.com/nextcloud/server/blob/stable13/lib/public/Mail/IEMailTemplate.php#L60>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public setSubject( $subject)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Sets the subject of the email
+			
+		
+		:Source:
+			`lib/public/Mail/IEMailTemplate.php#69 <https://github.com/nextcloud/server/blob/stable13/lib/public/Mail/IEMailTemplate.php#L69>`_
+		
+		
+		:Parameters:
+			* **$subject** (string)  
+
+		
+		:Since: 13.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public addHeader()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Adds a header to the email
+			
+		
+		:Source:
+			`lib/public/Mail/IEMailTemplate.php#76 <https://github.com/nextcloud/server/blob/stable13/lib/public/Mail/IEMailTemplate.php#L76>`_
+		
+		
+		:Since: 12.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public addHeading( $title, $plainTitle="")
+	
+		.. rst-class:: phpdoc-description
+		
+			| Adds a heading to the email
+			
+		
+		:Source:
+			`lib/public/Mail/IEMailTemplate.php#87 <https://github.com/nextcloud/server/blob/stable13/lib/public/Mail/IEMailTemplate.php#L87>`_
+		
+		
+		:Parameters:
+			* **$title** (string)  
+			* **$plainTitle** (string | bool)  Title that is used in the plain text email
+			if empty the $title is used, if false none will be used
+
+		
+		:Since: 12.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public addBodyText( $text, $plainText="")
+	
+		.. rst-class:: phpdoc-description
+		
+			| Adds a paragraph to the body of the email
+			
+		
+		:Source:
+			`lib/public/Mail/IEMailTemplate.php#98 <https://github.com/nextcloud/server/blob/stable13/lib/public/Mail/IEMailTemplate.php#L98>`_
+		
+		
+		:Parameters:
+			* **$plainText** (string | bool)  Text that is used in the plain text email
+			if empty the $text is used, if false none will be used
+
+		
+		:Since: 12.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public addBodyListItem( $text, $metaInfo="", $icon="", $plainText="", $plainMetaInfo="", $plainIndent=0)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Adds a list item to the body of the email
+			
+		
+		:Source:
+			`lib/public/Mail/IEMailTemplate.php#113 <https://github.com/nextcloud/server/blob/stable13/lib/public/Mail/IEMailTemplate.php#L113>`_
+		
+		
+		:Parameters:
+			* **$icon** (string)  Absolute path, must be 16*16 pixels
+			* **$plainText** (string | bool)  Text that is used in the plain text email
+			if empty the $text is used, if false none will be used
+			* **$plainMetaInfo** (string | bool)  Meta info that is used in the plain text email
+			if empty the $metaInfo is used, if false none will be used
+
+		
+		:Since: 12.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public addBodyButtonGroup( $textLeft, $urlLeft, $textRight, $urlRight, $plainTextLeft="", $plainTextRight="")
+	
+		.. rst-class:: phpdoc-description
+		
+			| Adds a button group of two buttons to the body of the email
+			
+		
+		:Source:
+			`lib/public/Mail/IEMailTemplate.php#127 <https://github.com/nextcloud/server/blob/stable13/lib/public/Mail/IEMailTemplate.php#L127>`_
+		
+		
+		:Parameters:
+			* **$textLeft** (string)  Text of left button; Note: When $plainTextLeft falls back to this, HTML is automatically escaped in the HTML email
+			* **$urlLeft** (string)  URL of left button
+			* **$textRight** (string)  Text of right button; Note: When $plainTextRight falls back to this, HTML is automatically escaped in the HTML email
+			* **$urlRight** (string)  URL of right button
+			* **$plainTextLeft** (string)  Text of left button that is used in the plain text version - if empty the $textLeft is used
+			* **$plainTextRight** (string)  Text of right button that is used in the plain text version - if empty the $textRight is used
+
+		
+		:Since: 12.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public addBodyButton( $text, $url, $plainText="")
+	
+		.. rst-class:: phpdoc-description
+		
+			| Adds a button to the body of the email
+			
+		
+		:Source:
+			`lib/public/Mail/IEMailTemplate.php#139 <https://github.com/nextcloud/server/blob/stable13/lib/public/Mail/IEMailTemplate.php#L139>`_
+		
+		
+		:Parameters:
+			* **$text** (string)  Text of button; Note: When $plainText falls back to this, HTML is automatically escaped in the HTML email
+			* **$url** (string)  URL of button
+			* **$plainText** (string)  Text of button in plain text version
+			if empty the $text is used, if false none will be used
+
+		
+		:Since: 12.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public addFooter( $text="", $lang=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Adds a logo and a text to the footer\. <br\> in the text will be replaced by new lines in the plain text email
+			
+		
+		:Source:
+			`lib/public/Mail/IEMailTemplate.php#149 <https://github.com/nextcloud/server/blob/stable13/lib/public/Mail/IEMailTemplate.php#L149>`_
+		
+		
+		:Parameters:
+			* **$text** (string)  If the text is empty the default "Name - Slogan<br>This is an automatically sent email" will be used
+			* **$lang** (string)  Optional language to set the default footer in
+
+		
+		:Since: 12.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public renderSubject()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the rendered email subject as string
+			
+		
+		:Source:
+			`lib/public/Mail/IEMailTemplate.php#158 <https://github.com/nextcloud/server/blob/stable13/lib/public/Mail/IEMailTemplate.php#L158>`_
+		
+		
+		:Returns: string 
+		:Since: 13.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public renderHtml()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the rendered HTML email as string
+			
+		
+		:Source:
+			`lib/public/Mail/IEMailTemplate.php#167 <https://github.com/nextcloud/server/blob/stable13/lib/public/Mail/IEMailTemplate.php#L167>`_
+		
+		
+		:Returns: string 
+		:Since: 12.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public renderText()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the rendered plain text email as string
+			
+		
+		:Source:
+			`lib/public/Mail/IEMailTemplate.php#176 <https://github.com/nextcloud/server/blob/stable13/lib/public/Mail/IEMailTemplate.php#L176>`_
+		
+		
+		:Returns: string 
+		:Since: 12.0.0 
+	
+	
+

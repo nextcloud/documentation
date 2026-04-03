@@ -1,0 +1,87 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+RateLimitingMiddleware
+======================
+
+
+.. php:namespace:: OC\AppFramework\Middleware\Security
+
+.. php:class:: RateLimitingMiddleware
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Class RateLimitingMiddleware is the middleware responsible for implementing the
+		| ratelimiting in Nextcloud\.
+		
+		| It parses annotations such as:
+		
+	
+	:Source:
+		`lib/private/AppFramework/Middleware/Security/RateLimitingMiddleware.php#52 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Middleware/Security/RateLimitingMiddleware.php#L52>`_
+	
+	:Parent:
+		:php:class:`OCP\\AppFramework\\Middleware`
+	
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $request, $userSession, $reflector, $limiter)
+	
+		:Source:
+			`lib/private/AppFramework/Middleware/Security/RateLimitingMiddleware.php#68 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Middleware/Security/RateLimitingMiddleware.php#L68>`_
+		
+		
+		:Parameters:
+			* **$request** (:any:`OCP\\IRequest <OCP\\IRequest>`)  
+			* **$userSession** (:any:`OCP\\IUserSession <OCP\\IUserSession>`)  
+			* **$reflector** (:any:`OC\\AppFramework\\Utility\\ControllerMethodReflector <OC\\AppFramework\\Utility\\ControllerMethodReflector>`)  
+			* **$limiter** (:any:`OC\\Security\\RateLimiting\\Limiter <OC\\Security\\RateLimiting\\Limiter>`)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public beforeController( $controller, $methodName)
+	
+		.. rst-class:: phpdoc-description
+		
+			| \{@inheritDoc\}
+			
+		
+		:Source:
+			`lib/private/AppFramework/Middleware/Security/RateLimitingMiddleware.php#82 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Middleware/Security/RateLimitingMiddleware.php#L82>`_
+		
+		
+		:Throws: :any:`\\OC\\Security\\RateLimiting\\Exception\\RateLimitExceededException <OC\\Security\\RateLimiting\\Exception\\RateLimitExceededException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public afterException( $controller, $methodName, $exception)
+	
+		.. rst-class:: phpdoc-description
+		
+			| \{@inheritDoc\}
+			
+		
+		:Source:
+			`lib/private/AppFramework/Middleware/Security/RateLimitingMiddleware.php#110 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Middleware/Security/RateLimitingMiddleware.php#L110>`_
+		
+		
+	
+	
+

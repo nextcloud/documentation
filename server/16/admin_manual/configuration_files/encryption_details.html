@@ -1,0 +1,665 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Encryption details &mdash; Nextcloud latest Administration Manual latest documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'latest',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Transactional file locking" href="files_locking_transactional.html" />
+    <link rel="prev" title="Encryption configuration" href="encryption_configuration.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../contents.html">
+          
+
+          
+            
+            <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_schedule.html">Maintenance and release schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation and server configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_server/index.html">Nextcloud configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../apps_management.html">Apps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_user/index.html">User management</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">File sharing and management</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="file_sharing_configuration.html">File Sharing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="federated_cloud_sharing_configuration.html">Configuring Federation Sharing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="big_file_upload_configuration.html">Uploading big files &gt; 512MB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="default_files_configuration.html">Providing default files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="primary_storage.html">Configuring Object Storage as Primary Storage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="external_storage_configuration_gui.html">Configuring External Storage (GUI)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="external_storage_configuration.html">Configuring External Storage (configuration file)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="external_storage/auth_mechanisms.html">External Storage authentication mechanisms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="encryption_configuration.html">Encryption configuration</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Encryption details</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#key-type-master-key">Key type: master key</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#key-type-public-sharing-key">Key type: public sharing key</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#key-type-recovery-key">Key type: recovery key</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#key-type-user-key">Key type: user key</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#file-type-public-key-file">File type: public key file</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#file-format">File format</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#file-locations">File locations</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#file-type-private-key-file">File type: private key file</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">File format</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">File locations</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#file-type-share-key-file">File type: share key file</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id3">File format</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">File locations</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#file-type-file-key-file">File type: file key file</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id5">File format</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">File locations</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#file-type-file">File type: file</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id7">File format</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8">File locations</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#key-generation-generate-the-key-pair">Key generation: generate the key pair</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#key-generation-store-the-public-key">Key generation: store the public key</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#key-generation-store-the-private-key">Key generation: store the private key</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#derive-the-encryption-key">Derive the encryption key</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#encrypt-the-private-key">Encrypt the private key</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sign-the-private-key">Sign the private key</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#store-the-private-key">Store the private key</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#encryption-generate-the-file-key">Encryption: generate the file key</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#generate-the-file-key">Generate the file key</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#read-the-public-key">Read the public key</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#encrypt-seal-the-file-key">Encrypt/seal the file key</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#store-the-file-key">Store the file key</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#store-the-envelope-keys">Store the envelope keys</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#encryption-encrypt-the-file">Encryption: encrypt the file</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#split-the-file">Split the file</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#encrypt-the-blocks">Encrypt the blocks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sign-the-blocks">Sign the blocks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#store-the-file">Store the file</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#decryption-read-the-private-key">Decryption: read the private key</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#read-the-private-key-file">Read the private key file</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#derive-the-decryption-key">Derive the decryption key</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#check-the-signature">Check the signature</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#decrypt-the-private-key">Decrypt the private key</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#decryption-read-the-file-key">Decryption: read the file key</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#read-the-file-key">Read the file key</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#read-the-envelope-key">Read the envelope key</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#decrypt-unseal-the-file-key">Decrypt/unseal the file key</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#decryption-decrypt-the-file">Decryption: decrypt the file</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id9">Split the file</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#check-the-block-signatures">Check the block signatures</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#decrypt-the-blocks">Decrypt the blocks</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#sources">Sources</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="files_locking_transactional.html">Transactional file locking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="previews_configuration.html">Previews configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_versioning.html">Controlling file versions and aging</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../file_workflows/index.html">File workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_database/index.html">Database configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_mimetypes/index.html">Mimetypes management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../maintenance/index.html">Maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../issues/index.html">Issues and troubleshooting</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest Administration Manual</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../contents.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">File sharing and management</a> &raquo;</li>
+        
+      <li>Encryption details</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/nextcloud/documentation/edit/master/admin_manual/configuration_files/encryption_details.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="encryption-details">
+<h1>Encryption details<a class="headerlink" href="#encryption-details" title="Permalink to this headline">¶</a></h1>
+<p>This document - provided by <a class="reference external" href="https://syseleven.de">SysEleven</a> - describes the server-side encryption scheme implemented by Nextcloud&#8217;s default encryption module. This includes:</p>
+<ul class="simple">
+<li>the encryption and signature of files with a master key.</li>
+<li>the encryption and signature of files with a public sharing key.</li>
+<li>the encryption and signature of files with a recovery key.</li>
+<li>the encryption and signature of files with a user key.</li>
+</ul>
+<p>These conventions apply throughout this document:</p>
+<ul class="simple">
+<li>Given file paths in this document are relative to the Nextcloud data directory that can be retrieved as <code class="docutils literal"><span class="pre">datadirectory</span></code> from the <code class="docutils literal"><span class="pre">config.php</span></code>.</li>
+<li>Placeholders are denoted as <code class="docutils literal"><span class="pre">$variable</span></code>. The variable has to be replaced with the appropriate information.</li>
+<li>Static strings are denoted as <code class="docutils literal"><span class="pre">&quot;some</span> <span class="pre">string&quot;</span></code>.</li>
+<li>The concatenation of strings is denoted as <code class="docutils literal"><span class="pre">$variable.&quot;some</span> <span class="pre">string&quot;</span></code>.</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This document describes the server-side encryption scheme as implemented by Nextcloud 16. Previous versions of Nextcloud implemented slightly different schemes which Nextcloud still supports for backwards compatibility. Files that have been encrypted by a recent version of Nextcloud should follow the structure documented below. However, files that have been encrypted by previous versions of Nextcloud may have slightly different structures.</p>
+</div>
+<div class="section" id="key-type-master-key">
+<h2>Key type: master key<a class="headerlink" href="#key-type-master-key" title="Permalink to this headline">¶</a></h2>
+<p>While the master key encryption had to be enabled explicitly by calling <code class="docutils literal"><span class="pre">./occ</span> <span class="pre">encryption:enable-master-key</span></code> in older versions of Nextcloud it is now the default encryption mode in newer versions including Nextcloud 16. With master key encryption enabled there is one central key that is used to secure the files handled by Nextcloud. The master key is protected by a password that can be generated by the server administrator. The advantage of the master key encryption is that the encryption is transparent to the users but has the disadvantage that the server administrator is able to decrypt user files without knowing any user password.</p>
+</div>
+<div class="section" id="key-type-public-sharing-key">
+<h2>Key type: public sharing key<a class="headerlink" href="#key-type-public-sharing-key" title="Permalink to this headline">¶</a></h2>
+<p>The public sharing key is used to secure files that have been publicly shared. The public sharing key is protected by a password that can be generated by the server administrator. The advantage of the public sharing key is that it is independent of the selected encryption mode so that Nextcloud is able to provide publicly shared files to outside parties.</p>
+</div>
+<div class="section" id="key-type-recovery-key">
+<h2>Key type: recovery key<a class="headerlink" href="#key-type-recovery-key" title="Permalink to this headline">¶</a></h2>
+<p>The recovery key is used to provide a restore mechanism in cases where the user key encryption is enabled, where the administrator has enabled the recovery key feature and the user has opted into using the recovery key feature. The recovery key can then be used to restore files when users have lost their passwords. The recovery key is protected by a recovery password that the server administrator should store securely. The advantage of the recovery key is that files can be recovered but has the disadvantage that the server administrator is able to decrypt user files without knowing any user password.</p>
+</div>
+<div class="section" id="key-type-user-key">
+<h2>Key type: user key<a class="headerlink" href="#key-type-user-key" title="Permalink to this headline">¶</a></h2>
+<p>While the user key encryption has been enabled by default in older versions of Nextcloud it now has to be enabled explicitly in newer versions including Nextcloud 16 by calling <code class="docutils literal"><span class="pre">./occ</span> <span class="pre">encryption:disable-master-key</span></code>. With user key encryption enabled all users have their own user keys that are used to secure the files handled by Nextcloud. The user keys are protected by the user passwords. The advantage is that the server administrator is not able to decrypt user files without knowing any user password - unless the file is publicly shared or a recovery key is defined - but has the disadvantage that files are permanently lost if the users forget their user passwords - unless the files are (publicly) shared or a recovery key is defined.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This method cannot be used with SAML authentication, because Nextcloud does not get a hold of any credentials whatsoever and therefore cannot use any users&#8217; passwords for encryption.</p>
+</div>
+</div>
+<div class="section" id="file-type-public-key-file">
+<span id="file-type-public-key-file-label"></span><h2>File type: public key file<a class="headerlink" href="#file-type-public-key-file" title="Permalink to this headline">¶</a></h2>
+<p>Public key files contain RSA public keys that are used to encrypt/seal the share key files.</p>
+<div class="section" id="file-format">
+<h3>File format<a class="headerlink" href="#file-format" title="Permalink to this headline">¶</a></h3>
+<p>Public key files are stored in PEM format.</p>
+</div>
+<div class="section" id="file-locations">
+<h3>File locations<a class="headerlink" href="#file-locations" title="Permalink to this headline">¶</a></h3>
+<p>The locations of public key files depend on their key type:</p>
+<ul class="simple">
+<li>master public key: <code class="docutils literal"><span class="pre">&quot;files_encryption/OC_DEFAULT_MODULE/master_&quot;.$random.&quot;.publicKey&quot;</span></code></li>
+<li>public sharing public key: <code class="docutils literal"><span class="pre">&quot;files_encryption/OC_DEFAULT_MODULE/pubShare_&quot;.$random.&quot;.publicKey&quot;</span></code></li>
+<li>recovery public key: <code class="docutils literal"><span class="pre">&quot;files_encryption/OC_DEFAULT_MODULE/recoveryKey_&quot;.$random.&quot;.publicKey&quot;</span></code></li>
+<li>user public key: <code class="docutils literal"><span class="pre">$username.&quot;/files_encryption/OC_DEFAULT_MODULE/&quot;.$username.&quot;.publicKey&quot;</span></code></li>
+</ul>
+</div>
+</div>
+<div class="section" id="file-type-private-key-file">
+<span id="file-type-private-key-file-label"></span><h2>File type: private key file<a class="headerlink" href="#file-type-private-key-file" title="Permalink to this headline">¶</a></h2>
+<p>Private key files contain RSA private keys that are used to decrypt/unseal the share key files. The RSA private key is encrypted and signed with a password and stored in a format that is specific to the Nextcloud encryption module.</p>
+<div class="section" id="id1">
+<h3>File format<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>The RSA private key that is represented in PEM format is encrypted and Base64 encoded (denoted as <code class="docutils literal"><span class="pre">$encryption</span></code>). For the encryption an initialization vector of 16 bytes is selected (denoted as <code class="docutils literal"><span class="pre">$iv</span></code>). Furthermore a hexadecimally encoded message authentication code of 64 bytes is calculated (denoted as <code class="docutils literal"><span class="pre">$signature</span></code>). The resulting file contains:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>&quot;HBEGIN:cipher:AES-256-CTR:keyFormat:hash:HEND&quot;.
+$encrypted.&quot;00iv00&quot;.$iv.&quot;00sig00&quot;.$signature.&quot;xxx&quot;
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h3>File locations<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p>The locations of private key files depend on their key type:</p>
+<ul class="simple">
+<li>master private key: <code class="docutils literal"><span class="pre">&quot;files_encryption/OC_DEFAULT_MODULE/master_&quot;.$random.&quot;.privateKey&quot;</span></code></li>
+<li>public sharing private key: <code class="docutils literal"><span class="pre">&quot;files_encryption/OC_DEFAULT_MODULE/pubShare_&quot;.$random.&quot;.privateKey&quot;</span></code></li>
+<li>recovery private key: <code class="docutils literal"><span class="pre">&quot;files_encryption/OC_DEFAULT_MODULE/recoveryKey_&quot;.$random.&quot;.privateKey&quot;</span></code></li>
+<li>user private key: <code class="docutils literal"><span class="pre">$username.&quot;/files_encryption/OC_DEFAULT_MODULE/&quot;.$username.&quot;.privateKey&quot;</span></code></li>
+</ul>
+</div>
+</div>
+<div class="section" id="file-type-share-key-file">
+<span id="file-type-share-key-file-label"></span><h2>File type: share key file<a class="headerlink" href="#file-type-share-key-file" title="Permalink to this headline">¶</a></h2>
+<p>Share key files contain so-called envelope keys that are needed to decrypt the file key files. The envelope keys are created by <code class="docutils literal"><span class="pre">openssl_seal()</span></code> during the encryption and are needed for <code class="docutils literal"><span class="pre">openssl_open()</span></code> during the decryption. The envelope keys are encrypted with the public keys of the recipients that are allowed to read the actual files.</p>
+<div class="section" id="id3">
+<h3>File format<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>The envelope keys are stored in binary format.</p>
+</div>
+<div class="section" id="id4">
+<h3>File locations<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p>The locations of share key files depend on the type of the encrypted file:</p>
+<ul class="simple">
+<li>regular file: <code class="docutils literal"><span class="pre">$username.&quot;/files_encryption/keys/files/&quot;.$filename.&quot;/OC_DEFAULT_MODULE/&quot;.$recipient.&quot;.shareKey&quot;</span></code></li>
+<li>version file: <em>version files use the same location for the share key file as their regular file</em></li>
+<li>trashed file: <code class="docutils literal"><span class="pre">$username.&quot;/files_encryption/keys/files_trashbin/files/&quot;.$filename.&quot;.d&quot;.$timestamp.&quot;/OC_DEFAULT_MODULE/&quot;.$recipient.&quot;.shareKey&quot;</span></code></li>
+<li>trashed version file: <em>trashed version files use the same location for the share key file as their trashed file</em></li>
+</ul>
+</div>
+</div>
+<div class="section" id="file-type-file-key-file">
+<span id="file-type-file-key-file-label"></span><h2>File type: file key file<a class="headerlink" href="#file-type-file-key-file" title="Permalink to this headline">¶</a></h2>
+<p>File key files contain symmetric keys used to encrypt the actual files. The file keys consist of 32 random bytes and are encrypted/sealed with the envelope keys stored in the share key files.</p>
+<div class="section" id="id5">
+<h3>File format<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<p>The file keys are stored in binary format.</p>
+</div>
+<div class="section" id="id6">
+<h3>File locations<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<p>The locations of the file key files depend on the type of the encrypted file:</p>
+<ul class="simple">
+<li>regular file: <code class="docutils literal"><span class="pre">$username.&quot;/files_encryption/keys/files/&quot;.$filename.&quot;/OC_DEFAULT_MODULE/fileKey&quot;</span></code></li>
+<li>version file: <em>version files use the same location for the file key file as their regular file</em></li>
+<li>trashed file: <code class="docutils literal"><span class="pre">$username.&quot;/files_encryption/keys/files_trashbin/files/&quot;.$filename.&quot;.d&quot;.$delete_timestamp.&quot;/OC_DEFAULT_MODULE/fileKey&quot;</span></code></li>
+<li>trashed version file: <em>trashed version files use the same location for the file key file as their trashed file</em></li>
+</ul>
+</div>
+</div>
+<div class="section" id="file-type-file">
+<span id="file-type-file-label"></span><h2>File type: file<a class="headerlink" href="#file-type-file" title="Permalink to this headline">¶</a></h2>
+<p>Files contain the actual file content. The file content is encrypted and signed with a password and stored in a format that is specific to the Nextcloud encryption module.</p>
+<div class="section" id="id7">
+<h3>File format<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<p>The file content is split into blocks of 6072 bytes. Each block is encrypted and Base64 encoded (denoted as <code class="docutils literal"><span class="pre">$encryption[0..$n]</span></code>). For the encryption an initialization vector of 16 bytes is selected for each block (denoted as <code class="docutils literal"><span class="pre">$iv[0..$n]</span></code>). Furthermore a hexadecimally encoded message authentication code of 64 bytes is calculated of each block (denoted as <code class="docutils literal"><span class="pre">$signature[0..$n]</span></code>). An encrypted block has a total size of 8192 bytes (8096 bytes for <code class="docutils literal"><span class="pre">$encrypted[]</span></code>, 6 bytes for <code class="docutils literal"><span class="pre">&quot;00iv00&quot;</span></code>, 16 bytes for <code class="docutils literal"><span class="pre">$iv[]</span></code>, 7 bytes for <code class="docutils literal"><span class="pre">&quot;00sig00&quot;</span></code>, 64 bytes for <code class="docutils literal"><span class="pre">$signature[]</span></code> and 3 bytes for <code class="docutils literal"><span class="pre">&quot;xxx&quot;</span></code>). Only the last encrypted block may be shorter. The header of the encrypted file is padded with 8147 bytes of <code class="docutils literal"><span class="pre">&quot;-&quot;</span></code> (denoted as <code class="docutils literal"><span class="pre">$padding</span></code>) to a total of 8192 bytes. The resulting file contains:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>&quot;HBEGIN:cipher:AES-256-CTR:keyFormat:hash:HEND&quot;.$padding.
+$encrypted[0].&quot;00iv00&quot;.$iv[0].&quot;00sig00&quot;.$signature[0].&quot;xxx&quot;.
+$encrypted[1].&quot;00iv00&quot;.$iv[1].&quot;00sig00&quot;.$signature[1].&quot;xxx&quot;.
+$encrypted[2].&quot;00iv00&quot;.$iv[2].&quot;00sig00&quot;.$signature[2].&quot;xxx&quot;.
+[...]
+$encrypted[$n].&quot;00iv00&quot;.$iv[$n].&quot;00sig00&quot;.$signature[$n].&quot;xxx&quot;
+</pre></div>
+</div>
+</div>
+<div class="section" id="id8">
+<h3>File locations<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<p>The locations of the files depend on the type of the encrypted file:</p>
+<ul class="simple">
+<li>regular file: <code class="docutils literal"><span class="pre">$username.&quot;/files/&quot;.$filename</span></code></li>
+<li>version file: <code class="docutils literal"><span class="pre">$username.&quot;/files_versions/&quot;.$filename.&quot;.v&quot;.$version_timestamp</span></code></li>
+<li>trashed file: <code class="docutils literal"><span class="pre">$username.&quot;/files_trashbin/files/&quot;.$filename.&quot;.d&quot;.$delete_timestamp</span></code></li>
+<li>trashed version file: <code class="docutils literal"><span class="pre">$username.&quot;/files_trashbin/versions/&quot;.$filename.&quot;.v&quot;.$version_timestamp.&quot;.d&quot;.$delete_timestamp</span></code></li>
+</ul>
+</div>
+</div>
+<div class="section" id="key-generation-generate-the-key-pair">
+<h2>Key generation: generate the key pair<a class="headerlink" href="#key-generation-generate-the-key-pair" title="Permalink to this headline">¶</a></h2>
+<p>The key pair has to be generated with the <code class="docutils literal"><span class="pre">openssl_pkey_new()</span></code> function. Then the private key and public key are extracted from the the key resource with the <code class="docutils literal"><span class="pre">openssl_pkey_export()</span></code> function.</p>
+</div>
+<div class="section" id="key-generation-store-the-public-key">
+<h2>Key generation: store the public key<a class="headerlink" href="#key-generation-store-the-public-key" title="Permalink to this headline">¶</a></h2>
+<p>The public key is written to the <code class="docutils literal"><span class="pre">$username.&quot;.publicKey&quot;</span></code> file as documented in <a class="reference internal" href="#file-type-public-key-file-label"><span class="std std-ref">File type: public key file</span></a>.</p>
+</div>
+<div class="section" id="key-generation-store-the-private-key">
+<h2>Key generation: store the private key<a class="headerlink" href="#key-generation-store-the-private-key" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="derive-the-encryption-key">
+<h3>Derive the encryption key<a class="headerlink" href="#derive-the-encryption-key" title="Permalink to this headline">¶</a></h3>
+<p>The salt for the encryption key is derived by creating a raw SHA256 hash of <code class="docutils literal"><span class="pre">$uid.$instanceId.$instanceSecret</span></code> with the <code class="docutils literal"><span class="pre">hash()</span></code> function. <code class="docutils literal"><span class="pre">$instanceId</span></code> can be retrieved as <code class="docutils literal"><span class="pre">instanceid</span></code> from the <code class="docutils literal"><span class="pre">config.php</span></code>. <code class="docutils literal"><span class="pre">$instanceSecret</span></code> can be retrieved as <code class="docutils literal"><span class="pre">secret</span></code> from the <code class="docutils literal"><span class="pre">config.php</span></code>.</p>
+<p>The encryption key is then derived by creating a raw SHA256-PBKDF2 hash of the password with the salt, 100.000 rounds and (by default) with a target size of 32 bytes (as required for AES-256-CTR) with the <code class="docutils literal"><span class="pre">hash_hmac()</span></code> function (denoted as <code class="docutils literal"><span class="pre">$passphrase</span></code>).</p>
+<p>The used password depends on the key type:</p>
+<ul class="simple">
+<li>master private key: use <code class="docutils literal"><span class="pre">secret</span></code> from the <code class="docutils literal"><span class="pre">config.php</span></code></li>
+<li>public sharing private key: use an empty password</li>
+<li>recovery private key: use the recovery password</li>
+<li>user private key: use the user password</li>
+</ul>
+</div>
+<div class="section" id="encrypt-the-private-key">
+<h3>Encrypt the private key<a class="headerlink" href="#encrypt-the-private-key" title="Permalink to this headline">¶</a></h3>
+<p>The initialization vector is generated as a random string of 16 bytes with the <code class="docutils literal"><span class="pre">random_bytes()</span></code> function (denoted as <code class="docutils literal"><span class="pre">$iv</span></code>). The private key is (by default) AES-256-CTR encrypted with the <code class="docutils literal"><span class="pre">$iv</span></code> and the <code class="docutils literal"><span class="pre">$passphrase</span></code> with the <code class="docutils literal"><span class="pre">openssl_encrypt()</span></code> function and returned as Base64 encoded without zero-padding (denoted as <code class="docutils literal"><span class="pre">$encrypted</span></code>).</p>
+</div>
+<div class="section" id="sign-the-private-key">
+<h3>Sign the private key<a class="headerlink" href="#sign-the-private-key" title="Permalink to this headline">¶</a></h3>
+<p>The message authentication key is derived by creating a raw SHA512 hash of <code class="docutils literal"><span class="pre">$passphrase.$version.$position.&quot;a&quot;</span></code> with the <code class="docutils literal"><span class="pre">hash()</span></code> function.</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">$version</span></code> is always <code class="docutils literal"><span class="pre">&quot;0&quot;</span></code>.</li>
+<li><code class="docutils literal"><span class="pre">$position</span></code> is always <code class="docutils literal"><span class="pre">&quot;0&quot;</span></code>.</li>
+</ul>
+<p>The signature is then derived by creating a hexadecimally encoded SHA256-HMAC of <code class="docutils literal"><span class="pre">$encrypted</span></code> and the message authentication key with the <code class="docutils literal"><span class="pre">hash_hmac()</span></code> function (denoted as <code class="docutils literal"><span class="pre">$signature</span></code>).</p>
+</div>
+<div class="section" id="store-the-private-key">
+<h3>Store the private key<a class="headerlink" href="#store-the-private-key" title="Permalink to this headline">¶</a></h3>
+<p>The private key is written to the <code class="docutils literal"><span class="pre">$username.&quot;.privateKey&quot;</span></code> file with the derived <code class="docutils literal"><span class="pre">$encrypted</span></code>, <code class="docutils literal"><span class="pre">$iv</span></code> and <code class="docutils literal"><span class="pre">$signature</span></code> as documented in <a class="reference internal" href="#file-type-private-key-file-label"><span class="std std-ref">File type: private key file</span></a>.</p>
+</div>
+</div>
+<div class="section" id="encryption-generate-the-file-key">
+<h2>Encryption: generate the file key<a class="headerlink" href="#encryption-generate-the-file-key" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="generate-the-file-key">
+<h3>Generate the file key<a class="headerlink" href="#generate-the-file-key" title="Permalink to this headline">¶</a></h3>
+<p>The file key is generated as a random string of 32 bytes with the <code class="docutils literal"><span class="pre">random_bytes()</span></code> function (denoted as <code class="docutils literal"><span class="pre">$filekey</span></code>).</p>
+</div>
+<div class="section" id="read-the-public-key">
+<h3>Read the public key<a class="headerlink" href="#read-the-public-key" title="Permalink to this headline">¶</a></h3>
+<p>The public keys of the recipients are read from the <code class="docutils literal"><span class="pre">$username.&quot;.publicKey&quot;</span></code> files as documented in <a class="reference internal" href="#file-type-public-key-file-label"><span class="std std-ref">File type: public key file</span></a>.</p>
+</div>
+<div class="section" id="encrypt-seal-the-file-key">
+<h3>Encrypt/seal the file key<a class="headerlink" href="#encrypt-seal-the-file-key" title="Permalink to this headline">¶</a></h3>
+<p>The file key is encrypted/sealed with the <code class="docutils literal"><span class="pre">openssl_seal()</span></code> function with the public keys. This returns the encrypted file key and the encrypted envelope keys for the recipients.</p>
+</div>
+<div class="section" id="store-the-file-key">
+<h3>Store the file key<a class="headerlink" href="#store-the-file-key" title="Permalink to this headline">¶</a></h3>
+<p>The encrypted file key is stored in the <code class="docutils literal"><span class="pre">&quot;fileKey&quot;</span></code> file as documented in <a class="reference internal" href="#file-type-file-key-file-label"><span class="std std-ref">File type: file key file</span></a>.</p>
+</div>
+<div class="section" id="store-the-envelope-keys">
+<h3>Store the envelope keys<a class="headerlink" href="#store-the-envelope-keys" title="Permalink to this headline">¶</a></h3>
+<p>The encrypted envelope keys for the recipients are stored in the <code class="docutils literal"><span class="pre">$username.&quot;.shareKey&quot;</span></code> files as documented in <a class="reference internal" href="#file-type-share-key-file-label"><span class="std std-ref">File type: share key file</span></a>.</p>
+</div>
+</div>
+<div class="section" id="encryption-encrypt-the-file">
+<h2>Encryption: encrypt the file<a class="headerlink" href="#encryption-encrypt-the-file" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="split-the-file">
+<h3>Split the file<a class="headerlink" href="#split-the-file" title="Permalink to this headline">¶</a></h3>
+<p>The file is split into 6072 bytes sized blocks. Only the last encrypted block may be shorter. Each block is referenced by its zero-based index within the file (denoted as <code class="docutils literal"><span class="pre">$position</span></code>).</p>
+</div>
+<div class="section" id="encrypt-the-blocks">
+<h3>Encrypt the blocks<a class="headerlink" href="#encrypt-the-blocks" title="Permalink to this headline">¶</a></h3>
+<p>For each block the initialization vector is generated as a random string of 16 bytes with the <code class="docutils literal"><span class="pre">random_bytes()</span></code> function (denoted as <code class="docutils literal"><span class="pre">$iv[$position]</span></code>). The block is (by default) AES-256-CTR encrypted with the <code class="docutils literal"><span class="pre">$iv[$position]</span></code> and the <code class="docutils literal"><span class="pre">$filekey</span></code> with the <code class="docutils literal"><span class="pre">openssl_encrypt()</span></code> function and returned as Base64 encoded without zero-padding (denoted as <code class="docutils literal"><span class="pre">$encrypted[$position]</span></code>).</p>
+</div>
+<div class="section" id="sign-the-blocks">
+<h3>Sign the blocks<a class="headerlink" href="#sign-the-blocks" title="Permalink to this headline">¶</a></h3>
+<p>The message authentication key is derived by creating a raw SHA512 hash of <code class="docutils literal"><span class="pre">$filekey.$version.$position.&quot;a&quot;</span></code> with the <code class="docutils literal"><span class="pre">hash()</span></code> function.</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">$version</span></code> is the <code class="docutils literal"><span class="pre">encrypted</span></code> value that can be retrieved from the <code class="docutils literal"><span class="pre">oc_filecache</span></code> table in the database and must not be zero. Take into account that a file in the <code class="docutils literal"><span class="pre">oc_filecache</span></code> table is identified by its <code class="docutils literal"><span class="pre">path</span></code> value as well as its <code class="docutils literal"><span class="pre">storage</span></code> value which references the <code class="docutils literal"><span class="pre">numeric_id</span></code> field in the <code class="docutils literal"><span class="pre">oc_storages</span></code> table. Including <code class="docutils literal"><span class="pre">$version</span></code> into the message authentication key prevents blocks from being swapped between different versions of the same file.</li>
+<li><code class="docutils literal"><span class="pre">$position</span></code> is the index of the current block starting at <code class="docutils literal"><span class="pre">&quot;0&quot;</span></code> and is appended with <code class="docutils literal"><span class="pre">&quot;end&quot;</span></code> for the last block of the file. Including <code class="docutils literal"><span class="pre">$position</span></code> into the message authentication key prevents blocks from being swapped within the same file. Furthermore, adding <code class="docutils literal"><span class="pre">&quot;end&quot;</span></code> to the message authentication key of the last block prevents file truncation attacks.</li>
+</ul>
+<p>The signature is then derived by creating a hexadecimally encoded SHA256-HMAC of <code class="docutils literal"><span class="pre">$encrypted[$position]</span></code> and the message authentication key with the <code class="docutils literal"><span class="pre">hash_hmac()</span></code> function (denoted as <code class="docutils literal"><span class="pre">$signature[$position]</span></code>).</p>
+</div>
+<div class="section" id="store-the-file">
+<h3>Store the file<a class="headerlink" href="#store-the-file" title="Permalink to this headline">¶</a></h3>
+<p>The encrypted file is written to the file with the derived <code class="docutils literal"><span class="pre">$encrypted[0..$n]</span></code>, <code class="docutils literal"><span class="pre">$iv[0..$n]</span></code> and <code class="docutils literal"><span class="pre">$signature[0..$n]</span></code> as documented in <a class="reference internal" href="#file-type-file-label"><span class="std std-ref">File type: file</span></a>.</p>
+</div>
+</div>
+<div class="section" id="decryption-read-the-private-key">
+<h2>Decryption: read the private key<a class="headerlink" href="#decryption-read-the-private-key" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="read-the-private-key-file">
+<h3>Read the private key file<a class="headerlink" href="#read-the-private-key-file" title="Permalink to this headline">¶</a></h3>
+<p>The private key is read from the <code class="docutils literal"><span class="pre">$username.&quot;.privateKey&quot;</span></code> file and the values <code class="docutils literal"><span class="pre">$encrypted</span></code>, <code class="docutils literal"><span class="pre">$iv</span></code> and <code class="docutils literal"><span class="pre">$signature</span></code> are parsed as documented in <a class="reference internal" href="#file-type-private-key-file-label"><span class="std std-ref">File type: private key file</span></a>.</p>
+</div>
+<div class="section" id="derive-the-decryption-key">
+<h3>Derive the decryption key<a class="headerlink" href="#derive-the-decryption-key" title="Permalink to this headline">¶</a></h3>
+<p>The salt for the decryption key is derived by creating a raw SHA256 hash of <code class="docutils literal"><span class="pre">$uid.$instanceId.$instanceSecret</span></code> with the <code class="docutils literal"><span class="pre">hash()</span></code> function. <code class="docutils literal"><span class="pre">$instanceId</span></code> can be retrieved as <code class="docutils literal"><span class="pre">instanceid</span></code> from the <code class="docutils literal"><span class="pre">config.php</span></code>. <code class="docutils literal"><span class="pre">$instanceSecret</span></code> can be retrieved as <code class="docutils literal"><span class="pre">secret</span></code> from the <code class="docutils literal"><span class="pre">config.php</span></code>.</p>
+<p>The decryption key is then derived by creating a raw SHA256-PBKDF2 hash of the password with the salt, 100.000 rounds and (by default) with a target size of 32 bytes (as required for AES-256-CTR) with the <code class="docutils literal"><span class="pre">hash_hmac()</span></code> function (denoted as <code class="docutils literal"><span class="pre">$passphrase</span></code>).</p>
+<p>The used password depends on the key type:</p>
+<ul class="simple">
+<li>master private key: use <code class="docutils literal"><span class="pre">secret</span></code> from the <code class="docutils literal"><span class="pre">config.php</span></code></li>
+<li>public sharing private key: use an empty password</li>
+<li>recovery private key: use the recovery password</li>
+<li>user private key: use the user password</li>
+</ul>
+</div>
+<div class="section" id="check-the-signature">
+<h3>Check the signature<a class="headerlink" href="#check-the-signature" title="Permalink to this headline">¶</a></h3>
+<p>The message authentication key is derived by creating a raw SHA512 hash of <code class="docutils literal"><span class="pre">$passphrase.$version.$position.&quot;a&quot;</span></code> with the <code class="docutils literal"><span class="pre">hash()</span></code> function.</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">$version</span></code> is always <code class="docutils literal"><span class="pre">&quot;0&quot;</span></code>.</li>
+<li><code class="docutils literal"><span class="pre">$position</span></code> is always <code class="docutils literal"><span class="pre">&quot;0&quot;</span></code>.</li>
+</ul>
+<p>The signature is then derived by creating a hexadecimally encoded SHA256-HMAC of <code class="docutils literal"><span class="pre">$encrypted</span></code> and the message authentication key with the <code class="docutils literal"><span class="pre">hash_hmac()</span></code> function. Only proceed when the derived signature is equal to <cite>$signature</cite> which is checked with the <code class="docutils literal"><span class="pre">hash_equals()</span></code> function.</p>
+</div>
+<div class="section" id="decrypt-the-private-key">
+<h3>Decrypt the private key<a class="headerlink" href="#decrypt-the-private-key" title="Permalink to this headline">¶</a></h3>
+<p>The private key is (by default) AES-256-CTR decrypted with the <code class="docutils literal"><span class="pre">$iv</span></code> and the <code class="docutils literal"><span class="pre">$passphrase</span></code> with the <code class="docutils literal"><span class="pre">openssl_decrypt()</span></code> function.</p>
+</div>
+</div>
+<div class="section" id="decryption-read-the-file-key">
+<h2>Decryption: read the file key<a class="headerlink" href="#decryption-read-the-file-key" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="read-the-file-key">
+<h3>Read the file key<a class="headerlink" href="#read-the-file-key" title="Permalink to this headline">¶</a></h3>
+<p>The encrypted file key is read from the <code class="docutils literal"><span class="pre">&quot;fileKey&quot;</span></code> file as documented in <a class="reference internal" href="#file-type-file-key-file-label"><span class="std std-ref">File type: file key file</span></a>.</p>
+</div>
+<div class="section" id="read-the-envelope-key">
+<h3>Read the envelope key<a class="headerlink" href="#read-the-envelope-key" title="Permalink to this headline">¶</a></h3>
+<p>The encrypted envelope key for the recipient is read from the <code class="docutils literal"><span class="pre">$username.&quot;.shareKey&quot;</span></code> file as documented in <a class="reference internal" href="#file-type-share-key-file-label"><span class="std std-ref">File type: share key file</span></a>.</p>
+</div>
+<div class="section" id="decrypt-unseal-the-file-key">
+<h3>Decrypt/unseal the file key<a class="headerlink" href="#decrypt-unseal-the-file-key" title="Permalink to this headline">¶</a></h3>
+<p>The encrypted file key is decrypted/unsealed with the <code class="docutils literal"><span class="pre">openssl_open()</span></code> function with the private key and encrypted envelope key for the recipient (denoted as <code class="docutils literal"><span class="pre">$filekey</span></code>).</p>
+</div>
+</div>
+<div class="section" id="decryption-decrypt-the-file">
+<h2>Decryption: decrypt the file<a class="headerlink" href="#decryption-decrypt-the-file" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id9">
+<h3>Split the file<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<p>The encrypted file is split into a 8192 bytes sized header and one or more 8192 bytes sized blocks. Only the last encrypted block may be shorter. Each block is referenced by its zero-based index within the file (denoted as <code class="docutils literal"><span class="pre">$position</span></code>). The values <code class="docutils literal"><span class="pre">$encrypted[0..$n]</span></code>, <code class="docutils literal"><span class="pre">$iv[0..$n]</span></code> and <code class="docutils literal"><span class="pre">$signature[0..$n]</span></code> are parsed as documented in <a class="reference internal" href="#file-type-file-label"><span class="std std-ref">File type: file</span></a>.</p>
+</div>
+<div class="section" id="check-the-block-signatures">
+<h3>Check the block signatures<a class="headerlink" href="#check-the-block-signatures" title="Permalink to this headline">¶</a></h3>
+<p>The message authentication key is derived by creating a raw SHA512 hash of <code class="docutils literal"><span class="pre">$filekey.$version.$position.&quot;a&quot;</span></code> with the <code class="docutils literal"><span class="pre">hash()</span></code> function.</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">$version</span></code> is the <code class="docutils literal"><span class="pre">encrypted</span></code> value that can be retrieved from the <code class="docutils literal"><span class="pre">oc_filecache</span></code> table in the database and must not be zero. Take into account that a file in the <code class="docutils literal"><span class="pre">oc_filecache</span></code> table is identified by its <code class="docutils literal"><span class="pre">path</span></code> value as well as its <code class="docutils literal"><span class="pre">storage</span></code> value which references the <code class="docutils literal"><span class="pre">numeric_id</span></code> field in the <code class="docutils literal"><span class="pre">oc_storages</span></code> table. Including <code class="docutils literal"><span class="pre">$version</span></code> into the message authentication key prevents blocks from being swapped between different versions of the same file.</li>
+<li><code class="docutils literal"><span class="pre">$position</span></code> is the index of the current block starting at <code class="docutils literal"><span class="pre">&quot;0&quot;</span></code> and is appended with <code class="docutils literal"><span class="pre">&quot;end&quot;</span></code> for the last block of the file. Including <code class="docutils literal"><span class="pre">$position</span></code> into the message authentication key prevents blocks from being swapped within the same file. Furthermore, adding <code class="docutils literal"><span class="pre">&quot;end&quot;</span></code> to the message authentication key of the last block prevents file truncation attacks.</li>
+</ul>
+<p>The signature is then derived by creating a hexadecimally encoded SHA256-HMAC of <code class="docutils literal"><span class="pre">$encrypted[$position]</span></code> and the message authentication key with the <code class="docutils literal"><span class="pre">hash_hmac()</span></code> function. Only proceed when the derived signature is equal to <code class="docutils literal"><span class="pre">$signature[$position]</span></code> which is checked with the <code class="docutils literal"><span class="pre">hash_equals()</span></code> function.</p>
+</div>
+<div class="section" id="decrypt-the-blocks">
+<h3>Decrypt the blocks<a class="headerlink" href="#decrypt-the-blocks" title="Permalink to this headline">¶</a></h3>
+<p>Each block is (by default) AES-256-CTR decrypted with the <code class="docutils literal"><span class="pre">$iv[$position]</span></code> and the <code class="docutils literal"><span class="pre">$filekey</span></code> with the <code class="docutils literal"><span class="pre">openssl_decrypt()</span></code> function.</p>
+</div>
+</div>
+<div class="section" id="sources">
+<h2>Sources<a class="headerlink" href="#sources" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="https://github.com/syseleven/nextcloud-tools">nextcloud-tools repository on GitHub</a></li>
+<li><a class="reference external" href="https://docs.nextcloud.com/server/stable/admin_manual/configuration_files/encryption_configuration.html">Nextcloud Encryption Configuration documentation</a></li>
+<li><a class="reference external" href="https://help.nextcloud.com/t/allow-file-decryption-with-only-the-files-keys-and-passwords/436/12">Nextcloud Help response concering the usage of version information</a></li>
+<li><a class="reference external" href="https://owncloud.com/wp-content/uploads/2015/07/Overview_of_ownCloud_Encryption_Model_2.2.pdf">Overview of ownCloud Encryption Model</a></li>
+<li><a class="reference external" href="https://github.com/nextcloud/server/blob/a374d8837d6de459500e619cf608e0721ea14574/apps/encryption/lib/Crypto/Crypt.php#L504">Sourcecode: Creation of the Message Authentication Code</a></li>
+<li><a class="reference external" href="https://github.com/nextcloud/server/blob/a374d8837d6de459500e619cf608e0721ea14574/apps/encryption/lib/Crypto/Crypt.php#L346">Sourcecode: Derivation of the Encryption Key</a></li>
+<li><a class="reference external" href="https://github.com/nextcloud/server/blob/a374d8837d6de459500e619cf608e0721ea14574/apps/encryption/lib/Crypto/Crypt.php#L234">Sourcecode: Encryption of the File</a></li>
+<li><a class="reference external" href="https://github.com/nextcloud/server/blob/a374d8837d6de459500e619cf608e0721ea14574/apps/encryption/lib/Crypto/Crypt.php#L686">Sourcecode: Encryption/Sealing of the File Key</a></li>
+<li><a class="reference external" href="https://github.com/nextcloud/server/blob/a374d8837d6de459500e619cf608e0721ea14574/apps/encryption/lib/Crypto/Crypt.php#L124">Sourcecode: Extraction of the Private and Public Key</a></li>
+<li><a class="reference external" href="https://github.com/nextcloud/server/blob/a374d8837d6de459500e619cf608e0721ea14574/apps/encryption/lib/Crypto/Crypt.php#L645">Sourcecode: Generation of the File Key</a></li>
+<li><a class="reference external" href="https://github.com/nextcloud/server/blob/a374d8837d6de459500e619cf608e0721ea14574/apps/encryption/lib/Crypto/Crypt.php#L634">Sourcecode: Generation of the Initialization Vector</a></li>
+<li><a class="reference external" href="https://github.com/nextcloud/server/blob/a374d8837d6de459500e619cf608e0721ea14574/apps/encryption/lib/Crypto/Crypt.php#L153">Sourcecode: Generation of a Key Pair</a></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="files_locking_transactional.html" class="btn btn-neutral float-right" title="Transactional file locking" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="encryption_configuration.html" class="btn btn-neutral float-left" title="Encryption configuration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021 Nextcloud GmbH.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/16/admin_manual">16</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/17/admin_manual">17</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/18/admin_manual">18</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/admin_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/admin_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+   
+
+</body>
+</html>

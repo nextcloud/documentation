@@ -1,0 +1,883 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+OC\_Util
+========
+
+
+.. php:class:: OC_Util
+
+
+	:Source:
+		`lib/private/legacy/OC_Util.php#77 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Util.php#L77>`_
+	
+
+Properties
+----------
+
+.. php:attr:: public scripts
+
+	:Source:
+		`lib/private/legacy/OC_Util.php#78 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Util.php#L78>`_
+	
+
+
+.. php:attr:: public styles
+
+	:Source:
+		`lib/private/legacy/OC_Util.php#79 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Util.php#L79>`_
+	
+
+
+.. php:attr:: public headers
+
+	:Source:
+		`lib/private/legacy/OC_Util.php#80 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Util.php#L80>`_
+	
+
+
+Methods
+-------
+
+.. rst-class:: protected static
+
+	.. php:method:: protected static getAppManager()
+	
+		:Source:
+			`lib/private/legacy/OC_Util.php#87 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Util.php#L87>`_
+		
+		
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static setupFS( $user="")
+	
+		.. rst-class:: phpdoc-description
+		
+			| Can be set up
+			
+		
+		:Source:
+			`lib/private/legacy/OC_Util.php#187 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Util.php#L187>`_
+		
+		
+		:Parameters:
+			* **$user** (string)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static isPublicLinkPasswordRequired()
+	
+		.. rst-class:: phpdoc-description
+		
+			| check if a password is required for each public link
+			
+		
+		:Source:
+			`lib/private/legacy/OC_Util.php#338 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Util.php#L338>`_
+		
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static isSharingDisabledForUser( $config, $groupManager, $user)
+	
+		.. rst-class:: phpdoc-description
+		
+			| check if sharing is disabled for the current user
+			
+		
+		:Source:
+			`lib/private/legacy/OC_Util.php#350 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Util.php#L350>`_
+		
+		
+		:Parameters:
+			* **$config** (:any:`OCP\\IConfig <OCP\\IConfig>`)  
+			* **$groupManager** (:any:`OCP\\IGroupManager <OCP\\IGroupManager>`)  
+			* **$user** (:any:`OCP\\IUser <OCP\\IUser>` | null)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static isDefaultExpireDateEnforced()
+	
+		.. rst-class:: phpdoc-description
+		
+			| check if share API enforces a default expire date
+			
+		
+		:Source:
+			`lib/private/legacy/OC_Util.php#378 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Util.php#L378>`_
+		
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static getUserQuota( $user)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the quota of a user
+			
+		
+		:Source:
+			`lib/private/legacy/OC_Util.php#395 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Util.php#L395>`_
+		
+		
+		:Parameters:
+			* **$user** (:any:`OCP\\IUser <OCP\\IUser>` | null)  
+
+		
+		:Returns: float Quota bytes
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static copySkeleton( $userId, $userDirectory)
+	
+		.. rst-class:: phpdoc-description
+		
+			| copies the skeleton to the users /files
+			
+		
+		:Source:
+			`lib/private/legacy/OC_Util.php#415 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Util.php#L415>`_
+		
+		
+		:Parameters:
+			* **$userId** (string)  
+			* **$userDirectory** (:any:`OCP\\Files\\Folder <OCP\\Files\\Folder>`)  
+
+		
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+		:Throws: :any:`\\OCP\\Files\\NotPermittedException <OCP\\Files\\NotPermittedException>` 
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+		:Throws: :any:`\\OCP\\Files\\NotPermittedException <OCP\\Files\\NotPermittedException>` 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static copyr( $source, $target)
+	
+		.. rst-class:: phpdoc-description
+		
+			| copies a directory recursively by using streams
+			
+		
+		:Source:
+			`lib/private/legacy/OC_Util.php#465 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Util.php#L465>`_
+		
+		
+		:Parameters:
+			* **$source** (string)  
+			* **$target** (:any:`OCP\\Files\\Folder <OCP\\Files\\Folder>`)  
+
+		
+		:Returns: void 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static tearDownFS()
+	
+		:Source:
+			`lib/private/legacy/OC_Util.php#500 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Util.php#L500>`_
+		
+		
+		:Returns: void 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static getVersion()
+	
+		.. rst-class:: phpdoc-description
+		
+			| get the current installed version of ownCloud
+			
+		
+		:Source:
+			`lib/private/legacy/OC_Util.php#512 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Util.php#L512>`_
+		
+		
+		:Returns: array 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static getVersionString()
+	
+		.. rst-class:: phpdoc-description
+		
+			| get the current installed version string of ownCloud
+			
+		
+		:Source:
+			`lib/private/legacy/OC_Util.php#522 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Util.php#L522>`_
+		
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public static deprecated
+
+	.. php:method:: public static getEditionString()
+	
+		:Source:
+			`lib/private/legacy/OC_Util.php#531 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Util.php#L531>`_
+		
+		
+		:Deprecated:  the value is of no use anymore
+		:Returns: string 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static getChannel()
+	
+		:Source:
+			`lib/private/legacy/OC_Util.php#539 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Util.php#L539>`_
+		
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static getBuild()
+	
+		:Source:
+			`lib/private/legacy/OC_Util.php#548 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Util.php#L548>`_
+		
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static addScript( $application, $file=\\null, $prepend=\\false)
+	
+		.. rst-class:: phpdoc-description
+		
+			| add a javascript file
+			
+		
+		:Source:
+			`lib/private/legacy/OC_Util.php#605 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Util.php#L605>`_
+		
+		
+		:Parameters:
+			* **$application** (string)  application id
+			* **$file** (string | null)  filename
+			* **$prepend** (bool)  prepend the Script to the beginning of the list
+
+		
+		:Returns: void 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static addVendorScript( $application, $file=\\null, $prepend=\\false)
+	
+		.. rst-class:: phpdoc-description
+		
+			| add a javascript file from the vendor sub folder
+			
+		
+		:Source:
+			`lib/private/legacy/OC_Util.php#623 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Util.php#L623>`_
+		
+		
+		:Parameters:
+			* **$application** (string)  application id
+			* **$file** (string | null)  filename
+			* **$prepend** (bool)  prepend the Script to the beginning of the list
+
+		
+		:Returns: void 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static addTranslations( $application, $languageCode=\\null, $prepend=\\false)
+	
+		.. rst-class:: phpdoc-description
+		
+			| add a translation JS file
+			
+		
+		:Source:
+			`lib/private/legacy/OC_Util.php#635 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Util.php#L635>`_
+		
+		
+		:Parameters:
+			* **$application** (string)  application id
+			* **$languageCode** (string | null)  language code, defaults to the current language
+			* **$prepend** (bool | null)  prepend the Script to the beginning of the list
+
+		
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static addStyle( $application, $file=\\null, $prepend=\\false)
+	
+		.. rst-class:: phpdoc-description
+		
+			| add a css file
+			
+		
+		:Source:
+			`lib/private/legacy/OC_Util.php#655 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Util.php#L655>`_
+		
+		
+		:Parameters:
+			* **$application** (string)  application id
+			* **$file** (string | null)  filename
+			* **$prepend** (bool)  prepend the Style to the beginning of the list
+
+		
+		:Returns: void 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static addVendorStyle( $application, $file=\\null, $prepend=\\false)
+	
+		.. rst-class:: phpdoc-description
+		
+			| add a css file from the vendor sub folder
+			
+		
+		:Source:
+			`lib/private/legacy/OC_Util.php#668 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Util.php#L668>`_
+		
+		
+		:Parameters:
+			* **$application** (string)  application id
+			* **$file** (string | null)  filename
+			* **$prepend** (bool)  prepend the Style to the beginning of the list
+
+		
+		:Returns: void 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static addHeader( $tag, $attributes, $text=\\null, $prepend=\\false)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Add a custom element to the header
+			| If $text is null then the element will be written as empty element\.
+			
+			| So use "" to get a closing tag\.
+			
+		
+		:Source:
+			`lib/private/legacy/OC_Util.php#711 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Util.php#L711>`_
+		
+		
+		:Parameters:
+			* **$tag** (string)  tag name of the element
+			* **$attributes** (array)  array of attributes for the element
+			* **$text** (string)  the text content for the element
+			* **$prepend** (bool)  prepend the header to the beginning of the list
+
+		
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static checkServer( $config)
+	
+		.. rst-class:: phpdoc-description
+		
+			| check if the current server configuration is suitable for ownCloud
+			
+		
+		:Source:
+			`lib/private/legacy/OC_Util.php#730 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Util.php#L730>`_
+		
+		
+		:Parameters:
+			* **$config** (:any:`OC\\SystemConfig <OC\\SystemConfig>`)  
+
+		
+		:Returns: array arrays with error messages and hints
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static checkDatabaseVersion()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check the database version
+			
+		
+		:Source:
+			`lib/private/legacy/OC_Util.php#982 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Util.php#L982>`_
+		
+		
+		:Returns: array errors array
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static checkDataDirectoryPermissions( $dataDirectory)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check for correct file permissions of data directory
+			
+		
+		:Source:
+			`lib/private/legacy/OC_Util.php#1016 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Util.php#L1016>`_
+		
+		
+		:Parameters:
+			* **$dataDirectory** (string)  
+
+		
+		:Returns: array arrays with error messages and hints
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static checkDataDirectoryValidity( $dataDirectory)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check that the data directory exists and is valid by
+			| checking the existence of the "\.ocdata" file\.
+			
+		
+		:Source:
+			`lib/private/legacy/OC_Util.php#1044 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Util.php#L1044>`_
+		
+		
+		:Parameters:
+			* **$dataDirectory** (string)  data directory path
+
+		
+		:Returns: array errors found
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static checkLoggedIn()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check if the user is logged in, redirects to home if not\. With
+			| redirect URL parameter to the request URI\.
+			
+		
+		:Source:
+			`lib/private/legacy/OC_Util.php#1069 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Util.php#L1069>`_
+		
+		
+		:Returns: void 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static checkAdminUser()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check if the user is a admin, redirects to home if not
+			
+		
+		:Source:
+			`lib/private/legacy/OC_Util.php#1093 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Util.php#L1093>`_
+		
+		
+		:Returns: void 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static getDefaultPageUrl()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the URL of the default page
+			| based on the system configuration and
+			| the apps visible for the current user
+			
+		
+		:Source:
+			`lib/private/legacy/OC_Util.php#1109 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Util.php#L1109>`_
+		
+		
+		:Returns: string URL
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static redirectToDefaultPage()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Redirect to the user default page
+			
+		
+		:Source:
+			`lib/private/legacy/OC_Util.php#1157 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Util.php#L1157>`_
+		
+		
+		:Returns: void 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static getInstanceId()
+	
+		.. rst-class:: phpdoc-description
+		
+			| get an id unique for this instance
+			
+		
+		:Source:
+			`lib/private/legacy/OC_Util.php#1168 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Util.php#L1168>`_
+		
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static sanitizeHTML( $value)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Public function to sanitize HTML
+			
+			| This function is used to sanitize HTML and should be applied on any
+			| string or array of strings before displaying it on a web page\.
+			
+		
+		:Source:
+			`lib/private/legacy/OC_Util.php#1187 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Util.php#L1187>`_
+		
+		
+		:Parameters:
+			* **$value** (string | array)  
+
+		
+		:Returns: string | array an array of sanitized strings or a single sanitized string, depends on the input parameter\.
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static encodePath( $component)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Public function to encode url parameters
+			
+			| This function is used to encode path to file before output\.
+			| Encoding is done according to RFC 3986 with one exception:
+			| Character \'/\' is preserved as is\.
+			
+		
+		:Source:
+			`lib/private/legacy/OC_Util.php#1209 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Util.php#L1209>`_
+		
+		
+		:Parameters:
+			* **$component** (string)  part of URI to encode
+
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public createHtaccessTestFile( $config)
+	
+		:Source:
+			`lib/private/legacy/OC_Util.php#1216 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Util.php#L1216>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isHtaccessWorking( $config)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check if the \.htaccess file is working
+			
+		
+		:Source:
+			`lib/private/legacy/OC_Util.php#1251 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Util.php#L1251>`_
+		
+		
+		:Parameters:
+			* **$config** (:any:`OCP\\IConfig <OCP\\IConfig>`)  
+
+		
+		:Returns: bool 
+		:Throws: :any:`\\Exception <Exception>` 
+		:Throws: :any:`\\OC\\HintException <OC\\HintException>` If the test file can\'t get written\.
+		:Throws: :any:`\\Exception <Exception>` 
+		:Throws: :any:`\\OC\\HintException <OC\\HintException>` If the test file can\'t get written\.
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static isSetLocaleWorking()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check if the setlocal call does not work\. This can happen if the right
+			| local packages are not available on the server\.
+			
+		
+		:Source:
+			`lib/private/legacy/OC_Util.php#1300 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Util.php#L1300>`_
+		
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static isAnnotationsWorking()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check if it\'s possible to get the inline annotations
+			
+		
+		:Source:
+			`lib/private/legacy/OC_Util.php#1319 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Util.php#L1319>`_
+		
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static fileInfoLoaded()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check if the PHP module fileinfo is loaded\.
+			
+		
+		:Source:
+			`lib/private/legacy/OC_Util.php#1331 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Util.php#L1331>`_
+		
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static obEnd()
+	
+		.. rst-class:: phpdoc-description
+		
+			| clear all levels of output buffering
+			
+		
+		:Source:
+			`lib/private/legacy/OC_Util.php#1340 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Util.php#L1340>`_
+		
+		
+		:Returns: void 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static runningOnMac()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Checks whether the server is running on Mac OS X
+			
+		
+		:Source:
+			`lib/private/legacy/OC_Util.php#1351 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Util.php#L1351>`_
+		
+		
+		:Returns: bool true if running on Mac OS X, false otherwise
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static getTheme()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Handles the case that there may not be a theme, then check if a "default"
+			| theme exists and take that one
+			
+		
+		:Source:
+			`lib/private/legacy/OC_Util.php#1361 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Util.php#L1361>`_
+		
+		
+		:Returns: string the theme
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static normalizeUnicode( $value)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Normalize a unicode string
+			
+		
+		:Source:
+			`lib/private/legacy/OC_Util.php#1379 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Util.php#L1379>`_
+		
+		
+		:Parameters:
+			* **$value** (string)  a not normalized string
+
+		
+		:Returns: bool | string 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static getHumanVersion()
+	
+		.. rst-class:: phpdoc-description
+		
+			| A human readable string is generated based on version and build number
+			
+		
+		:Source:
+			`lib/private/legacy/OC_Util.php#1398 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Util.php#L1398>`_
+		
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public static deprecated
+
+	.. php:method:: public static isValidFileName( $file)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns whether the given file name is valid
+			
+		
+		:Source:
+			`lib/private/legacy/OC_Util.php#1414 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Util.php#L1414>`_
+		
+		
+		:Parameters:
+			* **$file** (string)  file name to check
+
+		
+		:Returns: bool true if the file name is valid, false otherwise
+		:Deprecated:  use \\OC\\Files\\View::verifyPath\(\)
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static needUpgrade( $config)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check whether the instance needs to perform an upgrade,
+			| either when the core version is higher or any app requires
+			| an upgrade\.
+			
+		
+		:Source:
+			`lib/private/legacy/OC_Util.php#1445 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Util.php#L1445>`_
+		
+		
+		:Parameters:
+			* **$config** (:any:`OC\\SystemConfig <OC\\SystemConfig>`)  
+
+		
+		:Returns: bool whether the core or any app needs an upgrade
+		:Throws: :any:`\\OC\\HintException <OC\\HintException>` When the upgrade from the given version is not allowed
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static isIe()
+	
+		.. rst-class:: phpdoc-description
+		
+			| is this Internet explorer ?
+			
+		
+		:Source:
+			`lib/private/legacy/OC_Util.php#1490 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Util.php#L1490>`_
+		
+		
+		:Returns: bool 
+	
+	
+

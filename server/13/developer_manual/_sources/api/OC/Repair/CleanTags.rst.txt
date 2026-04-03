@@ -1,0 +1,205 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+CleanTags
+=========
+
+
+.. php:namespace:: OC\Repair
+
+.. php:class:: CleanTags
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Class RepairConfig
+		
+	
+	:Source:
+		`lib/private/Repair/CleanTags.php#41 <https://github.com/nextcloud/server/blob/stable13/lib/private/Repair/CleanTags.php#L41>`_
+	
+	:Implements:
+		:php:interface:`OCP\\Migration\\IRepairStep` 
+	
+
+Properties
+----------
+
+.. php:attr:: protected static connection
+
+	:Source:
+		`lib/private/Repair/CleanTags.php#44 <https://github.com/nextcloud/server/blob/stable13/lib/private/Repair/CleanTags.php#L44>`_
+	
+	:Type: :any:`\\OCP\\IDBConnection <OCP\\IDBConnection>` 
+
+
+.. php:attr:: protected static userManager
+
+	:Source:
+		`lib/private/Repair/CleanTags.php#47 <https://github.com/nextcloud/server/blob/stable13/lib/private/Repair/CleanTags.php#L47>`_
+	
+	:Type: :any:`\\OCP\\IUserManager <OCP\\IUserManager>` 
+
+
+.. php:attr:: protected static deletedTags
+
+	:Source:
+		`lib/private/Repair/CleanTags.php#49 <https://github.com/nextcloud/server/blob/stable13/lib/private/Repair/CleanTags.php#L49>`_
+	
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $connection, $userManager)
+	
+		:Source:
+			`lib/private/Repair/CleanTags.php#55 <https://github.com/nextcloud/server/blob/stable13/lib/private/Repair/CleanTags.php#L55>`_
+		
+		
+		:Parameters:
+			* **$connection** (:any:`OCP\\IDBConnection <OCP\\IDBConnection>`)  
+			* **$userManager** (:any:`OCP\\IUserManager <OCP\\IUserManager>`)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getName()
+	
+		:Source:
+			`lib/private/Repair/CleanTags.php#63 <https://github.com/nextcloud/server/blob/stable13/lib/private/Repair/CleanTags.php#L63>`_
+		
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public run( $output)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Updates the configuration after running an update
+			
+		
+		:Source:
+			`lib/private/Repair/CleanTags.php#70 <https://github.com/nextcloud/server/blob/stable13/lib/private/Repair/CleanTags.php#L70>`_
+		
+		
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected deleteOrphanTags( $output)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Delete tags for deleted users
+			
+		
+		:Source:
+			`lib/private/Repair/CleanTags.php#80 <https://github.com/nextcloud/server/blob/stable13/lib/private/Repair/CleanTags.php#L80>`_
+		
+		
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected checkTags( $offset)
+	
+		:Source:
+			`lib/private/Repair/CleanTags.php#89 <https://github.com/nextcloud/server/blob/stable13/lib/private/Repair/CleanTags.php#L89>`_
+		
+		
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected deleteOrphanFileEntries( $output)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Delete tag entries for deleted files
+			
+		
+		:Source:
+			`lib/private/Repair/CleanTags.php#126 <https://github.com/nextcloud/server/blob/stable13/lib/private/Repair/CleanTags.php#L126>`_
+		
+		
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected deleteOrphanTagEntries( $output)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Delete tag entries for deleted tags
+			
+		
+		:Source:
+			`lib/private/Repair/CleanTags.php#138 <https://github.com/nextcloud/server/blob/stable13/lib/private/Repair/CleanTags.php#L138>`_
+		
+		
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected deleteOrphanCategoryEntries( $output)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Delete tags that have no entries
+			
+		
+		:Source:
+			`lib/private/Repair/CleanTags.php#150 <https://github.com/nextcloud/server/blob/stable13/lib/private/Repair/CleanTags.php#L150>`_
+		
+		
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected deleteOrphanEntries( $output, $repairInfo, $deleteTable, $deleteId, $sourceTable, $sourceId, $sourceNullColumn)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Deletes all entries from $deleteTable that do not have a matching entry in $sourceTable
+			
+			| A query joins $deleteTable\.$deleteId = $sourceTable\.$sourceId and checks
+			| whether $sourceNullColumn is null\. If it is null, the entry in $deleteTable
+			| is being deleted\.
+			
+		
+		:Source:
+			`lib/private/Repair/CleanTags.php#174 <https://github.com/nextcloud/server/blob/stable13/lib/private/Repair/CleanTags.php#L174>`_
+		
+		
+		:Parameters:
+			* **$repairInfo** (string)  
+			* **$deleteTable** (string)  
+			* **$deleteId** (string)  
+			* **$sourceTable** (string)  
+			* **$sourceId** (string)  
+			* **$sourceNullColumn** (string)  If this column is null in the source table,
+			the entry is deleted in the $deleteTable
+
+		
+	
+	
+

@@ -1,0 +1,178 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IPreparedStatement
+==================
+
+
+.. php:namespace:: OCP\DB
+
+.. php:interface:: IPreparedStatement
+
+
+	:Implemented by:
+		:php:class:`OC\\DB\\PreparedStatement` 
+	
+	
+	:Source:
+		`lib/public/DB/IPreparedStatement.php#35 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/IPreparedStatement.php#L35>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public closeCursor()
+	
+		:Source:
+			`lib/public/DB/IPreparedStatement.php#43 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/IPreparedStatement.php#L43>`_
+		
+		
+		:Returns: bool 
+		:Since: 21.0.0 
+		:Deprecated: 21.0.0 use \\OCP\\DB\\IResult::closeCursor on the \\OCP\\DB\\IResult returned by \\OCP\\IDBConnection::prepare
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public fetch( $fetchMode=\\PDO::FETCH\_ASSOC)
+	
+		:Source:
+			`lib/public/DB/IPreparedStatement.php#53 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/IPreparedStatement.php#L53>`_
+		
+		
+		:Parameters:
+			* **$fetchMode** (int)  
+
+		
+		:Returns: mixed 
+		:Since: 21.0.0 
+		:Deprecated: 21.0.0 use \\OCP\\DB\\IResult::fetch on the \\OCP\\DB\\IResult returned by \\OCP\\IDBConnection::prepare
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public fetchAll( $fetchMode=\\PDO::FETCH\_ASSOC)
+	
+		:Source:
+			`lib/public/DB/IPreparedStatement.php#63 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/IPreparedStatement.php#L63>`_
+		
+		
+		:Parameters:
+			* **$fetchMode** (int)  
+
+		
+		:Returns: array 
+		:Since: 21.0.0 
+		:Deprecated: 21.0.0 use \\OCP\\DB\\IResult::fetchAll on the \\OCP\\DB\\IResult returned by \\OCP\\IDBConnection::prepare
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public fetchColumn()
+	
+		:Source:
+			`lib/public/DB/IPreparedStatement.php#71 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/IPreparedStatement.php#L71>`_
+		
+		
+		:Returns: mixed 
+		:Since: 21.0.0 
+		:Deprecated: 21.0.0 use \\OCP\\DB\\IResult::fetchColumn on the \\OCP\\DB\\IResult returned by \\OCP\\IDBConnection::prepare
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public fetchOne()
+	
+		:Source:
+			`lib/public/DB/IPreparedStatement.php#79 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/IPreparedStatement.php#L79>`_
+		
+		
+		:Returns: mixed 
+		:Since: 21.0.0 
+		:Deprecated: 21.0.0 use \\OCP\\DB\\IResult::fetchOne on the \\OCP\\DB\\IResult returned by \\OCP\\IDBConnection::prepare
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public bindValue( $param, $value, $type=\\Doctrine\\DBAL\\ParameterType::STRING)
+	
+		:Source:
+			`lib/public/DB/IPreparedStatement.php#92 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/IPreparedStatement.php#L92>`_
+		
+		
+		:Parameters:
+			* **$param** (int | string)  
+			* **$value** (mixed)  
+			* **$type** (int)  
+
+		
+		:Returns: bool 
+		:Throws: :any:`\\Doctrine\\DBAL\\Exception <Doctrine\\DBAL\\Exception>` 
+		:Since: 21.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public bindParam( $param, &$variable, $type=\\Doctrine\\DBAL\\ParameterType::STRING, $length=null)
+	
+		:Source:
+			`lib/public/DB/IPreparedStatement.php#106 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/IPreparedStatement.php#L106>`_
+		
+		
+		:Parameters:
+			* **$param** (int | string)  
+			* **$variable** (mixed)  
+			* **$type** (int)  
+			* **$length** (int | null)  
+
+		
+		:Returns: bool 
+		:Throws: :any:`\\Doctrine\\DBAL\\Exception <Doctrine\\DBAL\\Exception>` 
+		:Since: 21.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public execute( $params=null)
+	
+		:Source:
+			`lib/public/DB/IPreparedStatement.php#116 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/IPreparedStatement.php#L116>`_
+		
+		
+		:Parameters:
+			* **$params** (array | null)  
+
+		
+		:Returns: :any:`\\OCP\\DB\\IResult <OCP\\DB\\IResult>` 
+		:Since: 21.0.0 
+		:Throws: :any:`\\Doctrine\\DBAL\\Exception <Doctrine\\DBAL\\Exception>` 
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public rowCount()
+	
+		:Source:
+			`lib/public/DB/IPreparedStatement.php#126 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/IPreparedStatement.php#L126>`_
+		
+		
+		:Returns: int 
+		:Since: 21.0.0 
+		:Throws: :any:`\\Doctrine\\DBAL\\Exception <Doctrine\\DBAL\\Exception>` 
+		:Deprecated: 21.0.0 use \\OCP\\DB\\IResult::rowCount on the \\OCP\\DB\\IResult returned by \\OCP\\IDBConnection::prepare
+	
+	
+

@@ -1,0 +1,392 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Changelog &mdash; Nextcloud 13 Developer Manual 13 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'13',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Tutorial" href="tutorial.html" />
+    <link rel="prev" title="App development" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../general/index.html">General contributor guidelines</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Changelog</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#deprecations">Deprecations</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">2018</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">2017</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">2016</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">2015</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="startapp.html">Create an app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="init.html">Navigation and pre-app configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info.html">App metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="classloader.html">Classloader</a></li>
+<li class="toctree-l1"><a class="reference internal" href="request.html">Request lifecycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="routes.html">Routing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="middleware.html">Middleware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="container.html">Container</a></li>
+<li class="toctree-l1"><a class="reference internal" href="controllers.html">Controllers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">RESTful API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="templates.html">Templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="js.html">JavaScript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="css.html">CSS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="l10n.html">Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="theming.html">Theming support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="schema.html">Database schema</a></li>
+<li class="toctree-l1"><a class="reference internal" href="database.html">Database access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="filesystem.html">Filesystem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appdata.html">AppData</a></li>
+<li class="toctree-l1"><a class="reference internal" href="users.html">User management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="two-factor-provider.html">Two-factor providers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hooks.html">Hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="backgroundjobs.html">Background jobs (Cron)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="settings.html">Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logging.html">Logging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migrations.html">Migrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="repair.html">Repair steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="publishing.html">App store publishing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="code_signing.html">Code signing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../design/index.html">Design guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../android_library/index.html">Android application development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client_apis/index.html">Client APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../core/translation.html">Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../core/unit-testing.html">Unit-Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../core/theming.html">Theming Nextcloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../core/externalapi.html">External API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../core/ocs-share-api.html">OCS Share API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../core/index.html">Core development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bugtracker/index.html">Bugtracker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../commun/index.html">Help and communication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API Documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Nextcloud 13 Developer Manual</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">App development</a> &raquo;</li>
+        
+      <li>Changelog</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/nextcloud/documentation/edit/stable13/developer_manual/app/changelog.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="changelog">
+<h1>Changelog<a class="headerlink" href="#changelog" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="deprecations">
+<h2>Deprecations<a class="headerlink" href="#deprecations" title="Permalink to this headline">¶</a></h2>
+<p>This is a deprecation roadmap which lists all current deprecation targets and will be updated from release to release. This lists the year when a specific method or class will be removed.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Deprecations on interfaces also affect the implementing classes!</p>
+</div>
+<div class="section" id="id1">
+<h3>2018<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><strong>OCP\App::setActiveNavigationEntry</strong> has been deprecated in favour of <strong>\OCP\INavigationManager</strong></li>
+<li><strong>OCP\BackgroundJob::registerJob</strong> has been deprecated in favour of <strong>OCP\BackgroundJob\IJobList</strong></li>
+<li><strong>OCP\Contacts</strong> functions has been deprecated in favour of <strong>\OCP\Contacts\IManager</strong></li>
+<li><strong>OCP\DB</strong> functions have been deprecated in favour of the ones in <strong>\OCP\IDBConnection</strong></li>
+<li><strong>OCP\Files::tmpFile</strong> has been deprecated in favour of <strong>\OCP\ITempManager::getTemporaryFile</strong></li>
+<li><strong>OCP\Files::tmpFolder</strong> has been deprecated in favour of <strong>\OCP\ITempManager::getTemporaryFolder</strong></li>
+<li><strong>\OCP\IServerContainer::getDb</strong> has been deprecated in favour of <strong>\OCP\IServerContainer::getDatabaseConnection</strong></li>
+<li><strong>\OCP\IServerContainer::getHTTPHelper</strong> has been deprecated in favour of <strong>\OCP\Http\Client\IClientService</strong></li>
+<li>Legacy applications not using the AppFramework are now likely to use the deprecated <strong>OCP\JSON</strong> and <strong>OCP\Response</strong> code:<ul>
+<li><strong>\OCP\JSON</strong> has been completely deprecated in favour of the AppFramework. Developers shall use the AppFramework instead of using the legacy <strong>OCP\JSON</strong> code. This allows testable controllers and is highly encouraged.</li>
+<li><strong>\OCP\Response</strong> has been completely deprecated in favour of the AppFramework. Developers shall use the AppFramework instead of using the legacy <strong>OCP\JSON</strong> code. This allows testable controllers and is highly encouraged.</li>
+</ul>
+</li>
+<li>Diverse <strong>OCP\Users</strong> function got deprecated in favour of <strong>OCP\IUserManager</strong>:<ul>
+<li><strong>OCP\Users::getUsers</strong> has been deprecated in favour of <strong>OCP\IUserManager::search</strong></li>
+<li><strong>OCP\Users::getDisplayName</strong> has been deprecated in favour of <strong>OCP\IUserManager::getDisplayName</strong></li>
+<li><strong>OCP\Users::getDisplayNames</strong> has been deprecated in favour of <strong>OCP\IUserManager::searchDisplayName</strong></li>
+<li><strong>OCP\Users::userExists</strong> has been deprecated in favour of <strong>OCP\IUserManager::userExists</strong></li>
+</ul>
+</li>
+<li>Various static <strong>OCP\Util</strong> functions have been deprecated:<ul>
+<li><strong>OCP\Util::linkToRoute</strong> has been deprecated in favour of <strong>\OCP\IURLGenerator::linkToRoute</strong></li>
+<li><strong>OCP\Util::linkTo</strong> has been deprecated in favour of <strong>\OCP\IURLGenerator::linkTo</strong></li>
+<li><strong>OCP\Util::imagePath</strong> has been deprecated in favour of <strong>\OCP\IURLGenerator::imagePath</strong></li>
+<li><strong>OCP\Util::isValidPath</strong> has been deprecated in favour of <strong>\OCP\IURLGenerator::imagePath</strong></li>
+</ul>
+</li>
+<li><a class="reference external" href="https://github.com/nextcloud/server/blob/stable9/lib/public/appframework/iappcontainer.php">OCP\AppFramework\IAppContainer</a>: methods <strong>getCoreApi</strong> and <strong>log</strong></li>
+<li><a class="reference external" href="https://github.com/nextcloud/server/blob/stable9/lib/public/appframework/iapi.php">OCP\AppFramework\IApi</a>: full class</li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h3>2017<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><strong>OCP\IDb</strong>: This interface and the implementing classes will be removed in favor of <strong>OCP\IDbConnection</strong>. Various layers in between have also been removed to be consistent with the PDO classes. This leads to the following changes:</li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li>Replace all calls on the db using <strong>getInsertId</strong> with <strong>lastInsertId</strong></li>
+<li>Replace all calls on the db using <strong>prepareQuery</strong> with <strong>prepare</strong></li>
+<li>The <strong>__construct</strong> method of <strong>OCP\AppFramework\Db\Mapper</strong> no longer requires an instance of <strong>OCP\IDb</strong> but an instance of <strong>OCP\IDbConnection</strong></li>
+<li>The <strong>execute</strong> method on <strong>OCP\AppFramework\Db\Mapper</strong> no longer returns an instance of <strong>OC_DB_StatementWrapper</strong> but an instance of <strong>PDOStatement</strong></li>
+</ul>
+</div></blockquote>
+</div>
+<div class="section" id="id3">
+<h3>2016<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>The following methods have been moved into the <strong>OCP\Template::&lt;method&gt;</strong> class instead of being namespaced directly:</li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li><strong>OCP\image_path</strong></li>
+<li><strong>OCP\mimetype_icon</strong></li>
+<li><strong>OCP\preview_icon</strong></li>
+<li><strong>OCP\publicPreview_icon</strong></li>
+<li><strong>OCP\human_file_size</strong></li>
+<li><strong>OCP\relative_modified_date</strong></li>
+<li><strong>OCP\html_select_options</strong></li>
+</ul>
+</div></blockquote>
+<ul class="simple">
+<li><strong>OCP\simple_file_size</strong> has been deprecated in favour of <strong>OCP\Template::human_file_size</strong></li>
+<li>The <strong>OCP\PERMISSION_&lt;permission&gt;</strong> and <strong>OCP\FILENAME_INVALID_CHARS</strong> have been moved to <strong>OCP\Constants::&lt;old name&gt;</strong></li>
+<li>The <strong>OC_GROUP_BACKEND_&lt;method&gt;</strong> and <strong>OC_USER_BACKEND_&lt;method&gt;</strong> have been moved to <strong>OC_Group_Backend::&lt;method&gt;</strong> and <strong>OC_User_Backend::&lt;method&gt;</strong> respectively</li>
+<li><a class="reference external" href="https://github.com/nextcloud/server/blob/stable9/lib/public/appframework/controller.php">OCP\AppFramework\Controller</a>: methods <strong>params</strong>, <strong>getParams</strong>, <strong>method</strong>, <strong>getUploadedFile</strong>, <strong>env</strong>, <strong>cookie</strong>, <strong>render</strong></li>
+</ul>
+</div>
+<div class="section" id="id4">
+<h3>2015<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><a class="reference external" href="https://github.com/nextcloud/server/commit/909a53e087b7815ba9cd814eb6c22845ef5b48c7">\OC\Preferences</a> and <a class="reference external" href="https://github.com/nextcloud/server/commit/4df7c0a1ed52ed1922116686cb5ad8da2544c997">\OC_Preferences</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="tutorial.html" class="btn btn-neutral float-right" title="Tutorial" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="index.html" class="btn btn-neutral float-left" title="App development" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021 Nextcloud GmbH.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: 13
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/13/developer_manual">13</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/14/developer_manual">14</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/15/developer_manual">15</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/developer_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/developer_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+   
+
+</body>
+</html>

@@ -1,0 +1,156 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IOperation
+==========
+
+
+.. php:namespace:: OCP\WorkflowEngine
+
+.. php:interface:: IOperation
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Interface IOperation
+		
+	
+	:Source:
+		`lib/public/WorkflowEngine/IOperation.php#34 <https://github.com/nextcloud/server/blob/stable13/lib/public/WorkflowEngine/IOperation.php#L34>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public getDisplayName()
+	
+		.. rst-class:: phpdoc-description
+		
+			| returns a translated name to be presented in the web interface
+			
+			| Example: "Automated tagging" \(en\), "Aŭtomata etikedado" \(eo\)
+			
+		
+		:Source:
+			`lib/public/WorkflowEngine/IOperation.php#42 <https://github.com/nextcloud/server/blob/stable13/lib/public/WorkflowEngine/IOperation.php#L42>`_
+		
+		
+		:Since: 18.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getDescription()
+	
+		.. rst-class:: phpdoc-description
+		
+			| returns a translated, descriptive text to be presented in the web interface\.
+			
+			| It should be short and precise\.
+			| 
+			| Example: "Tag based automatic deletion of files after a given time\." \(en\)
+			
+		
+		:Source:
+			`lib/public/WorkflowEngine/IOperation.php#53 <https://github.com/nextcloud/server/blob/stable13/lib/public/WorkflowEngine/IOperation.php#L53>`_
+		
+		
+		:Since: 18.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getIcon()
+	
+		.. rst-class:: phpdoc-description
+		
+			| returns the URL to the icon of the operator for display in the web interface\.
+			
+			| Usually, the implementation would utilize the \`imagePath\(\)\` method of the
+			| \`\\OCP\\IURLGenerator\` instance and simply return its result\.
+			| 
+			| Example implementation: return $this\-\>urlGenerator\-\>imagePath\(\'myApp\', \'cat\.svg\'\);
+			
+		
+		:Source:
+			`lib/public/WorkflowEngine/IOperation.php#65 <https://github.com/nextcloud/server/blob/stable13/lib/public/WorkflowEngine/IOperation.php#L65>`_
+		
+		
+		:Since: 18.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isAvailableForScope( $scope)
+	
+		.. rst-class:: phpdoc-description
+		
+			| returns whether the operation can be used in the requested scope\.
+			
+			| Scope IDs are defined as constants in OCP\\WorkflowEngine\\IManager\. At
+			| time of writing these are SCOPE\_ADMIN and SCOPE\_USER\.
+			| 
+			| For possibly unknown future scopes the recommended behaviour is: if
+			| user scope is permitted, the default behaviour should return \`true\`,
+			| otherwise \`false\`\.
+			
+		
+		:Source:
+			`lib/public/WorkflowEngine/IOperation.php#79 <https://github.com/nextcloud/server/blob/stable13/lib/public/WorkflowEngine/IOperation.php#L79>`_
+		
+		
+		:Since: 18.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public validateOperation( $name, $checks, $operation)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Validates whether a configured workflow rule is valid\. If it is not,
+			| an \`\\UnexpectedValueException\` is supposed to be thrown\.
+			
+		
+		:Source:
+			`lib/public/WorkflowEngine/IOperation.php#88 <https://github.com/nextcloud/server/blob/stable13/lib/public/WorkflowEngine/IOperation.php#L88>`_
+		
+		
+		:Throws: :any:`\\UnexpectedValueException <UnexpectedValueException>` 
+		:Since: 9.1 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public onEvent( $eventName, $event, $ruleMatcher)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Is being called by the workflow engine when an event was triggered that
+			| is configured for this operation\. An evaluation whether the event
+			| qualifies for this operation to run has still to be done by the
+			| implementor by calling the RuleMatchers getMatchingOperations method
+			| and evaluating the results\.
+			
+			| If the implementor is an IComplexOperation, this method will not be
+			| called automatically\. It can be used or left as no\-op by the implementor\.
+			
+		
+		:Source:
+			`lib/public/WorkflowEngine/IOperation.php#102 <https://github.com/nextcloud/server/blob/stable13/lib/public/WorkflowEngine/IOperation.php#L102>`_
+		
+		
+		:Since: 18.0.0 
+	
+	
+

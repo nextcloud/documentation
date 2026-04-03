@@ -1,0 +1,235 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+OC\_FileChunking
+================
+
+
+.. php:class:: OC_FileChunking
+
+
+	:Source:
+		`lib/private/legacy/OC_FileChunking.php#33 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_FileChunking.php#L33>`_
+	
+
+Properties
+----------
+
+.. php:attr:: protected static info
+
+	:Source:
+		`lib/private/legacy/OC_FileChunking.php#34 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_FileChunking.php#L34>`_
+	
+
+
+.. php:attr:: protected static cache
+
+	:Source:
+		`lib/private/legacy/OC_FileChunking.php#35 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_FileChunking.php#L35>`_
+	
+
+
+.. php:attr:: protected static ttl
+
+	.. rst-class:: phpdoc-description
+	
+		| TTL of chunks
+		
+	
+	:Source:
+		`lib/private/legacy/OC_FileChunking.php#42 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_FileChunking.php#L42>`_
+	
+	:Type: int 
+
+
+Methods
+-------
+
+.. rst-class:: public static
+
+	.. php:method:: public static decodeName( $name)
+	
+		:Source:
+			`lib/private/legacy/OC_FileChunking.php#44 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_FileChunking.php#L44>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $info)
+	
+		:Source:
+			`lib/private/legacy/OC_FileChunking.php#52 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_FileChunking.php#L52>`_
+		
+		
+		:Parameters:
+			* **$info** (string[])  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getPrefix()
+	
+		:Source:
+			`lib/private/legacy/OC_FileChunking.php#57 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_FileChunking.php#L57>`_
+		
+		
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected getCache()
+	
+		:Source:
+			`lib/private/legacy/OC_FileChunking.php#64 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_FileChunking.php#L64>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public store( $index, $data)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Stores the given $data under the given $key \- the number of stored bytes is returned
+			
+		
+		:Source:
+			`lib/private/legacy/OC_FileChunking.php#78 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_FileChunking.php#L78>`_
+		
+		
+		:Parameters:
+			* **$index** (string)  
+			* **$data** (resource)  
+
+		
+		:Returns: int 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isComplete()
+	
+		:Source:
+			`lib/private/legacy/OC_FileChunking.php#86 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_FileChunking.php#L86>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public assemble( $f)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Assembles the chunks into the file specified by the path\.
+			
+			| Chunks are deleted afterwards\.
+			
+		
+		:Source:
+			`lib/private/legacy/OC_FileChunking.php#111 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_FileChunking.php#L111>`_
+		
+		
+		:Parameters:
+			* **$f** (resource)  target path
+
+		
+		:Returns: int assembled file size
+		:Throws: :any:`\\OC\\InsufficientStorageException <OC\\InsufficientStorageException>` when file could not be fully
+			assembled due to lack of free space
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getCurrentSize()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the size of the chunks already present
+			
+		
+		:Source:
+			`lib/private/legacy/OC_FileChunking.php#131 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_FileChunking.php#L131>`_
+		
+		
+		:Returns: int size in bytes
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public cleanup()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Removes all chunks which belong to this transmission
+			
+		
+		:Source:
+			`lib/private/legacy/OC_FileChunking.php#144 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_FileChunking.php#L144>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public remove( $index)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Removes one specific chunk
+			
+		
+		:Source:
+			`lib/private/legacy/OC_FileChunking.php#156 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_FileChunking.php#L156>`_
+		
+		
+		:Parameters:
+			* **$index** (string)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public file_assemble( $storage, $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Assembles the chunks into the file specified by the path\.
+			
+			| Also triggers the relevant hooks and proxies\.
+			
+		
+		:Source:
+			`lib/private/legacy/OC_FileChunking.php#172 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_FileChunking.php#L172>`_
+		
+		
+		:Parameters:
+			* **$storage** (:any:`OC\\Files\\Storage\\Storage <OC\\Files\\Storage\\Storage>`)  storage
+			* **$path** (string)  target path relative to the storage
+
+		
+		:Returns: bool true on success or false if file could not be created
+		:Throws: :any:`\\OC\\ServerNotAvailableException <OC\\ServerNotAvailableException>` 
+	
+	
+

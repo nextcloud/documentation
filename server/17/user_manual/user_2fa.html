@@ -1,0 +1,336 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Using two-factor authentication &mdash; Nextcloud latest User Manual latest documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'./',
+              VERSION:'latest',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Manage connected browsers and devices" href="session_management.html" />
+    <link rel="prev" title="Setting your preferences" href="userpreferences.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="contents.html">
+          
+
+          
+            
+            <img src="_static/logo-white.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="index.html">Nextcloud latest user manual introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="whats_new.html">What&#8217;s new for users in Nextcloud latest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="webinterface.html">The Nextcloud Web interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="files/index.html">Files &amp; synchronization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pim/index.html">Groupware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="userpreferences.html">Setting your preferences</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Using two-factor authentication</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#configuring-two-factor-authentication">Configuring two-factor authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#recovery-codes-in-case-you-lost-your-2nd-factor">Recovery codes in case you lost your 2nd factor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#logging-in-with-two-factor-authentication">Logging in with two-factor authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#using-client-applications-with-two-factor-authentication">Using client applications with two-factor authentication</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="session_management.html">Manage connected browsers and devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="external_storage/index.html">External Storage</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="contents.html">Nextcloud latest User Manual</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="contents.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Using two-factor authentication</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/user_2fa.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="using-two-factor-authentication">
+<h1>Using two-factor authentication<a class="headerlink" href="#using-two-factor-authentication" title="Permalink to this headline">¶</a></h1>
+<p>Two-factor authentication (2FA) is a way to protect your Nextcloud account
+against unauthorized access. It works by requiring two different &#8216;proofs&#8217; of
+your identity. For example, <em>something you know</em> (like a password) and
+<em>something you have</em> like a physical key. Typically, the first factor is a
+password like you already have and the second can be a text message you
+receive or a code you generate on your phone or another device
+(<em>something you have</em>). Nextcloud supports a variety of 2nd factors and
+more can be added.</p>
+<p>Once a two-factor authentication app has been enabled by your administrator
+you can enable and configure it in <a class="reference internal" href="userpreferences.html"><span class="doc">Setting your preferences</span></a>. Below you can
+see how.</p>
+<div class="section" id="configuring-two-factor-authentication">
+<h2>Configuring two-factor authentication<a class="headerlink" href="#configuring-two-factor-authentication" title="Permalink to this headline">¶</a></h2>
+<p>In your Personal Settings look up the Second-factor Auth setting. In this
+example this is TOTP, a Google Authenticator compatible time-based code.</p>
+<div class="figure">
+<img alt="TOTP configuration." src="_images/totp_enable.png" />
+</div>
+<p>You will see your secret and a QR code which can be scanned by the TOTP app
+on your phone (or another device). Depending on the app or tool, type in the
+code or scan the QR and your device will show a login code which changes
+every 30 seconds.</p>
+</div>
+<div class="section" id="recovery-codes-in-case-you-lost-your-2nd-factor">
+<h2>Recovery codes in case you lost your 2nd factor<a class="headerlink" href="#recovery-codes-in-case-you-lost-your-2nd-factor" title="Permalink to this headline">¶</a></h2>
+<p>You should always generate backup codes for 2FA. If your 2nd factor device
+gets stolen or is not working, you will be able to use one of these codes to
+unlock your account. It effectively functions as a backup 2nd factor. To
+get the backup codes, go to your Personal Settings and look under Second-factor
+Auth settings. Choose <em>Generate backup codes</em>.</p>
+<div class="figure">
+<img alt="2FA backup code generator" src="_images/2fa_backupcode_1.png" />
+</div>
+<p>You will then be presented with a list of one-time-use backup codes.</p>
+<div class="figure">
+<img alt="2FA backup codes" src="_images/2fa_backupcode_2.png" />
+</div>
+<p>You should put these codes in a safe spot, somewhere you can find them. Don&#8217;t
+put them together with your 2nd factor like your mobile phone but make sure that
+if you lose one, you still have the other. Keeping them at home is probably
+the best thing to do.</p>
+</div>
+<div class="section" id="logging-in-with-two-factor-authentication">
+<h2>Logging in with two-factor authentication<a class="headerlink" href="#logging-in-with-two-factor-authentication" title="Permalink to this headline">¶</a></h2>
+<p>After you have logged out and need to log in again, you will see a request to
+enter the TOTP code in your browser. If you enable not only the TOTP factor
+but another one, you will see a selection screen on which you can choose
+two-factor method for this login. Select TOTP.</p>
+<div class="figure">
+<img alt="Choosing a two-factor authentication method." src="_images/totp_login_1.png" />
+</div>
+<p>Now, just enter your code:</p>
+<div class="figure">
+<img alt="Entering TOTP code at login." src="_images/totp_login_2.png" />
+</div>
+<p>If the code was correct you will be redirected to your Nextcloud account.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Since the code is time-based, it’s important that your server’s and
+your smartphone’s clock are almost in sync. A time drift of a few seconds
+won’t be a problem.</p>
+</div>
+</div>
+<div class="section" id="using-client-applications-with-two-factor-authentication">
+<h2>Using client applications with two-factor authentication<a class="headerlink" href="#using-client-applications-with-two-factor-authentication" title="Permalink to this headline">¶</a></h2>
+<p>Once you have enabled 2FA, your clients will no longer be able to connect with
+just your password unless they also have support for two-factor authentication.
+To solve this, you should generate device specific passwords for them. See
+<a class="reference internal" href="session_management.html"><span class="doc">Manage connected browsers and devices</span></a> for more information on how to do this.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="session_management.html" class="btn btn-neutral float-right" title="Manage connected browsers and devices" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="userpreferences.html" class="btn btn-neutral float-left" title="Setting your preferences" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021 Nextcloud GmbH.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/16/user_manual">16</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/17/user_manual">17</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/18/user_manual">18</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/19/user_manual">19</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/user_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/user_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+   
+
+</body>
+</html>

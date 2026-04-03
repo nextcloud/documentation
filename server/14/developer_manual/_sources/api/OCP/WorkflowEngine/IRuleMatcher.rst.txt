@@ -1,0 +1,140 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IRuleMatcher
+============
+
+
+.. php:namespace:: OCP\WorkflowEngine
+
+.. php:interface:: IRuleMatcher
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Class IRuleMatcher
+		
+	
+	:Source:
+		`lib/public/WorkflowEngine/IRuleMatcher.php#37 <https://github.com/nextcloud/server/blob/stable13/lib/public/WorkflowEngine/IRuleMatcher.php#L37>`_
+	
+	:Parent:
+		:php:interface:`OCP\\WorkflowEngine\\IFileCheck`
+	
+
+Methods
+-------
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public getMatchingOperations( $class, $returnFirstMatchingOperationOnly=true)
+	
+		.. rst-class:: phpdoc-description
+		
+			| This method is left for backwards compatibility and easier porting of
+			| apps\. Please use \'getFlows\' instead \(and setOperation if you implement
+			| an IComplexOperation\)\.
+			
+		
+		:Source:
+			`lib/public/WorkflowEngine/IRuleMatcher.php#46 <https://github.com/nextcloud/server/blob/stable13/lib/public/WorkflowEngine/IRuleMatcher.php#L46>`_
+		
+		
+		:Since: 18.0.0 
+		:Deprecated: 18.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getFlows( $returnFirstMatchingOperationOnly=true)
+	
+		:Source:
+			`lib/public/WorkflowEngine/IRuleMatcher.php#52 <https://github.com/nextcloud/server/blob/stable13/lib/public/WorkflowEngine/IRuleMatcher.php#L52>`_
+		
+		
+		:Throws: :any:`\\RuntimeException <RuntimeException>` 
+		:Since: 18.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setOperation( $operation)
+	
+		.. rst-class:: phpdoc-description
+		
+			| this method can only be called once and is typically called by the
+			| Flow engine, unless for IComplexOperations\.
+			
+		
+		:Source:
+			`lib/public/WorkflowEngine/IRuleMatcher.php#61 <https://github.com/nextcloud/server/blob/stable13/lib/public/WorkflowEngine/IRuleMatcher.php#L61>`_
+		
+		
+		:Throws: :any:`\\RuntimeException <RuntimeException>` 
+		:Since: 18.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setEntity( $entity)
+	
+		.. rst-class:: phpdoc-description
+		
+			| this method can only be called once and is typically called by the
+			| Flow engine, unless for IComplexOperations\.
+			
+		
+		:Source:
+			`lib/public/WorkflowEngine/IRuleMatcher.php#70 <https://github.com/nextcloud/server/blob/stable13/lib/public/WorkflowEngine/IRuleMatcher.php#L70>`_
+		
+		
+		:Throws: :any:`\\RuntimeException <RuntimeException>` 
+		:Since: 18.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getEntity()
+	
+		.. rst-class:: phpdoc-description
+		
+			| returns the entity which might provide more information, depending on
+			| the interfaces it implements
+			
+		
+		:Source:
+			`lib/public/WorkflowEngine/IRuleMatcher.php#79 <https://github.com/nextcloud/server/blob/stable13/lib/public/WorkflowEngine/IRuleMatcher.php#L79>`_
+		
+		
+		:Returns: :any:`\\OCP\\WorkflowEngine\\IEntity <OCP\\WorkflowEngine\\IEntity>` 
+		:Since: 18.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setEventName( $eventName)
+	
+		.. rst-class:: phpdoc-description
+		
+			| this method can be called once to set the event name that is currently
+			| being processed\. The workflow engine takes care of this usually, only an
+			| IComplexOperation might want to make use of it\.
+			
+		
+		:Source:
+			`lib/public/WorkflowEngine/IRuleMatcher.php#89 <https://github.com/nextcloud/server/blob/stable13/lib/public/WorkflowEngine/IRuleMatcher.php#L89>`_
+		
+		
+		:Throws: :any:`\\RuntimeException <RuntimeException>` 
+		:Since: 20.0.0 
+	
+	
+

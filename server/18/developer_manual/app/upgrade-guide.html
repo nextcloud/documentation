@@ -1,0 +1,682 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>App upgrade guide &mdash; Nextcloud latest Developer Manual latest documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'latest',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Bootstrapping" href="bootstrap.html" />
+    <link rel="prev" title="Tutorial" href="tutorial.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../general/index.html">General contributor guidelines</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">App development</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">App upgrade guide</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#upgrading-to-nextcloud-18">Upgrading to Nextcloud 18</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#front-end-changes">Front-end changes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#back-end-changes">Back-end changes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#behavioral-changes">Behavioral changes</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#upgrading-to-nextcloud-17">Upgrading to Nextcloud 17</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id2">Front-end changes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">Back-end changes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">Behavioral changes</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#upgrading-to-nextcloud-16">Upgrading to Nextcloud 16</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id8">Front-end changes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id9">Back-end changes</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#upgrading-to-nextcloud-15">Upgrading to Nextcloud 15</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id11">Front-end changes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id13">Back-end changes</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#upgrading-to-nextcloud-14">Upgrading to Nextcloud 14</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#general">General</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id16">Front-end changes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id17">Back-end changes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id20">Behavioral changes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#configuration-changes">Configuration changes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ocs-changes">OCS changes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#internal-changes">Internal changes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="bootstrap.html">Bootstrapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="npm.html">NPM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="requests/index.html">Request lifecycle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="view/index.html">View</a></li>
+<li class="toctree-l2"><a class="reference internal" href="storage/index.html">Storage and database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html">Changelog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classloader.html">Classloader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="code_signing.html">Code signing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="info.html">App metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="init.html">Navigation and pre-app configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="publishing.html">App store publishing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="users.html">User management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="two-factor-provider.html">Two-factor providers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="events.html">Events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backgroundjobs.html">Background jobs (Cron)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="settings.html">Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notifications.html">Notifications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="flow.html">Nextcloud Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logging.html">Logging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="repair.html">Repair steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="publicpage.html">Public Pages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="testing.html">Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html">API reference</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../design/index.html">Design guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../android_library/index.html">Android application development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client_apis/index.html">Client APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../core/index.html">Core development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bugtracker/index.html">Bugtracker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../commun/index.html">Help and communication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API reference</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Nextcloud latest Developer Manual</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">App development</a> &raquo;</li>
+        
+      <li>App upgrade guide</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/nextcloud/documentation/edit/master/developer_manual/app/upgrade-guide.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="app-upgrade-guide">
+<h1>App upgrade guide<a class="headerlink" href="#app-upgrade-guide" title="Permalink to this headline">¶</a></h1>
+<p>Once you&#8217;ve created and published the first version of your app, you will want to keep it up to date with the latest Nextcloud features.</p>
+<p>This document will cover the most important changes in Nextcloud, as well as some guides on how to upgrade existing apps.</p>
+<div class="section" id="upgrading-to-nextcloud-18">
+<h2>Upgrading to Nextcloud 18<a class="headerlink" href="#upgrading-to-nextcloud-18" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Critical changes were collected <a class="reference external" href="https://github.com/nextcloud/server/issues/17131">on Github</a>. See the original ticket for links to the pull requests and tickets.</p>
+</div>
+<div class="section" id="front-end-changes">
+<h3>Front-end changes<a class="headerlink" href="#front-end-changes" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="css">
+<h4>CSS<a class="headerlink" href="#css" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li>Overall font-size was increased. Please make sure you use relative units like <cite>rem</cite> instead of pixels.</li>
+</ul>
+</div>
+<div class="section" id="deprecated-global-variables">
+<h4>Deprecated global variables<a class="headerlink" href="#deprecated-global-variables" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">Backbone</span></code>: ship your own.</li>
+<li><code class="docutils literal"><span class="pre">Clipboard</span></code>: ship your own.</li>
+<li><code class="docutils literal"><span class="pre">ClipboardJs</span></code>: ship your own.</li>
+<li><code class="docutils literal"><span class="pre">DOMPurify</span></code>: ship your own.</li>
+<li><code class="docutils literal"><span class="pre">Handlebars</span></code>: ship your own.</li>
+<li><code class="docutils literal"><span class="pre">jstimezonedetect</span></code>: ship your own.</li>
+<li><code class="docutils literal"><span class="pre">jstz</span></code>: ship your own.</li>
+<li><code class="docutils literal"><span class="pre">md5</span></code>: ship your own.</li>
+<li><code class="docutils literal"><span class="pre">moment</span></code>: ship your own.</li>
+<li><code class="docutils literal"><span class="pre">OC.basename</span></code>: use <code class="docutils literal"><span class="pre">basename</span></code> from <a class="reference external" href="https://www.npmjs.com/package/&#64;nextcloud/paths">https://www.npmjs.com/package/&#64;nextcloud/paths</a></li>
+<li><code class="docutils literal"><span class="pre">OC.dirname</span></code>: use <code class="docutils literal"><span class="pre">dirname</span></code> from <a class="reference external" href="https://www.npmjs.com/package/&#64;nextcloud/paths">https://www.npmjs.com/package/&#64;nextcloud/paths</a></li>
+<li><code class="docutils literal"><span class="pre">OC.encodePath</span></code>: use <code class="docutils literal"><span class="pre">encodePath</span></code> from <a class="reference external" href="https://www.npmjs.com/package/&#64;nextcloud/paths">https://www.npmjs.com/package/&#64;nextcloud/paths</a></li>
+<li><code class="docutils literal"><span class="pre">OC.isSamePath</span></code>: use <code class="docutils literal"><span class="pre">isSamePath</span></code> from <a class="reference external" href="https://www.npmjs.com/package/&#64;nextcloud/paths">https://www.npmjs.com/package/&#64;nextcloud/paths</a></li>
+<li><code class="docutils literal"><span class="pre">OC.joinPaths</span></code>: use <code class="docutils literal"><span class="pre">joinPaths</span></code> from <a class="reference external" href="https://www.npmjs.com/package/&#64;nextcloud/paths">https://www.npmjs.com/package/&#64;nextcloud/paths</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="back-end-changes">
+<h3>Back-end changes<a class="headerlink" href="#back-end-changes" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="new-apis">
+<h4>New APIs<a class="headerlink" href="#new-apis" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">\OCP\WorkflowEngine</span></code> namespace</li>
+</ul>
+</div>
+<div class="section" id="deprecations">
+<h4>Deprecations<a class="headerlink" href="#deprecations" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">\OCP\Collaboration\Resources\IManager::registerResourceProvider</span></code>: use <code class="docutils literal"><span class="pre">\OCP\Collaboration\Resources\IProviderManager::registerResourceProvider</span></code> instead.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="behavioral-changes">
+<h3>Behavioral changes<a class="headerlink" href="#behavioral-changes" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Email shares and link shares now share the same config.
+You cannot create mail shares if the share links are disabled by your administrator</li>
+<li>Please register new sidebar tabs scripts with the <code class="docutils literal"><span class="pre">OCA\Files\Event\LoadSidebar\Event</span></code> script</li>
+<li>Viewer binds the full file object to the views now. Variables names changed!</li>
+</ul>
+</div>
+</div>
+<div class="section" id="upgrading-to-nextcloud-17">
+<h2>Upgrading to Nextcloud 17<a class="headerlink" href="#upgrading-to-nextcloud-17" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Critical changes were collected <a class="reference external" href="https://github.com/nextcloud/server/issues/15339">on Github</a>. See the original ticket for links to the pull requests and tickets.</p>
+</div>
+<div class="section" id="id2">
+<h3>Front-end changes<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id3">
+<h4>Deprecated global variables<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">initCore</span></code>: don&#8217;t use this internal function.</li>
+<li><code class="docutils literal"><span class="pre">oc_appconfig</span></code>: use <code class="docutils literal"><span class="pre">OC.appConfig</span></code> instead.</li>
+<li><code class="docutils literal"><span class="pre">oc_appswebroots</span></code>: use <code class="docutils literal"><span class="pre">OC.appswebroots</span></code> instead.</li>
+<li><code class="docutils literal"><span class="pre">oc_capabilities</span></code>: use <code class="docutils literal"><span class="pre">OC.getCapabilities()</span></code> instead.</li>
+<li><code class="docutils literal"><span class="pre">oc_config</span></code>: use <code class="docutils literal"><span class="pre">OC.config</span></code> instead.</li>
+<li><code class="docutils literal"><span class="pre">oc_current_user</span></code>: use <code class="docutils literal"><span class="pre">OC.getCurrentUser().uid</span></code> instead.</li>
+<li><code class="docutils literal"><span class="pre">oc_debug</span></code>: use <code class="docutils literal"><span class="pre">OC.debug</span></code> instead.</li>
+<li><code class="docutils literal"><span class="pre">oc_isadmin</span></code>: use <code class="docutils literal"><span class="pre">OC.isUserAdmin()</span></code> instead.</li>
+<li><code class="docutils literal"><span class="pre">oc_requesttoken</span></code>: use <code class="docutils literal"><span class="pre">OC.requestToken</span></code> instead.</li>
+<li><code class="docutils literal"><span class="pre">oc_webroot</span></code>: use <code class="docutils literal"><span class="pre">OC.getRootPath()</span></code> instead.</li>
+<li><code class="docutils literal"><span class="pre">OCDialogs</span></code>: use <code class="docutils literal"><span class="pre">OC.dialogs</span></code> instead.</li>
+<li><code class="docutils literal"><span class="pre">OC._capabilities</span></code>: use <code class="docutils literal"><span class="pre">OC.getCapabilities()</span></code> instead.</li>
+<li><code class="docutils literal"><span class="pre">OC.addTranslations</span></code>: use <cite>OC.L10N.load</cite> instead.</li>
+<li><code class="docutils literal"><span class="pre">OC.coreApps</span></code>: internal use only, no replacement.</li>
+<li><code class="docutils literal"><span class="pre">OC.getHost</span></code>: use the use <code class="docutils literal"><span class="pre">window.location.host</span></code> directly.</li>
+<li><code class="docutils literal"><span class="pre">OC.getHostName</span></code>: use the use <code class="docutils literal"><span class="pre">window.location.hostname</span></code> directly.</li>
+<li><code class="docutils literal"><span class="pre">OC.getPort</span></code>: use the use <code class="docutils literal"><span class="pre">window.location.port</span></code> directly.</li>
+<li><code class="docutils literal"><span class="pre">OC.getProtocol</span></code>: use the use <code class="docutils literal"><span class="pre">window.location.protocol.split(':')[0]</span></code> directly.</li>
+<li><code class="docutils literal"><span class="pre">OC.fileIsBlacklisted</span></code>: use the regex <code class="docutils literal"><span class="pre">OC.config.blacklist_files_regex</span></code> directly.</li>
+<li><code class="docutils literal"><span class="pre">OC.redirect</span></code>: use <code class="docutils literal"><span class="pre">window.location</span></code> directly.</li>
+<li><code class="docutils literal"><span class="pre">OC.reload</span></code>: use <code class="docutils literal"><span class="pre">window.location.reload()</span></code> directly.</li>
+</ul>
+</div>
+<div class="section" id="removed-jquery-plugins">
+<h4>Removed jQuery plugins<a class="headerlink" href="#removed-jquery-plugins" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">singleselect</span></code>: ship your own if you really need it.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="id4">
+<h3>Back-end changes<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="removed-from-public-namespace">
+<h4>Removed from public namespace<a class="headerlink" href="#removed-from-public-namespace" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">\OCP\App::checkAppEnabled</span></code></li>
+<li><code class="docutils literal"><span class="pre">\OCP\Security\StringUtils</span></code></li>
+<li><code class="docutils literal"><span class="pre">\OCP\Util::callCheck</span></code></li>
+</ul>
+</div>
+<div class="section" id="id5">
+<h4>Deprecations<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">\OCP\AppFramework\Http\EmptyContentSecurityPolicy::allowEvalScript</span></code>: This means apps should no longer use eval in their JavaScript. We aim to forbid this in general in a future version of Nextcloud.</li>
+<li><code class="docutils literal"><span class="pre">\OCP\AppFramework\Utility\IControllerMethodReflector::reflec</span></code>: Will be removed in 18.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="id6">
+<h3>Behavioral changes<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>LDAP: default value for <code class="docutils literal"><span class="pre">ldapGroupMemberAssocAttr</span></code> changed from <code class="docutils literal"><span class="pre">uniqueMember</span></code> to unset. On scripted setups, it has to be set if LDAP groups should be used within Nextcloud.</li>
+<li>Provisioning API: creating users will return the assigned user ID as dataset, as in <code class="docutils literal"><span class="pre">['id'</span> <span class="pre">=&gt;</span> <span class="pre">$userid]</span></code>.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="upgrading-to-nextcloud-16">
+<h2>Upgrading to Nextcloud 16<a class="headerlink" href="#upgrading-to-nextcloud-16" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Critical changes were collected <a class="reference external" href="https://github.com/nextcloud/server/issues/12915">on Github</a>. See the original ticket for links to the pull requests and tickets.</p>
+</div>
+<div class="section" id="id8">
+<h3>Front-end changes<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>CSP: <code class="docutils literal"><span class="pre">frame-anchestor</span></code> set to <code class="docutils literal"><span class="pre">self</span></code> by default.</li>
+</ul>
+<div class="section" id="deprecation-of-shipped-javascript-libraries">
+<h4>Deprecation of shipped JavaScript libraries<a class="headerlink" href="#deprecation-of-shipped-javascript-libraries" title="Permalink to this headline">¶</a></h4>
+<p>The following libraries are considered as deprecated from Nextcloud 16 on. If you use one of those in your app, make sure to ship your own version that is properly bundled with your app.</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">marked</span></code></li>
+<li><code class="docutils literal"><span class="pre">Clipboard</span></code> -&gt; now exported as <code class="docutils literal"><span class="pre">ClipboardJS</span></code> to resolve naming conflicts in Chrome.</li>
+<li>Apps should ship their own javascript dependencies and not depend on server shipping for example jquery etc. Depending on the server dist package is deprecated starting NC16.</li>
+<li><code class="docutils literal"><span class="pre">escapeHTML</span></code></li>
+<li><code class="docutils literal"><span class="pre">formatDate</span></code></li>
+<li><code class="docutils literal"><span class="pre">getURLParameter</span></code></li>
+<li><code class="docutils literal"><span class="pre">humanFileSize</span></code></li>
+<li><code class="docutils literal"><span class="pre">relative_modified_date</span></code></li>
+<li><code class="docutils literal"><span class="pre">select2</span></code></li>
+</ul>
+</div>
+</div>
+<div class="section" id="id9">
+<h3>Back-end changes<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Php7.0 support removed. Php7.1 or higher required.</li>
+<li>PostgreSQL 9.5+ required.</li>
+<li>Autoloading: In the past it was also possible to autoload PHP classes in apps by specify a list of classes and filenames in <cite>appinfo/classpath.php</cite>. This should not be used anymore and also isn&#8217;t used by any app that is publicly available.</li>
+</ul>
+<div class="section" id="removed-apis">
+<h4>Removed APIs<a class="headerlink" href="#removed-apis" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">\OCP\Activity\IManager::getNotificationTypes</span></code></li>
+<li><code class="docutils literal"><span class="pre">\OCP\Activity\IManager::getDefaultTypes</span></code></li>
+<li><code class="docutils literal"><span class="pre">\OCP\Activity\IManager::getTypeIcon</span></code></li>
+<li><code class="docutils literal"><span class="pre">\OCP\Activity\IManager::translate</span></code></li>
+<li><code class="docutils literal"><span class="pre">\OCP\Activity\IManager::getSpecialParameterList</span></code></li>
+<li><code class="docutils literal"><span class="pre">\OCP\Activity\IManager::getGroupParameter</span></code></li>
+<li><code class="docutils literal"><span class="pre">\OCP\Activity\IManager::getNavigation</span></code></li>
+<li><code class="docutils literal"><span class="pre">\OCP\Activity\IManager::isFilterValid</span></code></li>
+<li><code class="docutils literal"><span class="pre">\OCP\Activity\IManager::filterNotificationTypes</span></code></li>
+<li><code class="docutils literal"><span class="pre">\OCP\Activity\IManager::getQueryForFilter</span></code></li>
+<li><code class="docutils literal"><span class="pre">\OCP\Security\ISecureRandom::getLowStrengthGenerator</span></code></li>
+<li><code class="docutils literal"><span class="pre">\OCP\Security\ISecureRandom::getMediumStrengthGenerator</span></code></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="upgrading-to-nextcloud-15">
+<h2>Upgrading to Nextcloud 15<a class="headerlink" href="#upgrading-to-nextcloud-15" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Critical changes were collected <a class="reference external" href="https://github.com/nextcloud/server/issues/15339">on Github</a>. See the original ticket for links to the pull requests and tickets.</p>
+</div>
+<div class="section" id="id11">
+<h3>Front-end changes<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">unsafe-eval</span></code> not allowed anymore by default.</li>
+</ul>
+<div class="section" id="id12">
+<h4>Removed APIs<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">fileDownloadPath()</span></code></li>
+<li><code class="docutils literal"><span class="pre">getScrollBarWidth()</span></code></li>
+<li><code class="docutils literal"><span class="pre">OC.AppConfig.hasKey()</span></code></li>
+<li><code class="docutils literal"><span class="pre">OC.AppConfig.deleteApp()</span></code></li>
+<li><code class="docutils literal"><span class="pre">OC.Share.ShareConfigModel.areAvatarsEnabled()</span></code></li>
+<li><code class="docutils literal"><span class="pre">OC.Util.hasSVGSupport()</span></code></li>
+<li><code class="docutils literal"><span class="pre">OC.Util.replaceSVGIcon()</span></code></li>
+<li><code class="docutils literal"><span class="pre">OC.Util.replaceSVG()</span></code></li>
+<li><code class="docutils literal"><span class="pre">OC.Util.scaleFixForIE8()</span></code></li>
+<li><code class="docutils literal"><span class="pre">OC.Util.isIE8()</span></code></li>
+</ul>
+</div>
+</div>
+<div class="section" id="id13">
+<h3>Back-end changes<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Removed php7.0 support</li>
+</ul>
+<div class="section" id="deprecated-apis">
+<h4>Deprecated APIs<a class="headerlink" href="#deprecated-apis" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">\OCP\Util::linkToPublic</span></code></li>
+<li><code class="docutils literal"><span class="pre">\OCP\Util::recursiveArraySearch</span></code></li>
+</ul>
+</div>
+<div class="section" id="id14">
+<h4>Removed APIs<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">\OCP\Activity\IManager::publishActivity</span></code></li>
+<li><code class="docutils literal"><span class="pre">\OCP\Util::logException</span></code></li>
+<li><code class="docutils literal"><span class="pre">\OCP\Util::mb_substr_replace</span></code></li>
+<li><code class="docutils literal"><span class="pre">\OCP\Util::mb_str_replace</span></code></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="upgrading-to-nextcloud-14">
+<h2>Upgrading to Nextcloud 14<a class="headerlink" href="#upgrading-to-nextcloud-14" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Critical changes were collected <a class="reference external" href="https://github.com/nextcloud/server/issues/7827">on Github</a>. See the original ticket for links to the pull requests and tickets.</p>
+</div>
+<div class="section" id="general">
+<h3>General<a class="headerlink" href="#general" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>php7.0 and php7.1 support added.</li>
+<li>Introduction of type hints for scalar types in public APIs according to existing PHPDoc.</li>
+</ul>
+</div>
+<div class="section" id="id16">
+<h3>Front-end changes<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">OCA.Search</span></code> is now <code class="docutils literal"><span class="pre">OCA.Search.Core</span></code>.</li>
+<li>Overall structure changed.</li>
+<li><code class="docutils literal"><span class="pre">.with-app-sidebar</span></code> not required anymore to open the sidebar only use <cite>disappear</cite> on the sidebar</li>
+<li><code class="docutils literal"><span class="pre">.svg</span></code> not required anymore</li>
+<li><code class="docutils literal"><span class="pre">.with-settings</span></code> not required anymore</li>
+<li><code class="docutils literal"><span class="pre">.with-icon</span></code> not required anymore</li>
+</ul>
+</div>
+<div class="section" id="id17">
+<h3>Back-end changes<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="changed-apis">
+<h4>Changed APIs<a class="headerlink" href="#changed-apis" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">AppFramework\Http\Request::getHeader</span></code> always returns a string (and not null).</li>
+<li><code class="docutils literal"><span class="pre">Security\ICrypto::decrypt</span></code> only accepts strings.</li>
+<li><code class="docutils literal"><span class="pre">\OCP\AppFramework\Utility\ITimeFactory</span></code> is strictly typed.</li>
+<li><code class="docutils literal"><span class="pre">\OCP\IL10N</span></code> is strictly typed.</li>
+<li><code class="docutils literal"><span class="pre">\OCP\Mail</span></code> and the email templates got type hints.</li>
+<li><code class="docutils literal"><span class="pre">\OCP\Authentication\TwoFactorAuth</span></code> got typehints and return type hints.</li>
+<li><code class="docutils literal"><span class="pre">\OCP\Migration\IMigrationStep</span></code> has two new methods.</li>
+<li><code class="docutils literal"><span class="pre">EMailTemplate</span></code> child classes should use the <cite>%$1s</cite> notation for replacements to be future compatible and be able to reuse parameters.</li>
+</ul>
+</div>
+<div class="section" id="id18">
+<h4>Deprecated APIs<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">OCP\Files</span></code></li>
+<li>Setting custom client URLs in a custom <code class="docutils literal"><span class="pre">\OC_Theme</span></code> class. Settings in config.php should be used.</li>
+<li>Log levels in <code class="docutils literal"><span class="pre">OCP\Util</span></code>. Moved to the <code class="docutils literal"><span class="pre">\OCP\ILogger</span></code> interface</li>
+<li><code class="docutils literal"><span class="pre">OCP\AppFramework\Db\Mapper</span></code>. Move to <code class="docutils literal"><span class="pre">\OCP\AppFramework\Db\QBMapper</span></code></li>
+</ul>
+</div>
+<div class="section" id="id19">
+<h4>Removed APIs<a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li>several deprecated functions from <code class="docutils literal"><span class="pre">\OCP\AppFramework/IAppContainer</span></code></li>
+<li><code class="docutils literal"><span class="pre">\OCP\BackgroundJob::registerJob</span></code></li>
+<li><code class="docutils literal"><span class="pre">\OCP\Config</span></code></li>
+<li><code class="docutils literal"><span class="pre">\OCP\Contacts</span></code></li>
+<li><code class="docutils literal"><span class="pre">\OCP\DB</span></code></li>
+<li><code class="docutils literal"><span class="pre">\OCP\Files::tmpFile</span></code></li>
+<li><code class="docutils literal"><span class="pre">\OCP\Files::tmpFolder</span></code></li>
+<li><code class="docutils literal"><span class="pre">\OCP\IHelper</span></code></li>
+<li><code class="docutils literal"><span class="pre">\OCP\ISearch\search</span></code></li>
+<li><code class="docutils literal"><span class="pre">\OCP\JSON</span></code></li>
+<li><code class="docutils literal"><span class="pre">\OCP\Response</span></code></li>
+<li><code class="docutils literal"><span class="pre">\OCP\Share::resolveReshare</span></code></li>
+<li><code class="docutils literal"><span class="pre">\OCP\User::getDisplayNames</span></code></li>
+<li><code class="docutils literal"><span class="pre">\OCP\Util\formatDate</span></code></li>
+<li><code class="docutils literal"><span class="pre">\OCP\Util::generateRandomBytes</span></code></li>
+<li><code class="docutils literal"><span class="pre">\OCP\Util::sendMail</span></code></li>
+<li><code class="docutils literal"><span class="pre">\OCP\Util::encryptedFiles</span></code></li>
+<li><code class="docutils literal"><span class="pre">\OCP\Util::getServerProtocol</span></code></li>
+<li><code class="docutils literal"><span class="pre">\OCP\Util::getServerHost</span></code></li>
+<li><code class="docutils literal"><span class="pre">\OCP\Util::getServerProtocol</span></code></li>
+<li><code class="docutils literal"><span class="pre">\OCP\Util::getRequestUri</span></code></li>
+<li><code class="docutils literal"><span class="pre">\OCP\Util::getScriptName</span></code></li>
+<li><code class="docutils literal"><span class="pre">\OCP\Util::urlgenerator</span></code></li>
+<li>Deprecated <cite>OCP</cite> constants</li>
+<li>Deprecated template functions from OCP</li>
+<li>Some deprecated methods  of <code class="docutils literal"><span class="pre">\OCP\Response</span></code></li>
+<li>HTTPHelper</li>
+</ul>
+</div>
+</div>
+<div class="section" id="id20">
+<h3>Behavioral changes<a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Removed <code class="docutils literal"><span class="pre">--no-app-disable</span></code> from <code class="docutils literal"><span class="pre">occ</span> <span class="pre">upgrade</span></code> command.</li>
+<li><code class="docutils literal"><span class="pre">$fromMailAddress</span></code> won&#8217;t be injected anymore by the DI container.</li>
+<li>Apps that are enabled for groups can now provide public pages, that are available even if a user is not logged in.</li>
+<li>OCS API method <cite>AddUser</cite> <cite>POST:/users</cite> now allow empty password iff email is set and valid.</li>
+<li>Email texts are not automatically escaped anymore in all cases.</li>
+</ul>
+</div>
+<div class="section" id="configuration-changes">
+<h3>Configuration changes<a class="headerlink" href="#configuration-changes" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>When using Swift Objectstore as home storage make sure that to set the <code class="docutils literal"><span class="pre">bucket/container</span></code> parameter.</li>
+<li><code class="docutils literal"><span class="pre">mail_smtpmode</span></code> can no longer be set to <code class="docutils literal"><span class="pre">php</span></code>. As this option is lost with the upgrade of phpmailer.</li>
+</ul>
+</div>
+<div class="section" id="ocs-changes">
+<h3>OCS changes<a class="headerlink" href="#ocs-changes" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="added-apis">
+<h4>Added APIs<a class="headerlink" href="#added-apis" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li>Details endpoint for the user list</li>
+<li>Details endpoint for the groups list</li>
+</ul>
+</div>
+<div class="section" id="id21">
+<h4>Changed APIs<a class="headerlink" href="#id21" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li>OCS API <cite>getGroup</cite> method replaced by <cite>getGroupUsers</cite> #8904</li>
+</ul>
+</div>
+</div>
+<div class="section" id="internal-changes">
+<h3>Internal changes<a class="headerlink" href="#internal-changes" title="Permalink to this headline">¶</a></h3>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Only relevant if you used non-public APIs. Don&#8217;t use them.</p>
+</div>
+<ul class="simple">
+<li>cleanup of <code class="docutils literal"><span class="pre">OC_*</span></code> namespace - we removed quite some classes, methods and constants from our internal namespace.</li>
+<li>Removed <code class="docutils literal"><span class="pre">OC_Group_Backend</span></code></li>
+<li>Removed <code class="docutils literal"><span class="pre">OC_Response::setStatus</span></code> and the constants for status codes</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="bootstrap.html" class="btn btn-neutral float-right" title="Bootstrapping" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="tutorial.html" class="btn btn-neutral float-left" title="Tutorial" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021 Nextcloud GmbH.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/16/developer_manual">16</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/17/developer_manual">17</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/18/developer_manual">18</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/19/developer_manual">19</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/developer_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/developer_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+   
+
+</body>
+</html>

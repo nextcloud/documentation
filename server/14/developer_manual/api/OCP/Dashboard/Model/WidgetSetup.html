@@ -1,0 +1,716 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>WidgetSetup &mdash; Nextcloud 14 Developer Manual 14 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../../../',
+              VERSION:'14',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="WidgetTemplate" href="WidgetTemplate.html" />
+    <link rel="prev" title="IWidgetConfig" href="IWidgetConfig.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html">
+          
+
+          
+            
+            <img src="../../../../_static/logo-white.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../general/index.html">General contributor guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/startapp.html">Create an app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/init.html">Navigation and pre-app configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/info.html">App metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/classloader.html">Classloader</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/request.html">Request lifecycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/routes.html">Routing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/middleware.html">Middleware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/container.html">Container</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/controllers.html">Controllers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/api.html">RESTful API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/templates.html">Templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/js.html">JavaScript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/css.html">CSS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/l10n.html">Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/theming.html">Theming support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/schema.html">Database schema</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/database.html">Database access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/filesystem.html">Filesystem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/appdata.html">AppData</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/users.html">User management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/two-factor-provider.html">Two-factor providers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/hooks.html">Hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/backgroundjobs.html">Background jobs (Cron)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/settings.html">Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/logging.html">Logging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/migrations.html">Migrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/repair.html">Repair steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/publishing.html">App store publishing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/code_signing.html">Code signing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../design/index.html">Design guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../android_library/index.html">Android application development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../client_apis/index.html">Client APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../core/index.html">Core development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bugtracker/index.html">Bugtracker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../commun/index.html">Help and communication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api.html">API Documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">Nextcloud 14 Developer Manual</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../../../api.html">API Documentation</a> &raquo;</li>
+        
+          <li><a href="../../index.html">OCP</a> &raquo;</li>
+        
+          <li><a href="../index.html">Dashboard</a> &raquo;</li>
+        
+          <li><a href="index.html">Model</a> &raquo;</li>
+        
+      <li>WidgetSetup</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/nextcloud/documentation/edit/stable14/developer_manual/api/OCP/Dashboard/Model/WidgetSetup.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="phpdoctorst section" id="namespace-OCP\Dashboard\Model">
+<span id="widgetsetup"></span><h1>WidgetSetup<a class="headerlink" href="#namespace-OCP\Dashboard\Model" title="Permalink to this headline">¶</a></h1>
+<dl class="final class">
+<dt id="OCP\Dashboard\Model\WidgetSetup">
+<em class="property">class </em><code class="descclassname">OCP\Dashboard\Model\</code><code class="descname">WidgetSetup</code><a class="headerlink" href="#OCP\Dashboard\Model\WidgetSetup" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Interface WidgetSetup</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">A widget must create an WidgetSetup object and returns it in the</div>
+<div class="line">IDashboardWidget::getWidgetSetup method.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Dashboard/Model/WidgetSetup.php#L45">lib/public/Dashboard/Model/WidgetSetup.php#45</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Implements:</th><td class="field-body"><code class="xref php php-interface docutils literal"><span class="pre">JsonSerializable</span></code></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<div class="section" id="constants">
+<h2>Constants<a class="headerlink" href="#constants" title="Permalink to this headline">¶</a></h2>
+<dl class="const">
+<dt>
+<code class="descname">SIZE_TYPE_MIN = min</code></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Dashboard/Model/WidgetSetup.php#L46">lib/public/Dashboard/Model/WidgetSetup.php#46</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="const">
+<dt>
+<code class="descname">SIZE_TYPE_MAX = max</code></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Dashboard/Model/WidgetSetup.php#L47">lib/public/Dashboard/Model/WidgetSetup.php#47</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="const">
+<dt>
+<code class="descname">SIZE_TYPE_DEFAULT = default</code></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Dashboard/Model/WidgetSetup.php#L48">lib/public/Dashboard/Model/WidgetSetup.php#48</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h2>
+<dl class="public deprecated method">
+<dt id="OCP\Dashboard\Model\WidgetSetup::getSize">
+<em class="property">public </em><code class="descclassname">OCP\Dashboard\Model\WidgetSetup::</code><code class="descname">getSize</code><span class="sig-paren">(</span><em>$type</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Dashboard\Model\WidgetSetup::getSize" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Get the defined size for a specific type (min, max, default)</div>
+<div class="line">Returns an array:</div>
+<div class="line">[</div>
+<div class="line-block">
+<div class="line">&#8216;width&#8217; =&gt; width,</div>
+<div class="line">&#8216;height&#8217; =&gt; height</div>
+</div>
+<div class="line">]</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Dashboard/Model/WidgetSetup.php#L83">lib/public/Dashboard/Model/WidgetSetup.php#83</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$type</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body"><p class="first">15.0.0</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Deprecated:</th><td class="field-body"><p class="first">20.0.0</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">array</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public deprecated method">
+<dt id="OCP\Dashboard\Model\WidgetSetup::getSizes">
+<em class="property">public </em><code class="descclassname">OCP\Dashboard\Model\WidgetSetup::</code><code class="descname">getSizes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Dashboard\Model\WidgetSetup::getSizes" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Returns all sizes defined for the widget.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Dashboard/Model/WidgetSetup.php#L99">lib/public/Dashboard/Model/WidgetSetup.php#99</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body">15.0.0</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Deprecated:</th><td class="field-body">20.0.0</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">array</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public deprecated method">
+<dt id="OCP\Dashboard\Model\WidgetSetup::addSize">
+<em class="property">public </em><code class="descclassname">OCP\Dashboard\Model\WidgetSetup::</code><code class="descname">addSize</code><span class="sig-paren">(</span><em>$type</em>, <em>$width</em>, <em>$height</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Dashboard\Model\WidgetSetup::addSize" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Add a new size to the setup.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Dashboard/Model/WidgetSetup.php#L115">lib/public/Dashboard/Model/WidgetSetup.php#115</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$type</strong> (string)</li>
+<li><strong>$width</strong> (int)</li>
+<li><strong>$height</strong> (int)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body"><p class="first">15.0.0</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Deprecated:</th><td class="field-body"><p class="first">20.0.0</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#OCP\Dashboard\Model\WidgetSetup" title="OCP\Dashboard\Model\WidgetSetup"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Dashboard\Model\WidgetSetup</span></code></a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public deprecated method">
+<dt id="OCP\Dashboard\Model\WidgetSetup::getMenuEntries">
+<em class="property">public </em><code class="descclassname">OCP\Dashboard\Model\WidgetSetup::</code><code class="descname">getMenuEntries</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Dashboard\Model\WidgetSetup::getMenuEntries" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Returns menu entries.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Dashboard/Model/WidgetSetup.php#L132">lib/public/Dashboard/Model/WidgetSetup.php#132</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body">15.0.0</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Deprecated:</th><td class="field-body">20.0.0</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">array</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public deprecated method">
+<dt id="OCP\Dashboard\Model\WidgetSetup::addMenuEntry">
+<em class="property">public </em><code class="descclassname">OCP\Dashboard\Model\WidgetSetup::</code><code class="descname">addMenuEntry</code><span class="sig-paren">(</span><em>$function</em>, <em>$icon</em>, <em>$text</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Dashboard\Model\WidgetSetup::addMenuEntry" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Add a menu entry to the widget.</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">$function is the Javascript function to be called when clicking the</div>
+<div class="line-block">
+<div class="line">menu entry.</div>
+</div>
+<div class="line">$icon is the css class of the icon.</div>
+<div class="line">$text is the display name of the menu entry.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Dashboard/Model/WidgetSetup.php#L152">lib/public/Dashboard/Model/WidgetSetup.php#152</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$function</strong> (string)</li>
+<li><strong>$icon</strong> (string)</li>
+<li><strong>$text</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body"><p class="first">15.0.0</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Deprecated:</th><td class="field-body"><p class="first">20.0.0</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#OCP\Dashboard\Model\WidgetSetup" title="OCP\Dashboard\Model\WidgetSetup"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Dashboard\Model\WidgetSetup</span></code></a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public deprecated method">
+<dt id="OCP\Dashboard\Model\WidgetSetup::addDelayedJob">
+<em class="property">public </em><code class="descclassname">OCP\Dashboard\Model\WidgetSetup::</code><code class="descname">addDelayedJob</code><span class="sig-paren">(</span><em>$function</em>, <em>$delay</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Dashboard\Model\WidgetSetup::addDelayedJob" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Add a delayed job to the widget.</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">$function is the Javascript function to be called.</div>
+<div class="line">$delay is the time in seconds between each call.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Dashboard/Model/WidgetSetup.php#L177">lib/public/Dashboard/Model/WidgetSetup.php#177</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$function</strong> (string)</li>
+<li><strong>$delay</strong> (int)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body"><p class="first">15.0.0</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Deprecated:</th><td class="field-body"><p class="first">20.0.0</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#OCP\Dashboard\Model\WidgetSetup" title="OCP\Dashboard\Model\WidgetSetup"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Dashboard\Model\WidgetSetup</span></code></a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public deprecated method">
+<dt id="OCP\Dashboard\Model\WidgetSetup::getDelayedJobs">
+<em class="property">public </em><code class="descclassname">OCP\Dashboard\Model\WidgetSetup::</code><code class="descname">getDelayedJobs</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Dashboard\Model\WidgetSetup::getDelayedJobs" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Get delayed jobs.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Dashboard/Model/WidgetSetup.php#L194">lib/public/Dashboard/Model/WidgetSetup.php#194</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body">15.0.0</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Deprecated:</th><td class="field-body">20.0.0</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">array</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public deprecated method">
+<dt id="OCP\Dashboard\Model\WidgetSetup::getPush">
+<em class="property">public </em><code class="descclassname">OCP\Dashboard\Model\WidgetSetup::</code><code class="descname">getPush</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Dashboard\Model\WidgetSetup::getPush" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Get the push function, called when an event is send to the front-end</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Dashboard/Model/WidgetSetup.php#L207">lib/public/Dashboard/Model/WidgetSetup.php#207</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body">15.0.0</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Deprecated:</th><td class="field-body">20.0.0</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">string</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public deprecated method">
+<dt id="OCP\Dashboard\Model\WidgetSetup::setPush">
+<em class="property">public </em><code class="descclassname">OCP\Dashboard\Model\WidgetSetup::</code><code class="descname">setPush</code><span class="sig-paren">(</span><em>$function</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Dashboard\Model\WidgetSetup::setPush" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Set the Javascript function to be called when an event is pushed to the</div>
+<div class="line">frontend.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Dashboard/Model/WidgetSetup.php#L222">lib/public/Dashboard/Model/WidgetSetup.php#222</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$function</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body"><p class="first">15.0.0</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Deprecated:</th><td class="field-body"><p class="first">20.0.0</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#OCP\Dashboard\Model\WidgetSetup" title="OCP\Dashboard\Model\WidgetSetup"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Dashboard\Model\WidgetSetup</span></code></a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public deprecated method">
+<dt id="OCP\Dashboard\Model\WidgetSetup::getDefaultSettings">
+<em class="property">public </em><code class="descclassname">OCP\Dashboard\Model\WidgetSetup::</code><code class="descname">getDefaultSettings</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Dashboard\Model\WidgetSetup::getDefaultSettings" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Returns the default settings for a widget.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Dashboard/Model/WidgetSetup.php#L237">lib/public/Dashboard/Model/WidgetSetup.php#237</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body">15.0.0</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Deprecated:</th><td class="field-body">20.0.0</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">array</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public deprecated method">
+<dt id="OCP\Dashboard\Model\WidgetSetup::setDefaultSettings">
+<em class="property">public </em><code class="descclassname">OCP\Dashboard\Model\WidgetSetup::</code><code class="descname">setDefaultSettings</code><span class="sig-paren">(</span><em>$settings</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Dashboard\Model\WidgetSetup::setDefaultSettings" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Set the default settings for a widget.</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">This method is used by the Dashboard app, using the settings created</div>
+<div class="line">using WidgetSetting</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Dashboard/Model/WidgetSetup.php#L255">lib/public/Dashboard/Model/WidgetSetup.php#255</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$settings</strong> (array)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">See:</th><td class="field-body"><p class="first"><a class="reference internal" href="WidgetSetting.html#OCP\Dashboard\Model\WidgetSetting" title="OCP\Dashboard\Model\WidgetSetting"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Dashboard\Model\WidgetSetting</span></code></a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first">15.0.0</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Deprecated:</th><td class="field-body"><p class="first">20.0.0</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><a class="reference internal" href="#OCP\Dashboard\Model\WidgetSetup" title="OCP\Dashboard\Model\WidgetSetup"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Dashboard\Model\WidgetSetup</span></code></a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public deprecated method">
+<dt id="OCP\Dashboard\Model\WidgetSetup::jsonSerialize">
+<em class="property">public </em><code class="descclassname">OCP\Dashboard\Model\WidgetSetup::</code><code class="descname">jsonSerialize</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\Dashboard\Model\WidgetSetup::jsonSerialize" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/Dashboard/Model/WidgetSetup.php#L268">lib/public/Dashboard/Model/WidgetSetup.php#268</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body">15.0.0</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Deprecated:</th><td class="field-body">20.0.0</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">array</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="WidgetTemplate.html" class="btn btn-neutral float-right" title="WidgetTemplate" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="IWidgetConfig.html" class="btn btn-neutral float-left" title="IWidgetConfig" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021 Nextcloud GmbH.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: 14
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/14/developer_manual">14</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/15/developer_manual">15</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/16/developer_manual">16</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/developer_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/developer_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+   
+
+</body>
+</html>

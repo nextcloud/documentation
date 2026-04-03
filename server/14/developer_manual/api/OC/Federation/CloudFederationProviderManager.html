@@ -1,0 +1,522 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>CloudFederationProviderManager &mdash; Nextcloud 14 Developer Manual 14 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../../',
+              VERSION:'14',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="CloudIdManager" href="CloudIdManager.html" />
+    <link rel="prev" title="CloudId" href="CloudId.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html">
+          
+
+          
+            
+            <img src="../../../_static/logo-white.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../general/index.html">General contributor guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/startapp.html">Create an app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/init.html">Navigation and pre-app configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/info.html">App metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/classloader.html">Classloader</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/request.html">Request lifecycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/routes.html">Routing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/middleware.html">Middleware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/container.html">Container</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/controllers.html">Controllers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/api.html">RESTful API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/templates.html">Templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/js.html">JavaScript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/css.html">CSS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/l10n.html">Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/theming.html">Theming support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/schema.html">Database schema</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/database.html">Database access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/filesystem.html">Filesystem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/appdata.html">AppData</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/users.html">User management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/two-factor-provider.html">Two-factor providers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/hooks.html">Hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/backgroundjobs.html">Background jobs (Cron)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/settings.html">Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/logging.html">Logging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/migrations.html">Migrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/repair.html">Repair steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/publishing.html">App store publishing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/code_signing.html">Code signing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../design/index.html">Design guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../android_library/index.html">Android application development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../client_apis/index.html">Client APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../core/index.html">Core development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../bugtracker/index.html">Bugtracker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../commun/index.html">Help and communication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api.html">API Documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Nextcloud 14 Developer Manual</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../../api.html">API Documentation</a> &raquo;</li>
+        
+          <li><a href="../../index.html">\</a> &raquo;</li>
+        
+          <li><a href="../index.html">OC</a> &raquo;</li>
+        
+          <li><a href="index.html">Federation</a> &raquo;</li>
+        
+      <li>CloudFederationProviderManager</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/nextcloud/documentation/edit/stable14/developer_manual/api/OC/Federation/CloudFederationProviderManager.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="phpdoctorst section" id="namespace-OC\Federation">
+<span id="cloudfederationprovidermanager"></span><h1>CloudFederationProviderManager<a class="headerlink" href="#namespace-OC\Federation" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="OC\Federation\CloudFederationProviderManager">
+<em class="property">class </em><code class="descclassname">OC\Federation\</code><code class="descname">CloudFederationProviderManager</code><a class="headerlink" href="#OC\Federation\CloudFederationProviderManager" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Class Manager</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">Manage Cloud Federation Providers</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Federation/CloudFederationProviderManager.php#L45">lib/private/Federation/CloudFederationProviderManager.php#45</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Implements:</th><td class="field-body"><a class="reference internal" href="../../OCP/Federation/ICloudFederationProviderManager.html#OCP\Federation\ICloudFederationProviderManager" title="OCP\Federation\ICloudFederationProviderManager"><code class="xref php php-interface docutils literal"><span class="pre">OCP\Federation\ICloudFederationProviderManager</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<div class="section" id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h2>
+<dl class="public method">
+<dt id="OC\Federation\CloudFederationProviderManager::__construct">
+<em class="property">public </em><code class="descclassname">OC\Federation\CloudFederationProviderManager::</code><code class="descname">__construct</code><span class="sig-paren">(</span><em>$appManager</em>, <em>$httpClientService</em>, <em>$cloudIdManager</em>, <em>$logger</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Federation\CloudFederationProviderManager::__construct" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">CloudFederationProviderManager constructor.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Federation/CloudFederationProviderManager.php#L75">lib/private/Federation/CloudFederationProviderManager.php#75</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>$appManager</strong> (<a class="reference internal" href="../../OCP/App/IAppManager.html#OCP\App\IAppManager" title="OCP\App\IAppManager"><code class="xref any php php-trait docutils literal"><span class="pre">OCP\App\IAppManager</span></code></a>)</li>
+<li><strong>$httpClientService</strong> (<a class="reference internal" href="../../OCP/Http/Client/IClientService.html#OCP\Http\Client\IClientService" title="OCP\Http\Client\IClientService"><code class="xref any php php-trait docutils literal"><span class="pre">OCP\Http\Client\IClientService</span></code></a>)</li>
+<li><strong>$cloudIdManager</strong> (<a class="reference internal" href="../../OCP/Federation/ICloudIdManager.html#OCP\Federation\ICloudIdManager" title="OCP\Federation\ICloudIdManager"><code class="xref any php php-trait docutils literal"><span class="pre">OCP\Federation\ICloudIdManager</span></code></a>)</li>
+<li><strong>$logger</strong> (<a class="reference internal" href="../../OCP/ILogger.html#OCP\ILogger" title="OCP\ILogger"><code class="xref any php php-trait docutils literal"><span class="pre">OCP\ILogger</span></code></a>)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Federation\CloudFederationProviderManager::addCloudFederationProvider">
+<em class="property">public </em><code class="descclassname">OC\Federation\CloudFederationProviderManager::</code><code class="descname">addCloudFederationProvider</code><span class="sig-paren">(</span><em>$resourceType</em>, <em>$displayName</em>, <em>$callback</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Federation\CloudFederationProviderManager::addCloudFederationProvider" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Registers an callback function which must return an cloud federation provider</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Federation/CloudFederationProviderManager.php#L94">lib/private/Federation/CloudFederationProviderManager.php#94</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>$resourceType</strong> (string)  which resource type does the provider handles</li>
+<li><strong>$displayName</strong> (string)  user facing name of the federated share provider</li>
+<li><strong>$callback</strong> (callable)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Federation\CloudFederationProviderManager::removeCloudFederationProvider">
+<em class="property">public </em><code class="descclassname">OC\Federation\CloudFederationProviderManager::</code><code class="descname">removeCloudFederationProvider</code><span class="sig-paren">(</span><em>$providerId</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Federation\CloudFederationProviderManager::removeCloudFederationProvider" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">remove cloud federation provider</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Federation/CloudFederationProviderManager.php#L107">lib/private/Federation/CloudFederationProviderManager.php#107</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>$providerId</strong> (string)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Federation\CloudFederationProviderManager::getAllCloudFederationProviders">
+<em class="property">public </em><code class="descclassname">OC\Federation\CloudFederationProviderManager::</code><code class="descname">getAllCloudFederationProviders</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Federation\CloudFederationProviderManager::getAllCloudFederationProviders" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">get a list of all cloudFederationProviders</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Federation/CloudFederationProviderManager.php#L116">lib/private/Federation/CloudFederationProviderManager.php#116</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">array [resourceType =&gt; [&#8216;resourceType&#8217; =&gt; $resourceType, &#8216;displayName&#8217; =&gt; $displayName, &#8216;callback&#8217; =&gt; callback]]</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Federation\CloudFederationProviderManager::getCloudFederationProvider">
+<em class="property">public </em><code class="descclassname">OC\Federation\CloudFederationProviderManager::</code><code class="descname">getCloudFederationProvider</code><span class="sig-paren">(</span><em>$resourceType</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Federation\CloudFederationProviderManager::getCloudFederationProvider" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">get a specific cloud federation provider</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Federation/CloudFederationProviderManager.php#L127">lib/private/Federation/CloudFederationProviderManager.php#127</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$resourceType</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference internal" href="../../OCP/Federation/ICloudFederationProvider.html#OCP\Federation\ICloudFederationProvider" title="OCP\Federation\ICloudFederationProvider"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Federation\ICloudFederationProvider</span></code></a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><p class="first last"><a class="reference internal" href="../../OCP/Federation/Exceptions/ProviderDoesNotExistsException.html#OCP\Federation\Exceptions\ProviderDoesNotExistsException" title="OCP\Federation\Exceptions\ProviderDoesNotExistsException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Federation\Exceptions\ProviderDoesNotExistsException</span></code></a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Federation\CloudFederationProviderManager::sendShare">
+<em class="property">public </em><code class="descclassname">OC\Federation\CloudFederationProviderManager::</code><code class="descname">sendShare</code><span class="sig-paren">(</span><em>$share</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Federation\CloudFederationProviderManager::sendShare" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Federation/CloudFederationProviderManager.php#L135">lib/private/Federation/CloudFederationProviderManager.php#135</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Federation\CloudFederationProviderManager::sendNotification">
+<em class="property">public </em><code class="descclassname">OC\Federation\CloudFederationProviderManager::</code><code class="descname">sendNotification</code><span class="sig-paren">(</span><em>$url</em>, <em>$notification</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Federation\CloudFederationProviderManager::sendNotification" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Federation/CloudFederationProviderManager.php#L173">lib/private/Federation/CloudFederationProviderManager.php#173</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$url</strong> (string)</li>
+<li><strong>$notification</strong> (<a class="reference internal" href="../../OCP/Federation/ICloudFederationNotification.html#OCP\Federation\ICloudFederationNotification" title="OCP\Federation\ICloudFederationNotification"><code class="xref any php php-trait docutils literal"><span class="pre">OCP\Federation\ICloudFederationNotification</span></code></a>)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">mixed</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Federation\CloudFederationProviderManager::isReady">
+<em class="property">public </em><code class="descclassname">OC\Federation\CloudFederationProviderManager::</code><code class="descname">isReady</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Federation\CloudFederationProviderManager::isReady" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">check if the new cloud federation API is ready to be used</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Federation/CloudFederationProviderManager.php#L205">lib/private/Federation/CloudFederationProviderManager.php#205</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="protected method">
+<dt id="OC\Federation\CloudFederationProviderManager::getOCMEndPoint">
+<em class="property">protected </em><code class="descclassname">OC\Federation\CloudFederationProviderManager::</code><code class="descname">getOCMEndPoint</code><span class="sig-paren">(</span><em>$url</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Federation\CloudFederationProviderManager::getOCMEndPoint" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">check if server supports the new OCM api and ask for the correct end-point</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Federation/CloudFederationProviderManager.php#L214">lib/private/Federation/CloudFederationProviderManager.php#214</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$url</strong> (string)  full base URL of the cloud server</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">string</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="CloudIdManager.html" class="btn btn-neutral float-right" title="CloudIdManager" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="CloudId.html" class="btn btn-neutral float-left" title="CloudId" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021 Nextcloud GmbH.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: 14
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/14/developer_manual">14</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/15/developer_manual">15</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/16/developer_manual">16</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/developer_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/developer_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+   
+
+</body>
+</html>

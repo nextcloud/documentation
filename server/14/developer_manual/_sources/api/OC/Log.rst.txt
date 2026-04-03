@@ -1,0 +1,329 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+Log
+===
+
+
+.. php:namespace:: OC
+
+.. php:class:: Log
+
+
+	.. rst-class:: phpdoc-description
+	
+		| logging utilities
+		
+		| This is a stand in, this should be replaced by a Psr\\Log\\LoggerInterface
+		| compatible logger\. See https://github\.com/php\-fig/fig\-standards/blob/master/accepted/PSR\-3\-logger\-interface\.md
+		| for the full interface specification\.
+		| 
+		| MonoLog is an example implementing this interface\.
+		
+	
+	:Source:
+		`lib/private/Log.php#57 <https://github.com/nextcloud/server/blob/stable13/lib/private/Log.php#L57>`_
+	
+	:Implements:
+		:php:interface:`OCP\\ILogger` :php:interface:`OCP\\Log\\IDataLogger` 
+	
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $logger, $config=null, $normalizer=null, $registry=null)
+	
+		:Source:
+			`lib/private/Log.php#80 <https://github.com/nextcloud/server/blob/stable13/lib/private/Log.php#L80>`_
+		
+		
+		:Parameters:
+			* **$logger** (:any:`OCP\\Log\\IWriter <OCP\\Log\\IWriter>`)  The logger that should be used
+			* **$config** (:any:`OC\\SystemConfig <OC\\SystemConfig>`)  the system config object
+			* **$normalizer** (:any:`Nextcloud\\LogNormalizer\\Normalizer <Nextcloud\\LogNormalizer\\Normalizer>` | null)  
+			* **$registry** (:any:`OCP\\Support\\CrashReport\\IRegistry <OCP\\Support\\CrashReport\\IRegistry>` | null)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public emergency( $message, $context=\[\])
+	
+		.. rst-class:: phpdoc-description
+		
+			| System is unusable\.
+			
+		
+		:Source:
+			`lib/private/Log.php#103 <https://github.com/nextcloud/server/blob/stable13/lib/private/Log.php#L103>`_
+		
+		
+		:Parameters:
+			* **$message** (string)  
+			* **$context** (array)  
+
+		
+		:Returns: void 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public alert( $message, $context=\[\])
+	
+		.. rst-class:: phpdoc-description
+		
+			| Action must be taken immediately\.
+			
+			| Example: Entire website down, database unavailable, etc\. This should
+			| trigger the SMS alerts and wake you up\.
+			
+		
+		:Source:
+			`lib/private/Log.php#117 <https://github.com/nextcloud/server/blob/stable13/lib/private/Log.php#L117>`_
+		
+		
+		:Parameters:
+			* **$message** (string)  
+			* **$context** (array)  
+
+		
+		:Returns: void 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public critical( $message, $context=\[\])
+	
+		.. rst-class:: phpdoc-description
+		
+			| Critical conditions\.
+			
+			| Example: Application component unavailable, unexpected exception\.
+			
+		
+		:Source:
+			`lib/private/Log.php#130 <https://github.com/nextcloud/server/blob/stable13/lib/private/Log.php#L130>`_
+		
+		
+		:Parameters:
+			* **$message** (string)  
+			* **$context** (array)  
+
+		
+		:Returns: void 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public error( $message, $context=\[\])
+	
+		.. rst-class:: phpdoc-description
+		
+			| Runtime errors that do not require immediate action but should typically
+			| be logged and monitored\.
+			
+		
+		:Source:
+			`lib/private/Log.php#142 <https://github.com/nextcloud/server/blob/stable13/lib/private/Log.php#L142>`_
+		
+		
+		:Parameters:
+			* **$message** (string)  
+			* **$context** (array)  
+
+		
+		:Returns: void 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public warning( $message, $context=\[\])
+	
+		.. rst-class:: phpdoc-description
+		
+			| Exceptional occurrences that are not errors\.
+			
+			| Example: Use of deprecated APIs, poor use of an API, undesirable things
+			| that are not necessarily wrong\.
+			
+		
+		:Source:
+			`lib/private/Log.php#156 <https://github.com/nextcloud/server/blob/stable13/lib/private/Log.php#L156>`_
+		
+		
+		:Parameters:
+			* **$message** (string)  
+			* **$context** (array)  
+
+		
+		:Returns: void 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public notice( $message, $context=\[\])
+	
+		.. rst-class:: phpdoc-description
+		
+			| Normal but significant events\.
+			
+		
+		:Source:
+			`lib/private/Log.php#167 <https://github.com/nextcloud/server/blob/stable13/lib/private/Log.php#L167>`_
+		
+		
+		:Parameters:
+			* **$message** (string)  
+			* **$context** (array)  
+
+		
+		:Returns: void 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public info( $message, $context=\[\])
+	
+		.. rst-class:: phpdoc-description
+		
+			| Interesting events\.
+			
+			| Example: User logs in, SQL logs\.
+			
+		
+		:Source:
+			`lib/private/Log.php#180 <https://github.com/nextcloud/server/blob/stable13/lib/private/Log.php#L180>`_
+		
+		
+		:Parameters:
+			* **$message** (string)  
+			* **$context** (array)  
+
+		
+		:Returns: void 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public debug( $message, $context=\[\])
+	
+		.. rst-class:: phpdoc-description
+		
+			| Detailed debug information\.
+			
+		
+		:Source:
+			`lib/private/Log.php#191 <https://github.com/nextcloud/server/blob/stable13/lib/private/Log.php#L191>`_
+		
+		
+		:Parameters:
+			* **$message** (string)  
+			* **$context** (array)  
+
+		
+		:Returns: void 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public log( $level, $message, $context=\[\])
+	
+		.. rst-class:: phpdoc-description
+		
+			| Logs with an arbitrary level\.
+			
+		
+		:Source:
+			`lib/private/Log.php#204 <https://github.com/nextcloud/server/blob/stable13/lib/private/Log.php#L204>`_
+		
+		
+		:Parameters:
+			* **$level** (int)  
+			* **$message** (string)  
+			* **$context** (array)  
+
+		
+		:Returns: void 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public logException( $exception, $context=\[\])
+	
+		.. rst-class:: phpdoc-description
+		
+			| Logs an exception very detailed
+			
+		
+		:Source:
+			`lib/private/Log.php#313 <https://github.com/nextcloud/server/blob/stable13/lib/private/Log.php#L313>`_
+		
+		
+		:Parameters:
+			* **$exception** (:any:`Exception <Exception>` | :any:`\\Throwable <Throwable>`)  
+			* **$context** (array)  
+
+		
+		:Returns: void 
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public logData( $message, $data, $context=\[\])
+	
+		:Source:
+			`lib/private/Log.php#342 <https://github.com/nextcloud/server/blob/stable13/lib/private/Log.php#L342>`_
+		
+		
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected writeLog( $app, $entry, $level)
+	
+		:Source:
+			`lib/private/Log.php#370 <https://github.com/nextcloud/server/blob/stable13/lib/private/Log.php#L370>`_
+		
+		
+		:Parameters:
+			* **$app** (string)  
+			* **$entry** (string | array)  
+			* **$level** (int)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getLogPath()
+	
+		:Source:
+			`lib/private/Log.php#374 <https://github.com/nextcloud/server/blob/stable13/lib/private/Log.php#L374>`_
+		
+		
+	
+	
+

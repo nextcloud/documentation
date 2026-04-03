@@ -1,0 +1,952 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Installation on Linux &mdash; Nextcloud latest Administration Manual latest documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'latest',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Installation wizard" href="installation_wizard.html" />
+    <link rel="prev" title="Deployment recommendations" href="deployment_recommendations.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../contents.html">
+          
+
+          
+            
+            <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_schedule.html">Maintenance and release schedule</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Installation and server configuration</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="system_requirements.html">System requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deployment_recommendations.html">Deployment recommendations</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Installation on Linux</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#installing-on-windows-virtual-machine">Installing on Windows (virtual machine)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installing-via-snap-packages">Installing via Snap packages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#prerequisites-for-manual-installation">Prerequisites for manual installation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example-installation-on-ubuntu-18-04-lts-server">Example installation on Ubuntu 18.04 LTS server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example-installation-on-centos-7-server">Example installation on CentOS 7 server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#apache-web-server-configuration">Apache Web server configuration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#additional-apache-configurations">Additional Apache configurations</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#pretty-urls">Pretty URLs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#enabling-ssl">Enabling SSL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installation-wizard">Installation wizard</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#selinux-configuration-tips">SELinux configuration tips</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#php-ini-configuration-notes">php.ini configuration notes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#php-fpm-configuration-notes">php-fpm configuration notes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#other-web-servers">Other Web servers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="installation_wizard.html">Installation wizard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command_line_installation.html">Installing from command line</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apps_supported.html">Supported apps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="php_72_installation.html">Installing PHP 7.2 on RHEL 7 and CentOS 7</a></li>
+<li class="toctree-l2"><a class="reference internal" href="selinux_configuration.html">SELinux configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nginx.html">Nginx configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="harden_server.html">Hardening and security guidance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="server_tuning.html">Server tuning</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_server/index.html">Nextcloud configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../apps_management.html">Apps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_user/index.html">User management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_files/index.html">File sharing and management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../file_workflows/index.html">File workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_database/index.html">Database configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_mimetypes/index.html">Mimetypes management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../maintenance/index.html">Maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../issues/index.html">Issues and troubleshooting</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest Administration Manual</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../contents.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Installation and server configuration</a> &raquo;</li>
+        
+      <li>Installation on Linux</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/nextcloud/documentation/edit/master/admin_manual/installation/source_installation.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="installation-on-linux">
+<h1>Installation on Linux<a class="headerlink" href="#installation-on-linux" title="Permalink to this headline">¶</a></h1>
+<p>If there are no packages for your Linux distribution, you have the option to
+install <a class="reference external" href="http://snapcraft.io/docs/core/install/">Snap Packages</a>. See
+<a class="reference internal" href="#snaps-label"><span class="std std-ref">Installing via Snap packages</span></a></p>
+<p>In case you prefer installing from the source tarball, you can setup Nextcloud
+from scratch using a classic LAMP stack (Linux, Apache, MySQL/MariaDB, PHP).
+This document provides a complete walk-through for installing Nextcloud on
+Ubuntu 18.04 LTS Server with Apache and MariaDB, using <a class="reference external" href="https://nextcloud.com/install/">the Nextcloud .tar
+archive</a>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Admins of SELinux-enabled distributions such as CentOS, Fedora, and
+Red Hat Enterprise Linux may need to set new rules to enable installing
+Nextcloud. See <a class="reference internal" href="#selinux-tips-label"><span class="std std-ref">SELinux configuration tips</span></a> for a suggested configuration.</p>
+</div>
+<div class="section" id="installing-on-windows-virtual-machine">
+<span id="vm-label"></span><h2>Installing on Windows (virtual machine)<a class="headerlink" href="#installing-on-windows-virtual-machine" title="Permalink to this headline">¶</a></h2>
+<p>If you are using Windows, the easiest way to get Nextcloud up and running is
+using a virtual machine (VM). There are two options:</p>
+<ul class="simple">
+<li><strong>Enterprise/SME appliance</strong></li>
+</ul>
+<p>Nextcloud GmbH maintains a free appliance built on the
+<a class="reference external" href="https://www.univention.com/products/univention-app-center/app-catalog/nextcloud/">Univention Corporate Server (UCS)</a>
+with easy graphical setup and web-based administration. It includes user
+management via LDAP, can replace an existing Active Directory setup and
+has optional ONLYOFFICE and Collabora Online integration, with many more applications
+available for easy and quick install.</p>
+<p>It can be installed on hardware or run in a virtual machine using VirtualBox,
+VMWare (ESX) and KVM images.</p>
+<p>Download the the Appliance here:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://www.univention.com/products/univention-app-center/app-catalog/nextcloud/">Univention Corporate Server (UCS)</a></li>
+</ul>
+<ul class="simple">
+<li><strong>Home User/SME appliance</strong></li>
+</ul>
+<p>The <a class="reference external" href="https://github.com/nextcloud/vm">Nextcloud VM</a> is maintained by
+<a class="reference external" href="https://www.hanssonit.se/nextcloud-vm/">T&amp;M Hansson IT</a> and several different versions are
+offered. Collabora, OnlyOffice, Full Text Search and other apps can easily be installed with the included scripts which you can choose to run during the first setup, or download them later and run it afterwards. You can find all the currently available automated app installations <a class="reference external" href="https://github.com/nextcloud/vm/tree/master/apps/">on GitHub</a>.</p>
+<p>The VM is made with VMware version 10 and it comes in different sizes and versions:</p>
+<ul class="simple">
+<li>40 GB (VMware, VirtualBox, Hyper-V)</li>
+<li>500 GB (VMware, VirtualBox, Hyper-V)</li>
+<li>1 TB (VMware, VirtualBox, Hyper-V)</li>
+<li>2 TB (VMware &amp; VirtualBox, Hyper-V)</li>
+<li>Custom size? Please <a class="reference external" href="https://www.hanssonit.se/#contact">ask us</a>.</li>
+</ul>
+<p>You can find all the different version <a class="reference external" href="https://shop.hanssonit.se/product-category/virtual-machine/nextcloud-vm/">here</a>.</p>
+<p>For complete instructions and downloads see:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://github.com/nextcloud/vm/">Nextcloud VM (Github)</a></li>
+<li><a class="reference external" href="https://www.hanssonit.se/nextcloud-vm/">Nextcloud VM (T&amp;M Hansson IT)</a></li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">You can install the VM on several different operating systems as long as you can mount OVA, VMDK, or VHD/VHDX VM in your hypervisor. If you are using KVM then you need to install the VM from the scripts on Github. You can follow the <a class="reference external" href="https://github.com/nextcloud/vm#build-your-own-vm-or-install-on-a-vps">instructions in the README</a>.</p>
+</div>
+</div>
+<div class="section" id="installing-via-snap-packages">
+<span id="snaps-label"></span><h2>Installing via Snap packages<a class="headerlink" href="#installing-via-snap-packages" title="Permalink to this headline">¶</a></h2>
+<p>A snap is a zip file containing an application together with its dependencies,
+and a description of how it should safely be run on your system, especially
+the different ways it should talk to other software. Most importantly snaps are
+designed to be secure, sandboxed, containerized applications isolated from the
+underlying system and from other applications.</p>
+<p>To install the Nextcloud Snap Package, run the following command in a terminal:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">snap</span> <span class="n">install</span> <span class="n">nextcloud</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The <a class="reference external" href="http://snapcraft.io/docs/core/">snapd technology</a> is the core
+that powers snaps, and it offers a new way to package, distribute, update and
+run OS components and applications on a Linux system. See more about snaps on
+<a class="reference external" href="http://snapcraft.io/">snapcraft.io</a>.</p>
+</div>
+</div>
+<div class="section" id="prerequisites-for-manual-installation">
+<span id="prerequisites-label"></span><h2>Prerequisites for manual installation<a class="headerlink" href="#prerequisites-for-manual-installation" title="Permalink to this headline">¶</a></h2>
+<p>The Nextcloud .tar archive contains all of the required PHP modules. This
+section lists all required and optional PHP modules.  Consult the <a class="reference external" href="http://php.net/manual/en/extensions.php">PHP manual</a> for more information on modules.
+Your Linux distribution should have packages for all required modules. You can
+check the presence of a module by typing <code class="docutils literal"><span class="pre">php</span> <span class="pre">-m</span> <span class="pre">|</span> <span class="pre">grep</span> <span class="pre">-i</span> <span class="pre">&lt;module_name&gt;</span></code>.
+If you get a result, the module is present.</p>
+<p>Required:</p>
+<ul class="simple">
+<li>PHP (7.2, 7.3 or 7.4)</li>
+<li>PHP module ctype</li>
+<li>PHP module curl</li>
+<li>PHP module dom</li>
+<li>PHP module GD</li>
+<li>PHP module iconv</li>
+<li>PHP module JSON</li>
+<li>PHP module libxml (Linux package libxml2 must be &gt;=2.7.0)</li>
+<li>PHP module mbstring</li>
+<li>PHP module openssl</li>
+<li>PHP module posix</li>
+<li>PHP module session</li>
+<li>PHP module SimpleXML</li>
+<li>PHP module XMLReader</li>
+<li>PHP module XMLWriter</li>
+<li>PHP module zip</li>
+<li>PHP module zlib</li>
+</ul>
+<p>Database connectors (pick the one for your database:)</p>
+<ul class="simple">
+<li>PHP module pdo_sqlite (&gt;= 3, usually not recommended for performance reasons)</li>
+<li>PHP module pdo_mysql (MySQL/MariaDB)</li>
+<li>PHP module pdo_pgsql (requires PostgreSQL &gt;= 9.0)</li>
+</ul>
+<p><em>Recommended</em> packages:</p>
+<ul class="simple">
+<li>PHP module fileinfo (highly recommended, enhances file analysis performance)</li>
+<li>PHP module bz2 (recommended, required for extraction of apps)</li>
+<li>PHP module intl (increases language translation performance and fixes sorting
+of non-ASCII characters)</li>
+</ul>
+<p>Required for specific apps:</p>
+<ul class="simple">
+<li>PHP module ldap (for LDAP integration)</li>
+<li>PHP module smbclient  (SMB/CIFS integration, see
+<a class="reference internal" href="../configuration_files/external_storage/smb.html"><span class="doc">SMB/CIFS</span></a>)</li>
+<li>PHP module ftp (for FTP storage / external user authentication)</li>
+<li>PHP module imap (for external user authentication)</li>
+</ul>
+<p>Recommended for specific apps (<em>optional</em>):</p>
+<ul class="simple">
+<li>PHP module exif (for image rotation in pictures app)</li>
+<li>PHP module gmp (for SFTP storage)</li>
+</ul>
+<p>For enhanced server performance (<em>optional</em>) select one of the following
+memcaches:</p>
+<ul class="simple">
+<li>PHP module apcu (&gt;= 4.0.6)</li>
+<li>PHP module memcached</li>
+<li>PHP module redis (&gt;= 2.2.6, required for Transactional File Locking)</li>
+</ul>
+<p>See <a class="reference internal" href="../configuration_server/caching_configuration.html"><span class="doc">Memory caching</span></a> to learn how to select
+and configure a memcache.</p>
+<p>For preview generation (<em>optional</em>):</p>
+<ul class="simple">
+<li>PHP module imagick</li>
+<li>avconv or ffmpeg</li>
+<li>OpenOffice or LibreOffice</li>
+</ul>
+<p>For command line processing (<em>optional</em>):</p>
+<ul class="simple">
+<li>PHP module pcntl (enables command interruption by pressing <code class="docutils literal"><span class="pre">ctrl-c</span></code>)</li>
+</ul>
+<p>You don’t need the WebDAV module for your Web server (i.e. Apache’s
+<code class="docutils literal"><span class="pre">mod_webdav</span></code>), as Nextcloud has a built-in WebDAV server of its own,
+SabreDAV.
+If <code class="docutils literal"><span class="pre">mod_webdav</span></code> is enabled you must disable it for Nextcloud. (See
+<a class="reference internal" href="#apache-configuration-label"><span class="std std-ref">Apache Web server configuration</span></a> for an example configuration.)</p>
+</div>
+<div class="section" id="example-installation-on-ubuntu-18-04-lts-server">
+<span id="ubuntu-installation-label"></span><h2>Example installation on Ubuntu 18.04 LTS server<a class="headerlink" href="#example-installation-on-ubuntu-18-04-lts-server" title="Permalink to this headline">¶</a></h2>
+<p>On a machine running a pristine Ubuntu 18.04 LTS server, you have three options:</p>
+<p><strong>Bash scripts</strong></p>
+<p>One of the easiest ways of insalling is to use the Nextcloud VM scripts. It&#8217;s basically just two steps:</p>
+<ol class="arabic">
+<li><p class="first">Download the latest <a class="reference external" href="https://github.com/nextcloud/vm/blob/master/nextcloud_install_production.sh/">installation script</a>.</p>
+</li>
+<li><p class="first">Run the script with:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">bash</span> <span class="n">nextcloud_install_production</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>A guided setup will follow and the only thing you have to do it to follow the on screen instructions, when given to you.</p>
+<p><strong>Snap package</strong></p>
+<p>Another very easy way is to install the Nextcloud <a class="reference external" href="http://snapcraft.io/">Snap Package</a>, just run the
+following command in a terminal:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">snap</span> <span class="n">install</span> <span class="n">nextcloud</span>
+</pre></div>
+</div>
+<p><strong>Debian packages</strong></p>
+<p>Or you can use .deb packages to install the required and recommended modules for a typical Nextcloud
+installation, using Apache and MariaDB, by issuing the following commands in a
+terminal:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">apache2</span> <span class="n">mariadb</span><span class="o">-</span><span class="n">server</span> <span class="n">libapache2</span><span class="o">-</span><span class="n">mod</span><span class="o">-</span><span class="n">php7</span><span class="o">.</span><span class="mi">2</span>
+<span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">php7</span><span class="o">.</span><span class="mi">2</span><span class="o">-</span><span class="n">gd</span> <span class="n">php7</span><span class="o">.</span><span class="mi">2</span><span class="o">-</span><span class="n">json</span> <span class="n">php7</span><span class="o">.</span><span class="mi">2</span><span class="o">-</span><span class="n">mysql</span> <span class="n">php7</span><span class="o">.</span><span class="mi">2</span><span class="o">-</span><span class="n">curl</span> <span class="n">php7</span><span class="o">.</span><span class="mi">2</span><span class="o">-</span><span class="n">mbstring</span>
+<span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">php7</span><span class="o">.</span><span class="mi">2</span><span class="o">-</span><span class="n">intl</span> <span class="n">php</span><span class="o">-</span><span class="n">imagick</span> <span class="n">php7</span><span class="o">.</span><span class="mi">2</span><span class="o">-</span><span class="n">xml</span> <span class="n">php7</span><span class="o">.</span><span class="mi">2</span><span class="o">-</span><span class="nb">zip</span>
+</pre></div>
+</div>
+<ul>
+<li><p class="first">This installs the packages for the Nextcloud core system.
+<code class="docutils literal"><span class="pre">libapache2-mod-php7.2</span></code> provides the following PHP extensions:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">bcmath</span> <span class="n">bz2</span> <span class="n">calendar</span> <span class="n">Core</span> <span class="n">ctype</span> <span class="n">date</span> <span class="n">dba</span> <span class="n">dom</span> <span class="n">ereg</span> <span class="n">exif</span> <span class="n">fileinfo</span> <span class="nb">filter</span> <span class="n">ftp</span> <span class="n">gettext</span>
+<span class="nb">hash</span> <span class="n">iconv</span> <span class="n">libxml</span> <span class="n">mhash</span> <span class="n">openssl</span> <span class="n">pcre</span> <span class="n">Phar</span> <span class="n">posix</span> <span class="n">Reflection</span> <span class="n">session</span> <span class="n">shmop</span> <span class="n">SimpleXML</span>
+<span class="n">soap</span> <span class="n">sockets</span> <span class="n">SPL</span> <span class="n">standard</span> <span class="n">sysvmsg</span> <span class="n">sysvsem</span> <span class="n">sysvshm</span> <span class="n">tokenizer</span> <span class="n">wddx</span> <span class="n">xmlreader</span> <span class="n">xmlwriter</span> <span class="n">zlib</span>
+</pre></div>
+</div>
+<p>If you are planning on running additional apps, keep in mind that they might require additional
+packages.  See <a class="reference internal" href="#prerequisites-label"><span class="std std-ref">Prerequisites for manual installation</span></a> for details.</p>
+</li>
+<li><p class="first">At the installation of the MySQL/MariaDB server, you will be prompted to
+create a root password. Be sure to remember your password as you will need it
+during Nextcloud database setup.</p>
+</li>
+</ul>
+<p>Now download the archive of the latest Nextcloud version:</p>
+<ul>
+<li><p class="first">Go to the <a class="reference external" href="https://nextcloud.com/install">Nextcloud Download Page</a>.</p>
+</li>
+<li><p class="first">Go to <strong>Download Nextcloud Server &gt; Download &gt; Archive file for
+server owners</strong> and download either the tar.bz2 or .zip archive.</p>
+</li>
+<li><p class="first">This downloads a file named nextcloud-x.y.z.tar.bz2 or nextcloud-x.y.z.zip
+(where x.y.z is the version number).</p>
+</li>
+<li><p class="first">Download its corresponding checksum file, e.g. nextcloud-x.y.z.tar.bz2.md5,
+or nextcloud-x.y.z.tar.bz2.sha256.</p>
+</li>
+<li><p class="first">Verify the MD5 or SHA256 sum:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">md5sum</span> <span class="o">-</span><span class="n">c</span> <span class="n">nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">bz2</span><span class="o">.</span><span class="n">md5</span> <span class="o">&lt;</span> <span class="n">nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">bz2</span>
+<span class="n">sha256sum</span> <span class="o">-</span><span class="n">c</span> <span class="n">nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">bz2</span><span class="o">.</span><span class="n">sha256</span> <span class="o">&lt;</span> <span class="n">nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">bz2</span>
+<span class="n">md5sum</span>  <span class="o">-</span><span class="n">c</span> <span class="n">nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">.</span><span class="n">zip</span><span class="o">.</span><span class="n">md5</span> <span class="o">&lt;</span> <span class="n">nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">.</span><span class="n">zip</span>
+<span class="n">sha256sum</span>  <span class="o">-</span><span class="n">c</span> <span class="n">nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">.</span><span class="n">zip</span><span class="o">.</span><span class="n">sha256</span> <span class="o">&lt;</span> <span class="n">nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">.</span><span class="n">zip</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">You may also verify the PGP signature:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">download</span><span class="o">.</span><span class="n">nextcloud</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">server</span><span class="o">/</span><span class="n">releases</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">bz2</span><span class="o">.</span><span class="n">asc</span>
+<span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">nextcloud</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">.</span><span class="n">asc</span>
+<span class="n">gpg</span> <span class="o">--</span><span class="kn">import</span> <span class="nn">nextcloud.asc</span>
+<span class="n">gpg</span> <span class="o">--</span><span class="n">verify</span> <span class="n">nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">bz2</span><span class="o">.</span><span class="n">asc</span> <span class="n">nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">bz2</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Now you can extract the archive contents. Run the appropriate unpacking
+command for your archive type:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">tar</span> <span class="o">-</span><span class="n">xjf</span> <span class="n">nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">bz2</span>
+<span class="n">unzip</span> <span class="n">nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">.</span><span class="n">zip</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">This unpacks to a single <code class="docutils literal"><span class="pre">nextcloud</span></code> directory. Copy the Nextcloud directory
+to its final destination. When you are running the Apache HTTP server you may
+safely install Nextcloud in your Apache document root:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cp</span> <span class="o">-</span><span class="n">r</span> <span class="n">nextcloud</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">webserver</span><span class="o">/</span><span class="n">document</span><span class="o">-</span><span class="n">root</span>
+</pre></div>
+</div>
+<p>where <code class="docutils literal"><span class="pre">/path/to/webserver/document-root</span></code> is replaced by the
+document root of your Web server:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cp</span> <span class="o">-</span><span class="n">r</span> <span class="n">nextcloud</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<p>On other HTTP servers it is recommended to install Nextcloud outside of the
+document root.</p>
+</div>
+<div class="section" id="example-installation-on-centos-7-server">
+<span id="centos7-installation-label"></span><h2>Example installation on CentOS 7 server<a class="headerlink" href="#example-installation-on-centos-7-server" title="Permalink to this headline">¶</a></h2>
+<p>In this install tutorial we will be deploying CentOS 7.5, PHP 7.2, MariaDB, Redis as memcache and Nextcloud running on Apache.</p>
+<p>Start off by installing a CentOS 7 minimal install. This should provide a sufficient platform to run a successful Nextcloud instance.</p>
+<p>First install some dependencies you will be needing during installation, but which will also be useful in every day use situations:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">yum</span> <span class="n">install</span> <span class="o">-</span><span class="n">y</span> <span class="n">epel</span><span class="o">-</span><span class="n">release</span> <span class="n">yum</span><span class="o">-</span><span class="n">utils</span> <span class="n">unzip</span> <span class="n">curl</span> <span class="n">wget</span> \
+<span class="n">bash</span><span class="o">-</span><span class="n">completion</span> <span class="n">policycoreutils</span><span class="o">-</span><span class="n">python</span> <span class="n">mlocate</span> <span class="n">bzip2</span>
+</pre></div>
+</div>
+<p>Now make sure your system is up to date:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">yum</span> <span class="n">update</span> <span class="o">-</span><span class="n">y</span>
+</pre></div>
+</div>
+<p><strong>Apache</strong></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">yum</span> <span class="n">install</span> <span class="o">-</span><span class="n">y</span> <span class="n">httpd</span>
+</pre></div>
+</div>
+<p>See <span class="xref std std-ref">apache-web-server-configuration</span> for details.</p>
+<p>Make sure the apache web service is enabled and started:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">systemctl</span> <span class="n">enable</span> <span class="n">httpd</span><span class="o">.</span><span class="n">service</span>
+<span class="n">systemctl</span> <span class="n">start</span> <span class="n">httpd</span><span class="o">.</span><span class="n">service</span>
+</pre></div>
+</div>
+<p><strong>PHP</strong></p>
+<p>Next install the PHP modules needed for this install. Remember, because this is a limited basic install, we only install the neccessary modules, not all of them. If you are making a more complete install, please refer to PHP module list at the top of this page.:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">yum</span> <span class="n">install</span> <span class="o">-</span><span class="n">y</span> <span class="n">centos</span><span class="o">-</span><span class="n">release</span><span class="o">-</span><span class="n">scl</span>
+<span class="n">yum</span> <span class="n">install</span> <span class="o">-</span><span class="n">y</span> <span class="n">rh</span><span class="o">-</span><span class="n">php72</span> <span class="n">rh</span><span class="o">-</span><span class="n">php72</span><span class="o">-</span><span class="n">php</span> <span class="n">rh</span><span class="o">-</span><span class="n">php72</span><span class="o">-</span><span class="n">php</span><span class="o">-</span><span class="n">gd</span> <span class="n">rh</span><span class="o">-</span><span class="n">php72</span><span class="o">-</span><span class="n">php</span><span class="o">-</span><span class="n">mbstring</span> \
+<span class="n">rh</span><span class="o">-</span><span class="n">php72</span><span class="o">-</span><span class="n">php</span><span class="o">-</span><span class="n">intl</span> <span class="n">rh</span><span class="o">-</span><span class="n">php72</span><span class="o">-</span><span class="n">php</span><span class="o">-</span><span class="n">pecl</span><span class="o">-</span><span class="n">apcu</span> <span class="n">rh</span><span class="o">-</span><span class="n">php72</span><span class="o">-</span><span class="n">php</span><span class="o">-</span><span class="n">mysqlnd</span> <span class="n">rh</span><span class="o">-</span><span class="n">php72</span><span class="o">-</span><span class="n">php</span><span class="o">-</span><span class="n">pecl</span><span class="o">-</span><span class="n">redis</span> \
+<span class="n">rh</span><span class="o">-</span><span class="n">php72</span><span class="o">-</span><span class="n">php</span><span class="o">-</span><span class="n">opcache</span> <span class="n">rh</span><span class="o">-</span><span class="n">php72</span><span class="o">-</span><span class="n">php</span><span class="o">-</span><span class="n">imagick</span>
+</pre></div>
+</div>
+<p>Next you will need to create a few symlinks:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ln</span> <span class="o">-</span><span class="n">s</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">rh</span><span class="o">/</span><span class="n">httpd24</span><span class="o">/</span><span class="n">root</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">httpd</span><span class="o">/</span><span class="n">conf</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="n">rh</span><span class="o">-</span><span class="n">php72</span><span class="o">-</span><span class="n">php</span><span class="o">.</span><span class="n">conf</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">httpd</span><span class="o">/</span><span class="n">conf</span><span class="o">.</span><span class="n">d</span><span class="o">/</span>
+<span class="n">ln</span> <span class="o">-</span><span class="n">s</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">rh</span><span class="o">/</span><span class="n">httpd24</span><span class="o">/</span><span class="n">root</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">httpd</span><span class="o">/</span><span class="n">conf</span><span class="o">.</span><span class="n">modules</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="mi">15</span><span class="o">-</span><span class="n">rh</span><span class="o">-</span><span class="n">php72</span><span class="o">-</span><span class="n">php</span><span class="o">.</span><span class="n">conf</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">httpd</span><span class="o">/</span><span class="n">conf</span><span class="o">.</span><span class="n">modules</span><span class="o">.</span><span class="n">d</span><span class="o">/</span>
+<span class="n">ln</span> <span class="o">-</span><span class="n">s</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">rh</span><span class="o">/</span><span class="n">httpd24</span><span class="o">/</span><span class="n">root</span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">httpd</span><span class="o">/</span><span class="n">modules</span><span class="o">/</span><span class="n">librh</span><span class="o">-</span><span class="n">php72</span><span class="o">-</span><span class="n">php7</span><span class="o">.</span><span class="n">so</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">httpd</span><span class="o">/</span><span class="n">modules</span><span class="o">/</span>
+</pre></div>
+</div>
+<p>This next symlink will give you the opportunity to be able to invoke <code class="docutils literal"><span class="pre">php</span></code> from anywhere in terminal, including for <code class="docutils literal"><span class="pre">occ</span></code> commands:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ln</span> <span class="o">-</span><span class="n">s</span> <span class="o">/</span><span class="n">opt</span><span class="o">/</span><span class="n">rh</span><span class="o">/</span><span class="n">rh</span><span class="o">-</span><span class="n">php72</span><span class="o">/</span><span class="n">root</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">php</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">php</span>
+</pre></div>
+</div>
+<p><strong>Database</strong></p>
+<p>As mentioned, we will be using MySQL/MariaDB as our database.:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">yum</span> <span class="n">install</span> <span class="o">-</span><span class="n">y</span> <span class="n">mariadb</span> <span class="n">mariadb</span><span class="o">-</span><span class="n">server</span>
+</pre></div>
+</div>
+<p>Make sure the database service is enabled to start at boot time.:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">systemctl</span> <span class="n">enable</span> <span class="n">mariadb</span><span class="o">.</span><span class="n">service</span>
+<span class="n">systemctl</span> <span class="n">start</span> <span class="n">mariadb</span><span class="o">.</span><span class="n">service</span>
+</pre></div>
+</div>
+<p>After you have done this, make sure you create a database with a username and password so that Nextcloud will have access to it. In the docs, refer to the Database configuration part, specifically about MariaDB. There is a complete write-up on how to setup the database.</p>
+<p><strong>Redis</strong></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">yum</span> <span class="n">install</span> <span class="o">-</span><span class="n">y</span> <span class="n">redis</span>
+<span class="n">systemctl</span> <span class="n">enable</span> <span class="n">redis</span><span class="o">.</span><span class="n">service</span>
+<span class="n">systemctl</span> <span class="n">start</span> <span class="n">redis</span><span class="o">.</span><span class="n">service</span>
+</pre></div>
+</div>
+<p><strong>Installing Nextcloud</strong></p>
+<p>Nearly there, so keep at it, you are doing great!</p>
+<p>Now download the archive of the latest Nextcloud version:</p>
+<ul>
+<li><p class="first">Go to the <a class="reference external" href="https://nextcloud.com/install">Nextcloud Download Page</a>.</p>
+</li>
+<li><p class="first">Go to <strong>Download Nextcloud Server &gt; Download &gt; Archive file for
+server owners</strong> and download either the tar.bz2 or .zip archive.</p>
+</li>
+<li><p class="first">This downloads a file named nextcloud-x.y.z.tar.bz2 or nextcloud-x.y.z.zip
+(where x.y.z is the version number).</p>
+</li>
+<li><p class="first">Download its corresponding checksum file, e.g. nextcloud-x.y.z.tar.bz2.md5,
+or nextcloud-x.y.z.tar.bz2.sha256.</p>
+</li>
+<li><p class="first">Verify the MD5 or SHA256 sum:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">md5sum</span> <span class="o">-</span><span class="n">c</span> <span class="n">nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">bz2</span><span class="o">.</span><span class="n">md5</span> <span class="o">&lt;</span> <span class="n">nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">bz2</span>
+<span class="n">sha256sum</span> <span class="o">-</span><span class="n">c</span> <span class="n">nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">bz2</span><span class="o">.</span><span class="n">sha256</span> <span class="o">&lt;</span> <span class="n">nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">bz2</span>
+<span class="n">md5sum</span>  <span class="o">-</span><span class="n">c</span> <span class="n">nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">.</span><span class="n">zip</span><span class="o">.</span><span class="n">md5</span> <span class="o">&lt;</span> <span class="n">nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">.</span><span class="n">zip</span>
+<span class="n">sha256sum</span>  <span class="o">-</span><span class="n">c</span> <span class="n">nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">.</span><span class="n">zip</span><span class="o">.</span><span class="n">sha256</span> <span class="o">&lt;</span> <span class="n">nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">.</span><span class="n">zip</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">You may also verify the PGP signature:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">download</span><span class="o">.</span><span class="n">nextcloud</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">server</span><span class="o">/</span><span class="n">releases</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">bz2</span><span class="o">.</span><span class="n">asc</span>
+<span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">nextcloud</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">.</span><span class="n">asc</span>
+<span class="n">gpg</span> <span class="o">--</span><span class="kn">import</span> <span class="nn">nextcloud.asc</span>
+<span class="n">gpg</span> <span class="o">--</span><span class="n">verify</span> <span class="n">nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">bz2</span><span class="o">.</span><span class="n">asc</span> <span class="n">nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">bz2</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<p>For the sake of the walk-through, we grabbed the latest version of Nextcloud in the form a zip file, confirmed the download with the above-mentioned command, and now we will extract it:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">unzip</span> <span class="n">nextcloud</span><span class="o">-*.</span><span class="n">zip</span>
+</pre></div>
+</div>
+<p>Copy the content over to the root directory of your webserver. In our case, we are using apache so it will be <code class="docutils literal"><span class="pre">/var/www/html/</span></code>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cp</span> <span class="o">-</span><span class="n">R</span> <span class="n">nextcloud</span><span class="o">/</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">html</span><span class="o">/</span>
+</pre></div>
+</div>
+<p>During the install process, no data folder is created, so we will create one manually to help with the installation wizard:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">html</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">data</span>
+</pre></div>
+</div>
+<p>Make sure that apache has read and write access to the whole nextcloud folder:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">chown</span> <span class="o">-</span><span class="n">R</span> <span class="n">apache</span><span class="p">:</span><span class="n">apache</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">html</span><span class="o">/</span><span class="n">nextcloud</span>
+</pre></div>
+</div>
+<p>Restart apache:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">systemctl</span> <span class="n">restart</span> <span class="n">httpd</span><span class="o">.</span><span class="n">service</span>
+</pre></div>
+</div>
+<p>Create a firewall rule for access to apache:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">firewall</span><span class="o">-</span><span class="n">cmd</span> <span class="o">--</span><span class="n">zone</span><span class="o">=</span><span class="n">public</span> <span class="o">--</span><span class="n">add</span><span class="o">-</span><span class="n">service</span><span class="o">=</span><span class="n">http</span> <span class="o">--</span><span class="n">permanent</span>
+<span class="n">firewall</span><span class="o">-</span><span class="n">cmd</span> <span class="o">--</span><span class="n">reload</span>
+</pre></div>
+</div>
+<p><strong>SELinux</strong></p>
+<p>Again, there is an extensive write-up done on SELinux which can be found at <a class="reference internal" href="selinux_configuration.html"><span class="doc">SELinux configuration</span></a>, so if you are using SELinux in Enforcing mode, please run the commands suggested on that page.
+The following commands only refers to this tutorial:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">semanage</span> <span class="n">fcontext</span> <span class="o">-</span><span class="n">a</span> <span class="o">-</span><span class="n">t</span> <span class="n">httpd_sys_rw_content_t</span> <span class="s1">&#39;/var/www/html/nextcloud/data(/.*)?&#39;</span>
+<span class="n">semanage</span> <span class="n">fcontext</span> <span class="o">-</span><span class="n">a</span> <span class="o">-</span><span class="n">t</span> <span class="n">httpd_sys_rw_content_t</span> <span class="s1">&#39;/var/www/html/nextcloud/config(/.*)?&#39;</span>
+<span class="n">semanage</span> <span class="n">fcontext</span> <span class="o">-</span><span class="n">a</span> <span class="o">-</span><span class="n">t</span> <span class="n">httpd_sys_rw_content_t</span> <span class="s1">&#39;/var/www/html/nextcloud/apps(/.*)?&#39;</span>
+<span class="n">semanage</span> <span class="n">fcontext</span> <span class="o">-</span><span class="n">a</span> <span class="o">-</span><span class="n">t</span> <span class="n">httpd_sys_rw_content_t</span> <span class="s1">&#39;/var/www/html/nextcloud/.htaccess&#39;</span>
+<span class="n">semanage</span> <span class="n">fcontext</span> <span class="o">-</span><span class="n">a</span> <span class="o">-</span><span class="n">t</span> <span class="n">httpd_sys_rw_content_t</span> <span class="s1">&#39;/var/www/html/nextcloud/.user.ini&#39;</span>
+<span class="n">semanage</span> <span class="n">fcontext</span> <span class="o">-</span><span class="n">a</span> <span class="o">-</span><span class="n">t</span> <span class="n">httpd_sys_rw_content_t</span> <span class="s1">&#39;/var/www/html/nextcloud/3rdparty/aws/aws-sdk-php/src/data/logs(/.*)?&#39;</span>
+
+<span class="n">restorecon</span> <span class="o">-</span><span class="n">R</span> <span class="s1">&#39;/var/www/html/nextcloud/&#39;</span>
+
+<span class="n">setsebool</span> <span class="o">-</span><span class="n">P</span> <span class="n">httpd_can_network_connect</span> <span class="n">on</span>
+</pre></div>
+</div>
+<p>If you need more SELinux configs, refer to the above-mentioned URL, return to this tutorial.</p>
+<p>Once done with with SELinux, please head over to <code class="docutils literal"><span class="pre">http://your.server.com/nextcloud</span></code> and follow the steps as found <a class="reference internal" href="installation_wizard.html"><span class="doc">Installation wizard</span></a>, where it will explain to you exactly how to proceed with the final part of the install, which is done as admin user through your web browser.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If you use this tutorial, and you see warnings in the web browser after installation about <code class="docutils literal"><span class="pre">OPcache</span></code> not being enabled or configured correctly, you need to make the suggested changes in <code class="docutils literal"><span class="pre">/etc/opt/rh/rh-php72/php.d/10-opcache.ini</span></code> for the errors to disappear. These warnings will be on the Admin page, under Basic settings.</p>
+</div>
+<p>Because we used <code class="docutils literal"><span class="pre">Redis</span></code> as a memcache, you will need a config similar to the following example in <code class="docutils literal"><span class="pre">/var/www/html/nextcloud/config/config.php</span></code> which is auto-generated when you run the online installation wizard mentioned earlier.</p>
+<p>Example config:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="s1">&#39;memcache.distributed&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;\OC\Memcache\Redis&#39;</span><span class="p">,</span>
+<span class="s1">&#39;memcache.locking&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;\OC\Memcache\Redis&#39;</span><span class="p">,</span>
+<span class="s1">&#39;memcache.local&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;\OC\Memcache\APCu&#39;</span><span class="p">,</span>
+<span class="s1">&#39;redis&#39;</span> <span class="o">=&gt;</span> <span class="n">array</span><span class="p">(</span>
+  <span class="s1">&#39;host&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;localhost&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;port&#39;</span> <span class="o">=&gt;</span> <span class="mi">6379</span><span class="p">,</span>
+<span class="p">),</span>
+</pre></div>
+</div>
+<p>Remember, this tutorial is only for a basic setup of Nextcloud on CentOS 7, with PHP 7.2. If you are going to use more features like LDAP or Single Sign On, you will need additional PHP modules as well as extra configurations. So please visit the rest of the Admin manual, <a class="reference internal" href="../index.html"><span class="doc">Introduction</span></a>, for detailed descriptions on how to get this done.</p>
+</div>
+<div class="section" id="apache-web-server-configuration">
+<span id="apache-configuration-label"></span><h2>Apache Web server configuration<a class="headerlink" href="#apache-web-server-configuration" title="Permalink to this headline">¶</a></h2>
+<p>On Debian, Ubuntu, and their derivatives, Apache installs with a useful
+configuration so all you have to do is create a
+<code class="file docutils literal"><span class="pre">/etc/apache2/sites-available/nextcloud.conf</span></code> file with these lines in
+it, replacing the <strong>Directory</strong> and other filepaths with your own filepaths:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Alias</span> <span class="o">/</span><span class="n">nextcloud</span> <span class="s2">&quot;/var/www/nextcloud/&quot;</span>
+
+<span class="o">&lt;</span><span class="n">Directory</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/&gt;</span>
+  <span class="n">Require</span> <span class="nb">all</span> <span class="n">granted</span>
+  <span class="n">AllowOverride</span> <span class="n">All</span>
+  <span class="n">Options</span> <span class="n">FollowSymLinks</span> <span class="n">MultiViews</span>
+
+  <span class="o">&lt;</span><span class="n">IfModule</span> <span class="n">mod_dav</span><span class="o">.</span><span class="n">c</span><span class="o">&gt;</span>
+    <span class="n">Dav</span> <span class="n">off</span>
+  <span class="o">&lt;/</span><span class="n">IfModule</span><span class="o">&gt;</span>
+
+<span class="o">&lt;/</span><span class="n">Directory</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>Then enable the newly created site:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">a2ensite</span> <span class="n">nextcloud</span><span class="o">.</span><span class="n">conf</span>
+</pre></div>
+</div>
+<p>On CentOS/RHEL, create a virtualhost <code class="file docutils literal"><span class="pre">/etc/httpd/conf.d/nextcloud.conf</span></code> and add the following content to it:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">VirtualHost</span> <span class="o">*</span><span class="p">:</span><span class="mi">80</span><span class="o">&gt;</span>
+  <span class="n">DocumentRoot</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span>
+  <span class="n">ServerName</span>  <span class="n">your</span><span class="o">.</span><span class="n">server</span><span class="o">.</span><span class="n">com</span>
+
+  <span class="o">&lt;</span><span class="n">Directory</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/&gt;</span>
+    <span class="n">Require</span> <span class="nb">all</span> <span class="n">granted</span>
+    <span class="n">AllowOverride</span> <span class="n">All</span>
+    <span class="n">Options</span> <span class="n">FollowSymLinks</span> <span class="n">MultiViews</span>
+
+    <span class="o">&lt;</span><span class="n">IfModule</span> <span class="n">mod_dav</span><span class="o">.</span><span class="n">c</span><span class="o">&gt;</span>
+      <span class="n">Dav</span> <span class="n">off</span>
+    <span class="o">&lt;/</span><span class="n">IfModule</span><span class="o">&gt;</span>
+
+  <span class="o">&lt;/</span><span class="n">Directory</span><span class="o">&gt;</span>
+<span class="o">&lt;/</span><span class="n">VirtualHost</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<div class="section" id="additional-apache-configurations">
+<h3>Additional Apache configurations<a class="headerlink" href="#additional-apache-configurations" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p class="first">For Nextcloud to work correctly, we need the module <code class="docutils literal"><span class="pre">mod_rewrite</span></code>. Enable
+it by running:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">a2enmod</span> <span class="n">rewrite</span>
+</pre></div>
+</div>
+<p>Additional recommended modules are <code class="docutils literal"><span class="pre">mod_headers</span></code>, <code class="docutils literal"><span class="pre">mod_env</span></code>, <code class="docutils literal"><span class="pre">mod_dir</span></code> and <code class="docutils literal"><span class="pre">mod_mime</span></code>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">a2enmod</span> <span class="n">headers</span>
+<span class="n">a2enmod</span> <span class="n">env</span>
+<span class="n">a2enmod</span> <span class="nb">dir</span>
+<span class="n">a2enmod</span> <span class="n">mime</span>
+</pre></div>
+</div>
+<p>If you&#8217;re running <code class="docutils literal"><span class="pre">mod_fcgi</span></code> instead of the standard <code class="docutils literal"><span class="pre">mod_php</span></code> also enable:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">a2enmod</span> <span class="n">setenvif</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">You must disable any server-configured authentication for Nextcloud, as it
+uses Basic authentication internally for DAV services. If you have turned on
+authentication on a parent folder (via e.g. an <code class="docutils literal"><span class="pre">AuthType</span> <span class="pre">Basic</span></code>
+directive), you can turn off the authentication specifically for the
+Nextcloud entry. Following the above example configuration file, add the
+following line in the <code class="docutils literal"><span class="pre">&lt;Directory&gt;</span></code> section:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Satisfy</span> <span class="n">Any</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">When using SSL, take special note of the ServerName. You should specify one
+in the server configuration, as well as in the CommonName field of the
+certificate. If you want your Nextcloud to be reachable via the internet,
+then set both of these to the domain you want to reach your Nextcloud server.</p>
+</li>
+<li><p class="first">Now restart Apache:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">service</span> <span class="n">apache2</span> <span class="n">restart</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">If you&#8217;re running Nextcloud in a subdirectory and want to use CalDAV or
+CardDAV clients make sure you have configured the correct
+<a class="reference internal" href="../issues/general_troubleshooting.html#service-discovery-label"><span class="std std-ref">Service discovery</span></a> URLs.</p>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="pretty-urls">
+<span id="pretty-urls-label"></span><h2>Pretty URLs<a class="headerlink" href="#pretty-urls" title="Permalink to this headline">¶</a></h2>
+<p>Pretty URLs remove the <code class="docutils literal"><span class="pre">index.php</span></code>-part in all Nextcloud URLs, for example
+in sharing links like <code class="docutils literal"><span class="pre">https://example.org/nextcloud/index.php/s/Sv1b7krAUqmF8QQ</span></code>,
+making URLs shorter and thus prettier.</p>
+<p><code class="docutils literal"><span class="pre">mod_env</span></code> and <code class="docutils literal"><span class="pre">mod_rewrite</span></code> must be installed on your webserver and the <code class="file docutils literal"><span class="pre">.htaccess</span></code>
+must be writable by the HTTP user. Then you can set in the <code class="file docutils literal"><span class="pre">config.php</span></code> two variables:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="s1">&#39;overwrite.cli.url&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;https://example.org/nextcloud&#39;</span><span class="p">,</span>
+<span class="s1">&#39;htaccess.RewriteBase&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/nextcloud&#39;</span><span class="p">,</span>
+</pre></div>
+</div>
+<p>if your setup is available on <code class="docutils literal"><span class="pre">https://example.org/nextcloud</span></code> or:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="s1">&#39;overwrite.cli.url&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;https://example.org/&#39;</span><span class="p">,</span>
+<span class="s1">&#39;htaccess.RewriteBase&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/&#39;</span><span class="p">,</span>
+</pre></div>
+</div>
+<p>if it isn&#8217;t installed in a subfolder. Finally run this occ-command to update
+your .htaccess file:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">occ</span> <span class="n">maintenance</span><span class="p">:</span><span class="n">update</span><span class="p">:</span><span class="n">htaccess</span>
+</pre></div>
+</div>
+<p>After each update, these changes are automatically applied to the <code class="docutils literal"><span class="pre">.htaccess</span></code>-file.</p>
+</div>
+<div class="section" id="enabling-ssl">
+<span id="enabling-ssl-label"></span><h2>Enabling SSL<a class="headerlink" href="#enabling-ssl" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">You can use Nextcloud over plain HTTP, but we strongly encourage you
+to use SSL/TLS to encrypt all of your server traffic, and to protect
+user&#8217;s logins and data in transit.</p>
+</div>
+<p>Apache installed under Ubuntu comes already set-up with a simple
+self-signed certificate. All you have to do is to enable the ssl module and
+the default site. Open a terminal and run:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">a2enmod</span> <span class="n">ssl</span>
+<span class="n">a2ensite</span> <span class="n">default</span><span class="o">-</span><span class="n">ssl</span>
+<span class="n">service</span> <span class="n">apache2</span> <span class="n">reload</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Self-signed certificates have their drawbacks - especially when you
+plan to make your Nextcloud server publicly accessible. You might
+want to consider getting a certificate signed by a commercial signing
+authority. Check with your domain name registrar or hosting service
+for good deals on commercial certificates.</p>
+</div>
+</div>
+<div class="section" id="installation-wizard">
+<span id="installation-wizard-label"></span><h2>Installation wizard<a class="headerlink" href="#installation-wizard" title="Permalink to this headline">¶</a></h2>
+<p>After restarting Apache you must complete your installation by running either
+the graphical Installation Wizard, or on the command line with the <code class="docutils literal"><span class="pre">occ</span></code>
+command. To enable this, change the ownership on your Nextcloud directories to
+your HTTP user:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">chown</span> <span class="o">-</span><span class="n">R</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span><span class="p">:</span><span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Admins of SELinux-enabled distributions may need to write new SELinux
+rules to complete their Nextcloud installation; see
+<a class="reference internal" href="#selinux-tips-label"><span class="std std-ref">SELinux configuration tips</span></a>.</p>
+</div>
+<p>To use <code class="docutils literal"><span class="pre">occ</span></code> see <a class="reference internal" href="command_line_installation.html"><span class="doc">Installing from command line</span></a>.</p>
+<p>To use the graphical Installation Wizard see <a class="reference internal" href="installation_wizard.html"><span class="doc">Installation wizard</span></a>.</p>
+</div>
+<div class="section" id="selinux-configuration-tips">
+<span id="selinux-tips-label"></span><h2>SELinux configuration tips<a class="headerlink" href="#selinux-configuration-tips" title="Permalink to this headline">¶</a></h2>
+<p>See <a class="reference internal" href="selinux_configuration.html"><span class="doc">SELinux configuration</span></a> for a suggested configuration for
+SELinux-enabled distributions such as Fedora and CentOS.</p>
+</div>
+<div class="section" id="php-ini-configuration-notes">
+<span id="php-ini-tips-label"></span><h2>php.ini configuration notes<a class="headerlink" href="#php-ini-configuration-notes" title="Permalink to this headline">¶</a></h2>
+<p>Keep in mind that changes to <code class="docutils literal"><span class="pre">php.ini</span></code> may have to be configured on more than one
+ini file. This can be the case, for example, for the <code class="docutils literal"><span class="pre">date.timezone</span></code> setting.</p>
+<p><strong>php.ini - used by the Web server:</strong></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>  <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">php</span><span class="o">/</span><span class="mf">7.2</span><span class="o">/</span><span class="n">apache2</span><span class="o">/</span><span class="n">php</span><span class="o">.</span><span class="n">ini</span>
+<span class="ow">or</span>
+  <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">php</span><span class="o">/</span><span class="mf">7.2</span><span class="o">/</span><span class="n">fpm</span><span class="o">/</span><span class="n">php</span><span class="o">.</span><span class="n">ini</span>
+<span class="ow">or</span> <span class="o">...</span>
+</pre></div>
+</div>
+<p><strong>php.ini - used by the php-cli and so by Nextcloud CRON jobs:</strong></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">php</span><span class="o">/</span><span class="mf">7.2</span><span class="o">/</span><span class="n">cli</span><span class="o">/</span><span class="n">php</span><span class="o">.</span><span class="n">ini</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Path names have to be set in respect of the installed PHP
+(&gt;= 7.0, 7.1, 7.2 or 7.3) as applicable.</p>
+</div>
+</div>
+<div class="section" id="php-fpm-configuration-notes">
+<span id="php-fpm-tips-label"></span><h2>php-fpm configuration notes<a class="headerlink" href="#php-fpm-configuration-notes" title="Permalink to this headline">¶</a></h2>
+<p><strong>System environment variables</strong></p>
+<p>When you are using <code class="docutils literal"><span class="pre">php-fpm</span></code>, system environment variables like
+PATH, TMP or others are not automatically populated in the same way as
+when using <code class="docutils literal"><span class="pre">php-cli</span></code>. A PHP call like <code class="docutils literal"><span class="pre">getenv('PATH');</span></code> can therefore
+return an empty result. So you may need to manually configure environment
+variables in the appropropriate <code class="docutils literal"><span class="pre">php-fpm</span></code> ini/config file.</p>
+<p>Here are some example root paths for these ini/config files:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="50%" />
+<col width="50%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td>Debian/Ubuntu/Mint</td>
+<td>CentOS/Red Hat/Fedora</td>
+</tr>
+<tr class="row-even"><td><code class="docutils literal"><span class="pre">/etc/php/7.2/fpm/</span></code></td>
+<td><code class="docutils literal"><span class="pre">/etc/php-fpm.d/</span></code></td>
+</tr>
+</tbody>
+</table>
+<p>In both examples, the ini/config file is called <code class="docutils literal"><span class="pre">www.conf</span></code>, and depending on
+the distro version or customizations you have made, it may be in a subdirectory such as <code class="docutils literal"><span class="pre">pool.d</span></code>.</p>
+<p>Usually, you will find some or all of the environment variables
+already in the file, but commented out like this:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>;env[HOSTNAME] = $HOSTNAME
+;env[PATH] = /usr/local/bin:/usr/bin:/bin
+;env[TMP] = /tmp
+;env[TMPDIR] = /tmp
+;env[TEMP] = /tmp
+</pre></div>
+</div>
+<p>Uncomment the appropriate existing entries. Then run <code class="docutils literal"><span class="pre">printenv</span> <span class="pre">PATH</span></code> to
+confirm your paths, for example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ printenv PATH
+/home/user/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:
+/sbin:/bin:/
+</pre></div>
+</div>
+<p>If any of your system environment variables are not present in the file then
+you must add them.</p>
+<p>Alternatively it is possible to use the environment variables of your system by modifying:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">php</span><span class="o">/</span><span class="mf">7.2</span><span class="o">/</span><span class="n">fpm</span><span class="o">/</span><span class="n">pool</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="n">www</span><span class="o">.</span><span class="n">conf</span>
+</pre></div>
+</div>
+<p>and uncommenting the line:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">clear_env</span> <span class="o">=</span> <span class="n">no</span>
+</pre></div>
+</div>
+<p>When you are using shared hosting or a control panel to manage your <a class="reference external" href="https://github.com/nextcloud/vm">Nextcloud VM</a>
+or server, the configuration files are almost
+certain to be located somewhere else, for security and flexibility reasons, so
+check your documentation for the correct locations.</p>
+<p>Please keep in mind that it is possible to create different settings for
+<code class="docutils literal"><span class="pre">php-cli</span></code> and <code class="docutils literal"><span class="pre">php-fpm</span></code>, and for different domains and Web sites.
+The best way to check your settings is with <a class="reference internal" href="../issues/general_troubleshooting.html#label-phpinfo"><span class="std std-ref">PHP version and information</span></a>.</p>
+<p><strong>Maximum upload size</strong></p>
+<p>If you want to increase the maximum upload size, you will also have to modify
+your <code class="docutils literal"><span class="pre">php-fpm</span></code> configuration and increase the <code class="docutils literal"><span class="pre">upload_max_filesize</span></code> and
+<code class="docutils literal"><span class="pre">post_max_size</span></code> values. You will need to restart <code class="docutils literal"><span class="pre">php5-fpm</span></code> and your HTTP
+server in order for these changes to be applied.</p>
+<p><strong>.htaccess notes for Apache</strong></p>
+<p>Nextcloud comes with its own <code class="docutils literal"><span class="pre">nextcloud/.htaccess</span></code> file. Because <code class="docutils literal"><span class="pre">php-fpm</span></code>
+can&#8217;t read PHP settings in <code class="docutils literal"><span class="pre">.htaccess</span></code> these settings and permissions must
+be set in the <code class="docutils literal"><span class="pre">nextcloud/.user.ini</span></code> file.</p>
+</div>
+<div class="section" id="other-web-servers">
+<span id="other-http-servers-label"></span><h2>Other Web servers<a class="headerlink" href="#other-web-servers" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><a class="reference internal" href="nginx.html"><span class="doc">Nginx configuration</span></a></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="installation_wizard.html" class="btn btn-neutral float-right" title="Installation wizard" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="deployment_recommendations.html" class="btn btn-neutral float-left" title="Deployment recommendations" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021 Nextcloud GmbH.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/16/admin_manual">16</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/17/admin_manual">17</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/18/admin_manual">18</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/admin_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/admin_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+   
+
+</body>
+</html>

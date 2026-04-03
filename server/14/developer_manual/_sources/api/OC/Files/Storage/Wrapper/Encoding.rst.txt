@@ -1,0 +1,799 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+Encoding
+========
+
+
+.. php:namespace:: OC\Files\Storage\Wrapper
+
+.. php:class:: Encoding
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Encoding wrapper that deals with file names that use unsupported encodings like NFD\.
+		
+		| When applied and a UTF\-8 path name was given, the wrapper will first attempt to access
+		| the actual given name and then try its NFD form\.
+		
+	
+	:Source:
+		`lib/private/Files/Storage/Wrapper/Encoding.php#41 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Encoding.php#L41>`_
+	
+	:Parent:
+		:php:class:`OC\\Files\\Storage\\Wrapper\\Wrapper`
+	
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $parameters)
+	
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Encoding.php#51 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Encoding.php#L51>`_
+		
+		
+		:Parameters:
+			* **$parameters** (array)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public mkdir( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| see https://www\.php\.net/manual/en/function\.mkdir\.php
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Encoding.php#135 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Encoding.php#L135>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public rmdir( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| see https://www\.php\.net/manual/en/function\.rmdir\.php
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Encoding.php#150 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Encoding.php#L150>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public opendir( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| see https://www\.php\.net/manual/en/function\.opendir\.php
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Encoding.php#164 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Encoding.php#L164>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: resource | bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public is_dir( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| see https://www\.php\.net/manual/en/function\.is\_dir\.php
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Encoding.php#174 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Encoding.php#L174>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public is_file( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| see https://www\.php\.net/manual/en/function\.is\_file\.php
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Encoding.php#184 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Encoding.php#L184>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public stat( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| see https://www\.php\.net/manual/en/function\.stat\.php
+			| only the following keys are required in the result: size and mtime
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Encoding.php#195 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Encoding.php#L195>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: array | bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public filetype( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| see https://www\.php\.net/manual/en/function\.filetype\.php
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Encoding.php#205 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Encoding.php#L205>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: string | bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public filesize( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| see https://www\.php\.net/manual/en/function\.filesize\.php
+			| The result for filesize when called on a folder is required to be 0
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Encoding.php#216 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Encoding.php#L216>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: int | bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isCreatable( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| check if a file can be created in $path
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Encoding.php#226 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Encoding.php#L226>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isReadable( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| check if a file can be read
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Encoding.php#236 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Encoding.php#L236>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isUpdatable( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| check if a file can be written to
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Encoding.php#246 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Encoding.php#L246>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isDeletable( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| check if a file can be deleted
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Encoding.php#256 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Encoding.php#L256>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isSharable( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| check if a file can be shared
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Encoding.php#266 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Encoding.php#L266>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getPermissions( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get the full permissions of a path\.
+			
+			| Should return a combination of the PERMISSION\_ constants defined in lib/public/constants\.php
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Encoding.php#277 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Encoding.php#L277>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: int 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public file_exists( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| see https://www\.php\.net/manual/en/function\.file\_exists\.php
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Encoding.php#287 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Encoding.php#L287>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public filemtime( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| see https://www\.php\.net/manual/en/function\.filemtime\.php
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Encoding.php#297 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Encoding.php#L297>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: int | bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public file_get_contents( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| see https://www\.php\.net/manual/en/function\.file\_get\_contents\.php
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Encoding.php#307 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Encoding.php#L307>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: string | bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public file_put_contents( $path, $data)
+	
+		.. rst-class:: phpdoc-description
+		
+			| see https://www\.php\.net/manual/en/function\.file\_put\_contents\.php
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Encoding.php#318 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Encoding.php#L318>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+			* **$data** (mixed)  
+
+		
+		:Returns: int | bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public unlink( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| see https://www\.php\.net/manual/en/function\.unlink\.php
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Encoding.php#328 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Encoding.php#L328>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public rename( $path1, $path2)
+	
+		.. rst-class:: phpdoc-description
+		
+			| see https://www\.php\.net/manual/en/function\.rename\.php
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Encoding.php#343 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Encoding.php#L343>`_
+		
+		
+		:Parameters:
+			* **$path1** (string)  
+			* **$path2** (string)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public copy( $path1, $path2)
+	
+		.. rst-class:: phpdoc-description
+		
+			| see https://www\.php\.net/manual/en/function\.copy\.php
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Encoding.php#355 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Encoding.php#L355>`_
+		
+		
+		:Parameters:
+			* **$path1** (string)  
+			* **$path2** (string)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public fopen( $path, $mode)
+	
+		.. rst-class:: phpdoc-description
+		
+			| see https://www\.php\.net/manual/en/function\.fopen\.php
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Encoding.php#366 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Encoding.php#L366>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+			* **$mode** (string)  
+
+		
+		:Returns: resource | bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getMimeType( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get the mimetype for a file or folder
+			| The mimetype for a folder is required to be "httpd/unix\-directory"
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Encoding.php#381 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Encoding.php#L381>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: string | bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public hash( $type, $path, $raw=false)
+	
+		.. rst-class:: phpdoc-description
+		
+			| see https://www\.php\.net/manual/en/function\.hash\.php
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Encoding.php#393 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Encoding.php#L393>`_
+		
+		
+		:Parameters:
+			* **$type** (string)  
+			* **$path** (string)  
+			* **$raw** (bool)  
+
+		
+		:Returns: string | bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public free_space( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| see https://www\.php\.net/manual/en/function\.free\_space\.php
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Encoding.php#403 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Encoding.php#L403>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: int | bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public search( $query)
+	
+		.. rst-class:: phpdoc-description
+		
+			| search for occurrences of $query in file names
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Encoding.php#413 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Encoding.php#L413>`_
+		
+		
+		:Parameters:
+			* **$query** (string)  
+
+		
+		:Returns: array | bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public touch( $path, $mtime=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| see https://www\.php\.net/manual/en/function\.touch\.php
+			| If the backend does not support the operation, false should be returned
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Encoding.php#425 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Encoding.php#L425>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+			* **$mtime** (int)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getLocalFile( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get the path to a local version of the file\.
+			
+			| The local version of the file can be temporary and doesn\'t have to be persistent across requests
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Encoding.php#436 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Encoding.php#L436>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: string | bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public hasUpdated( $path, $time)
+	
+		.. rst-class:: phpdoc-description
+		
+			| check if a file or folder has been updated since $time
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Encoding.php#450 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Encoding.php#L450>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+			* **$time** (int)  
+
+		
+		:Returns: bool hasUpdated for folders should return at least true if a file inside the folder is add, removed or renamed\.
+			returning true for other changes in the folder is optional
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getCache( $path="", $storage=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get a cache instance for the storage
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Encoding.php#461 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Encoding.php#L461>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: :any:`\\OC\\Files\\Cache\\Cache <OC\\Files\\Cache\\Cache>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getScanner( $path="", $storage=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get a scanner instance for the storage
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Encoding.php#475 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Encoding.php#L475>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: :any:`\\OC\\Files\\Cache\\Scanner <OC\\Files\\Cache\\Scanner>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getETag( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get the ETag for a file or folder
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Encoding.php#488 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Encoding.php#L488>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: string | bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public copyFromStorage( $sourceStorage, $sourceInternalPath, $targetInternalPath)
+	
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Encoding.php#498 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Encoding.php#L498>`_
+		
+		
+		:Parameters:
+			* **$sourceStorage** (:any:`OCP\\Files\\Storage\\IStorage <OCP\\Files\\Storage\\IStorage>`)  
+			* **$sourceInternalPath** (string)  
+			* **$targetInternalPath** (string)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public moveFromStorage( $sourceStorage, $sourceInternalPath, $targetInternalPath)
+	
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Encoding.php#516 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Encoding.php#L516>`_
+		
+		
+		:Parameters:
+			* **$sourceStorage** (:any:`OCP\\Files\\Storage\\IStorage <OCP\\Files\\Storage\\IStorage>`)  
+			* **$sourceInternalPath** (string)  
+			* **$targetInternalPath** (string)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getMetaData( $path)
+	
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Encoding.php#534 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Encoding.php#L534>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getDirectoryContent( $directory)
+	
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Encoding.php#538 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Encoding.php#L538>`_
+		
+		
+	
+	
+

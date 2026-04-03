@@ -1,0 +1,77 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IStorageFactory
+===============
+
+
+.. php:namespace:: OCP\Files\Storage
+
+.. php:interface:: IStorageFactory
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Creates storage instances and manages and applies storage wrappers
+		
+	
+	:Implemented by:
+		:php:class:`OC\\Files\\Storage\\StorageFactory` 
+	
+	
+	:Source:
+		`lib/public/Files/Storage/IStorageFactory.php#34 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Storage/IStorageFactory.php#L34>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public addStorageWrapper( $wrapperName, $callback)
+	
+		.. rst-class:: phpdoc-description
+		
+			| allow modifier storage behaviour by adding wrappers around storages
+			
+			| $callback should be a function of type \(string $mountPoint, Storage $storage\) =\> Storage
+			
+		
+		:Source:
+			`lib/public/Files/Storage/IStorageFactory.php#46 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Storage/IStorageFactory.php#L46>`_
+		
+		
+		:Parameters:
+			* **$wrapperName** (string)  
+			* **$callback** (callable)  
+
+		
+		:Returns: bool true if the wrapper was added, false if there was already a wrapper with this
+			name registered
+		
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getInstance( $mountPoint, $class, $arguments)
+	
+		:Source:
+			`lib/public/Files/Storage/IStorageFactory.php#55 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Storage/IStorageFactory.php#L55>`_
+		
+		
+		:Parameters:
+			* **$mountPoint** (:any:`OCP\\Files\\Mount\\IMountPoint <OCP\\Files\\Mount\\IMountPoint>`)  
+			* **$class** (string)  
+			* **$arguments** (array)  
+
+		
+		:Returns: :any:`\\OCP\\Files\\Storage <OCP\\Files\\Storage>` 
+		:Since: 8.0.0 
+	
+	
+

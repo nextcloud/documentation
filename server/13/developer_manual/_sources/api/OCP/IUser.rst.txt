@@ -1,0 +1,435 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IUser
+=====
+
+
+.. php:namespace:: OCP
+
+.. php:interface:: IUser
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Interface IUser
+		
+	
+	:Implemented by:
+		:php:class:`OC\\User\\User` 
+	
+	
+	:Source:
+		`lib/public/IUser.php#36 <https://github.com/nextcloud/server/blob/stable13/lib/public/IUser.php#L36>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public getUID()
+	
+		.. rst-class:: phpdoc-description
+		
+			| get the user id
+			
+		
+		:Source:
+			`lib/public/IUser.php#44 <https://github.com/nextcloud/server/blob/stable13/lib/public/IUser.php#L44>`_
+		
+		
+		:Returns: string 
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getDisplayName()
+	
+		.. rst-class:: phpdoc-description
+		
+			| get the display name for the user, if no specific display name is set it will fallback to the user id
+			
+		
+		:Source:
+			`lib/public/IUser.php#52 <https://github.com/nextcloud/server/blob/stable13/lib/public/IUser.php#L52>`_
+		
+		
+		:Returns: string 
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setDisplayName( $displayName)
+	
+		.. rst-class:: phpdoc-description
+		
+			| set the display name for the user
+			
+		
+		:Source:
+			`lib/public/IUser.php#61 <https://github.com/nextcloud/server/blob/stable13/lib/public/IUser.php#L61>`_
+		
+		
+		:Parameters:
+			* **$displayName** (string)  
+
+		
+		:Returns: bool 
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getLastLogin()
+	
+		.. rst-class:: phpdoc-description
+		
+			| returns the timestamp of the user\'s last login or 0 if the user did never
+			| login
+			
+		
+		:Source:
+			`lib/public/IUser.php#70 <https://github.com/nextcloud/server/blob/stable13/lib/public/IUser.php#L70>`_
+		
+		
+		:Returns: int 
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public updateLastLoginTimestamp()
+	
+		.. rst-class:: phpdoc-description
+		
+			| updates the timestamp of the most recent login of this user
+			
+		
+		:Source:
+			`lib/public/IUser.php#76 <https://github.com/nextcloud/server/blob/stable13/lib/public/IUser.php#L76>`_
+		
+		
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public delete()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Delete the user
+			
+		
+		:Source:
+			`lib/public/IUser.php#84 <https://github.com/nextcloud/server/blob/stable13/lib/public/IUser.php#L84>`_
+		
+		
+		:Returns: bool 
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setPassword( $password, $recoveryPassword=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set the password of the user
+			
+		
+		:Source:
+			`lib/public/IUser.php#94 <https://github.com/nextcloud/server/blob/stable13/lib/public/IUser.php#L94>`_
+		
+		
+		:Parameters:
+			* **$password** (string)  
+			* **$recoveryPassword** (string)  for the encryption app to reset encryption keys
+
+		
+		:Returns: bool 
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getHome()
+	
+		.. rst-class:: phpdoc-description
+		
+			| get the users home folder to mount
+			
+		
+		:Source:
+			`lib/public/IUser.php#102 <https://github.com/nextcloud/server/blob/stable13/lib/public/IUser.php#L102>`_
+		
+		
+		:Returns: string 
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getBackendClassName()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the name of the backend class the user is connected with
+			
+		
+		:Source:
+			`lib/public/IUser.php#110 <https://github.com/nextcloud/server/blob/stable13/lib/public/IUser.php#L110>`_
+		
+		
+		:Returns: string 
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getBackend()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the backend for the current user object
+			
+		
+		:Source:
+			`lib/public/IUser.php#118 <https://github.com/nextcloud/server/blob/stable13/lib/public/IUser.php#L118>`_
+		
+		
+		:Returns: :any:`\\OCP\\UserInterface <OCP\\UserInterface>` 
+		:Since: 15.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public canChangeAvatar()
+	
+		.. rst-class:: phpdoc-description
+		
+			| check if the backend allows the user to change his avatar on Personal page
+			
+		
+		:Source:
+			`lib/public/IUser.php#126 <https://github.com/nextcloud/server/blob/stable13/lib/public/IUser.php#L126>`_
+		
+		
+		:Returns: bool 
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public canChangePassword()
+	
+		.. rst-class:: phpdoc-description
+		
+			| check if the backend supports changing passwords
+			
+		
+		:Source:
+			`lib/public/IUser.php#134 <https://github.com/nextcloud/server/blob/stable13/lib/public/IUser.php#L134>`_
+		
+		
+		:Returns: bool 
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public canChangeDisplayName()
+	
+		.. rst-class:: phpdoc-description
+		
+			| check if the backend supports changing display names
+			
+		
+		:Source:
+			`lib/public/IUser.php#142 <https://github.com/nextcloud/server/blob/stable13/lib/public/IUser.php#L142>`_
+		
+		
+		:Returns: bool 
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isEnabled()
+	
+		.. rst-class:: phpdoc-description
+		
+			| check if the user is enabled
+			
+		
+		:Source:
+			`lib/public/IUser.php#150 <https://github.com/nextcloud/server/blob/stable13/lib/public/IUser.php#L150>`_
+		
+		
+		:Returns: bool 
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setEnabled( $enabled=true)
+	
+		.. rst-class:: phpdoc-description
+		
+			| set the enabled status for the user
+			
+		
+		:Source:
+			`lib/public/IUser.php#158 <https://github.com/nextcloud/server/blob/stable13/lib/public/IUser.php#L158>`_
+		
+		
+		:Parameters:
+			* **$enabled** (bool)  
+
+		
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getEMailAddress()
+	
+		.. rst-class:: phpdoc-description
+		
+			| get the users email address
+			
+		
+		:Source:
+			`lib/public/IUser.php#166 <https://github.com/nextcloud/server/blob/stable13/lib/public/IUser.php#L166>`_
+		
+		
+		:Returns: string | null 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getAvatarImage( $size)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get the avatar image if it exists
+			
+		
+		:Source:
+			`lib/public/IUser.php#175 <https://github.com/nextcloud/server/blob/stable13/lib/public/IUser.php#L175>`_
+		
+		
+		:Parameters:
+			* **$size** (int)  
+
+		
+		:Returns: :any:`\\OCP\\IImage <OCP\\IImage>` | null 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getCloudId()
+	
+		.. rst-class:: phpdoc-description
+		
+			| get the federation cloud id
+			
+		
+		:Source:
+			`lib/public/IUser.php#183 <https://github.com/nextcloud/server/blob/stable13/lib/public/IUser.php#L183>`_
+		
+		
+		:Returns: string 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setEMailAddress( $mailAddress)
+	
+		.. rst-class:: phpdoc-description
+		
+			| set the email address of the user
+			
+		
+		:Source:
+			`lib/public/IUser.php#192 <https://github.com/nextcloud/server/blob/stable13/lib/public/IUser.php#L192>`_
+		
+		
+		:Parameters:
+			* **$mailAddress** (string | null)  
+
+		
+		:Returns: void 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getQuota()
+	
+		.. rst-class:: phpdoc-description
+		
+			| get the users\' quota in human readable form\. If a specific quota is not
+			| set for the user, the default value is returned\. If a default setting
+			| was not set otherwise, it is return as \'none\', i\.e\. quota is not limited\.
+			
+		
+		:Source:
+			`lib/public/IUser.php#202 <https://github.com/nextcloud/server/blob/stable13/lib/public/IUser.php#L202>`_
+		
+		
+		:Returns: string 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setQuota( $quota)
+	
+		.. rst-class:: phpdoc-description
+		
+			| set the users\' quota
+			
+		
+		:Source:
+			`lib/public/IUser.php#211 <https://github.com/nextcloud/server/blob/stable13/lib/public/IUser.php#L211>`_
+		
+		
+		:Parameters:
+			* **$quota** (string)  
+
+		
+		:Returns: void 
+		:Since: 9.0.0 
+	
+	
+

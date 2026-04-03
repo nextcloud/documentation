@@ -1,0 +1,137 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+Session
+=======
+
+
+.. php:namespace:: OC\Session
+
+.. rst-class::  abstract
+
+.. php:class:: Session
+
+
+	:Source:
+		`lib/private/Session/Session.php#33 <https://github.com/nextcloud/server/blob/stable13/lib/private/Session/Session.php#L33>`_
+	
+	:Implements:
+		:php:interface:`ArrayAccess` :php:interface:`OCP\\ISession` 
+	
+
+Properties
+----------
+
+.. php:attr:: protected static sessionClosed
+
+	:Source:
+		`lib/private/Session/Session.php#38 <https://github.com/nextcloud/server/blob/stable13/lib/private/Session/Session.php#L38>`_
+	
+	:Type: bool 
+
+
+Methods
+-------
+
+.. rst-class:: public abstract
+
+	.. php:method:: public abstract __construct( $name)
+	
+		.. rst-class:: phpdoc-description
+		
+			| $name serves as a namespace for the session keys
+			
+		
+		:Source:
+			`lib/private/Session/Session.php#45 <https://github.com/nextcloud/server/blob/stable13/lib/private/Session/Session.php#L45>`_
+		
+		
+		:Parameters:
+			* **$name** (string)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public offsetExists( $offset)
+	
+		:Source:
+			`lib/private/Session/Session.php#51 <https://github.com/nextcloud/server/blob/stable13/lib/private/Session/Session.php#L51>`_
+		
+		
+		:Parameters:
+			* **$offset** (mixed)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public offsetGet( $offset)
+	
+		:Source:
+			`lib/private/Session/Session.php#59 <https://github.com/nextcloud/server/blob/stable13/lib/private/Session/Session.php#L59>`_
+		
+		
+		:Parameters:
+			* **$offset** (mixed)  
+
+		
+		:Returns: mixed 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public offsetSet( $offset, $value)
+	
+		:Source:
+			`lib/private/Session/Session.php#67 <https://github.com/nextcloud/server/blob/stable13/lib/private/Session/Session.php#L67>`_
+		
+		
+		:Parameters:
+			* **$offset** (mixed)  
+			* **$value** (mixed)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public offsetUnset( $offset)
+	
+		:Source:
+			`lib/private/Session/Session.php#74 <https://github.com/nextcloud/server/blob/stable13/lib/private/Session/Session.php#L74>`_
+		
+		
+		:Parameters:
+			* **$offset** (mixed)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public close()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Close the session and release the lock
+			
+		
+		:Source:
+			`lib/private/Session/Session.php#81 <https://github.com/nextcloud/server/blob/stable13/lib/private/Session/Session.php#L81>`_
+		
+		
+	
+	
+

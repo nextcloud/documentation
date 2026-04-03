@@ -1,0 +1,166 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+OC\_DB
+======
+
+
+.. php:class:: OC_DB
+
+
+	.. rst-class:: phpdoc-description
+	
+		| This class manages the access to the database\. It basically is a wrapper for
+		| Doctrine with some adaptions\.
+		
+	
+	:Source:
+		`lib/private/legacy/OC_DB.php#37 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_DB.php#L37>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public static deprecated
+
+	.. php:method:: public static prepare( $query, $limit=\\null, $offset=\\null, $isManipulation=\\null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Prepare a SQL query
+			
+		
+		:Source:
+			`lib/private/legacy/OC_DB.php#51 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_DB.php#L51>`_
+		
+		
+		:Parameters:
+			* **$query** (string)  Query string
+			* **$limit** (int | null)  
+			* **$offset** (int | null)  
+			* **$isManipulation** (bool | null)  
+
+		
+		:Throws: :any:`\\OC\\DatabaseException <OC\\DatabaseException>` 
+		:Returns: :any:`\\OC\_DB\_StatementWrapper <OC\_DB\_StatementWrapper>` prepared SQL query
+		:Deprecated: 21.0.0 Please use \\OCP\\IDBConnection::getQueryBuilder\(\) instead
+			
+			SQL query via Doctrine prepare\(\), needs to be execute\(\)\'d\!
+		
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static isManipulation( $sql)
+	
+		.. rst-class:: phpdoc-description
+		
+			| tries to guess the type of statement based on the first 10 characters
+			| the current check allows some whitespace but does not work with IF EXISTS or other more complex statements
+			
+		
+		:Source:
+			`lib/private/legacy/OC_DB.php#76 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_DB.php#L76>`_
+		
+		
+		:Parameters:
+			* **$sql** (string)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public static deprecated
+
+	.. php:method:: public static executeAudited( $stmt, $parameters=\[\])
+	
+		.. rst-class:: phpdoc-description
+		
+			| execute a prepared statement, on error write log and throw exception
+			
+		
+		:Source:
+			`lib/private/legacy/OC_DB.php#111 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_DB.php#L111>`_
+		
+		
+		:Parameters:
+			* **$stmt** (mixed)  OC_DB_StatementWrapper,
+			  an array with 'sql' and optionally 'limit' and 'offset' keys
+			.. or a simple sql query string
+			* **$parameters** (array)  
+
+		
+		:Returns: :any:`\\OC\_DB\_StatementWrapper <OC\_DB\_StatementWrapper>` 
+		:Throws: :any:`\\OC\\DatabaseException <OC\\DatabaseException>` 
+		:Deprecated: 21.0.0 Please use \\OCP\\IDBConnection::getQueryBuilder\(\) instead
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static raiseExceptionOnError( $result, $message=\\null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| check if a result is an error and throws an exception, works with \\Doctrine\\DBAL\\Exception
+			
+		
+		:Source:
+			`lib/private/legacy/OC_DB.php#158 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_DB.php#L158>`_
+		
+		
+		:Parameters:
+			* **$result** (mixed)  
+			* **$message** (string)  
+
+		
+		:Returns: void 
+		:Throws: :any:`\\OC\\DatabaseException <OC\\DatabaseException>` 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static getErrorMessage()
+	
+		.. rst-class:: phpdoc-description
+		
+			| returns the error code and message as a string for logging
+			| works with DoctrineException
+			
+		
+		:Source:
+			`lib/private/legacy/OC_DB.php#174 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_DB.php#L174>`_
+		
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static tableExists( $table)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Checks if a table exists in the database \- the database prefix will be prepended
+			
+		
+		:Source:
+			`lib/private/legacy/OC_DB.php#186 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_DB.php#L186>`_
+		
+		
+		:Parameters:
+			* **$table** (string)  
+
+		
+		:Returns: bool 
+		:Throws: :any:`\\OC\\DatabaseException <OC\\DatabaseException>` 
+	
+	
+

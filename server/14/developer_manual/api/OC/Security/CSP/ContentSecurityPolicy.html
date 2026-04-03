@@ -1,0 +1,854 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>ContentSecurityPolicy &mdash; Nextcloud 14 Developer Manual 14 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../../../',
+              VERSION:'14',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="ContentSecurityPolicyNonceManager" href="ContentSecurityPolicyNonceManager.html" />
+    <link rel="prev" title="CSP" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html">
+          
+
+          
+            
+            <img src="../../../../_static/logo-white.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../general/index.html">General contributor guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/startapp.html">Create an app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/init.html">Navigation and pre-app configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/info.html">App metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/classloader.html">Classloader</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/request.html">Request lifecycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/routes.html">Routing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/middleware.html">Middleware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/container.html">Container</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/controllers.html">Controllers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/api.html">RESTful API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/templates.html">Templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/js.html">JavaScript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/css.html">CSS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/l10n.html">Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/theming.html">Theming support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/schema.html">Database schema</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/database.html">Database access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/filesystem.html">Filesystem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/appdata.html">AppData</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/users.html">User management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/two-factor-provider.html">Two-factor providers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/hooks.html">Hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/backgroundjobs.html">Background jobs (Cron)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/settings.html">Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/logging.html">Logging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/migrations.html">Migrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/repair.html">Repair steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/publishing.html">App store publishing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/code_signing.html">Code signing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../design/index.html">Design guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../android_library/index.html">Android application development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../client_apis/index.html">Client APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../core/index.html">Core development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bugtracker/index.html">Bugtracker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../commun/index.html">Help and communication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api.html">API Documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">Nextcloud 14 Developer Manual</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../../../api.html">API Documentation</a> &raquo;</li>
+        
+          <li><a href="../../../index.html">\</a> &raquo;</li>
+        
+          <li><a href="../../index.html">OC</a> &raquo;</li>
+        
+          <li><a href="../index.html">Security</a> &raquo;</li>
+        
+          <li><a href="index.html">CSP</a> &raquo;</li>
+        
+      <li>ContentSecurityPolicy</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/nextcloud/documentation/edit/stable14/developer_manual/api/OC/Security/CSP/ContentSecurityPolicy.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="phpdoctorst section" id="namespace-OC\Security\CSP">
+<span id="contentsecuritypolicy"></span><h1>ContentSecurityPolicy<a class="headerlink" href="#namespace-OC\Security\CSP" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="OC\Security\CSP\ContentSecurityPolicy">
+<em class="property">class </em><code class="descclassname">OC\Security\CSP\</code><code class="descname">ContentSecurityPolicy</code><a class="headerlink" href="#OC\Security\CSP\ContentSecurityPolicy" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Class ContentSecurityPolicy extends the public class and adds getter and setters.</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">This is necessary since we don&#8217;t want to expose the setters and getters to the</div>
+<div class="line">public API.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Security/CSP/ContentSecurityPolicy.php#L37">lib/private/Security/CSP/ContentSecurityPolicy.php#37</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parent:</th><td class="field-body"><a class="reference internal" href="../../../OCP/AppFramework/Http/ContentSecurityPolicy.html#OCP\AppFramework\Http\ContentSecurityPolicy" title="OCP\AppFramework\Http\ContentSecurityPolicy"><code class="xref php php-class docutils literal"><span class="pre">OCP\AppFramework\Http\ContentSecurityPolicy</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<div class="section" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h2>
+<dl class="public method">
+<dt id="OC\Security\CSP\ContentSecurityPolicy::isInlineScriptAllowed">
+<em class="property">public </em><code class="descclassname">OC\Security\CSP\ContentSecurityPolicy::</code><code class="descname">isInlineScriptAllowed</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Security\CSP\ContentSecurityPolicy::isInlineScriptAllowed" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Security/CSP/ContentSecurityPolicy.php#L41">lib/private/Security/CSP/ContentSecurityPolicy.php#41</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Security\CSP\ContentSecurityPolicy::setInlineScriptAllowed">
+<em class="property">public </em><code class="descclassname">OC\Security\CSP\ContentSecurityPolicy::</code><code class="descname">setInlineScriptAllowed</code><span class="sig-paren">(</span><em>$inlineScriptAllowed</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Security\CSP\ContentSecurityPolicy::setInlineScriptAllowed" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Security/CSP/ContentSecurityPolicy.php#L48">lib/private/Security/CSP/ContentSecurityPolicy.php#48</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>$inlineScriptAllowed</strong> (bool)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Security\CSP\ContentSecurityPolicy::isEvalScriptAllowed">
+<em class="property">public </em><code class="descclassname">OC\Security\CSP\ContentSecurityPolicy::</code><code class="descname">isEvalScriptAllowed</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Security\CSP\ContentSecurityPolicy::isEvalScriptAllowed" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Security/CSP/ContentSecurityPolicy.php#L55">lib/private/Security/CSP/ContentSecurityPolicy.php#55</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public deprecated method">
+<dt id="OC\Security\CSP\ContentSecurityPolicy::setEvalScriptAllowed">
+<em class="property">public </em><code class="descclassname">OC\Security\CSP\ContentSecurityPolicy::</code><code class="descname">setEvalScriptAllowed</code><span class="sig-paren">(</span><em>$evalScriptAllowed</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Security\CSP\ContentSecurityPolicy::setEvalScriptAllowed" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Security/CSP/ContentSecurityPolicy.php#L64">lib/private/Security/CSP/ContentSecurityPolicy.php#64</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$evalScriptAllowed</strong> (bool)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Deprecated:</th><td class="field-body"><p class="first last">17.0.0 Unsafe eval should not be used anymore.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Security\CSP\ContentSecurityPolicy::getAllowedScriptDomains">
+<em class="property">public </em><code class="descclassname">OC\Security\CSP\ContentSecurityPolicy::</code><code class="descname">getAllowedScriptDomains</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Security\CSP\ContentSecurityPolicy::getAllowedScriptDomains" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Security/CSP/ContentSecurityPolicy.php#L71">lib/private/Security/CSP/ContentSecurityPolicy.php#71</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">array</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Security\CSP\ContentSecurityPolicy::setAllowedScriptDomains">
+<em class="property">public </em><code class="descclassname">OC\Security\CSP\ContentSecurityPolicy::</code><code class="descname">setAllowedScriptDomains</code><span class="sig-paren">(</span><em>$allowedScriptDomains</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Security\CSP\ContentSecurityPolicy::setAllowedScriptDomains" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Security/CSP/ContentSecurityPolicy.php#L78">lib/private/Security/CSP/ContentSecurityPolicy.php#78</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>$allowedScriptDomains</strong> (array)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Security\CSP\ContentSecurityPolicy::isInlineStyleAllowed">
+<em class="property">public </em><code class="descclassname">OC\Security\CSP\ContentSecurityPolicy::</code><code class="descname">isInlineStyleAllowed</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Security\CSP\ContentSecurityPolicy::isInlineStyleAllowed" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Security/CSP/ContentSecurityPolicy.php#L85">lib/private/Security/CSP/ContentSecurityPolicy.php#85</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Security\CSP\ContentSecurityPolicy::setInlineStyleAllowed">
+<em class="property">public </em><code class="descclassname">OC\Security\CSP\ContentSecurityPolicy::</code><code class="descname">setInlineStyleAllowed</code><span class="sig-paren">(</span><em>$inlineStyleAllowed</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Security\CSP\ContentSecurityPolicy::setInlineStyleAllowed" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Security/CSP/ContentSecurityPolicy.php#L92">lib/private/Security/CSP/ContentSecurityPolicy.php#92</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>$inlineStyleAllowed</strong> (bool)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Security\CSP\ContentSecurityPolicy::getAllowedStyleDomains">
+<em class="property">public </em><code class="descclassname">OC\Security\CSP\ContentSecurityPolicy::</code><code class="descname">getAllowedStyleDomains</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Security\CSP\ContentSecurityPolicy::getAllowedStyleDomains" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Security/CSP/ContentSecurityPolicy.php#L99">lib/private/Security/CSP/ContentSecurityPolicy.php#99</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">array</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Security\CSP\ContentSecurityPolicy::setAllowedStyleDomains">
+<em class="property">public </em><code class="descclassname">OC\Security\CSP\ContentSecurityPolicy::</code><code class="descname">setAllowedStyleDomains</code><span class="sig-paren">(</span><em>$allowedStyleDomains</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Security\CSP\ContentSecurityPolicy::setAllowedStyleDomains" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Security/CSP/ContentSecurityPolicy.php#L106">lib/private/Security/CSP/ContentSecurityPolicy.php#106</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>$allowedStyleDomains</strong> (array)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Security\CSP\ContentSecurityPolicy::getAllowedImageDomains">
+<em class="property">public </em><code class="descclassname">OC\Security\CSP\ContentSecurityPolicy::</code><code class="descname">getAllowedImageDomains</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Security\CSP\ContentSecurityPolicy::getAllowedImageDomains" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Security/CSP/ContentSecurityPolicy.php#L113">lib/private/Security/CSP/ContentSecurityPolicy.php#113</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">array</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Security\CSP\ContentSecurityPolicy::setAllowedImageDomains">
+<em class="property">public </em><code class="descclassname">OC\Security\CSP\ContentSecurityPolicy::</code><code class="descname">setAllowedImageDomains</code><span class="sig-paren">(</span><em>$allowedImageDomains</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Security\CSP\ContentSecurityPolicy::setAllowedImageDomains" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Security/CSP/ContentSecurityPolicy.php#L120">lib/private/Security/CSP/ContentSecurityPolicy.php#120</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>$allowedImageDomains</strong> (array)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Security\CSP\ContentSecurityPolicy::getAllowedConnectDomains">
+<em class="property">public </em><code class="descclassname">OC\Security\CSP\ContentSecurityPolicy::</code><code class="descname">getAllowedConnectDomains</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Security\CSP\ContentSecurityPolicy::getAllowedConnectDomains" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Security/CSP/ContentSecurityPolicy.php#L127">lib/private/Security/CSP/ContentSecurityPolicy.php#127</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">array</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Security\CSP\ContentSecurityPolicy::setAllowedConnectDomains">
+<em class="property">public </em><code class="descclassname">OC\Security\CSP\ContentSecurityPolicy::</code><code class="descname">setAllowedConnectDomains</code><span class="sig-paren">(</span><em>$allowedConnectDomains</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Security\CSP\ContentSecurityPolicy::setAllowedConnectDomains" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Security/CSP/ContentSecurityPolicy.php#L134">lib/private/Security/CSP/ContentSecurityPolicy.php#134</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>$allowedConnectDomains</strong> (array)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Security\CSP\ContentSecurityPolicy::getAllowedMediaDomains">
+<em class="property">public </em><code class="descclassname">OC\Security\CSP\ContentSecurityPolicy::</code><code class="descname">getAllowedMediaDomains</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Security\CSP\ContentSecurityPolicy::getAllowedMediaDomains" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Security/CSP/ContentSecurityPolicy.php#L141">lib/private/Security/CSP/ContentSecurityPolicy.php#141</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">array</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Security\CSP\ContentSecurityPolicy::setAllowedMediaDomains">
+<em class="property">public </em><code class="descclassname">OC\Security\CSP\ContentSecurityPolicy::</code><code class="descname">setAllowedMediaDomains</code><span class="sig-paren">(</span><em>$allowedMediaDomains</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Security\CSP\ContentSecurityPolicy::setAllowedMediaDomains" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Security/CSP/ContentSecurityPolicy.php#L148">lib/private/Security/CSP/ContentSecurityPolicy.php#148</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>$allowedMediaDomains</strong> (array)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Security\CSP\ContentSecurityPolicy::getAllowedObjectDomains">
+<em class="property">public </em><code class="descclassname">OC\Security\CSP\ContentSecurityPolicy::</code><code class="descname">getAllowedObjectDomains</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Security\CSP\ContentSecurityPolicy::getAllowedObjectDomains" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Security/CSP/ContentSecurityPolicy.php#L155">lib/private/Security/CSP/ContentSecurityPolicy.php#155</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">array</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Security\CSP\ContentSecurityPolicy::setAllowedObjectDomains">
+<em class="property">public </em><code class="descclassname">OC\Security\CSP\ContentSecurityPolicy::</code><code class="descname">setAllowedObjectDomains</code><span class="sig-paren">(</span><em>$allowedObjectDomains</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Security\CSP\ContentSecurityPolicy::setAllowedObjectDomains" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Security/CSP/ContentSecurityPolicy.php#L162">lib/private/Security/CSP/ContentSecurityPolicy.php#162</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>$allowedObjectDomains</strong> (array)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Security\CSP\ContentSecurityPolicy::getAllowedFrameDomains">
+<em class="property">public </em><code class="descclassname">OC\Security\CSP\ContentSecurityPolicy::</code><code class="descname">getAllowedFrameDomains</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Security\CSP\ContentSecurityPolicy::getAllowedFrameDomains" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Security/CSP/ContentSecurityPolicy.php#L169">lib/private/Security/CSP/ContentSecurityPolicy.php#169</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">array</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Security\CSP\ContentSecurityPolicy::setAllowedFrameDomains">
+<em class="property">public </em><code class="descclassname">OC\Security\CSP\ContentSecurityPolicy::</code><code class="descname">setAllowedFrameDomains</code><span class="sig-paren">(</span><em>$allowedFrameDomains</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Security\CSP\ContentSecurityPolicy::setAllowedFrameDomains" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Security/CSP/ContentSecurityPolicy.php#L176">lib/private/Security/CSP/ContentSecurityPolicy.php#176</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>$allowedFrameDomains</strong> (array)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Security\CSP\ContentSecurityPolicy::getAllowedFontDomains">
+<em class="property">public </em><code class="descclassname">OC\Security\CSP\ContentSecurityPolicy::</code><code class="descname">getAllowedFontDomains</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Security\CSP\ContentSecurityPolicy::getAllowedFontDomains" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Security/CSP/ContentSecurityPolicy.php#L183">lib/private/Security/CSP/ContentSecurityPolicy.php#183</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">array</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Security\CSP\ContentSecurityPolicy::setAllowedFontDomains">
+<em class="property">public </em><code class="descclassname">OC\Security\CSP\ContentSecurityPolicy::</code><code class="descname">setAllowedFontDomains</code><span class="sig-paren">(</span><em>$allowedFontDomains</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Security\CSP\ContentSecurityPolicy::setAllowedFontDomains" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Security/CSP/ContentSecurityPolicy.php#L190">lib/private/Security/CSP/ContentSecurityPolicy.php#190</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>$allowedFontDomains</strong> (array)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public deprecated method">
+<dt id="OC\Security\CSP\ContentSecurityPolicy::getAllowedChildSrcDomains">
+<em class="property">public </em><code class="descclassname">OC\Security\CSP\ContentSecurityPolicy::</code><code class="descname">getAllowedChildSrcDomains</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Security\CSP\ContentSecurityPolicy::getAllowedChildSrcDomains" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Security/CSP/ContentSecurityPolicy.php#L198">lib/private/Security/CSP/ContentSecurityPolicy.php#198</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">array</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Deprecated:</th><td class="field-body">15.0.0 use FrameDomains and WorkerSrcDomains</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public deprecated method">
+<dt id="OC\Security\CSP\ContentSecurityPolicy::setAllowedChildSrcDomains">
+<em class="property">public </em><code class="descclassname">OC\Security\CSP\ContentSecurityPolicy::</code><code class="descname">setAllowedChildSrcDomains</code><span class="sig-paren">(</span><em>$allowedChildSrcDomains</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Security\CSP\ContentSecurityPolicy::setAllowedChildSrcDomains" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Security/CSP/ContentSecurityPolicy.php#L206">lib/private/Security/CSP/ContentSecurityPolicy.php#206</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$allowedChildSrcDomains</strong> (array)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Deprecated:</th><td class="field-body"><p class="first last">15.0.0 use FrameDomains and WorkerSrcDomains</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Security\CSP\ContentSecurityPolicy::getAllowedFrameAncestors">
+<em class="property">public </em><code class="descclassname">OC\Security\CSP\ContentSecurityPolicy::</code><code class="descname">getAllowedFrameAncestors</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Security\CSP\ContentSecurityPolicy::getAllowedFrameAncestors" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Security/CSP/ContentSecurityPolicy.php#L213">lib/private/Security/CSP/ContentSecurityPolicy.php#213</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">array</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Security\CSP\ContentSecurityPolicy::setAllowedFrameAncestors">
+<em class="property">public </em><code class="descclassname">OC\Security\CSP\ContentSecurityPolicy::</code><code class="descname">setAllowedFrameAncestors</code><span class="sig-paren">(</span><em>$allowedFrameAncestors</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Security\CSP\ContentSecurityPolicy::setAllowedFrameAncestors" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Security/CSP/ContentSecurityPolicy.php#L220">lib/private/Security/CSP/ContentSecurityPolicy.php#220</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>$allowedFrameAncestors</strong> (array)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Security\CSP\ContentSecurityPolicy::getAllowedWorkerSrcDomains">
+<em class="property">public </em><code class="descclassname">OC\Security\CSP\ContentSecurityPolicy::</code><code class="descname">getAllowedWorkerSrcDomains</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Security\CSP\ContentSecurityPolicy::getAllowedWorkerSrcDomains" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Security/CSP/ContentSecurityPolicy.php#L224">lib/private/Security/CSP/ContentSecurityPolicy.php#224</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Security\CSP\ContentSecurityPolicy::setAllowedWorkerSrcDomains">
+<em class="property">public </em><code class="descclassname">OC\Security\CSP\ContentSecurityPolicy::</code><code class="descname">setAllowedWorkerSrcDomains</code><span class="sig-paren">(</span><em>$allowedWorkerSrcDomains</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Security\CSP\ContentSecurityPolicy::setAllowedWorkerSrcDomains" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Security/CSP/ContentSecurityPolicy.php#L228">lib/private/Security/CSP/ContentSecurityPolicy.php#228</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Security\CSP\ContentSecurityPolicy::getAllowedFormActionDomains">
+<em class="property">public </em><code class="descclassname">OC\Security\CSP\ContentSecurityPolicy::</code><code class="descname">getAllowedFormActionDomains</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Security\CSP\ContentSecurityPolicy::getAllowedFormActionDomains" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Security/CSP/ContentSecurityPolicy.php#L232">lib/private/Security/CSP/ContentSecurityPolicy.php#232</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Security\CSP\ContentSecurityPolicy::setAllowedFormActionDomains">
+<em class="property">public </em><code class="descclassname">OC\Security\CSP\ContentSecurityPolicy::</code><code class="descname">setAllowedFormActionDomains</code><span class="sig-paren">(</span><em>$allowedFormActionDomains</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Security\CSP\ContentSecurityPolicy::setAllowedFormActionDomains" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Security/CSP/ContentSecurityPolicy.php#L236">lib/private/Security/CSP/ContentSecurityPolicy.php#236</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Security\CSP\ContentSecurityPolicy::getReportTo">
+<em class="property">public </em><code class="descclassname">OC\Security\CSP\ContentSecurityPolicy::</code><code class="descname">getReportTo</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Security\CSP\ContentSecurityPolicy::getReportTo" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Security/CSP/ContentSecurityPolicy.php#L241">lib/private/Security/CSP/ContentSecurityPolicy.php#241</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Security\CSP\ContentSecurityPolicy::setReportTo">
+<em class="property">public </em><code class="descclassname">OC\Security\CSP\ContentSecurityPolicy::</code><code class="descname">setReportTo</code><span class="sig-paren">(</span><em>$reportTo</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Security\CSP\ContentSecurityPolicy::setReportTo" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Security/CSP/ContentSecurityPolicy.php#L245">lib/private/Security/CSP/ContentSecurityPolicy.php#245</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="ContentSecurityPolicyNonceManager.html" class="btn btn-neutral float-right" title="ContentSecurityPolicyNonceManager" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="index.html" class="btn btn-neutral float-left" title="CSP" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021 Nextcloud GmbH.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: 14
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/14/developer_manual">14</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/15/developer_manual">15</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/16/developer_manual">16</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/developer_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/developer_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+   
+
+</body>
+</html>

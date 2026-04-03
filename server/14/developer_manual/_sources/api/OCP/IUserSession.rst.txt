@@ -1,0 +1,165 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IUserSession
+============
+
+
+.. php:namespace:: OCP
+
+.. php:interface:: IUserSession
+
+
+	.. rst-class:: phpdoc-description
+	
+		| User session
+		
+	
+	:Implemented by:
+		:php:class:`OC\\User\\Session` 
+	
+	
+	:Source:
+		`lib/public/IUserSession.php#45 <https://github.com/nextcloud/server/blob/stable13/lib/public/IUserSession.php#L45>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public login( $uid, $password)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Do a user login
+			
+		
+		:Source:
+			`lib/public/IUserSession.php#54 <https://github.com/nextcloud/server/blob/stable13/lib/public/IUserSession.php#L54>`_
+		
+		
+		:Parameters:
+			* **$uid** (string)  the username
+			* **$password** (string)  the password
+
+		
+		:Returns: bool true if successful
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public logout()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Logs the user out including all the session data
+			| Logout, destroys session
+			
+		
+		:Source:
+			`lib/public/IUserSession.php#63 <https://github.com/nextcloud/server/blob/stable13/lib/public/IUserSession.php#L63>`_
+		
+		
+		:Returns: void 
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setUser( $user)
+	
+		.. rst-class:: phpdoc-description
+		
+			| set the currently active user
+			
+		
+		:Source:
+			`lib/public/IUserSession.php#71 <https://github.com/nextcloud/server/blob/stable13/lib/public/IUserSession.php#L71>`_
+		
+		
+		:Parameters:
+			* **$user** (:any:`OCP\\IUser <OCP\\IUser>` | null)  
+
+		
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getUser()
+	
+		.. rst-class:: phpdoc-description
+		
+			| get the current active user
+			
+		
+		:Source:
+			`lib/public/IUserSession.php#79 <https://github.com/nextcloud/server/blob/stable13/lib/public/IUserSession.php#L79>`_
+		
+		
+		:Returns: :any:`\\OCP\\IUser <OCP\\IUser>` | null Current user, otherwise null
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isLoggedIn()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Checks whether the user is logged in
+			
+		
+		:Source:
+			`lib/public/IUserSession.php#87 <https://github.com/nextcloud/server/blob/stable13/lib/public/IUserSession.php#L87>`_
+		
+		
+		:Returns: bool if logged in
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getImpersonatingUserID()
+	
+		.. rst-class:: phpdoc-description
+		
+			| get getImpersonatingUserID
+			
+		
+		:Source:
+			`lib/public/IUserSession.php#95 <https://github.com/nextcloud/server/blob/stable13/lib/public/IUserSession.php#L95>`_
+		
+		
+		:Returns: string | null 
+		:Since: 18.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setImpersonatingUserID( $useCurrentUser=true)
+	
+		.. rst-class:: phpdoc-description
+		
+			| set setImpersonatingUserID
+			
+		
+		:Source:
+			`lib/public/IUserSession.php#102 <https://github.com/nextcloud/server/blob/stable13/lib/public/IUserSession.php#L102>`_
+		
+		
+		:Since: 18.0.0 
+	
+	
+

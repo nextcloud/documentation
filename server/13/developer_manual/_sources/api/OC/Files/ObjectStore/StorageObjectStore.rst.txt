@@ -1,0 +1,130 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+StorageObjectStore
+==================
+
+
+.. php:namespace:: OC\Files\ObjectStore
+
+.. php:class:: StorageObjectStore
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Object store that wraps a storage backend, mostly for testing purposes
+		
+	
+	:Source:
+		`lib/private/Files/ObjectStore/StorageObjectStore.php#34 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/ObjectStore/StorageObjectStore.php#L34>`_
+	
+	:Implements:
+		:php:interface:`OCP\\Files\\ObjectStore\\IObjectStore` 
+	
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $storage)
+	
+		:Source:
+			`lib/private/Files/ObjectStore/StorageObjectStore.php#41 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/ObjectStore/StorageObjectStore.php#L41>`_
+		
+		
+		:Parameters:
+			* **$storage** (:any:`OCP\\Files\\Storage\\IStorage <OCP\\Files\\Storage\\IStorage>`)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getStorageId()
+	
+		:Source:
+			`lib/private/Files/ObjectStore/StorageObjectStore.php#49 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/ObjectStore/StorageObjectStore.php#L49>`_
+		
+		
+		:Returns: string the container or bucket name where objects are stored
+		:Since: 7.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public readObject( $urn)
+	
+		:Source:
+			`lib/private/Files/ObjectStore/StorageObjectStore.php#59 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/ObjectStore/StorageObjectStore.php#L59>`_
+		
+		
+		:Parameters:
+			* **$urn** (string)  the unified resource name used to identify the object
+
+		
+		:Returns: resource stream with the read data
+		:Throws: :any:`\\Exception <Exception>` when something goes wrong, message will be logged
+		:Since: 7.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public writeObject( $urn, $stream, $mimetype=null)
+	
+		:Source:
+			`lib/private/Files/ObjectStore/StorageObjectStore.php#68 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/ObjectStore/StorageObjectStore.php#L68>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public deleteObject( $urn)
+	
+		:Source:
+			`lib/private/Files/ObjectStore/StorageObjectStore.php#84 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/ObjectStore/StorageObjectStore.php#L84>`_
+		
+		
+		:Parameters:
+			* **$urn** (string)  the unified resource name used to identify the object
+
+		
+		:Returns: void 
+		:Throws: :any:`\\Exception <Exception>` when something goes wrong, message will be logged
+		:Since: 7.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public objectExists( $urn)
+	
+		:Source:
+			`lib/private/Files/ObjectStore/StorageObjectStore.php#88 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/ObjectStore/StorageObjectStore.php#L88>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public copyObject( $from, $to)
+	
+		:Source:
+			`lib/private/Files/ObjectStore/StorageObjectStore.php#92 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/ObjectStore/StorageObjectStore.php#L92>`_
+		
+		
+	
+	
+

@@ -1,0 +1,224 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+Manager
+=======
+
+
+.. php:namespace:: OC\Authentication\TwoFactorAuth
+
+.. php:class:: Manager
+
+
+	:Source:
+		`lib/private/Authentication/TwoFactorAuth/Manager.php#52 <https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/TwoFactorAuth/Manager.php#L52>`_
+	
+
+Constants
+---------
+
+.. php:const:: SESSION_UID_KEY = two\_factor\_auth\_uid
+
+	:Source:
+		`lib/private/Authentication/TwoFactorAuth/Manager.php#53 <https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/TwoFactorAuth/Manager.php#L53>`_
+	
+
+
+.. php:const:: SESSION_UID_DONE = two\_factor\_auth\_passed
+
+	:Source:
+		`lib/private/Authentication/TwoFactorAuth/Manager.php#54 <https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/TwoFactorAuth/Manager.php#L54>`_
+	
+
+
+.. php:const:: REMEMBER_LOGIN = two\_factor\_remember\_login
+
+	:Source:
+		`lib/private/Authentication/TwoFactorAuth/Manager.php#55 <https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/TwoFactorAuth/Manager.php#L55>`_
+	
+
+
+.. php:const:: BACKUP_CODES_PROVIDER_ID = backup\_codes
+
+	:Source:
+		`lib/private/Authentication/TwoFactorAuth/Manager.php#56 <https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/TwoFactorAuth/Manager.php#L56>`_
+	
+
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $providerLoader, $providerRegistry, $mandatoryTwoFactor, $session, $config, $activityManager, $logger, $tokenProvider, $timeFactory, $eventDispatcher, $legacyDispatcher)
+	
+		:Source:
+			`lib/private/Authentication/TwoFactorAuth/Manager.php#91 <https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/TwoFactorAuth/Manager.php#L91>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isTwoFactorAuthenticated( $user)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Determine whether the user must provide a second factor challenge
+			
+		
+		:Source:
+			`lib/private/Authentication/TwoFactorAuth/Manager.php#121 <https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/TwoFactorAuth/Manager.php#L121>`_
+		
+		
+		:Parameters:
+			* **$user** (:any:`OCP\\IUser <OCP\\IUser>`)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getProvider( $user, $challengeProviderId)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get a 2FA provider by its ID
+			
+		
+		:Source:
+			`lib/private/Authentication/TwoFactorAuth/Manager.php#143 <https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/TwoFactorAuth/Manager.php#L143>`_
+		
+		
+		:Parameters:
+			* **$user** (:any:`OCP\\IUser <OCP\\IUser>`)  
+			* **$challengeProviderId** (string)  
+
+		
+		:Returns: :any:`\\OCP\\Authentication\\TwoFactorAuth\\IProvider <OCP\\Authentication\\TwoFactorAuth\\IProvider>` | null 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getLoginSetupProviders( $user)
+	
+		:Source:
+			`lib/private/Authentication/TwoFactorAuth/Manager.php#153 <https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/TwoFactorAuth/Manager.php#L153>`_
+		
+		
+		:Parameters:
+			* **$user** (:any:`OCP\\IUser <OCP\\IUser>`)  
+
+		
+		:Returns: :any:`\\OCP\\Authentication\\TwoFactorAuth\\IActivatableAtLogin\[\] <OCP\\Authentication\\TwoFactorAuth\\IActivatableAtLogin>` 
+		:Throws: :any:`\\Exception <Exception>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getProviderSet( $user)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the list of 2FA providers for the given user
+			
+		
+		:Source:
+			`lib/private/Authentication/TwoFactorAuth/Manager.php#234 <https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/TwoFactorAuth/Manager.php#L234>`_
+		
+		
+		:Parameters:
+			* **$user** (:any:`OCP\\IUser <OCP\\IUser>`)  
+
+		
+		:Throws: :any:`\\Exception <Exception>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public verifyChallenge( $providerId, $user, $challenge)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Verify the given challenge
+			
+		
+		:Source:
+			`lib/private/Authentication/TwoFactorAuth/Manager.php#255 <https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/TwoFactorAuth/Manager.php#L255>`_
+		
+		
+		:Parameters:
+			* **$providerId** (string)  
+			* **$user** (:any:`OCP\\IUser <OCP\\IUser>`)  
+			* **$challenge** (string)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public needsSecondFactor( $user=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check if the currently logged in user needs to pass 2FA
+			
+		
+		:Source:
+			`lib/private/Authentication/TwoFactorAuth/Manager.php#325 <https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/TwoFactorAuth/Manager.php#L325>`_
+		
+		
+		:Parameters:
+			* **$user** (:any:`OCP\\IUser <OCP\\IUser>`)  the currently logged in user
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public prepareTwoFactorLogin( $user, $rememberMe)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Prepare the 2FA login
+			
+		
+		:Source:
+			`lib/private/Authentication/TwoFactorAuth/Manager.php#385 <https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/TwoFactorAuth/Manager.php#L385>`_
+		
+		
+		:Parameters:
+			* **$user** (:any:`OCP\\IUser <OCP\\IUser>`)  
+			* **$rememberMe** (bool)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public clearTwoFactorPending( $userId)
+	
+		:Source:
+			`lib/private/Authentication/TwoFactorAuth/Manager.php#394 <https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/TwoFactorAuth/Manager.php#L394>`_
+		
+		
+	
+	
+

@@ -1,0 +1,149 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IJob
+====
+
+
+.. php:namespace:: OCP\BackgroundJob
+
+.. php:interface:: IJob
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Interface IJob
+		
+	
+	:Implemented by:
+		:php:class:`OCP\\BackgroundJob\\Job` :php:class:`OC\\BackgroundJob\\Job` 
+	
+	
+	:Source:
+		`lib/public/BackgroundJob/IJob.php#37 <https://github.com/nextcloud/server/blob/stable13/lib/public/BackgroundJob/IJob.php#L37>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public execute( $jobList, $logger=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Run the background job with the registered argument
+			
+		
+		:Source:
+			`lib/public/BackgroundJob/IJob.php#45 <https://github.com/nextcloud/server/blob/stable13/lib/public/BackgroundJob/IJob.php#L45>`_
+		
+		
+		:Parameters:
+			* **$jobList** (:any:`OCP\\BackgroundJob\\IJobList <OCP\\BackgroundJob\\IJobList>`)  The job list that manages the state of this job
+			* **$logger** (:any:`OCP\\ILogger <OCP\\ILogger>` | null)  
+
+		
+		:Since: 7.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setId( $id)
+	
+		:Source:
+			`lib/public/BackgroundJob/IJob.php#50 <https://github.com/nextcloud/server/blob/stable13/lib/public/BackgroundJob/IJob.php#L50>`_
+		
+		
+		:Since: 7.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setLastRun( $lastRun)
+	
+		:Source:
+			`lib/public/BackgroundJob/IJob.php#55 <https://github.com/nextcloud/server/blob/stable13/lib/public/BackgroundJob/IJob.php#L55>`_
+		
+		
+		:Since: 7.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setArgument( $argument)
+	
+		:Source:
+			`lib/public/BackgroundJob/IJob.php#61 <https://github.com/nextcloud/server/blob/stable13/lib/public/BackgroundJob/IJob.php#L61>`_
+		
+		
+		:Parameters:
+			* **$argument** (mixed)  
+
+		
+		:Since: 7.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getId()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the id of the background job
+			| This id is determined by the job list when a job is added to the list
+			
+		
+		:Source:
+			`lib/public/BackgroundJob/IJob.php#70 <https://github.com/nextcloud/server/blob/stable13/lib/public/BackgroundJob/IJob.php#L70>`_
+		
+		
+		:Returns: int 
+		:Since: 7.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getLastRun()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the last time this job was run as unix timestamp
+			
+		
+		:Source:
+			`lib/public/BackgroundJob/IJob.php#78 <https://github.com/nextcloud/server/blob/stable13/lib/public/BackgroundJob/IJob.php#L78>`_
+		
+		
+		:Returns: int 
+		:Since: 7.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getArgument()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the argument associated with the background job
+			| This is the argument that will be passed to the background job
+			
+		
+		:Source:
+			`lib/public/BackgroundJob/IJob.php#87 <https://github.com/nextcloud/server/blob/stable13/lib/public/BackgroundJob/IJob.php#L87>`_
+		
+		
+		:Returns: mixed 
+		:Since: 7.0.0 
+	
+	
+

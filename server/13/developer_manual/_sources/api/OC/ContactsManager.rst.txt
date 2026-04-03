@@ -1,0 +1,261 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+ContactsManager
+===============
+
+
+.. php:namespace:: OC
+
+.. php:class:: ContactsManager
+
+
+	:Source:
+		`lib/private/ContactsManager.php#34 <https://github.com/nextcloud/server/blob/stable13/lib/private/ContactsManager.php#L34>`_
+	
+	:Implements:
+		:php:interface:`OCP\\Contacts\\IManager` 
+	
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public search( $pattern, $searchProperties=\[\], $options=\[\])
+	
+		.. rst-class:: phpdoc-description
+		
+			| This function is used to search and find contacts within the users address books\.
+			
+			| In case $pattern is empty all contacts will be returned\.
+			
+		
+		:Source:
+			`lib/private/ContactsManager.php#48 <https://github.com/nextcloud/server/blob/stable13/lib/private/ContactsManager.php#L48>`_
+		
+		
+		:Parameters:
+			* **$pattern** (string)  which should match within the $searchProperties
+			* **$searchProperties** (array)  defines the properties within the query pattern should match
+			* **$options** (array)  = array() to define the search behavior
+			- 'escape_like_param' - If set to false wildcards _ and % are not escaped
+			- 'limit' - Set a numeric limit for the search results
+			- 'offset' - Set the offset for the limited search results
+
+		
+		:Returns: array an array of contacts which are arrays of key\-value\-pairs
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public delete( $id, $address_book_key)
+	
+		.. rst-class:: phpdoc-description
+		
+			| This function can be used to delete the contact identified by the given id
+			
+		
+		:Source:
+			`lib/private/ContactsManager.php#71 <https://github.com/nextcloud/server/blob/stable13/lib/private/ContactsManager.php#L71>`_
+		
+		
+		:Parameters:
+			* **$id** (object)  the unique identifier to a contact
+			* **$address_book_key** (string)  identifier of the address book in which the contact shall be deleted
+
+		
+		:Returns: bool successful or not
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public createOrUpdate( $properties, $address_book_key)
+	
+		.. rst-class:: phpdoc-description
+		
+			| This function is used to create a new contact if \'id\' is not given or not present\.
+			
+			| Otherwise the contact will be updated by replacing the entire data set\.
+			
+		
+		:Source:
+			`lib/private/ContactsManager.php#92 <https://github.com/nextcloud/server/blob/stable13/lib/private/ContactsManager.php#L92>`_
+		
+		
+		:Parameters:
+			* **$properties** (array)  this array if key-value-pairs defines a contact
+			* **$address_book_key** (string)  identifier of the address book in which the contact shall be created or updated
+
+		
+		:Returns: array representing the contact just created or updated
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isEnabled()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check if contacts are available \(e\.g\. contacts app enabled\)
+			
+		
+		:Source:
+			`lib/private/ContactsManager.php#110 <https://github.com/nextcloud/server/blob/stable13/lib/private/ContactsManager.php#L110>`_
+		
+		
+		:Returns: bool true if enabled, false if not
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public registerAddressBook( $addressBook)
+	
+		:Source:
+			`lib/private/ContactsManager.php#117 <https://github.com/nextcloud/server/blob/stable13/lib/private/ContactsManager.php#L117>`_
+		
+		
+		:Parameters:
+			* **$addressBook** (:any:`OCP\\IAddressBook <OCP\\IAddressBook>`)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public unregisterAddressBook( $addressBook)
+	
+		:Source:
+			`lib/private/ContactsManager.php#124 <https://github.com/nextcloud/server/blob/stable13/lib/private/ContactsManager.php#L124>`_
+		
+		
+		:Parameters:
+			* **$addressBook** (:any:`OCP\\IAddressBook <OCP\\IAddressBook>`)  
+
+		
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public getAddressBooks()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Return a list of the user\'s addressbooks display names
+			| \! The addressBook displayName are not unique, please use getUserAddressBooks
+			
+		
+		:Source:
+			`lib/private/ContactsManager.php#136 <https://github.com/nextcloud/server/blob/stable13/lib/private/ContactsManager.php#L136>`_
+		
+		
+		:Returns: :any:`\\OCP\\IAddressBook\[\] <OCP\\IAddressBook>` 
+		:Since: 6.0.0 
+		:Deprecated: 16.0.0 \- Use \`$this\-\>getUserAddressBooks\(\)\` instead
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getUserAddressBooks()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Return a list of the user\'s addressbooks
+			
+		
+		:Source:
+			`lib/private/ContactsManager.php#152 <https://github.com/nextcloud/server/blob/stable13/lib/private/ContactsManager.php#L152>`_
+		
+		
+		:Returns: :any:`\\OCP\\IAddressBook\[\] <OCP\\IAddressBook>` 
+		:Since: 16.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public clear()
+	
+		.. rst-class:: phpdoc-description
+		
+			| removes all registered address book instances
+			
+		
+		:Source:
+			`lib/private/ContactsManager.php#160 <https://github.com/nextcloud/server/blob/stable13/lib/private/ContactsManager.php#L160>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public register( $callable)
+	
+		.. rst-class:: phpdoc-description
+		
+			| In order to improve lazy loading a closure can be registered which will be called in case
+			| address books are actually requested
+			
+		
+		:Source:
+			`lib/private/ContactsManager.php#181 <https://github.com/nextcloud/server/blob/stable13/lib/private/ContactsManager.php#L181>`_
+		
+		
+		:Parameters:
+			* **$callable** (:any:`Closure <Closure>`)  
+
+		
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected getAddressBook( $addressBookKey)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get \(and load when needed\) the address book for $key
+			
+		
+		:Source:
+			`lib/private/ContactsManager.php#191 <https://github.com/nextcloud/server/blob/stable13/lib/private/ContactsManager.php#L191>`_
+		
+		
+		:Parameters:
+			* **$addressBookKey** (string)  
+
+		
+		:Returns: :any:`\\OCP\\IAddressBook <OCP\\IAddressBook>` 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected loadAddressBooks()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Load all address books registered with \'register\'
+			
+		
+		:Source:
+			`lib/private/ContactsManager.php#203 <https://github.com/nextcloud/server/blob/stable13/lib/private/ContactsManager.php#L203>`_
+		
+		
+	
+	
+

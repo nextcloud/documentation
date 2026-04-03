@@ -1,0 +1,714 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>LDAP Configuration API &#8212; Nextcloud 12 Server Administration Manual 12 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/main.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '12',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.1.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="User Provisioning API" href="user_provisioning_api.html" />
+    <link rel="prev" title="LDAP User Cleanup" href="user_auth_ldap_cleanup.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#1d2d44">
+<link rel="shortcut icon" href="https://nextcloud.com/wp-content/themes/next/assets/img/common/favicon.png" />
+<link rel="apple-touch-icon-precomposed" href="https://nextcloud.com/wp-content/themes/next/assets/img/common/favicon.png" />
+<!-- Piwik -->
+<script type="text/javascript">
+    var _paq = _paq || [];
+    _paq.push(['trackPageView']);
+    _paq.push(['enableLinkTracking']);
+    (function() {
+        var u="//stats.nextcloud.com/";
+        _paq.push(['setTrackerUrl', u+'piwik.php']);
+        _paq.push(['setSiteId', 3]);
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+        g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+    })();
+</script>
+<noscript><p><img src="//stats.nextcloud.com/piwik.php?idsite=3" style="border:0;" alt="" /></p></noscript>
+<!-- End Piwik Code -->
+
+  </head>
+  <body role="document">
+
+<header class="banner navbar navbar-default navbar-static-top" role="banner">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+       <a class="brand" href="http://nextcloud.com/" rel="home" title="Nextcloud.com"><img class="logo" src="../_static/img/logo.svg" itemprop="logo"></a>
+    </div>
+
+    <nav class="collapse navbar-collapse" role="navigation">
+      <ul id="menu-header" class="nav navbar-nav">
+          <li><a target="_blank" href="https://demo.nextcloud.com">Demo</a></li>
+          <li><a href="https://nextcloud.com/news/">News</a></li>
+          <li><a href="https://nextcloud.com/features/">Features</a></li>
+          <li><a href="https://nextcloud.com/about/">About us</a></li>
+          <li><a href="https://nextcloud.com/contribute/">Get involved</a></li>
+          <li><a href="https://nextcloud.com/support/">Support</a></li>
+          <li><a href="https://nextcloud.com/enterprise/">Enterprise</a></li>
+          <li class="menu-install"><a href="https://nextcloud.com/install/">Download</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+<div class="container" style="background-color: #E6C4C2;color: #b10000;border: #b10000 2px solid;border-right: none;border-left: none;padding: 15px 10px;">You are reading an outdated version of this documentation. Please check out the <a href="https://docs.nextcloud.com/server/stable/admin_manual/" style="
+color: rgb(177,0,0);text-decoration: underline;">latest version</a> of the server administration manual.</div>
+
+
+
+<div class="wrap container not-front">
+  <div class="content row">
+  <main class="main">
+    <div class="row page-content-header">
+      <div class="col-md-6">
+        <h1><a href="../contents.html">Nextcloud 12 Server Administration Manual</a></h1>
+      </div>
+      <div class="col-md-5 col-md-offset-1">
+      
+        <form class="headersearch" style="margin: 16px 0;" action="../search.html" method="get">
+        <input type="text" value="" name="q" id="q" class="form-control" /> 
+        <button  class="btn btn-default" type="submit" id="searchsubmit">Search</button>
+        </form>
+      
+      </div>
+    </div>
+    
+			<div class="row">
+				<div class="col-md-3">
+					<div class="sidebar">
+							<div class="menu-support-container">
+								<ul id="menu-support" class="menu">
+									<ul>
+										
+<li><a href="../contents.html">Table of Contents</a></li>
+									</ul>
+                  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_server/index.html">Server Configuration</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">User Management</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="user_configuration.html">User Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reset_admin_password.html">Resetting a Lost Admin Password</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reset_user_password.html">Resetting a User Password</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_password_policy.html">User Password Policy App</a></li>
+<li class="toctree-l2"><a class="reference internal" href="two_factor-auth.html">Two Factor Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_auth_ftp_smb_imap.html">User Authentication with IMAP, SMB, and FTP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_auth_ldap.html">User Authentication with LDAP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_auth_ldap_cleanup.html">LDAP User Cleanup</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">LDAP Configuration API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#methods">Methods</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuration-keys">Configuration Keys</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="user_provisioning_api.html">User Provisioning API</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_files/index.html">File Sharing and Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../file_workflows/index.html">File workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_database/index.html">Database Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_mimetypes/index.html">Mimetypes Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../maintenance/index.html">Maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../issues/index.html">Issues and Troubleshooting</a></li>
+</ul>
+
+								</ul>
+							</div>
+					</div>
+				</div>
+        
+
+				<div class="col-md-9">
+					<div class="page-content">
+            
+<ul class="prevnext-title list-unstyled list-inline">
+  <li class="prev">
+    <a href="user_auth_ldap_cleanup.html" title="Previous Chapter: LDAP User Cleanup"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; LDAP User Cleanup</span>
+    </a>
+  </li>
+  <li class="next">
+    <a href="user_provisioning_api.html" title="Next Chapter: User Provisioning API"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">User Provisioning API &raquo;</span>
+    </a>
+  </li>
+</ul>
+						
+  <div class="section" id="ldap-configuration-api">
+<h1>LDAP Configuration API<a class="headerlink" href="#ldap-configuration-api" title="Permalink to this headline">¶</a></h1>
+<p>Any used method requires the a header &#8220;OCS-APIREQUEST&#8221; set to &#8220;true&#8221;. And any method takes an optional &#8220;format&#8221; parameter, which accepts &#8220;xml&#8221; (default) or &#8220;json&#8221;.</p>
+<div class="section" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="creating-a-configuration">
+<h3>Creating a configuration<a class="headerlink" href="#creating-a-configuration" title="Permalink to this headline">¶</a></h3>
+<p>Creates a new and empty LDAP configuration. It returns its ID. Authentication is done by sending a
+basic HTTP authentication header.</p>
+<p><strong>Syntax: ocs/v2.php/apps/user_ldap/api/v1/config</strong></p>
+<ul class="simple">
+<li>HTTP method: POST</li>
+</ul>
+<div class="section" id="example">
+<h4>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li>POST <code class="docutils literal"><span class="pre">https://admin:secret&#64;example.com/ocs/v2.php/apps/user_ldap/api/v1/config</span></code> -H &#8220;OCS-APIREQUEST: true&#8221;</li>
+<li>Creates a new, empty configuration</li>
+</ul>
+</div>
+<div class="section" id="xml-output">
+<h4>XML Output<a class="headerlink" href="#xml-output" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span class="nt">&lt;ocs&gt;</span>
+ <span class="nt">&lt;meta&gt;</span>
+  <span class="nt">&lt;status&gt;</span>ok<span class="nt">&lt;/status&gt;</span>
+  <span class="nt">&lt;statuscode&gt;</span>200<span class="nt">&lt;/statuscode&gt;</span>
+  <span class="nt">&lt;message&gt;</span>OK<span class="nt">&lt;/message&gt;</span>
+ <span class="nt">&lt;/meta&gt;</span>
+ <span class="nt">&lt;data&gt;</span>
+  <span class="nt">&lt;configID&gt;</span>s01<span class="nt">&lt;/configID&gt;</span>
+ <span class="nt">&lt;/data&gt;</span>
+<span class="nt">&lt;/ocs&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="deleting-a-configuration">
+<h3>Deleting a configuration<a class="headerlink" href="#deleting-a-configuration" title="Permalink to this headline">¶</a></h3>
+<p>Deletes a given LDAP configuration. Authentication is done by sending a basic HTTP authentication header.</p>
+<p><strong>Syntax: ocs/v2.php/apps/user_ldap/api/v1/config/{configID}</strong></p>
+<ul class="simple">
+<li>HTTP method: DELETE</li>
+</ul>
+<div class="section" id="id1">
+<h4>Example<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li>DELETE <code class="docutils literal"><span class="pre">https://admin:secret&#64;example.com/ocs/v2.php/apps/user_ldap/api/v1/config/s02</span> <span class="pre">-H</span> <span class="pre">&quot;OCS-APIREQUEST:</span> <span class="pre">true&quot;</span></code></li>
+<li>deletes the LDAP configuration</li>
+</ul>
+</div>
+<div class="section" id="id2">
+<h4>XML Output<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span class="nt">&lt;ocs&gt;</span>
+ <span class="nt">&lt;meta&gt;</span>
+  <span class="nt">&lt;status&gt;</span>ok<span class="nt">&lt;/status&gt;</span>
+  <span class="nt">&lt;statuscode&gt;</span>200<span class="nt">&lt;/statuscode&gt;</span>
+  <span class="nt">&lt;message&gt;</span>OK<span class="nt">&lt;/message&gt;</span>
+ <span class="nt">&lt;/meta&gt;</span>
+ <span class="nt">&lt;data/&gt;</span>
+<span class="nt">&lt;/ocs&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="reading-a-configuration">
+<h3>Reading a configuration<a class="headerlink" href="#reading-a-configuration" title="Permalink to this headline">¶</a></h3>
+<p>Returns all keys and values of the specified LDAP configuration. Authentication is done by sending a basic HTTP authentication header.</p>
+<p><strong>Syntax: ocs/v2.php/apps/user_ldap/api/v1/config/{configID}</strong></p>
+<ul class="simple">
+<li>HTTP method: GET</li>
+<li>url argument: showPassword - int, optional, default 0, whether to return the password in clear text</li>
+</ul>
+<div class="section" id="id3">
+<h4>Example<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li>GET <code class="docutils literal"><span class="pre">https://admin:secret&#64;example.com/ocs/v2.php/apps/user_ldap/api/v1/config/s02?showPassword=1</span> <span class="pre">-H</span> <span class="pre">&quot;OCS-APIREQUEST:</span> <span class="pre">true&quot;</span></code></li>
+<li>fetches the LDAP configuration</li>
+</ul>
+</div>
+<div class="section" id="id4">
+<h4>XML Output<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span class="nt">&lt;ocs&gt;</span>
+ <span class="nt">&lt;meta&gt;</span>
+  <span class="nt">&lt;status&gt;</span>ok<span class="nt">&lt;/status&gt;</span>
+  <span class="nt">&lt;statuscode&gt;</span>200<span class="nt">&lt;/statuscode&gt;</span>
+  <span class="nt">&lt;message&gt;</span>OK<span class="nt">&lt;/message&gt;</span>
+ <span class="nt">&lt;/meta&gt;</span>
+ <span class="nt">&lt;data&gt;</span>
+  <span class="nt">&lt;ldapHost&gt;</span>ldap://ldap.server.tld<span class="nt">&lt;/ldapHost&gt;</span>
+  <span class="nt">&lt;ldapPort&gt;</span>389<span class="nt">&lt;/ldapPort&gt;</span>
+  <span class="nt">&lt;ldapBackupHost&gt;&lt;/ldapBackupHost&gt;</span>
+  <span class="nt">&lt;ldapBackupPort&gt;&lt;/ldapBackupPort&gt;</span>
+  <span class="nt">&lt;ldapBase&gt;</span>ou=Department XLII,dc=example,dc=com<span class="nt">&lt;/ldapBase&gt;</span>
+  <span class="nt">&lt;ldapBaseUsers&gt;</span>ou=users,ou=Department XLII,dc=example,dc=com<span class="nt">&lt;/ldapBaseUsers&gt;</span>
+  <span class="nt">&lt;ldapBaseGroups&gt;</span>ou=Department XLII,dc=example,dc=com<span class="nt">&lt;/ldapBaseGroups&gt;</span>
+  <span class="nt">&lt;ldapAgentName&gt;</span>cn=root,dc=example,dc=com<span class="nt">&lt;/ldapAgentName&gt;</span>
+  <span class="nt">&lt;ldapAgentPassword&gt;</span>Secret<span class="nt">&lt;/ldapAgentPassword&gt;</span>
+  <span class="nt">&lt;ldapTLS&gt;</span>1<span class="nt">&lt;/ldapTLS&gt;</span>
+  <span class="nt">&lt;turnOffCertCheck&gt;</span>0<span class="nt">&lt;/turnOffCertCheck&gt;</span>
+  <span class="nt">&lt;ldapIgnoreNamingRules/&gt;</span>
+  <span class="nt">&lt;ldapUserDisplayName&gt;</span>displayname<span class="nt">&lt;/ldapUserDisplayName&gt;</span>
+  <span class="nt">&lt;ldapUserDisplayName2&gt;</span>uid<span class="nt">&lt;/ldapUserDisplayName2&gt;</span>
+  <span class="nt">&lt;ldapGidNumber&gt;</span>gidNumber<span class="nt">&lt;/ldapGidNumber&gt;</span>
+  <span class="nt">&lt;ldapUserFilterObjectclass&gt;</span>inetOrgPerson<span class="nt">&lt;/ldapUserFilterObjectclass&gt;</span>
+  <span class="nt">&lt;ldapUserFilterGroups&gt;&lt;/ldapUserFilterGroups&gt;</span>
+  <span class="nt">&lt;ldapUserFilter&gt;</span>(<span class="ni">&amp;amp;</span>(objectclass=nextcloudUser)(nextcloudEnabled=TRUE))<span class="nt">&lt;/ldapUserFilter&gt;</span>
+  <span class="nt">&lt;ldapUserFilterMode&gt;</span>1<span class="nt">&lt;/ldapUserFilterMode&gt;</span>
+  <span class="nt">&lt;ldapGroupFilter&gt;</span>(<span class="ni">&amp;amp;</span>(|(objectclass=nextcloudGroup)))<span class="nt">&lt;/ldapGroupFilter&gt;</span>
+  <span class="nt">&lt;ldapGroupFilterMode&gt;</span>0<span class="nt">&lt;/ldapGroupFilterMode&gt;</span>
+  <span class="nt">&lt;ldapGroupFilterObjectclass&gt;</span>nextcloudGroup<span class="nt">&lt;/ldapGroupFilterObjectclass&gt;</span>
+  <span class="nt">&lt;ldapGroupFilterGroups&gt;&lt;/ldapGroupFilterGroups&gt;</span>
+  <span class="nt">&lt;ldapGroupMemberAssocAttr&gt;</span>memberUid<span class="nt">&lt;/ldapGroupMemberAssocAttr&gt;</span>
+  <span class="nt">&lt;ldapGroupDisplayName&gt;</span>cn<span class="nt">&lt;/ldapGroupDisplayName&gt;</span>
+  <span class="nt">&lt;ldapLoginFilter&gt;</span>(<span class="ni">&amp;amp;</span>(|(objectclass=inetOrgPerson))(uid=%uid))<span class="nt">&lt;/ldapLoginFilter&gt;</span>
+  <span class="nt">&lt;ldapLoginFilterMode&gt;</span>0<span class="nt">&lt;/ldapLoginFilterMode&gt;</span>
+  <span class="nt">&lt;ldapLoginFilterEmail&gt;</span>0<span class="nt">&lt;/ldapLoginFilterEmail&gt;</span>
+  <span class="nt">&lt;ldapLoginFilterUsername&gt;</span>1<span class="nt">&lt;/ldapLoginFilterUsername&gt;</span>
+  <span class="nt">&lt;ldapLoginFilterAttributes&gt;&lt;/ldapLoginFilterAttributes&gt;</span>
+  <span class="nt">&lt;ldapQuotaAttribute&gt;&lt;/ldapQuotaAttribute&gt;</span>
+  <span class="nt">&lt;ldapQuotaDefault&gt;</span>20 MB<span class="nt">&lt;/ldapQuotaDefault&gt;</span>
+  <span class="nt">&lt;ldapEmailAttribute&gt;</span>mail<span class="nt">&lt;/ldapEmailAttribute&gt;</span>
+  <span class="nt">&lt;ldapCacheTTL&gt;</span>600<span class="nt">&lt;/ldapCacheTTL&gt;</span>
+  <span class="nt">&lt;ldapUuidUserAttribute&gt;</span>auto<span class="nt">&lt;/ldapUuidUserAttribute&gt;</span>
+  <span class="nt">&lt;ldapUuidGroupAttribute&gt;</span>auto<span class="nt">&lt;/ldapUuidGroupAttribute&gt;</span>
+  <span class="nt">&lt;ldapOverrideMainServer&gt;&lt;/ldapOverrideMainServer&gt;</span>
+  <span class="nt">&lt;ldapConfigurationActive&gt;</span>1<span class="nt">&lt;/ldapConfigurationActive&gt;</span>
+  <span class="nt">&lt;ldapAttributesForUserSearch&gt;</span>uid;sn;givenname<span class="nt">&lt;/ldapAttributesForUserSearch&gt;</span>
+  <span class="nt">&lt;ldapAttributesForGroupSearch&gt;&lt;/ldapAttributesForGroupSearch&gt;</span>
+  <span class="nt">&lt;ldapExperiencedAdmin&gt;</span>0<span class="nt">&lt;/ldapExperiencedAdmin&gt;</span>
+  <span class="nt">&lt;homeFolderNamingRule&gt;</span>attr:mail<span class="nt">&lt;/homeFolderNamingRule&gt;</span>
+  <span class="nt">&lt;hasPagedResultSupport&gt;&lt;/hasPagedResultSupport&gt;</span>
+  <span class="nt">&lt;hasMemberOfFilterSupport&gt;</span>1<span class="nt">&lt;/hasMemberOfFilterSupport&gt;</span>
+  <span class="nt">&lt;useMemberOfToDetectMembership&gt;</span>1<span class="nt">&lt;/useMemberOfToDetectMembership&gt;</span>
+  <span class="nt">&lt;ldapExpertUsernameAttr&gt;&lt;/ldapExpertUsernameAttr&gt;</span>
+  <span class="nt">&lt;ldapExpertUUIDUserAttr&gt;&lt;/ldapExpertUUIDUserAttr&gt;</span>
+  <span class="nt">&lt;ldapExpertUUIDGroupAttr&gt;&lt;/ldapExpertUUIDGroupAttr&gt;</span>
+  <span class="nt">&lt;lastJpegPhotoLookup&gt;</span>0<span class="nt">&lt;/lastJpegPhotoLookup&gt;</span>
+  <span class="nt">&lt;ldapNestedGroups&gt;</span>0<span class="nt">&lt;/ldapNestedGroups&gt;</span>
+  <span class="nt">&lt;ldapPagingSize&gt;</span>500<span class="nt">&lt;/ldapPagingSize&gt;</span>
+  <span class="nt">&lt;turnOnPasswordChange&gt;</span>1<span class="nt">&lt;/turnOnPasswordChange&gt;</span>
+  <span class="nt">&lt;ldapDynamicGroupMemberURL&gt;&lt;/ldapDynamicGroupMemberURL&gt;</span>
+  <span class="nt">&lt;ldapDefaultPPolicyDN&gt;&lt;/ldapDefaultPPolicyDN&gt;</span>
+ <span class="nt">&lt;/data&gt;</span>
+<span class="nt">&lt;/ocs&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="modifying-a-configuration">
+<h3>Modifying a configuration<a class="headerlink" href="#modifying-a-configuration" title="Permalink to this headline">¶</a></h3>
+<p>Updates a configuration with the provided values. Authentication is done by sending a basic HTTP authentication header.</p>
+<p><strong>Syntax: ocs/v2.php/apps/user_ldap/api/v1/config/{configID}</strong></p>
+<ul class="simple">
+<li>HTTP method: PUT</li>
+<li>url argument: configData - array, see table below for the fields. All fields are optional. The values must be url-encoded.</li>
+</ul>
+<div class="section" id="id5">
+<h4>Example<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li>PUT <code class="docutils literal"><span class="pre">https://admin:secret&#64;example.com/ocs/v2.php/apps/user_ldap/api/v1/config/s01</span> <span class="pre">-H</span> <span class="pre">&quot;OCS-APIREQUEST:</span> <span class="pre">true&quot;</span> <span class="pre">-d</span> <span class="pre">&quot;configData[ldapHost]=ldap%3A%2F%2Fldap.server.tld</span> <span class="pre">&amp;configData[ldapPort]=389&quot;</span></code></li>
+<li>fetches the LDAP configuration</li>
+</ul>
+</div>
+<div class="section" id="id6">
+<h4>XML Output<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span class="nt">&lt;ocs&gt;</span>
+ <span class="nt">&lt;meta&gt;</span>
+  <span class="nt">&lt;status&gt;</span>ok<span class="nt">&lt;/status&gt;</span>
+  <span class="nt">&lt;statuscode&gt;</span>200<span class="nt">&lt;/statuscode&gt;</span>
+  <span class="nt">&lt;message&gt;</span>OK<span class="nt">&lt;/message&gt;</span>
+ <span class="nt">&lt;/meta&gt;</span>
+ <span class="nt">&lt;data/&gt;</span>
+<span class="nt">&lt;/ocs&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="configuration-keys">
+<h2>Configuration Keys<a class="headerlink" href="#configuration-keys" title="Permalink to this headline">¶</a></h2>
+<table border="1" class="docutils">
+<colgroup>
+<col width="19%" />
+<col width="4%" />
+<col width="6%" />
+<col width="72%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Key</th>
+<th class="head">Mode</th>
+<th class="head">Required</th>
+<th class="head">Description</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>ldapHost</td>
+<td>rw</td>
+<td>yes</td>
+<td>LDAP server host, supports protocol</td>
+</tr>
+<tr class="row-odd"><td>ldapPort</td>
+<td>rw</td>
+<td>yes</td>
+<td>LDAP server port</td>
+</tr>
+<tr class="row-even"><td>ldapBackupHost</td>
+<td>rw</td>
+<td>no</td>
+<td>LDAP replica host</td>
+</tr>
+<tr class="row-odd"><td>ldapBackupPort</td>
+<td>rw</td>
+<td>no</td>
+<td>LDAP replica port</td>
+</tr>
+<tr class="row-even"><td>ldapOverrideMainServer</td>
+<td>rw</td>
+<td>no</td>
+<td>Whether replica should be used instead</td>
+</tr>
+<tr class="row-odd"><td>ldapBase</td>
+<td>rw</td>
+<td>yes</td>
+<td>Base</td>
+</tr>
+<tr class="row-even"><td>ldapBaseUsers</td>
+<td>rw</td>
+<td>no</td>
+<td>Base for users, defaults to general base if not specified</td>
+</tr>
+<tr class="row-odd"><td>ldapBaseGroups</td>
+<td>rw</td>
+<td>no</td>
+<td>Base for groups, defaults to general base if not specified</td>
+</tr>
+<tr class="row-even"><td>ldapAgentName</td>
+<td>rw</td>
+<td>no</td>
+<td>DN for the (service) user to connect to LDAP</td>
+</tr>
+<tr class="row-odd"><td>ldapAgentPassword</td>
+<td>rw</td>
+<td>no</td>
+<td>Password for the service user</td>
+</tr>
+<tr class="row-even"><td>ldapTLS</td>
+<td>rw</td>
+<td>no</td>
+<td>Whether to use StartTLS</td>
+</tr>
+<tr class="row-odd"><td>turnOffCertCheck</td>
+<td>rw</td>
+<td>no</td>
+<td>Turns off certificate validation for TLS connections</td>
+</tr>
+<tr class="row-even"><td>ldapIgnoreNamingRules</td>
+<td>rw</td>
+<td>no</td>
+<td>Backwards compatibility, do not set it.</td>
+</tr>
+<tr class="row-odd"><td>ldapUserDisplayName</td>
+<td>rw</td>
+<td>yes</td>
+<td>Attribute used as display name for users</td>
+</tr>
+<tr class="row-even"><td>ldapUserDisplayName2</td>
+<td>rw</td>
+<td>no</td>
+<td>Additional attribute, if set show on brackets next to the main attribute</td>
+</tr>
+<tr class="row-odd"><td>ldapGidNumber</td>
+<td>rw</td>
+<td>no</td>
+<td>group ID attribute, needed for primary groups on OpenLDAP (and compatible)</td>
+</tr>
+<tr class="row-even"><td>ldapUserFilterObjectclass</td>
+<td>rw</td>
+<td>no</td>
+<td>set by the Settings Wizard (web UI)</td>
+</tr>
+<tr class="row-odd"><td>ldapUserFilterGroups</td>
+<td>rw</td>
+<td>no</td>
+<td>set by the Settings Wizard (web UI)</td>
+</tr>
+<tr class="row-even"><td>ldapUserFilter</td>
+<td>rw</td>
+<td>yes</td>
+<td>LDAP Filter used to retrieve user</td>
+</tr>
+<tr class="row-odd"><td>ldapUserFilterMode</td>
+<td>rw</td>
+<td>no</td>
+<td>used by the Settings Wizard, set to 1 for manual editing</td>
+</tr>
+<tr class="row-even"><td>ldapAttributesForUserSearch</td>
+<td>rw</td>
+<td>no</td>
+<td>attributes to be matched when searching for users. separate by ;</td>
+</tr>
+<tr class="row-odd"><td>ldapGroupFilter</td>
+<td>rw</td>
+<td>no</td>
+<td>LDAP Filter used to retrieve groups</td>
+</tr>
+<tr class="row-even"><td>ldapGroupFilterMode</td>
+<td>rw</td>
+<td>no</td>
+<td>used by the Settings Wizard, set to 1 for manual editing</td>
+</tr>
+<tr class="row-odd"><td>ldapGroupFilterObjectclass</td>
+<td>rw</td>
+<td>no</td>
+<td>set by the Settings Wizard (web UI)</td>
+</tr>
+<tr class="row-even"><td>ldapGroupFilterGroups</td>
+<td>rw</td>
+<td>no</td>
+<td>set by the Settings Wizard (web UI)</td>
+</tr>
+<tr class="row-odd"><td>ldapGroupMemberAssocAttr</td>
+<td>rw</td>
+<td>no</td>
+<td>attribute that indicates group members, one of: member, memberUid, uniqueMember, gidNumber</td>
+</tr>
+<tr class="row-even"><td>ldapGroupDisplayName</td>
+<td>rw</td>
+<td>no</td>
+<td>Attribute used as display name for groups, required if groups are used</td>
+</tr>
+<tr class="row-odd"><td>ldapAttributesForGroupSearch</td>
+<td>rw</td>
+<td>no</td>
+<td>attributes to be matched when searching for groups. separate by ;</td>
+</tr>
+<tr class="row-even"><td>ldapLoginFilter</td>
+<td>rw</td>
+<td>yes</td>
+<td>LDAP Filter used to authenticate users</td>
+</tr>
+<tr class="row-odd"><td>ldapLoginFilterMode</td>
+<td>rw</td>
+<td>no</td>
+<td>used by the Settings Wizard, set to 1 for manual editing</td>
+</tr>
+<tr class="row-even"><td>ldapLoginFilterEmail</td>
+<td>rw</td>
+<td>no</td>
+<td>set by the Settings Wizard (web UI)</td>
+</tr>
+<tr class="row-odd"><td>ldapLoginFilterUsername</td>
+<td>rw</td>
+<td>no</td>
+<td>set by the Settings Wizard (web UI)</td>
+</tr>
+<tr class="row-even"><td>ldapLoginFilterAttributes</td>
+<td>rw</td>
+<td>no</td>
+<td>set by the Settings Wizard (web UI)</td>
+</tr>
+<tr class="row-odd"><td>ldapQuotaAttribute</td>
+<td>rw</td>
+<td>no</td>
+<td>LDAP attribute containing the quote value (per user)</td>
+</tr>
+<tr class="row-even"><td>ldapQuotaDefault</td>
+<td>rw</td>
+<td>no</td>
+<td>Default Quota, if specified quota attribute is empty</td>
+</tr>
+<tr class="row-odd"><td>ldapEmailAttribute</td>
+<td>rw</td>
+<td>no</td>
+<td>LDAP attribute containing the email address (takes first if multiple are stored)</td>
+</tr>
+<tr class="row-even"><td>ldapCacheTTL</td>
+<td>rw</td>
+<td>no</td>
+<td>How long results from LDAP are cached, defaults to 10min</td>
+</tr>
+<tr class="row-odd"><td>ldapUuidUserAttribute</td>
+<td>r</td>
+<td>no</td>
+<td>set in runtime</td>
+</tr>
+<tr class="row-even"><td>ldapUuidGroupAttribute</td>
+<td>r</td>
+<td>no</td>
+<td>set in runtime</td>
+</tr>
+<tr class="row-odd"><td>ldapConfigurationActive</td>
+<td>rw</td>
+<td>no</td>
+<td>whether this configuration is active. 1 is on, 0 is off.</td>
+</tr>
+<tr class="row-even"><td>ldapExperiencedAdmin</td>
+<td>rw</td>
+<td>no</td>
+<td>used by the Settings Wizard, set to 1 for manual editing</td>
+</tr>
+<tr class="row-odd"><td>homeFolderNamingRule</td>
+<td>rw</td>
+<td>no</td>
+<td>LDAP attribute to use a user folder name</td>
+</tr>
+<tr class="row-even"><td>hasPagedResultSupport</td>
+<td>r</td>
+<td>no</td>
+<td>set in runtime</td>
+</tr>
+<tr class="row-odd"><td>hasMemberOfFilterSupport</td>
+<td>r</td>
+<td>no</td>
+<td>set in runtime</td>
+</tr>
+<tr class="row-even"><td>useMemberOfToDetectMembership</td>
+<td>rw</td>
+<td>no</td>
+<td>Whether to use memberOf to detect group memberships</td>
+</tr>
+<tr class="row-odd"><td>ldapExpertUsernameAttr</td>
+<td>rw</td>
+<td>no</td>
+<td>LDAP attribute to use as internal username. Might be modified (e.g. to avoid name collisions, character restrictions)</td>
+</tr>
+<tr class="row-even"><td>ldapExpertUUIDUserAttr</td>
+<td>rw</td>
+<td>no</td>
+<td>override the LDAP servers UUID attribute to identify LDAP user records</td>
+</tr>
+<tr class="row-odd"><td>ldapExpertUUIDGroupAttr</td>
+<td>rw</td>
+<td>no</td>
+<td>override the LDAP servers UUID attribute to identify LDAP group records</td>
+</tr>
+<tr class="row-even"><td>lastJpegPhotoLookup</td>
+<td>r</td>
+<td>no</td>
+<td>set in runtime</td>
+</tr>
+<tr class="row-odd"><td>ldapNestedGroups</td>
+<td>rw</td>
+<td>no</td>
+<td>Whether LDAP supports nested groups</td>
+</tr>
+<tr class="row-even"><td>ldapPagingSize</td>
+<td>rw</td>
+<td>no</td>
+<td>Number of results to return per page</td>
+</tr>
+<tr class="row-odd"><td>turnOnPasswordChange</td>
+<td>rw</td>
+<td>no</td>
+<td>Whether users are allowed to change passwords (hashing must happen on LDAP!)</td>
+</tr>
+<tr class="row-even"><td>ldapDynamicGroupMemberURL</td>
+<td>rw</td>
+<td>no</td>
+<td>URL for dynamic groups</td>
+</tr>
+<tr class="row-odd"><td>ldapDefaultPPolicyDN</td>
+<td>rw</td>
+<td>no</td>
+<td>PPolicy DN for password rules</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+
+            
+<ul class="prevnext-title list-unstyled list-inline">
+  <li class="prev">
+    <a href="user_auth_ldap_cleanup.html" title="Previous Chapter: LDAP User Cleanup"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; LDAP User Cleanup</span>
+    </a>
+  </li>
+  <li class="next">
+    <a href="user_provisioning_api.html" title="Next Chapter: User Provisioning API"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">User Provisioning API &raquo;</span>
+    </a>
+  </li>
+</ul>
+					</div>
+				</div>
+			</div>
+  </main>  
+  </div>
+</div>
+<div class="container">
+<div class="row">
+    <div class="col-lg-12 footer-social-icons">
+      <p class="text-center"><a target="_blank" href="https://plus.google.com/104036748063781940910/about"><img width=50 src="../_static/img/social/googleplus.svg" title="Follow us on Google Plus!" alt="Follow us on Google Plus!"></img></a>
+      <a target="_blank" href="https://www.facebook.com/Nextclouders"><img width=50 src="../_static/img/social/facebook.svg" title="Like our facebook page!" alt="Like our facebook page!"></img></a>
+      <a target="_blank" href="https://twitter.com/Nextclouders"><img width=50 src="../_static/img/social/twitter.svg" title="Subscribe to our twitter channel!" alt="Subscribe to our twitter channel!"></img></a>
+      <a target="_blank" href="https://nextcloud.com/blogfeed"><img class="img-circle" width=50 src="../_static/img/social/rss.svg" title="Subscribe to our news feed!" alt="Subscribe to our news feed!"></img></a>
+      <a target="_blank" href="https://newsletter.nextcloud.com/"><img class="img-circle" width=50 src="../_static/img/social/mail.svg"  title="Subscribe to our newsletter!" alt="Subscribe to our newsletter!"></img></a></p>
+    </div>
+    <div class="text-center">
+      <p>All documentation licensed under the <a href="https://creativecommons.org/licenses/by/3.0/us/">Creative Commons Attribution 3.0 Unported license</a>.</p>
+      <p><a href="https://github.com/nextcloud/documentation/graphs/contributors">See who contributed to our documentation/credits</a>.</p>
+    </div>
+</div>
+</div>
+<footer class="content-info" role="contentinfo">
+<div class="container">
+   <div class="row">
+     <div class="col-sm-2 col-sm-offset-1">
+        <div class="footer-nav">
+          <h4>About Nextcloud</h4>
+          <ul id="menu-about" class="menu">
+            <li><a href="https://nextcloud.com/about/">About us</a></li>
+            <li><a href="https://nextcloud.com/contact/">Contact us</a></li>
+            <li><a href="https://nextcloud.com/press/">Press</a></li>
+            <li><a href="https://nextcloud.com/privacy/">Privacy policy</a></li>
+          </ul>
+        </div>
+     </div>
+     <div class="col-sm-2 col-sm-offset-2">
+     </div>
+     <div class="col-sm-2 col-sm-offset-2">
+        <div class="footer-nav">
+          <h4>Interact</h4>
+          <ul id="menu-interact" class="menu">
+            <li class="menu-irc-channel"><a href="https://webchat.freenode.net/?channels=nextcloud">IRC Channel</a></li>
+            <li class="menu-forums"><a href="https://help.nextcloud.com/">Forums</a></li>
+          </ul>
+        </div>
+     </div>
+   </div>
+   <div class="row">
+      <div class="col-lg-12 footer-text">
+        <p>
+              &copy; Copyright 2012-2017, The Nextcloud developers.  <small><a href="https://nextcloud.com/impressum">Legal Notice</a></small><br/>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+  </body>
+</html>

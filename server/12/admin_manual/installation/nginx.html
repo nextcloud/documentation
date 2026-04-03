@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Nginx Configuration &#8212; Nextcloud 12 Server Administration Manual 12 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/main.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '12',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.1.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Server Configuration" href="../configuration_server/index.html" />
+    <link rel="prev" title="SELinux Configuration" href="selinux_configuration.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#1d2d44">
+<link rel="shortcut icon" href="https://nextcloud.com/wp-content/themes/next/assets/img/common/favicon.png" />
+<link rel="apple-touch-icon-precomposed" href="https://nextcloud.com/wp-content/themes/next/assets/img/common/favicon.png" />
+<!-- Piwik -->
+<script type="text/javascript">
+    var _paq = _paq || [];
+    _paq.push(['trackPageView']);
+    _paq.push(['enableLinkTracking']);
+    (function() {
+        var u="//stats.nextcloud.com/";
+        _paq.push(['setTrackerUrl', u+'piwik.php']);
+        _paq.push(['setSiteId', 3]);
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+        g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+    })();
+</script>
+<noscript><p><img src="//stats.nextcloud.com/piwik.php?idsite=3" style="border:0;" alt="" /></p></noscript>
+<!-- End Piwik Code -->
+
+  </head>
+  <body role="document">
+
+<header class="banner navbar navbar-default navbar-static-top" role="banner">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+       <a class="brand" href="http://nextcloud.com/" rel="home" title="Nextcloud.com"><img class="logo" src="../_static/img/logo.svg" itemprop="logo"></a>
+    </div>
+
+    <nav class="collapse navbar-collapse" role="navigation">
+      <ul id="menu-header" class="nav navbar-nav">
+          <li><a target="_blank" href="https://demo.nextcloud.com">Demo</a></li>
+          <li><a href="https://nextcloud.com/news/">News</a></li>
+          <li><a href="https://nextcloud.com/features/">Features</a></li>
+          <li><a href="https://nextcloud.com/about/">About us</a></li>
+          <li><a href="https://nextcloud.com/contribute/">Get involved</a></li>
+          <li><a href="https://nextcloud.com/support/">Support</a></li>
+          <li><a href="https://nextcloud.com/enterprise/">Enterprise</a></li>
+          <li class="menu-install"><a href="https://nextcloud.com/install/">Download</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+<div class="container" style="background-color: #E6C4C2;color: #b10000;border: #b10000 2px solid;border-right: none;border-left: none;padding: 15px 10px;">You are reading an outdated version of this documentation. Please check out the <a href="https://docs.nextcloud.com/server/stable/admin_manual/" style="
+color: rgb(177,0,0);text-decoration: underline;">latest version</a> of the server administration manual.</div>
+
+
+
+<div class="wrap container not-front">
+  <div class="content row">
+  <main class="main">
+    <div class="row page-content-header">
+      <div class="col-md-6">
+        <h1><a href="../contents.html">Nextcloud 12 Server Administration Manual</a></h1>
+      </div>
+      <div class="col-md-5 col-md-offset-1">
+      
+        <form class="headersearch" style="margin: 16px 0;" action="../search.html" method="get">
+        <input type="text" value="" name="q" id="q" class="form-control" /> 
+        <button  class="btn btn-default" type="submit" id="searchsubmit">Search</button>
+        </form>
+      
+      </div>
+    </div>
+    
+			<div class="row">
+				<div class="col-md-3">
+					<div class="sidebar">
+							<div class="menu-support-container">
+								<ul id="menu-support" class="menu">
+									<ul>
+										
+<li><a href="../contents.html">Table of Contents</a></li>
+									</ul>
+                  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes.html">Release Notes</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Installation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="system_requirements.html">System Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deployment_recommendations.html">Deployment Recommendations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="source_installation.html">Installation on Linux</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation_wizard.html">Installation Wizard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command_line_installation.html">Installing from Command Line</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apps_management_installation.html">Installing and Managing Apps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apps_supported.html">Supported Apps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="selinux_configuration.html">SELinux Configuration</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Nginx Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#nextcloud-in-the-webroot-of-nginx">Nextcloud in the webroot of nginx</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nextcloud-in-a-subdir-of-nginx">Nextcloud in a subdir of nginx</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#tips-and-tricks">Tips and Tricks</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_server/index.html">Server Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_user/index.html">User Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_files/index.html">File Sharing and Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../file_workflows/index.html">File workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_database/index.html">Database Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_mimetypes/index.html">Mimetypes Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../maintenance/index.html">Maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../issues/index.html">Issues and Troubleshooting</a></li>
+</ul>
+
+								</ul>
+							</div>
+					</div>
+				</div>
+        
+
+				<div class="col-md-9">
+					<div class="page-content">
+            
+<ul class="prevnext-title list-unstyled list-inline">
+  <li class="prev">
+    <a href="selinux_configuration.html" title="Previous Chapter: SELinux Configuration"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; SELinux Configuration</span>
+    </a>
+  </li>
+  <li class="next">
+    <a href="../configuration_server/index.html" title="Next Chapter: Server Configuration"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">Server Configuration &raquo;</span>
+    </a>
+  </li>
+</ul>
+						
+  <div class="section" id="nginx-configuration">
+<h1>Nginx Configuration<a class="headerlink" href="#nginx-configuration" title="Permalink to this headline">¶</a></h1>
+<p>This page covers example Nginx configurations to use with running an Nextcloud
+server. This page is community-maintained. (Thank you, contributors!)</p>
+<ul class="simple">
+<li>You need to insert the following code into <strong>your Nginx configuration file.</strong></li>
+<li>Adjust <strong>server_name</strong>, <strong>root</strong>, <strong>ssl_certificate</strong> and
+<strong>ssl_certificate_key</strong> to suit your needs.</li>
+<li>Make sure your SSL certificates are readable by the server (see <a class="reference external" href="http://wiki.nginx.org/HttpSslModule">nginx HTTP
+SSL Module documentation</a>).</li>
+<li><code class="docutils literal"><span class="pre">add_header</span></code> statements are only taken from the current level and are not
+cascaded from or to a different level. All necessary <code class="docutils literal"><span class="pre">add_header</span></code>
+statements must be defined in each level needed. For better readability it
+is possible to move <em>common</em> add header statements into a separate file
+and include that file wherever necessary. However, each <code class="docutils literal"><span class="pre">add_header</span></code>
+statement must be written in a single line to prevent connection problems
+with sync clients.</li>
+<li>Be careful about line breaks if you copy the examples, as long lines may be
+broken for page formatting.</li>
+<li>Some environments might need a <code class="docutils literal"><span class="pre">cgi.fix_pathinfo</span></code> set to <code class="docutils literal"><span class="pre">1</span></code> in their
+<code class="docutils literal"><span class="pre">php.ini</span></code>.</li>
+</ul>
+<p>Thanks to <a class="reference external" href="https://github.com/josh4trunks">&#64;josh4trunks</a> for providing /
+creating these configuration examples.</p>
+<div class="section" id="nextcloud-in-the-webroot-of-nginx">
+<h2>Nextcloud in the webroot of nginx<a class="headerlink" href="#nextcloud-in-the-webroot-of-nginx" title="Permalink to this headline">¶</a></h2>
+<p>The following configuration should be used when Nextcloud is placed in the
+webroot of your nginx installation. In this example it is
+<code class="docutils literal"><span class="pre">/var/www/nextcloud</span></code> and it is accessed via <code class="docutils literal"><span class="pre">http(s)://cloud.example.com</span></code></p>
+<div class="highlight-nginx"><div class="highlight"><pre><span></span><span class="k">upstream</span> <span class="s">php-handler</span> <span class="p">{</span>
+    <span class="kn">server</span> <span class="n">127.0.0.1</span><span class="p">:</span><span class="mi">9000</span><span class="p">;</span>
+    <span class="c1">#server unix:/var/run/php/php7.0-fpm.sock;</span>
+<span class="p">}</span>
+
+<span class="k">server</span> <span class="p">{</span>
+    <span class="kn">listen</span> <span class="mi">80</span><span class="p">;</span>
+    <span class="kn">listen</span> <span class="s">[::]:80</span><span class="p">;</span>
+    <span class="kn">server_name</span> <span class="s">cloud.example.com</span><span class="p">;</span>
+    <span class="c1"># enforce https</span>
+    <span class="kn">return</span> <span class="mi">301</span> <span class="s">https://</span><span class="nv">$server_name$request_uri</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">server</span> <span class="p">{</span>
+    <span class="kn">listen</span> <span class="mi">443</span> <span class="s">ssl</span> <span class="s">http2</span><span class="p">;</span>
+    <span class="kn">listen</span> <span class="s">[::]:443</span> <span class="s">ssl</span> <span class="s">http2</span><span class="p">;</span>
+    <span class="kn">server_name</span> <span class="s">cloud.example.com</span><span class="p">;</span>
+
+    <span class="kn">ssl_certificate</span> <span class="s">/etc/ssl/nginx/cloud.example.com.crt</span><span class="p">;</span>
+    <span class="kn">ssl_certificate_key</span> <span class="s">/etc/ssl/nginx/cloud.example.com.key</span><span class="p">;</span>
+
+    <span class="c1"># Add headers to serve security related headers</span>
+    <span class="c1"># Before enabling Strict-Transport-Security headers please read into this</span>
+    <span class="c1"># topic first.</span>
+    <span class="c1"># add_header Strict-Transport-Security &quot;max-age=15768000;</span>
+    <span class="c1"># includeSubDomains; preload;&quot;;</span>
+    <span class="c1">#</span>
+    <span class="c1"># WARNING: Only add the preload option once you read about</span>
+    <span class="c1"># the consequences in https://hstspreload.org/. This option</span>
+    <span class="c1"># will add the domain to a hardcoded list that is shipped</span>
+    <span class="c1"># in all major browsers and getting removed from this list</span>
+    <span class="c1"># could take several months.</span>
+    <span class="kn">add_header</span> <span class="s">X-Content-Type-Options</span> <span class="s">nosniff</span><span class="p">;</span>
+    <span class="kn">add_header</span> <span class="s">X-XSS-Protection</span> <span class="s">&quot;1</span><span class="p">;</span> <span class="kn">mode=block&quot;</span><span class="p">;</span>
+    <span class="kn">add_header</span> <span class="s">X-Robots-Tag</span> <span class="s">none</span><span class="p">;</span>
+    <span class="kn">add_header</span> <span class="s">X-Download-Options</span> <span class="s">noopen</span><span class="p">;</span>
+    <span class="kn">add_header</span> <span class="s">X-Permitted-Cross-Domain-Policies</span> <span class="s">none</span><span class="p">;</span>
+
+    <span class="c1"># Path to the root of your installation</span>
+    <span class="kn">root</span> <span class="s">/var/www/nextcloud/</span><span class="p">;</span>
+
+    <span class="kn">location</span> <span class="p">=</span> <span class="s">/robots.txt</span> <span class="p">{</span>
+        <span class="kn">allow</span> <span class="s">all</span><span class="p">;</span>
+        <span class="kn">log_not_found</span> <span class="no">off</span><span class="p">;</span>
+        <span class="kn">access_log</span> <span class="no">off</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1"># The following 2 rules are only needed for the user_webfinger app.</span>
+    <span class="c1"># Uncomment it if you&#39;re planning to use this app.</span>
+    <span class="c1">#rewrite ^/.well-known/host-meta /public.php?service=host-meta last;</span>
+    <span class="c1">#rewrite ^/.well-known/host-meta.json /public.php?service=host-meta-json</span>
+    <span class="c1"># last;</span>
+
+    <span class="kn">location</span> <span class="p">=</span> <span class="s">/.well-known/carddav</span> <span class="p">{</span>
+      <span class="kn">return</span> <span class="mi">301</span> <span class="nv">$scheme://$host/remote.php/dav</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kn">location</span> <span class="p">=</span> <span class="s">/.well-known/caldav</span> <span class="p">{</span>
+      <span class="kn">return</span> <span class="mi">301</span> <span class="nv">$scheme://$host/remote.php/dav</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1"># set max upload size</span>
+    <span class="kn">client_max_body_size</span> <span class="s">512M</span><span class="p">;</span>
+    <span class="kn">fastcgi_buffers</span> <span class="mi">64</span> <span class="s">4K</span><span class="p">;</span>
+
+    <span class="c1"># Enable gzip but do not remove ETag headers</span>
+    <span class="kn">gzip</span> <span class="no">on</span><span class="p">;</span>
+    <span class="kn">gzip_vary</span> <span class="no">on</span><span class="p">;</span>
+    <span class="kn">gzip_comp_level</span> <span class="mi">4</span><span class="p">;</span>
+    <span class="kn">gzip_min_length</span> <span class="mi">256</span><span class="p">;</span>
+    <span class="kn">gzip_proxied</span> <span class="s">expired</span> <span class="s">no-cache</span> <span class="s">no-store</span> <span class="s">private</span> <span class="s">no_last_modified</span> <span class="s">no_etag</span> <span class="s">auth</span><span class="p">;</span>
+    <span class="kn">gzip_types</span> <span class="s">application/atom+xml</span> <span class="s">application/javascript</span> <span class="s">application/json</span> <span class="s">application/ld+json</span> <span class="s">application/manifest+json</span> <span class="s">application/rss+xml</span> <span class="s">application/vnd.geo+json</span> <span class="s">application/vnd.ms-fontobject</span> <span class="s">application/x-font-ttf</span> <span class="s">application/x-web-app-manifest+json</span> <span class="s">application/xhtml+xml</span> <span class="s">application/xml</span> <span class="s">font/opentype</span> <span class="s">image/bmp</span> <span class="s">image/svg+xml</span> <span class="s">image/x-icon</span> <span class="s">text/cache-manifest</span> <span class="s">text/css</span> <span class="s">text/plain</span> <span class="s">text/vcard</span> <span class="s">text/vnd.rim.location.xloc</span> <span class="s">text/vtt</span> <span class="s">text/x-component</span> <span class="s">text/x-cross-domain-policy</span><span class="p">;</span>
+
+    <span class="c1"># Uncomment if your server is build with the ngx_pagespeed module</span>
+    <span class="c1"># This module is currently not supported.</span>
+    <span class="c1">#pagespeed off;</span>
+
+    <span class="kn">location</span> <span class="s">/</span> <span class="p">{</span>
+        <span class="kn">rewrite</span> <span class="s">^</span> <span class="s">/index.php</span><span class="nv">$request_uri</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kn">location</span> <span class="p">~</span> <span class="sr">^/(?:build|tests|config|lib|3rdparty|templates|data)/</span> <span class="p">{</span>
+        <span class="kn">deny</span> <span class="s">all</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kn">location</span> <span class="p">~</span> <span class="sr">^/(?:\.|autotest|occ|issue|indie|db_|console)</span> <span class="p">{</span>
+        <span class="kn">deny</span> <span class="s">all</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kn">location</span> <span class="p">~</span> <span class="sr">^/(?:index|remote|public|cron|core/ajax/update|status|ocs/v[12]|updater/.+|ocs-provider/.+)\.php(?:$|/)</span> <span class="p">{</span>
+        <span class="kn">fastcgi_split_path_info</span> <span class="s">^(.+?\.php)(/.*)</span>$<span class="p">;</span>
+        <span class="kn">include</span> <span class="s">fastcgi_params</span><span class="p">;</span>
+        <span class="kn">fastcgi_param</span> <span class="s">SCRIPT_FILENAME</span> <span class="nv">$document_root$fastcgi_script_name</span><span class="p">;</span>
+        <span class="kn">fastcgi_param</span> <span class="s">PATH_INFO</span> <span class="nv">$fastcgi_path_info</span><span class="p">;</span>
+        <span class="kn">fastcgi_param</span> <span class="s">HTTPS</span> <span class="no">on</span><span class="p">;</span>
+        <span class="c1">#Avoid sending the security headers twice</span>
+        <span class="kn">fastcgi_param</span> <span class="s">modHeadersAvailable</span> <span class="s">true</span><span class="p">;</span>
+        <span class="kn">fastcgi_param</span> <span class="s">front_controller_active</span> <span class="s">true</span><span class="p">;</span>
+        <span class="kn">fastcgi_pass</span> <span class="s">php-handler</span><span class="p">;</span>
+        <span class="kn">fastcgi_intercept_errors</span> <span class="no">on</span><span class="p">;</span>
+        <span class="kn">fastcgi_request_buffering</span> <span class="no">off</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kn">location</span> <span class="p">~</span> <span class="sr">^/(?:updater|ocs-provider)(?:$|/)</span> <span class="p">{</span>
+        <span class="kn">try_files</span> <span class="nv">$uri/</span> <span class="p">=</span><span class="mi">404</span><span class="p">;</span>
+        <span class="kn">index</span> <span class="s">index.php</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1"># Adding the cache control header for js and css files</span>
+    <span class="c1"># Make sure it is BELOW the PHP block</span>
+    <span class="kn">location</span> <span class="p">~</span> <span class="sr">\.(?:css|js|woff|svg|gif)$</span> <span class="p">{</span>
+        <span class="kn">try_files</span> <span class="nv">$uri</span> <span class="s">/index.php</span><span class="nv">$request_uri</span><span class="p">;</span>
+        <span class="kn">add_header</span> <span class="s">Cache-Control</span> <span class="s">&quot;public,</span> <span class="s">max-age=15778463&quot;</span><span class="p">;</span>
+        <span class="c1"># Add headers to serve security related headers (It is intended to</span>
+        <span class="c1"># have those duplicated to the ones above)</span>
+        <span class="c1"># Before enabling Strict-Transport-Security headers please read into</span>
+        <span class="c1"># this topic first.</span>
+        <span class="c1"># add_header Strict-Transport-Security &quot;max-age=15768000; includeSubDomains; preload;&quot;;</span>
+        <span class="c1">#</span>
+        <span class="c1"># WARNING: Only add the preload option once you read about</span>
+        <span class="c1"># the consequences in https://hstspreload.org/. This option</span>
+        <span class="c1"># will add the domain to a hardcoded list that is shipped</span>
+        <span class="c1"># in all major browsers and getting removed from this list</span>
+        <span class="c1"># could take several months.</span>
+        <span class="kn">add_header</span> <span class="s">X-Content-Type-Options</span> <span class="s">nosniff</span><span class="p">;</span>
+        <span class="kn">add_header</span> <span class="s">X-XSS-Protection</span> <span class="s">&quot;1</span><span class="p">;</span> <span class="kn">mode=block&quot;</span><span class="p">;</span>
+        <span class="kn">add_header</span> <span class="s">X-Robots-Tag</span> <span class="s">none</span><span class="p">;</span>
+        <span class="kn">add_header</span> <span class="s">X-Download-Options</span> <span class="s">noopen</span><span class="p">;</span>
+        <span class="kn">add_header</span> <span class="s">X-Permitted-Cross-Domain-Policies</span> <span class="s">none</span><span class="p">;</span>
+        <span class="c1"># Optional: Don&#39;t log access to assets</span>
+        <span class="kn">access_log</span> <span class="no">off</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kn">location</span> <span class="p">~</span> <span class="sr">\.(?:png|html|ttf|ico|jpg|jpeg)$</span> <span class="p">{</span>
+        <span class="kn">try_files</span> <span class="nv">$uri</span> <span class="s">/index.php</span><span class="nv">$request_uri</span><span class="p">;</span>
+        <span class="c1"># Optional: Don&#39;t log access to other assets</span>
+        <span class="kn">access_log</span> <span class="no">off</span><span class="p">;</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="nextcloud-in-a-subdir-of-nginx">
+<h2>Nextcloud in a subdir of nginx<a class="headerlink" href="#nextcloud-in-a-subdir-of-nginx" title="Permalink to this headline">¶</a></h2>
+<p>The following config should be used when Nextcloud is placed within a subdir of
+your nginx installation.</p>
+<div class="highlight-nginx"><div class="highlight"><pre><span></span><span class="k">upstream</span> <span class="s">php-handler</span> <span class="p">{</span>
+    <span class="kn">server</span> <span class="n">127.0.0.1</span><span class="p">:</span><span class="mi">9000</span><span class="p">;</span>
+    <span class="c1">#server unix:/var/run/php/php7.0-fpm.sock;</span>
+<span class="p">}</span>
+
+<span class="k">server</span> <span class="p">{</span>
+    <span class="kn">listen</span> <span class="mi">80</span><span class="p">;</span>
+    <span class="kn">listen</span> <span class="s">[::]:80</span><span class="p">;</span>
+    <span class="kn">server_name</span> <span class="s">cloud.example.com</span><span class="p">;</span>
+    <span class="c1"># enforce https</span>
+    <span class="kn">return</span> <span class="mi">301</span> <span class="s">https://</span><span class="nv">$server_name$request_uri</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="k">server</span> <span class="p">{</span>
+    <span class="kn">listen</span> <span class="mi">443</span> <span class="s">ssl</span> <span class="s">http2</span><span class="p">;</span>
+    <span class="kn">listen</span> <span class="s">[::]:443</span> <span class="s">ssl</span> <span class="s">http2</span><span class="p">;</span>
+    <span class="kn">server_name</span> <span class="s">cloud.example.com</span><span class="p">;</span>
+
+    <span class="kn">ssl_certificate</span> <span class="s">/etc/ssl/nginx/cloud.example.com.crt</span><span class="p">;</span>
+    <span class="kn">ssl_certificate_key</span> <span class="s">/etc/ssl/nginx/cloud.example.com.key</span><span class="p">;</span>
+
+    <span class="c1"># Add headers to serve security related headers</span>
+    <span class="c1"># Before enabling Strict-Transport-Security headers please read into this</span>
+    <span class="c1"># topic first.</span>
+    <span class="c1">#add_header Strict-Transport-Security &quot;max-age=15768000; includeSubDomains; preload;&quot;;</span>
+    <span class="kn">add_header</span> <span class="s">X-Content-Type-Options</span> <span class="s">nosniff</span><span class="p">;</span>
+    <span class="kn">add_header</span> <span class="s">X-XSS-Protection</span> <span class="s">&quot;1</span><span class="p">;</span> <span class="kn">mode=block&quot;</span><span class="p">;</span>
+    <span class="kn">add_header</span> <span class="s">X-Robots-Tag</span> <span class="s">none</span><span class="p">;</span>
+    <span class="kn">add_header</span> <span class="s">X-Download-Options</span> <span class="s">noopen</span><span class="p">;</span>
+    <span class="kn">add_header</span> <span class="s">X-Permitted-Cross-Domain-Policies</span> <span class="s">none</span><span class="p">;</span>
+
+    <span class="c1"># Path to the root of your installation</span>
+    <span class="kn">root</span> <span class="s">/var/www/</span><span class="p">;</span>
+
+    <span class="kn">location</span> <span class="p">=</span> <span class="s">/robots.txt</span> <span class="p">{</span>
+        <span class="kn">allow</span> <span class="s">all</span><span class="p">;</span>
+        <span class="kn">log_not_found</span> <span class="no">off</span><span class="p">;</span>
+        <span class="kn">access_log</span> <span class="no">off</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="c1"># The following 2 rules are only needed for the user_webfinger app.</span>
+    <span class="c1"># Uncomment it if you&#39;re planning to use this app.</span>
+    <span class="c1"># rewrite ^/.well-known/host-meta /nextcloud/public.php?service=host-meta</span>
+    <span class="c1"># last;</span>
+    <span class="c1">#rewrite ^/.well-known/host-meta.json</span>
+    <span class="c1"># /nextcloud/public.php?service=host-meta-json last;</span>
+
+    <span class="kn">location</span> <span class="p">=</span> <span class="s">/.well-known/carddav</span> <span class="p">{</span>
+      <span class="kn">return</span> <span class="mi">301</span> <span class="nv">$scheme://$host/nextcloud/remote.php/dav</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="kn">location</span> <span class="p">=</span> <span class="s">/.well-known/caldav</span> <span class="p">{</span>
+      <span class="kn">return</span> <span class="mi">301</span> <span class="nv">$scheme://$host/nextcloud/remote.php/dav</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="kn">location</span> <span class="s">/.well-known/acme-challenge</span> <span class="p">{</span> <span class="p">}</span>
+
+    <span class="kn">location</span> <span class="s">^~</span> <span class="s">/nextcloud</span> <span class="p">{</span>
+
+        <span class="c1"># set max upload size</span>
+        <span class="kn">client_max_body_size</span> <span class="s">512M</span><span class="p">;</span>
+        <span class="kn">fastcgi_buffers</span> <span class="mi">64</span> <span class="s">4K</span><span class="p">;</span>
+
+        <span class="c1"># Enable gzip but do not remove ETag headers</span>
+        <span class="kn">gzip</span> <span class="no">on</span><span class="p">;</span>
+        <span class="kn">gzip_vary</span> <span class="no">on</span><span class="p">;</span>
+        <span class="kn">gzip_comp_level</span> <span class="mi">4</span><span class="p">;</span>
+        <span class="kn">gzip_min_length</span> <span class="mi">256</span><span class="p">;</span>
+        <span class="kn">gzip_proxied</span> <span class="s">expired</span> <span class="s">no-cache</span> <span class="s">no-store</span> <span class="s">private</span> <span class="s">no_last_modified</span> <span class="s">no_etag</span> <span class="s">auth</span><span class="p">;</span>
+        <span class="kn">gzip_types</span> <span class="s">application/atom+xml</span> <span class="s">application/javascript</span> <span class="s">application/json</span> <span class="s">application/ld+json</span> <span class="s">application/manifest+json</span> <span class="s">application/rss+xml</span> <span class="s">application/vnd.geo+json</span> <span class="s">application/vnd.ms-fontobject</span> <span class="s">application/x-font-ttf</span> <span class="s">application/x-web-app-manifest+json</span> <span class="s">application/xhtml+xml</span> <span class="s">application/xml</span> <span class="s">font/opentype</span> <span class="s">image/bmp</span> <span class="s">image/svg+xml</span> <span class="s">image/x-icon</span> <span class="s">text/cache-manifest</span> <span class="s">text/css</span> <span class="s">text/plain</span> <span class="s">text/vcard</span> <span class="s">text/vnd.rim.location.xloc</span> <span class="s">text/vtt</span> <span class="s">text/x-component</span> <span class="s">text/x-cross-domain-policy</span><span class="p">;</span>
+
+        <span class="c1"># Uncomment if your server is build with the ngx_pagespeed module</span>
+        <span class="c1"># This module is currently not supported.</span>
+        <span class="c1">#pagespeed off;</span>
+
+        <span class="kn">location</span> <span class="s">/nextcloud</span> <span class="p">{</span>
+            <span class="kn">rewrite</span> <span class="s">^</span> <span class="s">/nextcloud/index.php</span><span class="nv">$request_uri</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="kn">location</span> <span class="p">~</span> <span class="sr">^/nextcloud/(?:build|tests|config|lib|3rdparty|templates|data)/</span> <span class="p">{</span>
+            <span class="kn">deny</span> <span class="s">all</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="kn">location</span> <span class="p">~</span> <span class="sr">^/nextcloud/(?:\.|autotest|occ|issue|indie|db_|console)</span> <span class="p">{</span>
+            <span class="kn">deny</span> <span class="s">all</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="kn">location</span> <span class="p">~</span> <span class="sr">^/nextcloud/(?:index|remote|public|cron|core/ajax/update|status|ocs/v[12]|updater/.+|ocs-provider/.+)\.php(?:$|/)</span> <span class="p">{</span>
+            <span class="kn">fastcgi_split_path_info</span> <span class="s">^(.+?\.php)(/.*)</span>$<span class="p">;</span>
+            <span class="kn">include</span> <span class="s">fastcgi_params</span><span class="p">;</span>
+            <span class="kn">fastcgi_param</span> <span class="s">SCRIPT_FILENAME</span> <span class="nv">$document_root$fastcgi_script_name</span><span class="p">;</span>
+            <span class="kn">fastcgi_param</span> <span class="s">PATH_INFO</span> <span class="nv">$fastcgi_path_info</span><span class="p">;</span>
+            <span class="kn">fastcgi_param</span> <span class="s">HTTPS</span> <span class="no">on</span><span class="p">;</span>
+            <span class="c1">#Avoid sending the security headers twice</span>
+            <span class="kn">fastcgi_param</span> <span class="s">modHeadersAvailable</span> <span class="s">true</span><span class="p">;</span>
+            <span class="kn">fastcgi_param</span> <span class="s">front_controller_active</span> <span class="s">true</span><span class="p">;</span>
+            <span class="kn">fastcgi_pass</span> <span class="s">php-handler</span><span class="p">;</span>
+            <span class="kn">fastcgi_intercept_errors</span> <span class="no">on</span><span class="p">;</span>
+            <span class="kn">fastcgi_request_buffering</span> <span class="no">off</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="kn">location</span> <span class="p">~</span> <span class="sr">^/nextcloud/(?:updater|ocs-provider)(?:$|/)</span> <span class="p">{</span>
+            <span class="kn">try_files</span> <span class="nv">$uri/</span> <span class="p">=</span><span class="mi">404</span><span class="p">;</span>
+            <span class="kn">index</span> <span class="s">index.php</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="c1"># Adding the cache control header for js and css files</span>
+        <span class="c1"># Make sure it is BELOW the PHP block</span>
+        <span class="kn">location</span> <span class="p">~</span> <span class="sr">\.(?:css|js|woff|svg|gif)$</span> <span class="p">{</span>
+            <span class="kn">try_files</span> <span class="nv">$uri</span> <span class="s">/nextcloud/index.php</span><span class="nv">$request_uri</span><span class="p">;</span>
+            <span class="kn">add_header</span> <span class="s">Cache-Control</span> <span class="s">&quot;public,</span> <span class="s">max-age=15778463&quot;</span><span class="p">;</span>
+            <span class="c1"># Add headers to serve security related headers  (It is intended</span>
+            <span class="c1"># to have those duplicated to the ones above)</span>
+            <span class="c1"># Before enabling Strict-Transport-Security headers please read</span>
+            <span class="c1"># into this topic first.</span>
+            <span class="c1"># add_header Strict-Transport-Security &quot;max-age=15768000;</span>
+            <span class="c1"># includeSubDomains; preload;&quot;;</span>
+            <span class="kn">add_header</span> <span class="s">X-Content-Type-Options</span> <span class="s">nosniff</span><span class="p">;</span>
+            <span class="kn">add_header</span> <span class="s">X-XSS-Protection</span> <span class="s">&quot;1</span><span class="p">;</span> <span class="kn">mode=block&quot;</span><span class="p">;</span>
+            <span class="kn">add_header</span> <span class="s">X-Robots-Tag</span> <span class="s">none</span><span class="p">;</span>
+            <span class="kn">add_header</span> <span class="s">X-Download-Options</span> <span class="s">noopen</span><span class="p">;</span>
+            <span class="kn">add_header</span> <span class="s">X-Permitted-Cross-Domain-Policies</span> <span class="s">none</span><span class="p">;</span>
+            <span class="c1"># Optional: Don&#39;t log access to assets</span>
+            <span class="kn">access_log</span> <span class="no">off</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="kn">location</span> <span class="p">~</span> <span class="sr">\.(?:png|html|ttf|ico|jpg|jpeg)$</span> <span class="p">{</span>
+            <span class="kn">try_files</span> <span class="nv">$uri</span> <span class="s">/nextcloud/index.php</span><span class="nv">$request_uri</span><span class="p">;</span>
+            <span class="c1"># Optional: Don&#39;t log access to other assets</span>
+            <span class="kn">access_log</span> <span class="no">off</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="tips-and-tricks">
+<h2>Tips and Tricks<a class="headerlink" href="#tips-and-tricks" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="suppressing-log-messages">
+<h3>Suppressing Log Messages<a class="headerlink" href="#suppressing-log-messages" title="Permalink to this headline">¶</a></h3>
+<p>If you&#8217;re seeing meaningless messages in your logfile, for example <code class="docutils literal"><span class="pre">client</span>
+<span class="pre">denied</span> <span class="pre">by</span> <span class="pre">server</span> <span class="pre">configuration:</span> <span class="pre">/var/www/data/htaccesstest.txt</span></code>, add this section to
+your nginx configuration to suppress them:</p>
+<div class="highlight-nginx"><div class="highlight"><pre><span></span><span class="k">location</span> <span class="p">=</span> <span class="s">/data/htaccesstest.txt</span> <span class="p">{</span>
+  <span class="kn">allow</span> <span class="s">all</span><span class="p">;</span>
+  <span class="kn">log_not_found</span> <span class="no">off</span><span class="p">;</span>
+  <span class="kn">access_log</span> <span class="no">off</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="javascript-js-or-css-css-files-not-served-properly">
+<h3>JavaScript (.js) or CSS (.css) files not served properly<a class="headerlink" href="#javascript-js-or-css-css-files-not-served-properly" title="Permalink to this headline">¶</a></h3>
+<p>A common issue with custom nginx configs is that JavaScript (.js)
+or CSS (.css) files are not served properly leading to a 404 (File not found)
+error on those files and a broken webinterface.</p>
+<p>This could be caused by the:</p>
+<div class="highlight-nginx"><div class="highlight"><pre><span></span><span class="k">location</span> <span class="p">~</span><span class="sr">*</span> <span class="s">\.(?:css|js)</span>$ <span class="p">{</span>
+</pre></div>
+</div>
+<p>block shown above not located <strong>below</strong> the:</p>
+<div class="highlight-nginx"><div class="highlight"><pre><span></span><span class="k">location</span> <span class="p">~</span> <span class="sr">\.php(?:$|/)</span> <span class="p">{</span>
+</pre></div>
+</div>
+<p>block. Other custom configurations like caching JavaScript (.js)
+or CSS (.css) files via gzip could also cause such issues.</p>
+</div>
+</div>
+</div>
+
+
+            
+<ul class="prevnext-title list-unstyled list-inline">
+  <li class="prev">
+    <a href="selinux_configuration.html" title="Previous Chapter: SELinux Configuration"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; SELinux Configuration</span>
+    </a>
+  </li>
+  <li class="next">
+    <a href="../configuration_server/index.html" title="Next Chapter: Server Configuration"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">Server Configuration &raquo;</span>
+    </a>
+  </li>
+</ul>
+					</div>
+				</div>
+			</div>
+  </main>  
+  </div>
+</div>
+<div class="container">
+<div class="row">
+    <div class="col-lg-12 footer-social-icons">
+      <p class="text-center"><a target="_blank" href="https://plus.google.com/104036748063781940910/about"><img width=50 src="../_static/img/social/googleplus.svg" title="Follow us on Google Plus!" alt="Follow us on Google Plus!"></img></a>
+      <a target="_blank" href="https://www.facebook.com/Nextclouders"><img width=50 src="../_static/img/social/facebook.svg" title="Like our facebook page!" alt="Like our facebook page!"></img></a>
+      <a target="_blank" href="https://twitter.com/Nextclouders"><img width=50 src="../_static/img/social/twitter.svg" title="Subscribe to our twitter channel!" alt="Subscribe to our twitter channel!"></img></a>
+      <a target="_blank" href="https://nextcloud.com/blogfeed"><img class="img-circle" width=50 src="../_static/img/social/rss.svg" title="Subscribe to our news feed!" alt="Subscribe to our news feed!"></img></a>
+      <a target="_blank" href="https://newsletter.nextcloud.com/"><img class="img-circle" width=50 src="../_static/img/social/mail.svg"  title="Subscribe to our newsletter!" alt="Subscribe to our newsletter!"></img></a></p>
+    </div>
+    <div class="text-center">
+      <p>All documentation licensed under the <a href="https://creativecommons.org/licenses/by/3.0/us/">Creative Commons Attribution 3.0 Unported license</a>.</p>
+      <p><a href="https://github.com/nextcloud/documentation/graphs/contributors">See who contributed to our documentation/credits</a>.</p>
+    </div>
+</div>
+</div>
+<footer class="content-info" role="contentinfo">
+<div class="container">
+   <div class="row">
+     <div class="col-sm-2 col-sm-offset-1">
+        <div class="footer-nav">
+          <h4>About Nextcloud</h4>
+          <ul id="menu-about" class="menu">
+            <li><a href="https://nextcloud.com/about/">About us</a></li>
+            <li><a href="https://nextcloud.com/contact/">Contact us</a></li>
+            <li><a href="https://nextcloud.com/press/">Press</a></li>
+            <li><a href="https://nextcloud.com/privacy/">Privacy policy</a></li>
+          </ul>
+        </div>
+     </div>
+     <div class="col-sm-2 col-sm-offset-2">
+     </div>
+     <div class="col-sm-2 col-sm-offset-2">
+        <div class="footer-nav">
+          <h4>Interact</h4>
+          <ul id="menu-interact" class="menu">
+            <li class="menu-irc-channel"><a href="https://webchat.freenode.net/?channels=nextcloud">IRC Channel</a></li>
+            <li class="menu-forums"><a href="https://help.nextcloud.com/">Forums</a></li>
+          </ul>
+        </div>
+     </div>
+   </div>
+   <div class="row">
+      <div class="col-lg-12 footer-text">
+        <p>
+              &copy; Copyright 2012-2017, The Nextcloud developers.  <small><a href="https://nextcloud.com/impressum">Legal Notice</a></small><br/>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+  </body>
+</html>

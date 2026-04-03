@@ -1,0 +1,360 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IRegistrationContext
+====================
+
+
+.. php:namespace:: OCP\AppFramework\Bootstrap
+
+.. php:interface:: IRegistrationContext
+
+
+	.. rst-class:: phpdoc-description
+	
+		| The context object passed to IBootstrap::register
+		
+	
+	:Source:
+		`lib/public/AppFramework/Bootstrap/IRegistrationContext.php#46 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Bootstrap/IRegistrationContext.php#L46>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public registerCapability( $capability)
+	
+		:Source:
+			`lib/public/AppFramework/Bootstrap/IRegistrationContext.php#55 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Bootstrap/IRegistrationContext.php#L55>`_
+		
+		
+		:Parameters:
+			* **$capability** (string)  
+
+		
+		:See: :any:`\\OCP\\AppFramework\\Bootstrap\\IAppContainer::registerCapability <OCP\\AppFramework\\Bootstrap\\IAppContainer::registerCapability>` 
+		:Since: 20.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public registerCrashReporter( $reporterClass)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Register an implementation of \\OCP\\Support\\CrashReport\\IReporter that
+			| will receive unhandled exceptions and throwables
+			
+		
+		:Source:
+			`lib/public/AppFramework/Bootstrap/IRegistrationContext.php#66 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Bootstrap/IRegistrationContext.php#L66>`_
+		
+		
+		:Parameters:
+			* **$reporterClass** (string)  
+
+		
+		:Returns: void 
+		:Since: 20.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public registerDashboardWidget( $widgetClass)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Register an implementation of \\OCP\\Dashboard\\IWidget that
+			| will handle the implementation of a dashboard widget
+			
+		
+		:Source:
+			`lib/public/AppFramework/Bootstrap/IRegistrationContext.php#77 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Bootstrap/IRegistrationContext.php#L77>`_
+		
+		
+		:Parameters:
+			* **$widgetClass** (string)  
+
+		
+		:Returns: void 
+		:Since: 20.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public registerService( $name, $factory, $shared=true)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Register a service
+			
+		
+		:Source:
+			`lib/public/AppFramework/Bootstrap/IRegistrationContext.php#91 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Bootstrap/IRegistrationContext.php#L91>`_
+		
+		
+		:Parameters:
+			* **$name** (string)  
+			* **$factory** (callable)  
+			* **$shared** (bool)  
+
+		
+		:Returns: void 
+		:See: :any:`\\OCP\\AppFramework\\Bootstrap\\IContainer::registerService\(\) <OCP\\AppFramework\\Bootstrap\\IContainer::registerService\(\)>` 
+		:Since: 20.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public registerServiceAlias( $alias, $target)
+	
+		:Source:
+			`lib/public/AppFramework/Bootstrap/IRegistrationContext.php#104 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Bootstrap/IRegistrationContext.php#L104>`_
+		
+		
+		:Parameters:
+			* **$alias** (string)  
+			* **$target** (string)  
+
+		
+		:Returns: void 
+		:See: :any:`\\OCP\\AppFramework\\Bootstrap\\IContainer::registerAlias\(\) <OCP\\AppFramework\\Bootstrap\\IContainer::registerAlias\(\)>` 
+		:Since: 20.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public registerParameter( $name, $value)
+	
+		:Source:
+			`lib/public/AppFramework/Bootstrap/IRegistrationContext.php#115 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Bootstrap/IRegistrationContext.php#L115>`_
+		
+		
+		:Parameters:
+			* **$name** (string)  
+			* **$value** (mixed)  
+
+		
+		:Returns: void 
+		:See: :any:`\\OCP\\AppFramework\\Bootstrap\\IContainer::registerParameter\(\) <OCP\\AppFramework\\Bootstrap\\IContainer::registerParameter\(\)>` 
+		:Since: 20.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public registerEventListener( $event, $listener, $priority=0)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Register a service listener
+			
+			| This is equivalent to calling IEventDispatcher::addServiceListener
+			
+		
+		:Source:
+			`lib/public/AppFramework/Bootstrap/IRegistrationContext.php#134 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Bootstrap/IRegistrationContext.php#L134>`_
+		
+		
+		:Parameters:
+			* **$event** (string)  preferably the fully-qualified class name of the Event sub class to listen for
+			* **$listener** (string)  fully qualified class name (or ::class notation) of a \OCP\EventDispatcher\IEventListener that can be built by the DI container
+			* **$priority** (int)  The higher this value, the earlier an event
+			listener will be triggered in the chain (defaults to 0)
+
+		
+		:See: :any:`\\OCP\\AppFramework\\Bootstrap\\IEventDispatcher::addServiceListener\(\) <OCP\\AppFramework\\Bootstrap\\IEventDispatcher::addServiceListener\(\)>` 
+		:Since: 20.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public registerMiddleware( $class)
+	
+		:Source:
+			`lib/public/AppFramework/Bootstrap/IRegistrationContext.php#145 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Bootstrap/IRegistrationContext.php#L145>`_
+		
+		
+		:Parameters:
+			* **$class** (string)  
+
+		
+		:Returns: void 
+		:See: :any:`\\OCP\\AppFramework\\Bootstrap\\IAppContainer::registerMiddleWare\(\) <OCP\\AppFramework\\Bootstrap\\IAppContainer::registerMiddleWare\(\)>` 
+		:Since: 20.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public registerSearchProvider( $class)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Register a search provider for the unified search
+			
+			| It is allowed to register more than one provider per app as the search
+			| results can go into distinct sections, e\.g\. "Files" and "Files shared
+			| with you" in the Files app\.
+			
+		
+		:Source:
+			`lib/public/AppFramework/Bootstrap/IRegistrationContext.php#161 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Bootstrap/IRegistrationContext.php#L161>`_
+		
+		
+		:Parameters:
+			* **$class** (string)  
+
+		
+		:Returns: void 
+		:Since: 20.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public registerAlternativeLogin( $class)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Register an alternative login option
+			
+			| It is allowed to register more than one option per app\.
+			
+		
+		:Source:
+			`lib/public/AppFramework/Bootstrap/IRegistrationContext.php#175 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Bootstrap/IRegistrationContext.php#L175>`_
+		
+		
+		:Parameters:
+			* **$class** (string)  
+
+		
+		:Returns: void 
+		:Since: 20.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public registerInitialStateProvider( $class)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Register an initialstate provider
+			
+			| It is allowed to register more than one provider per app\.
+			
+		
+		:Source:
+			`lib/public/AppFramework/Bootstrap/IRegistrationContext.php#189 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Bootstrap/IRegistrationContext.php#L189>`_
+		
+		
+		:Parameters:
+			* **$class** (string)  
+
+		
+		:Returns: void 
+		:Since: 21.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public registerWellKnownHandler( $class)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Register a well known protocol handler
+			
+			| It is allowed to register more than one handler per app\.
+			
+		
+		:Source:
+			`lib/public/AppFramework/Bootstrap/IRegistrationContext.php#203 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Bootstrap/IRegistrationContext.php#L203>`_
+		
+		
+		:Parameters:
+			* **$class** (string)  
+
+		
+		:Returns: void 
+		:Since: 21.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public registerTemplateProvider( $providerClass)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Register a custom template provider class that is able to inject custom templates
+			| in addition to the user defined ones
+			
+		
+		:Source:
+			`lib/public/AppFramework/Bootstrap/IRegistrationContext.php#213 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Bootstrap/IRegistrationContext.php#L213>`_
+		
+		
+		:Parameters:
+			* **$providerClass** (string)  
+
+		
+		:Since: 21.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public registerNotifierService( $notifierClass)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Register an INotifier class
+			
+		
+		:Source:
+			`lib/public/AppFramework/Bootstrap/IRegistrationContext.php#222 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Bootstrap/IRegistrationContext.php#L222>`_
+		
+		
+		:Parameters:
+			* **$notifierClass** (string)  
+
+		
+		:Since: 22.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public registerTwoFactorProvider( $twoFactorProviderClass)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Register a two\-factor provider
+			
+		
+		:Source:
+			`lib/public/AppFramework/Bootstrap/IRegistrationContext.php#231 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Bootstrap/IRegistrationContext.php#L231>`_
+		
+		
+		:Parameters:
+			* **$twoFactorProviderClass** (string)  
+
+		
+		:Since: 22.0.0 
+	
+	
+

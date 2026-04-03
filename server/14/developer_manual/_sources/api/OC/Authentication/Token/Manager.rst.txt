@@ -1,0 +1,298 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+Manager
+=======
+
+
+.. php:namespace:: OC\Authentication\Token
+
+.. php:class:: Manager
+
+
+	:Source:
+		`lib/private/Authentication/Token/Manager.php#37 <https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/Manager.php#L37>`_
+	
+	:Implements:
+		:php:interface:`OC\\Authentication\\Token\\IProvider` 
+	
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $defaultTokenProvider, $publicKeyTokenProvider)
+	
+		:Source:
+			`lib/private/Authentication/Token/Manager.php#45 <https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/Manager.php#L45>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public generateToken( $token, $uid, $loginName, $password, $name, $type=\\OC\\Authentication\\Token\\IToken::TEMPORARY\_TOKEN, $remember=\\OC\\Authentication\\Token\\IToken::DO\_NOT\_REMEMBER)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Create and persist a new token
+			
+		
+		:Source:
+			`lib/private/Authentication/Token/Manager.php#62 <https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/Manager.php#L62>`_
+		
+		
+		:Parameters:
+			* **$token** (string)  
+			* **$uid** (string)  
+			* **$loginName** (string)  
+			* **$password** (string | null)  
+			* **$name** (string)  
+			* **$type** (int)  token type
+			* **$remember** (int)  whether the session token should be used for remember-me
+
+		
+		:Returns: :any:`\\OC\\Authentication\\Token\\IToken <OC\\Authentication\\Token\\IToken>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public updateToken( $token)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Save the updated token
+			
+		
+		:Source:
+			`lib/private/Authentication/Token/Manager.php#100 <https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/Manager.php#L100>`_
+		
+		
+		:Parameters:
+			* **$token** (:any:`OC\\Authentication\\Token\\IToken <OC\\Authentication\\Token\\IToken>`)  
+
+		
+		:Throws: :any:`\\OC\\Authentication\\Exceptions\\InvalidTokenException <OC\\Authentication\\Exceptions\\InvalidTokenException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public updateTokenActivity( $token)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Update token activity timestamp
+			
+		
+		:Source:
+			`lib/private/Authentication/Token/Manager.php#111 <https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/Manager.php#L111>`_
+		
+		
+		:Parameters:
+			* **$token** (:any:`OC\\Authentication\\Token\\IToken <OC\\Authentication\\Token\\IToken>`)  
+
+		
+		:Throws: :any:`\\OC\\Authentication\\Exceptions\\InvalidTokenException <OC\\Authentication\\Exceptions\\InvalidTokenException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getTokenByUser( $uid)
+	
+		:Source:
+			`lib/private/Authentication/Token/Manager.php#120 <https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/Manager.php#L120>`_
+		
+		
+		:Parameters:
+			* **$uid** (string)  
+
+		
+		:Returns: :any:`\\OC\\Authentication\\Token\\IToken\[\] <OC\\Authentication\\Token\\IToken>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getToken( $tokenId)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get a token by token
+			
+		
+		:Source:
+			`lib/private/Authentication/Token/Manager.php#135 <https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/Manager.php#L135>`_
+		
+		
+		:Parameters:
+			* **$tokenId** (string)  
+
+		
+		:Throws: :any:`\\OC\\Authentication\\Exceptions\\InvalidTokenException <OC\\Authentication\\Exceptions\\InvalidTokenException>` 
+		:Throws: :any:`\\RuntimeException <RuntimeException>` when OpenSSL reports a problem
+		:Throws: :any:`\\OC\\Authentication\\Exceptions\\InvalidTokenException <OC\\Authentication\\Exceptions\\InvalidTokenException>` 
+		:Throws: :any:`\\RuntimeException <RuntimeException>` when OpenSSL reports a problem
+		:Returns: :any:`\\OC\\Authentication\\Token\\IToken <OC\\Authentication\\Token\\IToken>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getTokenById( $tokenId)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get a token by token id
+			
+		
+		:Source:
+			`lib/private/Authentication/Token/Manager.php#165 <https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/Manager.php#L165>`_
+		
+		
+		:Parameters:
+			* **$tokenId** (int)  
+
+		
+		:Throws: :any:`\\OC\\Authentication\\Exceptions\\InvalidTokenException <OC\\Authentication\\Exceptions\\InvalidTokenException>` 
+		:Returns: :any:`\\OC\\Authentication\\Token\\IToken <OC\\Authentication\\Token\\IToken>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public renewSessionToken( $oldSessionId, $sessionId)
+	
+		:Source:
+			`lib/private/Authentication/Token/Manager.php#183 <https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/Manager.php#L183>`_
+		
+		
+		:Parameters:
+			* **$oldSessionId** (string)  
+			* **$sessionId** (string)  
+
+		
+		:Throws: :any:`\\OC\\Authentication\\Exceptions\\InvalidTokenException <OC\\Authentication\\Exceptions\\InvalidTokenException>` 
+		:Returns: :any:`\\OC\\Authentication\\Token\\IToken <OC\\Authentication\\Token\\IToken>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getPassword( $savedToken, $tokenId)
+	
+		:Source:
+			`lib/private/Authentication/Token/Manager.php#200 <https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/Manager.php#L200>`_
+		
+		
+		:Parameters:
+			* **$savedToken** (:any:`OC\\Authentication\\Token\\IToken <OC\\Authentication\\Token\\IToken>`)  
+			* **$tokenId** (string)  session token
+
+		
+		:Throws: :any:`\\OC\\Authentication\\Exceptions\\InvalidTokenException <OC\\Authentication\\Exceptions\\InvalidTokenException>` 
+		:Throws: :any:`\\OC\\Authentication\\Exceptions\\PasswordlessTokenException <OC\\Authentication\\Exceptions\\PasswordlessTokenException>` 
+		:Throws: :any:`\\OC\\Authentication\\Exceptions\\InvalidTokenException <OC\\Authentication\\Exceptions\\InvalidTokenException>` 
+		:Throws: :any:`\\OC\\Authentication\\Exceptions\\PasswordlessTokenException <OC\\Authentication\\Exceptions\\PasswordlessTokenException>` 
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setPassword( $token, $tokenId, $password)
+	
+		:Source:
+			`lib/private/Authentication/Token/Manager.php#205 <https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/Manager.php#L205>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public invalidateToken( $token)
+	
+		:Source:
+			`lib/private/Authentication/Token/Manager.php#210 <https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/Manager.php#L210>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public invalidateTokenById( $uid, $id)
+	
+		:Source:
+			`lib/private/Authentication/Token/Manager.php#215 <https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/Manager.php#L215>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public invalidateOldTokens()
+	
+		:Source:
+			`lib/private/Authentication/Token/Manager.php#220 <https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/Manager.php#L220>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public rotate( $token, $oldTokenId, $newTokenId)
+	
+		:Source:
+			`lib/private/Authentication/Token/Manager.php#233 <https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/Manager.php#L233>`_
+		
+		
+		:Parameters:
+			* **$token** (:any:`OC\\Authentication\\Token\\IToken <OC\\Authentication\\Token\\IToken>`)  
+			* **$oldTokenId** (string)  
+			* **$newTokenId** (string)  
+
+		
+		:Returns: :any:`\\OC\\Authentication\\Token\\IToken <OC\\Authentication\\Token\\IToken>` 
+		:Throws: :any:`\\OC\\Authentication\\Exceptions\\InvalidTokenException <OC\\Authentication\\Exceptions\\InvalidTokenException>` 
+		:Throws: :any:`\\RuntimeException <RuntimeException>` when OpenSSL reports a problem
+		:Throws: :any:`\\OC\\Authentication\\Exceptions\\InvalidTokenException <OC\\Authentication\\Exceptions\\InvalidTokenException>` 
+		:Throws: :any:`\\RuntimeException <RuntimeException>` when OpenSSL reports a problem
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public markPasswordInvalid( $token, $tokenId)
+	
+		:Source:
+			`lib/private/Authentication/Token/Manager.php#267 <https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/Manager.php#L267>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public updatePasswords( $uid, $password)
+	
+		:Source:
+			`lib/private/Authentication/Token/Manager.php#271 <https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/Manager.php#L271>`_
+		
+		
+	
+	
+

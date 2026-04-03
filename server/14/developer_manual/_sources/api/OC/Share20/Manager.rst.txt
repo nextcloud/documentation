@@ -1,0 +1,1104 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+Manager
+=======
+
+
+.. php:namespace:: OC\Share20
+
+.. php:class:: Manager
+
+
+	.. rst-class:: phpdoc-description
+	
+		| This class is the communication hub for all sharing related operations\.
+		
+	
+	:Source:
+		`lib/private/Share20/Manager.php#79 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share20/Manager.php#L79>`_
+	
+	:Implements:
+		:php:interface:`OCP\\Share\\IManager` 
+	
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $logger, $config, $secureRandom, $hasher, $mountManager, $groupManager, $l, $l10nFactory, $factory, $userManager, $rootFolder, $legacyDispatcher, $mailer, $urlGenerator, $defaults, $dispatcher)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Manager constructor\.
+			
+		
+		:Source:
+			`lib/private/Share20/Manager.php#138 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share20/Manager.php#L138>`_
+		
+		
+		:Parameters:
+			* **$logger** (:any:`OCP\\ILogger <OCP\\ILogger>`)  
+			* **$config** (:any:`OCP\\IConfig <OCP\\IConfig>`)  
+			* **$secureRandom** (:any:`OCP\\Security\\ISecureRandom <OCP\\Security\\ISecureRandom>`)  
+			* **$hasher** (:any:`OCP\\Security\\IHasher <OCP\\Security\\IHasher>`)  
+			* **$mountManager** (:any:`OCP\\Files\\Mount\\IMountManager <OCP\\Files\\Mount\\IMountManager>`)  
+			* **$groupManager** (:any:`OCP\\IGroupManager <OCP\\IGroupManager>`)  
+			* **$l** (:any:`OCP\\IL10N <OCP\\IL10N>`)  
+			* **$l10nFactory** (:any:`OCP\\L10N\\IFactory <OCP\\L10N\\IFactory>`)  
+			* **$factory** (:any:`OCP\\Share\\IProviderFactory <OCP\\Share\\IProviderFactory>`)  
+			* **$userManager** (:any:`OCP\\IUserManager <OCP\\IUserManager>`)  
+			* **$rootFolder** (:any:`OCP\\Files\\IRootFolder <OCP\\Files\\IRootFolder>`)  
+			* **$mailer** (:any:`OCP\\Mail\\IMailer <OCP\\Mail\\IMailer>`)  
+			* **$urlGenerator** (:any:`OCP\\IURLGenerator <OCP\\IURLGenerator>`)  
+			* **$defaults** (:any:`OC\_Defaults <OC\_Defaults>`)  
+
+		
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected verifyPassword( $password)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Verify if a password meets all requirements
+			
+		
+		:Source:
+			`lib/private/Share20/Manager.php#192 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share20/Manager.php#L192>`_
+		
+		
+		:Parameters:
+			* **$password** (string)  
+
+		
+		:Throws: :any:`\\Exception <Exception>` 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected generalCreateChecks( $share)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check for generic requirements before creating a share
+			
+		
+		:Source:
+			`lib/private/Share20/Manager.php#219 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share20/Manager.php#L219>`_
+		
+		
+		:Parameters:
+			* **$share** (:any:`OCP\\Share\\IShare <OCP\\Share\\IShare>`)  
+
+		
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` 
+		:Throws: :any:`\\OCP\\Share\\Exceptions\\GenericShareException <OCP\\Share\\Exceptions\\GenericShareException>` 
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` 
+		:Throws: :any:`\\OCP\\Share\\Exceptions\\GenericShareException <OCP\\Share\\Exceptions\\GenericShareException>` 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected validateExpirationDateInternal( $share)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Validate if the expiration date fits the system settings
+			
+		
+		:Source:
+			`lib/private/Share20/Manager.php#387 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share20/Manager.php#L387>`_
+		
+		
+		:Parameters:
+			* **$share** (:any:`OCP\\Share\\IShare <OCP\\Share\\IShare>`)  The share to validate the expiration date of
+
+		
+		:Returns: :any:`\\OCP\\Share\\IShare <OCP\\Share\\IShare>` The modified share object
+		:Throws: :any:`\\OCP\\Share\\Exceptions\\GenericShareException <OCP\\Share\\Exceptions\\GenericShareException>` 
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` 
+		:Throws: :any:`\\Exception <Exception>` 
+		:Throws: :any:`\\OCP\\Share\\Exceptions\\GenericShareException <OCP\\Share\\Exceptions\\GenericShareException>` 
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` 
+		:Throws: :any:`\\Exception <Exception>` 
+		:Throws: :any:`\\OCP\\Share\\Exceptions\\GenericShareException <OCP\\Share\\Exceptions\\GenericShareException>` 
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` 
+		:Throws: :any:`\\Exception <Exception>` 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected validateExpirationDateLink( $share)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Validate if the expiration date fits the system settings
+			
+		
+		:Source:
+			`lib/private/Share20/Manager.php#476 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share20/Manager.php#L476>`_
+		
+		
+		:Parameters:
+			* **$share** (:any:`OCP\\Share\\IShare <OCP\\Share\\IShare>`)  The share to validate the expiration date of
+
+		
+		:Returns: :any:`\\OCP\\Share\\IShare <OCP\\Share\\IShare>` The modified share object
+		:Throws: :any:`\\OCP\\Share\\Exceptions\\GenericShareException <OCP\\Share\\Exceptions\\GenericShareException>` 
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` 
+		:Throws: :any:`\\Exception <Exception>` 
+		:Throws: :any:`\\OCP\\Share\\Exceptions\\GenericShareException <OCP\\Share\\Exceptions\\GenericShareException>` 
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` 
+		:Throws: :any:`\\Exception <Exception>` 
+		:Throws: :any:`\\OCP\\Share\\Exceptions\\GenericShareException <OCP\\Share\\Exceptions\\GenericShareException>` 
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` 
+		:Throws: :any:`\\Exception <Exception>` 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected userCreateChecks( $share)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check for pre share requirements for user shares
+			
+		
+		:Source:
+			`lib/private/Share20/Manager.php#549 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share20/Manager.php#L549>`_
+		
+		
+		:Parameters:
+			* **$share** (:any:`OCP\\Share\\IShare <OCP\\Share\\IShare>`)  
+
+		
+		:Throws: :any:`\\Exception <Exception>` 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected groupCreateChecks( $share)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check for pre share requirements for group shares
+			
+		
+		:Source:
+			`lib/private/Share20/Manager.php#609 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share20/Manager.php#L609>`_
+		
+		
+		:Parameters:
+			* **$share** (:any:`OCP\\Share\\IShare <OCP\\Share\\IShare>`)  
+
+		
+		:Throws: :any:`\\Exception <Exception>` 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected linkCreateChecks( $share)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check for pre share requirements for link shares
+			
+		
+		:Source:
+			`lib/private/Share20/Manager.php#652 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share20/Manager.php#L652>`_
+		
+		
+		:Parameters:
+			* **$share** (:any:`OCP\\Share\\IShare <OCP\\Share\\IShare>`)  
+
+		
+		:Throws: :any:`\\Exception <Exception>` 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected setLinkParent( $share)
+	
+		.. rst-class:: phpdoc-description
+		
+			| To make sure we don\'t get invisible link shares we set the parent
+			| of a link if it is a reshare\. This is a quick word around
+			| until we can properly display multiple link shares in the UI
+			
+			| See: https://github\.com/owncloud/core/issues/22295
+			| 
+			| FIXME: Remove once multiple link shares can be properly displayed
+			
+		
+		:Source:
+			`lib/private/Share20/Manager.php#676 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share20/Manager.php#L676>`_
+		
+		
+		:Parameters:
+			* **$share** (:any:`OCP\\Share\\IShare <OCP\\Share\\IShare>`)  
+
+		
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected pathCreateChecks( $path)
+	
+		:Source:
+			`lib/private/Share20/Manager.php#691 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share20/Manager.php#L691>`_
+		
+		
+		:Parameters:
+			* **$path** (:any:`OCP\\Files\\File <OCP\\Files\\File>` | :any:`\\OCP\\Files\\Folder <OCP\\Files\\Folder>`)  
+
+		
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected canShare( $share)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check if the user that is sharing can actually share
+			
+		
+		:Source:
+			`lib/private/Share20/Manager.php#709 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share20/Manager.php#L709>`_
+		
+		
+		:Parameters:
+			* **$share** (:any:`OCP\\Share\\IShare <OCP\\Share\\IShare>`)  
+
+		
+		:Throws: :any:`\\Exception <Exception>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public createShare( $share)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Share a path
+			
+		
+		:Source:
+			`lib/private/Share20/Manager.php#728 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share20/Manager.php#L728>`_
+		
+		
+		:Parameters:
+			* **$share** (:any:`OCP\\Share\\IShare <OCP\\Share\\IShare>`)  
+
+		
+		:Returns: :any:`\\OCP\\Share\\IShare <OCP\\Share\\IShare>` The share object
+		:Throws: :any:`\\Exception <Exception>` TODO: handle link share permissions or check them
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected sendMailNotification( $l, $filename, $link, $initiator, $shareWith, $expiration=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Send mail notifications
+			
+			| This method will catch and log mail transmission errors
+			
+		
+		:Source:
+			`lib/private/Share20/Manager.php#881 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share20/Manager.php#L881>`_
+		
+		
+		:Parameters:
+			* **$l** (:any:`OCP\\IL10N <OCP\\IL10N>`)  Language of the recipient
+			* **$filename** (string)  file/folder name
+			* **$link** (string)  link to the file/folder
+			* **$initiator** (string)  user ID of share sender
+			* **$shareWith** (string)  email address of share receiver
+			* **$expiration** (:any:`DateTime <DateTime>` | null)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public updateShare( $share)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Update a share
+			
+		
+		:Source:
+			`lib/private/Share20/Manager.php#956 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share20/Manager.php#L956>`_
+		
+		
+		:Parameters:
+			* **$share** (:any:`OCP\\Share\\IShare <OCP\\Share\\IShare>`)  
+
+		
+		:Returns: :any:`\\OCP\\Share\\IShare <OCP\\Share\\IShare>` The share object
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public acceptShare( $share, $recipientId)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Accept a share\.
+			
+		
+		:Source:
+			`lib/private/Share20/Manager.php#1104 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share20/Manager.php#L1104>`_
+		
+		
+		:Parameters:
+			* **$share** (:any:`OCP\\Share\\IShare <OCP\\Share\\IShare>`)  
+			* **$recipientId** (string)  
+
+		
+		:Returns: :any:`\\OCP\\Share\\IShare <OCP\\Share\\IShare>` The share object
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected deleteChildren( $share)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Delete all the children of this share
+			| FIXME: remove once https://github\.com/owncloud/core/pull/21660 is in
+			
+		
+		:Source:
+			`lib/private/Share20/Manager.php#1166 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share20/Manager.php#L1166>`_
+		
+		
+		:Parameters:
+			* **$share** (:any:`OCP\\Share\\IShare <OCP\\Share\\IShare>`)  
+
+		
+		:Returns: :any:`\\OCP\\Share\\IShare\[\] <OCP\\Share\\IShare>` List of deleted shares
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public deleteShare( $share)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Delete a share
+			
+		
+		:Source:
+			`lib/private/Share20/Manager.php#1190 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share20/Manager.php#L1190>`_
+		
+		
+		:Parameters:
+			* **$share** (:any:`OCP\\Share\\IShare <OCP\\Share\\IShare>`)  
+
+		
+		:Throws: :any:`\\OCP\\Share\\Exceptions\\ShareNotFound <OCP\\Share\\Exceptions\\ShareNotFound>` 
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` 
+		:Throws: :any:`\\OCP\\Share\\Exceptions\\ShareNotFound <OCP\\Share\\Exceptions\\ShareNotFound>` 
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public deleteFromSelf( $share, $recipientId)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Unshare a file as the recipient\.
+			
+			| This can be different from a regular delete for example when one of
+			| the users in a groups deletes that share\. But the provider should
+			| handle this\.
+			
+		
+		:Source:
+			`lib/private/Share20/Manager.php#1227 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share20/Manager.php#L1227>`_
+		
+		
+		:Parameters:
+			* **$share** (:any:`OCP\\Share\\IShare <OCP\\Share\\IShare>`)  
+			* **$recipientId** (string)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public restoreShare( $share, $recipientId)
+	
+		:Source:
+			`lib/private/Share20/Manager.php#1236 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share20/Manager.php#L1236>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public moveShare( $share, $recipientId)
+	
+		:Source:
+			`lib/private/Share20/Manager.php#1246 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share20/Manager.php#L1246>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getSharesInFolder( $userId, $node, $reshares=false)
+	
+		:Source:
+			`lib/private/Share20/Manager.php#1273 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share20/Manager.php#L1273>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getSharesBy( $userId, $shareType, $path=null, $reshares=false, $limit=50, $offset=0)
+	
+		:Source:
+			`lib/private/Share20/Manager.php#1292 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share20/Manager.php#L1292>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getSharedWith( $userId, $shareType, $node=null, $limit=50, $offset=0)
+	
+		:Source:
+			`lib/private/Share20/Manager.php#1365 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share20/Manager.php#L1365>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getDeletedSharedWith( $userId, $shareType, $node=null, $limit=50, $offset=0)
+	
+		:Source:
+			`lib/private/Share20/Manager.php#1389 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share20/Manager.php#L1389>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getShareById( $id, $recipient=null)
+	
+		:Source:
+			`lib/private/Share20/Manager.php#1408 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share20/Manager.php#L1408>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getSharesByPath( $path, $page=0, $perPage=50)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get all the shares for a given path
+			
+		
+		:Source:
+			`lib/private/Share20/Manager.php#1437 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share20/Manager.php#L1437>`_
+		
+		
+		:Parameters:
+			* **$path** (:any:`OCP\\Files\\Node <OCP\\Files\\Node>`)  
+			* **$page** (int)  
+			* **$perPage** (int)  
+
+		
+		:Returns: :any:`\\OCP\\Share\[\] <OCP\\Share>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getShareByToken( $token)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the share by token possible with password
+			
+		
+		:Source:
+			`lib/private/Share20/Manager.php#1449 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share20/Manager.php#L1449>`_
+		
+		
+		:Parameters:
+			* **$token** (string)  
+
+		
+		:Returns: :any:`\\OCP\\Share\\IShare <OCP\\Share\\IShare>` 
+		:Throws: :any:`\\OCP\\Share\\Exceptions\\ShareNotFound <OCP\\Share\\Exceptions\\ShareNotFound>` 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected checkExpireDate( $share)
+	
+		:Source:
+			`lib/private/Share20/Manager.php#1520 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share20/Manager.php#L1520>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public checkPassword( $share, $password)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Verify the password of a public share
+			
+		
+		:Source:
+			`lib/private/Share20/Manager.php#1534 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share20/Manager.php#L1534>`_
+		
+		
+		:Parameters:
+			* **$share** (:any:`OCP\\Share\\IShare <OCP\\Share\\IShare>`)  
+			* **$password** (string)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public userDeleted( $uid)
+	
+		:Source:
+			`lib/private/Share20/Manager.php#1564 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share20/Manager.php#L1564>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public groupDeleted( $gid)
+	
+		:Source:
+			`lib/private/Share20/Manager.php#1580 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share20/Manager.php#L1580>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public userDeletedFromGroup( $uid, $gid)
+	
+		:Source:
+			`lib/private/Share20/Manager.php#1601 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share20/Manager.php#L1601>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getAccessList( $path, $recursive=true, $currentAccess=false)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get access list to a path\. This means
+			| all the users that can access a given path\.
+			
+			| Consider:
+			| \-root
+			| \|\-folder1 \(23\)
+			|  \|\-folder2 \(32\)
+			|   \|\-fileA \(42\)
+			| 
+			| fileA is shared with user1 and user1@server1
+			| folder2 is shared with group2 \(user4 is a member of group2\)
+			| folder1 is shared with user2 \(renamed to "folder \(1\)"\) and user2@server2
+			| 
+			| Then the access list to \'/folder1/folder2/fileA\' with $currentAccess is:
+			| \[
+			|  users  =\> \[
+			|      \'user1\' =\> \[\'node\_id\' =\> 42, \'node\_path\' =\> \'/fileA\'\],
+			|      \'user4\' =\> \[\'node\_id\' =\> 32, \'node\_path\' =\> \'/folder2\'\],
+			|      \'user2\' =\> \[\'node\_id\' =\> 23, \'node\_path\' =\> \'/folder \(1\)\'\],
+			|  \],
+			|  remote =\> \[
+			|      \'user1@server1\' =\> \[\'node\_id\' =\> 42, \'token\' =\> \'SeCr3t\'\],
+			|      \'user2@server2\' =\> \[\'node\_id\' =\> 23, \'token\' =\> \'FooBaR\'\],
+			|  \],
+			|  public =\> bool
+			|  mail =\> bool
+			| \]
+			| 
+			| The access list to \'/folder1/folder2/fileA\' \*\*without\*\* $currentAccess is:
+			| \[
+			|  users  =\> \[\'user1\', \'user2\', \'user4\'\],
+			|  remote =\> bool,
+			|  public =\> bool
+			|  mail =\> bool
+			| \]
+			| 
+			| This is required for encryption/activity
+			
+		
+		:Source:
+			`lib/private/Share20/Manager.php#1650 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share20/Manager.php#L1650>`_
+		
+		
+		:Parameters:
+			* **$path** (:any:`OCP\\Files\\Node <OCP\\Files\\Node>`)  
+			* **$recursive** (bool)  Should we check all parent folders as well
+			* **$currentAccess** (bool)  Ensure the recipient has access to the file (e.g. did not unshare it)
+
+		
+		:Returns: array 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public newShare()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Create a new share
+			
+		
+		:Source:
+			`lib/private/Share20/Manager.php#1740 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share20/Manager.php#L1740>`_
+		
+		
+		:Returns: :any:`\\OCP\\Share\\IShare <OCP\\Share\\IShare>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public shareApiEnabled()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Is the share API enabled
+			
+		
+		:Source:
+			`lib/private/Share20/Manager.php#1749 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share20/Manager.php#L1749>`_
+		
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public shareApiAllowLinks()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Is public link sharing enabled
+			
+		
+		:Source:
+			`lib/private/Share20/Manager.php#1758 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share20/Manager.php#L1758>`_
+		
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public shareApiLinkEnforcePassword()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Is password on public link requires
+			
+		
+		:Source:
+			`lib/private/Share20/Manager.php#1767 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share20/Manager.php#L1767>`_
+		
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public shareApiLinkDefaultExpireDate()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Is default link expire date enabled
+			
+		
+		:Source:
+			`lib/private/Share20/Manager.php#1776 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share20/Manager.php#L1776>`_
+		
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public shareApiLinkDefaultExpireDateEnforced()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Is default link expire date enforced
+			| \`
+			
+		
+		:Source:
+			`lib/private/Share20/Manager.php#1785 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share20/Manager.php#L1785>`_
+		
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public shareApiLinkDefaultExpireDays()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Number of default link expire days
+			
+		
+		:Source:
+			`lib/private/Share20/Manager.php#1795 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share20/Manager.php#L1795>`_
+		
+		
+		:Returns: int 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public shareApiInternalDefaultExpireDate()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Is default internal expire date enabled
+			
+		
+		:Source:
+			`lib/private/Share20/Manager.php#1804 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share20/Manager.php#L1804>`_
+		
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public shareApiRemoteDefaultExpireDate()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Is default remote expire date enabled
+			
+		
+		:Source:
+			`lib/private/Share20/Manager.php#1813 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share20/Manager.php#L1813>`_
+		
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public shareApiInternalDefaultExpireDateEnforced()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Is default expire date enforced
+			
+		
+		:Source:
+			`lib/private/Share20/Manager.php#1822 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share20/Manager.php#L1822>`_
+		
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public shareApiRemoteDefaultExpireDateEnforced()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Is default expire date enforced for remote shares
+			
+		
+		:Source:
+			`lib/private/Share20/Manager.php#1832 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share20/Manager.php#L1832>`_
+		
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public shareApiInternalDefaultExpireDays()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Number of default expire days
+			
+		
+		:Source:
+			`lib/private/Share20/Manager.php#1841 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share20/Manager.php#L1841>`_
+		
+		
+		:Returns: int 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public shareApiRemoteDefaultExpireDays()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Number of default expire days for remote shares
+			
+		
+		:Source:
+			`lib/private/Share20/Manager.php#1849 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share20/Manager.php#L1849>`_
+		
+		
+		:Returns: int 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public shareApiLinkAllowPublicUpload()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Allow public upload on link shares
+			
+		
+		:Source:
+			`lib/private/Share20/Manager.php#1858 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share20/Manager.php#L1858>`_
+		
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public shareWithGroupMembersOnly()
+	
+		.. rst-class:: phpdoc-description
+		
+			| check if user can only share with group members
+			
+		
+		:Source:
+			`lib/private/Share20/Manager.php#1866 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share20/Manager.php#L1866>`_
+		
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public allowGroupSharing()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check if users can share with groups
+			
+		
+		:Source:
+			`lib/private/Share20/Manager.php#1874 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share20/Manager.php#L1874>`_
+		
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public allowEnumeration()
+	
+		:Source:
+			`lib/private/Share20/Manager.php#1878 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share20/Manager.php#L1878>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public limitEnumerationToGroups()
+	
+		:Source:
+			`lib/private/Share20/Manager.php#1882 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share20/Manager.php#L1882>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public limitEnumerationToPhone()
+	
+		:Source:
+			`lib/private/Share20/Manager.php#1887 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share20/Manager.php#L1887>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public allowEnumerationFullMatch()
+	
+		:Source:
+			`lib/private/Share20/Manager.php#1892 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share20/Manager.php#L1892>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public sharingDisabledForUser( $userId)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Copied from \\OC\_Util::isSharingDisabledForUser
+			
+			| TODO: Deprecate fuction from OC\_Util
+			
+		
+		:Source:
+			`lib/private/Share20/Manager.php#1904 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share20/Manager.php#L1904>`_
+		
+		
+		:Parameters:
+			* **$userId** (string)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public outgoingServer2ServerSharesAllowed()
+	
+		:Source:
+			`lib/private/Share20/Manager.php#1941 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share20/Manager.php#L1941>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public outgoingServer2ServerGroupSharesAllowed()
+	
+		:Source:
+			`lib/private/Share20/Manager.php#1948 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share20/Manager.php#L1948>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public shareProviderExists( $shareType)
+	
+		:Source:
+			`lib/private/Share20/Manager.php#1955 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share20/Manager.php#L1955>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public registerShareProvider( $shareProviderClass)
+	
+		:Source:
+			`lib/private/Share20/Manager.php#1965 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share20/Manager.php#L1965>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getAllShares()
+	
+		:Source:
+			`lib/private/Share20/Manager.php#1969 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share20/Manager.php#L1969>`_
+		
+		
+	
+	
+

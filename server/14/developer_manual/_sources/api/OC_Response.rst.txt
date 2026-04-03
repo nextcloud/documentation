@@ -1,0 +1,79 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+OC\_Response
+============
+
+
+.. php:class:: OC_Response
+
+
+	:Source:
+		`lib/private/legacy/OC_Response.php#31 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Response.php#L31>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public static
+
+	.. php:method:: public static setContentDispositionHeader( $filename, $type=attachment)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Sets the content disposition header \(with possible workarounds\)
+			
+		
+		:Source:
+			`lib/private/legacy/OC_Response.php#37 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Response.php#L37>`_
+		
+		
+		:Parameters:
+			* **$filename** (string)  file name
+			* **$type** (string)  disposition type, either 'attachment' or 'inline'
+
+		
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static setContentLengthHeader( $length)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Sets the content length header \(with possible workarounds\)
+			
+		
+		:Source:
+			`lib/private/legacy/OC_Response.php#55 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Response.php#L55>`_
+		
+		
+		:Parameters:
+			* **$length** (string | int | float)  Length to be sent
+
+		
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static addSecurityHeaders()
+	
+		.. rst-class:: phpdoc-description
+		
+			| This function adds some security related headers to all requests served via base\.php
+			| The implementation of this function has to happen here to ensure that all third\-party
+			| components \(e\.g\. SabreDAV\) also benefit from this headers\.
+			
+		
+		:Source:
+			`lib/private/legacy/OC_Response.php#77 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Response.php#L77>`_
+		
+		
+	
+	
+

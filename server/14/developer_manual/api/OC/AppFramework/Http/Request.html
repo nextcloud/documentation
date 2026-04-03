@@ -1,0 +1,1493 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Request &mdash; Nextcloud 14 Developer Manual 14 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../../../',
+              VERSION:'14',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="Output" href="Output.html" />
+    <link rel="prev" title="Http" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html">
+          
+
+          
+            
+            <img src="../../../../_static/logo-white.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../general/index.html">General contributor guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/startapp.html">Create an app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/init.html">Navigation and pre-app configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/info.html">App metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/classloader.html">Classloader</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/request.html">Request lifecycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/routes.html">Routing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/middleware.html">Middleware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/container.html">Container</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/controllers.html">Controllers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/api.html">RESTful API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/templates.html">Templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/js.html">JavaScript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/css.html">CSS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/l10n.html">Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/theming.html">Theming support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/schema.html">Database schema</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/database.html">Database access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/filesystem.html">Filesystem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/appdata.html">AppData</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/users.html">User management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/two-factor-provider.html">Two-factor providers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/hooks.html">Hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/backgroundjobs.html">Background jobs (Cron)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/settings.html">Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/logging.html">Logging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/migrations.html">Migrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/repair.html">Repair steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/publishing.html">App store publishing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/code_signing.html">Code signing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../design/index.html">Design guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../android_library/index.html">Android application development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../client_apis/index.html">Client APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../core/index.html">Core development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bugtracker/index.html">Bugtracker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../commun/index.html">Help and communication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api.html">API Documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">Nextcloud 14 Developer Manual</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../../../api.html">API Documentation</a> &raquo;</li>
+        
+          <li><a href="../../../index.html">\</a> &raquo;</li>
+        
+          <li><a href="../../index.html">OC</a> &raquo;</li>
+        
+          <li><a href="../index.html">AppFramework</a> &raquo;</li>
+        
+          <li><a href="index.html">Http</a> &raquo;</li>
+        
+      <li>Request</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/nextcloud/documentation/edit/stable14/developer_manual/api/OC/AppFramework/Http/Request.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="phpdoctorst section" id="namespace-OC\AppFramework\Http">
+<span id="request"></span><h1>Request<a class="headerlink" href="#namespace-OC\AppFramework\Http" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="OC\AppFramework\Http\Request">
+<em class="property">class </em><code class="descclassname">OC\AppFramework\Http\</code><code class="descname">Request</code><a class="headerlink" href="#OC\AppFramework\Http\Request" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Class for accessing variables in the request.</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">This class provides an immutable object with request variables.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L66">lib/private/AppFramework/Http/Request.php#66</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Implements:</th><td class="field-body"><code class="xref php php-interface docutils literal"><span class="pre">ArrayAccess</span></code> <code class="xref php php-interface docutils literal"><span class="pre">Countable</span></code> <a class="reference internal" href="../../../OCP/IRequest.html#OCP\IRequest" title="OCP\IRequest"><code class="xref php php-interface docutils literal"><span class="pre">OCP\IRequest</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<div class="section" id="constants">
+<h2>Constants<a class="headerlink" href="#constants" title="Permalink to this headline">¶</a></h2>
+<dl class="const">
+<dt>
+<code class="descname">USER_AGENT_IE = /(MSIE)|(Trident)/</code></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L67">lib/private/AppFramework/Http/Request.php#67</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="const">
+<dt>
+<code class="descname">USER_AGENT_MS_EDGE = /^Mozilla\/5\.0 \([^)]+\) AppleWebKit\/[0-9.]+ \(KHTML, like Gecko\) Chrome\/[0-9.]+ (Mobile Safari|Safari)\/[0-9.]+ Edge\/[0-9.]+$/</code></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L69">lib/private/AppFramework/Http/Request.php#69</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="const">
+<dt>
+<code class="descname">USER_AGENT_FIREFOX = /^Mozilla\/5\.0 \([^)]+\) Gecko\/[0-9.]+ Firefox\/[0-9.]+$/</code></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L71">lib/private/AppFramework/Http/Request.php#71</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="const">
+<dt>
+<code class="descname">USER_AGENT_CHROME = /^Mozilla\/5\.0 \([^)]+\) AppleWebKit\/[0-9.]+ \(KHTML, like Gecko\)( Ubuntu Chromium\/[0-9.]+|) Chrome\/[0-9.]+ (Mobile Safari|Safari)\/[0-9.]+( (Vivaldi|Brave|OPR)\/[0-9.]+|)$/</code></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L73">lib/private/AppFramework/Http/Request.php#73</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="const">
+<dt>
+<code class="descname">USER_AGENT_SAFARI = /^Mozilla\/5\.0 \([^)]+\) AppleWebKit\/[0-9.]+ \(KHTML, like Gecko\) Version\/[0-9.]+ Safari\/[0-9.A-Z]+$/</code></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L75">lib/private/AppFramework/Http/Request.php#75</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="const">
+<dt>
+<code class="descname">USER_AGENT_ANDROID_MOBILE_CHROME = #Android.*Chrome/[.0-9]*#</code></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L77">lib/private/AppFramework/Http/Request.php#77</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="const">
+<dt>
+<code class="descname">USER_AGENT_FREEBOX = #^Mozilla/5\.0$#</code></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L78">lib/private/AppFramework/Http/Request.php#78</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="const">
+<dt>
+<code class="descname">REGEX_LOCALHOST = /^(127\.0\.0\.1|localhost|\[::1\])$/</code></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L79">lib/private/AppFramework/Http/Request.php#79</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="const">
+<dt>
+<code class="descname">USER_AGENT_OWNCLOUD_IOS = /^Mozilla\/5\.0 \(iOS\) (ownCloud|Nextcloud)\-iOS.*$/</code></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L84">lib/private/AppFramework/Http/Request.php#84</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Deprecated:</th><td class="field-body">use \OCP\IRequest::USER_AGENT_CLIENT_IOS instead</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="const">
+<dt>
+<code class="descname">USER_AGENT_OWNCLOUD_ANDROID = /^Mozilla\/5\.0 \(Android\) ownCloud\-android.*$/</code></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L88">lib/private/AppFramework/Http/Request.php#88</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Deprecated:</th><td class="field-body">use \OCP\IRequest::USER_AGENT_CLIENT_ANDROID instead</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="const">
+<dt>
+<code class="descname">USER_AGENT_OWNCLOUD_DESKTOP = /^Mozilla\/5\.0 \([A-Za-z ]+\) (mirall|csyncoC)\/.*$/</code></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L92">lib/private/AppFramework/Http/Request.php#92</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Deprecated:</th><td class="field-body">use \OCP\IRequest::USER_AGENT_CLIENT_DESKTOP instead</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h2>
+<dl class="attr">
+<dt id="OC\AppFramework\Http\Request::$inputStream">
+<em class="property">protected </em><em class="property">static </em><em class="property">property </em><code class="descclassname">OC\AppFramework\Http\Request::$</code><code class="descname">inputStream</code><a class="headerlink" href="#OC\AppFramework\Http\Request::$inputStream" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L94">lib/private/AppFramework/Http/Request.php#94</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attr">
+<dt id="OC\AppFramework\Http\Request::$content">
+<em class="property">protected </em><em class="property">static </em><em class="property">property </em><code class="descclassname">OC\AppFramework\Http\Request::$</code><code class="descname">content</code><a class="headerlink" href="#OC\AppFramework\Http\Request::$content" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L95">lib/private/AppFramework/Http/Request.php#95</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attr">
+<dt id="OC\AppFramework\Http\Request::$items">
+<em class="property">protected </em><em class="property">static </em><em class="property">property </em><code class="descclassname">OC\AppFramework\Http\Request::$</code><code class="descname">items</code><a class="headerlink" href="#OC\AppFramework\Http\Request::$items" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L96">lib/private/AppFramework/Http/Request.php#96</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attr">
+<dt id="OC\AppFramework\Http\Request::$allowedKeys">
+<em class="property">protected </em><em class="property">static </em><em class="property">property </em><code class="descclassname">OC\AppFramework\Http\Request::$</code><code class="descname">allowedKeys</code><a class="headerlink" href="#OC\AppFramework\Http\Request::$allowedKeys" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L97">lib/private/AppFramework/Http/Request.php#97</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attr">
+<dt id="OC\AppFramework\Http\Request::$secureRandom">
+<em class="property">protected </em><em class="property">static </em><em class="property">property </em><code class="descclassname">OC\AppFramework\Http\Request::$</code><code class="descname">secureRandom</code><a class="headerlink" href="#OC\AppFramework\Http\Request::$secureRandom" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L110">lib/private/AppFramework/Http/Request.php#110</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body"><a class="reference internal" href="../../../OCP/Security/ISecureRandom.html#OCP\Security\ISecureRandom" title="OCP\Security\ISecureRandom"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Security\ISecureRandom</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attr">
+<dt id="OC\AppFramework\Http\Request::$config">
+<em class="property">protected </em><em class="property">static </em><em class="property">property </em><code class="descclassname">OC\AppFramework\Http\Request::$</code><code class="descname">config</code><a class="headerlink" href="#OC\AppFramework\Http\Request::$config" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L112">lib/private/AppFramework/Http/Request.php#112</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body"><a class="reference internal" href="../../../OCP/IConfig.html#OCP\IConfig" title="OCP\IConfig"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\IConfig</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attr">
+<dt id="OC\AppFramework\Http\Request::$requestId">
+<em class="property">protected </em><em class="property">static </em><em class="property">property </em><code class="descclassname">OC\AppFramework\Http\Request::$</code><code class="descname">requestId</code><a class="headerlink" href="#OC\AppFramework\Http\Request::$requestId" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L114">lib/private/AppFramework/Http/Request.php#114</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body">string</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attr">
+<dt id="OC\AppFramework\Http\Request::$crypto">
+<em class="property">protected </em><em class="property">static </em><em class="property">property </em><code class="descclassname">OC\AppFramework\Http\Request::$</code><code class="descname">crypto</code><a class="headerlink" href="#OC\AppFramework\Http\Request::$crypto" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L116">lib/private/AppFramework/Http/Request.php#116</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body"><a class="reference internal" href="../../../OCP/Security/ICrypto.html#OCP\Security\ICrypto" title="OCP\Security\ICrypto"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Security\ICrypto</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attr">
+<dt id="OC\AppFramework\Http\Request::$csrfTokenManager">
+<em class="property">protected </em><em class="property">static </em><em class="property">property </em><code class="descclassname">OC\AppFramework\Http\Request::$</code><code class="descname">csrfTokenManager</code><a class="headerlink" href="#OC\AppFramework\Http\Request::$csrfTokenManager" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L118">lib/private/AppFramework/Http/Request.php#118</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body"><a class="reference internal" href="../../Security/CSRF/CsrfTokenManager.html#OC\Security\CSRF\CsrfTokenManager" title="OC\Security\CSRF\CsrfTokenManager"><code class="xref any php php-trait docutils literal"><span class="pre">\OC\Security\CSRF\CsrfTokenManager</span></code></a> | null</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attr">
+<dt id="OC\AppFramework\Http\Request::$contentDecoded">
+<em class="property">protected </em><em class="property">static </em><em class="property">property </em><code class="descclassname">OC\AppFramework\Http\Request::$</code><code class="descname">contentDecoded</code><a class="headerlink" href="#OC\AppFramework\Http\Request::$contentDecoded" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L121">lib/private/AppFramework/Http/Request.php#121</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h2>
+<dl class="public method">
+<dt id="OC\AppFramework\Http\Request::__construct">
+<em class="property">public </em><code class="descclassname">OC\AppFramework\Http\Request::</code><code class="descname">__construct</code><span class="sig-paren">(</span><em>$vars</em>, <em>$secureRandom</em>, <em>$config</em>, <em>$csrfTokenManager=null</em>, <em>$stream=php://input</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\AppFramework\Http\Request::__construct" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L140">lib/private/AppFramework/Http/Request.php#140</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$vars</strong> (array)  An associative array with the following optional values:</li>
+</ul>
+<ul class="simple">
+<li>array &#8216;urlParams&#8217; the parameters which were matched from the URL</li>
+<li>array &#8216;get&#8217; the $_GET array</li>
+<li>array|string &#8216;post&#8217; the $_POST array or JSON string</li>
+<li>array &#8216;files&#8217; the $_FILES array</li>
+<li>array &#8216;server&#8217; the $_SERVER array</li>
+<li>array &#8216;env&#8217; the $_ENV array</li>
+<li>array &#8216;cookies&#8217; the $_COOKIE array</li>
+<li>string &#8216;method&#8217; the request method (GET, POST etc)</li>
+<li>string|false &#8216;requesttoken&#8217; the requesttoken or false when not available</li>
+</ul>
+<ul class="simple">
+<li><strong>$secureRandom</strong> (<a class="reference internal" href="../../../OCP/Security/ISecureRandom.html#OCP\Security\ISecureRandom" title="OCP\Security\ISecureRandom"><code class="xref any php php-trait docutils literal"><span class="pre">OCP\Security\ISecureRandom</span></code></a>)</li>
+<li><strong>$config</strong> (<a class="reference internal" href="../../../OCP/IConfig.html#OCP\IConfig" title="OCP\IConfig"><code class="xref any php php-trait docutils literal"><span class="pre">OCP\IConfig</span></code></a>)</li>
+<li><strong>$csrfTokenManager</strong> (<a class="reference internal" href="../../Security/CSRF/CsrfTokenManager.html#OC\Security\CSRF\CsrfTokenManager" title="OC\Security\CSRF\CsrfTokenManager"><code class="xref any php php-trait docutils literal"><span class="pre">OC\Security\CSRF\CsrfTokenManager</span></code></a> | null)</li>
+<li><strong>$stream</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">See:</th><td class="field-body"><p class="first last"><code class="xref any docutils literal"><span class="pre">https://www.php.net/manual/en/reserved.variables.php</span></code></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\AppFramework\Http\Request::setUrlParameters">
+<em class="property">public </em><code class="descclassname">OC\AppFramework\Http\Request::</code><code class="descname">setUrlParameters</code><span class="sig-paren">(</span><em>$parameters</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\AppFramework\Http\Request::setUrlParameters" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L171">lib/private/AppFramework/Http/Request.php#171</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>$parameters</strong> (array)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\AppFramework\Http\Request::count">
+<em class="property">public </em><code class="descclassname">OC\AppFramework\Http\Request::</code><code class="descname">count</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\AppFramework\Http\Request::count" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Countable method</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L183">lib/private/AppFramework/Http/Request.php#183</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\AppFramework\Http\Request::offsetExists">
+<em class="property">public </em><code class="descclassname">OC\AppFramework\Http\Request::</code><code class="descname">offsetExists</code><span class="sig-paren">(</span><em>$offset</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\AppFramework\Http\Request::offsetExists" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">ArrayAccess methods</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">Gives access to the combined GET, POST and urlParams arrays</div>
+<div class="line"><br /></div>
+<div class="line">Examples:</div>
+<div class="line"><br /></div>
+<div class="line">$var = $request[&#8216;myvar&#8217;];</div>
+<div class="line"><br /></div>
+<div class="line">or</div>
+<div class="line"><br /></div>
+<div class="line">if(!isset($request[&#8216;myvar&#8217;]) {</div>
+<div class="line-block">
+<div class="line">// Do something</div>
+</div>
+<div class="line">}</div>
+<div class="line"><br /></div>
+<div class="line">$request[&#8216;myvar&#8217;] = &#8216;something&#8217;; // This throws an exception.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L207">lib/private/AppFramework/Http/Request.php#207</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$offset</strong> (string)  The key to lookup</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\AppFramework\Http\Request::offsetGet">
+<em class="property">public </em><code class="descclassname">OC\AppFramework\Http\Request::</code><code class="descname">offsetGet</code><span class="sig-paren">(</span><em>$offset</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\AppFramework\Http\Request::offsetGet" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L216">lib/private/AppFramework/Http/Request.php#216</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$offset</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">See:</th><td class="field-body"><p class="first"><code class="xref any docutils literal"><span class="pre">\OC\AppFramework\Http\offsetExists</span></code></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">mixed</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\AppFramework\Http\Request::offsetSet">
+<em class="property">public </em><code class="descclassname">OC\AppFramework\Http\Request::</code><code class="descname">offsetSet</code><span class="sig-paren">(</span><em>$offset</em>, <em>$value</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\AppFramework\Http\Request::offsetSet" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L227">lib/private/AppFramework/Http/Request.php#227</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$offset</strong> (string)</li>
+<li><strong>$value</strong> (mixed)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">See:</th><td class="field-body"><p class="first last"><code class="xref any docutils literal"><span class="pre">\OC\AppFramework\Http\offsetExists</span></code></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\AppFramework\Http\Request::offsetUnset">
+<em class="property">public </em><code class="descclassname">OC\AppFramework\Http\Request::</code><code class="descname">offsetUnset</code><span class="sig-paren">(</span><em>$offset</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\AppFramework\Http\Request::offsetUnset" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L235">lib/private/AppFramework/Http/Request.php#235</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$offset</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">See:</th><td class="field-body"><p class="first last"><code class="xref any docutils literal"><span class="pre">\OC\AppFramework\Http\offsetExists</span></code></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\AppFramework\Http\Request::__set">
+<em class="property">public </em><code class="descclassname">OC\AppFramework\Http\Request::</code><code class="descname">__set</code><span class="sig-paren">(</span><em>$name</em>, <em>$value</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\AppFramework\Http\Request::__set" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Magic property accessors</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L244">lib/private/AppFramework/Http/Request.php#244</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>$name</strong> (string)</li>
+<li><strong>$value</strong> (mixed)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\AppFramework\Http\Request::__get">
+<em class="property">public </em><code class="descclassname">OC\AppFramework\Http\Request::</code><code class="descname">__get</code><span class="sig-paren">(</span><em>$name</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\AppFramework\Http\Request::__get" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Access request variables by method and name.</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">Examples:</div>
+<div class="line"><br /></div>
+<div class="line">$request-&gt;post[&#8216;myvar&#8217;]; // Only look for POST variables</div>
+<div class="line">$request-&gt;myvar; or $request-&gt;{&#8216;myvar&#8217;}; or $request-&gt;{$myvar}</div>
+<div class="line">Looks in the combined GET, POST and urlParams array.</div>
+<div class="line"><br /></div>
+<div class="line">If you access e.g. -&gt;post but the current HTTP request method</div>
+<div class="line">is GET a \LogicException will be thrown.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L263">lib/private/AppFramework/Http/Request.php#263</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$name</strong> (string)  The key to look for.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><code class="xref any docutils literal"><span class="pre">\LogicException</span></code></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">mixed | null</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\AppFramework\Http\Request::__isset">
+<em class="property">public </em><code class="descclassname">OC\AppFramework\Http\Request::</code><code class="descname">__isset</code><span class="sig-paren">(</span><em>$name</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\AppFramework\Http\Request::__isset" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L296">lib/private/AppFramework/Http/Request.php#296</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$name</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\AppFramework\Http\Request::__unset">
+<em class="property">public </em><code class="descclassname">OC\AppFramework\Http\Request::</code><code class="descname">__unset</code><span class="sig-paren">(</span><em>$id</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\AppFramework\Http\Request::__unset" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L306">lib/private/AppFramework/Http/Request.php#306</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>$id</strong> (string)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\AppFramework\Http\Request::getHeader">
+<em class="property">public </em><code class="descclassname">OC\AppFramework\Http\Request::</code><code class="descname">getHeader</code><span class="sig-paren">(</span><em>$name</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\AppFramework\Http\Request::getHeader" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Returns the value for a specific http header.</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">This method returns an empty string if the header did not exist.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L318">lib/private/AppFramework/Http/Request.php#318</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$name</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">string</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\AppFramework\Http\Request::getParam">
+<em class="property">public </em><code class="descclassname">OC\AppFramework\Http\Request::</code><code class="descname">getParam</code><span class="sig-paren">(</span><em>$key</em>, <em>$default=null</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\AppFramework\Http\Request::getParam" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Lets you access post and get parameters by the index</div>
+<div class="line">In case of json requests the encoded json body is accessed</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L352">lib/private/AppFramework/Http/Request.php#352</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$key</strong> (string)  the key which you want to access in the URL Parameter</li>
+</ul>
+<p>placeholder, $_POST or $_GET array.
+The priority how they&#8217;re returned is the following:
+1. URL parameters
+2. POST parameters
+3. GET parameters
+* <strong>$default</strong> (mixed)  If the key is not found, this value will be returned</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">mixed the content of the array</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\AppFramework\Http\Request::getParams">
+<em class="property">public </em><code class="descclassname">OC\AppFramework\Http\Request::</code><code class="descname">getParams</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\AppFramework\Http\Request::getParams" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Returns all params that were received, be it from the request</div>
+<div class="line">(as GET or POST) or throuh the URL by the route</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L363">lib/private/AppFramework/Http/Request.php#363</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">array the array with all parameters</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\AppFramework\Http\Request::getMethod">
+<em class="property">public </em><code class="descclassname">OC\AppFramework\Http\Request::</code><code class="descname">getMethod</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\AppFramework\Http\Request::getMethod" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Returns the method of the request</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L371">lib/private/AppFramework/Http/Request.php#371</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">string the method of the request (POST, GET, etc)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\AppFramework\Http\Request::getUploadedFile">
+<em class="property">public </em><code class="descclassname">OC\AppFramework\Http\Request::</code><code class="descname">getUploadedFile</code><span class="sig-paren">(</span><em>$key</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\AppFramework\Http\Request::getUploadedFile" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Shortcut for accessing an uploaded file through the $_FILES array</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L380">lib/private/AppFramework/Http/Request.php#380</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$key</strong> (string)  the key that will be taken from the $_FILES array</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">array the file in the $_FILES element</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\AppFramework\Http\Request::getEnv">
+<em class="property">public </em><code class="descclassname">OC\AppFramework\Http\Request::</code><code class="descname">getEnv</code><span class="sig-paren">(</span><em>$key</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\AppFramework\Http\Request::getEnv" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Shortcut for getting env variables</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L389">lib/private/AppFramework/Http/Request.php#389</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$key</strong> (string)  the key that will be taken from the $_ENV array</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">array the value in the $_ENV element</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\AppFramework\Http\Request::getCookie">
+<em class="property">public </em><code class="descclassname">OC\AppFramework\Http\Request::</code><code class="descname">getCookie</code><span class="sig-paren">(</span><em>$key</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\AppFramework\Http\Request::getCookie" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Shortcut for getting cookie variables</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L398">lib/private/AppFramework/Http/Request.php#398</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$key</strong> (string)  the key that will be taken from the $_COOKIE array</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">string the value in the $_COOKIE element</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="protected method">
+<dt id="OC\AppFramework\Http\Request::getContent">
+<em class="property">protected </em><code class="descclassname">OC\AppFramework\Http\Request::</code><code class="descname">getContent</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\AppFramework\Http\Request::getContent" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Returns the request body content.</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">If the HTTP request method is PUT and the body</div>
+<div class="line">not application/x-www-form-urlencoded or application/json a stream</div>
+<div class="line">resource is returned, otherwise an array.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L413">lib/private/AppFramework/Http/Request.php#413</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">array | string | resource The request body content or a resource to read the body stream.</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Throws:</th><td class="field-body"><code class="xref any docutils literal"><span class="pre">\LogicException</span></code></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="protected method">
+<dt id="OC\AppFramework\Http\Request::decodeContent">
+<em class="property">protected </em><code class="descclassname">OC\AppFramework\Http\Request::</code><code class="descname">decodeContent</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\AppFramework\Http\Request::decodeContent" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Attempt to decode the content and populate parameters</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L438">lib/private/AppFramework/Http/Request.php#438</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\AppFramework\Http\Request::passesCSRFCheck">
+<em class="property">public </em><code class="descclassname">OC\AppFramework\Http\Request::</code><code class="descname">passesCSRFCheck</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\AppFramework\Http\Request::passesCSRFCheck" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Checks if the CSRF check was correct</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L476">lib/private/AppFramework/Http/Request.php#476</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">bool true if CSRF check passed</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\AppFramework\Http\Request::getCookieParams">
+<em class="property">public </em><code class="descclassname">OC\AppFramework\Http\Request::</code><code class="descname">getCookieParams</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\AppFramework\Http\Request::getCookieParams" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Wrapper around session_get_cookie_params</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L521">lib/private/AppFramework/Http/Request.php#521</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">array</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="protected method">
+<dt id="OC\AppFramework\Http\Request::getProtectedCookieName">
+<em class="property">protected </em><code class="descclassname">OC\AppFramework\Http\Request::</code><code class="descname">getProtectedCookieName</code><span class="sig-paren">(</span><em>$name</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\AppFramework\Http\Request::getProtectedCookieName" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Appends the __Host- prefix to the cookie if applicable</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L531">lib/private/AppFramework/Http/Request.php#531</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$name</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">string</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\AppFramework\Http\Request::passesStrictCookieCheck">
+<em class="property">public </em><code class="descclassname">OC\AppFramework\Http\Request::</code><code class="descname">passesStrictCookieCheck</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\AppFramework\Http\Request::passesStrictCookieCheck" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Checks if the strict cookie has been sent with the request if the request</div>
+<div class="line">is including any cookies.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L548">lib/private/AppFramework/Http/Request.php#548</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">bool</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">9.1.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\AppFramework\Http\Request::passesLaxCookieCheck">
+<em class="property">public </em><code class="descclassname">OC\AppFramework\Http\Request::</code><code class="descname">passesLaxCookieCheck</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\AppFramework\Http\Request::passesLaxCookieCheck" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Checks if the lax cookie has been sent with the request if the request</div>
+<div class="line">is including any cookies.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L568">lib/private/AppFramework/Http/Request.php#568</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">bool</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">9.1.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\AppFramework\Http\Request::getId">
+<em class="property">public </em><code class="descclassname">OC\AppFramework\Http\Request::</code><code class="descname">getId</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\AppFramework\Http\Request::getId" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Returns an ID for the request, value is not guaranteed to be unique and is mostly meant for logging</div>
+<div class="line">If `mod_unique_id` is installed this value will be taken.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L586">lib/private/AppFramework/Http/Request.php#586</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">string</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="protected method">
+<dt id="OC\AppFramework\Http\Request::matchesTrustedProxy">
+<em class="property">protected </em><code class="descclassname">OC\AppFramework\Http\Request::</code><code class="descname">matchesTrustedProxy</code><span class="sig-paren">(</span><em>$trustedProxy</em>, <em>$remoteAddress</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\AppFramework\Http\Request::matchesTrustedProxy" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Checks if given $remoteAddress matches given $trustedProxy.</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">If $trustedProxy is an IPv4 IP range given in CIDR notation, true will be returned if</div>
+<div class="line">$remoteAddress is an IPv4 address within that IP range.</div>
+<div class="line">Otherwise $remoteAddress will be compared to $trustedProxy literally and the result</div>
+<div class="line">will be returned.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L607">lib/private/AppFramework/Http/Request.php#607</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">bool true if $remoteAddress matches $trustedProxy, false otherwise</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="protected method">
+<dt id="OC\AppFramework\Http\Request::isTrustedProxy">
+<em class="property">protected </em><code class="descclassname">OC\AppFramework\Http\Request::</code><code class="descname">isTrustedProxy</code><span class="sig-paren">(</span><em>$trustedProxies</em>, <em>$remoteAddress</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\AppFramework\Http\Request::isTrustedProxy" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Checks if given $remoteAddress matches any entry in the given array $trustedProxies.</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">For details regarding what &#8220;match&#8221; means, refer to `matchesTrustedProxy`.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L627">lib/private/AppFramework/Http/Request.php#627</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">bool true if $remoteAddress matches any entry in $trustedProxies, false otherwise</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\AppFramework\Http\Request::getRemoteAddress">
+<em class="property">public </em><code class="descclassname">OC\AppFramework\Http\Request::</code><code class="descname">getRemoteAddress</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\AppFramework\Http\Request::getRemoteAddress" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Returns the remote address, if the connection came from a trusted proxy</div>
+<div class="line">and `forwarded_for_headers` has been configured then the IP address</div>
+<div class="line">specified in this header will be returned instead.</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">Do always use this instead of $_SERVER[&#8216;REMOTE_ADDR&#8217;]</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L644">lib/private/AppFramework/Http/Request.php#644</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">string IP address</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\AppFramework\Http\Request::getServerProtocol">
+<em class="property">public </em><code class="descclassname">OC\AppFramework\Http\Request::</code><code class="descname">getServerProtocol</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\AppFramework\Http\Request::getServerProtocol" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Returns the server protocol. It respects one or more reverse proxies servers</div>
+<div class="line">and load balancers</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L692">lib/private/AppFramework/Http/Request.php#692</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">string Server protocol (http or https)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\AppFramework\Http\Request::getHttpProtocol">
+<em class="property">public </em><code class="descclassname">OC\AppFramework\Http\Request::</code><code class="descname">getHttpProtocol</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\AppFramework\Http\Request::getHttpProtocol" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Returns the used HTTP protocol.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L726">lib/private/AppFramework/Http/Request.php#726</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">string HTTP protocol. HTTP/2, HTTP/1.1 or HTTP/1.0.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\AppFramework\Http\Request::getRequestUri">
+<em class="property">public </em><code class="descclassname">OC\AppFramework\Http\Request::</code><code class="descname">getRequestUri</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\AppFramework\Http\Request::getRequestUri" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Returns the request uri, even if the website uses one or more</div>
+<div class="line">reverse proxies</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L751">lib/private/AppFramework/Http/Request.php#751</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">string</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\AppFramework\Http\Request::getRawPathInfo">
+<em class="property">public </em><code class="descclassname">OC\AppFramework\Http\Request::</code><code class="descname">getRawPathInfo</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\AppFramework\Http\Request::getRawPathInfo" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Get raw PathInfo from request (not urldecoded)</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L764">lib/private/AppFramework/Http/Request.php#764</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><code class="xref any docutils literal"><span class="pre">\Exception</span></code></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">string Path info</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\AppFramework\Http\Request::getPathInfo">
+<em class="property">public </em><code class="descclassname">OC\AppFramework\Http\Request::</code><code class="descname">getPathInfo</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\AppFramework\Http\Request::getPathInfo" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Get PathInfo from request</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L809">lib/private/AppFramework/Http/Request.php#809</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><code class="xref any docutils literal"><span class="pre">\Exception</span></code></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">string | bool Path info or false when not found</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\AppFramework\Http\Request::getScriptName">
+<em class="property">public </em><code class="descclassname">OC\AppFramework\Http\Request::</code><code class="descname">getScriptName</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\AppFramework\Http\Request::getScriptName" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Returns the script name, even if the website uses one or more</div>
+<div class="line">reverse proxies</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L829">lib/private/AppFramework/Http/Request.php#829</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">string the script name</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\AppFramework\Http\Request::isUserAgent">
+<em class="property">public </em><code class="descclassname">OC\AppFramework\Http\Request::</code><code class="descname">isUserAgent</code><span class="sig-paren">(</span><em>$agent</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\AppFramework\Http\Request::isUserAgent" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Checks whether the user agent matches a given regex</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L846">lib/private/AppFramework/Http/Request.php#846</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$agent</strong> (array)  array of agent names</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">bool true if at least one of the given agent matches, false otherwise</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\AppFramework\Http\Request::getInsecureServerHost">
+<em class="property">public </em><code class="descclassname">OC\AppFramework\Http\Request::</code><code class="descname">getInsecureServerHost</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\AppFramework\Http\Request::getInsecureServerHost" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Returns the unverified server host from the headers without checking</div>
+<div class="line">whether it is a trusted domain</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L863">lib/private/AppFramework/Http/Request.php#863</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">string Server host</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\AppFramework\Http\Request::getServerHost">
+<em class="property">public </em><code class="descclassname">OC\AppFramework\Http\Request::</code><code class="descname">getServerHost</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\AppFramework\Http\Request::getServerHost" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Returns the server host from the headers, or the first configured</div>
+<div class="line">trusted domain if the host isn&#8217;t in the trusted list</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L893">lib/private/AppFramework/Http/Request.php#893</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">string Server host</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="Output.html" class="btn btn-neutral float-right" title="Output" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="index.html" class="btn btn-neutral float-left" title="Http" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021 Nextcloud GmbH.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: 14
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/14/developer_manual">14</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/15/developer_manual">15</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/16/developer_manual">16</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/developer_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/developer_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+   
+
+</body>
+</html>

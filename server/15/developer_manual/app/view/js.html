@@ -1,0 +1,372 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>JavaScript &mdash; Nextcloud 15 Developer Manual 15 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'15',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="CSS" href="css.html" />
+    <link rel="prev" title="Templates" href="templates.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html">
+          
+
+          
+            
+            <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../general/index.html">General contributor guidelines</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">App development</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../intro.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial.html">Tutorial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../requests/index.html">Request lifecycle</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">View</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="templates.html">Templates</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">JavaScript</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#sending-the-csrf-token">Sending the CSRF token</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#generating-urls">Generating URLs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#extending-core-parts">Extending core parts</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="css.html">CSS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="l10n.html">Translation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="theming.html">Theming support</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../storage/index.html">Storage and database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html">Changelog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../classloader.html">Classloader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../code_signing.html">Code signing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../info.html">App metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../init.html">Navigation and pre-app configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../publishing.html">App store publishing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../users.html">User management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../two-factor-provider.html">Two-factor providers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../hooks.html">Hooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../backgroundjobs.html">Background jobs (Cron)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../settings.html">Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notifications.html">Notifications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../logging.html">Logging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../repair.html">Repair steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../publicpage.html">Public Pages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../testing.html">Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api.html">API Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../design/index.html">Design guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../android_library/index.html">Android application development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../client_apis/index.html">Client APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../core/index.html">Core development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../bugtracker/index.html">Bugtracker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../commun/index.html">Help and communication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api.html">API Documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Nextcloud 15 Developer Manual</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">App development</a> &raquo;</li>
+        
+          <li><a href="index.html">View</a> &raquo;</li>
+        
+      <li>JavaScript</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/nextcloud/documentation/edit/stable15/developer_manual/app/view/js.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="javascript">
+<h1>JavaScript<a class="headerlink" href="#javascript" title="Permalink to this headline">¶</a></h1>
+<p>The JavaScript files reside in the <strong>js/</strong> folder and should be included in the template:</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="c1">// add one file</span>
+<span class="nx">script</span><span class="p">(</span><span class="s1">&#39;myapp&#39;</span><span class="p">,</span> <span class="s1">&#39;script&#39;</span><span class="p">);</span>  <span class="c1">// adds js/script.js</span>
+
+<span class="c1">// add multiple files in the same app</span>
+<span class="nx">script</span><span class="p">(</span><span class="s1">&#39;myapp&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;script&#39;</span><span class="p">,</span> <span class="s1">&#39;navigation&#39;</span><span class="p">));</span>  <span class="c1">//  adds js/script.js js/navigation.js</span>
+
+<span class="c1">// add vendor files (also allows the array syntax)</span>
+<span class="nx">vendor_script</span><span class="p">(</span><span class="s1">&#39;myapp&#39;</span><span class="p">,</span> <span class="s1">&#39;script&#39;</span><span class="p">);</span>  <span class="c1">//  adds vendor/script.js</span>
+</pre></div>
+</div>
+<p>If the script file is only needed when the file list is displayed, you should
+listen to the <code class="docutils literal"><span class="pre">OCA\Files::loadAdditionalScripts</span></code> event:</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="nv">$eventDispatcher</span> <span class="o">=</span> <span class="nx">\OC</span><span class="o">::</span><span class="nv">$server</span><span class="o">-&gt;</span><span class="na">getEventDispatcher</span><span class="p">();</span>
+<span class="nv">$eventDispatcher</span><span class="o">-&gt;</span><span class="na">addListener</span><span class="p">(</span><span class="s1">&#39;OCA\Files::loadAdditionalScripts&#39;</span><span class="p">,</span> <span class="k">function</span><span class="p">()</span> <span class="p">{</span>
+  <span class="nx">script</span><span class="p">(</span><span class="s1">&#39;myapp&#39;</span><span class="p">,</span> <span class="s1">&#39;script&#39;</span><span class="p">);</span>  <span class="c1">// adds js/script.js</span>
+  <span class="nx">vendor_script</span><span class="p">(</span><span class="s1">&#39;myapp&#39;</span><span class="p">,</span> <span class="s1">&#39;script&#39;</span><span class="p">);</span>  <span class="c1">//  adds vendor/script.js</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<div class="section" id="sending-the-csrf-token">
+<h2>Sending the CSRF token<a class="headerlink" href="#sending-the-csrf-token" title="Permalink to this headline">¶</a></h2>
+<p>If any other JavaScript request library than jQuery is being used, the requests need to send the CSRF token as an HTTP header named <strong>requesttoken</strong>. The token is available in the global variable <strong>oc_requesttoken</strong>.</p>
+<p>For AngularJS the following lines would need to be added:</p>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">app</span> <span class="o">=</span> <span class="nx">angular</span><span class="p">.</span><span class="nx">module</span><span class="p">(</span><span class="s1">&#39;MyApp&#39;</span><span class="p">,</span> <span class="p">[]).</span><span class="nx">config</span><span class="p">([</span><span class="s1">&#39;$httpProvider&#39;</span><span class="p">,</span> <span class="kd">function</span><span class="p">(</span><span class="nx">$httpProvider</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">$httpProvider</span><span class="p">.</span><span class="nx">defaults</span><span class="p">.</span><span class="nx">headers</span><span class="p">.</span><span class="nx">common</span><span class="p">.</span><span class="nx">requesttoken</span> <span class="o">=</span> <span class="nx">oc_requesttoken</span><span class="p">;</span>
+<span class="p">}]);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="generating-urls">
+<h2>Generating URLs<a class="headerlink" href="#generating-urls" title="Permalink to this headline">¶</a></h2>
+<p>To send requests to Nextcloud the base URL where Nextcloud is currently running is needed. To get the base URL use:</p>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">baseUrl</span> <span class="o">=</span> <span class="nx">OC</span><span class="p">.</span><span class="nx">generateUrl</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Full URLs can be generated by using:</p>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">authorUrl</span> <span class="o">=</span> <span class="nx">OC</span><span class="p">.</span><span class="nx">generateUrl</span><span class="p">(</span><span class="s1">&#39;/apps/myapp/authors/1&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="extending-core-parts">
+<h2>Extending core parts<a class="headerlink" href="#extending-core-parts" title="Permalink to this headline">¶</a></h2>
+<p>It is possible to extend components of the core web UI. The following examples
+should show how this is possible.</p>
+<div class="section" id="extending-the-new-menu-in-the-files-app">
+<h3>Extending the &#8220;new&#8221; menu in the files app<a class="headerlink" href="#extending-the-new-menu-in-the-files-app" title="Permalink to this headline">¶</a></h3>
+<div class="versionadded">
+<p><span class="versionmodified">New in version 9.0.</span></p>
+</div>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">myFileMenuPlugin</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">attach</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">menu</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">menu</span><span class="p">.</span><span class="nx">addMenuEntry</span><span class="p">({</span>
+            <span class="nx">id</span><span class="o">:</span> <span class="s1">&#39;abc&#39;</span><span class="p">,</span>
+            <span class="nx">displayName</span><span class="o">:</span> <span class="s1">&#39;Menu display name&#39;</span><span class="p">,</span>
+            <span class="nx">templateName</span><span class="o">:</span> <span class="s1">&#39;templateName.ext&#39;</span><span class="p">,</span>
+            <span class="nx">iconClass</span><span class="o">:</span> <span class="s1">&#39;icon-filetype-text&#39;</span><span class="p">,</span>
+            <span class="nx">fileType</span><span class="o">:</span> <span class="s1">&#39;file&#39;</span><span class="p">,</span>
+            <span class="nx">actionHandler</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+                <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;do something here&#39;</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">});</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+<span class="nx">OC</span><span class="p">.</span><span class="nx">Plugins</span><span class="p">.</span><span class="nx">register</span><span class="p">(</span><span class="s1">&#39;OCA.Files.NewFileMenu&#39;</span><span class="p">,</span> <span class="nx">myFileMenuPlugin</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>This will register a new menu entry in the &#8220;New&#8221; menu of the files app. The
+method <code class="docutils literal"><span class="pre">attach()</span></code> is called once the menu is built. This usually happens right
+after the click on the button.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="css.html" class="btn btn-neutral float-right" title="CSS" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="templates.html" class="btn btn-neutral float-left" title="Templates" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021 Nextcloud GmbH.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: 15
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/15/developer_manual">15</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/16/developer_manual">16</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/17/developer_manual">17</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/developer_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/developer_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+   
+
+</body>
+</html>

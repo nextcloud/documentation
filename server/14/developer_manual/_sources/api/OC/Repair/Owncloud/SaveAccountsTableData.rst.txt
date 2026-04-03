@@ -1,0 +1,158 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+SaveAccountsTableData
+=====================
+
+
+.. php:namespace:: OC\Repair\Owncloud
+
+.. php:class:: SaveAccountsTableData
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Copies the email address from the accounts table to the preference table,
+		| before the data structure is changed and the information is gone
+		
+	
+	:Source:
+		`lib/private/Repair/Owncloud/SaveAccountsTableData.php#39 <https://github.com/nextcloud/server/blob/stable13/lib/private/Repair/Owncloud/SaveAccountsTableData.php#L39>`_
+	
+	:Implements:
+		:php:interface:`OCP\\Migration\\IRepairStep` 
+	
+
+Constants
+---------
+
+.. php:const:: BATCH_SIZE = 75
+
+	:Source:
+		`lib/private/Repair/Owncloud/SaveAccountsTableData.php#40 <https://github.com/nextcloud/server/blob/stable13/lib/private/Repair/Owncloud/SaveAccountsTableData.php#L40>`_
+	
+
+
+Properties
+----------
+
+.. php:attr:: protected static db
+
+	:Source:
+		`lib/private/Repair/Owncloud/SaveAccountsTableData.php#43 <https://github.com/nextcloud/server/blob/stable13/lib/private/Repair/Owncloud/SaveAccountsTableData.php#L43>`_
+	
+	:Type: :any:`\\OCP\\IDBConnection <OCP\\IDBConnection>` 
+
+
+.. php:attr:: protected static config
+
+	:Source:
+		`lib/private/Repair/Owncloud/SaveAccountsTableData.php#46 <https://github.com/nextcloud/server/blob/stable13/lib/private/Repair/Owncloud/SaveAccountsTableData.php#L46>`_
+	
+	:Type: :any:`\\OCP\\IConfig <OCP\\IConfig>` 
+
+
+.. php:attr:: protected static hasForeignKeyOnPersistentLocks
+
+	:Source:
+		`lib/private/Repair/Owncloud/SaveAccountsTableData.php#48 <https://github.com/nextcloud/server/blob/stable13/lib/private/Repair/Owncloud/SaveAccountsTableData.php#L48>`_
+	
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $db, $config)
+	
+		:Source:
+			`lib/private/Repair/Owncloud/SaveAccountsTableData.php#54 <https://github.com/nextcloud/server/blob/stable13/lib/private/Repair/Owncloud/SaveAccountsTableData.php#L54>`_
+		
+		
+		:Parameters:
+			* **$db** (:any:`OCP\\IDBConnection <OCP\\IDBConnection>`)  
+			* **$config** (:any:`OCP\\IConfig <OCP\\IConfig>`)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getName()
+	
+		:Source:
+			`lib/private/Repair/Owncloud/SaveAccountsTableData.php#62 <https://github.com/nextcloud/server/blob/stable13/lib/private/Repair/Owncloud/SaveAccountsTableData.php#L62>`_
+		
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public run( $output)
+	
+		:Source:
+			`lib/private/Repair/Owncloud/SaveAccountsTableData.php#69 <https://github.com/nextcloud/server/blob/stable13/lib/private/Repair/Owncloud/SaveAccountsTableData.php#L69>`_
+		
+		
+		:Parameters:
+			* **$output** (:any:`OCP\\Migration\\IOutput <OCP\\Migration\\IOutput>`)  
+
+		
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected shouldRun()
+	
+		:Source:
+			`lib/private/Repair/Owncloud/SaveAccountsTableData.php#101 <https://github.com/nextcloud/server/blob/stable13/lib/private/Repair/Owncloud/SaveAccountsTableData.php#L101>`_
+		
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected runStep( $offset)
+	
+		:Source:
+			`lib/private/Repair/Owncloud/SaveAccountsTableData.php#132 <https://github.com/nextcloud/server/blob/stable13/lib/private/Repair/Owncloud/SaveAccountsTableData.php#L132>`_
+		
+		
+		:Parameters:
+			* **$offset** (int)  
+
+		
+		:Returns: int Number of copied users
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected migrateUserInfo( $update, $userdata)
+	
+		:Source:
+			`lib/private/Repair/Owncloud/SaveAccountsTableData.php#172 <https://github.com/nextcloud/server/blob/stable13/lib/private/Repair/Owncloud/SaveAccountsTableData.php#L172>`_
+		
+		
+		:Parameters:
+			* **$update** (:any:`OCP\\DB\\QueryBuilder\\IQueryBuilder <OCP\\DB\\QueryBuilder\\IQueryBuilder>`)  
+			* **$userdata** (array)  
+
+		
+		:Throws: :any:`\\OCP\\PreConditionNotMetException <OCP\\PreConditionNotMetException>` 
+		:Throws: :any:`\\UnexpectedValueException <UnexpectedValueException>` 
+		:Throws: :any:`\\OCP\\PreConditionNotMetException <OCP\\PreConditionNotMetException>` 
+		:Throws: :any:`\\UnexpectedValueException <UnexpectedValueException>` 
+	
+	
+

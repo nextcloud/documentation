@@ -1,0 +1,167 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IProvider
+=========
+
+
+.. php:namespace:: OCP\Authentication\TwoFactorAuth
+
+.. php:interface:: IProvider
+
+
+	:Source:
+		`lib/public/Authentication/TwoFactorAuth/IProvider.php#35 <https://github.com/nextcloud/server/blob/stable13/lib/public/Authentication/TwoFactorAuth/IProvider.php#L35>`_
+	
+
+Constants
+---------
+
+.. php:const:: EVENT_SUCCESS = self::class \. ::success
+
+	:Source:
+		`lib/public/Authentication/TwoFactorAuth/IProvider.php#41 <https://github.com/nextcloud/server/blob/stable13/lib/public/Authentication/TwoFactorAuth/IProvider.php#L41>`_
+	
+	:Since: 14.0.0 
+	:Deprecated: 22.0.0 
+
+
+.. php:const:: EVENT_FAILED = self::class \. ::failed
+
+	:Source:
+		`lib/public/Authentication/TwoFactorAuth/IProvider.php#46 <https://github.com/nextcloud/server/blob/stable13/lib/public/Authentication/TwoFactorAuth/IProvider.php#L46>`_
+	
+	:Deprecated: 22.0.0 
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public getId()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get unique identifier of this 2FA provider
+			
+		
+		:Source:
+			`lib/public/Authentication/TwoFactorAuth/IProvider.php#55 <https://github.com/nextcloud/server/blob/stable13/lib/public/Authentication/TwoFactorAuth/IProvider.php#L55>`_
+		
+		
+		:Since: 9.1.0 
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getDisplayName()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the display name for selecting the 2FA provider
+			
+			| Example: "Email"
+			
+		
+		:Source:
+			`lib/public/Authentication/TwoFactorAuth/IProvider.php#66 <https://github.com/nextcloud/server/blob/stable13/lib/public/Authentication/TwoFactorAuth/IProvider.php#L66>`_
+		
+		
+		:Since: 9.1.0 
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getDescription()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the description for selecting the 2FA provider
+			
+			| Example: "Get a token via e\-mail"
+			
+		
+		:Source:
+			`lib/public/Authentication/TwoFactorAuth/IProvider.php#77 <https://github.com/nextcloud/server/blob/stable13/lib/public/Authentication/TwoFactorAuth/IProvider.php#L77>`_
+		
+		
+		:Since: 9.1.0 
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getTemplate( $user)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the template for rending the 2FA provider view
+			
+		
+		:Source:
+			`lib/public/Authentication/TwoFactorAuth/IProvider.php#87 <https://github.com/nextcloud/server/blob/stable13/lib/public/Authentication/TwoFactorAuth/IProvider.php#L87>`_
+		
+		
+		:Parameters:
+			* **$user** (:any:`OCP\\IUser <OCP\\IUser>`)  
+
+		
+		:Since: 9.1.0 
+		:Returns: :any:`\\OCP\\Template <OCP\\Template>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public verifyChallenge( $user, $challenge)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Verify the given challenge
+			
+		
+		:Source:
+			`lib/public/Authentication/TwoFactorAuth/IProvider.php#98 <https://github.com/nextcloud/server/blob/stable13/lib/public/Authentication/TwoFactorAuth/IProvider.php#L98>`_
+		
+		
+		:Parameters:
+			* **$user** (:any:`OCP\\IUser <OCP\\IUser>`)  
+			* **$challenge** (string)  
+
+		
+		:Since: 9.1.0 
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isTwoFactorAuthEnabledForUser( $user)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Decides whether 2FA is enabled for the given user
+			
+		
+		:Source:
+			`lib/public/Authentication/TwoFactorAuth/IProvider.php#108 <https://github.com/nextcloud/server/blob/stable13/lib/public/Authentication/TwoFactorAuth/IProvider.php#L108>`_
+		
+		
+		:Parameters:
+			* **$user** (:any:`OCP\\IUser <OCP\\IUser>`)  
+
+		
+		:Since: 9.1.0 
+		:Returns: bool 
+	
+	
+

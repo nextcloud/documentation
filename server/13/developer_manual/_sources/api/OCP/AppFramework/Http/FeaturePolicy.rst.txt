@@ -1,0 +1,82 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+FeaturePolicy
+=============
+
+
+.. php:namespace:: OCP\AppFramework\Http
+
+.. php:class:: FeaturePolicy
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Class FeaturePolicy is a simple helper which allows applications to
+		| modify the Feature\-Policy sent by Nextcloud\. Per default only autoplay is allowed
+		| from the same domain and full screen as well from the same domain\.
+		
+		| Even if a value gets modified above defaults will still get appended\. Please
+		| notice that Nextcloud ships already with sensible defaults and those policies
+		| should require no modification at all for most use\-cases\.
+		
+	
+	:Source:
+		`lib/public/AppFramework/Http/FeaturePolicy.php#40 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Http/FeaturePolicy.php#L40>`_
+	
+	:Parent:
+		:php:class:`OCP\\AppFramework\\Http\\EmptyFeaturePolicy`
+	
+
+Properties
+----------
+
+.. php:attr:: protected static autoplayDomains
+
+	:Source:
+		`lib/public/AppFramework/Http/FeaturePolicy.php#41 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Http/FeaturePolicy.php#L41>`_
+	
+
+
+.. php:attr:: protected static cameraDomains
+
+	:Source:
+		`lib/public/AppFramework/Http/FeaturePolicy.php#46 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Http/FeaturePolicy.php#L46>`_
+	
+	:Type: string[] of allowed domains that can access the camera
+
+
+.. php:attr:: protected static fullscreenDomains
+
+	:Source:
+		`lib/public/AppFramework/Http/FeaturePolicy.php#48 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Http/FeaturePolicy.php#L48>`_
+	
+
+
+.. php:attr:: protected static geolocationDomains
+
+	:Source:
+		`lib/public/AppFramework/Http/FeaturePolicy.php#53 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Http/FeaturePolicy.php#L53>`_
+	
+	:Type: string[] of allowed domains that can use the geolocation of the device
+
+
+.. php:attr:: protected static microphoneDomains
+
+	:Source:
+		`lib/public/AppFramework/Http/FeaturePolicy.php#56 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Http/FeaturePolicy.php#L56>`_
+	
+	:Type: string[] of allowed domains that can use the microphone
+
+
+.. php:attr:: protected static paymentDomains
+
+	:Source:
+		`lib/public/AppFramework/Http/FeaturePolicy.php#59 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Http/FeaturePolicy.php#L59>`_
+	
+	:Type: string[] of allowed domains that can use the payment API
+
+

@@ -1,0 +1,389 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>SMB/CIFS &mdash; Nextcloud latest Administration Manual latest documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'latest',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="WebDAV" href="webdav.html" />
+    <link rel="prev" title="SFTP" href="sftp.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../contents.html">
+          
+
+          
+            
+            <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../release_notes.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../release_schedule.html">Maintenance and release schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../installation/index.html">Installation and server configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../configuration_server/index.html">Nextcloud configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../apps_management.html">Apps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../configuration_user/index.html">User management</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">File sharing and management</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../file_sharing_configuration.html">File Sharing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../federated_cloud_sharing_configuration.html">Configuring Federation Sharing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../big_file_upload_configuration.html">Uploading big files &gt; 512MB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../default_files_configuration.html">Providing default files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../primary_storage.html">Configuring Object Storage as Primary Storage</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../external_storage_configuration_gui.html">Configuring External Storage (GUI)</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../external_storage_configuration_gui.html#enabling-external-storage-support">Enabling External Storage Support</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../external_storage_configuration_gui.html#storage-configuration">Storage configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../external_storage_configuration_gui.html#user-and-group-permissions">User and group permissions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../external_storage_configuration_gui.html#mount-options">Mount options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../external_storage_configuration_gui.html#using-self-signed-certificates">Using self-signed certificates</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="../external_storage_configuration_gui.html#available-storage-backends">Available storage backends</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="amazons3.html">Amazon S3</a></li>
+<li class="toctree-l4"><a class="reference internal" href="ftp.html">FTP/FTPS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="local.html">Local</a></li>
+<li class="toctree-l4"><a class="reference internal" href="nextcloud.html">Nextcloud</a></li>
+<li class="toctree-l4"><a class="reference internal" href="openstack.html">OpenStack Object Storage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="sftp.html">SFTP</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">SMB/CIFS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="webdav.html">WebDAV</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../external_storage_configuration_gui.html#allow-users-to-mount-external-storage">Allow users to mount external Storage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../external_storage_configuration_gui.html#adding-files-to-external-storages">Adding files to external storages</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="auth_mechanisms.html">External Storage authentication mechanisms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../encryption_configuration.html">Encryption configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../encryption_details.html">Encryption details</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../files_locking_transactional.html">Transactional file locking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../previews_configuration.html">Previews configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../file_versioning.html">Controlling file versions and aging</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../file_workflows/index.html">File workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../groupware/index.html">Groupware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../configuration_database/index.html">Database configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../configuration_mimetypes/index.html">Mimetypes management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../maintenance/index.html">Maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../issues/index.html">Issues and troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../gdpr/index.html">GDPR</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../contents.html">Nextcloud latest Administration Manual</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../contents.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">File sharing and management</a> &raquo;</li>
+        
+          <li><a href="../external_storage_configuration_gui.html">Configuring External Storage (GUI)</a> &raquo;</li>
+        
+      <li>SMB/CIFS</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/nextcloud/documentation/edit/master/admin_manual/configuration_files/external_storage/smb.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="smb-cifs">
+<h1>SMB/CIFS<a class="headerlink" href="#smb-cifs" title="Permalink to this headline">¶</a></h1>
+<p>Nextcloud can connect to Windows file servers or other SMB-compatible servers
+with the SMB/CIFS backend.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The SMB/CIFS backend requires <code class="docutils literal"><span class="pre">smbclient</span></code> or
+the PHP smbclient module to be installed on the Nextcloud server. The PHP
+smbclient module is preferred, but either will work. These
+should be included in any Linux distribution. (See <a class="reference external" href="https://pecl.php.net/package/smbclient">PECL smbclient</a> if your distro does not include
+them.)</p>
+</div>
+<p>You need the following information:</p>
+<ul class="simple">
+<li>Folder name for your local mountpoint.</li>
+<li>Host: The URL of the Samba server.</li>
+<li>Username: The username or <code class="docutils literal"><span class="pre">domain\username</span></code> (see below) used to login to the Samba
+server.</li>
+<li>Password: the password to login to the Samba server.</li>
+<li>Share: The share on the Samba server to mount.</li>
+<li>Remote Subfolder: The remote subfolder inside the Samba share to mount
+(optional, defaults to /). To assign the Nextcloud logon username
+automatically to the subfolder, use <code class="docutils literal"><span class="pre">$user</span></code> instead of a particular
+subfolder name.</li>
+<li>And finally, the Nextcloud users and groups who get access to the share.</li>
+</ul>
+<p>Optionally, you can specify a <code class="docutils literal"><span class="pre">Domain</span></code>. This is useful in
+cases where the
+SMB server requires a domain and a username, and an advanced authentication
+mechanism like session credentials is used so that the username cannot be
+modified. This is concatenated with the username, so the backend gets
+<code class="docutils literal"><span class="pre">domain\username</span></code></p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">For improved reliability and performance, we recommended installing
+<code class="docutils literal"><span class="pre">libsmbclient-php</span></code>, a native PHP module for connecting to
+SMB servers.</p>
+</div>
+<div class="figure">
+<a class="reference internal image-reference" href="../../_images/smb.png"><img alt="Samba external storage configuration." src="../../_images/smb.png" style="width: 683.25px; height: 123.0px;" /></a>
+</div>
+<p>See <a class="reference internal" href="../external_storage_configuration_gui.html"><span class="doc">Configuring External Storage (GUI)</span></a> for additional mount
+options and information.</p>
+<p>See <a class="reference internal" href="auth_mechanisms.html"><span class="doc">External Storage authentication mechanisms</span></a> for more information on authentication schemes.</p>
+<div class="section" id="smb-update-notifications">
+<h2>SMB update notifications<a class="headerlink" href="#smb-update-notifications" title="Permalink to this headline">¶</a></h2>
+<p>Nextcloud can use smb update notifications to
+listen for changes made to a configured SMB/CIFS storage and detect external
+changes made to the storage in near real-time.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Due to limitations of linux based SMB servers, this feature only works
+reliably on Windows SMB servers.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Using update notifications requires <code class="docutils literal"><span class="pre">smbclient</span></code> 4.x or newer.
+Due to limitations with the smbclient PHP module, the <code class="docutils literal"><span class="pre">smbclient</span></code> binary
+is required even when using the PHP module.</p>
+</div>
+<p>To start listening to update notifications, start the <code class="docutils literal"><span class="pre">occ</span></code> command like this:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">occ</span> <span class="n">files_external</span><span class="p">:</span><span class="n">notify</span> <span class="o">&lt;</span><span class="n">mount_id</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<p>You can find the mount id for a specific storage using <code class="docutils literal"><span class="pre">occ</span> <span class="pre">files_external:list</span></code></p>
+<p>On default this command shows no output, can you see the list of detected changes by
+passing the <code class="docutils literal"><span class="pre">-v</span></code> option to the command.</p>
+<div class="section" id="smb-authentication">
+<h3>SMB authentication<a class="headerlink" href="#smb-authentication" title="Permalink to this headline">¶</a></h3>
+<p>Update notifications are not supported when using &#8216;Login credentials, save in session&#8217; authentication.
+Using login credentials is only supported with &#8216;Login credentials, save in database&#8217;.</p>
+<p>Even when using &#8216;Login credentials, save in database&#8217; or &#8216;User entered, stored in database&#8217; authentication the notify process
+can not use the credentials saved to attach to the smb shares because the notify process does not run in the context of a specific user
+in those cases you can provide the username and password using the <code class="docutils literal"><span class="pre">--username</span></code> and <code class="docutils literal"><span class="pre">--password</span></code> arguments.</p>
+</div>
+<div class="section" id="decrease-sync-delay">
+<h3>Decrease sync delay<a class="headerlink" href="#decrease-sync-delay" title="Permalink to this headline">¶</a></h3>
+<p>Any updates detected by the notify command will only be synced to the client after the Nextcloud cron job has been executed
+(usually every 15 minutes). If this interval is to high for your use case, you can decrease it by running <code class="docutils literal"><span class="pre">occ</span> <span class="pre">files:scan</span> <span class="pre">--unscanned</span> <span class="pre">--all</span></code>
+at the desired interval. Note that this might increase the server load and you&#8217;ll need to ensure that there is no overlap between runs.</p>
+</div>
+<div class="section" id="hidden-files-upload-failure-or-not-shown">
+<h3>Hidden files upload failure or not shown<a class="headerlink" href="#hidden-files-upload-failure-or-not-shown" title="Permalink to this headline">¶</a></h3>
+<p>If you have the configuration <code class="docutils literal"><span class="pre">hide</span> <span class="pre">dot</span> <span class="pre">files</span> <span class="pre">=</span> <span class="pre">Yes</span></code>, you will not be able to upload a hidden file (dot file) nor will you be able to show hidden files on your filelist (even if the &#8216;show hidden file&#8217; option is checked on the nextcloud settings.
+Make sure you have the following option in your configuration: <code class="docutils literal"><span class="pre">hide</span> <span class="pre">dot</span> <span class="pre">files</span> <span class="pre">=</span> <span class="pre">No</span></code></p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="webdav.html" class="btn btn-neutral float-right" title="WebDAV" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="sftp.html" class="btn btn-neutral float-left" title="SFTP" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021 Nextcloud GmbH.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/16/admin_manual">16</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/17/admin_manual">17</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/18/admin_manual">18</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/19/admin_manual">19</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/admin_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/admin_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+   
+
+</body>
+</html>

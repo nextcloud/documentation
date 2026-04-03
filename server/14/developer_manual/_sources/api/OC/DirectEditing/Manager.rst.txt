@@ -1,0 +1,240 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+Manager
+=======
+
+
+.. php:namespace:: OC\DirectEditing
+
+.. php:class:: Manager
+
+
+	:Source:
+		`lib/private/DirectEditing/Manager.php#54 <https://github.com/nextcloud/server/blob/stable13/lib/private/DirectEditing/Manager.php#L54>`_
+	
+	:Implements:
+		:php:interface:`OCP\\DirectEditing\\IManager` 
+	
+
+Constants
+---------
+
+.. php:const:: TOKEN_CLEANUP_TIME = 12 \* 60 \* 60
+
+	:Source:
+		`lib/private/DirectEditing/Manager.php#55 <https://github.com/nextcloud/server/blob/stable13/lib/private/DirectEditing/Manager.php#L55>`_
+	
+
+
+.. php:const:: TABLE_TOKENS = direct\_edit
+
+	:Source:
+		`lib/private/DirectEditing/Manager.php#57 <https://github.com/nextcloud/server/blob/stable13/lib/private/DirectEditing/Manager.php#L57>`_
+	
+
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $random, $connection, $userSession, $rootFolder, $l10nFactory, $encryptionManager)
+	
+		:Source:
+			`lib/private/DirectEditing/Manager.php#74 <https://github.com/nextcloud/server/blob/stable13/lib/private/DirectEditing/Manager.php#L74>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public registerDirectEditor( $directEditor)
+	
+		:Source:
+			`lib/private/DirectEditing/Manager.php#90 <https://github.com/nextcloud/server/blob/stable13/lib/private/DirectEditing/Manager.php#L90>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getEditors()
+	
+		:Source:
+			`lib/private/DirectEditing/Manager.php#94 <https://github.com/nextcloud/server/blob/stable13/lib/private/DirectEditing/Manager.php#L94>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getTemplates( $editor, $type)
+	
+		:Source:
+			`lib/private/DirectEditing/Manager.php#98 <https://github.com/nextcloud/server/blob/stable13/lib/private/DirectEditing/Manager.php#L98>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public create( $path, $editorId, $creatorId, $templateId=null)
+	
+		:Source:
+			`lib/private/DirectEditing/Manager.php#129 <https://github.com/nextcloud/server/blob/stable13/lib/private/DirectEditing/Manager.php#L129>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public open( $filePath, $editorId=null)
+	
+		:Source:
+			`lib/private/DirectEditing/Manager.php#153 <https://github.com/nextcloud/server/blob/stable13/lib/private/DirectEditing/Manager.php#L153>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public edit( $token)
+	
+		:Source:
+			`lib/private/DirectEditing/Manager.php#176 <https://github.com/nextcloud/server/blob/stable13/lib/private/DirectEditing/Manager.php#L176>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public editSecure( $file, $editorId)
+	
+		:Source:
+			`lib/private/DirectEditing/Manager.php#192 <https://github.com/nextcloud/server/blob/stable13/lib/private/DirectEditing/Manager.php#L192>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getToken( $token)
+	
+		:Source:
+			`lib/private/DirectEditing/Manager.php#203 <https://github.com/nextcloud/server/blob/stable13/lib/private/DirectEditing/Manager.php#L203>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public cleanup()
+	
+		:Source:
+			`lib/private/DirectEditing/Manager.php#214 <https://github.com/nextcloud/server/blob/stable13/lib/private/DirectEditing/Manager.php#L214>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public refreshToken( $token)
+	
+		:Source:
+			`lib/private/DirectEditing/Manager.php#221 <https://github.com/nextcloud/server/blob/stable13/lib/private/DirectEditing/Manager.php#L221>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public invalidateToken( $token)
+	
+		:Source:
+			`lib/private/DirectEditing/Manager.php#231 <https://github.com/nextcloud/server/blob/stable13/lib/private/DirectEditing/Manager.php#L231>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public accessToken( $token)
+	
+		:Source:
+			`lib/private/DirectEditing/Manager.php#239 <https://github.com/nextcloud/server/blob/stable13/lib/private/DirectEditing/Manager.php#L239>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public invokeTokenScope( $userId)
+	
+		:Source:
+			`lib/private/DirectEditing/Manager.php#249 <https://github.com/nextcloud/server/blob/stable13/lib/private/DirectEditing/Manager.php#L249>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public createToken( $editorId, $file, $filePath, $share=null)
+	
+		:Source:
+			`lib/private/DirectEditing/Manager.php#254 <https://github.com/nextcloud/server/blob/stable13/lib/private/DirectEditing/Manager.php#L254>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getFileForToken( $userId, $fileId, $filePath=null)
+	
+		:Source:
+			`lib/private/DirectEditing/Manager.php#278 <https://github.com/nextcloud/server/blob/stable13/lib/private/DirectEditing/Manager.php#L278>`_
+		
+		
+		:Parameters:
+			* **$userId**  
+			* **$fileId**  
+			* **$filePath** (null)  
+
+		
+		:Returns: :any:`\\OCP\\Files\\Node <OCP\\Files\\Node>` 
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isEnabled()
+	
+		:Source:
+			`lib/private/DirectEditing/Manager.php#290 <https://github.com/nextcloud/server/blob/stable13/lib/private/DirectEditing/Manager.php#L290>`_
+		
+		
+	
+	
+

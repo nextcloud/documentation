@@ -1,0 +1,296 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IFunctionBuilder
+================
+
+
+.. php:namespace:: OCP\DB\QueryBuilder
+
+.. php:interface:: IFunctionBuilder
+
+
+	.. rst-class:: phpdoc-description
+	
+		| This class provides a builder for sql some functions
+		
+	
+	:Implemented by:
+		:php:class:`OC\\DB\\QueryBuilder\\FunctionBuilder\\FunctionBuilder` 
+	
+	
+	:Source:
+		`lib/public/DB/QueryBuilder/IFunctionBuilder.php#33 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IFunctionBuilder.php#L33>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public md5( $input)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Calculates the MD5 hash of a given input
+			
+		
+		:Source:
+			`lib/public/DB/QueryBuilder/IFunctionBuilder.php#42 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IFunctionBuilder.php#L42>`_
+		
+		
+		:Parameters:
+			* **$input** (string | :any:`\\OCP\\DB\\QueryBuilder\\ILiteral <OCP\\DB\\QueryBuilder\\ILiteral>` | :any:`\\OCP\\DB\\QueryBuilder\\IParameter <OCP\\DB\\QueryBuilder\\IParameter>` | :any:`\\OCP\\DB\\QueryBuilder\\IQueryFunction <OCP\\DB\\QueryBuilder\\IQueryFunction>`)  The input to be hashed
+
+		
+		:Returns: :any:`\\OCP\\DB\\QueryBuilder\\IQueryFunction <OCP\\DB\\QueryBuilder\\IQueryFunction>` 
+		:Since: 12.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public concat( $x, $y)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Combines two input strings
+			
+		
+		:Source:
+			`lib/public/DB/QueryBuilder/IFunctionBuilder.php#53 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IFunctionBuilder.php#L53>`_
+		
+		
+		:Parameters:
+			* **$x** (string | :any:`\\OCP\\DB\\QueryBuilder\\ILiteral <OCP\\DB\\QueryBuilder\\ILiteral>` | :any:`\\OCP\\DB\\QueryBuilder\\IParameter <OCP\\DB\\QueryBuilder\\IParameter>` | :any:`\\OCP\\DB\\QueryBuilder\\IQueryFunction <OCP\\DB\\QueryBuilder\\IQueryFunction>`)  The first input string
+			* **$y** (string | :any:`\\OCP\\DB\\QueryBuilder\\ILiteral <OCP\\DB\\QueryBuilder\\ILiteral>` | :any:`\\OCP\\DB\\QueryBuilder\\IParameter <OCP\\DB\\QueryBuilder\\IParameter>` | :any:`\\OCP\\DB\\QueryBuilder\\IQueryFunction <OCP\\DB\\QueryBuilder\\IQueryFunction>`)  The seccond input string
+
+		
+		:Returns: :any:`\\OCP\\DB\\QueryBuilder\\IQueryFunction <OCP\\DB\\QueryBuilder\\IQueryFunction>` 
+		:Since: 12.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public substring( $input, $start, $length=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Takes a substring from the input string
+			
+		
+		:Source:
+			`lib/public/DB/QueryBuilder/IFunctionBuilder.php#65 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IFunctionBuilder.php#L65>`_
+		
+		
+		:Parameters:
+			* **$input** (string | :any:`\\OCP\\DB\\QueryBuilder\\ILiteral <OCP\\DB\\QueryBuilder\\ILiteral>` | :any:`\\OCP\\DB\\QueryBuilder\\IParameter <OCP\\DB\\QueryBuilder\\IParameter>` | :any:`\\OCP\\DB\\QueryBuilder\\IQueryFunction <OCP\\DB\\QueryBuilder\\IQueryFunction>`)  The input string
+			* **$start** (string | :any:`\\OCP\\DB\\QueryBuilder\\ILiteral <OCP\\DB\\QueryBuilder\\ILiteral>` | :any:`\\OCP\\DB\\QueryBuilder\\IParameter <OCP\\DB\\QueryBuilder\\IParameter>` | :any:`\\OCP\\DB\\QueryBuilder\\IQueryFunction <OCP\\DB\\QueryBuilder\\IQueryFunction>`)  The start of the substring, note that counting starts at 1
+			* **$length** (null | :any:`\\OCP\\DB\\QueryBuilder\\ILiteral <OCP\\DB\\QueryBuilder\\ILiteral>` | :any:`\\OCP\\DB\\QueryBuilder\\IParameter <OCP\\DB\\QueryBuilder\\IParameter>` | :any:`\\OCP\\DB\\QueryBuilder\\IQueryFunction <OCP\\DB\\QueryBuilder\\IQueryFunction>`)  The length of the substring
+
+		
+		:Returns: :any:`\\OCP\\DB\\QueryBuilder\\IQueryFunction <OCP\\DB\\QueryBuilder\\IQueryFunction>` 
+		:Since: 12.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public sum( $field)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Takes the sum of all rows in a column
+			
+		
+		:Source:
+			`lib/public/DB/QueryBuilder/IFunctionBuilder.php#75 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IFunctionBuilder.php#L75>`_
+		
+		
+		:Parameters:
+			* **$field** (string | :any:`\\OCP\\DB\\QueryBuilder\\ILiteral <OCP\\DB\\QueryBuilder\\ILiteral>` | :any:`\\OCP\\DB\\QueryBuilder\\IParameter <OCP\\DB\\QueryBuilder\\IParameter>` | :any:`\\OCP\\DB\\QueryBuilder\\IQueryFunction <OCP\\DB\\QueryBuilder\\IQueryFunction>`)  the column to sum
+
+		
+		:Returns: :any:`\\OCP\\DB\\QueryBuilder\\IQueryFunction <OCP\\DB\\QueryBuilder\\IQueryFunction>` 
+		:Since: 12.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public lower( $field)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Transforms a string field or value to lower case
+			
+		
+		:Source:
+			`lib/public/DB/QueryBuilder/IFunctionBuilder.php#84 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IFunctionBuilder.php#L84>`_
+		
+		
+		:Parameters:
+			* **$field** (string | :any:`\\OCP\\DB\\QueryBuilder\\ILiteral <OCP\\DB\\QueryBuilder\\ILiteral>` | :any:`\\OCP\\DB\\QueryBuilder\\IParameter <OCP\\DB\\QueryBuilder\\IParameter>` | :any:`\\OCP\\DB\\QueryBuilder\\IQueryFunction <OCP\\DB\\QueryBuilder\\IQueryFunction>`)  
+
+		
+		:Returns: :any:`\\OCP\\DB\\QueryBuilder\\IQueryFunction <OCP\\DB\\QueryBuilder\\IQueryFunction>` 
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public add( $x, $y)
+	
+		:Source:
+			`lib/public/DB/QueryBuilder/IFunctionBuilder.php#92 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IFunctionBuilder.php#L92>`_
+		
+		
+		:Parameters:
+			* **$x** (string | :any:`\\OCP\\DB\\QueryBuilder\\ILiteral <OCP\\DB\\QueryBuilder\\ILiteral>` | :any:`\\OCP\\DB\\QueryBuilder\\IParameter <OCP\\DB\\QueryBuilder\\IParameter>` | :any:`\\OCP\\DB\\QueryBuilder\\IQueryFunction <OCP\\DB\\QueryBuilder\\IQueryFunction>`)  The first input field or number
+			* **$y** (string | :any:`\\OCP\\DB\\QueryBuilder\\ILiteral <OCP\\DB\\QueryBuilder\\ILiteral>` | :any:`\\OCP\\DB\\QueryBuilder\\IParameter <OCP\\DB\\QueryBuilder\\IParameter>` | :any:`\\OCP\\DB\\QueryBuilder\\IQueryFunction <OCP\\DB\\QueryBuilder\\IQueryFunction>`)  The second input field or number
+
+		
+		:Returns: :any:`\\OCP\\DB\\QueryBuilder\\IQueryFunction <OCP\\DB\\QueryBuilder\\IQueryFunction>` 
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public subtract( $x, $y)
+	
+		:Source:
+			`lib/public/DB/QueryBuilder/IFunctionBuilder.php#100 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IFunctionBuilder.php#L100>`_
+		
+		
+		:Parameters:
+			* **$x** (string | :any:`\\OCP\\DB\\QueryBuilder\\ILiteral <OCP\\DB\\QueryBuilder\\ILiteral>` | :any:`\\OCP\\DB\\QueryBuilder\\IParameter <OCP\\DB\\QueryBuilder\\IParameter>` | :any:`\\OCP\\DB\\QueryBuilder\\IQueryFunction <OCP\\DB\\QueryBuilder\\IQueryFunction>`)  The first input field or number
+			* **$y** (string | :any:`\\OCP\\DB\\QueryBuilder\\ILiteral <OCP\\DB\\QueryBuilder\\ILiteral>` | :any:`\\OCP\\DB\\QueryBuilder\\IParameter <OCP\\DB\\QueryBuilder\\IParameter>` | :any:`\\OCP\\DB\\QueryBuilder\\IQueryFunction <OCP\\DB\\QueryBuilder\\IQueryFunction>`)  The second input field or number
+
+		
+		:Returns: :any:`\\OCP\\DB\\QueryBuilder\\IQueryFunction <OCP\\DB\\QueryBuilder\\IQueryFunction>` 
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public count( $count="", $alias="")
+	
+		:Source:
+			`lib/public/DB/QueryBuilder/IFunctionBuilder.php#109 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IFunctionBuilder.php#L109>`_
+		
+		
+		:Parameters:
+			* **$count** (string | :any:`\\OCP\\DB\\QueryBuilder\\ILiteral <OCP\\DB\\QueryBuilder\\ILiteral>` | :any:`\\OCP\\DB\\QueryBuilder\\IParameter <OCP\\DB\\QueryBuilder\\IParameter>` | :any:`\\OCP\\DB\\QueryBuilder\\IQueryFunction <OCP\\DB\\QueryBuilder\\IQueryFunction>`)  The input to be counted
+			* **$alias** (string)  Alias for the counter
+
+		
+		:Returns: :any:`\\OCP\\DB\\QueryBuilder\\IQueryFunction <OCP\\DB\\QueryBuilder\\IQueryFunction>` 
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public max( $field)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Takes the maximum of all rows in a column
+			
+			| If you want to get the maximum value of multiple columns in the same row, use \`greatest\` instead
+			
+		
+		:Source:
+			`lib/public/DB/QueryBuilder/IFunctionBuilder.php#121 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IFunctionBuilder.php#L121>`_
+		
+		
+		:Parameters:
+			* **$field** (string | :any:`\\OCP\\DB\\QueryBuilder\\ILiteral <OCP\\DB\\QueryBuilder\\ILiteral>` | :any:`\\OCP\\DB\\QueryBuilder\\IParameter <OCP\\DB\\QueryBuilder\\IParameter>` | :any:`\\OCP\\DB\\QueryBuilder\\IQueryFunction <OCP\\DB\\QueryBuilder\\IQueryFunction>`)  the column to maximum
+
+		
+		:Returns: :any:`\\OCP\\DB\\QueryBuilder\\IQueryFunction <OCP\\DB\\QueryBuilder\\IQueryFunction>` 
+		:Since: 18.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public min( $field)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Takes the minimum of all rows in a column
+			
+			| If you want to get the minimum value of multiple columns in the same row, use \`least\` instead
+			
+		
+		:Source:
+			`lib/public/DB/QueryBuilder/IFunctionBuilder.php#133 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IFunctionBuilder.php#L133>`_
+		
+		
+		:Parameters:
+			* **$field** (string | :any:`\\OCP\\DB\\QueryBuilder\\ILiteral <OCP\\DB\\QueryBuilder\\ILiteral>` | :any:`\\OCP\\DB\\QueryBuilder\\IParameter <OCP\\DB\\QueryBuilder\\IParameter>` | :any:`\\OCP\\DB\\QueryBuilder\\IQueryFunction <OCP\\DB\\QueryBuilder\\IQueryFunction>`)  the column to minimum
+
+		
+		:Returns: :any:`\\OCP\\DB\\QueryBuilder\\IQueryFunction <OCP\\DB\\QueryBuilder\\IQueryFunction>` 
+		:Since: 18.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public greatest( $x, $y)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Takes the maximum of multiple values
+			
+			| If you want to get the maximum value of all rows in a column, use \`max\` instead
+			
+		
+		:Source:
+			`lib/public/DB/QueryBuilder/IFunctionBuilder.php#145 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IFunctionBuilder.php#L145>`_
+		
+		
+		:Parameters:
+			* **$x** (string | :any:`\\OCP\\DB\\QueryBuilder\\ILiteral <OCP\\DB\\QueryBuilder\\ILiteral>` | :any:`\\OCP\\DB\\QueryBuilder\\IParameter <OCP\\DB\\QueryBuilder\\IParameter>` | :any:`\\OCP\\DB\\QueryBuilder\\IQueryFunction <OCP\\DB\\QueryBuilder\\IQueryFunction>`)  
+			* **$y** (string | :any:`\\OCP\\DB\\QueryBuilder\\ILiteral <OCP\\DB\\QueryBuilder\\ILiteral>` | :any:`\\OCP\\DB\\QueryBuilder\\IParameter <OCP\\DB\\QueryBuilder\\IParameter>` | :any:`\\OCP\\DB\\QueryBuilder\\IQueryFunction <OCP\\DB\\QueryBuilder\\IQueryFunction>`)  
+
+		
+		:Returns: :any:`\\OCP\\DB\\QueryBuilder\\IQueryFunction <OCP\\DB\\QueryBuilder\\IQueryFunction>` 
+		:Since: 18.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public least( $x, $y)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Takes the minimum of multiple values
+			
+			| If you want to get the minimum value of all rows in a column, use \`min\` instead
+			
+		
+		:Source:
+			`lib/public/DB/QueryBuilder/IFunctionBuilder.php#157 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/QueryBuilder/IFunctionBuilder.php#L157>`_
+		
+		
+		:Parameters:
+			* **$x** (string | :any:`\\OCP\\DB\\QueryBuilder\\ILiteral <OCP\\DB\\QueryBuilder\\ILiteral>` | :any:`\\OCP\\DB\\QueryBuilder\\IParameter <OCP\\DB\\QueryBuilder\\IParameter>` | :any:`\\OCP\\DB\\QueryBuilder\\IQueryFunction <OCP\\DB\\QueryBuilder\\IQueryFunction>`)  
+			* **$y** (string | :any:`\\OCP\\DB\\QueryBuilder\\ILiteral <OCP\\DB\\QueryBuilder\\ILiteral>` | :any:`\\OCP\\DB\\QueryBuilder\\IParameter <OCP\\DB\\QueryBuilder\\IParameter>` | :any:`\\OCP\\DB\\QueryBuilder\\IQueryFunction <OCP\\DB\\QueryBuilder\\IQueryFunction>`)  
+
+		
+		:Returns: :any:`\\OCP\\DB\\QueryBuilder\\IQueryFunction <OCP\\DB\\QueryBuilder\\IQueryFunction>` 
+		:Since: 18.0.0 
+	
+	
+

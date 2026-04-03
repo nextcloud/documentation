@@ -1,0 +1,176 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IManager
+========
+
+
+.. php:namespace:: OCP\Settings
+
+.. php:interface:: IManager
+
+
+	:Implemented by:
+		:php:class:`OC\\Settings\\Manager` 
+	
+	
+	:Source:
+		`lib/public/Settings/IManager.php#32 <https://github.com/nextcloud/server/blob/stable13/lib/public/Settings/IManager.php#L32>`_
+	
+
+Constants
+---------
+
+.. php:const:: KEY_ADMIN_SETTINGS = admin
+
+	:Source:
+		`lib/public/Settings/IManager.php#36 <https://github.com/nextcloud/server/blob/stable13/lib/public/Settings/IManager.php#L36>`_
+	
+	:Since: 9.1.0 
+
+
+.. php:const:: KEY_ADMIN_SECTION = admin\-section
+
+	:Source:
+		`lib/public/Settings/IManager.php#41 <https://github.com/nextcloud/server/blob/stable13/lib/public/Settings/IManager.php#L41>`_
+	
+	:Since: 9.1.0 
+
+
+.. php:const:: KEY_PERSONAL_SETTINGS = personal
+
+	:Source:
+		`lib/public/Settings/IManager.php#46 <https://github.com/nextcloud/server/blob/stable13/lib/public/Settings/IManager.php#L46>`_
+	
+	:Since: 13.0.0 
+
+
+.. php:const:: KEY_PERSONAL_SECTION = personal\-section
+
+	:Source:
+		`lib/public/Settings/IManager.php#51 <https://github.com/nextcloud/server/blob/stable13/lib/public/Settings/IManager.php#L51>`_
+	
+	:Since: 13.0.0 
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public registerSection( $type, $section)
+	
+		:Source:
+			`lib/public/Settings/IManager.php#58 <https://github.com/nextcloud/server/blob/stable13/lib/public/Settings/IManager.php#L58>`_
+		
+		
+		:Parameters:
+			* **$type** (string)  'admin' or 'personal'
+			* **$section** (string)  Class must implement OCP\Settings\ISection
+
+		
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public registerSetting( $type, $setting)
+	
+		:Source:
+			`lib/public/Settings/IManager.php#65 <https://github.com/nextcloud/server/blob/stable13/lib/public/Settings/IManager.php#L65>`_
+		
+		
+		:Parameters:
+			* **$type** (string)  'admin' or 'personal'
+			* **$setting** (string)  Class must implement OCP\Settings\ISetting
+
+		
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getAdminSections()
+	
+		.. rst-class:: phpdoc-description
+		
+			| returns a list of the admin sections
+			
+		
+		:Source:
+			`lib/public/Settings/IManager.php#73 <https://github.com/nextcloud/server/blob/stable13/lib/public/Settings/IManager.php#L73>`_
+		
+		
+		:Returns: array array of ISection\[\] where key is the priority
+		:Since: 9.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getPersonalSections()
+	
+		.. rst-class:: phpdoc-description
+		
+			| returns a list of the personal sections
+			
+		
+		:Source:
+			`lib/public/Settings/IManager.php#81 <https://github.com/nextcloud/server/blob/stable13/lib/public/Settings/IManager.php#L81>`_
+		
+		
+		:Returns: array array of ISection\[\] where key is the priority
+		:Since: 13.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getAdminSettings( $section, $subAdminOnly=false)
+	
+		.. rst-class:: phpdoc-description
+		
+			| returns a list of the admin settings
+			
+		
+		:Source:
+			`lib/public/Settings/IManager.php#91 <https://github.com/nextcloud/server/blob/stable13/lib/public/Settings/IManager.php#L91>`_
+		
+		
+		:Parameters:
+			* **$section** (string)  the section id for which to load the settings
+			* **$subAdminOnly** (bool)  only return settings sub admins are supposed to see (since 17.0.0)
+
+		
+		:Returns: array array of IAdmin\[\] where key is the priority
+		:Since: 9.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getPersonalSettings( $section)
+	
+		.. rst-class:: phpdoc-description
+		
+			| returns a list of the personal  settings
+			
+		
+		:Source:
+			`lib/public/Settings/IManager.php#100 <https://github.com/nextcloud/server/blob/stable13/lib/public/Settings/IManager.php#L100>`_
+		
+		
+		:Parameters:
+			* **$section** (string)  the section id for which to load the settings
+
+		
+		:Returns: array array of IPersonal\[\] where key is the priority
+		:Since: 13.0.0 
+	
+	
+

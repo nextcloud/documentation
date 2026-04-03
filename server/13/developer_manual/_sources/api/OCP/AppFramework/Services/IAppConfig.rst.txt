@@ -1,0 +1,209 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IAppConfig
+==========
+
+
+.. php:namespace:: OCP\AppFramework\Services
+
+.. php:interface:: IAppConfig
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Wrapper for AppConfig for the AppFramework
+		
+	
+	:Implemented by:
+		:php:class:`OC\\AppFramework\\Services\\AppConfig` 
+	
+	
+	:Source:
+		`lib/public/AppFramework/Services/IAppConfig.php#34 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Services/IAppConfig.php#L34>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public getAppKeys()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get all keys stored for this app
+			
+		
+		:Source:
+			`lib/public/AppFramework/Services/IAppConfig.php#41 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Services/IAppConfig.php#L41>`_
+		
+		
+		:Returns: string[] the keys stored for the app
+		:Since: 20.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setAppValue( $key, $value)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Writes a new app wide value
+			
+		
+		:Source:
+			`lib/public/AppFramework/Services/IAppConfig.php#51 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Services/IAppConfig.php#L51>`_
+		
+		
+		:Parameters:
+			* **$key** (string)  the key of the value, under which will be saved
+			* **$value** (string)  the value that should be stored
+
+		
+		:Returns: void 
+		:Since: 20.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getAppValue( $key, $default="")
+	
+		.. rst-class:: phpdoc-description
+		
+			| Looks up an app wide defined value
+			
+		
+		:Source:
+			`lib/public/AppFramework/Services/IAppConfig.php#61 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Services/IAppConfig.php#L61>`_
+		
+		
+		:Parameters:
+			* **$key** (string)  the key of the value, under which it was saved
+			* **$default** (string)  the default value to be returned if the value isn't set
+
+		
+		:Returns: string the saved value
+		:Since: 20.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public deleteAppValue( $key)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Delete an app wide defined value
+			
+		
+		:Source:
+			`lib/public/AppFramework/Services/IAppConfig.php#70 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Services/IAppConfig.php#L70>`_
+		
+		
+		:Parameters:
+			* **$key** (string)  the key of the value, under which it was saved
+
+		
+		:Returns: void 
+		:Since: 20.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public deleteAppValues()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Removes all keys in appconfig belonging to the app
+			
+		
+		:Source:
+			`lib/public/AppFramework/Services/IAppConfig.php#78 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Services/IAppConfig.php#L78>`_
+		
+		
+		:Returns: void 
+		:Since: 20.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setUserValue( $userId, $key, $value, $preCondition=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set a user defined value
+			
+		
+		:Source:
+			`lib/public/AppFramework/Services/IAppConfig.php#91 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Services/IAppConfig.php#L91>`_
+		
+		
+		:Parameters:
+			* **$userId** (string)  the userId of the user that we want to store the value under
+			* **$key** (string)  the key under which the value is being stored
+			* **$value** (string)  the value that you want to store
+			* **$preCondition** (string)  only update if the config value was previously the value passed as $preCondition
+
+		
+		:Throws: :any:`\\OCP\\PreConditionNotMetException <OCP\\PreConditionNotMetException>` if a precondition is specified and is not met
+		:Throws: :any:`\\UnexpectedValueException <UnexpectedValueException>` when trying to store an unexpected value
+		:Throws: :any:`\\OCP\\PreConditionNotMetException <OCP\\PreConditionNotMetException>` if a precondition is specified and is not met
+		:Throws: :any:`\\UnexpectedValueException <UnexpectedValueException>` when trying to store an unexpected value
+		:Since: 20.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getUserValue( $userId, $key, $default="")
+	
+		.. rst-class:: phpdoc-description
+		
+			| Shortcut for getting a user defined value
+			
+		
+		:Source:
+			`lib/public/AppFramework/Services/IAppConfig.php#102 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Services/IAppConfig.php#L102>`_
+		
+		
+		:Parameters:
+			* **$userId** (string)  the userId of the user that we want to store the value under
+			* **$key** (string)  the key under which the value is being stored
+			* **$default** (mixed)  the default value to be returned if the value isn't set
+
+		
+		:Returns: string 
+		:Since: 20.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public deleteUserValue( $userId, $key)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Delete a user value
+			
+		
+		:Source:
+			`lib/public/AppFramework/Services/IAppConfig.php#111 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Services/IAppConfig.php#L111>`_
+		
+		
+		:Parameters:
+			* **$userId** (string)  the userId of the user that we want to store the value under
+			* **$key** (string)  the key under which the value is being stored
+
+		
+		:Since: 20.0.0 
+	
+	
+

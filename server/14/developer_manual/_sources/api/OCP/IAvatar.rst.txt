@@ -1,0 +1,195 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IAvatar
+=======
+
+
+.. php:namespace:: OCP
+
+.. php:interface:: IAvatar
+
+
+	.. rst-class:: phpdoc-description
+	
+		| This class provides avatar functionality
+		
+	
+	:Implemented by:
+		:php:class:`OC\\Avatar\\Avatar` 
+	
+	
+	:Source:
+		`lib/public/IAvatar.php#37 <https://github.com/nextcloud/server/blob/stable13/lib/public/IAvatar.php#L37>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public get( $size=64)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get the users avatar
+			
+		
+		:Source:
+			`lib/public/IAvatar.php#45 <https://github.com/nextcloud/server/blob/stable13/lib/public/IAvatar.php#L45>`_
+		
+		
+		:Parameters:
+			* **$size** (int)  size in px of the avatar, avatars are square, defaults to 64, -1 can be used to not scale the image
+
+		
+		:Returns: bool | :any:`\\OCP\\IImage <OCP\\IImage>` containing the avatar or false if there\'s no image
+		:Since: 6.0.0 \- size of \-1 was added in 9\.0\.0
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public exists()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check if an avatar exists for the user
+			
+		
+		:Source:
+			`lib/public/IAvatar.php#53 <https://github.com/nextcloud/server/blob/stable13/lib/public/IAvatar.php#L53>`_
+		
+		
+		:Returns: bool 
+		:Since: 8.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isCustomAvatar()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check if the avatar of a user is a custom uploaded one
+			
+		
+		:Source:
+			`lib/public/IAvatar.php#61 <https://github.com/nextcloud/server/blob/stable13/lib/public/IAvatar.php#L61>`_
+		
+		
+		:Returns: bool 
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public set( $data)
+	
+		.. rst-class:: phpdoc-description
+		
+			| sets the users avatar
+			
+		
+		:Source:
+			`lib/public/IAvatar.php#72 <https://github.com/nextcloud/server/blob/stable13/lib/public/IAvatar.php#L72>`_
+		
+		
+		:Parameters:
+			* **$data** (:any:`OCP\\IImage <OCP\\IImage>` | resource | string)  An image object, imagedata or path to set a new avatar
+
+		
+		:Throws: :any:`\\Exception <Exception>` if the provided file is not a jpg or png image
+		:Throws: :any:`\\Exception <Exception>` if the provided image is not valid
+		:Throws: :any:`\\OC\\NotSquareException <OC\\NotSquareException>` if the image is not square
+		:Throws: :any:`\\Exception <Exception>` if the provided file is not a jpg or png image
+		:Throws: :any:`\\Exception <Exception>` if the provided image is not valid
+		:Throws: :any:`\\OC\\NotSquareException <OC\\NotSquareException>` if the image is not square
+		:Throws: :any:`\\Exception <Exception>` if the provided file is not a jpg or png image
+		:Throws: :any:`\\Exception <Exception>` if the provided image is not valid
+		:Throws: :any:`\\OC\\NotSquareException <OC\\NotSquareException>` if the image is not square
+		:Returns: void 
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public remove()
+	
+		.. rst-class:: phpdoc-description
+		
+			| remove the users avatar
+			
+		
+		:Source:
+			`lib/public/IAvatar.php#79 <https://github.com/nextcloud/server/blob/stable13/lib/public/IAvatar.php#L79>`_
+		
+		
+		:Returns: void 
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getFile( $size)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the file of the avatar
+			
+		
+		:Source:
+			`lib/public/IAvatar.php#88 <https://github.com/nextcloud/server/blob/stable13/lib/public/IAvatar.php#L88>`_
+		
+		
+		:Parameters:
+			* **$size** (int)  -1 can be used to not scale the image
+
+		
+		:Returns: :any:`\\OCP\\Files\\File <OCP\\Files\\File>` 
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public avatarBackgroundColor( $text)
+	
+		:Source:
+			`lib/public/IAvatar.php#95 <https://github.com/nextcloud/server/blob/stable13/lib/public/IAvatar.php#L95>`_
+		
+		
+		:Parameters:
+			* **$text** (string)  
+
+		
+		:Returns: :any:`\\OCP\\Color <OCP\\Color>` Object containting r g b int in the range \[0, 255\]
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public userChanged( $feature, $oldValue, $newValue)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Handle a changed user
+			
+		
+		:Source:
+			`lib/public/IAvatar.php#101 <https://github.com/nextcloud/server/blob/stable13/lib/public/IAvatar.php#L101>`_
+		
+		
+		:Since: 13.0.0 
+	
+	
+

@@ -1,0 +1,814 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+Util
+====
+
+
+.. php:namespace:: OCP
+
+.. php:class:: Util
+
+
+	.. rst-class:: phpdoc-description
+	
+		| This class provides different helper functions to make the life of a developer easier
+		
+	
+	:Source:
+		`lib/public/Util.php#61 <https://github.com/nextcloud/server/blob/stable13/lib/public/Util.php#L61>`_
+	
+
+Constants
+---------
+
+.. php:const:: DEBUG = 0
+
+	:Source:
+		`lib/public/Util.php#65 <https://github.com/nextcloud/server/blob/stable13/lib/public/Util.php#L65>`_
+	
+	:Deprecated: 14.0.0 use \\OCP\\ILogger::DEBUG
+
+
+.. php:const:: INFO = 1
+
+	:Source:
+		`lib/public/Util.php#69 <https://github.com/nextcloud/server/blob/stable13/lib/public/Util.php#L69>`_
+	
+	:Deprecated: 14.0.0 use \\OCP\\ILogger::INFO
+
+
+.. php:const:: WARN = 2
+
+	:Source:
+		`lib/public/Util.php#73 <https://github.com/nextcloud/server/blob/stable13/lib/public/Util.php#L73>`_
+	
+	:Deprecated: 14.0.0 use \\OCP\\ILogger::WARN
+
+
+.. php:const:: ERROR = 3
+
+	:Source:
+		`lib/public/Util.php#77 <https://github.com/nextcloud/server/blob/stable13/lib/public/Util.php#L77>`_
+	
+	:Deprecated: 14.0.0 use \\OCP\\ILogger::ERROR
+
+
+.. php:const:: FATAL = 4
+
+	:Source:
+		`lib/public/Util.php#81 <https://github.com/nextcloud/server/blob/stable13/lib/public/Util.php#L81>`_
+	
+	:Deprecated: 14.0.0 use \\OCP\\ILogger::FATAL
+
+
+Properties
+----------
+
+.. php:attr:: protected needUpgradeCache
+
+	:Source:
+		`lib/public/Util.php#510 <https://github.com/nextcloud/server/blob/stable13/lib/public/Util.php#L510>`_
+	
+
+
+Methods
+-------
+
+.. rst-class:: public static
+
+	.. php:method:: public static getVersion()
+	
+		.. rst-class:: phpdoc-description
+		
+			| get the current installed version of Nextcloud
+			
+		
+		:Source:
+			`lib/public/Util.php#91 <https://github.com/nextcloud/server/blob/stable13/lib/public/Util.php#L91>`_
+		
+		
+		:Returns: array 
+		:Since: 4.0.0 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static hasExtendedSupport()
+	
+		:Source:
+			`lib/public/Util.php#98 <https://github.com/nextcloud/server/blob/stable13/lib/public/Util.php#L98>`_
+		
+		
+		:Since: 17.0.0 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static setChannel( $channel)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set current update channel
+			
+		
+		:Source:
+			`lib/public/Util.php#113 <https://github.com/nextcloud/server/blob/stable13/lib/public/Util.php#L113>`_
+		
+		
+		:Parameters:
+			* **$channel** (string)  
+
+		
+		:Since: 8.1.0 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static getChannel()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get current update channel
+			
+		
+		:Source:
+			`lib/public/Util.php#122 <https://github.com/nextcloud/server/blob/stable13/lib/public/Util.php#L122>`_
+		
+		
+		:Returns: string 
+		:Since: 8.1.0 
+	
+	
+
+.. rst-class:: public static deprecated
+
+	.. php:method:: public static writeLog( $app, $message, $level)
+	
+		.. rst-class:: phpdoc-description
+		
+			| write a message in the log
+			
+		
+		:Source:
+			`lib/public/Util.php#134 <https://github.com/nextcloud/server/blob/stable13/lib/public/Util.php#L134>`_
+		
+		
+		:Parameters:
+			* **$app** (string)  
+			* **$message** (string)  
+			* **$level** (int)  
+
+		
+		:Since: 4.0.0 
+		:Deprecated: 13.0.0 use log of \\OCP\\ILogger
+	
+	
+
+.. rst-class:: public static deprecated
+
+	.. php:method:: public static isSharingDisabledForUser()
+	
+		.. rst-class:: phpdoc-description
+		
+			| check if sharing is disabled for the current user
+			
+		
+		:Source:
+			`lib/public/Util.php#146 <https://github.com/nextcloud/server/blob/stable13/lib/public/Util.php#L146>`_
+		
+		
+		:Returns: bool 
+		:Since: 7.0.0 
+		:Deprecated: 9.1.0 Use \\OC::$server\-\>getShareManager\(\)\-\>sharingDisabledForUser
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static getL10N( $application, $language=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get l10n object
+			
+		
+		:Source:
+			`lib/public/Util.php#166 <https://github.com/nextcloud/server/blob/stable13/lib/public/Util.php#L166>`_
+		
+		
+		:Parameters:
+			* **$application** (string)  
+			* **$language** (string | null)  
+
+		
+		:Returns: :any:`\\OCP\\IL10N <OCP\\IL10N>` 
+		:Since: 6.0.0 \- parameter $language was added in 8\.0\.0
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static addStyle( $application, $file=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| add a css file
+			
+		
+		:Source:
+			`lib/public/Util.php#176 <https://github.com/nextcloud/server/blob/stable13/lib/public/Util.php#L176>`_
+		
+		
+		:Parameters:
+			* **$application** (string)  
+			* **$file** (string)  
+
+		
+		:Since: 4.0.0 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static addScript( $application, $file=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| add a javascript file
+			
+		
+		:Source:
+			`lib/public/Util.php#186 <https://github.com/nextcloud/server/blob/stable13/lib/public/Util.php#L186>`_
+		
+		
+		:Parameters:
+			* **$application** (string)  
+			* **$file** (string)  
+
+		
+		:Since: 4.0.0 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static addTranslations( $application, $languageCode=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Add a translation JS file
+			
+		
+		:Source:
+			`lib/public/Util.php#196 <https://github.com/nextcloud/server/blob/stable13/lib/public/Util.php#L196>`_
+		
+		
+		:Parameters:
+			* **$application** (string)  application id
+			* **$languageCode** (string)  language code, defaults to the current locale
+
+		
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static addHeader( $tag, $attributes, $text=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Add a custom element to the header
+			| If $text is null then the element will be written as empty element\.
+			
+			| So use "" to get a closing tag\.
+			
+		
+		:Source:
+			`lib/public/Util.php#209 <https://github.com/nextcloud/server/blob/stable13/lib/public/Util.php#L209>`_
+		
+		
+		:Parameters:
+			* **$tag** (string)  tag name of the element
+			* **$attributes** (array)  array of attributes for the element
+			* **$text** (string)  the text content for the element
+
+		
+		:Since: 4.0.0 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static linkToAbsolute( $app, $file, $args=\[\])
+	
+		.. rst-class:: phpdoc-description
+		
+			| Creates an absolute url to the given app and file\.
+			
+		
+		:Source:
+			`lib/public/Util.php#222 <https://github.com/nextcloud/server/blob/stable13/lib/public/Util.php#L222>`_
+		
+		
+		:Parameters:
+			* **$app** (string)  app
+			* **$file** (string)  file
+			* **$args** (array)  array with param=>value, will be appended to the returned url
+			The value of $args will be urlencoded
+
+		
+		:Returns: string the url
+		:Since: 4.0.0 \- parameter $args was added in 4\.5\.0
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static linkToRemote( $service)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Creates an absolute url for remote use\.
+			
+		
+		:Source:
+			`lib/public/Util.php#235 <https://github.com/nextcloud/server/blob/stable13/lib/public/Util.php#L235>`_
+		
+		
+		:Parameters:
+			* **$service** (string)  id
+
+		
+		:Returns: string the url
+		:Since: 4.0.0 
+	
+	
+
+.. rst-class:: public static deprecated
+
+	.. php:method:: public static linkToPublic( $service)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Creates an absolute url for public use
+			
+		
+		:Source:
+			`lib/public/Util.php#250 <https://github.com/nextcloud/server/blob/stable13/lib/public/Util.php#L250>`_
+		
+		
+		:Parameters:
+			* **$service** (string)  id
+
+		
+		:Returns: string the url
+		:Since: 4.5.0 
+		:Deprecated: 15.0.0 \- use OCP\\IURLGenerator
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static getServerHostName()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the server host name without an eventual port number
+			
+		
+		:Source:
+			`lib/public/Util.php#263 <https://github.com/nextcloud/server/blob/stable13/lib/public/Util.php#L263>`_
+		
+		
+		:Returns: string the server hostname
+		:Since: 5.0.0 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static getDefaultEmailAddress( $user_part)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the default email address
+			
+		
+		:Source:
+			`lib/public/Util.php#289 <https://github.com/nextcloud/server/blob/stable13/lib/public/Util.php#L289>`_
+		
+		
+		:Parameters:
+			* **$user_part** (string)  the user part of the address
+
+		
+		:Returns: string the default email address
+			
+			Assembles a default email address \(using the server hostname
+			and the given user part, and returns it
+			Example: when given lostpassword\-noreply as $user\_part param,
+			    and is currently accessed via http\(s\)://example\.com/,
+			    it would return \'lostpassword\-noreply@example\.com\'
+			
+			If the configuration value \'mail\_from\_address\' is set in
+			config\.php, this value will override the $user\_part that
+			is passed to this function
+		
+		:Since: 5.0.0 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static humanFileSize( $bytes)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Make a human file size \(2048 to 2 kB\)
+			
+		
+		:Source:
+			`lib/public/Util.php#311 <https://github.com/nextcloud/server/blob/stable13/lib/public/Util.php#L311>`_
+		
+		
+		:Parameters:
+			* **$bytes** (int)  file size in bytes
+
+		
+		:Returns: string a human readable file size
+		:Since: 4.0.0 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static computerFileSize( $str)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Make a computer file size \(2 kB to 2048\)
+			
+		
+		:Source:
+			`lib/public/Util.php#323 <https://github.com/nextcloud/server/blob/stable13/lib/public/Util.php#L323>`_
+		
+		
+		:Parameters:
+			* **$str** (string)  file size in a fancy format
+
+		
+		:Returns: float a file size in bytes
+			
+			Inspired by: https://www\.php\.net/manual/en/function\.filesize\.php\#92418
+		
+		:Since: 4.0.0 
+	
+	
+
+.. rst-class:: public static deprecated
+
+	.. php:method:: public static connectHook( $signalClass, $signalName, $slotClass, $slotName)
+	
+		.. rst-class:: phpdoc-description
+		
+			| connects a function to a hook
+			
+		
+		:Source:
+			`lib/public/Util.php#342 <https://github.com/nextcloud/server/blob/stable13/lib/public/Util.php#L342>`_
+		
+		
+		:Parameters:
+			* **$signalClass** (string)  class name of emitter
+			* **$signalName** (string)  name of signal
+			* **$slotClass** (string | object)  class name of slot
+			* **$slotName** (string)  name of slot
+
+		
+		:Returns: bool This function makes it very easy to connect to use hooks\.
+			
+			TODO: write example
+		
+		:Since: 4.0.0 
+		:Deprecated: 21.0.0 use \\OCP\\EventDispatcher\\IEventDispatcher::addListener
+	
+	
+
+.. rst-class:: public static deprecated
+
+	.. php:method:: public static emitHook( $signalclass, $signalname, $params=\[\])
+	
+		.. rst-class:: phpdoc-description
+		
+			| Emits a signal\. To get data from the slot use references\!
+			
+		
+		:Source:
+			`lib/public/Util.php#357 <https://github.com/nextcloud/server/blob/stable13/lib/public/Util.php#L357>`_
+		
+		
+		:Parameters:
+			* **$signalclass** (string)  class name of emitter
+			* **$signalname** (string)  name of signal
+			* **$params** (array)  default: array() array with additional data
+
+		
+		:Returns: bool true if slots exists or false if not
+			
+			TODO: write example
+		
+		:Since: 4.0.0 
+		:Deprecated: 21.0.0 use \\OCP\\EventDispatcher\\IEventDispatcher::dispatchTypedEvent
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static callRegister()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Register an get/post call\. This is important to prevent CSRF attacks
+			
+		
+		:Source:
+			`lib/public/Util.php#373 <https://github.com/nextcloud/server/blob/stable13/lib/public/Util.php#L373>`_
+		
+		
+		:Since: 4.5.0 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static sanitizeHTML( $value)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Used to sanitize HTML
+			
+			| This function is used to sanitize HTML and should be applied on any
+			| string or array of strings before displaying it on a web page\.
+			
+		
+		:Source:
+			`lib/public/Util.php#390 <https://github.com/nextcloud/server/blob/stable13/lib/public/Util.php#L390>`_
+		
+		
+		:Parameters:
+			* **$value** (string | array)  
+
+		
+		:Returns: string | array an array of sanitized strings or a single sanitized string, depends on the input parameter\.
+		:Since: 4.5.0 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static encodePath( $component)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Public function to encode url parameters
+			
+			| This function is used to encode path to file before output\.
+			| Encoding is done according to RFC 3986 with one exception:
+			| Character \'/\' is preserved as is\.
+			
+		
+		:Source:
+			`lib/public/Util.php#405 <https://github.com/nextcloud/server/blob/stable13/lib/public/Util.php#L405>`_
+		
+		
+		:Parameters:
+			* **$component** (string)  part of URI to encode
+
+		
+		:Returns: string 
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static mb_array_change_key_case( $input, $case=MB\_CASE\_LOWER, $encoding=UTF\-8)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns an array with all keys from input lowercased or uppercased\. Numbered indices are left as is\.
+			
+		
+		:Source:
+			`lib/public/Util.php#418 <https://github.com/nextcloud/server/blob/stable13/lib/public/Util.php#L418>`_
+		
+		
+		:Parameters:
+			* **$input** (array)  The array to work on
+			* **$case** (int)  Either MB_CASE_UPPER or MB_CASE_LOWER (default)
+			* **$encoding** (string)  The encoding parameter is the character encoding. Defaults to UTF-8
+
+		
+		:Returns: array 
+		:Since: 4.5.0 
+	
+	
+
+.. rst-class:: public static deprecated
+
+	.. php:method:: public static recursiveArraySearch( $haystack, $needle, $index=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| performs a search in a nested array
+			
+		
+		:Source:
+			`lib/public/Util.php#432 <https://github.com/nextcloud/server/blob/stable13/lib/public/Util.php#L432>`_
+		
+		
+		:Parameters:
+			* **$haystack** (array)  the array to be searched
+			* **$needle** (string)  the search string
+			* **$index** (mixed)  optional, only search this key name
+
+		
+		:Returns: mixed the key of the matching field, otherwise false
+		:Since: 4.5.0 
+		:Deprecated: 15.0.0 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static maxUploadFilesize( $dir, $free=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| calculates the maximum upload size respecting system settings, free space and user quota
+			
+		
+		:Source:
+			`lib/public/Util.php#444 <https://github.com/nextcloud/server/blob/stable13/lib/public/Util.php#L444>`_
+		
+		
+		:Parameters:
+			* **$dir** (string)  the current folder where the user currently operates
+			* **$free** (int)  the number of bytes free on the storage holding $dir, if not set this will be received from the storage directly
+
+		
+		:Returns: int number of bytes representing
+		:Since: 5.0.0 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static freeSpace( $dir)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Calculate free space left within user quota
+			
+		
+		:Source:
+			`lib/public/Util.php#454 <https://github.com/nextcloud/server/blob/stable13/lib/public/Util.php#L454>`_
+		
+		
+		:Parameters:
+			* **$dir** (string)  the current folder where the user currently operates
+
+		
+		:Returns: int number of bytes representing
+		:Since: 7.0.0 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static uploadLimit()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Calculate PHP upload limit
+			
+		
+		:Source:
+			`lib/public/Util.php#464 <https://github.com/nextcloud/server/blob/stable13/lib/public/Util.php#L464>`_
+		
+		
+		:Returns: int number of bytes representing
+		:Since: 7.0.0 
+	
+	
+
+.. rst-class:: public static deprecated
+
+	.. php:method:: public static isValidFileName( $file)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns whether the given file name is valid
+			
+		
+		:Source:
+			`lib/public/Util.php#476 <https://github.com/nextcloud/server/blob/stable13/lib/public/Util.php#L476>`_
+		
+		
+		:Parameters:
+			* **$file** (string)  file name to check
+
+		
+		:Returns: bool true if the file name is valid, false otherwise
+		:Deprecated: 8.1.0 use \\OC\\Files\\View::verifyPath\(\)
+		:Since: 7.0.0 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static naturalSortCompare( $a, $b)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Compare two strings to provide a natural sort
+			
+		
+		:Source:
+			`lib/public/Util.php#488 <https://github.com/nextcloud/server/blob/stable13/lib/public/Util.php#L488>`_
+		
+		
+		:Parameters:
+			* **$a** (string)  first string to compare
+			* **$b** (string)  second string to compare
+
+		
+		:Returns: int \-1 if $b comes before $a, 1 if $a comes before $b
+			or 0 if the strings are identical
+		
+		:Since: 7.0.0 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static isPublicLinkPasswordRequired()
+	
+		.. rst-class:: phpdoc-description
+		
+			| check if a password is required for each public link
+			
+		
+		:Source:
+			`lib/public/Util.php#497 <https://github.com/nextcloud/server/blob/stable13/lib/public/Util.php#L497>`_
+		
+		
+		:Returns: bool 
+		:Since: 7.0.0 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static isDefaultExpireDateEnforced()
+	
+		.. rst-class:: phpdoc-description
+		
+			| check if share API enforces a default expire date
+			
+		
+		:Source:
+			`lib/public/Util.php#506 <https://github.com/nextcloud/server/blob/stable13/lib/public/Util.php#L506>`_
+		
+		
+		:Returns: bool 
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static needUpgrade()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Checks whether the current version needs upgrade\.
+			
+		
+		:Source:
+			`lib/public/Util.php#518 <https://github.com/nextcloud/server/blob/stable13/lib/public/Util.php#L518>`_
+		
+		
+		:Returns: bool true if upgrade is needed, false otherwise
+		:Since: 7.0.0 
+	
+	
+

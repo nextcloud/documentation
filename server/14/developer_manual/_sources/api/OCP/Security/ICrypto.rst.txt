@@ -1,0 +1,104 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+ICrypto
+=======
+
+
+.. php:namespace:: OCP\Security
+
+.. php:interface:: ICrypto
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Class Crypto provides a high\-level encryption layer using AES\-CBC\. If no key has been provided
+		| it will use the secret defined in config\.php as key\. Additionally the message will be HMAC\'d\.
+		
+		| Usage:
+		| $encryptWithDefaultPassword = \\OC::$server\-\>getCrypto\(\)\-\>encrypt\(\'EncryptedText\'\);
+		| $encryptWithCustomPassword = \\OC::$server\-\>getCrypto\(\)\-\>encrypt\(\'EncryptedText\', \'password\'\);
+		
+	
+	:Implemented by:
+		:php:class:`OC\\Security\\Crypto` 
+	
+	
+	:Source:
+		`lib/public/Security/ICrypto.php#40 <https://github.com/nextcloud/server/blob/stable13/lib/public/Security/ICrypto.php#L40>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public calculateHMAC( $message, $password="")
+	
+		:Source:
+			`lib/public/Security/ICrypto.php#48 <https://github.com/nextcloud/server/blob/stable13/lib/public/Security/ICrypto.php#L48>`_
+		
+		
+		:Parameters:
+			* **$message** (string)  The message to authenticate
+			* **$password** (string)  Password to use (defaults to `secret` in config.php)
+
+		
+		:Returns: string Calculated HMAC
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public encrypt( $plaintext, $password="")
+	
+		.. rst-class:: phpdoc-description
+		
+			| Encrypts a value and adds an HMAC \(Encrypt\-Then\-MAC\)
+			
+		
+		:Source:
+			`lib/public/Security/ICrypto.php#57 <https://github.com/nextcloud/server/blob/stable13/lib/public/Security/ICrypto.php#L57>`_
+		
+		
+		:Parameters:
+			* **$plaintext** (string)  
+			* **$password** (string)  Password to encrypt, if not specified the secret from config.php will be taken
+
+		
+		:Returns: string Authenticated ciphertext
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public decrypt( $authenticatedCiphertext, $password="")
+	
+		.. rst-class:: phpdoc-description
+		
+			| Decrypts a value and verifies the HMAC \(Encrypt\-Then\-Mac\)
+			
+		
+		:Source:
+			`lib/public/Security/ICrypto.php#68 <https://github.com/nextcloud/server/blob/stable13/lib/public/Security/ICrypto.php#L68>`_
+		
+		
+		:Parameters:
+			* **$authenticatedCiphertext** (string)  
+			* **$password** (string)  Password to encrypt, if not specified the secret from config.php will be taken
+
+		
+		:Returns: string plaintext
+		:Throws: :any:`\\Exception <Exception>` If the HMAC does not match
+		:Throws: :any:`\\Exception <Exception>` If the decryption failed
+		:Throws: :any:`\\Exception <Exception>` If the HMAC does not match
+		:Throws: :any:`\\Exception <Exception>` If the decryption failed
+		:Since: 8.0.0 
+	
+	
+

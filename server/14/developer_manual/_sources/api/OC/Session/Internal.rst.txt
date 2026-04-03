@@ -1,0 +1,203 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+Internal
+========
+
+
+.. php:namespace:: OC\Session
+
+.. php:class:: Internal
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Class Internal
+		
+		| wrap php\'s internal session handling into the Session interface
+		
+	
+	:Source:
+		`lib/private/Session/Internal.php#48 <https://github.com/nextcloud/server/blob/stable13/lib/private/Session/Internal.php#L48>`_
+	
+	:Parent:
+		:php:class:`OC\\Session\\Session`
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $name)
+	
+		:Source:
+			`lib/private/Session/Internal.php#53 <https://github.com/nextcloud/server/blob/stable13/lib/private/Session/Internal.php#L53>`_
+		
+		
+		:Parameters:
+			* **$name** (string)  
+
+		
+		:Throws: :any:`\\Exception <Exception>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public set( $key, $value)
+	
+		:Source:
+			`lib/private/Session/Internal.php#71 <https://github.com/nextcloud/server/blob/stable13/lib/private/Session/Internal.php#L71>`_
+		
+		
+		:Parameters:
+			* **$key** (string)  
+			* **$value** (int)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public get( $key)
+	
+		:Source:
+			`lib/private/Session/Internal.php#80 <https://github.com/nextcloud/server/blob/stable13/lib/private/Session/Internal.php#L80>`_
+		
+		
+		:Parameters:
+			* **$key** (string)  
+
+		
+		:Returns: mixed 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public exists( $key)
+	
+		:Source:
+			`lib/private/Session/Internal.php#91 <https://github.com/nextcloud/server/blob/stable13/lib/private/Session/Internal.php#L91>`_
+		
+		
+		:Parameters:
+			* **$key** (string)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public remove( $key)
+	
+		:Source:
+			`lib/private/Session/Internal.php#98 <https://github.com/nextcloud/server/blob/stable13/lib/private/Session/Internal.php#L98>`_
+		
+		
+		:Parameters:
+			* **$key** (string)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public clear()
+	
+		:Source:
+			`lib/private/Session/Internal.php#104 <https://github.com/nextcloud/server/blob/stable13/lib/private/Session/Internal.php#L104>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public close()
+	
+		:Source:
+			`lib/private/Session/Internal.php#111 <https://github.com/nextcloud/server/blob/stable13/lib/private/Session/Internal.php#L111>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public regenerateId( $deleteOldSession=true, $updateToken=false)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Wrapper around session\_regenerate\_id
+			
+		
+		:Source:
+			`lib/private/Session/Internal.php#123 <https://github.com/nextcloud/server/blob/stable13/lib/private/Session/Internal.php#L123>`_
+		
+		
+		:Parameters:
+			* **$deleteOldSession** (bool)  Whether to delete the old associated session file or not.
+			* **$updateToken** (bool)  Wheater to update the associated auth token
+
+		
+		:Returns: void 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getId()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Wrapper around session\_id
+			
+		
+		:Source:
+			`lib/private/Session/Internal.php#164 <https://github.com/nextcloud/server/blob/stable13/lib/private/Session/Internal.php#L164>`_
+		
+		
+		:Returns: string 
+		:Throws: :any:`\\OCP\\Session\\Exceptions\\SessionNotAvailableException <OCP\\Session\\Exceptions\\SessionNotAvailableException>` 
+		:Since: 9.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public reopen()
+	
+		:Source:
+			`lib/private/Session/Internal.php#175 <https://github.com/nextcloud/server/blob/stable13/lib/private/Session/Internal.php#L175>`_
+		
+		
+		:Throws: :any:`\\Exception <Exception>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public trapError( $errorNumber, $errorString)
+	
+		:Source:
+			`lib/private/Session/Internal.php#184 <https://github.com/nextcloud/server/blob/stable13/lib/private/Session/Internal.php#L184>`_
+		
+		
+		:Parameters:
+			* **$errorNumber** (int)  
+			* **$errorString** (string)  
+
+		
+		:Throws: :any:`\\ErrorException <ErrorException>` 
+	
+	
+

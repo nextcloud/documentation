@@ -1,0 +1,138 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IProvider
+=========
+
+
+.. php:namespace:: OCP\Search
+
+.. php:interface:: IProvider
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Interface for search providers
+		
+		| These providers will be implemented in apps, so they can participate in the
+		| global search results of Nextcloud\. If an app provides more than one type of
+		| resource, e\.g\. contacts and address books in Nextcloud Contacts, it should
+		| register one provider per group\.
+		
+	
+	:Source:
+		`lib/public/Search/IProvider.php#43 <https://github.com/nextcloud/server/blob/stable13/lib/public/Search/IProvider.php#L43>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public getId()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the unique ID of this search provider
+			
+			| Ideally this should be the app name or an identifier identified with the
+			| app name, especially if the app registers more than one provider\.
+			| 
+			| Example: \'mail\', \'mail\_recipients\', \'files\_sharing\'
+			
+		
+		:Source:
+			`lib/public/Search/IProvider.php#57 <https://github.com/nextcloud/server/blob/stable13/lib/public/Search/IProvider.php#L57>`_
+		
+		
+		:Returns: string 
+		:Since: 20.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getName()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the translated name of this search provider
+			
+			| Example: \'Mail\', \'Contacts\'\.\.\.
+			
+		
+		:Source:
+			`lib/public/Search/IProvider.php#68 <https://github.com/nextcloud/server/blob/stable13/lib/public/Search/IProvider.php#L68>`_
+		
+		
+		:Returns: string 
+		:Since: 20.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getOrder( $route, $routeParameters)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the search provider order
+			| The lower the int, the higher it will be sorted \(0 will be before 10\)
+			
+		
+		:Source:
+			`lib/public/Search/IProvider.php#81 <https://github.com/nextcloud/server/blob/stable13/lib/public/Search/IProvider.php#L81>`_
+		
+		
+		:Parameters:
+			* **$route** (string)  the route the user is currently at, e.g. files.view.index
+			* **$routeParameters** (array)  the parameters of the route the user is currently at, e.g. [fileId = 982, dir = "/"]
+
+		
+		:Returns: int 
+		:Since: 20.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public search( $user, $query)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Find matching search entries in an app
+			
+			| Search results can either be a complete list of all the matches the app can
+			| find, or ideally a paginated result set where more data can be fetched on
+			| demand\. To be able to tell where the next offset starts the search uses
+			| "cursors" which are a property of the last result entry\. E\.g\. search results
+			| that show most recent entries first can look for entries older than the last
+			| one of the first result set\. This approach was chosen over a numeric limit/
+			| offset approach as the offset moves as new data comes in\. The cursor is
+			| resistant to these changes and will still show results without overlaps or
+			| gaps\.
+			| 
+			| See https://dev\.to/jackmarchant/offset\-and\-cursor\-pagination\-explained\-b89
+			| for the concept of cursors\.
+			| 
+			| Implementations that return result pages have to adhere to the limit
+			| property of a search query\.
+			
+		
+		:Source:
+			`lib/public/Search/IProvider.php#109 <https://github.com/nextcloud/server/blob/stable13/lib/public/Search/IProvider.php#L109>`_
+		
+		
+		:Parameters:
+			* **$user** (:any:`OCP\\IUser <OCP\\IUser>`)  
+			* **$query** (:any:`OCP\\Search\\ISearchQuery <OCP\\Search\\ISearchQuery>`)  
+
+		
+		:Returns: :any:`\\OCP\\Search\\SearchResult <OCP\\Search\\SearchResult>` 
+		:Since: 20.0.0 
+	
+	
+

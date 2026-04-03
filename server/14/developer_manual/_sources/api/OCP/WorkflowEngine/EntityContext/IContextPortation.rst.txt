@@ -1,0 +1,70 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IContextPortation
+=================
+
+
+.. php:namespace:: OCP\WorkflowEngine\EntityContext
+
+.. php:interface:: IContextPortation
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Interface IContextPortation
+		
+		| Occasionally an IEntity needs to be reused not in the same, but a new
+		| request\. As IEntities receive custom context information during a flow
+		| cycle, sometimes it might be necessary to export context identifiers to
+		| be able to recreate the state at a later point\. For example: handling
+		| translations in a notification INotifier\.
+		
+	
+	:Source:
+		`lib/public/WorkflowEngine/EntityContext/IContextPortation.php#41 <https://github.com/nextcloud/server/blob/stable13/lib/public/WorkflowEngine/EntityContext/IContextPortation.php#L41>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public exportContextIDs()
+	
+		.. rst-class:: phpdoc-description
+		
+			| All relevant context identifiers that are needed to restore the state
+			| of an entity shall be returned with this method\. The resulting array
+			| must be JSON\-serializable\.
+			
+		
+		:Source:
+			`lib/public/WorkflowEngine/EntityContext/IContextPortation.php#50 <https://github.com/nextcloud/server/blob/stable13/lib/public/WorkflowEngine/EntityContext/IContextPortation.php#L50>`_
+		
+		
+		:Since: 20.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public importContextIDs( $contextIDs)
+	
+		.. rst-class:: phpdoc-description
+		
+			| This method receives the array as returned by \`exportContextIDs\(\)\` in
+			| order to restore the state of the IEntity if necessary\.
+			
+		
+		:Source:
+			`lib/public/WorkflowEngine/EntityContext/IContextPortation.php#58 <https://github.com/nextcloud/server/blob/stable13/lib/public/WorkflowEngine/EntityContext/IContextPortation.php#L58>`_
+		
+		
+		:Since: 20.0.0 
+	
+	
+

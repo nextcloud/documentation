@@ -1,0 +1,136 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+OracleMigrator
+==============
+
+
+.. php:namespace:: OC\DB
+
+.. php:class:: OracleMigrator
+
+
+	:Source:
+		`lib/private/DB/OracleMigrator.php#41 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/OracleMigrator.php#L41>`_
+	
+	:Parent:
+		:php:class:`OC\\DB\\Migrator`
+	
+
+Methods
+-------
+
+.. rst-class:: protected
+
+	.. php:method:: protected quoteColumn( $column)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Quote a column\'s name but changing the name requires recreating
+			| the column instance and copying over all properties\.
+			
+		
+		:Source:
+			`lib/private/DB/OracleMigrator.php#50 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/OracleMigrator.php#L50>`_
+		
+		
+		:Parameters:
+			* **$column** (:any:`Doctrine\\DBAL\\Schema\\Column <Doctrine\\DBAL\\Schema\\Column>`)  old column
+
+		
+		:Returns: :any:`\\Doctrine\\DBAL\\Schema\\Column <Doctrine\\DBAL\\Schema\\Column>` new column instance with new name
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected quoteIndex( $index)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Quote an index\'s name but changing the name requires recreating
+			| the index instance and copying over all properties\.
+			
+		
+		:Source:
+			`lib/private/DB/OracleMigrator.php#77 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/OracleMigrator.php#L77>`_
+		
+		
+		:Parameters:
+			* **$index** (:any:`Doctrine\\DBAL\\Schema\\Index <Doctrine\\DBAL\\Schema\\Index>`)  old index
+
+		
+		:Returns: :any:`\\Doctrine\\DBAL\\Schema\\Index <Doctrine\\DBAL\\Schema\\Index>` new index instance with new name
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected quoteForeignKeyConstraint( $fkc)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Quote an ForeignKeyConstraint\'s name but changing the name requires recreating
+			| the ForeignKeyConstraint instance and copying over all properties\.
+			
+		
+		:Source:
+			`lib/private/DB/OracleMigrator.php#98 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/OracleMigrator.php#L98>`_
+		
+		
+		:Parameters:
+			* **$fkc** (:any:`Doctrine\\DBAL\\Schema\\ForeignKeyConstraint <Doctrine\\DBAL\\Schema\\ForeignKeyConstraint>`)  old fkc
+
+		
+		:Returns: :any:`\\Doctrine\\DBAL\\Schema\\ForeignKeyConstraint <Doctrine\\DBAL\\Schema\\ForeignKeyConstraint>` new fkc instance with new name
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected getDiff( $targetSchema, $connection)
+	
+		:Source:
+			`lib/private/DB/OracleMigrator.php#118 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/OracleMigrator.php#L118>`_
+		
+		
+		:Parameters:
+			* **$targetSchema** (:any:`Doctrine\\DBAL\\Schema\\Schema <Doctrine\\DBAL\\Schema\\Schema>`)  
+			* **$connection** (:any:`Doctrine\\DBAL\\Connection <Doctrine\\DBAL\\Connection>`)  
+
+		
+		:Returns: :any:`\\Doctrine\\DBAL\\Schema\\SchemaDiff <Doctrine\\DBAL\\Schema\\SchemaDiff>` 
+		:Throws: :any:`\\Doctrine\\DBAL\\Exception <Doctrine\\DBAL\\Exception>` 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected convertStatementToScript( $statement)
+	
+		:Source:
+			`lib/private/DB/OracleMigrator.php#211 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/OracleMigrator.php#L211>`_
+		
+		
+		:Parameters:
+			* **$statement**  
+
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected getFilterExpression()
+	
+		:Source:
+			`lib/private/DB/OracleMigrator.php#221 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/OracleMigrator.php#L221>`_
+		
+		
+	
+	
+

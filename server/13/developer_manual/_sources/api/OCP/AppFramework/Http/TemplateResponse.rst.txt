@@ -1,0 +1,297 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+TemplateResponse
+================
+
+
+.. php:namespace:: OCP\AppFramework\Http
+
+.. php:class:: TemplateResponse
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Response for a normal template
+		
+	
+	:Source:
+		`lib/public/AppFramework/Http/TemplateResponse.php#41 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Http/TemplateResponse.php#L41>`_
+	
+	:Parent:
+		:php:class:`OCP\\AppFramework\\Http\\Response`
+	
+
+Constants
+---------
+
+.. php:const:: RENDER_AS_GUEST = guest
+
+	:Source:
+		`lib/public/AppFramework/Http/TemplateResponse.php#45 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Http/TemplateResponse.php#L45>`_
+	
+	:Since: 20.0.0 
+
+
+.. php:const:: RENDER_AS_BLANK = 
+
+	:Source:
+		`lib/public/AppFramework/Http/TemplateResponse.php#49 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Http/TemplateResponse.php#L49>`_
+	
+	:Since: 20.0.0 
+
+
+.. php:const:: RENDER_AS_BASE = base
+
+	:Source:
+		`lib/public/AppFramework/Http/TemplateResponse.php#53 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Http/TemplateResponse.php#L53>`_
+	
+	:Since: 20.0.0 
+
+
+.. php:const:: RENDER_AS_USER = user
+
+	:Source:
+		`lib/public/AppFramework/Http/TemplateResponse.php#57 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Http/TemplateResponse.php#L57>`_
+	
+	:Since: 20.0.0 
+
+
+.. php:const:: RENDER_AS_ERROR = error
+
+	:Source:
+		`lib/public/AppFramework/Http/TemplateResponse.php#61 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Http/TemplateResponse.php#L61>`_
+	
+	:Since: 20.0.0 
+
+
+.. php:const:: RENDER_AS_PUBLIC = public
+
+	:Source:
+		`lib/public/AppFramework/Http/TemplateResponse.php#65 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Http/TemplateResponse.php#L65>`_
+	
+	:Since: 20.0.0 
+
+
+.. php:const:: EVENT_LOAD_ADDITIONAL_SCRIPTS = self::class \. ::loadAdditionalScripts
+
+	:Source:
+		`lib/public/AppFramework/Http/TemplateResponse.php#70 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Http/TemplateResponse.php#L70>`_
+	
+	:Deprecated: 20.0.0 use OCP\\AppFramework\\Http\\Events\\BeforeTemplateRenderedEvent
+
+
+.. php:const:: EVENT_LOAD_ADDITIONAL_SCRIPTS_LOGGEDIN = self::class \. ::loadAdditionalScriptsLoggedIn
+
+	:Source:
+		`lib/public/AppFramework/Http/TemplateResponse.php#74 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Http/TemplateResponse.php#L74>`_
+	
+	:Deprecated: 20.0.0 use OCP\\AppFramework\\Http\\Events\\BeforeTemplateRenderedEvent
+
+
+Properties
+----------
+
+.. php:attr:: protected static templateName
+
+	.. rst-class:: phpdoc-description
+	
+		| name of the template
+		
+	
+	:Source:
+		`lib/public/AppFramework/Http/TemplateResponse.php#80 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Http/TemplateResponse.php#L80>`_
+	
+	:Type: string 
+
+
+.. php:attr:: protected static params
+
+	.. rst-class:: phpdoc-description
+	
+		| parameters
+		
+	
+	:Source:
+		`lib/public/AppFramework/Http/TemplateResponse.php#86 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Http/TemplateResponse.php#L86>`_
+	
+	:Type: array 
+
+
+.. php:attr:: protected static renderAs
+
+	.. rst-class:: phpdoc-description
+	
+		| rendering type \(admin, user, blank\)
+		
+	
+	:Source:
+		`lib/public/AppFramework/Http/TemplateResponse.php#92 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Http/TemplateResponse.php#L92>`_
+	
+	:Type: string 
+
+
+.. php:attr:: protected static appName
+
+	.. rst-class:: phpdoc-description
+	
+		| app name
+		
+	
+	:Source:
+		`lib/public/AppFramework/Http/TemplateResponse.php#98 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Http/TemplateResponse.php#L98>`_
+	
+	:Type: string 
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $appName, $templateName, $params=\[\], $renderAs=self::RENDER\_AS\_USER)
+	
+		.. rst-class:: phpdoc-description
+		
+			| constructor of TemplateResponse
+			
+		
+		:Source:
+			`lib/public/AppFramework/Http/TemplateResponse.php#109 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Http/TemplateResponse.php#L109>`_
+		
+		
+		:Parameters:
+			* **$appName** (string)  the name of the app to load the template from
+			* **$templateName** (string)  the name of the template
+			* **$params** (array)  an array of parameters which should be passed to the
+			template
+			* **$renderAs** (string)  how the page should be rendered, defaults to user
+
+		
+		:Since: 6.0.0 \- parameters $params and $renderAs were added in 7\.0\.0
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setParams( $params)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Sets template parameters
+			
+		
+		:Source:
+			`lib/public/AppFramework/Http/TemplateResponse.php#130 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Http/TemplateResponse.php#L130>`_
+		
+		
+		:Parameters:
+			* **$params** (array)  an array with key => value structure which sets template
+			variables
+
+		
+		:Returns: :any:`\\OCP\\AppFramework\\Http\\TemplateResponse <OCP\\AppFramework\\Http\\TemplateResponse>` Reference to this object
+		:Since: 6.0.0 \- return value was added in 7\.0\.0
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getParams()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Used for accessing the set parameters
+			
+		
+		:Source:
+			`lib/public/AppFramework/Http/TemplateResponse.php#142 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Http/TemplateResponse.php#L142>`_
+		
+		
+		:Returns: array the params
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getTemplateName()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Used for accessing the name of the set template
+			
+		
+		:Source:
+			`lib/public/AppFramework/Http/TemplateResponse.php#152 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Http/TemplateResponse.php#L152>`_
+		
+		
+		:Returns: string the name of the used template
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public renderAs( $renderAs)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Sets the template page
+			
+		
+		:Source:
+			`lib/public/AppFramework/Http/TemplateResponse.php#166 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Http/TemplateResponse.php#L166>`_
+		
+		
+		:Parameters:
+			* **$renderAs** (string)  admin, user or blank. Admin also prints the admin
+			settings header and footer, user renders the normal
+			normal page including footer and header and blank
+			just renders the plain template
+
+		
+		:Returns: :any:`\\OCP\\AppFramework\\Http\\TemplateResponse <OCP\\AppFramework\\Http\\TemplateResponse>` Reference to this object
+		:Since: 6.0.0 \- return value was added in 7\.0\.0
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getRenderAs()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the set renderAs
+			
+		
+		:Source:
+			`lib/public/AppFramework/Http/TemplateResponse.php#178 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Http/TemplateResponse.php#L178>`_
+		
+		
+		:Returns: string the renderAs value
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public render()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the rendered html
+			
+		
+		:Source:
+			`lib/public/AppFramework/Http/TemplateResponse.php#188 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Http/TemplateResponse.php#L188>`_
+		
+		
+		:Returns: string the rendered html
+		:Since: 6.0.0 
+	
+	
+

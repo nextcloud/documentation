@@ -1,0 +1,137 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+BaseResponse
+============
+
+
+.. php:namespace:: OC\AppFramework\OCS
+
+.. rst-class::  abstract
+
+.. php:class:: BaseResponse
+
+
+	:Source:
+		`lib/private/AppFramework/OCS/BaseResponse.php#33 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/OCS/BaseResponse.php#L33>`_
+	
+	:Parent:
+		:php:class:`OCP\\AppFramework\\Http\\Response`
+	
+
+Properties
+----------
+
+.. php:attr:: protected static data
+
+	:Source:
+		`lib/private/AppFramework/OCS/BaseResponse.php#35 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/OCS/BaseResponse.php#L35>`_
+	
+	:Type: array 
+
+
+.. php:attr:: protected static format
+
+	:Source:
+		`lib/private/AppFramework/OCS/BaseResponse.php#38 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/OCS/BaseResponse.php#L38>`_
+	
+	:Type: string 
+
+
+.. php:attr:: protected static statusMessage
+
+	:Source:
+		`lib/private/AppFramework/OCS/BaseResponse.php#41 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/OCS/BaseResponse.php#L41>`_
+	
+	:Type: string 
+
+
+.. php:attr:: protected static itemsCount
+
+	:Source:
+		`lib/private/AppFramework/OCS/BaseResponse.php#44 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/OCS/BaseResponse.php#L44>`_
+	
+	:Type: int 
+
+
+.. php:attr:: protected static itemsPerPage
+
+	:Source:
+		`lib/private/AppFramework/OCS/BaseResponse.php#47 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/OCS/BaseResponse.php#L47>`_
+	
+	:Type: int 
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $dataResponse, $format=xml, $statusMessage=null, $itemsCount=null, $itemsPerPage=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| BaseResponse constructor\.
+			
+		
+		:Source:
+			`lib/private/AppFramework/OCS/BaseResponse.php#58 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/OCS/BaseResponse.php#L58>`_
+		
+		
+		:Parameters:
+			* **$dataResponse** (:any:`OCP\\AppFramework\\Http\\DataResponse <OCP\\AppFramework\\Http\\DataResponse>`)  
+			* **$format** (string)  
+			* **$statusMessage** (string | null)  
+			* **$itemsCount** (int | null)  
+			* **$itemsPerPage** (int | null)  
+
+		
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected renderResult( $meta)
+	
+		:Source:
+			`lib/private/AppFramework/OCS/BaseResponse.php#93 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/OCS/BaseResponse.php#L93>`_
+		
+		
+		:Parameters:
+			* **$meta** (string[])  
+
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected toXML( $array, $writer)
+	
+		:Source:
+			`lib/private/AppFramework/OCS/BaseResponse.php#127 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/OCS/BaseResponse.php#L127>`_
+		
+		
+		:Parameters:
+			* **$array** (array)  
+			* **$writer** (:any:`XMLWriter <XMLWriter>`)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getOCSStatus()
+	
+		:Source:
+			`lib/private/AppFramework/OCS/BaseResponse.php#148 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/OCS/BaseResponse.php#L148>`_
+		
+		
+	
+	
+

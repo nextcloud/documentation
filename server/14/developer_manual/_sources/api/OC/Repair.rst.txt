@@ -1,0 +1,229 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+Repair
+======
+
+
+.. php:namespace:: OC
+
+.. php:class:: Repair
+
+
+	:Source:
+		`lib/private/Repair.php#84 <https://github.com/nextcloud/server/blob/stable13/lib/private/Repair.php#L84>`_
+	
+	:Implements:
+		:php:interface:`OCP\\Migration\\IOutput` 
+	
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $repairSteps, $dispatcher, $logger)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Creates a new repair step runner
+			
+		
+		:Source:
+			`lib/private/Repair.php#103 <https://github.com/nextcloud/server/blob/stable13/lib/private/Repair.php#L103>`_
+		
+		
+		:Parameters:
+			* **$repairSteps** (:any:`OCP\\Migration\\IRepairStep\[\] <OCP\\Migration\\IRepairStep>`)  array of RepairStep instances
+			* **$dispatcher** (:any:`Symfony\\Component\\EventDispatcher\\EventDispatcherInterface <Symfony\\Component\\EventDispatcher\\EventDispatcherInterface>`)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public run()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Run a series of repair steps for common problems
+			
+		
+		:Source:
+			`lib/private/Repair.php#112 <https://github.com/nextcloud/server/blob/stable13/lib/private/Repair.php#L112>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public addStep( $repairStep)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Add repair step
+			
+		
+		:Source:
+			`lib/private/Repair.php#137 <https://github.com/nextcloud/server/blob/stable13/lib/private/Repair.php#L137>`_
+		
+		
+		:Parameters:
+			* **$repairStep** (:any:`OCP\\Migration\\IRepairStep <OCP\\Migration\\IRepairStep>` | string)  repair step
+
+		
+		:Throws: :any:`\\Exception <Exception>` 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static getRepairSteps()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the default repair steps to be run on the
+			| command line or after an upgrade\.
+			
+		
+		:Source:
+			`lib/private/Repair.php#165 <https://github.com/nextcloud/server/blob/stable13/lib/private/Repair.php#L165>`_
+		
+		
+		:Returns: :any:`\\OCP\\Migration\\IRepairStep\[\] <OCP\\Migration\\IRepairStep>` 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static getExpensiveRepairSteps()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns expensive repair steps to be run on the
+			| command line with a special option\.
+			
+		
+		:Source:
+			`lib/private/Repair.php#214 <https://github.com/nextcloud/server/blob/stable13/lib/private/Repair.php#L214>`_
+		
+		
+		:Returns: :any:`\\OCP\\Migration\\IRepairStep\[\] <OCP\\Migration\\IRepairStep>` 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static getBeforeUpgradeRepairSteps()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the repair steps to be run before an
+			| upgrade\.
+			
+		
+		:Source:
+			`lib/private/Repair.php#227 <https://github.com/nextcloud/server/blob/stable13/lib/private/Repair.php#L227>`_
+		
+		
+		:Returns: :any:`\\OCP\\Migration\\IRepairStep\[\] <OCP\\Migration\\IRepairStep>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public emit( $scope, $method, $arguments=\[\])
+	
+		:Source:
+			`lib/private/Repair.php#248 <https://github.com/nextcloud/server/blob/stable13/lib/private/Repair.php#L248>`_
+		
+		
+		:Parameters:
+			* **$scope** (string)  
+			* **$method** (string)  
+			* **$arguments** (array)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public info( $string)
+	
+		:Source:
+			`lib/private/Repair.php#255 <https://github.com/nextcloud/server/blob/stable13/lib/private/Repair.php#L255>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public warning( $message)
+	
+		:Source:
+			`lib/private/Repair.php#263 <https://github.com/nextcloud/server/blob/stable13/lib/private/Repair.php#L263>`_
+		
+		
+		:Parameters:
+			* **$message** (string)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public startProgress( $max=0)
+	
+		:Source:
+			`lib/private/Repair.php#271 <https://github.com/nextcloud/server/blob/stable13/lib/private/Repair.php#L271>`_
+		
+		
+		:Parameters:
+			* **$max** (int)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public advance( $step=1, $description="")
+	
+		:Source:
+			`lib/private/Repair.php#280 <https://github.com/nextcloud/server/blob/stable13/lib/private/Repair.php#L280>`_
+		
+		
+		:Parameters:
+			* **$step** (int)  
+			* **$description** (string)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public finishProgress()
+	
+		:Source:
+			`lib/private/Repair.php#288 <https://github.com/nextcloud/server/blob/stable13/lib/private/Repair.php#L288>`_
+		
+		
+		:Parameters:
+			
+			
+		
+	
+	
+

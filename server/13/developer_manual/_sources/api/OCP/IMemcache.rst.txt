@@ -1,0 +1,151 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IMemcache
+=========
+
+
+.. php:namespace:: OCP
+
+.. php:interface:: IMemcache
+
+
+	.. rst-class:: phpdoc-description
+	
+		| This interface defines method for accessing the file based user cache\.
+		
+	
+	:Implemented by:
+		:php:class:`OC\\Memcache\\Memcached` :php:class:`OC\\Memcache\\APCu` :php:class:`OC\\Memcache\\ArrayCache` :php:class:`OC\\Memcache\\NullCache` 
+	
+	
+	:Source:
+		`lib/public/IMemcache.php#41 <https://github.com/nextcloud/server/blob/stable13/lib/public/IMemcache.php#L41>`_
+	
+	:Parent:
+		:php:interface:`OCP\\ICache`
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public add( $key, $value, $ttl=0)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set a value in the cache if it\'s not already stored
+			
+		
+		:Source:
+			`lib/public/IMemcache.php#51 <https://github.com/nextcloud/server/blob/stable13/lib/public/IMemcache.php#L51>`_
+		
+		
+		:Parameters:
+			* **$key** (string)  
+			* **$value** (mixed)  
+			* **$ttl** (int)  Time To Live in seconds. Defaults to 60*60*24
+
+		
+		:Returns: bool 
+		:Since: 8.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public inc( $key, $step=1)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Increase a stored number
+			
+		
+		:Source:
+			`lib/public/IMemcache.php#61 <https://github.com/nextcloud/server/blob/stable13/lib/public/IMemcache.php#L61>`_
+		
+		
+		:Parameters:
+			* **$key** (string)  
+			* **$step** (int)  
+
+		
+		:Returns: int \| bool
+		:Since: 8.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public dec( $key, $step=1)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Decrease a stored number
+			
+		
+		:Source:
+			`lib/public/IMemcache.php#71 <https://github.com/nextcloud/server/blob/stable13/lib/public/IMemcache.php#L71>`_
+		
+		
+		:Parameters:
+			* **$key** (string)  
+			* **$step** (int)  
+
+		
+		:Returns: int \| bool
+		:Since: 8.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public cas( $key, $old, $new)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Compare and set
+			
+		
+		:Source:
+			`lib/public/IMemcache.php#82 <https://github.com/nextcloud/server/blob/stable13/lib/public/IMemcache.php#L82>`_
+		
+		
+		:Parameters:
+			* **$key** (string)  
+			* **$old** (mixed)  
+			* **$new** (mixed)  
+
+		
+		:Returns: bool 
+		:Since: 8.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public cad( $key, $old)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Compare and delete
+			
+		
+		:Source:
+			`lib/public/IMemcache.php#92 <https://github.com/nextcloud/server/blob/stable13/lib/public/IMemcache.php#L92>`_
+		
+		
+		:Parameters:
+			* **$key** (string)  
+			* **$old** (mixed)  
+
+		
+		:Returns: bool 
+		:Since: 8.1.0 
+	
+	
+

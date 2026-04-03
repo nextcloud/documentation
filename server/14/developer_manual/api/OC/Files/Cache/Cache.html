@@ -1,0 +1,1214 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Cache &mdash; Nextcloud 14 Developer Manual 14 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../../../',
+              VERSION:'14',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="Updater" href="Updater.html" />
+    <link rel="prev" title="QuerySearchHelper" href="QuerySearchHelper.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html">
+          
+
+          
+            
+            <img src="../../../../_static/logo-white.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../general/index.html">General contributor guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/startapp.html">Create an app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/init.html">Navigation and pre-app configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/info.html">App metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/classloader.html">Classloader</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/request.html">Request lifecycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/routes.html">Routing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/middleware.html">Middleware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/container.html">Container</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/controllers.html">Controllers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/api.html">RESTful API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/templates.html">Templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/js.html">JavaScript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/css.html">CSS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/l10n.html">Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/theming.html">Theming support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/schema.html">Database schema</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/database.html">Database access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/filesystem.html">Filesystem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/appdata.html">AppData</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/users.html">User management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/two-factor-provider.html">Two-factor providers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/hooks.html">Hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/backgroundjobs.html">Background jobs (Cron)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/settings.html">Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/logging.html">Logging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/migrations.html">Migrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/repair.html">Repair steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/publishing.html">App store publishing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/code_signing.html">Code signing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../design/index.html">Design guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../android_library/index.html">Android application development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../client_apis/index.html">Client APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../core/index.html">Core development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bugtracker/index.html">Bugtracker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../commun/index.html">Help and communication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api.html">API Documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">Nextcloud 14 Developer Manual</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../../../api.html">API Documentation</a> &raquo;</li>
+        
+          <li><a href="../../../index.html">\</a> &raquo;</li>
+        
+          <li><a href="../../index.html">OC</a> &raquo;</li>
+        
+          <li><a href="../index.html">Files</a> &raquo;</li>
+        
+          <li><a href="index.html">Cache</a> &raquo;</li>
+        
+      <li>Cache</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/nextcloud/documentation/edit/stable14/developer_manual/api/OC/Files/Cache/Cache.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="phpdoctorst section" id="namespace-OC\Files\Cache">
+<span id="cache"></span><h1>Cache<a class="headerlink" href="#namespace-OC\Files\Cache" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="OC\Files\Cache\Cache">
+<em class="property">class </em><code class="descclassname">OC\Files\Cache\</code><code class="descname">Cache</code><a class="headerlink" href="#OC\Files\Cache\Cache" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Metadata cache for a storage</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">The cache stores the metadata for all files and folders in a storage and is kept up to date trough the following mechanisms:</div>
+<div class="line"><br /></div>
+<div class="line">- Scanner: scans the storage and updates the cache where needed</div>
+<div class="line">- Watcher: checks for changes made to the filesystem outside of the ownCloud instance and rescans files and folder when a change is detected</div>
+<div class="line">- Updater: listens to changes made to the filesystem inside of the ownCloud instance and updates the cache where needed</div>
+<div class="line">- ChangePropagator: updates the mtime and etags of parent folders whenever a change to the cache is made to the cache by the updater</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Cache.php#L69">lib/private/Files/Cache/Cache.php#69</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Implements:</th><td class="field-body"><a class="reference internal" href="../../../OCP/Files/Cache/ICache.html#OCP\Files\Cache\ICache" title="OCP\Files\Cache\ICache"><code class="xref php php-interface docutils literal"><span class="pre">OCP\Files\Cache\ICache</span></code></a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Used traits:</th><td class="field-body"><a class="reference internal" href="MoveFromCacheTrait.html#OC\Files\Cache\MoveFromCacheTrait" title="OC\Files\Cache\MoveFromCacheTrait"><code class="xref php php-trait docutils literal"><span class="pre">OC\Files\Cache\MoveFromCacheTrait</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<div class="section" id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h2>
+<dl class="attr">
+<dt id="OC\Files\Cache\Cache::$partial">
+<em class="property">protected </em><em class="property">static </em><em class="property">property </em><code class="descclassname">OC\Files\Cache\Cache::$</code><code class="descname">partial</code><a class="headerlink" href="#OC\Files\Cache\Cache::$partial" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Cache.php#L77">lib/private/Files/Cache/Cache.php#77</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body">array partial data for the cache</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attr">
+<dt id="OC\Files\Cache\Cache::$storageId">
+<em class="property">protected </em><em class="property">static </em><em class="property">property </em><code class="descclassname">OC\Files\Cache\Cache::$</code><code class="descname">storageId</code><a class="headerlink" href="#OC\Files\Cache\Cache::$storageId" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Cache.php#L82">lib/private/Files/Cache/Cache.php#82</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body">string</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attr">
+<dt id="OC\Files\Cache\Cache::$storageCache">
+<em class="property">protected </em><em class="property">static </em><em class="property">property </em><code class="descclassname">OC\Files\Cache\Cache::$</code><code class="descname">storageCache</code><a class="headerlink" href="#OC\Files\Cache\Cache::$storageCache" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Cache.php#L89">lib/private/Files/Cache/Cache.php#89</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body"><a class="reference internal" href="Storage.html#OC\Files\Cache\Storage" title="OC\Files\Cache\Storage"><code class="xref any php php-trait docutils literal"><span class="pre">\OC\Files\Cache\Storage</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attr">
+<dt id="OC\Files\Cache\Cache::$mimetypeLoader">
+<em class="property">protected </em><em class="property">static </em><em class="property">property </em><code class="descclassname">OC\Files\Cache\Cache::$</code><code class="descname">mimetypeLoader</code><a class="headerlink" href="#OC\Files\Cache\Cache::$mimetypeLoader" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Cache.php#L92">lib/private/Files/Cache/Cache.php#92</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body"><a class="reference internal" href="../../../OCP/Files/IMimeTypeLoader.html#OCP\Files\IMimeTypeLoader" title="OCP\Files\IMimeTypeLoader"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\IMimeTypeLoader</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attr">
+<dt id="OC\Files\Cache\Cache::$connection">
+<em class="property">protected </em><em class="property">static </em><em class="property">property </em><code class="descclassname">OC\Files\Cache\Cache::$</code><code class="descname">connection</code><a class="headerlink" href="#OC\Files\Cache\Cache::$connection" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Cache.php#L97">lib/private/Files/Cache/Cache.php#97</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body"><a class="reference internal" href="../../../OCP/IDBConnection.html#OCP\IDBConnection" title="OCP\IDBConnection"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\IDBConnection</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attr">
+<dt id="OC\Files\Cache\Cache::$eventDispatcher">
+<em class="property">protected </em><em class="property">static </em><em class="property">property </em><code class="descclassname">OC\Files\Cache\Cache::$</code><code class="descname">eventDispatcher</code><a class="headerlink" href="#OC\Files\Cache\Cache::$eventDispatcher" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Cache.php#L102">lib/private/Files/Cache/Cache.php#102</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body"><a class="reference internal" href="../../../OCP/EventDispatcher/IEventDispatcher.html#OCP\EventDispatcher\IEventDispatcher" title="OCP\EventDispatcher\IEventDispatcher"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\EventDispatcher\IEventDispatcher</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attr">
+<dt id="OC\Files\Cache\Cache::$querySearchHelper">
+<em class="property">protected </em><em class="property">static </em><em class="property">property </em><code class="descclassname">OC\Files\Cache\Cache::$</code><code class="descname">querySearchHelper</code><a class="headerlink" href="#OC\Files\Cache\Cache::$querySearchHelper" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Cache.php#L105">lib/private/Files/Cache/Cache.php#105</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body"><a class="reference internal" href="QuerySearchHelper.html#OC\Files\Cache\QuerySearchHelper" title="OC\Files\Cache\QuerySearchHelper"><code class="xref any php php-trait docutils literal"><span class="pre">\OC\Files\Cache\QuerySearchHelper</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h2>
+<dl class="public method">
+<dt id="OC\Files\Cache\Cache::__construct">
+<em class="property">public </em><code class="descclassname">OC\Files\Cache\Cache::</code><code class="descname">__construct</code><span class="sig-paren">(</span><em>$storage</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Cache\Cache::__construct" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Cache.php#L110">lib/private/Files/Cache/Cache.php#110</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>$storage</strong> (<a class="reference internal" href="../../../OCP/Files/Storage/IStorage.html#OCP\Files\Storage\IStorage" title="OCP\Files\Storage\IStorage"><code class="xref any php php-trait docutils literal"><span class="pre">OCP\Files\Storage\IStorage</span></code></a>)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="protected method">
+<dt id="OC\Files\Cache\Cache::getQueryBuilder">
+<em class="property">protected </em><code class="descclassname">OC\Files\Cache\Cache::</code><code class="descname">getQueryBuilder</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Cache\Cache::getQueryBuilder" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Cache.php#L124">lib/private/Files/Cache/Cache.php#124</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\Cache\Cache::getNumericStorageId">
+<em class="property">public </em><code class="descclassname">OC\Files\Cache\Cache::</code><code class="descname">getNumericStorageId</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Cache\Cache::getNumericStorageId" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Get the numeric storage id for this cache&#8217;s storage</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Cache.php#L138">lib/private/Files/Cache/Cache.php#138</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\Cache\Cache::get">
+<em class="property">public </em><code class="descclassname">OC\Files\Cache\Cache::</code><code class="descname">get</code><span class="sig-paren">(</span><em>$file</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Cache\Cache::get" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">get the stored metadata of a file or folder</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Cache.php#L148">lib/private/Files/Cache/Cache.php#148</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="../../../OCP/Files/Cache/ICacheEntry.html#OCP\Files\Cache\ICacheEntry" title="OCP\Files\Cache\ICacheEntry"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\Cache\ICacheEntry</span></code></a> | bool the cache entry as array of false if the file is not found in the cache</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC\Files\Cache\Cache::cacheEntryFromData">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC\Files\Cache\Cache::</code><code class="descname">cacheEntryFromData</code><span class="sig-paren">(</span><em>$data</em>, <em>$mimetypeLoader</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Cache\Cache::cacheEntryFromData" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Create a CacheEntry from database row</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Cache.php#L183">lib/private/Files/Cache/Cache.php#183</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$data</strong> (array)</li>
+<li><strong>$mimetypeLoader</strong> (<a class="reference internal" href="../../../OCP/Files/IMimeTypeLoader.html#OCP\Files\IMimeTypeLoader" title="OCP\Files\IMimeTypeLoader"><code class="xref any php php-trait docutils literal"><span class="pre">OCP\Files\IMimeTypeLoader</span></code></a>)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><a class="reference internal" href="CacheEntry.html#OC\Files\Cache\CacheEntry" title="OC\Files\Cache\CacheEntry"><code class="xref any php php-trait docutils literal"><span class="pre">\OC\Files\Cache\CacheEntry</span></code></a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\Cache\Cache::getFolderContents">
+<em class="property">public </em><code class="descclassname">OC\Files\Cache\Cache::</code><code class="descname">getFolderContents</code><span class="sig-paren">(</span><em>$folder</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Cache\Cache::getFolderContents" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">get the metadata of all files stored in $folder</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Cache.php#L215">lib/private/Files/Cache/Cache.php#215</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$folder</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><a class="reference internal" href="../../../OCP/Files/Cache/ICacheEntry.html#OCP\Files\Cache\ICacheEntry" title="OCP\Files\Cache\ICacheEntry"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\Cache\ICacheEntry[]</span></code></a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\Cache\Cache::getFolderContentsById">
+<em class="property">public </em><code class="descclassname">OC\Files\Cache\Cache::</code><code class="descname">getFolderContentsById</code><span class="sig-paren">(</span><em>$fileId</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Cache\Cache::getFolderContentsById" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">get the metadata of all files stored in $folder</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Cache.php#L226">lib/private/Files/Cache/Cache.php#226</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$fileId</strong> (int)  the file id of the folder</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><a class="reference internal" href="../../../OCP/Files/Cache/ICacheEntry.html#OCP\Files\Cache\ICacheEntry" title="OCP\Files\Cache\ICacheEntry"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\Cache\ICacheEntry[]</span></code></a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\Cache\Cache::put">
+<em class="property">public </em><code class="descclassname">OC\Files\Cache\Cache::</code><code class="descname">put</code><span class="sig-paren">(</span><em>$file</em>, <em>$data</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Cache\Cache::put" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">insert or update meta data for a file or folder</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Cache.php#L253">lib/private/Files/Cache/Cache.php#253</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$file</strong> (string)</li>
+<li><strong>$data</strong> (array)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">int file id</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><p class="first last"><code class="xref any docutils literal"><span class="pre">\RuntimeException</span></code></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\Cache\Cache::insert">
+<em class="property">public </em><code class="descclassname">OC\Files\Cache\Cache::</code><code class="descname">insert</code><span class="sig-paren">(</span><em>$file</em>, <em>$data</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Cache\Cache::insert" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">insert meta data for a new file or folder</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Cache.php#L271">lib/private/Files/Cache/Cache.php#271</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$file</strong> (string)</li>
+<li><strong>$data</strong> (array)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">int file id</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><p class="first last"><code class="xref any docutils literal"><span class="pre">\RuntimeException</span></code></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\Cache\Cache::update">
+<em class="property">public </em><code class="descclassname">OC\Files\Cache\Cache::</code><code class="descname">update</code><span class="sig-paren">(</span><em>$id</em>, <em>$data</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Cache\Cache::update" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">update the metadata of an existing file or folder in the cache</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Cache.php#L348">lib/private/Files/Cache/Cache.php#348</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>$id</strong> (int)  the fileid of the existing file or folder</li>
+<li><strong>$data</strong> (array)  [$key =&gt; $value] the metadata to update, only the fields provided in the array will be updated, non-provided values will remain unchanged</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="protected method">
+<dt id="OC\Files\Cache\Cache::normalizeData">
+<em class="property">protected </em><code class="descclassname">OC\Files\Cache\Cache::</code><code class="descname">normalizeData</code><span class="sig-paren">(</span><em>$data</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Cache\Cache::normalizeData" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">extract query parts and params array from data array</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Cache.php#L425">lib/private/Files/Cache/Cache.php#425</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$data</strong> (array)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">array</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\Cache\Cache::getId">
+<em class="property">public </em><code class="descclassname">OC\Files\Cache\Cache::</code><code class="descname">getId</code><span class="sig-paren">(</span><em>$file</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Cache\Cache::getId" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">get the file id for a file</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">A file id is a numeric id for a file or folder that&#8217;s unique within an owncloud instance which stays the same for the lifetime of a file</div>
+<div class="line"><br /></div>
+<div class="line">File ids are easiest way for apps to store references to a file since unlike paths they are not affected by renames or sharing</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Cache.php#L478">lib/private/Files/Cache/Cache.php#478</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$file</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">int</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\Cache\Cache::getParentId">
+<em class="property">public </em><code class="descclassname">OC\Files\Cache\Cache::</code><code class="descname">getParentId</code><span class="sig-paren">(</span><em>$file</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Cache\Cache::getParentId" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">get the id of the parent folder of a file</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Cache.php#L501">lib/private/Files/Cache/Cache.php#501</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$file</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">int</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\Cache\Cache::inCache">
+<em class="property">public </em><code class="descclassname">OC\Files\Cache\Cache::</code><code class="descname">inCache</code><span class="sig-paren">(</span><em>$file</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Cache\Cache::inCache" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">check if a file is available in the cache</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Cache.php#L524">lib/private/Files/Cache/Cache.php#524</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$file</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\Cache\Cache::remove">
+<em class="property">public </em><code class="descclassname">OC\Files\Cache\Cache::</code><code class="descname">remove</code><span class="sig-paren">(</span><em>$file</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Cache\Cache::remove" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">remove a file or folder from the cache</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">when removing a folder from the cache all files and folders inside the folder will be removed as well</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Cache.php#L535">lib/private/Files/Cache/Cache.php#535</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>$file</strong> (string)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\Cache\Cache::move">
+<em class="property">public </em><code class="descclassname">OC\Files\Cache\Cache::</code><code class="descname">move</code><span class="sig-paren">(</span><em>$source</em>, <em>$target</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Cache\Cache::move" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Move a file or folder in the cache</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Cache.php#L615">lib/private/Files/Cache/Cache.php#615</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>$source</strong> (string)</li>
+<li><strong>$target</strong> (string)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="protected method">
+<dt id="OC\Files\Cache\Cache::getMoveInfo">
+<em class="property">protected </em><code class="descclassname">OC\Files\Cache\Cache::</code><code class="descname">getMoveInfo</code><span class="sig-paren">(</span><em>$path</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Cache\Cache::getMoveInfo" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Get the storage id and path needed for a move</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Cache.php#L625">lib/private/Files/Cache/Cache.php#625</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$path</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">array [$storageId, $internalPath]</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\Cache\Cache::moveFromCache">
+<em class="property">public </em><code class="descclassname">OC\Files\Cache\Cache::</code><code class="descname">moveFromCache</code><span class="sig-paren">(</span><em>$sourceCache</em>, <em>$sourcePath</em>, <em>$targetPath</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Cache\Cache::moveFromCache" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Move a file or folder in the cache</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Cache.php#L638">lib/private/Files/Cache/Cache.php#638</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$sourceCache</strong> (<a class="reference internal" href="../../../OCP/Files/Cache/ICache.html#OCP\Files\Cache\ICache" title="OCP\Files\Cache\ICache"><code class="xref any php php-trait docutils literal"><span class="pre">OCP\Files\Cache\ICache</span></code></a>)</li>
+<li><strong>$sourcePath</strong> (string)</li>
+<li><strong>$targetPath</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><a class="reference internal" href="../../DatabaseException.html#OC\DatabaseException" title="OC\DatabaseException"><code class="xref any php php-trait docutils literal"><span class="pre">\OC\DatabaseException</span></code></a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><code class="xref any docutils literal"><span class="pre">\Exception</span></code> if the given storages have an invalid id</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><a class="reference internal" href="../../DatabaseException.html#OC\DatabaseException" title="OC\DatabaseException"><code class="xref any php php-trait docutils literal"><span class="pre">\OC\DatabaseException</span></code></a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><p class="first last"><code class="xref any docutils literal"><span class="pre">\Exception</span></code> if the given storages have an invalid id</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\Cache\Cache::clear">
+<em class="property">public </em><code class="descclassname">OC\Files\Cache\Cache::</code><code class="descname">clear</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Cache\Cache::clear" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">remove all entries for files that are stored on the storage from the cache</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Cache.php#L718">lib/private/Files/Cache/Cache.php#718</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\Cache\Cache::getStatus">
+<em class="property">public </em><code class="descclassname">OC\Files\Cache\Cache::</code><code class="descname">getStatus</code><span class="sig-paren">(</span><em>$file</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Cache\Cache::getStatus" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Get the scan status of a file</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">- Cache::NOT_FOUND: File is not in the cache</div>
+<div class="line">- Cache::PARTIAL: File is not stored in the cache but some incomplete data is known</div>
+<div class="line">- Cache::SHALLOW: The folder and it&#8217;s direct children are in the cache but not all sub folders are fully scanned</div>
+<div class="line">- Cache::COMPLETE: The file or folder, with all it&#8217;s children) are fully scanned</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Cache.php#L742">lib/private/Files/Cache/Cache.php#742</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$file</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">int Cache::NOT_FOUND, Cache::PARTIAL, Cache::SHALLOW or Cache::COMPLETE</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\Cache\Cache::search">
+<em class="property">public </em><code class="descclassname">OC\Files\Cache\Cache::</code><code class="descname">search</code><span class="sig-paren">(</span><em>$pattern</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Cache\Cache::search" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">search for files matching $pattern</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Cache.php#L777">lib/private/Files/Cache/Cache.php#777</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$pattern</strong> (string)  the search pattern using SQL search syntax (e.g. &#8216;%searchstring%&#8217;)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><a class="reference internal" href="../../../OCP/Files/Cache/ICacheEntry.html#OCP\Files\Cache\ICacheEntry" title="OCP\Files\Cache\ICacheEntry"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\Cache\ICacheEntry[]</span></code></a> an array of cache entries where the name matches the search pattern</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\Cache\Cache::searchByMime">
+<em class="property">public </em><code class="descclassname">OC\Files\Cache\Cache::</code><code class="descname">searchByMime</code><span class="sig-paren">(</span><em>$mimetype</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Cache\Cache::searchByMime" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">search for files by mimetype</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Cache.php#L818">lib/private/Files/Cache/Cache.php#818</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$mimetype</strong> (string)  either a full mimetype to search (&#8216;text/plain&#8217;) or only the first part of a mimetype (&#8216;image&#8217;)</li>
+</ul>
+<p>where it will search for all mimetypes in the group (&#8216;image/<a href="#id1"><span class="problematic" id="id2">*</span></a>&#8216;)</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><a class="reference internal" href="../../../OCP/Files/Cache/ICacheEntry.html#OCP\Files\Cache\ICacheEntry" title="OCP\Files\Cache\ICacheEntry"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\Cache\ICacheEntry[]</span></code></a> an array of cache entries where the mimetype matches the search</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\Cache\Cache::searchQuery">
+<em class="property">public </em><code class="descclassname">OC\Files\Cache\Cache::</code><code class="descname">searchQuery</code><span class="sig-paren">(</span><em>$searchQuery</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Cache\Cache::searchQuery" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Cache.php#L840">lib/private/Files/Cache/Cache.php#840</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\Cache\Cache::correctFolderSize">
+<em class="property">public </em><code class="descclassname">OC\Files\Cache\Cache::</code><code class="descname">correctFolderSize</code><span class="sig-paren">(</span><em>$path</em>, <em>$data=null</em>, <em>$isBackgroundScan=false</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Cache\Cache::correctFolderSize" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Re-calculate the folder size and the size of all parent folders</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Cache.php#L892">lib/private/Files/Cache/Cache.php#892</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>$path</strong> (string | bool)</li>
+<li><strong>$data</strong> (array)  (optional) meta data of the folder</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\Cache\Cache::getIncompleteChildrenCount">
+<em class="property">public </em><code class="descclassname">OC\Files\Cache\Cache::</code><code class="descname">getIncompleteChildrenCount</code><span class="sig-paren">(</span><em>$fileId</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Cache\Cache::getIncompleteChildrenCount" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">get the incomplete count that shares parent $folder</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Cache.php#L916">lib/private/Files/Cache/Cache.php#916</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$fileId</strong> (int)  the file id of the folder</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">int</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\Cache\Cache::calculateFolderSize">
+<em class="property">public </em><code class="descclassname">OC\Files\Cache\Cache::</code><code class="descname">calculateFolderSize</code><span class="sig-paren">(</span><em>$path</em>, <em>$entry=null</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Cache\Cache::calculateFolderSize" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">calculate the size of a folder and set it in the cache</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Cache.php#L940">lib/private/Files/Cache/Cache.php#940</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$path</strong> (string)</li>
+<li><strong>$entry</strong> (array)  (optional) meta data of the folder</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">int</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\Cache\Cache::getAll">
+<em class="property">public </em><code class="descclassname">OC\Files\Cache\Cache::</code><code class="descname">getAll</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Cache\Cache::getAll" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">get all file ids on the files on the storage</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Cache.php#L981">lib/private/Files/Cache/Cache.php#981</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">int[]</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\Cache\Cache::getIncomplete">
+<em class="property">public </em><code class="descclassname">OC\Files\Cache\Cache::</code><code class="descname">getIncomplete</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Cache\Cache::getIncomplete" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">find a folder in the cache which has not been fully scanned</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">If multiple incomplete folders are in the cache, the one with the highest id will be returned,</div>
+<div class="line">use the one with the highest id gives the best result with the background scanner, since that is most</div>
+<div class="line">likely the folder where we stopped scanning previously</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Cache.php#L1005">lib/private/Files/Cache/Cache.php#1005</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">string | bool the path of the folder or false when no folder matched</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\Cache\Cache::getPathById">
+<em class="property">public </em><code class="descclassname">OC\Files\Cache\Cache::</code><code class="descname">getPathById</code><span class="sig-paren">(</span><em>$id</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Cache\Cache::getPathById" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">get the path of a file on this storage by it&#8217;s file id</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Cache.php#L1027">lib/private/Files/Cache/Cache.php#1027</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$id</strong> (int)  the file id of the file or folder to search</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">string | null the path of the file (relative to the storage) or null if a file with the given id does not exists within this cache</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static deprecated method">
+<dt id="OC\Files\Cache\Cache::getById">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC\Files\Cache\Cache::</code><code class="descname">getById</code><span class="sig-paren">(</span><em>$id</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Cache\Cache::getById" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">get the storage id of the storage for a file and the internal path of the file</div>
+<div class="line">unlike getPathById this does not limit the search to files on this storage and</div>
+<div class="line">instead does a global search in the cache table</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Cache.php#L1054">lib/private/Files/Cache/Cache.php#1054</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$id</strong> (int)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">array first element holding the storage id, second the path</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Deprecated:</th><td class="field-body"><p class="first last">use getPathById() instead</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\Cache\Cache::normalize">
+<em class="property">public </em><code class="descclassname">OC\Files\Cache\Cache::</code><code class="descname">normalize</code><span class="sig-paren">(</span><em>$path</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Cache\Cache::normalize" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">normalize the given path</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Cache.php#L1084">lib/private/Files/Cache/Cache.php#1084</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$path</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">string</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\Cache\Cache::copyFromCache">
+<em class="property">public </em><code class="descclassname">OC\Files\Cache\Cache::</code><code class="descname">copyFromCache</code><span class="sig-paren">(</span><em>$sourceCache</em>, <em>$sourceEntry</em>, <em>$targetPath</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Cache\Cache::copyFromCache" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Copy a file or folder in the cache</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Cache.php#L1096">lib/private/Files/Cache/Cache.php#1096</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$sourceCache</strong> (<a class="reference internal" href="../../../OCP/Files/Cache/ICache.html#OCP\Files\Cache\ICache" title="OCP\Files\Cache\ICache"><code class="xref any php php-trait docutils literal"><span class="pre">OCP\Files\Cache\ICache</span></code></a>)</li>
+<li><strong>$sourceEntry</strong> (<a class="reference internal" href="../../../OCP/Files/Cache/ICacheEntry.html#OCP\Files\Cache\ICacheEntry" title="OCP\Files\Cache\ICacheEntry"><code class="xref any php php-trait docutils literal"><span class="pre">OCP\Files\Cache\ICacheEntry</span></code></a>)</li>
+<li><strong>$targetPath</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">int fileid of copied entry</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="Updater.html" class="btn btn-neutral float-right" title="Updater" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="QuerySearchHelper.html" class="btn btn-neutral float-left" title="QuerySearchHelper" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021 Nextcloud GmbH.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: 14
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/14/developer_manual">14</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/15/developer_manual">15</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/16/developer_manual">16</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/developer_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/developer_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+   
+
+</body>
+</html>

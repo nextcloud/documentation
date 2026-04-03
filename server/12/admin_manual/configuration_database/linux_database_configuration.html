@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Database Configuration &#8212; Nextcloud 12 Server Administration Manual 12 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/main.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '12',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.1.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Enabling MySQL 4-byte support" href="mysql_4byte_support.html" />
+    <link rel="prev" title="Converting Database Type" href="db_conversion.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#1d2d44">
+<link rel="shortcut icon" href="https://nextcloud.com/wp-content/themes/next/assets/img/common/favicon.png" />
+<link rel="apple-touch-icon-precomposed" href="https://nextcloud.com/wp-content/themes/next/assets/img/common/favicon.png" />
+<!-- Piwik -->
+<script type="text/javascript">
+    var _paq = _paq || [];
+    _paq.push(['trackPageView']);
+    _paq.push(['enableLinkTracking']);
+    (function() {
+        var u="//stats.nextcloud.com/";
+        _paq.push(['setTrackerUrl', u+'piwik.php']);
+        _paq.push(['setSiteId', 3]);
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+        g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+    })();
+</script>
+<noscript><p><img src="//stats.nextcloud.com/piwik.php?idsite=3" style="border:0;" alt="" /></p></noscript>
+<!-- End Piwik Code -->
+
+  </head>
+  <body role="document">
+
+<header class="banner navbar navbar-default navbar-static-top" role="banner">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+       <a class="brand" href="http://nextcloud.com/" rel="home" title="Nextcloud.com"><img class="logo" src="../_static/img/logo.svg" itemprop="logo"></a>
+    </div>
+
+    <nav class="collapse navbar-collapse" role="navigation">
+      <ul id="menu-header" class="nav navbar-nav">
+          <li><a target="_blank" href="https://demo.nextcloud.com">Demo</a></li>
+          <li><a href="https://nextcloud.com/news/">News</a></li>
+          <li><a href="https://nextcloud.com/features/">Features</a></li>
+          <li><a href="https://nextcloud.com/about/">About us</a></li>
+          <li><a href="https://nextcloud.com/contribute/">Get involved</a></li>
+          <li><a href="https://nextcloud.com/support/">Support</a></li>
+          <li><a href="https://nextcloud.com/enterprise/">Enterprise</a></li>
+          <li class="menu-install"><a href="https://nextcloud.com/install/">Download</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+<div class="container" style="background-color: #E6C4C2;color: #b10000;border: #b10000 2px solid;border-right: none;border-left: none;padding: 15px 10px;">You are reading an outdated version of this documentation. Please check out the <a href="https://docs.nextcloud.com/server/stable/admin_manual/" style="
+color: rgb(177,0,0);text-decoration: underline;">latest version</a> of the server administration manual.</div>
+
+
+
+<div class="wrap container not-front">
+  <div class="content row">
+  <main class="main">
+    <div class="row page-content-header">
+      <div class="col-md-6">
+        <h1><a href="../contents.html">Nextcloud 12 Server Administration Manual</a></h1>
+      </div>
+      <div class="col-md-5 col-md-offset-1">
+      
+        <form class="headersearch" style="margin: 16px 0;" action="../search.html" method="get">
+        <input type="text" value="" name="q" id="q" class="form-control" /> 
+        <button  class="btn btn-default" type="submit" id="searchsubmit">Search</button>
+        </form>
+      
+      </div>
+    </div>
+    
+			<div class="row">
+				<div class="col-md-3">
+					<div class="sidebar">
+							<div class="menu-support-container">
+								<ul id="menu-support" class="menu">
+									<ul>
+										
+<li><a href="../contents.html">Table of Contents</a></li>
+									</ul>
+                  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_server/index.html">Server Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_user/index.html">User Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_files/index.html">File Sharing and Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../file_workflows/index.html">File workflows</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Database Configuration</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="db_conversion.html">Converting Database Type</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Database Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#parameters">Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#troubleshooting">Troubleshooting</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mysql_4byte_support.html">Enabling MySQL 4-byte support</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_mimetypes/index.html">Mimetypes Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../maintenance/index.html">Maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../issues/index.html">Issues and Troubleshooting</a></li>
+</ul>
+
+								</ul>
+							</div>
+					</div>
+				</div>
+        
+
+				<div class="col-md-9">
+					<div class="page-content">
+            
+<ul class="prevnext-title list-unstyled list-inline">
+  <li class="prev">
+    <a href="db_conversion.html" title="Previous Chapter: Converting Database Type"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; Converting Da...</span>
+    </a>
+  </li>
+  <li class="next">
+    <a href="mysql_4byte_support.html" title="Next Chapter: Enabling MySQL 4-byte support"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">Enabling MySQ... &raquo;</span>
+    </a>
+  </li>
+</ul>
+						
+  <div class="section" id="database-configuration">
+<h1>Database Configuration<a class="headerlink" href="#database-configuration" title="Permalink to this headline">¶</a></h1>
+<p>Nextcloud requires a database in which administrative data is stored. The following databases are currently supported:</p>
+<ul class="simple">
+<li><a class="reference external" href="http://www.mysql.com/">MySQL</a> / <a class="reference external" href="https://mariadb.org/">MariaDB</a></li>
+<li><a class="reference external" href="http://www.postgresql.org/">PostgreSQL</a></li>
+<li><a class="reference external" href="http://www.oracle.com/">Oracle</a></li>
+</ul>
+<p>The MySQL or MariaDB databases are the recommended database engines.</p>
+<div class="section" id="requirements">
+<h2>Requirements<a class="headerlink" href="#requirements" title="Permalink to this headline">¶</a></h2>
+<p>Choosing to use MySQL / MariaDB, PostgreSQL, or Oracle as your database
+requires that you install and set up the server software first.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The steps for configuring a third party database are beyond the
+scope of this document.  Please refer to the documentation for your specific
+database choice for instructions.</p>
+</div>
+<div class="section" id="database-read-commited-transaction-isolation-level">
+<span id="db-transaction-label"></span><h3>Database &#8220;READ COMMITED&#8221; transaction isolation level<a class="headerlink" href="#database-read-commited-transaction-isolation-level" title="Permalink to this headline">¶</a></h3>
+<p>As discussed above Nextcloud is using the <code class="docutils literal"><span class="pre">TRANSACTION_READ_COMMITTED</span></code> transaction isolation
+level. Some database configurations are enforcing other transaction isolation levels. To avoid
+data loss under high load scenarios (e.g. by using the sync client with many clients/users and
+many parallel operations) you need to configure the transaction isolation level accordingly.
+Please refer to the <a class="reference external" href="https://dev.mysql.com/doc/refman/5.7/en/set-transaction.html">MySQL manual</a>
+for detailed information.</p>
+</div>
+</div>
+<div class="section" id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
+<p>For setting up Nextcloud to use any database, use the instructions in <a class="reference internal" href="../installation/installation_wizard.html"><span class="doc">Installation Wizard</span></a>. You should not have to edit the respective values in the <code class="file docutils literal"><span class="pre">config/config.php</span></code>.  However, in special cases (for example, if you want to connect your Nextcloud instance to a database created by a previous installation of Nextcloud), some modification might be required.</p>
+<div class="section" id="configuring-a-mysql-or-mariadb-database">
+<h3>Configuring a MySQL or MariaDB Database<a class="headerlink" href="#configuring-a-mysql-or-mariadb-database" title="Permalink to this headline">¶</a></h3>
+<p>If you decide to use a MySQL or MariaDB database, ensure the following:</p>
+<ul>
+<li><p class="first">The transaction isolation level is set to &#8220;READ-COMMITED&#8221; in your MariaDB server configuration <code class="file docutils literal"><span class="pre">/etc/mysql/my.cnf</span></code> to persist even after a restart of your database server.</p>
+<p>Verify the <strong>transaction_isolation</strong> and <strong>binlog_format</strong>:</p>
+</li>
+</ul>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">mysqld</span><span class="p">]</span>
+<span class="o">...</span>
+<span class="n">transaction_isolation</span> <span class="o">=</span> <span class="n">READ</span><span class="o">-</span><span class="n">COMMITTED</span>
+<span class="n">binlog_format</span> <span class="o">=</span> <span class="n">ROW</span>
+<span class="o">...</span>
+</pre></div>
+</div>
+<p>Your <code class="file docutils literal"><span class="pre">/etc/mysql/my.cnf</span></code> could look like this:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>[server]
+skip-name-resolve
+innodb_buffer_pool_size = 128M
+innodb_buffer_pool_instances = 1
+innodb_flush_log_at_trx_commit = 2
+innodb_log_buffer_size = 32M
+innodb_max_dirty_pages_pct = 90
+query_cache_type = 1
+query_cache_limit = 2M
+query_cache_min_res_unit = 2k
+query_cache_size = 64M
+tmp_table_size= 64M
+max_heap_table_size= 64M
+slow-query-log = 1
+slow-query-log-file = /var/log/mysql/slow.log
+long_query_time = 1
+
+[client-server]
+!includedir /etc/mysql/conf.d/
+!includedir /etc/mysql/mariadb.conf.d/
+
+[client]
+default-character-set = utf8mb4
+
+[mysqld]
+character-set-server = utf8mb4
+collation-server = utf8mb4_general_ci
+transaction_isolation = READ-COMMITTED
+binlog_format = ROW
+innodb_large_prefix=on
+innodb_file_format=barracuda
+innodb_file_per_table=1
+</pre></div>
+</div>
+<p>Please refer to the <a class="reference external" href="https://mariadb.com/kb/en/library/set-transaction/#read-committed">MySQL manual</a>.</p>
+<ul class="simple">
+<li>That you have installed and enabled the pdo_mysql extension in PHP</li>
+<li>That the <strong>mysql.default_socket</strong> points to the correct socket (if the database runs on the same server as Nextcloud).</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">MariaDB is backwards compatible with MySQL.  All instructions work for both. You will not need to replace mysql with anything.</p>
+</div>
+<p>The PHP configuration in <code class="file docutils literal"><span class="pre">/etc/php5/conf.d/mysql.ini</span></code> could look like this:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># configuration for PHP MySQL module</span>
+<span class="n">extension</span><span class="o">=</span><span class="n">pdo_mysql</span><span class="o">.</span><span class="n">so</span>
+
+<span class="p">[</span><span class="n">mysql</span><span class="p">]</span>
+<span class="n">mysql</span><span class="o">.</span><span class="n">allow_local_infile</span><span class="o">=</span><span class="n">On</span>
+<span class="n">mysql</span><span class="o">.</span><span class="n">allow_persistent</span><span class="o">=</span><span class="n">On</span>
+<span class="n">mysql</span><span class="o">.</span><span class="n">cache_size</span><span class="o">=</span><span class="mi">2000</span>
+<span class="n">mysql</span><span class="o">.</span><span class="n">max_persistent</span><span class="o">=-</span><span class="mi">1</span>
+<span class="n">mysql</span><span class="o">.</span><span class="n">max_links</span><span class="o">=-</span><span class="mi">1</span>
+<span class="n">mysql</span><span class="o">.</span><span class="n">default_port</span><span class="o">=</span>
+<span class="n">mysql</span><span class="o">.</span><span class="n">default_socket</span><span class="o">=/</span><span class="n">var</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">mysql</span><span class="o">/</span><span class="n">mysql</span><span class="o">.</span><span class="n">sock</span>  <span class="c1"># Debian squeeze: /var/run/mysqld/mysqld.sock</span>
+<span class="n">mysql</span><span class="o">.</span><span class="n">default_host</span><span class="o">=</span>
+<span class="n">mysql</span><span class="o">.</span><span class="n">default_user</span><span class="o">=</span>
+<span class="n">mysql</span><span class="o">.</span><span class="n">default_password</span><span class="o">=</span>
+<span class="n">mysql</span><span class="o">.</span><span class="n">connect_timeout</span><span class="o">=</span><span class="mi">60</span>
+<span class="n">mysql</span><span class="o">.</span><span class="n">trace_mode</span><span class="o">=</span><span class="n">Off</span>
+</pre></div>
+</div>
+<p>Now you need to create a database user and the database itself by using the
+MySQL command line interface. The database tables will be created by Nextcloud
+when you login for the first time.</p>
+<p>To start the MySQL command line mode use:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">mysql</span> <span class="o">-</span><span class="n">uroot</span> <span class="o">-</span><span class="n">p</span>
+</pre></div>
+</div>
+<p>Then a <strong>mysql&gt;</strong> or <strong>MariaDB [root]&gt;</strong> prompt will appear. Now enter the following lines and confirm them with the enter key:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">USER</span> <span class="s1">&#39;username&#39;</span><span class="o">@</span><span class="s1">&#39;localhost&#39;</span> <span class="n">IDENTIFIED</span> <span class="n">BY</span> <span class="s1">&#39;password&#39;</span><span class="p">;</span>
+<span class="n">CREATE</span> <span class="n">DATABASE</span> <span class="n">IF</span> <span class="n">NOT</span> <span class="n">EXISTS</span> <span class="n">nextcloud</span><span class="p">;</span>
+<span class="n">GRANT</span> <span class="n">ALL</span> <span class="n">PRIVILEGES</span> <span class="n">ON</span> <span class="n">nextcloud</span><span class="o">.*</span> <span class="n">TO</span> <span class="s1">&#39;username&#39;</span><span class="o">@</span><span class="s1">&#39;localhost&#39;</span> <span class="n">IDENTIFIED</span> <span class="n">BY</span> <span class="s1">&#39;password&#39;</span><span class="p">;</span>
+<span class="n">FLUSH</span> <span class="n">privileges</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>You can quit the prompt by entering:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">quit</span>
+</pre></div>
+</div>
+<p>If you prefer UTF8MB4 as your database collation setting:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">USER</span> <span class="s1">&#39;username&#39;</span><span class="o">@</span><span class="s1">&#39;localhost&#39;</span> <span class="n">IDENTIFIED</span> <span class="n">BY</span> <span class="s1">&#39;password&#39;</span><span class="p">;</span>
+<span class="n">CREATE</span> <span class="n">DATABASE</span> <span class="n">IF</span> <span class="n">NOT</span> <span class="n">EXISTS</span> <span class="n">nextcloud</span> <span class="n">CHARACTER</span> <span class="n">SET</span> <span class="n">utf8mb4</span> <span class="n">COLLATE</span> <span class="n">utf8mb4_general_ci</span><span class="p">;</span>
+<span class="n">GRANT</span> <span class="n">ALL</span> <span class="n">PRIVILEGES</span> <span class="n">on</span> <span class="n">nextcloud</span><span class="o">.*</span> <span class="n">to</span> <span class="s1">&#39;username&#39;</span><span class="o">@</span><span class="s1">&#39;localhost&#39;</span><span class="p">;</span>
+<span class="n">FLUSH</span> <span class="n">privileges</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>You can quit the prompt by entering:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">quit</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>An Nextcloud instance configured with MySQL would contain the hostname on which
+the database is running, a valid username and password to access it, and the
+name of the database. The <code class="file docutils literal"><span class="pre">config/config.php</span></code> as created by the
+<a class="reference internal" href="../installation/installation_wizard.html"><span class="doc">Installation Wizard</span></a> would therefore contain entries like
+this:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>&lt;?php
+
+  &quot;dbtype&quot;        =&gt; &quot;mysql&quot;,
+  &quot;dbname&quot;        =&gt; &quot;nextcloud&quot;,
+  &quot;dbuser&quot;        =&gt; &quot;username&quot;,
+  &quot;dbpassword&quot;    =&gt; &quot;password&quot;,
+  &quot;dbhost&quot;        =&gt; &quot;localhost&quot;,
+  &quot;dbtableprefix&quot; =&gt; &quot;oc_&quot;,
+</pre></div>
+</div>
+<p>In case of UTF8MB4 you will also find:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="s2">&quot;mysql.utf8mb4&quot;</span> <span class="o">=&gt;</span> <span class="n">true</span><span class="p">,</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="postgresql-database">
+<h3>PostgreSQL Database<a class="headerlink" href="#postgresql-database" title="Permalink to this headline">¶</a></h3>
+<p>If you decide to use a PostgreSQL database make sure that you have installed
+and enabled the PostgreSQL extension in PHP. The PHP configuration in <code class="file docutils literal"><span class="pre">/etc/php5/conf.d/pgsql.ini</span></code> could look
+like this:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># configuration for PHP PostgreSQL module</span>
+<span class="n">extension</span><span class="o">=</span><span class="n">pdo_pgsql</span><span class="o">.</span><span class="n">so</span>
+<span class="n">extension</span><span class="o">=</span><span class="n">pgsql</span><span class="o">.</span><span class="n">so</span>
+
+<span class="p">[</span><span class="n">PostgresSQL</span><span class="p">]</span>
+<span class="n">pgsql</span><span class="o">.</span><span class="n">allow_persistent</span> <span class="o">=</span> <span class="n">On</span>
+<span class="n">pgsql</span><span class="o">.</span><span class="n">auto_reset_persistent</span> <span class="o">=</span> <span class="n">Off</span>
+<span class="n">pgsql</span><span class="o">.</span><span class="n">max_persistent</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="n">pgsql</span><span class="o">.</span><span class="n">max_links</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="n">pgsql</span><span class="o">.</span><span class="n">ignore_notice</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">pgsql</span><span class="o">.</span><span class="n">log_notice</span> <span class="o">=</span> <span class="mi">0</span>
+</pre></div>
+</div>
+<p>The default configuration for PostgreSQL (at least in Ubuntu 14.04) is to use the peer authentication method. Check <code class="file docutils literal"><span class="pre">/etc/postgresql/9.3/main/pg_hba.conf</span></code> to find out which authentication method is used in your setup.
+To start the postgres command line mode use:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">u</span> <span class="n">postgres</span> <span class="n">psql</span> <span class="o">-</span><span class="n">d</span> <span class="n">template1</span>
+</pre></div>
+</div>
+<p>Then a <strong>template1=#</strong> prompt will appear. Now enter the following lines and confirm them with the enter key:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">USER</span> <span class="n">username</span> <span class="n">CREATEDB</span><span class="p">;</span>
+<span class="n">CREATE</span> <span class="n">DATABASE</span> <span class="n">nextcloud</span> <span class="n">OWNER</span> <span class="n">username</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>You can quit the prompt by entering:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>\<span class="n">q</span>
+</pre></div>
+</div>
+<p>A Nextcloud instance configured with PostgreSQL would contain the path to the socket on
+which the database is running as the hostname, the system username the PHP process is using,
+and an empty password to access it, and the name of the database. The <code class="file docutils literal"><span class="pre">config/config.php</span></code> as
+created by the <a class="reference internal" href="../installation/installation_wizard.html"><span class="doc">Installation Wizard</span></a> would therefore contain entries like
+this:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>&lt;?php
+
+  &quot;dbtype&quot;        =&gt; &quot;pgsql&quot;,
+  &quot;dbname&quot;        =&gt; &quot;nextcloud&quot;,
+  &quot;dbuser&quot;        =&gt; &quot;username&quot;,
+  &quot;dbpassword&quot;    =&gt; &quot;&quot;,
+  &quot;dbhost&quot;        =&gt; &quot;/var/run/postgresql&quot;,
+  &quot;dbtableprefix&quot; =&gt; &quot;oc_&quot;,
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The host actually points to the socket that is used to connect to the database. Using localhost here will not work if postgreSQL is configured to use peer authentication. Also note that no password is specified, because this authentication method doesn&#8217;t use a password.</p>
+</div>
+<p>If you use another authentication method (not peer), you&#8217;ll need to use the following steps to get the database setup:
+Now you need to create a database user and the database itself by using the
+PostgreSQL command line interface. The database tables will be created by
+Nextcloud when you login for the first time.</p>
+<p>To start the postgres command line mode use:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">psql</span> <span class="o">-</span><span class="n">hlocalhost</span> <span class="o">-</span><span class="n">Upostgres</span>
+</pre></div>
+</div>
+<p>Then a <strong>postgres=#</strong> prompt will appear. Now enter the following lines and confirm them with the enter key:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">CREATE</span> <span class="n">USER</span> <span class="n">username</span> <span class="n">WITH</span> <span class="n">PASSWORD</span> <span class="s1">&#39;password&#39;</span><span class="p">;</span>
+<span class="n">CREATE</span> <span class="n">DATABASE</span> <span class="n">nextcloud</span> <span class="n">TEMPLATE</span> <span class="n">template0</span> <span class="n">ENCODING</span> <span class="s1">&#39;UNICODE&#39;</span><span class="p">;</span>
+<span class="n">ALTER</span> <span class="n">DATABASE</span> <span class="n">nextcloud</span> <span class="n">OWNER</span> <span class="n">TO</span> <span class="n">username</span><span class="p">;</span>
+<span class="n">GRANT</span> <span class="n">ALL</span> <span class="n">PRIVILEGES</span> <span class="n">ON</span> <span class="n">DATABASE</span> <span class="n">nextcloud</span> <span class="n">TO</span> <span class="n">username</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>You can quit the prompt by entering:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>\<span class="n">q</span>
+</pre></div>
+</div>
+<p>A Nextcloud instance configured with PostgreSQL would contain the hostname on
+which the database is running, a valid username and password to access it, and
+the name of the database. The <code class="file docutils literal"><span class="pre">config/config.php</span></code> as created by the
+<a class="reference internal" href="../installation/installation_wizard.html"><span class="doc">Installation Wizard</span></a> would therefore contain entries like
+this:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>&lt;?php
+
+  &quot;dbtype&quot;        =&gt; &quot;pgsql&quot;,
+  &quot;dbname&quot;        =&gt; &quot;nextcloud&quot;,
+  &quot;dbuser&quot;        =&gt; &quot;username&quot;,
+  &quot;dbpassword&quot;    =&gt; &quot;password&quot;,
+  &quot;dbhost&quot;        =&gt; &quot;localhost&quot;,
+  &quot;dbtableprefix&quot; =&gt; &quot;oc_&quot;,
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="troubleshooting">
+<span id="db-troubleshooting-label"></span><h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="how-to-work-around-general-error-2006-mysql-server-has-gone-away">
+<h3>How to work around &#8220;general error: 2006 MySQL server has gone away&#8221;<a class="headerlink" href="#how-to-work-around-general-error-2006-mysql-server-has-gone-away" title="Permalink to this headline">¶</a></h3>
+<p>The database request takes too long and therefore the MySQL server times out. It&#8217;s
+also possible that the server is dropping a packet that is too large. Please
+refer to the manual of your database for how to raise the configuration options
+<code class="docutils literal"><span class="pre">wait_timeout</span></code> and/or <code class="docutils literal"><span class="pre">max_allowed_packet</span></code>.</p>
+<p>Some shared hosters are not allowing the access to these config options. For such
+systems Nextcloud is providing a <code class="docutils literal"><span class="pre">dbdriveroptions</span></code> configuration option within your
+<code class="file docutils literal"><span class="pre">config/config.php</span></code> where you can pass such options to the database driver.
+Please refer to <a class="reference internal" href="../configuration_server/config_sample_php_parameters.html"><span class="doc">Config.php Parameters</span></a> for an example.</p>
+</div>
+<div class="section" id="how-can-i-find-out-if-my-mysql-postgresql-server-is-reachable">
+<h3>How can I find out if my MySQL/PostgreSQL server is reachable?<a class="headerlink" href="#how-can-i-find-out-if-my-mysql-postgresql-server-is-reachable" title="Permalink to this headline">¶</a></h3>
+<p>To check the server&#8217;s network availability, use the ping command on
+the server&#8217;s host name (db.server.com in this example):</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ping</span> <span class="n">db</span><span class="o">.</span><span class="n">server</span><span class="o">.</span><span class="n">dom</span>
+</pre></div>
+</div>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">PING</span> <span class="n">db</span><span class="o">.</span><span class="n">server</span><span class="o">.</span><span class="n">dom</span> <span class="p">(</span><span class="n">ip</span><span class="o">-</span><span class="n">address</span><span class="p">)</span> <span class="mi">56</span><span class="p">(</span><span class="mi">84</span><span class="p">)</span> <span class="nb">bytes</span> <span class="n">of</span> <span class="n">data</span><span class="o">.</span>
+<span class="mi">64</span> <span class="nb">bytes</span> <span class="kn">from</span> <span class="nn">your</span><span class="o">-</span><span class="n">server</span><span class="o">.</span><span class="n">local</span><span class="o">.</span><span class="n">lan</span> <span class="p">(</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">1.10</span><span class="p">):</span> <span class="n">icmp_req</span><span class="o">=</span><span class="mi">1</span> <span class="n">ttl</span><span class="o">=</span><span class="mi">64</span> <span class="n">time</span><span class="o">=</span><span class="mf">3.64</span> <span class="n">ms</span>
+<span class="mi">64</span> <span class="nb">bytes</span> <span class="kn">from</span> <span class="nn">your</span><span class="o">-</span><span class="n">server</span><span class="o">.</span><span class="n">local</span><span class="o">.</span><span class="n">lan</span> <span class="p">(</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">1.10</span><span class="p">):</span> <span class="n">icmp_req</span><span class="o">=</span><span class="mi">2</span> <span class="n">ttl</span><span class="o">=</span><span class="mi">64</span> <span class="n">time</span><span class="o">=</span><span class="mf">0.055</span> <span class="n">ms</span>
+<span class="mi">64</span> <span class="nb">bytes</span> <span class="kn">from</span> <span class="nn">your</span><span class="o">-</span><span class="n">server</span><span class="o">.</span><span class="n">local</span><span class="o">.</span><span class="n">lan</span> <span class="p">(</span><span class="mf">192.168</span><span class="o">.</span><span class="mf">1.10</span><span class="p">):</span> <span class="n">icmp_req</span><span class="o">=</span><span class="mi">3</span> <span class="n">ttl</span><span class="o">=</span><span class="mi">64</span> <span class="n">time</span><span class="o">=</span><span class="mf">0.062</span> <span class="n">ms</span>
+</pre></div>
+</div>
+<p>For a more detailed check whether the access to the database server software
+itself works correctly, see the next question.</p>
+</div>
+<div class="section" id="how-can-i-find-out-if-a-created-user-can-access-a-database">
+<h3>How can I find out if a created user can access a database?<a class="headerlink" href="#how-can-i-find-out-if-a-created-user-can-access-a-database" title="Permalink to this headline">¶</a></h3>
+<p>The easiest way to test if a database is accessible is by starting the
+command line interface:</p>
+<p><strong>MySQL</strong>:</p>
+<p>Assuming the database server is installed on the same system you&#8217;re running
+the command from, use:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">mysql</span> <span class="o">-</span><span class="n">uUSERNAME</span> <span class="o">-</span><span class="n">p</span>
+</pre></div>
+</div>
+<p>To access a MySQL installation on a different machine, add the -h option with
+the respective host name:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">mysql</span> <span class="o">-</span><span class="n">uUSERNAME</span> <span class="o">-</span><span class="n">p</span> <span class="o">-</span><span class="n">h</span> <span class="n">HOSTNAME</span>
+</pre></div>
+</div>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">mysql</span><span class="o">&gt;</span> <span class="n">SHOW</span> <span class="n">VARIABLES</span> <span class="n">LIKE</span> <span class="s2">&quot;version&quot;</span><span class="p">;</span>
+<span class="o">+---------------+--------+</span>
+<span class="o">|</span> <span class="n">Variable_name</span> <span class="o">|</span> <span class="n">Value</span>  <span class="o">|</span>
+<span class="o">+---------------+--------+</span>
+<span class="o">|</span> <span class="n">version</span>       <span class="o">|</span> <span class="mf">5.1</span><span class="o">.</span><span class="mi">67</span> <span class="o">|</span>
+<span class="o">+---------------+--------+</span>
+<span class="mi">1</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">set</span> <span class="p">(</span><span class="mf">0.00</span> <span class="n">sec</span><span class="p">)</span>
+<span class="n">mysql</span><span class="o">&gt;</span> <span class="n">quit</span>
+</pre></div>
+</div>
+<p><strong>PostgreSQL</strong>:</p>
+<p>Assuming the database server is installed on the same system you&#8217;re running
+the command from, use:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">psql</span> <span class="o">-</span><span class="n">Uusername</span> <span class="o">-</span><span class="n">dnextcloud</span>
+</pre></div>
+</div>
+<p>To access a PostgreSQL installation on a different machine, add the -h option with
+the respective host name:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">psql</span> <span class="o">-</span><span class="n">Uusername</span> <span class="o">-</span><span class="n">dnextcloud</span> <span class="o">-</span><span class="n">h</span> <span class="n">HOSTNAME</span>
+</pre></div>
+</div>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">postgres</span><span class="o">=</span><span class="c1"># SELECT version();</span>
+<span class="n">PostgreSQL</span> <span class="mf">8.4</span><span class="o">.</span><span class="mi">12</span> <span class="n">on</span> <span class="n">i686</span><span class="o">-</span><span class="n">pc</span><span class="o">-</span><span class="n">linux</span><span class="o">-</span><span class="n">gnu</span><span class="p">,</span> <span class="n">compiled</span> <span class="n">by</span> <span class="n">GCC</span> <span class="n">gcc</span> <span class="p">(</span><span class="n">GCC</span><span class="p">)</span> <span class="mf">4.1</span><span class="o">.</span><span class="mi">3</span> <span class="mi">20080704</span> <span class="p">(</span><span class="n">prerelease</span><span class="p">),</span> <span class="mi">32</span><span class="o">-</span><span class="n">bit</span>
+<span class="p">(</span><span class="mi">1</span> <span class="n">row</span><span class="p">)</span>
+<span class="n">postgres</span><span class="o">=</span><span class="c1"># \q</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="useful-sql-commands">
+<h3>Useful SQL commands<a class="headerlink" href="#useful-sql-commands" title="Permalink to this headline">¶</a></h3>
+<p><strong>Show Database Users</strong>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">MySQL</span>     <span class="p">:</span> <span class="n">SELECT</span> <span class="n">User</span><span class="p">,</span><span class="n">Host</span> <span class="n">FROM</span> <span class="n">mysql</span><span class="o">.</span><span class="n">user</span><span class="p">;</span>
+<span class="n">PostgreSQL</span><span class="p">:</span> <span class="n">SELECT</span> <span class="o">*</span> <span class="n">FROM</span> <span class="n">pg_user</span><span class="p">;</span>
+</pre></div>
+</div>
+<p><strong>Show available Databases</strong>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">MySQL</span>     <span class="p">:</span> <span class="n">SHOW</span> <span class="n">DATABASES</span><span class="p">;</span>
+<span class="n">PostgreSQL</span><span class="p">:</span> \<span class="n">l</span>
+</pre></div>
+</div>
+<p><strong>Show Nextcloud Tables in Database</strong>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">MySQL</span>     <span class="p">:</span> <span class="n">USE</span> <span class="n">nextcloud</span><span class="p">;</span> <span class="n">SHOW</span> <span class="n">TABLES</span><span class="p">;</span>
+<span class="n">PostgreSQL</span><span class="p">:</span> \<span class="n">c</span> <span class="n">nextcloud</span><span class="p">;</span> \<span class="n">d</span>
+</pre></div>
+</div>
+<p><strong>Quit Database</strong>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">MySQL</span>     <span class="p">:</span> <span class="n">quit</span>
+<span class="n">PostgreSQL</span><span class="p">:</span> \<span class="n">q</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+            
+<ul class="prevnext-title list-unstyled list-inline">
+  <li class="prev">
+    <a href="db_conversion.html" title="Previous Chapter: Converting Database Type"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; Converting Da...</span>
+    </a>
+  </li>
+  <li class="next">
+    <a href="mysql_4byte_support.html" title="Next Chapter: Enabling MySQL 4-byte support"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">Enabling MySQ... &raquo;</span>
+    </a>
+  </li>
+</ul>
+					</div>
+				</div>
+			</div>
+  </main>  
+  </div>
+</div>
+<div class="container">
+<div class="row">
+    <div class="col-lg-12 footer-social-icons">
+      <p class="text-center"><a target="_blank" href="https://plus.google.com/104036748063781940910/about"><img width=50 src="../_static/img/social/googleplus.svg" title="Follow us on Google Plus!" alt="Follow us on Google Plus!"></img></a>
+      <a target="_blank" href="https://www.facebook.com/Nextclouders"><img width=50 src="../_static/img/social/facebook.svg" title="Like our facebook page!" alt="Like our facebook page!"></img></a>
+      <a target="_blank" href="https://twitter.com/Nextclouders"><img width=50 src="../_static/img/social/twitter.svg" title="Subscribe to our twitter channel!" alt="Subscribe to our twitter channel!"></img></a>
+      <a target="_blank" href="https://nextcloud.com/blogfeed"><img class="img-circle" width=50 src="../_static/img/social/rss.svg" title="Subscribe to our news feed!" alt="Subscribe to our news feed!"></img></a>
+      <a target="_blank" href="https://newsletter.nextcloud.com/"><img class="img-circle" width=50 src="../_static/img/social/mail.svg"  title="Subscribe to our newsletter!" alt="Subscribe to our newsletter!"></img></a></p>
+    </div>
+    <div class="text-center">
+      <p>All documentation licensed under the <a href="https://creativecommons.org/licenses/by/3.0/us/">Creative Commons Attribution 3.0 Unported license</a>.</p>
+      <p><a href="https://github.com/nextcloud/documentation/graphs/contributors">See who contributed to our documentation/credits</a>.</p>
+    </div>
+</div>
+</div>
+<footer class="content-info" role="contentinfo">
+<div class="container">
+   <div class="row">
+     <div class="col-sm-2 col-sm-offset-1">
+        <div class="footer-nav">
+          <h4>About Nextcloud</h4>
+          <ul id="menu-about" class="menu">
+            <li><a href="https://nextcloud.com/about/">About us</a></li>
+            <li><a href="https://nextcloud.com/contact/">Contact us</a></li>
+            <li><a href="https://nextcloud.com/press/">Press</a></li>
+            <li><a href="https://nextcloud.com/privacy/">Privacy policy</a></li>
+          </ul>
+        </div>
+     </div>
+     <div class="col-sm-2 col-sm-offset-2">
+     </div>
+     <div class="col-sm-2 col-sm-offset-2">
+        <div class="footer-nav">
+          <h4>Interact</h4>
+          <ul id="menu-interact" class="menu">
+            <li class="menu-irc-channel"><a href="https://webchat.freenode.net/?channels=nextcloud">IRC Channel</a></li>
+            <li class="menu-forums"><a href="https://help.nextcloud.com/">Forums</a></li>
+          </ul>
+        </div>
+     </div>
+   </div>
+   <div class="row">
+      <div class="col-lg-12 footer-text">
+        <p>
+              &copy; Copyright 2012-2017, The Nextcloud developers.  <small><a href="https://nextcloud.com/impressum">Legal Notice</a></small><br/>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+  </body>
+</html>

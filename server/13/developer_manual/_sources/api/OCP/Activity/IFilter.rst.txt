@@ -1,0 +1,112 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IFilter
+=======
+
+
+.. php:namespace:: OCP\Activity
+
+.. php:interface:: IFilter
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Interface IFilter
+		
+	
+	:Source:
+		`lib/public/Activity/IFilter.php#31 <https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IFilter.php#L31>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public getIdentifier()
+	
+		:Source:
+			`lib/public/Activity/IFilter.php#37 <https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IFilter.php#L37>`_
+		
+		
+		:Returns: string Lowercase a\-z and underscore only identifier
+		:Since: 11.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getName()
+	
+		:Source:
+			`lib/public/Activity/IFilter.php#43 <https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IFilter.php#L43>`_
+		
+		
+		:Returns: string A translated string
+		:Since: 11.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getPriority()
+	
+		:Source:
+			`lib/public/Activity/IFilter.php#51 <https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IFilter.php#L51>`_
+		
+		
+		:Returns: int whether the filter should be rather on the top or bottom of
+			the admin section\. The filters are arranged in ascending order of the
+			priority values\. It is required to return a value between 0 and 100\.
+		
+		:Since: 11.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getIcon()
+	
+		:Source:
+			`lib/public/Activity/IFilter.php#57 <https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IFilter.php#L57>`_
+		
+		
+		:Returns: string Full URL to an icon, empty string when none is given
+		:Since: 11.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public filterTypes( $types)
+	
+		:Source:
+			`lib/public/Activity/IFilter.php#64 <https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IFilter.php#L64>`_
+		
+		
+		:Parameters:
+			* **$types** (string[])  
+
+		
+		:Returns: string[] An array of allowed apps from which activities should be displayed
+		:Since: 11.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public allowedApps()
+	
+		:Source:
+			`lib/public/Activity/IFilter.php#70 <https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IFilter.php#L70>`_
+		
+		
+		:Returns: string[] An array of allowed apps from which activities should be displayed
+		:Since: 11.0.0 
+	
+	
+

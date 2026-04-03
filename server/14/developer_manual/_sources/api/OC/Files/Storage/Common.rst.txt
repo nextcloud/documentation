@@ -1,0 +1,851 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+Common
+======
+
+
+.. php:namespace:: OC\Files\Storage
+
+.. rst-class::  abstract
+
+.. php:class:: Common
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Storage backend class for providing common filesystem operation methods
+		| which are not storage\-backend specific\.
+		
+		| \\OC\\Files\\Storage\\Common is never used directly; it is extended by all other
+		| storage backends, where its methods may be overridden, and additional
+		| \(backend\-specific\) methods are defined\.
+		| 
+		| Some \\OC\\Files\\Storage\\Common methods call functions which are first defined
+		| in classes which extend it, e\.g\. $this\-\>stat\(\) \.
+		
+	
+	:Source:
+		`lib/private/Files/Storage/Common.php#78 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Common.php#L78>`_
+	
+	:Implements:
+		:php:interface:`OC\\Files\\Storage\\Storage` :php:interface:`OCP\\Files\\Storage\\ILockingStorage` :php:interface:`OCP\\Files\\Storage\\IWriteStreamStorage` 
+	
+	:Used traits:
+		:php:trait:`OC\\Files\\Storage\\LocalTempFileTrait` 
+	
+
+Properties
+----------
+
+.. php:attr:: protected static cache
+
+	:Source:
+		`lib/private/Files/Storage/Common.php#81 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Common.php#L81>`_
+	
+
+
+.. php:attr:: protected static scanner
+
+	:Source:
+		`lib/private/Files/Storage/Common.php#82 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Common.php#L82>`_
+	
+
+
+.. php:attr:: protected static watcher
+
+	:Source:
+		`lib/private/Files/Storage/Common.php#83 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Common.php#L83>`_
+	
+
+
+.. php:attr:: protected static propagator
+
+	:Source:
+		`lib/private/Files/Storage/Common.php#84 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Common.php#L84>`_
+	
+
+
+.. php:attr:: protected static storageCache
+
+	:Source:
+		`lib/private/Files/Storage/Common.php#85 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Common.php#L85>`_
+	
+
+
+.. php:attr:: protected static updater
+
+	:Source:
+		`lib/private/Files/Storage/Common.php#86 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Common.php#L86>`_
+	
+
+
+.. php:attr:: protected static mountOptions
+
+	:Source:
+		`lib/private/Files/Storage/Common.php#88 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Common.php#L88>`_
+	
+
+
+.. php:attr:: protected static owner
+
+	:Source:
+		`lib/private/Files/Storage/Common.php#89 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Common.php#L89>`_
+	
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $parameters)
+	
+		:Source:
+			`lib/private/Files/Storage/Common.php#94 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Common.php#L94>`_
+		
+		
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected remove( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Remove a file or folder
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Common.php#103 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Common.php#L103>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public is_dir( $path)
+	
+		:Source:
+			`lib/private/Files/Storage/Common.php#113 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Common.php#L113>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public is_file( $path)
+	
+		:Source:
+			`lib/private/Files/Storage/Common.php#117 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Common.php#L117>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public filesize( $path)
+	
+		:Source:
+			`lib/private/Files/Storage/Common.php#121 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Common.php#L121>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isReadable( $path)
+	
+		:Source:
+			`lib/private/Files/Storage/Common.php#134 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Common.php#L134>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isUpdatable( $path)
+	
+		:Source:
+			`lib/private/Files/Storage/Common.php#140 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Common.php#L140>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isCreatable( $path)
+	
+		:Source:
+			`lib/private/Files/Storage/Common.php#147 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Common.php#L147>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isDeletable( $path)
+	
+		:Source:
+			`lib/private/Files/Storage/Common.php#154 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Common.php#L154>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isSharable( $path)
+	
+		:Source:
+			`lib/private/Files/Storage/Common.php#162 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Common.php#L162>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getPermissions( $path)
+	
+		:Source:
+			`lib/private/Files/Storage/Common.php#166 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Common.php#L166>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public filemtime( $path)
+	
+		:Source:
+			`lib/private/Files/Storage/Common.php#186 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Common.php#L186>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public file_get_contents( $path)
+	
+		:Source:
+			`lib/private/Files/Storage/Common.php#195 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Common.php#L195>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public file_put_contents( $path, $data)
+	
+		:Source:
+			`lib/private/Files/Storage/Common.php#205 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Common.php#L205>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public rename( $path1, $path2)
+	
+		:Source:
+			`lib/private/Files/Storage/Common.php#213 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Common.php#L213>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public copy( $path1, $path2)
+	
+		:Source:
+			`lib/private/Files/Storage/Common.php#220 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Common.php#L220>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getMimeType( $path)
+	
+		:Source:
+			`lib/private/Files/Storage/Common.php#246 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Common.php#L246>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public hash( $type, $path, $raw=false)
+	
+		:Source:
+			`lib/private/Files/Storage/Common.php#256 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Common.php#L256>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public search( $query)
+	
+		:Source:
+			`lib/private/Files/Storage/Common.php#264 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Common.php#L264>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getLocalFile( $path)
+	
+		:Source:
+			`lib/private/Files/Storage/Common.php#268 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Common.php#L268>`_
+		
+		
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected searchInDir( $query, $dir="")
+	
+		:Source:
+			`lib/private/Files/Storage/Common.php#298 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Common.php#L298>`_
+		
+		
+		:Parameters:
+			* **$query** (string)  
+			* **$dir** (string)  
+
+		
+		:Returns: array 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public hasUpdated( $path, $time)
+	
+		.. rst-class:: phpdoc-description
+		
+			| check if a file or folder has been updated since $time
+			
+			| The method is only used to check if the cache needs to be updated\. Storage backends that don\'t support checking
+			| the mtime should always return false here\. As a result storage implementations that always return false expect
+			| exclusive access to the backend and will not pick up files that have been added in a way that circumvents
+			| ownClouds filesystem\.
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Common.php#330 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Common.php#L330>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+			* **$time** (int)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getCache( $path="", $storage=null)
+	
+		:Source:
+			`lib/private/Files/Storage/Common.php#334 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Common.php#L334>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getScanner( $path="", $storage=null)
+	
+		:Source:
+			`lib/private/Files/Storage/Common.php#344 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Common.php#L344>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getWatcher( $path="", $storage=null)
+	
+		:Source:
+			`lib/private/Files/Storage/Common.php#354 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Common.php#L354>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getPropagator( $storage=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get a propagator instance for the cache
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Common.php#372 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Common.php#L372>`_
+		
+		
+		:Parameters:
+			
+			
+		
+		:Returns: :any:`\\OC\\Files\\Cache\\Propagator <OC\\Files\\Cache\\Propagator>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getUpdater( $storage=null)
+	
+		:Source:
+			`lib/private/Files/Storage/Common.php#383 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Common.php#L383>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getStorageCache( $storage=null)
+	
+		:Source:
+			`lib/private/Files/Storage/Common.php#393 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Common.php#L393>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getOwner( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get the owner of a path
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Common.php#409 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Common.php#L409>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  The path to get the owner
+
+		
+		:Returns: string | bool uid or false
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getETag( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get the ETag for a file or folder
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Common.php#423 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Common.php#L423>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public cleanPath( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| clean a path, i\.e\. remove all redundant \'\.\' and \'\.
+			
+			| \.\'
+			| making sure that it can\'t point to higher than \'/\'
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Common.php#434 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Common.php#L434>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  The path to clean
+
+		
+		:Returns: string cleaned path
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public test()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Test a storage for availability
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Common.php#456 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Common.php#L456>`_
+		
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public free_space( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get the free space in the storage
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Common.php#476 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Common.php#L476>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: int | bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isLocal()
+	
+		.. rst-class:: phpdoc-description
+		
+			| \{@inheritdoc\}
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Common.php#483 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Common.php#L483>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public instanceOfStorage( $class)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check if the storage is an instance of $class or is a wrapper for a storage that is an instance of $class
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Common.php#495 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Common.php#L495>`_
+		
+		
+		:Parameters:
+			* **$class** (string)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getDirectDownload( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| A custom storage implementation can return an url for direct download of a give file\.
+			
+			| For now the returned array can hold the parameter url \- in future more attributes might follow\.
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Common.php#511 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Common.php#L511>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: array | bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public verifyPath( $path, $fileName)
+	
+		:Source:
+			`lib/private/Files/Storage/Common.php#519 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Common.php#L519>`_
+		
+		
+		:Throws: :any:`\\OCP\\Files\\InvalidPathException <OCP\\Files\\InvalidPathException>` 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected verifyPosixPath( $fileName)
+	
+		:Source:
+			`lib/private/Files/Storage/Common.php#556 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Common.php#L556>`_
+		
+		
+		:Parameters:
+			* **$fileName** (string)  
+
+		
+		:Throws: :any:`\\OCP\\Files\\InvalidPathException <OCP\\Files\\InvalidPathException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setMountOptions( $options)
+	
+		:Source:
+			`lib/private/Files/Storage/Common.php#586 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Common.php#L586>`_
+		
+		
+		:Parameters:
+			* **$options** (array)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getMountOption( $name, $default=null)
+	
+		:Source:
+			`lib/private/Files/Storage/Common.php#595 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Common.php#L595>`_
+		
+		
+		:Parameters:
+			* **$name** (string)  
+			* **$default** (mixed)  
+
+		
+		:Returns: mixed 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public copyFromStorage( $sourceStorage, $sourceInternalPath, $targetInternalPath, $preserveMtime=false)
+	
+		:Source:
+			`lib/private/Files/Storage/Common.php#606 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Common.php#L606>`_
+		
+		
+		:Parameters:
+			* **$sourceStorage** (:any:`OCP\\Files\\Storage\\IStorage <OCP\\Files\\Storage\\IStorage>`)  
+			* **$sourceInternalPath** (string)  
+			* **$targetInternalPath** (string)  
+			* **$preserveMtime** (bool)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public moveFromStorage( $sourceStorage, $sourceInternalPath, $targetInternalPath)
+	
+		:Source:
+			`lib/private/Files/Storage/Common.php#671 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Common.php#L671>`_
+		
+		
+		:Parameters:
+			* **$sourceStorage** (:any:`OCP\\Files\\Storage\\IStorage <OCP\\Files\\Storage\\IStorage>`)  
+			* **$sourceInternalPath** (string)  
+			* **$targetInternalPath** (string)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getMetaData( $path)
+	
+		:Source:
+			`lib/private/Files/Storage/Common.php#703 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Common.php#L703>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public acquireLock( $path, $type, $provider)
+	
+		:Source:
+			`lib/private/Files/Storage/Common.php#735 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Common.php#L735>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+			* **$type** (int)  \OCP\Lock\ILockingProvider::LOCK_SHARED or \OCP\Lock\ILockingProvider::LOCK_EXCLUSIVE
+			* **$provider** (:any:`OCP\\Lock\\ILockingProvider <OCP\\Lock\\ILockingProvider>`)  
+
+		
+		:Throws: :any:`\\OCP\\Lock\\LockedException <OCP\\Lock\\LockedException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public releaseLock( $path, $type, $provider)
+	
+		:Source:
+			`lib/private/Files/Storage/Common.php#767 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Common.php#L767>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+			* **$type** (int)  \OCP\Lock\ILockingProvider::LOCK_SHARED or \OCP\Lock\ILockingProvider::LOCK_EXCLUSIVE
+			* **$provider** (:any:`OCP\\Lock\\ILockingProvider <OCP\\Lock\\ILockingProvider>`)  
+
+		
+		:Throws: :any:`\\OCP\\Lock\\LockedException <OCP\\Lock\\LockedException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public changeLock( $path, $type, $provider)
+	
+		:Source:
+			`lib/private/Files/Storage/Common.php#799 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Common.php#L799>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+			* **$type** (int)  \OCP\Lock\ILockingProvider::LOCK_SHARED or \OCP\Lock\ILockingProvider::LOCK_EXCLUSIVE
+			* **$provider** (:any:`OCP\\Lock\\ILockingProvider <OCP\\Lock\\ILockingProvider>`)  
+
+		
+		:Throws: :any:`\\OCP\\Lock\\LockedException <OCP\\Lock\\LockedException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getAvailability()
+	
+		:Source:
+			`lib/private/Files/Storage/Common.php#834 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Common.php#L834>`_
+		
+		
+		:Returns: array \[ available, last\_checked \]
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setAvailability( $isAvailable)
+	
+		:Source:
+			`lib/private/Files/Storage/Common.php#841 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Common.php#L841>`_
+		
+		
+		:Parameters:
+			* **$isAvailable** (bool)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public needsPartFile()
+	
+		:Source:
+			`lib/private/Files/Storage/Common.php#848 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Common.php#L848>`_
+		
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public writeStream( $path, $stream, $size=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| fallback implementation
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Common.php#860 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Common.php#L860>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+			* **$stream** (resource)  
+			* **$size** (int)  
+
+		
+		:Returns: int 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getDirectoryContent( $directory)
+	
+		:Source:
+			`lib/private/Files/Storage/Common.php#877 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Common.php#L877>`_
+		
+		
+	
+	
+

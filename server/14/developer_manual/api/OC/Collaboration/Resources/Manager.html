@@ -1,0 +1,894 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Manager &mdash; Nextcloud 14 Developer Manual 14 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../../../',
+              VERSION:'14',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html">
+          
+
+          
+            
+            <img src="../../../../_static/logo-white.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../general/index.html">General contributor guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/startapp.html">Create an app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/init.html">Navigation and pre-app configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/info.html">App metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/classloader.html">Classloader</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/request.html">Request lifecycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/routes.html">Routing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/middleware.html">Middleware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/container.html">Container</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/controllers.html">Controllers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/api.html">RESTful API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/templates.html">Templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/js.html">JavaScript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/css.html">CSS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/l10n.html">Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/theming.html">Theming support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/schema.html">Database schema</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/database.html">Database access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/filesystem.html">Filesystem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/appdata.html">AppData</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/users.html">User management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/two-factor-provider.html">Two-factor providers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/hooks.html">Hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/backgroundjobs.html">Background jobs (Cron)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/settings.html">Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/logging.html">Logging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/migrations.html">Migrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/repair.html">Repair steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/publishing.html">App store publishing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/code_signing.html">Code signing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../design/index.html">Design guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../android_library/index.html">Android application development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../client_apis/index.html">Client APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../core/index.html">Core development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bugtracker/index.html">Bugtracker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../commun/index.html">Help and communication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api.html">API Documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">Nextcloud 14 Developer Manual</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Manager</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/nextcloud/documentation/edit/stable14/developer_manual/api/OC/Collaboration/Resources/Manager.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="phpdoctorst section" id="namespace-OC\Collaboration\Resources">
+<span id="manager"></span><h1>Manager<a class="headerlink" href="#namespace-OC\Collaboration\Resources" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="OC\Collaboration\Resources\Manager">
+<em class="property">class </em><code class="descclassname">OC\Collaboration\Resources\</code><code class="descname">Manager</code><a class="headerlink" href="#OC\Collaboration\Resources\Manager" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Collaboration/Resources/Manager.php#L44">lib/private/Collaboration/Resources/Manager.php#44</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Implements:</th><td class="field-body"><a class="reference internal" href="../../../OCP/Collaboration/Resources/IManager.html#OCP\Collaboration\Resources\IManager" title="OCP\Collaboration\Resources\IManager"><code class="xref php php-interface docutils literal"><span class="pre">OCP\Collaboration\Resources\IManager</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<div class="section" id="constants">
+<h2>Constants<a class="headerlink" href="#constants" title="Permalink to this headline">¶</a></h2>
+<dl class="const">
+<dt>
+<code class="descname">TABLE_COLLECTIONS = collres_collections</code></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Collaboration/Resources/Manager.php#L45">lib/private/Collaboration/Resources/Manager.php#45</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="const">
+<dt>
+<code class="descname">TABLE_RESOURCES = collres_resources</code></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Collaboration/Resources/Manager.php#L46">lib/private/Collaboration/Resources/Manager.php#46</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="const">
+<dt>
+<code class="descname">TABLE_ACCESS_CACHE = collres_accesscache</code></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Collaboration/Resources/Manager.php#L47">lib/private/Collaboration/Resources/Manager.php#47</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h2>
+<dl class="attr">
+<dt id="OC\Collaboration\Resources\Manager::$connection">
+<em class="property">protected </em><em class="property">static </em><em class="property">property </em><code class="descclassname">OC\Collaboration\Resources\Manager::$</code><code class="descname">connection</code><a class="headerlink" href="#OC\Collaboration\Resources\Manager::$connection" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Collaboration/Resources/Manager.php#L50">lib/private/Collaboration/Resources/Manager.php#50</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body"><a class="reference internal" href="../../../OCP/IDBConnection.html#OCP\IDBConnection" title="OCP\IDBConnection"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\IDBConnection</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attr">
+<dt id="OC\Collaboration\Resources\Manager::$providerManager">
+<em class="property">protected </em><em class="property">static </em><em class="property">property </em><code class="descclassname">OC\Collaboration\Resources\Manager::$</code><code class="descname">providerManager</code><a class="headerlink" href="#OC\Collaboration\Resources\Manager::$providerManager" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Collaboration/Resources/Manager.php#L52">lib/private/Collaboration/Resources/Manager.php#52</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body"><a class="reference internal" href="../../../OCP/Collaboration/Resources/IProviderManager.html#OCP\Collaboration\Resources\IProviderManager" title="OCP\Collaboration\Resources\IProviderManager"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Collaboration\Resources\IProviderManager</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attr">
+<dt id="OC\Collaboration\Resources\Manager::$logger">
+<em class="property">protected </em><em class="property">static </em><em class="property">property </em><code class="descclassname">OC\Collaboration\Resources\Manager::$</code><code class="descname">logger</code><a class="headerlink" href="#OC\Collaboration\Resources\Manager::$logger" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Collaboration/Resources/Manager.php#L54">lib/private/Collaboration/Resources/Manager.php#54</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body"><code class="xref any docutils literal"><span class="pre">\Psr\Log\LoggerInterface</span></code></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attr">
+<dt id="OC\Collaboration\Resources\Manager::$providers">
+<em class="property">protected </em><em class="property">static </em><em class="property">property </em><code class="descclassname">OC\Collaboration\Resources\Manager::$</code><code class="descname">providers</code><a class="headerlink" href="#OC\Collaboration\Resources\Manager::$providers" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Collaboration/Resources/Manager.php#L57">lib/private/Collaboration/Resources/Manager.php#57</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body">string[]</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h2>
+<dl class="public method">
+<dt id="OC\Collaboration\Resources\Manager::__construct">
+<em class="property">public </em><code class="descclassname">OC\Collaboration\Resources\Manager::</code><code class="descname">__construct</code><span class="sig-paren">(</span><em>$connection</em>, <em>$providerManager</em>, <em>$logger</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Collaboration\Resources\Manager::__construct" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Collaboration/Resources/Manager.php#L60">lib/private/Collaboration/Resources/Manager.php#60</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Collaboration\Resources\Manager::getCollection">
+<em class="property">public </em><code class="descclassname">OC\Collaboration\Resources\Manager::</code><code class="descname">getCollection</code><span class="sig-paren">(</span><em>$id</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Collaboration\Resources\Manager::getCollection" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Collaboration/Resources/Manager.php#L72">lib/private/Collaboration/Resources/Manager.php#72</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$id</strong> (int)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference internal" href="../../../OCP/Collaboration/Resources/ICollection.html#OCP\Collaboration\Resources\ICollection" title="OCP\Collaboration\Resources\ICollection"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Collaboration\Resources\ICollection</span></code></a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><a class="reference internal" href="../../../OCP/Collaboration/Resources/CollectionException.html#OCP\Collaboration\Resources\CollectionException" title="OCP\Collaboration\Resources\CollectionException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Collaboration\Resources\CollectionException</span></code></a> when the collection could not be found</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">16.0.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Collaboration\Resources\Manager::getCollectionForUser">
+<em class="property">public </em><code class="descclassname">OC\Collaboration\Resources\Manager::</code><code class="descname">getCollectionForUser</code><span class="sig-paren">(</span><em>$id</em>, <em>$user</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Collaboration\Resources\Manager::getCollectionForUser" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Collaboration/Resources/Manager.php#L95">lib/private/Collaboration/Resources/Manager.php#95</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$id</strong> (int)</li>
+<li><strong>$user</strong> (<a class="reference internal" href="../../../OCP/IUser.html#OCP\IUser" title="OCP\IUser"><code class="xref any php php-trait docutils literal"><span class="pre">OCP\IUser</span></code></a> | null)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference internal" href="../../../OCP/Collaboration/Resources/ICollection.html#OCP\Collaboration\Resources\ICollection" title="OCP\Collaboration\Resources\ICollection"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Collaboration\Resources\ICollection</span></code></a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><a class="reference internal" href="../../../OCP/Collaboration/Resources/CollectionException.html#OCP\Collaboration\Resources\CollectionException" title="OCP\Collaboration\Resources\CollectionException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Collaboration\Resources\CollectionException</span></code></a> when the collection could not be found</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">16.0.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Collaboration\Resources\Manager::searchCollections">
+<em class="property">public </em><code class="descclassname">OC\Collaboration\Resources\Manager::</code><code class="descname">searchCollections</code><span class="sig-paren">(</span><em>$user</em>, <em>$filter</em>, <em>$limit=50</em>, <em>$start=0</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Collaboration\Resources\Manager::searchCollections" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Collaboration/Resources/Manager.php#L133">lib/private/Collaboration/Resources/Manager.php#133</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$user</strong> (<a class="reference internal" href="../../../OCP/IUser.html#OCP\IUser" title="OCP\IUser"><code class="xref any php php-trait docutils literal"><span class="pre">OCP\IUser</span></code></a>)</li>
+<li><strong>$filter</strong> (string)</li>
+<li><strong>$limit</strong> (int)</li>
+<li><strong>$start</strong> (int)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference internal" href="../../../OCP/Collaboration/Resources/ICollection.html#OCP\Collaboration\Resources\ICollection" title="OCP\Collaboration\Resources\ICollection"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Collaboration\Resources\ICollection[]</span></code></a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">16.0.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Collaboration\Resources\Manager::newCollection">
+<em class="property">public </em><code class="descclassname">OC\Collaboration\Resources\Manager::</code><code class="descname">newCollection</code><span class="sig-paren">(</span><em>$name</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Collaboration\Resources\Manager::newCollection" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Collaboration/Resources/Manager.php#L181">lib/private/Collaboration/Resources/Manager.php#181</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$name</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference internal" href="../../../OCP/Collaboration/Resources/ICollection.html#OCP\Collaboration\Resources\ICollection" title="OCP\Collaboration\Resources\ICollection"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Collaboration\Resources\ICollection</span></code></a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">16.0.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Collaboration\Resources\Manager::createResource">
+<em class="property">public </em><code class="descclassname">OC\Collaboration\Resources\Manager::</code><code class="descname">createResource</code><span class="sig-paren">(</span><em>$type</em>, <em>$id</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Collaboration\Resources\Manager::createResource" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Collaboration/Resources/Manager.php#L198">lib/private/Collaboration/Resources/Manager.php#198</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$type</strong> (string)</li>
+<li><strong>$id</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference internal" href="../../../OCP/Collaboration/Resources/IResource.html#OCP\Collaboration\Resources\IResource" title="OCP\Collaboration\Resources\IResource"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Collaboration\Resources\IResource</span></code></a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">16.0.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Collaboration\Resources\Manager::getResourceForUser">
+<em class="property">public </em><code class="descclassname">OC\Collaboration\Resources\Manager::</code><code class="descname">getResourceForUser</code><span class="sig-paren">(</span><em>$type</em>, <em>$id</em>, <em>$user</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Collaboration\Resources\Manager::getResourceForUser" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Collaboration/Resources/Manager.php#L210">lib/private/Collaboration/Resources/Manager.php#210</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$type</strong> (string)</li>
+<li><strong>$id</strong> (string)</li>
+<li><strong>$user</strong> (<a class="reference internal" href="../../../OCP/IUser.html#OCP\IUser" title="OCP\IUser"><code class="xref any php php-trait docutils literal"><span class="pre">OCP\IUser</span></code></a> | null)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference internal" href="../../../OCP/Collaboration/Resources/IResource.html#OCP\Collaboration\Resources\IResource" title="OCP\Collaboration\Resources\IResource"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Collaboration\Resources\IResource</span></code></a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><a class="reference internal" href="../../../OCP/Collaboration/Resources/ResourceException.html#OCP\Collaboration\Resources\ResourceException" title="OCP\Collaboration\Resources\ResourceException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Collaboration\Resources\ResourceException</span></code></a></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">16.0.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Collaboration\Resources\Manager::getResourcesByCollectionForUser">
+<em class="property">public </em><code class="descclassname">OC\Collaboration\Resources\Manager::</code><code class="descname">getResourcesByCollectionForUser</code><span class="sig-paren">(</span><em>$collection</em>, <em>$user</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Collaboration\Resources\Manager::getResourcesByCollectionForUser" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Collaboration/Resources/Manager.php#L248">lib/private/Collaboration/Resources/Manager.php#248</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$collection</strong> (<a class="reference internal" href="../../../OCP/Collaboration/Resources/ICollection.html#OCP\Collaboration\Resources\ICollection" title="OCP\Collaboration\Resources\ICollection"><code class="xref any php php-trait docutils literal"><span class="pre">OCP\Collaboration\Resources\ICollection</span></code></a>)</li>
+<li><strong>$user</strong> (<a class="reference internal" href="../../../OCP/IUser.html#OCP\IUser" title="OCP\IUser"><code class="xref any php php-trait docutils literal"><span class="pre">OCP\IUser</span></code></a> | null)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference internal" href="../../../OCP/Collaboration/Resources/IResource.html#OCP\Collaboration\Resources\IResource" title="OCP\Collaboration\Resources\IResource"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Collaboration\Resources\IResource[]</span></code></a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">16.0.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Collaboration\Resources\Manager::getResourceRichObject">
+<em class="property">public </em><code class="descclassname">OC\Collaboration\Resources\Manager::</code><code class="descname">getResourceRichObject</code><span class="sig-paren">(</span><em>$resource</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Collaboration\Resources\Manager::getResourceRichObject" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Get the rich object data of a resource</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Collaboration/Resources/Manager.php#L282">lib/private/Collaboration/Resources/Manager.php#282</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$resource</strong> (<a class="reference internal" href="../../../OCP/Collaboration/Resources/IResource.html#OCP\Collaboration\Resources\IResource" title="OCP\Collaboration\Resources\IResource"><code class="xref any php php-trait docutils literal"><span class="pre">OCP\Collaboration\Resources\IResource</span></code></a>)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">array</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">16.0.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Collaboration\Resources\Manager::canAccessResource">
+<em class="property">public </em><code class="descclassname">OC\Collaboration\Resources\Manager::</code><code class="descname">canAccessResource</code><span class="sig-paren">(</span><em>$resource</em>, <em>$user</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Collaboration\Resources\Manager::canAccessResource" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Can a user/guest access the collection</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Collaboration/Resources/Manager.php#L303">lib/private/Collaboration/Resources/Manager.php#303</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$resource</strong> (<a class="reference internal" href="../../../OCP/Collaboration/Resources/IResource.html#OCP\Collaboration\Resources\IResource" title="OCP\Collaboration\Resources\IResource"><code class="xref any php php-trait docutils literal"><span class="pre">OCP\Collaboration\Resources\IResource</span></code></a>)</li>
+<li><strong>$user</strong> (<a class="reference internal" href="../../../OCP/IUser.html#OCP\IUser" title="OCP\IUser"><code class="xref any php php-trait docutils literal"><span class="pre">OCP\IUser</span></code></a> | null)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">bool</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">16.0.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Collaboration\Resources\Manager::canAccessCollection">
+<em class="property">public </em><code class="descclassname">OC\Collaboration\Resources\Manager::</code><code class="descname">canAccessCollection</code><span class="sig-paren">(</span><em>$collection</em>, <em>$user</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Collaboration\Resources\Manager::canAccessCollection" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Can a user/guest access the collection</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Collaboration/Resources/Manager.php#L334">lib/private/Collaboration/Resources/Manager.php#334</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$collection</strong> (<a class="reference internal" href="../../../OCP/Collaboration/Resources/ICollection.html#OCP\Collaboration\Resources\ICollection" title="OCP\Collaboration\Resources\ICollection"><code class="xref any php php-trait docutils literal"><span class="pre">OCP\Collaboration\Resources\ICollection</span></code></a>)</li>
+<li><strong>$user</strong> (<a class="reference internal" href="../../../OCP/IUser.html#OCP\IUser" title="OCP\IUser"><code class="xref any php php-trait docutils literal"><span class="pre">OCP\IUser</span></code></a> | null)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">bool</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">16.0.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="protected method">
+<dt id="OC\Collaboration\Resources\Manager::checkAccessCacheForUserByResource">
+<em class="property">protected </em><code class="descclassname">OC\Collaboration\Resources\Manager::</code><code class="descname">checkAccessCacheForUserByResource</code><span class="sig-paren">(</span><em>$resource</em>, <em>$user</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Collaboration\Resources\Manager::checkAccessCacheForUserByResource" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Collaboration/Resources/Manager.php#L355">lib/private/Collaboration/Resources/Manager.php#355</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="protected method">
+<dt id="OC\Collaboration\Resources\Manager::checkAccessCacheForUserByCollection">
+<em class="property">protected </em><code class="descclassname">OC\Collaboration\Resources\Manager::</code><code class="descname">checkAccessCacheForUserByCollection</code><span class="sig-paren">(</span><em>$collection</em>, <em>$user</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Collaboration\Resources\Manager::checkAccessCacheForUserByCollection" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Collaboration/Resources/Manager.php#L376">lib/private/Collaboration/Resources/Manager.php#376</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Collaboration\Resources\Manager::cacheAccessForResource">
+<em class="property">public </em><code class="descclassname">OC\Collaboration\Resources\Manager::</code><code class="descname">cacheAccessForResource</code><span class="sig-paren">(</span><em>$resource</em>, <em>$user</em>, <em>$access</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Collaboration\Resources\Manager::cacheAccessForResource" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Collaboration/Resources/Manager.php#L396">lib/private/Collaboration/Resources/Manager.php#396</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Collaboration\Resources\Manager::cacheAccessForCollection">
+<em class="property">public </em><code class="descclassname">OC\Collaboration\Resources\Manager::</code><code class="descname">cacheAccessForCollection</code><span class="sig-paren">(</span><em>$collection</em>, <em>$user</em>, <em>$access</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Collaboration\Resources\Manager::cacheAccessForCollection" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Collaboration/Resources/Manager.php#L413">lib/private/Collaboration/Resources/Manager.php#413</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Collaboration\Resources\Manager::invalidateAccessCacheForUser">
+<em class="property">public </em><code class="descclassname">OC\Collaboration\Resources\Manager::</code><code class="descname">invalidateAccessCacheForUser</code><span class="sig-paren">(</span><em>$user</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Collaboration\Resources\Manager::invalidateAccessCacheForUser" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Collaboration/Resources/Manager.php#L429">lib/private/Collaboration/Resources/Manager.php#429</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Collaboration\Resources\Manager::invalidateAccessCacheForResource">
+<em class="property">public </em><code class="descclassname">OC\Collaboration\Resources\Manager::</code><code class="descname">invalidateAccessCacheForResource</code><span class="sig-paren">(</span><em>$resource</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Collaboration\Resources\Manager::invalidateAccessCacheForResource" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Collaboration/Resources/Manager.php#L438">lib/private/Collaboration/Resources/Manager.php#438</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Collaboration\Resources\Manager::invalidateAccessCacheForAllCollections">
+<em class="property">public </em><code class="descclassname">OC\Collaboration\Resources\Manager::</code><code class="descname">invalidateAccessCacheForAllCollections</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Collaboration\Resources\Manager::invalidateAccessCacheForAllCollections" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Collaboration/Resources/Manager.php#L451">lib/private/Collaboration/Resources/Manager.php#451</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Collaboration\Resources\Manager::invalidateAccessCacheForCollection">
+<em class="property">public </em><code class="descclassname">OC\Collaboration\Resources\Manager::</code><code class="descname">invalidateAccessCacheForCollection</code><span class="sig-paren">(</span><em>$collection</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Collaboration\Resources\Manager::invalidateAccessCacheForCollection" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Collaboration/Resources/Manager.php#L459">lib/private/Collaboration/Resources/Manager.php#459</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Collaboration\Resources\Manager::invalidateAccessCacheForProvider">
+<em class="property">public </em><code class="descclassname">OC\Collaboration\Resources\Manager::</code><code class="descname">invalidateAccessCacheForProvider</code><span class="sig-paren">(</span><em>$provider</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Collaboration\Resources\Manager::invalidateAccessCacheForProvider" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Collaboration/Resources/Manager.php#L467">lib/private/Collaboration/Resources/Manager.php#467</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Collaboration\Resources\Manager::invalidateAccessCacheForResourceByUser">
+<em class="property">public </em><code class="descclassname">OC\Collaboration\Resources\Manager::</code><code class="descname">invalidateAccessCacheForResourceByUser</code><span class="sig-paren">(</span><em>$resource</em>, <em>$user</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Collaboration\Resources\Manager::invalidateAccessCacheForResourceByUser" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Collaboration/Resources/Manager.php#L475">lib/private/Collaboration/Resources/Manager.php#475</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="protected method">
+<dt id="OC\Collaboration\Resources\Manager::invalidateAccessCacheForCollectionByUser">
+<em class="property">protected </em><code class="descclassname">OC\Collaboration\Resources\Manager::</code><code class="descname">invalidateAccessCacheForCollectionByUser</code><span class="sig-paren">(</span><em>$collection</em>, <em>$user</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Collaboration\Resources\Manager::invalidateAccessCacheForCollectionByUser" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Collaboration/Resources/Manager.php#L489">lib/private/Collaboration/Resources/Manager.php#489</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Collaboration\Resources\Manager::invalidateAccessCacheForProviderByUser">
+<em class="property">public </em><code class="descclassname">OC\Collaboration\Resources\Manager::</code><code class="descname">invalidateAccessCacheForProviderByUser</code><span class="sig-paren">(</span><em>$provider</em>, <em>$user</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Collaboration\Resources\Manager::invalidateAccessCacheForProviderByUser" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Collaboration/Resources/Manager.php#L499">lib/private/Collaboration/Resources/Manager.php#499</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Collaboration\Resources\Manager::registerResourceProvider">
+<em class="property">public </em><code class="descclassname">OC\Collaboration\Resources\Manager::</code><code class="descname">registerResourceProvider</code><span class="sig-paren">(</span><em>$provider</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Collaboration\Resources\Manager::registerResourceProvider" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Collaboration/Resources/Manager.php#L512">lib/private/Collaboration/Resources/Manager.php#512</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>$provider</strong> (string)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Collaboration\Resources\Manager::getType">
+<em class="property">public </em><code class="descclassname">OC\Collaboration\Resources\Manager::</code><code class="descname">getType</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Collaboration\Resources\Manager::getType" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Get the resource type of the provider</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Collaboration/Resources/Manager.php#L523">lib/private/Collaboration/Resources/Manager.php#523</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">string</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">16.0.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021 Nextcloud GmbH.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: 14
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/14/developer_manual">14</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/15/developer_manual">15</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/16/developer_manual">16</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/developer_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/developer_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+   
+
+</body>
+</html>

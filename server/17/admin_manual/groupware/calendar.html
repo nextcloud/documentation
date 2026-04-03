@@ -1,0 +1,350 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Calendar &mdash; Nextcloud latest Administration Manual latest documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'latest',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Database configuration" href="../configuration_database/index.html" />
+    <link rel="prev" title="Groupware" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../contents.html">
+          
+
+          
+            
+            <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_schedule.html">Maintenance and release schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation and server configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_server/index.html">Nextcloud configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../apps_management.html">Apps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_user/index.html">User management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_files/index.html">File sharing and management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../file_workflows/index.html">File workflows</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Groupware</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Calendar</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#invitations">Invitations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#birthday-calendar">Birthday calendar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#reminder-notifications">Reminder notifications</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#background-jobs">Background jobs</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#freebusy">FreeBusy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#subscriptions">Subscriptions</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#refresh-rate">Refresh rate</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#allow-subscriptions-on-local-network">Allow subscriptions on local network</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_database/index.html">Database configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_mimetypes/index.html">Mimetypes management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../maintenance/index.html">Maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../issues/index.html">Issues and troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gdpr/index.html">GDPR</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest Administration Manual</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../contents.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Groupware</a> &raquo;</li>
+        
+      <li>Calendar</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/nextcloud/documentation/edit/master/admin_manual/groupware/calendar.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="calendar">
+<h1>Calendar<a class="headerlink" href="#calendar" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="invitations">
+<h2>Invitations<a class="headerlink" href="#invitations" title="Permalink to this headline">¶</a></h2>
+<p>Nextcloud can send invitations for event attendees if this option is activated.
+Be sure to have configured the email server first so that the invitations go through.
+See <a class="reference internal" href="../configuration_server/email_configuration.html"><span class="doc">Email</span></a>.</p>
+<p>You must also make sure the &#8220;Send invitations to attendees&#8221; setting is activated in the admin setting groupware section for the emails to be sent.</p>
+</div>
+<div class="section" id="birthday-calendar">
+<h2>Birthday calendar<a class="headerlink" href="#birthday-calendar" title="Permalink to this headline">¶</a></h2>
+<p>Contacts that have a birthday date filled are automatically added as events to a special Birthday calendar.
+If you deactivate this option, all users will no longer have this calendar.</p>
+<p>When activating this option, users birthday calendars won&#8217;t be available right away because they need to be generated
+by a background task. See <a class="reference internal" href="../configuration_server/occ_command.html"><span class="doc">Using the occ command</span></a> section Dav commands.</p>
+</div>
+<div class="section" id="reminder-notifications">
+<h2>Reminder notifications<a class="headerlink" href="#reminder-notifications" title="Permalink to this headline">¶</a></h2>
+<p>Nextcloud handles sending notifications for events.</p>
+<p>Nextcloud currently handles two types of reminder notifications: Build-in Nextcloud notifications and
+email notifications. For the emails to be send, you&#8217;ll need a configured email server.
+See <a class="reference internal" href="../configuration_server/email_configuration.html"><span class="doc">Email</span></a>.</p>
+<p>Make sure the &#8220;Send notifications for events&#8221; and the &#8220;Enable notifications for events via push&#8221; are activated in the admin setting groupware section for this feature to work.</p>
+<div class="section" id="background-jobs">
+<h3>Background jobs<a class="headerlink" href="#background-jobs" title="Permalink to this headline">¶</a></h3>
+<p>As this can be a expensive task, depending on the number of events, reminders and event sharees and attendees that also needs to happen
+often enough so that the notifications are send on time, you can use a dedicated occ command that should be run
+more often than the standard cron system:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># crontab -u www-data -e</span>
+<span class="o">*/</span><span class="mi">5</span> <span class="o">*</span> <span class="o">*</span> <span class="o">*</span> <span class="o">*</span> <span class="n">php</span> <span class="o">-</span><span class="n">f</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">occ</span> <span class="n">dav</span><span class="p">:</span><span class="n">send</span><span class="o">-</span><span class="n">event</span><span class="o">-</span><span class="n">reminders</span>
+</pre></div>
+</div>
+<p>See <a class="reference internal" href="../configuration_server/occ_command.html"><span class="doc">Using the occ command</span></a> section Dav commands.</p>
+<p>You&#8217;ll also need to change the sending mode from <code class="docutils literal"><span class="pre">background-job</span></code> to <code class="docutils literal"><span class="pre">occ</span></code>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">php</span> <span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="n">app</span><span class="p">:</span><span class="nb">set</span> <span class="n">dav</span> <span class="n">sendEventRemindersMode</span> <span class="o">--</span><span class="n">value</span> <span class="n">occ</span>
+</pre></div>
+</div>
+<p>If you don&#8217;t use this dedicated command, the reminders will just be send as soon as possible when the background jobs run.</p>
+</div>
+</div>
+<div class="section" id="freebusy">
+<h2>FreeBusy<a class="headerlink" href="#freebusy" title="Permalink to this headline">¶</a></h2>
+<p>When logged-in, Nextcloud can return FreeBusy information for all users of the instance, to know when they are available so that you can schedule an event at the right time.
+If you don&#8217;t wish for users to have this possibility, you can disable FreeBusy for the whole instance with the following setting:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">php</span> <span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="n">app</span><span class="p">:</span><span class="nb">set</span> <span class="n">dav</span> <span class="n">disableFreeBusy</span> <span class="o">--</span><span class="n">value</span> <span class="n">yes</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="subscriptions">
+<h2>Subscriptions<a class="headerlink" href="#subscriptions" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="refresh-rate">
+<h3>Refresh rate<a class="headerlink" href="#refresh-rate" title="Permalink to this headline">¶</a></h3>
+<p>Calendar subscriptions are cached on server and refreshed periodically. The default refresh rate is of one week, unless the subscription itself tells otherwise.</p>
+<p>To set up a different default refresh rate, change the <code class="docutils literal"><span class="pre">calendarSubscriptionRefreshRate</span></code> option:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">php</span> <span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="n">app</span><span class="p">:</span><span class="nb">set</span> <span class="n">dav</span> <span class="n">calendarSubscriptionRefreshRate</span> <span class="o">--</span><span class="n">value</span> <span class="s2">&quot;P1D&quot;</span>
+</pre></div>
+</div>
+<p>Where the value is a <a class="reference external" href="https://www.php.net/manual/dateinterval.construct.php">DateInterval</a>, for instance with the above command all of the Nextcloud instance&#8217;s calendars would be refreshed every day.</p>
+</div>
+<div class="section" id="allow-subscriptions-on-local-network">
+<h3>Allow subscriptions on local network<a class="headerlink" href="#allow-subscriptions-on-local-network" title="Permalink to this headline">¶</a></h3>
+<p>Because of security issues, Nextcloud forbids subscriptions from local network hosts. If you need to allow this, change the following parameter to:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">php</span> <span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="n">app</span><span class="p">:</span><span class="nb">set</span> <span class="n">dav</span> <span class="n">webcalAllowLocalAccess</span> <span class="o">--</span><span class="n">value</span> <span class="n">yes</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../configuration_database/index.html" class="btn btn-neutral float-right" title="Database configuration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="index.html" class="btn btn-neutral float-left" title="Groupware" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021 Nextcloud GmbH.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/16/admin_manual">16</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/17/admin_manual">17</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/18/admin_manual">18</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/19/admin_manual">19</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/admin_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/admin_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+   
+
+</body>
+</html>

@@ -1,0 +1,263 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IAccountManager
+===============
+
+
+.. php:namespace:: OCP\Accounts
+
+.. php:interface:: IAccountManager
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Access user profile information
+		
+	
+	:Implemented by:
+		:php:class:`OC\\Accounts\\AccountManager` 
+	
+	
+	:Source:
+		`lib/public/Accounts/IAccountManager.php#39 <https://github.com/nextcloud/server/blob/stable13/lib/public/Accounts/IAccountManager.php#L39>`_
+	
+
+Constants
+---------
+
+.. php:const:: SCOPE_PRIVATE = v2\-private
+
+	.. rst-class:: phpdoc-description
+	
+		| Contact details visible locally only
+		
+	
+	:Source:
+		`lib/public/Accounts/IAccountManager.php#46 <https://github.com/nextcloud/server/blob/stable13/lib/public/Accounts/IAccountManager.php#L46>`_
+	
+	:Since: 21.0.1 
+
+
+.. php:const:: SCOPE_LOCAL = v2\-local
+
+	.. rst-class:: phpdoc-description
+	
+		| Contact details visible locally and through public link access on local instance
+		
+	
+	:Source:
+		`lib/public/Accounts/IAccountManager.php#53 <https://github.com/nextcloud/server/blob/stable13/lib/public/Accounts/IAccountManager.php#L53>`_
+	
+	:Since: 21.0.1 
+
+
+.. php:const:: SCOPE_FEDERATED = v2\-federated
+
+	.. rst-class:: phpdoc-description
+	
+		| Contact details visible locally, through public link access and on trusted federated servers\.
+		
+	
+	:Source:
+		`lib/public/Accounts/IAccountManager.php#60 <https://github.com/nextcloud/server/blob/stable13/lib/public/Accounts/IAccountManager.php#L60>`_
+	
+	:Since: 21.0.1 
+
+
+.. php:const:: SCOPE_PUBLISHED = v2\-published
+
+	.. rst-class:: phpdoc-description
+	
+		| Contact details visible locally, through public link access, on trusted federated servers
+		| and published to the public lookup server\.
+		
+	
+	:Source:
+		`lib/public/Accounts/IAccountManager.php#68 <https://github.com/nextcloud/server/blob/stable13/lib/public/Accounts/IAccountManager.php#L68>`_
+	
+	:Since: 21.0.1 
+
+
+.. php:const:: VISIBILITY_PRIVATE = private
+
+	.. rst-class:: phpdoc-description
+	
+		| Contact details only visible locally
+		
+	
+	:Source:
+		`lib/public/Accounts/IAccountManager.php#75 <https://github.com/nextcloud/server/blob/stable13/lib/public/Accounts/IAccountManager.php#L75>`_
+	
+	:Deprecated: 21.0.1 
+
+
+.. php:const:: VISIBILITY_CONTACTS_ONLY = contacts
+
+	.. rst-class:: phpdoc-description
+	
+		| Contact details visible on trusted federated servers\.
+		
+	
+	:Source:
+		`lib/public/Accounts/IAccountManager.php#82 <https://github.com/nextcloud/server/blob/stable13/lib/public/Accounts/IAccountManager.php#L82>`_
+	
+	:Deprecated: 21.0.1 
+
+
+.. php:const:: VISIBILITY_PUBLIC = public
+
+	.. rst-class:: phpdoc-description
+	
+		| Contact details visible on trusted federated servers and in the public lookup server\.
+		
+	
+	:Source:
+		`lib/public/Accounts/IAccountManager.php#89 <https://github.com/nextcloud/server/blob/stable13/lib/public/Accounts/IAccountManager.php#L89>`_
+	
+	:Deprecated: 21.0.1 
+
+
+.. php:const:: PROPERTY_AVATAR = avatar
+
+	:Source:
+		`lib/public/Accounts/IAccountManager.php#91 <https://github.com/nextcloud/server/blob/stable13/lib/public/Accounts/IAccountManager.php#L91>`_
+	
+
+
+.. php:const:: PROPERTY_DISPLAYNAME = displayname
+
+	:Source:
+		`lib/public/Accounts/IAccountManager.php#92 <https://github.com/nextcloud/server/blob/stable13/lib/public/Accounts/IAccountManager.php#L92>`_
+	
+
+
+.. php:const:: PROPERTY_PHONE = phone
+
+	:Source:
+		`lib/public/Accounts/IAccountManager.php#93 <https://github.com/nextcloud/server/blob/stable13/lib/public/Accounts/IAccountManager.php#L93>`_
+	
+
+
+.. php:const:: PROPERTY_EMAIL = email
+
+	:Source:
+		`lib/public/Accounts/IAccountManager.php#94 <https://github.com/nextcloud/server/blob/stable13/lib/public/Accounts/IAccountManager.php#L94>`_
+	
+
+
+.. php:const:: PROPERTY_WEBSITE = website
+
+	:Source:
+		`lib/public/Accounts/IAccountManager.php#95 <https://github.com/nextcloud/server/blob/stable13/lib/public/Accounts/IAccountManager.php#L95>`_
+	
+
+
+.. php:const:: PROPERTY_ADDRESS = address
+
+	:Source:
+		`lib/public/Accounts/IAccountManager.php#96 <https://github.com/nextcloud/server/blob/stable13/lib/public/Accounts/IAccountManager.php#L96>`_
+	
+
+
+.. php:const:: PROPERTY_TWITTER = twitter
+
+	:Source:
+		`lib/public/Accounts/IAccountManager.php#97 <https://github.com/nextcloud/server/blob/stable13/lib/public/Accounts/IAccountManager.php#L97>`_
+	
+
+
+.. php:const:: NOT_VERIFIED = 0
+
+	:Source:
+		`lib/public/Accounts/IAccountManager.php#99 <https://github.com/nextcloud/server/blob/stable13/lib/public/Accounts/IAccountManager.php#L99>`_
+	
+
+
+.. php:const:: VERIFICATION_IN_PROGRESS = 1
+
+	:Source:
+		`lib/public/Accounts/IAccountManager.php#100 <https://github.com/nextcloud/server/blob/stable13/lib/public/Accounts/IAccountManager.php#L100>`_
+	
+
+
+.. php:const:: VERIFIED = 2
+
+	:Source:
+		`lib/public/Accounts/IAccountManager.php#101 <https://github.com/nextcloud/server/blob/stable13/lib/public/Accounts/IAccountManager.php#L101>`_
+	
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public getAccount( $user)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the account data for a given user
+			
+		
+		:Source:
+			`lib/public/Accounts/IAccountManager.php#111 <https://github.com/nextcloud/server/blob/stable13/lib/public/Accounts/IAccountManager.php#L111>`_
+		
+		
+		:Parameters:
+			* **$user** (:any:`OCP\\IUser <OCP\\IUser>`)  
+
+		
+		:Since: 15.0.0 
+		:Returns: :any:`\\OCP\\Accounts\\IAccount <OCP\\Accounts\\IAccount>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public updateAccount( $account)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Update the account data with for the user
+			
+		
+		:Source:
+			`lib/public/Accounts/IAccountManager.php#121 <https://github.com/nextcloud/server/blob/stable13/lib/public/Accounts/IAccountManager.php#L121>`_
+		
+		
+		:Parameters:
+			* **$account** (:any:`OCP\\Accounts\\IAccount <OCP\\Accounts\\IAccount>`)  
+
+		
+		:Since: 21.0.1 
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` Message is the property that was invalid
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public searchUsers( $property, $values)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Search for users based on account data
+			
+		
+		:Source:
+			`lib/public/Accounts/IAccountManager.php#132 <https://github.com/nextcloud/server/blob/stable13/lib/public/Accounts/IAccountManager.php#L132>`_
+		
+		
+		:Parameters:
+			* **$property** (string)  
+			* **$values** (string[])  
+
+		
+		:Returns: array 
+		:Since: 21.0.0 
+	
+	
+

@@ -1,0 +1,146 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+ICollection
+===========
+
+
+.. php:namespace:: OCP\Collaboration\Resources
+
+.. php:interface:: ICollection
+
+
+	:Implemented by:
+		:php:class:`OC\\Collaboration\\Resources\\Collection` 
+	
+	
+	:Source:
+		`lib/public/Collaboration/Resources/ICollection.php#34 <https://github.com/nextcloud/server/blob/stable13/lib/public/Collaboration/Resources/ICollection.php#L34>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public getId()
+	
+		:Source:
+			`lib/public/Collaboration/Resources/ICollection.php#40 <https://github.com/nextcloud/server/blob/stable13/lib/public/Collaboration/Resources/ICollection.php#L40>`_
+		
+		
+		:Returns: int 
+		:Since: 16.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getName()
+	
+		:Source:
+			`lib/public/Collaboration/Resources/ICollection.php#46 <https://github.com/nextcloud/server/blob/stable13/lib/public/Collaboration/Resources/ICollection.php#L46>`_
+		
+		
+		:Returns: string 
+		:Since: 16.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setName( $name)
+	
+		:Source:
+			`lib/public/Collaboration/Resources/ICollection.php#52 <https://github.com/nextcloud/server/blob/stable13/lib/public/Collaboration/Resources/ICollection.php#L52>`_
+		
+		
+		:Parameters:
+			* **$name** (string)  
+
+		
+		:Since: 16.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getResources()
+	
+		:Source:
+			`lib/public/Collaboration/Resources/ICollection.php#58 <https://github.com/nextcloud/server/blob/stable13/lib/public/Collaboration/Resources/ICollection.php#L58>`_
+		
+		
+		:Returns: :any:`\\OCP\\Collaboration\\Resources\\IResource\[\] <OCP\\Collaboration\\Resources\\IResource>` 
+		:Since: 16.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public addResource( $resource)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Adds a resource to a collection
+			
+		
+		:Source:
+			`lib/public/Collaboration/Resources/ICollection.php#67 <https://github.com/nextcloud/server/blob/stable13/lib/public/Collaboration/Resources/ICollection.php#L67>`_
+		
+		
+		:Parameters:
+			* **$resource** (:any:`OCP\\Collaboration\\Resources\\IResource <OCP\\Collaboration\\Resources\\IResource>`)  
+
+		
+		:Throws: :any:`\\OCP\\Collaboration\\Resources\\ResourceException <OCP\\Collaboration\\Resources\\ResourceException>` when the resource is already part of the collection
+		:Since: 16.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public removeResource( $resource)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Removes a resource from a collection
+			
+		
+		:Source:
+			`lib/public/Collaboration/Resources/ICollection.php#75 <https://github.com/nextcloud/server/blob/stable13/lib/public/Collaboration/Resources/ICollection.php#L75>`_
+		
+		
+		:Parameters:
+			* **$resource** (:any:`OCP\\Collaboration\\Resources\\IResource <OCP\\Collaboration\\Resources\\IResource>`)  
+
+		
+		:Since: 16.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public canAccess( $user)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Can a user/guest access the collection
+			
+		
+		:Source:
+			`lib/public/Collaboration/Resources/ICollection.php#84 <https://github.com/nextcloud/server/blob/stable13/lib/public/Collaboration/Resources/ICollection.php#L84>`_
+		
+		
+		:Parameters:
+			* **$user** (:any:`OCP\\IUser <OCP\\IUser>` | null)  
+
+		
+		:Returns: bool 
+		:Since: 16.0.0 
+	
+	
+

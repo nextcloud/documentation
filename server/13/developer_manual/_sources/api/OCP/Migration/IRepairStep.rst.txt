@@ -1,0 +1,73 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IRepairStep
+===========
+
+
+.. php:namespace:: OCP\Migration
+
+.. php:interface:: IRepairStep
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Repair step
+		
+	
+	:Implemented by:
+		:php:class:`OC\\Repair\\AddCleanupUpdaterBackupsJob` :php:class:`OC\\Repair\\OldGroupMembershipShares` :php:class:`OC\\Repair\\NC14\\AddPreviewBackgroundCleanupJob` :php:class:`OC\\Repair\\NC21\\ValidatePhoneNumber` :php:class:`OC\\Repair\\NC21\\AddCheckForUserCertificatesJob` :php:class:`OC\\Repair\\NC18\\ResetGeneratedAvatarFlag` :php:class:`OC\\Repair\\AddBruteForceCleanupJob` :php:class:`OC\\Repair\\Collation` :php:class:`OC\\Repair\\NC16\\CleanupCardDAVPhotoCache` :php:class:`OC\\Repair\\NC16\\ClearCollectionsAccessCache` :php:class:`OC\\Repair\\NC16\\AddClenupLoginFlowV2BackgroundJob` :php:class:`OC\\Repair\\Owncloud\\UpdateLanguageCodes` :php:class:`OC\\Repair\\Owncloud\\CleanPreviews` :php:class:`OC\\Repair\\Owncloud\\MoveAvatars` :php:class:`OC\\Repair\\Owncloud\\InstallCoreBundle` :php:class:`OC\\Repair\\Owncloud\\SaveAccountsTableData` :php:class:`OC\\Repair\\Owncloud\\DropAccountTermsTable` :php:class:`OC\\Repair\\NC13\\AddLogRotateJob` :php:class:`OC\\Repair\\SqliteAutoincrement` :php:class:`OC\\Repair\\NC11\\FixMountStorages` :php:class:`OC\\Repair\\ClearGeneratedAvatarCache` :php:class:`OC\\Repair\\NC20\\EncryptionMigration` :php:class:`OC\\Repair\\NC20\\ShippedDashboardEnable` :php:class:`OC\\Repair\\NC20\\EncryptionLegacyCipher` :php:class:`OC\\Repair\\ClearFrontendCaches` :php:class:`OC\\Repair\\CleanTags` :php:class:`OC\\Repair\\RepairDavShares` :php:class:`OC\\Repair\\RemoveLinkShares` :php:class:`OC\\Repair\\MoveUpdaterStepFile` :php:class:`OC\\Repair\\RepairMimeTypes` :php:class:`OC\\Repair\\NC22\\LookupServerSendCheck` :php:class:`OC\\Repair\\RepairInvalidShares` 
+	
+	
+	:Source:
+		`lib/public/Migration/IRepairStep.php#31 <https://github.com/nextcloud/server/blob/stable13/lib/public/Migration/IRepairStep.php#L31>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public getName()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the step\'s name
+			
+		
+		:Source:
+			`lib/public/Migration/IRepairStep.php#39 <https://github.com/nextcloud/server/blob/stable13/lib/public/Migration/IRepairStep.php#L39>`_
+		
+		
+		:Returns: string 
+		:Since: 9.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public run( $output)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Run repair step\.
+			
+			| Must throw exception on error\.
+			
+		
+		:Source:
+			`lib/public/Migration/IRepairStep.php#49 <https://github.com/nextcloud/server/blob/stable13/lib/public/Migration/IRepairStep.php#L49>`_
+		
+		
+		:Parameters:
+			* **$output** (:any:`OCP\\Migration\\IOutput <OCP\\Migration\\IOutput>`)  
+
+		
+		:Throws: :any:`\\Exception <Exception>` in case of failure
+		:Since: 9.1.0 
+	
+	
+

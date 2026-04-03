@@ -1,0 +1,162 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+OC\_DB\_StatementWrapper
+========================
+
+
+.. php:class:: OC_DB_StatementWrapper
+
+
+	.. rst-class:: phpdoc-description
+	
+		| small wrapper around \\Doctrine\\DBAL\\Driver\\Statement to make it behave, more like an MDB2 Statement
+		
+	
+	:Source:
+		`lib/private/legacy/OC_DB_StatementWrapper.php#42 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_DB_StatementWrapper.php#L42>`_
+	
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $statement, $isManipulation)
+	
+		:Source:
+			`lib/private/legacy/OC_DB_StatementWrapper.php#56 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_DB_StatementWrapper.php#L56>`_
+		
+		
+		:Parameters:
+			* **$statement** (:any:`OCP\\DB\\IPreparedStatement <OCP\\DB\\IPreparedStatement>`)  
+			* **$isManipulation** (bool)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public __call( $name, $arguments)
+	
+		.. rst-class:: phpdoc-description
+		
+			| pass all other function directly to the \\Doctrine\\DBAL\\Driver\\Statement
+			
+		
+		:Source:
+			`lib/private/legacy/OC_DB_StatementWrapper.php#64 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_DB_StatementWrapper.php#L64>`_
+		
+		
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public execute( $input=\[\])
+	
+		.. rst-class:: phpdoc-description
+		
+			| make execute return the result instead of a bool
+			
+		
+		:Source:
+			`lib/private/legacy/OC_DB_StatementWrapper.php#75 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_DB_StatementWrapper.php#L75>`_
+		
+		
+		:Parameters:
+			* **$input** (array)  
+
+		
+		:Returns: :any:`\\OC\_DB\_StatementWrapper <OC\_DB\_StatementWrapper>` | int | bool 
+		:Deprecated:  
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public fetchRow()
+	
+		.. rst-class:: phpdoc-description
+		
+			| provide an alias for fetch
+			
+		
+		:Source:
+			`lib/private/legacy/OC_DB_StatementWrapper.php#100 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_DB_StatementWrapper.php#L100>`_
+		
+		
+		:Returns: mixed 
+		:Deprecated:  
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public fetchOne()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Provide a simple fetchOne\.
+			
+			| fetch single column from the next row
+			
+		
+		:Source:
+			`lib/private/legacy/OC_DB_StatementWrapper.php#111 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_DB_StatementWrapper.php#L111>`_
+		
+		
+		:Returns: string 
+		:Deprecated:  
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public closeCursor()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Closes the cursor, enabling the statement to be executed again\.
+			
+		
+		:Source:
+			`lib/private/legacy/OC_DB_StatementWrapper.php#120 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_DB_StatementWrapper.php#L120>`_
+		
+		
+		:Deprecated:  Use Result::free\(\) instead\.
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public bindParam( $column, &$variable, $type=\\null, $length=\\null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Binds a PHP variable to a corresponding named or question mark placeholder in the
+			| SQL statement that was use to prepare the statement\.
+			
+		
+		:Source:
+			`lib/private/legacy/OC_DB_StatementWrapper.php#134 <https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_DB_StatementWrapper.php#L134>`_
+		
+		
+		:Parameters:
+			* **$column** (mixed)  Either the placeholder name or the 1-indexed placeholder index
+			* **$variable** (mixed)  The variable to bind
+			* **$type** (int | null)  one of the  PDO::PARAM_* constants
+			* **$length** (int | null)  max length when using an OUT bind
+
+		
+		:Returns: bool 
+	
+	
+

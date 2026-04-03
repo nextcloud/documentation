@@ -1,0 +1,174 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IMountProviderCollection
+========================
+
+
+.. php:namespace:: OCP\Files\Config
+
+.. php:interface:: IMountProviderCollection
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Manages the different mount providers
+		
+	
+	:Implemented by:
+		:php:class:`OC\\Files\\Config\\MountProviderCollection` 
+	
+	
+	:Source:
+		`lib/public/Files/Config/IMountProviderCollection.php#32 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Config/IMountProviderCollection.php#L32>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public getMountsForUser( $user)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get all configured mount points for the user
+			
+		
+		:Source:
+			`lib/public/Files/Config/IMountProviderCollection.php#40 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Config/IMountProviderCollection.php#L40>`_
+		
+		
+		:Parameters:
+			* **$user** (:any:`OCP\\IUser <OCP\\IUser>`)  
+
+		
+		:Returns: :any:`\\OCP\\Files\\Mount\\IMountPoint\[\] <OCP\\Files\\Mount\\IMountPoint>` 
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getHomeMountForUser( $user)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the configured home mount for this user
+			
+		
+		:Source:
+			`lib/public/Files/Config/IMountProviderCollection.php#49 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Config/IMountProviderCollection.php#L49>`_
+		
+		
+		:Parameters:
+			* **$user** (:any:`OCP\\IUser <OCP\\IUser>`)  
+
+		
+		:Returns: :any:`\\OCP\\Files\\Mount\\IMountPoint <OCP\\Files\\Mount\\IMountPoint>` 
+		:Since: 9.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public registerProvider( $provider)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Add a provider for mount points
+			
+		
+		:Source:
+			`lib/public/Files/Config/IMountProviderCollection.php#57 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Config/IMountProviderCollection.php#L57>`_
+		
+		
+		:Parameters:
+			* **$provider** (:any:`OCP\\Files\\Config\\IMountProvider <OCP\\Files\\Config\\IMountProvider>`)  
+
+		
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public registerMountFilter( $filter)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Add a filter for mounts
+			
+		
+		:Source:
+			`lib/public/Files/Config/IMountProviderCollection.php#65 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Config/IMountProviderCollection.php#L65>`_
+		
+		
+		:Parameters:
+			* **$filter** (callable)  (IMountPoint $mountPoint, IUser $user) => boolean
+
+		
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public registerHomeProvider( $provider)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Add a provider for home mount points
+			
+		
+		:Source:
+			`lib/public/Files/Config/IMountProviderCollection.php#73 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Config/IMountProviderCollection.php#L73>`_
+		
+		
+		:Parameters:
+			* **$provider** (:any:`OCP\\Files\\Config\\IHomeMountProvider <OCP\\Files\\Config\\IHomeMountProvider>`)  
+
+		
+		:Since: 9.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getMountCache()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the mount cache which can be used to search for mounts without setting up the filesystem
+			
+		
+		:Source:
+			`lib/public/Files/Config/IMountProviderCollection.php#81 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Config/IMountProviderCollection.php#L81>`_
+		
+		
+		:Returns: :any:`\\OCP\\Files\\Config\\IUserMountCache <OCP\\Files\\Config\\IUserMountCache>` 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getRootMounts()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get all root mountpoints
+			
+		
+		:Source:
+			`lib/public/Files/Config/IMountProviderCollection.php#89 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Config/IMountProviderCollection.php#L89>`_
+		
+		
+		:Returns: :any:`\\OCP\\Files\\Mount\\IMountPoint\[\] <OCP\\Files\\Mount\\IMountPoint>` 
+		:Since: 20.0.0 
+	
+	
+

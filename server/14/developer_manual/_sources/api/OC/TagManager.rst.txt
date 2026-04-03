@@ -1,0 +1,87 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+TagManager
+==========
+
+
+.. php:namespace:: OC
+
+.. php:class:: TagManager
+
+
+	:Source:
+		`lib/private/TagManager.php#48 <https://github.com/nextcloud/server/blob/stable13/lib/private/TagManager.php#L48>`_
+	
+	:Implements:
+		:php:interface:`OCP\\ITagManager` 
+	
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $mapper, $userSession, $connection)
+	
+		:Source:
+			`lib/private/TagManager.php#59 <https://github.com/nextcloud/server/blob/stable13/lib/private/TagManager.php#L59>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public load( $type, $defaultTags=\[\], $includeShared=false, $userId=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Create a new \\OCP\\ITags instance and load tags from db\.
+			
+		
+		:Source:
+			`lib/private/TagManager.php#78 <https://github.com/nextcloud/server/blob/stable13/lib/private/TagManager.php#L78>`_
+		
+		
+		:Parameters:
+			* **$type** (string)  The type identifier e.g. 'contact' or 'event'.
+			* **$defaultTags** (array)  An array of default tags to be used if none are stored.
+			* **$includeShared** (bool)  Whether to include tags for items shared with this user by others.
+			* **$userId** (string)  user for which to retrieve the tags, defaults to the currently
+			logged in user
+
+		
+		:See: :any:`\\OCP\\ITags <OCP\\ITags>` 
+		:Returns: :any:`\\OCP\\ITags <OCP\\ITags>` since 20\.0\.0 $includeShared isn\'t used anymore
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getUsersFavoritingObject( $objectType, $objectId)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get all users who favorited an object
+			
+		
+		:Source:
+			`lib/private/TagManager.php#97 <https://github.com/nextcloud/server/blob/stable13/lib/private/TagManager.php#L97>`_
+		
+		
+		:Parameters:
+			* **$objectType** (string)  
+			* **$objectId** (int)  
+
+		
+		:Returns: array 
+	
+	
+

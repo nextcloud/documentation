@@ -1,0 +1,644 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>SearchTemplate &mdash; Nextcloud 14 Developer Manual 14 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../../../',
+              VERSION:'14',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="IndexDocument" href="IndexDocument.html" />
+    <link rel="prev" title="DocumentAccess" href="DocumentAccess.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html">
+          
+
+          
+            
+            <img src="../../../../_static/logo-white.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../general/index.html">General contributor guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/startapp.html">Create an app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/init.html">Navigation and pre-app configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/info.html">App metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/classloader.html">Classloader</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/request.html">Request lifecycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/routes.html">Routing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/middleware.html">Middleware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/container.html">Container</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/controllers.html">Controllers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/api.html">RESTful API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/templates.html">Templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/js.html">JavaScript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/css.html">CSS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/l10n.html">Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/theming.html">Theming support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/schema.html">Database schema</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/database.html">Database access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/filesystem.html">Filesystem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/appdata.html">AppData</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/users.html">User management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/two-factor-provider.html">Two-factor providers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/hooks.html">Hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/backgroundjobs.html">Background jobs (Cron)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/settings.html">Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/logging.html">Logging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/migrations.html">Migrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/repair.html">Repair steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/publishing.html">App store publishing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/code_signing.html">Code signing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../design/index.html">Design guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../android_library/index.html">Android application development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../client_apis/index.html">Client APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../core/index.html">Core development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bugtracker/index.html">Bugtracker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../commun/index.html">Help and communication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api.html">API Documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">Nextcloud 14 Developer Manual</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../../../api.html">API Documentation</a> &raquo;</li>
+        
+          <li><a href="../../../index.html">\</a> &raquo;</li>
+        
+          <li><a href="../../index.html">OC</a> &raquo;</li>
+        
+          <li><a href="../index.html">FullTextSearch</a> &raquo;</li>
+        
+          <li><a href="index.html">Model</a> &raquo;</li>
+        
+      <li>SearchTemplate</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/nextcloud/documentation/edit/stable14/developer_manual/api/OC/FullTextSearch/Model/SearchTemplate.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="phpdoctorst section" id="namespace-OC\FullTextSearch\Model">
+<span id="searchtemplate"></span><h1>SearchTemplate<a class="headerlink" href="#namespace-OC\FullTextSearch\Model" title="Permalink to this headline">¶</a></h1>
+<dl class="final class">
+<dt id="OC\FullTextSearch\Model\SearchTemplate">
+<em class="property">class </em><code class="descclassname">OC\FullTextSearch\Model\</code><code class="descname">SearchTemplate</code><a class="headerlink" href="#OC\FullTextSearch\Model\SearchTemplate" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Class ISearchTemplate</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">This is a data transfer object that should be created by Content Provider</div>
+<div class="line">when the getSearchTemplate() method is called.</div>
+<div class="line"><br /></div>
+<div class="line">The object will contain templates to be displayed, and the list of the different</div>
+<div class="line">options to be available to the user when he start a new search.</div>
+<div class="line"><br /></div>
+<div class="line">The display of the Options is generated by the FullTextSearch app and Options</div>
+<div class="line">can be displayed in 2 places:</div>
+<div class="line"><br /></div>
+<div class="line">- the navigation page of the app that generate the indexed content.</div>
+<div class="line-block">
+<div class="line">(files, bookmarks, deck, mails, ...)</div>
+</div>
+<div class="line">- the navigation page of the FullTextSearch app.</div>
+<div class="line"><br /></div>
+<div class="line">Both pages will have different Options, and only the first one can integrate</div>
+<div class="line">a specific template.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/Model/SearchTemplate.php#L59">lib/private/FullTextSearch/Model/SearchTemplate.php#59</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Implements:</th><td class="field-body"><a class="reference internal" href="../../../OCP/FullTextSearch/Model/ISearchTemplate.html#OCP\FullTextSearch\Model\ISearchTemplate" title="OCP\FullTextSearch\Model\ISearchTemplate"><code class="xref php php-interface docutils literal"><span class="pre">OCP\FullTextSearch\Model\ISearchTemplate</span></code></a> <code class="xref php php-interface docutils literal"><span class="pre">JsonSerializable</span></code></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<div class="section" id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h2>
+<dl class="public method">
+<dt id="OC\FullTextSearch\Model\SearchTemplate::__construct">
+<em class="property">public </em><code class="descclassname">OC\FullTextSearch\Model\SearchTemplate::</code><code class="descname">__construct</code><span class="sig-paren">(</span><em>$icon=&quot;&quot;</em>, <em>$css=&quot;&quot;</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\FullTextSearch\Model\SearchTemplate::__construct" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">ISearchTemplate constructor.</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">the class of the icon and the css file to be loaded can be set during the</div>
+<div class="line">creation of the object.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/Model/SearchTemplate.php#L89">lib/private/FullTextSearch/Model/SearchTemplate.php#89</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$icon</strong> (string)</li>
+<li><strong>$css</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">15.0.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\FullTextSearch\Model\SearchTemplate::setIcon">
+<em class="property">public </em><code class="descclassname">OC\FullTextSearch\Model\SearchTemplate::</code><code class="descname">setIcon</code><span class="sig-paren">(</span><em>$class</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\FullTextSearch\Model\SearchTemplate::setIcon" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Set the class of the icon to be displayed in the left panel of the</div>
+<div class="line">FullTextSearch navigation page, in front of the related Content Provider.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/Model/SearchTemplate.php#L105">lib/private/FullTextSearch/Model/SearchTemplate.php#105</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$class</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body"><p class="first">15.0.0</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><a class="reference internal" href="../../../OCP/FullTextSearch/Model/ISearchTemplate.html#OCP\FullTextSearch\Model\ISearchTemplate" title="OCP\FullTextSearch\Model\ISearchTemplate"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\FullTextSearch\Model\ISearchTemplate</span></code></a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\FullTextSearch\Model\SearchTemplate::getIcon">
+<em class="property">public </em><code class="descclassname">OC\FullTextSearch\Model\SearchTemplate::</code><code class="descname">getIcon</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\FullTextSearch\Model\SearchTemplate::getIcon" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Get the class of the icon.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/Model/SearchTemplate.php#L118">lib/private/FullTextSearch/Model/SearchTemplate.php#118</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body">15.0.0</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">string</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\FullTextSearch\Model\SearchTemplate::setCss">
+<em class="property">public </em><code class="descclassname">OC\FullTextSearch\Model\SearchTemplate::</code><code class="descname">setCss</code><span class="sig-paren">(</span><em>$css</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\FullTextSearch\Model\SearchTemplate::setCss" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Set the path of a CSS file that will be loaded when needed.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/Model/SearchTemplate.php#L132">lib/private/FullTextSearch/Model/SearchTemplate.php#132</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$css</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body"><p class="first">15.0.0</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><a class="reference internal" href="../../../OCP/FullTextSearch/Model/ISearchTemplate.html#OCP\FullTextSearch\Model\ISearchTemplate" title="OCP\FullTextSearch\Model\ISearchTemplate"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\FullTextSearch\Model\ISearchTemplate</span></code></a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\FullTextSearch\Model\SearchTemplate::getCss">
+<em class="property">public </em><code class="descclassname">OC\FullTextSearch\Model\SearchTemplate::</code><code class="descname">getCss</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\FullTextSearch\Model\SearchTemplate::getCss" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Get the path of the CSS file.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/Model/SearchTemplate.php#L145">lib/private/FullTextSearch/Model/SearchTemplate.php#145</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body">15.0.0</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">string</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\FullTextSearch\Model\SearchTemplate::setTemplate">
+<em class="property">public </em><code class="descclassname">OC\FullTextSearch\Model\SearchTemplate::</code><code class="descname">setTemplate</code><span class="sig-paren">(</span><em>$template</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\FullTextSearch\Model\SearchTemplate::setTemplate" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Set the path of the file of a template that the HTML will be displayed</div>
+<div class="line">below the Options.</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">This should only be used if your Content Provider needs to set options in</div>
+<div class="line">a way not generated by FullTextSearch</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/Model/SearchTemplate.php#L162">lib/private/FullTextSearch/Model/SearchTemplate.php#162</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$template</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body"><p class="first">15.0.0</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><a class="reference internal" href="../../../OCP/FullTextSearch/Model/ISearchTemplate.html#OCP\FullTextSearch\Model\ISearchTemplate" title="OCP\FullTextSearch\Model\ISearchTemplate"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\FullTextSearch\Model\ISearchTemplate</span></code></a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\FullTextSearch\Model\SearchTemplate::getTemplate">
+<em class="property">public </em><code class="descclassname">OC\FullTextSearch\Model\SearchTemplate::</code><code class="descname">getTemplate</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\FullTextSearch\Model\SearchTemplate::getTemplate" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Get the path of the template file.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/Model/SearchTemplate.php#L175">lib/private/FullTextSearch/Model/SearchTemplate.php#175</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body">15.0.0</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">string</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\FullTextSearch\Model\SearchTemplate::addPanelOption">
+<em class="property">public </em><code class="descclassname">OC\FullTextSearch\Model\SearchTemplate::</code><code class="descname">addPanelOption</code><span class="sig-paren">(</span><em>$option</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\FullTextSearch\Model\SearchTemplate::addPanelOption" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Add an option in the Panel that is displayed when the user start a search</div>
+<div class="line">within the app that generate the content.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/Model/SearchTemplate.php#L192">lib/private/FullTextSearch/Model/SearchTemplate.php#192</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$option</strong> (<a class="reference internal" href="../../../OCP/FullTextSearch/Model/ISearchOption.html#OCP\FullTextSearch\Model\ISearchOption" title="OCP\FullTextSearch\Model\ISearchOption"><code class="xref any php php-trait docutils literal"><span class="pre">OCP\FullTextSearch\Model\ISearchOption</span></code></a>)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">See:</th><td class="field-body"><p class="first"><a class="reference internal" href="../../../OCP/FullTextSearch/Model/ISearchOption.html#OCP\FullTextSearch\Model\ISearchOption" title="OCP\FullTextSearch\Model\ISearchOption"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\FullTextSearch\Model\ISearchOption</span></code></a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first">15.0.0</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><a class="reference internal" href="../../../OCP/FullTextSearch/Model/ISearchTemplate.html#OCP\FullTextSearch\Model\ISearchTemplate" title="OCP\FullTextSearch\Model\ISearchTemplate"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\FullTextSearch\Model\ISearchTemplate</span></code></a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\FullTextSearch\Model\SearchTemplate::getPanelOptions">
+<em class="property">public </em><code class="descclassname">OC\FullTextSearch\Model\SearchTemplate::</code><code class="descname">getPanelOptions</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\FullTextSearch\Model\SearchTemplate::getPanelOptions" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Get all options to be displayed in the Panel.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/Model/SearchTemplate.php#L205">lib/private/FullTextSearch/Model/SearchTemplate.php#205</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body">15.0.0</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="SearchOption.html#OC\FullTextSearch\Model\SearchOption" title="OC\FullTextSearch\Model\SearchOption"><code class="xref any php php-trait docutils literal"><span class="pre">\OC\FullTextSearch\Model\SearchOption[]</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\FullTextSearch\Model\SearchTemplate::addNavigationOption">
+<em class="property">public </em><code class="descclassname">OC\FullTextSearch\Model\SearchTemplate::</code><code class="descname">addNavigationOption</code><span class="sig-paren">(</span><em>$option</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\FullTextSearch\Model\SearchTemplate::addNavigationOption" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Add an option in the left panel of the FullTextSearch navigation page.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/Model/SearchTemplate.php#L221">lib/private/FullTextSearch/Model/SearchTemplate.php#221</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$option</strong> (<a class="reference internal" href="../../../OCP/FullTextSearch/Model/ISearchOption.html#OCP\FullTextSearch\Model\ISearchOption" title="OCP\FullTextSearch\Model\ISearchOption"><code class="xref any php php-trait docutils literal"><span class="pre">OCP\FullTextSearch\Model\ISearchOption</span></code></a>)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">See:</th><td class="field-body"><p class="first"><a class="reference internal" href="../../../OCP/FullTextSearch/Model/ISearchOption.html#OCP\FullTextSearch\Model\ISearchOption" title="OCP\FullTextSearch\Model\ISearchOption"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\FullTextSearch\Model\ISearchOption</span></code></a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first">15.0.0</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><a class="reference internal" href="../../../OCP/FullTextSearch/Model/ISearchTemplate.html#OCP\FullTextSearch\Model\ISearchTemplate" title="OCP\FullTextSearch\Model\ISearchTemplate"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\FullTextSearch\Model\ISearchTemplate</span></code></a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\FullTextSearch\Model\SearchTemplate::getNavigationOptions">
+<em class="property">public </em><code class="descclassname">OC\FullTextSearch\Model\SearchTemplate::</code><code class="descname">getNavigationOptions</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\FullTextSearch\Model\SearchTemplate::getNavigationOptions" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Get all options to be displayed in the FullTextSearch navigation page.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/Model/SearchTemplate.php#L234">lib/private/FullTextSearch/Model/SearchTemplate.php#234</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body">15.0.0</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">array</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\FullTextSearch\Model\SearchTemplate::jsonSerialize">
+<em class="property">public </em><code class="descclassname">OC\FullTextSearch\Model\SearchTemplate::</code><code class="descname">jsonSerialize</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\FullTextSearch\Model\SearchTemplate::jsonSerialize" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/Model/SearchTemplate.php#L244">lib/private/FullTextSearch/Model/SearchTemplate.php#244</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body">15.0.0</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">array</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="IndexDocument.html" class="btn btn-neutral float-right" title="IndexDocument" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="DocumentAccess.html" class="btn btn-neutral float-left" title="DocumentAccess" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021 Nextcloud GmbH.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: 14
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/14/developer_manual">14</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/15/developer_manual">15</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/16/developer_manual">16</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/developer_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/developer_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+   
+
+</body>
+</html>

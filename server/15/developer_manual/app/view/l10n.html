@@ -1,0 +1,513 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Translation &mdash; Nextcloud 15 Developer Manual 15 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'15',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Theming support" href="theming.html" />
+    <link rel="prev" title="CSS" href="css.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html">
+          
+
+          
+            
+            <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../general/index.html">General contributor guidelines</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">App development</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../intro.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial.html">Tutorial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../requests/index.html">Request lifecycle</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">View</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="templates.html">Templates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="js.html">JavaScript</a></li>
+<li class="toctree-l3"><a class="reference internal" href="css.html">CSS</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Translation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#make-text-translatable">Make text translatable</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#adding-translations">Adding translations</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="theming.html">Theming support</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../storage/index.html">Storage and database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html">Changelog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../classloader.html">Classloader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../code_signing.html">Code signing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../info.html">App metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../init.html">Navigation and pre-app configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../publishing.html">App store publishing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../users.html">User management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../two-factor-provider.html">Two-factor providers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../hooks.html">Hooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../backgroundjobs.html">Background jobs (Cron)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../settings.html">Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notifications.html">Notifications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../logging.html">Logging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../repair.html">Repair steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../publicpage.html">Public Pages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../testing.html">Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api.html">API Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../design/index.html">Design guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../android_library/index.html">Android application development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../client_apis/index.html">Client APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../core/index.html">Core development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../bugtracker/index.html">Bugtracker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../commun/index.html">Help and communication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api.html">API Documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Nextcloud 15 Developer Manual</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">App development</a> &raquo;</li>
+        
+          <li><a href="index.html">View</a> &raquo;</li>
+        
+      <li>Translation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/nextcloud/documentation/edit/stable15/developer_manual/app/view/l10n.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="translation">
+<h1>Translation<a class="headerlink" href="#translation" title="Permalink to this headline">¶</a></h1>
+<p>Nextcloud provides mechanisms for internationalization (make an application translatable) and localization (add translations for specific languages). This section provides detailed instructions for both aspects.</p>
+<div class="section" id="make-text-translatable">
+<h2>Make text translatable<a class="headerlink" href="#make-text-translatable" title="Permalink to this headline">¶</a></h2>
+<p>In order to make your app translatable (internationalization), you should use Nextcloud&#8217;s methods for translating strings. They are available for both the server-side (PHP, Templates) as well as for the client-side (JavaScript).</p>
+<div class="section" id="php">
+<h3>PHP<a class="headerlink" href="#php" title="Permalink to this headline">¶</a></h3>
+<p>Should it ever be needed to use localized strings on the server-side, simply inject the L10N service from the ServerContainer into the needed constructor:</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="k">namespace</span> <span class="nx">OCA\MyApp\AppInfo</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">\OCP\AppFramework\App</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">\OCA\MyApp\Service\AuthorService</span><span class="p">;</span>
+
+
+<span class="k">class</span> <span class="nc">Application</span> <span class="k">extends</span> <span class="nx">App</span> <span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="k">array</span> <span class="nv">$urlParams</span><span class="o">=</span><span class="k">array</span><span class="p">()){</span>
+        <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">(</span><span class="s1">&#39;myapp&#39;</span><span class="p">,</span> <span class="nv">$urlParams</span><span class="p">);</span>
+
+        <span class="nv">$container</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getContainer</span><span class="p">();</span>
+
+        <span class="sd">/**</span>
+<span class="sd">         * Controllers</span>
+<span class="sd">         */</span>
+        <span class="nv">$container</span><span class="o">-&gt;</span><span class="na">registerService</span><span class="p">(</span><span class="s1">&#39;AuthorService&#39;</span><span class="p">,</span> <span class="k">function</span><span class="p">(</span><span class="nv">$c</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="k">new</span> <span class="nx">AuthorService</span><span class="p">(</span>
+                <span class="nv">$c</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="s1">&#39;L10N&#39;</span><span class="p">)</span>
+            <span class="p">);</span>
+        <span class="p">});</span>
+
+        <span class="nv">$container</span><span class="o">-&gt;</span><span class="na">registerService</span><span class="p">(</span><span class="s1">&#39;L10N&#39;</span><span class="p">,</span> <span class="k">function</span><span class="p">(</span><span class="nv">$c</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nv">$c</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="s1">&#39;ServerContainer&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">getL10N</span><span class="p">(</span><span class="nv">$c</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="s1">&#39;AppName&#39;</span><span class="p">));</span>
+        <span class="p">});</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Strings can then be translated in the following way:</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="k">namespace</span> <span class="nx">OCA\MyApp\Service</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">\OCP\IL10N</span><span class="p">;</span>
+
+
+<span class="k">class</span> <span class="nc">AuthorService</span> <span class="p">{</span>
+
+    <span class="k">private</span> <span class="nv">$trans</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">IL10N</span> <span class="nv">$trans</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">trans</span> <span class="o">=</span> <span class="nv">$trans</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getLanguageCode</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">trans</span><span class="o">-&gt;</span><span class="na">getLanguageCode</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="nx">sayHello</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">trans</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;Hello&#39;</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getAuthorName</span><span class="p">(</span><span class="nv">$name</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">trans</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;Getting author %s&#39;</span><span class="p">,</span> <span class="p">[</span><span class="nv">$name</span><span class="p">]);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getAuthors</span><span class="p">(</span><span class="nv">$count</span><span class="p">,</span> <span class="nv">$city</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">trans</span><span class="o">-&gt;</span><span class="na">n</span><span class="p">(</span>
+            <span class="s1">&#39;%n author is currently in the city %s&#39;</span><span class="p">,</span>  <span class="c1">// singular string</span>
+            <span class="s1">&#39;%n authors are currently in the city %s&#39;</span><span class="p">,</span>  <span class="c1">// plural string</span>
+            <span class="nv">$count</span><span class="p">,</span>
+            <span class="p">[</span><span class="nv">$city</span><span class="p">]</span>
+        <span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="templates">
+<h3>Templates<a class="headerlink" href="#templates" title="Permalink to this headline">¶</a></h3>
+<p>In every template the global variable <strong>$l</strong> can be used to translate the strings using its methods <strong>t()</strong> and <strong>n()</strong>:</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="x">&lt;div&gt;</span><span class="cp">&lt;?php</span> <span class="nx">p</span><span class="p">(</span><span class="nv">$l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;Showing %s files&#39;</span><span class="p">,</span> <span class="nv">$_</span><span class="p">[</span><span class="s1">&#39;count&#39;</span><span class="p">]));</span> <span class="cp">?&gt;</span><span class="x">&lt;/div&gt;</span>
+
+<span class="x">&lt;button&gt;</span><span class="cp">&lt;?php</span> <span class="nx">p</span><span class="p">(</span><span class="nv">$l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;Hide&#39;</span><span class="p">));</span> <span class="cp">?&gt;</span><span class="x">&lt;/button&gt;</span>
+</pre></div>
+</div>
+<p>For the right date format use <code class="docutils literal"><span class="pre">&lt;?php</span> <span class="pre">p($l-&gt;l('date',</span> <span class="pre">time()));?&gt;</span></code>.</p>
+</div>
+<div class="section" id="javascript">
+<h3>JavaScript<a class="headerlink" href="#javascript" title="Permalink to this headline">¶</a></h3>
+<p>There is a global function <strong>t()</strong> available for translating strings. The first argument is your app name, the second argument is the string to translate.</p>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="nx">t</span><span class="p">(</span><span class="nx">appName</span><span class="p">,</span> <span class="s1">&#39;Hello World!&#39;</span><span class="p">);</span>
+<span class="nx">t</span><span class="p">(</span><span class="nx">appName</span><span class="p">,</span> <span class="s1">&#39;{name} is available. Get &lt;a href=&quot;{link}&quot;&gt;more information&lt;/a&gt;&#39;</span><span class="p">,</span> <span class="p">{</span><span class="nx">name</span><span class="o">:</span> <span class="s1">&#39;Nextcloud 16&#39;</span><span class="p">,</span> <span class="nx">link</span><span class="o">:</span> <span class="s1">&#39;...&#39;</span><span class="p">});</span>
+</pre></div>
+</div>
+<p>For advanced usage, refer to the source code <strong>core/js/l10n.js</strong>; <strong>t()</strong> is bind to <strong>OC.L10N.translate()</strong>.</p>
+</div>
+<div class="section" id="important-notes">
+<h3>Important notes<a class="headerlink" href="#important-notes" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="splitting-senteces">
+<h4>Splitting senteces<a class="headerlink" href="#splitting-senteces" title="Permalink to this headline">¶</a></h4>
+<p>You shall never split sentences! Otherwise, translators lose the context and they have no chance to possibly re-arrange words.</p>
+<p>Example:</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span> <span class="nx">p</span><span class="p">(</span><span class="nv">$l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;Select file from&#39;</span><span class="p">))</span> <span class="o">.</span> <span class="s1">&#39; &#39;</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x">&lt;a href=&#39;#&#39; id=&quot;browselink&quot;&gt;</span><span class="cp">&lt;?php</span> <span class="nx">p</span><span class="p">(</span><span class="nv">$l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;local filesystem&#39;</span><span class="p">));</span><span class="cp">?&gt;</span><span class="x">&lt;/a&gt;</span><span class="cp">&lt;?php</span> <span class="nx">p</span><span class="p">(</span><span class="nv">$l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39; or &#39;</span><span class="p">));</span> <span class="cp">?&gt;</span><span class="x">&lt;a href=&#39;#&#39; id=&quot;cloudlink&quot;&gt;</span><span class="cp">&lt;?php</span> <span class="nx">p</span><span class="p">(</span><span class="nv">$l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;cloud&#39;</span><span class="p">));</span><span class="cp">?&gt;</span><span class="x">&lt;/a&gt;</span>
+</pre></div>
+</div>
+<p>Translators will translate:</p>
+<ul class="simple">
+<li>Select file from</li>
+<li>local filesystem</li>
+<li>&#8216; or &#8216;</li>
+<li>cloud</li>
+</ul>
+<p>Translating these individual strings results in  <code class="docutils literal"><span class="pre">local</span> <span class="pre">filesystem</span></code> and <code class="docutils literal"><span class="pre">cloud</span></code> losing case. The two white spaces surrounding <code class="docutils literal"><span class="pre">or</span></code> will get lost while translating as well. For languages that have a different grammatical order it prevents the translators from reordering the sentence components.</p>
+</div>
+<div class="section" id="hints">
+<h4>Hints<a class="headerlink" href="#hints" title="Permalink to this headline">¶</a></h4>
+<p>In case some translation strings may be translated wrongly because they have multiple meanings, you can add hints which will be shown in the Transifex web-interface:</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="x">&lt;ul id=&quot;translations&quot;&gt;</span>
+<span class="x">    &lt;li id=&quot;add-new&quot;&gt;</span>
+<span class="x">        </span><span class="cp">&lt;?php</span>
+            <span class="c1">// TRANSLATORS Will be shown inside a popup and asks the user to add a new file</span>
+            <span class="nx">p</span><span class="p">(</span><span class="nv">$l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;Add new file&#39;</span><span class="p">));</span>
+        <span class="cp">?&gt;</span><span class="x"></span>
+<span class="x">    &lt;/li&gt;</span>
+<span class="x">&lt;/ul&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="adding-translations">
+<h2>Adding translations<a class="headerlink" href="#adding-translations" title="Permalink to this headline">¶</a></h2>
+<p>Nextcloud&#8217;s translation system is powered by <a class="reference external" href="https://www.transifex.com/nextcloud/">Transifex</a>. To start translating sign up and enter a group. If your community app should be translated by the <a class="reference external" href="https://www.transifex.com/nextcloud/nextcloud/dashboard/">Nextcloud community on Transifex</a> just follow the setup section below.</p>
+<div class="section" id="translation-tool">
+<h3>Translation tool<a class="headerlink" href="#translation-tool" title="Permalink to this headline">¶</a></h3>
+<p>The translation tool scrapes the source code for method calls to  <strong>t()</strong>
+or <strong>n()</strong> to extract the strings that should be translated. If you check
+in minified JS code for example then those method names are also quite
+common and could cause wrong extractions. For this reason we allow to
+specify a list of files that the translation tool will not scrape for
+strings. You simply need to add a file named <code class="file docutils literal"><span class="pre">.l10nignore</span></code> into
+the root folder of your app and specify the files one per line:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># compiled vue templates</span>
+<span class="n">js</span><span class="o">/</span><span class="n">bruteforcesettings</span><span class="o">.</span><span class="n">js</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="setup-of-the-transifex-sync">
+<h3>Setup of the transifex sync<a class="headerlink" href="#setup-of-the-transifex-sync" title="Permalink to this headline">¶</a></h3>
+<p>To setup the transifex sync within the Nextcloud community you need to add first the
+transifex config to your app folder at <code class="file docutils literal"><span class="pre">.tx/config</span></code> (please replace <strong>MYAPP</strong> with your apps id):</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">main</span><span class="p">]</span>
+<span class="n">host</span> <span class="o">=</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">transifex</span><span class="o">.</span><span class="n">com</span>
+<span class="n">lang_map</span> <span class="o">=</span> <span class="n">bg_BG</span><span class="p">:</span> <span class="n">bg</span><span class="p">,</span> <span class="n">cs_CZ</span><span class="p">:</span> <span class="n">cs</span><span class="p">,</span> <span class="n">fi_FI</span><span class="p">:</span> <span class="n">fi</span><span class="p">,</span> <span class="n">hu_HU</span><span class="p">:</span> <span class="n">hu</span><span class="p">,</span> <span class="n">nb_NO</span><span class="p">:</span> <span class="n">nb</span><span class="p">,</span> <span class="n">sk_SK</span><span class="p">:</span> <span class="n">sk</span><span class="p">,</span> <span class="n">th_TH</span><span class="p">:</span> <span class="n">th</span><span class="p">,</span> <span class="n">ja_JP</span><span class="p">:</span> <span class="n">ja</span>
+
+<span class="p">[</span><span class="n">nextcloud</span><span class="o">.</span><span class="n">MYAPP</span><span class="p">]</span>
+<span class="n">file_filter</span> <span class="o">=</span> <span class="n">translationfiles</span><span class="o">/&lt;</span><span class="n">lang</span><span class="o">&gt;/</span><span class="n">MYAPP</span><span class="o">.</span><span class="n">po</span>
+<span class="n">source_file</span> <span class="o">=</span> <span class="n">translationfiles</span><span class="o">/</span><span class="n">templates</span><span class="o">/</span><span class="n">MYAPP</span><span class="o">.</span><span class="n">pot</span>
+<span class="n">source_lang</span> <span class="o">=</span> <span class="n">en</span>
+<span class="nb">type</span> <span class="o">=</span> <span class="n">PO</span>
+</pre></div>
+</div>
+<p>Then create a folder <code class="file docutils literal"><span class="pre">l10n</span></code> and a file <code class="file docutils literal"><span class="pre">l10n/.gitkeep</span></code> to create an
+empty folder which later holds the translations.</p>
+<p>Now the GitHub account <a class="reference external" href="https://github.com/nextcloud-bot">&#64;nextcloud-bot</a> needs
+to get write access to your repository. It will run every night and only push
+commits to the master branch once there is an update to the translation. In general
+you should enable the <a class="reference external" href="https://help.github.com/articles/configuring-protected-branches/">protected branches feature</a>
+at least for the master branch.</p>
+<p>For the sync job there is a <a class="reference external" href="https://github.com/nextcloud/docker-ci/blob/master/translations/config.json">configuration file</a>
+available in our docker-ci repository. Adding there the repo owner and repo name
+to the section named <strong>app</strong> via pull request is enough. Once this change is in
+one member of the sysadmin team will deploy it to the sync server and the job
+will then run once a day.</p>
+<p>If you need help then just <a class="reference external" href="https://github.com/nextcloud/docker-ci/issues/new">open a ticket with the request</a>
+and we can also guide you through the steps.</p>
+</div>
+<div class="section" id="manual-translation">
+<h3>Manual translation<a class="headerlink" href="#manual-translation" title="Permalink to this headline">¶</a></h3>
+<p>If Transifex is not the right choice or the app is not accepted for translation,
+generate the gettext strings by yourself by executing our
+<a class="reference external" href="https://github.com/nextcloud/docker-ci/tree/master/translations/translationtool">translation tool</a>
+in the app folder:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">/</span><span class="n">srv</span><span class="o">/</span><span class="n">http</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">myapp</span>
+<span class="n">translationtool</span><span class="o">.</span><span class="n">phar</span> <span class="n">create</span><span class="o">-</span><span class="n">pot</span><span class="o">-</span><span class="n">files</span>
+</pre></div>
+</div>
+<p>The translation tool requires <strong>gettext</strong>, installable via:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">gettext</span>
+</pre></div>
+</div>
+<p>The above tool generates a template that can be used to translate all strings
+of an app. This template is located in the folder <code class="file docutils literal"><span class="pre">translationfiles/template/</span></code> with the
+name <code class="file docutils literal"><span class="pre">myapp.pot</span></code>. It can be used by your favored translation tool which
+then creates a <code class="file docutils literal"><span class="pre">.po</span></code> file. The <code class="file docutils literal"><span class="pre">.po</span></code> file needs to be placed in a
+folder named like the language code with the app name as filename - for example
+<code class="file docutils literal"><span class="pre">translationfiles/es/myapp.po</span></code>. After this step the tool needs to be invoked to
+transfer the po file into our own fileformat that is more easily readable by
+the server code:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">translationtool</span><span class="o">.</span><span class="n">phar</span> <span class="n">convert</span><span class="o">-</span><span class="n">po</span><span class="o">-</span><span class="n">files</span>
+</pre></div>
+</div>
+<p>Now the following folder structure is available:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">myapp</span><span class="o">/</span><span class="n">l10n</span>
+<span class="o">|--</span> <span class="n">es</span><span class="o">.</span><span class="n">js</span>
+<span class="o">|--</span> <span class="n">es</span><span class="o">.</span><span class="n">json</span>
+<span class="n">myapp</span><span class="o">/</span><span class="n">translationfiles</span>
+<span class="o">|--</span> <span class="n">es</span>
+<span class="o">|</span>   <span class="o">|--</span> <span class="n">myapp</span><span class="o">.</span><span class="n">po</span>
+<span class="o">|--</span> <span class="n">templates</span>
+    <span class="o">|--</span> <span class="n">myapp</span><span class="o">.</span><span class="n">pot</span>
+</pre></div>
+</div>
+<p>You then just need the <code class="file docutils literal"><span class="pre">.json</span></code> and <code class="file docutils literal"><span class="pre">.js</span></code> files for a working localized app.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="theming.html" class="btn btn-neutral float-right" title="Theming support" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="css.html" class="btn btn-neutral float-left" title="CSS" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021 Nextcloud GmbH.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: 15
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/15/developer_manual">15</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/16/developer_manual">16</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/17/developer_manual">17</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/developer_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/developer_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+   
+
+</body>
+</html>

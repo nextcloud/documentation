@@ -1,0 +1,451 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Basic APIs &mdash; Nextcloud latest Developer Manual latest documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'latest',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Search" href="search.html" />
+    <link rel="prev" title="Webdav" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html">
+          
+
+          
+            
+            <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../general/index.html">General contributor guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../design/index.html">Design guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../android_library/index.html">Android application development</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Client APIs</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Webdav</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Basic APIs</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#webdav-basics">WebDAV basics</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#testing-requests-with-curl">Testing requests with curl</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#listing-folders-rfc4918">Listing folders (rfc4918)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#downloading-files">Downloading files</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#uploading-files">Uploading files</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#creating-folders-rfc4918">Creating folders (rfc4918)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#deleting-files-and-folders-rfc4918">Deleting files and folders (rfc4918)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#moving-files-and-folders-rfc4918">Moving files and folders (rfc4918)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#copying-files-and-folders-rfc4918">Copying files and folders (rfc4918)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#settings-favorites">Settings favorites</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#listing-favorites">Listing favorites</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="search.html">Search</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trashbin.html">Trashbin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="versions.html">Versions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="chunking.html">Chunked file upload</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../OCS/index.html">OCS API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../LoginFlow/index.html">Login Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../RemoteWipe/index.html">Remote wipe</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../core/index.html">Core development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../bugtracker/index.html">Bugtracker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../commun/index.html">Help and communication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api.html">API reference</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Nextcloud latest Developer Manual</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">Client APIs</a> &raquo;</li>
+        
+          <li><a href="index.html">Webdav</a> &raquo;</li>
+        
+      <li>Basic APIs</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/nextcloud/documentation/edit/master/developer_manual/client_apis/WebDAV/basic.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="basic-apis">
+<span id="webdavindex"></span><h1>Basic APIs<a class="headerlink" href="#basic-apis" title="Permalink to this headline">¶</a></h1>
+<p>This document provides a quick overview of the WebDAV operations supported in Nextcloud, to keep things readable it won&#8217;t go into many details
+for each operation, further information for each operation can be found in the corresponding rfc where applicable</p>
+<div class="section" id="webdav-basics">
+<h2>WebDAV basics<a class="headerlink" href="#webdav-basics" title="Permalink to this headline">¶</a></h2>
+<p>The base url for all WebDAV operations for a Nextcloud instance is <code class="code docutils literal"><span class="pre">/remote.php/dav</span></code>.</p>
+<p>All requests need to provide authentication information, either as a Basic Auth header or by passing a set of valid session cookies.</p>
+</div>
+<div class="section" id="testing-requests-with-curl">
+<h2>Testing requests with curl<a class="headerlink" href="#testing-requests-with-curl" title="Permalink to this headline">¶</a></h2>
+<p>All WebDAV requests can be easily tested out using <code class="code docutils literal"><span class="pre">curl</span></code> by specifying the request method (<code class="code docutils literal"><span class="pre">GET</span></code>, <code class="code docutils literal"><span class="pre">PROPFIND</span></code>, <code class="code docutils literal"><span class="pre">PUT</span></code>, etc) and setting a request body where needed.</p>
+<p>For example: you can perform a <code class="code docutils literal"><span class="pre">PROPFIND</span></code> request to find files in a folder using</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>curl -u username:password <span class="s1">&#39;https://cloud.example.com/remote.php/dav/files/username/folder&#39;</span> -X PROPFIND --data <span class="s1">&#39;&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="s1"> &lt;d:propfind xmlns:d=&quot;DAV:&quot;&gt;</span>
+<span class="s1">   &lt;d:prop xmlns:oc=&quot;http://owncloud.org/ns&quot;&gt;</span>
+<span class="s1">     &lt;d:getlastmodified/&gt;</span>
+<span class="s1">     &lt;d:getcontentlength/&gt;</span>
+<span class="s1">     &lt;d:getcontenttype/&gt;</span>
+<span class="s1">     &lt;oc:permissions/&gt;</span>
+<span class="s1">     &lt;d:resourcetype/&gt;</span>
+<span class="s1">     &lt;d:getetag/&gt;</span>
+<span class="s1">   &lt;/d:prop&gt;</span>
+<span class="s1"> &lt;/d:propfind&gt;&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="listing-folders-rfc4918">
+<h2>Listing folders (<a class="reference external" href="https://tools.ietf.org/html/rfc4918">rfc4918</a>)<a class="headerlink" href="#listing-folders-rfc4918" title="Permalink to this headline">¶</a></h2>
+<p>The contents of a folder can be listed by sending a <code class="code docutils literal"><span class="pre">PROPFIND</span></code> request to the folder.</p>
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">PROPFIND</span> <span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">user</span><span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">folder</span>
+</pre></div>
+</div>
+<div class="section" id="requesting-properties">
+<h3>Requesting properties<a class="headerlink" href="#requesting-properties" title="Permalink to this headline">¶</a></h3>
+<p>By default, a <code class="code docutils literal"><span class="pre">PROPFIND</span></code> request will only return a small number of properties for each file: last modified date, file size, whether it&#8217;s a folder, etag and mime type.</p>
+<p>You can request additional properties by sending a request body with the <code class="code docutils literal"><span class="pre">PROPFIND</span></code> request that lists all requested properties.</p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span class="nt">&lt;d:propfind</span>  <span class="na">xmlns:d=</span><span class="s">&quot;DAV:&quot;</span> <span class="na">xmlns:oc=</span><span class="s">&quot;http://owncloud.org/ns&quot;</span> <span class="na">xmlns:nc=</span><span class="s">&quot;http://nextcloud.org/ns&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;d:prop&gt;</span>
+        <span class="nt">&lt;d:getlastmodified</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;d:getetag</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;d:getcontenttype</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;d:resourcetype</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;oc:fileid</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;oc:permissions</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;oc:size</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;d:getcontentlength</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;nc:has-preview</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;oc:favorite</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;oc:comments-unread</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;oc:owner-display-name</span> <span class="nt">/&gt;</span>
+        <span class="nt">&lt;oc:share-types</span> <span class="nt">/&gt;</span>
+  <span class="nt">&lt;/d:prop&gt;</span>
+<span class="nt">&lt;/d:propfind&gt;</span>
+</pre></div>
+</div>
+<p>The following properties are supported:</p>
+<ul class="simple">
+<li><code class="code docutils literal"><span class="pre">{DAV:}getlastmodified</span></code></li>
+<li><code class="code docutils literal"><span class="pre">{DAV:}getetag</span></code></li>
+<li><code class="code docutils literal"><span class="pre">{DAV:}getcontenttype</span></code></li>
+<li><code class="code docutils literal"><span class="pre">{DAV:}resourcetype</span></code></li>
+<li><code class="code docutils literal"><span class="pre">{DAV:}getcontentlength</span></code></li>
+<li><code class="code docutils literal"><span class="pre">{http://owncloud.org/ns}id</span></code> The fileid namespaced by the instance id, globally unique</li>
+<li><code class="code docutils literal"><span class="pre">{http://owncloud.org/ns}fileid</span></code> The unique id for the file within the instance</li>
+<li><code class="code docutils literal"><span class="pre">{http://owncloud.org/ns}favorite</span></code></li>
+<li><code class="code docutils literal"><span class="pre">{http://owncloud.org/ns}comments-href</span></code></li>
+<li><code class="code docutils literal"><span class="pre">{http://owncloud.org/ns}comments-count</span></code></li>
+<li><code class="code docutils literal"><span class="pre">{http://owncloud.org/ns}comments-unread</span></code></li>
+<li><code class="code docutils literal"><span class="pre">{http://owncloud.org/ns}owner-id</span></code> The user id of the owner of a shared file</li>
+<li><code class="code docutils literal"><span class="pre">{http://owncloud.org/ns}owner-display-name</span></code> The display name of the owner of a shared file</li>
+<li><code class="code docutils literal"><span class="pre">{http://owncloud.org/ns}share-types</span></code></li>
+<li><code class="code docutils literal"><span class="pre">{http://owncloud.org/ns}checksums</span></code></li>
+<li><code class="code docutils literal"><span class="pre">{http://nextcloud.org/ns}has-preview</span></code></li>
+<li><code class="code docutils literal"><span class="pre">{http://owncloud.org/ns}size</span></code> Unlike <code class="code docutils literal"><span class="pre">getcontentlength</span></code>, this property also works for folders reporting the size of everything in the folder.</li>
+<li><code class="code docutils literal"><span class="pre">{http://nextcloud.org/ns}rich-workspace</span></code> this property is provided by the text app</li>
+</ul>
+</div>
+<div class="section" id="getting-properties-for-just-the-folder">
+<h3>Getting properties for just the folder<a class="headerlink" href="#getting-properties-for-just-the-folder" title="Permalink to this headline">¶</a></h3>
+<p>You can request properties of a folder without also getting the folder contents by adding a <code class="code docutils literal"><span class="pre">Depth:</span> <span class="pre">0</span></code> header to the request.</p>
+</div>
+</div>
+<div class="section" id="downloading-files">
+<h2>Downloading files<a class="headerlink" href="#downloading-files" title="Permalink to this headline">¶</a></h2>
+<p>A file can be downloaded by sending a <code class="code docutils literal"><span class="pre">GET</span></code> request to the WebDAV url of the file.</p>
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">GET</span> <span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">user</span><span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">file</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="uploading-files">
+<h2>Uploading files<a class="headerlink" href="#uploading-files" title="Permalink to this headline">¶</a></h2>
+<p>A file can be uploading by sending a <code class="code docutils literal"><span class="pre">PUT</span></code> request to the file and sending the raw file contents as the request body.</p>
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">PUT</span> <span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">user</span><span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">file</span>
+</pre></div>
+</div>
+<p>Any existing file will be overwritten by the request.</p>
+</div>
+<div class="section" id="creating-folders-rfc4918">
+<h2>Creating folders (<a class="reference external" href="https://tools.ietf.org/html/rfc4918">rfc4918</a>)<a class="headerlink" href="#creating-folders-rfc4918" title="Permalink to this headline">¶</a></h2>
+<p>A folder can be created by sending a <code class="code docutils literal"><span class="pre">MKCOL</span></code> request to the folder.</p>
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">MKCOL</span> <span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">user</span><span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">new</span><span class="o">/</span><span class="n">folder</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="deleting-files-and-folders-rfc4918">
+<h2>Deleting files and folders (<a class="reference external" href="https://tools.ietf.org/html/rfc4918">rfc4918</a>)<a class="headerlink" href="#deleting-files-and-folders-rfc4918" title="Permalink to this headline">¶</a></h2>
+<p>A file or folder can be created by sending a <code class="code docutils literal"><span class="pre">DELETE</span></code> request to the file or folder.</p>
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">DELETE</span> <span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">user</span><span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">file</span>
+</pre></div>
+</div>
+<p>When deleting a folder, it&#8217;s contents will be deleted recursively.</p>
+</div>
+<div class="section" id="moving-files-and-folders-rfc4918">
+<h2>Moving files and folders (<a class="reference external" href="https://tools.ietf.org/html/rfc4918">rfc4918</a>)<a class="headerlink" href="#moving-files-and-folders-rfc4918" title="Permalink to this headline">¶</a></h2>
+<p>A file or folder can be moved by sending a <code class="code docutils literal"><span class="pre">MOVE</span></code> request to the file or folder and specifying the destination in the <code class="code docutils literal"><span class="pre">Destination</span></code> header as full url.</p>
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">MOVE</span> <span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">user</span><span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">file</span>
+<span class="n">Destination</span><span class="p">:</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">cloud</span><span class="o">.</span><span class="n">example</span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">user</span><span class="o">/</span><span class="n">new</span><span class="o">/</span><span class="n">location</span>
+</pre></div>
+</div>
+<p>The overwrite behavior of the move can be controlled by setting the <code class="code docutils literal"><span class="pre">Overwrite</span></code> head to <code class="code docutils literal"><span class="pre">T</span></code> or <code class="code docutils literal"><span class="pre">F</span></code> to enable or disable overwriting respectively.</p>
+</div>
+<div class="section" id="copying-files-and-folders-rfc4918">
+<h2>Copying files and folders (<a class="reference external" href="https://tools.ietf.org/html/rfc4918">rfc4918</a>)<a class="headerlink" href="#copying-files-and-folders-rfc4918" title="Permalink to this headline">¶</a></h2>
+<p>A file or folder can be copied by sending a <code class="code docutils literal"><span class="pre">COPY</span></code> request to the file or folder and specifying the destination in the <code class="code docutils literal"><span class="pre">Destination</span></code> header as full url.</p>
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">COPY</span> <span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">user</span><span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">file</span>
+<span class="n">Destination</span><span class="p">:</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">cloud</span><span class="o">.</span><span class="n">example</span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">user</span><span class="o">/</span><span class="n">new</span><span class="o">/</span><span class="n">location</span>
+</pre></div>
+</div>
+<p>The overwrite behavior of the copy can be controlled by setting the <code class="code docutils literal"><span class="pre">Overwrite</span></code> head to <code class="code docutils literal"><span class="pre">T</span></code> or <code class="code docutils literal"><span class="pre">F</span></code> to enable or disable overwriting respectively.</p>
+</div>
+<div class="section" id="settings-favorites">
+<h2>Settings favorites<a class="headerlink" href="#settings-favorites" title="Permalink to this headline">¶</a></h2>
+<p>A file or folder can be marked as favorite by sending a <code class="code docutils literal"><span class="pre">PROPPATCH</span></code> request to the file or folder and setting the <code class="code docutils literal"><span class="pre">oc-favorite</span></code> property</p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span>PROPPATCH remote.php/dav/files/user/path/to/file
+<span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span class="nt">&lt;d:propertyupdate</span> <span class="na">xmlns:d=</span><span class="s">&quot;DAV:&quot;</span> <span class="na">xmlns:oc=</span><span class="s">&quot;http://owncloud.org/ns&quot;</span><span class="nt">&gt;</span>
+  <span class="nt">&lt;d:set&gt;</span>
+        <span class="nt">&lt;d:prop&gt;</span>
+          <span class="nt">&lt;oc:favorite&gt;</span>1<span class="nt">&lt;/oc:favorite&gt;</span>
+        <span class="nt">&lt;/d:prop&gt;</span>
+  <span class="nt">&lt;/d:set&gt;</span>
+<span class="nt">&lt;/d:propertyupdate&gt;</span>
+</pre></div>
+</div>
+<p>Setting the <code class="code docutils literal"><span class="pre">oc:favorite</span></code> property to 1 marks a file as favorite, setting it to 0 un-marks it as favorite.</p>
+</div>
+<div class="section" id="listing-favorites">
+<h2>Listing favorites<a class="headerlink" href="#listing-favorites" title="Permalink to this headline">¶</a></h2>
+<p>Favorites for a user can be retrieved by sending a <code class="code docutils literal"><span class="pre">REPORT</span></code> request and specifying <code class="code docutils literal"><span class="pre">oc:favorite</span></code> as a filter</p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span>REPORT remote.php/dav/files/user/path/to/folder
+<span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span class="nt">&lt;oc:filter-files</span>  <span class="na">xmlns:d=</span><span class="s">&quot;DAV:&quot;</span> <span class="na">xmlns:oc=</span><span class="s">&quot;http://owncloud.org/ns&quot;</span> <span class="na">xmlns:nc=</span><span class="s">&quot;http://nextcloud.org/ns&quot;</span><span class="nt">&gt;</span>
+         <span class="nt">&lt;oc:filter-rules&gt;</span>
+                 <span class="nt">&lt;oc:favorite&gt;</span>1<span class="nt">&lt;/oc:favorite&gt;</span>
+         <span class="nt">&lt;/oc:filter-rules&gt;</span>
+ <span class="nt">&lt;/oc:filter-files&gt;</span>
+</pre></div>
+</div>
+<p>File properties can be requested by adding a <code class="code docutils literal"><span class="pre">&lt;d:prop/&gt;</span></code> element to the request listing the requested properties in the same way as it would be done for a <code class="code docutils literal"><span class="pre">PROPFIND</span></code> request.</p>
+<p>When listing favorites, the request will find all favorites in the folder recursively, all favorites for a user can be found by sending the request to <code class="code docutils literal"><span class="pre">remote.php/dav/files/user</span></code></p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="search.html" class="btn btn-neutral float-right" title="Search" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="index.html" class="btn btn-neutral float-left" title="Webdav" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021 Nextcloud GmbH.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/16/developer_manual">16</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/17/developer_manual">17</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/18/developer_manual">18</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/19/developer_manual">19</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/developer_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/developer_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+   
+
+</body>
+</html>

@@ -1,0 +1,121 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+Collation
+=========
+
+
+.. php:namespace:: OC\Repair
+
+.. php:class:: Collation
+
+
+	:Source:
+		`lib/private/Repair/Collation.php#38 <https://github.com/nextcloud/server/blob/stable13/lib/private/Repair/Collation.php#L38>`_
+	
+	:Implements:
+		:php:interface:`OCP\\Migration\\IRepairStep` 
+	
+
+Properties
+----------
+
+.. php:attr:: protected static config
+
+	:Source:
+		`lib/private/Repair/Collation.php#40 <https://github.com/nextcloud/server/blob/stable13/lib/private/Repair/Collation.php#L40>`_
+	
+	:Type: :any:`\\OCP\\IConfig <OCP\\IConfig>` 
+
+
+.. php:attr:: protected static logger
+
+	:Source:
+		`lib/private/Repair/Collation.php#43 <https://github.com/nextcloud/server/blob/stable13/lib/private/Repair/Collation.php#L43>`_
+	
+	:Type: :any:`\\OCP\\ILogger <OCP\\ILogger>` 
+
+
+.. php:attr:: protected static connection
+
+	:Source:
+		`lib/private/Repair/Collation.php#46 <https://github.com/nextcloud/server/blob/stable13/lib/private/Repair/Collation.php#L46>`_
+	
+	:Type: :any:`\\OCP\\IDBConnection <OCP\\IDBConnection>` 
+
+
+.. php:attr:: protected static ignoreFailures
+
+	:Source:
+		`lib/private/Repair/Collation.php#49 <https://github.com/nextcloud/server/blob/stable13/lib/private/Repair/Collation.php#L49>`_
+	
+	:Type: bool 
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $config, $logger, $connection, $ignoreFailures)
+	
+		:Source:
+			`lib/private/Repair/Collation.php#57 <https://github.com/nextcloud/server/blob/stable13/lib/private/Repair/Collation.php#L57>`_
+		
+		
+		:Parameters:
+			* **$config** (:any:`OCP\\IConfig <OCP\\IConfig>`)  
+			* **$logger** (:any:`OCP\\ILogger <OCP\\ILogger>`)  
+			* **$connection** (:any:`OCP\\IDBConnection <OCP\\IDBConnection>`)  
+			* **$ignoreFailures** (bool)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getName()
+	
+		:Source:
+			`lib/private/Repair/Collation.php#64 <https://github.com/nextcloud/server/blob/stable13/lib/private/Repair/Collation.php#L64>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public run( $output)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Fix mime types
+			
+		
+		:Source:
+			`lib/private/Repair/Collation.php#71 <https://github.com/nextcloud/server/blob/stable13/lib/private/Repair/Collation.php#L71>`_
+		
+		
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected getAllNonUTF8BinTables( $connection)
+	
+		:Source:
+			`lib/private/Repair/Collation.php#119 <https://github.com/nextcloud/server/blob/stable13/lib/private/Repair/Collation.php#L119>`_
+		
+		
+		:Parameters:
+			* **$connection** (:any:`OCP\\IDBConnection <OCP\\IDBConnection>`)  
+
+		
+		:Returns: string[] 
+	
+	
+

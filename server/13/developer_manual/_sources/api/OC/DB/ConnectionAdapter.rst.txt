@@ -1,0 +1,363 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+ConnectionAdapter
+=================
+
+
+.. php:namespace:: OC\DB
+
+.. php:class:: ConnectionAdapter
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Adapts the public API to our internal DBAL connection wrapper
+		
+	
+	:Source:
+		`lib/private/DB/ConnectionAdapter.php#40 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/ConnectionAdapter.php#L40>`_
+	
+	:Implements:
+		:php:interface:`OCP\\IDBConnection` 
+	
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $inner)
+	
+		:Source:
+			`lib/private/DB/ConnectionAdapter.php#45 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/ConnectionAdapter.php#L45>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getQueryBuilder()
+	
+		:Source:
+			`lib/private/DB/ConnectionAdapter.php#49 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/ConnectionAdapter.php#L49>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public prepare( $sql, $limit=null, $offset=null)
+	
+		:Source:
+			`lib/private/DB/ConnectionAdapter.php#53 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/ConnectionAdapter.php#L53>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public executeQuery( $sql, $params=\[\], $types=\[\])
+	
+		:Source:
+			`lib/private/DB/ConnectionAdapter.php#63 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/ConnectionAdapter.php#L63>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public executeUpdate( $sql, $params=\[\], $types=\[\])
+	
+		:Source:
+			`lib/private/DB/ConnectionAdapter.php#73 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/ConnectionAdapter.php#L73>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public executeStatement( $sql, $params=\[\], $types=\[\])
+	
+		:Source:
+			`lib/private/DB/ConnectionAdapter.php#81 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/ConnectionAdapter.php#L81>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public lastInsertId( $table)
+	
+		:Source:
+			`lib/private/DB/ConnectionAdapter.php#89 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/ConnectionAdapter.php#L89>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public insertIfNotExist( $table, $input, $compare=null)
+	
+		:Source:
+			`lib/private/DB/ConnectionAdapter.php#97 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/ConnectionAdapter.php#L97>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public insertIgnoreConflict( $table, $values)
+	
+		:Source:
+			`lib/private/DB/ConnectionAdapter.php#105 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/ConnectionAdapter.php#L105>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setValues( $table, $keys, $values, $updatePreconditionValues=\[\])
+	
+		:Source:
+			`lib/private/DB/ConnectionAdapter.php#113 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/ConnectionAdapter.php#L113>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public lockTable( $tableName)
+	
+		:Source:
+			`lib/private/DB/ConnectionAdapter.php#121 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/ConnectionAdapter.php#L121>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public unlockTable()
+	
+		:Source:
+			`lib/private/DB/ConnectionAdapter.php#129 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/ConnectionAdapter.php#L129>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public beginTransaction()
+	
+		:Source:
+			`lib/private/DB/ConnectionAdapter.php#137 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/ConnectionAdapter.php#L137>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public inTransaction()
+	
+		:Source:
+			`lib/private/DB/ConnectionAdapter.php#145 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/ConnectionAdapter.php#L145>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public commit()
+	
+		:Source:
+			`lib/private/DB/ConnectionAdapter.php#149 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/ConnectionAdapter.php#L149>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public rollBack()
+	
+		:Source:
+			`lib/private/DB/ConnectionAdapter.php#157 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/ConnectionAdapter.php#L157>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getError()
+	
+		:Source:
+			`lib/private/DB/ConnectionAdapter.php#165 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/ConnectionAdapter.php#L165>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public errorCode()
+	
+		:Source:
+			`lib/private/DB/ConnectionAdapter.php#169 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/ConnectionAdapter.php#L169>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public errorInfo()
+	
+		:Source:
+			`lib/private/DB/ConnectionAdapter.php#173 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/ConnectionAdapter.php#L173>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public connect()
+	
+		:Source:
+			`lib/private/DB/ConnectionAdapter.php#177 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/ConnectionAdapter.php#L177>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public close()
+	
+		:Source:
+			`lib/private/DB/ConnectionAdapter.php#185 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/ConnectionAdapter.php#L185>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public quote( $input, $type=\\OCP\\DB\\QueryBuilder\\IQueryBuilder::PARAM\_STR)
+	
+		:Source:
+			`lib/private/DB/ConnectionAdapter.php#189 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/ConnectionAdapter.php#L189>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getDatabasePlatform()
+	
+		:Source:
+			`lib/private/DB/ConnectionAdapter.php#196 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/ConnectionAdapter.php#L196>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public dropTable( $table)
+	
+		:Source:
+			`lib/private/DB/ConnectionAdapter.php#200 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/ConnectionAdapter.php#L200>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public tableExists( $table)
+	
+		:Source:
+			`lib/private/DB/ConnectionAdapter.php#208 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/ConnectionAdapter.php#L208>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public escapeLikeParameter( $param)
+	
+		:Source:
+			`lib/private/DB/ConnectionAdapter.php#216 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/ConnectionAdapter.php#L216>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public supports4ByteText()
+	
+		:Source:
+			`lib/private/DB/ConnectionAdapter.php#220 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/ConnectionAdapter.php#L220>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public createSchema()
+	
+		:Source:
+			`lib/private/DB/ConnectionAdapter.php#227 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/ConnectionAdapter.php#L227>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public migrateToSchema( $toSchema)
+	
+		:Source:
+			`lib/private/DB/ConnectionAdapter.php#235 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/ConnectionAdapter.php#L235>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getInner()
+	
+		:Source:
+			`lib/private/DB/ConnectionAdapter.php#243 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/ConnectionAdapter.php#L243>`_
+		
+		
+	
+	
+

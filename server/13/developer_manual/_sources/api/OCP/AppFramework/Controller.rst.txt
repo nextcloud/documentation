@@ -1,0 +1,153 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+Controller
+==========
+
+
+.. php:namespace:: OCP\AppFramework
+
+.. rst-class::  abstract
+
+.. php:class:: Controller
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Base class to inherit your controllers from
+		
+	
+	:Source:
+		`lib/public/AppFramework/Controller.php#46 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Controller.php#L46>`_
+	
+
+Properties
+----------
+
+.. php:attr:: protected static appName
+
+	.. rst-class:: phpdoc-description
+	
+		| app name
+		
+	
+	:Source:
+		`lib/public/AppFramework/Controller.php#53 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Controller.php#L53>`_
+	
+	:Type: string 
+	:Since: 7.0.0 
+
+
+.. php:attr:: protected static request
+
+	.. rst-class:: phpdoc-description
+	
+		| current request
+		
+	
+	:Source:
+		`lib/public/AppFramework/Controller.php#60 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Controller.php#L60>`_
+	
+	:Type: :any:`\\OCP\\IRequest <OCP\\IRequest>` 
+	:Since: 6.0.0 
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $appName, $request)
+	
+		.. rst-class:: phpdoc-description
+		
+			| constructor of the controller
+			
+		
+		:Source:
+			`lib/public/AppFramework/Controller.php#74 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Controller.php#L74>`_
+		
+		
+		:Parameters:
+			* **$appName** (string)  the name of the app
+			* **$request** (:any:`OCP\\IRequest <OCP\\IRequest>`)  an instance of the request
+
+		
+		:Since: 6.0.0 \- parameter $appName was added in 7\.0\.0 \- parameter $app was removed in 7\.0\.0
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getResponderByHTTPHeader( $acceptHeader, $default=json)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Parses an HTTP accept header and returns the supported responder type
+			
+		
+		:Source:
+			`lib/public/AppFramework/Controller.php#118 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Controller.php#L118>`_
+		
+		
+		:Parameters:
+			* **$acceptHeader** (string)  
+			* **$default** (string)  
+
+		
+		:Returns: string the responder type
+		:Since: 7.0.0 
+		:Since: 7.0.0 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected registerResponder( $format, $responder)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Registers a formatter for a type
+			
+		
+		:Source:
+			`lib/public/AppFramework/Controller.php#143 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Controller.php#L143>`_
+		
+		
+		:Parameters:
+			* **$format** (string)  
+			* **$responder** (:any:`Closure <Closure>`)  
+
+		
+		:Since: 7.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public buildResponse( $response, $format=json)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Serializes and formats a response
+			
+		
+		:Source:
+			`lib/public/AppFramework/Controller.php#157 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Controller.php#L157>`_
+		
+		
+		:Parameters:
+			* **$response** (mixed)  the value that was returned from a controller and
+			is not a Response instance
+			* **$format** (string)  the format for which a formatter has been registered
+
+		
+		:Throws: :any:`\\DomainException <DomainException>` if format does not match a registered formatter
+		:Returns: :any:`\\OCP\\AppFramework\\Http\\Response <OCP\\AppFramework\\Http\\Response>` 
+		:Since: 7.0.0 
+	
+	
+

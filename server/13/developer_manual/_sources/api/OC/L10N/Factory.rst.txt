@@ -1,0 +1,429 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+Factory
+=======
+
+
+.. php:namespace:: OC\L10N
+
+.. php:class:: Factory
+
+
+	.. rst-class:: phpdoc-description
+	
+		| A factory that generates language instances
+		
+	
+	:Source:
+		`lib/private/L10N/Factory.php#50 <https://github.com/nextcloud/server/blob/stable13/lib/private/L10N/Factory.php#L50>`_
+	
+	:Implements:
+		:php:interface:`OCP\\L10N\\IFactory` 
+	
+
+Constants
+---------
+
+.. php:const:: COMMON_LANGUAGE_CODES = \[en, es, fr, de, de\_DE, ja, ar, ru, nl, it, pt\_BR, pt\_PT, da, fi\_FI, nb\_NO, sv, tr, zh\_CN, ko\]
+
+	:Source:
+		`lib/private/L10N/Factory.php#81 <https://github.com/nextcloud/server/blob/stable13/lib/private/L10N/Factory.php#L81>`_
+	
+
+
+Properties
+----------
+
+.. php:attr:: protected static requestLanguage
+
+	:Source:
+		`lib/private/L10N/Factory.php#53 <https://github.com/nextcloud/server/blob/stable13/lib/private/L10N/Factory.php#L53>`_
+	
+	:Type: string 
+
+
+.. php:attr:: protected static instances
+
+	.. rst-class:: phpdoc-description
+	
+		| cached instances
+		
+	
+	:Source:
+		`lib/private/L10N/Factory.php#59 <https://github.com/nextcloud/server/blob/stable13/lib/private/L10N/Factory.php#L59>`_
+	
+	:Type: array Structure: Lang =\> App =\> \\OCP\\IL10N
+
+
+.. php:attr:: protected static availableLanguages
+
+	:Source:
+		`lib/private/L10N/Factory.php#64 <https://github.com/nextcloud/server/blob/stable13/lib/private/L10N/Factory.php#L64>`_
+	
+	:Type: array Structure: App =\> string\[\]
+
+
+.. php:attr:: protected static localeCache
+
+	:Source:
+		`lib/private/L10N/Factory.php#69 <https://github.com/nextcloud/server/blob/stable13/lib/private/L10N/Factory.php#L69>`_
+	
+	:Type: array 
+
+
+.. php:attr:: protected static availableLocales
+
+	:Source:
+		`lib/private/L10N/Factory.php#74 <https://github.com/nextcloud/server/blob/stable13/lib/private/L10N/Factory.php#L74>`_
+	
+	:Type: array 
+
+
+.. php:attr:: protected static pluralFunctions
+
+	:Source:
+		`lib/private/L10N/Factory.php#79 <https://github.com/nextcloud/server/blob/stable13/lib/private/L10N/Factory.php#L79>`_
+	
+	:Type: array Structure: string =\> callable
+
+
+.. php:attr:: protected static config
+
+	:Source:
+		`lib/private/L10N/Factory.php#87 <https://github.com/nextcloud/server/blob/stable13/lib/private/L10N/Factory.php#L87>`_
+	
+	:Type: :any:`\\OCP\\IConfig <OCP\\IConfig>` 
+
+
+.. php:attr:: protected static request
+
+	:Source:
+		`lib/private/L10N/Factory.php#90 <https://github.com/nextcloud/server/blob/stable13/lib/private/L10N/Factory.php#L90>`_
+	
+	:Type: :any:`\\OCP\\IRequest <OCP\\IRequest>` 
+
+
+.. php:attr:: protected static userSession
+
+	:Source:
+		`lib/private/L10N/Factory.php#93 <https://github.com/nextcloud/server/blob/stable13/lib/private/L10N/Factory.php#L93>`_
+	
+	:Type: :any:`\\OCP\\IUserSession <OCP\\IUserSession>` 
+
+
+.. php:attr:: protected static serverRoot
+
+	:Source:
+		`lib/private/L10N/Factory.php#96 <https://github.com/nextcloud/server/blob/stable13/lib/private/L10N/Factory.php#L96>`_
+	
+	:Type: string 
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $config, $request, $userSession, $serverRoot)
+	
+		:Source:
+			`lib/private/L10N/Factory.php#104 <https://github.com/nextcloud/server/blob/stable13/lib/private/L10N/Factory.php#L104>`_
+		
+		
+		:Parameters:
+			* **$config** (:any:`OCP\\IConfig <OCP\\IConfig>`)  
+			* **$request** (:any:`OCP\\IRequest <OCP\\IRequest>`)  
+			* **$userSession** (:any:`OCP\\IUserSession <OCP\\IUserSession>`)  
+			* **$serverRoot** (string)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public get( $app, $lang=null, $locale=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get a language instance
+			
+		
+		:Source:
+			`lib/private/L10N/Factory.php#122 <https://github.com/nextcloud/server/blob/stable13/lib/private/L10N/Factory.php#L122>`_
+		
+		
+		:Parameters:
+			* **$app** (string)  
+			* **$lang** (string | null)  
+			* **$locale** (string | null)  
+
+		
+		:Returns: :any:`\\OCP\\IL10N <OCP\\IL10N>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public findLanguage( $app=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Find the best language
+			
+		
+		:Source:
+			`lib/private/L10N/Factory.php#164 <https://github.com/nextcloud/server/blob/stable13/lib/private/L10N/Factory.php#L164>`_
+		
+		
+		:Parameters:
+			* **$app** (string | null)  App id or null for core
+
+		
+		:Returns: string language If nothing works it returns \'en\'
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public findLocale( $lang=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| find the best locale
+			
+		
+		:Source:
+			`lib/private/L10N/Factory.php#225 <https://github.com/nextcloud/server/blob/stable13/lib/private/L10N/Factory.php#L225>`_
+		
+		
+		:Parameters:
+			* **$lang** (string)  
+
+		
+		:Returns: null | string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public findLanguageFromLocale( $app=core, $locale=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| find the matching lang from the locale
+			
+		
+		:Source:
+			`lib/private/L10N/Factory.php#268 <https://github.com/nextcloud/server/blob/stable13/lib/private/L10N/Factory.php#L268>`_
+		
+		
+		:Parameters:
+			* **$app** (string)  
+			* **$locale** (string)  
+
+		
+		:Returns: null | string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public findAvailableLanguages( $app=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Find all available languages for an app
+			
+		
+		:Source:
+			`lib/private/L10N/Factory.php#286 <https://github.com/nextcloud/server/blob/stable13/lib/private/L10N/Factory.php#L286>`_
+		
+		
+		:Parameters:
+			* **$app** (string | null)  App id or null for core
+
+		
+		:Returns: array an array of available languages
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public findAvailableLocales()
+	
+		:Source:
+			`lib/private/L10N/Factory.php#334 <https://github.com/nextcloud/server/blob/stable13/lib/private/L10N/Factory.php#L334>`_
+		
+		
+		:Returns: array | mixed 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public languageExists( $app, $lang)
+	
+		:Source:
+			`lib/private/L10N/Factory.php#350 <https://github.com/nextcloud/server/blob/stable13/lib/private/L10N/Factory.php#L350>`_
+		
+		
+		:Parameters:
+			* **$app** (string | null)  App id or null for core
+			* **$lang** (string)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getLanguageIterator( $user=null)
+	
+		:Source:
+			`lib/private/L10N/Factory.php#359 <https://github.com/nextcloud/server/blob/stable13/lib/private/L10N/Factory.php#L359>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getUserLanguage( $user=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Return the language to use when sending something to a user
+			
+		
+		:Source:
+			`lib/private/L10N/Factory.php#374 <https://github.com/nextcloud/server/blob/stable13/lib/private/L10N/Factory.php#L374>`_
+		
+		
+		:Parameters:
+			* **$user** (:any:`OCP\\IUser <OCP\\IUser>` | null)  
+
+		
+		:Returns: string 
+		:Since: 20.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public localeExists( $locale)
+	
+		:Source:
+			`lib/private/L10N/Factory.php#394 <https://github.com/nextcloud/server/blob/stable13/lib/private/L10N/Factory.php#L394>`_
+		
+		
+		:Parameters:
+			* **$locale** (string)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected respectDefaultLanguage( $app, $lang)
+	
+		.. rst-class:: phpdoc-description
+		
+			| if default language is set to de\_DE \(formal German\) this should be
+			| preferred to \'de\' \(non\-formal German\) if possible
+			
+		
+		:Source:
+			`lib/private/L10N/Factory.php#453 <https://github.com/nextcloud/server/blob/stable13/lib/private/L10N/Factory.php#L453>`_
+		
+		
+		:Parameters:
+			* **$app** (string | null)  
+			* **$lang** (string)  
+
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getL10nFilesForApp( $app, $lang)
+	
+		:Source:
+			`lib/private/L10N/Factory.php#500 <https://github.com/nextcloud/server/blob/stable13/lib/private/L10N/Factory.php#L500>`_
+		
+		
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected findL10nDir( $app=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| find the l10n directory
+			
+		
+		:Source:
+			`lib/private/L10N/Factory.php#533 <https://github.com/nextcloud/server/blob/stable13/lib/private/L10N/Factory.php#L533>`_
+		
+		
+		:Parameters:
+			* **$app** (string)  App id or empty string for core
+
+		
+		:Returns: string directory
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public createPluralFunction( $string)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Creates a function from the plural string
+			
+			| Parts of the code is copied from Habari:
+			| https://github\.com/habari/system/blob/master/classes/locale\.php
+			
+		
+		:Source:
+			`lib/private/L10N/Factory.php#554 <https://github.com/nextcloud/server/blob/stable13/lib/private/L10N/Factory.php#L554>`_
+		
+		
+		:Parameters:
+			* **$string** (string)  
+
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getLanguages()
+	
+		.. rst-class:: phpdoc-description
+		
+			| returns the common language and other languages in an
+			| associative array
+			
+		
+		:Source:
+			`lib/private/L10N/Factory.php#616 <https://github.com/nextcloud/server/blob/stable13/lib/private/L10N/Factory.php#L616>`_
+		
+		
+		:Returns: array 
+	
+	
+

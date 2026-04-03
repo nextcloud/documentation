@@ -1,0 +1,374 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Popover menu &mdash; Nextcloud 15 Developer Manual 15 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'15',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="HTML elements" href="html.html" />
+    <link rel="prev" title="Content list" href="list.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../general/index.html">General contributor guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/index.html">App development</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Design guidelines</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="navigation.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="navigation.html#new-button">New button</a></li>
+<li class="toctree-l2"><a class="reference internal" href="navigation.html#app-navigation-menu">App navigation menu</a></li>
+<li class="toctree-l2"><a class="reference internal" href="navigation.html#settings">Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="content.html">Main content</a></li>
+<li class="toctree-l2"><a class="reference internal" href="list.html">Content list</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Popover menu</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#what-is-a-popover-menu">What is a popover menu</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#basic-layout">Basic layout</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#technical-details">Technical details</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#alignment">Alignment</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="html.html">HTML elements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="css.html">SCSS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="icons.html">Icons</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../android_library/index.html">Android application development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client_apis/index.html">Client APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../core/index.html">Core development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bugtracker/index.html">Bugtracker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../commun/index.html">Help and communication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API Documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Nextcloud 15 Developer Manual</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Design guidelines</a> &raquo;</li>
+        
+      <li>Popover menu</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/nextcloud/documentation/edit/stable15/developer_manual/design/popovermenu.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="popover-menu">
+<span id="popovermenu"></span><h1>Popover menu<a class="headerlink" href="#popover-menu" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="what-is-a-popover-menu">
+<h2>What is a popover menu<a class="headerlink" href="#what-is-a-popover-menu" title="Permalink to this headline">¶</a></h2>
+<p>This is a quick menu that open on click. For menus, we use the three-dot-icon.</p>
+<p>This is exactly the same as the <a class="reference internal" href="navigation.html#navigation-menu"><span class="std std-ref">navigation menu</span></a>. The only difference is the popovermenu class.</p>
+</div>
+<div class="section" id="basic-layout">
+<h2>Basic layout<a class="headerlink" href="#basic-layout" title="Permalink to this headline">¶</a></h2>
+<div class="figure-with-code figure">
+<img alt="Popover image example" src="../_images/popovermenu.png" />
+</div>
+<div class="highlight-html"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;popovermenu&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+       <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>
+           <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;#&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;icon-details&quot;</span><span class="p">&gt;</span>
+               <span class="p">&lt;</span><span class="nt">span</span><span class="p">&gt;</span>Details<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+           <span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+       <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+       <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>
+           <span class="p">&lt;</span><span class="nt">button</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;icon-close&quot;</span><span class="p">&gt;</span>
+               <span class="p">&lt;</span><span class="nt">span</span><span class="p">&gt;</span>Remove<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+           <span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+       <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+       <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>
+           <span class="p">&lt;</span><span class="nt">button</span><span class="p">&gt;</span>
+               <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;icon-favorite&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+               <span class="p">&lt;</span><span class="nt">span</span><span class="p">&gt;</span>Favorite<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+           <span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+       <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+       <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>
+           <span class="p">&lt;</span><span class="nt">a</span><span class="p">&gt;</span>
+               <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;icon-rename&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+               <span class="p">&lt;</span><span class="nt">span</span><span class="p">&gt;</span>Edit<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+           <span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+       <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+       <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>
+           <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;menuitem&quot;</span><span class="p">&gt;</span>
+               <span class="p">&lt;</span><span class="nt">input</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;check1&quot;</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;checkbox&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;checkbox&quot;</span> <span class="p">/&gt;</span>
+               <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">&quot;check1&quot;</span><span class="p">&gt;</span>Enable<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+           <span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+       <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+       <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>
+           <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;menuitem&quot;</span><span class="p">&gt;</span>
+               <span class="p">&lt;</span><span class="nt">input</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;radio1&quot;</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;radio&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;radio&quot;</span> <span class="p">/&gt;</span>
+               <span class="p">&lt;</span><span class="nt">label</span> <span class="na">for</span><span class="o">=</span><span class="s">&quot;radio1&quot;</span><span class="p">&gt;</span>Select<span class="p">&lt;/</span><span class="nt">label</span><span class="p">&gt;</span>
+           <span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+       <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;menuitem&quot;</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;icon icon-user&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">form</span><span class="p">&gt;</span>
+                        <span class="p">&lt;</span><span class="nt">input</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;input-folder&quot;</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;new email&quot;</span><span class="p">&gt;</span>
+                        <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;submit&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot; &quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;primary icon-checkmark-white&quot;</span><span class="p">&gt;</span>
+                <span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+            <span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+         <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>
+             <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;menuitem&quot;</span><span class="p">&gt;</span>
+                 <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;icon icon-folder&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+                 <span class="p">&lt;</span><span class="nt">form</span><span class="p">&gt;</span>
+                         <span class="p">&lt;</span><span class="nt">input</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;input-folder&quot;</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;New folder&quot;</span><span class="p">&gt;</span>
+                         <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;submit&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot; &quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;icon-confirm&quot;</span><span class="p">&gt;</span>
+                 <span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+             <span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+         <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="technical-details">
+<h2>Technical details<a class="headerlink" href="#technical-details" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>The only allowed menu items elements are <strong>a</strong>, <strong>button</strong> and <strong>span</strong> for the checkbox and radio only.</li>
+<li>You can mix between a and button on the same menu (in case of form or direct link) like the example above</li>
+<li>You need to put the entire menu just after the three dot icon <code class="docutils literal"><span class="pre">&lt;div&gt;&lt;span</span> <span class="pre">class=&quot;icon-more&quot;&gt;&lt;/span&gt;&lt;div</span> <span class="pre">class=&quot;popovermenu&quot;&gt;...&lt;/div&gt;&lt;/div&gt;</span></code></li>
+<li>You do not need JS, CSS only is ok for positioning. JS is <strong>still</strong> required to handle the hide/show.</li>
+<li>Only <strong>one</strong> ul is allowed.</li>
+<li>Only <strong>one level</strong> of menu is allowed.</li>
+<li>Every entry <strong>needs</strong> to have its own icon. This greatly improves the UX.</li>
+<li>The required <strong>right</strong> distance to the border (or padding, whatever you want to use) of the three-dot icon should be 14px (5 for menu margin and 6 for arrow position)</li>
+<li>The <code class="docutils literal"><span class="pre">span</span></code> element <strong>must</strong> have the <code class="docutils literal"><span class="pre">menuitem</span></code> class.</li>
+<li>The checkbox/radio must use the <a class="reference internal" href="html.html#checkboxes-and-radios"><span class="std std-ref">nextcloud custom</span></a></li>
+<li>The form element is optionnal if you&#8217;re using inputs.</li>
+<li>Supported inputs are all text based ones and buttons type ones</li>
+</ul>
+<img alt="../_images/popover-position.png" src="../_images/popover-position.png" />
+</div>
+<div class="section" id="alignment">
+<h2>Alignment<a class="headerlink" href="#alignment" title="Permalink to this headline">¶</a></h2>
+<p>If you want to align your menu, you can add the class to the main popovermenu div.</p>
+<ul class="simple">
+<li>Center: <code class="docutils literal"><span class="pre">menu-center</span></code></li>
+<li>Left: <code class="docutils literal"><span class="pre">menu-left</span></code></li>
+<li>Right is by default</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="html.html" class="btn btn-neutral float-right" title="HTML elements" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="list.html" class="btn btn-neutral float-left" title="Content list" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021 Nextcloud GmbH.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: 15
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/15/developer_manual">15</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/16/developer_manual">16</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/17/developer_manual">17</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/developer_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/developer_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+   
+
+</body>
+</html>

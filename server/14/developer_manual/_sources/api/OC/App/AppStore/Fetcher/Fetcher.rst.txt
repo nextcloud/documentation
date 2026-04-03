@@ -1,0 +1,255 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+Fetcher
+=======
+
+
+.. php:namespace:: OC\App\AppStore\Fetcher
+
+.. rst-class::  abstract
+
+.. php:class:: Fetcher
+
+
+	:Source:
+		`lib/private/App/AppStore/Fetcher/Fetcher.php#44 <https://github.com/nextcloud/server/blob/stable13/lib/private/App/AppStore/Fetcher/Fetcher.php#L44>`_
+	
+
+Constants
+---------
+
+.. php:const:: INVALIDATE_AFTER_SECONDS = 3600
+
+	:Source:
+		`lib/private/App/AppStore/Fetcher/Fetcher.php#45 <https://github.com/nextcloud/server/blob/stable13/lib/private/App/AppStore/Fetcher/Fetcher.php#L45>`_
+	
+
+
+.. php:const:: RETRY_AFTER_FAILURE_SECONDS = 300
+
+	:Source:
+		`lib/private/App/AppStore/Fetcher/Fetcher.php#46 <https://github.com/nextcloud/server/blob/stable13/lib/private/App/AppStore/Fetcher/Fetcher.php#L46>`_
+	
+
+
+Properties
+----------
+
+.. php:attr:: protected static appData
+
+	:Source:
+		`lib/private/App/AppStore/Fetcher/Fetcher.php#49 <https://github.com/nextcloud/server/blob/stable13/lib/private/App/AppStore/Fetcher/Fetcher.php#L49>`_
+	
+	:Type: :any:`\\OCP\\Files\\IAppData <OCP\\Files\\IAppData>` 
+
+
+.. php:attr:: protected static clientService
+
+	:Source:
+		`lib/private/App/AppStore/Fetcher/Fetcher.php#51 <https://github.com/nextcloud/server/blob/stable13/lib/private/App/AppStore/Fetcher/Fetcher.php#L51>`_
+	
+	:Type: :any:`\\OCP\\Http\\Client\\IClientService <OCP\\Http\\Client\\IClientService>` 
+
+
+.. php:attr:: protected static timeFactory
+
+	:Source:
+		`lib/private/App/AppStore/Fetcher/Fetcher.php#53 <https://github.com/nextcloud/server/blob/stable13/lib/private/App/AppStore/Fetcher/Fetcher.php#L53>`_
+	
+	:Type: :any:`\\OCP\\AppFramework\\Utility\\ITimeFactory <OCP\\AppFramework\\Utility\\ITimeFactory>` 
+
+
+.. php:attr:: protected static config
+
+	:Source:
+		`lib/private/App/AppStore/Fetcher/Fetcher.php#55 <https://github.com/nextcloud/server/blob/stable13/lib/private/App/AppStore/Fetcher/Fetcher.php#L55>`_
+	
+	:Type: :any:`\\OCP\\IConfig <OCP\\IConfig>` 
+
+
+.. php:attr:: protected static logger
+
+	:Source:
+		`lib/private/App/AppStore/Fetcher/Fetcher.php#57 <https://github.com/nextcloud/server/blob/stable13/lib/private/App/AppStore/Fetcher/Fetcher.php#L57>`_
+	
+	:Type: :any:`\\Psr\\Log\\LoggerInterface <Psr\\Log\\LoggerInterface>` 
+
+
+.. php:attr:: protected static fileName
+
+	:Source:
+		`lib/private/App/AppStore/Fetcher/Fetcher.php#59 <https://github.com/nextcloud/server/blob/stable13/lib/private/App/AppStore/Fetcher/Fetcher.php#L59>`_
+	
+	:Type: string 
+
+
+.. php:attr:: protected static endpointName
+
+	:Source:
+		`lib/private/App/AppStore/Fetcher/Fetcher.php#61 <https://github.com/nextcloud/server/blob/stable13/lib/private/App/AppStore/Fetcher/Fetcher.php#L61>`_
+	
+	:Type: string 
+
+
+.. php:attr:: protected static version
+
+	:Source:
+		`lib/private/App/AppStore/Fetcher/Fetcher.php#63 <https://github.com/nextcloud/server/blob/stable13/lib/private/App/AppStore/Fetcher/Fetcher.php#L63>`_
+	
+	:Type: string 
+
+
+.. php:attr:: protected static channel
+
+	:Source:
+		`lib/private/App/AppStore/Fetcher/Fetcher.php#65 <https://github.com/nextcloud/server/blob/stable13/lib/private/App/AppStore/Fetcher/Fetcher.php#L65>`_
+	
+	:Type: string 
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $appDataFactory, $clientService, $timeFactory, $config, $logger)
+	
+		:Source:
+			`lib/private/App/AppStore/Fetcher/Fetcher.php#67 <https://github.com/nextcloud/server/blob/stable13/lib/private/App/AppStore/Fetcher/Fetcher.php#L67>`_
+		
+		
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected fetch( $ETag, $content)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Fetches the response from the server
+			
+		
+		:Source:
+			`lib/private/App/AppStore/Fetcher/Fetcher.php#87 <https://github.com/nextcloud/server/blob/stable13/lib/private/App/AppStore/Fetcher/Fetcher.php#L87>`_
+		
+		
+		:Parameters:
+			* **$ETag** (string)  
+			* **$content** (string)  
+
+		
+		:Returns: array 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public get( $allowUnstable=false)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the array with the categories on the appstore server
+			
+		
+		:Source:
+			`lib/private/App/AppStore/Fetcher/Fetcher.php#139 <https://github.com/nextcloud/server/blob/stable13/lib/private/App/AppStore/Fetcher/Fetcher.php#L139>`_
+		
+		
+		:Parameters:
+			
+			
+		
+		:Returns: array 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected getVersion()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the currently Nextcloud version
+			
+		
+		:Source:
+			`lib/private/App/AppStore/Fetcher/Fetcher.php#210 <https://github.com/nextcloud/server/blob/stable13/lib/private/App/AppStore/Fetcher/Fetcher.php#L210>`_
+		
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setVersion( $version)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set the current Nextcloud version
+			
+		
+		:Source:
+			`lib/private/App/AppStore/Fetcher/Fetcher.php#221 <https://github.com/nextcloud/server/blob/stable13/lib/private/App/AppStore/Fetcher/Fetcher.php#L221>`_
+		
+		
+		:Parameters:
+			* **$version** (string)  
+
+		
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected getChannel()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the currently Nextcloud update channel
+			
+		
+		:Source:
+			`lib/private/App/AppStore/Fetcher/Fetcher.php#229 <https://github.com/nextcloud/server/blob/stable13/lib/private/App/AppStore/Fetcher/Fetcher.php#L229>`_
+		
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setChannel( $channel)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set the current Nextcloud update channel
+			
+		
+		:Source:
+			`lib/private/App/AppStore/Fetcher/Fetcher.php#240 <https://github.com/nextcloud/server/blob/stable13/lib/private/App/AppStore/Fetcher/Fetcher.php#L240>`_
+		
+		
+		:Parameters:
+			* **$channel** (string)  
+
+		
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected getEndpoint()
+	
+		:Source:
+			`lib/private/App/AppStore/Fetcher/Fetcher.php#244 <https://github.com/nextcloud/server/blob/stable13/lib/private/App/AppStore/Fetcher/Fetcher.php#L244>`_
+		
+		
+	
+	
+

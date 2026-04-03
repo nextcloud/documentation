@@ -1,0 +1,882 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IManager
+========
+
+
+.. php:namespace:: OCP\Share
+
+.. php:interface:: IManager
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Interface IManager
+		
+	
+	:Implemented by:
+		:php:class:`OC\\Share20\\Manager` 
+	
+	
+	:Source:
+		`lib/public/Share/IManager.php#44 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IManager.php#L44>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public createShare( $share)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Create a Share
+			
+		
+		:Source:
+			`lib/public/Share/IManager.php#54 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IManager.php#L54>`_
+		
+		
+		:Parameters:
+			* **$share** (:any:`OCP\\Share\\IShare <OCP\\Share\\IShare>`)  
+
+		
+		:Returns: :any:`\\OCP\\Share\\IShare <OCP\\Share\\IShare>` The share object
+		:Throws: :any:`\\Exception <Exception>` 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public updateShare( $share)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Update a share\.
+			
+			| The target of the share can\'t be changed this way: use moveShare
+			| The share can\'t be removed this way \(permission 0\): use deleteShare
+			| The state can\'t be changed this way: use acceptShare
+			
+		
+		:Source:
+			`lib/public/Share/IManager.php#67 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IManager.php#L67>`_
+		
+		
+		:Parameters:
+			* **$share** (:any:`OCP\\Share\\IShare <OCP\\Share\\IShare>`)  
+
+		
+		:Returns: :any:`\\OCP\\Share\\IShare <OCP\\Share\\IShare>` The share object
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public acceptShare( $share, $recipientId)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Accept a share\.
+			
+		
+		:Source:
+			`lib/public/Share/IManager.php#78 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IManager.php#L78>`_
+		
+		
+		:Parameters:
+			* **$share** (:any:`OCP\\Share\\IShare <OCP\\Share\\IShare>`)  
+			* **$recipientId** (string)  
+
+		
+		:Returns: :any:`\\OCP\\Share\\IShare <OCP\\Share\\IShare>` The share object
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` 
+		:Since: 18.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public deleteShare( $share)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Delete a share
+			
+		
+		:Source:
+			`lib/public/Share/IManager.php#88 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IManager.php#L88>`_
+		
+		
+		:Parameters:
+			* **$share** (:any:`OCP\\Share\\IShare <OCP\\Share\\IShare>`)  
+
+		
+		:Throws: :any:`\\OCP\\Share\\Exceptions\\ShareNotFound <OCP\\Share\\Exceptions\\ShareNotFound>` 
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` 
+		:Throws: :any:`\\OCP\\Share\\Exceptions\\ShareNotFound <OCP\\Share\\Exceptions\\ShareNotFound>` 
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public deleteFromSelf( $share, $recipientId)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Unshare a file as the recipient\.
+			
+			| This can be different from a regular delete for example when one of
+			| the users in a groups deletes that share\. But the provider should
+			| handle this\.
+			
+		
+		:Source:
+			`lib/public/Share/IManager.php#100 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IManager.php#L100>`_
+		
+		
+		:Parameters:
+			* **$share** (:any:`OCP\\Share\\IShare <OCP\\Share\\IShare>`)  
+			* **$recipientId** (string)  
+
+		
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public restoreShare( $share, $recipientId)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Restore the share when it has been deleted
+			| Certain share types can be restored when they have been deleted
+			| but the provider should properly handle this\\
+			
+		
+		:Source:
+			`lib/public/Share/IManager.php#114 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IManager.php#L114>`_
+		
+		
+		:Parameters:
+			* **$share** (:any:`OCP\\Share\\IShare <OCP\\Share\\IShare>`)  The share to restore
+			* **$recipientId** (string)  The user to restore the share for
+
+		
+		:Returns: :any:`\\OCP\\Share\\IShare <OCP\\Share\\IShare>` The restored share object
+		:Throws: :any:`\\OCP\\Share\\Exceptions\\GenericShareException <OCP\\Share\\Exceptions\\GenericShareException>` In case restoring the share failed
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public moveShare( $share, $recipientId)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Move the share as a recipient of the share\.
+			
+			| This is updating the share target\. So where the recipient has the share mounted\.
+			
+		
+		:Source:
+			`lib/public/Share/IManager.php#126 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IManager.php#L126>`_
+		
+		
+		:Parameters:
+			* **$share** (:any:`OCP\\Share\\IShare <OCP\\Share\\IShare>`)  
+			* **$recipientId** (string)  
+
+		
+		:Returns: :any:`\\OCP\\Share\\IShare <OCP\\Share\\IShare>` 
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` If $share is a link share or the $recipient does not match
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getSharesInFolder( $userId, $node, $reshares=false)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get all shares shared by \(initiated\) by the provided user in a folder\.
+			
+		
+		:Source:
+			`lib/public/Share/IManager.php#137 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IManager.php#L137>`_
+		
+		
+		:Parameters:
+			* **$userId** (string)  
+			* **$node** (:any:`OCP\\Files\\Folder <OCP\\Files\\Folder>`)  
+			* **$reshares** (bool)  
+
+		
+		:Returns: :any:`\\OCP\\Share\\IShare\[\]\[\] <OCP\\Share\\IShare>` \[$fileId =\> IShare\[\], \.\.\.\]
+		:Since: 11.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getSharesBy( $userId, $shareType, $path=null, $reshares=false, $limit=50, $offset=0)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get shares shared by \(initiated\) by the provided user\.
+			
+		
+		:Source:
+			`lib/public/Share/IManager.php#151 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IManager.php#L151>`_
+		
+		
+		:Parameters:
+			* **$userId** (string)  
+			* **$shareType** (int)  
+			* **$path** (:any:`OCP\\Files\\Node <OCP\\Files\\Node>` | null)  
+			* **$reshares** (bool)  
+			* **$limit** (int)  The maximum number of returned results, -1 for all results
+			* **$offset** (int)  
+
+		
+		:Returns: :any:`\\OCP\\Share\\IShare\[\] <OCP\\Share\\IShare>` 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getSharedWith( $userId, $shareType, $node=null, $limit=50, $offset=0)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get shares shared with $user\.
+			
+			| Filter by $node if provided
+			
+		
+		:Source:
+			`lib/public/Share/IManager.php#165 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IManager.php#L165>`_
+		
+		
+		:Parameters:
+			* **$userId** (string)  
+			* **$shareType** (int)  
+			* **$node** (:any:`OCP\\Files\\Node <OCP\\Files\\Node>` | null)  
+			* **$limit** (int)  The maximum number of shares returned, -1 for all
+			* **$offset** (int)  
+
+		
+		:Returns: :any:`\\OCP\\Share\\IShare\[\] <OCP\\Share\\IShare>` 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getDeletedSharedWith( $userId, $shareType, $node=null, $limit=50, $offset=0)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get deleted shares shared with $user\.
+			
+			| Filter by $node if provided
+			
+		
+		:Source:
+			`lib/public/Share/IManager.php#179 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IManager.php#L179>`_
+		
+		
+		:Parameters:
+			* **$userId** (string)  
+			* **$shareType** (int)  
+			* **$node** (:any:`OCP\\Files\\Node <OCP\\Files\\Node>` | null)  
+			* **$limit** (int)  The maximum number of shares returned, -1 for all
+			* **$offset** (int)  
+
+		
+		:Returns: :any:`\\OCP\\Share\\IShare\[\] <OCP\\Share\\IShare>` 
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getShareById( $id, $recipient=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Retrieve a share by the share id\.
+			
+			| If the recipient is set make sure to retrieve the file for that user\.
+			| This makes sure that if a user has moved/deleted a group share this
+			| is reflected\.
+			
+		
+		:Source:
+			`lib/public/Share/IManager.php#193 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IManager.php#L193>`_
+		
+		
+		:Parameters:
+			* **$id** (string)  
+			* **$recipient** (string | null)  userID of the recipient
+
+		
+		:Returns: :any:`\\OCP\\Share\\IShare <OCP\\Share\\IShare>` 
+		:Throws: :any:`\\OCP\\Share\\Exceptions\\ShareNotFound <OCP\\Share\\Exceptions\\ShareNotFound>` 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getShareByToken( $token)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the share by token possible with password
+			
+		
+		:Source:
+			`lib/public/Share/IManager.php#203 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IManager.php#L203>`_
+		
+		
+		:Parameters:
+			* **$token** (string)  
+
+		
+		:Returns: :any:`\\OCP\\Share\\IShare <OCP\\Share\\IShare>` 
+		:Throws: :any:`\\OCP\\Share\\Exceptions\\ShareNotFound <OCP\\Share\\Exceptions\\ShareNotFound>` 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public checkPassword( $share, $password)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Verify the password of a public share
+			
+		
+		:Source:
+			`lib/public/Share/IManager.php#213 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IManager.php#L213>`_
+		
+		
+		:Parameters:
+			* **$share** (:any:`OCP\\Share\\IShare <OCP\\Share\\IShare>`)  
+			* **$password** (string)  
+
+		
+		:Returns: bool 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public userDeleted( $uid)
+	
+		.. rst-class:: phpdoc-description
+		
+			| The user with UID is deleted\.
+			
+			| All share providers have to cleanup the shares with this user as well
+			| as shares owned by this user\.
+			| Shares only initiated by this user are fine\.
+			
+		
+		:Source:
+			`lib/public/Share/IManager.php#224 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IManager.php#L224>`_
+		
+		
+		:Parameters:
+			* **$uid** (string)  
+
+		
+		:Since: 9.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public groupDeleted( $gid)
+	
+		.. rst-class:: phpdoc-description
+		
+			| The group with $gid is deleted
+			| We need to clear up all shares to this group
+			
+		
+		:Source:
+			`lib/public/Share/IManager.php#233 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IManager.php#L233>`_
+		
+		
+		:Parameters:
+			* **$gid** (string)  
+
+		
+		:Since: 9.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public userDeletedFromGroup( $uid, $gid)
+	
+		.. rst-class:: phpdoc-description
+		
+			| The user $uid is deleted from the group $gid
+			| All user specific group shares have to be removed
+			
+		
+		:Source:
+			`lib/public/Share/IManager.php#243 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IManager.php#L243>`_
+		
+		
+		:Parameters:
+			* **$uid** (string)  
+			* **$gid** (string)  
+
+		
+		:Since: 9.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getAccessList( $path, $recursive=true, $currentAccess=false)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get access list to a path\. This means
+			| all the users that can access a given path\.
+			
+			| Consider:
+			| \-root
+			| \|\-folder1 \(23\)
+			|  \|\-folder2 \(32\)
+			|   \|\-fileA \(42\)
+			| 
+			| fileA is shared with user1 and user1@server1
+			| folder2 is shared with group2 \(user4 is a member of group2\)
+			| folder1 is shared with user2 \(renamed to "folder \(1\)"\) and user2@server2
+			| 
+			| Then the access list to \'/folder1/folder2/fileA\' with $currentAccess is:
+			| \[
+			|  users  =\> \[
+			|      \'user1\' =\> \[\'node\_id\' =\> 42, \'node\_path\' =\> \'/fileA\'\],
+			|      \'user4\' =\> \[\'node\_id\' =\> 32, \'node\_path\' =\> \'/folder2\'\],
+			|      \'user2\' =\> \[\'node\_id\' =\> 23, \'node\_path\' =\> \'/folder \(1\)\'\],
+			|  \],
+			|  remote =\> \[
+			|      \'user1@server1\' =\> \[\'node\_id\' =\> 42, \'token\' =\> \'SeCr3t\'\],
+			|      \'user2@server2\' =\> \[\'node\_id\' =\> 23, \'token\' =\> \'FooBaR\'\],
+			|  \],
+			|  public =\> bool
+			|  mail =\> bool
+			| \]
+			| 
+			| The access list to \'/folder1/folder2/fileA\' \*\*without\*\* $currentAccess is:
+			| \[
+			|  users  =\> \[\'user1\', \'user2\', \'user4\'\],
+			|  remote =\> bool,
+			|  public =\> bool
+			|  mail =\> bool
+			| \]
+			| 
+			| This is required for encryption/activity
+			
+		
+		:Source:
+			`lib/public/Share/IManager.php#290 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IManager.php#L290>`_
+		
+		
+		:Parameters:
+			* **$path** (:any:`OCP\\Files\\Node <OCP\\Files\\Node>`)  
+			* **$recursive** (bool)  Should we check all parent folders as well
+			* **$currentAccess** (bool)  Should the user have currently access to the file
+
+		
+		:Returns: array 
+		:Since: 12 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public newShare()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Instantiates a new share object\. This is to be passed to
+			| createShare\.
+			
+		
+		:Source:
+			`lib/public/Share/IManager.php#299 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IManager.php#L299>`_
+		
+		
+		:Returns: :any:`\\OCP\\Share\\IShare <OCP\\Share\\IShare>` 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public shareApiEnabled()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Is the share API enabled
+			
+		
+		:Source:
+			`lib/public/Share/IManager.php#307 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IManager.php#L307>`_
+		
+		
+		:Returns: bool 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public shareApiAllowLinks()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Is public link sharing enabled
+			
+		
+		:Source:
+			`lib/public/Share/IManager.php#315 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IManager.php#L315>`_
+		
+		
+		:Returns: bool 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public shareApiLinkEnforcePassword()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Is password on public link requires
+			
+		
+		:Source:
+			`lib/public/Share/IManager.php#323 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IManager.php#L323>`_
+		
+		
+		:Returns: bool 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public shareApiLinkDefaultExpireDate()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Is default expire date enabled
+			
+		
+		:Source:
+			`lib/public/Share/IManager.php#331 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IManager.php#L331>`_
+		
+		
+		:Returns: bool 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public shareApiLinkDefaultExpireDateEnforced()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Is default expire date enforced
+			| \`
+			
+		
+		:Source:
+			`lib/public/Share/IManager.php#339 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IManager.php#L339>`_
+		
+		
+		:Returns: bool 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public shareApiLinkDefaultExpireDays()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Number of default expire days
+			
+		
+		:Source:
+			`lib/public/Share/IManager.php#347 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IManager.php#L347>`_
+		
+		
+		:Returns: int 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public shareApiLinkAllowPublicUpload()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Allow public upload on link shares
+			
+		
+		:Source:
+			`lib/public/Share/IManager.php#355 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IManager.php#L355>`_
+		
+		
+		:Returns: bool 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public shareWithGroupMembersOnly()
+	
+		.. rst-class:: phpdoc-description
+		
+			| check if user can only share with group members
+			
+		
+		:Source:
+			`lib/public/Share/IManager.php#362 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IManager.php#L362>`_
+		
+		
+		:Returns: bool 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public allowGroupSharing()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check if users can share with groups
+			
+		
+		:Source:
+			`lib/public/Share/IManager.php#369 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IManager.php#L369>`_
+		
+		
+		:Returns: bool 
+		:Since: 9.0.1 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public allowEnumeration()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check if user enumeration is allowed
+			
+		
+		:Source:
+			`lib/public/Share/IManager.php#377 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IManager.php#L377>`_
+		
+		
+		:Returns: bool 
+		:Since: 19.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public limitEnumerationToGroups()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check if user enumeration is limited to the users groups
+			
+		
+		:Source:
+			`lib/public/Share/IManager.php#385 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IManager.php#L385>`_
+		
+		
+		:Returns: bool 
+		:Since: 19.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public limitEnumerationToPhone()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check if user enumeration is limited to the phonebook matches
+			
+		
+		:Source:
+			`lib/public/Share/IManager.php#393 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IManager.php#L393>`_
+		
+		
+		:Returns: bool 
+		:Since: 21.0.1 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public allowEnumerationFullMatch()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check if user enumeration is allowed to return on full match
+			
+		
+		:Source:
+			`lib/public/Share/IManager.php#401 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IManager.php#L401>`_
+		
+		
+		:Returns: bool 
+		:Since: 21.0.1 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public sharingDisabledForUser( $userId)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check if sharing is disabled for the given user
+			
+		
+		:Source:
+			`lib/public/Share/IManager.php#410 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IManager.php#L410>`_
+		
+		
+		:Parameters:
+			* **$userId** (string)  
+
+		
+		:Returns: bool 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public outgoingServer2ServerSharesAllowed()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check if outgoing server2server shares are allowed
+			
+		
+		:Source:
+			`lib/public/Share/IManager.php#417 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IManager.php#L417>`_
+		
+		
+		:Returns: bool 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public outgoingServer2ServerGroupSharesAllowed()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check if outgoing server2server shares are allowed
+			
+		
+		:Source:
+			`lib/public/Share/IManager.php#424 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IManager.php#L424>`_
+		
+		
+		:Returns: bool 
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public shareProviderExists( $shareType)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check if a given share provider exists
+			
+		
+		:Source:
+			`lib/public/Share/IManager.php#433 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IManager.php#L433>`_
+		
+		
+		:Parameters:
+			* **$shareType** (int)  
+
+		
+		:Returns: bool 
+		:Since: 11.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public registerShareProvider( $shareProviderClass)
+	
+		:Source:
+			`lib/public/Share/IManager.php#439 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IManager.php#L439>`_
+		
+		
+		:Parameters:
+			* **$shareProviderClass** (string)  
+
+		
+		:Since: 21.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getAllShares()
+	
+		:Source:
+			`lib/public/Share/IManager.php#451 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IManager.php#L451>`_
+		
+		
+		:Returns: :any:`iterable <iterable>` 
+		:Since: 18.0.0 
+	
+	
+

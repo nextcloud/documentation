@@ -1,0 +1,350 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>&lt;no title&gt; &mdash; Nextcloud latest Developer Manual latest documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'latest',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="OCS API" href="../OCS/index.html" />
+    <link rel="prev" title="Chunked file upload" href="chunking.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html">
+          
+
+          
+            
+            <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../general/index.html">General contributor guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../design/index.html">Design guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../android_library/index.html">Android application development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Client APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../core/index.html">Core development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../bugtracker/index.html">Bugtracker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../commun/index.html">Help and communication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api.html">API reference</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Nextcloud latest Developer Manual</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">Client APIs</a> &raquo;</li>
+        
+          <li><a href="index.html">Webdav</a> &raquo;</li>
+        
+      <li>&lt;no title&gt;</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/nextcloud/documentation/edit/master/developer_manual/client_apis/WebDAV/comments.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <p>## Comments</p>
+<p>Comments have a PHP API within OCP and also via WebDAV. Basic documentation below.</p>
+<p>### Endpoint</p>
+<p>The Comments resource has an endpoint:</p>
+<p><code class="docutils literal"><span class="pre">`</span>
+<span class="pre">remote.php/comments/$OBJECTTYPE/$OBJECTID</span> <span class="pre">[/$COMMENTID]</span>
+<span class="pre">`</span></code></p>
+<p>The <cite>ObjectID</cite> endpoint accepts:
+* <cite>POST</cite> for creating a comment
+* <cite>PROPFIND</cite> to list comments, and also the read mark. You need to specify
+attributes in the request.
+* <cite>PROPPATCH</cite> to update the read mark, property name:
+{<a class="reference external" href="http://owncloud.org/ns">http://owncloud.org/ns</a>}readMarker
+* <cite>REPORT</cite> to search comments</p>
+<p>The <cite>CommentID</cite> endpoint accepts:
+* <cite>PROPPATCH</cite> to update the comment
+* <cite>DELETE</cite> to delete it
+* <cite>PROPFIND</cite> to list all properties</p>
+<p>For a list of properties, see:
+<cite>https://github.com/nextcloud/server/blob/master/apps/dav/lib/Comments/CommentNode.php#L108</cite></p>
+<p>### Examples of usage</p>
+<p>REPORT request:</p>
+<p><code class="docutils literal"><span class="pre">`</span>
+<span class="pre">curl</span> <span class="pre">-u</span> <span class="pre">user:pwd</span> <span class="pre">-i</span> <span class="pre">--data-binary</span> <span class="pre">&quot;&#64;report.xml&quot;</span> <span class="pre">-X</span> <span class="pre">REPORT</span> <span class="pre">-H</span> <span class="pre">&quot;Content-Type:</span> <span class="pre">text/xml&quot;</span> <span class="pre">http://test.nextcloud.bla/master/remote.php/dav/comments/files/2156</span>
+<span class="pre">`</span></code></p>
+<p>report.xml your receive:</p>
+<p><a href="#id1"><span class="problematic" id="id2">``</span></a>`
+&lt;?xml version=&#8221;1.0&#8221; encoding=&#8221;utf-8&#8221; ?&gt;
+&lt;D:report xmlns:D=&#8221;DAV:&#8221; xmlns:oc=&#8221;http://owncloud.org/ns&#8221; &gt;</p>
+<blockquote>
+<div>&lt;oc:limit&gt;5&lt;/oc:limit&gt;
+&lt;oc:offset&gt;0&lt;/oc:offset&gt;
+&lt;oc:datetime&gt;2016-01-18 22:10:30&lt;/oc:datetime&gt;</div></blockquote>
+<p>&lt;/D:report&gt;
+<a href="#id3"><span class="problematic" id="id4">``</span></a><a href="#id5"><span class="problematic" id="id6">`</span></a></p>
+<p>Example Output (without headers):</p>
+<p><a href="#id7"><span class="problematic" id="id8">``</span></a>`
+&lt;?xml version=&#8221;1.0&#8221;?&gt;
+&lt;d:multistatus xmlns:d=&#8221;DAV:&#8221; xmlns:s=&#8221;http://sabredav.org/ns&#8221; xmlns:cal=&#8221;urn:ietf:params:xml:ns:caldav&#8221; xmlns:cs=&#8221;http://calendarserver.org/ns/&#8221; xmlns:card=&#8221;urn:ietf:params:xml:ns:carddav&#8221; xmlns:oc=&#8221;http://owncloud.org/ns&#8221;&gt;</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>&lt;d:response&gt;</dt>
+<dd><dl class="first docutils">
+<dt>&lt;oc:comment&gt;</dt>
+<dd>&lt;oc:id&gt;3&lt;/oc:id&gt;
+&lt;oc:parentId&gt;0&lt;/oc:parentId&gt;
+&lt;oc:topmostParentId&gt;0&lt;/oc:topmostParentId&gt;
+&lt;oc:childrenCount&gt;0&lt;/oc:childrenCount&gt;
+&lt;oc:message&gt;first&lt;/oc:message&gt;
+&lt;oc:verb&gt;comment&lt;/oc:verb&gt;
+&lt;oc:actorType&gt;users&lt;/oc:actorType&gt;
+&lt;oc:actorId&gt;master&lt;/oc:actorId&gt;
+&lt;oc:objectType&gt;files&lt;/oc:objectType&gt;
+&lt;oc:objectId&gt;2156&lt;/oc:objectId&gt;
+&lt;oc:creationDateTime&gt;2016-01-18 22:01:16&lt;/oc:creationDateTime&gt;
+&lt;oc:latestChildDateTime&gt;2016-01-20 14:01:24&lt;/oc:latestChildDateTime&gt;</dd>
+</dl>
+<p class="last">&lt;/oc:comment&gt;</p>
+</dd>
+</dl>
+<p>&lt;/d:response&gt;
+&lt;d:response&gt;</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>&lt;oc:comment&gt;</dt>
+<dd>&lt;oc:id&gt;2&lt;/oc:id&gt;
+&lt;oc:parentId&gt;0&lt;/oc:parentId&gt;
+&lt;oc:topmostParentId&gt;0&lt;/oc:topmostParentId&gt;
+&lt;oc:childrenCount&gt;0&lt;/oc:childrenCount&gt;
+&lt;oc:message&gt;first&lt;/oc:message&gt;
+&lt;oc:verb&gt;comment&lt;/oc:verb&gt;
+&lt;oc:actorType&gt;users&lt;/oc:actorType&gt;
+&lt;oc:actorId&gt;master&lt;/oc:actorId&gt;
+&lt;oc:objectType&gt;files&lt;/oc:objectType&gt;
+&lt;oc:objectId&gt;2156&lt;/oc:objectId&gt;
+&lt;oc:creationDateTime&gt;2016-01-18 22:01:12&lt;/oc:creationDateTime&gt;
+&lt;oc:latestChildDateTime&gt;2016-01-20 14:01:24&lt;/oc:latestChildDateTime&gt;</dd>
+</dl>
+<p>&lt;/oc:comment&gt;</p>
+</div></blockquote>
+<p>&lt;/d:response&gt;</p>
+</div></blockquote>
+<p>&lt;/d:multistatus&gt;
+<a href="#id9"><span class="problematic" id="id10">``</span></a><a href="#id11"><span class="problematic" id="id12">`</span></a></p>
+<p>If you want a real life example of use, the announcement center has comments implemented.
+See the comments related files in <cite>https://github.com/nextcloud/announcementcenter/tree/master/js</cite>
+for frontend matters. Backendwise <cite>OCPCommentsICommentsManager</cite> is mostly close for housekeeping.
+It was introduced in <a class="reference external" href="https://github.com/nextcloud/announcementcenter/pull/12">https://github.com/nextcloud/announcementcenter/pull/12</a>, but
+there are also some follow up PRs.</p>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../OCS/index.html" class="btn btn-neutral float-right" title="OCS API" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="chunking.html" class="btn btn-neutral float-left" title="Chunked file upload" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021 Nextcloud GmbH.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/16/developer_manual">16</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/17/developer_manual">17</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/18/developer_manual">18</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/19/developer_manual">19</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/developer_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/developer_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+   
+
+</body>
+</html>

@@ -1,0 +1,84 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+ILogFactory
+===========
+
+
+.. php:namespace:: OCP\Log
+
+.. php:interface:: ILogFactory
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Interface ILogFactory
+		
+	
+	:Implemented by:
+		:php:class:`OC\\Log\\LogFactory` 
+	
+	
+	:Source:
+		`lib/public/Log/ILogFactory.php#35 <https://github.com/nextcloud/server/blob/stable13/lib/public/Log/ILogFactory.php#L35>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public get( $type)
+	
+		:Source:
+			`lib/public/Log/ILogFactory.php#41 <https://github.com/nextcloud/server/blob/stable13/lib/public/Log/ILogFactory.php#L41>`_
+		
+		
+		:Parameters:
+			* **$type** (string)  - one of: file, errorlog, syslog, systemd
+
+		
+		:Returns: :any:`\\OCP\\Log\\IWriter <OCP\\Log\\IWriter>` 
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public getCustomLogger( $path)
+	
+		:Source:
+			`lib/public/Log/ILogFactory.php#50 <https://github.com/nextcloud/server/blob/stable13/lib/public/Log/ILogFactory.php#L50>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: :any:`\\OCP\\ILogger <OCP\\ILogger>` 
+		:Since: 14.0.0 
+		:Deprecated:  use \\OCP\\Log\\ILogFactory::getCustomPsrLogger
+		:See: :any:`\\OCP\\Log\\ILogFactory::getCustomPsrLogger <OCP\\Log\\ILogFactory::getCustomPsrLogger>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getCustomPsrLogger( $path)
+	
+		:Source:
+			`lib/public/Log/ILogFactory.php#57 <https://github.com/nextcloud/server/blob/stable13/lib/public/Log/ILogFactory.php#L57>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: :any:`\\Psr\\Log\\LoggerInterface <Psr\\Log\\LoggerInterface>` 
+		:Since: 22.0.0 
+	
+	
+

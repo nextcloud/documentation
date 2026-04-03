@@ -1,0 +1,334 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Zwei-Faktor-Authentifizierung verwenden &mdash; Nextcloud latest Benutzerhandbuch latest documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'./',
+              VERSION:'latest',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Verbundene Browser und Geräte verwalten" href="session_management.html" />
+    <link rel="prev" title="Eigene Einstellungen vornehmen" href="userpreferences.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="contents.html">
+          
+
+          
+            
+            <img src="_static/logo-white.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="index.html">Nextcloud latest Benutzerhandbuch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="whats_new.html">Neuerungen in Nextcloud latest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="webinterface.html">Die Nextcloud Web-Oberfläche</a></li>
+<li class="toctree-l1"><a class="reference internal" href="files/index.html">Dateien &amp; Synchronisierung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="pim/index.html">Kontake &amp; Kalender</a></li>
+<li class="toctree-l1"><a class="reference internal" href="userpreferences.html">Eigene Einstellungen vornehmen</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Zwei-Faktor-Authentifizierung verwenden</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#konfiguration-der-zwei-faktor-authentifizierung">Konfiguration der Zwei-Faktor-Authentifizierung</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#backup-codes-erstellen">Backup-Codes erstellen</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#anmelden-mithilfe-der-zwei-faktor-authentifizierung">Anmelden mithilfe der Zwei-Faktor-Authentifizierung</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#client-applikationen-mit-der-zwei-faktor-authentifizierung-verwenden">Client-Applikationen mit der Zwei-Faktor-Authentifizierung verwenden</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="session_management.html">Verbundene Browser und Geräte verwalten</a></li>
+<li class="toctree-l1"><a class="reference internal" href="external_storage/index.html">Externer Speicher</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="contents.html">Nextcloud latest Benutzerhandbuch</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="contents.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Zwei-Faktor-Authentifizierung verwenden</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/nextcloud/documentation/edit/master/user_manual_de/user_2fa.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="zwei-faktor-authentifizierung-verwenden">
+<h1>Zwei-Faktor-Authentifizierung verwenden<a class="headerlink" href="#zwei-faktor-authentifizierung-verwenden" title="Permalink to this headline">¶</a></h1>
+<p>Die Zwei-Faktor-Authentifizierung (&#8220;2FA&#8221;) hilft Ihnen, Ihren Nextcloud-Account
+gegen unbefugten Zugriff besser zu schützen. Dies funktioniert wie folgt:
+Es werden zum Anmelden zwei verschiedene Identitätsnachweise (&#8220;Faktoren&#8221;)
+benötigt; z.B. etwas, das Sie <em>wissen</em> (wie ein Passwort) und etwas, das Sie
+<em>haben</em> (etwa einen Hardware-Token). Der erste Faktor ist für gewöhnlich Ihr
+Passwort. Der zweite Faktor kann z.B. eine Textnachricht sein, die Sie auf
+Ihr Handy erhalten. So müsste ein Angreifer neben Ihrem Passwort auch noch
+Zugriff auf Ihr Handy haben. Nextcloud unterstützt von Haus aus bereits
+einige Zweitfaktoren. Weitere können einfach hinzugefügt werden.</p>
+<p>Sobald die &#8220;Zwei-Faktor-Authentifizierung&#8221;-App von Ihrem Nextcloud-Administrator
+aktiviert wurde, können Sie diesen in Ihren persönlichen Einstellungen aktivieren
+und konfigurieren: <a class="reference internal" href="userpreferences.html"><span class="doc">Eigene Einstellungen vornehmen</span></a></p>
+<div class="section" id="konfiguration-der-zwei-faktor-authentifizierung">
+<h2>Konfiguration der Zwei-Faktor-Authentifizierung<a class="headerlink" href="#konfiguration-der-zwei-faktor-authentifizierung" title="Permalink to this headline">¶</a></h2>
+<p>Suchen Sie in Ihren persönlichen Einstellungen nach der &#8220;Zwei-Faktor-Authentifizierung&#8221;.
+In diesem Beispiel hier wird &#8220;TOTP&#8221;, eine mit dem Google Authenticator kompatible
+Zwei-Faktor-Authentifizierung verwendet.</p>
+<div class="figure">
+<img alt="TOTP-Konfiguration." src="_images/totp_enable.png" />
+</div>
+<p>Sobald aktiviert, wird Ihnen ein &#8220;TOTP-Schlüssel&#8221; und QR-Code angezeigt. Den QR-Code
+können Sie mit einer TOTP-App auf Ihrem Smartphone oder anderen Gerät scannen.
+Alternativ können Sie auch den &#8220;TOTP-Schlüssel&#8221; eingeben. Ihr Gerät wird nun einen
+Authentifizierungscode anzeigen. Dieser wird sich alle 30 Sekunden ändern.</p>
+</div>
+<div class="section" id="backup-codes-erstellen">
+<h2>Backup-Codes erstellen<a class="headerlink" href="#backup-codes-erstellen" title="Permalink to this headline">¶</a></h2>
+<p>Für den Fall, dass Sie Zugriff auf den Zweitfaktor verlieren, sollten Sie immer auch
+einen / mehrere Backup-Code/s erstellen. Diesen können anstelle des zweiten Faktors
+verwendet werden, z.B. wenn Ihr Smartphone mit der TOTP-App gestohlen wird. Diese
+Backup-Codes können in Ihren persönlichen Einstellungen mit Klick auf <em>Backup-Codes erstellen</em>
+generiert werden.</p>
+<div class="figure">
+<img alt="2FA Backup-Codes erstellen" src="_images/2fa_backupcode_1.png" />
+</div>
+<p>Es wird Ihnen nun eine Liste an Backup-Codes angezeigt. Jeder dieser Codes ist nur
+ein mal gültig.</p>
+<div class="figure">
+<img alt="2FA Backup-Codes" src="_images/2fa_backupcode_2.png" />
+</div>
+<p>Diese Backup-Codes sollten an einem sicheren Ort (z.B. Zuhause) aufbewahrt werden. Sie
+sollten nicht auf dem Gerät gespeichert werden, auf welchem Ihre TOTP-App installiert ist.
+Wenn dieses Gerät verloren geht, wären auch Ihre Backup-Codes nicht mehr erreichbar.</p>
+</div>
+<div class="section" id="anmelden-mithilfe-der-zwei-faktor-authentifizierung">
+<h2>Anmelden mithilfe der Zwei-Faktor-Authentifizierung<a class="headerlink" href="#anmelden-mithilfe-der-zwei-faktor-authentifizierung" title="Permalink to this headline">¶</a></h2>
+<p>Nachdem Sie die Zwei-Faktor-Authentifizierung aktiviert und sich von Nextcloud abgemeldet
+haben, werden Sie nach Eingabe Ihres Benutzernamen und Passworts auch nach einem
+TOTP-Schlüssel gefragt. Lassen Sie diesen von Ihrer TOTP-App generieren.</p>
+<div class="figure">
+<img alt="TOTP-Schlüssel." src="_images/totp_login_2.png" />
+</div>
+<p>Wenn der TOTP-Schlüssel gültig ist, werden Sie wie gewohnt zu Ihrem Nextcloud-Account weitergeleitet.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Da TOTP ein zeitbasierendes System ist, ist es wichtig, dass sowohl die Uhr Ihres
+Nextcloud-Servers als auch die Uhr Ihres Smartphones nahezu identisch sind. Eine Zeitverschiebung
+von wenigen Sekunden ist kein Problem.</p>
+</div>
+</div>
+<div class="section" id="client-applikationen-mit-der-zwei-faktor-authentifizierung-verwenden">
+<h2>Client-Applikationen mit der Zwei-Faktor-Authentifizierung verwenden<a class="headerlink" href="#client-applikationen-mit-der-zwei-faktor-authentifizierung-verwenden" title="Permalink to this headline">¶</a></h2>
+<p>Sobald die Zwei-Faktor-Authentifizierung aktiviert ist, können sich Ihre Clients nicht mehr nur mit
+einem Passwort anmelden. Falls Ihr Client eine Zwei-Faktor-Authentifizierung unterstützt, werden
+Sie wie beim Anmelden über die Nextcloud Web-Oberfläche nach einem zusätzlichen TOTP-Schlüssel
+gefragt. Unterstützt Ihr Client die Zwei-Faktor-Authentifizierung nicht, müssen Sie ein
+&#8220;App-Passwort&#8221; für ihn generieren. Nähere Informationen dazu finden Sie unter <a class="reference internal" href="session_management.html"><span class="doc">Verbundene Browser und Geräte verwalten</span></a>.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="session_management.html" class="btn btn-neutral float-right" title="Verbundene Browser und Geräte verwalten" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="userpreferences.html" class="btn btn-neutral float-left" title="Eigene Einstellungen vornehmen" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021 Nextcloud GmbH.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/16/user_manual_de">16</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/17/user_manual_de">17</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/18/user_manual_de">18</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/19/user_manual_de">19</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/user_manual_de">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/user_manual_de">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+   
+
+</body>
+</html>

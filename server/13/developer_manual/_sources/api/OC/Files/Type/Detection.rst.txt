@@ -1,0 +1,311 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+Detection
+=========
+
+
+.. php:namespace:: OC\Files\Type
+
+.. php:class:: Detection
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Class Detection
+		
+		| Mimetype detection
+		
+	
+	:Source:
+		`lib/private/Files/Type/Detection.php#56 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Type/Detection.php#L56>`_
+	
+	:Implements:
+		:php:interface:`OCP\\Files\\IMimeTypeDetector` 
+	
+
+Constants
+---------
+
+.. php:const:: CUSTOM_MIMETYPEMAPPING = mimetypemapping\.json
+
+	:Source:
+		`lib/private/Files/Type/Detection.php#57 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Type/Detection.php#L57>`_
+	
+
+
+.. php:const:: CUSTOM_MIMETYPEALIASES = mimetypealiases\.json
+
+	:Source:
+		`lib/private/Files/Type/Detection.php#58 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Type/Detection.php#L58>`_
+	
+
+
+Properties
+----------
+
+.. php:attr:: protected static mimetypes
+
+	:Source:
+		`lib/private/Files/Type/Detection.php#60 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Type/Detection.php#L60>`_
+	
+
+
+.. php:attr:: protected static secureMimeTypes
+
+	:Source:
+		`lib/private/Files/Type/Detection.php#61 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Type/Detection.php#L61>`_
+	
+
+
+.. php:attr:: protected static mimetypeIcons
+
+	:Source:
+		`lib/private/Files/Type/Detection.php#63 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Type/Detection.php#L63>`_
+	
+
+
+.. php:attr:: protected static mimeTypeAlias
+
+	:Source:
+		`lib/private/Files/Type/Detection.php#65 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Type/Detection.php#L65>`_
+	
+	:Type: string[] 
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $urlGenerator, $logger, $customConfigDir, $defaultConfigDir)
+	
+		:Source:
+			`lib/private/Files/Type/Detection.php#85 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Type/Detection.php#L85>`_
+		
+		
+		:Parameters:
+			* **$urlGenerator** (:any:`OCP\\IURLGenerator <OCP\\IURLGenerator>`)  
+			* **$logger** (:any:`OCP\\ILogger <OCP\\ILogger>`)  
+			* **$customConfigDir** (string)  
+			* **$defaultConfigDir** (string)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public registerType( $extension, $mimetype, $secureMimeType=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Add an extension \-\> mimetype mapping
+			
+			| $mimetype is the assumed correct mime type
+			| The optional $secureMimeType is an alternative to send to send
+			| to avoid potential XSS\.
+			
+		
+		:Source:
+			`lib/private/Files/Type/Detection.php#106 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Type/Detection.php#L106>`_
+		
+		
+		:Parameters:
+			* **$extension** (string)  
+			* **$mimetype** (string)  
+			* **$secureMimeType** (string | null)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public registerTypeArray( $types)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Add an array of extension \-\> mimetype mappings
+			
+			| The mimetype value is in itself an array where the first index is
+			| the assumed correct mimetype and the second is either a secure alternative
+			| or null if the correct is considered secure\.
+			
+		
+		:Source:
+			`lib/private/Files/Type/Detection.php#122 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Type/Detection.php#L122>`_
+		
+		
+		:Parameters:
+			* **$types** (array)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getAllAliases()
+	
+		:Source:
+			`lib/private/Files/Type/Detection.php#164 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Type/Detection.php#L164>`_
+		
+		
+		:Returns: string[] 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getOnlyDefaultAliases()
+	
+		:Source:
+			`lib/private/Files/Type/Detection.php#169 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Type/Detection.php#L169>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getAllMappings()
+	
+		:Source:
+			`lib/private/Files/Type/Detection.php#192 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Type/Detection.php#L192>`_
+		
+		
+		:Returns: array 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public detectPath( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| detect mimetype only based on filename, content of file is not used
+			
+		
+		:Source:
+			`lib/private/Files/Type/Detection.php#203 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Type/Detection.php#L203>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public detectContent( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| detect mimetype only based on the content of file
+			
+		
+		:Source:
+			`lib/private/Files/Type/Detection.php#235 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Type/Detection.php#L235>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: string 
+		:Since: 18.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public detect( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| detect mimetype based on both filename and content
+			
+		
+		:Source:
+			`lib/private/Files/Type/Detection.php#300 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Type/Detection.php#L300>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public detectString( $data)
+	
+		.. rst-class:: phpdoc-description
+		
+			| detect mimetype based on the content of a string
+			
+		
+		:Source:
+			`lib/private/Files/Type/Detection.php#316 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Type/Detection.php#L316>`_
+		
+		
+		:Parameters:
+			* **$data** (string)  
+
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getSecureMimeType( $mimeType)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get a secure mimetype that won\'t expose potential XSS\.
+			
+		
+		:Source:
+			`lib/private/Files/Type/Detection.php#338 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Type/Detection.php#L338>`_
+		
+		
+		:Parameters:
+			* **$mimeType** (string)  
+
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public mimeTypeIcon( $mimetype)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get path to the icon of a file type
+			
+		
+		:Source:
+			`lib/private/Files/Type/Detection.php#349 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Type/Detection.php#L349>`_
+		
+		
+		:Parameters:
+			* **$mimetype** (string)  the MIME type
+
+		
+		:Returns: string the url
+	
+	
+

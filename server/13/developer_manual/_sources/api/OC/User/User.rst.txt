@@ -1,0 +1,431 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+User
+====
+
+
+.. php:namespace:: OC\User
+
+.. php:class:: User
+
+
+	:Source:
+		`lib/private/User/User.php#60 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/User.php#L60>`_
+	
+	:Implements:
+		:php:interface:`OCP\\IUser` 
+	
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $uid, $backend, $dispatcher, $emitter=null, $config=null, $urlGenerator=null)
+	
+		:Source:
+			`lib/private/User/User.php#96 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/User.php#L96>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getUID()
+	
+		.. rst-class:: phpdoc-description
+		
+			| get the user id
+			
+		
+		:Source:
+			`lib/private/User/User.php#121 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/User.php#L121>`_
+		
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getDisplayName()
+	
+		.. rst-class:: phpdoc-description
+		
+			| get the display name for the user, if no specific display name is set it will fallback to the user id
+			
+		
+		:Source:
+			`lib/private/User/User.php#130 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/User.php#L130>`_
+		
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setDisplayName( $displayName)
+	
+		.. rst-class:: phpdoc-description
+		
+			| set the displayname for the user
+			
+		
+		:Source:
+			`lib/private/User/User.php#156 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/User.php#L156>`_
+		
+		
+		:Parameters:
+			* **$displayName** (string)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setEMailAddress( $mailAddress)
+	
+		.. rst-class:: phpdoc-description
+		
+			| set the email address of the user
+			
+		
+		:Source:
+			`lib/private/User/User.php#177 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/User.php#L177>`_
+		
+		
+		:Parameters:
+			* **$mailAddress** (string | null)  
+
+		
+		:Returns: void 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getLastLogin()
+	
+		.. rst-class:: phpdoc-description
+		
+			| returns the timestamp of the user\'s last login or 0 if the user did never
+			| login
+			
+		
+		:Source:
+			`lib/private/User/User.php#195 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/User.php#L195>`_
+		
+		
+		:Returns: int 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public updateLastLoginTimestamp()
+	
+		.. rst-class:: phpdoc-description
+		
+			| updates the timestamp of the most recent login of this user
+			
+		
+		:Source:
+			`lib/private/User/User.php#202 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/User.php#L202>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public delete()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Delete the user
+			
+		
+		:Source:
+			`lib/private/User/User.php#216 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/User.php#L216>`_
+		
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setPassword( $password, $recoveryPassword=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set the password of the user
+			
+		
+		:Source:
+			`lib/private/User/User.php#287 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/User.php#L287>`_
+		
+		
+		:Parameters:
+			* **$password** (string)  
+			* **$recoveryPassword** (string)  for the encryption app to reset encryption keys
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getHome()
+	
+		.. rst-class:: phpdoc-description
+		
+			| get the users home folder to mount
+			
+		
+		:Source:
+			`lib/private/User/User.php#315 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/User.php#L315>`_
+		
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getBackendClassName()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the name of the backend class the user is connected with
+			
+		
+		:Source:
+			`lib/private/User/User.php#333 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/User.php#L333>`_
+		
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getBackend()
+	
+		:Source:
+			`lib/private/User/User.php#340 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/User.php#L340>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public canChangeAvatar()
+	
+		.. rst-class:: phpdoc-description
+		
+			| check if the backend allows the user to change his avatar on Personal page
+			
+		
+		:Source:
+			`lib/private/User/User.php#349 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/User.php#L349>`_
+		
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public canChangePassword()
+	
+		.. rst-class:: phpdoc-description
+		
+			| check if the backend supports changing passwords
+			
+		
+		:Source:
+			`lib/private/User/User.php#361 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/User.php#L361>`_
+		
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public canChangeDisplayName()
+	
+		.. rst-class:: phpdoc-description
+		
+			| check if the backend supports changing display names
+			
+		
+		:Source:
+			`lib/private/User/User.php#370 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/User.php#L370>`_
+		
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isEnabled()
+	
+		.. rst-class:: phpdoc-description
+		
+			| check if the user is enabled
+			
+		
+		:Source:
+			`lib/private/User/User.php#382 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/User.php#L382>`_
+		
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setEnabled( $enabled=true)
+	
+		.. rst-class:: phpdoc-description
+		
+			| set the enabled status for the user
+			
+		
+		:Source:
+			`lib/private/User/User.php#391 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/User.php#L391>`_
+		
+		
+		:Parameters:
+			* **$enabled** (bool)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getEMailAddress()
+	
+		.. rst-class:: phpdoc-description
+		
+			| get the users email address
+			
+		
+		:Source:
+			`lib/private/User/User.php#407 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/User.php#L407>`_
+		
+		
+		:Returns: string | null 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getQuota()
+	
+		.. rst-class:: phpdoc-description
+		
+			| get the users\' quota
+			
+		
+		:Source:
+			`lib/private/User/User.php#417 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/User.php#L417>`_
+		
+		
+		:Returns: string 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setQuota( $quota)
+	
+		.. rst-class:: phpdoc-description
+		
+			| set the users\' quota
+			
+		
+		:Source:
+			`lib/private/User/User.php#440 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/User.php#L440>`_
+		
+		
+		:Parameters:
+			* **$quota** (string)  
+
+		
+		:Returns: void 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getAvatarImage( $size)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get the avatar image if it exists
+			
+		
+		:Source:
+			`lib/private/User/User.php#459 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/User.php#L459>`_
+		
+		
+		:Parameters:
+			* **$size** (int)  
+
+		
+		:Returns: :any:`\\OCP\\IImage <OCP\\IImage>` | null 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getCloudId()
+	
+		.. rst-class:: phpdoc-description
+		
+			| get the federation cloud id
+			
+		
+		:Source:
+			`lib/private/User/User.php#480 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/User.php#L480>`_
+		
+		
+		:Returns: string 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public triggerChange( $feature, $value=null, $oldValue=null)
+	
+		:Source:
+			`lib/private/User/User.php#501 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/User.php#L501>`_
+		
+		
+	
+	
+

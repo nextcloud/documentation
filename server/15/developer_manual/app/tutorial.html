@@ -1,0 +1,1624 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Tutorial &mdash; Nextcloud 15 Developer Manual 15 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'15',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Request lifecycle" href="requests/index.html" />
+    <link rel="prev" title="Introduction" href="intro.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../general/index.html">General contributor guidelines</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">App development</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Tutorial</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#setup">Setup</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#routes-controllers">Routes &amp; controllers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#database">Database</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#connect-database-controllers">Connect database &amp; controllers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#making-things-reusable-and-decoupling-controllers-from-the-database">Making things reusable and decoupling controllers from the database</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#writing-a-test-for-the-controller-recommended">Writing a test for the controller (recommended)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#unit-tests">Unit tests</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#integration-tests">Integration tests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#adding-a-restful-api-optional">Adding a RESTful API (optional)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#adding-javascript-and-css">Adding JavaScript and CSS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#creating-a-navigation">Creating a navigation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#creating-the-content">Creating the content</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#wiring-it-up">Wiring it up</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#apply-finishing-touches">Apply finishing touches</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="requests/index.html">Request lifecycle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="view/index.html">View</a></li>
+<li class="toctree-l2"><a class="reference internal" href="storage/index.html">Storage and database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html">Changelog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classloader.html">Classloader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="code_signing.html">Code signing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="info.html">App metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="init.html">Navigation and pre-app configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="publishing.html">App store publishing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="users.html">User management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="two-factor-provider.html">Two-factor providers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hooks.html">Hooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backgroundjobs.html">Background jobs (Cron)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="settings.html">Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notifications.html">Notifications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logging.html">Logging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="repair.html">Repair steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="publicpage.html">Public Pages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="testing.html">Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html">API Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../design/index.html">Design guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../android_library/index.html">Android application development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client_apis/index.html">Client APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../core/index.html">Core development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bugtracker/index.html">Bugtracker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../commun/index.html">Help and communication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API Documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Nextcloud 15 Developer Manual</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">App development</a> &raquo;</li>
+        
+      <li>Tutorial</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/nextcloud/documentation/edit/stable15/developer_manual/app/tutorial.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="tutorial">
+<h1>Tutorial<a class="headerlink" href="#tutorial" title="Permalink to this headline">¶</a></h1>
+<p>This tutorial will outline how to create a very simple notes app. The finished app is available on <a class="reference external" href="https://github.com/nextcloud/app-tutorial#tutorial">GitHub</a>.</p>
+<div class="section" id="setup">
+<h2>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h2>
+<p>First the <a class="reference internal" href="../general/devenv.html"><span class="doc">development environment</span></a> needs to be set up. This can be done by either <a class="reference external" href="https://nextcloud.com/install/">downloading the zip from the website</a> or cloning it directly from GitHub:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>git clone git@github.com:nextcloud/server.git --branch $BRANCH
+cd server
+git submodule update --init
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last"><code class="docutils literal"><span class="pre">$BRANCH</span></code> is the desired Nextcloud branch (e.g. <code class="docutils literal"><span class="pre">stable9</span></code> for Nextcloud 9, <code class="docutils literal"><span class="pre">stable10</span></code> for Nextcloud 10, ..., <code class="docutils literal"><span class="pre">master</span></code> for the upcoming release)</p>
+</div>
+<p>First you want to enable debug mode to get proper error messages. To do that set <code class="docutils literal"><span class="pre">debug</span></code> to <code class="docutils literal"><span class="pre">true</span></code> in the <strong>nextcloud/config/config.php</strong> file:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>&lt;?php
+$CONFIG = array (
+    &#39;debug&#39; =&gt; true,
+    ... configuration goes here ...
+);
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">PHP errors are logged to <strong>nextcloud/data/nextcloud.log</strong></p>
+</div>
+<p>Now open another terminal window and start the development server:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">nextcloud</span>
+<span class="n">php</span> <span class="o">-</span><span class="n">S</span> <span class="n">localhost</span><span class="p">:</span><span class="mi">8080</span>
+</pre></div>
+</div>
+<p>Afterwards a skeleton app can be created in the <a class="reference external" href="https://apps.nextcloud.com/developer/apps/generate">app store</a>.</p>
+<p>Download the compressed file that contains the generated app and extract it into your <code class="docutils literal"><span class="pre">apps/</span></code> directory. Afterwards the application can be enabled on the <a class="reference external" href="http://localhost:8080/index.php/settings/apps">apps page</a>.</p>
+<p>The first basic app is now available at <code class="docutils literal"><span class="pre">http://localhost:8080/index.php/apps/yourappid/</span></code></p>
+</div>
+<div class="section" id="routes-controllers">
+<h2>Routes &amp; controllers<a class="headerlink" href="#routes-controllers" title="Permalink to this headline">¶</a></h2>
+<p>A typical web application consists of server side and client side code. The glue between those two parts are the URLs. In case of the notes app the following URLs will be used:</p>
+<ul class="simple">
+<li><strong>GET /</strong>: Returns the interface in HTML</li>
+<li><strong>GET /notes</strong>: Returns a list of all notes in JSON</li>
+<li><strong>GET /notes/1</strong>: Returns a note with the id 1 in JSON</li>
+<li><strong>DELETE /notes/1</strong>: Deletes a note with the id 1</li>
+<li><strong>POST /notes</strong>: Creates a new note by passing in JSON</li>
+<li><strong>PUT /notes/1</strong>: Updates a note with the id 1 by passing in JSON</li>
+</ul>
+<p>On the client side we can call these URLs with the following jQuery code:</p>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="c1">// example for calling the PUT /notes/1 URL</span>
+<span class="kd">var</span> <span class="nx">baseUrl</span> <span class="o">=</span> <span class="nx">OC</span><span class="p">.</span><span class="nx">generateUrl</span><span class="p">(</span><span class="s1">&#39;/apps/ownnotes&#39;</span><span class="p">);</span>
+<span class="kd">var</span> <span class="nx">note</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">title</span><span class="o">:</span> <span class="s1">&#39;New note&#39;</span><span class="p">,</span>
+    <span class="nx">content</span><span class="o">:</span> <span class="s1">&#39;This is the note text&#39;</span>
+<span class="p">};</span>
+<span class="kd">var</span> <span class="nx">id</span> <span class="o">=</span> <span class="mi">1</span><span class="p">;</span>
+<span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+    <span class="nx">url</span><span class="o">:</span> <span class="nx">baseUrl</span> <span class="o">+</span> <span class="s1">&#39;/notes/&#39;</span> <span class="o">+</span> <span class="nx">id</span><span class="p">,</span>
+    <span class="nx">type</span><span class="o">:</span> <span class="s1">&#39;PUT&#39;</span><span class="p">,</span>
+    <span class="nx">contentType</span><span class="o">:</span> <span class="s1">&#39;application/json&#39;</span><span class="p">,</span>
+    <span class="nx">data</span><span class="o">:</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">note</span><span class="p">)</span>
+<span class="p">}).</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">response</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// handle success</span>
+<span class="p">}).</span><span class="nx">fail</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">response</span><span class="p">,</span> <span class="nx">code</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// handle failure</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>On the server side we need to register a callback that is executed once the request comes in. The callback itself will be a method on a <a class="reference internal" href="requests/controllers.html"><span class="doc">controller</span></a> and the controller will be connected to the URL with a <a class="reference internal" href="requests/routes.html"><span class="doc">route</span></a>. The controller and route for the page are already set up in <strong>ownnotes/appinfo/routes.php</strong>:</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="k">return</span> <span class="p">[</span><span class="s1">&#39;routes&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+    <span class="p">[</span><span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;page#index&#39;</span><span class="p">,</span> <span class="s1">&#39;url&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="s1">&#39;verb&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;GET&#39;</span><span class="p">]</span>
+<span class="p">]];</span>
+</pre></div>
+</div>
+<p>This route calls the controller <strong>OCA\OwnNotes\PageController-&gt;index()</strong> method which is defined in <strong>ownnotes/lib/Controller/PageController.php</strong>. The controller returns a <a class="reference internal" href="view/templates.html"><span class="doc">template</span></a>, in this case <strong>ownnotes/templates/main.php</strong>:</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">&#64;NoAdminRequired and &#64;NoCSRFRequired in the comments above the method turn off security checks, see <a class="reference internal" href="requests/controllers.html"><span class="doc">Controllers</span></a></p>
+</div>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+ <span class="k">namespace</span> <span class="nx">OCA\OwnNotes\Controller</span><span class="p">;</span>
+
+ <span class="k">use</span> <span class="nx">OCP\IRequest</span><span class="p">;</span>
+ <span class="k">use</span> <span class="nx">OCP\AppFramework\Http\TemplateResponse</span><span class="p">;</span>
+ <span class="k">use</span> <span class="nx">OCP\AppFramework\Controller</span><span class="p">;</span>
+
+ <span class="k">class</span> <span class="nc">PageController</span> <span class="k">extends</span> <span class="nx">Controller</span> <span class="p">{</span>
+
+     <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$AppName</span><span class="p">,</span> <span class="nx">IRequest</span> <span class="nv">$request</span><span class="p">){</span>
+         <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">(</span><span class="nv">$AppName</span><span class="p">,</span> <span class="nv">$request</span><span class="p">);</span>
+     <span class="p">}</span>
+
+     <span class="sd">/**</span>
+<span class="sd">      * @NoAdminRequired</span>
+<span class="sd">      * @NoCSRFRequired</span>
+<span class="sd">      */</span>
+     <span class="k">public</span> <span class="k">function</span> <span class="nf">index</span><span class="p">()</span> <span class="p">{</span>
+         <span class="k">return</span> <span class="k">new</span> <span class="nx">TemplateResponse</span><span class="p">(</span><span class="s1">&#39;ownnotes&#39;</span><span class="p">,</span> <span class="s1">&#39;main&#39;</span><span class="p">);</span>
+     <span class="p">}</span>
+
+ <span class="p">}</span>
+</pre></div>
+</div>
+<p>Since the route which returns the initial HTML has been taken care of, the controller which handles the AJAX requests for the notes needs to be set up. Create the following file: <strong>ownnotes/lib/Controller/NoteController.php</strong> with the following content:</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+ <span class="k">namespace</span> <span class="nx">OCA\OwnNotes\Controller</span><span class="p">;</span>
+
+ <span class="k">use</span> <span class="nx">OCP\IRequest</span><span class="p">;</span>
+ <span class="k">use</span> <span class="nx">OCP\AppFramework\Controller</span><span class="p">;</span>
+
+ <span class="k">class</span> <span class="nc">NoteController</span> <span class="k">extends</span> <span class="nx">Controller</span> <span class="p">{</span>
+
+     <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$AppName</span><span class="p">,</span> <span class="nx">IRequest</span> <span class="nv">$request</span><span class="p">){</span>
+         <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">(</span><span class="nv">$AppName</span><span class="p">,</span> <span class="nv">$request</span><span class="p">);</span>
+     <span class="p">}</span>
+
+     <span class="sd">/**</span>
+<span class="sd">      * @NoAdminRequired</span>
+<span class="sd">      */</span>
+     <span class="k">public</span> <span class="k">function</span> <span class="nf">index</span><span class="p">()</span> <span class="p">{</span>
+         <span class="c1">// empty for now</span>
+     <span class="p">}</span>
+
+     <span class="sd">/**</span>
+<span class="sd">      * @NoAdminRequired</span>
+<span class="sd">      *</span>
+<span class="sd">      * @param int $id</span>
+<span class="sd">      */</span>
+     <span class="k">public</span> <span class="k">function</span> <span class="nf">show</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$id</span><span class="p">)</span> <span class="p">{</span>
+         <span class="c1">// empty for now</span>
+     <span class="p">}</span>
+
+     <span class="sd">/**</span>
+<span class="sd">      * @NoAdminRequired</span>
+<span class="sd">      *</span>
+<span class="sd">      * @param string $title</span>
+<span class="sd">      * @param string $content</span>
+<span class="sd">      */</span>
+     <span class="k">public</span> <span class="k">function</span> <span class="nf">create</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$title</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$content</span><span class="p">)</span> <span class="p">{</span>
+         <span class="c1">// empty for now</span>
+     <span class="p">}</span>
+
+     <span class="sd">/**</span>
+<span class="sd">      * @NoAdminRequired</span>
+<span class="sd">      *</span>
+<span class="sd">      * @param int $id</span>
+<span class="sd">      * @param string $title</span>
+<span class="sd">      * @param string $content</span>
+<span class="sd">      */</span>
+     <span class="k">public</span> <span class="k">function</span> <span class="nf">update</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$id</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$title</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$content</span><span class="p">)</span> <span class="p">{</span>
+         <span class="c1">// empty for now</span>
+     <span class="p">}</span>
+
+     <span class="sd">/**</span>
+<span class="sd">      * @NoAdminRequired</span>
+<span class="sd">      *</span>
+<span class="sd">      * @param int $id</span>
+<span class="sd">      */</span>
+     <span class="k">public</span> <span class="k">function</span> <span class="nf">destroy</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$id</span><span class="p">)</span> <span class="p">{</span>
+         <span class="c1">// empty for now</span>
+     <span class="p">}</span>
+
+ <span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The parameters are extracted from the request body and the URL using the controller method&#8217;s variable names. Since PHP does not support type hints for primitive types such as ints and booleans, we need to add them as annotations in the comments. In order to type cast a parameter to an int, add <strong>&#64;param int $parameterName</strong></p>
+</div>
+<p>Now the controller methods need to be connected to the corresponding URLs in the <strong>ownnotes/appinfo/routes.php</strong> file:</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="k">return</span> <span class="p">[</span>
+    <span class="s1">&#39;routes&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+        <span class="p">[</span><span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;page#index&#39;</span><span class="p">,</span> <span class="s1">&#39;url&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="s1">&#39;verb&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;GET&#39;</span><span class="p">],</span>
+        <span class="p">[</span><span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;note#index&#39;</span><span class="p">,</span> <span class="s1">&#39;url&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/notes&#39;</span><span class="p">,</span> <span class="s1">&#39;verb&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;GET&#39;</span><span class="p">],</span>
+        <span class="p">[</span><span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;note#show&#39;</span><span class="p">,</span> <span class="s1">&#39;url&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/notes/{id}&#39;</span><span class="p">,</span> <span class="s1">&#39;verb&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;GET&#39;</span><span class="p">],</span>
+        <span class="p">[</span><span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;note#create&#39;</span><span class="p">,</span> <span class="s1">&#39;url&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/notes&#39;</span><span class="p">,</span> <span class="s1">&#39;verb&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;POST&#39;</span><span class="p">],</span>
+        <span class="p">[</span><span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;note#update&#39;</span><span class="p">,</span> <span class="s1">&#39;url&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/notes/{id}&#39;</span><span class="p">,</span> <span class="s1">&#39;verb&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;PUT&#39;</span><span class="p">],</span>
+        <span class="p">[</span><span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;note#destroy&#39;</span><span class="p">,</span> <span class="s1">&#39;url&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/notes/{id}&#39;</span><span class="p">,</span> <span class="s1">&#39;verb&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;DELETE&#39;</span><span class="p">]</span>
+    <span class="p">]</span>
+<span class="p">];</span>
+</pre></div>
+</div>
+<p>Since those 5 routes are so common, they can be abbreviated by adding a resource instead:</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="k">return</span> <span class="p">[</span>
+    <span class="s1">&#39;resources&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+        <span class="s1">&#39;note&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;url&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/notes&#39;</span><span class="p">]</span>
+    <span class="p">],</span>
+    <span class="s1">&#39;routes&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+        <span class="p">[</span><span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;page#index&#39;</span><span class="p">,</span> <span class="s1">&#39;url&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="s1">&#39;verb&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;GET&#39;</span><span class="p">]</span>
+    <span class="p">]</span>
+<span class="p">];</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="database">
+<h2>Database<a class="headerlink" href="#database" title="Permalink to this headline">¶</a></h2>
+<p>Now that the routes are set up and connected the notes should be saved in the
+database. To do that first create a <a class="reference internal" href="storage/migrations.html"><span class="doc">database migration</span></a>
+by creating a file <strong>ownnotes/lib/Migration/VersionXXYYZZDateYYYYMMDDHHSSAA.php</strong>,
+so for example <strong>ownnotes/lib/Migration/Version000000Date20181224140601.php</strong>&#8220;&#8221;</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+
+  <span class="k">namespace</span> <span class="nx">OCA\Notes\Migration</span><span class="p">;</span>
+
+  <span class="k">use</span> <span class="nx">Closure</span><span class="p">;</span>
+  <span class="k">use</span> <span class="nx">OCP\DB\ISchemaWrapper</span><span class="p">;</span>
+  <span class="k">use</span> <span class="nx">OCP\Migration\SimpleMigrationStep</span><span class="p">;</span>
+  <span class="k">use</span> <span class="nx">OCP\Migration\IOutput</span><span class="p">;</span>
+
+  <span class="k">class</span> <span class="nc">Version000000Date20181224140601</span> <span class="k">extends</span> <span class="nx">SimpleMigrationStep</span> <span class="p">{</span>
+
+      <span class="sd">/**</span>
+<span class="sd">        * @param IOutput $output</span>
+<span class="sd">        * @param Closure $schemaClosure The `\Closure` returns a `ISchemaWrapper`</span>
+<span class="sd">        * @param array $options</span>
+<span class="sd">        * @return null|ISchemaWrapper</span>
+<span class="sd">       */</span>
+       <span class="k">public</span> <span class="k">function</span> <span class="nf">changeSchema</span><span class="p">(</span><span class="nx">IOutput</span> <span class="nv">$output</span><span class="p">,</span> <span class="nx">Closure</span> <span class="nv">$schemaClosure</span><span class="p">,</span> <span class="k">array</span> <span class="nv">$options</span><span class="p">)</span> <span class="p">{</span>
+          <span class="sd">/** @var ISchemaWrapper $schema */</span>
+          <span class="nv">$schema</span> <span class="o">=</span> <span class="nv">$schemaClosure</span><span class="p">();</span>
+
+          <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$schema</span><span class="o">-&gt;</span><span class="na">hasTable</span><span class="p">(</span><span class="s1">&#39;notes_meta&#39;</span><span class="p">))</span> <span class="p">{</span>
+              <span class="nv">$table</span> <span class="o">=</span> <span class="nv">$schema</span><span class="o">-&gt;</span><span class="na">createTable</span><span class="p">(</span><span class="s1">&#39;notes_meta&#39;</span><span class="p">);</span>
+              <span class="nv">$table</span><span class="o">-&gt;</span><span class="na">addColumn</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;integer&#39;</span><span class="p">,</span> <span class="p">[</span>
+                  <span class="s1">&#39;autoincrement&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+                  <span class="s1">&#39;notnull&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+              <span class="p">]);</span>
+              <span class="nv">$table</span><span class="o">-&gt;</span><span class="na">addColumn</span><span class="p">(</span><span class="s1">&#39;file_id&#39;</span><span class="p">,</span> <span class="s1">&#39;integer&#39;</span><span class="p">,</span> <span class="p">[</span>
+                  <span class="s1">&#39;notnull&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+              <span class="p">]);</span>
+              <span class="nv">$table</span><span class="o">-&gt;</span><span class="na">addColumn</span><span class="p">(</span><span class="s1">&#39;user_id&#39;</span><span class="p">,</span> <span class="s1">&#39;string&#39;</span><span class="p">,</span> <span class="p">[</span>
+                  <span class="s1">&#39;notnull&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+                  <span class="s1">&#39;length&#39;</span> <span class="o">=&gt;</span> <span class="mi">64</span><span class="p">,</span>
+              <span class="p">]);</span>
+              <span class="nv">$table</span><span class="o">-&gt;</span><span class="na">addColumn</span><span class="p">(</span><span class="s1">&#39;last_update&#39;</span><span class="p">,</span> <span class="s1">&#39;integer&#39;</span><span class="p">,</span> <span class="p">[</span>
+                  <span class="s1">&#39;notnull&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+              <span class="p">]);</span>
+              <span class="nv">$table</span><span class="o">-&gt;</span><span class="na">addColumn</span><span class="p">(</span><span class="s1">&#39;etag&#39;</span><span class="p">,</span> <span class="s1">&#39;string&#39;</span><span class="p">,</span> <span class="p">[</span>
+                  <span class="s1">&#39;notnull&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+                  <span class="s1">&#39;length&#39;</span> <span class="o">=&gt;</span> <span class="mi">32</span><span class="p">,</span>
+              <span class="p">]);</span>
+
+              <span class="nv">$table</span><span class="o">-&gt;</span><span class="na">setPrimaryKey</span><span class="p">([</span><span class="s1">&#39;id&#39;</span><span class="p">]);</span>
+              <span class="nv">$table</span><span class="o">-&gt;</span><span class="na">addIndex</span><span class="p">([</span><span class="s1">&#39;file_id&#39;</span><span class="p">],</span> <span class="s1">&#39;notes_meta_file_id_index&#39;</span><span class="p">);</span>
+              <span class="nv">$table</span><span class="o">-&gt;</span><span class="na">addIndex</span><span class="p">([</span><span class="s1">&#39;user_id&#39;</span><span class="p">],</span> <span class="s1">&#39;notes_meta_user_id_index&#39;</span><span class="p">);</span>
+              <span class="nv">$table</span><span class="o">-&gt;</span><span class="na">addUniqueIndex</span><span class="p">([</span><span class="s1">&#39;file_id&#39;</span><span class="p">,</span> <span class="s1">&#39;user_id&#39;</span><span class="p">],</span> <span class="s1">&#39;notes_meta_file_user_index&#39;</span><span class="p">);</span>
+          <span class="p">}</span>
+
+          <span class="k">return</span> <span class="nv">$schema</span><span class="p">;</span>
+      <span class="p">}</span>
+  <span class="p">}</span>
+</pre></div>
+</div>
+<p>To create the tables in the database, the <a class="reference internal" href="info.html"><span class="doc">version tag</span></a> in <strong>ownnotes/appinfo/info.xml</strong> needs to be increased:</p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span class="nt">&lt;info&gt;</span>
+    <span class="nt">&lt;id&gt;</span>ownnotes<span class="nt">&lt;/id&gt;</span>
+    <span class="nt">&lt;name&gt;</span>Own Notes<span class="nt">&lt;/name&gt;</span>
+    <span class="nt">&lt;description&gt;</span>My first Nextcloud app<span class="nt">&lt;/description&gt;</span>
+    <span class="nt">&lt;licence&gt;</span>AGPL<span class="nt">&lt;/licence&gt;</span>
+    <span class="nt">&lt;author&gt;</span>Your Name<span class="nt">&lt;/author&gt;</span>
+    <span class="nt">&lt;version&gt;</span>0.0.2<span class="nt">&lt;/version&gt;</span>
+    <span class="nt">&lt;namespace&gt;</span>OwnNotes<span class="nt">&lt;/namespace&gt;</span>
+    <span class="nt">&lt;category&gt;</span>tool<span class="nt">&lt;/category&gt;</span>
+    <span class="nt">&lt;dependencies&gt;</span>
+        <span class="nt">&lt;owncloud</span> <span class="na">min-version=</span><span class="s">&quot;8&quot;</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;/dependencies&gt;</span>
+<span class="nt">&lt;/info&gt;</span>
+</pre></div>
+</div>
+<p>Reload the page to trigger the database migration.</p>
+<p>Now that the tables are created we want to map the database result to a PHP object to be able to control data. First create an <a class="reference internal" href="storage/database.html"><span class="doc">entity</span></a> in <strong>ownnotes/lib/Db/Note.php</strong>:</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="k">namespace</span> <span class="nx">OCA\OwnNotes\Db</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">JsonSerializable</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Db\Entity</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Note</span> <span class="k">extends</span> <span class="nx">Entity</span> <span class="k">implements</span> <span class="nx">JsonSerializable</span> <span class="p">{</span>
+
+    <span class="k">protected</span> <span class="nv">$title</span><span class="p">;</span>
+    <span class="k">protected</span> <span class="nv">$content</span><span class="p">;</span>
+    <span class="k">protected</span> <span class="nv">$userId</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">jsonSerialize</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="p">[</span>
+            <span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">,</span>
+            <span class="s1">&#39;title&#39;</span> <span class="o">=&gt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">title</span><span class="p">,</span>
+            <span class="s1">&#39;content&#39;</span> <span class="o">=&gt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">content</span>
+        <span class="p">];</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">A field <strong>id</strong> is automatically set in the Entity base class</p>
+</div>
+<p>We also define a <strong>jsonSerializable</strong> method and implement the interface to be able to transform the entity to JSON easily.</p>
+<p>Entities are returned from so called <a class="reference internal" href="storage/database.html"><span class="doc">Mappers</span></a>. Let&#8217;s create one in <strong>ownnotes/lib/Db/NoteMapper.php</strong> and add a <strong>find</strong> and <strong>findAll</strong> method:</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="k">namespace</span> <span class="nx">OCA\OwnNotes\Db</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCP\IDbConnection</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Db\QBMapper</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">NoteMapper</span> <span class="k">extends</span> <span class="nx">QBMapper</span> <span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">IDbConnection</span> <span class="nv">$db</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">(</span><span class="nv">$db</span><span class="p">,</span> <span class="s1">&#39;ownnotes_notes&#39;</span><span class="p">,</span> <span class="nx">Note</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">find</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$id</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$userId</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$qb</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">db</span><span class="o">-&gt;</span><span class="na">getQueryBuilder</span><span class="p">();</span>
+
+                    <span class="nv">$qb</span><span class="o">-&gt;</span><span class="na">select</span><span class="p">(</span><span class="s1">&#39;*&#39;</span><span class="p">)</span>
+                             <span class="o">-&gt;</span><span class="na">from</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getTableName</span><span class="p">())</span>
+                             <span class="o">-&gt;</span><span class="na">where</span><span class="p">(</span>
+                                     <span class="nv">$qb</span><span class="o">-&gt;</span><span class="na">expr</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">eq</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="nv">$qb</span><span class="o">-&gt;</span><span class="na">createNamedParameter</span><span class="p">(</span><span class="nv">$id</span><span class="p">))</span>
+                             <span class="p">)</span><span class="o">-&gt;</span><span class="na">andWhere</span><span class="p">(</span>
+             <span class="nv">$qb</span><span class="o">-&gt;</span><span class="na">expr</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">eq</span><span class="p">(</span><span class="s1">&#39;user_id&#39;</span><span class="p">,</span> <span class="nv">$qb</span><span class="o">-&gt;</span><span class="na">createNamedParameter</span><span class="p">(</span><span class="nv">$userId</span><span class="p">))</span>
+           <span class="p">);</span>
+
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">findEntity</span><span class="p">(</span><span class="nv">$qb</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">findAll</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$userId</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$qb</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">db</span><span class="o">-&gt;</span><span class="na">getQueryBuilder</span><span class="p">();</span>
+
+        <span class="nv">$qb</span><span class="o">-&gt;</span><span class="na">select</span><span class="p">(</span><span class="s1">&#39;*&#39;</span><span class="p">)</span>
+           <span class="o">-&gt;</span><span class="na">from</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getTableName</span><span class="p">())</span>
+           <span class="o">-&gt;</span><span class="na">where</span><span class="p">(</span>
+            <span class="nv">$qb</span><span class="o">-&gt;</span><span class="na">expr</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">eq</span><span class="p">(</span><span class="s1">&#39;user_id&#39;</span><span class="p">,</span> <span class="nv">$qb</span><span class="o">-&gt;</span><span class="na">createNamedParameter</span><span class="p">(</span><span class="nv">$userId</span><span class="p">))</span>
+           <span class="p">);</span>
+
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">findEntities</span><span class="p">(</span><span class="nv">$qb</span><span class="p">);</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The first parent constructor parameter is the database layer, the second one is the database table and the third is the entity on which the result should be mapped onto. Insert, delete and update methods are already implemented.</p>
+</div>
+</div>
+<div class="section" id="connect-database-controllers">
+<h2>Connect database &amp; controllers<a class="headerlink" href="#connect-database-controllers" title="Permalink to this headline">¶</a></h2>
+<p>The mapper which provides the database access is finished and can be passed into the controller.</p>
+<p>You can pass in the mapper by adding it as a type hinted parameter. Nextcloud will figure out how to <a class="reference internal" href="requests/container.html"><span class="doc">assemble them by itself</span></a>. Additionally we want to know the userId of the currently logged in user. Simply add a <strong>$UserId</strong> parameter to the constructor (case sensitive!). To do that open <strong>ownnotes/lib/Controller/NoteController.php</strong> and change it to the following:</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+ <span class="k">namespace</span> <span class="nx">OCA\OwnNotes\Controller</span><span class="p">;</span>
+
+ <span class="k">use</span> <span class="nx">Exception</span><span class="p">;</span>
+
+ <span class="k">use</span> <span class="nx">OCP\IRequest</span><span class="p">;</span>
+ <span class="k">use</span> <span class="nx">OCP\AppFramework\Http</span><span class="p">;</span>
+ <span class="k">use</span> <span class="nx">OCP\AppFramework\Http\DataResponse</span><span class="p">;</span>
+ <span class="k">use</span> <span class="nx">OCP\AppFramework\Controller</span><span class="p">;</span>
+
+ <span class="k">use</span> <span class="nx">OCA\OwnNotes\Db\Note</span><span class="p">;</span>
+ <span class="k">use</span> <span class="nx">OCA\OwnNotes\Db\NoteMapper</span><span class="p">;</span>
+
+ <span class="k">class</span> <span class="nc">NoteController</span> <span class="k">extends</span> <span class="nx">Controller</span> <span class="p">{</span>
+
+     <span class="k">private</span> <span class="nv">$mapper</span><span class="p">;</span>
+     <span class="k">private</span> <span class="nv">$userId</span><span class="p">;</span>
+
+     <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$AppName</span><span class="p">,</span> <span class="nx">IRequest</span> <span class="nv">$request</span><span class="p">,</span> <span class="nx">NoteMapper</span> <span class="nv">$mapper</span><span class="p">,</span> <span class="nv">$UserId</span><span class="p">){</span>
+         <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">(</span><span class="nv">$AppName</span><span class="p">,</span> <span class="nv">$request</span><span class="p">);</span>
+         <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">mapper</span> <span class="o">=</span> <span class="nv">$mapper</span><span class="p">;</span>
+         <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">userId</span> <span class="o">=</span> <span class="nv">$UserId</span><span class="p">;</span>
+     <span class="p">}</span>
+
+     <span class="sd">/**</span>
+<span class="sd">      * @NoAdminRequired</span>
+<span class="sd">      */</span>
+     <span class="k">public</span> <span class="k">function</span> <span class="nf">index</span><span class="p">()</span> <span class="p">{</span>
+         <span class="k">return</span> <span class="k">new</span> <span class="nx">DataResponse</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">mapper</span><span class="o">-&gt;</span><span class="na">findAll</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">userId</span><span class="p">));</span>
+     <span class="p">}</span>
+
+     <span class="sd">/**</span>
+<span class="sd">      * @NoAdminRequired</span>
+<span class="sd">      *</span>
+<span class="sd">      * @param int $id</span>
+<span class="sd">      */</span>
+     <span class="k">public</span> <span class="k">function</span> <span class="nf">show</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$id</span><span class="p">)</span> <span class="p">{</span>
+         <span class="k">try</span> <span class="p">{</span>
+             <span class="k">return</span> <span class="k">new</span> <span class="nx">DataResponse</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">mapper</span><span class="o">-&gt;</span><span class="na">find</span><span class="p">(</span><span class="nv">$id</span><span class="p">,</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">userId</span><span class="p">));</span>
+         <span class="p">}</span> <span class="k">catch</span><span class="p">(</span><span class="nx">Exception</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+             <span class="k">return</span> <span class="k">new</span> <span class="nx">DataResponse</span><span class="p">([],</span> <span class="nx">Http</span><span class="o">::</span><span class="na">STATUS_NOT_FOUND</span><span class="p">);</span>
+         <span class="p">}</span>
+     <span class="p">}</span>
+
+     <span class="sd">/**</span>
+<span class="sd">      * @NoAdminRequired</span>
+<span class="sd">      *</span>
+<span class="sd">      * @param string $title</span>
+<span class="sd">      * @param string $content</span>
+<span class="sd">      */</span>
+     <span class="k">public</span> <span class="k">function</span> <span class="nf">create</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$title</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$content</span><span class="p">)</span> <span class="p">{</span>
+         <span class="nv">$note</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Note</span><span class="p">();</span>
+         <span class="nv">$note</span><span class="o">-&gt;</span><span class="na">setTitle</span><span class="p">(</span><span class="nv">$title</span><span class="p">);</span>
+         <span class="nv">$note</span><span class="o">-&gt;</span><span class="na">setContent</span><span class="p">(</span><span class="nv">$content</span><span class="p">);</span>
+         <span class="nv">$note</span><span class="o">-&gt;</span><span class="na">setUserId</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">userId</span><span class="p">);</span>
+         <span class="k">return</span> <span class="k">new</span> <span class="nx">DataResponse</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">mapper</span><span class="o">-&gt;</span><span class="na">insert</span><span class="p">(</span><span class="nv">$note</span><span class="p">));</span>
+     <span class="p">}</span>
+
+     <span class="sd">/**</span>
+<span class="sd">      * @NoAdminRequired</span>
+<span class="sd">      *</span>
+<span class="sd">      * @param int $id</span>
+<span class="sd">      * @param string $title</span>
+<span class="sd">      * @param string $content</span>
+<span class="sd">      */</span>
+     <span class="k">public</span> <span class="k">function</span> <span class="nf">update</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$id</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$title</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$content</span><span class="p">)</span> <span class="p">{</span>
+         <span class="k">try</span> <span class="p">{</span>
+             <span class="nv">$note</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">mapper</span><span class="o">-&gt;</span><span class="na">find</span><span class="p">(</span><span class="nv">$id</span><span class="p">,</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">userId</span><span class="p">);</span>
+         <span class="p">}</span> <span class="k">catch</span><span class="p">(</span><span class="nx">Exception</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+             <span class="k">return</span> <span class="k">new</span> <span class="nx">DataResponse</span><span class="p">([],</span> <span class="nx">Http</span><span class="o">::</span><span class="na">STATUS_NOT_FOUND</span><span class="p">);</span>
+         <span class="p">}</span>
+         <span class="nv">$note</span><span class="o">-&gt;</span><span class="na">setTitle</span><span class="p">(</span><span class="nv">$title</span><span class="p">);</span>
+         <span class="nv">$note</span><span class="o">-&gt;</span><span class="na">setContent</span><span class="p">(</span><span class="nv">$content</span><span class="p">);</span>
+         <span class="k">return</span> <span class="k">new</span> <span class="nx">DataResponse</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">mapper</span><span class="o">-&gt;</span><span class="na">update</span><span class="p">(</span><span class="nv">$note</span><span class="p">));</span>
+     <span class="p">}</span>
+
+     <span class="sd">/**</span>
+<span class="sd">      * @NoAdminRequired</span>
+<span class="sd">      *</span>
+<span class="sd">      * @param int $id</span>
+<span class="sd">      */</span>
+     <span class="k">public</span> <span class="k">function</span> <span class="nf">destroy</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$id</span><span class="p">)</span> <span class="p">{</span>
+         <span class="k">try</span> <span class="p">{</span>
+             <span class="nv">$note</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">mapper</span><span class="o">-&gt;</span><span class="na">find</span><span class="p">(</span><span class="nv">$id</span><span class="p">,</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">userId</span><span class="p">);</span>
+         <span class="p">}</span> <span class="k">catch</span><span class="p">(</span><span class="nx">Exception</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+             <span class="k">return</span> <span class="k">new</span> <span class="nx">DataResponse</span><span class="p">([],</span> <span class="nx">Http</span><span class="o">::</span><span class="na">STATUS_NOT_FOUND</span><span class="p">);</span>
+         <span class="p">}</span>
+         <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">mapper</span><span class="o">-&gt;</span><span class="na">delete</span><span class="p">(</span><span class="nv">$note</span><span class="p">);</span>
+         <span class="k">return</span> <span class="k">new</span> <span class="nx">DataResponse</span><span class="p">(</span><span class="nv">$note</span><span class="p">);</span>
+     <span class="p">}</span>
+
+ <span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The actual exceptions are <strong>OCP\AppFramework\Db\DoesNotExistException</strong> and <strong>OCP\AppFramework\Db\MultipleObjectsReturnedException</strong> but in this example we will treat them as the same. DataResponse is a more generic response than JSONResponse and also works with JSON.</p>
+</div>
+<p>This is all that is needed on the server side. Now let&#8217;s progress to the client side.</p>
+</div>
+<div class="section" id="making-things-reusable-and-decoupling-controllers-from-the-database">
+<h2>Making things reusable and decoupling controllers from the database<a class="headerlink" href="#making-things-reusable-and-decoupling-controllers-from-the-database" title="Permalink to this headline">¶</a></h2>
+<p>Let&#8217;s say our app is now on the app store and and we get a request that we should save the files in the filesystem which requires access to the filesystem.</p>
+<p>The filesystem API is quite different from the database API and throws different exceptions, which means we need to rewrite everything in the <strong>NoteController</strong> class to use it. This is bad because a controller&#8217;s only responsibility should be to deal with incoming Http requests and return Http responses. If we need to change the controller because the data storage was changed the code is probably too tightly coupled and we need to add another layer in between. This layer is called <strong>Service</strong>.</p>
+<p>Let&#8217;s take the logic that was inside the controller and put it into a separate class inside <strong>ownnotes/lib/Service/NoteService.php</strong>:</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="k">namespace</span> <span class="nx">OCA\OwnNotes\Service</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Exception</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Db\DoesNotExistException</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Db\MultipleObjectsReturnedException</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCA\OwnNotes\Db\Note</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCA\OwnNotes\Db\NoteMapper</span><span class="p">;</span>
+
+
+<span class="k">class</span> <span class="nc">NoteService</span> <span class="p">{</span>
+
+    <span class="k">private</span> <span class="nv">$mapper</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">NoteMapper</span> <span class="nv">$mapper</span><span class="p">){</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">mapper</span> <span class="o">=</span> <span class="nv">$mapper</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">findAll</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$userId</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">mapper</span><span class="o">-&gt;</span><span class="na">findAll</span><span class="p">(</span><span class="nv">$userId</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">private</span> <span class="k">function</span> <span class="nf">handleException</span> <span class="p">(</span><span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$e</span> <span class="nx">instanceof</span> <span class="nx">DoesNotExistException</span> <span class="o">||</span>
+            <span class="nv">$e</span> <span class="nx">instanceof</span> <span class="nx">MultipleObjectsReturnedException</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nx">NotFoundException</span><span class="p">(</span><span class="nv">$e</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">());</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="k">throw</span> <span class="nv">$e</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">find</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$id</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$userId</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">try</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">mapper</span><span class="o">-&gt;</span><span class="na">find</span><span class="p">(</span><span class="nv">$id</span><span class="p">,</span> <span class="nv">$userId</span><span class="p">);</span>
+
+        <span class="c1">// in order to be able to plug in different storage backends like files</span>
+        <span class="c1">// for instance it is a good idea to turn storage related exceptions</span>
+        <span class="c1">// into service related exceptions so controllers and service users</span>
+        <span class="c1">// have to deal with only one type of exception</span>
+        <span class="p">}</span> <span class="k">catch</span><span class="p">(</span><span class="nx">Exception</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">handleException</span><span class="p">(</span><span class="nv">$e</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">create</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$title</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$content</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$userId</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$note</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Note</span><span class="p">();</span>
+        <span class="nv">$note</span><span class="o">-&gt;</span><span class="na">setTitle</span><span class="p">(</span><span class="nv">$title</span><span class="p">);</span>
+        <span class="nv">$note</span><span class="o">-&gt;</span><span class="na">setContent</span><span class="p">(</span><span class="nv">$content</span><span class="p">);</span>
+        <span class="nv">$note</span><span class="o">-&gt;</span><span class="na">setUserId</span><span class="p">(</span><span class="nv">$userId</span><span class="p">);</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">mapper</span><span class="o">-&gt;</span><span class="na">insert</span><span class="p">(</span><span class="nv">$note</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">update</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$id</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$title</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$content</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$userId</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">try</span> <span class="p">{</span>
+            <span class="nv">$note</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">mapper</span><span class="o">-&gt;</span><span class="na">find</span><span class="p">(</span><span class="nv">$id</span><span class="p">,</span> <span class="nv">$userId</span><span class="p">);</span>
+            <span class="nv">$note</span><span class="o">-&gt;</span><span class="na">setTitle</span><span class="p">(</span><span class="nv">$title</span><span class="p">);</span>
+            <span class="nv">$note</span><span class="o">-&gt;</span><span class="na">setContent</span><span class="p">(</span><span class="nv">$content</span><span class="p">);</span>
+            <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">mapper</span><span class="o">-&gt;</span><span class="na">update</span><span class="p">(</span><span class="nv">$note</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">catch</span><span class="p">(</span><span class="nx">Exception</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">handleException</span><span class="p">(</span><span class="nv">$e</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">delete</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$id</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$userId</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">try</span> <span class="p">{</span>
+            <span class="nv">$note</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">mapper</span><span class="o">-&gt;</span><span class="na">find</span><span class="p">(</span><span class="nv">$id</span><span class="p">,</span> <span class="nv">$userId</span><span class="p">);</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">mapper</span><span class="o">-&gt;</span><span class="na">delete</span><span class="p">(</span><span class="nv">$note</span><span class="p">);</span>
+            <span class="k">return</span> <span class="nv">$note</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">catch</span><span class="p">(</span><span class="nx">Exception</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">handleException</span><span class="p">(</span><span class="nv">$e</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Following up create the exceptions in <strong>ownnotes/lib/Service/ServiceException.php</strong>:</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="k">namespace</span> <span class="nx">OCA\OwnNotes\Service</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Exception</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">ServiceException</span> <span class="k">extends</span> <span class="nx">Exception</span> <span class="p">{}</span>
+</pre></div>
+</div>
+<p>and <strong>ownnotes/lib/Service/NotFoundException.php</strong>:</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="k">namespace</span> <span class="nx">OCA\OwnNotes\Service</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">NotFoundException</span> <span class="k">extends</span> <span class="nx">ServiceException</span> <span class="p">{}</span>
+</pre></div>
+</div>
+<p>Remember how we had all those ugly try catches that where checking for <strong>DoesNotExistException</strong> and simply returned a 404 response? Let&#8217;s also put this into a reusable class. In our case we chose a <a class="reference external" href="http://php.net/manual/en/language.oop5.traits.php">trait</a> so we can inherit methods without having to add it to our inheritance hierarchy. This will be important later on when you&#8217;ve got controllers that inherit from the <strong>ApiController</strong> class instead.</p>
+<p>The trait is created in <strong>ownnotes/lib/Controller/Errors.php</strong>:</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">OCA\OwnNotes\Controller</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">Closure</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Http</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Http\DataResponse</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCA\OwnNotes\Service\NotFoundException</span><span class="p">;</span>
+
+
+<span class="k">trait</span> <span class="nx">Errors</span> <span class="p">{</span>
+
+    <span class="k">protected</span> <span class="k">function</span> <span class="nf">handleNotFound</span> <span class="p">(</span><span class="nx">Closure</span> <span class="nv">$callback</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">try</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="k">new</span> <span class="nx">DataResponse</span><span class="p">(</span><span class="nv">$callback</span><span class="p">());</span>
+        <span class="p">}</span> <span class="k">catch</span><span class="p">(</span><span class="nx">NotFoundException</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nv">$message</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;message&#39;</span> <span class="o">=&gt;</span> <span class="nv">$e</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">()];</span>
+            <span class="k">return</span> <span class="k">new</span> <span class="nx">DataResponse</span><span class="p">(</span><span class="nv">$message</span><span class="p">,</span> <span class="nx">Http</span><span class="o">::</span><span class="na">STATUS_NOT_FOUND</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Now we can wire up the trait and the service inside the <strong>NoteController</strong>:</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="k">namespace</span> <span class="nx">OCA\OwnNotes\Controller</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCP\IRequest</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Http\DataResponse</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Controller</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCA\OwnNotes\Service\NoteService</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">NoteController</span> <span class="k">extends</span> <span class="nx">Controller</span> <span class="p">{</span>
+
+    <span class="k">private</span> <span class="nv">$service</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nv">$userId</span><span class="p">;</span>
+
+    <span class="k">use</span> <span class="nx">Errors</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$AppName</span><span class="p">,</span> <span class="nx">IRequest</span> <span class="nv">$request</span><span class="p">,</span>
+                                <span class="nx">NoteService</span> <span class="nv">$service</span><span class="p">,</span> <span class="nv">$UserId</span><span class="p">){</span>
+        <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">(</span><span class="nv">$AppName</span><span class="p">,</span> <span class="nv">$request</span><span class="p">);</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">service</span> <span class="o">=</span> <span class="nv">$service</span><span class="p">;</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">userId</span> <span class="o">=</span> <span class="nv">$UserId</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @NoAdminRequired</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">index</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nx">DataResponse</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">service</span><span class="o">-&gt;</span><span class="na">findAll</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">userId</span><span class="p">));</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @NoAdminRequired</span>
+<span class="sd">     *</span>
+<span class="sd">     * @param int $id</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">show</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$id</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">handleNotFound</span><span class="p">(</span><span class="k">function</span> <span class="p">()</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$id</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">service</span><span class="o">-&gt;</span><span class="na">find</span><span class="p">(</span><span class="nv">$id</span><span class="p">,</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">userId</span><span class="p">);</span>
+        <span class="p">});</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @NoAdminRequired</span>
+<span class="sd">     *</span>
+<span class="sd">     * @param string $title</span>
+<span class="sd">     * @param string $content</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">create</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$title</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$content</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">service</span><span class="o">-&gt;</span><span class="na">create</span><span class="p">(</span><span class="nv">$title</span><span class="p">,</span> <span class="nv">$content</span><span class="p">,</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">userId</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @NoAdminRequired</span>
+<span class="sd">     *</span>
+<span class="sd">     * @param int $id</span>
+<span class="sd">     * @param string $title</span>
+<span class="sd">     * @param string $content</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">update</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$id</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$title</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$content</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">handleNotFound</span><span class="p">(</span><span class="k">function</span> <span class="p">()</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$id</span><span class="p">,</span> <span class="nv">$title</span><span class="p">,</span> <span class="nv">$content</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">service</span><span class="o">-&gt;</span><span class="na">update</span><span class="p">(</span><span class="nv">$id</span><span class="p">,</span> <span class="nv">$title</span><span class="p">,</span> <span class="nv">$content</span><span class="p">,</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">userId</span><span class="p">);</span>
+        <span class="p">});</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @NoAdminRequired</span>
+<span class="sd">     *</span>
+<span class="sd">     * @param int $id</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">destroy</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$id</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">handleNotFound</span><span class="p">(</span><span class="k">function</span> <span class="p">()</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$id</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">service</span><span class="o">-&gt;</span><span class="na">delete</span><span class="p">(</span><span class="nv">$id</span><span class="p">,</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">userId</span><span class="p">);</span>
+        <span class="p">});</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Great! Now the only reason that the controller needs to be changed is when request/response related things change.</p>
+</div>
+<div class="section" id="writing-a-test-for-the-controller-recommended">
+<h2>Writing a test for the controller (recommended)<a class="headerlink" href="#writing-a-test-for-the-controller-recommended" title="Permalink to this headline">¶</a></h2>
+<p>Tests are essential for having happy users and a carefree life. No one wants their users to rant about your app breaking their Nextcloud or being buggy. To do that you need to test your app. Since this amounts to a ton of repetitive tasks, we need to automate the tests.</p>
+<div class="section" id="unit-tests">
+<h3>Unit tests<a class="headerlink" href="#unit-tests" title="Permalink to this headline">¶</a></h3>
+<p>A unit test is a test that tests a class in isolation. It is very fast and catches most of the bugs, so we want many unit tests.</p>
+<p>Because Nextcloud uses <a class="reference internal" href="requests/container.html"><span class="doc">Dependency Injection</span></a> to assemble your app, it is very easy to write unit tests by passing mocks into the constructor. A simple test for the update method can be added by adding this to <strong>ownnotes/tests/Unit/Controller/NoteControllerTest.php</strong>:</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="k">namespace</span> <span class="nx">OCA\OwnNotes\Tests\Unit\Controller</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">PHPUnit_Framework_TestCase</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Http</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Http\DataResponse</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCA\OwnNotes\Service\NotFoundException</span><span class="p">;</span>
+
+
+<span class="k">class</span> <span class="nc">NoteControllerTest</span> <span class="k">extends</span> <span class="nx">PHPUnit_Framework_TestCase</span> <span class="p">{</span>
+
+    <span class="k">protected</span> <span class="nv">$controller</span><span class="p">;</span>
+    <span class="k">protected</span> <span class="nv">$service</span><span class="p">;</span>
+    <span class="k">protected</span> <span class="nv">$userId</span> <span class="o">=</span> <span class="s1">&#39;john&#39;</span><span class="p">;</span>
+    <span class="k">protected</span> <span class="nv">$request</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">setUp</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">request</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getMockBuilder</span><span class="p">(</span><span class="s1">&#39;OCP\IRequest&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">getMock</span><span class="p">();</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">service</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getMockBuilder</span><span class="p">(</span><span class="s1">&#39;OCA\OwnNotes\Service\NoteService&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">disableOriginalConstructor</span><span class="p">()</span>
+            <span class="o">-&gt;</span><span class="na">getMock</span><span class="p">();</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">controller</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">NoteController</span><span class="p">(</span>
+            <span class="s1">&#39;ownnotes&#39;</span><span class="p">,</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">,</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">service</span><span class="p">,</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">userId</span>
+        <span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">testUpdate</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nv">$note</span> <span class="o">=</span> <span class="s1">&#39;just check if this value is returned correctly&#39;</span><span class="p">;</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">service</span><span class="o">-&gt;</span><span class="na">expects</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">once</span><span class="p">())</span>
+            <span class="o">-&gt;</span><span class="na">method</span><span class="p">(</span><span class="s1">&#39;update&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">with</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">equalTo</span><span class="p">(</span><span class="mi">3</span><span class="p">),</span>
+                    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">equalTo</span><span class="p">(</span><span class="s1">&#39;title&#39;</span><span class="p">),</span>
+                    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">equalTo</span><span class="p">(</span><span class="s1">&#39;content&#39;</span><span class="p">),</span>
+                   <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">equalTo</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">userId</span><span class="p">))</span>
+            <span class="o">-&gt;</span><span class="na">will</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">returnValue</span><span class="p">(</span><span class="nv">$note</span><span class="p">));</span>
+
+        <span class="nv">$result</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">controller</span><span class="o">-&gt;</span><span class="na">update</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;title&#39;</span><span class="p">,</span> <span class="s1">&#39;content&#39;</span><span class="p">);</span>
+
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertEquals</span><span class="p">(</span><span class="nv">$note</span><span class="p">,</span> <span class="nv">$result</span><span class="o">-&gt;</span><span class="na">getData</span><span class="p">());</span>
+    <span class="p">}</span>
+
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">testUpdateNotFound</span><span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// test the correct status code if no note is found</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">service</span><span class="o">-&gt;</span><span class="na">expects</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">once</span><span class="p">())</span>
+            <span class="o">-&gt;</span><span class="na">method</span><span class="p">(</span><span class="s1">&#39;update&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">will</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">throwException</span><span class="p">(</span><span class="k">new</span> <span class="nx">NotFoundException</span><span class="p">()));</span>
+
+        <span class="nv">$result</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">controller</span><span class="o">-&gt;</span><span class="na">update</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;title&#39;</span><span class="p">,</span> <span class="s1">&#39;content&#39;</span><span class="p">);</span>
+
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertEquals</span><span class="p">(</span><span class="nx">Http</span><span class="o">::</span><span class="na">STATUS_NOT_FOUND</span><span class="p">,</span> <span class="nv">$result</span><span class="o">-&gt;</span><span class="na">getStatus</span><span class="p">());</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>We can and should also create a test for the <strong>NoteService</strong> class:</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="k">namespace</span> <span class="nx">OCA\OwnNotes\Tests\Unit\Service</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">PHPUnit_Framework_TestCase</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Db\DoesNotExistException</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCA\OwnNotes\Db\Note</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">NoteServiceTest</span> <span class="k">extends</span> <span class="nx">PHPUnit_Framework_TestCase</span> <span class="p">{</span>
+
+    <span class="k">private</span> <span class="nv">$service</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nv">$mapper</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nv">$userId</span> <span class="o">=</span> <span class="s1">&#39;john&#39;</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">setUp</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">mapper</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getMockBuilder</span><span class="p">(</span><span class="s1">&#39;OCA\OwnNotes\Db\NoteMapper&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">disableOriginalConstructor</span><span class="p">()</span>
+            <span class="o">-&gt;</span><span class="na">getMock</span><span class="p">();</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">service</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">NoteService</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">mapper</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">testUpdate</span><span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// the existing note</span>
+        <span class="nv">$note</span> <span class="o">=</span> <span class="nx">Note</span><span class="o">::</span><span class="na">fromRow</span><span class="p">([</span>
+            <span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="mi">3</span><span class="p">,</span>
+            <span class="s1">&#39;title&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;yo&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;content&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;nope&#39;</span>
+        <span class="p">]);</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">mapper</span><span class="o">-&gt;</span><span class="na">expects</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">once</span><span class="p">())</span>
+            <span class="o">-&gt;</span><span class="na">method</span><span class="p">(</span><span class="s1">&#39;find&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">with</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">equalTo</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+            <span class="o">-&gt;</span><span class="na">will</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">returnValue</span><span class="p">(</span><span class="nv">$note</span><span class="p">));</span>
+
+        <span class="c1">// the note when updated</span>
+        <span class="nv">$updatedNote</span> <span class="o">=</span> <span class="nx">Note</span><span class="o">::</span><span class="na">fromRow</span><span class="p">([</span><span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="mi">3</span><span class="p">]);</span>
+        <span class="nv">$updatedNote</span><span class="o">-&gt;</span><span class="na">setTitle</span><span class="p">(</span><span class="s1">&#39;title&#39;</span><span class="p">);</span>
+        <span class="nv">$updatedNote</span><span class="o">-&gt;</span><span class="na">setContent</span><span class="p">(</span><span class="s1">&#39;content&#39;</span><span class="p">);</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">mapper</span><span class="o">-&gt;</span><span class="na">expects</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">once</span><span class="p">())</span>
+            <span class="o">-&gt;</span><span class="na">method</span><span class="p">(</span><span class="s1">&#39;update&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">with</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">equalTo</span><span class="p">(</span><span class="nv">$updatedNote</span><span class="p">))</span>
+            <span class="o">-&gt;</span><span class="na">will</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">returnValue</span><span class="p">(</span><span class="nv">$updatedNote</span><span class="p">));</span>
+
+        <span class="nv">$result</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">service</span><span class="o">-&gt;</span><span class="na">update</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;title&#39;</span><span class="p">,</span> <span class="s1">&#39;content&#39;</span><span class="p">,</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">userId</span><span class="p">);</span>
+
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertEquals</span><span class="p">(</span><span class="nv">$updatedNote</span><span class="p">,</span> <span class="nv">$result</span><span class="p">);</span>
+    <span class="p">}</span>
+
+
+    <span class="sd">/**</span>
+<span class="sd">     * @expectedException OCA\OwnNotes\Service\NotFoundException</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">testUpdateNotFound</span><span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// test the correct status code if no note is found</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">mapper</span><span class="o">-&gt;</span><span class="na">expects</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">once</span><span class="p">())</span>
+            <span class="o">-&gt;</span><span class="na">method</span><span class="p">(</span><span class="s1">&#39;find&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">with</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">equalTo</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+            <span class="o">-&gt;</span><span class="na">will</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">throwException</span><span class="p">(</span><span class="k">new</span> <span class="nx">DoesNotExistException</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">)));</span>
+
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">service</span><span class="o">-&gt;</span><span class="na">update</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;title&#39;</span><span class="p">,</span> <span class="s1">&#39;content&#39;</span><span class="p">,</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">userId</span><span class="p">);</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>If <a class="reference external" href="https://phpunit.de/">PHPUnit is installed</a> we can run the tests inside <strong>ownnotes/</strong> with the following command:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">phpunit</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">You need to adjust the <strong>ownnotes/tests/Unit/Controller/PageControllerTest</strong> file to get the tests passing: remove the <strong>testEcho</strong> method since that method is no longer present in your <strong>PageController</strong> and do not test the user id parameters since they are not passed anymore</p>
+</div>
+</div>
+</div>
+<div class="section" id="integration-tests">
+<h2>Integration tests<a class="headerlink" href="#integration-tests" title="Permalink to this headline">¶</a></h2>
+<p>Integration tests are slow and need a fully working instance but make sure that our classes work well together. Instead of mocking out all classes and parameters we can decide whether to use full instances or replace certain classes. Because they are slow we don&#8217;t want as many integration tests as unit tests.</p>
+<p>In our case we want to create an integration test for the udpate method without mocking out the <strong>NoteMapper</strong> class so we actually write to the existing database.</p>
+<p>To do that create a new file called <strong>ownnotes/tests/Integration/NoteIntegrationTest.php</strong> with the following content:</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="k">namespace</span> <span class="nx">OCA\OwnNotes\Tests\Integration\Controller</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Http\DataResponse</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\App</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Test\TestCase</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCA\OwnNotes\Db\Note</span><span class="p">;</span>
+
+<span class="sd">/**</span>
+<span class="sd"> * @group DB</span>
+<span class="sd"> */</span>
+<span class="k">class</span> <span class="nc">NoteIntegrationTest</span> <span class="k">extends</span> <span class="nx">TestCase</span> <span class="p">{</span>
+
+    <span class="k">private</span> <span class="nv">$controller</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nv">$mapper</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nv">$userId</span> <span class="o">=</span> <span class="s1">&#39;john&#39;</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">setUp</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">parent</span><span class="o">::</span><span class="na">setUp</span><span class="p">();</span>
+        <span class="nv">$app</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">App</span><span class="p">(</span><span class="s1">&#39;ownnotes&#39;</span><span class="p">);</span>
+        <span class="nv">$container</span> <span class="o">=</span> <span class="nv">$app</span><span class="o">-&gt;</span><span class="na">getContainer</span><span class="p">();</span>
+
+        <span class="c1">// only replace the user id</span>
+        <span class="nv">$container</span><span class="o">-&gt;</span><span class="na">registerService</span><span class="p">(</span><span class="s1">&#39;UserId&#39;</span><span class="p">,</span> <span class="k">function</span><span class="p">(</span><span class="nv">$c</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">userId</span><span class="p">;</span>
+        <span class="p">});</span>
+
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">controller</span> <span class="o">=</span> <span class="nv">$container</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span>
+            <span class="s1">&#39;OCA\OwnNotes\Controller\NoteController&#39;</span>
+        <span class="p">);</span>
+
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">mapper</span> <span class="o">=</span> <span class="nv">$container</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span>
+            <span class="s1">&#39;OCA\OwnNotes\Db\NoteMapper&#39;</span>
+        <span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">testUpdate</span><span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// create a new note that should be updated</span>
+        <span class="nv">$note</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Note</span><span class="p">();</span>
+        <span class="nv">$note</span><span class="o">-&gt;</span><span class="na">setTitle</span><span class="p">(</span><span class="s1">&#39;old_title&#39;</span><span class="p">);</span>
+        <span class="nv">$note</span><span class="o">-&gt;</span><span class="na">setContent</span><span class="p">(</span><span class="s1">&#39;old_content&#39;</span><span class="p">);</span>
+        <span class="nv">$note</span><span class="o">-&gt;</span><span class="na">setUserId</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">userId</span><span class="p">);</span>
+
+        <span class="nv">$id</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">mapper</span><span class="o">-&gt;</span><span class="na">insert</span><span class="p">(</span><span class="nv">$note</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">getId</span><span class="p">();</span>
+
+        <span class="c1">// fromRow does not set the fields as updated</span>
+        <span class="nv">$updatedNote</span> <span class="o">=</span> <span class="nx">Note</span><span class="o">::</span><span class="na">fromRow</span><span class="p">([</span>
+            <span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="nv">$id</span><span class="p">,</span>
+            <span class="s1">&#39;user_id&#39;</span> <span class="o">=&gt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">userId</span>
+        <span class="p">]);</span>
+        <span class="nv">$updatedNote</span><span class="o">-&gt;</span><span class="na">setContent</span><span class="p">(</span><span class="s1">&#39;content&#39;</span><span class="p">);</span>
+        <span class="nv">$updatedNote</span><span class="o">-&gt;</span><span class="na">setTitle</span><span class="p">(</span><span class="s1">&#39;title&#39;</span><span class="p">);</span>
+
+        <span class="nv">$result</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">controller</span><span class="o">-&gt;</span><span class="na">update</span><span class="p">(</span><span class="nv">$id</span><span class="p">,</span> <span class="s1">&#39;title&#39;</span><span class="p">,</span> <span class="s1">&#39;content&#39;</span><span class="p">);</span>
+
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertEquals</span><span class="p">(</span><span class="nv">$updatedNote</span><span class="p">,</span> <span class="nv">$result</span><span class="o">-&gt;</span><span class="na">getData</span><span class="p">());</span>
+
+        <span class="c1">// clean up</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">mapper</span><span class="o">-&gt;</span><span class="na">delete</span><span class="p">(</span><span class="nv">$result</span><span class="o">-&gt;</span><span class="na">getData</span><span class="p">());</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>To run the integration tests change into the <strong>ownnotes</strong> directory and run:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">phpunit</span> <span class="o">-</span><span class="n">c</span> <span class="n">phpunit</span><span class="o">.</span><span class="n">integration</span><span class="o">.</span><span class="n">xml</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="adding-a-restful-api-optional">
+<h2>Adding a RESTful API (optional)<a class="headerlink" href="#adding-a-restful-api-optional" title="Permalink to this headline">¶</a></h2>
+<p>A <a class="reference internal" href="requests/api.html"><span class="doc">RESTful API</span></a> allows other apps such as Android or iPhone apps to access and change your notes. Since syncing is a big core component of Nextcloud it is a good idea to add (and document!) your own RESTful API.</p>
+<p>Because we put our logic into the <strong>NoteService</strong> class it is very easy to reuse it. The only pieces that need to be changed are the annotations which disable the CSRF check (not needed for a REST call usually) and add support for <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS">CORS</a> so your API can be accessed from other webapps.</p>
+<p>With that in mind create a new controller in <strong>ownnotes/lib/Controller/NoteApiController.php</strong>:</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="k">namespace</span> <span class="nx">OCA\OwnNotes\Controller</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCP\IRequest</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Http\DataResponse</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\ApiController</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCA\OwnNotes\Service\NoteService</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">NoteApiController</span> <span class="k">extends</span> <span class="nx">ApiController</span> <span class="p">{</span>
+
+    <span class="k">private</span> <span class="nv">$service</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nv">$userId</span><span class="p">;</span>
+
+    <span class="k">use</span> <span class="nx">Errors</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nv">$AppName</span><span class="p">,</span> <span class="nx">IRequest</span> <span class="nv">$request</span><span class="p">,</span>
+                                <span class="nx">NoteService</span> <span class="nv">$service</span><span class="p">,</span> <span class="nv">$UserId</span><span class="p">){</span>
+        <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">(</span><span class="nv">$AppName</span><span class="p">,</span> <span class="nv">$request</span><span class="p">);</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">service</span> <span class="o">=</span> <span class="nv">$service</span><span class="p">;</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">userId</span> <span class="o">=</span> <span class="nv">$UserId</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @CORS</span>
+<span class="sd">     * @NoCSRFRequired</span>
+<span class="sd">     * @NoAdminRequired</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">index</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nx">DataResponse</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">service</span><span class="o">-&gt;</span><span class="na">findAll</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">userId</span><span class="p">));</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @CORS</span>
+<span class="sd">     * @NoCSRFRequired</span>
+<span class="sd">     * @NoAdminRequired</span>
+<span class="sd">     *</span>
+<span class="sd">     * @param int $id</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">show</span><span class="p">(</span><span class="nv">$id</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">handleNotFound</span><span class="p">(</span><span class="k">function</span> <span class="p">()</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$id</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">service</span><span class="o">-&gt;</span><span class="na">find</span><span class="p">(</span><span class="nv">$id</span><span class="p">,</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">userId</span><span class="p">);</span>
+        <span class="p">});</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @CORS</span>
+<span class="sd">     * @NoCSRFRequired</span>
+<span class="sd">     * @NoAdminRequired</span>
+<span class="sd">     *</span>
+<span class="sd">     * @param string $title</span>
+<span class="sd">     * @param string $content</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">create</span><span class="p">(</span><span class="nv">$title</span><span class="p">,</span> <span class="nv">$content</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">service</span><span class="o">-&gt;</span><span class="na">create</span><span class="p">(</span><span class="nv">$title</span><span class="p">,</span> <span class="nv">$content</span><span class="p">,</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">userId</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @CORS</span>
+<span class="sd">     * @NoCSRFRequired</span>
+<span class="sd">     * @NoAdminRequired</span>
+<span class="sd">     *</span>
+<span class="sd">     * @param int $id</span>
+<span class="sd">     * @param string $title</span>
+<span class="sd">     * @param string $content</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">update</span><span class="p">(</span><span class="nv">$id</span><span class="p">,</span> <span class="nv">$title</span><span class="p">,</span> <span class="nv">$content</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">handleNotFound</span><span class="p">(</span><span class="k">function</span> <span class="p">()</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$id</span><span class="p">,</span> <span class="nv">$title</span><span class="p">,</span> <span class="nv">$content</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">service</span><span class="o">-&gt;</span><span class="na">update</span><span class="p">(</span><span class="nv">$id</span><span class="p">,</span> <span class="nv">$title</span><span class="p">,</span> <span class="nv">$content</span><span class="p">,</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">userId</span><span class="p">);</span>
+        <span class="p">});</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @CORS</span>
+<span class="sd">     * @NoCSRFRequired</span>
+<span class="sd">     * @NoAdminRequired</span>
+<span class="sd">     *</span>
+<span class="sd">     * @param int $id</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">destroy</span><span class="p">(</span><span class="nv">$id</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">handleNotFound</span><span class="p">(</span><span class="k">function</span> <span class="p">()</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$id</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">service</span><span class="o">-&gt;</span><span class="na">delete</span><span class="p">(</span><span class="nv">$id</span><span class="p">,</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">userId</span><span class="p">);</span>
+        <span class="p">});</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>All that is left is to connect the controller to a route and enable the built in preflighted CORS method which is defined in the <strong>ApiController</strong> base class:</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="k">return</span> <span class="p">[</span>
+    <span class="s1">&#39;resources&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+        <span class="s1">&#39;note&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;url&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/notes&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;note_api&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;url&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/api/0.1/notes&#39;</span><span class="p">]</span>
+    <span class="p">],</span>
+    <span class="s1">&#39;routes&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+        <span class="p">[</span><span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;page#index&#39;</span><span class="p">,</span> <span class="s1">&#39;url&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="s1">&#39;verb&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;GET&#39;</span><span class="p">],</span>
+        <span class="p">[</span><span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;note_api#preflighted_cors&#39;</span><span class="p">,</span> <span class="s1">&#39;url&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/api/0.1/{path}&#39;</span><span class="p">,</span>
+         <span class="s1">&#39;verb&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;OPTIONS&#39;</span><span class="p">,</span> <span class="s1">&#39;requirements&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;path&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;.+&#39;</span><span class="p">]]</span>
+    <span class="p">]</span>
+<span class="p">];</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">It is a good idea to version your API in your URL</p>
+</div>
+<p>You can test the API by running a GET request with <strong>curl</strong>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">-</span><span class="n">u</span> <span class="n">user</span><span class="p">:</span><span class="n">password</span> <span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">localhost</span><span class="p">:</span><span class="mi">8080</span><span class="o">/</span><span class="n">index</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">ownnotes</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="mf">0.1</span><span class="o">/</span><span class="n">notes</span>
+</pre></div>
+</div>
+<p>Since the <strong>NoteApiController</strong> is basically identical to the <strong>NoteController</strong>, the unit test for it simply inherits its tests from the <strong>NoteControllerTest</strong>. Create the file <strong>ownnotes/tests/Unit/Controller/NoteApiControllerTest.php</strong>:</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="k">namespace</span> <span class="nx">OCA\OwnNotes\Tests\Unit\Controller</span><span class="p">;</span>
+
+<span class="k">require_once</span> <span class="no">__DIR__</span> <span class="o">.</span> <span class="s1">&#39;/NoteControllerTest.php&#39;</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">NoteApiControllerTest</span> <span class="k">extends</span> <span class="nx">NoteControllerTest</span> <span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">setUp</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">parent</span><span class="o">::</span><span class="na">setUp</span><span class="p">();</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">controller</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">NoteApiController</span><span class="p">(</span>
+            <span class="s1">&#39;ownnotes&#39;</span><span class="p">,</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">request</span><span class="p">,</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">service</span><span class="p">,</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">userId</span>
+        <span class="p">);</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="adding-javascript-and-css">
+<h2>Adding JavaScript and CSS<a class="headerlink" href="#adding-javascript-and-css" title="Permalink to this headline">¶</a></h2>
+<p>To create a modern webapp you need to write <a class="reference internal" href="view/js.html"><span class="doc">JavaScript</span></a>. You can use any JavaScript framework but for this tutorial we want to keep it as simple as possible and therefore only include the templating library <a class="reference external" href="http://handlebarsjs.com/">handlebarsjs</a>. <a class="reference external" href="http://builds.handlebarsjs.com.s3.amazonaws.com/handlebars-v2.0.0.js">Download the file</a> into <strong>ownnotes/js/handlebars.js</strong> and include it at the very top of <strong>ownnotes/templates/main.php</strong> before the other scripts and styles:</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="nx">script</span><span class="p">(</span><span class="s1">&#39;ownnotes&#39;</span><span class="p">,</span> <span class="s1">&#39;handlebars&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">jQuery is included by default on every page.</p>
+</div>
+</div>
+<div class="section" id="creating-a-navigation">
+<h2>Creating a navigation<a class="headerlink" href="#creating-a-navigation" title="Permalink to this headline">¶</a></h2>
+<p>The template file <strong>ownnotes/templates/part.navigation.php</strong> contains the navigation. Nextcloud defines many handy <a class="reference internal" href="view/css.html"><span class="doc">CSS styles</span></a> which we are going to reuse to style the navigation. Adjust the file to contain only the following code:</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last"><strong>$l-&gt;t()</strong> is used to make your strings <a class="reference internal" href="view/l10n.html"><span class="doc">translatable</span></a> and <strong>p()</strong> is used <a class="reference internal" href="view/templates.html"><span class="doc">to print escaped HTML</span></a></p>
+</div>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="x">&lt;!-- translation strings --&gt;</span>
+<span class="x">&lt;div style=&quot;display:none&quot; id=&quot;new-note-string&quot;&gt;</span><span class="cp">&lt;?php</span> <span class="nx">p</span><span class="p">(</span><span class="nv">$l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;New note&#39;</span><span class="p">));</span> <span class="cp">?&gt;</span><span class="x">&lt;/div&gt;</span>
+
+<span class="x">&lt;script id=&quot;navigation-tpl&quot; type=&quot;text/x-handlebars-template&quot;&gt;</span>
+<span class="x">    &lt;li id=&quot;new-note&quot;&gt;&lt;a href=&quot;#&quot;&gt;</span><span class="cp">&lt;?php</span> <span class="nx">p</span><span class="p">(</span><span class="nv">$l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;Add note&#39;</span><span class="p">));</span> <span class="cp">?&gt;</span><span class="x">&lt;/a&gt;&lt;/li&gt;</span>
+<span class="x">    {{#each notes}}</span>
+<span class="x">        &lt;li class=&quot;note with-menu {{#if active}}active{{/if}}&quot; data-id=&quot;{{ id }}&quot;&gt;</span>
+<span class="x">            &lt;a href=&quot;#&quot;&gt;{{ title }}&lt;/a&gt;</span>
+<span class="x">            &lt;div class=&quot;app-navigation-entry-utils&quot;&gt;</span>
+<span class="x">                &lt;ul&gt;</span>
+<span class="x">                    &lt;li class=&quot;app-navigation-entry-utils-menu-button svg&quot;&gt;&lt;button&gt;&lt;/button&gt;&lt;/li&gt;</span>
+<span class="x">                &lt;/ul&gt;</span>
+<span class="x">            &lt;/div&gt;</span>
+
+<span class="x">            &lt;div class=&quot;app-navigation-entry-menu&quot;&gt;</span>
+<span class="x">                &lt;ul&gt;</span>
+<span class="x">                    &lt;li&gt;&lt;button class=&quot;delete icon-delete svg&quot; title=&quot;delete&quot;&gt;&lt;/button&gt;&lt;/li&gt;</span>
+<span class="x">                &lt;/ul&gt;</span>
+<span class="x">            &lt;/div&gt;</span>
+<span class="x">        &lt;/li&gt;</span>
+<span class="x">    {{/each}}</span>
+<span class="x">&lt;/script&gt;</span>
+
+<span class="x">&lt;ul&gt;&lt;/ul&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="creating-the-content">
+<h2>Creating the content<a class="headerlink" href="#creating-the-content" title="Permalink to this headline">¶</a></h2>
+<p>The template file <strong>ownnotes/templates/part.content.php</strong> contains the content. It will just be a textarea and a button, so replace the content with the following:</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="x">&lt;script id=&quot;content-tpl&quot; type=&quot;text/x-handlebars-template&quot;&gt;</span>
+<span class="x">    {{#if note}}</span>
+<span class="x">        &lt;div class=&quot;input&quot;&gt;&lt;textarea&gt;{{ note.content }}&lt;/textarea&gt;&lt;/div&gt;</span>
+<span class="x">        &lt;div class=&quot;save&quot;&gt;&lt;button&gt;</span><span class="cp">&lt;?php</span> <span class="nx">p</span><span class="p">(</span><span class="nv">$l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;Save&#39;</span><span class="p">));</span> <span class="cp">?&gt;</span><span class="x">&lt;/button&gt;&lt;/div&gt;</span>
+<span class="x">    {{else}}</span>
+<span class="x">        &lt;div class=&quot;input&quot;&gt;&lt;textarea disabled&gt;&lt;/textarea&gt;&lt;/div&gt;</span>
+<span class="x">        &lt;div class=&quot;save&quot;&gt;&lt;button disabled&gt;</span><span class="cp">&lt;?php</span> <span class="nx">p</span><span class="p">(</span><span class="nv">$l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;Save&#39;</span><span class="p">));</span> <span class="cp">?&gt;</span><span class="x">&lt;/button&gt;&lt;/div&gt;</span>
+<span class="x">    {{/if}}</span>
+<span class="x">&lt;/script&gt;</span>
+<span class="x">&lt;div id=&quot;editor&quot;&gt;&lt;/div&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="wiring-it-up">
+<h2>Wiring it up<a class="headerlink" href="#wiring-it-up" title="Permalink to this headline">¶</a></h2>
+<p>When the page is loaded we want all the existing notes to load. Furthermore we want to display the current note when you click on it in the navigation, a note should be deleted when we click the deleted button and clicking on <strong>New note</strong> should create a new note. To do that open <strong>ownnotes/js/script.js</strong> and replace the example code with the following:</p>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">OC</span><span class="p">,</span> <span class="nb">window</span><span class="p">,</span> <span class="nx">$</span><span class="p">,</span> <span class="kc">undefined</span><span class="p">)</span> <span class="p">{</span>
+<span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
+
+<span class="nx">$</span><span class="p">(</span><span class="nb">document</span><span class="p">).</span><span class="nx">ready</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+
+<span class="kd">var</span> <span class="nx">translations</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">newNote</span><span class="o">:</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#new-note-string&#39;</span><span class="p">).</span><span class="nx">text</span><span class="p">()</span>
+<span class="p">};</span>
+
+<span class="c1">// this notes object holds all our notes</span>
+<span class="kd">var</span> <span class="nx">Notes</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">baseUrl</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">_baseUrl</span> <span class="o">=</span> <span class="nx">baseUrl</span><span class="p">;</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">_notes</span> <span class="o">=</span> <span class="p">[];</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">_activeNote</span> <span class="o">=</span> <span class="kc">undefined</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="nx">Notes</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">load</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">id</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">self</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">_notes</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">note</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">note</span><span class="p">.</span><span class="nx">id</span> <span class="o">===</span> <span class="nx">id</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nx">note</span><span class="p">.</span><span class="nx">active</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+                <span class="nx">self</span><span class="p">.</span><span class="nx">_activeNote</span> <span class="o">=</span> <span class="nx">note</span><span class="p">;</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="nx">note</span><span class="p">.</span><span class="nx">active</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">});</span>
+    <span class="p">},</span>
+    <span class="nx">getActive</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">_activeNote</span><span class="p">;</span>
+    <span class="p">},</span>
+    <span class="nx">removeActive</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">index</span><span class="p">;</span>
+        <span class="kd">var</span> <span class="nx">deferred</span> <span class="o">=</span> <span class="nx">$</span><span class="p">.</span><span class="nx">Deferred</span><span class="p">();</span>
+        <span class="kd">var</span> <span class="nx">id</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">_activeNote</span><span class="p">.</span><span class="nx">id</span><span class="p">;</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">_notes</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">note</span><span class="p">,</span> <span class="nx">counter</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">if</span> <span class="p">(</span><span class="nx">note</span><span class="p">.</span><span class="nx">id</span> <span class="o">===</span> <span class="nx">id</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nx">index</span> <span class="o">=</span> <span class="nx">counter</span><span class="p">;</span>
+            <span class="p">}</span>
+        <span class="p">});</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="nx">index</span> <span class="o">!==</span> <span class="kc">undefined</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// delete cached active note if necessary</span>
+            <span class="k">if</span> <span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">_activeNote</span> <span class="o">===</span> <span class="k">this</span><span class="p">.</span><span class="nx">_notes</span><span class="p">[</span><span class="nx">index</span><span class="p">])</span> <span class="p">{</span>
+                <span class="k">delete</span> <span class="k">this</span><span class="p">.</span><span class="nx">_activeNote</span><span class="p">;</span>
+            <span class="p">}</span>
+
+            <span class="k">this</span><span class="p">.</span><span class="nx">_notes</span><span class="p">.</span><span class="nx">splice</span><span class="p">(</span><span class="nx">index</span><span class="p">,</span> <span class="mi">1</span><span class="p">);</span>
+
+            <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+                <span class="nx">url</span><span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">_baseUrl</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="nx">id</span><span class="p">,</span>
+                <span class="nx">method</span><span class="o">:</span> <span class="s1">&#39;DELETE&#39;</span>
+            <span class="p">}).</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+                <span class="nx">deferred</span><span class="p">.</span><span class="nx">resolve</span><span class="p">();</span>
+            <span class="p">}).</span><span class="nx">fail</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+                <span class="nx">deferred</span><span class="p">.</span><span class="nx">reject</span><span class="p">();</span>
+            <span class="p">});</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="nx">deferred</span><span class="p">.</span><span class="nx">reject</span><span class="p">();</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="nx">deferred</span><span class="p">.</span><span class="nx">promise</span><span class="p">();</span>
+    <span class="p">},</span>
+    <span class="nx">create</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">note</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">deferred</span> <span class="o">=</span> <span class="nx">$</span><span class="p">.</span><span class="nx">Deferred</span><span class="p">();</span>
+        <span class="kd">var</span> <span class="nx">self</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
+        <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+            <span class="nx">url</span><span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">_baseUrl</span><span class="p">,</span>
+            <span class="nx">method</span><span class="o">:</span> <span class="s1">&#39;POST&#39;</span><span class="p">,</span>
+            <span class="nx">contentType</span><span class="o">:</span> <span class="s1">&#39;application/json&#39;</span><span class="p">,</span>
+            <span class="nx">data</span><span class="o">:</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">note</span><span class="p">)</span>
+        <span class="p">}).</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">note</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">self</span><span class="p">.</span><span class="nx">_notes</span><span class="p">.</span><span class="nx">push</span><span class="p">(</span><span class="nx">note</span><span class="p">);</span>
+            <span class="nx">self</span><span class="p">.</span><span class="nx">_activeNote</span> <span class="o">=</span> <span class="nx">note</span><span class="p">;</span>
+            <span class="nx">self</span><span class="p">.</span><span class="nx">load</span><span class="p">(</span><span class="nx">note</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+            <span class="nx">deferred</span><span class="p">.</span><span class="nx">resolve</span><span class="p">();</span>
+        <span class="p">}).</span><span class="nx">fail</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+            <span class="nx">deferred</span><span class="p">.</span><span class="nx">reject</span><span class="p">();</span>
+        <span class="p">});</span>
+        <span class="k">return</span> <span class="nx">deferred</span><span class="p">.</span><span class="nx">promise</span><span class="p">();</span>
+    <span class="p">},</span>
+    <span class="nx">getAll</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">_notes</span><span class="p">;</span>
+    <span class="p">},</span>
+    <span class="nx">loadAll</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">deferred</span> <span class="o">=</span> <span class="nx">$</span><span class="p">.</span><span class="nx">Deferred</span><span class="p">();</span>
+        <span class="kd">var</span> <span class="nx">self</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
+        <span class="nx">$</span><span class="p">.</span><span class="nx">get</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">_baseUrl</span><span class="p">).</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">notes</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nx">self</span><span class="p">.</span><span class="nx">_activeNote</span> <span class="o">=</span> <span class="kc">undefined</span><span class="p">;</span>
+            <span class="nx">self</span><span class="p">.</span><span class="nx">_notes</span> <span class="o">=</span> <span class="nx">notes</span><span class="p">;</span>
+            <span class="nx">deferred</span><span class="p">.</span><span class="nx">resolve</span><span class="p">();</span>
+        <span class="p">}).</span><span class="nx">fail</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+            <span class="nx">deferred</span><span class="p">.</span><span class="nx">reject</span><span class="p">();</span>
+        <span class="p">});</span>
+        <span class="k">return</span> <span class="nx">deferred</span><span class="p">.</span><span class="nx">promise</span><span class="p">();</span>
+    <span class="p">},</span>
+    <span class="nx">updateActive</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">title</span><span class="p">,</span> <span class="nx">content</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">note</span> <span class="o">=</span> <span class="k">this</span><span class="p">.</span><span class="nx">getActive</span><span class="p">();</span>
+        <span class="nx">note</span><span class="p">.</span><span class="nx">title</span> <span class="o">=</span> <span class="nx">title</span><span class="p">;</span>
+        <span class="nx">note</span><span class="p">.</span><span class="nx">content</span> <span class="o">=</span> <span class="nx">content</span><span class="p">;</span>
+
+        <span class="k">return</span> <span class="nx">$</span><span class="p">.</span><span class="nx">ajax</span><span class="p">({</span>
+            <span class="nx">url</span><span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">_baseUrl</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="nx">note</span><span class="p">.</span><span class="nx">id</span><span class="p">,</span>
+            <span class="nx">method</span><span class="o">:</span> <span class="s1">&#39;PUT&#39;</span><span class="p">,</span>
+            <span class="nx">contentType</span><span class="o">:</span> <span class="s1">&#39;application/json&#39;</span><span class="p">,</span>
+            <span class="nx">data</span><span class="o">:</span> <span class="nx">JSON</span><span class="p">.</span><span class="nx">stringify</span><span class="p">(</span><span class="nx">note</span><span class="p">)</span>
+        <span class="p">});</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="c1">// this will be the view that is used to update the html</span>
+<span class="kd">var</span> <span class="nx">View</span> <span class="o">=</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">notes</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">_notes</span> <span class="o">=</span> <span class="nx">notes</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="nx">View</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">renderContent</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">source</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#content-tpl&#39;</span><span class="p">).</span><span class="nx">html</span><span class="p">();</span>
+        <span class="kd">var</span> <span class="nx">template</span> <span class="o">=</span> <span class="nx">Handlebars</span><span class="p">.</span><span class="nx">compile</span><span class="p">(</span><span class="nx">source</span><span class="p">);</span>
+        <span class="kd">var</span> <span class="nx">html</span> <span class="o">=</span> <span class="nx">template</span><span class="p">({</span><span class="nx">note</span><span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">_notes</span><span class="p">.</span><span class="nx">getActive</span><span class="p">()});</span>
+
+        <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#editor&#39;</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="nx">html</span><span class="p">);</span>
+
+        <span class="c1">// handle saves</span>
+        <span class="kd">var</span> <span class="nx">textarea</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#app-content textarea&#39;</span><span class="p">);</span>
+        <span class="kd">var</span> <span class="nx">self</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
+        <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#app-content button&#39;</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+            <span class="kd">var</span> <span class="nx">content</span> <span class="o">=</span> <span class="nx">textarea</span><span class="p">.</span><span class="nx">val</span><span class="p">();</span>
+            <span class="kd">var</span> <span class="nx">title</span> <span class="o">=</span> <span class="nx">content</span><span class="p">.</span><span class="nx">split</span><span class="p">(</span><span class="s1">&#39;\n&#39;</span><span class="p">)[</span><span class="mi">0</span><span class="p">];</span> <span class="c1">// first line is the title</span>
+
+            <span class="nx">self</span><span class="p">.</span><span class="nx">_notes</span><span class="p">.</span><span class="nx">updateActive</span><span class="p">(</span><span class="nx">title</span><span class="p">,</span> <span class="nx">content</span><span class="p">).</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+                <span class="nx">self</span><span class="p">.</span><span class="nx">render</span><span class="p">();</span>
+            <span class="p">}).</span><span class="nx">fail</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+                <span class="nx">alert</span><span class="p">(</span><span class="s1">&#39;Could not update note, not found&#39;</span><span class="p">);</span>
+            <span class="p">});</span>
+        <span class="p">});</span>
+    <span class="p">},</span>
+    <span class="nx">renderNavigation</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">source</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#navigation-tpl&#39;</span><span class="p">).</span><span class="nx">html</span><span class="p">();</span>
+        <span class="kd">var</span> <span class="nx">template</span> <span class="o">=</span> <span class="nx">Handlebars</span><span class="p">.</span><span class="nx">compile</span><span class="p">(</span><span class="nx">source</span><span class="p">);</span>
+        <span class="kd">var</span> <span class="nx">html</span> <span class="o">=</span> <span class="nx">template</span><span class="p">({</span><span class="nx">notes</span><span class="o">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">_notes</span><span class="p">.</span><span class="nx">getAll</span><span class="p">()});</span>
+
+        <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#app-navigation ul&#39;</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="nx">html</span><span class="p">);</span>
+
+        <span class="c1">// create a new note</span>
+        <span class="kd">var</span> <span class="nx">self</span> <span class="o">=</span> <span class="k">this</span><span class="p">;</span>
+        <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#new-note&#39;</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+            <span class="kd">var</span> <span class="nx">note</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="nx">title</span><span class="o">:</span> <span class="nx">translations</span><span class="p">.</span><span class="nx">newNote</span><span class="p">,</span>
+                <span class="nx">content</span><span class="o">:</span> <span class="s1">&#39;&#39;</span>
+            <span class="p">};</span>
+
+            <span class="nx">self</span><span class="p">.</span><span class="nx">_notes</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">note</span><span class="p">).</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+                <span class="nx">self</span><span class="p">.</span><span class="nx">render</span><span class="p">();</span>
+                <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#editor textarea&#39;</span><span class="p">).</span><span class="nx">focus</span><span class="p">();</span>
+            <span class="p">}).</span><span class="nx">fail</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+                <span class="nx">alert</span><span class="p">(</span><span class="s1">&#39;Could not create note&#39;</span><span class="p">);</span>
+            <span class="p">});</span>
+        <span class="p">});</span>
+
+        <span class="c1">// show app menu</span>
+        <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#app-navigation .app-navigation-entry-utils-menu-button&#39;</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+            <span class="kd">var</span> <span class="nx">entry</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">closest</span><span class="p">(</span><span class="s1">&#39;.note&#39;</span><span class="p">);</span>
+            <span class="nx">entry</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;.app-navigation-entry-menu&#39;</span><span class="p">).</span><span class="nx">toggleClass</span><span class="p">(</span><span class="s1">&#39;open&#39;</span><span class="p">);</span>
+        <span class="p">});</span>
+
+        <span class="c1">// delete a note</span>
+        <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#app-navigation .note .delete&#39;</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+            <span class="kd">var</span> <span class="nx">entry</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">closest</span><span class="p">(</span><span class="s1">&#39;.note&#39;</span><span class="p">);</span>
+            <span class="nx">entry</span><span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;.app-navigation-entry-menu&#39;</span><span class="p">).</span><span class="nx">removeClass</span><span class="p">(</span><span class="s1">&#39;open&#39;</span><span class="p">);</span>
+
+            <span class="nx">self</span><span class="p">.</span><span class="nx">_notes</span><span class="p">.</span><span class="nx">removeActive</span><span class="p">().</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+                <span class="nx">self</span><span class="p">.</span><span class="nx">render</span><span class="p">();</span>
+            <span class="p">}).</span><span class="nx">fail</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+                <span class="nx">alert</span><span class="p">(</span><span class="s1">&#39;Could not delete note, not found&#39;</span><span class="p">);</span>
+            <span class="p">});</span>
+        <span class="p">});</span>
+
+        <span class="c1">// load a note</span>
+        <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#app-navigation .note &gt; a&#39;</span><span class="p">).</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+            <span class="kd">var</span> <span class="nx">id</span> <span class="o">=</span> <span class="nb">parseInt</span><span class="p">(</span><span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">parent</span><span class="p">().</span><span class="nx">data</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">),</span> <span class="mi">10</span><span class="p">);</span>
+            <span class="nx">self</span><span class="p">.</span><span class="nx">_notes</span><span class="p">.</span><span class="nx">load</span><span class="p">(</span><span class="nx">id</span><span class="p">);</span>
+            <span class="nx">self</span><span class="p">.</span><span class="nx">render</span><span class="p">();</span>
+            <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#editor textarea&#39;</span><span class="p">).</span><span class="nx">focus</span><span class="p">();</span>
+        <span class="p">});</span>
+    <span class="p">},</span>
+    <span class="nx">render</span><span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">renderNavigation</span><span class="p">();</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">renderContent</span><span class="p">();</span>
+    <span class="p">}</span>
+<span class="p">};</span>
+
+<span class="kd">var</span> <span class="nx">notes</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Notes</span><span class="p">(</span><span class="nx">OC</span><span class="p">.</span><span class="nx">generateUrl</span><span class="p">(</span><span class="s1">&#39;/apps/ownnotes/notes&#39;</span><span class="p">));</span>
+<span class="kd">var</span> <span class="nx">view</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">View</span><span class="p">(</span><span class="nx">notes</span><span class="p">);</span>
+<span class="nx">notes</span><span class="p">.</span><span class="nx">loadAll</span><span class="p">().</span><span class="nx">done</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">view</span><span class="p">.</span><span class="nx">render</span><span class="p">();</span>
+<span class="p">}).</span><span class="nx">fail</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="nx">alert</span><span class="p">(</span><span class="s1">&#39;Could not load notes&#39;</span><span class="p">);</span>
+<span class="p">});</span>
+
+
+<span class="p">});</span>
+
+<span class="p">})(</span><span class="nx">OC</span><span class="p">,</span> <span class="nb">window</span><span class="p">,</span> <span class="nx">jQuery</span><span class="p">);</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="apply-finishing-touches">
+<h2>Apply finishing touches<a class="headerlink" href="#apply-finishing-touches" title="Permalink to this headline">¶</a></h2>
+<p>Now the only thing left is to style the textarea in a nicer fashion. To do that open <strong>ownnotes/css/style.css</strong> and replace the content with the following <a class="reference internal" href="view/css.html"><span class="doc">CSS</span></a> code:</p>
+<div class="highlight-css"><div class="highlight"><pre><span></span><span class="p">#</span><span class="nn">app-content-wrapper</span> <span class="p">{</span>
+    <span class="k">height</span><span class="p">:</span> <span class="mi">100</span><span class="kt">%</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">#</span><span class="nn">editor</span> <span class="p">{</span>
+    <span class="k">height</span><span class="p">:</span> <span class="mi">100</span><span class="kt">%</span><span class="p">;</span>
+    <span class="k">width</span><span class="p">:</span> <span class="mi">100</span><span class="kt">%</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">#</span><span class="nn">editor</span> <span class="p">.</span><span class="nc">input</span> <span class="p">{</span>
+    <span class="k">height</span><span class="p">:</span> <span class="nb">calc</span><span class="p">(</span><span class="mi">100</span><span class="kt">%</span> <span class="o">-</span> <span class="mi">51</span><span class="kt">px</span><span class="p">);</span>
+    <span class="k">width</span><span class="p">:</span> <span class="mi">100</span><span class="kt">%</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">#</span><span class="nn">editor</span> <span class="p">.</span><span class="nc">save</span> <span class="p">{</span>
+    <span class="k">height</span><span class="p">:</span> <span class="mi">50</span><span class="kt">px</span><span class="p">;</span>
+    <span class="k">width</span><span class="p">:</span> <span class="mi">100</span><span class="kt">%</span><span class="p">;</span>
+    <span class="k">text-align</span><span class="p">:</span> <span class="kc">center</span><span class="p">;</span>
+    <span class="k">border-top</span><span class="p">:</span> <span class="mi">1</span><span class="kt">px</span> <span class="kc">solid</span> <span class="mh">#ccc</span><span class="p">;</span>
+    <span class="k">background-color</span><span class="p">:</span> <span class="mh">#fafafa</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">#</span><span class="nn">editor</span> <span class="nt">textarea</span> <span class="p">{</span>
+    <span class="k">height</span><span class="p">:</span> <span class="mi">100</span><span class="kt">%</span><span class="p">;</span>
+    <span class="k">width</span><span class="p">:</span> <span class="mi">100</span><span class="kt">%</span><span class="p">;</span>
+    <span class="k">border</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">margin</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">border-radius</span><span class="p">:</span> <span class="mi">0</span><span class="p">;</span>
+    <span class="k">overflow-y</span><span class="p">:</span> <span class="kc">auto</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">#</span><span class="nn">editor</span> <span class="nt">button</span> <span class="p">{</span>
+    <span class="k">height</span><span class="p">:</span> <span class="mi">44</span><span class="kt">px</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Congratulations! You&#8217;ve written your first Nextcloud app. You can now either try to further improve the tutorial notes app or start writing your own app.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="requests/index.html" class="btn btn-neutral float-right" title="Request lifecycle" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="intro.html" class="btn btn-neutral float-left" title="Introduction" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021 Nextcloud GmbH.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: 15
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/15/developer_manual">15</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/16/developer_manual">16</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/17/developer_manual">17</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/developer_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/developer_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+   
+
+</body>
+</html>

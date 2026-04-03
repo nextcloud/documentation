@@ -1,0 +1,177 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IMessage
+========
+
+
+.. php:namespace:: OCP\Mail
+
+.. php:interface:: IMessage
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Interface IMessage
+		
+	
+	:Implemented by:
+		:php:class:`OC\\Mail\\Message` 
+	
+	
+	:Source:
+		`lib/public/Mail/IMessage.php#35 <https://github.com/nextcloud/server/blob/stable13/lib/public/Mail/IMessage.php#L35>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public attach( $attachment)
+	
+		:Source:
+			`lib/public/Mail/IMessage.php#42 <https://github.com/nextcloud/server/blob/stable13/lib/public/Mail/IMessage.php#L42>`_
+		
+		
+		:Parameters:
+			* **$attachment** (:any:`OCP\\Mail\\IAttachment <OCP\\Mail\\IAttachment>`)  
+
+		
+		:Returns: :any:`\\OCP\\Mail\\IMessage <OCP\\Mail\\IMessage>` 
+		:Since: 13.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setFrom( $addresses)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set the from address of this message\.
+			
+			| If no "From" address is used \\OC\\Mail\\Mailer will use mail\_from\_address and mail\_domain from config\.php
+			
+		
+		:Source:
+			`lib/public/Mail/IMessage.php#53 <https://github.com/nextcloud/server/blob/stable13/lib/public/Mail/IMessage.php#L53>`_
+		
+		
+		:Parameters:
+			* **$addresses** (array)  Example: array('sender@domain.org', 'other@domain.org' => 'A name')
+
+		
+		:Returns: :any:`\\OCP\\Mail\\IMessage <OCP\\Mail\\IMessage>` 
+		:Since: 13.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setReplyTo( $addresses)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set the Reply\-To address of this message
+			
+		
+		:Source:
+			`lib/public/Mail/IMessage.php#62 <https://github.com/nextcloud/server/blob/stable13/lib/public/Mail/IMessage.php#L62>`_
+		
+		
+		:Parameters:
+			* **$addresses** (array)  
+
+		
+		:Returns: :any:`\\OCP\\Mail\\IMessage <OCP\\Mail\\IMessage>` 
+		:Since: 13.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setTo( $recipients)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set the to addresses of this message\.
+			
+		
+		:Source:
+			`lib/public/Mail/IMessage.php#71 <https://github.com/nextcloud/server/blob/stable13/lib/public/Mail/IMessage.php#L71>`_
+		
+		
+		:Parameters:
+			* **$recipients** (array)  Example: array('recipient@domain.org', 'other@domain.org' => 'A name')
+
+		
+		:Returns: :any:`\\OCP\\Mail\\IMessage <OCP\\Mail\\IMessage>` 
+		:Since: 13.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setCc( $recipients)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set the CC recipients of this message\.
+			
+		
+		:Source:
+			`lib/public/Mail/IMessage.php#80 <https://github.com/nextcloud/server/blob/stable13/lib/public/Mail/IMessage.php#L80>`_
+		
+		
+		:Parameters:
+			* **$recipients** (array)  Example: array('recipient@domain.org', 'other@domain.org' => 'A name')
+
+		
+		:Returns: :any:`\\OCP\\Mail\\IMessage <OCP\\Mail\\IMessage>` 
+		:Since: 13.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setBcc( $recipients)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set the BCC recipients of this message\.
+			
+		
+		:Source:
+			`lib/public/Mail/IMessage.php#89 <https://github.com/nextcloud/server/blob/stable13/lib/public/Mail/IMessage.php#L89>`_
+		
+		
+		:Parameters:
+			* **$recipients** (array)  Example: array('recipient@domain.org', 'other@domain.org' => 'A name')
+
+		
+		:Returns: :any:`\\OCP\\Mail\\IMessage <OCP\\Mail\\IMessage>` 
+		:Since: 13.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public useTemplate( $emailTemplate)
+	
+		:Source:
+			`lib/public/Mail/IMessage.php#96 <https://github.com/nextcloud/server/blob/stable13/lib/public/Mail/IMessage.php#L96>`_
+		
+		
+		:Parameters:
+			* **$emailTemplate** (:any:`OCP\\Mail\\IEMailTemplate <OCP\\Mail\\IEMailTemplate>`)  
+
+		
+		:Returns: :any:`\\OCP\\Mail\\IMessage <OCP\\Mail\\IMessage>` 
+		:Since: 13.0.0 
+	
+	
+

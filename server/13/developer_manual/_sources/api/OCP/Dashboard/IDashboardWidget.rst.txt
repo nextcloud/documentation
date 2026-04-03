@@ -1,0 +1,193 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IDashboardWidget
+================
+
+
+.. php:namespace:: OCP\Dashboard
+
+.. php:interface:: IDashboardWidget
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Interface IDashboardWidget
+		
+		| This interface is used to create a widget: the widget must implement this
+		| interface and be defined in appinfo/info\.xml:
+		| 
+		|    <dashboard\>
+		|      <widget\>OCA\\YourApp\\YourWidget</widget\>
+		|  </dashboard\>
+		| 
+		| Multiple widget can be defined in the same appinfo/info\.xml\.
+		
+	
+	:Source:
+		`lib/public/Dashboard/IDashboardWidget.php#52 <https://github.com/nextcloud/server/blob/stable13/lib/public/Dashboard/IDashboardWidget.php#L52>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public getId()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Should returns the \(unique\) Id of the widget\.
+			
+		
+		:Source:
+			`lib/public/Dashboard/IDashboardWidget.php#62 <https://github.com/nextcloud/server/blob/stable13/lib/public/Dashboard/IDashboardWidget.php#L62>`_
+		
+		
+		:Since: 15.0.0 
+		:Deprecated: 20.0.0 
+		:Returns: string 
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public getName()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Should returns the \[display\] name of the widget\.
+			
+		
+		:Source:
+			`lib/public/Dashboard/IDashboardWidget.php#73 <https://github.com/nextcloud/server/blob/stable13/lib/public/Dashboard/IDashboardWidget.php#L73>`_
+		
+		
+		:Since: 15.0.0 
+		:Deprecated: 20.0.0 
+		:Returns: string 
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public getDescription()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Should returns some text describing the widget\.
+			
+			| This description is displayed in the listing of the available widgets\.
+			
+		
+		:Source:
+			`lib/public/Dashboard/IDashboardWidget.php#85 <https://github.com/nextcloud/server/blob/stable13/lib/public/Dashboard/IDashboardWidget.php#L85>`_
+		
+		
+		:Since: 15.0.0 
+		:Deprecated: 20.0.0 
+		:Returns: string 
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public getWidgetTemplate()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Must generate and return a WidgetTemplate that define important stuff
+			| about the Widget: icon, content, css or javascript\.
+			
+		
+		:Source:
+			`lib/public/Dashboard/IDashboardWidget.php#99 <https://github.com/nextcloud/server/blob/stable13/lib/public/Dashboard/IDashboardWidget.php#L99>`_
+		
+		
+		:See: :any:`\\OCP\\Dashboard\\Model\\WidgetTemplate <OCP\\Dashboard\\Model\\WidgetTemplate>` 
+		:Since: 15.0.0 
+		:Deprecated: 20.0.0 
+		:Returns: :any:`\\OCP\\Dashboard\\Model\\WidgetTemplate <OCP\\Dashboard\\Model\\WidgetTemplate>` 
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public getWidgetSetup()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Must create and return a WidgetSetup containing the general setup of
+			| the widget
+			
+		
+		:Source:
+			`lib/public/Dashboard/IDashboardWidget.php#113 <https://github.com/nextcloud/server/blob/stable13/lib/public/Dashboard/IDashboardWidget.php#L113>`_
+		
+		
+		:See: :any:`\\OCP\\Dashboard\\Model\\WidgetSetup <OCP\\Dashboard\\Model\\WidgetSetup>` 
+		:Since: 15.0.0 
+		:Deprecated: 20.0.0 
+		:Returns: :any:`\\OCP\\Dashboard\\Model\\WidgetSetup <OCP\\Dashboard\\Model\\WidgetSetup>` 
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public loadWidget( $settings)
+	
+		.. rst-class:: phpdoc-description
+		
+			| This method is called when a widget is loaded on the dashboard\.
+			
+			| A widget is \'loaded on the dashboard\' when one of these conditions
+			| occurs:
+			| 
+			| \- the user is adding the widget on his dashboard,
+			| \- the user already added the widget on his dashboard and he is opening
+			|   the dashboard app\.
+			
+		
+		:Source:
+			`lib/public/Dashboard/IDashboardWidget.php#132 <https://github.com/nextcloud/server/blob/stable13/lib/public/Dashboard/IDashboardWidget.php#L132>`_
+		
+		
+		:Parameters:
+			* **$settings** (:any:`OCP\\Dashboard\\Model\\IWidgetConfig <OCP\\Dashboard\\Model\\IWidgetConfig>`)  
+
+		
+		:See: :any:`\\OCP\\Dashboard\\Model\\IWidgetConfig <OCP\\Dashboard\\Model\\IWidgetConfig>` 
+		:Since: 15.0.0 
+		:Deprecated: 20.0.0 
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public requestWidget( $request)
+	
+		.. rst-class:: phpdoc-description
+		
+			| This method s executed when the widget call the net\.requestWidget\(\)
+			| from the Javascript API\.
+			
+			| This is used by the frontend to communicate with the backend\.
+			
+		
+		:Source:
+			`lib/public/Dashboard/IDashboardWidget.php#148 <https://github.com/nextcloud/server/blob/stable13/lib/public/Dashboard/IDashboardWidget.php#L148>`_
+		
+		
+		:Parameters:
+			* **$request** (:any:`OCP\\Dashboard\\Model\\IWidgetRequest <OCP\\Dashboard\\Model\\IWidgetRequest>`)  
+
+		
+		:See: :any:`\\OCP\\Dashboard\\Model\\IWidgetRequest <OCP\\Dashboard\\Model\\IWidgetRequest>` 
+		:Since: 15.0.0 
+		:Deprecated: 20.0.0 
+	
+	
+

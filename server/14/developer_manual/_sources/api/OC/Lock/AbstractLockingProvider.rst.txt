@@ -1,0 +1,163 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+AbstractLockingProvider
+=======================
+
+
+.. php:namespace:: OC\Lock
+
+.. rst-class::  abstract
+
+.. php:class:: AbstractLockingProvider
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Base locking provider that keeps track of locks acquired during the current request
+		| to release any left over locks at the end of the request
+		
+	
+	:Source:
+		`lib/private/Lock/AbstractLockingProvider.php#36 <https://github.com/nextcloud/server/blob/stable13/lib/private/Lock/AbstractLockingProvider.php#L36>`_
+	
+	:Implements:
+		:php:interface:`OCP\\Lock\\ILockingProvider` 
+	
+
+Properties
+----------
+
+.. php:attr:: protected static ttl
+
+	:Source:
+		`lib/private/Lock/AbstractLockingProvider.php#38 <https://github.com/nextcloud/server/blob/stable13/lib/private/Lock/AbstractLockingProvider.php#L38>`_
+	
+	:Type: int 
+
+
+.. php:attr:: protected static acquiredLocks
+
+	:Source:
+		`lib/private/Lock/AbstractLockingProvider.php#40 <https://github.com/nextcloud/server/blob/stable13/lib/private/Lock/AbstractLockingProvider.php#L40>`_
+	
+
+
+Methods
+-------
+
+.. rst-class:: protected
+
+	.. php:method:: protected hasAcquiredLock( $path, $type)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check if we\'ve locally acquired a lock
+			
+		
+		:Source:
+			`lib/private/Lock/AbstractLockingProvider.php#52 <https://github.com/nextcloud/server/blob/stable13/lib/private/Lock/AbstractLockingProvider.php#L52>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+			* **$type** (int)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected markAcquire( $path, $type)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Mark a locally acquired lock
+			
+		
+		:Source:
+			`lib/private/Lock/AbstractLockingProvider.php#66 <https://github.com/nextcloud/server/blob/stable13/lib/private/Lock/AbstractLockingProvider.php#L66>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+			* **$type** (int)  self::LOCK_SHARED or self::LOCK_EXCLUSIVE
+
+		
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected markRelease( $path, $type)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Mark a release of a locally acquired lock
+			
+		
+		:Source:
+			`lib/private/Lock/AbstractLockingProvider.php#83 <https://github.com/nextcloud/server/blob/stable13/lib/private/Lock/AbstractLockingProvider.php#L83>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+			* **$type** (int)  self::LOCK_SHARED or self::LOCK_EXCLUSIVE
+
+		
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected markChange( $path, $targetType)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Change the type of an existing tracked lock
+			
+		
+		:Source:
+			`lib/private/Lock/AbstractLockingProvider.php#102 <https://github.com/nextcloud/server/blob/stable13/lib/private/Lock/AbstractLockingProvider.php#L102>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+			* **$targetType** (int)  self::LOCK_SHARED or self::LOCK_EXCLUSIVE
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public releaseAll()
+	
+		.. rst-class:: phpdoc-description
+		
+			| release all lock acquired by this instance which were marked using the mark\* methods
+			
+		
+		:Source:
+			`lib/private/Lock/AbstractLockingProvider.php#118 <https://github.com/nextcloud/server/blob/stable13/lib/private/Lock/AbstractLockingProvider.php#L118>`_
+		
+		
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected getOwnSharedLockCount( $path)
+	
+		:Source:
+			`lib/private/Lock/AbstractLockingProvider.php#130 <https://github.com/nextcloud/server/blob/stable13/lib/private/Lock/AbstractLockingProvider.php#L130>`_
+		
+		
+	
+	
+

@@ -1,0 +1,402 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IUserManager
+============
+
+
+.. php:namespace:: OCP
+
+.. php:interface:: IUserManager
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Class Manager
+		
+		| Hooks available in scope \\OC\\User:
+		| \- preSetPassword\(\\OC\\User\\User $user, string $password, string $recoverPassword\)
+		| \- postSetPassword\(\\OC\\User\\User $user, string $password, string $recoverPassword\)
+		| \- preDelete\(\\OC\\User\\User $user\)
+		| \- postDelete\(\\OC\\User\\User $user\)
+		| \- preCreateUser\(string $uid, string $password\)
+		| \- postCreateUser\(\\OC\\User\\User $user, string $password\)
+		| \- assignedUserId\(string $uid\)
+		| \- preUnassignedUserId\(string $uid\)
+		| \- postUnassignedUserId\(string $uid\)
+		
+	
+	:Implemented by:
+		:php:class:`OC\\User\\Manager` 
+	
+	
+	:Source:
+		`lib/public/IUserManager.php#49 <https://github.com/nextcloud/server/blob/stable13/lib/public/IUserManager.php#L49>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public registerBackend( $backend)
+	
+		.. rst-class:: phpdoc-description
+		
+			| register a user backend
+			
+		
+		:Source:
+			`lib/public/IUserManager.php#56 <https://github.com/nextcloud/server/blob/stable13/lib/public/IUserManager.php#L56>`_
+		
+		
+		:Parameters:
+			* **$backend** (:any:`OCP\\UserInterface <OCP\\UserInterface>`)  
+
+		
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getBackends()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the active backends
+			
+		
+		:Source:
+			`lib/public/IUserManager.php#63 <https://github.com/nextcloud/server/blob/stable13/lib/public/IUserManager.php#L63>`_
+		
+		
+		:Returns: :any:`\\OCP\\UserInterface\[\] <OCP\\UserInterface>` 
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public removeBackend( $backend)
+	
+		.. rst-class:: phpdoc-description
+		
+			| remove a user backend
+			
+		
+		:Source:
+			`lib/public/IUserManager.php#71 <https://github.com/nextcloud/server/blob/stable13/lib/public/IUserManager.php#L71>`_
+		
+		
+		:Parameters:
+			* **$backend** (:any:`OCP\\UserInterface <OCP\\UserInterface>`)  
+
+		
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public clearBackends()
+	
+		.. rst-class:: phpdoc-description
+		
+			| remove all user backends
+			
+		
+		:Source:
+			`lib/public/IUserManager.php#77 <https://github.com/nextcloud/server/blob/stable13/lib/public/IUserManager.php#L77>`_
+		
+		
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public get( $uid)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get a user by user id
+			
+		
+		:Source:
+			`lib/public/IUserManager.php#86 <https://github.com/nextcloud/server/blob/stable13/lib/public/IUserManager.php#L86>`_
+		
+		
+		:Parameters:
+			* **$uid** (string)  
+
+		
+		:Returns: :any:`\\OCP\\IUser <OCP\\IUser>` | null Either the user or null if the specified user does not exist
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public userExists( $uid)
+	
+		.. rst-class:: phpdoc-description
+		
+			| check if a user exists
+			
+		
+		:Source:
+			`lib/public/IUserManager.php#95 <https://github.com/nextcloud/server/blob/stable13/lib/public/IUserManager.php#L95>`_
+		
+		
+		:Parameters:
+			* **$uid** (string)  
+
+		
+		:Returns: bool 
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public checkPassword( $loginName, $password)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check if the password is valid for the user
+			
+		
+		:Source:
+			`lib/public/IUserManager.php#105 <https://github.com/nextcloud/server/blob/stable13/lib/public/IUserManager.php#L105>`_
+		
+		
+		:Parameters:
+			* **$loginName** (string)  
+			* **$password** (string)  
+
+		
+		:Returns: mixed the User object on success, false otherwise
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public search( $pattern, $limit=null, $offset=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| search by user id
+			
+		
+		:Source:
+			`lib/public/IUserManager.php#116 <https://github.com/nextcloud/server/blob/stable13/lib/public/IUserManager.php#L116>`_
+		
+		
+		:Parameters:
+			* **$pattern** (string)  
+			* **$limit** (int)  
+			* **$offset** (int)  
+
+		
+		:Returns: :any:`\\OCP\\IUser\[\] <OCP\\IUser>` 
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public searchDisplayName( $pattern, $limit=null, $offset=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| search by displayName
+			
+		
+		:Source:
+			`lib/public/IUserManager.php#127 <https://github.com/nextcloud/server/blob/stable13/lib/public/IUserManager.php#L127>`_
+		
+		
+		:Parameters:
+			* **$pattern** (string)  
+			* **$limit** (int)  
+			* **$offset** (int)  
+
+		
+		:Returns: :any:`\\OCP\\IUser\[\] <OCP\\IUser>` 
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public searchKnownUsersByDisplayName( $searcher, $pattern, $limit=null, $offset=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Search known users \(from phonebook sync\) by displayName
+			
+		
+		:Source:
+			`lib/public/IUserManager.php#139 <https://github.com/nextcloud/server/blob/stable13/lib/public/IUserManager.php#L139>`_
+		
+		
+		:Parameters:
+			* **$searcher** (string)  
+			* **$pattern** (string)  
+			* **$limit** (int | null)  
+			* **$offset** (int | null)  
+
+		
+		:Returns: :any:`\\OCP\\IUser\[\] <OCP\\IUser>` 
+		:Since: 21.0.1 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public createUser( $uid, $password)
+	
+		:Source:
+			`lib/public/IUserManager.php#148 <https://github.com/nextcloud/server/blob/stable13/lib/public/IUserManager.php#L148>`_
+		
+		
+		:Parameters:
+			* **$uid** (string)  
+			* **$password** (string)  
+
+		
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` 
+		:Returns: bool | :any:`\\OCP\\IUser <OCP\\IUser>` the created user or false
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public createUserFromBackend( $uid, $password, $backend)
+	
+		:Source:
+			`lib/public/IUserManager.php#158 <https://github.com/nextcloud/server/blob/stable13/lib/public/IUserManager.php#L158>`_
+		
+		
+		:Parameters:
+			* **$uid** (string)  
+			* **$password** (string)  
+			* **$backend** (:any:`OCP\\UserInterface <OCP\\UserInterface>`)  
+
+		
+		:Returns: :any:`\\OCP\\IUser <OCP\\IUser>` | null 
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` 
+		:Since: 12.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public countUsers()
+	
+		.. rst-class:: phpdoc-description
+		
+			| returns how many users per backend exist \(if supported by backend\)
+			
+		
+		:Source:
+			`lib/public/IUserManager.php#166 <https://github.com/nextcloud/server/blob/stable13/lib/public/IUserManager.php#L166>`_
+		
+		
+		:Returns: array an array of backend class as key and count number as value
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public callForAllUsers( $callback, $search="")
+	
+		:Source:
+			`lib/public/IUserManager.php#174 <https://github.com/nextcloud/server/blob/stable13/lib/public/IUserManager.php#L174>`_
+		
+		
+		:Parameters:
+			* **$callback** (:any:`Closure <Closure>`)  
+			* **$search** (string)  
+
+		
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public countDisabledUsers()
+	
+		.. rst-class:: phpdoc-description
+		
+			| returns how many users have logged in once
+			
+		
+		:Source:
+			`lib/public/IUserManager.php#182 <https://github.com/nextcloud/server/blob/stable13/lib/public/IUserManager.php#L182>`_
+		
+		
+		:Returns: int 
+		:Since: 11.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public countSeenUsers()
+	
+		.. rst-class:: phpdoc-description
+		
+			| returns how many users have logged in once
+			
+		
+		:Source:
+			`lib/public/IUserManager.php#190 <https://github.com/nextcloud/server/blob/stable13/lib/public/IUserManager.php#L190>`_
+		
+		
+		:Returns: int 
+		:Since: 11.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public callForSeenUsers( $callback)
+	
+		:Source:
+			`lib/public/IUserManager.php#197 <https://github.com/nextcloud/server/blob/stable13/lib/public/IUserManager.php#L197>`_
+		
+		
+		:Parameters:
+			* **$callback** (:any:`Closure <Closure>`)  
+
+		
+		:Since: 11.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getByEmail( $email)
+	
+		:Source:
+			`lib/public/IUserManager.php#204 <https://github.com/nextcloud/server/blob/stable13/lib/public/IUserManager.php#L204>`_
+		
+		
+		:Parameters:
+			* **$email** (string)  
+
+		
+		:Returns: :any:`\\OCP\\IUser\[\] <OCP\\IUser>` 
+		:Since: 9.1.0 
+	
+	
+

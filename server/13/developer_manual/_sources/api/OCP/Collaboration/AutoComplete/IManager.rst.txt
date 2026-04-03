@@ -1,0 +1,65 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IManager
+========
+
+
+.. php:namespace:: OCP\Collaboration\AutoComplete
+
+.. php:interface:: IManager
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Interface IManager
+		
+	
+	:Implemented by:
+		:php:class:`OC\\Collaboration\\AutoComplete\\Manager` 
+	
+	
+	:Source:
+		`lib/public/Collaboration/AutoComplete/IManager.php#31 <https://github.com/nextcloud/server/blob/stable13/lib/public/Collaboration/AutoComplete/IManager.php#L31>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public registerSorter( $className)
+	
+		:Source:
+			`lib/public/Collaboration/AutoComplete/IManager.php#36 <https://github.com/nextcloud/server/blob/stable13/lib/public/Collaboration/AutoComplete/IManager.php#L36>`_
+		
+		
+		:Parameters:
+			* **$className** (string)  – class name of the ISorter implementation
+
+		
+		:Since: 13.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public runSorters( $sorters, &$sortArray, $context)
+	
+		:Source:
+			`lib/public/Collaboration/AutoComplete/IManager.php#44 <https://github.com/nextcloud/server/blob/stable13/lib/public/Collaboration/AutoComplete/IManager.php#L44>`_
+		
+		
+		:Parameters:
+			* **$sorters** (array)  list of sorter IDs, seperated by "|"
+			* **$sortArray** (array)  array representation of OCP\Collaboration\Collaborators\ISearchResult
+			* **$context** (array)  context info of the search, keys: itemType, itemId
+
+		
+		:Since: 13.0.0 
+	
+	
+

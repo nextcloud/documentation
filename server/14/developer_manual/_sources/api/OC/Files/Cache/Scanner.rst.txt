@@ -1,0 +1,346 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+Scanner
+=======
+
+
+.. php:namespace:: OC\Files\Cache
+
+.. php:class:: Scanner
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Class Scanner
+		
+		| Hooks available in scope \\OC\\Files\\Cache\\Scanner:
+		| \- scanFile\(string $path, string $storageId\)
+		| \- scanFolder\(string $path, string $storageId\)
+		| \- postScanFile\(string $path, string $storageId\)
+		| \- postScanFolder\(string $path, string $storageId\)
+		
+	
+	:Source:
+		`lib/private/Files/Cache/Scanner.php#58 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Scanner.php#L58>`_
+	
+	:Parent:
+		:php:class:`OC\\Hooks\\BasicEmitter`
+	
+	:Implements:
+		:php:interface:`OCP\\Files\\Cache\\IScanner` 
+	
+
+Properties
+----------
+
+.. php:attr:: protected static storage
+
+	:Source:
+		`lib/private/Files/Cache/Scanner.php#62 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Scanner.php#L62>`_
+	
+	:Type: :any:`\\OC\\Files\\Storage\\Storage <OC\\Files\\Storage\\Storage>` 
+
+
+.. php:attr:: protected static storageId
+
+	:Source:
+		`lib/private/Files/Cache/Scanner.php#67 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Scanner.php#L67>`_
+	
+	:Type: string 
+
+
+.. php:attr:: protected static cache
+
+	:Source:
+		`lib/private/Files/Cache/Scanner.php#72 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Scanner.php#L72>`_
+	
+	:Type: :any:`\\OC\\Files\\Cache\\Cache <OC\\Files\\Cache\\Cache>` 
+
+
+.. php:attr:: protected static cacheActive
+
+	:Source:
+		`lib/private/Files/Cache/Scanner.php#77 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Scanner.php#L77>`_
+	
+	:Type: bool If true, perform cache operations, if false, do not affect cache
+
+
+.. php:attr:: protected static useTransactions
+
+	:Source:
+		`lib/private/Files/Cache/Scanner.php#82 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Scanner.php#L82>`_
+	
+	:Type: bool whether to use transactions
+
+
+.. php:attr:: protected static lockingProvider
+
+	:Source:
+		`lib/private/Files/Cache/Scanner.php#87 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Scanner.php#L87>`_
+	
+	:Type: :any:`\\OCP\\Lock\\ILockingProvider <OCP\\Lock\\ILockingProvider>` 
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $storage)
+	
+		:Source:
+			`lib/private/Files/Cache/Scanner.php#89 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Scanner.php#L89>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setUseTransactions( $useTransactions)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Whether to wrap the scanning of a folder in a database transaction
+			| On default transactions are used
+			
+		
+		:Source:
+			`lib/private/Files/Cache/Scanner.php#103 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Scanner.php#L103>`_
+		
+		
+		:Parameters:
+			* **$useTransactions** (bool)  
+
+		
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected getData( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get all the metadata of a file or folder
+			| \*
+			
+		
+		:Source:
+			`lib/private/Files/Cache/Scanner.php#114 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Scanner.php#L114>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: array | null an array of metadata of the file
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public scanFile( $file, $reuseExisting=0, $parentId=\-1, $cacheData=null, $lock=true, $data=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| scan a single file and store it in the cache
+			
+		
+		:Source:
+			`lib/private/Files/Cache/Scanner.php#134 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Scanner.php#L134>`_
+		
+		
+		:Parameters:
+			* **$file** (string)  
+			* **$reuseExisting** (int)  
+			* **$parentId** (int)  
+			* **$cacheData** (array | null | bool)  existing data in the cache for the file to be scanned
+			* **$lock** (bool)  set to false to disable getting an additional read lock during scanning
+			* **$data** (null)  the metadata for the file, as returned by the storage
+
+		
+		:Returns: array | null an array of metadata of the scanned file
+		:Throws: :any:`\\OCP\\Lock\\LockedException <OCP\\Lock\\LockedException>` 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected removeFromCache( $path)
+	
+		:Source:
+			`lib/private/Files/Cache/Scanner.php#270 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Scanner.php#L270>`_
+		
+		
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected addToCache( $path, $data, $fileId=\-1)
+	
+		:Source:
+			`lib/private/Files/Cache/Scanner.php#284 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Scanner.php#L284>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+			* **$data** (array)  
+			* **$fileId** (int)  
+
+		
+		:Returns: int the id of the added file
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected updateCache( $path, $data, $fileId=\-1)
+	
+		:Source:
+			`lib/private/Files/Cache/Scanner.php#307 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Scanner.php#L307>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+			* **$data** (array)  
+			* **$fileId** (int)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public scan( $path, $recursive=self::SCAN\_RECURSIVE, $reuse=\-1, $lock=true)
+	
+		.. rst-class:: phpdoc-description
+		
+			| scan a folder and all it\'s children
+			
+		
+		:Source:
+			`lib/private/Files/Cache/Scanner.php#328 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Scanner.php#L328>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+			* **$recursive** (bool)  
+			* **$reuse** (int)  
+			* **$lock** (bool)  set to false to disable getting an additional read lock during scanning
+
+		
+		:Returns: array | null an array of the meta data of the scanned file or folder
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected getExistingChildren( $folderId)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the children currently in the cache
+			
+		
+		:Source:
+			`lib/private/Files/Cache/Scanner.php#361 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Scanner.php#L361>`_
+		
+		
+		:Parameters:
+			* **$folderId** (int)  
+
+		
+		:Returns: array[] 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected scanChildren( $path, $recursive=self::SCAN\_RECURSIVE, $reuse=\-1, $folderId=null, $lock=true)
+	
+		.. rst-class:: phpdoc-description
+		
+			| scan all the files and folders in a folder
+			
+		
+		:Source:
+			`lib/private/Files/Cache/Scanner.php#380 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Scanner.php#L380>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+			* **$recursive** (bool)  
+			* **$reuse** (int)  
+			* **$folderId** (int)  id for the folder to be scanned
+			* **$lock** (bool)  set to false to disable getting an additional read lock during scanning
+
+		
+		:Returns: int the size of the scanned folder or \-1 if the size is unknown at this stage
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static isPartialFile( $file)
+	
+		.. rst-class:: phpdoc-description
+		
+			| check if the file should be ignored when scanning
+			| NOTE: files with a \'\.part\' extension are ignored as well\!
+			|       prevents unfinished put requests to be scanned
+			
+		
+		:Source:
+			`lib/private/Files/Cache/Scanner.php#488 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Scanner.php#L488>`_
+		
+		
+		:Parameters:
+			* **$file** (string)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public backgroundScan()
+	
+		.. rst-class:: phpdoc-description
+		
+			| walk over any folders that are not fully scanned yet and scan them
+			
+		
+		:Source:
+			`lib/private/Files/Cache/Scanner.php#502 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Scanner.php#L502>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setCacheActive( $active)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set whether the cache is affected by scan operations
+			
+		
+		:Source:
+			`lib/private/Files/Cache/Scanner.php#543 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Scanner.php#L543>`_
+		
+		
+		:Parameters:
+			* **$active** (bool)  The active state of the cache
+
+		
+	
+	
+

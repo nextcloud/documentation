@@ -1,0 +1,753 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+DAV
+===
+
+
+.. php:namespace:: OC\Files\Storage
+
+.. php:class:: DAV
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Class DAV
+		
+	
+	:Source:
+		`lib/private/Files/Storage/DAV.php#67 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/DAV.php#L67>`_
+	
+	:Parent:
+		:php:class:`OC\\Files\\Storage\\Common`
+	
+
+Properties
+----------
+
+.. php:attr:: protected static password
+
+	:Source:
+		`lib/private/Files/Storage/DAV.php#69 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/DAV.php#L69>`_
+	
+	:Type: string 
+
+
+.. php:attr:: protected static user
+
+	:Source:
+		`lib/private/Files/Storage/DAV.php#71 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/DAV.php#L71>`_
+	
+	:Type: string 
+
+
+.. php:attr:: protected static authType
+
+	:Source:
+		`lib/private/Files/Storage/DAV.php#73 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/DAV.php#L73>`_
+	
+	:Type: string | null 
+
+
+.. php:attr:: protected static host
+
+	:Source:
+		`lib/private/Files/Storage/DAV.php#75 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/DAV.php#L75>`_
+	
+	:Type: string 
+
+
+.. php:attr:: protected static secure
+
+	:Source:
+		`lib/private/Files/Storage/DAV.php#77 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/DAV.php#L77>`_
+	
+	:Type: bool 
+
+
+.. php:attr:: protected static root
+
+	:Source:
+		`lib/private/Files/Storage/DAV.php#79 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/DAV.php#L79>`_
+	
+	:Type: string 
+
+
+.. php:attr:: protected static certPath
+
+	:Source:
+		`lib/private/Files/Storage/DAV.php#81 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/DAV.php#L81>`_
+	
+	:Type: string 
+
+
+.. php:attr:: protected static ready
+
+	:Source:
+		`lib/private/Files/Storage/DAV.php#83 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/DAV.php#L83>`_
+	
+	:Type: bool 
+
+
+.. php:attr:: protected static client
+
+	:Source:
+		`lib/private/Files/Storage/DAV.php#85 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/DAV.php#L85>`_
+	
+	:Type: :any:`\\Sabre\\DAV\\Client <Sabre\\DAV\\Client>` 
+
+
+.. php:attr:: protected static statCache
+
+	:Source:
+		`lib/private/Files/Storage/DAV.php#87 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/DAV.php#L87>`_
+	
+	:Type: :any:`\\OC\\MemCache\\ArrayCache <OC\\MemCache\\ArrayCache>` 
+
+
+.. php:attr:: protected static httpClientService
+
+	:Source:
+		`lib/private/Files/Storage/DAV.php#89 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/DAV.php#L89>`_
+	
+	:Type: :any:`\\OCP\\Http\\Client\\IClientService <OCP\\Http\\Client\\IClientService>` 
+
+
+.. php:attr:: protected static certManager
+
+	:Source:
+		`lib/private/Files/Storage/DAV.php#91 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/DAV.php#L91>`_
+	
+	:Type: :any:`\\OCP\\ICertificateManager <OCP\\ICertificateManager>` 
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $params)
+	
+		:Source:
+			`lib/private/Files/Storage/DAV.php#97 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/DAV.php#L97>`_
+		
+		
+		:Parameters:
+			* **$params** (array)  
+
+		
+		:Throws: :any:`\\Exception <Exception>` 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected init()
+	
+		:Source:
+			`lib/private/Files/Storage/DAV.php#135 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/DAV.php#L135>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public clearStatCache()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Clear the stat cache
+			
+		
+		:Source:
+			`lib/private/Files/Storage/DAV.php#172 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/DAV.php#L172>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getId()
+	
+		.. rst-class:: phpdoc-description
+		
+			| \{@inheritdoc\}
+			
+		
+		:Source:
+			`lib/private/Files/Storage/DAV.php#177 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/DAV.php#L177>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public createBaseUri()
+	
+		.. rst-class:: phpdoc-description
+		
+			| \{@inheritdoc\}
+			
+		
+		:Source:
+			`lib/private/Files/Storage/DAV.php#182 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/DAV.php#L182>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public mkdir( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| \{@inheritdoc\}
+			
+		
+		:Source:
+			`lib/private/Files/Storage/DAV.php#192 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/DAV.php#L192>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public rmdir( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| \{@inheritdoc\}
+			
+		
+		:Source:
+			`lib/private/Files/Storage/DAV.php#203 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/DAV.php#L203>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public opendir( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| \{@inheritdoc\}
+			
+		
+		:Source:
+			`lib/private/Files/Storage/DAV.php#215 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/DAV.php#L215>`_
+		
+		
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected propfind( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Propfind call with cache handling\.
+			
+			| First checks if information is cached\.
+			| If not, request it from the server then store to cache\.
+			
+		
+		:Source:
+			`lib/private/Files/Storage/DAV.php#262 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/DAV.php#L262>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  path to propfind
+
+		
+		:Returns: array | bool propfind response or false if the entry was not found
+		:Throws: :any:`\\Sabre\\HTTP\\ClientHttpException <Sabre\\HTTP\\ClientHttpException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public filetype( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| \{@inheritdoc\}
+			
+		
+		:Source:
+			`lib/private/Files/Storage/DAV.php#299 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/DAV.php#L299>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public file_exists( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| \{@inheritdoc\}
+			
+		
+		:Source:
+			`lib/private/Files/Storage/DAV.php#318 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/DAV.php#L318>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public unlink( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| \{@inheritdoc\}
+			
+		
+		:Source:
+			`lib/private/Files/Storage/DAV.php#337 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/DAV.php#L337>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public fopen( $path, $mode)
+	
+		.. rst-class:: phpdoc-description
+		
+			| \{@inheritdoc\}
+			
+		
+		:Source:
+			`lib/private/Files/Storage/DAV.php#347 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/DAV.php#L347>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public writeBack( $tmpFile, $path)
+	
+		:Source:
+			`lib/private/Files/Storage/DAV.php#422 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/DAV.php#L422>`_
+		
+		
+		:Parameters:
+			* **$tmpFile** (string)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public free_space( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| \{@inheritdoc\}
+			
+		
+		:Source:
+			`lib/private/Files/Storage/DAV.php#428 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/DAV.php#L428>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public touch( $path, $mtime=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| \{@inheritdoc\}
+			
+		
+		:Source:
+			`lib/private/Files/Storage/DAV.php#448 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/DAV.php#L448>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public file_put_contents( $path, $data)
+	
+		:Source:
+			`lib/private/Files/Storage/DAV.php#493 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/DAV.php#L493>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+			* **$data** (mixed)  
+
+		
+		:Returns: int | bool 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected uploadFile( $path, $target)
+	
+		:Source:
+			`lib/private/Files/Storage/DAV.php#504 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/DAV.php#L504>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+			* **$target** (string)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public rename( $path1, $path2)
+	
+		.. rst-class:: phpdoc-description
+		
+			| \{@inheritdoc\}
+			
+		
+		:Source:
+			`lib/private/Files/Storage/DAV.php#523 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/DAV.php#L523>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public copy( $path1, $path2)
+	
+		.. rst-class:: phpdoc-description
+		
+			| \{@inheritdoc\}
+			
+		
+		:Source:
+			`lib/private/Files/Storage/DAV.php#555 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/DAV.php#L555>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public stat( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| \{@inheritdoc\}
+			
+		
+		:Source:
+			`lib/private/Files/Storage/DAV.php#584 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/DAV.php#L584>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getMimeType( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| \{@inheritdoc\}
+			
+		
+		:Source:
+			`lib/private/Files/Storage/DAV.php#601 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/DAV.php#L601>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getMimeTypeFromRemote( $path)
+	
+		:Source:
+			`lib/private/Files/Storage/DAV.php#610 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/DAV.php#L610>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public cleanPath( $path)
+	
+		:Source:
+			`lib/private/Files/Storage/DAV.php#638 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/DAV.php#L638>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected encodePath( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| URL encodes the given path but keeps the slashes
+			
+		
+		:Source:
+			`lib/private/Files/Storage/DAV.php#653 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/DAV.php#L653>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  to encode
+
+		
+		:Returns: string encoded path
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected simpleResponse( $method, $path, $body, $expected)
+	
+		:Source:
+			`lib/private/Files/Storage/DAV.php#667 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/DAV.php#L667>`_
+		
+		
+		:Parameters:
+			* **$method** (string)  
+			* **$path** (string)  
+			* **$body** (string | resource | null)  
+			* **$expected** (int)  
+
+		
+		:Returns: bool 
+		:Throws: :any:`\\OCP\\Files\\StorageInvalidException <OCP\\Files\\StorageInvalidException>` 
+		:Throws: :any:`\\OCP\\Files\\StorageNotAvailableException <OCP\\Files\\StorageNotAvailableException>` 
+		:Throws: :any:`\\OCP\\Files\\StorageInvalidException <OCP\\Files\\StorageInvalidException>` 
+		:Throws: :any:`\\OCP\\Files\\StorageNotAvailableException <OCP\\Files\\StorageNotAvailableException>` 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static checkDependencies()
+	
+		.. rst-class:: phpdoc-description
+		
+			| check if curl is installed
+			
+		
+		:Source:
+			`lib/private/Files/Storage/DAV.php#689 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/DAV.php#L689>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isUpdatable( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| \{@inheritdoc\}
+			
+		
+		:Source:
+			`lib/private/Files/Storage/DAV.php#694 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/DAV.php#L694>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isCreatable( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| \{@inheritdoc\}
+			
+		
+		:Source:
+			`lib/private/Files/Storage/DAV.php#699 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/DAV.php#L699>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isSharable( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| \{@inheritdoc\}
+			
+		
+		:Source:
+			`lib/private/Files/Storage/DAV.php#704 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/DAV.php#L704>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isDeletable( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| \{@inheritdoc\}
+			
+		
+		:Source:
+			`lib/private/Files/Storage/DAV.php#709 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/DAV.php#L709>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getPermissions( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| \{@inheritdoc\}
+			
+		
+		:Source:
+			`lib/private/Files/Storage/DAV.php#714 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/DAV.php#L714>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getETag( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| \{@inheritdoc\}
+			
+		
+		:Source:
+			`lib/private/Files/Storage/DAV.php#733 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/DAV.php#L733>`_
+		
+		
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected parsePermissions( $permissionsString)
+	
+		:Source:
+			`lib/private/Files/Storage/DAV.php#754 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/DAV.php#L754>`_
+		
+		
+		:Parameters:
+			* **$permissionsString** (string)  
+
+		
+		:Returns: int 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public hasUpdated( $path, $time)
+	
+		.. rst-class:: phpdoc-description
+		
+			| check if a file or folder has been updated since $time
+			
+		
+		:Source:
+			`lib/private/Files/Storage/DAV.php#780 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/DAV.php#L780>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+			* **$time** (int)  
+
+		
+		:Throws: :any:`\\OCP\\Files\\StorageNotAvailableException <OCP\\Files\\StorageNotAvailableException>` 
+		:Returns: bool 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected convertException( $e, $path="")
+	
+		.. rst-class:: phpdoc-description
+		
+			| Interpret the given exception and decide whether it is due to an
+			| unavailable storage, invalid storage or other\.
+			
+			| This will either throw StorageInvalidException, StorageNotAvailableException
+			| or do nothing\.
+			
+		
+		:Source:
+			`lib/private/Files/Storage/DAV.php#846 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/DAV.php#L846>`_
+		
+		
+		:Parameters:
+			* **$e** (:any:`Exception <Exception>`)  sabre exception
+			* **$path** (string)  optional path from the operation
+
+		
+		:Throws: :any:`\\OCP\\Files\\StorageInvalidException <OCP\\Files\\StorageInvalidException>` if the storage is invalid, for example
+			when the authentication expired or is invalid
+		
+		:Throws: :any:`\\OCP\\Files\\StorageNotAvailableException <OCP\\Files\\StorageNotAvailableException>` if the storage is not available,
+			which might be temporary
+		
+		:Throws: :any:`\\OCP\\Files\\ForbiddenException <OCP\\Files\\ForbiddenException>` if the action is not allowed
+		:Throws: :any:`\\OCP\\Files\\StorageInvalidException <OCP\\Files\\StorageInvalidException>` if the storage is invalid, for example
+			when the authentication expired or is invalid
+		
+		:Throws: :any:`\\OCP\\Files\\StorageNotAvailableException <OCP\\Files\\StorageNotAvailableException>` if the storage is not available,
+			which might be temporary
+		
+		:Throws: :any:`\\OCP\\Files\\ForbiddenException <OCP\\Files\\ForbiddenException>` if the action is not allowed
+		:Throws: :any:`\\OCP\\Files\\StorageInvalidException <OCP\\Files\\StorageInvalidException>` if the storage is invalid, for example
+			when the authentication expired or is invalid
+		
+		:Throws: :any:`\\OCP\\Files\\StorageNotAvailableException <OCP\\Files\\StorageNotAvailableException>` if the storage is not available,
+			which might be temporary
+		
+		:Throws: :any:`\\OCP\\Files\\ForbiddenException <OCP\\Files\\ForbiddenException>` if the action is not allowed
+	
+	
+

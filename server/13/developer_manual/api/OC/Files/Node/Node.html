@@ -1,0 +1,1296 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Node &mdash; Nextcloud 13 Developer Manual 13 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../../../',
+              VERSION:'13',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="LazyFolder" href="LazyFolder.html" />
+    <link rel="prev" title="Node" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html">
+          
+
+          
+            
+            <img src="../../../../_static/logo-white.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../general/index.html">General contributor guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/startapp.html">Create an app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/init.html">Navigation and pre-app configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/info.html">App metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/classloader.html">Classloader</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/request.html">Request lifecycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/routes.html">Routing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/middleware.html">Middleware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/container.html">Container</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/controllers.html">Controllers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/api.html">RESTful API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/templates.html">Templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/js.html">JavaScript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/css.html">CSS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/l10n.html">Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/theming.html">Theming support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/schema.html">Database schema</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/database.html">Database access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/filesystem.html">Filesystem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/appdata.html">AppData</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/users.html">User management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/two-factor-provider.html">Two-factor providers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/hooks.html">Hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/backgroundjobs.html">Background jobs (Cron)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/settings.html">Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/logging.html">Logging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/migrations.html">Migrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/repair.html">Repair steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/publishing.html">App store publishing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/code_signing.html">Code signing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../design/index.html">Design guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../android_library/index.html">Android application development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../client_apis/index.html">Client APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../core/translation.html">Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../core/unit-testing.html">Unit-Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../core/theming.html">Theming Nextcloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../core/externalapi.html">External API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../core/ocs-share-api.html">OCS Share API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../core/index.html">Core development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bugtracker/index.html">Bugtracker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../commun/index.html">Help and communication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api.html">API Documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">Nextcloud 13 Developer Manual</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../../../api.html">API Documentation</a> &raquo;</li>
+        
+          <li><a href="../../../index.html">\</a> &raquo;</li>
+        
+          <li><a href="../../index.html">OC</a> &raquo;</li>
+        
+          <li><a href="../index.html">Files</a> &raquo;</li>
+        
+          <li><a href="index.html">Node</a> &raquo;</li>
+        
+      <li>Node</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/nextcloud/documentation/edit/stable13/developer_manual/api/OC/Files/Node/Node.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="phpdoctorst section" id="namespace-OC\Files\Node">
+<span id="node"></span><h1>Node<a class="headerlink" href="#namespace-OC\Files\Node" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="OC\Files\Node\Node">
+<em class="property">class </em><code class="descclassname">OC\Files\Node\</code><code class="descname">Node</code><a class="headerlink" href="#OC\Files\Node\Node" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Node.php#L43">lib/private/Files/Node/Node.php#43</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Implements:</th><td class="field-body"><a class="reference internal" href="../../../OCP/Files/Node.html#OCP\Files\Node" title="OCP\Files\Node"><code class="xref php php-interface docutils literal"><span class="pre">OCP\Files\Node</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<div class="section" id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h2>
+<dl class="attr">
+<dt id="OC\Files\Node\Node::$view">
+<em class="property">protected </em><em class="property">static </em><em class="property">property </em><code class="descclassname">OC\Files\Node\Node::$</code><code class="descname">view</code><a class="headerlink" href="#OC\Files\Node\Node::$view" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Node.php#L47">lib/private/Files/Node/Node.php#47</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body"><a class="reference internal" href="../View.html#OC\Files\View" title="OC\Files\View"><code class="xref any php php-trait docutils literal"><span class="pre">\OC\Files\View</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attr">
+<dt id="OC\Files\Node\Node::$root">
+<em class="property">protected </em><em class="property">static </em><em class="property">property </em><code class="descclassname">OC\Files\Node\Node::$</code><code class="descname">root</code><a class="headerlink" href="#OC\Files\Node\Node::$root" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Node.php#L52">lib/private/Files/Node/Node.php#52</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body"><a class="reference internal" href="Root.html#OC\Files\Node\Root" title="OC\Files\Node\Root"><code class="xref any php php-trait docutils literal"><span class="pre">\OC\Files\Node\Root</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attr">
+<dt id="OC\Files\Node\Node::$path">
+<em class="property">protected </em><em class="property">static </em><em class="property">property </em><code class="descclassname">OC\Files\Node\Node::$</code><code class="descname">path</code><a class="headerlink" href="#OC\Files\Node\Node::$path" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Node.php#L57">lib/private/Files/Node/Node.php#57</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body">string</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attr">
+<dt id="OC\Files\Node\Node::$fileInfo">
+<em class="property">protected </em><em class="property">static </em><em class="property">property </em><code class="descclassname">OC\Files\Node\Node::$</code><code class="descname">fileInfo</code><a class="headerlink" href="#OC\Files\Node\Node::$fileInfo" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Node.php#L62">lib/private/Files/Node/Node.php#62</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body"><a class="reference internal" href="../../../OCP/Files/FileInfo.html#OCP\Files\FileInfo" title="OCP\Files\FileInfo"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\FileInfo</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h2>
+<dl class="public method">
+<dt id="OC\Files\Node\Node::__construct">
+<em class="property">public </em><code class="descclassname">OC\Files\Node\Node::</code><code class="descname">__construct</code><span class="sig-paren">(</span><em>$root</em>, <em>$view</em>, <em>$path</em>, <em>$fileInfo=null</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Node\Node::__construct" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Node.php#L70">lib/private/Files/Node/Node.php#70</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>$root</strong> (<a class="reference internal" href="../../../OCP/Files/IRootFolder.html#OCP\Files\IRootFolder" title="OCP\Files\IRootFolder"><code class="xref any php php-trait docutils literal"><span class="pre">OCP\Files\IRootFolder</span></code></a>)</li>
+<li><strong>$view</strong> (<a class="reference internal" href="../View.html#OC\Files\View" title="OC\Files\View"><code class="xref any php php-trait docutils literal"><span class="pre">OC\Files\View</span></code></a>)</li>
+<li><strong>$path</strong> (string)</li>
+<li><strong>$fileInfo</strong> (<a class="reference internal" href="../../../OCP/Files/FileInfo.html#OCP\Files\FileInfo" title="OCP\Files\FileInfo"><code class="xref any php php-trait docutils literal"><span class="pre">OCP\Files\FileInfo</span></code></a>)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="protected method">
+<dt id="OC\Files\Node\Node::createNonExistingNode">
+<em class="property">protected </em><code class="descclassname">OC\Files\Node\Node::</code><code class="descname">createNonExistingNode</code><span class="sig-paren">(</span><em>$path</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Node\Node::createNonExistingNode" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Creates a Node of the same type that represents a non-existing path</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Node.php#L84">lib/private/Files/Node/Node.php#84</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$path</strong> (string)  path</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">string non-existing node class</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><p class="first last"><code class="xref any docutils literal"><span class="pre">\Exception</span></code></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\Node\Node::getFileInfo">
+<em class="property">public </em><code class="descclassname">OC\Files\Node\Node::</code><code class="descname">getFileInfo</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Node\Node::getFileInfo" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Returns the matching file info</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Node.php#L95">lib/private/Files/Node/Node.php#95</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="../../../OCP/Files/FileInfo.html#OCP\Files\FileInfo" title="OCP\Files\FileInfo"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\FileInfo</span></code></a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Throws:</th><td class="field-body"><a class="reference internal" href="../../../OCP/Files/InvalidPathException.html#OCP\Files\InvalidPathException" title="OCP\Files\InvalidPathException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\InvalidPathException</span></code></a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><a class="reference internal" href="../../../OCP/Files/NotFoundException.html#OCP\Files\NotFoundException" title="OCP\Files\NotFoundException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\NotFoundException</span></code></a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Throws:</th><td class="field-body"><a class="reference internal" href="../../../OCP/Files/InvalidPathException.html#OCP\Files\InvalidPathException" title="OCP\Files\InvalidPathException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\InvalidPathException</span></code></a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><a class="reference internal" href="../../../OCP/Files/NotFoundException.html#OCP\Files\NotFoundException" title="OCP\Files\NotFoundException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\NotFoundException</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="protected method">
+<dt id="OC\Files\Node\Node::sendHooks">
+<em class="property">protected </em><code class="descclassname">OC\Files\Node\Node::</code><code class="descname">sendHooks</code><span class="sig-paren">(</span><em>$hooks</em>, <em>$args=null</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Node\Node::sendHooks" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Node.php#L113">lib/private/Files/Node/Node.php#113</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>$hooks</strong> (string[])</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="protected method">
+<dt id="OC\Files\Node\Node::checkPermissions">
+<em class="property">protected </em><code class="descclassname">OC\Files\Node\Node::</code><code class="descname">checkPermissions</code><span class="sig-paren">(</span><em>$permissions</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Node\Node::checkPermissions" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Node.php#L128">lib/private/Files/Node/Node.php#128</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$permissions</strong> (int)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">bool</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><a class="reference internal" href="../../../OCP/Files/InvalidPathException.html#OCP\Files\InvalidPathException" title="OCP\Files\InvalidPathException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\InvalidPathException</span></code></a></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><a class="reference internal" href="../../../OCP/Files/NotFoundException.html#OCP\Files\NotFoundException" title="OCP\Files\NotFoundException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\NotFoundException</span></code></a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><a class="reference internal" href="../../../OCP/Files/InvalidPathException.html#OCP\Files\InvalidPathException" title="OCP\Files\InvalidPathException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\InvalidPathException</span></code></a></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Throws:</th><td class="field-body"><p class="first last"><a class="reference internal" href="../../../OCP/Files/NotFoundException.html#OCP\Files\NotFoundException" title="OCP\Files\NotFoundException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\NotFoundException</span></code></a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\Node\Node::delete">
+<em class="property">public </em><code class="descclassname">OC\Files\Node\Node::</code><code class="descname">delete</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Node\Node::delete" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Node.php#L132">lib/private/Files/Node/Node.php#132</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\Node\Node::touch">
+<em class="property">public </em><code class="descclassname">OC\Files\Node\Node::</code><code class="descname">touch</code><span class="sig-paren">(</span><em>$mtime=null</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Node\Node::touch" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Node.php#L141">lib/private/Files/Node/Node.php#141</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$mtime</strong> (int)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><a class="reference internal" href="../../../OCP/Files/InvalidPathException.html#OCP\Files\InvalidPathException" title="OCP\Files\InvalidPathException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\InvalidPathException</span></code></a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><a class="reference internal" href="../../../OCP/Files/NotFoundException.html#OCP\Files\NotFoundException" title="OCP\Files\NotFoundException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\NotFoundException</span></code></a></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><a class="reference internal" href="../../../OCP/Files/NotPermittedException.html#OCP\Files\NotPermittedException" title="OCP\Files\NotPermittedException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\NotPermittedException</span></code></a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><a class="reference internal" href="../../../OCP/Files/InvalidPathException.html#OCP\Files\InvalidPathException" title="OCP\Files\InvalidPathException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\InvalidPathException</span></code></a></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><a class="reference internal" href="../../../OCP/Files/NotFoundException.html#OCP\Files\NotFoundException" title="OCP\Files\NotFoundException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\NotFoundException</span></code></a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><a class="reference internal" href="../../../OCP/Files/NotPermittedException.html#OCP\Files\NotPermittedException" title="OCP\Files\NotPermittedException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\NotPermittedException</span></code></a></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><a class="reference internal" href="../../../OCP/Files/InvalidPathException.html#OCP\Files\InvalidPathException" title="OCP\Files\InvalidPathException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\InvalidPathException</span></code></a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><a class="reference internal" href="../../../OCP/Files/NotFoundException.html#OCP\Files\NotFoundException" title="OCP\Files\NotFoundException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\NotFoundException</span></code></a></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Throws:</th><td class="field-body"><p class="first last"><a class="reference internal" href="../../../OCP/Files/NotPermittedException.html#OCP\Files\NotPermittedException" title="OCP\Files\NotPermittedException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\NotPermittedException</span></code></a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\Node\Node::getStorage">
+<em class="property">public </em><code class="descclassname">OC\Files\Node\Node::</code><code class="descname">getStorage</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Node\Node::getStorage" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Node.php#L161">lib/private/Files/Node/Node.php#161</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="../Storage/Storage.html#OC\Files\Storage\Storage" title="OC\Files\Storage\Storage"><code class="xref any php php-trait docutils literal"><span class="pre">\OC\Files\Storage\Storage</span></code></a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Throws:</th><td class="field-body"><a class="reference internal" href="../../../OCP/Files/NotFoundException.html#OCP\Files\NotFoundException" title="OCP\Files\NotFoundException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\NotFoundException</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\Node\Node::getPath">
+<em class="property">public </em><code class="descclassname">OC\Files\Node\Node::</code><code class="descname">getPath</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Node\Node::getPath" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Node.php#L169">lib/private/Files/Node/Node.php#169</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">string</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\Node\Node::getInternalPath">
+<em class="property">public </em><code class="descclassname">OC\Files\Node\Node::</code><code class="descname">getInternalPath</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Node\Node::getInternalPath" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Node.php#L176">lib/private/Files/Node/Node.php#176</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">string</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\Node\Node::getId">
+<em class="property">public </em><code class="descclassname">OC\Files\Node\Node::</code><code class="descname">getId</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Node\Node::getId" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Node.php#L186">lib/private/Files/Node/Node.php#186</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">int</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Throws:</th><td class="field-body"><a class="reference internal" href="../../../OCP/Files/InvalidPathException.html#OCP\Files\InvalidPathException" title="OCP\Files\InvalidPathException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\InvalidPathException</span></code></a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><a class="reference internal" href="../../../OCP/Files/NotFoundException.html#OCP\Files\NotFoundException" title="OCP\Files\NotFoundException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\NotFoundException</span></code></a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Throws:</th><td class="field-body"><a class="reference internal" href="../../../OCP/Files/InvalidPathException.html#OCP\Files\InvalidPathException" title="OCP\Files\InvalidPathException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\InvalidPathException</span></code></a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><a class="reference internal" href="../../../OCP/Files/NotFoundException.html#OCP\Files\NotFoundException" title="OCP\Files\NotFoundException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\NotFoundException</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\Node\Node::stat">
+<em class="property">public </em><code class="descclassname">OC\Files\Node\Node::</code><code class="descname">stat</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Node\Node::stat" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Node.php#L193">lib/private/Files/Node/Node.php#193</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">array</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\Node\Node::getMTime">
+<em class="property">public </em><code class="descclassname">OC\Files\Node\Node::</code><code class="descname">getMTime</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Node\Node::getMTime" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Node.php#L202">lib/private/Files/Node/Node.php#202</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">int</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Throws:</th><td class="field-body"><a class="reference internal" href="../../../OCP/Files/InvalidPathException.html#OCP\Files\InvalidPathException" title="OCP\Files\InvalidPathException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\InvalidPathException</span></code></a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><a class="reference internal" href="../../../OCP/Files/NotFoundException.html#OCP\Files\NotFoundException" title="OCP\Files\NotFoundException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\NotFoundException</span></code></a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Throws:</th><td class="field-body"><a class="reference internal" href="../../../OCP/Files/InvalidPathException.html#OCP\Files\InvalidPathException" title="OCP\Files\InvalidPathException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\InvalidPathException</span></code></a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><a class="reference internal" href="../../../OCP/Files/NotFoundException.html#OCP\Files\NotFoundException" title="OCP\Files\NotFoundException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\NotFoundException</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\Node\Node::getSize">
+<em class="property">public </em><code class="descclassname">OC\Files\Node\Node::</code><code class="descname">getSize</code><span class="sig-paren">(</span><em>$includeMounts=true</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Node\Node::getSize" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Node.php#L212">lib/private/Files/Node/Node.php#212</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$includeMounts</strong> (bool)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">int</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><a class="reference internal" href="../../../OCP/Files/InvalidPathException.html#OCP\Files\InvalidPathException" title="OCP\Files\InvalidPathException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\InvalidPathException</span></code></a></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><a class="reference internal" href="../../../OCP/Files/NotFoundException.html#OCP\Files\NotFoundException" title="OCP\Files\NotFoundException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\NotFoundException</span></code></a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><a class="reference internal" href="../../../OCP/Files/InvalidPathException.html#OCP\Files\InvalidPathException" title="OCP\Files\InvalidPathException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\InvalidPathException</span></code></a></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Throws:</th><td class="field-body"><p class="first last"><a class="reference internal" href="../../../OCP/Files/NotFoundException.html#OCP\Files\NotFoundException" title="OCP\Files\NotFoundException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\NotFoundException</span></code></a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\Node\Node::getEtag">
+<em class="property">public </em><code class="descclassname">OC\Files\Node\Node::</code><code class="descname">getEtag</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Node\Node::getEtag" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Node.php#L221">lib/private/Files/Node/Node.php#221</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">string</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Throws:</th><td class="field-body"><a class="reference internal" href="../../../OCP/Files/InvalidPathException.html#OCP\Files\InvalidPathException" title="OCP\Files\InvalidPathException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\InvalidPathException</span></code></a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><a class="reference internal" href="../../../OCP/Files/NotFoundException.html#OCP\Files\NotFoundException" title="OCP\Files\NotFoundException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\NotFoundException</span></code></a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Throws:</th><td class="field-body"><a class="reference internal" href="../../../OCP/Files/InvalidPathException.html#OCP\Files\InvalidPathException" title="OCP\Files\InvalidPathException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\InvalidPathException</span></code></a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><a class="reference internal" href="../../../OCP/Files/NotFoundException.html#OCP\Files\NotFoundException" title="OCP\Files\NotFoundException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\NotFoundException</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\Node\Node::getPermissions">
+<em class="property">public </em><code class="descclassname">OC\Files\Node\Node::</code><code class="descname">getPermissions</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Node\Node::getPermissions" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Node.php#L230">lib/private/Files/Node/Node.php#230</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">int</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Throws:</th><td class="field-body"><a class="reference internal" href="../../../OCP/Files/InvalidPathException.html#OCP\Files\InvalidPathException" title="OCP\Files\InvalidPathException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\InvalidPathException</span></code></a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><a class="reference internal" href="../../../OCP/Files/NotFoundException.html#OCP\Files\NotFoundException" title="OCP\Files\NotFoundException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\NotFoundException</span></code></a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Throws:</th><td class="field-body"><a class="reference internal" href="../../../OCP/Files/InvalidPathException.html#OCP\Files\InvalidPathException" title="OCP\Files\InvalidPathException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\InvalidPathException</span></code></a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><a class="reference internal" href="../../../OCP/Files/NotFoundException.html#OCP\Files\NotFoundException" title="OCP\Files\NotFoundException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\NotFoundException</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\Node\Node::isReadable">
+<em class="property">public </em><code class="descclassname">OC\Files\Node\Node::</code><code class="descname">isReadable</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Node\Node::isReadable" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Node.php#L239">lib/private/Files/Node/Node.php#239</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">bool</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Throws:</th><td class="field-body"><a class="reference internal" href="../../../OCP/Files/InvalidPathException.html#OCP\Files\InvalidPathException" title="OCP\Files\InvalidPathException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\InvalidPathException</span></code></a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><a class="reference internal" href="../../../OCP/Files/NotFoundException.html#OCP\Files\NotFoundException" title="OCP\Files\NotFoundException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\NotFoundException</span></code></a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Throws:</th><td class="field-body"><a class="reference internal" href="../../../OCP/Files/InvalidPathException.html#OCP\Files\InvalidPathException" title="OCP\Files\InvalidPathException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\InvalidPathException</span></code></a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><a class="reference internal" href="../../../OCP/Files/NotFoundException.html#OCP\Files\NotFoundException" title="OCP\Files\NotFoundException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\NotFoundException</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\Node\Node::isUpdateable">
+<em class="property">public </em><code class="descclassname">OC\Files\Node\Node::</code><code class="descname">isUpdateable</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Node\Node::isUpdateable" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Node.php#L248">lib/private/Files/Node/Node.php#248</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">bool</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Throws:</th><td class="field-body"><a class="reference internal" href="../../../OCP/Files/InvalidPathException.html#OCP\Files\InvalidPathException" title="OCP\Files\InvalidPathException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\InvalidPathException</span></code></a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><a class="reference internal" href="../../../OCP/Files/NotFoundException.html#OCP\Files\NotFoundException" title="OCP\Files\NotFoundException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\NotFoundException</span></code></a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Throws:</th><td class="field-body"><a class="reference internal" href="../../../OCP/Files/InvalidPathException.html#OCP\Files\InvalidPathException" title="OCP\Files\InvalidPathException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\InvalidPathException</span></code></a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><a class="reference internal" href="../../../OCP/Files/NotFoundException.html#OCP\Files\NotFoundException" title="OCP\Files\NotFoundException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\NotFoundException</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\Node\Node::isDeletable">
+<em class="property">public </em><code class="descclassname">OC\Files\Node\Node::</code><code class="descname">isDeletable</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Node\Node::isDeletable" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Node.php#L257">lib/private/Files/Node/Node.php#257</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">bool</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Throws:</th><td class="field-body"><a class="reference internal" href="../../../OCP/Files/InvalidPathException.html#OCP\Files\InvalidPathException" title="OCP\Files\InvalidPathException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\InvalidPathException</span></code></a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><a class="reference internal" href="../../../OCP/Files/NotFoundException.html#OCP\Files\NotFoundException" title="OCP\Files\NotFoundException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\NotFoundException</span></code></a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Throws:</th><td class="field-body"><a class="reference internal" href="../../../OCP/Files/InvalidPathException.html#OCP\Files\InvalidPathException" title="OCP\Files\InvalidPathException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\InvalidPathException</span></code></a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><a class="reference internal" href="../../../OCP/Files/NotFoundException.html#OCP\Files\NotFoundException" title="OCP\Files\NotFoundException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\NotFoundException</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\Node\Node::isShareable">
+<em class="property">public </em><code class="descclassname">OC\Files\Node\Node::</code><code class="descname">isShareable</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Node\Node::isShareable" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Node.php#L266">lib/private/Files/Node/Node.php#266</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">bool</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Throws:</th><td class="field-body"><a class="reference internal" href="../../../OCP/Files/InvalidPathException.html#OCP\Files\InvalidPathException" title="OCP\Files\InvalidPathException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\InvalidPathException</span></code></a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><a class="reference internal" href="../../../OCP/Files/NotFoundException.html#OCP\Files\NotFoundException" title="OCP\Files\NotFoundException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\NotFoundException</span></code></a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Throws:</th><td class="field-body"><a class="reference internal" href="../../../OCP/Files/InvalidPathException.html#OCP\Files\InvalidPathException" title="OCP\Files\InvalidPathException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\InvalidPathException</span></code></a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><a class="reference internal" href="../../../OCP/Files/NotFoundException.html#OCP\Files\NotFoundException" title="OCP\Files\NotFoundException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\NotFoundException</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\Node\Node::isCreatable">
+<em class="property">public </em><code class="descclassname">OC\Files\Node\Node::</code><code class="descname">isCreatable</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Node\Node::isCreatable" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Node.php#L275">lib/private/Files/Node/Node.php#275</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">bool</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Throws:</th><td class="field-body"><a class="reference internal" href="../../../OCP/Files/InvalidPathException.html#OCP\Files\InvalidPathException" title="OCP\Files\InvalidPathException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\InvalidPathException</span></code></a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><a class="reference internal" href="../../../OCP/Files/NotFoundException.html#OCP\Files\NotFoundException" title="OCP\Files\NotFoundException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\NotFoundException</span></code></a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Throws:</th><td class="field-body"><a class="reference internal" href="../../../OCP/Files/InvalidPathException.html#OCP\Files\InvalidPathException" title="OCP\Files\InvalidPathException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\InvalidPathException</span></code></a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><a class="reference internal" href="../../../OCP/Files/NotFoundException.html#OCP\Files\NotFoundException" title="OCP\Files\NotFoundException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\NotFoundException</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\Node\Node::getParent">
+<em class="property">public </em><code class="descclassname">OC\Files\Node\Node::</code><code class="descname">getParent</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Node\Node::getParent" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Node.php#L282">lib/private/Files/Node/Node.php#282</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="#OC\Files\Node\Node" title="OC\Files\Node\Node"><code class="xref any php php-trait docutils literal"><span class="pre">\OC\Files\Node\Node</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\Node\Node::getName">
+<em class="property">public </em><code class="descclassname">OC\Files\Node\Node::</code><code class="descname">getName</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Node\Node::getName" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Node.php#L293">lib/private/Files/Node/Node.php#293</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">string</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="protected method">
+<dt id="OC\Files\Node\Node::normalizePath">
+<em class="property">protected </em><code class="descclassname">OC\Files\Node\Node::</code><code class="descname">normalizePath</code><span class="sig-paren">(</span><em>$path</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Node\Node::normalizePath" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Node.php#L301">lib/private/Files/Node/Node.php#301</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$path</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">string</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\Node\Node::isValidPath">
+<em class="property">public </em><code class="descclassname">OC\Files\Node\Node::</code><code class="descname">isValidPath</code><span class="sig-paren">(</span><em>$path</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Node\Node::isValidPath" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">check if the requested path is valid</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Node.php#L327">lib/private/Files/Node/Node.php#327</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$path</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\Node\Node::isMounted">
+<em class="property">public </em><code class="descclassname">OC\Files\Node\Node::</code><code class="descname">isMounted</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Node\Node::isMounted" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Node.php#L337">lib/private/Files/Node/Node.php#337</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\Node\Node::isShared">
+<em class="property">public </em><code class="descclassname">OC\Files\Node\Node::</code><code class="descname">isShared</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Node\Node::isShared" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Node.php#L341">lib/private/Files/Node/Node.php#341</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\Node\Node::getMimeType">
+<em class="property">public </em><code class="descclassname">OC\Files\Node\Node::</code><code class="descname">getMimeType</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Node\Node::getMimeType" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Node.php#L345">lib/private/Files/Node/Node.php#345</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\Node\Node::getMimePart">
+<em class="property">public </em><code class="descclassname">OC\Files\Node\Node::</code><code class="descname">getMimePart</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Node\Node::getMimePart" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Node.php#L349">lib/private/Files/Node/Node.php#349</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\Node\Node::getType">
+<em class="property">public </em><code class="descclassname">OC\Files\Node\Node::</code><code class="descname">getType</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Node\Node::getType" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Node.php#L353">lib/private/Files/Node/Node.php#353</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\Node\Node::isEncrypted">
+<em class="property">public </em><code class="descclassname">OC\Files\Node\Node::</code><code class="descname">isEncrypted</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Node\Node::isEncrypted" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Node.php#L357">lib/private/Files/Node/Node.php#357</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\Node\Node::getMountPoint">
+<em class="property">public </em><code class="descclassname">OC\Files\Node\Node::</code><code class="descname">getMountPoint</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Node\Node::getMountPoint" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Node.php#L361">lib/private/Files/Node/Node.php#361</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\Node\Node::getOwner">
+<em class="property">public </em><code class="descclassname">OC\Files\Node\Node::</code><code class="descname">getOwner</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Node\Node::getOwner" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Node.php#L365">lib/private/Files/Node/Node.php#365</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\Node\Node::getChecksum">
+<em class="property">public </em><code class="descclassname">OC\Files\Node\Node::</code><code class="descname">getChecksum</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Node\Node::getChecksum" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Node.php#L369">lib/private/Files/Node/Node.php#369</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\Node\Node::getExtension">
+<em class="property">public </em><code class="descclassname">OC\Files\Node\Node::</code><code class="descname">getExtension</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Node\Node::getExtension" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Node.php#L372">lib/private/Files/Node/Node.php#372</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\Node\Node::lock">
+<em class="property">public </em><code class="descclassname">OC\Files\Node\Node::</code><code class="descname">lock</code><span class="sig-paren">(</span><em>$type</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Node\Node::lock" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Node.php#L380">lib/private/Files/Node/Node.php#380</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$type</strong> (int)  OCPLockILockingProvider::LOCK_SHARED or OCPLockILockingProvider::LOCK_EXCLUSIVE</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Throws:</th><td class="field-body"><p class="first last"><a class="reference internal" href="../../../OCP/Lock/LockedException.html#OCP\Lock\LockedException" title="OCP\Lock\LockedException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Lock\LockedException</span></code></a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\Node\Node::changeLock">
+<em class="property">public </em><code class="descclassname">OC\Files\Node\Node::</code><code class="descname">changeLock</code><span class="sig-paren">(</span><em>$type</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Node\Node::changeLock" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Node.php#L388">lib/private/Files/Node/Node.php#388</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$type</strong> (int)  OCPLockILockingProvider::LOCK_SHARED or OCPLockILockingProvider::LOCK_EXCLUSIVE</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Throws:</th><td class="field-body"><p class="first last"><a class="reference internal" href="../../../OCP/Lock/LockedException.html#OCP\Lock\LockedException" title="OCP\Lock\LockedException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Lock\LockedException</span></code></a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\Node\Node::unlock">
+<em class="property">public </em><code class="descclassname">OC\Files\Node\Node::</code><code class="descname">unlock</code><span class="sig-paren">(</span><em>$type</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Node\Node::unlock" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Node.php#L396">lib/private/Files/Node/Node.php#396</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$type</strong> (int)  OCPLockILockingProvider::LOCK_SHARED or OCPLockILockingProvider::LOCK_EXCLUSIVE</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Throws:</th><td class="field-body"><p class="first last"><a class="reference internal" href="../../../OCP/Lock/LockedException.html#OCP\Lock\LockedException" title="OCP\Lock\LockedException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Lock\LockedException</span></code></a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\Node\Node::copy">
+<em class="property">public </em><code class="descclassname">OC\Files\Node\Node::</code><code class="descname">copy</code><span class="sig-paren">(</span><em>$targetPath</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Node\Node::copy" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Node.php#L407">lib/private/Files/Node/Node.php#407</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$targetPath</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference internal" href="#OC\Files\Node\Node" title="OC\Files\Node\Node"><code class="xref any php php-trait docutils literal"><span class="pre">\OC\Files\Node\Node</span></code></a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><a class="reference internal" href="../../../OCP/Files/InvalidPathException.html#OCP\Files\InvalidPathException" title="OCP\Files\InvalidPathException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\InvalidPathException</span></code></a></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><a class="reference internal" href="../../../OCP/Files/NotFoundException.html#OCP\Files\NotFoundException" title="OCP\Files\NotFoundException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\NotFoundException</span></code></a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><a class="reference internal" href="../../../OCP/Files/NotPermittedException.html#OCP\Files\NotPermittedException" title="OCP\Files\NotPermittedException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\NotPermittedException</span></code></a> if copy not allowed or failed</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><a class="reference internal" href="../../../OCP/Files/InvalidPathException.html#OCP\Files\InvalidPathException" title="OCP\Files\InvalidPathException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\InvalidPathException</span></code></a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><a class="reference internal" href="../../../OCP/Files/NotFoundException.html#OCP\Files\NotFoundException" title="OCP\Files\NotFoundException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\NotFoundException</span></code></a></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><a class="reference internal" href="../../../OCP/Files/NotPermittedException.html#OCP\Files\NotPermittedException" title="OCP\Files\NotPermittedException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\NotPermittedException</span></code></a> if copy not allowed or failed</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><a class="reference internal" href="../../../OCP/Files/InvalidPathException.html#OCP\Files\InvalidPathException" title="OCP\Files\InvalidPathException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\InvalidPathException</span></code></a></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><a class="reference internal" href="../../../OCP/Files/NotFoundException.html#OCP\Files\NotFoundException" title="OCP\Files\NotFoundException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\NotFoundException</span></code></a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><p class="first last"><a class="reference internal" href="../../../OCP/Files/NotPermittedException.html#OCP\Files\NotPermittedException" title="OCP\Files\NotPermittedException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\NotPermittedException</span></code></a> if copy not allowed or failed</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\Node\Node::move">
+<em class="property">public </em><code class="descclassname">OC\Files\Node\Node::</code><code class="descname">move</code><span class="sig-paren">(</span><em>$targetPath</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Node\Node::move" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Node.php#L434">lib/private/Files/Node/Node.php#434</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$targetPath</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference internal" href="#OC\Files\Node\Node" title="OC\Files\Node\Node"><code class="xref any php php-trait docutils literal"><span class="pre">\OC\Files\Node\Node</span></code></a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><a class="reference internal" href="../../../OCP/Files/InvalidPathException.html#OCP\Files\InvalidPathException" title="OCP\Files\InvalidPathException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\InvalidPathException</span></code></a></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><a class="reference internal" href="../../../OCP/Files/NotFoundException.html#OCP\Files\NotFoundException" title="OCP\Files\NotFoundException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\NotFoundException</span></code></a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><a class="reference internal" href="../../../OCP/Files/NotPermittedException.html#OCP\Files\NotPermittedException" title="OCP\Files\NotPermittedException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\NotPermittedException</span></code></a> if move not allowed or failed</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><a class="reference internal" href="../../../OCP/Lock/LockedException.html#OCP\Lock\LockedException" title="OCP\Lock\LockedException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Lock\LockedException</span></code></a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><a class="reference internal" href="../../../OCP/Files/InvalidPathException.html#OCP\Files\InvalidPathException" title="OCP\Files\InvalidPathException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\InvalidPathException</span></code></a></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><a class="reference internal" href="../../../OCP/Files/NotFoundException.html#OCP\Files\NotFoundException" title="OCP\Files\NotFoundException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\NotFoundException</span></code></a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><a class="reference internal" href="../../../OCP/Files/NotPermittedException.html#OCP\Files\NotPermittedException" title="OCP\Files\NotPermittedException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\NotPermittedException</span></code></a> if move not allowed or failed</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><a class="reference internal" href="../../../OCP/Lock/LockedException.html#OCP\Lock\LockedException" title="OCP\Lock\LockedException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Lock\LockedException</span></code></a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><a class="reference internal" href="../../../OCP/Files/InvalidPathException.html#OCP\Files\InvalidPathException" title="OCP\Files\InvalidPathException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\InvalidPathException</span></code></a></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><a class="reference internal" href="../../../OCP/Files/NotFoundException.html#OCP\Files\NotFoundException" title="OCP\Files\NotFoundException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\NotFoundException</span></code></a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><a class="reference internal" href="../../../OCP/Files/NotPermittedException.html#OCP\Files\NotPermittedException" title="OCP\Files\NotPermittedException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\NotPermittedException</span></code></a> if move not allowed or failed</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><a class="reference internal" href="../../../OCP/Lock/LockedException.html#OCP\Lock\LockedException" title="OCP\Lock\LockedException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Lock\LockedException</span></code></a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><a class="reference internal" href="../../../OCP/Files/InvalidPathException.html#OCP\Files\InvalidPathException" title="OCP\Files\InvalidPathException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\InvalidPathException</span></code></a></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><a class="reference internal" href="../../../OCP/Files/NotFoundException.html#OCP\Files\NotFoundException" title="OCP\Files\NotFoundException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\NotFoundException</span></code></a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><a class="reference internal" href="../../../OCP/Files/NotPermittedException.html#OCP\Files\NotPermittedException" title="OCP\Files\NotPermittedException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\NotPermittedException</span></code></a> if move not allowed or failed</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Throws:</th><td class="field-body"><p class="first last"><a class="reference internal" href="../../../OCP/Lock/LockedException.html#OCP\Lock\LockedException" title="OCP\Lock\LockedException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Lock\LockedException</span></code></a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\Node\Node::getCreationTime">
+<em class="property">public </em><code class="descclassname">OC\Files\Node\Node::</code><code class="descname">getCreationTime</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Node\Node::getCreationTime" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Node.php#L461">lib/private/Files/Node/Node.php#461</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\Node\Node::getUploadTime">
+<em class="property">public </em><code class="descclassname">OC\Files\Node\Node::</code><code class="descname">getUploadTime</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Node\Node::getUploadTime" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Node.php#L465">lib/private/Files/Node/Node.php#465</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="LazyFolder.html" class="btn btn-neutral float-right" title="LazyFolder" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="index.html" class="btn btn-neutral float-left" title="Node" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021 Nextcloud GmbH.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: 13
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/13/developer_manual">13</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/14/developer_manual">14</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/15/developer_manual">15</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/developer_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/developer_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+   
+
+</body>
+</html>

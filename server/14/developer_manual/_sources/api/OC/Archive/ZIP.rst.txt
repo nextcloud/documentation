@@ -1,0 +1,332 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+ZIP
+===
+
+
+.. php:namespace:: OC\Archive
+
+.. php:class:: ZIP
+
+
+	:Source:
+		`lib/private/Archive/ZIP.php#38 <https://github.com/nextcloud/server/blob/stable13/lib/private/Archive/ZIP.php#L38>`_
+	
+	:Parent:
+		:php:class:`OC\\Archive\\Archive`
+	
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $source)
+	
+		:Source:
+			`lib/private/Archive/ZIP.php#48 <https://github.com/nextcloud/server/blob/stable13/lib/private/Archive/ZIP.php#L48>`_
+		
+		
+		:Parameters:
+			* **$source** (string)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public addFolder( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| add an empty folder to the archive
+			
+		
+		:Source:
+			`lib/private/Archive/ZIP.php#61 <https://github.com/nextcloud/server/blob/stable13/lib/private/Archive/ZIP.php#L61>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public addFile( $path, $source="")
+	
+		.. rst-class:: phpdoc-description
+		
+			| add a file to the archive
+			
+		
+		:Source:
+			`lib/private/Archive/ZIP.php#70 <https://github.com/nextcloud/server/blob/stable13/lib/private/Archive/ZIP.php#L70>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+			* **$source** (string)  either a local file or string data
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public rename( $source, $dest)
+	
+		.. rst-class:: phpdoc-description
+		
+			| rename a file or folder in the archive
+			
+		
+		:Source:
+			`lib/private/Archive/ZIP.php#88 <https://github.com/nextcloud/server/blob/stable13/lib/private/Archive/ZIP.php#L88>`_
+		
+		
+		:Parameters:
+			* **$source** (string)  
+			* **$dest** (string)  
+
+		
+		:Returns: bool | null 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public filesize( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get the uncompressed size of a file in the archive
+			
+		
+		:Source:
+			`lib/private/Archive/ZIP.php#98 <https://github.com/nextcloud/server/blob/stable13/lib/private/Archive/ZIP.php#L98>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: int 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public mtime( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get the last modified time of a file in the archive
+			
+		
+		:Source:
+			`lib/private/Archive/ZIP.php#107 <https://github.com/nextcloud/server/blob/stable13/lib/private/Archive/ZIP.php#L107>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: int 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getFolder( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get the files in a folder
+			
+		
+		:Source:
+			`lib/private/Archive/ZIP.php#115 <https://github.com/nextcloud/server/blob/stable13/lib/private/Archive/ZIP.php#L115>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: array 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getFiles()
+	
+		.. rst-class:: phpdoc-description
+		
+			| get all files in the archive
+			
+		
+		:Source:
+			`lib/private/Archive/ZIP.php#132 <https://github.com/nextcloud/server/blob/stable13/lib/private/Archive/ZIP.php#L132>`_
+		
+		
+		:Returns: array 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getFile( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get the content of a file
+			
+		
+		:Source:
+			`lib/private/Archive/ZIP.php#145 <https://github.com/nextcloud/server/blob/stable13/lib/private/Archive/ZIP.php#L145>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public extractFile( $path, $dest)
+	
+		.. rst-class:: phpdoc-description
+		
+			| extract a single file from the archive
+			
+		
+		:Source:
+			`lib/private/Archive/ZIP.php#154 <https://github.com/nextcloud/server/blob/stable13/lib/private/Archive/ZIP.php#L154>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+			* **$dest** (string)  
+
+		
+		:Returns: bool | null 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public extract( $dest)
+	
+		.. rst-class:: phpdoc-description
+		
+			| extract the archive
+			
+		
+		:Source:
+			`lib/private/Archive/ZIP.php#163 <https://github.com/nextcloud/server/blob/stable13/lib/private/Archive/ZIP.php#L163>`_
+		
+		
+		:Parameters:
+			* **$dest** (string)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public fileExists( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| check if a file or folder exists in the archive
+			
+		
+		:Source:
+			`lib/private/Archive/ZIP.php#171 <https://github.com/nextcloud/server/blob/stable13/lib/private/Archive/ZIP.php#L171>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public remove( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| remove a file or folder from the archive
+			
+		
+		:Source:
+			`lib/private/Archive/ZIP.php#179 <https://github.com/nextcloud/server/blob/stable13/lib/private/Archive/ZIP.php#L179>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getStream( $path, $mode)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get a file handler
+			
+		
+		:Source:
+			`lib/private/Archive/ZIP.php#192 <https://github.com/nextcloud/server/blob/stable13/lib/private/Archive/ZIP.php#L192>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+			* **$mode** (string)  
+
+		
+		:Returns: bool | resource 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public writeBack( $tmpFile, $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| write back temporary files
+			
+		
+		:Source:
+			`lib/private/Archive/ZIP.php#218 <https://github.com/nextcloud/server/blob/stable13/lib/private/Archive/ZIP.php#L218>`_
+		
+		
+	
+	
+

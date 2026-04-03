@@ -1,0 +1,233 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+NewSimpleFile
+=============
+
+
+.. php:namespace:: OC\Files\SimpleFS
+
+.. php:class:: NewSimpleFile
+
+
+	:Source:
+		`lib/private/Files/SimpleFS/NewSimpleFile.php#37 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/SimpleFS/NewSimpleFile.php#L37>`_
+	
+	:Implements:
+		:php:interface:`OCP\\Files\\SimpleFS\\ISimpleFile` 
+	
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $parentFolder, $name)
+	
+		.. rst-class:: phpdoc-description
+		
+			| File constructor\.
+			
+		
+		:Source:
+			`lib/private/Files/SimpleFS/NewSimpleFile.php#48 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/SimpleFS/NewSimpleFile.php#L48>`_
+		
+		
+		:Parameters:
+			
+			
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getName()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the name
+			
+		
+		:Source:
+			`lib/private/Files/SimpleFS/NewSimpleFile.php#58 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/SimpleFS/NewSimpleFile.php#L58>`_
+		
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getSize()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the size in bytes
+			
+		
+		:Source:
+			`lib/private/Files/SimpleFS/NewSimpleFile.php#67 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/SimpleFS/NewSimpleFile.php#L67>`_
+		
+		
+		:Returns: int 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getETag()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the ETag
+			
+		
+		:Source:
+			`lib/private/Files/SimpleFS/NewSimpleFile.php#80 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/SimpleFS/NewSimpleFile.php#L80>`_
+		
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getMTime()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the last modification time
+			
+		
+		:Source:
+			`lib/private/Files/SimpleFS/NewSimpleFile.php#93 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/SimpleFS/NewSimpleFile.php#L93>`_
+		
+		
+		:Returns: int 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getContent()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the content
+			
+		
+		:Source:
+			`lib/private/Files/SimpleFS/NewSimpleFile.php#108 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/SimpleFS/NewSimpleFile.php#L108>`_
+		
+		
+		:Returns: string 
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+		:Throws: :any:`\\OCP\\Files\\NotPermittedException <OCP\\Files\\NotPermittedException>` 
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+		:Throws: :any:`\\OCP\\Files\\NotPermittedException <OCP\\Files\\NotPermittedException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public putContent( $data)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Overwrite the file
+			
+		
+		:Source:
+			`lib/private/Files/SimpleFS/NewSimpleFile.php#129 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/SimpleFS/NewSimpleFile.php#L129>`_
+		
+		
+		:Parameters:
+			* **$data** (string | resource)  
+
+		
+		:Throws: :any:`\\OCP\\Files\\NotPermittedException <OCP\\Files\\NotPermittedException>` 
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+		:Throws: :any:`\\OCP\\Files\\NotPermittedException <OCP\\Files\\NotPermittedException>` 
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public delete()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Delete the file
+			
+		
+		:Source:
+			`lib/private/Files/SimpleFS/NewSimpleFile.php#175 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/SimpleFS/NewSimpleFile.php#L175>`_
+		
+		
+		:Throws: :any:`\\OCP\\Files\\NotPermittedException <OCP\\Files\\NotPermittedException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getMimeType()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the MimeType
+			
+		
+		:Source:
+			`lib/private/Files/SimpleFS/NewSimpleFile.php#186 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/SimpleFS/NewSimpleFile.php#L186>`_
+		
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public read()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Open the file as stream for reading, resulting resource can be operated as stream like the result from php\'s own fopen
+			
+		
+		:Source:
+			`lib/private/Files/SimpleFS/NewSimpleFile.php#201 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/SimpleFS/NewSimpleFile.php#L201>`_
+		
+		
+		:Returns: resource 
+		:Throws: :any:`\\OCP\\Files\\NotPermittedException <OCP\\Files\\NotPermittedException>` 
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public write()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Open the file as stream for writing, resulting resource can be operated as stream like the result from php\'s own fopen
+			
+		
+		:Source:
+			`lib/private/Files/SimpleFS/NewSimpleFile.php#216 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/SimpleFS/NewSimpleFile.php#L216>`_
+		
+		
+		:Returns: resource | bool 
+		:Throws: :any:`\\OCP\\Files\\NotPermittedException <OCP\\Files\\NotPermittedException>` 
+		:Since: 14.0.0 
+	
+	
+

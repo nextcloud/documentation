@@ -1,0 +1,229 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+OCIExpressionBuilder
+====================
+
+
+.. php:namespace:: OC\DB\QueryBuilder\ExpressionBuilder
+
+.. php:class:: OCIExpressionBuilder
+
+
+	:Source:
+		`lib/private/DB/QueryBuilder/ExpressionBuilder/OCIExpressionBuilder.php#33 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/QueryBuilder/ExpressionBuilder/OCIExpressionBuilder.php#L33>`_
+	
+	:Parent:
+		:php:class:`OC\\DB\\QueryBuilder\\ExpressionBuilder\\ExpressionBuilder`
+	
+
+Methods
+-------
+
+.. rst-class:: protected
+
+	.. php:method:: protected prepareColumn( $column, $type)
+	
+		:Source:
+			`lib/private/DB/QueryBuilder/ExpressionBuilder/OCIExpressionBuilder.php#40 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/QueryBuilder/ExpressionBuilder/OCIExpressionBuilder.php#L40>`_
+		
+		
+		:Parameters:
+			* **$column** (mixed)  
+			* **$type** (mixed | null)  
+
+		
+		:Returns: array | :any:`\\OCP\\DB\\QueryBuilder\\IQueryFunction <OCP\\DB\\QueryBuilder\\IQueryFunction>` | string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public comparison( $x, $operator, $y, $type=null)
+	
+		:Source:
+			`lib/private/DB/QueryBuilder/ExpressionBuilder/OCIExpressionBuilder.php#52 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/QueryBuilder/ExpressionBuilder/OCIExpressionBuilder.php#L52>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public eq( $x, $y, $type=null)
+	
+		:Source:
+			`lib/private/DB/QueryBuilder/ExpressionBuilder/OCIExpressionBuilder.php#62 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/QueryBuilder/ExpressionBuilder/OCIExpressionBuilder.php#L62>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public neq( $x, $y, $type=null)
+	
+		:Source:
+			`lib/private/DB/QueryBuilder/ExpressionBuilder/OCIExpressionBuilder.php#72 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/QueryBuilder/ExpressionBuilder/OCIExpressionBuilder.php#L72>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public lt( $x, $y, $type=null)
+	
+		:Source:
+			`lib/private/DB/QueryBuilder/ExpressionBuilder/OCIExpressionBuilder.php#82 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/QueryBuilder/ExpressionBuilder/OCIExpressionBuilder.php#L82>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public lte( $x, $y, $type=null)
+	
+		:Source:
+			`lib/private/DB/QueryBuilder/ExpressionBuilder/OCIExpressionBuilder.php#92 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/QueryBuilder/ExpressionBuilder/OCIExpressionBuilder.php#L92>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public gt( $x, $y, $type=null)
+	
+		:Source:
+			`lib/private/DB/QueryBuilder/ExpressionBuilder/OCIExpressionBuilder.php#102 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/QueryBuilder/ExpressionBuilder/OCIExpressionBuilder.php#L102>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public gte( $x, $y, $type=null)
+	
+		:Source:
+			`lib/private/DB/QueryBuilder/ExpressionBuilder/OCIExpressionBuilder.php#112 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/QueryBuilder/ExpressionBuilder/OCIExpressionBuilder.php#L112>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public in( $x, $y, $type=null)
+	
+		:Source:
+			`lib/private/DB/QueryBuilder/ExpressionBuilder/OCIExpressionBuilder.php#122 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/QueryBuilder/ExpressionBuilder/OCIExpressionBuilder.php#L122>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public notIn( $x, $y, $type=null)
+	
+		:Source:
+			`lib/private/DB/QueryBuilder/ExpressionBuilder/OCIExpressionBuilder.php#132 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/QueryBuilder/ExpressionBuilder/OCIExpressionBuilder.php#L132>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public emptyString( $x)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Creates a $x = \'\' statement, because Oracle needs a different check
+			
+		
+		:Source:
+			`lib/private/DB/QueryBuilder/ExpressionBuilder/OCIExpressionBuilder.php#146 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/QueryBuilder/ExpressionBuilder/OCIExpressionBuilder.php#L146>`_
+		
+		
+		:Parameters:
+			* **$x** (string | :any:`\\OCP\\DB\\QueryBuilder\\ILiteral <OCP\\DB\\QueryBuilder\\ILiteral>` | :any:`\\OCP\\DB\\QueryBuilder\\IParameter <OCP\\DB\\QueryBuilder\\IParameter>` | :any:`\\OCP\\DB\\QueryBuilder\\IQueryFunction <OCP\\DB\\QueryBuilder\\IQueryFunction>`)  The field in string format to be inspected by the comparison.
+
+		
+		:Returns: string 
+		:Since: 13.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public nonEmptyString( $x)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Creates a \`$x <\> \'\'\` statement, because Oracle needs a different check
+			
+		
+		:Source:
+			`lib/private/DB/QueryBuilder/ExpressionBuilder/OCIExpressionBuilder.php#157 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/QueryBuilder/ExpressionBuilder/OCIExpressionBuilder.php#L157>`_
+		
+		
+		:Parameters:
+			* **$x** (string | :any:`\\OCP\\DB\\QueryBuilder\\ILiteral <OCP\\DB\\QueryBuilder\\ILiteral>` | :any:`\\OCP\\DB\\QueryBuilder\\IParameter <OCP\\DB\\QueryBuilder\\IParameter>` | :any:`\\OCP\\DB\\QueryBuilder\\IQueryFunction <OCP\\DB\\QueryBuilder\\IQueryFunction>`)  The field in string format to be inspected by the comparison.
+
+		
+		:Returns: string 
+		:Since: 13.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public castColumn( $column, $type)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns a IQueryFunction that casts the column to the given type
+			
+		
+		:Source:
+			`lib/private/DB/QueryBuilder/ExpressionBuilder/OCIExpressionBuilder.php#168 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/QueryBuilder/ExpressionBuilder/OCIExpressionBuilder.php#L168>`_
+		
+		
+		:Parameters:
+			* **$column** (string)  
+			* **$type** (mixed)  One of IQueryBuilder::PARAM_*
+
+		
+		:Returns: :any:`\\OCP\\DB\\QueryBuilder\\IQueryFunction <OCP\\DB\\QueryBuilder\\IQueryFunction>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public like( $x, $y, $type=null)
+	
+		:Source:
+			`lib/private/DB/QueryBuilder/ExpressionBuilder/OCIExpressionBuilder.php#184 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/QueryBuilder/ExpressionBuilder/OCIExpressionBuilder.php#L184>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public iLike( $x, $y, $type=null)
+	
+		:Source:
+			`lib/private/DB/QueryBuilder/ExpressionBuilder/OCIExpressionBuilder.php#191 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/QueryBuilder/ExpressionBuilder/OCIExpressionBuilder.php#L191>`_
+		
+		
+	
+	
+

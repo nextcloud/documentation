@@ -1,0 +1,242 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+Installer
+=========
+
+
+.. php:namespace:: OC
+
+.. php:class:: Installer
+
+
+	.. rst-class:: phpdoc-description
+	
+		| This class provides the functionality needed to install, update and remove apps
+		
+	
+	:Source:
+		`lib/private/Installer.php#62 <https://github.com/nextcloud/server/blob/stable13/lib/private/Installer.php#L62>`_
+	
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $appFetcher, $clientService, $tempManager, $logger, $config, $isCLI)
+	
+		:Source:
+			`lib/private/Installer.php#80 <https://github.com/nextcloud/server/blob/stable13/lib/private/Installer.php#L80>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public installApp( $appId, $forceEnable=false)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Installs an app that is located in one of the app folders already
+			
+		
+		:Source:
+			`lib/private/Installer.php#104 <https://github.com/nextcloud/server/blob/stable13/lib/private/Installer.php#L104>`_
+		
+		
+		:Parameters:
+			* **$appId** (string)  App to install
+			* **$forceEnable** (bool)  
+
+		
+		:Throws: :any:`\\Exception <Exception>` 
+		:Returns: string app ID
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public updateAppstoreApp( $appId, $allowUnstable=false)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Updates the specified app from the appstore
+			
+		
+		:Source:
+			`lib/private/Installer.php#193 <https://github.com/nextcloud/server/blob/stable13/lib/private/Installer.php#L193>`_
+		
+		
+		:Parameters:
+			* **$appId** (string)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public downloadApp( $appId, $allowUnstable=false)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Downloads an app and puts it into the app directory
+			
+		
+		:Source:
+			`lib/private/Installer.php#229 <https://github.com/nextcloud/server/blob/stable13/lib/private/Installer.php#L229>`_
+		
+		
+		:Parameters:
+			* **$appId** (string)  
+
+		
+		:Throws: :any:`\\Exception <Exception>` If the installation was not successful
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isUpdateAvailable( $appId, $allowUnstable=false)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check if an update for the app is available
+			
+		
+		:Source:
+			`lib/private/Installer.php#416 <https://github.com/nextcloud/server/blob/stable13/lib/private/Installer.php#L416>`_
+		
+		
+		:Parameters:
+			* **$appId** (string)  
+			* **$allowUnstable** (bool)  
+
+		
+		:Returns: string | bool false or the version number of the update
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isDownloaded( $name)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check if app is already downloaded
+			
+		
+		:Source:
+			`lib/private/Installer.php#480 <https://github.com/nextcloud/server/blob/stable13/lib/private/Installer.php#L480>`_
+		
+		
+		:Parameters:
+			* **$name** (string)  name of the application to remove
+
+		
+		:Returns: bool The function will check if the app is already downloaded in the apps repository
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public removeApp( $appId)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Removes an app
+			
+		
+		:Source:
+			`lib/private/Installer.php#508 <https://github.com/nextcloud/server/blob/stable13/lib/private/Installer.php#L508>`_
+		
+		
+		:Parameters:
+			* **$appId** (string)  ID of the application to remove
+
+		
+		:Returns: bool This function works as follows
+			  \-\# call uninstall repair steps
+			  \-\# removing the files
+			
+			The function will not delete preferences, tables and the configuration,
+			this has to be done by the function oc\_app\_uninstall\(\)\.
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public installAppBundle( $bundle)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Installs the app within the bundle and marks the bundle as installed
+			
+		
+		:Source:
+			`lib/private/Installer.php#529 <https://github.com/nextcloud/server/blob/stable13/lib/private/Installer.php#L529>`_
+		
+		
+		:Parameters:
+			* **$bundle** (:any:`OC\\App\\AppStore\\Bundles\\Bundle <OC\\App\\AppStore\\Bundles\\Bundle>`)  
+
+		
+		:Throws: :any:`\\Exception <Exception>` If app could not get installed
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static installShippedApps( $softErrors=false)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Installs shipped apps
+			
+			| This function installs all apps found in the \'apps\' directory that should be enabled by default;
+			
+		
+		:Source:
+			`lib/private/Installer.php#552 <https://github.com/nextcloud/server/blob/stable13/lib/private/Installer.php#L552>`_
+		
+		
+		:Parameters:
+			* **$softErrors** (bool)  When updating we ignore errors and simply log them, better to have a
+			working ownCloud at the end instead of an aborted update.
+
+		
+		:Returns: array Array of error messages \(appid =\> Exception\)
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static installShippedApp( $app)
+	
+		.. rst-class:: phpdoc-description
+		
+			| install an app already placed in the app folder
+			
+		
+		:Source:
+			`lib/private/Installer.php#597 <https://github.com/nextcloud/server/blob/stable13/lib/private/Installer.php#L597>`_
+		
+		
+		:Parameters:
+			* **$app** (string)  id of the app to install
+
+		
+		:Returns: int 
+	
+	
+

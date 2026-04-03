@@ -1,0 +1,1817 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>IServerContainer &mdash; Nextcloud 13 Developer Manual 13 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'13',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="ISession" href="ISession.html" />
+    <link rel="prev" title="ILogger" href="ILogger.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html">
+          
+
+          
+            
+            <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../general/index.html">General contributor guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app/changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app/tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app/startapp.html">Create an app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app/init.html">Navigation and pre-app configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app/info.html">App metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app/classloader.html">Classloader</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app/request.html">Request lifecycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app/routes.html">Routing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app/middleware.html">Middleware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app/container.html">Container</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app/controllers.html">Controllers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app/api.html">RESTful API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app/templates.html">Templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app/js.html">JavaScript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app/css.html">CSS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app/l10n.html">Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app/theming.html">Theming support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app/schema.html">Database schema</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app/database.html">Database access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app/configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app/filesystem.html">Filesystem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app/appdata.html">AppData</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app/users.html">User management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app/two-factor-provider.html">Two-factor providers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app/hooks.html">Hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app/backgroundjobs.html">Background jobs (Cron)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app/settings.html">Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app/logging.html">Logging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app/migrations.html">Migrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app/repair.html">Repair steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app/testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app/publishing.html">App store publishing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app/code_signing.html">Code signing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../design/index.html">Design guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../android_library/index.html">Android application development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../client_apis/index.html">Client APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../core/translation.html">Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../core/unit-testing.html">Unit-Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../core/theming.html">Theming Nextcloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../core/externalapi.html">External API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../core/ocs-share-api.html">OCS Share API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../core/index.html">Core development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../bugtracker/index.html">Bugtracker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../commun/index.html">Help and communication</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../api.html">API Documentation</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../../api.html#php-public-api">PHP public API</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">/OCP namespace</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="index.html#namespaces">Namespaces</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="index.html#interfaces">Interfaces</a></li>
+<li class="toctree-l4"><a class="reference internal" href="index.html#classes">Classes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../api.html#php-class-reference">PHP class reference</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Nextcloud 13 Developer Manual</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../api.html">API Documentation</a> &raquo;</li>
+        
+          <li><a href="index.html">OCP</a> &raquo;</li>
+        
+      <li>IServerContainer</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/nextcloud/documentation/edit/stable13/developer_manual/api/OCP/IServerContainer.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="phpdoctorst section" id="namespace-OCP">
+<span id="iservercontainer"></span><h1>IServerContainer<a class="headerlink" href="#namespace-OCP" title="Permalink to this headline">¶</a></h1>
+<dl class="interface">
+<dt id="OCP\IServerContainer">
+<em class="property">interface </em><code class="descclassname">OCP\</code><code class="descname">IServerContainer</code><a class="headerlink" href="#OCP\IServerContainer" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">This is a tagging interface for the server container</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">The interface currently extends IContainer, but this interface is deprecated as of Nextcloud 20,</div>
+<div class="line">thus this interface won&#8217;t extend it anymore once that was removed. So migrate to the ContainerInterface</div>
+<div class="line">only.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L61">lib/public/IServerContainer.php#61</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parent:</th><td class="field-body"><code class="xref php php-interface docutils literal"><span class="pre">Psr\Container\ContainerInterface</span></code></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Parent:</th><td class="field-body"><a class="reference internal" href="IContainer.html#OCP\IContainer" title="OCP\IContainer"><code class="xref php php-interface docutils literal"><span class="pre">OCP\IContainer</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<div class="section" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h2>
+<dl class="public deprecated method">
+<dt id="OCP\IServerContainer::getCalendarManager">
+<em class="property">public </em><code class="descclassname">OCP\IServerContainer::</code><code class="descname">getCalendarManager</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\IServerContainer::getCalendarManager" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">The calendar manager will act as a broker between consumers for calendar information and</div>
+<div class="line">providers which actual deliver the calendar information.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L71">lib/public/IServerContainer.php#71</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="Calendar/IManager.html#OCP\Calendar\IManager" title="OCP\Calendar\IManager"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Calendar\IManager</span></code></a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">13.0.0</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Deprecated:</th><td class="field-body">20.0.0 have it injected or fetch it through \Psr\Container\ContainerInterface::get</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public deprecated method">
+<dt id="OCP\IServerContainer::getCalendarResourceBackendManager">
+<em class="property">public </em><code class="descclassname">OCP\IServerContainer::</code><code class="descname">getCalendarResourceBackendManager</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\IServerContainer::getCalendarResourceBackendManager" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">The calendar resource backend manager will act as a broker between consumers</div>
+<div class="line">for calendar resource information an providers which actual deliver the room information.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L81">lib/public/IServerContainer.php#81</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="Calendar/Resource/IBackend.html#OCP\Calendar\Resource\IBackend" title="OCP\Calendar\Resource\IBackend"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Calendar\Resource\IBackend</span></code></a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">14.0.0</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Deprecated:</th><td class="field-body">20.0.0 have it injected or fetch it through \Psr\Container\ContainerInterface::get</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public deprecated method">
+<dt id="OCP\IServerContainer::getCalendarRoomBackendManager">
+<em class="property">public </em><code class="descclassname">OCP\IServerContainer::</code><code class="descname">getCalendarRoomBackendManager</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\IServerContainer::getCalendarRoomBackendManager" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">The calendar room backend manager will act as a broker between consumers</div>
+<div class="line">for calendar room information an providers which actual deliver the room information.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L91">lib/public/IServerContainer.php#91</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="Calendar/Room/IBackend.html#OCP\Calendar\Room\IBackend" title="OCP\Calendar\Room\IBackend"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Calendar\Room\IBackend</span></code></a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">14.0.0</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Deprecated:</th><td class="field-body">20.0.0 have it injected or fetch it through \Psr\Container\ContainerInterface::get</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public deprecated method">
+<dt id="OCP\IServerContainer::getContactsManager">
+<em class="property">public </em><code class="descclassname">OCP\IServerContainer::</code><code class="descname">getContactsManager</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\IServerContainer::getContactsManager" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">The contacts manager will act as a broker between consumers for contacts information and</div>
+<div class="line">providers which actual deliver the contact information.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L101">lib/public/IServerContainer.php#101</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="Contacts/IManager.html#OCP\Contacts\IManager" title="OCP\Contacts\IManager"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Contacts\IManager</span></code></a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">6.0.0</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Deprecated:</th><td class="field-body">20.0.0 have it injected or fetch it through \Psr\Container\ContainerInterface::get</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public deprecated method">
+<dt id="OCP\IServerContainer::getRequest">
+<em class="property">public </em><code class="descclassname">OCP\IServerContainer::</code><code class="descname">getRequest</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\IServerContainer::getRequest" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">The current request object holding all information about the request currently being processed</div>
+<div class="line">is returned from this method.</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">In case the current execution was not initiated by a web request null is returned</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L112">lib/public/IServerContainer.php#112</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="IRequest.html#OCP\IRequest" title="OCP\IRequest"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\IRequest</span></code></a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">6.0.0</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Deprecated:</th><td class="field-body">20.0.0 have it injected or fetch it through \Psr\Container\ContainerInterface::get</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public deprecated method">
+<dt id="OCP\IServerContainer::getPreviewManager">
+<em class="property">public </em><code class="descclassname">OCP\IServerContainer::</code><code class="descname">getPreviewManager</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\IServerContainer::getPreviewManager" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Returns the preview manager which can create preview images for a given file</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L121">lib/public/IServerContainer.php#121</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="IPreview.html#OCP\IPreview" title="OCP\IPreview"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\IPreview</span></code></a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">6.0.0</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Deprecated:</th><td class="field-body">20.0.0 have it injected or fetch it through \Psr\Container\ContainerInterface::get</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public deprecated method">
+<dt id="OCP\IServerContainer::getTagManager">
+<em class="property">public </em><code class="descclassname">OCP\IServerContainer::</code><code class="descname">getTagManager</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\IServerContainer::getTagManager" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Returns the tag manager which can get and set tags for different object types</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L131">lib/public/IServerContainer.php#131</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">See:</th><td class="field-body"><a class="reference internal" href="ITagManager.html#OCP\ITagManager::load" title="OCP\ITagManager::load"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\ITagManager::load()</span></code></a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="ITagManager.html#OCP\ITagManager" title="OCP\ITagManager"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\ITagManager</span></code></a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body">6.0.0</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Deprecated:</th><td class="field-body">20.0.0 have it injected or fetch it through \Psr\Container\ContainerInterface::get</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public deprecated method">
+<dt id="OCP\IServerContainer::getRootFolder">
+<em class="property">public </em><code class="descclassname">OCP\IServerContainer::</code><code class="descname">getRootFolder</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\IServerContainer::getRootFolder" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Returns the root folder of ownCloud&#8217;s data directory</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L140">lib/public/IServerContainer.php#140</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="Files/IRootFolder.html#OCP\Files\IRootFolder" title="OCP\Files\IRootFolder"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\IRootFolder</span></code></a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">6.0.0 - between 6.0.0 and 8.0.0 this returned \OCP\Files\Folder</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Deprecated:</th><td class="field-body">20.0.0 have it injected or fetch it through \Psr\Container\ContainerInterface::get</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public deprecated method">
+<dt id="OCP\IServerContainer::getUserFolder">
+<em class="property">public </em><code class="descclassname">OCP\IServerContainer::</code><code class="descname">getUserFolder</code><span class="sig-paren">(</span><em>$userId=null</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\IServerContainer::getUserFolder" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Returns a view to ownCloud&#8217;s files folder</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L151">lib/public/IServerContainer.php#151</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$userId</strong> (string)  user ID</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference internal" href="Files/Folder.html#OCP\Files\Folder" title="OCP\Files\Folder"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\Folder</span></code></a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first">6.0.0 - parameter $userId was added in 8.0.0</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">See:</th><td class="field-body"><p class="first"><code class="xref any docutils literal"><span class="pre">\OCP\getUserFolder</span></code> in \OCP\Files\IRootFolder</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Deprecated:</th><td class="field-body"><p class="first last">20.0.0 have it injected or fetch it through \Psr\Container\ContainerInterface::get</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public deprecated method">
+<dt id="OCP\IServerContainer::getUserManager">
+<em class="property">public </em><code class="descclassname">OCP\IServerContainer::</code><code class="descname">getUserManager</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\IServerContainer::getUserManager" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Returns a user manager</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L160">lib/public/IServerContainer.php#160</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="IUserManager.html#OCP\IUserManager" title="OCP\IUserManager"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\IUserManager</span></code></a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">8.0.0</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Deprecated:</th><td class="field-body">20.0.0 have it injected or fetch it through \Psr\Container\ContainerInterface::get</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public deprecated method">
+<dt id="OCP\IServerContainer::getGroupManager">
+<em class="property">public </em><code class="descclassname">OCP\IServerContainer::</code><code class="descname">getGroupManager</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\IServerContainer::getGroupManager" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Returns a group manager</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L169">lib/public/IServerContainer.php#169</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="IGroupManager.html#OCP\IGroupManager" title="OCP\IGroupManager"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\IGroupManager</span></code></a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">8.0.0</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Deprecated:</th><td class="field-body">20.0.0 have it injected or fetch it through \Psr\Container\ContainerInterface::get</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public deprecated method">
+<dt id="OCP\IServerContainer::getUserSession">
+<em class="property">public </em><code class="descclassname">OCP\IServerContainer::</code><code class="descname">getUserSession</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\IServerContainer::getUserSession" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Returns the user session</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L178">lib/public/IServerContainer.php#178</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="IUserSession.html#OCP\IUserSession" title="OCP\IUserSession"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\IUserSession</span></code></a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">6.0.0</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Deprecated:</th><td class="field-body">20.0.0 have it injected or fetch it through \Psr\Container\ContainerInterface::get</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public deprecated method">
+<dt id="OCP\IServerContainer::getNavigationManager">
+<em class="property">public </em><code class="descclassname">OCP\IServerContainer::</code><code class="descname">getNavigationManager</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\IServerContainer::getNavigationManager" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Returns the navigation manager</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L187">lib/public/IServerContainer.php#187</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="INavigationManager.html#OCP\INavigationManager" title="OCP\INavigationManager"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\INavigationManager</span></code></a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">6.0.0</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Deprecated:</th><td class="field-body">20.0.0 have it injected or fetch it through \Psr\Container\ContainerInterface::get</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public deprecated method">
+<dt id="OCP\IServerContainer::getConfig">
+<em class="property">public </em><code class="descclassname">OCP\IServerContainer::</code><code class="descname">getConfig</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\IServerContainer::getConfig" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Returns the config manager</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L196">lib/public/IServerContainer.php#196</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="IConfig.html#OCP\IConfig" title="OCP\IConfig"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\IConfig</span></code></a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">6.0.0</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Deprecated:</th><td class="field-body">20.0.0 have it injected or fetch it through \Psr\Container\ContainerInterface::get</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public deprecated method">
+<dt id="OCP\IServerContainer::getCrypto">
+<em class="property">public </em><code class="descclassname">OCP\IServerContainer::</code><code class="descname">getCrypto</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\IServerContainer::getCrypto" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Returns a Crypto instance</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L205">lib/public/IServerContainer.php#205</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="Security/ICrypto.html#OCP\Security\ICrypto" title="OCP\Security\ICrypto"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Security\ICrypto</span></code></a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">8.0.0</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Deprecated:</th><td class="field-body">20.0.0 have it injected or fetch it through \Psr\Container\ContainerInterface::get</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public deprecated method">
+<dt id="OCP\IServerContainer::getHasher">
+<em class="property">public </em><code class="descclassname">OCP\IServerContainer::</code><code class="descname">getHasher</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\IServerContainer::getHasher" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Returns a Hasher instance</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L214">lib/public/IServerContainer.php#214</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="Security/IHasher.html#OCP\Security\IHasher" title="OCP\Security\IHasher"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Security\IHasher</span></code></a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">8.0.0</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Deprecated:</th><td class="field-body">20.0.0 have it injected or fetch it through \Psr\Container\ContainerInterface::get</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public deprecated method">
+<dt id="OCP\IServerContainer::getSecureRandom">
+<em class="property">public </em><code class="descclassname">OCP\IServerContainer::</code><code class="descname">getSecureRandom</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\IServerContainer::getSecureRandom" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Returns a SecureRandom instance</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L223">lib/public/IServerContainer.php#223</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="Security/ISecureRandom.html#OCP\Security\ISecureRandom" title="OCP\Security\ISecureRandom"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Security\ISecureRandom</span></code></a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">8.1.0</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Deprecated:</th><td class="field-body">20.0.0 have it injected or fetch it through \Psr\Container\ContainerInterface::get</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public deprecated method">
+<dt id="OCP\IServerContainer::getCredentialsManager">
+<em class="property">public </em><code class="descclassname">OCP\IServerContainer::</code><code class="descname">getCredentialsManager</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\IServerContainer::getCredentialsManager" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Returns a CredentialsManager instance</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L232">lib/public/IServerContainer.php#232</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="Security/ICredentialsManager.html#OCP\Security\ICredentialsManager" title="OCP\Security\ICredentialsManager"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Security\ICredentialsManager</span></code></a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">9.0.0</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Deprecated:</th><td class="field-body">20.0.0 have it injected or fetch it through \Psr\Container\ContainerInterface::get</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public deprecated method">
+<dt id="OCP\IServerContainer::getAppConfig">
+<em class="property">public </em><code class="descclassname">OCP\IServerContainer::</code><code class="descname">getAppConfig</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\IServerContainer::getAppConfig" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Returns the app config manager</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L241">lib/public/IServerContainer.php#241</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="IAppConfig.html#OCP\IAppConfig" title="OCP\IAppConfig"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\IAppConfig</span></code></a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">7.0.0</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Deprecated:</th><td class="field-body">20.0.0 have it injected or fetch it through \Psr\Container\ContainerInterface::get</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public deprecated method">
+<dt id="OCP\IServerContainer::getL10NFactory">
+<em class="property">public </em><code class="descclassname">OCP\IServerContainer::</code><code class="descname">getL10NFactory</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\IServerContainer::getL10NFactory" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L248">lib/public/IServerContainer.php#248</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="L10N/IFactory.html#OCP\L10N\IFactory" title="OCP\L10N\IFactory"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\L10N\IFactory</span></code></a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">8.2.0</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Deprecated:</th><td class="field-body">20.0.0 have it injected or fetch it through \Psr\Container\ContainerInterface::get</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public deprecated method">
+<dt id="OCP\IServerContainer::getL10N">
+<em class="property">public </em><code class="descclassname">OCP\IServerContainer::</code><code class="descname">getL10N</code><span class="sig-paren">(</span><em>$app</em>, <em>$lang=null</em><span class="sig-paren">)</span><a class="headerlink" href="#OCP\IServerContainer::getL10N" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">get an L10N instance</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L258">lib/public/IServerContainer.php#258</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$app</strong> (string)  appid</li>
+<li><strong>$lang</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference internal" href="IL10N.html#OCP\IL10N" title="OCP\IL10N"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\IL10N</span></code></a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first">6.0.0 - parameter $lang was added in 8.0.0</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Deprecated:</th><td class="field-body"><p class="first last">20.0.0 have it injected or fetch it through \Psr\Container\ContainerInterface::get</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public deprecated method">
+<dt id="OCP\IServerContainer::getEncryptionManager">
+<em class="property">public </em><code class="descclassname">OCP\IServerContainer::</code><code class="descname">getEncryptionManager</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\IServerContainer::getEncryptionManager" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L265">lib/public/IServerContainer.php#265</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="../OC/Encryption/Manager.html#OC\Encryption\Manager" title="OC\Encryption\Manager"><code class="xref any php php-trait docutils literal"><span class="pre">\OC\Encryption\Manager</span></code></a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">8.1.0</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Deprecated:</th><td class="field-body">20.0.0 have it injected or fetch it through \Psr\Container\ContainerInterface::get</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public deprecated method">
+<dt id="OCP\IServerContainer::getEncryptionFilesHelper">
+<em class="property">public </em><code class="descclassname">OCP\IServerContainer::</code><code class="descname">getEncryptionFilesHelper</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\IServerContainer::getEncryptionFilesHelper" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L272">lib/public/IServerContainer.php#272</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="../OC/Encryption/File.html#OC\Encryption\File" title="OC\Encryption\File"><code class="xref any php php-trait docutils literal"><span class="pre">\OC\Encryption\File</span></code></a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">8.1.0</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Deprecated:</th><td class="field-body">20.0.0 have it injected or fetch it through \Psr\Container\ContainerInterface::get</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public deprecated method">
+<dt id="OCP\IServerContainer::getEncryptionKeyStorage">
+<em class="property">public </em><code class="descclassname">OCP\IServerContainer::</code><code class="descname">getEncryptionKeyStorage</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\IServerContainer::getEncryptionKeyStorage" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L279">lib/public/IServerContainer.php#279</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="Encryption/Keys/IStorage.html#OCP\Encryption\Keys\IStorage" title="OCP\Encryption\Keys\IStorage"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Encryption\Keys\IStorage</span></code></a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">8.1.0</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Deprecated:</th><td class="field-body">20.0.0 have it injected or fetch it through \Psr\Container\ContainerInterface::get</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public deprecated method">
+<dt id="OCP\IServerContainer::getURLGenerator">
+<em class="property">public </em><code class="descclassname">OCP\IServerContainer::</code><code class="descname">getURLGenerator</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\IServerContainer::getURLGenerator" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Returns the URL generator</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L288">lib/public/IServerContainer.php#288</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="IURLGenerator.html#OCP\IURLGenerator" title="OCP\IURLGenerator"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\IURLGenerator</span></code></a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">6.0.0</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Deprecated:</th><td class="field-body">20.0.0 have it injected or fetch it through \Psr\Container\ContainerInterface::get</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public deprecated method">
+<dt id="OCP\IServerContainer::getCache">
+<em class="property">public </em><code class="descclassname">OCP\IServerContainer::</code><code class="descname">getCache</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\IServerContainer::getCache" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Returns an ICache instance</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L297">lib/public/IServerContainer.php#297</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="ICache.html#OCP\ICache" title="OCP\ICache"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\ICache</span></code></a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">6.0.0</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Deprecated:</th><td class="field-body">20.0.0 have it injected or fetch it through \Psr\Container\ContainerInterface::get</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public deprecated method">
+<dt id="OCP\IServerContainer::getMemCacheFactory">
+<em class="property">public </em><code class="descclassname">OCP\IServerContainer::</code><code class="descname">getMemCacheFactory</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\IServerContainer::getMemCacheFactory" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Returns an \OCP\CacheFactory instance</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L306">lib/public/IServerContainer.php#306</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="ICacheFactory.html#OCP\ICacheFactory" title="OCP\ICacheFactory"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\ICacheFactory</span></code></a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">7.0.0</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Deprecated:</th><td class="field-body">20.0.0 have it injected or fetch it through \Psr\Container\ContainerInterface::get</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public deprecated method">
+<dt id="OCP\IServerContainer::getSession">
+<em class="property">public </em><code class="descclassname">OCP\IServerContainer::</code><code class="descname">getSession</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\IServerContainer::getSession" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Returns the current session</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L315">lib/public/IServerContainer.php#315</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="ISession.html#OCP\ISession" title="OCP\ISession"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\ISession</span></code></a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">6.0.0</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Deprecated:</th><td class="field-body">20.0.0 have it injected or fetch it through \Psr\Container\ContainerInterface::get</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public deprecated method">
+<dt id="OCP\IServerContainer::getActivityManager">
+<em class="property">public </em><code class="descclassname">OCP\IServerContainer::</code><code class="descname">getActivityManager</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\IServerContainer::getActivityManager" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Returns the activity manager</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L324">lib/public/IServerContainer.php#324</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="Activity/IManager.html#OCP\Activity\IManager" title="OCP\Activity\IManager"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Activity\IManager</span></code></a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">6.0.0</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Deprecated:</th><td class="field-body">20.0.0 have it injected or fetch it through \Psr\Container\ContainerInterface::get</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public deprecated method">
+<dt id="OCP\IServerContainer::getDatabaseConnection">
+<em class="property">public </em><code class="descclassname">OCP\IServerContainer::</code><code class="descname">getDatabaseConnection</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\IServerContainer::getDatabaseConnection" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Returns the current session</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L333">lib/public/IServerContainer.php#333</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="IDBConnection.html#OCP\IDBConnection" title="OCP\IDBConnection"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\IDBConnection</span></code></a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">6.0.0</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Deprecated:</th><td class="field-body">20.0.0 have it injected or fetch it through \Psr\Container\ContainerInterface::get</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public deprecated method">
+<dt id="OCP\IServerContainer::getAvatarManager">
+<em class="property">public </em><code class="descclassname">OCP\IServerContainer::</code><code class="descname">getAvatarManager</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\IServerContainer::getAvatarManager" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Returns an avatar manager, used for avatar functionality</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L342">lib/public/IServerContainer.php#342</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="IAvatarManager.html#OCP\IAvatarManager" title="OCP\IAvatarManager"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\IAvatarManager</span></code></a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">6.0.0</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Deprecated:</th><td class="field-body">20.0.0 have it injected or fetch it through \Psr\Container\ContainerInterface::get</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public deprecated method">
+<dt id="OCP\IServerContainer::getJobList">
+<em class="property">public </em><code class="descclassname">OCP\IServerContainer::</code><code class="descname">getJobList</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\IServerContainer::getJobList" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Returns an job list for controlling background jobs</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L351">lib/public/IServerContainer.php#351</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="BackgroundJob/IJobList.html#OCP\BackgroundJob\IJobList" title="OCP\BackgroundJob\IJobList"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\BackgroundJob\IJobList</span></code></a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">7.0.0</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Deprecated:</th><td class="field-body">20.0.0 have it injected or fetch it through \Psr\Container\ContainerInterface::get</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public deprecated method">
+<dt id="OCP\IServerContainer::getLogger">
+<em class="property">public </em><code class="descclassname">OCP\IServerContainer::</code><code class="descname">getLogger</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\IServerContainer::getLogger" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Returns a logger instance</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L360">lib/public/IServerContainer.php#360</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="ILogger.html#OCP\ILogger" title="OCP\ILogger"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\ILogger</span></code></a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">8.0.0</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Deprecated:</th><td class="field-body">20.0.0 have it injected or fetch it through \Psr\Container\ContainerInterface::get</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public deprecated method">
+<dt id="OCP\IServerContainer::getLogFactory">
+<em class="property">public </em><code class="descclassname">OCP\IServerContainer::</code><code class="descname">getLogFactory</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\IServerContainer::getLogFactory" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">returns a log factory instance</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L369">lib/public/IServerContainer.php#369</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="Log/ILogFactory.html#OCP\Log\ILogFactory" title="OCP\Log\ILogFactory"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Log\ILogFactory</span></code></a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">14.0.0</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Deprecated:</th><td class="field-body">20.0.0 have it injected or fetch it through \Psr\Container\ContainerInterface::get</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public deprecated method">
+<dt id="OCP\IServerContainer::getRouter">
+<em class="property">public </em><code class="descclassname">OCP\IServerContainer::</code><code class="descname">getRouter</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\IServerContainer::getRouter" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Returns a router for generating and matching urls</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L378">lib/public/IServerContainer.php#378</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="Route/IRouter.html#OCP\Route\IRouter" title="OCP\Route\IRouter"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Route\IRouter</span></code></a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">7.0.0</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Deprecated:</th><td class="field-body">20.0.0 have it injected or fetch it through \Psr\Container\ContainerInterface::get</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public deprecated method">
+<dt id="OCP\IServerContainer::getSearch">
+<em class="property">public </em><code class="descclassname">OCP\IServerContainer::</code><code class="descname">getSearch</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\IServerContainer::getSearch" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Returns a search instance</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L387">lib/public/IServerContainer.php#387</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="ISearch.html#OCP\ISearch" title="OCP\ISearch"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\ISearch</span></code></a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">7.0.0</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Deprecated:</th><td class="field-body">20.0.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public deprecated method">
+<dt id="OCP\IServerContainer::getCertificateManager">
+<em class="property">public </em><code class="descclassname">OCP\IServerContainer::</code><code class="descname">getCertificateManager</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\IServerContainer::getCertificateManager" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Get the certificate manager</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L396">lib/public/IServerContainer.php#396</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="ICertificateManager.html#OCP\ICertificateManager" title="OCP\ICertificateManager"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\ICertificateManager</span></code></a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">8.0.0</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Deprecated:</th><td class="field-body">20.0.0 have it injected or fetch it through \Psr\Container\ContainerInterface::get</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public deprecated method">
+<dt id="OCP\IServerContainer::createEventSource">
+<em class="property">public </em><code class="descclassname">OCP\IServerContainer::</code><code class="descname">createEventSource</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\IServerContainer::createEventSource" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Create a new event source</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L405">lib/public/IServerContainer.php#405</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="IEventSource.html#OCP\IEventSource" title="OCP\IEventSource"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\IEventSource</span></code></a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">8.0.0</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Deprecated:</th><td class="field-body">20.0.0 have it injected or fetch it through \Psr\Container\ContainerInterface::get</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public deprecated method">
+<dt id="OCP\IServerContainer::getHTTPClientService">
+<em class="property">public </em><code class="descclassname">OCP\IServerContainer::</code><code class="descname">getHTTPClientService</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\IServerContainer::getHTTPClientService" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Returns an instance of the HTTP client service</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L414">lib/public/IServerContainer.php#414</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="Http/Client/IClientService.html#OCP\Http\Client\IClientService" title="OCP\Http\Client\IClientService"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Http\Client\IClientService</span></code></a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">8.1.0</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Deprecated:</th><td class="field-body">20.0.0 have it injected or fetch it through \Psr\Container\ContainerInterface::get</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public deprecated method">
+<dt id="OCP\IServerContainer::getEventLogger">
+<em class="property">public </em><code class="descclassname">OCP\IServerContainer::</code><code class="descname">getEventLogger</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\IServerContainer::getEventLogger" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Get the active event logger</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L423">lib/public/IServerContainer.php#423</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="Diagnostics/IEventLogger.html#OCP\Diagnostics\IEventLogger" title="OCP\Diagnostics\IEventLogger"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Diagnostics\IEventLogger</span></code></a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">8.0.0</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Deprecated:</th><td class="field-body">20.0.0 have it injected or fetch it through \Psr\Container\ContainerInterface::get</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public deprecated method">
+<dt id="OCP\IServerContainer::getQueryLogger">
+<em class="property">public </em><code class="descclassname">OCP\IServerContainer::</code><code class="descname">getQueryLogger</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\IServerContainer::getQueryLogger" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Get the active query logger</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">The returned logger only logs data when debug mode is enabled</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L434">lib/public/IServerContainer.php#434</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="Diagnostics/IQueryLogger.html#OCP\Diagnostics\IQueryLogger" title="OCP\Diagnostics\IQueryLogger"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Diagnostics\IQueryLogger</span></code></a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">8.0.0</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Deprecated:</th><td class="field-body">20.0.0 have it injected or fetch it through \Psr\Container\ContainerInterface::get</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public deprecated method">
+<dt id="OCP\IServerContainer::getTempManager">
+<em class="property">public </em><code class="descclassname">OCP\IServerContainer::</code><code class="descname">getTempManager</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\IServerContainer::getTempManager" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Get the manager for temporary files and folders</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L443">lib/public/IServerContainer.php#443</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="ITempManager.html#OCP\ITempManager" title="OCP\ITempManager"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\ITempManager</span></code></a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">8.0.0</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Deprecated:</th><td class="field-body">20.0.0 have it injected or fetch it through \Psr\Container\ContainerInterface::get</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public deprecated method">
+<dt id="OCP\IServerContainer::getAppManager">
+<em class="property">public </em><code class="descclassname">OCP\IServerContainer::</code><code class="descname">getAppManager</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\IServerContainer::getAppManager" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Get the app manager</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L452">lib/public/IServerContainer.php#452</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="App/IAppManager.html#OCP\App\IAppManager" title="OCP\App\IAppManager"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\App\IAppManager</span></code></a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">8.0.0</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Deprecated:</th><td class="field-body">20.0.0 have it injected or fetch it through \Psr\Container\ContainerInterface::get</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public deprecated method">
+<dt id="OCP\IServerContainer::getWebRoot">
+<em class="property">public </em><code class="descclassname">OCP\IServerContainer::</code><code class="descname">getWebRoot</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\IServerContainer::getWebRoot" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Get the webroot</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L461">lib/public/IServerContainer.php#461</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">string</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">8.0.0</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Deprecated:</th><td class="field-body">20.0.0 have it injected or fetch it through \Psr\Container\ContainerInterface::get</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public deprecated method">
+<dt id="OCP\IServerContainer::getMountProviderCollection">
+<em class="property">public </em><code class="descclassname">OCP\IServerContainer::</code><code class="descname">getMountProviderCollection</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\IServerContainer::getMountProviderCollection" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L468">lib/public/IServerContainer.php#468</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="Files/Config/IMountProviderCollection.html#OCP\Files\Config\IMountProviderCollection" title="OCP\Files\Config\IMountProviderCollection"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\Config\IMountProviderCollection</span></code></a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">8.0.0</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Deprecated:</th><td class="field-body">20.0.0 have it injected or fetch it through \Psr\Container\ContainerInterface::get</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public deprecated method">
+<dt id="OCP\IServerContainer::getIniWrapper">
+<em class="property">public </em><code class="descclassname">OCP\IServerContainer::</code><code class="descname">getIniWrapper</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\IServerContainer::getIniWrapper" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Get the IniWrapper</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L477">lib/public/IServerContainer.php#477</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><code class="xref any docutils literal"><span class="pre">\bantu\IniGetWrapper\IniGetWrapper</span></code></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">8.0.0</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Deprecated:</th><td class="field-body">20.0.0 have it injected or fetch it through \Psr\Container\ContainerInterface::get</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public deprecated method">
+<dt id="OCP\IServerContainer::getCommandBus">
+<em class="property">public </em><code class="descclassname">OCP\IServerContainer::</code><code class="descname">getCommandBus</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\IServerContainer::getCommandBus" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L483">lib/public/IServerContainer.php#483</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="Command/IBus.html#OCP\Command\IBus" title="OCP\Command\IBus"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Command\IBus</span></code></a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">8.1.0</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Deprecated:</th><td class="field-body">20.0.0 have it injected or fetch it through \Psr\Container\ContainerInterface::get</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public deprecated method">
+<dt id="OCP\IServerContainer::getMailer">
+<em class="property">public </em><code class="descclassname">OCP\IServerContainer::</code><code class="descname">getMailer</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\IServerContainer::getMailer" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Creates a new mailer</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L492">lib/public/IServerContainer.php#492</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="Mail/IMailer.html#OCP\Mail\IMailer" title="OCP\Mail\IMailer"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Mail\IMailer</span></code></a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">8.1.0</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Deprecated:</th><td class="field-body">20.0.0 have it injected or fetch it through \Psr\Container\ContainerInterface::get</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public deprecated method">
+<dt id="OCP\IServerContainer::getLockingProvider">
+<em class="property">public </em><code class="descclassname">OCP\IServerContainer::</code><code class="descname">getLockingProvider</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\IServerContainer::getLockingProvider" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Get the locking provider</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L501">lib/public/IServerContainer.php#501</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="Lock/ILockingProvider.html#OCP\Lock\ILockingProvider" title="OCP\Lock\ILockingProvider"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Lock\ILockingProvider</span></code></a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">8.1.0</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Deprecated:</th><td class="field-body">20.0.0 have it injected or fetch it through \Psr\Container\ContainerInterface::get</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public deprecated method">
+<dt id="OCP\IServerContainer::getMountManager">
+<em class="property">public </em><code class="descclassname">OCP\IServerContainer::</code><code class="descname">getMountManager</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\IServerContainer::getMountManager" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L508">lib/public/IServerContainer.php#508</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="Files/Mount/IMountManager.html#OCP\Files\Mount\IMountManager" title="OCP\Files\Mount\IMountManager"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\Mount\IMountManager</span></code></a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">8.2.0</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Deprecated:</th><td class="field-body">20.0.0 have it injected or fetch it through \Psr\Container\ContainerInterface::get</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public deprecated method">
+<dt id="OCP\IServerContainer::getMimeTypeDetector">
+<em class="property">public </em><code class="descclassname">OCP\IServerContainer::</code><code class="descname">getMimeTypeDetector</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\IServerContainer::getMimeTypeDetector" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Get the MimeTypeDetector</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L517">lib/public/IServerContainer.php#517</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="Files/IMimeTypeDetector.html#OCP\Files\IMimeTypeDetector" title="OCP\Files\IMimeTypeDetector"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\IMimeTypeDetector</span></code></a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">8.2.0</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Deprecated:</th><td class="field-body">20.0.0 have it injected or fetch it through \Psr\Container\ContainerInterface::get</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public deprecated method">
+<dt id="OCP\IServerContainer::getMimeTypeLoader">
+<em class="property">public </em><code class="descclassname">OCP\IServerContainer::</code><code class="descname">getMimeTypeLoader</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\IServerContainer::getMimeTypeLoader" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Get the MimeTypeLoader</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L526">lib/public/IServerContainer.php#526</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="Files/IMimeTypeLoader.html#OCP\Files\IMimeTypeLoader" title="OCP\Files\IMimeTypeLoader"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\IMimeTypeLoader</span></code></a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">8.2.0</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Deprecated:</th><td class="field-body">20.0.0 have it injected or fetch it through \Psr\Container\ContainerInterface::get</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public deprecated method">
+<dt id="OCP\IServerContainer::getEventDispatcher">
+<em class="property">public </em><code class="descclassname">OCP\IServerContainer::</code><code class="descname">getEventDispatcher</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\IServerContainer::getEventDispatcher" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Get the EventDispatcher</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L535">lib/public/IServerContainer.php#535</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><code class="xref any docutils literal"><span class="pre">\Symfony\Component\EventDispatcher\EventDispatcherInterface</span></code></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Deprecated:</th><td class="field-body">20.0.0 use \OCP\EventDispatcher\IEventDispatcher</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body">8.2.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public deprecated method">
+<dt id="OCP\IServerContainer::getNotificationManager">
+<em class="property">public </em><code class="descclassname">OCP\IServerContainer::</code><code class="descname">getNotificationManager</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\IServerContainer::getNotificationManager" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Get the Notification Manager</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L544">lib/public/IServerContainer.php#544</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="Notification/IManager.html#OCP\Notification\IManager" title="OCP\Notification\IManager"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Notification\IManager</span></code></a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">9.0.0</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Deprecated:</th><td class="field-body">20.0.0 have it injected or fetch it through \Psr\Container\ContainerInterface::get</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public deprecated method">
+<dt id="OCP\IServerContainer::getCommentsManager">
+<em class="property">public </em><code class="descclassname">OCP\IServerContainer::</code><code class="descname">getCommentsManager</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\IServerContainer::getCommentsManager" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L551">lib/public/IServerContainer.php#551</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="Comments/ICommentsManager.html#OCP\Comments\ICommentsManager" title="OCP\Comments\ICommentsManager"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Comments\ICommentsManager</span></code></a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">9.0.0</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Deprecated:</th><td class="field-body">20.0.0 have it injected or fetch it through \Psr\Container\ContainerInterface::get</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public deprecated method">
+<dt id="OCP\IServerContainer::getSystemTagManager">
+<em class="property">public </em><code class="descclassname">OCP\IServerContainer::</code><code class="descname">getSystemTagManager</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\IServerContainer::getSystemTagManager" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Returns the system-tag manager</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L561">lib/public/IServerContainer.php#561</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="SystemTag/ISystemTagManager.html#OCP\SystemTag\ISystemTagManager" title="OCP\SystemTag\ISystemTagManager"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\SystemTag\ISystemTagManager</span></code></a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">9.0.0</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Deprecated:</th><td class="field-body">20.0.0 have it injected or fetch it through \Psr\Container\ContainerInterface::get</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public deprecated method">
+<dt id="OCP\IServerContainer::getSystemTagObjectMapper">
+<em class="property">public </em><code class="descclassname">OCP\IServerContainer::</code><code class="descname">getSystemTagObjectMapper</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\IServerContainer::getSystemTagObjectMapper" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Returns the system-tag object mapper</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L571">lib/public/IServerContainer.php#571</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="SystemTag/ISystemTagObjectMapper.html#OCP\SystemTag\ISystemTagObjectMapper" title="OCP\SystemTag\ISystemTagObjectMapper"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\SystemTag\ISystemTagObjectMapper</span></code></a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">9.0.0</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Deprecated:</th><td class="field-body">20.0.0 have it injected or fetch it through \Psr\Container\ContainerInterface::get</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public deprecated method">
+<dt id="OCP\IServerContainer::getShareManager">
+<em class="property">public </em><code class="descclassname">OCP\IServerContainer::</code><code class="descname">getShareManager</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\IServerContainer::getShareManager" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Returns the share manager</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L580">lib/public/IServerContainer.php#580</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="Share/IManager.html#OCP\Share\IManager" title="OCP\Share\IManager"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Share\IManager</span></code></a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">9.0.0</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Deprecated:</th><td class="field-body">20.0.0 have it injected or fetch it through \Psr\Container\ContainerInterface::get</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public deprecated method">
+<dt id="OCP\IServerContainer::getContentSecurityPolicyManager">
+<em class="property">public </em><code class="descclassname">OCP\IServerContainer::</code><code class="descname">getContentSecurityPolicyManager</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\IServerContainer::getContentSecurityPolicyManager" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L587">lib/public/IServerContainer.php#587</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="Security/IContentSecurityPolicyManager.html#OCP\Security\IContentSecurityPolicyManager" title="OCP\Security\IContentSecurityPolicyManager"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Security\IContentSecurityPolicyManager</span></code></a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">9.0.0</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Deprecated:</th><td class="field-body">17.0.0 Use the AddContentSecurityPolicyEvent</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public deprecated method">
+<dt id="OCP\IServerContainer::getDateTimeZone">
+<em class="property">public </em><code class="descclassname">OCP\IServerContainer::</code><code class="descname">getDateTimeZone</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\IServerContainer::getDateTimeZone" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L594">lib/public/IServerContainer.php#594</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="IDateTimeZone.html#OCP\IDateTimeZone" title="OCP\IDateTimeZone"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\IDateTimeZone</span></code></a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">8.0.0</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Deprecated:</th><td class="field-body">20.0.0 have it injected or fetch it through \Psr\Container\ContainerInterface::get</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public deprecated method">
+<dt id="OCP\IServerContainer::getDateTimeFormatter">
+<em class="property">public </em><code class="descclassname">OCP\IServerContainer::</code><code class="descname">getDateTimeFormatter</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\IServerContainer::getDateTimeFormatter" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L601">lib/public/IServerContainer.php#601</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="IDateTimeFormatter.html#OCP\IDateTimeFormatter" title="OCP\IDateTimeFormatter"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\IDateTimeFormatter</span></code></a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">8.0.0</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Deprecated:</th><td class="field-body">20.0.0 have it injected or fetch it through \Psr\Container\ContainerInterface::get</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public deprecated method">
+<dt id="OCP\IServerContainer::getCloudIdManager">
+<em class="property">public </em><code class="descclassname">OCP\IServerContainer::</code><code class="descname">getCloudIdManager</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\IServerContainer::getCloudIdManager" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L608">lib/public/IServerContainer.php#608</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="Federation/ICloudIdManager.html#OCP\Federation\ICloudIdManager" title="OCP\Federation\ICloudIdManager"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Federation\ICloudIdManager</span></code></a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">12.0.0</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Deprecated:</th><td class="field-body">20.0.0 have it injected or fetch it through \Psr\Container\ContainerInterface::get</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public deprecated method">
+<dt id="OCP\IServerContainer::getGlobalScaleConfig">
+<em class="property">public </em><code class="descclassname">OCP\IServerContainer::</code><code class="descname">getGlobalScaleConfig</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\IServerContainer::getGlobalScaleConfig" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L615">lib/public/IServerContainer.php#615</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="GlobalScale/IConfig.html#OCP\GlobalScale\IConfig" title="OCP\GlobalScale\IConfig"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\GlobalScale\IConfig</span></code></a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">14.0.0</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Deprecated:</th><td class="field-body">20.0.0 have it injected or fetch it through \Psr\Container\ContainerInterface::get</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public deprecated method">
+<dt id="OCP\IServerContainer::getCloudFederationFactory">
+<em class="property">public </em><code class="descclassname">OCP\IServerContainer::</code><code class="descname">getCloudFederationFactory</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\IServerContainer::getCloudFederationFactory" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L622">lib/public/IServerContainer.php#622</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="Federation/ICloudFederationFactory.html#OCP\Federation\ICloudFederationFactory" title="OCP\Federation\ICloudFederationFactory"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Federation\ICloudFederationFactory</span></code></a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">14.0.0</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Deprecated:</th><td class="field-body">20.0.0 have it injected or fetch it through \Psr\Container\ContainerInterface::get</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public deprecated method">
+<dt id="OCP\IServerContainer::getCloudFederationProviderManager">
+<em class="property">public </em><code class="descclassname">OCP\IServerContainer::</code><code class="descname">getCloudFederationProviderManager</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\IServerContainer::getCloudFederationProviderManager" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L629">lib/public/IServerContainer.php#629</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="Federation/ICloudFederationProviderManager.html#OCP\Federation\ICloudFederationProviderManager" title="OCP\Federation\ICloudFederationProviderManager"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Federation\ICloudFederationProviderManager</span></code></a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">14.0.0</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Deprecated:</th><td class="field-body">20.0.0 have it injected or fetch it through \Psr\Container\ContainerInterface::get</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public deprecated method">
+<dt id="OCP\IServerContainer::getRemoteApiFactory">
+<em class="property">public </em><code class="descclassname">OCP\IServerContainer::</code><code class="descname">getRemoteApiFactory</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\IServerContainer::getRemoteApiFactory" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L636">lib/public/IServerContainer.php#636</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="Remote/Api/IApiFactory.html#OCP\Remote\Api\IApiFactory" title="OCP\Remote\Api\IApiFactory"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Remote\Api\IApiFactory</span></code></a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">13.0.0</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Deprecated:</th><td class="field-body">20.0.0 have it injected or fetch it through \Psr\Container\ContainerInterface::get</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public deprecated method">
+<dt id="OCP\IServerContainer::getRemoteInstanceFactory">
+<em class="property">public </em><code class="descclassname">OCP\IServerContainer::</code><code class="descname">getRemoteInstanceFactory</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\IServerContainer::getRemoteInstanceFactory" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L643">lib/public/IServerContainer.php#643</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="Remote/IInstanceFactory.html#OCP\Remote\IInstanceFactory" title="OCP\Remote\IInstanceFactory"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Remote\IInstanceFactory</span></code></a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">13.0.0</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Deprecated:</th><td class="field-body">20.0.0 have it injected or fetch it through \Psr\Container\ContainerInterface::get</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public deprecated method">
+<dt id="OCP\IServerContainer::getStorageFactory">
+<em class="property">public </em><code class="descclassname">OCP\IServerContainer::</code><code class="descname">getStorageFactory</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OCP\IServerContainer::getStorageFactory" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L650">lib/public/IServerContainer.php#650</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="Files/Storage/IStorageFactory.html#OCP\Files\Storage\IStorageFactory" title="OCP\Files\Storage\IStorageFactory"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\Storage\IStorageFactory</span></code></a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">15.0.0</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Deprecated:</th><td class="field-body">20.0.0 have it injected or fetch it through \Psr\Container\ContainerInterface::get</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="ISession.html" class="btn btn-neutral float-right" title="ISession" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="ILogger.html" class="btn btn-neutral float-left" title="ILogger" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021 Nextcloud GmbH.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: 13
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/13/developer_manual">13</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/14/developer_manual">14</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/15/developer_manual">15</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/developer_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/developer_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+   
+
+</body>
+</html>

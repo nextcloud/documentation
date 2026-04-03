@@ -1,0 +1,515 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+EMailTemplate
+=============
+
+
+.. php:namespace:: OC\Mail
+
+.. php:class:: EMailTemplate
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Class EMailTemplate
+		
+		| addBodyText and addBodyButtonGroup automatically opens the body
+		| addFooter, renderHtml, renderText automatically closes the body and the HTML if opened
+		
+	
+	:Source:
+		`lib/private/Mail/EMailTemplate.php#55 <https://github.com/nextcloud/server/blob/stable13/lib/private/Mail/EMailTemplate.php#L55>`_
+	
+	:Implements:
+		:php:interface:`OCP\\Mail\\IEMailTemplate` 
+	
+
+Properties
+----------
+
+.. php:attr:: protected static themingDefaults
+
+	:Source:
+		`lib/private/Mail/EMailTemplate.php#57 <https://github.com/nextcloud/server/blob/stable13/lib/private/Mail/EMailTemplate.php#L57>`_
+	
+	:Type: :any:`\\OCP\\Defaults <OCP\\Defaults>` 
+
+
+.. php:attr:: protected static urlGenerator
+
+	:Source:
+		`lib/private/Mail/EMailTemplate.php#59 <https://github.com/nextcloud/server/blob/stable13/lib/private/Mail/EMailTemplate.php#L59>`_
+	
+	:Type: :any:`\\OCP\\IURLGenerator <OCP\\IURLGenerator>` 
+
+
+.. php:attr:: protected static l10nFactory
+
+	:Source:
+		`lib/private/Mail/EMailTemplate.php#61 <https://github.com/nextcloud/server/blob/stable13/lib/private/Mail/EMailTemplate.php#L61>`_
+	
+	:Type: :any:`\\OCP\\L10N\\IFactory <OCP\\L10N\\IFactory>` 
+
+
+.. php:attr:: protected static emailId
+
+	:Source:
+		`lib/private/Mail/EMailTemplate.php#63 <https://github.com/nextcloud/server/blob/stable13/lib/private/Mail/EMailTemplate.php#L63>`_
+	
+	:Type: string 
+
+
+.. php:attr:: protected static data
+
+	:Source:
+		`lib/private/Mail/EMailTemplate.php#65 <https://github.com/nextcloud/server/blob/stable13/lib/private/Mail/EMailTemplate.php#L65>`_
+	
+	:Type: array 
+
+
+.. php:attr:: protected static subject
+
+	:Source:
+		`lib/private/Mail/EMailTemplate.php#68 <https://github.com/nextcloud/server/blob/stable13/lib/private/Mail/EMailTemplate.php#L68>`_
+	
+	:Type: string 
+
+
+.. php:attr:: protected static htmlBody
+
+	:Source:
+		`lib/private/Mail/EMailTemplate.php#70 <https://github.com/nextcloud/server/blob/stable13/lib/private/Mail/EMailTemplate.php#L70>`_
+	
+	:Type: string 
+
+
+.. php:attr:: protected static plainBody
+
+	:Source:
+		`lib/private/Mail/EMailTemplate.php#72 <https://github.com/nextcloud/server/blob/stable13/lib/private/Mail/EMailTemplate.php#L72>`_
+	
+	:Type: string 
+
+
+.. php:attr:: protected static headerAdded
+
+	:Source:
+		`lib/private/Mail/EMailTemplate.php#74 <https://github.com/nextcloud/server/blob/stable13/lib/private/Mail/EMailTemplate.php#L74>`_
+	
+	:Type: bool indicated if the footer is added
+
+
+.. php:attr:: protected static bodyOpened
+
+	:Source:
+		`lib/private/Mail/EMailTemplate.php#76 <https://github.com/nextcloud/server/blob/stable13/lib/private/Mail/EMailTemplate.php#L76>`_
+	
+	:Type: bool indicated if the body is already opened
+
+
+.. php:attr:: protected static bodyListOpened
+
+	:Source:
+		`lib/private/Mail/EMailTemplate.php#78 <https://github.com/nextcloud/server/blob/stable13/lib/private/Mail/EMailTemplate.php#L78>`_
+	
+	:Type: bool indicated if there is a list open in the body
+
+
+.. php:attr:: protected static footerAdded
+
+	:Source:
+		`lib/private/Mail/EMailTemplate.php#80 <https://github.com/nextcloud/server/blob/stable13/lib/private/Mail/EMailTemplate.php#L80>`_
+	
+	:Type: bool indicated if the footer is added
+
+
+.. php:attr:: protected static head
+
+	:Source:
+		`lib/private/Mail/EMailTemplate.php#82 <https://github.com/nextcloud/server/blob/stable13/lib/private/Mail/EMailTemplate.php#L82>`_
+	
+
+
+.. php:attr:: protected static tail
+
+	:Source:
+		`lib/private/Mail/EMailTemplate.php#100 <https://github.com/nextcloud/server/blob/stable13/lib/private/Mail/EMailTemplate.php#L100>`_
+	
+
+
+.. php:attr:: protected static header
+
+	:Source:
+		`lib/private/Mail/EMailTemplate.php#112 <https://github.com/nextcloud/server/blob/stable13/lib/private/Mail/EMailTemplate.php#L112>`_
+	
+
+
+.. php:attr:: protected static heading
+
+	:Source:
+		`lib/private/Mail/EMailTemplate.php#145 <https://github.com/nextcloud/server/blob/stable13/lib/private/Mail/EMailTemplate.php#L145>`_
+	
+
+
+.. php:attr:: protected static bodyBegin
+
+	:Source:
+		`lib/private/Mail/EMailTemplate.php#164 <https://github.com/nextcloud/server/blob/stable13/lib/private/Mail/EMailTemplate.php#L164>`_
+	
+
+
+.. php:attr:: protected static bodyText
+
+	:Source:
+		`lib/private/Mail/EMailTemplate.php#174 <https://github.com/nextcloud/server/blob/stable13/lib/private/Mail/EMailTemplate.php#L174>`_
+	
+
+
+.. php:attr:: protected static listBegin
+
+	:Source:
+		`lib/private/Mail/EMailTemplate.php#194 <https://github.com/nextcloud/server/blob/stable13/lib/private/Mail/EMailTemplate.php#L194>`_
+	
+
+
+.. php:attr:: protected static listItem
+
+	:Source:
+		`lib/private/Mail/EMailTemplate.php#202 <https://github.com/nextcloud/server/blob/stable13/lib/private/Mail/EMailTemplate.php#L202>`_
+	
+
+
+.. php:attr:: protected static listEnd
+
+	:Source:
+		`lib/private/Mail/EMailTemplate.php#214 <https://github.com/nextcloud/server/blob/stable13/lib/private/Mail/EMailTemplate.php#L214>`_
+	
+
+
+.. php:attr:: protected static buttonGroup
+
+	:Source:
+		`lib/private/Mail/EMailTemplate.php#222 <https://github.com/nextcloud/server/blob/stable13/lib/private/Mail/EMailTemplate.php#L222>`_
+	
+
+
+.. php:attr:: protected static button
+
+	:Source:
+		`lib/private/Mail/EMailTemplate.php#275 <https://github.com/nextcloud/server/blob/stable13/lib/private/Mail/EMailTemplate.php#L275>`_
+	
+
+
+.. php:attr:: protected static bodyEnd
+
+	:Source:
+		`lib/private/Mail/EMailTemplate.php#315 <https://github.com/nextcloud/server/blob/stable13/lib/private/Mail/EMailTemplate.php#L315>`_
+	
+
+
+.. php:attr:: protected static footer
+
+	:Source:
+		`lib/private/Mail/EMailTemplate.php#326 <https://github.com/nextcloud/server/blob/stable13/lib/private/Mail/EMailTemplate.php#L326>`_
+	
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $themingDefaults, $urlGenerator, $l10nFactory, $emailId, $data)
+	
+		:Source:
+			`lib/private/Mail/EMailTemplate.php#352 <https://github.com/nextcloud/server/blob/stable13/lib/private/Mail/EMailTemplate.php#L352>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setSubject( $subject)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Sets the subject of the email
+			
+		
+		:Source:
+			`lib/private/Mail/EMailTemplate.php#370 <https://github.com/nextcloud/server/blob/stable13/lib/private/Mail/EMailTemplate.php#L370>`_
+		
+		
+		:Parameters:
+			* **$subject** (string)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public addHeader()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Adds a header to the email
+			
+		
+		:Source:
+			`lib/private/Mail/EMailTemplate.php#377 <https://github.com/nextcloud/server/blob/stable13/lib/private/Mail/EMailTemplate.php#L377>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public addHeading( $title, $plainTitle="")
+	
+		.. rst-class:: phpdoc-description
+		
+			| Adds a heading to the email
+			
+		
+		:Source:
+			`lib/private/Mail/EMailTemplate.php#394 <https://github.com/nextcloud/server/blob/stable13/lib/private/Mail/EMailTemplate.php#L394>`_
+		
+		
+		:Parameters:
+			* **$title** (string)  
+			* **$plainTitle** (string | bool)  Title that is used in the plain text email
+			if empty the $title is used, if false none will be used
+
+		
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected ensureBodyIsOpened()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Open the HTML body when it is not already
+			
+		
+		:Source:
+			`lib/private/Mail/EMailTemplate.php#411 <https://github.com/nextcloud/server/blob/stable13/lib/private/Mail/EMailTemplate.php#L411>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public addBodyText( $text, $plainText="")
+	
+		.. rst-class:: phpdoc-description
+		
+			| Adds a paragraph to the body of the email
+			
+		
+		:Source:
+			`lib/private/Mail/EMailTemplate.php#427 <https://github.com/nextcloud/server/blob/stable13/lib/private/Mail/EMailTemplate.php#L427>`_
+		
+		
+		:Parameters:
+			* **$text** (string)  Note: When $plainText falls back to this, HTML is automatically escaped in the HTML email
+			* **$plainText** (string | bool)  Text that is used in the plain text email
+			if empty the $text is used, if false none will be used
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public addBodyListItem( $text, $metaInfo="", $icon="", $plainText="", $plainMetaInfo="", $plainIndent=0)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Adds a list item to the body of the email
+			
+		
+		:Source:
+			`lib/private/Mail/EMailTemplate.php#458 <https://github.com/nextcloud/server/blob/stable13/lib/private/Mail/EMailTemplate.php#L458>`_
+		
+		
+		:Parameters:
+			* **$text** (string)  Note: When $plainText falls back to this, HTML is automatically escaped in the HTML email
+			* **$metaInfo** (string)  Note: When $plainMetaInfo falls back to this, HTML is automatically escaped in the HTML email
+			* **$icon** (string)  Absolute path, must be 16*16 pixels
+			* **$plainText** (string | bool)  Text that is used in the plain text email
+			if empty or true the $text is used, if false none will be used
+			* **$plainMetaInfo** (string | bool)  Meta info that is used in the plain text email
+			if empty or true the $metaInfo is used, if false none will be used
+
+		
+		:Since: 12.0.0 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected ensureBodyListOpened()
+	
+		:Source:
+			`lib/private/Mail/EMailTemplate.php#508 <https://github.com/nextcloud/server/blob/stable13/lib/private/Mail/EMailTemplate.php#L508>`_
+		
+		
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected ensureBodyListClosed()
+	
+		:Source:
+			`lib/private/Mail/EMailTemplate.php#518 <https://github.com/nextcloud/server/blob/stable13/lib/private/Mail/EMailTemplate.php#L518>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public addBodyButtonGroup( $textLeft, $urlLeft, $textRight, $urlRight, $plainTextLeft="", $plainTextRight="")
+	
+		.. rst-class:: phpdoc-description
+		
+			| Adds a button group of two buttons to the body of the email
+			
+		
+		:Source:
+			`lib/private/Mail/EMailTemplate.php#537 <https://github.com/nextcloud/server/blob/stable13/lib/private/Mail/EMailTemplate.php#L537>`_
+		
+		
+		:Parameters:
+			* **$textLeft** (string)  Text of left button; Note: When $plainTextLeft falls back to this, HTML is automatically escaped in the HTML email
+			* **$urlLeft** (string)  URL of left button
+			* **$textRight** (string)  Text of right button; Note: When $plainTextRight falls back to this, HTML is automatically escaped in the HTML email
+			* **$urlRight** (string)  URL of right button
+			* **$plainTextLeft** (string)  Text of left button that is used in the plain text version - if unset the $textLeft is used
+			* **$plainTextRight** (string)  Text of right button that is used in the plain text version - if unset the $textRight is used
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public addBodyButton( $text, $url, $plainText="")
+	
+		.. rst-class:: phpdoc-description
+		
+			| Adds a button to the body of the email
+			
+		
+		:Source:
+			`lib/private/Mail/EMailTemplate.php#577 <https://github.com/nextcloud/server/blob/stable13/lib/private/Mail/EMailTemplate.php#L577>`_
+		
+		
+		:Parameters:
+			* **$text** (string)  Text of button; Note: When $plainText falls back to this, HTML is automatically escaped in the HTML email
+			* **$url** (string)  URL of button
+			* **$plainText** (string)  Text of button in plain text version
+			if empty the $text is used, if false none will be used
+
+		
+		:Since: 12.0.0 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected ensureBodyIsClosed()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Close the HTML body when it is open
+			
+		
+		:Source:
+			`lib/private/Mail/EMailTemplate.php#604 <https://github.com/nextcloud/server/blob/stable13/lib/private/Mail/EMailTemplate.php#L604>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public addFooter( $text="", $lang=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Adds a logo and a text to the footer\. <br\> in the text will be replaced by new lines in the plain text email
+			
+		
+		:Source:
+			`lib/private/Mail/EMailTemplate.php#620 <https://github.com/nextcloud/server/blob/stable13/lib/private/Mail/EMailTemplate.php#L620>`_
+		
+		
+		:Parameters:
+			* **$text** (string)  If the text is empty the default "Name - Slogan<br>This is an automatically sent email" will be used
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public renderSubject()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the rendered email subject as string
+			
+		
+		:Source:
+			`lib/private/Mail/EMailTemplate.php#644 <https://github.com/nextcloud/server/blob/stable13/lib/private/Mail/EMailTemplate.php#L644>`_
+		
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public renderHtml()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the rendered HTML email as string
+			
+		
+		:Source:
+			`lib/private/Mail/EMailTemplate.php#653 <https://github.com/nextcloud/server/blob/stable13/lib/private/Mail/EMailTemplate.php#L653>`_
+		
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public renderText()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the rendered plain text email as string
+			
+		
+		:Source:
+			`lib/private/Mail/EMailTemplate.php#667 <https://github.com/nextcloud/server/blob/stable13/lib/private/Mail/EMailTemplate.php#L667>`_
+		
+		
+		:Returns: string 
+	
+	
+

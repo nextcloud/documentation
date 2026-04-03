@@ -1,0 +1,376 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IProvider
+=========
+
+
+.. php:namespace:: OC\Authentication\Token
+
+.. php:interface:: IProvider
+
+
+	:Implemented by:
+		:php:class:`OC\\Authentication\\Token\\DefaultTokenProvider` :php:class:`OC\\Authentication\\Token\\Manager` :php:class:`OC\\Authentication\\Token\\PublicKeyTokenProvider` 
+	
+	
+	:Source:
+		`lib/private/Authentication/Token/IProvider.php#38 <https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/IProvider.php#L38>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public generateToken( $token, $uid, $loginName, $password, $name, $type=\\OC\\Authentication\\Token\\IToken::TEMPORARY\_TOKEN, $remember=\\OC\\Authentication\\Token\\IToken::DO\_NOT\_REMEMBER)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Create and persist a new token
+			
+		
+		:Source:
+			`lib/private/Authentication/Token/IProvider.php#54 <https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/IProvider.php#L54>`_
+		
+		
+		:Parameters:
+			* **$token** (string)  
+			* **$uid** (string)  
+			* **$loginName** (string)  
+			* **$password** (string | null)  
+			* **$name** (string)  
+			* **$type** (int)  token type
+			* **$remember** (int)  whether the session token should be used for remember-me
+
+		
+		:Returns: :any:`\\OC\\Authentication\\Token\\IToken <OC\\Authentication\\Token\\IToken>` 
+		:Throws: :any:`\\RuntimeException <RuntimeException>` when OpenSSL reports a problem
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getToken( $tokenId)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get a token by token id
+			
+		
+		:Source:
+			`lib/private/Authentication/Token/IProvider.php#71 <https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/IProvider.php#L71>`_
+		
+		
+		:Parameters:
+			* **$tokenId** (string)  
+
+		
+		:Throws: :any:`\\OC\\Authentication\\Exceptions\\InvalidTokenException <OC\\Authentication\\Exceptions\\InvalidTokenException>` 
+		:Throws: :any:`\\OC\\Authentication\\Exceptions\\ExpiredTokenException <OC\\Authentication\\Exceptions\\ExpiredTokenException>` 
+		:Throws: :any:`\\OC\\Authentication\\Exceptions\\WipeTokenException <OC\\Authentication\\Exceptions\\WipeTokenException>` 
+		:Throws: :any:`\\OC\\Authentication\\Exceptions\\InvalidTokenException <OC\\Authentication\\Exceptions\\InvalidTokenException>` 
+		:Throws: :any:`\\OC\\Authentication\\Exceptions\\ExpiredTokenException <OC\\Authentication\\Exceptions\\ExpiredTokenException>` 
+		:Throws: :any:`\\OC\\Authentication\\Exceptions\\WipeTokenException <OC\\Authentication\\Exceptions\\WipeTokenException>` 
+		:Throws: :any:`\\OC\\Authentication\\Exceptions\\InvalidTokenException <OC\\Authentication\\Exceptions\\InvalidTokenException>` 
+		:Throws: :any:`\\OC\\Authentication\\Exceptions\\ExpiredTokenException <OC\\Authentication\\Exceptions\\ExpiredTokenException>` 
+		:Throws: :any:`\\OC\\Authentication\\Exceptions\\WipeTokenException <OC\\Authentication\\Exceptions\\WipeTokenException>` 
+		:Returns: :any:`\\OC\\Authentication\\Token\\IToken <OC\\Authentication\\Token\\IToken>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getTokenById( $tokenId)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get a token by token id
+			
+		
+		:Source:
+			`lib/private/Authentication/Token/IProvider.php#82 <https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/IProvider.php#L82>`_
+		
+		
+		:Parameters:
+			* **$tokenId** (int)  
+
+		
+		:Throws: :any:`\\OC\\Authentication\\Exceptions\\InvalidTokenException <OC\\Authentication\\Exceptions\\InvalidTokenException>` 
+		:Throws: :any:`\\OC\\Authentication\\Exceptions\\ExpiredTokenException <OC\\Authentication\\Exceptions\\ExpiredTokenException>` 
+		:Throws: :any:`\\OC\\Authentication\\Exceptions\\WipeTokenException <OC\\Authentication\\Exceptions\\WipeTokenException>` 
+		:Throws: :any:`\\OC\\Authentication\\Exceptions\\InvalidTokenException <OC\\Authentication\\Exceptions\\InvalidTokenException>` 
+		:Throws: :any:`\\OC\\Authentication\\Exceptions\\ExpiredTokenException <OC\\Authentication\\Exceptions\\ExpiredTokenException>` 
+		:Throws: :any:`\\OC\\Authentication\\Exceptions\\WipeTokenException <OC\\Authentication\\Exceptions\\WipeTokenException>` 
+		:Throws: :any:`\\OC\\Authentication\\Exceptions\\InvalidTokenException <OC\\Authentication\\Exceptions\\InvalidTokenException>` 
+		:Throws: :any:`\\OC\\Authentication\\Exceptions\\ExpiredTokenException <OC\\Authentication\\Exceptions\\ExpiredTokenException>` 
+		:Throws: :any:`\\OC\\Authentication\\Exceptions\\WipeTokenException <OC\\Authentication\\Exceptions\\WipeTokenException>` 
+		:Returns: :any:`\\OC\\Authentication\\Token\\IToken <OC\\Authentication\\Token\\IToken>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public renewSessionToken( $oldSessionId, $sessionId)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Duplicate an existing session token
+			
+		
+		:Source:
+			`lib/private/Authentication/Token/IProvider.php#93 <https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/IProvider.php#L93>`_
+		
+		
+		:Parameters:
+			* **$oldSessionId** (string)  
+			* **$sessionId** (string)  
+
+		
+		:Throws: :any:`\\OC\\Authentication\\Exceptions\\InvalidTokenException <OC\\Authentication\\Exceptions\\InvalidTokenException>` 
+		:Throws: :any:`\\RuntimeException <RuntimeException>` when OpenSSL reports a problem
+		:Throws: :any:`\\OC\\Authentication\\Exceptions\\InvalidTokenException <OC\\Authentication\\Exceptions\\InvalidTokenException>` 
+		:Throws: :any:`\\RuntimeException <RuntimeException>` when OpenSSL reports a problem
+		:Returns: :any:`\\OC\\Authentication\\Token\\IToken <OC\\Authentication\\Token\\IToken>` The new token
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public invalidateToken( $token)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Invalidate \(delete\) the given session token
+			
+		
+		:Source:
+			`lib/private/Authentication/Token/IProvider.php#100 <https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/IProvider.php#L100>`_
+		
+		
+		:Parameters:
+			* **$token** (string)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public invalidateTokenById( $uid, $id)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Invalidate \(delete\) the given token
+			
+		
+		:Source:
+			`lib/private/Authentication/Token/IProvider.php#108 <https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/IProvider.php#L108>`_
+		
+		
+		:Parameters:
+			* **$uid** (string)  
+			* **$id** (int)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public invalidateOldTokens()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Invalidate \(delete\) old session tokens
+			
+		
+		:Source:
+			`lib/private/Authentication/Token/IProvider.php#113 <https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/IProvider.php#L113>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public updateToken( $token)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Save the updated token
+			
+		
+		:Source:
+			`lib/private/Authentication/Token/IProvider.php#120 <https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/IProvider.php#L120>`_
+		
+		
+		:Parameters:
+			* **$token** (:any:`OC\\Authentication\\Token\\IToken <OC\\Authentication\\Token\\IToken>`)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public updateTokenActivity( $token)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Update token activity timestamp
+			
+		
+		:Source:
+			`lib/private/Authentication/Token/IProvider.php#127 <https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/IProvider.php#L127>`_
+		
+		
+		:Parameters:
+			* **$token** (:any:`OC\\Authentication\\Token\\IToken <OC\\Authentication\\Token\\IToken>`)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getTokenByUser( $uid)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get all tokens of a user
+			
+			| The provider may limit the number of result rows in case of an abuse
+			| where a high number of \(session\) tokens is generated
+			
+		
+		:Source:
+			`lib/private/Authentication/Token/IProvider.php#138 <https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/IProvider.php#L138>`_
+		
+		
+		:Parameters:
+			* **$uid** (string)  
+
+		
+		:Returns: :any:`\\OC\\Authentication\\Token\\IToken\[\] <OC\\Authentication\\Token\\IToken>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getPassword( $savedToken, $tokenId)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the \(unencrypted\) password of the given token
+			
+		
+		:Source:
+			`lib/private/Authentication/Token/IProvider.php#149 <https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/IProvider.php#L149>`_
+		
+		
+		:Parameters:
+			* **$savedToken** (:any:`OC\\Authentication\\Token\\IToken <OC\\Authentication\\Token\\IToken>`)  
+			* **$tokenId** (string)  
+
+		
+		:Throws: :any:`\\OC\\Authentication\\Exceptions\\InvalidTokenException <OC\\Authentication\\Exceptions\\InvalidTokenException>` 
+		:Throws: :any:`\\OC\\Authentication\\Exceptions\\PasswordlessTokenException <OC\\Authentication\\Exceptions\\PasswordlessTokenException>` 
+		:Throws: :any:`\\OC\\Authentication\\Exceptions\\InvalidTokenException <OC\\Authentication\\Exceptions\\InvalidTokenException>` 
+		:Throws: :any:`\\OC\\Authentication\\Exceptions\\PasswordlessTokenException <OC\\Authentication\\Exceptions\\PasswordlessTokenException>` 
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setPassword( $token, $tokenId, $password)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Encrypt and set the password of the given token
+			
+		
+		:Source:
+			`lib/private/Authentication/Token/IProvider.php#159 <https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/IProvider.php#L159>`_
+		
+		
+		:Parameters:
+			* **$token** (:any:`OC\\Authentication\\Token\\IToken <OC\\Authentication\\Token\\IToken>`)  
+			* **$tokenId** (string)  
+			* **$password** (string)  
+
+		
+		:Throws: :any:`\\OC\\Authentication\\Exceptions\\InvalidTokenException <OC\\Authentication\\Exceptions\\InvalidTokenException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public rotate( $token, $oldTokenId, $newTokenId)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Rotate the token\. Usefull for for example oauth tokens
+			
+		
+		:Source:
+			`lib/private/Authentication/Token/IProvider.php#170 <https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/IProvider.php#L170>`_
+		
+		
+		:Parameters:
+			* **$token** (:any:`OC\\Authentication\\Token\\IToken <OC\\Authentication\\Token\\IToken>`)  
+			* **$oldTokenId** (string)  
+			* **$newTokenId** (string)  
+
+		
+		:Returns: :any:`\\OC\\Authentication\\Token\\IToken <OC\\Authentication\\Token\\IToken>` 
+		:Throws: :any:`\\RuntimeException <RuntimeException>` when OpenSSL reports a problem
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public markPasswordInvalid( $token, $tokenId)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Marks a token as having an invalid password\.
+			
+		
+		:Source:
+			`lib/private/Authentication/Token/IProvider.php#178 <https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/IProvider.php#L178>`_
+		
+		
+		:Parameters:
+			* **$token** (:any:`OC\\Authentication\\Token\\IToken <OC\\Authentication\\Token\\IToken>`)  
+			* **$tokenId** (string)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public updatePasswords( $uid, $password)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Update all the passwords of $uid if required
+			
+		
+		:Source:
+			`lib/private/Authentication/Token/IProvider.php#186 <https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/IProvider.php#L186>`_
+		
+		
+		:Parameters:
+			* **$uid** (string)  
+			* **$password** (string)  
+
+		
+	
+	
+

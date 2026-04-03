@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Gallery App &#8212; Nextcloud 12 User Manual 12 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/main.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '12',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.1.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Managing Deleted Files" href="deleted_file_management.html" />
+    <link rel="prev" title="Accessing Nextcloud Files Using WebDAV" href="access_webdav.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#1d2d44">
+<link rel="shortcut icon" href="https://nextcloud.com/wp-content/themes/next/assets/img/common/favicon.png" />
+<link rel="apple-touch-icon-precomposed" href="https://nextcloud.com/wp-content/themes/next/assets/img/common/favicon.png" />
+<!-- Piwik -->
+<script type="text/javascript">
+    var _paq = _paq || [];
+    _paq.push(['trackPageView']);
+    _paq.push(['enableLinkTracking']);
+    (function() {
+        var u="//stats.nextcloud.com/";
+        _paq.push(['setTrackerUrl', u+'piwik.php']);
+        _paq.push(['setSiteId', 3]);
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+        g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+    })();
+</script>
+<noscript><p><img src="//stats.nextcloud.com/piwik.php?idsite=3" style="border:0;" alt="" /></p></noscript>
+<!-- End Piwik Code -->
+
+  </head>
+  <body role="document">
+
+<header class="banner navbar navbar-default navbar-static-top" role="banner">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+       <a class="brand" href="http://nextcloud.com/" rel="home" title="Nextcloud.com"><img class="logo" src="../_static/img/logo.svg" itemprop="logo"></a>
+    </div>
+
+    <nav class="collapse navbar-collapse" role="navigation">
+      <ul id="menu-header" class="nav navbar-nav">
+          <li><a target="_blank" href="https://demo.nextcloud.com">Demo</a></li>
+          <li><a href="https://nextcloud.com/news/">News</a></li>
+          <li><a href="https://nextcloud.com/features/">Features</a></li>
+          <li><a href="https://nextcloud.com/about/">About us</a></li>
+          <li><a href="https://nextcloud.com/contribute/">Get involved</a></li>
+          <li><a href="https://nextcloud.com/support/">Support</a></li>
+          <li><a href="https://nextcloud.com/enterprise/">Enterprise</a></li>
+          <li class="menu-install"><a href="https://nextcloud.com/install/">Download</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+
+<div class="container" style="background-color: #E6C4C2;color: #b10000;border: #b10000 2px solid;border-right: none;border-left: none;padding: 15px 10px;">You are reading an outdated version of this documentation. Please check out the <a href="https://docs.nextcloud.com/server/stable/user_manual/" style="
+color: rgb(177,0,0);text-decoration: underline;">latest version</a> of the user manual.</div>
+
+
+
+
+<div class="wrap container not-front">
+  <div class="content row">
+  <main class="main">
+    <div class="row page-content-header">
+      <div class="col-md-6">
+        <h1><a href="../contents.html">Nextcloud 12 User Manual</a></h1>
+      </div>
+      <div class="col-md-5 col-md-offset-1">
+      
+        <form class="headersearch" style="margin: 16px 0;" action="../search.html" method="get">
+        <input type="text" value="" name="q" id="q" class="form-control" /> 
+        <button  class="btn btn-default" type="submit" id="searchsubmit">Search</button>
+        </form>
+      
+      </div>
+    </div>
+    
+			<div class="row">
+				<div class="col-md-3">
+					<div class="sidebar">
+							<div class="menu-support-container">
+								<ul id="menu-support" class="menu">
+									<ul>
+										
+<li><a href="../contents.html">Table of Contents</a></li>
+									</ul>
+                  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Nextcloud 12 User Manual Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../whats_new.html">What&#8217;s New for Users in Nextcloud 12</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">The Nextcloud Web Interface</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Files &amp; Synchronization</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="access_webgui.html">Accessing your Files Using the Nextcloud Web Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="access_webdav.html">Accessing Nextcloud Files Using WebDAV</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Gallery App</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#custom-configuration">Custom Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#notes">Notes</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#examples">Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#possible-future-extensions">Possible Future Extensions</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="deleted_file_management.html">Managing Deleted Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="desktop_mobile_sync.html">Desktop and Mobile Synchronization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="encrypting_files.html">Encrypting Your Nextcloud Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="federated_cloud_sharing.html">Using Federation Shares</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_drop.html">Making Anonymous Uploads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="large_file_upload.html">Large File Uploads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quota.html">Storage Quota</a></li>
+<li class="toctree-l2"><a class="reference internal" href="version_control.html">Version Control</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../pim/index.html">Contacts &amp; Calendar</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Setting Your Preferences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Using two-factor authentication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Manage Connected Browsers and Devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">External Storage</a></li>
+</ul>
+
+								</ul>
+							</div>
+					</div>
+				</div>
+        
+
+				<div class="col-md-9">
+					<div class="page-content">
+            
+<ul class="prevnext-title list-unstyled list-inline">
+  <li class="prev">
+    <a href="access_webdav.html" title="Previous Chapter: Accessing Nextcloud Files Using WebDAV"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; Accessing Nex...</span>
+    </a>
+  </li>
+  <li class="next">
+    <a href="deleted_file_management.html" title="Next Chapter: Managing Deleted Files"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">Managing Dele... &raquo;</span>
+    </a>
+  </li>
+</ul>
+						
+  <div class="section" id="gallery-app">
+<h1>Gallery App<a class="headerlink" href="#gallery-app" title="Permalink to this headline">¶</a></h1>
+<p>The Pictures app has been rewritten and improved, and is now called the Gallery
+app. It supports more image formats, sorting, zoom, and scrolling. It also
+supports advanced customizations via a simple text file.</p>
+<p>On your main Nextcloud Files page, click the little icon at the top right,
+underneath your username, to open your Gallery. The Gallery app automatically
+finds all images in your Nextcloud folders, and overlays the thumbnails with the
+folder names. Click on the folder thumbnails to open the folders. At the top
+left you have two sorting options, alphabetical and by date.</p>
+<div class="figure">
+<img alt="Gallery folder thumbnails." src="../_images/gallery-1.png" />
+</div>
+<p>After entering any folder, click on any image to open it in slideshow mode.
+This has the following features: a download button at the top center, forward
+and back buttons at the right and left sides, an automatic slideshow button at
+the bottom right, and a close button at the top right.</p>
+<div class="figure">
+<img alt="Gallery in slideshow mode." src="../_images/gallery-2.png" />
+</div>
+<div class="section" id="custom-configuration">
+<h2>Custom Configuration<a class="headerlink" href="#custom-configuration" title="Permalink to this headline">¶</a></h2>
+<p>You may customize a Gallery album with a simple text file named
+<strong>gallery.cnf</strong>, which contains parameters structured using the
+<a class="reference external" href="https://en.wikipedia.org/wiki/YAML">Yaml</a> markup language. You may have
+multiple <strong>gallery.cnf</strong> files; you need one in your own root Nextcloud folder
+(your Home folder) that defines global features, and then you may have
+individual per-album <strong>gallery.cnf</strong> files if you want to define different
+behaviors in different albums.</p>
+<div class="section" id="features">
+<h3>Features<a class="headerlink" href="#features" title="Permalink to this headline">¶</a></h3>
+<p>The following general features are currently implemented:</p>
+<ul class="simple">
+<li>Native SVG support.</li>
+<li>Access to external shares.</li>
+</ul>
+<p>The following album features are currently implemented:</p>
+<ul class="simple">
+<li>Adding a link to a file containing a description.</li>
+<li>Typing a simple copyright statement directly in the configuration file.</li>
+<li>Adding a link to a file containing a copyright statement.</li>
+<li>Defining a sort type and order.</li>
+<li>Defining the colour of the background.</li>
+<li>Defining if sub-albums will inherit the configuration.</li>
+</ul>
+<p>The following slideshow features are currently implemented:</p>
+<ul class="simple">
+<li>Showing a button which lets you pick which background, either black or
+white, to use for the picture you are currently viewing (for images with
+transparent backgrounds).</li>
+</ul>
+</div>
+<div class="section" id="setup">
+<h3>Setup<a class="headerlink" href="#setup" title="Permalink to this headline">¶</a></h3>
+<p>The configuration file has to be named <strong>gallery.cnf</strong>. You may have multiple
+per-album <strong>gallery.cnf</strong> files. To enable global features, place one in your
+top-level folder, which is symbolised in the Web GUI by the home icon. (This
+puts it in <code class="docutils literal"><span class="pre">data/&lt;user&gt;/files/</span></code>.) See <a class="reference internal" href="#supported-variables-label"><span class="std std-ref">an example below</span></a> in the <strong>Global features</strong> section.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">You need to refresh your browser after changing your configuration to
+see your changes.</p>
+</div>
+</div>
+<div class="section" id="format">
+<h3>Format<a class="headerlink" href="#format" title="Permalink to this headline">¶</a></h3>
+<p>UTF-8, <strong>without BOM</strong>. A file created from within the Nextcloud Web GUI works.</p>
+</div>
+<div class="section" id="structure">
+<h3>Structure<a class="headerlink" href="#structure" title="Permalink to this headline">¶</a></h3>
+<p>You should include a comment in the file, so that people stumbling upon
+the file know what it&#8217;s for. Comments start with #.</p>
+<p>Spacing is created using 2 spaces. <strong>Do not use tabs.</strong></p>
+<p>Take a look at the <a class="reference external" href="https://symfony.com/doc/current/components/yaml/yaml_format.html">YAML Format documentation</a> if you are
+getting error messages.</p>
+<p>Here is an example <cite>gallery.cnf</cite>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span> # Gallery configuration file
+ # Created on 31 Jan 2016 by Nextcloud User
+features:
+  external_shares: yes
+  native_svg: yes
+  background_colour_toggle: yes
+design:
+  background: &quot;#ff9f00&quot;
+  inherit: yes
+information:
+  description: This is an **album description** which is only shown if there
+  is no `description_link`
+  description_link: readme.md
+  copyright: Copyright 2003-2016 [interfaSys sàrl](https://www.interfasys.ch),
+  Switzerland
+  copyright_link: copyright.md
+  inherit: yes
+sorting:
+  type: date
+  order: des
+  inherit: yes
+</pre></div>
+</div>
+</div>
+<div class="section" id="supported-variables">
+<span id="supported-variables-label"></span><h3>Supported Variables<a class="headerlink" href="#supported-variables" title="Permalink to this headline">¶</a></h3>
+<p><strong>Global Features</strong></p>
+<p>Place this in your root Nextcloud folder, which is your Home folder.</p>
+<ul class="simple">
+<li><strong>external_shares</strong>: Set to <strong>yes</strong> in your root configuration file if you
+want to load images stored on external locations, when using the
+<strong>files_external</strong> app.</li>
+<li><strong>native_svg</strong>: Set to <strong>yes</strong> in your root configuration file to enable
+rendering SVG images in your browser. This may represent a security risk if
+you can&#8217;t fully trust your SVG files.</li>
+<li><strong>background_colour_toggle</strong>: Set to <strong>yes</strong> in your root configuration file
+to enable a button that toggles between black and white backgrounds on
+transparent images.</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">External shares are 20-50 times slower than local shares. Be prepared
+to wait a long time before being able to see all the images contained in a
+shared album.</p>
+</div>
+<p><strong>Album Configuration</strong></p>
+<p>Each album can be individually configured using the following configuration
+sections. Use the <strong>inherit</strong> parameter to pass configurations on to
+sub-albums.</p>
+<p><strong>Design</strong></p>
+<ul class="simple">
+<li><strong>background</strong>: Defines the colour of the background of the photowall
+using the RGB hexadecimal representation of that colour. For example:
+<strong>&#8220;#ffa033&#8221;</strong>. You must use quotes around the value or it will
+be ignored. It is strongly recommended to use a custom theme, with a CSS
+loading spinner if you intend to use this feature. You can use <a class="reference external" href="http://paletton.com/">this colour
+wheel</a> to find a colour you like.</li>
+<li><strong>inherit</strong>: Set to <strong>yes</strong> if you want sub-folders to inherit this part of
+the configuration.</li>
+</ul>
+<p><strong>Album Presentation</strong></p>
+<ul class="simple">
+<li><strong>description</strong>: A markdown-formatted string which will be displayed in the
+info box. It can spread over multiple lines using the Yaml markers.</li>
+<li><strong>description_link</strong>: A markdown file located within the album which will
+be parsed and displayed in the info box instead of the description.</li>
+<li><strong>copyright</strong>: A markdown-formatted string. This supports links to external
+resources.</li>
+<li><strong>copyright_link</strong>: Any file (e.g. copyright.html), in the album itself,
+which will be downloaded when the user clicks on the link</li>
+<li><strong>inherit</strong>: Set to <strong>yes</strong> if you want sub-folders to inherit this part of
+the configuration.</li>
+</ul>
+<p>See <a class="reference external" href="http://www.markitdown.net/markdown">http://www.markitdown.net/markdown</a> for the markdown syntax.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Do not add links to your <cite>copyright</cite> string if you use the
+<strong>copyright_link</strong> variable.</p>
+</div>
+<p><strong>Sorting</strong></p>
+<ul class="simple">
+<li><strong>sorting</strong>: <strong>date</strong> or <strong>name</strong>. <strong>date</strong> only works for files.</li>
+<li><strong>sort_order</strong>: <strong>asc</strong> or <strong>des</strong> (Ascending or descending).</li>
+<li><strong>inherit</strong>: Set to <strong>yes</strong> if you want sub-folders to inherit this part of
+the configuration.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="notes">
+<h2>Notes<a class="headerlink" href="#notes" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>When only the sort <strong>type</strong> variable has been set, the default sort order
+will be used.</li>
+<li>When only the sort <strong>order</strong> variable has been found, the sort configuration
+will be ignored and the script will keep looking for a valid configuration in
+upper folders.</li>
+<li>To enable a feature such as native SVG in a public share, you need to create
+in that folder a configuration file containing that feature.</li>
+<li>If you share a folder publicly, don&#8217;t forget to add all the files you link to
+(e.g. <code class="docutils literal"><span class="pre">description.md</span></code> or <code class="docutils literal"><span class="pre">copyright.md</span></code>) inside the shared folder as
+the user won&#8217;t have access to files stored in the parent folder.</li>
+<li>Since people can download a whole folder as an archive, it&#8217;s usually best to
+include all files within a shared folder, rather than adding text directly
+in the configuration file.</li>
+</ul>
+</div>
+<div class="section" id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<p><strong>Sorting Only</strong></p>
+<p>Applies to the current folder only:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># Gallery configuration file</span>
+  <span class="n">sorting</span><span class="p">:</span>
+  <span class="nb">type</span><span class="p">:</span> <span class="n">date</span>
+  <span class="n">order</span><span class="p">:</span> <span class="n">asc</span>
+</pre></div>
+</div>
+<p>Short description and link to copyright document, applies to the current folder
+and all of its sub-folders. This also shows you the syntax you can use to
+spread a description over multiple lines:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># Gallery configuration file</span>
+  <span class="n">information</span><span class="p">:</span>
+  <span class="n">description</span><span class="p">:</span> <span class="o">|</span> <span class="c1"># La Maison Bleue, Winter &#39;16</span>
+    <span class="n">This</span> <span class="ow">is</span> <span class="n">our</span> <span class="n">Winter</span> <span class="mi">2016</span> <span class="n">collection</span> <span class="n">shot</span> <span class="ow">in</span> <span class="o">**</span><span class="n">Kyoto</span><span class="o">**</span>
+    <span class="n">Visit</span> <span class="n">our</span> <span class="p">[</span><span class="n">website</span><span class="p">](</span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">secretdesigner</span><span class="o">.</span><span class="n">ninja</span><span class="p">)</span> <span class="k">for</span> <span class="n">more</span> <span class="n">information</span>
+  <span class="n">copyright</span><span class="p">:</span> <span class="n">Copyright</span> <span class="mi">2015</span> <span class="n">La</span> <span class="n">Maison</span> <span class="n">Bleue</span><span class="p">,</span> <span class="n">France</span>
+  <span class="n">copyright_link</span><span class="p">:</span> <span class="n">copyright_2015_lmb</span><span class="o">.</span><span class="n">html</span>
+  <span class="n">inherit</span><span class="p">:</span> <span class="n">yes</span>
+</pre></div>
+</div>
+<p><strong>Load Images From External Clouds</strong></p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Features can only be defined in the root folder.</p>
+</div>
+<p>You can add standard configuration items to the same configuration file:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># Gallery configuration file</span>
+  <span class="n">features</span><span class="p">:</span>
+  <span class="n">external_shares</span><span class="p">:</span> <span class="n">yes</span>
+</pre></div>
+</div>
+<p><strong>Enabling native SVG</strong></p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Special features can only be defined in the root folder.</p>
+</div>
+<p>You can add standard configuration items to the same configuration file:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># Gallery configuration file</span>
+ <span class="n">features</span><span class="p">:</span>
+ <span class="n">native_svg</span><span class="p">:</span> <span class="n">yes</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="possible-future-extensions">
+<h2>Possible Future Extensions<a class="headerlink" href="#possible-future-extensions" title="Permalink to this headline">¶</a></h2>
+<p>Different sorting parameters for albums.</p>
+</div>
+</div>
+
+
+            
+<ul class="prevnext-title list-unstyled list-inline">
+  <li class="prev">
+    <a href="access_webdav.html" title="Previous Chapter: Accessing Nextcloud Files Using WebDAV"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; Accessing Nex...</span>
+    </a>
+  </li>
+  <li class="next">
+    <a href="deleted_file_management.html" title="Next Chapter: Managing Deleted Files"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">Managing Dele... &raquo;</span>
+    </a>
+  </li>
+</ul>
+					</div>
+				</div>
+			</div>
+  </main>  
+  </div>
+</div>
+<div class="container">
+<div class="row">
+    <div class="col-lg-12 footer-social-icons">
+      <p class="text-center"><a target="_blank" href="https://plus.google.com/104036748063781940910/about"><img width=50 src="../_static/img/social/googleplus.svg" title="Follow us on Google Plus!" alt="Follow us on Google Plus!"></img></a>
+      <a target="_blank" href="https://www.facebook.com/Nextclouders"><img width=50 src="../_static/img/social/facebook.svg" title="Like our facebook page!" alt="Like our facebook page!"></img></a>
+      <a target="_blank" href="https://twitter.com/Nextclouders"><img width=50 src="../_static/img/social/twitter.svg" title="Subscribe to our twitter channel!" alt="Subscribe to our twitter channel!"></img></a>
+      <a target="_blank" href="https://nextcloud.com/blogfeed"><img class="img-circle" width=50 src="../_static/img/social/rss.svg" title="Subscribe to our news feed!" alt="Subscribe to our news feed!"></img></a>
+      <a target="_blank" href="https://newsletter.nextcloud.com/"><img class="img-circle" width=50 src="../_static/img/social/mail.svg"  title="Subscribe to our newsletter!" alt="Subscribe to our newsletter!"></img></a></p>
+    </div>
+    <div class="text-center">
+      <p>All documentation licensed under the <a href="https://creativecommons.org/licenses/by/3.0/us/">Creative Commons Attribution 3.0 Unported license</a>.</p>
+      <p><a href="https://github.com/nextcloud/documentation/graphs/contributors">See who contributed to our documentation/credits</a>.</p>
+    </div>
+</div>
+</div>
+<footer class="content-info" role="contentinfo">
+<div class="container">
+   <div class="row">
+     <div class="col-sm-2 col-sm-offset-1">
+        <div class="footer-nav">
+          <h4>About Nextcloud</h4>
+          <ul id="menu-about" class="menu">
+            <li><a href="https://nextcloud.com/about/">About us</a></li>
+            <li><a href="https://nextcloud.com/contact/">Contact us</a></li>
+            <li><a href="https://nextcloud.com/press/">Press</a></li>
+            <li><a href="https://nextcloud.com/privacy/">Privacy policy</a></li>
+          </ul>
+        </div>
+     </div>
+     <div class="col-sm-2 col-sm-offset-2">
+     </div>
+     <div class="col-sm-2 col-sm-offset-2">
+        <div class="footer-nav">
+          <h4>Interact</h4>
+          <ul id="menu-interact" class="menu">
+            <li class="menu-irc-channel"><a href="https://webchat.freenode.net/?channels=nextcloud">IRC Channel</a></li>
+            <li class="menu-forums"><a href="https://help.nextcloud.com/">Forums</a></li>
+          </ul>
+        </div>
+     </div>
+   </div>
+   <div class="row">
+      <div class="col-lg-12 footer-text">
+        <p>
+              &copy; Copyright 2012-2017, The Nextcloud developers.  <small><a href="https://nextcloud.com/impressum">Legal Notice</a></small><br/>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+  </body>
+</html>

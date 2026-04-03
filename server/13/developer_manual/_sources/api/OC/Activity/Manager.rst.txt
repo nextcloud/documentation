@@ -1,0 +1,481 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+Manager
+=======
+
+
+.. php:namespace:: OC\Activity
+
+.. php:class:: Manager
+
+
+	:Source:
+		`lib/private/Activity/Manager.php#46 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/Manager.php#L46>`_
+	
+	:Implements:
+		:php:interface:`OCP\\Activity\\IManager` 
+	
+
+Properties
+----------
+
+.. php:attr:: protected static request
+
+	:Source:
+		`lib/private/Activity/Manager.php#48 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/Manager.php#L48>`_
+	
+	:Type: :any:`\\OCP\\IRequest <OCP\\IRequest>` 
+
+
+.. php:attr:: protected static session
+
+	:Source:
+		`lib/private/Activity/Manager.php#51 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/Manager.php#L51>`_
+	
+	:Type: :any:`\\OCP\\IUserSession <OCP\\IUserSession>` 
+
+
+.. php:attr:: protected static config
+
+	:Source:
+		`lib/private/Activity/Manager.php#54 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/Manager.php#L54>`_
+	
+	:Type: :any:`\\OCP\\IConfig <OCP\\IConfig>` 
+
+
+.. php:attr:: protected static validator
+
+	:Source:
+		`lib/private/Activity/Manager.php#57 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/Manager.php#L57>`_
+	
+	:Type: :any:`\\OCP\\RichObjectStrings\\IValidator <OCP\\RichObjectStrings\\IValidator>` 
+
+
+.. php:attr:: protected static formattingObjectType
+
+	:Source:
+		`lib/private/Activity/Manager.php#60 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/Manager.php#L60>`_
+	
+	:Type: string 
+
+
+.. php:attr:: protected static formattingObjectId
+
+	:Source:
+		`lib/private/Activity/Manager.php#63 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/Manager.php#L63>`_
+	
+	:Type: int 
+
+
+.. php:attr:: protected static requirePNG
+
+	:Source:
+		`lib/private/Activity/Manager.php#66 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/Manager.php#L66>`_
+	
+	:Type: bool 
+
+
+.. php:attr:: protected static currentUserId
+
+	:Source:
+		`lib/private/Activity/Manager.php#69 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/Manager.php#L69>`_
+	
+	:Type: string 
+
+
+.. php:attr:: protected static l10n
+
+	:Source:
+		`lib/private/Activity/Manager.php#71 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/Manager.php#L71>`_
+	
+
+
+.. php:attr:: protected static filterClasses
+
+	:Source:
+		`lib/private/Activity/Manager.php#176 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/Manager.php#L176>`_
+	
+	:Type: string[] 
+
+
+.. php:attr:: protected static filters
+
+	:Source:
+		`lib/private/Activity/Manager.php#179 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/Manager.php#L179>`_
+	
+	:Type: :any:`\\OCP\\Activity\\IFilter\[\] <OCP\\Activity\\IFilter>` 
+
+
+.. php:attr:: protected static providerClasses
+
+	:Source:
+		`lib/private/Activity/Manager.php#226 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/Manager.php#L226>`_
+	
+	:Type: string[] 
+
+
+.. php:attr:: protected static providers
+
+	:Source:
+		`lib/private/Activity/Manager.php#229 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/Manager.php#L229>`_
+	
+	:Type: :any:`\\OCP\\Activity\\IProvider\[\] <OCP\\Activity\\IProvider>` 
+
+
+.. php:attr:: protected static settingsClasses
+
+	:Source:
+		`lib/private/Activity/Manager.php#260 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/Manager.php#L260>`_
+	
+	:Type: string[] 
+
+
+.. php:attr:: protected static settings
+
+	:Source:
+		`lib/private/Activity/Manager.php#263 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/Manager.php#L263>`_
+	
+	:Type: :any:`\\OCP\\Activity\\ISetting\[\] <OCP\\Activity\\ISetting>` 
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $request, $session, $config, $validator, $l10n)
+	
+		:Source:
+			`lib/private/Activity/Manager.php#73 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/Manager.php#L73>`_
+		
+		
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected getConsumers()
+	
+		:Source:
+			`lib/private/Activity/Manager.php#96 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/Manager.php#L96>`_
+		
+		
+		:Returns: :any:`\\OCP\\Activity\\IConsumer\[\] <OCP\\Activity\\IConsumer>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public generateEvent()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Generates a new IEvent object
+			
+			| Make sure to call at least the following methods before sending it to the
+			| app with via the publish\(\) method:
+			|  \- setApp\(\)
+			|  \- setType\(\)
+			|  \- setAffectedUser\(\)
+			|  \- setSubject\(\)
+			
+		
+		:Source:
+			`lib/private/Activity/Manager.php#126 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/Manager.php#L126>`_
+		
+		
+		:Returns: :any:`\\OCP\\Activity\\IEvent <OCP\\Activity\\IEvent>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public publish( $event)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Publish an event to the activity consumers
+			
+			| Make sure to call at least the following methods before sending an Event:
+			| \- setApp\(\)
+			| \- setType\(\)
+			| \- setAffectedUser\(\)
+			| \- setSubject\(\)
+			
+		
+		:Source:
+			`lib/private/Activity/Manager.php#142 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/Manager.php#L142>`_
+		
+		
+		:Parameters:
+			* **$event** (:any:`OCP\\Activity\\IEvent <OCP\\Activity\\IEvent>`)  
+
+		
+		:Throws: :any:`\\BadMethodCallException <BadMethodCallException>` if required values have not been set
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public registerConsumer( $callable)
+	
+		.. rst-class:: phpdoc-description
+		
+			| In order to improve lazy loading a closure can be registered which will be called in case
+			| activity consumers are actually requested
+			
+			| $callable has to return an instance of OCA\\Activity\\IConsumer
+			
+		
+		:Source:
+			`lib/private/Activity/Manager.php#170 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/Manager.php#L170>`_
+		
+		
+		:Parameters:
+			* **$callable** (:any:`Closure <Closure>`)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public registerFilter( $filter)
+	
+		:Source:
+			`lib/private/Activity/Manager.php#185 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/Manager.php#L185>`_
+		
+		
+		:Parameters:
+			* **$filter** (string)  Class must implement OCA\Activity\IFilter
+
+		
+		:Returns: void 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getFilters()
+	
+		:Source:
+			`lib/private/Activity/Manager.php#193 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/Manager.php#L193>`_
+		
+		
+		:Returns: :any:`\\OCP\\Activity\\IFilter\[\] <OCP\\Activity\\IFilter>` 
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getFilterById( $id)
+	
+		:Source:
+			`lib/private/Activity/Manager.php#215 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/Manager.php#L215>`_
+		
+		
+		:Parameters:
+			* **$id** (string)  
+
+		
+		:Returns: :any:`\\OCP\\Activity\\IFilter <OCP\\Activity\\IFilter>` 
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` when the filter was not found
+		:Since: 11.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public registerProvider( $provider)
+	
+		:Source:
+			`lib/private/Activity/Manager.php#235 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/Manager.php#L235>`_
+		
+		
+		:Parameters:
+			* **$provider** (string)  Class must implement OCA\Activity\IProvider
+
+		
+		:Returns: void 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getProviders()
+	
+		:Source:
+			`lib/private/Activity/Manager.php#243 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/Manager.php#L243>`_
+		
+		
+		:Returns: :any:`\\OCP\\Activity\\IProvider\[\] <OCP\\Activity\\IProvider>` 
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public registerSetting( $setting)
+	
+		:Source:
+			`lib/private/Activity/Manager.php#269 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/Manager.php#L269>`_
+		
+		
+		:Parameters:
+			* **$setting** (string)  Class must implement OCA\Activity\ISetting
+
+		
+		:Returns: void 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getSettings()
+	
+		:Source:
+			`lib/private/Activity/Manager.php#277 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/Manager.php#L277>`_
+		
+		
+		:Returns: :any:`\\OCP\\Activity\\ActivitySettings\[\] <OCP\\Activity\\ActivitySettings>` 
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getSettingById( $id)
+	
+		:Source:
+			`lib/private/Activity/Manager.php#303 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/Manager.php#L303>`_
+		
+		
+		:Parameters:
+			* **$id** (string)  
+
+		
+		:Returns: :any:`\\OCP\\Activity\\ActivitySettings <OCP\\Activity\\ActivitySettings>` 
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` when the setting was not found
+		:Since: 11.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setFormattingObject( $type, $id)
+	
+		:Source:
+			`lib/private/Activity/Manager.php#318 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/Manager.php#L318>`_
+		
+		
+		:Parameters:
+			* **$type** (string)  
+			* **$id** (int)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isFormattingFilteredObject()
+	
+		:Source:
+			`lib/private/Activity/Manager.php#326 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/Manager.php#L326>`_
+		
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setRequirePNG( $status)
+	
+		:Source:
+			`lib/private/Activity/Manager.php#335 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/Manager.php#L335>`_
+		
+		
+		:Parameters:
+			* **$status** (bool)  Set to true, when parsing events should not use SVG icons
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getRequirePNG()
+	
+		:Source:
+			`lib/private/Activity/Manager.php#342 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/Manager.php#L342>`_
+		
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setCurrentUserId( $currentUserId=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set the user we need to use
+			
+		
+		:Source:
+			`lib/private/Activity/Manager.php#352 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/Manager.php#L352>`_
+		
+		
+		:Parameters:
+			* **$currentUserId** (string | null)  
+
+		
+		:Throws: :any:`\\UnexpectedValueException <UnexpectedValueException>` If the user is invalid
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getCurrentUserId()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the user we need to use
+			
+			| Either the user is logged in, or we try to get it from the token
+			
+		
+		:Source:
+			`lib/private/Activity/Manager.php#367 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/Manager.php#L367>`_
+		
+		
+		:Returns: string 
+		:Throws: :any:`\\UnexpectedValueException <UnexpectedValueException>` If the token is invalid, does not exist or is not unique
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected getUserFromToken()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the user for the token
+			
+		
+		:Source:
+			`lib/private/Activity/Manager.php#385 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/Manager.php#L385>`_
+		
+		
+		:Returns: string 
+		:Throws: :any:`\\UnexpectedValueException <UnexpectedValueException>` If the token is invalid, does not exist or is not unique
+	
+	
+
