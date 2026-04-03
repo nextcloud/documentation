@@ -48,8 +48,6 @@ Other 2FA providers may be found in the App Store.
 Developers can also `implement new two-factor provider 
 apps <https://docs.nextcloud.com/server/32/developer_manual/digging_deeper/two-factor-provider.html>`_.
 
-.. TODO ON RELEASE: Update version number above on release
-
 Enforcing two-factor authentication
 -----------------------------------
 

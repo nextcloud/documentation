@@ -11,5 +11,3 @@ Modifying certain Nextcloud variables requires administrative access. If you req
 * Refer to the section in the `Administration Documentation
   <https://docs.nextcloud.com/server/32/admin_manual/configuration_files/big_file_upload_configuration.html>`_ that describes how to manage file
   upload size limits.
-
-.. TODO ON RELEASE: Update version number above on release

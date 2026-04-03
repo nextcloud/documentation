@@ -31,6 +31,17 @@ version = 'latest'
 # Can be overridden via DOCS_RELEASE env var (used for PDF builds to show the actual version number)
 release = os.environ.get('DOCS_RELEASE', version)
 
+# Ensure release is either "latest", or a digit (for stable versions)
+if not (release == 'latest' or release.isdigit()):
+	raise ValueError("Invalid release version: %s. Must be 'latest' or a digit." % release)
+
+# Print the version being built in a clear way in the logs
+width = 60
+msg = " Building documentation for version: %s " % release
+print("\n\n" + "#" * width)
+print("#" + msg.center(width - 2, "#") + "#")
+print("#" * width + "\n\n")
+
 # RTD theme options
 html_theme_options = {
 	'logo_only': True,
@@ -43,7 +54,18 @@ html_theme_options = {
 html_logo = "../_shared_assets/static/logo-white.png"
 
 # substitutions go here
-rst_epilog =  '.. |version| replace:: %s' % version
+rst_epilog = """
+.. |version| replace:: %s
+""" % (release)
+
+# Replace hardcoded /latest/ URLs in all .rst source files with the actual release
+def replace_latest(app, docname, source):
+    if release != 'latest':
+        source[0] = source[0].replace('/server/latest/', '/server/%s/' % release)
+ 
+def setup(app):
+    app.connect('source-read', replace_latest)
+
 
 # building the versions list
 version_start = 29		# THIS IS THE OLDEST SUPPORTED VERSION NUMBER

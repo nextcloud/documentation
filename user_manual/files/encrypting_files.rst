@@ -37,16 +37,12 @@ The only way to disable encryption is to run the `"decrypt all"
 <https://docs.nextcloud.com/server/32/admin_manual/occ_command.html#encryption-label>`_
 script, which decrypts all files and disables encryption.
 
-.. TODO ON RELEASE: Update version number above on release
-
 Is it possible to disable encryption with the recovery key?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Yes, *if* every user uses the `file recovery key
 <https://docs.nextcloud.com/server/32/admin_manual/configuration_files/encryption_configuration.html#enabling-users-file-recovery-keys>`_, `"decrypt all"
 <https://docs.nextcloud.com/server/32/admin_manual/occ_command.html#encryption-label>`_ will use it to decrypt all files.
-
-.. TODO ON RELEASE: Update version number above on release
 
 Can encryption be disabled without the user's password?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -55,8 +51,6 @@ If you don't have the users password or `file recovery key
 <https://docs.nextcloud.com/server/32/admin_manual/configuration_files/encryption_configuration.html#enabling-users-file-recovery-keys>`_,
 then there is no way to decrypt all files. What's more, running it on login
 would be dangerous, because you would most likely run into timeouts.
-
-.. TODO ON RELEASE: Update version number above on release
 
 Is it planned to move this to the next user login or a background job?
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
