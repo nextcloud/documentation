@@ -48,8 +48,6 @@ through WebDAV single file PUT requests or `Chunked file uploads
 <https://docs.nextcloud.com/server/33/developer_manual/client_apis/WebDAV/chunking.html>`_
 For those, PHP and webserver timeouts are the limiting factor on the upload size.
 
-.. TODO ON RELEASE: Update version number above on release
-
 Adjust these values for your needs. If you see PHP timeouts in your logfiles,
 increase the timeout values, which are in seconds::
 
@@ -169,8 +167,6 @@ to the actual file on the Nextcloud servers temporary directory. It is recommend
 the size of your temp directory accordingly and also ensure that request timeouts are high
 enough for PHP, webservers or any load balancers involved.
 
-.. TODO ON RELEASE: Update version number above on release
-
 .. tip:: In more recent versions of Nextcloud Server, when uploading to S3 in *Primary Storage* mode, we use S3 `MultipartUpload`. This allows chunked upload streaming of the chunks directly to S3 so that the final MOVE request no longer needs to assemble the final file on the Nextcloud server. This requires your ``memcache.distributed`` to be set to use Redis (or Memcached), otherwise we fall back on the prior behavior which consumes space on the Nextcloud Server for file assembly (as described above).
 
 Federated Cloud Sharing
@@ -178,5 +174,3 @@ Federated Cloud Sharing
 
 If you are using `Federated Cloud Sharing <https://docs.nextcloud.com/server/33/admin_manual/configuration_files/federated_cloud_sharing_configuration.html>`_ and want to share large files, you can increase the timeout values for requests to the federated servers.
 Therefore, you can set ``davstorage.request_timeout`` in your ``config.php``. The default value is 30 seconds.
-
-.. TODO ON RELEASE: Update version number above on release

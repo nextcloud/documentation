@@ -380,8 +380,6 @@ While setting a configuration value, multiple options are available:
 
 .. _Appconfig Concepts: https://docs.nextcloud.com/server/33/developer_manual/digging_deeper/config/appconfig.html#concept-overview
 
-.. TODO ON RELEASE: Update version number above on release
-
 You can list all configuration values with one command::
 
  sudo -E -u www-data php occ config:list
@@ -1153,8 +1151,6 @@ The command line option ``--transfer-incoming-shares`` overwrites the config.php
 Users may also transfer files or folders selectively by themselves.
 See `user documentation <https://docs.nextcloud.com/server/33/user_manual/en/files/transfer_ownership.html>`_ for details.
 
-.. TODO ON RELEASE: Update version number above on release
-
 .. _occ_files_windows_filenames:
 
 Toggle Windows compatibility
@@ -1245,8 +1241,6 @@ Verify your app::
 
 When it returns nothing, your app is signed correctly. When it returns a message then there is an error. See `Code Signing
 <https://docs.nextcloud.com/server/33/developer_manual/app_publishing_maintenance/code_signing.html#how-to-get-your-app-signed>`_ in the Developer manual for more detailed information.
-
-.. TODO ON RELEASE: Update version number above on release
 
 ``integrity:sign-core`` is for Nextcloud core developers only.
 
