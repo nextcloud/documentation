@@ -1,0 +1,211 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+SchemaWrapper
+=============
+
+
+.. php:namespace:: OC\DB
+
+.. php:class:: SchemaWrapper
+
+
+	:Source:
+		`lib/private/DB/SchemaWrapper.php#30 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/SchemaWrapper.php#L30>`_
+	
+	:Implements:
+		:php:interface:`OCP\\DB\\ISchemaWrapper` 
+	
+
+Properties
+----------
+
+.. php:attr:: protected static connection
+
+	:Source:
+		`lib/private/DB/SchemaWrapper.php#33 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/SchemaWrapper.php#L33>`_
+	
+	:Type: :any:`\\OC\\DB\\Connection <OC\\DB\\Connection>` 
+
+
+.. php:attr:: protected static schema
+
+	:Source:
+		`lib/private/DB/SchemaWrapper.php#36 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/SchemaWrapper.php#L36>`_
+	
+	:Type: :any:`\\Doctrine\\DBAL\\Schema\\Schema <Doctrine\\DBAL\\Schema\\Schema>` 
+
+
+.. php:attr:: protected static tablesToDelete
+
+	:Source:
+		`lib/private/DB/SchemaWrapper.php#39 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/SchemaWrapper.php#L39>`_
+	
+	:Type: array 
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $connection)
+	
+		:Source:
+			`lib/private/DB/SchemaWrapper.php#41 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/SchemaWrapper.php#L41>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getWrappedSchema()
+	
+		:Source:
+			`lib/private/DB/SchemaWrapper.php#46 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/SchemaWrapper.php#L46>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public performDropTableCalls()
+	
+		:Source:
+			`lib/private/DB/SchemaWrapper.php#50 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/SchemaWrapper.php#L50>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getTableNamesWithoutPrefix()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Gets all table names
+			
+		
+		:Source:
+			`lib/private/DB/SchemaWrapper.php#62 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/SchemaWrapper.php#L62>`_
+		
+		
+		:Returns: array 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getTableNames()
+	
+		:Source:
+			`lib/private/DB/SchemaWrapper.php#78 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/SchemaWrapper.php#L78>`_
+		
+		
+		:Returns: array 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getTable( $tableName)
+	
+		:Source:
+			`lib/private/DB/SchemaWrapper.php#88 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/SchemaWrapper.php#L88>`_
+		
+		
+		:Parameters:
+			* **$tableName** (string)  
+
+		
+		:Returns: :any:`\\Doctrine\\DBAL\\Schema\\Table <Doctrine\\DBAL\\Schema\\Table>` 
+		:Throws: :any:`\\Doctrine\\DBAL\\Schema\\SchemaException <Doctrine\\DBAL\\Schema\\SchemaException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public hasTable( $tableName)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Does this schema have a table with the given name?
+			
+		
+		:Source:
+			`lib/private/DB/SchemaWrapper.php#99 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/SchemaWrapper.php#L99>`_
+		
+		
+		:Parameters:
+			* **$tableName** (string)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public createTable( $tableName)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Creates a new table\.
+			
+		
+		:Source:
+			`lib/private/DB/SchemaWrapper.php#109 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/SchemaWrapper.php#L109>`_
+		
+		
+		:Parameters:
+			* **$tableName** (string)  
+
+		
+		:Returns: :any:`\\Doctrine\\DBAL\\Schema\\Table <Doctrine\\DBAL\\Schema\\Table>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public dropTable( $tableName)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Drops a table from the schema\.
+			
+		
+		:Source:
+			`lib/private/DB/SchemaWrapper.php#120 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/SchemaWrapper.php#L120>`_
+		
+		
+		:Parameters:
+			* **$tableName** (string)  
+
+		
+		:Returns: :any:`\\Doctrine\\DBAL\\Schema\\Schema <Doctrine\\DBAL\\Schema\\Schema>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getTables()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Gets all tables of this schema\.
+			
+		
+		:Source:
+			`lib/private/DB/SchemaWrapper.php#130 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/SchemaWrapper.php#L130>`_
+		
+		
+		:Returns: :any:`\\Doctrine\\DBAL\\Schema\\Table\[\] <Doctrine\\DBAL\\Schema\\Table>` 
+	
+	
+

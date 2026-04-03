@@ -1,0 +1,65 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IContentSecurityPolicyManager
+=============================
+
+
+.. php:namespace:: OCP\Security
+
+.. php:interface:: IContentSecurityPolicyManager
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Used for Content Security Policy manipulations
+		
+	
+	:Implemented by:
+		:php:class:`OC\\Security\\CSP\\ContentSecurityPolicyManager` 
+	
+	
+	:Source:
+		`lib/public/Security/IContentSecurityPolicyManager.php#38 <https://github.com/nextcloud/server/blob/stable13/lib/public/Security/IContentSecurityPolicyManager.php#L38>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public addDefaultPolicy( $policy)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Allows to inject something into the default content policy\. This is for
+			| example useful when you\'re injecting Javascript code into a view belonging
+			| to another controller and cannot modify its Content\-Security\-Policy itself\.
+			
+			| Note that the adjustment is only applied to applications that use AppFramework
+			| controllers\.
+			| 
+			| To use this from your \`app\.php\` use \`\\OC::$server\-\>getContentSecurityPolicyManager\(\)\-\>addDefaultPolicy\($policy\)\`,
+			| $policy has to be of type \`\\OCP\\AppFramework\\Http\\ContentSecurityPolicy\`\.
+			| 
+			| WARNING: Using this API incorrectly may make the instance more insecure\.
+			| Do think twice before adding whitelisting resources\. Please do also note
+			| that it is not possible to use the \`disallowXYZ\` functions\.
+			
+		
+		:Source:
+			`lib/public/Security/IContentSecurityPolicyManager.php#57 <https://github.com/nextcloud/server/blob/stable13/lib/public/Security/IContentSecurityPolicyManager.php#L57>`_
+		
+		
+		:Parameters:
+			* **$policy** (:any:`OCP\\AppFramework\\Http\\EmptyContentSecurityPolicy <OCP\\AppFramework\\Http\\EmptyContentSecurityPolicy>`)  
+
+		
+		:Since: 9.0.0 
+		:Deprecated: 17.0.0 listen to the AddContentSecurityPolicyEvent to add a policy
+	
+	
+

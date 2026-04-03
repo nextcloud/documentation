@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>General Troubleshooting &#8212; Nextcloud 12 Server Administration Manual 12 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/main.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '12',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.1.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Code Signing" href="code_signing.html" />
+    <link rel="prev" title="Issues and Troubleshooting" href="index.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#1d2d44">
+<link rel="shortcut icon" href="https://nextcloud.com/wp-content/themes/next/assets/img/common/favicon.png" />
+<link rel="apple-touch-icon-precomposed" href="https://nextcloud.com/wp-content/themes/next/assets/img/common/favicon.png" />
+<!-- Piwik -->
+<script type="text/javascript">
+    var _paq = _paq || [];
+    _paq.push(['trackPageView']);
+    _paq.push(['enableLinkTracking']);
+    (function() {
+        var u="//stats.nextcloud.com/";
+        _paq.push(['setTrackerUrl', u+'piwik.php']);
+        _paq.push(['setSiteId', 3]);
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+        g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+    })();
+</script>
+<noscript><p><img src="//stats.nextcloud.com/piwik.php?idsite=3" style="border:0;" alt="" /></p></noscript>
+<!-- End Piwik Code -->
+
+  </head>
+  <body role="document">
+
+<header class="banner navbar navbar-default navbar-static-top" role="banner">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+       <a class="brand" href="http://nextcloud.com/" rel="home" title="Nextcloud.com"><img class="logo" src="../_static/img/logo.svg" itemprop="logo"></a>
+    </div>
+
+    <nav class="collapse navbar-collapse" role="navigation">
+      <ul id="menu-header" class="nav navbar-nav">
+          <li><a target="_blank" href="https://demo.nextcloud.com">Demo</a></li>
+          <li><a href="https://nextcloud.com/news/">News</a></li>
+          <li><a href="https://nextcloud.com/features/">Features</a></li>
+          <li><a href="https://nextcloud.com/about/">About us</a></li>
+          <li><a href="https://nextcloud.com/contribute/">Get involved</a></li>
+          <li><a href="https://nextcloud.com/support/">Support</a></li>
+          <li><a href="https://nextcloud.com/enterprise/">Enterprise</a></li>
+          <li class="menu-install"><a href="https://nextcloud.com/install/">Download</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+<div class="container" style="background-color: #E6C4C2;color: #b10000;border: #b10000 2px solid;border-right: none;border-left: none;padding: 15px 10px;">You are reading an outdated version of this documentation. Please check out the <a href="https://docs.nextcloud.com/server/stable/admin_manual/" style="
+color: rgb(177,0,0);text-decoration: underline;">latest version</a> of the server administration manual.</div>
+
+
+
+<div class="wrap container not-front">
+  <div class="content row">
+  <main class="main">
+    <div class="row page-content-header">
+      <div class="col-md-6">
+        <h1><a href="../contents.html">Nextcloud 12 Server Administration Manual</a></h1>
+      </div>
+      <div class="col-md-5 col-md-offset-1">
+      
+        <form class="headersearch" style="margin: 16px 0;" action="../search.html" method="get">
+        <input type="text" value="" name="q" id="q" class="form-control" /> 
+        <button  class="btn btn-default" type="submit" id="searchsubmit">Search</button>
+        </form>
+      
+      </div>
+    </div>
+    
+			<div class="row">
+				<div class="col-md-3">
+					<div class="sidebar">
+							<div class="menu-support-container">
+								<ul id="menu-support" class="menu">
+									<ul>
+										
+<li><a href="../contents.html">Table of Contents</a></li>
+									</ul>
+                  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_server/index.html">Server Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_user/index.html">User Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_files/index.html">File Sharing and Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../file_workflows/index.html">File workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_database/index.html">Database Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_mimetypes/index.html">Mimetypes Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../maintenance/index.html">Maintenance</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Issues and Troubleshooting</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">General Troubleshooting</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#bugs">Bugs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">General Troubleshooting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#troubleshooting-web-server-and-php-problems">Troubleshooting Web server and PHP problems</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#troubleshooting-webdav">Troubleshooting WebDAV</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#troubleshooting-contacts-calendar">Troubleshooting Contacts &amp; Calendar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#other-issues">Other issues</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="code_signing.html">Code Signing</a></li>
+</ul>
+</li>
+</ul>
+
+								</ul>
+							</div>
+					</div>
+				</div>
+        
+
+				<div class="col-md-9">
+					<div class="page-content">
+            
+<ul class="prevnext-title list-unstyled list-inline">
+  <li class="prev">
+    <a href="index.html" title="Previous Chapter: Issues and Troubleshooting"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; Issues and Tr...</span>
+    </a>
+  </li>
+  <li class="next">
+    <a href="code_signing.html" title="Next Chapter: Code Signing"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">Code Signing &raquo;</span>
+    </a>
+  </li>
+</ul>
+						
+  <div class="section" id="general-troubleshooting">
+<h1>General Troubleshooting<a class="headerlink" href="#general-troubleshooting" title="Permalink to this headline">¶</a></h1>
+<p>If you have trouble installing, configuring or maintaining Nextcloud, please
+refer to our community support channels:</p>
+<ul class="simple">
+<li><dl class="first docutils">
+<dt><a class="reference external" href="https://help.nextcloud.com">The Nextcloud Forums</a></dt>
+<dd>The Nextcloud forums have a <a class="reference external" href="https://help.nextcloud.com/c/faq">FAQ page</a> where each topic corresponds
+to typical mistakes or frequently occurring issues</dd>
+</dl>
+</li>
+<li>The Nextcloud IRC chat channel <code class="docutils literal"><span class="pre">irc://#nextcloud&#64;freenode.net</span></code> on
+freenode.net, also accessible via <a class="reference external" href="http://webchat.freenode.net/?channels=nextcloudhttps://docs.nextcloud.org/server/12/developer_manual/bugtracker/index.html">webchat</a></li>
+</ul>
+<p>Please understand that all these channels essentially consist of users like you
+helping each other out. Consider helping others out where you can, to contribute
+back for the help you get. This is the only way to keep a community like
+Nextcloud healthy and sustainable!</p>
+<p>If you are using Nextcloud in a business or otherwise large scale deployment,
+note that Nextcloud GmbH offers commercial support options.</p>
+<div class="section" id="bugs">
+<h2>Bugs<a class="headerlink" href="#bugs" title="Permalink to this headline">¶</a></h2>
+<p>If you think you have found a bug in Nextcloud, please:</p>
+<ul class="simple">
+<li>Search for a solution (see the options above)</li>
+<li>Double-check your configuration</li>
+</ul>
+<p>If you can&#8217;t find a solution, please use our <a class="reference external" href="https://github.com/nextcloud/server/issues">bugtracker</a>. You can generate a
+configuration report with the <a class="reference internal" href="../configuration_server/occ_command.html#config-commands-label"><span class="std std-ref">occ config command</span></a>, with passwords automatically obscured.</p>
+</div>
+<div class="section" id="id1">
+<h2>General Troubleshooting<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>Check the Nextcloud <a class="reference internal" href="../installation/system_requirements.html"><span class="doc">System Requirements</span></a>, especially
+supported browser versions.</p>
+<p>When you see warnings about <code class="docutils literal"><span class="pre">code</span> <span class="pre">integrity</span></code>, refer to <a class="reference internal" href="code_signing.html"><span class="doc">Code Signing</span></a>.</p>
+<div class="section" id="disable-3rdparty-non-shipped-apps">
+<h3>Disable 3rdparty / non-shipped apps<a class="headerlink" href="#disable-3rdparty-non-shipped-apps" title="Permalink to this headline">¶</a></h3>
+<p>It might be possible that 3rd party / non-shipped apps are causing various
+different issues. Always disable 3rd party apps before upgrades, and for
+troubleshooting. Please refer to the <a class="reference internal" href="../configuration_server/occ_command.html#apps-commands-label"><span class="std std-ref">Apps Commands</span></a> on how
+to disable an app from command line.</p>
+</div>
+<div class="section" id="nextcloud-logfiles">
+<h3>Nextcloud Logfiles<a class="headerlink" href="#nextcloud-logfiles" title="Permalink to this headline">¶</a></h3>
+<p>In a standard Nextcloud installation the log level is set to <code class="docutils literal"><span class="pre">Normal</span></code>. To find
+any issues you need to raise the log level to <code class="docutils literal"><span class="pre">All</span></code> in your <code class="docutils literal"><span class="pre">config.php</span></code>
+file, or to <strong>Everything</strong> on your Nextcloud Admin page. Please see
+<a class="reference internal" href="../configuration_server/logging_configuration.html"><span class="doc">Logging Configuration</span></a> for more information on
+these log levels.</p>
+<p>Some logging - for example JavaScript console logging - needs debugging
+enabled. Edit <code class="file docutils literal"><span class="pre">config/config.php</span></code> and change <code class="docutils literal"><span class="pre">'debug'</span> <span class="pre">=&gt;</span> <span class="pre">false,</span></code> to
+<code class="docutils literal"><span class="pre">'debug'</span> <span class="pre">=&gt;</span> <span class="pre">true,</span></code> Be sure to change it back when you are finished.</p>
+<p>For JavaScript issues you will also need to view the javascript console. All
+major browsers have developer tools for viewing the console, and you
+usually access them by pressing F12. For Firefox we recommend to installing
+the <a class="reference external" href="https://getfirebug.com/">Firebug extension</a>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The logfile of Nextcloud is located in the data directory
+<code class="docutils literal"><span class="pre">nextcloud/data/nextcloud.log</span></code>.</p>
+</div>
+</div>
+<div class="section" id="php-version-and-information">
+<span id="label-phpinfo"></span><h3>PHP Version and Information<a class="headerlink" href="#php-version-and-information" title="Permalink to this headline">¶</a></h3>
+<p>You will need to know your PHP version and configurations. To do this, create a
+plain-text file named <strong>phpinfo.php</strong> and place it in your Web root, for
+example <code class="docutils literal"><span class="pre">/var/www/html/phpinfo.php</span></code>. (Your Web root may be in a different
+location; your Linux distribution documentation will tell you where.) This file
+contains just this line:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>&lt;?php phpinfo(); ?&gt;
+</pre></div>
+</div>
+<p>Open this file in a Web browser by pointing your browser to
+<code class="docutils literal"><span class="pre">localhost/phpinfo.php</span></code>:</p>
+<div class="figure">
+<img alt="../_images/phpinfo.png" src="../_images/phpinfo.png" />
+</div>
+<p>Your PHP version is at the top, and the rest of the page contains abundant
+system information such as active modules, active <code class="docutils literal"><span class="pre">.ini</span></code> files, and much more.
+When you are finished reviewing your information you must delete
+<code class="docutils literal"><span class="pre">phpinfo.php</span></code>, or move it outside of your Web directory, because it is a
+security risk to expose such sensitive data.</p>
+</div>
+<div class="section" id="debugging-sync-issues">
+<h3>Debugging Sync Issues<a class="headerlink" href="#debugging-sync-issues" title="Permalink to this headline">¶</a></h3>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">The data directory on the server is exclusive to Nextcloud and must
+not be modified manually.</p>
+</div>
+<p>Disregarding this can lead to unwanted behaviors like:</p>
+<ul class="simple">
+<li>Problems with sync clients</li>
+<li>Undetected changes due to caching in the database</li>
+</ul>
+<p>If you need to directly upload files from the same server please use a WebDAV
+command line client like <code class="docutils literal"><span class="pre">cadaver</span></code> to upload files to the WebDAV interface at:</p>
+<p><code class="docutils literal"><span class="pre">https://example.com/nextcloud/remote.php/dav</span></code></p>
+</div>
+<div class="section" id="common-problems-error-messages">
+<h3>Common problems / error messages<a class="headerlink" href="#common-problems-error-messages" title="Permalink to this headline">¶</a></h3>
+<p>Some common problems / error messages found in your logfiles as described above:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">SQLSTATE[HY000]</span> <span class="pre">[1040]</span> <span class="pre">Too</span> <span class="pre">many</span> <span class="pre">connections</span></code> -&gt; You need to increase the
+connection limit of your database, please refer to the manual of your database
+for more information.</li>
+<li><code class="docutils literal"><span class="pre">SQLSTATE[HY000]:</span> <span class="pre">General</span> <span class="pre">error:</span> <span class="pre">5</span> <span class="pre">database</span> <span class="pre">is</span> <span class="pre">locked</span></code> -&gt; You&#8217;re using
+<code class="docutils literal"><span class="pre">SQLite</span></code>
+which can&#8217;t handle a lot of parallel requests. Please consider converting to
+another database like described in
+<a class="reference internal" href="../configuration_database/db_conversion.html"><span class="doc">Converting Database Type</span></a>.</li>
+<li><code class="docutils literal"><span class="pre">SQLSTATE[HY000]:</span> <span class="pre">General</span> <span class="pre">error:</span> <span class="pre">2006</span> <span class="pre">MySQL</span> <span class="pre">server</span> <span class="pre">has</span> <span class="pre">gone</span> <span class="pre">away</span></code> -&gt; Please
+refer to <a class="reference internal" href="../configuration_database/linux_database_configuration.html#db-troubleshooting-label"><span class="std std-ref">Troubleshooting</span></a> for more information.</li>
+<li><code class="docutils literal"><span class="pre">SQLSTATE[HY000]</span> <span class="pre">[2002]</span> <span class="pre">No</span> <span class="pre">such</span> <span class="pre">file</span> <span class="pre">or</span> <span class="pre">directory</span></code> -&gt; There is a problem
+accessing your SQLite database file in your data directory
+(<code class="docutils literal"><span class="pre">data/nextcloud.db</span></code>). Please check the permissions of this folder/file or
+if it exists at all. If you&#8217;re using MySQL please start your database.</li>
+<li><code class="docutils literal"><span class="pre">Connection</span> <span class="pre">closed</span> <span class="pre">/</span> <span class="pre">Operation</span> <span class="pre">cancelled</span></code> -&gt; This could be caused by wrong
+<code class="docutils literal"><span class="pre">KeepAlive</span></code> settings within your Apache config. Make sure that
+<code class="docutils literal"><span class="pre">KeepAlive</span></code> is set to <code class="docutils literal"><span class="pre">On</span></code> and  also try to raise the limits of
+<code class="docutils literal"><span class="pre">KeepAliveTimeout</span></code> and  <code class="docutils literal"><span class="pre">MaxKeepAliveRequests</span></code>.</li>
+<li><code class="docutils literal"><span class="pre">No</span> <span class="pre">basic</span> <span class="pre">authentication</span> <span class="pre">headers</span> <span class="pre">were</span> <span class="pre">found</span></code> -&gt; This error is shown in your
+<code class="docutils literal"><span class="pre">data/nextcloud.log</span></code> file. Some Apache modules like <code class="docutils literal"><span class="pre">mod_fastcgi</span></code>, <code class="docutils literal"><span class="pre">mod_fcgid</span></code>
+or <code class="docutils literal"><span class="pre">mod_proxy_fcgi</span></code> are not passing the needed authentication headers to
+PHP and so the login to Nextcloud via WebDAV, CalDAV and CardDAV clients is
+failing. Information on how to correctly configure your environment can be
+found at the <a class="reference external" href="https://forum.owncloud.org/viewtopic.php?f=17&amp;t=30646">forums</a>.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="troubleshooting-web-server-and-php-problems">
+<h2>Troubleshooting Web server and PHP problems<a class="headerlink" href="#troubleshooting-web-server-and-php-problems" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="logfiles">
+<h3>Logfiles<a class="headerlink" href="#logfiles" title="Permalink to this headline">¶</a></h3>
+<p>When having issues the first step is to check the logfiles provided by PHP, the
+Web server and Nextcloud itself.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">In the following the paths to the logfiles of a default Debian
+installation running Apache2 with mod_php is assumed. On other Web servers,
+Linux distros or operating systems they can differ.</p>
+</div>
+<ul class="simple">
+<li>The logfile of Apache2 is located in <code class="docutils literal"><span class="pre">/var/log/apache2/error.log</span></code>.</li>
+<li>The logfile of PHP can be configured in your <code class="docutils literal"><span class="pre">/etc/php5/apache2/php.ini</span></code>.
+You need to set the directive <code class="docutils literal"><span class="pre">log_errors</span></code> to <code class="docutils literal"><span class="pre">On</span></code> and choose the path
+to store the logfile in the <code class="docutils literal"><span class="pre">error_log</span></code> directive. After those changes you
+need to restart your Web server.</li>
+<li>The logfile of Nextcloud is located in the data directory
+<code class="docutils literal"><span class="pre">/var/www/nextcloud/data/nextcloud.log</span></code>.</li>
+</ul>
+</div>
+<div class="section" id="web-server-and-php-modules">
+<h3>Web server and PHP modules<a class="headerlink" href="#web-server-and-php-modules" title="Permalink to this headline">¶</a></h3>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Lighttpd is not supported with Nextcloud, and some Nextcloud features
+may not work at all on Lighttpd.</p>
+</div>
+<p>There are some Web server or PHP modules which are known to cause various
+problems like broken up-/downloads. The following shows a draft overview of
+these modules:</p>
+<ol class="arabic simple">
+<li>Apache</li>
+</ol>
+<ul class="simple">
+<li>mod_pagespeed</li>
+<li>mod_evasive</li>
+<li>mod_security</li>
+<li>mod_reqtimeout</li>
+<li>mod_deflate</li>
+<li>libapache2-mod-php5filter (use libapache2-mod-php5 instead)</li>
+<li>mod_spdy together with libapache2-mod-php5 / mod_php (use fcgi or php-fpm
+instead)</li>
+<li>mod_dav</li>
+<li>mod_xsendfile / X-Sendfile (causing broken downloads if not configured
+correctly)</li>
+</ul>
+<ol class="arabic simple" start="2">
+<li>NginX</li>
+</ol>
+<ul class="simple">
+<li>ngx_pagespeed</li>
+<li>HttpDavModule</li>
+<li>X-Sendfile (causing broken downloads if not configured correctly)</li>
+</ul>
+<ol class="arabic simple" start="3">
+<li>PHP</li>
+</ol>
+<ul class="simple">
+<li>eAccelerator</li>
+</ul>
+</div>
+</div>
+<div class="section" id="troubleshooting-webdav">
+<span id="trouble-webdav-label"></span><h2>Troubleshooting WebDAV<a class="headerlink" href="#troubleshooting-webdav" title="Permalink to this headline">¶</a></h2>
+<p>Nextcloud uses SabreDAV, and the SabreDAV documentation is comprehensive and
+helpful.</p>
+<p>See:</p>
+<ul class="simple">
+<li><a class="reference external" href="http://sabre.io/dav/faq/">SabreDAV FAQ</a></li>
+<li><a class="reference external" href="http://sabre.io/dav/webservers">Web servers</a> (Lists lighttpd as not
+recommended)</li>
+<li><a class="reference external" href="http://sabre.io/dav/large-files/">Working with large files</a> (Shows a PHP
+bug in older SabreDAV versions and information for mod_security problems)</li>
+<li><a class="reference external" href="http://sabre.io/dav/0bytes">0 byte files</a> (Reasons for empty files on the
+server)</li>
+<li><a class="reference external" href="http://sabre.io/dav/clients/">Clients</a> (A comprehensive list of WebDAV
+clients, and possible problems with each one)</li>
+<li><a class="reference external" href="http://sabre.io/dav/clients/finder/">Finder, OS X&#8217;s built-in WebDAV client</a>
+(Describes problems with Finder on various Web servers)</li>
+</ul>
+<p>There is also a well maintained FAQ thread available at the <a class="reference external" href="https://forum.owncloud.org/viewtopic.php?f=17&amp;t=7536">ownCloud Forums</a>
+which contains various additional information about WebDAV problems.</p>
+</div>
+<div class="section" id="troubleshooting-contacts-calendar">
+<h2>Troubleshooting Contacts &amp; Calendar<a class="headerlink" href="#troubleshooting-contacts-calendar" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="service-discovery">
+<span id="service-discovery-label"></span><h3>Service discovery<a class="headerlink" href="#service-discovery" title="Permalink to this headline">¶</a></h3>
+<p>Some clients - especially on iOS/macOS - have problems finding the proper
+sync URL, even when explicitly configured to use it.</p>
+<p>If you want to use CalDAV or CardDAV clients together with Nextcloud it is
+important to have a correct working setup of the following URLs:</p>
+<div class="line-block">
+<div class="line"><code class="docutils literal"><span class="pre">https://example.com/.well-known/carddav</span></code></div>
+<div class="line"><code class="docutils literal"><span class="pre">https://example.com/.well-known/caldav</span></code></div>
+<div class="line"><br /></div>
+</div>
+<p>Those need to be redirecting your clients to the correct DAV endpoints. If
+running Nextcloud at the document root of your Web server the correct URL is:</p>
+<p><code class="docutils literal"><span class="pre">https://example.com/remote.php/dav</span></code></p>
+<p>and if running in a subfolder like <code class="docutils literal"><span class="pre">nextcloud</span></code>:</p>
+<p><code class="docutils literal"><span class="pre">https://example.com/nextcloud/remote.php/dav</span></code></p>
+<p>For the first case the <code class="file docutils literal"><span class="pre">.htaccess</span></code> file shipped with Nextcloud should do
+this work for your when running Apache. You only need to make sure that your
+Web server is using this file. When running Nginx please refer to
+<a class="reference internal" href="../installation/nginx.html"><span class="doc">Nginx Configuration</span></a>.</p>
+<p>If your Nextcloud instance is installed in a subfolder called <code class="docutils literal"><span class="pre">nextcloud</span></code> and
+you&#8217;re running Apache create or edit the <code class="file docutils literal"><span class="pre">.htaccess</span></code> file within the
+document root of your Web server and add the following lines:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">Redirect</span> <span class="mi">301</span> <span class="o">/.</span><span class="n">well</span><span class="o">-</span><span class="n">known</span><span class="o">/</span><span class="n">carddav</span> <span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span>
+<span class="n">Redirect</span> <span class="mi">301</span> <span class="o">/.</span><span class="n">well</span><span class="o">-</span><span class="n">known</span><span class="o">/</span><span class="n">caldav</span> <span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span>
+</pre></div>
+</div>
+<p>Now change the URL in the client settings to just use:</p>
+<p><code class="docutils literal"><span class="pre">https://example.com</span></code></p>
+<p>instead of e.g.</p>
+<p><code class="docutils literal"><span class="pre">https://example.com/nextcloud/remote.php/dav/principals/username</span></code>.</p>
+<p>There are also several techniques to remedy this, which are described extensively at
+the <a class="reference external" href="http://sabre.io/dav/service-discovery/">Sabre DAV website</a>.</p>
+</div>
+<div class="section" id="unable-to-update-contacts-or-events">
+<h3>Unable to update Contacts or Events<a class="headerlink" href="#unable-to-update-contacts-or-events" title="Permalink to this headline">¶</a></h3>
+<p>If you get an error like:</p>
+<p><code class="docutils literal"><span class="pre">PATCH</span> <span class="pre">https://example.com/remote.php/dav</span> <span class="pre">HTTP/1.0</span> <span class="pre">501</span> <span class="pre">Not</span> <span class="pre">Implemented</span></code></p>
+<p>it is likely caused by one of the following reasons:</p>
+<dl class="docutils">
+<dt>Using Pound reverse-proxy/load balancer</dt>
+<dd>As of writing this Pound doesn&#8217;t support the HTTP/1.1 verb.
+Pound is easily <a class="reference external" href="http://www.apsis.ch/pound/pound_list/archive/2013/2013-08/1377264673000">patched</a>
+to support HTTP/1.1.</dd>
+<dt>Misconfigured Web server</dt>
+<dd>Your Web server is misconfigured and blocks the needed DAV methods.
+Please refer to <a class="reference internal" href="#trouble-webdav-label"><span class="std std-ref">Troubleshooting WebDAV</span></a> above for troubleshooting steps.</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="other-issues">
+<h2>Other issues<a class="headerlink" href="#other-issues" title="Permalink to this headline">¶</a></h2>
+<p>Some services like <em>Cloudflare</em> can cause issues by minimizing JavaScript
+and loading it only when needed. When having issues like a not working
+login button or creating new users make sure to disable such services
+first.</p>
+</div>
+</div>
+
+
+            
+<ul class="prevnext-title list-unstyled list-inline">
+  <li class="prev">
+    <a href="index.html" title="Previous Chapter: Issues and Troubleshooting"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; Issues and Tr...</span>
+    </a>
+  </li>
+  <li class="next">
+    <a href="code_signing.html" title="Next Chapter: Code Signing"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">Code Signing &raquo;</span>
+    </a>
+  </li>
+</ul>
+					</div>
+				</div>
+			</div>
+  </main>  
+  </div>
+</div>
+<div class="container">
+<div class="row">
+    <div class="col-lg-12 footer-social-icons">
+      <p class="text-center"><a target="_blank" href="https://plus.google.com/104036748063781940910/about"><img width=50 src="../_static/img/social/googleplus.svg" title="Follow us on Google Plus!" alt="Follow us on Google Plus!"></img></a>
+      <a target="_blank" href="https://www.facebook.com/Nextclouders"><img width=50 src="../_static/img/social/facebook.svg" title="Like our facebook page!" alt="Like our facebook page!"></img></a>
+      <a target="_blank" href="https://twitter.com/Nextclouders"><img width=50 src="../_static/img/social/twitter.svg" title="Subscribe to our twitter channel!" alt="Subscribe to our twitter channel!"></img></a>
+      <a target="_blank" href="https://nextcloud.com/blogfeed"><img class="img-circle" width=50 src="../_static/img/social/rss.svg" title="Subscribe to our news feed!" alt="Subscribe to our news feed!"></img></a>
+      <a target="_blank" href="https://newsletter.nextcloud.com/"><img class="img-circle" width=50 src="../_static/img/social/mail.svg"  title="Subscribe to our newsletter!" alt="Subscribe to our newsletter!"></img></a></p>
+    </div>
+    <div class="text-center">
+      <p>All documentation licensed under the <a href="https://creativecommons.org/licenses/by/3.0/us/">Creative Commons Attribution 3.0 Unported license</a>.</p>
+      <p><a href="https://github.com/nextcloud/documentation/graphs/contributors">See who contributed to our documentation/credits</a>.</p>
+    </div>
+</div>
+</div>
+<footer class="content-info" role="contentinfo">
+<div class="container">
+   <div class="row">
+     <div class="col-sm-2 col-sm-offset-1">
+        <div class="footer-nav">
+          <h4>About Nextcloud</h4>
+          <ul id="menu-about" class="menu">
+            <li><a href="https://nextcloud.com/about/">About us</a></li>
+            <li><a href="https://nextcloud.com/contact/">Contact us</a></li>
+            <li><a href="https://nextcloud.com/press/">Press</a></li>
+            <li><a href="https://nextcloud.com/privacy/">Privacy policy</a></li>
+          </ul>
+        </div>
+     </div>
+     <div class="col-sm-2 col-sm-offset-2">
+     </div>
+     <div class="col-sm-2 col-sm-offset-2">
+        <div class="footer-nav">
+          <h4>Interact</h4>
+          <ul id="menu-interact" class="menu">
+            <li class="menu-irc-channel"><a href="https://webchat.freenode.net/?channels=nextcloud">IRC Channel</a></li>
+            <li class="menu-forums"><a href="https://help.nextcloud.com/">Forums</a></li>
+          </ul>
+        </div>
+     </div>
+   </div>
+   <div class="row">
+      <div class="col-lg-12 footer-text">
+        <p>
+              &copy; Copyright 2012-2017, The Nextcloud developers.  <small><a href="https://nextcloud.com/impressum">Legal Notice</a></small><br/>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+  </body>
+</html>

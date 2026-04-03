@@ -1,0 +1,374 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Upgrade manually &mdash; Nextcloud 14 Administration Manual 14 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'14',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Upgrade via packages" href="package_upgrade.html" />
+    <link rel="prev" title="Upgrade via built-in updater" href="update.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../contents.html">
+          
+
+          
+            
+            <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_server/index.html">Server configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_user/index.html">User management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_files/index.html">File sharing and management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../file_workflows/index.html">File workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_database/index.html">Database configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_mimetypes/index.html">Mimetypes management</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Maintenance</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="backup.html">Backup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="restore.html">Restoring backup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="upgrade.html">How to upgrade</a></li>
+<li class="toctree-l2"><a class="reference internal" href="update.html">Upgrade via built-in updater</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Upgrade manually</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#previous-nextcloud-releases">Previous Nextcloud releases</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#troubleshooting">Troubleshooting</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="package_upgrade.html">Upgrade via packages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migrating.html">Migrating to a different server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migrating_owncloud.html">Migrating from ownCloud</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../issues/index.html">Issues and troubleshooting</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud 14 Administration Manual</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../contents.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Maintenance</a> &raquo;</li>
+        
+      <li>Upgrade manually</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/nextcloud/documentation/edit/stable14/admin_manual/maintenance/manual_upgrade.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="upgrade-manually">
+<h1>Upgrade manually<a class="headerlink" href="#upgrade-manually" title="Permalink to this headline">¶</a></h1>
+<p>Always start by making a fresh backup and disabling all 3rd party apps.</p>
+<ol class="arabic">
+<li><p class="first">Back up your existing Nextcloud Server database, data directory, and
+<code class="docutils literal"><span class="pre">config.php</span></code> file. (See <a class="reference internal" href="backup.html"><span class="doc">Backup</span></a>, for restore information see <a class="reference internal" href="restore.html"><span class="doc">Restoring backup</span></a>)</p>
+</li>
+<li><p class="first">Download and unpack the latest Nextcloud Server release (Archive file) from
+<a class="reference external" href="https://nextcloud.com/install/">nextcloud.com/install/</a> into an empty directory outside
+of your current installation.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">To unpack your new tarball, run:
+unzip nextcloud-[version].zip
+or
+tar -xjf nextcloud-[version].tar.bz2</p>
+</div>
+</li>
+<li><p class="first">Stop your Web server.</p>
+</li>
+<li><p class="first">Rename your current Nextcloud directory, for example <code class="docutils literal"><span class="pre">nextcloud-old</span></code>.</p>
+</li>
+<li><p class="first">Unpacking the new archive creates a new <code class="docutils literal"><span class="pre">nextcloud</span></code> directory populated
+with your new server files. Move this directory and its contents to the
+original location of your old server. For example <code class="docutils literal"><span class="pre">/var/www/</span></code>, so that
+once again you have <code class="docutils literal"><span class="pre">/var/www/nextcloud</span></code>.</p>
+</li>
+<li><p class="first">Copy the <code class="docutils literal"><span class="pre">config/config.php</span></code> file from your old Nextcloud directory to your new
+Nextcloud directory.</p>
+</li>
+<li><p class="first">If you keep your <code class="docutils literal"><span class="pre">data/</span></code> directory in your <code class="docutils literal"><span class="pre">nextcloud/</span></code> directory, copy
+it from your old version of Nextcloud to your new <code class="docutils literal"><span class="pre">nextcloud/</span></code>. If you keep
+it outside of <code class="docutils literal"><span class="pre">nextcloud/</span></code> then you don&#8217;t have to do anything with it,
+because its location is configured in your original <code class="docutils literal"><span class="pre">config.php</span></code>, and
+none of the upgrade steps touch it.</p>
+</li>
+<li><p class="first">If you are using 3rd party application, it may not always be available in your
+upgraded/new Nextcloud instance. To check this, compare a list of the apps in
+the new <code class="docutils literal"><span class="pre">nextcloud/apps/</span></code> folder to a list of the of the apps in your
+backed-up/old <code class="docutils literal"><span class="pre">nextcloud/apps/</span></code> folder. If you find 3rd party apps in the
+old folder that needs to be in the new/upgraded instance, simply copy them over
+and ensure the permissions are set up as shown below.</p>
+</li>
+<li><p class="first">If you are using 3rd party theme make sure to copy it from your <code class="docutils literal"><span class="pre">themes/</span></code>
+directory to your new one. It is possible you will have to make some
+modifications to it after the upgrade.</p>
+</li>
+<li><p class="first">Adjust file ownership and permissions:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">chown</span> <span class="o">-</span><span class="n">R</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span><span class="p">:</span><span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">nextcloud</span>
+<span class="n">find</span> <span class="n">nextcloud</span><span class="o">/</span> <span class="o">-</span><span class="nb">type</span> <span class="n">d</span> <span class="o">-</span><span class="n">exec</span> <span class="n">chmod</span> <span class="mi">750</span> <span class="p">{}</span> \<span class="p">;</span>
+<span class="n">find</span> <span class="n">nextcloud</span><span class="o">/</span> <span class="o">-</span><span class="nb">type</span> <span class="n">f</span> <span class="o">-</span><span class="n">exec</span> <span class="n">chmod</span> <span class="mi">640</span> <span class="p">{}</span> \<span class="p">;</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Restart your Web server.</p>
+</li>
+<li><p class="first">Now launch the upgrade from the command line using <code class="docutils literal"><span class="pre">occ</span></code>, like this
+example on Ubuntu Linux:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">upgrade</span>
+</pre></div>
+</div>
+<p>(!) this MUST be executed from within your nextcloud installation directory</p>
+</li>
+<li><p class="first">The upgrade operation takes a few minutes to a few hours, depending on the
+size of your installation. When it is finished you will see a success
+message, or an error message that will tell where it went wrong.</p>
+</li>
+</ol>
+<p>Login and take a look at the bottom of your Admin page to
+verify the version number. Check your other settings to make sure they&#8217;re
+correct. Go to the Apps page and review the core apps to make sure the right
+ones are enabled. Re-enable your third-party apps.</p>
+<div class="section" id="previous-nextcloud-releases">
+<h2>Previous Nextcloud releases<a class="headerlink" href="#previous-nextcloud-releases" title="Permalink to this headline">¶</a></h2>
+<p>You&#8217;ll find previous Nextcloud releases in the <a class="reference external" href="https://nextcloud.com/changelog/">Nextcloud Server Changelog</a>.</p>
+</div>
+<div class="section" id="troubleshooting">
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permalink to this headline">¶</a></h2>
+<p>Occasionally, <em>files do not show up after a upgrade</em>. A rescan of the files can
+help:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">console</span><span class="o">.</span><span class="n">php</span> <span class="n">files</span><span class="p">:</span><span class="n">scan</span> <span class="o">--</span><span class="nb">all</span>
+</pre></div>
+</div>
+<p>See <a class="reference external" href="https://nextcloud.com/support/">the nextcloud.com support page</a> for further
+resources.</p>
+<p>Sometimes, Nextcloud can get <em>stuck in a upgrade</em> if the web based upgrade
+process is used. This is usually due to the process taking too long and
+encountering a PHP time-out. Stop the upgrade process this way:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">maintenance</span><span class="p">:</span><span class="n">mode</span> <span class="o">--</span><span class="n">off</span>
+</pre></div>
+</div>
+<p>Then start the manual process:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">upgrade</span>
+</pre></div>
+</div>
+<p>If this does not work properly, try the repair function:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">maintenance</span><span class="p">:</span><span class="n">repair</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="package_upgrade.html" class="btn btn-neutral float-right" title="Upgrade via packages" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="update.html" class="btn btn-neutral float-left" title="Upgrade via built-in updater" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021 Nextcloud GmbH.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: 14
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/14/admin_manual">14</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/15/admin_manual">15</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/16/admin_manual">16</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/admin_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/admin_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+   
+
+</body>
+</html>

@@ -1,0 +1,130 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+ISearchComparison
+=================
+
+
+.. php:namespace:: OCP\Files\Search
+
+.. php:interface:: ISearchComparison
+
+
+	:Implemented by:
+		:php:class:`OC\\Files\\Search\\SearchComparison` 
+	
+	
+	:Source:
+		`lib/public/Files/Search/ISearchComparison.php#30 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Search/ISearchComparison.php#L30>`_
+	
+	:Parent:
+		:php:interface:`OCP\\Files\\Search\\ISearchOperator`
+	
+
+Constants
+---------
+
+.. php:const:: COMPARE_EQUAL = eq
+
+	:Source:
+		`lib/public/Files/Search/ISearchComparison.php#31 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Search/ISearchComparison.php#L31>`_
+	
+
+
+.. php:const:: COMPARE_GREATER_THAN = gt
+
+	:Source:
+		`lib/public/Files/Search/ISearchComparison.php#32 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Search/ISearchComparison.php#L32>`_
+	
+
+
+.. php:const:: COMPARE_GREATER_THAN_EQUAL = gte
+
+	:Source:
+		`lib/public/Files/Search/ISearchComparison.php#33 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Search/ISearchComparison.php#L33>`_
+	
+
+
+.. php:const:: COMPARE_LESS_THAN = lt
+
+	:Source:
+		`lib/public/Files/Search/ISearchComparison.php#34 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Search/ISearchComparison.php#L34>`_
+	
+
+
+.. php:const:: COMPARE_LESS_THAN_EQUAL = lte
+
+	:Source:
+		`lib/public/Files/Search/ISearchComparison.php#35 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Search/ISearchComparison.php#L35>`_
+	
+
+
+.. php:const:: COMPARE_LIKE = like
+
+	:Source:
+		`lib/public/Files/Search/ISearchComparison.php#36 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Search/ISearchComparison.php#L36>`_
+	
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public getType()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the type of comparison, one of the ISearchComparison::COMPARE\_\* constants
+			
+		
+		:Source:
+			`lib/public/Files/Search/ISearchComparison.php#44 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Search/ISearchComparison.php#L44>`_
+		
+		
+		:Returns: string 
+		:Since: 12.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getField()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the name of the field to compare with
+			
+			| i\.e\. \'size\', \'name\' or \'mimetype\'
+			
+		
+		:Source:
+			`lib/public/Files/Search/ISearchComparison.php#54 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Search/ISearchComparison.php#L54>`_
+		
+		
+		:Returns: string 
+		:Since: 12.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getValue()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the value to compare the field with
+			
+		
+		:Source:
+			`lib/public/Files/Search/ISearchComparison.php#62 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Search/ISearchComparison.php#L62>`_
+		
+		
+		:Returns: string | int | :any:`\\DateTime <DateTime>` 
+		:Since: 12.0.0 
+	
+	
+

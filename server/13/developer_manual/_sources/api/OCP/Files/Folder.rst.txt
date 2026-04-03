@@ -1,0 +1,378 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+Folder
+======
+
+
+.. php:namespace:: OCP\Files
+
+.. php:interface:: Folder
+
+
+	:Implemented by:
+		:php:class:`OC\\Files\\Node\\LazyFolder` :php:class:`OC\\Files\\Node\\Folder` 
+	
+	
+	:Source:
+		`lib/public/Files/Folder.php#42 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Folder.php#L42>`_
+	
+	:Parent:
+		:php:interface:`OCP\\Files\\Node`
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public getFullPath( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the full path of an item in the folder within owncloud\'s filesystem
+			
+		
+		:Source:
+			`lib/public/Files/Folder.php#51 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Folder.php#L51>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  relative path of an item in the folder
+
+		
+		:Returns: string 
+		:Throws: :any:`\\OCP\\Files\\NotPermittedException <OCP\\Files\\NotPermittedException>` 
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getRelativePath( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the path of an item in the folder relative to the folder
+			
+		
+		:Source:
+			`lib/public/Files/Folder.php#61 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Folder.php#L61>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  absolute path of an item in the folder
+
+		
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+		:Returns: string | null 
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isSubNode( $node)
+	
+		.. rst-class:: phpdoc-description
+		
+			| check if a node is a \(grand\-\)child of the folder
+			
+		
+		:Source:
+			`lib/public/Files/Folder.php#70 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Folder.php#L70>`_
+		
+		
+		:Parameters:
+			* **$node** (:any:`OCP\\Files\\Node <OCP\\Files\\Node>`)  
+
+		
+		:Returns: bool 
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getDirectoryListing()
+	
+		.. rst-class:: phpdoc-description
+		
+			| get the content of this directory
+			
+		
+		:Source:
+			`lib/public/Files/Folder.php#79 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Folder.php#L79>`_
+		
+		
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+		:Returns: :any:`\\OCP\\Files\\Node\[\] <OCP\\Files\\Node>` 
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public get( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the node at $path
+			
+		
+		:Source:
+			`lib/public/Files/Folder.php#89 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Folder.php#L89>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  relative path of the file or folder
+
+		
+		:Returns: :any:`\\OCP\\Files\\Node <OCP\\Files\\Node>` 
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public nodeExists( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check if a file or folder exists in the folder
+			
+		
+		:Source:
+			`lib/public/Files/Folder.php#98 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Folder.php#L98>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  relative path of the file or folder
+
+		
+		:Returns: bool 
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public newFolder( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Create a new folder
+			
+		
+		:Source:
+			`lib/public/Files/Folder.php#108 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Folder.php#L108>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  relative path of the new folder
+
+		
+		:Returns: :any:`\\OCP\\Files\\Folder <OCP\\Files\\Folder>` 
+		:Throws: :any:`\\OCP\\Files\\NotPermittedException <OCP\\Files\\NotPermittedException>` 
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public newFile( $path, $content=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Create a new file
+			
+		
+		:Source:
+			`lib/public/Files/Folder.php#119 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Folder.php#L119>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  relative path of the new file
+			* **$content** (string | resource | null)  content for the new file, since 19.0.0
+
+		
+		:Returns: :any:`\\OCP\\Files\\File <OCP\\Files\\File>` 
+		:Throws: :any:`\\OCP\\Files\\NotPermittedException <OCP\\Files\\NotPermittedException>` 
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public search( $query)
+	
+		.. rst-class:: phpdoc-description
+		
+			| search for files with the name matching $query
+			
+		
+		:Source:
+			`lib/public/Files/Folder.php#128 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Folder.php#L128>`_
+		
+		
+		:Parameters:
+			* **$query** (string | :any:`\\OCP\\Files\\Search\\ISearchQuery <OCP\\Files\\Search\\ISearchQuery>`)  
+
+		
+		:Returns: :any:`\\OCP\\Files\\Node\[\] <OCP\\Files\\Node>` 
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public searchByMime( $mimetype)
+	
+		.. rst-class:: phpdoc-description
+		
+			| search for files by mimetype
+			| $mimetype can either be a full mimetype \(image/png\) or a wildcard mimetype \(image\)
+			
+		
+		:Source:
+			`lib/public/Files/Folder.php#138 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Folder.php#L138>`_
+		
+		
+		:Parameters:
+			* **$mimetype** (string)  
+
+		
+		:Returns: :any:`\\OCP\\Files\\Node\[\] <OCP\\Files\\Node>` 
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public searchByTag( $tag, $userId)
+	
+		.. rst-class:: phpdoc-description
+		
+			| search for files by tag
+			
+		
+		:Source:
+			`lib/public/Files/Folder.php#148 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Folder.php#L148>`_
+		
+		
+		:Parameters:
+			* **$tag** (string | int)  tag name or tag id
+			* **$userId** (string)  owner of the tags
+
+		
+		:Returns: :any:`\\OCP\\Files\\Node\[\] <OCP\\Files\\Node>` 
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getById( $id)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get a file or folder inside the folder by it\'s internal id
+			
+			| This method could return multiple entries\. For example once the file/folder
+			| is shared or mounted \(files\_external\) to the user multiple times\.
+			
+		
+		:Source:
+			`lib/public/Files/Folder.php#160 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Folder.php#L160>`_
+		
+		
+		:Parameters:
+			* **$id** (int)  
+
+		
+		:Returns: :any:`\\OCP\\Files\\Node\[\] <OCP\\Files\\Node>` 
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getFreeSpace()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the amount of free space inside the folder
+			
+		
+		:Source:
+			`lib/public/Files/Folder.php#168 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Folder.php#L168>`_
+		
+		
+		:Returns: int 
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isCreatable()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check if new files or folders can be created within the folder
+			
+		
+		:Source:
+			`lib/public/Files/Folder.php#176 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Folder.php#L176>`_
+		
+		
+		:Returns: bool 
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getNonExistingName( $name)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Add a suffix to the name in case the file exists
+			
+		
+		:Source:
+			`lib/public/Files/Folder.php#186 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Folder.php#L186>`_
+		
+		
+		:Parameters:
+			* **$name** (string)  
+
+		
+		:Returns: string 
+		:Throws: :any:`\\OCP\\Files\\NotPermittedException <OCP\\Files\\NotPermittedException>` 
+		:Since: 8.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getRecent( $limit, $offset=0)
+	
+		:Source:
+			`lib/public/Files/Folder.php#194 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Folder.php#L194>`_
+		
+		
+		:Parameters:
+			* **$limit** (int)  
+			* **$offset** (int)  
+
+		
+		:Returns: :any:`\\OCP\\Files\\Node\[\] <OCP\\Files\\Node>` 
+		:Since: 9.1.0 
+	
+	
+

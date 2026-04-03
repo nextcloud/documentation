@@ -1,0 +1,47 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IHandler
+========
+
+
+.. php:namespace:: OCP\Http\WellKnown
+
+.. php:interface:: IHandler
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Interface for an app handler that reacts to requests to Nextcloud\'s well
+		| known URLs, e\.g\. to a WebFinger
+		
+	
+	:Source:
+		`lib/public/Http/WellKnown/IHandler.php#37 <https://github.com/nextcloud/server/blob/stable13/lib/public/Http/WellKnown/IHandler.php#L37>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public handle( $service, $context, $previousResponse)
+	
+		:Source:
+			`lib/public/Http/WellKnown/IHandler.php#48 <https://github.com/nextcloud/server/blob/stable13/lib/public/Http/WellKnown/IHandler.php#L48>`_
+		
+		
+		:Parameters:
+			* **$service** (string)  the name of the well known service, e.g. 'webfinger'
+			* **$context** (:any:`OCP\\Http\\WellKnown\\IRequestContext <OCP\\Http\\WellKnown\\IRequestContext>`)  
+			* **$previousResponse** (:any:`OCP\\Http\\WellKnown\\IResponse <OCP\\Http\\WellKnown\\IResponse>` | null)  the response of the previous handler, if any
+
+		
+		:Returns: :any:`\\OCP\\Http\\WellKnown\\IResponse <OCP\\Http\\WellKnown\\IResponse>` | null a response object if the request could be handled, null otherwise
+		:Since: 21.0.0 
+	
+	
+

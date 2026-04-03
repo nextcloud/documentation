@@ -1,0 +1,947 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+Request
+=======
+
+
+.. php:namespace:: OC\AppFramework\Http
+
+.. php:class:: Request
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Class for accessing variables in the request\.
+		
+		| This class provides an immutable object with request variables\.
+		
+	
+	:Source:
+		`lib/private/AppFramework/Http/Request.php#66 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L66>`_
+	
+	:Implements:
+		:php:interface:`ArrayAccess` :php:interface:`Countable` :php:interface:`OCP\\IRequest` 
+	
+
+Constants
+---------
+
+.. php:const:: USER_AGENT_IE = /\(MSIE\)\|\(Trident\)/
+
+	:Source:
+		`lib/private/AppFramework/Http/Request.php#67 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L67>`_
+	
+
+
+.. php:const:: USER_AGENT_MS_EDGE = /^Mozilla\\/5\\\.0 \\\(\[^\)\]\+\\\) AppleWebKit\\/\[0\-9\.\]\+ \\\(KHTML, like Gecko\\\) Chrome\\/\[0\-9\.\]\+ \(Mobile Safari\|Safari\)\\/\[0\-9\.\]\+ Edge\\/\[0\-9\.\]\+$/
+
+	:Source:
+		`lib/private/AppFramework/Http/Request.php#69 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L69>`_
+	
+
+
+.. php:const:: USER_AGENT_FIREFOX = /^Mozilla\\/5\\\.0 \\\(\[^\)\]\+\\\) Gecko\\/\[0\-9\.\]\+ Firefox\\/\[0\-9\.\]\+$/
+
+	:Source:
+		`lib/private/AppFramework/Http/Request.php#71 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L71>`_
+	
+
+
+.. php:const:: USER_AGENT_CHROME = /^Mozilla\\/5\\\.0 \\\(\[^\)\]\+\\\) AppleWebKit\\/\[0\-9\.\]\+ \\\(KHTML, like Gecko\\\)\( Ubuntu Chromium\\/\[0\-9\.\]\+\|\) Chrome\\/\[0\-9\.\]\+ \(Mobile Safari\|Safari\)\\/\[0\-9\.\]\+\( \(Vivaldi\|Brave\|OPR\)\\/\[0\-9\.\]\+\|\)$/
+
+	:Source:
+		`lib/private/AppFramework/Http/Request.php#73 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L73>`_
+	
+
+
+.. php:const:: USER_AGENT_SAFARI = /^Mozilla\\/5\\\.0 \\\(\[^\)\]\+\\\) AppleWebKit\\/\[0\-9\.\]\+ \\\(KHTML, like Gecko\\\) Version\\/\[0\-9\.\]\+ Safari\\/\[0\-9\.A\-Z\]\+$/
+
+	:Source:
+		`lib/private/AppFramework/Http/Request.php#75 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L75>`_
+	
+
+
+.. php:const:: USER_AGENT_ANDROID_MOBILE_CHROME = \#Android\.\*Chrome/\[\.0\-9\]\*\#
+
+	:Source:
+		`lib/private/AppFramework/Http/Request.php#77 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L77>`_
+	
+
+
+.. php:const:: USER_AGENT_FREEBOX = \#^Mozilla/5\\\.0$\#
+
+	:Source:
+		`lib/private/AppFramework/Http/Request.php#78 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L78>`_
+	
+
+
+.. php:const:: REGEX_LOCALHOST = /^\(127\\\.0\\\.0\\\.1\|localhost\|\\\[::1\\\]\)$/
+
+	:Source:
+		`lib/private/AppFramework/Http/Request.php#79 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L79>`_
+	
+
+
+.. php:const:: USER_AGENT_OWNCLOUD_IOS = /^Mozilla\\/5\\\.0 \\\(iOS\\\) \(ownCloud\|Nextcloud\)\\\-iOS\.\*$/
+
+	:Source:
+		`lib/private/AppFramework/Http/Request.php#84 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L84>`_
+	
+	:Deprecated:  use \\OCP\\IRequest::USER\_AGENT\_CLIENT\_IOS instead
+
+
+.. php:const:: USER_AGENT_OWNCLOUD_ANDROID = /^Mozilla\\/5\\\.0 \\\(Android\\\) ownCloud\\\-android\.\*$/
+
+	:Source:
+		`lib/private/AppFramework/Http/Request.php#88 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L88>`_
+	
+	:Deprecated:  use \\OCP\\IRequest::USER\_AGENT\_CLIENT\_ANDROID instead
+
+
+.. php:const:: USER_AGENT_OWNCLOUD_DESKTOP = /^Mozilla\\/5\\\.0 \\\(\[A\-Za\-z \]\+\\\) \(mirall\|csyncoC\)\\/\.\*$/
+
+	:Source:
+		`lib/private/AppFramework/Http/Request.php#92 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L92>`_
+	
+	:Deprecated:  use \\OCP\\IRequest::USER\_AGENT\_CLIENT\_DESKTOP instead
+
+
+Properties
+----------
+
+.. php:attr:: protected static inputStream
+
+	:Source:
+		`lib/private/AppFramework/Http/Request.php#94 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L94>`_
+	
+
+
+.. php:attr:: protected static content
+
+	:Source:
+		`lib/private/AppFramework/Http/Request.php#95 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L95>`_
+	
+
+
+.. php:attr:: protected static items
+
+	:Source:
+		`lib/private/AppFramework/Http/Request.php#96 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L96>`_
+	
+
+
+.. php:attr:: protected static allowedKeys
+
+	:Source:
+		`lib/private/AppFramework/Http/Request.php#97 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L97>`_
+	
+
+
+.. php:attr:: protected static secureRandom
+
+	:Source:
+		`lib/private/AppFramework/Http/Request.php#110 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L110>`_
+	
+	:Type: :any:`\\OCP\\Security\\ISecureRandom <OCP\\Security\\ISecureRandom>` 
+
+
+.. php:attr:: protected static config
+
+	:Source:
+		`lib/private/AppFramework/Http/Request.php#112 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L112>`_
+	
+	:Type: :any:`\\OCP\\IConfig <OCP\\IConfig>` 
+
+
+.. php:attr:: protected static requestId
+
+	:Source:
+		`lib/private/AppFramework/Http/Request.php#114 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L114>`_
+	
+	:Type: string 
+
+
+.. php:attr:: protected static crypto
+
+	:Source:
+		`lib/private/AppFramework/Http/Request.php#116 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L116>`_
+	
+	:Type: :any:`\\OCP\\Security\\ICrypto <OCP\\Security\\ICrypto>` 
+
+
+.. php:attr:: protected static csrfTokenManager
+
+	:Source:
+		`lib/private/AppFramework/Http/Request.php#118 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L118>`_
+	
+	:Type: :any:`\\OC\\Security\\CSRF\\CsrfTokenManager <OC\\Security\\CSRF\\CsrfTokenManager>` | null 
+
+
+.. php:attr:: protected static contentDecoded
+
+	:Source:
+		`lib/private/AppFramework/Http/Request.php#121 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L121>`_
+	
+	:Type: bool 
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $vars, $secureRandom, $config, $csrfTokenManager=null, $stream=php://input)
+	
+		:Source:
+			`lib/private/AppFramework/Http/Request.php#140 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L140>`_
+		
+		
+		:Parameters:
+			* **$vars** (array)  An associative array with the following optional values:
+			- array 'urlParams' the parameters which were matched from the URL
+			- array 'get' the $_GET array
+			- array|string 'post' the $_POST array or JSON string
+			- array 'files' the $_FILES array
+			- array 'server' the $_SERVER array
+			- array 'env' the $_ENV array
+			- array 'cookies' the $_COOKIE array
+			- string 'method' the request method (GET, POST etc)
+			- string|false 'requesttoken' the requesttoken or false when not available
+			* **$secureRandom** (:any:`OCP\\Security\\ISecureRandom <OCP\\Security\\ISecureRandom>`)  
+			* **$config** (:any:`OCP\\IConfig <OCP\\IConfig>`)  
+			* **$csrfTokenManager** (:any:`OC\\Security\\CSRF\\CsrfTokenManager <OC\\Security\\CSRF\\CsrfTokenManager>` | null)  
+			* **$stream** (string)  
+
+		
+		:See: :any:`https://www\.php\.net/manual/en/reserved\.variables\.php <https://www\.php\.net/manual/en/reserved\.variables\.php>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setUrlParameters( $parameters)
+	
+		:Source:
+			`lib/private/AppFramework/Http/Request.php#171 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L171>`_
+		
+		
+		:Parameters:
+			* **$parameters** (array)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public count()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Countable method
+			
+		
+		:Source:
+			`lib/private/AppFramework/Http/Request.php#183 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L183>`_
+		
+		
+		:Returns: int 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public offsetExists( $offset)
+	
+		.. rst-class:: phpdoc-description
+		
+			| ArrayAccess methods
+			
+			| Gives access to the combined GET, POST and urlParams arrays
+			| 
+			| Examples:
+			| 
+			| $var = $request\[\'myvar\'\];
+			| 
+			| or
+			| 
+			| if\(\!isset\($request\[\'myvar\'\]\) \{
+			| 	// Do something
+			| \}
+			| 
+			| $request\[\'myvar\'\] = \'something\'; // This throws an exception\.
+			
+		
+		:Source:
+			`lib/private/AppFramework/Http/Request.php#207 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L207>`_
+		
+		
+		:Parameters:
+			* **$offset** (string)  The key to lookup
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public offsetGet( $offset)
+	
+		:Source:
+			`lib/private/AppFramework/Http/Request.php#216 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L216>`_
+		
+		
+		:Parameters:
+			* **$offset** (string)  
+
+		
+		:See: :any:`\\OC\\AppFramework\\Http\\offsetExists <OC\\AppFramework\\Http\\offsetExists>` 
+		:Returns: mixed 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public offsetSet( $offset, $value)
+	
+		:Source:
+			`lib/private/AppFramework/Http/Request.php#227 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L227>`_
+		
+		
+		:Parameters:
+			* **$offset** (string)  
+			* **$value** (mixed)  
+
+		
+		:See: :any:`\\OC\\AppFramework\\Http\\offsetExists <OC\\AppFramework\\Http\\offsetExists>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public offsetUnset( $offset)
+	
+		:Source:
+			`lib/private/AppFramework/Http/Request.php#235 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L235>`_
+		
+		
+		:Parameters:
+			* **$offset** (string)  
+
+		
+		:See: :any:`\\OC\\AppFramework\\Http\\offsetExists <OC\\AppFramework\\Http\\offsetExists>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public __set( $name, $value)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Magic property accessors
+			
+		
+		:Source:
+			`lib/private/AppFramework/Http/Request.php#244 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L244>`_
+		
+		
+		:Parameters:
+			* **$name** (string)  
+			* **$value** (mixed)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public __get( $name)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Access request variables by method and name\.
+			
+			| Examples:
+			| 
+			| $request\-\>post\[\'myvar\'\]; // Only look for POST variables
+			| $request\-\>myvar; or $request\-\>\{\'myvar\'\}; or $request\-\>\{$myvar\}
+			| Looks in the combined GET, POST and urlParams array\.
+			| 
+			| If you access e\.g\. \-\>post but the current HTTP request method
+			| is GET a \\LogicException will be thrown\.
+			
+		
+		:Source:
+			`lib/private/AppFramework/Http/Request.php#263 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L263>`_
+		
+		
+		:Parameters:
+			* **$name** (string)  The key to look for.
+
+		
+		:Throws: :any:`\\LogicException <LogicException>` 
+		:Returns: mixed | null 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public __isset( $name)
+	
+		:Source:
+			`lib/private/AppFramework/Http/Request.php#296 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L296>`_
+		
+		
+		:Parameters:
+			* **$name** (string)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public __unset( $id)
+	
+		:Source:
+			`lib/private/AppFramework/Http/Request.php#306 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L306>`_
+		
+		
+		:Parameters:
+			* **$id** (string)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getHeader( $name)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the value for a specific http header\.
+			
+			| This method returns an empty string if the header did not exist\.
+			
+		
+		:Source:
+			`lib/private/AppFramework/Http/Request.php#318 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L318>`_
+		
+		
+		:Parameters:
+			* **$name** (string)  
+
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getParam( $key, $default=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Lets you access post and get parameters by the index
+			| In case of json requests the encoded json body is accessed
+			
+		
+		:Source:
+			`lib/private/AppFramework/Http/Request.php#352 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L352>`_
+		
+		
+		:Parameters:
+			* **$key** (string)  the key which you want to access in the URL Parameter
+			placeholder, $_POST or $_GET array.
+			The priority how they're returned is the following:
+			1. URL parameters
+			2. POST parameters
+			3. GET parameters
+			* **$default** (mixed)  If the key is not found, this value will be returned
+
+		
+		:Returns: mixed the content of the array
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getParams()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns all params that were received, be it from the request
+			| \(as GET or POST\) or throuh the URL by the route
+			
+		
+		:Source:
+			`lib/private/AppFramework/Http/Request.php#363 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L363>`_
+		
+		
+		:Returns: array the array with all parameters
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getMethod()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the method of the request
+			
+		
+		:Source:
+			`lib/private/AppFramework/Http/Request.php#371 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L371>`_
+		
+		
+		:Returns: string the method of the request \(POST, GET, etc\)
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getUploadedFile( $key)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Shortcut for accessing an uploaded file through the $\_FILES array
+			
+		
+		:Source:
+			`lib/private/AppFramework/Http/Request.php#380 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L380>`_
+		
+		
+		:Parameters:
+			* **$key** (string)  the key that will be taken from the $_FILES array
+
+		
+		:Returns: array the file in the $\_FILES element
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getEnv( $key)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Shortcut for getting env variables
+			
+		
+		:Source:
+			`lib/private/AppFramework/Http/Request.php#389 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L389>`_
+		
+		
+		:Parameters:
+			* **$key** (string)  the key that will be taken from the $_ENV array
+
+		
+		:Returns: array the value in the $\_ENV element
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getCookie( $key)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Shortcut for getting cookie variables
+			
+		
+		:Source:
+			`lib/private/AppFramework/Http/Request.php#398 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L398>`_
+		
+		
+		:Parameters:
+			* **$key** (string)  the key that will be taken from the $_COOKIE array
+
+		
+		:Returns: string the value in the $\_COOKIE element
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected getContent()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the request body content\.
+			
+			| If the HTTP request method is PUT and the body
+			| not application/x\-www\-form\-urlencoded or application/json a stream
+			| resource is returned, otherwise an array\.
+			
+		
+		:Source:
+			`lib/private/AppFramework/Http/Request.php#413 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L413>`_
+		
+		
+		:Returns: array | string | resource The request body content or a resource to read the body stream\.
+		:Throws: :any:`\\LogicException <LogicException>` 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected decodeContent()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Attempt to decode the content and populate parameters
+			
+		
+		:Source:
+			`lib/private/AppFramework/Http/Request.php#438 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L438>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public passesCSRFCheck()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Checks if the CSRF check was correct
+			
+		
+		:Source:
+			`lib/private/AppFramework/Http/Request.php#476 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L476>`_
+		
+		
+		:Returns: bool true if CSRF check passed
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getCookieParams()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Wrapper around session\_get\_cookie\_params
+			
+		
+		:Source:
+			`lib/private/AppFramework/Http/Request.php#521 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L521>`_
+		
+		
+		:Returns: array 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected getProtectedCookieName( $name)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Appends the \_\_Host\- prefix to the cookie if applicable
+			
+		
+		:Source:
+			`lib/private/AppFramework/Http/Request.php#531 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L531>`_
+		
+		
+		:Parameters:
+			* **$name** (string)  
+
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public passesStrictCookieCheck()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Checks if the strict cookie has been sent with the request if the request
+			| is including any cookies\.
+			
+		
+		:Source:
+			`lib/private/AppFramework/Http/Request.php#548 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L548>`_
+		
+		
+		:Returns: bool 
+		:Since: 9.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public passesLaxCookieCheck()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Checks if the lax cookie has been sent with the request if the request
+			| is including any cookies\.
+			
+		
+		:Source:
+			`lib/private/AppFramework/Http/Request.php#568 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L568>`_
+		
+		
+		:Returns: bool 
+		:Since: 9.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getId()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns an ID for the request, value is not guaranteed to be unique and is mostly meant for logging
+			| If \`mod\_unique\_id\` is installed this value will be taken\.
+			
+		
+		:Source:
+			`lib/private/AppFramework/Http/Request.php#586 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L586>`_
+		
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected matchesTrustedProxy( $trustedProxy, $remoteAddress)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Checks if given $remoteAddress matches given $trustedProxy\.
+			
+			| If $trustedProxy is an IPv4 IP range given in CIDR notation, true will be returned if
+			| $remoteAddress is an IPv4 address within that IP range\.
+			| Otherwise $remoteAddress will be compared to $trustedProxy literally and the result
+			| will be returned\.
+			
+		
+		:Source:
+			`lib/private/AppFramework/Http/Request.php#607 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L607>`_
+		
+		
+		:Returns: bool true if $remoteAddress matches $trustedProxy, false otherwise
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected isTrustedProxy( $trustedProxies, $remoteAddress)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Checks if given $remoteAddress matches any entry in the given array $trustedProxies\.
+			
+			| For details regarding what "match" means, refer to \`matchesTrustedProxy\`\.
+			
+		
+		:Source:
+			`lib/private/AppFramework/Http/Request.php#627 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L627>`_
+		
+		
+		:Returns: bool true if $remoteAddress matches any entry in $trustedProxies, false otherwise
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getRemoteAddress()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the remote address, if the connection came from a trusted proxy
+			| and \`forwarded\_for\_headers\` has been configured then the IP address
+			| specified in this header will be returned instead\.
+			
+			| Do always use this instead of $\_SERVER\[\'REMOTE\_ADDR\'\]
+			
+		
+		:Source:
+			`lib/private/AppFramework/Http/Request.php#644 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L644>`_
+		
+		
+		:Returns: string IP address
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getServerProtocol()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the server protocol\. It respects one or more reverse proxies servers
+			| and load balancers
+			
+		
+		:Source:
+			`lib/private/AppFramework/Http/Request.php#692 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L692>`_
+		
+		
+		:Returns: string Server protocol \(http or https\)
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getHttpProtocol()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the used HTTP protocol\.
+			
+		
+		:Source:
+			`lib/private/AppFramework/Http/Request.php#726 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L726>`_
+		
+		
+		:Returns: string HTTP protocol\. HTTP/2, HTTP/1\.1 or HTTP/1\.0\.
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getRequestUri()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the request uri, even if the website uses one or more
+			| reverse proxies
+			
+		
+		:Source:
+			`lib/private/AppFramework/Http/Request.php#751 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L751>`_
+		
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getRawPathInfo()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get raw PathInfo from request \(not urldecoded\)
+			
+		
+		:Source:
+			`lib/private/AppFramework/Http/Request.php#764 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L764>`_
+		
+		
+		:Throws: :any:`\\Exception <Exception>` 
+		:Returns: string Path info
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getPathInfo()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get PathInfo from request
+			
+		
+		:Source:
+			`lib/private/AppFramework/Http/Request.php#809 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L809>`_
+		
+		
+		:Throws: :any:`\\Exception <Exception>` 
+		:Returns: string | bool Path info or false when not found
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getScriptName()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the script name, even if the website uses one or more
+			| reverse proxies
+			
+		
+		:Source:
+			`lib/private/AppFramework/Http/Request.php#829 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L829>`_
+		
+		
+		:Returns: string the script name
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isUserAgent( $agent)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Checks whether the user agent matches a given regex
+			
+		
+		:Source:
+			`lib/private/AppFramework/Http/Request.php#846 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L846>`_
+		
+		
+		:Parameters:
+			* **$agent** (array)  array of agent names
+
+		
+		:Returns: bool true if at least one of the given agent matches, false otherwise
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getInsecureServerHost()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the unverified server host from the headers without checking
+			| whether it is a trusted domain
+			
+		
+		:Source:
+			`lib/private/AppFramework/Http/Request.php#863 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L863>`_
+		
+		
+		:Returns: string Server host
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getServerHost()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the server host from the headers, or the first configured
+			| trusted domain if the host isn\'t in the trusted list
+			
+		
+		:Source:
+			`lib/private/AppFramework/Http/Request.php#893 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Request.php#L893>`_
+		
+		
+		:Returns: string Server host
+	
+	
+

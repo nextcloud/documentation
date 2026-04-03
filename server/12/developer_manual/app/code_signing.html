@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Code Signing &#8212; Nextcloud Developer Manual 12 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/main.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '12',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.1.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Design Guidelines" href="../design/index.html" />
+    <link rel="prev" title="App store publishing" href="publishing.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#1d2d44">
+<link rel="shortcut icon" href="https://nextcloud.com/wp-content/themes/next/assets/img/common/favicon.png" />
+<link rel="apple-touch-icon-precomposed" href="https://nextcloud.com/wp-content/themes/next/assets/img/common/favicon.png" />
+<!-- Piwik -->
+<script type="text/javascript">
+    var _paq = _paq || [];
+    _paq.push(['trackPageView']);
+    _paq.push(['enableLinkTracking']);
+    (function() {
+        var u="//stats.nextcloud.com/";
+        _paq.push(['setTrackerUrl', u+'piwik.php']);
+        _paq.push(['setSiteId', 3]);
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+        g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+    })();
+</script>
+<noscript><p><img src="//stats.nextcloud.com/piwik.php?idsite=3" style="border:0;" alt="" /></p></noscript>
+<!-- End Piwik Code -->
+
+  </head>
+  <body role="document">
+
+<header class="banner navbar navbar-default navbar-static-top" role="banner">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+       <a class="brand" href="http://nextcloud.com/" rel="home" title="Nextcloud.com"><img class="logo" src="../_static/img/logo.svg" itemprop="logo"></a>
+    </div>
+
+    <nav class="collapse navbar-collapse" role="navigation">
+      <ul id="menu-header" class="nav navbar-nav">
+          <li><a target="_blank" href="https://demo.nextcloud.com">Demo</a></li>
+          <li><a href="https://nextcloud.com/news/">News</a></li>
+          <li><a href="https://nextcloud.com/features/">Features</a></li>
+          <li><a href="https://nextcloud.com/about/">About us</a></li>
+          <li><a href="https://nextcloud.com/contribute/">Get involved</a></li>
+          <li><a href="https://nextcloud.com/support/">Support</a></li>
+          <li><a href="https://nextcloud.com/enterprise/">Enterprise</a></li>
+          <li class="menu-install"><a href="https://nextcloud.com/install/">Download</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+
+
+<div class="container" style="background-color: #E6C4C2;color: #b10000;border: #b10000 2px solid;border-right: none;border-left: none;padding: 15px 10px;">You are reading an outdated version of this documentation. Please check out the <a href="https://docs.nextcloud.com/server/stable/developer_manual/" style="
+color: rgb(177,0,0);text-decoration: underline;">latest version</a> of the developer manual.</div>
+
+
+
+
+
+<div class="wrap container not-front">
+  <div class="content row">
+  <main class="main">
+    <div class="row page-content-header">
+      <div class="col-md-6">
+        <h1><a href="../index.html">Nextcloud Developer Manual</a></h1>
+      </div>
+      <div class="col-md-5 col-md-offset-1">
+      
+        <form class="headersearch" style="margin: 16px 0;" action="../search.html" method="get">
+        <input type="text" value="" name="q" id="q" class="form-control" /> 
+        <button  class="btn btn-default" type="submit" id="searchsubmit">Search</button>
+        </form>
+      
+      </div>
+    </div>
+    
+			<div class="row">
+				<div class="col-md-3">
+					<div class="sidebar">
+							<div class="menu-support-container">
+								<ul id="menu-support" class="menu">
+									<ul>
+										
+<li><a href="../index.html">Table of Contents</a></li>
+									</ul>
+                  <ul>
+<li class="toctree-l1"><a class="reference internal" href="../general/index.html">General Contributor Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">App Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../design/index.html">Design Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../android_library/index.html">Android Application Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client_apis/index.html">Client APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../core/index.html">Core Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bugtracker/index.html">Bugtracker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../commun/index.html">Help and Communication</a></li>
+</ul>
+
+								</ul>
+							</div>
+					</div>
+				</div>
+        
+
+				<div class="col-md-9">
+					<div class="page-content">
+            
+<ul class="prevnext-title list-unstyled list-inline">
+  <li class="prev">
+    <a href="publishing.html" title="Previous Chapter: App store publishing"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; App store publishing</span>
+    </a>
+  </li>
+  <li class="next">
+    <a href="../design/index.html" title="Next Chapter: Design Guidelines"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">Design Guidelines &raquo;</span>
+    </a>
+  </li>
+</ul>
+						
+  <div class="section" id="code-signing">
+<h1>Code Signing<a class="headerlink" href="#code-signing" title="Permalink to this headline">¶</a></h1>
+<p>Nextcloud supports code signing for the core releases, and for Nextcloud
+applications. Code signing gives our users an additional layer of security by
+ensuring that nobody other than authorized persons can push updates.</p>
+<p>It also ensures that all upgrades have been executed properly, so that no files
+are left behind, and all old files are properly replaced. In the past, invalid
+updates were a significant source of errors when updating Nextcloud.</p>
+<div class="section" id="faq">
+<h2>FAQ<a class="headerlink" href="#faq" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="why-did-nextcloud-add-code-signing">
+<h3>Why Did Nextcloud Add Code Signing?<a class="headerlink" href="#why-did-nextcloud-add-code-signing" title="Permalink to this headline">¶</a></h3>
+<p>By supporting Code Signing we add another layer of security by ensuring that
+nobody other than authorized persons can push updates for applications, and
+ensuring proper upgrades.</p>
+</div>
+<div class="section" id="do-we-lock-down-nextcloud">
+<h3>Do We Lock Down Nextcloud?<a class="headerlink" href="#do-we-lock-down-nextcloud" title="Permalink to this headline">¶</a></h3>
+<p>The Nextcloud project is open source and always will be. We do not want to make
+it more difficult for our users to run Nextcloud. Any code signing errors on
+upgrades will not prevent Nextcloud from running, but will display a warning on
+the Admin page. For applications that are not tagged &#8220;Official&#8221; the code signing
+process is optional.</p>
+</div>
+<div class="section" id="not-open-source-anymore">
+<h3>Not Open Source Anymore?<a class="headerlink" href="#not-open-source-anymore" title="Permalink to this headline">¶</a></h3>
+<p>The Nextcloud project is open source and always will be. The code signing
+process is optional, though highly recommended. The code check for the
+core parts of Nextcloud is enabled when the Nextcloud release version branch has
+been set to stable.</p>
+<p>For custom distributions of Nextcloud it is recommended to change the release
+version branch in version.php to something else than &#8220;stable&#8221;.</p>
+</div>
+<div class="section" id="is-code-signing-mandatory-for-apps">
+<h3>Is Code Signing Mandatory For Apps?<a class="headerlink" href="#is-code-signing-mandatory-for-apps" title="Permalink to this headline">¶</a></h3>
+<p>Code signing is required for all applications on apps.nextcloud.com.</p>
+</div>
+</div>
+<div class="section" id="technical-details">
+<h2>Technical details<a class="headerlink" href="#technical-details" title="Permalink to this headline">¶</a></h2>
+<p>Nextcloud uses a X.509 based approach to handle authentication of code. Each
+Nextcloud release contains the certificate of a shipped Nextcloud Code Signing
+Root Authority. The private key of this certificate is only accessible to the
+project leader, who may grant trusted project members with a copy of this
+private key.</p>
+<p>This Root Authority is only used for signing certificate signing requests (CSRs)
+for additional certificates. Certificates issued by the Root Authority must
+always be limited to a specific scope, usually the application identifier.
+This enforcement is done using the <code class="docutils literal"><span class="pre">CN</span></code> attribute of the certificate.</p>
+<p>Code signing is then done by creating a  <code class="docutils literal"><span class="pre">signature.json</span></code> file with the
+following content:</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;hashes&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;/filename.php&quot;</span><span class="p">:</span>
+        <span class="s2">&quot;2401fed2eea6f2c1027c482a633e8e25cd46701f811e2d2c10dc213fd95fa60e350b</span>
+<span class="s2">        ccbbebdccc73a042b1a2799f673fbabadc783284cc288e4f1a1eacb74e3d&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;/lib/base.php&quot;</span><span class="p">:</span>
+        <span class="s2">&quot;55548cc16b457cd74241990cc9d3b72b6335f2e5f45eee95171da024087d114fcbc2</span>
+<span class="s2">        effc3d5818a6d5d55f2ae960ab39fd0414d0c542b72a3b9e08eb21206dd9&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;certificate&quot;</span><span class="p">:</span> <span class="s2">&quot;-----BEGIN CERTIFICATE-----</span>
+<span class="s2">    MIIBvTCCASagAwIBAgIUPvawyqJwCwYazcv7iz16TWxfeUMwDQYJKoZIhvcNAQEF\</span>
+<span class="s2">    nBQAwIzEhMB8GA1UECgwYb3duQ2xvdWQgQ29kZSBTaWduaW5nIENBMB4XDTE1MTAx\</span>
+<span class="s2">    nNDEzMTcxMFoXDTE2MTAxNDEzMTcxMFowEzERMA8GA1UEAwwIY29udGFjdHMwgZ8w\</span>
+<span class="s2">    nDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBANoQesGdCW0L2L+a2xITYipixkScrIpB\</span>
+<span class="s2">    nkX5Snu3fs45MscDb61xByjBSlFgR4QI6McoCipPw4SUr28EaExVvgPSvqUjYLGps\</span>
+<span class="s2">    nfiv0Cvgquzbx/X3mUcdk9LcFo1uWGtrTfkuXSKX41PnJGTr6RQWGIBd1V52q1qbC\</span>
+<span class="s2">    nJKkfzyeMeuQfAgMBAAEwDQYJKoZIhvcNAQEFBQADgYEAvF/KIhRMQ3tYTmgHWsiM\</span>
+<span class="s2">    nwDMgIDb7iaHF0fS+/Nvo4PzoTO/trev6tMyjLbJ7hgdCpz/1sNzE11Cibf6V6dsz\</span>
+<span class="s2">    njCE9invP368Xv0bTRObRqeSNsGogGl5ceAvR0c9BG+NRIKHcly3At3gLkS2791bC\</span>
+<span class="s2">    niG+UxI/MNcWV0uJg9S63LF8=\n</span>
+<span class="s2">    -----END CERTIFICATE-----&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;signature&quot;</span><span class="p">:</span> <span class="s2">&quot;U29tZVNpZ25lZERhdGFFeGFtcGxl&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">hashes</span></code> is an array of all files in the folder with their corresponding
+SHA-512 hashes. <code class="docutils literal"><span class="pre">certificate</span></code> is the certificate used for signing. It has to
+be issued by the Nextcloud Root Authority, and its CN needs to be permitted to
+perform the required action. The <code class="docutils literal"><span class="pre">signature</span></code> is then a signature of the hashes
+which can be verified using the certificate.</p>
+<p>Having the certificate bundled within the <code class="docutils literal"><span class="pre">signature.json</span></code> file has the
+advantage that even if a developer loses their certificate, future updates can
+still be ensured by having a new certificate issued.</p>
+</div>
+<div class="section" id="how-code-signing-affects-apps-in-the-app-store">
+<h2>How Code Signing Affects Apps in the App Store<a class="headerlink" href="#how-code-signing-affects-apps-in-the-app-store" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Apps which have an <code class="docutils literal"><span class="pre">official</span></code> tag <strong>MUST</strong> be code signed.
+Unsigned <code class="docutils literal"><span class="pre">official</span></code> apps won&#8217;t be installable anymore.</li>
+<li>Apps which have been signed in a previous release <strong>MUST</strong> be code-signed in
+all future releases as well, otherwise the update will be refused.</li>
+</ul>
+</div>
+<div class="section" id="how-to-get-your-app-signed">
+<h2>How to Get Your App Signed<a class="headerlink" href="#how-to-get-your-app-signed" title="Permalink to this headline">¶</a></h2>
+<p>The following commands require that you have OpenSSL installed on your machine.
+Ensure that you keep all generated files to sign your application. The following
+examples will assume that you are trying to sign an application named
+&#8220;contacts&#8221;.</p>
+<ol class="arabic simple">
+<li>Generate a private key and CSR: <code class="docutils literal"><span class="pre">openssl</span> <span class="pre">req</span> <span class="pre">-nodes</span> <span class="pre">-newkey</span> <span class="pre">rsa:4096</span> <span class="pre">-keyout</span> <span class="pre">contacts.key</span> <span class="pre">-out</span> <span class="pre">contacts.csr</span> <span class="pre">-subj</span> <span class="pre">&quot;/CN=contacts&quot;</span></code>. Replace &#8220;contacts&#8221; with your application identifier.</li>
+<li>Post the CSR at <a class="reference external" href="https://github.com/nextcloud/app-certificate-requests">https://github.com/nextcloud/app-certificate-requests</a>, and configure
+your GitHub account to show your mail address in your profile. Nextcloud
+might ask you for further information to verify that you&#8217;re the legitimate
+owner of the application. Make sure to keep the private key file (<code class="docutils literal"><span class="pre">contacts.key</span></code>)
+secret and not disclose it to any third parties.</li>
+<li>Nextcloud will provide you with the signed certificate.</li>
+<li>Run <code class="docutils literal"><span class="pre">./occ</span> <span class="pre">integrity:sign-app</span></code> to sign your application, and specify
+your private and public keys as well as the path to the application.
+A valid example looks like: <code class="docutils literal"><span class="pre">./occ</span> <span class="pre">integrity:sign-app</span> <span class="pre">--privateKey=/Users/lukasreschke/contacts.key</span>
+<span class="pre">--certificate=/Users/lukasreschke/CA/contacts.crt</span> <span class="pre">--path=/Users/lukasreschke/Programming/contacts</span></code></li>
+</ol>
+<p>The occ tool will store a <code class="docutils literal"><span class="pre">signature.json</span></code> file within the <code class="docutils literal"><span class="pre">appinfo</span></code> folder
+of your application. Then compress the application folder and upload it to
+apps.nextcloud.com. Be aware that doing any changes to the application after it
+has been signed requires another signing. So if you do not want to have some
+files shipped remove them before running the signing command.</p>
+<p>In case you lose your certificate please submit a new CSR as described above and
+mention that you have lost the previous one. Nextcloud will revoke the old
+certificate.</p>
+<p>If you maintain an app together with multiple people it is recommended to
+designate a release manager responsible for the signing process as well
+as the uploading to apps.nextcloud.com. If there are cases where this is not
+feasible and multiple certificates are required Nextcloud can create them on a
+case by case basis. We do not recommend developers to share their private key.</p>
+</div>
+<div class="section" id="errors">
+<h2>Errors<a class="headerlink" href="#errors" title="Permalink to this headline">¶</a></h2>
+<p>The following errors can be encountered when trying to verify a code signature.
+For information about how to get access to those results please refer to the
+Issues section of the Nextcloud Server Administration
+manual.</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">INVALID_HASH</span></code><ul>
+<li>The file has a different hash than specified within <code class="docutils literal"><span class="pre">signature.json</span></code>. This
+usually happens when the file has been modified after writing the signature
+data.</li>
+</ul>
+</li>
+<li><code class="docutils literal"><span class="pre">MISSING_FILE</span></code><ul>
+<li>The file cannot be found but has been specified within <code class="docutils literal"><span class="pre">signature.json</span></code>.
+Either a required file has been left out, or <code class="docutils literal"><span class="pre">signature.json</span></code> needs to be
+edited.</li>
+</ul>
+</li>
+<li><code class="docutils literal"><span class="pre">EXTRA_FILE</span></code><ul>
+<li>The file does not exist in <code class="docutils literal"><span class="pre">signature.json</span></code>. This usually happens when a
+file has been removed and <code class="docutils literal"><span class="pre">signature.json</span></code> has not been updated.</li>
+</ul>
+</li>
+<li><code class="docutils literal"><span class="pre">EXCEPTION</span></code><ul>
+<li>Another exception has prevented the code verification. There are currently
+these following exceptions:<ul>
+<li><code class="docutils literal"><span class="pre">Signature</span> <span class="pre">data</span> <span class="pre">not</span> <span class="pre">found.</span></code><ul>
+<li>The app has mandatory code signing enforced but no <code class="docutils literal"><span class="pre">signature.json</span></code>
+file has been found in its <code class="docutils literal"><span class="pre">appinfo</span></code> folder.</li>
+</ul>
+</li>
+<li><code class="docutils literal"><span class="pre">Certificate</span> <span class="pre">is</span> <span class="pre">not</span> <span class="pre">valid.</span></code><ul>
+<li>The certificate has not been issued by the official Nextcloud Code
+Signing Root Authority.</li>
+</ul>
+</li>
+<li><code class="docutils literal"><span class="pre">Certificate</span> <span class="pre">is</span> <span class="pre">not</span> <span class="pre">valid</span> <span class="pre">for</span> <span class="pre">required</span> <span class="pre">scope.</span> <span class="pre">(Requested:</span> <span class="pre">%s,</span> <span class="pre">current:</span>
+<span class="pre">%s)</span></code><ul>
+<li>The certificate is not valid for the defined application. Certificates
+are only valid for the defined app identifier and cannot be used for
+others.</li>
+</ul>
+</li>
+<li><code class="docutils literal"><span class="pre">Signature</span> <span class="pre">could</span> <span class="pre">not</span> <span class="pre">get</span> <span class="pre">verified.</span></code><ul>
+<li>There was a problem with verifying the signature of <code class="docutils literal"><span class="pre">signature.json</span></code>.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+            
+<ul class="prevnext-title list-unstyled list-inline">
+  <li class="prev">
+    <a href="publishing.html" title="Previous Chapter: App store publishing"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; App store publishing</span>
+    </a>
+  </li>
+  <li class="next">
+    <a href="../design/index.html" title="Next Chapter: Design Guidelines"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">Design Guidelines &raquo;</span>
+    </a>
+  </li>
+</ul>
+					</div>
+				</div>
+			</div>
+  </main>  
+  </div>
+</div>
+<div class="container">
+<div class="row">
+    <div class="col-lg-12 footer-social-icons">
+      <p class="text-center"><a target="_blank" href="https://plus.google.com/104036748063781940910/about"><img width=50 src="../_static/img/social/googleplus.svg" title="Follow us on Google Plus!" alt="Follow us on Google Plus!"></img></a>
+      <a target="_blank" href="https://www.facebook.com/Nextclouders"><img width=50 src="../_static/img/social/facebook.svg" title="Like our facebook page!" alt="Like our facebook page!"></img></a>
+      <a target="_blank" href="https://twitter.com/Nextclouders"><img width=50 src="../_static/img/social/twitter.svg" title="Subscribe to our twitter channel!" alt="Subscribe to our twitter channel!"></img></a>
+      <a target="_blank" href="https://nextcloud.com/blogfeed"><img class="img-circle" width=50 src="../_static/img/social/rss.svg" title="Subscribe to our news feed!" alt="Subscribe to our news feed!"></img></a>
+      <a target="_blank" href="https://newsletter.nextcloud.com/"><img class="img-circle" width=50 src="../_static/img/social/mail.svg"  title="Subscribe to our newsletter!" alt="Subscribe to our newsletter!"></img></a></p>
+    </div>
+    <div class="text-center">
+      <p>All documentation licensed under the <a href="https://creativecommons.org/licenses/by/3.0/us/">Creative Commons Attribution 3.0 Unported license</a>.</p>
+      <p><a href="https://github.com/nextcloud/documentation/graphs/contributors">See who contributed to our documentation/credits</a>.</p>
+    </div>
+</div>
+</div>
+<footer class="content-info" role="contentinfo">
+<div class="container">
+   <div class="row">
+     <div class="col-sm-2 col-sm-offset-1">
+        <div class="footer-nav">
+          <h4>About Nextcloud</h4>
+          <ul id="menu-about" class="menu">
+            <li><a href="https://nextcloud.com/about/">About us</a></li>
+            <li><a href="https://nextcloud.com/contact/">Contact us</a></li>
+            <li><a href="https://nextcloud.com/press/">Press</a></li>
+            <li><a href="https://nextcloud.com/privacy/">Privacy policy</a></li>
+          </ul>
+        </div>
+     </div>
+     <div class="col-sm-2 col-sm-offset-2">
+     </div>
+     <div class="col-sm-2 col-sm-offset-2">
+        <div class="footer-nav">
+          <h4>Interact</h4>
+          <ul id="menu-interact" class="menu">
+            <li class="menu-irc-channel"><a href="https://webchat.freenode.net/?channels=nextcloud">IRC Channel</a></li>
+            <li class="menu-forums"><a href="https://help.nextcloud.com/">Forums</a></li>
+          </ul>
+        </div>
+     </div>
+   </div>
+   <div class="row">
+      <div class="col-lg-12 footer-text">
+        <p>
+              &copy; Copyright 2012-2017, The Nextcloud developers.  <small><a href="https://nextcloud.com/impressum">Legal Notice</a></small><br/>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+  </body>
+</html>

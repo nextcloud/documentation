@@ -1,0 +1,169 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IUserStatus
+===========
+
+
+.. php:namespace:: OCP\UserStatus
+
+.. php:interface:: IUserStatus
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Interface IUserStatus
+		
+	
+	:Source:
+		`lib/public/UserStatus/IUserStatus.php#36 <https://github.com/nextcloud/server/blob/stable13/lib/public/UserStatus/IUserStatus.php#L36>`_
+	
+
+Constants
+---------
+
+.. php:const:: ONLINE = online
+
+	:Source:
+		`lib/public/UserStatus/IUserStatus.php#42 <https://github.com/nextcloud/server/blob/stable13/lib/public/UserStatus/IUserStatus.php#L42>`_
+	
+	:Type: string 
+	:Since: 20.0.0 
+
+
+.. php:const:: AWAY = away
+
+	:Source:
+		`lib/public/UserStatus/IUserStatus.php#48 <https://github.com/nextcloud/server/blob/stable13/lib/public/UserStatus/IUserStatus.php#L48>`_
+	
+	:Type: string 
+	:Since: 20.0.0 
+
+
+.. php:const:: DND = dnd
+
+	:Source:
+		`lib/public/UserStatus/IUserStatus.php#54 <https://github.com/nextcloud/server/blob/stable13/lib/public/UserStatus/IUserStatus.php#L54>`_
+	
+	:Type: string 
+	:Since: 20.0.0 
+
+
+.. php:const:: OFFLINE = offline
+
+	:Source:
+		`lib/public/UserStatus/IUserStatus.php#60 <https://github.com/nextcloud/server/blob/stable13/lib/public/UserStatus/IUserStatus.php#L60>`_
+	
+	:Type: string 
+	:Since: 20.0.0 
+
+
+.. php:const:: INVISIBLE = invisible
+
+	:Source:
+		`lib/public/UserStatus/IUserStatus.php#66 <https://github.com/nextcloud/server/blob/stable13/lib/public/UserStatus/IUserStatus.php#L66>`_
+	
+	:Type: string 
+	:Since: 20.0.0 
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public getUserId()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the user this status is connected to
+			
+		
+		:Source:
+			`lib/public/UserStatus/IUserStatus.php#74 <https://github.com/nextcloud/server/blob/stable13/lib/public/UserStatus/IUserStatus.php#L74>`_
+		
+		
+		:Returns: string 
+		:Since: 20.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getStatus()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the status
+			
+			| It will return one of the constants defined above\.
+			| It will never return invisible\. In case a user marked
+			| themselves as invisible, it will return offline\.
+			
+		
+		:Source:
+			`lib/public/UserStatus/IUserStatus.php#86 <https://github.com/nextcloud/server/blob/stable13/lib/public/UserStatus/IUserStatus.php#L86>`_
+		
+		
+		:Returns: string See IUserStatus constants
+		:Since: 20.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getMessage()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get a custom message provided by the user
+			
+		
+		:Source:
+			`lib/public/UserStatus/IUserStatus.php#94 <https://github.com/nextcloud/server/blob/stable13/lib/public/UserStatus/IUserStatus.php#L94>`_
+		
+		
+		:Returns: string | null 
+		:Since: 20.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getIcon()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get a custom icon provided by the user
+			
+		
+		:Source:
+			`lib/public/UserStatus/IUserStatus.php#102 <https://github.com/nextcloud/server/blob/stable13/lib/public/UserStatus/IUserStatus.php#L102>`_
+		
+		
+		:Returns: string | null 
+		:Since: 20.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getClearAt()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Gets the time that the custom status will be cleared at
+			
+		
+		:Source:
+			`lib/public/UserStatus/IUserStatus.php#110 <https://github.com/nextcloud/server/blob/stable13/lib/public/UserStatus/IUserStatus.php#L110>`_
+		
+		
+		:Returns: :any:`\\DateTimeImmutable <DateTimeImmutable>` | null 
+		:Since: 20.0.0 
+	
+	
+

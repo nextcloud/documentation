@@ -1,0 +1,279 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+ISystemTagManager
+=================
+
+
+.. php:namespace:: OCP\SystemTag
+
+.. php:interface:: ISystemTagManager
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Public interface to access and manage system\-wide tags\.
+		
+	
+	:Implemented by:
+		:php:class:`OC\\SystemTag\\SystemTagManager` 
+	
+	
+	:Source:
+		`lib/public/SystemTag/ISystemTagManager.php#37 <https://github.com/nextcloud/server/blob/stable13/lib/public/SystemTag/ISystemTagManager.php#L37>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public getTagsByIds( $tagIds)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the tag objects matching the given tag ids\.
+			
+		
+		:Source:
+			`lib/public/SystemTag/ISystemTagManager.php#52 <https://github.com/nextcloud/server/blob/stable13/lib/public/SystemTag/ISystemTagManager.php#L52>`_
+		
+		
+		:Parameters:
+			* **$tagIds** (array | string)  id or array of unique ids of the tag to retrieve
+
+		
+		:Returns: :any:`\\OCP\\SystemTag\\ISystemTag\[\] <OCP\\SystemTag\\ISystemTag>` array of system tags with tag id as key
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` if at least one given tag ids is invalid \(string instead of integer, etc\.\)
+		:Throws: :any:`\\OCP\\SystemTag\\TagNotFoundException <OCP\\SystemTag\\TagNotFoundException>` if at least one given tag ids did no exist
+			The message contains a json\_encoded array of the ids that could not be found
+		
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` if at least one given tag ids is invalid \(string instead of integer, etc\.\)
+		:Throws: :any:`\\OCP\\SystemTag\\TagNotFoundException <OCP\\SystemTag\\TagNotFoundException>` if at least one given tag ids did no exist
+			The message contains a json\_encoded array of the ids that could not be found
+		
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getTag( $tagName, $userVisible, $userAssignable)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the tag object matching the given attributes\.
+			
+		
+		:Source:
+			`lib/public/SystemTag/ISystemTagManager.php#67 <https://github.com/nextcloud/server/blob/stable13/lib/public/SystemTag/ISystemTagManager.php#L67>`_
+		
+		
+		:Parameters:
+			* **$tagName** (string)  tag name
+			* **$userVisible** (bool)  whether the tag is visible by users
+			* **$userAssignable** (bool)  whether the tag is assignable by users
+
+		
+		:Returns: :any:`\\OCP\\SystemTag\\ISystemTag <OCP\\SystemTag\\ISystemTag>` system tag
+		:Throws: :any:`\\OCP\\SystemTag\\TagNotFoundException <OCP\\SystemTag\\TagNotFoundException>` if tag does not exist
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public createTag( $tagName, $userVisible, $userAssignable)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Creates the tag object using the given attributes\.
+			
+		
+		:Source:
+			`lib/public/SystemTag/ISystemTagManager.php#82 <https://github.com/nextcloud/server/blob/stable13/lib/public/SystemTag/ISystemTagManager.php#L82>`_
+		
+		
+		:Parameters:
+			* **$tagName** (string)  tag name
+			* **$userVisible** (bool)  whether the tag is visible by users
+			* **$userAssignable** (bool)  whether the tag is assignable by users
+
+		
+		:Returns: :any:`\\OCP\\SystemTag\\ISystemTag <OCP\\SystemTag\\ISystemTag>` system tag
+		:Throws: :any:`\\OCP\\SystemTag\\TagAlreadyExistsException <OCP\\SystemTag\\TagAlreadyExistsException>` if tag already exists
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getAllTags( $visibilityFilter=null, $nameSearchPattern=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns all known tags, optionally filtered by visibility\.
+			
+		
+		:Source:
+			`lib/public/SystemTag/ISystemTagManager.php#94 <https://github.com/nextcloud/server/blob/stable13/lib/public/SystemTag/ISystemTagManager.php#L94>`_
+		
+		
+		:Parameters:
+			* **$visibilityFilter** (bool | null)  filter by visibility if non-null
+			* **$nameSearchPattern** (string)  optional search pattern for the tag name
+
+		
+		:Returns: :any:`\\OCP\\SystemTag\\ISystemTag\[\] <OCP\\SystemTag\\ISystemTag>` array of system tags or empty array if none found
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public updateTag( $tagId, $newName, $userVisible, $userAssignable)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Updates the given tag
+			
+		
+		:Source:
+			`lib/public/SystemTag/ISystemTagManager.php#110 <https://github.com/nextcloud/server/blob/stable13/lib/public/SystemTag/ISystemTagManager.php#L110>`_
+		
+		
+		:Parameters:
+			* **$tagId** (string)  tag id
+			* **$newName** (string)  the new tag name
+			* **$userVisible** (bool)  whether the tag is visible by users
+			* **$userAssignable** (bool)  whether the tag is assignable by users
+
+		
+		:Throws: :any:`\\OCP\\SystemTag\\TagNotFoundException <OCP\\SystemTag\\TagNotFoundException>` if tag with the given id does not exist
+		:Throws: :any:`\\OCP\\SystemTag\\TagAlreadyExistsException <OCP\\SystemTag\\TagAlreadyExistsException>` if there is already another tag
+			with the same attributes
+		
+		:Throws: :any:`\\OCP\\SystemTag\\TagNotFoundException <OCP\\SystemTag\\TagNotFoundException>` if tag with the given id does not exist
+		:Throws: :any:`\\OCP\\SystemTag\\TagAlreadyExistsException <OCP\\SystemTag\\TagAlreadyExistsException>` if there is already another tag
+			with the same attributes
+		
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public deleteTags( $tagIds)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Delete the given tags from the database and all their relationships\.
+			
+		
+		:Source:
+			`lib/public/SystemTag/ISystemTagManager.php#121 <https://github.com/nextcloud/server/blob/stable13/lib/public/SystemTag/ISystemTagManager.php#L121>`_
+		
+		
+		:Parameters:
+			* **$tagIds** (string | array)  array of tag ids
+
+		
+		:Throws: :any:`\\OCP\\SystemTag\\TagNotFoundException <OCP\\SystemTag\\TagNotFoundException>` if at least one tag did not exist
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public canUserAssignTag( $tag, $user)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Checks whether the given user is allowed to assign/unassign the tag with the
+			| given id\.
+			
+		
+		:Source:
+			`lib/public/SystemTag/ISystemTagManager.php#134 <https://github.com/nextcloud/server/blob/stable13/lib/public/SystemTag/ISystemTagManager.php#L134>`_
+		
+		
+		:Parameters:
+			* **$tag** (:any:`OCP\\SystemTag\\ISystemTag <OCP\\SystemTag\\ISystemTag>`)  tag to check permission for
+			* **$user** (:any:`OCP\\IUser <OCP\\IUser>`)  user to check permission for
+
+		
+		:Returns: bool if the user is allowed to assign/unassign the tag, false otherwise
+		:Since: 9.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public canUserSeeTag( $tag, $user)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Checks whether the given user is allowed to see the tag with the given id\.
+			
+		
+		:Source:
+			`lib/public/SystemTag/ISystemTagManager.php#146 <https://github.com/nextcloud/server/blob/stable13/lib/public/SystemTag/ISystemTagManager.php#L146>`_
+		
+		
+		:Parameters:
+			* **$tag** (:any:`OCP\\SystemTag\\ISystemTag <OCP\\SystemTag\\ISystemTag>`)  tag to check permission for
+			* **$user** (:any:`OCP\\IUser <OCP\\IUser>`)  user to check permission for
+
+		
+		:Returns: bool if the user can see the tag, false otherwise
+		:Since: 9.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setTagGroups( $tag, $groupIds)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set groups that can assign a given tag\.
+			
+		
+		:Source:
+			`lib/public/SystemTag/ISystemTagManager.php#156 <https://github.com/nextcloud/server/blob/stable13/lib/public/SystemTag/ISystemTagManager.php#L156>`_
+		
+		
+		:Parameters:
+			* **$tag** (:any:`OCP\\SystemTag\\ISystemTag <OCP\\SystemTag\\ISystemTag>`)  tag for group assignment
+			* **$groupIds** (string[])  group ids of groups that can assign/unassign the tag
+
+		
+		:Since: 9.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getTagGroups( $tag)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get groups that can assign a given tag\.
+			
+		
+		:Source:
+			`lib/public/SystemTag/ISystemTagManager.php#167 <https://github.com/nextcloud/server/blob/stable13/lib/public/SystemTag/ISystemTagManager.php#L167>`_
+		
+		
+		:Parameters:
+			* **$tag** (:any:`OCP\\SystemTag\\ISystemTag <OCP\\SystemTag\\ISystemTag>`)  tag for group assignment
+
+		
+		:Returns: string[] group ids of groups that can assign/unassign the tag
+		:Since: 9.1.0 
+	
+	
+

@@ -1,0 +1,365 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>General contributor guidelines &mdash; Nextcloud 14 Developer Manual 14 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'14',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Community code of conduct" href="code-of-conduct.html" />
+    <link rel="prev" title="Nextcloud developer documentation" href="../index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">General contributor guidelines</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="code-of-conduct.html">Community code of conduct</a></li>
+<li class="toctree-l2"><a class="reference internal" href="devenv.html">Development environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security.html">Security guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="codingguidelines.html">Coding style &amp; general guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="performance.html">Performance considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging.html">Debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backporting.html">Backporting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../app/changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/startapp.html">Create an app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/init.html">Navigation and pre-app configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/info.html">App metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/classloader.html">Classloader</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/request.html">Request lifecycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/routes.html">Routing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/middleware.html">Middleware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/container.html">Container</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/controllers.html">Controllers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/api.html">RESTful API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/templates.html">Templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/js.html">JavaScript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/css.html">CSS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/l10n.html">Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/theming.html">Theming support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/schema.html">Database schema</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/database.html">Database access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/filesystem.html">Filesystem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/appdata.html">AppData</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/users.html">User management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/two-factor-provider.html">Two-factor providers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/hooks.html">Hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/backgroundjobs.html">Background jobs (Cron)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/settings.html">Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/logging.html">Logging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/migrations.html">Migrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/repair.html">Repair steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/publishing.html">App store publishing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/code_signing.html">Code signing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../design/index.html">Design guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../android_library/index.html">Android application development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client_apis/index.html">Client APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../core/index.html">Core development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bugtracker/index.html">Bugtracker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../commun/index.html">Help and communication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API Documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Nextcloud 14 Developer Manual</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>General contributor guidelines</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/nextcloud/documentation/edit/stable14/developer_manual/general/index.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="general-contributor-guidelines">
+<h1>General contributor guidelines<a class="headerlink" href="#general-contributor-guidelines" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="code-of-conduct.html">Community code of conduct</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="code-of-conduct.html#preamble">Preamble:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="code-of-conduct.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="code-of-conduct.html#be-considerate">Be considerate</a></li>
+<li class="toctree-l2"><a class="reference internal" href="code-of-conduct.html#be-respectful">Be respectful</a></li>
+<li class="toctree-l2"><a class="reference internal" href="code-of-conduct.html#be-collaborative">Be collaborative</a></li>
+<li class="toctree-l2"><a class="reference internal" href="code-of-conduct.html#be-pragmatic">Be pragmatic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="code-of-conduct.html#support-others-in-the-community">Support others in the community</a></li>
+<li class="toctree-l2"><a class="reference internal" href="code-of-conduct.html#get-support-from-others-in-the-community">Get support from others in the community</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="devenv.html">Development environment</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="devenv.html#set-up-web-server-and-database">Set up Web server and database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="devenv.html#get-the-source">Get the source</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="security.html">Security guidelines</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="security.html#sql-injection">SQL injection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security.html#cross-site-scripting">Cross site scripting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security.html#clickjacking">Clickjacking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security.html#code-executions-file-inclusions">Code executions / file inclusions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security.html#directory-traversal">Directory traversal</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security.html#shell-injection">Shell injection</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security.html#auth-bypass-privilege-escalations">Auth bypass / privilege escalations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security.html#sensitive-data-exposure">Sensitive data exposure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security.html#cross-site-request-forgery">Cross site request forgery</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security.html#unvalidated-redirects">Unvalidated redirects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security.html#getting-help">Getting help</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="codingguidelines.html">Coding style &amp; general guidelines</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="codingguidelines.html#general">General</a></li>
+<li class="toctree-l2"><a class="reference internal" href="codingguidelines.html#labels">Labels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="codingguidelines.html#coding">Coding</a></li>
+<li class="toctree-l2"><a class="reference internal" href="codingguidelines.html#license-headers">License headers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="codingguidelines.html#user-interface">User interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="codingguidelines.html#php">PHP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="codingguidelines.html#javascript">JavaScript</a></li>
+<li class="toctree-l2"><a class="reference internal" href="codingguidelines.html#css">CSS</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="performance.html">Performance considerations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="performance.html#database-performance">Database performance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="performance.html#getting-help">Getting help</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="debugging.html">Debugging</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="debugging.html#debug-mode">Debug mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging.html#identifying-errors">Identifying errors</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging.html#debugging-variables">Debugging variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging.html#using-a-php-debugger-xdebug">Using a PHP debugger (XDebug)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging.html#debugging-javascript">Debugging JavaScript</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging.html#debugging-html-and-templates">Debugging HTML and templates</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging.html#using-alternative-app-directories">Using alternative app directories</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="backporting.html">Backporting</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="backporting.html#general">General</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backporting.html#process">Process</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="code-of-conduct.html" class="btn btn-neutral float-right" title="Community code of conduct" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../index.html" class="btn btn-neutral float-left" title="Nextcloud developer documentation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021 Nextcloud GmbH.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: 14
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/14/developer_manual">14</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/15/developer_manual">15</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/16/developer_manual">16</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/developer_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/developer_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+   
+
+</body>
+</html>

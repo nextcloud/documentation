@@ -1,0 +1,211 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+CertificateManager
+==================
+
+
+.. php:namespace:: OC\Security
+
+.. php:class:: CertificateManager
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Manage trusted certificates for users
+		
+	
+	:Source:
+		`lib/private/Security/CertificateManager.php#45 <https://github.com/nextcloud/server/blob/stable13/lib/private/Security/CertificateManager.php#L45>`_
+	
+	:Implements:
+		:php:interface:`OCP\\ICertificateManager` 
+	
+
+Properties
+----------
+
+.. php:attr:: protected static view
+
+	:Source:
+		`lib/private/Security/CertificateManager.php#49 <https://github.com/nextcloud/server/blob/stable13/lib/private/Security/CertificateManager.php#L49>`_
+	
+	:Type: :any:`\\OC\\Files\\View <OC\\Files\\View>` 
+
+
+.. php:attr:: protected static config
+
+	:Source:
+		`lib/private/Security/CertificateManager.php#54 <https://github.com/nextcloud/server/blob/stable13/lib/private/Security/CertificateManager.php#L54>`_
+	
+	:Type: :any:`\\OCP\\IConfig <OCP\\IConfig>` 
+
+
+.. php:attr:: protected static logger
+
+	:Source:
+		`lib/private/Security/CertificateManager.php#59 <https://github.com/nextcloud/server/blob/stable13/lib/private/Security/CertificateManager.php#L59>`_
+	
+	:Type: :any:`\\OCP\\ILogger <OCP\\ILogger>` 
+
+
+.. php:attr:: protected static random
+
+	:Source:
+		`lib/private/Security/CertificateManager.php#62 <https://github.com/nextcloud/server/blob/stable13/lib/private/Security/CertificateManager.php#L62>`_
+	
+	:Type: :any:`\\OCP\\Security\\ISecureRandom <OCP\\Security\\ISecureRandom>` 
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $view, $config, $logger, $random)
+	
+		:Source:
+			`lib/private/Security/CertificateManager.php#70 <https://github.com/nextcloud/server/blob/stable13/lib/private/Security/CertificateManager.php#L70>`_
+		
+		
+		:Parameters:
+			* **$view** (:any:`OC\\Files\\View <OC\\Files\\View>`)  relative to data/
+			* **$config** (:any:`OCP\\IConfig <OCP\\IConfig>`)  
+			* **$logger** (:any:`OCP\\ILogger <OCP\\ILogger>`)  
+			* **$random** (:any:`OCP\\Security\\ISecureRandom <OCP\\Security\\ISecureRandom>`)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public listCertificates()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns all certificates trusted by the user
+			
+		
+		:Source:
+			`lib/private/Security/CertificateManager.php#85 <https://github.com/nextcloud/server/blob/stable13/lib/private/Security/CertificateManager.php#L85>`_
+		
+		
+		:Returns: :any:`\\OCP\\ICertificate\[\] <OCP\\ICertificate>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public createCertificateBundle()
+	
+		.. rst-class:: phpdoc-description
+		
+			| create the certificate bundle of all trusted certificated
+			
+		
+		:Source:
+			`lib/private/Security/CertificateManager.php#137 <https://github.com/nextcloud/server/blob/stable13/lib/private/Security/CertificateManager.php#L137>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public addCertificate( $certificate, $name)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Save the certificate and re\-generate the certificate bundle
+			
+		
+		:Source:
+			`lib/private/Security/CertificateManager.php#189 <https://github.com/nextcloud/server/blob/stable13/lib/private/Security/CertificateManager.php#L189>`_
+		
+		
+		:Parameters:
+			* **$certificate** (string)  the certificate data
+			* **$name** (string)  the filename for the certificate
+
+		
+		:Returns: :any:`\\OCP\\ICertificate <OCP\\ICertificate>` 
+		:Throws: :any:`\\Exception <Exception>` If the certificate could not get added
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public removeCertificate( $name)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Remove the certificate and re\-generate the certificate bundle
+			
+		
+		:Source:
+			`lib/private/Security/CertificateManager.php#216 <https://github.com/nextcloud/server/blob/stable13/lib/private/Security/CertificateManager.php#L216>`_
+		
+		
+		:Parameters:
+			* **$name** (string)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getCertificateBundle()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the path to the certificate bundle
+			
+		
+		:Source:
+			`lib/private/Security/CertificateManager.php#233 <https://github.com/nextcloud/server/blob/stable13/lib/private/Security/CertificateManager.php#L233>`_
+		
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getAbsoluteBundlePath()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the full local path to the certificate bundle
+			
+		
+		:Source:
+			`lib/private/Security/CertificateManager.php#242 <https://github.com/nextcloud/server/blob/stable13/lib/private/Security/CertificateManager.php#L242>`_
+		
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected getFilemtimeOfCaBundle()
+	
+		.. rst-class:: phpdoc-description
+		
+			| get mtime of ca\-bundle shipped by Nextcloud
+			
+		
+		:Source:
+			`lib/private/Security/CertificateManager.php#281 <https://github.com/nextcloud/server/blob/stable13/lib/private/Security/CertificateManager.php#L281>`_
+		
+		
+		:Returns: int 
+	
+	
+

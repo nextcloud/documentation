@@ -1,0 +1,301 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+MountPoint
+==========
+
+
+.. php:namespace:: OC\Files\Mount
+
+.. php:class:: MountPoint
+
+
+	:Source:
+		`lib/private/Files/Mount/MountPoint.php#40 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Mount/MountPoint.php#L40>`_
+	
+	:Implements:
+		:php:interface:`OCP\\Files\\Mount\\IMountPoint` 
+	
+
+Properties
+----------
+
+.. php:attr:: protected static storage
+
+	:Source:
+		`lib/private/Files/Mount/MountPoint.php#44 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Mount/MountPoint.php#L44>`_
+	
+	:Type: :any:`\\OC\\Files\\Storage\\Storage <OC\\Files\\Storage\\Storage>` | null 
+
+
+.. php:attr:: protected static class
+
+	:Source:
+		`lib/private/Files/Mount/MountPoint.php#45 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Mount/MountPoint.php#L45>`_
+	
+
+
+.. php:attr:: protected static storageId
+
+	:Source:
+		`lib/private/Files/Mount/MountPoint.php#46 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Mount/MountPoint.php#L46>`_
+	
+
+
+.. php:attr:: protected static rootId
+
+	:Source:
+		`lib/private/Files/Mount/MountPoint.php#47 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Mount/MountPoint.php#L47>`_
+	
+
+
+.. php:attr:: protected static arguments
+
+	.. rst-class:: phpdoc-description
+	
+		| Configuration options for the storage backend
+		
+	
+	:Source:
+		`lib/private/Files/Mount/MountPoint.php#54 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Mount/MountPoint.php#L54>`_
+	
+	:Type: array 
+
+
+.. php:attr:: protected static mountPoint
+
+	:Source:
+		`lib/private/Files/Mount/MountPoint.php#55 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Mount/MountPoint.php#L55>`_
+	
+
+
+.. php:attr:: protected static mountOptions
+
+	.. rst-class:: phpdoc-description
+	
+		| Mount specific options
+		
+	
+	:Source:
+		`lib/private/Files/Mount/MountPoint.php#62 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Mount/MountPoint.php#L62>`_
+	
+	:Type: array 
+
+
+.. php:attr:: protected static mountId
+
+	:Source:
+		`lib/private/Files/Mount/MountPoint.php#78 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Mount/MountPoint.php#L78>`_
+	
+	:Type: int | null 
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $storage, $mountpoint, $arguments=null, $loader=null, $mountOptions=null, $mountId=null)
+	
+		:Source:
+			`lib/private/Files/Mount/MountPoint.php#89 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Mount/MountPoint.php#L89>`_
+		
+		
+		:Parameters:
+			* **$storage** (string | :any:`\\OC\\Files\\Storage\\Storage <OC\\Files\\Storage\\Storage>`)  
+			* **$mountpoint** (string)  
+			* **$arguments** (array)  (optional) configuration for the storage backend
+			* **$loader** (:any:`OCP\\Files\\Storage\\IStorageFactory <OCP\\Files\\Storage\\IStorageFactory>`)  
+			* **$mountOptions** (array)  mount specific options
+			* **$mountId** (int | null)  
+
+		
+		:Throws: :any:`\\Exception <Exception>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getMountPoint()
+	
+		.. rst-class:: phpdoc-description
+		
+			| get complete path to the mount point, relative to data/
+			
+		
+		:Source:
+			`lib/private/Files/Mount/MountPoint.php#124 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Mount/MountPoint.php#L124>`_
+		
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setMountPoint( $mountPoint)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Sets the mount point path, relative to data/
+			
+		
+		:Source:
+			`lib/private/Files/Mount/MountPoint.php#133 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Mount/MountPoint.php#L133>`_
+		
+		
+		:Parameters:
+			* **$mountPoint** (string)  new mount point
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getStorage()
+	
+		:Source:
+			`lib/private/Files/Mount/MountPoint.php#172 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Mount/MountPoint.php#L172>`_
+		
+		
+		:Returns: :any:`\\OC\\Files\\Storage\\Storage <OC\\Files\\Storage\\Storage>` | null 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getStorageId()
+	
+		:Source:
+			`lib/private/Files/Mount/MountPoint.php#182 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Mount/MountPoint.php#L182>`_
+		
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getNumericStorageId()
+	
+		:Source:
+			`lib/private/Files/Mount/MountPoint.php#203 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Mount/MountPoint.php#L203>`_
+		
+		
+		:Returns: int 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getInternalPath( $path)
+	
+		:Source:
+			`lib/private/Files/Mount/MountPoint.php#211 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Mount/MountPoint.php#L211>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public wrapStorage( $wrapper)
+	
+		:Source:
+			`lib/private/Files/Mount/MountPoint.php#237 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Mount/MountPoint.php#L237>`_
+		
+		
+		:Parameters:
+			* **$wrapper** (callable)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getOption( $name, $default)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get a mount option
+			
+		
+		:Source:
+			`lib/private/Files/Mount/MountPoint.php#252 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Mount/MountPoint.php#L252>`_
+		
+		
+		:Parameters:
+			* **$name** (string)  Name of the mount option to get
+			* **$default** (mixed)  Default value for the mount option
+
+		
+		:Returns: mixed 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getOptions()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get all options for the mount
+			
+		
+		:Source:
+			`lib/private/Files/Mount/MountPoint.php#261 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Mount/MountPoint.php#L261>`_
+		
+		
+		:Returns: array 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getStorageRootId()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the file id of the root of the storage
+			
+		
+		:Source:
+			`lib/private/Files/Mount/MountPoint.php#270 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Mount/MountPoint.php#L270>`_
+		
+		
+		:Returns: int 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getMountId()
+	
+		:Source:
+			`lib/private/Files/Mount/MountPoint.php#277 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Mount/MountPoint.php#L277>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getMountType()
+	
+		:Source:
+			`lib/private/Files/Mount/MountPoint.php#281 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Mount/MountPoint.php#L281>`_
+		
+		
+	
+	
+

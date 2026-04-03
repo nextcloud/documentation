@@ -1,0 +1,372 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Testing &mdash; Nextcloud latest Developer Manual latest documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'latest',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="API Documentation" href="../api.html" />
+    <link rel="prev" title="Public Pages" href="publicpage.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../general/index.html">General contributor guidelines</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">App development</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="npm.html">NPM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="requests/index.html">Request lifecycle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="view/index.html">View</a></li>
+<li class="toctree-l2"><a class="reference internal" href="storage/index.html">Storage and database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html">Changelog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classloader.html">Classloader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="code_signing.html">Code signing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="info.html">App metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="init.html">Navigation and pre-app configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="publishing.html">App store publishing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="users.html">User management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="two-factor-provider.html">Two-factor providers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hooks.html">Hooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backgroundjobs.html">Background jobs (Cron)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="settings.html">Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notifications.html">Notifications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logging.html">Logging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="repair.html">Repair steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="publicpage.html">Public Pages</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Testing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#php">PHP</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html">API Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../design/index.html">Design guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../android_library/index.html">Android application development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client_apis/index.html">Client APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../core/index.html">Core development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bugtracker/index.html">Bugtracker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../commun/index.html">Help and communication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API Documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Nextcloud latest Developer Manual</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">App development</a> &raquo;</li>
+        
+      <li>Testing</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/nextcloud/documentation/edit/master/developer_manual/app/testing.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="testing">
+<h1>Testing<a class="headerlink" href="#testing" title="Permalink to this headline">¶</a></h1>
+<p>All PHP classes can be tested with <a class="reference external" href="http://phpunit.de/">PHPUnit</a>, JavaScript can be tested by using <a class="reference external" href="http://karma-runner.github.io">Karma</a>.</p>
+<div class="section" id="php">
+<h2>PHP<a class="headerlink" href="#php" title="Permalink to this headline">¶</a></h2>
+<p>The PHP tests go into the <strong>tests/</strong> directory and PHPUnit can be run with:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">phpunit</span> <span class="n">tests</span><span class="o">/</span>
+</pre></div>
+</div>
+<p>When writing your own tests, please ensure that PHPUnit bootstraps from <code class="file docutils literal"><span class="pre">tests/bootstrap.php</span></code>, to set up various environment variables and autoloader registration correctly. Without this, you will see errors as the Nextcloud autoloader security policy prevents access to the tests/ subdirectory. This can be configured in your <code class="file docutils literal"><span class="pre">phpunit.xml</span></code> file as follows:</p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;phpunit</span> <span class="na">bootstrap=</span><span class="s">&quot;../../tests/bootstrap.php&quot;</span><span class="nt">&gt;</span>
+</pre></div>
+</div>
+<p>PHP classes should be tested by accessing them from the container to ensure that the container is wired up properly. Services that should be mocked can be replaced directly in the container.</p>
+<p>A test for the <strong>AuthorStorage</strong> class in <a class="reference internal" href="storage/filesystem.html"><span class="doc">Filesystem</span></a>:</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="k">namespace</span> <span class="nx">OCA\MyApp\Storage</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">AuthorStorage</span> <span class="p">{</span>
+
+    <span class="k">private</span> <span class="nv">$storage</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nv">$storage</span><span class="p">){</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">storage</span> <span class="o">=</span> <span class="nv">$storage</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getContent</span><span class="p">(</span><span class="nv">$id</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// check if file exists and write to it if possible</span>
+        <span class="k">try</span> <span class="p">{</span>
+            <span class="nv">$file</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">storage</span><span class="o">-&gt;</span><span class="na">getById</span><span class="p">(</span><span class="nv">$id</span><span class="p">);</span>
+            <span class="k">if</span><span class="p">(</span><span class="nv">$file</span> <span class="nx">instanceof</span> <span class="nx">\OCP\Files\File</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="nv">$file</span><span class="o">-&gt;</span><span class="na">getContent</span><span class="p">();</span>
+            <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                <span class="k">throw</span> <span class="k">new</span> <span class="nx">StorageException</span><span class="p">(</span><span class="s1">&#39;Can not read from folder&#39;</span><span class="p">);</span>
+            <span class="p">}</span>
+        <span class="p">}</span> <span class="k">catch</span><span class="p">(</span><span class="nx">\OCP\Files\NotFoundException</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nx">StorageException</span><span class="p">(</span><span class="s1">&#39;File does not exist&#39;</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>would look like this:</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="c1">// tests/Storage/AuthorStorageTest.php</span>
+<span class="k">namespace</span> <span class="nx">OCA\MyApp\Tests\Storage</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">AuthorStorageTest</span> <span class="k">extends</span> <span class="nx">\Test\TestCase</span> <span class="p">{</span>
+
+    <span class="k">private</span> <span class="nv">$container</span><span class="p">;</span>
+    <span class="k">private</span> <span class="nv">$storage</span><span class="p">;</span>
+
+    <span class="k">protected</span> <span class="k">function</span> <span class="nf">setUp</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">parent</span><span class="o">::</span><span class="na">setUp</span><span class="p">();</span>
+
+        <span class="nv">$app</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\OCA\MyApp\AppInfo\Application</span><span class="p">();</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">container</span> <span class="o">=</span> <span class="nv">$app</span><span class="o">-&gt;</span><span class="na">getContainer</span><span class="p">();</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">storage</span> <span class="o">=</span> <span class="nv">$storage</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getMockBuilder</span><span class="p">(</span><span class="s1">&#39;\OCP\Files\Folder&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">disableOriginalConstructor</span><span class="p">()</span>
+            <span class="o">-&gt;</span><span class="na">getMock</span><span class="p">();</span>
+
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">container</span><span class="o">-&gt;</span><span class="na">registerService</span><span class="p">(</span><span class="s1">&#39;RootStorage&#39;</span><span class="p">,</span> <span class="k">function</span><span class="p">(</span><span class="nv">$c</span><span class="p">)</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$storage</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nv">$storage</span><span class="p">;</span>
+        <span class="p">});</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @expectedException \OCA\MyApp\Storage\StorageException</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">testFileNotFound</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">storage</span><span class="o">-&gt;</span><span class="na">expects</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">once</span><span class="p">())</span>
+            <span class="o">-&gt;</span><span class="na">method</span><span class="p">(</span><span class="s1">&#39;get&#39;</span><span class="p">)</span>
+            <span class="o">-&gt;</span><span class="na">with</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">equalTo</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
+            <span class="o">-&gt;</span><span class="na">will</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">throwException</span><span class="p">(</span><span class="k">new</span> <span class="nx">\OCP\Files\NotFoundException</span><span class="p">()));</span>
+
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">container</span><span class="p">[</span><span class="s1">&#39;AuthorStorage&#39;</span><span class="p">]</span><span class="o">-&gt;</span><span class="na">getContent</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Make sure to extend the <code class="docutils literal"><span class="pre">\Test\TestCase</span></code> class with your test and always call the parent methods,
+when overwriting <code class="docutils literal"><span class="pre">setUp()</span></code>, <code class="docutils literal"><span class="pre">setUpBeforeClass()</span></code>, <code class="docutils literal"><span class="pre">tearDown()</span></code> or <code class="docutils literal"><span class="pre">tearDownAfterClass()</span></code> method
+from the TestCase. These methods set up important stuff and clean up the system after the test,
+so the next test can run without side effects, like remaining files and entries in the file cache, etc.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../api.html" class="btn btn-neutral float-right" title="API Documentation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="publicpage.html" class="btn btn-neutral float-left" title="Public Pages" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021 Nextcloud GmbH.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/16/developer_manual">16</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/17/developer_manual">17</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/18/developer_manual">18</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/developer_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/developer_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+   
+
+</body>
+</html>

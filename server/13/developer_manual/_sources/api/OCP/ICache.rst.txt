@@ -1,0 +1,144 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+ICache
+======
+
+
+.. php:namespace:: OCP
+
+.. php:interface:: ICache
+
+
+	.. rst-class:: phpdoc-description
+	
+		| This interface defines method for accessing the file based user cache\.
+		
+	
+	:Implemented by:
+		:php:class:`OC\\Cache\\CappedMemoryCache` :php:class:`OC\\Cache\\File` :php:class:`OC\\Memcache\\Cache` 
+	
+	
+	:Source:
+		`lib/public/ICache.php#42 <https://github.com/nextcloud/server/blob/stable13/lib/public/ICache.php#L42>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public get( $key)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get a value from the user cache
+			
+		
+		:Source:
+			`lib/public/ICache.php#50 <https://github.com/nextcloud/server/blob/stable13/lib/public/ICache.php#L50>`_
+		
+		
+		:Parameters:
+			* **$key** (string)  
+
+		
+		:Returns: mixed 
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public set( $key, $value, $ttl=0)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set a value in the user cache
+			
+		
+		:Source:
+			`lib/public/ICache.php#60 <https://github.com/nextcloud/server/blob/stable13/lib/public/ICache.php#L60>`_
+		
+		
+		:Parameters:
+			* **$key** (string)  
+			* **$value** (mixed)  
+			* **$ttl** (int)  Time To Live in seconds. Defaults to 60*60*24
+
+		
+		:Returns: bool 
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public hasKey( $key)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check if a value is set in the user cache
+			
+		
+		:Source:
+			`lib/public/ICache.php#69 <https://github.com/nextcloud/server/blob/stable13/lib/public/ICache.php#L69>`_
+		
+		
+		:Parameters:
+			* **$key** (string)  
+
+		
+		:Returns: bool 
+		:Since: 6.0.0 
+		:Deprecated: 9.1.0 Directly read from GET to prevent race conditions
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public remove( $key)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Remove an item from the user cache
+			
+		
+		:Source:
+			`lib/public/ICache.php#77 <https://github.com/nextcloud/server/blob/stable13/lib/public/ICache.php#L77>`_
+		
+		
+		:Parameters:
+			* **$key** (string)  
+
+		
+		:Returns: bool 
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public clear( $prefix="")
+	
+		.. rst-class:: phpdoc-description
+		
+			| Clear the user cache of all entries starting with a prefix
+			
+		
+		:Source:
+			`lib/public/ICache.php#85 <https://github.com/nextcloud/server/blob/stable13/lib/public/ICache.php#L85>`_
+		
+		
+		:Parameters:
+			* **$prefix** (string)  (optional)
+
+		
+		:Returns: bool 
+		:Since: 6.0.0 
+	
+	
+

@@ -1,0 +1,340 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IStorage
+========
+
+
+.. php:namespace:: OCP\Encryption\Keys
+
+.. php:interface:: IStorage
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Interface IStorage
+		
+	
+	:Implemented by:
+		:php:class:`OC\\Encryption\\Keys\\Storage` 
+	
+	
+	:Source:
+		`lib/public/Encryption/Keys/IStorage.php#34 <https://github.com/nextcloud/server/blob/stable13/lib/public/Encryption/Keys/IStorage.php#L34>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public getUserKey( $uid, $keyId, $encryptionModuleId)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get user specific key
+			
+		
+		:Source:
+			`lib/public/Encryption/Keys/IStorage.php#46 <https://github.com/nextcloud/server/blob/stable13/lib/public/Encryption/Keys/IStorage.php#L46>`_
+		
+		
+		:Parameters:
+			* **$uid** (string)  ID if the user for whom we want the key
+			* **$keyId** (string)  id of the key
+			* **$encryptionModuleId** (string)  
+
+		
+		:Returns: mixed key
+		:Since: 8.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getFileKey( $path, $keyId, $encryptionModuleId)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get file specific key
+			
+		
+		:Source:
+			`lib/public/Encryption/Keys/IStorage.php#58 <https://github.com/nextcloud/server/blob/stable13/lib/public/Encryption/Keys/IStorage.php#L58>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  path to file
+			* **$keyId** (string)  id of the key
+			* **$encryptionModuleId** (string)  
+
+		
+		:Returns: mixed key
+		:Since: 8.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getSystemUserKey( $keyId, $encryptionModuleId)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get system\-wide encryption keys not related to a specific user,
+			| e\.g something like a key for public link shares
+			
+		
+		:Source:
+			`lib/public/Encryption/Keys/IStorage.php#70 <https://github.com/nextcloud/server/blob/stable13/lib/public/Encryption/Keys/IStorage.php#L70>`_
+		
+		
+		:Parameters:
+			* **$keyId** (string)  id of the key
+			* **$encryptionModuleId** (string)  
+
+		
+		:Returns: mixed key
+		:Since: 8.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setUserKey( $uid, $keyId, $key, $encryptionModuleId)
+	
+		.. rst-class:: phpdoc-description
+		
+			| set user specific key
+			
+		
+		:Source:
+			`lib/public/Encryption/Keys/IStorage.php#81 <https://github.com/nextcloud/server/blob/stable13/lib/public/Encryption/Keys/IStorage.php#L81>`_
+		
+		
+		:Parameters:
+			* **$uid** (string)  ID if the user for whom we want the key
+			* **$keyId** (string)  id of the key
+			* **$key** (mixed)  
+			* **$encryptionModuleId** (string)  
+
+		
+		:Since: 8.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setFileKey( $path, $keyId, $key, $encryptionModuleId)
+	
+		.. rst-class:: phpdoc-description
+		
+			| set file specific key
+			
+		
+		:Source:
+			`lib/public/Encryption/Keys/IStorage.php#92 <https://github.com/nextcloud/server/blob/stable13/lib/public/Encryption/Keys/IStorage.php#L92>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  path to file
+			* **$keyId** (string)  id of the key
+			* **$key** (mixed)  
+			* **$encryptionModuleId** (string)  
+
+		
+		:Since: 8.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setSystemUserKey( $keyId, $key, $encryptionModuleId)
+	
+		.. rst-class:: phpdoc-description
+		
+			| set system\-wide encryption keys not related to a specific user,
+			| e\.g something like a key for public link shares
+			
+		
+		:Source:
+			`lib/public/Encryption/Keys/IStorage.php#105 <https://github.com/nextcloud/server/blob/stable13/lib/public/Encryption/Keys/IStorage.php#L105>`_
+		
+		
+		:Parameters:
+			* **$keyId** (string)  id of the key
+			* **$key** (mixed)  
+			* **$encryptionModuleId** (string)  
+
+		
+		:Returns: mixed key
+		:Since: 8.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public deleteUserKey( $uid, $keyId, $encryptionModuleId)
+	
+		.. rst-class:: phpdoc-description
+		
+			| delete user specific key
+			
+		
+		:Source:
+			`lib/public/Encryption/Keys/IStorage.php#117 <https://github.com/nextcloud/server/blob/stable13/lib/public/Encryption/Keys/IStorage.php#L117>`_
+		
+		
+		:Parameters:
+			* **$uid** (string)  ID if the user for whom we want to delete the key
+			* **$keyId** (string)  id of the key
+			* **$encryptionModuleId** (string)  
+
+		
+		:Returns: bool False when the key could not be deleted
+		:Since: 8.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public deleteFileKey( $path, $keyId, $encryptionModuleId)
+	
+		.. rst-class:: phpdoc-description
+		
+			| delete file specific key
+			
+		
+		:Source:
+			`lib/public/Encryption/Keys/IStorage.php#129 <https://github.com/nextcloud/server/blob/stable13/lib/public/Encryption/Keys/IStorage.php#L129>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  path to file
+			* **$keyId** (string)  id of the key
+			* **$encryptionModuleId** (string)  
+
+		
+		:Returns: bool False when the key could not be deleted
+		:Since: 8.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public deleteAllFileKeys( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| delete all file keys for a given file
+			
+		
+		:Source:
+			`lib/public/Encryption/Keys/IStorage.php#139 <https://github.com/nextcloud/server/blob/stable13/lib/public/Encryption/Keys/IStorage.php#L139>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  to the file
+
+		
+		:Returns: bool False when the keys could not be deleted
+		:Since: 8.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public deleteSystemUserKey( $keyId, $encryptionModuleId)
+	
+		.. rst-class:: phpdoc-description
+		
+			| delete system\-wide encryption keys not related to a specific user,
+			| e\.g something like a key for public link shares
+			
+		
+		:Source:
+			`lib/public/Encryption/Keys/IStorage.php#151 <https://github.com/nextcloud/server/blob/stable13/lib/public/Encryption/Keys/IStorage.php#L151>`_
+		
+		
+		:Parameters:
+			* **$keyId** (string)  id of the key
+			* **$encryptionModuleId** (string)  
+
+		
+		:Returns: bool False when the key could not be deleted
+		:Since: 8.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public renameKeys( $source, $target)
+	
+		.. rst-class:: phpdoc-description
+		
+			| copy keys if a file was renamed
+			
+		
+		:Source:
+			`lib/public/Encryption/Keys/IStorage.php#161 <https://github.com/nextcloud/server/blob/stable13/lib/public/Encryption/Keys/IStorage.php#L161>`_
+		
+		
+		:Parameters:
+			* **$source** (string)  
+			* **$target** (string)  
+
+		
+		:Returns: bool 
+		:Since: 8.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public copyKeys( $source, $target)
+	
+		.. rst-class:: phpdoc-description
+		
+			| move keys if a file was renamed
+			
+		
+		:Source:
+			`lib/public/Encryption/Keys/IStorage.php#171 <https://github.com/nextcloud/server/blob/stable13/lib/public/Encryption/Keys/IStorage.php#L171>`_
+		
+		
+		:Parameters:
+			* **$source** (string)  
+			* **$target** (string)  
+
+		
+		:Returns: bool 
+		:Since: 8.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public backupUserKeys( $encryptionModuleId, $purpose, $uid)
+	
+		.. rst-class:: phpdoc-description
+		
+			| backup keys of a given encryption module
+			
+		
+		:Source:
+			`lib/public/Encryption/Keys/IStorage.php#182 <https://github.com/nextcloud/server/blob/stable13/lib/public/Encryption/Keys/IStorage.php#L182>`_
+		
+		
+		:Parameters:
+			* **$encryptionModuleId** (string)  
+			* **$purpose** (string)  
+			* **$uid** (string)  
+
+		
+		:Returns: bool 
+		:Since: 12.0.0 
+	
+	
+

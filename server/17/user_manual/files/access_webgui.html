@@ -1,0 +1,484 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Accessing your files using the Nextcloud Web interface &mdash; Nextcloud latest User Manual latest documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'latest',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Accessing Nextcloud files using WebDAV" href="access_webdav.html" />
+    <link rel="prev" title="Files &amp; synchronization" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../contents.html">
+          
+
+          
+            
+            <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Nextcloud latest user manual introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../whats_new.html">What&#8217;s new for users in Nextcloud latest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">The Nextcloud Web interface</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Files &amp; synchronization</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Accessing your files using the Nextcloud Web interface</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#tagging-files">Tagging files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#comments">Comments</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#video-player">Video player</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#file-controls">File controls</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#previewing-files">Previewing files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#navigating-inside-your-nextcloud">Navigating inside your Nextcloud</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sharing-status-icons">Sharing status icons</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#creating-or-uploading-files-and-directories">Creating or uploading files and directories</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#selecting-files-or-folders">Selecting files or folders</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#filtering-the-files-view">Filtering the files view</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#moving-files">Moving files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#change-in-share-expiration-date">Change in share expiration date</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#creating-or-connecting-to-a-federation-share-link">Creating or connecting to a Federation Share link</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="access_webdav.html">Accessing Nextcloud files using WebDAV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gallery_app.html">Gallery app</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deleted_file_management.html">Managing deleted files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="desktop_mobile_sync.html">Desktop and mobile synchronization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="encrypting_files.html">Encrypting your Nextcloud files on the server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="federated_cloud_sharing.html">Using Federation Shares</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_drop.html">Making anonymous uploads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="large_file_upload.html">Large file uploads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quota.html">Storage quota</a></li>
+<li class="toctree-l2"><a class="reference internal" href="version_control.html">Version control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="projects.html">Projects</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../pim/index.html">Groupware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Setting your preferences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Using two-factor authentication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Manage connected browsers and devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">External Storage</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest User Manual</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../contents.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Files &amp; synchronization</a> &raquo;</li>
+        
+      <li>Accessing your files using the Nextcloud Web interface</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/files/access_webgui.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="accessing-your-files-using-the-nextcloud-web-interface">
+<h1>Accessing your files using the Nextcloud Web interface<a class="headerlink" href="#accessing-your-files-using-the-nextcloud-web-interface" title="Permalink to this headline">¶</a></h1>
+<p>You can access your Nextcloud files with the Nextcloud Web interface and create,
+preview, edit, delete, share, and re-share files. Your Nextcloud administrator
+has the option to disable these features, so if any of them are missing on your
+system ask your server administrator.</p>
+<div class="figure">
+<img alt="The Files view screen." src="../_images/users-files.png" />
+</div>
+<div class="section" id="tagging-files">
+<h2>Tagging files<a class="headerlink" href="#tagging-files" title="Permalink to this headline">¶</a></h2>
+<p>You can assign tags to files. To create tags, open a file to the Details view.
+Then type your tags. To enter more than one tag press the return key after
+creating each tag. All tags are system tags, and are shared by all users on your
+Nextcloud server.</p>
+<div class="figure">
+<img alt="Creating file tags." src="../_images/files_page-7.png" />
+</div>
+<p>Then use the Tags filter on the left sidebar to filter files by tags.</p>
+<div class="figure">
+<img alt="Viewing file tags." src="../_images/files_page-8.png" />
+</div>
+</div>
+<div class="section" id="comments">
+<h2>Comments<a class="headerlink" href="#comments" title="Permalink to this headline">¶</a></h2>
+<p>Use the Details view to add and read comments on any file or folder. Comments
+are visible to everyone who has access to the file.</p>
+<div class="figure">
+<img alt="Creating and viewing comments." src="../_images/file_menu_comments_2.png" />
+</div>
+</div>
+<div class="section" id="video-player">
+<h2>Video player<a class="headerlink" href="#video-player" title="Permalink to this headline">¶</a></h2>
+<p>You can play videos in Nextcloud with the Video Player app by simply clicking on
+the file. Video streaming by the native Nextcloud video player depends on your Web browser
+and the video format. If your Nextcloud administrator has enabled video
+streaming, and it doesn&#8217;t work in your Web browser, it may be a browser issue. See <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Supported_media_formats#Browser_compatibility">https://developer.mozilla.org/en-US/docs/Web/HTML/Supported_media_formats#Browser_compatibility</a> for supported multimedia formats in Web browsers.</p>
+<div class="figure">
+<img alt="Watching a movie." src="../_images/video_player_2.png" />
+</div>
+</div>
+<div class="section" id="file-controls">
+<h2>File controls<a class="headerlink" href="#file-controls" title="Permalink to this headline">¶</a></h2>
+<p>Nextcloud can display thumbnail previews for image files, MP3 covers,
+and text files, if this enabled by your server administrator. Hover your cursor
+over a file or folder to expose the controls for the following operations:</p>
+<dl class="docutils">
+<dt>Favorites</dt>
+<dd>Click the star to the left of the file icon to mark it as a favorite, and
+quickly find all of your favorites with the Favorites filter on the left
+sidebar.</dd>
+</dl>
+<div class="figure">
+<img alt="Marking Favorite files." src="../_images/files_page-1.png" />
+</div>
+<dl class="docutils">
+<dt>Share</dt>
+<dd>Share the file or folder with a group or other users, and create public
+shares with hyperlinks. You can also see who you have shared with already,
+and revoke shares by clicking the trash can icon.</dd>
+</dl>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>You can also see all re-shares of your original file shares.</p>
+<p class="last">If username auto-completion
+is enabled, when you start typing the user or group name Nextcloud will
+automatically complete it for you. If your administrator has enabled email
+notifications, you can send an email notification of the new share from the
+sharing screen.</p>
+</div>
+<div class="figure">
+<img alt="Sharing files." src="../_images/files_page-2.png" />
+</div>
+<p>You have five share permissions:</p>
+<ul class="simple">
+<li>Can share; allows the users you share with to re-share.</li>
+<li>Can edit; allows the users you share with to edit your shared files, and to collaborate using the Documents app.</li>
+<li>Create; allows the users you share with to create new files and add them to the share.</li>
+<li>Change; allows uploading a new version of a shared file and replacing it.</li>
+<li>Delete; allows the users you share with to delete shared files.</li>
+</ul>
+<dl class="docutils">
+<dt>Overflow Menu</dt>
+<dd>The Overflow menu (three dots) displays file details, and allows you to
+rename, download, or delete files.</dd>
+</dl>
+<div class="figure" id="id1">
+<img alt="Overflow menu." src="../_images/files_page-3.png" />
+<p class="caption"><span class="caption-text">The Details view shows Activities, Sharing, and Versions information.</span></p>
+</div>
+<div class="figure">
+<img alt="Details screen." src="../_images/files_page-4.png" />
+</div>
+<p>The <strong>Settings</strong> gear icon at the lower left allows you to show or hide hidden
+files in your Nextcloud Web interface. These are also called dotfiles, because
+they are prefixed with a dot, e.g. <code class="docutils literal"><span class="pre">.mailfile</span></code>. The dot tells your operating
+system to hide these files in your file browsers, unless you choose to display
+them. Usually these are configuration files, so having the option to hide them
+reduces clutter.</p>
+<div class="figure">
+<img alt="Hiding or displaying hidden files." src="../_images/hidden_files.png" />
+</div>
+</div>
+<div class="section" id="previewing-files">
+<h2>Previewing files<a class="headerlink" href="#previewing-files" title="Permalink to this headline">¶</a></h2>
+<p>You can display uncompressed text files, OpenDocument files, videos, and image
+files in the Nextcloud embedded viewers by clicking on the file name. There may
+be other file types you can preview if your Nextcloud administrator has enabled
+them. If Nextcloud cannot display a file, it starts a download process and
+downloads the file to your computer.</p>
+</div>
+<div class="section" id="navigating-inside-your-nextcloud">
+<h2>Navigating inside your Nextcloud<a class="headerlink" href="#navigating-inside-your-nextcloud" title="Permalink to this headline">¶</a></h2>
+<p>Navigating through folders in Nextcloud is as simple as clicking on a folder to
+open it and using the back button on your browser to move to a previous level.
+Nextcloud also provides a navigation bar at the top of the Files field for quick
+navigation.</p>
+</div>
+<div class="section" id="sharing-status-icons">
+<h2>Sharing status icons<a class="headerlink" href="#sharing-status-icons" title="Permalink to this headline">¶</a></h2>
+<p>Any folder that has been shared is marked with the <code class="docutils literal"><span class="pre">Shared</span></code> overlay icon.
+Public link shares are marked with a chain link. Un-shared folders are blank.</p>
+<div class="figure">
+<img alt="Share status icons." src="../_images/files_page-5.png" />
+</div>
+</div>
+<div class="section" id="creating-or-uploading-files-and-directories">
+<h2>Creating or uploading files and directories<a class="headerlink" href="#creating-or-uploading-files-and-directories" title="Permalink to this headline">¶</a></h2>
+<p>Upload or create new files or folders directly in a Nextcloud folder by clicking
+on the <em>New</em> button in the Files app.</p>
+<div class="figure">
+<img alt="The New file/folder/upload menu." src="../_images/files_page-6.png" />
+</div>
+<p>The <em>New</em> button provides the following options:</p>
+<dl class="docutils">
+<dt>Up arrow</dt>
+<dd>Upload files from your computer into Nextcloud. You can also upload files by
+dragging and dropping them from your file manager.</dd>
+<dt>Text file</dt>
+<dd>Creates a new text file and adds the file to your current folder.</dd>
+<dt>Folder</dt>
+<dd>Creates a new folder in the current folder.</dd>
+</dl>
+</div>
+<div class="section" id="selecting-files-or-folders">
+<h2>Selecting files or folders<a class="headerlink" href="#selecting-files-or-folders" title="Permalink to this headline">¶</a></h2>
+<p>You can select one or more files or folders by clicking on their checkboxes. To
+select all files in the current directory, click on the checkbox located at the
+top of the files listing.</p>
+<p>When you select multiple files, you can delete all of them, or download them as
+a ZIP file by using the <code class="docutils literal"><span class="pre">Delete</span></code> or <code class="docutils literal"><span class="pre">Download</span></code> buttons that appear at the
+top.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If the <code class="docutils literal"><span class="pre">Download</span></code> button is not visible, the administrator has
+disabled this feature.</p>
+</div>
+</div>
+<div class="section" id="filtering-the-files-view">
+<h2>Filtering the files view<a class="headerlink" href="#filtering-the-files-view" title="Permalink to this headline">¶</a></h2>
+<p>The left sidebar on the Files page contains several filters for quickly sorting
+and managing your files.</p>
+<dl class="docutils">
+<dt>All files</dt>
+<dd>The default view; displays all files that you have access to.</dd>
+<dt>Favorites</dt>
+<dd>Files or folders marked with the yellow star.</dd>
+<dt>Shared with you</dt>
+<dd>Displays all files shared with you by another user or group.</dd>
+<dt>Shared with others</dt>
+<dd>Displays all files that you have shared with other users or groups.</dd>
+<dt>Shared by link</dt>
+<dd>Displays all files that are shared by you via public link.</dd>
+<dt>External Storage (optional)</dt>
+<dd>Files that you have access to on external storage devices and services such
+as Amazon S3, SMB/CIFS, ftp...</dd>
+</dl>
+</div>
+<div class="section" id="moving-files">
+<h2>Moving files<a class="headerlink" href="#moving-files" title="Permalink to this headline">¶</a></h2>
+<p>You can move files and folders by dragging and dropping them into any directory.</p>
+</div>
+<div class="section" id="change-in-share-expiration-date">
+<h2>Change in share expiration date<a class="headerlink" href="#change-in-share-expiration-date" title="Permalink to this headline">¶</a></h2>
+<p>In older versions of Nextcloud, you could set an expiration date on both local
+and public shares. Now you can set an expiration date only on public shares,
+and local shares do not expire when public shares expire. The only way to
+&#8220;expire&#8221; a local share is to click the trash can icon to un-share your files.</p>
+</div>
+<div class="section" id="creating-or-connecting-to-a-federation-share-link">
+<h2>Creating or connecting to a Federation Share link<a class="headerlink" href="#creating-or-connecting-to-a-federation-share-link" title="Permalink to this headline">¶</a></h2>
+<p>Federated Cloud Sharing allows you to mount file shares from remote Nextcloud
+servers, and manage them just like a local share. See <a class="reference internal" href="federated_cloud_sharing.html"><span class="doc">Using Federation Shares</span></a>
+to learn to how to create and connect to new Federated Cloud shares.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="access_webdav.html" class="btn btn-neutral float-right" title="Accessing Nextcloud files using WebDAV" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="index.html" class="btn btn-neutral float-left" title="Files &amp; synchronization" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021 Nextcloud GmbH.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/16/user_manual">16</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/17/user_manual">17</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/18/user_manual">18</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/19/user_manual">19</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/user_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/user_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+   
+
+</body>
+</html>

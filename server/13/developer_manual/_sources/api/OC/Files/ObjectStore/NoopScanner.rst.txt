@@ -1,0 +1,122 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+NoopScanner
+===========
+
+
+.. php:namespace:: OC\Files\ObjectStore
+
+.. php:class:: NoopScanner
+
+
+	:Source:
+		`lib/private/Files/ObjectStore/NoopScanner.php#33 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/ObjectStore/NoopScanner.php#L33>`_
+	
+	:Parent:
+		:php:class:`OC\\Files\\Cache\\Scanner`
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $storage)
+	
+		:Source:
+			`lib/private/Files/ObjectStore/NoopScanner.php#34 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/ObjectStore/NoopScanner.php#L34>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public scanFile( $file, $reuseExisting=0, $parentId=\-1, $cacheData=null, $lock=true, $data=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| scan a single file and store it in the cache
+			
+		
+		:Source:
+			`lib/private/Files/ObjectStore/NoopScanner.php#47 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/ObjectStore/NoopScanner.php#L47>`_
+		
+		
+		:Parameters:
+			* **$file** (string)  
+			* **$reuseExisting** (int)  
+			* **$parentId** (int)  
+			* **$cacheData** (array | null)  existing data in the cache for the file to be scanned
+
+		
+		:Returns: array an array of metadata of the scanned file
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public scan( $path, $recursive=self::SCAN\_RECURSIVE, $reuse=\-1, $lock=true)
+	
+		.. rst-class:: phpdoc-description
+		
+			| scan a folder and all it\'s children
+			
+		
+		:Source:
+			`lib/private/Files/ObjectStore/NoopScanner.php#59 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/ObjectStore/NoopScanner.php#L59>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+			* **$recursive** (bool)  
+			* **$reuse** (int)  
+
+		
+		:Returns: array with the meta data of the scanned file or folder
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected scanChildren( $path, $recursive=self::SCAN\_RECURSIVE, $reuse=\-1, $folderId=null, $lock=true)
+	
+		.. rst-class:: phpdoc-description
+		
+			| scan all the files and folders in a folder
+			
+		
+		:Source:
+			`lib/private/Files/ObjectStore/NoopScanner.php#72 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/ObjectStore/NoopScanner.php#L72>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+			* **$recursive** (bool)  
+			* **$reuse** (int)  
+
+		
+		:Returns: int the size of the scanned folder or \-1 if the size is unknown at this stage
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public backgroundScan()
+	
+		.. rst-class:: phpdoc-description
+		
+			| walk over any folders that are not fully scanned yet and scan them
+			
+		
+		:Source:
+			`lib/private/Files/ObjectStore/NoopScanner.php#79 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/ObjectStore/NoopScanner.php#L79>`_
+		
+		
+	
+	
+

@@ -1,0 +1,331 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Storage and database &mdash; Nextcloud latest Developer Manual latest documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'latest',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Migrations" href="migrations.html" />
+    <link rel="prev" title="Theming support" href="../view/theming.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html">
+          
+
+          
+            
+            <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../general/index.html">General contributor guidelines</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">App development</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../intro.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial.html">Tutorial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../upgrade-guide.html">App upgrade guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../bootstrap.html">Bootstrapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../npm.html">NPM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../requests/index.html">Request lifecycle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../view/index.html">View</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Storage and database</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="migrations.html">Migrations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="schema.html">Database schema (deprecated)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="database.html">Database access</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuration.html">Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="filesystem.html">Filesystem</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appdata.html">AppData</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html">Changelog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../classloader.html">Classloader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../code_signing.html">Code signing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../info.html">App metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../init.html">Navigation and pre-app configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../publishing.html">App store publishing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../users.html">User management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../two-factor-provider.html">Two-factor providers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../events.html">Events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../backgroundjobs.html">Background jobs (Cron)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../settings.html">Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notifications.html">Notifications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../flow.html">Nextcloud Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../logging.html">Logging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../repair.html">Repair steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../publicpage.html">Public Pages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../testing.html">Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api.html">API reference</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../design/index.html">Design guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../android_library/index.html">Android application development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../client_apis/index.html">Client APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../core/index.html">Core development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../bugtracker/index.html">Bugtracker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../commun/index.html">Help and communication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api.html">API reference</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Nextcloud latest Developer Manual</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">App development</a> &raquo;</li>
+        
+      <li>Storage and database</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/nextcloud/documentation/edit/master/developer_manual/app/storage/index.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="storage-and-database">
+<h1>Storage and database<a class="headerlink" href="#storage-and-database" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="migrations.html">Migrations</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="migrations.html#migration-1-schema-change">1. Migration 1: Schema change</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migrations.html#migration-1-post-schema-change">2. Migration 1: Post schema change</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migrations.html#migration-2-schema-change">3. Migration 2: Schema change</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migrations.html#migrate-from-database-xml">Migrate from database.xml</a></li>
+<li class="toctree-l2"><a class="reference internal" href="migrations.html#console-commands">Console commands</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="schema.html">Database schema (deprecated)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="database.html">Database access</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="database.html#mappers">Mappers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="database.html#entities">Entities</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html#system-values">System values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html#app-values">App values</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configuration.html#user-values">User values</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="filesystem.html">Filesystem</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="filesystem.html#writing-to-a-file">Writing to a file</a></li>
+<li class="toctree-l2"><a class="reference internal" href="filesystem.html#reading-from-a-file">Reading from a file</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="appdata.html">AppData</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="appdata.html#the-simple-filesystem">The simple filesystem</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="migrations.html" class="btn btn-neutral float-right" title="Migrations" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../view/theming.html" class="btn btn-neutral float-left" title="Theming support" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021 Nextcloud GmbH.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/16/developer_manual">16</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/17/developer_manual">17</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/18/developer_manual">18</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/19/developer_manual">19</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/developer_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/developer_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+   
+
+</body>
+</html>

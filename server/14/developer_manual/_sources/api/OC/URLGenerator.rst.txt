@@ -1,0 +1,207 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+URLGenerator
+============
+
+
+.. php:namespace:: OC
+
+.. php:class:: URLGenerator
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Class to generate URLs
+		
+	
+	:Source:
+		`lib/private/URLGenerator.php#53 <https://github.com/nextcloud/server/blob/stable13/lib/private/URLGenerator.php#L53>`_
+	
+	:Implements:
+		:php:interface:`OCP\\IURLGenerator` 
+	
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $config, $cacheFactory, $request, $router)
+	
+		:Source:
+			`lib/private/URLGenerator.php#65 <https://github.com/nextcloud/server/blob/stable13/lib/private/URLGenerator.php#L65>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public linkToRoute( $routeName, $arguments=\[\])
+	
+		.. rst-class:: phpdoc-description
+		
+			| Creates an url using a defined route
+			
+		
+		:Source:
+			`lib/private/URLGenerator.php#84 <https://github.com/nextcloud/server/blob/stable13/lib/private/URLGenerator.php#L84>`_
+		
+		
+		:Parameters:
+			* **$routeName** (string)  
+			* **$arguments** (array)  args with param=>value, will be appended to the returned url
+
+		
+		:Returns: string the url
+			
+			Returns a url to the given route\.
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public linkToRouteAbsolute( $routeName, $arguments=\[\])
+	
+		.. rst-class:: phpdoc-description
+		
+			| Creates an absolute url using a defined route
+			
+		
+		:Source:
+			`lib/private/URLGenerator.php#96 <https://github.com/nextcloud/server/blob/stable13/lib/private/URLGenerator.php#L96>`_
+		
+		
+		:Parameters:
+			* **$routeName** (string)  
+			* **$arguments** (array)  args with param=>value, will be appended to the returned url
+
+		
+		:Returns: string the url
+			
+			Returns an absolute url to the given route\.
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public linkToOCSRouteAbsolute( $routeName, $arguments=\[\])
+	
+		:Source:
+			`lib/private/URLGenerator.php#100 <https://github.com/nextcloud/server/blob/stable13/lib/private/URLGenerator.php#L100>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public linkTo( $appName, $file, $args=\[\])
+	
+		.. rst-class:: phpdoc-description
+		
+			| Creates an url
+			
+		
+		:Source:
+			`lib/private/URLGenerator.php#125 <https://github.com/nextcloud/server/blob/stable13/lib/private/URLGenerator.php#L125>`_
+		
+		
+		:Parameters:
+			* **$appName** (string)  app
+			* **$file** (string)  file
+			* **$args** (array)  array with param=>value, will be appended to the returned url
+			The value of $args will be urlencoded
+
+		
+		:Returns: string the url
+			
+			Returns a url to the given app and file\.
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public imagePath( $appName, $file)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Creates path to an image
+			
+		
+		:Source:
+			`lib/private/URLGenerator.php#173 <https://github.com/nextcloud/server/blob/stable13/lib/private/URLGenerator.php#L173>`_
+		
+		
+		:Parameters:
+			* **$appName** (string)  app
+			* **$file** (string)  image name
+
+		
+		:Throws: :any:`\\RuntimeException <RuntimeException>` If the image does not exist
+		:Returns: string the url
+			
+			Returns the path to the image\.
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getAbsoluteURL( $url)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Makes an URL absolute
+			
+		
+		:Source:
+			`lib/private/URLGenerator.php#247 <https://github.com/nextcloud/server/blob/stable13/lib/private/URLGenerator.php#L247>`_
+		
+		
+		:Parameters:
+			* **$url** (string)  the url in the ownCloud host
+
+		
+		:Returns: string the absolute version of the url
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public linkToDocs( $key)
+	
+		:Source:
+			`lib/private/URLGenerator.php#265 <https://github.com/nextcloud/server/blob/stable13/lib/private/URLGenerator.php#L265>`_
+		
+		
+		:Parameters:
+			* **$key** (string)  
+
+		
+		:Returns: string url to the online documentation
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getBaseUrl()
+	
+		:Source:
+			`lib/private/URLGenerator.php#273 <https://github.com/nextcloud/server/blob/stable13/lib/private/URLGenerator.php#L273>`_
+		
+		
+		:Returns: string base url of the current request
+	
+	
+

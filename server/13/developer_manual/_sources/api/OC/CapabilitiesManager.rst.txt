@@ -1,0 +1,81 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+CapabilitiesManager
+===================
+
+
+.. php:namespace:: OC
+
+.. php:class:: CapabilitiesManager
+
+
+	:Source:
+		`lib/private/CapabilitiesManager.php#37 <https://github.com/nextcloud/server/blob/stable13/lib/private/CapabilitiesManager.php#L37>`_
+	
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $logger)
+	
+		:Source:
+			`lib/private/CapabilitiesManager.php#45 <https://github.com/nextcloud/server/blob/stable13/lib/private/CapabilitiesManager.php#L45>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getCapabilities( $public=false)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get an array of al the capabilities that are registered at this manager
+			
+		
+		:Source:
+			`lib/private/CapabilitiesManager.php#56 <https://github.com/nextcloud/server/blob/stable13/lib/private/CapabilitiesManager.php#L56>`_
+		
+		
+		:Parameters:
+			* **$public** (bool)  get public capabilities only
+
+		
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` 
+		:Returns: array 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public registerCapability( $callable)
+	
+		.. rst-class:: phpdoc-description
+		
+			| In order to improve lazy loading a closure can be registered which will be called in case
+			| capabilities are actually requested
+			
+			| $callable has to return an instance of OCP\\Capabilities\\ICapability
+			
+		
+		:Source:
+			`lib/private/CapabilitiesManager.php#88 <https://github.com/nextcloud/server/blob/stable13/lib/private/CapabilitiesManager.php#L88>`_
+		
+		
+		:Parameters:
+			* **$callable** (:any:`Closure <Closure>`)  
+
+		
+	
+	
+

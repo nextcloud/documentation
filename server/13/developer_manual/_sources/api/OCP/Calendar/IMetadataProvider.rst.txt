@@ -1,0 +1,95 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IMetadataProvider
+=================
+
+
+.. php:namespace:: OCP\Calendar
+
+.. php:interface:: IMetadataProvider
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Interface IMetadataProvider
+		
+		| Provider for metadata of a resource or a room
+		
+	
+	:Source:
+		`lib/public/Calendar/IMetadataProvider.php#33 <https://github.com/nextcloud/server/blob/stable13/lib/public/Calendar/IMetadataProvider.php#L33>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public getAllAvailableMetadataKeys()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get a list of all metadata keys available for this room
+			
+			| Room backends are allowed to return custom keys, beyond the ones
+			| defined in this class\. If they do, they should make sure to use their
+			| own namespace\.
+			
+		
+		:Source:
+			`lib/public/Calendar/IMetadataProvider.php#45 <https://github.com/nextcloud/server/blob/stable13/lib/public/Calendar/IMetadataProvider.php#L45>`_
+		
+		
+		:Returns: string[] \- A list of available keys
+		:Since: 17.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public hasMetadataForKey( $key)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get whether or not a metadata key is set for this room
+			
+		
+		:Source:
+			`lib/public/Calendar/IMetadataProvider.php#54 <https://github.com/nextcloud/server/blob/stable13/lib/public/Calendar/IMetadataProvider.php#L54>`_
+		
+		
+		:Parameters:
+			* **$key** (string)  - The key to check for
+
+		
+		:Returns: bool \- Whether or not key is available
+		:Since: 17.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getMetadataForKey( $key)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the value for a metadata key
+			
+		
+		:Source:
+			`lib/public/Calendar/IMetadataProvider.php#63 <https://github.com/nextcloud/server/blob/stable13/lib/public/Calendar/IMetadataProvider.php#L63>`_
+		
+		
+		:Parameters:
+			* **$key** (string)  - The key to check for
+
+		
+		:Returns: string | null \- The value stored for the key, null if no value stored
+		:Since: 17.0.0 
+	
+	
+

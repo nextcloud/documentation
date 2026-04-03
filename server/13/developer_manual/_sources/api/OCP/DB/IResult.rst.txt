@@ -1,0 +1,118 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IResult
+=======
+
+
+.. php:namespace:: OCP\DB
+
+.. php:interface:: IResult
+
+
+	:Implemented by:
+		:php:class:`OC\\DB\\ResultAdapter` 
+	
+	
+	:Source:
+		`lib/public/DB/IResult.php#33 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/IResult.php#L33>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public closeCursor()
+	
+		:Source:
+			`lib/public/DB/IResult.php#40 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/IResult.php#L40>`_
+		
+		
+		:Returns: bool 
+		:Since: 21.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public fetch( $fetchMode=\\PDO::FETCH\_ASSOC)
+	
+		:Source:
+			`lib/public/DB/IResult.php#49 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/IResult.php#L49>`_
+		
+		
+		:Parameters:
+			* **$fetchMode** (int)  
+
+		
+		:Returns: mixed 
+		:Since: 21.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public fetchAll( $fetchMode=\\PDO::FETCH\_ASSOC)
+	
+		:Source:
+			`lib/public/DB/IResult.php#58 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/IResult.php#L58>`_
+		
+		
+		:Parameters:
+			* **$fetchMode** (int)  (one of PDO::FETCH_ASSOC, PDO::FETCH_NUM or PDO::FETCH_COLUMN (2, 3 or 7)
+
+		
+		:Returns: array 
+		:Since: 21.0.0 
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public fetchColumn()
+	
+		:Source:
+			`lib/public/DB/IResult.php#66 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/IResult.php#L66>`_
+		
+		
+		:Returns: mixed 
+		:Since: 21.0.0 
+		:Deprecated: 21.0.0 use \\OCP\\DB\\IResult::fetchOne
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public fetchOne()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the first value of the next row of the result or FALSE if there are no more rows\.
+			
+		
+		:Source:
+			`lib/public/DB/IResult.php#75 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/IResult.php#L75>`_
+		
+		
+		:Returns: bool | mixed 
+		:Since: 21.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public rowCount()
+	
+		:Source:
+			`lib/public/DB/IResult.php#82 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/IResult.php#L82>`_
+		
+		
+		:Returns: int 
+		:Since: 21.0.0 
+	
+	
+

@@ -1,0 +1,385 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+ILDAPProvider
+=============
+
+
+.. php:namespace:: OCP\LDAP
+
+.. php:interface:: ILDAPProvider
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Interface ILDAPProvider
+		
+	
+	:Source:
+		`lib/public/LDAP/ILDAPProvider.php#36 <https://github.com/nextcloud/server/blob/stable13/lib/public/LDAP/ILDAPProvider.php#L36>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public getUserDN( $uid)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Translate a user id to LDAP DN\.
+			
+		
+		:Source:
+			`lib/public/LDAP/ILDAPProvider.php#43 <https://github.com/nextcloud/server/blob/stable13/lib/public/LDAP/ILDAPProvider.php#L43>`_
+		
+		
+		:Parameters:
+			* **$uid** (string)  user id
+
+		
+		:Returns: string 
+		:Since: 11.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getGroupDN( $gid)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Translate a group id to LDAP DN\.
+			
+		
+		:Source:
+			`lib/public/LDAP/ILDAPProvider.php#51 <https://github.com/nextcloud/server/blob/stable13/lib/public/LDAP/ILDAPProvider.php#L51>`_
+		
+		
+		:Parameters:
+			* **$gid** (string)  group id
+
+		
+		:Returns: string 
+		:Since: 13.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getUserName( $dn)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Translate a LDAP DN to an internal user name\.
+			
+		
+		:Source:
+			`lib/public/LDAP/ILDAPProvider.php#60 <https://github.com/nextcloud/server/blob/stable13/lib/public/LDAP/ILDAPProvider.php#L60>`_
+		
+		
+		:Parameters:
+			* **$dn** (string)  LDAP DN
+
+		
+		:Returns: string with the internal user name
+		:Throws: :any:`\\Exception <Exception>` if translation was unsuccessful
+		:Since: 11.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public DNasBaseParameter( $dn)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Convert a stored DN so it can be used as base parameter for LDAP queries\.
+			
+		
+		:Source:
+			`lib/public/LDAP/ILDAPProvider.php#68 <https://github.com/nextcloud/server/blob/stable13/lib/public/LDAP/ILDAPProvider.php#L68>`_
+		
+		
+		:Parameters:
+			* **$dn** (string)  the DN
+
+		
+		:Returns: string 
+		:Since: 11.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public sanitizeDN( $dn)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Sanitize a DN received from the LDAP server\.
+			
+		
+		:Source:
+			`lib/public/LDAP/ILDAPProvider.php#76 <https://github.com/nextcloud/server/blob/stable13/lib/public/LDAP/ILDAPProvider.php#L76>`_
+		
+		
+		:Parameters:
+			* **$dn** (array)  the DN in question
+
+		
+		:Returns: array the sanitized DN
+		:Since: 11.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getLDAPConnection( $uid)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Return a new LDAP connection resource for the specified user\.
+			
+		
+		:Source:
+			`lib/public/LDAP/ILDAPProvider.php#84 <https://github.com/nextcloud/server/blob/stable13/lib/public/LDAP/ILDAPProvider.php#L84>`_
+		
+		
+		:Parameters:
+			* **$uid** (string)  user id
+
+		
+		:Returns: resource of the LDAP connection
+		:Since: 11.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getGroupLDAPConnection( $gid)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Return a new LDAP connection resource for the specified group\.
+			
+		
+		:Source:
+			`lib/public/LDAP/ILDAPProvider.php#92 <https://github.com/nextcloud/server/blob/stable13/lib/public/LDAP/ILDAPProvider.php#L92>`_
+		
+		
+		:Parameters:
+			* **$gid** (string)  group id
+
+		
+		:Returns: resource of the LDAP connection
+		:Since: 13.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getLDAPBaseUsers( $uid)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the LDAP base for users\.
+			
+		
+		:Source:
+			`lib/public/LDAP/ILDAPProvider.php#101 <https://github.com/nextcloud/server/blob/stable13/lib/public/LDAP/ILDAPProvider.php#L101>`_
+		
+		
+		:Parameters:
+			* **$uid** (string)  user id
+
+		
+		:Returns: string the base for users
+		:Throws: :any:`\\Exception <Exception>` if user id was not found in LDAP
+		:Since: 11.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getLDAPBaseGroups( $uid)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the LDAP base for groups\.
+			
+		
+		:Source:
+			`lib/public/LDAP/ILDAPProvider.php#110 <https://github.com/nextcloud/server/blob/stable13/lib/public/LDAP/ILDAPProvider.php#L110>`_
+		
+		
+		:Parameters:
+			* **$uid** (string)  user id
+
+		
+		:Returns: string the base for groups
+		:Throws: :any:`\\Exception <Exception>` if user id was not found in LDAP
+		:Since: 11.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public dnExists( $dn)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check whether a LDAP DN exists
+			
+		
+		:Source:
+			`lib/public/LDAP/ILDAPProvider.php#118 <https://github.com/nextcloud/server/blob/stable13/lib/public/LDAP/ILDAPProvider.php#L118>`_
+		
+		
+		:Parameters:
+			* **$dn** (string)  LDAP DN
+
+		
+		:Returns: bool whether the DN exists
+		:Since: 11.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public clearCache( $uid)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Clear the cache if a cache is used, otherwise do nothing\.
+			
+		
+		:Source:
+			`lib/public/LDAP/ILDAPProvider.php#125 <https://github.com/nextcloud/server/blob/stable13/lib/public/LDAP/ILDAPProvider.php#L125>`_
+		
+		
+		:Parameters:
+			* **$uid** (string)  user id
+
+		
+		:Since: 11.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public clearGroupCache( $gid)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Clear the cache if a cache is used, otherwise do nothing\.
+			
+		
+		:Source:
+			`lib/public/LDAP/ILDAPProvider.php#132 <https://github.com/nextcloud/server/blob/stable13/lib/public/LDAP/ILDAPProvider.php#L132>`_
+		
+		
+		:Parameters:
+			* **$gid** (string)  group id
+
+		
+		:Since: 13.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getLDAPDisplayNameField( $uid)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the LDAP attribute name for the user\'s display name
+			
+		
+		:Source:
+			`lib/public/LDAP/ILDAPProvider.php#141 <https://github.com/nextcloud/server/blob/stable13/lib/public/LDAP/ILDAPProvider.php#L141>`_
+		
+		
+		:Parameters:
+			* **$uid** (string)  user id
+
+		
+		:Returns: string the display name field
+		:Throws: :any:`\\Exception <Exception>` if user id was not found in LDAP
+		:Since: 12.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getLDAPEmailField( $uid)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the LDAP attribute name for the email
+			
+		
+		:Source:
+			`lib/public/LDAP/ILDAPProvider.php#150 <https://github.com/nextcloud/server/blob/stable13/lib/public/LDAP/ILDAPProvider.php#L150>`_
+		
+		
+		:Parameters:
+			* **$uid** (string)  user id
+
+		
+		:Returns: string the email field
+		:Throws: :any:`\\Exception <Exception>` if user id was not found in LDAP
+		:Since: 12.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getLDAPGroupMemberAssoc( $gid)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the LDAP attribute name for the type of association betweeen users and groups
+			
+		
+		:Source:
+			`lib/public/LDAP/ILDAPProvider.php#159 <https://github.com/nextcloud/server/blob/stable13/lib/public/LDAP/ILDAPProvider.php#L159>`_
+		
+		
+		:Parameters:
+			* **$gid** (string)  group id
+
+		
+		:Returns: string the configuration, one of: \'memberUid\', \'uniqueMember\', \'member\', \'gidNumber\', \'\'
+		:Throws: :any:`\\Exception <Exception>` if group id was not found in LDAP
+		:Since: 13.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getUserAttribute( $uid, $attribute)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get an LDAP attribute for a nextcloud user
+			
+		
+		:Source:
+			`lib/public/LDAP/ILDAPProvider.php#169 <https://github.com/nextcloud/server/blob/stable13/lib/public/LDAP/ILDAPProvider.php#L169>`_
+		
+		
+		:Parameters:
+			* **$uid** (string)  the nextcloud user id to get the attribute for
+			* **$attribute** (string)  the name of the attribute to read
+
+		
+		:Returns: string | null 
+		:Throws: :any:`\\Exception <Exception>` if user id was not found in LDAP
+		:Since: 21.0.0 
+	
+	
+

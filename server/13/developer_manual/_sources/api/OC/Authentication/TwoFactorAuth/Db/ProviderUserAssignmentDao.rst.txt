@@ -1,0 +1,119 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+ProviderUserAssignmentDao
+=========================
+
+
+.. php:namespace:: OC\Authentication\TwoFactorAuth\Db
+
+.. php:class:: ProviderUserAssignmentDao
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Data access object to query and assign \(provider\_id, uid, enabled\) tuples of
+		| 2FA providers
+		
+	
+	:Source:
+		`lib/private/Authentication/TwoFactorAuth/Db/ProviderUserAssignmentDao.php#38 <https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/TwoFactorAuth/Db/ProviderUserAssignmentDao.php#L38>`_
+	
+
+Constants
+---------
+
+.. php:const:: TABLE_NAME = twofactor\_providers
+
+	:Source:
+		`lib/private/Authentication/TwoFactorAuth/Db/ProviderUserAssignmentDao.php#39 <https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/TwoFactorAuth/Db/ProviderUserAssignmentDao.php#L39>`_
+	
+
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $dbConn)
+	
+		:Source:
+			`lib/private/Authentication/TwoFactorAuth/Db/ProviderUserAssignmentDao.php#44 <https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/TwoFactorAuth/Db/ProviderUserAssignmentDao.php#L44>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getState( $uid)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get all assigned provider IDs for the given user ID
+			
+		
+		:Source:
+			`lib/private/Authentication/TwoFactorAuth/Db/ProviderUserAssignmentDao.php#54 <https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/TwoFactorAuth/Db/ProviderUserAssignmentDao.php#L54>`_
+		
+		
+		:Returns: string[] where the array key is the provider ID \(string\) and the
+			value is the enabled state \(bool\)
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public persist( $providerId, $uid, $enabled)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Persist a new/updated \(provider\_id, uid, enabled\) tuple
+			
+		
+		:Source:
+			`lib/private/Authentication/TwoFactorAuth/Db/ProviderUserAssignmentDao.php#73 <https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/TwoFactorAuth/Db/ProviderUserAssignmentDao.php#L73>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public deleteByUser( $uid)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Delete all provider states of a user and return the provider IDs
+			
+		
+		:Source:
+			`lib/private/Authentication/TwoFactorAuth/Db/ProviderUserAssignmentDao.php#102 <https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/TwoFactorAuth/Db/ProviderUserAssignmentDao.php#L102>`_
+		
+		
+		:Parameters:
+			* **$uid** (string)  
+
+		
+		:Returns: int[] 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public deleteAll( $providerId)
+	
+		:Source:
+			`lib/private/Authentication/TwoFactorAuth/Db/ProviderUserAssignmentDao.php#126 <https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/TwoFactorAuth/Db/ProviderUserAssignmentDao.php#L126>`_
+		
+		
+	
+	
+

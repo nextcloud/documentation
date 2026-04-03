@@ -1,0 +1,196 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+Base
+====
+
+
+.. php:namespace:: OC\Template
+
+.. php:class:: Base
+
+
+	:Source:
+		`lib/private/Template/Base.php#35 <https://github.com/nextcloud/server/blob/stable13/lib/private/Template/Base.php#L35>`_
+	
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $template, $requestToken, $l10n, $theme)
+	
+		:Source:
+			`lib/private/Template/Base.php#51 <https://github.com/nextcloud/server/blob/stable13/lib/private/Template/Base.php#L51>`_
+		
+		
+		:Parameters:
+			* **$template** (string)  
+			* **$requestToken** (string)  
+			* **$l10n** (:any:`OCP\\IL10N <OCP\\IL10N>`)  
+			* **$theme** (:any:`OCP\\Defaults <OCP\\Defaults>`)  
+
+		
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected getAppTemplateDirs( $theme, $app, $serverRoot, $app_dir)
+	
+		:Source:
+			`lib/private/Template/Base.php#66 <https://github.com/nextcloud/server/blob/stable13/lib/private/Template/Base.php#L66>`_
+		
+		
+		:Parameters:
+			* **$theme** (string)  
+			* **$app** (string)  
+			* **$serverRoot** (string)  
+			* **$app_dir** (string | bool)  
+
+		
+		:Returns: string[] 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected getCoreTemplateDirs( $theme, $serverRoot)
+	
+		:Source:
+			`lib/private/Template/Base.php#85 <https://github.com/nextcloud/server/blob/stable13/lib/private/Template/Base.php#L85>`_
+		
+		
+		:Parameters:
+			* **$theme** (string)  
+			* **$serverRoot** (string)  
+
+		
+		:Returns: string[] 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public assign( $key, $value)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Assign variables
+			
+		
+		:Source:
+			`lib/private/Template/Base.php#103 <https://github.com/nextcloud/server/blob/stable13/lib/private/Template/Base.php#L103>`_
+		
+		
+		:Parameters:
+			* **$key** (string)  key
+			* **$value** (array | bool | int | string | :any:`\\Throwable <Throwable>`)  value
+
+		
+		:Returns: bool This function assigns a variable\. It can be accessed via $\_\[$key\] in
+			the template\.
+			
+			If the key existed before, it will be overwritten
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public append( $key, $value)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Appends a variable
+			
+		
+		:Source:
+			`lib/private/Template/Base.php#117 <https://github.com/nextcloud/server/blob/stable13/lib/private/Template/Base.php#L117>`_
+		
+		
+		:Parameters:
+			* **$key** (string)  key
+			* **$value** (mixed)  value
+			
+			This function assigns a variable in an array context. If the key already
+			exists, the value will be appended. It can be accessed via
+			$_[$key][$position] in the template.
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public printPage()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Prints the proceeded template
+			
+		
+		:Source:
+			`lib/private/Template/Base.php#131 <https://github.com/nextcloud/server/blob/stable13/lib/private/Template/Base.php#L131>`_
+		
+		
+		:Returns: bool This function proceeds the template and prints its output\.
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public fetchPage( $additionalParams=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Process the template
+			
+		
+		:Source:
+			`lib/private/Template/Base.php#149 <https://github.com/nextcloud/server/blob/stable13/lib/private/Template/Base.php#L149>`_
+		
+		
+		:Parameters:
+			* **$additionalParams** (array | null)  
+
+		
+		:Returns: string This function processes the template\.
+			
+			This function processes the template\.
+		
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected load( $file, $additionalParams=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| doing the actual work
+			
+		
+		:Source:
+			`lib/private/Template/Base.php#162 <https://github.com/nextcloud/server/blob/stable13/lib/private/Template/Base.php#L162>`_
+		
+		
+		:Parameters:
+			* **$file** (string)  
+			* **$additionalParams** (array | null)  
+
+		
+		:Returns: string content
+			
+			Includes the template file, fetches its output
+		
+	
+	
+

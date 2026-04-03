@@ -1,0 +1,442 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Migrations &mdash; Nextcloud 15 Developer Manual 15 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'15',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Database schema (deprecated)" href="schema.html" />
+    <link rel="prev" title="Storage and database" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html">
+          
+
+          
+            
+            <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../general/index.html">General contributor guidelines</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">App development</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../intro.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial.html">Tutorial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../requests/index.html">Request lifecycle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../view/index.html">View</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Storage and database</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Migrations</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#migration-1-schema-change">1. Migration 1: Schema change</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#migration-1-post-schema-change">2. Migration 1: Post schema change</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#migration-2-schema-change">3. Migration 2: Schema change</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#migrate-from-database-xml">Migrate from database.xml</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#console-commands">Console commands</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="schema.html">Database schema (deprecated)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="database.html">Database access</a></li>
+<li class="toctree-l3"><a class="reference internal" href="configuration.html">Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="filesystem.html">Filesystem</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appdata.html">AppData</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html">Changelog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../classloader.html">Classloader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../code_signing.html">Code signing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../info.html">App metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../init.html">Navigation and pre-app configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../publishing.html">App store publishing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../users.html">User management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../two-factor-provider.html">Two-factor providers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../hooks.html">Hooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../backgroundjobs.html">Background jobs (Cron)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../settings.html">Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notifications.html">Notifications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../logging.html">Logging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../repair.html">Repair steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../publicpage.html">Public Pages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../testing.html">Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api.html">API Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../design/index.html">Design guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../android_library/index.html">Android application development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../client_apis/index.html">Client APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../core/index.html">Core development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../bugtracker/index.html">Bugtracker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../commun/index.html">Help and communication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api.html">API Documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Nextcloud 15 Developer Manual</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">App development</a> &raquo;</li>
+        
+          <li><a href="index.html">Storage and database</a> &raquo;</li>
+        
+      <li>Migrations</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/nextcloud/documentation/edit/stable15/developer_manual/app/storage/migrations.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="migrations">
+<span id="app-db-migrations"></span><h1>Migrations<a class="headerlink" href="#migrations" title="Permalink to this headline">¶</a></h1>
+<p>In the past, apps had a <cite>appinfo/database.xml</cite>-file which holds their database schema
+for installation and update and was a functional method for installing apps which
+had some trouble with upgrading apps (e.g. apps were not able to rename columns
+without loosing the data stored in the original column):</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?</span><span class="nx">xml</span> <span class="nx">version</span><span class="o">=</span><span class="s2">&quot;1.0&quot;</span> <span class="nx">encoding</span><span class="o">=</span><span class="s2">&quot;ISO-8859-1&quot;</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="x">&lt;database&gt;</span>
+<span class="x">         &lt;name&gt;*dbname*&lt;/name&gt;</span>
+<span class="x">         &lt;create&gt;true&lt;/create&gt;</span>
+<span class="x">         &lt;overwrite&gt;false&lt;/overwrite&gt;</span>
+<span class="x">         &lt;charset&gt;utf8&lt;/charset&gt;</span>
+<span class="x">         &lt;table&gt;</span>
+<span class="x">                 &lt;name&gt;*dbprefix*twofactor_backupcodes&lt;/name&gt;</span>
+<span class="x">                 &lt;declaration&gt;</span>
+<span class="x">                       &lt;field&gt;</span>
+<span class="x">                               &lt;name&gt;id&lt;/name&gt;</span>
+<span class="x">                               &lt;type&gt;integer&lt;/type&gt;</span>
+<span class="x">                               &lt;autoincrement&gt;1&lt;/autoincrement&gt;</span>
+<span class="x">                               &lt;default&gt;0&lt;/default&gt;</span>
+<span class="x">                               &lt;notnull&gt;true&lt;/notnull&gt;</span>
+<span class="x">                               &lt;length&gt;4&lt;/length&gt;</span>
+<span class="x">                       &lt;/field&gt;</span>
+<span class="x"> ...</span>
+</pre></div>
+</div>
+<p>The limitations of this method will be bypassed with migrations. A migration can
+consist of 3 different methods:</p>
+<ul class="simple">
+<li>Pre schema changes</li>
+<li>Actual schema changes</li>
+<li>Post schema changes</li>
+</ul>
+<p>Apps can have mutiple migrations, which allows a way more flexible updating process.
+For example, you can rename a column while copying all the content with 3 steps
+packed in 2 migrations.</p>
+<p>After creating migrations for your current database and installation routine,
+you need to in order to make use of migrations, is to delete the old <cite>appinfo/database.xml</cite>
+file. The Nextcloud updater logic only allows to use one or the other.
+But as soon as the <cite>database.xml</cite> file is gone, it will look for your migration
+files in the apps <cite>lib/Migration</cite> folder.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">While in theory you can run any code in the pre- and post-steps, we
+recommend not to use actual php classes. With migrations you can update
+from any old version to any new version as long as the migration steps
+are retained. Since they are also used for installation, you should
+keep them anyway. But this also means when you change a php class which
+you use in your migration, the code may be executed on different
+database/file/code standings when being ran in an upgrade situation.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Since Nextcloud stores, which migrations have been executed already
+you must not “update” migrations. The recommendation is to keep them
+untouched as long as possible. You should only adjust it to make sure
+it still executes, but additional changes to the database should be done
+in a new migration.</p>
+</div>
+<div class="section" id="migration-1-schema-change">
+<h2>1. Migration 1: Schema change<a class="headerlink" href="#migration-1-schema-change" title="Permalink to this headline">¶</a></h2>
+<p>With this step the new column gets created:</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="x">public function changeSchema(IOutput $output, \Closure $schemaClosure, array $options) {</span>
+<span class="x">                   /** @var Schema $schema */</span>
+<span class="x">                   $schema = $schemaClosure();</span>
+
+<span class="x">                   $table = $schema-&gt;getTable(&#39;twofactor_backupcodes&#39;);</span>
+
+<span class="x">                   $table-&gt;addColumn(&#39;user_id&#39;, Type::STRING, [</span>
+<span class="x">                           &#39;notnull&#39; =&gt; true,</span>
+<span class="x">                                 &#39;length&#39; =&gt; 64,</span>
+<span class="x">                   ]);</span>
+
+<span class="x">                   return $schema;</span>
+<span class="x">      }</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="migration-1-post-schema-change">
+<h2>2. Migration 1: Post schema change<a class="headerlink" href="#migration-1-post-schema-change" title="Permalink to this headline">¶</a></h2>
+<p>In this step the content gets copied from the old to the new column.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This could also be done as part of the second migration as part of
+a pre schema change</p>
+</div>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="x">public function postSchemaChange(IOutput $output, \Closure $schemaClosure, array $options) {</span>
+<span class="x">       $query = $this-&gt;db-&gt;getQueryBuilder();</span>
+<span class="x">       $query-&gt;update(&#39;twofactor_backupcodes&#39;)</span>
+<span class="x">               -&gt;set(&#39;user_id&#39;, &#39;uid&#39;);</span>
+<span class="x">       $query-&gt;execute();</span>
+<span class="x">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="migration-2-schema-change">
+<h2>3. Migration 2: Schema change<a class="headerlink" href="#migration-2-schema-change" title="Permalink to this headline">¶</a></h2>
+<p>With this the old column gets removed.</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="x"> public function changeSchema(IOutput $output, \Closure $schemaClosure, array $options) {</span>
+<span class="x">        /** @var Schema $schema */</span>
+<span class="x">        $schema = $schemaClosure();</span>
+
+<span class="x">        $table = $schema-&gt;getTable(&#39;twofactor_backupcodes&#39;);</span>
+<span class="x">        $table-&gt;dropColumn(&#39;uid&#39;);</span>
+
+<span class="x">        return $schema;</span>
+<span class="x">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="migrate-from-database-xml">
+<h2>Migrate from database.xml<a class="headerlink" href="#migrate-from-database-xml" title="Permalink to this headline">¶</a></h2>
+<p>To migrate your app from a <cite>database.xml</cite> file to migrations run:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>php ./occ migrations:generate-from-schema &lt;app_id&gt; &lt;version&gt;
+</pre></div>
+</div>
+<p>This will create a new file under <cite>lib/Migration</cite> that results in the
+same database table(s) as your database.xml file.</p>
+<p>For version you should use the your app versions. So if you app is at version
+1.2.3 use 010203.</p>
+<p>Don&#8217;t forget to remove your <cite>database.xml</cite> file.</p>
+</div>
+<div class="section" id="console-commands">
+<h2>Console commands<a class="headerlink" href="#console-commands" title="Permalink to this headline">¶</a></h2>
+<p>There are some console commands, which should help developers to create or deal
+with migrations, which are sometimes only available if you are running your
+Nextcloud in debug mode:</p>
+<ul class="simple">
+<li><cite>migrations:execute</cite>: Executes a single migration version manually.</li>
+<li><cite>migrations:generate</cite>:
+This is needed to create a new migration file. This takes 2 arguments,
+first one is the <cite>appid</cite>, the second one should be the <cite>version`of your
+app as an integer. We recommend to use the major and minor digits of your apps
+version for that. This allows you to introduce a new migration in your branch
+for a Nextcloud version if there is already an migration path for a newer one
+in another branch. Since you can’t change this retroactive, we recommend to
+leave enough space in between and therefor map the numbers to 3 digits:
+`1.0.x =&gt; 1000</cite>, <cite>2.34.x =&gt; 2034</cite>, etc.</li>
+<li><cite>migrations:generate-from-schema</cite>: Create a migration from the old <cite>database.xml</cite>.</li>
+<li><cite>migrations:migrate</cite>: Execute a migration to a specified or the latest available version.</li>
+<li><cite>migrations:status</cite>: View the status of a set of migrations.</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="schema.html" class="btn btn-neutral float-right" title="Database schema (deprecated)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="index.html" class="btn btn-neutral float-left" title="Storage and database" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021 Nextcloud GmbH.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: 15
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/15/developer_manual">15</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/16/developer_manual">16</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/17/developer_manual">17</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/developer_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/developer_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+   
+
+</body>
+</html>

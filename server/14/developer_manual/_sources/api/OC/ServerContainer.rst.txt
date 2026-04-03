@@ -1,0 +1,179 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+ServerContainer
+===============
+
+
+.. php:namespace:: OC
+
+.. php:class:: ServerContainer
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Class ServerContainer
+		
+	
+	:Source:
+		`lib/private/ServerContainer.php#42 <https://github.com/nextcloud/server/blob/stable13/lib/private/ServerContainer.php#L42>`_
+	
+	:Parent:
+		:php:class:`OC\\AppFramework\\Utility\\SimpleContainer`
+	
+
+Properties
+----------
+
+.. php:attr:: protected static appContainers
+
+	:Source:
+		`lib/private/ServerContainer.php#44 <https://github.com/nextcloud/server/blob/stable13/lib/private/ServerContainer.php#L44>`_
+	
+	:Type: :any:`\\OC\\AppFramework\\DependencyInjection\\DIContainer\[\] <OC\\AppFramework\\DependencyInjection\\DIContainer>` 
+
+
+.. php:attr:: protected static hasNoAppContainer
+
+	:Source:
+		`lib/private/ServerContainer.php#47 <https://github.com/nextcloud/server/blob/stable13/lib/private/ServerContainer.php#L47>`_
+	
+	:Type: string[] 
+
+
+.. php:attr:: protected static namespaces
+
+	:Source:
+		`lib/private/ServerContainer.php#50 <https://github.com/nextcloud/server/blob/stable13/lib/private/ServerContainer.php#L50>`_
+	
+	:Type: string[] 
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct()
+	
+		.. rst-class:: phpdoc-description
+		
+			| ServerContainer constructor\.
+			
+		
+		:Source:
+			`lib/private/ServerContainer.php#55 <https://github.com/nextcloud/server/blob/stable13/lib/private/ServerContainer.php#L55>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public registerNamespace( $appName, $appNamespace)
+	
+		:Source:
+			`lib/private/ServerContainer.php#66 <https://github.com/nextcloud/server/blob/stable13/lib/private/ServerContainer.php#L66>`_
+		
+		
+		:Parameters:
+			* **$appName** (string)  
+			* **$appNamespace** (string)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public registerAppContainer( $appName, $container)
+	
+		:Source:
+			`lib/private/ServerContainer.php#76 <https://github.com/nextcloud/server/blob/stable13/lib/private/ServerContainer.php#L76>`_
+		
+		
+		:Parameters:
+			* **$appName** (string)  
+			* **$container** (:any:`OC\\AppFramework\\DependencyInjection\\DIContainer <OC\\AppFramework\\DependencyInjection\\DIContainer>`)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getRegisteredAppContainer( $appName)
+	
+		:Source:
+			`lib/private/ServerContainer.php#85 <https://github.com/nextcloud/server/blob/stable13/lib/private/ServerContainer.php#L85>`_
+		
+		
+		:Parameters:
+			* **$appName** (string)  
+
+		
+		:Returns: :any:`\\OC\\AppFramework\\DependencyInjection\\DIContainer <OC\\AppFramework\\DependencyInjection\\DIContainer>` 
+		:Throws: :any:`\\OCP\\AppFramework\\QueryException <OCP\\AppFramework\\QueryException>` 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected getAppContainer( $namespace, $sensitiveNamespace)
+	
+		:Source:
+			`lib/private/ServerContainer.php#99 <https://github.com/nextcloud/server/blob/stable13/lib/private/ServerContainer.php#L99>`_
+		
+		
+		:Parameters:
+			* **$namespace** (string)  
+			* **$sensitiveNamespace** (string)  
+
+		
+		:Returns: :any:`\\OC\\AppFramework\\DependencyInjection\\DIContainer <OC\\AppFramework\\DependencyInjection\\DIContainer>` 
+		:Throws: :any:`\\OCP\\AppFramework\\QueryException <OCP\\AppFramework\\QueryException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public has( $id, $noRecursion=false)
+	
+		:Source:
+			`lib/private/ServerContainer.php#122 <https://github.com/nextcloud/server/blob/stable13/lib/private/ServerContainer.php#L122>`_
+		
+		
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public query( $name, $autoload=true)
+	
+		:Source:
+			`lib/private/ServerContainer.php#133 <https://github.com/nextcloud/server/blob/stable13/lib/private/ServerContainer.php#L133>`_
+		
+		
+		:Deprecated: 20.0.0 use \\Psr\\Container\\ContainerInterface::get
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getAppContainerForService( $id)
+	
+		:Source:
+			`lib/private/ServerContainer.php#170 <https://github.com/nextcloud/server/blob/stable13/lib/private/ServerContainer.php#L170>`_
+		
+		
+		:Parameters:
+			* **$id** (string)  
+
+		
+		:Returns: :any:`\\OC\\AppFramework\\DependencyInjection\\DIContainer <OC\\AppFramework\\DependencyInjection\\DIContainer>` | null 
+	
+	
+

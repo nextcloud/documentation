@@ -1,0 +1,183 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+Manager
+=======
+
+
+.. php:namespace:: OC\Settings
+
+.. php:class:: Manager
+
+
+	:Source:
+		`lib/private/Settings/Manager.php#46 <https://github.com/nextcloud/server/blob/stable13/lib/private/Settings/Manager.php#L46>`_
+	
+	:Implements:
+		:php:interface:`OCP\\Settings\\IManager` 
+	
+
+Properties
+----------
+
+.. php:attr:: protected static sectionClasses
+
+	:Source:
+		`lib/private/Settings/Manager.php#76 <https://github.com/nextcloud/server/blob/stable13/lib/private/Settings/Manager.php#L76>`_
+	
+	:Type: array 
+
+
+.. php:attr:: protected static sections
+
+	:Source:
+		`lib/private/Settings/Manager.php#79 <https://github.com/nextcloud/server/blob/stable13/lib/private/Settings/Manager.php#L79>`_
+	
+	:Type: array 
+
+
+.. php:attr:: protected static settingClasses
+
+	:Source:
+		`lib/private/Settings/Manager.php#134 <https://github.com/nextcloud/server/blob/stable13/lib/private/Settings/Manager.php#L134>`_
+	
+	:Type: array 
+
+
+.. php:attr:: protected static settings
+
+	:Source:
+		`lib/private/Settings/Manager.php#137 <https://github.com/nextcloud/server/blob/stable13/lib/private/Settings/Manager.php#L137>`_
+	
+	:Type: array 
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $log, $l10nFactory, $url, $container)
+	
+		:Source:
+			`lib/private/Settings/Manager.php#63 <https://github.com/nextcloud/server/blob/stable13/lib/private/Settings/Manager.php#L63>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public registerSection( $type, $section)
+	
+		:Source:
+			`lib/private/Settings/Manager.php#87 <https://github.com/nextcloud/server/blob/stable13/lib/private/Settings/Manager.php#L87>`_
+		
+		
+		:Parameters:
+			* **$type** (string)  'admin' or 'personal'
+			* **$section** (string)  Class must implement OCP\Settings\IIconSection
+
+		
+		:Returns: void 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected getSections( $type)
+	
+		:Source:
+			`lib/private/Settings/Manager.php#100 <https://github.com/nextcloud/server/blob/stable13/lib/private/Settings/Manager.php#L100>`_
+		
+		
+		:Parameters:
+			* **$type** (string)  'admin' or 'personal'
+
+		
+		:Returns: :any:`\\OCP\\Settings\\IIconSection\[\] <OCP\\Settings\\IIconSection>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public registerSetting( $type, $setting)
+	
+		:Source:
+			`lib/private/Settings/Manager.php#145 <https://github.com/nextcloud/server/blob/stable13/lib/private/Settings/Manager.php#L145>`_
+		
+		
+		:Parameters:
+			* **$type** (string)  'admin' or 'personal'
+			* **$setting** (string)  Class must implement OCP\Settings\ISetting
+
+		
+		:Returns: void 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected getSettings( $type, $section, $filter=null)
+	
+		:Source:
+			`lib/private/Settings/Manager.php#156 <https://github.com/nextcloud/server/blob/stable13/lib/private/Settings/Manager.php#L156>`_
+		
+		
+		:Parameters:
+			* **$type** (string)  'admin' or 'personal'
+			* **$section** (string)  
+			* **$filter** (:any:`Closure <Closure>`)  optional filter to apply on all loaded ISettings
+
+		
+		:Returns: :any:`\\OCP\\Settings\\ISettings\[\] <OCP\\Settings\\ISettings>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getAdminSections()
+	
+		:Source:
+			`lib/private/Settings/Manager.php#203 <https://github.com/nextcloud/server/blob/stable13/lib/private/Settings/Manager.php#L203>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getAdminSettings( $section, $subAdminOnly=false)
+	
+		:Source:
+			`lib/private/Settings/Manager.php#226 <https://github.com/nextcloud/server/blob/stable13/lib/private/Settings/Manager.php#L226>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getPersonalSections()
+	
+		:Source:
+			`lib/private/Settings/Manager.php#251 <https://github.com/nextcloud/server/blob/stable13/lib/private/Settings/Manager.php#L251>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getPersonalSettings( $section)
+	
+		:Source:
+			`lib/private/Settings/Manager.php#297 <https://github.com/nextcloud/server/blob/stable13/lib/private/Settings/Manager.php#L297>`_
+		
+		
+	
+	
+

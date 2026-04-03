@@ -1,0 +1,506 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>OCS Share API &mdash; Nextcloud 15 Developer Manual 15 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'15',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Bugtracker" href="../bugtracker/index.html" />
+    <link rel="prev" title="External API" href="externalapi.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../general/index.html">General contributor guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../design/index.html">Design guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../android_library/index.html">Android application development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client_apis/index.html">Client APIs</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Core development</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="unit-testing.html">Unit-Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="theming.html">Theming Nextcloud</a></li>
+<li class="toctree-l2"><a class="reference internal" href="externalapi.html">External API</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">OCS Share API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#local-shares">Local Shares</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#get-all-shares">Get all Shares</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#get-shares-from-a-specific-file-or-folder">Get Shares from a specific file or folder</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#get-information-about-a-known-share">Get information about a known Share</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#create-a-new-share">Create a new Share</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#delete-share">Delete Share</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#update-share">Update Share</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#federated-cloud-shares">Federated Cloud Shares</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#create-a-new-federated-cloud-share">Create a new Federated Cloud Share</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#list-accepted-federated-cloud-shares">List accepted Federated Cloud Shares</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#get-information-about-a-known-federated-cloud-share">Get information about a known Federated Cloud Share</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#delete-an-accepted-federated-cloud-share">Delete an accepted Federated Cloud Share</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#list-pending-federated-cloud-shares">List pending Federated Cloud Shares</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#accept-a-pending-federated-cloud-share">Accept a pending Federated Cloud Share</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#decline-a-pending-federated-cloud-share">Decline a pending Federated Cloud Share</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../bugtracker/index.html">Bugtracker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../commun/index.html">Help and communication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API Documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Nextcloud 15 Developer Manual</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Core development</a> &raquo;</li>
+        
+      <li>OCS Share API</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/nextcloud/documentation/edit/stable15/developer_manual/core/ocs-share-api.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="ocs-share-api">
+<h1>OCS Share API<a class="headerlink" href="#ocs-share-api" title="Permalink to this headline">¶</a></h1>
+<p>The OCS Share API allows you to access the sharing API from outside over
+pre-defined OCS calls.</p>
+<p>The base URL for all calls to the share API is: <em>&lt;nextcloud_base_url&gt;/ocs/v2.php/apps/files_sharing/api/v1</em></p>
+<p>All calls to OCS endpoints require the <code class="docutils literal"><span class="pre">OCS-APIRequest</span></code> header to be set to <code class="docutils literal"><span class="pre">true</span></code>.</p>
+<div class="section" id="local-shares">
+<h2>Local Shares<a class="headerlink" href="#local-shares" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="get-all-shares">
+<h3>Get all Shares<a class="headerlink" href="#get-all-shares" title="Permalink to this headline">¶</a></h3>
+<p>Get all shares from the user.</p>
+<ul class="simple">
+<li>Syntax: /shares</li>
+<li>Method: GET</li>
+<li>Result: XML with all shares</li>
+</ul>
+<p>Statuscodes:</p>
+<ul class="simple">
+<li>100 - successful</li>
+<li>404 - couldn&#8217;t fetch shares</li>
+</ul>
+</div>
+<div class="section" id="get-shares-from-a-specific-file-or-folder">
+<h3>Get Shares from a specific file or folder<a class="headerlink" href="#get-shares-from-a-specific-file-or-folder" title="Permalink to this headline">¶</a></h3>
+<p>Get all shares from a given file/folder.</p>
+<ul class="simple">
+<li>Syntax: /shares</li>
+<li>Method: GET</li>
+<li>URL Arguments: path - (string) path to file/folder</li>
+<li>URL Arguments: reshares - (boolean) returns not only the shares from the current user but all shares from the given file.</li>
+<li>URL Arguments: subfiles - (boolean) returns all shares within a folder, given that
+<em>path</em> defines a folder</li>
+<li>Mandatory fields: path</li>
+<li>Result: XML with the shares</li>
+</ul>
+<p>Statuscodes:</p>
+<ul class="simple">
+<li>100 - successful</li>
+<li>400 - not a directory (if the &#8216;subfile&#8217; argument was used)</li>
+<li>404 - file doesn&#8217;t exist</li>
+</ul>
+</div>
+<div class="section" id="get-information-about-a-known-share">
+<h3>Get information about a known Share<a class="headerlink" href="#get-information-about-a-known-share" title="Permalink to this headline">¶</a></h3>
+<p>Get information about a given share.</p>
+<ul class="simple">
+<li>Syntax: /shares/<em>&lt;share_id&gt;</em></li>
+<li>Method: GET</li>
+<li>Arguments: share_id - (int) share ID</li>
+<li>Result: XML with the share information</li>
+</ul>
+<p>Statuscodes:</p>
+<ul class="simple">
+<li>100 - successful</li>
+<li>404 - share doesn&#8217;t exist</li>
+</ul>
+</div>
+<div class="section" id="create-a-new-share">
+<h3>Create a new Share<a class="headerlink" href="#create-a-new-share" title="Permalink to this headline">¶</a></h3>
+<p>Share a file/folder with a user/group or as public link.</p>
+<ul class="simple">
+<li>Syntax: /shares</li>
+<li>Method: POST</li>
+<li>POST Arguments: path - (string) path to the file/folder which should be shared</li>
+<li>POST Arguments: shareType - (int) 0 = user; 1 = group; 3 = public link; 6 = federated cloud share</li>
+<li>POST Arguments: shareWith - (string) user / group id with which the file should be shared</li>
+<li>POST Arguments: publicUpload - (string) allow public upload to a public shared folder (true/false)</li>
+<li>POST Arguments: password - (string) password to protect public link Share with</li>
+<li>POST Arguments: permissions - (int) 1 = read; 2 = update; 4 = create; 8 = delete;
+16 = share; 31 = all (default: 31, for public shares: 1)</li>
+<li>Mandatory fields: shareType, path and shareWith for shareType 0 or 1.</li>
+<li>Result: XML containing the share ID (int) of the newly created share</li>
+</ul>
+<p>Statuscodes:</p>
+<ul class="simple">
+<li>100 - successful</li>
+<li>400 - unknown share type</li>
+<li>403 - public upload was disabled by the admin</li>
+<li>404 - file couldn&#8217;t be shared</li>
+</ul>
+</div>
+<div class="section" id="delete-share">
+<h3>Delete Share<a class="headerlink" href="#delete-share" title="Permalink to this headline">¶</a></h3>
+<p>Remove the given share.</p>
+<ul class="simple">
+<li>Syntax: /shares/<em>&lt;share_id&gt;</em></li>
+<li>Method: DELETE</li>
+<li>Arguments: share_id - (int) share ID</li>
+</ul>
+<p>Statuscodes:</p>
+<ul class="simple">
+<li>100 - successful</li>
+<li>404 - file couldn&#8217;t be deleted</li>
+</ul>
+</div>
+<div class="section" id="update-share">
+<h3>Update Share<a class="headerlink" href="#update-share" title="Permalink to this headline">¶</a></h3>
+<p>Update a given share. Only one value can be updated per request.</p>
+<ul class="simple">
+<li>Syntax: /shares/<em>&lt;share_id&gt;</em></li>
+<li>Method: PUT</li>
+<li>Arguments: share_id - (int) share ID</li>
+<li>PUT Arguments: permissions - (int) update permissions (see &#8220;Create share&#8221;
+above)</li>
+<li>PUT Arguments: password - (string) updated password for public link Share</li>
+<li>PUT Arguments: publicUpload - (string) enable (true) /disable (false) public
+upload for public shares.</li>
+<li>PUT Arguments: expireDate - (string) set a expire date for public link
+shares. This argument expects a well formatted date string, e.g. &#8216;YYYY-MM-DD&#8217;</li>
+<li>PUT Arguments: note - (string) Adds a note for the share recipient.</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Only one of the update parameters can be specified at once.</p>
+</div>
+<p>Statuscodes:</p>
+<ul class="simple">
+<li>100 - successful</li>
+<li>400 - wrong or no update parameter given</li>
+<li>403 - public upload disabled by the admin</li>
+<li>404 - couldn&#8217;t update share</li>
+</ul>
+</div>
+</div>
+<div class="section" id="federated-cloud-shares">
+<h2>Federated Cloud Shares<a class="headerlink" href="#federated-cloud-shares" title="Permalink to this headline">¶</a></h2>
+<p>Both the sending and the receiving instance need to have federated cloud sharing
+enabled and configured. See <a class="reference external" href="https://docs.nextcloud.org/server/14/admin_manual/configuration_files/federated_cloud_sharing_configuration.html">Configuring Federated Cloud Sharing</a>.</p>
+<div class="section" id="create-a-new-federated-cloud-share">
+<h3>Create a new Federated Cloud Share<a class="headerlink" href="#create-a-new-federated-cloud-share" title="Permalink to this headline">¶</a></h3>
+<p>Creating a federated cloud share can be done via the local share endpoint, using
+(int) 6 as a shareType and the <a class="reference external" href="https://nextcloud.com/federation/">Federated Cloud ID</a>
+of the share recipient as shareWith. See <a class="reference internal" href="#create-a-new-share">Create a new Share</a> for more information.</p>
+</div>
+<div class="section" id="list-accepted-federated-cloud-shares">
+<h3>List accepted Federated Cloud Shares<a class="headerlink" href="#list-accepted-federated-cloud-shares" title="Permalink to this headline">¶</a></h3>
+<p>Get all federated cloud shares the user has accepted.</p>
+<ul class="simple">
+<li>Syntax: /remote_shares</li>
+<li>Method: GET</li>
+<li>Result: XML with all accepted federated cloud shares</li>
+</ul>
+<p>Statuscodes:</p>
+<ul class="simple">
+<li>100 - successful</li>
+</ul>
+</div>
+<div class="section" id="get-information-about-a-known-federated-cloud-share">
+<h3>Get information about a known Federated Cloud Share<a class="headerlink" href="#get-information-about-a-known-federated-cloud-share" title="Permalink to this headline">¶</a></h3>
+<p>Get information about a given received federated cloud that was sent from a remote instance.</p>
+<ul class="simple">
+<li>Syntax: /remote_shares/<em>&lt;share_id&gt;</em></li>
+<li>Method: GET</li>
+<li>Arguments: share_id - (int) share ID as listed in the id field in the <code class="docutils literal"><span class="pre">remote_shares</span></code> list</li>
+<li>Result: XML with the share information</li>
+</ul>
+<p>Statuscodes:</p>
+<ul class="simple">
+<li>100 - successful</li>
+<li>404 - share doesn&#8217;t exist</li>
+</ul>
+</div>
+<div class="section" id="delete-an-accepted-federated-cloud-share">
+<h3>Delete an accepted Federated Cloud Share<a class="headerlink" href="#delete-an-accepted-federated-cloud-share" title="Permalink to this headline">¶</a></h3>
+<p>Locally delete a received federated cloud share that was sent from a remote instance.</p>
+<ul class="simple">
+<li>Syntax: /remote_shares/<em>&lt;share_id&gt;</em></li>
+<li>Method: DELETE</li>
+<li>Arguments: share_id - (int) share ID as listed in the id field in the <code class="docutils literal"><span class="pre">remote_shares</span></code> list</li>
+<li>Result: XML with the share information</li>
+</ul>
+<p>Statuscodes:</p>
+<ul class="simple">
+<li>100 - successful</li>
+<li>404 - share doesn&#8217;t exist</li>
+</ul>
+</div>
+<div class="section" id="list-pending-federated-cloud-shares">
+<h3>List pending Federated Cloud Shares<a class="headerlink" href="#list-pending-federated-cloud-shares" title="Permalink to this headline">¶</a></h3>
+<p>Get all pending federated cloud shares the user has received.</p>
+<ul class="simple">
+<li>Syntax: /remote_shares/pending</li>
+<li>Method: GET</li>
+<li>Result: XML with all pending federated cloud shares</li>
+</ul>
+<p>Statuscodes:</p>
+<ul class="simple">
+<li>100 - successful</li>
+</ul>
+</div>
+<div class="section" id="accept-a-pending-federated-cloud-share">
+<h3>Accept a pending Federated Cloud Share<a class="headerlink" href="#accept-a-pending-federated-cloud-share" title="Permalink to this headline">¶</a></h3>
+<p>Locally accept a received federated cloud share that was sent from a remote instance.</p>
+<ul class="simple">
+<li>Syntax: /remote_shares/pending/<em>&lt;share_id&gt;</em></li>
+<li>Method: POST</li>
+<li>Arguments: share_id - (int) share ID as listed in the id field in the <code class="docutils literal"><span class="pre">remote_shares/pending</span></code> list</li>
+<li>Result: XML with the share information</li>
+</ul>
+<p>Statuscodes:</p>
+<ul class="simple">
+<li>100 - successful</li>
+<li>404 - share doesn&#8217;t exist</li>
+</ul>
+</div>
+<div class="section" id="decline-a-pending-federated-cloud-share">
+<h3>Decline a pending Federated Cloud Share<a class="headerlink" href="#decline-a-pending-federated-cloud-share" title="Permalink to this headline">¶</a></h3>
+<p>Locally decline a received federated cloud share that was sent from a remote instance.</p>
+<ul class="simple">
+<li>Syntax: /remote_shares/pending/<em>&lt;share_id&gt;</em></li>
+<li>Method: DELETE</li>
+<li>Arguments: share_id - (int) share ID as listed in the id field in the <code class="docutils literal"><span class="pre">remote_shares/pending</span></code> list</li>
+<li>Result: XML with the share information</li>
+</ul>
+<p>Statuscodes:</p>
+<ul class="simple">
+<li>100 - successful</li>
+<li>404 - share doesn&#8217;t exist</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../bugtracker/index.html" class="btn btn-neutral float-right" title="Bugtracker" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="externalapi.html" class="btn btn-neutral float-left" title="External API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021 Nextcloud GmbH.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: 15
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/15/developer_manual">15</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/16/developer_manual">16</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/17/developer_manual">17</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/developer_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/developer_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+   
+
+</body>
+</html>

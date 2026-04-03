@@ -1,0 +1,220 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+MountProviderCollection
+=======================
+
+
+.. php:namespace:: OC\Files\Config
+
+.. php:class:: MountProviderCollection
+
+
+	:Source:
+		`lib/private/Files/Config/MountProviderCollection.php#40 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Config/MountProviderCollection.php#L40>`_
+	
+	:Implements:
+		:php:interface:`OCP\\Files\\Config\\IMountProviderCollection` :php:interface:`OC\\Hooks\\Emitter` 
+	
+	:Used traits:
+		:php:trait:`OC\\Hooks\\EmitterTrait` 
+	
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $loader, $mountCache)
+	
+		:Source:
+			`lib/private/Files/Config/MountProviderCollection.php#73 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Config/MountProviderCollection.php#L73>`_
+		
+		
+		:Parameters:
+			* **$loader** (:any:`OCP\\Files\\Storage\\IStorageFactory <OCP\\Files\\Storage\\IStorageFactory>`)  
+			* **$mountCache** (:any:`OCP\\Files\\Config\\IUserMountCache <OCP\\Files\\Config\\IUserMountCache>`)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getMountsForUser( $user)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get all configured mount points for the user
+			
+		
+		:Source:
+			`lib/private/Files/Config/MountProviderCollection.php#84 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Config/MountProviderCollection.php#L84>`_
+		
+		
+		:Parameters:
+			* **$user** (:any:`OCP\\IUser <OCP\\IUser>`)  
+
+		
+		:Returns: :any:`\\OCP\\Files\\Mount\\IMountPoint\[\] <OCP\\Files\\Mount\\IMountPoint>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public addMountForUser( $user, $mountManager)
+	
+		:Source:
+			`lib/private/Files/Config/MountProviderCollection.php#98 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Config/MountProviderCollection.php#L98>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getHomeMountForUser( $user)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the configured home mount for this user
+			
+		
+		:Source:
+			`lib/private/Files/Config/MountProviderCollection.php#138 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Config/MountProviderCollection.php#L138>`_
+		
+		
+		:Parameters:
+			* **$user** (:any:`OCP\\IUser <OCP\\IUser>`)  
+
+		
+		:Returns: :any:`\\OCP\\Files\\Mount\\IMountPoint <OCP\\Files\\Mount\\IMountPoint>` 
+		:Since: 9.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public registerProvider( $provider)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Add a provider for mount points
+			
+		
+		:Source:
+			`lib/private/Files/Config/MountProviderCollection.php#155 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Config/MountProviderCollection.php#L155>`_
+		
+		
+		:Parameters:
+			* **$provider** (:any:`OCP\\Files\\Config\\IMountProvider <OCP\\Files\\Config\\IMountProvider>`)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public registerMountFilter( $filter)
+	
+		:Source:
+			`lib/private/Files/Config/MountProviderCollection.php#161 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Config/MountProviderCollection.php#L161>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public registerHomeProvider( $provider)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Add a provider for home mount points
+			
+		
+		:Source:
+			`lib/private/Files/Config/MountProviderCollection.php#182 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Config/MountProviderCollection.php#L182>`_
+		
+		
+		:Parameters:
+			* **$provider** (:any:`OCP\\Files\\Config\\IHomeMountProvider <OCP\\Files\\Config\\IHomeMountProvider>`)  
+
+		
+		:Since: 9.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public registerMounts( $user, $mountPoints)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Cache mounts for user
+			
+		
+		:Source:
+			`lib/private/Files/Config/MountProviderCollection.php#193 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Config/MountProviderCollection.php#L193>`_
+		
+		
+		:Parameters:
+			* **$user** (:any:`OCP\\IUser <OCP\\IUser>`)  
+			* **$mountPoints** (:any:`OCP\\Files\\Mount\\IMountPoint\[\] <OCP\\Files\\Mount\\IMountPoint>`)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getMountCache()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the mount cache which can be used to search for mounts without setting up the filesystem
+			
+		
+		:Source:
+			`lib/private/Files/Config/MountProviderCollection.php#202 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Config/MountProviderCollection.php#L202>`_
+		
+		
+		:Returns: :any:`\\OCP\\Files\\Config\\IUserMountCache <OCP\\Files\\Config\\IUserMountCache>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public registerRootProvider( $provider)
+	
+		:Source:
+			`lib/private/Files/Config/MountProviderCollection.php#206 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Config/MountProviderCollection.php#L206>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getRootMounts()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get all root mountpoints
+			
+		
+		:Source:
+			`lib/private/Files/Config/MountProviderCollection.php#216 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Config/MountProviderCollection.php#L216>`_
+		
+		
+		:Returns: :any:`\\OCP\\Files\\Mount\\IMountPoint\[\] <OCP\\Files\\Mount\\IMountPoint>` 
+		:Since: 20.0.0 
+	
+	
+

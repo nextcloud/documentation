@@ -1,0 +1,128 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IEventDispatcher
+================
+
+
+.. php:namespace:: OCP\EventDispatcher
+
+.. php:interface:: IEventDispatcher
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Event dispatcher service of Nextcloud
+		
+	
+	:Implemented by:
+		:php:class:`OC\\EventDispatcher\\EventDispatcher` 
+	
+	
+	:Source:
+		`lib/public/EventDispatcher/IEventDispatcher.php#35 <https://github.com/nextcloud/server/blob/stable13/lib/public/EventDispatcher/IEventDispatcher.php#L35>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public addListener( $eventName, $listener, $priority=0)
+	
+		:Source:
+			`lib/public/EventDispatcher/IEventDispatcher.php#48 <https://github.com/nextcloud/server/blob/stable13/lib/public/EventDispatcher/IEventDispatcher.php#L48>`_
+		
+		
+		:Parameters:
+			* **$eventName** (string)  preferably the fully-qualified class name of the Event sub class
+			* **$listener** (callable)  the object that is invoked when a matching event is dispatched
+			* **$priority** (int)  The higher this value, the earlier an event
+			listener will be triggered in the chain (defaults to 0)
+
+		
+		:Since: 17.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public removeListener( $eventName, $listener)
+	
+		:Source:
+			`lib/public/EventDispatcher/IEventDispatcher.php#59 <https://github.com/nextcloud/server/blob/stable13/lib/public/EventDispatcher/IEventDispatcher.php#L59>`_
+		
+		
+		:Parameters:
+			* **$eventName** (string)  preferably the fully-qualified class name of the Event sub class
+			* **$listener** (callable)  the object that is invoked when a matching event is dispatched
+
+		
+		:Since: 19.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public addServiceListener( $eventName, $className, $priority=0)
+	
+		:Source:
+			`lib/public/EventDispatcher/IEventDispatcher.php#72 <https://github.com/nextcloud/server/blob/stable13/lib/public/EventDispatcher/IEventDispatcher.php#L72>`_
+		
+		
+		:Parameters:
+			* **$eventName** (string)  preferably the fully-qualified class name of the Event sub class to listen for
+			* **$className** (string)  fully qualified class name (or ::class notation) of a \OCP\EventDispatcher\IEventListener that can be built by the DI container
+			* **$priority** (int)  The higher this value, the earlier an event
+			listener will be triggered in the chain (defaults to 0)
+
+		
+		:Since: 17.0.0 
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public dispatch( $eventName, $event)
+	
+		:Source:
+			`lib/public/EventDispatcher/IEventDispatcher.php#84 <https://github.com/nextcloud/server/blob/stable13/lib/public/EventDispatcher/IEventDispatcher.php#L84>`_
+		
+		
+		:Parameters:
+			* **$eventName** (string)  
+			* **$event** (:any:`OCP\\EventDispatcher\\Event <OCP\\EventDispatcher\\Event>`)  
+
+		
+		:Since: 17.0.0 
+		:Deprecated: 21.0.0 use \\OCP\\EventDispatcher\\IEventDispatcher::dispatchTyped
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public dispatchTyped( $event)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Dispatch a typed event
+			
+			| Only use this with subclasses of \`\`\\OCP\\EventDispatcher\\Event\`\`\.
+			| The object\'s class will determine the event name\.
+			
+		
+		:Source:
+			`lib/public/EventDispatcher/IEventDispatcher.php#96 <https://github.com/nextcloud/server/blob/stable13/lib/public/EventDispatcher/IEventDispatcher.php#L96>`_
+		
+		
+		:Parameters:
+			* **$event** (:any:`OCP\\EventDispatcher\\Event <OCP\\EventDispatcher\\Event>`)  
+
+		
+		:Since: 18.0.0 
+	
+	
+

@@ -1,0 +1,140 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+Middleware
+==========
+
+
+.. php:namespace:: OCP\AppFramework
+
+.. rst-class::  abstract
+
+.. php:class:: Middleware
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Middleware is used to provide hooks before or after controller methods and
+		| deal with possible exceptions raised in the controller methods\.
+		
+		| They\'re modeled after Django\'s middleware system:
+		| https://docs\.djangoproject\.com/en/dev/topics/http/middleware/
+		
+	
+	:Source:
+		`lib/public/AppFramework/Middleware.php#43 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Middleware.php#L43>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public beforeController( $controller, $methodName)
+	
+		.. rst-class:: phpdoc-description
+		
+			| This is being run in normal order before the controller is being
+			| called which allows several modifications and checks
+			
+		
+		:Source:
+			`lib/public/AppFramework/Middleware.php#55 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Middleware.php#L55>`_
+		
+		
+		:Parameters:
+			* **$controller** (:any:`OCP\\AppFramework\\Controller <OCP\\AppFramework\\Controller>`)  the controller that is being called
+			* **$methodName** (string)  the name of the method that will be called on
+			the controller
+
+		
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public afterException( $controller, $methodName, $exception)
+	
+		.. rst-class:: phpdoc-description
+		
+			| This is being run when either the beforeController method or the
+			| controller method itself is throwing an exception\. The middleware is
+			| asked in reverse order to handle the exception and to return a response\.
+			
+			| If the response is null, it is assumed that the exception could not be
+			| handled and the error will be thrown again
+			
+		
+		:Source:
+			`lib/public/AppFramework/Middleware.php#74 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Middleware.php#L74>`_
+		
+		
+		:Parameters:
+			* **$controller** (:any:`OCP\\AppFramework\\Controller <OCP\\AppFramework\\Controller>`)  the controller that is being called
+			* **$methodName** (string)  the name of the method that will be called on
+			the controller
+			* **$exception** (:any:`Exception <Exception>`)  the thrown exception
+
+		
+		:Throws: :any:`\\Exception <Exception>` the passed in exception if it can\'t handle it
+		:Returns: :any:`\\OCP\\AppFramework\\Http\\Response <OCP\\AppFramework\\Http\\Response>` a Response object in case that the exception was handled
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public afterController( $controller, $methodName, $response)
+	
+		.. rst-class:: phpdoc-description
+		
+			| This is being run after a successful controllermethod call and allows
+			| the manipulation of a Response object\. The middleware is run in reverse order
+			
+		
+		:Source:
+			`lib/public/AppFramework/Middleware.php#90 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Middleware.php#L90>`_
+		
+		
+		:Parameters:
+			* **$controller** (:any:`OCP\\AppFramework\\Controller <OCP\\AppFramework\\Controller>`)  the controller that is being called
+			* **$methodName** (string)  the name of the method that will be called on
+			the controller
+			* **$response** (:any:`OCP\\AppFramework\\Http\\Response <OCP\\AppFramework\\Http\\Response>`)  the generated response from the controller
+
+		
+		:Returns: :any:`\\OCP\\AppFramework\\Http\\Response <OCP\\AppFramework\\Http\\Response>` a Response object
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public beforeOutput( $controller, $methodName, $output)
+	
+		.. rst-class:: phpdoc-description
+		
+			| This is being run after the response object has been rendered and
+			| allows the manipulation of the output\. The middleware is run in reverse order
+			
+		
+		:Source:
+			`lib/public/AppFramework/Middleware.php#106 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Middleware.php#L106>`_
+		
+		
+		:Parameters:
+			* **$controller** (:any:`OCP\\AppFramework\\Controller <OCP\\AppFramework\\Controller>`)  the controller that is being called
+			* **$methodName** (string)  the name of the method that will be called on
+			the controller
+			* **$output** (string)  the generated output from a response
+
+		
+		:Returns: string the output that should be printed
+		:Since: 6.0.0 
+	
+	
+

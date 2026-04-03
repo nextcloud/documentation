@@ -1,0 +1,134 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IRegistry
+=========
+
+
+.. php:namespace:: OCP\Authentication\TwoFactorAuth
+
+.. php:interface:: IRegistry
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Nextcloud 2FA provider registry for stateful 2FA providers
+		
+		| This service keeps track of which providers are currently active for a specific
+		| user\. Stateful 2FA providers \(IStatefulProvider\) must use this service to save
+		| their enabled/disabled state\.
+		
+	
+	:Implemented by:
+		:php:class:`OC\\Authentication\\TwoFactorAuth\\Registry` 
+	
+	
+	:Source:
+		`lib/public/Authentication/TwoFactorAuth/IRegistry.php#41 <https://github.com/nextcloud/server/blob/stable13/lib/public/Authentication/TwoFactorAuth/IRegistry.php#L41>`_
+	
+
+Constants
+---------
+
+.. php:const:: EVENT_PROVIDER_ENABLED = self::class \. ::enable
+
+	:Source:
+		`lib/public/Authentication/TwoFactorAuth/IRegistry.php#45 <https://github.com/nextcloud/server/blob/stable13/lib/public/Authentication/TwoFactorAuth/IRegistry.php#L45>`_
+	
+	:Deprecated: 22.0.0 
+
+
+.. php:const:: EVENT_PROVIDER_DISABLED = self::class \. ::disable
+
+	:Source:
+		`lib/public/Authentication/TwoFactorAuth/IRegistry.php#50 <https://github.com/nextcloud/server/blob/stable13/lib/public/Authentication/TwoFactorAuth/IRegistry.php#L50>`_
+	
+	:Deprecated: 22.0.0 
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public getProviderStates( $user)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get a key\-value map of providers and their enabled/disabled state for
+			| the given user\.
+			
+		
+		:Source:
+			`lib/public/Authentication/TwoFactorAuth/IRegistry.php#60 <https://github.com/nextcloud/server/blob/stable13/lib/public/Authentication/TwoFactorAuth/IRegistry.php#L60>`_
+		
+		
+		:Since: 14.0.0 
+		:Returns: string[] where the array key is the provider ID \(string\) and the
+			value is the enabled state \(bool\)
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public enableProviderFor( $provider, $user)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Enable the given 2FA provider for the given user
+			
+		
+		:Source:
+			`lib/public/Authentication/TwoFactorAuth/IRegistry.php#67 <https://github.com/nextcloud/server/blob/stable13/lib/public/Authentication/TwoFactorAuth/IRegistry.php#L67>`_
+		
+		
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public disableProviderFor( $provider, $user)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Disable the given 2FA provider for the given user
+			
+		
+		:Source:
+			`lib/public/Authentication/TwoFactorAuth/IRegistry.php#74 <https://github.com/nextcloud/server/blob/stable13/lib/public/Authentication/TwoFactorAuth/IRegistry.php#L74>`_
+		
+		
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public cleanUp( $providerId)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Cleans up all entries of the provider with the given id\. This is only
+			| necessary in edge\-cases where an admin disabled and/or uninstalled a
+			| provider app\. Invoking this method will make sure outdated provider
+			| associations are removed so that users can log in\.
+			
+		
+		:Source:
+			`lib/public/Authentication/TwoFactorAuth/IRegistry.php#88 <https://github.com/nextcloud/server/blob/stable13/lib/public/Authentication/TwoFactorAuth/IRegistry.php#L88>`_
+		
+		
+		:Parameters:
+			* **$providerId** (string)  
+
+		
+		:Since: 15.0.0 
+		:Returns: void 
+	
+	
+

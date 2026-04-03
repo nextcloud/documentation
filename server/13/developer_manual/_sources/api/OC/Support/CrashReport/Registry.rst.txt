@@ -1,0 +1,136 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+Registry
+========
+
+
+.. php:namespace:: OC\Support\CrashReport
+
+.. php:class:: Registry
+
+
+	:Source:
+		`lib/private/Support/CrashReport/Registry.php#40 <https://github.com/nextcloud/server/blob/stable13/lib/private/Support/CrashReport/Registry.php#L40>`_
+	
+	:Implements:
+		:php:interface:`OCP\\Support\\CrashReport\\IRegistry` 
+	
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $serverContainer)
+	
+		:Source:
+			`lib/private/Support/CrashReport/Registry.php#54 <https://github.com/nextcloud/server/blob/stable13/lib/private/Support/CrashReport/Registry.php#L54>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public register( $reporter)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Register a reporter instance
+			
+		
+		:Source:
+			`lib/private/Support/CrashReport/Registry.php#63 <https://github.com/nextcloud/server/blob/stable13/lib/private/Support/CrashReport/Registry.php#L63>`_
+		
+		
+		:Parameters:
+			* **$reporter** (:any:`OCP\\Support\\CrashReport\\IReporter <OCP\\Support\\CrashReport\\IReporter>`)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public registerLazy( $class)
+	
+		:Source:
+			`lib/private/Support/CrashReport/Registry.php#67 <https://github.com/nextcloud/server/blob/stable13/lib/private/Support/CrashReport/Registry.php#L67>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public delegateBreadcrumb( $message, $category, $context=\[\])
+	
+		.. rst-class:: phpdoc-description
+		
+			| Delegate breadcrumb collection to all registered reporters
+			
+		
+		:Source:
+			`lib/private/Support/CrashReport/Registry.php#80 <https://github.com/nextcloud/server/blob/stable13/lib/private/Support/CrashReport/Registry.php#L80>`_
+		
+		
+		:Parameters:
+			* **$message** (string)  
+			* **$category** (string)  
+			* **$context** (array)  
+
+		
+		:Since: 15.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public delegateReport( $exception, $context=\[\])
+	
+		.. rst-class:: phpdoc-description
+		
+			| Delegate crash reporting to all registered reporters
+			
+		
+		:Source:
+			`lib/private/Support/CrashReport/Registry.php#96 <https://github.com/nextcloud/server/blob/stable13/lib/private/Support/CrashReport/Registry.php#L96>`_
+		
+		
+		:Parameters:
+			* **$exception** (:any:`Exception <Exception>` | :any:`\\Throwable <Throwable>`)  
+			* **$context** (array)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public delegateMessage( $message, $context=\[\])
+	
+		.. rst-class:: phpdoc-description
+		
+			| Delegate a message to all reporters that implement IMessageReporter
+			
+		
+		:Source:
+			`lib/private/Support/CrashReport/Registry.php#112 <https://github.com/nextcloud/server/blob/stable13/lib/private/Support/CrashReport/Registry.php#L112>`_
+		
+		
+		:Parameters:
+			* **$message** (string)  
+			* **$context** (array)  
+
+		
+		:Returns: void 
+	
+	
+

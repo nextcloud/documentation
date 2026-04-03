@@ -1,0 +1,201 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+DIContainer
+===========
+
+
+.. php:namespace:: OC\AppFramework\DependencyInjection
+
+.. php:class:: DIContainer
+
+
+	:Source:
+		`lib/private/AppFramework/DependencyInjection/DIContainer.php#80 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/DependencyInjection/DIContainer.php#L80>`_
+	
+	:Parent:
+		:php:class:`OC\\AppFramework\\Utility\\SimpleContainer`
+	
+	:Implements:
+		:php:interface:`OCP\\AppFramework\\IAppContainer` 
+	
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $appName, $urlParams=\[\], $server=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Put your class dependencies in here
+			
+		
+		:Source:
+			`lib/private/AppFramework/DependencyInjection/DIContainer.php#96 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/DependencyInjection/DIContainer.php#L96>`_
+		
+		
+		:Parameters:
+			* **$appName** (string)  the name of the app
+			* **$urlParams** (array)  
+			* **$server** (:any:`OC\\ServerContainer <OC\\ServerContainer>` | null)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getServer()
+	
+		:Source:
+			`lib/private/AppFramework/DependencyInjection/DIContainer.php#337 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/DependencyInjection/DIContainer.php#L337>`_
+		
+		
+		:Returns: :any:`\\OCP\\IServerContainer <OCP\\IServerContainer>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public registerMiddleWare( $middleWare)
+	
+		:Source:
+			`lib/private/AppFramework/DependencyInjection/DIContainer.php#345 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/DependencyInjection/DIContainer.php#L345>`_
+		
+		
+		:Parameters:
+			* **$middleWare** (string)  
+
+		
+		:Returns: bool | null 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getAppName()
+	
+		.. rst-class:: phpdoc-description
+		
+			| used to return the appname of the set application
+			
+		
+		:Source:
+			`lib/private/AppFramework/DependencyInjection/DIContainer.php#356 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/DependencyInjection/DIContainer.php#L356>`_
+		
+		
+		:Returns: string the name of your application
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public isLoggedIn()
+	
+		:Source:
+			`lib/private/AppFramework/DependencyInjection/DIContainer.php#364 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/DependencyInjection/DIContainer.php#L364>`_
+		
+		
+		:Deprecated:  use IUserSession\-\>isLoggedIn\(\)
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public isAdminUser()
+	
+		:Source:
+			`lib/private/AppFramework/DependencyInjection/DIContainer.php#372 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/DependencyInjection/DIContainer.php#L372>`_
+		
+		
+		:Deprecated:  use IGroupManager\-\>isAdmin\($userId\)
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public log( $message, $level)
+	
+		:Source:
+			`lib/private/AppFramework/DependencyInjection/DIContainer.php#387 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/DependencyInjection/DIContainer.php#L387>`_
+		
+		
+		:Parameters:
+			* **$message** (string)  
+			* **$level** (string)  
+
+		
+		:Deprecated:  use the ILogger instead
+		:Returns: mixed 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public registerCapability( $serviceName)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Register a capability
+			
+		
+		:Source:
+			`lib/private/AppFramework/DependencyInjection/DIContainer.php#413 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/DependencyInjection/DIContainer.php#L413>`_
+		
+		
+		:Parameters:
+			* **$serviceName** (string)  e.g. 'OCA\Files\Capabilities'
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public has( $id)
+	
+		:Source:
+			`lib/private/AppFramework/DependencyInjection/DIContainer.php#419 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/DependencyInjection/DIContainer.php#L419>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public query( $name, $autoload=true)
+	
+		:Source:
+			`lib/private/AppFramework/DependencyInjection/DIContainer.php#431 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/DependencyInjection/DIContainer.php#L431>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public queryNoFallback( $name)
+	
+		:Source:
+			`lib/private/AppFramework/DependencyInjection/DIContainer.php#451 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/DependencyInjection/DIContainer.php#L451>`_
+		
+		
+		:Parameters:
+			* **$name** (string)  
+
+		
+		:Returns: mixed 
+		:Throws: :any:`\\OCP\\AppFramework\\QueryException <OCP\\AppFramework\\QueryException>` if the query could not be resolved
+	
+	
+

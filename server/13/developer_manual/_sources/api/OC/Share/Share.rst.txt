@@ -1,0 +1,296 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+Share
+=====
+
+
+.. php:namespace:: OC\Share
+
+.. php:class:: Share
+
+
+	.. rst-class:: phpdoc-description
+	
+		| This class provides the ability for apps to share their content between users\.
+		
+		| Apps must create a backend class that implements OCP\\Share\_Backend and register it with this class\.
+		| 
+		| It provides the following hooks:
+		|  \- post\_shared
+		
+	
+	:Source:
+		`lib/private/Share/Share.php#49 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share/Share.php#L49>`_
+	
+	:Parent:
+		:php:class:`OC\\Share\\Constants`
+	
+
+Methods
+-------
+
+.. rst-class:: public static
+
+	.. php:method:: public static registerBackend( $itemType, $class, $collectionOf=null, $supportedFileExtensions=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Register a sharing backend class that implements OCP\\Share\_Backend for an item type
+			
+		
+		:Source:
+			`lib/private/Share/Share.php#74 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share/Share.php#L74>`_
+		
+		
+		:Parameters:
+			* **$itemType** (string)  Item type
+			* **$class** (string)  Backend class
+			* **$collectionOf** (string)  (optional) Depends on item type
+			* **$supportedFileExtensions** (array)  (optional) List of supported file extensions if this item type depends on files
+
+		
+		:Returns: bool true if backend is registered or false if error
+	
+	
+
+.. rst-class:: public static deprecated
+
+	.. php:method:: public static getItemsSharedWith()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the items of item type shared with the current user
+			
+		
+		:Source:
+			`lib/private/Share/Share.php#104 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share/Share.php#L104>`_
+		
+		
+		:Parameters:
+			
+			
+		
+		:Returns: mixed Return depends on format
+		:Deprecated:  TESTS ONLY \- this methods is only used by tests
+			called like this:
+			\\OC\\Share\\Share::getItemsSharedWith\(\'folder\'\); \(apps/files\_sharing/tests/UpdaterTest\.php\)
+		
+	
+	
+
+.. rst-class:: public static deprecated
+
+	.. php:method:: public static getItemsSharedWithUser( $itemType, $user)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the items of item type shared with a user
+			
+		
+		:Source:
+			`lib/private/Share/Share.php#121 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share/Share.php#L121>`_
+		
+		
+		:Parameters:
+			* **$itemType** (string)  
+			* **$user** (string)  id for which user we want the shares
+
+		
+		:Returns: mixed Return depends on format
+		:Deprecated:  TESTS ONLY \- this methods is only used by tests
+			called like this:
+			\\OC\\Share\\Share::getItemsSharedWithUser\(\'test\', $shareWith\); \(tests/lib/Share/Backend\.php\)
+		
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static getItemSharedWithUser( $itemType, $itemSource, $user, $owner=null, $shareType=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the item of item type shared with a given user by source
+			
+		
+		:Source:
+			`lib/private/Share/Share.php#134 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share/Share.php#L134>`_
+		
+		
+		:Parameters:
+			* **$itemType** (string)  
+			* **$itemSource** (string)  
+			* **$user** (string)  User to whom the item was shared
+			* **$owner** (string)  Owner of the share
+			* **$shareType** (int)  only look for a specific share type
+
+		
+		:Returns: array Return list of items with file\_target, permissions and expiration
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static getItemShared( $itemType, $itemSource, $format=self::FORMAT\_NONE, $parameters=null, $includeCollections=false)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the shared item of item type owned by the current user
+			
+		
+		:Source:
+			`lib/private/Share/Share.php#246 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share/Share.php#L246>`_
+		
+		
+		:Parameters:
+			* **$itemType** (string)  
+			* **$itemSource** (string)  
+			* **$format** (int)  (optional) Format type must be defined by the backend
+			* **$parameters** (mixed)  
+			* **$includeCollections** (bool)  
+
+		
+		:Returns: mixed Return depends on format
+			
+			Refactoring notes:
+			  \* defacto $parameters and $format is always the default and therefore is removed in the subsequent call
+		
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static getBackend( $itemType)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the backend class for the specified item type
+			
+		
+		:Source:
+			`lib/private/Share/Share.php#258 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share/Share.php#L258>`_
+		
+		
+		:Parameters:
+			* **$itemType** (string)  
+
+		
+		:Throws: :any:`\\Exception <Exception>` 
+		:Returns: :any:`\\OCP\\Share\_Backend <OCP\\Share\_Backend>` 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static isResharingAllowed()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check if resharing is allowed
+			
+		
+		:Source:
+			`lib/private/Share/Share.php#292 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share/Share.php#L292>`_
+		
+		
+		:Returns: bool true if allowed or false
+			
+			Resharing is allowed by default if not configured
+		
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static getItems( $itemType, $item=null, $shareType=null, $shareWith=null, $uidOwner=null, $format=self::FORMAT\_NONE, $parameters=null, $limit=\-1, $includeCollections=false, $itemShareWithBySource=false, $checkExpireDate=true)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get shared items from the database
+			
+		
+		:Source:
+			`lib/private/Share/Share.php#347 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share/Share.php#L347>`_
+		
+		
+		:Parameters:
+			* **$itemType** (string)  
+			* **$item** (string)  Item source or target (optional)
+			* **$shareType** (int)  SHARE_TYPE_USER, SHARE_TYPE_GROUP, SHARE_TYPE_LINK, $shareTypeUserAndGroups, or $shareTypeGroupUserUnique
+			* **$shareWith** (string)  User or group the item is being shared with
+			* **$uidOwner** (string)  User that is the owner of shared items (optional)
+			* **$format** (int)  Format to convert items to with formatItems() (optional)
+			* **$parameters** (mixed)  to pass to formatItems() (optional)
+			* **$limit** (int)  Number of items to return, -1 to return all matches (optional)
+			* **$includeCollections** (bool)  Include collection item types (optional)
+			* **$itemShareWithBySource** (bool)  (optional)
+			* **$checkExpireDate** (bool)  
+
+		
+		:Returns: array See public functions getItem\(s\)\.\.\. for parameter usage
+			
+			Refactoring notes:
+			  \* defacto $limit, $itemsShareWithBySource, $checkExpireDate, $parameters and $format is always the default and therefore is removed in the subsequent call
+		
+	
+	
+
+.. rst-class:: protected static
+
+	.. php:method:: protected static groupItems( $items, $itemType)
+	
+		.. rst-class:: phpdoc-description
+		
+			| group items with link to the same source
+			
+		
+		:Source:
+			`lib/private/Share/Share.php#719 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share/Share.php#L719>`_
+		
+		
+		:Parameters:
+			* **$items** (array)  
+			* **$itemType** (string)  
+
+		
+		:Returns: array of grouped items
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static removeProtocolFromUrl( $url)
+	
+		.. rst-class:: phpdoc-description
+		
+			| remove protocol from URL
+			
+		
+		:Source:
+			`lib/private/Share/Share.php#876 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share/Share.php#L876>`_
+		
+		
+		:Parameters:
+			* **$url** (string)  
+
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static getExpireInterval()
+	
+		:Source:
+			`lib/private/Share/Share.php#890 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share/Share.php#L890>`_
+		
+		
+		:Returns: int 
+	
+	
+

@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Configuring Single-Sign-On &#8212; Nextcloud 12 Server Administration Manual 12 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/main.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '12',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.1.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#1d2d44">
+<link rel="shortcut icon" href="https://nextcloud.com/wp-content/themes/next/assets/img/common/favicon.png" />
+<link rel="apple-touch-icon-precomposed" href="https://nextcloud.com/wp-content/themes/next/assets/img/common/favicon.png" />
+<!-- Piwik -->
+<script type="text/javascript">
+    var _paq = _paq || [];
+    _paq.push(['trackPageView']);
+    _paq.push(['enableLinkTracking']);
+    (function() {
+        var u="//stats.nextcloud.com/";
+        _paq.push(['setTrackerUrl', u+'piwik.php']);
+        _paq.push(['setSiteId', 3]);
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+        g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+    })();
+</script>
+<noscript><p><img src="//stats.nextcloud.com/piwik.php?idsite=3" style="border:0;" alt="" /></p></noscript>
+<!-- End Piwik Code -->
+
+  </head>
+  <body role="document">
+
+<header class="banner navbar navbar-default navbar-static-top" role="banner">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+       <a class="brand" href="http://nextcloud.com/" rel="home" title="Nextcloud.com"><img class="logo" src="../_static/img/logo.svg" itemprop="logo"></a>
+    </div>
+
+    <nav class="collapse navbar-collapse" role="navigation">
+      <ul id="menu-header" class="nav navbar-nav">
+          <li><a target="_blank" href="https://demo.nextcloud.com">Demo</a></li>
+          <li><a href="https://nextcloud.com/news/">News</a></li>
+          <li><a href="https://nextcloud.com/features/">Features</a></li>
+          <li><a href="https://nextcloud.com/about/">About us</a></li>
+          <li><a href="https://nextcloud.com/contribute/">Get involved</a></li>
+          <li><a href="https://nextcloud.com/support/">Support</a></li>
+          <li><a href="https://nextcloud.com/enterprise/">Enterprise</a></li>
+          <li class="menu-install"><a href="https://nextcloud.com/install/">Download</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+<div class="container" style="background-color: #E6C4C2;color: #b10000;border: #b10000 2px solid;border-right: none;border-left: none;padding: 15px 10px;">You are reading an outdated version of this documentation. Please check out the <a href="https://docs.nextcloud.com/server/stable/admin_manual/" style="
+color: rgb(177,0,0);text-decoration: underline;">latest version</a> of the server administration manual.</div>
+
+
+
+<div class="wrap container not-front">
+  <div class="content row">
+  <main class="main">
+    <div class="row page-content-header">
+      <div class="col-md-6">
+        <h1><a href="../contents.html">Nextcloud 12 Server Administration Manual</a></h1>
+      </div>
+      <div class="col-md-5 col-md-offset-1">
+      
+        <form class="headersearch" style="margin: 16px 0;" action="../search.html" method="get">
+        <input type="text" value="" name="q" id="q" class="form-control" /> 
+        <button  class="btn btn-default" type="submit" id="searchsubmit">Search</button>
+        </form>
+      
+      </div>
+    </div>
+    
+			<div class="row">
+				<div class="col-md-3">
+					<div class="sidebar">
+							<div class="menu-support-container">
+								<ul id="menu-support" class="menu">
+									<ul>
+										
+<li><a href="../contents.html">Table of Contents</a></li>
+									</ul>
+                  <ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Server Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_user/index.html">User Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_files/index.html">File Sharing and Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../file_workflows/index.html">File workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_database/index.html">Database Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_mimetypes/index.html">Mimetypes Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../maintenance/index.html">Maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../issues/index.html">Issues and Troubleshooting</a></li>
+</ul>
+
+								</ul>
+							</div>
+					</div>
+				</div>
+        
+
+				<div class="col-md-9">
+					<div class="page-content">
+            
+						
+  <div class="section" id="configuring-single-sign-on">
+<h1>Configuring Single-Sign-On<a class="headerlink" href="#configuring-single-sign-on" title="Permalink to this headline">¶</a></h1>
+<p>Using the SSO &amp; SAML app of your Nextcloud you can make it easily possible to integrate your existing Single-Sign-On
+solution with Nextcloud. In addition, you can use the Nextcloud LDAP user provider to keep the convenience for users. (e.g.
+when sharing)</p>
+<p>The following providers are supported and tested at the moment:</p>
+<ul class="simple">
+<li><dl class="first docutils">
+<dt>SAML 2.0</dt>
+<dd><ul class="first last">
+<li>OneLogin</li>
+<li>Shibboleth</li>
+<li>Active Directory Federation Services (ADFS)</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Authentication via Environment Variable</dt>
+<dd><ul class="first last">
+<li>Kerberos (mod_auth_kerb)</li>
+<li>Any other provider that authenticates using the environment variable</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>While theoretically any other authentication provider implementing either one of those standards is compatible, we like
+to note that they are not part of any internal test matrix.</p>
+<div class="section" id="enabling-the-sso-saml-app">
+<h2>Enabling the SSO &amp; SAML app<a class="headerlink" href="#enabling-the-sso-saml-app" title="Permalink to this headline">¶</a></h2>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Make sure to configure an administrative user that can access the instance via SSO. Logging-in with your
+regular Nextcloud account won&#8217;t be possible anymore.</p>
+</div>
+<p>The &#8220;SSO &amp; SAML&#8221; App is shipped and disabled by default. To enable the app enabled simply go to your Nextcloud Apps page
+to enable it. It can then be found in the &#8220;SSO &amp; SAML authentication&#8221; section of your Nextcloud.</p>
+</div>
+<div class="section" id="configuring-saml-2-0">
+<h2>Configuring SAML 2.0<a class="headerlink" href="#configuring-saml-2-0" title="Permalink to this headline">¶</a></h2>
+<p>To configure using SAML choose the &#8220;SAML authentication&#8221; in the setup wizard of the application. Then configure the application
+as required by your Service Provider.</p>
+<blockquote>
+<div><div class="figure">
+<img alt="../_images/saml_app_overview.png" src="../_images/saml_app_overview.png" />
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="configuring-environment-based-authentication">
+<h2>Configuring environment based authentication<a class="headerlink" href="#configuring-environment-based-authentication" title="Permalink to this headline">¶</a></h2>
+<p>It is possible to authenticate against Nextcloud using an environment variable. This is for example relevant in case you
+use an service provider incompatible with SAML such as Kerberos or don&#8217;t want to configure SAML in the software yourself.</p>
+<p>To enable that choose the &#8220;Environment variable&#8221; authentication provider in the application and then specify the environment
+variable. (e.g. <cite>REMOTE_USER</cite> for Kerberos)</p>
+<p>Once done you also need to protect the login route properly. On an Apache server with mod_auth_kerb the following configuration
+would protect the login route:</p>
+<div class="highlight-apache"><div class="highlight"><pre><span></span><span class="nt">&lt;Location</span> <span class="s">&quot;/index.php/login&quot;</span><span class="nt">&gt;</span>
+    <span class="nb">AuthType</span> Kerberos
+    <span class="nb">AuthName</span> <span class="s2">&quot;Kerberos Login&quot;</span>
+    <span class="nb">KrbServiceName</span> HTTP
+    <span class="nb">KrbMethodNegotiate</span> <span class="k">On</span>
+    <span class="nb">KrbMethodK5Passwd</span> <span class="k">Off</span>
+    <span class="nb">KrbSaveCredentials</span> <span class="k">Off</span>
+    <span class="nb">KrbVerifyKDC</span> <span class="k">On</span>
+    <span class="nb">KrbAuthRealms</span> NEXTCLOUD-AD.LOCAL
+    <span class="nb">Krb5KeyTab</span> <span class="sx">/etc/apache2/webpage.HTTP.keytab</span>
+    <span class="nb">Require</span> valid-user
+<span class="nt">&lt;/Location&gt;</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">If this authentication approach is used clients do require an application specific password for authentication.
+A better integration into our desktop and mobile clients is considered for the future though.</p>
+</div>
+</div>
+</div>
+
+
+            
+					</div>
+				</div>
+			</div>
+  </main>  
+  </div>
+</div>
+<div class="container">
+<div class="row">
+    <div class="col-lg-12 footer-social-icons">
+      <p class="text-center"><a target="_blank" href="https://plus.google.com/104036748063781940910/about"><img width=50 src="../_static/img/social/googleplus.svg" title="Follow us on Google Plus!" alt="Follow us on Google Plus!"></img></a>
+      <a target="_blank" href="https://www.facebook.com/Nextclouders"><img width=50 src="../_static/img/social/facebook.svg" title="Like our facebook page!" alt="Like our facebook page!"></img></a>
+      <a target="_blank" href="https://twitter.com/Nextclouders"><img width=50 src="../_static/img/social/twitter.svg" title="Subscribe to our twitter channel!" alt="Subscribe to our twitter channel!"></img></a>
+      <a target="_blank" href="https://nextcloud.com/blogfeed"><img class="img-circle" width=50 src="../_static/img/social/rss.svg" title="Subscribe to our news feed!" alt="Subscribe to our news feed!"></img></a>
+      <a target="_blank" href="https://newsletter.nextcloud.com/"><img class="img-circle" width=50 src="../_static/img/social/mail.svg"  title="Subscribe to our newsletter!" alt="Subscribe to our newsletter!"></img></a></p>
+    </div>
+    <div class="text-center">
+      <p>All documentation licensed under the <a href="https://creativecommons.org/licenses/by/3.0/us/">Creative Commons Attribution 3.0 Unported license</a>.</p>
+      <p><a href="https://github.com/nextcloud/documentation/graphs/contributors">See who contributed to our documentation/credits</a>.</p>
+    </div>
+</div>
+</div>
+<footer class="content-info" role="contentinfo">
+<div class="container">
+   <div class="row">
+     <div class="col-sm-2 col-sm-offset-1">
+        <div class="footer-nav">
+          <h4>About Nextcloud</h4>
+          <ul id="menu-about" class="menu">
+            <li><a href="https://nextcloud.com/about/">About us</a></li>
+            <li><a href="https://nextcloud.com/contact/">Contact us</a></li>
+            <li><a href="https://nextcloud.com/press/">Press</a></li>
+            <li><a href="https://nextcloud.com/privacy/">Privacy policy</a></li>
+          </ul>
+        </div>
+     </div>
+     <div class="col-sm-2 col-sm-offset-2">
+     </div>
+     <div class="col-sm-2 col-sm-offset-2">
+        <div class="footer-nav">
+          <h4>Interact</h4>
+          <ul id="menu-interact" class="menu">
+            <li class="menu-irc-channel"><a href="https://webchat.freenode.net/?channels=nextcloud">IRC Channel</a></li>
+            <li class="menu-forums"><a href="https://help.nextcloud.com/">Forums</a></li>
+          </ul>
+        </div>
+     </div>
+   </div>
+   <div class="row">
+      <div class="col-lg-12 footer-text">
+        <p>
+              &copy; Copyright 2012-2017, The Nextcloud developers.  <small><a href="https://nextcloud.com/impressum">Legal Notice</a></small><br/>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+  </body>
+</html>

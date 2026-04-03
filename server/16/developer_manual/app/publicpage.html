@@ -1,0 +1,374 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Public Pages &mdash; Nextcloud latest Developer Manual latest documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'latest',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Testing" href="testing.html" />
+    <link rel="prev" title="Repair steps" href="repair.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../general/index.html">General contributor guidelines</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">App development</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="npm.html">NPM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="requests/index.html">Request lifecycle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="view/index.html">View</a></li>
+<li class="toctree-l2"><a class="reference internal" href="storage/index.html">Storage and database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html">Changelog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classloader.html">Classloader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="code_signing.html">Code signing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="info.html">App metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="init.html">Navigation and pre-app configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="publishing.html">App store publishing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="users.html">User management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="two-factor-provider.html">Two-factor providers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hooks.html">Hooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backgroundjobs.html">Background jobs (Cron)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="settings.html">Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notifications.html">Notifications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logging.html">Logging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="repair.html">Repair steps</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Public Pages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#concept">Concept</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#implementing-an-api-called-from-a-public-share-page">Implementing an API called from a public share page</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#implementing-an-authenticated-public-page">Implementing an authenticated public page</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="testing.html">Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html">API Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../design/index.html">Design guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../android_library/index.html">Android application development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client_apis/index.html">Client APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../core/index.html">Core development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bugtracker/index.html">Bugtracker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../commun/index.html">Help and communication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API Documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Nextcloud latest Developer Manual</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">App development</a> &raquo;</li>
+        
+      <li>Public Pages</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/nextcloud/documentation/edit/master/developer_manual/app/publicpage.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="public-pages">
+<h1>Public Pages<a class="headerlink" href="#public-pages" title="Permalink to this headline">¶</a></h1>
+<p>A lot of apps in Nextcloud want to expose public pages in some form. This can
+be to share files, a calendar or anything else. To ensure all those pages
+benefit from the security enhancements we add we created simple controlers
+for app developers to use.</p>
+<div class="section" id="concept">
+<h2>Concept<a class="headerlink" href="#concept" title="Permalink to this headline">¶</a></h2>
+<p>A public page is there to display a resource that a user wants to expose via a
+public link in an app.</p>
+<p>A public page is identified by some <code class="docutils literal"><span class="pre">token</span></code> and can be protected by a <code class="docutils literal"><span class="pre">password</span></code>.</p>
+<p>If a public page is password protected by default we will show the normal authentication
+page to enter the password.</p>
+<p>A public page can also call other endpoints. These endpoints operate very similarly
+with the difference that if the user is not properly authenticated it will throw a 404.</p>
+<p>It is required that you have a parameter (probaby in your url) with the <code class="docutils literal"><span class="pre">token</span></code>. As an example
+your <code class="docutils literal"><span class="pre">routes.php</span></code> could look like:</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="k">return</span> <span class="p">[</span>
+        <span class="s1">&#39;routes&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+                <span class="p">[</span> <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;PublicAPI#get&#39;</span><span class="p">,</span> <span class="s1">&#39;url&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/api/{token}&#39;</span><span class="p">,</span> <span class="s1">&#39;verb&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;GET&#39;</span> <span class="p">],</span>
+                <span class="p">[</span> <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;PublicDisplay#get&#39;</span><span class="p">,</span> <span class="s1">&#39;url&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/display/{token}&#39;</span><span class="p">,</span> <span class="s1">&#39;verb&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;GET&#39;</span> <span class="p">],</span>
+        <span class="p">]</span>
+<span class="p">];</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="implementing-an-api-called-from-a-public-share-page">
+<h2>Implementing an API called from a public share page<a class="headerlink" href="#implementing-an-api-called-from-a-public-share-page" title="Permalink to this headline">¶</a></h2>
+<p>As said the PublicShareController is a very basic controller. You need to implement 3 functions.
+<code class="docutils literal"><span class="pre">isPasswordProtected</span></code>, <code class="docutils literal"><span class="pre">isValidToken</span></code> and <code class="docutils literal"><span class="pre">getPasswordHash</span></code>.</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">OCA\Share_Test\Controller</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCP\AppFramework\PublicShareController</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">PublicAPIController</span> <span class="k">extends</span> <span class="nx">PublicShareController</span> <span class="p">{</span>
+        <span class="sd">/**</span>
+<span class="sd">         * Return the hash of the password for this share.</span>
+<span class="sd">         * This function is of course only called when isPasswordProtected is true</span>
+<span class="sd">         */</span>
+        <span class="k">protected</span> <span class="k">function</span> <span class="nf">getPasswordHash</span><span class="p">()</span><span class="o">:</span> <span class="nx">string</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="nb">md5</span><span class="p">(</span><span class="s1">&#39;secretpassword&#39;</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="sd">/**</span>
+<span class="sd">        * Validate the token of this share. If the token is invalid this controller</span>
+<span class="sd">        * will return a 404.</span>
+<span class="sd">        */</span>
+        <span class="k">public</span> <span class="k">function</span> <span class="nf">isValidToken</span><span class="p">()</span><span class="o">:</span> <span class="nx">bool</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getToken</span><span class="p">()</span> <span class="o">===</span> <span class="s1">&#39;secretToken&#39;</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="sd">/**</span>
+<span class="sd">         * Allows you to specify if this share is password protected</span>
+<span class="sd">         */</span>
+        <span class="k">protected</span> <span class="k">function</span> <span class="nf">isPasswordProtected</span><span class="p">()</span><span class="o">:</span> <span class="nx">bool</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="k">true</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="sd">/**</span>
+<span class="sd">         * Your normal controller function</span>
+<span class="sd">         */</span>
+        <span class="k">public</span> <span class="k">function</span> <span class="nf">get</span><span class="p">()</span> <span class="p">{</span>
+                <span class="c1">// Work your magic</span>
+        <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>You can also chose to overwrite the <code class="docutils literal"><span class="pre">shareNotFound</span></code> function. That is called when the
+token is not valid. You can do additional logging here for example.</p>
+</div>
+<div class="section" id="implementing-an-authenticated-public-page">
+<h2>Implementing an authenticated public page<a class="headerlink" href="#implementing-an-authenticated-public-page" title="Permalink to this headline">¶</a></h2>
+<p>On some pages password authentication might be required (just like the when you
+share a file via public link with a password). In this case you need
+to extend a different provider.</p>
+<p>The AuthPublicShareController requiers in addition to the PublicShareController that
+you also implement the <code class="docutils literal"><span class="pre">verifyPassword</span></code> and <code class="docutils literal"><span class="pre">showShare</span></code> functions.</p>
+<p>Additionally you can overwrite the <code class="docutils literal"><span class="pre">showAuthenticate</span></code> and <code class="docutils literal"><span class="pre">showAuthFailed</span></code> functions
+if you do now want to use the default authentication pages.</p>
+<p>The <code class="docutils literal"><span class="pre">authFailed</span></code> and <code class="docutils literal"><span class="pre">authSucceeded</span></code> functions can be overwritten as well and are
+called depending on the if authentication passed or not. You can handle additional logging
+there for example.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="testing.html" class="btn btn-neutral float-right" title="Testing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="repair.html" class="btn btn-neutral float-left" title="Repair steps" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021 Nextcloud GmbH.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/16/developer_manual">16</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/17/developer_manual">17</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/18/developer_manual">18</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/developer_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/developer_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+   
+
+</body>
+</html>

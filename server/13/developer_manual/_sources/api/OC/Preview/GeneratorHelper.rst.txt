@@ -1,0 +1,92 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+GeneratorHelper
+===============
+
+
+.. php:namespace:: OC\Preview
+
+.. php:class:: GeneratorHelper
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Very small wrapper class to make the generator fully unit testable
+		
+	
+	:Source:
+		`lib/private/Preview/GeneratorHelper.php#41 <https://github.com/nextcloud/server/blob/stable13/lib/private/Preview/GeneratorHelper.php#L41>`_
+	
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $rootFolder, $config)
+	
+		:Source:
+			`lib/private/Preview/GeneratorHelper.php#49 <https://github.com/nextcloud/server/blob/stable13/lib/private/Preview/GeneratorHelper.php#L49>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getThumbnail( $provider, $file, $maxWidth, $maxHeight)
+	
+		:Source:
+			`lib/private/Preview/GeneratorHelper.php#62 <https://github.com/nextcloud/server/blob/stable13/lib/private/Preview/GeneratorHelper.php#L62>`_
+		
+		
+		:Parameters:
+			* **$provider** (:any:`OCP\\Preview\\IProviderV2 <OCP\\Preview\\IProviderV2>`)  
+			* **$file** (:any:`OCP\\Files\\File <OCP\\Files\\File>`)  
+			* **$maxWidth** (int)  
+			* **$maxHeight** (int)  
+
+		
+		:Returns: bool | :any:`\\OCP\\IImage <OCP\\IImage>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getImage( $maxPreview)
+	
+		:Source:
+			`lib/private/Preview/GeneratorHelper.php#70 <https://github.com/nextcloud/server/blob/stable13/lib/private/Preview/GeneratorHelper.php#L70>`_
+		
+		
+		:Parameters:
+			* **$maxPreview** (:any:`OCP\\Files\\SimpleFS\\ISimpleFile <OCP\\Files\\SimpleFS\\ISimpleFile>`)  
+
+		
+		:Returns: :any:`\\OCP\\IImage <OCP\\IImage>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getProvider( $providerClosure)
+	
+		:Source:
+			`lib/private/Preview/GeneratorHelper.php#80 <https://github.com/nextcloud/server/blob/stable13/lib/private/Preview/GeneratorHelper.php#L80>`_
+		
+		
+		:Parameters:
+			* **$providerClosure** (callable)  
+
+		
+		:Returns: :any:`\\OCP\\Preview\\IProviderV2 <OCP\\Preview\\IProviderV2>` 
+	
+	
+

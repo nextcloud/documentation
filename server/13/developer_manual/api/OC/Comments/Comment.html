@@ -1,0 +1,1019 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Comment &mdash; Nextcloud 13 Developer Manual 13 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../../',
+              VERSION:'13',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Manager" href="Manager.html" />
+    <link rel="prev" title="Comments" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html">
+          
+
+          
+            
+            <img src="../../../_static/logo-white.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../general/index.html">General contributor guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/startapp.html">Create an app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/init.html">Navigation and pre-app configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/info.html">App metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/classloader.html">Classloader</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/request.html">Request lifecycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/routes.html">Routing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/middleware.html">Middleware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/container.html">Container</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/controllers.html">Controllers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/api.html">RESTful API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/templates.html">Templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/js.html">JavaScript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/css.html">CSS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/l10n.html">Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/theming.html">Theming support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/schema.html">Database schema</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/database.html">Database access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/filesystem.html">Filesystem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/appdata.html">AppData</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/users.html">User management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/two-factor-provider.html">Two-factor providers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/hooks.html">Hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/backgroundjobs.html">Background jobs (Cron)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/settings.html">Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/logging.html">Logging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/migrations.html">Migrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/repair.html">Repair steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/publishing.html">App store publishing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/code_signing.html">Code signing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../design/index.html">Design guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../android_library/index.html">Android application development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../client_apis/index.html">Client APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../core/translation.html">Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../core/unit-testing.html">Unit-Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../core/theming.html">Theming Nextcloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../core/externalapi.html">External API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../core/ocs-share-api.html">OCS Share API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../core/index.html">Core development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../bugtracker/index.html">Bugtracker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../commun/index.html">Help and communication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api.html">API Documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Nextcloud 13 Developer Manual</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../../api.html">API Documentation</a> &raquo;</li>
+        
+          <li><a href="../../index.html">\</a> &raquo;</li>
+        
+          <li><a href="../index.html">OC</a> &raquo;</li>
+        
+          <li><a href="index.html">Comments</a> &raquo;</li>
+        
+      <li>Comment</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/nextcloud/documentation/edit/stable13/developer_manual/api/OC/Comments/Comment.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="phpdoctorst section" id="namespace-OC\Comments">
+<span id="comment"></span><h1>Comment<a class="headerlink" href="#namespace-OC\Comments" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="OC\Comments\Comment">
+<em class="property">class </em><code class="descclassname">OC\Comments\</code><code class="descname">Comment</code><a class="headerlink" href="#OC\Comments\Comment" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Comments/Comment.php#L33">lib/private/Comments/Comment.php#33</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Implements:</th><td class="field-body"><a class="reference internal" href="../../OCP/Comments/IComment.html#OCP\Comments\IComment" title="OCP\Comments\IComment"><code class="xref php php-interface docutils literal"><span class="pre">OCP\Comments\IComment</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<div class="section" id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h2>
+<dl class="attr">
+<dt id="OC\Comments\Comment::$data">
+<em class="property">protected </em><em class="property">static </em><em class="property">property </em><code class="descclassname">OC\Comments\Comment::$</code><code class="descname">data</code><a class="headerlink" href="#OC\Comments\Comment::$data" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Comments/Comment.php#L34">lib/private/Comments/Comment.php#34</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h2>
+<dl class="public method">
+<dt id="OC\Comments\Comment::__construct">
+<em class="property">public </em><code class="descclassname">OC\Comments\Comment::</code><code class="descname">__construct</code><span class="sig-paren">(</span><em>$data=null</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Comments\Comment::__construct" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Comment constructor.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Comments/Comment.php#L56">lib/private/Comments/Comment.php#56</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$data</strong> (array)  optional, array with keys according to column names from</li>
+</ul>
+<p class="last">the comments database scheme</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Comments\Comment::getId">
+<em class="property">public </em><code class="descclassname">OC\Comments\Comment::</code><code class="descname">getId</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Comments\Comment::getId" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">returns the ID of the comment</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">It may return an empty string, if the comment was not stored.</div>
+<div class="line">It is expected that the concrete Comment implementation gives an ID</div>
+<div class="line">by itself (e.g. after saving).</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Comments/Comment.php#L72">lib/private/Comments/Comment.php#72</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">string</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">9.0.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Comments\Comment::setId">
+<em class="property">public </em><code class="descclassname">OC\Comments\Comment::</code><code class="descname">setId</code><span class="sig-paren">(</span><em>$id</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Comments\Comment::setId" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">sets the ID of the comment and returns itself</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">It is only allowed to set the ID only, if the current id is an empty</div>
+<div class="line">string (which means it is not stored in a database, storage or whatever</div>
+<div class="line">the concrete implementation does), or vice versa. Changing a given ID is</div>
+<div class="line">not permitted and must result in an IllegalIDChangeException.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Comments/Comment.php#L89">lib/private/Comments/Comment.php#89</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$id</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference internal" href="../../OCP/Comments/IComment.html#OCP\Comments\IComment" title="OCP\Comments\IComment"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Comments\IComment</span></code></a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><a class="reference internal" href="../../OCP/Comments/IllegalIDChangeException.html#OCP\Comments\IllegalIDChangeException" title="OCP\Comments\IllegalIDChangeException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Comments\IllegalIDChangeException</span></code></a></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">9.0.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Comments\Comment::getParentId">
+<em class="property">public </em><code class="descclassname">OC\Comments\Comment::</code><code class="descname">getParentId</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Comments\Comment::getParentId" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">returns the parent ID of the comment</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Comments/Comment.php#L109">lib/private/Comments/Comment.php#109</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">string</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">9.0.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Comments\Comment::setParentId">
+<em class="property">public </em><code class="descclassname">OC\Comments\Comment::</code><code class="descname">setParentId</code><span class="sig-paren">(</span><em>$parentId</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Comments\Comment::setParentId" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">sets the parent ID and returns itself</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Comments/Comment.php#L120">lib/private/Comments/Comment.php#120</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$parentId</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference internal" href="../../OCP/Comments/IComment.html#OCP\Comments\IComment" title="OCP\Comments\IComment"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Comments\IComment</span></code></a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">9.0.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Comments\Comment::getTopmostParentId">
+<em class="property">public </em><code class="descclassname">OC\Comments\Comment::</code><code class="descname">getTopmostParentId</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Comments\Comment::getTopmostParentId" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">returns the topmost parent ID of the comment</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Comments/Comment.php#L134">lib/private/Comments/Comment.php#134</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">string</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">9.0.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Comments\Comment::setTopmostParentId">
+<em class="property">public </em><code class="descclassname">OC\Comments\Comment::</code><code class="descname">setTopmostParentId</code><span class="sig-paren">(</span><em>$id</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Comments\Comment::setTopmostParentId" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">sets the topmost parent ID and returns itself</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Comments/Comment.php#L146">lib/private/Comments/Comment.php#146</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$id</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference internal" href="../../OCP/Comments/IComment.html#OCP\Comments\IComment" title="OCP\Comments\IComment"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Comments\IComment</span></code></a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">9.0.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Comments\Comment::getChildrenCount">
+<em class="property">public </em><code class="descclassname">OC\Comments\Comment::</code><code class="descname">getChildrenCount</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Comments\Comment::getChildrenCount" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">returns the number of children</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Comments/Comment.php#L160">lib/private/Comments/Comment.php#160</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">int</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">9.0.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Comments\Comment::setChildrenCount">
+<em class="property">public </em><code class="descclassname">OC\Comments\Comment::</code><code class="descname">setChildrenCount</code><span class="sig-paren">(</span><em>$count</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Comments\Comment::setChildrenCount" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">sets the number of children</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Comments/Comment.php#L171">lib/private/Comments/Comment.php#171</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$count</strong> (int)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference internal" href="../../OCP/Comments/IComment.html#OCP\Comments\IComment" title="OCP\Comments\IComment"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Comments\IComment</span></code></a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">9.0.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Comments\Comment::getMessage">
+<em class="property">public </em><code class="descclassname">OC\Comments\Comment::</code><code class="descname">getMessage</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Comments\Comment::getMessage" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">returns the message of the comment</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Comments/Comment.php#L185">lib/private/Comments/Comment.php#185</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">string</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">9.0.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Comments\Comment::setMessage">
+<em class="property">public </em><code class="descclassname">OC\Comments\Comment::</code><code class="descname">setMessage</code><span class="sig-paren">(</span><em>$message</em>, <em>$maxLength=self::MAX_MESSAGE_LENGTH</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Comments\Comment::setMessage" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">sets the message of the comment and returns itself</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Comments/Comment.php#L198">lib/private/Comments/Comment.php#198</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$message</strong> (string)</li>
+<li><strong>$maxLength</strong> (int)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference internal" href="../../OCP/Comments/IComment.html#OCP\Comments\IComment" title="OCP\Comments\IComment"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Comments\IComment</span></code></a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><a class="reference internal" href="../../OCP/Comments/MessageTooLongException.html#OCP\Comments\MessageTooLongException" title="OCP\Comments\MessageTooLongException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Comments\MessageTooLongException</span></code></a></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">9.0.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Comments\Comment::getMentions">
+<em class="property">public </em><code class="descclassname">OC\Comments\Comment::</code><code class="descname">getMentions</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Comments\Comment::getMentions" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">returns an array containing mentions that are included in the comment</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Comments/Comment.php#L230">lib/private/Comments/Comment.php#230</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">array each mention provides a &#8216;type&#8217; and an &#8216;id&#8217;, see example below</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body"><p class="first">11.0.0 The return array looks like:
+[</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>[</dt>
+<dd><p class="first last">&#8216;type&#8217; =&gt; &#8216;user&#8217;,
+&#8216;id&#8217; =&gt; &#8216;citizen4&#8217;</p>
+</dd>
+</dl>
+<p>],
+[</p>
+<blockquote>
+<div><p>&#8216;type&#8217; =&gt; &#8216;group&#8217;,
+&#8216;id&#8217; =&gt; &#8216;media&#8217;</p>
+</div></blockquote>
+<p>],
+…</p>
+</div></blockquote>
+<p class="last">]</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Comments\Comment::getVerb">
+<em class="property">public </em><code class="descclassname">OC\Comments\Comment::</code><code class="descname">getVerb</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Comments\Comment::getVerb" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">returns the verb of the comment</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Comments/Comment.php#L257">lib/private/Comments/Comment.php#257</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">string</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">9.0.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Comments\Comment::setVerb">
+<em class="property">public </em><code class="descclassname">OC\Comments\Comment::</code><code class="descname">setVerb</code><span class="sig-paren">(</span><em>$verb</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Comments\Comment::setVerb" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">sets the verb of the comment, e.g. &#8216;comment&#8217; or &#8216;like&#8217;</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Comments/Comment.php#L268">lib/private/Comments/Comment.php#268</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$verb</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference internal" href="../../OCP/Comments/IComment.html#OCP\Comments\IComment" title="OCP\Comments\IComment"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Comments\IComment</span></code></a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">9.0.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Comments\Comment::getActorType">
+<em class="property">public </em><code class="descclassname">OC\Comments\Comment::</code><code class="descname">getActorType</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Comments\Comment::getActorType" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">returns the actor type</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Comments/Comment.php#L282">lib/private/Comments/Comment.php#282</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">string</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">9.0.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Comments\Comment::getActorId">
+<em class="property">public </em><code class="descclassname">OC\Comments\Comment::</code><code class="descname">getActorId</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Comments\Comment::getActorId" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">returns the actor ID</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Comments/Comment.php#L292">lib/private/Comments/Comment.php#292</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">string</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">9.0.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Comments\Comment::setActor">
+<em class="property">public </em><code class="descclassname">OC\Comments\Comment::</code><code class="descname">setActor</code><span class="sig-paren">(</span><em>$actorType</em>, <em>$actorId</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Comments\Comment::setActor" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">sets (overwrites) the actor type and id</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Comments/Comment.php#L304">lib/private/Comments/Comment.php#304</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$actorType</strong> (string)  e.g. &#8216;users&#8217;</li>
+<li><strong>$actorId</strong> (string)  e.g. &#8216;zombie234&#8217;</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference internal" href="../../OCP/Comments/IComment.html#OCP\Comments\IComment" title="OCP\Comments\IComment"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Comments\IComment</span></code></a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">9.0.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Comments\Comment::getCreationDateTime">
+<em class="property">public </em><code class="descclassname">OC\Comments\Comment::</code><code class="descname">getCreationDateTime</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Comments\Comment::getCreationDateTime" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">returns the creation date of the comment.</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">If not explicitly set, it shall default to the time of initialization.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Comments/Comment.php#L324">lib/private/Comments/Comment.php#324</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><code class="xref any docutils literal"><span class="pre">\DateTime</span></code></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">9.0.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Comments\Comment::setCreationDateTime">
+<em class="property">public </em><code class="descclassname">OC\Comments\Comment::</code><code class="descname">setCreationDateTime</code><span class="sig-paren">(</span><em>$timestamp</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Comments\Comment::setCreationDateTime" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">sets the creation date of the comment and returns itself</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Comments/Comment.php#L335">lib/private/Comments/Comment.php#335</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$timestamp</strong> (<code class="xref any docutils literal"><span class="pre">DateTime</span></code>)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference internal" href="../../OCP/Comments/IComment.html#OCP\Comments\IComment" title="OCP\Comments\IComment"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Comments\IComment</span></code></a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">9.0.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Comments\Comment::getLatestChildDateTime">
+<em class="property">public </em><code class="descclassname">OC\Comments\Comment::</code><code class="descname">getLatestChildDateTime</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Comments\Comment::getLatestChildDateTime" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">returns the DateTime of the most recent child, if set, otherwise null</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Comments/Comment.php#L346">lib/private/Comments/Comment.php#346</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><code class="xref any docutils literal"><span class="pre">\DateTime</span></code> | null</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">9.0.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Comments\Comment::setLatestChildDateTime">
+<em class="property">public </em><code class="descclassname">OC\Comments\Comment::</code><code class="descname">setLatestChildDateTime</code><span class="sig-paren">(</span><em>$dateTime=null</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Comments\Comment::setLatestChildDateTime" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">sets the date of the most recent child</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Comments/Comment.php#L357">lib/private/Comments/Comment.php#357</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$dateTime</strong> (<code class="xref any docutils literal"><span class="pre">DateTime</span></code>)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference internal" href="../../OCP/Comments/IComment.html#OCP\Comments\IComment" title="OCP\Comments\IComment"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Comments\IComment</span></code></a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">9.0.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Comments\Comment::getObjectType">
+<em class="property">public </em><code class="descclassname">OC\Comments\Comment::</code><code class="descname">getObjectType</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Comments\Comment::getObjectType" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">returns the object type the comment is attached to</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Comments/Comment.php#L368">lib/private/Comments/Comment.php#368</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">string</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">9.0.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Comments\Comment::getObjectId">
+<em class="property">public </em><code class="descclassname">OC\Comments\Comment::</code><code class="descname">getObjectId</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Comments\Comment::getObjectId" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">returns the object id the comment is attached to</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Comments/Comment.php#L378">lib/private/Comments/Comment.php#378</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">string</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">9.0.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Comments\Comment::setObject">
+<em class="property">public </em><code class="descclassname">OC\Comments\Comment::</code><code class="descname">setObject</code><span class="sig-paren">(</span><em>$objectType</em>, <em>$objectId</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Comments\Comment::setObject" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">sets (overwrites) the object of the comment</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Comments/Comment.php#L390">lib/private/Comments/Comment.php#390</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$objectType</strong> (string)  e.g. &#8216;files&#8217;</li>
+<li><strong>$objectId</strong> (string)  e.g. &#8216;16435&#8217;</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference internal" href="../../OCP/Comments/IComment.html#OCP\Comments\IComment" title="OCP\Comments\IComment"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Comments\IComment</span></code></a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">9.0.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Comments\Comment::getReferenceId">
+<em class="property">public </em><code class="descclassname">OC\Comments\Comment::</code><code class="descname">getReferenceId</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Comments\Comment::getReferenceId" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">returns the reference id of the comment</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Comments/Comment.php#L408">lib/private/Comments/Comment.php#408</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">string | null</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">19.0.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Comments\Comment::setReferenceId">
+<em class="property">public </em><code class="descclassname">OC\Comments\Comment::</code><code class="descname">setReferenceId</code><span class="sig-paren">(</span><em>$referenceId</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Comments\Comment::setReferenceId" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">sets (overwrites) the reference id of the comment</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Comments/Comment.php#L419">lib/private/Comments/Comment.php#419</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$referenceId</strong> (string)  e.g. sha256 hash sum</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first"><a class="reference internal" href="../../OCP/Comments/IComment.html#OCP\Comments\IComment" title="OCP\Comments\IComment"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Comments\IComment</span></code></a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">19.0.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="protected method">
+<dt id="OC\Comments\Comment::fromArray">
+<em class="property">protected </em><code class="descclassname">OC\Comments\Comment::</code><code class="descname">fromArray</code><span class="sig-paren">(</span><em>$data</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Comments\Comment::fromArray" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">sets the comment data based on an array with keys as taken from the</div>
+<div class="line">database.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Comments/Comment.php#L439">lib/private/Comments/Comment.php#439</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$data</strong> (array)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><a class="reference internal" href="../../OCP/Comments/IComment.html#OCP\Comments\IComment" title="OCP\Comments\IComment"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Comments\IComment</span></code></a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="Manager.html" class="btn btn-neutral float-right" title="Manager" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="index.html" class="btn btn-neutral float-left" title="Comments" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021 Nextcloud GmbH.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: 13
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/13/developer_manual">13</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/14/developer_manual">14</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/15/developer_manual">15</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/developer_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/developer_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+   
+
+</body>
+</html>

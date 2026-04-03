@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Configuring External Storage (GUI) &#8212; Nextcloud 12 Server Administration Manual 12 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/main.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '12',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.1.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Amazon S3" href="external_storage/amazons3.html" />
+    <link rel="prev" title="Providing Default Files" href="default_files_configuration.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#1d2d44">
+<link rel="shortcut icon" href="https://nextcloud.com/wp-content/themes/next/assets/img/common/favicon.png" />
+<link rel="apple-touch-icon-precomposed" href="https://nextcloud.com/wp-content/themes/next/assets/img/common/favicon.png" />
+<!-- Piwik -->
+<script type="text/javascript">
+    var _paq = _paq || [];
+    _paq.push(['trackPageView']);
+    _paq.push(['enableLinkTracking']);
+    (function() {
+        var u="//stats.nextcloud.com/";
+        _paq.push(['setTrackerUrl', u+'piwik.php']);
+        _paq.push(['setSiteId', 3]);
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+        g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+    })();
+</script>
+<noscript><p><img src="//stats.nextcloud.com/piwik.php?idsite=3" style="border:0;" alt="" /></p></noscript>
+<!-- End Piwik Code -->
+
+  </head>
+  <body role="document">
+
+<header class="banner navbar navbar-default navbar-static-top" role="banner">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+       <a class="brand" href="http://nextcloud.com/" rel="home" title="Nextcloud.com"><img class="logo" src="../_static/img/logo.svg" itemprop="logo"></a>
+    </div>
+
+    <nav class="collapse navbar-collapse" role="navigation">
+      <ul id="menu-header" class="nav navbar-nav">
+          <li><a target="_blank" href="https://demo.nextcloud.com">Demo</a></li>
+          <li><a href="https://nextcloud.com/news/">News</a></li>
+          <li><a href="https://nextcloud.com/features/">Features</a></li>
+          <li><a href="https://nextcloud.com/about/">About us</a></li>
+          <li><a href="https://nextcloud.com/contribute/">Get involved</a></li>
+          <li><a href="https://nextcloud.com/support/">Support</a></li>
+          <li><a href="https://nextcloud.com/enterprise/">Enterprise</a></li>
+          <li class="menu-install"><a href="https://nextcloud.com/install/">Download</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+<div class="container" style="background-color: #E6C4C2;color: #b10000;border: #b10000 2px solid;border-right: none;border-left: none;padding: 15px 10px;">You are reading an outdated version of this documentation. Please check out the <a href="https://docs.nextcloud.com/server/stable/admin_manual/" style="
+color: rgb(177,0,0);text-decoration: underline;">latest version</a> of the server administration manual.</div>
+
+
+
+<div class="wrap container not-front">
+  <div class="content row">
+  <main class="main">
+    <div class="row page-content-header">
+      <div class="col-md-6">
+        <h1><a href="../contents.html">Nextcloud 12 Server Administration Manual</a></h1>
+      </div>
+      <div class="col-md-5 col-md-offset-1">
+      
+        <form class="headersearch" style="margin: 16px 0;" action="../search.html" method="get">
+        <input type="text" value="" name="q" id="q" class="form-control" /> 
+        <button  class="btn btn-default" type="submit" id="searchsubmit">Search</button>
+        </form>
+      
+      </div>
+    </div>
+    
+			<div class="row">
+				<div class="col-md-3">
+					<div class="sidebar">
+							<div class="menu-support-container">
+								<ul id="menu-support" class="menu">
+									<ul>
+										
+<li><a href="../contents.html">Table of Contents</a></li>
+									</ul>
+                  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_server/index.html">Server Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_user/index.html">User Management</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">File Sharing and Management</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="file_sharing_configuration.html">File Sharing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="federated_cloud_sharing_configuration.html">Configuring Federation Sharing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="big_file_upload_configuration.html">Uploading big files &gt; 512MB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="default_files_configuration.html">Providing Default Files</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Configuring External Storage (GUI)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#enabling-external-storage-support">Enabling External Storage Support</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#storage-configuration">Storage Configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#user-and-group-permissions">User and Group Permissions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#mount-options">Mount Options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#using-self-signed-certificates">Using Self-Signed Certificates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#available-storage-backends">Available storage backends</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#allow-users-to-mount-external-storage">Allow Users to Mount External Storage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#adding-files-to-external-storages">Adding Files to External Storages</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="external_storage_configuration.html">Configuring External Storage (Configuration File)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="external_storage/auth_mechanisms.html">External Storage Authentication mechanisms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="encryption_configuration.html">Encryption Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="files_locking_transactional.html">Transactional File Locking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="previews_configuration.html">Previews Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_versioning.html">Controlling File Versions and Aging</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../file_workflows/index.html">File workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_database/index.html">Database Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_mimetypes/index.html">Mimetypes Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../maintenance/index.html">Maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../issues/index.html">Issues and Troubleshooting</a></li>
+</ul>
+
+								</ul>
+							</div>
+					</div>
+				</div>
+        
+
+				<div class="col-md-9">
+					<div class="page-content">
+            
+<ul class="prevnext-title list-unstyled list-inline">
+  <li class="prev">
+    <a href="default_files_configuration.html" title="Previous Chapter: Providing Default Files"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; Providing Def...</span>
+    </a>
+  </li>
+  <li class="next">
+    <a href="external_storage/amazons3.html" title="Next Chapter: Amazon S3"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">Amazon S3 &raquo;</span>
+    </a>
+  </li>
+</ul>
+						
+  <div class="section" id="configuring-external-storage-gui">
+<h1>Configuring External Storage (GUI)<a class="headerlink" href="#configuring-external-storage-gui" title="Permalink to this headline">¶</a></h1>
+<p>The External Storage Support application enables you to mount external storage
+services and devices as secondary Nextcloud storage devices. You may also allow
+users to mount their own external storage services.</p>
+<p>Nextcloud 9.0 introduces a new set of <a class="reference internal" href="../configuration_server/occ_command.html#files-external-label"><span class="std std-ref">occ commands for managing external storage</span></a>.</p>
+<p>Also new in 9.0 is an option for the Nextcloud admin to enable or disable sharing
+on individual external mountpoints (see
+<a class="reference internal" href="#external-storage-mount-options-label"><span class="std std-ref">Mount Options</span></a>). Sharing on such mountpoints is
+disabled by default.</p>
+<div class="section" id="enabling-external-storage-support">
+<h2>Enabling External Storage Support<a class="headerlink" href="#enabling-external-storage-support" title="Permalink to this headline">¶</a></h2>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Enabling this app will disable the <strong>Stay logged in</strong> checkbox on the login page.</p>
+</div>
+<p>The External storage support application is enabled on your Apps page.</p>
+<div class="figure">
+<img alt="Enable external storage on your Apps page." src="../_images/enable-app.png" />
+</div>
+</div>
+<div class="section" id="storage-configuration">
+<h2>Storage Configuration<a class="headerlink" href="#storage-configuration" title="Permalink to this headline">¶</a></h2>
+<p>To create a new external storage mount, select an available backend from the
+dropdown <strong>Add storage</strong>. Each backend has different required options, which
+are configured in the configuration fields.</p>
+<div class="figure">
+<img alt="../_images/add_storage.png" src="../_images/add_storage.png" />
+</div>
+<p>Each backend may also accept multiple authentication methods. These are selected
+with the dropdown under <strong>Authentication</strong>. Different backends support different
+authentication mechanisms; some specific to the backend, others are more
+generic. See <a class="reference internal" href="external_storage/auth_mechanisms.html"><span class="doc">External Storage Authentication mechanisms</span></a> for more detailed
+information.</p>
+<p>When you select an authentication mechanism, the configuration fields change as
+appropriate for the mechanism. The SFTP backend, for one example, supports
+<strong>username and password</strong>, <strong>Log-in credentials, save in session</strong>, and <strong>RSA
+public key</strong>.</p>
+<div class="figure">
+<img alt="An SFTP configuration example." src="../_images/auth_mechanism.png" />
+</div>
+<p>Required fields are marked with a red border. When all required fields are
+filled, the storage is automatically saved. A green dot next to the storage row
+indicates the storage is ready for use. A red or yellow icon indicates
+that Nextcloud could not connect to the external storage, so you need to
+re-check your configuration and network availability.</p>
+<p>If there is an error on the storage, it will be marked as unavailable for ten
+minutes. To re-check it, click the colored icon or reload your Admin page.</p>
+</div>
+<div class="section" id="user-and-group-permissions">
+<h2>User and Group Permissions<a class="headerlink" href="#user-and-group-permissions" title="Permalink to this headline">¶</a></h2>
+<p>A storage configured in a user&#8217;s Personal settings is available only to the user
+that created it. A storage configured in the Admin settings is available to
+all users by default, and it can be restricted to specific users and groups in
+the <strong>Available for</strong> field.</p>
+<div class="figure">
+<img alt="User and groups selector" src="../_images/applicable.png" />
+</div>
+</div>
+<div class="section" id="mount-options">
+<span id="external-storage-mount-options-label"></span><h2>Mount Options<a class="headerlink" href="#mount-options" title="Permalink to this headline">¶</a></h2>
+<p>Hover your cursor to the right of any storage configuration to expose
+the settings button and trashcan. Click the trashcan to delete the
+mountpoint. The settings button allows you to configure each storage mount
+individually with the following options:</p>
+<ul class="simple">
+<li>Encryption</li>
+<li>Previews</li>
+<li>Enable Sharing</li>
+<li>Filesystem check frequency (Never, Once per direct access)</li>
+</ul>
+<p>The <strong>Encryption</strong> checkbox is visible only when the Encryption app is enabled.</p>
+<p><strong>Enable Sharing</strong> allows the Nextcloud admin to enable or disable sharing on individual mountpoints.
+When sharing is disabled the shares are retained internally, so that you can re-enable sharing
+and the previous shares become available again. Sharing is disabled by default.</p>
+<div class="figure">
+<img alt="Additional mount options exposed on mouseover." src="../_images/mount_options.png" />
+</div>
+</div>
+<div class="section" id="using-self-signed-certificates">
+<h2>Using Self-Signed Certificates<a class="headerlink" href="#using-self-signed-certificates" title="Permalink to this headline">¶</a></h2>
+<p>When using self-signed certificates for external storage mounts the certificate
+must be imported into the personal settings of the user. Please refer to
+<a class="reference external" href="http://ownclouden.blogspot.de/2014/11/owncloud-https-external-mount.html">Nextcloud HTTPS External Mount</a>
+for more information.</p>
+</div>
+<div class="section" id="available-storage-backends">
+<h2>Available storage backends<a class="headerlink" href="#available-storage-backends" title="Permalink to this headline">¶</a></h2>
+<p>The following backends are provided by the external storages app. Other apps
+may provide their own backends, which are not listed here.</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="external_storage/amazons3.html">Amazon S3</a></li>
+<li class="toctree-l1"><a class="reference internal" href="external_storage/dropbox.html">Dropbox</a></li>
+<li class="toctree-l1"><a class="reference internal" href="external_storage/ftp.html">FTP/FTPS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="external_storage/google.html">Google Drive</a></li>
+<li class="toctree-l1"><a class="reference internal" href="external_storage/local.html">Local</a></li>
+<li class="toctree-l1"><a class="reference internal" href="external_storage/nextcloud.html">Nextcloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="external_storage/openstack.html">OpenStack Object Storage</a></li>
+<li class="toctree-l1"><a class="reference internal" href="external_storage/sftp.html">SFTP</a></li>
+<li class="toctree-l1"><a class="reference internal" href="external_storage/smb.html">SMB/CIFS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="external_storage/webdav.html">WebDAV</a></li>
+</ul>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">A non-blocking or correctly configured SELinux setup is needed
+for these backends to work. Please refer to the <a class="reference internal" href="../installation/selinux_configuration.html#selinux-config-label"><span class="std std-ref">SELinux Configuration</span></a>.</p>
+</div>
+</div>
+<div class="section" id="allow-users-to-mount-external-storage">
+<h2>Allow Users to Mount External Storage<a class="headerlink" href="#allow-users-to-mount-external-storage" title="Permalink to this headline">¶</a></h2>
+<p>Check <strong>Enable User External Storage</strong> to allow your users to mount their own
+external storage services, and check the backends you want to allow. Beware, as
+this allows a user to make potentially arbitrary connections to other services
+on your network!</p>
+<div class="figure">
+<img alt="Checkboxes to allow users to mount external storage services." src="../_images/user_mounts.png" />
+</div>
+</div>
+<div class="section" id="adding-files-to-external-storages">
+<h2>Adding Files to External Storages<a class="headerlink" href="#adding-files-to-external-storages" title="Permalink to this headline">¶</a></h2>
+<p>We recommend configuring the background job <strong>Webcron</strong> or
+<strong>Cron</strong> (see <a class="reference internal" href="../configuration_server/background_jobs_configuration.html"><span class="doc">Defining Background Jobs</span></a>)
+to enable Nextcloud to automatically detect files added to your external
+storages.</p>
+<p>Nextcloud may not always be able to find out what has been
+changed remotely (files changed without going through Nextcloud), especially
+when it&#8217;s very deep in the folder hierarchy of the external storage.</p>
+<p>You might need to setup a cron job that runs <code class="docutils literal"><span class="pre">sudo</span> <span class="pre">-u</span> <span class="pre">www-data</span> <span class="pre">php</span> <span class="pre">occ</span> <span class="pre">files:scan</span> <span class="pre">--all</span></code>
+(or replace &#8220;&#8211;all&#8221; with the user name, see also <a class="reference internal" href="../configuration_server/occ_command.html"><span class="doc">Using the occ Command</span></a>)
+to trigger a rescan of the user&#8217;s files periodically (for example every 15 minutes), which includes
+the mounted external storage.</p>
+</div>
+</div>
+
+
+            
+<ul class="prevnext-title list-unstyled list-inline">
+  <li class="prev">
+    <a href="default_files_configuration.html" title="Previous Chapter: Providing Default Files"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; Providing Def...</span>
+    </a>
+  </li>
+  <li class="next">
+    <a href="external_storage/amazons3.html" title="Next Chapter: Amazon S3"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">Amazon S3 &raquo;</span>
+    </a>
+  </li>
+</ul>
+					</div>
+				</div>
+			</div>
+  </main>  
+  </div>
+</div>
+<div class="container">
+<div class="row">
+    <div class="col-lg-12 footer-social-icons">
+      <p class="text-center"><a target="_blank" href="https://plus.google.com/104036748063781940910/about"><img width=50 src="../_static/img/social/googleplus.svg" title="Follow us on Google Plus!" alt="Follow us on Google Plus!"></img></a>
+      <a target="_blank" href="https://www.facebook.com/Nextclouders"><img width=50 src="../_static/img/social/facebook.svg" title="Like our facebook page!" alt="Like our facebook page!"></img></a>
+      <a target="_blank" href="https://twitter.com/Nextclouders"><img width=50 src="../_static/img/social/twitter.svg" title="Subscribe to our twitter channel!" alt="Subscribe to our twitter channel!"></img></a>
+      <a target="_blank" href="https://nextcloud.com/blogfeed"><img class="img-circle" width=50 src="../_static/img/social/rss.svg" title="Subscribe to our news feed!" alt="Subscribe to our news feed!"></img></a>
+      <a target="_blank" href="https://newsletter.nextcloud.com/"><img class="img-circle" width=50 src="../_static/img/social/mail.svg"  title="Subscribe to our newsletter!" alt="Subscribe to our newsletter!"></img></a></p>
+    </div>
+    <div class="text-center">
+      <p>All documentation licensed under the <a href="https://creativecommons.org/licenses/by/3.0/us/">Creative Commons Attribution 3.0 Unported license</a>.</p>
+      <p><a href="https://github.com/nextcloud/documentation/graphs/contributors">See who contributed to our documentation/credits</a>.</p>
+    </div>
+</div>
+</div>
+<footer class="content-info" role="contentinfo">
+<div class="container">
+   <div class="row">
+     <div class="col-sm-2 col-sm-offset-1">
+        <div class="footer-nav">
+          <h4>About Nextcloud</h4>
+          <ul id="menu-about" class="menu">
+            <li><a href="https://nextcloud.com/about/">About us</a></li>
+            <li><a href="https://nextcloud.com/contact/">Contact us</a></li>
+            <li><a href="https://nextcloud.com/press/">Press</a></li>
+            <li><a href="https://nextcloud.com/privacy/">Privacy policy</a></li>
+          </ul>
+        </div>
+     </div>
+     <div class="col-sm-2 col-sm-offset-2">
+     </div>
+     <div class="col-sm-2 col-sm-offset-2">
+        <div class="footer-nav">
+          <h4>Interact</h4>
+          <ul id="menu-interact" class="menu">
+            <li class="menu-irc-channel"><a href="https://webchat.freenode.net/?channels=nextcloud">IRC Channel</a></li>
+            <li class="menu-forums"><a href="https://help.nextcloud.com/">Forums</a></li>
+          </ul>
+        </div>
+     </div>
+   </div>
+   <div class="row">
+      <div class="col-lg-12 footer-text">
+        <p>
+              &copy; Copyright 2012-2017, The Nextcloud developers.  <small><a href="https://nextcloud.com/impressum">Legal Notice</a></small><br/>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+  </body>
+</html>

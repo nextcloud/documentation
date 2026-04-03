@@ -1,0 +1,166 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+EventMerger
+===========
+
+
+.. php:namespace:: OC\Activity
+
+.. php:class:: EventMerger
+
+
+	:Source:
+		`lib/private/Activity/EventMerger.php#32 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/EventMerger.php#L32>`_
+	
+	:Implements:
+		:php:interface:`OCP\\Activity\\IEventMerger` 
+	
+
+Properties
+----------
+
+.. php:attr:: protected static l10n
+
+	:Source:
+		`lib/private/Activity/EventMerger.php#35 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/EventMerger.php#L35>`_
+	
+	:Type: :any:`\\OCP\\IL10N <OCP\\IL10N>` 
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $l10n)
+	
+		:Source:
+			`lib/private/Activity/EventMerger.php#40 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/EventMerger.php#L40>`_
+		
+		
+		:Parameters:
+			* **$l10n** (:any:`OCP\\IL10N <OCP\\IL10N>`)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public mergeEvents( $mergeParameter, $event, $previousEvent=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Combines two events when possible to have grouping:
+			
+			| Example1: Two events with subject \'\{user\} created \{file\}\' and
+			| $mergeParameter file with different file and same user will be merged
+			| to \'\{user\} created \{file1\} and \{file2\}\' and the childEvent on the return
+			| will be set, if the events have been merged\.
+			| 
+			| Example2: Two events with subject \'\{user\} created \{file\}\' and
+			| $mergeParameter file with same file and same user will be merged to
+			| \'\{user\} created \{file1\}\' and the childEvent on the return will be set, if
+			| the events have been merged\.
+			| 
+			| The following requirements have to be met, in order to be merged:
+			| \- Both events need to have the same \`getApp\(\)\`
+			| \- Both events must not have a message \`getMessage\(\)\`
+			| \- Both events need to have the same subject \`getSubject\(\)\`
+			| \- Both events need to have the same object type \`getObjectType\(\)\`
+			| \- The time difference between both events must not be bigger then 3 hours
+			| \- Only up to 5 events can be merged\.
+			| \- All parameters apart from such starting with $mergeParameter must be
+			|   the same for both events\.
+			
+		
+		:Source:
+			`lib/private/Activity/EventMerger.php#72 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/EventMerger.php#L72>`_
+		
+		
+		:Parameters:
+			* **$mergeParameter** (string)  
+			* **$event** (:any:`OCP\\Activity\\IEvent <OCP\\Activity\\IEvent>`)  
+			* **$previousEvent** (:any:`OCP\\Activity\\IEvent <OCP\\Activity\\IEvent>` | null)  
+
+		
+		:Returns: :any:`\\OCP\\Activity\\IEvent <OCP\\Activity\\IEvent>` 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected combineParameters( $mergeParameter, $event, $previousEvent)
+	
+		:Source:
+			`lib/private/Activity/EventMerger.php#132 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/EventMerger.php#L132>`_
+		
+		
+		:Parameters:
+			* **$mergeParameter** (string)  
+			* **$event** (:any:`OCP\\Activity\\IEvent <OCP\\Activity\\IEvent>`)  
+			* **$previousEvent** (:any:`OCP\\Activity\\IEvent <OCP\\Activity\\IEvent>`)  
+
+		
+		:Returns: array 
+		:Throws: :any:`\\UnexpectedValueException <UnexpectedValueException>` 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected checkParameterAlreadyExits( $parameters, $mergeParameter, $parameter)
+	
+		:Source:
+			`lib/private/Activity/EventMerger.php#184 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/EventMerger.php#L184>`_
+		
+		
+		:Parameters:
+			* **$parameters** (array[])  
+			* **$mergeParameter** (string)  
+			* **$parameter** (array)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected getExtendedSubject( $subject, $parameter, $counter)
+	
+		:Source:
+			`lib/private/Activity/EventMerger.php#201 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/EventMerger.php#L201>`_
+		
+		
+		:Parameters:
+			* **$subject** (string)  
+			* **$parameter** (string)  
+			* **$counter** (int)  
+
+		
+		:Returns: mixed 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected generateParsedSubject( $subject, $parameters)
+	
+		:Source:
+			`lib/private/Activity/EventMerger.php#246 <https://github.com/nextcloud/server/blob/stable13/lib/private/Activity/EventMerger.php#L246>`_
+		
+		
+		:Parameters:
+			* **$subject** (string)  
+			* **$parameters** (array[])  
+
+		
+		:Returns: string 
+	
+	
+

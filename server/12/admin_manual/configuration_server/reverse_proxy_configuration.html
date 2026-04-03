@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Reverse Proxy Configuration &#8212; Nextcloud 12 Server Administration Manual 12 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/main.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '12',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.1.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Using Third Party PHP Components" href="thirdparty_php_configuration.html" />
+    <link rel="prev" title="Hardening and Security Guidance" href="harden_server.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#1d2d44">
+<link rel="shortcut icon" href="https://nextcloud.com/wp-content/themes/next/assets/img/common/favicon.png" />
+<link rel="apple-touch-icon-precomposed" href="https://nextcloud.com/wp-content/themes/next/assets/img/common/favicon.png" />
+<!-- Piwik -->
+<script type="text/javascript">
+    var _paq = _paq || [];
+    _paq.push(['trackPageView']);
+    _paq.push(['enableLinkTracking']);
+    (function() {
+        var u="//stats.nextcloud.com/";
+        _paq.push(['setTrackerUrl', u+'piwik.php']);
+        _paq.push(['setSiteId', 3]);
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+        g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+    })();
+</script>
+<noscript><p><img src="//stats.nextcloud.com/piwik.php?idsite=3" style="border:0;" alt="" /></p></noscript>
+<!-- End Piwik Code -->
+
+  </head>
+  <body role="document">
+
+<header class="banner navbar navbar-default navbar-static-top" role="banner">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+       <a class="brand" href="http://nextcloud.com/" rel="home" title="Nextcloud.com"><img class="logo" src="../_static/img/logo.svg" itemprop="logo"></a>
+    </div>
+
+    <nav class="collapse navbar-collapse" role="navigation">
+      <ul id="menu-header" class="nav navbar-nav">
+          <li><a target="_blank" href="https://demo.nextcloud.com">Demo</a></li>
+          <li><a href="https://nextcloud.com/news/">News</a></li>
+          <li><a href="https://nextcloud.com/features/">Features</a></li>
+          <li><a href="https://nextcloud.com/about/">About us</a></li>
+          <li><a href="https://nextcloud.com/contribute/">Get involved</a></li>
+          <li><a href="https://nextcloud.com/support/">Support</a></li>
+          <li><a href="https://nextcloud.com/enterprise/">Enterprise</a></li>
+          <li class="menu-install"><a href="https://nextcloud.com/install/">Download</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+<div class="container" style="background-color: #E6C4C2;color: #b10000;border: #b10000 2px solid;border-right: none;border-left: none;padding: 15px 10px;">You are reading an outdated version of this documentation. Please check out the <a href="https://docs.nextcloud.com/server/stable/admin_manual/" style="
+color: rgb(177,0,0);text-decoration: underline;">latest version</a> of the server administration manual.</div>
+
+
+
+<div class="wrap container not-front">
+  <div class="content row">
+  <main class="main">
+    <div class="row page-content-header">
+      <div class="col-md-6">
+        <h1><a href="../contents.html">Nextcloud 12 Server Administration Manual</a></h1>
+      </div>
+      <div class="col-md-5 col-md-offset-1">
+      
+        <form class="headersearch" style="margin: 16px 0;" action="../search.html" method="get">
+        <input type="text" value="" name="q" id="q" class="form-control" /> 
+        <button  class="btn btn-default" type="submit" id="searchsubmit">Search</button>
+        </form>
+      
+      </div>
+    </div>
+    
+			<div class="row">
+				<div class="col-md-3">
+					<div class="sidebar">
+							<div class="menu-support-container">
+								<ul id="menu-support" class="menu">
+									<ul>
+										
+<li><a href="../contents.html">Table of Contents</a></li>
+									</ul>
+                  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Server Configuration</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="security_setup_warnings.html">Warnings on Admin Page</a></li>
+<li class="toctree-l2"><a class="reference internal" href="occ_command.html">Using the occ Command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="activity_configuration.html">Configuring the Activity App</a></li>
+<li class="toctree-l2"><a class="reference internal" href="caching_configuration.html">Configuring Memory Caching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="background_jobs_configuration.html">Defining Background Jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_sample_php_parameters.html">Config.php Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="email_configuration.html">Email Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="external_sites.html">Linking External Sites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="language_configuration.html">Language Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logging_configuration.html">Logging Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="harden_server.html">Hardening and Security Guidance</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Reverse Proxy Configuration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#defining-trusted-proxies">Defining Trusted Proxies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#overwrite-parameters">Overwrite Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#example">Example</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="thirdparty_php_configuration.html">Using Third Party PHP Components</a></li>
+<li class="toctree-l2"><a class="reference internal" href="automatic_configuration.html">Automatic Configuration Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="server_tuning.html">Server Tuning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="theming.html">Theming</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_user/index.html">User Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_files/index.html">File Sharing and Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../file_workflows/index.html">File workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_database/index.html">Database Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_mimetypes/index.html">Mimetypes Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../maintenance/index.html">Maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../issues/index.html">Issues and Troubleshooting</a></li>
+</ul>
+
+								</ul>
+							</div>
+					</div>
+				</div>
+        
+
+				<div class="col-md-9">
+					<div class="page-content">
+            
+<ul class="prevnext-title list-unstyled list-inline">
+  <li class="prev">
+    <a href="harden_server.html" title="Previous Chapter: Hardening and Security Guidance"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; Hardening and...</span>
+    </a>
+  </li>
+  <li class="next">
+    <a href="thirdparty_php_configuration.html" title="Next Chapter: Using Third Party PHP Components"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">Using Third P... &raquo;</span>
+    </a>
+  </li>
+</ul>
+						
+  <div class="section" id="reverse-proxy-configuration">
+<h1>Reverse Proxy Configuration<a class="headerlink" href="#reverse-proxy-configuration" title="Permalink to this headline">¶</a></h1>
+<p>Nextcloud can be run through a reverse proxy, which can cache static assets such
+as images, CSS or JS files, move the load of handling HTTPS to a different
+server or load balance between multiple servers.</p>
+<div class="section" id="defining-trusted-proxies">
+<h2>Defining Trusted Proxies<a class="headerlink" href="#defining-trusted-proxies" title="Permalink to this headline">¶</a></h2>
+<p>For security, you must explicitly define the proxy servers that Nextcloud is to
+trust. Connections from trusted proxies will be specially treated to get the
+real client information, for use in access control and logging. Parameters are
+configured in <code class="file docutils literal"><span class="pre">config/config.php</span></code></p>
+<p>Set the <strong>trusted_proxies</strong> parameter as an array of IP address to define the
+servers Nextcloud should trust as proxies. This parameter provides protection
+against client spoofing, and you should secure those servers as you would your
+Nextcloud server.</p>
+<p>A reverse proxy can define HTTP headers with the original client IP address,
+and Nextcloud can use those headers to retrieve that IP address. Nextcloud uses
+the de-facto standard header &#8216;X-Forwarded-For&#8217; by default, but this can be
+configured with the <strong>forwarded_for_headers</strong> parameter. This parameter is an
+array of PHP lookup strings, for example &#8216;X-Forwarded-For&#8217; becomes
+&#8216;HTTP_X_FORWARDED_FOR&#8217;. Incorrectly setting this parameter may allow clients
+to spoof their IP address as visible to Nextcloud, even when going through the
+trusted proxy! The correct value for this parameter is dependent on your
+proxy software.</p>
+</div>
+<div class="section" id="overwrite-parameters">
+<h2>Overwrite Parameters<a class="headerlink" href="#overwrite-parameters" title="Permalink to this headline">¶</a></h2>
+<p>The automatic hostname, protocol or webroot detection of Nextcloud can fail in
+certain reverse proxy situations. This configuration allows the automatic detection
+to be manually overridden.</p>
+<p>If Nextcloud fails to automatically detect the hostname, protocol or webroot
+you can use the <strong>overwrite</strong> parameters inside the <code class="file docutils literal"><span class="pre">config/config.php</span></code>.
+The <strong>overwritehost</strong> parameter is used to set the hostname of the proxy. You
+can also specify a port. The <strong>overwriteprotocol</strong> parameter is used to set the
+protocol of the proxy. You can choose between the two options <strong>http</strong> and
+<strong>https</strong>. The <strong>overwritewebroot</strong> parameter is used to set the absolute web
+path of the proxy to the Nextcloud folder. When you want to keep the automatic
+detection of one of the three parameters you can leave the value empty or don&#8217;t
+set it. The <strong>overwritecondaddr</strong> parameter is used to overwrite the values
+dependent on the remote address. The value must be a <strong>regular expression</strong> of
+the IP addresses of the proxy. This is useful when you use a reverse SSL proxy
+only for https access and you want to use the automatic detection for http
+access.</p>
+</div>
+<div class="section" id="example">
+<h2>Example<a class="headerlink" href="#example" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="multiple-domains-reverse-ssl-proxy">
+<h3>Multiple Domains Reverse SSL Proxy<a class="headerlink" href="#multiple-domains-reverse-ssl-proxy" title="Permalink to this headline">¶</a></h3>
+<p>If you want to access your Nextcloud installation <strong>http://domain.tld/nextcloud</strong>
+via a multiple domains reverse SSL proxy
+<strong>https://ssl-proxy.tld/domain.tld/nextcloud</strong> with the IP address <strong>10.0.0.1</strong>
+you can set the following parameters inside the <code class="file docutils literal"><span class="pre">config/config.php</span></code>.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>&lt;?php
+$CONFIG = array (
+  &quot;trusted_proxies&quot;   =&gt; [&#39;10.0.0.1&#39;],
+  &quot;overwritehost&quot;     =&gt; &quot;ssl-proxy.tld&quot;,
+  &quot;overwriteprotocol&quot; =&gt; &quot;https&quot;,
+  &quot;overwritewebroot&quot;  =&gt; &quot;/domain.tld/nextcloud&quot;,
+  &quot;overwritecondaddr&quot; =&gt; &quot;^10\.0\.0\.1$&quot;,
+);
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If you want to use the SSL proxy during installation you have to
+create the <code class="file docutils literal"><span class="pre">config/config.php</span></code> otherwise you have to extend the existing
+<strong>$CONFIG</strong> array.</p>
+</div>
+</div>
+</div>
+</div>
+
+
+            
+<ul class="prevnext-title list-unstyled list-inline">
+  <li class="prev">
+    <a href="harden_server.html" title="Previous Chapter: Hardening and Security Guidance"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; Hardening and...</span>
+    </a>
+  </li>
+  <li class="next">
+    <a href="thirdparty_php_configuration.html" title="Next Chapter: Using Third Party PHP Components"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">Using Third P... &raquo;</span>
+    </a>
+  </li>
+</ul>
+					</div>
+				</div>
+			</div>
+  </main>  
+  </div>
+</div>
+<div class="container">
+<div class="row">
+    <div class="col-lg-12 footer-social-icons">
+      <p class="text-center"><a target="_blank" href="https://plus.google.com/104036748063781940910/about"><img width=50 src="../_static/img/social/googleplus.svg" title="Follow us on Google Plus!" alt="Follow us on Google Plus!"></img></a>
+      <a target="_blank" href="https://www.facebook.com/Nextclouders"><img width=50 src="../_static/img/social/facebook.svg" title="Like our facebook page!" alt="Like our facebook page!"></img></a>
+      <a target="_blank" href="https://twitter.com/Nextclouders"><img width=50 src="../_static/img/social/twitter.svg" title="Subscribe to our twitter channel!" alt="Subscribe to our twitter channel!"></img></a>
+      <a target="_blank" href="https://nextcloud.com/blogfeed"><img class="img-circle" width=50 src="../_static/img/social/rss.svg" title="Subscribe to our news feed!" alt="Subscribe to our news feed!"></img></a>
+      <a target="_blank" href="https://newsletter.nextcloud.com/"><img class="img-circle" width=50 src="../_static/img/social/mail.svg"  title="Subscribe to our newsletter!" alt="Subscribe to our newsletter!"></img></a></p>
+    </div>
+    <div class="text-center">
+      <p>All documentation licensed under the <a href="https://creativecommons.org/licenses/by/3.0/us/">Creative Commons Attribution 3.0 Unported license</a>.</p>
+      <p><a href="https://github.com/nextcloud/documentation/graphs/contributors">See who contributed to our documentation/credits</a>.</p>
+    </div>
+</div>
+</div>
+<footer class="content-info" role="contentinfo">
+<div class="container">
+   <div class="row">
+     <div class="col-sm-2 col-sm-offset-1">
+        <div class="footer-nav">
+          <h4>About Nextcloud</h4>
+          <ul id="menu-about" class="menu">
+            <li><a href="https://nextcloud.com/about/">About us</a></li>
+            <li><a href="https://nextcloud.com/contact/">Contact us</a></li>
+            <li><a href="https://nextcloud.com/press/">Press</a></li>
+            <li><a href="https://nextcloud.com/privacy/">Privacy policy</a></li>
+          </ul>
+        </div>
+     </div>
+     <div class="col-sm-2 col-sm-offset-2">
+     </div>
+     <div class="col-sm-2 col-sm-offset-2">
+        <div class="footer-nav">
+          <h4>Interact</h4>
+          <ul id="menu-interact" class="menu">
+            <li class="menu-irc-channel"><a href="https://webchat.freenode.net/?channels=nextcloud">IRC Channel</a></li>
+            <li class="menu-forums"><a href="https://help.nextcloud.com/">Forums</a></li>
+          </ul>
+        </div>
+     </div>
+   </div>
+   <div class="row">
+      <div class="col-lg-12 footer-text">
+        <p>
+              &copy; Copyright 2012-2017, The Nextcloud developers.  <small><a href="https://nextcloud.com/impressum">Legal Notice</a></small><br/>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+  </body>
+</html>

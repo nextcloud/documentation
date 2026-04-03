@@ -1,0 +1,752 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Coding style &amp; general guidelines &mdash; Nextcloud 14 Developer Manual 14 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'14',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Performance considerations" href="performance.html" />
+    <link rel="prev" title="Security guidelines" href="security.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">General contributor guidelines</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="code-of-conduct.html">Community code of conduct</a></li>
+<li class="toctree-l2"><a class="reference internal" href="devenv.html">Development environment</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security.html">Security guidelines</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Coding style &amp; general guidelines</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#general">General</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#labels">Labels</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#coding">Coding</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#license-headers">License headers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#user-interface">User interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#php">PHP</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#comments">Comments</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#objects-functions-arrays-variables">Objects, functions, arrays &amp; variables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#operators">Operators</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#control-structures">Control structures</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#unit-tests">Unit tests</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#javascript">JavaScript</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#objects-inheritance">Objects &amp; inheritance</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#objects-functions-variables">Objects, functions &amp; variables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id1">Operators</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">Control structures</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#css">CSS</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="performance.html">Performance considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging.html">Debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backporting.html">Backporting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../app/changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/startapp.html">Create an app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/init.html">Navigation and pre-app configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/info.html">App metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/classloader.html">Classloader</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/request.html">Request lifecycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/routes.html">Routing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/middleware.html">Middleware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/container.html">Container</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/controllers.html">Controllers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/api.html">RESTful API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/templates.html">Templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/js.html">JavaScript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/css.html">CSS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/l10n.html">Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/theming.html">Theming support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/schema.html">Database schema</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/database.html">Database access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/filesystem.html">Filesystem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/appdata.html">AppData</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/users.html">User management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/two-factor-provider.html">Two-factor providers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/hooks.html">Hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/backgroundjobs.html">Background jobs (Cron)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/settings.html">Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/logging.html">Logging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/migrations.html">Migrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/repair.html">Repair steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/publishing.html">App store publishing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/code_signing.html">Code signing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../design/index.html">Design guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../android_library/index.html">Android application development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client_apis/index.html">Client APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../core/index.html">Core development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bugtracker/index.html">Bugtracker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../commun/index.html">Help and communication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API Documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Nextcloud 14 Developer Manual</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">General contributor guidelines</a> &raquo;</li>
+        
+      <li>Coding style &amp; general guidelines</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/nextcloud/documentation/edit/stable14/developer_manual/general/codingguidelines.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="coding-style-general-guidelines">
+<h1>Coding style &amp; general guidelines<a class="headerlink" href="#coding-style-general-guidelines" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="general">
+<h2>General<a class="headerlink" href="#general" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Ideally, discuss your plans on the <a class="reference external" href="https://help.nextcloud.com">forums</a> to see if others want to work with you on it</li>
+<li>We use <a class="reference external" href="https://github.com/nextcloud">GitHub</a>, please get an account there and clone the repositories you want to work on</li>
+<li>Fixes go directly to master, nevertheless they need to be tested thoroughly.</li>
+<li>New features are always developed in a branch and only merged to master once they are fully done.</li>
+<li>Software should work. We only put features into master when they are complete. It&#8217;s better to not have a feature instead of having one that works poorly.</li>
+<li>It is best to start working based on an issue - create one if there is none. You describe what you want to do, ask feedback on the direction you take it and take it from there.</li>
+<li>When you are finished, use the merge request function on GitHub to create a pull request. The other developers will look at it and give you feedback. You can signify that your PR is ready for review by adding the label &#8220;5 - ready for review&#8221; to it. You can also post your merge request to the mailing list to let people know. See <a class="reference external" href="../bugtracker/codereviews.html">the code review page for more information</a></li>
+<li>It is key to keep changes separate and small. The bigger and more hairy a PR grows, the harder it is to get it in. So split things up where you can in smaller changes - if you need a small improvement like a API addition for a big feature addition, get it in first rather than adding it to the big piece of work!</li>
+<li>Decisions are made by consensus. We strive for making the best technical decisions and as nobody can know everything, we collaborate. That means a first negative comment might not be the final word, neither is positive feedback an immediate GO. Nextcloud is built out of modular pieces (apps) and maintainers have a strong influence. In case of disagreement we consult other seasoned contributors.</li>
+</ul>
+</div>
+<div class="section" id="labels">
+<h2>Labels<a class="headerlink" href="#labels" title="Permalink to this headline">¶</a></h2>
+<p>We assign labels to issues and pull requests to make it easy to find them and to signal what needs to be done. Some of these are assigned by the developers, others by QA, bug triagers, project lead or maintainers and so on. It is not desired that users/reporters of bugs assign labels themselves, unless they are developers/contributors to Nextcloud.</p>
+<p>The most important labels and their meaning:</p>
+<ul class="simple">
+<li>#backport-request - the pull requests also needs to be applied to older Nextcloud versions</li>
+<li>#bug - this issue is a bug</li>
+<li>#enhancement - this issue is a feature request/idea for improvement of Nextcloud</li>
+<li>#design - this needs help from the design team or is a design-related issue/pull request</li>
+<li>#technical debt - this issue or PR is about <a class="reference external" href="http://en.wikipedia.org/wiki/Technical_debt">technical debt</a></li>
+<li>#good first issue - these are issues which are relatively easy to solve and ideal for people who want to learn how to code in Nextcloud</li>
+<li>#needs info - this issue needs further information from the reporter, see <a class="reference internal" href="../bugtracker/triaging.html"><span class="doc">Nextcloud bug triaging</span></a></li>
+<li>#high #medium #low signify how important the bug is.</li>
+<li>Tags showing the state of the issue or PR, numbered 0-4:<ul>
+<li>0. Needs triage - ready to start development on this</li>
+<li>1. to develop - ready to start development on this</li>
+<li>2. developing - development in progress</li>
+<li>3. to review - ready for review</li>
+<li>4. to release - reviewed PR that awaits unfreeze of a branch to get merged</li>
+</ul>
+</li>
+<li>Feature tags: #feature: something. These tags indicate the features across apps and components which are impacted by the issue or which the PR is related to</li>
+</ul>
+<p>If you want a label not in the list above, please first discuss on the mailing list.</p>
+</div>
+<div class="section" id="coding">
+<h2>Coding<a class="headerlink" href="#coding" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Maximum line-length of 80 characters</li>
+<li>Use tabs to indent</li>
+<li>A tab is 4 spaces wide</li>
+<li>Opening braces of blocks are on the same line as the definition</li>
+<li>Quotes: &#8216; for everything, &#8221; for HTML attributes (&lt;p class=&#8221;my_class&#8221;&gt;)</li>
+<li>End of Lines : Unix style (LF / &#8216;n&#8217;) only</li>
+<li>No global variables or functions</li>
+<li>Unit tests</li>
+<li>HTML should be HTML5 compliant</li>
+<li>Check these <a class="reference external" href="https://mailman.owncloud.org/pipermail/devel/2014-June/000262.html">database performance tips</a></li>
+<li>When you <code class="docutils literal"><span class="pre">git</span> <span class="pre">pull</span></code>, always <code class="docutils literal"><span class="pre">git</span> <span class="pre">pull</span> <span class="pre">--rebase</span></code> to avoid generating extra commits like: <em>merged master into master</em></li>
+</ul>
+</div>
+<div class="section" id="license-headers">
+<h2>License headers<a class="headerlink" href="#license-headers" title="Permalink to this headline">¶</a></h2>
+<p>Nextcloud is licensed under the <a class="reference external" href="https://www.gnu.org/licenses/agpl">GNU AGPLv3</a>. From June, 16 2016 on we switched to &#8220;GNU AGPLv3 or any later version&#8221; for better long-term maintainability. If you create a new file please use this header:</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="x">/**</span>
+<span class="x"> *</span>
+<span class="x"> * @copyright Copyright (c) &lt;year&gt;, &lt;your name&gt; (&lt;your email address&gt;)</span>
+<span class="x"> *</span>
+<span class="x"> * @license GNU AGPL version 3 or any later version</span>
+<span class="x"> *</span>
+<span class="x"> * This program is free software: you can redistribute it and/or modify</span>
+<span class="x"> * it under the terms of the GNU Affero General Public License as</span>
+<span class="x"> * published by the Free Software Foundation, either version 3 of the</span>
+<span class="x"> * License, or (at your option) any later version.</span>
+<span class="x"> *</span>
+<span class="x"> * This program is distributed in the hope that it will be useful,</span>
+<span class="x"> * but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="x"> * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<span class="x"> * GNU Affero General Public License for more details.</span>
+<span class="x"> *</span>
+<span class="x"> * You should have received a copy of the GNU Affero General Public License</span>
+<span class="x"> * along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</span>
+<span class="x"> *</span>
+<span class="x"> */</span>
+</pre></div>
+</div>
+<p>If you edit an existing file please add a copyright notice with your name, if you consider your changes substantial enough to claim copyright. As a rule if thumb, this is the case if you contributed more than seven lines of code.</p>
+</div>
+<div class="section" id="user-interface">
+<h2>User interface<a class="headerlink" href="#user-interface" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Software should get out of the way. Do things automatically instead of offering configuration options.</li>
+<li>Software should be easy to use. Show only the most important elements. Secondary elements only on hover or via Advanced function.</li>
+<li>User data is sacred. Provide undo instead of asking for confirmation - <a class="reference external" href="http://www.alistapart.com/articles/neveruseawarning/">which might be dismissed</a></li>
+<li>The state of the application should be clear. If something loads, provide feedback.</li>
+<li>Do not adapt broken concepts (for example design of desktop apps) just for the sake of consistency. We aim to provide a better interface, so let&#8217;s find out how to do that!</li>
+<li>Regularly reset your installation to see how the first-run experience is like. And improve it.</li>
+<li>Ideally do <a class="reference external" href="http://jancborchardt.net/usability-in-free-software">usability testing</a> to know how people use the software.</li>
+<li>For further UX principles, read <a class="reference external" href="http://uxmag.com/articles/quantifying-usability">Alex Faaborg from Mozilla</a>.</li>
+</ul>
+</div>
+<div class="section" id="php">
+<h2>PHP<a class="headerlink" href="#php" title="Permalink to this headline">¶</a></h2>
+<p>The Nextcloud coding style guide is based on <a class="reference external" href="http://pear.php.net/manual/en/standards.php">PEAR Coding Standards</a>.</p>
+<p>Always use:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>&lt;?php
+</pre></div>
+</div>
+<p>at the start of your php code. The final closing:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>?&gt;
+</pre></div>
+</div>
+<p>should not be used at the end of the file due to the <a class="reference external" href="http://stackoverflow.com/questions/4410704/php-closing-tag">possible issue of sending white spaces</a>.</p>
+<div class="section" id="comments">
+<h3>Comments<a class="headerlink" href="#comments" title="Permalink to this headline">¶</a></h3>
+<p>All API methods need to be marked with <a class="reference external" href="http://en.wikipedia.org/wiki/PHPDoc">PHPDoc</a> markup. An example would be:</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+
+<span class="sd">/**</span>
+<span class="sd"> * Description what method does</span>
+<span class="sd"> * @param Controller $controller the controller that will be transformed</span>
+<span class="sd"> * @param API $api an instance of the API class</span>
+<span class="sd"> * @throws APIException if the api is broken</span>
+<span class="sd"> * @since 4.5</span>
+<span class="sd"> * @return string a name of a user</span>
+<span class="sd"> */</span>
+<span class="k">public</span> <span class="k">function</span> <span class="nf">myMethod</span><span class="p">(</span><span class="nx">Controller</span> <span class="nv">$controller</span><span class="p">,</span> <span class="nx">API</span> <span class="nv">$api</span><span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// ...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="objects-functions-arrays-variables">
+<h3>Objects, functions, arrays &amp; variables<a class="headerlink" href="#objects-functions-arrays-variables" title="Permalink to this headline">¶</a></h3>
+<p>Use <em>UpperCamelCase</em> for Objects, <em>lowerCamelCase</em> for functions and variables. If you set
+a default function/method parameter, do not use spaces. Do not prepend private
+class members with underscores.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="kr">class</span> <span class="nx">MyClass</span> <span class="p">{</span>
+
+<span class="p">}</span>
+
+<span class="kd">function</span> <span class="nx">myFunction</span><span class="p">(</span><span class="nx">$default</span><span class="o">=</span><span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+
+<span class="p">}</span>
+
+<span class="nx">$myVariable</span> <span class="o">=</span> <span class="s1">&#39;blue&#39;</span><span class="p">;</span>
+
+<span class="nx">$someArray</span> <span class="o">=</span> <span class="nx">array</span><span class="p">(</span>
+    <span class="s1">&#39;foo&#39;</span>  <span class="p">=&gt;</span> <span class="s1">&#39;bar&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;spam&#39;</span> <span class="p">=&gt;</span> <span class="s1">&#39;ham&#39;</span><span class="p">,</span>
+<span class="p">);</span>
+
+<span class="o">?&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="operators">
+<h3>Operators<a class="headerlink" href="#operators" title="Permalink to this headline">¶</a></h3>
+<p>Use <strong>===</strong> and <strong>!==</strong> instead of <strong>==</strong> and <strong>!=</strong>.</p>
+<p>Here&#8217;s why:</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+
+<span class="nb">var_dump</span><span class="p">(</span><span class="mi">0</span> <span class="o">==</span> <span class="s2">&quot;a&quot;</span><span class="p">);</span> <span class="c1">// 0 == 0 -&gt; true</span>
+<span class="nb">var_dump</span><span class="p">(</span><span class="s2">&quot;1&quot;</span> <span class="o">==</span> <span class="s2">&quot;01&quot;</span><span class="p">);</span> <span class="c1">// 1 == 1 -&gt; true</span>
+<span class="nb">var_dump</span><span class="p">(</span><span class="s2">&quot;10&quot;</span> <span class="o">==</span> <span class="s2">&quot;1e1&quot;</span><span class="p">);</span> <span class="c1">// 10 == 10 -&gt; true</span>
+<span class="nb">var_dump</span><span class="p">(</span><span class="mi">100</span> <span class="o">==</span> <span class="s2">&quot;1e2&quot;</span><span class="p">);</span> <span class="c1">// 100 == 100 -&gt; true</span>
+
+<span class="cp">?&gt;</span><span class="x"></span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="control-structures">
+<h3>Control structures<a class="headerlink" href="#control-structures" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Always use { } for one line ifs</li>
+<li>Split long ifs into multiple lines</li>
+<li>Always use break in switch statements and prevent a default block with warnings if it shouldn&#8217;t be accessed</li>
+</ul>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+
+<span class="c1">// single line if</span>
+<span class="k">if</span> <span class="p">(</span><span class="nv">$myVar</span> <span class="o">===</span> <span class="s1">&#39;hi&#39;</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$myVar</span> <span class="o">=</span> <span class="s1">&#39;ho&#39;</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="nv">$myVar</span> <span class="o">=</span> <span class="s1">&#39;bye&#39;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// long ifs</span>
+<span class="k">if</span> <span class="p">(</span>   <span class="nv">$something</span> <span class="o">===</span> <span class="s1">&#39;something&#39;</span>
+    <span class="o">||</span> <span class="nv">$condition2</span>
+    <span class="o">&amp;&amp;</span> <span class="nv">$condition3</span>
+<span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// your code</span>
+<span class="p">}</span>
+
+<span class="c1">// for loop</span>
+<span class="k">for</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&lt;</span> <span class="mi">4</span><span class="p">;</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// your code</span>
+<span class="p">}</span>
+
+<span class="k">switch</span> <span class="p">(</span><span class="nv">$condition</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">case</span> <span class="mi">1</span><span class="o">:</span>
+        <span class="c1">// action1</span>
+        <span class="k">break</span><span class="p">;</span>
+
+    <span class="k">case</span> <span class="mi">2</span><span class="o">:</span>
+        <span class="c1">// action2;</span>
+        <span class="k">break</span><span class="p">;</span>
+
+    <span class="k">default</span><span class="o">:</span>
+        <span class="c1">// defaultaction;</span>
+        <span class="k">break</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="cp">?&gt;</span><span class="x"></span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="unit-tests">
+<h3>Unit tests<a class="headerlink" href="#unit-tests" title="Permalink to this headline">¶</a></h3>
+<p>Unit tests must always extend the <code class="docutils literal"><span class="pre">\Test\TestCase</span></code> class, which takes care
+of cleaning up the installation after the test.</p>
+<p>If a test is run with multiple different values, a data provider must be used.
+The name of the data provider method must not start with <code class="docutils literal"><span class="pre">test</span></code> and must end
+with <code class="docutils literal"><span class="pre">Data</span></code>.</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="k">namespace</span> <span class="nx">Test</span><span class="p">;</span>
+<span class="k">class</span> <span class="nc">Dummy</span> <span class="k">extends</span> <span class="nx">\Test\TestCase</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">dummyData</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">array</span><span class="p">(</span>
+            <span class="k">array</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="k">true</span><span class="p">),</span>
+            <span class="k">array</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="k">false</span><span class="p">),</span>
+        <span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * @dataProvider dummyData</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">testDummy</span><span class="p">(</span><span class="nv">$input</span><span class="p">,</span> <span class="nv">$expected</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">assertEquals</span><span class="p">(</span><span class="nv">$expected</span><span class="p">,</span> <span class="nx">\Dummy</span><span class="o">::</span><span class="na">method</span><span class="p">(</span><span class="nv">$input</span><span class="p">));</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="javascript">
+<h2>JavaScript<a class="headerlink" href="#javascript" title="Permalink to this headline">¶</a></h2>
+<p>In general take a look at <a class="reference external" href="http://www.jslint.com">JSLint</a> without the whitespace rules.</p>
+<ul class="simple">
+<li>Use a <code class="file docutils literal"><span class="pre">js/main.js</span></code> or <code class="file docutils literal"><span class="pre">js/app.js</span></code> where your program is started</li>
+<li>Complete every statement with a <strong>;</strong></li>
+<li>Use <strong>var</strong> to limit variable to local scope</li>
+<li>To keep your code local, wrap everything in a self executing function. To access global objects or export things to the global namespace, pass all global objects to the self executing function.</li>
+<li>Use JavaScript strict mode</li>
+<li>Use a global namespace object where you bind publicly used functions and objects to</li>
+</ul>
+<p><strong>DO</strong>:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="c1">// set up namespace for sharing across multiple files</span>
+<span class="kd">var</span> <span class="nx">MyApp</span> <span class="o">=</span> <span class="nx">MyApp</span> <span class="o">||</span> <span class="p">{};</span>
+
+<span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nb">window</span><span class="p">,</span> <span class="nx">$</span><span class="p">,</span> <span class="nx">exports</span><span class="p">,</span> <span class="kc">undefined</span><span class="p">)</span> <span class="p">{</span>
+    <span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
+
+    <span class="c1">// if this function or object should be global, attach it to the namespace</span>
+    <span class="nx">exports</span><span class="p">.</span><span class="nx">myGlobalFunction</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">params</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">params</span><span class="p">;</span>
+    <span class="p">};</span>
+
+<span class="p">})(</span><span class="nb">window</span><span class="p">,</span> <span class="nx">jQuery</span><span class="p">,</span> <span class="nx">MyApp</span><span class="p">);</span>
+</pre></div>
+</div>
+<p><strong>DONT</strong> (Seriously):</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="c1">// This does not only make everything global but you&#39;re programming</span>
+<span class="c1">// JavaScript like C functions with namespaces</span>
+<span class="nx">MyApp</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">myFunction</span><span class="o">:</span><span class="kd">function</span><span class="p">(</span><span class="nx">params</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nx">params</span><span class="p">;</span>
+    <span class="p">},</span>
+    <span class="p">...</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+<div class="section" id="objects-inheritance">
+<h3>Objects &amp; inheritance<a class="headerlink" href="#objects-inheritance" title="Permalink to this headline">¶</a></h3>
+<p>Try to use OOP in your JavaScript to make your code reusable and flexible.</p>
+<p>This is how you&#8217;d do inheritance in JavaScript:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="c1">// create parent object and bind methods to it</span>
+<span class="kd">var</span> <span class="nx">ParentObject</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="nx">ParentObject</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">sayHello</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
+<span class="p">}</span>
+
+
+<span class="c1">// create childobject, call parents constructor and inherit methods</span>
+<span class="kd">var</span> <span class="nx">ChildObject</span> <span class="o">=</span> <span class="kd">function</span><span class="p">(</span><span class="nx">name</span><span class="p">,</span> <span class="nx">age</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">ParentObject</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="k">this</span><span class="p">,</span> <span class="nx">name</span><span class="p">);</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">age</span> <span class="o">=</span> <span class="nx">age</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="nx">ChildObject</span><span class="p">.</span><span class="nx">prototype</span> <span class="o">=</span> <span class="nb">Object</span><span class="p">.</span><span class="nx">create</span><span class="p">(</span><span class="nx">ParentObject</span><span class="p">.</span><span class="nx">prototype</span><span class="p">);</span>
+
+<span class="c1">// overwrite parent method</span>
+<span class="nx">ChildObject</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">sayHello</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="c1">// call parent method if you want to</span>
+    <span class="nx">ParentObject</span><span class="p">.</span><span class="nx">prototype</span><span class="p">.</span><span class="nx">sayHello</span><span class="p">.</span><span class="nx">call</span><span class="p">(</span><span class="k">this</span><span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;childobject&#39;</span><span class="p">);</span>
+<span class="p">};</span>
+
+<span class="kd">var</span> <span class="nx">child</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ChildObject</span><span class="p">(</span><span class="s1">&#39;toni&#39;</span><span class="p">,</span> <span class="mi">23</span><span class="p">);</span>
+
+<span class="c1">// prints:</span>
+<span class="c1">// toni</span>
+<span class="c1">// childobject</span>
+<span class="nx">child</span><span class="p">.</span><span class="nx">sayHello</span><span class="p">();</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="objects-functions-variables">
+<h3>Objects, functions &amp; variables<a class="headerlink" href="#objects-functions-variables" title="Permalink to this headline">¶</a></h3>
+<p>Use <em>UpperCamelCase</em> for Objects, <em>lowerCamelCase</em> for functions and variables.</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="kd">var</span> <span class="nx">MyObject</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">attr</span> <span class="o">=</span> <span class="s2">&quot;hi&quot;</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="kd">var</span> <span class="nx">myFunction</span> <span class="o">=</span> <span class="kd">function</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+<span class="p">};</span>
+
+<span class="kd">var</span> <span class="nx">myVariable</span> <span class="o">=</span> <span class="s1">&#39;blue&#39;</span><span class="p">;</span>
+
+<span class="kd">var</span> <span class="nx">objectLiteral</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="nx">value1</span><span class="o">:</span> <span class="s1">&#39;somevalue&#39;</span>
+<span class="p">};</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id1">
+<h3>Operators<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<p>Use <strong>===</strong> and <strong>!==</strong> instead of <strong>==</strong> and <strong>!=</strong>.</p>
+<p>Here&#8217;s why:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="s1">&#39;&#39;</span> <span class="o">==</span> <span class="s1">&#39;0&#39;</span>           <span class="c1">// false</span>
+<span class="mi">0</span> <span class="o">==</span> <span class="s1">&#39;&#39;</span>             <span class="c1">// true</span>
+<span class="mi">0</span> <span class="o">==</span> <span class="s1">&#39;0&#39;</span>            <span class="c1">// true</span>
+
+<span class="kc">false</span> <span class="o">==</span> <span class="s1">&#39;false&#39;</span>    <span class="c1">// false</span>
+<span class="kc">false</span> <span class="o">==</span> <span class="s1">&#39;0&#39;</span>        <span class="c1">// true</span>
+
+<span class="kc">false</span> <span class="o">==</span> <span class="kc">undefined</span>  <span class="c1">// false</span>
+<span class="kc">false</span> <span class="o">==</span> <span class="kc">null</span>       <span class="c1">// false</span>
+<span class="kc">null</span> <span class="o">==</span> <span class="kc">undefined</span>   <span class="c1">// true</span>
+
+<span class="s1">&#39; \t\r\n &#39;</span> <span class="o">==</span> <span class="mi">0</span>     <span class="c1">// true</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id2">
+<h3>Control structures<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Always use { } for one line ifs</li>
+<li>Split long ifs into multiple lines</li>
+<li>Always use break in switch statements and prevent a default block with warnings if it shouldn&#8217;t be accessed</li>
+</ul>
+<p><strong>DO</strong>:</p>
+<div class="highlight-javascript"><div class="highlight"><pre><span></span><span class="c1">// single line if</span>
+<span class="k">if</span> <span class="p">(</span><span class="nx">myVar</span> <span class="o">===</span> <span class="s1">&#39;hi&#39;</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nx">myVar</span> <span class="o">=</span> <span class="s1">&#39;ho&#39;</span><span class="p">;</span>
+<span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+    <span class="nx">myVar</span> <span class="o">=</span> <span class="s1">&#39;bye&#39;</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="c1">// long ifs</span>
+<span class="k">if</span> <span class="p">(</span>   <span class="nx">something</span> <span class="o">===</span> <span class="s1">&#39;something&#39;</span>
+    <span class="o">||</span> <span class="nx">condition2</span>
+    <span class="o">&amp;&amp;</span> <span class="nx">condition3</span>
+<span class="p">)</span> <span class="p">{</span>
+  <span class="c1">// your code</span>
+<span class="p">}</span>
+
+<span class="c1">// for loop</span>
+<span class="k">for</span> <span class="p">(</span><span class="kd">var</span> <span class="nx">i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nx">i</span> <span class="o">&lt;</span> <span class="mi">4</span><span class="p">;</span> <span class="nx">i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// your code</span>
+<span class="p">}</span>
+
+<span class="c1">// switch</span>
+<span class="k">switch</span> <span class="p">(</span><span class="nx">value</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="k">case</span> <span class="s1">&#39;hi&#39;</span><span class="o">:</span>
+        <span class="c1">// yourcode</span>
+        <span class="k">break</span><span class="p">;</span>
+
+    <span class="k">default</span><span class="o">:</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">warn</span><span class="p">(</span><span class="s1">&#39;Entered undefined default block in switch&#39;</span><span class="p">);</span>
+        <span class="k">break</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="css">
+<h2>CSS<a class="headerlink" href="#css" title="Permalink to this headline">¶</a></h2>
+<p>Take a look at the <a class="reference external" href="http://www.youtube.com/watch?v=hou2wJCh3XE&amp;feature=plcp">Writing Tactical CSS &amp; HTML</a> video on YouTube.</p>
+<p>Don&#8217;t bind your CSS too much to your HTML structure and try to avoid IDs. Also try to make your CSS reusable by grouping common attributes into classes.</p>
+<p><strong>DO</strong>:</p>
+<div class="highlight-css"><div class="highlight"><pre><span></span><span class="p">.</span><span class="nc">list</span> <span class="p">{</span>
+    <span class="k">list-style-type</span><span class="p">:</span> <span class="kc">none</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nc">list</span> <span class="o">&gt;</span> <span class="p">.</span><span class="nc">list_item</span> <span class="p">{</span>
+    <span class="k">display</span><span class="p">:</span> <span class="kc">inline-block</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">.</span><span class="nc">important_list_item</span> <span class="p">{</span>
+    <span class="k">color</span><span class="p">:</span> <span class="kc">red</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>DON&#8217;T</strong>:</p>
+<div class="highlight-css"><div class="highlight"><pre><span></span><span class="p">#</span><span class="nn">content</span> <span class="p">.</span><span class="nc">myHeader</span> <span class="nt">ul</span> <span class="p">{</span>
+    <span class="k">list-style-type</span><span class="p">:</span> <span class="kc">none</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="p">#</span><span class="nn">content</span> <span class="p">.</span><span class="nc">myHeader</span> <span class="nt">ul</span> <span class="nt">li</span><span class="p">.</span><span class="nc">list_item</span> <span class="p">{</span>
+    <span class="k">color</span><span class="p">:</span> <span class="kc">red</span><span class="p">;</span>
+    <span class="k">display</span><span class="p">:</span> <span class="kc">inline-block</span><span class="p">;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>TBD</strong></p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="performance.html" class="btn btn-neutral float-right" title="Performance considerations" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="security.html" class="btn btn-neutral float-left" title="Security guidelines" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021 Nextcloud GmbH.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: 14
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/14/developer_manual">14</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/15/developer_manual">15</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/16/developer_manual">16</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/developer_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/developer_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+   
+
+</body>
+</html>

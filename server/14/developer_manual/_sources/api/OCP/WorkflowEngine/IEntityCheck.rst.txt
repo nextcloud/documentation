@@ -1,0 +1,57 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IEntityCheck
+============
+
+
+.. php:namespace:: OCP\WorkflowEngine
+
+.. php:interface:: IEntityCheck
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Interface IFileCheck
+		
+	
+	:Source:
+		`lib/public/WorkflowEngine/IEntityCheck.php#34 <https://github.com/nextcloud/server/blob/stable13/lib/public/WorkflowEngine/IEntityCheck.php#L34>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public setEntitySubject( $entity, $subject)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Equips the check with a subject fitting the Entity\. For instance, an
+			| entity of File will receive an instance of OCP\\Files\\Node, or a comment
+			| entity might get an IComment\.
+			
+			| The implementing check must be aware of the incoming type\.
+			| 
+			| If an unsupported subject is passed the implementation MAY throw an
+			| \\UnexpectedValueException\.
+			
+		
+		:Source:
+			`lib/public/WorkflowEngine/IEntityCheck.php#50 <https://github.com/nextcloud/server/blob/stable13/lib/public/WorkflowEngine/IEntityCheck.php#L50>`_
+		
+		
+		:Parameters:
+			* **$entity** (:any:`OCP\\WorkflowEngine\\IEntity <OCP\\WorkflowEngine\\IEntity>`)  
+			* **$subject** (mixed)  
+
+		
+		:Throws: :any:`\\UnexpectedValueException <UnexpectedValueException>` 
+		:Since: 18.0.0 
+	
+	
+

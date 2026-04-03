@@ -1,0 +1,196 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+CachedMountInfo
+===============
+
+
+.. php:namespace:: OC\Files\Config
+
+.. php:class:: CachedMountInfo
+
+
+	:Source:
+		`lib/private/Files/Config/CachedMountInfo.php#31 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Config/CachedMountInfo.php#L31>`_
+	
+	:Implements:
+		:php:interface:`OCP\\Files\\Config\\ICachedMountInfo` 
+	
+
+Properties
+----------
+
+.. php:attr:: protected static user
+
+	:Source:
+		`lib/private/Files/Config/CachedMountInfo.php#35 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Config/CachedMountInfo.php#L35>`_
+	
+	:Type: :any:`\\OCP\\IUser <OCP\\IUser>` 
+
+
+.. php:attr:: protected static storageId
+
+	:Source:
+		`lib/private/Files/Config/CachedMountInfo.php#40 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Config/CachedMountInfo.php#L40>`_
+	
+	:Type: int 
+
+
+.. php:attr:: protected static rootId
+
+	:Source:
+		`lib/private/Files/Config/CachedMountInfo.php#45 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Config/CachedMountInfo.php#L45>`_
+	
+	:Type: int 
+
+
+.. php:attr:: protected static mountPoint
+
+	:Source:
+		`lib/private/Files/Config/CachedMountInfo.php#50 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Config/CachedMountInfo.php#L50>`_
+	
+	:Type: string 
+
+
+.. php:attr:: protected static mountId
+
+	:Source:
+		`lib/private/Files/Config/CachedMountInfo.php#55 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Config/CachedMountInfo.php#L55>`_
+	
+	:Type: int | null 
+
+
+.. php:attr:: protected static rootInternalPath
+
+	:Source:
+		`lib/private/Files/Config/CachedMountInfo.php#60 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Config/CachedMountInfo.php#L60>`_
+	
+	:Type: string 
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $user, $storageId, $rootId, $mountPoint, $mountId=null, $rootInternalPath="")
+	
+		.. rst-class:: phpdoc-description
+		
+			| CachedMountInfo constructor\.
+			
+		
+		:Source:
+			`lib/private/Files/Config/CachedMountInfo.php#72 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Config/CachedMountInfo.php#L72>`_
+		
+		
+		:Parameters:
+			* **$user** (:any:`OCP\\IUser <OCP\\IUser>`)  
+			* **$storageId** (int)  
+			* **$rootId** (int)  
+			* **$mountPoint** (string)  
+			* **$mountId** (int | null)  
+			* **$rootInternalPath** (string)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getUser()
+	
+		:Source:
+			`lib/private/Files/Config/CachedMountInfo.php#84 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Config/CachedMountInfo.php#L84>`_
+		
+		
+		:Returns: :any:`\\OCP\\IUser <OCP\\IUser>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getStorageId()
+	
+		:Source:
+			`lib/private/Files/Config/CachedMountInfo.php#91 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Config/CachedMountInfo.php#L91>`_
+		
+		
+		:Returns: int the numeric storage id of the mount
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getRootId()
+	
+		:Source:
+			`lib/private/Files/Config/CachedMountInfo.php#98 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Config/CachedMountInfo.php#L98>`_
+		
+		
+		:Returns: int the fileid of the root of the mount
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getMountPointNode()
+	
+		:Source:
+			`lib/private/Files/Config/CachedMountInfo.php#105 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Config/CachedMountInfo.php#L105>`_
+		
+		
+		:Returns: :any:`\\OCP\\Files\\Node <OCP\\Files\\Node>` the root node of the mount
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getMountPoint()
+	
+		:Source:
+			`lib/private/Files/Config/CachedMountInfo.php#120 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Config/CachedMountInfo.php#L120>`_
+		
+		
+		:Returns: string the mount point of the mount for the user
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getMountId()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the id of the configured mount
+			
+		
+		:Source:
+			`lib/private/Files/Config/CachedMountInfo.php#130 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Config/CachedMountInfo.php#L130>`_
+		
+		
+		:Returns: int | null mount id or null if not applicable
+		:Since: 9.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getRootInternalPath()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the internal path \(within the storage\) of the root of the mount
+			
+		
+		:Source:
+			`lib/private/Files/Config/CachedMountInfo.php#139 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Config/CachedMountInfo.php#L139>`_
+		
+		
+		:Returns: string 
+	
+	
+

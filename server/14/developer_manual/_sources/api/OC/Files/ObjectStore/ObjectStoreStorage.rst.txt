@@ -1,0 +1,354 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+ObjectStoreStorage
+==================
+
+
+.. php:namespace:: OC\Files\ObjectStore
+
+.. php:class:: ObjectStoreStorage
+
+
+	:Source:
+		`lib/private/Files/ObjectStore/ObjectStoreStorage.php#45 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/ObjectStore/ObjectStoreStorage.php#L45>`_
+	
+	:Parent:
+		:php:class:`OC\\Files\\Storage\\Common`
+	
+	:Used traits:
+		:php:trait:`OC\\Files\\Storage\\PolyFill\\CopyDirectory` 
+	
+
+Properties
+----------
+
+.. php:attr:: protected static objectStore
+
+	:Source:
+		`lib/private/Files/ObjectStore/ObjectStoreStorage.php#51 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/ObjectStore/ObjectStoreStorage.php#L51>`_
+	
+	:Type: :any:`\\OCP\\Files\\ObjectStore\\IObjectStore <OCP\\Files\\ObjectStore\\IObjectStore>` 
+
+
+.. php:attr:: protected static id
+
+	:Source:
+		`lib/private/Files/ObjectStore/ObjectStoreStorage.php#55 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/ObjectStore/ObjectStoreStorage.php#L55>`_
+	
+	:Type: string 
+
+
+.. php:attr:: protected static user
+
+	:Source:
+		`lib/private/Files/ObjectStore/ObjectStoreStorage.php#59 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/ObjectStore/ObjectStoreStorage.php#L59>`_
+	
+	:Type: :any:`\\OC\\User\\User <OC\\User\\User>` 
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $params)
+	
+		:Source:
+			`lib/private/Files/ObjectStore/ObjectStoreStorage.php#65 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/ObjectStore/ObjectStoreStorage.php#L65>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public mkdir( $path)
+	
+		:Source:
+			`lib/private/Files/ObjectStore/ObjectStoreStorage.php#87 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/ObjectStore/ObjectStoreStorage.php#L87>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getScanner( $path="", $storage=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Object Stores use a NoopScanner because metadata is directly stored in
+			| the file cache and cannot really scan the filesystem\. The storage passed in is not used anywhere\.
+			
+		
+		:Source:
+			`lib/private/Files/ObjectStore/ObjectStoreStorage.php#155 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/ObjectStore/ObjectStoreStorage.php#L155>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: :any:`\\OC\\Files\\ObjectStore\\NoopScanner <OC\\Files\\ObjectStore\\NoopScanner>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getId()
+	
+		:Source:
+			`lib/private/Files/ObjectStore/ObjectStoreStorage.php#165 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/ObjectStore/ObjectStoreStorage.php#L165>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public rmdir( $path)
+	
+		:Source:
+			`lib/private/Files/ObjectStore/ObjectStoreStorage.php#169 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/ObjectStore/ObjectStoreStorage.php#L169>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public unlink( $path)
+	
+		:Source:
+			`lib/private/Files/ObjectStore/ObjectStoreStorage.php#202 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/ObjectStore/ObjectStoreStorage.php#L202>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public stat( $path)
+	
+		:Source:
+			`lib/private/Files/ObjectStore/ObjectStoreStorage.php#228 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/ObjectStore/ObjectStoreStorage.php#L228>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getPermissions( $path)
+	
+		:Source:
+			`lib/private/Files/ObjectStore/ObjectStoreStorage.php#238 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/ObjectStore/ObjectStoreStorage.php#L238>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getURN( $fileId)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Override this method if you need a different unique resource identifier for your object storage implementation\.
+			
+			| The default implementations just appends the fileId to \'urn:oid:\'\. Make sure the URN is unique over all users\.
+			| You may need a mapping table to store your URN if it cannot be generated from the fileid\.
+			
+		
+		:Source:
+			`lib/private/Files/ObjectStore/ObjectStoreStorage.php#256 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/ObjectStore/ObjectStoreStorage.php#L256>`_
+		
+		
+		:Parameters:
+			* **$fileId** (int)  the fileid
+
+		
+		:Returns: null | string the unified resource name used to identify the object
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public opendir( $path)
+	
+		:Source:
+			`lib/private/Files/ObjectStore/ObjectStoreStorage.php#263 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/ObjectStore/ObjectStoreStorage.php#L263>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public filetype( $path)
+	
+		:Source:
+			`lib/private/Files/ObjectStore/ObjectStoreStorage.php#280 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/ObjectStore/ObjectStoreStorage.php#L280>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public fopen( $path, $mode)
+	
+		:Source:
+			`lib/private/Files/ObjectStore/ObjectStoreStorage.php#293 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/ObjectStore/ObjectStoreStorage.php#L293>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public file_exists( $path)
+	
+		:Source:
+			`lib/private/Files/ObjectStore/ObjectStoreStorage.php#361 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/ObjectStore/ObjectStoreStorage.php#L361>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public rename( $source, $target)
+	
+		:Source:
+			`lib/private/Files/ObjectStore/ObjectStoreStorage.php#366 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/ObjectStore/ObjectStoreStorage.php#L366>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getMimeType( $path)
+	
+		:Source:
+			`lib/private/Files/ObjectStore/ObjectStoreStorage.php#375 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/ObjectStore/ObjectStoreStorage.php#L375>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public touch( $path, $mtime=null)
+	
+		:Source:
+			`lib/private/Files/ObjectStore/ObjectStoreStorage.php#380 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/ObjectStore/ObjectStoreStorage.php#L380>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public writeBack( $tmpFile, $path)
+	
+		:Source:
+			`lib/private/Files/ObjectStore/ObjectStoreStorage.php#423 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/ObjectStore/ObjectStoreStorage.php#L423>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public hasUpdated( $path, $time)
+	
+		.. rst-class:: phpdoc-description
+		
+			| external changes are not supported, exclusive access to the object storage is assumed
+			
+		
+		:Source:
+			`lib/private/Files/ObjectStore/ObjectStoreStorage.php#435 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/ObjectStore/ObjectStoreStorage.php#L435>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+			* **$time** (int)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public needsPartFile()
+	
+		:Source:
+			`lib/private/Files/ObjectStore/ObjectStoreStorage.php#439 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/ObjectStore/ObjectStoreStorage.php#L439>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public file_put_contents( $path, $data)
+	
+		:Source:
+			`lib/private/Files/ObjectStore/ObjectStoreStorage.php#443 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/ObjectStore/ObjectStoreStorage.php#L443>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public writeStream( $path, $stream, $size=null)
+	
+		:Source:
+			`lib/private/Files/ObjectStore/ObjectStoreStorage.php#450 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/ObjectStore/ObjectStoreStorage.php#L450>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getObjectStore()
+	
+		:Source:
+			`lib/private/Files/ObjectStore/ObjectStoreStorage.php#531 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/ObjectStore/ObjectStoreStorage.php#L531>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public copyFromStorage( $sourceStorage, $sourceInternalPath, $targetInternalPath, $preserveMtime=false)
+	
+		:Source:
+			`lib/private/Files/ObjectStore/ObjectStoreStorage.php#535 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/ObjectStore/ObjectStoreStorage.php#L535>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public copy( $path1, $path2)
+	
+		:Source:
+			`lib/private/Files/ObjectStore/ObjectStoreStorage.php#548 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/ObjectStore/ObjectStoreStorage.php#L548>`_
+		
+		
+	
+	
+

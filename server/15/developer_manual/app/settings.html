@@ -1,0 +1,543 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Settings &mdash; Nextcloud 15 Developer Manual 15 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'15',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Notifications" href="notifications.html" />
+    <link rel="prev" title="Background jobs (Cron)" href="backgroundjobs.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../general/index.html">General contributor guidelines</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">App development</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="requests/index.html">Request lifecycle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="view/index.html">View</a></li>
+<li class="toctree-l2"><a class="reference internal" href="storage/index.html">Storage and database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html">Changelog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classloader.html">Classloader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="code_signing.html">Code signing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="info.html">App metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="init.html">Navigation and pre-app configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="publishing.html">App store publishing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="users.html">User management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="two-factor-provider.html">Two-factor providers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="hooks.html">Hooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backgroundjobs.html">Background jobs (Cron)</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Settings</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#admin">Admin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#settings-form">Settings form</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#section">Section</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#personal">Personal</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="notifications.html">Notifications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logging.html">Logging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="repair.html">Repair steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="publicpage.html">Public Pages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="testing.html">Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html">API Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../design/index.html">Design guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../android_library/index.html">Android application development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client_apis/index.html">Client APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../core/index.html">Core development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bugtracker/index.html">Bugtracker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../commun/index.html">Help and communication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API Documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Nextcloud 15 Developer Manual</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">App development</a> &raquo;</li>
+        
+      <li>Settings</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/nextcloud/documentation/edit/stable15/developer_manual/app/settings.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="settings">
+<h1>Settings<a class="headerlink" href="#settings" title="Permalink to this headline">¶</a></h1>
+<p>An app can register both admin settings as well as personal settings.</p>
+<div class="section" id="admin">
+<h2>Admin<a class="headerlink" href="#admin" title="Permalink to this headline">¶</a></h2>
+<p>For Nextcloud 10 the admin settings page got reworked. It is not a long list
+anymore, but divided into sections, where related settings forms are grouped.
+For example, in the <strong>Sharing</strong> section are only settings (built-in and of apps)
+related to sharing.</p>
+</div>
+<div class="section" id="settings-form">
+<h2>Settings form<a class="headerlink" href="#settings-form" title="Permalink to this headline">¶</a></h2>
+<p>For the settings form, three things are necessary:</p>
+<ol class="arabic simple">
+<li>A class implementing <code class="docutils literal"><span class="pre">\OCP\Settings\ISettings</span></code></li>
+<li>A template</li>
+<li>The implementing class specified in the app&#8217;s info.xml</li>
+</ol>
+<p>Below is an example for an implementor of the ISettings interface. It is based
+on the survey_client solution.</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="k">namespace</span> <span class="nx">OCA\YourAppNamespace\Settings</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCA\YourAppNamespace\Collector</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Http\TemplateResponse</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\BackgroundJob\IJobList</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\IConfig</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\IDateTimeFormatter</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\IL10N</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\Settings\ISettings</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">AdminSettings</span> <span class="k">implements</span> <span class="nx">ISettings</span> <span class="p">{</span>
+
+        <span class="sd">/** @var Collector */</span>
+        <span class="k">private</span> <span class="nv">$collector</span><span class="p">;</span>
+
+        <span class="sd">/** @var IConfig */</span>
+        <span class="k">private</span> <span class="nv">$config</span><span class="p">;</span>
+
+        <span class="sd">/** @var IL10N */</span>
+        <span class="k">private</span> <span class="nv">$l</span><span class="p">;</span>
+
+        <span class="sd">/** @var IDateTimeFormatter */</span>
+        <span class="k">private</span> <span class="nv">$dateTimeFormatter</span><span class="p">;</span>
+
+        <span class="sd">/** @var IJobList */</span>
+        <span class="k">private</span> <span class="nv">$jobList</span><span class="p">;</span>
+
+        <span class="sd">/**</span>
+<span class="sd">         * Admin constructor.</span>
+<span class="sd">         *</span>
+<span class="sd">         * @param Collector $collector</span>
+<span class="sd">         * @param IConfig $config</span>
+<span class="sd">         * @param IL10N $l</span>
+<span class="sd">         * @param IDateTimeFormatter $dateTimeFormatter</span>
+<span class="sd">         * @param IJobList $jobList</span>
+<span class="sd">         */</span>
+        <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">Collector</span> <span class="nv">$collector</span><span class="p">,</span>
+                                                                <span class="nx">IConfig</span> <span class="nv">$config</span><span class="p">,</span>
+                                                                <span class="nx">IL10N</span> <span class="nv">$l</span><span class="p">,</span>
+                                                                <span class="nx">IDateTimeFormatter</span> <span class="nv">$dateTimeFormatter</span><span class="p">,</span>
+                                                                <span class="nx">IJobList</span> <span class="nv">$jobList</span>
+        <span class="p">)</span> <span class="p">{</span>
+                <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">collector</span> <span class="o">=</span> <span class="nv">$collector</span><span class="p">;</span>
+                <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">config</span> <span class="o">=</span> <span class="nv">$config</span><span class="p">;</span>
+                <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l</span> <span class="o">=</span> <span class="nv">$l</span><span class="p">;</span>
+                <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">dateTimeFormatter</span> <span class="o">=</span> <span class="nv">$dateTimeFormatter</span><span class="p">;</span>
+                <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">jobList</span> <span class="o">=</span> <span class="nv">$jobList</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="sd">/**</span>
+<span class="sd">         * @return TemplateResponse</span>
+<span class="sd">         */</span>
+        <span class="k">public</span> <span class="k">function</span> <span class="nf">getForm</span><span class="p">()</span> <span class="p">{</span>
+
+                <span class="nv">$lastSentReportTime</span> <span class="o">=</span> <span class="p">(</span><span class="nx">int</span><span class="p">)</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">config</span><span class="o">-&gt;</span><span class="na">getAppValue</span><span class="p">(</span><span class="s1">&#39;survey_client&#39;</span><span class="p">,</span> <span class="s1">&#39;last_sent&#39;</span><span class="p">,</span> <span class="mi">0</span><span class="p">);</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nv">$lastSentReportTime</span> <span class="o">===</span> <span class="mi">0</span><span class="p">)</span> <span class="p">{</span>
+                        <span class="nv">$lastSentReportDate</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;Never&#39;</span><span class="p">);</span>
+                <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+                        <span class="nv">$lastSentReportDate</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">dateTimeFormatter</span><span class="o">-&gt;</span><span class="na">formatDate</span><span class="p">(</span><span class="nv">$lastSentReportTime</span><span class="p">);</span>
+                <span class="p">}</span>
+
+                <span class="nv">$lastReport</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">config</span><span class="o">-&gt;</span><span class="na">getAppValue</span><span class="p">(</span><span class="s1">&#39;survey_client&#39;</span><span class="p">,</span> <span class="s1">&#39;last_report&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">);</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nv">$lastReport</span> <span class="o">!==</span> <span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="p">{</span>
+                        <span class="nv">$lastReport</span> <span class="o">=</span> <span class="nb">json_encode</span><span class="p">(</span><span class="nb">json_decode</span><span class="p">(</span><span class="nv">$lastReport</span><span class="p">,</span> <span class="k">true</span><span class="p">),</span> <span class="nx">JSON_PRETTY_PRINT</span><span class="p">);</span>
+                <span class="p">}</span>
+
+                <span class="nv">$parameters</span> <span class="o">=</span> <span class="p">[</span>
+                        <span class="s1">&#39;is_enabled&#39;</span> <span class="o">=&gt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">jobList</span><span class="o">-&gt;</span><span class="na">has</span><span class="p">(</span><span class="s1">&#39;OCA\Survey_Client\BackgroundJobs\MonthlyReport&#39;</span><span class="p">,</span> <span class="k">null</span><span class="p">),</span>
+                        <span class="s1">&#39;last_sent&#39;</span> <span class="o">=&gt;</span> <span class="nv">$lastSentReportDate</span><span class="p">,</span>
+                        <span class="s1">&#39;last_report&#39;</span> <span class="o">=&gt;</span> <span class="nv">$lastReport</span><span class="p">,</span>
+                        <span class="s1">&#39;categories&#39;</span> <span class="o">=&gt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">collector</span><span class="o">-&gt;</span><span class="na">getCategories</span><span class="p">()</span>
+                <span class="p">];</span>
+
+                <span class="k">return</span> <span class="k">new</span> <span class="nx">TemplateResponse</span><span class="p">(</span><span class="s1">&#39;yourappid&#39;</span><span class="p">,</span> <span class="s1">&#39;admin&#39;</span><span class="p">,</span> <span class="nv">$parameters</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="sd">/**</span>
+<span class="sd">         * @return string the section ID, e.g. &#39;sharing&#39;</span>
+<span class="sd">         */</span>
+        <span class="k">public</span> <span class="k">function</span> <span class="nf">getSection</span><span class="p">()</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="s1">&#39;survey_client&#39;</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="sd">/**</span>
+<span class="sd">         * @return int whether the form should be rather on the top or bottom of</span>
+<span class="sd">         * the admin section. The forms are arranged in ascending order of the</span>
+<span class="sd">         * priority values. It is required to return a value between 0 and 100.</span>
+<span class="sd">         */</span>
+        <span class="k">public</span> <span class="k">function</span> <span class="nf">getPriority</span><span class="p">()</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="mi">50</span><span class="p">;</span>
+        <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The parameters of the constructor will be resolved and an instance created
+automatically on demand, so that the developer does not need to take care of it.</p>
+<p><code class="docutils literal"><span class="pre">getSection</span></code> is supposed to return the section ID of the desired admin section.
+Currently, built-in values are <code class="docutils literal"><span class="pre">server</span></code>, <code class="docutils literal"><span class="pre">sharing</span></code>, <code class="docutils literal"><span class="pre">encryption</span></code>,
+<code class="docutils literal"><span class="pre">logging</span></code>, <code class="docutils literal"><span class="pre">additional</span></code> and <code class="docutils literal"><span class="pre">tips-tricks</span></code>. Apps can register sections
+of their own (see below), and also register into sections of other apps.</p>
+<p><code class="docutils literal"><span class="pre">getPriority</span></code> is used to order forms within a section. The lower the value,
+the more on top it will appear, and vice versa. The result depends on the
+priorities of other settings.</p>
+<p>Nextcloud will look for the templates in a template folder located in your apps
+root directory. It should always end on .php, in this case <code class="docutils literal"><span class="pre">templates/admin.php</span></code>
+would be the final relative path.</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="sd">/** @var $l \OCP\IL10N */</span>
+<span class="sd">/** @var $_ array */</span>
+
+<span class="nx">script</span><span class="p">(</span><span class="s1">&#39;myappid&#39;</span><span class="p">,</span> <span class="s1">&#39;admin&#39;</span><span class="p">);</span>         <span class="c1">// adds a JavaScript file</span>
+<span class="nx">style</span><span class="p">(</span><span class="s1">&#39;survey_client&#39;</span><span class="p">,</span> <span class="s1">&#39;admin&#39;</span><span class="p">);</span>    <span class="c1">// adds a CSS file</span>
+<span class="cp">?&gt;</span><span class="x"></span>
+
+<span class="x">&lt;div id=&quot;survey_client&quot; class=&quot;section&quot;&gt;</span>
+<span class="x">        &lt;h2&gt;</span><span class="cp">&lt;?php</span> <span class="nx">p</span><span class="p">(</span><span class="nv">$l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;Your app&#39;</span><span class="p">));</span> <span class="cp">?&gt;</span><span class="x">&lt;/h2&gt;</span>
+
+<span class="x">        &lt;p&gt;</span>
+<span class="x">                </span><span class="cp">&lt;?php</span> <span class="nx">p</span><span class="p">(</span><span class="nv">$l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;Only administrators are allowed to click the red button&#39;</span><span class="p">));</span> <span class="cp">?&gt;</span><span class="x"></span>
+<span class="x">        &lt;/p&gt;</span>
+
+<span class="x">        &lt;button&gt;</span><span class="cp">&lt;?php</span> <span class="nx">p</span><span class="p">(</span><span class="nv">$l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;Click red button&#39;</span><span class="p">));</span> <span class="cp">?&gt;</span><span class="x">&lt;/button&gt;</span>
+
+<span class="x">        &lt;p&gt;</span>
+<span class="x">                &lt;input id=&quot;your_app_magic&quot; name=&quot;your_app_magic&quot;</span>
+<span class="x">                           type=&quot;checkbox&quot; class=&quot;checkbox&quot; value=&quot;1&quot; </span><span class="cp">&lt;?php</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$_</span><span class="p">[</span><span class="s1">&#39;is_enabled&#39;</span><span class="p">])</span><span class="o">:</span> <span class="cp">?&gt;</span><span class="x"> checked=&quot;checked&quot;</span><span class="cp">&lt;?php</span> <span class="k">endif</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x"> /&gt;</span>
+<span class="x">                &lt;label for=&quot;your_app_magic&quot;&gt;</span><span class="cp">&lt;?php</span> <span class="nx">p</span><span class="p">(</span><span class="nv">$l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;Do some magic&#39;</span><span class="p">));</span> <span class="cp">?&gt;</span><span class="x">&lt;/label&gt;</span>
+<span class="x">        &lt;/p&gt;</span>
+
+<span class="x">        &lt;h3&gt;</span><span class="cp">&lt;?php</span> <span class="nx">p</span><span class="p">(</span><span class="nv">$l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;Things to define&#39;</span><span class="p">));</span> <span class="cp">?&gt;</span><span class="x">&lt;/h3&gt;</span>
+<span class="x">        </span><span class="cp">&lt;?php</span>
+        <span class="k">foreach</span> <span class="p">(</span><span class="nv">$_</span><span class="p">[</span><span class="s1">&#39;categories&#39;</span><span class="p">]</span> <span class="k">as</span> <span class="nv">$category</span> <span class="o">=&gt;</span> <span class="nv">$data</span><span class="p">)</span> <span class="p">{</span>
+                <span class="cp">?&gt;</span><span class="x"></span>
+<span class="x">                &lt;p&gt;</span>
+<span class="x">                        &lt;input id=&quot;your_app_</span><span class="cp">&lt;?php</span> <span class="nx">p</span><span class="p">(</span><span class="nv">$category</span><span class="p">);</span> <span class="cp">?&gt;</span><span class="x">&quot; name=&quot;your_app_</span><span class="cp">&lt;?php</span> <span class="nx">p</span><span class="p">(</span><span class="nv">$category</span><span class="p">);</span> <span class="cp">?&gt;</span><span class="x">&quot;</span>
+<span class="x">                                   type=&quot;checkbox&quot; class=&quot;checkbox your_app_category&quot; value=&quot;1&quot; </span><span class="cp">&lt;?php</span> <span class="k">if</span> <span class="p">(</span><span class="nv">$data</span><span class="p">[</span><span class="s1">&#39;enabled&#39;</span><span class="p">])</span><span class="o">:</span> <span class="cp">?&gt;</span><span class="x"> checked=&quot;checked&quot;</span><span class="cp">&lt;?php</span> <span class="k">endif</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x"> /&gt;</span>
+<span class="x">                        &lt;label for=&quot;your_app_</span><span class="cp">&lt;?php</span> <span class="nx">p</span><span class="p">(</span><span class="nv">$category</span><span class="p">);</span> <span class="cp">?&gt;</span><span class="x">&quot;&gt;</span><span class="cp">&lt;?php</span> <span class="nx">print_unescaped</span><span class="p">(</span><span class="nv">$data</span><span class="p">[</span><span class="s1">&#39;displayName&#39;</span><span class="p">]);</span> <span class="cp">?&gt;</span><span class="x">&lt;/label&gt;</span>
+<span class="x">                &lt;/p&gt;</span>
+<span class="x">                </span><span class="cp">&lt;?php</span>
+        <span class="p">}</span>
+        <span class="cp">?&gt;</span><span class="x"></span>
+
+<span class="x">        </span><span class="cp">&lt;?php</span> <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="k">empty</span><span class="p">(</span><span class="nv">$_</span><span class="p">[</span><span class="s1">&#39;last_report&#39;</span><span class="p">]))</span><span class="o">:</span> <span class="cp">?&gt;</span><span class="x"></span>
+
+<span class="x">        &lt;h3&gt;</span><span class="cp">&lt;?php</span> <span class="nx">p</span><span class="p">(</span><span class="nv">$l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;Last report&#39;</span><span class="p">));</span> <span class="cp">?&gt;</span><span class="x">&lt;/h3&gt;</span>
+
+<span class="x">        &lt;p&gt;&lt;textarea title=&quot;</span><span class="cp">&lt;?php</span> <span class="nx">p</span><span class="p">(</span><span class="nv">$l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;Last report&#39;</span><span class="p">));</span> <span class="cp">?&gt;</span><span class="x">&quot; class=&quot;last_report&quot; readonly=&quot;readonly&quot;&gt;</span><span class="cp">&lt;?php</span> <span class="nx">p</span><span class="p">(</span><span class="nv">$_</span><span class="p">[</span><span class="s1">&#39;last_report&#39;</span><span class="p">]);</span><span class="cp">?&gt;</span><span class="x">&lt;/textarea&gt;&lt;/p&gt;</span>
+
+<span class="x">        &lt;em class=&quot;last_sent&quot;&gt;</span><span class="cp">&lt;?php</span> <span class="nx">p</span><span class="p">(</span><span class="nv">$l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;Sent on: %s&#39;</span><span class="p">,</span> <span class="p">[</span><span class="nv">$_</span><span class="p">[</span><span class="s1">&#39;last_sent&#39;</span><span class="p">]]));</span> <span class="cp">?&gt;</span><span class="x">&lt;/em&gt;</span>
+
+<span class="x">        </span><span class="cp">&lt;?php</span> <span class="k">endif</span><span class="p">;</span> <span class="cp">?&gt;</span><span class="x"></span>
+
+<span class="x">&lt;/div&gt;</span>
+</pre></div>
+</div>
+<p>Then, the implementing class should be added to the info.xml. Settings will be
+registered upon install and update. When settings are added to an existing,
+installed and enabled app, it should be made sure that the version is
+increased so Nextcloud can register the class. It is only possible to register
+one ISettings implementor.</p>
+<p>For a more complex example using embedded templates have a look at the
+implementation of the <strong>user_ldap</strong> app.</p>
+</div>
+<div class="section" id="section">
+<h2>Section<a class="headerlink" href="#section" title="Permalink to this headline">¶</a></h2>
+<p>It is also possible that an app registers its own section. This should be done
+only if there is not fitting corresponding section and the apps settings form
+takes a lot of screen estate. Otherwise, register to &#8220;additional&#8221;.</p>
+<p>Basically, it works the same way as with the settings form. There are only two
+differences. First, the interface that must be implemented is <code class="docutils literal"><span class="pre">\OCP\Settings\ISection</span></code>.</p>
+<p>Second, a template is not necessary.</p>
+<p>An example implementation of the ISection interface:</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="k">namespace</span> <span class="nx">OCA\YourAppNamespace\Settings</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCP\IL10N</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\Settings\ISection</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">AdminSection</span> <span class="k">implements</span> <span class="nx">ISection</span> <span class="p">{</span>
+
+        <span class="sd">/** @var IL10N */</span>
+        <span class="k">private</span> <span class="nv">$l</span><span class="p">;</span>
+
+        <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">IL10N</span> <span class="nv">$l</span><span class="p">)</span> <span class="p">{</span>
+                <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l</span> <span class="o">=</span> <span class="nv">$l</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="sd">/**</span>
+<span class="sd">         * returns the ID of the section. It is supposed to be a lower case string</span>
+<span class="sd">         *</span>
+<span class="sd">         * @returns string</span>
+<span class="sd">         */</span>
+        <span class="k">public</span> <span class="k">function</span> <span class="nf">getID</span><span class="p">()</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="s1">&#39;yourappid&#39;</span><span class="p">;</span> <span class="c1">//or a generic id if feasible</span>
+        <span class="p">}</span>
+
+        <span class="sd">/**</span>
+<span class="sd">         * returns the translated name as it should be displayed, e.g. &#39;LDAP / AD</span>
+<span class="sd">         * integration&#39;. Use the L10N service to translate it.</span>
+<span class="sd">         *</span>
+<span class="sd">         * @return string</span>
+<span class="sd">         */</span>
+        <span class="k">public</span> <span class="k">function</span> <span class="nf">getName</span><span class="p">()</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;Translatable Section Name&#39;</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="sd">/**</span>
+<span class="sd">         * @return int whether the form should be rather on the top or bottom of</span>
+<span class="sd">         * the settings navigation. The sections are arranged in ascending order of</span>
+<span class="sd">         * the priority values. It is required to return a value between 0 and 99.</span>
+<span class="sd">         */</span>
+        <span class="k">public</span> <span class="k">function</span> <span class="nf">getPriority</span><span class="p">()</span> <span class="p">{</span>
+                <span class="k">return</span> <span class="mi">80</span><span class="p">;</span>
+        <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Also the section must be registered in the app&#8217;s info.xml.</p>
+<div class="section" id="personal">
+<h3>Personal<a class="headerlink" href="#personal" title="Permalink to this headline">¶</a></h3>
+<p>Registering personal settings follows and old style yet. Within the app
+intialisation (e.g. in appinfo/app.php) a method must be called:</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="nx">\OCP\App</span><span class="o">::</span><span class="na">registerPersonal</span><span class="p">(</span><span class="s1">&#39;yourappid&#39;</span><span class="p">,</span> <span class="s1">&#39;personal&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Upon opening the personal page, Nextcloud will look for <code class="docutils literal"><span class="pre">personal.php</span></code> script,
+execute it and print the output.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="notifications.html" class="btn btn-neutral float-right" title="Notifications" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="backgroundjobs.html" class="btn btn-neutral float-left" title="Background jobs (Cron)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021 Nextcloud GmbH.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: 15
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/15/developer_manual">15</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/16/developer_manual">16</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/17/developer_manual">17</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/developer_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/developer_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+   
+
+</body>
+</html>

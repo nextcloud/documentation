@@ -1,0 +1,438 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IDocumentAccess
+===============
+
+
+.. php:namespace:: OCP\FullTextSearch\Model
+
+.. php:interface:: IDocumentAccess
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Interface IDocumentAccess
+		
+		| This object is used as a data transfer object when
+		| 
+		| \- indexing a document,
+		| \- generating a search request\.
+		| 
+		| During the index, it is used to define which users, groups, circles, \.\.\.
+		| have access to the IIndexDocument
+		| 
+		| During the search, it is internally use to define to which group, circles, \.\.\.
+		| a user that perform the search belongs to\.
+		
+	
+	:Implemented by:
+		:php:class:`OC\\FullTextSearch\\Model\\DocumentAccess` 
+	
+	
+	:Source:
+		`lib/public/FullTextSearch/Model/IDocumentAccess.php#48 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/IDocumentAccess.php#L48>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $ownerId="")
+	
+		.. rst-class:: phpdoc-description
+		
+			| Owner of the document can be set at the init of the object\.
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/Model/IDocumentAccess.php#60 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/IDocumentAccess.php#L60>`_
+		
+		
+		:Parameters:
+			* **$ownerId** (string)  
+
+		
+		:Since: 16.0.0 IDocumentAccess constructor\.
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setOwnerId( $ownerId)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set the Owner of the document\.
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/Model/IDocumentAccess.php#72 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/IDocumentAccess.php#L72>`_
+		
+		
+		:Parameters:
+			* **$ownerId** (string)  
+
+		
+		:Since: 16.0.0 
+		:Returns: :any:`\\OCP\\FullTextSearch\\Model\\IDocumentAccess <OCP\\FullTextSearch\\Model\\IDocumentAccess>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getOwnerId()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the Owner of the document\.
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/Model/IDocumentAccess.php#81 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/IDocumentAccess.php#L81>`_
+		
+		
+		:Since: 16.0.0 
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setViewerId( $viewerId)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set the viewer of the document\.
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/Model/IDocumentAccess.php#93 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/IDocumentAccess.php#L93>`_
+		
+		
+		:Parameters:
+			* **$viewerId** (string)  
+
+		
+		:Since: 16.0.0 
+		:Returns: :any:`\\OCP\\FullTextSearch\\Model\\IDocumentAccess <OCP\\FullTextSearch\\Model\\IDocumentAccess>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getViewerId()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the viewer of the document\.
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/Model/IDocumentAccess.php#102 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/IDocumentAccess.php#L102>`_
+		
+		
+		:Since: 16.0.0 
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setUsers( $users)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set the list of users that have read access to the document\.
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/Model/IDocumentAccess.php#114 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/IDocumentAccess.php#L114>`_
+		
+		
+		:Parameters:
+			* **$users** (array)  
+
+		
+		:Since: 16.0.0 
+		:Returns: :any:`\\OCP\\FullTextSearch\\Model\\IDocumentAccess <OCP\\FullTextSearch\\Model\\IDocumentAccess>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public addUser( $user)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Add an entry to the list of users that have read access to the document\.
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/Model/IDocumentAccess.php#125 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/IDocumentAccess.php#L125>`_
+		
+		
+		:Parameters:
+			* **$user** (string)  
+
+		
+		:Since: 16.0.0 
+		:Returns: :any:`\\OCP\\FullTextSearch\\Model\\IDocumentAccess <OCP\\FullTextSearch\\Model\\IDocumentAccess>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public addUsers( $users)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Add multiple entries to the list of users that have read access to the
+			| document\.
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/Model/IDocumentAccess.php#137 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/IDocumentAccess.php#L137>`_
+		
+		
+		:Parameters:
+			* **$users** (array)  
+
+		
+		:Since: 16.0.0 
+		:Returns: :any:`\\OCP\\FullTextSearch\\Model\\IDocumentAccess <OCP\\FullTextSearch\\Model\\IDocumentAccess>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getUsers()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the complete list of users that have read access to the document\.
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/Model/IDocumentAccess.php#146 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/IDocumentAccess.php#L146>`_
+		
+		
+		:Since: 16.0.0 
+		:Returns: array 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setGroups( $groups)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set the list of groups that have read access to the document\.
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/Model/IDocumentAccess.php#158 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/IDocumentAccess.php#L158>`_
+		
+		
+		:Parameters:
+			* **$groups** (array)  
+
+		
+		:Since: 16.0.0 
+		:Returns: :any:`\\OCP\\FullTextSearch\\Model\\IDocumentAccess <OCP\\FullTextSearch\\Model\\IDocumentAccess>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public addGroup( $group)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Add an entry to the list of groups that have read access to the document\.
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/Model/IDocumentAccess.php#169 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/IDocumentAccess.php#L169>`_
+		
+		
+		:Parameters:
+			* **$group** (string)  
+
+		
+		:Since: 16.0.0 
+		:Returns: :any:`\\OCP\\FullTextSearch\\Model\\IDocumentAccess <OCP\\FullTextSearch\\Model\\IDocumentAccess>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public addGroups( $groups)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Add multiple entries to the list of groups that have read access to the
+			| document\.
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/Model/IDocumentAccess.php#181 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/IDocumentAccess.php#L181>`_
+		
+		
+		:Parameters:
+			* **$groups** (array)  
+
+		
+		:Since: 16.0.0 
+		:Returns: :any:`\\OCP\\FullTextSearch\\Model\\IDocumentAccess <OCP\\FullTextSearch\\Model\\IDocumentAccess>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getGroups()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the complete list of groups that have read access to the document\.
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/Model/IDocumentAccess.php#190 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/IDocumentAccess.php#L190>`_
+		
+		
+		:Since: 16.0.0 
+		:Returns: array 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setCircles( $circles)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set the list of circles that have read access to the document\.
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/Model/IDocumentAccess.php#202 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/IDocumentAccess.php#L202>`_
+		
+		
+		:Parameters:
+			* **$circles** (array)  
+
+		
+		:Since: 16.0.0 
+		:Returns: :any:`\\OCP\\FullTextSearch\\Model\\IDocumentAccess <OCP\\FullTextSearch\\Model\\IDocumentAccess>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public addCircle( $circle)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Add an entry to the list of circles that have read access to the document\.
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/Model/IDocumentAccess.php#213 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/IDocumentAccess.php#L213>`_
+		
+		
+		:Parameters:
+			* **$circle** (string)  
+
+		
+		:Since: 16.0.0 
+		:Returns: :any:`\\OCP\\FullTextSearch\\Model\\IDocumentAccess <OCP\\FullTextSearch\\Model\\IDocumentAccess>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public addCircles( $circles)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Add multiple entries to the list of groups that have read access to the
+			| document\.
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/Model/IDocumentAccess.php#225 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/IDocumentAccess.php#L225>`_
+		
+		
+		:Parameters:
+			* **$circles** (array)  
+
+		
+		:Since: 16.0.0 
+		:Returns: :any:`\\OCP\\FullTextSearch\\Model\\IDocumentAccess <OCP\\FullTextSearch\\Model\\IDocumentAccess>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getCircles()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the complete list of circles that have read access to the document\.
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/Model/IDocumentAccess.php#234 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/IDocumentAccess.php#L234>`_
+		
+		
+		:Since: 16.0.0 
+		:Returns: array 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setLinks( $links)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set the list of links that have read access to the document\.
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/Model/IDocumentAccess.php#246 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/IDocumentAccess.php#L246>`_
+		
+		
+		:Parameters:
+			* **$links** (array)  
+
+		
+		:Since: 16.0.0 
+		:Returns: :any:`\\OCP\\FullTextSearch\\Model\\IDocumentAccess <OCP\\FullTextSearch\\Model\\IDocumentAccess>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getLinks()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the list of links that have read access to the document\.
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/Model/IDocumentAccess.php#255 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/IDocumentAccess.php#L255>`_
+		
+		
+		:Since: 16.0.0 
+		:Returns: array 
+	
+	
+

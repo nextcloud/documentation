@@ -1,0 +1,132 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IOutput
+=======
+
+
+.. php:namespace:: OCP\AppFramework\Http
+
+.. php:interface:: IOutput
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Very thin wrapper class to make output testable
+		
+	
+	:Implemented by:
+		:php:class:`OC\\AppFramework\\Http\\Output` 
+	
+	
+	:Source:
+		`lib/public/AppFramework/Http/IOutput.php#34 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Http/IOutput.php#L34>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public setOutput( $out)
+	
+		:Source:
+			`lib/public/AppFramework/Http/IOutput.php#40 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Http/IOutput.php#L40>`_
+		
+		
+		:Parameters:
+			* **$out** (string)  
+
+		
+		:Since: 8.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setReadfile( $path)
+	
+		:Source:
+			`lib/public/AppFramework/Http/IOutput.php#48 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Http/IOutput.php#L48>`_
+		
+		
+		:Parameters:
+			* **$path** (string | resource)  or file handle
+
+		
+		:Returns: bool false if an error occurred
+		:Since: 8.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setHeader( $header)
+	
+		:Source:
+			`lib/public/AppFramework/Http/IOutput.php#54 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Http/IOutput.php#L54>`_
+		
+		
+		:Parameters:
+			* **$header** (string)  
+
+		
+		:Since: 8.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getHttpResponseCode()
+	
+		:Source:
+			`lib/public/AppFramework/Http/IOutput.php#60 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Http/IOutput.php#L60>`_
+		
+		
+		:Returns: int returns the current http response code
+		:Since: 8.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setHttpResponseCode( $code)
+	
+		:Source:
+			`lib/public/AppFramework/Http/IOutput.php#66 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Http/IOutput.php#L66>`_
+		
+		
+		:Parameters:
+			* **$code** (int)  sets the http status code
+
+		
+		:Since: 8.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setCookie( $name, $value, $expire, $path, $domain, $secure, $httpOnly, $sameSite=Lax)
+	
+		:Source:
+			`lib/public/AppFramework/Http/IOutput.php#79 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Http/IOutput.php#L79>`_
+		
+		
+		:Parameters:
+			* **$name** (string)  
+			* **$value** (string)  
+			* **$expire** (int)  
+			* **$path** (string)  
+			* **$domain** (string)  
+			* **$secure** (bool)  
+			* **$httpOnly** (bool)  
+			* **$sameSite** (string)  (added in 20)
+
+		
+		:Since: 8.1.0 
+	
+	
+

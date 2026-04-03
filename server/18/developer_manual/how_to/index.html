@@ -1,0 +1,486 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>How to test ... &mdash; Nextcloud latest Developer Manual latest documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'latest',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Bugtracker" href="../bugtracker/index.html" />
+    <link rel="prev" title="External API" href="../core/externalapi.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../general/index.html">General contributor guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../design/index.html">Design guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../android_library/index.html">Android application development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client_apis/index.html">Client APIs</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../core/index.html">Core development</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../core/unit-testing.html">Unit-Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../core/externalapi.html">External API</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">How to test ...</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#redis">Redis</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#cluster">Cluster</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#smb">SMB</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#saml-setup-with-onelogin">SAML setup with onelogin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#collabora-without-ssl">Collabora without SSL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#onlyoffice">OnlyOffice</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../bugtracker/index.html">Bugtracker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../commun/index.html">Help and communication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API reference</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Nextcloud latest Developer Manual</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../core/index.html">Core development</a> &raquo;</li>
+        
+      <li>How to test ...</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/nextcloud/documentation/edit/master/developer_manual/how_to/index.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="how-to-test">
+<h1>How to test ...<a class="headerlink" href="#how-to-test" title="Permalink to this headline">¶</a></h1>
+<p>This page should explain how to test given features in Nextcloud.</p>
+<div class="section" id="redis">
+<h2>Redis<a class="headerlink" href="#redis" title="Permalink to this headline">¶</a></h2>
+<p>First you need to install the <a class="reference external" href="https://github.com/phpredis/phpredis">phpredis extension</a> . There is a install document available <a class="reference external" href="https://github.com/phpredis/phpredis/blob/develop/INSTALL.markdown">inside the repo</a> and many linux distribtutions ship it in their repositories as well.</p>
+<blockquote>
+<div>pecl install redis</div></blockquote>
+<div class="section" id="cluster">
+<h3>Cluster<a class="headerlink" href="#cluster" title="Permalink to this headline">¶</a></h3>
+<p>For a local Redis cluster setup there are some docker script collected in <a class="reference external" href="https://github.com/Grokzen/docker-redis-cluster">this repository</a>. It boils down to clone the repo and run <cite>make up</cite>. Then the redis cluster is available at <code class="docutils literal"><span class="pre">localhost:7000</span></code>.</p>
+<p>Following <code class="docutils literal"><span class="pre">config.php</span></code> can be used:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="s1">&#39;memcache.distributed&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;\OC\Memcache\Redis&#39;</span><span class="p">,</span>
+<span class="s1">&#39;redis.cluster&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+   <span class="s1">&#39;seeds&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span> <span class="o">//</span> <span class="n">provide</span> <span class="n">some</span><span class="o">/</span><span class="nb">all</span> <span class="n">of</span> <span class="n">the</span> <span class="n">cluster</span> <span class="n">servers</span> <span class="n">to</span> <span class="n">bootstrap</span> <span class="n">discovery</span><span class="p">,</span> <span class="n">port</span> <span class="n">required</span>
+      <span class="s1">&#39;localhost:7000&#39;</span><span class="p">,</span>
+   <span class="p">],</span>
+   <span class="s1">&#39;timeout&#39;</span> <span class="o">=&gt;</span> <span class="mf">0.0</span><span class="p">,</span>
+   <span class="s1">&#39;read_timeout&#39;</span> <span class="o">=&gt;</span> <span class="mf">0.0</span><span class="p">,</span>
+   <span class="s1">&#39;failover_mode&#39;</span> <span class="o">=&gt;</span> \<span class="n">RedisCluster</span><span class="p">::</span><span class="n">FAILOVER_ERROR</span><span class="p">,</span>
+<span class="p">],</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="smb">
+<h2>SMB<a class="headerlink" href="#smb" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">samba</span>
+<span class="n">docker</span> <span class="n">run</span> <span class="o">-</span><span class="n">it</span> <span class="o">-</span><span class="n">p</span> <span class="mi">139</span><span class="p">:</span><span class="mi">139</span> <span class="o">-</span><span class="n">p</span> <span class="mi">445</span><span class="p">:</span><span class="mi">445</span> \
+    <span class="o">-</span><span class="n">v</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">samba</span><span class="p">:</span><span class="o">/</span><span class="n">smbmount</span> <span class="n">dperson</span><span class="o">/</span><span class="n">samba</span> \
+    <span class="o">-</span><span class="n">u</span> <span class="s2">&quot;user;password&quot;</span> <span class="o">-</span><span class="n">s</span> <span class="s2">&quot;public;/smbmount;yes;no;yes&quot;</span>
+</pre></div>
+</div>
+<p>Make sure that smbclient is installed on your Nextcloud server and has the following configuration:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># /etc/samba/smb.conf</span>
+<span class="p">[</span><span class="k">global</span><span class="p">]</span>
+<span class="n">client</span> <span class="nb">min</span> <span class="n">protocol</span> <span class="o">=</span> <span class="n">SMB2</span>
+<span class="n">client</span> <span class="nb">max</span> <span class="n">protocol</span> <span class="o">=</span> <span class="n">SMB3</span>
+<span class="n">hide</span> <span class="n">dot</span> <span class="n">files</span> <span class="o">=</span> <span class="n">no</span>
+</pre></div>
+</div>
+<p>The setup can be verified with</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">smbclient</span> <span class="o">//</span><span class="mf">127.0</span><span class="o">.</span><span class="mf">0.1</span><span class="o">/</span><span class="n">public</span> <span class="o">-</span><span class="n">u</span> <span class="n">user</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="saml-setup-with-onelogin">
+<h2>SAML setup with onelogin<a class="headerlink" href="#saml-setup-with-onelogin" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p class="first">create dev account on onelogin.com</p>
+</li>
+<li><p class="first">log into onelogin.com</p>
+</li>
+<li><p class="first">create new app: SAML Test Connector (Advanced)</p>
+<blockquote>
+<div><ul>
+<li><p class="first">go to &#8220;Configuration&#8221;</p>
+<blockquote>
+<div><ul class="simple">
+<li>Audience: <a class="reference external" href="https://localhost/apps/user_saml/saml/metadata">https://localhost/apps/user_saml/saml/metadata</a></li>
+<li>Recipient: <a class="reference external" href="https://localhost/apps/user_saml/saml/acs">https://localhost/apps/user_saml/saml/acs</a></li>
+<li>ACS (Consumer) URL Validator: <a class="reference external" href="https://localhost/apps/user_saml/saml/acs">https://localhost/apps/user_saml/saml/acs</a></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">go to &#8220;Parameters&#8221;</p>
+<blockquote>
+<div><ul class="simple">
+<li>Add &#8220;User.email&#8221; -&gt; email (and add to assertion)</li>
+<li>Add &#8220;User.FirstName&#8221; -&gt; first name (and add to assertion)</li>
+<li>Add &#8220;User.LastName&#8221; -&gt; last name (and add to assertion)</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p class="first">open Nextcloud SAML settings</p>
+<blockquote>
+<div><ul class="simple">
+<li>Select SAML</li>
+<li>Configure it according to <a class="reference external" href="https://portal.nextcloud.com/article/configuring-single-sign-on-10.html">https://portal.nextcloud.com/article/configuring-single-sign-on-10.html</a></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="collabora-without-ssl">
+<h2>Collabora without SSL<a class="headerlink" href="#collabora-without-ssl" title="Permalink to this headline">¶</a></h2>
+<p><strong>1) Start Collabora in a docker container</strong></p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">docker</span> <span class="n">run</span> <span class="o">-</span><span class="n">p</span> <span class="mf">127.0</span><span class="o">.</span><span class="mf">0.1</span><span class="p">:</span><span class="mi">9980</span><span class="p">:</span><span class="mi">9980</span> <span class="o">-</span><span class="n">e</span> <span class="s1">&#39;domain=172.17.0.1&#39;</span> \
+    <span class="o">-</span><span class="n">e</span> <span class="s1">&#39;username=admin&#39;</span> <span class="o">-</span><span class="n">e</span> <span class="s1">&#39;password=487903ffcf4&#39;</span> \
+    <span class="o">-</span><span class="n">e</span> <span class="n">extra_params</span><span class="o">=</span><span class="s1">&#39;--o:ssl.enable=false&#39;</span> \
+    <span class="o">--</span><span class="n">restart</span> <span class="n">always</span> <span class="o">--</span><span class="n">cap</span><span class="o">-</span><span class="n">add</span> <span class="n">MKNOD</span> <span class="n">collabora</span><span class="o">/</span><span class="n">code</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>172.17.0.1 is localhost, which is default by Docker</li>
+<li>get IP of Collabora container: docker inspect &#8211;format=&#8217;{{ .NetworkSettings.IPAddress }}&#8217; $containerName</li>
+</ul>
+<dl class="docutils">
+<dt><strong>2) Configure Nextcloud</strong></dt>
+<dd><ul class="first last simple">
+<li><dl class="first docutils">
+<dt>go to your local cloud (e.g. 172.17.0.1/nc) -&gt; Settings -&gt; Collabora</dt>
+<dd><ul class="first last">
+<li>set URL to IP you found out above, e.g: <a class="reference external" href="http://172.17.0.2:9980">http://172.17.0.2:9980</a></li>
+<li>check &#8220;Disable certificate verification (insecure)</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+<dt><strong>3) Use</strong></dt>
+<dd><ul class="first last simple">
+<li>please note that you cannot use it with localhost, but you have to enter a valid IP address of localhost</li>
+<li>with this approach you can also use it with mobile clients</li>
+</ul>
+</dd>
+<dt><strong>4) Troubleshoot</strong></dt>
+<dd><ul class="first last simple">
+<li><a class="reference external" href="http://172.17.0.2:9980/hosting/capabilities">http://172.17.0.2:9980/hosting/capabilities</a> should give you:</li>
+</ul>
+</dd>
+</dl>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s2">&quot;convert-to&quot;</span><span class="p">:{</span><span class="s2">&quot;available&quot;</span><span class="p">:</span><span class="n">false</span><span class="p">},</span><span class="s2">&quot;hasMobileSupport&quot;</span><span class="p">:</span><span class="n">true</span><span class="p">,</span><span class="s2">&quot;hasTemplateSaveAs&quot;</span><span class="p">:</span><span class="n">true</span><span class="p">,</span><span class="s2">&quot;productName&quot;</span><span class="p">:</span><span class="s2">&quot;Collabora Online Development Edition&quot;</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="onlyoffice">
+<h2>OnlyOffice<a class="headerlink" href="#onlyoffice" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p class="first">Create self signed cert, should be on a permanent path:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="o">-</span><span class="n">p</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">oo</span><span class="o">/</span><span class="n">certs</span>
+<span class="n">cd</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">oo</span><span class="o">/</span><span class="n">certs</span>
+<span class="n">openssl</span> <span class="n">genrsa</span> <span class="o">-</span><span class="n">out</span> <span class="n">onlyoffice</span><span class="o">.</span><span class="n">key</span> <span class="mi">4096</span>
+<span class="n">openssl</span> <span class="n">req</span> <span class="o">-</span><span class="n">new</span> <span class="o">-</span><span class="n">key</span> <span class="n">onlyoffice</span><span class="o">.</span><span class="n">key</span> <span class="o">-</span><span class="n">out</span> <span class="n">onlyoffice</span><span class="o">.</span><span class="n">csr</span>
+<span class="n">openssl</span> <span class="n">x509</span> <span class="o">-</span><span class="n">req</span> <span class="o">-</span><span class="n">days</span> <span class="mi">3650</span> <span class="o">-</span><span class="ow">in</span> <span class="n">onlyoffice</span><span class="o">.</span><span class="n">csr</span> <span class="o">-</span><span class="n">signkey</span> <span class="n">onlyoffice</span><span class="o">.</span><span class="n">key</span> <span class="o">-</span><span class="n">out</span> <span class="n">onlyoffice</span><span class="o">.</span><span class="n">crt</span>
+<span class="n">openssl</span> <span class="n">dhparam</span> <span class="o">-</span><span class="n">out</span> <span class="n">dhparam</span><span class="o">.</span><span class="n">pem</span> <span class="mi">4096</span>
+<span class="n">chmod</span> <span class="mi">400</span> <span class="n">onlyoffice</span><span class="o">.</span><span class="n">key</span>
+<span class="n">chmod</span> <span class="mi">400</span> <span class="n">onlyoffice</span><span class="o">.</span><span class="n">crt</span>
+<span class="n">chmod</span> <span class="mi">400</span> <span class="n">onlyoffice</span><span class="o">.</span><span class="n">csr</span>
+<span class="n">chmod</span> <span class="mi">400</span> <span class="n">dhparam</span><span class="o">.</span><span class="n">pem</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>2) Start docker, important: do not use certs folder, but parent folder:
+docker run &#8211;name=ONLYOFFICEDOCKER -i -t -d -p 4433:443 -e JWT_ENABLED=&#8217;true&#8217; -e JWT_SECRET=&#8217;secret&#8217; &#8211;restart=always -v /tmp/oo/:/var/www/onlyoffice/Data onlyoffice/documentserver</p>
+<p>3) go into docker:
+- docker exec -it ONLYOFFICEDOCKER /bin/bash
+- apt-get update
+- apt-get install vim -y
+- vim ./etc/onlyoffice/documentserver/default.json</p>
+<blockquote>
+<div><ul class="simple">
+<li>change rejectUnauthorized to false</li>
+</ul>
+</div></blockquote>
+<ul>
+<li><dl class="first docutils">
+<dt>vim /etc/onlyoffice/documentserver/local.json</dt>
+<dd><ul class="first last simple">
+<li>change token -&gt; inbox -&gt; header to &#8220;AuthorizationJWT&#8221;</li>
+<li>change token -&gt; outbox -&gt; header to &#8220;AuthorizationJWT&#8221;</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p class="first">Add the following to your config.php:</p>
+<blockquote>
+<div><div class="highlight-default"><div class="highlight"><pre><span></span><span class="s1">&#39;onlyoffice&#39;</span> <span class="o">=&gt;</span> <span class="n">array</span> <span class="p">(</span>
+    <span class="s1">&#39;verify_peer_off&#39;</span> <span class="o">=&gt;</span> <span class="n">true</span><span class="p">,</span>
+    <span class="s1">&#39;jwt_secret&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;secret&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;jwt_header&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;AuthorizationJWT&#39;</span>
+<span class="p">),</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><dl class="first docutils">
+<dt>test with local ip: <a class="reference external" href="https://localhost:4433">https://localhost:4433</a></dt>
+<dd><ul class="first last simple">
+<li>accept cert warning</li>
+<li>verify that &#8220;Document Server is running&#8221; is shown</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>on Nextcloud</dt>
+<dd><ul class="first last simple">
+<li>download &amp; enable OnlyOffice app</li>
+<li><dl class="first docutils">
+<dt>configure:</dt>
+<dd><ul class="first last">
+<li>Document Editing Service address: <a class="reference external" href="https://localhost:4433/">https://localhost:4433/</a></li>
+<li>Secret key : secret (as above)</li>
+<li>Document Editing Service address for internal requests from the server: <a class="reference external" href="https://localhost:4433/">https://localhost:4433/</a></li>
+<li>Server address for internal requests from the Document Editing Service: <a class="reference external" href="http://192.168.1.95/nc16/">http://192.168.1.95/nc16/</a> (needs to be real IP address, as localhost points to docker)</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../bugtracker/index.html" class="btn btn-neutral float-right" title="Bugtracker" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../core/externalapi.html" class="btn btn-neutral float-left" title="External API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021 Nextcloud GmbH.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/16/developer_manual">16</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/17/developer_manual">17</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/18/developer_manual">18</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/19/developer_manual">19</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/developer_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/developer_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+   
+
+</body>
+</html>

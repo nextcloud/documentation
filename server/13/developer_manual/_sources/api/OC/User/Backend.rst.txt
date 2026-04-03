@@ -1,0 +1,310 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+Backend
+=======
+
+
+.. php:namespace:: OC\User
+
+.. rst-class::  abstract
+
+.. php:class:: Backend
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Abstract base class for user management\. Provides methods for querying backend
+		| capabilities\.
+		
+	
+	:Source:
+		`lib/private/User/Backend.php#33 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/Backend.php#L33>`_
+	
+	:Implements:
+		:php:interface:`OCP\\UserInterface` 
+	
+
+Constants
+---------
+
+.. php:const:: NOT_IMPLEMENTED = \-501
+
+	.. rst-class:: phpdoc-description
+	
+		| error code for functions not provided by the user backend
+		
+	
+	:Source:
+		`lib/private/User/Backend.php#37 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/Backend.php#L37>`_
+	
+
+
+.. php:const:: CREATE_USER = 1
+
+	.. rst-class:: phpdoc-description
+	
+		| actions that user backends can define
+		
+	
+	:Source:
+		`lib/private/User/Backend.php#42 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/Backend.php#L42>`_
+	
+
+
+.. php:const:: SET_PASSWORD = 16
+
+	:Source:
+		`lib/private/User/Backend.php#43 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/Backend.php#L43>`_
+	
+
+
+.. php:const:: CHECK_PASSWORD = 256
+
+	:Source:
+		`lib/private/User/Backend.php#44 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/Backend.php#L44>`_
+	
+
+
+.. php:const:: GET_HOME = 4096
+
+	:Source:
+		`lib/private/User/Backend.php#45 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/Backend.php#L45>`_
+	
+
+
+.. php:const:: GET_DISPLAYNAME = 65536
+
+	:Source:
+		`lib/private/User/Backend.php#46 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/Backend.php#L46>`_
+	
+
+
+.. php:const:: SET_DISPLAYNAME = 1048576
+
+	:Source:
+		`lib/private/User/Backend.php#47 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/Backend.php#L47>`_
+	
+
+
+.. php:const:: PROVIDE_AVATAR = 16777216
+
+	:Source:
+		`lib/private/User/Backend.php#48 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/Backend.php#L48>`_
+	
+
+
+.. php:const:: COUNT_USERS = 268435456
+
+	:Source:
+		`lib/private/User/Backend.php#49 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/Backend.php#L49>`_
+	
+
+
+Properties
+----------
+
+.. php:attr:: protected static possibleActions
+
+	:Source:
+		`lib/private/User/Backend.php#51 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/Backend.php#L51>`_
+	
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public getSupportedActions()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get all supported actions
+			
+		
+		:Source:
+			`lib/private/User/Backend.php#69 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/Backend.php#L69>`_
+		
+		
+		:Returns: int bitwise\-or\'ed actions
+			
+			Returns the supported actions as int to be
+			compared with self::CREATE\_USER etc\.
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public implementsActions( $actions)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check if backend implements actions
+			
+		
+		:Source:
+			`lib/private/User/Backend.php#88 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/Backend.php#L88>`_
+		
+		
+		:Parameters:
+			* **$actions** (int)  bitwise-or'ed actions
+
+		
+		:Returns: bool Returns the supported actions as int to be
+			compared with self::CREATE\_USER etc\.
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public deleteUser( $uid)
+	
+		.. rst-class:: phpdoc-description
+		
+			| delete a user
+			
+		
+		:Source:
+			`lib/private/User/Backend.php#99 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/Backend.php#L99>`_
+		
+		
+		:Parameters:
+			* **$uid** (string)  The username of the user to delete
+
+		
+		:Returns: bool Deletes a user
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getUsers( $search="", $limit=null, $offset=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get a list of all users
+			
+		
+		:Source:
+			`lib/private/User/Backend.php#111 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/Backend.php#L111>`_
+		
+		
+		:Parameters:
+			* **$search** (string)  
+			* **$limit** (null | int)  
+			* **$offset** (null | int)  
+
+		
+		:Returns: string[] an array of all uids
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public userExists( $uid)
+	
+		.. rst-class:: phpdoc-description
+		
+			| check if a user exists
+			
+		
+		:Source:
+			`lib/private/User/Backend.php#120 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/Backend.php#L120>`_
+		
+		
+		:Parameters:
+			* **$uid** (string)  the username
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getHome( $uid)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get the user\'s home directory
+			
+		
+		:Source:
+			`lib/private/User/Backend.php#129 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/Backend.php#L129>`_
+		
+		
+		:Parameters:
+			* **$uid** (string)  the username
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getDisplayName( $uid)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get display name of the user
+			
+		
+		:Source:
+			`lib/private/User/Backend.php#138 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/Backend.php#L138>`_
+		
+		
+		:Parameters:
+			* **$uid** (string)  user ID of the user
+
+		
+		:Returns: string display name
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getDisplayNames( $search="", $limit=null, $offset=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get a list of all display names and user ids\.
+			
+		
+		:Source:
+			`lib/private/User/Backend.php#150 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/Backend.php#L150>`_
+		
+		
+		:Parameters:
+			* **$search** (string)  
+			* **$limit** (int | null)  
+			* **$offset** (int | null)  
+
+		
+		:Returns: array an array of all displayNames \(value\) and the corresponding uids \(key\)
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public hasUserListings()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check if a user list is available or not
+			
+		
+		:Source:
+			`lib/private/User/Backend.php#163 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/Backend.php#L163>`_
+		
+		
+		:Returns: bool if users can be listed or not
+	
+	
+

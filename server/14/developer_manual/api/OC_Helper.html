@@ -1,0 +1,780 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>OC_Helper &mdash; Nextcloud 14 Developer Manual 14 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'14',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="OC_Defaults" href="OC_Defaults.html" />
+    <link rel="prev" title="OC_Hook" href="OC_Hook.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../general/index.html">General contributor guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/startapp.html">Create an app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/init.html">Navigation and pre-app configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/info.html">App metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/classloader.html">Classloader</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/request.html">Request lifecycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/routes.html">Routing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/middleware.html">Middleware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/container.html">Container</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/controllers.html">Controllers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/api.html">RESTful API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/templates.html">Templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/js.html">JavaScript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/css.html">CSS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/l10n.html">Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/theming.html">Theming support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/schema.html">Database schema</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/database.html">Database access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/filesystem.html">Filesystem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/appdata.html">AppData</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/users.html">User management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/two-factor-provider.html">Two-factor providers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/hooks.html">Hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/backgroundjobs.html">Background jobs (Cron)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/settings.html">Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/logging.html">Logging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/migrations.html">Migrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/repair.html">Repair steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/publishing.html">App store publishing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/code_signing.html">Code signing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../design/index.html">Design guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../android_library/index.html">Android application development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client_apis/index.html">Client APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../core/index.html">Core development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bugtracker/index.html">Bugtracker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../commun/index.html">Help and communication</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">API Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../api.html#php-public-api">PHP public API</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../api.html#php-class-reference">PHP class reference</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">/ namespace</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="index.html#namespaces">Namespaces</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="index.html#classes">Classes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="index.html#functions">Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="OC/index.html">/OC namespace</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Nextcloud 14 Developer Manual</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../api.html">API Documentation</a> &raquo;</li>
+        
+          <li><a href="index.html">\</a> &raquo;</li>
+        
+      <li>OC_Helper</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/nextcloud/documentation/edit/stable14/developer_manual/api/OC_Helper.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="phpdoctorst section" id="oc-helper">
+<h1>OC_Helper<a class="headerlink" href="#oc-helper" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="OC_Helper">
+<em class="property">class </em><code class="descname">OC_Helper</code><a class="headerlink" href="#OC_Helper" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Collection of useful functions</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Helper.php#L53">lib/private/legacy/OC_Helper.php#53</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<div class="section" id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h2>
+<dl class="public static method">
+<dt id="OC_Helper::humanFileSize">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC_Helper::</code><code class="descname">humanFileSize</code><span class="sig-paren">(</span><em>$bytes</em><span class="sig-paren">)</span><a class="headerlink" href="#OC_Helper::humanFileSize" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Make a human file size</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Helper.php#L63">lib/private/legacy/OC_Helper.php#63</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$bytes</strong> (int)  file size in bytes</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">string a human readable file size</p>
+<p class="last">Makes 2048 to 2 kB.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC_Helper::computerFileSize">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC_Helper::</code><code class="descname">computerFileSize</code><span class="sig-paren">(</span><em>$str</em><span class="sig-paren">)</span><a class="headerlink" href="#OC_Helper::computerFileSize" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Make a computer file size</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Helper.php#L100">lib/private/legacy/OC_Helper.php#100</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$str</strong> (string)  file size in human readable format</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">float | bool a file size in bytes</p>
+<p>Makes 2kB to 2048.</p>
+<p class="last">Inspired by: <a class="reference external" href="https://www.php.net/manual/en/function.filesize.php">https://www.php.net/manual/en/function.filesize.php</a>#92418</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC_Helper::copyr">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC_Helper::</code><code class="descname">copyr</code><span class="sig-paren">(</span><em>$src</em>, <em>$dest</em><span class="sig-paren">)</span><a class="headerlink" href="#OC_Helper::copyr" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Recursive copying of folders</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Helper.php#L139">lib/private/legacy/OC_Helper.php#139</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>$src</strong> (string)  source folder</li>
+<li><strong>$dest</strong> (string)  target folder</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC_Helper::rmdirr">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC_Helper::</code><code class="descname">rmdirr</code><span class="sig-paren">(</span><em>$dir</em>, <em>$deleteSelf=\true</em><span class="sig-paren">)</span><a class="headerlink" href="#OC_Helper::rmdirr" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Recursive deletion of folders</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Helper.php#L161">lib/private/legacy/OC_Helper.php#161</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$dir</strong> (string)  path to the folder</li>
+<li><strong>$deleteSelf</strong> (bool)  if set to false only the content of the folder will be deleted</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static deprecated method">
+<dt id="OC_Helper::getFileTemplateManager">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC_Helper::</code><code class="descname">getFileTemplateManager</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC_Helper::getFileTemplateManager" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Helper.php#L197">lib/private/legacy/OC_Helper.php#197</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Deprecated:</th><td class="field-body">18.0.0</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="OC/Files/Type/TemplateManager.html#OC\Files\Type\TemplateManager" title="OC\Files\Type\TemplateManager"><code class="xref any php php-trait docutils literal"><span class="pre">\OC\Files\Type\TemplateManager</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC_Helper::canExecute">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC_Helper::</code><code class="descname">canExecute</code><span class="sig-paren">(</span><em>$name</em>, <em>$path=\false</em><span class="sig-paren">)</span><a class="headerlink" href="#OC_Helper::canExecute" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">detect if a given program is found in the search PATH</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Helper.php#L213">lib/private/legacy/OC_Helper.php#213</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$name</strong> (string)</li>
+<li><strong>$path</strong> (bool)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">bool true if executable program found in path</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC_Helper::streamCopy">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC_Helper::</code><code class="descname">streamCopy</code><span class="sig-paren">(</span><em>$source</em>, <em>$target</em><span class="sig-paren">)</span><a class="headerlink" href="#OC_Helper::streamCopy" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">copy the contents of one stream to another</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Helper.php#L250">lib/private/legacy/OC_Helper.php#250</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$source</strong> (resource)</li>
+<li><strong>$target</strong> (resource)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">array the number of bytes copied and result</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC_Helper::buildNotExistingFileName">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC_Helper::</code><code class="descname">buildNotExistingFileName</code><span class="sig-paren">(</span><em>$path</em>, <em>$filename</em><span class="sig-paren">)</span><a class="headerlink" href="#OC_Helper::buildNotExistingFileName" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Adds a suffix to the name in case the file exists</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Helper.php#L283">lib/private/legacy/OC_Helper.php#283</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$path</strong> (string)</li>
+<li><strong>$filename</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">string</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC_Helper::buildNotExistingFileNameForView">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC_Helper::</code><code class="descname">buildNotExistingFileNameForView</code><span class="sig-paren">(</span><em>$path</em>, <em>$filename</em>, <em>$view</em><span class="sig-paren">)</span><a class="headerlink" href="#OC_Helper::buildNotExistingFileNameForView" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Adds a suffix to the name in case the file exists</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Helper.php#L295">lib/private/legacy/OC_Helper.php#295</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$path</strong> (string)</li>
+<li><strong>$filename</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">string</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC_Helper::mb_array_change_key_case">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC_Helper::</code><code class="descname">mb_array_change_key_case</code><span class="sig-paren">(</span><em>$input</em>, <em>$case=\MB_CASE_LOWER</em>, <em>$encoding=UTF-8</em><span class="sig-paren">)</span><a class="headerlink" href="#OC_Helper::mb_array_change_key_case" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Returns an array with all keys from input lowercased or uppercased. Numbered indices are left as is.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Helper.php#L347">lib/private/legacy/OC_Helper.php#347</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$input</strong> (array)  The array to work on</li>
+<li><strong>$case</strong> (int)  Either MB_CASE_UPPER or MB_CASE_LOWER (default)</li>
+<li><strong>$encoding</strong> (string)  The encoding parameter is the character encoding. Defaults to UTF-8</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">array Returns an array with all keys from input lowercased or uppercased. Numbered indices are left as is.
+based on <a class="reference external" href="https://www.php.net/manual/en/function.array-change-key-case.php">https://www.php.net/manual/en/function.array-change-key-case.php</a>#107715</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC_Helper::recursiveArraySearch">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC_Helper::</code><code class="descname">recursiveArraySearch</code><span class="sig-paren">(</span><em>$haystack</em>, <em>$needle</em>, <em>$index=\null</em><span class="sig-paren">)</span><a class="headerlink" href="#OC_Helper::recursiveArraySearch" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">performs a search in a nested array</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Helper.php#L367">lib/private/legacy/OC_Helper.php#367</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$haystack</strong> (array)  the array to be searched</li>
+<li><strong>$needle</strong> (string)  the search string</li>
+<li><strong>$index</strong> (mixed)  optional, only search this key name</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">mixed the key of the matching field, otherwise false</p>
+<p>performs a search in a nested array</p>
+<p class="last">taken from <a class="reference external" href="https://www.php.net/manual/en/function.array-search.php">https://www.php.net/manual/en/function.array-search.php</a>#97645</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC_Helper::maxUploadFilesize">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC_Helper::</code><code class="descname">maxUploadFilesize</code><span class="sig-paren">(</span><em>$dir</em>, <em>$freeSpace=\null</em><span class="sig-paren">)</span><a class="headerlink" href="#OC_Helper::maxUploadFilesize" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">calculates the maximum upload size respecting system settings, free space and user quota</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Helper.php#L389">lib/private/legacy/OC_Helper.php#389</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$dir</strong> (string)  the current folder where the user currently operates</li>
+<li><strong>$freeSpace</strong> (int)  the number of bytes free on the storage holding $dir, if not set this will be received from the storage directly</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">int number of bytes representing</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC_Helper::freeSpace">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC_Helper::</code><code class="descname">freeSpace</code><span class="sig-paren">(</span><em>$dir</em><span class="sig-paren">)</span><a class="headerlink" href="#OC_Helper::freeSpace" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Calculate free space left within user quota</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Helper.php#L402">lib/private/legacy/OC_Helper.php#402</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$dir</strong> (string)  the current folder where the user currently operates</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">int number of bytes representing</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC_Helper::uploadLimit">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC_Helper::</code><code class="descname">uploadLimit</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC_Helper::uploadLimit" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Calculate PHP upload limit</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Helper.php#L417">lib/private/legacy/OC_Helper.php#417</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">int PHP upload file size limit</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC_Helper::is_function_enabled">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC_Helper::</code><code class="descname">is_function_enabled</code><span class="sig-paren">(</span><em>$function_name</em><span class="sig-paren">)</span><a class="headerlink" href="#OC_Helper::is_function_enabled" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Checks if a function is available</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Helper.php#L436">lib/private/legacy/OC_Helper.php#436</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$function_name</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC_Helper::findBinaryPath">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC_Helper::</code><code class="descname">findBinaryPath</code><span class="sig-paren">(</span><em>$program</em><span class="sig-paren">)</span><a class="headerlink" href="#OC_Helper::findBinaryPath" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Try to find a program</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Helper.php#L460">lib/private/legacy/OC_Helper.php#460</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$program</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">null | string</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC_Helper::getStorageInfo">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC_Helper::</code><code class="descname">getStorageInfo</code><span class="sig-paren">(</span><em>$path</em>, <em>$rootInfo=\null</em><span class="sig-paren">)</span><a class="headerlink" href="#OC_Helper::getStorageInfo" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Calculate the disc space for the given path</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">BEWARE: this requires that Util::setupFS() was called</div>
+<div class="line">already !</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Helper.php#L487">lib/private/legacy/OC_Helper.php#487</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$path</strong> (string)</li>
+<li><strong>$rootInfo</strong> (<a class="reference internal" href="OCP/Files/FileInfo.html#OCP\Files\FileInfo" title="OCP\Files\FileInfo"><code class="xref any php php-trait docutils literal"><span class="pre">OCP\Files\FileInfo</span></code></a>)  (optional)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">array</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><p class="first last"><a class="reference internal" href="OCP/Files/NotFoundException.html#OCP\Files\NotFoundException" title="OCP\Files\NotFoundException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\NotFoundException</span></code></a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC_Helper::isReadOnlyConfigEnabled">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC_Helper::</code><code class="descname">isReadOnlyConfigEnabled</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC_Helper::isReadOnlyConfigEnabled" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Returns whether the config file is set manually to read-only</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Helper.php#L610">lib/private/legacy/OC_Helper.php#610</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="OC_Defaults.html" class="btn btn-neutral float-right" title="OC_Defaults" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="OC_Hook.html" class="btn btn-neutral float-left" title="OC_Hook" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021 Nextcloud GmbH.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: 14
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/14/developer_manual">14</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/15/developer_manual">15</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/16/developer_manual">16</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/developer_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/developer_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+   
+
+</body>
+</html>

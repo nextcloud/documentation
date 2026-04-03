@@ -1,0 +1,64 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+ISorter
+=======
+
+
+.. php:namespace:: OCP\Collaboration\AutoComplete
+
+.. php:interface:: ISorter
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Interface ISorter
+		
+		| Sorts the list of \.e\.g users for auto completion
+		
+	
+	:Source:
+		`lib/public/Collaboration/AutoComplete/ISorter.php#33 <https://github.com/nextcloud/server/blob/stable13/lib/public/Collaboration/AutoComplete/ISorter.php#L33>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public getId()
+	
+		:Source:
+			`lib/public/Collaboration/AutoComplete/ISorter.php#39 <https://github.com/nextcloud/server/blob/stable13/lib/public/Collaboration/AutoComplete/ISorter.php#L39>`_
+		
+		
+		:Returns: string The ID of the sorter, e\.g\. commenters
+		:Since: 13.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public sort( &$sortArray, $context)
+	
+		.. rst-class:: phpdoc-description
+		
+			| executes the sort action
+			
+		
+		:Source:
+			`lib/public/Collaboration/AutoComplete/ISorter.php#48 <https://github.com/nextcloud/server/blob/stable13/lib/public/Collaboration/AutoComplete/ISorter.php#L48>`_
+		
+		
+		:Parameters:
+			* **$sortArray** (array)  the array to be sorted, provided as reference
+			* **$context** (array)  carries key 'itemType' and 'itemId' of the source object (e.g. a file)
+
+		
+		:Since: 13.0.0 
+	
+	
+

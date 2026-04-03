@@ -1,0 +1,184 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+Scanner
+=======
+
+
+.. php:namespace:: OC\Files\Utils
+
+.. php:class:: Scanner
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Class Scanner
+		
+		| Hooks available in scope \\OC\\Utils\\Scanner
+		| \- scanFile\(string $absolutePath\)
+		| \- scanFolder\(string $absolutePath\)
+		
+	
+	:Source:
+		`lib/private/Files/Utils/Scanner.php#63 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Utils/Scanner.php#L63>`_
+	
+	:Parent:
+		:php:class:`OC\\Hooks\\PublicEmitter`
+	
+
+Constants
+---------
+
+.. php:const:: MAX_ENTRIES_TO_COMMIT = 10000
+
+	:Source:
+		`lib/private/Files/Utils/Scanner.php#64 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Utils/Scanner.php#L64>`_
+	
+
+
+Properties
+----------
+
+.. php:attr:: protected static db
+
+	:Source:
+		`lib/private/Files/Utils/Scanner.php#70 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Utils/Scanner.php#L70>`_
+	
+	:Type: :any:`\\OCP\\IDBConnection <OCP\\IDBConnection>` 
+
+
+.. php:attr:: protected static logger
+
+	:Source:
+		`lib/private/Files/Utils/Scanner.php#76 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Utils/Scanner.php#L76>`_
+	
+	:Type: :any:`\\OCP\\ILogger <OCP\\ILogger>` 
+
+
+.. php:attr:: protected static useTransaction
+
+	.. rst-class:: phpdoc-description
+	
+		| Whether to use a DB transaction
+		
+	
+	:Source:
+		`lib/private/Files/Utils/Scanner.php#83 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Utils/Scanner.php#L83>`_
+	
+	:Type: bool 
+
+
+.. php:attr:: protected static entriesToCommit
+
+	.. rst-class:: phpdoc-description
+	
+		| Number of entries scanned to commit
+		
+	
+	:Source:
+		`lib/private/Files/Utils/Scanner.php#90 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Utils/Scanner.php#L90>`_
+	
+	:Type: int 
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $user, $db, $dispatcher, $logger)
+	
+		:Source:
+			`lib/private/Files/Utils/Scanner.php#98 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Utils/Scanner.php#L98>`_
+		
+		
+		:Parameters:
+			* **$user** (string)  
+			* **$db** (:any:`OCP\\IDBConnection <OCP\\IDBConnection>` | null)  
+			* **$dispatcher** (:any:`OCP\\EventDispatcher\\IEventDispatcher <OCP\\EventDispatcher\\IEventDispatcher>`)  
+			* **$logger** (:any:`OCP\\ILogger <OCP\\ILogger>`)  
+
+		
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected getMounts( $dir)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get all storages for $dir
+			
+		
+		:Source:
+			`lib/private/Files/Utils/Scanner.php#113 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Utils/Scanner.php#L113>`_
+		
+		
+		:Parameters:
+			* **$dir** (string)  
+
+		
+		:Returns: :any:`\\OC\\Files\\Mount\\MountPoint\[\] <OC\\Files\\Mount\\MountPoint>` 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected attachListener( $mount)
+	
+		.. rst-class:: phpdoc-description
+		
+			| attach listeners to the scanner
+			
+		
+		:Source:
+			`lib/private/Files/Utils/Scanner.php#131 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Utils/Scanner.php#L131>`_
+		
+		
+		:Parameters:
+			* **$mount** (:any:`OC\\Files\\Mount\\MountPoint <OC\\Files\\Mount\\MountPoint>`)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public backgroundScan( $dir)
+	
+		:Source:
+			`lib/private/Files/Utils/Scanner.php#154 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Utils/Scanner.php#L154>`_
+		
+		
+		:Parameters:
+			* **$dir** (string)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public scan( $dir="", $recursive=\\OC\\Files\\Cache\\Scanner::SCAN\_RECURSIVE, $mountFilter=null)
+	
+		:Source:
+			`lib/private/Files/Utils/Scanner.php#198 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Utils/Scanner.php#L198>`_
+		
+		
+		:Parameters:
+			* **$dir** (string)  
+			* **$recursive**  
+			* **$mountFilter** (callable | null)  
+
+		
+		:Throws: :any:`\\OC\\ForbiddenException <OC\\ForbiddenException>` 
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+		:Throws: :any:`\\OC\\ForbiddenException <OC\\ForbiddenException>` 
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+	
+	
+

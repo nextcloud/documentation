@@ -1,0 +1,604 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>PsrLoggerAdapter &mdash; Nextcloud 13 Developer Manual 13 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../../',
+              VERSION:'13',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Syslog" href="Syslog.html" />
+    <link rel="prev" title="Log" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html">
+          
+
+          
+            
+            <img src="../../../_static/logo-white.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../general/index.html">General contributor guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/startapp.html">Create an app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/init.html">Navigation and pre-app configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/info.html">App metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/classloader.html">Classloader</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/request.html">Request lifecycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/routes.html">Routing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/middleware.html">Middleware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/container.html">Container</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/controllers.html">Controllers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/api.html">RESTful API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/templates.html">Templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/js.html">JavaScript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/css.html">CSS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/l10n.html">Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/theming.html">Theming support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/schema.html">Database schema</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/database.html">Database access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/filesystem.html">Filesystem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/appdata.html">AppData</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/users.html">User management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/two-factor-provider.html">Two-factor providers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/hooks.html">Hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/backgroundjobs.html">Background jobs (Cron)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/settings.html">Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/logging.html">Logging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/migrations.html">Migrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/repair.html">Repair steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/publishing.html">App store publishing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/code_signing.html">Code signing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../design/index.html">Design guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../android_library/index.html">Android application development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../client_apis/index.html">Client APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../core/translation.html">Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../core/unit-testing.html">Unit-Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../core/theming.html">Theming Nextcloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../core/externalapi.html">External API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../core/ocs-share-api.html">OCS Share API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../core/index.html">Core development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../bugtracker/index.html">Bugtracker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../commun/index.html">Help and communication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api.html">API Documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Nextcloud 13 Developer Manual</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../../api.html">API Documentation</a> &raquo;</li>
+        
+          <li><a href="../../index.html">\</a> &raquo;</li>
+        
+          <li><a href="../index.html">OC</a> &raquo;</li>
+        
+          <li><a href="index.html">Log</a> &raquo;</li>
+        
+      <li>PsrLoggerAdapter</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/nextcloud/documentation/edit/stable13/developer_manual/api/OC/Log/PsrLoggerAdapter.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="phpdoctorst section" id="namespace-OC\Log">
+<span id="psrloggeradapter"></span><h1>PsrLoggerAdapter<a class="headerlink" href="#namespace-OC\Log" title="Permalink to this headline">¶</a></h1>
+<dl class="final class">
+<dt id="OC\Log\PsrLoggerAdapter">
+<em class="property">class </em><code class="descclassname">OC\Log\</code><code class="descname">PsrLoggerAdapter</code><a class="headerlink" href="#OC\Log\PsrLoggerAdapter" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Log/PsrLoggerAdapter.php#L38">lib/private/Log/PsrLoggerAdapter.php#38</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Implements:</th><td class="field-body"><code class="xref php php-interface docutils literal"><span class="pre">Psr\Log\LoggerInterface</span></code> <a class="reference internal" href="../../OCP/Log/IDataLogger.html#OCP\Log\IDataLogger" title="OCP\Log\IDataLogger"><code class="xref php php-interface docutils literal"><span class="pre">OCP\Log\IDataLogger</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<div class="section" id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h2>
+<dl class="public method">
+<dt id="OC\Log\PsrLoggerAdapter::__construct">
+<em class="property">public </em><code class="descclassname">OC\Log\PsrLoggerAdapter::</code><code class="descname">__construct</code><span class="sig-paren">(</span><em>$logger</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Log\PsrLoggerAdapter::__construct" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Log/PsrLoggerAdapter.php#L43">lib/private/Log/PsrLoggerAdapter.php#43</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Log\PsrLoggerAdapter::emergency">
+<em class="property">public </em><code class="descclassname">OC\Log\PsrLoggerAdapter::</code><code class="descname">emergency</code><span class="sig-paren">(</span><em>$message</em>, <em>$context=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Log\PsrLoggerAdapter::emergency" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">System is unusable.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Log/PsrLoggerAdapter.php#L59">lib/private/Log/PsrLoggerAdapter.php#59</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$message</strong> (string)</li>
+<li><strong>$context</strong> (array)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Log\PsrLoggerAdapter::alert">
+<em class="property">public </em><code class="descclassname">OC\Log\PsrLoggerAdapter::</code><code class="descname">alert</code><span class="sig-paren">(</span><em>$message</em>, <em>$context=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Log\PsrLoggerAdapter::alert" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Action must be taken immediately.</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">Example: Entire website down, database unavailable, etc. This should</div>
+<div class="line">trigger the SMS alerts and wake you up.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Log/PsrLoggerAdapter.php#L84">lib/private/Log/PsrLoggerAdapter.php#84</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$message</strong> (string)</li>
+<li><strong>$context</strong> (array)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Log\PsrLoggerAdapter::critical">
+<em class="property">public </em><code class="descclassname">OC\Log\PsrLoggerAdapter::</code><code class="descname">critical</code><span class="sig-paren">(</span><em>$message</em>, <em>$context=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Log\PsrLoggerAdapter::critical" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Critical conditions.</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">Example: Application component unavailable, unexpected exception.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Log/PsrLoggerAdapter.php#L108">lib/private/Log/PsrLoggerAdapter.php#108</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$message</strong> (string)</li>
+<li><strong>$context</strong> (array)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Log\PsrLoggerAdapter::error">
+<em class="property">public </em><code class="descclassname">OC\Log\PsrLoggerAdapter::</code><code class="descname">error</code><span class="sig-paren">(</span><em>$message</em>, <em>$context=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Log\PsrLoggerAdapter::error" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Runtime errors that do not require immediate action but should typically</div>
+<div class="line">be logged and monitored.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Log/PsrLoggerAdapter.php#L131">lib/private/Log/PsrLoggerAdapter.php#131</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$message</strong> (string)</li>
+<li><strong>$context</strong> (array)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Log\PsrLoggerAdapter::warning">
+<em class="property">public </em><code class="descclassname">OC\Log\PsrLoggerAdapter::</code><code class="descname">warning</code><span class="sig-paren">(</span><em>$message</em>, <em>$context=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Log\PsrLoggerAdapter::warning" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Exceptional occurrences that are not errors.</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">Example: Use of deprecated APIs, poor use of an API, undesirable things</div>
+<div class="line">that are not necessarily wrong.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Log/PsrLoggerAdapter.php#L156">lib/private/Log/PsrLoggerAdapter.php#156</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$message</strong> (string)</li>
+<li><strong>$context</strong> (array)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Log\PsrLoggerAdapter::notice">
+<em class="property">public </em><code class="descclassname">OC\Log\PsrLoggerAdapter::</code><code class="descname">notice</code><span class="sig-paren">(</span><em>$message</em>, <em>$context=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Log\PsrLoggerAdapter::notice" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Normal but significant events.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Log/PsrLoggerAdapter.php#L178">lib/private/Log/PsrLoggerAdapter.php#178</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$message</strong> (string)</li>
+<li><strong>$context</strong> (array)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Log\PsrLoggerAdapter::info">
+<em class="property">public </em><code class="descclassname">OC\Log\PsrLoggerAdapter::</code><code class="descname">info</code><span class="sig-paren">(</span><em>$message</em>, <em>$context=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Log\PsrLoggerAdapter::info" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Interesting events.</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">Example: User logs in, SQL logs.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Log/PsrLoggerAdapter.php#L202">lib/private/Log/PsrLoggerAdapter.php#202</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$message</strong> (string)</li>
+<li><strong>$context</strong> (array)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Log\PsrLoggerAdapter::debug">
+<em class="property">public </em><code class="descclassname">OC\Log\PsrLoggerAdapter::</code><code class="descname">debug</code><span class="sig-paren">(</span><em>$message</em>, <em>$context=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Log\PsrLoggerAdapter::debug" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Detailed debug information.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Log/PsrLoggerAdapter.php#L224">lib/private/Log/PsrLoggerAdapter.php#224</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$message</strong> (string)</li>
+<li><strong>$context</strong> (array)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Log\PsrLoggerAdapter::log">
+<em class="property">public </em><code class="descclassname">OC\Log\PsrLoggerAdapter::</code><code class="descname">log</code><span class="sig-paren">(</span><em>$level</em>, <em>$message</em>, <em>$context=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Log\PsrLoggerAdapter::log" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Logs with an arbitrary level.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Log/PsrLoggerAdapter.php#L249">lib/private/Log/PsrLoggerAdapter.php#249</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$level</strong> (mixed)</li>
+<li><strong>$message</strong> (string)</li>
+<li><strong>$context</strong> (array)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">void</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><p class="first last"><code class="xref any docutils literal"><span class="pre">\Psr\Log\InvalidArgumentException</span></code></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Log\PsrLoggerAdapter::logData">
+<em class="property">public </em><code class="descclassname">OC\Log\PsrLoggerAdapter::</code><code class="descname">logData</code><span class="sig-paren">(</span><em>$message</em>, <em>$data</em>, <em>$context=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Log\PsrLoggerAdapter::logData" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Log/PsrLoggerAdapter.php#L266">lib/private/Log/PsrLoggerAdapter.php#266</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="Syslog.html" class="btn btn-neutral float-right" title="Syslog" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="index.html" class="btn btn-neutral float-left" title="Log" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021 Nextcloud GmbH.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: 13
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/13/developer_manual">13</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/14/developer_manual">14</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/15/developer_manual">15</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/developer_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/developer_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+   
+
+</body>
+</html>

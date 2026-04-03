@@ -1,0 +1,194 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+File
+====
+
+
+.. php:namespace:: OCP\Files
+
+.. php:interface:: File
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Interface File
+		
+	
+	:Implemented by:
+		:php:class:`OC\\Files\\Node\\File` 
+	
+	
+	:Source:
+		`lib/public/Files/File.php#43 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/File.php#L43>`_
+	
+	:Parent:
+		:php:interface:`OCP\\Files\\Node`
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public getContent()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the content of the file as string
+			
+		
+		:Source:
+			`lib/public/Files/File.php#52 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/File.php#L52>`_
+		
+		
+		:Returns: string 
+		:Throws: :any:`\\OCP\\Files\\NotPermittedException <OCP\\Files\\NotPermittedException>` 
+		:Throws: :any:`\\OCP\\Lock\\LockedException <OCP\\Lock\\LockedException>` 
+		:Throws: :any:`\\OCP\\Files\\NotPermittedException <OCP\\Files\\NotPermittedException>` 
+		:Throws: :any:`\\OCP\\Lock\\LockedException <OCP\\Lock\\LockedException>` 
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public putContent( $data)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Write to the file from string data
+			
+		
+		:Source:
+			`lib/public/Files/File.php#63 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/File.php#L63>`_
+		
+		
+		:Parameters:
+			* **$data** (string | resource)  
+
+		
+		:Throws: :any:`\\OCP\\Files\\NotPermittedException <OCP\\Files\\NotPermittedException>` 
+		:Throws: :any:`\\OCP\\Files\\GenericFileException <OCP\\Files\\GenericFileException>` 
+		:Throws: :any:`\\OCP\\Lock\\LockedException <OCP\\Lock\\LockedException>` 
+		:Throws: :any:`\\OCP\\Files\\NotPermittedException <OCP\\Files\\NotPermittedException>` 
+		:Throws: :any:`\\OCP\\Files\\GenericFileException <OCP\\Files\\GenericFileException>` 
+		:Throws: :any:`\\OCP\\Lock\\LockedException <OCP\\Lock\\LockedException>` 
+		:Throws: :any:`\\OCP\\Files\\NotPermittedException <OCP\\Files\\NotPermittedException>` 
+		:Throws: :any:`\\OCP\\Files\\GenericFileException <OCP\\Files\\GenericFileException>` 
+		:Throws: :any:`\\OCP\\Lock\\LockedException <OCP\\Lock\\LockedException>` 
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getMimeType()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the mimetype of the file
+			
+		
+		:Source:
+			`lib/public/Files/File.php#71 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/File.php#L71>`_
+		
+		
+		:Returns: string 
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public fopen( $mode)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Open the file as stream, resulting resource can be operated as stream like the result from php\'s own fopen
+			
+		
+		:Source:
+			`lib/public/Files/File.php#82 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/File.php#L82>`_
+		
+		
+		:Parameters:
+			* **$mode** (string)  
+
+		
+		:Returns: resource 
+		:Throws: :any:`\\OCP\\Files\\NotPermittedException <OCP\\Files\\NotPermittedException>` 
+		:Throws: :any:`\\OCP\\Lock\\LockedException <OCP\\Lock\\LockedException>` 
+		:Throws: :any:`\\OCP\\Files\\NotPermittedException <OCP\\Files\\NotPermittedException>` 
+		:Throws: :any:`\\OCP\\Lock\\LockedException <OCP\\Lock\\LockedException>` 
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public hash( $type, $raw=false)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Compute the hash of the file
+			| Type of hash is set with $type and can be anything supported by php\'s hash\_file
+			
+		
+		:Source:
+			`lib/public/Files/File.php#93 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/File.php#L93>`_
+		
+		
+		:Parameters:
+			* **$type** (string)  
+			* **$raw** (bool)  
+
+		
+		:Returns: string 
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getChecksum()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the stored checksum for this file
+			
+		
+		:Source:
+			`lib/public/Files/File.php#103 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/File.php#L103>`_
+		
+		
+		:Returns: string 
+		:Since: 9.0.0 
+		:Throws: :any:`\\OCP\\Files\\InvalidPathException <OCP\\Files\\InvalidPathException>` 
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+		:Throws: :any:`\\OCP\\Files\\InvalidPathException <OCP\\Files\\InvalidPathException>` 
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getExtension()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the extension of this file
+			
+		
+		:Source:
+			`lib/public/Files/File.php#111 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/File.php#L111>`_
+		
+		
+		:Returns: string 
+		:Since: 15.0.0 
+	
+	
+

@@ -1,0 +1,127 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+Helper
+======
+
+
+.. php:namespace:: OC\Share
+
+.. php:class:: Helper
+
+
+	:Source:
+		`lib/private/Share/Helper.php#29 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share/Helper.php#L29>`_
+	
+	:Parent:
+		:php:class:`OC\\Share\\Constants`
+	
+
+Methods
+-------
+
+.. rst-class:: public static
+
+	.. php:method:: public static getDefaultExpireSetting()
+	
+		.. rst-class:: phpdoc-description
+		
+			| get default expire settings defined by the admin
+			
+		
+		:Source:
+			`lib/private/Share/Helper.php#35 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share/Helper.php#L35>`_
+		
+		
+		:Returns: array contains \'defaultExpireDateSet\', \'enforceExpireDate\', \'expireAfterDays\'
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static calcExpireDate()
+	
+		:Source:
+			`lib/private/Share/Helper.php#52 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share/Helper.php#L52>`_
+		
+		
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static calculateExpireDate( $defaultExpireSettings, $creationTime, $userExpireDate=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| calculate expire date
+			
+		
+		:Source:
+			`lib/private/Share/Helper.php#70 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share/Helper.php#L70>`_
+		
+		
+		:Parameters:
+			* **$defaultExpireSettings** (array)  contains 'defaultExpireDateSet', 'enforceExpireDate', 'expireAfterDays'
+			* **$creationTime** (int)  timestamp when the share was created
+			* **$userExpireDate** (int)  expire timestamp set by the user
+
+		
+		:Returns: mixed integer timestamp or False
+	
+	
+
+.. rst-class:: protected static
+
+	.. php:method:: protected static fixRemoteURL( $remote)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Strips away a potential file names and trailing slashes:
+			| \- http://localhost
+			| \- http://localhost/
+			| \- http://localhost/index\.php
+			| \- http://localhost/index\.php/s/\{shareToken\}
+			
+			| all return: http://localhost
+			
+		
+		:Source:
+			`lib/private/Share/Helper.php#106 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share/Helper.php#L106>`_
+		
+		
+		:Parameters:
+			* **$remote** (string)  
+
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static isSameUserOnSameServer( $user1, $server1, $user2, $server2)
+	
+		.. rst-class:: phpdoc-description
+		
+			| check if two federated cloud IDs refer to the same user
+			
+		
+		:Source:
+			`lib/private/Share/Helper.php#125 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share/Helper.php#L125>`_
+		
+		
+		:Parameters:
+			* **$user1** (string)  
+			* **$server1** (string)  
+			* **$user2** (string)  
+			* **$server2** (string)  
+
+		
+		:Returns: bool true if both users and servers are the same
+	
+	
+

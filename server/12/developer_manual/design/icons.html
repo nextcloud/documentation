@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Icons &#8212; Nextcloud Developer Manual 12 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/main.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '12',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.1.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Android Application Development" href="../android_library/index.html" />
+    <link rel="prev" title="HTML elements" href="html.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#1d2d44">
+<link rel="shortcut icon" href="https://nextcloud.com/wp-content/themes/next/assets/img/common/favicon.png" />
+<link rel="apple-touch-icon-precomposed" href="https://nextcloud.com/wp-content/themes/next/assets/img/common/favicon.png" />
+<!-- Piwik -->
+<script type="text/javascript">
+    var _paq = _paq || [];
+    _paq.push(['trackPageView']);
+    _paq.push(['enableLinkTracking']);
+    (function() {
+        var u="//stats.nextcloud.com/";
+        _paq.push(['setTrackerUrl', u+'piwik.php']);
+        _paq.push(['setSiteId', 3]);
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+        g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+    })();
+</script>
+<noscript><p><img src="//stats.nextcloud.com/piwik.php?idsite=3" style="border:0;" alt="" /></p></noscript>
+<!-- End Piwik Code -->
+
+  </head>
+  <body role="document">
+
+<header class="banner navbar navbar-default navbar-static-top" role="banner">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+       <a class="brand" href="http://nextcloud.com/" rel="home" title="Nextcloud.com"><img class="logo" src="../_static/img/logo.svg" itemprop="logo"></a>
+    </div>
+
+    <nav class="collapse navbar-collapse" role="navigation">
+      <ul id="menu-header" class="nav navbar-nav">
+          <li><a target="_blank" href="https://demo.nextcloud.com">Demo</a></li>
+          <li><a href="https://nextcloud.com/news/">News</a></li>
+          <li><a href="https://nextcloud.com/features/">Features</a></li>
+          <li><a href="https://nextcloud.com/about/">About us</a></li>
+          <li><a href="https://nextcloud.com/contribute/">Get involved</a></li>
+          <li><a href="https://nextcloud.com/support/">Support</a></li>
+          <li><a href="https://nextcloud.com/enterprise/">Enterprise</a></li>
+          <li class="menu-install"><a href="https://nextcloud.com/install/">Download</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+
+
+<div class="container" style="background-color: #E6C4C2;color: #b10000;border: #b10000 2px solid;border-right: none;border-left: none;padding: 15px 10px;">You are reading an outdated version of this documentation. Please check out the <a href="https://docs.nextcloud.com/server/stable/developer_manual/" style="
+color: rgb(177,0,0);text-decoration: underline;">latest version</a> of the developer manual.</div>
+
+
+
+
+
+<div class="wrap container not-front">
+  <div class="content row">
+  <main class="main">
+    <div class="row page-content-header">
+      <div class="col-md-6">
+        <h1><a href="../index.html">Nextcloud Developer Manual</a></h1>
+      </div>
+      <div class="col-md-5 col-md-offset-1">
+      
+        <form class="headersearch" style="margin: 16px 0;" action="../search.html" method="get">
+        <input type="text" value="" name="q" id="q" class="form-control" /> 
+        <button  class="btn btn-default" type="submit" id="searchsubmit">Search</button>
+        </form>
+      
+      </div>
+    </div>
+    
+			<div class="row">
+				<div class="col-md-3">
+					<div class="sidebar">
+							<div class="menu-support-container">
+								<ul id="menu-support" class="menu">
+									<ul>
+										
+<li><a href="../index.html">Table of Contents</a></li>
+									</ul>
+                  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../general/index.html">General Contributor Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/index.html">App Development</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Design Guidelines</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="navigation.html">App Navigation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="settings.html">Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="content.html">Main content</a></li>
+<li class="toctree-l2"><a class="reference internal" href="popovermenu.html">Popover Menu</a></li>
+<li class="toctree-l2"><a class="reference internal" href="html.html">HTML elements</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Icons</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../android_library/index.html">Android Application Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client_apis/index.html">Client APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../core/index.html">Core Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bugtracker/index.html">Bugtracker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../commun/index.html">Help and Communication</a></li>
+</ul>
+
+								</ul>
+							</div>
+					</div>
+				</div>
+        
+
+				<div class="col-md-9">
+					<div class="page-content">
+            
+<ul class="prevnext-title list-unstyled list-inline">
+  <li class="prev">
+    <a href="html.html" title="Previous Chapter: HTML elements"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; HTML elements</span>
+    </a>
+  </li>
+  <li class="next">
+    <a href="../android_library/index.html" title="Next Chapter: Android Application Development"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">Android Appli... &raquo;</span>
+    </a>
+  </li>
+</ul>
+						
+  <div class="section" id="icons">
+<span id="id1"></span><h1>Icons<a class="headerlink" href="#icons" title="Permalink to this headline">¶</a></h1>
+<p>White icons only have a grey background on this documentation page for readability purposes.</p>
+<blockquote>
+<div><div class="figure" id="id2">
+<a class="reference internal image-reference" href="../_images/add.svg"><img alt="../_images/add.svg" height="32" src="../_images/add.svg" width="32" /></a>
+<p class="caption"><span class="caption-text">icon-add</span></p>
+</div>
+<div class="figure" id="id3">
+<a class="reference internal image-reference" href="../_images/audio.svg"><img alt="../_images/audio.svg" height="32" src="../_images/audio.svg" width="32" /></a>
+<p class="caption"><span class="caption-text">icon-audio</span></p>
+</div>
+<div class="figure" id="id4">
+<a class="reference internal image-reference" href="../_images/audio-off.svg"><img alt="../_images/audio-off.svg" height="32" src="../_images/audio-off.svg" width="32" /></a>
+<p class="caption"><span class="caption-text">icon-audio-off</span></p>
+</div>
+<div class="figure" id="id5">
+<a class="reference internal image-reference" href="../_images/audio-off-white.svg"><img alt="../_images/audio-off-white.svg" height="32" src="../_images/audio-off-white.svg" width="32" /></a>
+<p class="caption"><span class="caption-text">icon-audio-off-white</span></p>
+</div>
+<div class="figure" id="id6">
+<a class="reference internal image-reference" href="../_images/audio-white.svg"><img alt="../_images/audio-white.svg" height="32" src="../_images/audio-white.svg" width="32" /></a>
+<p class="caption"><span class="caption-text">icon-audio-white</span></p>
+</div>
+<div class="figure" id="id7">
+<a class="reference internal image-reference" href="../_images/breadcrumb.svg"><img alt="../_images/breadcrumb.svg" height="32" src="../_images/breadcrumb.svg" width="32" /></a>
+<p class="caption"><span class="caption-text">icon-breadcrumb</span></p>
+</div>
+<div class="figure" id="id8">
+<a class="reference internal image-reference" href="../_images/calendar.svg"><img alt="../_images/calendar.svg" height="32" src="../_images/calendar.svg" width="32" /></a>
+<p class="caption"><span class="caption-text">icon-calendar</span></p>
+</div>
+<div class="figure" id="id9">
+<a class="reference internal image-reference" href="../_images/calendar-dark.svg"><img alt="../_images/calendar-dark.svg" height="32" src="../_images/calendar-dark.svg" width="32" /></a>
+<p class="caption"><span class="caption-text">icon-calendar-dark</span></p>
+</div>
+<div class="figure" id="id10">
+<a class="reference internal image-reference" href="../_images/caret.svg"><img alt="../_images/caret.svg" height="32" src="../_images/caret.svg" width="32" /></a>
+<p class="caption"><span class="caption-text">icon-caret</span></p>
+</div>
+<div class="figure" id="id11">
+<a class="reference internal image-reference" href="../_images/caret-dark.svg"><img alt="../_images/caret-dark.svg" height="32" src="../_images/caret-dark.svg" width="32" /></a>
+<p class="caption"><span class="caption-text">icon-caret-dark</span></p>
+</div>
+<div class="figure" id="id12">
+<a class="reference internal image-reference" href="../_images/bundles.svg"><img alt="../_images/bundles.svg" height="32" src="../_images/bundles.svg" width="32" /></a>
+<p class="caption"><span class="caption-text">icon-category-app-bundles</span></p>
+</div>
+<div class="figure" id="id13">
+<a class="reference internal image-reference" href="../_images/auth.svg"><img alt="../_images/auth.svg" height="32" src="../_images/auth.svg" width="32" /></a>
+<p class="caption"><span class="caption-text">icon-category-auth</span></p>
+</div>
+<div class="figure" id="id14">
+<a class="reference internal image-reference" href="../_images/customization.svg"><img alt="../_images/customization.svg" height="32" src="../_images/customization.svg" width="32" /></a>
+<p class="caption"><span class="caption-text">icon-category-customization</span></p>
+</div>
+<div class="figure" id="id15">
+<a class="reference internal image-reference" href="../_images/close.svg"><img alt="../_images/close.svg" height="32" src="../_images/close.svg" width="32" /></a>
+<p class="caption"><span class="caption-text">icon-category-disabled</span></p>
+</div>
+<div class="figure" id="id16">
+<a class="reference internal image-reference" href="../_images/checkmark.svg"><img alt="../_images/checkmark.svg" height="32" src="../_images/checkmark.svg" width="32" /></a>
+<p class="caption"><span class="caption-text">icon-category-enabled</span></p>
+</div>
+<div class="figure" id="id17">
+<a class="reference internal image-reference" href="../_images/files.svg"><img alt="../_images/files.svg" height="32" src="../_images/files.svg" width="32" /></a>
+<p class="caption"><span class="caption-text">icon-category-files</span></p>
+</div>
+<div class="figure" id="id18">
+<a class="reference internal image-reference" href="../_images/user.svg"><img alt="../_images/user.svg" height="32" src="../_images/user.svg" width="32" /></a>
+<p class="caption"><span class="caption-text">icon-category-installed</span></p>
+</div>
+<div class="figure" id="id19">
+<a class="reference internal image-reference" href="../_images/integration.svg"><img alt="../_images/integration.svg" height="32" src="../_images/integration.svg" width="32" /></a>
+<p class="caption"><span class="caption-text">icon-category-integration</span></p>
+</div>
+<div class="figure" id="id20">
+<a class="reference internal image-reference" href="../_images/monitoring.svg"><img alt="../_images/monitoring.svg" height="32" src="../_images/monitoring.svg" width="32" /></a>
+<p class="caption"><span class="caption-text">icon-category-monitoring</span></p>
+</div>
+<div class="figure" id="id21">
+<a class="reference internal image-reference" href="../_images/multimedia.svg"><img alt="../_images/multimedia.svg" height="32" src="../_images/multimedia.svg" width="32" /></a>
+<p class="caption"><span class="caption-text">icon-category-multimedia</span></p>
+</div>
+<div class="figure" id="id22">
+<a class="reference internal image-reference" href="../_images/office.svg"><img alt="../_images/office.svg" height="32" src="../_images/office.svg" width="32" /></a>
+<p class="caption"><span class="caption-text">icon-category-office</span></p>
+</div>
+<div class="figure" id="id23">
+<a class="reference internal image-reference" href="../_images/organization.svg"><img alt="../_images/organization.svg" height="32" src="../_images/organization.svg" width="32" /></a>
+<p class="caption"><span class="caption-text">icon-category-organization</span></p>
+</div>
+<div class="figure" id="id24">
+<a class="reference internal image-reference" href="../_images/social.svg"><img alt="../_images/social.svg" height="32" src="../_images/social.svg" width="32" /></a>
+<p class="caption"><span class="caption-text">icon-category-social</span></p>
+</div>
+<div class="figure" id="id25">
+<a class="reference internal image-reference" href="../_images/settings-dark.svg"><img alt="../_images/settings-dark.svg" height="32" src="../_images/settings-dark.svg" width="32" /></a>
+<p class="caption"><span class="caption-text">icon-category-tools</span></p>
+</div>
+<div class="figure" id="id26">
+<a class="reference internal image-reference" href="../_images/download.svg"><img alt="../_images/download.svg" height="32" src="../_images/download.svg" width="32" /></a>
+<p class="caption"><span class="caption-text">icon-category-updates</span></p>
+</div>
+<div class="figure" id="id27">
+<a class="reference internal image-reference" href="../_images/checkmark.svg"><img alt="../_images/checkmark.svg" height="32" src="../_images/checkmark.svg" width="32" /></a>
+<p class="caption"><span class="caption-text">icon-checkmark</span></p>
+</div>
+<div class="figure" id="id28">
+<a class="reference internal image-reference" href="../_images/checkmark-color.svg"><img alt="../_images/checkmark-color.svg" height="32" src="../_images/checkmark-color.svg" width="32" /></a>
+<p class="caption"><span class="caption-text">icon-checkmark-color</span></p>
+</div>
+<div class="figure" id="id29">
+<a class="reference internal image-reference" href="../_images/checkmark-white.svg"><img alt="../_images/checkmark-white.svg" height="32" src="../_images/checkmark-white.svg" width="32" /></a>
+<p class="caption"><span class="caption-text">icon-checkmark-white</span></p>
+</div>
+<div class="figure" id="id30">
+<a class="reference internal image-reference" href="../_images/clippy.svg"><img alt="../_images/clippy.svg" height="32" src="../_images/clippy.svg" width="32" /></a>
+<p class="caption"><span class="caption-text">icon-clippy</span></p>
+</div>
+<div class="figure" id="id31">
+<a class="reference internal image-reference" href="../_images/close.svg"><img alt="../_images/close.svg" height="32" src="../_images/close.svg" width="32" /></a>
+<p class="caption"><span class="caption-text">icon-close</span></p>
+</div>
+<div class="figure" id="id32">
+<a class="reference internal image-reference" href="../_images/close-white.svg"><img alt="../_images/close-white.svg" height="32" src="../_images/close-white.svg" width="32" /></a>
+<p class="caption"><span class="caption-text">icon-close-white</span></p>
+</div>
+<div class="figure" id="id33">
+<a class="reference internal image-reference" href="../_images/comment.svg"><img alt="../_images/comment.svg" height="32" src="../_images/comment.svg" width="32" /></a>
+<p class="caption"><span class="caption-text">icon-comment</span></p>
+</div>
+<div class="figure" id="id34">
+<a class="reference internal image-reference" href="../_images/confirm.svg"><img alt="../_images/confirm.svg" height="32" src="../_images/confirm.svg" width="32" /></a>
+<p class="caption"><span class="caption-text">icon-confirm</span></p>
+</div>
+<div class="figure" id="id35">
+<a class="reference internal image-reference" href="../_images/confirm-white.svg"><img alt="../_images/confirm-white.svg" height="32" src="../_images/confirm-white.svg" width="32" /></a>
+<p class="caption"><span class="caption-text">icon-confirm-white</span></p>
+</div>
+<div class="figure" id="id36">
+<a class="reference internal image-reference" href="../_images/contacts.svg"><img alt="../_images/contacts.svg" height="32" src="../_images/contacts.svg" width="32" /></a>
+<p class="caption"><span class="caption-text">icon-contacts</span></p>
+</div>
+<div class="figure" id="id37">
+<a class="reference internal image-reference" href="../_images/contacts-dark.svg"><img alt="../_images/contacts-dark.svg" height="32" src="../_images/contacts-dark.svg" width="32" /></a>
+<p class="caption"><span class="caption-text">icon-contacts-dark</span></p>
+</div>
+<div class="figure" id="id38">
+<a class="reference internal image-reference" href="../_images/delete.svg"><img alt="../_images/delete.svg" height="32" src="../_images/delete.svg" width="32" /></a>
+<p class="caption"><span class="caption-text">icon-delete</span></p>
+</div>
+<div class="figure" id="id39">
+<a class="reference internal image-reference" href="../_images/delete-white.svg"><img alt="../_images/delete-white.svg" height="32" src="../_images/delete-white.svg" width="32" /></a>
+<p class="caption"><span class="caption-text">icon-delete-white</span></p>
+</div>
+<div class="figure" id="id40">
+<a class="reference internal image-reference" href="../_images/details.svg"><img alt="../_images/details.svg" height="32" src="../_images/details.svg" width="32" /></a>
+<p class="caption"><span class="caption-text">icon-details</span></p>
+</div>
+<div class="figure" id="id41">
+<a class="reference internal image-reference" href="../_images/download.svg"><img alt="../_images/download.svg" height="32" src="../_images/download.svg" width="32" /></a>
+<p class="caption"><span class="caption-text">icon-download</span></p>
+</div>
+<div class="figure" id="id42">
+<a class="reference internal image-reference" href="../_images/download-white.svg"><img alt="../_images/download-white.svg" height="32" src="../_images/download-white.svg" width="32" /></a>
+<p class="caption"><span class="caption-text">icon-download-white</span></p>
+</div>
+<div class="figure" id="id43">
+<a class="reference internal image-reference" href="../_images/edit.svg"><img alt="../_images/edit.svg" height="32" src="../_images/edit.svg" width="32" /></a>
+<p class="caption"><span class="caption-text">icon-edit</span></p>
+</div>
+<div class="figure" id="id44">
+<a class="reference internal image-reference" href="../_images/error.svg"><img alt="../_images/error.svg" height="32" src="../_images/error.svg" width="32" /></a>
+<p class="caption"><span class="caption-text">icon-error</span></p>
+</div>
+<div class="figure" id="id45">
+<a class="reference internal image-reference" href="../_images/error-color.svg"><img alt="../_images/error-color.svg" height="32" src="../_images/error-color.svg" width="32" /></a>
+<p class="caption"><span class="caption-text">icon-error-color</span></p>
+</div>
+<div class="figure" id="id46">
+<a class="reference internal image-reference" href="../_images/error-white.svg"><img alt="../_images/error-white.svg" height="32" src="../_images/error-white.svg" width="32" /></a>
+<p class="caption"><span class="caption-text">icon-error-white</span></p>
+</div>
+<div class="figure" id="id47">
+<a class="reference internal image-reference" href="../_images/external.svg"><img alt="../_images/external.svg" height="32" src="../_images/external.svg" width="32" /></a>
+<p class="caption"><span class="caption-text">icon-external</span></p>
+</div>
+<div class="figure" id="id48">
+<a class="reference internal image-reference" href="../_images/star-dark.svg"><img alt="../_images/star-dark.svg" height="32" src="../_images/star-dark.svg" width="32" /></a>
+<p class="caption"><span class="caption-text">icon-favorite</span></p>
+</div>
+<div class="figure" id="id49">
+<a class="reference internal image-reference" href="../_images/text.svg"><img alt="../_images/text.svg" height="32" src="../_images/text.svg" width="32" /></a>
+<p class="caption"><span class="caption-text">icon-file</span></p>
+</div>
+<div class="figure" id="id50">
+<a class="reference internal image-reference" href="../_images/files1.svg"><img alt="../_images/files1.svg" height="32" src="../_images/files1.svg" width="32" /></a>
+<p class="caption"><span class="caption-text">icon-files</span></p>
+</div>
+<div class="figure" id="id51">
+<a class="reference internal image-reference" href="../_images/files-dark.svg"><img alt="../_images/files-dark.svg" height="32" src="../_images/files-dark.svg" width="32" /></a>
+<p class="caption"><span class="caption-text">icon-files-dark</span></p>
+</div>
+<div class="figure" id="id52">
+<a class="reference internal image-reference" href="../_images/folder-drag-accept.svg"><img alt="../_images/folder-drag-accept.svg" height="32" src="../_images/folder-drag-accept.svg" width="32" /></a>
+<p class="caption"><span class="caption-text">icon-filetype-folder-drag-accept</span></p>
+</div>
+<div class="figure" id="id53">
+<a class="reference internal image-reference" href="../_images/folder.svg"><img alt="../_images/folder.svg" height="32" src="../_images/folder.svg" width="32" /></a>
+<p class="caption"><span class="caption-text">icon-folder</span></p>
+</div>
+<div class="figure" id="id54">
+<a class="reference internal image-reference" href="../_images/fullscreen.svg"><img alt="../_images/fullscreen.svg" height="32" src="../_images/fullscreen.svg" width="32" /></a>
+<p class="caption"><span class="caption-text">icon-fullscreen</span></p>
+</div>
+<div class="figure" id="id55">
+<a class="reference internal image-reference" href="../_images/fullscreen-white.svg"><img alt="../_images/fullscreen-white.svg" height="32" src="../_images/fullscreen-white.svg" width="32" /></a>
+<p class="caption"><span class="caption-text">icon-fullscreen-white</span></p>
+</div>
+<div class="figure" id="id56">
+<a class="reference internal image-reference" href="../_images/history.svg"><img alt="../_images/history.svg" height="32" src="../_images/history.svg" width="32" /></a>
+<p class="caption"><span class="caption-text">icon-history</span></p>
+</div>
+<div class="figure" id="id57">
+<a class="reference internal image-reference" href="../_images/home.svg"><img alt="../_images/home.svg" height="32" src="../_images/home.svg" width="32" /></a>
+<p class="caption"><span class="caption-text">icon-home</span></p>
+</div>
+<div class="figure" id="id58">
+<a class="reference internal image-reference" href="../_images/info.svg"><img alt="../_images/info.svg" height="32" src="../_images/info.svg" width="32" /></a>
+<p class="caption"><span class="caption-text">icon-info</span></p>
+</div>
+<div class="figure" id="id59">
+<a class="reference internal image-reference" href="../_images/info-white.svg"><img alt="../_images/info-white.svg" height="32" src="../_images/info-white.svg" width="32" /></a>
+<p class="caption"><span class="caption-text">icon-info-white</span></p>
+</div>
+<div class="figure" id="id60">
+<a class="reference internal image-reference" href="../_images/link.svg"><img alt="../_images/link.svg" height="32" src="../_images/link.svg" width="32" /></a>
+<p class="caption"><span class="caption-text">icon-link</span></p>
+</div>
+<div class="figure" id="id61">
+<a class="reference internal image-reference" href="../_images/logout.svg"><img alt="../_images/logout.svg" height="32" src="../_images/logout.svg" width="32" /></a>
+<p class="caption"><span class="caption-text">icon-logout</span></p>
+</div>
+<div class="figure" id="id62">
+<a class="reference internal image-reference" href="../_images/mail.svg"><img alt="../_images/mail.svg" height="32" src="../_images/mail.svg" width="32" /></a>
+<p class="caption"><span class="caption-text">icon-mail</span></p>
+</div>
+<div class="figure" id="id63">
+<a class="reference internal image-reference" href="../_images/menu.svg"><img alt="../_images/menu.svg" height="32" src="../_images/menu.svg" width="32" /></a>
+<p class="caption"><span class="caption-text">icon-menu</span></p>
+</div>
+<div class="figure" id="id64">
+<a class="reference internal image-reference" href="../_images/more.svg"><img alt="../_images/more.svg" height="32" src="../_images/more.svg" width="32" /></a>
+<p class="caption"><span class="caption-text">icon-more</span></p>
+</div>
+<div class="figure" id="id65">
+<a class="reference internal image-reference" href="../_images/more-white.svg"><img alt="../_images/more-white.svg" height="32" src="../_images/more-white.svg" width="32" /></a>
+<p class="caption"><span class="caption-text">icon-more-white</span></p>
+</div>
+<div class="figure" id="id66">
+<a class="reference internal image-reference" href="../_images/music.svg"><img alt="../_images/music.svg" height="32" src="../_images/music.svg" width="32" /></a>
+<p class="caption"><span class="caption-text">icon-music</span></p>
+</div>
+<div class="figure" id="id67">
+<a class="reference internal image-reference" href="../_images/password.svg"><img alt="../_images/password.svg" height="32" src="../_images/password.svg" width="32" /></a>
+<p class="caption"><span class="caption-text">icon-password</span></p>
+</div>
+<div class="figure" id="id68">
+<a class="reference internal image-reference" href="../_images/pause.svg"><img alt="../_images/pause.svg" height="32" src="../_images/pause.svg" width="32" /></a>
+<p class="caption"><span class="caption-text">icon-pause</span></p>
+</div>
+<div class="figure" id="id69">
+<a class="reference internal image-reference" href="../_images/pause-big.svg"><img alt="../_images/pause-big.svg" height="32" src="../_images/pause-big.svg" width="32" /></a>
+<p class="caption"><span class="caption-text">icon-pause-big</span></p>
+</div>
+<div class="figure" id="id70">
+<a class="reference internal image-reference" href="../_images/picture.svg"><img alt="../_images/picture.svg" height="32" src="../_images/picture.svg" width="32" /></a>
+<p class="caption"><span class="caption-text">icon-picture</span></p>
+</div>
+<div class="figure" id="id71">
+<a class="reference internal image-reference" href="../_images/play.svg"><img alt="../_images/play.svg" height="32" src="../_images/play.svg" width="32" /></a>
+<p class="caption"><span class="caption-text">icon-play</span></p>
+</div>
+<div class="figure" id="id72">
+<a class="reference internal image-reference" href="../_images/play-add.svg"><img alt="../_images/play-add.svg" height="32" src="../_images/play-add.svg" width="32" /></a>
+<p class="caption"><span class="caption-text">icon-play-add</span></p>
+</div>
+<div class="figure" id="id73">
+<a class="reference internal image-reference" href="../_images/play-big.svg"><img alt="../_images/play-big.svg" height="32" src="../_images/play-big.svg" width="32" /></a>
+<p class="caption"><span class="caption-text">icon-play-big</span></p>
+</div>
+<div class="figure" id="id74">
+<a class="reference internal image-reference" href="../_images/play-next.svg"><img alt="../_images/play-next.svg" height="32" src="../_images/play-next.svg" width="32" /></a>
+<p class="caption"><span class="caption-text">icon-play-next</span></p>
+</div>
+<div class="figure" id="id75">
+<a class="reference internal image-reference" href="../_images/play-previous.svg"><img alt="../_images/play-previous.svg" height="32" src="../_images/play-previous.svg" width="32" /></a>
+<p class="caption"><span class="caption-text">icon-play-previous</span></p>
+</div>
+<div class="figure" id="id76">
+<a class="reference internal image-reference" href="../_images/public.svg"><img alt="../_images/public.svg" height="32" src="../_images/public.svg" width="32" /></a>
+<p class="caption"><span class="caption-text">icon-public</span></p>
+</div>
+<div class="figure" id="id77">
+<a class="reference internal image-reference" href="../_images/rename.svg"><img alt="../_images/rename.svg" height="32" src="../_images/rename.svg" width="32" /></a>
+<p class="caption"><span class="caption-text">icon-rename</span></p>
+</div>
+<div class="figure" id="id78">
+<a class="reference internal image-reference" href="../_images/screen.svg"><img alt="../_images/screen.svg" height="32" src="../_images/screen.svg" width="32" /></a>
+<p class="caption"><span class="caption-text">icon-screen</span></p>
+</div>
+<div class="figure" id="id79">
+<a class="reference internal image-reference" href="../_images/screen-off.svg"><img alt="../_images/screen-off.svg" height="32" src="../_images/screen-off.svg" width="32" /></a>
+<p class="caption"><span class="caption-text">icon-screen-off</span></p>
+</div>
+<div class="figure" id="id80">
+<a class="reference internal image-reference" href="../_images/screen-off-white.svg"><img alt="../_images/screen-off-white.svg" height="32" src="../_images/screen-off-white.svg" width="32" /></a>
+<p class="caption"><span class="caption-text">icon-screen-off-white</span></p>
+</div>
+<div class="figure" id="id81">
+<a class="reference internal image-reference" href="../_images/screen-white.svg"><img alt="../_images/screen-white.svg" height="32" src="../_images/screen-white.svg" width="32" /></a>
+<p class="caption"><span class="caption-text">icon-screen-white</span></p>
+</div>
+<div class="figure" id="id82">
+<a class="reference internal image-reference" href="../_images/search.svg"><img alt="../_images/search.svg" height="32" src="../_images/search.svg" width="32" /></a>
+<p class="caption"><span class="caption-text">icon-search</span></p>
+</div>
+<div class="figure" id="id83">
+<a class="reference internal image-reference" href="../_images/search-white.svg"><img alt="../_images/search-white.svg" height="32" src="../_images/search-white.svg" width="32" /></a>
+<p class="caption"><span class="caption-text">icon-search-white</span></p>
+</div>
+<div class="figure" id="id84">
+<a class="reference internal image-reference" href="../_images/settings.svg"><img alt="../_images/settings.svg" height="32" src="../_images/settings.svg" width="32" /></a>
+<p class="caption"><span class="caption-text">icon-settings</span></p>
+</div>
+<div class="figure" id="id85">
+<a class="reference internal image-reference" href="../_images/settings-dark.svg"><img alt="../_images/settings-dark.svg" height="32" src="../_images/settings-dark.svg" width="32" /></a>
+<p class="caption"><span class="caption-text">icon-settings-dark</span></p>
+</div>
+<div class="figure" id="id86">
+<a class="reference internal image-reference" href="../_images/settings-white.svg"><img alt="../_images/settings-white.svg" height="32" src="../_images/settings-white.svg" width="32" /></a>
+<p class="caption"><span class="caption-text">icon-settings-white</span></p>
+</div>
+<div class="figure" id="id87">
+<a class="reference internal image-reference" href="../_images/share.svg"><img alt="../_images/share.svg" height="32" src="../_images/share.svg" width="32" /></a>
+<p class="caption"><span class="caption-text">icon-share</span></p>
+</div>
+<div class="figure" id="id88">
+<a class="reference internal image-reference" href="../_images/sound.svg"><img alt="../_images/sound.svg" height="32" src="../_images/sound.svg" width="32" /></a>
+<p class="caption"><span class="caption-text">icon-sound</span></p>
+</div>
+<div class="figure" id="id89">
+<a class="reference internal image-reference" href="../_images/sound-off.svg"><img alt="../_images/sound-off.svg" height="32" src="../_images/sound-off.svg" width="32" /></a>
+<p class="caption"><span class="caption-text">icon-sound-off</span></p>
+</div>
+<div class="figure" id="id90">
+<a class="reference internal image-reference" href="../_images/star.svg"><img alt="../_images/star.svg" height="32" src="../_images/star.svg" width="32" /></a>
+<p class="caption"><span class="caption-text">icon-star</span></p>
+</div>
+<div class="figure" id="id91">
+<a class="reference internal image-reference" href="../_images/tag.svg"><img alt="../_images/tag.svg" height="32" src="../_images/tag.svg" width="32" /></a>
+<p class="caption"><span class="caption-text">icon-tag</span></p>
+</div>
+<div class="figure" id="id92">
+<a class="reference internal image-reference" href="../_images/toggle.svg"><img alt="../_images/toggle.svg" height="32" src="../_images/toggle.svg" width="32" /></a>
+<p class="caption"><span class="caption-text">icon-toggle</span></p>
+</div>
+<div class="figure" id="id93">
+<a class="reference internal image-reference" href="../_images/toggle-pictures.svg"><img alt="../_images/toggle-pictures.svg" height="32" src="../_images/toggle-pictures.svg" width="32" /></a>
+<p class="caption"><span class="caption-text">icon-toggle-pictures</span></p>
+</div>
+<div class="figure" id="id94">
+<a class="reference internal image-reference" href="../_images/triangle-e.svg"><img alt="../_images/triangle-e.svg" height="32" src="../_images/triangle-e.svg" width="32" /></a>
+<p class="caption"><span class="caption-text">icon-triangle-e</span></p>
+</div>
+<div class="figure" id="id95">
+<a class="reference internal image-reference" href="../_images/triangle-n.svg"><img alt="../_images/triangle-n.svg" height="32" src="../_images/triangle-n.svg" width="32" /></a>
+<p class="caption"><span class="caption-text">icon-triangle-n</span></p>
+</div>
+<div class="figure" id="id96">
+<a class="reference internal image-reference" href="../_images/triangle-s.svg"><img alt="../_images/triangle-s.svg" height="32" src="../_images/triangle-s.svg" width="32" /></a>
+<p class="caption"><span class="caption-text">icon-triangle-s</span></p>
+</div>
+<div class="figure" id="id97">
+<a class="reference internal image-reference" href="../_images/upload.svg"><img alt="../_images/upload.svg" height="32" src="../_images/upload.svg" width="32" /></a>
+<p class="caption"><span class="caption-text">icon-upload</span></p>
+</div>
+<div class="figure" id="id98">
+<a class="reference internal image-reference" href="../_images/upload-white.svg"><img alt="../_images/upload-white.svg" height="32" src="../_images/upload-white.svg" width="32" /></a>
+<p class="caption"><span class="caption-text">icon-upload-white</span></p>
+</div>
+<div class="figure" id="id99">
+<a class="reference internal image-reference" href="../_images/user.svg"><img alt="../_images/user.svg" height="32" src="../_images/user.svg" width="32" /></a>
+<p class="caption"><span class="caption-text">icon-user</span></p>
+</div>
+<div class="figure" id="id100">
+<a class="reference internal image-reference" href="../_images/video.svg"><img alt="../_images/video.svg" height="32" src="../_images/video.svg" width="32" /></a>
+<p class="caption"><span class="caption-text">icon-video</span></p>
+</div>
+<div class="figure" id="id101">
+<a class="reference internal image-reference" href="../_images/video-off.svg"><img alt="../_images/video-off.svg" height="32" src="../_images/video-off.svg" width="32" /></a>
+<p class="caption"><span class="caption-text">icon-video-off</span></p>
+</div>
+<div class="figure" id="id102">
+<a class="reference internal image-reference" href="../_images/video-off-white.svg"><img alt="../_images/video-off-white.svg" height="32" src="../_images/video-off-white.svg" width="32" /></a>
+<p class="caption"><span class="caption-text">icon-video-off-white</span></p>
+</div>
+<div class="figure" id="id103">
+<a class="reference internal image-reference" href="../_images/video-white.svg"><img alt="../_images/video-white.svg" height="32" src="../_images/video-white.svg" width="32" /></a>
+<p class="caption"><span class="caption-text">icon-video-white</span></p>
+</div>
+<div class="figure" id="id104">
+<a class="reference internal image-reference" href="../_images/view-close.svg"><img alt="../_images/view-close.svg" height="32" src="../_images/view-close.svg" width="32" /></a>
+<p class="caption"><span class="caption-text">icon-view-close</span></p>
+</div>
+<div class="figure" id="id105">
+<a class="reference internal image-reference" href="../_images/view-download.svg"><img alt="../_images/view-download.svg" height="32" src="../_images/view-download.svg" width="32" /></a>
+<p class="caption"><span class="caption-text">icon-view-download</span></p>
+</div>
+<div class="figure" id="id106">
+<a class="reference internal image-reference" href="../_images/view-next.svg"><img alt="../_images/view-next.svg" height="32" src="../_images/view-next.svg" width="32" /></a>
+<p class="caption"><span class="caption-text">icon-view-next</span></p>
+</div>
+<div class="figure" id="id107">
+<a class="reference internal image-reference" href="../_images/view-pause.svg"><img alt="../_images/view-pause.svg" height="32" src="../_images/view-pause.svg" width="32" /></a>
+<p class="caption"><span class="caption-text">icon-view-pause</span></p>
+</div>
+<div class="figure" id="id108">
+<a class="reference internal image-reference" href="../_images/view-play.svg"><img alt="../_images/view-play.svg" height="32" src="../_images/view-play.svg" width="32" /></a>
+<p class="caption"><span class="caption-text">icon-view-play</span></p>
+</div>
+<div class="figure" id="id109">
+<a class="reference internal image-reference" href="../_images/view-previous.svg"><img alt="../_images/view-previous.svg" height="32" src="../_images/view-previous.svg" width="32" /></a>
+<p class="caption"><span class="caption-text">icon-view-previous</span></p>
+</div>
+</div></blockquote>
+</div>
+
+
+            
+<ul class="prevnext-title list-unstyled list-inline">
+  <li class="prev">
+    <a href="html.html" title="Previous Chapter: HTML elements"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; HTML elements</span>
+    </a>
+  </li>
+  <li class="next">
+    <a href="../android_library/index.html" title="Next Chapter: Android Application Development"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">Android Appli... &raquo;</span>
+    </a>
+  </li>
+</ul>
+					</div>
+				</div>
+			</div>
+  </main>  
+  </div>
+</div>
+<div class="container">
+<div class="row">
+    <div class="col-lg-12 footer-social-icons">
+      <p class="text-center"><a target="_blank" href="https://plus.google.com/104036748063781940910/about"><img width=50 src="../_static/img/social/googleplus.svg" title="Follow us on Google Plus!" alt="Follow us on Google Plus!"></img></a>
+      <a target="_blank" href="https://www.facebook.com/Nextclouders"><img width=50 src="../_static/img/social/facebook.svg" title="Like our facebook page!" alt="Like our facebook page!"></img></a>
+      <a target="_blank" href="https://twitter.com/Nextclouders"><img width=50 src="../_static/img/social/twitter.svg" title="Subscribe to our twitter channel!" alt="Subscribe to our twitter channel!"></img></a>
+      <a target="_blank" href="https://nextcloud.com/blogfeed"><img class="img-circle" width=50 src="../_static/img/social/rss.svg" title="Subscribe to our news feed!" alt="Subscribe to our news feed!"></img></a>
+      <a target="_blank" href="https://newsletter.nextcloud.com/"><img class="img-circle" width=50 src="../_static/img/social/mail.svg"  title="Subscribe to our newsletter!" alt="Subscribe to our newsletter!"></img></a></p>
+    </div>
+    <div class="text-center">
+      <p>All documentation licensed under the <a href="https://creativecommons.org/licenses/by/3.0/us/">Creative Commons Attribution 3.0 Unported license</a>.</p>
+      <p><a href="https://github.com/nextcloud/documentation/graphs/contributors">See who contributed to our documentation/credits</a>.</p>
+    </div>
+</div>
+</div>
+<footer class="content-info" role="contentinfo">
+<div class="container">
+   <div class="row">
+     <div class="col-sm-2 col-sm-offset-1">
+        <div class="footer-nav">
+          <h4>About Nextcloud</h4>
+          <ul id="menu-about" class="menu">
+            <li><a href="https://nextcloud.com/about/">About us</a></li>
+            <li><a href="https://nextcloud.com/contact/">Contact us</a></li>
+            <li><a href="https://nextcloud.com/press/">Press</a></li>
+            <li><a href="https://nextcloud.com/privacy/">Privacy policy</a></li>
+          </ul>
+        </div>
+     </div>
+     <div class="col-sm-2 col-sm-offset-2">
+     </div>
+     <div class="col-sm-2 col-sm-offset-2">
+        <div class="footer-nav">
+          <h4>Interact</h4>
+          <ul id="menu-interact" class="menu">
+            <li class="menu-irc-channel"><a href="https://webchat.freenode.net/?channels=nextcloud">IRC Channel</a></li>
+            <li class="menu-forums"><a href="https://help.nextcloud.com/">Forums</a></li>
+          </ul>
+        </div>
+     </div>
+   </div>
+   <div class="row">
+      <div class="col-lg-12 footer-text">
+        <p>
+              &copy; Copyright 2012-2017, The Nextcloud developers.  <small><a href="https://nextcloud.com/impressum">Legal Notice</a></small><br/>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+  </body>
+</html>

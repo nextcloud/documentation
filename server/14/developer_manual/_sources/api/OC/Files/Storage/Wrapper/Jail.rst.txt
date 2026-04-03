@@ -1,0 +1,974 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+Jail
+====
+
+
+.. php:namespace:: OC\Files\Storage\Wrapper
+
+.. php:class:: Jail
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Jail to a subdirectory of the wrapped storage
+		
+		| This restricts access to a subfolder of the wrapped storage with the subfolder becoming the root folder new storage
+		
+	
+	:Source:
+		`lib/private/Files/Storage/Wrapper/Jail.php#44 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Jail.php#L44>`_
+	
+	:Parent:
+		:php:class:`OC\\Files\\Storage\\Wrapper\\Wrapper`
+	
+
+Properties
+----------
+
+.. php:attr:: protected static rootPath
+
+	:Source:
+		`lib/private/Files/Storage/Wrapper/Jail.php#48 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Jail.php#L48>`_
+	
+	:Type: string 
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $arguments)
+	
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Jail.php#56 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Jail.php#L56>`_
+		
+		
+		:Parameters:
+			* **$arguments** (array)  ['storage' => $storage, 'root' => $root]
+			
+			$storage: The storage that will be wrapper
+			$root: The folder in the wrapped storage that will become the root folder of the wrapped storage
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getUnjailedPath( $path)
+	
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Jail.php#61 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Jail.php#L61>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getUnjailedStorage()
+	
+		.. rst-class:: phpdoc-description
+		
+			| This is separate from Wrapper::getWrapperStorage so we can get the jailed storage consistently even if the jail is inside another wrapper
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Jail.php#68 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Jail.php#L68>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getJailedPath( $path)
+	
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Jail.php#73 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Jail.php#L73>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getId()
+	
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Jail.php#84 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Jail.php#L84>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public mkdir( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| see https://www\.php\.net/manual/en/function\.mkdir\.php
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Jail.php#94 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Jail.php#L94>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public rmdir( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| see https://www\.php\.net/manual/en/function\.rmdir\.php
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Jail.php#104 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Jail.php#L104>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public opendir( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| see https://www\.php\.net/manual/en/function\.opendir\.php
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Jail.php#114 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Jail.php#L114>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: resource | bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public is_dir( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| see https://www\.php\.net/manual/en/function\.is\_dir\.php
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Jail.php#124 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Jail.php#L124>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public is_file( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| see https://www\.php\.net/manual/en/function\.is\_file\.php
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Jail.php#134 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Jail.php#L134>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public stat( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| see https://www\.php\.net/manual/en/function\.stat\.php
+			| only the following keys are required in the result: size and mtime
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Jail.php#145 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Jail.php#L145>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: array | bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public filetype( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| see https://www\.php\.net/manual/en/function\.filetype\.php
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Jail.php#155 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Jail.php#L155>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public filesize( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| see https://www\.php\.net/manual/en/function\.filesize\.php
+			| The result for filesize when called on a folder is required to be 0
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Jail.php#166 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Jail.php#L166>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: int | bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isCreatable( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| check if a file can be created in $path
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Jail.php#176 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Jail.php#L176>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isReadable( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| check if a file can be read
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Jail.php#186 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Jail.php#L186>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isUpdatable( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| check if a file can be written to
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Jail.php#196 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Jail.php#L196>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isDeletable( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| check if a file can be deleted
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Jail.php#206 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Jail.php#L206>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isSharable( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| check if a file can be shared
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Jail.php#216 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Jail.php#L216>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getPermissions( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get the full permissions of a path\.
+			
+			| Should return a combination of the PERMISSION\_ constants defined in lib/public/constants\.php
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Jail.php#227 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Jail.php#L227>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: int 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public file_exists( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| see https://www\.php\.net/manual/en/function\.file\_exists\.php
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Jail.php#237 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Jail.php#L237>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public filemtime( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| see https://www\.php\.net/manual/en/function\.filemtime\.php
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Jail.php#247 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Jail.php#L247>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: int | bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public file_get_contents( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| see https://www\.php\.net/manual/en/function\.file\_get\_contents\.php
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Jail.php#257 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Jail.php#L257>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: string | bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public file_put_contents( $path, $data)
+	
+		.. rst-class:: phpdoc-description
+		
+			| see https://www\.php\.net/manual/en/function\.file\_put\_contents\.php
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Jail.php#268 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Jail.php#L268>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+			* **$data** (mixed)  
+
+		
+		:Returns: int | bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public unlink( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| see https://www\.php\.net/manual/en/function\.unlink\.php
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Jail.php#278 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Jail.php#L278>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public rename( $path1, $path2)
+	
+		.. rst-class:: phpdoc-description
+		
+			| see https://www\.php\.net/manual/en/function\.rename\.php
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Jail.php#289 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Jail.php#L289>`_
+		
+		
+		:Parameters:
+			* **$path1** (string)  
+			* **$path2** (string)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public copy( $path1, $path2)
+	
+		.. rst-class:: phpdoc-description
+		
+			| see https://www\.php\.net/manual/en/function\.copy\.php
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Jail.php#300 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Jail.php#L300>`_
+		
+		
+		:Parameters:
+			* **$path1** (string)  
+			* **$path2** (string)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public fopen( $path, $mode)
+	
+		.. rst-class:: phpdoc-description
+		
+			| see https://www\.php\.net/manual/en/function\.fopen\.php
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Jail.php#311 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Jail.php#L311>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+			* **$mode** (string)  
+
+		
+		:Returns: resource | bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getMimeType( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get the mimetype for a file or folder
+			| The mimetype for a folder is required to be "httpd/unix\-directory"
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Jail.php#322 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Jail.php#L322>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: string | bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public hash( $type, $path, $raw=false)
+	
+		.. rst-class:: phpdoc-description
+		
+			| see https://www\.php\.net/manual/en/function\.hash\.php
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Jail.php#334 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Jail.php#L334>`_
+		
+		
+		:Parameters:
+			* **$type** (string)  
+			* **$path** (string)  
+			* **$raw** (bool)  
+
+		
+		:Returns: string | bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public free_space( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| see https://www\.php\.net/manual/en/function\.free\_space\.php
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Jail.php#344 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Jail.php#L344>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: int | bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public search( $query)
+	
+		.. rst-class:: phpdoc-description
+		
+			| search for occurrences of $query in file names
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Jail.php#354 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Jail.php#L354>`_
+		
+		
+		:Parameters:
+			* **$query** (string)  
+
+		
+		:Returns: array | bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public touch( $path, $mtime=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| see https://www\.php\.net/manual/en/function\.touch\.php
+			| If the backend does not support the operation, false should be returned
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Jail.php#366 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Jail.php#L366>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+			* **$mtime** (int)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getLocalFile( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get the path to a local version of the file\.
+			
+			| The local version of the file can be temporary and doesn\'t have to be persistent across requests
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Jail.php#377 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Jail.php#L377>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: string | bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public hasUpdated( $path, $time)
+	
+		.. rst-class:: phpdoc-description
+		
+			| check if a file or folder has been updated since $time
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Jail.php#391 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Jail.php#L391>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+			* **$time** (int)  
+
+		
+		:Returns: bool hasUpdated for folders should return at least true if a file inside the folder is add, removed or renamed\.
+			returning true for other changes in the folder is optional
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getCache( $path="", $storage=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get a cache instance for the storage
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Jail.php#402 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Jail.php#L402>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: :any:`\\OC\\Files\\Cache\\Cache <OC\\Files\\Cache\\Cache>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getOwner( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get the user id of the owner of a file or folder
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Jail.php#416 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Jail.php#L416>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getWatcher( $path="", $storage=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get a watcher instance for the cache
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Jail.php#427 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Jail.php#L427>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: :any:`\\OC\\Files\\Cache\\Watcher <OC\\Files\\Cache\\Watcher>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getETag( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get the ETag for a file or folder
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Jail.php#440 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Jail.php#L440>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: string | bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getMetaData( $path)
+	
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Jail.php#444 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Jail.php#L444>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public acquireLock( $path, $type, $provider)
+	
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Jail.php#454 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Jail.php#L454>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+			* **$type** (int)  \OCP\Lock\ILockingProvider::LOCK_SHARED or \OCP\Lock\ILockingProvider::LOCK_EXCLUSIVE
+			* **$provider** (:any:`OCP\\Lock\\ILockingProvider <OCP\\Lock\\ILockingProvider>`)  
+
+		
+		:Throws: :any:`\\OCP\\Lock\\LockedException <OCP\\Lock\\LockedException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public releaseLock( $path, $type, $provider)
+	
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Jail.php#463 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Jail.php#L463>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+			* **$type** (int)  \OCP\Lock\ILockingProvider::LOCK_SHARED or \OCP\Lock\ILockingProvider::LOCK_EXCLUSIVE
+			* **$provider** (:any:`OCP\\Lock\\ILockingProvider <OCP\\Lock\\ILockingProvider>`)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public changeLock( $path, $type, $provider)
+	
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Jail.php#472 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Jail.php#L472>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+			* **$type** (int)  \OCP\Lock\ILockingProvider::LOCK_SHARED or \OCP\Lock\ILockingProvider::LOCK_EXCLUSIVE
+			* **$provider** (:any:`OCP\\Lock\\ILockingProvider <OCP\\Lock\\ILockingProvider>`)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public resolvePath( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Resolve the path for the source of the share
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Jail.php#482 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Jail.php#L482>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: array 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public copyFromStorage( $sourceStorage, $sourceInternalPath, $targetInternalPath)
+	
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Jail.php#492 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Jail.php#L492>`_
+		
+		
+		:Parameters:
+			* **$sourceStorage** (:any:`OCP\\Files\\Storage\\IStorage <OCP\\Files\\Storage\\IStorage>`)  
+			* **$sourceInternalPath** (string)  
+			* **$targetInternalPath** (string)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public moveFromStorage( $sourceStorage, $sourceInternalPath, $targetInternalPath)
+	
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Jail.php#505 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Jail.php#L505>`_
+		
+		
+		:Parameters:
+			* **$sourceStorage** (:any:`OCP\\Files\\Storage\\IStorage <OCP\\Files\\Storage\\IStorage>`)  
+			* **$sourceInternalPath** (string)  
+			* **$targetInternalPath** (string)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getPropagator( $storage=null)
+	
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Jail.php#512 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Jail.php#L512>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public writeStream( $path, $stream, $size=null)
+	
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Jail.php#524 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Jail.php#L524>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getDirectoryContent( $directory)
+	
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Jail.php#538 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Jail.php#L538>`_
+		
+		
+	
+	
+

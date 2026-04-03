@@ -1,0 +1,142 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IObjectStore
+============
+
+
+.. php:namespace:: OCP\Files\ObjectStore
+
+.. php:interface:: IObjectStore
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Interface IObjectStore
+		
+	
+	:Implemented by:
+		:php:class:`OC\\Files\\ObjectStore\\StorageObjectStore` :php:class:`OC\\Files\\ObjectStore\\Azure` :php:class:`OC\\Files\\ObjectStore\\S3` :php:class:`OC\\Files\\ObjectStore\\Swift` 
+	
+	
+	:Source:
+		`lib/public/Files/ObjectStore/IObjectStore.php#35 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/ObjectStore/IObjectStore.php#L35>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public getStorageId()
+	
+		:Source:
+			`lib/public/Files/ObjectStore/IObjectStore.php#41 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/ObjectStore/IObjectStore.php#L41>`_
+		
+		
+		:Returns: string the container or bucket name where objects are stored
+		:Since: 7.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public readObject( $urn)
+	
+		:Source:
+			`lib/public/Files/ObjectStore/IObjectStore.php#50 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/ObjectStore/IObjectStore.php#L50>`_
+		
+		
+		:Parameters:
+			* **$urn** (string)  the unified resource name used to identify the object
+
+		
+		:Returns: resource stream with the read data
+		:Throws: :any:`\\Exception <Exception>` when something goes wrong, message will be logged
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` if file does not exist
+		:Throws: :any:`\\Exception <Exception>` when something goes wrong, message will be logged
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` if file does not exist
+		:Since: 7.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public writeObject( $urn, $stream, $mimetype=null)
+	
+		:Source:
+			`lib/public/Files/ObjectStore/IObjectStore.php#59 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/ObjectStore/IObjectStore.php#L59>`_
+		
+		
+		:Parameters:
+			* **$urn** (string)  the unified resource name used to identify the object
+			* **$stream** (resource)  stream with the data to write
+			* **$mimetype** (string | null)  the mimetype to set for the remove object @since 22.0.0
+
+		
+		:Throws: :any:`\\Exception <Exception>` when something goes wrong, message will be logged
+		:Since: 7.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public deleteObject( $urn)
+	
+		:Source:
+			`lib/public/Files/ObjectStore/IObjectStore.php#67 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/ObjectStore/IObjectStore.php#L67>`_
+		
+		
+		:Parameters:
+			* **$urn** (string)  the unified resource name used to identify the object
+
+		
+		:Returns: void 
+		:Throws: :any:`\\Exception <Exception>` when something goes wrong, message will be logged
+		:Since: 7.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public objectExists( $urn)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check if an object exists in the object store
+			
+		
+		:Source:
+			`lib/public/Files/ObjectStore/IObjectStore.php#76 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/ObjectStore/IObjectStore.php#L76>`_
+		
+		
+		:Parameters:
+			* **$urn** (string)  
+
+		
+		:Returns: bool 
+		:Since: 16.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public copyObject( $from, $to)
+	
+		:Source:
+			`lib/public/Files/ObjectStore/IObjectStore.php#84 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/ObjectStore/IObjectStore.php#L84>`_
+		
+		
+		:Parameters:
+			* **$from** (string)  the unified resource name used to identify the source object
+			* **$to** (string)  the unified resource name used to identify the target object
+
+		
+		:Returns: void 
+		:Since: 21.0.0 
+	
+	
+

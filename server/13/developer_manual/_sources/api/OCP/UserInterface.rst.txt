@@ -1,0 +1,188 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+UserInterface
+=============
+
+
+.. php:namespace:: OCP
+
+.. php:interface:: UserInterface
+
+
+	.. rst-class:: phpdoc-description
+	
+		| TODO actually this is a IUserBackend
+		
+	
+	:Implemented by:
+		:php:class:`OCP\\User\\Backend\\ABackend` :php:class:`OC\\User\\Backend` 
+	
+	
+	:Source:
+		`lib/public/UserInterface.php#42 <https://github.com/nextcloud/server/blob/stable13/lib/public/UserInterface.php#L42>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public implementsActions( $actions)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check if backend implements actions
+			
+		
+		:Source:
+			`lib/public/UserInterface.php#54 <https://github.com/nextcloud/server/blob/stable13/lib/public/UserInterface.php#L54>`_
+		
+		
+		:Parameters:
+			* **$actions** (int)  bitwise-or'ed actions
+
+		
+		:Returns: bool Returns the supported actions as int to be
+			compared with \\OC\\User\\Backend::CREATE\_USER etc\.
+		
+		:Since: 4.5.0 
+		:Deprecated: 14.0.0 Switch to the interfaces from OCP\\User\\Backend
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public deleteUser( $uid)
+	
+		.. rst-class:: phpdoc-description
+		
+			| delete a user
+			
+		
+		:Source:
+			`lib/public/UserInterface.php#62 <https://github.com/nextcloud/server/blob/stable13/lib/public/UserInterface.php#L62>`_
+		
+		
+		:Parameters:
+			* **$uid** (string)  The username of the user to delete
+
+		
+		:Returns: bool 
+		:Since: 4.5.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getUsers( $search="", $limit=null, $offset=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get a list of all users
+			
+		
+		:Source:
+			`lib/public/UserInterface.php#73 <https://github.com/nextcloud/server/blob/stable13/lib/public/UserInterface.php#L73>`_
+		
+		
+		:Parameters:
+			* **$search** (string)  
+			* **$limit** (null | int)  
+			* **$offset** (null | int)  
+
+		
+		:Returns: string[] an array of all uids
+		:Since: 4.5.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public userExists( $uid)
+	
+		.. rst-class:: phpdoc-description
+		
+			| check if a user exists
+			
+		
+		:Source:
+			`lib/public/UserInterface.php#81 <https://github.com/nextcloud/server/blob/stable13/lib/public/UserInterface.php#L81>`_
+		
+		
+		:Parameters:
+			* **$uid** (string)  the username
+
+		
+		:Returns: bool 
+		:Since: 4.5.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getDisplayName( $uid)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get display name of the user
+			
+		
+		:Source:
+			`lib/public/UserInterface.php#89 <https://github.com/nextcloud/server/blob/stable13/lib/public/UserInterface.php#L89>`_
+		
+		
+		:Parameters:
+			* **$uid** (string)  user ID of the user
+
+		
+		:Returns: string display name
+		:Since: 4.5.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getDisplayNames( $search="", $limit=null, $offset=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get a list of all display names and user ids\.
+			
+		
+		:Source:
+			`lib/public/UserInterface.php#100 <https://github.com/nextcloud/server/blob/stable13/lib/public/UserInterface.php#L100>`_
+		
+		
+		:Parameters:
+			* **$search** (string)  
+			* **$limit** (int | null)  
+			* **$offset** (int | null)  
+
+		
+		:Returns: array an array of all displayNames \(value\) and the corresponding uids \(key\)
+		:Since: 4.5.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public hasUserListings()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check if a user list is available or not
+			
+		
+		:Source:
+			`lib/public/UserInterface.php#107 <https://github.com/nextcloud/server/blob/stable13/lib/public/UserInterface.php#L107>`_
+		
+		
+		:Returns: bool if users can be listed or not
+		:Since: 4.5.0 
+	
+	
+

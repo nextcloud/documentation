@@ -1,0 +1,121 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+OldGroupMembershipShares
+========================
+
+
+.. php:namespace:: OC\Repair
+
+.. php:class:: OldGroupMembershipShares
+
+
+	:Source:
+		`lib/private/Repair/OldGroupMembershipShares.php#32 <https://github.com/nextcloud/server/blob/stable13/lib/private/Repair/OldGroupMembershipShares.php#L32>`_
+	
+	:Implements:
+		:php:interface:`OCP\\Migration\\IRepairStep` 
+	
+
+Properties
+----------
+
+.. php:attr:: protected static connection
+
+	:Source:
+		`lib/private/Repair/OldGroupMembershipShares.php#35 <https://github.com/nextcloud/server/blob/stable13/lib/private/Repair/OldGroupMembershipShares.php#L35>`_
+	
+	:Type: :any:`\\OCP\\IDBConnection <OCP\\IDBConnection>` 
+
+
+.. php:attr:: protected static groupManager
+
+	:Source:
+		`lib/private/Repair/OldGroupMembershipShares.php#38 <https://github.com/nextcloud/server/blob/stable13/lib/private/Repair/OldGroupMembershipShares.php#L38>`_
+	
+	:Type: :any:`\\OCP\\IGroupManager <OCP\\IGroupManager>` 
+
+
+.. php:attr:: protected static memberships
+
+	:Source:
+		`lib/private/Repair/OldGroupMembershipShares.php#43 <https://github.com/nextcloud/server/blob/stable13/lib/private/Repair/OldGroupMembershipShares.php#L43>`_
+	
+	:Type: array \[gid =\> \[uid =\> \(bool\)\]\]
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $connection, $groupManager)
+	
+		:Source:
+			`lib/private/Repair/OldGroupMembershipShares.php#49 <https://github.com/nextcloud/server/blob/stable13/lib/private/Repair/OldGroupMembershipShares.php#L49>`_
+		
+		
+		:Parameters:
+			* **$connection** (:any:`OCP\\IDBConnection <OCP\\IDBConnection>`)  
+			* **$groupManager** (:any:`OCP\\IGroupManager <OCP\\IGroupManager>`)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getName()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the step\'s name
+			
+		
+		:Source:
+			`lib/private/Repair/OldGroupMembershipShares.php#59 <https://github.com/nextcloud/server/blob/stable13/lib/private/Repair/OldGroupMembershipShares.php#L59>`_
+		
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public run( $output)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Run repair step\.
+			
+			| Must throw exception on error\.
+			
+		
+		:Source:
+			`lib/private/Repair/OldGroupMembershipShares.php#69 <https://github.com/nextcloud/server/blob/stable13/lib/private/Repair/OldGroupMembershipShares.php#L69>`_
+		
+		
+		:Throws: :any:`\\Exception <Exception>` in case of failure
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected isMember( $gid, $uid)
+	
+		:Source:
+			`lib/private/Repair/OldGroupMembershipShares.php#105 <https://github.com/nextcloud/server/blob/stable13/lib/private/Repair/OldGroupMembershipShares.php#L105>`_
+		
+		
+		:Parameters:
+			* **$gid** (string)  
+			* **$uid** (string)  
+
+		
+		:Returns: bool 
+	
+	
+

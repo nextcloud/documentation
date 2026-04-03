@@ -1,0 +1,372 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Enabling MySQL 4-byte support &mdash; Nextcloud 13 Administration Manual 13 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'13',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="BigInt (64bit) identifiers" href="bigint_identifiers.html" />
+    <link rel="prev" title="Database configuration" href="linux_database_configuration.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../contents.html">
+          
+
+          
+            
+            <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_server/index.html">Server configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_user/index.html">User management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_files/index.html">File sharing and management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../file_workflows/index.html">File workflows</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Database configuration</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="db_conversion.html">Converting database type</a></li>
+<li class="toctree-l2"><a class="reference internal" href="linux_database_configuration.html">Database configuration</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Enabling MySQL 4-byte support</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#mariadb-support">MariaDB support</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#mariadb-10-3-or-later">MariaDB 10.3 or later</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mariadb-10-2-or-earlier">MariaDB 10.2 or earlier</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="bigint_identifiers.html">BigInt (64bit) identifiers</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_mimetypes/index.html">Mimetypes management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../maintenance/index.html">Maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../issues/index.html">Issues and troubleshooting</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud 13 Administration Manual</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../contents.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Database configuration</a> &raquo;</li>
+        
+      <li>Enabling MySQL 4-byte support</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/nextcloud/documentation/edit/stable13/admin_manual/configuration_database/mysql_4byte_support.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="enabling-mysql-4-byte-support">
+<h1>Enabling MySQL 4-byte support<a class="headerlink" href="#enabling-mysql-4-byte-support" title="Permalink to this headline">¶</a></h1>
+<p>In order to use Emojis (textbased smilies) on your Nextcloud server with a MySQL database, the
+installation needs to be tweaked a bit.</p>
+<ol class="arabic">
+<li><p class="first">Make sure the following InnoDB settings are set on your MySQL server:</p>
+<ol class="loweralpha">
+<li><p class="first">MySQL 8.0 or later:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">mysqld</span><span class="p">]</span>
+<span class="n">innodb_file_per_table</span><span class="o">=</span><span class="mi">1</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">MySQL older than 8.0:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">mysqld</span><span class="p">]</span>
+<span class="n">innodb_large_prefix</span><span class="o">=</span><span class="n">true</span>
+<span class="n">innodb_file_format</span><span class="o">=</span><span class="n">barracuda</span>
+<span class="n">innodb_file_per_table</span><span class="o">=</span><span class="mi">1</span>
+</pre></div>
+</div>
+</li>
+</ol>
+</li>
+<li><p class="first">Restart the MySQL server in case you changed the configuration in step 1.</p>
+</li>
+<li><p class="first">Change your databases character set and collation:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">ALTER</span> <span class="n">DATABASE</span> <span class="n">nextcloud</span> <span class="n">CHARACTER</span> <span class="n">SET</span> <span class="n">utf8mb4</span> <span class="n">COLLATE</span> <span class="n">utf8mb4_general_ci</span><span class="p">;</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Set the <code class="docutils literal"><span class="pre">mysql.utf8mb4</span></code> config to true in your config.php:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo -u www-data php occ config:system:set mysql.utf8mb4 --type boolean --value=&quot;true&quot;
+</pre></div>
+</div>
+</li>
+<li><p class="first">Convert all existing tables to the new collation by running the repair step:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$ sudo -u www-data php occ maintenance:repair
+</pre></div>
+</div>
+</li>
+</ol>
+<p>Now you should be able to use Emojis in your file names, calendar events, comments and many more.</p>
+<div class="section" id="mariadb-support">
+<h2>MariaDB support<a class="headerlink" href="#mariadb-support" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="mariadb-10-3-or-later">
+<h3>MariaDB 10.3 or later<a class="headerlink" href="#mariadb-10-3-or-later" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic">
+<li><p class="first">Make sure the following InnoDB settings are set on your MariaDB server:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">mysqld</span><span class="p">]</span>
+<span class="n">innodb_file_per_table</span><span class="o">=</span><span class="mi">1</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Continue at step 2 of the MySQL instructions.</p>
+</li>
+</ol>
+</div>
+<div class="section" id="mariadb-10-2-or-earlier">
+<h3>MariaDB 10.2 or earlier<a class="headerlink" href="#mariadb-10-2-or-earlier" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic">
+<li><p class="first">Make sure the following InnoDB settings are set on your MySQL server:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">mysqld</span><span class="p">]</span>
+<span class="n">innodb_large_prefix</span><span class="o">=</span><span class="n">true</span>
+<span class="n">innodb_file_format</span><span class="o">=</span><span class="n">barracuda</span>
+<span class="n">innodb_file_per_table</span><span class="o">=</span><span class="mi">1</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Restart the MariaDB server in case you changed the configuration in step 1.</p>
+</li>
+<li><p class="first">Figure out whether the file format was changed to Barracuda:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">MariaDB</span><span class="o">&gt;</span> <span class="n">SELECT</span> <span class="n">NAME</span><span class="p">,</span> <span class="n">SPACE</span><span class="p">,</span> <span class="n">FILE_FORMAT</span> <span class="n">FROM</span> <span class="n">INFORMATION_SCHEMA</span><span class="o">.</span><span class="n">INNODB_SYS_TABLES</span> <span class="n">WHERE</span> <span class="n">NAME</span> <span class="n">like</span> <span class="s2">&quot;nextcloud%&quot;</span><span class="p">;</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>If the file format is &#8220;Barracuda&#8221; for every single table, nothing special is left to do. Continue with the MySQL instructions at step 3. While testing, all tables&#8217; file format was &#8220;Antelope&#8221;.</p>
+<ol class="arabic" start="4">
+<li><p class="first">The tables needs to be migrated to &#8220;Barracuda&#8221; manually, one by one. SQL commands can be created easily, however:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">MariaDB</span><span class="o">&gt;</span> <span class="n">USE</span> <span class="n">INFORMATION_SCHEMA</span><span class="p">;</span>
+<span class="n">MariaDB</span><span class="o">&gt;</span> <span class="n">SELECT</span> <span class="n">CONCAT</span><span class="p">(</span><span class="s2">&quot;ALTER TABLE `&quot;</span><span class="p">,</span> <span class="n">TABLE_SCHEMA</span><span class="p">,</span><span class="s2">&quot;`.`&quot;</span><span class="p">,</span> <span class="n">TABLE_NAME</span><span class="p">,</span> <span class="s2">&quot;` ROW_FORMAT=DYNAMIC;&quot;</span><span class="p">)</span> <span class="n">AS</span> <span class="n">MySQLCMD</span> <span class="n">FROM</span> <span class="n">TABLES</span> <span class="n">WHERE</span> <span class="n">TABLE_SCHEMA</span> <span class="o">=</span> <span class="s2">&quot;nextcloud&quot;</span><span class="p">;</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>This will return an SQL command for each table in the nextcloud database. The rows can be quickly copied into a text editor, the &#8220;|&#8221;s replaced and the SQL commands copied back to the MariaDB shell. If no error appeared (in doubt check step 2) all is done and nothing is left to do here. It can be proceded with the MySQL steps.</p>
+<ol class="arabic" start="5">
+<li><p class="first">It is possible, however, that some tables cannot be altered. The operations fails with: &#8220;ERROR 1478 (HY000): Table storage engine &#8216;InnoDB&#8217; does not support the create option &#8216;ROW_FORMAT&#8217;&#8221;. In that case the failing tables have a SPACE value of 0 in step 2. It basically means that the table does not have an index file of its own, which is required for the Barracuda format. This can be solved with a slightly different SQL command:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>MariaDB&gt; ALTER TABLE `nextcloud`.`oc_tablename` ROW_FORMAT=DYNAMIC, ALGORITHM=COPY;
+</pre></div>
+</div>
+</li>
+</ol>
+<p>Replace oc_tablename with the failing table. If there are too many (did not happen here), SQL commands can be generated in a batch (task for the reader).</p>
+<ol class="arabic simple" start="6">
+<li>Now everything should be fine and the MySQL instructions can be followed from step 3 onwards</li>
+</ol>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="bigint_identifiers.html" class="btn btn-neutral float-right" title="BigInt (64bit) identifiers" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="linux_database_configuration.html" class="btn btn-neutral float-left" title="Database configuration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021 Nextcloud GmbH.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: 13
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/13/admin_manual">13</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/14/admin_manual">14</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/15/admin_manual">15</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/admin_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/admin_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+   
+
+</body>
+</html>

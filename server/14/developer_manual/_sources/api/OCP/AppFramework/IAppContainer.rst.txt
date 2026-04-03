@@ -1,0 +1,114 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IAppContainer
+=============
+
+
+.. php:namespace:: OCP\AppFramework
+
+.. php:interface:: IAppContainer
+
+
+	.. rst-class:: phpdoc-description
+	
+		| This is a tagging interface for a container that belongs to an app
+		
+		| The interface currently extends IContainer, but this interface is deprecated as of Nextcloud 20,
+		| thus this interface won\'t extend it anymore once that was removed\. So migrate to the ContainerInterface
+		| only\.
+		
+	
+	:Implemented by:
+		:php:class:`OC\\AppFramework\\DependencyInjection\\DIContainer` 
+	
+	
+	:Source:
+		`lib/public/AppFramework/IAppContainer.php#44 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/IAppContainer.php#L44>`_
+	
+	:Parent:
+		:php:interface:`Psr\\Container\\ContainerInterface`
+	
+	:Parent:
+		:php:interface:`OCP\\IContainer`
+	
+
+Methods
+-------
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public getAppName()
+	
+		.. rst-class:: phpdoc-description
+		
+			| used to return the appname of the set application
+			
+		
+		:Source:
+			`lib/public/AppFramework/IAppContainer.php#52 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/IAppContainer.php#L52>`_
+		
+		
+		:Returns: string the name of your application
+		:Since: 6.0.0 
+		:Deprecated: 20.0.0 
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public getServer()
+	
+		:Source:
+			`lib/public/AppFramework/IAppContainer.php#59 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/IAppContainer.php#L59>`_
+		
+		
+		:Returns: :any:`\\OCP\\IServerContainer <OCP\\IServerContainer>` 
+		:Since: 6.0.0 
+		:Deprecated: 20.0.0 
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public registerMiddleWare( $middleWare)
+	
+		:Source:
+			`lib/public/AppFramework/IAppContainer.php#67 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/IAppContainer.php#L67>`_
+		
+		
+		:Parameters:
+			* **$middleWare** (string)  
+
+		
+		:Returns: bool 
+		:Since: 6.0.0 
+		:Deprecated: 20.0.0 use \\OCP\\AppFramework\\Bootstrap\\IRegistrationContext::registerMiddleware
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public registerCapability( $serviceName)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Register a capability
+			
+		
+		:Source:
+			`lib/public/AppFramework/IAppContainer.php#76 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/IAppContainer.php#L76>`_
+		
+		
+		:Parameters:
+			* **$serviceName** (string)  e.g. 'OCA\Files\Capabilities'
+
+		
+		:Since: 8.2.0 
+		:Deprecated: 20.0.0 use \\OCP\\AppFramework\\Bootstrap\\IRegistrationContext::registerCapability
+	
+	
+

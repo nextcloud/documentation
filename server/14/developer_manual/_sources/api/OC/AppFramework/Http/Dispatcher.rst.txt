@@ -1,0 +1,80 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+Dispatcher
+==========
+
+
+.. php:namespace:: OC\AppFramework\Http
+
+.. php:class:: Dispatcher
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Class to dispatch the request to the middleware dispatcher
+		
+	
+	:Source:
+		`lib/private/AppFramework/Http/Dispatcher.php#50 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Dispatcher.php#L50>`_
+	
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $protocol, $middlewareDispatcher, $reflector, $request, $config, $connection, $logger)
+	
+		:Source:
+			`lib/private/AppFramework/Http/Dispatcher.php#84 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Dispatcher.php#L84>`_
+		
+		
+		:Parameters:
+			* **$protocol** (:any:`OC\\AppFramework\\Http <OC\\AppFramework\\Http>`)  the http protocol with contains all status headers
+			* **$middlewareDispatcher** (:any:`OC\\AppFramework\\Middleware\\MiddlewareDispatcher <OC\\AppFramework\\Middleware\\MiddlewareDispatcher>`)  the dispatcher which
+			runs the middleware
+			* **$reflector** (:any:`OC\\AppFramework\\Utility\\ControllerMethodReflector <OC\\AppFramework\\Utility\\ControllerMethodReflector>`)  the reflector that is used to inject
+			the arguments for the controller
+			* **$request** (:any:`OCP\\IRequest <OCP\\IRequest>`)  the incoming request
+			* **$config** (:any:`OCP\\IConfig <OCP\\IConfig>`)  
+			* **$connection** (:any:`OC\\DB\\ConnectionAdapter <OC\\DB\\ConnectionAdapter>`)  
+			* **$logger** (:any:`Psr\\Log\\LoggerInterface <Psr\\Log\\LoggerInterface>`)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public dispatch( $controller, $methodName)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Handles a request and calls the dispatcher on the controller
+			
+		
+		:Source:
+			`lib/private/AppFramework/Http/Dispatcher.php#111 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Http/Dispatcher.php#L111>`_
+		
+		
+		:Parameters:
+			* **$controller** (:any:`OCP\\AppFramework\\Controller <OCP\\AppFramework\\Controller>`)  the controller which will be called
+			* **$methodName** (string)  the method name which will be called on
+			the controller
+
+		
+		:Returns: array $array\[0\] contains a string with the http main header,
+			$array\[1\] contains headers in the form: $key =\> value, $array\[2\] contains
+			the response output
+		
+		:Throws: :any:`\\Exception <Exception>` 
+	
+	
+

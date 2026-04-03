@@ -1,0 +1,389 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+Folder
+======
+
+
+.. php:namespace:: OC\Files\Node
+
+.. php:class:: Folder
+
+
+	:Source:
+		`lib/private/Files/Node/Folder.php#51 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Folder.php#L51>`_
+	
+	:Parent:
+		:php:class:`OC\\Files\\Node\\Node`
+	
+	:Implements:
+		:php:interface:`OCP\\Files\\Folder` 
+	
+
+Methods
+-------
+
+.. rst-class:: protected
+
+	.. php:method:: protected createNonExistingNode( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Creates a Folder that represents a non\-existing path
+			
+		
+		:Source:
+			`lib/private/Files/Node/Folder.php#58 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Folder.php#L58>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  path
+
+		
+		:Returns: string non\-existing node class
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getFullPath( $path)
+	
+		:Source:
+			`lib/private/Files/Node/Folder.php#67 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Folder.php#L67>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  path relative to the folder
+
+		
+		:Returns: string 
+		:Throws: :any:`\\OCP\\Files\\NotPermittedException <OCP\\Files\\NotPermittedException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getRelativePath( $path)
+	
+		:Source:
+			`lib/private/Files/Node/Folder.php#78 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Folder.php#L78>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: string | null 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isSubNode( $node)
+	
+		.. rst-class:: phpdoc-description
+		
+			| check if a node is a \(grand\-\)child of the folder
+			
+		
+		:Source:
+			`lib/private/Files/Node/Folder.php#98 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Folder.php#L98>`_
+		
+		
+		:Parameters:
+			* **$node** (:any:`OC\\Files\\Node\\Node <OC\\Files\\Node\\Node>`)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getDirectoryListing()
+	
+		.. rst-class:: phpdoc-description
+		
+			| get the content of this directory
+			
+		
+		:Source:
+			`lib/private/Files/Node/Folder.php#108 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Folder.php#L108>`_
+		
+		
+		:Returns: :any:`\\OC\\Files\\Node\\Node\[\] <OC\\Files\\Node\\Node>` 
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected createNode( $path, $info=null)
+	
+		:Source:
+			`lib/private/Files/Node/Folder.php#125 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Folder.php#L125>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+			* **$info** (:any:`OCP\\Files\\FileInfo <OCP\\Files\\FileInfo>`)  
+
+		
+		:Returns: :any:`\\OC\\Files\\Node\\File <OC\\Files\\Node\\File>` | :any:`\\OC\\Files\\Node\\Folder <OC\\Files\\Node\\Folder>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public get( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the node at $path
+			
+		
+		:Source:
+			`lib/private/Files/Node/Folder.php#145 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Folder.php#L145>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: :any:`\\OC\\Files\\Node\\Node <OC\\Files\\Node\\Node>` 
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public nodeExists( $path)
+	
+		:Source:
+			`lib/private/Files/Node/Folder.php#153 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Folder.php#L153>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public newFolder( $path)
+	
+		:Source:
+			`lib/private/Files/Node/Folder.php#167 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Folder.php#L167>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: :any:`\\OC\\Files\\Node\\Folder <OC\\Files\\Node\\Folder>` 
+		:Throws: :any:`\\OCP\\Files\\NotPermittedException <OCP\\Files\\NotPermittedException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public newFile( $path, $content=null)
+	
+		:Source:
+			`lib/private/Files/Node/Folder.php#189 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Folder.php#L189>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: :any:`\\OC\\Files\\Node\\File <OC\\Files\\Node\\File>` 
+		:Throws: :any:`\\OCP\\Files\\NotPermittedException <OCP\\Files\\NotPermittedException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public search( $query)
+	
+		.. rst-class:: phpdoc-description
+		
+			| search for files with the name matching $query
+			
+		
+		:Source:
+			`lib/private/Files/Node/Folder.php#229 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Folder.php#L229>`_
+		
+		
+		:Parameters:
+			* **$query** (string | :any:`\\OCP\\Files\\Search\\ISearchQuery <OCP\\Files\\Search\\ISearchQuery>`)  
+
+		
+		:Returns: :any:`\\OC\\Files\\Node\\Node\[\] <OC\\Files\\Node\\Node>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public searchByMime( $mimetype)
+	
+		.. rst-class:: phpdoc-description
+		
+			| search for files by mimetype
+			
+		
+		:Source:
+			`lib/private/Files/Node/Folder.php#338 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Folder.php#L338>`_
+		
+		
+		:Parameters:
+			* **$mimetype** (string)  
+
+		
+		:Returns: :any:`\\OC\\Files\\Node\\Node\[\] <OC\\Files\\Node\\Node>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public searchByTag( $tag, $userId)
+	
+		.. rst-class:: phpdoc-description
+		
+			| search for files by tag
+			
+		
+		:Source:
+			`lib/private/Files/Node/Folder.php#354 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Folder.php#L354>`_
+		
+		
+		:Parameters:
+			* **$tag** (string | int)  name or tag id
+			* **$userId** (string)  owner of the tags
+
+		
+		:Returns: :any:`\\OC\\Files\\Node\\Node\[\] <OC\\Files\\Node\\Node>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getById( $id)
+	
+		:Source:
+			`lib/private/Files/Node/Folder.php#363 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Folder.php#L363>`_
+		
+		
+		:Parameters:
+			* **$id** (int)  
+
+		
+		:Returns: :any:`\\OC\\Files\\Node\\Node\[\] <OC\\Files\\Node\\Node>` 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected getAppDataDirectoryName()
+	
+		:Source:
+			`lib/private/Files/Node/Folder.php#415 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Folder.php#L415>`_
+		
+		
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected getByIdInRootMount( $id)
+	
+		.. rst-class:: phpdoc-description
+		
+			| In case the path we are currently in is inside the appdata\_\* folder,
+			| the original getById method does not work, because it can only look inside
+			| the user\'s mount points\. But the user has no mount point for the root storage\.
+			
+			| So in that case we directly check the mount of the root if it contains
+			| the id\. If it does we check if the path is inside the path we are working
+			| in\.
+			
+		
+		:Source:
+			`lib/private/Files/Node/Folder.php#432 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Folder.php#L432>`_
+		
+		
+		:Parameters:
+			* **$id** (int)  
+
+		
+		:Returns: array 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getFreeSpace()
+	
+		:Source:
+			`lib/private/Files/Node/Folder.php#456 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Folder.php#L456>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public delete()
+	
+		:Source:
+			`lib/private/Files/Node/Folder.php#460 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Folder.php#L460>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getNonExistingName( $name)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Add a suffix to the name in case the file exists
+			
+		
+		:Source:
+			`lib/private/Files/Node/Folder.php#480 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Folder.php#L480>`_
+		
+		
+		:Parameters:
+			* **$name** (string)  
+
+		
+		:Returns: string 
+		:Throws: :any:`\\OCP\\Files\\NotPermittedException <OCP\\Files\\NotPermittedException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getRecent( $limit, $offset=0)
+	
+		:Source:
+			`lib/private/Files/Node/Folder.php#490 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Folder.php#L490>`_
+		
+		
+		:Parameters:
+			* **$limit** (int)  
+			* **$offset** (int)  
+
+		
+		:Returns: :any:`\\OCP\\Files\\Node\[\] <OCP\\Files\\Node>` 
+	
+	
+

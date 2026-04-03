@@ -1,0 +1,247 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+Redis
+=====
+
+
+.. php:namespace:: OC\Memcache
+
+.. php:class:: Redis
+
+
+	:Source:
+		`lib/private/Memcache/Redis.php#34 <https://github.com/nextcloud/server/blob/stable13/lib/private/Memcache/Redis.php#L34>`_
+	
+	:Parent:
+		:php:class:`OC\\Memcache\\Cache`
+	
+	:Implements:
+		:php:interface:`OCP\\IMemcacheTTL` 
+	
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $prefix="")
+	
+		:Source:
+			`lib/private/Memcache/Redis.php#40 <https://github.com/nextcloud/server/blob/stable13/lib/private/Memcache/Redis.php#L40>`_
+		
+		
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected getNameSpace()
+	
+		.. rst-class:: phpdoc-description
+		
+			| entries in redis get namespaced to prevent collisions between ownCloud instances and users
+			
+		
+		:Source:
+			`lib/private/Memcache/Redis.php#50 <https://github.com/nextcloud/server/blob/stable13/lib/private/Memcache/Redis.php#L50>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public get( $key)
+	
+		:Source:
+			`lib/private/Memcache/Redis.php#54 <https://github.com/nextcloud/server/blob/stable13/lib/private/Memcache/Redis.php#L54>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public set( $key, $value, $ttl=0)
+	
+		:Source:
+			`lib/private/Memcache/Redis.php#63 <https://github.com/nextcloud/server/blob/stable13/lib/private/Memcache/Redis.php#L63>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public hasKey( $key)
+	
+		:Source:
+			`lib/private/Memcache/Redis.php#71 <https://github.com/nextcloud/server/blob/stable13/lib/private/Memcache/Redis.php#L71>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public remove( $key)
+	
+		:Source:
+			`lib/private/Memcache/Redis.php#75 <https://github.com/nextcloud/server/blob/stable13/lib/private/Memcache/Redis.php#L75>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public clear( $prefix="")
+	
+		:Source:
+			`lib/private/Memcache/Redis.php#83 <https://github.com/nextcloud/server/blob/stable13/lib/private/Memcache/Redis.php#L83>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public add( $key, $value, $ttl=0)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set a value in the cache if it\'s not already stored
+			
+		
+		:Source:
+			`lib/private/Memcache/Redis.php#99 <https://github.com/nextcloud/server/blob/stable13/lib/private/Memcache/Redis.php#L99>`_
+		
+		
+		:Parameters:
+			* **$key** (string)  
+			* **$value** (mixed)  
+			* **$ttl** (int)  Time To Live in seconds. Defaults to 60*60*24
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public inc( $key, $step=1)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Increase a stored number
+			
+		
+		:Source:
+			`lib/private/Memcache/Redis.php#120 <https://github.com/nextcloud/server/blob/stable13/lib/private/Memcache/Redis.php#L120>`_
+		
+		
+		:Parameters:
+			* **$key** (string)  
+			* **$step** (int)  
+
+		
+		:Returns: int \| bool
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public dec( $key, $step=1)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Decrease a stored number
+			
+		
+		:Source:
+			`lib/private/Memcache/Redis.php#131 <https://github.com/nextcloud/server/blob/stable13/lib/private/Memcache/Redis.php#L131>`_
+		
+		
+		:Parameters:
+			* **$key** (string)  
+			* **$step** (int)  
+
+		
+		:Returns: int \| bool
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public cas( $key, $old, $new)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Compare and set
+			
+		
+		:Source:
+			`lib/private/Memcache/Redis.php#146 <https://github.com/nextcloud/server/blob/stable13/lib/private/Memcache/Redis.php#L146>`_
+		
+		
+		:Parameters:
+			* **$key** (string)  
+			* **$old** (mixed)  
+			* **$new** (mixed)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public cad( $key, $old)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Compare and delete
+			
+		
+		:Source:
+			`lib/private/Memcache/Redis.php#168 <https://github.com/nextcloud/server/blob/stable13/lib/private/Memcache/Redis.php#L168>`_
+		
+		
+		:Parameters:
+			* **$key** (string)  
+			* **$old** (mixed)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setTTL( $key, $ttl)
+	
+		:Source:
+			`lib/private/Memcache/Redis.php#180 <https://github.com/nextcloud/server/blob/stable13/lib/private/Memcache/Redis.php#L180>`_
+		
+		
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static isAvailable()
+	
+		:Source:
+			`lib/private/Memcache/Redis.php#184 <https://github.com/nextcloud/server/blob/stable13/lib/private/Memcache/Redis.php#L184>`_
+		
+		
+	
+	
+

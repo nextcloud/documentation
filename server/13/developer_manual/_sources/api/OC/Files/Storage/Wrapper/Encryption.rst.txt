@@ -1,0 +1,676 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+Encryption
+==========
+
+
+.. php:namespace:: OC\Files\Storage\Wrapper
+
+.. php:class:: Encryption
+
+
+	:Source:
+		`lib/private/Files/Storage/Wrapper/Encryption.php#55 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Encryption.php#L55>`_
+	
+	:Parent:
+		:php:class:`OC\\Files\\Storage\\Wrapper\\Wrapper`
+	
+	:Used traits:
+		:php:trait:`OC\\Files\\Storage\\LocalTempFileTrait` 
+	
+
+Properties
+----------
+
+.. php:attr:: protected static unencryptedSize
+
+	:Source:
+		`lib/private/Files/Storage/Wrapper/Encryption.php#74 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Encryption.php#L74>`_
+	
+	:Type: array 
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $parameters, $encryptionManager=null, $util=null, $logger=null, $fileHelper=null, $uid=null, $keyStorage=null, $update=null, $mountManager=null, $arrayCache=null)
+	
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Encryption.php#109 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Encryption.php#L109>`_
+		
+		
+		:Parameters:
+			* **$parameters** (array)  
+			* **$encryptionManager** (:any:`OCP\\Encryption\\IManager <OCP\\Encryption\\IManager>`)  
+			* **$util** (:any:`OC\\Encryption\\Util <OC\\Encryption\\Util>`)  
+			* **$logger** (:any:`OCP\\ILogger <OCP\\ILogger>`)  
+			* **$fileHelper** (:any:`OCP\\Encryption\\IFile <OCP\\Encryption\\IFile>`)  
+			* **$uid** (string)  
+			* **$keyStorage** (:any:`OCP\\Encryption\\Keys\\IStorage <OCP\\Encryption\\Keys\\IStorage>`)  
+			* **$update** (:any:`OC\\Encryption\\Update <OC\\Encryption\\Update>`)  
+			* **$mountManager** (:any:`OC\\Files\\Mount\\Manager <OC\\Files\\Mount\\Manager>`)  
+			* **$arrayCache** (:any:`OC\\Memcache\\ArrayCache <OC\\Memcache\\ArrayCache>`)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public filesize( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| see https://www\.php\.net/manual/en/function\.filesize\.php
+			| The result for filesize when called on a folder is required to be 0
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Encryption.php#143 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Encryption.php#L143>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: int 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getMetaData( $path)
+	
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Encryption.php#195 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Encryption.php#L195>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getDirectoryContent( $directory)
+	
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Encryption.php#203 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Encryption.php#L203>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public file_get_contents( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| see https://www\.php\.net/manual/en/function\.file\_get\_contents\.php
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Encryption.php#216 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Encryption.php#L216>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public file_put_contents( $path, $data)
+	
+		.. rst-class:: phpdoc-description
+		
+			| see https://www\.php\.net/manual/en/function\.file\_put\_contents\.php
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Encryption.php#238 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Encryption.php#L238>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+			* **$data** (mixed)  
+
+		
+		:Returns: int | bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public unlink( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| see https://www\.php\.net/manual/en/function\.unlink\.php
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Encryption.php#256 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Encryption.php#L256>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public rename( $path1, $path2)
+	
+		.. rst-class:: phpdoc-description
+		
+			| see https://www\.php\.net/manual/en/function\.rename\.php
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Encryption.php#277 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Encryption.php#L277>`_
+		
+		
+		:Parameters:
+			* **$path1** (string)  
+			* **$path2** (string)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public rmdir( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| see https://www\.php\.net/manual/en/function\.rmdir\.php
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Encryption.php#308 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Encryption.php#L308>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isReadable( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| check if a file can be read
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Encryption.php#327 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Encryption.php#L327>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public copy( $path1, $path2)
+	
+		.. rst-class:: phpdoc-description
+		
+			| see https://www\.php\.net/manual/en/function\.copy\.php
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Encryption.php#351 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Encryption.php#L351>`_
+		
+		
+		:Parameters:
+			* **$path1** (string)  
+			* **$path2** (string)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public fopen( $path, $mode)
+	
+		.. rst-class:: phpdoc-description
+		
+			| see https://www\.php\.net/manual/en/function\.fopen\.php
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Encryption.php#373 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Encryption.php#L373>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+			* **$mode** (string)  
+
+		
+		:Returns: resource | bool 
+		:Throws: :any:`\\OCP\\Encryption\\Exceptions\\GenericEncryptionException <OCP\\Encryption\\Exceptions\\GenericEncryptionException>` 
+		:Throws: :any:`\\OC\\Encryption\\Exceptions\\ModuleDoesNotExistsException <OC\\Encryption\\Exceptions\\ModuleDoesNotExistsException>` 
+		:Throws: :any:`\\OCP\\Encryption\\Exceptions\\GenericEncryptionException <OCP\\Encryption\\Exceptions\\GenericEncryptionException>` 
+		:Throws: :any:`\\OC\\Encryption\\Exceptions\\ModuleDoesNotExistsException <OC\\Encryption\\Exceptions\\ModuleDoesNotExistsException>` 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected verifyUnencryptedSize( $path, $unencryptedSize)
+	
+		.. rst-class:: phpdoc-description
+		
+			| perform some plausibility checks if the the unencrypted size is correct\.
+			
+			| If not, we calculate the correct unencrypted size and return it
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Encryption.php#491 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Encryption.php#L491>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  internal path relative to the storage root
+			* **$unencryptedSize** (int)  size of the unencrypted file
+
+		
+		:Returns: int unencrypted size
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected fixUnencryptedSize( $path, $size, $unencryptedSize)
+	
+		.. rst-class:: phpdoc-description
+		
+			| calculate the unencrypted size
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Encryption.php#524 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Encryption.php#L524>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  internal path relative to the storage root
+			* **$size** (int)  size of the physical file
+			* **$unencryptedSize** (int)  size of the unencrypted file
+
+		
+		:Returns: int calculated unencrypted size
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public moveFromStorage( $sourceStorage, $sourceInternalPath, $targetInternalPath, $preserveMtime=true)
+	
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Encryption.php#608 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Encryption.php#L608>`_
+		
+		
+		:Parameters:
+			* **$sourceStorage** (:any:`OCP\\Files\\Storage\\IStorage <OCP\\Files\\Storage\\IStorage>`)  
+			* **$sourceInternalPath** (string)  
+			* **$targetInternalPath** (string)  
+			* **$preserveMtime** (bool)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public copyFromStorage( $sourceStorage, $sourceInternalPath, $targetInternalPath, $preserveMtime=false, $isRename=false)
+	
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Encryption.php#643 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Encryption.php#L643>`_
+		
+		
+		:Parameters:
+			* **$sourceStorage** (:any:`OCP\\Files\\Storage\\IStorage <OCP\\Files\\Storage\\IStorage>`)  
+			* **$sourceInternalPath** (string)  
+			* **$targetInternalPath** (string)  
+			* **$preserveMtime** (bool)  
+			* **$isRename** (bool)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getLocalFile( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get the path to a local version of the file\.
+			
+			| The local version of the file can be temporary and doesn\'t have to be persistent across requests
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Encryption.php#785 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Encryption.php#L785>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isLocal()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the wrapped storage\'s value for isLocal\(\)
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Encryption.php#800 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Encryption.php#L800>`_
+		
+		
+		:Returns: bool wrapped storage\'s isLocal\(\) value
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public stat( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| see https://www\.php\.net/manual/en/function\.stat\.php
+			| only the following keys are required in the result: size and mtime
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Encryption.php#814 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Encryption.php#L814>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: array 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public hash( $type, $path, $raw=false)
+	
+		.. rst-class:: phpdoc-description
+		
+			| see https://www\.php\.net/manual/en/function\.hash\.php
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Encryption.php#831 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Encryption.php#L831>`_
+		
+		
+		:Parameters:
+			* **$type** (string)  
+			* **$path** (string)  
+			* **$raw** (bool)  
+
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected getFullPath( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| return full path, including mount point
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Encryption.php#845 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Encryption.php#L845>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  relative to mount point
+
+		
+		:Returns: string full path including mount point
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected readFirstBlock( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| read first block of encrypted file, typically this will contain the
+			| encryption header
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Encryption.php#856 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Encryption.php#L856>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected getHeaderSize( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| return header size of given file
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Encryption.php#872 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Encryption.php#L872>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: int 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected parseRawHeader( $rawHeader)
+	
+		.. rst-class:: phpdoc-description
+		
+			| parse raw header to array
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Encryption.php#893 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Encryption.php#L893>`_
+		
+		
+		:Parameters:
+			* **$rawHeader** (string)  
+
+		
+		:Returns: array 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected getHeader( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| read header from file
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Encryption.php#921 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Encryption.php#L921>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: array 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected getEncryptionModule( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| read encryption module needed to read/write the file located at $path
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Encryption.php#956 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Encryption.php#L956>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: null | :any:`\\OCP\\Encryption\\IEncryptionModule <OCP\\Encryption\\IEncryptionModule>` 
+		:Throws: :any:`\\OC\\Encryption\\Exceptions\\ModuleDoesNotExistsException <OC\\Encryption\\Exceptions\\ModuleDoesNotExistsException>` 
+		:Throws: :any:`\\Exception <Exception>` 
+		:Throws: :any:`\\OC\\Encryption\\Exceptions\\ModuleDoesNotExistsException <OC\\Encryption\\Exceptions\\ModuleDoesNotExistsException>` 
+		:Throws: :any:`\\Exception <Exception>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public updateUnencryptedSize( $path, $unencryptedSize)
+	
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Encryption.php#976 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Encryption.php#L976>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+			* **$unencryptedSize** (int)  
+
+		
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected copyKeys( $source, $target)
+	
+		.. rst-class:: phpdoc-description
+		
+			| copy keys to new location
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Encryption.php#987 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Encryption.php#L987>`_
+		
+		
+		:Parameters:
+			* **$source** (string)  path relative to data/
+			* **$target** (string)  path relative to data/
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected isVersion( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| check if path points to a files version
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Encryption.php#1001 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Encryption.php#L1001>`_
+		
+		
+		:Parameters:
+			* **$path**  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected shouldEncrypt( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| check if the given storage should be encrypted or not
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Encryption.php#1012 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Encryption.php#L1012>`_
+		
+		
+		:Parameters:
+			* **$path**  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public writeStream( $path, $stream, $size=null)
+	
+		:Source:
+			`lib/private/Files/Storage/Wrapper/Encryption.php#1032 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Wrapper/Encryption.php#L1032>`_
+		
+		
+	
+	
+

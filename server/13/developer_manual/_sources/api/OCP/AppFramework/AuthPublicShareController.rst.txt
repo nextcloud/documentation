@@ -1,0 +1,186 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+AuthPublicShareController
+=========================
+
+
+.. php:namespace:: OCP\AppFramework
+
+.. rst-class::  abstract
+
+.. php:class:: AuthPublicShareController
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Base controller for interactive public shares
+		
+		| It will verify if the user is properly authenticated to the share\. If not the
+		| user will be redirected to an authentication page\.
+		| 
+		| Use this for a controller that is to be called directly by a user\. So the
+		| normal public share page for files/calendars etc\.
+		
+	
+	:Source:
+		`lib/public/AppFramework/AuthPublicShareController.php#47 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/AuthPublicShareController.php#L47>`_
+	
+	:Parent:
+		:php:class:`OCP\\AppFramework\\PublicShareController`
+	
+
+Properties
+----------
+
+.. php:attr:: protected static urlGenerator
+
+	:Source:
+		`lib/public/AppFramework/AuthPublicShareController.php#50 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/AuthPublicShareController.php#L50>`_
+	
+	:Type: :any:`\\OCP\\IURLGenerator <OCP\\IURLGenerator>` 
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $appName, $request, $session, $urlGenerator)
+	
+		:Source:
+			`lib/public/AppFramework/AuthPublicShareController.php#55 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/AuthPublicShareController.php#L55>`_
+		
+		
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public showAuthenticate()
+	
+		:Source:
+			`lib/public/AppFramework/AuthPublicShareController.php#73 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/AuthPublicShareController.php#L73>`_
+		
+		
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected showAuthFailed()
+	
+		.. rst-class:: phpdoc-description
+		
+			| The template to show when authentication failed
+			
+		
+		:Source:
+			`lib/public/AppFramework/AuthPublicShareController.php#82 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/AuthPublicShareController.php#L82>`_
+		
+		
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: protected abstract
+
+	.. php:method:: protected abstract verifyPassword( $password)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Verify the password
+			
+		
+		:Source:
+			`lib/public/AppFramework/AuthPublicShareController.php#91 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/AuthPublicShareController.php#L91>`_
+		
+		
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected authFailed()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Function called after failed authentication
+			
+			| You can use this to do some logging for example
+			
+		
+		:Source:
+			`lib/public/AppFramework/AuthPublicShareController.php#100 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/AuthPublicShareController.php#L100>`_
+		
+		
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected authSucceeded()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Function called after successfull authentication
+			
+			| You can use this to do some logging for example
+			
+		
+		:Source:
+			`lib/public/AppFramework/AuthPublicShareController.php#110 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/AuthPublicShareController.php#L110>`_
+		
+		
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: public final
+
+	.. php:method:: public final authenticate( $password="")
+	
+		:Source:
+			`lib/public/AppFramework/AuthPublicShareController.php#122 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/AuthPublicShareController.php#L122>`_
+		
+		
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: public abstract
+
+	.. php:method:: public abstract showShare()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Default landing page
+			
+		
+		:Source:
+			`lib/public/AppFramework/AuthPublicShareController.php#151 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/AuthPublicShareController.php#L151>`_
+		
+		
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: public final
+
+	.. php:method:: public final getAuthenticationRedirect( $redirect)
+	
+		:Source:
+			`lib/public/AppFramework/AuthPublicShareController.php#156 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/AuthPublicShareController.php#L156>`_
+		
+		
+		:Since: 14.0.0 
+	
+	
+

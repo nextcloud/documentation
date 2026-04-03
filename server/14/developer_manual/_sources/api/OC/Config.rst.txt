@@ -1,0 +1,247 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+Config
+======
+
+
+.. php:namespace:: OC
+
+.. php:class:: Config
+
+
+	.. rst-class:: phpdoc-description
+	
+		| This class is responsible for reading and writing config\.php, the very basic
+		| configuration file of Nextcloud\.
+		
+	
+	:Source:
+		`lib/private/Config.php#46 <https://github.com/nextcloud/server/blob/stable13/lib/private/Config.php#L46>`_
+	
+
+Constants
+---------
+
+.. php:const:: ENV_PREFIX = NC\_
+
+	:Source:
+		`lib/private/Config.php#47 <https://github.com/nextcloud/server/blob/stable13/lib/private/Config.php#L47>`_
+	
+
+
+Properties
+----------
+
+.. php:attr:: protected static cache
+
+	:Source:
+		`lib/private/Config.php#50 <https://github.com/nextcloud/server/blob/stable13/lib/private/Config.php#L50>`_
+	
+	:Type: array Associative array \($key =\> $value\)
+
+
+.. php:attr:: protected static envCache
+
+	:Source:
+		`lib/private/Config.php#52 <https://github.com/nextcloud/server/blob/stable13/lib/private/Config.php#L52>`_
+	
+	:Type: array 
+
+
+.. php:attr:: protected static configDir
+
+	:Source:
+		`lib/private/Config.php#54 <https://github.com/nextcloud/server/blob/stable13/lib/private/Config.php#L54>`_
+	
+	:Type: string 
+
+
+.. php:attr:: protected static configFilePath
+
+	:Source:
+		`lib/private/Config.php#56 <https://github.com/nextcloud/server/blob/stable13/lib/private/Config.php#L56>`_
+	
+	:Type: string 
+
+
+.. php:attr:: protected static configFileName
+
+	:Source:
+		`lib/private/Config.php#58 <https://github.com/nextcloud/server/blob/stable13/lib/private/Config.php#L58>`_
+	
+	:Type: string 
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $configDir, $fileName=config\.php)
+	
+		:Source:
+			`lib/private/Config.php#64 <https://github.com/nextcloud/server/blob/stable13/lib/private/Config.php#L64>`_
+		
+		
+		:Parameters:
+			* **$configDir** (string)  Path to the config dir, needs to end with '/'
+			* **$fileName** (string)  (Optional) Name of the config file. Defaults to config.php
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getKeys()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Lists all available config keys
+			
+			| Please note that it does not return the values\.
+			
+		
+		:Source:
+			`lib/private/Config.php#78 <https://github.com/nextcloud/server/blob/stable13/lib/private/Config.php#L78>`_
+		
+		
+		:Returns: array an array of key names
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getValue( $key, $default=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns a config value
+			
+			| gets its value from an \`NC\_\` prefixed environment variable
+			| if it doesn\'t exist from config\.php
+			| if this doesn\'t exist either, it will return the given \`$default\`
+			
+		
+		:Source:
+			`lib/private/Config.php#93 <https://github.com/nextcloud/server/blob/stable13/lib/private/Config.php#L93>`_
+		
+		
+		:Parameters:
+			* **$key** (string)  key
+			* **$default** (mixed)  = null default value
+
+		
+		:Returns: mixed the value or $default
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setValues( $configs)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Sets and deletes values and writes the config\.php
+			
+		
+		:Source:
+			`lib/private/Config.php#112 <https://github.com/nextcloud/server/blob/stable13/lib/private/Config.php#L112>`_
+		
+		
+		:Parameters:
+			* **$configs** (array)  Associative array with `key => value` pairs
+			If value is null, the config key will be deleted
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setValue( $key, $value)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Sets the value and writes it to config\.php if required
+			
+		
+		:Source:
+			`lib/private/Config.php#134 <https://github.com/nextcloud/server/blob/stable13/lib/private/Config.php#L134>`_
+		
+		
+		:Parameters:
+			* **$key** (string)  key
+			* **$value** (mixed)  value
+
+		
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected set( $key, $value)
+	
+		.. rst-class:: phpdoc-description
+		
+			| This function sets the value
+			
+		
+		:Source:
+			`lib/private/Config.php#148 <https://github.com/nextcloud/server/blob/stable13/lib/private/Config.php#L148>`_
+		
+		
+		:Parameters:
+			* **$key** (string)  key
+			* **$value** (mixed)  value
+
+		
+		:Returns: bool True if the file needs to be updated, false otherwise
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public deleteKey( $key)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Removes a key from the config and removes it from config\.php if required
+			
+		
+		:Source:
+			`lib/private/Config.php#162 <https://github.com/nextcloud/server/blob/stable13/lib/private/Config.php#L162>`_
+		
+		
+		:Parameters:
+			* **$key** (string)  
+
+		
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected delete( $key)
+	
+		.. rst-class:: phpdoc-description
+		
+			| This function removes a key from the config
+			
+		
+		:Source:
+			`lib/private/Config.php#175 <https://github.com/nextcloud/server/blob/stable13/lib/private/Config.php#L175>`_
+		
+		
+		:Parameters:
+			* **$key** (string)  
+
+		
+		:Returns: bool True if the file needs to be updated, false otherwise
+	
+	
+

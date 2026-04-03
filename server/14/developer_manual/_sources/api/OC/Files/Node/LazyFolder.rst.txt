@@ -1,0 +1,761 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+LazyFolder
+==========
+
+
+.. php:namespace:: OC\Files\Node
+
+.. php:class:: LazyFolder
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Class LazyFolder
+		
+		| This is a lazy wrapper around a folder\. So only
+		| once it is needed this will get initialized\.
+		
+	
+	:Source:
+		`lib/private/Files/Node/LazyFolder.php#37 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/LazyFolder.php#L37>`_
+	
+	:Implements:
+		:php:interface:`OCP\\Files\\Folder` 
+	
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $folderClosure)
+	
+		.. rst-class:: phpdoc-description
+		
+			| LazyFolder constructor\.
+			
+		
+		:Source:
+			`lib/private/Files/Node/LazyFolder.php#49 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/LazyFolder.php#L49>`_
+		
+		
+		:Parameters:
+			* **$folderClosure** (:any:`Closure <Closure>`)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public __call( $method, $args)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Magic method to first get the real rootFolder and then
+			| call $method with $args on it
+			
+		
+		:Source:
+			`lib/private/Files/Node/LazyFolder.php#61 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/LazyFolder.php#L61>`_
+		
+		
+		:Parameters:
+			* **$method**  
+			* **$args**  
+
+		
+		:Returns: mixed 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getUser()
+	
+		:Source:
+			`lib/private/Files/Node/LazyFolder.php#72 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/LazyFolder.php#L72>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public listen( $scope, $method, $callback)
+	
+		:Source:
+			`lib/private/Files/Node/LazyFolder.php#79 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/LazyFolder.php#L79>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public removeListener( $scope=null, $method=null, $callback=null)
+	
+		:Source:
+			`lib/private/Files/Node/LazyFolder.php#86 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/LazyFolder.php#L86>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public emit( $scope, $method, $arguments=\[\])
+	
+		:Source:
+			`lib/private/Files/Node/LazyFolder.php#93 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/LazyFolder.php#L93>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public mount( $storage, $mountPoint, $arguments=\[\])
+	
+		:Source:
+			`lib/private/Files/Node/LazyFolder.php#100 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/LazyFolder.php#L100>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getMount( $mountPoint)
+	
+		:Source:
+			`lib/private/Files/Node/LazyFolder.php#107 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/LazyFolder.php#L107>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getMountsIn( $mountPoint)
+	
+		:Source:
+			`lib/private/Files/Node/LazyFolder.php#114 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/LazyFolder.php#L114>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getMountByStorageId( $storageId)
+	
+		:Source:
+			`lib/private/Files/Node/LazyFolder.php#121 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/LazyFolder.php#L121>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getMountByNumericStorageId( $numericId)
+	
+		:Source:
+			`lib/private/Files/Node/LazyFolder.php#128 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/LazyFolder.php#L128>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public unMount( $mount)
+	
+		:Source:
+			`lib/private/Files/Node/LazyFolder.php#135 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/LazyFolder.php#L135>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public get( $path)
+	
+		:Source:
+			`lib/private/Files/Node/LazyFolder.php#142 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/LazyFolder.php#L142>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public rename( $targetPath)
+	
+		:Source:
+			`lib/private/Files/Node/LazyFolder.php#149 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/LazyFolder.php#L149>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public delete()
+	
+		:Source:
+			`lib/private/Files/Node/LazyFolder.php#156 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/LazyFolder.php#L156>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public copy( $targetPath)
+	
+		:Source:
+			`lib/private/Files/Node/LazyFolder.php#163 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/LazyFolder.php#L163>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public touch( $mtime=null)
+	
+		:Source:
+			`lib/private/Files/Node/LazyFolder.php#170 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/LazyFolder.php#L170>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getStorage()
+	
+		:Source:
+			`lib/private/Files/Node/LazyFolder.php#177 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/LazyFolder.php#L177>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getPath()
+	
+		:Source:
+			`lib/private/Files/Node/LazyFolder.php#184 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/LazyFolder.php#L184>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getInternalPath()
+	
+		:Source:
+			`lib/private/Files/Node/LazyFolder.php#191 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/LazyFolder.php#L191>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getId()
+	
+		:Source:
+			`lib/private/Files/Node/LazyFolder.php#198 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/LazyFolder.php#L198>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public stat()
+	
+		:Source:
+			`lib/private/Files/Node/LazyFolder.php#205 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/LazyFolder.php#L205>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getMTime()
+	
+		:Source:
+			`lib/private/Files/Node/LazyFolder.php#212 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/LazyFolder.php#L212>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getSize( $includeMounts=true)
+	
+		:Source:
+			`lib/private/Files/Node/LazyFolder.php#219 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/LazyFolder.php#L219>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getEtag()
+	
+		:Source:
+			`lib/private/Files/Node/LazyFolder.php#226 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/LazyFolder.php#L226>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getPermissions()
+	
+		:Source:
+			`lib/private/Files/Node/LazyFolder.php#233 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/LazyFolder.php#L233>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isReadable()
+	
+		:Source:
+			`lib/private/Files/Node/LazyFolder.php#240 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/LazyFolder.php#L240>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isUpdateable()
+	
+		:Source:
+			`lib/private/Files/Node/LazyFolder.php#247 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/LazyFolder.php#L247>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isDeletable()
+	
+		:Source:
+			`lib/private/Files/Node/LazyFolder.php#254 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/LazyFolder.php#L254>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isShareable()
+	
+		:Source:
+			`lib/private/Files/Node/LazyFolder.php#261 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/LazyFolder.php#L261>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getParent()
+	
+		:Source:
+			`lib/private/Files/Node/LazyFolder.php#268 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/LazyFolder.php#L268>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getName()
+	
+		:Source:
+			`lib/private/Files/Node/LazyFolder.php#275 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/LazyFolder.php#L275>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getUserFolder( $userId)
+	
+		:Source:
+			`lib/private/Files/Node/LazyFolder.php#282 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/LazyFolder.php#L282>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getMimetype()
+	
+		:Source:
+			`lib/private/Files/Node/LazyFolder.php#289 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/LazyFolder.php#L289>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getMimePart()
+	
+		:Source:
+			`lib/private/Files/Node/LazyFolder.php#296 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/LazyFolder.php#L296>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isEncrypted()
+	
+		:Source:
+			`lib/private/Files/Node/LazyFolder.php#303 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/LazyFolder.php#L303>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getType()
+	
+		:Source:
+			`lib/private/Files/Node/LazyFolder.php#310 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/LazyFolder.php#L310>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isShared()
+	
+		:Source:
+			`lib/private/Files/Node/LazyFolder.php#317 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/LazyFolder.php#L317>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isMounted()
+	
+		:Source:
+			`lib/private/Files/Node/LazyFolder.php#324 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/LazyFolder.php#L324>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getMountPoint()
+	
+		:Source:
+			`lib/private/Files/Node/LazyFolder.php#331 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/LazyFolder.php#L331>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getOwner()
+	
+		:Source:
+			`lib/private/Files/Node/LazyFolder.php#338 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/LazyFolder.php#L338>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getChecksum()
+	
+		:Source:
+			`lib/private/Files/Node/LazyFolder.php#345 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/LazyFolder.php#L345>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getExtension()
+	
+		:Source:
+			`lib/private/Files/Node/LazyFolder.php#349 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/LazyFolder.php#L349>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getFullPath( $path)
+	
+		:Source:
+			`lib/private/Files/Node/LazyFolder.php#356 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/LazyFolder.php#L356>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getRelativePath( $path)
+	
+		:Source:
+			`lib/private/Files/Node/LazyFolder.php#363 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/LazyFolder.php#L363>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isSubNode( $node)
+	
+		:Source:
+			`lib/private/Files/Node/LazyFolder.php#370 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/LazyFolder.php#L370>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getDirectoryListing()
+	
+		:Source:
+			`lib/private/Files/Node/LazyFolder.php#377 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/LazyFolder.php#L377>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public nodeExists( $path)
+	
+		:Source:
+			`lib/private/Files/Node/LazyFolder.php#384 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/LazyFolder.php#L384>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public newFolder( $path)
+	
+		:Source:
+			`lib/private/Files/Node/LazyFolder.php#391 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/LazyFolder.php#L391>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public newFile( $path, $content=null)
+	
+		:Source:
+			`lib/private/Files/Node/LazyFolder.php#398 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/LazyFolder.php#L398>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public search( $query)
+	
+		:Source:
+			`lib/private/Files/Node/LazyFolder.php#405 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/LazyFolder.php#L405>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public searchByMime( $mimetype)
+	
+		:Source:
+			`lib/private/Files/Node/LazyFolder.php#412 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/LazyFolder.php#L412>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public searchByTag( $tag, $userId)
+	
+		:Source:
+			`lib/private/Files/Node/LazyFolder.php#419 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/LazyFolder.php#L419>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getById( $id)
+	
+		:Source:
+			`lib/private/Files/Node/LazyFolder.php#426 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/LazyFolder.php#L426>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getFreeSpace()
+	
+		:Source:
+			`lib/private/Files/Node/LazyFolder.php#433 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/LazyFolder.php#L433>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isCreatable()
+	
+		:Source:
+			`lib/private/Files/Node/LazyFolder.php#440 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/LazyFolder.php#L440>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getNonExistingName( $name)
+	
+		:Source:
+			`lib/private/Files/Node/LazyFolder.php#447 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/LazyFolder.php#L447>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public move( $targetPath)
+	
+		:Source:
+			`lib/private/Files/Node/LazyFolder.php#454 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/LazyFolder.php#L454>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public lock( $type)
+	
+		:Source:
+			`lib/private/Files/Node/LazyFolder.php#461 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/LazyFolder.php#L461>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public changeLock( $targetType)
+	
+		:Source:
+			`lib/private/Files/Node/LazyFolder.php#468 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/LazyFolder.php#L468>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public unlock( $type)
+	
+		:Source:
+			`lib/private/Files/Node/LazyFolder.php#475 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/LazyFolder.php#L475>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getRecent( $limit, $offset=0)
+	
+		:Source:
+			`lib/private/Files/Node/LazyFolder.php#482 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/LazyFolder.php#L482>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getCreationTime()
+	
+		:Source:
+			`lib/private/Files/Node/LazyFolder.php#489 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/LazyFolder.php#L489>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getUploadTime()
+	
+		:Source:
+			`lib/private/Files/Node/LazyFolder.php#496 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/LazyFolder.php#L496>`_
+		
+		
+	
+	
+

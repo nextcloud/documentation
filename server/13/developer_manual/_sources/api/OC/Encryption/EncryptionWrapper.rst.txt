@@ -1,0 +1,77 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+EncryptionWrapper
+=================
+
+
+.. php:namespace:: OC\Encryption
+
+.. php:class:: EncryptionWrapper
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Class EncryptionWrapper
+		
+		| applies the encryption storage wrapper
+		
+	
+	:Source:
+		`lib/private/Encryption/EncryptionWrapper.php#43 <https://github.com/nextcloud/server/blob/stable13/lib/private/Encryption/EncryptionWrapper.php#L43>`_
+	
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $arrayCache, $manager, $logger)
+	
+		.. rst-class:: phpdoc-description
+		
+			| EncryptionWrapper constructor\.
+			
+		
+		:Source:
+			`lib/private/Encryption/EncryptionWrapper.php#61 <https://github.com/nextcloud/server/blob/stable13/lib/private/Encryption/EncryptionWrapper.php#L61>`_
+		
+		
+		:Parameters:
+			* **$arrayCache** (:any:`OC\\Memcache\\ArrayCache <OC\\Memcache\\ArrayCache>`)  
+			* **$manager** (:any:`OC\\Encryption\\Manager <OC\\Encryption\\Manager>`)  
+			* **$logger** (:any:`OCP\\ILogger <OCP\\ILogger>`)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public wrapStorage( $mountPoint, $storage, $mount)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Wraps the given storage when it is not a shared storage
+			
+		
+		:Source:
+			`lib/private/Encryption/EncryptionWrapper.php#78 <https://github.com/nextcloud/server/blob/stable13/lib/private/Encryption/EncryptionWrapper.php#L78>`_
+		
+		
+		:Parameters:
+			* **$mountPoint** (string)  
+			* **$storage** (:any:`OCP\\Files\\Storage <OCP\\Files\\Storage>`)  
+			* **$mount** (:any:`OCP\\Files\\Mount\\IMountPoint <OCP\\Files\\Mount\\IMountPoint>`)  
+
+		
+		:Returns: :any:`\\OC\\Files\\Storage\\Wrapper\\Encryption <OC\\Files\\Storage\\Wrapper\\Encryption>` | :any:`\\OCP\\Files\\Storage <OCP\\Files\\Storage>` 
+	
+	
+

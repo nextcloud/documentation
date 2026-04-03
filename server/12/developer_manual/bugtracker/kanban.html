@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Development process &#8212; Nextcloud Developer Manual 12 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/main.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '12',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.1.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Nextcloud Bug Triaging" href="triaging.html" />
+    <link rel="prev" title="Code Reviews on GitHub" href="codereviews.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#1d2d44">
+<link rel="shortcut icon" href="https://nextcloud.com/wp-content/themes/next/assets/img/common/favicon.png" />
+<link rel="apple-touch-icon-precomposed" href="https://nextcloud.com/wp-content/themes/next/assets/img/common/favicon.png" />
+<!-- Piwik -->
+<script type="text/javascript">
+    var _paq = _paq || [];
+    _paq.push(['trackPageView']);
+    _paq.push(['enableLinkTracking']);
+    (function() {
+        var u="//stats.nextcloud.com/";
+        _paq.push(['setTrackerUrl', u+'piwik.php']);
+        _paq.push(['setSiteId', 3]);
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+        g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+    })();
+</script>
+<noscript><p><img src="//stats.nextcloud.com/piwik.php?idsite=3" style="border:0;" alt="" /></p></noscript>
+<!-- End Piwik Code -->
+
+  </head>
+  <body role="document">
+
+<header class="banner navbar navbar-default navbar-static-top" role="banner">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+       <a class="brand" href="http://nextcloud.com/" rel="home" title="Nextcloud.com"><img class="logo" src="../_static/img/logo.svg" itemprop="logo"></a>
+    </div>
+
+    <nav class="collapse navbar-collapse" role="navigation">
+      <ul id="menu-header" class="nav navbar-nav">
+          <li><a target="_blank" href="https://demo.nextcloud.com">Demo</a></li>
+          <li><a href="https://nextcloud.com/news/">News</a></li>
+          <li><a href="https://nextcloud.com/features/">Features</a></li>
+          <li><a href="https://nextcloud.com/about/">About us</a></li>
+          <li><a href="https://nextcloud.com/contribute/">Get involved</a></li>
+          <li><a href="https://nextcloud.com/support/">Support</a></li>
+          <li><a href="https://nextcloud.com/enterprise/">Enterprise</a></li>
+          <li class="menu-install"><a href="https://nextcloud.com/install/">Download</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+
+
+<div class="container" style="background-color: #E6C4C2;color: #b10000;border: #b10000 2px solid;border-right: none;border-left: none;padding: 15px 10px;">You are reading an outdated version of this documentation. Please check out the <a href="https://docs.nextcloud.com/server/stable/developer_manual/" style="
+color: rgb(177,0,0);text-decoration: underline;">latest version</a> of the developer manual.</div>
+
+
+
+
+
+<div class="wrap container not-front">
+  <div class="content row">
+  <main class="main">
+    <div class="row page-content-header">
+      <div class="col-md-6">
+        <h1><a href="../index.html">Nextcloud Developer Manual</a></h1>
+      </div>
+      <div class="col-md-5 col-md-offset-1">
+      
+        <form class="headersearch" style="margin: 16px 0;" action="../search.html" method="get">
+        <input type="text" value="" name="q" id="q" class="form-control" /> 
+        <button  class="btn btn-default" type="submit" id="searchsubmit">Search</button>
+        </form>
+      
+      </div>
+    </div>
+    
+			<div class="row">
+				<div class="col-md-3">
+					<div class="sidebar">
+							<div class="menu-support-container">
+								<ul id="menu-support" class="menu">
+									<ul>
+										
+<li><a href="../index.html">Table of Contents</a></li>
+									</ul>
+                  <ul>
+<li class="toctree-l1"><a class="reference internal" href="../general/index.html">General Contributor Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/index.html">App Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../design/index.html">Design Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../android_library/index.html">Android Application Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client_apis/index.html">Client APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../core/index.html">Core Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Bugtracker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../commun/index.html">Help and Communication</a></li>
+</ul>
+
+								</ul>
+							</div>
+					</div>
+				</div>
+        
+
+				<div class="col-md-9">
+					<div class="page-content">
+            
+<ul class="prevnext-title list-unstyled list-inline">
+  <li class="prev">
+    <a href="codereviews.html" title="Previous Chapter: Code Reviews on GitHub"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; Code Reviews ...</span>
+    </a>
+  </li>
+  <li class="next">
+    <a href="triaging.html" title="Next Chapter: Nextcloud Bug Triaging"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">Nextcloud Bug... &raquo;</span>
+    </a>
+  </li>
+</ul>
+						
+  <div class="section" id="development-process">
+<h1>Development process<a class="headerlink" href="#development-process" title="Permalink to this headline">¶</a></h1>
+<p>This chapter contains a lot of information about the development process the
+Nextcloud community tries to follow, so please take your time to digest all the
+information. In any case remember this page as the documentation on how it
+should be done. Nothing here is set in stone, so if you think something should
+be changed please discuss it on the <a class="reference external" href="https://help.nextcloud.org">forums</a>.</p>
+<div class="section" id="the-labels">
+<h2>The Labels<a class="headerlink" href="#the-labels" title="Permalink to this headline">¶</a></h2>
+<p>The following list shows what the labels mean in the life-cycle and will
+hopefully help you decide how to label an issue.</p>
+<div class="section" id="backlog">
+<h3>Backlog<a class="headerlink" href="#backlog" title="Permalink to this headline">¶</a></h3>
+<dl class="docutils">
+<dt>Why do we have it?</dt>
+<dd>To keep us focused on finishing issues that we started, new issues will be
+hidden in this column. In HuBoard you can see the list of things that we could
+think about by clicking the small arrow in the top left corner of the concept
+column header.</dd>
+<dt>What does a developer think?</dt>
+<dd>&#8220;Maybe later.&#8221;</dd>
+<dt>When can I pull?</dt>
+<dd>Since this is the bucket for whatever might be done you should only pick
+issues from the backlog when there is no other issue that you can work on. It
+is more important to finish an issue currently on the Kanban board than to
+pull a new one into the flow because only released issues have a value to our
+users!</dd>
+<dt>Who is Assigned?</dt>
+<dd>Either a maintainer feels directly responsible for the issue and assigns
+himself or the gatekeeper (the guys having a look at unassigned bugs) will try
+to determine the responsible developer.</dd>
+</dl>
+</div>
+<div class="section" id="concept">
+<h3>Concept<a class="headerlink" href="#concept" title="Permalink to this headline">¶</a></h3>
+<dl class="docutils">
+<dt>Why do we have it?</dt>
+<dd>Our think before you act phase serves two purposes. A Bug is in the concept
+phase while we are trying to figure out why something is broken (analysis). An
+Enhancement is in the concept phase until we have decided how to implement it
+(design).</dd>
+<dt>What does a developer think?</dt>
+<dd>&#8220;I’ll write a Scenario for our BDD in <a class="reference external" href="https://github.com/cucumber/cucumber/wiki/Gherkin">Gherkin</a> and post it as a comment. I
+can always look at the <a class="reference external" href="https://github.com/nextcloud/server/tree/master/build/integration/features">existing ones</a> to get an inspiration how to phrase
+them as <a class="reference external" href="https://github.com/cucumber/cucumber/wiki/Given-When-Then">“Given … when … then …“</a>&#8220;</dd>
+<dt>When can I pull?</dt>
+<dd><p class="first">As long as you think and discuss on how to implement an enhancement or how to
+solve a bug you should leave the concept label assigned. Two things should be
+documented in a comment to the issue before moving it to the &#8220;To develop&#8221;
+step:</p>
+<ul class="last simple">
+<li>At least one Scenario – written in Gherkin – that tells you and the tester
+when the issue is ready to be released.</li>
+<li>A concept describing the planned implementation. This can be as simple as
+a “this just needs changes to the login screen CSS” or so complex that you
+link to a blog entry somewhere else.</li>
+</ul>
+</dd>
+<dt>Who is Assigned?</dt>
+<dd>The maintainer that feels responsible for the issue.</dd>
+</dl>
+</div>
+<div class="section" id="to-develop">
+<h3>To Develop<a class="headerlink" href="#to-develop" title="Permalink to this headline">¶</a></h3>
+<dl class="docutils">
+<dt>Why do we have it?</dt>
+<dd>Now that we have a plan, any developer can pick an issue from this column and
+start implementing it. If the issue is also marked with Junior Job this might
+be a good starting point for new developers.</dd>
+<dt>What does a developer think?</dt>
+<dd>&#8220;Nice! I can safely implement it that way because more than one person has put
+his brain to the task of coming up with a good solution. Here! Me! I’ll do
+it!&#8221;</dd>
+<dt>When can I pull?</dt>
+<dd>If you feel like diving into the code and getting your hands dirty you should
+look for issues with this label. In the comments, there should be a Gherkin
+scenario to tell you when you are done and a concept describing how to
+implement it. Before you start move the issue to the “Developing” step by
+assigning the &#8220;4 – Developing&#8221; label.</dd>
+<dt>Who is Assigned?</dt>
+<dd>No one. Especially not if you are working on something else!</dd>
+</dl>
+</div>
+<div class="section" id="developing">
+<h3>Developing<a class="headerlink" href="#developing" title="Permalink to this headline">¶</a></h3>
+<dl class="docutils">
+<dt>Why do we have it?</dt>
+<dd>This is where the magic happens. If it’s a Bug the fix will be submitted as a
+PULL REQUEST to the master or corresponding stable branch. If its an
+Enhancement code will be committed to a feature branch.</dd>
+<dt>What does a developer think?</dt>
+<dd>&#8220;You know, I’m at it. By the way, I’ll also write <a class="reference external" href="https://github.com/nextcloud/server/tree/master/tests">unit tests</a>. When I’m done
+I’ll push the issue with a commit containing &#8220;push GH-#&#8221; where # is the issue
+number. If I have an idea of who should review it I can also notify them with
+&#64;githubusername&#8221;</dd>
+<dt>When can I pull?</dt>
+<dd><p class="first">As long as you are writing code for the issue or if any unit test fails you
+should leave the “4 – Developing” label assigned. Two things should have been
+implemented before moving the issue to the “To review” step:</p>
+<ul class="last simple">
+<li>The enhancement or bug in question</li>
+<li>Unit tests for the changed and added code.</li>
+</ul>
+</dd>
+<dt>Who is Assigned?</dt>
+<dd>The most active developer should assign himself.</dd>
+</dl>
+</div>
+<div class="section" id="to-review">
+<h3>To Review<a class="headerlink" href="#to-review" title="Permalink to this headline">¶</a></h3>
+<dl class="docutils">
+<dt>Why do we have it?</dt>
+<dd>Instead of directly committing to master we agree that <strong>a second set of eyes
+will spot bugs</strong> and increase our code quality and give us an opportunity to
+learn from each other. See also our documentation about <a class="reference internal" href="codereviews.html"><span class="doc">Code Reviews on GitHub</span></a></dd>
+<dt>What does a developer think?</dt>
+<dd>&#8220;I’ll check the Scenario described earlier works as expected. If necessary
+I’ll update the related Gherkin Scenarios. <a class="reference external" href="https://github.com/drone/drone">Drone</a> will test the scenario
+on all kinds of platforms, Web server and database combinations with
+<a class="reference external" href="http://cukes.info/">Cucumber</a>.&#8221;</dd>
+<dt>When can I pull?</dt>
+<dd>If you feel like making sure an issue works as expected you should look for
+issues with this label. In the comments you should find a Gherkin scenario that
+can be used as a checklist for what to try. Before you start move the issue to
+the “Reviewing” step by assigning the “6 – Reviewing” label.</dd>
+<dt>Who is Assigned?</dt>
+<dd>No one. Especially not if you are working on something else!</dd>
+</dl>
+</div>
+<div class="section" id="reviewing">
+<h3>Reviewing<a class="headerlink" href="#reviewing" title="Permalink to this headline">¶</a></h3>
+<dl class="docutils">
+<dt>Why do we have it?</dt>
+<dd>With the Gherkin Scenario from the Concept Phase reviewers have a checklist to
+test if a Bug has been solved and if an Enhancement works as expected. <strong>The
+most eager reviewer we have is Drone</strong>. When it comes to testing he soldiers
+on going through the different combinations of platform, Web server and
+database.</dd>
+<dt>What does a developer think?</dt>
+<dd>&#8220;Damn! If I had written the Gherkin Scenarios and Cucumber Step Definitions I
+could leave the task of testing this on the different combinations of platform,
+Web server and database to Drone. I’ll miss something when doing this
+manually.*</dd>
+<dt>When can I pull?</dt>
+<dd>As long as you are reviewing the issue you should leave the &#8220;6 –
+Reviewing&#8221; label assigned. Before moving the issue to the &#8220;To review&#8221; step the
+issue should have been resolved, meaning that not only the issue has been
+implemented but also no other functionality has been broken.</dd>
+<dt>Who is Assigned?</dt>
+<dd>The most active reviewer should assign himself.</dd>
+</dl>
+</div>
+<div class="section" id="to-release">
+<h3>To Release<a class="headerlink" href="#to-release" title="Permalink to this headline">¶</a></h3>
+<dl class="docutils">
+<dt>Why do we have it?</dt>
+<dd>This is a list of issues that will make it into the next release. It serves
+as a source for the changelog, as well as a reminder of the work we can already
+be proud of.</dd>
+<dt>What does a developer think?</dt>
+<dd>&#8220;Look at all the shiny things we will release with the next version of
+Nextcloud!&#8221;</dd>
+<dt>When can I pull?</dt>
+<dd>This is the last step of the Kanban board. When the Release finally happens
+the issue will be closed and removed from the board.</dd>
+<dt>Who is Assigned?</dt>
+<dd>No one.</dd>
+</dl>
+<p>While we stated before that we push issues to the next column, we can
+of course move the item back and forth arbitrarily. Basically you can drag the
+issue around in the HuBoard or just change the label when viewing the issue in
+the GitHub.</p>
+</div>
+</div>
+<div class="section" id="reviewing-considered-impossible">
+<h2>Reviewing considered impossible?<a class="headerlink" href="#reviewing-considered-impossible" title="Permalink to this headline">¶</a></h2>
+<p>How can you possibly review an issue when it requires you to test various
+combinations of browsers, platforms, databases and maybe even app combinations?
+Well, you can’t. But you can write a Gherkin scenario that can be used to write
+an automated test that is executed by Drone on every commit to the main
+repositories. If for some reason Drone cannot be used for the review you will
+find yourself in the very uncomfortable situation where you release half tested
+code that will hopefully not eat user data. Seriously! Write Gherkin scenarios!</p>
+</div>
+<div class="section" id="other-labels">
+<h2>Other Labels<a class="headerlink" href="#other-labels" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="priority-labels">
+<h3>Priority Labels<a class="headerlink" href="#priority-labels" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Panic should be used with caution. It is reserved for Bugs that would result
+in the loss of files or other user data. An Enhancement marked as Panic is
+expected by Nextcloud users for the next release. In either case an open Panic
+issue will prevent a release.</li>
+<li>Attention is not as hard as Panic. But we really want this in the next release
+and will dedicate more effort for it. But if we think the issue is not ready
+for the next release we will postpone it to the next one.</li>
+<li>Regression is something that worked in a previous release but is now not
+working as expected or missing. If a certain functionality is up for code
+refactoring, the developer should describe all possible use cases as a Gherkin
+scenarios beforehand, so that any scenarios that isn’t implemented before the
+required milestone can be marked as a regression. If a regression is found
+after a release, the reporter – or the developer triaging the issue – should
+describe the functionality as a Gherkin scenario and either fix it or assign
+it to the developer in charge of that part.</li>
+</ul>
+</div>
+<div class="section" id="app-labels">
+<h3>App Labels<a class="headerlink" href="#app-labels" title="Permalink to this headline">¶</a></h3>
+<p>In the apps repository there are labels like <code class="docutils literal"><span class="pre">app:gallery</span></code> and
+<code class="docutils literal"><span class="pre">app:calendar</span></code>. The <code class="docutils literal"><span class="pre">app:</span></code> prefix is used to allow developers to filter
+issues related to a specific app.</p>
+</div>
+<div class="section" id="resolution-status">
+<h3>Resolution Status<a class="headerlink" href="#resolution-status" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Fixed – Should be assigned to issues in to Release</li>
+<li>Won’t fix – Reason is given as a comment</li>
+<li>Duplicate – Corresponding bug is given in a comment (using #guthubissuenumber)</li>
+</ul>
+</div>
+<div class="section" id="misc-labels">
+<h3>Misc Labels<a class="headerlink" href="#misc-labels" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Needs info – Either from a developer or the bug reporter. This is nearly as
+severe as Panic, because no further action can be taken</li>
+<li>L18n – A translation issue; go see our <a class="reference external" href="https://www.transifex.com/nextcloud/">Transifex</a></li>
+<li>Junior Job – The issue is considered a good starting point to get involved in Nextcloud development</li>
+</ul>
+</div>
+</div>
+<div class="section" id="milestones-equal-releases">
+<h2>Milestones equal Releases<a class="headerlink" href="#milestones-equal-releases" title="Permalink to this headline">¶</a></h2>
+<p>Releases are planned via milestones which contain all the Enhancements and Bugs
+that we plan to release when the Deadline is met. When the Deadline approaches
+we will push new Enhancement request and less important bugs to the next
+milestone. This way a milestone will upon release contain all the issues that
+make up the changelog for the release. Furthermore, HuBoard allows us to filter
+the Kanban board by Milestone, making it especially easy to focus on the current
+Release.</p>
+</div>
+</div>
+
+
+            
+<ul class="prevnext-title list-unstyled list-inline">
+  <li class="prev">
+    <a href="codereviews.html" title="Previous Chapter: Code Reviews on GitHub"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; Code Reviews ...</span>
+    </a>
+  </li>
+  <li class="next">
+    <a href="triaging.html" title="Next Chapter: Nextcloud Bug Triaging"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">Nextcloud Bug... &raquo;</span>
+    </a>
+  </li>
+</ul>
+					</div>
+				</div>
+			</div>
+  </main>  
+  </div>
+</div>
+<div class="container">
+<div class="row">
+    <div class="col-lg-12 footer-social-icons">
+      <p class="text-center"><a target="_blank" href="https://plus.google.com/104036748063781940910/about"><img width=50 src="../_static/img/social/googleplus.svg" title="Follow us on Google Plus!" alt="Follow us on Google Plus!"></img></a>
+      <a target="_blank" href="https://www.facebook.com/Nextclouders"><img width=50 src="../_static/img/social/facebook.svg" title="Like our facebook page!" alt="Like our facebook page!"></img></a>
+      <a target="_blank" href="https://twitter.com/Nextclouders"><img width=50 src="../_static/img/social/twitter.svg" title="Subscribe to our twitter channel!" alt="Subscribe to our twitter channel!"></img></a>
+      <a target="_blank" href="https://nextcloud.com/blogfeed"><img class="img-circle" width=50 src="../_static/img/social/rss.svg" title="Subscribe to our news feed!" alt="Subscribe to our news feed!"></img></a>
+      <a target="_blank" href="https://newsletter.nextcloud.com/"><img class="img-circle" width=50 src="../_static/img/social/mail.svg"  title="Subscribe to our newsletter!" alt="Subscribe to our newsletter!"></img></a></p>
+    </div>
+    <div class="text-center">
+      <p>All documentation licensed under the <a href="https://creativecommons.org/licenses/by/3.0/us/">Creative Commons Attribution 3.0 Unported license</a>.</p>
+      <p><a href="https://github.com/nextcloud/documentation/graphs/contributors">See who contributed to our documentation/credits</a>.</p>
+    </div>
+</div>
+</div>
+<footer class="content-info" role="contentinfo">
+<div class="container">
+   <div class="row">
+     <div class="col-sm-2 col-sm-offset-1">
+        <div class="footer-nav">
+          <h4>About Nextcloud</h4>
+          <ul id="menu-about" class="menu">
+            <li><a href="https://nextcloud.com/about/">About us</a></li>
+            <li><a href="https://nextcloud.com/contact/">Contact us</a></li>
+            <li><a href="https://nextcloud.com/press/">Press</a></li>
+            <li><a href="https://nextcloud.com/privacy/">Privacy policy</a></li>
+          </ul>
+        </div>
+     </div>
+     <div class="col-sm-2 col-sm-offset-2">
+     </div>
+     <div class="col-sm-2 col-sm-offset-2">
+        <div class="footer-nav">
+          <h4>Interact</h4>
+          <ul id="menu-interact" class="menu">
+            <li class="menu-irc-channel"><a href="https://webchat.freenode.net/?channels=nextcloud">IRC Channel</a></li>
+            <li class="menu-forums"><a href="https://help.nextcloud.com/">Forums</a></li>
+          </ul>
+        </div>
+     </div>
+   </div>
+   <div class="row">
+      <div class="col-lg-12 footer-text">
+        <p>
+              &copy; Copyright 2012-2017, The Nextcloud developers.  <small><a href="https://nextcloud.com/impressum">Legal Notice</a></small><br/>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+  </body>
+</html>

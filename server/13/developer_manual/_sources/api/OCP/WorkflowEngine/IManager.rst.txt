@@ -1,0 +1,150 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IManager
+========
+
+
+.. php:namespace:: OCP\WorkflowEngine
+
+.. php:interface:: IManager
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Interface IManager
+		
+	
+	:Source:
+		`lib/public/WorkflowEngine/IManager.php#34 <https://github.com/nextcloud/server/blob/stable13/lib/public/WorkflowEngine/IManager.php#L34>`_
+	
+
+Constants
+---------
+
+.. php:const:: SCOPE_ADMIN = 0
+
+	:Source:
+		`lib/public/WorkflowEngine/IManager.php#35 <https://github.com/nextcloud/server/blob/stable13/lib/public/WorkflowEngine/IManager.php#L35>`_
+	
+
+
+.. php:const:: SCOPE_USER = 1
+
+	:Source:
+		`lib/public/WorkflowEngine/IManager.php#36 <https://github.com/nextcloud/server/blob/stable13/lib/public/WorkflowEngine/IManager.php#L36>`_
+	
+
+
+.. php:const:: MAX_CHECK_VALUE_BYTES = 2048
+
+	:Source:
+		`lib/public/WorkflowEngine/IManager.php#41 <https://github.com/nextcloud/server/blob/stable13/lib/public/WorkflowEngine/IManager.php#L41>`_
+	
+	:Since: 21.0.0 
+
+
+.. php:const:: MAX_OPERATION_VALUE_BYTES = 4096
+
+	:Source:
+		`lib/public/WorkflowEngine/IManager.php#46 <https://github.com/nextcloud/server/blob/stable13/lib/public/WorkflowEngine/IManager.php#L46>`_
+	
+	:Since: 21.0.0 
+
+
+.. php:const:: EVENT_NAME_REG_OPERATION = OCP\\WorkflowEngine::registerOperations
+
+	:Source:
+		`lib/public/WorkflowEngine/IManager.php#51 <https://github.com/nextcloud/server/blob/stable13/lib/public/WorkflowEngine/IManager.php#L51>`_
+	
+	:Deprecated: 17.0.0 Will be removed in NC19\. Use the dedicated events in OCP\\WorkflowEngine\\Events
+
+
+.. php:const:: EVENT_NAME_REG_ENTITY = OCP\\WorkflowEngine::registerEntities
+
+	:Source:
+		`lib/public/WorkflowEngine/IManager.php#56 <https://github.com/nextcloud/server/blob/stable13/lib/public/WorkflowEngine/IManager.php#L56>`_
+	
+	:Deprecated: 17.0.0 
+
+
+.. php:const:: EVENT_NAME_REG_CHECK = OCP\\WorkflowEngine::registerChecks
+
+	:Source:
+		`lib/public/WorkflowEngine/IManager.php#61 <https://github.com/nextcloud/server/blob/stable13/lib/public/WorkflowEngine/IManager.php#L61>`_
+	
+	:Deprecated: 17.0.0 
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public registerEntity( $entity)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Listen to \`OCP\\WorkflowEngine\\Events\\RegisterEntitiesEvent\` at the
+			| IEventDispatcher for registering your entities\.
+			
+		
+		:Source:
+			`lib/public/WorkflowEngine/IManager.php#69 <https://github.com/nextcloud/server/blob/stable13/lib/public/WorkflowEngine/IManager.php#L69>`_
+		
+		
+		:Since: 18.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public registerOperation( $operator)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Listen to \`OCP\\WorkflowEngine\\Events\\RegisterOperationsEvent\` at the
+			| IEventDispatcher for registering your operators\.
+			
+		
+		:Source:
+			`lib/public/WorkflowEngine/IManager.php#77 <https://github.com/nextcloud/server/blob/stable13/lib/public/WorkflowEngine/IManager.php#L77>`_
+		
+		
+		:Since: 18.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public registerCheck( $check)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Listen to \`OCP\\WorkflowEngine\\Events\\RegisterChecksEvent\` at the
+			| IEventDispatcher for registering your operators\.
+			
+		
+		:Source:
+			`lib/public/WorkflowEngine/IManager.php#85 <https://github.com/nextcloud/server/blob/stable13/lib/public/WorkflowEngine/IManager.php#L85>`_
+		
+		
+		:Since: 18.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getRuleMatcher()
+	
+		:Source:
+			`lib/public/WorkflowEngine/IManager.php#90 <https://github.com/nextcloud/server/blob/stable13/lib/public/WorkflowEngine/IManager.php#L90>`_
+		
+		
+		:Since: 18.0.0 
+	
+	
+

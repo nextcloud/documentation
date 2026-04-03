@@ -1,0 +1,1259 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IServerContainer
+================
+
+
+.. php:namespace:: OCP
+
+.. php:interface:: IServerContainer
+
+
+	.. rst-class:: phpdoc-description
+	
+		| This is a tagging interface for the server container
+		
+		| The interface currently extends IContainer, but this interface is deprecated as of Nextcloud 20,
+		| thus this interface won\'t extend it anymore once that was removed\. So migrate to the ContainerInterface
+		| only\.
+		
+	
+	:Source:
+		`lib/public/IServerContainer.php#61 <https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L61>`_
+	
+	:Parent:
+		:php:interface:`Psr\\Container\\ContainerInterface`
+	
+	:Parent:
+		:php:interface:`OCP\\IContainer`
+	
+
+Methods
+-------
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public getCalendarManager()
+	
+		.. rst-class:: phpdoc-description
+		
+			| The calendar manager will act as a broker between consumers for calendar information and
+			| providers which actual deliver the calendar information\.
+			
+		
+		:Source:
+			`lib/public/IServerContainer.php#71 <https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L71>`_
+		
+		
+		:Returns: :any:`\\OCP\\Calendar\\IManager <OCP\\Calendar\\IManager>` 
+		:Since: 13.0.0 
+		:Deprecated: 20.0.0 have it injected or fetch it through \\Psr\\Container\\ContainerInterface::get
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public getCalendarResourceBackendManager()
+	
+		.. rst-class:: phpdoc-description
+		
+			| The calendar resource backend manager will act as a broker between consumers
+			| for calendar resource information an providers which actual deliver the room information\.
+			
+		
+		:Source:
+			`lib/public/IServerContainer.php#81 <https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L81>`_
+		
+		
+		:Returns: :any:`\\OCP\\Calendar\\Resource\\IBackend <OCP\\Calendar\\Resource\\IBackend>` 
+		:Since: 14.0.0 
+		:Deprecated: 20.0.0 have it injected or fetch it through \\Psr\\Container\\ContainerInterface::get
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public getCalendarRoomBackendManager()
+	
+		.. rst-class:: phpdoc-description
+		
+			| The calendar room backend manager will act as a broker between consumers
+			| for calendar room information an providers which actual deliver the room information\.
+			
+		
+		:Source:
+			`lib/public/IServerContainer.php#91 <https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L91>`_
+		
+		
+		:Returns: :any:`\\OCP\\Calendar\\Room\\IBackend <OCP\\Calendar\\Room\\IBackend>` 
+		:Since: 14.0.0 
+		:Deprecated: 20.0.0 have it injected or fetch it through \\Psr\\Container\\ContainerInterface::get
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public getContactsManager()
+	
+		.. rst-class:: phpdoc-description
+		
+			| The contacts manager will act as a broker between consumers for contacts information and
+			| providers which actual deliver the contact information\.
+			
+		
+		:Source:
+			`lib/public/IServerContainer.php#101 <https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L101>`_
+		
+		
+		:Returns: :any:`\\OCP\\Contacts\\IManager <OCP\\Contacts\\IManager>` 
+		:Since: 6.0.0 
+		:Deprecated: 20.0.0 have it injected or fetch it through \\Psr\\Container\\ContainerInterface::get
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public getRequest()
+	
+		.. rst-class:: phpdoc-description
+		
+			| The current request object holding all information about the request currently being processed
+			| is returned from this method\.
+			
+			| In case the current execution was not initiated by a web request null is returned
+			
+		
+		:Source:
+			`lib/public/IServerContainer.php#112 <https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L112>`_
+		
+		
+		:Returns: :any:`\\OCP\\IRequest <OCP\\IRequest>` 
+		:Since: 6.0.0 
+		:Deprecated: 20.0.0 have it injected or fetch it through \\Psr\\Container\\ContainerInterface::get
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public getPreviewManager()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the preview manager which can create preview images for a given file
+			
+		
+		:Source:
+			`lib/public/IServerContainer.php#121 <https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L121>`_
+		
+		
+		:Returns: :any:`\\OCP\\IPreview <OCP\\IPreview>` 
+		:Since: 6.0.0 
+		:Deprecated: 20.0.0 have it injected or fetch it through \\Psr\\Container\\ContainerInterface::get
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public getTagManager()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the tag manager which can get and set tags for different object types
+			
+		
+		:Source:
+			`lib/public/IServerContainer.php#131 <https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L131>`_
+		
+		
+		:See: :any:`\\OCP\\ITagManager::load\(\) <OCP\\ITagManager::load\(\)>` 
+		:Returns: :any:`\\OCP\\ITagManager <OCP\\ITagManager>` 
+		:Since: 6.0.0 
+		:Deprecated: 20.0.0 have it injected or fetch it through \\Psr\\Container\\ContainerInterface::get
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public getRootFolder()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the root folder of ownCloud\'s data directory
+			
+		
+		:Source:
+			`lib/public/IServerContainer.php#140 <https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L140>`_
+		
+		
+		:Returns: :any:`\\OCP\\Files\\IRootFolder <OCP\\Files\\IRootFolder>` 
+		:Since: 6.0.0 \- between 6\.0\.0 and 8\.0\.0 this returned \\OCP\\Files\\Folder
+		:Deprecated: 20.0.0 have it injected or fetch it through \\Psr\\Container\\ContainerInterface::get
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public getUserFolder( $userId=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns a view to ownCloud\'s files folder
+			
+		
+		:Source:
+			`lib/public/IServerContainer.php#151 <https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L151>`_
+		
+		
+		:Parameters:
+			* **$userId** (string)  user ID
+
+		
+		:Returns: :any:`\\OCP\\Files\\Folder <OCP\\Files\\Folder>` 
+		:Since: 6.0.0 \- parameter $userId was added in 8\.0\.0
+		:See: :any:`\\OCP\\getUserFolder <OCP\\getUserFolder>` in \\OCP\\Files\\IRootFolder
+		:Deprecated: 20.0.0 have it injected or fetch it through \\Psr\\Container\\ContainerInterface::get
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public getUserManager()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns a user manager
+			
+		
+		:Source:
+			`lib/public/IServerContainer.php#160 <https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L160>`_
+		
+		
+		:Returns: :any:`\\OCP\\IUserManager <OCP\\IUserManager>` 
+		:Since: 8.0.0 
+		:Deprecated: 20.0.0 have it injected or fetch it through \\Psr\\Container\\ContainerInterface::get
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public getGroupManager()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns a group manager
+			
+		
+		:Source:
+			`lib/public/IServerContainer.php#169 <https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L169>`_
+		
+		
+		:Returns: :any:`\\OCP\\IGroupManager <OCP\\IGroupManager>` 
+		:Since: 8.0.0 
+		:Deprecated: 20.0.0 have it injected or fetch it through \\Psr\\Container\\ContainerInterface::get
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public getUserSession()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the user session
+			
+		
+		:Source:
+			`lib/public/IServerContainer.php#178 <https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L178>`_
+		
+		
+		:Returns: :any:`\\OCP\\IUserSession <OCP\\IUserSession>` 
+		:Since: 6.0.0 
+		:Deprecated: 20.0.0 have it injected or fetch it through \\Psr\\Container\\ContainerInterface::get
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public getNavigationManager()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the navigation manager
+			
+		
+		:Source:
+			`lib/public/IServerContainer.php#187 <https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L187>`_
+		
+		
+		:Returns: :any:`\\OCP\\INavigationManager <OCP\\INavigationManager>` 
+		:Since: 6.0.0 
+		:Deprecated: 20.0.0 have it injected or fetch it through \\Psr\\Container\\ContainerInterface::get
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public getConfig()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the config manager
+			
+		
+		:Source:
+			`lib/public/IServerContainer.php#196 <https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L196>`_
+		
+		
+		:Returns: :any:`\\OCP\\IConfig <OCP\\IConfig>` 
+		:Since: 6.0.0 
+		:Deprecated: 20.0.0 have it injected or fetch it through \\Psr\\Container\\ContainerInterface::get
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public getCrypto()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns a Crypto instance
+			
+		
+		:Source:
+			`lib/public/IServerContainer.php#205 <https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L205>`_
+		
+		
+		:Returns: :any:`\\OCP\\Security\\ICrypto <OCP\\Security\\ICrypto>` 
+		:Since: 8.0.0 
+		:Deprecated: 20.0.0 have it injected or fetch it through \\Psr\\Container\\ContainerInterface::get
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public getHasher()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns a Hasher instance
+			
+		
+		:Source:
+			`lib/public/IServerContainer.php#214 <https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L214>`_
+		
+		
+		:Returns: :any:`\\OCP\\Security\\IHasher <OCP\\Security\\IHasher>` 
+		:Since: 8.0.0 
+		:Deprecated: 20.0.0 have it injected or fetch it through \\Psr\\Container\\ContainerInterface::get
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public getSecureRandom()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns a SecureRandom instance
+			
+		
+		:Source:
+			`lib/public/IServerContainer.php#223 <https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L223>`_
+		
+		
+		:Returns: :any:`\\OCP\\Security\\ISecureRandom <OCP\\Security\\ISecureRandom>` 
+		:Since: 8.1.0 
+		:Deprecated: 20.0.0 have it injected or fetch it through \\Psr\\Container\\ContainerInterface::get
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public getCredentialsManager()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns a CredentialsManager instance
+			
+		
+		:Source:
+			`lib/public/IServerContainer.php#232 <https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L232>`_
+		
+		
+		:Returns: :any:`\\OCP\\Security\\ICredentialsManager <OCP\\Security\\ICredentialsManager>` 
+		:Since: 9.0.0 
+		:Deprecated: 20.0.0 have it injected or fetch it through \\Psr\\Container\\ContainerInterface::get
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public getAppConfig()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the app config manager
+			
+		
+		:Source:
+			`lib/public/IServerContainer.php#241 <https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L241>`_
+		
+		
+		:Returns: :any:`\\OCP\\IAppConfig <OCP\\IAppConfig>` 
+		:Since: 7.0.0 
+		:Deprecated: 20.0.0 have it injected or fetch it through \\Psr\\Container\\ContainerInterface::get
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public getL10NFactory()
+	
+		:Source:
+			`lib/public/IServerContainer.php#248 <https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L248>`_
+		
+		
+		:Returns: :any:`\\OCP\\L10N\\IFactory <OCP\\L10N\\IFactory>` 
+		:Since: 8.2.0 
+		:Deprecated: 20.0.0 have it injected or fetch it through \\Psr\\Container\\ContainerInterface::get
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public getL10N( $app, $lang=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get an L10N instance
+			
+		
+		:Source:
+			`lib/public/IServerContainer.php#258 <https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L258>`_
+		
+		
+		:Parameters:
+			* **$app** (string)  appid
+			* **$lang** (string)  
+
+		
+		:Returns: :any:`\\OCP\\IL10N <OCP\\IL10N>` 
+		:Since: 6.0.0 \- parameter $lang was added in 8\.0\.0
+		:Deprecated: 20.0.0 have it injected or fetch it through \\Psr\\Container\\ContainerInterface::get
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public getEncryptionManager()
+	
+		:Source:
+			`lib/public/IServerContainer.php#265 <https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L265>`_
+		
+		
+		:Returns: :any:`\\OC\\Encryption\\Manager <OC\\Encryption\\Manager>` 
+		:Since: 8.1.0 
+		:Deprecated: 20.0.0 have it injected or fetch it through \\Psr\\Container\\ContainerInterface::get
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public getEncryptionFilesHelper()
+	
+		:Source:
+			`lib/public/IServerContainer.php#272 <https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L272>`_
+		
+		
+		:Returns: :any:`\\OC\\Encryption\\File <OC\\Encryption\\File>` 
+		:Since: 8.1.0 
+		:Deprecated: 20.0.0 have it injected or fetch it through \\Psr\\Container\\ContainerInterface::get
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public getEncryptionKeyStorage()
+	
+		:Source:
+			`lib/public/IServerContainer.php#279 <https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L279>`_
+		
+		
+		:Returns: :any:`\\OCP\\Encryption\\Keys\\IStorage <OCP\\Encryption\\Keys\\IStorage>` 
+		:Since: 8.1.0 
+		:Deprecated: 20.0.0 have it injected or fetch it through \\Psr\\Container\\ContainerInterface::get
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public getURLGenerator()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the URL generator
+			
+		
+		:Source:
+			`lib/public/IServerContainer.php#288 <https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L288>`_
+		
+		
+		:Returns: :any:`\\OCP\\IURLGenerator <OCP\\IURLGenerator>` 
+		:Since: 6.0.0 
+		:Deprecated: 20.0.0 have it injected or fetch it through \\Psr\\Container\\ContainerInterface::get
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public getCache()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns an ICache instance
+			
+		
+		:Source:
+			`lib/public/IServerContainer.php#297 <https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L297>`_
+		
+		
+		:Returns: :any:`\\OCP\\ICache <OCP\\ICache>` 
+		:Since: 6.0.0 
+		:Deprecated: 20.0.0 have it injected or fetch it through \\Psr\\Container\\ContainerInterface::get
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public getMemCacheFactory()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns an \\OCP\\CacheFactory instance
+			
+		
+		:Source:
+			`lib/public/IServerContainer.php#306 <https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L306>`_
+		
+		
+		:Returns: :any:`\\OCP\\ICacheFactory <OCP\\ICacheFactory>` 
+		:Since: 7.0.0 
+		:Deprecated: 20.0.0 have it injected or fetch it through \\Psr\\Container\\ContainerInterface::get
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public getSession()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the current session
+			
+		
+		:Source:
+			`lib/public/IServerContainer.php#315 <https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L315>`_
+		
+		
+		:Returns: :any:`\\OCP\\ISession <OCP\\ISession>` 
+		:Since: 6.0.0 
+		:Deprecated: 20.0.0 have it injected or fetch it through \\Psr\\Container\\ContainerInterface::get
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public getActivityManager()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the activity manager
+			
+		
+		:Source:
+			`lib/public/IServerContainer.php#324 <https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L324>`_
+		
+		
+		:Returns: :any:`\\OCP\\Activity\\IManager <OCP\\Activity\\IManager>` 
+		:Since: 6.0.0 
+		:Deprecated: 20.0.0 have it injected or fetch it through \\Psr\\Container\\ContainerInterface::get
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public getDatabaseConnection()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the current session
+			
+		
+		:Source:
+			`lib/public/IServerContainer.php#333 <https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L333>`_
+		
+		
+		:Returns: :any:`\\OCP\\IDBConnection <OCP\\IDBConnection>` 
+		:Since: 6.0.0 
+		:Deprecated: 20.0.0 have it injected or fetch it through \\Psr\\Container\\ContainerInterface::get
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public getAvatarManager()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns an avatar manager, used for avatar functionality
+			
+		
+		:Source:
+			`lib/public/IServerContainer.php#342 <https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L342>`_
+		
+		
+		:Returns: :any:`\\OCP\\IAvatarManager <OCP\\IAvatarManager>` 
+		:Since: 6.0.0 
+		:Deprecated: 20.0.0 have it injected or fetch it through \\Psr\\Container\\ContainerInterface::get
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public getJobList()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns an job list for controlling background jobs
+			
+		
+		:Source:
+			`lib/public/IServerContainer.php#351 <https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L351>`_
+		
+		
+		:Returns: :any:`\\OCP\\BackgroundJob\\IJobList <OCP\\BackgroundJob\\IJobList>` 
+		:Since: 7.0.0 
+		:Deprecated: 20.0.0 have it injected or fetch it through \\Psr\\Container\\ContainerInterface::get
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public getLogger()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns a logger instance
+			
+		
+		:Source:
+			`lib/public/IServerContainer.php#360 <https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L360>`_
+		
+		
+		:Returns: :any:`\\OCP\\ILogger <OCP\\ILogger>` 
+		:Since: 8.0.0 
+		:Deprecated: 20.0.0 have it injected or fetch it through \\Psr\\Container\\ContainerInterface::get
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public getLogFactory()
+	
+		.. rst-class:: phpdoc-description
+		
+			| returns a log factory instance
+			
+		
+		:Source:
+			`lib/public/IServerContainer.php#369 <https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L369>`_
+		
+		
+		:Returns: :any:`\\OCP\\Log\\ILogFactory <OCP\\Log\\ILogFactory>` 
+		:Since: 14.0.0 
+		:Deprecated: 20.0.0 have it injected or fetch it through \\Psr\\Container\\ContainerInterface::get
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public getRouter()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns a router for generating and matching urls
+			
+		
+		:Source:
+			`lib/public/IServerContainer.php#378 <https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L378>`_
+		
+		
+		:Returns: :any:`\\OCP\\Route\\IRouter <OCP\\Route\\IRouter>` 
+		:Since: 7.0.0 
+		:Deprecated: 20.0.0 have it injected or fetch it through \\Psr\\Container\\ContainerInterface::get
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public getSearch()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns a search instance
+			
+		
+		:Source:
+			`lib/public/IServerContainer.php#387 <https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L387>`_
+		
+		
+		:Returns: :any:`\\OCP\\ISearch <OCP\\ISearch>` 
+		:Since: 7.0.0 
+		:Deprecated: 20.0.0 
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public getCertificateManager()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the certificate manager
+			
+		
+		:Source:
+			`lib/public/IServerContainer.php#396 <https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L396>`_
+		
+		
+		:Returns: :any:`\\OCP\\ICertificateManager <OCP\\ICertificateManager>` 
+		:Since: 8.0.0 
+		:Deprecated: 20.0.0 have it injected or fetch it through \\Psr\\Container\\ContainerInterface::get
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public createEventSource()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Create a new event source
+			
+		
+		:Source:
+			`lib/public/IServerContainer.php#405 <https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L405>`_
+		
+		
+		:Returns: :any:`\\OCP\\IEventSource <OCP\\IEventSource>` 
+		:Since: 8.0.0 
+		:Deprecated: 20.0.0 have it injected or fetch it through \\Psr\\Container\\ContainerInterface::get
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public getHTTPClientService()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns an instance of the HTTP client service
+			
+		
+		:Source:
+			`lib/public/IServerContainer.php#414 <https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L414>`_
+		
+		
+		:Returns: :any:`\\OCP\\Http\\Client\\IClientService <OCP\\Http\\Client\\IClientService>` 
+		:Since: 8.1.0 
+		:Deprecated: 20.0.0 have it injected or fetch it through \\Psr\\Container\\ContainerInterface::get
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public getEventLogger()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the active event logger
+			
+		
+		:Source:
+			`lib/public/IServerContainer.php#423 <https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L423>`_
+		
+		
+		:Returns: :any:`\\OCP\\Diagnostics\\IEventLogger <OCP\\Diagnostics\\IEventLogger>` 
+		:Since: 8.0.0 
+		:Deprecated: 20.0.0 have it injected or fetch it through \\Psr\\Container\\ContainerInterface::get
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public getQueryLogger()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the active query logger
+			
+			| The returned logger only logs data when debug mode is enabled
+			
+		
+		:Source:
+			`lib/public/IServerContainer.php#434 <https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L434>`_
+		
+		
+		:Returns: :any:`\\OCP\\Diagnostics\\IQueryLogger <OCP\\Diagnostics\\IQueryLogger>` 
+		:Since: 8.0.0 
+		:Deprecated: 20.0.0 have it injected or fetch it through \\Psr\\Container\\ContainerInterface::get
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public getTempManager()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the manager for temporary files and folders
+			
+		
+		:Source:
+			`lib/public/IServerContainer.php#443 <https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L443>`_
+		
+		
+		:Returns: :any:`\\OCP\\ITempManager <OCP\\ITempManager>` 
+		:Since: 8.0.0 
+		:Deprecated: 20.0.0 have it injected or fetch it through \\Psr\\Container\\ContainerInterface::get
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public getAppManager()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the app manager
+			
+		
+		:Source:
+			`lib/public/IServerContainer.php#452 <https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L452>`_
+		
+		
+		:Returns: :any:`\\OCP\\App\\IAppManager <OCP\\App\\IAppManager>` 
+		:Since: 8.0.0 
+		:Deprecated: 20.0.0 have it injected or fetch it through \\Psr\\Container\\ContainerInterface::get
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public getWebRoot()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the webroot
+			
+		
+		:Source:
+			`lib/public/IServerContainer.php#461 <https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L461>`_
+		
+		
+		:Returns: string 
+		:Since: 8.0.0 
+		:Deprecated: 20.0.0 have it injected or fetch it through \\Psr\\Container\\ContainerInterface::get
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public getMountProviderCollection()
+	
+		:Source:
+			`lib/public/IServerContainer.php#468 <https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L468>`_
+		
+		
+		:Returns: :any:`\\OCP\\Files\\Config\\IMountProviderCollection <OCP\\Files\\Config\\IMountProviderCollection>` 
+		:Since: 8.0.0 
+		:Deprecated: 20.0.0 have it injected or fetch it through \\Psr\\Container\\ContainerInterface::get
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public getIniWrapper()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the IniWrapper
+			
+		
+		:Source:
+			`lib/public/IServerContainer.php#477 <https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L477>`_
+		
+		
+		:Returns: :any:`\\bantu\\IniGetWrapper\\IniGetWrapper <bantu\\IniGetWrapper\\IniGetWrapper>` 
+		:Since: 8.0.0 
+		:Deprecated: 20.0.0 have it injected or fetch it through \\Psr\\Container\\ContainerInterface::get
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public getCommandBus()
+	
+		:Source:
+			`lib/public/IServerContainer.php#483 <https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L483>`_
+		
+		
+		:Returns: :any:`\\OCP\\Command\\IBus <OCP\\Command\\IBus>` 
+		:Since: 8.1.0 
+		:Deprecated: 20.0.0 have it injected or fetch it through \\Psr\\Container\\ContainerInterface::get
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public getMailer()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Creates a new mailer
+			
+		
+		:Source:
+			`lib/public/IServerContainer.php#492 <https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L492>`_
+		
+		
+		:Returns: :any:`\\OCP\\Mail\\IMailer <OCP\\Mail\\IMailer>` 
+		:Since: 8.1.0 
+		:Deprecated: 20.0.0 have it injected or fetch it through \\Psr\\Container\\ContainerInterface::get
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public getLockingProvider()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the locking provider
+			
+		
+		:Source:
+			`lib/public/IServerContainer.php#501 <https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L501>`_
+		
+		
+		:Returns: :any:`\\OCP\\Lock\\ILockingProvider <OCP\\Lock\\ILockingProvider>` 
+		:Since: 8.1.0 
+		:Deprecated: 20.0.0 have it injected or fetch it through \\Psr\\Container\\ContainerInterface::get
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public getMountManager()
+	
+		:Source:
+			`lib/public/IServerContainer.php#508 <https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L508>`_
+		
+		
+		:Returns: :any:`\\OCP\\Files\\Mount\\IMountManager <OCP\\Files\\Mount\\IMountManager>` 
+		:Since: 8.2.0 
+		:Deprecated: 20.0.0 have it injected or fetch it through \\Psr\\Container\\ContainerInterface::get
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public getMimeTypeDetector()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the MimeTypeDetector
+			
+		
+		:Source:
+			`lib/public/IServerContainer.php#517 <https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L517>`_
+		
+		
+		:Returns: :any:`\\OCP\\Files\\IMimeTypeDetector <OCP\\Files\\IMimeTypeDetector>` 
+		:Since: 8.2.0 
+		:Deprecated: 20.0.0 have it injected or fetch it through \\Psr\\Container\\ContainerInterface::get
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public getMimeTypeLoader()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the MimeTypeLoader
+			
+		
+		:Source:
+			`lib/public/IServerContainer.php#526 <https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L526>`_
+		
+		
+		:Returns: :any:`\\OCP\\Files\\IMimeTypeLoader <OCP\\Files\\IMimeTypeLoader>` 
+		:Since: 8.2.0 
+		:Deprecated: 20.0.0 have it injected or fetch it through \\Psr\\Container\\ContainerInterface::get
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public getEventDispatcher()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the EventDispatcher
+			
+		
+		:Source:
+			`lib/public/IServerContainer.php#535 <https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L535>`_
+		
+		
+		:Returns: :any:`\\Symfony\\Component\\EventDispatcher\\EventDispatcherInterface <Symfony\\Component\\EventDispatcher\\EventDispatcherInterface>` 
+		:Deprecated: 20.0.0 use \\OCP\\EventDispatcher\\IEventDispatcher
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public getNotificationManager()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the Notification Manager
+			
+		
+		:Source:
+			`lib/public/IServerContainer.php#544 <https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L544>`_
+		
+		
+		:Returns: :any:`\\OCP\\Notification\\IManager <OCP\\Notification\\IManager>` 
+		:Since: 9.0.0 
+		:Deprecated: 20.0.0 have it injected or fetch it through \\Psr\\Container\\ContainerInterface::get
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public getCommentsManager()
+	
+		:Source:
+			`lib/public/IServerContainer.php#551 <https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L551>`_
+		
+		
+		:Returns: :any:`\\OCP\\Comments\\ICommentsManager <OCP\\Comments\\ICommentsManager>` 
+		:Since: 9.0.0 
+		:Deprecated: 20.0.0 have it injected or fetch it through \\Psr\\Container\\ContainerInterface::get
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public getSystemTagManager()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the system\-tag manager
+			
+		
+		:Source:
+			`lib/public/IServerContainer.php#561 <https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L561>`_
+		
+		
+		:Returns: :any:`\\OCP\\SystemTag\\ISystemTagManager <OCP\\SystemTag\\ISystemTagManager>` 
+		:Since: 9.0.0 
+		:Deprecated: 20.0.0 have it injected or fetch it through \\Psr\\Container\\ContainerInterface::get
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public getSystemTagObjectMapper()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the system\-tag object mapper
+			
+		
+		:Source:
+			`lib/public/IServerContainer.php#571 <https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L571>`_
+		
+		
+		:Returns: :any:`\\OCP\\SystemTag\\ISystemTagObjectMapper <OCP\\SystemTag\\ISystemTagObjectMapper>` 
+		:Since: 9.0.0 
+		:Deprecated: 20.0.0 have it injected or fetch it through \\Psr\\Container\\ContainerInterface::get
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public getShareManager()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the share manager
+			
+		
+		:Source:
+			`lib/public/IServerContainer.php#580 <https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L580>`_
+		
+		
+		:Returns: :any:`\\OCP\\Share\\IManager <OCP\\Share\\IManager>` 
+		:Since: 9.0.0 
+		:Deprecated: 20.0.0 have it injected or fetch it through \\Psr\\Container\\ContainerInterface::get
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public getContentSecurityPolicyManager()
+	
+		:Source:
+			`lib/public/IServerContainer.php#587 <https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L587>`_
+		
+		
+		:Returns: :any:`\\OCP\\Security\\IContentSecurityPolicyManager <OCP\\Security\\IContentSecurityPolicyManager>` 
+		:Since: 9.0.0 
+		:Deprecated: 17.0.0 Use the AddContentSecurityPolicyEvent
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public getDateTimeZone()
+	
+		:Source:
+			`lib/public/IServerContainer.php#594 <https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L594>`_
+		
+		
+		:Returns: :any:`\\OCP\\IDateTimeZone <OCP\\IDateTimeZone>` 
+		:Since: 8.0.0 
+		:Deprecated: 20.0.0 have it injected or fetch it through \\Psr\\Container\\ContainerInterface::get
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public getDateTimeFormatter()
+	
+		:Source:
+			`lib/public/IServerContainer.php#601 <https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L601>`_
+		
+		
+		:Returns: :any:`\\OCP\\IDateTimeFormatter <OCP\\IDateTimeFormatter>` 
+		:Since: 8.0.0 
+		:Deprecated: 20.0.0 have it injected or fetch it through \\Psr\\Container\\ContainerInterface::get
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public getCloudIdManager()
+	
+		:Source:
+			`lib/public/IServerContainer.php#608 <https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L608>`_
+		
+		
+		:Returns: :any:`\\OCP\\Federation\\ICloudIdManager <OCP\\Federation\\ICloudIdManager>` 
+		:Since: 12.0.0 
+		:Deprecated: 20.0.0 have it injected or fetch it through \\Psr\\Container\\ContainerInterface::get
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public getGlobalScaleConfig()
+	
+		:Source:
+			`lib/public/IServerContainer.php#615 <https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L615>`_
+		
+		
+		:Returns: :any:`\\OCP\\GlobalScale\\IConfig <OCP\\GlobalScale\\IConfig>` 
+		:Since: 14.0.0 
+		:Deprecated: 20.0.0 have it injected or fetch it through \\Psr\\Container\\ContainerInterface::get
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public getCloudFederationFactory()
+	
+		:Source:
+			`lib/public/IServerContainer.php#622 <https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L622>`_
+		
+		
+		:Returns: :any:`\\OCP\\Federation\\ICloudFederationFactory <OCP\\Federation\\ICloudFederationFactory>` 
+		:Since: 14.0.0 
+		:Deprecated: 20.0.0 have it injected or fetch it through \\Psr\\Container\\ContainerInterface::get
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public getCloudFederationProviderManager()
+	
+		:Source:
+			`lib/public/IServerContainer.php#629 <https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L629>`_
+		
+		
+		:Returns: :any:`\\OCP\\Federation\\ICloudFederationProviderManager <OCP\\Federation\\ICloudFederationProviderManager>` 
+		:Since: 14.0.0 
+		:Deprecated: 20.0.0 have it injected or fetch it through \\Psr\\Container\\ContainerInterface::get
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public getRemoteApiFactory()
+	
+		:Source:
+			`lib/public/IServerContainer.php#636 <https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L636>`_
+		
+		
+		:Returns: :any:`\\OCP\\Remote\\Api\\IApiFactory <OCP\\Remote\\Api\\IApiFactory>` 
+		:Since: 13.0.0 
+		:Deprecated: 20.0.0 have it injected or fetch it through \\Psr\\Container\\ContainerInterface::get
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public getRemoteInstanceFactory()
+	
+		:Source:
+			`lib/public/IServerContainer.php#643 <https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L643>`_
+		
+		
+		:Returns: :any:`\\OCP\\Remote\\IInstanceFactory <OCP\\Remote\\IInstanceFactory>` 
+		:Since: 13.0.0 
+		:Deprecated: 20.0.0 have it injected or fetch it through \\Psr\\Container\\ContainerInterface::get
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public getStorageFactory()
+	
+		:Source:
+			`lib/public/IServerContainer.php#650 <https://github.com/nextcloud/server/blob/stable13/lib/public/IServerContainer.php#L650>`_
+		
+		
+		:Returns: :any:`\\OCP\\Files\\Storage\\IStorageFactory <OCP\\Files\\Storage\\IStorageFactory>` 
+		:Since: 15.0.0 
+		:Deprecated: 20.0.0 have it injected or fetch it through \\Psr\\Container\\ContainerInterface::get
+	
+	
+

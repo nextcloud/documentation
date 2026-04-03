@@ -1,0 +1,415 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Automatic configuration setup &mdash; Nextcloud 14 Administration Manual 14 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'14',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Server tuning" href="server_tuning.html" />
+    <link rel="prev" title="Using third party PHP components" href="thirdparty_php_configuration.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../contents.html">
+          
+
+          
+            
+            <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Server configuration</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="security_setup_warnings.html">Warnings on admin page</a></li>
+<li class="toctree-l2"><a class="reference internal" href="occ_command.html">Using the occ command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="activity_configuration.html">Configuring the activity app</a></li>
+<li class="toctree-l2"><a class="reference internal" href="caching_configuration.html">Configuring memory caching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="background_jobs_configuration.html">Defining background jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_sample_php_parameters.html">Configuration Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="email_configuration.html">Email configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="external_sites.html">Linking external sites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="language_configuration.html">Language configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logging_configuration.html">Logging configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="harden_server.html">Hardening and security guidance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reverse_proxy_configuration.html">Reverse proxy configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="thirdparty_php_configuration.html">Using third party PHP components</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Automatic configuration setup</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#parameters">Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#automatic-configurations-examples">Automatic configurations examples</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#data-directory">Data Directory</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sqlite-database">SQLite database</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mysql-database">MySQL database</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#postgresql-database">PostgreSQL database</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#all-parameters">All parameters</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="server_tuning.html">Server tuning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="theming.html">Theming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="oauth2.html">OAuth2</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_user/index.html">User management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_files/index.html">File sharing and management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../file_workflows/index.html">File workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_database/index.html">Database configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_mimetypes/index.html">Mimetypes management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../maintenance/index.html">Maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../issues/index.html">Issues and troubleshooting</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud 14 Administration Manual</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../contents.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Server configuration</a> &raquo;</li>
+        
+      <li>Automatic configuration setup</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/nextcloud/documentation/edit/stable14/admin_manual/configuration_server/automatic_configuration.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="automatic-configuration-setup">
+<h1>Automatic configuration setup<a class="headerlink" href="#automatic-configuration-setup" title="Permalink to this headline">¶</a></h1>
+<p>If you need to install Nextcloud on multiple servers, you normally do not want
+to set up each instance separately as described in
+<a class="reference internal" href="../configuration_database/linux_database_configuration.html"><span class="doc">Database configuration</span></a>.
+For this reason, Nextcloud provides an automatic configuration feature.</p>
+<p>To take advantage of this feature, you must create a configuration file, called
+<code class="file docutils literal"><span class="pre">../nextcloud/config/autoconfig.php</span></code>, and set the file parameters as required.
+You can specify any number of parameters in this file.  Any unspecified parameters appear on the &#8220;Finish setup&#8221; screen when you first launch Nextcloud.</p>
+<p>The <code class="file docutils literal"><span class="pre">../nextcloud/config/autoconfig.php</span></code> is automatically removed after the initial configuration has been applied.</p>
+<div class="section" id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
+<p>When configuring parameters, you must understand that two parameters are named differently in this configuration file when compared to the standard <code class="file docutils literal"><span class="pre">config.php</span></code> file.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="52%" />
+<col width="48%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">autoconfig.php</th>
+<th class="head">config.php</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>directory</td>
+<td>datadirectory</td>
+</tr>
+<tr class="row-odd"><td>dbpass</td>
+<td>dbpassword</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="automatic-configurations-examples">
+<h2>Automatic configurations examples<a class="headerlink" href="#automatic-configurations-examples" title="Permalink to this headline">¶</a></h2>
+<p>The following sections provide sample automatic configuration examples and what information is requested at the end of the configuration.</p>
+<div class="section" id="data-directory">
+<h3>Data Directory<a class="headerlink" href="#data-directory" title="Permalink to this headline">¶</a></h3>
+<p>Using the following parameter settings, the &#8220;Finish setup&#8221; screen requests database and admin credentials settings.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>&lt;?php
+$AUTOCONFIG = array(
+  &quot;directory&quot;     =&gt; &quot;/www/htdocs/nextcloud/data&quot;,
+);
+</pre></div>
+</div>
+</div>
+<div class="section" id="sqlite-database">
+<h3>SQLite database<a class="headerlink" href="#sqlite-database" title="Permalink to this headline">¶</a></h3>
+<p>Using the following parameter settings, the &#8220;Finish setup&#8221; screen requests data directory and admin credentials settings.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>&lt;?php
+$AUTOCONFIG = array(
+  &quot;dbtype&quot;        =&gt; &quot;sqlite&quot;,
+  &quot;dbname&quot;        =&gt; &quot;nextcloud&quot;,
+  &quot;dbtableprefix&quot; =&gt; &quot;&quot;,
+);
+</pre></div>
+</div>
+</div>
+<div class="section" id="mysql-database">
+<h3>MySQL database<a class="headerlink" href="#mysql-database" title="Permalink to this headline">¶</a></h3>
+<p>Using the following parameter settings, the &#8220;Finish setup&#8221; screen requests data directory and admin credentials settings.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>&lt;?php
+$AUTOCONFIG = array(
+  &quot;dbtype&quot;        =&gt; &quot;mysql&quot;,
+  &quot;dbname&quot;        =&gt; &quot;nextcloud&quot;,
+  &quot;dbuser&quot;        =&gt; &quot;username&quot;,
+  &quot;dbpass&quot;        =&gt; &quot;password&quot;,
+  &quot;dbhost&quot;        =&gt; &quot;localhost&quot;,
+  &quot;dbtableprefix&quot; =&gt; &quot;&quot;,
+);
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Keep in mind that the automatic configuration does not eliminate the need for
+creating the  database user and database in advance, as described in
+<a class="reference internal" href="../configuration_database/linux_database_configuration.html"><span class="doc">Database configuration</span></a>.</p>
+</div>
+</div>
+<div class="section" id="postgresql-database">
+<h3>PostgreSQL database<a class="headerlink" href="#postgresql-database" title="Permalink to this headline">¶</a></h3>
+<p>Using the following parameter settings, the &#8220;Finish setup&#8221; screen requests data directory and admin credentials settings.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>&lt;?php
+$AUTOCONFIG = array(
+  &quot;dbtype&quot;        =&gt; &quot;pgsql&quot;,
+  &quot;dbname&quot;        =&gt; &quot;nextcloud&quot;,
+  &quot;dbuser&quot;        =&gt; &quot;username&quot;,
+  &quot;dbpass&quot;        =&gt; &quot;password&quot;,
+  &quot;dbhost&quot;        =&gt; &quot;localhost&quot;,
+  &quot;dbtableprefix&quot; =&gt; &quot;&quot;,
+);
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Keep in mind that the automatic configuration does not eliminate the need for
+creating the database user and database in advance, as described in
+<a class="reference internal" href="../configuration_database/linux_database_configuration.html"><span class="doc">Database configuration</span></a>.</p>
+</div>
+</div>
+<div class="section" id="all-parameters">
+<h3>All parameters<a class="headerlink" href="#all-parameters" title="Permalink to this headline">¶</a></h3>
+<p>Using the following parameter settings, because all parameters are already configured in the file, the Nextcloud installation skips the &#8220;Finish setup&#8221; screen.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>&lt;?php
+$AUTOCONFIG = array(
+  &quot;dbtype&quot;        =&gt; &quot;mysql&quot;,
+  &quot;dbname&quot;        =&gt; &quot;nextcloud&quot;,
+  &quot;dbuser&quot;        =&gt; &quot;username&quot;,
+  &quot;dbpass&quot;        =&gt; &quot;password&quot;,
+  &quot;dbhost&quot;        =&gt; &quot;localhost&quot;,
+  &quot;dbtableprefix&quot; =&gt; &quot;&quot;,
+  &quot;adminlogin&quot;    =&gt; &quot;root&quot;,
+  &quot;adminpass&quot;     =&gt; &quot;root-password&quot;,
+  &quot;directory&quot;     =&gt; &quot;/www/htdocs/nextcloud/data&quot;,
+);
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Keep in mind that the automatic configuration does not eliminate the need for
+creating the database user and database in advance, as described in
+<a class="reference internal" href="../configuration_database/linux_database_configuration.html"><span class="doc">Database configuration</span></a>.</p>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="server_tuning.html" class="btn btn-neutral float-right" title="Server tuning" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="thirdparty_php_configuration.html" class="btn btn-neutral float-left" title="Using third party PHP components" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021 Nextcloud GmbH.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: 14
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/14/admin_manual">14</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/15/admin_manual">15</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/16/admin_manual">16</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/admin_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/admin_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+   
+
+</body>
+</html>

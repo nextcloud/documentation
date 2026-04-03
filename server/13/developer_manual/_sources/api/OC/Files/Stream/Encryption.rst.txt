@@ -1,0 +1,488 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+Encryption
+==========
+
+
+.. php:namespace:: OC\Files\Stream
+
+.. php:class:: Encryption
+
+
+	:Source:
+		`lib/private/Files/Stream/Encryption.php#40 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Stream/Encryption.php#L40>`_
+	
+	:Parent:
+		:php:class:`Icewind\\Streams\\Wrapper`
+	
+
+Properties
+----------
+
+.. php:attr:: protected static util
+
+	:Source:
+		`lib/private/Files/Stream/Encryption.php#43 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Stream/Encryption.php#L43>`_
+	
+	:Type: :any:`\\OC\\Encryption\\Util <OC\\Encryption\\Util>` 
+
+
+.. php:attr:: protected static file
+
+	:Source:
+		`lib/private/Files/Stream/Encryption.php#46 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Stream/Encryption.php#L46>`_
+	
+	:Type: :any:`\\OC\\Encryption\\File <OC\\Encryption\\File>` 
+
+
+.. php:attr:: protected static encryptionModule
+
+	:Source:
+		`lib/private/Files/Stream/Encryption.php#49 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Stream/Encryption.php#L49>`_
+	
+	:Type: :any:`\\OCP\\Encryption\\IEncryptionModule <OCP\\Encryption\\IEncryptionModule>` 
+
+
+.. php:attr:: protected static storage
+
+	:Source:
+		`lib/private/Files/Stream/Encryption.php#52 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Stream/Encryption.php#L52>`_
+	
+	:Type: :any:`\\OC\\Files\\Storage\\Storage <OC\\Files\\Storage\\Storage>` 
+
+
+.. php:attr:: protected static encryptionStorage
+
+	:Source:
+		`lib/private/Files/Stream/Encryption.php#55 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Stream/Encryption.php#L55>`_
+	
+	:Type: :any:`\\OC\\Files\\Storage\\Wrapper\\Encryption <OC\\Files\\Storage\\Wrapper\\Encryption>` 
+
+
+.. php:attr:: protected static internalPath
+
+	:Source:
+		`lib/private/Files/Stream/Encryption.php#58 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Stream/Encryption.php#L58>`_
+	
+	:Type: string 
+
+
+.. php:attr:: protected static cache
+
+	:Source:
+		`lib/private/Files/Stream/Encryption.php#61 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Stream/Encryption.php#L61>`_
+	
+	:Type: string 
+
+
+.. php:attr:: protected static size
+
+	:Source:
+		`lib/private/Files/Stream/Encryption.php#64 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Stream/Encryption.php#L64>`_
+	
+	:Type: int 
+
+
+.. php:attr:: protected static position
+
+	:Source:
+		`lib/private/Files/Stream/Encryption.php#67 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Stream/Encryption.php#L67>`_
+	
+	:Type: int 
+
+
+.. php:attr:: protected static unencryptedSize
+
+	:Source:
+		`lib/private/Files/Stream/Encryption.php#70 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Stream/Encryption.php#L70>`_
+	
+	:Type: int 
+
+
+.. php:attr:: protected static headerSize
+
+	:Source:
+		`lib/private/Files/Stream/Encryption.php#73 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Stream/Encryption.php#L73>`_
+	
+	:Type: int 
+
+
+.. php:attr:: protected static unencryptedBlockSize
+
+	:Source:
+		`lib/private/Files/Stream/Encryption.php#76 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Stream/Encryption.php#L76>`_
+	
+	:Type: int 
+
+
+.. php:attr:: protected static header
+
+	:Source:
+		`lib/private/Files/Stream/Encryption.php#79 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Stream/Encryption.php#L79>`_
+	
+	:Type: array 
+
+
+.. php:attr:: protected static fullPath
+
+	:Source:
+		`lib/private/Files/Stream/Encryption.php#82 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Stream/Encryption.php#L82>`_
+	
+	:Type: string 
+
+
+.. php:attr:: protected static signed
+
+	:Source:
+		`lib/private/Files/Stream/Encryption.php#85 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Stream/Encryption.php#L85>`_
+	
+	:Type: bool 
+
+
+.. php:attr:: protected static newHeader
+
+	.. rst-class:: phpdoc-description
+	
+		| header data returned by the encryption module, will be written to the file
+		| in case of a write operation
+		
+	
+	:Source:
+		`lib/private/Files/Stream/Encryption.php#93 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Stream/Encryption.php#L93>`_
+	
+	:Type: array 
+
+
+.. php:attr:: protected static uid
+
+	.. rst-class:: phpdoc-description
+	
+		| user who perform the read/write operation null for public access
+		
+	
+	:Source:
+		`lib/private/Files/Stream/Encryption.php#100 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Stream/Encryption.php#L100>`_
+	
+	:Type: string 
+
+
+.. php:attr:: protected static readOnly
+
+	:Source:
+		`lib/private/Files/Stream/Encryption.php#103 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Stream/Encryption.php#L103>`_
+	
+	:Type: bool 
+
+
+.. php:attr:: protected static writeFlag
+
+	:Source:
+		`lib/private/Files/Stream/Encryption.php#106 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Stream/Encryption.php#L106>`_
+	
+	:Type: bool 
+
+
+.. php:attr:: protected static expectedContextProperties
+
+	:Source:
+		`lib/private/Files/Stream/Encryption.php#109 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Stream/Encryption.php#L109>`_
+	
+	:Type: array 
+
+
+.. php:attr:: protected static fileUpdated
+
+	:Source:
+		`lib/private/Files/Stream/Encryption.php#112 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Stream/Encryption.php#L112>`_
+	
+	:Type: bool 
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct()
+	
+		:Source:
+			`lib/private/Files/Stream/Encryption.php#114 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Stream/Encryption.php#L114>`_
+		
+		
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static wrap( $source, $internalPath, $fullPath, $header, $uid, $encryptionModule, $storage, $encStorage, $util, $file, $mode, $size, $unencryptedSize, $headerSize, $signed, $wrapper=\\OC\\Files\\Stream\\Encryption::class)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Wraps a stream with the provided callbacks
+			
+		
+		:Source:
+			`lib/private/Files/Stream/Encryption.php#157 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Stream/Encryption.php#L157>`_
+		
+		
+		:Parameters:
+			* **$source** (resource)  
+			* **$internalPath** (string)  relative to mount point
+			* **$fullPath** (string)  relative to data/
+			* **$header** (array)  
+			* **$uid** (string)  
+			* **$encryptionModule** (:any:`OCP\\Encryption\\IEncryptionModule <OCP\\Encryption\\IEncryptionModule>`)  
+			* **$storage** (:any:`OC\\Files\\Storage\\Storage <OC\\Files\\Storage\\Storage>`)  
+			* **$encStorage** (:any:`OC\\Files\\Storage\\Wrapper\\Encryption <OC\\Files\\Storage\\Wrapper\\Encryption>`)  
+			* **$util** (:any:`OC\\Encryption\\Util <OC\\Encryption\\Util>`)  
+			* **$file** (:any:`OC\\Encryption\\File <OC\\Encryption\\File>`)  
+			* **$mode** (string)  
+			* **$size** (int)  
+			* **$unencryptedSize** (int)  
+			* **$headerSize** (int)  
+			* **$signed** (bool)  
+			* **$wrapper** (string)  stream wrapper class
+
+		
+		:Returns: resource 
+		:Throws: :any:`\\BadMethodCallException <BadMethodCallException>` 
+	
+	
+
+.. rst-class:: protected static
+
+	.. php:method:: protected static wrapSource( $source, $context=\[\], $protocol=null, $class=null, $mode=r\+)
+	
+		.. rst-class:: phpdoc-description
+		
+			| add stream wrapper
+			
+		
+		:Source:
+			`lib/private/Files/Stream/Encryption.php#203 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Stream/Encryption.php#L203>`_
+		
+		
+		:Parameters:
+			* **$source** (resource | int)  
+			* **$context** (resource | array)  
+			* **$protocol** (string | null)  
+			* **$class** (string | null)  
+			* **$mode** (string)  
+
+		
+		:Returns: resource 
+		:Throws: :any:`\\BadMethodCallException <BadMethodCallException>` 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected loadContext( $name=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Load the source from the stream context and return the context options
+			
+		
+		:Source:
+			`lib/private/Files/Stream/Encryption.php#243 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Stream/Encryption.php#L243>`_
+		
+		
+		:Parameters:
+			* **$name** (string | null)  
+
+		
+		:Returns: array 
+		:Throws: :any:`\\BadMethodCallException <BadMethodCallException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public stream_open( $path, $mode, $options, &$opened_path)
+	
+		:Source:
+			`lib/private/Files/Stream/Encryption.php#256 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Stream/Encryption.php#L256>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public stream_eof()
+	
+		:Source:
+			`lib/private/Files/Stream/Encryption.php#307 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Stream/Encryption.php#L307>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public stream_read( $count)
+	
+		:Source:
+			`lib/private/Files/Stream/Encryption.php#311 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Stream/Encryption.php#L311>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public stream_write( $data)
+	
+		:Source:
+			`lib/private/Files/Stream/Encryption.php#362 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Stream/Encryption.php#L362>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public stream_tell()
+	
+		:Source:
+			`lib/private/Files/Stream/Encryption.php#413 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Stream/Encryption.php#L413>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public stream_seek( $offset, $whence=SEEK\_SET)
+	
+		:Source:
+			`lib/private/Files/Stream/Encryption.php#417 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Stream/Encryption.php#L417>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public stream_close()
+	
+		:Source:
+			`lib/private/Files/Stream/Encryption.php#452 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Stream/Encryption.php#L452>`_
+		
+		
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected flush( $positionPrefix="")
+	
+		.. rst-class:: phpdoc-description
+		
+			| write block to file
+			
+		
+		:Source:
+			`lib/private/Files/Stream/Encryption.php#480 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Stream/Encryption.php#L480>`_
+		
+		
+		:Parameters:
+			* **$positionPrefix** (string)  
+
+		
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected readCache()
+	
+		.. rst-class:: phpdoc-description
+		
+			| read block to file
+			
+		
+		:Source:
+			`lib/private/Files/Stream/Encryption.php#509 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Stream/Encryption.php#L509>`_
+		
+		
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected writeHeader()
+	
+		.. rst-class:: phpdoc-description
+		
+			| write header at beginning of encrypted file
+			
+		
+		:Source:
+			`lib/private/Files/Stream/Encryption.php#530 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Stream/Encryption.php#L530>`_
+		
+		
+		:Returns: int 
+		:Throws: :any:`\\OC\\Encryption\\Exceptions\\EncryptionHeaderKeyExistsException <OC\\Encryption\\Exceptions\\EncryptionHeaderKeyExistsException>` if header key is already in use
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected skipHeader()
+	
+		.. rst-class:: phpdoc-description
+		
+			| read first block to skip the header
+			
+		
+		:Source:
+			`lib/private/Files/Stream/Encryption.php#538 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Stream/Encryption.php#L538>`_
+		
+		
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected parentStreamSeek( $position)
+	
+		.. rst-class:: phpdoc-description
+		
+			| call stream\_seek\(\) from parent class
+			
+		
+		:Source:
+			`lib/private/Files/Stream/Encryption.php#548 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Stream/Encryption.php#L548>`_
+		
+		
+		:Parameters:
+			* **$position** (int)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public dir_opendir( $path, $options)
+	
+		:Source:
+			`lib/private/Files/Stream/Encryption.php#557 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Stream/Encryption.php#L557>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+			* **$options** (array)  
+
+		
+		:Returns: bool 
+	
+	
+

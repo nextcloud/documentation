@@ -1,0 +1,529 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+CloudFederationShare
+====================
+
+
+.. php:namespace:: OC\Federation
+
+.. php:class:: CloudFederationShare
+
+
+	:Source:
+		`lib/private/Federation/CloudFederationShare.php#30 <https://github.com/nextcloud/server/blob/stable13/lib/private/Federation/CloudFederationShare.php#L30>`_
+	
+	:Implements:
+		:php:interface:`OCP\\Federation\\ICloudFederationShare` 
+	
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $shareWith="", $name="", $description="", $providerId="", $owner="", $ownerDisplayName="", $sharedBy="", $sharedByDisplayName="", $shareType="", $resourceType="", $sharedSecret="")
+	
+		.. rst-class:: phpdoc-description
+		
+			| get a CloudFederationShare Object to prepare a share you want to send
+			
+		
+		:Source:
+			`lib/private/Federation/CloudFederationShare.php#60 <https://github.com/nextcloud/server/blob/stable13/lib/private/Federation/CloudFederationShare.php#L60>`_
+		
+		
+		:Parameters:
+			* **$shareWith** (string)  
+			* **$name** (string)  resource name (e.g. document.odt)
+			* **$description** (string)  share description (optional)
+			* **$providerId** (string)  resource UID on the provider side
+			* **$owner** (string)  provider specific UID of the user who owns the resource
+			* **$ownerDisplayName** (string)  display name of the user who shared the item
+			* **$sharedBy** (string)  provider specific UID of the user who shared the resource
+			* **$sharedByDisplayName** (string)  display name of the user who shared the resource
+			* **$shareType** (string)  ('group' or 'user' share)
+			* **$resourceType** (string)  ('file', 'calendar',...)
+			* **$sharedSecret** (string)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setShareWith( $user)
+	
+		.. rst-class:: phpdoc-description
+		
+			| set uid of the recipient
+			
+		
+		:Source:
+			`lib/private/Federation/CloudFederationShare.php#98 <https://github.com/nextcloud/server/blob/stable13/lib/private/Federation/CloudFederationShare.php#L98>`_
+		
+		
+		:Parameters:
+			* **$user** (string)  
+
+		
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setResourceName( $name)
+	
+		.. rst-class:: phpdoc-description
+		
+			| set resource name \(e\.g\. document\.odt\)
+			
+		
+		:Source:
+			`lib/private/Federation/CloudFederationShare.php#109 <https://github.com/nextcloud/server/blob/stable13/lib/private/Federation/CloudFederationShare.php#L109>`_
+		
+		
+		:Parameters:
+			* **$name** (string)  
+
+		
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setResourceType( $resourceType)
+	
+		.. rst-class:: phpdoc-description
+		
+			| set resource type \(e\.g\. file, calendar, contact,\.
+			
+			| \.\.\)
+			
+		
+		:Source:
+			`lib/private/Federation/CloudFederationShare.php#120 <https://github.com/nextcloud/server/blob/stable13/lib/private/Federation/CloudFederationShare.php#L120>`_
+		
+		
+		:Parameters:
+			* **$resourceType** (string)  
+
+		
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setDescription( $description)
+	
+		.. rst-class:: phpdoc-description
+		
+			| set resource description \(optional\)
+			
+		
+		:Source:
+			`lib/private/Federation/CloudFederationShare.php#131 <https://github.com/nextcloud/server/blob/stable13/lib/private/Federation/CloudFederationShare.php#L131>`_
+		
+		
+		:Parameters:
+			* **$description** (string)  
+
+		
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setProviderId( $providerId)
+	
+		.. rst-class:: phpdoc-description
+		
+			| set provider ID \(e\.g\. file ID\)
+			
+		
+		:Source:
+			`lib/private/Federation/CloudFederationShare.php#142 <https://github.com/nextcloud/server/blob/stable13/lib/private/Federation/CloudFederationShare.php#L142>`_
+		
+		
+		:Parameters:
+			* **$providerId** (string)  
+
+		
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setOwner( $owner)
+	
+		.. rst-class:: phpdoc-description
+		
+			| set owner UID
+			
+		
+		:Source:
+			`lib/private/Federation/CloudFederationShare.php#153 <https://github.com/nextcloud/server/blob/stable13/lib/private/Federation/CloudFederationShare.php#L153>`_
+		
+		
+		:Parameters:
+			* **$owner** (string)  
+
+		
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setOwnerDisplayName( $ownerDisplayName)
+	
+		.. rst-class:: phpdoc-description
+		
+			| set owner display name
+			
+		
+		:Source:
+			`lib/private/Federation/CloudFederationShare.php#164 <https://github.com/nextcloud/server/blob/stable13/lib/private/Federation/CloudFederationShare.php#L164>`_
+		
+		
+		:Parameters:
+			* **$ownerDisplayName** (string)  
+
+		
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setSharedBy( $sharedBy)
+	
+		.. rst-class:: phpdoc-description
+		
+			| set UID of the user who sends the share
+			
+		
+		:Source:
+			`lib/private/Federation/CloudFederationShare.php#175 <https://github.com/nextcloud/server/blob/stable13/lib/private/Federation/CloudFederationShare.php#L175>`_
+		
+		
+		:Parameters:
+			* **$sharedBy** (string)  
+
+		
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setSharedByDisplayName( $sharedByDisplayName)
+	
+		.. rst-class:: phpdoc-description
+		
+			| set display name of the user who sends the share
+			
+		
+		:Source:
+			`lib/private/Federation/CloudFederationShare.php#186 <https://github.com/nextcloud/server/blob/stable13/lib/private/Federation/CloudFederationShare.php#L186>`_
+		
+		
+		:Parameters:
+			* **$sharedByDisplayName**  
+
+		
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setProtocol( $protocol)
+	
+		.. rst-class:: phpdoc-description
+		
+			| set protocol specification
+			
+		
+		:Source:
+			`lib/private/Federation/CloudFederationShare.php#197 <https://github.com/nextcloud/server/blob/stable13/lib/private/Federation/CloudFederationShare.php#L197>`_
+		
+		
+		:Parameters:
+			* **$protocol** (array)  
+
+		
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setShareType( $shareType)
+	
+		.. rst-class:: phpdoc-description
+		
+			| share type \(group or user\)
+			
+		
+		:Source:
+			`lib/private/Federation/CloudFederationShare.php#208 <https://github.com/nextcloud/server/blob/stable13/lib/private/Federation/CloudFederationShare.php#L208>`_
+		
+		
+		:Parameters:
+			* **$shareType** (string)  
+
+		
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getShare()
+	
+		.. rst-class:: phpdoc-description
+		
+			| get the whole share, ready to send out
+			
+		
+		:Source:
+			`lib/private/Federation/CloudFederationShare.php#223 <https://github.com/nextcloud/server/blob/stable13/lib/private/Federation/CloudFederationShare.php#L223>`_
+		
+		
+		:Returns: array 
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getShareWith()
+	
+		.. rst-class:: phpdoc-description
+		
+			| get uid of the recipient
+			
+		
+		:Source:
+			`lib/private/Federation/CloudFederationShare.php#234 <https://github.com/nextcloud/server/blob/stable13/lib/private/Federation/CloudFederationShare.php#L234>`_
+		
+		
+		:Returns: string 
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getResourceName()
+	
+		.. rst-class:: phpdoc-description
+		
+			| get resource name \(e\.g\. file, calendar, contact,\.
+			
+			| \.\.\)
+			
+		
+		:Source:
+			`lib/private/Federation/CloudFederationShare.php#245 <https://github.com/nextcloud/server/blob/stable13/lib/private/Federation/CloudFederationShare.php#L245>`_
+		
+		
+		:Returns: string 
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getResourceType()
+	
+		.. rst-class:: phpdoc-description
+		
+			| get resource type \(e\.g\. file, calendar, contact,\.
+			
+			| \.\.\)
+			
+		
+		:Source:
+			`lib/private/Federation/CloudFederationShare.php#256 <https://github.com/nextcloud/server/blob/stable13/lib/private/Federation/CloudFederationShare.php#L256>`_
+		
+		
+		:Returns: string 
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getDescription()
+	
+		.. rst-class:: phpdoc-description
+		
+			| get resource description \(optional\)
+			
+		
+		:Source:
+			`lib/private/Federation/CloudFederationShare.php#267 <https://github.com/nextcloud/server/blob/stable13/lib/private/Federation/CloudFederationShare.php#L267>`_
+		
+		
+		:Returns: string 
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getProviderId()
+	
+		.. rst-class:: phpdoc-description
+		
+			| get provider ID \(e\.g\. file ID\)
+			
+		
+		:Source:
+			`lib/private/Federation/CloudFederationShare.php#278 <https://github.com/nextcloud/server/blob/stable13/lib/private/Federation/CloudFederationShare.php#L278>`_
+		
+		
+		:Returns: string 
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getOwner()
+	
+		.. rst-class:: phpdoc-description
+		
+			| get owner UID
+			
+		
+		:Source:
+			`lib/private/Federation/CloudFederationShare.php#289 <https://github.com/nextcloud/server/blob/stable13/lib/private/Federation/CloudFederationShare.php#L289>`_
+		
+		
+		:Returns: string 
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getOwnerDisplayName()
+	
+		.. rst-class:: phpdoc-description
+		
+			| get owner display name
+			
+		
+		:Source:
+			`lib/private/Federation/CloudFederationShare.php#300 <https://github.com/nextcloud/server/blob/stable13/lib/private/Federation/CloudFederationShare.php#L300>`_
+		
+		
+		:Returns: string 
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getSharedBy()
+	
+		.. rst-class:: phpdoc-description
+		
+			| get UID of the user who sends the share
+			
+		
+		:Source:
+			`lib/private/Federation/CloudFederationShare.php#311 <https://github.com/nextcloud/server/blob/stable13/lib/private/Federation/CloudFederationShare.php#L311>`_
+		
+		
+		:Returns: string 
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getSharedByDisplayName()
+	
+		.. rst-class:: phpdoc-description
+		
+			| get display name of the user who sends the share
+			
+		
+		:Source:
+			`lib/private/Federation/CloudFederationShare.php#322 <https://github.com/nextcloud/server/blob/stable13/lib/private/Federation/CloudFederationShare.php#L322>`_
+		
+		
+		:Returns: string 
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getShareType()
+	
+		.. rst-class:: phpdoc-description
+		
+			| get share type \(group or user\)
+			
+		
+		:Source:
+			`lib/private/Federation/CloudFederationShare.php#333 <https://github.com/nextcloud/server/blob/stable13/lib/private/Federation/CloudFederationShare.php#L333>`_
+		
+		
+		:Returns: string 
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getShareSecret()
+	
+		.. rst-class:: phpdoc-description
+		
+			| get share Secret
+			
+		
+		:Source:
+			`lib/private/Federation/CloudFederationShare.php#344 <https://github.com/nextcloud/server/blob/stable13/lib/private/Federation/CloudFederationShare.php#L344>`_
+		
+		
+		:Returns: string 
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getProtocol()
+	
+		.. rst-class:: phpdoc-description
+		
+			| get protocol specification
+			
+		
+		:Source:
+			`lib/private/Federation/CloudFederationShare.php#355 <https://github.com/nextcloud/server/blob/stable13/lib/private/Federation/CloudFederationShare.php#L355>`_
+		
+		
+		:Returns: array 
+		:Since: 14.0.0 
+	
+	
+

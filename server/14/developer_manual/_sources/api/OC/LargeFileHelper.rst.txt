@@ -1,0 +1,191 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+LargeFileHelper
+===============
+
+
+.. php:namespace:: OC
+
+.. php:class:: LargeFileHelper
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Helper class for large files on 32\-bit platforms\.
+		
+	
+	:Source:
+		`lib/private/LargeFileHelper.php#38 <https://github.com/nextcloud/server/blob/stable13/lib/private/LargeFileHelper.php#L38>`_
+	
+
+Constants
+---------
+
+.. php:const:: POW_2_53 = 9007199254740992
+
+	.. rst-class:: phpdoc-description
+	
+		| pow\(2, 53\) as a base\-10 string\.
+		
+	
+	:Source:
+		`lib/private/LargeFileHelper.php#43 <https://github.com/nextcloud/server/blob/stable13/lib/private/LargeFileHelper.php#L43>`_
+	
+	:Type: string 
+
+
+.. php:const:: POW_2_53_MINUS_1 = 9007199254740991
+
+	.. rst-class:: phpdoc-description
+	
+		| pow\(2, 53\) \- 1 as a base\-10 string\.
+		
+	
+	:Source:
+		`lib/private/LargeFileHelper.php#49 <https://github.com/nextcloud/server/blob/stable13/lib/private/LargeFileHelper.php#L49>`_
+	
+	:Type: string 
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct()
+	
+		:Source:
+			`lib/private/LargeFileHelper.php#57 <https://github.com/nextcloud/server/blob/stable13/lib/private/LargeFileHelper.php#L57>`_
+		
+		
+		:Throws: :any:`\\RunTimeException <RunTimeException>` if our assumptions do not hold on the current
+			PHP platform\.
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public formatUnsignedInteger( $number)
+	
+		:Source:
+			`lib/private/LargeFileHelper.php#77 <https://github.com/nextcloud/server/blob/stable13/lib/private/LargeFileHelper.php#L77>`_
+		
+		
+		:Parameters:
+			* **$number** (int | float | string)  Number containing unsigned integer data
+
+		
+		:Throws: :any:`\\UnexpectedValueException <UnexpectedValueException>` if $number is not a float, not an int
+			and not a base\-10 string\.
+		
+		:Returns: string Unsigned integer base\-10 string
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getFileSize( $filename)
+	
+		:Source:
+			`lib/private/LargeFileHelper.php#102 <https://github.com/nextcloud/server/blob/stable13/lib/private/LargeFileHelper.php#L102>`_
+		
+		
+		:Parameters:
+			* **$filename** (string)  Path to the file.
+
+		
+		:Returns: null | int | float Number of bytes as number \(float or int\) or
+			null on failure\.
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getFileSizeViaCurl( $fileName)
+	
+		:Source:
+			`lib/private/LargeFileHelper.php#122 <https://github.com/nextcloud/server/blob/stable13/lib/private/LargeFileHelper.php#L122>`_
+		
+		
+		:Parameters:
+			* **$fileName** (string)  Path to the file.
+
+		
+		:Returns: null | int | float Number of bytes as number \(float or int\) or
+			null on failure\.
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getFileSizeViaExec( $filename)
+	
+		:Source:
+			`lib/private/LargeFileHelper.php#150 <https://github.com/nextcloud/server/blob/stable13/lib/private/LargeFileHelper.php#L150>`_
+		
+		
+		:Parameters:
+			* **$filename** (string)  Path to the file.
+
+		
+		:Returns: null | int | float Number of bytes as number \(float or int\) or
+			null on failure\.
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getFileSizeNative( $filename)
+	
+		:Source:
+			`lib/private/LargeFileHelper.php#175 <https://github.com/nextcloud/server/blob/stable13/lib/private/LargeFileHelper.php#L175>`_
+		
+		
+		:Parameters:
+			* **$filename** (string)  Path to the file.
+
+		
+		:Returns: int | float Number of bytes as number \(float or int\)\.
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getFileMtime( $fullPath)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the current mtime for $fullPath
+			
+		
+		:Source:
+			`lib/private/LargeFileHelper.php#192 <https://github.com/nextcloud/server/blob/stable13/lib/private/LargeFileHelper.php#L192>`_
+		
+		
+		:Parameters:
+			* **$fullPath** (string)  
+
+		
+		:Returns: int 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected exec( $cmd)
+	
+		:Source:
+			`lib/private/LargeFileHelper.php#209 <https://github.com/nextcloud/server/blob/stable13/lib/private/LargeFileHelper.php#L209>`_
+		
+		
+	
+	
+

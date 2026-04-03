@@ -1,0 +1,78 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IInitialState
+=============
+
+
+.. php:namespace:: OCP\AppFramework\Services
+
+.. php:interface:: IInitialState
+
+
+	:Implemented by:
+		:php:class:`OC\\AppFramework\\Services\\InitialState` 
+	
+	
+	:Source:
+		`lib/public/AppFramework/Services/IInitialState.php#36 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Services/IInitialState.php#L36>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public provideInitialState( $key, $data)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Allows an app to provide its initial state to the template system\.
+			
+			| Use this if you know your initial state sill be used for example if
+			| you are in the render function of you controller\.
+			
+		
+		:Source:
+			`lib/public/AppFramework/Services/IInitialState.php#48 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Services/IInitialState.php#L48>`_
+		
+		
+		:Parameters:
+			* **$key** (string)  
+			* **$data** (bool | int | float | string | array | :any:`\\JsonSerializable <JsonSerializable>`)  
+
+		
+		:Since: 20.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public provideLazyInitialState( $key, $closure)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Allows an app to provide its initial state via a lazy method\.
+			
+			| This will call the closure when the template is being generated\.
+			| Use this if your app is injected into pages\. Since then the render method
+			| is not called explicitly\. But we do not want to load the state on webdav
+			| requests for example\.
+			
+		
+		:Source:
+			`lib/public/AppFramework/Services/IInitialState.php#63 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Services/IInitialState.php#L63>`_
+		
+		
+		:Parameters:
+			* **$key** (string)  
+			* **$closure** (:any:`Closure <Closure>`)  returns a primitive or an object that implements JsonSerializable
+
+		
+		:Since: 20.0.0 
+	
+	
+

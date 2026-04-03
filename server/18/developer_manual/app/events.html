@@ -1,0 +1,813 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Events &mdash; Nextcloud latest Developer Manual latest documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'latest',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Background jobs (Cron)" href="backgroundjobs.html" />
+    <link rel="prev" title="Two-factor providers" href="two-factor-provider.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../general/index.html">General contributor guidelines</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">App development</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="upgrade-guide.html">App upgrade guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bootstrap.html">Bootstrapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="npm.html">NPM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="requests/index.html">Request lifecycle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="view/index.html">View</a></li>
+<li class="toctree-l2"><a class="reference internal" href="storage/index.html">Storage and database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html">Changelog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classloader.html">Classloader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="code_signing.html">Code signing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="info.html">App metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="init.html">Navigation and pre-app configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="publishing.html">App store publishing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="users.html">User management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="two-factor-provider.html">Two-factor providers</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Events</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ocp-event-dispatcher">OCP event dispatcher</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#naming-scheme">Naming scheme</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#writing-events">Writing events</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#writing-a-listener">Writing a listener</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#available-events">Available Events</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#symfony-event-dispatcher">Symfony event dispatcher</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#hooks">Hooks</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#groupmanager">GroupManager</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#filesystem-root">Filesystem root</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#filesystem-scanner">Filesystem scanner</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#public-emitter">Public emitter</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="backgroundjobs.html">Background jobs (Cron)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="settings.html">Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notifications.html">Notifications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="flow.html">Nextcloud Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logging.html">Logging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="repair.html">Repair steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="publicpage.html">Public Pages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="testing.html">Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html">API reference</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../design/index.html">Design guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../android_library/index.html">Android application development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client_apis/index.html">Client APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../core/index.html">Core development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bugtracker/index.html">Bugtracker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../commun/index.html">Help and communication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API reference</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Nextcloud latest Developer Manual</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">App development</a> &raquo;</li>
+        
+      <li>Events</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/nextcloud/documentation/edit/master/developer_manual/app/events.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="events">
+<h1>Events<a class="headerlink" href="#events" title="Permalink to this headline">¶</a></h1>
+<p>Events are used to communicate between different aspects of the Nextcloud eco system. They are used in the Nextcloud server internally, for server-to-apps communcation as well as inter-app communication.</p>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>The term &#8220;events&#8221; is a bit broad in Nextcloud and there are multiple ways of emitting them.</p>
+<ul class="simple">
+<li><a class="reference internal" href="#ocp-event-dispatcher">OCP event dispatcher</a></li>
+<li><a class="reference internal" href="#symfony-event-dispatcher">Symfony event dispatcher</a></li>
+<li><a class="reference internal" href="#hooks">Hooks</a></li>
+<li><a class="reference internal" href="#public-emitter">Public Emitter</a></li>
+</ul>
+</div>
+<div class="section" id="ocp-event-dispatcher">
+<h2>OCP event dispatcher<a class="headerlink" href="#ocp-event-dispatcher" title="Permalink to this headline">¶</a></h2>
+<p>This mechanism is a versatile and typed approach to events in Nextcloud&#8217;s php code. It uses objects rather than just passing primitives or untyped arrays. This should help provide a better developer experience while lowering the risk of unexpected changes in the API that are hard to find after the initial implementation.</p>
+<div class="section" id="naming-scheme">
+<h3>Naming scheme<a class="headerlink" href="#naming-scheme" title="Permalink to this headline">¶</a></h3>
+<p>The name should reflect the subject and the actions. Suffixing event classes with <cite>Event</cite> makes it easier to recognize their purpose.</p>
+<p>For example, if a user is created, a <cite>UserCreatedEvent</cite> will be emitted.</p>
+<p>Events are ususally evmitted <em>after</em> the event has happened. If it&#8217;s emitted before, it should be prefixed with <cite>Before</cite>.</p>
+<p>Thus <cite>BeforeUserCreatedEvent</cite> is emitted <em>before</em> the user data is written to the database.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Although you may chose to name your event classes differently, sticking to the convention will allow Nextcloud developers understand each other&#8217;s apps more easily.</p>
+</div>
+</div>
+<div class="section" id="writing-events">
+<h3>Writing events<a class="headerlink" href="#writing-events" title="Permalink to this headline">¶</a></h3>
+<p>As a rule events are dedicated classes extending <code class="docutils literal"><span class="pre">\OCP\EventDispatcher\Event</span></code>.</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">OCP\EventDispatcher\Event</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nx">OCA\MyApp\Event</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">AddEvent</span> <span class="k">extends</span> <span class="nx">Event</span> <span class="p">{}</span>
+</pre></div>
+</div>
+<p>The event above allows signalling that <em>something happened</em>. But in many cases you want to actually transport data like the affected resource with the event. Then the events act as simple <a class="reference external" href="https://en.wikipedia.org/wiki/Data_transfer_object">data transfer objects</a>. Therefore they need a constructor that takes the arguments, private members to store them and getters to access the values in listeners.</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">OCP\EventDispatcher\Event</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\IUser</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">UserCreatedEvent</span> <span class="k">extends</span> <span class="nx">Event</span> <span class="p">{</span>
+
+    <span class="sd">/** @var IUser */</span>
+    <span class="k">private</span> <span class="nv">$user</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">IUser</span> <span class="nv">$user</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">();</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">user</span> <span class="o">=</span> <span class="nv">$user</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getUser</span><span class="p">()</span><span class="o">:</span> <span class="nx">IUser</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">user</span><span class="p">;</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="writing-a-listener">
+<h3>Writing a listener<a class="headerlink" href="#writing-a-listener" title="Permalink to this headline">¶</a></h3>
+<p>A listener can be a simple callback function (or anything else that is <a class="reference external" href="https://www.php.net/manual/en/language.types.callable.php">callable</a>, or a dedicated class.</p>
+<div class="section" id="listener-callbacks">
+<h4>Listener callbacks<a class="headerlink" href="#listener-callbacks" title="Permalink to this headline">¶</a></h4>
+<p>You can use simple callback to react on events. They will receive the event object as first and only parameter. You can type-hint the base <cite>Event</cite> class or the subclass you expect and register for.</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">OCA\MyApp\Event\AddEvent</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\App</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\EventDispatcher\IEventDispatcher</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nx">OCA\MyApp\AppInfo</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Application</span> <span class="k">extends</span> <span class="nx">App</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">(</span><span class="s1">&#39;myapp&#39;</span><span class="p">);</span>
+            <span class="cm">/* @var IEventDispatcher $eventDispatcher */</span>
+            <span class="nv">$dispatcher</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getContainer</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="nx">IEventDispatcher</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+            <span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">addListener</span><span class="p">(</span><span class="nx">AddEvent</span><span class="o">::</span><span class="na">class</span><span class="p">,</span> <span class="k">function</span><span class="p">(</span><span class="nx">AddEvent</span> <span class="nv">$event</span><span class="p">)</span> <span class="p">{</span>
+                <span class="c1">// ...</span>
+            <span class="p">});</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Type-hinting the actual event class will give you better IDE and static analyzers support. It&#8217;s generally safe to assume the dispatcher will not give you any other objects.</p>
+</div>
+</div>
+<div class="section" id="listener-classes">
+<h4>Listener classes<a class="headerlink" href="#listener-classes" title="Permalink to this headline">¶</a></h4>
+<p>A class that can handle an event will implement the <code class="docutils literal"><span class="pre">\OCP\EventDispatcher\IEventListener</span></code> interface. Class names should end with <cite>Listener</cite>.</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">OCA\MyApp\Event\AddEvent</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\EventDispatcher\Event</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\EventDispatcher\IEventListener</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nx">OCA\MyApp\Event</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">AddTwoListener</span> <span class="k">implements</span> <span class="nx">IEventListener</span> <span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">handle</span><span class="p">(</span><span class="nx">Event</span> <span class="nv">$event</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="nv">$event</span> <span class="nx">instanceOf</span> <span class="nx">AddEvent</span><span class="p">))</span> <span class="p">{</span>
+            <span class="k">return</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="nv">$event</span><span class="o">-&gt;</span><span class="na">addToCounter</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Php parameter type hints are not allowed to be more specific than the type hints on the interface, thus you can&#8217;t use <cite>AddEvent</cite> in the method signature but use an <cite>instanceOf</cite> instead.</p>
+</div>
+<p>In the <code class="docutils literal"><span class="pre">Application.php</span></code> the event and the listener class are connected. The class is instantiated only when the actual event is fired.</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+
+<span class="k">use</span> <span class="nx">OCA\MyApp\Event\AddEvent</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCA\MyApp\Listener\AddTwoListener</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\App</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\EventDispatcher\IEventDispatcher</span><span class="p">;</span>
+
+<span class="k">namespace</span> <span class="nx">OCA\MyApp\AppInfo</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Application</span> <span class="k">extends</span> <span class="nx">App</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">(</span><span class="s1">&#39;myapp&#39;</span><span class="p">);</span>
+
+            <span class="cm">/* @var IEventDispatcher $eventDispatcher */</span>
+            <span class="nv">$dispatcher</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getContainer</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="nx">IEventDispatcher</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+            <span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">addServiceListener</span><span class="p">(</span><span class="nx">AddEvent</span><span class="o">::</span><span class="na">class</span><span class="p">,</span> <span class="nx">AddTwoListener</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The listener is resolved via the DI container, therefore you can add a constructor and type-hint services required for processing the event.</p>
+</div>
+</div>
+</div>
+<div class="section" id="available-events">
+<h3>Available Events<a class="headerlink" href="#available-events" title="Permalink to this headline">¶</a></h3>
+<p>Here you find an overview of the public events that can be consumed in apps. See their source files for more details.</p>
+<div class="section" id="oca-files-event-loadadditionalscriptsevent">
+<h4><code class="docutils literal"><span class="pre">\OCA\Files\Event\LoadAdditionalScriptsEvent</span></code><a class="headerlink" href="#oca-files-event-loadadditionalscriptsevent" title="Permalink to this headline">¶</a></h4>
+<p><em>Available in Nextcloud 17 and later.</em></p>
+<p>This event is triggered when the files app is rendered. It canb e used to add additional scripts to the files app.</p>
+</div>
+<div class="section" id="oca-viewer-event-loadviewer">
+<h4><code class="docutils literal"><span class="pre">\OCA\Viewer\Event\LoadViewer</span></code><a class="headerlink" href="#oca-viewer-event-loadviewer" title="Permalink to this headline">¶</a></h4>
+<p><em>Available in Nextcloud 17 and later.</em></p>
+<p>This event is triggered whenever the viewer is loaded and extensions should be loaded.</p>
+</div>
+<div class="section" id="ocp-directediting-registerdirecteditorevent">
+<h4><code class="docutils literal"><span class="pre">\OCP\DirectEditing\RegisterDirectEditorEvent</span></code><a class="headerlink" href="#ocp-directediting-registerdirecteditorevent" title="Permalink to this headline">¶</a></h4>
+<p><em>Available in Nextcloud 18 and later.</em></p>
+<p>Event to allow to register the direct editor.</p>
+</div>
+<div class="section" id="ocp-files-events-beforefilescannedevent">
+<h4><code class="docutils literal"><span class="pre">\OCP\Files\Events\BeforeFileScannedEvent</span></code><a class="headerlink" href="#ocp-files-events-beforefilescannedevent" title="Permalink to this headline">¶</a></h4>
+<p><em>Available in Nextcloud 18 and later.</em></p>
+</div>
+<div class="section" id="ocp-files-events-beforefolderscannedevent">
+<h4><code class="docutils literal"><span class="pre">\OCP\Files\Events\BeforeFolderScannedEvent</span></code><a class="headerlink" href="#ocp-files-events-beforefolderscannedevent" title="Permalink to this headline">¶</a></h4>
+<p><em>Available in Nextcloud 18 and later.</em></p>
+</div>
+<div class="section" id="ocp-files-events-filecacheupdated">
+<h4><code class="docutils literal"><span class="pre">\OCP\Files\Events\FileCacheUpdated</span></code><a class="headerlink" href="#ocp-files-events-filecacheupdated" title="Permalink to this headline">¶</a></h4>
+<p><em>Available in Nextcloud 18 and later.</em></p>
+</div>
+<div class="section" id="ocp-files-events-filescannedevent">
+<h4><code class="docutils literal"><span class="pre">\OCP\Files\Events\FileScannedEvent</span></code><a class="headerlink" href="#ocp-files-events-filescannedevent" title="Permalink to this headline">¶</a></h4>
+<p><em>Available in Nextcloud 18 and later.</em></p>
+</div>
+<div class="section" id="ocp-files-events-folderscannedevent">
+<h4><code class="docutils literal"><span class="pre">\OCP\Files\Events\FolderScannedEvent</span></code><a class="headerlink" href="#ocp-files-events-folderscannedevent" title="Permalink to this headline">¶</a></h4>
+<p><em>Available in Nextcloud 18 and later.</em></p>
+</div>
+<div class="section" id="ocp-files-events-nodeaddedtocache">
+<h4><code class="docutils literal"><span class="pre">\OCP\Files\Events\NodeAddedToCache</span></code><a class="headerlink" href="#ocp-files-events-nodeaddedtocache" title="Permalink to this headline">¶</a></h4>
+<p><em>Available in Nextcloud 18 and later.</em></p>
+</div>
+<div class="section" id="ocp-files-events-noderemovedfromcache">
+<h4><code class="docutils literal"><span class="pre">\OCP\Files\Events\NodeRemovedFromCache</span></code><a class="headerlink" href="#ocp-files-events-noderemovedfromcache" title="Permalink to this headline">¶</a></h4>
+<p><em>Available in Nextcloud 18 and later.</em></p>
+</div>
+<div class="section" id="ocp-group-events-beforegroupcreatedevent">
+<h4><code class="docutils literal"><span class="pre">\OCP\Group\Events\BeforeGroupCreatedEvent</span></code><a class="headerlink" href="#ocp-group-events-beforegroupcreatedevent" title="Permalink to this headline">¶</a></h4>
+<p><em>Available in Nextcloud 18 and later.</em></p>
+</div>
+<div class="section" id="ocp-group-events-beforegroupdeletedevent">
+<h4><code class="docutils literal"><span class="pre">\OCP\Group\Events\BeforeGroupDeletedEvent</span></code><a class="headerlink" href="#ocp-group-events-beforegroupdeletedevent" title="Permalink to this headline">¶</a></h4>
+<p><em>Available in Nextcloud 18 and later.</em></p>
+</div>
+<div class="section" id="ocp-group-events-beforeuseraddedevent">
+<h4><code class="docutils literal"><span class="pre">\OCP\Group\Events\BeforeUserAddedEvent</span></code><a class="headerlink" href="#ocp-group-events-beforeuseraddedevent" title="Permalink to this headline">¶</a></h4>
+<p><em>Available in Nextcloud 18 and later.</em></p>
+</div>
+<div class="section" id="ocp-group-events-beforeuserremovedevent">
+<h4><code class="docutils literal"><span class="pre">\OCP\Group\Events\BeforeUserRemovedEvent</span></code><a class="headerlink" href="#ocp-group-events-beforeuserremovedevent" title="Permalink to this headline">¶</a></h4>
+<p><em>Available in Nextcloud 18 and later.</em></p>
+<p>Deprecated in 20.0.0 - it can&#8217;t be guaranteed that this event is triggered in all case (e.g. for LDAP users this isn&#8217;t possible)</p>
+</div>
+<div class="section" id="ocp-group-events-groupcreatedevent">
+<h4><code class="docutils literal"><span class="pre">\OCP\Group\Events\GroupCreatedEvent</span></code><a class="headerlink" href="#ocp-group-events-groupcreatedevent" title="Permalink to this headline">¶</a></h4>
+<p><em>Available in Nextcloud 18 and later.</em></p>
+</div>
+<div class="section" id="ocp-group-events-groupdeletedevent">
+<h4><code class="docutils literal"><span class="pre">\OCP\Group\Events\GroupDeletedEvent</span></code><a class="headerlink" href="#ocp-group-events-groupdeletedevent" title="Permalink to this headline">¶</a></h4>
+<p><em>Available in Nextcloud 18 and later.</em></p>
+</div>
+<div class="section" id="ocp-group-events-useraddedevent">
+<h4><code class="docutils literal"><span class="pre">\OCP\Group\Events\UserAddedEvent</span></code><a class="headerlink" href="#ocp-group-events-useraddedevent" title="Permalink to this headline">¶</a></h4>
+<p><em>Available in Nextcloud 18 and later.</em></p>
+</div>
+<div class="section" id="ocp-group-events-userremovedevent">
+<h4><code class="docutils literal"><span class="pre">\OCP\Group\Events\UserRemovedEvent</span></code><a class="headerlink" href="#ocp-group-events-userremovedevent" title="Permalink to this headline">¶</a></h4>
+<p><em>Available in Nextcloud 18 and later.</em></p>
+</div>
+<div class="section" id="ocp-security-csp-addcontentsecuritypolicyevent">
+<h4><code class="docutils literal"><span class="pre">\OCP\Security\CSP\AddContentSecurityPolicyEvent</span></code><a class="headerlink" href="#ocp-security-csp-addcontentsecuritypolicyevent" title="Permalink to this headline">¶</a></h4>
+<p><em>Available in Nextcloud 17 and later.</em></p>
+<p>Allows to inject something into the default content policy. This is for example useful when you&#8217;re injecting Javascript code into a view belonging to another controller and cannot modify its Content-Security-Policy itself. Note that the adjustment is only applied to applications that use AppFramework controllers.</p>
+<p>WARNING: Using this API incorrectly may make the instance more insecure. Do think twice before adding whitelisting resources. Please do also note that it is not possible to use the <cite>disallowXYZ</cite> functions.</p>
+</div>
+<div class="section" id="ocp-security-events-generatesecurepasswordevent">
+<h4><code class="docutils literal"><span class="pre">\OCP\Security\Events\GenerateSecurePasswordEvent</span></code><a class="headerlink" href="#ocp-security-events-generatesecurepasswordevent" title="Permalink to this headline">¶</a></h4>
+<p><em>Available in Nextcloud 18 and later.</em></p>
+</div>
+<div class="section" id="ocp-security-events-validatepasswordpolicyevent">
+<h4><code class="docutils literal"><span class="pre">\OCP\Security\Events\ValidatePasswordPolicyEvent</span></code><a class="headerlink" href="#ocp-security-events-validatepasswordpolicyevent" title="Permalink to this headline">¶</a></h4>
+<p><em>Available in Nextcloud 18 and later.</em></p>
+</div>
+<div class="section" id="ocp-security-featurepolicy-addfeaturepolicyevent">
+<h4><code class="docutils literal"><span class="pre">\OCP\Security\FeaturePolicy\AddFeaturePolicyEvent</span></code><a class="headerlink" href="#ocp-security-featurepolicy-addfeaturepolicyevent" title="Permalink to this headline">¶</a></h4>
+<p><em>Available in Nextcloud 17 and later.</em></p>
+<p>Event that allows to register a feature policy header to a request.</p>
+</div>
+<div class="section" id="ocp-share-events-sharecreatedevent">
+<h4><code class="docutils literal"><span class="pre">\OCP\Share\Events\ShareCreatedEvent</span></code><a class="headerlink" href="#ocp-share-events-sharecreatedevent" title="Permalink to this headline">¶</a></h4>
+<p><em>Available in Nextcloud 18 and later.</em></p>
+</div>
+<div class="section" id="ocp-user-events-beforeuserloggedinwithcookieevent">
+<h4><code class="docutils literal"><span class="pre">\OCP\User\Events\BeforeUserLoggedInWithCookieEvent</span></code><a class="headerlink" href="#ocp-user-events-beforeuserloggedinwithcookieevent" title="Permalink to this headline">¶</a></h4>
+<p><em>Available in Nextcloud 18 and later.</em></p>
+<p>Emitted before a user is logged in via remember-me cookies.</p>
+</div>
+<div class="section" id="ocp-user-events-userloggedinwithcookieevent">
+<h4><code class="docutils literal"><span class="pre">\OCP\User\Events\UserLoggedInWithCookieEvent</span></code><a class="headerlink" href="#ocp-user-events-userloggedinwithcookieevent" title="Permalink to this headline">¶</a></h4>
+<p><em>Available in Nextcloud 18 and later.</em></p>
+<p>Emitted when a user has been succesfully logged in via remember-me cookies.</p>
+</div>
+<div class="section" id="ocp-user-events-beforepasswordupdatedevent">
+<h4><code class="docutils literal"><span class="pre">\OCP\User\Events\BeforePasswordUpdatedEvent</span></code><a class="headerlink" href="#ocp-user-events-beforepasswordupdatedevent" title="Permalink to this headline">¶</a></h4>
+<p><em>Available in Nextcloud 18 and later.</em></p>
+<p>Emitted before the user password is updated.</p>
+</div>
+<div class="section" id="ocp-user-events-passwordupdatedevent">
+<h4><code class="docutils literal"><span class="pre">\OCP\User\Events\PasswordUpdatedEvent</span></code><a class="headerlink" href="#ocp-user-events-passwordupdatedevent" title="Permalink to this headline">¶</a></h4>
+<p><em>Available in Nextcloud 18 and later.</em></p>
+<p>Emitted when the user password has been updated.</p>
+</div>
+<div class="section" id="ocp-user-events-beforeusercreatedevent">
+<h4><code class="docutils literal"><span class="pre">\OCP\User\Events\BeforeUserCreatedEvent</span></code><a class="headerlink" href="#ocp-user-events-beforeusercreatedevent" title="Permalink to this headline">¶</a></h4>
+<p><em>Available in Nextcloud 18 and later.</em></p>
+<p>Emitted before a new user is created on the back-end.</p>
+</div>
+<div class="section" id="ocp-user-events-usercreatedevent">
+<h4><code class="docutils literal"><span class="pre">\OCP\User\Events\UserCreatedEvent</span></code><a class="headerlink" href="#ocp-user-events-usercreatedevent" title="Permalink to this headline">¶</a></h4>
+<p><em>Available in Nextcloud 18 and later.</em></p>
+<p>Emitted when a new user has been created on the back-end.</p>
+</div>
+<div class="section" id="ocp-user-events-beforeuserdeletedevent">
+<h4><code class="docutils literal"><span class="pre">\OCP\User\Events\BeforeUserDeletedEvent</span></code><a class="headerlink" href="#ocp-user-events-beforeuserdeletedevent" title="Permalink to this headline">¶</a></h4>
+<p><em>Available in Nextcloud 18 and later.</em></p>
+</div>
+<div class="section" id="ocp-user-events-userdeletedevent">
+<h4><code class="docutils literal"><span class="pre">\OCP\User\Events\UserDeletedEvent</span></code><a class="headerlink" href="#ocp-user-events-userdeletedevent" title="Permalink to this headline">¶</a></h4>
+<p><em>Available in Nextcloud 18 and later.</em></p>
+</div>
+<div class="section" id="ocp-user-events-beforeuserloggedinevent">
+<h4><code class="docutils literal"><span class="pre">\OCP\User\Events\BeforeUserLoggedInEvent</span></code><a class="headerlink" href="#ocp-user-events-beforeuserloggedinevent" title="Permalink to this headline">¶</a></h4>
+<p><em>Available in Nextcloud 18 and later.</em></p>
+</div>
+<div class="section" id="ocp-user-events-beforeuserloggedoutevent">
+<h4><code class="docutils literal"><span class="pre">\OCP\User\Events\BeforeUserLoggedOutEvent</span></code><a class="headerlink" href="#ocp-user-events-beforeuserloggedoutevent" title="Permalink to this headline">¶</a></h4>
+<p><em>Available in Nextcloud 18 and later.</em></p>
+<p>Emitted before a user is logged out.</p>
+</div>
+<div class="section" id="ocp-user-events-createuserevent">
+<h4><code class="docutils literal"><span class="pre">\OCP\User\Events\CreateUserEvent</span></code><a class="headerlink" href="#ocp-user-events-createuserevent" title="Permalink to this headline">¶</a></h4>
+<p><em>Available in Nextcloud 18 and later.</em></p>
+</div>
+<div class="section" id="ocp-user-events-postloginevent">
+<h4><code class="docutils literal"><span class="pre">\OCP\User\Events\PostLoginEvent</span></code><a class="headerlink" href="#ocp-user-events-postloginevent" title="Permalink to this headline">¶</a></h4>
+<p><em>Available in Nextcloud 18 and later.</em></p>
+</div>
+<div class="section" id="ocp-user-events-userchangedevent">
+<h4><code class="docutils literal"><span class="pre">\OCP\User\Events\UserChangedEvent</span></code><a class="headerlink" href="#ocp-user-events-userchangedevent" title="Permalink to this headline">¶</a></h4>
+<p><em>Available in Nextcloud 18 and later.</em></p>
+</div>
+<div class="section" id="ocp-user-events-userloggedinevent">
+<h4><code class="docutils literal"><span class="pre">\OCP\User\Events\UserLoggedInEvent</span></code><a class="headerlink" href="#ocp-user-events-userloggedinevent" title="Permalink to this headline">¶</a></h4>
+<p><em>Available in Nextcloud 18 and later.</em></p>
+</div>
+<div class="section" id="ocp-user-events-userloggedoutevent">
+<h4><code class="docutils literal"><span class="pre">\OCP\User\Events\UserLoggedOutEvent</span></code><a class="headerlink" href="#ocp-user-events-userloggedoutevent" title="Permalink to this headline">¶</a></h4>
+<p><em>Available in Nextcloud 18 and later.</em></p>
+<p>Emitted when a user has been logged out successfully.</p>
+</div>
+<div class="section" id="ocp-workflowengine-registerchecksevent">
+<h4><code class="docutils literal"><span class="pre">\OCP\WorkflowEngine\RegisterChecksEvent</span></code><a class="headerlink" href="#ocp-workflowengine-registerchecksevent" title="Permalink to this headline">¶</a></h4>
+<p><em>Available in Nextcloud 18 and later.</em></p>
+</div>
+<div class="section" id="ocp-workflowengine-registerentitiesevent">
+<h4><code class="docutils literal"><span class="pre">\OCP\WorkflowEngine\RegisterEntitiesEvent</span></code><a class="headerlink" href="#ocp-workflowengine-registerentitiesevent" title="Permalink to this headline">¶</a></h4>
+<p><em>Available in Nextcloud 18 and later.</em></p>
+</div>
+<div class="section" id="ocp-workflowengine-registeroperationsevent">
+<h4><code class="docutils literal"><span class="pre">\OCP\WorkflowEngine\RegisterOperationsEvent</span></code><a class="headerlink" href="#ocp-workflowengine-registeroperationsevent" title="Permalink to this headline">¶</a></h4>
+<p><em>Available in Nextcloud 18 and later.</em></p>
+</div>
+</div>
+</div>
+<div class="section" id="symfony-event-dispatcher">
+<h2>Symfony event dispatcher<a class="headerlink" href="#symfony-event-dispatcher" title="Permalink to this headline">¶</a></h2>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Using the Symfony event dispatcher mechanism is discouraged. Use the <a class="reference internal" href="#ocp-event-dispatcher">OCP event dispatcher</a> abstraction instead.</p>
+</div>
+<p>tbd</p>
+</div>
+<div class="section" id="hooks">
+<h2>Hooks<a class="headerlink" href="#hooks" title="Permalink to this headline">¶</a></h2>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">The hooks mechanism is deprecated. Use the <a class="reference internal" href="#ocp-event-dispatcher">OCP event dispatcher</a> instead.</p>
+</div>
+<p>Hooks are used to execute code before or after an event has occurred. This is for instance useful to run cleanup code after users, groups or files have been deleted. Hooks should be registered in the <a class="reference internal" href="init.html"><span class="doc">app.php</span></a>:</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="k">namespace</span> <span class="nx">OCA\MyApp\AppInfo</span><span class="p">;</span>
+
+<span class="nv">$app</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Application</span><span class="p">();</span>
+<span class="nv">$app</span><span class="o">-&gt;</span><span class="na">getContainer</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="s1">&#39;UserHooks&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">register</span><span class="p">();</span>
+</pre></div>
+</div>
+<p>The hook logic should be in a separate class that is being registered in the <a class="reference internal" href="requests/container.html"><span class="doc">Container</span></a>:</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">OCA\MyApp\AppInfo</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">\OCP\AppFramework\App</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">\OCA\MyApp\Hooks\UserHooks</span><span class="p">;</span>
+
+
+<span class="k">class</span> <span class="nc">Application</span> <span class="k">extends</span> <span class="nx">App</span> <span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="k">array</span> <span class="nv">$urlParams</span><span class="o">=</span><span class="k">array</span><span class="p">()){</span>
+        <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">(</span><span class="s1">&#39;myapp&#39;</span><span class="p">,</span> <span class="nv">$urlParams</span><span class="p">);</span>
+
+        <span class="nv">$container</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getContainer</span><span class="p">();</span>
+
+        <span class="sd">/**</span>
+<span class="sd">         * Controllers</span>
+<span class="sd">         */</span>
+        <span class="nv">$container</span><span class="o">-&gt;</span><span class="na">registerService</span><span class="p">(</span><span class="s1">&#39;UserHooks&#39;</span><span class="p">,</span> <span class="k">function</span><span class="p">(</span><span class="nv">$c</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="k">new</span> <span class="nx">UserHooks</span><span class="p">(</span>
+                <span class="nv">$c</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="s1">&#39;ServerContainer&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">getUserManager</span><span class="p">()</span>
+            <span class="p">);</span>
+        <span class="p">});</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+
+<span class="k">namespace</span> <span class="nx">OCA\MyApp\Hooks</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCP\IUserManager</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">UserHooks</span> <span class="p">{</span>
+
+    <span class="k">private</span> <span class="nv">$userManager</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">IUserManager</span> <span class="nv">$userManager</span><span class="p">){</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">userManager</span> <span class="o">=</span> <span class="nv">$userManager</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">register</span><span class="p">()</span> <span class="p">{</span>
+        <span class="nv">$callback</span> <span class="o">=</span> <span class="k">function</span><span class="p">(</span><span class="nv">$user</span><span class="p">)</span> <span class="p">{</span>
+            <span class="c1">// your code that executes before $user is deleted</span>
+        <span class="p">};</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">userManager</span><span class="o">-&gt;</span><span class="na">listen</span><span class="p">(</span><span class="s1">&#39;\OC\User&#39;</span><span class="p">,</span> <span class="s1">&#39;preDelete&#39;</span><span class="p">,</span> <span class="nv">$callback</span><span class="p">);</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The scope is the first parameter that is passed to the <strong>listen</strong> method, the second parameter is the method and the third one the callback that should be executed once the hook is being called, e.g.:</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+
+<span class="c1">// listen on user predelete</span>
+<span class="nv">$callback</span> <span class="o">=</span> <span class="k">function</span><span class="p">(</span><span class="nv">$user</span><span class="p">)</span> <span class="p">{</span>
+    <span class="c1">// your code that executes before $user is deleted</span>
+<span class="p">};</span>
+<span class="nv">$userManager</span><span class="o">-&gt;</span><span class="na">listen</span><span class="p">(</span><span class="s1">&#39;\OC\User&#39;</span><span class="p">,</span> <span class="s1">&#39;preDelete&#39;</span><span class="p">,</span> <span class="nv">$callback</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>Hooks can also be removed by using the <strong>removeListener</strong> method on the object:</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+
+<span class="c1">// delete previous callback</span>
+<span class="nv">$userManager</span><span class="o">-&gt;</span><span class="na">removeListener</span><span class="p">(</span><span class="k">null</span><span class="p">,</span> <span class="k">null</span><span class="p">,</span> <span class="nv">$callback</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>The following hooks are available:</p>
+<p>Injectable from the ServerContainer by calling the method <strong>getUserSession()</strong>.</p>
+<p>Hooks available in scope <strong>\OC\User</strong>:</p>
+<ul class="simple">
+<li><strong>preSetPassword</strong> (\OC\User\User $user, string $password, string $recoverPassword)</li>
+<li><strong>postSetPassword</strong> (\OC\User\User $user, string $password, string $recoverPassword)</li>
+<li><strong>changeUser</strong> (\OC\User\User $user, string $feature, string $value)</li>
+<li><strong>preDelete</strong> (\OC\User\User $user)</li>
+<li><strong>postDelete</strong> (\OC\User\User $user)</li>
+<li><strong>preCreateUser</strong> (string $uid, string $password)</li>
+<li><strong>postCreateUser</strong> (\OC\User\User $user)</li>
+<li><strong>preLogin</strong> (string $user, string $password)</li>
+<li><strong>postLogin</strong> (\OC\User\User $user, string $password)</li>
+<li><strong>logout</strong> ()</li>
+</ul>
+<p>Injectable from the ServerContainer by calling the method <strong>getUserManager()</strong>.</p>
+<p>Hooks available in scope <strong>\OC\User</strong>:</p>
+<ul class="simple">
+<li><strong>preSetPassword</strong> (\OC\User\User $user, string $password, string $recoverPassword)</li>
+<li><strong>postSetPassword</strong> (\OC\User\User $user, string $password, string $recoverPassword)</li>
+<li><strong>preDelete</strong> (\OC\User\User $user)</li>
+<li><strong>postDelete</strong> (\OC\User\User $user)</li>
+<li><strong>preCreateUser</strong> (string $uid, string $password)</li>
+<li><strong>postCreateUser</strong> (\OC\User\User $user, string $password)</li>
+</ul>
+<div class="section" id="groupmanager">
+<h3>GroupManager<a class="headerlink" href="#groupmanager" title="Permalink to this headline">¶</a></h3>
+<p>Hooks available in scope <strong>\OC\Group</strong>:</p>
+<ul class="simple">
+<li><strong>preAddUser</strong> (\OC\Group\Group $group, \OC\User\User $user)</li>
+<li><strong>postAddUser</strong> (\OC\Group\Group $group, \OC\User\User $user)</li>
+<li><strong>preRemoveUser</strong> (\OC\Group\Group $group, \OC\User\User $user)</li>
+<li><strong>postRemoveUser</strong> (\OC\Group\Group $group, \OC\User\User $user)</li>
+<li><strong>preDelete</strong> (\OC\Group\Group $group)</li>
+<li><strong>postDelete</strong> (\OC\Group\Group $group)</li>
+<li><strong>preCreate</strong> (string $groupId)</li>
+<li><strong>postCreate</strong> (\OC\Group\Group $group)</li>
+</ul>
+</div>
+<div class="section" id="filesystem-root">
+<h3>Filesystem root<a class="headerlink" href="#filesystem-root" title="Permalink to this headline">¶</a></h3>
+<p>Injectable from the ServerContainer by calling the method <strong>getRootFolder()</strong>, <strong>getUserFolder()</strong> or <strong>getAppFolder()</strong>.</p>
+<p>To enable these events for your app you should add the following to your <cite>info.xml</cite> file:</p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="nt">&lt;types&gt;</span>
+    <span class="nt">&lt;filesystem/&gt;</span>
+<span class="nt">&lt;/types&gt;</span>
+</pre></div>
+</div>
+<p>Filesystem hooks available in scope <strong>\OC\Files</strong>:</p>
+<ul class="simple">
+<li><strong>preWrite</strong> (\OCP\Files\Node $node)</li>
+<li><strong>postWrite</strong> (\OCP\Files\Node $node)</li>
+<li><strong>preCreate</strong> (\OCP\Files\Node $node)</li>
+<li><strong>postCreate</strong> (\OCP\Files\Node $node)</li>
+<li><strong>preDelete</strong> (\OCP\Files\Node $node)</li>
+<li><strong>postDelete</strong> (\OCP\Files\Node $node)</li>
+<li><strong>preTouch</strong> (\OCP\Files\Node $node, int $mtime)</li>
+<li><strong>postTouch</strong> (\OCP\Files\Node $node)</li>
+<li><strong>preCopy</strong> (\OCP\Files\Node $source, \OCP\Files\Node $target)</li>
+<li><strong>postCopy</strong> (\OCP\Files\Node $source, \OCP\Files\Node $target)</li>
+<li><strong>preRename</strong> (\OCP\Files\Node $source, \OCP\Files\Node $target)</li>
+<li><strong>postRename</strong> (\OCP\Files\Node $source, \OCP\Files\Node $target)</li>
+</ul>
+</div>
+<div class="section" id="filesystem-scanner">
+<h3>Filesystem scanner<a class="headerlink" href="#filesystem-scanner" title="Permalink to this headline">¶</a></h3>
+<p>Filesystem scanner hooks available in scope <strong>\OC\Files\Utils\Scanner</strong>:</p>
+<ul class="simple">
+<li><strong>scanFile</strong> (string $absolutePath)</li>
+<li><strong>scanFolder</strong> (string $absolutePath)</li>
+<li><strong>postScanFile</strong> (string $absolutePath)</li>
+<li><strong>postScanFolder</strong> (string $absolutePath)</li>
+</ul>
+</div>
+</div>
+<div class="section" id="public-emitter">
+<h2>Public emitter<a class="headerlink" href="#public-emitter" title="Permalink to this headline">¶</a></h2>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">The public emitter mechanism is deprecated. Use the <a class="reference internal" href="#ocp-event-dispatcher">OCP event dispatcher</a> instead.</p>
+</div>
+<p>tbd</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="backgroundjobs.html" class="btn btn-neutral float-right" title="Background jobs (Cron)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="two-factor-provider.html" class="btn btn-neutral float-left" title="Two-factor providers" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021 Nextcloud GmbH.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/16/developer_manual">16</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/17/developer_manual">17</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/18/developer_manual">18</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/19/developer_manual">19</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/developer_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/developer_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+   
+
+</body>
+</html>

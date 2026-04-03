@@ -1,0 +1,88 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+TimedJob
+========
+
+
+.. php:namespace:: OCP\BackgroundJob
+
+.. rst-class::  abstract
+
+.. php:class:: TimedJob
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Simple base class to extend to run periodic background jobs\.
+		
+		| Call setInterval with your desired interval in seconds from the constructor\.
+		
+	
+	:Source:
+		`lib/public/BackgroundJob/TimedJob.php#38 <https://github.com/nextcloud/server/blob/stable13/lib/public/BackgroundJob/TimedJob.php#L38>`_
+	
+	:Parent:
+		:php:class:`OCP\\BackgroundJob\\Job`
+	
+
+Properties
+----------
+
+.. php:attr:: protected static interval
+
+	:Source:
+		`lib/public/BackgroundJob/TimedJob.php#40 <https://github.com/nextcloud/server/blob/stable13/lib/public/BackgroundJob/TimedJob.php#L40>`_
+	
+	:Type: int 
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public setInterval( $seconds)
+	
+		.. rst-class:: phpdoc-description
+		
+			| set the interval for the job
+			
+		
+		:Source:
+			`lib/public/BackgroundJob/TimedJob.php#49 <https://github.com/nextcloud/server/blob/stable13/lib/public/BackgroundJob/TimedJob.php#L49>`_
+		
+		
+		:Parameters:
+			* **$seconds** (int)  the time to pass between two runs of the same job in seconds
+
+		
+		:Since: 15.0.0 
+	
+	
+
+.. rst-class:: public final
+
+	.. php:method:: public final execute( $jobList, $logger=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| run the job if the last run is is more than the interval ago
+			
+		
+		:Source:
+			`lib/public/BackgroundJob/TimedJob.php#61 <https://github.com/nextcloud/server/blob/stable13/lib/public/BackgroundJob/TimedJob.php#L61>`_
+		
+		
+		:Parameters:
+			* **$jobList** (:any:`OC\\BackgroundJob\\JobList <OC\\BackgroundJob\\JobList>`)  
+			* **$logger** (:any:`OCP\\ILogger <OCP\\ILogger>` | null)  
+
+		
+		:Since: 15.0.0 
+	
+	
+

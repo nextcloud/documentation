@@ -1,0 +1,324 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+Flysystem
+=========
+
+
+.. php:namespace:: OC\Files\Storage
+
+.. rst-class::  abstract
+
+.. php:class:: Flysystem
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Generic adapter between flysystem adapters and owncloud\'s storage system
+		
+		| To use: subclass and call $this\-\>buildFlysystem with the flysystem adapter of choice
+		
+	
+	:Source:
+		`lib/private/Files/Storage/Flysystem.php#40 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Flysystem.php#L40>`_
+	
+	:Parent:
+		:php:class:`OC\\Files\\Storage\\Common`
+	
+
+Properties
+----------
+
+.. php:attr:: protected static flysystem
+
+	:Source:
+		`lib/private/Files/Storage/Flysystem.php#44 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Flysystem.php#L44>`_
+	
+	:Type: :any:`\\League\\Flysystem\\Filesystem <League\\Flysystem\\Filesystem>` 
+
+
+.. php:attr:: protected static root
+
+	:Source:
+		`lib/private/Files/Storage/Flysystem.php#49 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Flysystem.php#L49>`_
+	
+	:Type: string 
+
+
+Methods
+-------
+
+.. rst-class:: protected
+
+	.. php:method:: protected buildFlySystem( $adapter)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Initialize the storage backend with a flyssytem adapter
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Flysystem.php#56 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Flysystem.php#L56>`_
+		
+		
+		:Parameters:
+			* **$adapter** (:any:`League\\Flysystem\\AdapterInterface <League\\Flysystem\\AdapterInterface>`)  
+
+		
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected buildPath( $path)
+	
+		:Source:
+			`lib/private/Files/Storage/Flysystem.php#61 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Flysystem.php#L61>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public file_get_contents( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| \{@inheritdoc\}
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Flysystem.php#69 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Flysystem.php#L69>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public file_put_contents( $path, $data)
+	
+		.. rst-class:: phpdoc-description
+		
+			| \{@inheritdoc\}
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Flysystem.php#76 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Flysystem.php#L76>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public file_exists( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| \{@inheritdoc\}
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Flysystem.php#87 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Flysystem.php#L87>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public unlink( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| \{@inheritdoc\}
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Flysystem.php#94 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Flysystem.php#L94>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public rename( $source, $target)
+	
+		.. rst-class:: phpdoc-description
+		
+			| \{@inheritdoc\}
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Flysystem.php#108 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Flysystem.php#L108>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public copy( $source, $target)
+	
+		.. rst-class:: phpdoc-description
+		
+			| \{@inheritdoc\}
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Flysystem.php#118 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Flysystem.php#L118>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public filesize( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| \{@inheritdoc\}
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Flysystem.php#128 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Flysystem.php#L128>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public mkdir( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| \{@inheritdoc\}
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Flysystem.php#139 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Flysystem.php#L139>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public filemtime( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| \{@inheritdoc\}
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Flysystem.php#149 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Flysystem.php#L149>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public rmdir( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| \{@inheritdoc\}
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Flysystem.php#156 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Flysystem.php#L156>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public opendir( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| \{@inheritdoc\}
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Flysystem.php#167 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Flysystem.php#L167>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public fopen( $path, $mode)
+	
+		.. rst-class:: phpdoc-description
+		
+			| \{@inheritdoc\}
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Flysystem.php#182 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Flysystem.php#L182>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public touch( $path, $mtime=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| \{@inheritdoc\}
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Flysystem.php#231 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Flysystem.php#L231>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public stat( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| \{@inheritdoc\}
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Flysystem.php#243 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Flysystem.php#L243>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public filetype( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| \{@inheritdoc\}
+			
+		
+		:Source:
+			`lib/private/Files/Storage/Flysystem.php#254 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Storage/Flysystem.php#L254>`_
+		
+		
+	
+	
+

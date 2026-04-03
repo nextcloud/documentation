@@ -1,0 +1,356 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Example installation on Ubuntu 18.04 LTS &mdash; Nextcloud latest Administration Manual latest documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'latest',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Example installation on CentOS 8" href="example_centos.html" />
+    <link rel="prev" title="Server tuning" href="server_tuning.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../contents.html">
+          
+
+          
+            
+            <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_schedule.html">Maintenance and release schedule</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Installation and server configuration</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="system_requirements.html">System requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deployment_recommendations.html">Deployment recommendations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="source_installation.html">Installation on Linux</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation_wizard.html">Installation wizard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command_line_installation.html">Installing from command line</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apps_supported.html">Supported apps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="selinux_configuration.html">SELinux configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nginx.html">Nginx configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="harden_server.html">Hardening and security guidance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="server_tuning.html">Server tuning</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Example installation on Ubuntu 18.04 LTS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#next-steps">Next steps</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="example_centos.html">Example installation on CentOS 8</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_server/index.html">Nextcloud configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../apps_management.html">Apps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_user/index.html">User management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_files/index.html">File sharing and management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../file_workflows/index.html">File workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_database/index.html">Database configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_mimetypes/index.html">Mimetypes management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../maintenance/index.html">Maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../issues/index.html">Issues and troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gdpr/index.html">GDPR</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest Administration Manual</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../contents.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Installation and server configuration</a> &raquo;</li>
+        
+      <li>Example installation on Ubuntu 18.04 LTS</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/nextcloud/documentation/edit/master/admin_manual/installation/example_ubuntu.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="example-installation-on-ubuntu-18-04-lts">
+<span id="ubuntu-installation-label"></span><h1>Example installation on Ubuntu 18.04 LTS<a class="headerlink" href="#example-installation-on-ubuntu-18-04-lts" title="Permalink to this headline">¶</a></h1>
+<p>Or you can use .deb packages to install the required and recommended modules for a typical Nextcloud
+installation, using Apache and MariaDB, by issuing the following commands in a
+terminal:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">apache2</span> <span class="n">mariadb</span><span class="o">-</span><span class="n">server</span> <span class="n">libapache2</span><span class="o">-</span><span class="n">mod</span><span class="o">-</span><span class="n">php7</span><span class="o">.</span><span class="mi">2</span>
+<span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">php7</span><span class="o">.</span><span class="mi">2</span><span class="o">-</span><span class="n">gd</span> <span class="n">php7</span><span class="o">.</span><span class="mi">2</span><span class="o">-</span><span class="n">json</span> <span class="n">php7</span><span class="o">.</span><span class="mi">2</span><span class="o">-</span><span class="n">mysql</span> <span class="n">php7</span><span class="o">.</span><span class="mi">2</span><span class="o">-</span><span class="n">curl</span> <span class="n">php7</span><span class="o">.</span><span class="mi">2</span><span class="o">-</span><span class="n">mbstring</span>
+<span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">php7</span><span class="o">.</span><span class="mi">2</span><span class="o">-</span><span class="n">intl</span> <span class="n">php</span><span class="o">-</span><span class="n">imagick</span> <span class="n">php7</span><span class="o">.</span><span class="mi">2</span><span class="o">-</span><span class="n">xml</span> <span class="n">php7</span><span class="o">.</span><span class="mi">2</span><span class="o">-</span><span class="nb">zip</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>This installs the packages for the Nextcloud core system.
+If you are planning on running additional apps, keep in mind that they might require additional
+packages.  See <a class="reference internal" href="source_installation.html#prerequisites-label"><span class="std std-ref">Prerequisites for manual installation</span></a> for details.</li>
+<li>At the installation of the MySQL/MariaDB server, you will be prompted to
+create a root password. Be sure to remember your password as you will need it
+during Nextcloud database setup.</li>
+</ul>
+<p>Now download the archive of the latest Nextcloud version:</p>
+<ul>
+<li><p class="first">Go to the <a class="reference external" href="https://nextcloud.com/install">Nextcloud Download Page</a>.</p>
+</li>
+<li><p class="first">Go to <strong>Download Nextcloud Server &gt; Download &gt; Archive file for
+server owners</strong> and download either the tar.bz2 or .zip archive.</p>
+</li>
+<li><p class="first">This downloads a file named nextcloud-x.y.z.tar.bz2 or nextcloud-x.y.z.zip
+(where x.y.z is the version number).</p>
+</li>
+<li><p class="first">Download its corresponding checksum file, e.g. nextcloud-x.y.z.tar.bz2.md5,
+or nextcloud-x.y.z.tar.bz2.sha256.</p>
+</li>
+<li><p class="first">Verify the MD5 or SHA256 sum:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">md5sum</span> <span class="o">-</span><span class="n">c</span> <span class="n">nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">bz2</span><span class="o">.</span><span class="n">md5</span> <span class="o">&lt;</span> <span class="n">nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">bz2</span>
+<span class="n">sha256sum</span> <span class="o">-</span><span class="n">c</span> <span class="n">nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">bz2</span><span class="o">.</span><span class="n">sha256</span> <span class="o">&lt;</span> <span class="n">nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">bz2</span>
+<span class="n">md5sum</span>  <span class="o">-</span><span class="n">c</span> <span class="n">nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">.</span><span class="n">zip</span><span class="o">.</span><span class="n">md5</span> <span class="o">&lt;</span> <span class="n">nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">.</span><span class="n">zip</span>
+<span class="n">sha256sum</span>  <span class="o">-</span><span class="n">c</span> <span class="n">nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">.</span><span class="n">zip</span><span class="o">.</span><span class="n">sha256</span> <span class="o">&lt;</span> <span class="n">nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">.</span><span class="n">zip</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">You may also verify the PGP signature:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">download</span><span class="o">.</span><span class="n">nextcloud</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">server</span><span class="o">/</span><span class="n">releases</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">bz2</span><span class="o">.</span><span class="n">asc</span>
+<span class="n">wget</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">nextcloud</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">.</span><span class="n">asc</span>
+<span class="n">gpg</span> <span class="o">--</span><span class="kn">import</span> <span class="nn">nextcloud.asc</span>
+<span class="n">gpg</span> <span class="o">--</span><span class="n">verify</span> <span class="n">nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">bz2</span><span class="o">.</span><span class="n">asc</span> <span class="n">nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">bz2</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">Now you can extract the archive contents. Run the appropriate unpacking
+command for your archive type:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">tar</span> <span class="o">-</span><span class="n">xjf</span> <span class="n">nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">.</span><span class="n">tar</span><span class="o">.</span><span class="n">bz2</span>
+<span class="n">unzip</span> <span class="n">nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">.</span><span class="n">zip</span>
+</pre></div>
+</div>
+</li>
+<li><p class="first">This unpacks to a single <code class="docutils literal"><span class="pre">nextcloud</span></code> directory. Copy the Nextcloud directory
+to its final destination. When you are running the Apache HTTP server you may
+safely install Nextcloud in your Apache document root:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cp</span> <span class="o">-</span><span class="n">r</span> <span class="n">nextcloud</span> <span class="o">/</span><span class="n">path</span><span class="o">/</span><span class="n">to</span><span class="o">/</span><span class="n">webserver</span><span class="o">/</span><span class="n">document</span><span class="o">-</span><span class="n">root</span>
+</pre></div>
+</div>
+<p>where <code class="docutils literal"><span class="pre">/path/to/webserver/document-root</span></code> is replaced by the
+document root of your Web server:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cp</span> <span class="o">-</span><span class="n">r</span> <span class="n">nextcloud</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<p>On other HTTP servers it is recommended to install Nextcloud outside of the
+document root.</p>
+<div class="section" id="next-steps">
+<h2>Next steps<a class="headerlink" href="#next-steps" title="Permalink to this headline">¶</a></h2>
+<p>After installing the prerequisites and extracting the nextcloud directory, you should follow the instructions for Apache configuration at <a class="reference internal" href="source_installation.html#apache-configuration-label"><span class="std std-ref">Apache Web server configuration</span></a>. Once Apache is installed, you can optionally follow the <a class="reference internal" href="source_installation.html"><span class="doc">Installation on Linux</span></a> guide from <a class="reference internal" href="source_installation.html#pretty-urls-label"><span class="std std-ref">Pretty URLs</span></a> until <a class="reference internal" href="source_installation.html#other-http-servers-label"><span class="std std-ref">Other Web servers</span></a></p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="example_centos.html" class="btn btn-neutral float-right" title="Example installation on CentOS 8" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="server_tuning.html" class="btn btn-neutral float-left" title="Server tuning" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021 Nextcloud GmbH.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/16/admin_manual">16</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/17/admin_manual">17</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/18/admin_manual">18</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/19/admin_manual">19</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/admin_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/admin_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+   
+
+</body>
+</html>

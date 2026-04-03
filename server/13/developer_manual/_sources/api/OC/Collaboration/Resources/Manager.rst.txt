@@ -1,0 +1,458 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+Manager
+=======
+
+
+.. php:namespace:: OC\Collaboration\Resources
+
+.. php:class:: Manager
+
+
+	:Source:
+		`lib/private/Collaboration/Resources/Manager.php#44 <https://github.com/nextcloud/server/blob/stable13/lib/private/Collaboration/Resources/Manager.php#L44>`_
+	
+	:Implements:
+		:php:interface:`OCP\\Collaboration\\Resources\\IManager` 
+	
+
+Constants
+---------
+
+.. php:const:: TABLE_COLLECTIONS = collres\_collections
+
+	:Source:
+		`lib/private/Collaboration/Resources/Manager.php#45 <https://github.com/nextcloud/server/blob/stable13/lib/private/Collaboration/Resources/Manager.php#L45>`_
+	
+
+
+.. php:const:: TABLE_RESOURCES = collres\_resources
+
+	:Source:
+		`lib/private/Collaboration/Resources/Manager.php#46 <https://github.com/nextcloud/server/blob/stable13/lib/private/Collaboration/Resources/Manager.php#L46>`_
+	
+
+
+.. php:const:: TABLE_ACCESS_CACHE = collres\_accesscache
+
+	:Source:
+		`lib/private/Collaboration/Resources/Manager.php#47 <https://github.com/nextcloud/server/blob/stable13/lib/private/Collaboration/Resources/Manager.php#L47>`_
+	
+
+
+Properties
+----------
+
+.. php:attr:: protected static connection
+
+	:Source:
+		`lib/private/Collaboration/Resources/Manager.php#50 <https://github.com/nextcloud/server/blob/stable13/lib/private/Collaboration/Resources/Manager.php#L50>`_
+	
+	:Type: :any:`\\OCP\\IDBConnection <OCP\\IDBConnection>` 
+
+
+.. php:attr:: protected static providerManager
+
+	:Source:
+		`lib/private/Collaboration/Resources/Manager.php#52 <https://github.com/nextcloud/server/blob/stable13/lib/private/Collaboration/Resources/Manager.php#L52>`_
+	
+	:Type: :any:`\\OCP\\Collaboration\\Resources\\IProviderManager <OCP\\Collaboration\\Resources\\IProviderManager>` 
+
+
+.. php:attr:: protected static logger
+
+	:Source:
+		`lib/private/Collaboration/Resources/Manager.php#54 <https://github.com/nextcloud/server/blob/stable13/lib/private/Collaboration/Resources/Manager.php#L54>`_
+	
+	:Type: :any:`\\Psr\\Log\\LoggerInterface <Psr\\Log\\LoggerInterface>` 
+
+
+.. php:attr:: protected static providers
+
+	:Source:
+		`lib/private/Collaboration/Resources/Manager.php#57 <https://github.com/nextcloud/server/blob/stable13/lib/private/Collaboration/Resources/Manager.php#L57>`_
+	
+	:Type: string[] 
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $connection, $providerManager, $logger)
+	
+		:Source:
+			`lib/private/Collaboration/Resources/Manager.php#60 <https://github.com/nextcloud/server/blob/stable13/lib/private/Collaboration/Resources/Manager.php#L60>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getCollection( $id)
+	
+		:Source:
+			`lib/private/Collaboration/Resources/Manager.php#72 <https://github.com/nextcloud/server/blob/stable13/lib/private/Collaboration/Resources/Manager.php#L72>`_
+		
+		
+		:Parameters:
+			* **$id** (int)  
+
+		
+		:Returns: :any:`\\OCP\\Collaboration\\Resources\\ICollection <OCP\\Collaboration\\Resources\\ICollection>` 
+		:Throws: :any:`\\OCP\\Collaboration\\Resources\\CollectionException <OCP\\Collaboration\\Resources\\CollectionException>` when the collection could not be found
+		:Since: 16.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getCollectionForUser( $id, $user)
+	
+		:Source:
+			`lib/private/Collaboration/Resources/Manager.php#95 <https://github.com/nextcloud/server/blob/stable13/lib/private/Collaboration/Resources/Manager.php#L95>`_
+		
+		
+		:Parameters:
+			* **$id** (int)  
+			* **$user** (:any:`OCP\\IUser <OCP\\IUser>` | null)  
+
+		
+		:Returns: :any:`\\OCP\\Collaboration\\Resources\\ICollection <OCP\\Collaboration\\Resources\\ICollection>` 
+		:Throws: :any:`\\OCP\\Collaboration\\Resources\\CollectionException <OCP\\Collaboration\\Resources\\CollectionException>` when the collection could not be found
+		:Since: 16.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public searchCollections( $user, $filter, $limit=50, $start=0)
+	
+		:Source:
+			`lib/private/Collaboration/Resources/Manager.php#133 <https://github.com/nextcloud/server/blob/stable13/lib/private/Collaboration/Resources/Manager.php#L133>`_
+		
+		
+		:Parameters:
+			* **$user** (:any:`OCP\\IUser <OCP\\IUser>`)  
+			* **$filter** (string)  
+			* **$limit** (int)  
+			* **$start** (int)  
+
+		
+		:Returns: :any:`\\OCP\\Collaboration\\Resources\\ICollection\[\] <OCP\\Collaboration\\Resources\\ICollection>` 
+		:Since: 16.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public newCollection( $name)
+	
+		:Source:
+			`lib/private/Collaboration/Resources/Manager.php#181 <https://github.com/nextcloud/server/blob/stable13/lib/private/Collaboration/Resources/Manager.php#L181>`_
+		
+		
+		:Parameters:
+			* **$name** (string)  
+
+		
+		:Returns: :any:`\\OCP\\Collaboration\\Resources\\ICollection <OCP\\Collaboration\\Resources\\ICollection>` 
+		:Since: 16.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public createResource( $type, $id)
+	
+		:Source:
+			`lib/private/Collaboration/Resources/Manager.php#198 <https://github.com/nextcloud/server/blob/stable13/lib/private/Collaboration/Resources/Manager.php#L198>`_
+		
+		
+		:Parameters:
+			* **$type** (string)  
+			* **$id** (string)  
+
+		
+		:Returns: :any:`\\OCP\\Collaboration\\Resources\\IResource <OCP\\Collaboration\\Resources\\IResource>` 
+		:Since: 16.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getResourceForUser( $type, $id, $user)
+	
+		:Source:
+			`lib/private/Collaboration/Resources/Manager.php#210 <https://github.com/nextcloud/server/blob/stable13/lib/private/Collaboration/Resources/Manager.php#L210>`_
+		
+		
+		:Parameters:
+			* **$type** (string)  
+			* **$id** (string)  
+			* **$user** (:any:`OCP\\IUser <OCP\\IUser>` | null)  
+
+		
+		:Returns: :any:`\\OCP\\Collaboration\\Resources\\IResource <OCP\\Collaboration\\Resources\\IResource>` 
+		:Throws: :any:`\\OCP\\Collaboration\\Resources\\ResourceException <OCP\\Collaboration\\Resources\\ResourceException>` 
+		:Since: 16.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getResourcesByCollectionForUser( $collection, $user)
+	
+		:Source:
+			`lib/private/Collaboration/Resources/Manager.php#248 <https://github.com/nextcloud/server/blob/stable13/lib/private/Collaboration/Resources/Manager.php#L248>`_
+		
+		
+		:Parameters:
+			* **$collection** (:any:`OCP\\Collaboration\\Resources\\ICollection <OCP\\Collaboration\\Resources\\ICollection>`)  
+			* **$user** (:any:`OCP\\IUser <OCP\\IUser>` | null)  
+
+		
+		:Returns: :any:`\\OCP\\Collaboration\\Resources\\IResource\[\] <OCP\\Collaboration\\Resources\\IResource>` 
+		:Since: 16.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getResourceRichObject( $resource)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the rich object data of a resource
+			
+		
+		:Source:
+			`lib/private/Collaboration/Resources/Manager.php#282 <https://github.com/nextcloud/server/blob/stable13/lib/private/Collaboration/Resources/Manager.php#L282>`_
+		
+		
+		:Parameters:
+			* **$resource** (:any:`OCP\\Collaboration\\Resources\\IResource <OCP\\Collaboration\\Resources\\IResource>`)  
+
+		
+		:Returns: array 
+		:Since: 16.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public canAccessResource( $resource, $user)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Can a user/guest access the collection
+			
+		
+		:Source:
+			`lib/private/Collaboration/Resources/Manager.php#303 <https://github.com/nextcloud/server/blob/stable13/lib/private/Collaboration/Resources/Manager.php#L303>`_
+		
+		
+		:Parameters:
+			* **$resource** (:any:`OCP\\Collaboration\\Resources\\IResource <OCP\\Collaboration\\Resources\\IResource>`)  
+			* **$user** (:any:`OCP\\IUser <OCP\\IUser>` | null)  
+
+		
+		:Returns: bool 
+		:Since: 16.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public canAccessCollection( $collection, $user)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Can a user/guest access the collection
+			
+		
+		:Source:
+			`lib/private/Collaboration/Resources/Manager.php#334 <https://github.com/nextcloud/server/blob/stable13/lib/private/Collaboration/Resources/Manager.php#L334>`_
+		
+		
+		:Parameters:
+			* **$collection** (:any:`OCP\\Collaboration\\Resources\\ICollection <OCP\\Collaboration\\Resources\\ICollection>`)  
+			* **$user** (:any:`OCP\\IUser <OCP\\IUser>` | null)  
+
+		
+		:Returns: bool 
+		:Since: 16.0.0 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected checkAccessCacheForUserByResource( $resource, $user)
+	
+		:Source:
+			`lib/private/Collaboration/Resources/Manager.php#355 <https://github.com/nextcloud/server/blob/stable13/lib/private/Collaboration/Resources/Manager.php#L355>`_
+		
+		
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected checkAccessCacheForUserByCollection( $collection, $user)
+	
+		:Source:
+			`lib/private/Collaboration/Resources/Manager.php#376 <https://github.com/nextcloud/server/blob/stable13/lib/private/Collaboration/Resources/Manager.php#L376>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public cacheAccessForResource( $resource, $user, $access)
+	
+		:Source:
+			`lib/private/Collaboration/Resources/Manager.php#396 <https://github.com/nextcloud/server/blob/stable13/lib/private/Collaboration/Resources/Manager.php#L396>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public cacheAccessForCollection( $collection, $user, $access)
+	
+		:Source:
+			`lib/private/Collaboration/Resources/Manager.php#413 <https://github.com/nextcloud/server/blob/stable13/lib/private/Collaboration/Resources/Manager.php#L413>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public invalidateAccessCacheForUser( $user)
+	
+		:Source:
+			`lib/private/Collaboration/Resources/Manager.php#429 <https://github.com/nextcloud/server/blob/stable13/lib/private/Collaboration/Resources/Manager.php#L429>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public invalidateAccessCacheForResource( $resource)
+	
+		:Source:
+			`lib/private/Collaboration/Resources/Manager.php#438 <https://github.com/nextcloud/server/blob/stable13/lib/private/Collaboration/Resources/Manager.php#L438>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public invalidateAccessCacheForAllCollections()
+	
+		:Source:
+			`lib/private/Collaboration/Resources/Manager.php#451 <https://github.com/nextcloud/server/blob/stable13/lib/private/Collaboration/Resources/Manager.php#L451>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public invalidateAccessCacheForCollection( $collection)
+	
+		:Source:
+			`lib/private/Collaboration/Resources/Manager.php#459 <https://github.com/nextcloud/server/blob/stable13/lib/private/Collaboration/Resources/Manager.php#L459>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public invalidateAccessCacheForProvider( $provider)
+	
+		:Source:
+			`lib/private/Collaboration/Resources/Manager.php#467 <https://github.com/nextcloud/server/blob/stable13/lib/private/Collaboration/Resources/Manager.php#L467>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public invalidateAccessCacheForResourceByUser( $resource, $user)
+	
+		:Source:
+			`lib/private/Collaboration/Resources/Manager.php#475 <https://github.com/nextcloud/server/blob/stable13/lib/private/Collaboration/Resources/Manager.php#L475>`_
+		
+		
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected invalidateAccessCacheForCollectionByUser( $collection, $user)
+	
+		:Source:
+			`lib/private/Collaboration/Resources/Manager.php#489 <https://github.com/nextcloud/server/blob/stable13/lib/private/Collaboration/Resources/Manager.php#L489>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public invalidateAccessCacheForProviderByUser( $provider, $user)
+	
+		:Source:
+			`lib/private/Collaboration/Resources/Manager.php#499 <https://github.com/nextcloud/server/blob/stable13/lib/private/Collaboration/Resources/Manager.php#L499>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public registerResourceProvider( $provider)
+	
+		:Source:
+			`lib/private/Collaboration/Resources/Manager.php#512 <https://github.com/nextcloud/server/blob/stable13/lib/private/Collaboration/Resources/Manager.php#L512>`_
+		
+		
+		:Parameters:
+			* **$provider** (string)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getType()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the resource type of the provider
+			
+		
+		:Source:
+			`lib/private/Collaboration/Resources/Manager.php#523 <https://github.com/nextcloud/server/blob/stable13/lib/private/Collaboration/Resources/Manager.php#L523>`_
+		
+		
+		:Returns: string 
+		:Since: 16.0.0 
+	
+	
+

@@ -1,0 +1,85 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IProviderV2
+===========
+
+
+.. php:namespace:: OCP\Preview
+
+.. php:interface:: IProviderV2
+
+
+	:Implemented by:
+		:php:class:`OC\\Preview\\ProviderV2` :php:class:`OC\\Preview\\ProviderV1Adapter` 
+	
+	
+	:Source:
+		`lib/public/Preview/IProviderV2.php#36 <https://github.com/nextcloud/server/blob/stable13/lib/public/Preview/IProviderV2.php#L36>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public getMimeType()
+	
+		:Source:
+			`lib/public/Preview/IProviderV2.php#41 <https://github.com/nextcloud/server/blob/stable13/lib/public/Preview/IProviderV2.php#L41>`_
+		
+		
+		:Returns: string Regex with the mimetypes that are supported by this provider
+		:Since: 17.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isAvailable( $file)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check if a preview can be generated for $path
+			
+		
+		:Source:
+			`lib/public/Preview/IProviderV2.php#50 <https://github.com/nextcloud/server/blob/stable13/lib/public/Preview/IProviderV2.php#L50>`_
+		
+		
+		:Parameters:
+			* **$file** (:any:`OCP\\Files\\FileInfo <OCP\\Files\\FileInfo>`)  
+
+		
+		:Returns: bool 
+		:Since: 17.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getThumbnail( $file, $maxX, $maxY)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get thumbnail for file at path $path
+			
+		
+		:Source:
+			`lib/public/Preview/IProviderV2.php#61 <https://github.com/nextcloud/server/blob/stable13/lib/public/Preview/IProviderV2.php#L61>`_
+		
+		
+		:Parameters:
+			* **$file** (:any:`OCP\\Files\\File <OCP\\Files\\File>`)  
+			* **$maxX** (int)  The maximum X size of the thumbnail. It can be smaller depending on the shape of the image
+			* **$maxY** (int)  The maximum Y size of the thumbnail. It can be smaller depending on the shape of the image
+
+		
+		:Returns: null | :any:`\\OCP\\IImage <OCP\\IImage>` null if no preview was generated
+		:Since: 17.0.0 
+	
+	
+

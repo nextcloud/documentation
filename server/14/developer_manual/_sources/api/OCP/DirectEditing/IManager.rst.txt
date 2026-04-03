@@ -1,0 +1,161 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IManager
+========
+
+
+.. php:namespace:: OCP\DirectEditing
+
+.. php:interface:: IManager
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Interface IManager
+		
+	
+	:Implemented by:
+		:php:class:`OC\\DirectEditing\\Manager` 
+	
+	
+	:Source:
+		`lib/public/DirectEditing/IManager.php#38 <https://github.com/nextcloud/server/blob/stable13/lib/public/DirectEditing/IManager.php#L38>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public registerDirectEditor( $directEditor)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Register a new editor
+			
+		
+		:Source:
+			`lib/public/DirectEditing/IManager.php#46 <https://github.com/nextcloud/server/blob/stable13/lib/public/DirectEditing/IManager.php#L46>`_
+		
+		
+		:Parameters:
+			* **$directEditor** (:any:`OCP\\DirectEditing\\IEditor <OCP\\DirectEditing\\IEditor>`)  
+
+		
+		:Since: 18.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public edit( $token)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Open the editing page for a provided token
+			
+		
+		:Source:
+			`lib/public/DirectEditing/IManager.php#55 <https://github.com/nextcloud/server/blob/stable13/lib/public/DirectEditing/IManager.php#L55>`_
+		
+		
+		:Parameters:
+			* **$token** (string)  
+
+		
+		:Since: 18.0.0 
+		:Returns: :any:`\\OCP\\AppFramework\\Http\\Response <OCP\\AppFramework\\Http\\Response>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public create( $path, $editorId, $creatorId, $templateId=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Create a new token based on the file path and editor details
+			
+		
+		:Source:
+			`lib/public/DirectEditing/IManager.php#69 <https://github.com/nextcloud/server/blob/stable13/lib/public/DirectEditing/IManager.php#L69>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+			* **$editorId** (string)  
+			* **$creatorId** (string)  
+			* **$templateId** (null)  
+
+		
+		:Since: 18.0.0 
+		:Returns: string 
+		:Throws: :any:`\\OCP\\Files\\NotPermittedException <OCP\\Files\\NotPermittedException>` 
+		:Throws: :any:`\\RuntimeException <RuntimeException>` 
+		:Throws: :any:`\\OCP\\Files\\NotPermittedException <OCP\\Files\\NotPermittedException>` 
+		:Throws: :any:`\\RuntimeException <RuntimeException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getToken( $token)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the token details for a given token
+			
+		
+		:Source:
+			`lib/public/DirectEditing/IManager.php#78 <https://github.com/nextcloud/server/blob/stable13/lib/public/DirectEditing/IManager.php#L78>`_
+		
+		
+		:Parameters:
+			* **$token** (string)  
+
+		
+		:Since: 18.0.0 
+		:Returns: :any:`\\OCP\\DirectEditing\\IToken <OCP\\DirectEditing\\IToken>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public cleanup()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Cleanup expired tokens
+			
+		
+		:Source:
+			`lib/public/DirectEditing/IManager.php#86 <https://github.com/nextcloud/server/blob/stable13/lib/public/DirectEditing/IManager.php#L86>`_
+		
+		
+		:Since: 18.0.0 
+		:Returns: int number of deleted tokens
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isEnabled()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check if direct editing is enabled
+			
+		
+		:Source:
+			`lib/public/DirectEditing/IManager.php#94 <https://github.com/nextcloud/server/blob/stable13/lib/public/DirectEditing/IManager.php#L94>`_
+		
+		
+		:Since: 20.0.0 
+		:Returns: bool 
+	
+	
+

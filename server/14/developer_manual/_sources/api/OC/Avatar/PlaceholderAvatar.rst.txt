@@ -1,0 +1,213 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+PlaceholderAvatar
+=================
+
+
+.. php:namespace:: OC\Avatar
+
+.. php:class:: PlaceholderAvatar
+
+
+	.. rst-class:: phpdoc-description
+	
+		| This class represents a registered user\'s placeholder avatar\.
+		
+		| It generates an image based on the user\'s initials and caches it on storage
+		| for faster retrieval, unlike the GuestAvatar\.
+		
+	
+	:Source:
+		`lib/private/Avatar/PlaceholderAvatar.php#49 <https://github.com/nextcloud/server/blob/stable13/lib/private/Avatar/PlaceholderAvatar.php#L49>`_
+	
+	:Parent:
+		:php:class:`OC\\Avatar\\Avatar`
+	
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $folder, $user, $logger)
+	
+		.. rst-class:: phpdoc-description
+		
+			| UserAvatar constructor\.
+			
+		
+		:Source:
+			`lib/private/Avatar/PlaceholderAvatar.php#65 <https://github.com/nextcloud/server/blob/stable13/lib/private/Avatar/PlaceholderAvatar.php#L65>`_
+		
+		
+		:Parameters:
+			* **$folder** (:any:`OCP\\Files\\SimpleFS\\ISimpleFolder <OCP\\Files\\SimpleFS\\ISimpleFolder>`)  The avatar files folder
+			* **$user** (:any:`OC\\User\\User <OC\\User\\User>`)  The user this class manages the avatar for
+			* **$logger** (:any:`Psr\\Log\\LoggerInterface <Psr\\Log\\LoggerInterface>`)  The logger
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public exists()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check if an avatar exists for the user
+			
+		
+		:Source:
+			`lib/private/Avatar/PlaceholderAvatar.php#80 <https://github.com/nextcloud/server/blob/stable13/lib/private/Avatar/PlaceholderAvatar.php#L80>`_
+		
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public set( $data)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Sets the users avatar\.
+			
+		
+		:Source:
+			`lib/private/Avatar/PlaceholderAvatar.php#93 <https://github.com/nextcloud/server/blob/stable13/lib/private/Avatar/PlaceholderAvatar.php#L93>`_
+		
+		
+		:Parameters:
+			* **$data** (:any:`OCP\\IImage <OCP\\IImage>` | resource | string)  An image object, imagedata or path to set a new avatar
+
+		
+		:Throws: :any:`\\Exception <Exception>` if the provided file is not a jpg or png image
+		:Throws: :any:`\\Exception <Exception>` if the provided image is not valid
+		:Throws: :any:`\\OC\\NotSquareException <OC\\NotSquareException>` if the image is not square
+		:Throws: :any:`\\Exception <Exception>` if the provided file is not a jpg or png image
+		:Throws: :any:`\\Exception <Exception>` if the provided image is not valid
+		:Throws: :any:`\\OC\\NotSquareException <OC\\NotSquareException>` if the image is not square
+		:Throws: :any:`\\Exception <Exception>` if the provided file is not a jpg or png image
+		:Throws: :any:`\\Exception <Exception>` if the provided image is not valid
+		:Throws: :any:`\\OC\\NotSquareException <OC\\NotSquareException>` if the image is not square
+		:Returns: void 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public remove( $silent=false)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Removes the users avatar\.
+			
+		
+		:Source:
+			`lib/private/Avatar/PlaceholderAvatar.php#100 <https://github.com/nextcloud/server/blob/stable13/lib/private/Avatar/PlaceholderAvatar.php#L100>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getFile( $size)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the avatar for an user\.
+			
+			| If there is no avatar file yet, one is generated\.
+			
+		
+		:Source:
+			`lib/private/Avatar/PlaceholderAvatar.php#119 <https://github.com/nextcloud/server/blob/stable13/lib/private/Avatar/PlaceholderAvatar.php#L119>`_
+		
+		
+		:Parameters:
+			* **$size** (int)  
+
+		
+		:Returns: :any:`\\OCP\\Files\\SimpleFS\\ISimpleFile <OCP\\Files\\SimpleFS\\ISimpleFile>` 
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+		:Throws: :any:`\\OCP\\Files\\NotPermittedException <OCP\\Files\\NotPermittedException>` 
+		:Throws: :any:`\\OCP\\PreConditionNotMetException <OCP\\PreConditionNotMetException>` 
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+		:Throws: :any:`\\OCP\\Files\\NotPermittedException <OCP\\Files\\NotPermittedException>` 
+		:Throws: :any:`\\OCP\\PreConditionNotMetException <OCP\\PreConditionNotMetException>` 
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+		:Throws: :any:`\\OCP\\Files\\NotPermittedException <OCP\\Files\\NotPermittedException>` 
+		:Throws: :any:`\\OCP\\PreConditionNotMetException <OCP\\PreConditionNotMetException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getDisplayName()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the user display name\.
+			
+		
+		:Source:
+			`lib/private/Avatar/PlaceholderAvatar.php#158 <https://github.com/nextcloud/server/blob/stable13/lib/private/Avatar/PlaceholderAvatar.php#L158>`_
+		
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public userChanged( $feature, $oldValue, $newValue)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Handles user changes\.
+			
+		
+		:Source:
+			`lib/private/Avatar/PlaceholderAvatar.php#171 <https://github.com/nextcloud/server/blob/stable13/lib/private/Avatar/PlaceholderAvatar.php#L171>`_
+		
+		
+		:Parameters:
+			* **$feature** (string)  The changed feature
+			* **$oldValue** (mixed)  The previous value
+			* **$newValue** (mixed)  The new value
+
+		
+		:Throws: :any:`\\OCP\\Files\\NotPermittedException <OCP\\Files\\NotPermittedException>` 
+		:Throws: :any:`\\OCP\\PreConditionNotMetException <OCP\\PreConditionNotMetException>` 
+		:Throws: :any:`\\OCP\\Files\\NotPermittedException <OCP\\Files\\NotPermittedException>` 
+		:Throws: :any:`\\OCP\\PreConditionNotMetException <OCP\\PreConditionNotMetException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isCustomAvatar()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check if the avatar of a user is a custom uploaded one
+			
+		
+		:Source:
+			`lib/private/Avatar/PlaceholderAvatar.php#180 <https://github.com/nextcloud/server/blob/stable13/lib/private/Avatar/PlaceholderAvatar.php#L180>`_
+		
+		
+		:Returns: bool 
+	
+	
+

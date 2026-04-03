@@ -1,0 +1,311 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Remote wipe &mdash; Nextcloud latest Developer Manual latest documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'latest',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="&lt;no title&gt;" href="../activity-api.html" />
+    <link rel="prev" title="Login Flow" href="../LoginFlow/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html">
+          
+
+          
+            
+            <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../general/index.html">General contributor guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../design/index.html">Design guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../android_library/index.html">Android application development</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Client APIs</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../WebDAV/index.html">Webdav</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../OCS/index.html">OCS API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../LoginFlow/index.html">Login Flow</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Remote wipe</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#obtaining-wipe-status">Obtaining wipe status</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#wiping-the-actual-device">Wiping the actual device</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#signalling-completion">Signalling completion</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../core/index.html">Core development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../bugtracker/index.html">Bugtracker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../commun/index.html">Help and communication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api.html">API Documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Nextcloud latest Developer Manual</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">Client APIs</a> &raquo;</li>
+        
+      <li>Remote wipe</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/nextcloud/documentation/edit/master/developer_manual/client_apis/RemoteWipe/index.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="remote-wipe">
+<span id="remotewipeindex"></span><h1>Remote wipe<a class="headerlink" href="#remote-wipe" title="Permalink to this headline">¶</a></h1>
+<p>This document provides a quick overview of the remote wipe API that should be used by clients to implement the remote wipe functionality.
+This will allow users to wipe a lost device for example.</p>
+<p>Note that wiping only works when clients use the login flow so that a dedicated token is set for this client.</p>
+<div class="section" id="obtaining-wipe-status">
+<h2>Obtaining wipe status<a class="headerlink" href="#obtaining-wipe-status" title="Permalink to this headline">¶</a></h2>
+<p>Once a client recieves a 401 or 403 status response it will do a fetch to <code class="code docutils literal"><span class="pre">&lt;server&gt;/index.php/core/wipe/check</span></code> and set the
+token parameter to the apptoken.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>curl https://cloud.example.com/index.php/core/wipe/check -X POST -d <span class="s1">&#39;token=&lt;TOKEN&gt;&#39;</span>
+</pre></div>
+</div>
+<p>In case the client gets back a 200 status code and a JSON array with wipe set to true like:</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+        <span class="nt">&quot;wipe&quot;</span><span class="p">:</span><span class="kc">true</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>then the client should proceed to wipe the device.</p>
+</div>
+<div class="section" id="wiping-the-actual-device">
+<h2>Wiping the actual device<a class="headerlink" href="#wiping-the-actual-device" title="Permalink to this headline">¶</a></h2>
+<dl class="docutils">
+<dt>The client must remove all user data linked to the account. This includes:</dt>
+<dd><ul class="first last simple">
+<li>caches</li>
+<li>offline files</li>
+<li>the actual account itself</li>
+</ul>
+</dd>
+</dl>
+</div>
+<div class="section" id="signalling-completion">
+<h2>Signalling completion<a class="headerlink" href="#signalling-completion" title="Permalink to this headline">¶</a></h2>
+<p>Once the client has wiped all the required data a POST to <code class="code docutils literal"><span class="pre">&lt;server&gt;/index.php/core/wipe/success</span></code> has to be made with the token.
+This signals the server the wipe is completed and triggers the final cleanup on the server side.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>curl https://cloud.example.com/index.php/core/wipe/success -X POST -d <span class="s1">&#39;token=&lt;TOKEN&gt;&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../activity-api.html" class="btn btn-neutral float-right" title="&lt;no title&gt;" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../LoginFlow/index.html" class="btn btn-neutral float-left" title="Login Flow" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021 Nextcloud GmbH.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/16/developer_manual">16</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/17/developer_manual">17</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/18/developer_manual">18</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/19/developer_manual">19</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/developer_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/developer_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+   
+
+</body>
+</html>

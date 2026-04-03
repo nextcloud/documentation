@@ -1,0 +1,154 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+ChangesCheck
+============
+
+
+.. php:namespace:: OC\Updater
+
+.. php:class:: ChangesCheck
+
+
+	:Source:
+		`lib/private/Updater/ChangesCheck.php#36 <https://github.com/nextcloud/server/blob/stable13/lib/private/Updater/ChangesCheck.php#L36>`_
+	
+
+Constants
+---------
+
+.. php:const:: RESPONSE_NO_CONTENT = 0
+
+	:Source:
+		`lib/private/Updater/ChangesCheck.php#44 <https://github.com/nextcloud/server/blob/stable13/lib/private/Updater/ChangesCheck.php#L44>`_
+	
+
+
+.. php:const:: RESPONSE_USE_CACHE = 1
+
+	:Source:
+		`lib/private/Updater/ChangesCheck.php#45 <https://github.com/nextcloud/server/blob/stable13/lib/private/Updater/ChangesCheck.php#L45>`_
+	
+
+
+.. php:const:: RESPONSE_HAS_CONTENT = 2
+
+	:Source:
+		`lib/private/Updater/ChangesCheck.php#46 <https://github.com/nextcloud/server/blob/stable13/lib/private/Updater/ChangesCheck.php#L46>`_
+	
+
+
+Properties
+----------
+
+.. php:attr:: protected static clientService
+
+	:Source:
+		`lib/private/Updater/ChangesCheck.php#38 <https://github.com/nextcloud/server/blob/stable13/lib/private/Updater/ChangesCheck.php#L38>`_
+	
+	:Type: :any:`\\OCP\\Http\\Client\\IClientService <OCP\\Http\\Client\\IClientService>` 
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $clientService, $mapper, $logger)
+	
+		:Source:
+			`lib/private/Updater/ChangesCheck.php#48 <https://github.com/nextcloud/server/blob/stable13/lib/private/Updater/ChangesCheck.php#L48>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getChangesForVersion( $version)
+	
+		:Source:
+			`lib/private/Updater/ChangesCheck.php#57 <https://github.com/nextcloud/server/blob/stable13/lib/private/Updater/ChangesCheck.php#L57>`_
+		
+		
+		:Throws: :any:`\\OCP\\AppFramework\\Db\\DoesNotExistException <OCP\\AppFramework\\Db\\DoesNotExistException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public check( $uri, $version)
+	
+		:Source:
+			`lib/private/Updater/ChangesCheck.php#70 <https://github.com/nextcloud/server/blob/stable13/lib/private/Updater/ChangesCheck.php#L70>`_
+		
+		
+		:Throws: :any:`\\Exception <Exception>` 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected evaluateResponse( $response)
+	
+		:Source:
+			`lib/private/Updater/ChangesCheck.php#99 <https://github.com/nextcloud/server/blob/stable13/lib/private/Updater/ChangesCheck.php#L99>`_
+		
+		
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected cacheResult( $entry, $version)
+	
+		:Source:
+			`lib/private/Updater/ChangesCheck.php#114 <https://github.com/nextcloud/server/blob/stable13/lib/private/Updater/ChangesCheck.php#L114>`_
+		
+		
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected queryChangesServer( $uri, $entry)
+	
+		:Source:
+			`lib/private/Updater/ChangesCheck.php#126 <https://github.com/nextcloud/server/blob/stable13/lib/private/Updater/ChangesCheck.php#L126>`_
+		
+		
+		:Throws: :any:`\\Exception <Exception>` 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected extractData( $body)
+	
+		:Source:
+			`lib/private/Updater/ChangesCheck.php#139 <https://github.com/nextcloud/server/blob/stable13/lib/private/Updater/ChangesCheck.php#L139>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public normalizeVersion( $version)
+	
+		.. rst-class:: phpdoc-description
+		
+			| returns a x\.y\.z form of the provided version\. Extra numbers will be
+			| omitted, missing ones added as zeros\.
+			
+		
+		:Source:
+			`lib/private/Updater/ChangesCheck.php#165 <https://github.com/nextcloud/server/blob/stable13/lib/private/Updater/ChangesCheck.php#L165>`_
+		
+		
+	
+	
+

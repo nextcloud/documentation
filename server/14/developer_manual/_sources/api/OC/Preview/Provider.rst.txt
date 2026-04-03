@@ -1,0 +1,108 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+Provider
+========
+
+
+.. php:namespace:: OC\Preview
+
+.. rst-class::  abstract
+
+.. php:class:: Provider
+
+
+	:Source:
+		`lib/private/Preview/Provider.php#32 <https://github.com/nextcloud/server/blob/stable13/lib/private/Preview/Provider.php#L32>`_
+	
+	:Implements:
+		:php:interface:`OCP\\Preview\\IProvider` 
+	
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $options=\[\])
+	
+		.. rst-class:: phpdoc-description
+		
+			| Constructor
+			
+		
+		:Source:
+			`lib/private/Preview/Provider.php#40 <https://github.com/nextcloud/server/blob/stable13/lib/private/Preview/Provider.php#L40>`_
+		
+		
+		:Parameters:
+			* **$options** (array)  
+
+		
+	
+	
+
+.. rst-class:: public abstract
+
+	.. php:method:: public abstract getMimeType()
+	
+		:Source:
+			`lib/private/Preview/Provider.php#47 <https://github.com/nextcloud/server/blob/stable13/lib/private/Preview/Provider.php#L47>`_
+		
+		
+		:Returns: string Regex with the mimetypes that are supported by this provider
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isAvailable( $file)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check if a preview can be generated for $path
+			
+		
+		:Source:
+			`lib/private/Preview/Provider.php#55 <https://github.com/nextcloud/server/blob/stable13/lib/private/Preview/Provider.php#L55>`_
+		
+		
+		:Parameters:
+			* **$file** (:any:`OCP\\Files\\FileInfo <OCP\\Files\\FileInfo>`)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public abstract
+
+	.. php:method:: public abstract getThumbnail( $path, $maxX, $maxY, $scalingup, $fileview)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Generates thumbnail which fits in $maxX and $maxY and keeps the aspect ratio, for file at path $path
+			
+		
+		:Source:
+			`lib/private/Preview/Provider.php#69 <https://github.com/nextcloud/server/blob/stable13/lib/private/Preview/Provider.php#L69>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  Path of file
+			* **$maxX** (int)  The maximum X size of the thumbnail. It can be smaller depending on the shape of the image
+			* **$maxY** (int)  The maximum Y size of the thumbnail. It can be smaller depending on the shape of the image
+			* **$scalingup** (bool)  Disable/Enable upscaling of previews
+			* **$fileview** (:any:`OC\\Files\\View <OC\\Files\\View>`)  fileview object of user folder
+
+		
+		:Returns: bool | :any:`\\OCP\\IImage <OCP\\IImage>` false if no preview was generated
+	
+	
+

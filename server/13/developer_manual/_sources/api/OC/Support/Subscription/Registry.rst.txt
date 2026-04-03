@@ -1,0 +1,141 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+Registry
+========
+
+
+.. php:namespace:: OC\Support\Subscription
+
+.. php:class:: Registry
+
+
+	:Source:
+		`lib/private/Support/Subscription/Registry.php#44 <https://github.com/nextcloud/server/blob/stable13/lib/private/Support/Subscription/Registry.php#L44>`_
+	
+	:Implements:
+		:php:interface:`OCP\\Support\\Subscription\\IRegistry` 
+	
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $config, $container, $userManager, $groupManager, $logger, $notificationManager)
+	
+		:Source:
+			`lib/private/Support/Subscription/Registry.php#66 <https://github.com/nextcloud/server/blob/stable13/lib/private/Support/Subscription/Registry.php#L66>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public register( $subscription)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Register a subscription instance\. In case it is called multiple times the
+			| first one is used\.
+			
+		
+		:Source:
+			`lib/private/Support/Subscription/Registry.php#101 <https://github.com/nextcloud/server/blob/stable13/lib/private/Support/Subscription/Registry.php#L101>`_
+		
+		
+		:Parameters:
+			* **$subscription** (:any:`OCP\\Support\\Subscription\\ISubscription <OCP\\Support\\Subscription\\ISubscription>`)  
+
+		
+		:Throws: :any:`\\OCP\\Support\\Subscription\\Exception\\AlreadyRegisteredException <OCP\\Support\\Subscription\\Exception\\AlreadyRegisteredException>` 
+		:Since: 17.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public registerService( $subscriptionService)
+	
+		:Source:
+			`lib/private/Support/Subscription/Registry.php#108 <https://github.com/nextcloud/server/blob/stable13/lib/private/Support/Subscription/Registry.php#L108>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public delegateGetSupportedApps()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Fetches the list of app IDs that are supported by the subscription
+			
+		
+		:Source:
+			`lib/private/Support/Subscription/Registry.php#122 <https://github.com/nextcloud/server/blob/stable13/lib/private/Support/Subscription/Registry.php#L122>`_
+		
+		
+		:Since: 17.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public delegateHasValidSubscription()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Indicates if a valid subscription is available
+			
+		
+		:Source:
+			`lib/private/Support/Subscription/Registry.php#134 <https://github.com/nextcloud/server/blob/stable13/lib/private/Support/Subscription/Registry.php#L134>`_
+		
+		
+		:Since: 17.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public delegateHasExtendedSupport()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Indicates if the subscription has extended support
+			
+		
+		:Source:
+			`lib/private/Support/Subscription/Registry.php#151 <https://github.com/nextcloud/server/blob/stable13/lib/private/Support/Subscription/Registry.php#L151>`_
+		
+		
+		:Since: 17.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public delegateIsHardUserLimitReached()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Indicates if a hard user limit is reached and no new users should be created
+			
+		
+		:Source:
+			`lib/private/Support/Subscription/Registry.php#164 <https://github.com/nextcloud/server/blob/stable13/lib/private/Support/Subscription/Registry.php#L164>`_
+		
+		
+		:Since: 21.0.0 
+	
+	
+

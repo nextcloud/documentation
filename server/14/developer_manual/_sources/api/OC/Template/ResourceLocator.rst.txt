@@ -1,0 +1,240 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+ResourceLocator
+===============
+
+
+.. php:namespace:: OC\Template
+
+.. rst-class::  abstract
+
+.. php:class:: ResourceLocator
+
+
+	:Source:
+		`lib/private/Template/ResourceLocator.php#33 <https://github.com/nextcloud/server/blob/stable13/lib/private/Template/ResourceLocator.php#L33>`_
+	
+
+Properties
+----------
+
+.. php:attr:: protected static theme
+
+	:Source:
+		`lib/private/Template/ResourceLocator.php#34 <https://github.com/nextcloud/server/blob/stable13/lib/private/Template/ResourceLocator.php#L34>`_
+	
+
+
+.. php:attr:: protected static mapping
+
+	:Source:
+		`lib/private/Template/ResourceLocator.php#36 <https://github.com/nextcloud/server/blob/stable13/lib/private/Template/ResourceLocator.php#L36>`_
+	
+
+
+.. php:attr:: protected static serverroot
+
+	:Source:
+		`lib/private/Template/ResourceLocator.php#37 <https://github.com/nextcloud/server/blob/stable13/lib/private/Template/ResourceLocator.php#L37>`_
+	
+
+
+.. php:attr:: protected static thirdpartyroot
+
+	:Source:
+		`lib/private/Template/ResourceLocator.php#38 <https://github.com/nextcloud/server/blob/stable13/lib/private/Template/ResourceLocator.php#L38>`_
+	
+
+
+.. php:attr:: protected static webroot
+
+	:Source:
+		`lib/private/Template/ResourceLocator.php#39 <https://github.com/nextcloud/server/blob/stable13/lib/private/Template/ResourceLocator.php#L39>`_
+	
+
+
+.. php:attr:: protected static resources
+
+	:Source:
+		`lib/private/Template/ResourceLocator.php#41 <https://github.com/nextcloud/server/blob/stable13/lib/private/Template/ResourceLocator.php#L41>`_
+	
+
+
+.. php:attr:: protected static logger
+
+	:Source:
+		`lib/private/Template/ResourceLocator.php#44 <https://github.com/nextcloud/server/blob/stable13/lib/private/Template/ResourceLocator.php#L44>`_
+	
+	:Type: :any:`\\OCP\\ILogger <OCP\\ILogger>` 
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $logger, $theme, $core_map, $party_map)
+	
+		:Source:
+			`lib/private/Template/ResourceLocator.php#52 <https://github.com/nextcloud/server/blob/stable13/lib/private/Template/ResourceLocator.php#L52>`_
+		
+		
+		:Parameters:
+			* **$logger** (:any:`OCP\\ILogger <OCP\\ILogger>`)  
+			* **$theme** (string)  
+			* **$core_map** (array)  
+			* **$party_map** (array)  
+
+		
+	
+	
+
+.. rst-class:: public abstract
+
+	.. php:method:: public abstract doFind( $resource)
+	
+		:Source:
+			`lib/private/Template/ResourceLocator.php#64 <https://github.com/nextcloud/server/blob/stable13/lib/private/Template/ResourceLocator.php#L64>`_
+		
+		
+		:Parameters:
+			* **$resource** (string)  
+
+		
+	
+	
+
+.. rst-class:: public abstract
+
+	.. php:method:: public abstract doFindTheme( $resource)
+	
+		:Source:
+			`lib/private/Template/ResourceLocator.php#69 <https://github.com/nextcloud/server/blob/stable13/lib/private/Template/ResourceLocator.php#L69>`_
+		
+		
+		:Parameters:
+			* **$resource** (string)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public find( $resources)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Finds the resources and adds them to the list
+			
+		
+		:Source:
+			`lib/private/Template/ResourceLocator.php#76 <https://github.com/nextcloud/server/blob/stable13/lib/private/Template/ResourceLocator.php#L76>`_
+		
+		
+		:Parameters:
+			* **$resources** (array)  
+
+		
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected appendIfExist( $root, $file, $webRoot=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| append the $file resource if exist at $root
+			
+		
+		:Source:
+			`lib/private/Template/ResourceLocator.php#105 <https://github.com/nextcloud/server/blob/stable13/lib/private/Template/ResourceLocator.php#L105>`_
+		
+		
+		:Parameters:
+			* **$root** (string)  path to check
+			* **$file** (string)  the filename
+			* **$webRoot** (string | null)  base for path, default map $root to $webRoot
+
+		
+		:Returns: bool True if the resource was found, false otherwise
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected findWebRoot( $root)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Attempt to find the webRoot
+			
+			| traverse the potential web roots upwards in the path
+			| 
+			| example:
+			|   \- root: /srv/www/apps/myapp
+			|   \- available mappings: \[\'/srv/www\'\]
+			| 
+			| First we check if a mapping for /srv/www/apps/myapp is available,
+			| then /srv/www/apps, /srv/www/apps, /srv/www, \.\.\. until we find a
+			| valid web root
+			
+		
+		:Source:
+			`lib/private/Template/ResourceLocator.php#129 <https://github.com/nextcloud/server/blob/stable13/lib/private/Template/ResourceLocator.php#L129>`_
+		
+		
+		:Parameters:
+			* **$root** (string)  
+
+		
+		:Returns: string | null The web root or null on failure
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected append( $root, $file, $webRoot=null, $throw=true)
+	
+		.. rst-class:: phpdoc-description
+		
+			| append the $file resource at $root
+			
+		
+		:Source:
+			`lib/private/Template/ResourceLocator.php#166 <https://github.com/nextcloud/server/blob/stable13/lib/private/Template/ResourceLocator.php#L166>`_
+		
+		
+		:Parameters:
+			* **$root** (string)  path to check
+			* **$file** (string)  the filename
+			* **$webRoot** (string | null)  base for path, default map $root to $webRoot
+			* **$throw** (bool)  Throw an exception, when the route does not exist
+
+		
+		:Throws: :any:`\\OC\\Template\\ResourceNotFoundException <OC\\Template\\ResourceNotFoundException>` Only thrown when $throw is true and the resource is missing
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getResources()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the list of all resources that should be loaded
+			
+		
+		:Source:
+			`lib/private/Template/ResourceLocator.php#199 <https://github.com/nextcloud/server/blob/stable13/lib/private/Template/ResourceLocator.php#L199>`_
+		
+		
+		:Returns: array 
+	
+	
+

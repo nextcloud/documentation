@@ -1,0 +1,1065 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Icons &mdash; Nextcloud 14 Developer Manual 14 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'14',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Android application development" href="../android_library/index.html" />
+    <link rel="prev" title="SCSS" href="css.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../general/index.html">General contributor guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/startapp.html">Create an app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/init.html">Navigation and pre-app configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/info.html">App metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/classloader.html">Classloader</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/request.html">Request lifecycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/routes.html">Routing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/middleware.html">Middleware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/container.html">Container</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/controllers.html">Controllers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/api.html">RESTful API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/templates.html">Templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/js.html">JavaScript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/css.html">CSS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/l10n.html">Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/theming.html">Theming support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/schema.html">Database schema</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/database.html">Database access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/filesystem.html">Filesystem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/appdata.html">AppData</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/users.html">User management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/two-factor-provider.html">Two-factor providers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/hooks.html">Hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/backgroundjobs.html">Background jobs (Cron)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/settings.html">Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/logging.html">Logging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/migrations.html">Migrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/repair.html">Repair steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/publishing.html">App store publishing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/code_signing.html">Code signing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/index.html">App development</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Design guidelines</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="navigation.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="navigation.html#new-button">New button</a></li>
+<li class="toctree-l2"><a class="reference internal" href="navigation.html#app-navigation-menu">App navigation menu</a></li>
+<li class="toctree-l2"><a class="reference internal" href="navigation.html#settings">Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="content.html">Main content</a></li>
+<li class="toctree-l2"><a class="reference internal" href="list.html">Content list</a></li>
+<li class="toctree-l2"><a class="reference internal" href="popovermenu.html">Popover menu</a></li>
+<li class="toctree-l2"><a class="reference internal" href="html.html">HTML elements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="css.html">SCSS</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Icons</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#list-of-available-icons">List of available icons</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#svg-color-api">Svg color api</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../android_library/index.html">Android application development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client_apis/index.html">Client APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../core/index.html">Core development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bugtracker/index.html">Bugtracker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../commun/index.html">Help and communication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API Documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Nextcloud 14 Developer Manual</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Design guidelines</a> &raquo;</li>
+        
+      <li>Icons</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/nextcloud/documentation/edit/stable14/developer_manual/design/icons.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="icons">
+<span id="id1"></span><h1>Icons<a class="headerlink" href="#icons" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="list-of-available-icons">
+<h2>List of available icons<a class="headerlink" href="#list-of-available-icons" title="Permalink to this headline">¶</a></h2>
+<p>White icons only have a grey background on this documentation page for readability purposes.</p>
+<blockquote>
+<div><div class="figure" id="id2">
+<a class="reference internal image-reference" href="../_images/add.png"><img alt="../_images/add.png" src="../_images/add.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-add</span></p>
+</div>
+<div class="figure" id="id3">
+<a class="white-icon reference internal image-reference" href="../_images/add-white.png"><img alt="../_images/add-white.png" class="white-icon" src="../_images/add-white.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-add-white</span></p>
+</div>
+<div class="figure" id="id4">
+<a class="reference internal image-reference" href="../_images/address.png"><img alt="../_images/address.png" src="../_images/address.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-address</span></p>
+</div>
+<div class="figure" id="id5">
+<a class="white-icon reference internal image-reference" href="../_images/address-white.png"><img alt="../_images/address-white.png" class="white-icon" src="../_images/address-white.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-address-white</span></p>
+</div>
+<div class="figure" id="id6">
+<a class="reference internal image-reference" href="../_images/audio.png"><img alt="../_images/audio.png" src="../_images/audio.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-audio</span></p>
+</div>
+<div class="figure" id="id7">
+<a class="white-icon reference internal image-reference" href="../_images/audio-white.png"><img alt="../_images/audio-white.png" class="white-icon" src="../_images/audio-white.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-audio-white</span></p>
+</div>
+<div class="figure" id="id8">
+<a class="reference internal image-reference" href="../_images/audio-off.png"><img alt="../_images/audio-off.png" src="../_images/audio-off.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-audio-off</span></p>
+</div>
+<div class="figure" id="id9">
+<a class="white-icon reference internal image-reference" href="../_images/audio-off-white.png"><img alt="../_images/audio-off-white.png" class="white-icon" src="../_images/audio-off-white.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-audio-off-white</span></p>
+</div>
+<div class="figure" id="id10">
+<a class="white-icon reference internal image-reference" href="../_images/caret-white.png"><img alt="../_images/caret-white.png" class="white-icon" src="../_images/caret-white.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-caret-white</span></p>
+</div>
+<div class="figure" id="id11">
+<a class="reference internal image-reference" href="../_images/caret.png"><img alt="../_images/caret.png" src="../_images/caret.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-caret-dark</span></p>
+</div>
+<div class="figure" id="id12">
+<a class="reference internal image-reference" href="../_images/checkmark.png"><img alt="../_images/checkmark.png" src="../_images/checkmark.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-checkmark</span></p>
+</div>
+<div class="figure" id="id13">
+<a class="white-icon reference internal image-reference" href="../_images/checkmark-white.png"><img alt="../_images/checkmark-white.png" class="white-icon" src="../_images/checkmark-white.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-checkmark-white</span></p>
+</div>
+<div class="figure" id="id14">
+<a class="reference internal image-reference" href="../_images/checkmark.png"><img alt="../_images/checkmark.png" src="../_images/checkmark.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-checkmark-color</span></p>
+</div>
+<div class="figure" id="id15">
+<a class="reference internal image-reference" href="../_images/clippy.png"><img alt="../_images/clippy.png" src="../_images/clippy.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-clippy</span></p>
+</div>
+<div class="figure" id="id16">
+<a class="white-icon reference internal image-reference" href="../_images/clippy-white.png"><img alt="../_images/clippy-white.png" class="white-icon" src="../_images/clippy-white.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-clippy-white</span></p>
+</div>
+<div class="figure" id="id17">
+<a class="reference internal image-reference" href="../_images/close.png"><img alt="../_images/close.png" src="../_images/close.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-close</span></p>
+</div>
+<div class="figure" id="id18">
+<a class="white-icon reference internal image-reference" href="../_images/close-white.png"><img alt="../_images/close-white.png" class="white-icon" src="../_images/close-white.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-close-white</span></p>
+</div>
+<div class="figure" id="id19">
+<a class="reference internal image-reference" href="../_images/comment.png"><img alt="../_images/comment.png" src="../_images/comment.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-comment</span></p>
+</div>
+<div class="figure" id="id20">
+<a class="white-icon reference internal image-reference" href="../_images/comment-white.png"><img alt="../_images/comment-white.png" class="white-icon" src="../_images/comment-white.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-comment-white</span></p>
+</div>
+<div class="figure" id="id21">
+<a class="reference internal image-reference" href="../_images/confirm.png"><img alt="../_images/confirm.png" src="../_images/confirm.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-confirm</span></p>
+</div>
+<div class="figure" id="id22">
+<a class="white-icon reference internal image-reference" href="../_images/confirm-white.png"><img alt="../_images/confirm-white.png" class="white-icon" src="../_images/confirm-white.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-confirm-white</span></p>
+</div>
+<div class="figure" id="id23">
+<a class="reference internal image-reference" href="../_images/download.png"><img alt="../_images/download.png" src="../_images/download.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-download</span></p>
+</div>
+<div class="figure" id="id24">
+<a class="white-icon reference internal image-reference" href="../_images/download-white.png"><img alt="../_images/download-white.png" class="white-icon" src="../_images/download-white.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-download-white</span></p>
+</div>
+<div class="figure" id="id25">
+<a class="reference internal image-reference" href="../_images/confirm-fade.png"><img alt="../_images/confirm-fade.png" src="../_images/confirm-fade.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-confirm-fade</span></p>
+</div>
+<div class="figure" id="id26">
+<a class="reference internal image-reference" href="../_images/delete.png"><img alt="../_images/delete.png" src="../_images/delete.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-delete</span></p>
+</div>
+<div class="figure" id="id27">
+<a class="white-icon reference internal image-reference" href="../_images/delete-white.png"><img alt="../_images/delete-white.png" class="white-icon" src="../_images/delete-white.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-delete-white</span></p>
+</div>
+<div class="figure" id="id28">
+<a class="reference internal image-reference" href="../_images/details.png"><img alt="../_images/details.png" src="../_images/details.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-details</span></p>
+</div>
+<div class="figure" id="id29">
+<a class="white-icon reference internal image-reference" href="../_images/details-white.png"><img alt="../_images/details-white.png" class="white-icon" src="../_images/details-white.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-details-white</span></p>
+</div>
+<div class="figure" id="id30">
+<a class="reference internal image-reference" href="../_images/edit.png"><img alt="../_images/edit.png" src="../_images/edit.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-edit</span></p>
+</div>
+<div class="figure" id="id31">
+<a class="white-icon reference internal image-reference" href="../_images/edit-white.png"><img alt="../_images/edit-white.png" class="white-icon" src="../_images/edit-white.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-edit-white</span></p>
+</div>
+<div class="figure" id="id32">
+<a class="reference internal image-reference" href="../_images/error.png"><img alt="../_images/error.png" src="../_images/error.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-error</span></p>
+</div>
+<div class="figure" id="id33">
+<a class="white-icon reference internal image-reference" href="../_images/error-white.png"><img alt="../_images/error-white.png" class="white-icon" src="../_images/error-white.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-error-white</span></p>
+</div>
+<div class="figure" id="id34">
+<a class="reference internal image-reference" href="../_images/error.png"><img alt="../_images/error.png" src="../_images/error.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-error-color</span></p>
+</div>
+<div class="figure" id="id35">
+<a class="reference internal image-reference" href="../_images/external.png"><img alt="../_images/external.png" src="../_images/external.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-external</span></p>
+</div>
+<div class="figure" id="id36">
+<a class="white-icon reference internal image-reference" href="../_images/external-white.png"><img alt="../_images/external-white.png" class="white-icon" src="../_images/external-white.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-external-white</span></p>
+</div>
+<div class="figure" id="id37">
+<a class="reference internal image-reference" href="../_images/fullscreen.png"><img alt="../_images/fullscreen.png" src="../_images/fullscreen.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-fullscreen</span></p>
+</div>
+<div class="figure" id="id38">
+<a class="white-icon reference internal image-reference" href="../_images/fullscreen-white.png"><img alt="../_images/fullscreen-white.png" class="white-icon" src="../_images/fullscreen-white.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-fullscreen-white</span></p>
+</div>
+<div class="figure" id="id39">
+<a class="reference internal image-reference" href="../_images/history.png"><img alt="../_images/history.png" src="../_images/history.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-history</span></p>
+</div>
+<div class="figure" id="id40">
+<a class="white-icon reference internal image-reference" href="../_images/history-white.png"><img alt="../_images/history-white.png" class="white-icon" src="../_images/history-white.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-history-white</span></p>
+</div>
+<div class="figure" id="id41">
+<a class="reference internal image-reference" href="../_images/info.png"><img alt="../_images/info.png" src="../_images/info.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-info</span></p>
+</div>
+<div class="figure" id="id42">
+<a class="white-icon reference internal image-reference" href="../_images/info-white.png"><img alt="../_images/info-white.png" class="white-icon" src="../_images/info-white.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-info-white</span></p>
+</div>
+<div class="figure" id="id43">
+<a class="reference internal image-reference" href="../_images/logout.png"><img alt="../_images/logout.png" src="../_images/logout.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-logout</span></p>
+</div>
+<div class="figure" id="id44">
+<a class="white-icon reference internal image-reference" href="../_images/logout-white.png"><img alt="../_images/logout-white.png" class="white-icon" src="../_images/logout-white.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-logout-white</span></p>
+</div>
+<div class="figure" id="id45">
+<a class="reference internal image-reference" href="../_images/mail.png"><img alt="../_images/mail.png" src="../_images/mail.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-mail</span></p>
+</div>
+<div class="figure" id="id46">
+<a class="white-icon reference internal image-reference" href="../_images/mail-white.png"><img alt="../_images/mail-white.png" class="white-icon" src="../_images/mail-white.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-mail-white</span></p>
+</div>
+<div class="figure" id="id47">
+<a class="reference internal image-reference" href="../_images/menu.png"><img alt="../_images/menu.png" src="../_images/menu.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-menu</span></p>
+</div>
+<div class="figure" id="id48">
+<a class="white-icon reference internal image-reference" href="../_images/menu-white.png"><img alt="../_images/menu-white.png" class="white-icon" src="../_images/menu-white.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-menu-white</span></p>
+</div>
+<div class="figure" id="id49">
+<a class="reference internal image-reference" href="../_images/menu-sidebar.png"><img alt="../_images/menu-sidebar.png" src="../_images/menu-sidebar.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-menu-sidebar</span></p>
+</div>
+<div class="figure" id="id50">
+<a class="white-icon reference internal image-reference" href="../_images/menu-sidebar-white.png"><img alt="../_images/menu-sidebar-white.png" class="white-icon" src="../_images/menu-sidebar-white.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-menu-sidebar-white</span></p>
+</div>
+<div class="figure" id="id51">
+<a class="reference internal image-reference" href="../_images/more.png"><img alt="../_images/more.png" src="../_images/more.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-more</span></p>
+</div>
+<div class="figure" id="id52">
+<a class="white-icon reference internal image-reference" href="../_images/more-white.png"><img alt="../_images/more-white.png" class="white-icon" src="../_images/more-white.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-more-white</span></p>
+</div>
+<div class="figure" id="id53">
+<a class="reference internal image-reference" href="../_images/password.png"><img alt="../_images/password.png" src="../_images/password.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-password</span></p>
+</div>
+<div class="figure" id="id54">
+<a class="white-icon reference internal image-reference" href="../_images/password-white.png"><img alt="../_images/password-white.png" class="white-icon" src="../_images/password-white.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-password-white</span></p>
+</div>
+<div class="figure" id="id55">
+<a class="reference internal image-reference" href="../_images/pause.png"><img alt="../_images/pause.png" src="../_images/pause.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-pause</span></p>
+</div>
+<div class="figure" id="id56">
+<a class="white-icon reference internal image-reference" href="../_images/pause-white.png"><img alt="../_images/pause-white.png" class="white-icon" src="../_images/pause-white.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-pause-white</span></p>
+</div>
+<div class="figure" id="id57">
+<a class="reference internal image-reference" href="../_images/play.png"><img alt="../_images/play.png" src="../_images/play.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-play</span></p>
+</div>
+<div class="figure" id="id58">
+<a class="white-icon reference internal image-reference" href="../_images/play-white.png"><img alt="../_images/play-white.png" class="white-icon" src="../_images/play-white.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-play-white</span></p>
+</div>
+<div class="figure" id="id59">
+<a class="reference internal image-reference" href="../_images/play-add.png"><img alt="../_images/play-add.png" src="../_images/play-add.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-play-add</span></p>
+</div>
+<div class="figure" id="id60">
+<a class="white-icon reference internal image-reference" href="../_images/play-add-white.png"><img alt="../_images/play-add-white.png" class="white-icon" src="../_images/play-add-white.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-play-add-white</span></p>
+</div>
+<div class="figure" id="id61">
+<a class="reference internal image-reference" href="../_images/play-next.png"><img alt="../_images/play-next.png" src="../_images/play-next.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-play-next</span></p>
+</div>
+<div class="figure" id="id62">
+<a class="white-icon reference internal image-reference" href="../_images/play-next-white.png"><img alt="../_images/play-next-white.png" class="white-icon" src="../_images/play-next-white.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-play-next-white</span></p>
+</div>
+<div class="figure" id="id63">
+<a class="reference internal image-reference" href="../_images/play-previous.png"><img alt="../_images/play-previous.png" src="../_images/play-previous.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-play-previous</span></p>
+</div>
+<div class="figure" id="id64">
+<a class="white-icon reference internal image-reference" href="../_images/play-previous-white.png"><img alt="../_images/play-previous-white.png" class="white-icon" src="../_images/play-previous-white.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-play-previous-white</span></p>
+</div>
+<div class="figure" id="id65">
+<a class="reference internal image-reference" href="../_images/projects.png"><img alt="../_images/projects.png" src="../_images/projects.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-projects</span></p>
+</div>
+<div class="figure" id="id66">
+<a class="white-icon reference internal image-reference" href="../_images/projects-white.png"><img alt="../_images/projects-white.png" class="white-icon" src="../_images/projects-white.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-projects-white</span></p>
+</div>
+<div class="figure" id="id67">
+<a class="reference internal image-reference" href="../_images/public.png"><img alt="../_images/public.png" src="../_images/public.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-public</span></p>
+</div>
+<div class="figure" id="id68">
+<a class="white-icon reference internal image-reference" href="../_images/public-white.png"><img alt="../_images/public-white.png" class="white-icon" src="../_images/public-white.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-public-white</span></p>
+</div>
+<div class="figure" id="id69">
+<a class="reference internal image-reference" href="../_images/quota.png"><img alt="../_images/quota.png" src="../_images/quota.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-quota</span></p>
+</div>
+<div class="figure" id="id70">
+<a class="white-icon reference internal image-reference" href="../_images/quota-white.png"><img alt="../_images/quota-white.png" class="white-icon" src="../_images/quota-white.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-quota-white</span></p>
+</div>
+<div class="figure" id="id71">
+<a class="reference internal image-reference" href="../_images/rename.png"><img alt="../_images/rename.png" src="../_images/rename.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-rename</span></p>
+</div>
+<div class="figure" id="id72">
+<a class="white-icon reference internal image-reference" href="../_images/rename-white.png"><img alt="../_images/rename-white.png" class="white-icon" src="../_images/rename-white.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-rename-white</span></p>
+</div>
+<div class="figure" id="id73">
+<a class="reference internal image-reference" href="../_images/screen.png"><img alt="../_images/screen.png" src="../_images/screen.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-screen</span></p>
+</div>
+<div class="figure" id="id74">
+<a class="white-icon reference internal image-reference" href="../_images/screen-white.png"><img alt="../_images/screen-white.png" class="white-icon" src="../_images/screen-white.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-screen-white</span></p>
+</div>
+<div class="figure" id="id75">
+<a class="reference internal image-reference" href="../_images/template-add.png"><img alt="../_images/template-add.png" src="../_images/template-add.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-template-add</span></p>
+</div>
+<div class="figure" id="id76">
+<a class="white-icon reference internal image-reference" href="../_images/template-add-white.png"><img alt="../_images/template-add-white.png" class="white-icon" src="../_images/template-add-white.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-template-add-white</span></p>
+</div>
+<div class="figure" id="id77">
+<a class="reference internal image-reference" href="../_images/screen-off.png"><img alt="../_images/screen-off.png" src="../_images/screen-off.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-screen-off</span></p>
+</div>
+<div class="figure" id="id78">
+<a class="white-icon reference internal image-reference" href="../_images/screen-off-white.png"><img alt="../_images/screen-off-white.png" class="white-icon" src="../_images/screen-off-white.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-screen-off-white</span></p>
+</div>
+<div class="figure" id="id79">
+<a class="reference internal image-reference" href="../_images/search.png"><img alt="../_images/search.png" src="../_images/search.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-search</span></p>
+</div>
+<div class="figure" id="id80">
+<a class="white-icon reference internal image-reference" href="../_images/search-white.png"><img alt="../_images/search-white.png" class="white-icon" src="../_images/search-white.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-search-white</span></p>
+</div>
+<div class="figure" id="id81">
+<a class="reference internal image-reference" href="../_images/settings.png"><img alt="../_images/settings.png" src="../_images/settings.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-settings</span></p>
+</div>
+<div class="figure" id="id82">
+<a class="reference internal image-reference" href="../_images/settings-dark.png"><img alt="../_images/settings-dark.png" src="../_images/settings-dark.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-settings-dark</span></p>
+</div>
+<div class="figure" id="id83">
+<a class="white-icon reference internal image-reference" href="../_images/settings-dark-white.png"><img alt="../_images/settings-dark-white.png" class="white-icon" src="../_images/settings-dark-white.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-settings-white</span></p>
+</div>
+<div class="figure" id="id84">
+<a class="reference internal image-reference" href="../_images/share.png"><img alt="../_images/share.png" src="../_images/share.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-shared</span></p>
+</div>
+<div class="figure" id="id85">
+<a class="white-icon reference internal image-reference" href="../_images/share-white.png"><img alt="../_images/share-white.png" class="white-icon" src="../_images/share-white.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-shared-white</span></p>
+</div>
+<div class="figure" id="id86">
+<a class="reference internal image-reference" href="../_images/sound.png"><img alt="../_images/sound.png" src="../_images/sound.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-sound</span></p>
+</div>
+<div class="figure" id="id87">
+<a class="white-icon reference internal image-reference" href="../_images/sound-white.png"><img alt="../_images/sound-white.png" class="white-icon" src="../_images/sound-white.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-sound-white</span></p>
+</div>
+<div class="figure" id="id88">
+<a class="reference internal image-reference" href="../_images/sound-off.png"><img alt="../_images/sound-off.png" src="../_images/sound-off.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-sound-off</span></p>
+</div>
+<div class="figure" id="id89">
+<a class="white-icon reference internal image-reference" href="../_images/sound-off-white.png"><img alt="../_images/sound-off-white.png" class="white-icon" src="../_images/sound-off-white.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-sound-off-white</span></p>
+</div>
+<div class="figure" id="id90">
+<a class="reference internal image-reference" href="../_images/star-dark.png"><img alt="../_images/star-dark.png" src="../_images/star-dark.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-favorite</span></p>
+</div>
+<div class="figure" id="id91">
+<a class="reference internal image-reference" href="../_images/star-dark.png"><img alt="../_images/star-dark.png" src="../_images/star-dark.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-star</span></p>
+</div>
+<div class="figure" id="id92">
+<a class="white-icon reference internal image-reference" href="../_images/star-white.png"><img alt="../_images/star-white.png" class="white-icon" src="../_images/star-white.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-star-white</span></p>
+</div>
+<div class="figure" id="id93">
+<a class="reference internal image-reference" href="../_images/star.png"><img alt="../_images/star.png" src="../_images/star.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-star-dark</span></p>
+</div>
+<div class="figure" id="id94">
+<a class="reference internal image-reference" href="../_images/star.png"><img alt="../_images/star.png" src="../_images/star.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-starred</span></p>
+</div>
+<div class="figure" id="id95">
+<a class="reference internal image-reference" href="../_images/tag.png"><img alt="../_images/tag.png" src="../_images/tag.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-tag</span></p>
+</div>
+<div class="figure" id="id96">
+<a class="white-icon reference internal image-reference" href="../_images/tag-white.png"><img alt="../_images/tag-white.png" class="white-icon" src="../_images/tag-white.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-tag-white</span></p>
+</div>
+<div class="figure" id="id97">
+<a class="reference internal image-reference" href="../_images/timezone.png"><img alt="../_images/timezone.png" src="../_images/timezone.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-timezone</span></p>
+</div>
+<div class="figure" id="id98">
+<a class="white-icon reference internal image-reference" href="../_images/timezone-white.png"><img alt="../_images/timezone-white.png" class="white-icon" src="../_images/timezone-white.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-timezone-white</span></p>
+</div>
+<div class="figure" id="id99">
+<a class="reference internal image-reference" href="../_images/toggle.png"><img alt="../_images/toggle.png" src="../_images/toggle.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-toggle</span></p>
+</div>
+<div class="figure" id="id100">
+<a class="white-icon reference internal image-reference" href="../_images/toggle-white.png"><img alt="../_images/toggle-white.png" class="white-icon" src="../_images/toggle-white.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-toggle-white</span></p>
+</div>
+<div class="figure" id="id101">
+<a class="reference internal image-reference" href="../_images/toggle-background.png"><img alt="../_images/toggle-background.png" src="../_images/toggle-background.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-toggle-background</span></p>
+</div>
+<div class="figure" id="id102">
+<a class="white-icon reference internal image-reference" href="../_images/toggle-background-white.png"><img alt="../_images/toggle-background-white.png" class="white-icon" src="../_images/toggle-background-white.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-toggle-background-white</span></p>
+</div>
+<div class="figure" id="id103">
+<a class="reference internal image-reference" href="../_images/toggle-pictures.png"><img alt="../_images/toggle-pictures.png" src="../_images/toggle-pictures.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-toggle-pictures</span></p>
+</div>
+<div class="figure" id="id104">
+<a class="white-icon reference internal image-reference" href="../_images/toggle-pictures-white.png"><img alt="../_images/toggle-pictures-white.png" class="white-icon" src="../_images/toggle-pictures-white.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-toggle-pictures-white</span></p>
+</div>
+<div class="figure" id="id105">
+<a class="reference internal image-reference" href="../_images/toggle-filelist.png"><img alt="../_images/toggle-filelist.png" src="../_images/toggle-filelist.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-toggle-filelist</span></p>
+</div>
+<div class="figure" id="id106">
+<a class="white-icon reference internal image-reference" href="../_images/toggle-filelist-white.png"><img alt="../_images/toggle-filelist-white.png" class="white-icon" src="../_images/toggle-filelist-white.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-toggle-filelist-white</span></p>
+</div>
+<div class="figure" id="id107">
+<a class="reference internal image-reference" href="../_images/triangle-e.png"><img alt="../_images/triangle-e.png" src="../_images/triangle-e.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-triangle-e</span></p>
+</div>
+<div class="figure" id="id108">
+<a class="white-icon reference internal image-reference" href="../_images/triangle-e-white.png"><img alt="../_images/triangle-e-white.png" class="white-icon" src="../_images/triangle-e-white.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-triangle-e-white</span></p>
+</div>
+<div class="figure" id="id109">
+<a class="reference internal image-reference" href="../_images/triangle-n.png"><img alt="../_images/triangle-n.png" src="../_images/triangle-n.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-triangle-n</span></p>
+</div>
+<div class="figure" id="id110">
+<a class="white-icon reference internal image-reference" href="../_images/triangle-n-white.png"><img alt="../_images/triangle-n-white.png" class="white-icon" src="../_images/triangle-n-white.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-triangle-n-white</span></p>
+</div>
+<div class="figure" id="id111">
+<a class="reference internal image-reference" href="../_images/triangle-s.png"><img alt="../_images/triangle-s.png" src="../_images/triangle-s.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-triangle-s</span></p>
+</div>
+<div class="figure" id="id112">
+<a class="white-icon reference internal image-reference" href="../_images/triangle-s-white.png"><img alt="../_images/triangle-s-white.png" class="white-icon" src="../_images/triangle-s-white.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-triangle-s-white</span></p>
+</div>
+<div class="figure" id="id113">
+<a class="reference internal image-reference" href="../_images/upload.png"><img alt="../_images/upload.png" src="../_images/upload.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-upload</span></p>
+</div>
+<div class="figure" id="id114">
+<a class="white-icon reference internal image-reference" href="../_images/upload-white.png"><img alt="../_images/upload-white.png" class="white-icon" src="../_images/upload-white.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-upload-white</span></p>
+</div>
+<div class="figure" id="id115">
+<a class="reference internal image-reference" href="../_images/user.png"><img alt="../_images/user.png" src="../_images/user.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-user</span></p>
+</div>
+<div class="figure" id="id116">
+<a class="white-icon reference internal image-reference" href="../_images/user-white.png"><img alt="../_images/user-white.png" class="white-icon" src="../_images/user-white.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-user-white</span></p>
+</div>
+<div class="figure" id="id117">
+<a class="reference internal image-reference" href="../_images/group.png"><img alt="../_images/group.png" src="../_images/group.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-group</span></p>
+</div>
+<div class="figure" id="id118">
+<a class="white-icon reference internal image-reference" href="../_images/group-white.png"><img alt="../_images/group-white.png" class="white-icon" src="../_images/group-white.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-group-white</span></p>
+</div>
+<div class="figure" id="id119">
+<a class="reference internal image-reference" href="../_images/filter.png"><img alt="../_images/filter.png" src="../_images/filter.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-filter</span></p>
+</div>
+<div class="figure" id="id120">
+<a class="white-icon reference internal image-reference" href="../_images/filter-white.png"><img alt="../_images/filter-white.png" class="white-icon" src="../_images/filter-white.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-filter-white</span></p>
+</div>
+<div class="figure" id="id121">
+<a class="reference internal image-reference" href="../_images/video.png"><img alt="../_images/video.png" src="../_images/video.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-video</span></p>
+</div>
+<div class="figure" id="id122">
+<a class="white-icon reference internal image-reference" href="../_images/video-white.png"><img alt="../_images/video-white.png" class="white-icon" src="../_images/video-white.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-video-white</span></p>
+</div>
+<div class="figure" id="id123">
+<a class="reference internal image-reference" href="../_images/video-off.png"><img alt="../_images/video-off.png" src="../_images/video-off.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-video-off</span></p>
+</div>
+<div class="figure" id="id124">
+<a class="white-icon reference internal image-reference" href="../_images/video-off-white.png"><img alt="../_images/video-off-white.png" class="white-icon" src="../_images/video-off-white.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-video-off-white</span></p>
+</div>
+<div class="figure" id="id125">
+<a class="reference internal image-reference" href="../_images/video-switch.png"><img alt="../_images/video-switch.png" src="../_images/video-switch.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-video-switch</span></p>
+</div>
+<div class="figure" id="id126">
+<a class="white-icon reference internal image-reference" href="../_images/video-switch-white.png"><img alt="../_images/video-switch-white.png" class="white-icon" src="../_images/video-switch-white.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-video-switch-white</span></p>
+</div>
+<div class="figure" id="id127">
+<a class="reference internal image-reference" href="../_images/view-close.png"><img alt="../_images/view-close.png" src="../_images/view-close.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-view-close</span></p>
+</div>
+<div class="figure" id="id128">
+<a class="reference internal image-reference" href="../_images/view-download.png"><img alt="../_images/view-download.png" src="../_images/view-download.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-view-download</span></p>
+</div>
+<div class="figure" id="id129">
+<a class="reference internal image-reference" href="../_images/view-pause.png"><img alt="../_images/view-pause.png" src="../_images/view-pause.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-view-pause</span></p>
+</div>
+<div class="figure" id="id130">
+<a class="reference internal image-reference" href="../_images/view-play.png"><img alt="../_images/view-play.png" src="../_images/view-play.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-view-play</span></p>
+</div>
+<div class="figure" id="id131">
+<a class="reference internal image-reference" href="../_images/arrow-right.png"><img alt="../_images/arrow-right.png" src="../_images/arrow-right.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-view-next</span></p>
+</div>
+<div class="figure" id="id132">
+<a class="reference internal image-reference" href="../_images/arrow-left.png"><img alt="../_images/arrow-left.png" src="../_images/arrow-left.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-view-previous</span></p>
+</div>
+<div class="figure" id="id133">
+<a class="reference internal image-reference" href="../_images/disabled-user.png"><img alt="../_images/disabled-user.png" src="../_images/disabled-user.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-disabled-user</span></p>
+</div>
+<div class="figure" id="id134">
+<a class="white-icon reference internal image-reference" href="../_images/disabled-user-white.png"><img alt="../_images/disabled-user-white.png" class="white-icon" src="../_images/disabled-user-white.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-disabled-user-white</span></p>
+</div>
+<div class="figure" id="id135">
+<a class="reference internal image-reference" href="../_images/disabled-users.png"><img alt="../_images/disabled-users.png" src="../_images/disabled-users.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-disabled-users</span></p>
+</div>
+<div class="figure" id="id136">
+<a class="white-icon reference internal image-reference" href="../_images/disabled-users-white.png"><img alt="../_images/disabled-users-white.png" class="white-icon" src="../_images/disabled-users-white.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-disabled-users-white</span></p>
+</div>
+<div class="figure" id="id137">
+<a class="reference internal image-reference" href="../_images/user-admin.png"><img alt="../_images/user-admin.png" src="../_images/user-admin.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-user-admin</span></p>
+</div>
+<div class="figure" id="id138">
+<a class="white-icon reference internal image-reference" href="../_images/user-admin-white.png"><img alt="../_images/user-admin-white.png" class="white-icon" src="../_images/user-admin-white.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-user-admin-white</span></p>
+</div>
+<div class="figure" id="id139">
+<a class="reference internal image-reference" href="../_images/calendar.png"><img alt="../_images/calendar.png" src="../_images/calendar.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-calendar</span></p>
+</div>
+<div class="figure" id="id140">
+<a class="reference internal image-reference" href="../_images/calendar.png"><img alt="../_images/calendar.png" src="../_images/calendar.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-calendar-dark</span></p>
+</div>
+<div class="figure" id="id141">
+<a class="reference internal image-reference" href="../_images/contacts.png"><img alt="../_images/contacts.png" src="../_images/contacts.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-contacts</span></p>
+</div>
+<div class="figure" id="id142">
+<a class="reference internal image-reference" href="../_images/contacts.png"><img alt="../_images/contacts.png" src="../_images/contacts.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-contacts-dark</span></p>
+</div>
+<div class="figure" id="id143">
+<a class="reference internal image-reference" href="../_images/files.png"><img alt="../_images/files.png" src="../_images/files.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-files</span></p>
+</div>
+<div class="figure" id="id144">
+<a class="reference internal image-reference" href="../_images/files.png"><img alt="../_images/files.png" src="../_images/files.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-files-dark</span></p>
+</div>
+<div class="figure" id="id145">
+<a class="reference internal image-reference" href="../_images/text.png"><img alt="../_images/text.png" src="../_images/text.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-file</span></p>
+</div>
+<div class="figure" id="id146">
+<a class="reference internal image-reference" href="../_images/file.png"><img alt="../_images/file.png" src="../_images/file.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-filetype-file</span></p>
+</div>
+<div class="figure" id="id147">
+<a class="reference internal image-reference" href="../_images/folder.png"><img alt="../_images/folder.png" src="../_images/folder.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-folder</span></p>
+</div>
+<div class="figure" id="id148">
+<a class="white-icon reference internal image-reference" href="../_images/folder-white.png"><img alt="../_images/folder-white.png" class="white-icon" src="../_images/folder-white.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-folder-white</span></p>
+</div>
+<div class="figure" id="id149">
+<a class="reference internal image-reference" href="../_images/folder.png"><img alt="../_images/folder.png" src="../_images/folder.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-filetype-folder</span></p>
+</div>
+<div class="figure" id="id150">
+<a class="reference internal image-reference" href="../_images/folder-drag-accept.png"><img alt="../_images/folder-drag-accept.png" src="../_images/folder-drag-accept.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-filetype-folder-drag-accept</span></p>
+</div>
+<div class="figure" id="id151">
+<a class="reference internal image-reference" href="../_images/home.png"><img alt="../_images/home.png" src="../_images/home.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-home</span></p>
+</div>
+<div class="figure" id="id152">
+<a class="white-icon reference internal image-reference" href="../_images/home-white.png"><img alt="../_images/home-white.png" class="white-icon" src="../_images/home-white.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-home-white</span></p>
+</div>
+<div class="figure" id="id153">
+<a class="reference internal image-reference" href="../_images/link.png"><img alt="../_images/link.png" src="../_images/link.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-link</span></p>
+</div>
+<div class="figure" id="id154">
+<a class="white-icon reference internal image-reference" href="../_images/link-white.png"><img alt="../_images/link-white.png" class="white-icon" src="../_images/link-white.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-link-white</span></p>
+</div>
+<div class="figure" id="id155">
+<a class="reference internal image-reference" href="../_images/music.png"><img alt="../_images/music.png" src="../_images/music.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-music</span></p>
+</div>
+<div class="figure" id="id156">
+<a class="white-icon reference internal image-reference" href="../_images/music-white.png"><img alt="../_images/music-white.png" class="white-icon" src="../_images/music-white.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-music-white</span></p>
+</div>
+<div class="figure" id="id157">
+<a class="reference internal image-reference" href="../_images/picture.png"><img alt="../_images/picture.png" src="../_images/picture.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-picture</span></p>
+</div>
+<div class="figure" id="id158">
+<a class="white-icon reference internal image-reference" href="../_images/picture-white.png"><img alt="../_images/picture-white.png" class="white-icon" src="../_images/picture-white.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-picture-white</span></p>
+</div>
+<div class="figure" id="id159">
+<a class="reference internal image-reference" href="../_images/desktop.png"><img alt="../_images/desktop.png" src="../_images/desktop.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-desktop</span></p>
+</div>
+<div class="figure" id="id160">
+<a class="white-icon reference internal image-reference" href="../_images/desktop-white.png"><img alt="../_images/desktop-white.png" class="white-icon" src="../_images/desktop-white.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-desktop-white</span></p>
+</div>
+<div class="figure" id="id161">
+<a class="reference internal image-reference" href="../_images/phone.png"><img alt="../_images/phone.png" src="../_images/phone.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-phone</span></p>
+</div>
+<div class="figure" id="id162">
+<a class="white-icon reference internal image-reference" href="../_images/phone-white.png"><img alt="../_images/phone-white.png" class="white-icon" src="../_images/phone-white.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-phone-white</span></p>
+</div>
+<div class="figure" id="id163">
+<a class="reference internal image-reference" href="../_images/tablet.png"><img alt="../_images/tablet.png" src="../_images/tablet.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-tablet</span></p>
+</div>
+<div class="figure" id="id164">
+<a class="white-icon reference internal image-reference" href="../_images/tablet-white.png"><img alt="../_images/tablet-white.png" class="white-icon" src="../_images/tablet-white.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-tablet-white</span></p>
+</div>
+<div class="figure" id="id165">
+<a class="reference internal image-reference" href="../_images/user.png"><img alt="../_images/user.png" src="../_images/user.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-category-installed</span></p>
+</div>
+<div class="figure" id="id166">
+<a class="reference internal image-reference" href="../_images/checkmark.png"><img alt="../_images/checkmark.png" src="../_images/checkmark.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-category-enabled</span></p>
+</div>
+<div class="figure" id="id167">
+<a class="reference internal image-reference" href="../_images/close.png"><img alt="../_images/close.png" src="../_images/close.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-category-disabled</span></p>
+</div>
+<div class="figure" id="id168">
+<a class="reference internal image-reference" href="../_images/bundles.png"><img alt="../_images/bundles.png" src="../_images/bundles.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-category-app-bundles</span></p>
+</div>
+<div class="figure" id="id169">
+<a class="reference internal image-reference" href="../_images/download.png"><img alt="../_images/download.png" src="../_images/download.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-category-updates</span></p>
+</div>
+<div class="figure" id="id170">
+<a class="reference internal image-reference" href="../_images/files1.png"><img alt="../_images/files1.png" src="../_images/files1.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-category-files</span></p>
+</div>
+<div class="figure" id="id171">
+<a class="reference internal image-reference" href="../_images/social.png"><img alt="../_images/social.png" src="../_images/social.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-category-social</span></p>
+</div>
+<div class="figure" id="id172">
+<a class="reference internal image-reference" href="../_images/office.png"><img alt="../_images/office.png" src="../_images/office.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-category-office</span></p>
+</div>
+<div class="figure" id="id173">
+<a class="reference internal image-reference" href="../_images/auth.png"><img alt="../_images/auth.png" src="../_images/auth.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-category-auth</span></p>
+</div>
+<div class="figure" id="id174">
+<a class="reference internal image-reference" href="../_images/monitoring.png"><img alt="../_images/monitoring.png" src="../_images/monitoring.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-category-monitoring</span></p>
+</div>
+<div class="figure" id="id175">
+<a class="reference internal image-reference" href="../_images/multimedia.png"><img alt="../_images/multimedia.png" src="../_images/multimedia.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-category-multimedia</span></p>
+</div>
+<div class="figure" id="id176">
+<a class="reference internal image-reference" href="../_images/organization.png"><img alt="../_images/organization.png" src="../_images/organization.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-category-organization</span></p>
+</div>
+<div class="figure" id="id177">
+<a class="reference internal image-reference" href="../_images/customization.png"><img alt="../_images/customization.png" src="../_images/customization.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-category-customization</span></p>
+</div>
+<div class="figure" id="id178">
+<a class="reference internal image-reference" href="../_images/integration.png"><img alt="../_images/integration.png" src="../_images/integration.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-category-integration</span></p>
+</div>
+<div class="figure" id="id179">
+<a class="reference internal image-reference" href="../_images/settings-dark.png"><img alt="../_images/settings-dark.png" src="../_images/settings-dark.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-category-tools</span></p>
+</div>
+<div class="figure" id="id180">
+<a class="reference internal image-reference" href="../_images/games.png"><img alt="../_images/games.png" src="../_images/games.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-category-games</span></p>
+</div>
+<div class="figure" id="id181">
+<a class="reference internal image-reference" href="../_images/password.png"><img alt="../_images/password.png" src="../_images/password.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-category-security</span></p>
+</div>
+<div class="figure" id="id182">
+<a class="reference internal image-reference" href="../_images/search.png"><img alt="../_images/search.png" src="../_images/search.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-category-search</span></p>
+</div>
+<div class="figure" id="id183">
+<a class="reference internal image-reference" href="../_images/workflow.png"><img alt="../_images/workflow.png" src="../_images/workflow.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-category-workflow</span></p>
+</div>
+<div class="figure" id="id184">
+<a class="reference internal image-reference" href="../_images/dashboard.png"><img alt="../_images/dashboard.png" src="../_images/dashboard.png" style="width: 32px; height: 32px;" /></a>
+<p class="caption"><span class="caption-text">icon-category-dashboard</span></p>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="svg-color-api">
+<span id="svgcolorapi"></span><h2>Svg color api<a class="headerlink" href="#svg-color-api" title="Permalink to this headline">¶</a></h2>
+<p>More informations about scss and this api: <a class="reference internal" href="css.html#cssicons"><span class="std std-ref">scss mixins and functions</span></a></p>
+<p>You can request and color any svg icons used in nextcloud with this api.
+The server will directly change the colours of the <code class="docutils literal"><span class="pre">circle</span></code>, <code class="docutils literal"><span class="pre">rect</span></code> and <code class="docutils literal"><span class="pre">path</span></code> elements in the svg you provide.
+Simply use those urls:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">https://yourdomain/svg/core/actions/menu/ffffff</span></code>
+Will serve the svg located in the core/img directory as a white icon
+<code class="docutils literal"><span class="pre">/core/img/actions/menu.svg</span></code></li>
+<li><code class="docutils literal"><span class="pre">https://yourdomain/svg/core/places/calendar/0082c9</span></code>
+Will serve the svg located in the core/img directory with the color #0082c9
+<code class="docutils literal"><span class="pre">/core/img/places/calendar.svg</span></code></li>
+<li><code class="docutils literal"><span class="pre">https://yourdomain/svg/files/app/000000</span></code>
+Will serve the svg located in the files app <code class="docutils literal"><span class="pre">img</span></code> directory ad a black icon
+<code class="docutils literal"><span class="pre">/app/files/img/app.svg</span></code></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../android_library/index.html" class="btn btn-neutral float-right" title="Android application development" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="css.html" class="btn btn-neutral float-left" title="SCSS" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021 Nextcloud GmbH.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: 14
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/14/developer_manual">14</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/15/developer_manual">15</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/16/developer_manual">16</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/developer_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/developer_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+   
+
+</body>
+</html>

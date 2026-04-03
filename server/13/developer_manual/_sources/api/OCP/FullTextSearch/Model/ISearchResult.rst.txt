@@ -1,0 +1,296 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+ISearchResult
+=============
+
+
+.. php:namespace:: OCP\FullTextSearch\Model
+
+.. php:interface:: ISearchResult
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Interface ISearchResult
+		
+		| When a search request is initiated, FullTextSearch will create a SearchResult
+		| object, based on this interface, containing the SearchRequest and the targeted
+		| Content Provider\.
+		| 
+		| The object will be passed to the Search Platform, which will proceed to the
+		| search and fill the SearchResult object with results\.
+		| 
+		| Then, the object will be passed to the targeted Content Provider that will
+		| improve the Search Results with detailed informations\.
+		| 
+		| Finally, the SearchResult is returned to the original search request\.
+		
+	
+	:Source:
+		`lib/public/FullTextSearch/Model/ISearchResult.php#49 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/ISearchResult.php#L49>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public getRequest()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the original SearchRequest\.
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/Model/ISearchResult.php#61 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/ISearchResult.php#L61>`_
+		
+		
+		:See: :any:`\\OCP\\FullTextSearch\\Model\\ISearchRequest <OCP\\FullTextSearch\\Model\\ISearchRequest>` 
+		:Since: 15.0.0 
+		:Returns: :any:`\\OCP\\FullTextSearch\\Model\\ISearchRequest <OCP\\FullTextSearch\\Model\\ISearchRequest>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getProvider()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the targeted Content Provider\.
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/Model/ISearchResult.php#70 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/ISearchResult.php#L70>`_
+		
+		
+		:Since: 15.0.0 
+		:Returns: :any:`\\OCP\\FullTextSearch\\IFullTextSearchProvider <OCP\\FullTextSearch\\IFullTextSearchProvider>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public addDocument( $document)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Add an IIndexDocument as one of the result of the search request\.
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/Model/ISearchResult.php#82 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/ISearchResult.php#L82>`_
+		
+		
+		:Parameters:
+			* **$document** (:any:`OCP\\FullTextSearch\\Model\\IIndexDocument <OCP\\FullTextSearch\\Model\\IIndexDocument>`)  
+
+		
+		:Since: 15.0.0 
+		:Returns: :any:`\\OCP\\FullTextSearch\\Model\\ISearchResult <OCP\\FullTextSearch\\Model\\ISearchResult>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getDocuments()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns all result of the search request, in an array of IIndexDocument\.
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/Model/ISearchResult.php#91 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/ISearchResult.php#L91>`_
+		
+		
+		:Since: 15.0.0 
+		:Returns: :any:`\\OCP\\FullTextSearch\\Model\\IIndexDocument\[\] <OCP\\FullTextSearch\\Model\\IIndexDocument>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setDocuments( $documents)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set an array of IIndexDocument as the result of the search request\.
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/Model/ISearchResult.php#102 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/ISearchResult.php#L102>`_
+		
+		
+		:Parameters:
+			* **$documents** (:any:`OCP\\FullTextSearch\\Model\\IIndexDocument\[\] <OCP\\FullTextSearch\\Model\\IIndexDocument>`)  
+
+		
+		:Since: 15.0.0 
+		:Returns: :any:`\\OCP\\FullTextSearch\\Model\\ISearchResult <OCP\\FullTextSearch\\Model\\ISearchResult>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public addAggregation( $category, $value, $count)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Add an aggregation to the result\.
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/Model/ISearchResult.php#116 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/ISearchResult.php#L116>`_
+		
+		
+		:Parameters:
+			* **$category** (string)  
+			* **$value** (string)  
+			* **$count** (int)  
+
+		
+		:Since: 15.0.0 
+		:Returns: :any:`\\OCP\\FullTextSearch\\Model\\ISearchResult <OCP\\FullTextSearch\\Model\\ISearchResult>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getAggregations( $category)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get all aggregations\.
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/Model/ISearchResult.php#127 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/ISearchResult.php#L127>`_
+		
+		
+		:Parameters:
+			* **$category** (string)  
+
+		
+		:Since: 15.0.0 
+		:Returns: array 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setRawResult( $result)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set the raw result of the request\.
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/Model/ISearchResult.php#139 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/ISearchResult.php#L139>`_
+		
+		
+		:Parameters:
+			* **$result** (string)  
+
+		
+		:Since: 15.0.0 
+		:Returns: :any:`\\OCP\\FullTextSearch\\Model\\ISearchResult <OCP\\FullTextSearch\\Model\\ISearchResult>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setTotal( $total)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set the total number of results for the search request\.
+			
+			| Used by pagination\.
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/Model/ISearchResult.php#152 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/ISearchResult.php#L152>`_
+		
+		
+		:Parameters:
+			* **$total** (int)  
+
+		
+		:Since: 15.0.0 
+		:Returns: :any:`\\OCP\\FullTextSearch\\Model\\ISearchResult <OCP\\FullTextSearch\\Model\\ISearchResult>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setMaxScore( $score)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set the top score for the search request\.
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/Model/ISearchResult.php#164 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/ISearchResult.php#L164>`_
+		
+		
+		:Parameters:
+			* **$score** (int)  
+
+		
+		:Since: 15.0.0 
+		:Returns: :any:`\\OCP\\FullTextSearch\\Model\\ISearchResult <OCP\\FullTextSearch\\Model\\ISearchResult>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setTime( $time)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set the time spent by the request to perform the search\.
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/Model/ISearchResult.php#176 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/ISearchResult.php#L176>`_
+		
+		
+		:Parameters:
+			* **$time** (int)  
+
+		
+		:Since: 15.0.0 
+		:Returns: :any:`\\OCP\\FullTextSearch\\Model\\ISearchResult <OCP\\FullTextSearch\\Model\\ISearchResult>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setTimedOut( $timedOut)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set to true if the request timed out\.
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/Model/ISearchResult.php#188 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/ISearchResult.php#L188>`_
+		
+		
+		:Parameters:
+			* **$timedOut** (bool)  
+
+		
+		:Since: 15.0.0 
+		:Returns: :any:`\\OCP\\FullTextSearch\\Model\\ISearchResult <OCP\\FullTextSearch\\Model\\ISearchResult>` 
+	
+	
+

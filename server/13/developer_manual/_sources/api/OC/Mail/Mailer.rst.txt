@@ -1,0 +1,259 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+Mailer
+======
+
+
+.. php:namespace:: OC\Mail
+
+.. php:class:: Mailer
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Class Mailer provides some basic functions to create a mail message that can be used in combination with
+		| \\OC\\Mail\\Message\.
+		
+		| Example usage:
+		| 
+		| 	$mailer = \\OC::$server\-\>getMailer\(\);
+		| 	$message = $mailer\-\>createMessage\(\);
+		| 	$message\-\>setSubject\(\'Your Subject\'\);
+		| 	$message\-\>setFrom\(array\(\'cloud@domain\.org\' =\> \'ownCloud Notifier\'\)\);
+		| 	$message\-\>setTo\(array\(\'recipient@domain\.org\' =\> \'Recipient\'\)\);
+		| 	$message\-\>setBody\(\'The message text\', \'text/html\'\);
+		| 	$mailer\-\>send\($message\);
+		| 
+		| This message can then be passed to send\(\) of \\OC\\Mail\\Mailer
+		
+	
+	:Source:
+		`lib/private/Mail/Mailer.php#72 <https://github.com/nextcloud/server/blob/stable13/lib/private/Mail/Mailer.php#L72>`_
+	
+	:Implements:
+		:php:interface:`OCP\\Mail\\IMailer` 
+	
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $config, $logger, $defaults, $urlGenerator, $l10n, $dispatcher, $l10nFactory)
+	
+		:Source:
+			`lib/private/Mail/Mailer.php#98 <https://github.com/nextcloud/server/blob/stable13/lib/private/Mail/Mailer.php#L98>`_
+		
+		
+		:Parameters:
+			* **$config** (:any:`OCP\\IConfig <OCP\\IConfig>`)  
+			* **$logger** (:any:`OCP\\ILogger <OCP\\ILogger>`)  
+			* **$defaults** (:any:`OCP\\Defaults <OCP\\Defaults>`)  
+			* **$urlGenerator** (:any:`OCP\\IURLGenerator <OCP\\IURLGenerator>`)  
+			* **$l10n** (:any:`OCP\\IL10N <OCP\\IL10N>`)  
+			* **$dispatcher** (:any:`OCP\\EventDispatcher\\IEventDispatcher <OCP\\EventDispatcher\\IEventDispatcher>`)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public createMessage()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Creates a new message object that can be passed to send\(\)
+			
+		
+		:Source:
+			`lib/private/Mail/Mailer.php#119 <https://github.com/nextcloud/server/blob/stable13/lib/private/Mail/Mailer.php#L119>`_
+		
+		
+		:Returns: :any:`\\OCP\\Mail\\IMessage <OCP\\Mail\\IMessage>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public createAttachment( $data=null, $filename=null, $contentType=null)
+	
+		:Source:
+			`lib/private/Mail/Mailer.php#131 <https://github.com/nextcloud/server/blob/stable13/lib/private/Mail/Mailer.php#L131>`_
+		
+		
+		:Parameters:
+			* **$data** (string | null)  
+			* **$filename** (string | null)  
+			* **$contentType** (string | null)  
+
+		
+		:Returns: :any:`\\OCP\\Mail\\IAttachment <OCP\\Mail\\IAttachment>` 
+		:Since: 13.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public createAttachmentFromPath( $path, $contentType=null)
+	
+		:Source:
+			`lib/private/Mail/Mailer.php#141 <https://github.com/nextcloud/server/blob/stable13/lib/private/Mail/Mailer.php#L141>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+			* **$contentType** (string | null)  
+
+		
+		:Returns: :any:`\\OCP\\Mail\\IAttachment <OCP\\Mail\\IAttachment>` 
+		:Since: 13.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public createEMailTemplate( $emailId, $data=\[\])
+	
+		.. rst-class:: phpdoc-description
+		
+			| Creates a new email template object
+			
+		
+		:Source:
+			`lib/private/Mail/Mailer.php#153 <https://github.com/nextcloud/server/blob/stable13/lib/private/Mail/Mailer.php#L153>`_
+		
+		
+		:Parameters:
+			* **$emailId** (string)  
+			* **$data** (array)  
+
+		
+		:Returns: :any:`\\OCP\\Mail\\IEMailTemplate <OCP\\Mail\\IEMailTemplate>` 
+		:Since: 12.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public send( $message)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Send the specified message\. Also sets the from address to the value defined in config\.php
+			| if no\-one has been passed\.
+			
+		
+		:Source:
+			`lib/private/Mail/Mailer.php#185 <https://github.com/nextcloud/server/blob/stable13/lib/private/Mail/Mailer.php#L185>`_
+		
+		
+		:Parameters:
+			* **$message** (:any:`OCP\\Mail\\IMessage <OCP\\Mail\\IMessage>` | :any:`\\OC\\Mail\\Message <OC\\Mail\\Message>`)  Message to send
+
+		
+		:Returns: string[] Array with failed recipients\. Be aware that this depends on the used mail backend and
+			therefore should be considered
+		
+		:Throws: :any:`\\Exception <Exception>` In case it was not possible to send the message\. \(for example if an invalid mail address
+			has been supplied\.\)
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public validateMailAddress( $email)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Checks if an e\-mail address is valid
+			
+		
+		:Source:
+			`lib/private/Mail/Mailer.php#223 <https://github.com/nextcloud/server/blob/stable13/lib/private/Mail/Mailer.php#L223>`_
+		
+		
+		:Parameters:
+			* **$email** (string)  Email address to be validated
+
+		
+		:Returns: bool True if the mail address is valid, false otherwise
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected convertEmail( $email)
+	
+		.. rst-class:: phpdoc-description
+		
+			| SwiftMailer does currently not work with IDN domains, this function therefore converts the domains
+			
+			| FIXME: Remove this once SwiftMailer supports IDN
+			
+		
+		:Source:
+			`lib/private/Mail/Mailer.php#242 <https://github.com/nextcloud/server/blob/stable13/lib/private/Mail/Mailer.php#L242>`_
+		
+		
+		:Parameters:
+			* **$email** (string)  
+
+		
+		:Returns: string Converted mail address if \`idn\_to\_ascii\` exists
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected getInstance()
+	
+		:Source:
+			`lib/private/Mail/Mailer.php#252 <https://github.com/nextcloud/server/blob/stable13/lib/private/Mail/Mailer.php#L252>`_
+		
+		
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected getSmtpInstance()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the SMTP transport
+			
+		
+		:Source:
+			`lib/private/Mail/Mailer.php#277 <https://github.com/nextcloud/server/blob/stable13/lib/private/Mail/Mailer.php#L277>`_
+		
+		
+		:Returns: :any:`\\Swift\_SmtpTransport <Swift\_SmtpTransport>` 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected getSendMailInstance()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the sendmail transport
+			
+		
+		:Source:
+			`lib/private/Mail/Mailer.php#304 <https://github.com/nextcloud/server/blob/stable13/lib/private/Mail/Mailer.php#L304>`_
+		
+		
+		:Returns: :any:`\\Swift\_SendmailTransport <Swift\_SendmailTransport>` 
+	
+	
+

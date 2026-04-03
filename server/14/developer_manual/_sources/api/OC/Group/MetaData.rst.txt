@@ -1,0 +1,182 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+MetaData
+========
+
+
+.. php:namespace:: OC\Group
+
+.. php:class:: MetaData
+
+
+	:Source:
+		`lib/private/Group/MetaData.php#38 <https://github.com/nextcloud/server/blob/stable13/lib/private/Group/MetaData.php#L38>`_
+	
+
+Constants
+---------
+
+.. php:const:: SORT_NONE = 0
+
+	:Source:
+		`lib/private/Group/MetaData.php#39 <https://github.com/nextcloud/server/blob/stable13/lib/private/Group/MetaData.php#L39>`_
+	
+
+
+.. php:const:: SORT_USERCOUNT = 1
+
+	:Source:
+		`lib/private/Group/MetaData.php#40 <https://github.com/nextcloud/server/blob/stable13/lib/private/Group/MetaData.php#L40>`_
+	
+
+
+.. php:const:: SORT_GROUPNAME = 2
+
+	:Source:
+		`lib/private/Group/MetaData.php#41 <https://github.com/nextcloud/server/blob/stable13/lib/private/Group/MetaData.php#L41>`_
+	
+
+
+Properties
+----------
+
+.. php:attr:: protected static user
+
+	:Source:
+		`lib/private/Group/MetaData.php#44 <https://github.com/nextcloud/server/blob/stable13/lib/private/Group/MetaData.php#L44>`_
+	
+	:Type: string 
+
+
+.. php:attr:: protected static isAdmin
+
+	:Source:
+		`lib/private/Group/MetaData.php#46 <https://github.com/nextcloud/server/blob/stable13/lib/private/Group/MetaData.php#L46>`_
+	
+	:Type: bool 
+
+
+.. php:attr:: protected static metaData
+
+	:Source:
+		`lib/private/Group/MetaData.php#48 <https://github.com/nextcloud/server/blob/stable13/lib/private/Group/MetaData.php#L48>`_
+	
+	:Type: array 
+
+
+.. php:attr:: protected static groupManager
+
+	:Source:
+		`lib/private/Group/MetaData.php#50 <https://github.com/nextcloud/server/blob/stable13/lib/private/Group/MetaData.php#L50>`_
+	
+	:Type: :any:`\\OC\\Group\\Manager <OC\\Group\\Manager>` 
+
+
+.. php:attr:: protected static sorting
+
+	:Source:
+		`lib/private/Group/MetaData.php#52 <https://github.com/nextcloud/server/blob/stable13/lib/private/Group/MetaData.php#L52>`_
+	
+	:Type: bool 
+
+
+.. php:attr:: protected static userSession
+
+	:Source:
+		`lib/private/Group/MetaData.php#54 <https://github.com/nextcloud/server/blob/stable13/lib/private/Group/MetaData.php#L54>`_
+	
+	:Type: :any:`\\OCP\\IUserSession <OCP\\IUserSession>` 
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $user, $isAdmin, $groupManager, $userSession)
+	
+		:Source:
+			`lib/private/Group/MetaData.php#62 <https://github.com/nextcloud/server/blob/stable13/lib/private/Group/MetaData.php#L62>`_
+		
+		
+		:Parameters:
+			* **$user** (string)  the uid of the current user
+			* **$isAdmin** (bool)  whether the current users is an admin
+			* **$groupManager** (:any:`OCP\\IGroupManager <OCP\\IGroupManager>`)  
+			* **$userSession** (:any:`OCP\\IUserSession <OCP\\IUserSession>`)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public get( $groupSearch="", $userSearch="")
+	
+		.. rst-class:: phpdoc-description
+		
+			| returns an array with meta data about all available groups
+			| the array is structured as follows:
+			| \[0\] array containing meta data about admin groups
+			| \[1\] array containing meta data about unprivileged groups
+			
+		
+		:Source:
+			`lib/private/Group/MetaData.php#84 <https://github.com/nextcloud/server/blob/stable13/lib/private/Group/MetaData.php#L84>`_
+		
+		
+		:Parameters:
+			* **$groupSearch** (string)  only effective when instance was created with
+			isAdmin being true
+			* **$userSearch** (string)  the pattern users are search for
+
+		
+		:Returns: array 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setSorting( $sortMode)
+	
+		.. rst-class:: phpdoc-description
+		
+			| sets the sort mode, see SORT\_\* constants for supported modes
+			
+		
+		:Source:
+			`lib/private/Group/MetaData.php#130 <https://github.com/nextcloud/server/blob/stable13/lib/private/Group/MetaData.php#L130>`_
+		
+		
+		:Parameters:
+			* **$sortMode** (int)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getGroups( $search="")
+	
+		.. rst-class:: phpdoc-description
+		
+			| returns the available groups
+			
+		
+		:Source:
+			`lib/private/Group/MetaData.php#196 <https://github.com/nextcloud/server/blob/stable13/lib/private/Group/MetaData.php#L196>`_
+		
+		
+		:Parameters:
+			* **$search** (string)  a search string
+
+		
+		:Returns: :any:`\\OCP\\IGroup\[\] <OCP\\IGroup>` 
+	
+	
+

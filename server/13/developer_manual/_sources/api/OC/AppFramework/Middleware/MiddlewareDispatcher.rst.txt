@@ -1,0 +1,188 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+MiddlewareDispatcher
+====================
+
+
+.. php:namespace:: OC\AppFramework\Middleware
+
+.. php:class:: MiddlewareDispatcher
+
+
+	.. rst-class:: phpdoc-description
+	
+		| This class is used to store and run all the middleware in correct order
+		
+	
+	:Source:
+		`lib/private/AppFramework/Middleware/MiddlewareDispatcher.php#42 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Middleware/MiddlewareDispatcher.php#L42>`_
+	
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Constructor
+			
+		
+		:Source:
+			`lib/private/AppFramework/Middleware/MiddlewareDispatcher.php#59 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Middleware/MiddlewareDispatcher.php#L59>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public registerMiddleware( $middleWare)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Adds a new middleware
+			
+		
+		:Source:
+			`lib/private/AppFramework/Middleware/MiddlewareDispatcher.php#69 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Middleware/MiddlewareDispatcher.php#L69>`_
+		
+		
+		:Parameters:
+			* **$middleWare** (:any:`OCP\\AppFramework\\Middleware <OCP\\AppFramework\\Middleware>`)  the middleware which will be added
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getMiddlewares()
+	
+		.. rst-class:: phpdoc-description
+		
+			| returns an array with all middleware elements
+			
+		
+		:Source:
+			`lib/private/AppFramework/Middleware/MiddlewareDispatcher.php#78 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Middleware/MiddlewareDispatcher.php#L78>`_
+		
+		
+		:Returns: array the middlewares
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public beforeController( $controller, $methodName)
+	
+		.. rst-class:: phpdoc-description
+		
+			| This is being run in normal order before the controller is being
+			| called which allows several modifications and checks
+			
+		
+		:Source:
+			`lib/private/AppFramework/Middleware/MiddlewareDispatcher.php#91 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Middleware/MiddlewareDispatcher.php#L91>`_
+		
+		
+		:Parameters:
+			* **$controller** (:any:`OCP\\AppFramework\\Controller <OCP\\AppFramework\\Controller>`)  the controller that is being called
+			* **$methodName** (string)  the name of the method that will be called on
+			the controller
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public afterException( $controller, $methodName, $exception)
+	
+		.. rst-class:: phpdoc-description
+		
+			| This is being run when either the beforeController method or the
+			| controller method itself is throwing an exception\. The middleware is asked
+			| in reverse order to handle the exception and to return a response\.
+			
+			| If the response is null, it is assumed that the exception could not be
+			| handled and the error will be thrown again
+			
+		
+		:Source:
+			`lib/private/AppFramework/Middleware/MiddlewareDispatcher.php#118 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Middleware/MiddlewareDispatcher.php#L118>`_
+		
+		
+		:Parameters:
+			* **$controller** (:any:`OCP\\AppFramework\\Controller <OCP\\AppFramework\\Controller>`)  the controller that is being called
+			* **$methodName** (string)  the name of the method that will be called on
+			the controller
+			* **$exception** (:any:`Exception <Exception>`)  the thrown exception
+
+		
+		:Returns: :any:`\\OCP\\AppFramework\\Http\\Response <OCP\\AppFramework\\Http\\Response>` a Response object if the middleware can handle the
+			exception
+		
+		:Throws: :any:`\\Exception <Exception>` the passed in exception if it can\'t handle it
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public afterController( $controller, $methodName, $response)
+	
+		.. rst-class:: phpdoc-description
+		
+			| This is being run after a successful controllermethod call and allows
+			| the manipulation of a Response object\. The middleware is run in reverse order
+			
+		
+		:Source:
+			`lib/private/AppFramework/Middleware/MiddlewareDispatcher.php#141 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Middleware/MiddlewareDispatcher.php#L141>`_
+		
+		
+		:Parameters:
+			* **$controller** (:any:`OCP\\AppFramework\\Controller <OCP\\AppFramework\\Controller>`)  the controller that is being called
+			* **$methodName** (string)  the name of the method that will be called on
+			the controller
+			* **$response** (:any:`OCP\\AppFramework\\Http\\Response <OCP\\AppFramework\\Http\\Response>`)  the generated response from the controller
+
+		
+		:Returns: :any:`\\OCP\\AppFramework\\Http\\Response <OCP\\AppFramework\\Http\\Response>` a Response object
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public beforeOutput( $controller, $methodName, $output)
+	
+		.. rst-class:: phpdoc-description
+		
+			| This is being run after the response object has been rendered and
+			| allows the manipulation of the output\. The middleware is run in reverse order
+			
+		
+		:Source:
+			`lib/private/AppFramework/Middleware/MiddlewareDispatcher.php#160 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Middleware/MiddlewareDispatcher.php#L160>`_
+		
+		
+		:Parameters:
+			* **$controller** (:any:`OCP\\AppFramework\\Controller <OCP\\AppFramework\\Controller>`)  the controller that is being called
+			* **$methodName** (string)  the name of the method that will be called on
+			the controller
+			* **$output** (string)  the generated output from a response
+
+		
+		:Returns: string the output that should be printed
+	
+	
+

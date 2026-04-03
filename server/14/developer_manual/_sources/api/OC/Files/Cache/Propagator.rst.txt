@@ -1,0 +1,117 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+Propagator
+==========
+
+
+.. php:namespace:: OC\Files\Cache
+
+.. php:class:: Propagator
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Propagate etags and mtimes within the storage
+		
+	
+	:Source:
+		`lib/private/Files/Cache/Propagator.php#34 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Propagator.php#L34>`_
+	
+	:Implements:
+		:php:interface:`OCP\\Files\\Cache\\IPropagator` 
+	
+
+Properties
+----------
+
+.. php:attr:: protected static storage
+
+	:Source:
+		`lib/private/Files/Cache/Propagator.php#42 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Propagator.php#L42>`_
+	
+	:Type: :any:`\\OC\\Files\\Storage\\Storage <OC\\Files\\Storage\\Storage>` 
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $storage, $connection, $ignore=\[\])
+	
+		:Source:
+			`lib/private/Files/Cache/Propagator.php#54 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Propagator.php#L54>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public propagateChange( $internalPath, $time, $sizeDifference=0)
+	
+		:Source:
+			`lib/private/Files/Cache/Propagator.php#66 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Propagator.php#L66>`_
+		
+		
+		:Parameters:
+			* **$internalPath** (string)  
+			* **$time** (int)  
+			* **$sizeDifference** (int)  number of bytes the file has grown
+
+		
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected getParents( $path)
+	
+		:Source:
+			`lib/private/Files/Cache/Propagator.php#117 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Propagator.php#L117>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public beginBatch()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Mark the beginning of a propagation batch
+			
+			| Note that not all cache setups support propagation in which case this will be a noop
+			| 
+			| Batching for cache setups that do support it has to be explicit since the cache state is not fully consistent
+			| before the batch is committed\.
+			
+		
+		:Source:
+			`lib/private/Files/Cache/Propagator.php#136 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Propagator.php#L136>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public commitBatch()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Commit the active propagation batch
+			
+		
+		:Source:
+			`lib/private/Files/Cache/Propagator.php#158 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Propagator.php#L158>`_
+		
+		
+	
+	
+

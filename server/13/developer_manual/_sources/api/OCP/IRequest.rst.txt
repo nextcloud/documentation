@@ -1,0 +1,529 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IRequest
+========
+
+
+.. php:namespace:: OCP
+
+.. php:interface:: IRequest
+
+
+	.. rst-class:: phpdoc-description
+	
+		| This interface provides an immutable object with with accessors to
+		| request variables and headers\.
+		
+		| Access request variables by method and name\.
+		| 
+		| Examples:
+		| 
+		| $request\-\>post\[\'myvar\'\]; // Only look for POST variables
+		| $request\-\>myvar; or $request\-\>\{\'myvar\'\}; or $request\-\>\{$myvar\}
+		| Looks in the combined GET, POST and urlParams array\.
+		| 
+		| If you access e\.g\. \-\>post but the current HTTP request method
+		| is GET a \\LogicException will be thrown\.
+		| 
+		| NOTE:
+		| \- When accessing \-\>put a stream resource is returned and the accessor
+		|   will return false on subsequent access to \-\>put or \-\>patch\.
+		| \- When accessing \-\>patch and the Content\-Type is either application/json
+		|   or application/x\-www\-form\-urlencoded \(most cases\) it will act like \-\>get
+		|   and \-\>post and return an array\. Otherwise the raw data will be returned\.
+		
+	
+	:Implemented by:
+		:php:class:`OC\\AppFramework\\Http\\Request` 
+	
+	
+	:Source:
+		`lib/public/IRequest.php#71 <https://github.com/nextcloud/server/blob/stable13/lib/public/IRequest.php#L71>`_
+	
+
+Constants
+---------
+
+.. php:const:: USER_AGENT_CLIENT_ANDROID = /^Mozilla\\/5\\\.0 \\\(Android\\\) \(ownCloud\|Nextcloud\)\\\-android\.\*$/
+
+	:Source:
+		`lib/public/IRequest.php#75 <https://github.com/nextcloud/server/blob/stable13/lib/public/IRequest.php#L75>`_
+	
+	:Since: 9.1.0 
+
+
+.. php:const:: USER_AGENT_TALK_ANDROID = /^Mozilla\\/5\\\.0 \\\(Android\\\) Nextcloud\\\-Talk v\.\*$/
+
+	:Source:
+		`lib/public/IRequest.php#80 <https://github.com/nextcloud/server/blob/stable13/lib/public/IRequest.php#L80>`_
+	
+	:Since: 13.0.0 
+
+
+.. php:const:: USER_AGENT_CLIENT_DESKTOP = /^Mozilla\\/5\\\.0 \\\(\[A\-Za\-z \]\+\\\) \(mirall\|csyncoC\)\\/\.\*$/
+
+	:Source:
+		`lib/public/IRequest.php#85 <https://github.com/nextcloud/server/blob/stable13/lib/public/IRequest.php#L85>`_
+	
+	:Since: 9.1.0 
+
+
+.. php:const:: USER_AGENT_CLIENT_IOS = /^Mozilla\\/5\\\.0 \\\(iOS\\\) \(ownCloud\|Nextcloud\)\\\-iOS\.\*$/
+
+	:Source:
+		`lib/public/IRequest.php#90 <https://github.com/nextcloud/server/blob/stable13/lib/public/IRequest.php#L90>`_
+	
+	:Since: 9.1.0 
+
+
+.. php:const:: USER_AGENT_TALK_IOS = /^Mozilla\\/5\\\.0 \\\(iOS\\\) Nextcloud\\\-Talk v\.\*$/
+
+	:Source:
+		`lib/public/IRequest.php#95 <https://github.com/nextcloud/server/blob/stable13/lib/public/IRequest.php#L95>`_
+	
+	:Since: 13.0.0 
+
+
+.. php:const:: USER_AGENT_OUTLOOK_ADDON = /^Mozilla\\/5\\\.0 \\\(\[A\-Za\-z \]\+\\\) Nextcloud\\\-Outlook v\.\*$/
+
+	:Source:
+		`lib/public/IRequest.php#100 <https://github.com/nextcloud/server/blob/stable13/lib/public/IRequest.php#L100>`_
+	
+	:Since: 13.0.1 
+
+
+.. php:const:: USER_AGENT_THUNDERBIRD_ADDON = /^Mozilla\\/5\\\.0 \\\(\[A\-Za\-z \]\+\\\) Nextcloud\\\-Thunderbird v\.\*$/
+
+	:Source:
+		`lib/public/IRequest.php#105 <https://github.com/nextcloud/server/blob/stable13/lib/public/IRequest.php#L105>`_
+	
+	:Since: 13.0.1 
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public getHeader( $name)
+	
+		:Source:
+			`lib/public/IRequest.php#115 <https://github.com/nextcloud/server/blob/stable13/lib/public/IRequest.php#L115>`_
+		
+		
+		:Parameters:
+			* **$name** (string)  
+
+		
+		:Returns: string 
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getParam( $key, $default=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Lets you access post and get parameters by the index
+			| In case of json requests the encoded json body is accessed
+			
+		
+		:Source:
+			`lib/public/IRequest.php#133 <https://github.com/nextcloud/server/blob/stable13/lib/public/IRequest.php#L133>`_
+		
+		
+		:Parameters:
+			* **$key** (string)  the key which you want to access in the URL Parameter
+			placeholder, $_POST or $_GET array.
+			The priority how they're returned is the following:
+			1. URL parameters
+			2. POST parameters
+			3. GET parameters
+			* **$default** (mixed)  If the key is not found, this value will be returned
+
+		
+		:Returns: mixed the content of the array
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getParams()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns all params that were received, be it from the request
+			
+			| \(as GET or POST\) or through the URL by the route
+			
+		
+		:Source:
+			`lib/public/IRequest.php#146 <https://github.com/nextcloud/server/blob/stable13/lib/public/IRequest.php#L146>`_
+		
+		
+		:Returns: array the array with all parameters
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getMethod()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the method of the request
+			
+		
+		:Source:
+			`lib/public/IRequest.php#154 <https://github.com/nextcloud/server/blob/stable13/lib/public/IRequest.php#L154>`_
+		
+		
+		:Returns: string the method of the request \(POST, GET, etc\)
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getUploadedFile( $key)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Shortcut for accessing an uploaded file through the $\_FILES array
+			
+		
+		:Source:
+			`lib/public/IRequest.php#163 <https://github.com/nextcloud/server/blob/stable13/lib/public/IRequest.php#L163>`_
+		
+		
+		:Parameters:
+			* **$key** (string)  the key that will be taken from the $_FILES array
+
+		
+		:Returns: array the file in the $\_FILES element
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getEnv( $key)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Shortcut for getting env variables
+			
+		
+		:Source:
+			`lib/public/IRequest.php#173 <https://github.com/nextcloud/server/blob/stable13/lib/public/IRequest.php#L173>`_
+		
+		
+		:Parameters:
+			* **$key** (string)  the key that will be taken from the $_ENV array
+
+		
+		:Returns: array the value in the $\_ENV element
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getCookie( $key)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Shortcut for getting cookie variables
+			
+		
+		:Source:
+			`lib/public/IRequest.php#185 <https://github.com/nextcloud/server/blob/stable13/lib/public/IRequest.php#L185>`_
+		
+		
+		:Parameters:
+			* **$key** (string)  the key that will be taken from the $_COOKIE array
+
+		
+		:Returns: string | null the value in the $\_COOKIE element
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public passesCSRFCheck()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Checks if the CSRF check was correct
+			
+		
+		:Source:
+			`lib/public/IRequest.php#194 <https://github.com/nextcloud/server/blob/stable13/lib/public/IRequest.php#L194>`_
+		
+		
+		:Returns: bool true if CSRF check passed
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public passesStrictCookieCheck()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Checks if the strict cookie has been sent with the request if the request
+			| is including any cookies\.
+			
+		
+		:Source:
+			`lib/public/IRequest.php#203 <https://github.com/nextcloud/server/blob/stable13/lib/public/IRequest.php#L203>`_
+		
+		
+		:Returns: bool 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public passesLaxCookieCheck()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Checks if the lax cookie has been sent with the request if the request
+			| is including any cookies\.
+			
+		
+		:Source:
+			`lib/public/IRequest.php#212 <https://github.com/nextcloud/server/blob/stable13/lib/public/IRequest.php#L212>`_
+		
+		
+		:Returns: bool 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getId()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns an ID for the request, value is not guaranteed to be unique and is mostly meant for logging
+			| If \`mod\_unique\_id\` is installed this value will be taken\.
+			
+		
+		:Source:
+			`lib/public/IRequest.php#221 <https://github.com/nextcloud/server/blob/stable13/lib/public/IRequest.php#L221>`_
+		
+		
+		:Returns: string 
+		:Since: 8.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getRemoteAddress()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the remote address, if the connection came from a trusted proxy
+			| and \`forwarded\_for\_headers\` has been configured then the IP address
+			| specified in this header will be returned instead\.
+			
+			| Do always use this instead of $\_SERVER\[\'REMOTE\_ADDR\'\]
+			
+		
+		:Source:
+			`lib/public/IRequest.php#232 <https://github.com/nextcloud/server/blob/stable13/lib/public/IRequest.php#L232>`_
+		
+		
+		:Returns: string IP address
+		:Since: 8.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getServerProtocol()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the server protocol\. It respects reverse proxy servers and load
+			| balancers\.
+			
+		
+		:Source:
+			`lib/public/IRequest.php#241 <https://github.com/nextcloud/server/blob/stable13/lib/public/IRequest.php#L241>`_
+		
+		
+		:Returns: string Server protocol \(http or https\)
+		:Since: 8.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getHttpProtocol()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the used HTTP protocol\.
+			
+		
+		:Source:
+			`lib/public/IRequest.php#249 <https://github.com/nextcloud/server/blob/stable13/lib/public/IRequest.php#L249>`_
+		
+		
+		:Returns: string HTTP protocol\. HTTP/2, HTTP/1\.1 or HTTP/1\.0\.
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getRequestUri()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the request uri, even if the website uses one or more
+			| reverse proxies
+			
+		
+		:Source:
+			`lib/public/IRequest.php#260 <https://github.com/nextcloud/server/blob/stable13/lib/public/IRequest.php#L260>`_
+		
+		
+		:Returns: string 
+		:Since: 8.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getRawPathInfo()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get raw PathInfo from request \(not urldecoded\)
+			
+		
+		:Source:
+			`lib/public/IRequest.php#271 <https://github.com/nextcloud/server/blob/stable13/lib/public/IRequest.php#L271>`_
+		
+		
+		:Throws: :any:`\\Exception <Exception>` 
+		:Returns: string Path info
+		:Since: 8.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getPathInfo()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get PathInfo from request
+			
+		
+		:Source:
+			`lib/public/IRequest.php#282 <https://github.com/nextcloud/server/blob/stable13/lib/public/IRequest.php#L282>`_
+		
+		
+		:Throws: :any:`\\Exception <Exception>` 
+		:Returns: string | bool Path info or false when not found
+		:Since: 8.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getScriptName()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the script name, even if the website uses one or more
+			| reverse proxies
+			
+		
+		:Source:
+			`lib/public/IRequest.php#291 <https://github.com/nextcloud/server/blob/stable13/lib/public/IRequest.php#L291>`_
+		
+		
+		:Returns: string the script name
+		:Since: 8.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isUserAgent( $agent)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Checks whether the user agent matches a given regex
+			
+		
+		:Source:
+			`lib/public/IRequest.php#300 <https://github.com/nextcloud/server/blob/stable13/lib/public/IRequest.php#L300>`_
+		
+		
+		:Parameters:
+			* **$agent** (array)  array of agent names
+
+		
+		:Returns: bool true if at least one of the given agent matches, false otherwise
+		:Since: 8.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getInsecureServerHost()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the unverified server host from the headers without checking
+			| whether it is a trusted domain
+			
+		
+		:Source:
+			`lib/public/IRequest.php#311 <https://github.com/nextcloud/server/blob/stable13/lib/public/IRequest.php#L311>`_
+		
+		
+		:Returns: string Server host
+		:Since: 8.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getServerHost()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the server host from the headers, or the first configured
+			| trusted domain if the host isn\'t in the trusted list
+			
+		
+		:Source:
+			`lib/public/IRequest.php#320 <https://github.com/nextcloud/server/blob/stable13/lib/public/IRequest.php#L320>`_
+		
+		
+		:Returns: string Server host
+		:Since: 8.1.0 
+	
+	
+

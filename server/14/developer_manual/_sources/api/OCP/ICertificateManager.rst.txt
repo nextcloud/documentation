@@ -1,0 +1,121 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+ICertificateManager
+===================
+
+
+.. php:namespace:: OCP
+
+.. php:interface:: ICertificateManager
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Manage trusted certificates
+		
+	
+	:Implemented by:
+		:php:class:`OC\\Security\\CertificateManager` 
+	
+	
+	:Source:
+		`lib/public/ICertificateManager.php#34 <https://github.com/nextcloud/server/blob/stable13/lib/public/ICertificateManager.php#L34>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public listCertificates()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns all certificates trusted by the system
+			
+		
+		:Source:
+			`lib/public/ICertificateManager.php#41 <https://github.com/nextcloud/server/blob/stable13/lib/public/ICertificateManager.php#L41>`_
+		
+		
+		:Returns: :any:`\\OCP\\ICertificate\[\] <OCP\\ICertificate>` 
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public addCertificate( $certificate, $name)
+	
+		:Source:
+			`lib/public/ICertificateManager.php#50 <https://github.com/nextcloud/server/blob/stable13/lib/public/ICertificateManager.php#L50>`_
+		
+		
+		:Parameters:
+			* **$certificate** (string)  the certificate data
+			* **$name** (string)  the filename for the certificate
+
+		
+		:Returns: :any:`\\OCP\\ICertificate <OCP\\ICertificate>` 
+		:Throws: :any:`\\Exception <Exception>` If the certificate could not get added
+		:Since: 8.0.0 \- since 8\.1\.0 throws exception instead of returning false
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public removeCertificate( $name)
+	
+		:Source:
+			`lib/public/ICertificateManager.php#57 <https://github.com/nextcloud/server/blob/stable13/lib/public/ICertificateManager.php#L57>`_
+		
+		
+		:Parameters:
+			* **$name** (string)  
+
+		
+		:Returns: bool 
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getCertificateBundle()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the path to the certificate bundle
+			
+		
+		:Source:
+			`lib/public/ICertificateManager.php#65 <https://github.com/nextcloud/server/blob/stable13/lib/public/ICertificateManager.php#L65>`_
+		
+		
+		:Returns: string 
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getAbsoluteBundlePath()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the full local path to the certificate bundle
+			
+		
+		:Source:
+			`lib/public/ICertificateManager.php#73 <https://github.com/nextcloud/server/blob/stable13/lib/public/ICertificateManager.php#L73>`_
+		
+		
+		:Returns: string 
+		:Since: 9.0.0 
+	
+	
+

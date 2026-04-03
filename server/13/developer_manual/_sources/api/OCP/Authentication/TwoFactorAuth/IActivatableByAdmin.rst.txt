@@ -1,0 +1,54 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IActivatableByAdmin
+===================
+
+
+.. php:namespace:: OCP\Authentication\TwoFactorAuth
+
+.. php:interface:: IActivatableByAdmin
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Marks a 2FA provider as activatable by the administrator\. This means that an
+		| admin can activate this provider without user interaction\. The provider,
+		| therefore, must not require any user\-provided configuration\.
+		
+	
+	:Source:
+		`lib/public/Authentication/TwoFactorAuth/IActivatableByAdmin.php#38 <https://github.com/nextcloud/server/blob/stable13/lib/public/Authentication/TwoFactorAuth/IActivatableByAdmin.php#L38>`_
+	
+	:Parent:
+		:php:interface:`OCP\\Authentication\\TwoFactorAuth\\IProvider`
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public enableFor( $user)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Enable this provider for the given user\.
+			
+		
+		:Source:
+			`lib/public/Authentication/TwoFactorAuth/IActivatableByAdmin.php#49 <https://github.com/nextcloud/server/blob/stable13/lib/public/Authentication/TwoFactorAuth/IActivatableByAdmin.php#L49>`_
+		
+		
+		:Parameters:
+			* **$user** (:any:`OCP\\IUser <OCP\\IUser>`)  the user to activate this provider for
+
+		
+		:Returns: void 
+		:Since: 15.0.0 
+	
+	
+

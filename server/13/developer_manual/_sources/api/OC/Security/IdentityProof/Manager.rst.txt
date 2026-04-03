@@ -1,0 +1,141 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+Manager
+=======
+
+
+.. php:namespace:: OC\Security\IdentityProof
+
+.. php:class:: Manager
+
+
+	:Source:
+		`lib/private/Security/IdentityProof/Manager.php#40 <https://github.com/nextcloud/server/blob/stable13/lib/private/Security/IdentityProof/Manager.php#L40>`_
+	
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $appDataFactory, $crypto, $config, $logger)
+	
+		:Source:
+			`lib/private/Security/IdentityProof/Manager.php#50 <https://github.com/nextcloud/server/blob/stable13/lib/private/Security/IdentityProof/Manager.php#L50>`_
+		
+		
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected generateKeyPair()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Calls the openssl functions to generate a public and private key\.
+			
+			| In a separate function for unit testing purposes\.
+			
+		
+		:Source:
+			`lib/private/Security/IdentityProof/Manager.php#68 <https://github.com/nextcloud/server/blob/stable13/lib/private/Security/IdentityProof/Manager.php#L68>`_
+		
+		
+		:Returns: array \[$publicKey, $privateKey\]
+		:Throws: :any:`\\RuntimeException <RuntimeException>` 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected generateKey( $id)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Generate a key for a given ID
+			| Note: If a key already exists it will be overwritten
+			
+		
+		:Source:
+			`lib/private/Security/IdentityProof/Manager.php#102 <https://github.com/nextcloud/server/blob/stable13/lib/private/Security/IdentityProof/Manager.php#L102>`_
+		
+		
+		:Parameters:
+			* **$id** (string)  key id
+
+		
+		:Returns: :any:`\\OC\\Security\\IdentityProof\\Key <OC\\Security\\IdentityProof\\Key>` 
+		:Throws: :any:`\\RuntimeException <RuntimeException>` 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected retrieveKey( $id)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get key for a specific id
+			
+		
+		:Source:
+			`lib/private/Security/IdentityProof/Manager.php#126 <https://github.com/nextcloud/server/blob/stable13/lib/private/Security/IdentityProof/Manager.php#L126>`_
+		
+		
+		:Parameters:
+			* **$id** (string)  
+
+		
+		:Returns: :any:`\\OC\\Security\\IdentityProof\\Key <OC\\Security\\IdentityProof\\Key>` 
+		:Throws: :any:`\\RuntimeException <RuntimeException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getKey( $user)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get public and private key for $user
+			
+		
+		:Source:
+			`lib/private/Security/IdentityProof/Manager.php#146 <https://github.com/nextcloud/server/blob/stable13/lib/private/Security/IdentityProof/Manager.php#L146>`_
+		
+		
+		:Parameters:
+			* **$user** (:any:`OCP\\IUser <OCP\\IUser>`)  
+
+		
+		:Returns: :any:`\\OC\\Security\\IdentityProof\\Key <OC\\Security\\IdentityProof\\Key>` 
+		:Throws: :any:`\\RuntimeException <RuntimeException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getSystemKey()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get instance wide public and private key
+			
+		
+		:Source:
+			`lib/private/Security/IdentityProof/Manager.php#157 <https://github.com/nextcloud/server/blob/stable13/lib/private/Security/IdentityProof/Manager.php#L157>`_
+		
+		
+		:Returns: :any:`\\OC\\Security\\IdentityProof\\Key <OC\\Security\\IdentityProof\\Key>` 
+		:Throws: :any:`\\RuntimeException <RuntimeException>` 
+	
+	
+

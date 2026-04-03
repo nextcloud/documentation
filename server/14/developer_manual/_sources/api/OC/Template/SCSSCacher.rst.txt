@@ -1,0 +1,176 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+SCSSCacher
+==========
+
+
+.. php:namespace:: OC\Template
+
+.. php:class:: SCSSCacher
+
+
+	:Source:
+		`lib/private/Template/SCSSCacher.php#52 <https://github.com/nextcloud/server/blob/stable13/lib/private/Template/SCSSCacher.php#L52>`_
+	
+
+Properties
+----------
+
+.. php:attr:: protected static logger
+
+	:Source:
+		`lib/private/Template/SCSSCacher.php#55 <https://github.com/nextcloud/server/blob/stable13/lib/private/Template/SCSSCacher.php#L55>`_
+	
+	:Type: :any:`\\OCP\\ILogger <OCP\\ILogger>` 
+
+
+.. php:attr:: protected static appData
+
+	:Source:
+		`lib/private/Template/SCSSCacher.php#58 <https://github.com/nextcloud/server/blob/stable13/lib/private/Template/SCSSCacher.php#L58>`_
+	
+	:Type: :any:`\\OCP\\Files\\IAppData <OCP\\Files\\IAppData>` 
+
+
+.. php:attr:: protected static urlGenerator
+
+	:Source:
+		`lib/private/Template/SCSSCacher.php#61 <https://github.com/nextcloud/server/blob/stable13/lib/private/Template/SCSSCacher.php#L61>`_
+	
+	:Type: :any:`\\OCP\\IURLGenerator <OCP\\IURLGenerator>` 
+
+
+.. php:attr:: protected static config
+
+	:Source:
+		`lib/private/Template/SCSSCacher.php#64 <https://github.com/nextcloud/server/blob/stable13/lib/private/Template/SCSSCacher.php#L64>`_
+	
+	:Type: :any:`\\OCP\\IConfig <OCP\\IConfig>` 
+
+
+.. php:attr:: protected static serverRoot
+
+	:Source:
+		`lib/private/Template/SCSSCacher.php#70 <https://github.com/nextcloud/server/blob/stable13/lib/private/Template/SCSSCacher.php#L70>`_
+	
+	:Type: string 
+
+
+.. php:attr:: protected static depsCache
+
+	:Source:
+		`lib/private/Template/SCSSCacher.php#73 <https://github.com/nextcloud/server/blob/stable13/lib/private/Template/SCSSCacher.php#L73>`_
+	
+	:Type: :any:`\\OCP\\ICache <OCP\\ICache>` 
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $logger, $appDataFactory, $urlGenerator, $config, $defaults, $serverRoot, $cacheFactory, $iconsCacher, $timeFactory, $appConfig)
+	
+		:Source:
+			`lib/private/Template/SCSSCacher.php#106 <https://github.com/nextcloud/server/blob/stable13/lib/private/Template/SCSSCacher.php#L106>`_
+		
+		
+		:Parameters:
+			* **$logger** (:any:`OCP\\ILogger <OCP\\ILogger>`)  
+			* **$appDataFactory** (:any:`OC\\Files\\AppData\\Factory <OC\\Files\\AppData\\Factory>`)  
+			* **$urlGenerator** (:any:`OCP\\IURLGenerator <OCP\\IURLGenerator>`)  
+			* **$config** (:any:`OCP\\IConfig <OCP\\IConfig>`)  
+			* **$defaults** (:any:`OC\_Defaults <OC\_Defaults>`)  
+			* **$serverRoot** (string)  
+			* **$cacheFactory** (:any:`OCP\\ICacheFactory <OCP\\ICacheFactory>`)  
+			* **$iconsCacher** (:any:`OC\\Template\\IconsCacher <OC\\Template\\IconsCacher>`)  
+			* **$timeFactory** (:any:`OCP\\AppFramework\\Utility\\ITimeFactory <OCP\\AppFramework\\Utility\\ITimeFactory>`)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public process( $root, $file, $app)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Process the caching process if needed
+			
+		
+		:Source:
+			`lib/private/Template/SCSSCacher.php#144 <https://github.com/nextcloud/server/blob/stable13/lib/private/Template/SCSSCacher.php#L144>`_
+		
+		
+		:Parameters:
+			* **$root** (string)  Root path to the nextcloud installation
+			* **$file** (string)  
+			* **$app** (string)  The app name
+
+		
+		:Returns: bool 
+		:Throws: :any:`\\OCP\\Files\\NotPermittedException <OCP\\Files\\NotPermittedException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getCachedCSS( $appName, $fileName)
+	
+		:Source:
+			`lib/private/Template/SCSSCacher.php#212 <https://github.com/nextcloud/server/blob/stable13/lib/private/Template/SCSSCacher.php#L212>`_
+		
+		
+		:Parameters:
+			* **$appName**  
+			* **$fileName**  
+
+		
+		:Returns: :any:`\\OCP\\Files\\SimpleFS\\ISimpleFile <OCP\\Files\\SimpleFS\\ISimpleFile>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public resetCache()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Reset scss cache by deleting all generated css files
+			| We need to regenerate all files when variables change
+			
+		
+		:Source:
+			`lib/private/Template/SCSSCacher.php#381 <https://github.com/nextcloud/server/blob/stable13/lib/private/Template/SCSSCacher.php#L381>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getCachedSCSS( $appName, $fileName)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Return the cached css file uri
+			
+		
+		:Source:
+			`lib/private/Template/SCSSCacher.php#461 <https://github.com/nextcloud/server/blob/stable13/lib/private/Template/SCSSCacher.php#L461>`_
+		
+		
+		:Parameters:
+			* **$appName** (string)  the app name
+			* **$fileName** (string)  
+
+		
+		:Returns: string 
+	
+	
+

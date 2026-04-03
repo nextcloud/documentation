@@ -1,0 +1,482 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Code signing &mdash; Nextcloud latest Developer Manual latest documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'latest',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="App metadata" href="info.html" />
+    <link rel="prev" title="Classloader" href="classloader.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../general/index.html">General contributor guidelines</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">App development</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="intro.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="upgrade-guide.html">App upgrade guide</a></li>
+<li class="toctree-l2"><a class="reference internal" href="bootstrap.html">Bootstrapping</a></li>
+<li class="toctree-l2"><a class="reference internal" href="npm.html">NPM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="requests/index.html">Request lifecycle</a></li>
+<li class="toctree-l2"><a class="reference internal" href="view/index.html">View</a></li>
+<li class="toctree-l2"><a class="reference internal" href="storage/index.html">Storage and database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html">Changelog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classloader.html">Classloader</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Code signing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#faq">FAQ</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#why-did-nextcloud-add-code-signing">Why did Nextcloud add code signing?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#do-we-lock-down-nextcloud">Do we lock down Nextcloud?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#not-open-source-anymore">Not open source anymore?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#is-code-signing-mandatory-for-apps">Is code signing mandatory for apps?</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#technical-details">Technical details</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-code-signing-affects-apps-in-the-app-store">How code signing affects apps in the app store</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-to-get-your-app-signed">How to get your app signed</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#errors">Errors</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="info.html">App metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="init.html">Navigation and pre-app configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="publishing.html">App store publishing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="users.html">User management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="two-factor-provider.html">Two-factor providers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="events.html">Events</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backgroundjobs.html">Background jobs (Cron)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="settings.html">Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notifications.html">Notifications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="flow.html">Nextcloud Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logging.html">Logging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="repair.html">Repair steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="publicpage.html">Public Pages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="testing.html">Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../api.html">API reference</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../design/index.html">Design guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../android_library/index.html">Android application development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client_apis/index.html">Client APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../core/index.html">Core development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bugtracker/index.html">Bugtracker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../commun/index.html">Help and communication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API reference</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Nextcloud latest Developer Manual</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">App development</a> &raquo;</li>
+        
+      <li>Code signing</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/nextcloud/documentation/edit/master/developer_manual/app/code_signing.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="code-signing">
+<h1>Code signing<a class="headerlink" href="#code-signing" title="Permalink to this headline">¶</a></h1>
+<p>Nextcloud supports code signing for the core releases, and for Nextcloud
+applications. Code signing gives our users an additional layer of security by
+ensuring that nobody other than authorized persons can push updates.</p>
+<p>It also ensures that all upgrades have been executed properly, so that no files
+are left behind, and all old files are properly replaced. In the past, invalid
+updates were a significant source of errors when updating Nextcloud.</p>
+<div class="section" id="faq">
+<h2>FAQ<a class="headerlink" href="#faq" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="why-did-nextcloud-add-code-signing">
+<h3>Why did Nextcloud add code signing?<a class="headerlink" href="#why-did-nextcloud-add-code-signing" title="Permalink to this headline">¶</a></h3>
+<p>By supporting Code Signing we add another layer of security by ensuring that
+nobody other than authorized persons can push updates for applications, and
+ensuring proper upgrades.</p>
+</div>
+<div class="section" id="do-we-lock-down-nextcloud">
+<h3>Do we lock down Nextcloud?<a class="headerlink" href="#do-we-lock-down-nextcloud" title="Permalink to this headline">¶</a></h3>
+<p>The Nextcloud project is open source and always will be. We do not want to make
+it more difficult for our users to run Nextcloud. Any code signing errors on
+upgrades will not prevent Nextcloud from running, but will display a warning on
+the Admin page. For applications that are not tagged &#8220;Featured&#8221; the code signing
+process is optional.</p>
+</div>
+<div class="section" id="not-open-source-anymore">
+<h3>Not open source anymore?<a class="headerlink" href="#not-open-source-anymore" title="Permalink to this headline">¶</a></h3>
+<p>The Nextcloud project is open source and always will be. The code signing
+process is optional, though highly recommended. The code check for the
+core parts of Nextcloud is enabled when the Nextcloud release version branch has
+been set to stable.</p>
+<p>For custom distributions of Nextcloud it is recommended to change the release
+version branch in version.php to something else than &#8220;stable&#8221;.</p>
+</div>
+<div class="section" id="is-code-signing-mandatory-for-apps">
+<h3>Is code signing mandatory for apps?<a class="headerlink" href="#is-code-signing-mandatory-for-apps" title="Permalink to this headline">¶</a></h3>
+<p>Code signing is required for all applications on apps.nextcloud.com.</p>
+</div>
+</div>
+<div class="section" id="technical-details">
+<h2>Technical details<a class="headerlink" href="#technical-details" title="Permalink to this headline">¶</a></h2>
+<p>Nextcloud uses a X.509 based approach to handle authentication of code. Each
+Nextcloud release contains the certificate of a shipped Nextcloud Code Signing
+Root Authority. The private key of this certificate is only accessible to the
+project leader, who may grant trusted project members with a copy of this
+private key.</p>
+<p>This Root Authority is only used for signing certificate signing requests (CSRs)
+for additional certificates. Certificates issued by the Root Authority must
+always be limited to a specific scope, usually the application identifier.
+This enforcement is done using the <code class="docutils literal"><span class="pre">CN</span></code> attribute of the certificate.</p>
+<p>Code signing is then done by creating a  <code class="docutils literal"><span class="pre">signature.json</span></code> file with the
+following content:</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="nt">&quot;hashes&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;/filename.php&quot;</span><span class="p">:</span>
+        <span class="s2">&quot;2401fed2eea6f2c1027c482a633e8e25cd46701f811e2d2c10dc213fd95fa60e350b</span>
+<span class="s2">        ccbbebdccc73a042b1a2799f673fbabadc783284cc288e4f1a1eacb74e3d&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;/lib/base.php&quot;</span><span class="p">:</span>
+        <span class="s2">&quot;55548cc16b457cd74241990cc9d3b72b6335f2e5f45eee95171da024087d114fcbc2</span>
+<span class="s2">        effc3d5818a6d5d55f2ae960ab39fd0414d0c542b72a3b9e08eb21206dd9&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;certificate&quot;</span><span class="p">:</span> <span class="s2">&quot;-----BEGIN CERTIFICATE-----</span>
+<span class="s2">    MIIBvTCCASagAwIBAgIUPvawyqJwCwYazcv7iz16TWxfeUMwDQYJKoZIhvcNAQEF\</span>
+<span class="s2">    nBQAwIzEhMB8GA1UECgwYb3duQ2xvdWQgQ29kZSBTaWduaW5nIENBMB4XDTE1MTAx\</span>
+<span class="s2">    nNDEzMTcxMFoXDTE2MTAxNDEzMTcxMFowEzERMA8GA1UEAwwIY29udGFjdHMwgZ8w\</span>
+<span class="s2">    nDQYJKoZIhvcNAQEBBQADgY0AMIGJAoGBANoQesGdCW0L2L+a2xITYipixkScrIpB\</span>
+<span class="s2">    nkX5Snu3fs45MscDb61xByjBSlFgR4QI6McoCipPw4SUr28EaExVvgPSvqUjYLGps\</span>
+<span class="s2">    nfiv0Cvgquzbx/X3mUcdk9LcFo1uWGtrTfkuXSKX41PnJGTr6RQWGIBd1V52q1qbC\</span>
+<span class="s2">    nJKkfzyeMeuQfAgMBAAEwDQYJKoZIhvcNAQEFBQADgYEAvF/KIhRMQ3tYTmgHWsiM\</span>
+<span class="s2">    nwDMgIDb7iaHF0fS+/Nvo4PzoTO/trev6tMyjLbJ7hgdCpz/1sNzE11Cibf6V6dsz\</span>
+<span class="s2">    njCE9invP368Xv0bTRObRqeSNsGogGl5ceAvR0c9BG+NRIKHcly3At3gLkS2791bC\</span>
+<span class="s2">    niG+UxI/MNcWV0uJg9S63LF8=\n</span>
+<span class="s2">    -----END CERTIFICATE-----&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;signature&quot;</span><span class="p">:</span> <span class="s2">&quot;U29tZVNpZ25lZERhdGFFeGFtcGxl&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">hashes</span></code> is an array of all files in the folder with their corresponding
+SHA-512 hashes. <code class="docutils literal"><span class="pre">certificate</span></code> is the certificate used for signing. It has to
+be issued by the Nextcloud Root Authority, and its CN needs to be permitted to
+perform the required action. The <code class="docutils literal"><span class="pre">signature</span></code> is then a signature of the hashes
+which can be verified using the certificate.</p>
+<p>Having the certificate bundled within the <code class="docutils literal"><span class="pre">signature.json</span></code> file has the
+advantage that even if a developer loses their certificate, future updates can
+still be ensured by having a new certificate issued.</p>
+</div>
+<div class="section" id="how-code-signing-affects-apps-in-the-app-store">
+<h2>How code signing affects apps in the app store<a class="headerlink" href="#how-code-signing-affects-apps-in-the-app-store" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Apps which have a <code class="docutils literal"><span class="pre">Featured</span></code> tag <strong>MUST</strong> be code signed.
+Unsigned <code class="docutils literal"><span class="pre">Featured</span></code> apps won&#8217;t be installable anymore.</li>
+<li>Apps which have been signed in a previous release <strong>MUST</strong> be code-signed in
+all future releases as well, otherwise the update will be refused.</li>
+</ul>
+</div>
+<div class="section" id="how-to-get-your-app-signed">
+<h2>How to get your app signed<a class="headerlink" href="#how-to-get-your-app-signed" title="Permalink to this headline">¶</a></h2>
+<p>The following commands require that you have OpenSSL installed on your machine.
+Ensure that you keep all generated files to sign your application. The following
+examples will assume that you are trying to sign an application named
+&#8220;contacts&#8221;.</p>
+<ol class="arabic simple">
+<li>Generate a private key and CSR: <code class="docutils literal"><span class="pre">openssl</span> <span class="pre">req</span> <span class="pre">-nodes</span> <span class="pre">-newkey</span> <span class="pre">rsa:4096</span> <span class="pre">-keyout</span> <span class="pre">contacts.key</span> <span class="pre">-out</span> <span class="pre">contacts.csr</span> <span class="pre">-subj</span> <span class="pre">&quot;/CN=contacts&quot;</span></code>. Replace &#8220;contacts&#8221; with your application identifier.</li>
+<li>Post the CSR at <a class="reference external" href="https://github.com/nextcloud/app-certificate-requests">https://github.com/nextcloud/app-certificate-requests</a>, and configure
+your GitHub account to show your mail address in your profile. Nextcloud
+might ask you for further information to verify that you&#8217;re the legitimate
+owner of the application. Make sure to keep the private key file (<code class="docutils literal"><span class="pre">contacts.key</span></code>)
+secret and not disclose it to any third parties.</li>
+<li>Nextcloud will provide you with the signed certificate.</li>
+<li>Run <code class="docutils literal"><span class="pre">./occ</span> <span class="pre">integrity:sign-app</span></code> to sign your application, and specify
+your private and public keys as well as the path to the application.
+A valid example looks like: <code class="docutils literal"><span class="pre">./occ</span> <span class="pre">integrity:sign-app</span> <span class="pre">--privateKey=/Users/lukasreschke/contacts.key</span>
+<span class="pre">--certificate=/Users/lukasreschke/CA/contacts.crt</span> <span class="pre">--path=/Users/lukasreschke/Programming/contacts</span></code></li>
+</ol>
+<p>The occ tool will store a <code class="docutils literal"><span class="pre">signature.json</span></code> file within the <code class="docutils literal"><span class="pre">appinfo</span></code> folder
+of your application. Then compress the application folder and upload it to
+apps.nextcloud.com. Be aware that doing any changes to the application after it
+has been signed requires another signing. So if you do not want to have some
+files shipped remove them before running the signing command.</p>
+<p>In case you lose your certificate please submit a new CSR as described above and
+mention that you have lost the previous one. Nextcloud will revoke the old
+certificate.</p>
+<p>If you maintain an app together with multiple people it is recommended to
+designate a release manager responsible for the signing process as well
+as the uploading to apps.nextcloud.com. If there are cases where this is not
+feasible and multiple certificates are required Nextcloud can create them on a
+case by case basis. We do not recommend developers to share their private key.</p>
+</div>
+<div class="section" id="errors">
+<h2>Errors<a class="headerlink" href="#errors" title="Permalink to this headline">¶</a></h2>
+<p>The following errors can be encountered when trying to verify a code signature.
+For information about how to get access to those results please refer to the
+Issues section of the Nextcloud Server Administration
+manual.</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">INVALID_HASH</span></code><ul>
+<li>The file has a different hash than specified within <code class="docutils literal"><span class="pre">signature.json</span></code>. This
+usually happens when the file has been modified after writing the signature
+data.</li>
+</ul>
+</li>
+<li><code class="docutils literal"><span class="pre">MISSING_FILE</span></code><ul>
+<li>The file cannot be found but has been specified within <code class="docutils literal"><span class="pre">signature.json</span></code>.
+Either a required file has been left out, or <code class="docutils literal"><span class="pre">signature.json</span></code> needs to be
+edited.</li>
+</ul>
+</li>
+<li><code class="docutils literal"><span class="pre">EXTRA_FILE</span></code><ul>
+<li>The file does not exist in <code class="docutils literal"><span class="pre">signature.json</span></code>. This usually happens when a
+file has been removed and <code class="docutils literal"><span class="pre">signature.json</span></code> has not been updated.</li>
+</ul>
+</li>
+<li><code class="docutils literal"><span class="pre">EXCEPTION</span></code><ul>
+<li>Another exception has prevented the code verification. There are currently
+these following exceptions:<ul>
+<li><code class="docutils literal"><span class="pre">Signature</span> <span class="pre">data</span> <span class="pre">not</span> <span class="pre">found.</span></code><ul>
+<li>The app has mandatory code signing enforced but no <code class="docutils literal"><span class="pre">signature.json</span></code>
+file has been found in its <code class="docutils literal"><span class="pre">appinfo</span></code> folder.</li>
+</ul>
+</li>
+<li><code class="docutils literal"><span class="pre">Certificate</span> <span class="pre">is</span> <span class="pre">not</span> <span class="pre">valid.</span></code><ul>
+<li>The certificate has not been issued by the official Nextcloud Code
+Signing Root Authority.</li>
+</ul>
+</li>
+<li><code class="docutils literal"><span class="pre">Certificate</span> <span class="pre">is</span> <span class="pre">not</span> <span class="pre">valid</span> <span class="pre">for</span> <span class="pre">required</span> <span class="pre">scope.</span> <span class="pre">(Requested:</span> <span class="pre">%s,</span> <span class="pre">current:</span>
+<span class="pre">%s)</span></code><ul>
+<li>The certificate is not valid for the defined application. Certificates
+are only valid for the defined app identifier and cannot be used for
+others.</li>
+</ul>
+</li>
+<li><code class="docutils literal"><span class="pre">Signature</span> <span class="pre">could</span> <span class="pre">not</span> <span class="pre">get</span> <span class="pre">verified.</span></code><ul>
+<li>There was a problem with verifying the signature of <code class="docutils literal"><span class="pre">signature.json</span></code>.</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="info.html" class="btn btn-neutral float-right" title="App metadata" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="classloader.html" class="btn btn-neutral float-left" title="Classloader" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021 Nextcloud GmbH.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/16/developer_manual">16</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/17/developer_manual">17</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/18/developer_manual">18</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/19/developer_manual">19</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/developer_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/developer_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+   
+
+</body>
+</html>

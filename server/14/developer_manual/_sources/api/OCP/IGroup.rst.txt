@@ -1,0 +1,329 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IGroup
+======
+
+
+.. php:namespace:: OCP
+
+.. php:interface:: IGroup
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Interface IGroup
+		
+	
+	:Implemented by:
+		:php:class:`OC\\Group\\Group` 
+	
+	
+	:Source:
+		`lib/public/IGroup.php#36 <https://github.com/nextcloud/server/blob/stable13/lib/public/IGroup.php#L36>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public getGID()
+	
+		:Source:
+			`lib/public/IGroup.php#41 <https://github.com/nextcloud/server/blob/stable13/lib/public/IGroup.php#L41>`_
+		
+		
+		:Returns: string 
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getDisplayName()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the group display name
+			
+		
+		:Source:
+			`lib/public/IGroup.php#49 <https://github.com/nextcloud/server/blob/stable13/lib/public/IGroup.php#L49>`_
+		
+		
+		:Returns: string 
+		:Since: 12.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setDisplayName( $displayName)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set the group display name
+			
+		
+		:Source:
+			`lib/public/IGroup.php#58 <https://github.com/nextcloud/server/blob/stable13/lib/public/IGroup.php#L58>`_
+		
+		
+		:Parameters:
+			* **$displayName** (string)  
+
+		
+		:Returns: bool 
+		:Since: 18.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getUsers()
+	
+		.. rst-class:: phpdoc-description
+		
+			| get all users in the group
+			
+		
+		:Source:
+			`lib/public/IGroup.php#66 <https://github.com/nextcloud/server/blob/stable13/lib/public/IGroup.php#L66>`_
+		
+		
+		:Returns: :any:`\\OCP\\IUser\[\] <OCP\\IUser>` 
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public inGroup( $user)
+	
+		.. rst-class:: phpdoc-description
+		
+			| check if a user is in the group
+			
+		
+		:Source:
+			`lib/public/IGroup.php#75 <https://github.com/nextcloud/server/blob/stable13/lib/public/IGroup.php#L75>`_
+		
+		
+		:Parameters:
+			* **$user** (:any:`OCP\\IUser <OCP\\IUser>`)  
+
+		
+		:Returns: bool 
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public addUser( $user)
+	
+		.. rst-class:: phpdoc-description
+		
+			| add a user to the group
+			
+		
+		:Source:
+			`lib/public/IGroup.php#83 <https://github.com/nextcloud/server/blob/stable13/lib/public/IGroup.php#L83>`_
+		
+		
+		:Parameters:
+			* **$user** (:any:`OCP\\IUser <OCP\\IUser>`)  
+
+		
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public removeUser( $user)
+	
+		.. rst-class:: phpdoc-description
+		
+			| remove a user from the group
+			
+		
+		:Source:
+			`lib/public/IGroup.php#91 <https://github.com/nextcloud/server/blob/stable13/lib/public/IGroup.php#L91>`_
+		
+		
+		:Parameters:
+			* **$user** (:any:`OCP\\IUser <OCP\\IUser>`)  
+
+		
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public searchUsers( $search, $limit=null, $offset=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| search for users in the group by userid
+			
+		
+		:Source:
+			`lib/public/IGroup.php#102 <https://github.com/nextcloud/server/blob/stable13/lib/public/IGroup.php#L102>`_
+		
+		
+		:Parameters:
+			* **$search** (string)  
+			* **$limit** (int)  
+			* **$offset** (int)  
+
+		
+		:Returns: :any:`\\OCP\\IUser\[\] <OCP\\IUser>` 
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public count( $search="")
+	
+		.. rst-class:: phpdoc-description
+		
+			| returns the number of users matching the search string
+			
+		
+		:Source:
+			`lib/public/IGroup.php#111 <https://github.com/nextcloud/server/blob/stable13/lib/public/IGroup.php#L111>`_
+		
+		
+		:Parameters:
+			* **$search** (string)  
+
+		
+		:Returns: int | bool 
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public countDisabled()
+	
+		.. rst-class:: phpdoc-description
+		
+			| returns the number of disabled users
+			
+		
+		:Source:
+			`lib/public/IGroup.php#119 <https://github.com/nextcloud/server/blob/stable13/lib/public/IGroup.php#L119>`_
+		
+		
+		:Returns: int | bool 
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public searchDisplayName( $search, $limit=null, $offset=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| search for users in the group by displayname
+			
+		
+		:Source:
+			`lib/public/IGroup.php#130 <https://github.com/nextcloud/server/blob/stable13/lib/public/IGroup.php#L130>`_
+		
+		
+		:Parameters:
+			* **$search** (string)  
+			* **$limit** (int)  
+			* **$offset** (int)  
+
+		
+		:Returns: :any:`\\OCP\\IUser\[\] <OCP\\IUser>` 
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getBackendNames()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the names of the backends the group is connected to
+			
+		
+		:Source:
+			`lib/public/IGroup.php#138 <https://github.com/nextcloud/server/blob/stable13/lib/public/IGroup.php#L138>`_
+		
+		
+		:Returns: string[] 
+		:Since: 22.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public delete()
+	
+		.. rst-class:: phpdoc-description
+		
+			| delete the group
+			
+		
+		:Source:
+			`lib/public/IGroup.php#146 <https://github.com/nextcloud/server/blob/stable13/lib/public/IGroup.php#L146>`_
+		
+		
+		:Returns: bool 
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public canRemoveUser()
+	
+		:Source:
+			`lib/public/IGroup.php#152 <https://github.com/nextcloud/server/blob/stable13/lib/public/IGroup.php#L152>`_
+		
+		
+		:Returns: bool 
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public canAddUser()
+	
+		:Source:
+			`lib/public/IGroup.php#158 <https://github.com/nextcloud/server/blob/stable13/lib/public/IGroup.php#L158>`_
+		
+		
+		:Returns: bool 
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public hideFromCollaboration()
+	
+		:Source:
+			`lib/public/IGroup.php#164 <https://github.com/nextcloud/server/blob/stable13/lib/public/IGroup.php#L164>`_
+		
+		
+		:Returns: bool 
+		:Since: 16.0.0 
+	
+	
+

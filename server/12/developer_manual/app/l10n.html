@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Translation &#8212; Nextcloud Developer Manual 12 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/main.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '12',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.1.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Theming support" href="theming.html" />
+    <link rel="prev" title="CSS" href="css.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#1d2d44">
+<link rel="shortcut icon" href="https://nextcloud.com/wp-content/themes/next/assets/img/common/favicon.png" />
+<link rel="apple-touch-icon-precomposed" href="https://nextcloud.com/wp-content/themes/next/assets/img/common/favicon.png" />
+<!-- Piwik -->
+<script type="text/javascript">
+    var _paq = _paq || [];
+    _paq.push(['trackPageView']);
+    _paq.push(['enableLinkTracking']);
+    (function() {
+        var u="//stats.nextcloud.com/";
+        _paq.push(['setTrackerUrl', u+'piwik.php']);
+        _paq.push(['setSiteId', 3]);
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+        g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+    })();
+</script>
+<noscript><p><img src="//stats.nextcloud.com/piwik.php?idsite=3" style="border:0;" alt="" /></p></noscript>
+<!-- End Piwik Code -->
+
+  </head>
+  <body role="document">
+
+<header class="banner navbar navbar-default navbar-static-top" role="banner">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+       <a class="brand" href="http://nextcloud.com/" rel="home" title="Nextcloud.com"><img class="logo" src="../_static/img/logo.svg" itemprop="logo"></a>
+    </div>
+
+    <nav class="collapse navbar-collapse" role="navigation">
+      <ul id="menu-header" class="nav navbar-nav">
+          <li><a target="_blank" href="https://demo.nextcloud.com">Demo</a></li>
+          <li><a href="https://nextcloud.com/news/">News</a></li>
+          <li><a href="https://nextcloud.com/features/">Features</a></li>
+          <li><a href="https://nextcloud.com/about/">About us</a></li>
+          <li><a href="https://nextcloud.com/contribute/">Get involved</a></li>
+          <li><a href="https://nextcloud.com/support/">Support</a></li>
+          <li><a href="https://nextcloud.com/enterprise/">Enterprise</a></li>
+          <li class="menu-install"><a href="https://nextcloud.com/install/">Download</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+
+
+<div class="container" style="background-color: #E6C4C2;color: #b10000;border: #b10000 2px solid;border-right: none;border-left: none;padding: 15px 10px;">You are reading an outdated version of this documentation. Please check out the <a href="https://docs.nextcloud.com/server/stable/developer_manual/" style="
+color: rgb(177,0,0);text-decoration: underline;">latest version</a> of the developer manual.</div>
+
+
+
+
+
+<div class="wrap container not-front">
+  <div class="content row">
+  <main class="main">
+    <div class="row page-content-header">
+      <div class="col-md-6">
+        <h1><a href="../index.html">Nextcloud Developer Manual</a></h1>
+      </div>
+      <div class="col-md-5 col-md-offset-1">
+      
+        <form class="headersearch" style="margin: 16px 0;" action="../search.html" method="get">
+        <input type="text" value="" name="q" id="q" class="form-control" /> 
+        <button  class="btn btn-default" type="submit" id="searchsubmit">Search</button>
+        </form>
+      
+      </div>
+    </div>
+    
+			<div class="row">
+				<div class="col-md-3">
+					<div class="sidebar">
+							<div class="menu-support-container">
+								<ul id="menu-support" class="menu">
+									<ul>
+										
+<li><a href="../index.html">Table of Contents</a></li>
+									</ul>
+                  <ul>
+<li class="toctree-l1"><a class="reference internal" href="../general/index.html">General Contributor Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">App Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../design/index.html">Design Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../android_library/index.html">Android Application Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client_apis/index.html">Client APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../core/index.html">Core Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bugtracker/index.html">Bugtracker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../commun/index.html">Help and Communication</a></li>
+</ul>
+
+								</ul>
+							</div>
+					</div>
+				</div>
+        
+
+				<div class="col-md-9">
+					<div class="page-content">
+            
+<ul class="prevnext-title list-unstyled list-inline">
+  <li class="prev">
+    <a href="css.html" title="Previous Chapter: CSS"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; CSS</span>
+    </a>
+  </li>
+  <li class="next">
+    <a href="theming.html" title="Next Chapter: Theming support"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">Theming support &raquo;</span>
+    </a>
+  </li>
+</ul>
+						
+  <div class="section" id="translation">
+<h1>Translation<a class="headerlink" href="#translation" title="Permalink to this headline">¶</a></h1>
+<p>Nextcloud&#8217;s translation system is powered by <a class="reference external" href="https://www.transifex.com/nextcloud/">Transifex</a>. To start translating sign up and enter a group. If your community app should be added to Transifex contact one of the translation teams <a class="reference external" href="https://help.nextcloud.com/c/translations">in the forums</a> to set it up for you.</p>
+<div class="section" id="php">
+<h2>PHP<a class="headerlink" href="#php" title="Permalink to this headline">¶</a></h2>
+<p>Should it ever be needed to use localized strings on the server-side, simply inject the L10N service from the ServerContainer into the needed constructor:</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="k">namespace</span> <span class="nx">OCA\MyApp\AppInfo</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">\OCP\AppFramework\App</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">\OCA\MyApp\Service\AuthorService</span><span class="p">;</span>
+
+
+<span class="k">class</span> <span class="nc">Application</span> <span class="k">extends</span> <span class="nx">App</span> <span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="k">array</span> <span class="nv">$urlParams</span><span class="o">=</span><span class="k">array</span><span class="p">()){</span>
+        <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">(</span><span class="s1">&#39;myapp&#39;</span><span class="p">,</span> <span class="nv">$urlParams</span><span class="p">);</span>
+
+        <span class="nv">$container</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">getContainer</span><span class="p">();</span>
+
+        <span class="sd">/**</span>
+<span class="sd">         * Controllers</span>
+<span class="sd">         */</span>
+        <span class="nv">$container</span><span class="o">-&gt;</span><span class="na">registerService</span><span class="p">(</span><span class="s1">&#39;AuthorService&#39;</span><span class="p">,</span> <span class="k">function</span><span class="p">(</span><span class="nv">$c</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="k">new</span> <span class="nx">AuthorService</span><span class="p">(</span>
+                <span class="nv">$c</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="s1">&#39;L10N&#39;</span><span class="p">)</span>
+            <span class="p">);</span>
+        <span class="p">});</span>
+
+        <span class="nv">$container</span><span class="o">-&gt;</span><span class="na">registerService</span><span class="p">(</span><span class="s1">&#39;L10N&#39;</span><span class="p">,</span> <span class="k">function</span><span class="p">(</span><span class="nv">$c</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="nv">$c</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="s1">&#39;ServerContainer&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">getL10N</span><span class="p">(</span><span class="nv">$c</span><span class="o">-&gt;</span><span class="na">query</span><span class="p">(</span><span class="s1">&#39;AppName&#39;</span><span class="p">));</span>
+        <span class="p">});</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Strings can then be translated in the following way:</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="k">namespace</span> <span class="nx">OCA\MyApp\Service</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">\OCP\IL10N</span><span class="p">;</span>
+
+
+<span class="k">class</span> <span class="nc">AuthorService</span> <span class="p">{</span>
+
+    <span class="k">private</span> <span class="nv">$trans</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">IL10N</span> <span class="nv">$trans</span><span class="p">){</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">trans</span> <span class="o">=</span> <span class="nv">$trans</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getLanguageCode</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">trans</span><span class="o">-&gt;</span><span class="na">getLanguageCode</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="nx">sayHello</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">trans</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;Hello&#39;</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getAuthorName</span><span class="p">(</span><span class="nv">$name</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">trans</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;Getting author %s&#39;</span><span class="p">,</span> <span class="k">array</span><span class="p">(</span><span class="nv">$name</span><span class="p">));</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getAuthors</span><span class="p">(</span><span class="nv">$count</span><span class="p">,</span> <span class="nv">$city</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">trans</span><span class="o">-&gt;</span><span class="na">n</span><span class="p">(</span>
+            <span class="s1">&#39;%n author is currently in the city %s&#39;</span><span class="p">,</span>  <span class="c1">// singular string</span>
+            <span class="s1">&#39;%n authors are currently in the city %s&#39;</span><span class="p">,</span>  <span class="c1">// plural string</span>
+            <span class="nv">$count</span><span class="p">,</span>
+            <span class="k">array</span><span class="p">(</span><span class="nv">$city</span><span class="p">)</span>
+        <span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="templates">
+<h2>Templates<a class="headerlink" href="#templates" title="Permalink to this headline">¶</a></h2>
+<p>In every template the global variable <strong>$l</strong> can be used to translate the strings using its methods <strong>t()</strong> and <strong>n()</strong>:</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="x">&lt;div&gt;</span><span class="cp">&lt;?php</span> <span class="nx">p</span><span class="p">(</span><span class="nv">$l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;Showing %s files&#39;</span><span class="p">,</span> <span class="nv">$_</span><span class="p">[</span><span class="s1">&#39;count&#39;</span><span class="p">]));</span> <span class="cp">?&gt;</span><span class="x">&lt;/div&gt;</span>
+
+<span class="x">&lt;button&gt;</span><span class="cp">&lt;?php</span> <span class="nx">p</span><span class="p">(</span><span class="nv">$l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;Hide&#39;</span><span class="p">));</span> <span class="cp">?&gt;</span><span class="x">&lt;/button&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="javascript">
+<h2>JavaScript<a class="headerlink" href="#javascript" title="Permalink to this headline">¶</a></h2>
+<p>There is a global function <strong>t()</strong> available for translating strings. The first argument is your app name, the second argument is the string to translate.</p>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="nx">t</span><span class="p">(</span><span class="s1">&#39;myapp&#39;</span><span class="p">,</span> <span class="s1">&#39;Hello World!&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>For advanced usage, refer to the source code <strong>core/js/l10n.js</strong>; <strong>t()</strong> is bind to <strong>OC.L10N.translate()</strong>.</p>
+</div>
+<div class="section" id="hints">
+<h2>Hints<a class="headerlink" href="#hints" title="Permalink to this headline">¶</a></h2>
+<p>In case some translation strings may be translated wrongly because they have multiple meanings, you can add hints which will be shown in the Transifex web-interface:</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="x">&lt;ul id=&quot;translations&quot;&gt;</span>
+<span class="x">    &lt;li id=&quot;add-new&quot;&gt;</span>
+<span class="x">        </span><span class="cp">&lt;?php</span>
+            <span class="c1">// TRANSLATORS Will be shown inside a popup and asks the user to add a new file</span>
+            <span class="nx">p</span><span class="p">(</span><span class="nv">$l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;Add new file&#39;</span><span class="p">));</span>
+        <span class="cp">?&gt;</span><span class="x"></span>
+<span class="x">    &lt;/li&gt;</span>
+<span class="x">&lt;/ul&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="creating-your-own-translatable-files">
+<h2>Creating your own translatable files<a class="headerlink" href="#creating-your-own-translatable-files" title="Permalink to this headline">¶</a></h2>
+<p>If Transifex is not the right choice or the app is not accepted for translation,
+generate the gettext strings by yourself by creating an <code class="file docutils literal"><span class="pre">l10n/</span></code> directory
+in the app folder and executing:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">/</span><span class="n">srv</span><span class="o">/</span><span class="n">http</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">myapp</span><span class="o">/</span><span class="n">l10n</span>
+<span class="n">perl</span> <span class="n">l10n</span><span class="o">.</span><span class="n">pl</span> <span class="n">read</span> <span class="n">myapp</span>
+</pre></div>
+</div>
+<p>The translation script requires <strong>Locale::PO</strong> and <strong>gettext</strong>, installable via:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">liblocale</span><span class="o">-</span><span class="n">po</span><span class="o">-</span><span class="n">perl</span> <span class="n">gettext</span>
+</pre></div>
+</div>
+<p>The above script generates a template that can be used to translate all strings
+of an app. This template is located in the folder <code class="file docutils literal"><span class="pre">template/</span></code> with the
+name <code class="file docutils literal"><span class="pre">myapp.pot</span></code>. It can be used by your favored translation tool which
+then creates a <code class="file docutils literal"><span class="pre">.po</span></code> file. The <code class="file docutils literal"><span class="pre">.po</span></code> file needs to be placed in a
+folder named like the language code with the app name as filename - for example
+<code class="file docutils literal"><span class="pre">l10n/es/myapp.po</span></code>. After this step the perl script needs to be invoked to
+transfer the po file into our own fileformat that is more easily readable by
+the server code:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">perl</span> <span class="n">l10n</span><span class="o">.</span><span class="n">pl</span> <span class="n">write</span> <span class="n">myapp</span>
+</pre></div>
+</div>
+<p>Now the following folder structure is available:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">myapp</span><span class="o">/</span><span class="n">l10n</span>
+<span class="o">|--</span> <span class="n">es</span>
+<span class="o">|</span>   <span class="o">|--</span> <span class="n">myapp</span><span class="o">.</span><span class="n">po</span>
+<span class="o">|--</span> <span class="n">es</span><span class="o">.</span><span class="n">js</span>
+<span class="o">|--</span> <span class="n">es</span><span class="o">.</span><span class="n">json</span>
+<span class="o">|--</span> <span class="n">es</span><span class="o">.</span><span class="n">php</span>
+<span class="o">|--</span> <span class="n">l10n</span><span class="o">.</span><span class="n">pl</span>
+<span class="o">|--</span> <span class="n">templates</span>
+    <span class="o">|--</span> <span class="n">myapp</span><span class="o">.</span><span class="n">pot</span>
+</pre></div>
+</div>
+<p>You then just need the <code class="file docutils literal"><span class="pre">.php</span></code>, <code class="file docutils literal"><span class="pre">.json</span></code> and <code class="file docutils literal"><span class="pre">.js</span></code> files for a
+working localized app.</p>
+</div>
+</div>
+
+
+            
+<ul class="prevnext-title list-unstyled list-inline">
+  <li class="prev">
+    <a href="css.html" title="Previous Chapter: CSS"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; CSS</span>
+    </a>
+  </li>
+  <li class="next">
+    <a href="theming.html" title="Next Chapter: Theming support"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">Theming support &raquo;</span>
+    </a>
+  </li>
+</ul>
+					</div>
+				</div>
+			</div>
+  </main>  
+  </div>
+</div>
+<div class="container">
+<div class="row">
+    <div class="col-lg-12 footer-social-icons">
+      <p class="text-center"><a target="_blank" href="https://plus.google.com/104036748063781940910/about"><img width=50 src="../_static/img/social/googleplus.svg" title="Follow us on Google Plus!" alt="Follow us on Google Plus!"></img></a>
+      <a target="_blank" href="https://www.facebook.com/Nextclouders"><img width=50 src="../_static/img/social/facebook.svg" title="Like our facebook page!" alt="Like our facebook page!"></img></a>
+      <a target="_blank" href="https://twitter.com/Nextclouders"><img width=50 src="../_static/img/social/twitter.svg" title="Subscribe to our twitter channel!" alt="Subscribe to our twitter channel!"></img></a>
+      <a target="_blank" href="https://nextcloud.com/blogfeed"><img class="img-circle" width=50 src="../_static/img/social/rss.svg" title="Subscribe to our news feed!" alt="Subscribe to our news feed!"></img></a>
+      <a target="_blank" href="https://newsletter.nextcloud.com/"><img class="img-circle" width=50 src="../_static/img/social/mail.svg"  title="Subscribe to our newsletter!" alt="Subscribe to our newsletter!"></img></a></p>
+    </div>
+    <div class="text-center">
+      <p>All documentation licensed under the <a href="https://creativecommons.org/licenses/by/3.0/us/">Creative Commons Attribution 3.0 Unported license</a>.</p>
+      <p><a href="https://github.com/nextcloud/documentation/graphs/contributors">See who contributed to our documentation/credits</a>.</p>
+    </div>
+</div>
+</div>
+<footer class="content-info" role="contentinfo">
+<div class="container">
+   <div class="row">
+     <div class="col-sm-2 col-sm-offset-1">
+        <div class="footer-nav">
+          <h4>About Nextcloud</h4>
+          <ul id="menu-about" class="menu">
+            <li><a href="https://nextcloud.com/about/">About us</a></li>
+            <li><a href="https://nextcloud.com/contact/">Contact us</a></li>
+            <li><a href="https://nextcloud.com/press/">Press</a></li>
+            <li><a href="https://nextcloud.com/privacy/">Privacy policy</a></li>
+          </ul>
+        </div>
+     </div>
+     <div class="col-sm-2 col-sm-offset-2">
+     </div>
+     <div class="col-sm-2 col-sm-offset-2">
+        <div class="footer-nav">
+          <h4>Interact</h4>
+          <ul id="menu-interact" class="menu">
+            <li class="menu-irc-channel"><a href="https://webchat.freenode.net/?channels=nextcloud">IRC Channel</a></li>
+            <li class="menu-forums"><a href="https://help.nextcloud.com/">Forums</a></li>
+          </ul>
+        </div>
+     </div>
+   </div>
+   <div class="row">
+      <div class="col-lg-12 footer-text">
+        <p>
+              &copy; Copyright 2012-2017, The Nextcloud developers.  <small><a href="https://nextcloud.com/impressum">Legal Notice</a></small><br/>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+  </body>
+</html>

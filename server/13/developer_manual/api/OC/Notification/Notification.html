@@ -1,0 +1,1452 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Notification &mdash; Nextcloud 13 Developer Manual 13 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../../',
+              VERSION:'13',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="OCS" href="../OCS/index.html" />
+    <link rel="prev" title="Manager" href="Manager.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html">
+          
+
+          
+            
+            <img src="../../../_static/logo-white.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../general/index.html">General contributor guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/startapp.html">Create an app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/init.html">Navigation and pre-app configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/info.html">App metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/classloader.html">Classloader</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/request.html">Request lifecycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/routes.html">Routing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/middleware.html">Middleware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/container.html">Container</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/controllers.html">Controllers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/api.html">RESTful API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/templates.html">Templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/js.html">JavaScript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/css.html">CSS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/l10n.html">Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/theming.html">Theming support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/schema.html">Database schema</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/database.html">Database access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/filesystem.html">Filesystem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/appdata.html">AppData</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/users.html">User management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/two-factor-provider.html">Two-factor providers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/hooks.html">Hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/backgroundjobs.html">Background jobs (Cron)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/settings.html">Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/logging.html">Logging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/migrations.html">Migrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/repair.html">Repair steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/publishing.html">App store publishing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/code_signing.html">Code signing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../design/index.html">Design guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../android_library/index.html">Android application development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../client_apis/index.html">Client APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../core/translation.html">Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../core/unit-testing.html">Unit-Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../core/theming.html">Theming Nextcloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../core/externalapi.html">External API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../core/ocs-share-api.html">OCS Share API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../core/index.html">Core development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../bugtracker/index.html">Bugtracker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../commun/index.html">Help and communication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api.html">API Documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Nextcloud 13 Developer Manual</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../../api.html">API Documentation</a> &raquo;</li>
+        
+          <li><a href="../../index.html">\</a> &raquo;</li>
+        
+          <li><a href="../index.html">OC</a> &raquo;</li>
+        
+          <li><a href="index.html">Notification</a> &raquo;</li>
+        
+      <li>Notification</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/nextcloud/documentation/edit/stable13/developer_manual/api/OC/Notification/Notification.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="phpdoctorst section" id="namespace-OC\Notification">
+<span id="notification"></span><h1>Notification<a class="headerlink" href="#namespace-OC\Notification" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="OC\Notification\Notification">
+<em class="property">class </em><code class="descclassname">OC\Notification\</code><code class="descname">Notification</code><a class="headerlink" href="#OC\Notification\Notification" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L35">lib/private/Notification/Notification.php#35</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Implements:</th><td class="field-body"><a class="reference internal" href="../../OCP/Notification/INotification.html#OCP\Notification\INotification" title="OCP\Notification\INotification"><code class="xref php php-interface docutils literal"><span class="pre">OCP\Notification\INotification</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<div class="section" id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h2>
+<dl class="attr">
+<dt id="OC\Notification\Notification::$richValidator">
+<em class="property">protected </em><em class="property">static </em><em class="property">property </em><code class="descclassname">OC\Notification\Notification::$</code><code class="descname">richValidator</code><a class="headerlink" href="#OC\Notification\Notification::$richValidator" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L38">lib/private/Notification/Notification.php#38</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body"><a class="reference internal" href="../../OCP/RichObjectStrings/IValidator.html#OCP\RichObjectStrings\IValidator" title="OCP\RichObjectStrings\IValidator"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\RichObjectStrings\IValidator</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attr">
+<dt id="OC\Notification\Notification::$app">
+<em class="property">protected </em><em class="property">static </em><em class="property">property </em><code class="descclassname">OC\Notification\Notification::$</code><code class="descname">app</code><a class="headerlink" href="#OC\Notification\Notification::$app" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L41">lib/private/Notification/Notification.php#41</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body">string</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attr">
+<dt id="OC\Notification\Notification::$user">
+<em class="property">protected </em><em class="property">static </em><em class="property">property </em><code class="descclassname">OC\Notification\Notification::$</code><code class="descname">user</code><a class="headerlink" href="#OC\Notification\Notification::$user" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L44">lib/private/Notification/Notification.php#44</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body">string</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attr">
+<dt id="OC\Notification\Notification::$dateTime">
+<em class="property">protected </em><em class="property">static </em><em class="property">property </em><code class="descclassname">OC\Notification\Notification::$</code><code class="descname">dateTime</code><a class="headerlink" href="#OC\Notification\Notification::$dateTime" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L47">lib/private/Notification/Notification.php#47</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body"><code class="xref any docutils literal"><span class="pre">\DateTime</span></code></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attr">
+<dt id="OC\Notification\Notification::$objectType">
+<em class="property">protected </em><em class="property">static </em><em class="property">property </em><code class="descclassname">OC\Notification\Notification::$</code><code class="descname">objectType</code><a class="headerlink" href="#OC\Notification\Notification::$objectType" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L50">lib/private/Notification/Notification.php#50</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body">string</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attr">
+<dt id="OC\Notification\Notification::$objectId">
+<em class="property">protected </em><em class="property">static </em><em class="property">property </em><code class="descclassname">OC\Notification\Notification::$</code><code class="descname">objectId</code><a class="headerlink" href="#OC\Notification\Notification::$objectId" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L53">lib/private/Notification/Notification.php#53</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body">string</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attr">
+<dt id="OC\Notification\Notification::$subject">
+<em class="property">protected </em><em class="property">static </em><em class="property">property </em><code class="descclassname">OC\Notification\Notification::$</code><code class="descname">subject</code><a class="headerlink" href="#OC\Notification\Notification::$subject" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L56">lib/private/Notification/Notification.php#56</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body">string</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attr">
+<dt id="OC\Notification\Notification::$subjectParameters">
+<em class="property">protected </em><em class="property">static </em><em class="property">property </em><code class="descclassname">OC\Notification\Notification::$</code><code class="descname">subjectParameters</code><a class="headerlink" href="#OC\Notification\Notification::$subjectParameters" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L59">lib/private/Notification/Notification.php#59</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body">array</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attr">
+<dt id="OC\Notification\Notification::$subjectParsed">
+<em class="property">protected </em><em class="property">static </em><em class="property">property </em><code class="descclassname">OC\Notification\Notification::$</code><code class="descname">subjectParsed</code><a class="headerlink" href="#OC\Notification\Notification::$subjectParsed" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L62">lib/private/Notification/Notification.php#62</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body">string</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attr">
+<dt id="OC\Notification\Notification::$subjectRich">
+<em class="property">protected </em><em class="property">static </em><em class="property">property </em><code class="descclassname">OC\Notification\Notification::$</code><code class="descname">subjectRich</code><a class="headerlink" href="#OC\Notification\Notification::$subjectRich" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L65">lib/private/Notification/Notification.php#65</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body">string</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attr">
+<dt id="OC\Notification\Notification::$subjectRichParameters">
+<em class="property">protected </em><em class="property">static </em><em class="property">property </em><code class="descclassname">OC\Notification\Notification::$</code><code class="descname">subjectRichParameters</code><a class="headerlink" href="#OC\Notification\Notification::$subjectRichParameters" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L68">lib/private/Notification/Notification.php#68</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body">array</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attr">
+<dt id="OC\Notification\Notification::$message">
+<em class="property">protected </em><em class="property">static </em><em class="property">property </em><code class="descclassname">OC\Notification\Notification::$</code><code class="descname">message</code><a class="headerlink" href="#OC\Notification\Notification::$message" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L71">lib/private/Notification/Notification.php#71</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body">string</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attr">
+<dt id="OC\Notification\Notification::$messageParameters">
+<em class="property">protected </em><em class="property">static </em><em class="property">property </em><code class="descclassname">OC\Notification\Notification::$</code><code class="descname">messageParameters</code><a class="headerlink" href="#OC\Notification\Notification::$messageParameters" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L74">lib/private/Notification/Notification.php#74</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body">array</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attr">
+<dt id="OC\Notification\Notification::$messageParsed">
+<em class="property">protected </em><em class="property">static </em><em class="property">property </em><code class="descclassname">OC\Notification\Notification::$</code><code class="descname">messageParsed</code><a class="headerlink" href="#OC\Notification\Notification::$messageParsed" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L77">lib/private/Notification/Notification.php#77</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body">string</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attr">
+<dt id="OC\Notification\Notification::$messageRich">
+<em class="property">protected </em><em class="property">static </em><em class="property">property </em><code class="descclassname">OC\Notification\Notification::$</code><code class="descname">messageRich</code><a class="headerlink" href="#OC\Notification\Notification::$messageRich" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L80">lib/private/Notification/Notification.php#80</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body">string</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attr">
+<dt id="OC\Notification\Notification::$messageRichParameters">
+<em class="property">protected </em><em class="property">static </em><em class="property">property </em><code class="descclassname">OC\Notification\Notification::$</code><code class="descname">messageRichParameters</code><a class="headerlink" href="#OC\Notification\Notification::$messageRichParameters" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L83">lib/private/Notification/Notification.php#83</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body">array</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attr">
+<dt id="OC\Notification\Notification::$link">
+<em class="property">protected </em><em class="property">static </em><em class="property">property </em><code class="descclassname">OC\Notification\Notification::$</code><code class="descname">link</code><a class="headerlink" href="#OC\Notification\Notification::$link" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L86">lib/private/Notification/Notification.php#86</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body">string</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attr">
+<dt id="OC\Notification\Notification::$icon">
+<em class="property">protected </em><em class="property">static </em><em class="property">property </em><code class="descclassname">OC\Notification\Notification::$</code><code class="descname">icon</code><a class="headerlink" href="#OC\Notification\Notification::$icon" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L89">lib/private/Notification/Notification.php#89</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body">string</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attr">
+<dt id="OC\Notification\Notification::$actions">
+<em class="property">protected </em><em class="property">static </em><em class="property">property </em><code class="descclassname">OC\Notification\Notification::$</code><code class="descname">actions</code><a class="headerlink" href="#OC\Notification\Notification::$actions" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L92">lib/private/Notification/Notification.php#92</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body">array</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attr">
+<dt id="OC\Notification\Notification::$actionsParsed">
+<em class="property">protected </em><em class="property">static </em><em class="property">property </em><code class="descclassname">OC\Notification\Notification::$</code><code class="descname">actionsParsed</code><a class="headerlink" href="#OC\Notification\Notification::$actionsParsed" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L95">lib/private/Notification/Notification.php#95</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body">array</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attr">
+<dt id="OC\Notification\Notification::$hasPrimaryAction">
+<em class="property">protected </em><em class="property">static </em><em class="property">property </em><code class="descclassname">OC\Notification\Notification::$</code><code class="descname">hasPrimaryAction</code><a class="headerlink" href="#OC\Notification\Notification::$hasPrimaryAction" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L98">lib/private/Notification/Notification.php#98</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attr">
+<dt id="OC\Notification\Notification::$hasPrimaryParsedAction">
+<em class="property">protected </em><em class="property">static </em><em class="property">property </em><code class="descclassname">OC\Notification\Notification::$</code><code class="descname">hasPrimaryParsedAction</code><a class="headerlink" href="#OC\Notification\Notification::$hasPrimaryParsedAction" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L101">lib/private/Notification/Notification.php#101</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h2>
+<dl class="public method">
+<dt id="OC\Notification\Notification::__construct">
+<em class="property">public </em><code class="descclassname">OC\Notification\Notification::</code><code class="descname">__construct</code><span class="sig-paren">(</span><em>$richValidator</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Notification\Notification::__construct" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L103">lib/private/Notification/Notification.php#103</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Notification\Notification::setApp">
+<em class="property">public </em><code class="descclassname">OC\Notification\Notification::</code><code class="descname">setApp</code><span class="sig-paren">(</span><em>$app</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Notification\Notification::setApp" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L133">lib/private/Notification/Notification.php#133</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$app</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">$this</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><code class="xref any docutils literal"><span class="pre">\InvalidArgumentException</span></code> if the app id is invalid</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">8.2.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Notification\Notification::getApp">
+<em class="property">public </em><code class="descclassname">OC\Notification\Notification::</code><code class="descname">getApp</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Notification\Notification::getApp" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L145">lib/private/Notification/Notification.php#145</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">string</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">8.2.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Notification\Notification::setUser">
+<em class="property">public </em><code class="descclassname">OC\Notification\Notification::</code><code class="descname">setUser</code><span class="sig-paren">(</span><em>$user</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Notification\Notification::setUser" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L155">lib/private/Notification/Notification.php#155</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$user</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">$this</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><code class="xref any docutils literal"><span class="pre">\InvalidArgumentException</span></code> if the user id is invalid</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">8.2.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Notification\Notification::getUser">
+<em class="property">public </em><code class="descclassname">OC\Notification\Notification::</code><code class="descname">getUser</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Notification\Notification::getUser" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L167">lib/private/Notification/Notification.php#167</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">string</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">8.2.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Notification\Notification::setDateTime">
+<em class="property">public </em><code class="descclassname">OC\Notification\Notification::</code><code class="descname">setDateTime</code><span class="sig-paren">(</span><em>$dateTime</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Notification\Notification::setDateTime" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L177">lib/private/Notification/Notification.php#177</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$dateTime</strong> (<code class="xref any docutils literal"><span class="pre">DateTime</span></code>)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">$this</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><code class="xref any docutils literal"><span class="pre">\InvalidArgumentException</span></code> if the $dateTime is invalid</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">9.0.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Notification\Notification::getDateTime">
+<em class="property">public </em><code class="descclassname">OC\Notification\Notification::</code><code class="descname">getDateTime</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Notification\Notification::getDateTime" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L189">lib/private/Notification/Notification.php#189</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><code class="xref any docutils literal"><span class="pre">\DateTime</span></code></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">9.0.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Notification\Notification::setObject">
+<em class="property">public </em><code class="descclassname">OC\Notification\Notification::</code><code class="descname">setObject</code><span class="sig-paren">(</span><em>$type</em>, <em>$id</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Notification\Notification::setObject" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L200">lib/private/Notification/Notification.php#200</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$type</strong> (string)</li>
+<li><strong>$id</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">$this</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><code class="xref any docutils literal"><span class="pre">\InvalidArgumentException</span></code> if the object type or id is invalid</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">8.2.0 - 9.0.0: Type of $id changed to string</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Notification\Notification::getObjectType">
+<em class="property">public </em><code class="descclassname">OC\Notification\Notification::</code><code class="descname">getObjectType</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Notification\Notification::getObjectType" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L217">lib/private/Notification/Notification.php#217</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">string</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">8.2.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Notification\Notification::getObjectId">
+<em class="property">public </em><code class="descclassname">OC\Notification\Notification::</code><code class="descname">getObjectId</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Notification\Notification::getObjectId" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L225">lib/private/Notification/Notification.php#225</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">string</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">8.2.0 - 9.0.0: Return type changed to string</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Notification\Notification::setSubject">
+<em class="property">public </em><code class="descclassname">OC\Notification\Notification::</code><code class="descname">setSubject</code><span class="sig-paren">(</span><em>$subject</em>, <em>$parameters=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Notification\Notification::setSubject" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L236">lib/private/Notification/Notification.php#236</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$subject</strong> (string)</li>
+<li><strong>$parameters</strong> (array)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">$this</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><code class="xref any docutils literal"><span class="pre">\InvalidArgumentException</span></code> if the subject or parameters are invalid</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">8.2.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Notification\Notification::getSubject">
+<em class="property">public </em><code class="descclassname">OC\Notification\Notification::</code><code class="descname">getSubject</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Notification\Notification::getSubject" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L251">lib/private/Notification/Notification.php#251</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">string</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">8.2.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Notification\Notification::getSubjectParameters">
+<em class="property">public </em><code class="descclassname">OC\Notification\Notification::</code><code class="descname">getSubjectParameters</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Notification\Notification::getSubjectParameters" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L259">lib/private/Notification/Notification.php#259</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">array</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">8.2.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Notification\Notification::setParsedSubject">
+<em class="property">public </em><code class="descclassname">OC\Notification\Notification::</code><code class="descname">setParsedSubject</code><span class="sig-paren">(</span><em>$subject</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Notification\Notification::setParsedSubject" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L269">lib/private/Notification/Notification.php#269</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$subject</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">$this</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><code class="xref any docutils literal"><span class="pre">\InvalidArgumentException</span></code> if the subject is invalid</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">8.2.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Notification\Notification::getParsedSubject">
+<em class="property">public </em><code class="descclassname">OC\Notification\Notification::</code><code class="descname">getParsedSubject</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Notification\Notification::getParsedSubject" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L281">lib/private/Notification/Notification.php#281</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">string</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">8.2.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Notification\Notification::setRichSubject">
+<em class="property">public </em><code class="descclassname">OC\Notification\Notification::</code><code class="descname">setRichSubject</code><span class="sig-paren">(</span><em>$subject</em>, <em>$parameters=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Notification\Notification::setRichSubject" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L292">lib/private/Notification/Notification.php#292</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$subject</strong> (string)</li>
+<li><strong>$parameters</strong> (array)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">$this</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><code class="xref any docutils literal"><span class="pre">\InvalidArgumentException</span></code> if the subject or parameters are invalid</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">11.0.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Notification\Notification::getRichSubject">
+<em class="property">public </em><code class="descclassname">OC\Notification\Notification::</code><code class="descname">getRichSubject</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Notification\Notification::getRichSubject" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L307">lib/private/Notification/Notification.php#307</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">string</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">11.0.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Notification\Notification::getRichSubjectParameters">
+<em class="property">public </em><code class="descclassname">OC\Notification\Notification::</code><code class="descname">getRichSubjectParameters</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Notification\Notification::getRichSubjectParameters" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L315">lib/private/Notification/Notification.php#315</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">array[]</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">11.0.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Notification\Notification::setMessage">
+<em class="property">public </em><code class="descclassname">OC\Notification\Notification::</code><code class="descname">setMessage</code><span class="sig-paren">(</span><em>$message</em>, <em>$parameters=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Notification\Notification::setMessage" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L326">lib/private/Notification/Notification.php#326</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$message</strong> (string)</li>
+<li><strong>$parameters</strong> (array)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">$this</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><code class="xref any docutils literal"><span class="pre">\InvalidArgumentException</span></code> if the message or parameters are invalid</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">8.2.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Notification\Notification::getMessage">
+<em class="property">public </em><code class="descclassname">OC\Notification\Notification::</code><code class="descname">getMessage</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Notification\Notification::getMessage" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L341">lib/private/Notification/Notification.php#341</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">string</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">8.2.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Notification\Notification::getMessageParameters">
+<em class="property">public </em><code class="descclassname">OC\Notification\Notification::</code><code class="descname">getMessageParameters</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Notification\Notification::getMessageParameters" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L349">lib/private/Notification/Notification.php#349</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">array</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">8.2.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Notification\Notification::setParsedMessage">
+<em class="property">public </em><code class="descclassname">OC\Notification\Notification::</code><code class="descname">setParsedMessage</code><span class="sig-paren">(</span><em>$message</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Notification\Notification::setParsedMessage" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L359">lib/private/Notification/Notification.php#359</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$message</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">$this</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><code class="xref any docutils literal"><span class="pre">\InvalidArgumentException</span></code> if the message is invalid</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">8.2.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Notification\Notification::getParsedMessage">
+<em class="property">public </em><code class="descclassname">OC\Notification\Notification::</code><code class="descname">getParsedMessage</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Notification\Notification::getParsedMessage" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L371">lib/private/Notification/Notification.php#371</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">string</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">8.2.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Notification\Notification::setRichMessage">
+<em class="property">public </em><code class="descclassname">OC\Notification\Notification::</code><code class="descname">setRichMessage</code><span class="sig-paren">(</span><em>$message</em>, <em>$parameters=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Notification\Notification::setRichMessage" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L382">lib/private/Notification/Notification.php#382</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$message</strong> (string)</li>
+<li><strong>$parameters</strong> (array)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">$this</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><code class="xref any docutils literal"><span class="pre">\InvalidArgumentException</span></code> if the message or parameters are invalid</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">11.0.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Notification\Notification::getRichMessage">
+<em class="property">public </em><code class="descclassname">OC\Notification\Notification::</code><code class="descname">getRichMessage</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Notification\Notification::getRichMessage" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L397">lib/private/Notification/Notification.php#397</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">string</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">11.0.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Notification\Notification::getRichMessageParameters">
+<em class="property">public </em><code class="descclassname">OC\Notification\Notification::</code><code class="descname">getRichMessageParameters</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Notification\Notification::getRichMessageParameters" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L405">lib/private/Notification/Notification.php#405</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">array[]</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">11.0.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Notification\Notification::setLink">
+<em class="property">public </em><code class="descclassname">OC\Notification\Notification::</code><code class="descname">setLink</code><span class="sig-paren">(</span><em>$link</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Notification\Notification::setLink" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L415">lib/private/Notification/Notification.php#415</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$link</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">$this</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><code class="xref any docutils literal"><span class="pre">\InvalidArgumentException</span></code> if the link is invalid</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">8.2.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Notification\Notification::getLink">
+<em class="property">public </em><code class="descclassname">OC\Notification\Notification::</code><code class="descname">getLink</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Notification\Notification::getLink" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L427">lib/private/Notification/Notification.php#427</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">string</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">8.2.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Notification\Notification::setIcon">
+<em class="property">public </em><code class="descclassname">OC\Notification\Notification::</code><code class="descname">setIcon</code><span class="sig-paren">(</span><em>$icon</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Notification\Notification::setIcon" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L437">lib/private/Notification/Notification.php#437</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$icon</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">$this</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><code class="xref any docutils literal"><span class="pre">\InvalidArgumentException</span></code> if the icon is invalid</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">11.0.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Notification\Notification::getIcon">
+<em class="property">public </em><code class="descclassname">OC\Notification\Notification::</code><code class="descname">getIcon</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Notification\Notification::getIcon" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L449">lib/private/Notification/Notification.php#449</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">string</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">11.0.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Notification\Notification::createAction">
+<em class="property">public </em><code class="descclassname">OC\Notification\Notification::</code><code class="descname">createAction</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Notification\Notification::createAction" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L457">lib/private/Notification/Notification.php#457</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="../../OCP/Notification/IAction.html#OCP\Notification\IAction" title="OCP\Notification\IAction"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Notification\IAction</span></code></a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">8.2.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Notification\Notification::addAction">
+<em class="property">public </em><code class="descclassname">OC\Notification\Notification::</code><code class="descname">addAction</code><span class="sig-paren">(</span><em>$action</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Notification\Notification::addAction" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L467">lib/private/Notification/Notification.php#467</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$action</strong> (<a class="reference internal" href="../../OCP/Notification/IAction.html#OCP\Notification\IAction" title="OCP\Notification\IAction"><code class="xref any php php-trait docutils literal"><span class="pre">OCP\Notification\IAction</span></code></a>)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">$this</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><code class="xref any docutils literal"><span class="pre">\InvalidArgumentException</span></code> if the action is invalid</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">8.2.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Notification\Notification::getActions">
+<em class="property">public </em><code class="descclassname">OC\Notification\Notification::</code><code class="descname">getActions</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Notification\Notification::getActions" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L488">lib/private/Notification/Notification.php#488</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="../../OCP/Notification/IAction.html#OCP\Notification\IAction" title="OCP\Notification\IAction"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Notification\IAction[]</span></code></a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">8.2.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Notification\Notification::addParsedAction">
+<em class="property">public </em><code class="descclassname">OC\Notification\Notification::</code><code class="descname">addParsedAction</code><span class="sig-paren">(</span><em>$action</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Notification\Notification::addParsedAction" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L498">lib/private/Notification/Notification.php#498</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$action</strong> (<a class="reference internal" href="../../OCP/Notification/IAction.html#OCP\Notification\IAction" title="OCP\Notification\IAction"><code class="xref any php php-trait docutils literal"><span class="pre">OCP\Notification\IAction</span></code></a>)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">$this</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><code class="xref any docutils literal"><span class="pre">\InvalidArgumentException</span></code> if the action is invalid</p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">8.2.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Notification\Notification::getParsedActions">
+<em class="property">public </em><code class="descclassname">OC\Notification\Notification::</code><code class="descname">getParsedActions</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Notification\Notification::getParsedActions" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L523">lib/private/Notification/Notification.php#523</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><a class="reference internal" href="../../OCP/Notification/IAction.html#OCP\Notification\IAction" title="OCP\Notification\IAction"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Notification\IAction[]</span></code></a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">8.2.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Notification\Notification::isValid">
+<em class="property">public </em><code class="descclassname">OC\Notification\Notification::</code><code class="descname">isValid</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Notification\Notification::isValid" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L531">lib/private/Notification/Notification.php#531</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">bool</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">8.2.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Notification\Notification::isValidParsed">
+<em class="property">public </em><code class="descclassname">OC\Notification\Notification::</code><code class="descname">isValidParsed</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Notification\Notification::isValidParsed" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L543">lib/private/Notification/Notification.php#543</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">bool</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">8.2.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="protected method">
+<dt id="OC\Notification\Notification::isValidCommon">
+<em class="property">protected </em><code class="descclassname">OC\Notification\Notification::</code><code class="descname">isValidCommon</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Notification\Notification::isValidCommon" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L567">lib/private/Notification/Notification.php#567</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../OCS/index.html" class="btn btn-neutral float-right" title="OCS" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="Manager.html" class="btn btn-neutral float-left" title="Manager" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021 Nextcloud GmbH.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: 13
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/13/developer_manual">13</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/14/developer_manual">14</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/15/developer_manual">15</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/developer_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/developer_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+   
+
+</body>
+</html>

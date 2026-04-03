@@ -1,0 +1,473 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>App Metadata &#8212; Nextcloud Developer Manual 12 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/main.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '12',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.1.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Classloader" href="classloader.html" />
+    <link rel="prev" title="Navigation and Pre-App configuration" href="init.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#1d2d44">
+<link rel="shortcut icon" href="https://nextcloud.com/wp-content/themes/next/assets/img/common/favicon.png" />
+<link rel="apple-touch-icon-precomposed" href="https://nextcloud.com/wp-content/themes/next/assets/img/common/favicon.png" />
+<!-- Piwik -->
+<script type="text/javascript">
+    var _paq = _paq || [];
+    _paq.push(['trackPageView']);
+    _paq.push(['enableLinkTracking']);
+    (function() {
+        var u="//stats.nextcloud.com/";
+        _paq.push(['setTrackerUrl', u+'piwik.php']);
+        _paq.push(['setSiteId', 3]);
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+        g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+    })();
+</script>
+<noscript><p><img src="//stats.nextcloud.com/piwik.php?idsite=3" style="border:0;" alt="" /></p></noscript>
+<!-- End Piwik Code -->
+
+  </head>
+  <body role="document">
+
+<header class="banner navbar navbar-default navbar-static-top" role="banner">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+       <a class="brand" href="http://nextcloud.com/" rel="home" title="Nextcloud.com"><img class="logo" src="../_static/img/logo.svg" itemprop="logo"></a>
+    </div>
+
+    <nav class="collapse navbar-collapse" role="navigation">
+      <ul id="menu-header" class="nav navbar-nav">
+          <li><a target="_blank" href="https://demo.nextcloud.com">Demo</a></li>
+          <li><a href="https://nextcloud.com/news/">News</a></li>
+          <li><a href="https://nextcloud.com/features/">Features</a></li>
+          <li><a href="https://nextcloud.com/about/">About us</a></li>
+          <li><a href="https://nextcloud.com/contribute/">Get involved</a></li>
+          <li><a href="https://nextcloud.com/support/">Support</a></li>
+          <li><a href="https://nextcloud.com/enterprise/">Enterprise</a></li>
+          <li class="menu-install"><a href="https://nextcloud.com/install/">Download</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+
+
+<div class="container" style="background-color: #E6C4C2;color: #b10000;border: #b10000 2px solid;border-right: none;border-left: none;padding: 15px 10px;">You are reading an outdated version of this documentation. Please check out the <a href="https://docs.nextcloud.com/server/stable/developer_manual/" style="
+color: rgb(177,0,0);text-decoration: underline;">latest version</a> of the developer manual.</div>
+
+
+
+
+
+<div class="wrap container not-front">
+  <div class="content row">
+  <main class="main">
+    <div class="row page-content-header">
+      <div class="col-md-6">
+        <h1><a href="../index.html">Nextcloud Developer Manual</a></h1>
+      </div>
+      <div class="col-md-5 col-md-offset-1">
+      
+        <form class="headersearch" style="margin: 16px 0;" action="../search.html" method="get">
+        <input type="text" value="" name="q" id="q" class="form-control" /> 
+        <button  class="btn btn-default" type="submit" id="searchsubmit">Search</button>
+        </form>
+      
+      </div>
+    </div>
+    
+			<div class="row">
+				<div class="col-md-3">
+					<div class="sidebar">
+							<div class="menu-support-container">
+								<ul id="menu-support" class="menu">
+									<ul>
+										
+<li><a href="../index.html">Table of Contents</a></li>
+									</ul>
+                  <ul>
+<li class="toctree-l1"><a class="reference internal" href="../general/index.html">General Contributor Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">App Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../design/index.html">Design Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../android_library/index.html">Android Application Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client_apis/index.html">Client APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../core/index.html">Core Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bugtracker/index.html">Bugtracker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../commun/index.html">Help and Communication</a></li>
+</ul>
+
+								</ul>
+							</div>
+					</div>
+				</div>
+        
+
+				<div class="col-md-9">
+					<div class="page-content">
+            
+<ul class="prevnext-title list-unstyled list-inline">
+  <li class="prev">
+    <a href="init.html" title="Previous Chapter: Navigation and Pre-App configuration"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; Navigation an...</span>
+    </a>
+  </li>
+  <li class="next">
+    <a href="classloader.html" title="Next Chapter: Classloader"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">Classloader &raquo;</span>
+    </a>
+  </li>
+</ul>
+						
+  <div class="section" id="app-metadata">
+<h1>App Metadata<a class="headerlink" href="#app-metadata" title="Permalink to this headline">¶</a></h1>
+<p>The <code class="file docutils literal"><span class="pre">appinfo/info.xml</span></code> contains metadata about the app:</p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span class="nt">&lt;info&gt;</span>
+    <span class="nt">&lt;id&gt;</span>yourappname<span class="nt">&lt;/id&gt;</span>
+    <span class="nt">&lt;name&gt;</span>Your App<span class="nt">&lt;/name&gt;</span>
+    <span class="nt">&lt;description&gt;</span>Your App description<span class="nt">&lt;/description&gt;</span>
+    <span class="nt">&lt;version&gt;</span>1.0<span class="nt">&lt;/version&gt;</span>
+    <span class="nt">&lt;licence&gt;</span>AGPL<span class="nt">&lt;/licence&gt;</span>
+    <span class="nt">&lt;author&gt;</span>Your Name<span class="nt">&lt;/author&gt;</span>
+    <span class="nt">&lt;namespace&gt;</span>YourAppsNamespace<span class="nt">&lt;/namespace&gt;</span>
+
+    <span class="nt">&lt;types&gt;</span>
+        <span class="nt">&lt;filesystem/&gt;</span>
+    <span class="nt">&lt;/types&gt;</span>
+
+
+    <span class="nt">&lt;documentation&gt;</span>
+        <span class="nt">&lt;user&gt;</span>https://docs.nextcloud.org<span class="nt">&lt;/user&gt;</span>
+        <span class="nt">&lt;admin&gt;</span>https://docs.nextcloud.org<span class="nt">&lt;/admin&gt;</span>
+        <span class="nt">&lt;developer&gt;</span>https://docs.nextcloud.org<span class="nt">&lt;/developer&gt;</span>
+    <span class="nt">&lt;/documentation&gt;</span>
+
+    <span class="nt">&lt;category&gt;</span>tool<span class="nt">&lt;/category&gt;</span>
+
+    <span class="nt">&lt;website&gt;</span>https://example.org<span class="nt">&lt;/website&gt;</span>
+
+    <span class="nt">&lt;bugs&gt;</span>https://github.com/nextcloud/theapp/issues<span class="nt">&lt;/bugs&gt;</span>
+
+    <span class="nt">&lt;repository</span> <span class="na">type=</span><span class="s">&quot;git&quot;</span><span class="nt">&gt;</span>https://github.com/nextcloud/theapp.git<span class="nt">&lt;/repository&gt;</span>
+
+    <span class="nt">&lt;ocsid&gt;</span>1234<span class="nt">&lt;/ocsid&gt;</span>
+
+    <span class="nt">&lt;dependencies&gt;</span>
+        <span class="nt">&lt;php</span> <span class="na">min-version=</span><span class="s">&quot;5.6&quot;</span> <span class="na">max-version=</span><span class="s">&quot;7.1&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;database&gt;</span>sqlite<span class="nt">&lt;/database&gt;</span>
+        <span class="nt">&lt;database&gt;</span>mysql<span class="nt">&lt;/database&gt;</span>
+        <span class="nt">&lt;command</span> <span class="na">os=</span><span class="s">&quot;linux&quot;</span><span class="nt">&gt;</span>grep<span class="nt">&lt;/command&gt;</span>
+        <span class="nt">&lt;command</span> <span class="na">os=</span><span class="s">&quot;windows&quot;</span><span class="nt">&gt;</span>notepad.exe<span class="nt">&lt;/command&gt;</span>
+        <span class="nt">&lt;lib</span> <span class="na">min-version=</span><span class="s">&quot;1.2&quot;</span><span class="nt">&gt;</span>xml<span class="nt">&lt;/lib&gt;</span>
+        <span class="nt">&lt;lib</span> <span class="na">max-version=</span><span class="s">&quot;2.0&quot;</span><span class="nt">&gt;</span>intl<span class="nt">&lt;/lib&gt;</span>
+        <span class="nt">&lt;lib&gt;</span>curl<span class="nt">&lt;/lib&gt;</span>
+        <span class="nt">&lt;os&gt;</span>Linux<span class="nt">&lt;/os&gt;</span>
+        <span class="nt">&lt;owncloud</span> <span class="na">min-version=</span><span class="s">&quot;6.0.4&quot;</span> <span class="na">max-version=</span><span class="s">&quot;8&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/dependencies&gt;</span>
+
+    <span class="nt">&lt;settings&gt;</span>
+        <span class="nt">&lt;admin-section&gt;</span>OCA\YourAppsNamespace\Settings\AdminSection<span class="nt">&lt;/admin-section&gt;</span>
+        <span class="nt">&lt;admin&gt;</span>OCA\YourAppsNamespace\Settings\AdminSettings<span class="nt">&lt;/admin&gt;</span>
+    <span class="nt">&lt;/settings&gt;</span>
+
+    <span class="c">&lt;!-- deprecated, just for reference --&gt;</span>
+    <span class="nt">&lt;requiremin&gt;</span>5<span class="nt">&lt;/requiremin&gt;</span>
+    <span class="nt">&lt;public&gt;</span>
+        <span class="nt">&lt;file</span> <span class="na">id=</span><span class="s">&quot;caldav&quot;</span><span class="nt">&gt;</span>appinfo/caldav.php<span class="nt">&lt;/file&gt;</span>
+    <span class="nt">&lt;/public&gt;</span>
+
+    <span class="nt">&lt;remote&gt;</span>
+        <span class="nt">&lt;file</span> <span class="na">id=</span><span class="s">&quot;caldav&quot;</span><span class="nt">&gt;</span>appinfo/caldav.php<span class="nt">&lt;/file&gt;</span>
+    <span class="nt">&lt;/remote&gt;</span>
+
+    <span class="nt">&lt;standalone</span> <span class="nt">/&gt;</span>
+
+    <span class="nt">&lt;default_enable</span> <span class="nt">/&gt;</span>
+    <span class="nt">&lt;shipped&gt;</span>true<span class="nt">&lt;/shipped&gt;</span>
+    <span class="c">&lt;!-- end deprecated --&gt;</span>
+<span class="nt">&lt;/info&gt;</span>
+</pre></div>
+</div>
+<div class="section" id="id">
+<h2>id<a class="headerlink" href="#id" title="Permalink to this headline">¶</a></h2>
+<p><strong>Required</strong>: This field contains the internal app name, and has to be the same as the folder name of the app. This id needs to be unique in Nextcloud, meaning no other app should have this id.</p>
+</div>
+<div class="section" id="name">
+<h2>name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h2>
+<p><strong>Required</strong>: This is the human-readable name/title of the app that will be displayed in the app overview page.</p>
+</div>
+<div class="section" id="description">
+<h2>description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h2>
+<p><strong>Required</strong>: This contains the description of the app which will be shown in the app overview page.</p>
+</div>
+<div class="section" id="version">
+<h2>version<a class="headerlink" href="#version" title="Permalink to this headline">¶</a></h2>
+<p>Contains the version of your app.</p>
+</div>
+<div class="section" id="licence">
+<h2>licence<a class="headerlink" href="#licence" title="Permalink to this headline">¶</a></h2>
+<p><strong>Required</strong>: The licence of the app. This licence must be compatible with the AGPL and <strong>must not be proprietary</strong>, for instance:</p>
+<ul class="simple">
+<li>AGPL 3 (recommended)</li>
+<li>MIT</li>
+</ul>
+</div>
+<div class="section" id="author">
+<h2>author<a class="headerlink" href="#author" title="Permalink to this headline">¶</a></h2>
+<p><strong>Required</strong>: The name of the app author or authors.</p>
+</div>
+<div class="section" id="namespace">
+<h2>namespace<a class="headerlink" href="#namespace" title="Permalink to this headline">¶</a></h2>
+<p>Required if routes.php returns an array. If your app is namespaced like <strong>\OCA\MyApp\Controller\PageController</strong> the required namespace value is <strong>MyApp</strong>. If not given it tries to default to the first letter upper cased app id, e.g. <strong>myapp</strong> would be tried under <strong>Myapp</strong></p>
+</div>
+<div class="section" id="types">
+<h2>types<a class="headerlink" href="#types" title="Permalink to this headline">¶</a></h2>
+<p>Nextcloud allows to specify four kind of <code class="docutils literal"><span class="pre">types</span></code>. Currently supported <code class="docutils literal"><span class="pre">types</span></code>:</p>
+<ul class="simple">
+<li><strong>prelogin</strong>: apps which need to load on the login page</li>
+<li><strong>filesystem</strong>: apps which provide filesystem functionality (e.g. files sharing app)</li>
+<li><strong>authentication</strong>: apps which provide authentication backends</li>
+<li><strong>logging</strong>: apps which implement a logging system</li>
+<li><strong>prevent_group_restriction</strong>: apps which can not be enabled for specific groups (e.g. notifications app).</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Due to technical reasons apps of any type listed above can not be enabled for specific groups only.</p>
+</div>
+</div>
+<div class="section" id="documentation">
+<h2>documentation<a class="headerlink" href="#documentation" title="Permalink to this headline">¶</a></h2>
+<p>Link to &#8216;admin&#8217;, &#8216;user&#8217;, &#8216;developer&#8217; documentation</p>
+</div>
+<div class="section" id="website">
+<h2>website<a class="headerlink" href="#website" title="Permalink to this headline">¶</a></h2>
+<p>Link to project web page</p>
+</div>
+<div class="section" id="repository">
+<h2>repository<a class="headerlink" href="#repository" title="Permalink to this headline">¶</a></h2>
+<p>Link to the version control repo</p>
+</div>
+<div class="section" id="bugs">
+<h2>bugs<a class="headerlink" href="#bugs" title="Permalink to this headline">¶</a></h2>
+<p>Link to the bug tracker</p>
+</div>
+<div class="section" id="category">
+<h2>category<a class="headerlink" href="#category" title="Permalink to this headline">¶</a></h2>
+<p>Category on the app store. Can be one of the following:</p>
+<ul class="simple">
+<li>auth</li>
+<li>customization</li>
+<li>files</li>
+<li>games</li>
+<li>integration</li>
+<li>monitoring</li>
+<li>multimedia</li>
+<li>office</li>
+<li>organization</li>
+<li>social</li>
+<li>tools</li>
+</ul>
+</div>
+<div class="section" id="ocsid">
+<h2>ocsid<a class="headerlink" href="#ocsid" title="Permalink to this headline">¶</a></h2>
+<p>The app&#8217;s id on the app store, e.g.: <a class="reference external" href="https://apps.owncloud.com/content/show.php/QOwnNotes?content=168497">https://apps.owncloud.com/content/show.php/QOwnNotes?content=168497</a> would have the ocsid <strong>168497</strong>. If given helps users to install and update the same app from the app store</p>
+</div>
+<div class="section" id="dependencies">
+<h2>Dependencies<a class="headerlink" href="#dependencies" title="Permalink to this headline">¶</a></h2>
+<p>All tags within the dependencies tag define a set of requirements which have to be fulfilled in order to operate
+properly. As soon as one of these requirements is not met the app cannot be installed.</p>
+<div class="section" id="php">
+<h3>php<a class="headerlink" href="#php" title="Permalink to this headline">¶</a></h3>
+<p>Defines the minimum and the maximum version of PHP which is required to run this app.</p>
+</div>
+<div class="section" id="database">
+<h3>database<a class="headerlink" href="#database" title="Permalink to this headline">¶</a></h3>
+<p>Each supported database has to be listed in here. Valid values are sqlite, mysql, pgsql, oci and mssql. In the future
+it will be possible to specify versions here as well.
+In case no database is specified it is assumed that all databases are supported.</p>
+</div>
+<div class="section" id="command">
+<h3>command<a class="headerlink" href="#command" title="Permalink to this headline">¶</a></h3>
+<p>Defines a command line tool to be available. With the attribute &#8216;os&#8217; the required operating system for this tool can be
+specified. Valid values for the &#8216;os&#8217; attribute are as returned by the PHP function <a class="reference external" href="http://php.net/manual/en/function.php-uname.php">php_uname</a>.</p>
+</div>
+<div class="section" id="lib">
+<h3>lib<a class="headerlink" href="#lib" title="Permalink to this headline">¶</a></h3>
+<p>Defines a required PHP extension with required minimum and/or maximum version. The names for the libraries have to match the result as returned by the PHP function  <a class="reference external" href="http://php.net/manual/en/function.get-loaded-extensions.php">get_loaded_extensions</a>.
+The explicit version of an extension is read from <a class="reference external" href="http://php.net/manual/de/function.phpversion.php">phpversion</a> - with some exception as to be read up in the <a class="reference external" href="https://github.com/nextcloud/server/blob/master/lib/private/App/PlatformRepository.php">code base</a>.</p>
+</div>
+<div class="section" id="os">
+<h3>os<a class="headerlink" href="#os" title="Permalink to this headline">¶</a></h3>
+<p>Defines the required target operating system the app can run on. Valid values are as returned by the PHP function <a class="reference external" href="http://php.net/manual/en/function.php-uname.php">php_uname</a>.</p>
+</div>
+<div class="section" id="owncloud">
+<h3>owncloud<a class="headerlink" href="#owncloud" title="Permalink to this headline">¶</a></h3>
+<p><strong>Required</strong>: Defines minimum and maximum versions of the Nextcloud core. In case undefined the values will be taken from the tag <a class="reference internal" href="#requiremin">requiremin</a>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p>Currently this tag is also used to check for the Nextcloud version number.
+Thereby the following &#8220;translation&#8221; is made:</p>
+<ul class="last simple">
+<li>ownCloud 9.0 matches Nextcloud 9</li>
+<li>ownCloud 9.1 matches Nextcloud 10</li>
+<li>ownCloud 9.2 matches Nextcloud 11</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="section" id="settings">
+<h2>settings<a class="headerlink" href="#settings" title="Permalink to this headline">¶</a></h2>
+<p>When your app has admin settings, this is the place to register the corresponding classes.</p>
+<div class="section" id="admin-section">
+<h3>admin-section<a class="headerlink" href="#admin-section" title="Permalink to this headline">¶</a></h3>
+<p>In case the app needs to register a new section on the admin settings page, it needs to implement the OCPSettingsISection interface. The implementing class needs to be specified here.</p>
+</div>
+<div class="section" id="admin">
+<h3>admin<a class="headerlink" href="#admin" title="Permalink to this headline">¶</a></h3>
+<p>In case the app has its own admin related settings, it needs to implement the OCPSettingsISettings interface. The implementing class needs to be specified here.</p>
+</div>
+</div>
+<div class="section" id="deprecated">
+<h2>Deprecated<a class="headerlink" href="#deprecated" title="Permalink to this headline">¶</a></h2>
+<p>The following sections are just listed for reference and should not be used; they are deprecated and often not evaluated anymore (i.e., they are ignored).</p>
+<div class="section" id="requiremin">
+<h3>requiremin<a class="headerlink" href="#requiremin" title="Permalink to this headline">¶</a></h3>
+<p>Deprecated in favor of the <strong>&lt;dependencies&gt;</strong> tag.</p>
+</div>
+<div class="section" id="public">
+<h3>public<a class="headerlink" href="#public" title="Permalink to this headline">¶</a></h3>
+<p>Used to provide a public interface (requires no login) for the app. The id is appended to the URL <strong>/index.php/public</strong>. Example with id set to &#8216;calendar&#8217;:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">index</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">public</span><span class="o">/</span><span class="n">calendar</span>
+</pre></div>
+</div>
+<p>Also take a look at <a class="reference internal" href="../core/externalapi.html"><span class="doc">External API</span></a>.</p>
+</div>
+<div class="section" id="remote">
+<h3>remote<a class="headerlink" href="#remote" title="Permalink to this headline">¶</a></h3>
+<p>Same as public but requires login. The id is appended to the URL <strong>/index.php/remote</strong>. Example with id set to &#8216;calendar&#8217;:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">index</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">remote</span><span class="o">/</span><span class="n">calendar</span>
+</pre></div>
+</div>
+<p>Also take a look at <a class="reference internal" href="../core/externalapi.html"><span class="doc">External API</span></a>.</p>
+</div>
+<div class="section" id="standalone">
+<h3>standalone<a class="headerlink" href="#standalone" title="Permalink to this headline">¶</a></h3>
+<p>Can be set to true to indicate that this app is a webapp. This can be used to tell GNOME Web for instance to treat this like a native application.</p>
+</div>
+<div class="section" id="default-enable">
+<h3>default_enable<a class="headerlink" href="#default-enable" title="Permalink to this headline">¶</a></h3>
+<p><strong>Core apps only</strong>: Used to tell Nextcloud to enable them after the installation.</p>
+</div>
+<div class="section" id="shipped">
+<h3>shipped<a class="headerlink" href="#shipped" title="Permalink to this headline">¶</a></h3>
+<p><strong>Core apps only</strong>: Used to tell Nextcloud that the app is in the standard release.</p>
+<p>Please note that if this attribute is set to <em>FALSE</em> or not set at all, every time you disable the application, all the files of the application itself will be <em>REMOVED</em> from the server!</p>
+</div>
+</div>
+</div>
+
+
+            
+<ul class="prevnext-title list-unstyled list-inline">
+  <li class="prev">
+    <a href="init.html" title="Previous Chapter: Navigation and Pre-App configuration"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; Navigation an...</span>
+    </a>
+  </li>
+  <li class="next">
+    <a href="classloader.html" title="Next Chapter: Classloader"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">Classloader &raquo;</span>
+    </a>
+  </li>
+</ul>
+					</div>
+				</div>
+			</div>
+  </main>  
+  </div>
+</div>
+<div class="container">
+<div class="row">
+    <div class="col-lg-12 footer-social-icons">
+      <p class="text-center"><a target="_blank" href="https://plus.google.com/104036748063781940910/about"><img width=50 src="../_static/img/social/googleplus.svg" title="Follow us on Google Plus!" alt="Follow us on Google Plus!"></img></a>
+      <a target="_blank" href="https://www.facebook.com/Nextclouders"><img width=50 src="../_static/img/social/facebook.svg" title="Like our facebook page!" alt="Like our facebook page!"></img></a>
+      <a target="_blank" href="https://twitter.com/Nextclouders"><img width=50 src="../_static/img/social/twitter.svg" title="Subscribe to our twitter channel!" alt="Subscribe to our twitter channel!"></img></a>
+      <a target="_blank" href="https://nextcloud.com/blogfeed"><img class="img-circle" width=50 src="../_static/img/social/rss.svg" title="Subscribe to our news feed!" alt="Subscribe to our news feed!"></img></a>
+      <a target="_blank" href="https://newsletter.nextcloud.com/"><img class="img-circle" width=50 src="../_static/img/social/mail.svg"  title="Subscribe to our newsletter!" alt="Subscribe to our newsletter!"></img></a></p>
+    </div>
+    <div class="text-center">
+      <p>All documentation licensed under the <a href="https://creativecommons.org/licenses/by/3.0/us/">Creative Commons Attribution 3.0 Unported license</a>.</p>
+      <p><a href="https://github.com/nextcloud/documentation/graphs/contributors">See who contributed to our documentation/credits</a>.</p>
+    </div>
+</div>
+</div>
+<footer class="content-info" role="contentinfo">
+<div class="container">
+   <div class="row">
+     <div class="col-sm-2 col-sm-offset-1">
+        <div class="footer-nav">
+          <h4>About Nextcloud</h4>
+          <ul id="menu-about" class="menu">
+            <li><a href="https://nextcloud.com/about/">About us</a></li>
+            <li><a href="https://nextcloud.com/contact/">Contact us</a></li>
+            <li><a href="https://nextcloud.com/press/">Press</a></li>
+            <li><a href="https://nextcloud.com/privacy/">Privacy policy</a></li>
+          </ul>
+        </div>
+     </div>
+     <div class="col-sm-2 col-sm-offset-2">
+     </div>
+     <div class="col-sm-2 col-sm-offset-2">
+        <div class="footer-nav">
+          <h4>Interact</h4>
+          <ul id="menu-interact" class="menu">
+            <li class="menu-irc-channel"><a href="https://webchat.freenode.net/?channels=nextcloud">IRC Channel</a></li>
+            <li class="menu-forums"><a href="https://help.nextcloud.com/">Forums</a></li>
+          </ul>
+        </div>
+     </div>
+   </div>
+   <div class="row">
+      <div class="col-lg-12 footer-text">
+        <p>
+              &copy; Copyright 2012-2017, The Nextcloud developers.  <small><a href="https://nextcloud.com/impressum">Legal Notice</a></small><br/>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+  </body>
+</html>

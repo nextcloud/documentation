@@ -1,0 +1,226 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+Update
+======
+
+
+.. php:namespace:: OC\Encryption
+
+.. php:class:: Update
+
+
+	.. rst-class:: phpdoc-description
+	
+		| update encrypted files, e\.g\. because a file was shared
+		
+	
+	:Source:
+		`lib/private/Encryption/Update.php#39 <https://github.com/nextcloud/server/blob/stable13/lib/private/Encryption/Update.php#L39>`_
+	
+
+Properties
+----------
+
+.. php:attr:: protected static view
+
+	:Source:
+		`lib/private/Encryption/Update.php#42 <https://github.com/nextcloud/server/blob/stable13/lib/private/Encryption/Update.php#L42>`_
+	
+	:Type: :any:`\\OC\\Files\\View <OC\\Files\\View>` 
+
+
+.. php:attr:: protected static util
+
+	:Source:
+		`lib/private/Encryption/Update.php#45 <https://github.com/nextcloud/server/blob/stable13/lib/private/Encryption/Update.php#L45>`_
+	
+	:Type: :any:`\\OC\\Encryption\\Util <OC\\Encryption\\Util>` 
+
+
+.. php:attr:: protected static mountManager
+
+	:Source:
+		`lib/private/Encryption/Update.php#48 <https://github.com/nextcloud/server/blob/stable13/lib/private/Encryption/Update.php#L48>`_
+	
+	:Type: :any:`\\OC\\Files\\Mount\\Manager <OC\\Files\\Mount\\Manager>` 
+
+
+.. php:attr:: protected static encryptionManager
+
+	:Source:
+		`lib/private/Encryption/Update.php#51 <https://github.com/nextcloud/server/blob/stable13/lib/private/Encryption/Update.php#L51>`_
+	
+	:Type: :any:`\\OC\\Encryption\\Manager <OC\\Encryption\\Manager>` 
+
+
+.. php:attr:: protected static uid
+
+	:Source:
+		`lib/private/Encryption/Update.php#54 <https://github.com/nextcloud/server/blob/stable13/lib/private/Encryption/Update.php#L54>`_
+	
+	:Type: string 
+
+
+.. php:attr:: protected static file
+
+	:Source:
+		`lib/private/Encryption/Update.php#57 <https://github.com/nextcloud/server/blob/stable13/lib/private/Encryption/Update.php#L57>`_
+	
+	:Type: :any:`\\OC\\Encryption\\File <OC\\Encryption\\File>` 
+
+
+.. php:attr:: protected static logger
+
+	:Source:
+		`lib/private/Encryption/Update.php#60 <https://github.com/nextcloud/server/blob/stable13/lib/private/Encryption/Update.php#L60>`_
+	
+	:Type: :any:`\\Psr\\Log\\LoggerInterface <Psr\\Log\\LoggerInterface>` 
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $view, $util, $mountManager, $encryptionManager, $file, $logger, $uid)
+	
+		:Source:
+			`lib/private/Encryption/Update.php#65 <https://github.com/nextcloud/server/blob/stable13/lib/private/Encryption/Update.php#L65>`_
+		
+		
+		:Parameters:
+			* **$uid** (string)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public postShared( $params)
+	
+		.. rst-class:: phpdoc-description
+		
+			| hook after file was shared
+			
+		
+		:Source:
+			`lib/private/Encryption/Update.php#88 <https://github.com/nextcloud/server/blob/stable13/lib/private/Encryption/Update.php#L88>`_
+		
+		
+		:Parameters:
+			* **$params** (array)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public postUnshared( $params)
+	
+		.. rst-class:: phpdoc-description
+		
+			| hook after file was unshared
+			
+		
+		:Source:
+			`lib/private/Encryption/Update.php#104 <https://github.com/nextcloud/server/blob/stable13/lib/private/Encryption/Update.php#L104>`_
+		
+		
+		:Parameters:
+			* **$params** (array)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public postRestore( $params)
+	
+		.. rst-class:: phpdoc-description
+		
+			| inform encryption module that a file was restored from the trash bin,
+			| e\.g\. to update the encryption keys
+			
+		
+		:Source:
+			`lib/private/Encryption/Update.php#121 <https://github.com/nextcloud/server/blob/stable13/lib/private/Encryption/Update.php#L121>`_
+		
+		
+		:Parameters:
+			* **$params** (array)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public postRename( $params)
+	
+		.. rst-class:: phpdoc-description
+		
+			| inform encryption module that a file was renamed,
+			| e\.g\. to update the encryption keys
+			
+		
+		:Source:
+			`lib/private/Encryption/Update.php#134 <https://github.com/nextcloud/server/blob/stable13/lib/private/Encryption/Update.php#L134>`_
+		
+		
+		:Parameters:
+			* **$params** (array)  
+
+		
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected getOwnerPath( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get owner and path relative to data/<owner\>/files
+			
+		
+		:Source:
+			`lib/private/Encryption/Update.php#154 <https://github.com/nextcloud/server/blob/stable13/lib/private/Encryption/Update.php#L154>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  path to file for current user
+
+		
+		:Returns: array \[\'owner\' =\> $owner, \'path\' =\> $path\]
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public update( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| notify encryption module about added/removed users from a file/folder
+			
+		
+		:Source:
+			`lib/private/Encryption/Update.php#172 <https://github.com/nextcloud/server/blob/stable13/lib/private/Encryption/Update.php#L172>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  relative to data/
+
+		
+		:Throws: :any:`\\OC\\Encryption\\Exceptions\\ModuleDoesNotExistsException <OC\\Encryption\\Exceptions\\ModuleDoesNotExistsException>` 
+	
+	
+

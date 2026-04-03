@@ -1,0 +1,437 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+ITags
+=====
+
+
+.. php:namespace:: OCP
+
+.. php:interface:: ITags
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Class for easily tagging objects by their id
+		
+		| A tag can be e\.g\. \'Family\', \'Work\', \'Chore\', \'Special Occation\' or
+		| anything else that is either parsed from a vobject or that the user chooses
+		| to add\.
+		| Tag names are not case\-sensitive, but will be saved with the case they
+		| are entered in\. If a user already has a tag \'family\' for a type, and
+		| tries to add a tag named \'Family\' it will be silently ignored\.
+		
+	
+	:Implemented by:
+		:php:class:`OC\\Tags` 
+	
+	
+	:Source:
+		`lib/public/ITags.php#57 <https://github.com/nextcloud/server/blob/stable13/lib/public/ITags.php#L57>`_
+	
+
+Constants
+---------
+
+.. php:const:: TAG_FAVORITE = \_$\!<Favorite\>\!$\_
+
+	:Source:
+		`lib/public/ITags.php#61 <https://github.com/nextcloud/server/blob/stable13/lib/public/ITags.php#L61>`_
+	
+	:Since: 19.0.0 
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public isEmpty()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check if any tags are saved for this type and user\.
+			
+		
+		:Source:
+			`lib/public/ITags.php#69 <https://github.com/nextcloud/server/blob/stable13/lib/public/ITags.php#L69>`_
+		
+		
+		:Returns: bool 
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getTag( $id)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns an array mapping a given tag\'s properties to its values:
+			| \[\'id\' =\> 0, \'name\' = \'Tag\', \'owner\' = \'User\', \'type\' =\> \'tagtype\'\]
+			
+		
+		:Source:
+			`lib/public/ITags.php#79 <https://github.com/nextcloud/server/blob/stable13/lib/public/ITags.php#L79>`_
+		
+		
+		:Parameters:
+			* **$id** (string)  The ID of the tag that is going to be mapped
+
+		
+		:Returns: array | bool 
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getTags()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the tags for a specific user\.
+			
+			| This returns an array with id/name maps:
+			| \[
+			| 	\[\'id\' =\> 0, \'name\' = \'First tag\'\],
+			| 	\[\'id\' =\> 1, \'name\' = \'Second tag\'\],
+			| \]
+			
+		
+		:Source:
+			`lib/public/ITags.php#93 <https://github.com/nextcloud/server/blob/stable13/lib/public/ITags.php#L93>`_
+		
+		
+		:Returns: array 
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getTagsForObjects( $objIds)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get a list of tags for the given item ids\.
+			
+			| This returns an array with object id / tag names:
+			| \[
+			|   1 =\> array\(\'First tag\', \'Second tag\'\),
+			|   2 =\> array\(\'Second tag\'\),
+			|   3 =\> array\(\'Second tag\', \'Third tag\'\),
+			| \]
+			
+		
+		:Source:
+			`lib/public/ITags.php#110 <https://github.com/nextcloud/server/blob/stable13/lib/public/ITags.php#L110>`_
+		
+		
+		:Parameters:
+			* **$objIds** (array)  item ids
+
+		
+		:Returns: array | bool with object id as key and an array
+			of tag names as value or false if an error occurred
+		
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getIdsForTag( $tag)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get a list of items tagged with $tag\.
+			
+			| Throws an exception if the tag could not be found\.
+			
+		
+		:Source:
+			`lib/public/ITags.php#121 <https://github.com/nextcloud/server/blob/stable13/lib/public/ITags.php#L121>`_
+		
+		
+		:Parameters:
+			* **$tag** (string | int)  Tag id or name.
+
+		
+		:Returns: array | bool An array of object ids or false on error\.
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public hasTag( $name)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Checks whether a tag is already saved\.
+			
+		
+		:Source:
+			`lib/public/ITags.php#130 <https://github.com/nextcloud/server/blob/stable13/lib/public/ITags.php#L130>`_
+		
+		
+		:Parameters:
+			* **$name** (string)  The name to check for.
+
+		
+		:Returns: bool 
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public userHasTag( $name, $user)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Checks whether a tag is saved for the given user,
+			| disregarding the ones shared with him or her\.
+			
+		
+		:Source:
+			`lib/public/ITags.php#141 <https://github.com/nextcloud/server/blob/stable13/lib/public/ITags.php#L141>`_
+		
+		
+		:Parameters:
+			* **$name** (string)  The tag name to check for.
+			* **$user** (string)  The user whose tags are to be checked.
+
+		
+		:Returns: bool 
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public add( $name)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Add a new tag\.
+			
+		
+		:Source:
+			`lib/public/ITags.php#150 <https://github.com/nextcloud/server/blob/stable13/lib/public/ITags.php#L150>`_
+		
+		
+		:Parameters:
+			* **$name** (string)  A string with a name of the tag
+
+		
+		:Returns: int | bool the id of the added tag or false if it already exists\.
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public rename( $from, $to)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Rename tag\.
+			
+		
+		:Source:
+			`lib/public/ITags.php#160 <https://github.com/nextcloud/server/blob/stable13/lib/public/ITags.php#L160>`_
+		
+		
+		:Parameters:
+			* **$from** (string | int)  The name or ID of the existing tag
+			* **$to** (string)  The new name of the tag.
+
+		
+		:Returns: bool 
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public addMultiple( $names, $sync=false, $id=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Add a list of new tags\.
+			
+		
+		:Source:
+			`lib/public/ITags.php#172 <https://github.com/nextcloud/server/blob/stable13/lib/public/ITags.php#L172>`_
+		
+		
+		:Parameters:
+			* **$names** (string[])  A string with a name or an array of strings containing
+			the name(s) of the to add.
+			* **$sync** (bool)  When true, save the tags
+			* **$id** (int | null)  int Optional object id to add to this|these tag(s)
+
+		
+		:Returns: bool Returns false on error\.
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public purgeObjects( $ids)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Delete tag/object relations from the db
+			
+		
+		:Source:
+			`lib/public/ITags.php#181 <https://github.com/nextcloud/server/blob/stable13/lib/public/ITags.php#L181>`_
+		
+		
+		:Parameters:
+			* **$ids** (array)  The ids of the objects
+
+		
+		:Returns: bool Returns false on error\.
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getFavorites()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get favorites for an object type
+			
+		
+		:Source:
+			`lib/public/ITags.php#189 <https://github.com/nextcloud/server/blob/stable13/lib/public/ITags.php#L189>`_
+		
+		
+		:Returns: array | bool An array of object ids\.
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public addToFavorites( $objid)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Add an object to favorites
+			
+		
+		:Source:
+			`lib/public/ITags.php#198 <https://github.com/nextcloud/server/blob/stable13/lib/public/ITags.php#L198>`_
+		
+		
+		:Parameters:
+			* **$objid** (int)  The id of the object
+
+		
+		:Returns: bool 
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public removeFromFavorites( $objid)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Remove an object from favorites
+			
+		
+		:Source:
+			`lib/public/ITags.php#207 <https://github.com/nextcloud/server/blob/stable13/lib/public/ITags.php#L207>`_
+		
+		
+		:Parameters:
+			* **$objid** (int)  The id of the object
+
+		
+		:Returns: bool 
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public tagAs( $objid, $tag)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Creates a tag/object relation\.
+			
+		
+		:Source:
+			`lib/public/ITags.php#217 <https://github.com/nextcloud/server/blob/stable13/lib/public/ITags.php#L217>`_
+		
+		
+		:Parameters:
+			* **$objid** (int)  The id of the object
+			* **$tag** (string)  The id or name of the tag
+
+		
+		:Returns: bool Returns false on database error\.
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public unTag( $objid, $tag)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Delete single tag/object relation from the db
+			
+		
+		:Source:
+			`lib/public/ITags.php#227 <https://github.com/nextcloud/server/blob/stable13/lib/public/ITags.php#L227>`_
+		
+		
+		:Parameters:
+			* **$objid** (int)  The id of the object
+			* **$tag** (string)  The id or name of the tag
+
+		
+		:Returns: bool 
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public delete( $names)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Delete tags from the database
+			
+		
+		:Source:
+			`lib/public/ITags.php#236 <https://github.com/nextcloud/server/blob/stable13/lib/public/ITags.php#L236>`_
+		
+		
+		:Parameters:
+			* **$names** (string[] | int[])  An array of tags (names or IDs) to delete
+
+		
+		:Returns: bool Returns false on error
+		:Since: 6.0.0 
+	
+	
+

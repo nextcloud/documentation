@@ -1,0 +1,149 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+CompositeExpression
+===================
+
+
+.. php:namespace:: OC\DB\QueryBuilder
+
+.. php:class:: CompositeExpression
+
+
+	:Source:
+		`lib/private/DB/QueryBuilder/CompositeExpression.php#28 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/QueryBuilder/CompositeExpression.php#L28>`_
+	
+	:Implements:
+		:php:interface:`OCP\\DB\\QueryBuilder\\ICompositeExpression` :php:interface:`Countable` 
+	
+
+Properties
+----------
+
+.. php:attr:: protected static compositeExpression
+
+	:Source:
+		`lib/private/DB/QueryBuilder/CompositeExpression.php#30 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/QueryBuilder/CompositeExpression.php#L30>`_
+	
+	:Type: :any:`\\Doctrine\\DBAL\\Query\\Expression\\CompositeExpression <Doctrine\\DBAL\\Query\\Expression\\CompositeExpression>` 
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $compositeExpression)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Constructor\.
+			
+		
+		:Source:
+			`lib/private/DB/QueryBuilder/CompositeExpression.php#37 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/QueryBuilder/CompositeExpression.php#L37>`_
+		
+		
+		:Parameters:
+			* **$compositeExpression** (:any:`Doctrine\\DBAL\\Query\\Expression\\CompositeExpression <Doctrine\\DBAL\\Query\\Expression\\CompositeExpression>`)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public addMultiple( $parts=\[\])
+	
+		.. rst-class:: phpdoc-description
+		
+			| Adds multiple parts to composite expression\.
+			
+		
+		:Source:
+			`lib/private/DB/QueryBuilder/CompositeExpression.php#48 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/QueryBuilder/CompositeExpression.php#L48>`_
+		
+		
+		:Parameters:
+			* **$parts** (array)  
+
+		
+		:Returns: :any:`\\OCP\\DB\\QueryBuilder\\ICompositeExpression <OCP\\DB\\QueryBuilder\\ICompositeExpression>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public add( $part)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Adds an expression to composite expression\.
+			
+		
+		:Source:
+			`lib/private/DB/QueryBuilder/CompositeExpression.php#61 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/QueryBuilder/CompositeExpression.php#L61>`_
+		
+		
+		:Parameters:
+			* **$part** (mixed)  
+
+		
+		:Returns: :any:`\\OCP\\DB\\QueryBuilder\\ICompositeExpression <OCP\\DB\\QueryBuilder\\ICompositeExpression>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public count()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Retrieves the amount of expressions on composite expression\.
+			
+		
+		:Source:
+			`lib/private/DB/QueryBuilder/CompositeExpression.php#72 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/QueryBuilder/CompositeExpression.php#L72>`_
+		
+		
+		:Returns: int 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getType()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the type of this composite expression \(AND/OR\)\.
+			
+		
+		:Source:
+			`lib/private/DB/QueryBuilder/CompositeExpression.php#81 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/QueryBuilder/CompositeExpression.php#L81>`_
+		
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public __toString()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Retrieves the string representation of this composite expression\.
+			
+		
+		:Source:
+			`lib/private/DB/QueryBuilder/CompositeExpression.php#90 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/QueryBuilder/CompositeExpression.php#L90>`_
+		
+		
+		:Returns: string 
+	
+	
+

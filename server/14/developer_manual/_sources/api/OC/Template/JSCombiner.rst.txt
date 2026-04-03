@@ -1,0 +1,188 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+JSCombiner
+==========
+
+
+.. php:namespace:: OC\Template
+
+.. php:class:: JSCombiner
+
+
+	:Source:
+		`lib/private/Template/JSCombiner.php#40 <https://github.com/nextcloud/server/blob/stable13/lib/private/Template/JSCombiner.php#L40>`_
+	
+
+Properties
+----------
+
+.. php:attr:: protected static appData
+
+	:Source:
+		`lib/private/Template/JSCombiner.php#43 <https://github.com/nextcloud/server/blob/stable13/lib/private/Template/JSCombiner.php#L43>`_
+	
+	:Type: :any:`\\OCP\\Files\\IAppData <OCP\\Files\\IAppData>` 
+
+
+.. php:attr:: protected static urlGenerator
+
+	:Source:
+		`lib/private/Template/JSCombiner.php#46 <https://github.com/nextcloud/server/blob/stable13/lib/private/Template/JSCombiner.php#L46>`_
+	
+	:Type: :any:`\\OCP\\IURLGenerator <OCP\\IURLGenerator>` 
+
+
+.. php:attr:: protected static depsCache
+
+	:Source:
+		`lib/private/Template/JSCombiner.php#49 <https://github.com/nextcloud/server/blob/stable13/lib/private/Template/JSCombiner.php#L49>`_
+	
+	:Type: :any:`\\OCP\\ICache <OCP\\ICache>` 
+
+
+.. php:attr:: protected static config
+
+	:Source:
+		`lib/private/Template/JSCombiner.php#52 <https://github.com/nextcloud/server/blob/stable13/lib/private/Template/JSCombiner.php#L52>`_
+	
+	:Type: :any:`\\OC\\SystemConfig <OC\\SystemConfig>` 
+
+
+.. php:attr:: protected static logger
+
+	:Source:
+		`lib/private/Template/JSCombiner.php#55 <https://github.com/nextcloud/server/blob/stable13/lib/private/Template/JSCombiner.php#L55>`_
+	
+	:Type: :any:`\\OCP\\ILogger <OCP\\ILogger>` 
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $appData, $urlGenerator, $cacheFactory, $config, $logger)
+	
+		:Source:
+			`lib/private/Template/JSCombiner.php#67 <https://github.com/nextcloud/server/blob/stable13/lib/private/Template/JSCombiner.php#L67>`_
+		
+		
+		:Parameters:
+			* **$appData** (:any:`OCP\\Files\\IAppData <OCP\\Files\\IAppData>`)  
+			* **$urlGenerator** (:any:`OCP\\IURLGenerator <OCP\\IURLGenerator>`)  
+			* **$cacheFactory** (:any:`OCP\\ICacheFactory <OCP\\ICacheFactory>`)  
+			* **$config** (:any:`OC\\SystemConfig <OC\\SystemConfig>`)  
+			* **$logger** (:any:`OCP\\ILogger <OCP\\ILogger>`)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public process( $root, $file, $app)
+	
+		:Source:
+			`lib/private/Template/JSCombiner.php#86 <https://github.com/nextcloud/server/blob/stable13/lib/private/Template/JSCombiner.php#L86>`_
+		
+		
+		:Parameters:
+			* **$root** (string)  
+			* **$file** (string)  
+			* **$app** (string)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected isCached( $fileName, $folder)
+	
+		:Source:
+			`lib/private/Template/JSCombiner.php#114 <https://github.com/nextcloud/server/blob/stable13/lib/private/Template/JSCombiner.php#L114>`_
+		
+		
+		:Parameters:
+			* **$fileName** (string)  
+			* **$folder** (:any:`OCP\\Files\\SimpleFS\\ISimpleFolder <OCP\\Files\\SimpleFS\\ISimpleFolder>`)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected cache( $path, $fileName, $folder)
+	
+		:Source:
+			`lib/private/Template/JSCombiner.php#165 <https://github.com/nextcloud/server/blob/stable13/lib/private/Template/JSCombiner.php#L165>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+			* **$fileName** (string)  
+			* **$folder** (:any:`OCP\\Files\\SimpleFS\\ISimpleFolder <OCP\\Files\\SimpleFS\\ISimpleFolder>`)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getCachedJS( $appName, $fileName)
+	
+		:Source:
+			`lib/private/Template/JSCombiner.php#221 <https://github.com/nextcloud/server/blob/stable13/lib/private/Template/JSCombiner.php#L221>`_
+		
+		
+		:Parameters:
+			* **$appName** (string)  
+			* **$fileName** (string)  
+
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getContent( $root, $file)
+	
+		:Source:
+			`lib/private/Template/JSCombiner.php#234 <https://github.com/nextcloud/server/blob/stable13/lib/private/Template/JSCombiner.php#L234>`_
+		
+		
+		:Parameters:
+			* **$root** (string)  
+			* **$file** (string)  
+
+		
+		:Returns: string[] 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public resetCache()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Clear cache with combined javascript files
+			
+		
+		:Source:
+			`lib/private/Template/JSCombiner.php#259 <https://github.com/nextcloud/server/blob/stable13/lib/private/Template/JSCombiner.php#L259>`_
+		
+		
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+	
+	
+

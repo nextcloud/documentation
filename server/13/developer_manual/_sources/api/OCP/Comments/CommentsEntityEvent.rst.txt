@@ -1,0 +1,115 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+CommentsEntityEvent
+===================
+
+
+.. php:namespace:: OCP\Comments
+
+.. php:class:: CommentsEntityEvent
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Class CommentsEntityEvent
+		
+	
+	:Source:
+		`lib/public/Comments/CommentsEntityEvent.php#34 <https://github.com/nextcloud/server/blob/stable13/lib/public/Comments/CommentsEntityEvent.php#L34>`_
+	
+	:Parent:
+		:php:class:`OCP\\EventDispatcher\\Event`
+	
+
+Constants
+---------
+
+.. php:const:: EVENT_ENTITY = OCP\\Comments\\ICommentsManager::registerEntity
+
+	:Source:
+		`lib/public/Comments/CommentsEntityEvent.php#38 <https://github.com/nextcloud/server/blob/stable13/lib/public/Comments/CommentsEntityEvent.php#L38>`_
+	
+	:Deprecated: 22.0.0 
+
+
+Properties
+----------
+
+.. php:attr:: protected static event
+
+	:Source:
+		`lib/public/Comments/CommentsEntityEvent.php#41 <https://github.com/nextcloud/server/blob/stable13/lib/public/Comments/CommentsEntityEvent.php#L41>`_
+	
+	:Type: string 
+
+
+.. php:attr:: protected static collections
+
+	:Source:
+		`lib/public/Comments/CommentsEntityEvent.php#43 <https://github.com/nextcloud/server/blob/stable13/lib/public/Comments/CommentsEntityEvent.php#L43>`_
+	
+	:Type: :any:`\\Closure\[\] <Closure>` 
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $event)
+	
+		.. rst-class:: phpdoc-description
+		
+			| DispatcherEvent constructor\.
+			
+		
+		:Source:
+			`lib/public/Comments/CommentsEntityEvent.php#51 <https://github.com/nextcloud/server/blob/stable13/lib/public/Comments/CommentsEntityEvent.php#L51>`_
+		
+		
+		:Parameters:
+			* **$event** (string)  
+
+		
+		:Since: 9.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public addEntityCollection( $name, $entityExistsFunction)
+	
+		:Source:
+			`lib/public/Comments/CommentsEntityEvent.php#65 <https://github.com/nextcloud/server/blob/stable13/lib/public/Comments/CommentsEntityEvent.php#L65>`_
+		
+		
+		:Parameters:
+			* **$name** (string)  
+			* **$entityExistsFunction** (:any:`Closure <Closure>`)  The closure should take one
+			argument, which is the id of the entity, that comments
+			should be handled for. The return should then be bool,
+			depending on whether comments are allowed (true) or not.
+
+		
+		:Throws: :any:`\\OutOfBoundsException <OutOfBoundsException>` when the entity name is already taken
+		:Since: 9.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getEntityCollections()
+	
+		:Source:
+			`lib/public/Comments/CommentsEntityEvent.php#77 <https://github.com/nextcloud/server/blob/stable13/lib/public/Comments/CommentsEntityEvent.php#L77>`_
+		
+		
+		:Returns: :any:`\\Closure\[\] <Closure>` 
+		:Since: 9.1.0 
+	
+	
+

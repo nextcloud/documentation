@@ -1,0 +1,313 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+Storage
+=======
+
+
+.. php:namespace:: OC\Encryption\Keys
+
+.. php:class:: Storage
+
+
+	:Source:
+		`lib/private/Encryption/Keys/Storage.php#40 <https://github.com/nextcloud/server/blob/stable13/lib/private/Encryption/Keys/Storage.php#L40>`_
+	
+	:Implements:
+		:php:interface:`OCP\\Encryption\\Keys\\IStorage` 
+	
+
+Constants
+---------
+
+.. php:const:: KEY_STORAGE_MARKER = \.oc\_key\_storage
+
+	:Source:
+		`lib/private/Encryption/Keys/Storage.php#43 <https://github.com/nextcloud/server/blob/stable13/lib/private/Encryption/Keys/Storage.php#L43>`_
+	
+
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $view, $util, $crypto, $config)
+	
+		:Source:
+			`lib/private/Encryption/Keys/Storage.php#78 <https://github.com/nextcloud/server/blob/stable13/lib/private/Encryption/Keys/Storage.php#L78>`_
+		
+		
+		:Parameters:
+			* **$view** (:any:`OC\\Files\\View <OC\\Files\\View>`)  
+			* **$util** (:any:`OC\\Encryption\\Util <OC\\Encryption\\Util>`)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getUserKey( $uid, $keyId, $encryptionModuleId)
+	
+		:Source:
+			`lib/private/Encryption/Keys/Storage.php#93 <https://github.com/nextcloud/server/blob/stable13/lib/private/Encryption/Keys/Storage.php#L93>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getFileKey( $path, $keyId, $encryptionModuleId)
+	
+		:Source:
+			`lib/private/Encryption/Keys/Storage.php#101 <https://github.com/nextcloud/server/blob/stable13/lib/private/Encryption/Keys/Storage.php#L101>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getSystemUserKey( $keyId, $encryptionModuleId)
+	
+		:Source:
+			`lib/private/Encryption/Keys/Storage.php#120 <https://github.com/nextcloud/server/blob/stable13/lib/private/Encryption/Keys/Storage.php#L120>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setUserKey( $uid, $keyId, $key, $encryptionModuleId)
+	
+		:Source:
+			`lib/private/Encryption/Keys/Storage.php#128 <https://github.com/nextcloud/server/blob/stable13/lib/private/Encryption/Keys/Storage.php#L128>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setFileKey( $path, $keyId, $key, $encryptionModuleId)
+	
+		:Source:
+			`lib/private/Encryption/Keys/Storage.php#139 <https://github.com/nextcloud/server/blob/stable13/lib/private/Encryption/Keys/Storage.php#L139>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setSystemUserKey( $keyId, $key, $encryptionModuleId)
+	
+		:Source:
+			`lib/private/Encryption/Keys/Storage.php#149 <https://github.com/nextcloud/server/blob/stable13/lib/private/Encryption/Keys/Storage.php#L149>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public deleteUserKey( $uid, $keyId, $encryptionModuleId)
+	
+		:Source:
+			`lib/private/Encryption/Keys/Storage.php#160 <https://github.com/nextcloud/server/blob/stable13/lib/private/Encryption/Keys/Storage.php#L160>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public deleteFileKey( $path, $keyId, $encryptionModuleId)
+	
+		:Source:
+			`lib/private/Encryption/Keys/Storage.php#181 <https://github.com/nextcloud/server/blob/stable13/lib/private/Encryption/Keys/Storage.php#L181>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public deleteAllFileKeys( $path)
+	
+		:Source:
+			`lib/private/Encryption/Keys/Storage.php#189 <https://github.com/nextcloud/server/blob/stable13/lib/private/Encryption/Keys/Storage.php#L189>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public deleteSystemUserKey( $keyId, $encryptionModuleId)
+	
+		:Source:
+			`lib/private/Encryption/Keys/Storage.php#197 <https://github.com/nextcloud/server/blob/stable13/lib/private/Encryption/Keys/Storage.php#L197>`_
+		
+		
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected constructUserKeyPath( $encryptionModuleId, $keyId, $uid)
+	
+		.. rst-class:: phpdoc-description
+		
+			| construct path to users key
+			
+		
+		:Source:
+			`lib/private/Encryption/Keys/Storage.php#210 <https://github.com/nextcloud/server/blob/stable13/lib/private/Encryption/Keys/Storage.php#L210>`_
+		
+		
+		:Parameters:
+			* **$encryptionModuleId** (string)  
+			* **$keyId** (string)  
+			* **$uid** (string)  
+
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public renameKeys( $source, $target)
+	
+		.. rst-class:: phpdoc-description
+		
+			| move keys if a file was renamed
+			
+		
+		:Source:
+			`lib/private/Encryption/Keys/Storage.php#387 <https://github.com/nextcloud/server/blob/stable13/lib/private/Encryption/Keys/Storage.php#L387>`_
+		
+		
+		:Parameters:
+			* **$source** (string)  
+			* **$target** (string)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public copyKeys( $source, $target)
+	
+		.. rst-class:: phpdoc-description
+		
+			| copy keys if a file was renamed
+			
+		
+		:Source:
+			`lib/private/Encryption/Keys/Storage.php#409 <https://github.com/nextcloud/server/blob/stable13/lib/private/Encryption/Keys/Storage.php#L409>`_
+		
+		
+		:Parameters:
+			* **$source** (string)  
+			* **$target** (string)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public backupUserKeys( $encryptionModuleId, $purpose, $uid)
+	
+		.. rst-class:: phpdoc-description
+		
+			| backup keys of a given encryption module
+			
+		
+		:Source:
+			`lib/private/Encryption/Keys/Storage.php#431 <https://github.com/nextcloud/server/blob/stable13/lib/private/Encryption/Keys/Storage.php#L431>`_
+		
+		
+		:Parameters:
+			* **$encryptionModuleId** (string)  
+			* **$purpose** (string)  
+			* **$uid** (string)  
+
+		
+		:Returns: bool 
+		:Since: 12.0.0 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected getTimestamp()
+	
+		.. rst-class:: phpdoc-description
+		
+			| get the current timestamp
+			
+		
+		:Source:
+			`lib/private/Encryption/Keys/Storage.php#449 <https://github.com/nextcloud/server/blob/stable13/lib/private/Encryption/Keys/Storage.php#L449>`_
+		
+		
+		:Returns: int 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected getPathToKeys( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get system wide path and detect mount points
+			
+		
+		:Source:
+			`lib/private/Encryption/Keys/Storage.php#459 <https://github.com/nextcloud/server/blob/stable13/lib/private/Encryption/Keys/Storage.php#L459>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected keySetPreparation( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Make preparations to filesystem for saving a key file
+			
+		
+		:Source:
+			`lib/private/Encryption/Keys/Storage.php#477 <https://github.com/nextcloud/server/blob/stable13/lib/private/Encryption/Keys/Storage.php#L477>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  relative to the views root
+
+		
+	
+	
+

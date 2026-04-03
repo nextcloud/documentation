@@ -1,0 +1,107 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+ICheck
+======
+
+
+.. php:namespace:: OCP\WorkflowEngine
+
+.. php:interface:: ICheck
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Interface ICheck
+		
+	
+	:Source:
+		`lib/public/WorkflowEngine/ICheck.php#32 <https://github.com/nextcloud/server/blob/stable13/lib/public/WorkflowEngine/ICheck.php#L32>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public executeCheck( $operator, $value)
+	
+		:Source:
+			`lib/public/WorkflowEngine/ICheck.php#39 <https://github.com/nextcloud/server/blob/stable13/lib/public/WorkflowEngine/ICheck.php#L39>`_
+		
+		
+		:Parameters:
+			* **$operator** (string)  
+			* **$value** (string)  
+
+		
+		:Returns: bool 
+		:Since: 9.1 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public validateCheck( $operator, $value)
+	
+		:Source:
+			`lib/public/WorkflowEngine/ICheck.php#47 <https://github.com/nextcloud/server/blob/stable13/lib/public/WorkflowEngine/ICheck.php#L47>`_
+		
+		
+		:Parameters:
+			* **$operator** (string)  
+			* **$value** (string)  
+
+		
+		:Throws: :any:`\\UnexpectedValueException <UnexpectedValueException>` 
+		:Since: 9.1 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public supportedEntities()
+	
+		.. rst-class:: phpdoc-description
+		
+			| returns a list of Entities the checker supports\. The values must match
+			| the class name of the entity\.
+			
+			| An empty result means the check is universally available\.
+			
+		
+		:Source:
+			`lib/public/WorkflowEngine/ICheck.php#57 <https://github.com/nextcloud/server/blob/stable13/lib/public/WorkflowEngine/ICheck.php#L57>`_
+		
+		
+		:Since: 18.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isAvailableForScope( $scope)
+	
+		.. rst-class:: phpdoc-description
+		
+			| returns whether the operation can be used in the requested scope\.
+			
+			| Scope IDs are defined as constants in OCP\\WorkflowEngine\\IManager\. At
+			| time of writing these are SCOPE\_ADMIN and SCOPE\_USER\.
+			| 
+			| For possibly unknown future scopes the recommended behaviour is: if
+			| user scope is permitted, the default behaviour should return \`true\`,
+			| otherwise \`false\`\.
+			
+		
+		:Source:
+			`lib/public/WorkflowEngine/ICheck.php#71 <https://github.com/nextcloud/server/blob/stable13/lib/public/WorkflowEngine/ICheck.php#L71>`_
+		
+		
+		:Since: 18.0.0 
+	
+	
+

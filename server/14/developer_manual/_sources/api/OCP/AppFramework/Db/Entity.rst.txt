@@ -1,0 +1,303 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+Entity
+======
+
+
+.. php:namespace:: OCP\AppFramework\Db
+
+.. rst-class::  abstract
+
+.. php:class:: Entity
+
+
+	:Source:
+		`lib/public/AppFramework/Db/Entity.php#36 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Db/Entity.php#L36>`_
+	
+
+Properties
+----------
+
+.. php:attr:: public static id
+
+	:Source:
+		`lib/public/AppFramework/Db/Entity.php#37 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Db/Entity.php#L37>`_
+	
+
+
+Methods
+-------
+
+.. rst-class:: public static
+
+	.. php:method:: public static fromParams( $params)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Simple alternative constructor for building entities from a request
+			
+		
+		:Source:
+			`lib/public/AppFramework/Db/Entity.php#50 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Db/Entity.php#L50>`_
+		
+		
+		:Parameters:
+			* **$params** (array)  the array which was obtained via $this->params('key')
+			in the controller
+
+		
+		:Returns: :any:`\\OCP\\AppFramework\\Db\\Entity <OCP\\AppFramework\\Db\\Entity>` 
+		:Since: 7.0.0 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static fromRow( $row)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Maps the keys of the row array to the attributes
+			
+		
+		:Source:
+			`lib/public/AppFramework/Db/Entity.php#67 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Db/Entity.php#L67>`_
+		
+		
+		:Parameters:
+			* **$row** (array)  the row to map onto the entity
+
+		
+		:Since: 7.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getFieldTypes()
+	
+		:Source:
+			`lib/public/AppFramework/Db/Entity.php#86 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Db/Entity.php#L86>`_
+		
+		
+		:Returns: array with attribute and type
+		:Since: 7.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public resetUpdatedFields()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Marks the entity as clean needed for setting the id after the insertion
+			
+		
+		:Source:
+			`lib/public/AppFramework/Db/Entity.php#95 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Db/Entity.php#L95>`_
+		
+		
+		:Since: 7.0.0 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected setter( $name, $args)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Generic setter for properties
+			
+		
+		:Source:
+			`lib/public/AppFramework/Db/Entity.php#103 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Db/Entity.php#L103>`_
+		
+		
+		:Since: 7.0.0 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected getter( $name)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Generic getter for properties
+			
+		
+		:Source:
+			`lib/public/AppFramework/Db/Entity.php#138 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Db/Entity.php#L138>`_
+		
+		
+		:Since: 7.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public __call( $methodName, $args)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Each time a setter is called, push the part after set
+			| into an array: for instance setId will save Id in the
+			| updated fields array so it can be easily used to create the
+			| getter method
+			
+		
+		:Source:
+			`lib/public/AppFramework/Db/Entity.php#156 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Db/Entity.php#L156>`_
+		
+		
+		:Since: 7.0.0 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected isGetterForBoolProperty( $methodName)
+	
+		:Source:
+			`lib/public/AppFramework/Db/Entity.php#174 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Db/Entity.php#L174>`_
+		
+		
+		:Parameters:
+			* **$methodName** (string)  
+
+		
+		:Returns: bool 
+		:Since: 18.0.0 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected markFieldUpdated( $attribute)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Mark am attribute as updated
+			
+		
+		:Source:
+			`lib/public/AppFramework/Db/Entity.php#187 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Db/Entity.php#L187>`_
+		
+		
+		:Parameters:
+			* **$attribute** (string)  the name of the attribute
+
+		
+		:Since: 7.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public columnToProperty( $columnName)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Transform a database columnname to a property
+			
+		
+		:Source:
+			`lib/public/AppFramework/Db/Entity.php#198 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Db/Entity.php#L198>`_
+		
+		
+		:Parameters:
+			* **$columnName** (string)  the name of the column
+
+		
+		:Returns: string the property name
+		:Since: 7.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public propertyToColumn( $property)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Transform a property to a database column name
+			
+		
+		:Source:
+			`lib/public/AppFramework/Db/Entity.php#220 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Db/Entity.php#L220>`_
+		
+		
+		:Parameters:
+			* **$property** (string)  the name of the property
+
+		
+		:Returns: string the column name
+		:Since: 7.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getUpdatedFields()
+	
+		:Source:
+			`lib/public/AppFramework/Db/Entity.php#240 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Db/Entity.php#L240>`_
+		
+		
+		:Returns: array array of updated fields for update query
+		:Since: 7.0.0 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected addType( $fieldName, $type)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Adds type information for a field so that its automatically casted to
+			| that value once its being returned from the database
+			
+		
+		:Source:
+			`lib/public/AppFramework/Db/Entity.php#252 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Db/Entity.php#L252>`_
+		
+		
+		:Parameters:
+			* **$fieldName** (string)  the name of the attribute
+			* **$type** (string)  the type which will be used to call settype()
+
+		
+		:Since: 7.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public slugify( $attributeName)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Slugify the value of a given attribute
+			| Warning: This doesn\'t result in a unique value
+			
+		
+		:Source:
+			`lib/public/AppFramework/Db/Entity.php#264 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Db/Entity.php#L264>`_
+		
+		
+		:Parameters:
+			* **$attributeName** (string)  the name of the attribute, which value should be slugified
+
+		
+		:Returns: string slugified value
+		:Since: 7.0.0 
+	
+	
+

@@ -1,0 +1,76 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+CloudFederationFactory
+======================
+
+
+.. php:namespace:: OC\Federation
+
+.. php:class:: CloudFederationFactory
+
+
+	:Source:
+		`lib/private/Federation/CloudFederationFactory.php#30 <https://github.com/nextcloud/server/blob/stable13/lib/private/Federation/CloudFederationFactory.php#L30>`_
+	
+	:Implements:
+		:php:interface:`OCP\\Federation\\ICloudFederationFactory` 
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public getCloudFederationShare( $shareWith, $name, $description, $providerId, $owner, $ownerDisplayName, $sharedBy, $sharedByDisplayName, $sharedSecret, $shareType, $resourceType)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get a CloudFederationShare Object to prepare a share you want to send
+			
+		
+		:Source:
+			`lib/private/Federation/CloudFederationFactory.php#50 <https://github.com/nextcloud/server/blob/stable13/lib/private/Federation/CloudFederationFactory.php#L50>`_
+		
+		
+		:Parameters:
+			* **$shareWith** (string)  
+			* **$name** (string)  resource name (e.g. document.odt)
+			* **$description** (string)  share description (optional)
+			* **$providerId** (string)  resource UID on the provider side
+			* **$owner** (string)  provider specific UID of the user who owns the resource
+			* **$ownerDisplayName** (string)  display name of the user who shared the item
+			* **$sharedBy** (string)  provider specific UID of the user who shared the resource
+			* **$sharedByDisplayName** (string)  display name of the user who shared the resource
+			* **$sharedSecret** (string)  used to authenticate requests across servers
+			* **$shareType** (string)  ('group' or 'user' share)
+			* **$resourceType**  ('file', 'calendar',...)
+
+		
+		:Returns: :any:`\\OCP\\Federation\\ICloudFederationShare <OCP\\Federation\\ICloudFederationShare>` 
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getCloudFederationNotification()
+	
+		.. rst-class:: phpdoc-description
+		
+			| get a Cloud FederationNotification object to prepare a notification you
+			| want to send
+			
+		
+		:Source:
+			`lib/private/Federation/CloudFederationFactory.php#62 <https://github.com/nextcloud/server/blob/stable13/lib/private/Federation/CloudFederationFactory.php#L62>`_
+		
+		
+		:Returns: :any:`\\OCP\\Federation\\ICloudFederationNotification <OCP\\Federation\\ICloudFederationNotification>` 
+		:Since: 14.0.0 
+	
+	
+

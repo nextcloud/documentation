@@ -1,0 +1,256 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+SystemTagManager
+================
+
+
+.. php:namespace:: OC\SystemTag
+
+.. php:class:: SystemTagManager
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Manager class for system tags
+		
+	
+	:Source:
+		`lib/private/SystemTag/SystemTagManager.php#48 <https://github.com/nextcloud/server/blob/stable13/lib/private/SystemTag/SystemTagManager.php#L48>`_
+	
+	:Implements:
+		:php:interface:`OCP\\SystemTag\\ISystemTagManager` 
+	
+
+Constants
+---------
+
+.. php:const:: TAG_TABLE = systemtag
+
+	:Source:
+		`lib/private/SystemTag/SystemTagManager.php#49 <https://github.com/nextcloud/server/blob/stable13/lib/private/SystemTag/SystemTagManager.php#L49>`_
+	
+
+
+.. php:const:: TAG_GROUP_TABLE = systemtag\_group
+
+	:Source:
+		`lib/private/SystemTag/SystemTagManager.php#50 <https://github.com/nextcloud/server/blob/stable13/lib/private/SystemTag/SystemTagManager.php#L50>`_
+	
+
+
+Properties
+----------
+
+.. php:attr:: protected static connection
+
+	:Source:
+		`lib/private/SystemTag/SystemTagManager.php#53 <https://github.com/nextcloud/server/blob/stable13/lib/private/SystemTag/SystemTagManager.php#L53>`_
+	
+	:Type: :any:`\\OCP\\IDBConnection <OCP\\IDBConnection>` 
+
+
+.. php:attr:: protected static dispatcher
+
+	:Source:
+		`lib/private/SystemTag/SystemTagManager.php#56 <https://github.com/nextcloud/server/blob/stable13/lib/private/SystemTag/SystemTagManager.php#L56>`_
+	
+	:Type: :any:`\\Symfony\\Component\\EventDispatcher\\EventDispatcherInterface <Symfony\\Component\\EventDispatcher\\EventDispatcherInterface>` 
+
+
+.. php:attr:: protected static groupManager
+
+	:Source:
+		`lib/private/SystemTag/SystemTagManager.php#59 <https://github.com/nextcloud/server/blob/stable13/lib/private/SystemTag/SystemTagManager.php#L59>`_
+	
+	:Type: :any:`\\OCP\\IGroupManager <OCP\\IGroupManager>` 
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $connection, $groupManager, $dispatcher)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Constructor\.
+			
+		
+		:Source:
+			`lib/private/SystemTag/SystemTagManager.php#75 <https://github.com/nextcloud/server/blob/stable13/lib/private/SystemTag/SystemTagManager.php#L75>`_
+		
+		
+		:Parameters:
+			* **$connection** (:any:`OCP\\IDBConnection <OCP\\IDBConnection>`)  database connection
+			* **$groupManager** (:any:`OCP\\IGroupManager <OCP\\IGroupManager>`)  
+			* **$dispatcher** (:any:`Symfony\\Component\\EventDispatcher\\EventDispatcherInterface <Symfony\\Component\\EventDispatcher\\EventDispatcherInterface>`)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getTagsByIds( $tagIds)
+	
+		.. rst-class:: phpdoc-description
+		
+			| \{@inheritdoc\}
+			
+		
+		:Source:
+			`lib/private/SystemTag/SystemTagManager.php#95 <https://github.com/nextcloud/server/blob/stable13/lib/private/SystemTag/SystemTagManager.php#L95>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getAllTags( $visibilityFilter=null, $nameSearchPattern=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| \{@inheritdoc\}
+			
+		
+		:Source:
+			`lib/private/SystemTag/SystemTagManager.php#137 <https://github.com/nextcloud/server/blob/stable13/lib/private/SystemTag/SystemTagManager.php#L137>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getTag( $tagName, $userVisible, $userAssignable)
+	
+		.. rst-class:: phpdoc-description
+		
+			| \{@inheritdoc\}
+			
+		
+		:Source:
+			`lib/private/SystemTag/SystemTagManager.php#175 <https://github.com/nextcloud/server/blob/stable13/lib/private/SystemTag/SystemTagManager.php#L175>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public createTag( $tagName, $userVisible, $userAssignable)
+	
+		.. rst-class:: phpdoc-description
+		
+			| \{@inheritdoc\}
+			
+		
+		:Source:
+			`lib/private/SystemTag/SystemTagManager.php#196 <https://github.com/nextcloud/server/blob/stable13/lib/private/SystemTag/SystemTagManager.php#L196>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public updateTag( $tagId, $newName, $userVisible, $userAssignable)
+	
+		.. rst-class:: phpdoc-description
+		
+			| \{@inheritdoc\}
+			
+		
+		:Source:
+			`lib/private/SystemTag/SystemTagManager.php#234 <https://github.com/nextcloud/server/blob/stable13/lib/private/SystemTag/SystemTagManager.php#L234>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public deleteTags( $tagIds)
+	
+		.. rst-class:: phpdoc-description
+		
+			| \{@inheritdoc\}
+			
+		
+		:Source:
+			`lib/private/SystemTag/SystemTagManager.php#284 <https://github.com/nextcloud/server/blob/stable13/lib/private/SystemTag/SystemTagManager.php#L284>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public canUserAssignTag( $tag, $user)
+	
+		.. rst-class:: phpdoc-description
+		
+			| \{@inheritdoc\}
+			
+		
+		:Source:
+			`lib/private/SystemTag/SystemTagManager.php#336 <https://github.com/nextcloud/server/blob/stable13/lib/private/SystemTag/SystemTagManager.php#L336>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public canUserSeeTag( $tag, $user)
+	
+		.. rst-class:: phpdoc-description
+		
+			| \{@inheritdoc\}
+			
+		
+		:Source:
+			`lib/private/SystemTag/SystemTagManager.php#364 <https://github.com/nextcloud/server/blob/stable13/lib/private/SystemTag/SystemTagManager.php#L364>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setTagGroups( $tag, $groupIds)
+	
+		.. rst-class:: phpdoc-description
+		
+			| \{@inheritdoc\}
+			
+		
+		:Source:
+			`lib/private/SystemTag/SystemTagManager.php#383 <https://github.com/nextcloud/server/blob/stable13/lib/private/SystemTag/SystemTagManager.php#L383>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getTagGroups( $tag)
+	
+		.. rst-class:: phpdoc-description
+		
+			| \{@inheritdoc\}
+			
+		
+		:Source:
+			`lib/private/SystemTag/SystemTagManager.php#417 <https://github.com/nextcloud/server/blob/stable13/lib/private/SystemTag/SystemTagManager.php#L417>`_
+		
+		
+	
+	
+

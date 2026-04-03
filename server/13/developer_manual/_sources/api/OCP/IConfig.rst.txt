@@ -1,0 +1,525 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IConfig
+=======
+
+
+.. php:namespace:: OCP
+
+.. php:interface:: IConfig
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Access to all the configuration options ownCloud offers
+		
+	
+	:Implemented by:
+		:php:class:`OC\\AllConfig` 
+	
+	
+	:Source:
+		`lib/public/IConfig.php#46 <https://github.com/nextcloud/server/blob/stable13/lib/public/IConfig.php#L46>`_
+	
+
+Constants
+---------
+
+.. php:const:: SENSITIVE_VALUE = \*\*\*REMOVED SENSITIVE VALUE\*\*\*
+
+	:Source:
+		`lib/public/IConfig.php#50 <https://github.com/nextcloud/server/blob/stable13/lib/public/IConfig.php#L50>`_
+	
+	:Since: 8.2.0 
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public setSystemValues( $configs)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Sets and deletes system wide values
+			
+		
+		:Source:
+			`lib/public/IConfig.php#59 <https://github.com/nextcloud/server/blob/stable13/lib/public/IConfig.php#L59>`_
+		
+		
+		:Parameters:
+			* **$configs** (array)  Associative array with `key => value` pairs
+			If value is null, the config key will be deleted
+
+		
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setSystemValue( $key, $value)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Sets a new system wide value
+			
+		
+		:Source:
+			`lib/public/IConfig.php#68 <https://github.com/nextcloud/server/blob/stable13/lib/public/IConfig.php#L68>`_
+		
+		
+		:Parameters:
+			* **$key** (string)  the key of the value, under which will be saved
+			* **$value** (mixed)  the value that should be stored
+
+		
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getSystemValue( $key, $default="")
+	
+		.. rst-class:: phpdoc-description
+		
+			| Looks up a system wide defined value
+			
+		
+		:Source:
+			`lib/public/IConfig.php#78 <https://github.com/nextcloud/server/blob/stable13/lib/public/IConfig.php#L78>`_
+		
+		
+		:Parameters:
+			* **$key** (string)  the key of the value, under which it was saved
+			* **$default** (mixed)  the default value to be returned if the value isn't set
+
+		
+		:Returns: mixed the value or $default
+		:Since: 6.0.0 \- parameter $default was added in 7\.0\.0
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getSystemValueBool( $key, $default=false)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Looks up a boolean system wide defined value
+			
+		
+		:Source:
+			`lib/public/IConfig.php#88 <https://github.com/nextcloud/server/blob/stable13/lib/public/IConfig.php#L88>`_
+		
+		
+		:Parameters:
+			* **$key** (string)  the key of the value, under which it was saved
+			* **$default** (bool)  the default value to be returned if the value isn't set
+
+		
+		:Returns: bool the value or $default
+		:Since: 16.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getSystemValueInt( $key, $default=0)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Looks up an integer system wide defined value
+			
+		
+		:Source:
+			`lib/public/IConfig.php#98 <https://github.com/nextcloud/server/blob/stable13/lib/public/IConfig.php#L98>`_
+		
+		
+		:Parameters:
+			* **$key** (string)  the key of the value, under which it was saved
+			* **$default** (int)  the default value to be returned if the value isn't set
+
+		
+		:Returns: int the value or $default
+		:Since: 16.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getSystemValueString( $key, $default="")
+	
+		.. rst-class:: phpdoc-description
+		
+			| Looks up a string system wide defined value
+			
+		
+		:Source:
+			`lib/public/IConfig.php#108 <https://github.com/nextcloud/server/blob/stable13/lib/public/IConfig.php#L108>`_
+		
+		
+		:Parameters:
+			* **$key** (string)  the key of the value, under which it was saved
+			* **$default** (string)  the default value to be returned if the value isn't set
+
+		
+		:Returns: string the value or $default
+		:Since: 16.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getFilteredSystemValue( $key, $default="")
+	
+		.. rst-class:: phpdoc-description
+		
+			| Looks up a system wide defined value and filters out sensitive data
+			
+		
+		:Source:
+			`lib/public/IConfig.php#118 <https://github.com/nextcloud/server/blob/stable13/lib/public/IConfig.php#L118>`_
+		
+		
+		:Parameters:
+			* **$key** (string)  the key of the value, under which it was saved
+			* **$default** (mixed)  the default value to be returned if the value isn't set
+
+		
+		:Returns: mixed the value or $default
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public deleteSystemValue( $key)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Delete a system wide defined value
+			
+		
+		:Source:
+			`lib/public/IConfig.php#126 <https://github.com/nextcloud/server/blob/stable13/lib/public/IConfig.php#L126>`_
+		
+		
+		:Parameters:
+			* **$key** (string)  the key of the value, under which it was saved
+
+		
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getAppKeys( $appName)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get all keys stored for an app
+			
+		
+		:Source:
+			`lib/public/IConfig.php#135 <https://github.com/nextcloud/server/blob/stable13/lib/public/IConfig.php#L135>`_
+		
+		
+		:Parameters:
+			* **$appName** (string)  the appName that we stored the value under
+
+		
+		:Returns: string[] the keys stored for the app
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setAppValue( $appName, $key, $value)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Writes a new app wide value
+			
+		
+		:Source:
+			`lib/public/IConfig.php#146 <https://github.com/nextcloud/server/blob/stable13/lib/public/IConfig.php#L146>`_
+		
+		
+		:Parameters:
+			* **$appName** (string)  the appName that we want to store the value under
+			* **$key** (string | float | int)  the key of the value, under which will be saved
+			* **$value** (string)  the value that should be stored
+
+		
+		:Returns: void 
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getAppValue( $appName, $key, $default="")
+	
+		.. rst-class:: phpdoc-description
+		
+			| Looks up an app wide defined value
+			
+		
+		:Source:
+			`lib/public/IConfig.php#157 <https://github.com/nextcloud/server/blob/stable13/lib/public/IConfig.php#L157>`_
+		
+		
+		:Parameters:
+			* **$appName** (string)  the appName that we stored the value under
+			* **$key** (string)  the key of the value, under which it was saved
+			* **$default** (string)  the default value to be returned if the value isn't set
+
+		
+		:Returns: string the saved value
+		:Since: 6.0.0 \- parameter $default was added in 7\.0\.0
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public deleteAppValue( $appName, $key)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Delete an app wide defined value
+			
+		
+		:Source:
+			`lib/public/IConfig.php#166 <https://github.com/nextcloud/server/blob/stable13/lib/public/IConfig.php#L166>`_
+		
+		
+		:Parameters:
+			* **$appName** (string)  the appName that we stored the value under
+			* **$key** (string)  the key of the value, under which it was saved
+
+		
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public deleteAppValues( $appName)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Removes all keys in appconfig belonging to the app
+			
+		
+		:Source:
+			`lib/public/IConfig.php#174 <https://github.com/nextcloud/server/blob/stable13/lib/public/IConfig.php#L174>`_
+		
+		
+		:Parameters:
+			* **$appName** (string)  the appName the configs are stored under
+
+		
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setUserValue( $userId, $appName, $key, $value, $preCondition=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set a user defined value
+			
+		
+		:Source:
+			`lib/public/IConfig.php#189 <https://github.com/nextcloud/server/blob/stable13/lib/public/IConfig.php#L189>`_
+		
+		
+		:Parameters:
+			* **$userId** (string)  the userId of the user that we want to store the value under
+			* **$appName** (string)  the appName that we want to store the value under
+			* **$key** (string)  the key under which the value is being stored
+			* **$value** (string)  the value that you want to store
+			* **$preCondition** (string)  only update if the config value was previously the value passed as $preCondition
+
+		
+		:Throws: :any:`\\OCP\\PreConditionNotMetException <OCP\\PreConditionNotMetException>` if a precondition is specified and is not met
+		:Throws: :any:`\\UnexpectedValueException <UnexpectedValueException>` when trying to store an unexpected value
+		:Throws: :any:`\\OCP\\PreConditionNotMetException <OCP\\PreConditionNotMetException>` if a precondition is specified and is not met
+		:Throws: :any:`\\UnexpectedValueException <UnexpectedValueException>` when trying to store an unexpected value
+		:Since: 6.0.0 \- parameter $precondition was added in 8\.0\.0
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getUserValue( $userId, $appName, $key, $default="")
+	
+		.. rst-class:: phpdoc-description
+		
+			| Shortcut for getting a user defined value
+			
+		
+		:Source:
+			`lib/public/IConfig.php#201 <https://github.com/nextcloud/server/blob/stable13/lib/public/IConfig.php#L201>`_
+		
+		
+		:Parameters:
+			* **$userId** (string)  the userId of the user that we want to store the value under
+			* **$appName** (string)  the appName that we stored the value under
+			* **$key** (string)  the key under which the value is being stored
+			* **$default** (mixed)  the default value to be returned if the value isn't set
+
+		
+		:Returns: string 
+		:Since: 6.0.0 \- parameter $default was added in 7\.0\.0
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getUserValueForUsers( $appName, $key, $userIds)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Fetches a mapped list of userId \-\> value, for a specified app and key and a list of user IDs\.
+			
+		
+		:Source:
+			`lib/public/IConfig.php#212 <https://github.com/nextcloud/server/blob/stable13/lib/public/IConfig.php#L212>`_
+		
+		
+		:Parameters:
+			* **$appName** (string)  app to get the value for
+			* **$key** (string)  the key to get the value for
+			* **$userIds** (array)  the user IDs to fetch the values for
+
+		
+		:Returns: array Mapped values: userId =\> value
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getUserKeys( $userId, $appName)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the keys of all stored by an app for the user
+			
+		
+		:Source:
+			`lib/public/IConfig.php#222 <https://github.com/nextcloud/server/blob/stable13/lib/public/IConfig.php#L222>`_
+		
+		
+		:Parameters:
+			* **$userId** (string)  the userId of the user that we want to store the value under
+			* **$appName** (string)  the appName that we stored the value under
+
+		
+		:Returns: string[] 
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public deleteUserValue( $userId, $appName, $key)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Delete a user value
+			
+		
+		:Source:
+			`lib/public/IConfig.php#232 <https://github.com/nextcloud/server/blob/stable13/lib/public/IConfig.php#L232>`_
+		
+		
+		:Parameters:
+			* **$userId** (string)  the userId of the user that we want to store the value under
+			* **$appName** (string)  the appName that we stored the value under
+			* **$key** (string)  the key under which the value is being stored
+
+		
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public deleteAllUserValues( $userId)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Delete all user values
+			
+		
+		:Source:
+			`lib/public/IConfig.php#240 <https://github.com/nextcloud/server/blob/stable13/lib/public/IConfig.php#L240>`_
+		
+		
+		:Parameters:
+			* **$userId** (string)  the userId of the user that we want to remove all values from
+
+		
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public deleteAppFromAllUsers( $appName)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Delete all user related values of one app
+			
+		
+		:Source:
+			`lib/public/IConfig.php#248 <https://github.com/nextcloud/server/blob/stable13/lib/public/IConfig.php#L248>`_
+		
+		
+		:Parameters:
+			* **$appName** (string)  the appName of the app that we want to remove all values from
+
+		
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getUsersForUserValue( $appName, $key, $value)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Determines the users that have the given value set for a specific app\-key\-pair
+			
+		
+		:Source:
+			`lib/public/IConfig.php#259 <https://github.com/nextcloud/server/blob/stable13/lib/public/IConfig.php#L259>`_
+		
+		
+		:Parameters:
+			* **$appName** (string)  the app to get the user for
+			* **$key** (string)  the key to get the user for
+			* **$value** (string)  the value to get the user for
+
+		
+		:Returns: array of user IDs
+		:Since: 8.0.0 
+	
+	
+

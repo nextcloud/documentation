@@ -1,0 +1,252 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IFactory
+========
+
+
+.. php:namespace:: OCP\L10N
+
+.. php:interface:: IFactory
+
+
+	:Implemented by:
+		:php:class:`OC\\L10N\\Factory` 
+	
+	
+	:Source:
+		`lib/public/L10N/IFactory.php#37 <https://github.com/nextcloud/server/blob/stable13/lib/public/L10N/IFactory.php#L37>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public get( $app, $lang=null, $locale=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get a language instance
+			
+		
+		:Source:
+			`lib/public/L10N/IFactory.php#47 <https://github.com/nextcloud/server/blob/stable13/lib/public/L10N/IFactory.php#L47>`_
+		
+		
+		:Parameters:
+			* **$app** (string)  
+			* **$lang** (string | null)  
+			* **$locale** (string | null)  
+
+		
+		:Returns: :any:`\\OCP\\IL10N <OCP\\IL10N>` 
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public findLanguage( $app=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Find the best language
+			
+		
+		:Source:
+			`lib/public/L10N/IFactory.php#56 <https://github.com/nextcloud/server/blob/stable13/lib/public/L10N/IFactory.php#L56>`_
+		
+		
+		:Parameters:
+			* **$app** (string | null)  App id or null for core
+
+		
+		:Returns: string language If nothing works it returns \'en\'
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public findLocale( $lang=null)
+	
+		:Source:
+			`lib/public/L10N/IFactory.php#63 <https://github.com/nextcloud/server/blob/stable13/lib/public/L10N/IFactory.php#L63>`_
+		
+		
+		:Parameters:
+			* **$lang** (string | null)  user language as default locale
+
+		
+		:Returns: string locale If nothing works it returns \'en\_US\'
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public findLanguageFromLocale( $app=core, $locale=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| find the matching lang from the locale
+			
+		
+		:Source:
+			`lib/public/L10N/IFactory.php#73 <https://github.com/nextcloud/server/blob/stable13/lib/public/L10N/IFactory.php#L73>`_
+		
+		
+		:Parameters:
+			* **$app** (string)  
+			* **$locale** (string)  
+
+		
+		:Returns: null | string 
+		:Since: 14.0.1 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public findAvailableLanguages( $app=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Find all available languages for an app
+			
+		
+		:Source:
+			`lib/public/L10N/IFactory.php#82 <https://github.com/nextcloud/server/blob/stable13/lib/public/L10N/IFactory.php#L82>`_
+		
+		
+		:Parameters:
+			* **$app** (string | null)  App id or null for core
+
+		
+		:Returns: string[] an array of available languages
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public findAvailableLocales()
+	
+		:Source:
+			`lib/public/L10N/IFactory.php#88 <https://github.com/nextcloud/server/blob/stable13/lib/public/L10N/IFactory.php#L88>`_
+		
+		
+		:Returns: array an array of available
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public languageExists( $app, $lang)
+	
+		:Source:
+			`lib/public/L10N/IFactory.php#96 <https://github.com/nextcloud/server/blob/stable13/lib/public/L10N/IFactory.php#L96>`_
+		
+		
+		:Parameters:
+			* **$app** (string | null)  App id or null for core
+			* **$lang** (string)  
+
+		
+		:Returns: bool 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public localeExists( $locale)
+	
+		:Source:
+			`lib/public/L10N/IFactory.php#103 <https://github.com/nextcloud/server/blob/stable13/lib/public/L10N/IFactory.php#L103>`_
+		
+		
+		:Parameters:
+			* **$locale** (string)  
+
+		
+		:Returns: bool 
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public createPluralFunction( $string)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Creates a function from the plural string
+			
+		
+		:Source:
+			`lib/public/L10N/IFactory.php#112 <https://github.com/nextcloud/server/blob/stable13/lib/public/L10N/IFactory.php#L112>`_
+		
+		
+		:Parameters:
+			* **$string** (string)  
+
+		
+		:Returns: string Unique function name
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getLanguageIterator( $user=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| iterate through language settings \(if provided\) in this order:
+			| 1\. returns the forced language or:
+			| 2\. if applicable, the trunk of 1 \(e\.g\. "fu" instead of "fu\_BAR"
+			| 3\. returns the user language or:
+			| 4\. if applicable, the trunk of 3
+			| 5\. returns the system default language or:
+			| 6\. if applicable, the trunk of 5
+			| 7\+∞\. returns \'en\'
+			
+			| Hint: in most cases findLanguage\(\) suits you fine
+			
+		
+		:Source:
+			`lib/public/L10N/IFactory.php#128 <https://github.com/nextcloud/server/blob/stable13/lib/public/L10N/IFactory.php#L128>`_
+		
+		
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getUserLanguage( $user=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Return the language to use when sending something to a user
+			
+		
+		:Source:
+			`lib/public/L10N/IFactory.php#137 <https://github.com/nextcloud/server/blob/stable13/lib/public/L10N/IFactory.php#L137>`_
+		
+		
+		:Parameters:
+			* **$user** (:any:`OCP\\IUser <OCP\\IUser>` | null)  
+
+		
+		:Returns: string 
+		:Since: 20.0.0 
+	
+	
+

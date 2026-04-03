@@ -1,0 +1,746 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IEvent
+======
+
+
+.. php:namespace:: OCP\Activity
+
+.. php:interface:: IEvent
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Interface IEvent
+		
+	
+	:Implemented by:
+		:php:class:`OC\\Activity\\Event` 
+	
+	
+	:Source:
+		`lib/public/Activity/IEvent.php#44 <https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IEvent.php#L44>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public setApp( $app)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set the app of the activity
+			
+		
+		:Source:
+			`lib/public/Activity/IEvent.php#53 <https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IEvent.php#L53>`_
+		
+		
+		:Parameters:
+			* **$app** (string)  
+
+		
+		:Returns: :any:`\\OCP\\Activity\\IEvent <OCP\\Activity\\IEvent>` 
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` if the app id is invalid
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setType( $type)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set the type of the activity
+			
+		
+		:Source:
+			`lib/public/Activity/IEvent.php#63 <https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IEvent.php#L63>`_
+		
+		
+		:Parameters:
+			* **$type** (string)  
+
+		
+		:Returns: :any:`\\OCP\\Activity\\IEvent <OCP\\Activity\\IEvent>` 
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` if the type is invalid
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setAffectedUser( $user)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set the affected user of the activity
+			
+		
+		:Source:
+			`lib/public/Activity/IEvent.php#73 <https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IEvent.php#L73>`_
+		
+		
+		:Parameters:
+			* **$user** (string)  
+
+		
+		:Returns: :any:`\\OCP\\Activity\\IEvent <OCP\\Activity\\IEvent>` 
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` if the affected user is invalid
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setAuthor( $author)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set the author of the activity
+			
+		
+		:Source:
+			`lib/public/Activity/IEvent.php#83 <https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IEvent.php#L83>`_
+		
+		
+		:Parameters:
+			* **$author** (string)  
+
+		
+		:Returns: :any:`\\OCP\\Activity\\IEvent <OCP\\Activity\\IEvent>` 
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` if the author is invalid
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setTimestamp( $timestamp)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set the author of the activity
+			
+		
+		:Source:
+			`lib/public/Activity/IEvent.php#93 <https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IEvent.php#L93>`_
+		
+		
+		:Parameters:
+			* **$timestamp** (int)  
+
+		
+		:Returns: :any:`\\OCP\\Activity\\IEvent <OCP\\Activity\\IEvent>` 
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` if the timestamp is invalid
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setSubject( $subject, $parameters=\[\])
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set the subject of the activity
+			
+		
+		:Source:
+			`lib/public/Activity/IEvent.php#104 <https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IEvent.php#L104>`_
+		
+		
+		:Parameters:
+			* **$subject** (string)  
+			* **$parameters** (array)  
+
+		
+		:Returns: :any:`\\OCP\\Activity\\IEvent <OCP\\Activity\\IEvent>` 
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` if the subject or parameters are invalid
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setParsedSubject( $subject)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set a parsed subject
+			
+			| HTML is not allowed in the parsed subject and will be escaped
+			| automatically by the clients\. You can use the RichObjectString system
+			| provided by the Nextcloud server to highlight important parameters via
+			| the setRichSubject method, but make sure, that a plain text message is
+			| always set via setParsedSubject, to support clients which can not handle
+			| rich strings\.
+			| 
+			| See https://github\.com/nextcloud/server/issues/1706 for more information\.
+			
+		
+		:Source:
+			`lib/public/Activity/IEvent.php#123 <https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IEvent.php#L123>`_
+		
+		
+		:Parameters:
+			* **$subject** (string)  
+
+		
+		:Returns: $this 
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` if the subject is invalid
+		:Since: 11.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getParsedSubject()
+	
+		:Source:
+			`lib/public/Activity/IEvent.php#129 <https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IEvent.php#L129>`_
+		
+		
+		:Returns: string 
+		:Since: 11.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setRichSubject( $subject, $parameters=\[\])
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set a RichObjectString subject
+			
+			| HTML is not allowed in the rich subject and will be escaped automatically
+			| by the clients, but you can use the RichObjectString system provided by
+			| the Nextcloud server to highlight important parameters\.
+			| Also make sure, that a plain text subject is always set via
+			| setParsedSubject, to support clients which can not handle rich strings\.
+			| 
+			| See https://github\.com/nextcloud/server/issues/1706 for more information\.
+			
+		
+		:Source:
+			`lib/public/Activity/IEvent.php#148 <https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IEvent.php#L148>`_
+		
+		
+		:Parameters:
+			* **$subject** (string)  
+			* **$parameters** (array)  
+
+		
+		:Returns: $this 
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` if the subject or parameters are invalid
+		:Since: 11.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getRichSubject()
+	
+		:Source:
+			`lib/public/Activity/IEvent.php#154 <https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IEvent.php#L154>`_
+		
+		
+		:Returns: string 
+		:Since: 11.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getRichSubjectParameters()
+	
+		:Source:
+			`lib/public/Activity/IEvent.php#160 <https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IEvent.php#L160>`_
+		
+		
+		:Returns: array[] 
+		:Since: 11.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setMessage( $message, $parameters=\[\])
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set the message of the activity
+			
+		
+		:Source:
+			`lib/public/Activity/IEvent.php#171 <https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IEvent.php#L171>`_
+		
+		
+		:Parameters:
+			* **$message** (string)  
+			* **$parameters** (array)  
+
+		
+		:Returns: :any:`\\OCP\\Activity\\IEvent <OCP\\Activity\\IEvent>` 
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` if the message or parameters are invalid
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setParsedMessage( $message)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set a parsed message
+			
+			| HTML is not allowed in the parsed message and will be escaped
+			| automatically by the clients\. You can use the RichObjectString system
+			| provided by the Nextcloud server to highlight important parameters via
+			| the setRichMessage method, but make sure, that a plain text message is
+			| always set via setParsedMessage, to support clients which can not handle
+			| rich strings\.
+			| 
+			| See https://github\.com/nextcloud/server/issues/1706 for more information\.
+			
+		
+		:Source:
+			`lib/public/Activity/IEvent.php#190 <https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IEvent.php#L190>`_
+		
+		
+		:Parameters:
+			* **$message** (string)  
+
+		
+		:Returns: $this 
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` if the message is invalid
+		:Since: 11.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getParsedMessage()
+	
+		:Source:
+			`lib/public/Activity/IEvent.php#196 <https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IEvent.php#L196>`_
+		
+		
+		:Returns: string 
+		:Since: 11.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setRichMessage( $message, $parameters=\[\])
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set a RichObjectString message
+			
+			| HTML is not allowed in the rich message and will be escaped automatically
+			| by the clients, but you can use the RichObjectString system provided by
+			| the Nextcloud server to highlight important parameters\.
+			| Also make sure, that a plain text message is always set via
+			| setParsedMessage, to support clients which can not handle rich strings\.
+			| 
+			| See https://github\.com/nextcloud/server/issues/1706 for more information\.
+			
+		
+		:Source:
+			`lib/public/Activity/IEvent.php#215 <https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IEvent.php#L215>`_
+		
+		
+		:Parameters:
+			* **$message** (string)  
+			* **$parameters** (array)  
+
+		
+		:Returns: $this 
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` if the message or parameters are invalid
+		:Since: 11.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getRichMessage()
+	
+		:Source:
+			`lib/public/Activity/IEvent.php#221 <https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IEvent.php#L221>`_
+		
+		
+		:Returns: string 
+		:Since: 11.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getRichMessageParameters()
+	
+		:Source:
+			`lib/public/Activity/IEvent.php#227 <https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IEvent.php#L227>`_
+		
+		
+		:Returns: array[] 
+		:Since: 11.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setObject( $objectType, $objectId, $objectName="")
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set the object of the activity
+			
+		
+		:Source:
+			`lib/public/Activity/IEvent.php#239 <https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IEvent.php#L239>`_
+		
+		
+		:Parameters:
+			* **$objectType** (string)  
+			* **$objectId** (int)  
+			* **$objectName** (string)  
+
+		
+		:Returns: :any:`\\OCP\\Activity\\IEvent <OCP\\Activity\\IEvent>` 
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` if the object is invalid
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setLink( $link)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set the link of the activity
+			
+		
+		:Source:
+			`lib/public/Activity/IEvent.php#249 <https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IEvent.php#L249>`_
+		
+		
+		:Parameters:
+			* **$link** (string)  
+
+		
+		:Returns: :any:`\\OCP\\Activity\\IEvent <OCP\\Activity\\IEvent>` 
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` if the link is invalid
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getApp()
+	
+		:Source:
+			`lib/public/Activity/IEvent.php#255 <https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IEvent.php#L255>`_
+		
+		
+		:Returns: string 
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getType()
+	
+		:Source:
+			`lib/public/Activity/IEvent.php#261 <https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IEvent.php#L261>`_
+		
+		
+		:Returns: string 
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getAffectedUser()
+	
+		:Source:
+			`lib/public/Activity/IEvent.php#267 <https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IEvent.php#L267>`_
+		
+		
+		:Returns: string 
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getAuthor()
+	
+		:Source:
+			`lib/public/Activity/IEvent.php#273 <https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IEvent.php#L273>`_
+		
+		
+		:Returns: string 
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getTimestamp()
+	
+		:Source:
+			`lib/public/Activity/IEvent.php#279 <https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IEvent.php#L279>`_
+		
+		
+		:Returns: int 
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getSubject()
+	
+		:Source:
+			`lib/public/Activity/IEvent.php#285 <https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IEvent.php#L285>`_
+		
+		
+		:Returns: string 
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getSubjectParameters()
+	
+		:Source:
+			`lib/public/Activity/IEvent.php#291 <https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IEvent.php#L291>`_
+		
+		
+		:Returns: array 
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getMessage()
+	
+		:Source:
+			`lib/public/Activity/IEvent.php#297 <https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IEvent.php#L297>`_
+		
+		
+		:Returns: string 
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getMessageParameters()
+	
+		:Source:
+			`lib/public/Activity/IEvent.php#303 <https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IEvent.php#L303>`_
+		
+		
+		:Returns: array 
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getObjectType()
+	
+		:Source:
+			`lib/public/Activity/IEvent.php#309 <https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IEvent.php#L309>`_
+		
+		
+		:Returns: string 
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getObjectId()
+	
+		:Source:
+			`lib/public/Activity/IEvent.php#315 <https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IEvent.php#L315>`_
+		
+		
+		:Returns: int 
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getObjectName()
+	
+		:Source:
+			`lib/public/Activity/IEvent.php#321 <https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IEvent.php#L321>`_
+		
+		
+		:Returns: string 
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getLink()
+	
+		:Source:
+			`lib/public/Activity/IEvent.php#327 <https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IEvent.php#L327>`_
+		
+		
+		:Returns: string 
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setIcon( $icon)
+	
+		:Source:
+			`lib/public/Activity/IEvent.php#335 <https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IEvent.php#L335>`_
+		
+		
+		:Parameters:
+			* **$icon** (string)  
+
+		
+		:Returns: $this 
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` if the icon is invalid
+		:Since: 11.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getIcon()
+	
+		:Source:
+			`lib/public/Activity/IEvent.php#341 <https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IEvent.php#L341>`_
+		
+		
+		:Returns: string 
+		:Since: 11.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setChildEvent( $child)
+	
+		:Source:
+			`lib/public/Activity/IEvent.php#348 <https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IEvent.php#L348>`_
+		
+		
+		:Parameters:
+			* **$child** (:any:`OCP\\Activity\\IEvent <OCP\\Activity\\IEvent>`)  
+
+		
+		:Returns: $this 
+		:Since: 11.0.0 \- Since 15\.0\.0 returns $this
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getChildEvent()
+	
+		:Source:
+			`lib/public/Activity/IEvent.php#354 <https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IEvent.php#L354>`_
+		
+		
+		:Returns: :any:`\\OCP\\Activity\\IEvent <OCP\\Activity\\IEvent>` | null 
+		:Since: 11.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isValid()
+	
+		:Source:
+			`lib/public/Activity/IEvent.php#360 <https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IEvent.php#L360>`_
+		
+		
+		:Returns: bool 
+		:Since: 11.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isValidParsed()
+	
+		:Source:
+			`lib/public/Activity/IEvent.php#366 <https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IEvent.php#L366>`_
+		
+		
+		:Returns: bool 
+		:Since: 11.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setGenerateNotification( $generate)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set whether or not a notification should be automatically generated for this activity\.
+			
+			| Set this to \`false\` if the app already generates a notification for the event\.
+			
+		
+		:Source:
+			`lib/public/Activity/IEvent.php#377 <https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IEvent.php#L377>`_
+		
+		
+		:Parameters:
+			* **$generate** (bool)  
+
+		
+		:Returns: :any:`\\OCP\\Activity\\IEvent <OCP\\Activity\\IEvent>` 
+		:Since: 20.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getGenerateNotification()
+	
+		.. rst-class:: phpdoc-description
+		
+			| whether or not a notification should be automatically generated for this activity\.
+			
+		
+		:Source:
+			`lib/public/Activity/IEvent.php#385 <https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IEvent.php#L385>`_
+		
+		
+		:Returns: bool 
+		:Since: 20.0.0 
+	
+	
+

@@ -1,0 +1,198 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+Watcher
+=======
+
+
+.. php:namespace:: OC\Files\Cache
+
+.. php:class:: Watcher
+
+
+	.. rst-class:: phpdoc-description
+	
+		| check the storage backends for updates and change the cache accordingly
+		
+	
+	:Source:
+		`lib/private/Files/Cache/Watcher.php#36 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Watcher.php#L36>`_
+	
+	:Implements:
+		:php:interface:`OCP\\Files\\Cache\\IWatcher` 
+	
+
+Properties
+----------
+
+.. php:attr:: protected static watchPolicy
+
+	:Source:
+		`lib/private/Files/Cache/Watcher.php#37 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Watcher.php#L37>`_
+	
+
+
+.. php:attr:: protected static checkedPaths
+
+	:Source:
+		`lib/private/Files/Cache/Watcher.php#39 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Watcher.php#L39>`_
+	
+
+
+.. php:attr:: protected static storage
+
+	:Source:
+		`lib/private/Files/Cache/Watcher.php#44 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Watcher.php#L44>`_
+	
+	:Type: :any:`\\OC\\Files\\Storage\\Storage <OC\\Files\\Storage\\Storage>` 
+
+
+.. php:attr:: protected static cache
+
+	:Source:
+		`lib/private/Files/Cache/Watcher.php#49 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Watcher.php#L49>`_
+	
+	:Type: :any:`\\OC\\Files\\Cache\\Cache <OC\\Files\\Cache\\Cache>` 
+
+
+.. php:attr:: protected static scanner
+
+	:Source:
+		`lib/private/Files/Cache/Watcher.php#54 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Watcher.php#L54>`_
+	
+	:Type: :any:`\\OC\\Files\\Cache\\Scanner <OC\\Files\\Cache\\Scanner>` ;
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $storage)
+	
+		:Source:
+			`lib/private/Files/Cache/Watcher.php#59 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Watcher.php#L59>`_
+		
+		
+		:Parameters:
+			* **$storage** (:any:`OC\\Files\\Storage\\Storage <OC\\Files\\Storage\\Storage>`)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setPolicy( $policy)
+	
+		:Source:
+			`lib/private/Files/Cache/Watcher.php#68 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Watcher.php#L68>`_
+		
+		
+		:Parameters:
+			* **$policy** (int)  either \OC\Files\Cache\Watcher::CHECK_NEVER, \OC\Files\Cache\Watcher::CHECK_ONCE, \OC\Files\Cache\Watcher::CHECK_ALWAYS
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getPolicy()
+	
+		:Source:
+			`lib/private/Files/Cache/Watcher.php#75 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Watcher.php#L75>`_
+		
+		
+		:Returns: int either \\OC\\Files\\Cache\\Watcher::CHECK\_NEVER, \\OC\\Files\\Cache\\Watcher::CHECK\_ONCE, \\OC\\Files\\Cache\\Watcher::CHECK\_ALWAYS
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public checkUpdate( $path, $cachedEntry=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| check $path for updates and update if needed
+			
+		
+		:Source:
+			`lib/private/Files/Cache/Watcher.php#86 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Watcher.php#L86>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+			* **$cachedEntry** (:any:`OCP\\Files\\Cache\\ICacheEntry <OCP\\Files\\Cache\\ICacheEntry>` | null)  
+
+		
+		:Returns: bool true if path was updated
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public update( $path, $cachedData)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Update the cache for changes to $path
+			
+		
+		:Source:
+			`lib/private/Files/Cache/Watcher.php#104 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Watcher.php#L104>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+			* **$cachedData** (:any:`OCP\\Files\\Cache\\ICacheEntry <OCP\\Files\\Cache\\ICacheEntry>`)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public needsUpdate( $path, $cachedData)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check if the cache for $path needs to be updated
+			
+		
+		:Source:
+			`lib/private/Files/Cache/Watcher.php#125 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Watcher.php#L125>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+			* **$cachedData** (:any:`OCP\\Files\\Cache\\ICacheEntry <OCP\\Files\\Cache\\ICacheEntry>`)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public cleanFolder( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| remove deleted files in $path from the cache
+			
+		
+		:Source:
+			`lib/private/Files/Cache/Watcher.php#138 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Watcher.php#L138>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+	
+	
+

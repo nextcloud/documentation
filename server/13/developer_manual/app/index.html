@@ -1,0 +1,462 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>App development &mdash; Nextcloud 13 Developer Manual 13 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'13',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Changelog" href="changelog.html" />
+    <link rel="prev" title="Backporting" href="../general/backporting.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../general/index.html">General contributor guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="startapp.html">Create an app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="init.html">Navigation and pre-app configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="info.html">App metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="classloader.html">Classloader</a></li>
+<li class="toctree-l1"><a class="reference internal" href="request.html">Request lifecycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="routes.html">Routing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="middleware.html">Middleware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="container.html">Container</a></li>
+<li class="toctree-l1"><a class="reference internal" href="controllers.html">Controllers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="api.html">RESTful API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="templates.html">Templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="js.html">JavaScript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="css.html">CSS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="l10n.html">Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="theming.html">Theming support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="schema.html">Database schema</a></li>
+<li class="toctree-l1"><a class="reference internal" href="database.html">Database access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="filesystem.html">Filesystem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="appdata.html">AppData</a></li>
+<li class="toctree-l1"><a class="reference internal" href="users.html">User management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="two-factor-provider.html">Two-factor providers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="hooks.html">Hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="backgroundjobs.html">Background jobs (Cron)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="settings.html">Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="logging.html">Logging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="migrations.html">Migrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="repair.html">Repair steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="publishing.html">App store publishing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="code_signing.html">Code signing</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">App development</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#intro">Intro</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#id1">App development</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#requests">Requests</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#view">View</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#storage">Storage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#authentication-users">Authentication &amp; users</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#hooks">Hooks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#background-jobs">Background jobs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#settings">Settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#notifications">Notifications</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#logging">Logging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#migrations">Migrations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#repair-steps">Repair steps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#testing">Testing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#phpdoc-class-documentation">PHPDoc class documentation</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../design/index.html">Design guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../android_library/index.html">Android application development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client_apis/index.html">Client APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../core/translation.html">Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../core/unit-testing.html">Unit-Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../core/theming.html">Theming Nextcloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../core/externalapi.html">External API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../core/ocs-share-api.html">OCS Share API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../core/index.html">Core development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bugtracker/index.html">Bugtracker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../commun/index.html">Help and communication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API Documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Nextcloud 13 Developer Manual</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>App development</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/nextcloud/documentation/edit/stable13/developer_manual/app/index.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="toctree-wrapper compound">
+</div>
+<div class="section" id="app-development">
+<h1>App development<a class="headerlink" href="#app-development" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="intro">
+<h2>Intro<a class="headerlink" href="#intro" title="Permalink to this headline">¶</a></h2>
+<p>Before you start, please check if there already is a similar app in the <a class="reference external" href="https://apps.nextcloud.com">App Store</a> or the <a class="reference external" href="https://github.com/nextcloud/">GitHub organisation</a> that you could contribute to. Also, feel free to communicate your idea and plans in the <a class="reference external" href="https://help.nextcloud.com/">forum</a> so other contributors might join in.</p>
+<p>Then, please make sure you have set up a development environment:</p>
+<ul class="simple">
+<li><a class="reference internal" href="../general/devenv.html"><span class="doc">Development environment</span></a></li>
+</ul>
+<p>Before starting to write an app please read the security and coding guidelines:</p>
+<ul class="simple">
+<li><a class="reference internal" href="../general/security.html"><span class="doc">Security guidelines</span></a></li>
+<li><a class="reference internal" href="../general/codingguidelines.html"><span class="doc">Coding style &amp; general guidelines</span></a></li>
+</ul>
+<p>After this you can start with the tutorial</p>
+<ul class="simple">
+<li><a class="reference internal" href="tutorial.html"><span class="doc">Tutorial</span></a></li>
+</ul>
+<p>Once you are ready for publishing, check out the app store process:</p>
+<ul class="simple">
+<li><a class="reference internal" href="publishing.html"><span class="doc">App store publishing</span></a></li>
+</ul>
+<p>For enhanced security it is also possible to sign your code:</p>
+<ul class="simple">
+<li><a class="reference internal" href="code_signing.html"><span class="doc">Code signing</span></a></li>
+</ul>
+</div>
+<div class="section" id="id1">
+<h2>App development<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>Take a look at the changes in this version:</p>
+<ul class="simple">
+<li><a class="reference internal" href="changelog.html"><span class="doc">Changelog</span></a></li>
+</ul>
+<p>Create a new app:</p>
+<ul class="simple">
+<li><a class="reference internal" href="startapp.html"><span class="doc">Create an app</span></a></li>
+</ul>
+<p>Inner parts of an app:</p>
+<ul class="simple">
+<li><a class="reference internal" href="init.html"><span class="doc">Navigation and pre-app configuration</span></a></li>
+<li><a class="reference internal" href="info.html"><span class="doc">App metadata</span></a></li>
+<li><a class="reference internal" href="classloader.html"><span class="doc">Classloader</span></a></li>
+</ul>
+<div class="section" id="requests">
+<h3>Requests<a class="headerlink" href="#requests" title="Permalink to this headline">¶</a></h3>
+<p>How a request is being processed:</p>
+<ul class="simple">
+<li><a class="reference internal" href="request.html"><span class="doc">Request lifecycle</span></a></li>
+<li><a class="reference internal" href="routes.html"><span class="doc">Routing</span></a></li>
+<li><a class="reference internal" href="middleware.html"><span class="doc">Middleware</span></a></li>
+<li><a class="reference internal" href="container.html"><span class="doc">Container</span></a></li>
+<li><a class="reference internal" href="controllers.html"><span class="doc">Controllers</span></a> | <a class="reference internal" href="api.html"><span class="doc">RESTful API</span></a></li>
+</ul>
+</div>
+<div class="section" id="view">
+<h3>View<a class="headerlink" href="#view" title="Permalink to this headline">¶</a></h3>
+<p>The app&#8217;s presentation layer:</p>
+<ul class="simple">
+<li><a class="reference internal" href="templates.html"><span class="doc">Templates</span></a></li>
+<li><a class="reference internal" href="js.html"><span class="doc">JavaScript</span></a></li>
+<li><a class="reference internal" href="css.html"><span class="doc">CSS</span></a></li>
+<li><a class="reference internal" href="l10n.html"><span class="doc">Translation</span></a></li>
+<li><a class="reference internal" href="theming.html"><span class="doc">Theming support</span></a></li>
+</ul>
+</div>
+<div class="section" id="storage">
+<h3>Storage<a class="headerlink" href="#storage" title="Permalink to this headline">¶</a></h3>
+<p>Create database tables, run Sql queries, store/retrieve configuration information and access the filesystem:</p>
+<ul class="simple">
+<li><a class="reference internal" href="schema.html"><span class="doc">Database schema</span></a></li>
+<li><a class="reference internal" href="database.html"><span class="doc">Database access</span></a></li>
+<li><a class="reference internal" href="configuration.html"><span class="doc">Configuration</span></a></li>
+<li><a class="reference internal" href="filesystem.html"><span class="doc">Filesystem</span></a></li>
+</ul>
+</div>
+<div class="section" id="authentication-users">
+<h3>Authentication &amp; users<a class="headerlink" href="#authentication-users" title="Permalink to this headline">¶</a></h3>
+<p>Creating, deleting, updating, searching, login and logout:</p>
+<ul class="simple">
+<li><a class="reference internal" href="users.html"><span class="doc">User management</span></a></li>
+</ul>
+<p>Writing a two-factor auth provider:</p>
+<ul class="simple">
+<li><a class="reference internal" href="two-factor-provider.html"><span class="doc">Two-factor providers</span></a></li>
+</ul>
+</div>
+<div class="section" id="hooks">
+<h3>Hooks<a class="headerlink" href="#hooks" title="Permalink to this headline">¶</a></h3>
+<p>Listen on events like user creation and execute code:</p>
+<ul class="simple">
+<li><a class="reference internal" href="hooks.html"><span class="doc">Hooks</span></a></li>
+</ul>
+</div>
+<div class="section" id="background-jobs">
+<h3>Background jobs<a class="headerlink" href="#background-jobs" title="Permalink to this headline">¶</a></h3>
+<p>Periodically run code in the background:</p>
+<ul class="simple">
+<li><a class="reference internal" href="backgroundjobs.html"><span class="doc">Background jobs (Cron)</span></a></li>
+</ul>
+</div>
+<div class="section" id="settings">
+<h3>Settings<a class="headerlink" href="#settings" title="Permalink to this headline">¶</a></h3>
+<p>An app can register both admin settings as well as personal settings:</p>
+<ul class="simple">
+<li><a class="reference internal" href="settings.html"><span class="doc">Settings</span></a></li>
+</ul>
+</div>
+<div class="section" id="notifications">
+<h3>Notifications<a class="headerlink" href="#notifications" title="Permalink to this headline">¶</a></h3>
+<p>An app can send notifications to display to users. It can also retrieve and act upon notifications that are received by the users. See the  <a class="reference external" href="https://github.com/nextcloud/notifications#developers">documentation of the official Notifications app</a>.</p>
+</div>
+<div class="section" id="logging">
+<h3>Logging<a class="headerlink" href="#logging" title="Permalink to this headline">¶</a></h3>
+<p>Log to the <code class="file docutils literal"><span class="pre">data/nextcloud.log</span></code>:</p>
+<ul class="simple">
+<li><a class="reference internal" href="logging.html"><span class="doc">Logging</span></a></li>
+</ul>
+</div>
+<div class="section" id="migrations">
+<h3>Migrations<a class="headerlink" href="#migrations" title="Permalink to this headline">¶</a></h3>
+<p>Migrations can be used to do database changes which are allowing apps a more granular updating mechanism:</p>
+<ul class="simple">
+<li><a class="reference internal" href="migrations.html"><span class="doc">Migrations</span></a></li>
+</ul>
+</div>
+<div class="section" id="repair-steps">
+<h3>Repair steps<a class="headerlink" href="#repair-steps" title="Permalink to this headline">¶</a></h3>
+<p>Repair steps can be used to run code at various stages in app installation, uninstallation, migration and more:</p>
+<ul class="simple">
+<li><a class="reference internal" href="repair.html"><span class="doc">Repair steps</span></a></li>
+</ul>
+</div>
+<div class="section" id="testing">
+<h3>Testing<a class="headerlink" href="#testing" title="Permalink to this headline">¶</a></h3>
+<p>Write automated tests to ensure stability and ease maintenance:</p>
+<ul class="simple">
+<li><a class="reference internal" href="testing.html"><span class="doc">Testing</span></a></li>
+</ul>
+</div>
+<div class="section" id="phpdoc-class-documentation">
+<h3>PHPDoc class documentation<a class="headerlink" href="#phpdoc-class-documentation" title="Permalink to this headline">¶</a></h3>
+<p>Nextcloud class and function documentation:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://api.owncloud.org/namespaces/OCP.html">Nextcloud App API</a></li>
+</ul>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="changelog.html" class="btn btn-neutral float-right" title="Changelog" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../general/backporting.html" class="btn btn-neutral float-left" title="Backporting" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021 Nextcloud GmbH.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: 13
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/13/developer_manual">13</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/14/developer_manual">14</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/15/developer_manual">15</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/developer_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/developer_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+   
+
+</body>
+</html>

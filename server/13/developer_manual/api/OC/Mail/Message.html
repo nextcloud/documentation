@@ -1,0 +1,806 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Message &mdash; Nextcloud 13 Developer Manual 13 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../../',
+              VERSION:'13',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Mailer" href="Mailer.html" />
+    <link rel="prev" title="Mail" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html">
+          
+
+          
+            
+            <img src="../../../_static/logo-white.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../general/index.html">General contributor guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/startapp.html">Create an app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/init.html">Navigation and pre-app configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/info.html">App metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/classloader.html">Classloader</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/request.html">Request lifecycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/routes.html">Routing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/middleware.html">Middleware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/container.html">Container</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/controllers.html">Controllers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/api.html">RESTful API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/templates.html">Templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/js.html">JavaScript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/css.html">CSS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/l10n.html">Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/theming.html">Theming support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/schema.html">Database schema</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/database.html">Database access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/filesystem.html">Filesystem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/appdata.html">AppData</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/users.html">User management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/two-factor-provider.html">Two-factor providers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/hooks.html">Hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/backgroundjobs.html">Background jobs (Cron)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/settings.html">Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/logging.html">Logging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/migrations.html">Migrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/repair.html">Repair steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/publishing.html">App store publishing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/code_signing.html">Code signing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../design/index.html">Design guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../android_library/index.html">Android application development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../client_apis/index.html">Client APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../core/translation.html">Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../core/unit-testing.html">Unit-Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../core/theming.html">Theming Nextcloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../core/externalapi.html">External API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../core/ocs-share-api.html">OCS Share API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../core/index.html">Core development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../bugtracker/index.html">Bugtracker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../commun/index.html">Help and communication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api.html">API Documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Nextcloud 13 Developer Manual</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../../api.html">API Documentation</a> &raquo;</li>
+        
+          <li><a href="../../index.html">\</a> &raquo;</li>
+        
+          <li><a href="../index.html">OC</a> &raquo;</li>
+        
+          <li><a href="index.html">Mail</a> &raquo;</li>
+        
+      <li>Message</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/nextcloud/documentation/edit/stable13/developer_manual/api/OC/Mail/Message.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="phpdoctorst section" id="namespace-OC\Mail">
+<span id="message"></span><h1>Message<a class="headerlink" href="#namespace-OC\Mail" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="OC\Mail\Message">
+<em class="property">class </em><code class="descclassname">OC\Mail\</code><code class="descname">Message</code><a class="headerlink" href="#OC\Mail\Message" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Class Message provides a wrapper around SwiftMail</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Mail/Message.php#L45">lib/private/Mail/Message.php#45</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Implements:</th><td class="field-body"><a class="reference internal" href="../../OCP/Mail/IMessage.html#OCP\Mail\IMessage" title="OCP\Mail\IMessage"><code class="xref php php-interface docutils literal"><span class="pre">OCP\Mail\IMessage</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<div class="section" id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h2>
+<dl class="public method">
+<dt id="OC\Mail\Message::__construct">
+<em class="property">public </em><code class="descclassname">OC\Mail\Message::</code><code class="descname">__construct</code><span class="sig-paren">(</span><em>$swiftMessage</em>, <em>$plainTextOnly</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Mail\Message::__construct" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Mail/Message.php#L51">lib/private/Mail/Message.php#51</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Mail\Message::attach">
+<em class="property">public </em><code class="descclassname">OC\Mail\Message::</code><code class="descname">attach</code><span class="sig-paren">(</span><em>$attachment</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Mail\Message::attach" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Mail/Message.php#L61">lib/private/Mail/Message.php#61</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$attachment</strong> (<a class="reference internal" href="../../OCP/Mail/IAttachment.html#OCP\Mail\IAttachment" title="OCP\Mail\IAttachment"><code class="xref any php php-trait docutils literal"><span class="pre">OCP\Mail\IAttachment</span></code></a>)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">$this</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">13.0.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="protected method">
+<dt id="OC\Mail\Message::convertAddresses">
+<em class="property">protected </em><code class="descclassname">OC\Mail\Message::</code><code class="descname">convertAddresses</code><span class="sig-paren">(</span><em>$addresses</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Mail\Message::convertAddresses" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">SwiftMailer does currently not work with IDN domains, this function therefore converts the domains</div>
+<div class="line">FIXME: Remove this once SwiftMailer supports IDN</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Mail/Message.php#L74">lib/private/Mail/Message.php#74</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$addresses</strong> (array)  Array of mail addresses, key will get converted</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">array Converted addresses if `idn_to_ascii` exists</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Mail\Message::setFrom">
+<em class="property">public </em><code class="descclassname">OC\Mail\Message::</code><code class="descname">setFrom</code><span class="sig-paren">(</span><em>$addresses</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Mail\Message::setFrom" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Set the from address of this message.</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">If no &#8220;From&#8221; address is used \OC\Mail\Mailer will use mail_from_address and mail_domain from config.php</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Mail/Message.php#L104">lib/private/Mail/Message.php#104</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$addresses</strong> (array)  Example: array(<a class="reference external" href="mailto:'sender&#37;&#52;&#48;domain&#46;org">'sender<span>&#64;</span>domain<span>&#46;</span>org</a>&#8216;, <a class="reference external" href="mailto:'other&#37;&#52;&#48;domain&#46;org">'other<span>&#64;</span>domain<span>&#46;</span>org</a>&#8216; =&gt; &#8216;A name&#8217;)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">$this</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Mail\Message::getFrom">
+<em class="property">public </em><code class="descclassname">OC\Mail\Message::</code><code class="descname">getFrom</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Mail\Message::getFrom" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Get the from address of this message.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Mail/Message.php#L116">lib/private/Mail/Message.php#116</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">array</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Mail\Message::setReplyTo">
+<em class="property">public </em><code class="descclassname">OC\Mail\Message::</code><code class="descname">setReplyTo</code><span class="sig-paren">(</span><em>$addresses</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Mail\Message::setReplyTo" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Set the Reply-To address of this message</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Mail/Message.php#L126">lib/private/Mail/Message.php#126</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$addresses</strong> (array)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">$this</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Mail\Message::getReplyTo">
+<em class="property">public </em><code class="descclassname">OC\Mail\Message::</code><code class="descname">getReplyTo</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Mail\Message::getReplyTo" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Returns the Reply-To address of this message</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Mail/Message.php#L138">lib/private/Mail/Message.php#138</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">string</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Mail\Message::setTo">
+<em class="property">public </em><code class="descclassname">OC\Mail\Message::</code><code class="descname">setTo</code><span class="sig-paren">(</span><em>$recipients</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Mail\Message::setTo" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Set the to addresses of this message.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Mail/Message.php#L148">lib/private/Mail/Message.php#148</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$recipients</strong> (array)  Example: array(<a class="reference external" href="mailto:'recipient&#37;&#52;&#48;domain&#46;org">'recipient<span>&#64;</span>domain<span>&#46;</span>org</a>&#8216;, <a class="reference external" href="mailto:'other&#37;&#52;&#48;domain&#46;org">'other<span>&#64;</span>domain<span>&#46;</span>org</a>&#8216; =&gt; &#8216;A name&#8217;)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">$this</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Mail\Message::getTo">
+<em class="property">public </em><code class="descclassname">OC\Mail\Message::</code><code class="descname">getTo</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Mail\Message::getTo" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Get the to address of this message.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Mail/Message.php#L160">lib/private/Mail/Message.php#160</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">array</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Mail\Message::setCc">
+<em class="property">public </em><code class="descclassname">OC\Mail\Message::</code><code class="descname">setCc</code><span class="sig-paren">(</span><em>$recipients</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Mail\Message::setCc" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Set the CC recipients of this message.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Mail/Message.php#L170">lib/private/Mail/Message.php#170</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$recipients</strong> (array)  Example: array(<a class="reference external" href="mailto:'recipient&#37;&#52;&#48;domain&#46;org">'recipient<span>&#64;</span>domain<span>&#46;</span>org</a>&#8216;, <a class="reference external" href="mailto:'other&#37;&#52;&#48;domain&#46;org">'other<span>&#64;</span>domain<span>&#46;</span>org</a>&#8216; =&gt; &#8216;A name&#8217;)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">$this</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Mail\Message::getCc">
+<em class="property">public </em><code class="descclassname">OC\Mail\Message::</code><code class="descname">getCc</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Mail\Message::getCc" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Get the cc address of this message.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Mail/Message.php#L182">lib/private/Mail/Message.php#182</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">array</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Mail\Message::setBcc">
+<em class="property">public </em><code class="descclassname">OC\Mail\Message::</code><code class="descname">setBcc</code><span class="sig-paren">(</span><em>$recipients</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Mail\Message::setBcc" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Set the BCC recipients of this message.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Mail/Message.php#L192">lib/private/Mail/Message.php#192</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$recipients</strong> (array)  Example: array(<a class="reference external" href="mailto:'recipient&#37;&#52;&#48;domain&#46;org">'recipient<span>&#64;</span>domain<span>&#46;</span>org</a>&#8216;, <a class="reference external" href="mailto:'other&#37;&#52;&#48;domain&#46;org">'other<span>&#64;</span>domain<span>&#46;</span>org</a>&#8216; =&gt; &#8216;A name&#8217;)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">$this</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Mail\Message::getBcc">
+<em class="property">public </em><code class="descclassname">OC\Mail\Message::</code><code class="descname">getBcc</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Mail\Message::getBcc" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Get the Bcc address of this message.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Mail/Message.php#L204">lib/private/Mail/Message.php#204</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">array</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Mail\Message::setSubject">
+<em class="property">public </em><code class="descclassname">OC\Mail\Message::</code><code class="descname">setSubject</code><span class="sig-paren">(</span><em>$subject</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Mail\Message::setSubject" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Set the subject of this message.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Mail/Message.php#L214">lib/private/Mail/Message.php#214</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$subject</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last"><a class="reference internal" href="../../OCP/Mail/IMessage.html#OCP\Mail\IMessage" title="OCP\Mail\IMessage"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Mail\IMessage</span></code></a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Mail\Message::getSubject">
+<em class="property">public </em><code class="descclassname">OC\Mail\Message::</code><code class="descname">getSubject</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Mail\Message::getSubject" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Get the from subject of this message.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Mail/Message.php#L224">lib/private/Mail/Message.php#224</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">string</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Mail\Message::setPlainBody">
+<em class="property">public </em><code class="descclassname">OC\Mail\Message::</code><code class="descname">setPlainBody</code><span class="sig-paren">(</span><em>$body</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Mail\Message::setPlainBody" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Set the plain-text body of this message.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Mail/Message.php#L234">lib/private/Mail/Message.php#234</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$body</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">$this</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Mail\Message::getPlainBody">
+<em class="property">public </em><code class="descclassname">OC\Mail\Message::</code><code class="descname">getPlainBody</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Mail\Message::getPlainBody" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Get the plain body of this message.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Mail/Message.php#L244">lib/private/Mail/Message.php#244</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">string</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Mail\Message::setHtmlBody">
+<em class="property">public </em><code class="descclassname">OC\Mail\Message::</code><code class="descname">setHtmlBody</code><span class="sig-paren">(</span><em>$body</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Mail\Message::setHtmlBody" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Set the HTML body of this message. Consider also sending a plain-text body instead of only an HTML one.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Mail/Message.php#L254">lib/private/Mail/Message.php#254</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$body</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">$this</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Mail\Message::setSwiftMessage">
+<em class="property">public </em><code class="descclassname">OC\Mail\Message::</code><code class="descname">setSwiftMessage</code><span class="sig-paren">(</span><em>$swiftMessage</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Mail\Message::setSwiftMessage" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Get&#8217;s the underlying SwiftMessage</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Mail/Message.php#L265">lib/private/Mail/Message.php#265</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>$swiftMessage</strong> (<code class="xref any docutils literal"><span class="pre">Swift_Message</span></code>)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Mail\Message::getSwiftMessage">
+<em class="property">public </em><code class="descclassname">OC\Mail\Message::</code><code class="descname">getSwiftMessage</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Mail\Message::getSwiftMessage" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Get&#8217;s the underlying SwiftMessage</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Mail/Message.php#L273">lib/private/Mail/Message.php#273</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><code class="xref any docutils literal"><span class="pre">\Swift_Message</span></code></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Mail\Message::setBody">
+<em class="property">public </em><code class="descclassname">OC\Mail\Message::</code><code class="descname">setBody</code><span class="sig-paren">(</span><em>$body</em>, <em>$contentType</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Mail\Message::setBody" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Mail/Message.php#L282">lib/private/Mail/Message.php#282</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$body</strong> (string)</li>
+<li><strong>$contentType</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">$this</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Mail\Message::useTemplate">
+<em class="property">public </em><code class="descclassname">OC\Mail\Message::</code><code class="descname">useTemplate</code><span class="sig-paren">(</span><em>$emailTemplate</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Mail\Message::useTemplate" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Mail/Message.php#L293">lib/private/Mail/Message.php#293</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$emailTemplate</strong> (<a class="reference internal" href="../../OCP/Mail/IEMailTemplate.html#OCP\Mail\IEMailTemplate" title="OCP\Mail\IEMailTemplate"><code class="xref any php php-trait docutils literal"><span class="pre">OCP\Mail\IEMailTemplate</span></code></a>)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">$this</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="Mailer.html" class="btn btn-neutral float-right" title="Mailer" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="index.html" class="btn btn-neutral float-left" title="Mail" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021 Nextcloud GmbH.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: 13
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/13/developer_manual">13</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/14/developer_manual">14</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/15/developer_manual">15</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/developer_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/developer_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+   
+
+</body>
+</html>

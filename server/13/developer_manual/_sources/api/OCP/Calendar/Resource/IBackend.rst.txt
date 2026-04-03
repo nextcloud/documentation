@@ -1,0 +1,106 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IBackend
+========
+
+
+.. php:namespace:: OCP\Calendar\Resource
+
+.. php:interface:: IBackend
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Interface IBackend
+		
+	
+	:Source:
+		`lib/public/Calendar/Resource/IBackend.php#34 <https://github.com/nextcloud/server/blob/stable13/lib/public/Calendar/Resource/IBackend.php#L34>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public getAllResources()
+	
+		.. rst-class:: phpdoc-description
+		
+			| get a list of all resources in this backend
+			
+		
+		:Source:
+			`lib/public/Calendar/Resource/IBackend.php#43 <https://github.com/nextcloud/server/blob/stable13/lib/public/Calendar/Resource/IBackend.php#L43>`_
+		
+		
+		:Throws: :any:`\\OCP\\Calendar\\BackendTemporarilyUnavailableException <OCP\\Calendar\\BackendTemporarilyUnavailableException>` 
+		:Returns: :any:`\\OCP\\Calendar\\Resource\\IResource\[\] <OCP\\Calendar\\Resource\\IResource>` 
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public listAllResources()
+	
+		.. rst-class:: phpdoc-description
+		
+			| get a list of all resource identifiers in this backend
+			
+		
+		:Source:
+			`lib/public/Calendar/Resource/IBackend.php#52 <https://github.com/nextcloud/server/blob/stable13/lib/public/Calendar/Resource/IBackend.php#L52>`_
+		
+		
+		:Throws: :any:`\\OCP\\Calendar\\BackendTemporarilyUnavailableException <OCP\\Calendar\\BackendTemporarilyUnavailableException>` 
+		:Returns: string[] 
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getResource( $id)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get a resource by it\'s id
+			
+		
+		:Source:
+			`lib/public/Calendar/Resource/IBackend.php#62 <https://github.com/nextcloud/server/blob/stable13/lib/public/Calendar/Resource/IBackend.php#L62>`_
+		
+		
+		:Parameters:
+			* **$id** (string)  
+
+		
+		:Throws: :any:`\\OCP\\Calendar\\BackendTemporarilyUnavailableException <OCP\\Calendar\\BackendTemporarilyUnavailableException>` 
+		:Returns: :any:`\\OCP\\Calendar\\Resource\\IResource <OCP\\Calendar\\Resource\\IResource>` | null 
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getBackendIdentifier()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get unique identifier of the backend
+			
+		
+		:Source:
+			`lib/public/Calendar/Resource/IBackend.php#70 <https://github.com/nextcloud/server/blob/stable13/lib/public/Calendar/Resource/IBackend.php#L70>`_
+		
+		
+		:Returns: string 
+		:Since: 14.0.0 
+	
+	
+

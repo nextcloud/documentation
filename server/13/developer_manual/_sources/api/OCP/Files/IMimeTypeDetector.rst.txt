@@ -1,0 +1,163 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IMimeTypeDetector
+=================
+
+
+.. php:namespace:: OCP\Files
+
+.. php:interface:: IMimeTypeDetector
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Interface IMimeTypeDetector
+		
+	
+	:Implemented by:
+		:php:class:`OC\\Files\\Type\\Detection` 
+	
+	
+	:Source:
+		`lib/public/Files/IMimeTypeDetector.php#35 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/IMimeTypeDetector.php#L35>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public detectPath( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| detect mimetype only based on filename, content of file is not used
+			
+		
+		:Source:
+			`lib/public/Files/IMimeTypeDetector.php#43 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/IMimeTypeDetector.php#L43>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: string 
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public detectContent( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| detect mimetype only based on the content of file
+			
+		
+		:Source:
+			`lib/public/Files/IMimeTypeDetector.php#51 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/IMimeTypeDetector.php#L51>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: string 
+		:Since: 18.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public detect( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| detect mimetype based on both filename and content
+			
+		
+		:Source:
+			`lib/public/Files/IMimeTypeDetector.php#60 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/IMimeTypeDetector.php#L60>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: string 
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getSecureMimeType( $mimeType)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get a secure mimetype that won\'t expose potential XSS\.
+			
+		
+		:Source:
+			`lib/public/Files/IMimeTypeDetector.php#69 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/IMimeTypeDetector.php#L69>`_
+		
+		
+		:Parameters:
+			* **$mimeType** (string)  
+
+		
+		:Returns: string 
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public detectString( $data)
+	
+		.. rst-class:: phpdoc-description
+		
+			| detect mimetype based on the content of a string
+			
+		
+		:Source:
+			`lib/public/Files/IMimeTypeDetector.php#78 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/IMimeTypeDetector.php#L78>`_
+		
+		
+		:Parameters:
+			* **$data** (string)  
+
+		
+		:Returns: string 
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public mimeTypeIcon( $mimeType)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get path to the icon of a file type
+			
+		
+		:Source:
+			`lib/public/Files/IMimeTypeDetector.php#86 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/IMimeTypeDetector.php#L86>`_
+		
+		
+		:Parameters:
+			* **$mimeType** (string)  the MIME type
+
+		
+		:Returns: string the url
+		:Since: 8.2.0 
+	
+	
+

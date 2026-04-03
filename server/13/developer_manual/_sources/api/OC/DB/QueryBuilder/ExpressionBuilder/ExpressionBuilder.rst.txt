@@ -1,0 +1,645 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+ExpressionBuilder
+=================
+
+
+.. php:namespace:: OC\DB\QueryBuilder\ExpressionBuilder
+
+.. php:class:: ExpressionBuilder
+
+
+	:Source:
+		`lib/private/DB/QueryBuilder/ExpressionBuilder/ExpressionBuilder.php#44 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/QueryBuilder/ExpressionBuilder/ExpressionBuilder.php#L44>`_
+	
+	:Implements:
+		:php:interface:`OCP\\DB\\QueryBuilder\\IExpressionBuilder` 
+	
+
+Properties
+----------
+
+.. php:attr:: protected static expressionBuilder
+
+	:Source:
+		`lib/private/DB/QueryBuilder/ExpressionBuilder/ExpressionBuilder.php#46 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/QueryBuilder/ExpressionBuilder/ExpressionBuilder.php#L46>`_
+	
+	:Type: :any:`\\Doctrine\\DBAL\\Query\\Expression\\ExpressionBuilder <Doctrine\\DBAL\\Query\\Expression\\ExpressionBuilder>` 
+
+
+.. php:attr:: protected static helper
+
+	:Source:
+		`lib/private/DB/QueryBuilder/ExpressionBuilder/ExpressionBuilder.php#49 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/QueryBuilder/ExpressionBuilder/ExpressionBuilder.php#L49>`_
+	
+	:Type: :any:`\\OC\\DB\\QueryBuilder\\QuoteHelper <OC\\DB\\QueryBuilder\\QuoteHelper>` 
+
+
+.. php:attr:: protected static connection
+
+	:Source:
+		`lib/private/DB/QueryBuilder/ExpressionBuilder/ExpressionBuilder.php#52 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/QueryBuilder/ExpressionBuilder/ExpressionBuilder.php#L52>`_
+	
+	:Type: :any:`\\OCP\\IDBConnection <OCP\\IDBConnection>` 
+
+
+.. php:attr:: protected static functionBuilder
+
+	:Source:
+		`lib/private/DB/QueryBuilder/ExpressionBuilder/ExpressionBuilder.php#55 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/QueryBuilder/ExpressionBuilder/ExpressionBuilder.php#L55>`_
+	
+	:Type: :any:`\\OC\\DB\\QueryBuilder\\FunctionBuilder\\FunctionBuilder <OC\\DB\\QueryBuilder\\FunctionBuilder\\FunctionBuilder>` 
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $connection, $queryBuilder)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Initializes a new <tt\>ExpressionBuilder</tt\>\.
+			
+		
+		:Source:
+			`lib/private/DB/QueryBuilder/ExpressionBuilder/ExpressionBuilder.php#63 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/QueryBuilder/ExpressionBuilder/ExpressionBuilder.php#L63>`_
+		
+		
+		:Parameters:
+			* **$connection** (:any:`OC\\DB\\ConnectionAdapter <OC\\DB\\ConnectionAdapter>`)  
+			* **$queryBuilder** (:any:`OCP\\DB\\QueryBuilder\\IQueryBuilder <OCP\\DB\\QueryBuilder\\IQueryBuilder>`)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public andX( ...$x)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Creates a conjunction of the given boolean expressions\.
+			
+			| Example:
+			| 
+			| \[php\]
+			| // \(u\.type = ?\) AND \(u\.role = ?\)
+			| $expr\-\>andX\(\'u\.type = ?\', \'u\.role = ?\'\)\);
+			
+		
+		:Source:
+			`lib/private/DB/QueryBuilder/ExpressionBuilder/ExpressionBuilder.php#84 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/QueryBuilder/ExpressionBuilder/ExpressionBuilder.php#L84>`_
+		
+		
+		:Parameters:
+			* **$x** (mixed)  Optional clause. Defaults = null, but requires
+			at least one defined when converting to string.
+
+		
+		:Returns: :any:`\\OCP\\DB\\QueryBuilder\\ICompositeExpression <OCP\\DB\\QueryBuilder\\ICompositeExpression>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public orX( ...$x)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Creates a disjunction of the given boolean expressions\.
+			
+			| Example:
+			| 
+			| \[php\]
+			| // \(u\.type = ?\) OR \(u\.role = ?\)
+			| $qb\-\>where\($qb\-\>expr\(\)\-\>orX\(\'u\.type = ?\', \'u\.role = ?\'\)\);
+			
+		
+		:Source:
+			`lib/private/DB/QueryBuilder/ExpressionBuilder/ExpressionBuilder.php#103 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/QueryBuilder/ExpressionBuilder/ExpressionBuilder.php#L103>`_
+		
+		
+		:Parameters:
+			* **$x** (mixed)  Optional clause. Defaults = null, but requires
+			at least one defined when converting to string.
+
+		
+		:Returns: :any:`\\OCP\\DB\\QueryBuilder\\ICompositeExpression <OCP\\DB\\QueryBuilder\\ICompositeExpression>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public comparison( $x, $operator, $y, $type=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Creates a comparison expression\.
+			
+		
+		:Source:
+			`lib/private/DB/QueryBuilder/ExpressionBuilder/ExpressionBuilder.php#119 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/QueryBuilder/ExpressionBuilder/ExpressionBuilder.php#L119>`_
+		
+		
+		:Parameters:
+			* **$x** (mixed)  The left expression.
+			* **$operator** (string)  One of the IExpressionBuilder::* constants.
+			* **$y** (mixed)  The right expression.
+			* **$type** (mixed | null)  one of the IQueryBuilder::PARAM_* constants
+			required when comparing text fields for oci compatibility
+
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public eq( $x, $y, $type=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Creates an equality comparison expression with the given arguments\.
+			
+			| First argument is considered the left expression and the second is the right expression\.
+			| When converted to string, it will generated a <left expr\> = <right expr\>\. Example:
+			| 
+			|     \[php\]
+			|     // u\.id = ?
+			|     $expr\-\>eq\(\'u\.id\', \'?\'\);
+			
+		
+		:Source:
+			`lib/private/DB/QueryBuilder/ExpressionBuilder/ExpressionBuilder.php#142 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/QueryBuilder/ExpressionBuilder/ExpressionBuilder.php#L142>`_
+		
+		
+		:Parameters:
+			* **$x** (mixed)  The left expression.
+			* **$y** (mixed)  The right expression.
+			* **$type** (mixed | null)  one of the IQueryBuilder::PARAM_* constants
+			required when comparing text fields for oci compatibility
+
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public neq( $x, $y, $type=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Creates a non equality comparison expression with the given arguments\.
+			
+			| First argument is considered the left expression and the second is the right expression\.
+			| When converted to string, it will generated a <left expr\> <\> <right expr\>\. Example:
+			| 
+			|     \[php\]
+			|     // u\.id <\> 1
+			|     $q\-\>where\($q\-\>expr\(\)\-\>neq\(\'u\.id\', \'1\'\)\);
+			
+		
+		:Source:
+			`lib/private/DB/QueryBuilder/ExpressionBuilder/ExpressionBuilder.php#164 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/QueryBuilder/ExpressionBuilder/ExpressionBuilder.php#L164>`_
+		
+		
+		:Parameters:
+			* **$x** (mixed)  The left expression.
+			* **$y** (mixed)  The right expression.
+			* **$type** (mixed | null)  one of the IQueryBuilder::PARAM_* constants
+			required when comparing text fields for oci compatibility
+
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public lt( $x, $y, $type=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Creates a lower\-than comparison expression with the given arguments\.
+			
+			| First argument is considered the left expression and the second is the right expression\.
+			| When converted to string, it will generated a <left expr\> < <right expr\>\. Example:
+			| 
+			|     \[php\]
+			|     // u\.id < ?
+			|     $q\-\>where\($q\-\>expr\(\)\-\>lt\(\'u\.id\', \'?\'\)\);
+			
+		
+		:Source:
+			`lib/private/DB/QueryBuilder/ExpressionBuilder/ExpressionBuilder.php#186 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/QueryBuilder/ExpressionBuilder/ExpressionBuilder.php#L186>`_
+		
+		
+		:Parameters:
+			* **$x** (mixed)  The left expression.
+			* **$y** (mixed)  The right expression.
+			* **$type** (mixed | null)  one of the IQueryBuilder::PARAM_* constants
+			required when comparing text fields for oci compatibility
+
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public lte( $x, $y, $type=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Creates a lower\-than\-equal comparison expression with the given arguments\.
+			
+			| First argument is considered the left expression and the second is the right expression\.
+			| When converted to string, it will generated a <left expr\> <= <right expr\>\. Example:
+			| 
+			|     \[php\]
+			|     // u\.id <= ?
+			|     $q\-\>where\($q\-\>expr\(\)\-\>lte\(\'u\.id\', \'?\'\)\);
+			
+		
+		:Source:
+			`lib/private/DB/QueryBuilder/ExpressionBuilder/ExpressionBuilder.php#208 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/QueryBuilder/ExpressionBuilder/ExpressionBuilder.php#L208>`_
+		
+		
+		:Parameters:
+			* **$x** (mixed)  The left expression.
+			* **$y** (mixed)  The right expression.
+			* **$type** (mixed | null)  one of the IQueryBuilder::PARAM_* constants
+			required when comparing text fields for oci compatibility
+
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public gt( $x, $y, $type=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Creates a greater\-than comparison expression with the given arguments\.
+			
+			| First argument is considered the left expression and the second is the right expression\.
+			| When converted to string, it will generated a <left expr\> \> <right expr\>\. Example:
+			| 
+			|     \[php\]
+			|     // u\.id \> ?
+			|     $q\-\>where\($q\-\>expr\(\)\-\>gt\(\'u\.id\', \'?\'\)\);
+			
+		
+		:Source:
+			`lib/private/DB/QueryBuilder/ExpressionBuilder/ExpressionBuilder.php#230 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/QueryBuilder/ExpressionBuilder/ExpressionBuilder.php#L230>`_
+		
+		
+		:Parameters:
+			* **$x** (mixed)  The left expression.
+			* **$y** (mixed)  The right expression.
+			* **$type** (mixed | null)  one of the IQueryBuilder::PARAM_* constants
+			required when comparing text fields for oci compatibility
+
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public gte( $x, $y, $type=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Creates a greater\-than\-equal comparison expression with the given arguments\.
+			
+			| First argument is considered the left expression and the second is the right expression\.
+			| When converted to string, it will generated a <left expr\> \>= <right expr\>\. Example:
+			| 
+			|     \[php\]
+			|     // u\.id \>= ?
+			|     $q\-\>where\($q\-\>expr\(\)\-\>gte\(\'u\.id\', \'?\'\)\);
+			
+		
+		:Source:
+			`lib/private/DB/QueryBuilder/ExpressionBuilder/ExpressionBuilder.php#252 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/QueryBuilder/ExpressionBuilder/ExpressionBuilder.php#L252>`_
+		
+		
+		:Parameters:
+			* **$x** (mixed)  The left expression.
+			* **$y** (mixed)  The right expression.
+			* **$type** (mixed | null)  one of the IQueryBuilder::PARAM_* constants
+			required when comparing text fields for oci compatibility
+
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isNull( $x)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Creates an IS NULL expression with the given arguments\.
+			
+		
+		:Source:
+			`lib/private/DB/QueryBuilder/ExpressionBuilder/ExpressionBuilder.php#265 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/QueryBuilder/ExpressionBuilder/ExpressionBuilder.php#L265>`_
+		
+		
+		:Parameters:
+			* **$x** (string | :any:`\\OCP\\DB\\QueryBuilder\\ILiteral <OCP\\DB\\QueryBuilder\\ILiteral>` | :any:`\\OCP\\DB\\QueryBuilder\\IParameter <OCP\\DB\\QueryBuilder\\IParameter>` | :any:`\\OCP\\DB\\QueryBuilder\\IQueryFunction <OCP\\DB\\QueryBuilder\\IQueryFunction>`)  The field in string format to be restricted by IS NULL.
+
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isNotNull( $x)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Creates an IS NOT NULL expression with the given arguments\.
+			
+		
+		:Source:
+			`lib/private/DB/QueryBuilder/ExpressionBuilder/ExpressionBuilder.php#277 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/QueryBuilder/ExpressionBuilder/ExpressionBuilder.php#L277>`_
+		
+		
+		:Parameters:
+			* **$x** (string | :any:`\\OCP\\DB\\QueryBuilder\\ILiteral <OCP\\DB\\QueryBuilder\\ILiteral>` | :any:`\\OCP\\DB\\QueryBuilder\\IParameter <OCP\\DB\\QueryBuilder\\IParameter>` | :any:`\\OCP\\DB\\QueryBuilder\\IQueryFunction <OCP\\DB\\QueryBuilder\\IQueryFunction>`)  The field in string format to be restricted by IS NOT NULL.
+
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public like( $x, $y, $type=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Creates a LIKE\(\) comparison expression with the given arguments\.
+			
+		
+		:Source:
+			`lib/private/DB/QueryBuilder/ExpressionBuilder/ExpressionBuilder.php#292 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/QueryBuilder/ExpressionBuilder/ExpressionBuilder.php#L292>`_
+		
+		
+		:Parameters:
+			* **$x** (:any:`OCP\\DB\\QueryBuilder\\ILiteral <OCP\\DB\\QueryBuilder\\ILiteral>` | :any:`\\OCP\\DB\\QueryBuilder\\IParameter <OCP\\DB\\QueryBuilder\\IParameter>` | :any:`\\OCP\\DB\\QueryBuilder\\IQueryFunction <OCP\\DB\\QueryBuilder\\IQueryFunction>` | string)  Field in string format to be inspected by LIKE() comparison.
+			* **$y** (mixed)  Argument to be used in LIKE() comparison.
+			* **$type** (mixed | null)  one of the IQueryBuilder::PARAM_* constants
+			required when comparing text fields for oci compatibility
+
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public iLike( $x, $y, $type=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Creates a ILIKE\(\) comparison expression with the given arguments\.
+			
+		
+		:Source:
+			`lib/private/DB/QueryBuilder/ExpressionBuilder/ExpressionBuilder.php#309 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/QueryBuilder/ExpressionBuilder/ExpressionBuilder.php#L309>`_
+		
+		
+		:Parameters:
+			* **$x** (string)  Field in string format to be inspected by ILIKE() comparison.
+			* **$y** (mixed)  Argument to be used in ILIKE() comparison.
+			* **$type** (mixed | null)  one of the IQueryBuilder::PARAM_* constants
+			required when comparing text fields for oci compatibility
+
+		
+		:Returns: string 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public notLike( $x, $y, $type=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Creates a NOT LIKE\(\) comparison expression with the given arguments\.
+			
+		
+		:Source:
+			`lib/private/DB/QueryBuilder/ExpressionBuilder/ExpressionBuilder.php#323 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/QueryBuilder/ExpressionBuilder/ExpressionBuilder.php#L323>`_
+		
+		
+		:Parameters:
+			* **$x** (:any:`OCP\\DB\\QueryBuilder\\ILiteral <OCP\\DB\\QueryBuilder\\ILiteral>` | :any:`\\OCP\\DB\\QueryBuilder\\IParameter <OCP\\DB\\QueryBuilder\\IParameter>` | :any:`\\OCP\\DB\\QueryBuilder\\IQueryFunction <OCP\\DB\\QueryBuilder\\IQueryFunction>` | string)  Field in string format to be inspected by NOT LIKE() comparison.
+			* **$y** (mixed)  Argument to be used in NOT LIKE() comparison.
+			* **$type** (mixed | null)  one of the IQueryBuilder::PARAM_* constants
+			required when comparing text fields for oci compatibility
+
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public in( $x, $y, $type=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Creates a IN \(\) comparison expression with the given arguments\.
+			
+		
+		:Source:
+			`lib/private/DB/QueryBuilder/ExpressionBuilder/ExpressionBuilder.php#339 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/QueryBuilder/ExpressionBuilder/ExpressionBuilder.php#L339>`_
+		
+		
+		:Parameters:
+			* **$x** (:any:`OCP\\DB\\QueryBuilder\\ILiteral <OCP\\DB\\QueryBuilder\\ILiteral>` | :any:`\\OCP\\DB\\QueryBuilder\\IParameter <OCP\\DB\\QueryBuilder\\IParameter>` | :any:`\\OCP\\DB\\QueryBuilder\\IQueryFunction <OCP\\DB\\QueryBuilder\\IQueryFunction>` | string)  The field in string format to be inspected by IN() comparison.
+			* **$y** (:any:`OCP\\DB\\QueryBuilder\\ILiteral <OCP\\DB\\QueryBuilder\\ILiteral>` | :any:`\\OCP\\DB\\QueryBuilder\\IParameter <OCP\\DB\\QueryBuilder\\IParameter>` | :any:`\\OCP\\DB\\QueryBuilder\\IQueryFunction <OCP\\DB\\QueryBuilder\\IQueryFunction>` | string | array)  The placeholder or the array of values to be used by IN() comparison.
+			* **$type** (mixed | null)  one of the IQueryBuilder::PARAM_* constants
+			required when comparing text fields for oci compatibility
+
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public notIn( $x, $y, $type=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Creates a NOT IN \(\) comparison expression with the given arguments\.
+			
+		
+		:Source:
+			`lib/private/DB/QueryBuilder/ExpressionBuilder/ExpressionBuilder.php#355 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/QueryBuilder/ExpressionBuilder/ExpressionBuilder.php#L355>`_
+		
+		
+		:Parameters:
+			* **$x** (:any:`OCP\\DB\\QueryBuilder\\ILiteral <OCP\\DB\\QueryBuilder\\ILiteral>` | :any:`\\OCP\\DB\\QueryBuilder\\IParameter <OCP\\DB\\QueryBuilder\\IParameter>` | :any:`\\OCP\\DB\\QueryBuilder\\IQueryFunction <OCP\\DB\\QueryBuilder\\IQueryFunction>` | string)  The field in string format to be inspected by NOT IN() comparison.
+			* **$y** (:any:`OCP\\DB\\QueryBuilder\\ILiteral <OCP\\DB\\QueryBuilder\\ILiteral>` | :any:`\\OCP\\DB\\QueryBuilder\\IParameter <OCP\\DB\\QueryBuilder\\IParameter>` | :any:`\\OCP\\DB\\QueryBuilder\\IQueryFunction <OCP\\DB\\QueryBuilder\\IQueryFunction>` | string | array)  The placeholder or the array of values to be used by NOT IN() comparison.
+			* **$type** (mixed | null)  one of the IQueryBuilder::PARAM_* constants
+			required when comparing text fields for oci compatibility
+
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public emptyString( $x)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Creates a $x = \'\' statement, because Oracle needs a different check
+			
+		
+		:Source:
+			`lib/private/DB/QueryBuilder/ExpressionBuilder/ExpressionBuilder.php#368 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/QueryBuilder/ExpressionBuilder/ExpressionBuilder.php#L368>`_
+		
+		
+		:Parameters:
+			* **$x** (string | :any:`\\OCP\\DB\\QueryBuilder\\ILiteral <OCP\\DB\\QueryBuilder\\ILiteral>` | :any:`\\OCP\\DB\\QueryBuilder\\IParameter <OCP\\DB\\QueryBuilder\\IParameter>` | :any:`\\OCP\\DB\\QueryBuilder\\IQueryFunction <OCP\\DB\\QueryBuilder\\IQueryFunction>`)  The field in string format to be inspected by the comparison.
+
+		
+		:Returns: string 
+		:Since: 13.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public nonEmptyString( $x)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Creates a \`$x <\> \'\'\` statement, because Oracle needs a different check
+			
+		
+		:Source:
+			`lib/private/DB/QueryBuilder/ExpressionBuilder/ExpressionBuilder.php#379 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/QueryBuilder/ExpressionBuilder/ExpressionBuilder.php#L379>`_
+		
+		
+		:Parameters:
+			* **$x** (string | :any:`\\OCP\\DB\\QueryBuilder\\ILiteral <OCP\\DB\\QueryBuilder\\ILiteral>` | :any:`\\OCP\\DB\\QueryBuilder\\IParameter <OCP\\DB\\QueryBuilder\\IParameter>` | :any:`\\OCP\\DB\\QueryBuilder\\IQueryFunction <OCP\\DB\\QueryBuilder\\IQueryFunction>`)  The field in string format to be inspected by the comparison.
+
+		
+		:Returns: string 
+		:Since: 13.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public bitwiseAnd( $x, $y)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Binary AND Operator copies a bit to the result if it exists in both operands\.
+			
+		
+		:Source:
+			`lib/private/DB/QueryBuilder/ExpressionBuilder/ExpressionBuilder.php#391 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/QueryBuilder/ExpressionBuilder/ExpressionBuilder.php#L391>`_
+		
+		
+		:Parameters:
+			* **$x** (string | :any:`\\OCP\\DB\\QueryBuilder\\ILiteral <OCP\\DB\\QueryBuilder\\ILiteral>`)  The field or value to check
+			* **$y** (int)  Bitmap that must be set
+
+		
+		:Returns: :any:`\\OCP\\DB\\QueryBuilder\\IQueryFunction <OCP\\DB\\QueryBuilder\\IQueryFunction>` 
+		:Since: 12.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public bitwiseOr( $x, $y)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Binary OR Operator copies a bit if it exists in either operand\.
+			
+		
+		:Source:
+			`lib/private/DB/QueryBuilder/ExpressionBuilder/ExpressionBuilder.php#406 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/QueryBuilder/ExpressionBuilder/ExpressionBuilder.php#L406>`_
+		
+		
+		:Parameters:
+			* **$x** (string | :any:`\\OCP\\DB\\QueryBuilder\\ILiteral <OCP\\DB\\QueryBuilder\\ILiteral>`)  The field or value to check
+			* **$y** (int)  Bitmap that must be set
+
+		
+		:Returns: :any:`\\OCP\\DB\\QueryBuilder\\IQueryFunction <OCP\\DB\\QueryBuilder\\IQueryFunction>` 
+		:Since: 12.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public literal( $input, $type=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Quotes a given input parameter\.
+			
+		
+		:Source:
+			`lib/private/DB/QueryBuilder/ExpressionBuilder/ExpressionBuilder.php#421 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/QueryBuilder/ExpressionBuilder/ExpressionBuilder.php#L421>`_
+		
+		
+		:Parameters:
+			* **$input** (mixed)  The parameter to be quoted.
+			* **$type** (mixed | null)  One of the IQueryBuilder::PARAM_* constants
+
+		
+		:Returns: :any:`\\OCP\\DB\\QueryBuilder\\ILiteral <OCP\\DB\\QueryBuilder\\ILiteral>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public castColumn( $column, $type)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns a IQueryFunction that casts the column to the given type
+			
+		
+		:Source:
+			`lib/private/DB/QueryBuilder/ExpressionBuilder/ExpressionBuilder.php#432 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/QueryBuilder/ExpressionBuilder/ExpressionBuilder.php#L432>`_
+		
+		
+		:Parameters:
+			* **$column** (string)  
+			* **$type** (mixed)  One of IQueryBuilder::PARAM_*
+
+		
+		:Returns: :any:`\\OCP\\DB\\QueryBuilder\\IQueryFunction <OCP\\DB\\QueryBuilder\\IQueryFunction>` 
+	
+	
+

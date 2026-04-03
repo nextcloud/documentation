@@ -1,0 +1,444 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+DefaultShareProvider
+====================
+
+
+.. php:namespace:: OC\Share20
+
+.. php:class:: DefaultShareProvider
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Class DefaultShareProvider
+		
+	
+	:Source:
+		`lib/private/Share20/DefaultShareProvider.php#64 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share20/DefaultShareProvider.php#L64>`_
+	
+	:Implements:
+		:php:interface:`OCP\\Share\\IShareProvider` 
+	
+
+Constants
+---------
+
+.. php:const:: SHARE_TYPE_USERGROUP = 2
+
+	:Source:
+		`lib/private/Share20/DefaultShareProvider.php#67 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share20/DefaultShareProvider.php#L67>`_
+	
+
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $connection, $userManager, $groupManager, $rootFolder, $mailer, $defaults, $l10nFactory, $urlGenerator, $config)
+	
+		:Source:
+			`lib/private/Share20/DefaultShareProvider.php#96 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share20/DefaultShareProvider.php#L96>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public identifier()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Return the identifier of this provider\.
+			
+		
+		:Source:
+			`lib/private/Share20/DefaultShareProvider.php#122 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share20/DefaultShareProvider.php#L122>`_
+		
+		
+		:Returns: string Containing only \[a\-zA\-Z0\-9\]
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public create( $share)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Share a path
+			
+		
+		:Source:
+			`lib/private/Share20/DefaultShareProvider.php#134 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share20/DefaultShareProvider.php#L134>`_
+		
+		
+		:Parameters:
+			* **$share** (:any:`OCP\\Share\\IShare <OCP\\Share\\IShare>`)  
+
+		
+		:Returns: :any:`\\OCP\\Share\\IShare <OCP\\Share\\IShare>` The share object
+		:Throws: :any:`\\OCP\\Share\\Exceptions\\ShareNotFound <OCP\\Share\\Exceptions\\ShareNotFound>` 
+		:Throws: :any:`\\Exception <Exception>` 
+		:Throws: :any:`\\OCP\\Share\\Exceptions\\ShareNotFound <OCP\\Share\\Exceptions\\ShareNotFound>` 
+		:Throws: :any:`\\Exception <Exception>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public update( $share)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Update a share
+			
+		
+		:Source:
+			`lib/private/Share20/DefaultShareProvider.php#245 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share20/DefaultShareProvider.php#L245>`_
+		
+		
+		:Parameters:
+			* **$share** (:any:`OCP\\Share\\IShare <OCP\\Share\\IShare>`)  
+
+		
+		:Returns: :any:`\\OCP\\Share\\IShare <OCP\\Share\\IShare>` The share object
+		:Throws: :any:`\\OCP\\Share\\Exceptions\\ShareNotFound <OCP\\Share\\Exceptions\\ShareNotFound>` 
+		:Throws: :any:`\\OCP\\Files\\InvalidPathException <OCP\\Files\\InvalidPathException>` 
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+		:Throws: :any:`\\OCP\\Share\\Exceptions\\ShareNotFound <OCP\\Share\\Exceptions\\ShareNotFound>` 
+		:Throws: :any:`\\OCP\\Files\\InvalidPathException <OCP\\Files\\InvalidPathException>` 
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+		:Throws: :any:`\\OCP\\Share\\Exceptions\\ShareNotFound <OCP\\Share\\Exceptions\\ShareNotFound>` 
+		:Throws: :any:`\\OCP\\Files\\InvalidPathException <OCP\\Files\\InvalidPathException>` 
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public acceptShare( $share, $recipient)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Accept a share\.
+			
+		
+		:Source:
+			`lib/private/Share20/DefaultShareProvider.php#337 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share20/DefaultShareProvider.php#L337>`_
+		
+		
+		:Parameters:
+			* **$share** (:any:`OCP\\Share\\IShare <OCP\\Share\\IShare>`)  
+			* **$recipient** (string)  
+
+		
+		:Returns: :any:`\\OCP\\Share\\IShare <OCP\\Share\\IShare>` The share object
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getChildren( $parent)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get all children of this share
+			| FIXME: remove once https://github\.com/owncloud/core/pull/21660 is in
+			
+		
+		:Source:
+			`lib/private/Share20/DefaultShareProvider.php#401 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share20/DefaultShareProvider.php#L401>`_
+		
+		
+		:Parameters:
+			* **$parent** (:any:`OCP\\Share\\IShare <OCP\\Share\\IShare>`)  
+
+		
+		:Returns: :any:`\\OCP\\Share\\IShare\[\] <OCP\\Share\\IShare>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public delete( $share)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Delete a share
+			
+		
+		:Source:
+			`lib/private/Share20/DefaultShareProvider.php#438 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share20/DefaultShareProvider.php#L438>`_
+		
+		
+		:Parameters:
+			* **$share** (:any:`OCP\\Share\\IShare <OCP\\Share\\IShare>`)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public deleteFromSelf( $share, $recipient)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Unshare a share from the recipient\. If this is a group share
+			| this means we need a special entry in the share db\.
+			
+		
+		:Source:
+			`lib/private/Share20/DefaultShareProvider.php#463 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share20/DefaultShareProvider.php#L463>`_
+		
+		
+		:Parameters:
+			* **$share** (:any:`OCP\\Share\\IShare <OCP\\Share\\IShare>`)  
+			* **$recipient** (string)  UserId of recipient
+
+		
+		:Throws: :any:`\\OC\\Share20\\Exception\\BackendError <OC\\Share20\\Exception\\BackendError>` 
+		:Throws: :any:`\\OC\\Share20\\Exception\\ProviderException <OC\\Share20\\Exception\\ProviderException>` 
+		:Throws: :any:`\\OC\\Share20\\Exception\\BackendError <OC\\Share20\\Exception\\BackendError>` 
+		:Throws: :any:`\\OC\\Share20\\Exception\\ProviderException <OC\\Share20\\Exception\\ProviderException>` 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected createUserSpecificGroupShare( $share, $recipient)
+	
+		:Source:
+			`lib/private/Share20/DefaultShareProvider.php#524 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share20/DefaultShareProvider.php#L524>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public restore( $share, $recipient)
+	
+		:Source:
+			`lib/private/Share20/DefaultShareProvider.php#552 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share20/DefaultShareProvider.php#L552>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public move( $share, $recipient)
+	
+		:Source:
+			`lib/private/Share20/DefaultShareProvider.php#584 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share20/DefaultShareProvider.php#L584>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getSharesInFolder( $userId, $node, $reshares)
+	
+		:Source:
+			`lib/private/Share20/DefaultShareProvider.php#641 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share20/DefaultShareProvider.php#L641>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getSharesBy( $userId, $shareType, $node, $reshares, $limit, $offset)
+	
+		:Source:
+			`lib/private/Share20/DefaultShareProvider.php#688 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share20/DefaultShareProvider.php#L688>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getShareById( $id, $recipientId=null)
+	
+		:Source:
+			`lib/private/Share20/DefaultShareProvider.php#739 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share20/DefaultShareProvider.php#L739>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getSharesByPath( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get shares for a given path
+			
+		
+		:Source:
+			`lib/private/Share20/DefaultShareProvider.php#788 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share20/DefaultShareProvider.php#L788>`_
+		
+		
+		:Parameters:
+			* **$path** (:any:`OCP\\Files\\Node <OCP\\Files\\Node>`)  
+
+		
+		:Returns: :any:`\\OCP\\Share\\IShare\[\] <OCP\\Share\\IShare>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getSharedWith( $userId, $shareType, $node, $limit, $offset)
+	
+		:Source:
+			`lib/private/Share20/DefaultShareProvider.php#838 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share20/DefaultShareProvider.php#L838>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getShareByToken( $token)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get a share by token
+			
+		
+		:Source:
+			`lib/private/Share20/DefaultShareProvider.php#973 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share20/DefaultShareProvider.php#L973>`_
+		
+		
+		:Parameters:
+			* **$token** (string)  
+
+		
+		:Returns: :any:`\\OCP\\Share\\IShare <OCP\\Share\\IShare>` 
+		:Throws: :any:`\\OCP\\Share\\Exceptions\\ShareNotFound <OCP\\Share\\Exceptions\\ShareNotFound>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public userDeleted( $uid, $shareType)
+	
+		.. rst-class:: phpdoc-description
+		
+			| A user is deleted from the system
+			| So clean up the relevant shares\.
+			
+		
+		:Source:
+			`lib/private/Share20/DefaultShareProvider.php#1127 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share20/DefaultShareProvider.php#L1127>`_
+		
+		
+		:Parameters:
+			* **$uid** (string)  
+			* **$shareType** (int)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public groupDeleted( $gid)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Delete all shares received by this group\. As well as any custom group
+			| shares for group members\.
+			
+		
+		:Source:
+			`lib/private/Share20/DefaultShareProvider.php#1194 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share20/DefaultShareProvider.php#L1194>`_
+		
+		
+		:Parameters:
+			* **$gid** (string)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public userDeletedFromGroup( $uid, $gid)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Delete custom group shares to this group for this user
+			
+		
+		:Source:
+			`lib/private/Share20/DefaultShareProvider.php#1237 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share20/DefaultShareProvider.php#L1237>`_
+		
+		
+		:Parameters:
+			* **$uid** (string)  
+			* **$gid** (string)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getAccessList( $nodes, $currentAccess)
+	
+		:Source:
+			`lib/private/Share20/DefaultShareProvider.php#1272 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share20/DefaultShareProvider.php#L1272>`_
+		
+		
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected filterSharesOfUser( $shares)
+	
+		.. rst-class:: phpdoc-description
+		
+			| For each user the path with the fewest slashes is returned
+			
+		
+		:Source:
+			`lib/private/Share20/DefaultShareProvider.php#1349 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share20/DefaultShareProvider.php#L1349>`_
+		
+		
+		:Parameters:
+			* **$shares** (array)  
+
+		
+		:Returns: array 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getAllShares()
+	
+		:Source:
+			`lib/private/Share20/DefaultShareProvider.php#1479 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share20/DefaultShareProvider.php#L1479>`_
+		
+		
+	
+	
+

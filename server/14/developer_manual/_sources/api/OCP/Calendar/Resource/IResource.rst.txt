@@ -1,0 +1,124 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IResource
+=========
+
+
+.. php:namespace:: OCP\Calendar\Resource
+
+.. php:interface:: IResource
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Interface IResource
+		
+	
+	:Source:
+		`lib/public/Calendar/Resource/IResource.php#31 <https://github.com/nextcloud/server/blob/stable13/lib/public/Calendar/Resource/IResource.php#L31>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public getId()
+	
+		.. rst-class:: phpdoc-description
+		
+			| get the resource id
+			
+			| This id has to be unique within the backend
+			
+		
+		:Source:
+			`lib/public/Calendar/Resource/IResource.php#41 <https://github.com/nextcloud/server/blob/stable13/lib/public/Calendar/Resource/IResource.php#L41>`_
+		
+		
+		:Returns: string 
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getDisplayName()
+	
+		.. rst-class:: phpdoc-description
+		
+			| get the display name for a resource
+			
+		
+		:Source:
+			`lib/public/Calendar/Resource/IResource.php#49 <https://github.com/nextcloud/server/blob/stable13/lib/public/Calendar/Resource/IResource.php#L49>`_
+		
+		
+		:Returns: string 
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getGroupRestrictions()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get a list of groupIds that are allowed to access this resource
+			
+			| If an empty array is returned, no group restrictions are
+			| applied\.
+			
+		
+		:Source:
+			`lib/public/Calendar/Resource/IResource.php#60 <https://github.com/nextcloud/server/blob/stable13/lib/public/Calendar/Resource/IResource.php#L60>`_
+		
+		
+		:Returns: string[] 
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getEMail()
+	
+		.. rst-class:: phpdoc-description
+		
+			| get email\-address for resource
+			
+			| The email address has to be globally unique
+			
+		
+		:Source:
+			`lib/public/Calendar/Resource/IResource.php#70 <https://github.com/nextcloud/server/blob/stable13/lib/public/Calendar/Resource/IResource.php#L70>`_
+		
+		
+		:Returns: string 
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getBackend()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get corresponding backend object
+			
+		
+		:Source:
+			`lib/public/Calendar/Resource/IResource.php#78 <https://github.com/nextcloud/server/blob/stable13/lib/public/Calendar/Resource/IResource.php#L78>`_
+		
+		
+		:Returns: :any:`\\OCP\\Calendar\\Resource\\IBackend <OCP\\Calendar\\Resource\\IBackend>` 
+		:Since: 14.0.0 
+	
+	
+

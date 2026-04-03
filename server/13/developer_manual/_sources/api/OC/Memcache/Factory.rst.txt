@@ -1,0 +1,171 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+Factory
+=======
+
+
+.. php:namespace:: OC\Memcache
+
+.. php:class:: Factory
+
+
+	:Source:
+		`lib/private/Memcache/Factory.php#39 <https://github.com/nextcloud/server/blob/stable13/lib/private/Memcache/Factory.php#L39>`_
+	
+	:Implements:
+		:php:interface:`OCP\\ICacheFactory` 
+	
+
+Constants
+---------
+
+.. php:const:: NULL_CACHE = \\OC\\Memcache\\NullCache::class
+
+	:Source:
+		`lib/private/Memcache/Factory.php#40 <https://github.com/nextcloud/server/blob/stable13/lib/private/Memcache/Factory.php#L40>`_
+	
+
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $globalPrefix, $logger, $localCacheClass=null, $distributedCacheClass=null, $lockingCacheClass=null)
+	
+		:Source:
+			`lib/private/Memcache/Factory.php#74 <https://github.com/nextcloud/server/blob/stable13/lib/private/Memcache/Factory.php#L74>`_
+		
+		
+		:Parameters:
+			* **$globalPrefix** (string)  
+			* **$logger** (:any:`OCP\\ILogger <OCP\\ILogger>`)  
+			* **$localCacheClass** (string | null)  
+			* **$distributedCacheClass** (string | null)  
+			* **$lockingCacheClass** (string | null)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public createLocking( $prefix="")
+	
+		.. rst-class:: phpdoc-description
+		
+			| create a cache instance for storing locks
+			
+		
+		:Source:
+			`lib/private/Memcache/Factory.php#134 <https://github.com/nextcloud/server/blob/stable13/lib/private/Memcache/Factory.php#L134>`_
+		
+		
+		:Parameters:
+			* **$prefix** (string)  
+
+		
+		:Returns: :any:`\\OCP\\IMemcache <OCP\\IMemcache>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public createDistributed( $prefix="")
+	
+		.. rst-class:: phpdoc-description
+		
+			| create a distributed cache instance
+			
+		
+		:Source:
+			`lib/private/Memcache/Factory.php#144 <https://github.com/nextcloud/server/blob/stable13/lib/private/Memcache/Factory.php#L144>`_
+		
+		
+		:Parameters:
+			* **$prefix** (string)  
+
+		
+		:Returns: :any:`\\OCP\\ICache <OCP\\ICache>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public createLocal( $prefix="")
+	
+		.. rst-class:: phpdoc-description
+		
+			| create a local cache instance
+			
+		
+		:Source:
+			`lib/private/Memcache/Factory.php#154 <https://github.com/nextcloud/server/blob/stable13/lib/private/Memcache/Factory.php#L154>`_
+		
+		
+		:Parameters:
+			* **$prefix** (string)  
+
+		
+		:Returns: :any:`\\OCP\\ICache <OCP\\ICache>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isAvailable()
+	
+		.. rst-class:: phpdoc-description
+		
+			| check memcache availability
+			
+		
+		:Source:
+			`lib/private/Memcache/Factory.php#163 <https://github.com/nextcloud/server/blob/stable13/lib/private/Memcache/Factory.php#L163>`_
+		
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public createLowLatency( $prefix="")
+	
+		:Source:
+			`lib/private/Memcache/Factory.php#172 <https://github.com/nextcloud/server/blob/stable13/lib/private/Memcache/Factory.php#L172>`_
+		
+		
+		:Parameters:
+			* **$prefix** (string)  
+
+		
+		:See: :any:`\\OC\\Memcache\\Factory::createLocal\(\) <OC\\Memcache\\Factory::createLocal\(\)>` 
+		:Returns: :any:`\\OCP\\ICache <OCP\\ICache>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isLocalCacheAvailable()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check if a local memory cache backend is available
+			
+		
+		:Source:
+			`lib/private/Memcache/Factory.php#181 <https://github.com/nextcloud/server/blob/stable13/lib/private/Memcache/Factory.php#L181>`_
+		
+		
+		:Returns: bool 
+	
+	
+

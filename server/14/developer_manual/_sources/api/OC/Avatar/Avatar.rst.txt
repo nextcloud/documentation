@@ -1,0 +1,191 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+Avatar
+======
+
+
+.. php:namespace:: OC\Avatar
+
+.. rst-class::  abstract
+
+.. php:class:: Avatar
+
+
+	.. rst-class:: phpdoc-description
+	
+		| This class gets and sets users avatars\.
+		
+	
+	:Source:
+		`lib/private/Avatar/Avatar.php#51 <https://github.com/nextcloud/server/blob/stable13/lib/private/Avatar/Avatar.php#L51>`_
+	
+	:Implements:
+		:php:interface:`OCP\\IAvatar` 
+	
+
+Properties
+----------
+
+.. php:attr:: protected static logger
+
+	:Source:
+		`lib/private/Avatar/Avatar.php#54 <https://github.com/nextcloud/server/blob/stable13/lib/private/Avatar/Avatar.php#L54>`_
+	
+	:Type: :any:`\\Psr\\Log\\LoggerInterface <Psr\\Log\\LoggerInterface>` 
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $logger)
+	
+		:Source:
+			`lib/private/Avatar/Avatar.php#72 <https://github.com/nextcloud/server/blob/stable13/lib/private/Avatar/Avatar.php#L72>`_
+		
+		
+	
+	
+
+.. rst-class:: public abstract
+
+	.. php:method:: public abstract getDisplayName()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the user display name\.
+			
+		
+		:Source:
+			`lib/private/Avatar/Avatar.php#81 <https://github.com/nextcloud/server/blob/stable13/lib/private/Avatar/Avatar.php#L81>`_
+		
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public get( $size=64)
+	
+		:Source:
+			`lib/private/Avatar/Avatar.php#102 <https://github.com/nextcloud/server/blob/stable13/lib/private/Avatar/Avatar.php#L102>`_
+		
+		
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected getAvatarVector( $size)
+	
+		.. rst-class:: phpdoc-description
+		
+			| \{size\} = 500
+			| \{fill\} = hex color to fill
+			| \{letter\} = Letter to display
+			
+			| Generate SVG avatar
+			
+		
+		:Source:
+			`lib/private/Avatar/Avatar.php#127 <https://github.com/nextcloud/server/blob/stable13/lib/private/Avatar/Avatar.php#L127>`_
+		
+		
+		:Parameters:
+			* **$size** (int)  The requested image size in pixel
+
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected generateAvatarFromSvg( $size)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Generate png avatar from svg with Imagick
+			
+		
+		:Source:
+			`lib/private/Avatar/Avatar.php#142 <https://github.com/nextcloud/server/blob/stable13/lib/private/Avatar/Avatar.php#L142>`_
+		
+		
+		:Parameters:
+			* **$size** (int)  
+
+		
+		:Returns: string | bool 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected generateAvatar( $userDisplayName, $size)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Generate png avatar with GD
+			
+		
+		:Source:
+			`lib/private/Avatar/Avatar.php#169 <https://github.com/nextcloud/server/blob/stable13/lib/private/Avatar/Avatar.php#L169>`_
+		
+		
+		:Parameters:
+			* **$userDisplayName** (string)  
+			* **$size** (int)  
+
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected imageTTFCenter( $image, $text, $font, $size, $angle=0)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Calculate real image ttf center
+			
+		
+		:Source:
+			`lib/private/Avatar/Avatar.php#210 <https://github.com/nextcloud/server/blob/stable13/lib/private/Avatar/Avatar.php#L210>`_
+		
+		
+		:Parameters:
+			* **$image** (resource)  
+			* **$text** (string)  text string
+			* **$font** (string)  font path
+			* **$size** (int)  font size
+			* **$angle** (int)  
+
+		
+		:Returns: array 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public avatarBackgroundColor( $hash)
+	
+		:Source:
+			`lib/private/Avatar/Avatar.php#294 <https://github.com/nextcloud/server/blob/stable13/lib/private/Avatar/Avatar.php#L294>`_
+		
+		
+		:Parameters:
+			* **$hash** (string)  
+
+		
+		:Returns: :any:`\\OC\\Color <OC\\Color>` Object containting r g b int in the range \[0, 255\]
+	
+	
+

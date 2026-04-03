@@ -1,0 +1,253 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+DBLockingProvider
+=================
+
+
+.. php:namespace:: OC\Lock
+
+.. php:class:: DBLockingProvider
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Locking provider that stores the locks in the database
+		
+	
+	:Source:
+		`lib/private/Lock/DBLockingProvider.php#42 <https://github.com/nextcloud/server/blob/stable13/lib/private/Lock/DBLockingProvider.php#L42>`_
+	
+	:Parent:
+		:php:class:`OC\\Lock\\AbstractLockingProvider`
+	
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: protected
+
+	.. php:method:: protected isLocallyLocked( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check if we have an open shared lock for a path
+			
+		
+		:Source:
+			`lib/private/Lock/DBLockingProvider.php#71 <https://github.com/nextcloud/server/blob/stable13/lib/private/Lock/DBLockingProvider.php#L71>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected markAcquire( $path, $type)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Mark a locally acquired lock
+			
+		
+		:Source:
+			`lib/private/Lock/DBLockingProvider.php#81 <https://github.com/nextcloud/server/blob/stable13/lib/private/Lock/DBLockingProvider.php#L81>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+			* **$type** (int)  self::LOCK_SHARED or self::LOCK_EXCLUSIVE
+
+		
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected markChange( $path, $targetType)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Change the type of an existing tracked lock
+			
+		
+		:Source:
+			`lib/private/Lock/DBLockingProvider.php#96 <https://github.com/nextcloud/server/blob/stable13/lib/private/Lock/DBLockingProvider.php#L96>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+			* **$targetType** (int)  self::LOCK_SHARED or self::LOCK_EXCLUSIVE
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $connection, $logger, $timeFactory, $ttl=3600, $cacheSharedLocks=true)
+	
+		:Source:
+			`lib/private/Lock/DBLockingProvider.php#114 <https://github.com/nextcloud/server/blob/stable13/lib/private/Lock/DBLockingProvider.php#L114>`_
+		
+		
+		:Parameters:
+			* **$connection** (:any:`OCP\\IDBConnection <OCP\\IDBConnection>`)  
+			* **$logger** (:any:`OCP\\ILogger <OCP\\ILogger>`)  
+			* **$timeFactory** (:any:`OCP\\AppFramework\\Utility\\ITimeFactory <OCP\\AppFramework\\Utility\\ITimeFactory>`)  
+			* **$ttl** (int)  
+			* **$cacheSharedLocks** (bool)  
+
+		
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected initLockField( $path, $lock=0)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Insert a file locking row if it does not exists\.
+			
+		
+		:Source:
+			`lib/private/Lock/DBLockingProvider.php#135 <https://github.com/nextcloud/server/blob/stable13/lib/private/Lock/DBLockingProvider.php#L135>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+			* **$lock** (int)  
+
+		
+		:Returns: int number of inserted rows
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected getExpireTime()
+	
+		:Source:
+			`lib/private/Lock/DBLockingProvider.php#147 <https://github.com/nextcloud/server/blob/stable13/lib/private/Lock/DBLockingProvider.php#L147>`_
+		
+		
+		:Returns: int 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isLocked( $path, $type)
+	
+		:Source:
+			`lib/private/Lock/DBLockingProvider.php#156 <https://github.com/nextcloud/server/blob/stable13/lib/private/Lock/DBLockingProvider.php#L156>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+			* **$type** (int)  self::LOCK_SHARED or self::LOCK_EXCLUSIVE
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public acquireLock( $path, $type, $readablePath=null)
+	
+		:Source:
+			`lib/private/Lock/DBLockingProvider.php#182 <https://github.com/nextcloud/server/blob/stable13/lib/private/Lock/DBLockingProvider.php#L182>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+			* **$type** (int)  self::LOCK_SHARED or self::LOCK_EXCLUSIVE
+
+		
+		:Throws: :any:`\\OCP\\Lock\\LockedException <OCP\\Lock\\LockedException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public releaseLock( $path, $type)
+	
+		:Source:
+			`lib/private/Lock/DBLockingProvider.php#219 <https://github.com/nextcloud/server/blob/stable13/lib/private/Lock/DBLockingProvider.php#L219>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+			* **$type** (int)  self::LOCK_SHARED or self::LOCK_EXCLUSIVE
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public changeLock( $path, $targetType)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Change the type of an existing lock
+			
+		
+		:Source:
+			`lib/private/Lock/DBLockingProvider.php#245 <https://github.com/nextcloud/server/blob/stable13/lib/private/Lock/DBLockingProvider.php#L245>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+			* **$targetType** (int)  self::LOCK_SHARED or self::LOCK_EXCLUSIVE
+
+		
+		:Throws: :any:`\\OCP\\Lock\\LockedException <OCP\\Lock\\LockedException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public cleanExpiredLocks()
+	
+		.. rst-class:: phpdoc-description
+		
+			| cleanup empty locks
+			
+		
+		:Source:
+			`lib/private/Lock/DBLockingProvider.php#271 <https://github.com/nextcloud/server/blob/stable13/lib/private/Lock/DBLockingProvider.php#L271>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public releaseAll()
+	
+		.. rst-class:: phpdoc-description
+		
+			| release all lock acquired by this instance which were marked using the mark\* methods
+			
+		
+		:Source:
+			`lib/private/Lock/DBLockingProvider.php#289 <https://github.com/nextcloud/server/blob/stable13/lib/private/Lock/DBLockingProvider.php#L289>`_
+		
+		
+	
+	
+

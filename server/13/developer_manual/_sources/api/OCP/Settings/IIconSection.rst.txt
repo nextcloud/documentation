@@ -1,0 +1,100 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IIconSection
+============
+
+
+.. php:namespace:: OCP\Settings
+
+.. php:interface:: IIconSection
+
+
+	:Implemented by:
+		:php:class:`OC\\Settings\\Section` 
+	
+	
+	:Source:
+		`lib/public/Settings/IIconSection.php#30 <https://github.com/nextcloud/server/blob/stable13/lib/public/Settings/IIconSection.php#L30>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public getID()
+	
+		.. rst-class:: phpdoc-description
+		
+			| returns the ID of the section\. It is supposed to be a lower case string,
+			| e\.g\. \'ldap\'
+			
+		
+		:Source:
+			`lib/public/Settings/IIconSection.php#38 <https://github.com/nextcloud/server/blob/stable13/lib/public/Settings/IIconSection.php#L38>`_
+		
+		
+		:Since: 9.1 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getName()
+	
+		.. rst-class:: phpdoc-description
+		
+			| returns the translated name as it should be displayed, e\.g\. \'LDAP / AD
+			| integration\'\. Use the L10N service to translate it\.
+			
+		
+		:Source:
+			`lib/public/Settings/IIconSection.php#47 <https://github.com/nextcloud/server/blob/stable13/lib/public/Settings/IIconSection.php#L47>`_
+		
+		
+		:Returns: string 
+		:Since: 9.1 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getPriority()
+	
+		:Source:
+			`lib/public/Settings/IIconSection.php#57 <https://github.com/nextcloud/server/blob/stable13/lib/public/Settings/IIconSection.php#L57>`_
+		
+		
+		:Returns: int whether the form should be rather on the top or bottom of
+			the settings navigation\. The sections are arranged in ascending order of
+			the priority values\. It is required to return a value between 0 and 99\.
+			
+			E\.g\.: 70
+		
+		:Since: 9.1 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getIcon()
+	
+		.. rst-class:: phpdoc-description
+		
+			| returns the relative path to an 16\*16 icon describing the section\.
+			
+			| e\.g\. \'/core/img/places/files\.svg\'
+			
+		
+		:Source:
+			`lib/public/Settings/IIconSection.php#66 <https://github.com/nextcloud/server/blob/stable13/lib/public/Settings/IIconSection.php#L66>`_
+		
+		
+		:Since: 12 
+	
+	
+

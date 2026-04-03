@@ -1,0 +1,122 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+Azure
+=====
+
+
+.. php:namespace:: OC\Files\ObjectStore
+
+.. php:class:: Azure
+
+
+	:Source:
+		`lib/private/Files/ObjectStore/Azure.php#31 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/ObjectStore/Azure.php#L31>`_
+	
+	:Implements:
+		:php:interface:`OCP\\Files\\ObjectStore\\IObjectStore` 
+	
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $parameters)
+	
+		:Source:
+			`lib/private/Files/ObjectStore/Azure.php#48 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/ObjectStore/Azure.php#L48>`_
+		
+		
+		:Parameters:
+			* **$parameters** (array)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getStorageId()
+	
+		:Source:
+			`lib/private/Files/ObjectStore/Azure.php#90 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/ObjectStore/Azure.php#L90>`_
+		
+		
+		:Returns: string the container or bucket name where objects are stored
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public readObject( $urn)
+	
+		:Source:
+			`lib/private/Files/ObjectStore/Azure.php#99 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/ObjectStore/Azure.php#L99>`_
+		
+		
+		:Parameters:
+			* **$urn** (string)  the unified resource name used to identify the object
+
+		
+		:Returns: resource stream with the read data
+		:Throws: :any:`\\Exception <Exception>` when something goes wrong, message will be logged
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public writeObject( $urn, $stream, $mimetype=null)
+	
+		:Source:
+			`lib/private/Files/ObjectStore/Azure.php#104 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/ObjectStore/Azure.php#L104>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public deleteObject( $urn)
+	
+		:Source:
+			`lib/private/Files/ObjectStore/Azure.php#117 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/ObjectStore/Azure.php#L117>`_
+		
+		
+		:Parameters:
+			* **$urn** (string)  the unified resource name used to identify the object
+
+		
+		:Returns: void 
+		:Throws: :any:`\\Exception <Exception>` when something goes wrong, message will be logged
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public objectExists( $urn)
+	
+		:Source:
+			`lib/private/Files/ObjectStore/Azure.php#121 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/ObjectStore/Azure.php#L121>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public copyObject( $from, $to)
+	
+		:Source:
+			`lib/private/Files/ObjectStore/Azure.php#134 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/ObjectStore/Azure.php#L134>`_
+		
+		
+	
+	
+

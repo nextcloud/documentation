@@ -1,0 +1,193 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+Template
+========
+
+
+.. php:namespace:: OCP
+
+.. php:class:: Template
+
+
+	.. rst-class:: phpdoc-description
+	
+		| This class provides the template system for owncloud\. You can use it to load
+		| specific templates, add data and generate the html code
+		
+	
+	:Source:
+		`lib/public/Template.php#36 <https://github.com/nextcloud/server/blob/stable13/lib/public/Template.php#L36>`_
+	
+	:Parent:
+		:php:class:`OC\_Template`
+	
+
+Methods
+-------
+
+.. rst-class:: public static
+
+	.. php:method:: public static image_path( $app, $image)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Make OC\_Helper::imagePath available as a simple function
+			
+		
+		:Source:
+			`lib/public/Template.php#48 <https://github.com/nextcloud/server/blob/stable13/lib/public/Template.php#L48>`_
+		
+		
+		:Parameters:
+			* **$app** (string)  
+			* **$image** (string)  
+
+		
+		:See: :any:`\\OCP\\IURLGenerator::imagePath <OCP\\IURLGenerator::imagePath>` 
+		:Returns: string to the image
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static mimetype_icon( $mimetype)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Make OC\_Helper::mimetypeIcon available as a simple function
+			
+		
+		:Source:
+			`lib/public/Template.php#61 <https://github.com/nextcloud/server/blob/stable13/lib/public/Template.php#L61>`_
+		
+		
+		:Parameters:
+			* **$mimetype** (string)  
+
+		
+		:Returns: string to the image of this file type\.
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static preview_icon( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Make preview\_icon available as a simple function
+			
+		
+		:Source:
+			`lib/public/Template.php#73 <https://github.com/nextcloud/server/blob/stable13/lib/public/Template.php#L73>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  path to file
+
+		
+		:Returns: string to the preview of the image
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static publicPreview_icon( $path, $token)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Make publicpreview\_icon available as a simple function
+			| Returns the path to the preview of the image\.
+			
+		
+		:Source:
+			`lib/public/Template.php#87 <https://github.com/nextcloud/server/blob/stable13/lib/public/Template.php#L87>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  of file
+			* **$token** (string)  
+
+		
+		:Returns: string link to the preview
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static human_file_size( $bytes)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Make OC\_Helper::humanFileSize available as a simple function
+			| Example: 2048 to 2 kB\.
+			
+		
+		:Source:
+			`lib/public/Template.php#100 <https://github.com/nextcloud/server/blob/stable13/lib/public/Template.php#L100>`_
+		
+		
+		:Parameters:
+			* **$bytes** (int)  in bytes
+
+		
+		:Returns: string size as string
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static relative_modified_date( $timestamp, $dateOnly=false)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Return the relative date in relation to today\. Returns something like "last hour" or "two month ago"
+			
+		
+		:Source:
+			`lib/public/Template.php#114 <https://github.com/nextcloud/server/blob/stable13/lib/public/Template.php#L114>`_
+		
+		
+		:Parameters:
+			* **$timestamp** (int)  unix timestamp
+			* **$dateOnly** (bool)  
+
+		
+		:Returns: string human readable interpretation of the timestamp
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static html_select_options( $options, $selected, $params=\[\])
+	
+		.. rst-class:: phpdoc-description
+		
+			| Generate html code for an options block\.
+			
+		
+		:Source:
+			`lib/public/Template.php#128 <https://github.com/nextcloud/server/blob/stable13/lib/public/Template.php#L128>`_
+		
+		
+		:Parameters:
+			* **$options** (array)  the options
+			* **$selected** (mixed)  which one is selected?
+			* **$params** (array)  the parameters
+
+		
+		:Returns: string html options
+		:Since: 8.0.0 
+	
+	
+

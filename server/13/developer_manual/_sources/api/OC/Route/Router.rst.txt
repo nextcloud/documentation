@@ -1,0 +1,333 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+Router
+======
+
+
+.. php:namespace:: OC\Route
+
+.. php:class:: Router
+
+
+	:Source:
+		`lib/private/Route/Router.php#48 <https://github.com/nextcloud/server/blob/stable13/lib/private/Route/Router.php#L48>`_
+	
+	:Implements:
+		:php:interface:`OCP\\Route\\IRouter` 
+	
+
+Properties
+----------
+
+.. php:attr:: protected static collections
+
+	:Source:
+		`lib/private/Route/Router.php#50 <https://github.com/nextcloud/server/blob/stable13/lib/private/Route/Router.php#L50>`_
+	
+	:Type: :any:`\\Symfony\\Component\\Routing\\RouteCollection\[\] <Symfony\\Component\\Routing\\RouteCollection>` 
+
+
+.. php:attr:: protected static collection
+
+	:Source:
+		`lib/private/Route/Router.php#52 <https://github.com/nextcloud/server/blob/stable13/lib/private/Route/Router.php#L52>`_
+	
+	:Type: null | :any:`\\Symfony\\Component\\Routing\\RouteCollection <Symfony\\Component\\Routing\\RouteCollection>` 
+
+
+.. php:attr:: protected static collectionName
+
+	:Source:
+		`lib/private/Route/Router.php#54 <https://github.com/nextcloud/server/blob/stable13/lib/private/Route/Router.php#L54>`_
+	
+	:Type: null | string 
+
+
+.. php:attr:: protected static root
+
+	:Source:
+		`lib/private/Route/Router.php#56 <https://github.com/nextcloud/server/blob/stable13/lib/private/Route/Router.php#L56>`_
+	
+	:Type: null | :any:`\\Symfony\\Component\\Routing\\RouteCollection <Symfony\\Component\\Routing\\RouteCollection>` 
+
+
+.. php:attr:: protected static generator
+
+	:Source:
+		`lib/private/Route/Router.php#58 <https://github.com/nextcloud/server/blob/stable13/lib/private/Route/Router.php#L58>`_
+	
+	:Type: null | :any:`\\Symfony\\Component\\Routing\\Generator\\UrlGenerator <Symfony\\Component\\Routing\\Generator\\UrlGenerator>` 
+
+
+.. php:attr:: protected static routingFiles
+
+	:Source:
+		`lib/private/Route/Router.php#60 <https://github.com/nextcloud/server/blob/stable13/lib/private/Route/Router.php#L60>`_
+	
+	:Type: string[] | null 
+
+
+.. php:attr:: protected static loaded
+
+	:Source:
+		`lib/private/Route/Router.php#62 <https://github.com/nextcloud/server/blob/stable13/lib/private/Route/Router.php#L62>`_
+	
+	:Type: bool 
+
+
+.. php:attr:: protected static loadedApps
+
+	:Source:
+		`lib/private/Route/Router.php#64 <https://github.com/nextcloud/server/blob/stable13/lib/private/Route/Router.php#L64>`_
+	
+	:Type: array 
+
+
+.. php:attr:: protected static logger
+
+	:Source:
+		`lib/private/Route/Router.php#66 <https://github.com/nextcloud/server/blob/stable13/lib/private/Route/Router.php#L66>`_
+	
+	:Type: :any:`\\OCP\\ILogger <OCP\\ILogger>` 
+
+
+.. php:attr:: protected static context
+
+	:Source:
+		`lib/private/Route/Router.php#68 <https://github.com/nextcloud/server/blob/stable13/lib/private/Route/Router.php#L68>`_
+	
+	:Type: :any:`\\Symfony\\Component\\Routing\\RequestContext <Symfony\\Component\\Routing\\RequestContext>` 
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $logger)
+	
+		:Source:
+			`lib/private/Route/Router.php#73 <https://github.com/nextcloud/server/blob/stable13/lib/private/Route/Router.php#L73>`_
+		
+		
+		:Parameters:
+			* **$logger** (:any:`OCP\\ILogger <OCP\\ILogger>`)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getRoutingFiles()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the files to load the routes from
+			
+		
+		:Source:
+			`lib/private/Route/Router.php#97 <https://github.com/nextcloud/server/blob/stable13/lib/private/Route/Router.php#L97>`_
+		
+		
+		:Returns: string[] 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public loadRoutes( $app=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Loads the routes
+			
+		
+		:Source:
+			`lib/private/Route/Router.php#118 <https://github.com/nextcloud/server/blob/stable13/lib/private/Route/Router.php#L118>`_
+		
+		
+		:Parameters:
+			* **$app** (null | string)  
+
+		
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected getCollection( $name)
+	
+		:Source:
+			`lib/private/Route/Router.php#184 <https://github.com/nextcloud/server/blob/stable13/lib/private/Route/Router.php#L184>`_
+		
+		
+		:Parameters:
+			* **$name** (string)  
+
+		
+		:Returns: :any:`\\Symfony\\Component\\Routing\\RouteCollection <Symfony\\Component\\Routing\\RouteCollection>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public useCollection( $name)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Sets the collection to use for adding routes
+			
+		
+		:Source:
+			`lib/private/Route/Router.php#197 <https://github.com/nextcloud/server/blob/stable13/lib/private/Route/Router.php#L197>`_
+		
+		
+		:Parameters:
+			* **$name** (string)  Name of the collection to use.
+
+		
+		:Returns: void 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getCurrentCollection()
+	
+		.. rst-class:: phpdoc-description
+		
+			| returns the current collection name in use for adding routes
+			
+		
+		:Source:
+			`lib/private/Route/Router.php#207 <https://github.com/nextcloud/server/blob/stable13/lib/private/Route/Router.php#L207>`_
+		
+		
+		:Returns: string the collection name
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public create( $name, $pattern, $defaults=\[\], $requirements=\[\])
+	
+		.. rst-class:: phpdoc-description
+		
+			| Create a \\OC\\Route\\Route\.
+			
+		
+		:Source:
+			`lib/private/Route/Router.php#221 <https://github.com/nextcloud/server/blob/stable13/lib/private/Route/Router.php#L221>`_
+		
+		
+		:Parameters:
+			* **$name** (string)  Name of the route to create.
+			* **$pattern** (string)  The pattern to match
+			* **$defaults** (array)  An array of default parameter values
+			* **$requirements** (array)  An array of requirements for parameters (regexes)
+
+		
+		:Returns: :any:`\\OC\\Route\\Route <OC\\Route\\Route>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public findMatchingRoute( $url)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Find the route matching $url
+			
+		
+		:Source:
+			`lib/private/Route/Router.php#237 <https://github.com/nextcloud/server/blob/stable13/lib/private/Route/Router.php#L237>`_
+		
+		
+		:Parameters:
+			* **$url** (string)  The url to find
+
+		
+		:Throws: :any:`\\Exception <Exception>` 
+		:Returns: array 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public match( $url)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Find and execute the route matching $url
+			
+		
+		:Source:
+			`lib/private/Route/Router.php#293 <https://github.com/nextcloud/server/blob/stable13/lib/private/Route/Router.php#L293>`_
+		
+		
+		:Parameters:
+			* **$url** (string)  The url to find
+
+		
+		:Throws: :any:`\\Exception <Exception>` 
+		:Returns: void 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getGenerator()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the url generator
+			
+		
+		:Source:
+			`lib/private/Route/Router.php#325 <https://github.com/nextcloud/server/blob/stable13/lib/private/Route/Router.php#L325>`_
+		
+		
+		:Returns: :any:`\\Symfony\\Component\\Routing\\Generator\\UrlGenerator <Symfony\\Component\\Routing\\Generator\\UrlGenerator>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public generate( $name, $parameters=\[\], $absolute=false)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Generate url based on $name and $parameters
+			
+		
+		:Source:
+			`lib/private/Route/Router.php#341 <https://github.com/nextcloud/server/blob/stable13/lib/private/Route/Router.php#L341>`_
+		
+		
+		:Parameters:
+			* **$name** (string)  Name of the route to use.
+			* **$parameters** (array)  Parameters for the route
+			* **$absolute** (bool)  
+
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected fixLegacyRootName( $routeName)
+	
+		:Source:
+			`lib/private/Route/Router.php#372 <https://github.com/nextcloud/server/blob/stable13/lib/private/Route/Router.php#L372>`_
+		
+		
+	
+	
+

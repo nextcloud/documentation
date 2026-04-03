@@ -1,0 +1,206 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+SeekableHttpStream
+==================
+
+
+.. php:namespace:: OC\Files\Stream
+
+.. php:class:: SeekableHttpStream
+
+
+	.. rst-class:: phpdoc-description
+	
+		| A stream wrapper that uses http range requests to provide a seekable stream for http reading
+		
+	
+	:Source:
+		`lib/private/Files/Stream/SeekableHttpStream.php#32 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Stream/SeekableHttpStream.php#L32>`_
+	
+	:Implements:
+		:php:interface:`Icewind\\Streams\\File` 
+	
+
+Constants
+---------
+
+.. php:const:: PROTOCOL = httpseek
+
+	:Source:
+		`lib/private/Files/Stream/SeekableHttpStream.php#33 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Stream/SeekableHttpStream.php#L33>`_
+	
+
+
+Properties
+----------
+
+.. php:attr:: public static context
+
+	:Source:
+		`lib/private/Files/Stream/SeekableHttpStream.php#71 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Stream/SeekableHttpStream.php#L71>`_
+	
+	:Type: resource 
+
+
+Methods
+-------
+
+.. rst-class:: public static
+
+	.. php:method:: public static open( $callback)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Open a readonly\-seekable http stream
+			
+			| The provided callback will be called with byte range and should return an http stream for the requested range
+			
+		
+		:Source:
+			`lib/private/Files/Stream/SeekableHttpStream.php#59 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Stream/SeekableHttpStream.php#L59>`_
+		
+		
+		:Parameters:
+			* **$callback** (callable)  
+
+		
+		:Returns: bool | resource 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public stream_open( $path, $mode, $options, &$opened_path)
+	
+		:Source:
+			`lib/private/Files/Stream/SeekableHttpStream.php#115 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Stream/SeekableHttpStream.php#L115>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public stream_read( $count)
+	
+		:Source:
+			`lib/private/Files/Stream/SeekableHttpStream.php#122 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Stream/SeekableHttpStream.php#L122>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public stream_seek( $offset, $whence=SEEK\_SET)
+	
+		:Source:
+			`lib/private/Files/Stream/SeekableHttpStream.php#131 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Stream/SeekableHttpStream.php#L131>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public stream_tell()
+	
+		:Source:
+			`lib/private/Files/Stream/SeekableHttpStream.php#149 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Stream/SeekableHttpStream.php#L149>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public stream_stat()
+	
+		:Source:
+			`lib/private/Files/Stream/SeekableHttpStream.php#153 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Stream/SeekableHttpStream.php#L153>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public stream_eof()
+	
+		:Source:
+			`lib/private/Files/Stream/SeekableHttpStream.php#161 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Stream/SeekableHttpStream.php#L161>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public stream_close()
+	
+		:Source:
+			`lib/private/Files/Stream/SeekableHttpStream.php#169 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Stream/SeekableHttpStream.php#L169>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public stream_write( $data)
+	
+		:Source:
+			`lib/private/Files/Stream/SeekableHttpStream.php#175 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Stream/SeekableHttpStream.php#L175>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public stream_set_option( $option, $arg1, $arg2)
+	
+		:Source:
+			`lib/private/Files/Stream/SeekableHttpStream.php#179 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Stream/SeekableHttpStream.php#L179>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public stream_truncate( $size)
+	
+		:Source:
+			`lib/private/Files/Stream/SeekableHttpStream.php#183 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Stream/SeekableHttpStream.php#L183>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public stream_lock( $operation)
+	
+		:Source:
+			`lib/private/Files/Stream/SeekableHttpStream.php#187 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Stream/SeekableHttpStream.php#L187>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public stream_flush()
+	
+		:Source:
+			`lib/private/Files/Stream/SeekableHttpStream.php#191 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Stream/SeekableHttpStream.php#L191>`_
+		
+		
+	
+	
+

@@ -1,0 +1,418 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Development environment &mdash; Nextcloud 13 Developer Manual 13 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'13',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Security guidelines" href="security.html" />
+    <link rel="prev" title="Community code of conduct" href="code-of-conduct.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">General contributor guidelines</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="code-of-conduct.html">Community code of conduct</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Development environment</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#set-up-web-server-and-database">Set up Web server and database</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#get-the-source">Get the source</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#gather-information-about-server-setup">Gather information about server setup</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#check-out-the-code">Check out the code</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#enabling-debug-mode">Enabling debug mode</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#keep-the-code-up-to-date">Keep the code up-to-date</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="security.html">Security guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="codingguidelines.html">Coding style &amp; general guidelines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="performance.html">Performance considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging.html">Debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="backporting.html">Backporting</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../app/changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/startapp.html">Create an app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/init.html">Navigation and pre-app configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/info.html">App metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/classloader.html">Classloader</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/request.html">Request lifecycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/routes.html">Routing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/middleware.html">Middleware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/container.html">Container</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/controllers.html">Controllers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/api.html">RESTful API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/templates.html">Templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/js.html">JavaScript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/css.html">CSS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/l10n.html">Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/theming.html">Theming support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/schema.html">Database schema</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/database.html">Database access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/filesystem.html">Filesystem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/appdata.html">AppData</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/users.html">User management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/two-factor-provider.html">Two-factor providers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/hooks.html">Hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/backgroundjobs.html">Background jobs (Cron)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/settings.html">Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/logging.html">Logging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/migrations.html">Migrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/repair.html">Repair steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/publishing.html">App store publishing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/code_signing.html">Code signing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../design/index.html">Design guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../android_library/index.html">Android application development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client_apis/index.html">Client APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../core/translation.html">Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../core/unit-testing.html">Unit-Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../core/theming.html">Theming Nextcloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../core/externalapi.html">External API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../core/ocs-share-api.html">OCS Share API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../core/index.html">Core development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bugtracker/index.html">Bugtracker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../commun/index.html">Help and communication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API Documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Nextcloud 13 Developer Manual</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">General contributor guidelines</a> &raquo;</li>
+        
+      <li>Development environment</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/nextcloud/documentation/edit/stable13/developer_manual/general/devenv.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="development-environment">
+<span id="devenv"></span><h1>Development environment<a class="headerlink" href="#development-environment" title="Permalink to this headline">¶</a></h1>
+<p>Please follow the steps on this page to set up your development environment.</p>
+<div class="section" id="set-up-web-server-and-database">
+<h2>Set up Web server and database<a class="headerlink" href="#set-up-web-server-and-database" title="Permalink to this headline">¶</a></h2>
+<p>First <a class="reference external" href="https://docs.nextcloud.org/server/13/admin_manual/installation/index.html">set up your Web server and database</a> (<strong>Section</strong>: Manual Installation - Prerequisites).</p>
+</div>
+<div class="section" id="get-the-source">
+<h2>Get the source<a class="headerlink" href="#get-the-source" title="Permalink to this headline">¶</a></h2>
+<p>There are two ways to obtain Nextcloud sources:</p>
+<ul class="simple">
+<li>Using the <a class="reference external" href="https://docs.nextcloud.org/server/13/admin_manual/#installation">stable version</a></li>
+<li>Using the development version from <a class="reference external" href="https://github.com/nextcloud">GitHub</a> which will be explained below.</li>
+</ul>
+<p>To check out the source from <a class="reference external" href="https://github.com/nextcloud">GitHub</a> you will need to install Git (see <a class="reference external" href="https://help.github.com/articles/set-up-git">Setting up Git</a> from the GitHub help)</p>
+<div class="section" id="gather-information-about-server-setup">
+<h3>Gather information about server setup<a class="headerlink" href="#gather-information-about-server-setup" title="Permalink to this headline">¶</a></h3>
+<p>To get started the basic Git repositories need to be cloned into the Web server&#8217;s directory. Depending on the distribution this will either be</p>
+<ul class="simple">
+<li><strong>/var/www</strong></li>
+<li><strong>/var/www/html</strong></li>
+<li><strong>/srv/http</strong></li>
+</ul>
+<p>Then identify the user and group the Web server is running as and the Apache user and group for the <strong>chown</strong> command will either be</p>
+<ul class="simple">
+<li><strong>http</strong></li>
+<li><strong>www-data</strong></li>
+<li><strong>apache</strong></li>
+<li><strong>wwwrun</strong></li>
+</ul>
+</div>
+<div class="section" id="check-out-the-code">
+<h3>Check out the code<a class="headerlink" href="#check-out-the-code" title="Permalink to this headline">¶</a></h3>
+<p>The following commands are using <strong>/var/www</strong> as the Web server&#8217;s directory and <strong>www-data</strong> as user name and group.</p>
+<p>After the development tool installation make the directory writable so you install the code as your regular user, and don&#8217;t need root privileges:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">chmod</span> <span class="n">o</span><span class="o">+</span><span class="n">rw</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span>
+</pre></div>
+</div>
+<p>Then install Nextcloud at the root of your site from Git:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">server</span><span class="o">.</span><span class="n">git</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span>
+<span class="n">cd</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span>
+<span class="n">git</span> <span class="n">submodule</span> <span class="n">update</span> <span class="o">--</span><span class="n">init</span>
+</pre></div>
+</div>
+<p>If you like to install Nextcloud at a sub-folder, replace <cite>/var/www</cite> with <cite>/var/www/&lt;folder&gt;</cite>.</p>
+<p>Create the data and the config folders:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span>
+<span class="n">mkdir</span> <span class="n">data</span>
+<span class="n">mkdir</span> <span class="n">config</span>
+</pre></div>
+</div>
+<p>Adjust rights:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span>
+<span class="n">sudo</span> <span class="n">chown</span> <span class="o">-</span><span class="n">R</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span><span class="p">:</span><span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">config</span> <span class="n">data</span> <span class="n">apps</span>
+<span class="n">sudo</span> <span class="n">chmod</span> <span class="n">o</span><span class="o">-</span><span class="n">rw</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span>
+</pre></div>
+</div>
+<p>Finally restart the Web server (this might vary depending on your distribution):</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">restart</span> <span class="n">httpd</span><span class="o">.</span><span class="n">service</span>
+</pre></div>
+</div>
+<p>or:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">restart</span> <span class="n">apache2</span><span class="o">.</span><span class="n">service</span>
+</pre></div>
+</div>
+<p>or:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">init</span><span class="o">.</span><span class="n">d</span><span class="o">/</span><span class="n">apache2</span> <span class="n">restart</span>
+</pre></div>
+</div>
+<p>Now access the installation at <a class="reference external" href="http://localhost/">http://localhost/</a> (or the corresponding URL) in your web browser to set up your instance.</p>
+</div>
+<div class="section" id="enabling-debug-mode">
+<h3>Enabling debug mode<a class="headerlink" href="#enabling-debug-mode" title="Permalink to this headline">¶</a></h3>
+<div class="admonition note" id="debugmode">
+<p class="first admonition-title">Note</p>
+<p class="last">Do not enable this for production! This can create security problems and is only meant for debugging and development!</p>
+</div>
+<p>To disable JavaScript and CSS caching debugging has to be enabled by setting <code class="docutils literal"><span class="pre">debug</span></code> to <code class="docutils literal"><span class="pre">true</span></code> in <code class="file docutils literal"><span class="pre">config/config.php</span></code>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>&lt;?php
+$CONFIG = array (
+    &#39;debug&#39; =&gt; true,
+    ... configuration goes here ...
+);
+</pre></div>
+</div>
+</div>
+<div class="section" id="keep-the-code-up-to-date">
+<h3>Keep the code up-to-date<a class="headerlink" href="#keep-the-code-up-to-date" title="Permalink to this headline">¶</a></h3>
+<p>If you have more than one repository cloned, it can be time consuming to do the same the action to all repositories one by one. To solve this, you can use the following command template:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">find</span> <span class="o">.</span> <span class="o">-</span><span class="n">maxdepth</span> <span class="o">&lt;</span><span class="n">DEPTH</span><span class="o">&gt;</span> <span class="o">-</span><span class="nb">type</span> <span class="n">d</span> <span class="o">-</span><span class="n">name</span> <span class="o">.</span><span class="n">git</span> <span class="o">-</span><span class="n">exec</span> <span class="n">sh</span> <span class="o">-</span><span class="n">c</span> <span class="s1">&#39;cd &quot;</span><span class="si">{}</span><span class="s1">&quot;/../ &amp;&amp; pwd &amp;&amp; &lt;GIT COMMAND&gt;&#39;</span> \<span class="p">;</span>
+</pre></div>
+</div>
+<p>then, e.g. to pull all changes in all repositories, you only need this:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">find</span> <span class="o">.</span> <span class="o">-</span><span class="n">maxdepth</span> <span class="mi">3</span> <span class="o">-</span><span class="nb">type</span> <span class="n">d</span> <span class="o">-</span><span class="n">name</span> <span class="o">.</span><span class="n">git</span> <span class="o">-</span><span class="n">exec</span> <span class="n">sh</span> <span class="o">-</span><span class="n">c</span> <span class="s1">&#39;cd &quot;</span><span class="si">{}</span><span class="s1">&quot;/../ &amp;&amp; pwd &amp;&amp; git pull --rebase&#39;</span> \<span class="p">;</span>
+</pre></div>
+</div>
+<p>or to prune all merged branches, you would execute this:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">find</span> <span class="o">.</span> <span class="o">-</span><span class="n">maxdepth</span> <span class="mi">3</span> <span class="o">-</span><span class="nb">type</span> <span class="n">d</span> <span class="o">-</span><span class="n">name</span> <span class="o">.</span><span class="n">git</span> <span class="o">-</span><span class="n">exec</span> <span class="n">sh</span> <span class="o">-</span><span class="n">c</span> <span class="s1">&#39;cd &quot;</span><span class="si">{}</span><span class="s1">&quot;/../ &amp;&amp; pwd &amp;&amp; git remote prune origin&#39;</span> \<span class="p">;</span>
+</pre></div>
+</div>
+<p>It is even easier if you create alias from these commands in case you want to avoid retyping those each time you need them.</p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="security.html" class="btn btn-neutral float-right" title="Security guidelines" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="code-of-conduct.html" class="btn btn-neutral float-left" title="Community code of conduct" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021 Nextcloud GmbH.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: 13
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/13/developer_manual">13</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/14/developer_manual">14</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/15/developer_manual">15</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/developer_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/developer_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+   
+
+</body>
+</html>

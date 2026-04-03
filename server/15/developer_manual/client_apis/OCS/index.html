@@ -1,0 +1,387 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>OCS API’s &mdash; Nextcloud 15 Developer Manual 15 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'15',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Login Flow" href="../LoginFlow/index.html" />
+    <link rel="prev" title="Chunked file upload" href="../WebDAV/chunking.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html">
+          
+
+          
+            
+            <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../general/index.html">General contributor guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../design/index.html">Design guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../android_library/index.html">Android application development</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Client APIs</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../WebDAV/index.html">Webdav</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">OCS API&#8217;s</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#testing-requests-with-curl">Testing requests with curl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#user-metadata">User metadata</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#capabilities-api">Capabilities API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#theming-capabilities">Theming capabilities</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#direct-download">Direct Download</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#notifications">Notifications</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../LoginFlow/index.html">Login Flow</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../core/index.html">Core development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../bugtracker/index.html">Bugtracker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../commun/index.html">Help and communication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api.html">API Documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Nextcloud 15 Developer Manual</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">Client APIs</a> &raquo;</li>
+        
+      <li>OCS API&#8217;s</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/nextcloud/documentation/edit/stable15/developer_manual/client_apis/OCS/index.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="ocs-api-s">
+<span id="ocsapiindex"></span><h1>OCS API&#8217;s<a class="headerlink" href="#ocs-api-s" title="Permalink to this headline">¶</a></h1>
+<p>This document provides a quick overview of the OCS API endpoints supported in Nextcloud.</p>
+<p>All requests need to provide authentication information, either as a Basic Auth header or by passing a set of valid session cookies, if not stated otherwise.</p>
+<div class="section" id="testing-requests-with-curl">
+<h2>Testing requests with curl<a class="headerlink" href="#testing-requests-with-curl" title="Permalink to this headline">¶</a></h2>
+<p>All OCS requests can be easily tested out using <code class="code docutils literal"><span class="pre">curl</span></code> by specifying the request method (<code class="code docutils literal"><span class="pre">GET</span></code>, <code class="code docutils literal"><span class="pre">PUT</span></code>, etc) and setting a request body where needed.</p>
+<p>For example: you can perform a <code class="code docutils literal"><span class="pre">GET</span></code> request to get information about a user:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>curl -u username:password -X GET <span class="s1">&#39;https://cloud.example.com/ocs/v1.php/...&#39;</span> -H <span class="s2">&quot;OCS-APIRequest: true&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="user-metadata">
+<h2>User metadata<a class="headerlink" href="#user-metadata" title="Permalink to this headline">¶</a></h2>
+<p>Since: 11.0.2, 12.0.0</p>
+<p>This request returns the available metadata of a user. Admin users can see the information of all users, while a default user only can access it&#8217;s own metadata.</p>
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">GET</span> <span class="o">/</span><span class="n">ocs</span><span class="o">/</span><span class="n">v1</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">cloud</span><span class="o">/</span><span class="n">users</span><span class="o">/</span><span class="n">USERID</span>
+</pre></div>
+</div>
+<div class="code xml highlight-default"><div class="highlight"><pre><span></span>&lt;?xml version=&quot;1.0&quot;?&gt;
+&lt;ocs&gt;
+        &lt;meta&gt;
+                &lt;status&gt;ok&lt;/status&gt;
+                &lt;statuscode&gt;100&lt;/statuscode&gt;
+                &lt;message&gt;OK&lt;/message&gt;
+                &lt;totalitems&gt;&lt;/totalitems&gt;
+                &lt;itemsperpage&gt;&lt;/itemsperpage&gt;
+        &lt;/meta&gt;
+        &lt;data&gt;
+                &lt;enabled&gt;true&lt;/enabled&gt;
+                &lt;quota&gt;
+                        &lt;free&gt;338696790016&lt;/free&gt;
+                        &lt;used&gt;7438874&lt;/used&gt;
+                        &lt;total&gt;338704228890&lt;/total&gt;
+                        &lt;relative&gt;0&lt;/relative&gt;
+                        &lt;quota&gt;-3&lt;/quota&gt;
+                &lt;/quota&gt;
+                &lt;email&gt;user@foo.de&lt;/email&gt;
+                &lt;displayname&gt;admin&lt;/displayname&gt;
+                &lt;phone&gt;&lt;/phone&gt;
+                &lt;address&gt;&lt;/address&gt;
+                &lt;webpage&gt;&lt;/webpage&gt;
+                &lt;twitter&gt;schiessle&lt;/twitter&gt;
+        &lt;/data&gt;
+&lt;/ocs&gt;
+</pre></div>
+</div>
+</div>
+<div class="section" id="capabilities-api">
+<h2>Capabilities API<a class="headerlink" href="#capabilities-api" title="Permalink to this headline">¶</a></h2>
+<p>Clients can obtain capabilities provided by the Nextcloud server and its apps via the capabilities OCS API.</p>
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">GET</span> <span class="o">/</span><span class="n">ocs</span><span class="o">/</span><span class="n">v1</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">cloud</span><span class="o">/</span><span class="n">capabilities</span>
+</pre></div>
+</div>
+<div class="code xml highlight-default"><div class="highlight"><pre><span></span>&lt;?xml version=&quot;1.0&quot;?&gt;
+&lt;ocs&gt;
+ &lt;meta&gt;
+  &lt;status&gt;ok&lt;/status&gt;
+  &lt;statuscode&gt;100&lt;/statuscode&gt;
+  &lt;message&gt;OK&lt;/message&gt;
+  &lt;totalitems&gt;&lt;/totalitems&gt;
+  &lt;itemsperpage&gt;&lt;/itemsperpage&gt;
+ &lt;/meta&gt;
+ &lt;data&gt;
+  &lt;version&gt;
+   &lt;major&gt;12&lt;/major&gt;
+   &lt;minor&gt;0&lt;/minor&gt;
+   &lt;micro&gt;0&lt;/micro&gt;
+   &lt;string&gt;12.0 beta 4&lt;/string&gt;
+   &lt;edition&gt;&lt;/edition&gt;
+  &lt;/version&gt;
+  &lt;capabilities&gt;
+   &lt;core&gt;
+    &lt;pollinterval&gt;60&lt;/pollinterval&gt;
+    &lt;webdav-root&gt;remote.php/webdav&lt;/webdav-root&gt;
+   &lt;/core&gt;
+  &lt;/capabilities&gt;
+ &lt;/data&gt;
+&lt;/ocs&gt;
+</pre></div>
+</div>
+</div>
+<div class="section" id="theming-capabilities">
+<h2>Theming capabilities<a class="headerlink" href="#theming-capabilities" title="Permalink to this headline">¶</a></h2>
+<p>Values of the theming app are exposed though the capabilities API, allowing client developers to adjust the look of clients to the theming of different Nextcloud instances.</p>
+<div class="code xml highlight-default"><div class="highlight"><pre><span></span>&lt;theming&gt;
+    &lt;name&gt;Nextcloud&lt;/name&gt;
+    &lt;url&gt;https://nextcloud.com&lt;/url&gt;
+    &lt;slogan&gt;A safe home for all your data&lt;/slogan&gt;
+    &lt;color&gt;#0082c9&lt;/color&gt;
+    &lt;logo&gt;http://cloud.example.com/index.php/apps/theming/logo?v=1&lt;/logo&gt;
+    &lt;background&gt;http://cloud.example.com/index.php/apps/theming/logo?v=1&lt;/background&gt;
+&lt;/theming&gt;
+</pre></div>
+</div>
+<p>The background value can either be an URL to the background image or a hex color value.</p>
+</div>
+<div class="section" id="direct-download">
+<h2>Direct Download<a class="headerlink" href="#direct-download" title="Permalink to this headline">¶</a></h2>
+<p>It might be required to give a 3rd party access to a file however you do not
+want to hand over credentials to the 3rd party. An example of this is playing
+files in an external media player on mobile devices.</p>
+<p>To solve this issue there is a way to request a unique public link to a single.
+This link will be valid for 24 hours after wards it will be removed.</p>
+<p>To obtain a direct link:</p>
+<div class="code highlight-default"><div class="highlight"><pre><span></span><span class="n">POST</span> <span class="o">/</span><span class="n">ocs</span><span class="o">/</span><span class="n">v2</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">api</span><span class="o">/</span><span class="n">v1</span><span class="o">/</span><span class="n">direct</span>
+</pre></div>
+</div>
+<p>With the <code class="code docutils literal"><span class="pre">fileId</span></code> in the body (so <code class="code docutils literal"><span class="pre">fileId=42</span></code> for example).
+This will then return you the link to use to obtain the file.</p>
+</div>
+<div class="section" id="notifications">
+<h2>Notifications<a class="headerlink" href="#notifications" title="Permalink to this headline">¶</a></h2>
+<p>There is also the <a class="reference external" href="https://github.com/nextcloud/notifications/blob/master/docs/ocs-endpoint-v2.md">Notifications API</a>
+As well as documentation on how to <a class="reference external" href="https://github.com/nextcloud/notifications/blob/5a2d3607952bad675e4057620a9c7de8a7f84f0b/docs/push-v3.md">Register a device for push notifications</a></p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../LoginFlow/index.html" class="btn btn-neutral float-right" title="Login Flow" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../WebDAV/chunking.html" class="btn btn-neutral float-left" title="Chunked file upload" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021 Nextcloud GmbH.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: 15
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/15/developer_manual">15</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/16/developer_manual">16</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/17/developer_manual">17</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/developer_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/developer_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+   
+
+</body>
+</html>

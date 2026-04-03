@@ -1,0 +1,99 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+HintException
+=============
+
+
+.. php:namespace:: OC
+
+.. php:class:: HintException
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Class HintException
+		
+		| An Exception class with the intention to be presented to the end user
+		
+	
+	:Source:
+		`lib/private/HintException.php#37 <https://github.com/nextcloud/server/blob/stable13/lib/private/HintException.php#L37>`_
+	
+	:Parent:
+		:php:class:`Exception`
+	
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $message, $hint="", $code=0, $previous=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| HintException constructor\.
+			
+		
+		:Source:
+			`lib/private/HintException.php#52 <https://github.com/nextcloud/server/blob/stable13/lib/private/HintException.php#L52>`_
+		
+		
+		:Parameters:
+			* **$message** (string)  The error message. It will be not revealed to the
+			the user (unless the hint is empty) and thus
+			should be not translated.
+			* **$hint** (string)  A useful message that is presented to the end
+			user. It should be translated, but must not
+			contain sensitive data.
+			* **$code** (int)  
+			* **$previous** (:any:`Exception <Exception>` | null)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public __toString()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns a string representation of this Exception that includes the error
+			| code, the message and the hint\.
+			
+		
+		:Source:
+			`lib/private/HintException.php#63 <https://github.com/nextcloud/server/blob/stable13/lib/private/HintException.php#L63>`_
+		
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getHint()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the hint with the intention to be presented to the end user\. If
+			| an empty hint was specified upon instatiation, the message is returned
+			| instead\.
+			
+		
+		:Source:
+			`lib/private/HintException.php#74 <https://github.com/nextcloud/server/blob/stable13/lib/private/HintException.php#L74>`_
+		
+		
+		:Returns: string 
+	
+	
+

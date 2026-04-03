@@ -1,0 +1,569 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Search &mdash; Nextcloud latest Developer Manual latest documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'latest',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Trashbin" href="trashbin.html" />
+    <link rel="prev" title="Basic APIs" href="basic.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html">
+          
+
+          
+            
+            <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../general/index.html">General contributor guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../design/index.html">Design guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../android_library/index.html">Android application development</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Client APIs</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Webdav</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="basic.html">Basic APIs</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Search</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#making-search-requests">Making search requests</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#supported-dav-properties">Supported DAV properties</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#search-scope">Search scope</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#examples-search-bodies">Examples search bodies</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="trashbin.html">Trashbin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="versions.html">Versions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="chunking.html">Chunked file upload</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../OCS/index.html">OCS API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../LoginFlow/index.html">Login Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../RemoteWipe/index.html">Remote wipe</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../core/index.html">Core development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../bugtracker/index.html">Bugtracker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../commun/index.html">Help and communication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api.html">API reference</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Nextcloud latest Developer Manual</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">Client APIs</a> &raquo;</li>
+        
+          <li><a href="index.html">Webdav</a> &raquo;</li>
+        
+      <li>Search</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/nextcloud/documentation/edit/master/developer_manual/client_apis/WebDAV/search.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="search">
+<span id="webdavsearch"></span><h1>Search<a class="headerlink" href="#search" title="Permalink to this headline">¶</a></h1>
+<p>Nextcloud implements <a class="reference external" href="https://tools.ietf.org/html/rfc5323">rfc5323</a> WebDAV search to allow clients to search for files on the server.
+WebDAV search allows for fairly complex search queries with filtering and sorting on multiple properties.</p>
+<p>This document describes how to use WebDAV search with a Nextcloud server and provides some example queries,
+full details of the api can be found at <a class="reference external" href="https://tools.ietf.org/html/rfc5323">rfc5323</a>.</p>
+<div class="section" id="making-search-requests">
+<h2>Making search requests<a class="headerlink" href="#making-search-requests" title="Permalink to this headline">¶</a></h2>
+<p>Search requests can be made by sending a <code class="code docutils literal"><span class="pre">SEARCH</span></code> http request to <code class="code docutils literal"><span class="pre">https://cloud.example.com/remote.php/dav/</span></code>
+with a content type of <code class="code docutils literal"><span class="pre">text/xml</span></code> and the query as xml in the request body.</p>
+<p>For example, to search for text files for the user &#8216;test&#8217;:</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span>curl -u username:password <span class="s1">&#39;https://cloud.example.com/remote.php/dav/&#39;</span> -X SEARCH -u test:test -H <span class="s2">&quot;content-Type: text/xml&quot;</span> --data <span class="s1">&#39;&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="s1"> &lt;d:searchrequest xmlns:d=&quot;DAV:&quot; xmlns:oc=&quot;http://owncloud.org/ns&quot;&gt;</span>
+<span class="s1">     &lt;d:basicsearch&gt;</span>
+<span class="s1">         &lt;d:select&gt;</span>
+<span class="s1">             &lt;d:prop&gt;</span>
+<span class="s1">                 &lt;oc:fileid/&gt;</span>
+<span class="s1">                 &lt;d:displayname/&gt;</span>
+<span class="s1">                 &lt;d:getcontenttype/&gt;</span>
+<span class="s1">                 &lt;d:getetag/&gt;</span>
+<span class="s1">                 &lt;oc:size/&gt;</span>
+<span class="s1">             &lt;/d:prop&gt;</span>
+<span class="s1">         &lt;/d:select&gt;</span>
+<span class="s1">         &lt;d:from&gt;</span>
+<span class="s1">             &lt;d:scope&gt;</span>
+<span class="s1">                 &lt;d:href&gt;/files/test&lt;/d:href&gt;</span>
+<span class="s1">                 &lt;d:depth&gt;infinity&lt;/d:depth&gt;</span>
+<span class="s1">             &lt;/d:scope&gt;</span>
+<span class="s1">         &lt;/d:from&gt;</span>
+<span class="s1">         &lt;d:where&gt;</span>
+<span class="s1">             &lt;d:like&gt;</span>
+<span class="s1">                 &lt;d:prop&gt;</span>
+<span class="s1">                     &lt;d:getcontenttype/&gt;</span>
+<span class="s1">                 &lt;/d:prop&gt;</span>
+<span class="s1">                 &lt;d:literal&gt;text/%&lt;/d:literal&gt;</span>
+<span class="s1">             &lt;/d:like&gt;</span>
+<span class="s1">         &lt;/d:where&gt;</span>
+<span class="s1">         &lt;d:orderby/&gt;</span>
+<span class="s1">    &lt;/d:basicsearch&gt;</span>
+<span class="s1">&lt;/d:searchrequest&gt;&#39;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="supported-dav-properties">
+<h2>Supported DAV properties<a class="headerlink" href="#supported-dav-properties" title="Permalink to this headline">¶</a></h2>
+<p>The following DAV properties are supported for use in either <code class="code docutils literal"><span class="pre">select</span></code>, <code class="code docutils literal"><span class="pre">where</span></code> and <code class="code docutils literal"><span class="pre">orderby</span></code>,
+not all properties can be used for each operation.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="37%" />
+<col width="27%" />
+<col width="10%" />
+<col width="10%" />
+<col width="8%" />
+<col width="8%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Property name</th>
+<th class="head">Description</th>
+<th class="head">Selectable</th>
+<th class="head">Searchable</th>
+<th class="head">Sortable</th>
+<th class="head">Type</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>{DAV:}displayname</td>
+<td>File name</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>String</td>
+</tr>
+<tr class="row-odd"><td>{DAV:}getcontenttype</td>
+<td>Mime type</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>String</td>
+</tr>
+<tr class="row-even"><td>{DAV:}getlastmodified</td>
+<td>Modified date</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>Datetime</td>
+</tr>
+<tr class="row-odd"><td>{<a class="reference external" href="http://owncloud.org/ns">http://owncloud.org/ns</a>}size</td>
+<td>File size or folder size</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>Integer</td>
+</tr>
+<tr class="row-even"><td>{<a class="reference external" href="http://owncloud.org/ns">http://owncloud.org/ns</a>}favorite</td>
+<td>Favorite status</td>
+<td>✓</td>
+<td>✓</td>
+<td>✓</td>
+<td>Boolean</td>
+</tr>
+<tr class="row-odd"><td>{<a class="reference external" href="http://owncloud.org/ns">http://owncloud.org/ns</a>}fileid</td>
+<td>Nextcloud file id</td>
+<td>✓</td>
+<td>✓</td>
+<td>❌</td>
+<td>Integer</td>
+</tr>
+<tr class="row-even"><td>{DAV:}resourcetype</td>
+<td>File or folder</td>
+<td>✓</td>
+<td>❌</td>
+<td>❌</td>
+<td>String</td>
+</tr>
+<tr class="row-odd"><td>{DAV:}getcontentlength</td>
+<td>File size, not for folders</td>
+<td>✓</td>
+<td>❌</td>
+<td>❌</td>
+<td>String</td>
+</tr>
+<tr class="row-even"><td>{<a class="reference external" href="http://owncloud.org/ns">http://owncloud.org/ns</a>}checksums</td>
+<td>Stored checksums for the file</td>
+<td>✓</td>
+<td>❌</td>
+<td>❌</td>
+<td>String</td>
+</tr>
+<tr class="row-odd"><td>{<a class="reference external" href="http://owncloud.org/ns">http://owncloud.org/ns</a>}permissions</td>
+<td>File permissions</td>
+<td>✓</td>
+<td>❌</td>
+<td>❌</td>
+<td>String</td>
+</tr>
+<tr class="row-even"><td>{DAV:}getetag</td>
+<td>File etag</td>
+<td>✓</td>
+<td>❌</td>
+<td>❌</td>
+<td>String</td>
+</tr>
+<tr class="row-odd"><td>{<a class="reference external" href="http://owncloud.org/ns">http://owncloud.org/ns</a>}owner-id</td>
+<td>File owner</td>
+<td>✓</td>
+<td>❌</td>
+<td>❌</td>
+<td>String</td>
+</tr>
+<tr class="row-even"><td>{<a class="reference external" href="http://owncloud.org/ns">http://owncloud.org/ns</a>}owner-display-name</td>
+<td>File owner display name</td>
+<td>✓</td>
+<td>❌</td>
+<td>❌</td>
+<td>String</td>
+</tr>
+<tr class="row-odd"><td>{<a class="reference external" href="http://owncloud.org/ns">http://owncloud.org/ns</a>}data-fingerprint</td>
+<td>Fingerprint for recovery status</td>
+<td>✓</td>
+<td>❌</td>
+<td>❌</td>
+<td>String</td>
+</tr>
+<tr class="row-even"><td>{<a class="reference external" href="http://nextcloud.org/ns">http://nextcloud.org/ns</a>}has-preview</td>
+<td>Preview status</td>
+<td>✓</td>
+<td>❌</td>
+<td>❌</td>
+<td>Boolean</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="search-scope">
+<h2>Search scope<a class="headerlink" href="#search-scope" title="Permalink to this headline">¶</a></h2>
+<p>All search queries are scoped to a single folder relative to the dav root.
+At the moment only search queries for files are supported meaning the the scope should always start with <code class="code docutils literal"><span class="pre">files/$username</span></code>.</p>
+<p>Inside the user&#8217;s files, any existing folder can be used as search scope.</p>
+</div>
+<div class="section" id="examples-search-bodies">
+<h2>Examples search bodies<a class="headerlink" href="#examples-search-bodies" title="Permalink to this headline">¶</a></h2>
+<p>Search for all plain text files in the folder <code class="code docutils literal"><span class="pre">Documents</span></code>, sorted by size.</p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="nt">&lt;d:searchrequest</span> <span class="na">xmlns:d=</span><span class="s">&quot;DAV:&quot;</span> <span class="na">xmlns:oc=</span><span class="s">&quot;http://owncloud.org/ns&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;d:basicsearch&gt;</span>
+        <span class="nt">&lt;d:select&gt;</span>
+            <span class="nt">&lt;d:prop&gt;</span>
+                <span class="nt">&lt;d:displayname/&gt;</span>
+            <span class="nt">&lt;/d:prop&gt;</span>
+        <span class="nt">&lt;/d:select&gt;</span>
+        <span class="nt">&lt;d:from&gt;</span>
+            <span class="nt">&lt;d:scope&gt;</span>
+                <span class="nt">&lt;d:href&gt;</span>/files/test/Documents<span class="nt">&lt;/d:href&gt;</span>
+                <span class="nt">&lt;d:depth&gt;</span>infinity<span class="nt">&lt;/d:depth&gt;</span>
+            <span class="nt">&lt;/d:scope&gt;</span>
+        <span class="nt">&lt;/d:from&gt;</span>
+        <span class="nt">&lt;d:where&gt;</span>
+            <span class="nt">&lt;d:like&gt;</span>
+                <span class="nt">&lt;d:prop&gt;</span>
+                    <span class="nt">&lt;d:getcontenttype/&gt;</span>
+                <span class="nt">&lt;/d:prop&gt;</span>
+                <span class="nt">&lt;d:literal&gt;</span>text/%<span class="nt">&lt;/d:literal&gt;</span>
+            <span class="nt">&lt;/d:like&gt;</span>
+        <span class="nt">&lt;/d:where&gt;</span>
+        <span class="nt">&lt;d:orderby&gt;</span>
+            <span class="nt">&lt;d:prop&gt;</span>
+                <span class="nt">&lt;oc:size/&gt;</span>
+            <span class="nt">&lt;/d:prop&gt;</span>
+            <span class="nt">&lt;d:ascending/&gt;</span>
+        <span class="nt">&lt;/d:orderby&gt;</span>
+    <span class="nt">&lt;/d:basicsearch&gt;</span>
+<span class="nt">&lt;/d:searchrequest&gt;</span>
+</pre></div>
+</div>
+<p>Get a file by id.</p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="nt">&lt;d:searchrequest</span> <span class="na">xmlns:d=</span><span class="s">&quot;DAV:&quot;</span> <span class="na">xmlns:oc=</span><span class="s">&quot;http://owncloud.org/ns&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;d:basicsearch&gt;</span>
+        <span class="nt">&lt;d:select&gt;</span>
+            <span class="nt">&lt;d:prop&gt;</span>
+                <span class="nt">&lt;d:displayname/&gt;</span>
+            <span class="nt">&lt;/d:prop&gt;</span>
+        <span class="nt">&lt;/d:select&gt;</span>
+        <span class="nt">&lt;d:from&gt;</span>
+            <span class="nt">&lt;d:scope&gt;</span>
+                <span class="nt">&lt;d:href&gt;</span>/files/test<span class="nt">&lt;/d:href&gt;</span>
+                <span class="nt">&lt;d:depth&gt;</span>infinity<span class="nt">&lt;/d:depth&gt;</span>
+            <span class="nt">&lt;/d:scope&gt;</span>
+        <span class="nt">&lt;/d:from&gt;</span>
+        <span class="nt">&lt;d:where&gt;</span>
+            <span class="nt">&lt;d:eq&gt;</span>
+                <span class="nt">&lt;d:prop&gt;</span>
+                    <span class="nt">&lt;oc:fileid/&gt;</span>
+                <span class="nt">&lt;/d:prop&gt;</span>
+                <span class="nt">&lt;d:literal&gt;</span>12345<span class="nt">&lt;/d:literal&gt;</span>
+            <span class="nt">&lt;/d:eq&gt;</span>
+        <span class="nt">&lt;/d:where&gt;</span>
+        <span class="nt">&lt;d:orderby/&gt;</span>
+    <span class="nt">&lt;/d:basicsearch&gt;</span>
+<span class="nt">&lt;/d:searchrequest&gt;</span>
+</pre></div>
+</div>
+<p>Get all png and jpg files over 10MB.</p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="nt">&lt;d:searchrequest</span> <span class="na">xmlns:d=</span><span class="s">&quot;DAV:&quot;</span> <span class="na">xmlns:oc=</span><span class="s">&quot;http://owncloud.org/ns&quot;</span><span class="nt">&gt;</span>
+    <span class="nt">&lt;d:basicsearch&gt;</span>
+        <span class="nt">&lt;d:select&gt;</span>
+            <span class="nt">&lt;d:prop&gt;</span>
+                <span class="nt">&lt;d:displayname/&gt;</span>
+            <span class="nt">&lt;/d:prop&gt;</span>
+        <span class="nt">&lt;/d:select&gt;</span>
+        <span class="nt">&lt;d:from&gt;</span>
+            <span class="nt">&lt;d:scope&gt;</span>
+                <span class="nt">&lt;d:href&gt;</span>/files/test<span class="nt">&lt;/d:href&gt;</span>
+                <span class="nt">&lt;d:depth&gt;</span>infinity<span class="nt">&lt;/d:depth&gt;</span>
+            <span class="nt">&lt;/d:scope&gt;</span>
+        <span class="nt">&lt;/d:from&gt;</span>
+        <span class="nt">&lt;d:where&gt;</span>
+            <span class="nt">&lt;d:and&gt;</span>
+                <span class="nt">&lt;d:or&gt;</span>
+                    <span class="nt">&lt;d:eq&gt;</span>
+                        <span class="nt">&lt;d:prop&gt;</span>
+                            <span class="nt">&lt;d:getcontenttype/&gt;</span>
+                        <span class="nt">&lt;/d:prop&gt;</span>
+                        <span class="nt">&lt;d:literal&gt;</span>image/png<span class="nt">&lt;/d:literal&gt;</span>
+                    <span class="nt">&lt;/d:eq&gt;</span>
+                    <span class="nt">&lt;d:eq&gt;</span>
+                        <span class="nt">&lt;d:prop&gt;</span>
+                            <span class="nt">&lt;d:getcontenttype/&gt;</span>
+                        <span class="nt">&lt;/d:prop&gt;</span>
+                        <span class="nt">&lt;d:literal&gt;</span>image/jpg<span class="nt">&lt;/d:literal&gt;</span>
+                    <span class="nt">&lt;/d:eq&gt;</span>
+                <span class="nt">&lt;/d:or&gt;</span>
+                    <span class="nt">&lt;d:gt&gt;</span>
+                        <span class="nt">&lt;d:prop&gt;</span>
+                            <span class="nt">&lt;oc:size/&gt;</span>
+                        <span class="nt">&lt;/d:prop&gt;</span>
+                        <span class="nt">&lt;d:literal&gt;</span>10000000<span class="nt">&lt;/d:literal&gt;</span>
+                    <span class="nt">&lt;/d:gt&gt;</span>
+            <span class="nt">&lt;/d:and&gt;</span>
+        <span class="nt">&lt;/d:where&gt;</span>
+        <span class="nt">&lt;d:orderby/&gt;</span>
+    <span class="nt">&lt;/d:basicsearch&gt;</span>
+<span class="nt">&lt;/d:searchrequest&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="trashbin.html" class="btn btn-neutral float-right" title="Trashbin" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="basic.html" class="btn btn-neutral float-left" title="Basic APIs" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021 Nextcloud GmbH.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/16/developer_manual">16</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/17/developer_manual">17</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/18/developer_manual">18</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/19/developer_manual">19</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/developer_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/developer_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+   
+
+</body>
+</html>

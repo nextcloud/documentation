@@ -1,0 +1,89 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+Limiter
+=======
+
+
+.. php:namespace:: OC\Security\RateLimiting
+
+.. php:class:: Limiter
+
+
+	:Source:
+		`lib/private/Security/RateLimiting/Limiter.php#36 <https://github.com/nextcloud/server/blob/stable13/lib/private/Security/RateLimiting/Limiter.php#L36>`_
+	
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $timeFactory, $backend)
+	
+		:Source:
+			`lib/private/Security/RateLimiting/Limiter.php#46 <https://github.com/nextcloud/server/blob/stable13/lib/private/Security/RateLimiting/Limiter.php#L46>`_
+		
+		
+		:Parameters:
+			* **$timeFactory** (:any:`OCP\\AppFramework\\Utility\\ITimeFactory <OCP\\AppFramework\\Utility\\ITimeFactory>`)  
+			* **$backend** (:any:`OC\\Security\\RateLimiting\\Backend\\IBackend <OC\\Security\\RateLimiting\\Backend\\IBackend>`)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public registerAnonRequest( $identifier, $anonLimit, $anonPeriod, $ip)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Registers attempt for an anonymous request
+			
+		
+		:Source:
+			`lib/private/Security/RateLimiting/Limiter.php#80 <https://github.com/nextcloud/server/blob/stable13/lib/private/Security/RateLimiting/Limiter.php#L80>`_
+		
+		
+		:Parameters:
+			* **$identifier** (string)  
+			* **$anonLimit** (int)  
+			* **$anonPeriod** (int)  
+			* **$ip** (string)  
+
+		
+		:Throws: :any:`\\OC\\Security\\RateLimiting\\Exception\\RateLimitExceededException <OC\\Security\\RateLimiting\\Exception\\RateLimitExceededException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public registerUserRequest( $identifier, $userLimit, $userPeriod, $user)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Registers attempt for an authenticated request
+			
+		
+		:Source:
+			`lib/private/Security/RateLimiting/Limiter.php#99 <https://github.com/nextcloud/server/blob/stable13/lib/private/Security/RateLimiting/Limiter.php#L99>`_
+		
+		
+		:Parameters:
+			* **$identifier** (string)  
+			* **$userLimit** (int)  
+			* **$userPeriod** (int)  
+			* **$user** (:any:`OCP\\IUser <OCP\\IUser>`)  
+
+		
+		:Throws: :any:`\\OC\\Security\\RateLimiting\\Exception\\RateLimitExceededException <OC\\Security\\RateLimiting\\Exception\\RateLimitExceededException>` 
+	
+	
+

@@ -1,0 +1,120 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+Updater
+=======
+
+
+.. php:namespace:: OC
+
+.. php:class:: Updater
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Class that handles autoupdating of ownCloud
+		
+		| Hooks provided in scope \\OC\\Updater
+		| \- maintenanceStart\(\)
+		| \- maintenanceEnd\(\)
+		| \- dbUpgrade\(\)
+		| \- failure\(string $message\)
+		
+	
+	:Source:
+		`lib/private/Updater.php#63 <https://github.com/nextcloud/server/blob/stable13/lib/private/Updater.php#L63>`_
+	
+	:Parent:
+		:php:class:`OC\\Hooks\\BasicEmitter`
+	
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $config, $checker, $log, $installer)
+	
+		:Source:
+			`lib/private/Updater.php#85 <https://github.com/nextcloud/server/blob/stable13/lib/private/Updater.php#L85>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public upgrade()
+	
+		.. rst-class:: phpdoc-description
+		
+			| runs the update actions in maintenance mode, does not upgrade the source files
+			| except the main \.htaccess file
+			
+		
+		:Source:
+			`lib/private/Updater.php#101 <https://github.com/nextcloud/server/blob/stable13/lib/private/Updater.php#L101>`_
+		
+		
+		:Returns: bool true if the operation succeeded, false otherwise
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isUpgradePossible( $oldVersion, $newVersion, $allowedPreviousVersions)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Whether an upgrade to a specified version is possible
+			
+		
+		:Source:
+			`lib/private/Updater.php#192 <https://github.com/nextcloud/server/blob/stable13/lib/private/Updater.php#L192>`_
+		
+		
+		:Parameters:
+			* **$oldVersion** (string)  
+			* **$newVersion** (string)  
+			* **$allowedPreviousVersions** (array)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected doCoreUpgrade()
+	
+		:Source:
+			`lib/private/Updater.php#302 <https://github.com/nextcloud/server/blob/stable13/lib/private/Updater.php#L302>`_
+		
+		
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected doAppUpgrade()
+	
+		.. rst-class:: phpdoc-description
+		
+			| upgrades all apps within a major ownCloud upgrade\. Also loads "priority"
+			| \(types authentication, filesystem, logging, in that order\) afterwards\.
+			
+		
+		:Source:
+			`lib/private/Updater.php#318 <https://github.com/nextcloud/server/blob/stable13/lib/private/Updater.php#L318>`_
+		
+		
+		:Throws: :any:`\\OC\\NeedsUpdateException <OC\\NeedsUpdateException>` 
+	
+	
+

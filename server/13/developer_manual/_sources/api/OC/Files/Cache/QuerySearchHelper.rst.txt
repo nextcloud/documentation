@@ -1,0 +1,137 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+QuerySearchHelper
+=================
+
+
+.. php:namespace:: OC\Files\Cache
+
+.. php:class:: QuerySearchHelper
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Tools for transforming search queries into database queries
+		
+	
+	:Source:
+		`lib/private/Files/Cache/QuerySearchHelper.php#39 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/QuerySearchHelper.php#L39>`_
+	
+
+Constants
+---------
+
+.. php:const:: TAG_FAVORITE = \_$\!<Favorite\>\!$\_
+
+	:Source:
+		`lib/private/Files/Cache/QuerySearchHelper.php#58 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/QuerySearchHelper.php#L58>`_
+	
+
+
+Properties
+----------
+
+.. php:attr:: protected searchOperatorMap
+
+	:Source:
+		`lib/private/Files/Cache/QuerySearchHelper.php#40 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/QuerySearchHelper.php#L40>`_
+	
+
+
+.. php:attr:: protected searchOperatorNegativeMap
+
+	:Source:
+		`lib/private/Files/Cache/QuerySearchHelper.php#49 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/QuerySearchHelper.php#L49>`_
+	
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $mimetypeLoader)
+	
+		.. rst-class:: phpdoc-description
+		
+			| QuerySearchUtil constructor\.
+			
+		
+		:Source:
+			`lib/private/Files/Cache/QuerySearchHelper.php#68 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/QuerySearchHelper.php#L68>`_
+		
+		
+		:Parameters:
+			* **$mimetypeLoader** (:any:`OCP\\Files\\IMimeTypeLoader <OCP\\Files\\IMimeTypeLoader>`)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public shouldJoinTags( $operator)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Whether or not the tag tables should be joined to complete the search
+			
+		
+		:Source:
+			`lib/private/Files/Cache/QuerySearchHelper.php#78 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/QuerySearchHelper.php#L78>`_
+		
+		
+		:Parameters:
+			* **$operator** (:any:`OCP\\Files\\Search\\ISearchOperator <OCP\\Files\\Search\\ISearchOperator>`)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public searchOperatorArrayToDBExprArray( $builder, $operators)
+	
+		:Source:
+			`lib/private/Files/Cache/QuerySearchHelper.php#93 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/QuerySearchHelper.php#L93>`_
+		
+		
+		:Parameters:
+			* **$builder** (:any:`OCP\\DB\\QueryBuilder\\IQueryBuilder <OCP\\DB\\QueryBuilder\\IQueryBuilder>`)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public searchOperatorToDBExpr( $builder, $operator)
+	
+		:Source:
+			`lib/private/Files/Cache/QuerySearchHelper.php#99 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/QuerySearchHelper.php#L99>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public addSearchOrdersToQuery( $query, $orders)
+	
+		:Source:
+			`lib/private/Files/Cache/QuerySearchHelper.php#226 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/QuerySearchHelper.php#L226>`_
+		
+		
+		:Parameters:
+			* **$query** (:any:`OCP\\DB\\QueryBuilder\\IQueryBuilder <OCP\\DB\\QueryBuilder\\IQueryBuilder>`)  
+			* **$orders** (:any:`OCP\\Files\\Search\\ISearchOrder\[\] <OCP\\Files\\Search\\ISearchOrder>`)  
+
+		
+	
+	
+

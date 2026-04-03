@@ -1,0 +1,252 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IJobList
+========
+
+
+.. php:namespace:: OCP\BackgroundJob
+
+.. php:interface:: IJobList
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Interface IJobList
+		
+		| This interface provides functions to register background jobs
+		| 
+		| To create a new background job create a new class that inherits from either
+		| \\OC\\BackgroundJob\\Job, \\OC\\BackgroundJob\\QueuedJob or
+		| \\OC\\BackgroundJob\\TimedJob and register it using \-\>add\($job, $argument\),
+		| $argument will be passed to the run\(\) function of the job when the job is
+		| executed\.
+		| 
+		| A regular job will be executed every time cron\.php is run, a QueuedJob will
+		| only run once and a TimedJob will only run at a specific interval which is to
+		| be specified in the constructor of the job by calling
+		| $this\-\>setInterval\($interval\) with $interval in seconds\.
+		
+	
+	:Implemented by:
+		:php:class:`OC\\BackgroundJob\\JobList` 
+	
+	
+	:Source:
+		`lib/public/BackgroundJob/IJobList.php#47 <https://github.com/nextcloud/server/blob/stable13/lib/public/BackgroundJob/IJobList.php#L47>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public add( $job, $argument=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Add a job to the list
+			
+		
+		:Source:
+			`lib/public/BackgroundJob/IJobList.php#55 <https://github.com/nextcloud/server/blob/stable13/lib/public/BackgroundJob/IJobList.php#L55>`_
+		
+		
+		:Parameters:
+			* **$job** (:any:`OCP\\BackgroundJob\\IJob <OCP\\BackgroundJob\\IJob>` | string)  
+			* **$argument** (mixed)  The argument to be passed to $job->run() when the job is exectured
+
+		
+		:Since: 7.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public remove( $job, $argument=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Remove a job from the list
+			
+		
+		:Source:
+			`lib/public/BackgroundJob/IJobList.php#64 <https://github.com/nextcloud/server/blob/stable13/lib/public/BackgroundJob/IJobList.php#L64>`_
+		
+		
+		:Parameters:
+			* **$job** (:any:`OCP\\BackgroundJob\\IJob <OCP\\BackgroundJob\\IJob>` | string)  
+			* **$argument** (mixed)  
+
+		
+		:Since: 7.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public has( $job, $argument)
+	
+		.. rst-class:: phpdoc-description
+		
+			| check if a job is in the list
+			
+		
+		:Source:
+			`lib/public/BackgroundJob/IJobList.php#74 <https://github.com/nextcloud/server/blob/stable13/lib/public/BackgroundJob/IJobList.php#L74>`_
+		
+		
+		:Parameters:
+			* **$job** (:any:`OCP\\BackgroundJob\\IJob <OCP\\BackgroundJob\\IJob>` | string)  
+			* **$argument** (mixed)  
+
+		
+		:Returns: bool 
+		:Since: 7.0.0 
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public getAll()
+	
+		.. rst-class:: phpdoc-description
+		
+			| get all jobs in the list
+			
+		
+		:Source:
+			`lib/public/BackgroundJob/IJobList.php#84 <https://github.com/nextcloud/server/blob/stable13/lib/public/BackgroundJob/IJobList.php#L84>`_
+		
+		
+		:Returns: :any:`\\OCP\\BackgroundJob\\IJob\[\] <OCP\\BackgroundJob\\IJob>` 
+		:Since: 7.0.0 
+		:Deprecated: 9.0.0 \- This method is dangerous since it can cause load and
+			memory problems when creating too many instances\.
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getNext()
+	
+		.. rst-class:: phpdoc-description
+		
+			| get the next job in the list
+			
+		
+		:Source:
+			`lib/public/BackgroundJob/IJobList.php#92 <https://github.com/nextcloud/server/blob/stable13/lib/public/BackgroundJob/IJobList.php#L92>`_
+		
+		
+		:Returns: :any:`\\OCP\\BackgroundJob\\IJob <OCP\\BackgroundJob\\IJob>` | null 
+		:Since: 7.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getById( $id)
+	
+		:Source:
+			`lib/public/BackgroundJob/IJobList.php#99 <https://github.com/nextcloud/server/blob/stable13/lib/public/BackgroundJob/IJobList.php#L99>`_
+		
+		
+		:Parameters:
+			* **$id** (int)  
+
+		
+		:Returns: :any:`\\OCP\\BackgroundJob\\IJob <OCP\\BackgroundJob\\IJob>` | null 
+		:Since: 7.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setLastJob( $job)
+	
+		.. rst-class:: phpdoc-description
+		
+			| set the job that was last ran to the current time
+			
+		
+		:Source:
+			`lib/public/BackgroundJob/IJobList.php#107 <https://github.com/nextcloud/server/blob/stable13/lib/public/BackgroundJob/IJobList.php#L107>`_
+		
+		
+		:Parameters:
+			* **$job** (:any:`OCP\\BackgroundJob\\IJob <OCP\\BackgroundJob\\IJob>`)  
+
+		
+		:Since: 7.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public unlockJob( $job)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Remove the reservation for a job
+			
+		
+		:Source:
+			`lib/public/BackgroundJob/IJobList.php#115 <https://github.com/nextcloud/server/blob/stable13/lib/public/BackgroundJob/IJobList.php#L115>`_
+		
+		
+		:Parameters:
+			* **$job** (:any:`OCP\\BackgroundJob\\IJob <OCP\\BackgroundJob\\IJob>`)  
+
+		
+		:Since: 9.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setLastRun( $job)
+	
+		.. rst-class:: phpdoc-description
+		
+			| set the lastRun of $job to now
+			
+		
+		:Source:
+			`lib/public/BackgroundJob/IJobList.php#123 <https://github.com/nextcloud/server/blob/stable13/lib/public/BackgroundJob/IJobList.php#L123>`_
+		
+		
+		:Parameters:
+			* **$job** (:any:`OCP\\BackgroundJob\\IJob <OCP\\BackgroundJob\\IJob>`)  
+
+		
+		:Since: 7.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setExecutionTime( $job, $timeTaken)
+	
+		.. rst-class:: phpdoc-description
+		
+			| set the run duration of $job
+			
+		
+		:Source:
+			`lib/public/BackgroundJob/IJobList.php#132 <https://github.com/nextcloud/server/blob/stable13/lib/public/BackgroundJob/IJobList.php#L132>`_
+		
+		
+		:Parameters:
+			* **$job** (:any:`OCP\\BackgroundJob\\IJob <OCP\\BackgroundJob\\IJob>`)  
+			* **$timeTaken**  
+
+		
+		:Since: 12.0.0 
+	
+	
+

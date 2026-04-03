@@ -1,0 +1,520 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Configuring memory caching &mdash; Nextcloud 13 Administration Manual 13 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'13',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Defining background jobs" href="background_jobs_configuration.html" />
+    <link rel="prev" title="Configuring the activity app" href="activity_configuration.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../contents.html">
+          
+
+          
+            
+            <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Server configuration</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="security_setup_warnings.html">Warnings on admin page</a></li>
+<li class="toctree-l2"><a class="reference internal" href="occ_command.html">Using the occ command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="activity_configuration.html">Configuring the activity app</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Configuring memory caching</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">APCu</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Memcached</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Redis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cache-directory-location">Cache Directory location</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#recommendations-based-on-type-of-deployment">Recommendations based on type of deployment</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#small-private-home-server">Small/Private home server</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#small-organization-single-server-setup">Small organization, single-server setup</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#large-organization-clustered-setup">Large organization, clustered setup</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#additional-notes-for-redis-vs-apcu-on-memory-caching">Additional notes for Redis vs. APCu on memory caching</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#additional-redis-installation-help">Additional Redis installation help</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="background_jobs_configuration.html">Defining background jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_sample_php_parameters.html">Configuration Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="email_configuration.html">Email configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="external_sites.html">Linking external sites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="language_configuration.html">Language configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logging_configuration.html">Logging configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="harden_server.html">Hardening and security guidance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reverse_proxy_configuration.html">Reverse proxy configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="thirdparty_php_configuration.html">Using third party PHP components</a></li>
+<li class="toctree-l2"><a class="reference internal" href="automatic_configuration.html">Automatic configuration setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="server_tuning.html">Server tuning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="theming.html">Theming</a></li>
+<li class="toctree-l2"><a class="reference internal" href="oauth2.html">OAuth2</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_user/index.html">User management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_files/index.html">File sharing and management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../file_workflows/index.html">File workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_database/index.html">Database configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_mimetypes/index.html">Mimetypes management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../maintenance/index.html">Maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../issues/index.html">Issues and troubleshooting</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud 13 Administration Manual</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../contents.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Server configuration</a> &raquo;</li>
+        
+      <li>Configuring memory caching</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/nextcloud/documentation/edit/stable13/admin_manual/configuration_server/caching_configuration.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="configuring-memory-caching">
+<h1>Configuring memory caching<a class="headerlink" href="#configuring-memory-caching" title="Permalink to this headline">¶</a></h1>
+<p>You can significantly improve your Nextcloud server performance with memory
+caching, where frequently-requested objects are stored in memory for faster
+retrieval. There are two types of caches to use: a PHP opcode cache, which is
+commonly called <em>opcache</em>, and data caching for your Web server. If you do not
+install and enable a local memcache you will see a warning on your Nextcloud
+admin page. <strong>A memcache is not required and you may safely ignore the warning
+if you prefer.</strong></p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If you enable only a distributed cache in
+your <code class="docutils literal"><span class="pre">config.php</span></code> (<code class="docutils literal"><span class="pre">memcache.distributed</span></code>) and not a
+local cache (<code class="docutils literal"><span class="pre">memcache.local</span></code>) you will still see the cache warning.</p>
+</div>
+<p>A PHP opcache stores compiled PHP scripts so they don&#8217;t need to be re-compiled
+every time they are called. PHP bundles the Zend OPcache in core since version
+5.5, so you don&#8217;t need to install an opcache manually.</p>
+<p>Data caching is supplied by the user (APCu), Memcached or Redis.</p>
+<p>Nextcloud supports multiple memory caching backends, so you can choose the type
+of memcache that best fits your needs. The supported caching backends are:</p>
+<ul class="simple">
+<li><dl class="first docutils">
+<dt><a class="reference external" href="https://pecl.php.net/package/APCu">APCu</a>, APCu 4.0.6 and up required.</dt>
+<dd>A local cache for systems.</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><a class="reference external" href="http://www.memcached.org/">Memcached</a></dt>
+<dd>Distributed cache for multi-server Nextcloud installations.</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><a class="reference external" href="http://redis.io/">Redis</a>, PHP module 2.2.6 and up required.</dt>
+<dd>For distributed caching.</dd>
+</dl>
+</li>
+</ul>
+<p>Memcaches must be explicitly configured in Nextcloud by installing
+and enabling your desired cache, and then adding the appropriate entry to
+<code class="docutils literal"><span class="pre">config.php</span></code> (See <a class="reference internal" href="config_sample_php_parameters.html"><span class="doc">Configuration Parameters</span></a> for an overview of
+all possible config parameters).</p>
+<p>You may use both a local and a distributed cache. Recommended caches are APCu
+and Redis. After installing and enabling your chosen memcache, verify that it is
+active by running <a class="reference internal" href="../issues/general_troubleshooting.html#label-phpinfo"><span class="std std-ref">PHP version and information</span></a>.</p>
+<div class="section" id="id1">
+<h2>APCu<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>PHP 5.5 and up include the Zend OPcache in core, and on most Linux
+distributions it is enabled by default. However, it does
+not bundle a data cache. APCu is a data cache, and it is available in most
+Linux distributions. On Red Hat/CentOS/Fedora systems install
+<code class="docutils literal"><span class="pre">php-pecl-apcu</span></code>. On Debian/Ubuntu/Mint systems install <code class="docutils literal"><span class="pre">php-apcu</span></code>.
+On Ubuntu 14.04 LTS, the APCu version (4.0.2) is too old to use with Nextcloud (requires 4.0.6+).
+You may install 4.0.7 from Ubuntu backports with this command:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">php5</span><span class="o">-</span><span class="n">apcu</span><span class="o">/</span><span class="n">trusty</span><span class="o">-</span><span class="n">backports</span>
+</pre></div>
+</div>
+<p>Then restart your Web server.</p>
+<p>After restarting your Web server, add this line to your <code class="docutils literal"><span class="pre">config.php</span></code> file:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="s1">&#39;memcache.local&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;\OC\Memcache\APCu&#39;</span><span class="p">,</span>
+</pre></div>
+</div>
+<p>Refresh your Nextcloud admin page, and the cache warning should disappear.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">APCu is disabled by default on CLI which could cause issues with nextcloud&#8217;s
+cron jobs. Please make sure you set the <code class="docutils literal"><span class="pre">apc.enable_cli</span></code> to <code class="docutils literal"><span class="pre">1</span></code> on your <code class="docutils literal"><span class="pre">php.ini</span></code>
+config file.</p>
+</div>
+</div>
+<div class="section" id="id2">
+<h2>Memcached<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>Memcached is a reliable oldtimer for shared caching on distributed servers,
+and performs well with Nextcloud with one exception: it is not suitable to use
+with <a class="reference internal" href="../configuration_files/files_locking_transactional.html"><span class="doc">Transactional File Locking</span></a>
+because it does not store locks, and data can disappear from the cache at any time
+(Redis is the best memcache for this).</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Be sure to install the <strong>memcached</strong> PHP module, and not memcache, as
+in the following examples. Nextcloud supports only the <strong>memcached</strong> PHP
+module.</p>
+</div>
+<p>Setting up Memcached is easy. On Debian/Ubuntu/Mint install <code class="docutils literal"><span class="pre">memcached</span></code> and
+<code class="docutils literal"><span class="pre">php5-memcached</span></code>. The installer will automatically start <code class="docutils literal"><span class="pre">memcached</span></code> and
+configure it to launch at startup.</p>
+<p>On Red Hat/CentOS/Fedora install <code class="docutils literal"><span class="pre">memcached</span></code> and
+<code class="docutils literal"><span class="pre">php-pecl-memcached</span></code>. It will not start automatically, so you must use
+your service manager to start <code class="docutils literal"><span class="pre">memcached</span></code>, and to launch it at boot as a
+daemon.</p>
+<p>You can verify that the Memcached daemon is running with <code class="docutils literal"><span class="pre">ps</span> <span class="pre">ax</span></code>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>ps ax | grep memcached
+19563 ? Sl 0:02 /usr/bin/memcached -m 64 -p 11211 -u memcache -l
+127.0.0.1
+</pre></div>
+</div>
+<p>Restart your Web server, add the appropriate entries to your
+<code class="docutils literal"><span class="pre">config.php</span></code>, and refresh your Nextcloud admin page. This example uses APCu
+for the local cache, Memcached as the distributed memcache, and lists all the
+servers in the shared cache pool with their port numbers:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="s1">&#39;memcache.local&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;\OC\Memcache\APCu&#39;</span><span class="p">,</span>
+<span class="s1">&#39;memcache.distributed&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;\OC\Memcache\Memcached&#39;</span><span class="p">,</span>
+<span class="s1">&#39;memcached_servers&#39;</span> <span class="o">=&gt;</span> <span class="n">array</span><span class="p">(</span>
+     <span class="n">array</span><span class="p">(</span><span class="s1">&#39;localhost&#39;</span><span class="p">,</span> <span class="mi">11211</span><span class="p">),</span>
+     <span class="n">array</span><span class="p">(</span><span class="s1">&#39;server1.example.com&#39;</span><span class="p">,</span> <span class="mi">11211</span><span class="p">),</span>
+     <span class="n">array</span><span class="p">(</span><span class="s1">&#39;server2.example.com&#39;</span><span class="p">,</span> <span class="mi">11211</span><span class="p">),</span>
+     <span class="p">),</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="id3">
+<h2>Redis<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<p>Redis is an excellent modern memcache to use for both distributed caching, and
+as a local cache for <a class="reference internal" href="../configuration_files/files_locking_transactional.html"><span class="doc">Transactional File Locking</span></a> because it guarantees
+that cached objects are available for as long as they are needed.</p>
+<p>The Redis PHP module must be version 2.2.6+. If you are running a Linux
+distribution that does not package the supported versions of this module, or
+does not package Redis at all, see <a class="reference internal" href="#install-redis-label"><span class="std std-ref">Additional Redis installation help</span></a>.</p>
+<p>On Debian/Ubuntu/Mint install <code class="docutils literal"><span class="pre">redis-server</span></code> and <code class="docutils literal"><span class="pre">php-redis</span></code>. The installer
+will automatically launch <code class="docutils literal"><span class="pre">redis-server</span></code> and configure it to launch at
+startup.</p>
+<p>On CentOS and Fedora install <code class="docutils literal"><span class="pre">redis</span></code> and <code class="docutils literal"><span class="pre">php-pecl-redis</span></code>. It will not
+start automatically, so you must use your service manager to start
+<code class="docutils literal"><span class="pre">redis</span></code>, and to launch it at boot as a daemon.</p>
+<p>You can verify that the Redis daemon is running with <code class="docutils literal"><span class="pre">ps</span> <span class="pre">ax</span></code>:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>ps ax | grep redis
+22203 ? Ssl    0:00 /usr/bin/redis-server 127.0.0.1:6379
+</pre></div>
+</div>
+<p>Restart your Web server, add the appropriate entries to your <code class="docutils literal"><span class="pre">config.php</span></code>, and
+refresh your Nextcloud admin page. This example <code class="docutils literal"><span class="pre">config.php</span></code> configuration uses
+Redis for the local server cache:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="s1">&#39;memcache.local&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;\OC\Memcache\Redis&#39;</span><span class="p">,</span>
+<span class="s1">&#39;redis&#39;</span> <span class="o">=&gt;</span> <span class="n">array</span><span class="p">(</span>
+     <span class="s1">&#39;host&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;localhost&#39;</span><span class="p">,</span>
+     <span class="s1">&#39;port&#39;</span> <span class="o">=&gt;</span> <span class="mi">6379</span><span class="p">,</span>
+      <span class="p">),</span>
+</pre></div>
+</div>
+<p>For best performance, use Redis for file locking by adding this:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="s1">&#39;memcache.locking&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;\OC\Memcache\Redis&#39;</span><span class="p">,</span>
+</pre></div>
+</div>
+<p>If you want to connect to Redis configured to listen on an Unix socket (which is
+recommended if Redis is running on the same system as Nextcloud) use this example
+<code class="docutils literal"><span class="pre">config.php</span></code> configuration:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="s1">&#39;memcache.local&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;\OC\Memcache\Redis&#39;</span><span class="p">,</span>
+<span class="s1">&#39;redis&#39;</span> <span class="o">=&gt;</span> <span class="n">array</span><span class="p">(</span>
+     <span class="s1">&#39;host&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/var/run/redis/redis.sock&#39;</span><span class="p">,</span>
+     <span class="s1">&#39;port&#39;</span> <span class="o">=&gt;</span> <span class="mi">0</span><span class="p">,</span>
+     <span class="s1">&#39;dbindex&#39;</span> <span class="o">=&gt;</span> <span class="mi">0</span><span class="p">,</span>
+     <span class="s1">&#39;password&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;secret&#39;</span><span class="p">,</span>
+     <span class="s1">&#39;timeout&#39;</span> <span class="o">=&gt;</span> <span class="mf">1.5</span><span class="p">,</span>
+      <span class="p">),</span>
+</pre></div>
+</div>
+<p>Only &#8220;host&#8221; and &#8220;port&#8221; variables are required, the other ones are optional.</p>
+<p>Redis is very configurable; consult <a class="reference external" href="http://redis.io/documentation">the Redis documentation</a> to learn more.</p>
+</div>
+<div class="section" id="cache-directory-location">
+<h2>Cache Directory location<a class="headerlink" href="#cache-directory-location" title="Permalink to this headline">¶</a></h2>
+<p>The cache directory defaults to <code class="docutils literal"><span class="pre">data/$user/cache</span></code> where <code class="docutils literal"><span class="pre">$user</span></code> is the
+current user. You may use the <code class="docutils literal"><span class="pre">'cache_path'</span></code> directive in <code class="docutils literal"><span class="pre">config.php</span></code>
+(See <a class="reference internal" href="config_sample_php_parameters.html"><span class="doc">Configuration Parameters</span></a>) to select a different location.</p>
+</div>
+<div class="section" id="recommendations-based-on-type-of-deployment">
+<h2>Recommendations based on type of deployment<a class="headerlink" href="#recommendations-based-on-type-of-deployment" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="small-private-home-server">
+<h3>Small/Private home server<a class="headerlink" href="#small-private-home-server" title="Permalink to this headline">¶</a></h3>
+<p>Only use APCu:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="s1">&#39;memcache.local&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;\OC\Memcache\APCu&#39;</span><span class="p">,</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="small-organization-single-server-setup">
+<h3>Small organization, single-server setup<a class="headerlink" href="#small-organization-single-server-setup" title="Permalink to this headline">¶</a></h3>
+<p>Use APCu for local caching, Redis for file locking:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="s1">&#39;memcache.local&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;\OC\Memcache\APCu&#39;</span><span class="p">,</span>
+<span class="s1">&#39;memcache.locking&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;\OC\Memcache\Redis&#39;</span><span class="p">,</span>
+ <span class="s1">&#39;redis&#39;</span> <span class="o">=&gt;</span> <span class="n">array</span><span class="p">(</span>
+      <span class="s1">&#39;host&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;localhost&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;port&#39;</span> <span class="o">=&gt;</span> <span class="mi">6379</span><span class="p">,</span>
+       <span class="p">),</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="large-organization-clustered-setup">
+<h3>Large organization, clustered setup<a class="headerlink" href="#large-organization-clustered-setup" title="Permalink to this headline">¶</a></h3>
+<p>Use Redis for everything except local memcache:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="s1">&#39;memcache.distributed&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;\OC\Memcache\Redis&#39;</span><span class="p">,</span>
+<span class="s1">&#39;memcache.locking&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;\OC\Memcache\Redis&#39;</span><span class="p">,</span>
+<span class="s1">&#39;memcache.local&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;\OC\Memcache\APCu&#39;</span><span class="p">,</span>
+<span class="s1">&#39;redis&#39;</span> <span class="o">=&gt;</span> <span class="n">array</span><span class="p">(</span>
+     <span class="s1">&#39;host&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;localhost&#39;</span><span class="p">,</span>
+     <span class="s1">&#39;port&#39;</span> <span class="o">=&gt;</span> <span class="mi">6379</span><span class="p">,</span>
+      <span class="p">),</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="additional-notes-for-redis-vs-apcu-on-memory-caching">
+<h3>Additional notes for Redis vs. APCu on memory caching<a class="headerlink" href="#additional-notes-for-redis-vs-apcu-on-memory-caching" title="Permalink to this headline">¶</a></h3>
+<p>APCu is faster at local caching than Redis. If you have enough memory, use APCu for Memory Caching
+and Redis for File Locking. If you are low on memory, use Redis for both.</p>
+</div>
+</div>
+<div class="section" id="additional-redis-installation-help">
+<span id="install-redis-label"></span><h2>Additional Redis installation help<a class="headerlink" href="#additional-redis-installation-help" title="Permalink to this headline">¶</a></h2>
+<p>If your version of Mint or Ubuntu does not package the required version of
+<code class="docutils literal"><span class="pre">php5-redis</span></code>, then try <a class="reference external" href="https://www.techandme.se/install-redis-cache-on-ubuntu-server-with-php-7-and-nextcloud/">this Redis guide on Tech and Me</a> for a complete Redis installation on Ubuntu 14.04 using PECL.
+These instructions are adaptable for any distro that does not package the
+supported version, or that does not package Redis at all, such as SUSE Linux
+Enterprise Server and Red Hat Enterprise Linux.</p>
+<p>The Redis PHP module must be at least version 2.2.6. Please note that
+the Redis PHP module versions 2.2.x will only work for PHP 5.6.x.</p>
+<p>For PHP 7.0 and PHP 7.1 use Redis PHP module 3.1.x or later.</p>
+<p>See <a class="reference external" href="https://pecl.php.net/package/redis">https://pecl.php.net/package/redis</a></p>
+<p>On Debian/Mint/Ubuntu, use <code class="docutils literal"><span class="pre">apt-cache</span></code> to see the available
+<code class="docutils literal"><span class="pre">php5-redis</span></code> version, or the version of your installed package:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">apt</span><span class="o">-</span><span class="n">cache</span> <span class="n">policy</span> <span class="n">php5</span><span class="o">-</span><span class="n">redis</span>
+</pre></div>
+</div>
+<p>On CentOS and Fedora, the <code class="docutils literal"><span class="pre">yum</span></code> command shows available and installed version
+information:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">yum</span> <span class="n">search</span> <span class="n">php</span><span class="o">-</span><span class="n">pecl</span><span class="o">-</span><span class="n">redis</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="background_jobs_configuration.html" class="btn btn-neutral float-right" title="Defining background jobs" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="activity_configuration.html" class="btn btn-neutral float-left" title="Configuring the activity app" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021 Nextcloud GmbH.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: 13
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/13/admin_manual">13</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/14/admin_manual">14</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/15/admin_manual">15</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/admin_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/admin_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+   
+
+</body>
+</html>

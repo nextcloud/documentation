@@ -1,0 +1,256 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+SubAdmin
+========
+
+
+.. php:namespace:: OC
+
+.. php:class:: SubAdmin
+
+
+	:Source:
+		`lib/private/SubAdmin.php#45 <https://github.com/nextcloud/server/blob/stable13/lib/private/SubAdmin.php#L45>`_
+	
+	:Parent:
+		:php:class:`OC\\Hooks\\PublicEmitter`
+	
+	:Implements:
+		:php:interface:`OCP\\Group\\ISubAdmin` 
+	
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $userManager, $groupManager, $dbConn, $eventDispatcher)
+	
+		:Source:
+			`lib/private/SubAdmin.php#64 <https://github.com/nextcloud/server/blob/stable13/lib/private/SubAdmin.php#L64>`_
+		
+		
+		:Parameters:
+			* **$userManager** (:any:`OCP\\IUserManager <OCP\\IUserManager>`)  
+			* **$groupManager** (:any:`OCP\\IGroupManager <OCP\\IGroupManager>`)  
+			* **$dbConn** (:any:`OCP\\IDBConnection <OCP\\IDBConnection>`)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public createSubAdmin( $user, $group)
+	
+		.. rst-class:: phpdoc-description
+		
+			| add a SubAdmin
+			
+		
+		:Source:
+			`lib/private/SubAdmin.php#86 <https://github.com/nextcloud/server/blob/stable13/lib/private/SubAdmin.php#L86>`_
+		
+		
+		:Parameters:
+			* **$user** (:any:`OCP\\IUser <OCP\\IUser>`)  user to be SubAdmin
+			* **$group** (:any:`OCP\\IGroup <OCP\\IGroup>`)  group $user becomes subadmin of
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public deleteSubAdmin( $user, $group)
+	
+		.. rst-class:: phpdoc-description
+		
+			| delete a SubAdmin
+			
+		
+		:Source:
+			`lib/private/SubAdmin.php#107 <https://github.com/nextcloud/server/blob/stable13/lib/private/SubAdmin.php#L107>`_
+		
+		
+		:Parameters:
+			* **$user** (:any:`OCP\\IUser <OCP\\IUser>`)  the user that is the SubAdmin
+			* **$group** (:any:`OCP\\IGroup <OCP\\IGroup>`)  the group
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getSubAdminsGroups( $user)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get groups of a SubAdmin
+			
+		
+		:Source:
+			`lib/private/SubAdmin.php#126 <https://github.com/nextcloud/server/blob/stable13/lib/private/SubAdmin.php#L126>`_
+		
+		
+		:Parameters:
+			* **$user** (:any:`OCP\\IUser <OCP\\IUser>`)  the SubAdmin
+
+		
+		:Returns: :any:`\\OCP\\IGroup\[\] <OCP\\IGroup>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getSubAdminsGroupIds( $user)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get group ids of a SubAdmin
+			
+		
+		:Source:
+			`lib/private/SubAdmin.php#145 <https://github.com/nextcloud/server/blob/stable13/lib/private/SubAdmin.php#L145>`_
+		
+		
+		:Parameters:
+			* **$user** (:any:`OCP\\IUser <OCP\\IUser>`)  the SubAdmin
+
+		
+		:Returns: string[] 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getSubAdminsGroupsName( $user)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get an array of groupid and displayName for a user
+			
+		
+		:Source:
+			`lib/private/SubAdmin.php#167 <https://github.com/nextcloud/server/blob/stable13/lib/private/SubAdmin.php#L167>`_
+		
+		
+		:Parameters:
+			* **$user** (:any:`OCP\\IUser <OCP\\IUser>`)  
+
+		
+		:Returns: array \[\'displayName\' =\> displayname\]
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getGroupsSubAdmins( $group)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get SubAdmins of a group
+			
+		
+		:Source:
+			`lib/private/SubAdmin.php#178 <https://github.com/nextcloud/server/blob/stable13/lib/private/SubAdmin.php#L178>`_
+		
+		
+		:Parameters:
+			* **$group** (:any:`OCP\\IGroup <OCP\\IGroup>`)  the group
+
+		
+		:Returns: :any:`\\OCP\\IUser\[\] <OCP\\IUser>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getAllSubAdmins()
+	
+		.. rst-class:: phpdoc-description
+		
+			| get all SubAdmins
+			
+		
+		:Source:
+			`lib/private/SubAdmin.php#202 <https://github.com/nextcloud/server/blob/stable13/lib/private/SubAdmin.php#L202>`_
+		
+		
+		:Returns: array 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isSubAdminOfGroup( $user, $group)
+	
+		.. rst-class:: phpdoc-description
+		
+			| checks if a user is a SubAdmin of a group
+			
+		
+		:Source:
+			`lib/private/SubAdmin.php#231 <https://github.com/nextcloud/server/blob/stable13/lib/private/SubAdmin.php#L231>`_
+		
+		
+		:Parameters:
+			* **$user** (:any:`OCP\\IUser <OCP\\IUser>`)  
+			* **$group** (:any:`OCP\\IGroup <OCP\\IGroup>`)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isSubAdmin( $user)
+	
+		.. rst-class:: phpdoc-description
+		
+			| checks if a user is a SubAdmin
+			
+		
+		:Source:
+			`lib/private/SubAdmin.php#255 <https://github.com/nextcloud/server/blob/stable13/lib/private/SubAdmin.php#L255>`_
+		
+		
+		:Parameters:
+			* **$user** (:any:`OCP\\IUser <OCP\\IUser>`)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isUserAccessible( $subadmin, $user)
+	
+		.. rst-class:: phpdoc-description
+		
+			| checks if a user is a accessible by a subadmin
+			
+		
+		:Source:
+			`lib/private/SubAdmin.php#281 <https://github.com/nextcloud/server/blob/stable13/lib/private/SubAdmin.php#L281>`_
+		
+		
+		:Parameters:
+			* **$subadmin** (:any:`OCP\\IUser <OCP\\IUser>`)  
+			* **$user** (:any:`OCP\\IUser <OCP\\IUser>`)  
+
+		
+		:Returns: bool 
+	
+	
+

@@ -1,0 +1,144 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+ILockingProvider
+================
+
+
+.. php:namespace:: OCP\Lock
+
+.. php:interface:: ILockingProvider
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Interface ILockingProvider
+		
+	
+	:Implemented by:
+		:php:class:`OC\\Lock\\NoopLockingProvider` :php:class:`OC\\Lock\\AbstractLockingProvider` 
+	
+	
+	:Source:
+		`lib/public/Lock/ILockingProvider.php#36 <https://github.com/nextcloud/server/blob/stable13/lib/public/Lock/ILockingProvider.php#L36>`_
+	
+
+Constants
+---------
+
+.. php:const:: LOCK_SHARED = 1
+
+	:Source:
+		`lib/public/Lock/ILockingProvider.php#40 <https://github.com/nextcloud/server/blob/stable13/lib/public/Lock/ILockingProvider.php#L40>`_
+	
+	:Since: 8.1.0 
+
+
+.. php:const:: LOCK_EXCLUSIVE = 2
+
+	:Source:
+		`lib/public/Lock/ILockingProvider.php#44 <https://github.com/nextcloud/server/blob/stable13/lib/public/Lock/ILockingProvider.php#L44>`_
+	
+	:Since: 8.1.0 
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public isLocked( $path, $type)
+	
+		:Source:
+			`lib/public/Lock/ILockingProvider.php#52 <https://github.com/nextcloud/server/blob/stable13/lib/public/Lock/ILockingProvider.php#L52>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+			* **$type** (int)  self::LOCK_SHARED or self::LOCK_EXCLUSIVE
+
+		
+		:Returns: bool 
+		:Since: 8.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public acquireLock( $path, $type, $readablePath=null)
+	
+		:Source:
+			`lib/public/Lock/ILockingProvider.php#61 <https://github.com/nextcloud/server/blob/stable13/lib/public/Lock/ILockingProvider.php#L61>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+			* **$type** (int)  self::LOCK_SHARED or self::LOCK_EXCLUSIVE
+			* **$readablePath** (string)  human readable path to use in error messages, since 20.0.0
+
+		
+		:Throws: :any:`\\OCP\\Lock\\LockedException <OCP\\Lock\\LockedException>` 
+		:Since: 8.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public releaseLock( $path, $type)
+	
+		:Source:
+			`lib/public/Lock/ILockingProvider.php#68 <https://github.com/nextcloud/server/blob/stable13/lib/public/Lock/ILockingProvider.php#L68>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+			* **$type** (int)  self::LOCK_SHARED or self::LOCK_EXCLUSIVE
+
+		
+		:Since: 8.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public changeLock( $path, $targetType)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Change the type of an existing lock
+			
+		
+		:Source:
+			`lib/public/Lock/ILockingProvider.php#78 <https://github.com/nextcloud/server/blob/stable13/lib/public/Lock/ILockingProvider.php#L78>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+			* **$targetType** (int)  self::LOCK_SHARED or self::LOCK_EXCLUSIVE
+
+		
+		:Throws: :any:`\\OCP\\Lock\\LockedException <OCP\\Lock\\LockedException>` 
+		:Since: 8.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public releaseAll()
+	
+		.. rst-class:: phpdoc-description
+		
+			| release all lock acquired by this instance
+			
+		
+		:Source:
+			`lib/public/Lock/ILockingProvider.php#84 <https://github.com/nextcloud/server/blob/stable13/lib/public/Lock/ILockingProvider.php#L84>`_
+		
+		
+		:Since: 8.1.0 
+	
+	
+

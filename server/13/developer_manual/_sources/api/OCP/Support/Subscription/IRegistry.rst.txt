@@ -1,0 +1,142 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IRegistry
+=========
+
+
+.. php:namespace:: OCP\Support\Subscription
+
+.. php:interface:: IRegistry
+
+
+	:Implemented by:
+		:php:class:`OC\\Support\\Subscription\\Registry` 
+	
+	
+	:Source:
+		`lib/public/Support/Subscription/IRegistry.php#36 <https://github.com/nextcloud/server/blob/stable13/lib/public/Support/Subscription/IRegistry.php#L36>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public register( $subscription)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Register a subscription instance\. In case it is called multiple times an
+			| exception is thrown
+			
+		
+		:Source:
+			`lib/public/Support/Subscription/IRegistry.php#48 <https://github.com/nextcloud/server/blob/stable13/lib/public/Support/Subscription/IRegistry.php#L48>`_
+		
+		
+		:Parameters:
+			* **$subscription** (:any:`OCP\\Support\\Subscription\\ISubscription <OCP\\Support\\Subscription\\ISubscription>`)  
+
+		
+		:Throws: :any:`\\OCP\\Support\\Subscription\\Exception\\AlreadyRegisteredException <OCP\\Support\\Subscription\\Exception\\AlreadyRegisteredException>` 
+		:Since: 17.0.0 
+		:Deprecated: 20.0.0 use registerService
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public registerService( $subscriptionService)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Register a subscription handler\. The service has to implement the ISubscription interface\.
+			
+			| In case this is called multiple times an exception is thrown\.
+			
+		
+		:Source:
+			`lib/public/Support/Subscription/IRegistry.php#59 <https://github.com/nextcloud/server/blob/stable13/lib/public/Support/Subscription/IRegistry.php#L59>`_
+		
+		
+		:Parameters:
+			* **$subscriptionService** (string)  
+
+		
+		:Throws: :any:`\\OCP\\Support\\Subscription\\Exception\\AlreadyRegisteredException <OCP\\Support\\Subscription\\Exception\\AlreadyRegisteredException>` 
+		:Since: 20.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public delegateGetSupportedApps()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Fetches the list of app IDs that are supported by the subscription
+			
+		
+		:Source:
+			`lib/public/Support/Subscription/IRegistry.php#66 <https://github.com/nextcloud/server/blob/stable13/lib/public/Support/Subscription/IRegistry.php#L66>`_
+		
+		
+		:Since: 17.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public delegateHasValidSubscription()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Indicates if a valid subscription is available
+			
+		
+		:Source:
+			`lib/public/Support/Subscription/IRegistry.php#73 <https://github.com/nextcloud/server/blob/stable13/lib/public/Support/Subscription/IRegistry.php#L73>`_
+		
+		
+		:Since: 17.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public delegateHasExtendedSupport()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Indicates if the subscription has extended support
+			
+		
+		:Source:
+			`lib/public/Support/Subscription/IRegistry.php#80 <https://github.com/nextcloud/server/blob/stable13/lib/public/Support/Subscription/IRegistry.php#L80>`_
+		
+		
+		:Since: 17.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public delegateIsHardUserLimitReached()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Indicates if a hard user limit is reached and no new users should be created
+			
+		
+		:Source:
+			`lib/public/Support/Subscription/IRegistry.php#87 <https://github.com/nextcloud/server/blob/stable13/lib/public/Support/Subscription/IRegistry.php#L87>`_
+		
+		
+		:Since: 21.0.0 
+	
+	
+

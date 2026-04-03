@@ -1,0 +1,233 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+Exception
+=========
+
+
+.. php:namespace:: OCP\DB
+
+.. php:class:: Exception
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Database exception
+		
+		| Thrown by Nextcloud\'s database abstraction layer\. This is the base class that
+		| any specific exception will extend\. Use this class in your try\-catch to catch
+		| \*any\* error related to the database\. Use any of the subclasses in the same
+		| namespace if you are only interested in specific errors\.
+		
+	
+	:Source:
+		`lib/public/DB/Exception.php#41 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/Exception.php#L41>`_
+	
+	:Parent:
+		:php:class:`Exception`
+	
+
+Constants
+---------
+
+.. php:const:: REASON_CONNECTION_LOST = 1
+
+	.. rst-class:: phpdoc-description
+	
+		| Nextcloud lost connection to the database
+		
+	
+	:Source:
+		`lib/public/DB/Exception.php#48 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/Exception.php#L48>`_
+	
+	:Since: 21.0.0 
+
+
+.. php:const:: REASON_CONSTRAINT_VIOLATION = 2
+
+	.. rst-class:: phpdoc-description
+	
+		| A database constraint was violated
+		
+	
+	:Source:
+		`lib/public/DB/Exception.php#55 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/Exception.php#L55>`_
+	
+	:Since: 21.0.0 
+
+
+.. php:const:: REASON_DATABASE_OBJECT_EXISTS = 3
+
+	.. rst-class:: phpdoc-description
+	
+		| A database object \(table, column, index\) already exists
+		
+	
+	:Source:
+		`lib/public/DB/Exception.php#62 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/Exception.php#L62>`_
+	
+	:Since: 21.0.0 
+
+
+.. php:const:: REASON_DATABASE_OBJECT_NOT_FOUND = 4
+
+	.. rst-class:: phpdoc-description
+	
+		| A database object \(table, column, index\) can\'t be found
+		
+	
+	:Source:
+		`lib/public/DB/Exception.php#69 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/Exception.php#L69>`_
+	
+	:Since: 21.0.0 
+
+
+.. php:const:: REASON_DEADLOCK = 5
+
+	.. rst-class:: phpdoc-description
+	
+		| The database ran into a deadlock
+		
+	
+	:Source:
+		`lib/public/DB/Exception.php#76 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/Exception.php#L76>`_
+	
+	:Since: 21.0.0 
+
+
+.. php:const:: REASON_DRIVER = 6
+
+	.. rst-class:: phpdoc-description
+	
+		| The database driver encountered an issue
+		
+	
+	:Source:
+		`lib/public/DB/Exception.php#83 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/Exception.php#L83>`_
+	
+	:Since: 21.0.0 
+
+
+.. php:const:: REASON_FOREIGN_KEY_VIOLATION = 7
+
+	.. rst-class:: phpdoc-description
+	
+		| A foreign key constraint was violated
+		
+	
+	:Source:
+		`lib/public/DB/Exception.php#90 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/Exception.php#L90>`_
+	
+	:Since: 21.0.0 
+
+
+.. php:const:: REASON_INVALID_ARGUMENT = 8
+
+	.. rst-class:: phpdoc-description
+	
+		| An invalid argument was passed to the database abstraction
+		
+	
+	:Source:
+		`lib/public/DB/Exception.php#97 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/Exception.php#L97>`_
+	
+	:Since: 21.0.0 
+
+
+.. php:const:: REASON_INVALID_FIELD_NAME = 9
+
+	.. rst-class:: phpdoc-description
+	
+		| A field name was invalid
+		
+	
+	:Source:
+		`lib/public/DB/Exception.php#104 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/Exception.php#L104>`_
+	
+	:Since: 21.0.0 
+
+
+.. php:const:: REASON_NON_UNIQUE_FIELD_NAME = 10
+
+	.. rst-class:: phpdoc-description
+	
+		| A name in the query was ambiguous
+		
+	
+	:Source:
+		`lib/public/DB/Exception.php#111 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/Exception.php#L111>`_
+	
+	:Since: 21.0.0 
+
+
+.. php:const:: REASON_NOT_NULL_CONSTRAINT_VIOLATION = 11
+
+	.. rst-class:: phpdoc-description
+	
+		| A not null contraint was violated
+		
+	
+	:Source:
+		`lib/public/DB/Exception.php#118 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/Exception.php#L118>`_
+	
+	:Since: 21.0.0 
+
+
+.. php:const:: REASON_SERVER = 12
+
+	.. rst-class:: phpdoc-description
+	
+		| A generic server error was encountered
+		
+	
+	:Source:
+		`lib/public/DB/Exception.php#125 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/Exception.php#L125>`_
+	
+	:Since: 21.0.0 
+
+
+.. php:const:: REASON_SYNTAX_ERROR = 13
+
+	.. rst-class:: phpdoc-description
+	
+		| A syntax error was reported by the server
+		
+	
+	:Source:
+		`lib/public/DB/Exception.php#132 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/Exception.php#L132>`_
+	
+	:Since: 21.0.0 
+
+
+.. php:const:: REASON_UNIQUE_CONSTRAINT_VIOLATION = 14
+
+	.. rst-class:: phpdoc-description
+	
+		| A unique constraint was violated
+		
+	
+	:Source:
+		`lib/public/DB/Exception.php#139 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/Exception.php#L139>`_
+	
+	:Since: 21.0.0 
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public getReason()
+	
+		:Source:
+			`lib/public/DB/Exception.php#146 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/Exception.php#L146>`_
+		
+		
+		:Returns: int | null 
+		:Since: 21.0.0 
+	
+	
+

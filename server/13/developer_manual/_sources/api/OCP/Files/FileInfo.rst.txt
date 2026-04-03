@@ -1,0 +1,578 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+FileInfo
+========
+
+
+.. php:namespace:: OCP\Files
+
+.. php:interface:: FileInfo
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Interface FileInfo
+		
+	
+	:Implemented by:
+		:php:class:`OC\\Files\\FileInfo` 
+	
+	
+	:Source:
+		`lib/public/Files/FileInfo.php#37 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/FileInfo.php#L37>`_
+	
+
+Constants
+---------
+
+.. php:const:: TYPE_FILE = file
+
+	:Source:
+		`lib/public/Files/FileInfo.php#41 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/FileInfo.php#L41>`_
+	
+	:Since: 7.0.0 
+
+
+.. php:const:: TYPE_FOLDER = dir
+
+	:Source:
+		`lib/public/Files/FileInfo.php#45 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/FileInfo.php#L45>`_
+	
+	:Since: 7.0.0 
+
+
+.. php:const:: SPACE_NOT_COMPUTED = \-1
+
+	:Source:
+		`lib/public/Files/FileInfo.php#51 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/FileInfo.php#L51>`_
+	
+	:Since: 8.0.0 
+
+
+.. php:const:: SPACE_UNKNOWN = \-2
+
+	:Source:
+		`lib/public/Files/FileInfo.php#56 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/FileInfo.php#L56>`_
+	
+	:Since: 8.0.0 
+
+
+.. php:const:: SPACE_UNLIMITED = \-3
+
+	:Source:
+		`lib/public/Files/FileInfo.php#61 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/FileInfo.php#L61>`_
+	
+	:Since: 8.0.0 
+
+
+.. php:const:: MIMETYPE_FOLDER = httpd/unix\-directory
+
+	:Source:
+		`lib/public/Files/FileInfo.php#66 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/FileInfo.php#L66>`_
+	
+	:Since: 9.1.0 
+
+
+.. php:const:: BLACKLIST_FILES_REGEX = \\\.\(part\|filepart\)$
+
+	:Source:
+		`lib/public/Files/FileInfo.php#72 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/FileInfo.php#L72>`_
+	
+	:Since: 12.0.0 
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public getEtag()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the Etag of the file or folder
+			
+		
+		:Source:
+			`lib/public/Files/FileInfo.php#80 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/FileInfo.php#L80>`_
+		
+		
+		:Returns: string 
+		:Since: 7.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getSize( $includeMounts=true)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the size in bytes for the file or folder
+			
+		
+		:Source:
+			`lib/public/Files/FileInfo.php#89 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/FileInfo.php#L89>`_
+		
+		
+		:Parameters:
+			* **$includeMounts** (bool)  whether or not to include the size of any sub mounts, since 16.0.0
+
+		
+		:Returns: int 
+		:Since: 7.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getMtime()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the last modified date as timestamp for the file or folder
+			
+		
+		:Source:
+			`lib/public/Files/FileInfo.php#97 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/FileInfo.php#L97>`_
+		
+		
+		:Returns: int 
+		:Since: 7.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getName()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the name of the file or folder
+			
+		
+		:Source:
+			`lib/public/Files/FileInfo.php#105 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/FileInfo.php#L105>`_
+		
+		
+		:Returns: string 
+		:Since: 7.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getInternalPath()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the path relative to the storage
+			
+		
+		:Source:
+			`lib/public/Files/FileInfo.php#113 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/FileInfo.php#L113>`_
+		
+		
+		:Returns: string 
+		:Since: 7.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getPath()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the absolute path
+			
+		
+		:Source:
+			`lib/public/Files/FileInfo.php#121 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/FileInfo.php#L121>`_
+		
+		
+		:Returns: string 
+		:Since: 7.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getMimetype()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the full mimetype of the file or folder i\.e\. \'image/png\'
+			
+		
+		:Source:
+			`lib/public/Files/FileInfo.php#129 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/FileInfo.php#L129>`_
+		
+		
+		:Returns: string 
+		:Since: 7.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getMimePart()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the first part of the mimetype of the file or folder i\.e\. \'image\'
+			
+		
+		:Source:
+			`lib/public/Files/FileInfo.php#137 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/FileInfo.php#L137>`_
+		
+		
+		:Returns: string 
+		:Since: 7.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getStorage()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the storage the file or folder is storage on
+			
+		
+		:Source:
+			`lib/public/Files/FileInfo.php#145 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/FileInfo.php#L145>`_
+		
+		
+		:Returns: :any:`\\OCP\\Files\\Storage <OCP\\Files\\Storage>` 
+		:Since: 7.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getId()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the file id of the file or folder
+			
+		
+		:Source:
+			`lib/public/Files/FileInfo.php#153 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/FileInfo.php#L153>`_
+		
+		
+		:Returns: int | null 
+		:Since: 7.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isEncrypted()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check whether the file is encrypted
+			
+		
+		:Source:
+			`lib/public/Files/FileInfo.php#161 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/FileInfo.php#L161>`_
+		
+		
+		:Returns: bool 
+		:Since: 7.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getPermissions()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the permissions of the file or folder as bitmasked combination of the following constants
+			| \\OCP\\Constants::PERMISSION\_CREATE
+			| \\OCP\\Constants::PERMISSION\_READ
+			| \\OCP\\Constants::PERMISSION\_UPDATE
+			| \\OCP\\Constants::PERMISSION\_DELETE
+			| \\OCP\\Constants::PERMISSION\_SHARE
+			| \\OCP\\Constants::PERMISSION\_ALL
+			
+		
+		:Source:
+			`lib/public/Files/FileInfo.php#175 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/FileInfo.php#L175>`_
+		
+		
+		:Returns: int 
+		:Since: 7.0.0 \- namespace of constants has changed in 8\.0\.0
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getType()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check whether this is a file or a folder
+			
+		
+		:Source:
+			`lib/public/Files/FileInfo.php#183 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/FileInfo.php#L183>`_
+		
+		
+		:Returns: string \\OCP\\Files\\FileInfo::TYPE\_FILE\|\\OCP\\Files\\FileInfo::TYPE\_FOLDER
+		:Since: 7.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isReadable()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check if the file or folder is readable
+			
+		
+		:Source:
+			`lib/public/Files/FileInfo.php#191 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/FileInfo.php#L191>`_
+		
+		
+		:Returns: bool 
+		:Since: 7.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isUpdateable()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check if a file is writable
+			
+		
+		:Source:
+			`lib/public/Files/FileInfo.php#199 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/FileInfo.php#L199>`_
+		
+		
+		:Returns: bool 
+		:Since: 7.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isCreatable()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check whether new files or folders can be created inside this folder
+			
+		
+		:Source:
+			`lib/public/Files/FileInfo.php#207 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/FileInfo.php#L207>`_
+		
+		
+		:Returns: bool 
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isDeletable()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check if a file or folder can be deleted
+			
+		
+		:Source:
+			`lib/public/Files/FileInfo.php#215 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/FileInfo.php#L215>`_
+		
+		
+		:Returns: bool 
+		:Since: 7.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isShareable()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check if a file or folder can be shared
+			
+		
+		:Source:
+			`lib/public/Files/FileInfo.php#223 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/FileInfo.php#L223>`_
+		
+		
+		:Returns: bool 
+		:Since: 7.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isShared()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check if a file or folder is shared
+			
+		
+		:Source:
+			`lib/public/Files/FileInfo.php#231 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/FileInfo.php#L231>`_
+		
+		
+		:Returns: bool 
+		:Since: 7.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isMounted()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check if a file or folder is mounted
+			
+		
+		:Source:
+			`lib/public/Files/FileInfo.php#239 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/FileInfo.php#L239>`_
+		
+		
+		:Returns: bool 
+		:Since: 7.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getMountPoint()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the mountpoint the file belongs to
+			
+		
+		:Source:
+			`lib/public/Files/FileInfo.php#247 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/FileInfo.php#L247>`_
+		
+		
+		:Returns: :any:`\\OCP\\Files\\Mount\\IMountPoint <OCP\\Files\\Mount\\IMountPoint>` 
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getOwner()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the owner of the file
+			
+		
+		:Source:
+			`lib/public/Files/FileInfo.php#255 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/FileInfo.php#L255>`_
+		
+		
+		:Returns: :any:`\\OCP\\IUser <OCP\\IUser>` 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getChecksum()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the stored checksum for this file
+			
+		
+		:Source:
+			`lib/public/Files/FileInfo.php#263 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/FileInfo.php#L263>`_
+		
+		
+		:Returns: string 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getExtension()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the extension of the file
+			
+		
+		:Source:
+			`lib/public/Files/FileInfo.php#271 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/FileInfo.php#L271>`_
+		
+		
+		:Returns: string 
+		:Since: 15.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getCreationTime()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the creation date as unix timestamp
+			
+			| If the creation time is not known, 0 will be returned
+			| 
+			| creation time is not set automatically by the server and is generally only available
+			| for files uploaded by the sync clients
+			
+		
+		:Source:
+			`lib/public/Files/FileInfo.php#284 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/FileInfo.php#L284>`_
+		
+		
+		:Returns: int 
+		:Since: 18.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getUploadTime()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the upload date as unix timestamp
+			
+			| If the upload time is not known, 0 will be returned
+			| 
+			| Upload time will be set automatically by the server for files uploaded over DAV
+			| files created by Nextcloud apps generally do not have an the upload time set
+			
+		
+		:Source:
+			`lib/public/Files/FileInfo.php#297 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/FileInfo.php#L297>`_
+		
+		
+		:Returns: int 
+		:Since: 18.0.0 
+	
+	
+

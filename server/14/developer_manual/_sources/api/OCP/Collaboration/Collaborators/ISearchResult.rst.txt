@@ -1,0 +1,147 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+ISearchResult
+=============
+
+
+.. php:namespace:: OCP\Collaboration\Collaborators
+
+.. php:interface:: ISearchResult
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Interface ISearchResult
+		
+	
+	:Implemented by:
+		:php:class:`OC\\Collaboration\\Collaborators\\SearchResult` 
+	
+	
+	:Source:
+		`lib/public/Collaboration/Collaborators/ISearchResult.php#31 <https://github.com/nextcloud/server/blob/stable13/lib/public/Collaboration/Collaborators/ISearchResult.php#L31>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public addResultSet( $type, $matches, $exactMatches=null)
+	
+		:Source:
+			`lib/public/Collaboration/Collaborators/ISearchResult.php#38 <https://github.com/nextcloud/server/blob/stable13/lib/public/Collaboration/Collaborators/ISearchResult.php#L38>`_
+		
+		
+		:Parameters:
+			* **$type** (:any:`OCP\\Collaboration\\Collaborators\\SearchResultType <OCP\\Collaboration\\Collaborators\\SearchResultType>`)  
+			* **$matches** (array)  
+			* **$exactMatches** (array | null)  
+
+		
+		:Since: 13.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public hasResult( $type, $collaboratorId)
+	
+		:Source:
+			`lib/public/Collaboration/Collaborators/ISearchResult.php#46 <https://github.com/nextcloud/server/blob/stable13/lib/public/Collaboration/Collaborators/ISearchResult.php#L46>`_
+		
+		
+		:Parameters:
+			* **$type** (:any:`OCP\\Collaboration\\Collaborators\\SearchResultType <OCP\\Collaboration\\Collaborators\\SearchResultType>`)  
+			* **$collaboratorId** (string)  
+
+		
+		:Returns: bool 
+		:Since: 13.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public removeCollaboratorResult( $type, $collaboratorId)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Removes all result where $collaborationId exactly matches shareWith of
+			| any of wide and exact result matches of the given type\.
+			
+		
+		:Source:
+			`lib/public/Collaboration/Collaborators/ISearchResult.php#54 <https://github.com/nextcloud/server/blob/stable13/lib/public/Collaboration/Collaborators/ISearchResult.php#L54>`_
+		
+		
+		:Since: 22.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public unsetResult( $type)
+	
+		:Source:
+			`lib/public/Collaboration/Collaborators/ISearchResult.php#60 <https://github.com/nextcloud/server/blob/stable13/lib/public/Collaboration/Collaborators/ISearchResult.php#L60>`_
+		
+		
+		:Parameters:
+			* **$type** (:any:`OCP\\Collaboration\\Collaborators\\SearchResultType <OCP\\Collaboration\\Collaborators\\SearchResultType>`)  
+
+		
+		:Since: 13.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public markExactIdMatch( $type)
+	
+		:Source:
+			`lib/public/Collaboration/Collaborators/ISearchResult.php#66 <https://github.com/nextcloud/server/blob/stable13/lib/public/Collaboration/Collaborators/ISearchResult.php#L66>`_
+		
+		
+		:Parameters:
+			* **$type** (:any:`OCP\\Collaboration\\Collaborators\\SearchResultType <OCP\\Collaboration\\Collaborators\\SearchResultType>`)  
+
+		
+		:Since: 13.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public hasExactIdMatch( $type)
+	
+		:Source:
+			`lib/public/Collaboration/Collaborators/ISearchResult.php#73 <https://github.com/nextcloud/server/blob/stable13/lib/public/Collaboration/Collaborators/ISearchResult.php#L73>`_
+		
+		
+		:Parameters:
+			* **$type** (:any:`OCP\\Collaboration\\Collaborators\\SearchResultType <OCP\\Collaboration\\Collaborators\\SearchResultType>`)  
+
+		
+		:Returns: bool 
+		:Since: 13.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public asArray()
+	
+		:Source:
+			`lib/public/Collaboration/Collaborators/ISearchResult.php#79 <https://github.com/nextcloud/server/blob/stable13/lib/public/Collaboration/Collaborators/ISearchResult.php#L79>`_
+		
+		
+		:Returns: array 
+		:Since: 13.0.0 
+	
+	
+

@@ -1,0 +1,114 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+ILanguageIterator
+=================
+
+
+.. php:namespace:: OCP\L10N
+
+.. php:interface:: ILanguageIterator
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Interface ILanguageIterator
+		
+		| iterator across language settings \(if provided\) in this order:
+		| 1\. returns the forced language or:
+		| 2\. if applicable, the trunk of 1 \(e\.g\. "fu" instead of "fu\_BAR"
+		| 3\. returns the user language or:
+		| 4\. if applicable, the trunk of 3
+		| 5\. returns the system default language or:
+		| 6\. if applicable, the trunk of 5
+		| 7\+∞\. returns \'en\'
+		| 
+		| if settings are not present or truncating is not applicable, the iterator
+		| skips to the next valid item itself
+		
+	
+	:Implemented by:
+		:php:class:`OC\\L10N\\LanguageIterator` 
+	
+	
+	:Source:
+		`lib/public/L10N/ILanguageIterator.php#44 <https://github.com/nextcloud/server/blob/stable13/lib/public/L10N/ILanguageIterator.php#L44>`_
+	
+	:Parent:
+		:php:interface:`Iterator`
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public current()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Return the current element
+			
+		
+		:Source:
+			`lib/public/L10N/ILanguageIterator.php#51 <https://github.com/nextcloud/server/blob/stable13/lib/public/L10N/ILanguageIterator.php#L51>`_
+		
+		
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public next()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Move forward to next element
+			
+		
+		:Source:
+			`lib/public/L10N/ILanguageIterator.php#58 <https://github.com/nextcloud/server/blob/stable13/lib/public/L10N/ILanguageIterator.php#L58>`_
+		
+		
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public key()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Return the key of the current element
+			
+		
+		:Source:
+			`lib/public/L10N/ILanguageIterator.php#65 <https://github.com/nextcloud/server/blob/stable13/lib/public/L10N/ILanguageIterator.php#L65>`_
+		
+		
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public valid()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Checks if current position is valid
+			
+		
+		:Source:
+			`lib/public/L10N/ILanguageIterator.php#72 <https://github.com/nextcloud/server/blob/stable13/lib/public/L10N/ILanguageIterator.php#L72>`_
+		
+		
+		:Since: 14.0.0 
+	
+	
+

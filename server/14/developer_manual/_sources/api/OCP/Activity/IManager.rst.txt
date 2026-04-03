@@ -1,0 +1,335 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IManager
+========
+
+
+.. php:namespace:: OCP\Activity
+
+.. php:interface:: IManager
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Interface IManager
+		
+	
+	:Implemented by:
+		:php:class:`OC\\Activity\\Manager` 
+	
+	
+	:Source:
+		`lib/public/Activity/IManager.php#37 <https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IManager.php#L37>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public generateEvent()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Generates a new IEvent object
+			
+			| Make sure to call at least the following methods before sending it to the
+			| app with via the publish\(\) method:
+			|  \- setApp\(\)
+			|  \- setType\(\)
+			|  \- setAffectedUser\(\)
+			|  \- setSubject\(\)
+			|  \- setObject\(\)
+			
+		
+		:Source:
+			`lib/public/Activity/IManager.php#52 <https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IManager.php#L52>`_
+		
+		
+		:Returns: :any:`\\OCP\\Activity\\IEvent <OCP\\Activity\\IEvent>` 
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public publish( $event)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Publish an event to the activity consumers
+			
+			| Make sure to call at least the following methods before sending an Event:
+			| \- setApp\(\)
+			| \- setType\(\)
+			| \- setAffectedUser\(\)
+			| \- setSubject\(\)
+			| \- setObject\(\)
+			
+		
+		:Source:
+			`lib/public/Activity/IManager.php#68 <https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IManager.php#L68>`_
+		
+		
+		:Parameters:
+			* **$event** (:any:`OCP\\Activity\\IEvent <OCP\\Activity\\IEvent>`)  
+
+		
+		:Throws: :any:`\\BadMethodCallException <BadMethodCallException>` if required values have not been set
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public registerConsumer( $callable)
+	
+		.. rst-class:: phpdoc-description
+		
+			| In order to improve lazy loading a closure can be registered which will be called in case
+			| activity consumers are actually requested
+			
+			| $callable has to return an instance of \\OCP\\Activity\\IConsumer
+			
+		
+		:Source:
+			`lib/public/Activity/IManager.php#79 <https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IManager.php#L79>`_
+		
+		
+		:Parameters:
+			* **$callable** (:any:`Closure <Closure>`)  
+
+		
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public registerFilter( $filter)
+	
+		:Source:
+			`lib/public/Activity/IManager.php#85 <https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IManager.php#L85>`_
+		
+		
+		:Parameters:
+			* **$filter** (string)  Class must implement OCA\Activity\IFilter
+
+		
+		:Since: 11.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getFilters()
+	
+		:Source:
+			`lib/public/Activity/IManager.php#91 <https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IManager.php#L91>`_
+		
+		
+		:Returns: :any:`\\OCP\\Activity\\IFilter\[\] <OCP\\Activity\\IFilter>` 
+		:Since: 11.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getFilterById( $id)
+	
+		:Source:
+			`lib/public/Activity/IManager.php#99 <https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IManager.php#L99>`_
+		
+		
+		:Parameters:
+			* **$id** (string)  
+
+		
+		:Returns: :any:`\\OCP\\Activity\\IFilter <OCP\\Activity\\IFilter>` 
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` when the filter was not found
+		:Since: 11.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public registerSetting( $setting)
+	
+		:Source:
+			`lib/public/Activity/IManager.php#105 <https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IManager.php#L105>`_
+		
+		
+		:Parameters:
+			* **$setting** (string)  Class must implement OCA\Activity\ISetting
+
+		
+		:Since: 11.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getSettings()
+	
+		:Source:
+			`lib/public/Activity/IManager.php#111 <https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IManager.php#L111>`_
+		
+		
+		:Returns: :any:`\\OCP\\Activity\\ActivitySettings\[\] <OCP\\Activity\\ActivitySettings>` 
+		:Since: 11.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public registerProvider( $provider)
+	
+		:Source:
+			`lib/public/Activity/IManager.php#117 <https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IManager.php#L117>`_
+		
+		
+		:Parameters:
+			* **$provider** (string)  Class must implement OCA\Activity\IProvider
+
+		
+		:Since: 11.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getProviders()
+	
+		:Source:
+			`lib/public/Activity/IManager.php#123 <https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IManager.php#L123>`_
+		
+		
+		:Returns: :any:`\\OCP\\Activity\\IProvider\[\] <OCP\\Activity\\IProvider>` 
+		:Since: 11.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getSettingById( $id)
+	
+		:Source:
+			`lib/public/Activity/IManager.php#131 <https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IManager.php#L131>`_
+		
+		
+		:Parameters:
+			* **$id** (string)  
+
+		
+		:Returns: :any:`\\OCP\\Activity\\ActivitySettings <OCP\\Activity\\ActivitySettings>` 
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` when the setting was not found
+		:Since: 11.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setFormattingObject( $type, $id)
+	
+		:Source:
+			`lib/public/Activity/IManager.php#138 <https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IManager.php#L138>`_
+		
+		
+		:Parameters:
+			* **$type** (string)  
+			* **$id** (int)  
+
+		
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isFormattingFilteredObject()
+	
+		:Source:
+			`lib/public/Activity/IManager.php#144 <https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IManager.php#L144>`_
+		
+		
+		:Returns: bool 
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setRequirePNG( $status)
+	
+		:Source:
+			`lib/public/Activity/IManager.php#150 <https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IManager.php#L150>`_
+		
+		
+		:Parameters:
+			* **$status** (bool)  Set to true, when parsing events should not use SVG icons
+
+		
+		:Since: 12.0.1 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getRequirePNG()
+	
+		:Source:
+			`lib/public/Activity/IManager.php#156 <https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IManager.php#L156>`_
+		
+		
+		:Returns: bool 
+		:Since: 12.0.1 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setCurrentUserId( $currentUserId=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set the user we need to use
+			
+		
+		:Source:
+			`lib/public/Activity/IManager.php#165 <https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IManager.php#L165>`_
+		
+		
+		:Parameters:
+			* **$currentUserId** (string | null)  
+
+		
+		:Throws: :any:`\\UnexpectedValueException <UnexpectedValueException>` If the user is invalid
+		:Since: 9.0.1 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getCurrentUserId()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the user we need to use
+			
+			| Either the user is logged in, or we try to get it from the token
+			
+		
+		:Source:
+			`lib/public/Activity/IManager.php#176 <https://github.com/nextcloud/server/blob/stable13/lib/public/Activity/IManager.php#L176>`_
+		
+		
+		:Returns: string 
+		:Throws: :any:`\\UnexpectedValueException <UnexpectedValueException>` If the token is invalid, does not exist or is not unique
+		:Since: 8.1.0 
+	
+	
+

@@ -1,0 +1,383 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+Manager
+=======
+
+
+.. php:namespace:: OC\Notification
+
+.. php:class:: Manager
+
+
+	:Source:
+		`lib/private/Notification/Manager.php#42 <https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Manager.php#L42>`_
+	
+	:Implements:
+		:php:interface:`OCP\\Notification\\IManager` 
+	
+
+Properties
+----------
+
+.. php:attr:: protected static validator
+
+	:Source:
+		`lib/private/Notification/Manager.php#44 <https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Manager.php#L44>`_
+	
+	:Type: :any:`\\OCP\\RichObjectStrings\\IValidator <OCP\\RichObjectStrings\\IValidator>` 
+
+
+.. php:attr:: protected static logger
+
+	:Source:
+		`lib/private/Notification/Manager.php#46 <https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Manager.php#L46>`_
+	
+	:Type: :any:`\\OCP\\ILogger <OCP\\ILogger>` 
+
+
+.. php:attr:: protected static apps
+
+	:Source:
+		`lib/private/Notification/Manager.php#51 <https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Manager.php#L51>`_
+	
+	:Type: :any:`\\OCP\\Notification\\IApp\[\] <OCP\\Notification\\IApp>` 
+
+
+.. php:attr:: protected static appClasses
+
+	:Source:
+		`lib/private/Notification/Manager.php#53 <https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Manager.php#L53>`_
+	
+	:Type: string[] 
+
+
+.. php:attr:: protected static notifiers
+
+	:Source:
+		`lib/private/Notification/Manager.php#56 <https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Manager.php#L56>`_
+	
+	:Type: :any:`\\OCP\\Notification\\INotifier\[\] <OCP\\Notification\\INotifier>` 
+
+
+.. php:attr:: protected static notifierClasses
+
+	:Source:
+		`lib/private/Notification/Manager.php#58 <https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Manager.php#L58>`_
+	
+	:Type: string[] 
+
+
+.. php:attr:: protected static preparingPushNotification
+
+	:Source:
+		`lib/private/Notification/Manager.php#61 <https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Manager.php#L61>`_
+	
+	:Type: bool 
+
+
+.. php:attr:: protected static deferPushing
+
+	:Source:
+		`lib/private/Notification/Manager.php#63 <https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Manager.php#L63>`_
+	
+	:Type: bool 
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $validator, $logger, $coordinator)
+	
+		:Source:
+			`lib/private/Notification/Manager.php#67 <https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Manager.php#L67>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public registerApp( $appClass)
+	
+		:Source:
+			`lib/private/Notification/Manager.php#87 <https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Manager.php#L87>`_
+		
+		
+		:Parameters:
+			* **$appClass** (string)  The service must implement IApp, otherwise a
+			\InvalidArgumentException is thrown later
+
+		
+		:Since: 17.0.0 
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public registerNotifier( $service, $info)
+	
+		:Source:
+			`lib/private/Notification/Manager.php#99 <https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Manager.php#L99>`_
+		
+		
+		:Parameters:
+			* **$service** (:any:`Closure <Closure>`)  The service must implement INotifier, otherwise a
+			\InvalidArgumentException is thrown later
+			* **$info** (:any:`Closure <Closure>`)  An array with the keys 'id' and 'name' containing
+			the app id and the app name
+
+		
+		:Deprecated: 17.0.0 use registerNotifierService instead\.
+		:Since: 8.2.0 \- Parameter $info was added in 9\.0\.0
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public registerNotifierService( $notifierService)
+	
+		:Source:
+			`lib/private/Notification/Manager.php#111 <https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Manager.php#L111>`_
+		
+		
+		:Parameters:
+			* **$notifierService** (string)  The service must implement INotifier, otherwise a
+			\InvalidArgumentException is thrown later
+
+		
+		:Since: 17.0.0 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected getApps()
+	
+		:Source:
+			`lib/private/Notification/Manager.php#118 <https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Manager.php#L118>`_
+		
+		
+		:Returns: :any:`\\OCP\\Notification\\IApp\[\] <OCP\\Notification\\IApp>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getNotifiers()
+	
+		:Source:
+			`lib/private/Notification/Manager.php#152 <https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Manager.php#L152>`_
+		
+		
+		:Returns: :any:`\\OCP\\Notification\\INotifier\[\] <OCP\\Notification\\INotifier>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public createNotification()
+	
+		:Source:
+			`lib/private/Notification/Manager.php#213 <https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Manager.php#L213>`_
+		
+		
+		:Returns: :any:`\\OCP\\Notification\\INotification <OCP\\Notification\\INotification>` 
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public hasNotifiers()
+	
+		:Source:
+			`lib/private/Notification/Manager.php#221 <https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Manager.php#L221>`_
+		
+		
+		:Returns: bool 
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setPreparingPushNotification( $preparingPushNotification)
+	
+		:Source:
+			`lib/private/Notification/Manager.php#229 <https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Manager.php#L229>`_
+		
+		
+		:Parameters:
+			* **$preparingPushNotification** (bool)  
+
+		
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isPreparingPushNotification()
+	
+		:Source:
+			`lib/private/Notification/Manager.php#237 <https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Manager.php#L237>`_
+		
+		
+		:Returns: bool 
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public defer()
+	
+		.. rst-class:: phpdoc-description
+		
+			| The calling app should only "flush" when it got returned true on the defer call
+			
+		
+		:Source:
+			`lib/private/Notification/Manager.php#246 <https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Manager.php#L246>`_
+		
+		
+		:Returns: bool 
+		:Since: 20.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public flush()
+	
+		:Source:
+			`lib/private/Notification/Manager.php#264 <https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Manager.php#L264>`_
+		
+		
+		:Since: 20.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public notify( $notification)
+	
+		:Source:
+			`lib/private/Notification/Manager.php#286 <https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Manager.php#L286>`_
+		
+		
+		:Parameters:
+			* **$notification** (:any:`OCP\\Notification\\INotification <OCP\\Notification\\INotification>`)  
+
+		
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` When the notification is not valid
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getID()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Identifier of the notifier, only use \[a\-z0\-9\_\]
+			
+		
+		:Source:
+			`lib/private/Notification/Manager.php#307 <https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Manager.php#L307>`_
+		
+		
+		:Returns: string 
+		:Since: 17.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getName()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Human readable name describing the notifier
+			
+		
+		:Source:
+			`lib/private/Notification/Manager.php#317 <https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Manager.php#L317>`_
+		
+		
+		:Returns: string 
+		:Since: 17.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public prepare( $notification, $languageCode)
+	
+		:Source:
+			`lib/private/Notification/Manager.php#329 <https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Manager.php#L329>`_
+		
+		
+		:Parameters:
+			* **$notification** (:any:`OCP\\Notification\\INotification <OCP\\Notification\\INotification>`)  
+			* **$languageCode** (string)  The code of the language that should be used to prepare the notification
+
+		
+		:Returns: :any:`\\OCP\\Notification\\INotification <OCP\\Notification\\INotification>` 
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` When the notification was not prepared by a notifier
+		:Throws: :any:`\\OCP\\Notification\\AlreadyProcessedException <OCP\\Notification\\AlreadyProcessedException>` When the notification is not needed anymore and should be deleted
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` When the notification was not prepared by a notifier
+		:Throws: :any:`\\OCP\\Notification\\AlreadyProcessedException <OCP\\Notification\\AlreadyProcessedException>` When the notification is not needed anymore and should be deleted
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public markProcessed( $notification)
+	
+		:Source:
+			`lib/private/Notification/Manager.php#357 <https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Manager.php#L357>`_
+		
+		
+		:Parameters:
+			* **$notification** (:any:`OCP\\Notification\\INotification <OCP\\Notification\\INotification>`)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getCount( $notification)
+	
+		:Source:
+			`lib/private/Notification/Manager.php#369 <https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Manager.php#L369>`_
+		
+		
+		:Parameters:
+			* **$notification** (:any:`OCP\\Notification\\INotification <OCP\\Notification\\INotification>`)  
+
+		
+		:Returns: int 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public dismissNotification( $notification)
+	
+		:Source:
+			`lib/private/Notification/Manager.php#380 <https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Manager.php#L380>`_
+		
+		
+	
+	
+

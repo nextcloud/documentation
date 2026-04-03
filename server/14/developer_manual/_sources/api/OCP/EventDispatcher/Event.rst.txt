@@ -1,0 +1,100 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+Event
+=====
+
+
+.. php:namespace:: OCP\EventDispatcher
+
+.. php:class:: Event
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Base event class for the event dispatcher service
+		
+		| Typically this class isn\'t instantiated directly but sub classed for specific
+		| event types
+		| 
+		| This class extended \\Symfony\\Contracts\\EventDispatcher\\Event until 21\.0, since
+		| 22\.0\.0 this class directly implements the PSR StoppableEventInterface and no
+		| longer relies on Symfony\. This transition does not come with any changes in API,
+		| the class has the same methods and behavior before and after this change\.
+		
+	
+	:Source:
+		`lib/public/EventDispatcher/Event.php#44 <https://github.com/nextcloud/server/blob/stable13/lib/public/EventDispatcher/Event.php#L44>`_
+	
+	:Implements:
+		:php:interface:`Psr\\EventDispatcher\\StoppableEventInterface` 
+	
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Compatibility constructor
+			
+			| In Nextcloud 17\.0\.0 this event class used a now deprecated/removed Symfony base
+			| class that had a constructor \(with default arguments\)\. To lower the risk of
+			| a breaking change \(PHP won\'t allow parent constructor calls if there is none\),
+			| this empty constructor\'s only purpose is to hopefully not break existing sub\-
+			| classes of this class\.
+			
+		
+		:Source:
+			`lib/public/EventDispatcher/Event.php#64 <https://github.com/nextcloud/server/blob/stable13/lib/public/EventDispatcher/Event.php#L64>`_
+		
+		
+		:Since: 18.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public stopPropagation()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Stops the propagation of the event to further event listeners
+			
+		
+		:Source:
+			`lib/public/EventDispatcher/Event.php#74 <https://github.com/nextcloud/server/blob/stable13/lib/public/EventDispatcher/Event.php#L74>`_
+		
+		
+		:Returns: void 
+		:Since: 22.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isPropagationStopped()
+	
+		.. rst-class:: phpdoc-description
+		
+			| \{@inheritDoc\}
+			
+		
+		:Source:
+			`lib/public/EventDispatcher/Event.php#84 <https://github.com/nextcloud/server/blob/stable13/lib/public/EventDispatcher/Event.php#L84>`_
+		
+		
+		:Since: 22.0.0 
+		:See: :any:`\\Psr\\EventDispatcher\\StoppableEventInterface <Psr\\EventDispatcher\\StoppableEventInterface>` 
+	
+	
+

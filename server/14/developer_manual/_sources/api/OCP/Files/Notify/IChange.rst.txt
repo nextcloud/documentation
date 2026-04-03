@@ -1,0 +1,100 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IChange
+=======
+
+
+.. php:namespace:: OCP\Files\Notify
+
+.. php:interface:: IChange
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Represents a detected change in the storage
+		
+	
+	:Implemented by:
+		:php:class:`OC\\Files\\Notify\\Change` 
+	
+	
+	:Source:
+		`lib/public/Files/Notify/IChange.php#32 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Notify/IChange.php#L32>`_
+	
+
+Constants
+---------
+
+.. php:const:: ADDED = 1
+
+	:Source:
+		`lib/public/Files/Notify/IChange.php#33 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Notify/IChange.php#L33>`_
+	
+
+
+.. php:const:: REMOVED = 2
+
+	:Source:
+		`lib/public/Files/Notify/IChange.php#34 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Notify/IChange.php#L34>`_
+	
+
+
+.. php:const:: MODIFIED = 3
+
+	:Source:
+		`lib/public/Files/Notify/IChange.php#35 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Notify/IChange.php#L35>`_
+	
+
+
+.. php:const:: RENAMED = 4
+
+	:Source:
+		`lib/public/Files/Notify/IChange.php#36 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Notify/IChange.php#L36>`_
+	
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public getType()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the type of the change
+			
+		
+		:Source:
+			`lib/public/Files/Notify/IChange.php#45 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Notify/IChange.php#L45>`_
+		
+		
+		:Returns: int IChange::ADDED, IChange::REMOVED, IChange::MODIFIED or IChange::RENAMED
+		:Since: 12.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getPath()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the path of the file that was changed relative to the root of the storage
+			
+			| Note, for rename changes this path is the old path for the file
+			
+		
+		:Source:
+			`lib/public/Files/Notify/IChange.php#56 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Notify/IChange.php#L56>`_
+		
+		
+		:Returns: mixed 
+		:Since: 12.0.0 
+	
+	
+

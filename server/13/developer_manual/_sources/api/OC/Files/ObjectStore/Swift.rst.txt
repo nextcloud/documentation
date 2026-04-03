@@ -1,0 +1,134 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+Swift
+=====
+
+
+.. php:namespace:: OC\Files\ObjectStore
+
+.. php:class:: Swift
+
+
+	:Source:
+		`lib/private/Files/ObjectStore/Swift.php#39 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/ObjectStore/Swift.php#L39>`_
+	
+	:Implements:
+		:php:interface:`OCP\\Files\\ObjectStore\\IObjectStore` 
+	
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $params, $connectionFactory=null)
+	
+		:Source:
+			`lib/private/Files/ObjectStore/Swift.php#48 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/ObjectStore/Swift.php#L48>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getStorageId()
+	
+		:Source:
+			`lib/private/Files/ObjectStore/Swift.php#69 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/ObjectStore/Swift.php#L69>`_
+		
+		
+		:Returns: string the container name where objects are stored
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public writeObject( $urn, $stream, $mimetype=null)
+	
+		:Source:
+			`lib/private/Files/ObjectStore/Swift.php#77 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/ObjectStore/Swift.php#L77>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public readObject( $urn)
+	
+		:Source:
+			`lib/private/Files/ObjectStore/Swift.php#104 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/ObjectStore/Swift.php#L104>`_
+		
+		
+		:Parameters:
+			* **$urn** (string)  the unified resource name used to identify the object
+
+		
+		:Returns: resource stream with the read data
+		:Throws: :any:`\\Exception <Exception>` from openstack or GuzzleHttp libs when something goes wrong
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` if file does not exist
+		:Throws: :any:`\\Exception <Exception>` from openstack or GuzzleHttp libs when something goes wrong
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` if file does not exist
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public deleteObject( $urn)
+	
+		:Source:
+			`lib/private/Files/ObjectStore/Swift.php#134 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/ObjectStore/Swift.php#L134>`_
+		
+		
+		:Parameters:
+			* **$urn** (string)  Unified Resource Name
+
+		
+		:Returns: void 
+		:Throws: :any:`\\Exception <Exception>` from openstack lib when something goes wrong
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public deleteContainer()
+	
+		:Source:
+			`lib/private/Files/ObjectStore/Swift.php#142 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/ObjectStore/Swift.php#L142>`_
+		
+		
+		:Returns: void 
+		:Throws: :any:`\\Exception <Exception>` from openstack lib when something goes wrong
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public objectExists( $urn)
+	
+		:Source:
+			`lib/private/Files/ObjectStore/Swift.php#146 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/ObjectStore/Swift.php#L146>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public copyObject( $from, $to)
+	
+		:Source:
+			`lib/private/Files/ObjectStore/Swift.php#150 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/ObjectStore/Swift.php#L150>`_
+		
+		
+	
+	
+

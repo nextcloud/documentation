@@ -1,0 +1,1270 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+View
+====
+
+
+.. php:namespace:: OC\Files
+
+.. php:class:: View
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Class to provide access to ownCloud filesystem via a "view", and methods for
+		| working with files within that view \(e\.g\. read, write, delete, etc\.\)\. Each
+		| view is restricted to a set of directories via a virtual root\. The default view
+		| uses the currently logged in user\'s data directory as root \(parts of
+		| OC\_Filesystem are merely a wrapper for OC\\Files\\View\)\.
+		
+		| Apps that need to access files outside of the user data folders \(to modify files
+		| belonging to a user other than the one currently logged in, for example\) should
+		| use this class directly rather than using OC\_Filesystem, or making use of PHP\'s
+		| built\-in file manipulation functions\. This will ensure all hooks and proxies
+		| are triggered correctly\.
+		| 
+		| Filesystem functions are not called directly; they are passed to the correct
+		| \\OC\\Files\\Storage\\Storage object
+		
+	
+	:Source:
+		`lib/private/Files/View.php#87 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/View.php#L87>`_
+	
+
+Properties
+----------
+
+.. php:attr:: protected static lockingProvider
+
+	:Source:
+		`lib/private/Files/View.php#94 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/View.php#L94>`_
+	
+	:Type: :any:`\\OCP\\Lock\\ILockingProvider <OCP\\Lock\\ILockingProvider>` 
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $root="")
+	
+		:Source:
+			`lib/private/Files/View.php#110 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/View.php#L110>`_
+		
+		
+		:Parameters:
+			* **$root** (string)  
+
+		
+		:Throws: :any:`\\Exception <Exception>` If $root contains an invalid path
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getAbsolutePath( $path=/)
+	
+		:Source:
+			`lib/private/Files/View.php#125 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/View.php#L125>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public chroot( $fakeRoot)
+	
+		.. rst-class:: phpdoc-description
+		
+			| change the root to a fake root
+			
+		
+		:Source:
+			`lib/private/Files/View.php#145 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/View.php#L145>`_
+		
+		
+		:Parameters:
+			* **$fakeRoot** (string)  
+
+		
+		:Returns: bool | null 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getRoot()
+	
+		.. rst-class:: phpdoc-description
+		
+			| get the fake root
+			
+		
+		:Source:
+			`lib/private/Files/View.php#159 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/View.php#L159>`_
+		
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getRelativePath( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get path relative to the root of the view
+			
+		
+		:Source:
+			`lib/private/Files/View.php#169 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/View.php#L169>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getMountPoint( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get the mountpoint of the storage object for a path
+			| \( note: because a storage is not always mounted inside the fakeroot, the
+			| returned mountpoint is relative to the absolute root of the filesystem
+			| and does not take the chroot into account \)
+			
+		
+		:Source:
+			`lib/private/Files/View.php#203 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/View.php#L203>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getMount( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get the mountpoint of the storage object for a path
+			| \( note: because a storage is not always mounted inside the fakeroot, the
+			| returned mountpoint is relative to the absolute root of the filesystem
+			| and does not take the chroot into account \)
+			
+		
+		:Source:
+			`lib/private/Files/View.php#216 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/View.php#L216>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: :any:`\\OCP\\Files\\Mount\\IMountPoint <OCP\\Files\\Mount\\IMountPoint>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public resolvePath( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| resolve a path to a storage and internal path
+			
+		
+		:Source:
+			`lib/private/Files/View.php#226 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/View.php#L226>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: array an array consisting of the storage and the internal path
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getLocalFile( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| return the path to a local version of the file
+			| we need this because we can\'t know if a file is stored local or not from
+			| outside the filestorage and for some purposes a local file is needed
+			
+		
+		:Source:
+			`lib/private/Files/View.php#240 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/View.php#L240>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getLocalFolder( $path)
+	
+		:Source:
+			`lib/private/Files/View.php#255 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/View.php#L255>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public mkdir( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| the following functions operate with arguments and return values identical
+			| to those of their PHP built\-in equivalents\. Mostly they are merely wrappers
+			| for \\OC\\Files\\Storage\\Storage via basicOperation\(\)\.
+			
+		
+		:Source:
+			`lib/private/Files/View.php#271 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/View.php#L271>`_
+		
+		
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected removeMount( $mount, $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| remove mount point
+			
+		
+		:Source:
+			`lib/private/Files/View.php#282 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/View.php#L282>`_
+		
+		
+		:Parameters:
+			* **$mount** (:any:`OC\\Files\\Mount\\MoveableMount <OC\\Files\\Mount\\MoveableMount>`)  
+			* **$path** (string)  relative to data/
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public disableCacheUpdate()
+	
+		:Source:
+			`lib/private/Files/View.php#311 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/View.php#L311>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public enableCacheUpdate()
+	
+		:Source:
+			`lib/private/Files/View.php#315 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/View.php#L315>`_
+		
+		
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected writeUpdate( $storage, $internalPath, $time=null)
+	
+		:Source:
+			`lib/private/Files/View.php#319 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/View.php#L319>`_
+		
+		
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected removeUpdate( $storage, $internalPath)
+	
+		:Source:
+			`lib/private/Files/View.php#328 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/View.php#L328>`_
+		
+		
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected renameUpdate( $sourceStorage, $targetStorage, $sourceInternalPath, $targetInternalPath)
+	
+		:Source:
+			`lib/private/Files/View.php#334 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/View.php#L334>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public rmdir( $path)
+	
+		:Source:
+			`lib/private/Files/View.php#344 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/View.php#L344>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: bool | mixed 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public opendir( $path)
+	
+		:Source:
+			`lib/private/Files/View.php#368 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/View.php#L368>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: resource 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public is_dir( $path)
+	
+		:Source:
+			`lib/private/Files/View.php#376 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/View.php#L376>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: bool | mixed 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public is_file( $path)
+	
+		:Source:
+			`lib/private/Files/View.php#387 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/View.php#L387>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: bool | mixed 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public stat( $path)
+	
+		:Source:
+			`lib/private/Files/View.php#398 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/View.php#L398>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: mixed 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public filetype( $path)
+	
+		:Source:
+			`lib/private/Files/View.php#406 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/View.php#L406>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: mixed 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public filesize( $path)
+	
+		:Source:
+			`lib/private/Files/View.php#414 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/View.php#L414>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: mixed 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public readfile( $path)
+	
+		:Source:
+			`lib/private/Files/View.php#423 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/View.php#L423>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: bool | mixed 
+		:Throws: :any:`\\OCP\\Files\\InvalidPathException <OCP\\Files\\InvalidPathException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public readfilePart( $path, $from, $to)
+	
+		:Source:
+			`lib/private/Files/View.php#447 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/View.php#L447>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+			* **$from** (int)  
+			* **$to** (int)  
+
+		
+		:Returns: bool | mixed 
+		:Throws: :any:`\\OCP\\Files\\InvalidPathException <OCP\\Files\\InvalidPathException>` 
+		:Throws: :any:`\\OCP\\Files\\UnseekableException <OCP\\Files\\UnseekableException>` 
+		:Throws: :any:`\\OCP\\Files\\InvalidPathException <OCP\\Files\\InvalidPathException>` 
+		:Throws: :any:`\\OCP\\Files\\UnseekableException <OCP\\Files\\UnseekableException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isCreatable( $path)
+	
+		:Source:
+			`lib/private/Files/View.php#495 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/View.php#L495>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: mixed 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isReadable( $path)
+	
+		:Source:
+			`lib/private/Files/View.php#503 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/View.php#L503>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: mixed 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isUpdatable( $path)
+	
+		:Source:
+			`lib/private/Files/View.php#511 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/View.php#L511>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: mixed 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isDeletable( $path)
+	
+		:Source:
+			`lib/private/Files/View.php#519 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/View.php#L519>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: bool | mixed 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isSharable( $path)
+	
+		:Source:
+			`lib/private/Files/View.php#532 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/View.php#L532>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: mixed 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public file_exists( $path)
+	
+		:Source:
+			`lib/private/Files/View.php#540 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/View.php#L540>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: bool | mixed 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public filemtime( $path)
+	
+		:Source:
+			`lib/private/Files/View.php#551 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/View.php#L551>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: mixed 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public touch( $path, $mtime=null)
+	
+		:Source:
+			`lib/private/Files/View.php#560 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/View.php#L560>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+			* **$mtime** (int | string)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public file_get_contents( $path)
+	
+		:Source:
+			`lib/private/Files/View.php#597 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/View.php#L597>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: mixed 
+		:Throws: :any:`\\OCP\\Lock\\LockedException <OCP\\Lock\\LockedException>` 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected emit_file_hooks_pre( $exists, $path, &$run)
+	
+		:Source:
+			`lib/private/Files/View.php#606 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/View.php#L606>`_
+		
+		
+		:Parameters:
+			* **$exists** (bool)  
+			* **$path** (string)  
+			* **$run** (bool)  
+
+		
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected emit_file_hooks_post( $exists, $path)
+	
+		:Source:
+			`lib/private/Files/View.php#628 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/View.php#L628>`_
+		
+		
+		:Parameters:
+			* **$exists** (bool)  
+			* **$path** (string)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public file_put_contents( $path, $data)
+	
+		:Source:
+			`lib/private/Files/View.php#649 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/View.php#L649>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+			* **$data** (string | resource)  
+
+		
+		:Returns: bool | mixed 
+		:Throws: :any:`\\OCP\\Lock\\LockedException <OCP\\Lock\\LockedException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public unlink( $path)
+	
+		:Source:
+			`lib/private/Files/View.php#711 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/View.php#L711>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: bool | mixed 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public deleteAll( $directory)
+	
+		:Source:
+			`lib/private/Files/View.php#741 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/View.php#L741>`_
+		
+		
+		:Parameters:
+			* **$directory** (string)  
+
+		
+		:Returns: bool | mixed 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public rename( $path1, $path2)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Rename/move a file or folder from the source path to target path\.
+			
+		
+		:Source:
+			`lib/private/Files/View.php#754 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/View.php#L754>`_
+		
+		
+		:Parameters:
+			* **$path1** (string)  source path
+			* **$path2** (string)  target path
+
+		
+		:Returns: bool | mixed 
+		:Throws: :any:`\\OCP\\Lock\\LockedException <OCP\\Lock\\LockedException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public copy( $path1, $path2, $preserveMtime=false)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Copy a file/folder from the source path to target path
+			
+		
+		:Source:
+			`lib/private/Files/View.php#883 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/View.php#L883>`_
+		
+		
+		:Parameters:
+			* **$path1** (string)  source path
+			* **$path2** (string)  target path
+			* **$preserveMtime** (bool)  whether to preserve mtime on the copy
+
+		
+		:Returns: bool | mixed 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public fopen( $path, $mode)
+	
+		:Source:
+			`lib/private/Files/View.php#975 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/View.php#L975>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+			* **$mode** (string)  'r' or 'w'
+
+		
+		:Returns: resource 
+		:Throws: :any:`\\OCP\\Lock\\LockedException <OCP\\Lock\\LockedException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public toTmpFile( $path)
+	
+		:Source:
+			`lib/private/Files/View.php#1010 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/View.php#L1010>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: bool | string 
+		:Throws: :any:`\\OCP\\Files\\InvalidPathException <OCP\\Files\\InvalidPathException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public fromTmpFile( $tmpFile, $path)
+	
+		:Source:
+			`lib/private/Files/View.php#1033 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/View.php#L1033>`_
+		
+		
+		:Parameters:
+			* **$tmpFile** (string)  
+			* **$path** (string)  
+
+		
+		:Returns: bool | mixed 
+		:Throws: :any:`\\OCP\\Files\\InvalidPathException <OCP\\Files\\InvalidPathException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getMimeType( $path)
+	
+		:Source:
+			`lib/private/Files/View.php#1073 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/View.php#L1073>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: mixed 
+		:Throws: :any:`\\OCP\\Files\\InvalidPathException <OCP\\Files\\InvalidPathException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public hash( $type, $path, $raw=false)
+	
+		:Source:
+			`lib/private/Files/View.php#1084 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/View.php#L1084>`_
+		
+		
+		:Parameters:
+			* **$type** (string)  
+			* **$path** (string)  
+			* **$raw** (bool)  
+
+		
+		:Returns: bool | null | string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public free_space( $path=/)
+	
+		:Source:
+			`lib/private/Files/View.php#1112 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/View.php#L1112>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: mixed 
+		:Throws: :any:`\\OCP\\Files\\InvalidPathException <OCP\\Files\\InvalidPathException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public hasUpdated( $path, $time)
+	
+		.. rst-class:: phpdoc-description
+		
+			| check if a file or folder has been updated since $time
+			
+		
+		:Source:
+			`lib/private/Files/View.php#1305 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/View.php#L1305>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+			* **$time** (int)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getFileInfo( $path, $includeMountPoints=true)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get the filesystem info
+			
+		
+		:Source:
+			`lib/private/Files/View.php#1371 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/View.php#L1371>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+			* **$includeMountPoints** (bool | string)  true to add mountpoint sizes,
+			'ext' to add only ext storage mount point sizes. Defaults to true.
+			defaults to true
+
+		
+		:Returns: :any:`\\OC\\Files\\FileInfo <OC\\Files\\FileInfo>` | bool False if file does not exist
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getDirectoryContent( $directory, $mimetype_filter="")
+	
+		.. rst-class:: phpdoc-description
+		
+			| get the content of a directory
+			
+		
+		:Source:
+			`lib/private/Files/View.php#1434 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/View.php#L1434>`_
+		
+		
+		:Parameters:
+			* **$directory** (string)  path under datadirectory
+			* **$mimetype_filter** (string)  limit returned content to this mimetype or mimepart
+
+		
+		:Returns: :any:`\\OC\\Files\\FileInfo\[\] <OC\\Files\\FileInfo>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public putFileInfo( $path, $data)
+	
+		.. rst-class:: phpdoc-description
+		
+			| change file metadata
+			
+		
+		:Source:
+			`lib/private/Files/View.php#1568 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/View.php#L1568>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+			* **$data** (array | :any:`\\OCP\\Files\\FileInfo <OCP\\Files\\FileInfo>`)  
+
+		
+		:Returns: int returns the fileid of the updated file
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public search( $query)
+	
+		.. rst-class:: phpdoc-description
+		
+			| search for files with the name matching $query
+			
+		
+		:Source:
+			`lib/private/Files/View.php#1599 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/View.php#L1599>`_
+		
+		
+		:Parameters:
+			* **$query** (string)  
+
+		
+		:Returns: :any:`\\OC\\Files\\FileInfo\[\] <OC\\Files\\FileInfo>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public searchRaw( $query)
+	
+		.. rst-class:: phpdoc-description
+		
+			| search for files with the name matching $query
+			
+		
+		:Source:
+			`lib/private/Files/View.php#1609 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/View.php#L1609>`_
+		
+		
+		:Parameters:
+			* **$query** (string)  
+
+		
+		:Returns: :any:`\\OC\\Files\\FileInfo\[\] <OC\\Files\\FileInfo>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public searchByMime( $mimetype)
+	
+		.. rst-class:: phpdoc-description
+		
+			| search for files by mimetype
+			
+		
+		:Source:
+			`lib/private/Files/View.php#1619 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/View.php#L1619>`_
+		
+		
+		:Parameters:
+			* **$mimetype** (string)  
+
+		
+		:Returns: :any:`\\OC\\Files\\FileInfo\[\] <OC\\Files\\FileInfo>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public searchByTag( $tag, $userId)
+	
+		.. rst-class:: phpdoc-description
+		
+			| search for files by tag
+			
+		
+		:Source:
+			`lib/private/Files/View.php#1630 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/View.php#L1630>`_
+		
+		
+		:Parameters:
+			* **$tag** (string | int)  name or tag id
+			* **$userId** (string)  owner of the tags
+
+		
+		:Returns: :any:`\\OC\\Files\\FileInfo\[\] <OC\\Files\\FileInfo>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getOwner( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the owner for a file or folder
+			
+		
+		:Source:
+			`lib/private/Files/View.php#1692 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/View.php#L1692>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: string the user id of the owner
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getETag( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get the ETag for a file or folder
+			
+		
+		:Source:
+			`lib/private/Files/View.php#1711 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/View.php#L1711>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getPath( $id, $storageId=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the path of a file by id, relative to the view
+			
+			| Note that the resulting path is not guarantied to be unique for the id, multiple paths can point to the same file
+			
+		
+		:Source:
+			`lib/private/Files/View.php#1734 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/View.php#L1734>`_
+		
+		
+		:Parameters:
+			* **$id** (int)  
+			* **$storageId** (int | null)  
+
+		
+		:Returns: string 
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public verifyPath( $path, $fileName)
+	
+		:Source:
+			`lib/private/Files/View.php#1859 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/View.php#L1859>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+			* **$fileName** (string)  
+
+		
+		:Throws: :any:`\\OCP\\Files\\InvalidPathException <OCP\\Files\\InvalidPathException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public changeLock( $path, $type, $lockMountPoint=false)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Change the lock type
+			
+		
+		:Source:
+			`lib/private/Files/View.php#1987 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/View.php#L1987>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  the path of the file to lock, relative to the view
+			* **$type** (int)  \OCP\Lock\ILockingProvider::LOCK_SHARED or \OCP\Lock\ILockingProvider::LOCK_EXCLUSIVE
+			* **$lockMountPoint** (bool)  true to lock the mount point, false to lock the attached mount/storage
+
+		
+		:Returns: bool False if the path is excluded from locking, true otherwise
+		:Throws: :any:`\\OCP\\Lock\\LockedException <OCP\\Lock\\LockedException>` if the path is already locked
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public lockFile( $path, $type, $lockMountPoint=false)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Lock a path and all its parents up to the root of the view
+			
+		
+		:Source:
+			`lib/private/Files/View.php#2069 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/View.php#L2069>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  the path of the file to lock relative to the view
+			* **$type** (int)  \OCP\Lock\ILockingProvider::LOCK_SHARED or \OCP\Lock\ILockingProvider::LOCK_EXCLUSIVE
+			* **$lockMountPoint** (bool)  true to lock the mount point, false to lock the attached mount/storage
+
+		
+		:Returns: bool False if the path is excluded from locking, true otherwise
+		:Throws: :any:`\\OCP\\Lock\\LockedException <OCP\\Lock\\LockedException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public unlockFile( $path, $type, $lockMountPoint=false)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Unlock a path and all its parents up to the root of the view
+			
+		
+		:Source:
+			`lib/private/Files/View.php#2096 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/View.php#L2096>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  the path of the file to lock relative to the view
+			* **$type** (int)  \OCP\Lock\ILockingProvider::LOCK_SHARED or \OCP\Lock\ILockingProvider::LOCK_EXCLUSIVE
+			* **$lockMountPoint** (bool)  true to lock the mount point, false to lock the attached mount/storage
+
+		
+		:Returns: bool False if the path is excluded from locking, true otherwise
+		:Throws: :any:`\\OCP\\Lock\\LockedException <OCP\\Lock\\LockedException>` 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected shouldLockFile( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Only lock files in data/user/files/
+			
+		
+		:Source:
+			`lib/private/Files/View.php#2119 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/View.php#L2119>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  Absolute path to the file/folder we try to (un)lock
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getPathRelativeToFiles( $absolutePath)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Shortens the given absolute path to be relative to
+			| "$user/files"\.
+			
+		
+		:Source:
+			`lib/private/Files/View.php#2143 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/View.php#L2143>`_
+		
+		
+		:Parameters:
+			* **$absolutePath** (string)  absolute path which is under "files"
+
+		
+		:Returns: string path relative to "files" with trimmed slashes or null
+			if the path was NOT relative to files
+		
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` if the given path was not under "files"
+		:Since: 8.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getUidAndFilename( $filename)
+	
+		:Source:
+			`lib/private/Files/View.php#2168 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/View.php#L2168>`_
+		
+		
+		:Parameters:
+			* **$filename** (string)  
+
+		
+		:Returns: array 
+		:Throws: :any:`\\OC\\User\\NoUserException <OC\\User\\NoUserException>` 
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+		:Throws: :any:`\\OC\\User\\NoUserException <OC\\User\\NoUserException>` 
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+	
+	
+

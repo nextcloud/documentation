@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Defining Background Jobs &#8212; Nextcloud 12 Server Administration Manual 12 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/main.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '12',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.1.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Config.php Parameters" href="config_sample_php_parameters.html" />
+    <link rel="prev" title="Configuring Memory Caching" href="caching_configuration.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#1d2d44">
+<link rel="shortcut icon" href="https://nextcloud.com/wp-content/themes/next/assets/img/common/favicon.png" />
+<link rel="apple-touch-icon-precomposed" href="https://nextcloud.com/wp-content/themes/next/assets/img/common/favicon.png" />
+<!-- Piwik -->
+<script type="text/javascript">
+    var _paq = _paq || [];
+    _paq.push(['trackPageView']);
+    _paq.push(['enableLinkTracking']);
+    (function() {
+        var u="//stats.nextcloud.com/";
+        _paq.push(['setTrackerUrl', u+'piwik.php']);
+        _paq.push(['setSiteId', 3]);
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+        g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+    })();
+</script>
+<noscript><p><img src="//stats.nextcloud.com/piwik.php?idsite=3" style="border:0;" alt="" /></p></noscript>
+<!-- End Piwik Code -->
+
+  </head>
+  <body role="document">
+
+<header class="banner navbar navbar-default navbar-static-top" role="banner">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+       <a class="brand" href="http://nextcloud.com/" rel="home" title="Nextcloud.com"><img class="logo" src="../_static/img/logo.svg" itemprop="logo"></a>
+    </div>
+
+    <nav class="collapse navbar-collapse" role="navigation">
+      <ul id="menu-header" class="nav navbar-nav">
+          <li><a target="_blank" href="https://demo.nextcloud.com">Demo</a></li>
+          <li><a href="https://nextcloud.com/news/">News</a></li>
+          <li><a href="https://nextcloud.com/features/">Features</a></li>
+          <li><a href="https://nextcloud.com/about/">About us</a></li>
+          <li><a href="https://nextcloud.com/contribute/">Get involved</a></li>
+          <li><a href="https://nextcloud.com/support/">Support</a></li>
+          <li><a href="https://nextcloud.com/enterprise/">Enterprise</a></li>
+          <li class="menu-install"><a href="https://nextcloud.com/install/">Download</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+<div class="container" style="background-color: #E6C4C2;color: #b10000;border: #b10000 2px solid;border-right: none;border-left: none;padding: 15px 10px;">You are reading an outdated version of this documentation. Please check out the <a href="https://docs.nextcloud.com/server/stable/admin_manual/" style="
+color: rgb(177,0,0);text-decoration: underline;">latest version</a> of the server administration manual.</div>
+
+
+
+<div class="wrap container not-front">
+  <div class="content row">
+  <main class="main">
+    <div class="row page-content-header">
+      <div class="col-md-6">
+        <h1><a href="../contents.html">Nextcloud 12 Server Administration Manual</a></h1>
+      </div>
+      <div class="col-md-5 col-md-offset-1">
+      
+        <form class="headersearch" style="margin: 16px 0;" action="../search.html" method="get">
+        <input type="text" value="" name="q" id="q" class="form-control" /> 
+        <button  class="btn btn-default" type="submit" id="searchsubmit">Search</button>
+        </form>
+      
+      </div>
+    </div>
+    
+			<div class="row">
+				<div class="col-md-3">
+					<div class="sidebar">
+							<div class="menu-support-container">
+								<ul id="menu-support" class="menu">
+									<ul>
+										
+<li><a href="../contents.html">Table of Contents</a></li>
+									</ul>
+                  <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Server Configuration</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="security_setup_warnings.html">Warnings on Admin Page</a></li>
+<li class="toctree-l2"><a class="reference internal" href="occ_command.html">Using the occ Command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="activity_configuration.html">Configuring the Activity App</a></li>
+<li class="toctree-l2"><a class="reference internal" href="caching_configuration.html">Configuring Memory Caching</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Defining Background Jobs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#parameters">Parameters</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cron-jobs">Cron Jobs</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="config_sample_php_parameters.html">Config.php Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="email_configuration.html">Email Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="external_sites.html">Linking External Sites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="language_configuration.html">Language Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logging_configuration.html">Logging Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="harden_server.html">Hardening and Security Guidance</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reverse_proxy_configuration.html">Reverse Proxy Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="thirdparty_php_configuration.html">Using Third Party PHP Components</a></li>
+<li class="toctree-l2"><a class="reference internal" href="automatic_configuration.html">Automatic Configuration Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="server_tuning.html">Server Tuning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="theming.html">Theming</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_user/index.html">User Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_files/index.html">File Sharing and Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../file_workflows/index.html">File workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_database/index.html">Database Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_mimetypes/index.html">Mimetypes Management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../maintenance/index.html">Maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../issues/index.html">Issues and Troubleshooting</a></li>
+</ul>
+
+								</ul>
+							</div>
+					</div>
+				</div>
+        
+
+				<div class="col-md-9">
+					<div class="page-content">
+            
+<ul class="prevnext-title list-unstyled list-inline">
+  <li class="prev">
+    <a href="caching_configuration.html" title="Previous Chapter: Configuring Memory Caching"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; Configuring M...</span>
+    </a>
+  </li>
+  <li class="next">
+    <a href="config_sample_php_parameters.html" title="Next Chapter: Config.php Parameters"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">Config.php Parameters &raquo;</span>
+    </a>
+  </li>
+</ul>
+						
+  <div class="section" id="defining-background-jobs">
+<h1>Defining Background Jobs<a class="headerlink" href="#defining-background-jobs" title="Permalink to this headline">¶</a></h1>
+<p>A system like Nextcloud sometimes requires tasks to be done on a regular basis
+without the need for user interaction or hindering Nextcloud performance. For
+that purpose, as a system administrator, you can define background jobs (for
+example, database clean-ups) which are executed without any need for user
+interaction.</p>
+<p>These jobs are typically referred to as <em>cron jobs</em>.  Cron jobs are commands or
+shell-based scripts that are scheduled to run periodically at fixed times,
+dates, or intervals.   <code class="docutils literal"><span class="pre">cron.php</span></code> is an Nextcloud internal process that runs
+such background jobs on demand.</p>
+<p>Nextcloud plug-in applications register actions with <code class="docutils literal"><span class="pre">cron.php</span></code> automatically
+to take care of typical housekeeping operations, such as garbage collecting of
+temporary files or checking for newly updated files using <code class="docutils literal"><span class="pre">filescan()</span></code> for
+externally mounted file systems.</p>
+<div class="section" id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
+<p>In the admin settings menu you can configure how cron-jobs should be executed.
+You can choose between the following options:</p>
+<ul class="simple">
+<li>AJAX</li>
+<li>Webcron</li>
+<li>Cron</li>
+</ul>
+</div>
+<div class="section" id="cron-jobs">
+<h2>Cron Jobs<a class="headerlink" href="#cron-jobs" title="Permalink to this headline">¶</a></h2>
+<p>You can schedule cron jobs in three ways &#8211; using AJAX, Webcron, or cron. The
+default method is to use AJAX.  However, the recommended method is to use cron.
+The following sections describe the differences between each method.</p>
+<div class="section" id="ajax">
+<h3>AJAX<a class="headerlink" href="#ajax" title="Permalink to this headline">¶</a></h3>
+<p>The AJAX scheduling method is the default option.  Unfortunately, however, it is
+also the least reliable. Each time a user visits the Nextcloud page, a single
+background job is executed. The advantage of this mechanism is that it does not
+require access to the system nor registration with a third party service. The
+disadvantage of this mechanism, when compared to the Webcron service, is that it
+requires regular visits to the page for it to be triggered.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Especially when using the Activity App or external storages, where new
+files are added, updated or deleted one of the two methods below should be
+preferred.</p>
+</div>
+</div>
+<div class="section" id="webcron">
+<h3>Webcron<a class="headerlink" href="#webcron" title="Permalink to this headline">¶</a></h3>
+<p>By registering your Nextcloud <code class="docutils literal"><span class="pre">cron.php</span></code> script address at an external webcron
+service (for example, <a class="reference external" href="https://www.easycron.com/">easyCron</a>), you ensure that background jobs are executed
+regularly. To use this type of service with your server, you must be able to
+access your server using the Internet. For example:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">URL</span> <span class="n">to</span> <span class="n">call</span><span class="p">:</span> <span class="n">http</span><span class="p">[</span><span class="n">s</span><span class="p">]:</span><span class="o">//&lt;</span><span class="n">domain</span><span class="o">-</span><span class="n">of</span><span class="o">-</span><span class="n">your</span><span class="o">-</span><span class="n">server</span><span class="o">&gt;/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">cron</span><span class="o">.</span><span class="n">php</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="cron">
+<h3>Cron<a class="headerlink" href="#cron" title="Permalink to this headline">¶</a></h3>
+<p>Using the operating system cron feature is the preferred method for executing
+regular tasks.  This method enables the execution of scheduled jobs without the
+inherent limitations the Web server might have.</p>
+<p>To run a cron job on a *nix system, every 15 minutes, under the default Web
+server user (often, <code class="docutils literal"><span class="pre">www-data</span></code> or <code class="docutils literal"><span class="pre">wwwrun</span></code>), you must set up the following
+cron job to call the <strong>cron.php</strong> script:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># crontab -u www-data -e</span>
+<span class="o">*/</span><span class="mi">15</span>  <span class="o">*</span>  <span class="o">*</span>  <span class="o">*</span>  <span class="o">*</span> <span class="n">php</span> <span class="o">-</span><span class="n">f</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">cron</span><span class="o">.</span><span class="n">php</span>
+</pre></div>
+</div>
+<p>You can verify if the cron job has been added and scheduled by executing:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="c1"># crontab -u www-data -l</span>
+<span class="o">*/</span><span class="mi">15</span>  <span class="o">*</span>  <span class="o">*</span>  <span class="o">*</span>  <span class="o">*</span> <span class="n">php</span> <span class="o">-</span><span class="n">f</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">cron</span><span class="o">.</span><span class="n">php</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">You have to replace the path <code class="docutils literal"><span class="pre">/var/www/nextcloud/cron.php</span></code> with the
+path to your current Nextcloud installation.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">On some systems it might be required to call <strong>php-cli</strong> instead of <strong>php</strong>.</p>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Please refer to the crontab man page for the exact command syntax.</p>
+</div>
+</div>
+<div class="section" id="systemd">
+<h3>systemd<a class="headerlink" href="#systemd" title="Permalink to this headline">¶</a></h3>
+<p>If systemd is installed on the system, a systemd timer could be an alternative to a cronjob.</p>
+<p>This approach requires two files: <strong>nextcloudcron.service</strong> and <strong>nextcloudcron.timer</strong>. Create these two files in <code class="docutils literal"><span class="pre">/etc/systemd/system/</span></code>.</p>
+<p><strong>nextcloudcron.service</strong> should look like this:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">Unit</span><span class="p">]</span>
+<span class="n">Description</span><span class="o">=</span><span class="n">Nextcloud</span> <span class="n">cron</span><span class="o">.</span><span class="n">php</span> <span class="n">job</span>
+
+<span class="p">[</span><span class="n">Service</span><span class="p">]</span>
+<span class="n">User</span><span class="o">=</span><span class="n">www</span><span class="o">-</span><span class="n">data</span>
+<span class="n">ExecStart</span><span class="o">=/</span><span class="n">usr</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">php</span> <span class="o">-</span><span class="n">f</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">cron</span><span class="o">.</span><span class="n">php</span>
+
+<span class="p">[</span><span class="n">Install</span><span class="p">]</span>
+<span class="n">WantedBy</span><span class="o">=</span><span class="n">basic</span><span class="o">.</span><span class="n">target</span>
+</pre></div>
+</div>
+<p>Replace the user <code class="docutils literal"><span class="pre">www-data</span></code> with the user of your http server and <code class="docutils literal"><span class="pre">/var/www/nextcloud/cron.php</span></code> with the location of <strong>cron.php</strong> in your nextcloud directory.</p>
+<p><strong>nextcloudcron.timer</strong> should look like this:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="p">[</span><span class="n">Unit</span><span class="p">]</span>
+<span class="n">Description</span><span class="o">=</span><span class="n">Run</span> <span class="n">Nextcloud</span> <span class="n">cron</span><span class="o">.</span><span class="n">php</span> <span class="n">every</span> <span class="mi">15</span> <span class="n">minutes</span>
+
+<span class="p">[</span><span class="n">Timer</span><span class="p">]</span>
+<span class="n">OnBootSec</span><span class="o">=</span><span class="mi">5</span><span class="nb">min</span>
+<span class="n">OnUnitActiveSec</span><span class="o">=</span><span class="mi">15</span><span class="nb">min</span>
+<span class="n">Unit</span><span class="o">=</span><span class="n">nextcloudcron</span><span class="o">.</span><span class="n">service</span>
+
+<span class="p">[</span><span class="n">Install</span><span class="p">]</span>
+<span class="n">WantedBy</span><span class="o">=</span><span class="n">timers</span><span class="o">.</span><span class="n">target</span>
+</pre></div>
+</div>
+<p>The important parts in the timer-unit are <code class="docutils literal"><span class="pre">OnBootSec</span></code> and <code class="docutils literal"><span class="pre">OnUnitActiveSec</span></code>.``OnBootSec`` will start the timer 5 minutes after boot, otherwise you would have to start it manually after every boot. <code class="docutils literal"><span class="pre">OnUnitActiveSec</span></code> will set a 15 minute timer after the service-unit was last activated.</p>
+<p>Now all that is left is to start and enable the timer by running these commands:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">systemctl</span> <span class="n">start</span> <span class="n">nextcloudcron</span><span class="o">.</span><span class="n">timer</span>
+<span class="n">systemctl</span> <span class="n">enable</span> <span class="n">nextcloudcron</span><span class="o">.</span><span class="n">timer</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Select the option <code class="docutils literal"><span class="pre">Cron</span></code> in the admin menu for background jobs. if left on <code class="docutils literal"><span class="pre">AJAX</span></code> it would execute the AJAX job on every page load.</p>
+</div>
+</div>
+</div>
+</div>
+
+
+            
+<ul class="prevnext-title list-unstyled list-inline">
+  <li class="prev">
+    <a href="caching_configuration.html" title="Previous Chapter: Configuring Memory Caching"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; Configuring M...</span>
+    </a>
+  </li>
+  <li class="next">
+    <a href="config_sample_php_parameters.html" title="Next Chapter: Config.php Parameters"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">Config.php Parameters &raquo;</span>
+    </a>
+  </li>
+</ul>
+					</div>
+				</div>
+			</div>
+  </main>  
+  </div>
+</div>
+<div class="container">
+<div class="row">
+    <div class="col-lg-12 footer-social-icons">
+      <p class="text-center"><a target="_blank" href="https://plus.google.com/104036748063781940910/about"><img width=50 src="../_static/img/social/googleplus.svg" title="Follow us on Google Plus!" alt="Follow us on Google Plus!"></img></a>
+      <a target="_blank" href="https://www.facebook.com/Nextclouders"><img width=50 src="../_static/img/social/facebook.svg" title="Like our facebook page!" alt="Like our facebook page!"></img></a>
+      <a target="_blank" href="https://twitter.com/Nextclouders"><img width=50 src="../_static/img/social/twitter.svg" title="Subscribe to our twitter channel!" alt="Subscribe to our twitter channel!"></img></a>
+      <a target="_blank" href="https://nextcloud.com/blogfeed"><img class="img-circle" width=50 src="../_static/img/social/rss.svg" title="Subscribe to our news feed!" alt="Subscribe to our news feed!"></img></a>
+      <a target="_blank" href="https://newsletter.nextcloud.com/"><img class="img-circle" width=50 src="../_static/img/social/mail.svg"  title="Subscribe to our newsletter!" alt="Subscribe to our newsletter!"></img></a></p>
+    </div>
+    <div class="text-center">
+      <p>All documentation licensed under the <a href="https://creativecommons.org/licenses/by/3.0/us/">Creative Commons Attribution 3.0 Unported license</a>.</p>
+      <p><a href="https://github.com/nextcloud/documentation/graphs/contributors">See who contributed to our documentation/credits</a>.</p>
+    </div>
+</div>
+</div>
+<footer class="content-info" role="contentinfo">
+<div class="container">
+   <div class="row">
+     <div class="col-sm-2 col-sm-offset-1">
+        <div class="footer-nav">
+          <h4>About Nextcloud</h4>
+          <ul id="menu-about" class="menu">
+            <li><a href="https://nextcloud.com/about/">About us</a></li>
+            <li><a href="https://nextcloud.com/contact/">Contact us</a></li>
+            <li><a href="https://nextcloud.com/press/">Press</a></li>
+            <li><a href="https://nextcloud.com/privacy/">Privacy policy</a></li>
+          </ul>
+        </div>
+     </div>
+     <div class="col-sm-2 col-sm-offset-2">
+     </div>
+     <div class="col-sm-2 col-sm-offset-2">
+        <div class="footer-nav">
+          <h4>Interact</h4>
+          <ul id="menu-interact" class="menu">
+            <li class="menu-irc-channel"><a href="https://webchat.freenode.net/?channels=nextcloud">IRC Channel</a></li>
+            <li class="menu-forums"><a href="https://help.nextcloud.com/">Forums</a></li>
+          </ul>
+        </div>
+     </div>
+   </div>
+   <div class="row">
+      <div class="col-lg-12 footer-text">
+        <p>
+              &copy; Copyright 2012-2017, The Nextcloud developers.  <small><a href="https://nextcloud.com/impressum">Legal Notice</a></small><br/>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+  </body>
+</html>

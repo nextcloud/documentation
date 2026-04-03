@@ -1,0 +1,91 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+ILDAPProviderFactory
+====================
+
+
+.. php:namespace:: OCP\LDAP
+
+.. php:interface:: ILDAPProviderFactory
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Interface ILDAPProviderFactory
+		
+		| This class is responsible for instantiating and returning an ILDAPProvider
+		| instance\.
+		
+	
+	:Implemented by:
+		:php:class:`OC\\LDAP\\NullLDAPProviderFactory` 
+	
+	
+	:Source:
+		`lib/public/LDAP/ILDAPProviderFactory.php#38 <https://github.com/nextcloud/server/blob/stable13/lib/public/LDAP/ILDAPProviderFactory.php#L38>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $serverContainer)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Constructor for the LDAP provider factory
+			
+		
+		:Source:
+			`lib/public/LDAP/ILDAPProviderFactory.php#46 <https://github.com/nextcloud/server/blob/stable13/lib/public/LDAP/ILDAPProviderFactory.php#L46>`_
+		
+		
+		:Parameters:
+			* **$serverContainer** (:any:`OCP\\IServerContainer <OCP\\IServerContainer>`)  server container
+
+		
+		:Since: 11.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getLDAPProvider()
+	
+		.. rst-class:: phpdoc-description
+		
+			| creates and returns an instance of the ILDAPProvider
+			
+		
+		:Source:
+			`lib/public/LDAP/ILDAPProviderFactory.php#54 <https://github.com/nextcloud/server/blob/stable13/lib/public/LDAP/ILDAPProviderFactory.php#L54>`_
+		
+		
+		:Returns: :any:`\\OCP\\LDAP\\ILDAPProvider <OCP\\LDAP\\ILDAPProvider>` 
+		:Since: 11.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isAvailable()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check if an ldap provider is available
+			
+		
+		:Source:
+			`lib/public/LDAP/ILDAPProviderFactory.php#62 <https://github.com/nextcloud/server/blob/stable13/lib/public/LDAP/ILDAPProviderFactory.php#L62>`_
+		
+		
+		:Returns: bool 
+		:Since: 21.0.0 
+	
+	
+

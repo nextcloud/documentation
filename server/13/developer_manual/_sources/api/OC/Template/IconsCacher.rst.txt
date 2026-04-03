@@ -1,0 +1,163 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IconsCacher
+===========
+
+
+.. php:namespace:: OC\Template
+
+.. php:class:: IconsCacher
+
+
+	:Source:
+		`lib/private/Template/IconsCacher.php#43 <https://github.com/nextcloud/server/blob/stable13/lib/private/Template/IconsCacher.php#L43>`_
+	
+
+Properties
+----------
+
+.. php:attr:: protected static logger
+
+	:Source:
+		`lib/private/Template/IconsCacher.php#46 <https://github.com/nextcloud/server/blob/stable13/lib/private/Template/IconsCacher.php#L46>`_
+	
+	:Type: :any:`\\OCP\\ILogger <OCP\\ILogger>` 
+
+
+.. php:attr:: protected static appData
+
+	:Source:
+		`lib/private/Template/IconsCacher.php#49 <https://github.com/nextcloud/server/blob/stable13/lib/private/Template/IconsCacher.php#L49>`_
+	
+	:Type: :any:`\\OCP\\Files\\IAppData <OCP\\Files\\IAppData>` 
+
+
+.. php:attr:: protected static urlGenerator
+
+	:Source:
+		`lib/private/Template/IconsCacher.php#55 <https://github.com/nextcloud/server/blob/stable13/lib/private/Template/IconsCacher.php#L55>`_
+	
+	:Type: :any:`\\OCP\\IURLGenerator <OCP\\IURLGenerator>` 
+
+
+.. php:attr:: protected static timeFactory
+
+	:Source:
+		`lib/private/Template/IconsCacher.php#58 <https://github.com/nextcloud/server/blob/stable13/lib/private/Template/IconsCacher.php#L58>`_
+	
+	:Type: :any:`\\OCP\\AppFramework\\Utility\\ITimeFactory <OCP\\AppFramework\\Utility\\ITimeFactory>` 
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $logger, $appDataFactory, $urlGenerator, $timeFactory)
+	
+		:Source:
+			`lib/private/Template/IconsCacher.php#78 <https://github.com/nextcloud/server/blob/stable13/lib/private/Template/IconsCacher.php#L78>`_
+		
+		
+		:Parameters:
+			* **$logger** (:any:`OCP\\ILogger <OCP\\ILogger>`)  
+			* **$appDataFactory** (:any:`OC\\Files\\AppData\\Factory <OC\\Files\\AppData\\Factory>`)  
+			* **$urlGenerator** (:any:`OCP\\IURLGenerator <OCP\\IURLGenerator>`)  
+			* **$timeFactory** (:any:`OCP\\AppFramework\\Utility\\ITimeFactory <OCP\\AppFramework\\Utility\\ITimeFactory>`)  
+
+		
+		:Throws: :any:`\\OCP\\Files\\NotPermittedException <OCP\\Files\\NotPermittedException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setIconsCss( $css)
+	
+		:Source:
+			`lib/private/Template/IconsCacher.php#110 <https://github.com/nextcloud/server/blob/stable13/lib/private/Template/IconsCacher.php#L110>`_
+		
+		
+		:Parameters:
+			* **$css** (string)  
+
+		
+		:Returns: string 
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+		:Throws: :any:`\\OCP\\Files\\NotPermittedException <OCP\\Files\\NotPermittedException>` 
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+		:Throws: :any:`\\OCP\\Files\\NotPermittedException <OCP\\Files\\NotPermittedException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public colorizeSvg( $svg, $color)
+	
+		:Source:
+			`lib/private/Template/IconsCacher.php#191 <https://github.com/nextcloud/server/blob/stable13/lib/private/Template/IconsCacher.php#L191>`_
+		
+		
+		:Parameters:
+			* **$svg**  
+			* **$color**  
+
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getCachedCSS()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get icons css file
+			
+		
+		:Source:
+			`lib/private/Template/IconsCacher.php#220 <https://github.com/nextcloud/server/blob/stable13/lib/private/Template/IconsCacher.php#L220>`_
+		
+		
+		:Returns: :any:`\\OCP\\Files\\SimpleFS\\ISimpleFile <OCP\\Files\\SimpleFS\\ISimpleFile>` | bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getCachedList()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get icon\-vars list template
+			
+		
+		:Source:
+			`lib/private/Template/IconsCacher.php#235 <https://github.com/nextcloud/server/blob/stable13/lib/private/Template/IconsCacher.php#L235>`_
+		
+		
+		:Returns: :any:`\\OCP\\Files\\SimpleFS\\ISimpleFile <OCP\\Files\\SimpleFS\\ISimpleFile>` | bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public injectCss()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Add the icons cache css into the header
+			
+		
+		:Source:
+			`lib/private/Template/IconsCacher.php#249 <https://github.com/nextcloud/server/blob/stable13/lib/private/Template/IconsCacher.php#L249>`_
+		
+		
+	
+	
+

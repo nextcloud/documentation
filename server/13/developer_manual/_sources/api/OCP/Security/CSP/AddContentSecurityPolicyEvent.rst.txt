@@ -1,0 +1,66 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+AddContentSecurityPolicyEvent
+=============================
+
+
+.. php:namespace:: OCP\Security\CSP
+
+.. php:class:: AddContentSecurityPolicyEvent
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Allows to inject something into the default content policy\. This is for
+		| example useful when you\'re injecting Javascript code into a view belonging
+		| to another controller and cannot modify its Content\-Security\-Policy itself\.
+		
+		| Note that the adjustment is only applied to applications that use AppFramework
+		| controllers\.
+		| 
+		| WARNING: Using this API incorrectly may make the instance more insecure\.
+		| Do think twice before adding whitelisting resources\. Please do also note
+		| that it is not possible to use the \`disallowXYZ\` functions\.
+		
+	
+	:Source:
+		`lib/public/Security/CSP/AddContentSecurityPolicyEvent.php#48 <https://github.com/nextcloud/server/blob/stable13/lib/public/Security/CSP/AddContentSecurityPolicyEvent.php#L48>`_
+	
+	:Parent:
+		:php:class:`OCP\\EventDispatcher\\Event`
+	
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $policyManager)
+	
+		:Source:
+			`lib/public/Security/CSP/AddContentSecurityPolicyEvent.php#56 <https://github.com/nextcloud/server/blob/stable13/lib/public/Security/CSP/AddContentSecurityPolicyEvent.php#L56>`_
+		
+		
+		:Since: 17.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public addPolicy( $csp)
+	
+		:Source:
+			`lib/public/Security/CSP/AddContentSecurityPolicyEvent.php#64 <https://github.com/nextcloud/server/blob/stable13/lib/public/Security/CSP/AddContentSecurityPolicyEvent.php#L64>`_
+		
+		
+		:Since: 17.0.0 
+	
+	
+

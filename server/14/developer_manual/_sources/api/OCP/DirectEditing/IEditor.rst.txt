@@ -1,0 +1,157 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IEditor
+=======
+
+
+.. php:namespace:: OCP\DirectEditing
+
+.. php:interface:: IEditor
+
+
+	:Source:
+		`lib/public/DirectEditing/IEditor.php#34 <https://github.com/nextcloud/server/blob/stable13/lib/public/DirectEditing/IEditor.php#L34>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public getId()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Return a unique identifier for the editor
+			
+			| e\.g\. richdocuments
+			
+		
+		:Source:
+			`lib/public/DirectEditing/IEditor.php#44 <https://github.com/nextcloud/server/blob/stable13/lib/public/DirectEditing/IEditor.php#L44>`_
+		
+		
+		:Since: 18.0.0 
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getName()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Return a readable name for the editor
+			
+			| e\.g\. Collabora Online
+			
+		
+		:Source:
+			`lib/public/DirectEditing/IEditor.php#54 <https://github.com/nextcloud/server/blob/stable13/lib/public/DirectEditing/IEditor.php#L54>`_
+		
+		
+		:Since: 18.0.0 
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getMimetypes()
+	
+		.. rst-class:: phpdoc-description
+		
+			| A list of mimetypes that should open the editor by default
+			
+		
+		:Source:
+			`lib/public/DirectEditing/IEditor.php#62 <https://github.com/nextcloud/server/blob/stable13/lib/public/DirectEditing/IEditor.php#L62>`_
+		
+		
+		:Since: 18.0.0 
+		:Returns: string[] 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getMimetypesOptional()
+	
+		.. rst-class:: phpdoc-description
+		
+			| A list of mimetypes that can be opened in the editor optionally
+			
+		
+		:Source:
+			`lib/public/DirectEditing/IEditor.php#70 <https://github.com/nextcloud/server/blob/stable13/lib/public/DirectEditing/IEditor.php#L70>`_
+		
+		
+		:Since: 18.0.0 
+		:Returns: string[] 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getCreators()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Return a list of file creation options to be presented to the user
+			
+		
+		:Source:
+			`lib/public/DirectEditing/IEditor.php#78 <https://github.com/nextcloud/server/blob/stable13/lib/public/DirectEditing/IEditor.php#L78>`_
+		
+		
+		:Since: 18.0.0 
+		:Returns: :any:`\\OCP\\DirectEditing\\ACreateFromTemplate\[\] <OCP\\DirectEditing\\ACreateFromTemplate>` | :any:`\\OCP\\DirectEditing\\ACreateEmpty\[\] <OCP\\DirectEditing\\ACreateEmpty>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isSecure()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Return if the view is able to securely view a file without downloading it to the browser
+			
+		
+		:Source:
+			`lib/public/DirectEditing/IEditor.php#86 <https://github.com/nextcloud/server/blob/stable13/lib/public/DirectEditing/IEditor.php#L86>`_
+		
+		
+		:Since: 18.0.0 
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public open( $token)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Return a template response for displaying the editor
+			
+			| open can only be called once when the client requests the editor with a one\-time\-use token
+			| For handling editing and later requests, editors need to impelement their own token handling and take care of invalidation
+			| 
+			| This behavior is similar to the current direct editing implementation in collabora where we generate a one\-time token and switch over to the regular wopi token for the actual editing/saving process
+			
+		
+		:Source:
+			`lib/public/DirectEditing/IEditor.php#99 <https://github.com/nextcloud/server/blob/stable13/lib/public/DirectEditing/IEditor.php#L99>`_
+		
+		
+		:Since: 18.0.0 
+		:Returns: :any:`\\OCP\\AppFramework\\Http\\Response <OCP\\AppFramework\\Http\\Response>` 
+	
+	
+

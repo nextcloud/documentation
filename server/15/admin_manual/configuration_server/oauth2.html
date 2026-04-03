@@ -1,0 +1,314 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>OAuth2 &mdash; Nextcloud 15 Administration Manual 15 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'15',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Apps management" href="../apps_management.html" />
+    <link rel="prev" title="Theming" href="theming.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../contents.html">
+          
+
+          
+            
+            <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_schedule.html">Maintenance and release schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation and server configuration</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Nextcloud configuration</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="security_setup_warnings.html">Warnings on admin page</a></li>
+<li class="toctree-l2"><a class="reference internal" href="occ_command.html">Using the occ command</a></li>
+<li class="toctree-l2"><a class="reference internal" href="activity_configuration.html">Activity app</a></li>
+<li class="toctree-l2"><a class="reference internal" href="caching_configuration.html">Memory caching</a></li>
+<li class="toctree-l2"><a class="reference internal" href="background_jobs_configuration.html">Background jobs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config_sample_php_parameters.html">Configuration Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="email_configuration.html">Email</a></li>
+<li class="toctree-l2"><a class="reference internal" href="external_sites.html">Linking external sites</a></li>
+<li class="toctree-l2"><a class="reference internal" href="language_configuration.html">Language &amp; Locale</a></li>
+<li class="toctree-l2"><a class="reference internal" href="logging_configuration.html">Logging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="antivirus_configuration.html">Antivirus scanner</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reverse_proxy_configuration.html">Reverse proxy</a></li>
+<li class="toctree-l2"><a class="reference internal" href="automatic_configuration.html">Automatic setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="theming.html">Theming</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">OAuth2</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#add-an-oauth2-application">Add an OAuth2 Application</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-access-token">The access token</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../apps_management.html">Apps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_user/index.html">User management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_files/index.html">File sharing and management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../file_workflows/index.html">File workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_database/index.html">Database configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_mimetypes/index.html">Mimetypes management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../maintenance/index.html">Maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../issues/index.html">Issues and troubleshooting</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud 15 Administration Manual</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../contents.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Nextcloud configuration</a> &raquo;</li>
+        
+      <li>OAuth2</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/nextcloud/documentation/edit/stable15/admin_manual/configuration_server/oauth2.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="oauth2">
+<h1>OAuth2<a class="headerlink" href="#oauth2" title="Permalink to this headline">¶</a></h1>
+<p>Nextcloud allows connecting external services (for example Moodle) to your Nextcloud.
+This is done via <code class="docutils literal"><span class="pre">OAuth2</span></code>. See <a class="reference external" href="https://tools.ietf.org/html/rfc6749">RFC6749</a> for the
+OAuth2 specification.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Nextcloud does only support confidential clients.</p>
+</div>
+<div class="section" id="add-an-oauth2-application">
+<h2>Add an OAuth2 Application<a class="headerlink" href="#add-an-oauth2-application" title="Permalink to this headline">¶</a></h2>
+<p>Head over to your Administrator Security Settings. Here you can add a new <code class="docutils literal"><span class="pre">OAuth2</span></code> client.</p>
+<div class="figure">
+<img alt="../_images/oauth2-settings.png" src="../_images/oauth2-settings.png" />
+</div>
+<p>Enter the name of your application and provide a redirection url.
+You should now have a Client Identifier and Secret. Enter those into your <code class="docutils literal"><span class="pre">OAuth2</span></code> client.</p>
+<p>Please provide the OAuth2 application the following details:</p>
+<ul class="simple">
+<li>Authorization endpoint: <code class="docutils literal"><span class="pre">https://cloud.example.org/apps/oauth2/authorize</span></code></li>
+<li>Token endpoint: <code class="docutils literal"><span class="pre">https://cloud.example.org/apps/oauth2/api/v1/token</span></code></li>
+</ul>
+<p>Note that you must include <code class="docutils literal"><span class="pre">index.php</span></code> if pretty URL is not configured - i.e. <code class="docutils literal"><span class="pre">https://cloud.example.org/index.php/apps/oauth2/api/v1/token</span></code>.</p>
+</div>
+<div class="section" id="the-access-token">
+<h2>The access token<a class="headerlink" href="#the-access-token" title="Permalink to this headline">¶</a></h2>
+<p>The access token obtained is a so called Bearer token. Which means that for request to the
+Nextcloud server you will have to send the proper authorization header.</p>
+<p>Authorization: Bearer &lt;TOKEN&gt;</p>
+<p>Note that apache by default strips this. Make sure you have <code class="docutils literal"><span class="pre">mod_headers</span></code>, <code class="docutils literal"><span class="pre">mod_rewrite</span></code> and <code class="docutils literal"><span class="pre">mod_env</span></code> enabled.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../apps_management.html" class="btn btn-neutral float-right" title="Apps management" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="theming.html" class="btn btn-neutral float-left" title="Theming" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021 Nextcloud GmbH.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: 15
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/15/admin_manual">15</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/16/admin_manual">16</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/17/admin_manual">17</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/admin_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/admin_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+   
+
+</body>
+</html>

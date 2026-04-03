@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Repair Steps &#8212; Nextcloud Developer Manual 12 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/main.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '12',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.1.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Testing" href="testing.html" />
+    <link rel="prev" title="Logging" href="logging.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#1d2d44">
+<link rel="shortcut icon" href="https://nextcloud.com/wp-content/themes/next/assets/img/common/favicon.png" />
+<link rel="apple-touch-icon-precomposed" href="https://nextcloud.com/wp-content/themes/next/assets/img/common/favicon.png" />
+<!-- Piwik -->
+<script type="text/javascript">
+    var _paq = _paq || [];
+    _paq.push(['trackPageView']);
+    _paq.push(['enableLinkTracking']);
+    (function() {
+        var u="//stats.nextcloud.com/";
+        _paq.push(['setTrackerUrl', u+'piwik.php']);
+        _paq.push(['setSiteId', 3]);
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+        g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+    })();
+</script>
+<noscript><p><img src="//stats.nextcloud.com/piwik.php?idsite=3" style="border:0;" alt="" /></p></noscript>
+<!-- End Piwik Code -->
+
+  </head>
+  <body role="document">
+
+<header class="banner navbar navbar-default navbar-static-top" role="banner">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+       <a class="brand" href="http://nextcloud.com/" rel="home" title="Nextcloud.com"><img class="logo" src="../_static/img/logo.svg" itemprop="logo"></a>
+    </div>
+
+    <nav class="collapse navbar-collapse" role="navigation">
+      <ul id="menu-header" class="nav navbar-nav">
+          <li><a target="_blank" href="https://demo.nextcloud.com">Demo</a></li>
+          <li><a href="https://nextcloud.com/news/">News</a></li>
+          <li><a href="https://nextcloud.com/features/">Features</a></li>
+          <li><a href="https://nextcloud.com/about/">About us</a></li>
+          <li><a href="https://nextcloud.com/contribute/">Get involved</a></li>
+          <li><a href="https://nextcloud.com/support/">Support</a></li>
+          <li><a href="https://nextcloud.com/enterprise/">Enterprise</a></li>
+          <li class="menu-install"><a href="https://nextcloud.com/install/">Download</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+
+
+<div class="container" style="background-color: #E6C4C2;color: #b10000;border: #b10000 2px solid;border-right: none;border-left: none;padding: 15px 10px;">You are reading an outdated version of this documentation. Please check out the <a href="https://docs.nextcloud.com/server/stable/developer_manual/" style="
+color: rgb(177,0,0);text-decoration: underline;">latest version</a> of the developer manual.</div>
+
+
+
+
+
+<div class="wrap container not-front">
+  <div class="content row">
+  <main class="main">
+    <div class="row page-content-header">
+      <div class="col-md-6">
+        <h1><a href="../index.html">Nextcloud Developer Manual</a></h1>
+      </div>
+      <div class="col-md-5 col-md-offset-1">
+      
+        <form class="headersearch" style="margin: 16px 0;" action="../search.html" method="get">
+        <input type="text" value="" name="q" id="q" class="form-control" /> 
+        <button  class="btn btn-default" type="submit" id="searchsubmit">Search</button>
+        </form>
+      
+      </div>
+    </div>
+    
+			<div class="row">
+				<div class="col-md-3">
+					<div class="sidebar">
+							<div class="menu-support-container">
+								<ul id="menu-support" class="menu">
+									<ul>
+										
+<li><a href="../index.html">Table of Contents</a></li>
+									</ul>
+                  <ul>
+<li class="toctree-l1"><a class="reference internal" href="../general/index.html">General Contributor Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">App Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../design/index.html">Design Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../android_library/index.html">Android Application Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client_apis/index.html">Client APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../core/index.html">Core Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bugtracker/index.html">Bugtracker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../commun/index.html">Help and Communication</a></li>
+</ul>
+
+								</ul>
+							</div>
+					</div>
+				</div>
+        
+
+				<div class="col-md-9">
+					<div class="page-content">
+            
+<ul class="prevnext-title list-unstyled list-inline">
+  <li class="prev">
+    <a href="logging.html" title="Previous Chapter: Logging"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; Logging</span>
+    </a>
+  </li>
+  <li class="next">
+    <a href="testing.html" title="Next Chapter: Testing"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">Testing &raquo;</span>
+    </a>
+  </li>
+</ul>
+						
+  <div class="section" id="repair-steps">
+<h1>Repair Steps<a class="headerlink" href="#repair-steps" title="Permalink to this headline">¶</a></h1>
+<p>Repair steps are methods which are executed by Nextcloud on certain
+events which directly affect the app. You can use these repair steps to run
+code when your app is installed, uninstalled, upgraded etc. It&#8217;s called repair
+steps because they are frequently used to fix things automatically.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Don&#8217;t use the <code class="docutils literal"><span class="pre">install.php</span></code>, <code class="docutils literal"><span class="pre">update.php</span></code> and <code class="docutils literal"><span class="pre">preupdate.php</span></code> files anymore! This method is deprecated and is known to cause issues.</p>
+</div>
+<div class="section" id="creating-a-repair-step">
+<h2>Creating a repair step<a class="headerlink" href="#creating-a-repair-step" title="Permalink to this headline">¶</a></h2>
+<p>A repair step is an implementation of the  <code class="docutils literal"><span class="pre">OCP\Migration\IRepairStep</span></code> interface.
+By convention these classes are placed in the <strong>lib/Migration</strong> directory.
+The following repairstep will log a message when executed.</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="k">namespace</span> <span class="nx">OCA\MyApp\Migration</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCP\Migration\IOutput</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\Migration\IRepairStep</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\ILogger</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">MyRepairStep</span> <span class="k">implements</span> <span class="nx">IRepairStep</span> <span class="p">{</span>
+
+      <span class="sd">/** @var ILogger */</span>
+      <span class="k">protected</span> <span class="nv">$logger</span><span class="p">;</span>
+
+      <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">ILogger</span> <span class="nv">$logger</span><span class="p">)</span> <span class="p">{</span>
+              <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">logger</span> <span class="o">=</span> <span class="nv">$logger</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="sd">/**</span>
+<span class="sd">       * Returns the step&#39;s name</span>
+<span class="sd">       */</span>
+      <span class="k">public</span> <span class="k">function</span> <span class="nf">getName</span><span class="p">()</span> <span class="p">{</span>
+              <span class="k">return</span> <span class="s1">&#39;A demonstration repair step!&#39;</span><span class="p">;</span>
+      <span class="p">}</span>
+
+      <span class="sd">/**</span>
+<span class="sd">       * @param IOutput $output</span>
+<span class="sd">       */</span>
+      <span class="k">public</span> <span class="k">function</span> <span class="nf">run</span><span class="p">(</span><span class="nx">IOutput</span> <span class="nv">$output</span><span class="p">)</span> <span class="p">{</span>
+              <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">logger</span><span class="o">-&gt;</span><span class="na">warning</span><span class="p">(</span><span class="s2">&quot;Hello world from MyRepairStep!&quot;</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;app&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;MyApp&quot;</span><span class="p">]);</span>
+      <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="section" id="outputting-information">
+<h3>Outputting information<a class="headerlink" href="#outputting-information" title="Permalink to this headline">¶</a></h3>
+<p>A repair step can generate information while running, using the
+<code class="docutils literal"><span class="pre">OCP\Migration\IOutput</span></code> parameter to the <code class="docutils literal"><span class="pre">run</span></code> method.
+Using the <code class="docutils literal"><span class="pre">info</span></code> and <code class="docutils literal"><span class="pre">warning</span></code> methods a message can be shown in the console.
+In order to show a progressbar, firstly call the <code class="docutils literal"><span class="pre">startProgress</span></code> method.
+The maximum number of steps can be adjusted by passing it as argument to the
+<code class="docutils literal"><span class="pre">startProgress</span></code> method. After every step run the <code class="docutils literal"><span class="pre">advance</span></code> method. Once all steps are finished run the <code class="docutils literal"><span class="pre">finishProgress</span></code>
+method.</p>
+<p>The following function will sleep for 10 seconds and show the progress:</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="sd">/**</span>
+<span class="sd"> * @param IOutput $output</span>
+<span class="sd"> */</span>
+<span class="k">public</span> <span class="k">function</span> <span class="nf">run</span><span class="p">(</span><span class="nx">IOutput</span> <span class="nv">$output</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nv">$output</span><span class="o">-&gt;</span><span class="na">info</span><span class="p">(</span><span class="s2">&quot;This step will take 10 seconds.&quot;</span><span class="p">);</span>
+      <span class="nv">$output</span><span class="o">-&gt;</span><span class="na">startProgress</span><span class="p">(</span><span class="mi">10</span><span class="p">);</span>
+      <span class="k">for</span> <span class="p">(</span><span class="nv">$i</span> <span class="o">=</span> <span class="mi">0</span><span class="p">;</span> <span class="nv">$i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="p">;</span> <span class="nv">$i</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+              <span class="nb">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+              <span class="nv">$output</span><span class="o">-&gt;</span><span class="na">advance</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span>
+      <span class="p">}</span>
+      <span class="nv">$output</span><span class="o">-&gt;</span><span class="na">finishProgress</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="register-a-repair-step">
+<h2>Register a repair-step<a class="headerlink" href="#register-a-repair-step" title="Permalink to this headline">¶</a></h2>
+<p>To register a repair-step in Nextcloud you have to define the repair-setp in the <code class="docutils literal"><span class="pre">info.xml</span></code>
+file. The following example registers a repair-step which will be executed after installation
+of the app:</p>
+<div class="highlight-xml"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span class="nt">&lt;info</span> <span class="na">xmlns:xsi=</span> <span class="s">&quot;http://www.w3.org/2001/XMLSchema-instance&quot;</span>
+      <span class="na">xsi:noNamespaceSchemaLocation=</span><span class="s">&quot;https://apps.nextcloud.com/schema/apps/info.xsd&quot;</span><span class="nt">&gt;</span>
+      <span class="nt">&lt;id&gt;</span>myapp<span class="nt">&lt;/id&gt;</span>
+      <span class="nt">&lt;name&gt;</span>My App<span class="nt">&lt;/name&gt;</span>
+      <span class="nt">&lt;summary&gt;</span>A test app<span class="nt">&lt;/summary&gt;</span>
+      ...
+      <span class="nt">&lt;repair-steps&gt;</span>
+              <span class="nt">&lt;install&gt;</span>
+                      <span class="nt">&lt;step&gt;</span>OCA\MyApp\Migration\MyRepairStep<span class="nt">&lt;/step&gt;</span>
+              <span class="nt">&lt;/install&gt;</span>
+      <span class="nt">&lt;/repair-steps&gt;</span>
+<span class="nt">&lt;/info&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="repair-step-types">
+<h2>Repair-step types<a class="headerlink" href="#repair-step-types" title="Permalink to this headline">¶</a></h2>
+<p>The following repair steps are available:</p>
+<ul class="simple">
+<li><code class="docutils literal"><span class="pre">install</span></code> This repair step will be executed when installing the app. This means it is executed every time the app is enabled (using the Web interface or the CLI).</li>
+<li><code class="docutils literal"><span class="pre">uninstall</span></code> This repair step will be executed when uninstalling the app, and when disabling the app.</li>
+<li><code class="docutils literal"><span class="pre">pre-migration</span></code> This repair step will be executed just before the database is migrated during an update of the app.</li>
+<li><code class="docutils literal"><span class="pre">post-migration</span></code> This repair step will be executed just after the database is migrated during an update of the app.  This repair step will also be executed when running the <code class="docutils literal"><span class="pre">occ</span> <span class="pre">maintenance:repair</span></code> command</li>
+<li><code class="docutils literal"><span class="pre">live-migration</span></code> This repair step will be scheduled to be run in the background (e.g. using cron), therefore it is unpredictable when it will run. If the job isn&#8217;t required right after the update of the app and the job would take a long time this is the best choice.</li>
+</ul>
+</div>
+</div>
+
+
+            
+<ul class="prevnext-title list-unstyled list-inline">
+  <li class="prev">
+    <a href="logging.html" title="Previous Chapter: Logging"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; Logging</span>
+    </a>
+  </li>
+  <li class="next">
+    <a href="testing.html" title="Next Chapter: Testing"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">Testing &raquo;</span>
+    </a>
+  </li>
+</ul>
+					</div>
+				</div>
+			</div>
+  </main>  
+  </div>
+</div>
+<div class="container">
+<div class="row">
+    <div class="col-lg-12 footer-social-icons">
+      <p class="text-center"><a target="_blank" href="https://plus.google.com/104036748063781940910/about"><img width=50 src="../_static/img/social/googleplus.svg" title="Follow us on Google Plus!" alt="Follow us on Google Plus!"></img></a>
+      <a target="_blank" href="https://www.facebook.com/Nextclouders"><img width=50 src="../_static/img/social/facebook.svg" title="Like our facebook page!" alt="Like our facebook page!"></img></a>
+      <a target="_blank" href="https://twitter.com/Nextclouders"><img width=50 src="../_static/img/social/twitter.svg" title="Subscribe to our twitter channel!" alt="Subscribe to our twitter channel!"></img></a>
+      <a target="_blank" href="https://nextcloud.com/blogfeed"><img class="img-circle" width=50 src="../_static/img/social/rss.svg" title="Subscribe to our news feed!" alt="Subscribe to our news feed!"></img></a>
+      <a target="_blank" href="https://newsletter.nextcloud.com/"><img class="img-circle" width=50 src="../_static/img/social/mail.svg"  title="Subscribe to our newsletter!" alt="Subscribe to our newsletter!"></img></a></p>
+    </div>
+    <div class="text-center">
+      <p>All documentation licensed under the <a href="https://creativecommons.org/licenses/by/3.0/us/">Creative Commons Attribution 3.0 Unported license</a>.</p>
+      <p><a href="https://github.com/nextcloud/documentation/graphs/contributors">See who contributed to our documentation/credits</a>.</p>
+    </div>
+</div>
+</div>
+<footer class="content-info" role="contentinfo">
+<div class="container">
+   <div class="row">
+     <div class="col-sm-2 col-sm-offset-1">
+        <div class="footer-nav">
+          <h4>About Nextcloud</h4>
+          <ul id="menu-about" class="menu">
+            <li><a href="https://nextcloud.com/about/">About us</a></li>
+            <li><a href="https://nextcloud.com/contact/">Contact us</a></li>
+            <li><a href="https://nextcloud.com/press/">Press</a></li>
+            <li><a href="https://nextcloud.com/privacy/">Privacy policy</a></li>
+          </ul>
+        </div>
+     </div>
+     <div class="col-sm-2 col-sm-offset-2">
+     </div>
+     <div class="col-sm-2 col-sm-offset-2">
+        <div class="footer-nav">
+          <h4>Interact</h4>
+          <ul id="menu-interact" class="menu">
+            <li class="menu-irc-channel"><a href="https://webchat.freenode.net/?channels=nextcloud">IRC Channel</a></li>
+            <li class="menu-forums"><a href="https://help.nextcloud.com/">Forums</a></li>
+          </ul>
+        </div>
+     </div>
+   </div>
+   <div class="row">
+      <div class="col-lg-12 footer-text">
+        <p>
+              &copy; Copyright 2012-2017, The Nextcloud developers.  <small><a href="https://nextcloud.com/impressum">Legal Notice</a></small><br/>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+  </body>
+</html>

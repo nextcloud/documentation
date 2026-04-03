@@ -1,0 +1,466 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IFullTextSearchProvider
+=======================
+
+
+.. php:namespace:: OCP\FullTextSearch
+
+.. php:interface:: IFullTextSearchProvider
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Interface IFullTextSearchProvider
+		
+		| This interface must be use when creating a Content Provider for FullTextSearch\.
+		| 
+		| A Content Provider is an extension to the FullTextSearch that will extract and
+		| provide content to the FullTextSearch\.
+		| 
+		| There is no limit to the number of Content Provider that can be integrated to
+		| FullTextSearch\. Each Content Provider corresponding to a type of content
+		| available in Nextcloud \(files, bookmarks, notes, deck cards, mails, \.\.\.\)
+		| 
+		| Content is split in document identified by an ID and the ID of the Content
+		| Provider\. The content is indexed by a Search Platform that will returns a
+		| documentId as a result on a search request\.
+		| 
+		| 
+		| To oversimplify the mechanism:
+		| 
+		| \- When indexing, FullTextSearch will ask for documents to every Content Provider\.
+		| \- On search, results from the Search Platform, identified by documentId, will
+		|   be improved by each relative Content Provider\.
+		| 
+		| 
+		| The Content Provider is a PHP class that implement this interface and is defined
+		| in appinfo/info\.xml of the app that contains that class:
+		| 
+		|    <fulltextsearch\>
+		|      <provider\>OCA\\YourApp\\YourContentProvider</provider\>
+		|    </fulltextsearch\>
+		| 
+		| Multiple Content Provider can be defined in a single app\.
+		
+	
+	:Source:
+		`lib/public/FullTextSearch/IFullTextSearchProvider.php#74 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/IFullTextSearchProvider.php#L74>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public getId()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Must returns a unique Id used to identify the Content Provider\.
+			
+			| Id must contains only alphanumeric chars, with no space\.
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/IFullTextSearchProvider.php#85 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/IFullTextSearchProvider.php#L85>`_
+		
+		
+		:Since: 15.0.0 
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getName()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Must returns a descriptive name of the Content Provider\.
+			
+			| This is used in multiple places, so better use a clear display name\.
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/IFullTextSearchProvider.php#96 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/IFullTextSearchProvider.php#L96>`_
+		
+		
+		:Since: 15.0.0 
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getConfiguration()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Should returns the current configuration of the Content Provider\.
+			
+			| This is used to display the configuration when using the
+			| \./occ fulltextsearch:check command line\.
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/IFullTextSearchProvider.php#108 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/IFullTextSearchProvider.php#L108>`_
+		
+		
+		:Since: 15.0.0 
+		:Returns: array 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getSearchTemplate()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Must returns a ISearchTemplate that contains displayable items and
+			| available options to users when searching\.
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/IFullTextSearchProvider.php#121 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/IFullTextSearchProvider.php#L121>`_
+		
+		
+		:See: :any:`\\OCP\\FullTextSearch\\Model\\ISearchTemplate <OCP\\FullTextSearch\\Model\\ISearchTemplate>` 
+		:Since: 15.0.0 
+		:Returns: :any:`\\OCP\\FullTextSearch\\Model\\ISearchTemplate <OCP\\FullTextSearch\\Model\\ISearchTemplate>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public loadProvider()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Called when FullTextSearch is loading your Content Provider\.
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/IFullTextSearchProvider.php#129 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/IFullTextSearchProvider.php#L129>`_
+		
+		
+		:Since: 15.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setRunner( $runner)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set the wrapper of the currently executed process\.
+			
+			| Because the index process can be long and heavy, and because errors can
+			| be encountered during the process, the IRunner is a wrapper that allow the
+			| Content Provider to communicate with the process initiated by
+			| FullTextSearch\.
+			| 
+			| The IRunner is coming with some methods so the Content Provider can
+			| returns important information and errors to be displayed to the admin\.
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/IFullTextSearchProvider.php#146 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/IFullTextSearchProvider.php#L146>`_
+		
+		
+		:Parameters:
+			* **$runner** (:any:`OCP\\FullTextSearch\\Model\\IRunner <OCP\\FullTextSearch\\Model\\IRunner>`)  
+
+		
+		:Since: 15.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setIndexOptions( $options)
+	
+		.. rst-class:: phpdoc-description
+		
+			| This method is called when the administrator specify options when running
+			| the \./occ fulltextsearch:index or \./occ fulltextsearch:live
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/IFullTextSearchProvider.php#157 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/IFullTextSearchProvider.php#L157>`_
+		
+		
+		:Parameters:
+			* **$options** (:any:`OCP\\FullTextSearch\\Model\\IIndexOptions <OCP\\FullTextSearch\\Model\\IIndexOptions>`)  
+
+		
+		:Since: 15.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public generateChunks( $userId)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Allow the provider to generate a list of chunk to split a huge list of
+			| indexable documents
+			
+			| During the indexing the generateIndexableDocuments method will be called
+			| for each entry of the returned array\.
+			| If the returned array is empty, the generateIndexableDocuments\(\) will be
+			| called only once \(per user\)\.
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/IFullTextSearchProvider.php#175 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/IFullTextSearchProvider.php#L175>`_
+		
+		
+		:Parameters:
+			* **$userId** (string)  
+
+		
+		:Since: 16.0.0 
+		:Returns: string[] 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public generateIndexableDocuments( $userId, $chunk)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns all indexable document for a user as an array of IIndexDocument\.
+			
+			| There is no need to fill each IIndexDocument with content; at this point,
+			| only fill the object with the minimum information to not waste memory while
+			| still being able to identify the document it is referring to\.
+			| 
+			| FullTextSearch will call 2 other methods of this interface for each
+			| IIndexDocument of the array, prior to their indexing:
+			| 
+			| \- first, to compare the date of the last index,
+			| \- then, to fill each IIndexDocument with complete data
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/IFullTextSearchProvider.php#201 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/IFullTextSearchProvider.php#L201>`_
+		
+		
+		:Parameters:
+			* **$userId** (string)  
+			* **$chunk** (string)  
+
+		
+		:See: :any:`\\OCP\\FullTextSearch\\Model\\IIndexDocument <OCP\\FullTextSearch\\Model\\IIndexDocument>` 
+		:Since: 15.0.0 \-\> 16\.0\.0: the parameter "$chunk" was added
+		:Returns: :any:`\\OCP\\FullTextSearch\\Model\\IIndexDocument\[\] <OCP\\FullTextSearch\\Model\\IIndexDocument>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isDocumentUpToDate( $document)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Called to verify that the document is not already indexed and that the
+			| old index is not up\-to\-date, using the IIndex from
+			| IIndexDocument\-\>getIndex\(\)
+			
+			| Returning true will not queue the current IIndexDocument to any further
+			| operation and will continue on the next element from the list returned by
+			| generateIndexableDocuments\(\)\.
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/IFullTextSearchProvider.php#219 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/IFullTextSearchProvider.php#L219>`_
+		
+		
+		:Parameters:
+			* **$document** (:any:`OCP\\FullTextSearch\\Model\\IIndexDocument <OCP\\FullTextSearch\\Model\\IIndexDocument>`)  
+
+		
+		:Since: 15.0.0 
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public fillIndexDocument( $document)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Must fill IIndexDocument with all information relative to the document,
+			| before its indexing by the Search Platform\.
+			
+			| Method is called for each element returned previously by
+			| generateIndexableDocuments\(\)\.
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/IFullTextSearchProvider.php#235 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/IFullTextSearchProvider.php#L235>`_
+		
+		
+		:Parameters:
+			* **$document** (:any:`OCP\\FullTextSearch\\Model\\IIndexDocument <OCP\\FullTextSearch\\Model\\IIndexDocument>`)  
+
+		
+		:See: :any:`\\OCP\\FullTextSearch\\Model\\IIndexDocument <OCP\\FullTextSearch\\Model\\IIndexDocument>` 
+		:Since: 15.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public updateDocument( $index)
+	
+		.. rst-class:: phpdoc-description
+		
+			| The Search Provider must create and return an IIndexDocument
+			| based on the IIndex and its status\. The IIndexDocument must contains all
+			| information as it will be send for indexing\.
+			
+			| Method is called during a cron or a \./occ fulltextsearch:live after a
+			| new document is created, or an old document is set as modified\.
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/IFullTextSearchProvider.php#252 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/IFullTextSearchProvider.php#L252>`_
+		
+		
+		:Parameters:
+			* **$index** (:any:`OCP\\FullTextSearch\\Model\\IIndex <OCP\\FullTextSearch\\Model\\IIndex>`)  
+
+		
+		:Since: 15.0.0 
+		:Returns: :any:`\\OCP\\FullTextSearch\\Model\\IIndexDocument <OCP\\FullTextSearch\\Model\\IIndexDocument>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public onInitializingIndex( $platform)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Called when an index is initiated by the administrator\.
+			
+			| This is should only be used in case of a specific mapping is needed\.
+			| \(ie\. \_almost\_ never\)
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/IFullTextSearchProvider.php#264 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/IFullTextSearchProvider.php#L264>`_
+		
+		
+		:Parameters:
+			* **$platform** (:any:`OCP\\FullTextSearch\\IFullTextSearchPlatform <OCP\\FullTextSearch\\IFullTextSearchPlatform>`)  
+
+		
+		:Since: 15.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public onResettingIndex( $platform)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Called when administrator is resetting the index\.
+			
+			| This is should only be used in case of a specific mapping has been
+			| created\.
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/IFullTextSearchProvider.php#276 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/IFullTextSearchProvider.php#L276>`_
+		
+		
+		:Parameters:
+			* **$platform** (:any:`OCP\\FullTextSearch\\IFullTextSearchPlatform <OCP\\FullTextSearch\\IFullTextSearchPlatform>`)  
+
+		
+		:Since: 15.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public improveSearchRequest( $searchRequest)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Method is called when a search request is initiated by a user, prior to
+			| be sent to the Search Platform\.
+			
+			| Your Content Provider can interact with the ISearchRequest to apply the
+			| search options and make the search more precise\.
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/IFullTextSearchProvider.php#292 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/IFullTextSearchProvider.php#L292>`_
+		
+		
+		:Parameters:
+			* **$searchRequest** (:any:`OCP\\FullTextSearch\\Model\\ISearchRequest <OCP\\FullTextSearch\\Model\\ISearchRequest>`)  
+
+		
+		:See: :any:`\\OCP\\FullTextSearch\\Model\\ISearchRequest <OCP\\FullTextSearch\\Model\\ISearchRequest>` 
+		:Since: 15.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public improveSearchResult( $searchResult)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Method is called after results of a search are returned by the
+			| Search Platform\.
+			
+			| Your Content Provider can detail each entry with local data to improve
+			| the display of the search result\.
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/IFullTextSearchProvider.php#308 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/IFullTextSearchProvider.php#L308>`_
+		
+		
+		:Parameters:
+			* **$searchResult** (:any:`OCP\\FullTextSearch\\Model\\ISearchResult <OCP\\FullTextSearch\\Model\\ISearchResult>`)  
+
+		
+		:See: :any:`\\OCP\\FullTextSearch\\Model\\ISearchResult <OCP\\FullTextSearch\\Model\\ISearchResult>` 
+		:Since: 15.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public unloadProvider()
+	
+		.. rst-class:: phpdoc-description
+		
+			| not used yet\.
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/IFullTextSearchProvider.php#316 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/IFullTextSearchProvider.php#L316>`_
+		
+		
+		:Since: 15.0.0 
+	
+	
+

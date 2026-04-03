@@ -1,0 +1,93 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+ISearchBinaryOperator
+=====================
+
+
+.. php:namespace:: OCP\Files\Search
+
+.. php:interface:: ISearchBinaryOperator
+
+
+	:Implemented by:
+		:php:class:`OC\\Files\\Search\\SearchBinaryOperator` 
+	
+	
+	:Source:
+		`lib/public/Files/Search/ISearchBinaryOperator.php#30 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Search/ISearchBinaryOperator.php#L30>`_
+	
+	:Parent:
+		:php:interface:`OCP\\Files\\Search\\ISearchOperator`
+	
+
+Constants
+---------
+
+.. php:const:: OPERATOR_AND = and
+
+	:Source:
+		`lib/public/Files/Search/ISearchBinaryOperator.php#31 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Search/ISearchBinaryOperator.php#L31>`_
+	
+
+
+.. php:const:: OPERATOR_OR = or
+
+	:Source:
+		`lib/public/Files/Search/ISearchBinaryOperator.php#32 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Search/ISearchBinaryOperator.php#L32>`_
+	
+
+
+.. php:const:: OPERATOR_NOT = not
+
+	:Source:
+		`lib/public/Files/Search/ISearchBinaryOperator.php#33 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Search/ISearchBinaryOperator.php#L33>`_
+	
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public getType()
+	
+		.. rst-class:: phpdoc-description
+		
+			| The type of binary operator
+			
+			| One of the ISearchBinaryOperator::OPERATOR\_\* constants
+			
+		
+		:Source:
+			`lib/public/Files/Search/ISearchBinaryOperator.php#43 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Search/ISearchBinaryOperator.php#L43>`_
+		
+		
+		:Returns: string 
+		:Since: 12.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getArguments()
+	
+		.. rst-class:: phpdoc-description
+		
+			| The arguments for the binary operator
+			
+			| One argument for the \'not\' operator and two for \'and\' and \'or\'
+			
+		
+		:Source:
+			`lib/public/Files/Search/ISearchBinaryOperator.php#53 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Search/ISearchBinaryOperator.php#L53>`_
+		
+		
+		:Returns: :any:`\\OCP\\Files\\Search\\ISearchOperator\[\] <OCP\\Files\\Search\\ISearchOperator>` 
+		:Since: 12.0.0 
+	
+	
+

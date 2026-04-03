@@ -1,0 +1,1342 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>OC_Util &mdash; Nextcloud 13 Developer Manual 13 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'13',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="OC_FileChunking" href="OC_FileChunking.html" />
+    <link rel="prev" title="OC_DB_StatementWrapper" href="OC_DB_StatementWrapper.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../general/index.html">General contributor guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/startapp.html">Create an app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/init.html">Navigation and pre-app configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/info.html">App metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/classloader.html">Classloader</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/request.html">Request lifecycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/routes.html">Routing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/middleware.html">Middleware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/container.html">Container</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/controllers.html">Controllers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/api.html">RESTful API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/templates.html">Templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/js.html">JavaScript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/css.html">CSS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/l10n.html">Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/theming.html">Theming support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/schema.html">Database schema</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/database.html">Database access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/filesystem.html">Filesystem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/appdata.html">AppData</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/users.html">User management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/two-factor-provider.html">Two-factor providers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/hooks.html">Hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/backgroundjobs.html">Background jobs (Cron)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/settings.html">Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/logging.html">Logging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/migrations.html">Migrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/repair.html">Repair steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/publishing.html">App store publishing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/code_signing.html">Code signing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../design/index.html">Design guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../android_library/index.html">Android application development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client_apis/index.html">Client APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../core/translation.html">Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../core/unit-testing.html">Unit-Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../core/theming.html">Theming Nextcloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../core/externalapi.html">External API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../core/ocs-share-api.html">OCS Share API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../core/index.html">Core development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bugtracker/index.html">Bugtracker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../commun/index.html">Help and communication</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">API Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../api.html#php-public-api">PHP public API</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../api.html#php-class-reference">PHP class reference</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">/ namespace</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="index.html#namespaces">Namespaces</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="index.html#classes">Classes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="index.html#functions">Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="OC/index.html">/OC namespace</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Nextcloud 13 Developer Manual</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../api.html">API Documentation</a> &raquo;</li>
+        
+          <li><a href="index.html">\</a> &raquo;</li>
+        
+      <li>OC_Util</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/nextcloud/documentation/edit/stable13/developer_manual/api/OC_Util.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="phpdoctorst section" id="oc-util">
+<h1>OC_Util<a class="headerlink" href="#oc-util" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="OC_Util">
+<em class="property">class </em><code class="descname">OC_Util</code><a class="headerlink" href="#OC_Util" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Util.php#L77">lib/private/legacy/OC_Util.php#77</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<div class="section" id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h2>
+<dl class="attr">
+<dt id="OC_Util::$scripts">
+<em class="property">public </em><em class="property">property </em><code class="descclassname">OC_Util::$</code><code class="descname">scripts</code><a class="headerlink" href="#OC_Util::$scripts" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Util.php#L78">lib/private/legacy/OC_Util.php#78</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attr">
+<dt id="OC_Util::$styles">
+<em class="property">public </em><em class="property">property </em><code class="descclassname">OC_Util::$</code><code class="descname">styles</code><a class="headerlink" href="#OC_Util::$styles" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Util.php#L79">lib/private/legacy/OC_Util.php#79</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attr">
+<dt id="OC_Util::$headers">
+<em class="property">public </em><em class="property">property </em><code class="descclassname">OC_Util::$</code><code class="descname">headers</code><a class="headerlink" href="#OC_Util::$headers" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Util.php#L80">lib/private/legacy/OC_Util.php#80</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h2>
+<dl class="protected static method">
+<dt id="OC_Util::getAppManager">
+<em class="property">protected </em><em class="property">static </em><code class="descclassname">OC_Util::</code><code class="descname">getAppManager</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC_Util::getAppManager" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Util.php#L87">lib/private/legacy/OC_Util.php#87</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC_Util::setupFS">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC_Util::</code><code class="descname">setupFS</code><span class="sig-paren">(</span><em>$user=&quot;&quot;</em><span class="sig-paren">)</span><a class="headerlink" href="#OC_Util::setupFS" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Can be set up</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Util.php#L187">lib/private/legacy/OC_Util.php#187</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$user</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC_Util::isPublicLinkPasswordRequired">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC_Util::</code><code class="descname">isPublicLinkPasswordRequired</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC_Util::isPublicLinkPasswordRequired" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">check if a password is required for each public link</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Util.php#L338">lib/private/legacy/OC_Util.php#338</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC_Util::isSharingDisabledForUser">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC_Util::</code><code class="descname">isSharingDisabledForUser</code><span class="sig-paren">(</span><em>$config</em>, <em>$groupManager</em>, <em>$user</em><span class="sig-paren">)</span><a class="headerlink" href="#OC_Util::isSharingDisabledForUser" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">check if sharing is disabled for the current user</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Util.php#L350">lib/private/legacy/OC_Util.php#350</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$config</strong> (<a class="reference internal" href="OCP/IConfig.html#OCP\IConfig" title="OCP\IConfig"><code class="xref any php php-trait docutils literal"><span class="pre">OCP\IConfig</span></code></a>)</li>
+<li><strong>$groupManager</strong> (<a class="reference internal" href="OCP/IGroupManager.html#OCP\IGroupManager" title="OCP\IGroupManager"><code class="xref any php php-trait docutils literal"><span class="pre">OCP\IGroupManager</span></code></a>)</li>
+<li><strong>$user</strong> (<a class="reference internal" href="OCP/IUser.html#OCP\IUser" title="OCP\IUser"><code class="xref any php php-trait docutils literal"><span class="pre">OCP\IUser</span></code></a> | null)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC_Util::isDefaultExpireDateEnforced">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC_Util::</code><code class="descname">isDefaultExpireDateEnforced</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC_Util::isDefaultExpireDateEnforced" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">check if share API enforces a default expire date</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Util.php#L378">lib/private/legacy/OC_Util.php#378</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC_Util::getUserQuota">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC_Util::</code><code class="descname">getUserQuota</code><span class="sig-paren">(</span><em>$user</em><span class="sig-paren">)</span><a class="headerlink" href="#OC_Util::getUserQuota" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Get the quota of a user</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Util.php#L395">lib/private/legacy/OC_Util.php#395</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$user</strong> (<a class="reference internal" href="OCP/IUser.html#OCP\IUser" title="OCP\IUser"><code class="xref any php php-trait docutils literal"><span class="pre">OCP\IUser</span></code></a> | null)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">float Quota bytes</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC_Util::copySkeleton">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC_Util::</code><code class="descname">copySkeleton</code><span class="sig-paren">(</span><em>$userId</em>, <em>$userDirectory</em><span class="sig-paren">)</span><a class="headerlink" href="#OC_Util::copySkeleton" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">copies the skeleton to the users /files</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Util.php#L415">lib/private/legacy/OC_Util.php#415</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$userId</strong> (string)</li>
+<li><strong>$userDirectory</strong> (<a class="reference internal" href="OCP/Files/Folder.html#OCP\Files\Folder" title="OCP\Files\Folder"><code class="xref any php php-trait docutils literal"><span class="pre">OCP\Files\Folder</span></code></a>)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><a class="reference internal" href="OCP/Files/NotFoundException.html#OCP\Files\NotFoundException" title="OCP\Files\NotFoundException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\NotFoundException</span></code></a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><a class="reference internal" href="OCP/Files/NotPermittedException.html#OCP\Files\NotPermittedException" title="OCP\Files\NotPermittedException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\NotPermittedException</span></code></a></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><a class="reference internal" href="OCP/Files/NotFoundException.html#OCP\Files\NotFoundException" title="OCP\Files\NotFoundException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\NotFoundException</span></code></a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><p class="first last"><a class="reference internal" href="OCP/Files/NotPermittedException.html#OCP\Files\NotPermittedException" title="OCP\Files\NotPermittedException"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Files\NotPermittedException</span></code></a></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC_Util::copyr">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC_Util::</code><code class="descname">copyr</code><span class="sig-paren">(</span><em>$source</em>, <em>$target</em><span class="sig-paren">)</span><a class="headerlink" href="#OC_Util::copyr" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">copies a directory recursively by using streams</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Util.php#L465">lib/private/legacy/OC_Util.php#465</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$source</strong> (string)</li>
+<li><strong>$target</strong> (<a class="reference internal" href="OCP/Files/Folder.html#OCP\Files\Folder" title="OCP\Files\Folder"><code class="xref any php php-trait docutils literal"><span class="pre">OCP\Files\Folder</span></code></a>)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC_Util::tearDownFS">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC_Util::</code><code class="descname">tearDownFS</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC_Util::tearDownFS" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Util.php#L500">lib/private/legacy/OC_Util.php#500</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">void</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC_Util::getVersion">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC_Util::</code><code class="descname">getVersion</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC_Util::getVersion" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">get the current installed version of ownCloud</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Util.php#L512">lib/private/legacy/OC_Util.php#512</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">array</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC_Util::getVersionString">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC_Util::</code><code class="descname">getVersionString</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC_Util::getVersionString" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">get the current installed version string of ownCloud</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Util.php#L522">lib/private/legacy/OC_Util.php#522</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">string</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static deprecated method">
+<dt id="OC_Util::getEditionString">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC_Util::</code><code class="descname">getEditionString</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC_Util::getEditionString" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Util.php#L531">lib/private/legacy/OC_Util.php#531</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Deprecated:</th><td class="field-body">the value is of no use anymore</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">string</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC_Util::getChannel">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC_Util::</code><code class="descname">getChannel</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC_Util::getChannel" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Util.php#L539">lib/private/legacy/OC_Util.php#539</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">string</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC_Util::getBuild">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC_Util::</code><code class="descname">getBuild</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC_Util::getBuild" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Util.php#L548">lib/private/legacy/OC_Util.php#548</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">string</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC_Util::addScript">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC_Util::</code><code class="descname">addScript</code><span class="sig-paren">(</span><em>$application</em>, <em>$file=\null</em>, <em>$prepend=\false</em><span class="sig-paren">)</span><a class="headerlink" href="#OC_Util::addScript" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">add a javascript file</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Util.php#L605">lib/private/legacy/OC_Util.php#605</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$application</strong> (string)  application id</li>
+<li><strong>$file</strong> (string | null)  filename</li>
+<li><strong>$prepend</strong> (bool)  prepend the Script to the beginning of the list</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC_Util::addVendorScript">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC_Util::</code><code class="descname">addVendorScript</code><span class="sig-paren">(</span><em>$application</em>, <em>$file=\null</em>, <em>$prepend=\false</em><span class="sig-paren">)</span><a class="headerlink" href="#OC_Util::addVendorScript" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">add a javascript file from the vendor sub folder</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Util.php#L623">lib/private/legacy/OC_Util.php#623</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$application</strong> (string)  application id</li>
+<li><strong>$file</strong> (string | null)  filename</li>
+<li><strong>$prepend</strong> (bool)  prepend the Script to the beginning of the list</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC_Util::addTranslations">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC_Util::</code><code class="descname">addTranslations</code><span class="sig-paren">(</span><em>$application</em>, <em>$languageCode=\null</em>, <em>$prepend=\false</em><span class="sig-paren">)</span><a class="headerlink" href="#OC_Util::addTranslations" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">add a translation JS file</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Util.php#L635">lib/private/legacy/OC_Util.php#635</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>$application</strong> (string)  application id</li>
+<li><strong>$languageCode</strong> (string | null)  language code, defaults to the current language</li>
+<li><strong>$prepend</strong> (bool | null)  prepend the Script to the beginning of the list</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC_Util::addStyle">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC_Util::</code><code class="descname">addStyle</code><span class="sig-paren">(</span><em>$application</em>, <em>$file=\null</em>, <em>$prepend=\false</em><span class="sig-paren">)</span><a class="headerlink" href="#OC_Util::addStyle" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">add a css file</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Util.php#L655">lib/private/legacy/OC_Util.php#655</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$application</strong> (string)  application id</li>
+<li><strong>$file</strong> (string | null)  filename</li>
+<li><strong>$prepend</strong> (bool)  prepend the Style to the beginning of the list</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC_Util::addVendorStyle">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC_Util::</code><code class="descname">addVendorStyle</code><span class="sig-paren">(</span><em>$application</em>, <em>$file=\null</em>, <em>$prepend=\false</em><span class="sig-paren">)</span><a class="headerlink" href="#OC_Util::addVendorStyle" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">add a css file from the vendor sub folder</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Util.php#L668">lib/private/legacy/OC_Util.php#668</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$application</strong> (string)  application id</li>
+<li><strong>$file</strong> (string | null)  filename</li>
+<li><strong>$prepend</strong> (bool)  prepend the Style to the beginning of the list</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">void</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC_Util::addHeader">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC_Util::</code><code class="descname">addHeader</code><span class="sig-paren">(</span><em>$tag</em>, <em>$attributes</em>, <em>$text=\null</em>, <em>$prepend=\false</em><span class="sig-paren">)</span><a class="headerlink" href="#OC_Util::addHeader" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Add a custom element to the header</div>
+<div class="line">If $text is null then the element will be written as empty element.</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">So use &#8220;&#8221; to get a closing tag.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Util.php#L711">lib/private/legacy/OC_Util.php#711</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>$tag</strong> (string)  tag name of the element</li>
+<li><strong>$attributes</strong> (array)  array of attributes for the element</li>
+<li><strong>$text</strong> (string)  the text content for the element</li>
+<li><strong>$prepend</strong> (bool)  prepend the header to the beginning of the list</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC_Util::checkServer">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC_Util::</code><code class="descname">checkServer</code><span class="sig-paren">(</span><em>$config</em><span class="sig-paren">)</span><a class="headerlink" href="#OC_Util::checkServer" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">check if the current server configuration is suitable for ownCloud</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Util.php#L730">lib/private/legacy/OC_Util.php#730</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$config</strong> (<a class="reference internal" href="OC/SystemConfig.html#OC\SystemConfig" title="OC\SystemConfig"><code class="xref any php php-trait docutils literal"><span class="pre">OC\SystemConfig</span></code></a>)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">array arrays with error messages and hints</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC_Util::checkDatabaseVersion">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC_Util::</code><code class="descname">checkDatabaseVersion</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC_Util::checkDatabaseVersion" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Check the database version</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Util.php#L982">lib/private/legacy/OC_Util.php#982</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">array errors array</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC_Util::checkDataDirectoryPermissions">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC_Util::</code><code class="descname">checkDataDirectoryPermissions</code><span class="sig-paren">(</span><em>$dataDirectory</em><span class="sig-paren">)</span><a class="headerlink" href="#OC_Util::checkDataDirectoryPermissions" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Check for correct file permissions of data directory</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Util.php#L1016">lib/private/legacy/OC_Util.php#1016</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$dataDirectory</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">array arrays with error messages and hints</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC_Util::checkDataDirectoryValidity">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC_Util::</code><code class="descname">checkDataDirectoryValidity</code><span class="sig-paren">(</span><em>$dataDirectory</em><span class="sig-paren">)</span><a class="headerlink" href="#OC_Util::checkDataDirectoryValidity" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Check that the data directory exists and is valid by</div>
+<div class="line">checking the existence of the &#8221;.ocdata&#8221; file.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Util.php#L1044">lib/private/legacy/OC_Util.php#1044</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$dataDirectory</strong> (string)  data directory path</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">array errors found</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC_Util::checkLoggedIn">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC_Util::</code><code class="descname">checkLoggedIn</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC_Util::checkLoggedIn" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Check if the user is logged in, redirects to home if not. With</div>
+<div class="line">redirect URL parameter to the request URI.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Util.php#L1069">lib/private/legacy/OC_Util.php#1069</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">void</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC_Util::checkAdminUser">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC_Util::</code><code class="descname">checkAdminUser</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC_Util::checkAdminUser" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Check if the user is a admin, redirects to home if not</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Util.php#L1093">lib/private/legacy/OC_Util.php#1093</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">void</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC_Util::getDefaultPageUrl">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC_Util::</code><code class="descname">getDefaultPageUrl</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC_Util::getDefaultPageUrl" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Returns the URL of the default page</div>
+<div class="line">based on the system configuration and</div>
+<div class="line">the apps visible for the current user</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Util.php#L1109">lib/private/legacy/OC_Util.php#1109</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">string URL</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC_Util::redirectToDefaultPage">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC_Util::</code><code class="descname">redirectToDefaultPage</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC_Util::redirectToDefaultPage" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Redirect to the user default page</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Util.php#L1157">lib/private/legacy/OC_Util.php#1157</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">void</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC_Util::getInstanceId">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC_Util::</code><code class="descname">getInstanceId</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC_Util::getInstanceId" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">get an id unique for this instance</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Util.php#L1168">lib/private/legacy/OC_Util.php#1168</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">string</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC_Util::sanitizeHTML">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC_Util::</code><code class="descname">sanitizeHTML</code><span class="sig-paren">(</span><em>$value</em><span class="sig-paren">)</span><a class="headerlink" href="#OC_Util::sanitizeHTML" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Public function to sanitize HTML</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">This function is used to sanitize HTML and should be applied on any</div>
+<div class="line">string or array of strings before displaying it on a web page.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Util.php#L1187">lib/private/legacy/OC_Util.php#1187</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$value</strong> (string | array)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">string | array an array of sanitized strings or a single sanitized string, depends on the input parameter.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC_Util::encodePath">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC_Util::</code><code class="descname">encodePath</code><span class="sig-paren">(</span><em>$component</em><span class="sig-paren">)</span><a class="headerlink" href="#OC_Util::encodePath" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Public function to encode url parameters</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">This function is used to encode path to file before output.</div>
+<div class="line">Encoding is done according to RFC 3986 with one exception:</div>
+<div class="line">Character &#8216;/&#8217; is preserved as is.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Util.php#L1209">lib/private/legacy/OC_Util.php#1209</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$component</strong> (string)  part of URI to encode</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">string</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC_Util::createHtaccessTestFile">
+<em class="property">public </em><code class="descclassname">OC_Util::</code><code class="descname">createHtaccessTestFile</code><span class="sig-paren">(</span><em>$config</em><span class="sig-paren">)</span><a class="headerlink" href="#OC_Util::createHtaccessTestFile" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Util.php#L1216">lib/private/legacy/OC_Util.php#1216</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC_Util::isHtaccessWorking">
+<em class="property">public </em><code class="descclassname">OC_Util::</code><code class="descname">isHtaccessWorking</code><span class="sig-paren">(</span><em>$config</em><span class="sig-paren">)</span><a class="headerlink" href="#OC_Util::isHtaccessWorking" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Check if the .htaccess file is working</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Util.php#L1251">lib/private/legacy/OC_Util.php#1251</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$config</strong> (<a class="reference internal" href="OCP/IConfig.html#OCP\IConfig" title="OCP\IConfig"><code class="xref any php php-trait docutils literal"><span class="pre">OCP\IConfig</span></code></a>)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">bool</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><code class="xref any docutils literal"><span class="pre">\Exception</span></code></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><a class="reference internal" href="OC/HintException.html#OC\HintException" title="OC\HintException"><code class="xref any php php-trait docutils literal"><span class="pre">\OC\HintException</span></code></a> If the test file can&#8217;t get written.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><p class="first"><code class="xref any docutils literal"><span class="pre">\Exception</span></code></p>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Throws:</th><td class="field-body"><p class="first last"><a class="reference internal" href="OC/HintException.html#OC\HintException" title="OC\HintException"><code class="xref any php php-trait docutils literal"><span class="pre">\OC\HintException</span></code></a> If the test file can&#8217;t get written.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC_Util::isSetLocaleWorking">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC_Util::</code><code class="descname">isSetLocaleWorking</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC_Util::isSetLocaleWorking" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Check if the setlocal call does not work. This can happen if the right</div>
+<div class="line">local packages are not available on the server.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Util.php#L1300">lib/private/legacy/OC_Util.php#1300</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC_Util::isAnnotationsWorking">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC_Util::</code><code class="descname">isAnnotationsWorking</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC_Util::isAnnotationsWorking" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Check if it&#8217;s possible to get the inline annotations</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Util.php#L1319">lib/private/legacy/OC_Util.php#1319</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC_Util::fileInfoLoaded">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC_Util::</code><code class="descname">fileInfoLoaded</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC_Util::fileInfoLoaded" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Check if the PHP module fileinfo is loaded.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Util.php#L1331">lib/private/legacy/OC_Util.php#1331</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC_Util::obEnd">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC_Util::</code><code class="descname">obEnd</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC_Util::obEnd" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">clear all levels of output buffering</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Util.php#L1340">lib/private/legacy/OC_Util.php#1340</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">void</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC_Util::runningOnMac">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC_Util::</code><code class="descname">runningOnMac</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC_Util::runningOnMac" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Checks whether the server is running on Mac OS X</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Util.php#L1351">lib/private/legacy/OC_Util.php#1351</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">bool true if running on Mac OS X, false otherwise</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC_Util::getTheme">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC_Util::</code><code class="descname">getTheme</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC_Util::getTheme" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Handles the case that there may not be a theme, then check if a &#8220;default&#8221;</div>
+<div class="line">theme exists and take that one</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Util.php#L1361">lib/private/legacy/OC_Util.php#1361</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">string the theme</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC_Util::normalizeUnicode">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC_Util::</code><code class="descname">normalizeUnicode</code><span class="sig-paren">(</span><em>$value</em><span class="sig-paren">)</span><a class="headerlink" href="#OC_Util::normalizeUnicode" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Normalize a unicode string</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Util.php#L1379">lib/private/legacy/OC_Util.php#1379</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$value</strong> (string)  a not normalized string</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">bool | string</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC_Util::getHumanVersion">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC_Util::</code><code class="descname">getHumanVersion</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC_Util::getHumanVersion" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">A human readable string is generated based on version and build number</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Util.php#L1398">lib/private/legacy/OC_Util.php#1398</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">string</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static deprecated method">
+<dt id="OC_Util::isValidFileName">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC_Util::</code><code class="descname">isValidFileName</code><span class="sig-paren">(</span><em>$file</em><span class="sig-paren">)</span><a class="headerlink" href="#OC_Util::isValidFileName" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Returns whether the given file name is valid</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Util.php#L1414">lib/private/legacy/OC_Util.php#1414</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$file</strong> (string)  file name to check</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">bool true if the file name is valid, false otherwise</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Deprecated:</th><td class="field-body"><p class="first last">use \OC\Files\View::verifyPath()</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC_Util::needUpgrade">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC_Util::</code><code class="descname">needUpgrade</code><span class="sig-paren">(</span><em>$config</em><span class="sig-paren">)</span><a class="headerlink" href="#OC_Util::needUpgrade" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Check whether the instance needs to perform an upgrade,</div>
+<div class="line">either when the core version is higher or any app requires</div>
+<div class="line">an upgrade.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Util.php#L1445">lib/private/legacy/OC_Util.php#1445</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$config</strong> (<a class="reference internal" href="OC/SystemConfig.html#OC\SystemConfig" title="OC\SystemConfig"><code class="xref any php php-trait docutils literal"><span class="pre">OC\SystemConfig</span></code></a>)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">bool whether the core or any app needs an upgrade</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><p class="first last"><a class="reference internal" href="OC/HintException.html#OC\HintException" title="OC\HintException"><code class="xref any php php-trait docutils literal"><span class="pre">\OC\HintException</span></code></a> When the upgrade from the given version is not allowed</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC_Util::isIe">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC_Util::</code><code class="descname">isIe</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC_Util::isIe" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">is this Internet explorer ?</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_Util.php#L1490">lib/private/legacy/OC_Util.php#1490</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="OC_FileChunking.html" class="btn btn-neutral float-right" title="OC_FileChunking" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="OC_DB_StatementWrapper.html" class="btn btn-neutral float-left" title="OC_DB_StatementWrapper" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021 Nextcloud GmbH.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: 13
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/13/developer_manual">13</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/14/developer_manual">14</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/15/developer_manual">15</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/developer_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/developer_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+   
+
+</body>
+</html>

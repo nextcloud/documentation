@@ -1,0 +1,235 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+DecryptAll
+==========
+
+
+.. php:namespace:: OC\Encryption
+
+.. php:class:: DecryptAll
+
+
+	:Source:
+		`lib/private/Encryption/DecryptAll.php#40 <https://github.com/nextcloud/server/blob/stable13/lib/private/Encryption/DecryptAll.php#L40>`_
+	
+
+Properties
+----------
+
+.. php:attr:: protected static output
+
+	:Source:
+		`lib/private/Encryption/DecryptAll.php#43 <https://github.com/nextcloud/server/blob/stable13/lib/private/Encryption/DecryptAll.php#L43>`_
+	
+	:Type: :any:`\\Symfony\\Component\\Console\\Output\\OutputInterface <Symfony\\Component\\Console\\Output\\OutputInterface>` 
+
+
+.. php:attr:: protected static input
+
+	:Source:
+		`lib/private/Encryption/DecryptAll.php#46 <https://github.com/nextcloud/server/blob/stable13/lib/private/Encryption/DecryptAll.php#L46>`_
+	
+	:Type: :any:`\\Symfony\\Component\\Console\\Input\\InputInterface <Symfony\\Component\\Console\\Input\\InputInterface>` 
+
+
+.. php:attr:: protected static encryptionManager
+
+	:Source:
+		`lib/private/Encryption/DecryptAll.php#49 <https://github.com/nextcloud/server/blob/stable13/lib/private/Encryption/DecryptAll.php#L49>`_
+	
+	:Type: :any:`\\OC\\Encryption\\Manager <OC\\Encryption\\Manager>` 
+
+
+.. php:attr:: protected static userManager
+
+	:Source:
+		`lib/private/Encryption/DecryptAll.php#52 <https://github.com/nextcloud/server/blob/stable13/lib/private/Encryption/DecryptAll.php#L52>`_
+	
+	:Type: :any:`\\OCP\\IUserManager <OCP\\IUserManager>` 
+
+
+.. php:attr:: protected static rootView
+
+	:Source:
+		`lib/private/Encryption/DecryptAll.php#55 <https://github.com/nextcloud/server/blob/stable13/lib/private/Encryption/DecryptAll.php#L55>`_
+	
+	:Type: :any:`\\OC\\Files\\View <OC\\Files\\View>` 
+
+
+.. php:attr:: protected static failed
+
+	:Source:
+		`lib/private/Encryption/DecryptAll.php#58 <https://github.com/nextcloud/server/blob/stable13/lib/private/Encryption/DecryptAll.php#L58>`_
+	
+	:Type: array files which couldn\'t be decrypted
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $encryptionManager, $userManager, $rootView)
+	
+		:Source:
+			`lib/private/Encryption/DecryptAll.php#65 <https://github.com/nextcloud/server/blob/stable13/lib/private/Encryption/DecryptAll.php#L65>`_
+		
+		
+		:Parameters:
+			* **$encryptionManager** (:any:`OC\\Encryption\\Manager <OC\\Encryption\\Manager>`)  
+			* **$userManager** (:any:`OCP\\IUserManager <OCP\\IUserManager>`)  
+			* **$rootView** (:any:`OC\\Files\\View <OC\\Files\\View>`)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public decryptAll( $input, $output, $user="")
+	
+		.. rst-class:: phpdoc-description
+		
+			| start to decrypt all files
+			
+		
+		:Source:
+			`lib/private/Encryption/DecryptAll.php#85 <https://github.com/nextcloud/server/blob/stable13/lib/private/Encryption/DecryptAll.php#L85>`_
+		
+		
+		:Parameters:
+			* **$input** (:any:`Symfony\\Component\\Console\\Input\\InputInterface <Symfony\\Component\\Console\\Input\\InputInterface>`)  
+			* **$output** (:any:`Symfony\\Component\\Console\\Output\\OutputInterface <Symfony\\Component\\Console\\Output\\OutputInterface>`)  
+			* **$user** (string)  which users data folder should be decrypted, default = all users
+
+		
+		:Returns: bool 
+		:Throws: :any:`\\Exception <Exception>` 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected prepareEncryptionModules( $user)
+	
+		.. rst-class:: phpdoc-description
+		
+			| prepare encryption modules to perform the decrypt all function
+			
+		
+		:Source:
+			`lib/private/Encryption/DecryptAll.php#125 <https://github.com/nextcloud/server/blob/stable13/lib/private/Encryption/DecryptAll.php#L125>`_
+		
+		
+		:Parameters:
+			* **$user**  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected decryptAllUsersFiles( $user="")
+	
+		.. rst-class:: phpdoc-description
+		
+			| iterate over all user and encrypt their files
+			
+		
+		:Source:
+			`lib/private/Encryption/DecryptAll.php#148 <https://github.com/nextcloud/server/blob/stable13/lib/private/Encryption/DecryptAll.php#L148>`_
+		
+		
+		:Parameters:
+			* **$user** (string)  which users files should be decrypted, default = all users
+
+		
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected decryptUsersFiles( $uid, $progress, $userCount)
+	
+		.. rst-class:: phpdoc-description
+		
+			| encrypt files from the given user
+			
+		
+		:Source:
+			`lib/private/Encryption/DecryptAll.php#206 <https://github.com/nextcloud/server/blob/stable13/lib/private/Encryption/DecryptAll.php#L206>`_
+		
+		
+		:Parameters:
+			* **$uid** (string)  
+			* **$progress** (:any:`Symfony\\Component\\Console\\Helper\\ProgressBar <Symfony\\Component\\Console\\Helper\\ProgressBar>`)  
+			* **$userCount** (string)  
+
+		
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected decryptFile( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| encrypt file
+			
+		
+		:Source:
+			`lib/private/Encryption/DecryptAll.php#253 <https://github.com/nextcloud/server/blob/stable13/lib/private/Encryption/DecryptAll.php#L253>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected getTimestamp()
+	
+		.. rst-class:: phpdoc-description
+		
+			| get current timestamp
+			
+		
+		:Source:
+			`lib/private/Encryption/DecryptAll.php#283 <https://github.com/nextcloud/server/blob/stable13/lib/private/Encryption/DecryptAll.php#L283>`_
+		
+		
+		:Returns: int 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected setupUserFS( $uid)
+	
+		.. rst-class:: phpdoc-description
+		
+			| setup user file system
+			
+		
+		:Source:
+			`lib/private/Encryption/DecryptAll.php#293 <https://github.com/nextcloud/server/blob/stable13/lib/private/Encryption/DecryptAll.php#L293>`_
+		
+		
+		:Parameters:
+			* **$uid** (string)  
+
+		
+	
+	
+

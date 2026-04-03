@@ -1,0 +1,506 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+FileInfo
+========
+
+
+.. php:namespace:: OC\Files
+
+.. php:class:: FileInfo
+
+
+	:Source:
+		`lib/private/Files/FileInfo.php#40 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/FileInfo.php#L40>`_
+	
+	:Implements:
+		:php:interface:`OCP\\Files\\FileInfo` :php:interface:`ArrayAccess` 
+	
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $path, $storage, $internalPath, $data, $mount, $owner=null)
+	
+		:Source:
+			`lib/private/Files/FileInfo.php#98 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/FileInfo.php#L98>`_
+		
+		
+		:Parameters:
+			* **$path** (string | bool)  
+			* **$storage** (:any:`OC\\Files\\Storage\\Storage <OC\\Files\\Storage\\Storage>`)  
+			* **$internalPath** (string)  
+			* **$data** (array | :any:`\\OCP\\Files\\Cache\\ICacheEntry <OCP\\Files\\Cache\\ICacheEntry>`)  
+			* **$mount** (:any:`OCP\\Files\\Mount\\IMountPoint <OCP\\Files\\Mount\\IMountPoint>`)  
+			* **$owner** (:any:`OCP\\IUser <OCP\\IUser>` | null)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public offsetSet( $offset, $value)
+	
+		:Source:
+			`lib/private/Files/FileInfo.php#108 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/FileInfo.php#L108>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public offsetExists( $offset)
+	
+		:Source:
+			`lib/private/Files/FileInfo.php#112 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/FileInfo.php#L112>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public offsetUnset( $offset)
+	
+		:Source:
+			`lib/private/Files/FileInfo.php#116 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/FileInfo.php#L116>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public offsetGet( $offset)
+	
+		:Source:
+			`lib/private/Files/FileInfo.php#120 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/FileInfo.php#L120>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getPath()
+	
+		:Source:
+			`lib/private/Files/FileInfo.php#141 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/FileInfo.php#L141>`_
+		
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getStorage()
+	
+		:Source:
+			`lib/private/Files/FileInfo.php#148 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/FileInfo.php#L148>`_
+		
+		
+		:Returns: :any:`\\OCP\\Files\\Storage <OCP\\Files\\Storage>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getInternalPath()
+	
+		:Source:
+			`lib/private/Files/FileInfo.php#155 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/FileInfo.php#L155>`_
+		
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getId()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get FileInfo ID or null in case of part file
+			
+		
+		:Source:
+			`lib/private/Files/FileInfo.php#164 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/FileInfo.php#L164>`_
+		
+		
+		:Returns: int | null 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getMimetype()
+	
+		:Source:
+			`lib/private/Files/FileInfo.php#171 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/FileInfo.php#L171>`_
+		
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getMimePart()
+	
+		:Source:
+			`lib/private/Files/FileInfo.php#178 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/FileInfo.php#L178>`_
+		
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getName()
+	
+		:Source:
+			`lib/private/Files/FileInfo.php#185 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/FileInfo.php#L185>`_
+		
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getEtag()
+	
+		:Source:
+			`lib/private/Files/FileInfo.php#192 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/FileInfo.php#L192>`_
+		
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getSize( $includeMounts=true)
+	
+		:Source:
+			`lib/private/Files/FileInfo.php#205 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/FileInfo.php#L205>`_
+		
+		
+		:Returns: int 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getMTime()
+	
+		:Source:
+			`lib/private/Files/FileInfo.php#217 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/FileInfo.php#L217>`_
+		
+		
+		:Returns: int 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isEncrypted()
+	
+		:Source:
+			`lib/private/Files/FileInfo.php#225 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/FileInfo.php#L225>`_
+		
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getEncryptedVersion()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Return the currently version used for the HMAC in the encryption app
+			
+		
+		:Source:
+			`lib/private/Files/FileInfo.php#234 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/FileInfo.php#L234>`_
+		
+		
+		:Returns: int 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getPermissions()
+	
+		:Source:
+			`lib/private/Files/FileInfo.php#241 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/FileInfo.php#L241>`_
+		
+		
+		:Returns: int 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getType()
+	
+		:Source:
+			`lib/private/Files/FileInfo.php#252 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/FileInfo.php#L252>`_
+		
+		
+		:Returns: string \\OCP\\Files\\FileInfo::TYPE\_FILE\|\\OCP\\Files\\FileInfo::TYPE\_FOLDER
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getData()
+	
+		:Source:
+			`lib/private/Files/FileInfo.php#259 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/FileInfo.php#L259>`_
+		
+		
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected checkPermissions( $permissions)
+	
+		:Source:
+			`lib/private/Files/FileInfo.php#267 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/FileInfo.php#L267>`_
+		
+		
+		:Parameters:
+			* **$permissions** (int)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isReadable()
+	
+		:Source:
+			`lib/private/Files/FileInfo.php#274 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/FileInfo.php#L274>`_
+		
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isUpdateable()
+	
+		:Source:
+			`lib/private/Files/FileInfo.php#281 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/FileInfo.php#L281>`_
+		
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isCreatable()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check whether new files or folders can be created inside this folder
+			
+		
+		:Source:
+			`lib/private/Files/FileInfo.php#290 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/FileInfo.php#L290>`_
+		
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isDeletable()
+	
+		:Source:
+			`lib/private/Files/FileInfo.php#297 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/FileInfo.php#L297>`_
+		
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isShareable()
+	
+		:Source:
+			`lib/private/Files/FileInfo.php#304 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/FileInfo.php#L304>`_
+		
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isShared()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check if a file or folder is shared
+			
+		
+		:Source:
+			`lib/private/Files/FileInfo.php#313 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/FileInfo.php#L313>`_
+		
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isMounted()
+	
+		:Source:
+			`lib/private/Files/FileInfo.php#323 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/FileInfo.php#L323>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getMountPoint()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the mountpoint the file belongs to
+			
+		
+		:Source:
+			`lib/private/Files/FileInfo.php#342 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/FileInfo.php#L342>`_
+		
+		
+		:Returns: :any:`\\OCP\\Files\\Mount\\IMountPoint <OCP\\Files\\Mount\\IMountPoint>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getOwner()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the owner of the file
+			
+		
+		:Source:
+			`lib/private/Files/FileInfo.php#351 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/FileInfo.php#L351>`_
+		
+		
+		:Returns: :any:`\\OCP\\IUser <OCP\\IUser>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setSubMounts( $mounts)
+	
+		:Source:
+			`lib/private/Files/FileInfo.php#358 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/FileInfo.php#L358>`_
+		
+		
+		:Parameters:
+			* **$mounts** (:any:`OCP\\Files\\Mount\\IMountPoint\[\] <OCP\\Files\\Mount\\IMountPoint>`)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public addSubEntry( $data, $entryPath)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Add a cache entry which is the child of this folder
+			
+			| Sets the size, etag and size to for cross\-storage childs
+			
+		
+		:Source:
+			`lib/private/Files/FileInfo.php#385 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/FileInfo.php#L385>`_
+		
+		
+		:Parameters:
+			* **$data** (array | :any:`\\OCP\\Files\\Cache\\ICacheEntry <OCP\\Files\\Cache\\ICacheEntry>`)  cache entry for the child
+			* **$entryPath** (string)  full path of the child entry
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getChecksum()
+	
+		:Source:
+			`lib/private/Files/FileInfo.php#402 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/FileInfo.php#L402>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getExtension()
+	
+		:Source:
+			`lib/private/Files/FileInfo.php#406 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/FileInfo.php#L406>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getCreationTime()
+	
+		:Source:
+			`lib/private/Files/FileInfo.php#410 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/FileInfo.php#L410>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getUploadTime()
+	
+		:Source:
+			`lib/private/Files/FileInfo.php#414 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/FileInfo.php#L414>`_
+		
+		
+	
+	
+

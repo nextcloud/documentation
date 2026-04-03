@@ -1,0 +1,316 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IToken
+======
+
+
+.. php:namespace:: OC\Authentication\Token
+
+.. php:interface:: IToken
+
+
+	:Source:
+		`lib/private/Authentication/Token/IToken.php#32 <https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/IToken.php#L32>`_
+	
+	:Parent:
+		:php:interface:`JsonSerializable`
+	
+
+Constants
+---------
+
+.. php:const:: TEMPORARY_TOKEN = 0
+
+	:Source:
+		`lib/private/Authentication/Token/IToken.php#33 <https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/IToken.php#L33>`_
+	
+
+
+.. php:const:: PERMANENT_TOKEN = 1
+
+	:Source:
+		`lib/private/Authentication/Token/IToken.php#34 <https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/IToken.php#L34>`_
+	
+
+
+.. php:const:: WIPE_TOKEN = 2
+
+	:Source:
+		`lib/private/Authentication/Token/IToken.php#35 <https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/IToken.php#L35>`_
+	
+
+
+.. php:const:: DO_NOT_REMEMBER = 0
+
+	:Source:
+		`lib/private/Authentication/Token/IToken.php#36 <https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/IToken.php#L36>`_
+	
+
+
+.. php:const:: REMEMBER = 1
+
+	:Source:
+		`lib/private/Authentication/Token/IToken.php#37 <https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/IToken.php#L37>`_
+	
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public getId()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the token ID
+			
+		
+		:Source:
+			`lib/private/Authentication/Token/IToken.php#44 <https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/IToken.php#L44>`_
+		
+		
+		:Returns: int 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getUID()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the user UID
+			
+		
+		:Source:
+			`lib/private/Authentication/Token/IToken.php#51 <https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/IToken.php#L51>`_
+		
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getLoginName()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the login name used when generating the token
+			
+		
+		:Source:
+			`lib/private/Authentication/Token/IToken.php#58 <https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/IToken.php#L58>`_
+		
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getPassword()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the \(encrypted\) login password
+			
+		
+		:Source:
+			`lib/private/Authentication/Token/IToken.php#65 <https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/IToken.php#L65>`_
+		
+		
+		:Returns: string | null 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getLastCheck()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the timestamp of the last password check
+			
+		
+		:Source:
+			`lib/private/Authentication/Token/IToken.php#72 <https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/IToken.php#L72>`_
+		
+		
+		:Returns: int 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setLastCheck( $time)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set the timestamp of the last password check
+			
+		
+		:Source:
+			`lib/private/Authentication/Token/IToken.php#79 <https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/IToken.php#L79>`_
+		
+		
+		:Parameters:
+			* **$time** (int)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getScope()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the authentication scope for this token
+			
+		
+		:Source:
+			`lib/private/Authentication/Token/IToken.php#86 <https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/IToken.php#L86>`_
+		
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getScopeAsArray()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the authentication scope for this token
+			
+		
+		:Source:
+			`lib/private/Authentication/Token/IToken.php#93 <https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/IToken.php#L93>`_
+		
+		
+		:Returns: array 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setScope( $scope)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set the authentication scope for this token
+			
+		
+		:Source:
+			`lib/private/Authentication/Token/IToken.php#100 <https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/IToken.php#L100>`_
+		
+		
+		:Parameters:
+			* **$scope** (array)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getName()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the name of the token
+			
+		
+		:Source:
+			`lib/private/Authentication/Token/IToken.php#106 <https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/IToken.php#L106>`_
+		
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getRemember()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the remember state of the token
+			
+		
+		:Source:
+			`lib/private/Authentication/Token/IToken.php#113 <https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/IToken.php#L113>`_
+		
+		
+		:Returns: int 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setToken( $token)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set the token
+			
+		
+		:Source:
+			`lib/private/Authentication/Token/IToken.php#120 <https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/IToken.php#L120>`_
+		
+		
+		:Parameters:
+			* **$token** (string)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setPassword( $password)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set the password
+			
+		
+		:Source:
+			`lib/private/Authentication/Token/IToken.php#127 <https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/IToken.php#L127>`_
+		
+		
+		:Parameters:
+			* **$password** (string)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setExpires( $expires)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set the expiration time of the token
+			
+		
+		:Source:
+			`lib/private/Authentication/Token/IToken.php#134 <https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/IToken.php#L134>`_
+		
+		
+		:Parameters:
+			* **$expires** (int | null)  
+
+		
+	
+	
+

@@ -1,0 +1,169 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+App
+===
+
+
+.. php:namespace:: OCP\AppFramework
+
+.. php:class:: App
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Class App
+		
+		| Any application must inherit this call \- all controller instances to be used are
+		| to be registered using IContainer::registerService
+		
+	
+	:Source:
+		`lib/public/AppFramework/App.php#55 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/App.php#L55>`_
+	
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: public static
+
+	.. php:method:: public static buildAppNamespace( $appId, $topNamespace=OCA\\)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Turns an app id into a namespace by convention\. The id is split at the
+			| underscores, all parts are CamelCased and reassembled\. e\.g\.:
+			| some\_app\_id \-\> OCA\\SomeAppId
+			
+		
+		:Source:
+			`lib/public/AppFramework/App.php#70 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/App.php#L70>`_
+		
+		
+		:Parameters:
+			* **$appId** (string)  the app id
+			* **$topNamespace** (string)  the namespace which should be prepended to
+			the transformed app id, defaults to OCA\
+
+		
+		:Returns: string the starting namespace for the app
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $appName, $urlParams=\[\])
+	
+		:Source:
+			`lib/public/AppFramework/App.php#80 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/App.php#L80>`_
+		
+		
+		:Parameters:
+			* **$appName** (string)  
+			* **$urlParams** (array)  an array with variables extracted from the routes
+
+		
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getContainer()
+	
+		:Source:
+			`lib/public/AppFramework/App.php#125 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/App.php#L125>`_
+		
+		
+		:Returns: :any:`\\OCP\\AppFramework\\IAppContainer <OCP\\AppFramework\\IAppContainer>` 
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public registerRoutes( $router, $routes)
+	
+		.. rst-class:: phpdoc-description
+		
+			| This function is to be called to create single routes and restful routes based on the given $routes array\.
+			
+			| Example code in routes\.php of tasks app \(it will register two restful resources\):
+			| $routes = array\(
+			| 	\'resources\' =\> array\(
+			| 	\'lists\' =\> array\(\'url\' =\> \'/tasklists\'\),
+			| 	\'tasks\' =\> array\(\'url\' =\> \'/tasklists/\{listId\}/tasks\'\)
+			| \)
+			| \);
+			| 
+			| $a = new TasksApp\(\);
+			| $a\-\>registerRoutes\($this, $routes\);
+			
+		
+		:Source:
+			`lib/public/AppFramework/App.php#149 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/App.php#L149>`_
+		
+		
+		:Parameters:
+			* **$router** (:any:`OCP\\Route\\IRouter <OCP\\Route\\IRouter>`)  
+			* **$routes** (array)  
+
+		
+		:Since: 6.0.0 
+		:Deprecated: 20.0.0 Just return an array from your routes\.php
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public dispatch( $controllerName, $methodName)
+	
+		.. rst-class:: phpdoc-description
+		
+			| This function is called by the routing component to fire up the frameworks dispatch mechanism\.
+			
+			| Example code in routes\.php of the task app:
+			| $this\-\>create\(\'tasks\_index\', \'/\'\)\-\>get\(\)\-\>action\(
+			| 	function\($params\)\{
+			| 		$app = new TaskApp\($params\);
+			| 		$app\-\>dispatch\(\'PageController\', \'index\'\);
+			| 	\}
+			| \);
+			| 
+			| 
+			| Example for for TaskApp implementation:
+			| class TaskApp extends \\OCP\\AppFramework\\App \{
+			| 
+			| 	public function \_\_construct\($params\)\{
+			| 		parent::\_\_construct\(\'tasks\', $params\);
+			| 
+			| 		$this\-\>getContainer\(\)\-\>registerService\(\'PageController\', function\(IAppContainer $c\)\{
+			| 			$a = $c\-\>query\(\'API\'\);
+			| 			$r = $c\-\>query\(\'Request\'\);
+			| 			return new PageController\($a, $r\);
+			| 		\}\);
+			| 	\}
+			| \}
+			
+		
+		:Source:
+			`lib/public/AppFramework/App.php#189 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/App.php#L189>`_
+		
+		
+		:Parameters:
+			* **$controllerName** (string)  the name of the controller under which it is
+			stored in the DI container
+			* **$methodName** (string)  the method that you want to call
+
+		
+		:Since: 6.0.0 
+	
+	
+

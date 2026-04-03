@@ -1,0 +1,106 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IBackend
+========
+
+
+.. php:namespace:: OCP\Calendar\Room
+
+.. php:interface:: IBackend
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Interface IBackend
+		
+	
+	:Source:
+		`lib/public/Calendar/Room/IBackend.php#34 <https://github.com/nextcloud/server/blob/stable13/lib/public/Calendar/Room/IBackend.php#L34>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public getAllRooms()
+	
+		.. rst-class:: phpdoc-description
+		
+			| get a list of all rooms in this backend
+			
+		
+		:Source:
+			`lib/public/Calendar/Room/IBackend.php#43 <https://github.com/nextcloud/server/blob/stable13/lib/public/Calendar/Room/IBackend.php#L43>`_
+		
+		
+		:Throws: :any:`\\OCP\\Calendar\\BackendTemporarilyUnavailableException <OCP\\Calendar\\BackendTemporarilyUnavailableException>` 
+		:Returns: :any:`\\OCP\\Calendar\\Room\\IRoom\[\] <OCP\\Calendar\\Room\\IRoom>` 
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public listAllRooms()
+	
+		.. rst-class:: phpdoc-description
+		
+			| get a list of all room identifiers in this backend
+			
+		
+		:Source:
+			`lib/public/Calendar/Room/IBackend.php#52 <https://github.com/nextcloud/server/blob/stable13/lib/public/Calendar/Room/IBackend.php#L52>`_
+		
+		
+		:Throws: :any:`\\OCP\\Calendar\\BackendTemporarilyUnavailableException <OCP\\Calendar\\BackendTemporarilyUnavailableException>` 
+		:Returns: string[] 
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getRoom( $id)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get a room by it\'s id
+			
+		
+		:Source:
+			`lib/public/Calendar/Room/IBackend.php#62 <https://github.com/nextcloud/server/blob/stable13/lib/public/Calendar/Room/IBackend.php#L62>`_
+		
+		
+		:Parameters:
+			* **$id** (string)  
+
+		
+		:Throws: :any:`\\OCP\\Calendar\\BackendTemporarilyUnavailableException <OCP\\Calendar\\BackendTemporarilyUnavailableException>` 
+		:Returns: :any:`\\OCP\\Calendar\\Room\\IRoom <OCP\\Calendar\\Room\\IRoom>` | null 
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getBackendIdentifier()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get unique identifier of the backend
+			
+		
+		:Source:
+			`lib/public/Calendar/Room/IBackend.php#70 <https://github.com/nextcloud/server/blob/stable13/lib/public/Calendar/Room/IBackend.php#L70>`_
+		
+		
+		:Returns: string 
+		:Since: 14.0.0 
+	
+	
+

@@ -1,0 +1,164 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+Adapter
+=======
+
+
+.. php:namespace:: OC\DB
+
+.. php:class:: Adapter
+
+
+	.. rst-class:: phpdoc-description
+	
+		| This handles the way we use to write queries, into something that can be
+		| handled by the database abstraction layer\.
+		
+	
+	:Source:
+		`lib/private/DB/Adapter.php#40 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/Adapter.php#L40>`_
+	
+
+Properties
+----------
+
+.. php:attr:: protected static conn
+
+	:Source:
+		`lib/private/DB/Adapter.php#45 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/Adapter.php#L45>`_
+	
+	:Type: :any:`\\OC\\DB\\Connection <OC\\DB\\Connection>` 
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $conn)
+	
+		:Source:
+			`lib/private/DB/Adapter.php#47 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/Adapter.php#L47>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public lastInsertId( $table)
+	
+		:Source:
+			`lib/private/DB/Adapter.php#57 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/Adapter.php#L57>`_
+		
+		
+		:Parameters:
+			* **$table** (string)  name
+
+		
+		:Returns: int id of last insert statement
+		:Throws: :any:`\\Doctrine\\DBAL\\Exception <Doctrine\\DBAL\\Exception>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public fixupStatement( $statement)
+	
+		:Source:
+			`lib/private/DB/Adapter.php#65 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/Adapter.php#L65>`_
+		
+		
+		:Parameters:
+			* **$statement** (string)  that needs to be changed so the db can handle it
+
+		
+		:Returns: string changed statement
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public lockTable( $tableName)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Create an exclusive read\+write lock on a table
+			
+		
+		:Source:
+			`lib/private/DB/Adapter.php#76 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/Adapter.php#L76>`_
+		
+		
+		:Parameters:
+			* **$tableName** (string)  
+
+		
+		:Throws: :any:`\\Doctrine\\DBAL\\Exception <Doctrine\\DBAL\\Exception>` 
+		:Since: 9.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public unlockTable()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Release a previous acquired lock again
+			
+		
+		:Source:
+			`lib/private/DB/Adapter.php#87 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/Adapter.php#L87>`_
+		
+		
+		:Throws: :any:`\\Doctrine\\DBAL\\Exception <Doctrine\\DBAL\\Exception>` 
+		:Since: 9.1.0 
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public insertIfNotExist( $table, $input, $compare=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Insert a row if the matching row does not exists\. To accomplish proper race condition avoidance
+			| it is needed that there is also a unique constraint on the values\. Then this method will
+			| catch the exception and return 0\.
+			
+		
+		:Source:
+			`lib/private/DB/Adapter.php#105 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/Adapter.php#L105>`_
+		
+		
+		:Parameters:
+			* **$table** (string)  The table name (will replace *PREFIX* with the actual prefix)
+			* **$input** (array)  data that should be inserted into the table  (column name => value)
+			* **$compare** (array | null)  List of values that should be checked for "if not exists"
+			If this is null or an empty array, all keys of $input will be compared
+			Please note: text fields (clob) must not be used in the compare array
+
+		
+		:Returns: int number of inserted rows
+		:Throws: :any:`\\Doctrine\\DBAL\\Exception <Doctrine\\DBAL\\Exception>` 
+		:Deprecated: 15.0.0 \- use unique index and "try \{ $db\-\>insert\(\) \} catch \(UniqueConstraintViolationException $e\) \}" instead, because it is more reliable and does not have the risk for deadlocks \- see https://github\.com/nextcloud/server/pull/12371
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public insertIgnoreConflict( $table, $values)
+	
+		:Source:
+			`lib/private/DB/Adapter.php#141 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/Adapter.php#L141>`_
+		
+		
+		:Throws: :any:`\\OCP\\DB\\Exception <OCP\\DB\\Exception>` 
+	
+	
+

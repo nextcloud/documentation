@@ -1,0 +1,759 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+Cache
+=====
+
+
+.. php:namespace:: OC\Files\Cache
+
+.. php:class:: Cache
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Metadata cache for a storage
+		
+		| The cache stores the metadata for all files and folders in a storage and is kept up to date trough the following mechanisms:
+		| 
+		| \- Scanner: scans the storage and updates the cache where needed
+		| \- Watcher: checks for changes made to the filesystem outside of the ownCloud instance and rescans files and folder when a change is detected
+		| \- Updater: listens to changes made to the filesystem inside of the ownCloud instance and updates the cache where needed
+		| \- ChangePropagator: updates the mtime and etags of parent folders whenever a change to the cache is made to the cache by the updater
+		
+	
+	:Source:
+		`lib/private/Files/Cache/Cache.php#69 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Cache.php#L69>`_
+	
+	:Implements:
+		:php:interface:`OCP\\Files\\Cache\\ICache` 
+	
+	:Used traits:
+		:php:trait:`OC\\Files\\Cache\\MoveFromCacheTrait` 
+	
+
+Properties
+----------
+
+.. php:attr:: protected static partial
+
+	:Source:
+		`lib/private/Files/Cache/Cache.php#77 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Cache.php#L77>`_
+	
+	:Type: array partial data for the cache
+
+
+.. php:attr:: protected static storageId
+
+	:Source:
+		`lib/private/Files/Cache/Cache.php#82 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Cache.php#L82>`_
+	
+	:Type: string 
+
+
+.. php:attr:: protected static storageCache
+
+	:Source:
+		`lib/private/Files/Cache/Cache.php#89 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Cache.php#L89>`_
+	
+	:Type: :any:`\\OC\\Files\\Cache\\Storage <OC\\Files\\Cache\\Storage>` 
+
+
+.. php:attr:: protected static mimetypeLoader
+
+	:Source:
+		`lib/private/Files/Cache/Cache.php#92 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Cache.php#L92>`_
+	
+	:Type: :any:`\\OCP\\Files\\IMimeTypeLoader <OCP\\Files\\IMimeTypeLoader>` 
+
+
+.. php:attr:: protected static connection
+
+	:Source:
+		`lib/private/Files/Cache/Cache.php#97 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Cache.php#L97>`_
+	
+	:Type: :any:`\\OCP\\IDBConnection <OCP\\IDBConnection>` 
+
+
+.. php:attr:: protected static eventDispatcher
+
+	:Source:
+		`lib/private/Files/Cache/Cache.php#102 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Cache.php#L102>`_
+	
+	:Type: :any:`\\OCP\\EventDispatcher\\IEventDispatcher <OCP\\EventDispatcher\\IEventDispatcher>` 
+
+
+.. php:attr:: protected static querySearchHelper
+
+	:Source:
+		`lib/private/Files/Cache/Cache.php#105 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Cache.php#L105>`_
+	
+	:Type: :any:`\\OC\\Files\\Cache\\QuerySearchHelper <OC\\Files\\Cache\\QuerySearchHelper>` 
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $storage)
+	
+		:Source:
+			`lib/private/Files/Cache/Cache.php#110 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Cache.php#L110>`_
+		
+		
+		:Parameters:
+			* **$storage** (:any:`OCP\\Files\\Storage\\IStorage <OCP\\Files\\Storage\\IStorage>`)  
+
+		
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected getQueryBuilder()
+	
+		:Source:
+			`lib/private/Files/Cache/Cache.php#124 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Cache.php#L124>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getNumericStorageId()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the numeric storage id for this cache\'s storage
+			
+		
+		:Source:
+			`lib/private/Files/Cache/Cache.php#138 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Cache.php#L138>`_
+		
+		
+		:Returns: int 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public get( $file)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get the stored metadata of a file or folder
+			
+		
+		:Source:
+			`lib/private/Files/Cache/Cache.php#148 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Cache.php#L148>`_
+		
+		
+		:Parameters:
+			
+			
+		
+		:Returns: :any:`\\OCP\\Files\\Cache\\ICacheEntry <OCP\\Files\\Cache\\ICacheEntry>` | bool the cache entry as array of false if the file is not found in the cache
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static cacheEntryFromData( $data, $mimetypeLoader)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Create a CacheEntry from database row
+			
+		
+		:Source:
+			`lib/private/Files/Cache/Cache.php#183 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Cache.php#L183>`_
+		
+		
+		:Parameters:
+			* **$data** (array)  
+			* **$mimetypeLoader** (:any:`OCP\\Files\\IMimeTypeLoader <OCP\\Files\\IMimeTypeLoader>`)  
+
+		
+		:Returns: :any:`\\OC\\Files\\Cache\\CacheEntry <OC\\Files\\Cache\\CacheEntry>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getFolderContents( $folder)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get the metadata of all files stored in $folder
+			
+		
+		:Source:
+			`lib/private/Files/Cache/Cache.php#215 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Cache.php#L215>`_
+		
+		
+		:Parameters:
+			* **$folder** (string)  
+
+		
+		:Returns: :any:`\\OCP\\Files\\Cache\\ICacheEntry\[\] <OCP\\Files\\Cache\\ICacheEntry>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getFolderContentsById( $fileId)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get the metadata of all files stored in $folder
+			
+		
+		:Source:
+			`lib/private/Files/Cache/Cache.php#226 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Cache.php#L226>`_
+		
+		
+		:Parameters:
+			* **$fileId** (int)  the file id of the folder
+
+		
+		:Returns: :any:`\\OCP\\Files\\Cache\\ICacheEntry\[\] <OCP\\Files\\Cache\\ICacheEntry>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public put( $file, $data)
+	
+		.. rst-class:: phpdoc-description
+		
+			| insert or update meta data for a file or folder
+			
+		
+		:Source:
+			`lib/private/Files/Cache/Cache.php#253 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Cache.php#L253>`_
+		
+		
+		:Parameters:
+			* **$file** (string)  
+			* **$data** (array)  
+
+		
+		:Returns: int file id
+		:Throws: :any:`\\RuntimeException <RuntimeException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public insert( $file, $data)
+	
+		.. rst-class:: phpdoc-description
+		
+			| insert meta data for a new file or folder
+			
+		
+		:Source:
+			`lib/private/Files/Cache/Cache.php#271 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Cache.php#L271>`_
+		
+		
+		:Parameters:
+			* **$file** (string)  
+			* **$data** (array)  
+
+		
+		:Returns: int file id
+		:Throws: :any:`\\RuntimeException <RuntimeException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public update( $id, $data)
+	
+		.. rst-class:: phpdoc-description
+		
+			| update the metadata of an existing file or folder in the cache
+			
+		
+		:Source:
+			`lib/private/Files/Cache/Cache.php#348 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Cache.php#L348>`_
+		
+		
+		:Parameters:
+			* **$id** (int)  the fileid of the existing file or folder
+			* **$data** (array)  [$key => $value] the metadata to update, only the fields provided in the array will be updated, non-provided values will remain unchanged
+
+		
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected normalizeData( $data)
+	
+		.. rst-class:: phpdoc-description
+		
+			| extract query parts and params array from data array
+			
+		
+		:Source:
+			`lib/private/Files/Cache/Cache.php#425 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Cache.php#L425>`_
+		
+		
+		:Parameters:
+			* **$data** (array)  
+
+		
+		:Returns: array 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getId( $file)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get the file id for a file
+			
+			| A file id is a numeric id for a file or folder that\'s unique within an owncloud instance which stays the same for the lifetime of a file
+			| 
+			| File ids are easiest way for apps to store references to a file since unlike paths they are not affected by renames or sharing
+			
+		
+		:Source:
+			`lib/private/Files/Cache/Cache.php#478 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Cache.php#L478>`_
+		
+		
+		:Parameters:
+			* **$file** (string)  
+
+		
+		:Returns: int 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getParentId( $file)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get the id of the parent folder of a file
+			
+		
+		:Source:
+			`lib/private/Files/Cache/Cache.php#501 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Cache.php#L501>`_
+		
+		
+		:Parameters:
+			* **$file** (string)  
+
+		
+		:Returns: int 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public inCache( $file)
+	
+		.. rst-class:: phpdoc-description
+		
+			| check if a file is available in the cache
+			
+		
+		:Source:
+			`lib/private/Files/Cache/Cache.php#524 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Cache.php#L524>`_
+		
+		
+		:Parameters:
+			* **$file** (string)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public remove( $file)
+	
+		.. rst-class:: phpdoc-description
+		
+			| remove a file or folder from the cache
+			
+			| when removing a folder from the cache all files and folders inside the folder will be removed as well
+			
+		
+		:Source:
+			`lib/private/Files/Cache/Cache.php#535 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Cache.php#L535>`_
+		
+		
+		:Parameters:
+			* **$file** (string)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public move( $source, $target)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Move a file or folder in the cache
+			
+		
+		:Source:
+			`lib/private/Files/Cache/Cache.php#615 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Cache.php#L615>`_
+		
+		
+		:Parameters:
+			* **$source** (string)  
+			* **$target** (string)  
+
+		
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected getMoveInfo( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the storage id and path needed for a move
+			
+		
+		:Source:
+			`lib/private/Files/Cache/Cache.php#625 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Cache.php#L625>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: array \[$storageId, $internalPath\]
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public moveFromCache( $sourceCache, $sourcePath, $targetPath)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Move a file or folder in the cache
+			
+		
+		:Source:
+			`lib/private/Files/Cache/Cache.php#638 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Cache.php#L638>`_
+		
+		
+		:Parameters:
+			* **$sourceCache** (:any:`OCP\\Files\\Cache\\ICache <OCP\\Files\\Cache\\ICache>`)  
+			* **$sourcePath** (string)  
+			* **$targetPath** (string)  
+
+		
+		:Throws: :any:`\\OC\\DatabaseException <OC\\DatabaseException>` 
+		:Throws: :any:`\\Exception <Exception>` if the given storages have an invalid id
+		:Throws: :any:`\\OC\\DatabaseException <OC\\DatabaseException>` 
+		:Throws: :any:`\\Exception <Exception>` if the given storages have an invalid id
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public clear()
+	
+		.. rst-class:: phpdoc-description
+		
+			| remove all entries for files that are stored on the storage from the cache
+			
+		
+		:Source:
+			`lib/private/Files/Cache/Cache.php#718 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Cache.php#L718>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getStatus( $file)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the scan status of a file
+			
+			| \- Cache::NOT\_FOUND: File is not in the cache
+			| \- Cache::PARTIAL: File is not stored in the cache but some incomplete data is known
+			| \- Cache::SHALLOW: The folder and it\'s direct children are in the cache but not all sub folders are fully scanned
+			| \- Cache::COMPLETE: The file or folder, with all it\'s children\) are fully scanned
+			
+		
+		:Source:
+			`lib/private/Files/Cache/Cache.php#742 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Cache.php#L742>`_
+		
+		
+		:Parameters:
+			* **$file** (string)  
+
+		
+		:Returns: int Cache::NOT\_FOUND, Cache::PARTIAL, Cache::SHALLOW or Cache::COMPLETE
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public search( $pattern)
+	
+		.. rst-class:: phpdoc-description
+		
+			| search for files matching $pattern
+			
+		
+		:Source:
+			`lib/private/Files/Cache/Cache.php#777 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Cache.php#L777>`_
+		
+		
+		:Parameters:
+			* **$pattern** (string)  the search pattern using SQL search syntax (e.g. '%searchstring%')
+
+		
+		:Returns: :any:`\\OCP\\Files\\Cache\\ICacheEntry\[\] <OCP\\Files\\Cache\\ICacheEntry>` an array of cache entries where the name matches the search pattern
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public searchByMime( $mimetype)
+	
+		.. rst-class:: phpdoc-description
+		
+			| search for files by mimetype
+			
+		
+		:Source:
+			`lib/private/Files/Cache/Cache.php#818 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Cache.php#L818>`_
+		
+		
+		:Parameters:
+			* **$mimetype** (string)  either a full mimetype to search ('text/plain') or only the first part of a mimetype ('image')
+			where it will search for all mimetypes in the group ('image/*')
+
+		
+		:Returns: :any:`\\OCP\\Files\\Cache\\ICacheEntry\[\] <OCP\\Files\\Cache\\ICacheEntry>` an array of cache entries where the mimetype matches the search
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public searchQuery( $searchQuery)
+	
+		:Source:
+			`lib/private/Files/Cache/Cache.php#840 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Cache.php#L840>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public correctFolderSize( $path, $data=null, $isBackgroundScan=false)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Re\-calculate the folder size and the size of all parent folders
+			
+		
+		:Source:
+			`lib/private/Files/Cache/Cache.php#892 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Cache.php#L892>`_
+		
+		
+		:Parameters:
+			* **$path** (string | bool)  
+			* **$data** (array)  (optional) meta data of the folder
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getIncompleteChildrenCount( $fileId)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get the incomplete count that shares parent $folder
+			
+		
+		:Source:
+			`lib/private/Files/Cache/Cache.php#916 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Cache.php#L916>`_
+		
+		
+		:Parameters:
+			* **$fileId** (int)  the file id of the folder
+
+		
+		:Returns: int 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public calculateFolderSize( $path, $entry=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| calculate the size of a folder and set it in the cache
+			
+		
+		:Source:
+			`lib/private/Files/Cache/Cache.php#940 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Cache.php#L940>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+			* **$entry** (array)  (optional) meta data of the folder
+
+		
+		:Returns: int 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getAll()
+	
+		.. rst-class:: phpdoc-description
+		
+			| get all file ids on the files on the storage
+			
+		
+		:Source:
+			`lib/private/Files/Cache/Cache.php#981 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Cache.php#L981>`_
+		
+		
+		:Returns: int[] 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getIncomplete()
+	
+		.. rst-class:: phpdoc-description
+		
+			| find a folder in the cache which has not been fully scanned
+			
+			| If multiple incomplete folders are in the cache, the one with the highest id will be returned,
+			| use the one with the highest id gives the best result with the background scanner, since that is most
+			| likely the folder where we stopped scanning previously
+			
+		
+		:Source:
+			`lib/private/Files/Cache/Cache.php#1005 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Cache.php#L1005>`_
+		
+		
+		:Returns: string | bool the path of the folder or false when no folder matched
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getPathById( $id)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get the path of a file on this storage by it\'s file id
+			
+		
+		:Source:
+			`lib/private/Files/Cache/Cache.php#1027 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Cache.php#L1027>`_
+		
+		
+		:Parameters:
+			* **$id** (int)  the file id of the file or folder to search
+
+		
+		:Returns: string | null the path of the file \(relative to the storage\) or null if a file with the given id does not exists within this cache
+	
+	
+
+.. rst-class:: public static deprecated
+
+	.. php:method:: public static getById( $id)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get the storage id of the storage for a file and the internal path of the file
+			| unlike getPathById this does not limit the search to files on this storage and
+			| instead does a global search in the cache table
+			
+		
+		:Source:
+			`lib/private/Files/Cache/Cache.php#1054 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Cache.php#L1054>`_
+		
+		
+		:Parameters:
+			* **$id** (int)  
+
+		
+		:Returns: array first element holding the storage id, second the path
+		:Deprecated:  use getPathById\(\) instead
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public normalize( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| normalize the given path
+			
+		
+		:Source:
+			`lib/private/Files/Cache/Cache.php#1084 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Cache.php#L1084>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public copyFromCache( $sourceCache, $sourceEntry, $targetPath)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Copy a file or folder in the cache
+			
+		
+		:Source:
+			`lib/private/Files/Cache/Cache.php#1096 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Cache/Cache.php#L1096>`_
+		
+		
+		:Parameters:
+			* **$sourceCache** (:any:`OCP\\Files\\Cache\\ICache <OCP\\Files\\Cache\\ICache>`)  
+			* **$sourceEntry** (:any:`OCP\\Files\\Cache\\ICacheEntry <OCP\\Files\\Cache\\ICacheEntry>`)  
+			* **$targetPath** (string)  
+
+		
+		:Returns: int fileid of copied entry
+	
+	
+

@@ -1,0 +1,256 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+Setup
+=====
+
+
+.. php:namespace:: OC
+
+.. php:class:: Setup
+
+
+	:Source:
+		`lib/private/Setup.php#66 <https://github.com/nextcloud/server/blob/stable13/lib/private/Setup.php#L66>`_
+	
+
+Properties
+----------
+
+.. php:attr:: protected static config
+
+	:Source:
+		`lib/private/Setup.php#68 <https://github.com/nextcloud/server/blob/stable13/lib/private/Setup.php#L68>`_
+	
+	:Type: :any:`\\OC\\SystemConfig <OC\\SystemConfig>` 
+
+
+.. php:attr:: protected static iniWrapper
+
+	:Source:
+		`lib/private/Setup.php#70 <https://github.com/nextcloud/server/blob/stable13/lib/private/Setup.php#L70>`_
+	
+	:Type: :any:`\\bantu\\IniGetWrapper\\IniGetWrapper <bantu\\IniGetWrapper\\IniGetWrapper>` 
+
+
+.. php:attr:: protected static l10n
+
+	:Source:
+		`lib/private/Setup.php#72 <https://github.com/nextcloud/server/blob/stable13/lib/private/Setup.php#L72>`_
+	
+	:Type: :any:`\\OCP\\IL10N <OCP\\IL10N>` 
+
+
+.. php:attr:: protected static defaults
+
+	:Source:
+		`lib/private/Setup.php#74 <https://github.com/nextcloud/server/blob/stable13/lib/private/Setup.php#L74>`_
+	
+	:Type: :any:`\\OCP\\Defaults <OCP\\Defaults>` 
+
+
+.. php:attr:: protected static logger
+
+	:Source:
+		`lib/private/Setup.php#76 <https://github.com/nextcloud/server/blob/stable13/lib/private/Setup.php#L76>`_
+	
+	:Type: :any:`\\Psr\\Log\\LoggerInterface <Psr\\Log\\LoggerInterface>` 
+
+
+.. php:attr:: protected static random
+
+	:Source:
+		`lib/private/Setup.php#78 <https://github.com/nextcloud/server/blob/stable13/lib/private/Setup.php#L78>`_
+	
+	:Type: :any:`\\OCP\\Security\\ISecureRandom <OCP\\Security\\ISecureRandom>` 
+
+
+.. php:attr:: protected static installer
+
+	:Source:
+		`lib/private/Setup.php#80 <https://github.com/nextcloud/server/blob/stable13/lib/private/Setup.php#L80>`_
+	
+	:Type: :any:`\\OC\\Installer <OC\\Installer>` 
+
+
+.. php:attr:: protected dbSetupClasses
+
+	:Source:
+		`lib/private/Setup.php#100 <https://github.com/nextcloud/server/blob/stable13/lib/private/Setup.php#L100>`_
+	
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $config, $iniWrapper, $l10n, $defaults, $logger, $random, $installer)
+	
+		:Source:
+			`lib/private/Setup.php#82 <https://github.com/nextcloud/server/blob/stable13/lib/private/Setup.php#L82>`_
+		
+		
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected class_exists( $name)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Wrapper around the "class\_exists" PHP function to be able to mock it
+			
+		
+		:Source:
+			`lib/private/Setup.php#114 <https://github.com/nextcloud/server/blob/stable13/lib/private/Setup.php#L114>`_
+		
+		
+		:Parameters:
+			* **$name** (string)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected is_callable( $name)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Wrapper around the "is\_callable" PHP function to be able to mock it
+			
+		
+		:Source:
+			`lib/private/Setup.php#124 <https://github.com/nextcloud/server/blob/stable13/lib/private/Setup.php#L124>`_
+		
+		
+		:Parameters:
+			* **$name** (string)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected getAvailableDbDriversForPdo()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Wrapper around \\PDO::getAvailableDrivers
+			
+		
+		:Source:
+			`lib/private/Setup.php#133 <https://github.com/nextcloud/server/blob/stable13/lib/private/Setup.php#L133>`_
+		
+		
+		:Returns: array 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getSupportedDatabases( $allowAllDatabases=false)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the available and supported databases of this instance
+			
+		
+		:Source:
+			`lib/private/Setup.php#144 <https://github.com/nextcloud/server/blob/stable13/lib/private/Setup.php#L144>`_
+		
+		
+		:Parameters:
+			* **$allowAllDatabases** (bool)  
+
+		
+		:Returns: array 
+		:Throws: :any:`\\Exception <Exception>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getSystemInfo( $allowAllDatabases=false)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Gathers system information like database type and does
+			| a few system checks\.
+			
+		
+		:Source:
+			`lib/private/Setup.php#206 <https://github.com/nextcloud/server/blob/stable13/lib/private/Setup.php#L206>`_
+		
+		
+		:Returns: array of system info, including an "errors" value
+			in case of errors/warnings
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public install( $options)
+	
+		:Source:
+			`lib/private/Setup.php#275 <https://github.com/nextcloud/server/blob/stable13/lib/private/Setup.php#L275>`_
+		
+		
+		:Parameters:
+			* **$options**  
+
+		
+		:Returns: array 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static installBackgroundJobs()
+	
+		:Source:
+			`lib/private/Setup.php#446 <https://github.com/nextcloud/server/blob/stable13/lib/private/Setup.php#L446>`_
+		
+		
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static updateHtaccess()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Append the correct ErrorDocument path for Apache hosts
+			
+		
+		:Source:
+			`lib/private/Setup.php#491 <https://github.com/nextcloud/server/blob/stable13/lib/private/Setup.php#L491>`_
+		
+		
+		:Returns: bool True when success, False otherwise
+		:Throws: :any:`\\OCP\\AppFramework\\QueryException <OCP\\AppFramework\\QueryException>` 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static protectDataDirectory()
+	
+		:Source:
+			`lib/private/Setup.php#562 <https://github.com/nextcloud/server/blob/stable13/lib/private/Setup.php#L562>`_
+		
+		
+	
+	
+

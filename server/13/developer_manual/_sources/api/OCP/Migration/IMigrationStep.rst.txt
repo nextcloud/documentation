@@ -1,0 +1,117 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IMigrationStep
+==============
+
+
+.. php:namespace:: OCP\Migration
+
+.. php:interface:: IMigrationStep
+
+
+	:Implemented by:
+		:php:class:`OCP\\Migration\\SimpleMigrationStep` 
+	
+	
+	:Source:
+		`lib/public/Migration/IMigrationStep.php#36 <https://github.com/nextcloud/server/blob/stable13/lib/public/Migration/IMigrationStep.php#L36>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public name()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Human readable name of the migration step
+			
+		
+		:Source:
+			`lib/public/Migration/IMigrationStep.php#43 <https://github.com/nextcloud/server/blob/stable13/lib/public/Migration/IMigrationStep.php#L43>`_
+		
+		
+		:Returns: string 
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public description()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Human readable description of the migration steps
+			
+		
+		:Source:
+			`lib/public/Migration/IMigrationStep.php#51 <https://github.com/nextcloud/server/blob/stable13/lib/public/Migration/IMigrationStep.php#L51>`_
+		
+		
+		:Returns: string 
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public preSchemaChange( $output, $schemaClosure, $options)
+	
+		:Source:
+			`lib/public/Migration/IMigrationStep.php#60 <https://github.com/nextcloud/server/blob/stable13/lib/public/Migration/IMigrationStep.php#L60>`_
+		
+		
+		:Parameters:
+			* **$output** (:any:`OCP\\Migration\\IOutput <OCP\\Migration\\IOutput>`)  
+			* **$schemaClosure** (:any:`Closure <Closure>`)  The `\Closure` returns a `ISchemaWrapper`
+			* **$options** (array)  
+
+		
+		:Since: 13.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public changeSchema( $output, $schemaClosure, $options)
+	
+		:Source:
+			`lib/public/Migration/IMigrationStep.php#70 <https://github.com/nextcloud/server/blob/stable13/lib/public/Migration/IMigrationStep.php#L70>`_
+		
+		
+		:Parameters:
+			* **$output** (:any:`OCP\\Migration\\IOutput <OCP\\Migration\\IOutput>`)  
+			* **$schemaClosure** (:any:`Closure <Closure>`)  The `\Closure` returns a `ISchemaWrapper`
+			* **$options** (array)  
+
+		
+		:Returns: null | :any:`\\OCP\\DB\\ISchemaWrapper <OCP\\DB\\ISchemaWrapper>` 
+		:Since: 13.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public postSchemaChange( $output, $schemaClosure, $options)
+	
+		:Source:
+			`lib/public/Migration/IMigrationStep.php#79 <https://github.com/nextcloud/server/blob/stable13/lib/public/Migration/IMigrationStep.php#L79>`_
+		
+		
+		:Parameters:
+			* **$output** (:any:`OCP\\Migration\\IOutput <OCP\\Migration\\IOutput>`)  
+			* **$schemaClosure** (:any:`Closure <Closure>`)  The `\Closure` returns a `ISchemaWrapper`
+			* **$options** (array)  
+
+		
+		:Since: 13.0.0 
+	
+	
+

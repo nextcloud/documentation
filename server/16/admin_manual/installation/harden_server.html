@@ -1,0 +1,518 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Hardening and security guidance &mdash; Nextcloud latest Administration Manual latest documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'latest',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Server tuning" href="server_tuning.html" />
+    <link rel="prev" title="Nginx configuration" href="nginx.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../contents.html">
+          
+
+          
+            
+            <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_schedule.html">Maintenance and release schedule</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Installation and server configuration</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="system_requirements.html">System requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deployment_recommendations.html">Deployment recommendations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="source_installation.html">Installation on Linux</a></li>
+<li class="toctree-l2"><a class="reference internal" href="installation_wizard.html">Installation wizard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="command_line_installation.html">Installing from command line</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apps_supported.html">Supported apps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="php_72_installation.html">Installing PHP 7.2 on RHEL 7 and CentOS 7</a></li>
+<li class="toctree-l2"><a class="reference internal" href="selinux_configuration.html">SELinux configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="nginx.html">Nginx configuration</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Hardening and security guidance</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#limit-on-password-length">Limit on password length</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#operating-system">Operating system</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#give-php-read-access-to-dev-urandom">Give PHP read access to <code class="docutils literal"><span class="pre">/dev/urandom</span></code></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#enable-hardening-modules-such-as-selinux">Enable hardening modules such as SELinux</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#deployment">Deployment</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#place-data-directory-outside-of-the-web-root">Place data directory outside of the web root</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#disable-preview-image-generation">Disable preview image generation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#use-https">Use HTTPS</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#redirect-all-unencrypted-traffic-to-https">Redirect all unencrypted traffic to HTTPS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#enable-http-strict-transport-security">Enable HTTP Strict Transport Security</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#proper-ssl-configuration">Proper SSL configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#use-a-dedicated-domain-for-nextcloud">Use a dedicated domain for Nextcloud</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ensure-that-your-nextcloud-instance-is-installed-in-a-dmz">Ensure that your Nextcloud instance is installed in a DMZ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#serve-security-related-headers-by-the-web-server">Serve security related headers by the Web server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#connections-to-remote-servers">Connections to remote servers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="server_tuning.html">Server tuning</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_server/index.html">Nextcloud configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../apps_management.html">Apps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_user/index.html">User management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_files/index.html">File sharing and management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../file_workflows/index.html">File workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_database/index.html">Database configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_mimetypes/index.html">Mimetypes management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../maintenance/index.html">Maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../issues/index.html">Issues and troubleshooting</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest Administration Manual</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../contents.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Installation and server configuration</a> &raquo;</li>
+        
+      <li>Hardening and security guidance</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/nextcloud/documentation/edit/master/admin_manual/installation/harden_server.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="hardening-and-security-guidance">
+<h1>Hardening and security guidance<a class="headerlink" href="#hardening-and-security-guidance" title="Permalink to this headline">¶</a></h1>
+<p>Nextcloud aims to ship with secure defaults that do not need to get modified by
+administrators. However, in some cases some additional security hardening can be
+applied in scenarios were the administrator has complete control over
+the Nextcloud instance. This page assumes that you run Nextcloud Server on Apache2
+in a Linux environment.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Nextcloud will warn you in the administration interface if some
+critical security-relevant options are missing. However, it is still up to
+the server administrator to review and maintain system security.</p>
+</div>
+<div class="section" id="limit-on-password-length">
+<h2>Limit on password length<a class="headerlink" href="#limit-on-password-length" title="Permalink to this headline">¶</a></h2>
+<p>Nextcloud uses the bcrypt algorithm, and thus for security and performance
+reasons, e.g. Denial of Service as CPU demand increases exponentially, it only
+verifies the first 72 characters of passwords. This applies to all passwords
+that you use in Nextcloud: user passwords, passwords on link shares, and
+passwords on external shares.</p>
+</div>
+<div class="section" id="operating-system">
+<h2>Operating system<a class="headerlink" href="#operating-system" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="give-php-read-access-to-dev-urandom">
+<span id="dev-urandom-label"></span><h3>Give PHP read access to <code class="docutils literal"><span class="pre">/dev/urandom</span></code><a class="headerlink" href="#give-php-read-access-to-dev-urandom" title="Permalink to this headline">¶</a></h3>
+<p>Nextcloud uses a <a class="reference external" href="https://tools.ietf.org/html/rfc4086#section-5.2">RFC 4086 (&#8220;Randomness Requirements for Security&#8221;)</a> compliant
+mixer to generate cryptographically secure pseudo-random numbers. This means
+that when generating a random number Nextcloud will request multiple random
+numbers from different sources and derive from these the final random number.</p>
+<p>The random number generation also tries to request random numbers from
+<code class="docutils literal"><span class="pre">/dev/urandom</span></code>, thus it is highly recommended to configure your setup in such
+a way that PHP is able to read random data from it.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">When having an <code class="docutils literal"><span class="pre">open_basedir</span></code> configured within your <code class="docutils literal"><span class="pre">php.ini</span></code> file,
+make sure to include <code class="docutils literal"><span class="pre">/dev/urandom</span></code>.</p>
+</div>
+</div>
+<div class="section" id="enable-hardening-modules-such-as-selinux">
+<h3>Enable hardening modules such as SELinux<a class="headerlink" href="#enable-hardening-modules-such-as-selinux" title="Permalink to this headline">¶</a></h3>
+<p>It is highly recommended to enable hardening modules such as SELinux where
+possible. See <a class="reference internal" href="selinux_configuration.html"><span class="doc">SELinux configuration</span></a> to learn more about
+SELinux.</p>
+</div>
+</div>
+<div class="section" id="deployment">
+<h2>Deployment<a class="headerlink" href="#deployment" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="place-data-directory-outside-of-the-web-root">
+<h3>Place data directory outside of the web root<a class="headerlink" href="#place-data-directory-outside-of-the-web-root" title="Permalink to this headline">¶</a></h3>
+<p>It is highly recommended to place your data directory outside of the Web root
+(i.e. outside of <code class="docutils literal"><span class="pre">/var/www</span></code>). It is easiest to do this on a new
+installation.</p>
+</div>
+<div class="section" id="disable-preview-image-generation">
+<h3>Disable preview image generation<a class="headerlink" href="#disable-preview-image-generation" title="Permalink to this headline">¶</a></h3>
+<p>Nextcloud is able to generate preview images of common filetypes such as images
+or text files. By default the preview generation for some file types that we
+consider secure enough for deployment is enabled by default. However,
+administrators should be aware that these previews are generated using PHP
+libraries written in C which might be vulnerable to attack vectors.</p>
+<p>For high security deployments we recommend disabling the preview generation by
+setting the <code class="docutils literal"><span class="pre">enable_previews</span></code> switch to <code class="docutils literal"><span class="pre">false</span></code> in <code class="docutils literal"><span class="pre">config.php</span></code>. As an
+administrator you are also able to manage which preview providers are enabled by
+modifying the <code class="docutils literal"><span class="pre">enabledPreviewProviders</span></code> option switch.</p>
+</div>
+</div>
+<div class="section" id="use-https">
+<span id="use-https-label"></span><h2>Use HTTPS<a class="headerlink" href="#use-https" title="Permalink to this headline">¶</a></h2>
+<p>Using Nextcloud without using an encrypted HTTPS connection opens up your server
+to a man-in-the-middle (MITM) attack, and risks the interception of user data
+and passwords. It is a best practice, and highly recommended, to always use
+HTTPS on production servers, and to never allow unencrypted HTTP.</p>
+<p>How to setup HTTPS on your Web server depends on your setup; please consult the
+documentation for your HTTP server. The following examples are for Apache.</p>
+<div class="section" id="redirect-all-unencrypted-traffic-to-https">
+<h3>Redirect all unencrypted traffic to HTTPS<a class="headerlink" href="#redirect-all-unencrypted-traffic-to-https" title="Permalink to this headline">¶</a></h3>
+<p>To redirect all HTTP traffic to HTTPS administrators are encouraged to issue a
+permanent redirect using the 301 status code. When using Apache this can be
+achieved by a setting such as the following in the Apache VirtualHosts
+configuration:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">VirtualHost</span> <span class="o">*</span><span class="p">:</span><span class="mi">80</span><span class="o">&gt;</span>
+   <span class="n">ServerName</span> <span class="n">cloud</span><span class="o">.</span><span class="n">nextcloud</span><span class="o">.</span><span class="n">com</span>
+   <span class="n">Redirect</span> <span class="n">permanent</span> <span class="o">/</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">cloud</span><span class="o">.</span><span class="n">nextcloud</span><span class="o">.</span><span class="n">com</span><span class="o">/</span>
+<span class="o">&lt;/</span><span class="n">VirtualHost</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="enable-http-strict-transport-security">
+<span id="enable-hsts-label"></span><h3>Enable HTTP Strict Transport Security<a class="headerlink" href="#enable-http-strict-transport-security" title="Permalink to this headline">¶</a></h3>
+<p>While redirecting all traffic to HTTPS is good, it may not completely prevent
+man-in-the-middle attacks. Thus administrators are encouraged to set the HTTP
+Strict Transport Security header, which instructs browsers to not allow any
+connection to the Nextcloud instance using HTTP, and it attempts to prevent site
+visitors from bypassing invalid certificate warnings.</p>
+<p>This can be achieved by setting the following settings within the Apache
+VirtualHost file:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="o">&lt;</span><span class="n">VirtualHost</span> <span class="o">*</span><span class="p">:</span><span class="mi">443</span><span class="o">&gt;</span>
+  <span class="n">ServerName</span> <span class="n">cloud</span><span class="o">.</span><span class="n">nextcloud</span><span class="o">.</span><span class="n">com</span>
+    <span class="o">&lt;</span><span class="n">IfModule</span> <span class="n">mod_headers</span><span class="o">.</span><span class="n">c</span><span class="o">&gt;</span>
+      <span class="n">Header</span> <span class="n">always</span> <span class="nb">set</span> <span class="n">Strict</span><span class="o">-</span><span class="n">Transport</span><span class="o">-</span><span class="n">Security</span> <span class="s2">&quot;max-age=15552000; includeSubDomains&quot;</span>
+    <span class="o">&lt;/</span><span class="n">IfModule</span><span class="o">&gt;</span>
+ <span class="o">&lt;/</span><span class="n">VirtualHost</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">We recommend the additional setting <code class="docutils literal"><span class="pre">;</span> <span class="pre">preload</span></code> to be added to that header.
+Then the domain will be added to a hardcoded list that is shipped with all
+major browsers and enforce HTTPS upon those domains. See the <a class="reference external" href="https://hstspreload.org/">HSTS preload
+website for more information</a>. Due to the policy
+of this list you need to add it to the above example for yourself once you
+are sure that this is what you want. <a class="reference external" href="https://hstspreload.org/#removal">Removing the domain from this list</a> could take some months until it reaches
+all installed browsers.</p>
+</div>
+<p>This example configuration will make all subdomains only accessible via HTTPS.
+If you have subdomains not accessible via HTTPS, remove <code class="docutils literal"><span class="pre">includeSubdomains;</span></code>.</p>
+<p>This requires the <code class="docutils literal"><span class="pre">mod_headers</span></code> extension in Apache.</p>
+</div>
+<div class="section" id="proper-ssl-configuration">
+<h3>Proper SSL configuration<a class="headerlink" href="#proper-ssl-configuration" title="Permalink to this headline">¶</a></h3>
+<p>Default SSL configurations by Web servers are often not state-of-the-art, and
+require fine-tuning for an optimal performance and security experience. The
+available SSL ciphers and options depend completely on your environment and
+thus giving a generic recommendation is not really possible.</p>
+<p>We recommend using the <a class="reference external" href="https://mozilla.github.io/server-side-tls/ssl-config-generator/">Mozilla SSL Configuration Generator</a> to generate a
+suitable configuration suited for your environment, and the free <a class="reference external" href="https://www.ssllabs.com/ssltest/">Qualys SSL Labs Tests</a>
+gives good guidance on whether your SSL server is correctly
+configured.</p>
+<p>Also ensure that HTTP compression is disabled to mitigate the BREACH attack.</p>
+</div>
+</div>
+<div class="section" id="use-a-dedicated-domain-for-nextcloud">
+<h2>Use a dedicated domain for Nextcloud<a class="headerlink" href="#use-a-dedicated-domain-for-nextcloud" title="Permalink to this headline">¶</a></h2>
+<p>Administrators are encouraged to install Nextcloud on a dedicated domain such as
+cloud.domain.tld instead of domain.tld to gain all the benefits offered by the
+Same-Origin-Policy.</p>
+</div>
+<div class="section" id="ensure-that-your-nextcloud-instance-is-installed-in-a-dmz">
+<h2>Ensure that your Nextcloud instance is installed in a DMZ<a class="headerlink" href="#ensure-that-your-nextcloud-instance-is-installed-in-a-dmz" title="Permalink to this headline">¶</a></h2>
+<p>As Nextcloud supports features such as Federated File Sharing we do not consider
+Server Side Request Forgery (SSRF) part of our threat model. In fact, given all our
+external storage adapters this can be considered a feature and not a vulnerability.</p>
+<p>This means that a user on your Nextcloud instance could probe whether other hosts
+are accessible from the Nextcloud network. If you do not want this you need to
+ensure that your Nextcloud is properly installed in a segregated network and proper
+firewall rules are in place.</p>
+</div>
+<div class="section" id="serve-security-related-headers-by-the-web-server">
+<h2>Serve security related headers by the Web server<a class="headerlink" href="#serve-security-related-headers-by-the-web-server" title="Permalink to this headline">¶</a></h2>
+<p>Basic security headers are served by Nextcloud already in a default environment.
+These include:</p>
+<ul class="simple">
+<li><dl class="first docutils">
+<dt><code class="docutils literal"><span class="pre">X-Content-Type-Options:</span> <span class="pre">nosniff</span></code></dt>
+<dd><ul class="first last">
+<li>Instructs some browsers to not sniff the mimetype of files. This is used for example to prevent browsers from interpreting text files as JavaScript.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><code class="docutils literal"><span class="pre">X-XSS-Protection:</span> <span class="pre">1;</span> <span class="pre">mode=block</span></code></dt>
+<dd><ul class="first last">
+<li>Instructs browsers to enable their browser side Cross-Site-Scripting filter.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><code class="docutils literal"><span class="pre">X-Robots-Tag:</span> <span class="pre">none</span></code></dt>
+<dd><ul class="first last">
+<li>Instructs search machines to not index these pages.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><code class="docutils literal"><span class="pre">X-Frame-Options:</span> <span class="pre">SAMEORIGIN</span></code></dt>
+<dd><ul class="first last">
+<li>Prevents embedding of the Nextcloud instance within an iframe from other domains to prevent Clickjacking and other similar attacks.</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt><code class="docutils literal"><span class="pre">Referrer-Policy:</span> <span class="pre">no-referrer</span></code></dt>
+<dd><ul class="first last">
+<li>The default <cite>no-referrer</cite> policy instructs the browser not to send referrer information along with requests to any origin.</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>These headers are hard-coded into the Nextcloud server, and need no intervention
+by the server administrator.</p>
+<p>For optimal security, administrators are encouraged to serve these basic HTTP
+headers by the Web server to enforce them on response. To do this Apache has to
+be configured to use the <code class="docutils literal"><span class="pre">.htaccess</span></code> file and the following Apache
+modules need to be enabled:</p>
+<ul class="simple">
+<li>mod_headers</li>
+<li>mod_env</li>
+</ul>
+<p>Administrators can verify whether this security change is active by accessing a
+static resource served by the Web server and verify that the above mentioned
+security headers are shipped.</p>
+</div>
+<div class="section" id="connections-to-remote-servers">
+<h2>Connections to remote servers<a class="headerlink" href="#connections-to-remote-servers" title="Permalink to this headline">¶</a></h2>
+<p>Some Nextcloud functionality requires connecting to remote servers. Depending on your server setup those are possible connections:</p>
+<ul class="simple">
+<li>www.nextcloud.com, www.startpage.com, www.eff.org, www.edri.org for checking the internet connection</li>
+<li>apps.nextcloud.com for the available apps</li>
+<li>updates.nextcloud.com for Nextcloud updates</li>
+<li>lookup.nextcloud.com For updating and lookup in the federated sharing addressbook</li>
+<li>push-notifications.nextcloud.com for sending push notifications to mobile clients</li>
+<li>surveyserver.nextcloud.com if the admin has agreed to share anonymized data</li>
+<li>Any remote Nextcloud server that is connected with federated sharing</li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="server_tuning.html" class="btn btn-neutral float-right" title="Server tuning" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="nginx.html" class="btn btn-neutral float-left" title="Nginx configuration" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021 Nextcloud GmbH.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/16/admin_manual">16</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/17/admin_manual">17</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/18/admin_manual">18</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/admin_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/admin_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+   
+
+</body>
+</html>

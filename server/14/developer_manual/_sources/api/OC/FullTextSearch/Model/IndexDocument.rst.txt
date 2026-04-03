@@ -1,0 +1,1326 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IndexDocument
+=============
+
+
+.. php:namespace:: OC\FullTextSearch\Model
+
+.. php:class:: IndexDocument
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Class IndexDocument
+		
+		| This is one of the main class of the FullTextSearch, used as a data transfer
+		| object\. An IndexDocument is created to manage documents around FullTextSearch,
+		| during an index and during a search\.
+		| The uniqueness of an IndexDocument is made by the Id of the Content Provider
+		| and the Id of the original document within the Content Provider\.
+		| 
+		| We will call original document the source from which the IndexDocument is
+		| generated\. As an example, an original document can be a file, a mail, \.\.\.
+		
+	
+	:Source:
+		`lib/private/FullTextSearch/Model/IndexDocument.php#50 <https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/Model/IndexDocument.php#L50>`_
+	
+	:Implements:
+		:php:interface:`OCP\\FullTextSearch\\Model\\IIndexDocument` :php:interface:`JsonSerializable` 
+	
+
+Properties
+----------
+
+.. php:attr:: protected static id
+
+	:Source:
+		`lib/private/FullTextSearch/Model/IndexDocument.php#54 <https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/Model/IndexDocument.php#L54>`_
+	
+	:Type: string 
+
+
+.. php:attr:: protected static providerId
+
+	:Source:
+		`lib/private/FullTextSearch/Model/IndexDocument.php#57 <https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/Model/IndexDocument.php#L57>`_
+	
+	:Type: string 
+
+
+.. php:attr:: protected static access
+
+	:Source:
+		`lib/private/FullTextSearch/Model/IndexDocument.php#60 <https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/Model/IndexDocument.php#L60>`_
+	
+	:Type: :any:`\\OC\\FullTextSearch\\Model\\DocumentAccess <OC\\FullTextSearch\\Model\\DocumentAccess>` 
+
+
+.. php:attr:: protected static index
+
+	:Source:
+		`lib/private/FullTextSearch/Model/IndexDocument.php#63 <https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/Model/IndexDocument.php#L63>`_
+	
+	:Type: :any:`\\OCP\\FullTextSearch\\Model\\IIndex <OCP\\FullTextSearch\\Model\\IIndex>` 
+
+
+.. php:attr:: protected static modifiedTime
+
+	:Source:
+		`lib/private/FullTextSearch/Model/IndexDocument.php#66 <https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/Model/IndexDocument.php#L66>`_
+	
+	:Type: int 
+
+
+.. php:attr:: protected static source
+
+	:Source:
+		`lib/private/FullTextSearch/Model/IndexDocument.php#69 <https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/Model/IndexDocument.php#L69>`_
+	
+	:Type: string 
+
+
+.. php:attr:: protected static tags
+
+	:Source:
+		`lib/private/FullTextSearch/Model/IndexDocument.php#72 <https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/Model/IndexDocument.php#L72>`_
+	
+	:Type: array 
+
+
+.. php:attr:: protected static metaTags
+
+	:Source:
+		`lib/private/FullTextSearch/Model/IndexDocument.php#75 <https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/Model/IndexDocument.php#L75>`_
+	
+	:Type: array 
+
+
+.. php:attr:: protected static subTags
+
+	:Source:
+		`lib/private/FullTextSearch/Model/IndexDocument.php#78 <https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/Model/IndexDocument.php#L78>`_
+	
+	:Type: array 
+
+
+.. php:attr:: protected static title
+
+	:Source:
+		`lib/private/FullTextSearch/Model/IndexDocument.php#81 <https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/Model/IndexDocument.php#L81>`_
+	
+	:Type: string 
+
+
+.. php:attr:: protected static content
+
+	:Source:
+		`lib/private/FullTextSearch/Model/IndexDocument.php#84 <https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/Model/IndexDocument.php#L84>`_
+	
+	:Type: string 
+
+
+.. php:attr:: protected static hash
+
+	:Source:
+		`lib/private/FullTextSearch/Model/IndexDocument.php#87 <https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/Model/IndexDocument.php#L87>`_
+	
+	:Type: string 
+
+
+.. php:attr:: protected static parts
+
+	:Source:
+		`lib/private/FullTextSearch/Model/IndexDocument.php#90 <https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/Model/IndexDocument.php#L90>`_
+	
+	:Type: array 
+
+
+.. php:attr:: protected static link
+
+	:Source:
+		`lib/private/FullTextSearch/Model/IndexDocument.php#93 <https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/Model/IndexDocument.php#L93>`_
+	
+	:Type: string 
+
+
+.. php:attr:: protected static more
+
+	:Source:
+		`lib/private/FullTextSearch/Model/IndexDocument.php#96 <https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/Model/IndexDocument.php#L96>`_
+	
+	:Type: array 
+
+
+.. php:attr:: protected static excerpts
+
+	:Source:
+		`lib/private/FullTextSearch/Model/IndexDocument.php#99 <https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/Model/IndexDocument.php#L99>`_
+	
+	:Type: array 
+
+
+.. php:attr:: protected static score
+
+	:Source:
+		`lib/private/FullTextSearch/Model/IndexDocument.php#102 <https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/Model/IndexDocument.php#L102>`_
+	
+	:Type: string 
+
+
+.. php:attr:: protected static info
+
+	:Source:
+		`lib/private/FullTextSearch/Model/IndexDocument.php#105 <https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/Model/IndexDocument.php#L105>`_
+	
+	:Type: array 
+
+
+.. php:attr:: protected static contentEncoded
+
+	:Source:
+		`lib/private/FullTextSearch/Model/IndexDocument.php#108 <https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/Model/IndexDocument.php#L108>`_
+	
+	:Type: int 
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $providerId, $documentId)
+	
+		.. rst-class:: phpdoc-description
+		
+			| IIndexDocument constructor\.
+			
+			| On creation, we assure the uniqueness of the object using the providerId
+			| and the Id of the original document\.
+			
+		
+		:Source:
+			`lib/private/FullTextSearch/Model/IndexDocument.php#122 <https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/Model/IndexDocument.php#L122>`_
+		
+		
+		:Parameters:
+			* **$providerId** (string)  
+			* **$documentId** (string)  
+
+		
+		:Since: 15.0.0 
+	
+	
+
+.. rst-class:: public final
+
+	.. php:method:: public final getId()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the Id of the original document\.
+			
+		
+		:Source:
+			`lib/private/FullTextSearch/Model/IndexDocument.php#135 <https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/Model/IndexDocument.php#L135>`_
+		
+		
+		:Since: 15.0.0 
+		:Returns: string 
+	
+	
+
+.. rst-class:: public final
+
+	.. php:method:: public final getProviderId()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the Id of the provider\.
+			
+		
+		:Source:
+			`lib/private/FullTextSearch/Model/IndexDocument.php#147 <https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/Model/IndexDocument.php#L147>`_
+		
+		
+		:Since: 15.0.0 
+		:Returns: string 
+	
+	
+
+.. rst-class:: public final
+
+	.. php:method:: public final setIndex( $index)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set the Index related to the IIndexDocument\.
+			
+		
+		:Source:
+			`lib/private/FullTextSearch/Model/IndexDocument.php#163 <https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/Model/IndexDocument.php#L163>`_
+		
+		
+		:Parameters:
+			* **$index** (:any:`OCP\\FullTextSearch\\Model\\IIndex <OCP\\FullTextSearch\\Model\\IIndex>`)  
+
+		
+		:See: :any:`\\OCP\\FullTextSearch\\Model\\IIndex <OCP\\FullTextSearch\\Model\\IIndex>` 
+		:Since: 15.0.0 
+		:Returns: :any:`\\OCP\\FullTextSearch\\Model\\IIndexDocument <OCP\\FullTextSearch\\Model\\IIndexDocument>` 
+	
+	
+
+.. rst-class:: public final
+
+	.. php:method:: public final getIndex()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the Index\.
+			
+		
+		:Source:
+			`lib/private/FullTextSearch/Model/IndexDocument.php#176 <https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/Model/IndexDocument.php#L176>`_
+		
+		
+		:Since: 15.0.0 
+		:Returns: :any:`\\OCP\\FullTextSearch\\Model\\IIndex <OCP\\FullTextSearch\\Model\\IIndex>` 
+	
+	
+
+.. rst-class:: public final
+
+	.. php:method:: public final hasIndex()
+	
+		.. rst-class:: phpdoc-description
+		
+			| return if Index is defined\.
+			
+		
+		:Source:
+			`lib/private/FullTextSearch/Model/IndexDocument.php#187 <https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/Model/IndexDocument.php#L187>`_
+		
+		
+		:Since: 16.0.0 
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public final
+
+	.. php:method:: public final setModifiedTime( $modifiedTime)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set the modified time of the original document\.
+			
+		
+		:Source:
+			`lib/private/FullTextSearch/Model/IndexDocument.php#201 <https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/Model/IndexDocument.php#L201>`_
+		
+		
+		:Parameters:
+			* **$modifiedTime** (int)  
+
+		
+		:Since: 15.0.0 
+		:Returns: :any:`\\OCP\\FullTextSearch\\Model\\IIndexDocument <OCP\\FullTextSearch\\Model\\IIndexDocument>` 
+	
+	
+
+.. rst-class:: public final
+
+	.. php:method:: public final getModifiedTime()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the modified time of the original document\.
+			
+		
+		:Source:
+			`lib/private/FullTextSearch/Model/IndexDocument.php#214 <https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/Model/IndexDocument.php#L214>`_
+		
+		
+		:Since: 15.0.0 
+		:Returns: int 
+	
+	
+
+.. rst-class:: public final
+
+	.. php:method:: public final isOlderThan( $time)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check if the original document of the IIndexDocument is older than $time\.
+			
+		
+		:Source:
+			`lib/private/FullTextSearch/Model/IndexDocument.php#227 <https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/Model/IndexDocument.php#L227>`_
+		
+		
+		:Parameters:
+			* **$time** (int)  
+
+		
+		:Since: 15.0.0 
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public final
+
+	.. php:method:: public final setAccess( $access)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set the read rights of the original document using a IDocumentAccess\.
+			
+		
+		:Source:
+			`lib/private/FullTextSearch/Model/IndexDocument.php#243 <https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/Model/IndexDocument.php#L243>`_
+		
+		
+		:Parameters:
+			* **$access** (:any:`OCP\\FullTextSearch\\Model\\IDocumentAccess <OCP\\FullTextSearch\\Model\\IDocumentAccess>`)  
+
+		
+		:See: :any:`\\OCP\\FullTextSearch\\Model\\IDocumentAccess <OCP\\FullTextSearch\\Model\\IDocumentAccess>` 
+		:Since: 15.0.0 
+		:Returns: $this 
+	
+	
+
+.. rst-class:: public final
+
+	.. php:method:: public final getAccess()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the IDocumentAccess related to the original document\.
+			
+		
+		:Source:
+			`lib/private/FullTextSearch/Model/IndexDocument.php#256 <https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/Model/IndexDocument.php#L256>`_
+		
+		
+		:Since: 15.0.0 
+		:Returns: :any:`\\OCP\\FullTextSearch\\Model\\IDocumentAccess <OCP\\FullTextSearch\\Model\\IDocumentAccess>` 
+	
+	
+
+.. rst-class:: public final
+
+	.. php:method:: public final addTag( $tag)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Add a tag to the list\.
+			
+		
+		:Source:
+			`lib/private/FullTextSearch/Model/IndexDocument.php#270 <https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/Model/IndexDocument.php#L270>`_
+		
+		
+		:Parameters:
+			* **$tag** (string)  
+
+		
+		:Since: 15.0.0 
+		:Returns: :any:`\\OCP\\FullTextSearch\\Model\\IIndexDocument <OCP\\FullTextSearch\\Model\\IIndexDocument>` 
+	
+	
+
+.. rst-class:: public final
+
+	.. php:method:: public final setTags( $tags)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set the list of tags assigned to the original document\.
+			
+		
+		:Source:
+			`lib/private/FullTextSearch/Model/IndexDocument.php#285 <https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/Model/IndexDocument.php#L285>`_
+		
+		
+		:Parameters:
+			* **$tags** (array)  
+
+		
+		:Since: 15.0.0 
+		:Returns: :any:`\\OCP\\FullTextSearch\\Model\\IIndexDocument <OCP\\FullTextSearch\\Model\\IIndexDocument>` 
+	
+	
+
+.. rst-class:: public final
+
+	.. php:method:: public final getTags()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the list of tags assigned to the original document\.
+			
+		
+		:Source:
+			`lib/private/FullTextSearch/Model/IndexDocument.php#298 <https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/Model/IndexDocument.php#L298>`_
+		
+		
+		:Since: 15.0.0 
+		:Returns: array 
+	
+	
+
+.. rst-class:: public final
+
+	.. php:method:: public final addMetaTag( $tag)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Add a meta tag to the list\.
+			
+		
+		:Source:
+			`lib/private/FullTextSearch/Model/IndexDocument.php#312 <https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/Model/IndexDocument.php#L312>`_
+		
+		
+		:Parameters:
+			* **$tag** (string)  
+
+		
+		:Since: 15.0.0 
+		:Returns: :any:`\\OCP\\FullTextSearch\\Model\\IIndexDocument <OCP\\FullTextSearch\\Model\\IIndexDocument>` 
+	
+	
+
+.. rst-class:: public final
+
+	.. php:method:: public final setMetaTags( $tags)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set the list of meta tags assigned to the original document\.
+			
+		
+		:Source:
+			`lib/private/FullTextSearch/Model/IndexDocument.php#327 <https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/Model/IndexDocument.php#L327>`_
+		
+		
+		:Parameters:
+			* **$tags** (array)  
+
+		
+		:Since: 15.0.0 
+		:Returns: :any:`\\OCP\\FullTextSearch\\Model\\IIndexDocument <OCP\\FullTextSearch\\Model\\IIndexDocument>` 
+	
+	
+
+.. rst-class:: public final
+
+	.. php:method:: public final getMetaTags()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the list of meta tags assigned to the original document\.
+			
+		
+		:Source:
+			`lib/private/FullTextSearch/Model/IndexDocument.php#340 <https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/Model/IndexDocument.php#L340>`_
+		
+		
+		:Since: 15.0.0 
+		:Returns: array 
+	
+	
+
+.. rst-class:: public final
+
+	.. php:method:: public final addSubTag( $sub, $tag)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Add a sub tag to the list\.
+			
+		
+		:Source:
+			`lib/private/FullTextSearch/Model/IndexDocument.php#355 <https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/Model/IndexDocument.php#L355>`_
+		
+		
+		:Parameters:
+			* **$sub** (string)  
+			* **$tag** (string)  
+
+		
+		:Since: 15.0.0 
+		:Returns: :any:`\\OCP\\FullTextSearch\\Model\\IIndexDocument <OCP\\FullTextSearch\\Model\\IIndexDocument>` 
+	
+	
+
+.. rst-class:: public final
+
+	.. php:method:: public final setSubTags( $tags)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set the list of sub tags assigned to the original document\.
+			
+		
+		:Source:
+			`lib/private/FullTextSearch/Model/IndexDocument.php#375 <https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/Model/IndexDocument.php#L375>`_
+		
+		
+		:Parameters:
+			* **$tags** (array)  
+
+		
+		:Since: 15.0.0 
+		:Returns: :any:`\\OCP\\FullTextSearch\\Model\\IIndexDocument <OCP\\FullTextSearch\\Model\\IIndexDocument>` 
+	
+	
+
+.. rst-class:: public final
+
+	.. php:method:: public final getSubTags( $formatted=false)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the list of sub tags assigned to the original document\.
+			
+			| If $formatted is true, the result will be formatted in a one
+			| dimensional array\.
+			
+		
+		:Source:
+			`lib/private/FullTextSearch/Model/IndexDocument.php#392 <https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/Model/IndexDocument.php#L392>`_
+		
+		
+		:Parameters:
+			* **$formatted** (bool)  
+
+		
+		:Since: 15.0.0 
+		:Returns: array 
+	
+	
+
+.. rst-class:: public final
+
+	.. php:method:: public final setSource( $source)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set the source of the original document\.
+			
+		
+		:Source:
+			`lib/private/FullTextSearch/Model/IndexDocument.php#419 <https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/Model/IndexDocument.php#L419>`_
+		
+		
+		:Parameters:
+			* **$source** (string)  
+
+		
+		:Since: 15.0.0 
+		:Returns: :any:`\\OCP\\FullTextSearch\\Model\\IIndexDocument <OCP\\FullTextSearch\\Model\\IIndexDocument>` 
+	
+	
+
+.. rst-class:: public final
+
+	.. php:method:: public final getSource()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the source of the original document\.
+			
+		
+		:Source:
+			`lib/private/FullTextSearch/Model/IndexDocument.php#432 <https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/Model/IndexDocument.php#L432>`_
+		
+		
+		:Since: 15.0.0 
+		:Returns: string 
+	
+	
+
+.. rst-class:: public final
+
+	.. php:method:: public final setTitle( $title)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set the title of the original document\.
+			
+		
+		:Source:
+			`lib/private/FullTextSearch/Model/IndexDocument.php#446 <https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/Model/IndexDocument.php#L446>`_
+		
+		
+		:Parameters:
+			* **$title** (string)  
+
+		
+		:Since: 15.0.0 
+		:Returns: :any:`\\OCP\\FullTextSearch\\Model\\IIndexDocument <OCP\\FullTextSearch\\Model\\IIndexDocument>` 
+	
+	
+
+.. rst-class:: public final
+
+	.. php:method:: public final getTitle()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the title of the original document\.
+			
+		
+		:Source:
+			`lib/private/FullTextSearch/Model/IndexDocument.php#459 <https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/Model/IndexDocument.php#L459>`_
+		
+		
+		:Since: 15.0.0 
+		:Returns: string 
+	
+	
+
+.. rst-class:: public final
+
+	.. php:method:: public final setContent( $content, $encoded=0)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set the content of the document\.
+			
+			| $encoded can be NOT\_ENCODED or ENCODED\_BASE64 if the content is raw or
+			| encoded in base64\.
+			
+		
+		:Source:
+			`lib/private/FullTextSearch/Model/IndexDocument.php#476 <https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/Model/IndexDocument.php#L476>`_
+		
+		
+		:Parameters:
+			* **$content** (string)  
+			* **$encoded** (int)  
+
+		
+		:Since: 15.0.0 
+		:Returns: :any:`\\OCP\\FullTextSearch\\Model\\IIndexDocument <OCP\\FullTextSearch\\Model\\IIndexDocument>` 
+	
+	
+
+.. rst-class:: public final
+
+	.. php:method:: public final getContent()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the content of the original document\.
+			
+		
+		:Source:
+			`lib/private/FullTextSearch/Model/IndexDocument.php#490 <https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/Model/IndexDocument.php#L490>`_
+		
+		
+		:Since: 15.0.0 
+		:Returns: string 
+	
+	
+
+.. rst-class:: public final
+
+	.. php:method:: public final isContentEncoded()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the type of the encoding on the content\.
+			
+		
+		:Source:
+			`lib/private/FullTextSearch/Model/IndexDocument.php#501 <https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/Model/IndexDocument.php#L501>`_
+		
+		
+		:Since: 15.0.0 
+		:Returns: int 
+	
+	
+
+.. rst-class:: public final
+
+	.. php:method:: public final getContentSize()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Return the size of the content\.
+			
+		
+		:Source:
+			`lib/private/FullTextSearch/Model/IndexDocument.php#512 <https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/Model/IndexDocument.php#L512>`_
+		
+		
+		:Since: 15.0.0 
+		:Returns: int 
+	
+	
+
+.. rst-class:: public final
+
+	.. php:method:: public final initHash()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Generate an hash, based on the content of the original document\.
+			
+		
+		:Source:
+			`lib/private/FullTextSearch/Model/IndexDocument.php#524 <https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/Model/IndexDocument.php#L524>`_
+		
+		
+		:Since: 15.0.0 
+		:Returns: :any:`\\OCP\\FullTextSearch\\Model\\IIndexDocument <OCP\\FullTextSearch\\Model\\IIndexDocument>` 
+	
+	
+
+.. rst-class:: public final
+
+	.. php:method:: public final setHash( $hash)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set the hash of the original document\.
+			
+		
+		:Source:
+			`lib/private/FullTextSearch/Model/IndexDocument.php#543 <https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/Model/IndexDocument.php#L543>`_
+		
+		
+		:Parameters:
+			* **$hash** (string)  
+
+		
+		:Since: 15.0.0 
+		:Returns: :any:`\\OCP\\FullTextSearch\\Model\\IIndexDocument <OCP\\FullTextSearch\\Model\\IIndexDocument>` 
+	
+	
+
+.. rst-class:: public final
+
+	.. php:method:: public final getHash()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the hash of the original document\.
+			
+		
+		:Source:
+			`lib/private/FullTextSearch/Model/IndexDocument.php#556 <https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/Model/IndexDocument.php#L556>`_
+		
+		
+		:Since: 15.0.0 
+		:Returns: string 
+	
+	
+
+.. rst-class:: public final
+
+	.. php:method:: public final addPart( $part, $content)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Add a part, identified by a string, and its content\.
+			
+			| It is strongly advised to use alphanumerical chars with no space in the
+			| $part string\.
+			
+		
+		:Source:
+			`lib/private/FullTextSearch/Model/IndexDocument.php#574 <https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/Model/IndexDocument.php#L574>`_
+		
+		
+		:Parameters:
+			* **$part** (string)  
+			* **$content** (string)  
+
+		
+		:Since: 15.0.0 
+		:Returns: :any:`\\OCP\\FullTextSearch\\Model\\IIndexDocument <OCP\\FullTextSearch\\Model\\IIndexDocument>` 
+	
+	
+
+.. rst-class:: public final
+
+	.. php:method:: public final setParts( $parts)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set all parts and their content\.
+			
+		
+		:Source:
+			`lib/private/FullTextSearch/Model/IndexDocument.php#589 <https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/Model/IndexDocument.php#L589>`_
+		
+		
+		:Parameters:
+			* **$parts** (array)  
+
+		
+		:Since: 15.0.0 
+		:Returns: :any:`\\OCP\\FullTextSearch\\Model\\IIndexDocument <OCP\\FullTextSearch\\Model\\IIndexDocument>` 
+	
+	
+
+.. rst-class:: public final
+
+	.. php:method:: public final getParts()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get all parts of the IIndexDocument\.
+			
+		
+		:Source:
+			`lib/private/FullTextSearch/Model/IndexDocument.php#602 <https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/Model/IndexDocument.php#L602>`_
+		
+		
+		:Since: 15.0.0 
+		:Returns: array 
+	
+	
+
+.. rst-class:: public final
+
+	.. php:method:: public final setLink( $link)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Add a link, usable by the frontend\.
+			
+		
+		:Source:
+			`lib/private/FullTextSearch/Model/IndexDocument.php#616 <https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/Model/IndexDocument.php#L616>`_
+		
+		
+		:Parameters:
+			* **$link** (string)  
+
+		
+		:Since: 15.0.0 
+		:Returns: :any:`\\OCP\\FullTextSearch\\Model\\IIndexDocument <OCP\\FullTextSearch\\Model\\IIndexDocument>` 
+	
+	
+
+.. rst-class:: public final
+
+	.. php:method:: public final getLink()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the link\.
+			
+		
+		:Source:
+			`lib/private/FullTextSearch/Model/IndexDocument.php#629 <https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/Model/IndexDocument.php#L629>`_
+		
+		
+		:Since: 15.0.0 
+		:Returns: string 
+	
+	
+
+.. rst-class:: public final
+
+	.. php:method:: public final setMore( $more)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set more information that couldn\'t be set using other method\.
+			
+		
+		:Source:
+			`lib/private/FullTextSearch/Model/IndexDocument.php#643 <https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/Model/IndexDocument.php#L643>`_
+		
+		
+		:Parameters:
+			* **$more** (array)  
+
+		
+		:Since: 15.0.0 
+		:Returns: :any:`\\OCP\\FullTextSearch\\Model\\IIndexDocument <OCP\\FullTextSearch\\Model\\IIndexDocument>` 
+	
+	
+
+.. rst-class:: public final
+
+	.. php:method:: public final getMore()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get more information\.
+			
+		
+		:Source:
+			`lib/private/FullTextSearch/Model/IndexDocument.php#656 <https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/Model/IndexDocument.php#L656>`_
+		
+		
+		:Since: 15.0.0 
+		:Returns: array 
+	
+	
+
+.. rst-class:: public final
+
+	.. php:method:: public final addExcerpt( $source, $excerpt)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Add some excerpt of the content of the original document, usually based
+			| on the search request\.
+			
+		
+		:Source:
+			`lib/private/FullTextSearch/Model/IndexDocument.php#672 <https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/Model/IndexDocument.php#L672>`_
+		
+		
+		:Parameters:
+			* **$source** (string)  
+			* **$excerpt** (string)  
+
+		
+		:Since: 16.0.0 
+		:Returns: :any:`\\OCP\\FullTextSearch\\Model\\IIndexDocument <OCP\\FullTextSearch\\Model\\IIndexDocument>` 
+	
+	
+
+.. rst-class:: public final
+
+	.. php:method:: public final setExcerpts( $excerpts)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set all excerpts of the content of the original document\.
+			
+		
+		:Source:
+			`lib/private/FullTextSearch/Model/IndexDocument.php#692 <https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/Model/IndexDocument.php#L692>`_
+		
+		
+		:Parameters:
+			* **$excerpts** (array)  
+
+		
+		:Since: 16.0.0 
+		:Returns: :any:`\\OCP\\FullTextSearch\\Model\\IIndexDocument <OCP\\FullTextSearch\\Model\\IIndexDocument>` 
+	
+	
+
+.. rst-class:: public final
+
+	.. php:method:: public final getExcerpts()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get all excerpts of the content of the original document\.
+			
+		
+		:Source:
+			`lib/private/FullTextSearch/Model/IndexDocument.php#713 <https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/Model/IndexDocument.php#L713>`_
+		
+		
+		:Since: 15.0.0 
+		:Returns: array 
+	
+	
+
+.. rst-class:: public final
+
+	.. php:method:: public final setScore( $score)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set the score to the result assigned to this document during a search
+			| request\.
+			
+		
+		:Source:
+			`lib/private/FullTextSearch/Model/IndexDocument.php#747 <https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/Model/IndexDocument.php#L747>`_
+		
+		
+		:Parameters:
+			* **$score** (string)  
+
+		
+		:Since: 15.0.0 
+		:Returns: :any:`\\OCP\\FullTextSearch\\Model\\IIndexDocument <OCP\\FullTextSearch\\Model\\IIndexDocument>` 
+	
+	
+
+.. rst-class:: public final
+
+	.. php:method:: public final getScore()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the score\.
+			
+		
+		:Source:
+			`lib/private/FullTextSearch/Model/IndexDocument.php#760 <https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/Model/IndexDocument.php#L760>`_
+		
+		
+		:Since: 15.0.0 
+		:Returns: string 
+	
+	
+
+.. rst-class:: public final
+
+	.. php:method:: public final setInfo( $info, $value)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set some information about the original document that will be available
+			| to the front\-end when displaying search result\. \(as string\)
+			| Because this information will not be indexed, this method can also be
+			| used to manage some data while filling the IIndexDocument before its
+			| indexing\.
+			
+		
+		:Source:
+			`lib/private/FullTextSearch/Model/IndexDocument.php#779 <https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/Model/IndexDocument.php#L779>`_
+		
+		
+		:Parameters:
+			* **$info** (string)  
+			* **$value** (string)  
+
+		
+		:Since: 15.0.0 
+		:Returns: :any:`\\OCP\\FullTextSearch\\Model\\IIndexDocument <OCP\\FullTextSearch\\Model\\IIndexDocument>` 
+	
+	
+
+.. rst-class:: public final
+
+	.. php:method:: public final getInfo( $info, $default="")
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get an information about a document\. \(string\)
+			
+		
+		:Source:
+			`lib/private/FullTextSearch/Model/IndexDocument.php#795 <https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/Model/IndexDocument.php#L795>`_
+		
+		
+		:Parameters:
+			* **$info** (string)  
+			* **$default** (string)  
+
+		
+		:Since: 15.0.0 
+		:Returns: string 
+	
+	
+
+.. rst-class:: public final
+
+	.. php:method:: public final setInfoArray( $info, $value)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set some information about the original document that will be available
+			| to the front\-end when displaying search result\. \(as array\)
+			| Because this information will not be indexed, this method can also be
+			| used to manage some data while filling the IIndexDocument before its
+			| indexing\.
+			
+		
+		:Source:
+			`lib/private/FullTextSearch/Model/IndexDocument.php#817 <https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/Model/IndexDocument.php#L817>`_
+		
+		
+		:Parameters:
+			* **$info** (string)  
+			* **$value** (array)  
+
+		
+		:Since: 15.0.0 
+		:Returns: :any:`\\OCP\\FullTextSearch\\Model\\IIndexDocument <OCP\\FullTextSearch\\Model\\IIndexDocument>` 
+	
+	
+
+.. rst-class:: public final
+
+	.. php:method:: public final getInfoArray( $info, $default=\[\])
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get an information about a document\. \(array\)
+			
+		
+		:Source:
+			`lib/private/FullTextSearch/Model/IndexDocument.php#833 <https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/Model/IndexDocument.php#L833>`_
+		
+		
+		:Parameters:
+			* **$info** (string)  
+			* **$default** (array)  
+
+		
+		:Since: 15.0.0 
+		:Returns: array 
+	
+	
+
+.. rst-class:: public final
+
+	.. php:method:: public final setInfoInt( $info, $value)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set some information about the original document that will be available
+			| to the front\-end when displaying search result\. \(as int\)
+			| Because this information will not be indexed, this method can also be
+			| used to manage some data while filling the IIndexDocument before its
+			| indexing\.
+			
+		
+		:Source:
+			`lib/private/FullTextSearch/Model/IndexDocument.php#855 <https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/Model/IndexDocument.php#L855>`_
+		
+		
+		:Parameters:
+			* **$info** (string)  
+			* **$value** (int)  
+
+		
+		:Since: 15.0.0 
+		:Returns: :any:`\\OCP\\FullTextSearch\\Model\\IIndexDocument <OCP\\FullTextSearch\\Model\\IIndexDocument>` 
+	
+	
+
+.. rst-class:: public final
+
+	.. php:method:: public final getInfoInt( $info, $default=0)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get an information about a document\. \(int\)
+			
+		
+		:Source:
+			`lib/private/FullTextSearch/Model/IndexDocument.php#871 <https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/Model/IndexDocument.php#L871>`_
+		
+		
+		:Parameters:
+			* **$info** (string)  
+			* **$default** (int)  
+
+		
+		:Since: 15.0.0 
+		:Returns: int 
+	
+	
+
+.. rst-class:: public final
+
+	.. php:method:: public final setInfoBool( $info, $value)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set some information about the original document that will be available
+			| to the front\-end when displaying search result\. \(as bool\)
+			| Because this information will not be indexed, this method can also be
+			| used to manage some data while filling the IIndexDocument before its
+			| indexing\.
+			
+		
+		:Source:
+			`lib/private/FullTextSearch/Model/IndexDocument.php#893 <https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/Model/IndexDocument.php#L893>`_
+		
+		
+		:Parameters:
+			* **$info** (string)  
+			* **$value** (bool)  
+
+		
+		:Since: 15.0.0 
+		:Returns: :any:`\\OCP\\FullTextSearch\\Model\\IIndexDocument <OCP\\FullTextSearch\\Model\\IIndexDocument>` 
+	
+	
+
+.. rst-class:: public final
+
+	.. php:method:: public final getInfoBool( $info, $default=false)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get an information about a document\. \(bool\)
+			
+		
+		:Source:
+			`lib/private/FullTextSearch/Model/IndexDocument.php#909 <https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/Model/IndexDocument.php#L909>`_
+		
+		
+		:Parameters:
+			* **$info** (string)  
+			* **$default** (bool)  
+
+		
+		:Since: 15.0.0 
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public final
+
+	.. php:method:: public final getInfoAll()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get all info\.
+			
+		
+		:Source:
+			`lib/private/FullTextSearch/Model/IndexDocument.php#924 <https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/Model/IndexDocument.php#L924>`_
+		
+		
+		:Since: 15.0.0 
+		:Returns: array 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public __destruct()
+	
+		:Source:
+			`lib/private/FullTextSearch/Model/IndexDocument.php#945 <https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/Model/IndexDocument.php#L945>`_
+		
+		
+		:Since: 15.0.0 On some version of PHP, it is better to force destruct the object\.
+			And during the index, the number of generated IIndexDocument can be
+			\_huge\_\.
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public jsonSerialize()
+	
+		:Source:
+			`lib/private/FullTextSearch/Model/IndexDocument.php#970 <https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/Model/IndexDocument.php#L970>`_
+		
+		
+		:Since: 15.0.0 
+		:Returns: array 
+	
+	
+

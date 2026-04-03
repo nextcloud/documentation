@@ -1,0 +1,153 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+Provider
+========
+
+
+.. php:namespace:: OCP\Search
+
+.. rst-class::  abstract
+
+.. php:class:: Provider
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Provides a template for search functionality throughout ownCloud;
+		
+	
+	:Source:
+		`lib/public/Search/Provider.php#35 <https://github.com/nextcloud/server/blob/stable13/lib/public/Search/Provider.php#L35>`_
+	
+
+Constants
+---------
+
+.. php:const:: OPTION_APPS = apps
+
+	:Source:
+		`lib/public/Search/Provider.php#41 <https://github.com/nextcloud/server/blob/stable13/lib/public/Search/Provider.php#L41>`_
+	
+	:Since: 8.0.0 
+	:Deprecated: 20.0.0 
+
+
+Properties
+----------
+
+.. php:attr:: protected static options
+
+	.. rst-class:: phpdoc-description
+	
+		| List of options
+		
+	
+	:Source:
+		`lib/public/Search/Provider.php#49 <https://github.com/nextcloud/server/blob/stable13/lib/public/Search/Provider.php#L49>`_
+	
+	:Type: array 
+	:Since: 7.0.0 
+	:Deprecated: 20.0.0 
+
+
+Methods
+-------
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public __construct( $options=\[\])
+	
+		.. rst-class:: phpdoc-description
+		
+			| Constructor
+			
+		
+		:Source:
+			`lib/public/Search/Provider.php#57 <https://github.com/nextcloud/server/blob/stable13/lib/public/Search/Provider.php#L57>`_
+		
+		
+		:Parameters:
+			* **$options** (array)  as key => value
+
+		
+		:Since: 7.0.0 \- default value for $options was added in 8\.0\.0
+		:Deprecated: 20.0.0 
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public getOption( $key)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get a value from the options array or null
+			
+		
+		:Source:
+			`lib/public/Search/Provider.php#68 <https://github.com/nextcloud/server/blob/stable13/lib/public/Search/Provider.php#L68>`_
+		
+		
+		:Parameters:
+			* **$key** (string)  
+
+		
+		:Returns: mixed 
+		:Since: 8.0.0 
+		:Deprecated: 20.0.0 
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public providesResultsFor( $apps=\[\])
+	
+		.. rst-class:: phpdoc-description
+		
+			| checks if the given apps and the apps this provider has results for intersect
+			| returns true if the given array is empty \(all apps\)
+			| or if this provider does not have a list of apps it provides results for \(legacy search providers\)
+			| or if the two above arrays have elements in common \(intersect\)
+			
+		
+		:Source:
+			`lib/public/Search/Provider.php#86 <https://github.com/nextcloud/server/blob/stable13/lib/public/Search/Provider.php#L86>`_
+		
+		
+		:Parameters:
+			* **$apps** (string[])  
+
+		
+		:Returns: bool 
+		:Since: 8.0.0 
+		:Deprecated: 20.0.0 
+	
+	
+
+.. rst-class:: public abstract deprecated
+
+	.. php:method:: public abstract search( $query)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Search for $query
+			
+		
+		:Source:
+			`lib/public/Search/Provider.php#98 <https://github.com/nextcloud/server/blob/stable13/lib/public/Search/Provider.php#L98>`_
+		
+		
+		:Parameters:
+			* **$query** (string)  
+
+		
+		:Returns: array An array of OCP\\Search\\Result\'s
+		:Since: 7.0.0 
+		:Deprecated: 20.0.0 
+	
+	
+

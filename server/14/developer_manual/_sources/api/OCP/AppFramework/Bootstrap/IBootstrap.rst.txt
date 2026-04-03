@@ -1,0 +1,64 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IBootstrap
+==========
+
+
+.. php:namespace:: OCP\AppFramework\Bootstrap
+
+.. php:interface:: IBootstrap
+
+
+	:Source:
+		`lib/public/AppFramework/Bootstrap/IBootstrap.php#32 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Bootstrap/IBootstrap.php#L32>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public register( $context)
+	
+		:Source:
+			`lib/public/AppFramework/Bootstrap/IBootstrap.php#39 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Bootstrap/IBootstrap.php#L39>`_
+		
+		
+		:Parameters:
+			* **$context** (:any:`OCP\\AppFramework\\Bootstrap\\IRegistrationContext <OCP\\AppFramework\\Bootstrap\\IRegistrationContext>`)  
+
+		
+		:Since: 20.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public boot( $context)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Boot the application
+			
+			| At this stage you can assume that all services are registered and the DI
+			| container\(s\) are ready to be queried\.
+			| 
+			| This is also the state where an optional \`appinfo/app\.php\` was loaded\.
+			
+		
+		:Source:
+			`lib/public/AppFramework/Bootstrap/IBootstrap.php#53 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Bootstrap/IBootstrap.php#L53>`_
+		
+		
+		:Parameters:
+			* **$context** (:any:`OCP\\AppFramework\\Bootstrap\\IBootContext <OCP\\AppFramework\\Bootstrap\\IBootContext>`)  
+
+		
+		:Since: 20.0.0 
+	
+	
+

@@ -1,0 +1,95 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+AsyncBus
+========
+
+
+.. php:namespace:: OC\Command
+
+.. rst-class::  abstract
+
+.. php:class:: AsyncBus
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Asynchronous command bus that uses the background job system as backend
+		
+	
+	:Source:
+		`lib/private/Command/AsyncBus.php#31 <https://github.com/nextcloud/server/blob/stable13/lib/private/Command/AsyncBus.php#L31>`_
+	
+	:Implements:
+		:php:interface:`OCP\\Command\\IBus` 
+	
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public push( $command)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Schedule a command to be fired
+			
+		
+		:Source:
+			`lib/private/Command/AsyncBus.php#44 <https://github.com/nextcloud/server/blob/stable13/lib/private/Command/AsyncBus.php#L44>`_
+		
+		
+		:Parameters:
+			
+			
+		
+	
+	
+
+.. rst-class:: protected abstract
+
+	.. php:method:: protected abstract queueCommand( $command)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Queue a command in the bus
+			
+		
+		:Source:
+			`lib/private/Command/AsyncBus.php#57 <https://github.com/nextcloud/server/blob/stable13/lib/private/Command/AsyncBus.php#L57>`_
+		
+		
+		:Parameters:
+			
+			
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public requireSync( $trait)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Require all commands using a trait to be run synchronous
+			
+		
+		:Source:
+			`lib/private/Command/AsyncBus.php#64 <https://github.com/nextcloud/server/blob/stable13/lib/private/Command/AsyncBus.php#L64>`_
+		
+		
+		:Parameters:
+			* **$trait** (string)  
+
+		
+	
+	
+

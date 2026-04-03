@@ -1,0 +1,568 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IComment
+========
+
+
+.. php:namespace:: OCP\Comments
+
+.. php:interface:: IComment
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Interface IComment
+		
+		| This class represents a comment
+		
+	
+	:Implemented by:
+		:php:class:`OC\\Comments\\Comment` 
+	
+	
+	:Source:
+		`lib/public/Comments/IComment.php#36 <https://github.com/nextcloud/server/blob/stable13/lib/public/Comments/IComment.php#L36>`_
+	
+
+Constants
+---------
+
+.. php:const:: MAX_MESSAGE_LENGTH = 1000
+
+	:Source:
+		`lib/public/Comments/IComment.php#37 <https://github.com/nextcloud/server/blob/stable13/lib/public/Comments/IComment.php#L37>`_
+	
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public getId()
+	
+		.. rst-class:: phpdoc-description
+		
+			| returns the ID of the comment
+			
+			| It may return an empty string, if the comment was not stored\.
+			| It is expected that the concrete Comment implementation gives an ID
+			| by itself \(e\.g\. after saving\)\.
+			
+		
+		:Source:
+			`lib/public/Comments/IComment.php#49 <https://github.com/nextcloud/server/blob/stable13/lib/public/Comments/IComment.php#L49>`_
+		
+		
+		:Returns: string 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setId( $id)
+	
+		.. rst-class:: phpdoc-description
+		
+			| sets the ID of the comment and returns itself
+			
+			| It is only allowed to set the ID only, if the current id is an empty
+			| string \(which means it is not stored in a database, storage or whatever
+			| the concrete implementation does\), or vice versa\. Changing a given ID is
+			| not permitted and must result in an IllegalIDChangeException\.
+			
+		
+		:Source:
+			`lib/public/Comments/IComment.php#64 <https://github.com/nextcloud/server/blob/stable13/lib/public/Comments/IComment.php#L64>`_
+		
+		
+		:Parameters:
+			* **$id** (string)  
+
+		
+		:Returns: :any:`\\OCP\\Comments\\IComment <OCP\\Comments\\IComment>` 
+		:Throws: :any:`\\OCP\\Comments\\IllegalIDChangeException <OCP\\Comments\\IllegalIDChangeException>` 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getParentId()
+	
+		.. rst-class:: phpdoc-description
+		
+			| returns the parent ID of the comment
+			
+		
+		:Source:
+			`lib/public/Comments/IComment.php#72 <https://github.com/nextcloud/server/blob/stable13/lib/public/Comments/IComment.php#L72>`_
+		
+		
+		:Returns: string 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setParentId( $parentId)
+	
+		.. rst-class:: phpdoc-description
+		
+			| sets the parent ID and returns itself
+			
+		
+		:Source:
+			`lib/public/Comments/IComment.php#80 <https://github.com/nextcloud/server/blob/stable13/lib/public/Comments/IComment.php#L80>`_
+		
+		
+		:Parameters:
+			* **$parentId** (string)  
+
+		
+		:Returns: :any:`\\OCP\\Comments\\IComment <OCP\\Comments\\IComment>` 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getTopmostParentId()
+	
+		.. rst-class:: phpdoc-description
+		
+			| returns the topmost parent ID of the comment
+			
+		
+		:Source:
+			`lib/public/Comments/IComment.php#88 <https://github.com/nextcloud/server/blob/stable13/lib/public/Comments/IComment.php#L88>`_
+		
+		
+		:Returns: string 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setTopmostParentId( $id)
+	
+		.. rst-class:: phpdoc-description
+		
+			| sets the topmost parent ID and returns itself
+			
+		
+		:Source:
+			`lib/public/Comments/IComment.php#98 <https://github.com/nextcloud/server/blob/stable13/lib/public/Comments/IComment.php#L98>`_
+		
+		
+		:Parameters:
+			* **$id** (string)  
+
+		
+		:Returns: :any:`\\OCP\\Comments\\IComment <OCP\\Comments\\IComment>` 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getChildrenCount()
+	
+		.. rst-class:: phpdoc-description
+		
+			| returns the number of children
+			
+		
+		:Source:
+			`lib/public/Comments/IComment.php#106 <https://github.com/nextcloud/server/blob/stable13/lib/public/Comments/IComment.php#L106>`_
+		
+		
+		:Returns: int 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setChildrenCount( $count)
+	
+		.. rst-class:: phpdoc-description
+		
+			| sets the number of children
+			
+		
+		:Source:
+			`lib/public/Comments/IComment.php#115 <https://github.com/nextcloud/server/blob/stable13/lib/public/Comments/IComment.php#L115>`_
+		
+		
+		:Parameters:
+			* **$count** (int)  
+
+		
+		:Returns: :any:`\\OCP\\Comments\\IComment <OCP\\Comments\\IComment>` 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getMessage()
+	
+		.. rst-class:: phpdoc-description
+		
+			| returns the message of the comment
+			
+		
+		:Source:
+			`lib/public/Comments/IComment.php#123 <https://github.com/nextcloud/server/blob/stable13/lib/public/Comments/IComment.php#L123>`_
+		
+		
+		:Returns: string 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setMessage( $message, $maxLength=self::MAX\_MESSAGE\_LENGTH)
+	
+		.. rst-class:: phpdoc-description
+		
+			| sets the message of the comment and returns itself
+			
+			| When the given message length exceeds MAX\_MESSAGE\_LENGTH an
+			| MessageTooLongException shall be thrown\.
+			
+		
+		:Source:
+			`lib/public/Comments/IComment.php#137 <https://github.com/nextcloud/server/blob/stable13/lib/public/Comments/IComment.php#L137>`_
+		
+		
+		:Parameters:
+			* **$message** (string)  
+			* **$maxLength** (int)  
+
+		
+		:Returns: :any:`\\OCP\\Comments\\IComment <OCP\\Comments\\IComment>` 
+		:Throws: :any:`\\OCP\\Comments\\MessageTooLongException <OCP\\Comments\\MessageTooLongException>` 
+		:Since: 9.0.0 \- $maxLength added in 16\.0\.2
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getMentions()
+	
+		.. rst-class:: phpdoc-description
+		
+			| returns an array containing mentions that are included in the comment
+			
+		
+		:Source:
+			`lib/public/Comments/IComment.php#159 <https://github.com/nextcloud/server/blob/stable13/lib/public/Comments/IComment.php#L159>`_
+		
+		
+		:Returns: array each mention provides a \'type\' and an \'id\', see example below
+		:Since: 11.0.0 The return array looks like:
+			\[
+			  \[
+			    \'type\' =\> \'user\',
+			    \'id\' =\> \'citizen4\'
+			  \],
+			  \[
+			    \'type\' =\> \'group\',
+			    \'id\' =\> \'media\'
+			  \],
+			  …
+			\]
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getVerb()
+	
+		.. rst-class:: phpdoc-description
+		
+			| returns the verb of the comment
+			
+		
+		:Source:
+			`lib/public/Comments/IComment.php#167 <https://github.com/nextcloud/server/blob/stable13/lib/public/Comments/IComment.php#L167>`_
+		
+		
+		:Returns: string 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setVerb( $verb)
+	
+		.. rst-class:: phpdoc-description
+		
+			| sets the verb of the comment, e\.g\. \'comment\' or \'like\'
+			
+		
+		:Source:
+			`lib/public/Comments/IComment.php#176 <https://github.com/nextcloud/server/blob/stable13/lib/public/Comments/IComment.php#L176>`_
+		
+		
+		:Parameters:
+			* **$verb** (string)  
+
+		
+		:Returns: :any:`\\OCP\\Comments\\IComment <OCP\\Comments\\IComment>` 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getActorType()
+	
+		.. rst-class:: phpdoc-description
+		
+			| returns the actor type
+			
+		
+		:Source:
+			`lib/public/Comments/IComment.php#184 <https://github.com/nextcloud/server/blob/stable13/lib/public/Comments/IComment.php#L184>`_
+		
+		
+		:Returns: string 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getActorId()
+	
+		.. rst-class:: phpdoc-description
+		
+			| returns the actor ID
+			
+		
+		:Source:
+			`lib/public/Comments/IComment.php#192 <https://github.com/nextcloud/server/blob/stable13/lib/public/Comments/IComment.php#L192>`_
+		
+		
+		:Returns: string 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setActor( $actorType, $actorId)
+	
+		.. rst-class:: phpdoc-description
+		
+			| sets \(overwrites\) the actor type and id
+			
+		
+		:Source:
+			`lib/public/Comments/IComment.php#202 <https://github.com/nextcloud/server/blob/stable13/lib/public/Comments/IComment.php#L202>`_
+		
+		
+		:Parameters:
+			* **$actorType** (string)  e.g. 'users'
+			* **$actorId** (string)  e.g. 'zombie234'
+
+		
+		:Returns: :any:`\\OCP\\Comments\\IComment <OCP\\Comments\\IComment>` 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getCreationDateTime()
+	
+		.. rst-class:: phpdoc-description
+		
+			| returns the creation date of the comment\.
+			
+			| If not explicitly set, it shall default to the time of initialization\.
+			
+		
+		:Source:
+			`lib/public/Comments/IComment.php#212 <https://github.com/nextcloud/server/blob/stable13/lib/public/Comments/IComment.php#L212>`_
+		
+		
+		:Returns: :any:`\\DateTime <DateTime>` 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setCreationDateTime( $dateTime)
+	
+		.. rst-class:: phpdoc-description
+		
+			| sets the creation date of the comment and returns itself
+			
+		
+		:Source:
+			`lib/public/Comments/IComment.php#221 <https://github.com/nextcloud/server/blob/stable13/lib/public/Comments/IComment.php#L221>`_
+		
+		
+		:Parameters:
+			* **$dateTime** (:any:`DateTime <DateTime>`)  
+
+		
+		:Returns: :any:`\\OCP\\Comments\\IComment <OCP\\Comments\\IComment>` 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getLatestChildDateTime()
+	
+		.. rst-class:: phpdoc-description
+		
+			| returns the date of the most recent child
+			
+		
+		:Source:
+			`lib/public/Comments/IComment.php#229 <https://github.com/nextcloud/server/blob/stable13/lib/public/Comments/IComment.php#L229>`_
+		
+		
+		:Returns: :any:`\\DateTime <DateTime>` 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setLatestChildDateTime( $dateTime)
+	
+		.. rst-class:: phpdoc-description
+		
+			| sets the date of the most recent child
+			
+		
+		:Source:
+			`lib/public/Comments/IComment.php#238 <https://github.com/nextcloud/server/blob/stable13/lib/public/Comments/IComment.php#L238>`_
+		
+		
+		:Parameters:
+			* **$dateTime** (:any:`DateTime <DateTime>`)  
+
+		
+		:Returns: :any:`\\OCP\\Comments\\IComment <OCP\\Comments\\IComment>` 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getObjectType()
+	
+		.. rst-class:: phpdoc-description
+		
+			| returns the object type the comment is attached to
+			
+		
+		:Source:
+			`lib/public/Comments/IComment.php#246 <https://github.com/nextcloud/server/blob/stable13/lib/public/Comments/IComment.php#L246>`_
+		
+		
+		:Returns: string 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getObjectId()
+	
+		.. rst-class:: phpdoc-description
+		
+			| returns the object id the comment is attached to
+			
+		
+		:Source:
+			`lib/public/Comments/IComment.php#254 <https://github.com/nextcloud/server/blob/stable13/lib/public/Comments/IComment.php#L254>`_
+		
+		
+		:Returns: string 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setObject( $objectType, $objectId)
+	
+		.. rst-class:: phpdoc-description
+		
+			| sets \(overwrites\) the object of the comment
+			
+		
+		:Source:
+			`lib/public/Comments/IComment.php#264 <https://github.com/nextcloud/server/blob/stable13/lib/public/Comments/IComment.php#L264>`_
+		
+		
+		:Parameters:
+			* **$objectType** (string)  e.g. 'files'
+			* **$objectId** (string)  e.g. '16435'
+
+		
+		:Returns: :any:`\\OCP\\Comments\\IComment <OCP\\Comments\\IComment>` 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getReferenceId()
+	
+		.. rst-class:: phpdoc-description
+		
+			| returns the reference id of the comment
+			
+		
+		:Source:
+			`lib/public/Comments/IComment.php#272 <https://github.com/nextcloud/server/blob/stable13/lib/public/Comments/IComment.php#L272>`_
+		
+		
+		:Returns: string | null 
+		:Since: 19.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setReferenceId( $referenceId)
+	
+		.. rst-class:: phpdoc-description
+		
+			| sets \(overwrites\) the reference id of the comment
+			
+		
+		:Source:
+			`lib/public/Comments/IComment.php#281 <https://github.com/nextcloud/server/blob/stable13/lib/public/Comments/IComment.php#L281>`_
+		
+		
+		:Parameters:
+			* **$referenceId** (string | null)  e.g. sha256 hash sum
+
+		
+		:Returns: :any:`\\OCP\\Comments\\IComment <OCP\\Comments\\IComment>` 
+		:Since: 19.0.0 
+	
+	
+

@@ -1,0 +1,351 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IEncryptionModule
+=================
+
+
+.. php:namespace:: OCP\Encryption
+
+.. php:interface:: IEncryptionModule
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Interface IEncryptionModule
+		
+	
+	:Source:
+		`lib/public/Encryption/IEncryptionModule.php#38 <https://github.com/nextcloud/server/blob/stable13/lib/public/Encryption/IEncryptionModule.php#L38>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public getId()
+	
+		:Source:
+			`lib/public/Encryption/IEncryptionModule.php#44 <https://github.com/nextcloud/server/blob/stable13/lib/public/Encryption/IEncryptionModule.php#L44>`_
+		
+		
+		:Returns: string defining the technical unique id
+		:Since: 8.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getDisplayName()
+	
+		.. rst-class:: phpdoc-description
+		
+			| In comparison to getKey\(\) this function returns a human readable \(maybe translated\) name
+			
+		
+		:Source:
+			`lib/public/Encryption/IEncryptionModule.php#52 <https://github.com/nextcloud/server/blob/stable13/lib/public/Encryption/IEncryptionModule.php#L52>`_
+		
+		
+		:Returns: string 
+		:Since: 8.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public begin( $path, $user, $mode, $header, $accessList)
+	
+		.. rst-class:: phpdoc-description
+		
+			| start receiving chunks from a file\. This is the place where you can
+			| perform some initial step before starting encrypting/decrypting the
+			| chunks
+			
+		
+		:Source:
+			`lib/public/Encryption/IEncryptionModule.php#70 <https://github.com/nextcloud/server/blob/stable13/lib/public/Encryption/IEncryptionModule.php#L70>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  to the file
+			* **$user** (string)  who read/write the file (null for public access)
+			* **$mode** (string)  php stream open mode
+			* **$header** (array)  contains the header data read from the file
+			* **$accessList** (array)  who has access to the file contains the key 'users' and 'public'
+			
+			$return array $header contain data as key-value pairs which should be
+			                      written to the header, in case of a write operation
+			                      or if no additional data is needed return a empty array
+
+		
+		:Since: 8.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public end( $path, $position)
+	
+		.. rst-class:: phpdoc-description
+		
+			| last chunk received\. This is the place where you can perform some final
+			| operation and return some remaining data if something is left in your
+			| buffer\.
+			
+		
+		:Source:
+			`lib/public/Encryption/IEncryptionModule.php#86 <https://github.com/nextcloud/server/blob/stable13/lib/public/Encryption/IEncryptionModule.php#L86>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  to the file
+			* **$position** (string)  id of the last block (looks like "<Number>end")
+
+		
+		:Returns: string remained data which should be written to the file in case
+			of a write operation
+		
+		:Since: 8.1.0 
+		:Since: 8.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public encrypt( $data, $position)
+	
+		.. rst-class:: phpdoc-description
+		
+			| encrypt data
+			
+		
+		:Source:
+			`lib/public/Encryption/IEncryptionModule.php#99 <https://github.com/nextcloud/server/blob/stable13/lib/public/Encryption/IEncryptionModule.php#L99>`_
+		
+		
+		:Parameters:
+			* **$data** (string)  you want to encrypt
+			* **$position** (string)  position of the block we want to encrypt (starts with '0')
+
+		
+		:Returns: mixed encrypted data
+		:Since: 8.1.0 
+		:Since: 8.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public decrypt( $data, $position)
+	
+		.. rst-class:: phpdoc-description
+		
+			| decrypt data
+			
+		
+		:Source:
+			`lib/public/Encryption/IEncryptionModule.php#112 <https://github.com/nextcloud/server/blob/stable13/lib/public/Encryption/IEncryptionModule.php#L112>`_
+		
+		
+		:Parameters:
+			* **$data** (string)  you want to decrypt
+			* **$position** (int | string)  position of the block we want to decrypt
+
+		
+		:Returns: mixed decrypted data
+		:Since: 8.1.0 
+		:Since: 8.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public update( $path, $uid, $accessList)
+	
+		.. rst-class:: phpdoc-description
+		
+			| update encrypted file, e\.g\. give additional users access to the file
+			
+		
+		:Source:
+			`lib/public/Encryption/IEncryptionModule.php#123 <https://github.com/nextcloud/server/blob/stable13/lib/public/Encryption/IEncryptionModule.php#L123>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  path to the file which should be updated
+			* **$uid** (string)  of the user who performs the operation
+			* **$accessList** (array)  who has access to the file contains the key 'users' and 'public'
+
+		
+		:Returns: bool 
+		:Since: 8.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public shouldEncrypt( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| should the file be encrypted or not
+			
+		
+		:Source:
+			`lib/public/Encryption/IEncryptionModule.php#132 <https://github.com/nextcloud/server/blob/stable13/lib/public/Encryption/IEncryptionModule.php#L132>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: bool 
+		:Since: 8.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getUnencryptedBlockSize( $signed=false)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get size of the unencrypted payload per block\.
+			
+			| ownCloud read/write files with a block size of 8192 byte
+			
+		
+		:Source:
+			`lib/public/Encryption/IEncryptionModule.php#142 <https://github.com/nextcloud/server/blob/stable13/lib/public/Encryption/IEncryptionModule.php#L142>`_
+		
+		
+		:Parameters:
+			* **$signed** (bool)  
+
+		
+		:Returns: int 
+		:Since: 8.1.0 optional parameter $signed was added in 9\.0\.0
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isReadable( $path, $uid)
+	
+		.. rst-class:: phpdoc-description
+		
+			| check if the encryption module is able to read the file,
+			| e\.g\. if all encryption keys exists
+			
+		
+		:Source:
+			`lib/public/Encryption/IEncryptionModule.php#153 <https://github.com/nextcloud/server/blob/stable13/lib/public/Encryption/IEncryptionModule.php#L153>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+			* **$uid** (string)  user for whom we want to check if he can read the file
+
+		
+		:Returns: bool 
+		:Since: 8.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public encryptAll( $input, $output)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Initial encryption of all files
+			
+		
+		:Source:
+			`lib/public/Encryption/IEncryptionModule.php#162 <https://github.com/nextcloud/server/blob/stable13/lib/public/Encryption/IEncryptionModule.php#L162>`_
+		
+		
+		:Parameters:
+			* **$input** (:any:`Symfony\\Component\\Console\\Input\\InputInterface <Symfony\\Component\\Console\\Input\\InputInterface>`)  
+			* **$output** (:any:`Symfony\\Component\\Console\\Output\\OutputInterface <Symfony\\Component\\Console\\Output\\OutputInterface>`)  write some status information to the terminal during encryption
+
+		
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public prepareDecryptAll( $input, $output, $user="")
+	
+		.. rst-class:: phpdoc-description
+		
+			| prepare encryption module to decrypt all files
+			
+		
+		:Source:
+			`lib/public/Encryption/IEncryptionModule.php#173 <https://github.com/nextcloud/server/blob/stable13/lib/public/Encryption/IEncryptionModule.php#L173>`_
+		
+		
+		:Parameters:
+			* **$input** (:any:`Symfony\\Component\\Console\\Input\\InputInterface <Symfony\\Component\\Console\\Input\\InputInterface>`)  
+			* **$output** (:any:`Symfony\\Component\\Console\\Output\\OutputInterface <Symfony\\Component\\Console\\Output\\OutputInterface>`)  write some status information to the terminal during encryption
+			* **$user**  (optional) for which the files should be decrypted, default = all users
+
+		
+		:Returns: bool return false on failure or if it isn\'t supported by the module
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isReadyForUser( $user)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check if the module is ready to be used by that specific user\.
+			
+			| In case a module is not ready \- because e\.g\. key pairs have not been generated
+			| upon login this method can return false before any operation starts and might
+			| cause issues during operations\.
+			
+		
+		:Source:
+			`lib/public/Encryption/IEncryptionModule.php#185 <https://github.com/nextcloud/server/blob/stable13/lib/public/Encryption/IEncryptionModule.php#L185>`_
+		
+		
+		:Parameters:
+			* **$user** (string)  
+
+		
+		:Returns: bool 
+		:Since: 9.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public needDetailedAccessList()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Does the encryption module needs a detailed list of users with access to the file?
+			| For example if the encryption module uses per\-user encryption keys and needs to know
+			| the users with access to the file to encrypt/decrypt it\.
+			
+		
+		:Source:
+			`lib/public/Encryption/IEncryptionModule.php#195 <https://github.com/nextcloud/server/blob/stable13/lib/public/Encryption/IEncryptionModule.php#L195>`_
+		
+		
+		:Since: 13.0.0 
+		:Returns: bool 
+	
+	
+

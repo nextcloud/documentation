@@ -1,0 +1,169 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+ContentSecurityPolicy
+=====================
+
+
+.. php:namespace:: OCP\AppFramework\Http
+
+.. php:class:: ContentSecurityPolicy
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Class ContentSecurityPolicy is a simple helper which allows applications to
+		| modify the Content\-Security\-Policy sent by Nextcloud\. Per default only JavaScript,
+		| stylesheets, images, fonts, media and connections from the same domain
+		| \(\'self\'\) are allowed\.
+		
+		| Even if a value gets modified above defaults will still get appended\. Please
+		| notice that Nextcloud ships already with sensible defaults and those policies
+		| should require no modification at all for most use\-cases\.
+		| 
+		| This class allows unsafe\-inline of CSS\.
+		
+	
+	:Source:
+		`lib/public/AppFramework/Http/ContentSecurityPolicy.php#43 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Http/ContentSecurityPolicy.php#L43>`_
+	
+	:Parent:
+		:php:class:`OCP\\AppFramework\\Http\\EmptyContentSecurityPolicy`
+	
+
+Properties
+----------
+
+.. php:attr:: protected static inlineScriptAllowed
+
+	:Source:
+		`lib/public/AppFramework/Http/ContentSecurityPolicy.php#45 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Http/ContentSecurityPolicy.php#L45>`_
+	
+	:Type: bool Whether inline JS snippets are allowed
+
+
+.. php:attr:: protected static evalScriptAllowed
+
+	:Source:
+		`lib/public/AppFramework/Http/ContentSecurityPolicy.php#47 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Http/ContentSecurityPolicy.php#L47>`_
+	
+	:Type: bool Whether eval in JS scripts is allowed
+
+
+.. php:attr:: protected static allowedScriptDomains
+
+	:Source:
+		`lib/public/AppFramework/Http/ContentSecurityPolicy.php#49 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Http/ContentSecurityPolicy.php#L49>`_
+	
+	:Type: array Domains from which scripts can get loaded
+
+
+.. php:attr:: protected static inlineStyleAllowed
+
+	:Source:
+		`lib/public/AppFramework/Http/ContentSecurityPolicy.php#57 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Http/ContentSecurityPolicy.php#L57>`_
+	
+	:Type: bool Whether inline CSS is allowed
+		TODO: Disallow per default
+	
+
+
+.. php:attr:: protected static allowedStyleDomains
+
+	:Source:
+		`lib/public/AppFramework/Http/ContentSecurityPolicy.php#59 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Http/ContentSecurityPolicy.php#L59>`_
+	
+	:Type: array Domains from which CSS can get loaded
+
+
+.. php:attr:: protected static allowedImageDomains
+
+	:Source:
+		`lib/public/AppFramework/Http/ContentSecurityPolicy.php#63 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Http/ContentSecurityPolicy.php#L63>`_
+	
+	:Type: array Domains from which images can get loaded
+
+
+.. php:attr:: protected static allowedConnectDomains
+
+	:Source:
+		`lib/public/AppFramework/Http/ContentSecurityPolicy.php#69 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Http/ContentSecurityPolicy.php#L69>`_
+	
+	:Type: array Domains to which connections can be done
+
+
+.. php:attr:: protected static allowedMediaDomains
+
+	:Source:
+		`lib/public/AppFramework/Http/ContentSecurityPolicy.php#73 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Http/ContentSecurityPolicy.php#L73>`_
+	
+	:Type: array Domains from which media elements can be loaded
+
+
+.. php:attr:: protected static allowedObjectDomains
+
+	:Source:
+		`lib/public/AppFramework/Http/ContentSecurityPolicy.php#77 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Http/ContentSecurityPolicy.php#L77>`_
+	
+	:Type: array Domains from which object elements can be loaded
+
+
+.. php:attr:: protected static allowedFrameDomains
+
+	:Source:
+		`lib/public/AppFramework/Http/ContentSecurityPolicy.php#79 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Http/ContentSecurityPolicy.php#L79>`_
+	
+	:Type: array Domains from which iframes can be loaded
+
+
+.. php:attr:: protected static allowedFontDomains
+
+	:Source:
+		`lib/public/AppFramework/Http/ContentSecurityPolicy.php#81 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Http/ContentSecurityPolicy.php#L81>`_
+	
+	:Type: array Domains from which fonts can be loaded
+
+
+.. php:attr:: protected static allowedChildSrcDomains
+
+	:Source:
+		`lib/public/AppFramework/Http/ContentSecurityPolicy.php#86 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Http/ContentSecurityPolicy.php#L86>`_
+	
+	:Type: array Domains from which web\-workers and nested browsing content can load elements
+
+
+.. php:attr:: protected static allowedFrameAncestors
+
+	:Source:
+		`lib/public/AppFramework/Http/ContentSecurityPolicy.php#89 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Http/ContentSecurityPolicy.php#L89>`_
+	
+	:Type: array Domains which can embed this Nextcloud instance
+
+
+.. php:attr:: protected static allowedWorkerSrcDomains
+
+	:Source:
+		`lib/public/AppFramework/Http/ContentSecurityPolicy.php#94 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Http/ContentSecurityPolicy.php#L94>`_
+	
+	:Type: array Domains from which web\-workers can be loaded
+
+
+.. php:attr:: protected static allowedFormActionDomains
+
+	:Source:
+		`lib/public/AppFramework/Http/ContentSecurityPolicy.php#97 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Http/ContentSecurityPolicy.php#L97>`_
+	
+	:Type: array Domains which can be used as target for forms
+
+
+.. php:attr:: protected static reportTo
+
+	:Source:
+		`lib/public/AppFramework/Http/ContentSecurityPolicy.php#102 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Http/ContentSecurityPolicy.php#L102>`_
+	
+	:Type: array Locations to report violations to
+
+

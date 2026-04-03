@@ -1,0 +1,118 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+CSSResourceLocator
+==================
+
+
+.. php:namespace:: OC\Template
+
+.. php:class:: CSSResourceLocator
+
+
+	:Source:
+		`lib/private/Template/CSSResourceLocator.php#37 <https://github.com/nextcloud/server/blob/stable13/lib/private/Template/CSSResourceLocator.php#L37>`_
+	
+	:Parent:
+		:php:class:`OC\\Template\\ResourceLocator`
+	
+
+Properties
+----------
+
+.. php:attr:: protected static scssCacher
+
+	:Source:
+		`lib/private/Template/CSSResourceLocator.php#40 <https://github.com/nextcloud/server/blob/stable13/lib/private/Template/CSSResourceLocator.php#L40>`_
+	
+	:Type: :any:`\\OC\\Template\\SCSSCacher <OC\\Template\\SCSSCacher>` 
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $logger, $theme, $core_map, $party_map, $scssCacher)
+	
+		:Source:
+			`lib/private/Template/CSSResourceLocator.php#49 <https://github.com/nextcloud/server/blob/stable13/lib/private/Template/CSSResourceLocator.php#L49>`_
+		
+		
+		:Parameters:
+			* **$logger** (:any:`OCP\\ILogger <OCP\\ILogger>`)  
+			* **$theme** (string)  
+			* **$core_map** (array)  
+			* **$party_map** (array)  
+			* **$scssCacher** (:any:`OC\\Template\\SCSSCacher <OC\\Template\\SCSSCacher>`)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public doFind( $style)
+	
+		:Source:
+			`lib/private/Template/CSSResourceLocator.php#58 <https://github.com/nextcloud/server/blob/stable13/lib/private/Template/CSSResourceLocator.php#L58>`_
+		
+		
+		:Parameters:
+			* **$style** (string)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public doFindTheme( $style)
+	
+		:Source:
+			`lib/private/Template/CSSResourceLocator.php#94 <https://github.com/nextcloud/server/blob/stable13/lib/private/Template/CSSResourceLocator.php#L94>`_
+		
+		
+		:Parameters:
+			* **$style** (string)  
+
+		
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected cacheAndAppendScssIfExist( $root, $file, $app=core)
+	
+		.. rst-class:: phpdoc-description
+		
+			| cache and append the scss $file if exist at $root
+			
+		
+		:Source:
+			`lib/private/Template/CSSResourceLocator.php#108 <https://github.com/nextcloud/server/blob/stable13/lib/private/Template/CSSResourceLocator.php#L108>`_
+		
+		
+		:Parameters:
+			* **$root** (string)  path to check
+			* **$file** (string)  the filename
+
+		
+		:Returns: bool True if the resource was found and cached, false otherwise
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public append( $root, $file, $webRoot=null, $throw=true, $scss=false)
+	
+		:Source:
+			`lib/private/Template/CSSResourceLocator.php#125 <https://github.com/nextcloud/server/blob/stable13/lib/private/Template/CSSResourceLocator.php#L125>`_
+		
+		
+	
+	
+

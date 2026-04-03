@@ -1,0 +1,195 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IURLGenerator
+=============
+
+
+.. php:namespace:: OCP
+
+.. php:interface:: IURLGenerator
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Class to generate URLs
+		
+	
+	:Implemented by:
+		:php:class:`OC\\URLGenerator` 
+	
+	
+	:Source:
+		`lib/public/IURLGenerator.php#38 <https://github.com/nextcloud/server/blob/stable13/lib/public/IURLGenerator.php#L38>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public linkToRoute( $routeName, $arguments=\[\])
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the URL for a route
+			
+		
+		:Source:
+			`lib/public/IURLGenerator.php#46 <https://github.com/nextcloud/server/blob/stable13/lib/public/IURLGenerator.php#L46>`_
+		
+		
+		:Parameters:
+			* **$routeName** (string)  the name of the route
+			* **$arguments** (array)  an array with arguments which will be filled into the url
+
+		
+		:Returns: string the url
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public linkToRouteAbsolute( $routeName, $arguments=\[\])
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the absolute URL for a route
+			
+		
+		:Source:
+			`lib/public/IURLGenerator.php#55 <https://github.com/nextcloud/server/blob/stable13/lib/public/IURLGenerator.php#L55>`_
+		
+		
+		:Parameters:
+			* **$routeName** (string)  the name of the route
+			* **$arguments** (array)  an array with arguments which will be filled into the url
+
+		
+		:Returns: string the absolute url
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public linkToOCSRouteAbsolute( $routeName, $arguments=\[\])
+	
+		:Source:
+			`lib/public/IURLGenerator.php#63 <https://github.com/nextcloud/server/blob/stable13/lib/public/IURLGenerator.php#L63>`_
+		
+		
+		:Parameters:
+			* **$routeName** (string)  
+			* **$arguments** (array)  
+
+		
+		:Returns: string 
+		:Since: 15.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public linkTo( $appName, $file, $args=\[\])
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns an URL for an image or file
+			
+		
+		:Source:
+			`lib/public/IURLGenerator.php#74 <https://github.com/nextcloud/server/blob/stable13/lib/public/IURLGenerator.php#L74>`_
+		
+		
+		:Parameters:
+			* **$appName** (string)  the name of the app
+			* **$file** (string)  the name of the file
+			* **$args** (array)  array with param=>value, will be appended to the returned url
+			The value of $args will be urlencoded
+
+		
+		:Returns: string the url
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public imagePath( $appName, $file)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the link to an image, like linkTo but only with prepending img/
+			
+		
+		:Source:
+			`lib/public/IURLGenerator.php#83 <https://github.com/nextcloud/server/blob/stable13/lib/public/IURLGenerator.php#L83>`_
+		
+		
+		:Parameters:
+			* **$appName** (string)  the name of the app
+			* **$file** (string)  the name of the file
+
+		
+		:Returns: string the url
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getAbsoluteURL( $url)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Makes an URL absolute
+			
+		
+		:Source:
+			`lib/public/IURLGenerator.php#92 <https://github.com/nextcloud/server/blob/stable13/lib/public/IURLGenerator.php#L92>`_
+		
+		
+		:Parameters:
+			* **$url** (string)  the url in the ownCloud host
+
+		
+		:Returns: string the absolute version of the url
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public linkToDocs( $key)
+	
+		:Source:
+			`lib/public/IURLGenerator.php#99 <https://github.com/nextcloud/server/blob/stable13/lib/public/IURLGenerator.php#L99>`_
+		
+		
+		:Parameters:
+			* **$key** (string)  
+
+		
+		:Returns: string url to the online documentation
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getBaseUrl()
+	
+		:Source:
+			`lib/public/IURLGenerator.php#105 <https://github.com/nextcloud/server/blob/stable13/lib/public/IURLGenerator.php#L105>`_
+		
+		
+		:Returns: string base url of the current request
+		:Since: 13.0.0 
+	
+	
+

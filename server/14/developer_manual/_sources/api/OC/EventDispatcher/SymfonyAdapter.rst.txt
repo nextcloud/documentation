@@ -1,0 +1,213 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+SymfonyAdapter
+==============
+
+
+.. php:namespace:: OC\EventDispatcher
+
+.. php:class:: SymfonyAdapter
+
+
+	:Source:
+		`lib/private/EventDispatcher/SymfonyAdapter.php#44 <https://github.com/nextcloud/server/blob/stable13/lib/private/EventDispatcher/SymfonyAdapter.php#L44>`_
+	
+	:Implements:
+		:php:interface:`Symfony\\Component\\EventDispatcher\\EventDispatcherInterface` 
+	
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public __construct( $eventDispatcher, $logger)
+	
+		:Source:
+			`lib/private/EventDispatcher/SymfonyAdapter.php#54 <https://github.com/nextcloud/server/blob/stable13/lib/private/EventDispatcher/SymfonyAdapter.php#L54>`_
+		
+		
+		:Deprecated: 20.0.0 
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public dispatch( $eventName, $event=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Dispatches an event to all registered listeners\.
+			
+		
+		:Source:
+			`lib/private/EventDispatcher/SymfonyAdapter.php#93 <https://github.com/nextcloud/server/blob/stable13/lib/private/EventDispatcher/SymfonyAdapter.php#L93>`_
+		
+		
+		:Parameters:
+			* **$eventName** (string)  The name of the event to dispatch. The name of
+			the event is the name of the method that is
+			invoked on listeners.
+			* **$event** (:any:`OCP\\EventDispatcher\\Event <OCP\\EventDispatcher\\Event>` | null)  The event to pass to the event handlers/listeners
+			If not supplied, an empty Event instance is created
+
+		
+		:Returns: object the emitted event
+		:Deprecated: 20.0.0 
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public addListener( $eventName, $listener, $priority=0)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Adds an event listener that listens on the specified events\.
+			
+		
+		:Source:
+			`lib/private/EventDispatcher/SymfonyAdapter.php#137 <https://github.com/nextcloud/server/blob/stable13/lib/private/EventDispatcher/SymfonyAdapter.php#L137>`_
+		
+		
+		:Parameters:
+			* **$eventName** (string)  The event to listen on
+			* **$listener** (callable)  The listener
+			* **$priority** (int)  The higher this value, the earlier an event
+			listener will be triggered in the chain (defaults to 0)
+
+		
+		:Deprecated: 20.0.0 
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public addSubscriber( $subscriber)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Adds an event subscriber\.
+			
+			| The subscriber is asked for all the events it is
+			| interested in and added as a listener for these events\.
+			
+		
+		:Source:
+			`lib/private/EventDispatcher/SymfonyAdapter.php#153 <https://github.com/nextcloud/server/blob/stable13/lib/private/EventDispatcher/SymfonyAdapter.php#L153>`_
+		
+		
+		:Deprecated: 20.0.0 
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public removeListener( $eventName, $listener)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Removes an event listener from the specified events\.
+			
+		
+		:Source:
+			`lib/private/EventDispatcher/SymfonyAdapter.php#164 <https://github.com/nextcloud/server/blob/stable13/lib/private/EventDispatcher/SymfonyAdapter.php#L164>`_
+		
+		
+		:Parameters:
+			* **$eventName** (string)  The event to remove a listener from
+			* **$listener** (callable)  The listener to remove
+
+		
+		:Deprecated: 20.0.0 
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public removeSubscriber( $subscriber)
+	
+		:Source:
+			`lib/private/EventDispatcher/SymfonyAdapter.php#171 <https://github.com/nextcloud/server/blob/stable13/lib/private/EventDispatcher/SymfonyAdapter.php#L171>`_
+		
+		
+		:Deprecated: 20.0.0 
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public getListeners( $eventName=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Gets the listeners of a specific event or all listeners sorted by descending priority\.
+			
+		
+		:Source:
+			`lib/private/EventDispatcher/SymfonyAdapter.php#183 <https://github.com/nextcloud/server/blob/stable13/lib/private/EventDispatcher/SymfonyAdapter.php#L183>`_
+		
+		
+		:Parameters:
+			* **$eventName** (string | null)  The name of the event
+
+		
+		:Returns: array The event listeners for the specified event, or all event listeners by event name
+		:Deprecated: 20.0.0 
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public getListenerPriority( $eventName, $listener)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Gets the listener priority for a specific event\.
+			
+			| Returns null if the event or the listener does not exist\.
+			
+		
+		:Source:
+			`lib/private/EventDispatcher/SymfonyAdapter.php#198 <https://github.com/nextcloud/server/blob/stable13/lib/private/EventDispatcher/SymfonyAdapter.php#L198>`_
+		
+		
+		:Parameters:
+			* **$eventName** (string)  The name of the event
+			* **$listener** (callable)  The listener
+
+		
+		:Returns: int | null The event listener priority
+		:Deprecated: 20.0.0 
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public hasListeners( $eventName=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Checks whether an event has any registered listeners\.
+			
+		
+		:Source:
+			`lib/private/EventDispatcher/SymfonyAdapter.php#210 <https://github.com/nextcloud/server/blob/stable13/lib/private/EventDispatcher/SymfonyAdapter.php#L210>`_
+		
+		
+		:Parameters:
+			* **$eventName** (string | null)  The name of the event
+
+		
+		:Returns: bool true if the specified event has any listeners, false otherwise
+		:Deprecated: 20.0.0 
+	
+	
+

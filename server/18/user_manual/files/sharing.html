@@ -1,0 +1,392 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>File Sharing &mdash; Nextcloud latest User Manual latest documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'latest',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Making anonymous uploads" href="file_drop.html" />
+    <link rel="prev" title="Encrypting your Nextcloud files on the server" href="encrypting_files.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../contents.html">
+          
+
+          
+            
+            <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Nextcloud latest user manual introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../whats_new.html">What&#8217;s new for users in Nextcloud latest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">The Nextcloud Web interface</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Files &amp; synchronization</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="access_webgui.html">Accessing your files using the Nextcloud Web interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="access_webdav.html">Accessing Nextcloud files using WebDAV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deleted_file_management.html">Managing deleted files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="desktop_mobile_sync.html">Desktop and mobile synchronization</a></li>
+<li class="toctree-l2"><a class="reference internal" href="encrypting_files.html">Encrypting your Nextcloud files on the server</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">File Sharing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#public-link-shares">Public link shares</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#internal-shares-with-users-and-groups">Internal shares with users and groups</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#others-with-access">Others with access</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#federated-shares">Federated Shares</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#creating-a-new-federation-share">Creating a new Federation Share</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#adding-a-public-share-to-your-nextcloud">Adding a public share to your Nextcloud</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="file_drop.html">Making anonymous uploads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="large_file_upload.html">Large file uploads</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quota.html">Storage quota</a></li>
+<li class="toctree-l2"><a class="reference internal" href="version_control.html">Version control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="projects.html">Projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transfer_ownership.html">Transfer Ownership</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../pim/index.html">Groupware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Setting your preferences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Using two-factor authentication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Manage connected browsers and devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">External Storage</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest User Manual</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../contents.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Files &amp; synchronization</a> &raquo;</li>
+        
+      <li>File Sharing</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/files/sharing.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="file-sharing">
+<h1>File Sharing<a class="headerlink" href="#file-sharing" title="Permalink to this headline">¶</a></h1>
+<p>Nextcloud users can share files and folders. Possible targets are</p>
+<ul class="simple">
+<li>public links</li>
+<li>users</li>
+<li>groups</li>
+<li>circles</li>
+<li>talk conversations</li>
+<li>users or groups on federated Nextcloud servers</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Some options may note be available due to administrative configuration.
+See <span class="xref doc">admin documentation</span> for details.</p>
+</div>
+<div class="section" id="public-link-shares">
+<h2>Public link shares<a class="headerlink" href="#public-link-shares" title="Permalink to this headline">¶</a></h2>
+<p>You can share files and folders via public links.</p>
+<p>A random 15-digit token will be created. The link will look like <code class="docutils literal"><span class="pre">https://cloud.example.com/s/yxcFKRWBJqYYzp4</span></code>.</p>
+<p>A number of options are available for public <em>folder</em> shares:</p>
+<div class="figure">
+<img alt="../_images/sharing_public_folder.png" src="../_images/sharing_public_folder.png" />
+</div>
+<ul class="simple">
+<li><strong>Read only</strong> to allow viewing and downloading</li>
+<li>** Allow upload and editing**</li>
+<li>With ** File drop**, the sharee can only upload files to a folder without seeing the files that are already in that folder.</li>
+<li><strong>Hide download</strong> prevents the sharee from downloading</li>
+<li><strong>Password protect</strong></li>
+<li><strong>Set expiration date</strong> will automatically disable the share</li>
+<li><strong>Note to recipient</strong></li>
+<li><strong>Unshare</strong> to revert the share</li>
+<li><strong>Add another link</strong> to create multiple public links with different rights</li>
+</ul>
+<p>For public <em>file</em> shares, you may allow editing the file with one of Nextcloud&#8217;s collaborative editing solutions.</p>
+<div class="figure">
+<img alt="../_images/sharing_public_file.png" src="../_images/sharing_public_file.png" />
+</div>
+</div>
+<div class="section" id="internal-shares-with-users-and-groups">
+<h2>Internal shares with users and groups<a class="headerlink" href="#internal-shares-with-users-and-groups" title="Permalink to this headline">¶</a></h2>
+<p>When sharing with users, groups, circles or members of a Talk conversation, rights for the files or folder contents are adjustable:</p>
+<div class="figure">
+<img alt="../_images/sharing_internal.png" src="../_images/sharing_internal.png" />
+</div>
+<p>As a sharee, you can configure if you automatically want to accept all incoming shares and have them added to your root folder, or if you
+want to be asked each time if you want to accept or decline the share.</p>
+<div class="figure">
+<img alt="../_images/sharing_internal_acceptNotification.png" src="../_images/sharing_internal_acceptNotification.png" />
+</div>
+<p>For adjusting the acceptance setting, go to <strong>Settings</strong> &gt; <strong>Personal</strong> &gt; <strong>Sharing</strong></p>
+<div class="figure">
+<img alt="../_images/sharing_autoAcceptSetting.png" src="../_images/sharing_autoAcceptSetting.png" />
+</div>
+</div>
+<div class="section" id="others-with-access">
+<h2>Others with access<a class="headerlink" href="#others-with-access" title="Permalink to this headline">¶</a></h2>
+<p>In order to find out if a file or folder is accessible to others through sharing of a superior folder
+hierarchy level, click on <strong>Others with access</strong> in the sharing tab.</p>
+<div class="figure">
+<img alt="../_images/sharing_others-with-access__collapsed.png" src="../_images/sharing_others-with-access__collapsed.png" />
+</div>
+<p>The list shows all users, groups, chats etc. that the current object has been given access to through
+sharing of a superior folder in the hierarchy.</p>
+<div class="figure">
+<img alt="../_images/sharing_others-with-access__details.png" src="../_images/sharing_others-with-access__details.png" />
+</div>
+<p>Click on the three dots to</p>
+<ul class="simple">
+<li>see who initiated the share</li>
+<li>see where the share was initiated (click to navigate to the folder, as far as you have access there)</li>
+<li>unshare the initial share (only accessible for the share owner)</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This information is only visible to the owner of a file/folder or sharees with resharing rights.</p>
+</div>
+</div>
+</div>
+<div class="section" id="federated-shares">
+<h1>Federated Shares<a class="headerlink" href="#federated-shares" title="Permalink to this headline">¶</a></h1>
+<p>Federation Sharing allows you to mount file shares from remote Nextcloud servers, in effect
+creating your own cloud of Nextclouds. You can create direct share links with
+users on other Nextcloud servers.</p>
+<div class="section" id="creating-a-new-federation-share">
+<h2>Creating a new Federation Share<a class="headerlink" href="#creating-a-new-federation-share" title="Permalink to this headline">¶</a></h2>
+<p>Federation sharing is enabled by default. Follow these steps to create a new share with other Nextcloud or ownCloud servers:</p>
+<p>Go to your <code class="docutils literal"><span class="pre">Files</span></code> page and click the Share icon on the file or directory
+you want to share. In the sidebar enter the username and URL of the remote user
+in this form: <code class="docutils literal"><span class="pre">&lt;username&gt;&#64;&lt;nc-server-url&gt;</span></code>. In this example, that is
+<code class="docutils literal"><span class="pre">bob&#64;cloud.example.com</span></code>.</p>
+<div class="figure">
+<img alt="../_images/share-federation-1.png" src="../_images/share-federation-1.png" />
+</div>
+<p>The sharee is receiving a notification in their Nextcloud, allowing them to either accept or decline the incoming share.</p>
+<div class="figure">
+<img alt="../_images/share-federation-2-notification.png" src="../_images/share-federation-2-notification.png" />
+</div>
+</div>
+<div class="section" id="adding-a-public-share-to-your-nextcloud">
+<h2>Adding a public share to your Nextcloud<a class="headerlink" href="#adding-a-public-share-to-your-nextcloud" title="Permalink to this headline">¶</a></h2>
+<p>Nextcloud public link share pages offer an option to add that file or folder as a federated share into your own Nextcloud instance.
+Just enter your <code class="docutils literal"><span class="pre">&lt;username&gt;&#64;&lt;nc-server-url&gt;</span></code> just like shown for outbound shares above:</p>
+<div class="figure">
+<img alt="../_images/share-federation-3-public.png" src="../_images/share-federation-3-public.png" />
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="file_drop.html" class="btn btn-neutral float-right" title="Making anonymous uploads" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="encrypting_files.html" class="btn btn-neutral float-left" title="Encrypting your Nextcloud files on the server" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021 Nextcloud GmbH.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/16/user_manual">16</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/17/user_manual">17</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/18/user_manual">18</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/19/user_manual">19</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/user_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/user_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+   
+
+</body>
+</html>

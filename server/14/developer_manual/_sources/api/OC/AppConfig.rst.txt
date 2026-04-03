@@ -1,0 +1,315 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+AppConfig
+=========
+
+
+.. php:namespace:: OC
+
+.. php:class:: AppConfig
+
+
+	.. rst-class:: phpdoc-description
+	
+		| This class provides an easy way for apps to store config values in the
+		| database\.
+		
+	
+	:Source:
+		`lib/private/AppConfig.php#45 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppConfig.php#L45>`_
+	
+	:Implements:
+		:php:interface:`OCP\\IAppConfig` 
+	
+
+Properties
+----------
+
+.. php:attr:: protected static sensitiveValues
+
+	:Source:
+		`lib/private/AppConfig.php#48 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppConfig.php#L48>`_
+	
+	:Type: array[] 
+
+
+.. php:attr:: protected static conn
+
+	:Source:
+		`lib/private/AppConfig.php#72 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppConfig.php#L72>`_
+	
+	:Type: :any:`\\OC\\DB\\Connection <OC\\DB\\Connection>` 
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $conn)
+	
+		:Source:
+			`lib/private/AppConfig.php#83 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppConfig.php#L83>`_
+		
+		
+		:Parameters:
+			* **$conn** (:any:`OC\\DB\\Connection <OC\\DB\\Connection>`)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getApps()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get all apps using the config
+			
+		
+		:Source:
+			`lib/private/AppConfig.php#109 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppConfig.php#L109>`_
+		
+		
+		:Returns: array an array of app ids
+			
+			This function returns a list of all apps that have at least one
+			entry in the appconfig table\.
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getKeys( $app)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the available keys for an app
+			
+		
+		:Source:
+			`lib/private/AppConfig.php#124 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppConfig.php#L124>`_
+		
+		
+		:Parameters:
+			* **$app** (string)  the app we are looking for
+
+		
+		:Returns: array an array of key names
+			
+			This function gets all keys of an app\. Please note that the values are
+			not returned\.
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getSortedKeys( $data)
+	
+		:Source:
+			`lib/private/AppConfig.php#134 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppConfig.php#L134>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getValue( $app, $key, $default=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Gets the config value
+			
+		
+		:Source:
+			`lib/private/AppConfig.php#151 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppConfig.php#L151>`_
+		
+		
+		:Parameters:
+			* **$app** (string)  app
+			* **$key** (string)  key
+			* **$default** (string)  = null, default value if the key does not exist
+
+		
+		:Returns: string the value or $default
+			
+			This function gets a value from the appconfig table\. If the key does
+			not exist the default value will be returned
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public hasKey( $app, $key)
+	
+		.. rst-class:: phpdoc-description
+		
+			| check if a key is set in the appconfig
+			
+		
+		:Source:
+			`lib/private/AppConfig.php#168 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppConfig.php#L168>`_
+		
+		
+		:Parameters:
+			* **$app** (string)  
+			* **$key** (string)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setValue( $app, $key, $value)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Sets a value\. If the key did not exist before it will be created\.
+			
+		
+		:Source:
+			`lib/private/AppConfig.php#182 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppConfig.php#L182>`_
+		
+		
+		:Parameters:
+			* **$app** (string)  app
+			* **$key** (string)  key
+			* **$value** (string | float | int)  value
+
+		
+		:Returns: bool True if the value was inserted or updated, false if the value was the same
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public deleteKey( $app, $key)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Deletes a key
+			
+		
+		:Source:
+			`lib/private/AppConfig.php#250 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppConfig.php#L250>`_
+		
+		
+		:Parameters:
+			* **$app** (string)  app
+			* **$key** (string)  key
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public deleteApp( $app)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Remove app from appconfig
+			
+		
+		:Source:
+			`lib/private/AppConfig.php#273 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppConfig.php#L273>`_
+		
+		
+		:Parameters:
+			* **$app** (string)  app
+
+		
+		:Returns: bool Removes all keys in appconfig belonging to the app\.
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getValues( $app, $key)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get multiple values, either the app or key can be used as wildcard by setting it to false
+			
+		
+		:Source:
+			`lib/private/AppConfig.php#293 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppConfig.php#L293>`_
+		
+		
+		:Parameters:
+			* **$app** (string | bool)  
+			* **$key** (string | bool)  
+
+		
+		:Returns: array | bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getFilteredValues( $app)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get all values of the app or and filters out sensitive data
+			
+		
+		:Source:
+			`lib/private/AppConfig.php#317 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppConfig.php#L317>`_
+		
+		
+		:Parameters:
+			* **$app** (string)  
+
+		
+		:Returns: array 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected loadConfigValues()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Load all the app config values
+			
+		
+		:Source:
+			`lib/private/AppConfig.php#335 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppConfig.php#L335>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public clearCachedConfig()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Clear all the cached app config values
+			
+			| WARNING: do not use this \- this is only for usage with the SCSSCacher to
+			| clear the memory cache of the app config
+			
+		
+		:Source:
+			`lib/private/AppConfig.php#367 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppConfig.php#L367>`_
+		
+		
+	
+	
+

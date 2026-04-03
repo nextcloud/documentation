@@ -1,0 +1,232 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+EmptyFeaturePolicy
+==================
+
+
+.. php:namespace:: OCP\AppFramework\Http
+
+.. php:class:: EmptyFeaturePolicy
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Class EmptyFeaturePolicy is a simple helper which allows applications
+		| to modify the FeaturePolicy sent by Nextcloud\. Per default the policy
+		| is forbidding everything\.
+		
+		| As alternative with sane exemptions look at FeaturePolicy
+		
+	
+	:Source:
+		`lib/public/AppFramework/Http/EmptyFeaturePolicy.php#39 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Http/EmptyFeaturePolicy.php#L39>`_
+	
+
+Properties
+----------
+
+.. php:attr:: protected static autoplayDomains
+
+	:Source:
+		`lib/public/AppFramework/Http/EmptyFeaturePolicy.php#42 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Http/EmptyFeaturePolicy.php#L42>`_
+	
+	:Type: string[] of allowed domains to autoplay media
+
+
+.. php:attr:: protected static cameraDomains
+
+	:Source:
+		`lib/public/AppFramework/Http/EmptyFeaturePolicy.php#45 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Http/EmptyFeaturePolicy.php#L45>`_
+	
+	:Type: string[] of allowed domains that can access the camera
+
+
+.. php:attr:: protected static fullscreenDomains
+
+	:Source:
+		`lib/public/AppFramework/Http/EmptyFeaturePolicy.php#48 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Http/EmptyFeaturePolicy.php#L48>`_
+	
+	:Type: string[] of allowed domains that can use fullscreen
+
+
+.. php:attr:: protected static geolocationDomains
+
+	:Source:
+		`lib/public/AppFramework/Http/EmptyFeaturePolicy.php#51 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Http/EmptyFeaturePolicy.php#L51>`_
+	
+	:Type: string[] of allowed domains that can use the geolocation of the device
+
+
+.. php:attr:: protected static microphoneDomains
+
+	:Source:
+		`lib/public/AppFramework/Http/EmptyFeaturePolicy.php#54 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Http/EmptyFeaturePolicy.php#L54>`_
+	
+	:Type: string[] of allowed domains that can use the microphone
+
+
+.. php:attr:: protected static paymentDomains
+
+	:Source:
+		`lib/public/AppFramework/Http/EmptyFeaturePolicy.php#57 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Http/EmptyFeaturePolicy.php#L57>`_
+	
+	:Type: string[] of allowed domains that can use the payment API
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public addAllowedAutoplayDomain( $domain)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Allows to use autoplay from a specific domain\. Use \* to allow from all domains\.
+			
+		
+		:Source:
+			`lib/public/AppFramework/Http/EmptyFeaturePolicy.php#66 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Http/EmptyFeaturePolicy.php#L66>`_
+		
+		
+		:Parameters:
+			* **$domain** (string)  Domain to whitelist. Any passed value needs to be properly sanitized.
+
+		
+		:Returns: $this 
+		:Since: 17.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public addAllowedCameraDomain( $domain)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Allows to use the camera on a specific domain\. Use \* to allow from all domains
+			
+		
+		:Source:
+			`lib/public/AppFramework/Http/EmptyFeaturePolicy.php#78 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Http/EmptyFeaturePolicy.php#L78>`_
+		
+		
+		:Parameters:
+			* **$domain** (string)  Domain to whitelist. Any passed value needs to be properly sanitized.
+
+		
+		:Returns: $this 
+		:Since: 17.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public addAllowedFullScreenDomain( $domain)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Allows the full screen functionality to be used on a specific domain\. Use \* to allow from all domains
+			
+		
+		:Source:
+			`lib/public/AppFramework/Http/EmptyFeaturePolicy.php#90 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Http/EmptyFeaturePolicy.php#L90>`_
+		
+		
+		:Parameters:
+			* **$domain** (string)  Domain to whitelist. Any passed value needs to be properly sanitized.
+
+		
+		:Returns: $this 
+		:Since: 17.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public addAllowedGeoLocationDomain( $domain)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Allows to use the geolocation on a specific domain\. Use \* to allow from all domains
+			
+		
+		:Source:
+			`lib/public/AppFramework/Http/EmptyFeaturePolicy.php#102 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Http/EmptyFeaturePolicy.php#L102>`_
+		
+		
+		:Parameters:
+			* **$domain** (string)  Domain to whitelist. Any passed value needs to be properly sanitized.
+
+		
+		:Returns: $this 
+		:Since: 17.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public addAllowedMicrophoneDomain( $domain)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Allows to use the microphone on a specific domain\. Use \* to allow from all domains
+			
+		
+		:Source:
+			`lib/public/AppFramework/Http/EmptyFeaturePolicy.php#114 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Http/EmptyFeaturePolicy.php#L114>`_
+		
+		
+		:Parameters:
+			* **$domain** (string)  Domain to whitelist. Any passed value needs to be properly sanitized.
+
+		
+		:Returns: $this 
+		:Since: 17.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public addAllowedPaymentDomain( $domain)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Allows to use the payment API on a specific domain\. Use \* to allow from all domains
+			
+		
+		:Source:
+			`lib/public/AppFramework/Http/EmptyFeaturePolicy.php#126 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Http/EmptyFeaturePolicy.php#L126>`_
+		
+		
+		:Parameters:
+			* **$domain** (string)  Domain to whitelist. Any passed value needs to be properly sanitized.
+
+		
+		:Returns: $this 
+		:Since: 17.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public buildPolicy()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the generated Feature\-Policy as a string
+			
+		
+		:Source:
+			`lib/public/AppFramework/Http/EmptyFeaturePolicy.php#137 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Http/EmptyFeaturePolicy.php#L137>`_
+		
+		
+		:Returns: string 
+		:Since: 17.0.0 
+	
+	
+

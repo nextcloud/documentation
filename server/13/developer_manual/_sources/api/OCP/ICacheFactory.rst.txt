@@ -1,0 +1,133 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+ICacheFactory
+=============
+
+
+.. php:namespace:: OCP
+
+.. php:interface:: ICacheFactory
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Interface ICacheFactory
+		
+	
+	:Implemented by:
+		:php:class:`OC\\Memcache\\Factory` 
+	
+	
+	:Source:
+		`lib/public/ICacheFactory.php#36 <https://github.com/nextcloud/server/blob/stable13/lib/public/ICacheFactory.php#L36>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public isAvailable()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check if any memory cache backend is available
+			
+		
+		:Source:
+			`lib/public/ICacheFactory.php#43 <https://github.com/nextcloud/server/blob/stable13/lib/public/ICacheFactory.php#L43>`_
+		
+		
+		:Returns: bool 
+		:Since: 7.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isLocalCacheAvailable()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check if a local memory cache backend is available
+			
+		
+		:Source:
+			`lib/public/ICacheFactory.php#51 <https://github.com/nextcloud/server/blob/stable13/lib/public/ICacheFactory.php#L51>`_
+		
+		
+		:Returns: bool 
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public createLocking( $prefix="")
+	
+		.. rst-class:: phpdoc-description
+		
+			| create a cache instance for storing locks
+			
+		
+		:Source:
+			`lib/public/ICacheFactory.php#60 <https://github.com/nextcloud/server/blob/stable13/lib/public/ICacheFactory.php#L60>`_
+		
+		
+		:Parameters:
+			* **$prefix** (string)  
+
+		
+		:Returns: :any:`\\OCP\\IMemcache <OCP\\IMemcache>` 
+		:Since: 13.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public createDistributed( $prefix="")
+	
+		.. rst-class:: phpdoc-description
+		
+			| create a distributed cache instance
+			
+		
+		:Source:
+			`lib/public/ICacheFactory.php#69 <https://github.com/nextcloud/server/blob/stable13/lib/public/ICacheFactory.php#L69>`_
+		
+		
+		:Parameters:
+			* **$prefix** (string)  
+
+		
+		:Returns: :any:`\\OCP\\ICache <OCP\\ICache>` 
+		:Since: 13.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public createLocal( $prefix="")
+	
+		.. rst-class:: phpdoc-description
+		
+			| create a local cache instance
+			
+		
+		:Source:
+			`lib/public/ICacheFactory.php#78 <https://github.com/nextcloud/server/blob/stable13/lib/public/ICacheFactory.php#L78>`_
+		
+		
+		:Parameters:
+			* **$prefix** (string)  
+
+		
+		:Returns: :any:`\\OCP\\ICache <OCP\\ICache>` 
+		:Since: 13.0.0 
+	
+	
+

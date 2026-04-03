@@ -1,0 +1,63 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+SearchResultSorter
+==================
+
+
+.. php:namespace:: OC\Share
+
+.. php:class:: SearchResultSorter
+
+
+	:Source:
+		`lib/private/Share/SearchResultSorter.php#32 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share/SearchResultSorter.php#L32>`_
+	
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $search, $key, $log=null, $encoding=UTF\-8)
+	
+		:Source:
+			`lib/private/Share/SearchResultSorter.php#45 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share/SearchResultSorter.php#L45>`_
+		
+		
+		:Parameters:
+			* **$search** (string)  the search term as was given by the user
+			* **$key** (string)  the array key containing the value that should be compared
+			against
+			* **$log** (:any:`OCP\\ILogger <OCP\\ILogger>`)  optional
+			* **$encoding** (string)  optional, encoding to use, defaults to UTF-8
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public sort( $a, $b)
+	
+		.. rst-class:: phpdoc-description
+		
+			| User and Group names matching the search term at the beginning shall appear
+			| on top of the share dialog\. Following entries in alphabetical order\.
+			
+			| Callback function for usort\. https://www\.php\.net/usort
+			
+		
+		:Source:
+			`lib/private/Share/SearchResultSorter.php#57 <https://github.com/nextcloud/server/blob/stable13/lib/private/Share/SearchResultSorter.php#L57>`_
+		
+		
+	
+	
+

@@ -1,0 +1,127 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+CloudIdManager
+==============
+
+
+.. php:namespace:: OC\Federation
+
+.. php:class:: CloudIdManager
+
+
+	:Source:
+		`lib/private/Federation/CloudIdManager.php#38 <https://github.com/nextcloud/server/blob/stable13/lib/private/Federation/CloudIdManager.php#L38>`_
+	
+	:Implements:
+		:php:interface:`OCP\\Federation\\ICloudIdManager` 
+	
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $contactsManager)
+	
+		:Source:
+			`lib/private/Federation/CloudIdManager.php#42 <https://github.com/nextcloud/server/blob/stable13/lib/private/Federation/CloudIdManager.php#L42>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public resolveCloudId( $cloudId)
+	
+		:Source:
+			`lib/private/Federation/CloudIdManager.php#51 <https://github.com/nextcloud/server/blob/stable13/lib/private/Federation/CloudIdManager.php#L51>`_
+		
+		
+		:Parameters:
+			* **$cloudId** (string)  
+
+		
+		:Returns: :any:`\\OCP\\Federation\\ICloudId <OCP\\Federation\\ICloudId>` 
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected getDisplayNameFromContact( $cloudId)
+	
+		:Source:
+			`lib/private/Federation/CloudIdManager.php#85 <https://github.com/nextcloud/server/blob/stable13/lib/private/Federation/CloudIdManager.php#L85>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getCloudId( $user, $remote)
+	
+		:Source:
+			`lib/private/Federation/CloudIdManager.php#110 <https://github.com/nextcloud/server/blob/stable13/lib/private/Federation/CloudIdManager.php#L110>`_
+		
+		
+		:Parameters:
+			* **$user** (string)  
+			* **$remote** (string)  
+
+		
+		:Returns: :any:`\\OC\\Federation\\CloudId <OC\\Federation\\CloudId>` 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected fixRemoteURL( $remote)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Strips away a potential file names and trailing slashes:
+			| \- http://localhost
+			| \- http://localhost/
+			| \- http://localhost/index\.php
+			| \- http://localhost/index\.php/s/\{shareToken\}
+			
+			| all return: http://localhost
+			
+		
+		:Source:
+			`lib/private/Federation/CloudIdManager.php#137 <https://github.com/nextcloud/server/blob/stable13/lib/private/Federation/CloudIdManager.php#L137>`_
+		
+		
+		:Parameters:
+			* **$remote** (string)  
+
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isValidCloudId( $cloudId)
+	
+		:Source:
+			`lib/private/Federation/CloudIdManager.php#151 <https://github.com/nextcloud/server/blob/stable13/lib/private/Federation/CloudIdManager.php#L151>`_
+		
+		
+		:Parameters:
+			* **$cloudId** (string)  
+
+		
+		:Returns: bool 
+	
+	
+

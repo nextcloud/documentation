@@ -1,0 +1,68 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+AppLocator
+==========
+
+
+.. php:namespace:: OC\IntegrityCheck\Helpers
+
+.. php:class:: AppLocator
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Class AppLocator provides a non\-static helper for OC\_App::getPath\($appId\)
+		| it is not possible to use IAppManager at this point as IAppManager has a
+		| dependency on a running ownCloud\.
+		
+	
+	:Source:
+		`lib/private/IntegrityCheck/Helpers/AppLocator.php#37 <https://github.com/nextcloud/server/blob/stable13/lib/private/IntegrityCheck/Helpers/AppLocator.php#L37>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public getAppPath( $appId)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Provides \\OC\_App::getAppPath\($appId\)
+			
+		
+		:Source:
+			`lib/private/IntegrityCheck/Helpers/AppLocator.php#45 <https://github.com/nextcloud/server/blob/stable13/lib/private/IntegrityCheck/Helpers/AppLocator.php#L45>`_
+		
+		
+		:Parameters:
+			* **$appId** (string)  
+
+		
+		:Returns: string 
+		:Throws: :any:`\\Exception <Exception>` If the app cannot be found
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getAllApps()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Providers \\OC\_App::getAllApps\(\)
+			
+		
+		:Source:
+			`lib/private/IntegrityCheck/Helpers/AppLocator.php#58 <https://github.com/nextcloud/server/blob/stable13/lib/private/IntegrityCheck/Helpers/AppLocator.php#L58>`_
+		
+		
+		:Returns: array 
+	
+	
+

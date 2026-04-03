@@ -1,0 +1,450 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IShareProvider
+==============
+
+
+.. php:namespace:: OCP\Share
+
+.. php:interface:: IShareProvider
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Interface IShareProvider
+		
+	
+	:Implemented by:
+		:php:class:`OC\\Share20\\DefaultShareProvider` 
+	
+	
+	:Source:
+		`lib/public/Share/IShareProvider.php#39 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IShareProvider.php#L39>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public identifier()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Return the identifier of this provider\.
+			
+		
+		:Source:
+			`lib/public/Share/IShareProvider.php#47 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IShareProvider.php#L47>`_
+		
+		
+		:Returns: string Containing only \[a\-zA\-Z0\-9\]
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public create( $share)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Create a share
+			
+		
+		:Source:
+			`lib/public/Share/IShareProvider.php#56 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IShareProvider.php#L56>`_
+		
+		
+		:Parameters:
+			* **$share** (:any:`OCP\\Share\\IShare <OCP\\Share\\IShare>`)  
+
+		
+		:Returns: :any:`\\OCP\\Share\\IShare <OCP\\Share\\IShare>` The share object
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public update( $share)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Update a share
+			
+		
+		:Source:
+			`lib/public/Share/IShareProvider.php#65 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IShareProvider.php#L65>`_
+		
+		
+		:Parameters:
+			* **$share** (:any:`OCP\\Share\\IShare <OCP\\Share\\IShare>`)  
+
+		
+		:Returns: :any:`\\OCP\\Share\\IShare <OCP\\Share\\IShare>` The share object
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public delete( $share)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Delete a share
+			
+		
+		:Source:
+			`lib/public/Share/IShareProvider.php#83 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IShareProvider.php#L83>`_
+		
+		
+		:Parameters:
+			* **$share** (:any:`OCP\\Share\\IShare <OCP\\Share\\IShare>`)  
+
+		
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public deleteFromSelf( $share, $recipient)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Unshare a file from self as recipient\.
+			
+			| This may require special handling\. If a user unshares a group
+			| share from their self then the original group share should still exist\.
+			
+		
+		:Source:
+			`lib/public/Share/IShareProvider.php#94 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IShareProvider.php#L94>`_
+		
+		
+		:Parameters:
+			* **$share** (:any:`OCP\\Share\\IShare <OCP\\Share\\IShare>`)  
+			* **$recipient** (string)  UserId of the recipient
+
+		
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public restore( $share, $recipient)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Restore a share for a given recipient\. The implementation could be provider independant\.
+			
+		
+		:Source:
+			`lib/public/Share/IShareProvider.php#106 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IShareProvider.php#L106>`_
+		
+		
+		:Parameters:
+			* **$share** (:any:`OCP\\Share\\IShare <OCP\\Share\\IShare>`)  
+			* **$recipient** (string)  
+
+		
+		:Returns: :any:`\\OCP\\Share\\IShare <OCP\\Share\\IShare>` The restored share object
+		:Since: 14.0.0 
+		:Throws: :any:`\\OCP\\Share\\Exceptions\\GenericShareException <OCP\\Share\\Exceptions\\GenericShareException>` In case the share could not be restored
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public move( $share, $recipient)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Move a share as a recipient\.
+			
+			| This is updating the share target\. Thus the mount point of the recipient\.
+			| This may require special handling\. If a user moves a group share
+			| the target should only be changed for them\.
+			
+		
+		:Source:
+			`lib/public/Share/IShareProvider.php#119 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IShareProvider.php#L119>`_
+		
+		
+		:Parameters:
+			* **$share** (:any:`OCP\\Share\\IShare <OCP\\Share\\IShare>`)  
+			* **$recipient** (string)  userId of recipient
+
+		
+		:Returns: :any:`\\OCP\\Share\\IShare <OCP\\Share\\IShare>` 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getSharesInFolder( $userId, $node, $reshares)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get all shares by the given user in a folder
+			
+		
+		:Source:
+			`lib/public/Share/IShareProvider.php#130 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IShareProvider.php#L130>`_
+		
+		
+		:Parameters:
+			* **$userId** (string)  
+			* **$node** (:any:`OCP\\Files\\Folder <OCP\\Files\\Folder>`)  
+			* **$reshares** (bool)  Also get the shares where $user is the owner instead of just the shares where $user is the initiator
+
+		
+		:Returns: :any:`\\OCP\\Share\\IShare\[\]\[\] <OCP\\Share\\IShare>` 
+		:Since: 11.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getSharesBy( $userId, $shareType, $node, $reshares, $limit, $offset)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get all shares by the given user
+			
+		
+		:Source:
+			`lib/public/Share/IShareProvider.php#144 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IShareProvider.php#L144>`_
+		
+		
+		:Parameters:
+			* **$userId** (string)  
+			* **$shareType** (int)  
+			* **$node** (:any:`OCP\\Files\\Node <OCP\\Files\\Node>` | null)  
+			* **$reshares** (bool)  Also get the shares where $user is the owner instead of just the shares where $user is the initiator
+			* **$limit** (int)  The maximum number of shares to be returned, -1 for all shares
+			* **$offset** (int)  
+
+		
+		:Returns: :any:`\\OCP\\Share\\IShare\[\] <OCP\\Share\\IShare>` 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getShareById( $id, $recipientId=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get share by id
+			
+		
+		:Source:
+			`lib/public/Share/IShareProvider.php#155 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IShareProvider.php#L155>`_
+		
+		
+		:Parameters:
+			* **$id** (int)  
+			* **$recipientId** (string | null)  
+
+		
+		:Returns: :any:`\\OCP\\Share\\IShare <OCP\\Share\\IShare>` 
+		:Throws: :any:`\\OCP\\Share\\Exceptions\\ShareNotFound <OCP\\Share\\Exceptions\\ShareNotFound>` 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getSharesByPath( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get shares for a given path
+			
+		
+		:Source:
+			`lib/public/Share/IShareProvider.php#164 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IShareProvider.php#L164>`_
+		
+		
+		:Parameters:
+			* **$path** (:any:`OCP\\Files\\Node <OCP\\Files\\Node>`)  
+
+		
+		:Returns: :any:`\\OCP\\Share\\IShare\[\] <OCP\\Share\\IShare>` 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getSharedWith( $userId, $shareType, $node, $limit, $offset)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get shared with the given user
+			
+		
+		:Source:
+			`lib/public/Share/IShareProvider.php#177 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IShareProvider.php#L177>`_
+		
+		
+		:Parameters:
+			* **$userId** (string)  get shares where this user is the recipient
+			* **$shareType** (int)  
+			* **$node** (:any:`OCP\\Files\\Node <OCP\\Files\\Node>` | null)  
+			* **$limit** (int)  The max number of entries returned, -1 for all
+			* **$offset** (int)  
+
+		
+		:Returns: :any:`\\OCP\\Share\\IShare\[\] <OCP\\Share\\IShare>` 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getShareByToken( $token)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get a share by token
+			
+		
+		:Source:
+			`lib/public/Share/IShareProvider.php#187 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IShareProvider.php#L187>`_
+		
+		
+		:Parameters:
+			* **$token** (string)  
+
+		
+		:Returns: :any:`\\OCP\\Share\\IShare <OCP\\Share\\IShare>` 
+		:Throws: :any:`\\OCP\\Share\\Exceptions\\ShareNotFound <OCP\\Share\\Exceptions\\ShareNotFound>` 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public userDeleted( $uid, $shareType)
+	
+		.. rst-class:: phpdoc-description
+		
+			| A user is deleted from the system
+			| So clean up the relevant shares\.
+			
+		
+		:Source:
+			`lib/public/Share/IShareProvider.php#197 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IShareProvider.php#L197>`_
+		
+		
+		:Parameters:
+			* **$uid** (string)  
+			* **$shareType** (int)  
+
+		
+		:Since: 9.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public groupDeleted( $gid)
+	
+		.. rst-class:: phpdoc-description
+		
+			| A group is deleted from the system\.
+			
+			| We have to clean up all shares to this group\.
+			| Providers not handling group shares should just return
+			
+		
+		:Source:
+			`lib/public/Share/IShareProvider.php#207 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IShareProvider.php#L207>`_
+		
+		
+		:Parameters:
+			* **$gid** (string)  
+
+		
+		:Since: 9.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public userDeletedFromGroup( $uid, $gid)
+	
+		.. rst-class:: phpdoc-description
+		
+			| A user is deleted from a group
+			| We have to clean up all the related user specific group shares
+			| Providers not handling group shares should just return
+			
+		
+		:Source:
+			`lib/public/Share/IShareProvider.php#218 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IShareProvider.php#L218>`_
+		
+		
+		:Parameters:
+			* **$uid** (string)  
+			* **$gid** (string)  
+
+		
+		:Since: 9.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getAccessList( $nodes, $currentAccess)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the access list to the array of provided nodes\.
+			
+		
+		:Source:
+			`lib/public/Share/IShareProvider.php#230 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IShareProvider.php#L230>`_
+		
+		
+		:Parameters:
+			* **$nodes** (:any:`OCP\\Files\\Node\[\] <OCP\\Files\\Node>`)  The list of nodes to get access for
+			* **$currentAccess** (bool)  If current access is required (like for removed shares that might get revived later)
+
+		
+		:See: :any:`\\OCP\\Share\\IManager::getAccessList\(\) <OCP\\Share\\IManager::getAccessList\(\)>` for sample docs
+		:Returns: array 
+		:Since: 12 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getAllShares()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get all the shares in this provider returned as iterable to reduce memory
+			| overhead
+			
+		
+		:Source:
+			`lib/public/Share/IShareProvider.php#239 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IShareProvider.php#L239>`_
+		
+		
+		:Returns: :any:`iterable <iterable>` 
+		:Since: 18.0.0 
+	
+	
+

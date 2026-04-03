@@ -1,0 +1,654 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+Session
+=======
+
+
+.. php:namespace:: OC\User
+
+.. php:class:: Session
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Class Session
+		
+		| Hooks available in scope \\OC\\User:
+		| \- preSetPassword\(\\OC\\User\\User $user, string $password, string $recoverPassword\)
+		| \- postSetPassword\(\\OC\\User\\User $user, string $password, string $recoverPassword\)
+		| \- preDelete\(\\OC\\User\\User $user\)
+		| \- postDelete\(\\OC\\User\\User $user\)
+		| \- preCreateUser\(string $uid, string $password\)
+		| \- postCreateUser\(\\OC\\User\\User $user\)
+		| \- assignedUserId\(string $uid\)
+		| \- preUnassignedUserId\(string $uid\)
+		| \- postUnassignedUserId\(string $uid\)
+		| \- preLogin\(string $user, string $password\)
+		| \- postLogin\(\\OC\\User\\User $user, string $loginName, string $password, boolean $isTokenLogin\)
+		| \- preRememberedLogin\(string $uid\)
+		| \- postRememberedLogin\(\\OC\\User\\User $user\)
+		| \- logout\(\)
+		| \- postLogout\(\)
+		
+	
+	:Source:
+		`lib/private/User/Session.php#92 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/Session.php#L92>`_
+	
+	:Implements:
+		:php:interface:`OCP\\IUserSession` :php:interface:`OC\\Hooks\\Emitter` 
+	
+
+Properties
+----------
+
+.. php:attr:: protected static activeUser
+
+	:Source:
+		`lib/private/User/Session.php#110 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/Session.php#L110>`_
+	
+	:Type: :any:`\\OC\\User\\User <OC\\User\\User>` 
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $manager, $session, $timeFactory, $tokenProvider, $config, $random, $lockdownManager, $logger, $dispatcher)
+	
+		:Source:
+			`lib/private/User/Session.php#133 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/Session.php#L133>`_
+		
+		
+		:Parameters:
+			* **$manager** (:any:`OC\\User\\Manager <OC\\User\\Manager>`)  
+			* **$session** (:any:`OCP\\ISession <OCP\\ISession>`)  
+			* **$timeFactory** (:any:`OCP\\AppFramework\\Utility\\ITimeFactory <OCP\\AppFramework\\Utility\\ITimeFactory>`)  
+			* **$tokenProvider** (:any:`OC\\Authentication\\Token\\IProvider <OC\\Authentication\\Token\\IProvider>`)  
+			* **$config** (:any:`OCP\\IConfig <OCP\\IConfig>`)  
+			* **$random** (:any:`OCP\\Security\\ISecureRandom <OCP\\Security\\ISecureRandom>`)  
+			* **$lockdownManager** (:any:`OCP\\Lockdown\\ILockdownManager <OCP\\Lockdown\\ILockdownManager>`)  
+			* **$logger** (:any:`OCP\\ILogger <OCP\\ILogger>`)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setTokenProvider( $provider)
+	
+		:Source:
+			`lib/private/User/Session.php#157 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/Session.php#L157>`_
+		
+		
+		:Parameters:
+			* **$provider** (:any:`OC\\Authentication\\Token\\IProvider <OC\\Authentication\\Token\\IProvider>`)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public listen( $scope, $method, $callback)
+	
+		:Source:
+			`lib/private/User/Session.php#166 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/Session.php#L166>`_
+		
+		
+		:Parameters:
+			* **$scope** (string)  
+			* **$method** (string)  
+			* **$callback** (callable)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public removeListener( $scope=null, $method=null, $callback=null)
+	
+		:Source:
+			`lib/private/User/Session.php#175 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/Session.php#L175>`_
+		
+		
+		:Parameters:
+			* **$scope** (string)  optional
+			* **$method** (string)  optional
+			* **$callback** (callable)  optional
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getManager()
+	
+		.. rst-class:: phpdoc-description
+		
+			| get the manager object
+			
+		
+		:Source:
+			`lib/private/User/Session.php#184 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/Session.php#L184>`_
+		
+		
+		:Returns: :any:`\\OC\\User\\Manager <OC\\User\\Manager>` | :any:`\\OC\\Hooks\\PublicEmitter <OC\\Hooks\\PublicEmitter>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getSession()
+	
+		.. rst-class:: phpdoc-description
+		
+			| get the session object
+			
+		
+		:Source:
+			`lib/private/User/Session.php#193 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/Session.php#L193>`_
+		
+		
+		:Returns: :any:`\\OCP\\ISession <OCP\\ISession>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setSession( $session)
+	
+		.. rst-class:: phpdoc-description
+		
+			| set the session object
+			
+		
+		:Source:
+			`lib/private/User/Session.php#202 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/Session.php#L202>`_
+		
+		
+		:Parameters:
+			* **$session** (:any:`OCP\\ISession <OCP\\ISession>`)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setUser( $user)
+	
+		.. rst-class:: phpdoc-description
+		
+			| set the currently active user
+			
+		
+		:Source:
+			`lib/private/User/Session.php#215 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/Session.php#L215>`_
+		
+		
+		:Parameters:
+			* **$user** (:any:`OCP\\IUser <OCP\\IUser>` | null)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getUser()
+	
+		.. rst-class:: phpdoc-description
+		
+			| get the current active user
+			
+		
+		:Source:
+			`lib/private/User/Session.php#229 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/Session.php#L229>`_
+		
+		
+		:Returns: :any:`\\OCP\\IUser <OCP\\IUser>` | null Current user, otherwise null
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected validateSession()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Validate whether the current session is valid
+			
+			| \- For token\-authenticated clients, the token validity is checked
+			| \- For browsers, the session token validity is checked
+			
+		
+		:Source:
+			`lib/private/User/Session.php#255 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/Session.php#L255>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isLoggedIn()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Checks whether the user is logged in
+			
+		
+		:Source:
+			`lib/private/User/Session.php#280 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/Session.php#L280>`_
+		
+		
+		:Returns: bool if logged in
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setLoginName( $loginName)
+	
+		.. rst-class:: phpdoc-description
+		
+			| set the login name
+			
+		
+		:Source:
+			`lib/private/User/Session.php#294 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/Session.php#L294>`_
+		
+		
+		:Parameters:
+			* **$loginName** (string | null)  for the logged in user
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getLoginName()
+	
+		.. rst-class:: phpdoc-description
+		
+			| get the login name of the current user
+			
+		
+		:Source:
+			`lib/private/User/Session.php#307 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/Session.php#L307>`_
+		
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getImpersonatingUserID()
+	
+		:Source:
+			`lib/private/User/Session.php#324 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/Session.php#L324>`_
+		
+		
+		:Returns: null | string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setImpersonatingUserID( $useCurrentUser=true)
+	
+		:Source:
+			`lib/private/User/Session.php#328 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/Session.php#L328>`_
+		
+		
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected setToken( $token)
+	
+		.. rst-class:: phpdoc-description
+		
+			| set the token id
+			
+		
+		:Source:
+			`lib/private/User/Session.php#346 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/Session.php#L346>`_
+		
+		
+		:Parameters:
+			* **$token** (int | null)  that was used to log in
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public login( $uid, $password)
+	
+		.. rst-class:: phpdoc-description
+		
+			| try to log in with the provided credentials
+			
+		
+		:Source:
+			`lib/private/User/Session.php#362 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/Session.php#L362>`_
+		
+		
+		:Parameters:
+			* **$uid** (string)  
+			* **$password** (string)  
+
+		
+		:Returns: bool | null 
+		:Throws: :any:`\\OC\\User\\LoginException <OC\\User\\LoginException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public completeLogin( $user, $loginDetails, $regenerateSessionId=true)
+	
+		:Source:
+			`lib/private/User/Session.php#377 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/Session.php#L377>`_
+		
+		
+		:Parameters:
+			* **$user** (:any:`OCP\\IUser <OCP\\IUser>`)  
+			* **$loginDetails** (array)  
+			* **$regenerateSessionId** (bool)  
+
+		
+		:Returns: bool returns true if login successful or an exception otherwise
+		:Throws: :any:`\\OC\\User\\LoginException <OC\\User\\LoginException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public logClientIn( $user, $password, $request, $throttler)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Tries to log in a client
+			
+			| Checks token auth enforced
+			| Checks 2FA enabled
+			
+		
+		:Source:
+			`lib/private/User/Session.php#437 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/Session.php#L437>`_
+		
+		
+		:Parameters:
+			* **$user** (string)  
+			* **$password** (string)  
+			* **$request** (:any:`OCP\\IRequest <OCP\\IRequest>`)  
+			* **$throttler** (:any:`OC\\Security\\Bruteforce\\Throttler <OC\\Security\\Bruteforce\\Throttler>`)  
+
+		
+		:Throws: :any:`\\OC\\User\\LoginException <OC\\User\\LoginException>` 
+		:Throws: :any:`\\OC\\Authentication\\Exceptions\\PasswordLoginForbiddenException <OC\\Authentication\\Exceptions\\PasswordLoginForbiddenException>` 
+		:Throws: :any:`\\OC\\User\\LoginException <OC\\User\\LoginException>` 
+		:Throws: :any:`\\OC\\Authentication\\Exceptions\\PasswordLoginForbiddenException <OC\\Authentication\\Exceptions\\PasswordLoginForbiddenException>` 
+		:Returns: bool 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected supportsCookies( $request)
+	
+		:Source:
+			`lib/private/User/Session.php#490 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/Session.php#L490>`_
+		
+		
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected isTwoFactorEnforced( $username)
+	
+		:Source:
+			`lib/private/User/Session.php#502 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/Session.php#L502>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isTokenPassword( $password)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check if the given \'password\' is actually a device token
+			
+		
+		:Source:
+			`lib/private/User/Session.php#530 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/Session.php#L530>`_
+		
+		
+		:Parameters:
+			* **$password** (string)  
+
+		
+		:Returns: bool 
+		:Throws: :any:`\\OC\\Authentication\\Exceptions\\ExpiredTokenException <OC\\Authentication\\Exceptions\\ExpiredTokenException>` 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected prepareUserLogin( $firstTimeLogin, $refreshCsrfToken=true)
+	
+		:Source:
+			`lib/private/User/Session.php#545 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/Session.php#L545>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public tryBasicAuthLogin( $request, $throttler)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Tries to login the user with HTTP Basic Authentication
+			
+		
+		:Source:
+			`lib/private/User/Session.php#581 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/Session.php#L581>`_
+		
+		
+		:Parameters:
+			* **$request** (:any:`OCP\\IRequest <OCP\\IRequest>`)  
+			* **$throttler** (:any:`OC\\Security\\Bruteforce\\Throttler <OC\\Security\\Bruteforce\\Throttler>`)  
+
+		
+		:Returns: bool if the login was successful
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public createSessionToken( $request, $uid, $loginName, $password=null, $remember=\\OC\\Authentication\\Token\\IToken::DO\_NOT\_REMEMBER)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Create a new session token for the given user credentials
+			
+		
+		:Source:
+			`lib/private/User/Session.php#680 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/Session.php#L680>`_
+		
+		
+		:Parameters:
+			* **$request** (:any:`OCP\\IRequest <OCP\\IRequest>`)  
+			* **$uid** (string)  user UID
+			* **$loginName** (string)  login name
+			* **$password** (string)  
+			* **$remember** (int)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public tryTokenLogin( $request)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Tries to login the user with auth token header
+			
+		
+		:Source:
+			`lib/private/User/Session.php#817 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/Session.php#L817>`_
+		
+		
+		:Parameters:
+			* **$request** (:any:`OCP\\IRequest <OCP\\IRequest>`)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public loginWithCookie( $uid, $currentToken, $oldSessionId)
+	
+		.. rst-class:: phpdoc-description
+		
+			| perform login using the magic cookie \(remember login\)
+			
+		
+		:Source:
+			`lib/private/User/Session.php#861 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/Session.php#L861>`_
+		
+		
+		:Parameters:
+			* **$uid** (string)  the username
+			* **$currentToken** (string)  
+			* **$oldSessionId** (string)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public createRememberMeToken( $user)
+	
+		:Source:
+			`lib/private/User/Session.php#912 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/Session.php#L912>`_
+		
+		
+		:Parameters:
+			* **$user** (:any:`OCP\\IUser <OCP\\IUser>`)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public logout()
+	
+		.. rst-class:: phpdoc-description
+		
+			| logout the user from the session
+			
+		
+		:Source:
+			`lib/private/User/Session.php#921 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/Session.php#L921>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setMagicInCookie( $username, $token)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set cookie value to use in next page load
+			
+		
+		:Source:
+			`lib/private/User/Session.php#944 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/Session.php#L944>`_
+		
+		
+		:Parameters:
+			* **$username** (string)  username to be set
+			* **$token** (string)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public unsetMagicInCookie()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Remove cookie for "remember username"
+			
+		
+		:Source:
+			`lib/private/User/Session.php#991 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/Session.php#L991>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public updateSessionTokenPassword( $password)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Update password of the browser session token if there is one
+			
+		
+		:Source:
+			`lib/private/User/Session.php#1013 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/Session.php#L1013>`_
+		
+		
+		:Parameters:
+			* **$password** (string)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public updateTokens( $uid, $password)
+	
+		:Source:
+			`lib/private/User/Session.php#1025 <https://github.com/nextcloud/server/blob/stable13/lib/private/User/Session.php#L1025>`_
+		
+		
+	
+	
+

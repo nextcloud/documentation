@@ -1,0 +1,51 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IDismissableNotifier
+====================
+
+
+.. php:namespace:: OCP\Notification
+
+.. php:interface:: IDismissableNotifier
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Interface INotifier classes should implement if they want to process notifications
+		| that are dismissed by the user\.
+		
+		| This can be useful if dismissing the notification will leave it in an incomplete
+		| state\. The handler can chose to for example do some default action\.
+		
+	
+	:Source:
+		`lib/public/Notification/IDismissableNotifier.php#38 <https://github.com/nextcloud/server/blob/stable13/lib/public/Notification/IDismissableNotifier.php#L38>`_
+	
+	:Parent:
+		:php:interface:`OCP\\Notification\\INotifier`
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public dismissNotification( $notification)
+	
+		:Source:
+			`lib/public/Notification/IDismissableNotifier.php#46 <https://github.com/nextcloud/server/blob/stable13/lib/public/Notification/IDismissableNotifier.php#L46>`_
+		
+		
+		:Parameters:
+			* **$notification** (:any:`OCP\\Notification\\INotification <OCP\\Notification\\INotification>`)  
+
+		
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` In case the handler can\'t handle the notification
+		:Since: 18.0.0 
+	
+	
+

@@ -1,0 +1,97 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+SecurityMiddleware
+==================
+
+
+.. php:namespace:: OC\AppFramework\Middleware\Security
+
+.. php:class:: SecurityMiddleware
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Used to do all the authentication and checking stuff for a controller method
+		| It reads out the annotations of a controller method and checks which if
+		| security things should be checked and also handles errors in case a security
+		| check fails
+		
+	
+	:Source:
+		`lib/private/AppFramework/Middleware/Security/SecurityMiddleware.php#70 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Middleware/Security/SecurityMiddleware.php#L70>`_
+	
+	:Parent:
+		:php:class:`OCP\\AppFramework\\Middleware`
+	
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $request, $reflector, $navigationManager, $urlGenerator, $logger, $appName, $isLoggedIn, $isAdminUser, $isSubAdmin, $appManager, $l10n)
+	
+		:Source:
+			`lib/private/AppFramework/Middleware/Security/SecurityMiddleware.php#94 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Middleware/Security/SecurityMiddleware.php#L94>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public beforeController( $controller, $methodName)
+	
+		.. rst-class:: phpdoc-description
+		
+			| This runs all the security checks before a method call\. The
+			| security checks are determined by inspecting the controller method
+			| annotations
+			
+		
+		:Source:
+			`lib/private/AppFramework/Middleware/Security/SecurityMiddleware.php#129 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Middleware/Security/SecurityMiddleware.php#L129>`_
+		
+		
+		:Parameters:
+			* **$controller** (:any:`OCP\\AppFramework\\Controller <OCP\\AppFramework\\Controller>`)  the controller
+			* **$methodName** (string)  the name of the method
+
+		
+		:Throws: :any:`\\OC\\AppFramework\\Middleware\\Security\\Exceptions\\SecurityException <OC\\AppFramework\\Middleware\\Security\\Exceptions\\SecurityException>` when a security check fails
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public afterException( $controller, $methodName, $exception)
+	
+		.. rst-class:: phpdoc-description
+		
+			| If an SecurityException is being caught, ajax requests return a JSON error
+			| response and non ajax requests redirect to the index
+			
+		
+		:Source:
+			`lib/private/AppFramework/Middleware/Security/SecurityMiddleware.php#212 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Middleware/Security/SecurityMiddleware.php#L212>`_
+		
+		
+		:Parameters:
+			* **$controller** (:any:`OCP\\AppFramework\\Controller <OCP\\AppFramework\\Controller>`)  the controller that is being called
+			* **$methodName** (string)  the name of the method that will be called on
+			the controller
+			* **$exception** (:any:`Exception <Exception>`)  the thrown exception
+
+		
+		:Throws: :any:`\\Exception <Exception>` the passed in exception if it can\'t handle it
+		:Returns: :any:`\\OCP\\AppFramework\\Http\\Response <OCP\\AppFramework\\Http\\Response>` a Response object or null in case that the exception could not be handled
+	
+	
+

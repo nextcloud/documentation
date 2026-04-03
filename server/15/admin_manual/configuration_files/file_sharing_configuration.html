@@ -1,0 +1,373 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>File Sharing &mdash; Nextcloud 15 Administration Manual 15 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'15',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Configuring Federation Sharing" href="federated_cloud_sharing_configuration.html" />
+    <link rel="prev" title="File sharing and management" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../contents.html">
+          
+
+          
+            
+            <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes.html">Release notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_schedule.html">Maintenance and release schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation and server configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_server/index.html">Nextcloud configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../apps_management.html">Apps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_user/index.html">User management</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">File sharing and management</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">File Sharing</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#transferring-files-to-another-user">Transferring files to another user</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#creating-persistent-file-shares">Creating persistent file Shares</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="federated_cloud_sharing_configuration.html">Configuring Federation Sharing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="big_file_upload_configuration.html">Uploading big files &gt; 512MB</a></li>
+<li class="toctree-l2"><a class="reference internal" href="default_files_configuration.html">Providing default files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="primary_storage.html">Configuring Object Storage as Primary Storage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="external_storage_configuration_gui.html">Configuring External Storage (GUI)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="external_storage_configuration.html">Configuring External Storage (configuration file)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="external_storage/auth_mechanisms.html">External Storage authentication mechanisms</a></li>
+<li class="toctree-l2"><a class="reference internal" href="encryption_configuration.html">Encryption configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="files_locking_transactional.html">Transactional file locking</a></li>
+<li class="toctree-l2"><a class="reference internal" href="previews_configuration.html">Previews configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_versioning.html">Controlling file versions and aging</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../file_workflows/index.html">File workflows</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_database/index.html">Database configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_mimetypes/index.html">Mimetypes management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../maintenance/index.html">Maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../issues/index.html">Issues and troubleshooting</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud 15 Administration Manual</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../contents.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">File sharing and management</a> &raquo;</li>
+        
+      <li>File Sharing</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/nextcloud/documentation/edit/stable15/admin_manual/configuration_files/file_sharing_configuration.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="file-sharing">
+<h1>File Sharing<a class="headerlink" href="#file-sharing" title="Permalink to this headline">¶</a></h1>
+<p>Nextcloud users can share files with their Nextcloud groups and other users on
+the same Nextcloud server, with Nextcloud users on <a class="reference internal" href="federated_cloud_sharing_configuration.html"><span class="doc">other Nextcloud servers</span></a>, and create public shares for people who are not
+Nextcloud users. You have control of a number of user permissions on file shares.</p>
+<p>Configure your sharing policy on your Admin page in the Sharing section.</p>
+<div class="figure">
+<img alt="../_images/sharing-files-1.png" src="../_images/sharing-files-1.png" />
+</div>
+<ul>
+<li><p class="first">Check <code class="docutils literal"><span class="pre">Allow</span> <span class="pre">apps</span> <span class="pre">to</span> <span class="pre">use</span> <span class="pre">the</span> <span class="pre">Share</span> <span class="pre">API</span></code> to enable users to share files. If
+this is not checked, no users can create file shares.</p>
+</li>
+<li><p class="first">Check <code class="docutils literal"><span class="pre">Allow</span> <span class="pre">users</span> <span class="pre">to</span> <span class="pre">share</span> <span class="pre">via</span> <span class="pre">link</span></code> to enable creating public shares for
+people who are not Nextcloud users via hyperlink.</p>
+</li>
+<li><p class="first">Check <code class="docutils literal"><span class="pre">Allow</span> <span class="pre">public</span> <span class="pre">uploads</span></code> to allow anyone to upload files to
+public shares.</p>
+</li>
+<li><p class="first">Check <code class="docutils literal"><span class="pre">Always</span> <span class="pre">ask</span> <span class="pre">for</span> <span class="pre">a</span> <span class="pre">password</span></code> to proactively ask a user to set a password
+for a share link.</p>
+</li>
+<li><p class="first">Check <code class="docutils literal"><span class="pre">Enforce</span> <span class="pre">password</span> <span class="pre">protection</span></code> to force users to set a password on all
+public share links. This does not apply to local user and group shares.</p>
+</li>
+<li><p class="first">Check <code class="docutils literal"><span class="pre">Set</span> <span class="pre">default</span> <span class="pre">expiration</span> <span class="pre">date</span></code> to set a default expiration date on
+public shares.</p>
+</li>
+<li><p class="first">Check <code class="docutils literal"><span class="pre">Allow</span> <span class="pre">resharing</span></code> to enable users to re-share files shared with them.</p>
+</li>
+<li><p class="first">Check <code class="docutils literal"><span class="pre">Allow</span> <span class="pre">sharing</span> <span class="pre">with</span> <span class="pre">groups</span></code> to enable users to share with groups.</p>
+</li>
+<li><p class="first">Check <code class="docutils literal"><span class="pre">Restrict</span> <span class="pre">users</span> <span class="pre">to</span> <span class="pre">only</span> <span class="pre">share</span> <span class="pre">with</span> <span class="pre">users</span> <span class="pre">in</span> <span class="pre">their</span> <span class="pre">groups</span></code> to confine
+sharing within group memberships.</p>
+<blockquote>
+<div><div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This setting does not apply to the Federated Cloud sharing
+feature. If <a class="reference internal" href="federated_cloud_sharing_configuration.html"><span class="doc">Federated Cloud Sharing</span></a> is
+enabled, users can still share items with any users on any instances
+(including the one they are on) via a remote share.</p>
+</div>
+</div></blockquote>
+</li>
+<li><p class="first">Check <code class="docutils literal"><span class="pre">Exclude</span> <span class="pre">groups</span> <span class="pre">from</span> <span class="pre">sharing</span></code> to prevent members of specific groups
+from creating any file shares in those groups. When you check this, you&#8217;ll
+get a dropdown list of all your groups to choose from. Members of excluded
+groups can still receive shares, but not create any.</p>
+</li>
+<li><p class="first">Check <code class="docutils literal"><span class="pre">Allow</span> <span class="pre">username</span> <span class="pre">autocompletion</span> <span class="pre">in</span> <span class="pre">share</span> <span class="pre">dialog</span></code> to enable
+auto-completion of Nextcloud usernames.</p>
+</li>
+<li><p class="first">Check <code class="docutils literal"><span class="pre">Show</span> <span class="pre">disclaimer</span> <span class="pre">text</span> <span class="pre">on</span> <span class="pre">the</span> <span class="pre">public</span> <span class="pre">link</span> <span class="pre">upload</span> <span class="pre">page</span></code> to set and show
+a disclaimer text on public links with hidden file lists.</p>
+</li>
+</ul>
+<p>With <code class="docutils literal"><span class="pre">Default</span> <span class="pre">share</span> <span class="pre">permissions</span></code> you are able to set the default permissions
+for user-shares (<code class="docutils literal"><span class="pre">Create</span></code>, <code class="docutils literal"><span class="pre">Change</span></code>, <code class="docutils literal"><span class="pre">Delete</span></code> and <code class="docutils literal"><span class="pre">Share</span></code>) without
+forcing them.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Nextcloud does not preserve the mtime (modification time) of
+directories, though it does update the mtimes on files. See
+<a class="reference external" href="https://github.com/owncloud/core/issues/7009">Wrong folder date when syncing</a> for discussion of this.</p>
+</div>
+<div class="section" id="transferring-files-to-another-user">
+<span id="transfer-userfiles-label"></span><h2>Transferring files to another user<a class="headerlink" href="#transferring-files-to-another-user" title="Permalink to this headline">¶</a></h2>
+<p>You may transfer files from one user to another with <code class="docutils literal"><span class="pre">occ</span></code>. This is useful
+when you have to remove a user. Be sure to transfer the files before you delete
+the user!  This transfers all files from user1 to user2, and the shares and
+metadata info associated with those files (shares, tags, comments, etc).
+Trashbin contents are not transferred:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">occ</span> <span class="n">files</span><span class="p">:</span><span class="n">transfer</span><span class="o">-</span><span class="n">ownership</span> <span class="n">user1</span> <span class="n">user2</span>
+</pre></div>
+</div>
+<p>(See <a class="reference internal" href="../configuration_server/occ_command.html"><span class="doc">Using the occ command</span></a> for a complete <code class="docutils literal"><span class="pre">occ</span></code>
+reference.)</p>
+</div>
+<div class="section" id="creating-persistent-file-shares">
+<h2>Creating persistent file Shares<a class="headerlink" href="#creating-persistent-file-shares" title="Permalink to this headline">¶</a></h2>
+<p>When a user is deleted, their files are also deleted. As you can imagine, this
+is a problem if they created file shares that need to be preserved, because
+these disappear as well. In Nextcloud files are tied to their owners, so
+whatever happens to the file owner also happens to the files.</p>
+<p>One solution is to create persistent shares for your users. You can retain
+ownership of them, or you could create a special user for the purpose of
+establishing permanent file shares. Simply create a shared folder in the usual
+way, and share it with the users or groups who need to use it. Set the
+appropriate permissions on it, and then no matter which users come and go, the
+file shares will remain. Because all files added to the share, or edited in it,
+automatically become owned by the owner of the share regardless of who adds or
+edits them.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="federated_cloud_sharing_configuration.html" class="btn btn-neutral float-right" title="Configuring Federation Sharing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="index.html" class="btn btn-neutral float-left" title="File sharing and management" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021 Nextcloud GmbH.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: 15
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/15/admin_manual">15</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/16/admin_manual">16</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/17/admin_manual">17</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/admin_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/admin_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+   
+
+</body>
+</html>

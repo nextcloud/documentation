@@ -1,0 +1,184 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+TimestampFormatter
+==================
+
+
+.. php:namespace:: OC\Console
+
+.. php:class:: TimestampFormatter
+
+
+	:Source:
+		`lib/private/Console/TimestampFormatter.php#30 <https://github.com/nextcloud/server/blob/stable13/lib/private/Console/TimestampFormatter.php#L30>`_
+	
+	:Implements:
+		:php:interface:`Symfony\\Component\\Console\\Formatter\\OutputFormatterInterface` 
+	
+
+Properties
+----------
+
+.. php:attr:: protected static config
+
+	:Source:
+		`lib/private/Console/TimestampFormatter.php#32 <https://github.com/nextcloud/server/blob/stable13/lib/private/Console/TimestampFormatter.php#L32>`_
+	
+	:Type: :any:`\\OCP\\IConfig <OCP\\IConfig>` 
+
+
+.. php:attr:: protected static formatter
+
+	:Source:
+		`lib/private/Console/TimestampFormatter.php#35 <https://github.com/nextcloud/server/blob/stable13/lib/private/Console/TimestampFormatter.php#L35>`_
+	
+	:Type: :any:`\\Symfony\\Component\\Console\\Formatter\\OutputFormatterInterface <Symfony\\Component\\Console\\Formatter\\OutputFormatterInterface>` 
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $config, $formatter)
+	
+		:Source:
+			`lib/private/Console/TimestampFormatter.php#41 <https://github.com/nextcloud/server/blob/stable13/lib/private/Console/TimestampFormatter.php#L41>`_
+		
+		
+		:Parameters:
+			* **$config** (:any:`OCP\\IConfig <OCP\\IConfig>`)  
+			* **$formatter** (:any:`Symfony\\Component\\Console\\Formatter\\OutputFormatterInterface <Symfony\\Component\\Console\\Formatter\\OutputFormatterInterface>`)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setDecorated( $decorated)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Sets the decorated flag\.
+			
+		
+		:Source:
+			`lib/private/Console/TimestampFormatter.php#51 <https://github.com/nextcloud/server/blob/stable13/lib/private/Console/TimestampFormatter.php#L51>`_
+		
+		
+		:Parameters:
+			* **$decorated** (bool)  Whether to decorate the messages or not
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isDecorated()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Gets the decorated flag\.
+			
+		
+		:Source:
+			`lib/private/Console/TimestampFormatter.php#60 <https://github.com/nextcloud/server/blob/stable13/lib/private/Console/TimestampFormatter.php#L60>`_
+		
+		
+		:Returns: bool true if the output will decorate messages, false otherwise
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setStyle( $name, $style)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Sets a new style\.
+			
+		
+		:Source:
+			`lib/private/Console/TimestampFormatter.php#70 <https://github.com/nextcloud/server/blob/stable13/lib/private/Console/TimestampFormatter.php#L70>`_
+		
+		
+		:Parameters:
+			* **$name** (string)  The style name
+			* **$style** (:any:`Symfony\\Component\\Console\\Formatter\\OutputFormatterStyleInterface <Symfony\\Component\\Console\\Formatter\\OutputFormatterStyleInterface>`)  The style instance
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public hasStyle( $name)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Checks if output formatter has style with specified name\.
+			
+		
+		:Source:
+			`lib/private/Console/TimestampFormatter.php#80 <https://github.com/nextcloud/server/blob/stable13/lib/private/Console/TimestampFormatter.php#L80>`_
+		
+		
+		:Parameters:
+			* **$name** (string)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getStyle( $name)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Gets style options from style with specified name\.
+			
+		
+		:Source:
+			`lib/private/Console/TimestampFormatter.php#91 <https://github.com/nextcloud/server/blob/stable13/lib/private/Console/TimestampFormatter.php#L91>`_
+		
+		
+		:Parameters:
+			* **$name** (string)  
+
+		
+		:Returns: :any:`\\Symfony\\Component\\Console\\Formatter\\OutputFormatterStyleInterface <Symfony\\Component\\Console\\Formatter\\OutputFormatterStyleInterface>` 
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` When style isn\'t defined
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public format( $message)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Formats a message according to the given styles\.
+			
+		
+		:Source:
+			`lib/private/Console/TimestampFormatter.php#102 <https://github.com/nextcloud/server/blob/stable13/lib/private/Console/TimestampFormatter.php#L102>`_
+		
+		
+		:Parameters:
+			* **$message** (string)  The message to style
+
+		
+		:Returns: string The styled message, prepended with a timestamp using the
+			log timezone and dateformat, e\.g\. "2015\-06\-23T17:24:37\+02:00"
+		
+	
+	
+

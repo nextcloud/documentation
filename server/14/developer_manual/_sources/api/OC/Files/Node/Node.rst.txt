@@ -1,0 +1,702 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+Node
+====
+
+
+.. php:namespace:: OC\Files\Node
+
+.. php:class:: Node
+
+
+	:Source:
+		`lib/private/Files/Node/Node.php#43 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Node.php#L43>`_
+	
+	:Implements:
+		:php:interface:`OCP\\Files\\Node` 
+	
+
+Properties
+----------
+
+.. php:attr:: protected static view
+
+	:Source:
+		`lib/private/Files/Node/Node.php#47 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Node.php#L47>`_
+	
+	:Type: :any:`\\OC\\Files\\View <OC\\Files\\View>` 
+
+
+.. php:attr:: protected static root
+
+	:Source:
+		`lib/private/Files/Node/Node.php#52 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Node.php#L52>`_
+	
+	:Type: :any:`\\OC\\Files\\Node\\Root <OC\\Files\\Node\\Root>` 
+
+
+.. php:attr:: protected static path
+
+	:Source:
+		`lib/private/Files/Node/Node.php#57 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Node.php#L57>`_
+	
+	:Type: string 
+
+
+.. php:attr:: protected static fileInfo
+
+	:Source:
+		`lib/private/Files/Node/Node.php#62 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Node.php#L62>`_
+	
+	:Type: :any:`\\OCP\\Files\\FileInfo <OCP\\Files\\FileInfo>` 
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $root, $view, $path, $fileInfo=null)
+	
+		:Source:
+			`lib/private/Files/Node/Node.php#70 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Node.php#L70>`_
+		
+		
+		:Parameters:
+			* **$root** (:any:`OCP\\Files\\IRootFolder <OCP\\Files\\IRootFolder>`)  
+			* **$view** (:any:`OC\\Files\\View <OC\\Files\\View>`)  
+			* **$path** (string)  
+			* **$fileInfo** (:any:`OCP\\Files\\FileInfo <OCP\\Files\\FileInfo>`)  
+
+		
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected createNonExistingNode( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Creates a Node of the same type that represents a non\-existing path
+			
+		
+		:Source:
+			`lib/private/Files/Node/Node.php#84 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Node.php#L84>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  path
+
+		
+		:Returns: string non\-existing node class
+		:Throws: :any:`\\Exception <Exception>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getFileInfo()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the matching file info
+			
+		
+		:Source:
+			`lib/private/Files/Node/Node.php#95 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Node.php#L95>`_
+		
+		
+		:Returns: :any:`\\OCP\\Files\\FileInfo <OCP\\Files\\FileInfo>` 
+		:Throws: :any:`\\OCP\\Files\\InvalidPathException <OCP\\Files\\InvalidPathException>` 
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+		:Throws: :any:`\\OCP\\Files\\InvalidPathException <OCP\\Files\\InvalidPathException>` 
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected sendHooks( $hooks, $args=null)
+	
+		:Source:
+			`lib/private/Files/Node/Node.php#113 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Node.php#L113>`_
+		
+		
+		:Parameters:
+			* **$hooks** (string[])  
+
+		
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected checkPermissions( $permissions)
+	
+		:Source:
+			`lib/private/Files/Node/Node.php#128 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Node.php#L128>`_
+		
+		
+		:Parameters:
+			* **$permissions** (int)  
+
+		
+		:Returns: bool 
+		:Throws: :any:`\\OCP\\Files\\InvalidPathException <OCP\\Files\\InvalidPathException>` 
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+		:Throws: :any:`\\OCP\\Files\\InvalidPathException <OCP\\Files\\InvalidPathException>` 
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public delete()
+	
+		:Source:
+			`lib/private/Files/Node/Node.php#132 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Node.php#L132>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public touch( $mtime=null)
+	
+		:Source:
+			`lib/private/Files/Node/Node.php#141 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Node.php#L141>`_
+		
+		
+		:Parameters:
+			* **$mtime** (int)  
+
+		
+		:Throws: :any:`\\OCP\\Files\\InvalidPathException <OCP\\Files\\InvalidPathException>` 
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+		:Throws: :any:`\\OCP\\Files\\NotPermittedException <OCP\\Files\\NotPermittedException>` 
+		:Throws: :any:`\\OCP\\Files\\InvalidPathException <OCP\\Files\\InvalidPathException>` 
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+		:Throws: :any:`\\OCP\\Files\\NotPermittedException <OCP\\Files\\NotPermittedException>` 
+		:Throws: :any:`\\OCP\\Files\\InvalidPathException <OCP\\Files\\InvalidPathException>` 
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+		:Throws: :any:`\\OCP\\Files\\NotPermittedException <OCP\\Files\\NotPermittedException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getStorage()
+	
+		:Source:
+			`lib/private/Files/Node/Node.php#161 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Node.php#L161>`_
+		
+		
+		:Returns: :any:`\\OC\\Files\\Storage\\Storage <OC\\Files\\Storage\\Storage>` 
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getPath()
+	
+		:Source:
+			`lib/private/Files/Node/Node.php#169 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Node.php#L169>`_
+		
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getInternalPath()
+	
+		:Source:
+			`lib/private/Files/Node/Node.php#176 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Node.php#L176>`_
+		
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getId()
+	
+		:Source:
+			`lib/private/Files/Node/Node.php#186 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Node.php#L186>`_
+		
+		
+		:Returns: int 
+		:Throws: :any:`\\OCP\\Files\\InvalidPathException <OCP\\Files\\InvalidPathException>` 
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+		:Throws: :any:`\\OCP\\Files\\InvalidPathException <OCP\\Files\\InvalidPathException>` 
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public stat()
+	
+		:Source:
+			`lib/private/Files/Node/Node.php#193 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Node.php#L193>`_
+		
+		
+		:Returns: array 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getMTime()
+	
+		:Source:
+			`lib/private/Files/Node/Node.php#202 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Node.php#L202>`_
+		
+		
+		:Returns: int 
+		:Throws: :any:`\\OCP\\Files\\InvalidPathException <OCP\\Files\\InvalidPathException>` 
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+		:Throws: :any:`\\OCP\\Files\\InvalidPathException <OCP\\Files\\InvalidPathException>` 
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getSize( $includeMounts=true)
+	
+		:Source:
+			`lib/private/Files/Node/Node.php#212 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Node.php#L212>`_
+		
+		
+		:Parameters:
+			* **$includeMounts** (bool)  
+
+		
+		:Returns: int 
+		:Throws: :any:`\\OCP\\Files\\InvalidPathException <OCP\\Files\\InvalidPathException>` 
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+		:Throws: :any:`\\OCP\\Files\\InvalidPathException <OCP\\Files\\InvalidPathException>` 
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getEtag()
+	
+		:Source:
+			`lib/private/Files/Node/Node.php#221 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Node.php#L221>`_
+		
+		
+		:Returns: string 
+		:Throws: :any:`\\OCP\\Files\\InvalidPathException <OCP\\Files\\InvalidPathException>` 
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+		:Throws: :any:`\\OCP\\Files\\InvalidPathException <OCP\\Files\\InvalidPathException>` 
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getPermissions()
+	
+		:Source:
+			`lib/private/Files/Node/Node.php#230 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Node.php#L230>`_
+		
+		
+		:Returns: int 
+		:Throws: :any:`\\OCP\\Files\\InvalidPathException <OCP\\Files\\InvalidPathException>` 
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+		:Throws: :any:`\\OCP\\Files\\InvalidPathException <OCP\\Files\\InvalidPathException>` 
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isReadable()
+	
+		:Source:
+			`lib/private/Files/Node/Node.php#239 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Node.php#L239>`_
+		
+		
+		:Returns: bool 
+		:Throws: :any:`\\OCP\\Files\\InvalidPathException <OCP\\Files\\InvalidPathException>` 
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+		:Throws: :any:`\\OCP\\Files\\InvalidPathException <OCP\\Files\\InvalidPathException>` 
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isUpdateable()
+	
+		:Source:
+			`lib/private/Files/Node/Node.php#248 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Node.php#L248>`_
+		
+		
+		:Returns: bool 
+		:Throws: :any:`\\OCP\\Files\\InvalidPathException <OCP\\Files\\InvalidPathException>` 
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+		:Throws: :any:`\\OCP\\Files\\InvalidPathException <OCP\\Files\\InvalidPathException>` 
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isDeletable()
+	
+		:Source:
+			`lib/private/Files/Node/Node.php#257 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Node.php#L257>`_
+		
+		
+		:Returns: bool 
+		:Throws: :any:`\\OCP\\Files\\InvalidPathException <OCP\\Files\\InvalidPathException>` 
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+		:Throws: :any:`\\OCP\\Files\\InvalidPathException <OCP\\Files\\InvalidPathException>` 
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isShareable()
+	
+		:Source:
+			`lib/private/Files/Node/Node.php#266 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Node.php#L266>`_
+		
+		
+		:Returns: bool 
+		:Throws: :any:`\\OCP\\Files\\InvalidPathException <OCP\\Files\\InvalidPathException>` 
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+		:Throws: :any:`\\OCP\\Files\\InvalidPathException <OCP\\Files\\InvalidPathException>` 
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isCreatable()
+	
+		:Source:
+			`lib/private/Files/Node/Node.php#275 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Node.php#L275>`_
+		
+		
+		:Returns: bool 
+		:Throws: :any:`\\OCP\\Files\\InvalidPathException <OCP\\Files\\InvalidPathException>` 
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+		:Throws: :any:`\\OCP\\Files\\InvalidPathException <OCP\\Files\\InvalidPathException>` 
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getParent()
+	
+		:Source:
+			`lib/private/Files/Node/Node.php#282 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Node.php#L282>`_
+		
+		
+		:Returns: :any:`\\OC\\Files\\Node\\Node <OC\\Files\\Node\\Node>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getName()
+	
+		:Source:
+			`lib/private/Files/Node/Node.php#293 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Node.php#L293>`_
+		
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected normalizePath( $path)
+	
+		:Source:
+			`lib/private/Files/Node/Node.php#301 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Node.php#L301>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isValidPath( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| check if the requested path is valid
+			
+		
+		:Source:
+			`lib/private/Files/Node/Node.php#327 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Node.php#L327>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isMounted()
+	
+		:Source:
+			`lib/private/Files/Node/Node.php#337 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Node.php#L337>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isShared()
+	
+		:Source:
+			`lib/private/Files/Node/Node.php#341 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Node.php#L341>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getMimeType()
+	
+		:Source:
+			`lib/private/Files/Node/Node.php#345 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Node.php#L345>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getMimePart()
+	
+		:Source:
+			`lib/private/Files/Node/Node.php#349 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Node.php#L349>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getType()
+	
+		:Source:
+			`lib/private/Files/Node/Node.php#353 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Node.php#L353>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isEncrypted()
+	
+		:Source:
+			`lib/private/Files/Node/Node.php#357 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Node.php#L357>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getMountPoint()
+	
+		:Source:
+			`lib/private/Files/Node/Node.php#361 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Node.php#L361>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getOwner()
+	
+		:Source:
+			`lib/private/Files/Node/Node.php#365 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Node.php#L365>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getChecksum()
+	
+		:Source:
+			`lib/private/Files/Node/Node.php#369 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Node.php#L369>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getExtension()
+	
+		:Source:
+			`lib/private/Files/Node/Node.php#372 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Node.php#L372>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public lock( $type)
+	
+		:Source:
+			`lib/private/Files/Node/Node.php#380 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Node.php#L380>`_
+		
+		
+		:Parameters:
+			* **$type** (int)  \OCP\Lock\ILockingProvider::LOCK_SHARED or \OCP\Lock\ILockingProvider::LOCK_EXCLUSIVE
+
+		
+		:Throws: :any:`\\OCP\\Lock\\LockedException <OCP\\Lock\\LockedException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public changeLock( $type)
+	
+		:Source:
+			`lib/private/Files/Node/Node.php#388 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Node.php#L388>`_
+		
+		
+		:Parameters:
+			* **$type** (int)  \OCP\Lock\ILockingProvider::LOCK_SHARED or \OCP\Lock\ILockingProvider::LOCK_EXCLUSIVE
+
+		
+		:Throws: :any:`\\OCP\\Lock\\LockedException <OCP\\Lock\\LockedException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public unlock( $type)
+	
+		:Source:
+			`lib/private/Files/Node/Node.php#396 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Node.php#L396>`_
+		
+		
+		:Parameters:
+			* **$type** (int)  \OCP\Lock\ILockingProvider::LOCK_SHARED or \OCP\Lock\ILockingProvider::LOCK_EXCLUSIVE
+
+		
+		:Throws: :any:`\\OCP\\Lock\\LockedException <OCP\\Lock\\LockedException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public copy( $targetPath)
+	
+		:Source:
+			`lib/private/Files/Node/Node.php#407 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Node.php#L407>`_
+		
+		
+		:Parameters:
+			* **$targetPath** (string)  
+
+		
+		:Returns: :any:`\\OC\\Files\\Node\\Node <OC\\Files\\Node\\Node>` 
+		:Throws: :any:`\\OCP\\Files\\InvalidPathException <OCP\\Files\\InvalidPathException>` 
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+		:Throws: :any:`\\OCP\\Files\\NotPermittedException <OCP\\Files\\NotPermittedException>` if copy not allowed or failed
+		:Throws: :any:`\\OCP\\Files\\InvalidPathException <OCP\\Files\\InvalidPathException>` 
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+		:Throws: :any:`\\OCP\\Files\\NotPermittedException <OCP\\Files\\NotPermittedException>` if copy not allowed or failed
+		:Throws: :any:`\\OCP\\Files\\InvalidPathException <OCP\\Files\\InvalidPathException>` 
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+		:Throws: :any:`\\OCP\\Files\\NotPermittedException <OCP\\Files\\NotPermittedException>` if copy not allowed or failed
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public move( $targetPath)
+	
+		:Source:
+			`lib/private/Files/Node/Node.php#434 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Node.php#L434>`_
+		
+		
+		:Parameters:
+			* **$targetPath** (string)  
+
+		
+		:Returns: :any:`\\OC\\Files\\Node\\Node <OC\\Files\\Node\\Node>` 
+		:Throws: :any:`\\OCP\\Files\\InvalidPathException <OCP\\Files\\InvalidPathException>` 
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+		:Throws: :any:`\\OCP\\Files\\NotPermittedException <OCP\\Files\\NotPermittedException>` if move not allowed or failed
+		:Throws: :any:`\\OCP\\Lock\\LockedException <OCP\\Lock\\LockedException>` 
+		:Throws: :any:`\\OCP\\Files\\InvalidPathException <OCP\\Files\\InvalidPathException>` 
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+		:Throws: :any:`\\OCP\\Files\\NotPermittedException <OCP\\Files\\NotPermittedException>` if move not allowed or failed
+		:Throws: :any:`\\OCP\\Lock\\LockedException <OCP\\Lock\\LockedException>` 
+		:Throws: :any:`\\OCP\\Files\\InvalidPathException <OCP\\Files\\InvalidPathException>` 
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+		:Throws: :any:`\\OCP\\Files\\NotPermittedException <OCP\\Files\\NotPermittedException>` if move not allowed or failed
+		:Throws: :any:`\\OCP\\Lock\\LockedException <OCP\\Lock\\LockedException>` 
+		:Throws: :any:`\\OCP\\Files\\InvalidPathException <OCP\\Files\\InvalidPathException>` 
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+		:Throws: :any:`\\OCP\\Files\\NotPermittedException <OCP\\Files\\NotPermittedException>` if move not allowed or failed
+		:Throws: :any:`\\OCP\\Lock\\LockedException <OCP\\Lock\\LockedException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getCreationTime()
+	
+		:Source:
+			`lib/private/Files/Node/Node.php#461 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Node.php#L461>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getUploadTime()
+	
+		:Source:
+			`lib/private/Files/Node/Node.php#465 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Node/Node.php#L465>`_
+		
+		
+	
+	
+

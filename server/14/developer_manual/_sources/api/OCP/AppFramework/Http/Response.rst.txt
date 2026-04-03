@@ -1,0 +1,501 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+Response
+========
+
+
+.. php:namespace:: OCP\AppFramework\Http
+
+.. php:class:: Response
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Base class for responses\. Also used to just send headers\.
+		
+		| It handles headers, HTTP status code, last modified and ETag\.
+		
+	
+	:Source:
+		`lib/public/AppFramework/Http/Response.php#50 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Http/Response.php#L50>`_
+	
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct()
+	
+		:Source:
+			`lib/public/AppFramework/Http/Response.php#102 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Http/Response.php#L102>`_
+		
+		
+		:Since: 17.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public cacheFor( $cacheSeconds, $public=false)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Caches the response
+			
+		
+		:Source:
+			`lib/public/AppFramework/Http/Response.php#112 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Http/Response.php#L112>`_
+		
+		
+		:Parameters:
+			* **$cacheSeconds** (int)  the amount of seconds that should be cached
+			if 0 then caching will be disabled
+
+		
+		:Returns: $this 
+		:Since: 6.0.0 \- return value was added in 7\.0\.0
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public addCookie( $name, $value, $expireDate=null, $sameSite=Lax)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Adds a new cookie to the response
+			
+		
+		:Source:
+			`lib/public/AppFramework/Http/Response.php#144 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Http/Response.php#L144>`_
+		
+		
+		:Parameters:
+			* **$name** (string)  The name of the cookie
+			* **$value** (string)  The value of the cookie
+			* **$expireDate** (:any:`DateTime <DateTime>` | null)  Date on that the cookie should expire, if set
+			to null cookie will be considered as session
+			cookie.
+			* **$sameSite** (string)  The samesite value of the cookie. Defaults to Lax. Other possibilities are Strict or None
+
+		
+		:Returns: $this 
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setCookies( $cookies)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set the specified cookies
+			
+		
+		:Source:
+			`lib/public/AppFramework/Http/Response.php#156 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Http/Response.php#L156>`_
+		
+		
+		:Parameters:
+			* **$cookies** (array)  array('foo' => array('value' => 'bar', 'expire' => null))
+
+		
+		:Returns: $this 
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public invalidateCookie( $name)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Invalidates the specified cookie
+			
+		
+		:Source:
+			`lib/public/AppFramework/Http/Response.php#168 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Http/Response.php#L168>`_
+		
+		
+		:Parameters:
+			* **$name** (string)  
+
+		
+		:Returns: $this 
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public invalidateCookies( $cookieNames)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Invalidates the specified cookies
+			
+		
+		:Source:
+			`lib/public/AppFramework/Http/Response.php#179 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Http/Response.php#L179>`_
+		
+		
+		:Parameters:
+			* **$cookieNames** (array)  array('foo', 'bar')
+
+		
+		:Returns: $this 
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getCookies()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the cookies
+			
+		
+		:Source:
+			`lib/public/AppFramework/Http/Response.php#191 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Http/Response.php#L191>`_
+		
+		
+		:Returns: array 
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public addHeader( $name, $value)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Adds a new header to the response that will be called before the render
+			| function
+			
+		
+		:Source:
+			`lib/public/AppFramework/Http/Response.php#203 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Http/Response.php#L203>`_
+		
+		
+		:Parameters:
+			* **$name** (string)  The name of the HTTP header
+			* **$value** (string)  The value, null will delete it
+
+		
+		:Returns: $this 
+		:Since: 6.0.0 \- return value was added in 7\.0\.0
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setHeaders( $headers)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set the headers
+			
+		
+		:Source:
+			`lib/public/AppFramework/Http/Response.php#236 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Http/Response.php#L236>`_
+		
+		
+		:Parameters:
+			* **$headers** (array)  value header pairs
+
+		
+		:Returns: $this 
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getHeaders()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the set headers
+			
+		
+		:Source:
+			`lib/public/AppFramework/Http/Response.php#248 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Http/Response.php#L248>`_
+		
+		
+		:Returns: array the headers
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public render()
+	
+		.. rst-class:: phpdoc-description
+		
+			| By default renders no output
+			
+		
+		:Source:
+			`lib/public/AppFramework/Http/Response.php#273 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Http/Response.php#L273>`_
+		
+		
+		:Returns: string 
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setStatus( $status)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set response status
+			
+		
+		:Source:
+			`lib/public/AppFramework/Http/Response.php#284 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Http/Response.php#L284>`_
+		
+		
+		:Parameters:
+			* **$status** (int)  a HTTP status code, see also the STATUS constants
+
+		
+		:Returns: :any:`\\OCP\\AppFramework\\Http\\Response <OCP\\AppFramework\\Http\\Response>` Reference to this object
+		:Since: 6.0.0 \- return value was added in 7\.0\.0
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setContentSecurityPolicy( $csp)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set a Content\-Security\-Policy
+			
+		
+		:Source:
+			`lib/public/AppFramework/Http/Response.php#296 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Http/Response.php#L296>`_
+		
+		
+		:Parameters:
+			* **$csp** (:any:`OCP\\AppFramework\\Http\\EmptyContentSecurityPolicy <OCP\\AppFramework\\Http\\EmptyContentSecurityPolicy>`)  Policy to set for the response object
+
+		
+		:Returns: $this 
+		:Since: 8.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getContentSecurityPolicy()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the currently used Content\-Security\-Policy
+			
+		
+		:Source:
+			`lib/public/AppFramework/Http/Response.php#307 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Http/Response.php#L307>`_
+		
+		
+		:Returns: :any:`\\OCP\\AppFramework\\Http\\EmptyContentSecurityPolicy <OCP\\AppFramework\\Http\\EmptyContentSecurityPolicy>` | null Used Content\-Security\-Policy or null if
+			none specified\.
+		
+		:Since: 8.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getFeaturePolicy()
+	
+		:Source:
+			`lib/public/AppFramework/Http/Response.php#318 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Http/Response.php#L318>`_
+		
+		
+		:Since: 17.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setFeaturePolicy( $featurePolicy)
+	
+		:Source:
+			`lib/public/AppFramework/Http/Response.php#328 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Http/Response.php#L328>`_
+		
+		
+		:Since: 17.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getStatus()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get response status
+			
+		
+		:Source:
+			`lib/public/AppFramework/Http/Response.php#340 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Http/Response.php#L340>`_
+		
+		
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getETag()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the ETag
+			
+		
+		:Source:
+			`lib/public/AppFramework/Http/Response.php#350 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Http/Response.php#L350>`_
+		
+		
+		:Returns: string the etag
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getLastModified()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get "last modified" date
+			
+		
+		:Source:
+			`lib/public/AppFramework/Http/Response.php#360 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Http/Response.php#L360>`_
+		
+		
+		:Returns: :any:`\\DateTime <DateTime>` RFC2822 formatted last modified date
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setETag( $ETag)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set the ETag
+			
+		
+		:Source:
+			`lib/public/AppFramework/Http/Response.php#371 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Http/Response.php#L371>`_
+		
+		
+		:Parameters:
+			* **$ETag** (string)  
+
+		
+		:Returns: :any:`\\OCP\\AppFramework\\Http\\Response <OCP\\AppFramework\\Http\\Response>` Reference to this object
+		:Since: 6.0.0 \- return value was added in 7\.0\.0
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setLastModified( $lastModified)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set "last modified" date
+			
+		
+		:Source:
+			`lib/public/AppFramework/Http/Response.php#384 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Http/Response.php#L384>`_
+		
+		
+		:Parameters:
+			* **$lastModified** (:any:`DateTime <DateTime>`)  
+
+		
+		:Returns: :any:`\\OCP\\AppFramework\\Http\\Response <OCP\\AppFramework\\Http\\Response>` Reference to this object
+		:Since: 6.0.0 \- return value was added in 7\.0\.0
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public throttle( $metadata=\[\])
+	
+		.. rst-class:: phpdoc-description
+		
+			| Marks the response as to throttle\. Will be throttled when the
+			
+		
+		:Source:
+			`lib/public/AppFramework/Http/Response.php#397 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Http/Response.php#L397>`_
+		
+		
+		:Parameters:
+			* **$metadata** (array)  
+
+		
+		:Since: 12.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getThrottleMetadata()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the throttle metadata, defaults to empty array
+			
+		
+		:Source:
+			`lib/public/AppFramework/Http/Response.php#408 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Http/Response.php#L408>`_
+		
+		
+		:Returns: array 
+		:Since: 13.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isThrottled()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Whether the current response is throttled\.
+			
+		
+		:Source:
+			`lib/public/AppFramework/Http/Response.php#417 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Http/Response.php#L417>`_
+		
+		
+		:Since: 12.0.0 
+	
+	
+

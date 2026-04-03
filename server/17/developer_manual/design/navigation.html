@@ -1,0 +1,755 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Introduction &mdash; Nextcloud latest Developer Manual latest documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'latest',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Main content" href="content.html" />
+    <link rel="prev" title="Design guidelines" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../general/index.html">General contributor guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/index.html">App development</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Design guidelines</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#new-button">New button</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#basic-layout">Basic layout</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#rules">Rules</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#app-navigation-menu">App navigation menu</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">Basic layout</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#basic-rules">Basic rules</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#utils-menu-counter-buttons">Utils: menu, counter &amp; buttons</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#menu">Menu</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#counter">Counter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#buttons">Buttons</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#drag-and-drop">Drag and drop</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#collapsible-entry">Collapsible entry</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#entry-bullet">Entry bullet</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#undo-entry">Undo entry</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#edit-entry">Edit entry</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pinned-entry">Pinned entry</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#various-information">Various information</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#settings">Settings</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id5">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">Basic layout</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="content.html">Main content</a></li>
+<li class="toctree-l2"><a class="reference internal" href="list.html">Content list</a></li>
+<li class="toctree-l2"><a class="reference internal" href="popovermenu.html">Popover menu</a></li>
+<li class="toctree-l2"><a class="reference internal" href="html.html">HTML elements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="css.html">SCSS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="icons.html">Icons</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../android_library/index.html">Android application development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client_apis/index.html">Client APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../core/index.html">Core development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bugtracker/index.html">Bugtracker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../commun/index.html">Help and communication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API Documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Nextcloud latest Developer Manual</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Design guidelines</a> &raquo;</li>
+        
+      <li>Introduction</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/nextcloud/documentation/edit/master/developer_manual/design/navigation.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="introduction">
+<span id="newbutton"></span><span id="navigation"></span><h1>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h1>
+<p>The navigation section of any Nextcloud app is the left sidebar.
+It is basically composed of</p>
+<ul class="simple">
+<li>a primary action button</li>
+<li>a menu</li>
+<li>a settings area</li>
+</ul>
+<p>The primary action button and the settings area are optional.</p>
+</div>
+<div class="section" id="new-button">
+<h1>New button<a class="headerlink" href="#new-button" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id1">
+<h2>Introduction<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>A primary action button is just a stylised button located above the navigation part of your app.
+The goal is to have an homogeneity of design across all apps using this button.</p>
+</div>
+<div class="section" id="basic-layout">
+<h2>Basic layout<a class="headerlink" href="#basic-layout" title="Permalink to this headline">¶</a></h2>
+<div class="figure-with-code figure">
+<img alt="Navigation with a new button" src="../_images/newbutton.png" />
+</div>
+<div class="highlight-html"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;app-navigation&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;app-navigation-new&quot;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">button</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;button&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;icon-add&quot;</span><span class="p">&gt;</span>
+            Add user
+        <span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+
+    <span class="c">&lt;!-- Your navigation here --&gt;</span>
+    <span class="c">&lt;!-- Your settings here --&gt;</span>
+
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="rules">
+<h2>Rules<a class="headerlink" href="#rules" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Stay simple, don&#8217;t use overcomplicated text in this button.</li>
+<li>Avoid using sentences longer than one line.</li>
+<li>Do not edit the styling of this button.</li>
+<li>Only <strong>one</strong> button is allowed here.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="app-navigation-menu">
+<span id="appnavigation"></span><h1>App navigation menu<a class="headerlink" href="#app-navigation-menu" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id2">
+<h2>Introduction<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>The main navigation menu represents the main navigation of your app.</p>
+<p>It needs to be:</p>
+<ul class="simple">
+<li>Organised</li>
+<li>Simple</li>
+<li>Responsive</li>
+</ul>
+<p>Nextcloud provides a very organized way of building menus.
+We implemented various essential functions and provide easy way of using them.</p>
+</div>
+<div class="section" id="id3">
+<h2>Basic layout<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<div class="figure-with-code figure">
+<img alt="Navigation screenshot" src="../_images/navigation.png" />
+</div>
+<div class="highlight-html"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;app-navigation&quot;</span><span class="p">&gt;</span>
+
+    <span class="c">&lt;!-- Your primary action button here --&gt;</span>
+
+    <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;#&quot;</span><span class="p">&gt;</span>First level entry<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;#&quot;</span><span class="p">&gt;</span>First level container<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;#&quot;</span><span class="p">&gt;</span>Second level entry<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;#&quot;</span><span class="p">&gt;</span>Second level entry<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+            <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+
+    <span class="c">&lt;!-- Your settings here --&gt;</span>
+
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="basic-rules">
+<h2>Basic rules<a class="headerlink" href="#basic-rules" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>You can <strong>not</strong> change the default padding of the navigation elements.</li>
+<li>We encourage you to add icons on every top-level item of your navigation for accessibility.</li>
+<li>Do <strong>not</strong> override the default structure and/or CSS. Everything has been carefully tuned.</li>
+</ul>
+</div>
+<div class="section" id="utils-menu-counter-buttons">
+<h2>Utils: menu, counter &amp; buttons<a class="headerlink" href="#utils-menu-counter-buttons" title="Permalink to this headline">¶</a></h2>
+<p>Each entry is allowed to have a counter and/or a button for user interaction.</p>
+<ul class="simple">
+<li>The <code class="docutils literal"><span class="pre">app-navigation-entry-utils</span></code> snippet need to be placed right next to the main link of your entry.</li>
+<li><dl class="first docutils">
+<dt>Maximum <strong>two</strong> items are allowed into the utils section. You can have:</dt>
+<dd><ul class="first last">
+<li>Two <a class="reference internal" href="#navigation-buttons"><span class="std std-ref">buttons</span></a></li>
+<li>One <a class="reference internal" href="#navigation-buttons"><span class="std std-ref">button</span></a> and one <a class="reference internal" href="#navigation-counter"><span class="std std-ref">button</span></a></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li>You <strong>can&#8217;t</strong> have more than two buttons, if you need more, you need to add a menu.</li>
+<li>The order of the button and the counter are <strong>not</strong> interchangeable. You need to put the counter before the menu.</li>
+</ul>
+<div class="highlight-html"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;app-navigation-entry-utils&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">li</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;app-navigation-entry-utils-counter&quot;</span><span class="p">&gt;</span>1<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">li</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;app-navigation-entry-utils-menu-button&quot;</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">button</span><span class="p">&gt;&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<div class="section" id="menu">
+<span id="navigation-menu"></span><h3>Menu<a class="headerlink" href="#menu" title="Permalink to this headline">¶</a></h3>
+<p>If you need to add a few interactions for your entry, you can put everything in a popover menu.
+The menu needs to be placed after the <code class="docutils literal"><span class="pre">app-navigation-entry-utils</span></code>.</p>
+<p>For the global rules and/or layout, you can check the dedicated <a class="reference internal" href="popovermenu.html#popovermenu"><span class="std std-ref">popover menu section</span></a>.</p>
+<div class="figure-with-code figure">
+<img alt="Navigation menu" src="../_images/navigation-menu.png" />
+</div>
+<div class="highlight-html"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;app-navigation-entry-menu&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;#&quot;</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;icon-add&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">span</span><span class="p">&gt;</span>Add<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+            <span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;#&quot;</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;icon-rename&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">span</span><span class="p">&gt;</span>Edit<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+            <span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;#&quot;</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">span</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;icon-delete&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">span</span><span class="p">&gt;</span>Remove<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;</span>
+            <span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>The menu is hidden by default and has to be triggered by adding the <code class="docutils literal"><span class="pre">open</span></code> class to the <code class="docutils literal"><span class="pre">app-navigation-entry-menu</span></code> div.
+In case of AngularJS the following small directive can be added to handle all the display and click logic out of the box:</p>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="nx">app</span><span class="p">.</span><span class="nx">run</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">$document</span><span class="p">,</span> <span class="nx">$rootScope</span><span class="p">)</span> <span class="p">{</span>
+    <span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
+    <span class="nx">$document</span><span class="p">.</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span> <span class="p">(</span><span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">$rootScope</span><span class="p">.</span><span class="nx">$broadcast</span><span class="p">(</span><span class="s1">&#39;documentClicked&#39;</span><span class="p">,</span> <span class="nx">event</span><span class="p">);</span>
+    <span class="p">});</span>
+<span class="p">});</span>
+
+<span class="nx">app</span><span class="p">.</span><span class="nx">directive</span><span class="p">(</span><span class="s1">&#39;appNavigationEntryUtils&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="nx">restrict</span><span class="o">:</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span>
+        <span class="nx">link</span><span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">scope</span><span class="p">,</span> <span class="nx">elm</span><span class="p">)</span> <span class="p">{</span>
+            <span class="kd">var</span> <span class="nx">menu</span> <span class="o">=</span> <span class="nx">elm</span><span class="p">.</span><span class="nx">siblings</span><span class="p">(</span><span class="s1">&#39;.app-navigation-entry-menu&#39;</span><span class="p">);</span>
+            <span class="kd">var</span> <span class="nx">button</span> <span class="o">=</span> <span class="nx">$</span><span class="p">(</span><span class="nx">elm</span><span class="p">)</span>
+                <span class="p">.</span><span class="nx">find</span><span class="p">(</span><span class="s1">&#39;.app-navigation-entry-utils-menu-button button&#39;</span><span class="p">);</span>
+
+            <span class="nx">button</span><span class="p">.</span><span class="nx">click</span><span class="p">(</span><span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+                <span class="nx">menu</span><span class="p">.</span><span class="nx">toggleClass</span><span class="p">(</span><span class="s1">&#39;open&#39;</span><span class="p">);</span>
+            <span class="p">});</span>
+
+            <span class="nx">scope</span><span class="p">.</span><span class="nx">$on</span><span class="p">(</span><span class="s1">&#39;documentClicked&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">scope</span><span class="p">,</span> <span class="nx">event</span><span class="p">)</span> <span class="p">{</span>
+                <span class="k">if</span> <span class="p">(</span><span class="nx">event</span><span class="p">.</span><span class="nx">target</span> <span class="o">!==</span> <span class="nx">button</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="p">{</span>
+                    <span class="nx">menu</span><span class="p">.</span><span class="nx">removeClass</span><span class="p">(</span><span class="s1">&#39;open&#39;</span><span class="p">);</span>
+                <span class="p">}</span>
+            <span class="p">});</span>
+        <span class="p">}</span>
+    <span class="p">};</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="counter">
+<span id="navigation-counter"></span><h3>Counter<a class="headerlink" href="#counter" title="Permalink to this headline">¶</a></h3>
+<p>If you need to add a counter to your menu entry, you can simply use this structure.
+Do not change the alignment of the text. If you&#8217;re using</p>
+<div class="figure-with-code figure">
+<img alt="Navigation entry with counter" src="../_images/navigation-counter.png" />
+</div>
+<div class="highlight-html"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">li</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;app-navigation-entry-utils-counter&quot;</span><span class="p">&gt;</span>1<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<p>The counter should be limited to 999 and turn to 999+ if any higher number is given. If AngularJS is used the following filter can be used to get the correct behavior:</p>
+<div class="highlight-js"><div class="highlight"><pre><span></span><span class="nx">app</span><span class="p">.</span><span class="nx">filter</span><span class="p">(</span><span class="s1">&#39;counterFormatter&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+    <span class="s1">&#39;use strict&#39;</span><span class="p">;</span>
+    <span class="k">return</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">count</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nx">count</span> <span class="o">&gt;</span> <span class="mi">999</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="s1">&#39;999+&#39;</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="k">return</span> <span class="nx">count</span><span class="p">;</span>
+    <span class="p">};</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+<p>Use it like this:</p>
+<div class="highlight-html"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">li</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;app-navigation-entry-utils-counter&quot;</span><span class="p">&gt;</span>{{ count | counterFormatter }}<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+<div class="section" id="highlighted-counter">
+<h4>Highlighted counter<a class="headerlink" href="#highlighted-counter" title="Permalink to this headline">¶</a></h4>
+<p>The counter can also be highlighted to attract some focus, e.g. for unread chat messages</p>
+<div class="figure-with-code figure">
+<img alt="Navigation entry with highlighted counter" src="../_images/navigation-counter-highlighted.png" />
+</div>
+<div class="highlight-html"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">li</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;app-navigation-entry-utils-counter highlighted&quot;</span><span class="p">&gt;&lt;</span><span class="nt">span</span><span class="p">&gt;</span>99+<span class="p">&lt;/</span><span class="nt">span</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="buttons">
+<span id="navigation-buttons"></span><h3>Buttons<a class="headerlink" href="#buttons" title="Permalink to this headline">¶</a></h3>
+<p>The same way we display the menu three-dot-icon button, you&#8217;re allowed to use up to 2 buttons in a single entry.</p>
+<ul class="simple">
+<li>The icon class goes directly on the <code class="docutils literal"><span class="pre">button</span></code> element.</li>
+<li>If no class is set, the three-dot-icon will be used by default</li>
+</ul>
+<div class="figure-with-code figure">
+<img alt="Navigation entry with counter" src="../_images/navigation-buttons.png" />
+</div>
+<div class="highlight-html"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;app-navigation-entry-utils&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">li</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;app-navigation-entry-utils-menu-button&quot;</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">button</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;icon-edit&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">li</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;app-navigation-entry-utils-menu-button&quot;</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">button</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;icon-delete&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="drag-and-drop">
+<h2>Drag and drop<a class="headerlink" href="#drag-and-drop" title="Permalink to this headline">¶</a></h2>
+<p>The class which should be applied to a first level element <strong>li</strong> that hosts or can host a second level is <strong>drag-and-drop</strong>.
+This will cause the hovered entry to slide down giving a visual hint that it can accept the dragged element.
+In case of jQuery UI&#8217;s droppable feature, the <strong>hoverClass</strong> option should be set to the <strong>drag-and-drop</strong> class.</p>
+<div class="highlight-html"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;app-navigation&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;#&quot;</span><span class="p">&gt;</span>First level entry<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">li</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;drag-and-drop&quot;</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;#&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;icon-folder&quot;</span><span class="p">&gt;</span>Folder name<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;#&quot;</span><span class="p">&gt;</span>Folder contents<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;#&quot;</span><span class="p">&gt;</span>Folder contents<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+            <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="collapsible-entry">
+<h2>Collapsible entry<a class="headerlink" href="#collapsible-entry" title="Permalink to this headline">¶</a></h2>
+<p>By default, all sub-entries are shown.
+This behavior can be changed by creating a collapsible menu.
+This way, the menu will be hidden and an arrow will be added in in front of it (replacing the icon if any).</p>
+<p>The opening of the menu is activated and animated by the class <code class="docutils literal"><span class="pre">open</span></code> on the main <code class="docutils literal"><span class="pre">li</span></code>.</p>
+<ul class="simple">
+<li>You can <strong>not</strong> have a collapsible menu on a sub-item, this can only exist on a top-level element.</li>
+<li>You can set the open class by default if you want.</li>
+<li>Do <strong>not</strong> use the collapsible menu if your element does not have sub-items.</li>
+<li>You <strong>still</strong> need to use JS to handle the click event.</li>
+</ul>
+<div class="admonition important">
+<p class="first admonition-title">Important</p>
+<ul class="last simple">
+<li>If your top-level link is only used as a header, the <strong>entire</strong> <code class="docutils literal"><span class="pre">a</span></code> needs to be used to toggle the <code class="docutils literal"><span class="pre">open</span></code> class.</li>
+<li>If your top-level link is used to redirect the user or to trigger something else, you <strong>need</strong> to add the collapsible button and use it as the <code class="docutils literal"><span class="pre">open</span></code> class toggle trigger.</li>
+</ul>
+</div>
+<div class="figure-with-code figure">
+<img alt="Collapsible navigation entry" src="../_images/navigation-collapsible.gif" />
+</div>
+<div class="highlight-html"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">li</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;collapsible open&quot;</span><span class="p">&gt;</span>
+
+    <span class="c">&lt;!-- This is optional --&gt;</span>
+    <span class="p">&lt;</span><span class="nt">button</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;collapse&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+
+    <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;#&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;icon-folder&quot;</span><span class="p">&gt;</span>Folder collapsed menu<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;#&quot;</span><span class="p">&gt;</span>Simple entry<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;#&quot;</span><span class="p">&gt;</span>Simple entry<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;#&quot;</span><span class="p">&gt;</span>Simple entry<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">a</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;icon-folder&quot;</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;#&quot;</span><span class="p">&gt;</span>Simple folder<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="entry-bullet">
+<h2>Entry bullet<a class="headerlink" href="#entry-bullet" title="Permalink to this headline">¶</a></h2>
+<p>Every entry can have a colored marker in front of it.
+We call it a <cite>bullet</cite>.</p>
+<ul class="simple">
+<li>You can <strong>not</strong> combine an icon with a bullet.</li>
+<li>You need to use the CSS to define the bullet color.</li>
+</ul>
+<div class="figure-with-code figure">
+<img alt="Navigation entry with bullet" src="../_images/navigation-bullet.png" />
+</div>
+<div class="highlight-html"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;app-navigation-entry-bullet&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;#&quot;</span><span class="p">&gt;</span>Entry with bullet<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="undo-entry">
+<h2>Undo entry<a class="headerlink" href="#undo-entry" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Undo entries can be used on any level you want.</li>
+<li>When an entry is deleted, please use the usual <strong>7 seconds delay feedback</strong> before final deletion.</li>
+<li>Please use the sentence <em>Deleted XXXX</em> as the feedback message.</li>
+<li>You need to use the <code class="docutils literal"><span class="pre">deleted</span></code> class to trigger the animated hide/show of the undo entry.</li>
+</ul>
+<div class="figure-with-code figure">
+<img alt="Navigation entry with undo action" src="../_images/navigation-undo.gif" />
+</div>
+<div class="highlight-html"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">li</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;deleted&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;#&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;hidden&quot;</span><span class="p">&gt;</span>Important entry<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;app-navigation-entry-utils&quot;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">li</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;app-navigation-entry-utils-menu-button&quot;</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">button</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;icon-delete&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+            <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;app-navigation-entry-deleted&quot;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;app-navigation-entry-deleted-description&quot;</span><span class="p">&gt;</span>Deleted important entry<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">button</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;app-navigation-entry-deleted-button icon-history&quot;</span> <span class="na">title</span><span class="o">=</span><span class="s">&quot;Undo&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="edit-entry">
+<h2>Edit entry<a class="headerlink" href="#edit-entry" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Editable entries can be used on any level you want.</li>
+<li>You can replace the <code class="docutils literal"><span class="pre">form</span></code> by a <code class="docutils literal"><span class="pre">div</span></code> if you wish to do your request with JS.</li>
+<li>You need to use the <code class="docutils literal"><span class="pre">editing</span></code> class to trigger the animated hide/show of the input.</li>
+<li>You&#8217;re allowed to use only one submit input. It <strong>must</strong> be the validation button.</li>
+<li>The input <strong>must</strong> have the same value as the entry link text.</li>
+</ul>
+<div class="figure-with-code figure">
+<img alt="Editable navigation entry" src="../_images/navigation-edit.gif" />
+</div>
+<div class="highlight-html"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">li</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;editing&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;#&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;icon-folder&quot;</span><span class="p">&gt;</span>Folder entry<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;app-navigation-entry-utils&quot;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">li</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;app-navigation-entry-utils-menu-button&quot;</span><span class="p">&gt;</span>
+                <span class="p">&lt;</span><span class="nt">button</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;icon-rename&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+            <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;app-navigation-entry-edit&quot;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">form</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;text&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;Folder entry&quot;</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;submit&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;icon-close&quot;</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">input</span> <span class="na">type</span><span class="o">=</span><span class="s">&quot;submit&quot;</span> <span class="na">value</span><span class="o">=</span><span class="s">&quot;&quot;</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;icon-checkmark&quot;</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">form</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="pinned-entry">
+<h2>Pinned entry<a class="headerlink" href="#pinned-entry" title="Permalink to this headline">¶</a></h2>
+<p>Every top-level entry can be <cite>pinned</cite> at the bottom.</p>
+<ul class="simple">
+<li>All the pinned entries can be mixed between non-pinned entries.</li>
+<li>All the pinned entries <strong>must</strong> have the <code class="docutils literal"><span class="pre">pinned</span></code> class.</li>
+<li>The <strong>first</strong> pinned entry <strong>must</strong> also have the <code class="docutils literal"><span class="pre">first-pinned</span></code> class.</li>
+</ul>
+<div class="figure-with-code figure">
+<img alt="Pinned navigation entries" src="../_images/navigation-pinned.png" />
+</div>
+<div class="highlight-html"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">ul</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;#&quot;</span><span class="p">&gt;</span>Non-pinned entry<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;#&quot;</span><span class="p">&gt;</span>Non-pinned entry<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">li</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;pinned first-pinned&quot;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;#&quot;</span><span class="p">&gt;</span>Pinned entry<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">li</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;pinned&quot;</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;#&quot;</span><span class="p">&gt;</span>Pinned entry<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;#&quot;</span><span class="p">&gt;</span>Non-pinned entry<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">li</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;#&quot;</span><span class="p">&gt;</span>Non-pinned entry<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">li</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;pinned&quot;</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;#&quot;</span><span class="p">&gt;</span>Pinned entry<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">li</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;pinned&quot;</span><span class="p">&gt;&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;#&quot;</span><span class="p">&gt;</span>Pinned entry<span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;&lt;/</span><span class="nt">li</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">ul</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="various-information">
+<h2>Various information<a class="headerlink" href="#various-information" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>You can add the <code class="docutils literal"><span class="pre">icon-loading-small</span></code> class to any <code class="docutils literal"><span class="pre">li</span></code> element to set it in a <cite>loading</cite> state.</li>
+<li>Every element as a <code class="docutils literal"><span class="pre">min-height</span></code> of 44px as that is the minimum recommended touch target. It also helps with clickability and separation on desktop environments.</li>
+</ul>
+</div>
+</div>
+<div class="section" id="settings">
+<span id="id4"></span><h1>Settings<a class="headerlink" href="#settings" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id5">
+<h2>Introduction<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<p>To create a settings area create a div with the id <code class="docutils literal"><span class="pre">app-settings</span></code> inside the <code class="docutils literal"><span class="pre">app-navigation</span></code> div.</p>
+<ul class="simple">
+<li>The data attribute <code class="docutils literal"><span class="pre">data-apps-slide-toggle</span></code> slides up a target area using a jQuery selector and hides the area if the user clicks outside of it.</li>
+<li>Max height of the settings area is 300px. Do <strong>not</strong> change that.</li>
+<li>Keep it clear, organized and simple.</li>
+</ul>
+</div>
+<div class="section" id="id6">
+<h2>Basic layout<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<div class="figure-with-code figure">
+<img alt="Settings" src="../_images/settings.gif" />
+</div>
+<div class="highlight-html"><div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;app-navigation&quot;</span><span class="p">&gt;</span>
+
+    <span class="c">&lt;!-- Your primary action button here --&gt;</span>
+    <span class="c">&lt;!-- Your navigation here --&gt;</span>
+
+    <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;app-settings&quot;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;app-settings-header&quot;</span><span class="p">&gt;</span>
+            <span class="p">&lt;</span><span class="nt">button</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;settings-button&quot;</span>
+                    <span class="na">data-apps-slide-toggle</span><span class="o">=</span><span class="s">&quot;#app-settings-content&quot;</span><span class="p">&gt;</span>
+                Settings
+            <span class="p">&lt;/</span><span class="nt">button</span><span class="p">&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">div</span> <span class="na">id</span><span class="o">=</span><span class="s">&quot;app-settings-content&quot;</span><span class="p">&gt;</span>
+            <span class="c">&lt;!-- Your settings content here --&gt;</span>
+        <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="content.html" class="btn btn-neutral float-right" title="Main content" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="index.html" class="btn btn-neutral float-left" title="Design guidelines" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021 Nextcloud GmbH.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/16/developer_manual">16</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/17/developer_manual">17</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/18/developer_manual">18</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/19/developer_manual">19</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/developer_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/developer_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+   
+
+</body>
+</html>

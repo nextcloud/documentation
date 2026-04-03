@@ -1,0 +1,135 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+ControllerMethodReflector
+=========================
+
+
+.. php:namespace:: OC\AppFramework\Utility
+
+.. php:class:: ControllerMethodReflector
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Reads and parses annotations from doc comments
+		
+	
+	:Source:
+		`lib/private/AppFramework/Utility/ControllerMethodReflector.php#42 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Utility/ControllerMethodReflector.php#L42>`_
+	
+	:Implements:
+		:php:interface:`OCP\\AppFramework\\Utility\\IControllerMethodReflector` 
+	
+
+Properties
+----------
+
+.. php:attr:: public static annotations
+
+	:Source:
+		`lib/private/AppFramework/Utility/ControllerMethodReflector.php#43 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Utility/ControllerMethodReflector.php#L43>`_
+	
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public reflect( $object, $method)
+	
+		:Source:
+			`lib/private/AppFramework/Utility/ControllerMethodReflector.php#51 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Utility/ControllerMethodReflector.php#L51>`_
+		
+		
+		:Parameters:
+			* **$object** (object)  an object or classname
+			* **$method** (string)  the method which we want to inspect
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getType( $parameter)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Inspects the PHPDoc parameters for types
+			
+		
+		:Source:
+			`lib/private/AppFramework/Utility/ControllerMethodReflector.php#102 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Utility/ControllerMethodReflector.php#L102>`_
+		
+		
+		:Parameters:
+			* **$parameter** (string)  the parameter whose type comments should be
+			parsed
+
+		
+		:Returns: string | null type in the type parameters \(@param int $something\)
+			would return int or null if not existing
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getParameters()
+	
+		:Source:
+			`lib/private/AppFramework/Utility/ControllerMethodReflector.php#113 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Utility/ControllerMethodReflector.php#L113>`_
+		
+		
+		:Returns: array the arguments of the method with key =\> default value
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public hasAnnotation( $name)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check if a method contains an annotation
+			
+		
+		:Source:
+			`lib/private/AppFramework/Utility/ControllerMethodReflector.php#122 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Utility/ControllerMethodReflector.php#L122>`_
+		
+		
+		:Parameters:
+			* **$name** (string)  the name of the annotation
+
+		
+		:Returns: bool true if the annotation is found
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getAnnotationParameter( $name, $key)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get optional annotation parameter by key
+			
+		
+		:Source:
+			`lib/private/AppFramework/Utility/ControllerMethodReflector.php#134 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Utility/ControllerMethodReflector.php#L134>`_
+		
+		
+		:Parameters:
+			* **$name** (string)  the name of the annotation
+			* **$key** (string)  the string of the annotation
+
+		
+		:Returns: string 
+	
+	
+

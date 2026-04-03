@@ -1,0 +1,242 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+Throttler
+=========
+
+
+.. php:namespace:: OC\Security\Bruteforce
+
+.. php:class:: Throttler
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Class Throttler implements the bruteforce protection for security actions in
+		| Nextcloud\.
+		
+		| It is working by logging invalid login attempts to the database and slowing
+		| down all login attempts from the same subnet\. The max delay is 30 seconds and
+		| the starting delay are 200 milliseconds\. \(after the first failed login\)
+		| 
+		| This is based on Paragonie\'s AirBrake for Airship CMS\. You can find the original
+		| code at https://github\.com/paragonie/airship/blob/7e5bad7e3c0fbbf324c11f963fd1f80e59762606/src/Engine/Security/AirBrake\.php
+		
+	
+	:Source:
+		`lib/private/Security/Bruteforce/Throttler.php#56 <https://github.com/nextcloud/server/blob/stable13/lib/private/Security/Bruteforce/Throttler.php#L56>`_
+	
+
+Constants
+---------
+
+.. php:const:: LOGIN_ACTION = login
+
+	:Source:
+		`lib/private/Security/Bruteforce/Throttler.php#57 <https://github.com/nextcloud/server/blob/stable13/lib/private/Security/Bruteforce/Throttler.php#L57>`_
+	
+
+
+.. php:const:: MAX_DELAY = 25
+
+	:Source:
+		`lib/private/Security/Bruteforce/Throttler.php#58 <https://github.com/nextcloud/server/blob/stable13/lib/private/Security/Bruteforce/Throttler.php#L58>`_
+	
+
+
+.. php:const:: MAX_DELAY_MS = 25000
+
+	:Source:
+		`lib/private/Security/Bruteforce/Throttler.php#59 <https://github.com/nextcloud/server/blob/stable13/lib/private/Security/Bruteforce/Throttler.php#L59>`_
+	
+
+
+.. php:const:: MAX_ATTEMPTS = 10
+
+	:Source:
+		`lib/private/Security/Bruteforce/Throttler.php#60 <https://github.com/nextcloud/server/blob/stable13/lib/private/Security/Bruteforce/Throttler.php#L60>`_
+	
+
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $db, $timeFactory, $logger, $config)
+	
+		:Source:
+			`lib/private/Security/Bruteforce/Throttler.php#77 <https://github.com/nextcloud/server/blob/stable13/lib/private/Security/Bruteforce/Throttler.php#L77>`_
+		
+		
+		:Parameters:
+			* **$db** (:any:`OCP\\IDBConnection <OCP\\IDBConnection>`)  
+			* **$timeFactory** (:any:`OCP\\AppFramework\\Utility\\ITimeFactory <OCP\\AppFramework\\Utility\\ITimeFactory>`)  
+			* **$logger** (:any:`OCP\\ILogger <OCP\\ILogger>`)  
+			* **$config** (:any:`OCP\\IConfig <OCP\\IConfig>`)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public registerAttempt( $action, $ip, $metadata=\[\])
+	
+		.. rst-class:: phpdoc-description
+		
+			| Register a failed attempt to bruteforce a security control
+			
+		
+		:Source:
+			`lib/private/Security/Bruteforce/Throttler.php#119 <https://github.com/nextcloud/server/blob/stable13/lib/private/Security/Bruteforce/Throttler.php#L119>`_
+		
+		
+		:Parameters:
+			* **$action** (string)  
+			* **$ip** (string)  
+			* **$metadata** (array)  Optional metadata logged to the database
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getAttempts( $ip, $action="", $maxAgeHours=12)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the throttling delay \(in milliseconds\)
+			
+		
+		:Source:
+			`lib/private/Security/Bruteforce/Throttler.php#228 <https://github.com/nextcloud/server/blob/stable13/lib/private/Security/Bruteforce/Throttler.php#L228>`_
+		
+		
+		:Parameters:
+			* **$ip** (string)  
+			* **$action** (string)  optionally filter by action
+			* **$maxAgeHours** (float)  
+
+		
+		:Returns: int 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getDelay( $ip, $action="")
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the throttling delay \(in milliseconds\)
+			
+		
+		:Source:
+			`lib/private/Security/Bruteforce/Throttler.php#269 <https://github.com/nextcloud/server/blob/stable13/lib/private/Security/Bruteforce/Throttler.php#L269>`_
+		
+		
+		:Parameters:
+			* **$ip** (string)  
+			* **$action** (string)  optionally filter by action
+
+		
+		:Returns: int 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public resetDelay( $ip, $action, $metadata)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Reset the throttling delay for an IP address, action and metadata
+			
+		
+		:Source:
+			`lib/private/Security/Bruteforce/Throttler.php#295 <https://github.com/nextcloud/server/blob/stable13/lib/private/Security/Bruteforce/Throttler.php#L295>`_
+		
+		
+		:Parameters:
+			* **$ip** (string)  
+			* **$action** (string)  
+			* **$metadata** (array)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public resetDelayForIP( $ip)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Reset the throttling delay for an IP address
+			
+		
+		:Source:
+			`lib/private/Security/Bruteforce/Throttler.php#318 <https://github.com/nextcloud/server/blob/stable13/lib/private/Security/Bruteforce/Throttler.php#L318>`_
+		
+		
+		:Parameters:
+			* **$ip** (string)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public sleepDelay( $ip, $action="")
+	
+		.. rst-class:: phpdoc-description
+		
+			| Will sleep for the defined amount of time
+			
+		
+		:Source:
+			`lib/private/Security/Bruteforce/Throttler.php#336 <https://github.com/nextcloud/server/blob/stable13/lib/private/Security/Bruteforce/Throttler.php#L336>`_
+		
+		
+		:Parameters:
+			* **$ip** (string)  
+			* **$action** (string)  optionally filter by action
+
+		
+		:Returns: int the time spent sleeping
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public sleepDelayOrThrowOnMax( $ip, $action="")
+	
+		.. rst-class:: phpdoc-description
+		
+			| Will sleep for the defined amount of time unless maximum was reached in the last 30 minutes
+			| In this case a "429 Too Many Request" exception is thrown
+			
+		
+		:Source:
+			`lib/private/Security/Bruteforce/Throttler.php#351 <https://github.com/nextcloud/server/blob/stable13/lib/private/Security/Bruteforce/Throttler.php#L351>`_
+		
+		
+		:Parameters:
+			* **$ip** (string)  
+			* **$action** (string)  optionally filter by action
+
+		
+		:Returns: int the time spent sleeping
+		:Throws: :any:`\\OCP\\Security\\Bruteforce\\MaxDelayReached <OCP\\Security\\Bruteforce\\MaxDelayReached>` when reached the maximum
+	
+	
+

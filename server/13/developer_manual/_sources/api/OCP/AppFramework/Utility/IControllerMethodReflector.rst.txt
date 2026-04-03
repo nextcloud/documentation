@@ -1,0 +1,112 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IControllerMethodReflector
+==========================
+
+
+.. php:namespace:: OCP\AppFramework\Utility
+
+.. php:interface:: IControllerMethodReflector
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Interface ControllerMethodReflector
+		
+		| Reads and parses annotations from doc comments
+		
+	
+	:Implemented by:
+		:php:class:`OC\\AppFramework\\Utility\\ControllerMethodReflector` 
+	
+	
+	:Source:
+		`lib/public/AppFramework/Utility/IControllerMethodReflector.php#38 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Utility/IControllerMethodReflector.php#L38>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public reflect( $object, $method)
+	
+		:Source:
+			`lib/public/AppFramework/Utility/IControllerMethodReflector.php#47 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Utility/IControllerMethodReflector.php#L47>`_
+		
+		
+		:Parameters:
+			* **$object** (object)  an object or classname
+			* **$method** (string)  the method which we want to inspect
+
+		
+		:Returns: void 
+		:Since: 8.0.0 
+		:Deprecated: 17.0.0 Reflect should not be called multiple times and only be used internally\. This will be removed in Nextcloud 18
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getType( $parameter)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Inspects the PHPDoc parameters for types
+			
+		
+		:Source:
+			`lib/public/AppFramework/Utility/IControllerMethodReflector.php#58 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Utility/IControllerMethodReflector.php#L58>`_
+		
+		
+		:Parameters:
+			* **$parameter** (string)  the parameter whose type comments should be
+			parsed
+
+		
+		:Returns: string | null type in the type parameters \(@param int $something\)
+			would return int or null if not existing
+		
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getParameters()
+	
+		:Source:
+			`lib/public/AppFramework/Utility/IControllerMethodReflector.php#64 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Utility/IControllerMethodReflector.php#L64>`_
+		
+		
+		:Returns: array the arguments of the method with key =\> default value
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public hasAnnotation( $name)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check if a method contains an annotation
+			
+		
+		:Source:
+			`lib/public/AppFramework/Utility/IControllerMethodReflector.php#73 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Utility/IControllerMethodReflector.php#L73>`_
+		
+		
+		:Parameters:
+			* **$name** (string)  the name of the annotation
+
+		
+		:Returns: bool true if the annotation is found
+		:Since: 8.0.0 
+	
+	
+

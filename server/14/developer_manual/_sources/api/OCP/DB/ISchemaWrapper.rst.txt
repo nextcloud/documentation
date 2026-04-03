@@ -1,0 +1,169 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+ISchemaWrapper
+==============
+
+
+.. php:namespace:: OCP\DB
+
+.. php:interface:: ISchemaWrapper
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Interface ISchemaWrapper
+		
+	
+	:Implemented by:
+		:php:class:`OC\\DB\\SchemaWrapper` 
+	
+	
+	:Source:
+		`lib/public/DB/ISchemaWrapper.php#31 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/ISchemaWrapper.php#L31>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public getTable( $tableName)
+	
+		:Source:
+			`lib/public/DB/ISchemaWrapper.php#40 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/ISchemaWrapper.php#L40>`_
+		
+		
+		:Parameters:
+			* **$tableName** (string)  
+
+		
+		:Returns: :any:`\\Doctrine\\DBAL\\Schema\\Table <Doctrine\\DBAL\\Schema\\Table>` 
+		:Throws: :any:`\\Doctrine\\DBAL\\Schema\\SchemaException <Doctrine\\DBAL\\Schema\\SchemaException>` 
+		:Since: 13.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public hasTable( $tableName)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Does this schema have a table with the given name?
+			
+		
+		:Source:
+			`lib/public/DB/ISchemaWrapper.php#50 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/ISchemaWrapper.php#L50>`_
+		
+		
+		:Parameters:
+			* **$tableName** (string)  Prefix is automatically prepended
+
+		
+		:Returns: bool 
+		:Since: 13.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public createTable( $tableName)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Creates a new table\.
+			
+		
+		:Source:
+			`lib/public/DB/ISchemaWrapper.php#59 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/ISchemaWrapper.php#L59>`_
+		
+		
+		:Parameters:
+			* **$tableName** (string)  Prefix is automatically prepended
+
+		
+		:Returns: :any:`\\Doctrine\\DBAL\\Schema\\Table <Doctrine\\DBAL\\Schema\\Table>` 
+		:Since: 13.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public dropTable( $tableName)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Drops a table from the schema\.
+			
+		
+		:Source:
+			`lib/public/DB/ISchemaWrapper.php#68 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/ISchemaWrapper.php#L68>`_
+		
+		
+		:Parameters:
+			* **$tableName** (string)  Prefix is automatically prepended
+
+		
+		:Returns: :any:`\\Doctrine\\DBAL\\Schema\\Schema <Doctrine\\DBAL\\Schema\\Schema>` 
+		:Since: 13.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getTables()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Gets all tables of this schema\.
+			
+		
+		:Source:
+			`lib/public/DB/ISchemaWrapper.php#76 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/ISchemaWrapper.php#L76>`_
+		
+		
+		:Returns: :any:`\\Doctrine\\DBAL\\Schema\\Table\[\] <Doctrine\\DBAL\\Schema\\Table>` 
+		:Since: 13.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getTableNames()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Gets all table names, prefixed with table prefix
+			
+		
+		:Source:
+			`lib/public/DB/ISchemaWrapper.php#84 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/ISchemaWrapper.php#L84>`_
+		
+		
+		:Returns: array 
+		:Since: 13.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getTableNamesWithoutPrefix()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Gets all table names
+			
+		
+		:Source:
+			`lib/public/DB/ISchemaWrapper.php#92 <https://github.com/nextcloud/server/blob/stable13/lib/public/DB/ISchemaWrapper.php#L92>`_
+		
+		
+		:Returns: array 
+		:Since: 13.0.0 
+	
+	
+

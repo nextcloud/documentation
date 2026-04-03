@@ -1,0 +1,117 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+MemcacheLockingProvider
+=======================
+
+
+.. php:namespace:: OC\Lock
+
+.. php:class:: MemcacheLockingProvider
+
+
+	:Source:
+		`lib/private/Lock/MemcacheLockingProvider.php#35 <https://github.com/nextcloud/server/blob/stable13/lib/private/Lock/MemcacheLockingProvider.php#L35>`_
+	
+	:Parent:
+		:php:class:`OC\\Lock\\AbstractLockingProvider`
+	
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $memcache, $ttl=3600)
+	
+		:Source:
+			`lib/private/Lock/MemcacheLockingProvider.php#45 <https://github.com/nextcloud/server/blob/stable13/lib/private/Lock/MemcacheLockingProvider.php#L45>`_
+		
+		
+		:Parameters:
+			* **$memcache** (:any:`OCP\\IMemcache <OCP\\IMemcache>`)  
+			* **$ttl** (int)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isLocked( $path, $type)
+	
+		:Source:
+			`lib/private/Lock/MemcacheLockingProvider.php#61 <https://github.com/nextcloud/server/blob/stable13/lib/private/Lock/MemcacheLockingProvider.php#L61>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+			* **$type** (int)  self::LOCK_SHARED or self::LOCK_EXCLUSIVE
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public acquireLock( $path, $type, $readablePath=null)
+	
+		:Source:
+			`lib/private/Lock/MemcacheLockingProvider.php#78 <https://github.com/nextcloud/server/blob/stable13/lib/private/Lock/MemcacheLockingProvider.php#L78>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+			* **$type** (int)  self::LOCK_SHARED or self::LOCK_EXCLUSIVE
+			* **$readablePath** (string)  human readable path to use in error messages
+
+		
+		:Throws: :any:`\\OCP\\Lock\\LockedException <OCP\\Lock\\LockedException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public releaseLock( $path, $type)
+	
+		:Source:
+			`lib/private/Lock/MemcacheLockingProvider.php#97 <https://github.com/nextcloud/server/blob/stable13/lib/private/Lock/MemcacheLockingProvider.php#L97>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+			* **$type** (int)  self::LOCK_SHARED or self::LOCK_EXCLUSIVE
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public changeLock( $path, $targetType)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Change the type of an existing lock
+			
+		
+		:Source:
+			`lib/private/Lock/MemcacheLockingProvider.php#131 <https://github.com/nextcloud/server/blob/stable13/lib/private/Lock/MemcacheLockingProvider.php#L131>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+			* **$targetType** (int)  self::LOCK_SHARED or self::LOCK_EXCLUSIVE
+
+		
+		:Throws: :any:`\\OCP\\Lock\\LockedException <OCP\\Lock\\LockedException>` 
+	
+	
+

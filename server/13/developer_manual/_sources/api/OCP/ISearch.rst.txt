@@ -1,0 +1,120 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+ISearch
+=======
+
+
+.. php:namespace:: OCP
+
+.. php:interface:: ISearch
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Small Interface for Search
+		
+	
+	:Implemented by:
+		:php:class:`OC\\Search` 
+	
+	
+	:Source:
+		`lib/public/ISearch.php#34 <https://github.com/nextcloud/server/blob/stable13/lib/public/ISearch.php#L34>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public searchPaged( $query, $inApps=\[\], $page=1, $size=30)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Search all providers for $query
+			
+		
+		:Source:
+			`lib/public/ISearch.php#46 <https://github.com/nextcloud/server/blob/stable13/lib/public/ISearch.php#L46>`_
+		
+		
+		:Parameters:
+			* **$query** (string)  
+			* **$inApps** (string[])  optionally limit results to the given apps
+			* **$page** (int)  pages start at page 1
+			* **$size** (int)  
+
+		
+		:Returns: array An array of OCP\\Search\\Result\'s
+		:Since: 8.0.0 
+		:Deprecated: 20.0.0 
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public registerProvider( $class, $options=\[\])
+	
+		.. rst-class:: phpdoc-description
+		
+			| Register a new search provider to search with
+			
+		
+		:Source:
+			`lib/public/ISearch.php#55 <https://github.com/nextcloud/server/blob/stable13/lib/public/ISearch.php#L55>`_
+		
+		
+		:Parameters:
+			* **$class** (string)  class name of a OCP\Search\Provider
+			* **$options** (array)  optional
+
+		
+		:Since: 7.0.0 
+		:Deprecated: 20.0.0 
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public removeProvider( $provider)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Remove one existing search provider
+			
+		
+		:Source:
+			`lib/public/ISearch.php#63 <https://github.com/nextcloud/server/blob/stable13/lib/public/ISearch.php#L63>`_
+		
+		
+		:Parameters:
+			* **$provider** (string)  class name of a OCP\Search\Provider
+
+		
+		:Since: 7.0.0 
+		:Deprecated: 20.0.0 
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public clearProviders()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Remove all registered search providers
+			
+		
+		:Source:
+			`lib/public/ISearch.php#70 <https://github.com/nextcloud/server/blob/stable13/lib/public/ISearch.php#L70>`_
+		
+		
+		:Since: 7.0.0 
+		:Deprecated: 20.0.0 
+	
+	
+

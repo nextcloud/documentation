@@ -1,0 +1,82 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+MemoryCache
+===========
+
+
+.. php:namespace:: OC\Security\RateLimiting\Backend
+
+.. php:class:: MemoryCache
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Class MemoryCache uses the configured distributed memory cache for storing
+		| rate limiting data\.
+		
+	
+	:Source:
+		`lib/private/Security/RateLimiting/Backend/MemoryCache.php#42 <https://github.com/nextcloud/server/blob/stable13/lib/private/Security/RateLimiting/Backend/MemoryCache.php#L42>`_
+	
+	:Implements:
+		:php:interface:`OC\\Security\\RateLimiting\\Backend\\IBackend` 
+	
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $cacheFactory, $timeFactory)
+	
+		:Source:
+			`lib/private/Security/RateLimiting/Backend/MemoryCache.php#52 <https://github.com/nextcloud/server/blob/stable13/lib/private/Security/RateLimiting/Backend/MemoryCache.php#L52>`_
+		
+		
+		:Parameters:
+			* **$cacheFactory** (:any:`OCP\\ICacheFactory <OCP\\ICacheFactory>`)  
+			* **$timeFactory** (:any:`OCP\\AppFramework\\Utility\\ITimeFactory <OCP\\AppFramework\\Utility\\ITimeFactory>`)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getAttempts( $methodIdentifier, $userIdentifier, $seconds)
+	
+		.. rst-class:: phpdoc-description
+		
+			| \{@inheritDoc\}
+			
+		
+		:Source:
+			`lib/private/Security/RateLimiting/Backend/MemoryCache.php#89 <https://github.com/nextcloud/server/blob/stable13/lib/private/Security/RateLimiting/Backend/MemoryCache.php#L89>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public registerAttempt( $methodIdentifier, $userIdentifier, $period)
+	
+		.. rst-class:: phpdoc-description
+		
+			| \{@inheritDoc\}
+			
+		
+		:Source:
+			`lib/private/Security/RateLimiting/Backend/MemoryCache.php#110 <https://github.com/nextcloud/server/blob/stable13/lib/private/Security/RateLimiting/Backend/MemoryCache.php#L110>`_
+		
+		
+	
+	
+

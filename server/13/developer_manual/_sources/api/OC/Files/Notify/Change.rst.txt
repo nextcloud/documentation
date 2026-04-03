@@ -1,0 +1,85 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+Change
+======
+
+
+.. php:namespace:: OC\Files\Notify
+
+.. php:class:: Change
+
+
+	:Source:
+		`lib/private/Files/Notify/Change.php#28 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Notify/Change.php#L28>`_
+	
+	:Implements:
+		:php:interface:`OCP\\Files\\Notify\\IChange` 
+	
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $type, $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Change constructor\.
+			
+		
+		:Source:
+			`lib/private/Files/Notify/Change.php#41 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Notify/Change.php#L41>`_
+		
+		
+		:Parameters:
+			* **$type** (int)  
+			* **$path** (string)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getType()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the type of the change
+			
+		
+		:Source:
+			`lib/private/Files/Notify/Change.php#51 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Notify/Change.php#L51>`_
+		
+		
+		:Returns: int IChange::ADDED, IChange::REMOVED, IChange::MODIFIED or IChange::RENAMED
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getPath()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the path of the file that was changed relative to the root of the storage
+			
+			| Note, for rename changes this path is the old path for the file
+			
+		
+		:Source:
+			`lib/private/Files/Notify/Change.php#62 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Notify/Change.php#L62>`_
+		
+		
+		:Returns: mixed 
+	
+	
+

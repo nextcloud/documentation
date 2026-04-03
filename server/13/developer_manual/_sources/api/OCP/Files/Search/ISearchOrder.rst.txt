@@ -1,0 +1,102 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+ISearchOrder
+============
+
+
+.. php:namespace:: OCP\Files\Search
+
+.. php:interface:: ISearchOrder
+
+
+	:Implemented by:
+		:php:class:`OC\\Files\\Search\\SearchOrder` 
+	
+	
+	:Source:
+		`lib/public/Files/Search/ISearchOrder.php#32 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Search/ISearchOrder.php#L32>`_
+	
+
+Constants
+---------
+
+.. php:const:: DIRECTION_ASCENDING = asc
+
+	:Source:
+		`lib/public/Files/Search/ISearchOrder.php#33 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Search/ISearchOrder.php#L33>`_
+	
+
+
+.. php:const:: DIRECTION_DESCENDING = desc
+
+	:Source:
+		`lib/public/Files/Search/ISearchOrder.php#34 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Search/ISearchOrder.php#L34>`_
+	
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public getDirection()
+	
+		.. rst-class:: phpdoc-description
+		
+			| The direction to sort in, either ISearchOrder::DIRECTION\_ASCENDING or ISearchOrder::DIRECTION\_DESCENDING
+			
+		
+		:Source:
+			`lib/public/Files/Search/ISearchOrder.php#42 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Search/ISearchOrder.php#L42>`_
+		
+		
+		:Returns: string 
+		:Since: 12.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getField()
+	
+		.. rst-class:: phpdoc-description
+		
+			| The field to sort on
+			
+		
+		:Source:
+			`lib/public/Files/Search/ISearchOrder.php#50 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Search/ISearchOrder.php#L50>`_
+		
+		
+		:Returns: string 
+		:Since: 12.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public sortFileInfo( $a, $b)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Apply the sorting on 2 FileInfo objects
+			
+		
+		:Source:
+			`lib/public/Files/Search/ISearchOrder.php#60 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Search/ISearchOrder.php#L60>`_
+		
+		
+		:Parameters:
+			* **$a** (:any:`OCP\\Files\\FileInfo <OCP\\Files\\FileInfo>`)  
+			* **$b** (:any:`OCP\\Files\\FileInfo <OCP\\Files\\FileInfo>`)  
+
+		
+		:Returns: int \-1 if $a < $b, 0 if $a = $b, 1 if $a \> $b \(for ascending, reverse for descending\)
+		:Since: 22.0.0 
+	
+	
+

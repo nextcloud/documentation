@@ -1,0 +1,984 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+Manager
+=======
+
+
+.. php:namespace:: OC\Comments
+
+.. php:class:: Manager
+
+
+	:Source:
+		`lib/private/Comments/Manager.php#48 <https://github.com/nextcloud/server/blob/stable13/lib/private/Comments/Manager.php#L48>`_
+	
+	:Implements:
+		:php:interface:`OCP\\Comments\\ICommentsManager` 
+	
+
+Properties
+----------
+
+.. php:attr:: protected static dbConn
+
+	:Source:
+		`lib/private/Comments/Manager.php#51 <https://github.com/nextcloud/server/blob/stable13/lib/private/Comments/Manager.php#L51>`_
+	
+	:Type: :any:`\\OCP\\IDBConnection <OCP\\IDBConnection>` 
+
+
+.. php:attr:: protected static logger
+
+	:Source:
+		`lib/private/Comments/Manager.php#54 <https://github.com/nextcloud/server/blob/stable13/lib/private/Comments/Manager.php#L54>`_
+	
+	:Type: :any:`\\Psr\\Log\\LoggerInterface <Psr\\Log\\LoggerInterface>` 
+
+
+.. php:attr:: protected static config
+
+	:Source:
+		`lib/private/Comments/Manager.php#57 <https://github.com/nextcloud/server/blob/stable13/lib/private/Comments/Manager.php#L57>`_
+	
+	:Type: :any:`\\OCP\\IConfig <OCP\\IConfig>` 
+
+
+.. php:attr:: protected static timeFactory
+
+	:Source:
+		`lib/private/Comments/Manager.php#60 <https://github.com/nextcloud/server/blob/stable13/lib/private/Comments/Manager.php#L60>`_
+	
+	:Type: :any:`\\OCP\\AppFramework\\Utility\\ITimeFactory <OCP\\AppFramework\\Utility\\ITimeFactory>` 
+
+
+.. php:attr:: protected static initialStateService
+
+	:Source:
+		`lib/private/Comments/Manager.php#63 <https://github.com/nextcloud/server/blob/stable13/lib/private/Comments/Manager.php#L63>`_
+	
+	:Type: :any:`\\OCP\\IInitialStateService <OCP\\IInitialStateService>` 
+
+
+.. php:attr:: protected static commentsCache
+
+	:Source:
+		`lib/private/Comments/Manager.php#66 <https://github.com/nextcloud/server/blob/stable13/lib/private/Comments/Manager.php#L66>`_
+	
+	:Type: :any:`\\OCP\\Comments\\IComment\[\] <OCP\\Comments\\IComment>` 
+
+
+.. php:attr:: protected static eventHandlerClosures
+
+	:Source:
+		`lib/private/Comments/Manager.php#69 <https://github.com/nextcloud/server/blob/stable13/lib/private/Comments/Manager.php#L69>`_
+	
+	:Type: :any:`\\Closure\[\] <Closure>` 
+
+
+.. php:attr:: protected static eventHandlers
+
+	:Source:
+		`lib/private/Comments/Manager.php#72 <https://github.com/nextcloud/server/blob/stable13/lib/private/Comments/Manager.php#L72>`_
+	
+	:Type: :any:`\\OCP\\Comments\\ICommentsEventHandler\[\] <OCP\\Comments\\ICommentsEventHandler>` 
+
+
+.. php:attr:: protected static displayNameResolvers
+
+	:Source:
+		`lib/private/Comments/Manager.php#75 <https://github.com/nextcloud/server/blob/stable13/lib/private/Comments/Manager.php#L75>`_
+	
+	:Type: :any:`\\Closure\[\] <Closure>` 
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $dbConn, $logger, $config, $timeFactory, $initialStateService)
+	
+		:Source:
+			`lib/private/Comments/Manager.php#77 <https://github.com/nextcloud/server/blob/stable13/lib/private/Comments/Manager.php#L77>`_
+		
+		
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected normalizeDatabaseData( $data)
+	
+		.. rst-class:: phpdoc-description
+		
+			| converts data base data into PHP native, proper types as defined by
+			| IComment interface\.
+			
+		
+		:Source:
+			`lib/private/Comments/Manager.php#96 <https://github.com/nextcloud/server/blob/stable13/lib/private/Comments/Manager.php#L96>`_
+		
+		
+		:Parameters:
+			* **$data** (array)  
+
+		
+		:Returns: array 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getCommentFromData( $data)
+	
+		:Source:
+			`lib/private/Comments/Manager.php#114 <https://github.com/nextcloud/server/blob/stable13/lib/private/Comments/Manager.php#L114>`_
+		
+		
+		:Parameters:
+			* **$data** (array)  
+
+		
+		:Returns: :any:`\\OCP\\Comments\\IComment <OCP\\Comments\\IComment>` 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected prepareCommentForDatabaseWrite( $comment)
+	
+		.. rst-class:: phpdoc-description
+		
+			| prepares a comment for an insert or update operation after making sure
+			| all necessary fields have a value assigned\.
+			
+		
+		:Source:
+			`lib/private/Comments/Manager.php#127 <https://github.com/nextcloud/server/blob/stable13/lib/private/Comments/Manager.php#L127>`_
+		
+		
+		:Parameters:
+			* **$comment** (:any:`OCP\\Comments\\IComment <OCP\\Comments\\IComment>`)  
+
+		
+		:Returns: :any:`\\OCP\\Comments\\IComment <OCP\\Comments\\IComment>` returns the same updated IComment instance as provided
+			by parameter for convenience
+		
+		:Throws: :any:`\\UnexpectedValueException <UnexpectedValueException>` 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected determineTopmostParentId( $id)
+	
+		.. rst-class:: phpdoc-description
+		
+			| returns the topmost parent id of a given comment identified by ID
+			
+		
+		:Source:
+			`lib/private/Comments/Manager.php#165 <https://github.com/nextcloud/server/blob/stable13/lib/private/Comments/Manager.php#L165>`_
+		
+		
+		:Parameters:
+			* **$id** (string)  
+
+		
+		:Returns: string 
+		:Throws: :any:`\\OCP\\Comments\\NotFoundException <OCP\\Comments\\NotFoundException>` 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected updateChildrenInformation( $id, $cDateTime)
+	
+		.. rst-class:: phpdoc-description
+		
+			| updates child information of a comment
+			
+		
+		:Source:
+			`lib/private/Comments/Manager.php#181 <https://github.com/nextcloud/server/blob/stable13/lib/private/Comments/Manager.php#L181>`_
+		
+		
+		:Parameters:
+			* **$id** (string)  
+			* **$cDateTime** (:any:`DateTime <DateTime>`)  the date time of the most recent child
+
+		
+		:Throws: :any:`\\OCP\\Comments\\NotFoundException <OCP\\Comments\\NotFoundException>` 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected checkRoleParameters( $role, $type, $id)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Tests whether actor or object type and id parameters are acceptable\.
+			
+			| Throws exception if not\.
+			
+		
+		:Source:
+			`lib/private/Comments/Manager.php#208 <https://github.com/nextcloud/server/blob/stable13/lib/private/Comments/Manager.php#L208>`_
+		
+		
+		:Parameters:
+			* **$role** (string)  
+			* **$type** (string)  
+			* **$id** (string)  
+
+		
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected cache( $comment)
+	
+		.. rst-class:: phpdoc-description
+		
+			| run\-time caches a comment
+			
+		
+		:Source:
+			`lib/private/Comments/Manager.php#222 <https://github.com/nextcloud/server/blob/stable13/lib/private/Comments/Manager.php#L222>`_
+		
+		
+		:Parameters:
+			* **$comment** (:any:`OCP\\Comments\\IComment <OCP\\Comments\\IComment>`)  
+
+		
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected uncache( $id)
+	
+		.. rst-class:: phpdoc-description
+		
+			| removes an entry from the comments run time cache
+			
+		
+		:Source:
+			`lib/private/Comments/Manager.php#235 <https://github.com/nextcloud/server/blob/stable13/lib/private/Comments/Manager.php#L235>`_
+		
+		
+		:Parameters:
+			* **$id** (mixed)  the comment's id
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public get( $id)
+	
+		.. rst-class:: phpdoc-description
+		
+			| returns a comment instance
+			
+		
+		:Source:
+			`lib/private/Comments/Manager.php#251 <https://github.com/nextcloud/server/blob/stable13/lib/private/Comments/Manager.php#L251>`_
+		
+		
+		:Parameters:
+			* **$id** (string)  the ID of the comment
+
+		
+		:Returns: :any:`\\OCP\\Comments\\IComment <OCP\\Comments\\IComment>` 
+		:Throws: :any:`\\OCP\\Comments\\NotFoundException <OCP\\Comments\\NotFoundException>` 
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` 
+		:Throws: :any:`\\OCP\\Comments\\NotFoundException <OCP\\Comments\\NotFoundException>` 
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getTree( $id, $limit=0, $offset=0)
+	
+		.. rst-class:: phpdoc-description
+		
+			| returns the comment specified by the id and all it\'s child comments\.
+			
+			| At this point of time, we do only support one level depth\.
+			
+		
+		:Source:
+			`lib/private/Comments/Manager.php#308 <https://github.com/nextcloud/server/blob/stable13/lib/private/Comments/Manager.php#L308>`_
+		
+		
+		:Parameters:
+			* **$id** (string)  
+			* **$limit** (int)  max number of entries to return, 0 returns all
+			* **$offset** (int)  the start entry
+
+		
+		:Returns: array 
+		:Since: 9.0.0 The return array looks like this
+			\[
+			  \'comment\' =\> IComment, // root comment
+			  \'replies\' =\>
+			  \[
+			    0 =\>
+			    \[
+			      \'comment\' =\> IComment,
+			      \'replies\' =\> \[\]
+			    \]
+			    1 =\>
+			    \[
+			      \'comment\' =\> IComment,
+			      \'replies\'=\> \[\]
+			    \],
+			    …
+			  \]
+			\]
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getForObject( $objectType, $objectId, $limit=0, $offset=0, $notOlderThan=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| returns comments for a specific object \(e\.g\. a file\)\.
+			
+			| The sort order is always newest to oldest\.
+			
+		
+		:Source:
+			`lib/private/Comments/Manager.php#356 <https://github.com/nextcloud/server/blob/stable13/lib/private/Comments/Manager.php#L356>`_
+		
+		
+		:Parameters:
+			* **$objectType** (string)  the object type, e.g. 'files'
+			* **$objectId** (string)  the id of the object
+			* **$limit** (int)  optional, number of maximum comments to be returned. if
+			not specified, all comments are returned.
+			* **$offset** (int)  optional, starting point
+			* **$notOlderThan** (:any:`DateTime <DateTime>`)  optional, timestamp of the oldest comments
+			that may be returned
+
+		
+		:Returns: :any:`\\OCP\\Comments\\IComment\[\] <OCP\\Comments\\IComment>` 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getForObjectSince( $objectType, $objectId, $lastKnownCommentId, $sortDirection=asc, $limit=30, $includeLastKnown=false)
+	
+		:Source:
+			`lib/private/Comments/Manager.php#408 <https://github.com/nextcloud/server/blob/stable13/lib/private/Comments/Manager.php#L408>`_
+		
+		
+		:Parameters:
+			* **$objectType** (string)  the object type, e.g. 'files'
+			* **$objectId** (string)  the id of the object
+			* **$lastKnownCommentId** (int)  the last known comment (will be used as offset)
+			* **$sortDirection** (string)  direction of the comments (`asc` or `desc`)
+			* **$limit** (int)  optional, number of maximum comments to be returned. if
+			set to 0, all comments are returned.
+			* **$includeLastKnown** (bool)  
+
+		
+		:Returns: :any:`\\OCP\\Comments\\IComment\[\] <OCP\\Comments\\IComment>` 
+		:Returns: :any:`\\OCP\\Comments\\IComment\[\] <OCP\\Comments\\IComment>` 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected getLastKnownComment( $objectType, $objectId, $id)
+	
+		:Source:
+			`lib/private/Comments/Manager.php#503 <https://github.com/nextcloud/server/blob/stable13/lib/private/Comments/Manager.php#L503>`_
+		
+		
+		:Parameters:
+			* **$objectType** (string)  the object type, e.g. 'files'
+			* **$objectId** (string)  the id of the object
+			* **$id** (int)  the comment to look for
+
+		
+		:Returns: :any:`\\OC\\Comments\\Comment <OC\\Comments\\Comment>` | null 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public search( $search, $objectType, $objectId, $verb, $offset, $limit=50)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Search for comments with a given content
+			
+		
+		:Source:
+			`lib/private/Comments/Manager.php#537 <https://github.com/nextcloud/server/blob/stable13/lib/private/Comments/Manager.php#L537>`_
+		
+		
+		:Parameters:
+			* **$search** (string)  content to search for
+			* **$objectType** (string)  Limit the search by object type
+			* **$objectId** (string)  Limit the search by object id
+			* **$verb** (string)  Limit the verb of the comment
+			* **$offset** (int)  
+			* **$limit** (int)  
+
+		
+		:Returns: :any:`\\OCP\\Comments\\IComment\[\] <OCP\\Comments\\IComment>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public searchForObjects( $search, $objectType, $objectIds, $verb, $offset, $limit=50)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Search for comments on one or more objects with a given content
+			
+		
+		:Source:
+			`lib/private/Comments/Manager.php#556 <https://github.com/nextcloud/server/blob/stable13/lib/private/Comments/Manager.php#L556>`_
+		
+		
+		:Parameters:
+			* **$search** (string)  content to search for
+			* **$objectType** (string)  Limit the search by object type
+			* **$objectIds** (array)  Limit the search by object ids
+			* **$verb** (string)  Limit the verb of the comment
+			* **$offset** (int)  
+			* **$limit** (int)  
+
+		
+		:Returns: :any:`\\OCP\\Comments\\IComment\[\] <OCP\\Comments\\IComment>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getNumberOfCommentsForObject( $objectType, $objectId, $notOlderThan=null, $verb="")
+	
+		:Source:
+			`lib/private/Comments/Manager.php#602 <https://github.com/nextcloud/server/blob/stable13/lib/private/Comments/Manager.php#L602>`_
+		
+		
+		:Parameters:
+			* **$objectType**  string the object type, e.g. 'files'
+			* **$objectId**  string the id of the object
+			* **$notOlderThan** (:any:`DateTime <DateTime>`)  optional, timestamp of the oldest comments
+			that may be returned
+			* **$verb** (string)  Limit the verb of the comment - Added in 14.0.0
+
+		
+		:Returns: int 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getNumberOfUnreadCommentsForObjects( $objectType, $objectIds, $user, $verb="")
+	
+		:Source:
+			`lib/private/Comments/Manager.php#636 <https://github.com/nextcloud/server/blob/stable13/lib/private/Comments/Manager.php#L636>`_
+		
+		
+		:Parameters:
+			* **$objectType** (string)  the object type, e.g. 'files'
+			* **$objectIds** (string[])  the id of the object
+			* **$user** (:any:`OCP\\IUser <OCP\\IUser>`)  
+			* **$verb** (string)  Limit the verb of the comment - Added in 14.0.0
+
+		
+		:Returns: array Map with object id =\> \# of unread comments
+		:Since: 21.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getNumberOfCommentsForObjectSinceComment( $objectType, $objectId, $lastRead, $verb="")
+	
+		:Source:
+			`lib/private/Comments/Manager.php#675 <https://github.com/nextcloud/server/blob/stable13/lib/private/Comments/Manager.php#L675>`_
+		
+		
+		:Parameters:
+			* **$objectType** (string)  
+			* **$objectId** (string)  
+			* **$lastRead** (int)  
+			* **$verb** (string)  
+
+		
+		:Returns: int 
+		:Since: 21.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getLastCommentBeforeDate( $objectType, $objectId, $beforeDate, $verb="")
+	
+		:Source:
+			`lib/private/Comments/Manager.php#702 <https://github.com/nextcloud/server/blob/stable13/lib/private/Comments/Manager.php#L702>`_
+		
+		
+		:Parameters:
+			* **$objectType** (string)  
+			* **$objectId** (string)  
+			* **$beforeDate** (:any:`DateTime <DateTime>`)  
+			* **$verb** (string)  
+
+		
+		:Returns: int 
+		:Since: 21.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getLastCommentDateByActor( $objectType, $objectId, $verb, $actorType, $actors)
+	
+		:Source:
+			`lib/private/Comments/Manager.php#732 <https://github.com/nextcloud/server/blob/stable13/lib/private/Comments/Manager.php#L732>`_
+		
+		
+		:Parameters:
+			* **$objectType** (string)  
+			* **$objectId** (string)  
+			* **$verb** (string)  
+			* **$actorType** (string)  
+			* **$actors** (string[])  
+
+		
+		:Returns: :any:`\\DateTime\[\] <DateTime>` Map of "string actor" =\> "\\DateTime most recent comment date"
+		:Since: 21.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getNumberOfUnreadCommentsForFolder( $folderId, $user)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the number of unread comments for all files in a folder
+			
+		
+		:Source:
+			`lib/private/Comments/Manager.php#768 <https://github.com/nextcloud/server/blob/stable13/lib/private/Comments/Manager.php#L768>`_
+		
+		
+		:Parameters:
+			* **$folderId** (int)  
+			* **$user** (:any:`OCP\\IUser <OCP\\IUser>`)  
+
+		
+		:Returns: array \[$fileId =\> $unreadCount\]
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public create( $actorType, $actorId, $objectType, $objectId)
+	
+		.. rst-class:: phpdoc-description
+		
+			| creates a new comment and returns it\. At this point of time, it is not
+			| saved in the used data storage\. Use save\(\) after setting other fields
+			| of the comment \(e\.g\. message or verb\)\.
+			
+		
+		:Source:
+			`lib/private/Comments/Manager.php#826 <https://github.com/nextcloud/server/blob/stable13/lib/private/Comments/Manager.php#L826>`_
+		
+		
+		:Parameters:
+			* **$actorType** (string)  the actor type (e.g. 'users')
+			* **$actorId** (string)  a user id
+			* **$objectType** (string)  the object type the comment is attached to
+			* **$objectId** (string)  the object id the comment is attached to
+
+		
+		:Returns: :any:`\\OCP\\Comments\\IComment <OCP\\Comments\\IComment>` 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public delete( $id)
+	
+		.. rst-class:: phpdoc-description
+		
+			| permanently deletes the comment specified by the ID
+			
+			| When the comment has child comments, their parent ID will be changed to
+			| the parent ID of the item that is to be deleted\.
+			
+		
+		:Source:
+			`lib/private/Comments/Manager.php#845 <https://github.com/nextcloud/server/blob/stable13/lib/private/Comments/Manager.php#L845>`_
+		
+		
+		:Parameters:
+			* **$id** (string)  
+
+		
+		:Returns: bool 
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public save( $comment)
+	
+		.. rst-class:: phpdoc-description
+		
+			| saves the comment permanently
+			
+			| if the supplied comment has an empty ID, a new entry comment will be
+			| saved and the instance updated with the new ID\.
+			| 
+			| Otherwise, an existing comment will be updated\.
+			| 
+			| Throws NotFoundException when a comment that is to be updated does not
+			| exist anymore at this point of time\.
+			
+		
+		:Source:
+			`lib/private/Comments/Manager.php#896 <https://github.com/nextcloud/server/blob/stable13/lib/private/Comments/Manager.php#L896>`_
+		
+		
+		:Parameters:
+			* **$comment** (:any:`OCP\\Comments\\IComment <OCP\\Comments\\IComment>`)  
+
+		
+		:Returns: bool 
+		:Throws: :any:`\\OCP\\Comments\\NotFoundException <OCP\\Comments\\NotFoundException>` 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected insert( $comment)
+	
+		.. rst-class:: phpdoc-description
+		
+			| inserts the provided comment in the database
+			
+		
+		:Source:
+			`lib/private/Comments/Manager.php#920 <https://github.com/nextcloud/server/blob/stable13/lib/private/Comments/Manager.php#L920>`_
+		
+		
+		:Parameters:
+			* **$comment** (:any:`OCP\\Comments\\IComment <OCP\\Comments\\IComment>`)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected insertQuery( $comment, $tryWritingReferenceId)
+	
+		:Source:
+			`lib/private/Comments/Manager.php#936 <https://github.com/nextcloud/server/blob/stable13/lib/private/Comments/Manager.php#L936>`_
+		
+		
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected update( $comment)
+	
+		.. rst-class:: phpdoc-description
+		
+			| updates a Comment data row
+			
+		
+		:Source:
+			`lib/private/Comments/Manager.php#976 <https://github.com/nextcloud/server/blob/stable13/lib/private/Comments/Manager.php#L976>`_
+		
+		
+		:Parameters:
+			* **$comment** (:any:`OCP\\Comments\\IComment <OCP\\Comments\\IComment>`)  
+
+		
+		:Returns: bool 
+		:Throws: :any:`\\OCP\\Comments\\NotFoundException <OCP\\Comments\\NotFoundException>` 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected updateQuery( $comment, $tryWritingReferenceId)
+	
+		:Source:
+			`lib/private/Comments/Manager.php#995 <https://github.com/nextcloud/server/blob/stable13/lib/private/Comments/Manager.php#L995>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public deleteReferencesOfActor( $actorType, $actorId)
+	
+		.. rst-class:: phpdoc-description
+		
+			| removes references to specific actor \(e\.g\. on user delete\) of a comment\.
+			
+			| The comment itself must not get lost/deleted\.
+			
+		
+		:Source:
+			`lib/private/Comments/Manager.php#1034 <https://github.com/nextcloud/server/blob/stable13/lib/private/Comments/Manager.php#L1034>`_
+		
+		
+		:Parameters:
+			* **$actorType** (string)  the actor type (e.g. 'users')
+			* **$actorId** (string)  a user id
+
+		
+		:Returns: bool 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public deleteCommentsAtObject( $objectType, $objectId)
+	
+		.. rst-class:: phpdoc-description
+		
+			| deletes all comments made of a specific object \(e\.g\. on file delete\)
+			
+		
+		:Source:
+			`lib/private/Comments/Manager.php#1061 <https://github.com/nextcloud/server/blob/stable13/lib/private/Comments/Manager.php#L1061>`_
+		
+		
+		:Parameters:
+			* **$objectType** (string)  the object type (e.g. 'files')
+			* **$objectId** (string)  e.g. the file id
+
+		
+		:Returns: bool 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public deleteReadMarksFromUser( $user)
+	
+		.. rst-class:: phpdoc-description
+		
+			| deletes the read markers for the specified user
+			
+		
+		:Source:
+			`lib/private/Comments/Manager.php#1085 <https://github.com/nextcloud/server/blob/stable13/lib/private/Comments/Manager.php#L1085>`_
+		
+		
+		:Parameters:
+			* **$user** (:any:`OCP\\IUser <OCP\\IUser>`)  
+
+		
+		:Returns: bool 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setReadMark( $objectType, $objectId, $dateTime, $user)
+	
+		.. rst-class:: phpdoc-description
+		
+			| sets the read marker for a given file to the specified date for the
+			| provided user
+			
+		
+		:Source:
+			`lib/private/Comments/Manager.php#1113 <https://github.com/nextcloud/server/blob/stable13/lib/private/Comments/Manager.php#L1113>`_
+		
+		
+		:Parameters:
+			* **$objectType** (string)  
+			* **$objectId** (string)  
+			* **$dateTime** (:any:`DateTime <DateTime>`)  
+			* **$user** (:any:`OCP\\IUser <OCP\\IUser>`)  
+
+		
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getReadMark( $objectType, $objectId, $user)
+	
+		.. rst-class:: phpdoc-description
+		
+			| returns the read marker for a given file to the specified date for the
+			| provided user\. It returns null, when the marker is not present, i\.e\.
+			
+			| no comments were marked as read\.
+			
+		
+		:Source:
+			`lib/private/Comments/Manager.php#1159 <https://github.com/nextcloud/server/blob/stable13/lib/private/Comments/Manager.php#L1159>`_
+		
+		
+		:Parameters:
+			* **$objectType** (string)  
+			* **$objectId** (string)  
+			* **$user** (:any:`OCP\\IUser <OCP\\IUser>`)  
+
+		
+		:Returns: :any:`\\DateTime <DateTime>` | null 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public deleteReadMarksOnObject( $objectType, $objectId)
+	
+		.. rst-class:: phpdoc-description
+		
+			| deletes the read markers on the specified object
+			
+		
+		:Source:
+			`lib/private/Comments/Manager.php#1188 <https://github.com/nextcloud/server/blob/stable13/lib/private/Comments/Manager.php#L1188>`_
+		
+		
+		:Parameters:
+			* **$objectType** (string)  
+			* **$objectId** (string)  
+
+		
+		:Returns: bool 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public registerEventHandler( $closure)
+	
+		.. rst-class:: phpdoc-description
+		
+			| registers an Entity to the manager, so event notifications can be send
+			| to consumers of the comments infrastructure
+			
+		
+		:Source:
+			`lib/private/Comments/Manager.php#1216 <https://github.com/nextcloud/server/blob/stable13/lib/private/Comments/Manager.php#L1216>`_
+		
+		
+		:Parameters:
+			* **$closure** (:any:`Closure <Closure>`)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public registerDisplayNameResolver( $type, $closure)
+	
+		.. rst-class:: phpdoc-description
+		
+			| registers a method that resolves an ID to a display name for a given type
+			
+		
+		:Source:
+			`lib/private/Comments/Manager.php#1232 <https://github.com/nextcloud/server/blob/stable13/lib/private/Comments/Manager.php#L1232>`_
+		
+		
+		:Parameters:
+			* **$type** (string)  
+			* **$closure** (:any:`Closure <Closure>`)  
+
+		
+		:Throws: :any:`\\OutOfBoundsException <OutOfBoundsException>` 
+		:Since: 11.0.0 Only one resolver shall be registered per type\. Otherwise a
+			\\OutOfBoundsException has to thrown\.
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public resolveDisplayName( $type, $id)
+	
+		.. rst-class:: phpdoc-description
+		
+			| resolves a given ID of a given Type to a display name\.
+			
+		
+		:Source:
+			`lib/private/Comments/Manager.php#1255 <https://github.com/nextcloud/server/blob/stable13/lib/private/Comments/Manager.php#L1255>`_
+		
+		
+		:Parameters:
+			* **$type** (string)  
+			* **$id** (string)  
+
+		
+		:Returns: string 
+		:Throws: :any:`\\OutOfBoundsException <OutOfBoundsException>` 
+		:Since: 11.0.0 If a provided type was not registered, an \\OutOfBoundsException shall
+			be thrown\. It is upon the resolver discretion what to return of the
+			provided ID is unknown\. It must be ensured that a string is returned\.
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public load()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Load the Comments app into the page
+			
+		
+		:Source:
+			`lib/private/Comments/Manager.php#1306 <https://github.com/nextcloud/server/blob/stable13/lib/private/Comments/Manager.php#L1306>`_
+		
+		
+		:Since: 21.0.0 
+	
+	
+

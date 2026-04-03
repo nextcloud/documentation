@@ -1,0 +1,93 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+TagMapper
+=========
+
+
+.. php:namespace:: OC\Tagging
+
+.. php:class:: TagMapper
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Mapper for Tag entity
+		
+	
+	:Source:
+		`lib/private/Tagging/TagMapper.php#36 <https://github.com/nextcloud/server/blob/stable13/lib/private/Tagging/TagMapper.php#L36>`_
+	
+	:Parent:
+		:php:class:`OCP\\AppFramework\\Db\\Mapper`
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $db)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Constructor\.
+			
+		
+		:Source:
+			`lib/private/Tagging/TagMapper.php#43 <https://github.com/nextcloud/server/blob/stable13/lib/private/Tagging/TagMapper.php#L43>`_
+		
+		
+		:Parameters:
+			* **$db** (:any:`OCP\\IDBConnection <OCP\\IDBConnection>`)  Instance of the Db abstraction layer.
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public loadTags( $owners, $type)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Load tags from the database\.
+			
+		
+		:Source:
+			`lib/private/Tagging/TagMapper.php#54 <https://github.com/nextcloud/server/blob/stable13/lib/private/Tagging/TagMapper.php#L54>`_
+		
+		
+		:Parameters:
+			* **$owners** (array | string)  The user(s) whose tags we are going to load.
+			* **$type** (string)  The type of item for which we are loading tags.
+
+		
+		:Returns: array An array of Tag objects\.
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public tagExists( $tag)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check if a given Tag object already exists in the database\.
+			
+		
+		:Source:
+			`lib/private/Tagging/TagMapper.php#70 <https://github.com/nextcloud/server/blob/stable13/lib/private/Tagging/TagMapper.php#L70>`_
+		
+		
+		:Parameters:
+			* **$tag** (:any:`OC\\Tagging\\Tag <OC\\Tagging\\Tag>`)  The tag to look for in the database.
+
+		
+		:Returns: bool 
+	
+	
+

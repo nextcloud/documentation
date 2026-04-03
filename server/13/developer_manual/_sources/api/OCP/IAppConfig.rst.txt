@@ -1,0 +1,122 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IAppConfig
+==========
+
+
+.. php:namespace:: OCP
+
+.. php:interface:: IAppConfig
+
+
+	.. rst-class:: phpdoc-description
+	
+		| This class provides an easy way for apps to store config values in the
+		| database\.
+		
+	
+	:Implemented by:
+		:php:class:`OC\\AppConfig` 
+	
+	
+	:Source:
+		`lib/public/IAppConfig.php#35 <https://github.com/nextcloud/server/blob/stable13/lib/public/IAppConfig.php#L35>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public hasKey( $app, $key)
+	
+		.. rst-class:: phpdoc-description
+		
+			| check if a key is set in the appconfig
+			
+		
+		:Source:
+			`lib/public/IAppConfig.php#43 <https://github.com/nextcloud/server/blob/stable13/lib/public/IAppConfig.php#L43>`_
+		
+		
+		:Parameters:
+			* **$app** (string)  
+			* **$key** (string)  
+
+		
+		:Returns: bool 
+		:Since: 7.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getValues( $app, $key)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get multiply values, either the app or key can be used as wildcard by setting it to false
+			
+		
+		:Source:
+			`lib/public/IAppConfig.php#53 <https://github.com/nextcloud/server/blob/stable13/lib/public/IAppConfig.php#L53>`_
+		
+		
+		:Parameters:
+			* **$app** (string | bool)  
+			* **$key** (string | bool)  
+
+		
+		:Returns: array | bool 
+		:Since: 7.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getFilteredValues( $app)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get all values of the app or and filters out sensitive data
+			
+		
+		:Source:
+			`lib/public/IAppConfig.php#62 <https://github.com/nextcloud/server/blob/stable13/lib/public/IAppConfig.php#L62>`_
+		
+		
+		:Parameters:
+			* **$app** (string)  
+
+		
+		:Returns: array 
+		:Since: 12.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getApps()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get all apps using the config
+			
+		
+		:Source:
+			`lib/public/IAppConfig.php#72 <https://github.com/nextcloud/server/blob/stable13/lib/public/IAppConfig.php#L72>`_
+		
+		
+		:Returns: array an array of app ids
+			
+			This function returns a list of all apps that have at least one
+			entry in the appconfig table\.
+		
+		:Since: 7.0.0 
+	
+	
+

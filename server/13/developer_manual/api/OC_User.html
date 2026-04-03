@@ -1,0 +1,721 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>OC_User &mdash; Nextcloud 13 Developer Manual 13 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'13',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="OC_App" href="OC_App.html" />
+    <link rel="prev" title="OC_Files" href="OC_Files.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../general/index.html">General contributor guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/startapp.html">Create an app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/init.html">Navigation and pre-app configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/info.html">App metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/classloader.html">Classloader</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/request.html">Request lifecycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/routes.html">Routing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/middleware.html">Middleware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/container.html">Container</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/controllers.html">Controllers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/api.html">RESTful API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/templates.html">Templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/js.html">JavaScript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/css.html">CSS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/l10n.html">Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/theming.html">Theming support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/schema.html">Database schema</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/database.html">Database access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/filesystem.html">Filesystem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/appdata.html">AppData</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/users.html">User management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/two-factor-provider.html">Two-factor providers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/hooks.html">Hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/backgroundjobs.html">Background jobs (Cron)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/settings.html">Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/logging.html">Logging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/migrations.html">Migrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/repair.html">Repair steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/publishing.html">App store publishing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/code_signing.html">Code signing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../design/index.html">Design guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../android_library/index.html">Android application development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client_apis/index.html">Client APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../core/translation.html">Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../core/unit-testing.html">Unit-Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../core/theming.html">Theming Nextcloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../core/externalapi.html">External API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../core/ocs-share-api.html">OCS Share API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../core/index.html">Core development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bugtracker/index.html">Bugtracker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../commun/index.html">Help and communication</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../api.html">API Documentation</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../api.html#php-public-api">PHP public API</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../api.html#php-class-reference">PHP class reference</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">/ namespace</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="index.html#namespaces">Namespaces</a></li>
+<li class="toctree-l4 current"><a class="reference internal" href="index.html#classes">Classes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="index.html#functions">Functions</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="OC/index.html">/OC namespace</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Nextcloud 13 Developer Manual</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../api.html">API Documentation</a> &raquo;</li>
+        
+          <li><a href="index.html">\</a> &raquo;</li>
+        
+      <li>OC_User</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/nextcloud/documentation/edit/stable13/developer_manual/api/OC_User.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="phpdoctorst section" id="oc-user">
+<h1>OC_User<a class="headerlink" href="#oc-user" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="OC_User">
+<em class="property">class </em><code class="descname">OC_User</code><a class="headerlink" href="#OC_User" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">This class provides wrapper methods for user management. Multiple backends are</div>
+<div class="line">supported. User management operations are delegated to the configured backend for</div>
+<div class="line">execution.</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">Note that &amp;run is deprecated and won&#8217;t work anymore.</div>
+<div class="line"><br /></div>
+<div class="line">Hooks provided:</div>
+<div class="line-block">
+<div class="line">pre_createUser(&amp;run, uid, password)</div>
+<div class="line">post_createUser(uid, password)</div>
+<div class="line">pre_deleteUser(&amp;run, uid)</div>
+<div class="line">post_deleteUser(uid)</div>
+<div class="line">pre_setPassword(&amp;run, uid, password, recoveryPassword)</div>
+<div class="line">post_setPassword(uid, password, recoveryPassword)</div>
+<div class="line">pre_login(&amp;run, uid, password)</div>
+<div class="line">post_login(uid)</div>
+<div class="line">logout()</div>
+</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_User.php#L59">lib/private/legacy/OC_User.php#59</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<div class="section" id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h2>
+<dl class="public static method">
+<dt id="OC_User::useBackend">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC_User::</code><code class="descname">useBackend</code><span class="sig-paren">(</span><em>$backend=database</em><span class="sig-paren">)</span><a class="headerlink" href="#OC_User::useBackend" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Adds the backend to the list of used backends</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_User.php#L76">lib/private/legacy/OC_User.php#76</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$backend</strong> (string | <a class="reference internal" href="OCP/UserInterface.html#OCP\UserInterface" title="OCP\UserInterface"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\UserInterface</span></code></a>)  default: database The backend to use for user management</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">bool Set the User Authentication Module</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC_User::clearBackends">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC_User::</code><code class="descname">clearBackends</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC_User::clearBackends" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">remove all used backends</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_User.php#L113">lib/private/legacy/OC_User.php#113</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC_User::setupBackends">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC_User::</code><code class="descname">setupBackends</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC_User::setupBackends" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">setup the configured backends in config.php</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_User.php#L122">lib/private/legacy/OC_User.php#122</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC_User::loginWithApache">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC_User::</code><code class="descname">loginWithApache</code><span class="sig-paren">(</span><em>$backend</em><span class="sig-paren">)</span><a class="headerlink" href="#OC_User::loginWithApache" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Try to login a user, assuming authentication</div>
+<div class="line">has already happened (e.g. via Single Sign On).</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">Log in a user and regenerate a new session.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_User.php#L162">lib/private/legacy/OC_User.php#162</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$backend</strong> (<a class="reference internal" href="OCP/Authentication/IApacheBackend.html#OCP\Authentication\IApacheBackend" title="OCP\Authentication\IApacheBackend"><code class="xref any php php-trait docutils literal"><span class="pre">OCP\Authentication\IApacheBackend</span></code></a>)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC_User::handleApacheAuth">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC_User::</code><code class="descname">handleApacheAuth</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC_User::handleApacheAuth" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Verify with Apache whether user is authenticated.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_User.php#L205">lib/private/legacy/OC_User.php#205</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">bool | null true: authenticated
+false: not authenticated
+null: not handled / no backend available</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC_User::setUserId">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC_User::</code><code class="descname">setUserId</code><span class="sig-paren">(</span><em>$uid</em><span class="sig-paren">)</span><a class="headerlink" href="#OC_User::setUserId" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Sets user id for session and triggers emit</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_User.php#L226">lib/private/legacy/OC_User.php#226</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>$uid</strong> (string)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static deprecated method">
+<dt id="OC_User::isLoggedIn">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC_User::</code><code class="descname">isLoggedIn</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC_User::isLoggedIn" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Check if the user is logged in, considers also the HTTP basic credentials</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_User.php#L242">lib/private/legacy/OC_User.php#242</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Deprecated:</th><td class="field-body">use \OC::$server-&gt;getUserSession()-&gt;isLoggedIn()</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC_User::setIncognitoMode">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC_User::</code><code class="descname">setIncognitoMode</code><span class="sig-paren">(</span><em>$status</em><span class="sig-paren">)</span><a class="headerlink" href="#OC_User::setIncognitoMode" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">set incognito mode, e.g. if a user wants to open a public link</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_User.php#L251">lib/private/legacy/OC_User.php#251</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>$status</strong> (bool)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC_User::isIncognitoMode">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC_User::</code><code class="descname">isIncognitoMode</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC_User::isIncognitoMode" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">get incognito mode status</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_User.php#L260">lib/private/legacy/OC_User.php#260</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC_User::getLogoutUrl">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC_User::</code><code class="descname">getLogoutUrl</code><span class="sig-paren">(</span><em>$urlGenerator</em><span class="sig-paren">)</span><a class="headerlink" href="#OC_User::getLogoutUrl" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Returns the current logout URL valid for the currently logged-in user</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_User.php#L270">lib/private/legacy/OC_User.php#270</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$urlGenerator</strong> (<a class="reference internal" href="OCP/IURLGenerator.html#OCP\IURLGenerator" title="OCP\IURLGenerator"><code class="xref any php php-trait docutils literal"><span class="pre">OCP\IURLGenerator</span></code></a>)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">string</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC_User::isAdminUser">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC_User::</code><code class="descname">isAdminUser</code><span class="sig-paren">(</span><em>$uid</em><span class="sig-paren">)</span><a class="headerlink" href="#OC_User::isAdminUser" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Check if the user is an admin user</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_User.php#L296">lib/private/legacy/OC_User.php#296</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$uid</strong> (string)  uid of the admin</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC_User::getUser">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC_User::</code><code class="descname">getUser</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC_User::getUser" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">get the user id of the user currently logged in.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_User.php#L311">lib/private/legacy/OC_User.php#311</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">string | bool uid or false</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static deprecated method">
+<dt id="OC_User::getDisplayName">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC_User::</code><code class="descname">getDisplayName</code><span class="sig-paren">(</span><em>$uid=\null</em><span class="sig-paren">)</span><a class="headerlink" href="#OC_User::getDisplayName" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">get the display name of the user currently logged in.</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_User.php#L328">lib/private/legacy/OC_User.php#328</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$uid</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">string | bool uid or false</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Deprecated:</th><td class="field-body"><p class="first last">8.1.0 fetch \OCP\IUser (has getDisplayName()) by using method
+get() of \OCP\IUserManager - \OC::$server-&gt;getUserManager()</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC_User::setPassword">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC_User::</code><code class="descname">setPassword</code><span class="sig-paren">(</span><em>$uid</em>, <em>$password</em>, <em>$recoveryPassword=\null</em><span class="sig-paren">)</span><a class="headerlink" href="#OC_User::setPassword" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Set password</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_User.php#L356">lib/private/legacy/OC_User.php#356</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$uid</strong> (string)  The username</li>
+<li><strong>$password</strong> (string)  The new password</li>
+<li><strong>$recoveryPassword</strong> (string)  for the encryption app to reset encryption keys</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">bool Change the password of a user</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static deprecated method">
+<dt id="OC_User::getHome">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC_User::</code><code class="descname">getHome</code><span class="sig-paren">(</span><em>$uid</em><span class="sig-paren">)</span><a class="headerlink" href="#OC_User::getHome" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_User.php#L372">lib/private/legacy/OC_User.php#372</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$uid</strong> (string)  The username</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">string returns the path to the users home directory</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Deprecated:</th><td class="field-body"><p class="first last">Use \OC::$server-&gt;getUserManager-&gt;getHome()</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static deprecated method">
+<dt id="OC_User::getDisplayNames">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC_User::</code><code class="descname">getDisplayNames</code><span class="sig-paren">(</span><em>$search=&quot;&quot;</em>, <em>$limit=\null</em>, <em>$offset=\null</em><span class="sig-paren">)</span><a class="headerlink" href="#OC_User::getDisplayNames" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Get a list of all users display name</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/legacy/OC_User.php#L392">lib/private/legacy/OC_User.php#392</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$search</strong> (string)</li>
+<li><strong>$limit</strong> (int)</li>
+<li><strong>$offset</strong> (int)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">array associative array with all display names (value) and corresponding uids (key)</p>
+<p>Get a list of all display names and user ids.</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Deprecated:</th><td class="field-body"><p class="first last">Use \OC::$server-&gt;getUserManager-&gt;searchDisplayName($search, $limit, $offset) instead.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="OC_App.html" class="btn btn-neutral float-right" title="OC_App" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="OC_Files.html" class="btn btn-neutral float-left" title="OC_Files" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021 Nextcloud GmbH.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: 13
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/13/developer_manual">13</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/14/developer_manual">14</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/15/developer_manual">15</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/developer_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/developer_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+   
+
+</body>
+</html>

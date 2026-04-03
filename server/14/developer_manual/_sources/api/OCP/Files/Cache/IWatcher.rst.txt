@@ -1,0 +1,173 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IWatcher
+========
+
+
+.. php:namespace:: OCP\Files\Cache
+
+.. php:interface:: IWatcher
+
+
+	.. rst-class:: phpdoc-description
+	
+		| check the storage backends for updates and change the cache accordingly
+		
+	
+	:Implemented by:
+		:php:class:`OC\\Files\\Cache\\Watcher` 
+	
+	
+	:Source:
+		`lib/public/Files/Cache/IWatcher.php#31 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Cache/IWatcher.php#L31>`_
+	
+
+Constants
+---------
+
+.. php:const:: CHECK_NEVER = 0
+
+	:Source:
+		`lib/public/Files/Cache/IWatcher.php#32 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Cache/IWatcher.php#L32>`_
+	
+
+
+.. php:const:: CHECK_ONCE = 1
+
+	:Source:
+		`lib/public/Files/Cache/IWatcher.php#33 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Cache/IWatcher.php#L33>`_
+	
+
+
+.. php:const:: CHECK_ALWAYS = 2
+
+	:Source:
+		`lib/public/Files/Cache/IWatcher.php#34 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Cache/IWatcher.php#L34>`_
+	
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public setPolicy( $policy)
+	
+		:Source:
+			`lib/public/Files/Cache/IWatcher.php#40 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Cache/IWatcher.php#L40>`_
+		
+		
+		:Parameters:
+			* **$policy** (int)  either IWatcher::CHECK_NEVER, IWatcher::CHECK_ONCE, IWatcher::CHECK_ALWAYS
+
+		
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getPolicy()
+	
+		:Source:
+			`lib/public/Files/Cache/IWatcher.php#46 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Cache/IWatcher.php#L46>`_
+		
+		
+		:Returns: int either IWatcher::CHECK\_NEVER, IWatcher::CHECK\_ONCE, IWatcher::CHECK\_ALWAYS
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public checkUpdate( $path, $cachedEntry=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| check $path for updates and update if needed
+			
+		
+		:Source:
+			`lib/public/Files/Cache/IWatcher.php#56 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Cache/IWatcher.php#L56>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+			* **$cachedEntry** (:any:`OCP\\Files\\Cache\\ICacheEntry <OCP\\Files\\Cache\\ICacheEntry>` | null)  
+
+		
+		:Returns: bool true if path was updated
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public update( $path, $cachedData)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Update the cache for changes to $path
+			
+		
+		:Source:
+			`lib/public/Files/Cache/IWatcher.php#65 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Cache/IWatcher.php#L65>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+			* **$cachedData** (:any:`OCP\\Files\\Cache\\ICacheEntry <OCP\\Files\\Cache\\ICacheEntry>`)  
+
+		
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public needsUpdate( $path, $cachedData)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check if the cache for $path needs to be updated
+			
+		
+		:Source:
+			`lib/public/Files/Cache/IWatcher.php#75 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Cache/IWatcher.php#L75>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+			* **$cachedData** (:any:`OCP\\Files\\Cache\\ICacheEntry <OCP\\Files\\Cache\\ICacheEntry>`)  
+
+		
+		:Returns: bool 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public cleanFolder( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| remove deleted files in $path from the cache
+			
+		
+		:Source:
+			`lib/public/Files/Cache/IWatcher.php#83 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Cache/IWatcher.php#L83>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Since: 9.0.0 
+	
+	
+

@@ -1,0 +1,339 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+MigrationService
+================
+
+
+.. php:namespace:: OC\DB
+
+.. php:class:: MigrationService
+
+
+	:Source:
+		`lib/private/DB/MigrationService.php#48 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/MigrationService.php#L48>`_
+	
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $appName, $connection, $output=null, $appLocator=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| MigrationService constructor\.
+			
+		
+		:Source:
+			`lib/private/DB/MigrationService.php#72 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/MigrationService.php#L72>`_
+		
+		
+		:Parameters:
+			* **$appName**  
+			* **$connection** (:any:`OC\\DB\\Connection <OC\\DB\\Connection>`)  
+			* **$output** (:any:`OCP\\Migration\\IOutput <OCP\\Migration\\IOutput>` | null)  
+			* **$appLocator** (:any:`OC\\IntegrityCheck\\Helpers\\AppLocator <OC\\IntegrityCheck\\Helpers\\AppLocator>`)  
+
+		
+		:Throws: :any:`\\Exception <Exception>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getApp()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the name of the app for which this migration is executed
+			
+		
+		:Source:
+			`lib/private/DB/MigrationService.php#115 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/MigrationService.php#L115>`_
+		
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getMigratedVersions()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns all versions which have already been applied
+			
+		
+		:Source:
+			`lib/private/DB/MigrationService.php#191 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/MigrationService.php#L191>`_
+		
+		
+		:Returns: string[] 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getAvailableVersions()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns all versions which are available in the migration folder
+			
+		
+		:Source:
+			`lib/private/DB/MigrationService.php#212 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/MigrationService.php#L212>`_
+		
+		
+		:Returns: array 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected findMigrations()
+	
+		:Source:
+			`lib/private/DB/MigrationService.php#217 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/MigrationService.php#L217>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getMigrationsTableName()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the name of the table which holds the already applied versions
+			
+		
+		:Source:
+			`lib/private/DB/MigrationService.php#309 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/MigrationService.php#L309>`_
+		
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getMigrationsNamespace()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the namespace of the version classes
+			
+		
+		:Source:
+			`lib/private/DB/MigrationService.php#318 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/MigrationService.php#L318>`_
+		
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getMigrationsDirectory()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the directory which holds the versions
+			
+		
+		:Source:
+			`lib/private/DB/MigrationService.php#327 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/MigrationService.php#L327>`_
+		
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getMigration( $alias)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Return the explicit version for the aliases; current, next, prev, latest
+			
+		
+		:Source:
+			`lib/private/DB/MigrationService.php#337 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/MigrationService.php#L337>`_
+		
+		
+		:Parameters:
+			* **$alias** (string)  
+
+		
+		:Returns: mixed | null | string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setOutput( $output)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Allows to set an IOutput implementation which is used for logging progress and messages
+			
+		
+		:Source:
+			`lib/private/DB/MigrationService.php#405 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/MigrationService.php#L405>`_
+		
+		
+		:Parameters:
+			* **$output** (:any:`OCP\\Migration\\IOutput <OCP\\Migration\\IOutput>`)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public migrate( $to=latest, $schemaOnly=false)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Applies all not yet applied versions up to $to
+			
+		
+		:Source:
+			`lib/private/DB/MigrationService.php#416 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/MigrationService.php#L416>`_
+		
+		
+		:Parameters:
+			* **$to** (string)  
+			* **$schemaOnly** (bool)  
+
+		
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public migrateSchemaOnly( $to=latest)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Applies all not yet applied versions up to $to
+			
+		
+		:Source:
+			`lib/private/DB/MigrationService.php#441 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/MigrationService.php#L441>`_
+		
+		
+		:Parameters:
+			* **$to** (string)  
+
+		
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public describeMigrationStep( $to=latest)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the human readable descriptions for the migration steps to run
+			
+		
+		:Source:
+			`lib/private/DB/MigrationService.php#479 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/MigrationService.php#L479>`_
+		
+		
+		:Parameters:
+			* **$to** (string)  
+
+		
+		:Returns: string[] \[$name =\> $description\]
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected createInstance( $version)
+	
+		:Source:
+			`lib/private/DB/MigrationService.php#496 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/MigrationService.php#L496>`_
+		
+		
+		:Parameters:
+			* **$version** (string)  
+
+		
+		:Returns: :any:`\\OCP\\Migration\\IMigrationStep <OCP\\Migration\\IMigrationStep>` 
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public executeStep( $version, $schemaOnly=false)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Executes one explicit version
+			
+		
+		:Source:
+			`lib/private/DB/MigrationService.php#522 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/MigrationService.php#L522>`_
+		
+		
+		:Parameters:
+			* **$version** (string)  
+			* **$schemaOnly** (bool)  
+
+		
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public ensureOracleConstraints( $sourceSchema, $targetSchema, $prefixLength)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Naming constraints:
+			| \- Tables names must be 30 chars or shorter \(27 \+ oc\_ prefix\)
+			| \- Column names must be 30 chars or shorter
+			| \- Index names must be 30 chars or shorter
+			| \- Sequence names must be 30 chars or shorter
+			| \- Primary key names must be set or the table name 23 chars or shorter
+			
+			| Data constraints:
+			| \- Columns with "NotNull" can not have empty string as default value
+			| \- Columns with "NotNull" can not have number 0 as default value
+			| \- Columns with type "bool" \(which is in fact integer of length 1\) can not be "NotNull" as it can not store 0/false
+			
+		
+		:Source:
+			`lib/private/DB/MigrationService.php#572 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/MigrationService.php#L572>`_
+		
+		
+		:Parameters:
+			* **$sourceSchema** (:any:`Doctrine\\DBAL\\Schema\\Schema <Doctrine\\DBAL\\Schema\\Schema>`)  
+			* **$targetSchema** (:any:`Doctrine\\DBAL\\Schema\\Schema <Doctrine\\DBAL\\Schema\\Schema>`)  
+			* **$prefixLength** (int)  
+
+		
+		:Throws: :any:`\\Doctrine\\DBAL\\Exception <Doctrine\\DBAL\\Exception>` 
+	
+	
+

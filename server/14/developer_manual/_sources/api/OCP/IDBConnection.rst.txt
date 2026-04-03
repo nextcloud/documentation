@@ -1,0 +1,695 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IDBConnection
+=============
+
+
+.. php:namespace:: OCP
+
+.. php:interface:: IDBConnection
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Interface IDBConnection
+		
+	
+	:Implemented by:
+		:php:class:`OC\\DB\\ConnectionAdapter` 
+	
+	
+	:Source:
+		`lib/public/IDBConnection.php#53 <https://github.com/nextcloud/server/blob/stable13/lib/public/IDBConnection.php#L53>`_
+	
+
+Constants
+---------
+
+.. php:const:: ADD_MISSING_INDEXES_EVENT = self::class \. ::ADD\_MISSING\_INDEXES
+
+	:Source:
+		`lib/public/IDBConnection.php#57 <https://github.com/nextcloud/server/blob/stable13/lib/public/IDBConnection.php#L57>`_
+	
+	:Deprecated: 22.0.0 this is an internal event
+
+
+.. php:const:: CHECK_MISSING_INDEXES_EVENT = self::class \. ::CHECK\_MISSING\_INDEXES
+
+	:Source:
+		`lib/public/IDBConnection.php#62 <https://github.com/nextcloud/server/blob/stable13/lib/public/IDBConnection.php#L62>`_
+	
+	:Deprecated: 22.0.0 this is an internal event
+
+
+.. php:const:: ADD_MISSING_PRIMARY_KEYS_EVENT = self::class \. ::ADD\_MISSING\_PRIMARY\_KEYS
+
+	:Source:
+		`lib/public/IDBConnection.php#67 <https://github.com/nextcloud/server/blob/stable13/lib/public/IDBConnection.php#L67>`_
+	
+	:Deprecated: 22.0.0 this is an internal event
+
+
+.. php:const:: CHECK_MISSING_PRIMARY_KEYS_EVENT = self::class \. ::CHECK\_MISSING\_PRIMARY\_KEYS
+
+	:Source:
+		`lib/public/IDBConnection.php#72 <https://github.com/nextcloud/server/blob/stable13/lib/public/IDBConnection.php#L72>`_
+	
+	:Deprecated: 22.0.0 this is an internal event
+
+
+.. php:const:: ADD_MISSING_COLUMNS_EVENT = self::class \. ::ADD\_MISSING\_COLUMNS
+
+	:Source:
+		`lib/public/IDBConnection.php#77 <https://github.com/nextcloud/server/blob/stable13/lib/public/IDBConnection.php#L77>`_
+	
+	:Deprecated: 22.0.0 this is an internal event
+
+
+.. php:const:: CHECK_MISSING_COLUMNS_EVENT = self::class \. ::CHECK\_MISSING\_COLUMNS
+
+	:Source:
+		`lib/public/IDBConnection.php#82 <https://github.com/nextcloud/server/blob/stable13/lib/public/IDBConnection.php#L82>`_
+	
+	:Deprecated: 22.0.0 this is an internal event
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public getQueryBuilder()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Gets the QueryBuilder for the connection\.
+			
+		
+		:Source:
+			`lib/public/IDBConnection.php#90 <https://github.com/nextcloud/server/blob/stable13/lib/public/IDBConnection.php#L90>`_
+		
+		
+		:Returns: :any:`\\OCP\\DB\\QueryBuilder\\IQueryBuilder <OCP\\DB\\QueryBuilder\\IQueryBuilder>` 
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public prepare( $sql, $limit=null, $offset=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Used to abstract the ownCloud database access away
+			
+		
+		:Source:
+			`lib/public/IDBConnection.php#103 <https://github.com/nextcloud/server/blob/stable13/lib/public/IDBConnection.php#L103>`_
+		
+		
+		:Parameters:
+			* **$sql** (string)  the sql query with ? placeholder for params
+			* **$limit** (int)  the maximum number of rows
+			* **$offset** (int)  from which row we want to start
+
+		
+		:Returns: :any:`\\OCP\\DB\\IPreparedStatement <OCP\\DB\\IPreparedStatement>` The prepared statement\.
+		:Since: 6.0.0 
+		:Throws: :any:`\\OCP\\DB\\Exception <OCP\\DB\\Exception>` since 21\.0\.0
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public executeQuery( $sql, $params=\[\], $types=\[\])
+	
+		.. rst-class:: phpdoc-description
+		
+			| Executes an, optionally parameterized, SQL query\.
+			
+			| If the query is parameterized, a prepared statement is used\.
+			| If an SQLLogger is configured, the execution is logged\.
+			
+		
+		:Source:
+			`lib/public/IDBConnection.php#120 <https://github.com/nextcloud/server/blob/stable13/lib/public/IDBConnection.php#L120>`_
+		
+		
+		:Parameters:
+			* **$sql** (string)  The SQL query to execute.
+			* **$params** (string[])  The parameters to bind to the query, if any.
+			* **$types** (array)  The types the previous parameters are in.
+
+		
+		:Returns: :any:`\\OCP\\DB\\IResult <OCP\\DB\\IResult>` The executed statement\.
+		:Since: 8.0.0 
+		:Throws: :any:`\\OCP\\DB\\Exception <OCP\\DB\\Exception>` since 21\.0\.0
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public executeUpdate( $sql, $params=\[\], $types=\[\])
+	
+		.. rst-class:: phpdoc-description
+		
+			| Executes an SQL INSERT/UPDATE/DELETE query with the given parameters
+			| and returns the number of affected rows\.
+			
+			| This method supports PDO binding types as well as DBAL mapping types\.
+			
+		
+		:Source:
+			`lib/public/IDBConnection.php#139 <https://github.com/nextcloud/server/blob/stable13/lib/public/IDBConnection.php#L139>`_
+		
+		
+		:Parameters:
+			* **$sql** (string)  The SQL query.
+			* **$params** (array)  The query parameters.
+			* **$types** (array)  The parameter types.
+
+		
+		:Returns: int The number of affected rows\.
+		:Since: 8.0.0 
+		:Throws: :any:`\\OCP\\DB\\Exception <OCP\\DB\\Exception>` since 21\.0\.0
+		:Deprecated: 21.0.0 use executeStatement
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public executeStatement( $sql, $params=\[\], $types=\[\])
+	
+		.. rst-class:: phpdoc-description
+		
+			| Executes an SQL INSERT/UPDATE/DELETE query with the given parameters
+			| and returns the number of affected rows\.
+			
+			| This method supports PDO binding types as well as DBAL mapping types\.
+			
+		
+		:Source:
+			`lib/public/IDBConnection.php#156 <https://github.com/nextcloud/server/blob/stable13/lib/public/IDBConnection.php#L156>`_
+		
+		
+		:Parameters:
+			* **$sql** (string)  The SQL query.
+			* **$params** (array)  The query parameters.
+			* **$types** (array)  The parameter types.
+
+		
+		:Returns: int The number of affected rows\.
+		:Since: 21.0.0 
+		:Throws: :any:`\\OCP\\DB\\Exception <OCP\\DB\\Exception>` since 21\.0\.0
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public lastInsertId( $table)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Used to get the id of the just inserted element
+			
+		
+		:Source:
+			`lib/public/IDBConnection.php#166 <https://github.com/nextcloud/server/blob/stable13/lib/public/IDBConnection.php#L166>`_
+		
+		
+		:Parameters:
+			* **$table** (string)  the name of the table where we inserted the item
+
+		
+		:Returns: int the id of the inserted element
+		:Since: 6.0.0 
+		:Throws: :any:`\\OCP\\DB\\Exception <OCP\\DB\\Exception>` since 21\.0\.0
+		:Deprecated: 21.0.0 use \\OCP\\DB\\QueryBuilder\\IQueryBuilder::getLastInsertId
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public insertIfNotExist( $table, $input, $compare=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Insert a row if the matching row does not exists\. To accomplish proper race condition avoidance
+			| it is needed that there is also a unique constraint on the values\. Then this method will
+			| catch the exception and return 0\.
+			
+		
+		:Source:
+			`lib/public/IDBConnection.php#183 <https://github.com/nextcloud/server/blob/stable13/lib/public/IDBConnection.php#L183>`_
+		
+		
+		:Parameters:
+			* **$table** (string)  The table name (will replace *PREFIX* with the actual prefix)
+			* **$input** (array)  data that should be inserted into the table  (column name => value)
+			* **$compare** (array | null)  List of values that should be checked for "if not exists"
+			If this is null or an empty array, all keys of $input will be compared
+			Please note: text fields (clob) must not be used in the compare array
+
+		
+		:Returns: int number of inserted rows
+		:Throws: :any:`\\OCP\\DB\\Exception <OCP\\DB\\Exception>` used to be the removed dbal exception, since 21\.0\.0 it\'s \\OCP\\DB\\Exception
+		:Since: 6.0.0 \- parameter $compare was added in 8\.1\.0, return type changed from boolean in 8\.1\.0
+		:Deprecated: 15.0.0 \- use unique index and "try \{ $db\-\>insert\(\) \} catch \(UniqueConstraintViolationException $e\) \}" instead, because it is more reliable and does not have the risk for deadlocks \- see https://github\.com/nextcloud/server/pull/12371
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public insertIgnoreConflict( $table, $values)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Insert a row if the row does not exist\. Eventual conflicts during insert will be ignored\.
+			
+			| Implementation is not fully finished and should not be used\!
+			
+		
+		:Source:
+			`lib/public/IDBConnection.php#197 <https://github.com/nextcloud/server/blob/stable13/lib/public/IDBConnection.php#L197>`_
+		
+		
+		:Parameters:
+			* **$table** (string)  The table name (will replace *PREFIX* with the actual prefix)
+			* **$values** (array)  data that should be inserted into the table  (column name => value)
+
+		
+		:Returns: int number of inserted rows
+		:Since: 16.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setValues( $table, $keys, $values, $updatePreconditionValues=\[\])
+	
+		.. rst-class:: phpdoc-description
+		
+			| Insert or update a row value
+			
+		
+		:Source:
+			`lib/public/IDBConnection.php#211 <https://github.com/nextcloud/server/blob/stable13/lib/public/IDBConnection.php#L211>`_
+		
+		
+		:Parameters:
+			* **$table** (string)  
+			* **$keys** (array)  (column name => value)
+			* **$values** (array)  (column name => value)
+			* **$updatePreconditionValues** (array)  ensure values match preconditions (column name => value)
+
+		
+		:Returns: int number of new rows
+		:Throws: :any:`\\OCP\\DB\\Exception <OCP\\DB\\Exception>` used to be the removed dbal exception, since 21\.0\.0 it\'s \\OCP\\DB\\Exception
+		:Throws: :any:`\\OCP\\PreconditionNotMetException <OCP\\PreconditionNotMetException>` 
+		:Throws: :any:`\\OCP\\DB\\Exception <OCP\\DB\\Exception>` used to be the removed dbal exception, since 21\.0\.0 it\'s \\OCP\\DB\\Exception
+		:Throws: :any:`\\OCP\\PreconditionNotMetException <OCP\\PreconditionNotMetException>` 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public lockTable( $tableName)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Create an exclusive read\+write lock on a table
+			
+			| Important Note: Due to the nature how locks work on different DBs, it is
+			| only possible to lock one table at a time\. You should also NOT start a
+			| transaction while holding a lock\.
+			
+		
+		:Source:
+			`lib/public/IDBConnection.php#224 <https://github.com/nextcloud/server/blob/stable13/lib/public/IDBConnection.php#L224>`_
+		
+		
+		:Parameters:
+			* **$tableName** (string)  
+
+		
+		:Throws: :any:`\\OCP\\DB\\Exception <OCP\\DB\\Exception>` since 21\.0\.0
+		:Since: 9.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public unlockTable()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Release a previous acquired lock again
+			
+		
+		:Source:
+			`lib/public/IDBConnection.php#232 <https://github.com/nextcloud/server/blob/stable13/lib/public/IDBConnection.php#L232>`_
+		
+		
+		:Throws: :any:`\\OCP\\DB\\Exception <OCP\\DB\\Exception>` since 21\.0\.0
+		:Since: 9.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public beginTransaction()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Start a transaction
+			
+		
+		:Source:
+			`lib/public/IDBConnection.php#239 <https://github.com/nextcloud/server/blob/stable13/lib/public/IDBConnection.php#L239>`_
+		
+		
+		:Since: 6.0.0 
+		:Throws: :any:`\\OCP\\DB\\Exception <OCP\\DB\\Exception>` since 21\.0\.0
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public inTransaction()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check if a transaction is active
+			
+		
+		:Source:
+			`lib/public/IDBConnection.php#247 <https://github.com/nextcloud/server/blob/stable13/lib/public/IDBConnection.php#L247>`_
+		
+		
+		:Returns: bool 
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public commit()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Commit the database changes done during a transaction that is in progress
+			
+		
+		:Source:
+			`lib/public/IDBConnection.php#254 <https://github.com/nextcloud/server/blob/stable13/lib/public/IDBConnection.php#L254>`_
+		
+		
+		:Since: 6.0.0 
+		:Throws: :any:`\\OCP\\DB\\Exception <OCP\\DB\\Exception>` since 21\.0\.0
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public rollBack()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Rollback the database changes done during a transaction that is in progress
+			
+		
+		:Source:
+			`lib/public/IDBConnection.php#261 <https://github.com/nextcloud/server/blob/stable13/lib/public/IDBConnection.php#L261>`_
+		
+		
+		:Since: 6.0.0 
+		:Throws: :any:`\\OCP\\DB\\Exception <OCP\\DB\\Exception>` since 21\.0\.0
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public getError()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Gets the error code and message as a string for logging
+			
+		
+		:Source:
+			`lib/public/IDBConnection.php#269 <https://github.com/nextcloud/server/blob/stable13/lib/public/IDBConnection.php#L269>`_
+		
+		
+		:Returns: string 
+		:Since: 6.0.0 
+		:Deprecated: 21.0.0 doesn\'t return anything meaningful
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public errorCode()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Fetch the SQLSTATE associated with the last database operation\.
+			
+		
+		:Source:
+			`lib/public/IDBConnection.php#278 <https://github.com/nextcloud/server/blob/stable13/lib/public/IDBConnection.php#L278>`_
+		
+		
+		:Returns: int The last error code\.
+		:Since: 8.0.0 
+		:Deprecated: 21.0.0 doesn\'t return anything anymore
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public errorInfo()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Fetch extended error information associated with the last database operation\.
+			
+		
+		:Source:
+			`lib/public/IDBConnection.php#287 <https://github.com/nextcloud/server/blob/stable13/lib/public/IDBConnection.php#L287>`_
+		
+		
+		:Returns: array The last error information\.
+		:Since: 8.0.0 
+		:Deprecated: 21.0.0 doesn\'t return anything anymore
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public connect()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Establishes the connection with the database\.
+			
+		
+		:Source:
+			`lib/public/IDBConnection.php#296 <https://github.com/nextcloud/server/blob/stable13/lib/public/IDBConnection.php#L296>`_
+		
+		
+		:Returns: bool 
+		:Throws: :any:`\\OCP\\DB\\Exception <OCP\\DB\\Exception>` since 21\.0\.0
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public close()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Close the database connection
+			
+		
+		:Source:
+			`lib/public/IDBConnection.php#302 <https://github.com/nextcloud/server/blob/stable13/lib/public/IDBConnection.php#L302>`_
+		
+		
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public quote( $input, $type=\\OCP\\DB\\QueryBuilder\\IQueryBuilder::PARAM\_STR)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Quotes a given input parameter\.
+			
+		
+		:Source:
+			`lib/public/IDBConnection.php#312 <https://github.com/nextcloud/server/blob/stable13/lib/public/IDBConnection.php#L312>`_
+		
+		
+		:Parameters:
+			* **$input** (mixed)  Parameter to be quoted.
+			* **$type** (int)  Type of the parameter.
+
+		
+		:Returns: mixed The quoted parameter\.
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getDatabasePlatform()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Gets the DatabasePlatform instance that provides all the metadata about
+			| the platform this driver connects to\.
+			
+		
+		:Source:
+			`lib/public/IDBConnection.php#321 <https://github.com/nextcloud/server/blob/stable13/lib/public/IDBConnection.php#L321>`_
+		
+		
+		:Returns: :any:`\\Doctrine\\DBAL\\Platforms\\AbstractPlatform <Doctrine\\DBAL\\Platforms\\AbstractPlatform>` The database platform\.
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public dropTable( $table)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Drop a table from the database if it exists
+			
+		
+		:Source:
+			`lib/public/IDBConnection.php#332 <https://github.com/nextcloud/server/blob/stable13/lib/public/IDBConnection.php#L332>`_
+		
+		
+		:Parameters:
+			* **$table** (string)  table name without the prefix
+
+		
+		:Throws: :any:`\\OCP\\DB\\Exception <OCP\\DB\\Exception>` since 21\.0\.0
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public tableExists( $table)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check if a table exists
+			
+		
+		:Source:
+			`lib/public/IDBConnection.php#342 <https://github.com/nextcloud/server/blob/stable13/lib/public/IDBConnection.php#L342>`_
+		
+		
+		:Parameters:
+			* **$table** (string)  table name without the prefix
+
+		
+		:Returns: bool 
+		:Throws: :any:`\\OCP\\DB\\Exception <OCP\\DB\\Exception>` since 21\.0\.0
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public escapeLikeParameter( $param)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Escape a parameter to be used in a LIKE query
+			
+		
+		:Source:
+			`lib/public/IDBConnection.php#351 <https://github.com/nextcloud/server/blob/stable13/lib/public/IDBConnection.php#L351>`_
+		
+		
+		:Parameters:
+			* **$param** (string)  
+
+		
+		:Returns: string 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public supports4ByteText()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check whether or not the current database support 4byte wide unicode
+			
+		
+		:Source:
+			`lib/public/IDBConnection.php#359 <https://github.com/nextcloud/server/blob/stable13/lib/public/IDBConnection.php#L359>`_
+		
+		
+		:Returns: bool 
+		:Since: 11.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public createSchema()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Create the schema of the connected database
+			
+		
+		:Source:
+			`lib/public/IDBConnection.php#368 <https://github.com/nextcloud/server/blob/stable13/lib/public/IDBConnection.php#L368>`_
+		
+		
+		:Returns: :any:`\\Doctrine\\DBAL\\Schema\\Schema <Doctrine\\DBAL\\Schema\\Schema>` 
+		:Throws: :any:`\\OCP\\DB\\Exception <OCP\\DB\\Exception>` since 21\.0\.0
+		:Since: 13.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public migrateToSchema( $toSchema)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Migrate the database to the given schema
+			
+		
+		:Source:
+			`lib/public/IDBConnection.php#377 <https://github.com/nextcloud/server/blob/stable13/lib/public/IDBConnection.php#L377>`_
+		
+		
+		:Parameters:
+			* **$toSchema** (:any:`Doctrine\\DBAL\\Schema\\Schema <Doctrine\\DBAL\\Schema\\Schema>`)  
+
+		
+		:Throws: :any:`\\OCP\\DB\\Exception <OCP\\DB\\Exception>` since 21\.0\.0
+		:Since: 13.0.0 
+	
+	
+

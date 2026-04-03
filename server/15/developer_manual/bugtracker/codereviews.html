@@ -1,0 +1,325 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Code reviews on GitHub &mdash; Nextcloud 15 Developer Manual 15 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../',
+              VERSION:'15',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Development process" href="kanban.html" />
+    <link rel="prev" title="Bugtracker" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html">
+          
+
+          
+            
+            <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../general/index.html">General contributor guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../design/index.html">Design guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../android_library/index.html">Android application development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client_apis/index.html">Client APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../core/index.html">Core development</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Bugtracker</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Code reviews on GitHub</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#precondition">Precondition</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#how-will-it-work">How will it work?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#examples">Examples</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#questions">Questions?</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="kanban.html">Development process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="triaging.html">Nextcloud bug triaging</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../commun/index.html">Help and communication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../api.html">API Documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Nextcloud 15 Developer Manual</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="index.html">Bugtracker</a> &raquo;</li>
+        
+      <li>Code reviews on GitHub</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/nextcloud/documentation/edit/stable15/developer_manual/bugtracker/codereviews.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="code-reviews-on-github">
+<h1>Code reviews on GitHub<a class="headerlink" href="#code-reviews-on-github" title="Permalink to this headline">¶</a></h1>
+<blockquote>
+<div><p>Given enough eyeballs, all bugs are shallow</p>
+<p class="attribution">&mdash;Linus&#8217; Law</p>
+</div></blockquote>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>In order to increase the code quality within Nextcloud, developers are requested
+to perform code reviews.  As we are now heavily using the GitHub platform these
+code reviews shall take place on GitHub as well.</p>
+</div>
+<div class="section" id="precondition">
+<h2>Precondition<a class="headerlink" href="#precondition" title="Permalink to this headline">¶</a></h2>
+<p>From now on no direct commits/pushes to master or any of the stable branches are
+allowed in general.  <strong>Every code</strong> change - <strong>even one liners</strong> - have to be
+reviewed!</p>
+</div>
+<div class="section" id="how-will-it-work">
+<h2>How will it work?<a class="headerlink" href="#how-will-it-work" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li>A developer will submit his changes on GitHub via a pull request (PR).
+<a class="reference external" href="https://help.GitHub.com/articles/using-pull-requests">GitHub:help - using pull requests</a></li>
+<li>Within the pull request the developer could already name other developers (using
+&#64;GitHubusername) and ask them for review.</li>
+<li>Using Labels section on the right side, they add <em>&#8220;3 - To review&#8221;</em> label if the patch is
+complete. If they have no permission to do that, other developers may add this Label in case
+PR author had indicated.</li>
+<li>Other developers (either named or at free will) have a look at the changes
+and are welcome to write comments within the comment field.</li>
+<li>In case the reviewer is okay with the changes and thinks all his comments and
+suggestions have been taken into account a :+1 on the comment will signal a positive
+review.</li>
+<li>Before a pull request will be merged into master or the corresponding
+branch at least 2 reviewers need to give :+1 score.</li>
+<li>Our continuous integration server will give an additional indicator for
+the quality of the pull request (the results can be accessed from the GitHub
+interface for that pull request).</li>
+</ol>
+</div>
+<div class="section" id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">¶</a></h2>
+<p>Read our documentation about <a class="reference internal" href="../general/codingguidelines.html"><span class="doc">Coding style &amp; general guidelines</span></a> for information
+on what a good pull request and good Nextcloud code looks like.</p>
+<p>These are two examples that are considered to be good examples of how pull
+requests should be handled</p>
+<ul class="simple">
+<li><a class="reference external" href="https://github.com/owncloud/core/pull/121">https://github.com/owncloud/core/pull/121</a></li>
+<li><a class="reference external" href="https://github.com/owncloud/core/pull/146">https://github.com/owncloud/core/pull/146</a></li>
+</ul>
+</div>
+<div class="section" id="questions">
+<h2>Questions?<a class="headerlink" href="#questions" title="Permalink to this headline">¶</a></h2>
+<p>Feel free to drop a line on the <a class="reference external" href="https://help.nextcloud.com/">forums</a> or join us on <a class="reference external" href="http://webchat.freenode.net/?channels=nextcloud-dev">IRC</a>.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="kanban.html" class="btn btn-neutral float-right" title="Development process" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="index.html" class="btn btn-neutral float-left" title="Bugtracker" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021 Nextcloud GmbH.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: 15
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/15/developer_manual">15</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/16/developer_manual">16</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/17/developer_manual">17</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/developer_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/developer_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+   
+
+</body>
+</html>

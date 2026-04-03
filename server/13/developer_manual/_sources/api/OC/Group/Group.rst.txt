@@ -1,0 +1,324 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+Group
+=====
+
+
+.. php:namespace:: OC\Group
+
+.. php:class:: Group
+
+
+	:Source:
+		`lib/private/Group/Group.php#48 <https://github.com/nextcloud/server/blob/stable13/lib/private/Group/Group.php#L48>`_
+	
+	:Implements:
+		:php:interface:`OCP\\IGroup` 
+	
+
+Properties
+----------
+
+.. php:attr:: protected static displayName
+
+	:Source:
+		`lib/private/Group/Group.php#50 <https://github.com/nextcloud/server/blob/stable13/lib/private/Group/Group.php#L50>`_
+	
+	:Type: null | string 
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $gid, $backends, $dispatcher, $userManager, $emitter=null, $displayName=null)
+	
+		:Source:
+			`lib/private/Group/Group.php#79 <https://github.com/nextcloud/server/blob/stable13/lib/private/Group/Group.php#L79>`_
+		
+		
+		:Parameters:
+			* **$gid** (string)  
+			* **$backends** (:any:`OC\\Group\\Backend\[\] <OC\\Group\\Backend>`)  
+			* **$dispatcher** (:any:`Symfony\\Component\\EventDispatcher\\EventDispatcherInterface <Symfony\\Component\\EventDispatcher\\EventDispatcherInterface>`)  
+			* **$userManager** (:any:`OCP\\IUserManager <OCP\\IUserManager>`)  
+			* **$emitter** (:any:`OC\\Hooks\\PublicEmitter <OC\\Hooks\\PublicEmitter>`)  
+			* **$displayName** (string)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getGID()
+	
+		:Source:
+			`lib/private/Group/Group.php#88 <https://github.com/nextcloud/server/blob/stable13/lib/private/Group/Group.php#L88>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getDisplayName()
+	
+		:Source:
+			`lib/private/Group/Group.php#92 <https://github.com/nextcloud/server/blob/stable13/lib/private/Group/Group.php#L92>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setDisplayName( $displayName)
+	
+		:Source:
+			`lib/private/Group/Group.php#108 <https://github.com/nextcloud/server/blob/stable13/lib/private/Group/Group.php#L108>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getUsers()
+	
+		.. rst-class:: phpdoc-description
+		
+			| get all users in the group
+			
+		
+		:Source:
+			`lib/private/Group/Group.php#127 <https://github.com/nextcloud/server/blob/stable13/lib/private/Group/Group.php#L127>`_
+		
+		
+		:Returns: :any:`\\OC\\User\\User\[\] <OC\\User\\User>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public inGroup( $user)
+	
+		.. rst-class:: phpdoc-description
+		
+			| check if a user is in the group
+			
+		
+		:Source:
+			`lib/private/Group/Group.php#154 <https://github.com/nextcloud/server/blob/stable13/lib/private/Group/Group.php#L154>`_
+		
+		
+		:Parameters:
+			* **$user** (:any:`OCP\\IUser <OCP\\IUser>`)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public addUser( $user)
+	
+		.. rst-class:: phpdoc-description
+		
+			| add a user to the group
+			
+		
+		:Source:
+			`lib/private/Group/Group.php#172 <https://github.com/nextcloud/server/blob/stable13/lib/private/Group/Group.php#L172>`_
+		
+		
+		:Parameters:
+			* **$user** (:any:`OCP\\IUser <OCP\\IUser>`)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public removeUser( $user)
+	
+		.. rst-class:: phpdoc-description
+		
+			| remove a user from the group
+			
+		
+		:Source:
+			`lib/private/Group/Group.php#208 <https://github.com/nextcloud/server/blob/stable13/lib/private/Group/Group.php#L208>`_
+		
+		
+		:Parameters:
+			* **$user** (:any:`OC\\User\\User <OC\\User\\User>`)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public searchUsers( $search, $limit=null, $offset=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| search for users in the group by userid
+			
+		
+		:Source:
+			`lib/private/Group/Group.php#248 <https://github.com/nextcloud/server/blob/stable13/lib/private/Group/Group.php#L248>`_
+		
+		
+		:Parameters:
+			* **$search** (string)  
+			* **$limit** (int)  
+			* **$offset** (int)  
+
+		
+		:Returns: :any:`\\OC\\User\\User\[\] <OC\\User\\User>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public count( $search="")
+	
+		.. rst-class:: phpdoc-description
+		
+			| returns the number of users matching the search string
+			
+		
+		:Source:
+			`lib/private/Group/Group.php#266 <https://github.com/nextcloud/server/blob/stable13/lib/private/Group/Group.php#L266>`_
+		
+		
+		:Parameters:
+			* **$search** (string)  
+
+		
+		:Returns: int | bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public countDisabled()
+	
+		.. rst-class:: phpdoc-description
+		
+			| returns the number of disabled users
+			
+		
+		:Source:
+			`lib/private/Group/Group.php#286 <https://github.com/nextcloud/server/blob/stable13/lib/private/Group/Group.php#L286>`_
+		
+		
+		:Returns: int | bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public searchDisplayName( $search, $limit=null, $offset=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| search for users in the group by displayname
+			
+		
+		:Source:
+			`lib/private/Group/Group.php#309 <https://github.com/nextcloud/server/blob/stable13/lib/private/Group/Group.php#L309>`_
+		
+		
+		:Parameters:
+			* **$search** (string)  
+			* **$limit** (int)  
+			* **$offset** (int)  
+
+		
+		:Returns: :any:`\\OC\\User\\User\[\] <OC\\User\\User>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getBackendNames()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the names of the backend classes the group is connected to
+			
+		
+		:Source:
+			`lib/private/Group/Group.php#326 <https://github.com/nextcloud/server/blob/stable13/lib/private/Group/Group.php#L326>`_
+		
+		
+		:Returns: string[] 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public delete()
+	
+		.. rst-class:: phpdoc-description
+		
+			| delete the group
+			
+		
+		:Source:
+			`lib/private/Group/Group.php#344 <https://github.com/nextcloud/server/blob/stable13/lib/private/Group/Group.php#L344>`_
+		
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public canRemoveUser()
+	
+		:Source:
+			`lib/private/Group/Group.php#393 <https://github.com/nextcloud/server/blob/stable13/lib/private/Group/Group.php#L393>`_
+		
+		
+		:Returns: bool 
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public canAddUser()
+	
+		:Source:
+			`lib/private/Group/Group.php#406 <https://github.com/nextcloud/server/blob/stable13/lib/private/Group/Group.php#L406>`_
+		
+		
+		:Returns: bool 
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public hideFromCollaboration()
+	
+		:Source:
+			`lib/private/Group/Group.php#419 <https://github.com/nextcloud/server/blob/stable13/lib/private/Group/Group.php#L419>`_
+		
+		
+		:Returns: bool 
+		:Since: 16.0.0 
+	
+	
+

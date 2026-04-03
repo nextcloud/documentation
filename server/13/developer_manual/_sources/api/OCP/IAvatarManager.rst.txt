@@ -1,0 +1,80 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IAvatarManager
+==============
+
+
+.. php:namespace:: OCP
+
+.. php:interface:: IAvatarManager
+
+
+	.. rst-class:: phpdoc-description
+	
+		| This class provides avatar functionality
+		
+	
+	:Implemented by:
+		:php:class:`OC\\Avatar\\AvatarManager` 
+	
+	
+	:Source:
+		`lib/public/IAvatarManager.php#38 <https://github.com/nextcloud/server/blob/stable13/lib/public/IAvatarManager.php#L38>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public getAvatar( $user)
+	
+		.. rst-class:: phpdoc-description
+		
+			| return a user specific instance of \\OCP\\IAvatar
+			
+		
+		:Source:
+			`lib/public/IAvatarManager.php#49 <https://github.com/nextcloud/server/blob/stable13/lib/public/IAvatarManager.php#L49>`_
+		
+		
+		:Parameters:
+			* **$user** (string)  the ownCloud user id
+
+		
+		:See: :any:`\\OCP\\IAvatar <OCP\\IAvatar>` 
+		:Returns: :any:`\\OCP\\IAvatar <OCP\\IAvatar>` 
+		:Throws: :any:`\\Exception <Exception>` In case the username is potentially dangerous
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` In case there is no user folder yet
+		:Throws: :any:`\\Exception <Exception>` In case the username is potentially dangerous
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` In case there is no user folder yet
+		:Since: 6.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getGuestAvatar( $name)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns a guest user avatar instance\.
+			
+		
+		:Source:
+			`lib/public/IAvatarManager.php#58 <https://github.com/nextcloud/server/blob/stable13/lib/public/IAvatarManager.php#L58>`_
+		
+		
+		:Parameters:
+			* **$name** (string)  The guest name, e.g. "Albert".
+
+		
+		:Returns: :any:`\\OCP\\IAvatar <OCP\\IAvatar>` 
+		:Since: 16.0.0 
+	
+	
+

@@ -1,0 +1,73 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+ICloudFederationNotification
+============================
+
+
+.. php:namespace:: OCP\Federation
+
+.. php:interface:: ICloudFederationNotification
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Interface ICloudFederationNotification
+		
+	
+	:Implemented by:
+		:php:class:`OC\\Federation\\CloudFederationNotification` 
+	
+	
+	:Source:
+		`lib/public/Federation/ICloudFederationNotification.php#32 <https://github.com/nextcloud/server/blob/stable13/lib/public/Federation/ICloudFederationNotification.php#L32>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public setMessage( $notificationType, $resourceType, $providerId, $notification)
+	
+		.. rst-class:: phpdoc-description
+		
+			| add a message to the notification
+			
+		
+		:Source:
+			`lib/public/Federation/ICloudFederationNotification.php#44 <https://github.com/nextcloud/server/blob/stable13/lib/public/Federation/ICloudFederationNotification.php#L44>`_
+		
+		
+		:Parameters:
+			* **$notificationType** (string)  (e.g. SHARE_ACCEPTED)
+			* **$resourceType** (string)  (e.g. file, calendar, contact,...)
+			* **$providerId**  id of the share
+			* **$notification** (array)  , payload of the notification
+
+		
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getMessage()
+	
+		.. rst-class:: phpdoc-description
+		
+			| get message, ready to send out
+			
+		
+		:Source:
+			`lib/public/Federation/ICloudFederationNotification.php#53 <https://github.com/nextcloud/server/blob/stable13/lib/public/Federation/ICloudFederationNotification.php#L53>`_
+		
+		
+		:Returns: array 
+		:Since: 14.0.0 
+	
+	
+

@@ -1,0 +1,211 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+SimpleContainer
+===============
+
+
+.. php:namespace:: OC\AppFramework\Utility
+
+.. php:class:: SimpleContainer
+
+
+	.. rst-class:: phpdoc-description
+	
+		| SimpleContainer is a simple implementation of a container on basis of Pimple
+		
+	
+	:Source:
+		`lib/private/AppFramework/Utility/SimpleContainer.php#46 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Utility/SimpleContainer.php#L46>`_
+	
+	:Implements:
+		:php:interface:`ArrayAccess` :php:interface:`Psr\\Container\\ContainerInterface` :php:interface:`OCP\\IContainer` 
+	
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct()
+	
+		:Source:
+			`lib/private/AppFramework/Utility/SimpleContainer.php#51 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Utility/SimpleContainer.php#L51>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public get( $id)
+	
+		:Source:
+			`lib/private/AppFramework/Utility/SimpleContainer.php#55 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Utility/SimpleContainer.php#L55>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public has( $id)
+	
+		:Source:
+			`lib/private/AppFramework/Utility/SimpleContainer.php#59 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Utility/SimpleContainer.php#L59>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public resolve( $name)
+	
+		:Source:
+			`lib/private/AppFramework/Utility/SimpleContainer.php#109 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Utility/SimpleContainer.php#L109>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public query( $name, $autoload=true)
+	
+		:Source:
+			`lib/private/AppFramework/Utility/SimpleContainer.php#124 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Utility/SimpleContainer.php#L124>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public registerParameter( $name, $value)
+	
+		:Source:
+			`lib/private/AppFramework/Utility/SimpleContainer.php#145 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Utility/SimpleContainer.php#L145>`_
+		
+		
+		:Parameters:
+			* **$name** (string)  
+			* **$value** (mixed)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public registerService( $name, $closure, $shared=true)
+	
+		.. rst-class:: phpdoc-description
+		
+			| The given closure is call the first time the given service is queried\.
+			
+			| The closure has to return the instance for the given service\.
+			| Created instance will be cached in case $shared is true\.
+			
+		
+		:Source:
+			`lib/private/AppFramework/Utility/SimpleContainer.php#158 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Utility/SimpleContainer.php#L158>`_
+		
+		
+		:Parameters:
+			* **$name** (string)  name of the service to register another backend for
+			* **$closure** (:any:`Closure <Closure>`)  the closure to be called on service creation
+			* **$shared** (bool)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public registerAlias( $alias, $target)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Shortcut for returning a service from a service under a different key,
+			| e\.g\. to tell the container to return a class when queried for an
+			| interface
+			
+		
+		:Source:
+			`lib/private/AppFramework/Utility/SimpleContainer.php#180 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Utility/SimpleContainer.php#L180>`_
+		
+		
+		:Parameters:
+			* **$alias** (string)  the alias that should be registered
+			* **$target** (string)  the target that should be resolved instead
+
+		
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected sanitizeName( $name)
+	
+		:Source:
+			`lib/private/AppFramework/Utility/SimpleContainer.php#190 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Utility/SimpleContainer.php#L190>`_
+		
+		
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public offsetExists( $id)
+	
+		:Source:
+			`lib/private/AppFramework/Utility/SimpleContainer.php#200 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Utility/SimpleContainer.php#L200>`_
+		
+		
+		:Deprecated: 20.0.0 use \\Psr\\Container\\ContainerInterface::has
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public offsetGet( $id)
+	
+		:Source:
+			`lib/private/AppFramework/Utility/SimpleContainer.php#207 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Utility/SimpleContainer.php#L207>`_
+		
+		
+		:Deprecated: 20.0.0 use \\Psr\\Container\\ContainerInterface::get
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public offsetSet( $id, $service)
+	
+		:Source:
+			`lib/private/AppFramework/Utility/SimpleContainer.php#214 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Utility/SimpleContainer.php#L214>`_
+		
+		
+		:Deprecated: 20.0.0 use \\OCP\\IContainer::registerService
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public offsetUnset( $offset)
+	
+		:Source:
+			`lib/private/AppFramework/Utility/SimpleContainer.php#221 <https://github.com/nextcloud/server/blob/stable13/lib/private/AppFramework/Utility/SimpleContainer.php#L221>`_
+		
+		
+		:Deprecated: 20.0.0 
+	
+	
+

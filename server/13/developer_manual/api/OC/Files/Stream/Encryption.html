@@ -1,0 +1,978 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Encryption &mdash; Nextcloud 13 Developer Manual 13 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../../../',
+              VERSION:'13',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" />
+    <link rel="next" title="Quota" href="Quota.html" />
+    <link rel="prev" title="SeekableHttpStream" href="SeekableHttpStream.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html">
+          
+
+          
+            
+            <img src="../../../../_static/logo-white.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../general/index.html">General contributor guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/startapp.html">Create an app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/init.html">Navigation and pre-app configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/info.html">App metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/classloader.html">Classloader</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/request.html">Request lifecycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/routes.html">Routing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/middleware.html">Middleware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/container.html">Container</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/controllers.html">Controllers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/api.html">RESTful API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/templates.html">Templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/js.html">JavaScript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/css.html">CSS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/l10n.html">Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/theming.html">Theming support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/schema.html">Database schema</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/database.html">Database access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/filesystem.html">Filesystem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/appdata.html">AppData</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/users.html">User management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/two-factor-provider.html">Two-factor providers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/hooks.html">Hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/backgroundjobs.html">Background jobs (Cron)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/settings.html">Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/logging.html">Logging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/migrations.html">Migrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/repair.html">Repair steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/publishing.html">App store publishing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/code_signing.html">Code signing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../design/index.html">Design guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../android_library/index.html">Android application development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../client_apis/index.html">Client APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../core/translation.html">Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../core/unit-testing.html">Unit-Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../core/theming.html">Theming Nextcloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../core/externalapi.html">External API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../core/ocs-share-api.html">OCS Share API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../core/index.html">Core development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bugtracker/index.html">Bugtracker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../commun/index.html">Help and communication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api.html">API Documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">Nextcloud 13 Developer Manual</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../../../api.html">API Documentation</a> &raquo;</li>
+        
+          <li><a href="../../../index.html">\</a> &raquo;</li>
+        
+          <li><a href="../../index.html">OC</a> &raquo;</li>
+        
+          <li><a href="../index.html">Files</a> &raquo;</li>
+        
+          <li><a href="index.html">Stream</a> &raquo;</li>
+        
+      <li>Encryption</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/nextcloud/documentation/edit/stable13/developer_manual/api/OC/Files/Stream/Encryption.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="phpdoctorst section" id="namespace-OC\Files\Stream">
+<span id="encryption"></span><h1>Encryption<a class="headerlink" href="#namespace-OC\Files\Stream" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="OC\Files\Stream\Encryption">
+<em class="property">class </em><code class="descclassname">OC\Files\Stream\</code><code class="descname">Encryption</code><a class="headerlink" href="#OC\Files\Stream\Encryption" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Stream/Encryption.php#L40">lib/private/Files/Stream/Encryption.php#40</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parent:</th><td class="field-body"><code class="xref php php-class docutils literal"><span class="pre">Icewind\Streams\Wrapper</span></code></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<div class="section" id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h2>
+<dl class="attr">
+<dt id="OC\Files\Stream\Encryption::$util">
+<em class="property">protected </em><em class="property">static </em><em class="property">property </em><code class="descclassname">OC\Files\Stream\Encryption::$</code><code class="descname">util</code><a class="headerlink" href="#OC\Files\Stream\Encryption::$util" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Stream/Encryption.php#L43">lib/private/Files/Stream/Encryption.php#43</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body"><a class="reference internal" href="../../Encryption/Util.html#OC\Encryption\Util" title="OC\Encryption\Util"><code class="xref any php php-trait docutils literal"><span class="pre">\OC\Encryption\Util</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attr">
+<dt id="OC\Files\Stream\Encryption::$file">
+<em class="property">protected </em><em class="property">static </em><em class="property">property </em><code class="descclassname">OC\Files\Stream\Encryption::$</code><code class="descname">file</code><a class="headerlink" href="#OC\Files\Stream\Encryption::$file" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Stream/Encryption.php#L46">lib/private/Files/Stream/Encryption.php#46</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body"><a class="reference internal" href="../../Encryption/File.html#OC\Encryption\File" title="OC\Encryption\File"><code class="xref any php php-trait docutils literal"><span class="pre">\OC\Encryption\File</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attr">
+<dt id="OC\Files\Stream\Encryption::$encryptionModule">
+<em class="property">protected </em><em class="property">static </em><em class="property">property </em><code class="descclassname">OC\Files\Stream\Encryption::$</code><code class="descname">encryptionModule</code><a class="headerlink" href="#OC\Files\Stream\Encryption::$encryptionModule" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Stream/Encryption.php#L49">lib/private/Files/Stream/Encryption.php#49</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body"><a class="reference internal" href="../../../OCP/Encryption/IEncryptionModule.html#OCP\Encryption\IEncryptionModule" title="OCP\Encryption\IEncryptionModule"><code class="xref any php php-trait docutils literal"><span class="pre">\OCP\Encryption\IEncryptionModule</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attr">
+<dt id="OC\Files\Stream\Encryption::$storage">
+<em class="property">protected </em><em class="property">static </em><em class="property">property </em><code class="descclassname">OC\Files\Stream\Encryption::$</code><code class="descname">storage</code><a class="headerlink" href="#OC\Files\Stream\Encryption::$storage" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Stream/Encryption.php#L52">lib/private/Files/Stream/Encryption.php#52</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body"><a class="reference internal" href="../Storage/Storage.html#OC\Files\Storage\Storage" title="OC\Files\Storage\Storage"><code class="xref any php php-trait docutils literal"><span class="pre">\OC\Files\Storage\Storage</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attr">
+<dt id="OC\Files\Stream\Encryption::$encryptionStorage">
+<em class="property">protected </em><em class="property">static </em><em class="property">property </em><code class="descclassname">OC\Files\Stream\Encryption::$</code><code class="descname">encryptionStorage</code><a class="headerlink" href="#OC\Files\Stream\Encryption::$encryptionStorage" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Stream/Encryption.php#L55">lib/private/Files/Stream/Encryption.php#55</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body"><a class="reference internal" href="../Storage/Wrapper/Encryption.html#OC\Files\Storage\Wrapper\Encryption" title="OC\Files\Storage\Wrapper\Encryption"><code class="xref any php php-trait docutils literal"><span class="pre">\OC\Files\Storage\Wrapper\Encryption</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attr">
+<dt id="OC\Files\Stream\Encryption::$internalPath">
+<em class="property">protected </em><em class="property">static </em><em class="property">property </em><code class="descclassname">OC\Files\Stream\Encryption::$</code><code class="descname">internalPath</code><a class="headerlink" href="#OC\Files\Stream\Encryption::$internalPath" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Stream/Encryption.php#L58">lib/private/Files/Stream/Encryption.php#58</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body">string</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attr">
+<dt id="OC\Files\Stream\Encryption::$cache">
+<em class="property">protected </em><em class="property">static </em><em class="property">property </em><code class="descclassname">OC\Files\Stream\Encryption::$</code><code class="descname">cache</code><a class="headerlink" href="#OC\Files\Stream\Encryption::$cache" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Stream/Encryption.php#L61">lib/private/Files/Stream/Encryption.php#61</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body">string</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attr">
+<dt id="OC\Files\Stream\Encryption::$size">
+<em class="property">protected </em><em class="property">static </em><em class="property">property </em><code class="descclassname">OC\Files\Stream\Encryption::$</code><code class="descname">size</code><a class="headerlink" href="#OC\Files\Stream\Encryption::$size" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Stream/Encryption.php#L64">lib/private/Files/Stream/Encryption.php#64</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attr">
+<dt id="OC\Files\Stream\Encryption::$position">
+<em class="property">protected </em><em class="property">static </em><em class="property">property </em><code class="descclassname">OC\Files\Stream\Encryption::$</code><code class="descname">position</code><a class="headerlink" href="#OC\Files\Stream\Encryption::$position" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Stream/Encryption.php#L67">lib/private/Files/Stream/Encryption.php#67</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attr">
+<dt id="OC\Files\Stream\Encryption::$unencryptedSize">
+<em class="property">protected </em><em class="property">static </em><em class="property">property </em><code class="descclassname">OC\Files\Stream\Encryption::$</code><code class="descname">unencryptedSize</code><a class="headerlink" href="#OC\Files\Stream\Encryption::$unencryptedSize" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Stream/Encryption.php#L70">lib/private/Files/Stream/Encryption.php#70</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attr">
+<dt id="OC\Files\Stream\Encryption::$headerSize">
+<em class="property">protected </em><em class="property">static </em><em class="property">property </em><code class="descclassname">OC\Files\Stream\Encryption::$</code><code class="descname">headerSize</code><a class="headerlink" href="#OC\Files\Stream\Encryption::$headerSize" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Stream/Encryption.php#L73">lib/private/Files/Stream/Encryption.php#73</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attr">
+<dt id="OC\Files\Stream\Encryption::$unencryptedBlockSize">
+<em class="property">protected </em><em class="property">static </em><em class="property">property </em><code class="descclassname">OC\Files\Stream\Encryption::$</code><code class="descname">unencryptedBlockSize</code><a class="headerlink" href="#OC\Files\Stream\Encryption::$unencryptedBlockSize" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Stream/Encryption.php#L76">lib/private/Files/Stream/Encryption.php#76</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attr">
+<dt id="OC\Files\Stream\Encryption::$header">
+<em class="property">protected </em><em class="property">static </em><em class="property">property </em><code class="descclassname">OC\Files\Stream\Encryption::$</code><code class="descname">header</code><a class="headerlink" href="#OC\Files\Stream\Encryption::$header" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Stream/Encryption.php#L79">lib/private/Files/Stream/Encryption.php#79</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body">array</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attr">
+<dt id="OC\Files\Stream\Encryption::$fullPath">
+<em class="property">protected </em><em class="property">static </em><em class="property">property </em><code class="descclassname">OC\Files\Stream\Encryption::$</code><code class="descname">fullPath</code><a class="headerlink" href="#OC\Files\Stream\Encryption::$fullPath" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Stream/Encryption.php#L82">lib/private/Files/Stream/Encryption.php#82</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body">string</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attr">
+<dt id="OC\Files\Stream\Encryption::$signed">
+<em class="property">protected </em><em class="property">static </em><em class="property">property </em><code class="descclassname">OC\Files\Stream\Encryption::$</code><code class="descname">signed</code><a class="headerlink" href="#OC\Files\Stream\Encryption::$signed" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Stream/Encryption.php#L85">lib/private/Files/Stream/Encryption.php#85</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attr">
+<dt id="OC\Files\Stream\Encryption::$newHeader">
+<em class="property">protected </em><em class="property">static </em><em class="property">property </em><code class="descclassname">OC\Files\Stream\Encryption::$</code><code class="descname">newHeader</code><a class="headerlink" href="#OC\Files\Stream\Encryption::$newHeader" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">header data returned by the encryption module, will be written to the file</div>
+<div class="line">in case of a write operation</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Stream/Encryption.php#L93">lib/private/Files/Stream/Encryption.php#93</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body">array</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attr">
+<dt id="OC\Files\Stream\Encryption::$uid">
+<em class="property">protected </em><em class="property">static </em><em class="property">property </em><code class="descclassname">OC\Files\Stream\Encryption::$</code><code class="descname">uid</code><a class="headerlink" href="#OC\Files\Stream\Encryption::$uid" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">user who perform the read/write operation null for public access</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Stream/Encryption.php#L100">lib/private/Files/Stream/Encryption.php#100</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body">string</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attr">
+<dt id="OC\Files\Stream\Encryption::$readOnly">
+<em class="property">protected </em><em class="property">static </em><em class="property">property </em><code class="descclassname">OC\Files\Stream\Encryption::$</code><code class="descname">readOnly</code><a class="headerlink" href="#OC\Files\Stream\Encryption::$readOnly" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Stream/Encryption.php#L103">lib/private/Files/Stream/Encryption.php#103</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attr">
+<dt id="OC\Files\Stream\Encryption::$writeFlag">
+<em class="property">protected </em><em class="property">static </em><em class="property">property </em><code class="descclassname">OC\Files\Stream\Encryption::$</code><code class="descname">writeFlag</code><a class="headerlink" href="#OC\Files\Stream\Encryption::$writeFlag" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Stream/Encryption.php#L106">lib/private/Files/Stream/Encryption.php#106</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attr">
+<dt id="OC\Files\Stream\Encryption::$expectedContextProperties">
+<em class="property">protected </em><em class="property">static </em><em class="property">property </em><code class="descclassname">OC\Files\Stream\Encryption::$</code><code class="descname">expectedContextProperties</code><a class="headerlink" href="#OC\Files\Stream\Encryption::$expectedContextProperties" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Stream/Encryption.php#L109">lib/private/Files/Stream/Encryption.php#109</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body">array</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attr">
+<dt id="OC\Files\Stream\Encryption::$fileUpdated">
+<em class="property">protected </em><em class="property">static </em><em class="property">property </em><code class="descclassname">OC\Files\Stream\Encryption::$</code><code class="descname">fileUpdated</code><a class="headerlink" href="#OC\Files\Stream\Encryption::$fileUpdated" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Stream/Encryption.php#L112">lib/private/Files/Stream/Encryption.php#112</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body">bool</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h2>
+<dl class="public method">
+<dt id="OC\Files\Stream\Encryption::__construct">
+<em class="property">public </em><code class="descclassname">OC\Files\Stream\Encryption::</code><code class="descname">__construct</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Stream\Encryption::__construct" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Stream/Encryption.php#L114">lib/private/Files/Stream/Encryption.php#114</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public static method">
+<dt id="OC\Files\Stream\Encryption::wrap">
+<em class="property">public </em><em class="property">static </em><code class="descclassname">OC\Files\Stream\Encryption::</code><code class="descname">wrap</code><span class="sig-paren">(</span><em>$source</em>, <em>$internalPath</em>, <em>$fullPath</em>, <em>$header</em>, <em>$uid</em>, <em>$encryptionModule</em>, <em>$storage</em>, <em>$encStorage</em>, <em>$util</em>, <em>$file</em>, <em>$mode</em>, <em>$size</em>, <em>$unencryptedSize</em>, <em>$headerSize</em>, <em>$signed</em>, <em>$wrapper=\OC\Files\Stream\Encryption::class</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Stream\Encryption::wrap" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Wraps a stream with the provided callbacks</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Stream/Encryption.php#L157">lib/private/Files/Stream/Encryption.php#157</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$source</strong> (resource)</li>
+<li><strong>$internalPath</strong> (string)  relative to mount point</li>
+<li><strong>$fullPath</strong> (string)  relative to data/</li>
+<li><strong>$header</strong> (array)</li>
+<li><strong>$uid</strong> (string)</li>
+<li><strong>$encryptionModule</strong> (<a class="reference internal" href="../../../OCP/Encryption/IEncryptionModule.html#OCP\Encryption\IEncryptionModule" title="OCP\Encryption\IEncryptionModule"><code class="xref any php php-trait docutils literal"><span class="pre">OCP\Encryption\IEncryptionModule</span></code></a>)</li>
+<li><strong>$storage</strong> (<a class="reference internal" href="../Storage/Storage.html#OC\Files\Storage\Storage" title="OC\Files\Storage\Storage"><code class="xref any php php-trait docutils literal"><span class="pre">OC\Files\Storage\Storage</span></code></a>)</li>
+<li><strong>$encStorage</strong> (<a class="reference internal" href="../Storage/Wrapper/Encryption.html#OC\Files\Storage\Wrapper\Encryption" title="OC\Files\Storage\Wrapper\Encryption"><code class="xref any php php-trait docutils literal"><span class="pre">OC\Files\Storage\Wrapper\Encryption</span></code></a>)</li>
+<li><strong>$util</strong> (<a class="reference internal" href="../../Encryption/Util.html#OC\Encryption\Util" title="OC\Encryption\Util"><code class="xref any php php-trait docutils literal"><span class="pre">OC\Encryption\Util</span></code></a>)</li>
+<li><strong>$file</strong> (<a class="reference internal" href="../../Encryption/File.html#OC\Encryption\File" title="OC\Encryption\File"><code class="xref any php php-trait docutils literal"><span class="pre">OC\Encryption\File</span></code></a>)</li>
+<li><strong>$mode</strong> (string)</li>
+<li><strong>$size</strong> (int)</li>
+<li><strong>$unencryptedSize</strong> (int)</li>
+<li><strong>$headerSize</strong> (int)</li>
+<li><strong>$signed</strong> (bool)</li>
+<li><strong>$wrapper</strong> (string)  stream wrapper class</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">resource</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><p class="first last"><code class="xref any docutils literal"><span class="pre">\BadMethodCallException</span></code></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="protected static method">
+<dt id="OC\Files\Stream\Encryption::wrapSource">
+<em class="property">protected </em><em class="property">static </em><code class="descclassname">OC\Files\Stream\Encryption::</code><code class="descname">wrapSource</code><span class="sig-paren">(</span><em>$source</em>, <em>$context=[]</em>, <em>$protocol=null</em>, <em>$class=null</em>, <em>$mode=r+</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Stream\Encryption::wrapSource" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">add stream wrapper</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Stream/Encryption.php#L203">lib/private/Files/Stream/Encryption.php#203</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$source</strong> (resource | int)</li>
+<li><strong>$context</strong> (resource | array)</li>
+<li><strong>$protocol</strong> (string | null)</li>
+<li><strong>$class</strong> (string | null)</li>
+<li><strong>$mode</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">resource</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><p class="first last"><code class="xref any docutils literal"><span class="pre">\BadMethodCallException</span></code></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="protected method">
+<dt id="OC\Files\Stream\Encryption::loadContext">
+<em class="property">protected </em><code class="descclassname">OC\Files\Stream\Encryption::</code><code class="descname">loadContext</code><span class="sig-paren">(</span><em>$name=null</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Stream\Encryption::loadContext" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Load the source from the stream context and return the context options</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Stream/Encryption.php#L243">lib/private/Files/Stream/Encryption.php#243</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$name</strong> (string | null)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first">array</p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Throws:</th><td class="field-body"><p class="first last"><code class="xref any docutils literal"><span class="pre">\BadMethodCallException</span></code></p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\Stream\Encryption::stream_open">
+<em class="property">public </em><code class="descclassname">OC\Files\Stream\Encryption::</code><code class="descname">stream_open</code><span class="sig-paren">(</span><em>$path</em>, <em>$mode</em>, <em>$options</em>, <em>&amp;$opened_path</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Stream\Encryption::stream_open" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Stream/Encryption.php#L256">lib/private/Files/Stream/Encryption.php#256</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\Stream\Encryption::stream_eof">
+<em class="property">public </em><code class="descclassname">OC\Files\Stream\Encryption::</code><code class="descname">stream_eof</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Stream\Encryption::stream_eof" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Stream/Encryption.php#L307">lib/private/Files/Stream/Encryption.php#307</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\Stream\Encryption::stream_read">
+<em class="property">public </em><code class="descclassname">OC\Files\Stream\Encryption::</code><code class="descname">stream_read</code><span class="sig-paren">(</span><em>$count</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Stream\Encryption::stream_read" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Stream/Encryption.php#L311">lib/private/Files/Stream/Encryption.php#311</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\Stream\Encryption::stream_write">
+<em class="property">public </em><code class="descclassname">OC\Files\Stream\Encryption::</code><code class="descname">stream_write</code><span class="sig-paren">(</span><em>$data</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Stream\Encryption::stream_write" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Stream/Encryption.php#L362">lib/private/Files/Stream/Encryption.php#362</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\Stream\Encryption::stream_tell">
+<em class="property">public </em><code class="descclassname">OC\Files\Stream\Encryption::</code><code class="descname">stream_tell</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Stream\Encryption::stream_tell" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Stream/Encryption.php#L413">lib/private/Files/Stream/Encryption.php#413</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\Stream\Encryption::stream_seek">
+<em class="property">public </em><code class="descclassname">OC\Files\Stream\Encryption::</code><code class="descname">stream_seek</code><span class="sig-paren">(</span><em>$offset</em>, <em>$whence=SEEK_SET</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Stream\Encryption::stream_seek" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Stream/Encryption.php#L417">lib/private/Files/Stream/Encryption.php#417</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\Stream\Encryption::stream_close">
+<em class="property">public </em><code class="descclassname">OC\Files\Stream\Encryption::</code><code class="descname">stream_close</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Stream\Encryption::stream_close" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Stream/Encryption.php#L452">lib/private/Files/Stream/Encryption.php#452</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="protected method">
+<dt id="OC\Files\Stream\Encryption::flush">
+<em class="property">protected </em><code class="descclassname">OC\Files\Stream\Encryption::</code><code class="descname">flush</code><span class="sig-paren">(</span><em>$positionPrefix=&quot;&quot;</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Stream\Encryption::flush" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">write block to file</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Stream/Encryption.php#L480">lib/private/Files/Stream/Encryption.php#480</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>$positionPrefix</strong> (string)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="protected method">
+<dt id="OC\Files\Stream\Encryption::readCache">
+<em class="property">protected </em><code class="descclassname">OC\Files\Stream\Encryption::</code><code class="descname">readCache</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Stream\Encryption::readCache" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">read block to file</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Stream/Encryption.php#L509">lib/private/Files/Stream/Encryption.php#509</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="protected method">
+<dt id="OC\Files\Stream\Encryption::writeHeader">
+<em class="property">protected </em><code class="descclassname">OC\Files\Stream\Encryption::</code><code class="descname">writeHeader</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Stream\Encryption::writeHeader" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">write header at beginning of encrypted file</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Stream/Encryption.php#L530">lib/private/Files/Stream/Encryption.php#530</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">int</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Throws:</th><td class="field-body"><a class="reference internal" href="../../Encryption/Exceptions/EncryptionHeaderKeyExistsException.html#OC\Encryption\Exceptions\EncryptionHeaderKeyExistsException" title="OC\Encryption\Exceptions\EncryptionHeaderKeyExistsException"><code class="xref any php php-trait docutils literal"><span class="pre">\OC\Encryption\Exceptions\EncryptionHeaderKeyExistsException</span></code></a> if header key is already in use</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="protected method">
+<dt id="OC\Files\Stream\Encryption::skipHeader">
+<em class="property">protected </em><code class="descclassname">OC\Files\Stream\Encryption::</code><code class="descname">skipHeader</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Stream\Encryption::skipHeader" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">read first block to skip the header</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Stream/Encryption.php#L538">lib/private/Files/Stream/Encryption.php#538</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="protected method">
+<dt id="OC\Files\Stream\Encryption::parentStreamSeek">
+<em class="property">protected </em><code class="descclassname">OC\Files\Stream\Encryption::</code><code class="descname">parentStreamSeek</code><span class="sig-paren">(</span><em>$position</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Stream\Encryption::parentStreamSeek" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">call stream_seek() from parent class</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Stream/Encryption.php#L548">lib/private/Files/Stream/Encryption.php#548</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$position</strong> (int)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Files\Stream\Encryption::dir_opendir">
+<em class="property">public </em><code class="descclassname">OC\Files\Stream\Encryption::</code><code class="descname">dir_opendir</code><span class="sig-paren">(</span><em>$path</em>, <em>$options</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Files\Stream\Encryption::dir_opendir" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Stream/Encryption.php#L557">lib/private/Files/Stream/Encryption.php#557</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$path</strong> (string)</li>
+<li><strong>$options</strong> (array)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">bool</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="Quota.html" class="btn btn-neutral float-right" title="Quota" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="SeekableHttpStream.html" class="btn btn-neutral float-left" title="SeekableHttpStream" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021 Nextcloud GmbH.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: 13
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/13/developer_manual">13</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/14/developer_manual">14</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/15/developer_manual">15</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/developer_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/developer_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+   
+
+</body>
+</html>

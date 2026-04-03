@@ -1,0 +1,188 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+APCu
+====
+
+
+.. php:namespace:: OC\Memcache
+
+.. php:class:: APCu
+
+
+	:Source:
+		`lib/private/Memcache/APCu.php#34 <https://github.com/nextcloud/server/blob/stable13/lib/private/Memcache/APCu.php#L34>`_
+	
+	:Parent:
+		:php:class:`OC\\Memcache\\Cache`
+	
+	:Implements:
+		:php:interface:`OCP\\IMemcache` 
+	
+	:Used traits:
+		:php:trait:`OC\\Memcache\\CASTrait` :php:trait:`OC\\Memcache\\CADTrait` 
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public get( $key)
+	
+		:Source:
+			`lib/private/Memcache/APCu.php#41 <https://github.com/nextcloud/server/blob/stable13/lib/private/Memcache/APCu.php#L41>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public set( $key, $value, $ttl=0)
+	
+		:Source:
+			`lib/private/Memcache/APCu.php#49 <https://github.com/nextcloud/server/blob/stable13/lib/private/Memcache/APCu.php#L49>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public hasKey( $key)
+	
+		:Source:
+			`lib/private/Memcache/APCu.php#53 <https://github.com/nextcloud/server/blob/stable13/lib/private/Memcache/APCu.php#L53>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public remove( $key)
+	
+		:Source:
+			`lib/private/Memcache/APCu.php#57 <https://github.com/nextcloud/server/blob/stable13/lib/private/Memcache/APCu.php#L57>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public clear( $prefix="")
+	
+		:Source:
+			`lib/private/Memcache/APCu.php#61 <https://github.com/nextcloud/server/blob/stable13/lib/private/Memcache/APCu.php#L61>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public add( $key, $value, $ttl=0)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set a value in the cache if it\'s not already stored
+			
+		
+		:Source:
+			`lib/private/Memcache/APCu.php#80 <https://github.com/nextcloud/server/blob/stable13/lib/private/Memcache/APCu.php#L80>`_
+		
+		
+		:Parameters:
+			* **$key** (string)  
+			* **$value** (mixed)  
+			* **$ttl** (int)  Time To Live in seconds. Defaults to 60*60*24
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public inc( $key, $step=1)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Increase a stored number
+			
+		
+		:Source:
+			`lib/private/Memcache/APCu.php#91 <https://github.com/nextcloud/server/blob/stable13/lib/private/Memcache/APCu.php#L91>`_
+		
+		
+		:Parameters:
+			* **$key** (string)  
+			* **$step** (int)  
+
+		
+		:Returns: int \| bool
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public dec( $key, $step=1)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Decrease a stored number
+			
+		
+		:Source:
+			`lib/private/Memcache/APCu.php#117 <https://github.com/nextcloud/server/blob/stable13/lib/private/Memcache/APCu.php#L117>`_
+		
+		
+		:Parameters:
+			* **$key** (string)  
+			* **$step** (int)  
+
+		
+		:Returns: int \| bool
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public cas( $key, $old, $new)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Compare and set
+			
+		
+		:Source:
+			`lib/private/Memcache/APCu.php#143 <https://github.com/nextcloud/server/blob/stable13/lib/private/Memcache/APCu.php#L143>`_
+		
+		
+		:Parameters:
+			* **$key** (string)  
+			* **$old** (mixed)  
+			* **$new** (mixed)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static isAvailable()
+	
+		:Source:
+			`lib/private/Memcache/APCu.php#155 <https://github.com/nextcloud/server/blob/stable13/lib/private/Memcache/APCu.php#L155>`_
+		
+		
+		:Returns: bool 
+	
+	
+

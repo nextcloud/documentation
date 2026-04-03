@@ -1,0 +1,72 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+TrustedDomainHelper
+===================
+
+
+.. php:namespace:: OC\Security
+
+.. php:class:: TrustedDomainHelper
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Class TrustedDomain
+		
+	
+	:Source:
+		`lib/private/Security/TrustedDomainHelper.php#41 <https://github.com/nextcloud/server/blob/stable13/lib/private/Security/TrustedDomainHelper.php#L41>`_
+	
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $config)
+	
+		:Source:
+			`lib/private/Security/TrustedDomainHelper.php#48 <https://github.com/nextcloud/server/blob/stable13/lib/private/Security/TrustedDomainHelper.php#L48>`_
+		
+		
+		:Parameters:
+			* **$config** (:any:`OCP\\IConfig <OCP\\IConfig>`)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isTrustedDomain( $domainWithPort)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Checks whether a domain is considered as trusted from the list
+			| of trusted domains\. If no trusted domains have been configured, returns
+			| true\.
+			
+			| This is used to prevent Host Header Poisoning\.
+			
+		
+		:Source:
+			`lib/private/Security/TrustedDomainHelper.php#77 <https://github.com/nextcloud/server/blob/stable13/lib/private/Security/TrustedDomainHelper.php#L77>`_
+		
+		
+		:Parameters:
+			* **$domainWithPort** (string)  
+
+		
+		:Returns: bool true if the given domain is trusted or if no trusted domains
+			have been configured
+		
+	
+	
+

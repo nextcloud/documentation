@@ -1,0 +1,59 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IWriteStreamStorage
+===================
+
+
+.. php:namespace:: OCP\Files\Storage
+
+.. php:interface:: IWriteStreamStorage
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Interface that adds the ability to write a stream directly to file
+		
+	
+	:Implemented by:
+		:php:class:`OC\\Files\\Storage\\Wrapper\\Wrapper` :php:class:`OC\\Files\\Storage\\Common` 
+	
+	
+	:Source:
+		`lib/public/Files/Storage/IWriteStreamStorage.php#37 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Storage/IWriteStreamStorage.php#L37>`_
+	
+	:Parent:
+		:php:interface:`OCP\\Files\\Storage\\IStorage`
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public writeStream( $path, $stream, $size=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Write the data from a stream to a file
+			
+		
+		:Source:
+			`lib/public/Files/Storage/IWriteStreamStorage.php#48 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Storage/IWriteStreamStorage.php#L48>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+			* **$stream** (resource)  
+			* **$size** (int | null)  the size of the stream if known in advance
+
+		
+		:Returns: int the number of bytes written
+		:Throws: :any:`\\OCP\\Files\\GenericFileException <OCP\\Files\\GenericFileException>` 
+		:Since: 15.0.0 
+	
+	
+

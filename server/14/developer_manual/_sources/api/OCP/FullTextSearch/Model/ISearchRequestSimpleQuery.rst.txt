@@ -1,0 +1,280 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+ISearchRequestSimpleQuery
+=========================
+
+
+.. php:namespace:: OCP\FullTextSearch\Model
+
+.. php:interface:: ISearchRequestSimpleQuery
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Interface ISearchRequestSimpleQuery
+		
+		| Add a Query during a Search Request\.\.\.
+		| \- on a specific field,
+		| \- using a specific value,
+		| \- with a specific comparison
+		
+	
+	:Implemented by:
+		:php:class:`OC\\FullTextSearch\\Model\\SearchRequestSimpleQuery` 
+	
+	
+	:Source:
+		`lib/public/FullTextSearch/Model/ISearchRequestSimpleQuery.php#41 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/ISearchRequestSimpleQuery.php#L41>`_
+	
+
+Constants
+---------
+
+.. php:const:: COMPARE_TYPE_TEXT = 1
+
+	:Source:
+		`lib/public/FullTextSearch/Model/ISearchRequestSimpleQuery.php#42 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/ISearchRequestSimpleQuery.php#L42>`_
+	
+
+
+.. php:const:: COMPARE_TYPE_KEYWORD = 2
+
+	:Source:
+		`lib/public/FullTextSearch/Model/ISearchRequestSimpleQuery.php#43 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/ISearchRequestSimpleQuery.php#L43>`_
+	
+
+
+.. php:const:: COMPARE_TYPE_INT_EQ = 3
+
+	:Source:
+		`lib/public/FullTextSearch/Model/ISearchRequestSimpleQuery.php#44 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/ISearchRequestSimpleQuery.php#L44>`_
+	
+
+
+.. php:const:: COMPARE_TYPE_INT_GTE = 4
+
+	:Source:
+		`lib/public/FullTextSearch/Model/ISearchRequestSimpleQuery.php#45 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/ISearchRequestSimpleQuery.php#L45>`_
+	
+
+
+.. php:const:: COMPARE_TYPE_INT_GT = 5
+
+	:Source:
+		`lib/public/FullTextSearch/Model/ISearchRequestSimpleQuery.php#46 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/ISearchRequestSimpleQuery.php#L46>`_
+	
+
+
+.. php:const:: COMPARE_TYPE_INT_LTE = 6
+
+	:Source:
+		`lib/public/FullTextSearch/Model/ISearchRequestSimpleQuery.php#47 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/ISearchRequestSimpleQuery.php#L47>`_
+	
+
+
+.. php:const:: COMPARE_TYPE_INT_LT = 7
+
+	:Source:
+		`lib/public/FullTextSearch/Model/ISearchRequestSimpleQuery.php#48 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/ISearchRequestSimpleQuery.php#L48>`_
+	
+
+
+.. php:const:: COMPARE_TYPE_BOOL = 8
+
+	:Source:
+		`lib/public/FullTextSearch/Model/ISearchRequestSimpleQuery.php#49 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/ISearchRequestSimpleQuery.php#L49>`_
+	
+
+
+.. php:const:: COMPARE_TYPE_ARRAY = 9
+
+	:Source:
+		`lib/public/FullTextSearch/Model/ISearchRequestSimpleQuery.php#50 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/ISearchRequestSimpleQuery.php#L50>`_
+	
+
+
+.. php:const:: COMPARE_TYPE_REGEX = 10
+
+	:Source:
+		`lib/public/FullTextSearch/Model/ISearchRequestSimpleQuery.php#51 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/ISearchRequestSimpleQuery.php#L51>`_
+	
+
+
+.. php:const:: COMPARE_TYPE_WILDCARD = 11
+
+	:Source:
+		`lib/public/FullTextSearch/Model/ISearchRequestSimpleQuery.php#52 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/ISearchRequestSimpleQuery.php#L52>`_
+	
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public getType()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the compare type of the query
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/Model/ISearchRequestSimpleQuery.php#61 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/ISearchRequestSimpleQuery.php#L61>`_
+		
+		
+		:Returns: int 
+		:Since: 17.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getField()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the field to apply query
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/Model/ISearchRequestSimpleQuery.php#70 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/ISearchRequestSimpleQuery.php#L70>`_
+		
+		
+		:Returns: string 
+		:Since: 17.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setField( $field)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set the field to apply query
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/Model/ISearchRequestSimpleQuery.php#80 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/ISearchRequestSimpleQuery.php#L80>`_
+		
+		
+		:Parameters:
+			* **$field** (string)  
+
+		
+		:Returns: :any:`\\OCP\\FullTextSearch\\Model\\ISearchRequestSimpleQuery <OCP\\FullTextSearch\\Model\\ISearchRequestSimpleQuery>` 
+		:Since: 17.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getValues()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the all values to compare
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/Model/ISearchRequestSimpleQuery.php#89 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/ISearchRequestSimpleQuery.php#L89>`_
+		
+		
+		:Returns: array 
+		:Since: 17.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public addValue( $value)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Add value to compare \(string\)
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/Model/ISearchRequestSimpleQuery.php#99 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/ISearchRequestSimpleQuery.php#L99>`_
+		
+		
+		:Parameters:
+			* **$value** (string)  
+
+		
+		:Returns: :any:`\\OCP\\FullTextSearch\\Model\\ISearchRequestSimpleQuery <OCP\\FullTextSearch\\Model\\ISearchRequestSimpleQuery>` 
+		:Since: 17.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public addValueInt( $value)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Add value to compare \(int\)
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/Model/ISearchRequestSimpleQuery.php#109 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/ISearchRequestSimpleQuery.php#L109>`_
+		
+		
+		:Parameters:
+			* **$value** (int)  
+
+		
+		:Returns: :any:`\\OCP\\FullTextSearch\\Model\\ISearchRequestSimpleQuery <OCP\\FullTextSearch\\Model\\ISearchRequestSimpleQuery>` 
+		:Since: 17.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public addValueArray( $value)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Add value to compare \(array\)
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/Model/ISearchRequestSimpleQuery.php#119 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/ISearchRequestSimpleQuery.php#L119>`_
+		
+		
+		:Parameters:
+			* **$value** (array)  
+
+		
+		:Returns: :any:`\\OCP\\FullTextSearch\\Model\\ISearchRequestSimpleQuery <OCP\\FullTextSearch\\Model\\ISearchRequestSimpleQuery>` 
+		:Since: 17.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public addValueBool( $value)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Add value to compare \(bool\)
+			
+		
+		:Source:
+			`lib/public/FullTextSearch/Model/ISearchRequestSimpleQuery.php#129 <https://github.com/nextcloud/server/blob/stable13/lib/public/FullTextSearch/Model/ISearchRequestSimpleQuery.php#L129>`_
+		
+		
+		:Parameters:
+			* **$value** (bool)  
+
+		
+		:Returns: :any:`\\OCP\\FullTextSearch\\Model\\ISearchRequestSimpleQuery <OCP\\FullTextSearch\\Model\\ISearchRequestSimpleQuery>` 
+		:Since: 17.0.0 
+	
+	
+

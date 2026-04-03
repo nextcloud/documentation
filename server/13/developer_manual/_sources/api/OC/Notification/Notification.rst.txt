@@ -1,0 +1,769 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+Notification
+============
+
+
+.. php:namespace:: OC\Notification
+
+.. php:class:: Notification
+
+
+	:Source:
+		`lib/private/Notification/Notification.php#35 <https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L35>`_
+	
+	:Implements:
+		:php:interface:`OCP\\Notification\\INotification` 
+	
+
+Properties
+----------
+
+.. php:attr:: protected static richValidator
+
+	:Source:
+		`lib/private/Notification/Notification.php#38 <https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L38>`_
+	
+	:Type: :any:`\\OCP\\RichObjectStrings\\IValidator <OCP\\RichObjectStrings\\IValidator>` 
+
+
+.. php:attr:: protected static app
+
+	:Source:
+		`lib/private/Notification/Notification.php#41 <https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L41>`_
+	
+	:Type: string 
+
+
+.. php:attr:: protected static user
+
+	:Source:
+		`lib/private/Notification/Notification.php#44 <https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L44>`_
+	
+	:Type: string 
+
+
+.. php:attr:: protected static dateTime
+
+	:Source:
+		`lib/private/Notification/Notification.php#47 <https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L47>`_
+	
+	:Type: :any:`\\DateTime <DateTime>` 
+
+
+.. php:attr:: protected static objectType
+
+	:Source:
+		`lib/private/Notification/Notification.php#50 <https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L50>`_
+	
+	:Type: string 
+
+
+.. php:attr:: protected static objectId
+
+	:Source:
+		`lib/private/Notification/Notification.php#53 <https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L53>`_
+	
+	:Type: string 
+
+
+.. php:attr:: protected static subject
+
+	:Source:
+		`lib/private/Notification/Notification.php#56 <https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L56>`_
+	
+	:Type: string 
+
+
+.. php:attr:: protected static subjectParameters
+
+	:Source:
+		`lib/private/Notification/Notification.php#59 <https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L59>`_
+	
+	:Type: array 
+
+
+.. php:attr:: protected static subjectParsed
+
+	:Source:
+		`lib/private/Notification/Notification.php#62 <https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L62>`_
+	
+	:Type: string 
+
+
+.. php:attr:: protected static subjectRich
+
+	:Source:
+		`lib/private/Notification/Notification.php#65 <https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L65>`_
+	
+	:Type: string 
+
+
+.. php:attr:: protected static subjectRichParameters
+
+	:Source:
+		`lib/private/Notification/Notification.php#68 <https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L68>`_
+	
+	:Type: array 
+
+
+.. php:attr:: protected static message
+
+	:Source:
+		`lib/private/Notification/Notification.php#71 <https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L71>`_
+	
+	:Type: string 
+
+
+.. php:attr:: protected static messageParameters
+
+	:Source:
+		`lib/private/Notification/Notification.php#74 <https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L74>`_
+	
+	:Type: array 
+
+
+.. php:attr:: protected static messageParsed
+
+	:Source:
+		`lib/private/Notification/Notification.php#77 <https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L77>`_
+	
+	:Type: string 
+
+
+.. php:attr:: protected static messageRich
+
+	:Source:
+		`lib/private/Notification/Notification.php#80 <https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L80>`_
+	
+	:Type: string 
+
+
+.. php:attr:: protected static messageRichParameters
+
+	:Source:
+		`lib/private/Notification/Notification.php#83 <https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L83>`_
+	
+	:Type: array 
+
+
+.. php:attr:: protected static link
+
+	:Source:
+		`lib/private/Notification/Notification.php#86 <https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L86>`_
+	
+	:Type: string 
+
+
+.. php:attr:: protected static icon
+
+	:Source:
+		`lib/private/Notification/Notification.php#89 <https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L89>`_
+	
+	:Type: string 
+
+
+.. php:attr:: protected static actions
+
+	:Source:
+		`lib/private/Notification/Notification.php#92 <https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L92>`_
+	
+	:Type: array 
+
+
+.. php:attr:: protected static actionsParsed
+
+	:Source:
+		`lib/private/Notification/Notification.php#95 <https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L95>`_
+	
+	:Type: array 
+
+
+.. php:attr:: protected static hasPrimaryAction
+
+	:Source:
+		`lib/private/Notification/Notification.php#98 <https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L98>`_
+	
+	:Type: bool 
+
+
+.. php:attr:: protected static hasPrimaryParsedAction
+
+	:Source:
+		`lib/private/Notification/Notification.php#101 <https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L101>`_
+	
+	:Type: bool 
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $richValidator)
+	
+		:Source:
+			`lib/private/Notification/Notification.php#103 <https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L103>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setApp( $app)
+	
+		:Source:
+			`lib/private/Notification/Notification.php#133 <https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L133>`_
+		
+		
+		:Parameters:
+			* **$app** (string)  
+
+		
+		:Returns: $this 
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` if the app id is invalid
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getApp()
+	
+		:Source:
+			`lib/private/Notification/Notification.php#145 <https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L145>`_
+		
+		
+		:Returns: string 
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setUser( $user)
+	
+		:Source:
+			`lib/private/Notification/Notification.php#155 <https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L155>`_
+		
+		
+		:Parameters:
+			* **$user** (string)  
+
+		
+		:Returns: $this 
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` if the user id is invalid
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getUser()
+	
+		:Source:
+			`lib/private/Notification/Notification.php#167 <https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L167>`_
+		
+		
+		:Returns: string 
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setDateTime( $dateTime)
+	
+		:Source:
+			`lib/private/Notification/Notification.php#177 <https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L177>`_
+		
+		
+		:Parameters:
+			* **$dateTime** (:any:`DateTime <DateTime>`)  
+
+		
+		:Returns: $this 
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` if the $dateTime is invalid
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getDateTime()
+	
+		:Source:
+			`lib/private/Notification/Notification.php#189 <https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L189>`_
+		
+		
+		:Returns: :any:`\\DateTime <DateTime>` 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setObject( $type, $id)
+	
+		:Source:
+			`lib/private/Notification/Notification.php#200 <https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L200>`_
+		
+		
+		:Parameters:
+			* **$type** (string)  
+			* **$id** (string)  
+
+		
+		:Returns: $this 
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` if the object type or id is invalid
+		:Since: 8.2.0 \- 9\.0\.0: Type of $id changed to string
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getObjectType()
+	
+		:Source:
+			`lib/private/Notification/Notification.php#217 <https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L217>`_
+		
+		
+		:Returns: string 
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getObjectId()
+	
+		:Source:
+			`lib/private/Notification/Notification.php#225 <https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L225>`_
+		
+		
+		:Returns: string 
+		:Since: 8.2.0 \- 9\.0\.0: Return type changed to string
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setSubject( $subject, $parameters=\[\])
+	
+		:Source:
+			`lib/private/Notification/Notification.php#236 <https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L236>`_
+		
+		
+		:Parameters:
+			* **$subject** (string)  
+			* **$parameters** (array)  
+
+		
+		:Returns: $this 
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` if the subject or parameters are invalid
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getSubject()
+	
+		:Source:
+			`lib/private/Notification/Notification.php#251 <https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L251>`_
+		
+		
+		:Returns: string 
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getSubjectParameters()
+	
+		:Source:
+			`lib/private/Notification/Notification.php#259 <https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L259>`_
+		
+		
+		:Returns: array 
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setParsedSubject( $subject)
+	
+		:Source:
+			`lib/private/Notification/Notification.php#269 <https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L269>`_
+		
+		
+		:Parameters:
+			* **$subject** (string)  
+
+		
+		:Returns: $this 
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` if the subject is invalid
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getParsedSubject()
+	
+		:Source:
+			`lib/private/Notification/Notification.php#281 <https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L281>`_
+		
+		
+		:Returns: string 
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setRichSubject( $subject, $parameters=\[\])
+	
+		:Source:
+			`lib/private/Notification/Notification.php#292 <https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L292>`_
+		
+		
+		:Parameters:
+			* **$subject** (string)  
+			* **$parameters** (array)  
+
+		
+		:Returns: $this 
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` if the subject or parameters are invalid
+		:Since: 11.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getRichSubject()
+	
+		:Source:
+			`lib/private/Notification/Notification.php#307 <https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L307>`_
+		
+		
+		:Returns: string 
+		:Since: 11.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getRichSubjectParameters()
+	
+		:Source:
+			`lib/private/Notification/Notification.php#315 <https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L315>`_
+		
+		
+		:Returns: array[] 
+		:Since: 11.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setMessage( $message, $parameters=\[\])
+	
+		:Source:
+			`lib/private/Notification/Notification.php#326 <https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L326>`_
+		
+		
+		:Parameters:
+			* **$message** (string)  
+			* **$parameters** (array)  
+
+		
+		:Returns: $this 
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` if the message or parameters are invalid
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getMessage()
+	
+		:Source:
+			`lib/private/Notification/Notification.php#341 <https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L341>`_
+		
+		
+		:Returns: string 
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getMessageParameters()
+	
+		:Source:
+			`lib/private/Notification/Notification.php#349 <https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L349>`_
+		
+		
+		:Returns: array 
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setParsedMessage( $message)
+	
+		:Source:
+			`lib/private/Notification/Notification.php#359 <https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L359>`_
+		
+		
+		:Parameters:
+			* **$message** (string)  
+
+		
+		:Returns: $this 
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` if the message is invalid
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getParsedMessage()
+	
+		:Source:
+			`lib/private/Notification/Notification.php#371 <https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L371>`_
+		
+		
+		:Returns: string 
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setRichMessage( $message, $parameters=\[\])
+	
+		:Source:
+			`lib/private/Notification/Notification.php#382 <https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L382>`_
+		
+		
+		:Parameters:
+			* **$message** (string)  
+			* **$parameters** (array)  
+
+		
+		:Returns: $this 
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` if the message or parameters are invalid
+		:Since: 11.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getRichMessage()
+	
+		:Source:
+			`lib/private/Notification/Notification.php#397 <https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L397>`_
+		
+		
+		:Returns: string 
+		:Since: 11.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getRichMessageParameters()
+	
+		:Source:
+			`lib/private/Notification/Notification.php#405 <https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L405>`_
+		
+		
+		:Returns: array[] 
+		:Since: 11.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setLink( $link)
+	
+		:Source:
+			`lib/private/Notification/Notification.php#415 <https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L415>`_
+		
+		
+		:Parameters:
+			* **$link** (string)  
+
+		
+		:Returns: $this 
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` if the link is invalid
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getLink()
+	
+		:Source:
+			`lib/private/Notification/Notification.php#427 <https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L427>`_
+		
+		
+		:Returns: string 
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setIcon( $icon)
+	
+		:Source:
+			`lib/private/Notification/Notification.php#437 <https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L437>`_
+		
+		
+		:Parameters:
+			* **$icon** (string)  
+
+		
+		:Returns: $this 
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` if the icon is invalid
+		:Since: 11.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getIcon()
+	
+		:Source:
+			`lib/private/Notification/Notification.php#449 <https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L449>`_
+		
+		
+		:Returns: string 
+		:Since: 11.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public createAction()
+	
+		:Source:
+			`lib/private/Notification/Notification.php#457 <https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L457>`_
+		
+		
+		:Returns: :any:`\\OCP\\Notification\\IAction <OCP\\Notification\\IAction>` 
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public addAction( $action)
+	
+		:Source:
+			`lib/private/Notification/Notification.php#467 <https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L467>`_
+		
+		
+		:Parameters:
+			* **$action** (:any:`OCP\\Notification\\IAction <OCP\\Notification\\IAction>`)  
+
+		
+		:Returns: $this 
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` if the action is invalid
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getActions()
+	
+		:Source:
+			`lib/private/Notification/Notification.php#488 <https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L488>`_
+		
+		
+		:Returns: :any:`\\OCP\\Notification\\IAction\[\] <OCP\\Notification\\IAction>` 
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public addParsedAction( $action)
+	
+		:Source:
+			`lib/private/Notification/Notification.php#498 <https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L498>`_
+		
+		
+		:Parameters:
+			* **$action** (:any:`OCP\\Notification\\IAction <OCP\\Notification\\IAction>`)  
+
+		
+		:Returns: $this 
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` if the action is invalid
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getParsedActions()
+	
+		:Source:
+			`lib/private/Notification/Notification.php#523 <https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L523>`_
+		
+		
+		:Returns: :any:`\\OCP\\Notification\\IAction\[\] <OCP\\Notification\\IAction>` 
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isValid()
+	
+		:Source:
+			`lib/private/Notification/Notification.php#531 <https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L531>`_
+		
+		
+		:Returns: bool 
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isValidParsed()
+	
+		:Source:
+			`lib/private/Notification/Notification.php#543 <https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L543>`_
+		
+		
+		:Returns: bool 
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected isValidCommon()
+	
+		:Source:
+			`lib/private/Notification/Notification.php#567 <https://github.com/nextcloud/server/blob/stable13/lib/private/Notification/Notification.php#L567>`_
+		
+		
+	
+	
+

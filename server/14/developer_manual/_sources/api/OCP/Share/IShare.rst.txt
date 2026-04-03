@@ -1,0 +1,1172 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IShare
+======
+
+
+.. php:namespace:: OCP\Share
+
+.. php:interface:: IShare
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Interface IShare
+		
+	
+	:Implemented by:
+		:php:class:`OC\\Share20\\Share` 
+	
+	
+	:Source:
+		`lib/public/Share/IShare.php#44 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IShare.php#L44>`_
+	
+
+Constants
+---------
+
+.. php:const:: TYPE_USER = 0
+
+	:Source:
+		`lib/public/Share/IShare.php#49 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IShare.php#L49>`_
+	
+	:Since: 17.0.0 
+
+
+.. php:const:: TYPE_GROUP = 1
+
+	:Source:
+		`lib/public/Share/IShare.php#54 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IShare.php#L54>`_
+	
+	:Since: 17.0.0 
+
+
+.. php:const:: TYPE_USERGROUP = 2
+
+	:Source:
+		`lib/public/Share/IShare.php#60 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IShare.php#L60>`_
+	
+	:Since: 18.0.0 
+
+
+.. php:const:: TYPE_LINK = 3
+
+	:Source:
+		`lib/public/Share/IShare.php#65 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IShare.php#L65>`_
+	
+	:Since: 17.0.0 
+
+
+.. php:const:: TYPE_EMAIL = 4
+
+	:Source:
+		`lib/public/Share/IShare.php#70 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IShare.php#L70>`_
+	
+	:Since: 17.0.0 
+
+
+.. php:const:: TYPE_REMOTE = 6
+
+	:Source:
+		`lib/public/Share/IShare.php#81 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IShare.php#L81>`_
+	
+	:Since: 17.0.0 
+
+
+.. php:const:: TYPE_CIRCLE = 7
+
+	:Source:
+		`lib/public/Share/IShare.php#86 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IShare.php#L86>`_
+	
+	:Since: 17.0.0 
+
+
+.. php:const:: TYPE_GUEST = 8
+
+	:Source:
+		`lib/public/Share/IShare.php#91 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IShare.php#L91>`_
+	
+	:Since: 17.0.0 
+
+
+.. php:const:: TYPE_REMOTE_GROUP = 9
+
+	:Source:
+		`lib/public/Share/IShare.php#96 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IShare.php#L96>`_
+	
+	:Since: 17.0.0 
+
+
+.. php:const:: TYPE_ROOM = 10
+
+	:Source:
+		`lib/public/Share/IShare.php#101 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IShare.php#L101>`_
+	
+	:Since: 17.0.0 
+
+
+.. php:const:: TYPE_DECK = 12
+
+	:Source:
+		`lib/public/Share/IShare.php#112 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IShare.php#L112>`_
+	
+	:Since: 21.0.0 
+
+
+.. php:const:: TYPE_DECK_USER = 13
+
+	:Source:
+		`lib/public/Share/IShare.php#118 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IShare.php#L118>`_
+	
+	:Since: 21.0.0 
+
+
+.. php:const:: STATUS_PENDING = 0
+
+	:Source:
+		`lib/public/Share/IShare.php#123 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IShare.php#L123>`_
+	
+	:Since: 18.0.0 
+
+
+.. php:const:: STATUS_ACCEPTED = 1
+
+	:Source:
+		`lib/public/Share/IShare.php#128 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IShare.php#L128>`_
+	
+	:Since: 18.0.0 
+
+
+.. php:const:: STATUS_REJECTED = 2
+
+	:Source:
+		`lib/public/Share/IShare.php#133 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IShare.php#L133>`_
+	
+	:Since: 18.0.0 
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public setId( $id)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set the internal id of the share
+			| It is only allowed to set the internal id of a share once\.
+			
+			| Attempts to override the internal id will result in an IllegalIDChangeException
+			
+		
+		:Source:
+			`lib/public/Share/IShare.php#146 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IShare.php#L146>`_
+		
+		
+		:Parameters:
+			* **$id** (string)  
+
+		
+		:Returns: :any:`\\OCP\\Share\\IShare <OCP\\Share\\IShare>` 
+		:Throws: :any:`\\OCP\\Share\\Exceptions\\IllegalIDChangeException <OCP\\Share\\Exceptions\\IllegalIDChangeException>` 
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` 
+		:Throws: :any:`\\OCP\\Share\\Exceptions\\IllegalIDChangeException <OCP\\Share\\Exceptions\\IllegalIDChangeException>` 
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` 
+		:Since: 9.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getId()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the internal id of the share\.
+			
+		
+		:Source:
+			`lib/public/Share/IShare.php#154 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IShare.php#L154>`_
+		
+		
+		:Returns: string 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getFullId()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the full share id\. This is the <providerid\>:<internalid\>\.
+			
+			| The full id is unique in the system\.
+			
+		
+		:Source:
+			`lib/public/Share/IShare.php#164 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IShare.php#L164>`_
+		
+		
+		:Returns: string 
+		:Since: 9.0.0 
+		:Throws: :any:`\\UnexpectedValueException <UnexpectedValueException>` If the fullId could not be constructed
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setProviderId( $id)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set the provider id of the share
+			| It is only allowed to set the provider id of a share once\.
+			
+			| Attempts to override the provider id will result in an IllegalIDChangeException
+			
+		
+		:Source:
+			`lib/public/Share/IShare.php#177 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IShare.php#L177>`_
+		
+		
+		:Parameters:
+			* **$id** (string)  
+
+		
+		:Returns: :any:`\\OCP\\Share\\IShare <OCP\\Share\\IShare>` 
+		:Throws: :any:`\\OCP\\Share\\Exceptions\\IllegalIDChangeException <OCP\\Share\\Exceptions\\IllegalIDChangeException>` 
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` 
+		:Throws: :any:`\\OCP\\Share\\Exceptions\\IllegalIDChangeException <OCP\\Share\\Exceptions\\IllegalIDChangeException>` 
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` 
+		:Since: 9.1.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setNode( $node)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set the node of the file/folder that is shared
+			
+		
+		:Source:
+			`lib/public/Share/IShare.php#186 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IShare.php#L186>`_
+		
+		
+		:Parameters:
+			* **$node** (:any:`OCP\\Files\\Node <OCP\\Files\\Node>`)  
+
+		
+		:Returns: :any:`\\OCP\\Share\\IShare <OCP\\Share\\IShare>` The modified object
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getNode()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the node of the file/folder that is shared
+			
+		
+		:Source:
+			`lib/public/Share/IShare.php#195 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IShare.php#L195>`_
+		
+		
+		:Returns: :any:`\\OCP\\Files\\File <OCP\\Files\\File>` | :any:`\\OCP\\Files\\Folder <OCP\\Files\\Folder>` 
+		:Since: 9.0.0 
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setNodeId( $fileId)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set file id for lazy evaluation of the node
+			
+		
+		:Source:
+			`lib/public/Share/IShare.php#203 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IShare.php#L203>`_
+		
+		
+		:Parameters:
+			* **$fileId** (int)  
+
+		
+		:Returns: :any:`\\OCP\\Share\\IShare <OCP\\Share\\IShare>` The modified object
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getNodeId()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the fileid of the node of this share
+			
+		
+		:Source:
+			`lib/public/Share/IShare.php#211 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IShare.php#L211>`_
+		
+		
+		:Returns: int 
+		:Since: 9.0.0 
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setNodeType( $type)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set the type of node \(file/folder\)
+			
+		
+		:Source:
+			`lib/public/Share/IShare.php#220 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IShare.php#L220>`_
+		
+		
+		:Parameters:
+			* **$type** (string)  
+
+		
+		:Returns: :any:`\\OCP\\Share\\IShare <OCP\\Share\\IShare>` The modified object
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getNodeType()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the type of node \(file/folder\)
+			
+		
+		:Source:
+			`lib/public/Share/IShare.php#229 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IShare.php#L229>`_
+		
+		
+		:Returns: string 
+		:Since: 9.0.0 
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setShareType( $shareType)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set the shareType
+			
+		
+		:Source:
+			`lib/public/Share/IShare.php#238 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IShare.php#L238>`_
+		
+		
+		:Parameters:
+			* **$shareType** (int)  
+
+		
+		:Returns: :any:`\\OCP\\Share\\IShare <OCP\\Share\\IShare>` The modified object
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getShareType()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the shareType
+			
+		
+		:Source:
+			`lib/public/Share/IShare.php#246 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IShare.php#L246>`_
+		
+		
+		:Returns: int 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setSharedWith( $sharedWith)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set the receiver of this share\.
+			
+		
+		:Source:
+			`lib/public/Share/IShare.php#255 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IShare.php#L255>`_
+		
+		
+		:Parameters:
+			* **$sharedWith** (string)  
+
+		
+		:Returns: :any:`\\OCP\\Share\\IShare <OCP\\Share\\IShare>` The modified object
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getSharedWith()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the receiver of this share\.
+			
+		
+		:Source:
+			`lib/public/Share/IShare.php#263 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IShare.php#L263>`_
+		
+		
+		:Returns: string 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setSharedWithDisplayName( $displayName)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set the display name of the receiver of this share\.
+			
+		
+		:Source:
+			`lib/public/Share/IShare.php#272 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IShare.php#L272>`_
+		
+		
+		:Parameters:
+			* **$displayName** (string)  
+
+		
+		:Returns: :any:`\\OCP\\Share\\IShare <OCP\\Share\\IShare>` The modified object
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getSharedWithDisplayName()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the display name of the receiver of this share\.
+			
+		
+		:Source:
+			`lib/public/Share/IShare.php#280 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IShare.php#L280>`_
+		
+		
+		:Returns: string 
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setSharedWithAvatar( $src)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set the avatar of the receiver of this share\.
+			
+		
+		:Source:
+			`lib/public/Share/IShare.php#289 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IShare.php#L289>`_
+		
+		
+		:Parameters:
+			* **$src** (string)  
+
+		
+		:Returns: :any:`\\OCP\\Share\\IShare <OCP\\Share\\IShare>` The modified object
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getSharedWithAvatar()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the avatar of the receiver of this share\.
+			
+		
+		:Source:
+			`lib/public/Share/IShare.php#297 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IShare.php#L297>`_
+		
+		
+		:Returns: string 
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setPermissions( $permissions)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set the permissions\.
+			
+			| See \\OCP\\Constants::PERMISSION\_\*
+			
+		
+		:Source:
+			`lib/public/Share/IShare.php#307 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IShare.php#L307>`_
+		
+		
+		:Parameters:
+			* **$permissions** (int)  
+
+		
+		:Returns: :any:`\\OCP\\Share\\IShare <OCP\\Share\\IShare>` The modified object
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getPermissions()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the share permissions
+			| See \\OCP\\Constants::PERMISSION\_\*
+			
+		
+		:Source:
+			`lib/public/Share/IShare.php#316 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IShare.php#L316>`_
+		
+		
+		:Returns: int 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setStatus( $status)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set the accepted status
+			| See self::STATUS\_\*
+			
+		
+		:Source:
+			`lib/public/Share/IShare.php#326 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IShare.php#L326>`_
+		
+		
+		:Parameters:
+			* **$status** (int)  
+
+		
+		:Returns: :any:`\\OCP\\Share\\IShare <OCP\\Share\\IShare>` The modified object
+		:Since: 18.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getStatus()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the accepted status
+			| See self::STATUS\_\*
+			
+		
+		:Source:
+			`lib/public/Share/IShare.php#335 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IShare.php#L335>`_
+		
+		
+		:Returns: int 
+		:Since: 18.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setNote( $note)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Attach a note to a share
+			
+		
+		:Source:
+			`lib/public/Share/IShare.php#344 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IShare.php#L344>`_
+		
+		
+		:Parameters:
+			* **$note** (string)  
+
+		
+		:Returns: :any:`\\OCP\\Share\\IShare <OCP\\Share\\IShare>` The modified object
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getNote()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get note attached to a share
+			
+		
+		:Source:
+			`lib/public/Share/IShare.php#352 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IShare.php#L352>`_
+		
+		
+		:Returns: string 
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setExpirationDate( $expireDate)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set the expiration date
+			
+		
+		:Source:
+			`lib/public/Share/IShare.php#362 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IShare.php#L362>`_
+		
+		
+		:Parameters:
+			* **$expireDate** (null | :any:`\\DateTime <DateTime>`)  
+
+		
+		:Returns: :any:`\\OCP\\Share\\IShare <OCP\\Share\\IShare>` The modified object
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getExpirationDate()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the expiration date
+			
+		
+		:Source:
+			`lib/public/Share/IShare.php#370 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IShare.php#L370>`_
+		
+		
+		:Returns: :any:`\\DateTime <DateTime>` 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isExpired()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Is the share expired ?
+			
+		
+		:Source:
+			`lib/public/Share/IShare.php#378 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IShare.php#L378>`_
+		
+		
+		:Returns: bool 
+		:Since: 18.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setLabel( $label)
+	
+		.. rst-class:: phpdoc-description
+		
+			| set a label for a share, some shares, e\.g\. public links can have a label
+			
+		
+		:Source:
+			`lib/public/Share/IShare.php#387 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IShare.php#L387>`_
+		
+		
+		:Parameters:
+			* **$label** (string)  
+
+		
+		:Returns: :any:`\\OCP\\Share\\IShare <OCP\\Share\\IShare>` The modified object
+		:Since: 15.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getLabel()
+	
+		.. rst-class:: phpdoc-description
+		
+			| get label for the share, some shares, e\.g\. public links can have a label
+			
+		
+		:Source:
+			`lib/public/Share/IShare.php#395 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IShare.php#L395>`_
+		
+		
+		:Returns: string 
+		:Since: 15.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setSharedBy( $sharedBy)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set the sharer of the path\.
+			
+		
+		:Source:
+			`lib/public/Share/IShare.php#404 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IShare.php#L404>`_
+		
+		
+		:Parameters:
+			* **$sharedBy** (string)  
+
+		
+		:Returns: :any:`\\OCP\\Share\\IShare <OCP\\Share\\IShare>` The modified object
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getSharedBy()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get share sharer
+			
+		
+		:Source:
+			`lib/public/Share/IShare.php#412 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IShare.php#L412>`_
+		
+		
+		:Returns: string 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setShareOwner( $shareOwner)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set the original share owner \(who owns the path that is shared\)
+			
+		
+		:Source:
+			`lib/public/Share/IShare.php#421 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IShare.php#L421>`_
+		
+		
+		:Parameters:
+			* **$shareOwner** (string)  
+
+		
+		:Returns: :any:`\\OCP\\Share\\IShare <OCP\\Share\\IShare>` The modified object
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getShareOwner()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the original share owner \(who owns the path that is shared\)
+			
+		
+		:Source:
+			`lib/public/Share/IShare.php#429 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IShare.php#L429>`_
+		
+		
+		:Returns: string 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setPassword( $password)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set the password for this share\.
+			
+			| When the share is passed to the share manager to be created
+			| or updated the password will be hashed\.
+			
+		
+		:Source:
+			`lib/public/Share/IShare.php#440 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IShare.php#L440>`_
+		
+		
+		:Parameters:
+			* **$password** (string | null)  
+
+		
+		:Returns: :any:`\\OCP\\Share\\IShare <OCP\\Share\\IShare>` The modified object
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getPassword()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the password of this share\.
+			
+			| If this share is obtained via a shareprovider the password is
+			| hashed\.
+			
+		
+		:Source:
+			`lib/public/Share/IShare.php#450 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IShare.php#L450>`_
+		
+		
+		:Returns: string 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setSendPasswordByTalk( $sendPasswordByTalk)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set if the recipient can start a conversation with the owner to get the
+			| password using Nextcloud Talk\.
+			
+		
+		:Source:
+			`lib/public/Share/IShare.php#461 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IShare.php#L461>`_
+		
+		
+		:Parameters:
+			* **$sendPasswordByTalk** (bool)  
+
+		
+		:Returns: :any:`\\OCP\\Share\\IShare <OCP\\Share\\IShare>` The modified object
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getSendPasswordByTalk()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get if the recipient can start a conversation with the owner to get the
+			| password using Nextcloud Talk\.
+			
+			| The returned value does not take into account other factors, like Talk
+			| being enabled for the owner of the share or not; it just cover whether
+			| the option is enabled for the share itself or not\.
+			
+		
+		:Source:
+			`lib/public/Share/IShare.php#473 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IShare.php#L473>`_
+		
+		
+		:Returns: bool 
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setToken( $token)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set the public link token\.
+			
+		
+		:Source:
+			`lib/public/Share/IShare.php#482 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IShare.php#L482>`_
+		
+		
+		:Parameters:
+			* **$token** (string)  
+
+		
+		:Returns: :any:`\\OCP\\Share\\IShare <OCP\\Share\\IShare>` The modified object
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getToken()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the public link token\.
+			
+		
+		:Source:
+			`lib/public/Share/IShare.php#490 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IShare.php#L490>`_
+		
+		
+		:Returns: string 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setTarget( $target)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set the target path of this share relative to the recipients user folder\.
+			
+		
+		:Source:
+			`lib/public/Share/IShare.php#499 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IShare.php#L499>`_
+		
+		
+		:Parameters:
+			* **$target** (string)  
+
+		
+		:Returns: :any:`\\OCP\\Share\\IShare <OCP\\Share\\IShare>` The modified object
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getTarget()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the target path of this share relative to the recipients user folder\.
+			
+		
+		:Source:
+			`lib/public/Share/IShare.php#507 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IShare.php#L507>`_
+		
+		
+		:Returns: string 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setShareTime( $shareTime)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set the time this share was created
+			
+		
+		:Source:
+			`lib/public/Share/IShare.php#516 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IShare.php#L516>`_
+		
+		
+		:Parameters:
+			* **$shareTime** (:any:`DateTime <DateTime>`)  
+
+		
+		:Returns: :any:`\\OCP\\Share\\IShare <OCP\\Share\\IShare>` The modified object
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getShareTime()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the timestamp this share was created
+			
+		
+		:Source:
+			`lib/public/Share/IShare.php#524 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IShare.php#L524>`_
+		
+		
+		:Returns: :any:`\\DateTime <DateTime>` 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setMailSend( $mailSend)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set if the recipient is informed by mail about the share\.
+			
+		
+		:Source:
+			`lib/public/Share/IShare.php#533 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IShare.php#L533>`_
+		
+		
+		:Parameters:
+			* **$mailSend** (bool)  
+
+		
+		:Returns: :any:`\\OCP\\Share\\IShare <OCP\\Share\\IShare>` The modified object
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getMailSend()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get if the recipient informed by mail about the share\.
+			
+		
+		:Source:
+			`lib/public/Share/IShare.php#541 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IShare.php#L541>`_
+		
+		
+		:Returns: bool 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setNodeCacheEntry( $entry)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set the cache entry for the shared node
+			
+		
+		:Source:
+			`lib/public/Share/IShare.php#549 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IShare.php#L549>`_
+		
+		
+		:Parameters:
+			* **$entry** (:any:`OCP\\Files\\Cache\\ICacheEntry <OCP\\Files\\Cache\\ICacheEntry>`)  
+
+		
+		:Since: 11.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getNodeCacheEntry()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the cache entry for the shared node
+			
+		
+		:Source:
+			`lib/public/Share/IShare.php#557 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IShare.php#L557>`_
+		
+		
+		:Returns: null | :any:`\\OCP\\Files\\Cache\\ICacheEntry <OCP\\Files\\Cache\\ICacheEntry>` 
+		:Since: 11.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setHideDownload( $hide)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Sets a shares hide download state
+			| This is mainly for public shares\. It will signal that the share page should
+			| hide download buttons etc\.
+			
+		
+		:Source:
+			`lib/public/Share/IShare.php#568 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IShare.php#L568>`_
+		
+		
+		:Parameters:
+			* **$hide** (bool)  
+
+		
+		:Returns: :any:`\\OCP\\Share\\IShare <OCP\\Share\\IShare>` 
+		:Since: 15.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getHideDownload()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Gets a shares hide download state
+			| This is mainly for public shares\. It will signal that the share page should
+			| hide download buttons etc\.
+			
+		
+		:Source:
+			`lib/public/Share/IShare.php#578 <https://github.com/nextcloud/server/blob/stable13/lib/public/Share/IShare.php#L578>`_
+		
+		
+		:Returns: bool 
+		:Since: 15.0.0 
+	
+	
+

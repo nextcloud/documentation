@@ -1,0 +1,235 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+Result
+======
+
+
+.. php:namespace:: OC\OCS
+
+.. php:class:: Result
+
+
+	:Source:
+		`lib/private/OCS/Result.php#34 <https://github.com/nextcloud/server/blob/stable13/lib/private/OCS/Result.php#L34>`_
+	
+
+Properties
+----------
+
+.. php:attr:: protected static data
+
+	:Source:
+		`lib/private/OCS/Result.php#37 <https://github.com/nextcloud/server/blob/stable13/lib/private/OCS/Result.php#L37>`_
+	
+	:Type: array 
+
+
+.. php:attr:: protected static message
+
+	:Source:
+		`lib/private/OCS/Result.php#40 <https://github.com/nextcloud/server/blob/stable13/lib/private/OCS/Result.php#L40>`_
+	
+	:Type: null | string 
+
+
+.. php:attr:: protected static statusCode
+
+	:Source:
+		`lib/private/OCS/Result.php#43 <https://github.com/nextcloud/server/blob/stable13/lib/private/OCS/Result.php#L43>`_
+	
+	:Type: int 
+
+
+.. php:attr:: protected static items
+
+	:Source:
+		`lib/private/OCS/Result.php#46 <https://github.com/nextcloud/server/blob/stable13/lib/private/OCS/Result.php#L46>`_
+	
+	:Type: int 
+
+
+.. php:attr:: protected static perPage
+
+	:Source:
+		`lib/private/OCS/Result.php#49 <https://github.com/nextcloud/server/blob/stable13/lib/private/OCS/Result.php#L49>`_
+	
+	:Type: int 
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $data=null, $code=100, $message=null, $headers=\[\])
+	
+		.. rst-class:: phpdoc-description
+		
+			| create the OCS\_Result object
+			
+		
+		:Source:
+			`lib/private/OCS/Result.php#61 <https://github.com/nextcloud/server/blob/stable13/lib/private/OCS/Result.php#L61>`_
+		
+		
+		:Parameters:
+			* **$data** (mixed)  the data to return
+			* **$code** (int)  
+			* **$message** (null | string)  
+			* **$headers** (array)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setTotalItems( $items)
+	
+		.. rst-class:: phpdoc-description
+		
+			| optionally set the total number of items available
+			
+		
+		:Source:
+			`lib/private/OCS/Result.php#78 <https://github.com/nextcloud/server/blob/stable13/lib/private/OCS/Result.php#L78>`_
+		
+		
+		:Parameters:
+			* **$items** (int)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setItemsPerPage( $items)
+	
+		.. rst-class:: phpdoc-description
+		
+			| optionally set the the number of items per page
+			
+		
+		:Source:
+			`lib/private/OCS/Result.php#86 <https://github.com/nextcloud/server/blob/stable13/lib/private/OCS/Result.php#L86>`_
+		
+		
+		:Parameters:
+			* **$items** (int)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getStatusCode()
+	
+		.. rst-class:: phpdoc-description
+		
+			| get the status code
+			
+		
+		:Source:
+			`lib/private/OCS/Result.php#94 <https://github.com/nextcloud/server/blob/stable13/lib/private/OCS/Result.php#L94>`_
+		
+		
+		:Returns: int 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getMeta()
+	
+		.. rst-class:: phpdoc-description
+		
+			| get the meta data for the result
+			
+		
+		:Source:
+			`lib/private/OCS/Result.php#102 <https://github.com/nextcloud/server/blob/stable13/lib/private/OCS/Result.php#L102>`_
+		
+		
+		:Returns: array 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getData()
+	
+		.. rst-class:: phpdoc-description
+		
+			| get the result data
+			
+		
+		:Source:
+			`lib/private/OCS/Result.php#120 <https://github.com/nextcloud/server/blob/stable13/lib/private/OCS/Result.php#L120>`_
+		
+		
+		:Returns: array 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public succeeded()
+	
+		.. rst-class:: phpdoc-description
+		
+			| return bool Whether the method succeeded
+			
+		
+		:Source:
+			`lib/private/OCS/Result.php#128 <https://github.com/nextcloud/server/blob/stable13/lib/private/OCS/Result.php#L128>`_
+		
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public addHeader( $name, $value)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Adds a new header to the response
+			
+		
+		:Source:
+			`lib/private/OCS/Result.php#138 <https://github.com/nextcloud/server/blob/stable13/lib/private/OCS/Result.php#L138>`_
+		
+		
+		:Parameters:
+			* **$name** (string)  The name of the HTTP header
+			* **$value** (string)  The value, null will delete it
+
+		
+		:Returns: $this 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getHeaders()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the set headers
+			
+		
+		:Source:
+			`lib/private/OCS/Result.php#156 <https://github.com/nextcloud/server/blob/stable13/lib/private/OCS/Result.php#L156>`_
+		
+		
+		:Returns: array the headers
+	
+	
+

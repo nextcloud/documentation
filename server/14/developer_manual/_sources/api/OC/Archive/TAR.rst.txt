@@ -1,0 +1,393 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+TAR
+===
+
+
+.. php:namespace:: OC\Archive
+
+.. php:class:: TAR
+
+
+	:Source:
+		`lib/private/Archive/TAR.php#38 <https://github.com/nextcloud/server/blob/stable13/lib/private/Archive/TAR.php#L38>`_
+	
+	:Parent:
+		:php:class:`OC\\Archive\\Archive`
+	
+
+Constants
+---------
+
+.. php:const:: PLAIN = 0
+
+	:Source:
+		`lib/private/Archive/TAR.php#39 <https://github.com/nextcloud/server/blob/stable13/lib/private/Archive/TAR.php#L39>`_
+	
+
+
+.. php:const:: GZIP = 1
+
+	:Source:
+		`lib/private/Archive/TAR.php#40 <https://github.com/nextcloud/server/blob/stable13/lib/private/Archive/TAR.php#L40>`_
+	
+
+
+.. php:const:: BZIP = 2
+
+	:Source:
+		`lib/private/Archive/TAR.php#41 <https://github.com/nextcloud/server/blob/stable13/lib/private/Archive/TAR.php#L41>`_
+	
+
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $source)
+	
+		:Source:
+			`lib/private/Archive/TAR.php#55 <https://github.com/nextcloud/server/blob/stable13/lib/private/Archive/TAR.php#L55>`_
+		
+		
+		:Parameters:
+			* **$source** (string)  
+
+		
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static getTarType( $file)
+	
+		.. rst-class:: phpdoc-description
+		
+			| try to detect the type of tar compression
+			
+		
+		:Source:
+			`lib/private/Archive/TAR.php#67 <https://github.com/nextcloud/server/blob/stable13/lib/private/Archive/TAR.php#L67>`_
+		
+		
+		:Parameters:
+			* **$file** (string)  
+
+		
+		:Returns: int 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public addFolder( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| add an empty folder to the archive
+			
+		
+		:Source:
+			`lib/private/Archive/TAR.php#93 <https://github.com/nextcloud/server/blob/stable13/lib/private/Archive/TAR.php#L93>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public addFile( $path, $source="")
+	
+		.. rst-class:: phpdoc-description
+		
+			| add a file to the archive
+			
+		
+		:Source:
+			`lib/private/Archive/TAR.php#121 <https://github.com/nextcloud/server/blob/stable13/lib/private/Archive/TAR.php#L121>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+			* **$source** (string)  either a local file or string data
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public rename( $source, $dest)
+	
+		.. rst-class:: phpdoc-description
+		
+			| rename a file or folder in the archive
+			
+		
+		:Source:
+			`lib/private/Archive/TAR.php#141 <https://github.com/nextcloud/server/blob/stable13/lib/private/Archive/TAR.php#L141>`_
+		
+		
+		:Parameters:
+			* **$source** (string)  
+			* **$dest** (string)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public filesize( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get the uncompressed size of a file in the archive
+			
+		
+		:Source:
+			`lib/private/Archive/TAR.php#181 <https://github.com/nextcloud/server/blob/stable13/lib/private/Archive/TAR.php#L181>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: int 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public mtime( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get the last modified time of a file in the archive
+			
+		
+		:Source:
+			`lib/private/Archive/TAR.php#192 <https://github.com/nextcloud/server/blob/stable13/lib/private/Archive/TAR.php#L192>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: int 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getFolder( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get the files in a folder
+			
+		
+		:Source:
+			`lib/private/Archive/TAR.php#203 <https://github.com/nextcloud/server/blob/stable13/lib/private/Archive/TAR.php#L203>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: array 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getFiles()
+	
+		.. rst-class:: phpdoc-description
+		
+			| get all files in the archive
+			
+		
+		:Source:
+			`lib/private/Archive/TAR.php#229 <https://github.com/nextcloud/server/blob/stable13/lib/private/Archive/TAR.php#L229>`_
+		
+		
+		:Returns: array 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getFile( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get the content of a file
+			
+		
+		:Source:
+			`lib/private/Archive/TAR.php#250 <https://github.com/nextcloud/server/blob/stable13/lib/private/Archive/TAR.php#L250>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public extractFile( $path, $dest)
+	
+		.. rst-class:: phpdoc-description
+		
+			| extract a single file from the archive
+			
+		
+		:Source:
+			`lib/private/Archive/TAR.php#261 <https://github.com/nextcloud/server/blob/stable13/lib/private/Archive/TAR.php#L261>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+			* **$dest** (string)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public extract( $dest)
+	
+		.. rst-class:: phpdoc-description
+		
+			| extract the archive
+			
+		
+		:Source:
+			`lib/private/Archive/TAR.php#284 <https://github.com/nextcloud/server/blob/stable13/lib/private/Archive/TAR.php#L284>`_
+		
+		
+		:Parameters:
+			* **$dest** (string)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public fileExists( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| check if a file or folder exists in the archive
+			
+		
+		:Source:
+			`lib/private/Archive/TAR.php#294 <https://github.com/nextcloud/server/blob/stable13/lib/private/Archive/TAR.php#L294>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public remove( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| remove a file or folder from the archive
+			
+		
+		:Source:
+			`lib/private/Archive/TAR.php#320 <https://github.com/nextcloud/server/blob/stable13/lib/private/Archive/TAR.php#L320>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getStream( $path, $mode)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get a file handler
+			
+		
+		:Source:
+			`lib/private/Archive/TAR.php#344 <https://github.com/nextcloud/server/blob/stable13/lib/private/Archive/TAR.php#L344>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+			* **$mode** (string)  
+
+		
+		:Returns: bool | resource 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public writeBack( $tmpFile, $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| write back temporary files
+			
+		
+		:Source:
+			`lib/private/Archive/TAR.php#369 <https://github.com/nextcloud/server/blob/stable13/lib/private/Archive/TAR.php#L369>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getError()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get error object from archive\_tar\.
+			
+		
+		:Source:
+			`lib/private/Archive/TAR.php#389 <https://github.com/nextcloud/server/blob/stable13/lib/private/Archive/TAR.php#L389>`_
+		
+		
+	
+	
+

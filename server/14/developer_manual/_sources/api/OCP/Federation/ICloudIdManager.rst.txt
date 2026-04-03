@@ -1,0 +1,94 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+ICloudIdManager
+===============
+
+
+.. php:namespace:: OCP\Federation
+
+.. php:interface:: ICloudIdManager
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Interface for resolving federated cloud ids
+		
+	
+	:Implemented by:
+		:php:class:`OC\\Federation\\CloudIdManager` 
+	
+	
+	:Source:
+		`lib/public/Federation/ICloudIdManager.php#36 <https://github.com/nextcloud/server/blob/stable13/lib/public/Federation/ICloudIdManager.php#L36>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public resolveCloudId( $cloudId)
+	
+		:Source:
+			`lib/public/Federation/ICloudIdManager.php#44 <https://github.com/nextcloud/server/blob/stable13/lib/public/Federation/ICloudIdManager.php#L44>`_
+		
+		
+		:Parameters:
+			* **$cloudId** (string)  
+
+		
+		:Returns: :any:`\\OCP\\Federation\\ICloudId <OCP\\Federation\\ICloudId>` 
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` 
+		:Since: 12.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getCloudId( $user, $remote)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the cloud id for a remote user
+			
+		
+		:Source:
+			`lib/public/Federation/ICloudIdManager.php#55 <https://github.com/nextcloud/server/blob/stable13/lib/public/Federation/ICloudIdManager.php#L55>`_
+		
+		
+		:Parameters:
+			* **$user** (string)  
+			* **$remote** (string)  
+
+		
+		:Returns: :any:`\\OCP\\Federation\\ICloudId <OCP\\Federation\\ICloudId>` 
+		:Since: 12.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isValidCloudId( $cloudId)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check if the input is a correctly formatted cloud id
+			
+		
+		:Source:
+			`lib/public/Federation/ICloudIdManager.php#65 <https://github.com/nextcloud/server/blob/stable13/lib/public/Federation/ICloudIdManager.php#L65>`_
+		
+		
+		:Parameters:
+			* **$cloudId** (string)  
+
+		
+		:Returns: bool 
+		:Since: 12.0.0 
+	
+	
+

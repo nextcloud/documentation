@@ -1,0 +1,137 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IUpdater
+========
+
+
+.. php:namespace:: OCP\Files\Cache
+
+.. php:interface:: IUpdater
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Update the cache and propagate changes
+		
+	
+	:Implemented by:
+		:php:class:`OC\\Files\\Cache\\Updater` 
+	
+	
+	:Source:
+		`lib/public/Files/Cache/IUpdater.php#32 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Cache/IUpdater.php#L32>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public getPropagator()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the propagator for etags and mtime for the view the updater works on
+			
+		
+		:Source:
+			`lib/public/Files/Cache/IUpdater.php#39 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Cache/IUpdater.php#L39>`_
+		
+		
+		:Returns: :any:`\\OCP\\Files\\Cache\\IPropagator <OCP\\Files\\Cache\\IPropagator>` 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public propagate( $path, $time=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Propagate etag and mtime changes for the parent folders of $path up to the root of the filesystem
+			
+		
+		:Source:
+			`lib/public/Files/Cache/IUpdater.php#48 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Cache/IUpdater.php#L48>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  the path of the file to propagate the changes for
+			* **$time** (int | null)  the timestamp to set as mtime for the parent folders, if left out the current time is used
+
+		
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public update( $path, $time=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Update the cache for $path and update the size, etag and mtime of the parent folders
+			
+		
+		:Source:
+			`lib/public/Files/Cache/IUpdater.php#57 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Cache/IUpdater.php#L57>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+			* **$time** (int)  
+
+		
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public remove( $path)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Remove $path from the cache and update the size, etag and mtime of the parent folders
+			
+		
+		:Source:
+			`lib/public/Files/Cache/IUpdater.php#65 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Cache/IUpdater.php#L65>`_
+		
+		
+		:Parameters:
+			* **$path** (string)  
+
+		
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public renameFromStorage( $sourceStorage, $source, $target)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Rename a file or folder in the cache and update the size, etag and mtime of the parent folders
+			
+		
+		:Source:
+			`lib/public/Files/Cache/IUpdater.php#75 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Cache/IUpdater.php#L75>`_
+		
+		
+		:Parameters:
+			* **$sourceStorage** (:any:`OCP\\Files\\Storage\\IStorage <OCP\\Files\\Storage\\IStorage>`)  
+			* **$source** (string)  
+			* **$target** (string)  
+
+		
+		:Since: 9.0.0 
+	
+	
+

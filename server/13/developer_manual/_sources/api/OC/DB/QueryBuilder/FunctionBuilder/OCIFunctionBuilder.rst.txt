@@ -1,0 +1,90 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+OCIFunctionBuilder
+==================
+
+
+.. php:namespace:: OC\DB\QueryBuilder\FunctionBuilder
+
+.. php:class:: OCIFunctionBuilder
+
+
+	:Source:
+		`lib/private/DB/QueryBuilder/FunctionBuilder/OCIFunctionBuilder.php#32 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/QueryBuilder/FunctionBuilder/OCIFunctionBuilder.php#L32>`_
+	
+	:Parent:
+		:php:class:`OC\\DB\\QueryBuilder\\FunctionBuilder\\FunctionBuilder`
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public md5( $input)
+	
+		:Source:
+			`lib/private/DB/QueryBuilder/FunctionBuilder/OCIFunctionBuilder.php#33 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/QueryBuilder/FunctionBuilder/OCIFunctionBuilder.php#L33>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public greatest( $x, $y)
+	
+		.. rst-class:: phpdoc-description
+		
+			| As per https://docs\.oracle\.com/cd/B19306\_01/server\.102/b14200/functions060\.htm
+			| Oracle uses the first value to cast the rest or the values\. So when the
+			| first value is a literal, plain value or column, instead of doing the
+			| math, it will cast the expression to int and continue with a "0"\. So when
+			| the second parameter is a function or column, we have to put that as
+			| first parameter\.
+			
+		
+		:Source:
+			`lib/private/DB/QueryBuilder/FunctionBuilder/OCIFunctionBuilder.php#49 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/QueryBuilder/FunctionBuilder/OCIFunctionBuilder.php#L49>`_
+		
+		
+		:Parameters:
+			* **$x** (string | :any:`\\OCP\\DB\\QueryBuilder\\ILiteral <OCP\\DB\\QueryBuilder\\ILiteral>` | :any:`\\OCP\\DB\\QueryBuilder\\IParameter <OCP\\DB\\QueryBuilder\\IParameter>` | :any:`\\OCP\\DB\\QueryBuilder\\IQueryFunction <OCP\\DB\\QueryBuilder\\IQueryFunction>`)  
+			* **$y** (string | :any:`\\OCP\\DB\\QueryBuilder\\ILiteral <OCP\\DB\\QueryBuilder\\ILiteral>` | :any:`\\OCP\\DB\\QueryBuilder\\IParameter <OCP\\DB\\QueryBuilder\\IParameter>` | :any:`\\OCP\\DB\\QueryBuilder\\IQueryFunction <OCP\\DB\\QueryBuilder\\IQueryFunction>`)  
+
+		
+		:Returns: :any:`\\OCP\\DB\\QueryBuilder\\IQueryFunction <OCP\\DB\\QueryBuilder\\IQueryFunction>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public least( $x, $y)
+	
+		.. rst-class:: phpdoc-description
+		
+			| As per https://docs\.oracle\.com/cd/B19306\_01/server\.102/b14200/functions060\.htm
+			| Oracle uses the first value to cast the rest or the values\. So when the
+			| first value is a literal, plain value or column, instead of doing the
+			| math, it will cast the expression to int and continue with a "0"\. So when
+			| the second parameter is a function or column, we have to put that as
+			| first parameter\.
+			
+		
+		:Source:
+			`lib/private/DB/QueryBuilder/FunctionBuilder/OCIFunctionBuilder.php#69 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/QueryBuilder/FunctionBuilder/OCIFunctionBuilder.php#L69>`_
+		
+		
+		:Parameters:
+			* **$x** (string | :any:`\\OCP\\DB\\QueryBuilder\\ILiteral <OCP\\DB\\QueryBuilder\\ILiteral>` | :any:`\\OCP\\DB\\QueryBuilder\\IParameter <OCP\\DB\\QueryBuilder\\IParameter>` | :any:`\\OCP\\DB\\QueryBuilder\\IQueryFunction <OCP\\DB\\QueryBuilder\\IQueryFunction>`)  
+			* **$y** (string | :any:`\\OCP\\DB\\QueryBuilder\\ILiteral <OCP\\DB\\QueryBuilder\\ILiteral>` | :any:`\\OCP\\DB\\QueryBuilder\\IParameter <OCP\\DB\\QueryBuilder\\IParameter>` | :any:`\\OCP\\DB\\QueryBuilder\\IQueryFunction <OCP\\DB\\QueryBuilder\\IQueryFunction>`)  
+
+		
+		:Returns: :any:`\\OCP\\DB\\QueryBuilder\\IQueryFunction <OCP\\DB\\QueryBuilder\\IQueryFunction>` 
+	
+	
+

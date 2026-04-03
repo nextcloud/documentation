@@ -1,0 +1,185 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+Loader
+======
+
+
+.. php:namespace:: OC\Files\Type
+
+.. php:class:: Loader
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Mimetype database loader
+		
+	
+	:Source:
+		`lib/private/Files/Type/Loader.php#36 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Type/Loader.php#L36>`_
+	
+	:Implements:
+		:php:interface:`OCP\\Files\\IMimeTypeLoader` 
+	
+
+Properties
+----------
+
+.. php:attr:: protected static mimetypes
+
+	:Source:
+		`lib/private/Files/Type/Loader.php#42 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Type/Loader.php#L42>`_
+	
+	:Type: array \[id =\> mimetype\]
+
+
+.. php:attr:: protected static mimetypeIds
+
+	:Source:
+		`lib/private/Files/Type/Loader.php#45 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Type/Loader.php#L45>`_
+	
+	:Type: array \[mimetype =\> id\]
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $dbConnection)
+	
+		:Source:
+			`lib/private/Files/Type/Loader.php#50 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Type/Loader.php#L50>`_
+		
+		
+		:Parameters:
+			* **$dbConnection** (:any:`OCP\\IDBConnection <OCP\\IDBConnection>`)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getMimetypeById( $id)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get a mimetype from its ID
+			
+		
+		:Source:
+			`lib/private/Files/Type/Loader.php#62 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Type/Loader.php#L62>`_
+		
+		
+		:Parameters:
+			* **$id** (int)  
+
+		
+		:Returns: string | null 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getId( $mimetype)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get a mimetype ID, adding the mimetype to the DB if it does not exist
+			
+		
+		:Source:
+			`lib/private/Files/Type/Loader.php#78 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Type/Loader.php#L78>`_
+		
+		
+		:Parameters:
+			* **$mimetype** (string)  
+
+		
+		:Returns: int 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public exists( $mimetype)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Test if a mimetype exists in the database
+			
+		
+		:Source:
+			`lib/private/Files/Type/Loader.php#94 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Type/Loader.php#L94>`_
+		
+		
+		:Parameters:
+			* **$mimetype** (string)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public reset()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Clear all loaded mimetypes, allow for re\-loading
+			
+		
+		:Source:
+			`lib/private/Files/Type/Loader.php#104 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Type/Loader.php#L104>`_
+		
+		
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected store( $mimetype)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Store a mimetype in the DB
+			
+		
+		:Source:
+			`lib/private/Files/Type/Loader.php#115 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Type/Loader.php#L115>`_
+		
+		
+		:Parameters:
+			* **$mimetype** (string)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public updateFilecache( $ext, $mimeTypeId)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Update filecache mimetype based on file extension
+			
+		
+		:Source:
+			`lib/private/Files/Type/Loader.php#165 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/Type/Loader.php#L165>`_
+		
+		
+		:Parameters:
+			* **$ext** (string)  file extension
+			* **$mimeTypeId** (int)  
+
+		
+		:Returns: int number of changed rows
+	
+	
+

@@ -1,0 +1,236 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+FullTextSearchManager
+=====================
+
+
+.. php:namespace:: OC\FullTextSearch
+
+.. php:class:: FullTextSearchManager
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Class FullTextSearchManager
+		
+	
+	:Source:
+		`lib/private/FullTextSearch/FullTextSearchManager.php#42 <https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/FullTextSearchManager.php#L42>`_
+	
+	:Implements:
+		:php:interface:`OCP\\FullTextSearch\\IFullTextSearchManager` 
+	
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public registerProviderService( $providerService)
+	
+		:Source:
+			`lib/private/FullTextSearch/FullTextSearchManager.php#60 <https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/FullTextSearchManager.php#L60>`_
+		
+		
+		:Parameters:
+			* **$providerService** (:any:`OCP\\FullTextSearch\\Service\\IProviderService <OCP\\FullTextSearch\\Service\\IProviderService>`)  
+
+		
+		:Since: 15.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public registerIndexService( $indexService)
+	
+		:Source:
+			`lib/private/FullTextSearch/FullTextSearchManager.php#69 <https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/FullTextSearchManager.php#L69>`_
+		
+		
+		:Parameters:
+			* **$indexService** (:any:`OCP\\FullTextSearch\\Service\\IIndexService <OCP\\FullTextSearch\\Service\\IIndexService>`)  
+
+		
+		:Since: 15.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public registerSearchService( $searchService)
+	
+		:Source:
+			`lib/private/FullTextSearch/FullTextSearchManager.php#78 <https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/FullTextSearchManager.php#L78>`_
+		
+		
+		:Parameters:
+			* **$searchService** (:any:`OCP\\FullTextSearch\\Service\\ISearchService <OCP\\FullTextSearch\\Service\\ISearchService>`)  
+
+		
+		:Since: 15.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isAvailable()
+	
+		:Source:
+			`lib/private/FullTextSearch/FullTextSearchManager.php#87 <https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/FullTextSearchManager.php#L87>`_
+		
+		
+		:Since: 16.0.0 
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public addJavascriptAPI()
+	
+		:Source:
+			`lib/private/FullTextSearch/FullTextSearchManager.php#140 <https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/FullTextSearchManager.php#L140>`_
+		
+		
+		:Throws: :any:`\\OCP\\FullTextSearch\\Exceptions\\FullTextSearchAppNotAvailableException <OCP\\FullTextSearch\\Exceptions\\FullTextSearchAppNotAvailableException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isProviderIndexed( $providerId)
+	
+		:Source:
+			`lib/private/FullTextSearch/FullTextSearchManager.php#151 <https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/FullTextSearchManager.php#L151>`_
+		
+		
+		:Parameters:
+			* **$providerId** (string)  
+
+		
+		:Returns: bool 
+		:Throws: :any:`\\OCP\\FullTextSearch\\Exceptions\\FullTextSearchAppNotAvailableException <OCP\\FullTextSearch\\Exceptions\\FullTextSearchAppNotAvailableException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getIndex( $providerId, $documentId)
+	
+		:Source:
+			`lib/private/FullTextSearch/FullTextSearchManager.php#162 <https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/FullTextSearchManager.php#L162>`_
+		
+		
+		:Parameters:
+			* **$providerId** (string)  
+			* **$documentId** (string)  
+
+		
+		:Returns: :any:`\\OCP\\FullTextSearch\\Model\\IIndex <OCP\\FullTextSearch\\Model\\IIndex>` 
+		:Throws: :any:`\\OCP\\FullTextSearch\\Exceptions\\FullTextSearchAppNotAvailableException <OCP\\FullTextSearch\\Exceptions\\FullTextSearchAppNotAvailableException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public createIndex( $providerId, $documentId, $userId, $status=0)
+	
+		:Source:
+			`lib/private/FullTextSearch/FullTextSearchManager.php#177 <https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/FullTextSearchManager.php#L177>`_
+		
+		
+		:Parameters:
+			* **$providerId** (string)  
+			* **$documentId** (string)  
+			* **$userId** (string)  
+			* **$status** (int)  
+
+		
+		:See: :any:`\\OCP\\FullTextSearch\\Model\\IIndex <OCP\\FullTextSearch\\Model\\IIndex>` for available value for $status\.
+		:Returns: :any:`\\OCP\\FullTextSearch\\Model\\IIndex <OCP\\FullTextSearch\\Model\\IIndex>` 
+		:Throws: :any:`\\OCP\\FullTextSearch\\Exceptions\\FullTextSearchAppNotAvailableException <OCP\\FullTextSearch\\Exceptions\\FullTextSearchAppNotAvailableException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public updateIndexStatus( $providerId, $documentId, $status, $reset=false)
+	
+		:Source:
+			`lib/private/FullTextSearch/FullTextSearchManager.php#192 <https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/FullTextSearchManager.php#L192>`_
+		
+		
+		:Parameters:
+			* **$providerId** (string)  
+			* **$documentId** (string)  
+			* **$status** (int)  
+			* **$reset** (bool)  
+
+		
+		:See: :any:`\\OCP\\FullTextSearch\\Model\\IIndex <OCP\\FullTextSearch\\Model\\IIndex>` for available value for $status\.
+		:Throws: :any:`\\OCP\\FullTextSearch\\Exceptions\\FullTextSearchAppNotAvailableException <OCP\\FullTextSearch\\Exceptions\\FullTextSearchAppNotAvailableException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public updateIndexesStatus( $providerId, $documentIds, $status, $reset=false)
+	
+		:Source:
+			`lib/private/FullTextSearch/FullTextSearchManager.php#206 <https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/FullTextSearchManager.php#L206>`_
+		
+		
+		:Parameters:
+			* **$providerId** (string)  
+			* **$documentIds** (array)  
+			* **$status** (int)  
+			* **$reset** (bool)  
+
+		
+		:See: :any:`\\OCP\\FullTextSearch\\Model\\IIndex <OCP\\FullTextSearch\\Model\\IIndex>` for available value for $status\.
+		:Throws: :any:`\\OCP\\FullTextSearch\\Exceptions\\FullTextSearchAppNotAvailableException <OCP\\FullTextSearch\\Exceptions\\FullTextSearchAppNotAvailableException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public updateIndexes( $indexes)
+	
+		:Source:
+			`lib/private/FullTextSearch/FullTextSearchManager.php#216 <https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/FullTextSearchManager.php#L216>`_
+		
+		
+		:Parameters:
+			* **$indexes** (:any:`OCP\\FullTextSearch\\Model\\IIndex\[\] <OCP\\FullTextSearch\\Model\\IIndex>`)  
+
+		
+		:Throws: :any:`\\OCP\\FullTextSearch\\Exceptions\\FullTextSearchAppNotAvailableException <OCP\\FullTextSearch\\Exceptions\\FullTextSearchAppNotAvailableException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public search( $request, $userId="")
+	
+		:Source:
+			`lib/private/FullTextSearch/FullTextSearchManager.php#228 <https://github.com/nextcloud/server/blob/stable13/lib/private/FullTextSearch/FullTextSearchManager.php#L228>`_
+		
+		
+		:Parameters:
+			* **$request** (array)  
+			* **$userId** (string)  
+
+		
+		:Returns: :any:`\\OCP\\FullTextSearch\\Model\\ISearchResult\[\] <OCP\\FullTextSearch\\Model\\ISearchResult>` 
+		:Throws: :any:`\\OCP\\FullTextSearch\\Exceptions\\FullTextSearchAppNotAvailableException <OCP\\FullTextSearch\\Exceptions\\FullTextSearchAppNotAvailableException>` 
+	
+	
+

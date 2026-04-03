@@ -1,0 +1,506 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+Tags
+====
+
+
+.. php:namespace:: OC
+
+.. php:class:: Tags
+
+
+	:Source:
+		`lib/private/Tags.php#52 <https://github.com/nextcloud/server/blob/stable13/lib/private/Tags.php#L52>`_
+	
+	:Implements:
+		:php:interface:`OCP\\ITags` 
+	
+
+Constants
+---------
+
+.. php:const:: TAG_TABLE = \*PREFIX\*vcategory
+
+	:Source:
+		`lib/private/Tags.php#112 <https://github.com/nextcloud/server/blob/stable13/lib/private/Tags.php#L112>`_
+	
+
+
+.. php:const:: RELATION_TABLE = \*PREFIX\*vcategory\_to\_object
+
+	:Source:
+		`lib/private/Tags.php#113 <https://github.com/nextcloud/server/blob/stable13/lib/private/Tags.php#L113>`_
+	
+
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $mapper, $user, $type, $defaultTags=\[\])
+	
+		.. rst-class:: phpdoc-description
+		
+			| Constructor\.
+			
+		
+		:Source:
+			`lib/private/Tags.php#125 <https://github.com/nextcloud/server/blob/stable13/lib/private/Tags.php#L125>`_
+		
+		
+		:Parameters:
+			* **$mapper** (:any:`OC\\Tagging\\TagMapper <OC\\Tagging\\TagMapper>`)  Instance of the TagMapper abstraction layer.
+			* **$user** (string)  The user whose data the object will operate on.
+			* **$type** (string)  The type of items for which tags will be loaded.
+			* **$defaultTags** (array)  Tags that should be created at construction.
+			
+			since 20.0.0 $includeShared isn't used anymore
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isEmpty()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check if any tags are saved for this type and user\.
+			
+		
+		:Source:
+			`lib/private/Tags.php#142 <https://github.com/nextcloud/server/blob/stable13/lib/private/Tags.php#L142>`_
+		
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getTag( $id)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns an array mapping a given tag\'s properties to its values:
+			| \[\'id\' =\> 0, \'name\' = \'Tag\', \'owner\' = \'User\', \'type\' =\> \'tagtype\'\]
+			
+		
+		:Source:
+			`lib/private/Tags.php#153 <https://github.com/nextcloud/server/blob/stable13/lib/private/Tags.php#L153>`_
+		
+		
+		:Parameters:
+			* **$id** (string)  The ID of the tag that is going to be mapped
+
+		
+		:Returns: array | bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getTags()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the tags for a specific user\.
+			
+			| This returns an array with maps containing each tag\'s properties:
+			| \[
+			| 	\[\'id\' =\> 0, \'name\' = \'First tag\', \'owner\' = \'User\', \'type\' =\> \'tagtype\'\],
+			| 	\[\'id\' =\> 1, \'name\' = \'Shared tag\', \'owner\' = \'Other user\', \'type\' =\> \'tagtype\'\],
+			| \]
+			
+		
+		:Source:
+			`lib/private/Tags.php#172 <https://github.com/nextcloud/server/blob/stable13/lib/private/Tags.php#L172>`_
+		
+		
+		:Returns: array 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getTagsForUser( $user)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Return only the tags owned by the given user, omitting any tags shared
+			| by other users\.
+			
+		
+		:Source:
+			`lib/private/Tags.php#197 <https://github.com/nextcloud/server/blob/stable13/lib/private/Tags.php#L197>`_
+		
+		
+		:Parameters:
+			* **$user** (string)  The user whose tags are to be checked.
+
+		
+		:Returns: array An array of Tag objects\.
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getTagsForObjects( $objIds)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the list of tags for the given ids\.
+			
+		
+		:Source:
+			`lib/private/Tags.php#212 <https://github.com/nextcloud/server/blob/stable13/lib/private/Tags.php#L212>`_
+		
+		
+		:Parameters:
+			* **$objIds** (array)  array of object ids
+
+		
+		:Returns: array | bool of tags id as key to array of tag names
+			or false if an error occurred
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getIdsForTag( $tag)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the a list if items tagged with $tag\.
+			
+			| Throws an exception if the tag could not be found\.
+			
+		
+		:Source:
+			`lib/private/Tags.php#255 <https://github.com/nextcloud/server/blob/stable13/lib/private/Tags.php#L255>`_
+		
+		
+		:Parameters:
+			* **$tag** (string)  Tag id or name.
+
+		
+		:Returns: array | bool An array of object ids or false on error\.
+		:Throws: :any:`\\Exception <Exception>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public userHasTag( $name, $user)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Checks whether a tag is saved for the given user,
+			| disregarding the ones shared with him or her\.
+			
+		
+		:Source:
+			`lib/private/Tags.php#315 <https://github.com/nextcloud/server/blob/stable13/lib/private/Tags.php#L315>`_
+		
+		
+		:Parameters:
+			* **$name** (string)  The tag name to check for.
+			* **$user** (string)  The user whose tags are to be checked.
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public hasTag( $name)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Checks whether a tag is saved for or shared with the current user\.
+			
+		
+		:Source:
+			`lib/private/Tags.php#326 <https://github.com/nextcloud/server/blob/stable13/lib/private/Tags.php#L326>`_
+		
+		
+		:Parameters:
+			* **$name** (string)  The tag name to check for.
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public add( $name)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Add a new tag\.
+			
+		
+		:Source:
+			`lib/private/Tags.php#336 <https://github.com/nextcloud/server/blob/stable13/lib/private/Tags.php#L336>`_
+		
+		
+		:Parameters:
+			* **$name** (string)  A string with a name of the tag
+
+		
+		:Returns: bool | int the id of the added tag or false on error\.
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public rename( $from, $to)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Rename tag\.
+			
+		
+		:Source:
+			`lib/private/Tags.php#370 <https://github.com/nextcloud/server/blob/stable13/lib/private/Tags.php#L370>`_
+		
+		
+		:Parameters:
+			* **$from** (string | int)  The name or ID of the existing tag
+			* **$to** (string)  The new name of the tag.
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public addMultiple( $names, $sync=false, $id=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Add a list of new tags\.
+			
+		
+		:Source:
+			`lib/private/Tags.php#418 <https://github.com/nextcloud/server/blob/stable13/lib/private/Tags.php#L418>`_
+		
+		
+		:Parameters:
+			* **$names** (string[])  A string with a name or an array of strings containing
+			the name(s) of the tag(s) to add.
+			* **$sync** (bool)  When true, save the tags
+			* **$id** (int | null)  int Optional object id to add to this|these tag(s)
+
+		
+		:Returns: bool Returns false on error\.
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected save()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Save the list of tags and their object relations
+			
+		
+		:Source:
+			`lib/private/Tags.php#446 <https://github.com/nextcloud/server/blob/stable13/lib/private/Tags.php#L446>`_
+		
+		
+	
+	
+
+.. rst-class:: public static
+
+	.. php:method:: public static post_deleteUser( $arguments)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Delete tags and tag/object relations for a user\.
+			
+			| For hooking up on post\_deleteUser
+			
+		
+		:Source:
+			`lib/private/Tags.php#506 <https://github.com/nextcloud/server/blob/stable13/lib/private/Tags.php#L506>`_
+		
+		
+		:Parameters:
+			* **$arguments** (array)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public purgeObjects( $ids)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Delete tag/object relations from the db
+			
+		
+		:Source:
+			`lib/private/Tags.php#570 <https://github.com/nextcloud/server/blob/stable13/lib/private/Tags.php#L570>`_
+		
+		
+		:Parameters:
+			* **$ids** (array)  The ids of the objects
+
+		
+		:Returns: bool Returns false on error\.
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getFavorites()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get favorites for an object type
+			
+		
+		:Source:
+			`lib/private/Tags.php#603 <https://github.com/nextcloud/server/blob/stable13/lib/private/Tags.php#L603>`_
+		
+		
+		:Returns: array | bool An array of object ids\.
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public addToFavorites( $objid)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Add an object to favorites
+			
+		
+		:Source:
+			`lib/private/Tags.php#626 <https://github.com/nextcloud/server/blob/stable13/lib/private/Tags.php#L626>`_
+		
+		
+		:Parameters:
+			* **$objid** (int)  The id of the object
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public removeFromFavorites( $objid)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Remove an object from favorites
+			
+		
+		:Source:
+			`lib/private/Tags.php#639 <https://github.com/nextcloud/server/blob/stable13/lib/private/Tags.php#L639>`_
+		
+		
+		:Parameters:
+			* **$objid** (int)  The id of the object
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public tagAs( $objid, $tag)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Creates a tag/object relation\.
+			
+		
+		:Source:
+			`lib/private/Tags.php#650 <https://github.com/nextcloud/server/blob/stable13/lib/private/Tags.php#L650>`_
+		
+		
+		:Parameters:
+			* **$objid** (int)  The id of the object
+			* **$tag** (string)  The id or name of the tag
+
+		
+		:Returns: bool Returns false on error\.
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public unTag( $objid, $tag)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Delete single tag/object relation from the db
+			
+		
+		:Source:
+			`lib/private/Tags.php#689 <https://github.com/nextcloud/server/blob/stable13/lib/private/Tags.php#L689>`_
+		
+		
+		:Parameters:
+			* **$objid** (int)  The id of the object
+			* **$tag** (string)  The id or name of the tag
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public delete( $names)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Delete tags from the database\.
+			
+		
+		:Source:
+			`lib/private/Tags.php#723 <https://github.com/nextcloud/server/blob/stable13/lib/private/Tags.php#L723>`_
+		
+		
+		:Parameters:
+			* **$names** (string[] | int[])  An array of tags (names or IDs) to delete
+
+		
+		:Returns: bool Returns false on error
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected array_searchi( $needle, $haystack, $mem=getName)
+	
+		:Source:
+			`lib/private/Tags.php#776 <https://github.com/nextcloud/server/blob/stable13/lib/private/Tags.php#L776>`_
+		
+		
+	
+	
+

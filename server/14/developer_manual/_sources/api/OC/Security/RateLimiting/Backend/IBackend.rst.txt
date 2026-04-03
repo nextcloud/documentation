@@ -1,0 +1,78 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IBackend
+========
+
+
+.. php:namespace:: OC\Security\RateLimiting\Backend
+
+.. php:interface:: IBackend
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Interface IBackend defines a storage backend for the rate limiting data\. It
+		| should be noted that writing and reading rate limiting data is an expensive
+		| operation and one should thus make sure to only use sufficient fast backends\.
+		
+	
+	:Implemented by:
+		:php:class:`OC\\Security\\RateLimiting\\Backend\\MemoryCache` 
+	
+	
+	:Source:
+		`lib/private/Security/RateLimiting/Backend/IBackend.php#37 <https://github.com/nextcloud/server/blob/stable13/lib/private/Security/RateLimiting/Backend/IBackend.php#L37>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public getAttempts( $methodIdentifier, $userIdentifier, $seconds)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Gets the amount of attempts within the last specified seconds
+			
+		
+		:Source:
+			`lib/private/Security/RateLimiting/Backend/IBackend.php#46 <https://github.com/nextcloud/server/blob/stable13/lib/private/Security/RateLimiting/Backend/IBackend.php#L46>`_
+		
+		
+		:Parameters:
+			* **$methodIdentifier** (string)  Identifier for the method
+			* **$userIdentifier** (string)  Identifier for the user
+			* **$seconds** (int)  Seconds to look back at
+
+		
+		:Returns: int 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public registerAttempt( $methodIdentifier, $userIdentifier, $period)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Registers an attempt
+			
+		
+		:Source:
+			`lib/private/Security/RateLimiting/Backend/IBackend.php#57 <https://github.com/nextcloud/server/blob/stable13/lib/private/Security/RateLimiting/Backend/IBackend.php#L57>`_
+		
+		
+		:Parameters:
+			* **$methodIdentifier** (string)  Identifier for the method
+			* **$userIdentifier** (string)  Identifier for the user
+			* **$period** (int)  Period in seconds how long this attempt should be stored
+
+		
+	
+	
+

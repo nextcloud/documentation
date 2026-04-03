@@ -1,0 +1,114 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IMimeTypeLoader
+===============
+
+
+.. php:namespace:: OCP\Files
+
+.. php:interface:: IMimeTypeLoader
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Interface IMimeTypeLoader
+		
+	
+	:Implemented by:
+		:php:class:`OC\\Files\\Type\\Loader` 
+	
+	
+	:Source:
+		`lib/public/Files/IMimeTypeLoader.php#31 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/IMimeTypeLoader.php#L31>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public getMimetypeById( $id)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get a mimetype from its ID
+			
+		
+		:Source:
+			`lib/public/Files/IMimeTypeLoader.php#40 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/IMimeTypeLoader.php#L40>`_
+		
+		
+		:Parameters:
+			* **$id** (int)  
+
+		
+		:Returns: string | null 
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getId( $mimetype)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get a mimetype ID, adding the mimetype to the DB if it does not exist
+			
+		
+		:Source:
+			`lib/public/Files/IMimeTypeLoader.php#49 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/IMimeTypeLoader.php#L49>`_
+		
+		
+		:Parameters:
+			* **$mimetype** (string)  
+
+		
+		:Returns: int 
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public exists( $mimetype)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Test if a mimetype exists in the database
+			
+		
+		:Source:
+			`lib/public/Files/IMimeTypeLoader.php#58 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/IMimeTypeLoader.php#L58>`_
+		
+		
+		:Parameters:
+			* **$mimetype** (string)  
+
+		
+		:Returns: bool 
+		:Since: 8.2.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public reset()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Clear all loaded mimetypes, allow for re\-loading
+			
+		
+		:Source:
+			`lib/public/Files/IMimeTypeLoader.php#65 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/IMimeTypeLoader.php#L65>`_
+		
+		
+		:Since: 8.2.0 
+	
+	
+

@@ -1,0 +1,329 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+ILogger
+=======
+
+
+.. php:namespace:: OCP
+
+.. php:interface:: ILogger
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Interface ILogger
+		
+	
+	:Implemented by:
+		:php:class:`OC\\Log` :php:class:`OC\\AppFramework\\Logger` 
+	
+	
+	:Source:
+		`lib/public/ILogger.php#43 <https://github.com/nextcloud/server/blob/stable13/lib/public/ILogger.php#L43>`_
+	
+
+Constants
+---------
+
+.. php:const:: DEBUG = 0
+
+	:Source:
+		`lib/public/ILogger.php#48 <https://github.com/nextcloud/server/blob/stable13/lib/public/ILogger.php#L48>`_
+	
+	:Since: 14.0.0 
+	:Deprecated: 20.0.0 
+
+
+.. php:const:: INFO = 1
+
+	:Source:
+		`lib/public/ILogger.php#53 <https://github.com/nextcloud/server/blob/stable13/lib/public/ILogger.php#L53>`_
+	
+	:Since: 14.0.0 
+	:Deprecated: 20.0.0 
+
+
+.. php:const:: WARN = 2
+
+	:Source:
+		`lib/public/ILogger.php#58 <https://github.com/nextcloud/server/blob/stable13/lib/public/ILogger.php#L58>`_
+	
+	:Since: 14.0.0 
+	:Deprecated: 20.0.0 
+
+
+.. php:const:: ERROR = 3
+
+	:Source:
+		`lib/public/ILogger.php#63 <https://github.com/nextcloud/server/blob/stable13/lib/public/ILogger.php#L63>`_
+	
+	:Since: 14.0.0 
+	:Deprecated: 20.0.0 
+
+
+.. php:const:: FATAL = 4
+
+	:Source:
+		`lib/public/ILogger.php#68 <https://github.com/nextcloud/server/blob/stable13/lib/public/ILogger.php#L68>`_
+	
+	:Since: 14.0.0 
+	:Deprecated: 20.0.0 
+
+
+Methods
+-------
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public emergency( $message, $context=\[\])
+	
+		.. rst-class:: phpdoc-description
+		
+			| System is unusable\.
+			
+		
+		:Source:
+			`lib/public/ILogger.php#79 <https://github.com/nextcloud/server/blob/stable13/lib/public/ILogger.php#L79>`_
+		
+		
+		:Parameters:
+			* **$message** (string)  
+			* **$context** (array)  
+
+		
+		:Returns: null 
+		:Since: 7.0.0 
+		:Deprecated: 20.0.0 use \\Psr\\Log\\LoggerInterface::emergency
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public alert( $message, $context=\[\])
+	
+		.. rst-class:: phpdoc-description
+		
+			| Action must be taken immediately\.
+			
+		
+		:Source:
+			`lib/public/ILogger.php#90 <https://github.com/nextcloud/server/blob/stable13/lib/public/ILogger.php#L90>`_
+		
+		
+		:Parameters:
+			* **$message** (string)  
+			* **$context** (array)  
+
+		
+		:Returns: null 
+		:Since: 7.0.0 
+		:Deprecated: 20.0.0 use \\Psr\\Log\\LoggerInterface::alert
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public critical( $message, $context=\[\])
+	
+		.. rst-class:: phpdoc-description
+		
+			| Critical conditions\.
+			
+		
+		:Source:
+			`lib/public/ILogger.php#101 <https://github.com/nextcloud/server/blob/stable13/lib/public/ILogger.php#L101>`_
+		
+		
+		:Parameters:
+			* **$message** (string)  
+			* **$context** (array)  
+
+		
+		:Returns: null 
+		:Since: 7.0.0 
+		:Deprecated: 20.0.0 use \\Psr\\Log\\LoggerInterface::critical
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public error( $message, $context=\[\])
+	
+		.. rst-class:: phpdoc-description
+		
+			| Runtime errors that do not require immediate action but should typically
+			| be logged and monitored\.
+			
+		
+		:Source:
+			`lib/public/ILogger.php#113 <https://github.com/nextcloud/server/blob/stable13/lib/public/ILogger.php#L113>`_
+		
+		
+		:Parameters:
+			* **$message** (string)  
+			* **$context** (array)  
+
+		
+		:Returns: null 
+		:Since: 7.0.0 
+		:Deprecated: 20.0.0 use \\Psr\\Log\\LoggerInterface::error
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public warning( $message, $context=\[\])
+	
+		.. rst-class:: phpdoc-description
+		
+			| Exceptional occurrences that are not errors\.
+			
+		
+		:Source:
+			`lib/public/ILogger.php#124 <https://github.com/nextcloud/server/blob/stable13/lib/public/ILogger.php#L124>`_
+		
+		
+		:Parameters:
+			* **$message** (string)  
+			* **$context** (array)  
+
+		
+		:Returns: null 
+		:Since: 7.0.0 
+		:Deprecated: 20.0.0 use \\Psr\\Log\\LoggerInterface::warning
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public notice( $message, $context=\[\])
+	
+		.. rst-class:: phpdoc-description
+		
+			| Normal but significant events\.
+			
+		
+		:Source:
+			`lib/public/ILogger.php#135 <https://github.com/nextcloud/server/blob/stable13/lib/public/ILogger.php#L135>`_
+		
+		
+		:Parameters:
+			* **$message** (string)  
+			* **$context** (array)  
+
+		
+		:Returns: null 
+		:Since: 7.0.0 
+		:Deprecated: 20.0.0 use \\Psr\\Log\\LoggerInterface::notice
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public info( $message, $context=\[\])
+	
+		.. rst-class:: phpdoc-description
+		
+			| Interesting events\.
+			
+		
+		:Source:
+			`lib/public/ILogger.php#146 <https://github.com/nextcloud/server/blob/stable13/lib/public/ILogger.php#L146>`_
+		
+		
+		:Parameters:
+			* **$message** (string)  
+			* **$context** (array)  
+
+		
+		:Returns: null 
+		:Since: 7.0.0 
+		:Deprecated: 20.0.0 use \\Psr\\Log\\LoggerInterface::info
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public debug( $message, $context=\[\])
+	
+		.. rst-class:: phpdoc-description
+		
+			| Detailed debug information\.
+			
+		
+		:Source:
+			`lib/public/ILogger.php#157 <https://github.com/nextcloud/server/blob/stable13/lib/public/ILogger.php#L157>`_
+		
+		
+		:Parameters:
+			* **$message** (string)  
+			* **$context** (array)  
+
+		
+		:Returns: null 
+		:Since: 7.0.0 
+		:Deprecated: 20.0.0 use \\Psr\\Log\\LoggerInterface::debug
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public log( $level, $message, $context=\[\])
+	
+		.. rst-class:: phpdoc-description
+		
+			| Logs with an arbitrary level\.
+			
+		
+		:Source:
+			`lib/public/ILogger.php#169 <https://github.com/nextcloud/server/blob/stable13/lib/public/ILogger.php#L169>`_
+		
+		
+		:Parameters:
+			* **$level** (int)  
+			* **$message** (string)  
+			* **$context** (array)  
+
+		
+		:Returns: mixed 
+		:Since: 7.0.0 
+		:Deprecated: 20.0.0 use \\Psr\\Log\\LoggerInterface::log
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public logException( $exception, $context=\[\])
+	
+		.. rst-class:: phpdoc-description
+		
+			| Logs an exception very detailed
+			| An additional message can we written to the log by adding it to the
+			| context\.
+			
+			| <code\>
+			| $logger\-\>logException\($ex, \[
+			|     \'message\' =\> \'Exception during background job execution\'
+			| \]\);
+			| </code\>
+			
+		
+		:Source:
+			`lib/public/ILogger.php#188 <https://github.com/nextcloud/server/blob/stable13/lib/public/ILogger.php#L188>`_
+		
+		
+		:Parameters:
+			* **$exception** (:any:`Exception <Exception>` | :any:`\\Throwable <Throwable>`)  
+			* **$context** (array)  
+
+		
+		:Returns: void 
+		:Since: 8.2.0 
+		:Deprecated: 20.0.0 use the \`exception\` entry in the context of any method in \\Psr\\Log\\LoggerInterface
+	
+	
+

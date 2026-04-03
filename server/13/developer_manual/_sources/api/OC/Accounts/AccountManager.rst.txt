@@ -1,0 +1,339 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+AccountManager
+==============
+
+
+.. php:namespace:: OC\Accounts
+
+.. php:class:: AccountManager
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Class AccountManager
+		
+		| Manage system accounts table
+		
+	
+	:Source:
+		`lib/private/Accounts/AccountManager.php#59 <https://github.com/nextcloud/server/blob/stable13/lib/private/Accounts/AccountManager.php#L59>`_
+	
+	:Implements:
+		:php:interface:`OCP\\Accounts\\IAccountManager` 
+	
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $connection, $config, $eventDispatcher, $jobList, $logger)
+	
+		:Source:
+			`lib/private/Accounts/AccountManager.php#82 <https://github.com/nextcloud/server/blob/stable13/lib/private/Accounts/AccountManager.php#L82>`_
+		
+		
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected parsePhoneNumber( $input)
+	
+		:Source:
+			`lib/private/Accounts/AccountManager.php#99 <https://github.com/nextcloud/server/blob/stable13/lib/private/Accounts/AccountManager.php#L99>`_
+		
+		
+		:Parameters:
+			* **$input** (string)  
+
+		
+		:Returns: string Provided phone number in E\.164 format when it was a valid number
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` When the phone number was invalid or no default region is set and the number doesn\'t start with a country code
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected parseWebsite( $input)
+	
+		:Source:
+			`lib/private/Accounts/AccountManager.php#129 <https://github.com/nextcloud/server/blob/stable13/lib/private/Accounts/AccountManager.php#L129>`_
+		
+		
+		:Parameters:
+			* **$input** (string)  
+
+		
+		:Returns: string 
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` When the website did not have http\(s\) as protocol or the host name was empty
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public updateUser( $user, $data, $throwOnData=false)
+	
+		.. rst-class:: phpdoc-description
+		
+			| update user record
+			
+		
+		:Source:
+			`lib/private/Accounts/AccountManager.php#151 <https://github.com/nextcloud/server/blob/stable13/lib/private/Accounts/AccountManager.php#L151>`_
+		
+		
+		:Parameters:
+			* **$user** (:any:`OCP\\IUser <OCP\\IUser>`)  
+			* **$data** (array)  
+			* **$throwOnData** (bool)  Set to true if you can inform the user about invalid data
+
+		
+		:Returns: array The potentially modified data \(e\.g\. phone numbers are converted to E\.164 format\)
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` Message is the property that was invalid
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public deleteUser( $user)
+	
+		.. rst-class:: phpdoc-description
+		
+			| delete user from accounts table
+			
+		
+		:Source:
+			`lib/private/Accounts/AccountManager.php#253 <https://github.com/nextcloud/server/blob/stable13/lib/private/Accounts/AccountManager.php#L253>`_
+		
+		
+		:Parameters:
+			* **$user** (:any:`OCP\\IUser <OCP\\IUser>`)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public deleteUserData( $user)
+	
+		.. rst-class:: phpdoc-description
+		
+			| delete user from accounts table
+			
+		
+		:Source:
+			`lib/private/Accounts/AccountManager.php#268 <https://github.com/nextcloud/server/blob/stable13/lib/private/Accounts/AccountManager.php#L268>`_
+		
+		
+		:Parameters:
+			* **$user** (:any:`OCP\\IUser <OCP\\IUser>`)  
+
+		
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public getUser( $user)
+	
+		.. rst-class:: phpdoc-description
+		
+			| get stored data from a given user
+			
+		
+		:Source:
+			`lib/private/Accounts/AccountManager.php#284 <https://github.com/nextcloud/server/blob/stable13/lib/private/Accounts/AccountManager.php#L284>`_
+		
+		
+		:Parameters:
+			* **$user** (:any:`OCP\\IUser <OCP\\IUser>`)  
+
+		
+		:Returns: array 
+		:Deprecated:  use getAccount instead to make sure migrated properties work correctly
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public searchUsers( $property, $values)
+	
+		:Source:
+			`lib/private/Accounts/AccountManager.php#313 <https://github.com/nextcloud/server/blob/stable13/lib/private/Accounts/AccountManager.php#L313>`_
+		
+		
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected checkEmailVerification( $oldData, $newData, $user)
+	
+		.. rst-class:: phpdoc-description
+		
+			| check if we need to ask the server for email verification, if yes we create a cronjob
+			
+		
+		:Source:
+			`lib/private/Accounts/AccountManager.php#343 <https://github.com/nextcloud/server/blob/stable13/lib/private/Accounts/AccountManager.php#L343>`_
+		
+		
+		:Parameters:
+			* **$oldData**  
+			* **$newData**  
+			* **$user** (:any:`OCP\\IUser <OCP\\IUser>`)  
+
+		
+		:Returns: array 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected addMissingDefaultValues( $userData)
+	
+		.. rst-class:: phpdoc-description
+		
+			| make sure that all expected data are set
+			
+		
+		:Source:
+			`lib/private/Accounts/AccountManager.php#367 <https://github.com/nextcloud/server/blob/stable13/lib/private/Accounts/AccountManager.php#L367>`_
+		
+		
+		:Parameters:
+			* **$userData** (array)  
+
+		
+		:Returns: array 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected updateVerifyStatus( $oldData, $newData)
+	
+		.. rst-class:: phpdoc-description
+		
+			| reset verification status if personal data changed
+			
+		
+		:Source:
+			`lib/private/Accounts/AccountManager.php#384 <https://github.com/nextcloud/server/blob/stable13/lib/private/Accounts/AccountManager.php#L384>`_
+		
+		
+		:Parameters:
+			* **$oldData** (array)  
+			* **$newData** (array)  
+
+		
+		:Returns: array 
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected insertNewUser( $user, $data)
+	
+		.. rst-class:: phpdoc-description
+		
+			| add new user to accounts table
+			
+		
+		:Source:
+			`lib/private/Accounts/AccountManager.php#438 <https://github.com/nextcloud/server/blob/stable13/lib/private/Accounts/AccountManager.php#L438>`_
+		
+		
+		:Parameters:
+			* **$user** (:any:`OCP\\IUser <OCP\\IUser>`)  
+			* **$data** (array)  
+
+		
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected updateExistingUser( $user, $data)
+	
+		.. rst-class:: phpdoc-description
+		
+			| update existing user in accounts table
+			
+		
+		:Source:
+			`lib/private/Accounts/AccountManager.php#461 <https://github.com/nextcloud/server/blob/stable13/lib/private/Accounts/AccountManager.php#L461>`_
+		
+		
+		:Parameters:
+			* **$user** (:any:`OCP\\IUser <OCP\\IUser>`)  
+			* **$data** (array)  
+
+		
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected writeUserData( $user, $data)
+	
+		:Source:
+			`lib/private/Accounts/AccountManager.php#474 <https://github.com/nextcloud/server/blob/stable13/lib/private/Accounts/AccountManager.php#L474>`_
+		
+		
+	
+	
+
+.. rst-class:: protected
+
+	.. php:method:: protected buildDefaultUserRecord( $user)
+	
+		.. rst-class:: phpdoc-description
+		
+			| build default user record in case not data set exists yet
+			
+		
+		:Source:
+			`lib/private/Accounts/AccountManager.php#501 <https://github.com/nextcloud/server/blob/stable13/lib/private/Accounts/AccountManager.php#L501>`_
+		
+		
+		:Parameters:
+			* **$user** (:any:`OCP\\IUser <OCP\\IUser>`)  
+
+		
+		:Returns: array 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getAccount( $user)
+	
+		:Source:
+			`lib/private/Accounts/AccountManager.php#554 <https://github.com/nextcloud/server/blob/stable13/lib/private/Accounts/AccountManager.php#L554>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public updateAccount( $account)
+	
+		:Source:
+			`lib/private/Accounts/AccountManager.php#558 <https://github.com/nextcloud/server/blob/stable13/lib/private/Accounts/AccountManager.php#L558>`_
+		
+		
+	
+	
+

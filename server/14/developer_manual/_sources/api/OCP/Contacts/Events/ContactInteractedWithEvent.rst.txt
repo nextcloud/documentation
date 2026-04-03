@@ -1,0 +1,172 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+ContactInteractedWithEvent
+==========================
+
+
+.. php:namespace:: OCP\Contacts\Events
+
+.. php:class:: ContactInteractedWithEvent
+
+
+	.. rst-class:: phpdoc-description
+	
+		| An event that allows apps to notify other components about an interaction
+		| between two users\. This can be used to build better recommendations and
+		| suggestions in user interfaces\.
+		
+		| Emitters should add at least one identifier \(uid, email, federated cloud ID\)
+		| of the recipient of the interaction\.
+		
+	
+	:Source:
+		`lib/public/Contacts/Events/ContactInteractedWithEvent.php#42 <https://github.com/nextcloud/server/blob/stable13/lib/public/Contacts/Events/ContactInteractedWithEvent.php#L42>`_
+	
+	:Parent:
+		:php:class:`OCP\\EventDispatcher\\Event`
+	
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $actor)
+	
+		:Source:
+			`lib/public/Contacts/Events/ContactInteractedWithEvent.php#61 <https://github.com/nextcloud/server/blob/stable13/lib/public/Contacts/Events/ContactInteractedWithEvent.php#L61>`_
+		
+		
+		:Parameters:
+			* **$actor** (:any:`OCP\\IUser <OCP\\IUser>`)  the user who started the interaction
+
+		
+		:Since: 19.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getActor()
+	
+		:Source:
+			`lib/public/Contacts/Events/ContactInteractedWithEvent.php#70 <https://github.com/nextcloud/server/blob/stable13/lib/public/Contacts/Events/ContactInteractedWithEvent.php#L70>`_
+		
+		
+		:Returns: :any:`\\OCP\\IUser <OCP\\IUser>` 
+		:Since: 19.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getUid()
+	
+		:Source:
+			`lib/public/Contacts/Events/ContactInteractedWithEvent.php#78 <https://github.com/nextcloud/server/blob/stable13/lib/public/Contacts/Events/ContactInteractedWithEvent.php#L78>`_
+		
+		
+		:Returns: string | null 
+		:Since: 19.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setUid( $uid)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set the uid of the person interacted with, if known
+			
+		
+		:Source:
+			`lib/public/Contacts/Events/ContactInteractedWithEvent.php#90 <https://github.com/nextcloud/server/blob/stable13/lib/public/Contacts/Events/ContactInteractedWithEvent.php#L90>`_
+		
+		
+		:Parameters:
+			* **$uid** (string)  
+
+		
+		:Returns: self 
+		:Since: 19.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getEmail()
+	
+		:Source:
+			`lib/public/Contacts/Events/ContactInteractedWithEvent.php#99 <https://github.com/nextcloud/server/blob/stable13/lib/public/Contacts/Events/ContactInteractedWithEvent.php#L99>`_
+		
+		
+		:Returns: string | null 
+		:Since: 19.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setEmail( $email)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set the email of the person interacted with, if known
+			
+		
+		:Source:
+			`lib/public/Contacts/Events/ContactInteractedWithEvent.php#111 <https://github.com/nextcloud/server/blob/stable13/lib/public/Contacts/Events/ContactInteractedWithEvent.php#L111>`_
+		
+		
+		:Parameters:
+			* **$email** (string)  
+
+		
+		:Returns: self 
+		:Since: 19.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getFederatedCloudId()
+	
+		:Source:
+			`lib/public/Contacts/Events/ContactInteractedWithEvent.php#120 <https://github.com/nextcloud/server/blob/stable13/lib/public/Contacts/Events/ContactInteractedWithEvent.php#L120>`_
+		
+		
+		:Returns: string | null 
+		:Since: 19.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setFederatedCloudId( $federatedCloudId)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set the federated cloud of the person interacted with, if known
+			
+		
+		:Source:
+			`lib/public/Contacts/Events/ContactInteractedWithEvent.php#132 <https://github.com/nextcloud/server/blob/stable13/lib/public/Contacts/Events/ContactInteractedWithEvent.php#L132>`_
+		
+		
+		:Parameters:
+			* **$federatedCloudId** (string)  
+
+		
+		:Returns: self 
+		:Since: 19.0.0 
+	
+	
+

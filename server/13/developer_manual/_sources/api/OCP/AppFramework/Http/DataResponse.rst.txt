@@ -1,0 +1,105 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+DataResponse
+============
+
+
+.. php:namespace:: OCP\AppFramework\Http
+
+.. php:class:: DataResponse
+
+
+	.. rst-class:: phpdoc-description
+	
+		| A generic DataResponse class that is used to return generic data responses
+		| for responders to transform
+		
+	
+	:Source:
+		`lib/public/AppFramework/Http/DataResponse.php#40 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Http/DataResponse.php#L40>`_
+	
+	:Parent:
+		:php:class:`OCP\\AppFramework\\Http\\Response`
+	
+
+Properties
+----------
+
+.. php:attr:: protected static data
+
+	.. rst-class:: phpdoc-description
+	
+		| response data
+		
+	
+	:Source:
+		`lib/public/AppFramework/Http/DataResponse.php#46 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Http/DataResponse.php#L46>`_
+	
+	:Type: array | int | float | string | bool | object 
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $data=\[\], $statusCode=\\OCP\\AppFramework\\Http::STATUS\_OK, $headers=\[\])
+	
+		:Source:
+			`lib/public/AppFramework/Http/DataResponse.php#55 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Http/DataResponse.php#L55>`_
+		
+		
+		:Parameters:
+			* **$data** (array | int | float | string | bool | object)  the object or array that should be transformed
+			* **$statusCode** (int)  the Http status code, defaults to 200
+			* **$headers** (array)  additional key value based headers
+
+		
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public setData( $data)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Sets values in the data json array
+			
+		
+		:Source:
+			`lib/public/AppFramework/Http/DataResponse.php#71 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Http/DataResponse.php#L71>`_
+		
+		
+		:Parameters:
+			* **$data** (array | int | float | string | object)  an array or object which will be transformed
+
+		
+		:Returns: :any:`\\OCP\\AppFramework\\Http\\DataResponse <OCP\\AppFramework\\Http\\DataResponse>` Reference to this object
+		:Since: 8.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getData()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Used to get the set parameters
+			
+		
+		:Source:
+			`lib/public/AppFramework/Http/DataResponse.php#83 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/Http/DataResponse.php#L83>`_
+		
+		
+		:Returns: array | int | float | string | bool | object the data
+		:Since: 8.0.0 
+	
+	
+

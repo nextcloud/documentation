@@ -1,0 +1,91 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+AdapterSqlite
+=============
+
+
+.. php:namespace:: OC\DB
+
+.. php:class:: AdapterSqlite
+
+
+	:Source:
+		`lib/private/DB/AdapterSqlite.php#32 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/AdapterSqlite.php#L32>`_
+	
+	:Parent:
+		:php:class:`OC\\DB\\Adapter`
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public lockTable( $tableName)
+	
+		:Source:
+			`lib/private/DB/AdapterSqlite.php#37 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/AdapterSqlite.php#L37>`_
+		
+		
+		:Parameters:
+			* **$tableName** (string)  
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public unlockTable()
+	
+		:Source:
+			`lib/private/DB/AdapterSqlite.php#41 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/AdapterSqlite.php#L41>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public fixupStatement( $statement)
+	
+		:Source:
+			`lib/private/DB/AdapterSqlite.php#45 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/AdapterSqlite.php#L45>`_
+		
+		
+	
+	
+
+.. rst-class:: public deprecated
+
+	.. php:method:: public insertIfNotExist( $table, $input, $compare=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Insert a row if the matching row does not exists\. To accomplish proper race condition avoidance
+			| it is needed that there is also a unique constraint on the values\. Then this method will
+			| catch the exception and return 0\.
+			
+		
+		:Source:
+			`lib/private/DB/AdapterSqlite.php#68 <https://github.com/nextcloud/server/blob/stable13/lib/private/DB/AdapterSqlite.php#L68>`_
+		
+		
+		:Parameters:
+			* **$table** (string)  The table name (will replace *PREFIX* with the actual prefix)
+			* **$input** (array)  data that should be inserted into the table  (column name => value)
+			* **$compare** (array | null)  List of values that should be checked for "if not exists"
+			If this is null or an empty array, all keys of $input will be compared
+			Please note: text fields (clob) must not be used in the compare array
+
+		
+		:Returns: int number of inserted rows
+		:Throws: :any:`\\Doctrine\\DBAL\\Exception <Doctrine\\DBAL\\Exception>` 
+		:Deprecated: 15.0.0 \- use unique index and "try \{ $db\-\>insert\(\) \} catch \(UniqueConstraintViolationException $e\) \}" instead, because it is more reliable and does not have the risk for deadlocks \- see https://github\.com/nextcloud/server/pull/12371
+	
+	
+

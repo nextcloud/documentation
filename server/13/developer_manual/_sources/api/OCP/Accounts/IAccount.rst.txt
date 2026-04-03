@@ -1,0 +1,141 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+IAccount
+========
+
+
+.. php:namespace:: OCP\Accounts
+
+.. php:interface:: IAccount
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Interface IAccount
+		
+	
+	:Implemented by:
+		:php:class:`OC\\Accounts\\Account` 
+	
+	
+	:Source:
+		`lib/public/Accounts/IAccount.php#36 <https://github.com/nextcloud/server/blob/stable13/lib/public/Accounts/IAccount.php#L36>`_
+	
+	:Parent:
+		:php:interface:`JsonSerializable`
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public setProperty( $property, $value, $scope, $verified)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Set a property with data
+			
+		
+		:Source:
+			`lib/public/Accounts/IAccount.php#49 <https://github.com/nextcloud/server/blob/stable13/lib/public/Accounts/IAccount.php#L49>`_
+		
+		
+		:Parameters:
+			* **$property** (string)  Must be one of the PROPERTY_ prefixed constants of \OCP\Accounts\IAccountManager
+			* **$value** (string)  
+			* **$scope** (string)  Must be one of the VISIBILITY_ prefixed constants of \OCP\Accounts\IAccountManager
+			* **$verified** (string)  \OCP\Accounts\IAccountManager::NOT_VERIFIED | \OCP\Accounts\IAccountManager::VERIFICATION_IN_PROGRESS | \OCP\Accounts\IAccountManager::VERIFIED
+
+		
+		:Since: 15.0.0 
+		:Returns: :any:`\\OCP\\Accounts\\IAccount <OCP\\Accounts\\IAccount>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getProperty( $property)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get a property by its key
+			
+		
+		:Source:
+			`lib/public/Accounts/IAccount.php#60 <https://github.com/nextcloud/server/blob/stable13/lib/public/Accounts/IAccount.php#L60>`_
+		
+		
+		:Parameters:
+			* **$property** (string)  Must be one of the PROPERTY_ prefixed constants of \OCP\Accounts\IAccountManager
+
+		
+		:Since: 15.0.0 
+		:Returns: :any:`\\OCP\\Accounts\\IAccountProperty <OCP\\Accounts\\IAccountProperty>` 
+		:Throws: :any:`\\OCP\\Accounts\\PropertyDoesNotExistException <OCP\\Accounts\\PropertyDoesNotExistException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getProperties()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get all properties of an account
+			
+		
+		:Source:
+			`lib/public/Accounts/IAccount.php#69 <https://github.com/nextcloud/server/blob/stable13/lib/public/Accounts/IAccount.php#L69>`_
+		
+		
+		:Since: 15.0.0 
+		:Returns: :any:`\\OCP\\Accounts\\IAccountProperty\[\] <OCP\\Accounts\\IAccountProperty>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getFilteredProperties( $scope=null, $verified=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get all properties that match the provided filters for scope and verification status
+			
+		
+		:Source:
+			`lib/public/Accounts/IAccount.php#80 <https://github.com/nextcloud/server/blob/stable13/lib/public/Accounts/IAccount.php#L80>`_
+		
+		
+		:Parameters:
+			* **$scope** (string)  Must be one of the VISIBILITY_ prefixed constants of \OCP\Accounts\IAccountManager
+			* **$verified** (string)  \OCP\Accounts\IAccountManager::NOT_VERIFIED | \OCP\Accounts\IAccountManager::VERIFICATION_IN_PROGRESS | \OCP\Accounts\IAccountManager::VERIFIED
+
+		
+		:Since: 15.0.0 
+		:Returns: :any:`\\OCP\\Accounts\\IAccountProperty\[\] <OCP\\Accounts\\IAccountProperty>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getUser()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the related user for the account data
+			
+		
+		:Source:
+			`lib/public/Accounts/IAccount.php#89 <https://github.com/nextcloud/server/blob/stable13/lib/public/Accounts/IAccount.php#L89>`_
+		
+		
+		:Since: 15.0.0 
+		:Returns: :any:`\\OCP\\IUser <OCP\\IUser>` 
+	
+	
+

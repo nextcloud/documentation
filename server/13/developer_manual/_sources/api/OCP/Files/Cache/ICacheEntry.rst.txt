@@ -1,0 +1,321 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+ICacheEntry
+===========
+
+
+.. php:namespace:: OCP\Files\Cache
+
+.. php:interface:: ICacheEntry
+
+
+	.. rst-class:: phpdoc-description
+	
+		| meta data for a file or folder
+		
+	
+	:Implemented by:
+		:php:class:`OC\\Files\\Cache\\CacheEntry` 
+	
+	
+	:Source:
+		`lib/public/Files/Cache/ICacheEntry.php#37 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Cache/ICacheEntry.php#L37>`_
+	
+	:Parent:
+		:php:interface:`ArrayAccess`
+	
+
+Constants
+---------
+
+.. php:const:: DIRECTORY_MIMETYPE = httpd/unix\-directory
+
+	:Source:
+		`lib/public/Files/Cache/ICacheEntry.php#38 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Cache/ICacheEntry.php#L38>`_
+	
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public getId()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the numeric id of a file
+			
+		
+		:Source:
+			`lib/public/Files/Cache/ICacheEntry.php#46 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Cache/ICacheEntry.php#L46>`_
+		
+		
+		:Returns: int 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getStorageId()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the numeric id for the storage
+			
+		
+		:Source:
+			`lib/public/Files/Cache/ICacheEntry.php#54 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Cache/ICacheEntry.php#L54>`_
+		
+		
+		:Returns: int 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getPath()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the path of the file relative to the storage root
+			
+		
+		:Source:
+			`lib/public/Files/Cache/ICacheEntry.php#62 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Cache/ICacheEntry.php#L62>`_
+		
+		
+		:Returns: string 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getName()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the file name
+			
+		
+		:Source:
+			`lib/public/Files/Cache/ICacheEntry.php#70 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Cache/ICacheEntry.php#L70>`_
+		
+		
+		:Returns: string 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getMimeType()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the full mimetype
+			
+		
+		:Source:
+			`lib/public/Files/Cache/ICacheEntry.php#78 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Cache/ICacheEntry.php#L78>`_
+		
+		
+		:Returns: string 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getMimePart()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the first part of the mimetype
+			
+		
+		:Source:
+			`lib/public/Files/Cache/ICacheEntry.php#86 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Cache/ICacheEntry.php#L86>`_
+		
+		
+		:Returns: string 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getSize()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the file size in bytes
+			
+		
+		:Source:
+			`lib/public/Files/Cache/ICacheEntry.php#94 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Cache/ICacheEntry.php#L94>`_
+		
+		
+		:Returns: int 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getMTime()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the last modified date as unix timestamp
+			
+		
+		:Source:
+			`lib/public/Files/Cache/ICacheEntry.php#102 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Cache/ICacheEntry.php#L102>`_
+		
+		
+		:Returns: int 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getStorageMTime()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the last modified date on the storage as unix timestamp
+			
+			| Note that when a file is updated we also update the mtime of all parent folders to make it visible to the user which folder has had updates most recently
+			| This can differ from the mtime on the underlying storage which usually only changes when a direct child is added, removed or renamed
+			
+		
+		:Source:
+			`lib/public/Files/Cache/ICacheEntry.php#113 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Cache/ICacheEntry.php#L113>`_
+		
+		
+		:Returns: int 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getEtag()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the etag for the file
+			
+			| An etag is used for change detection of files and folders, an etag of a file changes whenever the content of the file changes
+			| Etag for folders change whenever a file in the folder has changed
+			
+		
+		:Source:
+			`lib/public/Files/Cache/ICacheEntry.php#124 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Cache/ICacheEntry.php#L124>`_
+		
+		
+		:Returns: string 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getPermissions()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the permissions for the file stored as bitwise combination of \\OCP\\PERMISSION\_READ, \\OCP\\PERMISSION\_CREATE
+			| \\OCP\\PERMISSION\_UPDATE, \\OCP\\PERMISSION\_DELETE and \\OCP\\PERMISSION\_SHARE
+			
+		
+		:Source:
+			`lib/public/Files/Cache/ICacheEntry.php#133 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Cache/ICacheEntry.php#L133>`_
+		
+		
+		:Returns: int 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isEncrypted()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check if the file is encrypted
+			
+		
+		:Source:
+			`lib/public/Files/Cache/ICacheEntry.php#141 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Cache/ICacheEntry.php#L141>`_
+		
+		
+		:Returns: bool 
+		:Since: 9.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getMetadataEtag()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the metadata etag for the file
+			
+		
+		:Source:
+			`lib/public/Files/Cache/ICacheEntry.php#149 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Cache/ICacheEntry.php#L149>`_
+		
+		
+		:Returns: string \| null
+		:Since: 18.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getCreationTime()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the last modified date as unix timestamp
+			
+		
+		:Source:
+			`lib/public/Files/Cache/ICacheEntry.php#157 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Cache/ICacheEntry.php#L157>`_
+		
+		
+		:Returns: int \| null
+		:Since: 18.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getUploadTime()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the last modified date as unix timestamp
+			
+		
+		:Source:
+			`lib/public/Files/Cache/ICacheEntry.php#165 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/Cache/ICacheEntry.php#L165>`_
+		
+		
+		:Returns: int \| null
+		:Since: 18.0.0 
+	
+	
+

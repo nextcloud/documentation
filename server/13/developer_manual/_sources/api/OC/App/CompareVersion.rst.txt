@@ -1,0 +1,80 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+CompareVersion
+==============
+
+
+.. php:namespace:: OC\App
+
+.. php:class:: CompareVersion
+
+
+	:Source:
+		`lib/private/App/CompareVersion.php#32 <https://github.com/nextcloud/server/blob/stable13/lib/private/App/CompareVersion.php#L32>`_
+	
+
+Constants
+---------
+
+.. php:const:: REGEX_MAJOR = /^\\d\+$/
+
+	:Source:
+		`lib/private/App/CompareVersion.php#33 <https://github.com/nextcloud/server/blob/stable13/lib/private/App/CompareVersion.php#L33>`_
+	
+
+
+.. php:const:: REGEX_MAJOR_MINOR = /^\\d\+\\\.\\d\+$/
+
+	:Source:
+		`lib/private/App/CompareVersion.php#34 <https://github.com/nextcloud/server/blob/stable13/lib/private/App/CompareVersion.php#L34>`_
+	
+
+
+.. php:const:: REGEX_MAJOR_MINOR_PATCH = /^\\d\+\\\.\\d\+\\\.\\d\+\(?\!\\\.\\d\+\)/
+
+	:Source:
+		`lib/private/App/CompareVersion.php#35 <https://github.com/nextcloud/server/blob/stable13/lib/private/App/CompareVersion.php#L35>`_
+	
+
+
+.. php:const:: REGEX_ACTUAL = /^\\d\+\(\\\.\\d\+\)\{1,2\}/
+
+	:Source:
+		`lib/private/App/CompareVersion.php#36 <https://github.com/nextcloud/server/blob/stable13/lib/private/App/CompareVersion.php#L36>`_
+	
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public isCompatible( $actual, $required, $comparator=\>=)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Checks if the given server version fulfills the given \(app\) version requirements\.
+			
+			| Version requirements can be \'major\.minor\.patch\', \'major\.minor\' or just \'major\',
+			| so \'13\.0\.1\', \'13\.0\' and \'13\' are valid\.
+			
+		
+		:Source:
+			`lib/private/App/CompareVersion.php#50 <https://github.com/nextcloud/server/blob/stable13/lib/private/App/CompareVersion.php#L50>`_
+		
+		
+		:Parameters:
+			* **$actual** (string)  version as major.minor.patch notation
+			* **$required** (string)  version where major is requried and minor and patch are optional
+			* **$comparator** (string)  passed to `version_compare`
+
+		
+		:Returns: bool whether the requirement is fulfilled
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` if versions specified in an invalid format
+	
+	
+

@@ -1,0 +1,84 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+CsrfToken
+=========
+
+
+.. php:namespace:: OC\Security\CSRF
+
+.. php:class:: CsrfToken
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Class CsrfToken represents the stored or provided CSRF token\. To mitigate
+		| BREACH alike vulnerabilities the token is returned in an encrypted value as
+		| well in an unencrypted value\. For display measures to the user always the
+		| unencrypted one should be chosen\.
+		
+	
+	:Source:
+		`lib/private/Security/CSRF/CsrfToken.php#39 <https://github.com/nextcloud/server/blob/stable13/lib/private/Security/CSRF/CsrfToken.php#L39>`_
+	
+
+Properties
+----------
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $value)
+	
+		:Source:
+			`lib/private/Security/CSRF/CsrfToken.php#48 <https://github.com/nextcloud/server/blob/stable13/lib/private/Security/CSRF/CsrfToken.php#L48>`_
+		
+		
+		:Parameters:
+			* **$value** (string)  Value of the token. Can be encrypted or not encrypted.
+
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getEncryptedValue()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Encrypted value of the token\. This is used to mitigate BREACH alike
+			| vulnerabilities\. For display measures do use this functionality\.
+			
+		
+		:Source:
+			`lib/private/Security/CSRF/CsrfToken.php#58 <https://github.com/nextcloud/server/blob/stable13/lib/private/Security/CSRF/CsrfToken.php#L58>`_
+		
+		
+		:Returns: string 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getDecryptedValue()
+	
+		.. rst-class:: phpdoc-description
+		
+			| The unencrypted value of the token\. Used for decrypting an already
+			| encrypted token\.
+			
+		
+		:Source:
+			`lib/private/Security/CSRF/CsrfToken.php#73 <https://github.com/nextcloud/server/blob/stable13/lib/private/Security/CSRF/CsrfToken.php#L73>`_
+		
+		
+		:Returns: string 
+	
+	
+

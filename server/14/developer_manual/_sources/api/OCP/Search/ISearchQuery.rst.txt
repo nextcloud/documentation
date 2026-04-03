@@ -1,0 +1,146 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+ISearchQuery
+============
+
+
+.. php:namespace:: OCP\Search
+
+.. php:interface:: ISearchQuery
+
+
+	.. rst-class:: phpdoc-description
+	
+		| The query objected passed into \\OCP\\Search\\IProvider::search
+		
+		| This mainly wraps the search term, but will ensure that Nextcloud can add new
+		| optional properties to a search request without having break the interface of
+		| \\OCP\\Search\\IProvider::search\.
+		
+	
+	:Implemented by:
+		:php:class:`OC\\Search\\SearchQuery` 
+	
+	
+	:Source:
+		`lib/public/Search/ISearchQuery.php#41 <https://github.com/nextcloud/server/blob/stable13/lib/public/Search/ISearchQuery.php#L41>`_
+	
+
+Constants
+---------
+
+.. php:const:: SORT_DATE_DESC = 1
+
+	:Source:
+		`lib/public/Search/ISearchQuery.php#46 <https://github.com/nextcloud/server/blob/stable13/lib/public/Search/ISearchQuery.php#L46>`_
+	
+	:Since: 20.0.0 
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public getTerm()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the user\-entered search term to find matches for
+			
+		
+		:Source:
+			`lib/public/Search/ISearchQuery.php#54 <https://github.com/nextcloud/server/blob/stable13/lib/public/Search/ISearchQuery.php#L54>`_
+		
+		
+		:Returns: string the search term
+		:Since: 20.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getSortOrder()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the sort order of results as defined as SORT\_\* constants on this interface
+			
+		
+		:Source:
+			`lib/public/Search/ISearchQuery.php#62 <https://github.com/nextcloud/server/blob/stable13/lib/public/Search/ISearchQuery.php#L62>`_
+		
+		
+		:Returns: int 
+		:Since: 20.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getLimit()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the number of items to return for a paginated result
+			
+		
+		:Source:
+			`lib/public/Search/ISearchQuery.php#71 <https://github.com/nextcloud/server/blob/stable13/lib/public/Search/ISearchQuery.php#L71>`_
+		
+		
+		:Returns: int 
+		:See: :any:`\\OCP\\Search\\IProvider <OCP\\Search\\IProvider>` for details
+		:Since: 20.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getCursor()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the app\-specific cursor of the tail of the previous result entries
+			
+		
+		:Source:
+			`lib/public/Search/ISearchQuery.php#80 <https://github.com/nextcloud/server/blob/stable13/lib/public/Search/ISearchQuery.php#L80>`_
+		
+		
+		:Returns: int | string | null 
+		:See: :any:`\\OCP\\Search\\IProvider <OCP\\Search\\IProvider>` for details
+		:Since: 20.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getRoute()
+	
+		:Source:
+			`lib/public/Search/ISearchQuery.php#86 <https://github.com/nextcloud/server/blob/stable13/lib/public/Search/ISearchQuery.php#L86>`_
+		
+		
+		:Returns: string 
+		:Since: 20.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getRouteParameters()
+	
+		:Source:
+			`lib/public/Search/ISearchQuery.php#92 <https://github.com/nextcloud/server/blob/stable13/lib/public/Search/ISearchQuery.php#L92>`_
+		
+		
+		:Returns: array 
+		:Since: 20.0.0 
+	
+	
+

@@ -1,0 +1,154 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+ISimpleFolder
+=============
+
+
+.. php:namespace:: OCP\Files\SimpleFS
+
+.. php:interface:: ISimpleFolder
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Interface ISimpleFolder
+		
+	
+	:Implemented by:
+		:php:class:`OC\\Files\\SimpleFS\\SimpleFolder` 
+	
+	
+	:Source:
+		`lib/public/Files/SimpleFS/ISimpleFolder.php#35 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/SimpleFS/ISimpleFolder.php#L35>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public getDirectoryListing()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get all the files in a folder
+			
+		
+		:Source:
+			`lib/public/Files/SimpleFS/ISimpleFolder.php#42 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/SimpleFS/ISimpleFolder.php#L42>`_
+		
+		
+		:Returns: :any:`\\OCP\\Files\\SimpleFS\\ISimpleFile\[\] <OCP\\Files\\SimpleFS\\ISimpleFile>` 
+		:Since: 11.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public fileExists( $name)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check if a file with $name exists
+			
+		
+		:Source:
+			`lib/public/Files/SimpleFS/ISimpleFolder.php#51 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/SimpleFS/ISimpleFolder.php#L51>`_
+		
+		
+		:Parameters:
+			* **$name** (string)  
+
+		
+		:Returns: bool 
+		:Since: 11.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getFile( $name)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the file named $name from the folder
+			
+		
+		:Source:
+			`lib/public/Files/SimpleFS/ISimpleFolder.php#61 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/SimpleFS/ISimpleFolder.php#L61>`_
+		
+		
+		:Parameters:
+			* **$name** (string)  
+
+		
+		:Returns: :any:`\\OCP\\Files\\SimpleFS\\ISimpleFile <OCP\\Files\\SimpleFS\\ISimpleFile>` 
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+		:Since: 11.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public newFile( $name, $content=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Creates a new file with $name in the folder
+			
+		
+		:Source:
+			`lib/public/Files/SimpleFS/ISimpleFolder.php#72 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/SimpleFS/ISimpleFolder.php#L72>`_
+		
+		
+		:Parameters:
+			* **$name** (string)  
+			* **$content** (string | resource | null)  @since 19.0.0
+
+		
+		:Returns: :any:`\\OCP\\Files\\SimpleFS\\ISimpleFile <OCP\\Files\\SimpleFS\\ISimpleFile>` 
+		:Throws: :any:`\\OCP\\Files\\NotPermittedException <OCP\\Files\\NotPermittedException>` 
+		:Since: 11.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public delete()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Remove the folder and all the files in it
+			
+		
+		:Source:
+			`lib/public/Files/SimpleFS/ISimpleFolder.php#80 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/SimpleFS/ISimpleFolder.php#L80>`_
+		
+		
+		:Throws: :any:`\\OCP\\Files\\NotPermittedException <OCP\\Files\\NotPermittedException>` 
+		:Since: 11.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getName()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the folder name
+			
+		
+		:Source:
+			`lib/public/Files/SimpleFS/ISimpleFolder.php#88 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/SimpleFS/ISimpleFolder.php#L88>`_
+		
+		
+		:Returns: string 
+		:Since: 11.0.0 
+	
+	
+

@@ -1,0 +1,769 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>DefaultToken &mdash; Nextcloud 13 Developer Manual 13 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../../_static/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../../../',
+              VERSION:'13',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../../index.html">
+          
+
+          
+            
+            <img src="../../../../_static/logo-white.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../general/index.html">General contributor guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/startapp.html">Create an app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/init.html">Navigation and pre-app configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/info.html">App metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/classloader.html">Classloader</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/request.html">Request lifecycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/routes.html">Routing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/middleware.html">Middleware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/container.html">Container</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/controllers.html">Controllers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/api.html">RESTful API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/templates.html">Templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/js.html">JavaScript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/css.html">CSS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/l10n.html">Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/theming.html">Theming support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/schema.html">Database schema</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/database.html">Database access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/filesystem.html">Filesystem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/appdata.html">AppData</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/users.html">User management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/two-factor-provider.html">Two-factor providers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/hooks.html">Hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/backgroundjobs.html">Background jobs (Cron)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/settings.html">Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/logging.html">Logging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/migrations.html">Migrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/repair.html">Repair steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/publishing.html">App store publishing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/code_signing.html">Code signing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../app/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../design/index.html">Design guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../android_library/index.html">Android application development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../client_apis/index.html">Client APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../core/translation.html">Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../core/unit-testing.html">Unit-Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../core/theming.html">Theming Nextcloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../core/externalapi.html">External API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../core/ocs-share-api.html">OCS Share API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../core/index.html">Core development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../bugtracker/index.html">Bugtracker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../commun/index.html">Help and communication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../api.html">API Documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../../index.html">Nextcloud 13 Developer Manual</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>DefaultToken</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/nextcloud/documentation/edit/stable13/developer_manual/api/OC/Authentication/Token/DefaultToken.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="phpdoctorst section" id="namespace-OC\Authentication\Token">
+<span id="defaulttoken"></span><h1>DefaultToken<a class="headerlink" href="#namespace-OC\Authentication\Token" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="OC\Authentication\Token\DefaultToken">
+<em class="property">class </em><code class="descclassname">OC\Authentication\Token\</code><code class="descname">DefaultToken</code><a class="headerlink" href="#OC\Authentication\Token\DefaultToken" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/DefaultToken.php#L45">lib/private/Authentication/Token/DefaultToken.php#45</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parent:</th><td class="field-body"><a class="reference internal" href="../../../OCP/AppFramework/Db/Entity.html#OCP\AppFramework\Db\Entity" title="OCP\AppFramework\Db\Entity"><code class="xref php php-class docutils literal"><span class="pre">OCP\AppFramework\Db\Entity</span></code></a></td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Implements:</th><td class="field-body"><a class="reference internal" href="INamedToken.html#OC\Authentication\Token\INamedToken" title="OC\Authentication\Token\INamedToken"><code class="xref php php-interface docutils literal"><span class="pre">OC\Authentication\Token\INamedToken</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<div class="section" id="constants">
+<h2>Constants<a class="headerlink" href="#constants" title="Permalink to this headline">¶</a></h2>
+<dl class="const">
+<dt>
+<code class="descname">VERSION = 1</code></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/DefaultToken.php#L46">lib/private/Authentication/Token/DefaultToken.php#46</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h2>
+<dl class="attr">
+<dt id="OC\Authentication\Token\DefaultToken::$uid">
+<em class="property">protected </em><em class="property">static </em><em class="property">property </em><code class="descclassname">OC\Authentication\Token\DefaultToken::$</code><code class="descname">uid</code><a class="headerlink" href="#OC\Authentication\Token\DefaultToken::$uid" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/DefaultToken.php#L49">lib/private/Authentication/Token/DefaultToken.php#49</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body">string user UID</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attr">
+<dt id="OC\Authentication\Token\DefaultToken::$loginName">
+<em class="property">protected </em><em class="property">static </em><em class="property">property </em><code class="descclassname">OC\Authentication\Token\DefaultToken::$</code><code class="descname">loginName</code><a class="headerlink" href="#OC\Authentication\Token\DefaultToken::$loginName" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/DefaultToken.php#L52">lib/private/Authentication/Token/DefaultToken.php#52</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body">string login name used for generating the token</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attr">
+<dt id="OC\Authentication\Token\DefaultToken::$password">
+<em class="property">protected </em><em class="property">static </em><em class="property">property </em><code class="descclassname">OC\Authentication\Token\DefaultToken::$</code><code class="descname">password</code><a class="headerlink" href="#OC\Authentication\Token\DefaultToken::$password" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/DefaultToken.php#L55">lib/private/Authentication/Token/DefaultToken.php#55</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body">string encrypted user password</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attr">
+<dt id="OC\Authentication\Token\DefaultToken::$name">
+<em class="property">protected </em><em class="property">static </em><em class="property">property </em><code class="descclassname">OC\Authentication\Token\DefaultToken::$</code><code class="descname">name</code><a class="headerlink" href="#OC\Authentication\Token\DefaultToken::$name" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/DefaultToken.php#L58">lib/private/Authentication/Token/DefaultToken.php#58</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body">string token name (e.g. browser/OS)</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attr">
+<dt id="OC\Authentication\Token\DefaultToken::$token">
+<em class="property">protected </em><em class="property">static </em><em class="property">property </em><code class="descclassname">OC\Authentication\Token\DefaultToken::$</code><code class="descname">token</code><a class="headerlink" href="#OC\Authentication\Token\DefaultToken::$token" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/DefaultToken.php#L61">lib/private/Authentication/Token/DefaultToken.php#61</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body">string</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attr">
+<dt id="OC\Authentication\Token\DefaultToken::$type">
+<em class="property">protected </em><em class="property">static </em><em class="property">property </em><code class="descclassname">OC\Authentication\Token\DefaultToken::$</code><code class="descname">type</code><a class="headerlink" href="#OC\Authentication\Token\DefaultToken::$type" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/DefaultToken.php#L64">lib/private/Authentication/Token/DefaultToken.php#64</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attr">
+<dt id="OC\Authentication\Token\DefaultToken::$remember">
+<em class="property">protected </em><em class="property">static </em><em class="property">property </em><code class="descclassname">OC\Authentication\Token\DefaultToken::$</code><code class="descname">remember</code><a class="headerlink" href="#OC\Authentication\Token\DefaultToken::$remember" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/DefaultToken.php#L67">lib/private/Authentication/Token/DefaultToken.php#67</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attr">
+<dt id="OC\Authentication\Token\DefaultToken::$lastActivity">
+<em class="property">protected </em><em class="property">static </em><em class="property">property </em><code class="descclassname">OC\Authentication\Token\DefaultToken::$</code><code class="descname">lastActivity</code><a class="headerlink" href="#OC\Authentication\Token\DefaultToken::$lastActivity" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/DefaultToken.php#L70">lib/private/Authentication/Token/DefaultToken.php#70</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attr">
+<dt id="OC\Authentication\Token\DefaultToken::$lastCheck">
+<em class="property">protected </em><em class="property">static </em><em class="property">property </em><code class="descclassname">OC\Authentication\Token\DefaultToken::$</code><code class="descname">lastCheck</code><a class="headerlink" href="#OC\Authentication\Token\DefaultToken::$lastCheck" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/DefaultToken.php#L73">lib/private/Authentication/Token/DefaultToken.php#73</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attr">
+<dt id="OC\Authentication\Token\DefaultToken::$scope">
+<em class="property">protected </em><em class="property">static </em><em class="property">property </em><code class="descclassname">OC\Authentication\Token\DefaultToken::$</code><code class="descname">scope</code><a class="headerlink" href="#OC\Authentication\Token\DefaultToken::$scope" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/DefaultToken.php#L76">lib/private/Authentication/Token/DefaultToken.php#76</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body">string</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attr">
+<dt id="OC\Authentication\Token\DefaultToken::$expires">
+<em class="property">protected </em><em class="property">static </em><em class="property">property </em><code class="descclassname">OC\Authentication\Token\DefaultToken::$</code><code class="descname">expires</code><a class="headerlink" href="#OC\Authentication\Token\DefaultToken::$expires" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/DefaultToken.php#L79">lib/private/Authentication/Token/DefaultToken.php#79</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attr">
+<dt id="OC\Authentication\Token\DefaultToken::$version">
+<em class="property">protected </em><em class="property">static </em><em class="property">property </em><code class="descclassname">OC\Authentication\Token\DefaultToken::$</code><code class="descname">version</code><a class="headerlink" href="#OC\Authentication\Token\DefaultToken::$version" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/DefaultToken.php#L82">lib/private/Authentication/Token/DefaultToken.php#82</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Type:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+<div class="section" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h2>
+<dl class="public method">
+<dt id="OC\Authentication\Token\DefaultToken::__construct">
+<em class="property">public </em><code class="descclassname">OC\Authentication\Token\DefaultToken::</code><code class="descname">__construct</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Authentication\Token\DefaultToken::__construct" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/DefaultToken.php#L84">lib/private/Authentication/Token/DefaultToken.php#84</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Authentication\Token\DefaultToken::getId">
+<em class="property">public </em><code class="descclassname">OC\Authentication\Token\DefaultToken::</code><code class="descname">getId</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Authentication\Token\DefaultToken::getId" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/DefaultToken.php#L99">lib/private/Authentication/Token/DefaultToken.php#99</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Authentication\Token\DefaultToken::getUID">
+<em class="property">public </em><code class="descclassname">OC\Authentication\Token\DefaultToken::</code><code class="descname">getUID</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Authentication\Token\DefaultToken::getUID" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/DefaultToken.php#L103">lib/private/Authentication/Token/DefaultToken.php#103</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Authentication\Token\DefaultToken::getLoginName">
+<em class="property">public </em><code class="descclassname">OC\Authentication\Token\DefaultToken::</code><code class="descname">getLoginName</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Authentication\Token\DefaultToken::getLoginName" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Get the login name used when generating the token</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/DefaultToken.php#L112">lib/private/Authentication/Token/DefaultToken.php#112</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">string</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Authentication\Token\DefaultToken::getPassword">
+<em class="property">public </em><code class="descclassname">OC\Authentication\Token\DefaultToken::</code><code class="descname">getPassword</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Authentication\Token\DefaultToken::getPassword" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Get the (encrypted) login password</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/DefaultToken.php#L121">lib/private/Authentication/Token/DefaultToken.php#121</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">string | null</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Authentication\Token\DefaultToken::jsonSerialize">
+<em class="property">public </em><code class="descclassname">OC\Authentication\Token\DefaultToken::</code><code class="descname">jsonSerialize</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Authentication\Token\DefaultToken::jsonSerialize" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/DefaultToken.php#L125">lib/private/Authentication/Token/DefaultToken.php#125</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Authentication\Token\DefaultToken::getLastCheck">
+<em class="property">public </em><code class="descclassname">OC\Authentication\Token\DefaultToken::</code><code class="descname">getLastCheck</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Authentication\Token\DefaultToken::getLastCheck" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Get the timestamp of the last password check</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/DefaultToken.php#L140">lib/private/Authentication/Token/DefaultToken.php#140</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">int</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Authentication\Token\DefaultToken::setLastCheck">
+<em class="property">public </em><code class="descclassname">OC\Authentication\Token\DefaultToken::</code><code class="descname">setLastCheck</code><span class="sig-paren">(</span><em>$time</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Authentication\Token\DefaultToken::setLastCheck" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">Get the timestamp of the last password check</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/DefaultToken.php#L149">lib/private/Authentication/Token/DefaultToken.php#149</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>$time</strong> (int)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Authentication\Token\DefaultToken::getScope">
+<em class="property">public </em><code class="descclassname">OC\Authentication\Token\DefaultToken::</code><code class="descname">getScope</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Authentication\Token\DefaultToken::getScope" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/DefaultToken.php#L153">lib/private/Authentication/Token/DefaultToken.php#153</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Authentication\Token\DefaultToken::getScopeAsArray">
+<em class="property">public </em><code class="descclassname">OC\Authentication\Token\DefaultToken::</code><code class="descname">getScopeAsArray</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Authentication\Token\DefaultToken::getScopeAsArray" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/DefaultToken.php#L162">lib/private/Authentication/Token/DefaultToken.php#162</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Authentication\Token\DefaultToken::setScope">
+<em class="property">public </em><code class="descclassname">OC\Authentication\Token\DefaultToken::</code><code class="descname">setScope</code><span class="sig-paren">(</span><em>$scope</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Authentication\Token\DefaultToken::setScope" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/DefaultToken.php#L172">lib/private/Authentication/Token/DefaultToken.php#172</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Authentication\Token\DefaultToken::getName">
+<em class="property">public </em><code class="descclassname">OC\Authentication\Token\DefaultToken::</code><code class="descname">getName</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Authentication\Token\DefaultToken::getName" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/DefaultToken.php#L180">lib/private/Authentication/Token/DefaultToken.php#180</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Authentication\Token\DefaultToken::setName">
+<em class="property">public </em><code class="descclassname">OC\Authentication\Token\DefaultToken::</code><code class="descname">setName</code><span class="sig-paren">(</span><em>$name</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Authentication\Token\DefaultToken::setName" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/DefaultToken.php#L184">lib/private/Authentication/Token/DefaultToken.php#184</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Authentication\Token\DefaultToken::getRemember">
+<em class="property">public </em><code class="descclassname">OC\Authentication\Token\DefaultToken::</code><code class="descname">getRemember</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Authentication\Token\DefaultToken::getRemember" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/DefaultToken.php#L188">lib/private/Authentication/Token/DefaultToken.php#188</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Authentication\Token\DefaultToken::setToken">
+<em class="property">public </em><code class="descclassname">OC\Authentication\Token\DefaultToken::</code><code class="descname">setToken</code><span class="sig-paren">(</span><em>$token</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Authentication\Token\DefaultToken::setToken" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/DefaultToken.php#L192">lib/private/Authentication/Token/DefaultToken.php#192</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Authentication\Token\DefaultToken::setPassword">
+<em class="property">public </em><code class="descclassname">OC\Authentication\Token\DefaultToken::</code><code class="descname">setPassword</code><span class="sig-paren">(</span><em>$password=null</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Authentication\Token\DefaultToken::setPassword" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/DefaultToken.php#L196">lib/private/Authentication/Token/DefaultToken.php#196</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Authentication\Token\DefaultToken::setExpires">
+<em class="property">public </em><code class="descclassname">OC\Authentication\Token\DefaultToken::</code><code class="descname">setExpires</code><span class="sig-paren">(</span><em>$expires</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Authentication\Token\DefaultToken::setExpires" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/DefaultToken.php#L200">lib/private/Authentication/Token/DefaultToken.php#200</a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Authentication\Token\DefaultToken::getExpires">
+<em class="property">public </em><code class="descclassname">OC\Authentication\Token\DefaultToken::</code><code class="descname">getExpires</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Authentication\Token\DefaultToken::getExpires" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Authentication/Token/DefaultToken.php#L207">lib/private/Authentication/Token/DefaultToken.php#207</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">int | null</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021 Nextcloud GmbH.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: 13
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/13/developer_manual">13</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/14/developer_manual">14</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/15/developer_manual">15</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/developer_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/developer_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+   
+
+</body>
+</html>

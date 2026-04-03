@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>Database Access &#8212; Nextcloud Developer Manual 12 documentation</title>
+    
+    <link rel="stylesheet" href="../_static/" type="text/css" />
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/main.min.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/styles.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../',
+        VERSION:     '12',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../_static/jquery.js"></script>
+    <script type="text/javascript" src="../_static/underscore.js"></script>
+    <script type="text/javascript" src="../_static/doctools.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-3.1.0/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../_static/bootstrap-sphinx.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Configuration" href="configuration.html" />
+    <link rel="prev" title="Database Schema" href="schema.html" />
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#1d2d44">
+<link rel="shortcut icon" href="https://nextcloud.com/wp-content/themes/next/assets/img/common/favicon.png" />
+<link rel="apple-touch-icon-precomposed" href="https://nextcloud.com/wp-content/themes/next/assets/img/common/favicon.png" />
+<!-- Piwik -->
+<script type="text/javascript">
+    var _paq = _paq || [];
+    _paq.push(['trackPageView']);
+    _paq.push(['enableLinkTracking']);
+    (function() {
+        var u="//stats.nextcloud.com/";
+        _paq.push(['setTrackerUrl', u+'piwik.php']);
+        _paq.push(['setSiteId', 3]);
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0];
+        g.type='text/javascript'; g.async=true; g.defer=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+    })();
+</script>
+<noscript><p><img src="//stats.nextcloud.com/piwik.php?idsite=3" style="border:0;" alt="" /></p></noscript>
+<!-- End Piwik Code -->
+
+  </head>
+  <body role="document">
+
+<header class="banner navbar navbar-default navbar-static-top" role="banner">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+       <a class="brand" href="http://nextcloud.com/" rel="home" title="Nextcloud.com"><img class="logo" src="../_static/img/logo.svg" itemprop="logo"></a>
+    </div>
+
+    <nav class="collapse navbar-collapse" role="navigation">
+      <ul id="menu-header" class="nav navbar-nav">
+          <li><a target="_blank" href="https://demo.nextcloud.com">Demo</a></li>
+          <li><a href="https://nextcloud.com/news/">News</a></li>
+          <li><a href="https://nextcloud.com/features/">Features</a></li>
+          <li><a href="https://nextcloud.com/about/">About us</a></li>
+          <li><a href="https://nextcloud.com/contribute/">Get involved</a></li>
+          <li><a href="https://nextcloud.com/support/">Support</a></li>
+          <li><a href="https://nextcloud.com/enterprise/">Enterprise</a></li>
+          <li class="menu-install"><a href="https://nextcloud.com/install/">Download</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
+
+
+
+
+<div class="container" style="background-color: #E6C4C2;color: #b10000;border: #b10000 2px solid;border-right: none;border-left: none;padding: 15px 10px;">You are reading an outdated version of this documentation. Please check out the <a href="https://docs.nextcloud.com/server/stable/developer_manual/" style="
+color: rgb(177,0,0);text-decoration: underline;">latest version</a> of the developer manual.</div>
+
+
+
+
+
+<div class="wrap container not-front">
+  <div class="content row">
+  <main class="main">
+    <div class="row page-content-header">
+      <div class="col-md-6">
+        <h1><a href="../index.html">Nextcloud Developer Manual</a></h1>
+      </div>
+      <div class="col-md-5 col-md-offset-1">
+      
+        <form class="headersearch" style="margin: 16px 0;" action="../search.html" method="get">
+        <input type="text" value="" name="q" id="q" class="form-control" /> 
+        <button  class="btn btn-default" type="submit" id="searchsubmit">Search</button>
+        </form>
+      
+      </div>
+    </div>
+    
+			<div class="row">
+				<div class="col-md-3">
+					<div class="sidebar">
+							<div class="menu-support-container">
+								<ul id="menu-support" class="menu">
+									<ul>
+										
+<li><a href="../index.html">Table of Contents</a></li>
+									</ul>
+                  <ul>
+<li class="toctree-l1"><a class="reference internal" href="../general/index.html">General Contributor Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="index.html">App Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../design/index.html">Design Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../android_library/index.html">Android Application Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client_apis/index.html">Client APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../core/index.html">Core Development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../bugtracker/index.html">Bugtracker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../commun/index.html">Help and Communication</a></li>
+</ul>
+
+								</ul>
+							</div>
+					</div>
+				</div>
+        
+
+				<div class="col-md-9">
+					<div class="page-content">
+            
+<ul class="prevnext-title list-unstyled list-inline">
+  <li class="prev">
+    <a href="schema.html" title="Previous Chapter: Database Schema"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; Database Schema</span>
+    </a>
+  </li>
+  <li class="next">
+    <a href="configuration.html" title="Next Chapter: Configuration"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">Configuration &raquo;</span>
+    </a>
+  </li>
+</ul>
+						
+  <div class="section" id="database-access">
+<h1>Database Access<a class="headerlink" href="#database-access" title="Permalink to this headline">¶</a></h1>
+<p>The basic way to run a database query is to use the database connection provided by <strong>OCP\IDBConnection</strong>.</p>
+<p>Inside your database layer class you can now start running queries like:</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="c1">// db/authordao.php</span>
+
+<span class="k">namespace</span> <span class="nx">OCA\MyApp\Db</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCP\IDBConnection</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">AuthorDAO</span> <span class="p">{</span>
+
+    <span class="k">private</span> <span class="nv">$db</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">IDBConnection</span> <span class="nv">$db</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">db</span> <span class="o">=</span> <span class="nv">$db</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">find</span><span class="p">(</span><span class="nv">$id</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$sql</span> <span class="o">=</span> <span class="s1">&#39;SELECT * FROM `*PREFIX*myapp_authors` &#39;</span> <span class="o">.</span>
+            <span class="s1">&#39;WHERE `id` = ?&#39;</span><span class="p">;</span>
+        <span class="nv">$stmt</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">db</span><span class="o">-&gt;</span><span class="na">prepare</span><span class="p">(</span><span class="nv">$sql</span><span class="p">);</span>
+        <span class="nv">$stmt</span><span class="o">-&gt;</span><span class="na">bindParam</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nv">$id</span><span class="p">,</span> <span class="nx">\PDO</span><span class="o">::</span><span class="na">PARAM_INT</span><span class="p">);</span>
+        <span class="nv">$stmt</span><span class="o">-&gt;</span><span class="na">execute</span><span class="p">();</span>
+
+        <span class="nv">$row</span> <span class="o">=</span> <span class="nv">$stmt</span><span class="o">-&gt;</span><span class="na">fetch</span><span class="p">();</span>
+
+        <span class="nv">$stmt</span><span class="o">-&gt;</span><span class="na">closeCursor</span><span class="p">();</span>
+        <span class="k">return</span> <span class="nv">$row</span><span class="p">;</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="section" id="mappers">
+<h2>Mappers<a class="headerlink" href="#mappers" title="Permalink to this headline">¶</a></h2>
+<p>The aforementioned example is the most basic way to write a simple database query but the more queries amass, the more code has to be written and the harder it will become to maintain it.</p>
+<p>To generalize and simplify the problem, split code into resources and create an <strong>Entity</strong> and a <strong>Mapper</strong> class for it. The mapper class provides a way to run SQL queries and maps the result onto the related entities.</p>
+<p>To create a mapper, inherit from the mapper base class and call the parent constructor with the following parameters:</p>
+<ul class="simple">
+<li>Database connection</li>
+<li>Table name</li>
+<li><strong>Optional</strong>: Entity class name, defaults to \OCA\MyApp\Db\Author in the example below</li>
+</ul>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="c1">// db/authormapper.php</span>
+
+<span class="k">namespace</span> <span class="nx">OCA\MyApp\Db</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCP\IDBConnection</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Db\Mapper</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">AuthorMapper</span> <span class="k">extends</span> <span class="nx">Mapper</span> <span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">IDBConnection</span> <span class="nv">$db</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">(</span><span class="nv">$db</span><span class="p">,</span> <span class="s1">&#39;myapp_authors&#39;</span><span class="p">);</span>
+    <span class="p">}</span>
+
+
+    <span class="sd">/**</span>
+<span class="sd">     * @throws \OCP\AppFramework\Db\DoesNotExistException if not found</span>
+<span class="sd">     * @throws \OCP\AppFramework\Db\MultipleObjectsReturnedException if more than one result</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">find</span><span class="p">(</span><span class="nv">$id</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$sql</span> <span class="o">=</span> <span class="s1">&#39;SELECT * FROM `*PREFIX*myapp_authors` &#39;</span> <span class="o">.</span>
+            <span class="s1">&#39;WHERE `id` = ?&#39;</span><span class="p">;</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">findEntity</span><span class="p">(</span><span class="nv">$sql</span><span class="p">,</span> <span class="p">[</span><span class="nv">$id</span><span class="p">]);</span>
+    <span class="p">}</span>
+
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">findAll</span><span class="p">(</span><span class="nv">$limit</span><span class="o">=</span><span class="k">null</span><span class="p">,</span> <span class="nv">$offset</span><span class="o">=</span><span class="k">null</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$sql</span> <span class="o">=</span> <span class="s1">&#39;SELECT * FROM `*PREFIX*myapp_authors`&#39;</span><span class="p">;</span>
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">findEntities</span><span class="p">(</span><span class="nv">$sql</span><span class="p">,</span> <span class="nv">$limit</span><span class="p">,</span> <span class="nv">$offset</span><span class="p">);</span>
+    <span class="p">}</span>
+
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">authorNameCount</span><span class="p">(</span><span class="nv">$name</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$sql</span> <span class="o">=</span> <span class="s1">&#39;SELECT COUNT(*) AS `count` FROM `*PREFIX*myapp_authors` &#39;</span> <span class="o">.</span>
+            <span class="s1">&#39;WHERE `name` = ?&#39;</span><span class="p">;</span>
+        <span class="nv">$stmt</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">execute</span><span class="p">(</span><span class="nv">$sql</span><span class="p">,</span> <span class="p">[</span><span class="nv">$name</span><span class="p">]);</span>
+
+        <span class="nv">$row</span> <span class="o">=</span> <span class="nv">$stmt</span><span class="o">-&gt;</span><span class="na">fetch</span><span class="p">();</span>
+        <span class="nv">$stmt</span><span class="o">-&gt;</span><span class="na">closeCursor</span><span class="p">();</span>
+        <span class="k">return</span> <span class="nv">$row</span><span class="p">[</span><span class="s1">&#39;count&#39;</span><span class="p">];</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The cursor is closed automatically for all <strong>INSERT</strong>, <strong>DELETE</strong>, <strong>UPDATE</strong> queries and when calling the methods <strong>findOneQuery</strong>, <strong>findEntities</strong>, <strong>findEntity</strong>, <strong>delete</strong>, <strong>insert</strong> and <strong>update</strong>. For custom calls using execute you should always close the cursor after you are done with the fetching to prevent database lock problems on SQLite</p>
+</div>
+<p>Every mapper also implements default methods for deleting and updating an entity based on its id:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$authorMapper-&gt;delete($entity);
+</pre></div>
+</div>
+<p>or:</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span>$authorMapper-&gt;update($entity);
+</pre></div>
+</div>
+</div>
+<div class="section" id="entities">
+<h2>Entities<a class="headerlink" href="#entities" title="Permalink to this headline">¶</a></h2>
+<p>Entities are data objects that carry all the table&#8217;s information for one row. Every Entity has an <strong>id</strong> field by default that is set to the integer type. Table rows are mapped from lower case and underscore separated names to <em>lowerCamelCase</em> attributes:</p>
+<ul class="simple">
+<li><strong>Table column name</strong>: phone_number</li>
+<li><strong>Property name</strong>: phoneNumber</li>
+</ul>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="c1">// db/author.php</span>
+<span class="k">namespace</span> <span class="nx">OCA\MyApp\Db</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Db\Entity</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Author</span> <span class="k">extends</span> <span class="nx">Entity</span> <span class="p">{</span>
+
+    <span class="k">protected</span> <span class="nv">$stars</span><span class="p">;</span>
+    <span class="k">protected</span> <span class="nv">$name</span><span class="p">;</span>
+    <span class="k">protected</span> <span class="nv">$phoneNumber</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// add types in constructor</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">addType</span><span class="p">(</span><span class="s1">&#39;stars&#39;</span><span class="p">,</span> <span class="s1">&#39;integer&#39;</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="section" id="types">
+<h3>Types<a class="headerlink" href="#types" title="Permalink to this headline">¶</a></h3>
+<p>The following properties should be annotated by types, to not only assure that the types are converted correctly for storing them in the database (e.g. PHP casts false to the empty string which fails on PostgreSQL) but also for casting them when they are retrieved from the database.</p>
+<p>The following types can be added for a field:</p>
+<ul class="simple">
+<li>integer</li>
+<li>float</li>
+<li>boolean</li>
+</ul>
+</div>
+<div class="section" id="accessing-attributes">
+<h3>Accessing attributes<a class="headerlink" href="#accessing-attributes" title="Permalink to this headline">¶</a></h3>
+<p>Since all attributes should be protected, getters and setters are automatically generated for you:</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="c1">// db/author.php</span>
+<span class="k">namespace</span> <span class="nx">OCA\MyApp\Db</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Db\Entity</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Author</span> <span class="k">extends</span> <span class="nx">Entity</span> <span class="p">{</span>
+    <span class="k">protected</span> <span class="nv">$stars</span><span class="p">;</span>
+    <span class="k">protected</span> <span class="nv">$name</span><span class="p">;</span>
+    <span class="k">protected</span> <span class="nv">$phoneNumber</span><span class="p">;</span>
+<span class="p">}</span>
+
+<span class="nv">$author</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Author</span><span class="p">();</span>
+<span class="nv">$author</span><span class="o">-&gt;</span><span class="na">setId</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
+<span class="nv">$author</span><span class="o">-&gt;</span><span class="na">getPhoneNumber</span><span class="p">()</span>  <span class="c1">// null</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="custom-attribute-to-database-column-mapping">
+<h3>Custom attribute to database column mapping<a class="headerlink" href="#custom-attribute-to-database-column-mapping" title="Permalink to this headline">¶</a></h3>
+<p>By default each attribute will be mapped to a database column by a certain convention, e.g. <strong>phoneNumber</strong>
+will be mapped to the column <strong>phone_number</strong> and vice versa. Sometimes it is needed though to map attributes to
+different columns because of backwards compatibility. To define a custom
+mapping, simply override the <strong>columnToProperty</strong> and <strong>propertyToColumn</strong> methods of the entity in question:</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="c1">// db/author.php</span>
+<span class="k">namespace</span> <span class="nx">OCA\MyApp\Db</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Db\Entity</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Author</span> <span class="k">extends</span> <span class="nx">Entity</span> <span class="p">{</span>
+    <span class="k">protected</span> <span class="nv">$stars</span><span class="p">;</span>
+    <span class="k">protected</span> <span class="nv">$name</span><span class="p">;</span>
+    <span class="k">protected</span> <span class="nv">$phoneNumber</span><span class="p">;</span>
+
+    <span class="c1">// map attribute phoneNumber to the database column phonenumber</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">columnToProperty</span><span class="p">(</span><span class="nv">$column</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$column</span> <span class="o">===</span> <span class="s1">&#39;phonenumber&#39;</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="s1">&#39;phoneNumber&#39;</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="k">parent</span><span class="o">::</span><span class="na">columnToProperty</span><span class="p">(</span><span class="nv">$column</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">propertyToColumn</span><span class="p">(</span><span class="nv">$property</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$property</span> <span class="o">===</span> <span class="s1">&#39;phoneNumber&#39;</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="s1">&#39;phonenumber&#39;</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="k">parent</span><span class="o">::</span><span class="na">propertyToColumn</span><span class="p">(</span><span class="nv">$property</span><span class="p">);</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="slugs">
+<h3>Slugs<a class="headerlink" href="#slugs" title="Permalink to this headline">¶</a></h3>
+<p>Slugs are used to identify resources in the URL by a string rather than integer id. Since the URL allows only certain values, the entity base class provides a slugify method for it:</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="nv">$author</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">Author</span><span class="p">();</span>
+<span class="nv">$author</span><span class="o">-&gt;</span><span class="na">setName</span><span class="p">(</span><span class="s1">&#39;Some*thing&#39;</span><span class="p">);</span>
+<span class="nv">$author</span><span class="o">-&gt;</span><span class="na">slugify</span><span class="p">(</span><span class="s1">&#39;name&#39;</span><span class="p">);</span>  <span class="c1">// Some-thing</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+            
+<ul class="prevnext-title list-unstyled list-inline">
+  <li class="prev">
+    <a href="schema.html" title="Previous Chapter: Database Schema"><span class="glyphicon glyphicon-chevron-left visible-sm"></span><span class="hidden-sm">&laquo; Database Schema</span>
+    </a>
+  </li>
+  <li class="next">
+    <a href="configuration.html" title="Next Chapter: Configuration"><span class="glyphicon glyphicon-chevron-right visible-sm"></span><span class="hidden-sm">Configuration &raquo;</span>
+    </a>
+  </li>
+</ul>
+					</div>
+				</div>
+			</div>
+  </main>  
+  </div>
+</div>
+<div class="container">
+<div class="row">
+    <div class="col-lg-12 footer-social-icons">
+      <p class="text-center"><a target="_blank" href="https://plus.google.com/104036748063781940910/about"><img width=50 src="../_static/img/social/googleplus.svg" title="Follow us on Google Plus!" alt="Follow us on Google Plus!"></img></a>
+      <a target="_blank" href="https://www.facebook.com/Nextclouders"><img width=50 src="../_static/img/social/facebook.svg" title="Like our facebook page!" alt="Like our facebook page!"></img></a>
+      <a target="_blank" href="https://twitter.com/Nextclouders"><img width=50 src="../_static/img/social/twitter.svg" title="Subscribe to our twitter channel!" alt="Subscribe to our twitter channel!"></img></a>
+      <a target="_blank" href="https://nextcloud.com/blogfeed"><img class="img-circle" width=50 src="../_static/img/social/rss.svg" title="Subscribe to our news feed!" alt="Subscribe to our news feed!"></img></a>
+      <a target="_blank" href="https://newsletter.nextcloud.com/"><img class="img-circle" width=50 src="../_static/img/social/mail.svg"  title="Subscribe to our newsletter!" alt="Subscribe to our newsletter!"></img></a></p>
+    </div>
+    <div class="text-center">
+      <p>All documentation licensed under the <a href="https://creativecommons.org/licenses/by/3.0/us/">Creative Commons Attribution 3.0 Unported license</a>.</p>
+      <p><a href="https://github.com/nextcloud/documentation/graphs/contributors">See who contributed to our documentation/credits</a>.</p>
+    </div>
+</div>
+</div>
+<footer class="content-info" role="contentinfo">
+<div class="container">
+   <div class="row">
+     <div class="col-sm-2 col-sm-offset-1">
+        <div class="footer-nav">
+          <h4>About Nextcloud</h4>
+          <ul id="menu-about" class="menu">
+            <li><a href="https://nextcloud.com/about/">About us</a></li>
+            <li><a href="https://nextcloud.com/contact/">Contact us</a></li>
+            <li><a href="https://nextcloud.com/press/">Press</a></li>
+            <li><a href="https://nextcloud.com/privacy/">Privacy policy</a></li>
+          </ul>
+        </div>
+     </div>
+     <div class="col-sm-2 col-sm-offset-2">
+     </div>
+     <div class="col-sm-2 col-sm-offset-2">
+        <div class="footer-nav">
+          <h4>Interact</h4>
+          <ul id="menu-interact" class="menu">
+            <li class="menu-irc-channel"><a href="https://webchat.freenode.net/?channels=nextcloud">IRC Channel</a></li>
+            <li class="menu-forums"><a href="https://help.nextcloud.com/">Forums</a></li>
+          </ul>
+        </div>
+     </div>
+   </div>
+   <div class="row">
+      <div class="col-lg-12 footer-text">
+        <p>
+              &copy; Copyright 2012-2017, The Nextcloud developers.  <small><a href="https://nextcloud.com/impressum">Legal Notice</a></small><br/>
+        </p>
+      </div>
+    </div>
+  </div>
+</footer>
+  </body>
+</html>

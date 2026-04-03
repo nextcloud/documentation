@@ -1,0 +1,117 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+S3ObjectTrait
+=============
+
+
+.. php:namespace:: OC\Files\ObjectStore
+
+.. php:trait:: S3ObjectTrait
+
+
+	:Source:
+		`lib/private/Files/ObjectStore/S3ObjectTrait.php#37 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/ObjectStore/S3ObjectTrait.php#L37>`_
+	
+
+Methods
+-------
+
+.. rst-class:: protected abstract
+
+	.. php:method:: protected abstract getConnection()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the connection
+			
+		
+		:Source:
+			`lib/private/Files/ObjectStore/S3ObjectTrait.php#44 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/ObjectStore/S3ObjectTrait.php#L44>`_
+		
+		
+		:Returns: :any:`\\Aws\\S3\\S3Client <Aws\\S3\\S3Client>` connected client
+		:Throws: :any:`\\Exception <Exception>` if connection could not be made
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public readObject( $urn)
+	
+		:Source:
+			`lib/private/Files/ObjectStore/S3ObjectTrait.php#52 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/ObjectStore/S3ObjectTrait.php#L52>`_
+		
+		
+		:Parameters:
+			* **$urn** (string)  the unified resource name used to identify the object
+
+		
+		:Returns: resource stream with the read data
+		:Throws: :any:`\\Exception <Exception>` when something goes wrong, message will be logged
+		:Since: 7.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public writeObject( $urn, $stream, $mimetype=null)
+	
+		:Source:
+			`lib/private/Files/ObjectStore/S3ObjectTrait.php#85 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/ObjectStore/S3ObjectTrait.php#L85>`_
+		
+		
+		:Parameters:
+			* **$urn** (string)  the unified resource name used to identify the object
+			* **$stream** (resource)  stream with the data to write
+			* **$mimetype** (string | null)  the mimetype to set for the remove object @since 22.0.0
+
+		
+		:Throws: :any:`\\Exception <Exception>` when something goes wrong, message will be logged
+		:Since: 7.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public deleteObject( $urn)
+	
+		:Source:
+			`lib/private/Files/ObjectStore/S3ObjectTrait.php#119 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/ObjectStore/S3ObjectTrait.php#L119>`_
+		
+		
+		:Parameters:
+			* **$urn** (string)  the unified resource name used to identify the object
+
+		
+		:Returns: void 
+		:Throws: :any:`\\Exception <Exception>` when something goes wrong, message will be logged
+		:Since: 7.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public objectExists( $urn)
+	
+		:Source:
+			`lib/private/Files/ObjectStore/S3ObjectTrait.php#126 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/ObjectStore/S3ObjectTrait.php#L126>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public copyObject( $from, $to)
+	
+		:Source:
+			`lib/private/Files/ObjectStore/S3ObjectTrait.php#130 <https://github.com/nextcloud/server/blob/stable13/lib/private/Files/ObjectStore/S3ObjectTrait.php#L130>`_
+		
+		
+	
+	
+

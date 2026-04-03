@@ -1,0 +1,475 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Routing &mdash; Nextcloud latest Developer Manual latest documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../',
+              VERSION:'latest',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Middleware" href="middleware.html" />
+    <link rel="prev" title="Request lifecycle" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html">
+          
+
+          
+            
+            <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../general/index.html">General contributor guidelines</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">App development</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../intro.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tutorial.html">Tutorial</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../npm.html">NPM</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Request lifecycle</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Routing</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#extracting-values-from-the-url">Extracting values from the URL</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#matching-suburls">Matching subURLs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#default-values-for-suburl">Default values for subURL</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#registering-resources">Registering resources</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#using-the-urlgenerator">Using the URLGenerator</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="middleware.html">Middleware</a></li>
+<li class="toctree-l3"><a class="reference internal" href="container.html">Container</a></li>
+<li class="toctree-l3"><a class="reference internal" href="controllers.html">Controllers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="api.html">RESTful API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="index.html#front-controller">Front controller</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../view/index.html">View</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../storage/index.html">Storage and database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../changelog.html">Changelog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../classloader.html">Classloader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../code_signing.html">Code signing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../info.html">App metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../init.html">Navigation and pre-app configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../publishing.html">App store publishing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../users.html">User management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../two-factor-provider.html">Two-factor providers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../hooks.html">Hooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../backgroundjobs.html">Background jobs (Cron)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../settings.html">Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../notifications.html">Notifications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../logging.html">Logging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../repair.html">Repair steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../publicpage.html">Public Pages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../testing.html">Testing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../api.html">API Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../design/index.html">Design guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../android_library/index.html">Android application development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../client_apis/index.html">Client APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../core/index.html">Core development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../bugtracker/index.html">Bugtracker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../commun/index.html">Help and communication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../api.html">API Documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Nextcloud latest Developer Manual</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../index.html">App development</a> &raquo;</li>
+        
+          <li><a href="index.html">Request lifecycle</a> &raquo;</li>
+        
+      <li>Routing</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/nextcloud/documentation/edit/master/developer_manual/app/requests/routes.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="routing">
+<h1>Routing<a class="headerlink" href="#routing" title="Permalink to this headline">¶</a></h1>
+<p>Routes map a URL and a method to a controller method. Routes are defined inside <code class="file docutils literal"><span class="pre">appinfo/routes.php</span></code> by returning them as an array:</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="k">return</span> <span class="p">[</span>
+    <span class="s1">&#39;routes&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+        <span class="p">[</span><span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;page#index&#39;</span><span class="p">,</span> <span class="s1">&#39;url&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/&#39;</span><span class="p">,</span> <span class="s1">&#39;verb&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;GET&#39;</span><span class="p">],</span>
+    <span class="p">],</span>
+<span class="p">];</span>
+</pre></div>
+</div>
+<p>The route array contains the following parts:</p>
+<ul class="simple">
+<li><strong>url</strong>: The URL that is matched after <em>/index.php/apps/myapp</em></li>
+<li><strong>name</strong>: The controller and the method to call; <em>page#index</em> is being mapped to <em>PageController-&gt;index()</em>, <em>articles_api#drop_latest</em> would be mapped to <em>ArticlesApiController-&gt;dropLatest()</em>. The controller in the example above would be stored in <code class="file docutils literal"><span class="pre">lib/Controller/PageController.php</span></code>.</li>
+<li><strong>method</strong> (Optional, defaults to GET): The HTTP method that should be matched, (e.g. GET, POST, PUT, DELETE, HEAD, OPTIONS, PATCH)</li>
+<li><strong>requirements</strong> (Optional): lets you match and extract URLs that have slashes in them (see <a class="reference internal" href="#matching-suburls"><span class="std std-ref">Matching subURLs</span></a>)</li>
+<li><strong>postfix</strong> (Optional): lets you define a route id postfix. Since each route name will be transformed to a route id (<strong>page#method</strong> -&gt; <strong>myapp.page.method</strong>) and the route id can only exist once you can use the postfix option to alter the route id creation by adding a string to the route id, e.g., <strong>&#8216;name&#8217; =&gt; &#8216;page#method&#8217;, &#8216;postfix&#8217; =&gt; &#8216;test&#8217;</strong> will yield the route id <strong>myapp.page.methodtest</strong>. This makes it possible to add more than one route/URL for a controller method</li>
+<li><strong>defaults</strong> (Optional): If this setting is given, a default value will be assumed for each URL parameter which is not present. The default values are passed in as a key =&gt; value par array</li>
+</ul>
+<div class="section" id="extracting-values-from-the-url">
+<h2>Extracting values from the URL<a class="headerlink" href="#extracting-values-from-the-url" title="Permalink to this headline">¶</a></h2>
+<p>It is possible to extract values from the URL to allow RESTful URL design. To extract a value, you have to wrap it inside curly braces:</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+
+<span class="c1">// Request: GET /index.php/apps/myapp/authors/3</span>
+
+<span class="c1">// appinfo/routes.php</span>
+<span class="k">array</span><span class="p">(</span><span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;author#show&#39;</span><span class="p">,</span> <span class="s1">&#39;url&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/authors/{id}&#39;</span><span class="p">,</span> <span class="s1">&#39;verb&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;GET&#39;</span><span class="p">),</span>
+
+<span class="c1">// controller/authorcontroller.php</span>
+<span class="k">class</span> <span class="nc">AuthorController</span> <span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">show</span><span class="p">(</span><span class="nv">$id</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// $id is &#39;3&#39;</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The identifier used inside the route is being passed into controller method by reflecting the method parameters. So basically if you want to get the value <strong>{id}</strong> in your method, you need to add <strong>$id</strong> to your method parameters.</p>
+</div>
+<div class="section" id="matching-suburls">
+<span id="id1"></span><h2>Matching subURLs<a class="headerlink" href="#matching-suburls" title="Permalink to this headline">¶</a></h2>
+<p>Sometimes it is needed to match more than one URL fragment. An example would be to match a request for all URLs that start with <strong>OPTIONS /index.php/apps/myapp/api</strong>. To do this, use the <strong>requirements</strong> parameter in your route which is an array containing pairs of <strong>&#8216;key&#8217; =&gt; &#8216;regex&#8217;</strong>:</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+
+<span class="c1">// Request: OPTIONS /index.php/apps/myapp/api/my/route</span>
+
+<span class="c1">// appinfo/routes.php</span>
+<span class="k">array</span><span class="p">(</span><span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;author_api#cors&#39;</span><span class="p">,</span> <span class="s1">&#39;url&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/api/{path}&#39;</span><span class="p">,</span> <span class="s1">&#39;verb&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;OPTIONS&#39;</span><span class="p">,</span>
+      <span class="s1">&#39;requirements&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;path&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;.+&#39;</span><span class="p">)),</span>
+
+<span class="c1">// controller/authorapicontroller.php</span>
+<span class="k">class</span> <span class="nc">AuthorApiController</span> <span class="p">{</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">cors</span><span class="p">(</span><span class="nv">$path</span><span class="p">)</span> <span class="p">{</span>
+        <span class="c1">// $path will be &#39;my/route&#39;</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="default-values-for-suburl">
+<h2>Default values for subURL<a class="headerlink" href="#default-values-for-suburl" title="Permalink to this headline">¶</a></h2>
+<p>Apart from matching requirements, a subURL may also have a default value. Say you want to support pagination (a &#8216;page&#8217; parameter) for your <strong>/posts</strong> subURL that displays posts entries list. You may set a default value for the &#8216;page&#8217; parameter, that will be used if not already set in the URL. Use the <strong>defaults</strong> parameter in your route which is an array containing pairs of <strong>&#8216;urlparameter&#8217; =&gt; &#8216;defaultvalue&#8217;</strong>:</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+
+<span class="c1">// Request: GET /index.php/app/myapp/post</span>
+
+<span class="c1">// appinfo/routes.php</span>
+<span class="k">array</span><span class="p">(</span>
+    <span class="s1">&#39;name&#39;</span>     <span class="o">=&gt;</span> <span class="s1">&#39;post#index&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;url&#39;</span>      <span class="o">=&gt;</span> <span class="s1">&#39;/post/{page}&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;verb&#39;</span>     <span class="o">=&gt;</span> <span class="s1">&#39;GET&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;defaults&#39;</span> <span class="o">=&gt;</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;page&#39;</span> <span class="o">=&gt;</span> <span class="mi">1</span><span class="p">)</span> <span class="c1">// this allows same URL as /index.php/myapp/post/1</span>
+<span class="p">),</span>
+
+<span class="c1">// controller/postcontroller.php</span>
+<span class="k">class</span> <span class="nc">PostController</span>
+<span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">index</span><span class="p">(</span><span class="nv">$page</span> <span class="o">=</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="p">{</span>
+        <span class="c1">// $page will be 1</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="registering-resources">
+<h2>Registering resources<a class="headerlink" href="#registering-resources" title="Permalink to this headline">¶</a></h2>
+<p>When dealing with resources, writing routes can become quite repetitive since most of the time routes for the following tasks are needed:</p>
+<ul class="simple">
+<li>Get all entries</li>
+<li>Get one entry by id</li>
+<li>Create an entry</li>
+<li>Update an entry</li>
+<li>Delete an entry</li>
+</ul>
+<p>To prevent repetition, it&#8217;s possible to define resources. The following routes:</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="k">return</span> <span class="p">[</span>
+    <span class="s1">&#39;routes&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+        <span class="p">[</span><span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;author#index&#39;</span><span class="p">,</span> <span class="s1">&#39;url&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/authors&#39;</span><span class="p">,</span> <span class="s1">&#39;verb&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;GET&#39;</span><span class="p">],</span>
+        <span class="p">[</span><span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;author#show&#39;</span><span class="p">,</span> <span class="s1">&#39;url&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/authors/{id}&#39;</span><span class="p">,</span> <span class="s1">&#39;verb&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;GET&#39;</span><span class="p">],</span>
+        <span class="p">[</span><span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;author#create&#39;</span><span class="p">,</span> <span class="s1">&#39;url&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/authors&#39;</span><span class="p">,</span> <span class="s1">&#39;verb&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;POST&#39;</span><span class="p">],</span>
+        <span class="p">[</span><span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;author#update&#39;</span><span class="p">,</span> <span class="s1">&#39;url&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/authors/{id}&#39;</span><span class="p">,</span> <span class="s1">&#39;verb&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;PUT&#39;</span><span class="p">],</span>
+        <span class="p">[</span><span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;author#destroy&#39;</span><span class="p">,</span> <span class="s1">&#39;url&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/authors/{id}&#39;</span><span class="p">,</span> <span class="s1">&#39;verb&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;DELETE&#39;</span><span class="p">],</span>
+        <span class="c1">// your other routes here</span>
+    <span class="p">],</span>
+<span class="p">];</span>
+</pre></div>
+</div>
+<p>can be abbreviated by using the <strong>resources</strong> key:</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="k">return</span> <span class="p">[</span>
+    <span class="s1">&#39;resources&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+        <span class="s1">&#39;author&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s1">&#39;url&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/authors&#39;</span><span class="p">],</span>
+    <span class="p">],</span>
+    <span class="s1">&#39;routes&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+        <span class="c1">// your other routes here</span>
+    <span class="p">],</span>
+<span class="p">];</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="using-the-urlgenerator">
+<h2>Using the URLGenerator<a class="headerlink" href="#using-the-urlgenerator" title="Permalink to this headline">¶</a></h2>
+<p>Sometimes it is useful to turn a route into a URL to make the code independent from the URL design or to generate a URL for an image in <strong>img/</strong>. Inside the PageController the URL generator can be injected by adding it to the constructor, which will allow to use it to generate a URL for a redirect. For more details on that see the <a class="reference internal" href="container.html#id1"><span class="std std-ref">Dependency injection</span></a> reference.</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="k">namespace</span> <span class="nx">OCA\MyApp\Controller</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">\OCP\IRequest</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">\OCP\IURLGenerator</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">\OCP\AppFramework\Controller</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">\OCP\AppFramework\Http\RedirectResponse</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">PageController</span> <span class="k">extends</span> <span class="nx">Controller</span> <span class="p">{</span>
+
+    <span class="k">private</span> <span class="nv">$urlGenerator</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nv">$appName</span><span class="p">,</span> <span class="nx">IRequest</span> <span class="nv">$request</span><span class="p">,</span>
+                                <span class="nx">IURLGenerator</span> <span class="nv">$urlGenerator</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">(</span><span class="nv">$appName</span><span class="p">,</span> <span class="nv">$request</span><span class="p">);</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">urlGenerator</span> <span class="o">=</span> <span class="nv">$urlGenerator</span><span class="p">;</span>
+    <span class="p">}</span>
+
+    <span class="sd">/**</span>
+<span class="sd">     * redirect to /apps/news/myapp/authors/3</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">redirect</span><span class="p">()</span> <span class="p">{</span>
+        <span class="c1">// route name: author_api#do_something</span>
+        <span class="c1">// route url: /apps/news/myapp/authors/{id}</span>
+
+        <span class="c1">// # needs to be replaced with a . due to limitations and prefixed</span>
+        <span class="c1">// with your app id</span>
+        <span class="nv">$route</span> <span class="o">=</span> <span class="s1">&#39;myapp.author_api.do_something&#39;</span><span class="p">;</span>
+        <span class="nv">$parameters</span> <span class="o">=</span> <span class="k">array</span><span class="p">(</span><span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="mi">3</span><span class="p">);</span>
+
+        <span class="nv">$url</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">urlGenerator</span><span class="o">-&gt;</span><span class="na">linkToRoute</span><span class="p">(</span><span class="nv">$route</span><span class="p">,</span> <span class="nv">$parameters</span><span class="p">);</span>
+
+        <span class="k">return</span> <span class="k">new</span> <span class="nx">RedirectResponse</span><span class="p">(</span><span class="nv">$url</span><span class="p">);</span>
+    <span class="p">}</span>
+
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>URLGenerator is case sensitive, so <strong>appName</strong> must match <strong>exactly</strong> the name you use in <a class="reference internal" href="../storage/configuration.html"><span class="doc">configuration</span></a>.
+If you use a CamelCase name as <em>myCamelCaseApp</em>,</p>
+<div class="highlight-php"><div class="highlight"><pre><span></span><span class="cp">&lt;?php</span>
+<span class="nv">$route</span> <span class="o">=</span> <span class="s1">&#39;myCamelCaseApp.author_api.do_something&#39;</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="middleware.html" class="btn btn-neutral float-right" title="Middleware" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="index.html" class="btn btn-neutral float-left" title="Request lifecycle" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021 Nextcloud GmbH.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/16/developer_manual">16</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/17/developer_manual">17</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/18/developer_manual">18</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/developer_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/developer_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+   
+
+</body>
+</html>

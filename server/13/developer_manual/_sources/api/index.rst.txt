@@ -1,0 +1,281 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+.. _namespace-root-namespace:
+
+\\
+==
+
+
+Namespaces
+----------
+
+.. toctree::
+	:maxdepth: 1
+	
+	OC <OC/index>
+	OCP <OCP/index>
+
+
+Classes
+-------
+
+.. toctree::
+	:maxdepth: 1
+	
+	OC_Response <OC_Response>
+	OC_DB <OC_DB>
+	OC_Template <OC_Template>
+	OC_Hook <OC_Hook>
+	OC_Helper <OC_Helper>
+	OC_Defaults <OC_Defaults>
+	OC_Files <OC_Files>
+	OC_User <OC_User>
+	OC_App <OC_App>
+	OC_API <OC_API>
+	OC_DB_StatementWrapper <OC_DB_StatementWrapper>
+	OC_Util <OC_Util>
+	OC_FileChunking <OC_FileChunking>
+	OC_JSON <OC_JSON>
+	OC_EventSource <OC_EventSource>
+	OC_Image <OC_Image>
+
+
+Functions
+---------
+
+.. php:function:: p($string)
+
+	.. rst-class:: phpdoc-description
+	
+		| Prints a sanitized string
+		
+	
+	:param string $string: the string which will be escaped and printed
+
+
+.. php:function:: emit_css_tag($href, $opts)
+
+	.. rst-class:: phpdoc-description
+	
+		| Prints a <link\> tag for loading css
+		
+	
+	:param string $href: the source URL, ignored when empty
+
+
+.. php:function:: emit_css_loading_tags($obj)
+
+	.. rst-class:: phpdoc-description
+	
+		| Prints all tags for CSS loading
+		
+	
+	:param array $obj: all the script information from template
+
+
+.. php:function:: emit_script_tag($src, $script_content)
+
+	.. rst-class:: phpdoc-description
+	
+		| Prints a <script\> tag with nonce and defer depending on config
+		
+	
+	:param string $src: the source URL, ignored when empty
+	:param string $script_content: the inline script content, ignored when empty
+
+
+.. php:function:: emit_script_loading_tags($obj)
+
+	.. rst-class:: phpdoc-description
+	
+		| Print all <script\> tags for loading JS
+		
+	
+	:param array $obj: all the script information from template
+
+
+.. php:function:: print_unescaped($string)
+
+	.. rst-class:: phpdoc-description
+	
+		| Prints an unsanitized string \- usage of this function may result into XSS\.
+		
+		| Consider using p\(\) instead\.
+		
+	
+	:param string\|array $string: the string which will be printed as it is
+
+
+.. php:function:: script($app, $file)
+
+	.. rst-class:: phpdoc-description
+	
+		| Shortcut for adding scripts to a page
+		
+	
+	:param string $app: the appname
+	:param string\|string\[\] $file: the filename,
+		if an array is given it will add all scripts
+	
+
+
+.. php:function:: vendor_script($app, $file)
+
+	.. rst-class:: phpdoc-description
+	
+		| Shortcut for adding vendor scripts to a page
+		
+	
+	:param string $app: the appname
+	:param string\|string\[\] $file: the filename,
+		if an array is given it will add all scripts
+	
+
+
+.. php:function:: style($app, $file)
+
+	.. rst-class:: phpdoc-description
+	
+		| Shortcut for adding styles to a page
+		
+	
+	:param string $app: the appname
+	:param string\|string\[\] $file: the filename,
+		if an array is given it will add all styles
+	
+
+
+.. php:function:: vendor_style($app, $file)
+
+	.. rst-class:: phpdoc-description
+	
+		| Shortcut for adding vendor styles to a page
+		
+	
+	:param string $app: the appname
+	:param string\|string\[\] $file: the filename,
+		if an array is given it will add all styles
+	
+
+
+.. php:function:: translation($app)
+
+	.. rst-class:: phpdoc-description
+	
+		| Shortcut for adding translations to a page
+		
+	
+	:param string $app: the appname
+		if an array is given it will add all styles
+	
+
+
+.. php:function:: component($app, $file)
+
+	.. rst-class:: phpdoc-description
+	
+		| Shortcut for HTML imports
+		
+	
+	:param string $app: the appname
+	:param string\|string\[\] $file: the path relative to the app's component folder,
+		if an array is given it will add all components
+	
+
+
+.. php:function:: link_to($app, $file, $args)
+
+	.. rst-class:: phpdoc-description
+	
+		| make \\OCP\\IURLGenerator::linkTo available as a simple function
+		
+	
+	:param string $app: app
+	:param string $file: file
+	:param array $args: array with param=>value, will be appended to the returned url
+
+
+.. php:function:: link_to_docs($key)
+
+	:param  $key: 
+
+
+.. php:function:: image_path($app, $image)
+
+	.. rst-class:: phpdoc-description
+	
+		| make \\OCP\\IURLGenerator::imagePath available as a simple function
+		
+	
+	:param string $app: app
+	:param string $image: image
+
+
+.. php:function:: mimetype_icon($mimetype)
+
+	.. rst-class:: phpdoc-description
+	
+		| make OC\_Helper::mimetypeIcon available as a simple function
+		
+	
+	:param string $mimetype: mimetype
+
+
+.. php:function:: preview_icon($path)
+
+	.. rst-class:: phpdoc-description
+	
+		| make preview\_icon available as a simple function
+		| Returns the path to the preview of the image\.
+		
+	
+	:param string $path: path of file
+
+
+.. php:function:: publicPreview_icon($path, $token)
+
+	:param string $path: 
+	:param string $token: 
+
+
+.. php:function:: human_file_size($bytes)
+
+	.. rst-class:: phpdoc-description
+	
+		| make OC\_Helper::humanFileSize available as a simple function
+		
+	
+	:param int $bytes: size in bytes
+
+
+.. php:function:: strip_time($timestamp)
+
+	.. rst-class:: phpdoc-description
+	
+		| Strips the timestamp of its time value
+		
+	
+	:param int $timestamp: UNIX timestamp to strip
+
+
+.. php:function:: relative_modified_date($timestamp, $fromTime, $dateOnly)
+
+	.. rst-class:: phpdoc-description
+	
+		| Formats timestamp relatively to the current time using
+		| a human\-friendly format like "x minutes ago" or "yesterday"
+		
+	
+	:param int $timestamp: timestamp to format
+	:param int\|null $fromTime: timestamp to compare from, defaults to current time
+	:param bool\|null $dateOnly: whether to strip time information
+
+
+.. php:function:: html_select_options($options, $selected, $params)
+
+
+

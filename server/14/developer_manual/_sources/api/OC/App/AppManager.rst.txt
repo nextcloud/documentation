@@ -1,0 +1,439 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+AppManager
+==========
+
+
+.. php:namespace:: OC\App
+
+.. php:class:: AppManager
+
+
+	:Source:
+		`lib/private/App/AppManager.php#54 <https://github.com/nextcloud/server/blob/stable13/lib/private/App/AppManager.php#L54>`_
+	
+	:Implements:
+		:php:interface:`OCP\\App\\IAppManager` 
+	
+
+Properties
+----------
+
+.. php:attr:: protected static protectedAppTypes
+
+	.. rst-class:: phpdoc-description
+	
+		| Apps with these types can not be enabled for certain groups only
+		
+	
+	:Source:
+		`lib/private/App/AppManager.php#60 <https://github.com/nextcloud/server/blob/stable13/lib/private/App/AppManager.php#L60>`_
+	
+	:Type: string[] 
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $userSession, $config, $appConfig, $groupManager, $memCacheFactory, $dispatcher, $logger)
+	
+		:Source:
+			`lib/private/App/AppManager.php#107 <https://github.com/nextcloud/server/blob/stable13/lib/private/App/AppManager.php#L107>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getInstalledApps()
+	
+		.. rst-class:: phpdoc-description
+		
+			| List all installed apps
+			
+		
+		:Source:
+			`lib/private/App/AppManager.php#148 <https://github.com/nextcloud/server/blob/stable13/lib/private/App/AppManager.php#L148>`_
+		
+		
+		:Returns: string[] 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getEnabledAppsForUser( $user)
+	
+		.. rst-class:: phpdoc-description
+		
+			| List all apps enabled for a user
+			
+		
+		:Source:
+			`lib/private/App/AppManager.php#158 <https://github.com/nextcloud/server/blob/stable13/lib/private/App/AppManager.php#L158>`_
+		
+		
+		:Parameters:
+			* **$user** (:any:`OCP\\IUser <OCP\\IUser>`)  
+
+		
+		:Returns: string[] 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getEnabledAppsForGroup( $group)
+	
+		:Source:
+			`lib/private/App/AppManager.php#170 <https://github.com/nextcloud/server/blob/stable13/lib/private/App/AppManager.php#L170>`_
+		
+		
+		:Parameters:
+			* **$group** (:any:`OCP\\IGroup <OCP\\IGroup>`)  
+
+		
+		:Returns: array 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getAutoDisabledApps()
+	
+		:Source:
+			`lib/private/App/AppManager.php#181 <https://github.com/nextcloud/server/blob/stable13/lib/private/App/AppManager.php#L181>`_
+		
+		
+		:Returns: array 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getAppRestriction( $appId)
+	
+		:Source:
+			`lib/private/App/AppManager.php#189 <https://github.com/nextcloud/server/blob/stable13/lib/private/App/AppManager.php#L189>`_
+		
+		
+		:Parameters:
+			* **$appId** (string)  
+
+		
+		:Returns: array 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isEnabledForUser( $appId, $user=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check if an app is enabled for user
+			
+		
+		:Source:
+			`lib/private/App/AppManager.php#210 <https://github.com/nextcloud/server/blob/stable13/lib/private/App/AppManager.php#L210>`_
+		
+		
+		:Parameters:
+			* **$appId** (string)  
+			* **$user** (:any:`OCP\\IUser <OCP\\IUser>`)  (optional) if not defined, the currently logged in user will be used
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isInstalled( $appId)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check if an app is enabled in the instance
+			
+			| Notice: This actually checks if the app is enabled and not only if it is installed\.
+			
+		
+		:Source:
+			`lib/private/App/AppManager.php#294 <https://github.com/nextcloud/server/blob/stable13/lib/private/App/AppManager.php#L294>`_
+		
+		
+		:Parameters:
+			* **$appId** (string)  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public ignoreNextcloudRequirementForApp( $appId)
+	
+		:Source:
+			`lib/private/App/AppManager.php#299 <https://github.com/nextcloud/server/blob/stable13/lib/private/App/AppManager.php#L299>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public enableApp( $appId, $forceEnable=false)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Enable an app for every user
+			
+		
+		:Source:
+			`lib/private/App/AppManager.php#314 <https://github.com/nextcloud/server/blob/stable13/lib/private/App/AppManager.php#L314>`_
+		
+		
+		:Parameters:
+			* **$appId** (string)  
+			* **$forceEnable** (bool)  
+
+		
+		:Throws: :any:`\\OCP\\App\\AppPathNotFoundException <OCP\\App\\AppPathNotFoundException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public hasProtectedAppType( $types)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Whether a list of types contains a protected app type
+			
+		
+		:Source:
+			`lib/private/App/AppManager.php#336 <https://github.com/nextcloud/server/blob/stable13/lib/private/App/AppManager.php#L336>`_
+		
+		
+		:Parameters:
+			* **$types** (string[])  
+
+		
+		:Returns: bool 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public enableAppForGroups( $appId, $groups, $forceEnable=false)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Enable an app only for specific groups
+			
+		
+		:Source:
+			`lib/private/App/AppManager.php#354 <https://github.com/nextcloud/server/blob/stable13/lib/private/App/AppManager.php#L354>`_
+		
+		
+		:Parameters:
+			* **$appId** (string)  
+			* **$groups** (:any:`OCP\\IGroup\[\] <OCP\\IGroup>`)  
+			* **$forceEnable** (bool)  
+
+		
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` if app can\'t be enabled for groups
+		:Throws: :any:`\\OCP\\App\\AppPathNotFoundException <OCP\\App\\AppPathNotFoundException>` 
+		:Throws: :any:`\\InvalidArgumentException <InvalidArgumentException>` if app can\'t be enabled for groups
+		:Throws: :any:`\\OCP\\App\\AppPathNotFoundException <OCP\\App\\AppPathNotFoundException>` 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public disableApp( $appId, $automaticDisabled=false)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Disable an app for every user
+			
+		
+		:Source:
+			`lib/private/App/AppManager.php#389 <https://github.com/nextcloud/server/blob/stable13/lib/private/App/AppManager.php#L389>`_
+		
+		
+		:Parameters:
+			* **$appId** (string)  
+			* **$automaticDisabled** (bool)  
+
+		
+		:Throws: :any:`\\Exception <Exception>` if app can\'t be disabled
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getAppPath( $appId)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the directory for the given app\.
+			
+		
+		:Source:
+			`lib/private/App/AppManager.php#420 <https://github.com/nextcloud/server/blob/stable13/lib/private/App/AppManager.php#L420>`_
+		
+		
+		:Parameters:
+			* **$appId** (string)  
+
+		
+		:Returns: string 
+		:Throws: :any:`\\OCP\\App\\AppPathNotFoundException <OCP\\App\\AppPathNotFoundException>` if app folder can\'t be found
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getAppWebPath( $appId)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the web path for the given app\.
+			
+		
+		:Source:
+			`lib/private/App/AppManager.php#435 <https://github.com/nextcloud/server/blob/stable13/lib/private/App/AppManager.php#L435>`_
+		
+		
+		:Parameters:
+			* **$appId** (string)  
+
+		
+		:Returns: string 
+		:Throws: :any:`\\OCP\\App\\AppPathNotFoundException <OCP\\App\\AppPathNotFoundException>` if app path can\'t be found
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public clearAppsCache()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Clear the cached list of apps when enabling/disabling an app
+			
+		
+		:Source:
+			`lib/private/App/AppManager.php#446 <https://github.com/nextcloud/server/blob/stable13/lib/private/App/AppManager.php#L446>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getAppsNeedingUpgrade( $version)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns a list of apps that need upgrade
+			
+		
+		:Source:
+			`lib/private/App/AppManager.php#460 <https://github.com/nextcloud/server/blob/stable13/lib/private/App/AppManager.php#L460>`_
+		
+		
+		:Parameters:
+			* **$version** (string)  Nextcloud version as array of version components
+
+		
+		:Returns: array list of app info from apps that need an upgrade
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getAppInfo( $appId, $path=false, $lang=null)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns the app information from "appinfo/info\.xml"\.
+			
+		
+		:Source:
+			`lib/private/App/AppManager.php#487 <https://github.com/nextcloud/server/blob/stable13/lib/private/App/AppManager.php#L487>`_
+		
+		
+		:Parameters:
+			* **$appId** (string)  app id
+			* **$path** (bool)  
+			* **$lang** (null)  
+
+		
+		:Returns: array | null app info
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getAppVersion( $appId, $useCache=true)
+	
+		:Source:
+			`lib/private/App/AppManager.php#516 <https://github.com/nextcloud/server/blob/stable13/lib/private/App/AppManager.php#L516>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getIncompatibleApps( $version)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Returns a list of apps incompatible with the given version
+			
+		
+		:Source:
+			`lib/private/App/AppManager.php#533 <https://github.com/nextcloud/server/blob/stable13/lib/private/App/AppManager.php#L533>`_
+		
+		
+		:Parameters:
+			* **$version** (string)  Nextcloud version as array of version components
+
+		
+		:Returns: array list of app info from incompatible apps
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isShipped( $appId)
+	
+		:Source:
+			`lib/private/App/AppManager.php#551 <https://github.com/nextcloud/server/blob/stable13/lib/private/App/AppManager.php#L551>`_
+		
+		
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getAlwaysEnabledApps()
+	
+		:Source:
+			`lib/private/App/AppManager.php#580 <https://github.com/nextcloud/server/blob/stable13/lib/private/App/AppManager.php#L580>`_
+		
+		
+	
+	
+

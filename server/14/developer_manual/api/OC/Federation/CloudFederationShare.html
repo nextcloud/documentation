@@ -1,0 +1,896 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>CloudFederationShare &mdash; Nextcloud 14 Developer Manual 14 documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../../_static/custom.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="../../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript">
+          var DOCUMENTATION_OPTIONS = {
+              URL_ROOT:'../../../',
+              VERSION:'14',
+              LANGUAGE:'None',
+              COLLAPSE_INDEX:false,
+              FILE_SUFFIX:'.html',
+              HAS_SOURCE:  true,
+              SOURCELINK_SUFFIX: '.txt'
+          };
+      </script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="../../../genindex.html" />
+    <link rel="search" title="Search" href="../../../search.html" />
+    <link rel="next" title="Files" href="../Files/index.html" />
+    <link rel="prev" title="CloudIdManager" href="CloudIdManager.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html">
+          
+
+          
+            
+            <img src="../../../_static/logo-white.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../general/index.html">General contributor guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/changelog.html">Changelog</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/tutorial.html">Tutorial</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/startapp.html">Create an app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/init.html">Navigation and pre-app configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/info.html">App metadata</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/classloader.html">Classloader</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/request.html">Request lifecycle</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/routes.html">Routing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/middleware.html">Middleware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/container.html">Container</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/controllers.html">Controllers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/api.html">RESTful API</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/templates.html">Templates</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/js.html">JavaScript</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/css.html">CSS</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/l10n.html">Translation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/theming.html">Theming support</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/schema.html">Database schema</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/database.html">Database access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/configuration.html">Configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/filesystem.html">Filesystem</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/appdata.html">AppData</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/users.html">User management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/two-factor-provider.html">Two-factor providers</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/hooks.html">Hooks</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/backgroundjobs.html">Background jobs (Cron)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/settings.html">Settings</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/logging.html">Logging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/migrations.html">Migrations</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/repair.html">Repair steps</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/testing.html">Testing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/publishing.html">App store publishing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/code_signing.html">Code signing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../app/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../design/index.html">Design guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../android_library/index.html">Android application development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../client_apis/index.html">Client APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../core/index.html">Core development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../bugtracker/index.html">Bugtracker</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../commun/index.html">Help and communication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../api.html">API Documentation</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">Nextcloud 14 Developer Manual</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content style-external-links">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html" class="icon icon-home"></a> &raquo;</li>
+        
+          <li><a href="../../../api.html">API Documentation</a> &raquo;</li>
+        
+          <li><a href="../../index.html">\</a> &raquo;</li>
+        
+          <li><a href="../index.html">OC</a> &raquo;</li>
+        
+          <li><a href="index.html">Federation</a> &raquo;</li>
+        
+      <li>CloudFederationShare</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            
+              <a href="https://github.com/nextcloud/documentation/edit/stable14/developer_manual/api/OC/Federation/CloudFederationShare.rst" class="fa fa-github"> Edit on GitHub</a>
+            
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="phpdoctorst section" id="namespace-OC\Federation">
+<span id="cloudfederationshare"></span><h1>CloudFederationShare<a class="headerlink" href="#namespace-OC\Federation" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="OC\Federation\CloudFederationShare">
+<em class="property">class </em><code class="descclassname">OC\Federation\</code><code class="descname">CloudFederationShare</code><a class="headerlink" href="#OC\Federation\CloudFederationShare" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Federation/CloudFederationShare.php#L30">lib/private/Federation/CloudFederationShare.php#30</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Implements:</th><td class="field-body"><a class="reference internal" href="../../OCP/Federation/ICloudFederationShare.html#OCP\Federation\ICloudFederationShare" title="OCP\Federation\ICloudFederationShare"><code class="xref php php-interface docutils literal"><span class="pre">OCP\Federation\ICloudFederationShare</span></code></a></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<div class="section" id="properties">
+<h2>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="methods">
+<h2>Methods<a class="headerlink" href="#methods" title="Permalink to this headline">¶</a></h2>
+<dl class="public method">
+<dt id="OC\Federation\CloudFederationShare::__construct">
+<em class="property">public </em><code class="descclassname">OC\Federation\CloudFederationShare::</code><code class="descname">__construct</code><span class="sig-paren">(</span><em>$shareWith=&quot;&quot;</em>, <em>$name=&quot;&quot;</em>, <em>$description=&quot;&quot;</em>, <em>$providerId=&quot;&quot;</em>, <em>$owner=&quot;&quot;</em>, <em>$ownerDisplayName=&quot;&quot;</em>, <em>$sharedBy=&quot;&quot;</em>, <em>$sharedByDisplayName=&quot;&quot;</em>, <em>$shareType=&quot;&quot;</em>, <em>$resourceType=&quot;&quot;</em>, <em>$sharedSecret=&quot;&quot;</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Federation\CloudFederationShare::__construct" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">get a CloudFederationShare Object to prepare a share you want to send</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Federation/CloudFederationShare.php#L60">lib/private/Federation/CloudFederationShare.php#60</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>$shareWith</strong> (string)</li>
+<li><strong>$name</strong> (string)  resource name (e.g. document.odt)</li>
+<li><strong>$description</strong> (string)  share description (optional)</li>
+<li><strong>$providerId</strong> (string)  resource UID on the provider side</li>
+<li><strong>$owner</strong> (string)  provider specific UID of the user who owns the resource</li>
+<li><strong>$ownerDisplayName</strong> (string)  display name of the user who shared the item</li>
+<li><strong>$sharedBy</strong> (string)  provider specific UID of the user who shared the resource</li>
+<li><strong>$sharedByDisplayName</strong> (string)  display name of the user who shared the resource</li>
+<li><strong>$shareType</strong> (string)  (&#8216;group&#8217; or &#8216;user&#8217; share)</li>
+<li><strong>$resourceType</strong> (string)  (&#8216;file&#8217;, &#8216;calendar&#8217;,...)</li>
+<li><strong>$sharedSecret</strong> (string)</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Federation\CloudFederationShare::setShareWith">
+<em class="property">public </em><code class="descclassname">OC\Federation\CloudFederationShare::</code><code class="descname">setShareWith</code><span class="sig-paren">(</span><em>$user</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Federation\CloudFederationShare::setShareWith" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">set uid of the recipient</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Federation/CloudFederationShare.php#L98">lib/private/Federation/CloudFederationShare.php#98</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$user</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">14.0.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Federation\CloudFederationShare::setResourceName">
+<em class="property">public </em><code class="descclassname">OC\Federation\CloudFederationShare::</code><code class="descname">setResourceName</code><span class="sig-paren">(</span><em>$name</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Federation\CloudFederationShare::setResourceName" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">set resource name (e.g. document.odt)</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Federation/CloudFederationShare.php#L109">lib/private/Federation/CloudFederationShare.php#109</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$name</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">14.0.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Federation\CloudFederationShare::setResourceType">
+<em class="property">public </em><code class="descclassname">OC\Federation\CloudFederationShare::</code><code class="descname">setResourceType</code><span class="sig-paren">(</span><em>$resourceType</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Federation\CloudFederationShare::setResourceType" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">set resource type (e.g. file, calendar, contact,.</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">..)</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Federation/CloudFederationShare.php#L120">lib/private/Federation/CloudFederationShare.php#120</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$resourceType</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">14.0.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Federation\CloudFederationShare::setDescription">
+<em class="property">public </em><code class="descclassname">OC\Federation\CloudFederationShare::</code><code class="descname">setDescription</code><span class="sig-paren">(</span><em>$description</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Federation\CloudFederationShare::setDescription" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">set resource description (optional)</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Federation/CloudFederationShare.php#L131">lib/private/Federation/CloudFederationShare.php#131</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$description</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">14.0.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Federation\CloudFederationShare::setProviderId">
+<em class="property">public </em><code class="descclassname">OC\Federation\CloudFederationShare::</code><code class="descname">setProviderId</code><span class="sig-paren">(</span><em>$providerId</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Federation\CloudFederationShare::setProviderId" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">set provider ID (e.g. file ID)</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Federation/CloudFederationShare.php#L142">lib/private/Federation/CloudFederationShare.php#142</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$providerId</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">14.0.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Federation\CloudFederationShare::setOwner">
+<em class="property">public </em><code class="descclassname">OC\Federation\CloudFederationShare::</code><code class="descname">setOwner</code><span class="sig-paren">(</span><em>$owner</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Federation\CloudFederationShare::setOwner" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">set owner UID</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Federation/CloudFederationShare.php#L153">lib/private/Federation/CloudFederationShare.php#153</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$owner</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">14.0.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Federation\CloudFederationShare::setOwnerDisplayName">
+<em class="property">public </em><code class="descclassname">OC\Federation\CloudFederationShare::</code><code class="descname">setOwnerDisplayName</code><span class="sig-paren">(</span><em>$ownerDisplayName</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Federation\CloudFederationShare::setOwnerDisplayName" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">set owner display name</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Federation/CloudFederationShare.php#L164">lib/private/Federation/CloudFederationShare.php#164</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$ownerDisplayName</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">14.0.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Federation\CloudFederationShare::setSharedBy">
+<em class="property">public </em><code class="descclassname">OC\Federation\CloudFederationShare::</code><code class="descname">setSharedBy</code><span class="sig-paren">(</span><em>$sharedBy</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Federation\CloudFederationShare::setSharedBy" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">set UID of the user who sends the share</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Federation/CloudFederationShare.php#L175">lib/private/Federation/CloudFederationShare.php#175</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$sharedBy</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">14.0.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Federation\CloudFederationShare::setSharedByDisplayName">
+<em class="property">public </em><code class="descclassname">OC\Federation\CloudFederationShare::</code><code class="descname">setSharedByDisplayName</code><span class="sig-paren">(</span><em>$sharedByDisplayName</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Federation\CloudFederationShare::setSharedByDisplayName" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">set display name of the user who sends the share</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Federation/CloudFederationShare.php#L186">lib/private/Federation/CloudFederationShare.php#186</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$sharedByDisplayName</strong></li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">14.0.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Federation\CloudFederationShare::setProtocol">
+<em class="property">public </em><code class="descclassname">OC\Federation\CloudFederationShare::</code><code class="descname">setProtocol</code><span class="sig-paren">(</span><em>$protocol</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Federation\CloudFederationShare::setProtocol" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">set protocol specification</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Federation/CloudFederationShare.php#L197">lib/private/Federation/CloudFederationShare.php#197</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$protocol</strong> (array)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">14.0.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Federation\CloudFederationShare::setShareType">
+<em class="property">public </em><code class="descclassname">OC\Federation\CloudFederationShare::</code><code class="descname">setShareType</code><span class="sig-paren">(</span><em>$shareType</em><span class="sig-paren">)</span><a class="headerlink" href="#OC\Federation\CloudFederationShare::setShareType" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">share type (group or user)</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><p class="first"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Federation/CloudFederationShare.php#L208">lib/private/Federation/CloudFederationShare.php#208</a></p>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>$shareType</strong> (string)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body"><p class="first last">14.0.0</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Federation\CloudFederationShare::getShare">
+<em class="property">public </em><code class="descclassname">OC\Federation\CloudFederationShare::</code><code class="descname">getShare</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Federation\CloudFederationShare::getShare" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">get the whole share, ready to send out</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Federation/CloudFederationShare.php#L223">lib/private/Federation/CloudFederationShare.php#223</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">array</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">14.0.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Federation\CloudFederationShare::getShareWith">
+<em class="property">public </em><code class="descclassname">OC\Federation\CloudFederationShare::</code><code class="descname">getShareWith</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Federation\CloudFederationShare::getShareWith" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">get uid of the recipient</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Federation/CloudFederationShare.php#L234">lib/private/Federation/CloudFederationShare.php#234</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">string</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">14.0.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Federation\CloudFederationShare::getResourceName">
+<em class="property">public </em><code class="descclassname">OC\Federation\CloudFederationShare::</code><code class="descname">getResourceName</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Federation\CloudFederationShare::getResourceName" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">get resource name (e.g. file, calendar, contact,.</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">..)</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Federation/CloudFederationShare.php#L245">lib/private/Federation/CloudFederationShare.php#245</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">string</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">14.0.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Federation\CloudFederationShare::getResourceType">
+<em class="property">public </em><code class="descclassname">OC\Federation\CloudFederationShare::</code><code class="descname">getResourceType</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Federation\CloudFederationShare::getResourceType" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">get resource type (e.g. file, calendar, contact,.</div>
+</div>
+<div class="phpdoc-description line-block">
+<div class="line">..)</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Federation/CloudFederationShare.php#L256">lib/private/Federation/CloudFederationShare.php#256</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">string</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">14.0.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Federation\CloudFederationShare::getDescription">
+<em class="property">public </em><code class="descclassname">OC\Federation\CloudFederationShare::</code><code class="descname">getDescription</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Federation\CloudFederationShare::getDescription" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">get resource description (optional)</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Federation/CloudFederationShare.php#L267">lib/private/Federation/CloudFederationShare.php#267</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">string</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">14.0.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Federation\CloudFederationShare::getProviderId">
+<em class="property">public </em><code class="descclassname">OC\Federation\CloudFederationShare::</code><code class="descname">getProviderId</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Federation\CloudFederationShare::getProviderId" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">get provider ID (e.g. file ID)</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Federation/CloudFederationShare.php#L278">lib/private/Federation/CloudFederationShare.php#278</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">string</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">14.0.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Federation\CloudFederationShare::getOwner">
+<em class="property">public </em><code class="descclassname">OC\Federation\CloudFederationShare::</code><code class="descname">getOwner</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Federation\CloudFederationShare::getOwner" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">get owner UID</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Federation/CloudFederationShare.php#L289">lib/private/Federation/CloudFederationShare.php#289</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">string</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">14.0.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Federation\CloudFederationShare::getOwnerDisplayName">
+<em class="property">public </em><code class="descclassname">OC\Federation\CloudFederationShare::</code><code class="descname">getOwnerDisplayName</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Federation\CloudFederationShare::getOwnerDisplayName" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">get owner display name</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Federation/CloudFederationShare.php#L300">lib/private/Federation/CloudFederationShare.php#300</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">string</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">14.0.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Federation\CloudFederationShare::getSharedBy">
+<em class="property">public </em><code class="descclassname">OC\Federation\CloudFederationShare::</code><code class="descname">getSharedBy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Federation\CloudFederationShare::getSharedBy" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">get UID of the user who sends the share</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Federation/CloudFederationShare.php#L311">lib/private/Federation/CloudFederationShare.php#311</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">string</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">14.0.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Federation\CloudFederationShare::getSharedByDisplayName">
+<em class="property">public </em><code class="descclassname">OC\Federation\CloudFederationShare::</code><code class="descname">getSharedByDisplayName</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Federation\CloudFederationShare::getSharedByDisplayName" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">get display name of the user who sends the share</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Federation/CloudFederationShare.php#L322">lib/private/Federation/CloudFederationShare.php#322</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">string</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">14.0.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Federation\CloudFederationShare::getShareType">
+<em class="property">public </em><code class="descclassname">OC\Federation\CloudFederationShare::</code><code class="descname">getShareType</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Federation\CloudFederationShare::getShareType" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">get share type (group or user)</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Federation/CloudFederationShare.php#L333">lib/private/Federation/CloudFederationShare.php#333</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">string</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">14.0.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Federation\CloudFederationShare::getShareSecret">
+<em class="property">public </em><code class="descclassname">OC\Federation\CloudFederationShare::</code><code class="descname">getShareSecret</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Federation\CloudFederationShare::getShareSecret" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">get share Secret</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Federation/CloudFederationShare.php#L344">lib/private/Federation/CloudFederationShare.php#344</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">string</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">14.0.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="public method">
+<dt id="OC\Federation\CloudFederationShare::getProtocol">
+<em class="property">public </em><code class="descclassname">OC\Federation\CloudFederationShare::</code><code class="descname">getProtocol</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#OC\Federation\CloudFederationShare::getProtocol" title="Permalink to this definition">¶</a></dt>
+<dd><div class="phpdoc-description line-block">
+<div class="line">get protocol specification</div>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Source:</th><td class="field-body"><a class="reference external" href="https://github.com/nextcloud/server/blob/stable13/lib/private/Federation/CloudFederationShare.php#L355">lib/private/Federation/CloudFederationShare.php#355</a></td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">array</td>
+</tr>
+<tr class="field-odd field"><th class="field-name">Since:</th><td class="field-body">14.0.0</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="../Files/index.html" class="btn btn-neutral float-right" title="Files" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="CloudIdManager.html" class="btn btn-neutral float-left" title="CloudIdManager" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2021 Nextcloud GmbH.
+
+    </p>
+  </div> 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      <span class="fa fa-book"> Read the Docs</span>
+      v: 14
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>Versions</dt>
+        
+          <dd><a href="https://docs.nextcloud.com/server/14/developer_manual">14</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/15/developer_manual">15</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/16/developer_manual">16</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/stable/developer_manual">stable</a></dd>
+        
+          <dd><a href="https://docs.nextcloud.com/server/latest/developer_manual">latest</a></dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Project Home</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+   
+
+</body>
+</html>

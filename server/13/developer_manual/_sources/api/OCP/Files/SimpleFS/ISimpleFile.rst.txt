@@ -1,0 +1,224 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+ISimpleFile
+===========
+
+
+.. php:namespace:: OCP\Files\SimpleFS
+
+.. php:interface:: ISimpleFile
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Interface ISimpleFile
+		
+	
+	:Implemented by:
+		:php:class:`OCP\\Files\\SimpleFS\\InMemoryFile` :php:class:`OC\\Files\\SimpleFS\\NewSimpleFile` :php:class:`OC\\Files\\SimpleFS\\SimpleFile` 
+	
+	
+	:Source:
+		`lib/public/Files/SimpleFS/ISimpleFile.php#36 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/SimpleFS/ISimpleFile.php#L36>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public getName()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the name
+			
+		
+		:Source:
+			`lib/public/Files/SimpleFS/ISimpleFile.php#44 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/SimpleFS/ISimpleFile.php#L44>`_
+		
+		
+		:Returns: string 
+		:Since: 11.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getSize()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the size in bytes
+			
+		
+		:Source:
+			`lib/public/Files/SimpleFS/ISimpleFile.php#52 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/SimpleFS/ISimpleFile.php#L52>`_
+		
+		
+		:Returns: int 
+		:Since: 11.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getETag()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the ETag
+			
+		
+		:Source:
+			`lib/public/Files/SimpleFS/ISimpleFile.php#60 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/SimpleFS/ISimpleFile.php#L60>`_
+		
+		
+		:Returns: string 
+		:Since: 11.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getMTime()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the last modification time
+			
+		
+		:Source:
+			`lib/public/Files/SimpleFS/ISimpleFile.php#68 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/SimpleFS/ISimpleFile.php#L68>`_
+		
+		
+		:Returns: int 
+		:Since: 11.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getContent()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the content
+			
+		
+		:Source:
+			`lib/public/Files/SimpleFS/ISimpleFile.php#78 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/SimpleFS/ISimpleFile.php#L78>`_
+		
+		
+		:Throws: :any:`\\OCP\\Files\\NotPermittedException <OCP\\Files\\NotPermittedException>` 
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+		:Throws: :any:`\\OCP\\Files\\NotPermittedException <OCP\\Files\\NotPermittedException>` 
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+		:Returns: string 
+		:Since: 11.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public putContent( $data)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Overwrite the file
+			
+		
+		:Source:
+			`lib/public/Files/SimpleFS/ISimpleFile.php#88 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/SimpleFS/ISimpleFile.php#L88>`_
+		
+		
+		:Parameters:
+			* **$data** (string | resource)  
+
+		
+		:Throws: :any:`\\OCP\\Files\\NotPermittedException <OCP\\Files\\NotPermittedException>` 
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+		:Throws: :any:`\\OCP\\Files\\NotPermittedException <OCP\\Files\\NotPermittedException>` 
+		:Throws: :any:`\\OCP\\Files\\NotFoundException <OCP\\Files\\NotFoundException>` 
+		:Since: 11.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public delete()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Delete the file
+			
+		
+		:Source:
+			`lib/public/Files/SimpleFS/ISimpleFile.php#96 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/SimpleFS/ISimpleFile.php#L96>`_
+		
+		
+		:Throws: :any:`\\OCP\\Files\\NotPermittedException <OCP\\Files\\NotPermittedException>` 
+		:Since: 11.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public getMimeType()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the MimeType
+			
+		
+		:Source:
+			`lib/public/Files/SimpleFS/ISimpleFile.php#104 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/SimpleFS/ISimpleFile.php#L104>`_
+		
+		
+		:Returns: string 
+		:Since: 11.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public read()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Open the file as stream for reading, resulting resource can be operated as stream like the result from php\'s own fopen
+			
+		
+		:Source:
+			`lib/public/Files/SimpleFS/ISimpleFile.php#113 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/SimpleFS/ISimpleFile.php#L113>`_
+		
+		
+		:Returns: resource 
+		:Throws: :any:`\\OCP\\Files\\NotPermittedException <OCP\\Files\\NotPermittedException>` 
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public write()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Open the file as stream for writing, resulting resource can be operated as stream like the result from php\'s own fopen
+			
+		
+		:Source:
+			`lib/public/Files/SimpleFS/ISimpleFile.php#122 <https://github.com/nextcloud/server/blob/stable13/lib/public/Files/SimpleFS/ISimpleFile.php#L122>`_
+		
+		
+		:Returns: resource | bool 
+		:Throws: :any:`\\OCP\\Files\\NotPermittedException <OCP\\Files\\NotPermittedException>` 
+		:Since: 14.0.0 
+	
+	
+

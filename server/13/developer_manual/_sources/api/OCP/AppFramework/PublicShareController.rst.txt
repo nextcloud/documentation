@@ -1,0 +1,190 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+PublicShareController
+=====================
+
+
+.. php:namespace:: OCP\AppFramework
+
+.. rst-class::  abstract
+
+.. php:class:: PublicShareController
+
+
+	.. rst-class:: phpdoc-description
+	
+		| Base controller for public shares
+		
+		| It will verify if the user is properly authenticated to the share\. If not a 404
+		| is thrown by the PublicShareMiddleware\.
+		| 
+		| Use this for example for a controller that is not to be called via a webbrowser
+		| directly\. For example a PublicPreviewController\. As this is not meant to be
+		| called by a user direclty\.
+		| 
+		| To show an auth page extend the AuthPublicShareController
+		
+	
+	:Source:
+		`lib/public/AppFramework/PublicShareController.php#44 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/PublicShareController.php#L44>`_
+	
+	:Parent:
+		:php:class:`OCP\\AppFramework\\Controller`
+	
+
+Properties
+----------
+
+.. php:attr:: protected static session
+
+	:Source:
+		`lib/public/AppFramework/PublicShareController.php#47 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/PublicShareController.php#L47>`_
+	
+	:Type: :any:`\\OCP\\ISession <OCP\\ISession>` 
+
+
+Methods
+-------
+
+.. rst-class:: public
+
+	.. php:method:: public __construct( $appName, $request, $session)
+	
+		:Source:
+			`lib/public/AppFramework/PublicShareController.php#55 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/PublicShareController.php#L55>`_
+		
+		
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: public final
+
+	.. php:method:: public final setToken( $token)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Middleware set the token for the request
+			
+		
+		:Source:
+			`lib/public/AppFramework/PublicShareController.php#68 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/PublicShareController.php#L68>`_
+		
+		
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: public final
+
+	.. php:method:: public final getToken()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the token for this request
+			
+		
+		:Source:
+			`lib/public/AppFramework/PublicShareController.php#77 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/PublicShareController.php#L77>`_
+		
+		
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: protected abstract
+
+	.. php:method:: protected abstract getPasswordHash()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get a hash of the password for this share
+			
+			| To ensure access is blocked when the password to a share is changed we store
+			| a hash of the password for this token\.
+			
+		
+		:Source:
+			`lib/public/AppFramework/PublicShareController.php#89 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/PublicShareController.php#L89>`_
+		
+		
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: public abstract
+
+	.. php:method:: public abstract isValidToken()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Is the provided token a valid token
+			
+			| This function is already called from the middleware directly after setting the token\.
+			
+		
+		:Source:
+			`lib/public/AppFramework/PublicShareController.php#98 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/PublicShareController.php#L98>`_
+		
+		
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: protected abstract
+
+	.. php:method:: protected abstract isPasswordProtected()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Is a share with this token password protected
+			
+		
+		:Source:
+			`lib/public/AppFramework/PublicShareController.php#105 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/PublicShareController.php#L105>`_
+		
+		
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public isAuthenticated()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Check if a share is authenticated or not
+			
+		
+		:Source:
+			`lib/public/AppFramework/PublicShareController.php#112 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/PublicShareController.php#L112>`_
+		
+		
+		:Since: 14.0.0 
+	
+	
+
+.. rst-class:: public
+
+	.. php:method:: public shareNotFound()
+	
+		.. rst-class:: phpdoc-description
+		
+			| Function called if the share is not found\.
+			
+			| You can use this to do some logging for example
+			
+		
+		:Source:
+			`lib/public/AppFramework/PublicShareController.php#135 <https://github.com/nextcloud/server/blob/stable13/lib/public/AppFramework/PublicShareController.php#L135>`_
+		
+		
+		:Since: 14.0.0 
+	
+	
+

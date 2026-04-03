@@ -1,0 +1,145 @@
+.. rst-class:: phpdoctorst
+
+.. role:: php(code)
+	:language: php
+
+
+App
+===
+
+
+.. php:namespace:: OCP
+
+.. php:class:: App
+
+
+	.. rst-class:: phpdoc-description
+	
+		| This class provides functions to manage apps in ownCloud
+		
+	
+	:Source:
+		`lib/public/App.php#49 <https://github.com/nextcloud/server/blob/stable13/lib/public/App.php#L49>`_
+	
+
+Methods
+-------
+
+.. rst-class:: public static deprecated
+
+	.. php:method:: public static registerPersonal( $app, $page)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Register a Configuration Screen that should appear in the personal settings section\.
+			
+		
+		:Source:
+			`lib/public/App.php#60 <https://github.com/nextcloud/server/blob/stable13/lib/public/App.php#L60>`_
+		
+		
+		:Parameters:
+			* **$app** (string)  appid
+			* **$page** (string)  page to be included
+
+		
+		:Returns: void 
+		:Since: 4.0.0 
+		:Deprecated: 14.0.0 Use settings section in appinfo\.xml to register personal admin sections
+	
+	
+
+.. rst-class:: public static deprecated
+
+	.. php:method:: public static registerAdmin( $app, $page)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Register a Configuration Screen that should appear in the Admin section\.
+			
+		
+		:Source:
+			`lib/public/App.php#72 <https://github.com/nextcloud/server/blob/stable13/lib/public/App.php#L72>`_
+		
+		
+		:Parameters:
+			* **$app** (string)  string appid
+			* **$page** (string)  string page to be included
+
+		
+		:Returns: void 
+		:Since: 4.0.0 
+		:Deprecated: 14.0.0 Use settings section in appinfo\.xml to register admin sections
+	
+	
+
+.. rst-class:: public static deprecated
+
+	.. php:method:: public static getAppInfo( $app, $path=false)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Read app metadata from the info\.xml file
+			
+		
+		:Source:
+			`lib/public/App.php#84 <https://github.com/nextcloud/server/blob/stable13/lib/public/App.php#L84>`_
+		
+		
+		:Parameters:
+			* **$app** (string)  id of the app or the path of the info.xml file
+			* **$path** (bool)  (optional)
+
+		
+		:Returns: array | null 
+		:Deprecated: 14.0.0 ise \\OC::$server\-\>getAppManager\(\)\-\>getAppInfo\($appId\)
+		:Since: 4.0.0 
+	
+	
+
+.. rst-class:: public static deprecated
+
+	.. php:method:: public static isEnabled( $app)
+	
+		.. rst-class:: phpdoc-description
+		
+			| checks whether or not an app is enabled
+			
+		
+		:Source:
+			`lib/public/App.php#97 <https://github.com/nextcloud/server/blob/stable13/lib/public/App.php#L97>`_
+		
+		
+		:Parameters:
+			* **$app** (string)  
+
+		
+		:Returns: bool This function checks whether or not an app is enabled\.
+		:Since: 4.0.0 
+		:Deprecated: 13.0.0 use \\OC::$server\-\>getAppManager\(\)\-\>isEnabledForUser\($appId\)
+	
+	
+
+.. rst-class:: public static deprecated
+
+	.. php:method:: public static getAppVersion( $app)
+	
+		.. rst-class:: phpdoc-description
+		
+			| Get the last version of the app from appinfo/info\.xml
+			
+		
+		:Source:
+			`lib/public/App.php#108 <https://github.com/nextcloud/server/blob/stable13/lib/public/App.php#L108>`_
+		
+		
+		:Parameters:
+			* **$app** (string)  
+
+		
+		:Returns: string 
+		:Since: 4.0.0 
+		:Deprecated: 14.0.0 use \\OC::$server\-\>getAppManager\(\)\-\>getAppVersion\($appId\)
+	
+	
+
