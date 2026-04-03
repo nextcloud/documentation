@@ -14,8 +14,6 @@ Nextcloud users can share files and folders. Possible targets are:
 .. note:: Some options may not be available due to administrative configuration.
    See `administrator documentation <https://docs.nextcloud.com/server/31/admin_manual/configuration_files/file_sharing_configuration.html>`__ for details.
 
-.. TODO ON RELEASE: Update version number above on release
-
 
 Public link shares
 ------------------
