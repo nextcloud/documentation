@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Upgrade to Nextcloud 26 &mdash; Nextcloud latest Developer Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=c6e86fd7"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../_static/copybutton.js?v=f281be69"></script>
+        <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+        <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Upgrade to Nextcloud 25" href="upgrade_to_25.html" />
+    <link rel="prev" title="Upgrade to Nextcloud 27" href="upgrade_to_27.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../prologue/index.html">Prologue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../basics/index.html">Basic concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app_development/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../server/index.html">Server development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../digging_deeper/index.html">Digging deeper</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">App publishing and maintenance</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../maintainer.html">Maintainers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../release_process.html">Release process</a></li>
+<li class="toctree-l2"><a class="reference external" href="https://nextcloudappstore.readthedocs.io/en/latest/developer.html">Publishing App on the App Store</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../publishing.html">The Nextcloud app store rules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../code_signing.html">Code signing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../release_automation.html">Release Automation</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">App upgrade guide</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="upgrade_to_30.html">Upgrade to Nextcloud 30</a></li>
+<li class="toctree-l3"><a class="reference internal" href="upgrade_to_29.html">Upgrade to Nextcloud 29</a></li>
+<li class="toctree-l3"><a class="reference internal" href="upgrade_to_28.html">Upgrade to Nextcloud 28</a></li>
+<li class="toctree-l3"><a class="reference internal" href="upgrade_to_27.html">Upgrade to Nextcloud 27</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Upgrade to Nextcloud 26</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#general">General</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#personal-settings-section-groupware-moved-to-availability">Personal settings section <em>Groupware</em> moved to <em>Availability</em></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#front-end-changes">Front-end changes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#back-end-changes">Back-end changes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#deprecated">Deprecated</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="upgrade_to_25.html">Upgrade to Nextcloud 25</a></li>
+<li class="toctree-l3"><a class="reference internal" href="upgrade_to_24.html">Upgrade to Nextcloud 24</a></li>
+<li class="toctree-l3"><a class="reference internal" href="upgrade_to_23.html">Upgrade to Nextcloud 23</a></li>
+<li class="toctree-l3"><a class="reference internal" href="upgrade_to_22.html">Upgrade to Nextcloud 22</a></li>
+<li class="toctree-l3"><a class="reference internal" href="upgrade_to_21.html">Upgrade to Nextcloud 21</a></li>
+<li class="toctree-l3"><a class="reference internal" href="upgrade_to_20.html">Upgrade to Nextcloud 20</a></li>
+<li class="toctree-l3"><a class="reference internal" href="upgrade_to_19.html">Upgrade to Nextcloud 19</a></li>
+<li class="toctree-l3"><a class="reference internal" href="upgrade_to_18.html">Upgrade to Nextcloud 18</a></li>
+<li class="toctree-l3"><a class="reference internal" href="upgrade_to_17.html">Upgrade to Nextcloud 17</a></li>
+<li class="toctree-l3"><a class="reference internal" href="upgrade_to_16.html">Upgrade to Nextcloud 16</a></li>
+<li class="toctree-l3"><a class="reference internal" href="upgrade_to_15.html">Upgrade to Nextcloud 15</a></li>
+<li class="toctree-l3"><a class="reference internal" href="upgrade_to_14.html">Upgrade to Nextcloud 14</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../design/index.html">Interface &amp; interaction design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../html_css_design/index.html">HTML/CSS guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../client_apis/index.html">Clients and Client APIs</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Nextcloud latest Developer Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">App publishing and maintenance</a></li>
+          <li class="breadcrumb-item"><a href="index.html">App upgrade guide</a></li>
+      <li class="breadcrumb-item active">Upgrade to Nextcloud 26</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/developer_manual/app_publishing_maintenance/app_upgrade_guide/upgrade_to_26.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="upgrade-to-nextcloud-26">
+<h1>Upgrade to Nextcloud 26<a class="headerlink" href="#upgrade-to-nextcloud-26" title="Link to this heading"></a></h1>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Critical changes were collected <a class="reference external" href="https://github.com/nextcloud/server/issues/34692">on GitHub</a>.
+See the original ticket for links to the pull requests and tickets.</p>
+</div>
+<section id="general">
+<h2>General<a class="headerlink" href="#general" title="Link to this heading"></a></h2>
+<section id="info-xml">
+<h3>info.xml<a class="headerlink" href="#info-xml" title="Link to this heading"></a></h3>
+<p>Make sure your <code class="docutils literal notranslate"><span class="pre">appinfo/info.xml</span></code> allows for Nextcloud 26.</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;dependencies&gt;</span>
+<span class="w">    </span><span class="nt">&lt;nextcloud</span><span class="w"> </span><span class="na">min-version=</span><span class="s">&quot;23&quot;</span><span class="w"> </span><span class="na">max-version=</span><span class="s">&quot;26&quot;</span><span class="w"> </span><span class="nt">/&gt;</span>
+<span class="nt">&lt;/dependencies&gt;</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="personal-settings-section-groupware-moved-to-availability">
+<h2>Personal settings section <em>Groupware</em> moved to <em>Availability</em><a class="headerlink" href="#personal-settings-section-groupware-moved-to-availability" title="Link to this heading"></a></h2>
+<p>Up to Nextcloud 25 there had been a <a class="reference internal" href="../../digging_deeper/settings.html#settings-section"><span class="std std-ref">settings section</span></a> <em>Groupware</em> with the ID <code class="docutils literal notranslate"><span class="pre">groupware</span></code>. As of Nextcloud 26 this section doesn’t exist anymore. Existing server settings were moved to a new section <em>Availability</em>/<code class="docutils literal notranslate"><span class="pre">availability</span></code>.</p>
+<p>If your app provides groupware-related settings, see if they make can be shown on the <em>Availability</em> page or need a new app-provided section.</p>
+</section>
+<section id="front-end-changes">
+<h2>Front-end changes<a class="headerlink" href="#front-end-changes" title="Link to this heading"></a></h2>
+<section id="removed-apis">
+<h3>Removed APIs<a class="headerlink" href="#removed-apis" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><code class="code docutils literal notranslate"><span class="pre">OC.addTranslations</span></code> was deprecated since Nextcloud 17 and is now removed.</p></li>
+<li><p>The “app icons” background (<a class="reference external" href="https://github.com/nextcloud/server/blob/stable25/core/img/background.png">https://github.com/nextcloud/server/blob/stable25/core/img/background.png</a> and <a class="reference external" href="https://github.com/nextcloud/server/blob/stable25/core/img/background.svg">https://github.com/nextcloud/server/blob/stable25/core/img/background.svg</a>) is not used anymore and will be removed (was only used on login page, where we now use the “clouds” background).</p></li>
+<li><p><strong>Bootstrap removed</strong>: The shipped bootstrap was only used for tooltips since ages but shipped and therefore available globally. Because the version we shipped is now EOL, we decided to remove it instead of bringing in a breaking update. For any tootltip it is recommended to just switch to the native <code class="code docutils literal notranslate"><span class="pre">title=</span></code> HTML attribute. (<a class="reference external" href="https://github.com/nextcloud/server/pull/36434">PR#36434</a> by <a class="reference external" href="https://github.com/nickvergessen">nickvergessen</a>)</p></li>
+</ul>
+</section>
+</section>
+<section id="back-end-changes">
+<h2>Back-end changes<a class="headerlink" href="#back-end-changes" title="Link to this heading"></a></h2>
+<section id="php-7-4">
+<h3>PHP 7.4<a class="headerlink" href="#php-7-4" title="Link to this heading"></a></h3>
+<p>In this release support for PHP 7.4 was dropped. Make sure your app compatible with PHP 8.0 or higher.</p>
+</section>
+<section id="php-8-2">
+<h3>PHP 8.2<a class="headerlink" href="#php-8-2" title="Link to this heading"></a></h3>
+<p>In this release support for PHP 8.2 was added. See release notes from PHP about new deprecations.</p>
+</section>
+<section id="migration-from-phpdoc-annotations-to-native-php-attributes">
+<h3>Migration from PHPDoc annotations to native PHP attributes<a class="headerlink" href="#migration-from-phpdoc-annotations-to-native-php-attributes" title="Link to this heading"></a></h3>
+<p>Nextcloud 26 supports PHP 8.0 and later. This allows the migration from PHPDoc annotations to native attributes.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">&#64;UseSession</span></code> should be replaced with <code class="docutils literal notranslate"><span class="pre">#[UseSession]</span></code>. <code class="docutils literal notranslate"><span class="pre">&#64;UseSession</span></code> will be removed in a future release. See <a class="reference internal" href="../../basics/controllers.html#controller-use-session"><span class="std std-ref">Reading and writing session variables</span></a>.</p></li>
+</ul>
+</section>
+<section id="planned-removal-of-psr-0-class-loading">
+<h3>Planned removal of PSR-0 class loading<a class="headerlink" href="#planned-removal-of-psr-0-class-loading" title="Link to this heading"></a></h3>
+<p>Nextcloud is still loading classes that follow the long deprecated and replaced <a class="reference internal" href="../../digging_deeper/psr.html#psr0"><span class="std std-ref">PSR-0 standard</span></a>. Nextcloud 26 is the last version that register a generic PSR-0 class loader. From Nextcloud 27 on apps have to either change class file names to match PSR-4 or ship their own (composer) class loader for PSR-0 files or. (<a class="reference external" href="https://github.com/nextcloud/server/pull/36114">PR#36114</a> by <a class="reference external" href="https://github.com/ChristophWurst">ChristophWurst</a>)</p>
+</section>
+<section id="dependency-injection-parameters">
+<h3>Dependency Injection Parameters<a class="headerlink" href="#dependency-injection-parameters" title="Link to this heading"></a></h3>
+<p>App container parameters with pascal case names <code class="docutils literal notranslate"><span class="pre">AppName</span></code>, <code class="docutils literal notranslate"><span class="pre">UserId</span></code> and <code class="docutils literal notranslate"><span class="pre">WebRoot</span></code> are deprecated. Use the camel case variants <code class="docutils literal notranslate"><span class="pre">appName</span></code>, <code class="docutils literal notranslate"><span class="pre">userId</span></code> and <code class="docutils literal notranslate"><span class="pre">webRoot</span></code> instead if you have them injected into one of your app classes.</p>
+</section>
+<section id="changed-apis">
+<h3>Changed APIs<a class="headerlink" href="#changed-apis" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\Files\SimpleFS\ISimpleFile::getSize()</span></code> may now return a float (to support sizes &gt;2G on 32bit systems)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\Files\SimpleFS\InMemoryFile::getSize()</span></code> may now return a float (to support sizes &gt;2G on 32bit systems)</p></li>
+<li><p>It is not required anymore to call <code class="docutils literal notranslate"><span class="pre">setParsedSubject</span></code> and <code class="docutils literal notranslate"><span class="pre">setParsedMessage</span></code> on notifications and activity events when setRichSubject and setRichMessage are used a parsed version is computed automatically. (<a class="reference external" href="https://github.com/nextcloud/server/pull/34807">PR#34807</a> by <a class="reference external" href="https://github.com/come-nc">come-nc</a>)</p></li>
+<li><p>Moved <code class="docutils literal notranslate"><span class="pre">ICreateFromString::handleIMipMessage(string</span> <span class="pre">$name,</span> <span class="pre">string</span> <span class="pre">$calendarData):</span> <span class="pre">void;</span></code> to its own Interface <code class="docutils literal notranslate"><span class="pre">IHandleImipMessage</span></code> (<a class="reference external" href="https://github.com/nextcloud/server/pull/34893">PR#34893</a> by <a class="reference external" href="https://github.com/miaulalala">miaulalala</a>)</p></li>
+<li><dl class="simple">
+<dt>Signatures of methods of <code class="docutils literal notranslate"><span class="pre">OCP\AppFramework\Db\Entity</span></code> changed as follows (<a class="reference external" href="https://github.com/nextcloud/server/commit/e91457d9cd68182591038636155d415b5dee0ec4">ref</a>):</dt><dd><ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">public</span> <span class="pre">static</span> <span class="pre">function</span> <span class="pre">fromParams(array</span> <span class="pre">$params)</span> <span class="pre">-&gt;</span> <span class="pre">public</span> <span class="pre">static</span> <span class="pre">function</span> <span class="pre">fromParams(array</span> <span class="pre">$params):</span> <span class="pre">static</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">public</span> <span class="pre">static</span> <span class="pre">function</span> <span class="pre">fromRow(array</span> <span class="pre">$row)</span> <span class="pre">-&gt;</span> <span class="pre">public</span> <span class="pre">static</span> <span class="pre">function</span> <span class="pre">fromRow(array</span> <span class="pre">$row):</span> <span class="pre">static</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">protected</span> <span class="pre">function</span> <span class="pre">setter($name,</span> <span class="pre">$args)</span> <span class="pre">-&gt;</span> <span class="pre">protected</span> <span class="pre">function</span> <span class="pre">setter(string</span> <span class="pre">$name,</span> <span class="pre">array</span> <span class="pre">$args):</span> <span class="pre">void</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">protected</span> <span class="pre">function</span> <span class="pre">getter($name)</span> <span class="pre">-&gt;</span> <span class="pre">protected</span> <span class="pre">function</span> <span class="pre">getter(string</span> <span class="pre">$name):</span> <span class="pre">mixed</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">protected</span> <span class="pre">function</span> <span class="pre">markFieldUpdated($attribute)</span> <span class="pre">-&gt;</span> <span class="pre">protected</span> <span class="pre">function</span> <span class="pre">markFieldUpdated(string</span> <span class="pre">$attribute):</span> <span class="pre">void</span></code></p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Middlewares can be registered globally (see <a class="reference internal" href="../../basics/middlewares.html#global-middlewares"><span class="std std-ref">Global Middlewares</span></a>, <a class="reference external" href="https://github.com/nextcloud/server/pull/36310">PR#36310</a> by <a class="reference external" href="https://github.com/ChristophWurst">ChristophWurst</a>)</p></li>
+</ul>
+</section>
+<section id="id2">
+<h3>Removed APIs<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\BackgroundJob\IJobList::getAll</span></code> method was removed (<a class="reference external" href="https://github.com/nextcloud/server/pull/36073">PR#36073</a> by <a class="reference external" href="https://github.com/come-nc">come-nc</a>)</p></li>
+<li><p>3rdparty dependency <code class="docutils literal notranslate"><span class="pre">php-ds/php-ds</span></code> was removed (<a class="reference external" href="https://github.com/nextcloud/server/pull/36198">PR#36198</a> by <a class="reference external" href="https://github.com/kesselb">kesselb</a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\Contacts\IManager::getAddressBooks</span></code> method was removed (<a class="reference external" href="https://github.com/nextcloud/server/pull/34329">PR#34329</a> by <a class="reference external" href="https://github.com/come-nc">come-nc</a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\Util</span></code> loglevel constants were removed (<a class="reference external" href="https://github.com/nextcloud/server/pull/34329">PR#34329</a> by <a class="reference external" href="https://github.com/come-nc">come-nc</a>)</p></li>
+<li><p>3rdparty dependency <code class="docutils literal notranslate"><span class="pre">nikic/php-parser</span></code> was removed (<a class="reference external" href="https://github.com/nextcloud/server/pull/36393">PR#36393</a> by <a class="reference external" href="https://github.com/kesselb">kesselb</a>)</p></li>
+<li><p>Deprecated <code class="docutils literal notranslate"><span class="pre">OCP\AppFramework\Db\Mapper</span></code> was removed. You can easily migrate to <code class="docutils literal notranslate"><span class="pre">OCP\AppFramework\Db\QBMapper</span></code>, which is doing the same thing using the query builder instead of string based queries. (<a class="reference external" href="https://github.com/nextcloud/server/pull/34490">PR#34490</a> by <a class="reference external" href="https://github.com/rullzer">rullzer</a>)</p></li>
+<li><p>Deprecated classes of <code class="docutils literal notranslate"><span class="pre">OCP\Dashboard</span></code> were removed (<a class="reference external" href="https://github.com/nextcloud/server/pull/35966">PR#35966</a> by <a class="reference external" href="https://github.com/juliushaertl">juliushaertl</a>)</p></li>
+</ul>
+</section>
+<section id="added-apis">
+<h3>Added APIs<a class="headerlink" href="#added-apis" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>New <code class="docutils literal notranslate"><span class="pre">OCP\Authentication\Token\IProvider</span></code> for authentication providers: Created a new public interface <code class="docutils literal notranslate"><span class="pre">OCP\Authentication\Token\IProvider</span></code> with a method invalidateTokensOfUser to invalidate all tokens of a specific user. <code class="docutils literal notranslate"><span class="pre">OC\Authentication\Token\Manager</span></code> implements <code class="docutils literal notranslate"><span class="pre">OCP\Authentication\Token\IProvider</span></code>. (<a class="reference external" href="https://github.com/nextcloud/server/pull/36033">PR#36033</a> by <a class="reference external" href="https://github.com/individual-it">individual-it</a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Auto-Submitted</span></code> header for emails: There now is a new method on the <code class="docutils literal notranslate"><span class="pre">OCP\Mail\IMessage</span></code> interface <code class="docutils literal notranslate"><span class="pre">IMessage::setAutoSubmitted()</span></code>. With this method you can specify that an email was an automatic email or response, to allow mail servers to better detect if an out-of-office reply should be sent, better store/filter the emails and so on. Possible values are documented in the <code class="docutils literal notranslate"><span class="pre">OCP\Mail\Headers\AutoSubmitted</span></code> interface. (<a class="reference external" href="https://github.com/nextcloud/server/pull/36033">PR#36033</a> by <a class="reference external" href="https://github.com/bennet0496">bennet0496</a>)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\BackgroundJob\IJobList::getJobsIterator</span></code> method was added (<a class="reference external" href="https://github.com/nextcloud/server/pull/36073">PR#36073</a>)</p></li>
+<li><p>New <code class="docutils literal notranslate"><span class="pre">OCP\BeforeSabrePubliclyLoadedEvent</span></code> event dispatched on public webdav endpoints (it can be used just like <code class="docutils literal notranslate"><span class="pre">OCP\SabrePluginEvent</span></code> to inject additional Sabre plugins in apps for example) (<a class="reference external" href="https://github.com/nextcloud/server/pull/35789">PR#35789</a>)</p></li>
+</ul>
+</section>
+</section>
+<section id="deprecated">
+<h2>Deprecated<a class="headerlink" href="#deprecated" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\BackgroundJob\IJobList::getJobs</span></code> method was deprecated (<a class="reference external" href="https://github.com/nextcloud/server/pull/36073">PR#36073</a>)</p></li>
+<li><p>Controller action annotation <code class="docutils literal notranslate"><span class="pre">&#64;UseSession</span></code> is deprecated. Use new <code class="docutils literal notranslate"><span class="pre">UseSession</span></code> attribute instead (<a class="reference external" href="https://github.com/nextcloud/server/pull/36363">PR#36363</a> by <a class="reference external" href="https://github.com/ChristophWurst">ChristophWurst</a>)</p></li>
+<li><p><strong>Notifications jQuery event deprecated</strong>: The <code class="docutils literal notranslate"><span class="pre">OCA.Notification.Action</span></code> event of the notifications app is deprecated in favor of a <code class="docutils literal notranslate"><span class="pre">notifications:action:executed</span></code> event-bus event with (<a class="reference external" href="https://github.com/nextcloud/notifications/pull/728">PR#728</a> by <a class="reference external" href="https://github.com/nickvergessen">nickvergessen</a>)</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="upgrade_to_27.html" class="btn btn-neutral float-left" title="Upgrade to Nextcloud 27" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="upgrade_to_25.html" class="btn btn-neutral float-right" title="Upgrade to Nextcloud 25" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Versions</dt>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/latest/developer_manual"
+             
+             style="color: var(--dark-link-color);"
+             
+          >
+            latest
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/stable/developer_manual"
+             
+          >
+            stable
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/29/developer_manual"
+             
+          >
+            29
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/28/developer_manual"
+             
+          >
+            28
+          </a>
+        </dd>
+        
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Debugging &mdash; Nextcloud latest Developer Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=c6e86fd7"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../_static/copybutton.js?v=f281be69"></script>
+        <script src="../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+        <script src="../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Classloader" href="classloader.html" />
+    <link rel="prev" title="AppConfig" href="config/appconfig.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../prologue/index.html">Prologue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basics/index.html">Basic concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app_development/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server/index.html">Server development</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Digging deeper</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="api.html">API reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html">Changelog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config/index.html">Config &amp; Preferences</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Debugging</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#debug-mode">Debug mode</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#identifying-errors">Identifying errors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#debugging-variables">Debugging variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#using-a-php-debugger-xdebug">Using a PHP debugger (XDebug)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#debugging-javascript">Debugging JavaScript</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#debugging-html-and-templates">Debugging HTML and templates</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#debugging-sql-queries">Debugging SQL queries</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#debugging-mariadb-queries">Debugging MariaDB queries</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#using-alternative-app-directories">Using alternative app directories</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="classloader.html">Classloader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="continuous_integration.html">Continuous Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="email.html">Email</a></li>
+<li class="toctree-l2"><a class="reference internal" href="files-metadata.html">Files Metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="flow.html">Nextcloud Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http_client.html">HTTP Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="javascript-apis.html">JavaScript APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="npm.html">NPM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notifications.html">Notifications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="performance.html">Performance considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="psr.html">PSR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="publicpage.html">Public Pages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="repair.html">Repair steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rest_apis.html">REST APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="search.html">Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="settings.html">Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="speech-to-text.html">Speech-To-Text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="talk.html">Talk Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="translation.html">Machine Translation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="text_processing.html">Text Processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="task_processing.html">Task Processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="text2image.html">Text-To-Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="two-factor-provider.html">Two-factor providers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="users.html">User management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dashboard.html">Dashboard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference.html">Reference providers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="projects.html">Projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="groupware/index.html">Groupware integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="web_host_metadata.html">Web Host Metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="status.html">User Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security.html">Security</a></li>
+<li class="toctree-l2"><a class="reference internal" href="profile.html">Profile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_migration.html">User migration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="profiler.html">Profiler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deadlock.html">Deadlocks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="phonenumberutil.html">Phone number util</a></li>
+<li class="toctree-l2"><a class="reference internal" href="out_of_office.html">Out-of-office periods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="time.html">Working with time</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../app_publishing_maintenance/index.html">App publishing and maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../design/index.html">Interface &amp; interaction design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../html_css_design/index.html">HTML/CSS guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client_apis/index.html">Clients and Client APIs</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Nextcloud latest Developer Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Digging deeper</a></li>
+      <li class="breadcrumb-item active">Debugging</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/developer_manual/digging_deeper/debugging.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="debugging">
+<h1>Debugging<a class="headerlink" href="#debugging" title="Link to this heading"></a></h1>
+<section id="debug-mode">
+<span id="id1"></span><h2>Debug mode<a class="headerlink" href="#debug-mode" title="Link to this heading"></a></h2>
+<p>When debug mode is enabled in Nextcloud, a variety of debugging features are enabled - see debugging documentation. Set <code class="docutils literal notranslate"><span class="pre">debug</span></code> to <code class="docutils literal notranslate"><span class="pre">true</span></code> in <code class="file docutils literal notranslate"><span class="pre">/config/config.php</span></code> to enable it:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="nv">$CONFIG</span> <span class="o">=</span> <span class="k">array</span> <span class="p">(</span>
+    <span class="s1">&#39;debug&#39;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+    <span class="o">...</span> <span class="nx">configuration</span> <span class="nx">goes</span> <span class="nx">here</span> <span class="o">...</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="identifying-errors">
+<h2>Identifying errors<a class="headerlink" href="#identifying-errors" title="Link to this heading"></a></h2>
+<p>Nextcloud uses custom error PHP handling that prevents errors being printed to Web server log files or command line output. Instead, errors are generally stored in Nextcloud’s own log file, located at: <code class="file docutils literal notranslate"><span class="pre">/data/nextcloud.log</span></code></p>
+</section>
+<section id="debugging-variables">
+<h2>Debugging variables<a class="headerlink" href="#debugging-variables" title="Link to this heading"></a></h2>
+<p>You should use exceptions if you need to debug variable values manually, and not alternatives like trigger_error() (which may not be logged).</p>
+<p>e.g.:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span> <span class="k">throw</span> <span class="k">new</span> <span class="nx">\Exception</span><span class="p">(</span> <span class="s2">&quot;</span><span class="se">\$</span><span class="s2">user = </span><span class="si">$user</span><span class="s2">&quot;</span> <span class="p">);</span> <span class="c1">// should be logged in Nextcloud ?&gt;</span>
+</pre></div>
+</div>
+<p>not:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span> <span class="nb">trigger_error</span><span class="p">(</span> <span class="s2">&quot;</span><span class="se">\$</span><span class="s2">user = </span><span class="si">$user</span><span class="s2">&quot;</span> <span class="p">);</span> <span class="c1">// may not be logged anywhere ?&gt;</span>
+</pre></div>
+</div>
+<p>To disable custom error handling in Nextcloud (and have PHP and your Web server handle errors instead), see Debug mode.</p>
+</section>
+<section id="using-a-php-debugger-xdebug">
+<h2>Using a PHP debugger (XDebug)<a class="headerlink" href="#using-a-php-debugger-xdebug" title="Link to this heading"></a></h2>
+<p>Using a debugger connected to PHP allows you to step through code line by line, view variables at each line and even change values while the code is running. The de-facto standard debugger for PHP is XDebug, available as an installable package in many distributions. It just provides the PHP side however, so you will need a frontend to actually control XDebug. When installed, it needs to be enabled in <code class="file docutils literal notranslate"><span class="pre">php.ini</span></code>, along with some parameters to enable connections to the debugging interface:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="na">zend_extension</span><span class="o">=</span><span class="s">/usr/lib/php/modules/xdebug.so</span>
+<span class="na">xdebug.remote_enable</span><span class="o">=</span><span class="s">on</span>
+<span class="na">xdebug.remote_host</span><span class="o">=</span><span class="s">127.0.0.1</span>
+<span class="na">xdebug.remote_port</span><span class="o">=</span><span class="s">9000</span>
+<span class="na">xdebug.remote_handler</span><span class="o">=</span><span class="s">dbgp</span>
+</pre></div>
+</div>
+<p>XDebug will now (when activated) try to connect to localhost on port 9000, and will communicate over the standard protocol DBGP. This protocol is supported by many debugging interfaces, such as the following popular ones:</p>
+<ul class="simple">
+<li><p>vdebug - Multi-language DBGP debugger client for Vim</p></li>
+<li><p>SublimeTextXdebug - XDebug client for Sublime Text</p></li>
+<li><p>PHPStorm - in-built DBGP debugger</p></li>
+</ul>
+<p>For further reading, see the XDebug documentation: <a class="reference external" href="https://xdebug.org/docs/remote">https://xdebug.org/docs/remote</a></p>
+<p>Once you are familiar with how your debugging client works, you can start debugging with XDebug. To test Nextcloud through the web interface or other HTTP requests, set the <code class="docutils literal notranslate"><span class="pre">XDEBUG_SESSION_START</span></code> cookie or POST parameter. Alternatively, there are browser extensions to make this easy:</p>
+<ul class="simple">
+<li><p>The Easiest XDebug (Firefox): <a class="reference external" href="https://addons.mozilla.org/en-US/firefox/addon/the-easiest-xdebug/">https://addons.mozilla.org/en-US/firefox/addon/the-easiest-xdebug/</a></p></li>
+<li><p>XDebug Helper (Chrome): <a class="reference external" href="https://chrome.google.com/extensions/detail/eadndfjplgieldjbigjakmdgkmoaaaoc">https://chrome.google.com/extensions/detail/eadndfjplgieldjbigjakmdgkmoaaaoc</a></p></li>
+</ul>
+<p>For debugging scripts on the command line, like <code class="docutils literal notranslate"><span class="pre">occ</span></code> or unit tests, set the <code class="docutils literal notranslate"><span class="pre">XDEBUG_CONFIG</span></code> environment variable.</p>
+</section>
+<section id="debugging-javascript">
+<h2>Debugging JavaScript<a class="headerlink" href="#debugging-javascript" title="Link to this heading"></a></h2>
+<p>By default all JavaScript files in Nextcloud are minified (compressed) into a single file without whitespace. To prevent this, see Debug mode.</p>
+</section>
+<section id="debugging-html-and-templates">
+<h2>Debugging HTML and templates<a class="headerlink" href="#debugging-html-and-templates" title="Link to this heading"></a></h2>
+<p>By default Nextcloud caches HTML generated by templates. This may prevent changes to app templates, for example, from being applied on page refresh. To disable caching, see Debug mode.</p>
+</section>
+<section id="debugging-sql-queries">
+<h2>Debugging SQL queries<a class="headerlink" href="#debugging-sql-queries" title="Link to this heading"></a></h2>
+<p>When encountering database errors during queries or migrations, it can be helpful to get a full query log.</p>
+<section id="debugging-mariadb-queries">
+<h3>Debugging MariaDB queries<a class="headerlink" href="#debugging-mariadb-queries" title="Link to this heading"></a></h3>
+<p>MariaDB can log all queries to a file or a table.</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SET</span><span class="w"> </span><span class="k">GLOBAL</span><span class="w"> </span><span class="n">general_log</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;ON&#39;</span><span class="p">;</span>
+<span class="k">SET</span><span class="w"> </span><span class="k">GLOBAL</span><span class="w"> </span><span class="n">log_output</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;table&#39;</span><span class="p">;</span>
+</pre></div>
+</div>
+<p>These global settings will enable the log on the fly. No database restart is required.</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">SELECT</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="k">FROM</span><span class="w"> </span><span class="n">mysql</span><span class="p">.</span><span class="n">general_log</span>
+</pre></div>
+</div>
+<p>This queries all the logged queries.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>On <a class="reference internal" href="continuous_integration.html#app-ci"><span class="std std-ref">continuous integration</span></a> this trick can give you the SQLs of various types and versions of a database quite easily in case you have to debug a matrix of setups.</p>
+</div>
+</section>
+</section>
+<section id="using-alternative-app-directories">
+<h2>Using alternative app directories<a class="headerlink" href="#using-alternative-app-directories" title="Link to this heading"></a></h2>
+<p>It may be useful to have multiple app directories for testing purposes, so you can conveniently switch between different versions of applications. See the configuration file documentation for details.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="config/appconfig.html" class="btn btn-neutral float-left" title="AppConfig" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="classloader.html" class="btn btn-neutral float-right" title="Classloader" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Versions</dt>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/latest/developer_manual"
+             
+             style="color: var(--dark-link-color);"
+             
+          >
+            latest
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/stable/developer_manual"
+             
+          >
+            stable
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/29/developer_manual"
+             
+          >
+            29
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/28/developer_manual"
+             
+          >
+            28
+          </a>
+        </dd>
+        
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

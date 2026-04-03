@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CSS &mdash; Nextcloud latest Developer Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=c6e86fd7"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../_static/copybutton.js?v=f281be69"></script>
+        <script src="../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+        <script src="../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Icons" href="icons.html" />
+    <link rel="prev" title="HTML elements" href="html.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../prologue/index.html">Prologue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basics/index.html">Basic concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app_development/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server/index.html">Server development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../digging_deeper/index.html">Digging deeper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app_publishing_maintenance/index.html">App publishing and maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../design/index.html">Interface &amp; interaction design</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">HTML/CSS guidelines</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="navigation.html">Introduction</a></li>
+<li class="toctree-l2"><a class="reference internal" href="navigation.html#new-button">New button</a></li>
+<li class="toctree-l2"><a class="reference internal" href="navigation.html#app-navigation-menu">App navigation menu</a></li>
+<li class="toctree-l2"><a class="reference internal" href="navigation.html#settings">Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="content.html">Main content</a></li>
+<li class="toctree-l2"><a class="reference internal" href="list.html">Content list</a></li>
+<li class="toctree-l2"><a class="reference internal" href="popovermenu.html">Popover menu</a></li>
+<li class="toctree-l2"><a class="reference internal" href="html.html">HTML elements</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">CSS</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#css-variables">CSS variables</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#primary-color-variables">Primary color variables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#background-variables">Background variables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#general-color-variables">General color variables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#state-colors-variables">State colors variables</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#element-structure-variables">Element structure variables</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#css-classes">CSS classes</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="icons.html">Icons</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../client_apis/index.html">Clients and Client APIs</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Nextcloud latest Developer Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">HTML/CSS guidelines</a></li>
+      <li class="breadcrumb-item active">CSS</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/developer_manual/html_css_design/css.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="css">
+<span id="id1"></span><h1>CSS<a class="headerlink" href="#css" title="Link to this heading"></a></h1>
+<p>While the recommended way to develop the user interface is using Vue with the Nextcloud provided components,
+Nextcloud also provides CSS variables and classes to style components to have a consistent look.</p>
+<section id="css-variables">
+<span id="cssvars"></span><h2>CSS variables<a class="headerlink" href="#css-variables" title="Link to this heading"></a></h2>
+<p>It is strongly recommended to use the Nextcloud provided CSS variables for styling components.
+This way you can be sure that the theming and accessibility app can dynamically adjust the values.
+Doing so also allows users to enforce dark or light theme, high contrast or other theming related options.</p>
+<section id="primary-color-variables">
+<h3>Primary color variables<a class="headerlink" href="#primary-color-variables" title="Link to this heading"></a></h3>
+<p>The primary color is the main accent color that can be configured by the administrator or the user (if user theming is enabled).</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Variable</p></th>
+<th class="head"><p>Example</p></th>
+<th class="head"><p>Usage</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--color-primary</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#00679e</span></code></p></td>
+<td><p>Primary color configured by user</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--color-primary-text</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#ffffff</span></code></p></td>
+<td><p>Text color to be used on <code class="docutils literal notranslate"><span class="pre">--color-primary</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--color-primary-hover</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#3285b1</span></code></p></td>
+<td><p>Variant of <code class="docutils literal notranslate"><span class="pre">--color-primary</span></code> for hover effects</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--color-primary-light</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#e5eff5</span></code></p></td>
+<td><p>Light variant of <code class="docutils literal notranslate"><span class="pre">--color-primary</span></code> used for secondary actions</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--color-primary-light-text</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#00293f</span></code></p></td>
+<td><p>Text color to be used on <code class="docutils literal notranslate"><span class="pre">--color-primary-light</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--color-primary-light-hover</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#dbe4ea</span></code></p></td>
+<td><p>Variant of <code class="docutils literal notranslate"><span class="pre">--color-primary-light</span></code> for hover effects</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--color-primary-element</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#00679e</span></code></p></td>
+<td><p>Accessibility adjusted variant of <code class="docutils literal notranslate"><span class="pre">--color-primary</span></code> to be used on interactive elements</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--color-primary-element-text</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#ffffff</span></code></p></td>
+<td><p>Text color to be used on <code class="docutils literal notranslate"><span class="pre">--color-primary-element</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--color-primary-element-text-dark</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#f5f5f5</span></code></p></td>
+<td><p>Less contrast version of <code class="docutils literal notranslate"><span class="pre">--color-primary-element-text</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--color-primary-element-hover</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#005a8a</span></code></p></td>
+<td><p>Variant of <code class="docutils literal notranslate"><span class="pre">--color-primary-element</span></code> for hover effects</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--color-primary-element-light</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#e5eff5</span></code></p></td>
+<td><p>Light variant of <code class="docutils literal notranslate"><span class="pre">--color-primary-element</span></code> used for secondary actions</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--color-primary-element-light-text</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#00293f</span></code></p></td>
+<td><p>Text color to be used on <code class="docutils literal notranslate"><span class="pre">--color-primary-element-light</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--color-primary-element-light-hover</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#dbe4ea</span></code></p></td>
+<td><p>Variant of <code class="docutils literal notranslate"><span class="pre">--color-primary-element-light</span></code> for hover effects</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--primary-invert-if-bright</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">invert(100%)</span></code></p></td>
+<td><p>Filter to invert icons placed on primary color backgrounds if the primary color is bright</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--primary-invert-if-dark</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">invert(100%)</span></code></p></td>
+<td><p>Filter to invert icons placed on primary color backgrounds if the primary color is dark</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="background-variables">
+<h3>Background variables<a class="headerlink" href="#background-variables" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Variable</p></th>
+<th class="head"><p>Example</p></th>
+<th class="head"><p>Usage</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--color-background-plain</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#00679e</span></code></p></td>
+<td><p>The background color of the <code class="docutils literal notranslate"><span class="pre">body</span></code> element</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--color-background-plain-text</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#ffffff</span></code></p></td>
+<td><p>Text color to be used directly on the background (e.g. header menu)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--image-background</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">url('clouds.jpg')</span></code></p></td>
+<td><p>Background image used on the <code class="docutils literal notranslate"><span class="pre">body</span></code> element (optional)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--background-image-invert-if-bright</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">invert(100%)</span></code></p></td>
+<td><p>Filter to invert (bright) icons placed directly on the body background (app menu)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="general-color-variables">
+<h3>General color variables<a class="headerlink" href="#general-color-variables" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Variable</p></th>
+<th class="head"><p>Example</p></th>
+<th class="head"><p>Usage</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--color-main-text</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#222222</span></code></p></td>
+<td><p>Main text color</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--color-text-maxcontrast</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#6b6b6b</span></code></p></td>
+<td><p>Brighter text color that still fulfills accessibility requirements</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--color-text-maxcontrast-background-blur</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#595959</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">--color-text-maxcontrast</span></code> for blurred background, see <code class="docutils literal notranslate"><span class="pre">--color-main-background-blur</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--color-main-background</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#fffff</span></code></p></td>
+<td><p>Main background color</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--color-main-background-rgb</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">255,255,255</span></code></p></td>
+<td><p>RGB variant of <code class="docutils literal notranslate"><span class="pre">--color-main-background</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--color-main-background-blur</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">rgba(var(--color-main-background-rgb),</span> <span class="pre">.8)</span></code></p></td>
+<td><p>Background color used for blurred background, see <code class="docutils literal notranslate"><span class="pre">--filter-background-blur</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--color-background-hover</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#f5f5f5</span></code></p></td>
+<td><p>Background color for hover effects</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--color-background-dark</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#ededed</span></code></p></td>
+<td><p>Can be used e.g. to colorize selected table rows</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--color-background-darker</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#dbdbdb</span></code></p></td>
+<td><p>Should only be used for elements, not as a text background! Otherwise it will not work for accessibility.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--color-border</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#ededed</span></code></p></td>
+<td><p>Default element border color</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--color-border-dark</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#dbdbdb</span></code></p></td>
+<td><p>Darker version of the border color</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--color-border-maxcontrast</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#7d7d7d</span></code></p></td>
+<td><p>Brightest possible border color for accessibility</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--color-placeholder-light</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#e6e6e6</span></code></p></td>
+<td><p>Color for input placeholders</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--color-placeholder-dark</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#cccccc</span></code></p></td>
+<td><p>Darker version of <code class="docutils literal notranslate"><span class="pre">--color-placeholder-light</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--color-scrollbar</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#33333344</span></code></p></td>
+<td><p>Color for scrollbars</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--color-loading-light</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#cccccc</span></code></p></td>
+<td><p>Color for the loading spinner (the bright part of it)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--color-loading-dark</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#444444</span></code></p></td>
+<td><p>Color for the loading spinner (the dark part of it)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--color-box-shadow-rgb</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">77,77,77</span></code></p></td>
+<td><p>Color for box shadow effects in RGB notation</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--color-box-shadow</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">rgba(var(--color-box-shadow-rgb),</span> <span class="pre">0.5)</span></code></p></td>
+<td><p>Color for box shadow effects</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--background-invert-if-dark</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">invert(100%)</span></code></p></td>
+<td><p>Filter to invert (dark) icons (e.g. set if the color theme is dark)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--background-invert-if-bright</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">invert(100%)</span></code></p></td>
+<td><p>Filter to invert (bright) icons (e.g. set if the color theme is bright)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="state-colors-variables">
+<h3>State colors variables<a class="headerlink" href="#state-colors-variables" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Variable</p></th>
+<th class="head"><p>Example</p></th>
+<th class="head"><p>Usage</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--color-favorite</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#a37200</span></code></p></td>
+<td><p>Color to mark favorites, can be used to color e.g. a star icon for favorites</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--color-error</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#db0606</span></code></p></td>
+<td><p>Element color to show error state, this should not be used for text</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--color-error-rgb</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">219,6,6</span></code></p></td>
+<td><p>RGB variant of <code class="docutils literal notranslate"><span class="pre">--color-error</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--color-error-hover</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#df2525</span></code></p></td>
+<td><p>Element color for hover effects of <code class="docutils literal notranslate"><span class="pre">--color-error</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--color-error-text</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#c20505</span></code></p></td>
+<td><p>Text color to show error state</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--color-warning</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#a37200</span></code></p></td>
+<td><p>Element color to show warning state, this should not be used for text</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--color-warning-rgb</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">163,114,0</span></code></p></td>
+<td><p>RGB variant of <code class="docutils literal notranslate"><span class="pre">--color-warning</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--color-warning-hover</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#8a6000</span></code></p></td>
+<td><p>Element color for hover effects of <code class="docutils literal notranslate"><span class="pre">--color-warning</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--color-warning-text</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#7f5900</span></code></p></td>
+<td><p>Text color to show warning state</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--color-success</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#2d7b41</span></code></p></td>
+<td><p>Element color to show success state, this should not be used for text</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--color-success-rgb</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">45,123,65</span></code></p></td>
+<td><p>RGB variant of <code class="docutils literal notranslate"><span class="pre">--color-success</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--color-success-hover</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#428854</span></code></p></td>
+<td><p>Element color for hover effects of <code class="docutils literal notranslate"><span class="pre">--color-success</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--color-success-text</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#286c39</span></code></p></td>
+<td><p>Text color to show success state</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--color-info</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#0071ad</span></code></p></td>
+<td><p>Element color to show info state, this should not be used for text</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--color-info-rgb</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0,113,173</span></code></p></td>
+<td><p>RGB variant of <code class="docutils literal notranslate"><span class="pre">--color-info</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--color-info-hover</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#197fb5</span></code></p></td>
+<td><p>Element color for hover effects of <code class="docutils literal notranslate"><span class="pre">--color-info</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--color-info-text</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">#006499</span></code></p></td>
+<td><p>Text color to show info state</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="element-structure-variables">
+<h3>Element structure variables<a class="headerlink" href="#element-structure-variables" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Variable</p></th>
+<th class="head"><p>Example</p></th>
+<th class="head"><p>Usage</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--animation-quick</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">100ms</span></code></p></td>
+<td><p>Animation time for snappy CSS transitions</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--animation-slow</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">300ms</span></code></p></td>
+<td><p>Animation time for more complex transitions</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--breakpoint-mobile</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1024px</span></code></p></td>
+<td><p>Breakpoint for mobile responsive layout (e.g. if app navigation should be always visible)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--filter-background-blur</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">blur(25px)</span></code></p></td>
+<td><p>Filter to be used on elements with background blur (e.g. app navigation)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--font-face</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">system-ui,</span> <span class="pre">'Segoe</span> <span class="pre">UI',</span> <span class="pre">Roboto,</span> <span class="pre">Oxygen-Sans</span></code></p></td>
+<td><p>Font used for Nextcloud user interface</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--default-font-size</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">15px</span></code></p></td>
+<td><p>Font size for normal text</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--default-line-height</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1.5</span></code></p></td>
+<td><p>Line height for normal text</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--default-grid-baseline</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">4px</span></code></p></td>
+<td><p>Foundation of all spacing sizes used on Nextcloud which are multiples of the baseline size</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--border-width-input</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">1px</span></code></p></td>
+<td><p>Border width for interactive elements such as text fields and selects</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--border-width-input-focused</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">2px</span></code></p></td>
+<td><p>Border width for interactive elements when focussed (adjusted for accessibility)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--border-radius-small</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">4px</span></code></p></td>
+<td><p>Border radius used for smaller elements</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--border-radius-element</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">8px</span></code></p></td>
+<td><p>Border radius of interactive elements such as buttons, input, navigation and list items.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--border-radius-container</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">12px</span></code></p></td>
+<td><p>For smaller containers like action menus.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--border-radius-container-large</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">16px</span></code></p></td>
+<td><p>For larger containers like body or modals.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--default-clickable-area</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">34px</span></code></p></td>
+<td><p>Default size (width and height) for interactive elements like buttons</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--clickable-area-large</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">48px</span></code></p></td>
+<td><p>Larger size for the main UI elements</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--clickable-area-small</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">24px</span></code></p></td>
+<td><p>Smallest possible size of interactive elements, used by tertiary actions like filter chips</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--body-container-radius</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">calc(var(--default-grid-baseline)</span> <span class="pre">*</span> <span class="pre">3)</span></code></p></td>
+<td><p>Border radius of the body container</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--body-container-margin</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">calc(var(--default-grid-baseline)</span> <span class="pre">*</span> <span class="pre">2)</span></code></p></td>
+<td><p>Margin of the body container</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--header-height</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">50px</span></code></p></td>
+<td><p>Height of the main app navigation bar</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--navigation-width</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">300px</span></code></p></td>
+<td><p>Width of the in-app navigation sidebar</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">--sidebar-min-width</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">200px</span></code></p></td>
+<td><p>Minimum width of the app sidebar on small screens</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">--sidebar-max-width</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">500px</span></code></p></td>
+<td><p>Maximum width of the app sidebar on wide screens</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="css-classes">
+<span id="cssclasses"></span><h2>CSS classes<a class="headerlink" href="#css-classes" title="Link to this heading"></a></h2>
+<p>There are some predefined classes for public use to ease developing an application for Nextcloud.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>CSS class</p></th>
+<th class="head"><p>Usage</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">.hidden-visually</span></code></p></td>
+<td><p>Hides an element visually from the page but keeps it in the accessibility tree</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">.hidden</span></code></p></td>
+<td><p>Hides an element completely from the page (also removed from the accessibility tree)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">.bold</span></code></p></td>
+<td><p>Make content of the element bold emphasize</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">.center</span></code></p></td>
+<td><p>Center align the elements text</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">.clear-left</span></code></p></td>
+<td><p>Clear float left</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">.clear-right</span></code></p></td>
+<td><p>Clear float right</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">.clear-both</span></code></p></td>
+<td><p>Clear float on both</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">.pull-left</span></code></p></td>
+<td><p>Float left</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">.pull-right</span></code></p></td>
+<td><p>Float right</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">.inlineblock</span></code></p></td>
+<td><p>Make an element an inline block</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="html.html" class="btn btn-neutral float-left" title="HTML elements" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="icons.html" class="btn btn-neutral float-right" title="Icons" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Versions</dt>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/latest/developer_manual"
+             
+             style="color: var(--dark-link-color);"
+             
+          >
+            latest
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/stable/developer_manual"
+             
+          >
+            stable
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/29/developer_manual"
+             
+          >
+            29
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/28/developer_manual"
+             
+          >
+            28
+          </a>
+        </dd>
+        
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

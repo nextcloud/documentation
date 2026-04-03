@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="es" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cifrar sus archivos de Nextcloud en el servidor &mdash; documentación de Nextcloud latest User Manual - latest</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=ee01eba1"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../_static/copybutton.js?v=f281be69"></script>
+        <script src="../../_static/translations.js?v=efdbd0b9"></script>
+        <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+        <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Índice" href="../genindex.html" />
+    <link rel="search" title="Búsqueda" href="../search.html" />
+    <link rel="next" title="Compartir archivos" href="sharing.html" />
+    <link rel="prev" title="Sincronización de escritorio y móviles" href="desktop_mobile_sync.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logotipo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introducción al manual de usuario de Nextcloud latest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../whats_new.html">Novedades para los usuarios en Nextcloud latest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">La interfaz web de Nextcloud</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Archivos y sincronización</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="access_webgui.html">Acceder a sus archivos utilizando la interfaz web de Nextcloud</a></li>
+<li class="toctree-l2"><a class="reference internal" href="access_webdav.html">Acceder a los archivos de Nextcloud a través de WebDAV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deleted_file_management.html">Administrar archivos borrados</a></li>
+<li class="toctree-l2"><a class="reference internal" href="desktop_mobile_sync.html">Sincronización de escritorio y móviles</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Cifrar sus archivos de Nextcloud en el servidor</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#encryption-faq">Preguntas más frecuentes de cifrado</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#how-can-encryption-be-disabled">¿Cómo se puede deshabilitar el cifrado?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#is-it-possible-to-disable-encryption-with-the-recovery-key">¿Es posible deshabilitar el cifrado con la clave de recuperación?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#can-encryption-be-disabled-without-the-user-s-password">¿Puede deshabilitarse el cifrado sin la contraseña del usuario?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#is-it-planned-to-move-this-to-the-next-user-login-or-a-background-job">¿Hay planes para mover esto al siguiente inicio de sesión del usuario o una tarea en segundo plano?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#is-group-sharing-possible-with-the-recovery-key">¿Es posible compartir con grupos con la clave de recuperación?</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#using-encryption">Usar el cifrado</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sharing-encrypted-files">Compartir archivos cifrados</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#recovery-key-password">Contraseña de la Clave de Recuperación</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#files-not-encrypted">Archivos no cifrados</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#change-private-key-password">Cambiar la contraseña de la clave privada</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="sharing.html">Compartir archivos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sharing.html#federated-shares">Compartir archivos mediante federación</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_drop.html">Hacer subidas anónimas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="large_file_upload.html">Subidas de grandes archivos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quota.html">Cuota de almacenamiento</a></li>
+<li class="toctree-l2"><a class="reference internal" href="version_control.html">Control de versiones</a></li>
+<li class="toctree-l2"><a class="reference internal" href="projects.html">Proyectos</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transfer_ownership.html">Transferir la propiedad</a></li>
+<li class="toctree-l2"><a class="reference internal" href="federated_cloud_sharing.html">Usar la compartición de archivos en federación</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Software de trabajo en grupo</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Talk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Gestionar sus preferencias</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Acceso universal</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Usar la verificación en dos pasos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Gestionar las conexiones entre navegadores y dispositivos</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">Almacenamiento Externo</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest User Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Archivos y sincronización</a></li>
+      <li class="breadcrumb-item active">Cifrar sus archivos de Nextcloud en el servidor</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/files/encrypting_files.rst" class="fa fa-github"> Editar en GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="encrypting-your-nextcloud-files-on-the-server">
+<h1>Cifrar sus archivos de Nextcloud en el servidor<a class="headerlink" href="#encrypting-your-nextcloud-files-on-the-server" title="Link to this heading"></a></h1>
+<p>Nextcloud incluye una app de cifrado del lado del servidor, y, cuando está habilitada por el administrador de Nextcloud, todos sus archivos serán automáticamente cifrados en el servidor. El cifrado aplica a todo el servidor, por lo que si está habilitado, no podrá escoger entre tenerlos cifrados o no. No necesita hacer nada especial, ya que utiliza su nombre de usuario de Nextcloud como la contraseña para su llave de cifrado única. Solo inicie o cierre sesión y administre sus archivos como normalmente lo haría, y también podrá cambiar su contraseña cuando guste.</p>
+<p>Su función principal es cifrar archivos en servicios de almacenamiento remoto que están conectados a su servidor Nextcloud. Esto es una manera sencilla y transparente de proteger sus archivos en almacenamiento remoto. Puede compartir sus archivos remotos a través de Nextcloud del mismo modo, pero no puede compartir sus archivos cifrados directamente desde el servicio remoto que está usando, porque las claves de cifrado están almacenadas en su servidor Nextcloud, y nunca se exponen a proveedores de servicio externos.</p>
+<p>Si su servidor Nextcloud no está conectado con ningún servicio de almacenamiento remoto, es mejor utilizar otra forma de cifrado, como cifrar archivos individuales o cifrado completo del disco. Como las claves de cifrado se guardan en su servidor Nextcloud, es posible que su administrador de Nextcloud acceda a sus archivos, y si el servidor queda comprometido, el intruso podría obtener acceso a sus archivos. (Lea <a class="reference external" href="https://nextcloud.com/blog/encryption-in-nextcloud/">cifrado en Nextcloud</a> para aprender más.)</p>
+<section id="encryption-faq">
+<h2>Preguntas más frecuentes de cifrado<a class="headerlink" href="#encryption-faq" title="Link to this heading"></a></h2>
+<section id="how-can-encryption-be-disabled">
+<h3>¿Cómo se puede deshabilitar el cifrado?<a class="headerlink" href="#how-can-encryption-be-disabled" title="Link to this heading"></a></h3>
+<p>La única forma de deshabilitar el cifrado es ejecutar el script <a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/occ_command.html#encryption-label">«decrypt all»</a>, que desencripta todos los archivos y desactiva el cifrado.</p>
+</section>
+<section id="is-it-possible-to-disable-encryption-with-the-recovery-key">
+<h3>¿Es posible deshabilitar el cifrado con la clave de recuperación?<a class="headerlink" href="#is-it-possible-to-disable-encryption-with-the-recovery-key" title="Link to this heading"></a></h3>
+<p>Sí, <em>si</em> cada usuario utiliza la <a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/encryption_configuration.html#enabling-users-file-recovery-keys">clave de recuperación de archivos</a>, <a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/occ_command.html#encryption-label">«decrypt all»</a> las utilizará para descifrar todos los archivos.</p>
+</section>
+<section id="can-encryption-be-disabled-without-the-user-s-password">
+<h3>¿Puede deshabilitarse el cifrado sin la contraseña del usuario?<a class="headerlink" href="#can-encryption-be-disabled-without-the-user-s-password" title="Link to this heading"></a></h3>
+<p>Si no tienes la contraseña del usuario o <a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/encryption_configuration.html#enabling-users-file-recovery-keys">el archivo con la clave de recuperación</a> del usuario, resultará imposible desencriptar todos los archivos. Además, ejecutarlo al iniciar sesión podría ser peligroso, ya que probablemente se agotaría el tiempo máximo de la petición.</p>
+</section>
+<section id="is-it-planned-to-move-this-to-the-next-user-login-or-a-background-job">
+<h3>¿Hay planes para mover esto al siguiente inicio de sesión del usuario o una tarea en segundo plano?<a class="headerlink" href="#is-it-planned-to-move-this-to-the-next-user-login-or-a-background-job" title="Link to this heading"></a></h3>
+<p>Si hiciéramos eso, entonces tendríamos que guardar su contraseña de inicio de sesión en la base de datos. Esto puede ser visto como un problema de seguridad, así que no hay ningún plan similar.</p>
+</section>
+<section id="is-group-sharing-possible-with-the-recovery-key">
+<h3>¿Es posible compartir con grupos con la clave de recuperación?<a class="headerlink" href="#is-group-sharing-possible-with-the-recovery-key" title="Link to this heading"></a></h3>
+<p>Si se refiere añadir usuarios a grupos y que funcione mágicamente, no. Esto solo funciona con la clave maestra.</p>
+</section>
+</section>
+<section id="using-encryption">
+<h2>Usar el cifrado<a class="headerlink" href="#using-encryption" title="Link to this heading"></a></h2>
+<p>El cifrado de Nextcloud es del tipo «actívalo y olvídate», pero tiene unas cuantas opciones que puede usar.</p>
+<p>Cuando su administrador de Nextcloud activa el cifrado por primera vez, debe cerrar sesión y reabrirla para crear sus claves de cifrado y cifrar sus archivos. Cuando el cifrado ha sido habilitado en su servidor Nextcloud, verá un cartel amarillo en su página de Archivos, indicándole que cierre sesión y la abra de nuevo:</p>
+<figure class="align-default">
+<img alt="../../_images/encryption1.png" src="../../_images/encryption1.png" />
+</figure>
+<p>Cuando inicie sesión de nuevo, puede que tarde unos minutos en conseguirlo, en función del número de archivos que tenga. A continuación volverá a su página por defecto de Nextcloud.</p>
+<figure class="align-default">
+<img alt="../../_images/encryption2.png" src="../../_images/encryption2.png" />
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>No debe perder nunca su contraseña de Nextcloud, porque perderá acceso a sus archivos. Sin embargo, hay una opción de recuperación opcional que su administrador de Nextcloud puede habilitar; vea la sección Contraseña de la Clave de Recuperación más adelante para saber más sobre el tema.</p>
+</div>
+</section>
+<section id="sharing-encrypted-files">
+<h2>Compartir archivos cifrados<a class="headerlink" href="#sharing-encrypted-files" title="Link to this heading"></a></h2>
+<p>Solo aquellos usuarios que tengan claves de cifrado privadas tienen acceso a archivos y carpetas cifrados compartidos. Los usuarios que aún no han creado su clave de cifrado privada no tendrán acceso a archivos compartidos cifrados; verán carpetas y nombres de archivo, pero no podrán abrir ni descargar los archivos. Verán un cartel amarillo de aviso indicando «La aplicación de cifrado está habilitada, pero tus claves no están inicializadas. Por favor, cierra sesión e iníciala de nuevo.»</p>
+<p>Los propietarios de archivos o carpetas compartidas deberán re-compartir archivos tras la activación del cifrado; los usuarios que intenten acceder al recurso compartido verán un mensaje indicando que soliciten al propietario del recurso compartido que re-comparta el archivo con ellos. Para archivos compartidos a un solo usuario, deje de compartir y vuelva a compartirlo. Para archivos compartidos a un grupo, compártalos con los individuos que no puedan acceder. Esta acción actualiza el cifrado, y a continuación el propietario del recurso compartido puede borrar los usuarios añadidos de forma individual.</p>
+<section id="recovery-key-password">
+<h3>Contraseña de la Clave de Recuperación<a class="headerlink" href="#recovery-key-password" title="Link to this heading"></a></h3>
+<p>Si su administrador de Nextcloud ha habilitado la herramienta de la clave de recuperación, usted puede utilizarla para su cuenta. Si habilita «Recuperación por contraseña», el administrador puede leer sus datos con una contraseña especial. Esta característica permite al administrador recuperar sus archivos si usted pierde su contraseña de Nextcloud. Si la clave de recuperación no está habilitada, no hay manera de restaurar sus archivos si pierde su contraseña de inicio de sesión.</p>
+<figure class="align-default">
+<img alt="../../_images/encryption3.png" src="../../_images/encryption3.png" />
+</figure>
+</section>
+</section>
+<section id="files-not-encrypted">
+<h2>Archivos no cifrados<a class="headerlink" href="#files-not-encrypted" title="Link to this heading"></a></h2>
+<p>Solo los datos en tus archivos están cifrados, y no los nombres de archivo o estructuras de carpeta. Estos archivos nunca se cifran:</p>
+<ul class="simple">
+<li><p>Viejos archivos en la papelera de reciclaje.</p></li>
+<li><p>Miniaturas de imágenes de la aplicación Galería</p></li>
+<li><p>Previsualizaciones de la aplicación Archivos.</p></li>
+<li><p>El índice de búsqueda de la aplicación Búsqueda en Texto Completo (full text search).</p></li>
+<li><p>Datos de aplicaciones de terceras partes</p></li>
+</ul>
+<p>Solo aquellos archivos que se compartan con proveedores de almacenamiento de terceras partes pueden ser cifrados, el resto de archivos pueden no ser cifrados.</p>
+<section id="change-private-key-password">
+<h3>Cambiar la contraseña de la clave privada<a class="headerlink" href="#change-private-key-password" title="Link to this heading"></a></h3>
+<p>Esta opción solo está disponible si la contraseña de cifrado no ha sido cambiada por el administrador, sino que solo se ha modificado la contraseña de inicio de sesión. Esto puede ocurrir si su proveedor de Nextcloud utiliza un soporte de usuarios externo (por ejemplo, LDAP) y ha cambiado su contraseña de inicio de sesión usando la configuración del soporte externo. En ese caso, usted puede cambiar su contraseña de cifrado a su nueva contraseña de inicio de sesión al proporcionar su antigua y nueva contraseña de inicio de sesión. La aplicación Cifrado solo funciona si su contraseña de inicio de sesión y su contraseña de cifrado son idénticas.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Pie de página">
+        <a href="desktop_mobile_sync.html" class="btn btn-neutral float-left" title="Sincronización de escritorio y móviles" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Anterior</a>
+        <a href="sharing.html" class="btn btn-neutral float-right" title="Compartir archivos" accesskey="n" rel="next">Siguiente <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Derechos de autor 2026 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- Here go the languages -->
+  
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      🌐
+      
+      
+      Spanish
+      
+      <span class="fa fa-caret-down"></span>
+
+       ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>🌐 Languages</dt>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/af/"
+                 
+              >
+                
+                Afrikaans
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ar/"
+                 
+              >
+                
+                Arabic
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/br/"
+                 
+              >
+                
+                Breton
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ca/"
+                 
+              >
+                
+                Catalan
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/cs/"
+                 
+              >
+                
+                Czech
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/da/"
+                 
+              >
+                
+                Danish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/de/"
+                 
+              >
+                
+                German
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/el/"
+                 
+              >
+                
+                Greek
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/el_GR/"
+                 
+              >
+                
+                el_GR
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/en/"
+                 
+              >
+                
+                English
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/eo/"
+                 
+              >
+                
+                Esperanto
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/es/"
+                 
+                 style="color: var(--dark-link-color);"
+                 
+              >
+                
+                Spanish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/eu/"
+                 
+              >
+                
+                eu
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/fi_FI/"
+                 
+              >
+                
+                Finnish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/fr/"
+                 
+              >
+                
+                French
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ga/"
+                 
+              >
+                
+                Irish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/gl/"
+                 
+              >
+                
+                Glacian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/hr/"
+                 
+              >
+                
+                Croatian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/hu/"
+                 
+              >
+                
+                hu
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/hu_HU/"
+                 
+              >
+                
+                Hungarian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/id/"
+                 
+              >
+                
+                Indonesian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/it/"
+                 
+              >
+                
+                Italian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ja_JP/"
+                 
+              >
+                
+                Japanese
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ko/"
+                 
+              >
+                
+                Korean
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/mn/"
+                 
+              >
+                
+                Mongolian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/nb_NO/"
+                 
+              >
+                
+                Norwegian (NB)
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/nl/"
+                 
+              >
+                
+                Dutch
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/nn/"
+                 
+              >
+                
+                Norwegian (NN)
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/pl/"
+                 
+              >
+                
+                Polish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/pt_BR/"
+                 
+              >
+                
+                Portuguese (BR)
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/pt_PT/"
+                 
+              >
+                
+                Portuguese
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ro/"
+                 
+              >
+                
+                Romanian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ru/"
+                 
+              >
+                
+                Russian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/si/"
+                 
+              >
+                
+                Sinhala
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/sk_SK/"
+                 
+              >
+                
+                Slovakian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/sq/"
+                 
+              >
+                
+                Albanian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/sr/"
+                 
+              >
+                
+                Slovenian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/sv/"
+                 
+              >
+                
+                Swedish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ta/"
+                 
+              >
+                
+                Tamil
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/th/"
+                 
+              >
+                
+                th
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/tr/"
+                 
+              >
+                
+                Turkish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/uk/"
+                 
+              >
+                
+                Ukrainian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/uz/"
+                 
+              >
+                
+                Uzbek
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/vi/"
+                 
+              >
+                
+                Vietnamese
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/zh_CN/"
+                 
+              >
+                
+                Chinese
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/zh_HK/"
+                 
+              >
+                
+                Chinese (HK)
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/zh_TW/"
+                 
+              >
+                
+                Chinese (TW)
+                
+              </a>
+            </dd>
+          
+      </dl>
+    </div>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Versiones</dt>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/latest/user_manual"
+               
+               style="color: var(--dark-link-color);"
+               
+            >
+              latest
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/stable/user_manual"
+               
+            >
+              stable
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/29/user_manual"
+               
+            >
+              29
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/28/user_manual"
+               
+            >
+              28
+            </a>
+          </dd>
+        
+      </dl>
+      <dl>
+        <dt>Descargas</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>En Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Página principal del proyecto</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Versiones compiladas</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

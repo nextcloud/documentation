@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Files Metadata &mdash; Nextcloud latest Developer Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=c6e86fd7"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../_static/copybutton.js?v=f281be69"></script>
+        <script src="../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+        <script src="../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Nextcloud Flow" href="flow.html" />
+    <link rel="prev" title="Email" href="email.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../prologue/index.html">Prologue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basics/index.html">Basic concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app_development/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server/index.html">Server development</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Digging deeper</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="api.html">API reference</a></li>
+<li class="toctree-l2"><a class="reference internal" href="changelog.html">Changelog</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config/index.html">Config &amp; Preferences</a></li>
+<li class="toctree-l2"><a class="reference internal" href="debugging.html">Debugging</a></li>
+<li class="toctree-l2"><a class="reference internal" href="classloader.html">Classloader</a></li>
+<li class="toctree-l2"><a class="reference internal" href="continuous_integration.html">Continuous Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="email.html">Email</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Files Metadata</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#concept-overview">Concept overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#consuming-the-files-metadata-api">Consuming the Files Metadata API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#live-background-events">Live &amp; Background Events</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#read-metadata-using-occ-command">Read metadata using occ command</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#update-metadata-using-proppatch">Update metadata using PROPPATCH</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#retrieve-metadata-using-propfind">Retrieve metadata using PROPFIND</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#webdav-search-based-on-metadata">WebDAV SEARCH based on metadata</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#metadata-query-helper">Metadata Query Helper</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="flow.html">Nextcloud Flow</a></li>
+<li class="toctree-l2"><a class="reference internal" href="http_client.html">HTTP Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="javascript-apis.html">JavaScript APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="npm.html">NPM</a></li>
+<li class="toctree-l2"><a class="reference internal" href="notifications.html">Notifications</a></li>
+<li class="toctree-l2"><a class="reference internal" href="performance.html">Performance considerations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="psr.html">PSR</a></li>
+<li class="toctree-l2"><a class="reference internal" href="publicpage.html">Public Pages</a></li>
+<li class="toctree-l2"><a class="reference internal" href="repair.html">Repair steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="rest_apis.html">REST APIs</a></li>
+<li class="toctree-l2"><a class="reference internal" href="search.html">Search</a></li>
+<li class="toctree-l2"><a class="reference internal" href="settings.html">Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="speech-to-text.html">Speech-To-Text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="talk.html">Talk Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="translation.html">Machine Translation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="text_processing.html">Text Processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="task_processing.html">Task Processing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="text2image.html">Text-To-Image</a></li>
+<li class="toctree-l2"><a class="reference internal" href="two-factor-provider.html">Two-factor providers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="users.html">User management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="dashboard.html">Dashboard</a></li>
+<li class="toctree-l2"><a class="reference internal" href="reference.html">Reference providers</a></li>
+<li class="toctree-l2"><a class="reference internal" href="projects.html">Projects</a></li>
+<li class="toctree-l2"><a class="reference internal" href="groupware/index.html">Groupware integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="web_host_metadata.html">Web Host Metadata</a></li>
+<li class="toctree-l2"><a class="reference internal" href="status.html">User Status</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security.html">Security</a></li>
+<li class="toctree-l2"><a class="reference internal" href="profile.html">Profile</a></li>
+<li class="toctree-l2"><a class="reference internal" href="user_migration.html">User migration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="profiler.html">Profiler</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deadlock.html">Deadlocks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="phonenumberutil.html">Phone number util</a></li>
+<li class="toctree-l2"><a class="reference internal" href="out_of_office.html">Out-of-office periods</a></li>
+<li class="toctree-l2"><a class="reference internal" href="time.html">Working with time</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../app_publishing_maintenance/index.html">App publishing and maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../design/index.html">Interface &amp; interaction design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../html_css_design/index.html">HTML/CSS guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client_apis/index.html">Clients and Client APIs</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Nextcloud latest Developer Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Digging deeper</a></li>
+      <li class="breadcrumb-item active">Files Metadata</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/developer_manual/digging_deeper/files-metadata.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="files-metadata">
+<h1>Files Metadata<a class="headerlink" href="#files-metadata" title="Link to this heading"></a></h1>
+<div class="versionadded">
+<p><span class="versionmodified added">New in version 28.</span></p>
+</div>
+<p>Nextcloud includes an API to manage files’ metadata, with a deep integration in WebDAV.</p>
+<section id="concept-overview">
+<h2>Concept overview<a class="headerlink" href="#concept-overview" title="Link to this heading"></a></h2>
+<p>When a file is created or modified on Nextcloud, a refresh of its metadata is initiated. You will then be able to listen to the <cite>MetadataLiveEvent</cite> event to create, update, or delete metadata. If you suspect your process to be hungry in time or resources, you can request for a background event called <cite>MetadataBackgroundEvent</cite> and do your work there.</p>
+</section>
+<section id="consuming-the-files-metadata-api">
+<h2>Consuming the Files Metadata API<a class="headerlink" href="#consuming-the-files-metadata-api" title="Link to this heading"></a></h2>
+<p>To consume the Files Metadata API, you will need to <a class="reference internal" href="../basics/dependency_injection.html#id2"><span class="std std-ref">inject</span></a> <code class="docutils literal notranslate"><span class="pre">IFilesMetadataManager</span></code>.
+This manager offers the following methods:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">refreshMetadata(Node</span> <span class="pre">$node,</span> <span class="pre">int</span> <span class="pre">$process)</span></code> This method will initiate the process of refreshing the metadata related to a file.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">getMetadata(int</span> <span class="pre">$fileId,</span> <span class="pre">bool</span> <span class="pre">$generate)</span></code> This method will returns a <code class="docutils literal notranslate"><span class="pre">IFilesMetadata</span></code> which contains metadata related to a file.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">saveMetadata(IFilesMetadata</span> <span class="pre">$filesMetadata)</span></code> Save a <code class="docutils literal notranslate"><span class="pre">IFilesMetadata</span></code> and generate indexes.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">deleteMetadata(int</span> <span class="pre">$fileId)</span></code> Delete all metadata related to a file.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">getMetadataQuery(IQueryBuilder</span> <span class="pre">$qb,</span> <span class="pre">string</span> <span class="pre">$fileTableAlias,</span> <span class="pre">string</span> <span class="pre">$fileIdField)</span></code> This method will returns a <code class="docutils literal notranslate"><span class="pre">IMetadataQuery</span></code> to help building Sql request.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">getKnownMetadata()</span></code> Returns a list of known metadata keys globally available to the instance, and the expected type for each value.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">initMetadata(string</span> <span class="pre">$key,</span> <span class="pre">string</span> <span class="pre">$type,</span> <span class="pre">bool</span> <span class="pre">$indexed,</span> <span class="pre">bool</span> <span class="pre">$remotelyEditable)</span></code> This method allow to initiate a metadata before any of the files is examined</p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="live-background-events">
+<h2>Live &amp; Background Events<a class="headerlink" href="#live-background-events" title="Link to this heading"></a></h2>
+<p>Two (2) events can be caught by your app to generate metadata. The first one is called on the main process, just after the upload/modification of the file.
+The second one is called on a background process, initiated by cronjob.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\FilesMetadata\Event\MetadataLiveEvent</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OCP\FilesMetadata\Event\MetadataBackgroundEvent</span></code></p></li>
+</ul>
+</div></blockquote>
+<p>Both events contain those methods:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">getNode()</span></code> Returns related <code class="docutils literal notranslate"><span class="pre">Node</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">getMetadata()</span></code> Returns <code class="docutils literal notranslate"><span class="pre">IFilesMetadata</span></code>. Any changes made to this object will be saved at the end of the event.</p></li>
+</ul>
+</div></blockquote>
+<p>Generating metadata from a file might require a lot of resources; in that case it is advised to run this generation
+on a background job by requesting a re-run by calling the method <code class="docutils literal notranslate"><span class="pre">MetadataLiveEvent::requestBackgroundJob()</span></code></p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="sd">/** lib/AppInfo/Application.php */</span>
+<span class="k">declare</span><span class="p">(</span><span class="nx">strict_types</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+
+<span class="k">namespace</span> <span class="nx">OCA\MyApp\AppInfo</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCA\MyApp\Listeners\UpdateFilesMetadata</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\App</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Bootstrap\IBootContext</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Bootstrap\IBootstrap</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\AppFramework\Bootstrap\IRegistrationContext</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\FilesMetadata\Event\MetadataBackgroundEvent</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\FilesMetadata\Event\MetadataLiveEvent</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\FilesMetadata\IFilesMetadataManager</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\FilesMetadata\Model\IMetadataValueWrapper</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">Application</span> <span class="k">extends</span> <span class="nx">App</span> <span class="k">implements</span> <span class="nx">IBootstrap</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="k">array</span> <span class="nv">$params</span> <span class="o">=</span> <span class="p">[])</span> <span class="p">{</span>
+        <span class="k">parent</span><span class="o">::</span><span class="na">__construct</span><span class="p">(</span><span class="s1">&#39;my_app&#39;</span><span class="p">,</span> <span class="nv">$params</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">register</span><span class="p">(</span><span class="nx">IRegistrationContext</span> <span class="nv">$context</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
+<span class="hll">        <span class="nv">$context</span><span class="o">-&gt;</span><span class="na">registerEventListener</span><span class="p">(</span><span class="nx">MetadataLiveEvent</span><span class="o">::</span><span class="na">class</span><span class="p">,</span> <span class="nx">UpdateFilesMetadata</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+</span><span class="hll">        <span class="nv">$context</span><span class="o">-&gt;</span><span class="na">registerEventListener</span><span class="p">(</span><span class="nx">MetadataBackgroundEvent</span><span class="o">::</span><span class="na">class</span><span class="p">,</span> <span class="nx">UpdateFilesMetadata</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+</span>    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">boot</span><span class="p">(</span><span class="nx">IBootContext</span> <span class="nv">$context</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the generation of metadata requires low resources, the app only need to listen on <code class="docutils literal notranslate"><span class="pre">MetadataLiveEvent</span></code></p>
+</div>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="sd">/** lib/Listeners/UpdateFilesMetadata.php */</span>
+<span class="k">declare</span><span class="p">(</span><span class="nx">strict_types</span><span class="o">=</span><span class="mi">1</span><span class="p">);</span>
+
+<span class="k">namespace</span> <span class="nx">OCA\MyApp\Listeners</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCP\EventDispatcher\Event</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\EventDispatcher\IEventListener</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\FilesMetadata\Event\MetadataBackgroundEvent</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\FilesMetadata\Event\MetadataLiveEvent</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">UpdateFilesMetadata</span> <span class="k">implements</span> <span class="nx">IEventListener</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">()</span> <span class="p">{</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">handle</span><span class="p">(</span><span class="nx">Event</span> <span class="nv">$event</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="nv">$event</span> <span class="nx">instanceof</span> <span class="nx">MetadataLiveEvent</span><span class="p">)</span> <span class="o">&amp;&amp;</span>
+            <span class="o">!</span><span class="p">(</span><span class="nv">$event</span> <span class="nx">instanceof</span> <span class="nx">MetadataBackgroundEvent</span><span class="p">))</span> <span class="p">{</span>
+            <span class="k">return</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="nv">$node</span> <span class="o">=</span> <span class="nv">$event</span><span class="o">-&gt;</span><span class="na">getNode</span><span class="p">();</span>
+
+        <span class="c1">// my-first-meta is light enough</span>
+        <span class="nv">$metadata</span> <span class="o">=</span> <span class="nv">$event</span><span class="o">-&gt;</span><span class="na">getMetadata</span><span class="p">();</span>
+        <span class="nv">$metadata</span><span class="o">-&gt;</span><span class="na">setString</span><span class="p">(</span><span class="s1">&#39;my-first-meta&#39;</span><span class="p">,</span> <span class="s1">&#39;yes&#39;</span><span class="p">);</span>
+
+        <span class="k">if</span> <span class="p">(</span><span class="nv">$event</span> <span class="nx">instanceof</span> <span class="nx">MetadataLiveEvent</span><span class="p">)</span> <span class="p">{</span>
+            <span class="nv">$event</span><span class="o">-&gt;</span><span class="na">requestBackgroundJob</span><span class="p">();</span>
+            <span class="k">return</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="c1">// my-second-meta is too heavy and should be run on a background job</span>
+        <span class="nv">$metadata</span><span class="o">-&gt;</span><span class="na">setInt</span><span class="p">(</span><span class="s1">&#39;my-second-meta&#39;</span><span class="p">,</span> <span class="mi">1234</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="read-metadata-using-occ-command">
+<h2>Read metadata using occ command<a class="headerlink" href="#read-metadata-using-occ-command" title="Link to this heading"></a></h2>
+<p>Stored metadata related to a file can be obtained from a console, using the <code class="docutils literal notranslate"><span class="pre">occ</span></code> command:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$ </span>./occ<span class="w"> </span>metadata:get<span class="w"> </span><span class="m">1742</span>
+<span class="go">{</span>
+<span class="go">    &quot;my-first-meta&quot;: {</span>
+<span class="go">        &quot;value&quot;: &quot;yes&quot;,</span>
+<span class="go">        &quot;type&quot;: &quot;string&quot;,</span>
+<span class="go">        &quot;indexed&quot;: false</span>
+<span class="go">    },</span>
+<span class="go">    &quot;my-second-meta&quot;: {</span>
+<span class="go">        &quot;value&quot;: 1234,</span>
+<span class="go">        &quot;type&quot;: &quot;int&quot;,</span>
+<span class="go">        &quot;indexed&quot;: true</span>
+<span class="go">    }</span>
+<span class="go">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The generation process can also be initiated, using the <code class="docutils literal notranslate"><span class="pre">--refresh</span></code> option. Please note that the file owner need to be specified in the command.
+When refreshing metadata from the console, both <code class="docutils literal notranslate"><span class="pre">MetadataLiveEvent</span></code> and <code class="docutils literal notranslate"><span class="pre">MetadataBackgroundEvent</span></code> are triggered, without waiting for the next tick of crontab</p>
+</div>
+</section>
+<section id="update-metadata-using-proppatch">
+<h2>Update metadata using PROPPATCH<a class="headerlink" href="#update-metadata-using-proppatch" title="Link to this heading"></a></h2>
+<p>Using WebDAV request, a client can create or update metadata about a file:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">curl &#39;https://cloud.example.net/remote.php/dav/files/test/document.txt&#39; \</span>
+<span class="go">    --user test:test \</span>
+<span class="go">    --request PROPPATCH \</span>
+<span class="go">    --data &#39;&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="go">        &lt;d:propertyupdate xmlns:d=&quot;DAV:&quot; xmlns:oc=&quot;http://owncloud.org/ns&quot; xmlns:nc=&quot;http://nextcloud.org/ns&quot;&gt;</span>
+<span class="go">            &lt;d:set&gt;</span>
+<span class="go">                &lt;d:prop&gt;</span>
+<span class="go">                    &lt;nc:metadata-myapp-test&gt;123&lt;/nc:metadata-myapp-test&gt;</span>
+<span class="go">                &lt;/d:prop&gt;</span>
+<span class="go">            &lt;/d:set&gt;</span>
+<span class="go">        &lt;/d:propertyupdate&gt;&#39;</span>
+</pre></div>
+</div>
+<p>This will return a result like</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span class="nt">&lt;d:multistatus</span><span class="w"> </span><span class="na">xmlns:d=</span><span class="s">&quot;DAV:&quot;</span><span class="w"> </span><span class="na">xmlns:oc=</span><span class="s">&quot;http://owncloud.org/ns&quot;</span><span class="w"> </span><span class="na">xmlns:nc=</span><span class="s">&quot;http://nextcloud.org/ns&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;d:response&gt;</span>
+<span class="w">        </span><span class="nt">&lt;d:href&gt;</span>/remote.php/dav/files/test/document.txt<span class="nt">&lt;/d:href&gt;</span>
+<span class="w">        </span><span class="nt">&lt;d:propstat&gt;</span>
+<span class="w">            </span><span class="nt">&lt;d:prop&gt;</span>
+<span class="w">                </span><span class="nt">&lt;nc:metadata-myapp-test/&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/d:prop&gt;</span>
+<span class="w">            </span><span class="nt">&lt;d:status&gt;</span>HTTP/1.1<span class="w"> </span>200<span class="w"> </span>OK<span class="nt">&lt;/d:status&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/d:propstat&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/d:response&gt;</span>
+<span class="nt">&lt;/d:multistatus&gt;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>WebDAV prefixes metadata with <code class="docutils literal notranslate"><span class="pre">&lt;nc:metadata-</span></code>, which means that the metadata name available to the backend in our example is <code class="docutils literal notranslate"><span class="pre">myapp-test</span></code>.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>By default, metadata are not editable/creatable when using a WebDAV PROPPATCH request.
+It is required to initiate it first using <code class="docutils literal notranslate"><span class="pre">IFilesMetadataManager::initMetadata()</span></code></p>
+</div>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="sd">/** lib/AppInfo/Application.php */</span>
+<span class="k">public</span> <span class="k">function</span> <span class="nf">boot</span><span class="p">(</span><span class="nx">IBootContext</span> <span class="nv">$context</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
+    <span class="sd">/** @var IFilesMetadataManager $metadataManager */</span>
+    <span class="nv">$metadataManager</span> <span class="o">=</span> <span class="nv">$context</span><span class="o">-&gt;</span><span class="na">getServerContainer</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="nx">IFilesMetadataManager</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+    <span class="nv">$metadataManager</span><span class="o">-&gt;</span><span class="na">initMetadata</span><span class="p">(</span><span class="s1">&#39;myapp-test&#39;</span><span class="p">,</span> <span class="nx">IMetadataValueWrapper</span><span class="o">::</span><span class="na">TYPE_INT</span><span class="p">,</span> <span class="k">true</span><span class="p">,</span> <span class="nx">IMetadataValueWrapper</span><span class="o">::</span><span class="na">EDIT_REQ_OWNERSHIP</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="retrieve-metadata-using-propfind">
+<h2>Retrieve metadata using PROPFIND<a class="headerlink" href="#retrieve-metadata-using-propfind" title="Link to this heading"></a></h2>
+<p>Metadata are available to the WebDAV PROPFIND requests:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">curl &#39;https://cloud.example.net/remote.php/dav/files/test/document.txt&#39; \</span>
+<span class="go">    --user test:test \</span>
+<span class="go">    --request PROPFIND \</span>
+<span class="go">    --data &#39;&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="go">        &lt;d:propfind xmlns:d=&quot;DAV:&quot; xmlns:oc=&quot;http://owncloud.org/ns&quot; xmlns:nc=&quot;http://nextcloud.org/ns&quot;&gt;</span>
+<span class="go">            &lt;d:prop&gt;</span>
+<span class="go">                &lt;nc:metadata-myapp-test&gt;</span>
+<span class="go">            &lt;/d:prop&gt;</span>
+<span class="go">        &lt;/d:propfind&gt;&#39;</span>
+</pre></div>
+</div>
+<p>This will return a result like</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span class="nt">&lt;d:multistatus</span><span class="w"> </span><span class="na">xmlns:d=</span><span class="s">&quot;DAV:&quot;</span><span class="w"> </span><span class="na">xmlns:oc=</span><span class="s">&quot;http://owncloud.org/ns&quot;</span><span class="w"> </span><span class="na">xmlns:nc=</span><span class="s">&quot;http://nextcloud.org/ns&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;d:response&gt;</span>
+<span class="w">        </span><span class="nt">&lt;d:href&gt;</span>/remote.php/dav/files/test/document.txt<span class="nt">&lt;/d:href&gt;</span>
+<span class="w">        </span><span class="nt">&lt;d:propstat&gt;</span>
+<span class="w">            </span><span class="nt">&lt;d:prop&gt;</span>
+<span class="w">                </span><span class="nt">&lt;nc:metadata-myapp-test&gt;</span>123<span class="nt">&lt;/nc:metadata-myapp-test&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/d:prop&gt;</span>
+<span class="w">            </span><span class="nt">&lt;d:status&gt;</span>HTTP/1.1<span class="w"> </span>200<span class="w"> </span>OK<span class="nt">&lt;/d:status&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/d:propstat&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/d:response&gt;</span>
+<span class="nt">&lt;/d:multistatus&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="webdav-search-based-on-metadata">
+<h2>WebDAV SEARCH based on metadata<a class="headerlink" href="#webdav-search-based-on-metadata" title="Link to this heading"></a></h2>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">curl &#39;https://cloud.example.net/remote.php/dav/&#39; \</span>
+<span class="go">    --user test:test \</span>
+<span class="go">    --request SEARCH \</span>
+<span class="go">    --data &#39;&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="go">        &lt;d:searchrequest xmlns:d=&quot;DAV:&quot; xmlns:oc=&quot;http://owncloud.org/ns&quot; xmlns:nc=&quot;http://nextcloud.org/ns&quot;&gt;</span>
+<span class="go">            &lt;d:basicsearch&gt;</span>
+<span class="go">                &lt;d:select&gt;</span>
+<span class="hll"><span class="go">                    &lt;d:prop&gt;</span>
+</span><span class="hll"><span class="go">                        &lt;nc:metadata-myapp-test /&gt;</span>
+</span><span class="hll"><span class="go">                    &lt;/d:prop&gt;</span>
+</span><span class="go">                &lt;/d:select&gt;</span>
+<span class="go">                &lt;d:from&gt;</span>
+<span class="go">                    &lt;d:scope&gt;</span>
+<span class="go">                        &lt;d:href&gt;/files/test/&lt;/d:href&gt;</span>
+<span class="go">                        &lt;d:depth&gt;infinity&lt;/d:depth&gt;</span>
+<span class="go">                    &lt;/d:scope&gt;</span>
+<span class="go">                &lt;/d:from&gt;</span>
+<span class="go">                &lt;d:where&gt;</span>
+<span class="hll"><span class="go">                    &lt;d:and&gt;</span>
+</span><span class="hll"><span class="go">                        &lt;d:gt&gt;</span>
+</span><span class="hll"><span class="go">                            &lt;d:prop&gt;</span>
+</span><span class="hll"><span class="go">                                &lt;nc:metadata-myapp-test/&gt;</span>
+</span><span class="hll"><span class="go">                            &lt;/d:prop&gt;</span>
+</span><span class="hll"><span class="go">                            &lt;d:literal&gt;10&lt;/d:literal&gt;</span>
+</span><span class="hll"><span class="go">                        &lt;/d:gt&gt;</span>
+</span><span class="hll"><span class="go">                        &lt;d:lt&gt;</span>
+</span><span class="hll"><span class="go">                            &lt;d:prop&gt;</span>
+</span><span class="hll"><span class="go">                                &lt;nc:metadata-myapp-test/&gt;</span>
+</span><span class="hll"><span class="go">                            &lt;/d:prop&gt;</span>
+</span><span class="hll"><span class="go">                            &lt;d:literal&gt;1000&lt;/d:literal&gt;</span>
+</span><span class="hll"><span class="go">                        &lt;/d:lt&gt;</span>
+</span><span class="hll"><span class="go">                    &lt;/d:and&gt;</span>
+</span><span class="go">                &lt;/d:where&gt;</span>
+<span class="go">                &lt;d:orderby&gt;</span>
+<span class="go">                    &lt;d:order&gt;</span>
+<span class="hll"><span class="go">                        &lt;d:prop&gt;</span>
+</span><span class="hll"><span class="go">                            &lt;nc:metadata-myapp-test/&gt;</span>
+</span><span class="hll"><span class="go">                        &lt;/d:prop&gt;</span>
+</span><span class="hll"><span class="go">                        &lt;d:descending/&gt;</span>
+</span><span class="go">                    &lt;/d:order&gt;</span>
+<span class="go">                &lt;/d:orderby&gt;</span>
+<span class="go">                &lt;d:limit&gt;</span>
+<span class="go">                    &lt;d:nresults&gt;200&lt;/d:nresults&gt;</span>
+<span class="go">                    &lt;ns:firstresult&gt;0&lt;/ns:firstresult&gt;</span>
+<span class="go">                &lt;/d:limit&gt;</span>
+<span class="go">            &lt;/d:basicsearch&gt;</span>
+<span class="go">        &lt;/d:searchrequest&gt;&#39;</span>
+</pre></div>
+</div>
+<p>This will return a result like:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span class="nt">&lt;d:multistatus</span><span class="w"> </span><span class="na">xmlns:d=</span><span class="s">&quot;DAV:&quot;</span><span class="w"> </span><span class="na">xmlns:oc=</span><span class="s">&quot;http://owncloud.org/ns&quot;</span><span class="w"> </span><span class="na">xmlns:nc=</span><span class="s">&quot;http://nextcloud.org/ns&quot;</span><span class="nt">&gt;</span>
+<span class="w">    </span><span class="nt">&lt;d:response&gt;</span>
+<span class="w">        </span><span class="nt">&lt;d:href&gt;</span>/remote.php/dav/files/test/<span class="nt">&lt;/d:href&gt;</span>
+<span class="w">        </span><span class="nt">&lt;d:propstat&gt;</span>
+<span class="w">            </span><span class="nt">&lt;d:prop&gt;</span>
+<span class="w">                </span><span class="nt">&lt;nc:metadata-myapp-test/&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/d:prop&gt;</span>
+<span class="w">            </span><span class="nt">&lt;d:status&gt;</span>HTTP/1.1<span class="w"> </span>404<span class="w"> </span>Not<span class="w"> </span>Found<span class="nt">&lt;/d:status&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/d:propstat&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/d:response&gt;</span>
+<span class="w">    </span><span class="nt">&lt;d:response&gt;</span>
+<span class="w">        </span><span class="nt">&lt;d:href&gt;</span>/remote.php/dav/files/test/document.txt<span class="nt">&lt;/d:href&gt;</span>
+<span class="w">        </span><span class="nt">&lt;d:propstat&gt;</span>
+<span class="w">            </span><span class="nt">&lt;d:prop&gt;</span>
+<span class="w">                </span><span class="nt">&lt;nc:metadata-myapp-test&gt;</span>123<span class="nt">&lt;/nc:metadata-myapp-test&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/d:prop&gt;</span>
+<span class="w">            </span><span class="nt">&lt;d:status&gt;</span>HTTP/1.1<span class="w"> </span>200<span class="w"> </span>OK<span class="nt">&lt;/d:status&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/d:propstat&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/d:response&gt;</span>
+<span class="w">    </span><span class="nt">&lt;d:response&gt;</span>
+<span class="w">        </span><span class="nt">&lt;d:href&gt;</span>/remote.php/dav/files/test/another-one.txt<span class="nt">&lt;/d:href&gt;</span>
+<span class="w">        </span><span class="nt">&lt;d:propstat&gt;</span>
+<span class="w">            </span><span class="nt">&lt;d:prop&gt;</span>
+<span class="w">                </span><span class="nt">&lt;nc:metadata-myapp-test&gt;</span>369<span class="nt">&lt;/nc:metadata-myapp-test&gt;</span>
+<span class="w">            </span><span class="nt">&lt;/d:prop&gt;</span>
+<span class="w">            </span><span class="nt">&lt;d:status&gt;</span>HTTP/1.1<span class="w"> </span>200<span class="w"> </span>OK<span class="nt">&lt;/d:status&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/d:propstat&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/d:response&gt;</span>
+<span class="nt">&lt;/d:multistatus&gt;</span>
+</pre></div>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Metadata used in ORDER and WHERE statement will require metadata to be initiated and set as indexed.
+It is required to call <code class="docutils literal notranslate"><span class="pre">IFilesMetadataManager::initMetadata()</span></code> before running the WebDAV request or it will returns an exception because of unknown property.</p>
+</div>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="sd">/** lib/AppInfo/Application.php */</span>
+<span class="k">public</span> <span class="k">function</span> <span class="nf">boot</span><span class="p">(</span><span class="nx">IBootContext</span> <span class="nv">$context</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
+    <span class="sd">/** @var IFilesMetadataManager $metadataManager */</span>
+    <span class="nv">$metadataManager</span> <span class="o">=</span> <span class="nv">$context</span><span class="o">-&gt;</span><span class="na">getServerContainer</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="nx">IFilesMetadataManager</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+    <span class="nv">$metadataManager</span><span class="o">-&gt;</span><span class="na">initMetadata</span><span class="p">(</span><span class="s1">&#39;my-second-meta&#39;</span><span class="p">,</span> <span class="nx">IMetadataValueWrapper</span><span class="o">::</span><span class="na">TYPE_INT</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="metadata-query-helper">
+<h2>Metadata Query Helper<a class="headerlink" href="#metadata-query-helper" title="Link to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">IFilesMetadataManager::getMetadataQuery(IQueryBuilder</span> <span class="pre">$qb,</span> <span class="pre">string</span> <span class="pre">$fileTableAlias,</span> <span class="pre">string</span> <span class="pre">$fileIdField)</span></code> returns a <code class="docutils literal notranslate"><span class="pre">IMetadataQuery</span></code> to help building Sql request with the following methods.
+Parameters when calling the method are the alias of the table, and the name of the field, that contains file ids.</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">retrieveMetadata()</span></code> will add a select on the stored metadata</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">extractMetadata(array</span> <span class="pre">$row)</span></code> convert a fetched row from the resultinto a <code class="docutils literal notranslate"><span class="pre">IFilesMetadata</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">joinIndex(string</span> <span class="pre">$metadataKey,</span> <span class="pre">bool</span> <span class="pre">$enforce)</span></code> join the indexes to the request</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">getMetadataKeyField(string</span> <span class="pre">$metadataKey)</span></code> returns the field and the aliased table of the key of an index</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">getMetadataValueField(string</span> <span class="pre">$metadataKey)</span></code> returns the field and the aliased table of the value of an index</p></li>
+</ul>
+</div></blockquote>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="c1">// generate your normal query builder</span>
+<span class="nv">$qb</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">QueryBuilder</span><span class="p">();</span>
+<span class="nv">$qb</span><span class="o">-&gt;</span><span class="na">select</span><span class="p">(</span><span class="s1">&#39;file_id&#39;</span><span class="p">)</span>
+   <span class="o">-&gt;</span><span class="na">from</span><span class="p">(</span><span class="s1">&#39;my_table&#39;</span><span class="p">,</span> <span class="s1">&#39;my_alias&#39;</span><span class="p">);</span>
+
+<span class="sd">/** @var IFilesMetadataManager $metadataManager */</span>
+<span class="nv">$metadataManager</span> <span class="o">=</span> <span class="nv">$context</span><span class="o">-&gt;</span><span class="na">getServerContainer</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="nx">IFilesMetadataManager</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+
+<span class="c1">// get a configured query helper and add a select on the metadata</span>
+<span class="nv">$metadataQuery</span> <span class="o">=</span> <span class="nv">$metadataManager</span><span class="o">-&gt;</span><span class="na">getMetadataQuery</span><span class="p">(</span><span class="nv">$qb</span><span class="p">,</span> <span class="s1">&#39;my_alias&#39;</span><span class="p">,</span> <span class="s1">&#39;file_id&#39;</span><span class="p">);</span>
+<span class="nv">$metadataQuery</span><span class="o">-&gt;</span><span class="na">retrieveMetadata</span><span class="p">();</span>
+
+<span class="c1">// right join the index table and get only value lower than 8910 for metadata &#39;my-second-meta&#39;</span>
+<span class="nv">$metadataQuery</span><span class="o">-&gt;</span><span class="na">joinIndex</span><span class="p">(</span><span class="s1">&#39;my-second-meta&#39;</span><span class="p">,</span> <span class="k">true</span><span class="p">);</span>
+<span class="nv">$qb</span><span class="o">-&gt;</span><span class="na">where</span><span class="p">(</span><span class="nv">$qb</span><span class="o">-&gt;</span><span class="na">expr</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">lt</span><span class="p">(</span><span class="nv">$metadataQuery</span><span class="o">-&gt;</span><span class="na">getMetadataValueField</span><span class="p">(</span><span class="s1">&#39;my-second-meta&#39;</span><span class="p">),</span> <span class="nv">$qb</span><span class="o">-&gt;</span><span class="na">createNamedParameter</span><span class="p">(</span><span class="mi">8910</span><span class="p">)));</span>
+
+<span class="c1">// get result</span>
+<span class="nv">$result</span> <span class="o">=</span> <span class="nv">$qb</span><span class="o">-&gt;</span><span class="na">execute</span><span class="p">();</span>
+<span class="nv">$items</span> <span class="o">=</span> <span class="nv">$result</span><span class="o">-&gt;</span><span class="na">fetchAll</span><span class="p">();</span>
+
+<span class="c1">// extract metadata from each row</span>
+<span class="nv">$entries</span> <span class="o">=</span> <span class="nb">array_map</span><span class="p">(</span><span class="k">function</span> <span class="p">(</span><span class="k">array</span> <span class="nv">$data</span><span class="p">)</span> <span class="k">use</span> <span class="p">(</span><span class="nv">$metadataQuery</span><span class="p">)</span><span class="o">:</span> <span class="k">array</span> <span class="p">{</span>
+    <span class="nv">$data</span><span class="p">[</span><span class="s1">&#39;metadata&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nv">$metadataQuery</span><span class="o">-&gt;</span><span class="na">extractMetadata</span><span class="p">(</span><span class="nv">$data</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">asArray</span><span class="p">();</span>
+<span class="p">},</span> <span class="nv">$items</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="email.html" class="btn btn-neutral float-left" title="Email" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="flow.html" class="btn btn-neutral float-right" title="Nextcloud Flow" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Versions</dt>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/latest/developer_manual"
+             
+             style="color: var(--dark-link-color);"
+             
+          >
+            latest
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/stable/developer_manual"
+             
+          >
+            stable
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/29/developer_manual"
+             
+          >
+            29
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/28/developer_manual"
+             
+          >
+            28
+          </a>
+        </dd>
+        
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

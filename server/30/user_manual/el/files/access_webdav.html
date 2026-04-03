@@ -1,0 +1,1311 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="el" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Πρόσβαση σε αρχεία Nextcloud χρησιμοποιώντας το WebDAV &mdash; Τεκμηρίωση του Nextcloud latest User Manual - latest</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=b9ccd51a"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../_static/copybutton.js?v=f281be69"></script>
+        <script src="../../_static/translations.js?v=dd0234b1"></script>
+        <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+        <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Ευρετήριο" href="../genindex.html" />
+    <link rel="search" title="Αναζήτηση" href="../search.html" />
+    <link rel="next" title="Διαχείριση διαγραμμένων αρχείων" href="deleted_file_management.html" />
+    <link rel="prev" title="Πρόσβαση στα αρχεία σας χρησιμοποιώντας τη διεπαφή Web Nextcloud" href="access_webgui.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Nextcloud | έκδοση | εγχειρίδιο χρήστη εισαγωγή</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../whats_new.html">Τι νέο υπάρχει για τους χρήστες στο Nextcloud | έκδοση |</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">Η διεπαφή Nextcloud Web</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Αρχεία και συγχρονισμός</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="access_webgui.html">Πρόσβαση στα αρχεία σας χρησιμοποιώντας τη διεπαφή Web Nextcloud</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Πρόσβαση σε αρχεία Nextcloud χρησιμοποιώντας το WebDAV</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#official-nextcloud-desktop-and-mobile-clients">Official Nextcloud desktop and mobile clients</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#third-party-webdav-clients">Third-party WebDAV clients</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#accessing-files-using-linux">Πρόσβαση σε αρχεία χρησιμοποιώντας Linux</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#nautilus-file-manager">Διαχειριστής αρχείων Nautilus</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#accessing-files-with-kde-and-dolphin-file-manager">Πρόσβαση σε αρχεία με τον διαχειριστή αρχείων KDE και Dolphin</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#creating-webdav-mounts-on-the-linux-command-line">Δημιουργία προσθηκών WebDAV στη γραμμή εντολών Linux</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#known-issues">Γνωστά προβλήματα</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#problem">Πρόβλημα</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#solution">Λύση</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id1">Πρόβλημα</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">Λύση</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#accessing-files-using-macos">Πρόσβαση σε αρχεία χρησιμοποιώντας macOS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#accessing-files-using-microsoft-windows">Πρόσβαση σε αρχεία χρησιμοποιώντας τα Microsoft Windows</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#mapping-drives-with-the-command-line">Αντιστοίχιση μονάδων δίσκου με τη γραμμή εντολών</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mapping-drives-with-windows-explorer">Αντιστοίχιση μονάδων δίσκου με την Εξερεύνηση των Windows</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#accessing-files-using-cyberduck">Πρόσβαση σε αρχεία χρησιμοποιώντας το Cyberduck</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#accessing-public-shares-over-webdav">Πρόσβαση σε δημόσιες μετοχές μέσω WebDAV</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#known-problems">Γνωστά προβλήματα</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id4">Πρόβλημα</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#solution-1">Λύση 1</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#solution-2">Λύση 2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">Πρόβλημα</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">Λύση</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">Πρόβλημα</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#answer">Answer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8">Πρόβλημα</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id9">Λύση</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id10">Πρόβλημα</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id11">Λύση</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#accessing-files-using-curl">Πρόσβαση σε αρχεία χρησιμοποιώντας το cURL</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#accessing-files-using-winscp">Accessing files using WinSCP</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="deleted_file_management.html">Διαχείριση διαγραμμένων αρχείων</a></li>
+<li class="toctree-l2"><a class="reference internal" href="desktop_mobile_sync.html">Συγχρονισμός επιτραπέζιων υπολογιστών και κινητών</a></li>
+<li class="toctree-l2"><a class="reference internal" href="encrypting_files.html">Κρυπτογράφηση των αρχείων Nextcloud στο διακομιστή</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sharing.html">Κοινή χρήση αρχείων</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sharing.html#federated-shares">Ομόσπονδες μετοχές</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_drop.html">Πραγματοποίηση ανώνυμων μεταφορτώσεων</a></li>
+<li class="toctree-l2"><a class="reference internal" href="large_file_upload.html">Μεγάλες μεταφορτώσεις αρχείων</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quota.html">Όριο αποθήκευσης</a></li>
+<li class="toctree-l2"><a class="reference internal" href="version_control.html">Έλεγχος έκδοσης</a></li>
+<li class="toctree-l2"><a class="reference internal" href="projects.html">Εργα</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transfer_ownership.html">Μεταβίβαση ιδιοκτησίας</a></li>
+<li class="toctree-l2"><a class="reference internal" href="federated_cloud_sharing.html">Χρήση κοινών μετοχών</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Talk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Ορισμός των προτιμήσεών σας</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Καθολική Πρόσβαση</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Χρήση ελέγχου ταυτότητας δύο παραγόντων</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Διαχείριση συνδεδεμένων προγραμμάτων περιήγησης και συσκευών</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">Εξωτερικός χώρος αποθήκευσης</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest User Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Αρχεία και συγχρονισμός</a></li>
+      <li class="breadcrumb-item active">Πρόσβαση σε αρχεία Nextcloud χρησιμοποιώντας το WebDAV</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/files/access_webdav.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="accessing-nextcloud-files-using-webdav">
+<h1>Πρόσβαση σε αρχεία Nextcloud χρησιμοποιώντας το WebDAV<a class="headerlink" href="#accessing-nextcloud-files-using-webdav" title="Link to this heading"></a></h1>
+<p>Nextcloud fully supports the WebDAV protocol, and you can connect and synchronize
+with Nextcloud Files over WebDAV. In this chapter, you will learn how to
+connect Linux, macOS, Windows, and mobile devices to your Nextcloud server.</p>
+<p>WebDAV stands for Distributed Authoring and Versioning. It is an HTTP extension
+that makes it easy to create, read, and edit files hosted on remote Web servers. With
+a WebDAV client, you can access your Nextcloud Files (including shares) on Linux,
+macOS and Windows in a similar way as any remote network share, and stay synchronized.</p>
+<p>Before we get into configuring WebDAV, let’s take a quick look at the
+recommended way of connecting client devices to Nextcloud.</p>
+<section id="official-nextcloud-desktop-and-mobile-clients">
+<h2>Official Nextcloud desktop and mobile clients<a class="headerlink" href="#official-nextcloud-desktop-and-mobile-clients" title="Link to this heading"></a></h2>
+<p>The recommended way to synchronize a computer with a Nextcloud server is by
+using the <a class="reference external" href="https://nextcloud.com/install/#install-clients">official Nextcloud sync clients</a>.
+You can configure the client to save files in any local directory and you can choose which
+directories on the Nextcloud server to sync with. The client displays the
+current connection status and logs all activity, so you always know which
+remote files have been downloaded to your PC and you can verify that files
+created and updated on your local PC are properly synchronized with the server.</p>
+<p>The recommended way to synchronize Android and Apple iOS devices is by using
+the <a class="reference external" href="https://nextcloud.com/install/">official Nextcloud mobile apps</a>.</p>
+<p>To connect the official Nextcloud apps to a Nextcloud server use the
+same URL you use to access Nextcloud from your web browser - e.g.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">cloud</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">com</span>
+
+<span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">nextcloud</span> <span class="p">(</span><span class="k">if</span> <span class="n">Nextcloud</span> <span class="ow">is</span> <span class="n">installed</span> <span class="ow">in</span> <span class="n">a</span> <span class="n">subdirectory</span> <span class="n">called</span> <span class="s2">&quot;nextcloud&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="third-party-webdav-clients">
+<h2>Third-party WebDAV clients<a class="headerlink" href="#third-party-webdav-clients" title="Link to this heading"></a></h2>
+<p>If you prefer, you may also connect your computer to your Nextcloud server by
+using any third-party client that supports the WebDAV protocol (including what may be
+built into your operating system).</p>
+<p>You can also use third-party WebDAV capable apps to connect your mobile
+device to Nextcloud.</p>
+<p>When using third-party clients, keep in mind that they may not be optimized for use with
+Nextcloud or implement capabilities you consider important to your use case.</p>
+<p>Mobile clients that Nextcloud community members have reported using include:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://foldersync.io/">FolderSync (Android)</a></p></li>
+<li><p><a class="reference external" href="https://apps.apple.com/us/app/webdav-navigator/id382551345">WebDAV Navigator (iPhone)</a></p></li>
+</ul>
+<p>The URL to use when configuring third-party apps to connect to Nextcloud is a bit lengthier than the one for official clients:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">cloud</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span>
+
+<span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span> <span class="p">(</span><span class="k">if</span> <span class="n">Nextcloud</span> <span class="ow">is</span> <span class="n">installed</span> <span class="ow">in</span> <span class="n">a</span> <span class="n">subdirectory</span> <span class="n">called</span> <span class="s2">&quot;nextcloud&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Σημείωση</p>
+<p>When using a third-party WebDAV client (including your operating system’s
+built-in client), you should use an application password for login rather than your
+regular password. In addition improved security, this <a class="reference external" href="https://github.com/nextcloud/server/issues/32729#issuecomment-1556667151">increases performance significantly</a>. To
+configure an application password, log into the Nextcloud Web interface, click on the avatar
+in the top right and choose <em>Personal settings</em>. Then choose <em>Security</em> in the left
+sidebar and scroll to the very bottom. There you can create an app password (which can
+also be revoked in the future without changing your main user password).</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Σημείωση</p>
+<p>In the following examples, you should replace <strong>example.com/nextcloud</strong> with the
+URL of your Nextcloud server (omit the directory part if the installation is
+in the root of your domain), and <strong>USERNAME</strong> with the username of the connecting user.</p>
+<p>See the WebDAV URL (bottom left in settings) on your Nextcloud.</p>
+</div>
+</section>
+<section id="accessing-files-using-linux">
+<h2>Πρόσβαση σε αρχεία χρησιμοποιώντας Linux<a class="headerlink" href="#accessing-files-using-linux" title="Link to this heading"></a></h2>
+<p>Για να συνδέσετε την εφαρμογή σας για κινητά σε διακομιστή Nextcloud χρησιμοποιήστε μόνο το βασικό URL και το φάκελο ::Μπορείτε να αποκτήσετε πρόσβαση σε αρχεία σε λειτουργικά συστήματα Linux χρησιμοποιώντας τις ακόλουθες μεθόδους.</p>
+<section id="nautilus-file-manager">
+<h3>Διαχειριστής αρχείων Nautilus<a class="headerlink" href="#nautilus-file-manager" title="Link to this heading"></a></h3>
+<p><strong>When you configure your Nextcloud account in the</strong> <a class="reference external" href="../groupware/sync_gnome.html">GNOME Control Center</a>, <strong>your files will automatically be mounted
+by Nautilus as a WebDAV share, unless you deselect file access</strong>.</p>
+<p>Διαμόρφωση WebDAVΜπορείτε επίσης να προσαρτήσετε τα αρχεία Nextcloud με μη αυτόματο τρόπο. Χρησιμοποιήστε το πρωτόκολλο «davs: //» για να συνδέσετε τον διαχειριστή αρχείων Nautilus στο κοινόχρηστο στοιχείο Nextcloud</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">davs</span><span class="p">:</span><span class="o">//</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Σημείωση</p>
+<p>If your server connection is not HTTPS-secured, use <code class="docutils literal notranslate"><span class="pre">dav://</span></code> instead
+of <code class="docutils literal notranslate"><span class="pre">davs://</span></code>:</p>
+</div>
+<img alt="Screenshot of configuring Nautilus file manager to use WebDAV" src="../../_images/webdav_gnome3_nautilus.png" />
+<div class="admonition note">
+<p class="admonition-title">Σημείωση</p>
+<p>The same method works for other file managers that use GVFS,
+such as MATE’s Caja and Cinnamon’s Nemo.</p>
+</div>
+</section>
+<section id="accessing-files-with-kde-and-dolphin-file-manager">
+<h3>Πρόσβαση σε αρχεία με τον διαχειριστή αρχείων KDE και Dolphin<a class="headerlink" href="#accessing-files-with-kde-and-dolphin-file-manager" title="Link to this heading"></a></h3>
+<p>Μπορείτε να αποκτήσετε πρόσβαση σε αρχεία σε λειτουργικά συστήματα Linux χρησιμοποιώντας τις ακόλουθες μεθόδους.Για να αποκτήσετε πρόσβαση στα αρχεία Nextcloud χρησιμοποιώντας τον διαχειριστή αρχείων Dolphin στο KDE, χρησιμοποιήστε το πρωτόκολλο «webdav: //»</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">webdav</span><span class="p">:</span><span class="o">//</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span>
+</pre></div>
+</div>
+<img alt="Screenshot of configuring Dolphin file manager to use WebDAV" src="../../_images/webdav_dolphin.png" />
+<p>Διαχειριστής αρχείων NautilusΜπορείτε να δημιουργήσετε έναν μόνιμο σύνδεσμο για τον διακομιστή Nextcloud:</p>
+<ol class="arabic simple">
+<li><p>Open Dolphin and click «Network» in the left-hand «Places» column.</p></li>
+<li><p>Μπορείτε επίσης να προσαρτήσετε τα αρχεία Nextcloud με μη αυτόματο τρόπο. Χρησιμοποιήστε το πρωτόκολλο «davs: //» για να συνδέσετε τον διαχειριστή αρχείων Nautilus στο κοινόχρηστο στοιχείο Nextcloud ::Κάντε κλικ στο εικονίδιο με την ένδειξη ** Προσθήκη φακέλου δικτύου <a href="#id1"><span class="problematic" id="id2">**</span></a>. Ο διάλογος που προκύπτει θα πρέπει να εμφανίζεται με το WebDAV που έχει ήδη επιλεγεί.</p></li>
+<li><p>Εάν το WebDAV δεν είναι επιλεγμένο, επιλέξτε το.</p></li>
+<li><p>Κάντε κλικ στο ** Επόμενο <a href="#id1"><span class="problematic" id="id2">**</span></a>.</p></li>
+<li><p>Εισαγάγετε τις ακόλουθες ρυθμίσεις:</p>
+<ul class="simple">
+<li><p>Name: the name you want to see in the <strong>Places</strong> bookmark, for example, Nextcloud.</p></li>
+<li><p>User: the Nextcloud username you used to log in, for example, admin.</p></li>
+<li><p>Server: the Nextcloud domain name, for example, <strong>example.com</strong> (without
+<strong>http://</strong> before or directories afterwards).</p></li>
+<li><p>Για να αποκτήσετε πρόσβαση στα αρχεία Nextcloud χρησιμοποιώντας τον διαχειριστή αρχείων Dolphin στο KDE, χρησιμοποιήστε το πρωτόκολλο «webdav: //» ::Φάκελος - Εισαγάγετε τη διαδρομή «nextcloud / remote.php / dav / files / USERNAME /».</p></li>
+</ul>
+</li>
+<li><p>(Optional) Check the «Create icon» checkbox for a bookmark to appear in the
+Places column.</p></li>
+<li><p>Ανοίξτε το Δελφίνι και κάντε κλικ στο «Δίκτυο» στην αριστερή στήλη «Μέρη».(Προαιρετικό) Καταχωρίστε τυχόν ειδικές ρυθμίσεις ή πιστοποιητικό SSL στο πλαίσιο ελέγχου «Port &amp; Encrypted».</p></li>
+</ol>
+</section>
+</section>
+<section id="creating-webdav-mounts-on-the-linux-command-line">
+<h2>Δημιουργία προσθηκών WebDAV στη γραμμή εντολών Linux<a class="headerlink" href="#creating-webdav-mounts-on-the-linux-command-line" title="Link to this heading"></a></h2>
+<p>Κάντε κλικ στο εικονίδιο με την ένδειξη ** Προσθήκη φακέλου δικτύου <a href="#id1"><span class="problematic" id="id2">**</span></a>. Ο διάλογος που προκύπτει θα πρέπει να εμφανίζεται με το WebDAV που έχει ήδη επιλεγεί.Μπορείτε να δημιουργήσετε βάσεις WebDAV από τη γραμμή εντολών Linux. Αυτό είναι χρήσιμο εάν προτιμάτε να έχετε πρόσβαση στο Nextcloud με τον ίδιο τρόπο όπως σε οποιαδήποτε άλλη απομακρυσμένη βάση συστήματος. Το παρακάτω παράδειγμα δείχνει πώς να δημιουργήσετε μια προσωπική βάση και να την προσαρμόσετε αυτόματα κάθε φορά που συνδέεστε στον υπολογιστή σας Linux.</p>
+<ol class="arabic">
+<li><p>Εάν το WebDAV δεν είναι επιλεγμένο, επιλέξτε το.Εγκαταστήστε το «davfs2» Πρόγραμμα οδήγησης συστήματος αρχείων WebDAV, το οποίο σας επιτρέπει να προσαρμόσετε κοινές χρήσεις WebDAV όπως οποιοδήποτε άλλο απομακρυσμένο σύστημα αρχείων. Χρησιμοποιήστε αυτήν την εντολή για να την εγκαταστήσετε στο Debian / Ubuntu</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">davfs2</span>
+</pre></div>
+</div>
+</li>
+<li><p>Κάντε κλικ στο ** Επόμενο <a href="#id1"><span class="problematic" id="id2">**</span></a>.Χρησιμοποιήστε αυτήν την εντολή για να την εγκαταστήσετε σε CentOS, Fedora και openSUSE</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">yum</span> <span class="n">install</span> <span class="n">davfs2</span>
+</pre></div>
+</div>
+</li>
+<li><p>Προσθέστε τον εαυτό σας στην ομάδα «davfs2»</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usermod</span> <span class="o">-</span><span class="n">aG</span> <span class="n">davfs2</span> <span class="o">&lt;</span><span class="n">username</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</li>
+<li><p>Then create a <code class="docutils literal notranslate"><span class="pre">nextcloud</span></code> directory in your home directory for the
+mount point, and <code class="docutils literal notranslate"><span class="pre">.davfs2/</span></code> for your personal configuration file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="o">~/</span><span class="n">nextcloud</span>
+<span class="n">mkdir</span> <span class="o">~/.</span><span class="n">davfs2</span>
+</pre></div>
+</div>
+</li>
+<li><p>Copy <code class="docutils literal notranslate"><span class="pre">/etc/davfs2/secrets</span></code> to <code class="docutils literal notranslate"><span class="pre">~/.davfs2</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cp</span>  <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">davfs2</span><span class="o">/</span><span class="n">secrets</span> <span class="o">~/.</span><span class="n">davfs2</span><span class="o">/</span><span class="n">secrets</span>
+</pre></div>
+</div>
+</li>
+<li><p>Όνομα: Το όνομα που θέλετε να δείτε στον σελιδοδείκτη ** Places <a href="#id1"><span class="problematic" id="id2">**</span></a>, για παράδειγμα Nextcloud.Ορίστε τον εαυτό σας ως κάτοχο και κάντε τα δικαιώματα μόνο ως κάτοχος ανάγνωσης-εγγραφής</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">chown</span> <span class="o">&lt;</span><span class="n">linux_username</span><span class="o">&gt;</span><span class="p">:</span><span class="o">&lt;</span><span class="n">linux_username</span><span class="o">&gt;</span> <span class="o">~/.</span><span class="n">davfs2</span><span class="o">/</span><span class="n">secrets</span>
+<span class="n">chmod</span> <span class="mi">600</span> <span class="o">~/.</span><span class="n">davfs2</span><span class="o">/</span><span class="n">secrets</span>
+</pre></div>
+</div>
+</li>
+<li><p>Χρήστης: Το όνομα χρήστη Nextcloud που χρησιμοποιήσατε για να συνδεθείτε, για παράδειγμα διαχειριστής.Προσθέστε τα διαπιστευτήρια σύνδεσης Nextcloud στο τέλος του αρχείου «μυστικά», χρησιμοποιώντας τη διεύθυνση URL του διακομιστή Nextcloud και το όνομα χρήστη και τον κωδικό πρόσβασης του Nextcloud</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>https://example.com/nextcloud/remote.php/dav/files/USERNAME/ &lt;username&gt; &lt;password&gt;
+or
+$PathToMountPoint $USERNAME $PASSWORD
+for example
+/home/user/nextcloud john 1234
+</pre></div>
+</div>
+</li>
+<li><p>Προσθέστε τις πληροφορίες προσάρτησης στο «/ etc / fstab»</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span> <span class="o">/</span><span class="n">home</span><span class="o">/&lt;</span><span class="n">linux_username</span><span class="o">&gt;/</span><span class="n">nextcloud</span> <span class="n">davfs</span> <span class="n">user</span><span class="p">,</span><span class="n">rw</span><span class="p">,</span><span class="n">auto</span> <span class="mi">0</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</li>
+<li><p>Διακομιστής: Το όνομα τομέα Nextcloud, για παράδειγμα ** example.com ** (χωρίς ** http: // ** πριν ή κατάλογους μετά).Στη συνέχεια, ελέγξτε ότι προσαρμόζεται και επικυρώνει εκτελώντας την ακόλουθη εντολή. Εάν το ρυθμίσετε σωστά δεν θα χρειαστείτε δικαιώματα root</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mount</span> <span class="o">~/</span><span class="n">nextcloud</span>
+</pre></div>
+</div>
+</li>
+<li><p>Θα πρέπει επίσης να μπορείτε να το αποσυνδέσετε</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">umount</span> <span class="o">~/</span><span class="n">nextcloud</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>Φάκελος - Εισαγάγετε τη διαδρομή «nextcloud / remote.php / dav / files / USERNAME /».Τώρα κάθε φορά που συνδέεστε στο σύστημα Linux, το μερίδιο Nextcloud θα πρέπει αυτόματα να τοποθετείται μέσω WebDAV στον κατάλογο «~ / nextcloud». Εάν προτιμάτε να το τοποθετήσετε χειροκίνητα, αλλάξτε το «auto» σε «noauto» στο «/ etc / fstab».</p>
+</section>
+<section id="known-issues">
+<h2>Γνωστά προβλήματα<a class="headerlink" href="#known-issues" title="Link to this heading"></a></h2>
+<section id="problem">
+<h3>Πρόβλημα<a class="headerlink" href="#problem" title="Link to this heading"></a></h3>
+<p>Ο πόρος δεν είναι διαθέσιμος προσωρινά</p>
+</section>
+<section id="solution">
+<h3>Λύση<a class="headerlink" href="#solution" title="Link to this heading"></a></h3>
+<p>(Προαιρετικό) Επιλέξτε το πλαίσιο ελέγχου «Δημιουργία εικονιδίου» για να εμφανιστεί ένας σελιδοδείκτης στη στήλη Μέρη.Εάν αντιμετωπίζετε προβλήματα κατά τη δημιουργία ενός αρχείου στον κατάλογο, επεξεργαστείτε το «/ etc / davfs2 / davfs2.conf» και προσθέστε</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">use_locks</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</section>
+<section id="id1">
+<h3>Πρόβλημα<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
+<p>Προειδοποιήσεις πιστοποιητικών</p>
+</section>
+<section id="id2">
+<h3>Λύση<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
+<p>(Προαιρετικό) Καταχωρίστε τυχόν ειδικές ρυθμίσεις ή πιστοποιητικό SSL στο πλαίσιο ελέγχου «Port &amp; Encrypted».Εάν χρησιμοποιείτε ένα αυτο-υπογεγραμμένο πιστοποιητικό, θα λάβετε μια προειδοποίηση. Για να το αλλάξετε αυτό, πρέπει να διαμορφώσετε το «davfs2» για να αναγνωρίσετε το πιστοποιητικό σας. Αντιγράψτε το «mycertificate.pem» στο «/ etc / davfs2 / certs /». Στη συνέχεια, επεξεργαστείτε το «/ etc / davfs2 / davfs2.conf» και αποσυνδέστε τη γραμμή «servercert». Τώρα προσθέστε τη διαδρομή του πιστοποιητικού σας όπως σε αυτό το παράδειγμα</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">servercert</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">davfs2</span><span class="o">/</span><span class="n">certs</span><span class="o">/</span><span class="n">mycertificate</span><span class="o">.</span><span class="n">pem</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="accessing-files-using-macos">
+<h2>Πρόσβαση σε αρχεία χρησιμοποιώντας macOS<a class="headerlink" href="#accessing-files-using-macos" title="Link to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Σημείωση</p>
+<p>The macOS Finder suffers from a <a class="reference external" href="http://sabre.io/dav/clients/finder/">series of implementation problems</a> and should only be used if the Nextcloud server runs on <strong>Apache</strong> and <strong>mod_php</strong>, or <strong>Nginx 1.3.8+</strong>. Alternative macOS-compatible clients capable of accessing WebDAV shares include open source apps like <a class="reference external" href="https://cyberduck.io/">Cyberduck</a> (see instructions <a class="reference external" href="https://docs.nextcloud.com/server/latest/user_manual/files/access_webdav.html#accessing-files-using-cyberduck">here</a>) and <a class="reference external" href="https://filezilla-project.org">Filezilla</a>. Commercial clients include <a class="reference external" href="https://mountainduck.io/">Mountain Duck</a>, <a class="reference external" href="https://binarynights.com/">Forklift</a>, <a class="reference external" href="https://panic.com/">Transmit</a>, and <a class="reference external" href="https://mac.eltima.com/">Commander One</a>.</p>
+</div>
+<p>Για πρόσβαση σε αρχεία μέσω του macOS Finder:</p>
+<ol class="arabic">
+<li><p>From the Finder’s top menu bar, choose <strong>Go &gt; Connect to Server…</strong>:</p>
+<img alt="Screenshot of entering your Nextcloud server address on macOS" src="../../_images/osx_webdav1.png" />
+</li>
+<li><p>When the <strong>Connect to Server…</strong> window opens, enter your Nextcloud server’s WebDAV address in the <strong>Server Address:</strong> field, i.e.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">cloud</span><span class="o">.</span><span class="n">YOURDOMAIN</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span>
+</pre></div>
+</div>
+<img alt="Screenshot: Enter Nextcloud server address in &quot;Connect to Server…&quot; dialog box" src="../../_images/osx_webdav2.png" />
+</li>
+<li><p>Χρησιμοποιήστε αυτήν την εντολή για να την εγκαταστήσετε σε CentOS, Fedora και openSUSE ::Κάντε κλικ στο ** Σύνδεση <a href="#id1"><span class="problematic" id="id2">**</span></a>. Ο διακομιστής WebDAV θα πρέπει να εμφανίζεται στην επιφάνεια εργασίας ως κοινόχρηστη μονάδα δίσκου.</p></li>
+</ol>
+</section>
+<section id="accessing-files-using-microsoft-windows">
+<h2>Πρόσβαση σε αρχεία χρησιμοποιώντας τα Microsoft Windows<a class="headerlink" href="#accessing-files-using-microsoft-windows" title="Link to this heading"></a></h2>
+<p>If you use the native Windows implementation of WebDAV, you can map Nextcloud to a new
+drive using Windows Explorer. Mapping to a drive enables you to browse files stored on a
+Nextcloud server the way you would browse files stored in a mapped network drive.</p>
+<p>Στη συνέχεια, δημιουργήστε έναν κατάλογο «nextcloud» στον αρχικό σας κατάλογο για το σημείο προσάρτησης και «.davfs2 /» για το προσωπικό σας αρχείο διαμόρφωσης ::Η χρήση αυτής της δυνατότητας απαιτεί σύνδεση δικτύου. Εάν θέλετε να αποθηκεύσετε τα αρχεία σας εκτός σύνδεσης, χρησιμοποιήστε το Desktop Client για να συγχρονίσετε όλα τα αρχεία στο Nextcloud σε έναν ή περισσότερους καταλόγους του τοπικού σκληρού δίσκου.</p>
+<div class="admonition note">
+<p class="admonition-title">Σημείωση</p>
+<p>Windows 10 now defaults to allow Basic Authentication if HTTPS is enabled before mapping your drive.</p>
+<p>On older versions of Windows, you must permit the use of Basic Authentication in the Windows Registry:</p>
+<ul class="simple">
+<li><p>launch <code class="docutils literal notranslate"><span class="pre">regedit</span></code> and navigate to <code class="docutils literal notranslate"><span class="pre">HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WebClient\Parameters</span></code>.</p></li>
+<li><p>Create or edit the <code class="docutils literal notranslate"><span class="pre">BasicAuthLevel</span></code> (Windows Vista, 7 and 8), or <code class="docutils literal notranslate"><span class="pre">UseBasicAuth</span></code> (Windows XP and Windows Server 2003), <code class="docutils literal notranslate"><span class="pre">DWORD</span></code> value and set its value data to <code class="docutils literal notranslate"><span class="pre">1</span></code> for SSL connections.
+A value of <code class="docutils literal notranslate"><span class="pre">0</span></code> means that Basic Authentication is disabled, and a value of <code class="docutils literal notranslate"><span class="pre">2</span></code> allows both SSL and non-SSL connections (not recommended).</p></li>
+<li><p>Then exit Registry Editor, and restart the computer.</p></li>
+</ul>
+</div>
+<section id="mapping-drives-with-the-command-line">
+<h3>Αντιστοίχιση μονάδων δίσκου με τη γραμμή εντολών<a class="headerlink" href="#mapping-drives-with-the-command-line" title="Link to this heading"></a></h3>
+<p>Ορίστε τον εαυτό σας ως κάτοχο και κάντε τα δικαιώματα μόνο ως κάτοχος ανάγνωσης-εγγραφής ::Το παρακάτω παράδειγμα δείχνει πώς να χαρτογραφήσετε μια μονάδα δίσκου χρησιμοποιώντας τη γραμμή εντολών. Για να χαρτογραφήσετε τη μονάδα δίσκου:</p>
+<ol class="arabic">
+<li><p>Ανοίξτε μια γραμμή εντολών στα Windows.</p></li>
+<li><p>Προσθέστε τα διαπιστευτήρια σύνδεσης Nextcloud στο τέλος του αρχείου «μυστικά», χρησιμοποιώντας τη διεύθυνση URL του διακομιστή Nextcloud και το όνομα χρήστη και τον κωδικό πρόσβασης του Nextcloud ::Εισαγάγετε την ακόλουθη γραμμή στη γραμμή εντολών για αντιστοίχιση στη μονάδα δίσκου Z του υπολογιστή</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">net</span> <span class="n">use</span> <span class="n">Z</span><span class="p">:</span> <span class="n">https</span><span class="p">:</span><span class="o">//&lt;</span><span class="n">drive_path</span><span class="o">&gt;/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span> <span class="o">/</span><span class="n">user</span><span class="p">:</span><span class="n">youruser</span> <span class="n">yourpassword</span>
+</pre></div>
+</div>
+<p>with &lt;drive_path&gt; as the URL to your Nextcloud server.
+For example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">net</span> <span class="n">use</span> <span class="n">Z</span><span class="p">:</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span> <span class="o">/</span><span class="n">user</span><span class="p">:</span><span class="n">youruser</span> <span class="n">yourpassword</span>
+</pre></div>
+</div>
+<p>Στη συνέχεια, ελέγξτε ότι προσαρμόζεται και επικυρώνει εκτελώντας την ακόλουθη εντολή. Εάν το ρυθμίσετε σωστά δεν θα χρειαστείτε δικαιώματα root ::Ο υπολογιστής αντιστοιχίζει τα αρχεία του λογαριασμού Nextcloud στο γράμμα Z.</p>
+</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Σημείωση</p>
+<p>If you get the following error
+<code class="docutils literal notranslate"><span class="pre">System</span> <span class="pre">error</span> <span class="pre">67</span> <span class="pre">has</span> <span class="pre">occurred.</span> <span class="pre">The</span> <span class="pre">network</span> <span class="pre">name</span> <span class="pre">cannot</span> <span class="pre">be</span> <span class="pre">found.</span></code>,
+open the <strong>Services</strong> app and make sure that the <code class="docutils literal notranslate"><span class="pre">WebClient</span></code>
+service is running and started automatically at startup.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Σημείωση</p>
+<p>Though not recommended, you can also mount the Nextcloud server using HTTP, leaving the connection unencrypted.</p>
+<blockquote>
+<div><p>If you plan to use HTTP connections on devices while in a public place, we strongly recommend using a VPN tunnel to provide the necessary security.</p>
+</div></blockquote>
+<p>Μια εναλλακτική σύνταξη εντολών είναι</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">net</span> <span class="n">use</span> <span class="n">Z</span><span class="p">:</span> \\<span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="nd">@ssl</span>\<span class="n">nextcloud</span>\<span class="n">remote</span><span class="o">.</span><span class="n">php</span>\<span class="n">dav</span> <span class="o">/</span><span class="n">user</span><span class="p">:</span><span class="n">youruser</span>
+<span class="n">yourpassword</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="mapping-drives-with-windows-explorer">
+<h3>Αντιστοίχιση μονάδων δίσκου με την Εξερεύνηση των Windows<a class="headerlink" href="#mapping-drives-with-windows-explorer" title="Link to this heading"></a></h3>
+<p>To map a drive using Microsoft Windows Explorer:</p>
+<ol class="arabic">
+<li><p>Open Windows Explorer on your MS Windows computer.</p></li>
+<li><p>Right-click on <strong>Computer</strong> entry and select <strong>Map network drive…</strong> from
+the drop-down menu.</p></li>
+<li><p>ΠρόβλημαΕπιλέξτε μια τοπική μονάδα δικτύου στην οποία θέλετε να χαρτογραφήσετε το Nextcloud.</p></li>
+<li><p>Ο πόρος δεν είναι διαθέσιμος προσωρινάΚαθορίστε τη διεύθυνση στην παρουσία σας Nextcloud, ακολουθούμενη από ** / remote.php / dav / files / USERNAME / <a href="#id1"><span class="problematic" id="id2">**</span></a>.</p>
+<p>Για παράδειγμα:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Σημείωση</p>
+<p>For SSL-protected servers, check <strong>Reconnect at sign-in</strong> to ensure
+that the mapping is persistent upon subsequent reboots. If you want to
+connect to the Nextcloud server as a different user, check <strong>Connect using
+different credentials</strong>.</p>
+</div>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/explorer_webdav.png"><img alt="Screenshot of mapping WebDAV on Windows Explorer" src="../../_images/explorer_webdav.png" style="width: 487.20000000000005px; height: 358.40000000000003px;" /></a>
+</figure>
+</li>
+</ol>
+<ol class="arabic simple" start="5">
+<li><p>Κάντε κλικ στο κουμπί «Τέλος».</p></li>
+</ol>
+<p>Εάν αντιμετωπίζετε προβλήματα κατά τη δημιουργία ενός αρχείου στον κατάλογο, επεξεργαστείτε το «/ etc / davfs2 / davfs2.conf» και προσθέστε ::Η Εξερεύνηση των Windows χαρτογραφεί τη μονάδα δίσκου δικτύου, καθιστώντας διαθέσιμη την παρουσία Nextcloud.</p>
+</section>
+</section>
+<section id="accessing-files-using-cyberduck">
+<h2>Πρόσβαση σε αρχεία χρησιμοποιώντας το Cyberduck<a class="headerlink" href="#accessing-files-using-cyberduck" title="Link to this heading"></a></h2>
+<p><a class="reference external" href="https://cyberduck.io/">Cyberduck</a> is an open source FTP, SFTP, WebDAV, OpenStack Swift, and Amazon S3 browser designed for file transfers on macOS and Windows.</p>
+<div class="admonition note">
+<p class="admonition-title">Σημείωση</p>
+<p>Αυτό το παράδειγμα χρησιμοποιεί την έκδοση 4.2.1 του Cyberduck.</p>
+</div>
+<p>Για να χρησιμοποιήσετε το Cyberduck:</p>
+<ol class="arabic">
+<li><p>Specify a server without any leading protocol information.</p>
+<p>For example: <code class="docutils literal notranslate"><span class="pre">example.com</span></code></p>
+</li>
+<li><p>Specify the appropriate port.</p>
+<p>The port you choose depends on whether or not your Nextcloud server supports SSL. Cyberduck requires that you select a different connection type if you plan to use SSL.</p>
+<dl class="simple">
+<dt>For example:</dt><dd><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">80</span></code> for unencrypted WebDAV</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">443</span></code> for secure WebDAV (HTTPS/SSL)</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Use the “More Options” drop-down menu to add the rest of your WebDAV URL into
+the “Path” field.</p>
+<p>For example: <code class="docutils literal notranslate"><span class="pre">remote.php/dav/files/USERNAME/</span></code></p>
+</li>
+</ol>
+<p>Για πρόσβαση σε αρχεία μέσω του macOS Finder:Τώρα το Cyberduck επιτρέπει την πρόσβαση αρχείων στον διακομιστή Nextcloud.</p>
+</section>
+<section id="accessing-public-shares-over-webdav">
+<h2>Πρόσβαση σε δημόσιες μετοχές μέσω WebDAV<a class="headerlink" href="#accessing-public-shares-over-webdav" title="Link to this heading"></a></h2>
+<p>Nextcloud provides the possibility to access public shares anonymously over WebDAV.</p>
+<p>Για πρόσβαση στο δημόσιο κοινόχρηστο στοιχείο, ανοίξτε</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">public</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">webdav</span>
+</pre></div>
+</div>
+<p>in a WebDAV client, use the share token as username and the (optional) share password as the password. For example, with a share link <a class="reference external" href="https://example.com/s/kFy9Lek5sm928xP">https://example.com/s/kFy9Lek5sm928xP</a>, <code class="docutils literal notranslate"><span class="pre">kFy9Lek5sm928xP</span></code> will be the username.</p>
+<div class="admonition note">
+<p class="admonition-title">Σημείωση</p>
+<p><strong>Settings</strong> → <strong>Administration</strong> → <strong>Sharing</strong> → <strong>Allow users on this server to send shares to other servers</strong>.
+This option also allows WebDAV access to public shares and needs to be enabled to make this feature work, except if cURL is being used (see below).</p>
+</div>
+</section>
+<section id="known-problems">
+<h2>Γνωστά προβλήματα<a class="headerlink" href="#known-problems" title="Link to this heading"></a></h2>
+<section id="id4">
+<h3>Πρόβλημα<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
+<p>Τα Windows δεν συνδέονται χρησιμοποιώντας HTTPS.</p>
+</section>
+<section id="solution-1">
+<h3>Λύση 1<a class="headerlink" href="#solution-1" title="Link to this heading"></a></h3>
+<p>Κάντε κλικ στο ** Σύνδεση <a href="#id1"><span class="problematic" id="id2">**</span></a>. Ο διακομιστής WebDAV θα πρέπει να εμφανίζεται στην επιφάνεια εργασίας ως κοινόχρηστη μονάδα δίσκου.Ο Windows WebDAV Client ενδέχεται να μην υποστηρίζει την ένδειξη ονόματος διακομιστή (SNI) σε κρυπτογραφημένες συνδέσεις. Εάν αντιμετωπίσετε ένα σφάλμα κατά την εγκατάσταση μιας παρουσίας Nextcloud με κρυπτογράφηση SSL, επικοινωνήστε με τον παροχέα σας σχετικά με την εκχώρηση μιας αποκλειστικής διεύθυνσης IP για τον διακομιστή σας που βασίζεται σε SSL.</p>
+</section>
+<section id="solution-2">
+<h3>Λύση 2<a class="headerlink" href="#solution-2" title="Link to this heading"></a></h3>
+<p>The Windows WebDAV Client might not support TLSv1.1 and TLSv1.2 connections. If
+you have restricted your server config to only provide TLSv1.1 and above the
+connection to your server might fail. Please refer to the <a class="reference external" href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa382925.aspx#WinHTTP_5.1_Features">WinHTTP</a> documentation
+for further information.</p>
+</section>
+<section id="id5">
+<h3>Πρόβλημα<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
+<p>Εάν χρησιμοποιείτε την εγγενή εφαρμογή των Windows, μπορείτε να αντιστοιχίσετε το Nextcloud σε μια νέα μονάδα δίσκου. Η αντιστοίχιση σε μια μονάδα δίσκου σας επιτρέπει να περιηγηθείτε σε αρχεία που είναι αποθηκευμένα σε διακομιστή Nextcloud με τον τρόπο που θα αποθηκεύσατε αρχεία σε μια αντιστοιχισμένη μονάδα δίσκου δικτύου.Λαμβάνετε το ακόλουθο μήνυμα σφάλματος: ** Σφάλμα 0x800700DF: Το μέγεθος του αρχείου υπερβαίνει το επιτρεπόμενο όριο και δεν μπορεί να αποθηκευτεί. **</p>
+</section>
+<section id="id6">
+<h3>Λύση<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
+<p>Windows limits the maximum size a file transferred from or to a WebDAV share
+may have. You can increase the value <strong>FileSizeLimitInBytes</strong> in
+<strong>HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WebClient\Parameters</strong>
+by clicking on <strong>Modify</strong>.</p>
+<p>Τα Windows 10 είναι πλέον προεπιλεγμένα για να επιτρέπουν τον Βασικό έλεγχο ταυτότητας εάν το HTTPS είναι ενεργοποιημένο πριν από τη χαρτογράφηση της μονάδας δίσκου σας. Σε παλαιότερες εκδόσεις των Windows, πρέπει να επιτρέψετε τη χρήση του Βασικού ελέγχου ταυτότητας στο μητρώο των Windows: εκκινήστε το «regedit» και μεταβείτε στο HKEY_LOCAL_MACHINE SYSTEM CurrentControlSet Services WebClient Parameters. Δημιουργήστε ή επεξεργαστείτε την τιμή DWORD «BasicAuthLevel» (Windows Vista, 7 και 8) ή «UseBasicAuth» (Windows XP και Windows Server 2003) και ορίστε τα δεδομένα αξίας σε 1 για συνδέσεις SSL. Η τιμή 0 σημαίνει ότι ο Βασικός έλεγχος ταυτότητας είναι απενεργοποιημένος, η τιμή 2 επιτρέπει συνδέσεις SSL και εκτός SSL (δεν συνιστάται). Στη συνέχεια, βγείτε από τον Επεξεργαστή Μητρώου και επανεκκινήστε τον υπολογιστή.Για να αυξήσετε το όριο στη μέγιστη τιμή των 4 GB, επιλέξτε ** Δεκαδικό <a href="#id1"><span class="problematic" id="id2">**</span></a>, εισαγάγετε μια τιμή ** 4294967295 ** και επανεκκινήστε τα Windows ή επανεκκινήστε την υπηρεσία ** WebClient <a href="#id3"><span class="problematic" id="id4">**</span></a>.</p>
+</section>
+<section id="id7">
+<h3>Πρόβλημα<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
+<p>Adding a WebDAV drive on Windows via the above described steps does not display the correct size
+of in Nextcloud available space and instead shows the size of the C: drive with its available space.</p>
+</section>
+<section id="answer">
+<h3>Answer<a class="headerlink" href="#answer" title="Link to this heading"></a></h3>
+<p>Unfortunately is this a limitation of WebDAV itself, because it does not provide a way for the client
+to get the available free space from the server. Windows automatically falls back to show the size of
+the C: drive with its available space instead. So unfortunately there is no real solution to this problem.</p>
+</section>
+<section id="id8">
+<h3>Πρόβλημα<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
+<p>Αντιστοίχιση μονάδων δίσκου με τη γραμμή εντολώνΑποτυχία πρόσβασης στα αρχεία σας από το Microsoft Office μέσω WebDAV.</p>
+</section>
+<section id="id9">
+<h3>Λύση<a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
+<p>Το παρακάτω παράδειγμα δείχνει πώς να χαρτογραφήσετε μια μονάδα δίσκου χρησιμοποιώντας τη γραμμή εντολών. Για να χαρτογραφήσετε τη μονάδα δίσκου:Γνωστά προβλήματα και οι λύσεις τους τεκμηριώνονται στο άρθρο <a class="reference external" href="https://support.microsoft.com/kb/2123563">KB2123563</a>.</p>
+</section>
+<section id="id10">
+<h3>Πρόβλημα<a class="headerlink" href="#id10" title="Link to this heading"></a></h3>
+<p>Cannot map Nextcloud as a WebDAV drive in Windows using a self-signed certificate.</p>
+</section>
+<section id="id11">
+<h3>Λύση<a class="headerlink" href="#id11" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Access to your Nextcloud instance via your favorite Web browser.</p></li>
+<li><p>όπου &lt;drive_path&gt; είναι η διεύθυνση URL του διακομιστή Nextcloud.Κάντε κλικ μέχρι να φτάσετε στο σφάλμα πιστοποιητικού στη γραμμή κατάστασης του προγράμματος περιήγησης.</p></li>
+<li><p>View the certificate, then from the Details tab, select “Copy to File”.</p></li>
+<li><p>Save the file to your desktop with an arbitrary name, for example
+<code class="docutils literal notranslate"><span class="pre">myNextcloud.pem</span></code>.</p></li>
+<li><p>Go to Start menu &gt; Run, type MMC, and click “OK” to open Microsoft Management
+Console.</p></li>
+<li><p>Go to File &gt; Add/Remove Snap-In.</p></li>
+<li><p>Select Certificates, Click “Add”, choose “My User Account”, then “Finish”, and
+finally “OK”.</p></li>
+<li><p>Ανακαλύψτε τις Αρχές Πιστοποίησης Root, Πιστοποιητικά.</p></li>
+<li><p>Right-Click Certificate, Select All Tasks, and Import.</p></li>
+<li><p>Select the saved certificate from the Desktop.</p></li>
+<li><p>Select Place all Certificates in the following Store, and click Browse.</p></li>
+<li><p>Check the Box that says Show Physical Stores, expand out Trusted Root
+Certification Authorities, select Local Computer there, click “OK”, and
+Complete the Import.</p></li>
+<li><p>Check the list to make sure the certificate shows up. You will probably
+need to Refresh before you see it.</p></li>
+<li><p>Exit MMC.</p></li>
+</ol>
+<p>For Firefox users:</p>
+<ol class="arabic simple">
+<li><p>Launch your browser, go to Application menu &gt; History &gt; Clear recent history…</p></li>
+<li><p>Select “Everything” in the “Time range to clear” dropdown menu</p></li>
+<li><p>Select the “Active Logins” check box</p></li>
+<li><p>Click the “Clear now” button</p></li>
+<li><p>Close the browser, then re-open and test.</p></li>
+</ol>
+<p>For Chrome-based browsers (Chrome, Chromium, Microsoft Edge) users:</p>
+<ol class="arabic simple">
+<li><p>Open Windows Control Panel, navigate down to Internet Options</p></li>
+<li><p>In the Content tab, click the Clear SSL State button.</p></li>
+<li><p>Close the browser, then re-open and test.</p></li>
+</ol>
+</section>
+</section>
+<section id="accessing-files-using-curl">
+<h2>Πρόσβαση σε αρχεία χρησιμοποιώντας το cURL<a class="headerlink" href="#accessing-files-using-curl" title="Link to this heading"></a></h2>
+<p>Since WebDAV is an extension of HTTP, cURL can be used to script file operations.</p>
+<div class="admonition note">
+<p class="admonition-title">Σημείωση</p>
+<p><strong>Settings</strong> → <strong>Administration</strong> → <strong>Sharing</strong> → <strong>Allow users on this server to send shares to other servers</strong>.
+If this option is disabled, the option <code class="docutils literal notranslate"><span class="pre">--header</span> <span class="pre">&quot;X-Requested-With:</span> <span class="pre">XMLHttpRequest&quot;</span></code> needs to be passed to cURL.</p>
+</div>
+<p>Για να δημιουργήσετε ένα φάκελο με την τρέχουσα ημερομηνία ως όνομα:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>curl<span class="w"> </span>-u<span class="w"> </span>user:pass<span class="w"> </span>-X<span class="w"> </span>MKCOL<span class="w"> </span><span class="s2">&quot;https://example.com/nextcloud/remote.php/dav/files/USERNAME/</span><span class="k">$(</span>date<span class="w"> </span><span class="s1">&#39;+%d-%b-%Y&#39;</span><span class="k">)</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+<p>Για να ανεβάσετε ένα αρχείο «error.log» σε αυτόν τον κατάλογο:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>curl<span class="w"> </span>-u<span class="w"> </span>user:pass<span class="w"> </span>-T<span class="w"> </span>error.log<span class="w"> </span><span class="s2">&quot;https://example.com/nextcloud/remote.php/dav/files/USERNAME/</span><span class="k">$(</span>date<span class="w"> </span><span class="s1">&#39;+%d-%b-%Y&#39;</span><span class="k">)</span><span class="s2">/error.log&quot;</span>
+</pre></div>
+</div>
+<p>Για να μετακινήσετε ένα αρχείο:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>curl<span class="w"> </span>-u<span class="w"> </span>user:pass<span class="w"> </span>-X<span class="w"> </span>MOVE<span class="w"> </span>--header<span class="w"> </span><span class="s1">&#39;Destination: https://example.com/nextcloud/remote.php/dav/files/USERNAME/target.jpg&#39;</span><span class="w"> </span>https://example.com/nextcloud/remote.php/dav/files/USERNAME/source.jpg
+</pre></div>
+</div>
+<p>Για να λάβετε τις ιδιότητες των αρχείων στον ριζικό φάκελο:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="w">    </span>$<span class="w"> </span>curl<span class="w"> </span>-X<span class="w"> </span>PROPFIND<span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;Depth: 1&quot;</span><span class="w"> </span>-u<span class="w"> </span>user:pass<span class="w"> </span>https://example.com/nextcloud/remote.php/dav/files/USERNAME/<span class="w"> </span><span class="p">|</span><span class="w"> </span>xml_pp
+<span class="w">    </span>&lt;?xml<span class="w"> </span><span class="nv">version</span><span class="o">=</span><span class="s2">&quot;1.0&quot;</span><span class="w"> </span><span class="nv">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span>?&gt;
+&lt;d:multistatus<span class="w"> </span>xmlns:d<span class="o">=</span><span class="s2">&quot;DAV:&quot;</span><span class="w"> </span>xmlns:oc<span class="o">=</span><span class="s2">&quot;http://nextcloud.org/ns&quot;</span><span class="w"> </span>xmlns:s<span class="o">=</span><span class="s2">&quot;http://sabredav.org/ns&quot;</span>&gt;
+<span class="w">  </span>&lt;d:response&gt;
+<span class="w">    </span>&lt;d:href&gt;/nextcloud/remote.php/dav/files/USERNAME/&lt;/d:href&gt;
+<span class="w">    </span>&lt;d:propstat&gt;
+<span class="w">      </span>&lt;d:prop&gt;
+<span class="w">        </span>&lt;d:getlastmodified&gt;Tue,<span class="w"> </span><span class="m">13</span><span class="w"> </span>Oct<span class="w"> </span><span class="m">2015</span><span class="w"> </span><span class="m">17</span>:07:45<span class="w"> </span>GMT&lt;/d:getlastmodified&gt;
+<span class="w">        </span>&lt;d:resourcetype&gt;
+<span class="w">          </span>&lt;d:collection/&gt;
+<span class="w">        </span>&lt;/d:resourcetype&gt;
+<span class="w">        </span>&lt;d:quota-used-bytes&gt;163&lt;/d:quota-used-bytes&gt;
+<span class="w">        </span>&lt;d:quota-available-bytes&gt;11802275840&lt;/d:quota-available-bytes&gt;
+<span class="w">        </span>&lt;d:getetag&gt;<span class="s2">&quot;561d3a6139d05&quot;</span>&lt;/d:getetag&gt;
+<span class="w">      </span>&lt;/d:prop&gt;
+<span class="w">      </span>&lt;d:status&gt;HTTP/1.1<span class="w"> </span><span class="m">200</span><span class="w"> </span>OK&lt;/d:status&gt;
+<span class="w">    </span>&lt;/d:propstat&gt;
+<span class="w">  </span>&lt;/d:response&gt;
+<span class="w">  </span>&lt;d:response&gt;
+<span class="w">    </span>&lt;d:href&gt;/nextcloud/remote.php/dav/files/USERNAME/welcome.txt&lt;/d:href&gt;
+<span class="w">    </span>&lt;d:propstat&gt;
+<span class="w">      </span>&lt;d:prop&gt;
+<span class="w">        </span>&lt;d:getlastmodified&gt;Tue,<span class="w"> </span><span class="m">13</span><span class="w"> </span>Oct<span class="w"> </span><span class="m">2015</span><span class="w"> </span><span class="m">17</span>:07:35<span class="w"> </span>GMT&lt;/d:getlastmodified&gt;
+<span class="w">        </span>&lt;d:getcontentlength&gt;163&lt;/d:getcontentlength&gt;
+<span class="w">        </span>&lt;d:resourcetype/&gt;
+<span class="w">        </span>&lt;d:getetag&gt;<span class="s2">&quot;47465fae667b2d0fee154f5e17d1f0f1&quot;</span>&lt;/d:getetag&gt;
+<span class="w">        </span>&lt;d:getcontenttype&gt;text/plain&lt;/d:getcontenttype&gt;
+<span class="w">      </span>&lt;/d:prop&gt;
+<span class="w">      </span>&lt;d:status&gt;HTTP/1.1<span class="w"> </span><span class="m">200</span><span class="w"> </span>OK&lt;/d:status&gt;
+<span class="w">    </span>&lt;/d:propstat&gt;
+<span class="w">  </span>&lt;/d:response&gt;
+&lt;/d:multistatus&gt;
+</pre></div>
+</div>
+</section>
+<section id="accessing-files-using-winscp">
+<h2>Accessing files using WinSCP<a class="headerlink" href="#accessing-files-using-winscp" title="Link to this heading"></a></h2>
+<p><a class="reference external" href="https://winscp.net/eng/docs/introduction/">WinSCP</a>  is an open source free SFTP, FTP, WebDAV, S3, and SCP client for Windows. Its main function is file transfer between a local and a remote computer. Beyond this, WinSCP offers scripting and basic file management functionality.</p>
+<p>You can <a class="reference external" href="https://winscp.net/eng/downloads.php/">download</a> the portable version of WinSCP and run it on Linux through <a class="reference external" href="https://wiki.winehq.org/Main_Page/">Wine</a>.</p>
+<p>To run WinSCP on Linux, download wine through your distribution’s package manager, then run it with the command: <code class="docutils literal notranslate"><span class="pre">wine</span> <span class="pre">WinSCP.exe</span></code>.</p>
+<p>To connect to Nextcloud:</p>
+<ul class="simple">
+<li><p>Start WinSCP</p></li>
+<li><p>Press “Session” in the menu</p></li>
+<li><p>Press the “New Session” menu option</p></li>
+<li><p>Set the “File protocol” dropdown to WebDAV</p></li>
+<li><p>Set the “Encryption” dropdown to TLS/SSL Implicit encryption</p></li>
+<li><p>Fill in the hostname field: <code class="docutils literal notranslate"><span class="pre">example.com</span></code></p></li>
+<li><p>Fill in the username field: <code class="docutils literal notranslate"><span class="pre">NEXTCLOUDUSERNAME</span></code></p></li>
+<li><p>Fill in the password field: <code class="docutils literal notranslate"><span class="pre">NEXTCLOUDPASSWORD</span></code></p></li>
+<li><p>Press the “Advanced…” button</p></li>
+<li><p>Navigate to “Environment”, “Directories” on the left side</p></li>
+<li><p>Fill in the “Remote directory” field with the following: <code class="docutils literal notranslate"><span class="pre">/nextcloud/remote.php/dav/files/NEXTCLOUDUSERNAME/</span></code></p></li>
+<li><p>Press the “OK” button</p></li>
+<li><p>Press the “Save” button</p></li>
+<li><p>Select the desired options and press the “OK” button</p></li>
+<li><p>Press the “Login” button to connect to Nextcloud</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Σημείωση</p>
+<p>It is recommended to use an app password for the password if you use TOTP as WinSCP does not understand TOTP with Nextcloud at the time of writing (2022-11-07).</p>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="access_webgui.html" class="btn btn-neutral float-left" title="Πρόσβαση στα αρχεία σας χρησιμοποιώντας τη διεπαφή Web Nextcloud" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="deleted_file_management.html" class="btn btn-neutral float-right" title="Διαχείριση διαγραμμένων αρχείων" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- Here go the languages -->
+  
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      🌐
+      
+      
+      Greek
+      
+      <span class="fa fa-caret-down"></span>
+
+       ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>🌐 Languages</dt>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/af/"
+                 
+              >
+                
+                Afrikaans
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ar/"
+                 
+              >
+                
+                Arabic
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/br/"
+                 
+              >
+                
+                Breton
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ca/"
+                 
+              >
+                
+                Catalan
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/cs/"
+                 
+              >
+                
+                Czech
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/da/"
+                 
+              >
+                
+                Danish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/de/"
+                 
+              >
+                
+                German
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/el/"
+                 
+                 style="color: var(--dark-link-color);"
+                 
+              >
+                
+                Greek
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/el_GR/"
+                 
+              >
+                
+                el_GR
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/en/"
+                 
+              >
+                
+                English
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/eo/"
+                 
+              >
+                
+                Esperanto
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/es/"
+                 
+              >
+                
+                Spanish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/eu/"
+                 
+              >
+                
+                eu
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/fi_FI/"
+                 
+              >
+                
+                Finnish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/fr/"
+                 
+              >
+                
+                French
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ga/"
+                 
+              >
+                
+                Irish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/gl/"
+                 
+              >
+                
+                Glacian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/hr/"
+                 
+              >
+                
+                Croatian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/hu/"
+                 
+              >
+                
+                hu
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/hu_HU/"
+                 
+              >
+                
+                Hungarian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/id/"
+                 
+              >
+                
+                Indonesian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/it/"
+                 
+              >
+                
+                Italian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ja_JP/"
+                 
+              >
+                
+                Japanese
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ko/"
+                 
+              >
+                
+                Korean
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/mn/"
+                 
+              >
+                
+                Mongolian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/nb_NO/"
+                 
+              >
+                
+                Norwegian (NB)
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/nl/"
+                 
+              >
+                
+                Dutch
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/nn/"
+                 
+              >
+                
+                Norwegian (NN)
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/pl/"
+                 
+              >
+                
+                Polish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/pt_BR/"
+                 
+              >
+                
+                Portuguese (BR)
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/pt_PT/"
+                 
+              >
+                
+                Portuguese
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ro/"
+                 
+              >
+                
+                Romanian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ru/"
+                 
+              >
+                
+                Russian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/si/"
+                 
+              >
+                
+                Sinhala
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/sk_SK/"
+                 
+              >
+                
+                Slovakian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/sq/"
+                 
+              >
+                
+                Albanian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/sr/"
+                 
+              >
+                
+                Slovenian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/sv/"
+                 
+              >
+                
+                Swedish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ta/"
+                 
+              >
+                
+                Tamil
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/th/"
+                 
+              >
+                
+                th
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/tr/"
+                 
+              >
+                
+                Turkish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/uk/"
+                 
+              >
+                
+                Ukrainian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/uz/"
+                 
+              >
+                
+                Uzbek
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/vi/"
+                 
+              >
+                
+                Vietnamese
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/zh_CN/"
+                 
+              >
+                
+                Chinese
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/zh_HK/"
+                 
+              >
+                
+                Chinese (HK)
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/zh_TW/"
+                 
+              >
+                
+                Chinese (TW)
+                
+              </a>
+            </dd>
+          
+      </dl>
+    </div>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Εκδόσεις</dt>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/latest/user_manual"
+               
+               style="color: var(--dark-link-color);"
+               
+            >
+              latest
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/stable/user_manual"
+               
+            >
+              stable
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/29/user_manual"
+               
+            >
+              29
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/28/user_manual"
+               
+            >
+              28
+            </a>
+          </dd>
+        
+      </dl>
+      <dl>
+        <dt>Λήψεις</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>On Διαβάστε τα Έγγραφα</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Έργο του σπιτιού</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Κατασκευάζει</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

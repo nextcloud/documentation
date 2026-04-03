@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="zh-CN" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>文件共享 &mdash; Nextcloud latest User Manual latest 文档</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=f16e1f67"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../_static/copybutton.js?v=f281be69"></script>
+        <script src="../../_static/translations.js?v=beaddf03"></script>
+        <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+        <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="索引" href="../genindex.html" />
+    <link rel="search" title="搜索" href="../search.html" />
+    <link rel="next" title="匿名上传" href="file_drop.html" />
+    <link rel="prev" title="Encrypting your Nextcloud files on the server" href="encrypting_files.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="搜索文档" aria-label="搜索文档" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="导航菜单">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Nextcloud |版本| 用户手册介绍</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../whats_new.html">Nextcloud latest 中的新功能</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">Nextcloud的Web界面</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">文件及同步</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="access_webgui.html">使用Nextcloud的Web界面访问您的文件</a></li>
+<li class="toctree-l2"><a class="reference internal" href="access_webdav.html">Accessing Nextcloud files using WebDAV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deleted_file_management.html">Managing deleted files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="desktop_mobile_sync.html">桌面及移动设备同步</a></li>
+<li class="toctree-l2"><a class="reference internal" href="encrypting_files.html">Encrypting your Nextcloud files on the server</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">文件共享</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#public-link-shares">公开分享链接</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#internal-shares-with-users-and-groups">内部与用户和群组共享</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#others-with-access">有权访问的其他人</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#federated-shares">联合云共享</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#creating-a-new-federation-share">创建新的联合云共享</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#adding-a-public-share-to-your-nextcloud">添加一个公开共享到您的Nextcloud</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="file_drop.html">匿名上传</a></li>
+<li class="toctree-l2"><a class="reference internal" href="large_file_upload.html">大文件上传</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quota.html">存储配额</a></li>
+<li class="toctree-l2"><a class="reference internal" href="version_control.html">版本控制</a></li>
+<li class="toctree-l2"><a class="reference internal" href="projects.html">计划</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transfer_ownership.html">Transfer Ownership</a></li>
+<li class="toctree-l2"><a class="reference internal" href="federated_cloud_sharing.html">Using Federation Shares</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../talk/index.html">通话应用</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">您的个性化设置</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Universal access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Using two-factor authentication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Manage connected browsers and devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">外部存储</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="移动版导航菜单" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest User Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="页面导航">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">文件及同步</a></li>
+      <li class="breadcrumb-item active">文件共享</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/files/sharing.rst" class="fa fa-github"> 在 GitHub 上编辑</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="file-sharing">
+<h1>文件共享<a class="headerlink" href="#file-sharing" title="Link to this heading"></a></h1>
+<p>Nextcloud用户可以分享文件和目录，可能的方式是：</p>
+<ul class="simple">
+<li><p>公开链接</p></li>
+<li><p>用户</p></li>
+<li><p>群组</p></li>
+<li><p>圈子</p></li>
+<li><p>talk中的对话</p></li>
+<li><p>通过Nextcloud联合云中的使用者或者群组</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>由于管理配置，有些选项可能不可用。详细信息请参见管理员文档&lt;<a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/file_sharing_configuration.html">https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/file_sharing_configuration.html</a>&gt;</p>
+</div>
+<section id="public-link-shares">
+<h2>公开分享链接<a class="headerlink" href="#public-link-shares" title="Link to this heading"></a></h2>
+<p>您可以通过公开链接分享文件和目录。</p>
+<p>一组长度为15个字符的随机令牌将被生成，链接将会类似于`https://cloud.example.com/s/yxcFKRWBJqYYzp4`.</p>
+<p>公开分享的目录有许多可用选项：</p>
+<figure class="align-default">
+<img alt="../../_images/sharing_public_folder.png" src="../../_images/sharing_public_folder.png" />
+</figure>
+<ul class="simple">
+<li><p>“只读”模式允许用户预览和下载</p></li>
+<li><p>允许用户上传和编辑</p></li>
+<li><p>通过**File drop**，共享用户只能上传文件到一个文件夹中，而不能看到该文件夹中已经存在的文件。</p></li>
+<li><p>“隐藏下载”隐藏下载按钮和默认的浏览器右键选项，以使下载共享更加困难。</p></li>
+<li><p>密码保护</p></li>
+<li><p>“设置过期时间”将会到期自动禁用共享</p></li>
+<li><p>对收件人的提示</p></li>
+<li><p>“取消共享”来还原共享。</p></li>
+<li><p>“添加另一个链接”来创建多个不同权限的公开链接。</p></li>
+</ul>
+<p>对于公共*File*共享，您可以允许使用Nextcloud的协同编辑解决方案之一来编辑文件:</p>
+<figure class="align-default">
+<img alt="../../_images/sharing_public_file.png" src="../../_images/sharing_public_file.png" />
+</figure>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>自 Nextcloud 22 起，密码保护和文件过期也通过联合文件共享进行传播。</p>
+</div>
+</section>
+<section id="internal-shares-with-users-and-groups">
+<h2>内部与用户和群组共享<a class="headerlink" href="#internal-shares-with-users-and-groups" title="Link to this heading"></a></h2>
+<p>当与用户、圈子或“Talk”应用中的成员共享时，文件或目录的权限是可以修改的：</p>
+<figure class="align-default">
+<img alt="../../_images/sharing_internal.png" src="../../_images/sharing_internal.png" />
+</figure>
+<p>作为被共享者，您可以配置是否要自动接受所有传入的共享并将它们添加到您的Nextcloud根目录中，或者是否希望每次都被询问是否要接受或拒绝共享。</p>
+<figure class="align-default">
+<img alt="../../_images/sharing_internal_acceptNotification.png" src="../../_images/sharing_internal_acceptNotification.png" />
+</figure>
+<p>可以在“设置”&gt;“个人”&gt;“共享”中调整接收设置。</p>
+<figure class="align-default">
+<img alt="../../_images/sharing_autoAcceptSetting.png" src="../../_images/sharing_autoAcceptSetting.png" />
+</figure>
+</section>
+<section id="others-with-access">
+<h2>有权访问的其他人<a class="headerlink" href="#others-with-access" title="Link to this heading"></a></h2>
+<p>为了了解一个文件或文件夹是否可以通过上级文件夹级别的共享被其他人访问，请在共享选项卡中单击**具有**访问权限的其他人:</p>
+<figure class="align-default">
+<img alt="../../_images/sharing_others-with-access__collapsed.png" src="../../_images/sharing_others-with-access__collapsed.png" />
+</figure>
+<p>列表显示当前对象通过共享等级体系中的上级文件夹而被授予访问的所有用户、组、聊天记录等:</p>
+<figure class="align-default">
+<img alt="../../_images/sharing_others-with-access__details.png" src="../../_images/sharing_others-with-access__details.png" />
+</figure>
+<p>点击三点按钮以：</p>
+<ul class="simple">
+<li><p>康康是谁发起了共享</p></li>
+<li><p>查看共享初始的位置(只要您有访问权限，单击即可导航到文件夹)</p></li>
+<li><p>取消初始共享（仅对共享文件的所有者可用）。</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">备注</p>
+<p>此信息仅对文件/文件夹的所有者或具有重新共享权限的共享文件的所有者可见。</p>
+</div>
+</section>
+</section>
+<section id="federated-shares">
+<h1>联合云共享<a class="headerlink" href="#federated-shares" title="Link to this heading"></a></h1>
+<p>联合云共享允许您通过远程Nextcloud服务器挂载共享，实际上创建了您自己的Nextcloud。您可以在其他Nextcloud服务器上与用户创建直接共享链接。</p>
+<section id="creating-a-new-federation-share">
+<h2>创建新的联合云共享<a class="headerlink" href="#creating-a-new-federation-share" title="Link to this heading"></a></h2>
+<p>联合云共享是默认启用的。通过下列步骤与其他Nextcloud 或 ownCloud 服务器之间创建新的共享。</p>
+<p>访问您的“文件”页面，然后点击位于您希望分享的文件或目录上的分享图标。在侧边栏按照如下格式键入远程用户的用户名和URL链接“&lt;username&gt;&#64;&lt;nc-server-url&gt;”。在这个示例中，也就是输入“<a class="reference external" href="mailto:bob&#37;&#52;&#48;cloud&#46;example&#46;com">bob<span>&#64;</span>cloud<span>&#46;</span>example<span>&#46;</span>com</a>” 。</p>
+<figure class="align-default">
+<img alt="../../_images/share-federation-1.png" src="../../_images/share-federation-1.png" />
+</figure>
+<p>被共享者将会在他们的Nextcloud中收到一则通知，允许他们接受或拒绝该分享。</p>
+<figure class="align-default">
+<img alt="../../_images/share-federation-2-notification.png" src="../../_images/share-federation-2-notification.png" />
+</figure>
+</section>
+<section id="adding-a-public-share-to-your-nextcloud">
+<h2>添加一个公开共享到您的Nextcloud<a class="headerlink" href="#adding-a-public-share-to-your-nextcloud" title="Link to this heading"></a></h2>
+<p>Nextcloud公开分享链接的页面中会提供一个选项，这个选项可以帮您将该文件或目录作为联合云共享添加至您自己的Nextcloud实例中。仅需键入您的“&lt;username&gt;&#64;&lt;nc-server-url&gt;”就像上面展示的对外分享一样。</p>
+<figure class="align-default">
+<img alt="../../_images/share-federation-3-public.png" src="../../_images/share-federation-3-public.png" />
+</figure>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="页脚">
+        <a href="encrypting_files.html" class="btn btn-neutral float-left" title="Encrypting your Nextcloud files on the server" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> 上一页</a>
+        <a href="file_drop.html" class="btn btn-neutral float-right" title="匿名上传" accesskey="n" rel="next">下一页 <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; 版权所有 2026 Nextcloud GmbH。</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- Here go the languages -->
+  
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      🌐
+      
+      
+      zh-CN
+      
+      <span class="fa fa-caret-down"></span>
+
+       ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>🌐 Languages</dt>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/af/"
+                 
+              >
+                
+                Afrikaans
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ar/"
+                 
+              >
+                
+                Arabic
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/br/"
+                 
+              >
+                
+                Breton
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ca/"
+                 
+              >
+                
+                Catalan
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/cs/"
+                 
+              >
+                
+                Czech
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/da/"
+                 
+              >
+                
+                Danish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/de/"
+                 
+              >
+                
+                German
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/el/"
+                 
+              >
+                
+                Greek
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/el_GR/"
+                 
+              >
+                
+                el_GR
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/en/"
+                 
+              >
+                
+                English
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/eo/"
+                 
+              >
+                
+                Esperanto
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/es/"
+                 
+              >
+                
+                Spanish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/eu/"
+                 
+              >
+                
+                eu
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/fi_FI/"
+                 
+              >
+                
+                Finnish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/fr/"
+                 
+              >
+                
+                French
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ga/"
+                 
+              >
+                
+                Irish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/gl/"
+                 
+              >
+                
+                Glacian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/hr/"
+                 
+              >
+                
+                Croatian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/hu/"
+                 
+              >
+                
+                hu
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/hu_HU/"
+                 
+              >
+                
+                Hungarian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/id/"
+                 
+              >
+                
+                Indonesian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/it/"
+                 
+              >
+                
+                Italian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ja_JP/"
+                 
+              >
+                
+                Japanese
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ko/"
+                 
+              >
+                
+                Korean
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/mn/"
+                 
+              >
+                
+                Mongolian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/nb_NO/"
+                 
+              >
+                
+                Norwegian (NB)
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/nl/"
+                 
+              >
+                
+                Dutch
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/nn/"
+                 
+              >
+                
+                Norwegian (NN)
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/pl/"
+                 
+              >
+                
+                Polish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/pt_BR/"
+                 
+              >
+                
+                Portuguese (BR)
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/pt_PT/"
+                 
+              >
+                
+                Portuguese
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ro/"
+                 
+              >
+                
+                Romanian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ru/"
+                 
+              >
+                
+                Russian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/si/"
+                 
+              >
+                
+                Sinhala
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/sk_SK/"
+                 
+              >
+                
+                Slovakian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/sq/"
+                 
+              >
+                
+                Albanian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/sr/"
+                 
+              >
+                
+                Slovenian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/sv/"
+                 
+              >
+                
+                Swedish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ta/"
+                 
+              >
+                
+                Tamil
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/th/"
+                 
+              >
+                
+                th
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/tr/"
+                 
+              >
+                
+                Turkish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/uk/"
+                 
+              >
+                
+                Ukrainian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/uz/"
+                 
+              >
+                
+                Uzbek
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/vi/"
+                 
+              >
+                
+                Vietnamese
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/zh_CN/"
+                 
+              >
+                
+                Chinese
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/zh_HK/"
+                 
+              >
+                
+                Chinese (HK)
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/zh_TW/"
+                 
+              >
+                
+                Chinese (TW)
+                
+              </a>
+            </dd>
+          
+      </dl>
+    </div>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ 版本</dt>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/latest/user_manual"
+               
+               style="color: var(--dark-link-color);"
+               
+            >
+              latest
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/stable/user_manual"
+               
+            >
+              stable
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/29/user_manual"
+               
+            >
+              29
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/28/user_manual"
+               
+            >
+              28
+            </a>
+          </dd>
+        
+      </dl>
+      <dl>
+        <dt>下载</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>托管于 Read the Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">项目主页</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">构建</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

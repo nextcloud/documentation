@@ -1,0 +1,794 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="de" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Verwendung der Zwei-Faktor-Authentifizierung &mdash; Nextcloud latest User Manual latest Dokumentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="stylesheet" href="../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=7178e243"></script>
+        <script src="../_static/doctools.js?v=888ff710"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../_static/copybutton.js?v=f281be69"></script>
+        <script src="../_static/translations.js?v=70a09b52"></script>
+        <script src="../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+        <script src="../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Stichwortverzeichnis" href="genindex.html" />
+    <link rel="search" title="Suche" href="search.html" />
+    <link rel="next" title="Verwalten Sie verbundene Browser und Geräte" href="session_management.html" />
+    <link rel="prev" title="Universeller Zugriff" href="universal_access.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="contents.html">
+            
+              <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Dokumentation durchsuchen" aria-label="Dokumentation durchsuchen" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="index.html">Nextcloud latest - Einführung zur Benutzeranleitung</a></li>
+<li class="toctree-l1"><a class="reference internal" href="whats_new.html">Was gibt es Neues für Benutzer in Nextcloud latest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="webinterface.html">Die Weboberfläche von Nextcloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="files/index.html">Dateien &amp; Synchronisation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="groupware/index.html">Groupware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="talk/index.html">Talk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="userpreferences.html">Einstellungen vornehmen</a></li>
+<li class="toctree-l1"><a class="reference internal" href="universal_access.html">Universeller Zugriff</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Verwendung der Zwei-Faktor-Authentifizierung</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#configuring-two-factor-authentication">Einrichtung der Zwei-Faktor Authentifizierung</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#recovery-codes-in-case-you-lost-your-2nd-factor">Wiederherstellungscodes für den Fall, dass Sie Ihren 2. Faktor verlieren</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#logging-in-with-two-factor-authentication">Anmelden mit der Zwei-Faktor Authentifizierung</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#using-two-factor-authentication-with-hardware-tokens">Verwendung der Zwei-Faktor-Authentifizierung mit Hardware-Schlüsseln</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#using-client-applications-with-two-factor-authentication">Verwenden von Clientanwendungen mit Zwei-Faktor-Authentifizierung</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#considerations">Überlegungen</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="session_management.html">Verwalten Sie verbundene Browser und Geräte</a></li>
+<li class="toctree-l1"><a class="reference internal" href="external_storage/index.html">Externer Speicher</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="contents.html">Nextcloud latest User Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="contents.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Verwendung der Zwei-Faktor-Authentifizierung</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/user_2fa.rst" class="fa fa-github"> Auf GitHub bearbeiten</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="using-two-factor-authentication">
+<h1>Verwendung der Zwei-Faktor-Authentifizierung<a class="headerlink" href="#using-two-factor-authentication" title="Link to this heading"></a></h1>
+<p>Die Zwei-Faktor-Authentifizierung (2FA) ist eine Möglichkeit, Ihr Nextcloud-Konto vor unberechtigtem Zugriff zu schützen. Sie funktioniert, indem zwei verschiedene ‚Beweise‘ Ihrer Identität erforderlich sind. Zum Beispiel <em>etwas, das Sie wissen</em> (wie ein Passwort) und <em>etwas, das Sie haben</em> wie einen physischen Schlüssel. Typischerweise ist der erste Faktor ein Passwort, wie Sie es bereits haben, und der zweite kann eine Textnachricht sein, die Sie erhalten oder ein Code, den Sie auf Ihrem Telefon oder einem anderen Gerät generieren (<em>etwas, das Sie haben</em>). Nextcloud unterstützt eine Vielzahl von 2. Faktoren und weitere können hinzugefügt werden.</p>
+<p>Sobald eine Zwei-Faktor-Authentifizierungs-App von Ihrem Administrator aktiviert wurde, können Sie sie in <a class="reference internal" href="userpreferences.html"><span class="doc">Einstellungen vornehmen</span></a> aktivieren und konfigurieren. Unten sehen Sie, wie das geht.</p>
+<section id="configuring-two-factor-authentication">
+<h2>Einrichtung der Zwei-Faktor Authentifizierung<a class="headerlink" href="#configuring-two-factor-authentication" title="Link to this heading"></a></h2>
+<p>Suchen Sie in Ihren persönlichen Einstellungen nach der Einstellung für die Zwei-Faktor-Authentifizierung. In diesem Beispiel ist dies TOTP, ein mit Google Authenticator kompatibler zeitbasierter Code:</p>
+<figure class="align-default">
+<img alt="TOTP-Einrichtung." src="../_images/totp_enable.png" />
+</figure>
+<p>Sie sehen Ihr Geheimnis und einen QR-Code, der von der TOTP-App auf Ihrem Smartphone (oder einem anderen Gerät) gescannt werden kann. Je nach App oder Tool geben Sie den Code ein oder scannen den QR-Code und Ihr Gerät zeigt einen Anmeldecode an, der sich alle 30 Sekunden ändert.</p>
+</section>
+<section id="recovery-codes-in-case-you-lost-your-2nd-factor">
+<h2>Wiederherstellungscodes für den Fall, dass Sie Ihren 2. Faktor verlieren<a class="headerlink" href="#recovery-codes-in-case-you-lost-your-2nd-factor" title="Link to this heading"></a></h2>
+<p>Sie sollten immer Backup-Codes für 2FA generieren. Wenn Ihr Zwei-Faktor-Gerät gestohlen wird oder nicht funktioniert, können Sie einen dieser Codes verwenden, um Ihr Konto zu entsperren. Er fungiert quasi als Backup des zweiten Faktors. Um die Backup-Codes zu erhalten, gehen Sie zu Ihren Persönlichen Einstellungen und suchen Sie unter Einstellungen für die Zwei-Faktor-Authentifizierung. Wählen Sie <em>Backup-Codes generieren</em>:</p>
+<figure class="align-default">
+<img alt="2FA-Backup-Code-Generator" src="../_images/2fa_backupcode_1.png" />
+</figure>
+<p>Sie erhalten dann eine Liste mit Einmal-Backup-Codes:</p>
+<figure class="align-default">
+<img alt="2FA-Backup-Codes" src="../_images/2fa_backupcode_2.png" />
+</figure>
+<p>Sie sollten diese Codes an einem sicheren Ort aufbewahren, an dem Sie sie wiederfinden können. Legen Sie sie nicht zusammen mit Ihrem zweiten Faktor wie Ihrem Mobiltelefon ab, sondern stellen Sie sicher, dass Sie bei Verlust des einen den anderen noch haben. Sie zu Hause aufzubewahren, ist wahrscheinlich das Beste, was Sie tun können.</p>
+</section>
+<section id="logging-in-with-two-factor-authentication">
+<h2>Anmelden mit der Zwei-Faktor Authentifizierung<a class="headerlink" href="#logging-in-with-two-factor-authentication" title="Link to this heading"></a></h2>
+<p>Nachdem Sie sich abgemeldet haben und sich erneut anmelden müssen, sehen Sie eine Aufforderung zur Eingabe des TOTP-Codes in Ihrem Browser. Wenn Sie nicht nur den TOTP-Faktor, sondern einen weiteren aktivieren, sehen Sie eine Auswahlmaske, auf der Sie die Zwei-Faktor-Methode für diese Anmeldung wählen können. Wählen Sie TOTP:</p>
+<figure class="align-default">
+<img alt="Zwei-Faktor-Authentifizierungs-Methode auswählen." src="../_images/totp_login_1.png" />
+</figure>
+<p>Jetzt geben Sie einfach Ihren Code ein:</p>
+<figure class="align-default">
+<img alt="TOTP-Code beim Anmelden eingeben." src="../_images/totp_login_2.png" />
+</figure>
+<p>Wenn der Code korrekt war, werden Sie zu Ihrem Nextcloud-Konto weitergeleitet.</p>
+<div class="admonition note">
+<p class="admonition-title">Bemerkung</p>
+<p>Da der Code zeitbasiert ist, ist es wichtig, dass die Uhr Ihres Servers und Ihres Smartphones fast synchron sind. Eine Zeitverschiebung von einigen Sekunden ist jedoch kein Problem.</p>
+</div>
+</section>
+<section id="using-two-factor-authentication-with-hardware-tokens">
+<h2>Verwendung der Zwei-Faktor-Authentifizierung mit Hardware-Schlüsseln<a class="headerlink" href="#using-two-factor-authentication-with-hardware-tokens" title="Link to this heading"></a></h2>
+<p>Sie können die Zwei-Faktor-Authentifizierung basierend auf Hardware-Tokens verwenden. Bezüglich folgender Geräte wurde die Kompatibilität mit Nextcloud bestätigt:</p>
+<ul class="simple">
+<li><p>TOTP-basiert:</p>
+<ul>
+<li><p><a class="reference external" href="https://shop.nitrokey.com/shop/product/nitrokey-pro-2-3">Nitrokey Pro</a></p></li>
+<li><p><a class="reference external" href="https://shop.nitrokey.com/shop">Nitrokey Storage</a></p></li>
+</ul>
+</li>
+<li><p>FIDO U2F-basiert:</p>
+<ul>
+<li><p><a class="reference external" href="https://shop.nitrokey.com/shop/product/nitrokey-fido-u2f-20">Nitrokey FIDO U2F</a></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="using-client-applications-with-two-factor-authentication">
+<h2>Verwenden von Clientanwendungen mit Zwei-Faktor-Authentifizierung<a class="headerlink" href="#using-client-applications-with-two-factor-authentication" title="Link to this heading"></a></h2>
+<p>Sobald Sie 2FA aktiviert haben, können sich Ihre Clients nicht mehr nur mit Ihrem Kennwort verbinden, es sei denn, sie haben auch Unterstützung für die Zwei-Faktor-Authentifizierung. Um dies zu lösen, sollten Sie gerätespezifische Passwörter für sie generieren. Weitere Informationen dazu finden Sie unter <a class="reference internal" href="session_management.html"><span class="doc">Verwalten Sie verbundene Browser und Geräte</span></a>.</p>
+</section>
+<section id="considerations">
+<h2>Überlegungen<a class="headerlink" href="#considerations" title="Link to this heading"></a></h2>
+<p>Wenn Sie WebAuthn zur Anmeldung an Ihrer Nextcloud verwenden, achten Sie darauf, dass Sie nicht das gleiche Token für 2FA verwenden. Denn das würde bedeuten, dass Sie wieder nur einen einzigen Faktor verwenden.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="universal_access.html" class="btn btn-neutral float-left" title="Universeller Zugriff" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Zurück</a>
+        <a href="session_management.html" class="btn btn-neutral float-right" title="Verwalten Sie verbundene Browser und Geräte" accesskey="n" rel="next">Weiter <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- Here go the languages -->
+  
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      🌐
+      
+      
+      German
+      
+      <span class="fa fa-caret-down"></span>
+
+       ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>🌐 Languages</dt>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/af/"
+                 
+              >
+                
+                Afrikaans
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ar/"
+                 
+              >
+                
+                Arabic
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/br/"
+                 
+              >
+                
+                Breton
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ca/"
+                 
+              >
+                
+                Catalan
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/cs/"
+                 
+              >
+                
+                Czech
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/da/"
+                 
+              >
+                
+                Danish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/de/"
+                 
+                 style="color: var(--dark-link-color);"
+                 
+              >
+                
+                German
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/el/"
+                 
+              >
+                
+                Greek
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/el_GR/"
+                 
+              >
+                
+                el_GR
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/en/"
+                 
+              >
+                
+                English
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/eo/"
+                 
+              >
+                
+                Esperanto
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/es/"
+                 
+              >
+                
+                Spanish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/eu/"
+                 
+              >
+                
+                eu
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/fi_FI/"
+                 
+              >
+                
+                Finnish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/fr/"
+                 
+              >
+                
+                French
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ga/"
+                 
+              >
+                
+                Irish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/gl/"
+                 
+              >
+                
+                Glacian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/hr/"
+                 
+              >
+                
+                Croatian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/hu/"
+                 
+              >
+                
+                hu
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/hu_HU/"
+                 
+              >
+                
+                Hungarian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/id/"
+                 
+              >
+                
+                Indonesian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/it/"
+                 
+              >
+                
+                Italian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ja_JP/"
+                 
+              >
+                
+                Japanese
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ko/"
+                 
+              >
+                
+                Korean
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/mn/"
+                 
+              >
+                
+                Mongolian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/nb_NO/"
+                 
+              >
+                
+                Norwegian (NB)
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/nl/"
+                 
+              >
+                
+                Dutch
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/nn/"
+                 
+              >
+                
+                Norwegian (NN)
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/pl/"
+                 
+              >
+                
+                Polish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/pt_BR/"
+                 
+              >
+                
+                Portuguese (BR)
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/pt_PT/"
+                 
+              >
+                
+                Portuguese
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ro/"
+                 
+              >
+                
+                Romanian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ru/"
+                 
+              >
+                
+                Russian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/si/"
+                 
+              >
+                
+                Sinhala
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/sk_SK/"
+                 
+              >
+                
+                Slovakian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/sq/"
+                 
+              >
+                
+                Albanian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/sr/"
+                 
+              >
+                
+                Slovenian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/sv/"
+                 
+              >
+                
+                Swedish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ta/"
+                 
+              >
+                
+                Tamil
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/th/"
+                 
+              >
+                
+                th
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/tr/"
+                 
+              >
+                
+                Turkish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/uk/"
+                 
+              >
+                
+                Ukrainian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/uz/"
+                 
+              >
+                
+                Uzbek
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/vi/"
+                 
+              >
+                
+                Vietnamese
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/zh_CN/"
+                 
+              >
+                
+                Chinese
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/zh_HK/"
+                 
+              >
+                
+                Chinese (HK)
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/zh_TW/"
+                 
+              >
+                
+                Chinese (TW)
+                
+              </a>
+            </dd>
+          
+      </dl>
+    </div>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Versionen</dt>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/latest/user_manual"
+               
+               style="color: var(--dark-link-color);"
+               
+            >
+              latest
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/stable/user_manual"
+               
+            >
+              stable
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/29/user_manual"
+               
+            >
+              29
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/28/user_manual"
+               
+            >
+              28
+            </a>
+          </dd>
+        
+      </dl>
+      <dl>
+        <dt>Downloads</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>Auf "Read the docs"</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Projekt Startseite</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Builds</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

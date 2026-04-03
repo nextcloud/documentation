@@ -1,0 +1,848 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="ga" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Comhroinnt &mdash; Nextcloud latest User Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=a4188352"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../_static/copybutton.js?v=f281be69"></script>
+        <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+        <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Uaslódálacha gan ainm a dhéanamh" href="file_drop.html" />
+    <link rel="prev" title="Ag criptiú do chuid comhad Nextcloud ar an bhfreastalaí" href="encrypting_files.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Nextcloud | leagan| réamhrá lámhleabhar úsáideora</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../whats_new.html">Cad atá nua d'úsáideoirí in Nextcloud |leagan|</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">Comhéadan Gréasáin Nextcloud</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Comhaid &amp; sioncronú</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="access_webgui.html">Teacht ar do chuid comhad ag baint úsáide as comhéadan Gréasáin Nextcloud</a></li>
+<li class="toctree-l2"><a class="reference internal" href="access_webdav.html">Rochtain ar chomhaid Nextcloud a fháil ag baint úsáide as WebDAV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deleted_file_management.html">Comhaid scriosta a bhainistiú</a></li>
+<li class="toctree-l2"><a class="reference internal" href="desktop_mobile_sync.html">Sioncronú deisce agus soghluaiste</a></li>
+<li class="toctree-l2"><a class="reference internal" href="encrypting_files.html">Ag criptiú do chuid comhad Nextcloud ar an bhfreastalaí</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Comhroinnt</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#public-link-shares">Scaireanna naisc phoiblí</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#internal-shares-with-users-and-groups">Scaireanna inmheánacha le húsáideoirí agus le grúpaí</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#others-with-access">Daoine eile a bhfuil rochtain acu</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#federated-shares">Scaireanna Cónaidhme</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#creating-a-new-federation-share">Scair Cónaidhm nua a chruthú</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#adding-a-public-share-to-your-nextcloud">Ag cur sciar poiblí le do Nextcloud</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="file_drop.html">Uaslódálacha gan ainm a dhéanamh</a></li>
+<li class="toctree-l2"><a class="reference internal" href="large_file_upload.html">Uaslódálacha comhaid mhóra</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quota.html">Cuóta stórála</a></li>
+<li class="toctree-l2"><a class="reference internal" href="version_control.html">Rialú leagan</a></li>
+<li class="toctree-l2"><a class="reference internal" href="projects.html">Tionscadail</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transfer_ownership.html">Úinéireacht Aistrithe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="federated_cloud_sharing.html">Ag baint úsáide as Scaireanna Cónaidhme</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Earraí grúpa</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Caint</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Ag socrú do shainroghanna</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Rochtain uilíoch</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Ag baint úsáide as fíordheimhniú dhá-fhachtóir</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Bainistigh brabhsálaithe agus gléasanna nasctha</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">Stóráil Sheachtrach</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest User Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Comhaid &amp; sioncronú</a></li>
+      <li class="breadcrumb-item active">Comhroinnt</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/files/sharing.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="file-sharing">
+<h1>Comhroinnt<a class="headerlink" href="#file-sharing" title="Link to this heading"></a></h1>
+<p>Is féidir le húsáideoirí Nextcloud comhaid agus fillteáin a roinnt. Is iad na spriocanna féideartha:</p>
+<ul class="simple">
+<li><p>naisc phoiblí</p></li>
+<li><p>úsáideoirí</p></li>
+<li><p>grúpaí</p></li>
+<li><p>ciorcail</p></li>
+<li><p>comhráite cainte</p></li>
+<li><p>úsáideoirí nó grúpaí ar fhreastalaithe cónasctha Nextcloud</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Seans nach mbeidh roinnt roghanna ar fáil mar gheall ar chumraíocht riaracháin. Féach <a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/file_sharing_configuration.html">doiciméadúchán an riarthóra</a> le haghaidh sonraí.</p>
+</div>
+<section id="public-link-shares">
+<h2>Scaireanna naisc phoiblí<a class="headerlink" href="#public-link-shares" title="Link to this heading"></a></h2>
+<p>Is féidir leat comhaid agus fillteáin a roinnt trí naisc phoiblí.</p>
+<p>Cruthófar comhartha randamach 15 dhigit. Beidh cuma <code class="docutils literal notranslate"><span class="pre">https://cloud.example.com/s/yxcFKRWBJqYYzp4</span></code> ar an nasc.</p>
+<p>Tá roinnt roghanna ar fáil le haghaidh scaireanna poiblí <em>fillteán</em>:</p>
+<figure class="align-default">
+<img alt="../../_images/sharing_public_folder.png" src="../../_images/sharing_public_folder.png" />
+</figure>
+<ul class="simple">
+<li><p><strong>Léigh amháin</strong> chun breathnú agus íoslódáil a cheadú</p></li>
+<li><p><strong>Ceadaigh uaslódáil agus eagarthóireacht</strong></p></li>
+<li><p>Le ** File drop**, ní féidir leis an scairshealbhóir ach comhaid a uaslódáil chuig fillteán gan na comhaid atá san fhillteán sin cheana féin a fheiceáil.</p></li>
+<li><p>Folaigh <strong>Folaigh íoslódálacha</strong> na cnaipí íoslódála agus na roghanna cliceáil ar dheis ar an mbrabhsálaí réamhshocraithe chun íoslódáil a dhéanamh don sharee níos deacra</p></li>
+<li><p><strong>Cosain pasfhocal</strong></p></li>
+<li><p>Déanfaidh <strong>Socraigh dáta éaga</strong> an sciar a dhíchumasú go huathoibríoch</p></li>
+<li><p><strong>Nóta don fhaighteoir</strong></p></li>
+<li><p><strong>Dí-roinn</strong> chun an sciar a thabhairt ar ais</p></li>
+<li><p><strong>Cuir nasc eile leis</strong> chun naisc phoiblí iolracha a chruthú le cearta éagsúla</p></li>
+</ul>
+<p>I gcás scaireanna poiblí <em>comhaid</em>, is féidir leat an comhad a chur in eagar le ceann de réitigh eagarthóireachta comhoibríocha Nextcloud:</p>
+<figure class="align-default">
+<img alt="../../_images/sharing_public_file.png" src="../../_images/sharing_public_file.png" />
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Déantar cosaint pasfhocail chomh maith le dul in éag comhaid freisin trí úsáid a bhaint as Comhroinnt Cónaidhme ó Nextcloud 22.</p>
+</div>
+</section>
+<section id="internal-shares-with-users-and-groups">
+<h2>Scaireanna inmheánacha le húsáideoirí agus le grúpaí<a class="headerlink" href="#internal-shares-with-users-and-groups" title="Link to this heading"></a></h2>
+<p>Agus tú ag roinnt le húsáideoirí, grúpaí, ciorcail nó baill de chomhrá Plé, tá cearta na gcomhad nó inneachar an fhillteáin inchoigeartaithe:</p>
+<figure class="align-default">
+<img alt="../../_images/sharing_internal.png" src="../../_images/sharing_internal.png" />
+</figure>
+<p>Mar sharee, is féidir leat a chumrú más mian leat go huathoibríoch glacadh le gach scair atá ag teacht isteach agus iad a chur le do fhréamhfhillteán, nó más mian leat go n-iarrfaí ort gach uair an bhfuil tú ag iarraidh glacadh leis nó diúltú don sciar.</p>
+<figure class="align-default">
+<img alt="../../_images/sharing_internal_acceptNotification.png" src="../../_images/sharing_internal_acceptNotification.png" />
+</figure>
+<p>Chun an socrú glactha a choigeartú, téigh chuig <strong>Socruithe</strong> &gt; <strong>Pearsanta</strong> &gt; <strong>Roinnt</strong>:</p>
+<figure class="align-default">
+<img alt="../../_images/sharing_autoAcceptSetting.png" src="../../_images/sharing_autoAcceptSetting.png" />
+</figure>
+</section>
+<section id="others-with-access">
+<h2>Daoine eile a bhfuil rochtain acu<a class="headerlink" href="#others-with-access" title="Link to this heading"></a></h2>
+<p>Chun a fháil amach an bhfuil rochtain ag daoine eile ar chomhad nó ar fhillteán trí ardleibhéal ordlathais fillteán a roinnt, cliceáil ar <strong>Daoine eile a bhfuil rochtain acu</strong> sa chluaisín comhroinnte:</p>
+<figure class="align-default">
+<img alt="../../_images/sharing_others-with-access__collapsed.png" src="../../_images/sharing_others-with-access__collapsed.png" />
+</figure>
+<p>Taispeánann an liosta gach úsáideoir, grúpa, comhrá srl. ar tugadh rochtain don réad reatha trí fhillteán uachtarach a roinnt san ordlathas:</p>
+<figure class="align-default">
+<img alt="../../_images/sharing_others-with-access__details.png" src="../../_images/sharing_others-with-access__details.png" />
+</figure>
+<p>Cliceáil ar na trí phonc chun:</p>
+<ul class="simple">
+<li><p>féach cé a chuir tús leis an sciar</p></li>
+<li><p>féach ar an áit ar tionscnaíodh an chomhroinnt (cliceáil chun nascleanúint a dhéanamh chuig an bhfillteán, chomh fada agus a bhfuil rochtain agat ann)</p></li>
+<li><p>an scair tosaigh a dhí-chomhroinnt (inrochtana don úinéir scaireanna amháin)</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Níl an fhaisnéis seo le feiceáil ach ag úinéir comhaid/fillteán nó scaireanna a bhfuil cearta athroinnte acu.</p>
+</div>
+</section>
+</section>
+<section id="federated-shares">
+<h1>Scaireanna Cónaidhme<a class="headerlink" href="#federated-shares" title="Link to this heading"></a></h1>
+<p>Ligeann Comhroinnt Cónaidhm duit scaireanna comhaid a shuiteáil ó fhreastalaithe iargúlta Nextcloud, rud a chruthaíonn do scamall Nextclouds féin. Is féidir leat naisc dhíreacha scaireanna a chruthú le húsáideoirí ar fhreastalaithe Nextcloud eile.</p>
+<section id="creating-a-new-federation-share">
+<h2>Scair Cónaidhm nua a chruthú<a class="headerlink" href="#creating-a-new-federation-share" title="Link to this heading"></a></h2>
+<p>Tá comhroinnt Cónaidhm cumasaithe de réir réamhshocraithe. Lean na céimeanna seo chun sciar nua a chruthú le freastalaithe eile Nextcloud nó ownCloud:</p>
+<p>Téigh go dtí do leathanach <code class="docutils literal notranslate"><span class="pre">Comhaid</span></code> agus cliceáil ar an deilbhín Comhroinn ar an gcomhad nó ar an eolaire is mian leat a roinnt. Sa bharra taoibh cuir isteach ainm úsáideora agus URL an chianúsáideora san fhoirm seo: <code class="docutils literal notranslate"><span class="pre">&lt;username&gt;&#64;&lt;nc-server-url&gt;</span></code>.  Sa sampla seo, is é sin <code class="docutils literal notranslate"><span class="pre">bob&#64;cloud.example.com</span></code>:</p>
+<figure class="align-default">
+<img alt="../../_images/share-federation-1.png" src="../../_images/share-federation-1.png" />
+</figure>
+<p>Tá fógra á fháil ag an scairí ina Nextcloud, rud a ligeann dóibh glacadh leis an sciar atá ag teacht isteach nó diúltú di:</p>
+<figure class="align-default">
+<img alt="../../_images/share-federation-2-notification.png" src="../../_images/share-federation-2-notification.png" />
+</figure>
+</section>
+<section id="adding-a-public-share-to-your-nextcloud">
+<h2>Ag cur sciar poiblí le do Nextcloud<a class="headerlink" href="#adding-a-public-share-to-your-nextcloud" title="Link to this heading"></a></h2>
+<p>Tugann leathanaigh scaireanna naisc phoiblí Nextcloud rogha chun an comhad nó an fillteán sin a chur leis mar sciar cónasctha i do chás Nextcloud féin. Cuir isteach do <code class="docutils literal notranslate"><span class="pre">&lt;username&gt;&#64;&lt;nc-server-url&gt;</span></code> díreach mar a thaispeántar do na scaireanna amach thuas:</p>
+<figure class="align-default">
+<img alt="../../_images/share-federation-3-public.png" src="../../_images/share-federation-3-public.png" />
+</figure>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="encrypting_files.html" class="btn btn-neutral float-left" title="Ag criptiú do chuid comhad Nextcloud ar an bhfreastalaí" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="file_drop.html" class="btn btn-neutral float-right" title="Uaslódálacha gan ainm a dhéanamh" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- Here go the languages -->
+  
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      🌐
+      
+      
+      ga
+      
+      <span class="fa fa-caret-down"></span>
+
+       ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>🌐 Languages</dt>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/af/"
+                 
+              >
+                
+                Afrikaans
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ar/"
+                 
+              >
+                
+                Arabic
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/br/"
+                 
+              >
+                
+                Breton
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ca/"
+                 
+              >
+                
+                Catalan
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/cs/"
+                 
+              >
+                
+                Czech
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/da/"
+                 
+              >
+                
+                Danish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/de/"
+                 
+              >
+                
+                German
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/el/"
+                 
+              >
+                
+                Greek
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/el_GR/"
+                 
+              >
+                
+                el_GR
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/en/"
+                 
+              >
+                
+                English
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/eo/"
+                 
+              >
+                
+                Esperanto
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/es/"
+                 
+              >
+                
+                Spanish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/eu/"
+                 
+              >
+                
+                eu
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/fi_FI/"
+                 
+              >
+                
+                Finnish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/fr/"
+                 
+              >
+                
+                French
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ga/"
+                 
+                 style="color: var(--dark-link-color);"
+                 
+              >
+                
+                Irish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/gl/"
+                 
+              >
+                
+                Glacian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/hr/"
+                 
+              >
+                
+                Croatian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/hu/"
+                 
+              >
+                
+                hu
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/hu_HU/"
+                 
+              >
+                
+                Hungarian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/id/"
+                 
+              >
+                
+                Indonesian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/it/"
+                 
+              >
+                
+                Italian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ja_JP/"
+                 
+              >
+                
+                Japanese
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ko/"
+                 
+              >
+                
+                Korean
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/mn/"
+                 
+              >
+                
+                Mongolian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/nb_NO/"
+                 
+              >
+                
+                Norwegian (NB)
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/nl/"
+                 
+              >
+                
+                Dutch
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/nn/"
+                 
+              >
+                
+                Norwegian (NN)
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/pl/"
+                 
+              >
+                
+                Polish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/pt_BR/"
+                 
+              >
+                
+                Portuguese (BR)
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/pt_PT/"
+                 
+              >
+                
+                Portuguese
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ro/"
+                 
+              >
+                
+                Romanian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ru/"
+                 
+              >
+                
+                Russian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/si/"
+                 
+              >
+                
+                Sinhala
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/sk_SK/"
+                 
+              >
+                
+                Slovakian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/sq/"
+                 
+              >
+                
+                Albanian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/sr/"
+                 
+              >
+                
+                Slovenian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/sv/"
+                 
+              >
+                
+                Swedish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ta/"
+                 
+              >
+                
+                Tamil
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/th/"
+                 
+              >
+                
+                th
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/tr/"
+                 
+              >
+                
+                Turkish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/uk/"
+                 
+              >
+                
+                Ukrainian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/uz/"
+                 
+              >
+                
+                Uzbek
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/vi/"
+                 
+              >
+                
+                Vietnamese
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/zh_CN/"
+                 
+              >
+                
+                Chinese
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/zh_HK/"
+                 
+              >
+                
+                Chinese (HK)
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/zh_TW/"
+                 
+              >
+                
+                Chinese (TW)
+                
+              </a>
+            </dd>
+          
+      </dl>
+    </div>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Leaganacha</dt>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/latest/user_manual"
+               
+               style="color: var(--dark-link-color);"
+               
+            >
+              latest
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/stable/user_manual"
+               
+            >
+              stable
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/29/user_manual"
+               
+            >
+              29
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/28/user_manual"
+               
+            >
+              28
+            </a>
+          </dd>
+        
+      </dl>
+      <dl>
+        <dt>Íoslódálacha</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>Ar Léigh na Docs</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Tionscadal Baile</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Tógann</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

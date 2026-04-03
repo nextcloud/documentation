@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="sr" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Шифровање ваших фајлова на Nextcloud серверу &mdash; документација Nextcloud latest User Manual latest</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=8a86fe08"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../_static/copybutton.js?v=f281be69"></script>
+        <script src="../../_static/translations.js?v=3c3b4542"></script>
+        <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+        <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Индекс" href="../genindex.html" />
+    <link rel="search" title="Претрага" href="../search.html" />
+    <link rel="next" title="Дељење фајлова" href="sharing.html" />
+    <link rel="prev" title="Десктоп и мобилна синхронизација" href="desktop_mobile_sync.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Увод у корисничко упутство за Nextcloud latest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../whats_new.html">Шта је ново за кориснике у Nextcloud latest</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">Nextcloud веб интерфејс</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Фајлови и синхронизација</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="access_webgui.html">Приступ вашим фајловима употребом Nextcloud веб интерфејса</a></li>
+<li class="toctree-l2"><a class="reference internal" href="access_webdav.html">Приступ Nextcloud фајловима преко WebDAV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deleted_file_management.html">Управљање обрисаним фајловима</a></li>
+<li class="toctree-l2"><a class="reference internal" href="desktop_mobile_sync.html">Десктоп и мобилна синхронизација</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Шифровање ваших фајлова на Nextcloud серверу</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#encryption-faq">ЧПП у вези шифровања</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#how-can-encryption-be-disabled">Како може да се искључи шифровање?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#is-it-possible-to-disable-encryption-with-the-recovery-key">Да ли је могуће да се искључи шифровање кључем за опоравак?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#can-encryption-be-disabled-without-the-user-s-password">Да ли шифровање може да се искључи без лозинке корисника?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#is-it-planned-to-move-this-to-the-next-user-login-or-a-background-job">Да ли се планира да се ово премести на наредну пријаву корисника или у позадински посао?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#is-group-sharing-possible-with-the-recovery-key">Да ли је могуће групно дељење кључем за опоравак?</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#using-encryption">Употреба шифровања</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sharing-encrypted-files">Дељење шифрованих фајлова</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#recovery-key-password">Лозинка кључа опоравка</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#files-not-encrypted">Фајлови нису шифровани</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#change-private-key-password">Промена лозинке приватног кључа</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="sharing.html">Дељење фајлова</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sharing.html#federated-shares">Заједничка дељења</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_drop.html">Вршење анонимних отпремања</a></li>
+<li class="toctree-l2"><a class="reference internal" href="large_file_upload.html">Отпремања великог фајла</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quota.html">Квота складишта</a></li>
+<li class="toctree-l2"><a class="reference internal" href="version_control.html">Контрола верзија</a></li>
+<li class="toctree-l2"><a class="reference internal" href="projects.html">Пројекти</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transfer_ownership.html">Пренос власништва</a></li>
+<li class="toctree-l2"><a class="reference internal" href="federated_cloud_sharing.html">Употреба заједничких дељења</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Talk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Постављање ваших подешавања</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Универзални приступ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Употреба двофактоске аутентификације</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Управљање повезаним прегледачима и уређајима</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">Спољно складиште</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest User Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Фајлови и синхронизација</a></li>
+      <li class="breadcrumb-item active">Шифровање ваших фајлова на Nextcloud серверу</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/files/encrypting_files.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="encrypting-your-nextcloud-files-on-the-server">
+<h1>Шифровање ваших фајлова на Nextcloud серверу<a class="headerlink" href="#encrypting-your-nextcloud-files-on-the-server" title="Link to this heading"></a></h1>
+<p>Nextcloud поседује апликацију за шифровање на серверској страни, па када је ваш Nextcloud администратор укључи, сви ваши Nextcloud подаци се аутоматски шифрују на серверу. Шифровање важи за цео сервер, тако да када се укључи немате могућност избора да ваши фајлови остану нешифровани. Није потребно да урадите било шта посебно, јер апликација користи ваше Nextcloud име за пријаву као лозинку за ваш јединствени приватни кључ за шифровање. Једноставно се одјавите и поново пријавите и управљајте фајловима и делите их као што сте то и раније чинили, и још увек можете по вољи да промените своју лозинку.</p>
+<p>Њена главна сврха је да шифрује фајлове на сервисима удаљених складишта које сте повезали са својим Nextcloud сервером. Ово је једноставан и беспрекоран начин за заштиту ваших фајлова на удаљеном складишту. Ваше удаљене фајлове можете да делите помоћу Nextcloud на уобичајен начин, међутим, шифроване фајлове не можете директно да делите са удаљеног сервиса који користите, јер су кључеви за шифровање смештени на вашем Nextcloud серверу и никад се не откривају спољним пружаоцима услуга.</p>
+<p>Ако ваш Nextcloud сервер није повазан ни са једним сервисом удаљеног складишта, онда је боље да користите неки други облик шифровања као што је шифровање на нивоу фајла или шифровање комплетног диска. Пошто се кључеви чувају на вашем Nextcloud серверу, ваш Nextcloud администратор може да проњучка по вашим фајловима, а ако се сервер компромитује провалник може да добије приступ вашим фајловима. (Да бисте сазнали више, прочитајте <a class="reference external" href="https://nextcloud.com/blog/encryption-in-nextcloud/">Шифровање у Nextcloud</a>.)</p>
+<section id="encryption-faq">
+<h2>ЧПП у вези шифровања<a class="headerlink" href="#encryption-faq" title="Link to this heading"></a></h2>
+<section id="how-can-encryption-be-disabled">
+<h3>Како може да се искључи шифровање?<a class="headerlink" href="#how-can-encryption-be-disabled" title="Link to this heading"></a></h3>
+<p>Једини начин да се искључи шифровање је да се изврши скрипта <a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/occ_command.html#encryption-label">„decrypt all”</a>, која дешифрује све фајлове и искључује шифровање.</p>
+</section>
+<section id="is-it-possible-to-disable-encryption-with-the-recovery-key">
+<h3>Да ли је могуће да се искључи шифровање кључем за опоравак?<a class="headerlink" href="#is-it-possible-to-disable-encryption-with-the-recovery-key" title="Link to this heading"></a></h3>
+<p>Да, <em>ако</em> сваки корисник употребљава <a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/encryption_configuration.html#enabling-users-file-recovery-keys">кључ за опоравак фајла</a>, <a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/occ_command.html#encryption-label">„decrypt all”</a> скрипта ће га употребити да дешифрује све фајлове.</p>
+</section>
+<section id="can-encryption-be-disabled-without-the-user-s-password">
+<h3>Да ли шифровање може да се искључи без лозинке корисника?<a class="headerlink" href="#can-encryption-be-disabled-without-the-user-s-password" title="Link to this heading"></a></h3>
+<p>Ако немате корисничке лозинке или <a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/encryption_configuration.html#enabling-users-file-recovery-keys">кључ за опоравак фајла</a>, не постоји начин да се дешифрују сви фајлови. Још горе, покретање приликом пријаве би било опасно, јер би највероватније дошло до истека времена.</p>
+</section>
+<section id="is-it-planned-to-move-this-to-the-next-user-login-or-a-background-job">
+<h3>Да ли се планира да се ово премести на наредну пријаву корисника или у позадински посао?<a class="headerlink" href="#is-it-planned-to-move-this-to-the-next-user-login-or-a-background-job" title="Link to this heading"></a></h3>
+<p>Ако би то урадили, онда би вашу лозинку морали да сместимо у базу података. То може да се сматра за безбедносни пропуст, па се тако нешто не планира.</p>
+</section>
+<section id="is-group-sharing-possible-with-the-recovery-key">
+<h3>Да ли је могуће групно дељење кључем за опоравак?<a class="headerlink" href="#is-group-sharing-possible-with-the-recovery-key" title="Link to this heading"></a></h3>
+<p>Ако мислите на додавање корисника у групе, па да неком чаролијом све функционише? Не. Ово функционише само са главним кључем.</p>
+</section>
+</section>
+<section id="using-encryption">
+<h2>Употреба шифровања<a class="headerlink" href="#using-encryption" title="Link to this heading"></a></h2>
+<p>Nextcloud шифровање је углавном по принципу подеси и заборави, али постоји неколико опција које можете да користите.</p>
+<p>Када ваш Nextcloud администратор по први пут укључи шифровање, морате да се одјавите и поново пријавите да би се креирали ваши кључеви за шифровање и да се шифрују ваши фајлови. Када се на вашем Nextcloud серверу укључи шифровање, на страници Фајлови ћете видети жути банер који вас упозорава да се одјавите и поново пријавите:</p>
+<figure class="align-default">
+<img alt="../../_images/encryption1.png" src="../../_images/encryption1.png" />
+</figure>
+<p>Када се поново пријавите, биће потребно неколико минута да се одради посао, у зависности од броја фајлова које имате, па се затим враћате на своју подрзумевану Nextcloud страницу.</p>
+<figure class="align-default">
+<img alt="../../_images/encryption2.png" src="../../_images/encryption2.png" />
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Белешка</p>
+<p>Никада не смете да изгубите своју Nextcloud лозинку јер ћете у том случају да изгубите приступ својим фајловима. Мада постоји необавезна опција за опоравак коју Nextcloud администратор може да укључи; погледајте одељак Лозинка кључа за опоравак (испод) ако желите да сазнате више о овоме.</p>
+</div>
+</section>
+<section id="sharing-encrypted-files">
+<h2>Дељење шифрованих фајлова<a class="headerlink" href="#sharing-encrypted-files" title="Link to this heading"></a></h2>
+<p>Приступ дељеним шифрованим фајловима и фолдерима имају само корисници који имају приватне кључеве за шифровање. Корисници који још увек нису креирали своје приватне кључеве за шифровање немају приступ шифрованим дељеним фајловима; они ће видети фолдере и имена фајлова, али неће моћи да их отворе или да преузму фајлове. Видеће жути банер упозорења који каже „Апликација за шифровање је укључена али ваши кључеви нису иницијализовани, молимо вас да се одјавите и поново пријавите.”</p>
+<p>Власници дељења ће можда морати поново да поделе фајлове након уљкучивања шифровања; корисници који покушавају да приступе дељењу ће видети поруку која им саветује да се обрате власнику дељења и затраже од њега да фајл поново подели са њима. За појединачна дељења, укините дељење фајла па га поново поделите. За групна дељења, поделите са свим особама које не могу да приступе дељењу. Ово ажурира шифровање, па затим власник дељења може да уклони поједина дељења.</p>
+<section id="recovery-key-password">
+<h3>Лозинка кључа опоравка<a class="headerlink" href="#recovery-key-password" title="Link to this heading"></a></h3>
+<p>Ако је ваш Nextcloud администратор укључио могућност кључа за опоравак, онда можете да је користите за свој налог. Ако укључите „Опоравак лозинке” администратор може да прочита ваше податке помоћу специјалне лозинке. НА тај начин администратор има могучност да опорави ваше фајлове у случају да изгубите своју Nextcloud лозинку. Ако кључ за опоравак није укључен, онда не постоји начин да се ваши фајлови опораве у случају да изгубите своју лозинку за пријаву на систем.</p>
+<figure class="align-default">
+<img alt="../../_images/encryption3.png" src="../../_images/encryption3.png" />
+</figure>
+</section>
+</section>
+<section id="files-not-encrypted">
+<h2>Фајлови нису шифровани<a class="headerlink" href="#files-not-encrypted" title="Link to this heading"></a></h2>
+<p>Шифровани су само подаци у вашим фајловима, а не и имена фајлова или структура фолдера. Следећи фајлови се никада не шифрују:</p>
+<ul class="simple">
+<li><p>Стари фајлови у корпи за отпатке.</p></li>
+<li><p>Сличице слика из апликације Галерија.</p></li>
+<li><p>Прегледи из апликације Фајлови.</p></li>
+<li><p>Индекс претраге из апликације за претрагу комплетног текста.</p></li>
+<li><p>Подаци апликација треће стране</p></li>
+</ul>
+<p>Могу да се шифрују само они фајлови који се деле са пружаоцима услуге складиштења треће стране, остали фајлови не морају да се шифрују.</p>
+<section id="change-private-key-password">
+<h3>Промена лозинке приватног кључа<a class="headerlink" href="#change-private-key-password" title="Link to this heading"></a></h3>
+<p>Ова опција је доступна само ако администратор није променио лозинку за шифровање, већ само лозинку за пријаву на систем. Ово може да се догоди ако ваш Nextcloud пружалац користи спољни кориснички позадински механизам (на пример, LDAP) и променио је вашу лозинку за пријаву користећи конфигурацију тог позадинског механизма. У том случају можете да поставите своју лозинку за шифровање на своју нову лозинку за пријаву на систем тако што наводите стару и нову лозинку за пријаву. Апликација за шифровање функционише само ако су ваша лозинка за пријаву и лозинка за шифровање идентичне.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="desktop_mobile_sync.html" class="btn btn-neutral float-left" title="Десктоп и мобилна синхронизација" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="sharing.html" class="btn btn-neutral float-right" title="Дељење фајлова" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <!-- Here go the languages -->
+  
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      🌐
+      
+      
+      Slovenian
+      
+      <span class="fa fa-caret-down"></span>
+
+       ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>🌐 Languages</dt>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/af/"
+                 
+              >
+                
+                Afrikaans
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ar/"
+                 
+              >
+                
+                Arabic
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/br/"
+                 
+              >
+                
+                Breton
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ca/"
+                 
+              >
+                
+                Catalan
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/cs/"
+                 
+              >
+                
+                Czech
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/da/"
+                 
+              >
+                
+                Danish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/de/"
+                 
+              >
+                
+                German
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/el/"
+                 
+              >
+                
+                Greek
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/el_GR/"
+                 
+              >
+                
+                el_GR
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/en/"
+                 
+              >
+                
+                English
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/eo/"
+                 
+              >
+                
+                Esperanto
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/es/"
+                 
+              >
+                
+                Spanish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/eu/"
+                 
+              >
+                
+                eu
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/fi_FI/"
+                 
+              >
+                
+                Finnish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/fr/"
+                 
+              >
+                
+                French
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ga/"
+                 
+              >
+                
+                Irish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/gl/"
+                 
+              >
+                
+                Glacian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/hr/"
+                 
+              >
+                
+                Croatian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/hu/"
+                 
+              >
+                
+                hu
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/hu_HU/"
+                 
+              >
+                
+                Hungarian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/id/"
+                 
+              >
+                
+                Indonesian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/it/"
+                 
+              >
+                
+                Italian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ja_JP/"
+                 
+              >
+                
+                Japanese
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ko/"
+                 
+              >
+                
+                Korean
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/mn/"
+                 
+              >
+                
+                Mongolian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/nb_NO/"
+                 
+              >
+                
+                Norwegian (NB)
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/nl/"
+                 
+              >
+                
+                Dutch
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/nn/"
+                 
+              >
+                
+                Norwegian (NN)
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/pl/"
+                 
+              >
+                
+                Polish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/pt_BR/"
+                 
+              >
+                
+                Portuguese (BR)
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/pt_PT/"
+                 
+              >
+                
+                Portuguese
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ro/"
+                 
+              >
+                
+                Romanian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ru/"
+                 
+              >
+                
+                Russian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/si/"
+                 
+              >
+                
+                Sinhala
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/sk_SK/"
+                 
+              >
+                
+                Slovakian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/sq/"
+                 
+              >
+                
+                Albanian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/sr/"
+                 
+                 style="color: var(--dark-link-color);"
+                 
+              >
+                
+                Slovenian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/sv/"
+                 
+              >
+                
+                Swedish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/ta/"
+                 
+              >
+                
+                Tamil
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/th/"
+                 
+              >
+                
+                th
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/tr/"
+                 
+              >
+                
+                Turkish
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/uk/"
+                 
+              >
+                
+                Ukrainian
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/uz/"
+                 
+              >
+                
+                Uzbek
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/vi/"
+                 
+              >
+                
+                Vietnamese
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/zh_CN/"
+                 
+              >
+                
+                Chinese
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/zh_HK/"
+                 
+              >
+                
+                Chinese (HK)
+                
+              </a>
+            </dd>
+          
+            <dd style="width: 32%; vertical-align: top;">
+              <a href="/server/latest/user_manual/zh_TW/"
+                 
+              >
+                
+                Chinese (TW)
+                
+              </a>
+            </dd>
+          
+      </dl>
+    </div>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Верзије</dt>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/latest/user_manual"
+               
+               style="color: var(--dark-link-color);"
+               
+            >
+              latest
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/stable/user_manual"
+               
+            >
+              stable
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/29/user_manual"
+               
+            >
+              29
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/28/user_manual"
+               
+            >
+              28
+            </a>
+          </dd>
+        
+      </dl>
+      <dl>
+        <dt>Преузимања</dt>
+        
+      </dl>
+      <dl>
+        
+        <dt>На прочитај документацију</dt>
+          <dd>
+            <a href="///projects//?fromdocs=">Почетна страница пројекта</a>
+          </dd>
+          <dd>
+            <a href="///builds//?fromdocs=">Изградње</a>
+          </dd>
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

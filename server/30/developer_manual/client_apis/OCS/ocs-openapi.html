@@ -1,0 +1,925 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>OCS OpenAPI tutorial &mdash; Nextcloud latest Developer Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=19f00094" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="../../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../../_static/documentation_options.js?v=c6e86fd7"></script>
+        <script src="../../_static/doctools.js?v=888ff710"></script>
+        <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+        <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+        <script src="../../_static/copybutton.js?v=f281be69"></script>
+        <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+        <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="OCS APIs overview" href="ocs-api-overview.html" />
+    <link rel="prev" title="OCS API" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../prologue/index.html">Prologue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../basics/index.html">Basic concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app_development/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../server/index.html">Server development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../digging_deeper/index.html">Digging deeper</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../app_publishing_maintenance/index.html">App publishing and maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../design/index.html">Interface &amp; interaction design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../html_css_design/index.html">HTML/CSS guidelines</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Clients and Client APIs</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../general.html">General</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../activity-api.html">Activity</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../android_library/index.html">Android</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../files.html">Files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../LoginFlow/index.html">Login Flow</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">OCS API</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">OCS OpenAPI tutorial</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#requirements-and-prerequisites">Requirements and prerequisites</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tips-and-tricks">Tips and tricks</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#best-practices">Best practices</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#how-to-add-openapi-support-to-your-ocs-api">How to add OpenAPI support to your OCS API</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#how-to-add-response-definitions-to-share-type-definitions">How to add response definitions to share type definitions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#how-to-handle-exceptions">How to handle exceptions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#how-to-ignore-certain-endpoints">How to ignore certain endpoints</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#how-to-expose-capabilities">How to expose Capabilities</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#scopes">Scopes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#how-to-generate-the-specification">How to generate the specification</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="ocs-api-overview.html">OCS APIs overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ocs-share-api.html">OCS Share API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ocs-sharee-api.html">OCS Sharee API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ocs-status-api.html">OCS Status API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ocs-recommendations-api.html">OCS Recommendations API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ocs-user-preferences-api.html">OCS user preferences API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ocs-translation-api.html">OCS Translation API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ocs-textprocessing-api.html">OCS TextProcessing API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ocs-text2image-api.html">OCS Text-To-Image API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ocs-taskprocessing-api.html">OCS TaskProcessing API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="ocs-out-of-office-api.html">OCS Out-of-office API</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../RemoteWipe/index.html">Remote wipe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../WebDAV/index.html">Webdav</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Nextcloud latest Developer Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Clients and Client APIs</a></li>
+          <li class="breadcrumb-item"><a href="index.html">OCS API</a></li>
+      <li class="breadcrumb-item active">OCS OpenAPI tutorial</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/developer_manual/client_apis/OCS/ocs-openapi.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="ocs-openapi-tutorial">
+<h1>OCS OpenAPI tutorial<a class="headerlink" href="#ocs-openapi-tutorial" title="Link to this heading"></a></h1>
+<p>This page explains you how you can add OpenAPI support to your app such that you can automatically generated an OpenAPI specification from your server code.</p>
+<p>Please read the whole tutorial before starting to adapt your app.</p>
+<p>Do not be afraid that you do not know everything from the start.
+The openapi-extractor tool gives you many warnings and fails if there is something utterly broken that would not work.
+Let the tool run and it will tell you if there is something wrong.
+Psalm will also help you validate your changes to ensure that nothing is broken.</p>
+<section id="requirements-and-prerequisites">
+<h2>Requirements and prerequisites<a class="headerlink" href="#requirements-and-prerequisites" title="Link to this heading"></a></h2>
+<section id="app-supports-at-least-nextcloud-28">
+<h3>App supports at least Nextcloud 28<a class="headerlink" href="#app-supports-at-least-nextcloud-28" title="Link to this heading"></a></h3>
+<p>Nextcloud 28 is the first version that has the required changes to get OpenAPI support going.</p>
+</section>
+<section id="psalm-is-setup-and-configured">
+<h3>Psalm is setup and configured<a class="headerlink" href="#psalm-is-setup-and-configured" title="Link to this heading"></a></h3>
+<p>Install psalm in your app as explained in <a class="reference external" href="https://psalm.dev/docs/running_psalm/installation">https://psalm.dev/docs/running_psalm/installation</a>.</p>
+<p>You need to have at least psalm <code class="docutils literal notranslate"><span class="pre">5.9.0</span></code>. Previous versions contain a bug which will make it impossible for the changes outlined in this tutorial to work.</p>
+<p>Install and enable the required extensions as explained in <a class="reference internal" href="../../server/static-analysis.html#psalm-php-extensions"><span class="std std-ref">Required PHP extensions</span></a>.</p>
+<p>Setup the following issue handlers in the psalm config (see <a class="reference external" href="https://psalm.dev/docs/running_psalm/dealing_with_code_issues">https://psalm.dev/docs/running_psalm/dealing_with_code_issues</a> for a tutorial):</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="nt">&lt;LessSpecificReturnStatement</span><span class="w"> </span><span class="na">errorLevel=</span><span class="s">&quot;error&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;LessSpecificReturnType</span><span class="w"> </span><span class="na">errorLevel=</span><span class="s">&quot;error&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;LessSpecificImplementedReturnType</span><span class="w"> </span><span class="na">errorLevel=</span><span class="s">&quot;error&quot;</span><span class="nt">/&gt;</span>
+<span class="nt">&lt;MoreSpecificReturnType</span><span class="w"> </span><span class="na">errorLevel=</span><span class="s">&quot;error&quot;</span><span class="nt">/&gt;</span>
+</pre></div>
+</div>
+<p>Install openapi-extractor in your app as explained in <a class="reference external" href="https://github.com/nextcloud/openapi-extractor">https://github.com/nextcloud/openapi-extractor</a>.</p>
+</section>
+</section>
+<section id="tips-and-tricks">
+<h2>Tips and tricks<a class="headerlink" href="#tips-and-tricks" title="Link to this heading"></a></h2>
+<p>The openapi-extractor tool forces you to set descriptions everywhere.
+To ease the adoption process you can set the <code class="docutils literal notranslate"><span class="pre">--allow-missing-docs</span></code> flag to ignore those problems.</p>
+<p>The tool also only shows errors one by one by default, but you can also let it show you all problems at once using the <code class="docutils literal notranslate"><span class="pre">--continue-on-error</span></code>.</p>
+<p>It is advised to use neither of the mentioned flags to generate the final specification.
+They hide problems that your code has.
+Especially the later one is dangerous because it will never fail when any problem exists in your code.
+They should only be used to speed up the initial adaption process.</p>
+</section>
+<section id="best-practices">
+<h2>Best practices<a class="headerlink" href="#best-practices" title="Link to this heading"></a></h2>
+<p>Note that you can find a step-by-step tutorial after this section.
+You can also read the tutorial before reading the best practices.</p>
+<section id="prefer-to-expose-your-apis-using-ocs">
+<h3>PREFER to expose your APIs using OCS<a class="headerlink" href="#prefer-to-expose-your-apis-using-ocs" title="Link to this heading"></a></h3>
+<p>It provides a more standardized and easier way to write your APIs.
+Other methods are considered legacy.
+For details take a look at <a class="reference internal" href="../../basics/controllers.html#ocscontroller"><span class="std std-ref">OCS</span></a>.</p>
+<details class="summary-examples">
+<summary>Examples</summary><div class="literal-block-wrapper docutils container" id="id1">
+<div class="code-block-caption"><span class="caption-text">Bad</span><a class="headerlink" href="#id1" title="Link to this code"></a></div>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">SomeController</span> <span class="k">extends</span> <span class="nx">ApiController</span> <span class="p">{</span>
+    <span class="o">...</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">someControllerMethod</span><span class="p">()</span><span class="o">:</span> <span class="nx">JSONResponse</span> <span class="p">{</span>
+        <span class="o">...</span>
+        <span class="k">return</span> <span class="nx">JSONResponse</span><span class="p">(</span><span class="o">...</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id2">
+<div class="code-block-caption"><span class="caption-text">Good</span><a class="headerlink" href="#id2" title="Link to this code"></a></div>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">SomeController</span> <span class="k">extends</span> <span class="nx">OCSController</span> <span class="p">{</span>
+    <span class="o">...</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">someControllerMethod</span><span class="p">()</span><span class="o">:</span> <span class="nx">DataResponse</span> <span class="p">{</span>
+        <span class="o">...</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nx">DataResponse</span><span class="p">(</span><span class="o">...</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</details></section>
+<section id="do-type-controller-and-helper-methods-as-explicit-as-possible">
+<h3>DO type controller and helper methods as explicit as possible<a class="headerlink" href="#do-type-controller-and-helper-methods-as-explicit-as-possible" title="Link to this heading"></a></h3>
+<p>The closer you narrow down a type without violating any constraints the better the resulting specification will be.
+Psalm will catch these problems for you if you configured the issue handlers mentioned above correctly.</p>
+<details class="summary-examples">
+<summary>Examples</summary><div class="literal-block-wrapper docutils container" id="id3">
+<div class="code-block-caption"><span class="caption-text">Bad</span><a class="headerlink" href="#id3" title="Link to this code"></a></div>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="sd">/**</span>
+<span class="hll"><span class="sd"> * @return array</span>
+</span><span class="sd"> */</span>
+<span class="k">public</span> <span class="k">function</span> <span class="nf">someHelperMethod</span><span class="p">()</span> <span class="p">{</span>
+    <span class="o">...</span>
+    <span class="k">return</span> <span class="p">[</span>
+        <span class="s2">&quot;id&quot;</span> <span class="o">=&gt;</span> <span class="nx">id</span><span class="p">,</span>
+        <span class="s2">&quot;name&quot;</span> <span class="o">=&gt;</span> <span class="nx">name</span><span class="p">,</span>
+    <span class="p">];</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id4">
+<div class="code-block-caption"><span class="caption-text">Good</span><a class="headerlink" href="#id4" title="Link to this code"></a></div>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="sd">/**</span>
+<span class="hll"><span class="sd"> * @return array{id: int, name: string}</span>
+</span><span class="sd"> */</span>
+<span class="k">public</span> <span class="k">function</span> <span class="nf">someHelperMethod</span><span class="p">()</span> <span class="p">{</span>
+    <span class="o">...</span>
+    <span class="k">return</span> <span class="p">[</span>
+        <span class="s2">&quot;id&quot;</span> <span class="o">=&gt;</span> <span class="nx">id</span><span class="p">,</span>
+        <span class="s2">&quot;name&quot;</span> <span class="o">=&gt;</span> <span class="nx">name</span><span class="p">,</span>
+    <span class="p">];</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</details></section>
+<section id="prefer-to-use-null-to-represent-empty-data">
+<h3>PREFER to use <code class="docutils literal notranslate"><span class="pre">null</span></code> to represent empty data<a class="headerlink" href="#prefer-to-use-null-to-represent-empty-data" title="Link to this heading"></a></h3>
+<p>Your API should be designed in a way that represents empty data with <code class="docutils literal notranslate"><span class="pre">null</span></code>.</p>
+<p>There is a problem with PHP and arrays that get converted to JSON.
+JSON has lists and objects while PHP only has arrays.
+If you were to return an empty array in PHP it will always turn into <code class="docutils literal notranslate"><span class="pre">[]</span></code> in JSON.
+This is not a problem for endpoints that always return lists, but most endpoints return a single JSON object.
+For those endpoints returning <code class="docutils literal notranslate"><span class="pre">[]</span></code> in PHP is a problem because the consumer will either get <code class="docutils literal notranslate"><span class="pre">[]</span></code> or <code class="docutils literal notranslate"><span class="pre">{...}</span></code> which is hard to handle.</p>
+<p>If you are not able to use <code class="docutils literal notranslate"><span class="pre">null</span></code> for whatever reason, use <code class="docutils literal notranslate"><span class="pre">new</span> <span class="pre">\stdClass()</span></code> instead.
+It will get correctly converted into <code class="docutils literal notranslate"><span class="pre">{}</span></code> in the JSON response on Nextcloud 28 and later.</p>
+<p>If you are working with an existing API where you can not break compatibility, you can also type the result as <code class="docutils literal notranslate"><span class="pre">list&lt;empty&gt;</span></code>.</p>
+<details class="summary-examples">
+<summary>Examples</summary><div class="literal-block-wrapper docutils container" id="id5">
+<div class="code-block-caption"><span class="caption-text">Bad</span><a class="headerlink" href="#id5" title="Link to this code"></a></div>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="sd">/**</span>
+<span class="sd"> * @return DataResponse&lt;Http::STATUS_OK, array, array{}&gt;</span>
+<span class="sd"> */</span>
+<span class="k">public</span> <span class="k">function</span> <span class="nf">someControllerMethod</span><span class="p">()</span> <span class="p">{</span>
+    <span class="o">...</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nx">DataResponse</span><span class="p">([]);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id6">
+<div class="code-block-caption"><span class="caption-text">Good</span><a class="headerlink" href="#id6" title="Link to this code"></a></div>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="sd">/**</span>
+<span class="sd"> * @return DataResponse&lt;Http::STATUS_OK, null, array{}&gt;</span>
+<span class="sd"> */</span>
+<span class="k">public</span> <span class="k">function</span> <span class="nf">someControllerMethod</span><span class="p">()</span> <span class="p">{</span>
+    <span class="o">...</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nx">DataResponse</span><span class="p">(</span><span class="k">null</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="sd">/**</span>
+<span class="sd"> * @return DataResponse&lt;Http::STATUS_OK, \stdClass, array{}&gt;</span>
+<span class="sd"> */</span>
+<span class="k">public</span> <span class="k">function</span> <span class="nf">someControllerMethod</span><span class="p">()</span> <span class="p">{</span>
+    <span class="o">...</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nx">DataResponse</span><span class="p">(</span><span class="k">new</span> <span class="nx">\stdClass</span><span class="p">());</span>
+<span class="p">}</span>
+
+<span class="sd">/**</span>
+<span class="sd"> * @return DataResponse&lt;Http::STATUS_OK, list&lt;empty&gt;, array{}&gt;</span>
+<span class="sd"> */</span>
+<span class="k">public</span> <span class="k">function</span> <span class="nf">someControllerMethod</span><span class="p">()</span> <span class="p">{</span>
+    <span class="o">...</span>
+    <span class="k">return</span> <span class="k">new</span> <span class="nx">DataResponse</span><span class="p">([]);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</details></section>
+<section id="do-not-throw-non-ocs-exceptions">
+<h3>DO NOT throw non-OCS*Exceptions<a class="headerlink" href="#do-not-throw-non-ocs-exceptions" title="Link to this heading"></a></h3>
+<p>Only use OCS*Exceptions as any other Exceptions do not produce JSON responses.</p>
+<details class="summary-examples">
+<summary>Examples</summary><div class="literal-block-wrapper docutils container" id="id7">
+<div class="code-block-caption"><span class="caption-text">Bad</span><a class="headerlink" href="#id7" title="Link to this code"></a></div>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="sd">/**</span>
+<span class="sd"> * @throws BadRequestException</span>
+<span class="sd"> */</span>
+<span class="k">public</span> <span class="k">function</span> <span class="nf">someControllerMethod</span><span class="p">()</span> <span class="p">{</span>
+    <span class="o">...</span>
+    <span class="k">throw</span> <span class="k">new</span> <span class="nx">BadRequestException</span><span class="p">([]);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id8">
+<div class="code-block-caption"><span class="caption-text">Good</span><a class="headerlink" href="#id8" title="Link to this code"></a></div>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="sd">/**</span>
+<span class="sd"> * @throws OCSBadRequestException</span>
+<span class="sd"> */</span>
+<span class="k">public</span> <span class="k">function</span> <span class="nf">someControllerMethod</span><span class="p">()</span> <span class="p">{</span>
+    <span class="o">...</span>
+    <span class="k">throw</span> <span class="k">new</span> <span class="nx">OCSBadRequestException</span><span class="p">(</span><span class="s2">&quot;some message&quot;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</details></section>
+<section id="do-use-the-same-data-structures-for-the-same-group-of-responses">
+<h3>DO use the same data structures for the same group of responses<a class="headerlink" href="#do-use-the-same-data-structures-for-the-same-group-of-responses" title="Link to this heading"></a></h3>
+<p>Using <code class="docutils literal notranslate"><span class="pre">null</span></code> to represent empty data is encouraged.
+All 2xx responses should return the same data structure and all 4xx should also return the same data structure.</p>
+<details class="summary-examples">
+<summary>Examples</summary><div class="literal-block-wrapper docutils container" id="id9">
+<div class="code-block-caption"><span class="caption-text">Bad</span><a class="headerlink" href="#id9" title="Link to this code"></a></div>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="sd">/**</span>
+<span class="hll"><span class="sd"> * @return DataResponse&lt;Http::STATUS_OK, array{name: string}, array{}&gt;|DataResponse&lt;Http::STATUS_CREATED, array{id: int, name: string}, array{}&gt;</span>
+</span><span class="sd"> */</span>
+<span class="k">public</span> <span class="k">function</span> <span class="nf">someControllerMethod</span><span class="p">()</span> <span class="p">{</span>
+    <span class="o">...</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">...</span><span class="p">)</span> <span class="p">{</span>
+<span class="hll">        <span class="k">return</span> <span class="k">new</span> <span class="nx">DataResponse</span><span class="p">([</span><span class="s2">&quot;name&quot;</span> <span class="o">=&gt;</span> <span class="nx">name</span><span class="p">],</span> <span class="nx">Http</span><span class="o">::</span><span class="na">STATUS_OK</span><span class="p">);</span>
+</span>    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<span class="hll">        <span class="k">return</span> <span class="k">new</span> <span class="nx">DataResponse</span><span class="p">([</span><span class="s2">&quot;id&quot;</span> <span class="o">=&gt;</span> <span class="nx">id</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span> <span class="o">=&gt;</span> <span class="nx">name</span><span class="p">],</span> <span class="nx">Http</span><span class="o">::</span><span class="na">STATUS_CREATED</span><span class="p">);</span>
+</span>    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="sd">/**</span>
+<span class="sd"> * @return DataResponse&lt;Http::STATUS_BAD_REQUEST, array{error: string}, array{}&gt;|DataResponse&lt;Http::STATUS_FORBIDDEN, array{message: string}, array{}&gt;</span>
+<span class="sd"> */</span>
+<span class="k">public</span> <span class="k">function</span> <span class="nf">someControllerMethod</span><span class="p">()</span> <span class="p">{</span>
+    <span class="o">...</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">...</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nx">DataResponse</span><span class="p">([</span><span class="s2">&quot;error&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;bad request&quot;</span><span class="p">],</span> <span class="nx">Http</span><span class="o">::</span><span class="na">STATUS_BAD_REQUEST</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nx">DataResponse</span><span class="p">([</span><span class="s2">&quot;message&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;forbidden&quot;</span><span class="p">],</span> <span class="nx">Http</span><span class="o">::</span><span class="na">STATUS_FORBIDDEN</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id10">
+<div class="code-block-caption"><span class="caption-text">Good</span><a class="headerlink" href="#id10" title="Link to this code"></a></div>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="sd">/**</span>
+<span class="hll"><span class="sd"> * @return DataResponse&lt;Http::STATUS_OK|Http::STATUS_CREATED, array{id: int, name: string}, array{}&gt;</span>
+</span><span class="sd"> */</span>
+<span class="k">public</span> <span class="k">function</span> <span class="nf">someControllerMethod</span><span class="p">()</span> <span class="p">{</span>
+    <span class="o">...</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">...</span><span class="p">)</span> <span class="p">{</span>
+<span class="hll">        <span class="k">return</span> <span class="k">new</span> <span class="nx">DataResponse</span><span class="p">([</span><span class="s2">&quot;id&quot;</span> <span class="o">=&gt;</span> <span class="nx">id</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span> <span class="o">=&gt;</span> <span class="nx">name</span><span class="p">],</span> <span class="nx">Http</span><span class="o">::</span><span class="na">STATUS_OK</span><span class="p">);</span>
+</span>    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+<span class="hll">        <span class="k">return</span> <span class="k">new</span> <span class="nx">DataResponse</span><span class="p">([</span><span class="s2">&quot;id&quot;</span> <span class="o">=&gt;</span> <span class="nx">id</span><span class="p">,</span> <span class="s2">&quot;name&quot;</span> <span class="o">=&gt;</span> <span class="nx">name</span><span class="p">],</span> <span class="nx">Http</span><span class="o">::</span><span class="na">STATUS_CREATED</span><span class="p">);</span>
+</span>    <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="sd">/**</span>
+<span class="sd"> * @return DataResponse&lt;Http::STATUS_BAD_REQUEST|Http::STATUS_FORBIDDEN, array{error: string}, array{}&gt;</span>
+<span class="sd"> */</span>
+<span class="k">public</span> <span class="k">function</span> <span class="nf">someControllerMethod</span><span class="p">()</span> <span class="p">{</span>
+    <span class="o">...</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">...</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nx">DataResponse</span><span class="p">([</span><span class="s2">&quot;error&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;bad request&quot;</span><span class="p">],</span> <span class="nx">Http</span><span class="o">::</span><span class="na">STATUS_BAD_REQUEST</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">else</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nx">DataResponse</span><span class="p">([</span><span class="s2">&quot;error&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;forbidden&quot;</span><span class="p">],</span> <span class="nx">Http</span><span class="o">::</span><span class="na">STATUS_FORBIDDEN</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</details></section>
+<section id="do-not-use-the-addheader-method-for-setting-headers-for-your-responses">
+<h3>DO NOT use the <code class="docutils literal notranslate"><span class="pre">addHeader</span></code> method for setting headers for your responses<a class="headerlink" href="#do-not-use-the-addheader-method-for-setting-headers-for-your-responses" title="Link to this heading"></a></h3>
+<p>Right now it is not possible for psalm to trace headers you set this way, so they will not be validated by psalm.
+Use the <code class="docutils literal notranslate"><span class="pre">setHeaders</span></code> method instead.</p>
+<details class="summary-examples">
+<summary>Examples</summary><div class="literal-block-wrapper docutils container" id="id11">
+<div class="code-block-caption"><span class="caption-text">Bad</span><a class="headerlink" href="#id11" title="Link to this code"></a></div>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$response</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">DataResponse</span><span class="p">();</span>
+<span class="hll"><span class="nv">$response</span><span class="o">-&gt;</span><span class="na">addHeader</span><span class="p">(</span><span class="s2">&quot;X-My-Header&quot;</span><span class="p">,</span> <span class="s2">&quot;some value&quot;</span><span class="p">);</span>
+</span><span class="k">return</span> <span class="nv">$response</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id12">
+<div class="code-block-caption"><span class="caption-text">Good</span><a class="headerlink" href="#id12" title="Link to this code"></a></div>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$response</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">DataResponse</span><span class="p">();</span>
+<span class="hll"><span class="nv">$response</span><span class="o">-&gt;</span><span class="na">setHeaders</span><span class="p">([</span><span class="s2">&quot;X-My-Header&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;some value&quot;</span><span class="p">]);</span>
+</span><span class="k">return</span> <span class="nv">$response</span><span class="p">;</span>
+</pre></div>
+</div>
+</div>
+</details></section>
+<section id="consider-how-your-api-will-be-used">
+<h3>CONSIDER how your API will be used<a class="headerlink" href="#consider-how-your-api-will-be-used" title="Link to this heading"></a></h3>
+<p>When building your API you will probably only think about how to implement in the easiest or best way.
+You need to consider what your code implies to someone trying to use your API through the OpenAPI specification.</p>
+<p>One such example that appears in some apps are generic error handlers.
+They are great for your API implementation because you have an easy catch-all solution and you do not need to worry about handling every error correctly.
+They are not great for your OpenAPI documentation and consumers because they will find that every error can occur on every endpoint which is most often not correct.
+Instead you should implement manual error handling and only return the relevant errors where they can actually appear.
+You can still use helper methods with generic issue handlers where it makes sense, but only if all the controller methods that call the particular helper method actually throw the caught exceptions.</p>
+<details class="summary-examples">
+<summary>Examples</summary><div class="literal-block-wrapper docutils container" id="id13">
+<div class="code-block-caption"><span class="caption-text">Bad</span><a class="headerlink" href="#id13" title="Link to this code"></a></div>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="sd">/**</span>
+<span class="sd"> * @return DataResponse&lt;Http::STATUS_OK, array{message: string}, array{}&gt;|DataResponse&lt;Http::STATUS_FORBIDDEN|Http::STATUS_NOT_FOUND, array{error: string}, array{}&gt;</span>
+<span class="sd"> */</span>
+<span class="k">public</span> <span class="k">function</span> <span class="nf">someControllerMethod</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">handleError</span><span class="p">(</span><span class="k">function</span><span class="p">()</span> <span class="p">{</span>
+        <span class="o">...</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">...</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nx">PermissionError</span><span class="p">(</span><span class="s2">&quot;some error&quot;</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="o">...</span>
+        <span class="k">return</span> <span class="p">[</span><span class="s2">&quot;message&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;some message&quot;</span><span class="p">];</span>
+    <span class="p">});</span>
+<span class="p">}</span>
+
+<span class="sd">/**</span>
+<span class="sd"> * @template T</span>
+<span class="sd"> * @param Closure():T $callback</span>
+<span class="sd"> *</span>
+<span class="sd"> * @return DataResponse&lt;Http::STATUS_OK, T, array{}&gt;|DataResponse&lt;Http::STATUS_FORBIDDEN|Http::STATUS_NOT_FOUND, array{error: string}, array{}&gt;</span>
+<span class="sd"> */</span>
+<span class="k">private</span> <span class="k">function</span> <span class="nf">handleError</span><span class="p">(</span><span class="nx">Closure</span> <span class="nv">$callback</span><span class="p">)</span><span class="o">:</span> <span class="nx">DataResponse</span>  <span class="p">{</span>
+    <span class="k">try</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nx">DataResponse</span><span class="p">(</span><span class="nv">$callback</span><span class="p">());</span>
+    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">PermissionError</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$message</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;error&quot;</span> <span class="o">=&gt;</span> <span class="nv">$e</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">()];</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nx">DataResponse</span><span class="p">(</span><span class="nv">$message</span><span class="p">,</span> <span class="nx">Http</span><span class="o">::</span><span class="na">STATUS_FORBIDDEN</span><span class="p">);</span>
+    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">NotFoundError</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$message</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;error&quot;</span> <span class="o">=&gt;</span> <span class="nv">$e</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">()];</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nx">DataResponse</span><span class="p">(</span><span class="nv">$message</span><span class="p">,</span> <span class="nx">Http</span><span class="o">::</span><span class="na">STATUS_NOT_FOUND</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id14">
+<div class="code-block-caption"><span class="caption-text">Good</span><a class="headerlink" href="#id14" title="Link to this code"></a></div>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="sd">/**</span>
+<span class="sd"> * @return DataResponse&lt;Http::STATUS_OK, array{message: string}, array{}&gt;|DataResponse&lt;Http::STATUS_FORBIDDEN, array{error: string}, array{}&gt;</span>
+<span class="sd"> */</span>
+<span class="k">public</span> <span class="k">function</span> <span class="nf">someControllerMethod</span><span class="p">()</span> <span class="p">{</span>
+    <span class="k">try</span> <span class="p">{</span>
+        <span class="o">...</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">...</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nx">PermissionError</span><span class="p">(</span><span class="s2">&quot;some error&quot;</span><span class="p">);</span>
+        <span class="p">}</span>
+        <span class="o">...</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nx">DataResponse</span><span class="p">([</span><span class="s2">&quot;message&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;some message&quot;</span><span class="p">]);</span>
+    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">PermissionError</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$message</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;error&quot;</span> <span class="o">=&gt;</span> <span class="nv">$e</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">()];</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nx">DataResponse</span><span class="p">(</span><span class="nv">$message</span><span class="p">,</span> <span class="nx">Http</span><span class="o">::</span><span class="na">STATUS_FORBIDDEN</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</details></section>
+<section id="do-set-all-descriptions-for-parameters-and-methods">
+<h3>DO set all descriptions for parameters and methods<a class="headerlink" href="#do-set-all-descriptions-for-parameters-and-methods" title="Link to this heading"></a></h3>
+<p>It improves the documentation and makes it easier to understand what your API does.</p>
+<p>You can also set descriptions for Controllers.
+Those will be included in the specification.
+There you can explain what the APIs in the controller do or give examples an how to use multiple API endpoints together.</p>
+<details class="summary-examples">
+<summary>Examples</summary><div class="literal-block-wrapper docutils container" id="id15">
+<div class="code-block-caption"><span class="caption-text">Bad</span><a class="headerlink" href="#id15" title="Link to this code"></a></div>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">SomeController</span> <span class="k">extends</span> <span class="nx">OCSController</span> <span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * @return DataResponse&lt;Http::STATUS_OK, array{name: string}, array{}&gt;</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">someControllerMethod</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$id</span><span class="p">)</span> <span class="p">{</span>
+        <span class="o">...</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nx">DataResponse</span><span class="p">([</span><span class="s2">&quot;name&quot;</span> <span class="o">=&gt;</span> <span class="nx">name</span><span class="p">],</span> <span class="nx">Http</span><span class="o">::</span><span class="na">STATUS_CREATED</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+<div class="literal-block-wrapper docutils container" id="id16">
+<div class="code-block-caption"><span class="caption-text">Good</span><a class="headerlink" href="#id16" title="Link to this code"></a></div>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="sd">/**</span>
+<span class="sd"> * Here you can put some explanations about all the endpoints or example code.</span>
+<span class="sd"> */</span>
+<span class="k">class</span> <span class="nc">SomeController</span> <span class="k">extends</span> <span class="nx">OCSController</span> <span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="sd">     * Here you give a short summary of the method</span>
+<span class="sd">     *</span>
+<span class="sd">     * Here you can give even more details about your method</span>
+<span class="sd">     * and how you can use it.</span>
+<span class="sd">     *</span>
+<span class="sd">     * @param int $id Here you can describe your parameter</span>
+<span class="sd">     *</span>
+<span class="sd">     * @return DataResponse&lt;Http::STATUS_OK, array{name: string}, array{}&gt;</span>
+<span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">someControllerMethod</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$id</span><span class="p">)</span> <span class="p">{</span>
+        <span class="o">...</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nx">DataResponse</span><span class="p">([</span><span class="s2">&quot;name&quot;</span> <span class="o">=&gt;</span> <span class="nx">name</span><span class="p">],</span> <span class="nx">Http</span><span class="o">::</span><span class="na">STATUS_CREATED</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</details></section>
+</section>
+<section id="how-to-add-openapi-support-to-your-ocs-api">
+<h2>How to add OpenAPI support to your OCS API<a class="headerlink" href="#how-to-add-openapi-support-to-your-ocs-api" title="Link to this heading"></a></h2>
+<p>Let’s imagine you built a Todo list app for Nextcloud and have the following controller:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">TodoApiController</span> <span class="k">extends</span> <span class="nx">OCSController</span> <span class="p">{</span>
+    <span class="p">#[</span><span class="nd">NoAdminRequired</span><span class="p">]</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">create</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$title</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$description</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$image</span> <span class="o">=</span> <span class="k">null</span><span class="p">)</span><span class="o">:</span> <span class="nx">DataResponse</span> <span class="p">{</span>
+        <span class="nv">$todo</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">service</span><span class="o">-&gt;</span><span class="na">createTodo</span><span class="p">(</span><span class="nv">$title</span><span class="p">,</span> <span class="nv">$description</span><span class="p">,</span> <span class="nv">$image</span><span class="p">);</span>
+
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">formatTodo</span><span class="p">(</span><span class="nv">$todo</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="p">#[</span><span class="nd">NoAdminRequired</span><span class="p">]</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">get</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$id</span><span class="p">)</span><span class="o">:</span> <span class="nx">DataResponse</span> <span class="p">{</span>
+        <span class="k">try</span> <span class="p">{</span>
+            <span class="nv">$todo</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">service</span><span class="o">-&gt;</span><span class="na">getTodo</span><span class="p">(</span><span class="nv">$id</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">NotFoundException</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="k">new</span> <span class="nx">DataResponse</span><span class="p">([</span><span class="s2">&quot;error&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Todo not found&quot;</span><span class="p">],</span> <span class="nx">Http</span><span class="o">::</span><span class="na">STATUS_NOT_FOUND</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">formatTodo</span><span class="p">(</span><span class="nv">$todo</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="p">#[</span><span class="nd">NoAdminRequired</span><span class="p">]</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">update</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$id</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$etag</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$title</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$description</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$image</span> <span class="o">=</span> <span class="k">null</span><span class="p">)</span><span class="o">:</span> <span class="nx">DataResponse</span> <span class="p">{</span>
+        <span class="k">try</span> <span class="p">{</span>
+            <span class="nv">$todo</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">service</span><span class="o">-&gt;</span><span class="na">updateTodo</span><span class="p">(</span><span class="nv">$id</span><span class="p">,</span> <span class="nv">$etag</span><span class="p">,</span> <span class="nv">$title</span><span class="p">,</span> <span class="nv">$description</span><span class="p">,</span> <span class="nv">$image</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">NotFoundException</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="k">new</span> <span class="nx">DataResponse</span><span class="p">([</span><span class="s2">&quot;error&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Todo not found&quot;</span><span class="p">],</span> <span class="nx">Http</span><span class="o">::</span><span class="na">STATUS_NOT_FOUND</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">ForbiddenException</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="k">new</span> <span class="nx">DataResponse</span><span class="p">([</span><span class="s2">&quot;error&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;ETag does not match&quot;</span><span class="p">],</span> <span class="nx">Http</span><span class="o">::</span><span class="na">STATUS_BAD_REQUEST</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">formatTodo</span><span class="p">(</span><span class="nv">$todo</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="p">#[</span><span class="nd">NoAdminRequired</span><span class="p">]</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">delete</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$id</span><span class="p">)</span><span class="o">:</span> <span class="nx">DataResponse</span> <span class="p">{</span>
+        <span class="k">try</span> <span class="p">{</span>
+            <span class="nv">$todo</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">service</span><span class="o">-&gt;</span><span class="na">deleteTodo</span><span class="p">(</span><span class="nv">$id</span><span class="p">);</span>
+        <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">NotFoundException</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="k">new</span> <span class="nx">DataResponse</span><span class="p">([</span><span class="s2">&quot;error&quot;</span> <span class="o">=&gt;</span> <span class="s2">&quot;Todo not found&quot;</span><span class="p">],</span> <span class="nx">Http</span><span class="o">::</span><span class="na">STATUS_NOT_FOUND</span><span class="p">);</span>
+        <span class="p">}</span>
+
+        <span class="k">return</span> <span class="k">new</span> <span class="nx">DataResponse</span><span class="p">(</span><span class="k">null</span><span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">private</span> <span class="k">function</span> <span class="nf">formatTodo</span><span class="p">(</span><span class="nx">Todo</span> <span class="nv">$todo</span><span class="p">)</span><span class="o">:</span> <span class="nx">DataResponse</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="k">new</span> <span class="nx">DataResponse</span><span class="p">([</span>
+            <span class="s2">&quot;id&quot;</span> <span class="o">=&gt;</span> <span class="nv">$todo</span><span class="o">-&gt;</span><span class="na">id</span><span class="p">,</span>
+            <span class="s2">&quot;title&quot;</span> <span class="o">=&gt;</span> <span class="nv">$todo</span><span class="o">-&gt;</span><span class="na">title</span><span class="p">,</span>
+            <span class="s2">&quot;description&quot;</span> <span class="o">=&gt;</span> <span class="nv">$todo</span><span class="o">-&gt;</span><span class="na">description</span><span class="p">,</span>
+            <span class="s2">&quot;image&quot;</span> <span class="o">=&gt;</span> <span class="nv">$todo</span><span class="o">-&gt;</span><span class="na">image</span><span class="p">,</span>
+        <span class="p">],</span> <span class="nx">Http</span><span class="o">::</span><span class="na">STATUS_OK</span><span class="p">,</span> <span class="p">[</span>
+            <span class="s2">&quot;ETag&quot;</span> <span class="o">=&gt;</span> <span class="nv">$todo</span><span class="o">-&gt;</span><span class="na">etag</span><span class="p">,</span>
+        <span class="p">]);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>What you want to do now is to firstly create the correct parameter annotations and add descriptions. It could look like this:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="sd">/**</span>
+<span class="sd"> * Create a new Todo</span>
+<span class="sd"> *</span>
+<span class="sd"> * @param string $title The title of the new Todo item</span>
+<span class="sd"> * @param string|null $description The description of the new Todo item. Can be left empty</span>
+<span class="sd"> * @param string|null $image The base64-encoded image of the new Todo item. Can be left empty</span>
+<span class="sd"> */</span>
+<span class="p">#[</span><span class="nd">NoAdminRequired</span><span class="p">]</span>
+<span class="k">public</span> <span class="k">function</span> <span class="nf">create</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$title</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$description</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$image</span> <span class="o">=</span> <span class="k">null</span><span class="p">)</span><span class="o">:</span> <span class="nx">DataResponse</span> <span class="p">{</span>
+    <span class="o">...</span>
+<span class="p">}</span>
+
+<span class="sd">/**</span>
+<span class="sd"> * Get a Todo item</span>
+<span class="sd"> *</span>
+<span class="sd"> * @param int $id ID of the Todo item</span>
+<span class="sd"> */</span>
+<span class="p">#[</span><span class="nd">NoAdminRequired</span><span class="p">]</span>
+<span class="k">public</span> <span class="k">function</span> <span class="nf">get</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$id</span><span class="p">)</span><span class="o">:</span> <span class="nx">DataResponse</span> <span class="p">{</span>
+    <span class="o">...</span>
+<span class="p">}</span>
+
+<span class="sd">/**</span>
+<span class="sd"> * Update a Todo item</span>
+<span class="sd"> *</span>
+<span class="sd"> * @param int $id ID of the Todo item</span>
+<span class="sd"> * @param string $etag ETag of the Todo item. If it does not match the ETag that is stored on the server the request will be rejected</span>
+<span class="sd"> * @param string|null $title The new title of the Todo item. Can be left empty to not update the title</span>
+<span class="sd"> * @param string|null $description The new description of the Todo item. Can be left empty to not update the description</span>
+<span class="sd"> * @param string|null $image The new base64-encoded image of the Todo item. Can be left empty to not update the image</span>
+<span class="sd"> */</span>
+<span class="p">#[</span><span class="nd">NoAdminRequired</span><span class="p">]</span>
+<span class="k">public</span> <span class="k">function</span> <span class="nf">update</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$id</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$etag</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$title</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$description</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$image</span> <span class="o">=</span> <span class="k">null</span><span class="p">)</span><span class="o">:</span> <span class="nx">DataResponse</span> <span class="p">{</span>
+    <span class="o">...</span>
+<span class="p">}</span>
+
+<span class="sd">/**</span>
+<span class="sd"> * Delete a Todo item</span>
+<span class="sd"> *</span>
+<span class="sd"> * @param int $id ID of the Todo item</span>
+<span class="sd"> */</span>
+<span class="p">#[</span><span class="nd">NoAdminRequired</span><span class="p">]</span>
+<span class="k">public</span> <span class="k">function</span> <span class="nf">delete</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$id</span><span class="p">)</span><span class="o">:</span> <span class="nx">DataResponse</span> <span class="p">{</span>
+    <span class="o">...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The next step is to add the return types.
+This is the most important step to get your API documented.</p>
+<p>It is best to start with helper methods that are used multiple times like the <code class="docutils literal notranslate"><span class="pre">formatTodo</span></code> method in this example:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="sd">/**</span>
+<span class="sd"> * @return DataResponse&lt;Http::STATUS_OK, array{id: int, title: string, description: ?string, image: ?string}, array{ETag: string}&gt;</span>
+<span class="sd"> */</span>
+<span class="k">private</span> <span class="k">function</span> <span class="nf">formatTodo</span><span class="p">(</span><span class="nx">Todo</span> <span class="nv">$todo</span><span class="p">)</span><span class="o">:</span> <span class="nx">DataResponse</span><span class="p">()</span> <span class="p">{</span>
+    <span class="o">...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Afterwards you can add the return types to all the other methods.
+If two different status codes return the same data structure and headers, you can use the union operator to indicate it: <code class="docutils literal notranslate"><span class="pre">Http::STATUS_BAD_REQUEST|Http::STATUS_NOT_FOUND</span></code>.</p>
+<p>You are required to add a description for every status code returned by the method.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="sd">/**</span>
+<span class="sd"> * ...</span>
+<span class="sd"> *</span>
+<span class="sd"> * @return DataResponse&lt;Http::STATUS_OK, array{id: int, title: string, description: ?string, image: ?string}, array{ETag: string}&gt;</span>
+<span class="sd"> *</span>
+<span class="sd"> * 200: Todo item created</span>
+<span class="sd"> */</span>
+<span class="p">#[</span><span class="nd">NoAdminRequired</span><span class="p">]</span>
+<span class="k">public</span> <span class="k">function</span> <span class="nf">create</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$title</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$description</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$image</span> <span class="o">=</span> <span class="k">null</span><span class="p">)</span><span class="o">:</span> <span class="nx">DataResponse</span> <span class="p">{</span>
+    <span class="o">...</span>
+<span class="p">}</span>
+
+<span class="sd">/**</span>
+<span class="sd"> * ...</span>
+<span class="sd"> *</span>
+<span class="sd"> * @return DataResponse&lt;Http::STATUS_OK, array{id: int, title: string, description: ?string, image: ?string}, array{ETag: string}&gt;|DataResponse&lt;Http::STATUS_NOT_FOUND, array{error: string}, array{}&gt;</span>
+<span class="sd"> *</span>
+<span class="sd"> * 200: Todo item returned</span>
+<span class="sd"> * 404: Todo item not found</span>
+<span class="sd"> */</span>
+<span class="p">#[</span><span class="nd">NoAdminRequired</span><span class="p">]</span>
+<span class="k">public</span> <span class="k">function</span> <span class="nf">get</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$id</span><span class="p">)</span><span class="o">:</span> <span class="nx">DataResponse</span> <span class="p">{</span>
+    <span class="o">...</span>
+<span class="p">}</span>
+
+<span class="sd">/**</span>
+<span class="sd"> * ...</span>
+<span class="sd"> *</span>
+<span class="sd"> * @return DataResponse&lt;Http::STATUS_OK, array{id: int, title: string, description: ?string, image: ?string}, array{ETag: string}&gt;|DataResponse&lt;Http::STATUS_BAD_REQUEST|Http::STATUS_NOT_FOUND, array{error: string}, array{}&gt;</span>
+<span class="sd"> *</span>
+<span class="sd"> * 200: Todo item created</span>
+<span class="sd"> * 400: ETag of the Todo item does not match</span>
+<span class="sd"> * 404: Todo item not found</span>
+<span class="sd"> */</span>
+<span class="p">#[</span><span class="nd">NoAdminRequired</span><span class="p">]</span>
+<span class="k">public</span> <span class="k">function</span> <span class="nf">update</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$id</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$etag</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$title</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$description</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$image</span> <span class="o">=</span> <span class="k">null</span><span class="p">)</span><span class="o">:</span> <span class="nx">DataResponse</span> <span class="p">{</span>
+    <span class="o">...</span>
+<span class="p">}</span>
+
+<span class="sd">/**</span>
+<span class="sd"> * ...</span>
+<span class="sd"> *</span>
+<span class="sd"> * @return DataResponse&lt;Http::STATUS_OK, null, array{}&gt;|DataResponse&lt;Http::STATUS_NOT_FOUND, array{error: string}, array{}&gt;</span>
+<span class="sd"> *</span>
+<span class="sd"> * 200: Todo item deleted</span>
+<span class="sd"> * 404: Todo item not found</span>
+<span class="sd"> */</span>
+<span class="p">#[</span><span class="nd">NoAdminRequired</span><span class="p">]</span>
+<span class="k">public</span> <span class="k">function</span> <span class="nf">delete</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$id</span><span class="p">)</span><span class="o">:</span> <span class="nx">DataResponse</span> <span class="p">{</span>
+    <span class="o">...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="how-to-add-response-definitions-to-share-type-definitions">
+<h2>How to add response definitions to share type definitions<a class="headerlink" href="#how-to-add-response-definitions-to-share-type-definitions" title="Link to this heading"></a></h2>
+<p>In the previous steps we have been reusing the same data structure multiple times, but it was copied every time.
+This is tedious and error prone, therefore we want to create some shared type definitions.
+Create a new file called <code class="docutils literal notranslate"><span class="pre">ResponseDefinitions.php</span></code> in the <code class="docutils literal notranslate"><span class="pre">lib</span></code> folder of your app.
+It will only work with that file name at that location.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="sd">/**</span>
+<span class="sd"> * @psalm-type TodoItem = array{</span>
+<span class="sd"> *     id: int,</span>
+<span class="sd"> *     title: string,</span>
+<span class="sd"> *     description: ?string,</span>
+<span class="sd"> *     image: ?string,</span>
+<span class="sd"> * }</span>
+<span class="sd"> */</span>
+<span class="k">class</span> <span class="nc">ResponseDefinitions</span> <span class="p">{}</span>
+</pre></div>
+</div>
+<p>The name of every type definition has to start with the app ID.</p>
+<p>To import and use the type definition you have to import it in your controller:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="sd">/**</span>
+<span class="hll"><span class="sd"> * @psalm-import-type TodoItem from ResponseDefinitions</span>
+</span><span class="sd"> */</span>
+<span class="k">class</span> <span class="nc">TodoApiController</span> <span class="k">extends</span> <span class="nx">OCSController</span> <span class="p">{</span>
+    <span class="o">...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Now you can replace every occurrence of <code class="docutils literal notranslate"><span class="pre">array{id:</span> <span class="pre">int,</span> <span class="pre">title:</span> <span class="pre">string,</span> <span class="pre">description:</span> <span class="pre">?string,</span> <span class="pre">image:</span> <span class="pre">?string}</span></code> with <code class="docutils literal notranslate"><span class="pre">TodoItem</span></code>.</p>
+</section>
+<section id="how-to-handle-exceptions">
+<h2>How to handle exceptions<a class="headerlink" href="#how-to-handle-exceptions" title="Link to this heading"></a></h2>
+<p>Sometimes you want to end with an exception instead of returning a response.
+For this example our <code class="docutils literal notranslate"><span class="pre">update</span></code> will throw an exception when the ETag does not match:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="p">#[</span><span class="nd">NoAdminRequired</span><span class="p">]</span>
+<span class="k">public</span> <span class="k">function</span> <span class="nf">update</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$id</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$etag</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$title</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$description</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$image</span> <span class="o">=</span> <span class="k">null</span><span class="p">)</span><span class="o">:</span> <span class="nx">DataResponse</span> <span class="p">{</span>
+    <span class="o">...</span>
+    <span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">ForbiddenException</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">throw</span> <span class="k">new</span> <span class="nx">OCSBadRequestException</span><span class="p">(</span><span class="s2">&quot;ETag does not match&quot;</span><span class="p">);</span>
+    <span class="p">}</span>
+    <span class="o">...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Adding the correct annotation works like this:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="sd">/**</span>
+<span class="sd"> * ...</span>
+<span class="sd"> *</span>
+<span class="hll"><span class="sd"> * @throws OCSBadRequestException ETag of the Todo item does not match</span>
+</span><span class="sd"> */</span>
+<span class="p">#[</span><span class="nd">NoAdminRequired</span><span class="p">]</span>
+<span class="k">public</span> <span class="k">function</span> <span class="nf">update</span><span class="p">(</span><span class="nx">int</span> <span class="nv">$id</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$etag</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$title</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$description</span> <span class="o">=</span> <span class="k">null</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$image</span> <span class="o">=</span> <span class="k">null</span><span class="p">)</span><span class="o">:</span> <span class="nx">DataResponse</span> <span class="p">{</span>
+    <span class="o">...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The description after the exception class name works exactly like the description for the status codes we added earlier.
+Note that you should only used OCS*Exceptions, as any other Exception will result in a plain text body instead of JSON.</p>
+</section>
+<section id="how-to-ignore-certain-endpoints">
+<h2>How to ignore certain endpoints<a class="headerlink" href="#how-to-ignore-certain-endpoints" title="Link to this heading"></a></h2>
+<p>The tool already ignores all the endpoints that are not reachable from the outside, but some apps have reachable endpoints that are not APIs (e.g. serving some HTML).
+To ignore those you can add the <code class="docutils literal notranslate"><span class="pre">#[OpenAPI(scope:</span> <span class="pre">OpenAPI::SCOPE_IGNORE)]</span></code> attribute or if you still support PHP 7 the <code class="docutils literal notranslate"><span class="pre">&#64;IgnoreOpenAPI</span></code> annotation to the controller method or the controller class:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="sd">/**</span>
+<span class="sd"> * ...</span>
+<span class="sd"> *</span>
+<span class="hll"><span class="sd"> * @IgnoreOpenAPI</span>
+</span><span class="sd"> */</span>
+<span class="hll"><span class="p">#[</span><span class="nd">OpenAPI</span><span class="p">(</span><span class="nx">scope</span><span class="o">:</span> <span class="nx">OpenAPI</span><span class="o">::</span><span class="na">SCOPE_IGNORE</span><span class="p">)]</span>
+</span><span class="p">#[</span><span class="nd">NoAdminRequired</span><span class="p">]</span>
+<span class="k">public</span> <span class="k">function</span> <span class="nf">show</span><span class="p">()</span><span class="o">:</span> <span class="nx">TemplateResponse</span> <span class="p">{</span>
+    <span class="o">...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="how-to-expose-capabilities">
+<h2>How to expose Capabilities<a class="headerlink" href="#how-to-expose-capabilities" title="Link to this heading"></a></h2>
+<p>Imagine we take the same Todo app of the previous example and want to expose some capabilities to let clients know what they can expect.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Capabilities</span> <span class="k">implements</span> <span class="nx">ICapability</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getCapabilities</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="p">[</span>
+            <span class="s2">&quot;todo&quot;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+                <span class="s2">&quot;supported-operations&quot;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s2">&quot;create&quot;</span><span class="p">,</span> <span class="s2">&quot;read&quot;</span><span class="p">,</span> <span class="s2">&quot;update&quot;</span><span class="p">,</span> <span class="s2">&quot;delete&quot;</span><span class="p">],</span>
+                <span class="s2">&quot;emojis-supported&quot;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+            <span class="p">],</span>
+        <span class="p">];</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Now you have to add the correct return type annotation:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Capabilities</span> <span class="k">implements</span> <span class="nx">ICapability</span> <span class="p">{</span>
+    <span class="sd">/**</span>
+<span class="hll"><span class="sd">     * @return array{todo: array{supported-operations: list&lt;string&gt;, emojis-supported: bool}}</span>
+</span><span class="sd">     */</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">getCapabilities</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="p">[</span>
+            <span class="s2">&quot;todo&quot;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+                <span class="s2">&quot;supported-operations&quot;</span> <span class="o">=&gt;</span> <span class="p">[</span><span class="s2">&quot;create&quot;</span><span class="p">,</span> <span class="s2">&quot;read&quot;</span><span class="p">,</span> <span class="s2">&quot;update&quot;</span><span class="p">,</span> <span class="s2">&quot;delete&quot;</span><span class="p">],</span>
+                <span class="s2">&quot;emojis-supported&quot;</span> <span class="o">=&gt;</span> <span class="k">true</span><span class="p">,</span>
+            <span class="p">],</span>
+        <span class="p">];</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The capabilities will automatically appear in the generated specification.</p>
+</section>
+<section id="scopes">
+<h2>Scopes<a class="headerlink" href="#scopes" title="Link to this heading"></a></h2>
+<p>In some cases a consumer of the API might not want or need to implement all APIs your app offers.
+Examples are federation between apps on different servers, administration related endpoints, and more.
+The default client which should implement the main functionality is called <code class="docutils literal notranslate"><span class="pre">OpenAPI::SCOPE_DEFAULT</span></code>.
+Constants are available in <code class="docutils literal notranslate"><span class="pre">OCP\AppFramework\Http\Attribute\OpenAPI::SCOPE_*</span></code> for better cross-app experience.
+A controller and methods can have multiple scopes, however when a method has the attribute set,
+all scopes from the controller are ignored.</p>
+<p>Methods that require admin permissions due to missing <code class="docutils literal notranslate"><span class="pre">#[NoAdminRequired]</span></code> or <code class="docutils literal notranslate"><span class="pre">#[PublicPage]</span></code> attribute or the
+matching annotation, default to the <code class="docutils literal notranslate"><span class="pre">OpenAPI::SCOPE_ADMINISTRATION</span></code> scope.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="p">#[</span><span class="nd">OpenAPI</span><span class="p">(</span><span class="nx">scope</span><span class="o">:</span> <span class="nx">OpenAPI</span><span class="o">::</span><span class="na">SCOPE_ADMINISTRATION</span><span class="p">)]</span>
+<span class="p">#[</span><span class="nd">OpenAPI</span><span class="p">(</span><span class="nx">scope</span><span class="o">:</span> <span class="nx">OpenAPI</span><span class="o">::</span><span class="na">SCOPE_FEDERATION</span><span class="p">)]</span>
+<span class="p">#[</span><span class="nd">OpenAPI</span><span class="p">(</span><span class="nx">scope</span><span class="o">:</span> <span class="nx">OpenAPI</span><span class="o">::</span><span class="na">SCOPE_DEFAULT</span><span class="p">)]</span>
+<span class="p">#[</span><span class="nd">OpenAPI</span><span class="p">(</span><span class="nx">scope</span><span class="o">:</span> <span class="s1">&#39;myscope&#39;</span><span class="p">)]</span>
+<span class="k">public</span> <span class="k">function</span> <span class="nf">show</span><span class="p">()</span><span class="o">:</span> <span class="nx">TemplateResponse</span> <span class="p">{</span>
+    <span class="o">...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The different scopes will be saved as <code class="docutils literal notranslate"><span class="pre">openapi.json</span></code> for the default scope and <code class="docutils literal notranslate"><span class="pre">openapi-{scope}.json</span></code> for the others.</p>
+<section id="tags">
+<h3>Tags<a class="headerlink" href="#tags" title="Link to this heading"></a></h3>
+<p>To organize the API endpoints within a scope, tags can be used to group them. By default the controller name is used.
+Tags can also differ between different scopes.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="p">#[</span><span class="nd">OpenAPI</span><span class="p">(</span><span class="nx">scope</span><span class="o">:</span> <span class="nx">OpenAPI</span><span class="o">::</span><span class="na">SCOPE_DEFAULT</span><span class="p">,</span> <span class="nx">tags</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;mytag1&#39;</span><span class="p">])]</span>
+<span class="p">#[</span><span class="nd">OpenAPI</span><span class="p">(</span><span class="nx">scope</span><span class="o">:</span> <span class="nx">OpenAPI</span><span class="o">::</span><span class="na">SCOPE_ADMINISTRATION</span><span class="p">,</span> <span class="nx">tags</span><span class="o">:</span> <span class="p">[</span><span class="s1">&#39;settings&#39;</span><span class="p">,</span> <span class="s1">&#39;custom2&#39;</span><span class="p">])]</span>
+<span class="k">public</span> <span class="k">function</span> <span class="nf">saveSettings</span><span class="p">()</span><span class="o">:</span> <span class="nx">TemplateResponse</span> <span class="p">{</span>
+    <span class="o">...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="how-to-generate-the-specification">
+<h2>How to generate the specification<a class="headerlink" href="#how-to-generate-the-specification" title="Link to this heading"></a></h2>
+<p>If you followed the installation instructions for openapi-extractor you can run <code class="docutils literal notranslate"><span class="pre">composer</span> <span class="pre">exec</span> <span class="pre">generate-spec</span></code> in your
+apps root folder and you will have a new file called <code class="docutils literal notranslate"><span class="pre">openapi.json</span></code> (depending on the used scopes).
+If the tool fails somewhere it will tell you what is wrong and often times also how to fix the problem.
+Additionally you should run psalm to check for any problems.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="OCS API" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="ocs-api-overview.html" class="btn btn-neutral float-right" title="OCS APIs overview" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2026 Nextcloud GmbH.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Versions</dt>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/latest/developer_manual"
+             
+             style="color: var(--dark-link-color);"
+             
+          >
+            latest
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/stable/developer_manual"
+             
+          >
+            stable
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/29/developer_manual"
+             
+          >
+            29
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/28/developer_manual"
+             
+          >
+            28
+          </a>
+        </dd>
+        
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
