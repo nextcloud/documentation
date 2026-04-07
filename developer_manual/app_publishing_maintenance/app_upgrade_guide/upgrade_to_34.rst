@@ -57,6 +57,8 @@ Added APIs
 
 - ``\OCP\DB\QueryBuilder\ITypedQueryBuilder`` is added in favour of ``\OCP\DB\QueryBuilder\IQueryBuilder`` and can be accessed through ``\OCP\IDBConnection::getTypedQueryBuilder``.
   This query builder has the benefit of accurately returning the selected columns in a query result, increasing type safety.
+- ``\OCP\Talk\IConversationOptions`` has been extended, to allow defining the newly created conversation as related to a meeting with it's start and end date.
+  The information is used by Talk to automatically clean up such conversations after a given time.
 
 Changed APIs
 ^^^^^^^^^^^^
