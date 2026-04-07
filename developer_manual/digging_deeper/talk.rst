@@ -56,10 +56,18 @@ It's possible to adjust the defaults.
     /** @var \OCP\IUser $alice */
     /** @var \OCP\IUser $bob */
     $options = $broker->newConversationOptions();
+    $options->setPublic();
+
+    // Added in Nextcloud 32.0.9, 33.0.3 and 34.0.0
+    $options->setMeetingDate(
+        $this->timeFactory->getDateTime(new \DateTime('2026-04-07 13:00')),
+        $this->timeFactory->getDateTime(new \DateTime('2026-04-07 14:00')),
+    );
+
     $conversation = $broker->createConversation(
         'Weekly 1:1',
         [$alice, $bob],
-        $broker->newConversationOptions()->setPublic()
+        $options
     );
 
 Delete a conversation
