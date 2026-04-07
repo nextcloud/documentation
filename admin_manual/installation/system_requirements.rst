@@ -18,7 +18,7 @@ For best performance, stability and functionality we have documented some recomm
 | (64-bit)         | - Ubuntu 22.04 LTS                                                    |
 |                  | - **Red Hat Enterprise Linux 10** (recommended)                       |
 |                  | - Red Hat Enterprise Linux 9                                          |
-|                  | - Debian 13 (Trixi)                                                   |
+|                  | - Debian 13 (Trixie)                                                   |
 |                  | - Debian 12 (Bookworm)                                                |
 |                  | - SUSE Linux Enterprise Server 16                                     |
 |                  | - SUSE Linux Enterprise Server 15 SP6 (or later)                      |
