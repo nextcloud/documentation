@@ -15,10 +15,43 @@ concurrency:
   cancel-in-progress: true
 
 jobs:
+  setup-latex-cache:
+    name: Cache LaTeX packages
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Configure apt cache
+        run: |
+          mkdir -p ${{ runner.temp }}/.cache/archives
+          echo 'Dir::Cache::archives "${{ runner.temp }}/.cache/archives";' | sudo tee /etc/apt/apt.conf.d/apt-cache-tmp
+
+      - name: Cache LaTeX apt packages
+        id: cache-latex-apt
+        uses: actions/cache@668228422ae6a00e4ad889ee87cd7109ec5666a7 # v5.0.4
+        with:
+          path: ${{ runner.temp }}/.cache/archives
+          key: latex-apt-${{ runner.os }}-${{ runner.arch }}-ubuntu-24.04-texlive-2023
+          restore-keys: |
+            latex-apt-${{ runner.os }}-${{ runner.arch }}-ubuntu-24.04-
+            latex-apt-${{ runner.os }}-${{ runner.arch }}-
+
+      - name: Download LaTeX packages (cache miss only)
+        if: steps.cache-latex-apt.outputs.cache-hit != 'true'
+        run: |
+          sudo DEBIAN_FRONTEND=noninteractive apt-get update
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+            --download-only \
+            python3-pil python3-pip texlive-fonts-recommended latexmk \
+            texlive-latex-extra texlive-latex-recommended texlive-xetex \
+            texlive-fonts-extra-links texlive-fonts-extra xindy
+          # Ensure downloaded packages are owned by the current user so they can be cached
+          sudo chown -R $(id -u):$(id -g) ${{ runner.temp }}/.cache/archives
+
   build:
 
     name: Build ${{ matrix.manual.name }}
     runs-on: ubuntu-latest
+    needs: setup-latex-cache
 
     strategy:
       matrix:
@@ -62,42 +95,6 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
 
-    - name: Configure apt cache to use /dev/shm
-      if: ${{ matrix.manual.build_pdf_path }}
-      run: |
-        mkdir -p /dev/shm/apt/cache/archives
-        echo 'Dir::Cache::archives "/dev/shm/apt/cache/archives";' | sudo tee /etc/apt/apt.conf.d/apt-cache-shm
-
-    - name: Cache LaTeX apt packages
-      if: ${{ matrix.manual.build_pdf_path }}
-      uses: actions/cache@668228422ae6a00e4ad889ee87cd7109ec5666a7 # v5.0.4
-      with:
-        path: /dev/shm/apt/cache/archives
-        key: latex-apt-${{ runner.os }}-${{ hashFiles('.github/workflows/sphinxbuild.yml') }}
-        restore-keys: |
-          latex-apt-${{ runner.os }}-
-
-    - name: Install LaTeX dependencies
-      if: ${{ matrix.manual.build_pdf_path }}
-      run: |
-        sudo DEBIAN_FRONTEND=noninteractive apt-get update
-        sudo DEBIAN_FRONTEND=noninteractive apt-get install -y \
-          --no-install-recommends \
-          python3-pil \
-          python3-pip \
-          texlive-fonts-recommended \
-          latexmk \
-          texlive-latex-extra \
-          texlive-latex-recommended \
-          texlive-xetex \
-          texlive-fonts-extra-links \
-          texlive-fonts-extra \
-          xindy
-
-    - name: Fix apt cache ownership for caching
-      if: ${{ matrix.manual.build_pdf_path }}
-      run: sudo chown -R $(id -u):$(id -g) /dev/shm/apt/cache/archives
-
     - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
       with:
         python-version: '3.12'
@@ -105,6 +102,33 @@ jobs:
 
     - name: Install pip dependencies
       run: pip install -r requirements.txt
+
+    - name: Configure apt cache
+      if: ${{ matrix.manual.build_pdf_path }}
+      run: |
+        mkdir -p ${{ runner.temp }}/.cache/archives
+        echo 'Dir::Cache::archives "${{ runner.temp }}/.cache/archives";' | sudo tee /etc/apt/apt.conf.d/apt-cache-tmp
+
+    - name: Restore LaTeX apt cache
+      if: ${{ matrix.manual.build_pdf_path }}
+      uses: actions/cache/restore@668228422ae6a00e4ad889ee87cd7109ec5666a7 # v5.0.4
+      with:
+        # Use relative path https://github.com/actions/cache/issues/1127
+        path: ${{ runner.temp }}/.cache/archives
+        key: latex-apt-${{ runner.os }}-${{ runner.arch }}-ubuntu-24.04-texlive-2023
+        restore-keys: |
+          latex-apt-${{ runner.os }}-${{ runner.arch }}-ubuntu-24.04-
+          latex-apt-${{ runner.os }}-${{ runner.arch }}-
+
+    - name: Install LaTeX from cache
+      if: ${{ matrix.manual.build_pdf_path }}
+      run: |
+        sudo DEBIAN_FRONTEND=noninteractive apt-get update
+        sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+          --no-download \
+          python3-pil python3-pip texlive-fonts-recommended latexmk \
+          texlive-latex-extra texlive-latex-recommended texlive-xetex \
+          texlive-fonts-extra-links texlive-fonts-extra xindy
 
     - name: Build html documentation
       run: cd ${{ matrix.manual.directory }} && make ${{ matrix.manual.make_target }}
