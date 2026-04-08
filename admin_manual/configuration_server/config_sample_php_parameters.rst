@@ -2175,7 +2175,8 @@ Activities in Team Folders and External Storages.
 By default, activities in team folders or external storages are only generated
 for the current user. This is due to a limitations in current implementations.
 This config flag makes activities in group folders and external storages work
-like in normal shares (when set to ``true``).
+like in normal shares (when set to ``true``). Setting this flag does not allow
+past activities to be displayed (no retroactivity).
 
 
 
@@ -3653,7 +3654,7 @@ minimum.supported.desktop.version
 
 ::
 
-	'minimum.supported.desktop.version' => '3.1.81',
+	'minimum.supported.desktop.version' => '3.1.83',
 
 Specify the minimum Nextcloud desktop client version allowed to sync with this
 server. Connections from earlier clients will be denied. Defaults to the
@@ -3662,7 +3663,7 @@ minimum officially supported version at the time of this server release.
 Changing this may cause older, unsupported clients to malfunction, potentially
 leading to data loss or unexpected behavior.
 
-Defaults to ``3.1.81``
+Defaults to ``3.1.83``
 
 maximum.supported.desktop.version
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -4464,7 +4465,7 @@ files.chunked_upload.max_parallel_count
 
 Maximum number of chunks uploaded in parallel during chunked uploads. Higher
 counts increase throughput but consume more server resources, with diminishing
-returns.
+returns. Value must be a positive integer.
 
 Defaults to ``5``
 

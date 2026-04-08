@@ -138,6 +138,8 @@ Empty value are written as two dashes: ``--``.
 Admin audit log (Optional)
 --------------------------
 
+.. _config-admin-audit:
+
 By enabling the **admin_audit** app, additional information about various events can be logged. Similar to the normal logging, the audit log can be provided to any of the existing logging mechanisms in :file:`config/config.php`. The default behavior, if no parameters are specified after the app is enabled, is ``file`` based logging to a file called ``audit.log`` stored in the ``datadirectory``.
 
 If you wish to override this and log to syslog instead the following would be one approach:

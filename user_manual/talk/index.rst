@@ -2,16 +2,20 @@
 Talk
 ====
 
-Nextcloud Talk offers audio/video and text chat integrated in Nextcloud. It offers
-a web interface as well as mobile apps.
+Nextcloud Talk offers audio/video and text chat integrated in Nextcloud. It is
+available as a web interface, desktop client, and mobile apps for Android and iOS.
 
 You can find out more about Nextcloud Talk `on our website <https://nextcloud.com/talk/>`_.
+Download the desktop and mobile clients from `nextcloud.com/install <https://nextcloud.com/install/>`_.
 
 .. image:: images/talk-grid-view.png
 
 .. toctree::
-   :maxdepth: 1
+   :maxdepth: 2
 
-   talk_basics
-   advanced_features
-   join_a_call_or_chat_as_guest
+   chat_index
+   conversation_index
+   call_index
+   federation_index
+   moderator_index
+   guest
