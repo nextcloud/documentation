@@ -342,16 +342,16 @@ jobs:
           find deploy-staging -type f | head -20
 
       # ========================================================================
-      # UPLOAD STAGING ARTIFACTS
+      # CACHE STAGING ARTIFACTS
       # ========================================================================
-      # Upload only the NEW artifacts in their branch structure.
-      # The deploy job will handle merging with existing versions on gh-pages.
+      # Cache the staging folder for use in deploy job.
+      # This avoids artifact storage overhead (saves ~1.8GB).
       # ========================================================================
-      - name: Upload staged artifacts
-        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
+      - name: Cache staged artifacts
+        uses: actions/cache/save@668228422ae6a00e4ad889ee87cd7109ec5666a7 # v5.0.4
         with:
-          name: staged-documentation-${{ steps.branch.outputs.branch_name }}
           path: deploy-staging/
+          key: staged-docs-${{ github.sha }}
 
   # ============================================================================
   # DEPLOY
@@ -391,11 +391,12 @@ jobs:
           fetch-depth: 1
           persist-credentials: false
 
-      - name: Download staged artifacts
-        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+      - name: Restore staged artifacts from cache
+        uses: actions/cache/restore@668228422ae6a00e4ad889ee87cd7109ec5666a7 # v5.0.4
         with:
-          name: staged-documentation-${{ needs.stage-and-check.outputs.branch_name }}
           path: stage/
+          key: staged-docs-${{ github.sha }}
+          fail-on-cache-miss: true
 
       # ========================================================================
       # APPLY STAGED ARTIFACTS TO GH-PAGES
