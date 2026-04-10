@@ -62,6 +62,32 @@ Requirements
    Actual requirements will vary based on factors such as the number of concurrent calls, audio quality, and selected languages.
    Please do thorough testing to confirm your hardware meets your needs.
 
+Logs
+----
+
+| Warnings and errors are logged to the main Nextcloud server logs.
+| To inspect the detailed JSON logs for lower levels, the following commands can help.
+
+To view docker stdout/err logs:
+
+.. code-block:: bash
+
+   docker logs -f -n400 nc_app_live_transcription
+
+| To view the JSON logs:
+| The logs are rotated when file size exceeds 20 MiB. The older log files are named ``lt.log.1``, ``lt.log.2``, and so on.
+
+.. code-block:: bash
+
+   docker exec -it nc_app_live_transcription tail -f -n400 /nc_app_live_transcription_data/logs/lt.log
+
+To download the JSON logs:
+
+.. code-block:: bash
+
+   docker cp nc_app_live_transcription:/nc_app_live_transcription_data/logs/ /tmp/nc_app_live_transcription_logs
+
+
 App store
 ---------
 
