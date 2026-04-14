@@ -15,7 +15,8 @@ Primary color
 ^^^^^^^^^^^^^
 
 .. figure:: ../images/colour-primary.svg
-	 	
+   :alt: Nextcloud primary color swatch showing blue #0082C9
+
 		#0082C9
 
 While this is the primary color associated with Nextcloud and can be used to draw attention to an element, it is best to limit the usage of this to primary actions and other important elements.
@@ -34,10 +35,12 @@ Background color
 .. list-table::
 
     * - .. figure:: ../images/colour-main-background.svg
+           :alt: Light theme background color swatch showing white #FFFFFF
 
            Background for light theme: #FFFFFF
 
       - .. figure:: ../images/colour-dark-theme-main-backgroud.svg
+           :alt: Dark theme background color swatch showing dark grey #181818
 
            Background for dark theme: #181818
 
@@ -55,10 +58,12 @@ Text color
 .. list-table::
 
     * - .. figure:: ../images/colour-main-text.svg
+           :alt: Light theme text color swatch showing near-black #222222
 
            Text in light theme: #222222
 
       - .. figure:: ../images/colour-dark-theme-main-text.svg
+           :alt: Dark theme text color swatch showing light grey #D8D8D8
 
            Text in dark theme: #D8D8D8
 
@@ -73,10 +78,12 @@ This is the main color for the text in light theme, and in dark theme.
 .. list-table::
 
     * - .. figure:: ../images/colour-text-maxcontrast.svg
+           :alt: Light theme secondary text color swatch showing grey #767676
 
            Secondary text in light theme: #767676
 
       - .. figure:: ../images/colour-dark-theme-text-maxcontrast.svg
+           :alt: Dark theme secondary text color swatch showing medium grey #8C8C8C
 
            Secondary text in dark theme: #8C8C8C
 
@@ -95,18 +102,22 @@ Status and indicators
 .. list-table::
 
     * - .. figure:: ../images/color-info.svg
+           :alt: Info status color swatch showing blue #006AA3
 
            Info: #006AA3
 
       - .. figure:: ../images/color-success.svg
+           :alt: Success status color swatch showing green #46BA61
 
            Success: #46BA61
 
       - .. figure:: ../images/color-error.svg
+           :alt: Error status color swatch showing red #E9322D
 
            Error: #E9322D
 
       - .. figure:: ../images/color-warning.svg
+           :alt: Warning status color swatch showing amber #ECA700
 
            Warning: #ECA700
 
