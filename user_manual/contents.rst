@@ -9,6 +9,7 @@ Table of contents
 
     index
     webinterface
+    activity
     files/index
     groupware/index
     talk/index 
