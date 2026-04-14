@@ -14,7 +14,7 @@ Modify the appearance of Nextcloud
 
 You can change the following parameters of the look and feel on your instance:
 
-.. figure:: ../configuration_server/images/theming1.png
+.. figure:: images/theming1.png
 
 * Name (e.g. ACME Inc. Cloud)
 * Web link (e.g. https://acme.inc/)
@@ -24,7 +24,7 @@ You can change the following parameters of the look and feel on your instance:
 * Logo: The logo will appear in the header and on the login page. The default has 62/34 px.
 * Background and login image: The background image
 
-.. figure:: ../configuration_server/images/theming2.png
+.. figure:: images/theming2.png
 
 * Additional legal links (Legal notice and Privacy policy link)
 * Custom header logo and favicon as an alternative to auto-generation based on logo
