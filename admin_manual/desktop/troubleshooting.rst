@@ -201,7 +201,7 @@ mentioned above to save the log to a file.
   .. note:: You can also open a log window for an already running session, by
      restarting the client using the following command:
 
-     * Windows: ``C:\Program Files (x86)\Nextcloud\nextcloud.exe --logwindow``
+     * Windows: ``C:\Program Files\Nextcloud\nextcloud.exe --logwindow``
      * macOS: ``/Applications/nextcloud.app/Contents/MacOS/nextcloud --logwindow``
      * Linux: ``nextcloud --logwindow``
 
