@@ -15,6 +15,7 @@ Your files are always automatically synchronized between your Nextcloud server, 
    :maxdepth: 1
 
    installation
+   uninstallation
    usage
    macosvfs
    autoupdate
