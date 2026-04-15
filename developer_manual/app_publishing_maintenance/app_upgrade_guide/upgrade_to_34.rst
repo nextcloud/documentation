@@ -63,7 +63,7 @@ Added APIs
 Changed APIs
 ^^^^^^^^^^^^
 
-- TBD
+- ``\OCP\Notification\INotification::setIcon``, ``\OCP\Notification\INotification::setLink`` and ``\OCP\Notification\IAction::setLink`` now throw ``\OCP\Notification\InvalidValueException`` when the provided link is not absolute as previously announced in :doc:`./upgrade_to_30`
 
 Deprecated APIs
 ^^^^^^^^^^^^^^^
