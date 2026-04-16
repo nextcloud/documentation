@@ -30,7 +30,7 @@ jobs:
         uses: actions/cache@668228422ae6a00e4ad889ee87cd7109ec5666a7 # v5.0.4
         with:
           path: ${{ runner.temp }}/.cache/archives
-          key: latex-apt-${{ runner.os }}-${{ runner.arch }}-ubuntu-24.04-texlive-2023
+          key: latex-apt-${{ runner.os }}-${{ runner.arch }}-ubuntu-24.04-texlive-2023-v2
           restore-keys: |
             latex-apt-${{ runner.os }}-${{ runner.arch }}-ubuntu-24.04-
             latex-apt-${{ runner.os }}-${{ runner.arch }}-
@@ -44,7 +44,7 @@ jobs:
             --download-only \
             python3-pil python3-pip texlive-fonts-recommended latexmk \
             texlive-latex-extra texlive-latex-recommended texlive-xetex \
-            texlive-fonts-extra-links texlive-fonts-extra xindy
+            texlive-fonts-extra-links texlive-fonts-extra xindy tex-gyre
           # Ensure downloaded packages are owned by the current user so they can be cached
           sudo chown -R $(id -u):$(id -g) ${{ runner.temp }}/.cache/archives
 
@@ -53,7 +53,7 @@ jobs:
         uses: actions/cache/save@668228422ae6a00e4ad889ee87cd7109ec5666a7 # v5.0.4
         with:
           path: ${{ runner.temp }}/.cache/archives
-          key: latex-apt-${{ runner.os }}-${{ runner.arch }}-ubuntu-24.04-texlive-2023
+          key: latex-apt-${{ runner.os }}-${{ runner.arch }}-ubuntu-24.04-texlive-2023-v2
 
   build:
     name: Build ${{ matrix.manual.name }}
@@ -122,7 +122,7 @@ jobs:
         with:
           # Use relative path https://github.com/actions/cache/issues/1127
           path: ${{ runner.temp }}/.cache/archives
-          key: latex-apt-${{ runner.os }}-${{ runner.arch }}-ubuntu-24.04-texlive-2023
+          key: latex-apt-${{ runner.os }}-${{ runner.arch }}-ubuntu-24.04-texlive-2023-v2
           restore-keys: |
             latex-apt-${{ runner.os }}-${{ runner.arch }}-ubuntu-24.04-
             latex-apt-${{ runner.os }}-${{ runner.arch }}-
@@ -136,7 +136,7 @@ jobs:
             --no-download \
             python3-pil python3-pip texlive-fonts-recommended latexmk \
             texlive-latex-extra texlive-latex-recommended texlive-xetex \
-            texlive-fonts-extra-links texlive-fonts-extra xindy
+            texlive-fonts-extra-links texlive-fonts-extra xindy tex-gyre
 
       - name: Build html documentation
         run: cd ${{ matrix.manual.directory }} && make ${{ matrix.manual.make_target }}
