@@ -214,7 +214,7 @@ note that Nextcloud GmbH offers commercial support options.</p>
 <li><p>Double-check your configuration</p></li>
 </ul>
 <p>If you can’t find a solution, please use our <a class="reference external" href="https://docs.nextcloud.com/server/latest/developer_manual/prologue/bugtracker/index.html">bugtracker</a>. You can generate a
-configuration report with the <a class="reference internal" href="../occ_command.html#config-commands-label"><span class="std std-ref">occ config command</span></a>, with passwords automatically obscured.</p>
+configuration report with the <a class="reference internal" href="../occ_apps.html#config-commands-label"><span class="std std-ref">occ config command</span></a>, with passwords automatically obscured.</p>
 </section>
 <section id="id1">
 <h2>General troubleshooting<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
@@ -225,7 +225,7 @@ supported browser versions.</p>
 <h3>Disable 3rdparty / non-shipped apps<a class="headerlink" href="#disable-3rdparty-non-shipped-apps" title="Link to this heading"></a></h3>
 <p>It might be possible that 3rd party / non-shipped apps are causing various
 different issues. Always disable 3rd party apps before upgrades, and for
-troubleshooting. Please refer to the <a class="reference internal" href="../occ_command.html#apps-commands-label"><span class="std std-ref">Apps commands</span></a> on how
+troubleshooting. Please refer to the <a class="reference internal" href="../occ_apps.html#apps-commands-label"><span class="std std-ref">Apps commands</span></a> on how
 to disable an app from command line.</p>
 </section>
 <section id="internal-server-errors">
@@ -503,12 +503,12 @@ the <a class="reference external" href="http://sabre.io/dav/service-discovery/">
 <span id="trouble-file-encoding-ext-storages"></span><h2>Troubleshooting file encoding on external storages<a class="headerlink" href="#troubleshooting-file-encoding-on-external-storages" title="Link to this heading"></a></h2>
 <p>When using external storage, it can happen that some files with special characters will not
 appear in the file listing, or they will appear and not be accessible.</p>
-<p>When this happens, please run the <a class="reference internal" href="../occ_command.html#occ-files-scan-label"><span class="std std-ref">files scanner</span></a>, for example with:</p>
+<p>When this happens, please run the <a class="reference internal" href="../occ_files.html#occ-files-scan-label"><span class="std std-ref">files scanner</span></a>, for example with:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">files</span><span class="p">:</span><span class="n">scan</span> <span class="o">--</span><span class="nb">all</span>
 </pre></div>
 </div>
 <p>If the scanner tells about an encoding issue on the affected file, please enable Mac encoding compatibility in the <a class="reference internal" href="../configuration_files/external_storage_configuration_gui.html#external-storage-mount-options-label"><span class="std std-ref">mount options</span></a>
-and then <a class="reference internal" href="../occ_command.html#occ-files-scan-label"><span class="std std-ref">rescan the external storage</span></a>.</p>
+and then <a class="reference internal" href="../occ_files.html#occ-files-scan-label"><span class="std std-ref">rescan the external storage</span></a>.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This mode comes with a performance impact because Nextcloud will always try both encodings when detecting files

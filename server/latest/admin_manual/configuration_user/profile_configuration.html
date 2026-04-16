@@ -128,6 +128,8 @@
 <li class="toctree-l4"><a class="reference internal" href="#faq-how-to-lock-profile-visibility-down">FAQ: How to lock profile visibility down</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="#scopes-and-existing-users">Scopes and existing users</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#see-also">See also</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="user_auth_oidc.html">User authentication with OpenID Connect</a></li>
@@ -602,6 +604,46 @@ source is the <code class="docutils literal notranslate"><span class="pre">DEFAU
 <p>In short: tighter privacy reduces profile-based convenience and discoverability.</p>
 </section>
 </section>
+</section>
+<section id="scopes-and-existing-users">
+<h2>Scopes and existing users<a class="headerlink" href="#scopes-and-existing-users" title="Link to this heading"></a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">account_manager.default_property_scope</span></code> config only applies to <strong>new</strong> users.
+Existing users keep their stored scopes.</p>
+<p>There is currently no admin-level mechanism to bulk-change scopes for existing
+users. The OCS provisioning API only allows users to change their <strong>own</strong> scopes —
+admins cannot set scopes on behalf of other users.</p>
+<p>Users can update their own scopes in <strong>Personal settings</strong> → <strong>Personal info</strong> →
+<strong>Edit your Profile visibility</strong>, or via the API:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">curl</span> <span class="o">-</span><span class="n">s</span> <span class="o">-</span><span class="n">u</span> <span class="n">alice</span><span class="p">:</span><span class="n">password</span> <span class="o">-</span><span class="n">X</span> <span class="n">PUT</span> \
+  <span class="s2">&quot;https://cloud.example.com/ocs/v2.php/cloud/users/alice&quot;</span> \
+  <span class="o">-</span><span class="n">H</span> <span class="s2">&quot;OCS-APIRequest: true&quot;</span> \
+  <span class="o">-</span><span class="n">d</span> <span class="s2">&quot;key=phoneScope&amp;value=v2-private&quot;</span>
+</pre></div>
+</div>
+<p>The scope key is the property name with <code class="docutils literal notranslate"><span class="pre">Scope</span></code> appended. Available keys:</p>
+<p><code class="docutils literal notranslate"><span class="pre">displaynameScope</span></code>, <code class="docutils literal notranslate"><span class="pre">emailScope</span></code>, <code class="docutils literal notranslate"><span class="pre">phoneScope</span></code>, <code class="docutils literal notranslate"><span class="pre">addressScope</span></code>,
+<code class="docutils literal notranslate"><span class="pre">websiteScope</span></code>, <code class="docutils literal notranslate"><span class="pre">twitterScope</span></code>, <code class="docutils literal notranslate"><span class="pre">blueskyScope</span></code>, <code class="docutils literal notranslate"><span class="pre">fediverseScope</span></code>,
+<code class="docutils literal notranslate"><span class="pre">organisationScope</span></code>, <code class="docutils literal notranslate"><span class="pre">roleScope</span></code>, <code class="docutils literal notranslate"><span class="pre">headlineScope</span></code>, <code class="docutils literal notranslate"><span class="pre">biographyScope</span></code>,
+<code class="docutils literal notranslate"><span class="pre">birthdateScope</span></code>, <code class="docutils literal notranslate"><span class="pre">avatarScope</span></code>, <code class="docutils literal notranslate"><span class="pre">pronounsScope</span></code></p>
+<p>Allowed scope values:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">v2-private</span></code> — Private</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">v2-local</span></code> — Local</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">v2-federated</span></code> — Federated</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">v2-published</span></code> — Published</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">displaynameScope</span></code> and <code class="docutils literal notranslate"><span class="pre">emailScope</span></code> cannot be set to <code class="docutils literal notranslate"><span class="pre">v2-private</span></code>.
+The server enforces a minimum of <code class="docutils literal notranslate"><span class="pre">v2-local</span></code> for these properties.</p>
+</div>
+</section>
+<section id="see-also">
+<h2>See also<a class="headerlink" href="#see-also" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><a class="reference internal" href="../configuration_files/file_sharing_configuration.html"><span class="doc">File Sharing</span></a> — sharing and autocomplete settings that interact with profile visibility</p></li>
+<li><p><a class="reference external" href="https://docs.nextcloud.com/server/latest/user_manual/en/userpreferences.html">User manual: Personal settings</a> — user-facing profile and personal info settings</p></li>
+</ul>
 </section>
 </section>
 
