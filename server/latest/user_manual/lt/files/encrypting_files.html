@@ -1,0 +1,708 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="lt" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Šifravimas serverio pusėje &mdash; Nextcloud latest User Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=bc97f5cf" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://docs.nextcloud.com/server/stable/user_manual/files/encrypting_files.html" />
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=865490d1"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../_static/translations.js?v=e4682f4a"></script>
+      <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <script src="../../_static/js/versions.js"></script>
+    <link rel="index" title="Indeksas" href="../genindex.html" />
+    <link rel="search" title="Paieška" href="../search.html" />
+    <link rel="next" title="Using end-to-end encryption" href="using_e2ee.html" />
+    <link rel="prev" title="Stacionariųjų ir mobiliųjų įrenginių sinchronizavimas" href="desktop_mobile_sync.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Ieškoti dokumentuose" aria-label="Ieškoti dokumentuose" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigacijos meniu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Nextcloud latest user manual introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">The Nextcloud Web interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../activity.html">Using the Activity app</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Files &amp; synchronization</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="access_webgui.html">Prieiga prie failų naudojant „Nextcloud“ žiniatinklio sąsają</a></li>
+<li class="toctree-l2"><a class="reference internal" href="access_webdav.html">Prieiga prie „Nextcloud“ failų naudojant „WebDAV“</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deleted_file_management.html">Ištrintų failų tvarkymas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="desktop_mobile_sync.html">Stacionariųjų ir mobiliųjų įrenginių sinchronizavimas</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Šifravimas serverio pusėje</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#encryption-faq">Šifravimo DUK</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#how-can-encryption-be-disabled">Kaip galima išjungti šifravimą?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#is-it-possible-to-disable-encryption-with-the-recovery-key">Ar įmanoma išjungti šifravimą naudojant atkūrimo raktą?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#can-encryption-be-disabled-without-the-user-s-password">Ar galima išjungti šifravimą be vartotojo slaptažodžio?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#is-it-planned-to-move-this-to-the-next-user-login-or-a-background-job">Ar planuojama tai perkelti į kito vartotojo prisijungimą ar į foninį darbą?</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#is-group-sharing-possible-with-the-recovery-key">Ar galima bendrinti grupėje naudojant atkūrimo raktą?</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#using-encryption">Šifravimo naudojimas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sharing-encrypted-files">Užšifruotų failų bendrinimas</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#recovery-key-password">Atkūrimo rakto slaptažodis</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#files-not-encrypted">Failai nešifruoti</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#change-private-key-password">Pakeiskite privataus rakto slaptažodį</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="using_e2ee.html">Using end-to-end encryption</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sharing.html">File Sharing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sharing.html#federated-shares">Federated Shares</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_drop.html">Anoniminių įkėlimų kūrimas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="large_file_upload.html">Didelių failų įkėlimai</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quota.html">Saugojimo kvota</a></li>
+<li class="toctree-l2"><a class="reference internal" href="version_control.html">Version control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="projects.html">Projektai</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transfer_ownership.html">Transfer Ownership</a></li>
+<li class="toctree-l2"><a class="reference internal" href="federated_cloud_sharing.html">Federuotų bendrinimų naudojimas</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Talk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Clients</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Setting your preferences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Universal access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Using two-factor authentication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Manage connected browsers and devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">Išorinė saugykla</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobilios navigacijos meniu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest User Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Puslapių navigacija">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Files &amp; synchronization</a></li>
+      <li class="breadcrumb-item active">Šifravimas serverio pusėje</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/files/encrypting_files.rst" class="fa fa-github"> Keisti GitHub'e</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="using-server-side-encryption">
+<h1>Šifravimas serverio pusėje<a class="headerlink" href="#using-server-side-encryption" title="Link to this heading"></a></h1>
+<p>„Nextcloud“ turi serverio pusėje veikiančią šifravimo programėlę, ir kai ją įjungia jūsų „Nextcloud“ administratorius, visi jūsų „Nextcloud“ duomenų failai serveryje automatiškai šifruojami. Šifravimas taikomas visam serveriui, todėl, kai jis įjungtas, negalėsite pasirinkti, kad jūsų failai liktų nešifruoti. Jums nereikia daryti nieko ypatingo, nes jūsų „Nextcloud“ prisijungimo vardas naudojamas kaip slaptažodis jūsų unikaliam privačiam šifravimo raktui. Tiesiog atsijunkite ir prisijunkite, tvarkykite ir dalinkitės failais kaip įprastai, o slaptažodį galite pakeisti bet kada norite.</p>
+<p>Jo pagrindinė paskirtis – šifruoti failus nuotolinėse saugyklose, kurios yra prijungtos prie jūsų „Nextcloud“ serverio. Tai paprastas ir sklandus būdas apsaugoti failus nuotolinėse saugyklose. Nuotolinius failus galite dalytis per „Nextcloud“ įprastu būdu, tačiau šifruotų failų negalėsite dalytis tiesiogiai iš naudojamos nuotolinės saugyklos, nes šifravimo raktai saugomi jūsų „Nextcloud“ serveryje ir niekada neatskleidžiami išorės paslaugų teikėjams.</p>
+<p>Jei jūsų „Nextcloud“ serveris nėra prijungtas prie jokių nuotolinių saugojimo paslaugų, geriau naudoti kitą šifravimo būdą, pavyzdžiui, failų lygio arba viso disko šifravimą. Kadangi raktai saugomi jūsų „Nextcloud“ serveryje, „Nextcloud“ administratorius gali peržiūrėti jūsų failus, o jei serveris bus įsilaužtas, įsibrovėlis gali gauti prieigą prie jūsų failų. (Daugiau informacijos rasite straipsnyje „Šifravimas „Nextcloud“ &lt;<a class="reference external" href="https://nextcloud.com/blog/encryption-in-nextcloud/">https://nextcloud.com/blog/encryption-in-nextcloud/</a>&gt;_).</p>
+<section id="encryption-faq">
+<h2>Šifravimo DUK<a class="headerlink" href="#encryption-faq" title="Link to this heading"></a></h2>
+<section id="how-can-encryption-be-disabled">
+<h3>Kaip galima išjungti šifravimą?<a class="headerlink" href="#how-can-encryption-be-disabled" title="Link to this heading"></a></h3>
+<p>Vienintelis būdas išjungti šifravimą yra paleisti skriptą „decrypt all“ &lt;<a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/occ_command.html#encryption-label">https://docs.nextcloud.com/server/latest/admin_manual/occ_command.html#encryption-label</a>&gt;`_, kuris iššifruoja visus failus ir išjungia šifravimą.</p>
+</section>
+<section id="is-it-possible-to-disable-encryption-with-the-recovery-key">
+<h3>Ar įmanoma išjungti šifravimą naudojant atkūrimo raktą?<a class="headerlink" href="#is-it-possible-to-disable-encryption-with-the-recovery-key" title="Link to this heading"></a></h3>
+<p>Taip, <em>jei</em> kiekvienas vartotojas naudoja „failų atkūrimo raktą &lt;<a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/encryption_configuration.html#enabling-users-file-recovery-keys">https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/encryption_configuration.html#enabling-users-file-recovery-keys</a>&gt;`_, „decrypt all“ &lt;<a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/occ_command.html#encryption-label">https://docs.nextcloud.com/server/latest/admin_manual/occ_command.html#encryption-label</a>&gt;`_ jį naudos visiems failams iššifruoti.</p>
+</section>
+<section id="can-encryption-be-disabled-without-the-user-s-password">
+<h3>Ar galima išjungti šifravimą be vartotojo slaptažodžio?<a class="headerlink" href="#can-encryption-be-disabled-without-the-user-s-password" title="Link to this heading"></a></h3>
+<p>Jei neturite naudotojo slaptažodžio arba „failų atkūrimo rakto &lt;<a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/encryption_configuration.html#enabling-users-file-recovery-keys">https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/encryption_configuration.html#enabling-users-file-recovery-keys</a>&gt;`_“, nėra galimybės iššifruoti visų failų. Be to, paleisti tai prisijungus būtų pavojinga, nes greičiausiai susidursite su skirtojo laiko apribojimais.</p>
+</section>
+<section id="is-it-planned-to-move-this-to-the-next-user-login-or-a-background-job">
+<h3>Ar planuojama tai perkelti į kito vartotojo prisijungimą ar į foninį darbą?<a class="headerlink" href="#is-it-planned-to-move-this-to-the-next-user-login-or-a-background-job" title="Link to this heading"></a></h3>
+<p>Jei taip padarytume, turėtume saugoti jūsų prisijungimo slaptažodį duomenų bazėje. Tai galėtų būti vertinama kaip saugumo problema, todėl nieko panašaus neplanuojama.</p>
+</section>
+<section id="is-group-sharing-possible-with-the-recovery-key">
+<h3>Ar galima bendrinti grupėje naudojant atkūrimo raktą?<a class="headerlink" href="#is-group-sharing-possible-with-the-recovery-key" title="Link to this heading"></a></h3>
+<p>Jei turite omenyje, kad reikia pridėti vartotojus prie grupių ir priversti tai stebuklingai veikti? Ne. Tai veikia tik su pagrindiniu raktu.</p>
+</section>
+</section>
+<section id="using-encryption">
+<h2>Šifravimo naudojimas<a class="headerlink" href="#using-encryption" title="Link to this heading"></a></h2>
+<p>„Nextcloud“ šifravimas iš esmės veikia pagal principą „nustatyk ir pamiršk“, tačiau jums siūloma keletas galimybių, kuriomis galite pasinaudoti.</p>
+<p>Kai „Nextcloud“ administratorius pirmą kartą įjungia šifravimą, turite atsijungti ir vėl prisijungti, kad sukurtumėte šifravimo raktus ir užšifruotumėte failus. Kai šifravimas bus įjungtas jūsų „Nextcloud“ serveryje, failų puslapyje pamatysite geltoną juostą, įspėjančią jus atsijungti ir vėl prisijungti:</p>
+<figure class="align-default">
+<img alt="../../_images/encryption1.png" src="../../_images/encryption1.png" />
+</figure>
+<p>Kai vėl prisijungsite, veiksmas užtruks kelias minutes, priklausomai nuo to, kiek failų turite, o tada būsite grąžinti į numatytąjį „Nextcloud“ puslapį.</p>
+<figure class="align-default">
+<img alt="../../_images/encryption2.png" src="../../_images/encryption2.png" />
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Pastaba</p>
+<p>Niekada nepraraskite savo „Nextcloud“ slaptažodžio, nes prarasite prieigą prie savo failų. Nors yra pasirenkama atkūrimo parinktis, kurią gali įjungti jūsų „Nextcloud“ administratorius, apie tai sužinokite skyriuje „Atkūrimo rakto slaptažodis“ (toliau).</p>
+</div>
+</section>
+<section id="sharing-encrypted-files">
+<h2>Užšifruotų failų bendrinimas<a class="headerlink" href="#sharing-encrypted-files" title="Link to this heading"></a></h2>
+<p>Prieigą prie bendrinamų užšifruotų failų ir aplankų turi tik tie vartotojai, kurie turi privačius šifravimo raktus. Vartotojai, kurie dar nesukūrė savo privačių šifravimo raktų, neturės prieigos prie užšifruotų bendrinamų failų; jie matys aplankus ir failų pavadinimus, bet negalės atidaryti ar atsisiųsti failų. Jie matys geltoną įspėjamąją juostą su tekstu „Šifravimo programa įjungta, bet jūsų raktai nėra inicijuoti, atsijunkite ir vėl prisijunkite“.</p>
+<p>Bendrinamų failų savininkams gali tekti iš naujo bendrinti failus įjungus šifravimą; vartotojai, bandantys pasiekti bendrinamą failą, matys pranešimą, kuriame jiems patariama paprašyti bendrinamo failo savininko iš naujo bendrinti su jais. Jei bendrinate failą individualiai, atšaukite bendrinimą ir bendrinkite jį iš naujo. Jei bendrinate grupę, bendrinkite su visais asmenimis, kurie negali pasiekti bendrinamo failo. Tai atnaujina šifravimą, o tada bendrinamo failo savininkas gali pašalinti individualius bendrinimus.</p>
+<section id="recovery-key-password">
+<h3>Atkūrimo rakto slaptažodis<a class="headerlink" href="#recovery-key-password" title="Link to this heading"></a></h3>
+<p>Jei jūsų „Nextcloud“ administratorius įjungė atkūrimo rakto funkciją, galite pasirinkti naudoti šią funkciją savo paskyroje. Jei įjungsite „Slaptažodžio atkūrimas“, administratorius galės nuskaityti jūsų duomenis naudodamas specialų slaptažodį. Ši funkcija leidžia administratoriui atkurti jūsų failus, jei pamesite „Nextcloud“ slaptažodį. Jei atkūrimo raktas neįgalintas, pametus prisijungimo slaptažodį, atkurti failų nebus įmanoma.</p>
+<figure class="align-default">
+<img alt="../../_images/encryption3.png" src="../../_images/encryption3.png" />
+</figure>
+</section>
+</section>
+<section id="files-not-encrypted">
+<h2>Failai nešifruoti<a class="headerlink" href="#files-not-encrypted" title="Link to this heading"></a></h2>
+<p>Šifruojami tik jūsų failuose esantys duomenys, o ne failų pavadinimai ar aplankų struktūros. Šie failai niekada nešifruojami:</p>
+<ul class="simple">
+<li><p>Seni failai šiukšliadėžėje.</p></li>
+<li><p>Vaizdų miniatiūros iš programėlės „Galerija“.</p></li>
+<li><p>Peržiūros iš programėlės „Failai“.</p></li>
+<li><p>Paieškos indeksas iš viso teksto paieškos programėlės.</p></li>
+<li><p>Trečiųjų šalių programų duomenys</p></li>
+</ul>
+<p>Šifruoti galima tik tuos failus, kurie bendrinami su trečiųjų šalių saugyklų teikėjais, kiti failai gali būti nešifruojami.</p>
+<section id="change-private-key-password">
+<h3>Pakeiskite privataus rakto slaptažodį<a class="headerlink" href="#change-private-key-password" title="Link to this heading"></a></h3>
+<p>Ši parinktis galima tik tuo atveju, jei administratorius nepakeitė šifravimo slaptažodžio, o tik prisijungimo slaptažodį. Taip gali nutikti, jei jūsų „Nextcloud“ teikėjas naudoja išorinį vartotojo serverį (pvz., LDAP) ir pakeitė jūsų prisijungimo slaptažodį naudodamas tą serverio konfigūraciją. Tokiu atveju galite nustatyti naują šifravimo slaptažodį, pateikdami seną ir naują prisijungimo slaptažodžius. Šifravimo programa veikia tik tuo atveju, jei jūsų prisijungimo slaptažodis ir šifravimo slaptažodis yra identiški.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Poraštė">
+        <a href="desktop_mobile_sync.html" class="btn btn-neutral float-left" title="Stacionariųjų ir mobiliųjų įrenginių sinchronizavimas" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Ankstesnis</a>
+        <a href="using_e2ee.html" class="btn btn-neutral float-right" title="Using end-to-end encryption" accesskey="n" rel="next">Kitas <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+  
+  <!-- Here go the languages -->
+
+  
+  
+
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      🌐 lt
+      <span class="fa fa-caret-down"></span>
+       ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>🌐 Languages</dt>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ar/"
+               
+            >
+              Arabic
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/br/"
+               
+            >
+              Breton
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ca/"
+               
+            >
+              Catalan
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_CN/"
+               
+            >
+              Chinese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_HK/"
+               
+            >
+              Chinese (HK)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_TW/"
+               
+            >
+              Chinese (TW)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/cs/"
+               
+            >
+              Czech
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/da/"
+               
+            >
+              Danish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nl/"
+               
+            >
+              Dutch
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/en/"
+               
+            >
+              English
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/fi_FI/"
+               
+            >
+              Finnish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/fr/"
+               
+            >
+              French
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/gl/"
+               
+            >
+              Galician
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/de/"
+               
+            >
+              German
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/el/"
+               
+            >
+              Greek
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/hu_HU/"
+               
+            >
+              Hungarian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/id/"
+               
+            >
+              Indonesian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ga/"
+               
+            >
+              Irish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/it/"
+               
+            >
+              Italian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ja_JP/"
+               
+            >
+              Japanese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ko/"
+               
+            >
+              Korean
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/lt/"
+               
+               style="color: var(--dark-link-color);"
+               
+            >
+              lt
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/mn/"
+               
+            >
+              Mongolian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nb_NO/"
+               
+            >
+              Norwegian (NB)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nn/"
+               
+            >
+              Norwegian (NN)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pl/"
+               
+            >
+              Polish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pt_PT/"
+               
+            >
+              Portuguese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pt_BR/"
+               
+            >
+              Portuguese (BR)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ro/"
+               
+            >
+              Romanian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ru/"
+               
+            >
+              Russian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/si/"
+               
+            >
+              Sinhala
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sk_SK/"
+               
+            >
+              Slovakian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sr/"
+               
+            >
+              Slovenian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/es/"
+               
+            >
+              Spanish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sv/"
+               
+            >
+              Swedish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ta/"
+               
+            >
+              Tamil
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/tr/"
+               
+            >
+              Turkish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/uk_UA/"
+               
+            >
+              Ukrainian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/uz/"
+               
+            >
+              Uzbek
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/vi/"
+               
+            >
+              Vietnamese
+            </a>
+          </dd>
+        
+      </dl>
+    </div>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Versijos</dt>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/latest/user_manual"
+               
+               style="color: var(--dark-link-color);"
+               
+            >
+              latest
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/stable/user_manual"
+               
+            >
+              stable
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/32/user_manual"
+               
+            >
+              32
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/31/user_manual"
+               
+            >
+              31
+            </a>
+          </dd>
+        
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

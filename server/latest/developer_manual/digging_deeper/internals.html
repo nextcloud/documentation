@@ -1,0 +1,273 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Server Internals &mdash; Nextcloud latest Developer Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=bc97f5cf" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://docs.nextcloud.com/server/stable/developer_manual/digging_deeper/internals.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=a49d5d77"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../_static/js/theme.js"></script>
+    <script src="../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Config &amp; Preferences" href="config/index.html" />
+    <link rel="prev" title="PSR" href="psr.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html">
+            
+              <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../prologue/index.html">Prologue</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../getting_started/index.html">Getting started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../basics/index.html">Basic concepts</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../app_development/index.html">App development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exapp_development/index.html">ExApp development</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../server/index.html">Server development</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Digging deeper</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="ai.html">AI &amp; Machine Learning</a></li>
+<li class="toctree-l2"><a class="reference internal" href="apis.html">APIs &amp; Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="auth.html">Users &amp; Authentication</a></li>
+<li class="toctree-l2"><a class="reference internal" href="groupware_workflows.html">Groupware &amp; Workflows</a></li>
+<li class="toctree-l2"><a class="reference internal" href="discovery.html">Search &amp; Discovery</a></li>
+<li class="toctree-l2"><a class="reference internal" href="devtools.html">Development Tools</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Server Internals</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="config/index.html">Config &amp; Preferences</a></li>
+<li class="toctree-l3"><a class="reference internal" href="settings.html">Settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="security.html">Security</a></li>
+<li class="toctree-l3"><a class="reference internal" href="setup_checks.html">Setup checks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="repair.html">Repair steps</a></li>
+<li class="toctree-l3"><a class="reference internal" href="deadlock.html">Deadlocks</a></li>
+<li class="toctree-l3"><a class="reference internal" href="snowflake_ids.html">Snowflake IDs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="time.html">Working with time</a></li>
+<li class="toctree-l3"><a class="reference internal" href="openmetrics.html">Open Metrics exporter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="webdav_collection_preload.html">WebDAV collection preload events</a></li>
+<li class="toctree-l3"><a class="reference internal" href="phonenumberutil.html">Phone number util</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../app_publishing_maintenance/index.html">App publishing and maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../design/index.html">Interface &amp; interaction design</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../html_css_design/index.html">HTML/CSS guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../client_apis/index.html">Clients and Client APIs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Clients</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Nextcloud latest Developer Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Digging deeper</a></li>
+      <li class="breadcrumb-item active">Server Internals</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/developer_manual/digging_deeper/internals.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="server-internals">
+<h1>Server Internals<a class="headerlink" href="#server-internals" title="Link to this heading"></a></h1>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="config/index.html">Config &amp; Preferences</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="config/appconfig.html">AppConfig</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config/userconfig.html">UserConfig</a></li>
+<li class="toctree-l2"><a class="reference internal" href="config/lexicon.html">Lexicon</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="settings.html">Settings</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="declarative_settings.html">Declarative settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="settings.html#settings-form">Settings form</a></li>
+<li class="toctree-l2"><a class="reference internal" href="settings.html#section">Section</a></li>
+<li class="toctree-l2"><a class="reference internal" href="settings.html#registering-settings-and-sections">Registering Settings and Sections</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="security.html">Security</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="security.html#rate-limiting">Rate Limiting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security.html#remote-host-validation">Remote Host Validation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security.html#trusted-domain">Trusted domain</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="setup_checks.html">Setup checks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="setup_checks.html#register-a-setup-check">Register a setup check</a></li>
+<li class="toctree-l2"><a class="reference internal" href="setup_checks.html#define-a-setup-check">Define a setup check</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="repair.html">Repair steps</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="repair.html#creating-a-repair-step">Creating a repair step</a></li>
+<li class="toctree-l2"><a class="reference internal" href="repair.html#register-a-repair-step">Register a repair-step</a></li>
+<li class="toctree-l2"><a class="reference internal" href="repair.html#repair-step-types">Repair-step types</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="deadlock.html">Deadlocks</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="deadlock.html#understanding-the-locking-situation">Understanding the locking situation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deadlock.html#mitigations">Mitigations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deadlock.html#references">References</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="snowflake_ids.html">Snowflake IDs</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="snowflake_ids.html#store-a-snowflake-id-in-database">Store a Snowflake ID in database</a></li>
+<li class="toctree-l2"><a class="reference internal" href="snowflake_ids.html#generate-a-snowflake-id">Generate a Snowflake ID</a></li>
+<li class="toctree-l2"><a class="reference internal" href="snowflake_ids.html#decode-a-snowflake-id">Decode a Snowflake ID</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="time.html">Working with time</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="time.html#methods">Methods</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="openmetrics.html">Open Metrics exporter</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="openmetrics.html#register-a-new-exporter">Register a new exporter</a></li>
+<li class="toctree-l2"><a class="reference internal" href="openmetrics.html#implement-a-new-exporter">Implement a new exporter</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="webdav_collection_preload.html">WebDAV collection preload events</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="webdav_collection_preload.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="webdav_collection_preload.html#when-the-event-is-emitted">When the event is emitted</a></li>
+<li class="toctree-l2"><a class="reference internal" href="webdav_collection_preload.html#subscribing-to-the-event-in-a-plugin">Subscribing to the event in a plugin</a></li>
+<li class="toctree-l2"><a class="reference internal" href="webdav_collection_preload.html#built-in-examples">Built-in examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="webdav_collection_preload.html#best-practices">Best practices</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="phonenumberutil.html">Phone number util</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="phonenumberutil.html#convert-input-into-standard-format">Convert input into standard format</a></li>
+<li class="toctree-l2"><a class="reference internal" href="phonenumberutil.html#get-the-country-code-for-a-region">Get the country code for a region</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="psr.html" class="btn btn-neutral float-left" title="PSR" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="config/index.html" class="btn btn-neutral float-right" title="Config &amp; Preferences" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
+      <span class="lastupdated">Last updated on Apr 16, 2026.
+      </span></p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Versions</dt>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/latest/developer_manual"
+             
+             style="color: var(--dark-link-color);"
+             
+          >
+            latest
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/stable/developer_manual"
+             
+          >
+            stable
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/32/developer_manual"
+             
+          >
+            32
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/31/developer_manual"
+             
+          >
+            31
+          </a>
+        </dd>
+        
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

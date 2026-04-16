@@ -62,6 +62,7 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../index.html">Nextcloud latest user manual introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../webinterface.html">The Nextcloud Web interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../activity.html">Using the Activity app</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../files/index.html">Files &amp; synchronization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Talk</a></li>
@@ -187,12 +188,9 @@ to override the automatic update check mechanism, whereas the second method
 prevents any manual overrides.</p>
 <p>To prevent automatic updates, but allow manual overrides:</p>
 <ol class="arabic">
-<li><p>Edit these Registry keys:</p>
+<li><p>Edit this Registry key:</p>
 <blockquote>
-<div><ol class="loweralpha simple">
-<li><p>(32-bit-Windows) <code class="docutils literal notranslate"><span class="pre">HKEY_LOCAL_MACHINE\Software\Nextcloud\Nextcloud</span></code></p></li>
-<li><p>(64-bit-Windows) <code class="docutils literal notranslate"><span class="pre">HKEY_LOCAL_MACHINE\Software\Wow6432Node\Nextcloud\Nextcloud</span></code></p></li>
-</ol>
+<div><p><code class="docutils literal notranslate"><span class="pre">HKEY_LOCAL_MACHINE\Software\Nextcloud</span> <span class="pre">GmbH\Nextcloud</span></code></p>
 </div></blockquote>
 </li>
 <li><p>Add the key <code class="docutils literal notranslate"><span class="pre">skipUpdateCheck</span></code> (of type DWORD).</p></li>
@@ -216,7 +214,9 @@ Group Policies.</p>
 </ol>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>branded clients have different key names</p>
+<p>Branded clients use a different key in place of
+<code class="docutils literal notranslate"><span class="pre">Nextcloud</span> <span class="pre">GmbH\Nextcloud</span></code> that matches the branded application vendor and
+name.</p>
 </div>
 </section>
 <section id="preventing-automatic-updates-in-linux-environments">
@@ -262,6 +262,8 @@ Add this line to the [General] section:</p>
 
   
   
+  
+    
   
     
   
@@ -523,6 +525,14 @@ Add this line to the [General] section:</p>
           </dd>
         
           <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/lt/"
+               
+            >
+              lt
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
             <a href="/server/latest/user_manual/mn/"
                
             >
@@ -708,20 +718,6 @@ Add this line to the [General] section:</p>
             </a>
           </dd>
         
-      </dl>
-      <dl>
-        <dt>Downloads</dt>
-        
-      </dl>
-      <dl>
-        
-        <dt>On Read the Docs</dt>
-        <dd>
-          <a href="///projects//?fromdocs=">Project Home</a>
-        </dd>
-        <dd>
-          <a href="///builds//?fromdocs=">Builds</a>
-        </dd>
       </dl>
     </div>
   </div>

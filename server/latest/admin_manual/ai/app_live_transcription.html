@@ -107,6 +107,7 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">App: Live Transcription and Translation in Nextcloud Talk (live_transcription)</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#installation">Installation</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#requirements">Requirements</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#logs">Logs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#app-store">App store</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#repository">Repository</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#limitations">Limitations</a></li>
@@ -249,6 +250,28 @@ and the High-Performance Backend must be functionally configured in Nextcloud Ta
 The above sizing recommendations come from our estimates and are not real-world benchmarks.
 Actual requirements will vary based on factors such as the number of concurrent calls, audio quality, and selected languages.
 Please do thorough testing to confirm your hardware meets your needs.</p>
+</div>
+</section>
+<section id="logs">
+<h2>Logs<a class="headerlink" href="#logs" title="Link to this heading"></a></h2>
+<div class="line-block">
+<div class="line">Warnings and errors are logged to the main Nextcloud server logs.</div>
+<div class="line">To inspect the detailed JSON logs for lower levels, the following commands can help.</div>
+</div>
+<p>To view docker stdout/err logs:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>logs<span class="w"> </span>-f<span class="w"> </span>-n400<span class="w"> </span>nc_app_live_transcription
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line">To view the JSON logs:</div>
+<div class="line">The logs are rotated when file size exceeds 20 MiB. The older log files are named <code class="docutils literal notranslate"><span class="pre">lt.log.1</span></code>, <code class="docutils literal notranslate"><span class="pre">lt.log.2</span></code>, and so on.</div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>nc_app_live_transcription<span class="w"> </span>tail<span class="w"> </span>-f<span class="w"> </span>-n400<span class="w"> </span>/nc_app_live_transcription_data/logs/lt.log
+</pre></div>
+</div>
+<p>To download the JSON logs:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>docker<span class="w"> </span>cp<span class="w"> </span>nc_app_live_transcription:/nc_app_live_transcription_data/logs/<span class="w"> </span>/tmp/nc_app_live_transcription_logs
+</pre></div>
 </div>
 </section>
 <section id="app-store">

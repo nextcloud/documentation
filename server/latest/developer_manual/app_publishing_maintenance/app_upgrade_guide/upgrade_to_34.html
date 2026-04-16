@@ -198,12 +198,14 @@ and use the <code class="docutils literal notranslate"><span class="pre">NcAppNa
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">\OCP\DB\QueryBuilder\ITypedQueryBuilder</span></code> is added in favour of <code class="docutils literal notranslate"><span class="pre">\OCP\DB\QueryBuilder\IQueryBuilder</span></code> and can be accessed through <code class="docutils literal notranslate"><span class="pre">\OCP\IDBConnection::getTypedQueryBuilder</span></code>.
 This query builder has the benefit of accurately returning the selected columns in a query result, increasing type safety.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Talk\IConversationOptions</span></code> has been extended, to allow defining the newly created conversation as related to a meeting with it’s start and end date.
+The information is used by Talk to automatically clean up such conversations after a given time.</p></li>
 </ul>
 </section>
 <section id="id2">
 <h3>Changed APIs<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
 <ul class="simple">
-<li><p>TBD</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">\OCP\Notification\INotification::setIcon</span></code>, <code class="docutils literal notranslate"><span class="pre">\OCP\Notification\INotification::setLink</span></code> and <code class="docutils literal notranslate"><span class="pre">\OCP\Notification\IAction::setLink</span></code> now throw <code class="docutils literal notranslate"><span class="pre">\OCP\Notification\InvalidValueException</span></code> when the provided link is not absolute as previously announced in <a class="reference internal" href="upgrade_to_30.html"><span class="doc">Upgrade to Nextcloud 30</span></a></p></li>
 </ul>
 </section>
 <section id="id3">
@@ -233,7 +235,7 @@ This query builder has the benefit of accurately returning the selected columns 
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Apr 03, 2026.
+      <span class="lastupdated">Last updated on Apr 16, 2026.
       </span></p>
   </div>
 

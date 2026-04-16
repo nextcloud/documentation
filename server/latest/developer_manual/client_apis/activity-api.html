@@ -7,7 +7,7 @@
   <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Activity &mdash; Nextcloud latest Developer Manual latest documentation</title>
+  <title>Activity API &mdash; Nextcloud latest Developer Manual latest documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
@@ -71,7 +71,36 @@
 <li class="toctree-l1"><a class="reference internal" href="../html_css_design/index.html">HTML/CSS guidelines</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Clients and Client APIs</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="general.html">General</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Activity</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Activity API</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#registering-activity-components">Registering activity components</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#creating-and-publishing-events">Creating and publishing events</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#required-fields">Required fields</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#optional-fields">Optional fields</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#implementing-a-provider">Implementing a provider</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#check-responsibility">Check responsibility</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#set-the-parsed-subject">Set the parsed subject</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#rich-object-strings">Rich object strings</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#short-vs-long-translations">Short vs. long translations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#merging-activities">Merging activities</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#implementing-a-setting">Implementing a setting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#implementing-a-filter">Implementing a filter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#rest-api-v2">REST API (v2)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#capabilities">Capabilities</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#endpoints">Endpoints</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#parameters">Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#http-status-codes">HTTP status codes</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#response-headers">Response headers</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#activity-element-fields">Activity element fields</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#example-response">Example response</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#further-reading">Further reading</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="android_library/index.html">Android</a></li>
 <li class="toctree-l2"><a class="reference internal" href="files.html">Files</a></li>
 <li class="toctree-l2"><a class="reference internal" href="LoginFlow/index.html">Login Flow</a></li>
@@ -99,7 +128,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="index.html">Clients and Client APIs</a></li>
-      <li class="breadcrumb-item active">Activity</li>
+      <li class="breadcrumb-item active">Activity API</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/developer_manual/client_apis/activity-api.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
@@ -109,9 +138,531 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="activity">
-<h1>Activity<a class="headerlink" href="#activity" title="Link to this heading"></a></h1>
-<p>Find the documentation in the <a class="reference external" href="https://github.com/nextcloud/activity/blob/master/docs/endpoint-v2.md">Activity app repo</a>.</p>
+  <section id="activity-api">
+<span id="id1"></span><h1>Activity API<a class="headerlink" href="#activity-api" title="Link to this heading"></a></h1>
+<p>The Activity app provides an API for other Nextcloud apps to publish
+events, display them in the activity stream, and let users control
+their notification preferences. It also exposes a REST API for
+clients to consume the activity stream.</p>
+<p>The extension API consists of four interfaces, all in the <code class="docutils literal notranslate"><span class="pre">OCP</span></code>
+namespace:</p>
+<ul class="simple">
+<li><p><strong>IEvent</strong> — The activity event object</p></li>
+<li><p><strong>IProvider</strong> — Parses and translates activities for display</p></li>
+<li><p><strong>ISetting</strong> — Defines activity types and notification preferences</p></li>
+<li><p><strong>IFilter</strong> — Adds filters to the activity stream sidebar</p></li>
+</ul>
+<p>All three extension interfaces (IProvider, ISetting, IFilter) are
+registered in your app’s <code class="docutils literal notranslate"><span class="pre">appinfo/info.xml</span></code>.</p>
+<section id="registering-activity-components">
+<h2>Registering activity components<a class="headerlink" href="#registering-activity-components" title="Link to this heading"></a></h2>
+<p>Add an <code class="docutils literal notranslate"><span class="pre">&lt;activity&gt;</span></code> section to your <code class="docutils literal notranslate"><span class="pre">appinfo/info.xml</span></code> to register
+providers, settings, and filters:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
+<span class="nt">&lt;info&gt;</span>
+<span class="w">    </span>...
+<span class="w">    </span><span class="nt">&lt;activity&gt;</span>
+<span class="w">        </span><span class="nt">&lt;settings&gt;</span>
+<span class="w">            </span><span class="nt">&lt;setting&gt;</span>OCA\MyApp\Activity\Setting<span class="nt">&lt;/setting&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/settings&gt;</span>
+
+<span class="w">        </span><span class="nt">&lt;filters&gt;</span>
+<span class="w">            </span><span class="nt">&lt;filter&gt;</span>OCA\MyApp\Activity\Filter<span class="nt">&lt;/filter&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/filters&gt;</span>
+
+<span class="w">        </span><span class="nt">&lt;providers&gt;</span>
+<span class="w">            </span><span class="nt">&lt;provider&gt;</span>OCA\MyApp\Activity\Provider<span class="nt">&lt;/provider&gt;</span>
+<span class="w">        </span><span class="nt">&lt;/providers&gt;</span>
+<span class="w">    </span><span class="nt">&lt;/activity&gt;</span>
+<span class="nt">&lt;/info&gt;</span>
+</pre></div>
+</div>
+<p>Each value is the fully qualified class name of the implementation.</p>
+</section>
+<section id="creating-and-publishing-events">
+<h2>Creating and publishing events<a class="headerlink" href="#creating-and-publishing-events" title="Link to this heading"></a></h2>
+<p>To create and publish an activity event, generate an <code class="docutils literal notranslate"><span class="pre">IEvent</span></code> from
+the activity manager and call <code class="docutils literal notranslate"><span class="pre">publish()</span></code>:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="c1">// IManager is injected via dependency injection</span>
+<span class="nv">$event</span> <span class="o">=</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">activityManager</span><span class="o">-&gt;</span><span class="na">generateEvent</span><span class="p">();</span>
+<span class="nv">$event</span><span class="o">-&gt;</span><span class="na">setApp</span><span class="p">(</span><span class="s1">&#39;myapp&#39;</span><span class="p">)</span>
+    <span class="o">-&gt;</span><span class="na">setType</span><span class="p">(</span><span class="s1">&#39;myapp_action&#39;</span><span class="p">)</span>
+    <span class="o">-&gt;</span><span class="na">setAffectedUser</span><span class="p">(</span><span class="s1">&#39;targetUser&#39;</span><span class="p">)</span>
+    <span class="o">-&gt;</span><span class="na">setSubject</span><span class="p">(</span><span class="s1">&#39;subject_key&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;param1&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;value1&#39;</span><span class="p">])</span>
+    <span class="o">-&gt;</span><span class="na">setObject</span><span class="p">(</span><span class="s1">&#39;myobject&#39;</span><span class="p">,</span> <span class="mi">42</span><span class="p">,</span> <span class="s1">&#39;Object Name&#39;</span><span class="p">);</span>
+<span class="nv">$this</span><span class="o">-&gt;</span><span class="na">activityManager</span><span class="o">-&gt;</span><span class="na">publish</span><span class="p">(</span><span class="nv">$event</span><span class="p">);</span>
+</pre></div>
+</div>
+<section id="required-fields">
+<h3>Required fields<a class="headerlink" href="#required-fields" title="Link to this heading"></a></h3>
+<p>The following must be set before publishing:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">setApp()</span></code> — Your app ID</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">setType()</span></code> — Must match an <code class="docutils literal notranslate"><span class="pre">ISetting::getIdentifier()</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">setAffectedUser()</span></code> — The user who will see this activity</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">setSubject()</span></code> — A subject key and optional parameters</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">setObject()</span></code> — The object type, ID, and name</p></li>
+</ul>
+</section>
+<section id="optional-fields">
+<h3>Optional fields<a class="headerlink" href="#optional-fields" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">setAuthor()</span></code> — If unset, the current user is used</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">setTimestamp()</span></code> — If unset, the current time is used</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">setMessage()</span></code> — An additional message key and parameters</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">setLink()</span></code> — Should typically be set in <code class="docutils literal notranslate"><span class="pre">IProvider::parse()</span></code>
+instead</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">setIcon()</span></code> — Should typically be set in <code class="docutils literal notranslate"><span class="pre">IProvider::parse()</span></code>
+instead</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Do not call <code class="docutils literal notranslate"><span class="pre">setParsedSubject()</span></code>, <code class="docutils literal notranslate"><span class="pre">setRichSubject()</span></code>,
+<code class="docutils literal notranslate"><span class="pre">setParsedMessage()</span></code>, <code class="docutils literal notranslate"><span class="pre">setRichMessage()</span></code>, or
+<code class="docutils literal notranslate"><span class="pre">setChildEvent()</span></code> when publishing. These are not persisted and
+should be set in your provider’s <code class="docutils literal notranslate"><span class="pre">parse()</span></code> method.</p>
+</div>
+</section>
+</section>
+<section id="implementing-a-provider">
+<h2>Implementing a provider<a class="headerlink" href="#implementing-a-provider" title="Link to this heading"></a></h2>
+<p>Providers implement <code class="docutils literal notranslate"><span class="pre">OCP\Activity\IProvider</span></code> to parse, translate,
+and beautify activities for display. The interface has a single
+<code class="docutils literal notranslate"><span class="pre">parse()</span></code> method.</p>
+<section id="check-responsibility">
+<h3>Check responsibility<a class="headerlink" href="#check-responsibility" title="Link to this heading"></a></h3>
+<p>First, check whether the event belongs to your app. If not, throw
+<code class="docutils literal notranslate"><span class="pre">UnknownActivityException</span></code> so the activity app passes it to the
+next provider:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="k">public</span> <span class="k">function</span> <span class="nf">parse</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$language</span><span class="p">,</span> <span class="nx">IEvent</span> <span class="nv">$event</span><span class="p">,</span> <span class="o">?</span><span class="nx">IEvent</span> <span class="nv">$previousEvent</span> <span class="o">=</span> <span class="k">null</span><span class="p">)</span><span class="o">:</span> <span class="nx">IEvent</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nv">$event</span><span class="o">-&gt;</span><span class="na">getApp</span><span class="p">()</span> <span class="o">!==</span> <span class="s1">&#39;myapp&#39;</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">throw</span> <span class="k">new</span> <span class="nx">\OCP\Activity\Exceptions\UnknownActivityException</span><span class="p">();</span>
+    <span class="p">}</span>
+
+    <span class="c1">// ... parse the event</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">UnknownActivityException</span></code> was added in Nextcloud 30.
+For older versions, throw <code class="docutils literal notranslate"><span class="pre">\InvalidArgumentException</span></code> instead.</p>
+</div>
+</section>
+<section id="set-the-parsed-subject">
+<h3>Set the parsed subject<a class="headerlink" href="#set-the-parsed-subject" title="Link to this heading"></a></h3>
+<p>At minimum, you must call <code class="docutils literal notranslate"><span class="pre">setParsedSubject()</span></code> with a translated,
+plain-text string:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$event</span><span class="o">-&gt;</span><span class="na">setParsedSubject</span><span class="p">(</span>
+    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;You created %1$s&#39;</span><span class="p">,</span> <span class="p">[</span><span class="nv">$event</span><span class="o">-&gt;</span><span class="na">getObjectName</span><span class="p">()])</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>Additionally, you should call:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">setIcon()</span></code> — A full URL to an icon for the activity</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">setRichSubject()</span></code> — A translated string with placeholders and
+a parameter array for rich display</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Starting with Nextcloud 26, calling <code class="docutils literal notranslate"><span class="pre">setRichSubject()</span></code>
+automatically generates a parsed subject, so a separate
+<code class="docutils literal notranslate"><span class="pre">setParsedSubject()</span></code> call is no longer required.</p>
+</div>
+</section>
+<section id="rich-object-strings">
+<h3>Rich object strings<a class="headerlink" href="#rich-object-strings" title="Link to this heading"></a></h3>
+<p>Rich subjects allow the UI to render interactive elements like file
+links and user avatars. The <code class="docutils literal notranslate"><span class="pre">setRichSubject()</span></code> method takes a
+translated string with placeholders and an array of typed objects:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$event</span><span class="o">-&gt;</span><span class="na">setRichSubject</span><span class="p">(</span>
+    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s1">&#39;You added {file} to your favorites&#39;</span><span class="p">),</span>
+    <span class="p">[</span><span class="s1">&#39;file&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
+        <span class="s1">&#39;type&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;file&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="p">(</span><span class="nx">string</span><span class="p">)</span> <span class="nv">$event</span><span class="o">-&gt;</span><span class="na">getObjectId</span><span class="p">(),</span>
+        <span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="nb">basename</span><span class="p">(</span><span class="nv">$event</span><span class="o">-&gt;</span><span class="na">getObjectName</span><span class="p">()),</span>
+        <span class="s1">&#39;path&#39;</span> <span class="o">=&gt;</span> <span class="nv">$event</span><span class="o">-&gt;</span><span class="na">getObjectName</span><span class="p">(),</span>
+    <span class="p">]]</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<p>Available object types and their required keys are defined in
+<a class="reference external" href="https://github.com/nextcloud/server/blob/master/lib/public/RichObjectStrings/Definitions.php">OCP\RichObjectStrings\Definitions</a>.</p>
+</section>
+<section id="short-vs-long-translations">
+<h3>Short vs. long translations<a class="headerlink" href="#short-vs-long-translations" title="Link to this heading"></a></h3>
+<p>File-related activities support a short form (e.g. “Added to
+favorites”) for the sidebar and a long form (e.g. “You added
+hello.jpg to your favorites”) for the stream. Check
+<code class="docutils literal notranslate"><span class="pre">IManager::isFormattingFilteredObject()</span></code> to decide which form to
+use.</p>
+</section>
+<section id="merging-activities">
+<h3>Merging activities<a class="headerlink" href="#merging-activities" title="Link to this heading"></a></h3>
+<p>Related activities can be merged automatically using
+<code class="docutils literal notranslate"><span class="pre">OCP\Activity\IEventMerger</span></code> (inject via dependency injection).
+The merger combines events when all of the following are met:</p>
+<ul class="simple">
+<li><p>Same <code class="docutils literal notranslate"><span class="pre">getApp()</span></code></p></li>
+<li><p>No message set (<code class="docutils literal notranslate"><span class="pre">getMessage()</span></code> is empty)</p></li>
+<li><p>Same <code class="docutils literal notranslate"><span class="pre">getSubject()</span></code></p></li>
+<li><p>Same <code class="docutils literal notranslate"><span class="pre">getObjectType()</span></code></p></li>
+<li><p>Time difference is less than 3 hours</p></li>
+<li><p>At most 5 events are merged</p></li>
+</ul>
+<p>Do not merge events manually if these requirements are not met.</p>
+</section>
+</section>
+<section id="implementing-a-setting">
+<h2>Implementing a setting<a class="headerlink" href="#implementing-a-setting" title="Link to this heading"></a></h2>
+<p>Settings define activity types and appear on the personal
+notification preferences page. They implement
+<code class="docutils literal notranslate"><span class="pre">OCP\Activity\ISetting</span></code>.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 75.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Method</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">getIdentifier()</span></code></p></td>
+<td><p>Unique ID (lowercase <code class="docutils literal notranslate"><span class="pre">a-z</span></code> and underscores only). <strong>Must
+match</strong> the value used in <code class="docutils literal notranslate"><span class="pre">IEvent::setType()</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">getName()</span></code></p></td>
+<td><p>Translated, short description. May use <code class="docutils literal notranslate"><span class="pre">&lt;strong&gt;</span></code> for
+emphasis.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">getIcon()</span></code></p></td>
+<td><p>Absolute URL to a 32x32 pixel icon (SVG preferred).</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">getPriority()</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code> (first) to <code class="docutils literal notranslate"><span class="pre">100</span></code> (last). Use <code class="docutils literal notranslate"><span class="pre">70</span></code> as default.
+Values below <code class="docutils literal notranslate"><span class="pre">10</span></code> are reserved.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">isDefaultEnabledStream()</span></code></p></td>
+<td><p>Whether stream display is enabled by default for new users.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">isDefaultEnabledMail()</span></code></p></td>
+<td><p>Whether email notifications are enabled by default.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">canChangeStream()</span></code></p></td>
+<td><p>Whether users can toggle stream display.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">canChangeMail()</span></code></p></td>
+<td><p>Whether users can toggle email notifications.</p></td>
+</tr>
+</tbody>
+</table>
+<p>When both <code class="docutils literal notranslate"><span class="pre">canChangeStream()</span></code> and <code class="docutils literal notranslate"><span class="pre">canChangeMail()</span></code> return
+<code class="docutils literal notranslate"><span class="pre">false</span></code>, the setting is hidden from the personal page entirely.</p>
+</section>
+<section id="implementing-a-filter">
+<h2>Implementing a filter<a class="headerlink" href="#implementing-a-filter" title="Link to this heading"></a></h2>
+<p>Filters restrict the activity stream and appear in the sidebar
+navigation. They implement <code class="docutils literal notranslate"><span class="pre">OCP\Activity\IFilter</span></code>.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 25.0%" />
+<col style="width: 75.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Method</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">getIdentifier()</span></code></p></td>
+<td><p>Unique ID (lowercase <code class="docutils literal notranslate"><span class="pre">a-z</span></code> and underscores only). Used in
+URLs.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">getName()</span></code></p></td>
+<td><p>Translated label, 1-3 short words.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">getIcon()</span></code></p></td>
+<td><p>Absolute URL to a 32x32 pixel icon (SVG preferred).</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">getPriority()</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">0</span></code> (first) to <code class="docutils literal notranslate"><span class="pre">100</span></code> (last). Use <code class="docutils literal notranslate"><span class="pre">70</span></code> as default.
+Values below <code class="docutils literal notranslate"><span class="pre">10</span></code> are reserved.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">allowedApps()</span></code></p></td>
+<td><p>Return an array of app IDs to show, or an empty array for
+all apps.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">filterTypes()</span></code></p></td>
+<td><p>Receives a list of type identifiers (from <code class="docutils literal notranslate"><span class="pre">ISetting</span></code>),
+return a filtered subset. Return the input unchanged to show
+all types.</p></td>
+</tr>
+</tbody>
+</table>
+<p>Example filtering to only show calendar todo activities:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">function</span> <span class="nf">filterTypes</span><span class="p">(</span><span class="k">array</span> <span class="nv">$types</span><span class="p">)</span><span class="o">:</span> <span class="k">array</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nb">array_intersect</span><span class="p">([</span><span class="s1">&#39;calendar_todo&#39;</span><span class="p">],</span> <span class="nv">$types</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="rest-api-v2">
+<h2>REST API (v2)<a class="headerlink" href="#rest-api-v2" title="Link to this heading"></a></h2>
+<p>The Activity app exposes a REST API for clients to consume the
+activity stream.</p>
+<section id="capabilities">
+<h3>Capabilities<a class="headerlink" href="#capabilities" title="Link to this heading"></a></h3>
+<p>The API advertises its features via capabilities:</p>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span>GET<span class="w"> </span>/ocs/v2.php/cloud/capabilities
+
+<span class="nt">&lt;activity&gt;</span>
+<span class="w"> </span><span class="nt">&lt;apiv2&gt;</span>
+<span class="w">  </span><span class="nt">&lt;element&gt;</span>filters<span class="nt">&lt;/element&gt;</span>
+<span class="w">  </span><span class="nt">&lt;element&gt;</span>previews<span class="nt">&lt;/element&gt;</span>
+<span class="w">  </span><span class="nt">&lt;element&gt;</span>rich-strings<span class="nt">&lt;/element&gt;</span>
+<span class="w"> </span><span class="nt">&lt;/apiv2&gt;</span>
+<span class="nt">&lt;/activity&gt;</span>
+</pre></div>
+</div>
+</section>
+<section id="endpoints">
+<h3>Endpoints<a class="headerlink" href="#endpoints" title="Link to this heading"></a></h3>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>GET /ocs/v2.php/apps/activity/api/v2/activity
+GET /ocs/v2.php/apps/activity/api/v2/activity/{filter}
+GET /ocs/v2.php/apps/activity/api/v2/activity/filters
+</pre></div>
+</div>
+</section>
+<section id="parameters">
+<h3>Parameters<a class="headerlink" href="#parameters" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 15.0%" />
+<col style="width: 65.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Name</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">since</span></code></p></td>
+<td><p>int</p></td>
+<td><p>ID of the last activity seen (optional)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">limit</span></code></p></td>
+<td><p>int</p></td>
+<td><p>Number of activities to return (default: <code class="docutils literal notranslate"><span class="pre">50</span></code>, optional)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">object_type</span></code></p></td>
+<td><p>string</p></td>
+<td><p>Filter by object type. Requires <code class="docutils literal notranslate"><span class="pre">object_id</span></code> and the
+<code class="docutils literal notranslate"><span class="pre">filter</span></code> type filter (optional)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">object_id</span></code></p></td>
+<td><p>string</p></td>
+<td><p>Filter by object ID. Requires <code class="docutils literal notranslate"><span class="pre">object_type</span></code> and the
+<code class="docutils literal notranslate"><span class="pre">filter</span></code> type filter (optional)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">sort</span></code></p></td>
+<td><p>string</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">asc</span></code> or <code class="docutils literal notranslate"><span class="pre">desc</span></code> (default: <code class="docutils literal notranslate"><span class="pre">desc</span></code>, optional)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="http-status-codes">
+<h3>HTTP status codes<a class="headerlink" href="#http-status-codes" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 80.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Code</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">200</span> <span class="pre">OK</span></code></p></td>
+<td><p>Activities returned</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">204</span> <span class="pre">No</span> <span class="pre">Content</span></code></p></td>
+<td><p>User has no activities selected for the stream</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">304</span> <span class="pre">Not</span> <span class="pre">Modified</span></code></p></td>
+<td><p>ETag matches or end of list reached</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">403</span> <span class="pre">Forbidden</span></code></p></td>
+<td><p>Offset activity belongs to another user, or not logged in</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">404</span> <span class="pre">Not</span> <span class="pre">Found</span></code></p></td>
+<td><p>Unknown filter</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="response-headers">
+<h3>Response headers<a class="headerlink" href="#response-headers" title="Link to this heading"></a></h3>
+<dl class="simple">
+<dt><code class="docutils literal notranslate"><span class="pre">Link</span></code></dt><dd><p>URL for the next page of results, including all parameters:
+<code class="docutils literal notranslate"><span class="pre">&lt;https://cloud.example.com/ocs/v2.php/apps/activity/api/v2/activity/all?since=364&gt;;</span> <span class="pre">rel=&quot;next&quot;</span></code></p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">X-Activity-First-Known</span></code></dt><dd><p>ID of the first known activity (when <code class="docutils literal notranslate"><span class="pre">since</span></code> was not recognized).</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">X-Activity-Last-Given</span></code></dt><dd><p>ID to use as <code class="docutils literal notranslate"><span class="pre">since</span></code> for the next request.</p>
+</dd>
+</dl>
+</section>
+<section id="activity-element-fields">
+<h3>Activity element fields<a class="headerlink" href="#activity-element-fields" title="Link to this heading"></a></h3>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 15.0%" />
+<col style="width: 65.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Field</p></th>
+<th class="head"><p>Type</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">activity_id</span></code></p></td>
+<td><p>int</p></td>
+<td><p>Unique activity ID</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">datetime</span></code></p></td>
+<td><p>string</p></td>
+<td><p>ISO 8601 timestamp</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">app</span></code></p></td>
+<td><p>string</p></td>
+<td><p>App that created the activity</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">type</span></code></p></td>
+<td><p>string</p></td>
+<td><p>Activity type identifier</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">user</span></code></p></td>
+<td><p>string</p></td>
+<td><p>User ID of the actor (may be empty)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">subject</span></code></p></td>
+<td><p>string</p></td>
+<td><p>Translated plain-text subject</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">subject_rich</span></code></p></td>
+<td><p>array</p></td>
+<td><p>Rich subject: <code class="docutils literal notranslate"><span class="pre">[0]</span></code> is the template string, <code class="docutils literal notranslate"><span class="pre">[1]</span></code> is the
+parameters object</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">message</span></code></p></td>
+<td><p>string</p></td>
+<td><p>Translated plain-text message (optional)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">message_rich</span></code></p></td>
+<td><p>array</p></td>
+<td><p>Rich message, same format as <code class="docutils literal notranslate"><span class="pre">subject_rich</span></code> (optional)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">icon</span></code></p></td>
+<td><p>string</p></td>
+<td><p>Full URL to the activity icon (optional)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">link</span></code></p></td>
+<td><p>string</p></td>
+<td><p>Full URL to the relevant location (optional)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">object_type</span></code></p></td>
+<td><p>string</p></td>
+<td><p>Type of the related object (optional)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">object_id</span></code></p></td>
+<td><p>int</p></td>
+<td><p>ID of the related object (optional)</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">object_name</span></code></p></td>
+<td><p>string</p></td>
+<td><p>Name or path of the related object (optional)</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">previews</span></code></p></td>
+<td><p>array</p></td>
+<td><p>List of preview elements for file activities (optional)</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="example-response">
+<h3>Example response<a class="headerlink" href="#example-response" title="Link to this heading"></a></h3>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;activity_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">1</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;datetime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2015-11-20T12:49:31+00:00&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;app&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;files&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;file_created&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;user&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;test1&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;subject&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;test1 created hello.txt&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;subject_rich&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;0&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;{user1} created {file1}&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nt">&quot;1&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;user1&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;user&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;test1&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Test User&quot;</span>
+<span class="w">      </span><span class="p">},</span>
+<span class="w">      </span><span class="nt">&quot;file1&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;file&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">23</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;hello.txt&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;path&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/test/hello.txt&quot;</span>
+<span class="w">      </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nt">&quot;icon&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://cloud.example.com/apps/files/img/add-color.svg&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;link&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://cloud.example.com/apps/files/?dir=/test&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;object_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;files&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;object_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">23</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;object_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;/test/hello.txt&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;previews&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">      </span><span class="nt">&quot;source&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://cloud.example.com/core/preview.png?file=/hello.txt&amp;x=150&amp;y=150&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;link&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://cloud.example.com/apps/files/?dir=/test&amp;scrollto=hello.txt&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;mimeType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;text/plain&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;fileId&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">23</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;view&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;files&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;isMimeTypeIcon&quot;</span><span class="p">:</span><span class="w"> </span><span class="kc">false</span><span class="p">,</span>
+<span class="w">      </span><span class="nt">&quot;filename&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;hello.txt&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="w">  </span><span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Additional fields not listed above may appear in responses
+for backwards compatibility but should be ignored.</p>
+</div>
+</section>
+</section>
+<section id="further-reading">
+<h2>Further reading<a class="headerlink" href="#further-reading" title="Link to this heading"></a></h2>
+<p>The Activity app repository contains additional documentation with
+more detailed examples:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/nextcloud/activity/blob/master/docs/create.md">Creating events</a></p></li>
+<li><p><a class="reference external" href="https://github.com/nextcloud/activity/blob/master/docs/provider.md">Implementing a provider</a></p></li>
+<li><p><a class="reference external" href="https://github.com/nextcloud/activity/blob/master/docs/setting.md">Implementing a setting</a></p></li>
+<li><p><a class="reference external" href="https://github.com/nextcloud/activity/blob/master/docs/filter.md">Implementing a filter</a></p></li>
+<li><p><a class="reference external" href="https://github.com/nextcloud/activity/blob/master/docs/endpoint-v2.md">REST API v2 endpoint</a></p></li>
+</ul>
+</section>
 </section>
 
 
@@ -126,7 +677,7 @@
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Apr 03, 2026.
+      <span class="lastupdated">Last updated on Apr 16, 2026.
       </span></p>
   </div>
 

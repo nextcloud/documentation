@@ -1,0 +1,1124 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="lt" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prieiga prie „Nextcloud“ failų naudojant „WebDAV“ &mdash; Nextcloud latest User Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=bc97f5cf" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://docs.nextcloud.com/server/stable/user_manual/files/access_webdav.html" />
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=865490d1"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../_static/translations.js?v=e4682f4a"></script>
+      <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <script src="../../_static/js/versions.js"></script>
+    <link rel="index" title="Indeksas" href="../genindex.html" />
+    <link rel="search" title="Paieška" href="../search.html" />
+    <link rel="next" title="Ištrintų failų tvarkymas" href="deleted_file_management.html" />
+    <link rel="prev" title="Prieiga prie failų naudojant „Nextcloud“ žiniatinklio sąsają" href="access_webgui.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Ieškoti dokumentuose" aria-label="Ieškoti dokumentuose" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigacijos meniu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Nextcloud latest user manual introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">The Nextcloud Web interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../activity.html">Using the Activity app</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Files &amp; synchronization</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="access_webgui.html">Prieiga prie failų naudojant „Nextcloud“ žiniatinklio sąsają</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Prieiga prie „Nextcloud“ failų naudojant „WebDAV“</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#official-nextcloud-desktop-and-mobile-clients">Oficialios „Nextcloud“ programos kompiuteriams ir mobiliesiems įrenginiams</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#third-party-webdav-clients">Trečiųjų šalių WebDAV klientai</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#accessing-files-using-linux">Prieiga prie failų naudojant „Linux“</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#nautilus-file-manager">„Nautilus“ failų tvarkyklė</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#accessing-files-with-kde-and-dolphin-file-manager">Prieiga prie failų naudojant KDE ir „Dolphin“ failų tvarkyklę</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#creating-webdav-mounts-on-the-linux-command-line">WebDAV jungčių kūrimas Linux komandinėje eilutėje</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#known-issues">Žinomos problemos</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#problem">Problema</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#solution">Sprendimas</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id1">Problema</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">Sprendimas</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#accessing-files-using-macos">Prieiga prie failų naudojant „macOS“</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#accessing-files-using-microsoft-windows">Prieiga prie failų naudojant „Microsoft Windows“</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#mapping-drives-with-the-command-line">Diskų priskyrimas naudojant komandų eilutę</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#mapping-drives-with-windows-explorer">Diskų priskyrimas naudojant „Windows Explorer“</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#accessing-files-using-cyberduck">Prieiga prie failų naudojant „Cyberduck“</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#accessing-public-shares-over-webdav">Prieiga prie viešų bendrinimų per WebDAV</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#known-problems">Žinomos problemos</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id4">Problema</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#solution-1">Sprendimas 1</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#solution-2">Sprendimas 2</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">Problema</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">Sprendimas</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">Problema</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#answer">Atsakymas</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8">Problema</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id9">Sprendimas</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id10">Problema</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id11">Sprendimas</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#accessing-files-using-curl">Prieiga prie failų naudojant „cURL“</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#accessing-files-using-winscp">Prieiga prie failų naudojant „WinSCP“</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="deleted_file_management.html">Ištrintų failų tvarkymas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="desktop_mobile_sync.html">Stacionariųjų ir mobiliųjų įrenginių sinchronizavimas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="encrypting_files.html">Šifravimas serverio pusėje</a></li>
+<li class="toctree-l2"><a class="reference internal" href="using_e2ee.html">Using end-to-end encryption</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sharing.html">File Sharing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sharing.html#federated-shares">Federated Shares</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_drop.html">Anoniminių įkėlimų kūrimas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="large_file_upload.html">Didelių failų įkėlimai</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quota.html">Saugojimo kvota</a></li>
+<li class="toctree-l2"><a class="reference internal" href="version_control.html">Version control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="projects.html">Projektai</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transfer_ownership.html">Transfer Ownership</a></li>
+<li class="toctree-l2"><a class="reference internal" href="federated_cloud_sharing.html">Federuotų bendrinimų naudojimas</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Talk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Clients</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Setting your preferences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Universal access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Using two-factor authentication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Manage connected browsers and devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">Išorinė saugykla</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobilios navigacijos meniu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest User Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Puslapių navigacija">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Files &amp; synchronization</a></li>
+      <li class="breadcrumb-item active">Prieiga prie „Nextcloud“ failų naudojant „WebDAV“</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/files/access_webdav.rst" class="fa fa-github"> Keisti GitHub'e</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="accessing-nextcloud-files-using-webdav">
+<h1>Prieiga prie „Nextcloud“ failų naudojant „WebDAV“<a class="headerlink" href="#accessing-nextcloud-files-using-webdav" title="Link to this heading"></a></h1>
+<p>„Nextcloud“ visiškai palaiko „WebDAV“ protokolą, todėl galite prisijungti ir sinchronizuoti „Nextcloud Files“ per „WebDAV“. Šiame skyriuje sužinosite, kaip prijungti „Linux“, „macOS“, „Windows“ ir mobiliuosius įrenginius prie „Nextcloud“ serverio.</p>
+<p>WebDAV reiškia „Distributed Authoring and Versioning“ (paskirstytas turinio kūrimas ir versijų valdymas). Tai HTTP išplėtimas, leidžiantis lengvai kurti, skaityti ir redaguoti nuotoliniuose žiniatinklio serveriuose esančius failus. Naudodami WebDAV klientą, galite pasiekti savo „Nextcloud“ failus (įskaitant bendrinamus aplankus) „Linux“, „macOS“ ir „Windows“ sistemose taip pat, kaip ir bet kurį nuotolinį tinklo bendrinimą, ir užtikrinti sinchronizaciją.</p>
+<p>Prieš pradėdami konfigūruoti WebDAV, trumpai apžvelkime, kaip rekomenduojama prijungti kliento įrenginius prie „Nextcloud“.</p>
+<section id="official-nextcloud-desktop-and-mobile-clients">
+<h2>Oficialios „Nextcloud“ programos kompiuteriams ir mobiliesiems įrenginiams<a class="headerlink" href="#official-nextcloud-desktop-and-mobile-clients" title="Link to this heading"></a></h2>
+<p>Rekomenduojamas būdas sinchronizuoti kompiuterį su „Nextcloud“ serveriu – naudoti oficialius „Nextcloud“ sinchronizavimo klientus &lt;<a class="reference external" href="https://nextcloud.com/install/#install-clients">https://nextcloud.com/install/#install-clients</a>&gt;_. Klientą galima sukonfigūruoti taip, kad failai būtų išsaugomi bet kuriame vietiniame kataloge, taip pat galima pasirinkti, su kuriais „Nextcloud“ serverio katalogais sinchronizuoti. Klientas rodo esamą prisijungimo būseną ir registruoja visą veiklą, todėl visada žinosite, kurie nuotoliniai failai buvo atsisiųsti į jūsų kompiuterį, ir galėsite patikrinti, ar vietiniame kompiuteryje sukurti ir atnaujinti failai yra tinkamai sinchronizuoti su serveriu.</p>
+<p>Rekomenduojamas būdas sinchronizuoti „Android“ ir „Apple iOS“ įrenginius – naudoti oficialias „Nextcloud“ mobiliąsias programėles &lt;<a class="reference external" href="https://nextcloud.com/install/">https://nextcloud.com/install/</a>&gt;_.</p>
+<p>Norėdami prijungti oficialias „Nextcloud“ programėles prie „Nextcloud“ serverio, naudokite tą patį URL adresą, kurį naudojate prisijungdami prie „Nextcloud“ iš savo naršyklės, pvz.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">cloud</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">com</span>
+</pre></div>
+</div>
+<p>Jei „Nextcloud“ įdiegta pakatalogyje, pavadintame „nextcloud“:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">nextcloud</span>
+</pre></div>
+</div>
+</section>
+<section id="third-party-webdav-clients">
+<h2>Trečiųjų šalių WebDAV klientai<a class="headerlink" href="#third-party-webdav-clients" title="Link to this heading"></a></h2>
+<p>Jei pageidaujate, kompiuterį prie „Nextcloud“ serverio taip pat galite prijungti naudodami bet kurią trečiosios šalies klientą, kuri palaiko WebDAV protokolą (įskaitant tuos, kurie gali būti integruoti jūsų operacinėje sistemoje).</p>
+<p>Taip pat galite naudoti trečiųjų šalių „WebDAV“ palaikančias programėles, kad prijungtumėte mobilųjį įrenginį prie „Nextcloud“.</p>
+<p>Naudodami trečiųjų šalių klientus, atminkite, kad jie gali būti neoptimizuoti darbui su „Nextcloud“ arba neįdiegti funkcijų, kurias laikote svarbiomis jūsų naudojimo atveju.</p>
+<p>Mobilieji klientai, kuriuos „Nextcloud“ bendruomenės nariai pranešė naudojantys:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://foldersync.io/">FolderSync (Android)</a></p></li>
+<li><p><a class="reference external" href="https://apps.apple.com/us/app/webdav-navigator/id382551345">WebDAV Navigator (iPhone)</a></p></li>
+</ul>
+<p>URL adresas, kurį reikia nurodyti konfigūruojant trečiųjų šalių programėles prisijungimui prie „Nextcloud“, yra šiek tiek ilgesnis nei oficialių klientų atveju:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">cloud</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span>
+</pre></div>
+</div>
+<p>Jei „Nextcloud“ įdiegta pakatalogyje, pavadintame „nextcloud“:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Pastaba</p>
+<p>Naudodami trečiosios šalies WebDAV klientą (įskaitant operacinės sistemos įdiegtą klientą), prisijungimui turėtumėte naudoti programos slaptažodį, o ne įprastą slaptažodį. Be didesnio saugumo, tai <a class="reference external" href="https://github.com/nextcloud/server/issues/32729#issuecomment-1556667151">žymiai padidina našumą</a>. Norėdami nustatyti programos slaptažodį, prisijunkite prie „Nextcloud“ žiniatinklio sąsajos, spustelėkite avatarą dešinėje viršuje ir pasirinkite <em>Asmeniniai nustatymai</em>. Tada kairėje šoninėje juostoje pasirinkite <em>Saugumas</em> ir nusileiskite iki pat apačios. Ten galite sukurti programos slaptažodį (kurį ateityje taip pat galima panaikinti nekeičiant pagrindinio vartotojo slaptažodžio).</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Pastaba</p>
+<p>Toliau pateiktuose pavyzdžiuose <strong>example.com/nextcloud</strong> turėtumėte pakeisti savo „Nextcloud“ serverio URL adresu (jei įdiegta domeno šakninėje kataloge, katalogo dalį praleiskite), o <strong>USERNAME</strong> (vartotojo vardas) – prisijungiančio vartotojo vardu.</p>
+<p>WebDAV URL adresą rasite savo „Nextcloud“ paskyros skyriuje „Failai“ &gt; „Nustatymai“ &gt; „WebDAV“.</p>
+<img alt="„Failų“ nustatymų ekrano kopija, kurioje matoma asmeninė „WebDAV“ nuoroda" src="../../_images/webdav_link.png" />
+</div>
+</section>
+<section id="accessing-files-using-linux">
+<h2>Prieiga prie failų naudojant „Linux“<a class="headerlink" href="#accessing-files-using-linux" title="Link to this heading"></a></h2>
+<p>Linux operacinėse sistemose prieigą prie failų galima gauti šiais būdais.</p>
+<section id="nautilus-file-manager">
+<h3>„Nautilus“ failų tvarkyklė<a class="headerlink" href="#nautilus-file-manager" title="Link to this heading"></a></h3>
+<p><strong>Kai konfigūruojate savo „Nextcloud“ paskyrą</strong> <a class="reference external" href="../groupware/sync_gnome.html">GNOME valdymo centre</a>, <strong>„Nautilus“ automatiškai prijungs jūsų failus kaip „WebDAV“ bendrinimą, nebent atžymėsite failų prieigos parinktį</strong>.</p>
+<p>Nextcloud failus taip pat galite prijungti rankiniu būdu. Naudokite protokolą „davs://“, kad prijungtumėte failų tvarkyklę „Nautilus“ prie savo Nextcloud bendrinimo katalogo:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">davs</span><span class="p">:</span><span class="o">//</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Pastaba</p>
+<p>Jei jūsų ryšys su serveriu nėra apsaugotas HTTPS protokolu, vietoj „davs://“ naudokite „dav://“:</p>
+</div>
+<img alt="Ekrano kopija, kurioje matoma, kaip konfigūruoti failų tvarkyklę „Nautilus“ naudoti WebDAV" src="../../_images/webdav_gnome3_nautilus.png" />
+<div class="admonition note">
+<p class="admonition-title">Pastaba</p>
+<p>Tas pats metodas veikia ir su kitomis failų tvarkyklėmis, kurios naudoja GVFS, pvz., MATE „Caja“ ir Cinnamon „Nemo“.</p>
+</div>
+</section>
+<section id="accessing-files-with-kde-and-dolphin-file-manager">
+<h3>Prieiga prie failų naudojant KDE ir „Dolphin“ failų tvarkyklę<a class="headerlink" href="#accessing-files-with-kde-and-dolphin-file-manager" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Eikite į Sistemos nustatymai -&gt; Tinklai -&gt; Internetinės paskyros</p></li>
+<li><p>Spustelėkite „Pridėti paskyrą…“</p></li>
+<li><p>Spustelėkite „Nextcloud“</p></li>
+<li><p>Įveskite savo serverio adresą</p></li>
+<li><p>Norėdami prisijungti, vykdykite ekrane pateikiamus nurodymus</p></li>
+<li><p>Prisijungę įsitikinkite, kad skiltyje „Naudoti šią paskyrą“ įjungėte „Saugykla“.</p></li>
+<li><p>Dabar galite pasiekti savo failus „Dolphin“ programoje šoninėje juostoje, skiltyje „Tinklas“.</p></li>
+<li><p>(Nebūtina) Norėdami pridėti tai kaip nuorodą šoninėje juostoje, dešiniuoju pelės mygtuku spustelėkite „Nextcloud Saugykla“, tada „Pridėti prie vietų“.</p></li>
+<li><p>(Pasirinktinai) Norėdami pritaikyti nuorodą, dešiniuoju pelės mygtuku spustelėkite nuorodą šoninėje juostoje, tada pasirinkite „Redaguoti…“ ir pagal savo pageidavimus pakeiskite piktogramą bei pavadinimą</p></li>
+</ol>
+</section>
+</section>
+<section id="creating-webdav-mounts-on-the-linux-command-line">
+<h2>WebDAV jungčių kūrimas Linux komandinėje eilutėje<a class="headerlink" href="#creating-webdav-mounts-on-the-linux-command-line" title="Link to this heading"></a></h2>
+<p>WebDAV jungtis galima sukurti iš Linux komandinės eilutės. Tai naudinga, jei norite prisijungti prie „Nextcloud“ taip pat, kaip ir prie bet kurios kitos nuotolinės failų sistemos jungties. Toliau pateiktame pavyzdyje parodoma, kaip sukurti asmeninę jungtį ir ją automatiškai prijungti kiekvieną kartą prisijungus prie kompiuterio su Linux.</p>
+<ol class="arabic">
+<li><p>Įdiekite „davfs2“ WebDAV failų sistemos tvarkyklę, kuri leidžia prijungti WebDAV bendrinimus kaip ir bet kurią kitą nuotolinę failų sistemą. Norėdami ją įdiegti „Debian“ ar „Ubuntu“ sistemoje, naudokite šią komandą:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">davfs2</span>
+</pre></div>
+</div>
+</li>
+<li><p>Naudokite šią komandą, kad įdiegtumėte ją „CentOS“, „Fedora“ ir „openSUSE“ sistemose:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">yum</span> <span class="n">install</span> <span class="n">davfs2</span>
+</pre></div>
+</div>
+</li>
+<li><p>Prisijunkite prie grupės „davfs2“:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usermod</span> <span class="o">-</span><span class="n">aG</span> <span class="n">davfs2</span> <span class="o">&lt;</span><span class="n">username</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</li>
+<li><p>Tada savo namų kataloge sukurkite katalogą „nextcloud“, kuris bus prijungimo taškas, ir katalogą „.davfs2/“, kuriame bus saugomas jūsų asmeninis konfigūracijos failas:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="o">~/</span><span class="n">nextcloud</span>
+<span class="n">mkdir</span> <span class="o">~/.</span><span class="n">davfs2</span>
+</pre></div>
+</div>
+</li>
+<li><p>Kopijuoti <code class="docutils literal notranslate"><span class="pre">/etc/davfs2/secrets</span></code> į <code class="docutils literal notranslate"><span class="pre">~/.davfs2</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cp</span>  <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">davfs2</span><span class="o">/</span><span class="n">secrets</span> <span class="o">~/.</span><span class="n">davfs2</span><span class="o">/</span><span class="n">secrets</span>
+</pre></div>
+</div>
+</li>
+<li><p>Nustatykite save kaip savininką ir nustatykite leidimus „tik savininkui skaityti ir rašyti“:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">chown</span> <span class="o">&lt;</span><span class="n">linux_username</span><span class="o">&gt;</span><span class="p">:</span><span class="o">&lt;</span><span class="n">linux_username</span><span class="o">&gt;</span> <span class="o">~/.</span><span class="n">davfs2</span><span class="o">/</span><span class="n">secrets</span>
+<span class="n">chmod</span> <span class="mi">600</span> <span class="o">~/.</span><span class="n">davfs2</span><span class="o">/</span><span class="n">secrets</span>
+</pre></div>
+</div>
+</li>
+<li><p>„secrets“ (paslaptis) failo pabaigoje įrašykite savo „Nextcloud“ prisijungimo duomenis, nurodydami „Nextcloud“ serverio URL adresą, vartotojo vardą ir slaptažodį:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>https://example.com/nextcloud/remote.php/dav/files/USERNAME/ &lt;username&gt; &lt;password&gt;
+or
+$PathToMountPoint $USERNAME $PASSWORD
+for example
+/home/user/nextcloud john 1234
+</pre></div>
+</div>
+</li>
+<li><p>Pridėkite prijungimo informaciją prie <code class="docutils literal notranslate"><span class="pre">/etc/fstab</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span> <span class="o">/</span><span class="n">home</span><span class="o">/&lt;</span><span class="n">linux_username</span><span class="o">&gt;/</span><span class="n">nextcloud</span> <span class="n">davfs</span> <span class="n">user</span><span class="p">,</span><span class="n">rw</span><span class="p">,</span><span class="n">auto</span> <span class="mi">0</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</li>
+<li><p>Tada patikrinkite, ar jis prijungiamas ir autentifikuojamas, paleisdami šią komandą. Jei teisingai nustatysite, jums nereikės root teisių:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mount</span> <span class="o">~/</span><span class="n">nextcloud</span>
+</pre></div>
+</div>
+</li>
+<li><p>Taip pat turėtumėte galėti jį atjungti:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">umount</span> <span class="o">~/</span><span class="n">nextcloud</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p>Dabar kiekvieną kartą prisijungus prie „Linux“ sistemos, jūsų „Nextcloud“ bendrinamas aplankas turėtų automatiškai prijungti per „WebDAV“ jūsų „~/nextcloud“ kataloge. Jei norite prijungti rankiniu būdu, pakeiskite „auto“ į „noauto“ faile „/etc/fstab“.</p>
+</section>
+<section id="known-issues">
+<h2>Žinomos problemos<a class="headerlink" href="#known-issues" title="Link to this heading"></a></h2>
+<section id="problem">
+<h3>Problema<a class="headerlink" href="#problem" title="Link to this heading"></a></h3>
+<p>Išteklius laikinai nepasiekiamas</p>
+</section>
+<section id="solution">
+<h3>Sprendimas<a class="headerlink" href="#solution" title="Link to this heading"></a></h3>
+<p>Jei kuriant failą kataloge kyla problemų, redaguokite <code class="docutils literal notranslate"><span class="pre">/etc/davfs2/davfs2.conf</span></code> ir pridėkite:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">use_locks</span> <span class="mi">0</span>
+</pre></div>
+</div>
+</section>
+<section id="id1">
+<h3>Problema<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
+<p>Įspėjimai dėl sertifikato</p>
+</section>
+<section id="id2">
+<h3>Sprendimas<a class="headerlink" href="#id2" title="Link to this heading"></a></h3>
+<p>Jei naudojate savarankiškai pasirašytą sertifikatą, gausite įspėjimą. Norėdami tai pakeisti, turite sukonfigūruoti „davfs2“, kad jis atpažintų jūsų sertifikatą. Nukopijuokite „mycertificate.pem“ į „/etc/davfs2/certs/“. Tada redaguokite „/etc/davfs2/davfs2.conf“ ir panaikinkite eilutės „servercert“ komentarą. Dabar pridėkite savo sertifikato kelią, kaip parodyta pavyzdyje:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">servercert</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">davfs2</span><span class="o">/</span><span class="n">certs</span><span class="o">/</span><span class="n">mycertificate</span><span class="o">.</span><span class="n">pem</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="accessing-files-using-macos">
+<h2>Prieiga prie failų naudojant „macOS“<a class="headerlink" href="#accessing-files-using-macos" title="Link to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Pastaba</p>
+<p>„macOS“ „Finder“ turi „keletą įgyvendinimo problemų &lt;<a class="reference external" href="http://sabre.io/dav/clients/finder/">http://sabre.io/dav/clients/finder/</a>&gt;`_ ir jį reikėtų naudoti tik tuo atveju, jei „Nextcloud“ serveris veikia su <strong>Apache</strong> ir <strong>mod_php</strong> arba <strong>Nginx 1.3.8+</strong>. Alternatyvūs „macOS“ suderinami klientai, galintys prisijungti prie „WebDAV“ išteklių, apima atviro kodo programas, pvz., „Cyberduck &lt;<a class="reference external" href="https://cyberduck.io/">https://cyberduck.io/</a>&gt;`_ (žr. instrukcijas „čia &lt;<a class="reference external" href="https://docs">https://docs</a>. nextcloud.com/server/latest/user_manual/files/access_webdav.html#accessing-files-using-cyberduck&gt;`_) ir <a class="reference external" href="https://filezilla-project.org">Filezilla</a>. Komerciniai klientai apima <a class="reference external" href="https://mountainduck.io/">Mountain Duck</a>, <a class="reference external" href="https://binarynights.com/">Forklift</a>, <a class="reference external" href="https://panic.com/">Transmit</a> ir <a class="reference external" href="https://mac.eltima.com/">Commander One</a>.</p>
+</div>
+<p>Pasiekti failus per „macOS Finder“:</p>
+<ol class="arabic">
+<li><p>Viršutinėje „Finder“ meniu juostoje pasirinkite <strong>Go &gt; Connect to Server…</strong>:</p>
+<img alt="Ekrano kopija, kurioje parodytas „Nextcloud“ serverio adreso įvedimas „macOS“ sistemoje" src="../../_images/osx_webdav1.png" />
+</li>
+<li><p>Kai atsidarys langas <strong>Connect to Server…</strong>, lauke <strong>Server Address:</strong> įveskite savo „Nextcloud“ serverio „WebDAV“ adresą, pvz.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">cloud</span><span class="o">.</span><span class="n">YOURDOMAIN</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span>
+</pre></div>
+</div>
+<img alt="Ekrano kopija: Įveskite „Nextcloud“ serverio adresą dialogo lange „Connect to Server…“" src="../../_images/osx_webdav2.png" />
+</li>
+<li><p>Spustelėkite <strong>Connect</strong>. Jūsų WebDAV serveris turėtų būti rodomas darbalaukyje kaip bendras diskas.</p></li>
+</ol>
+</section>
+<section id="accessing-files-using-microsoft-windows">
+<h2>Prieiga prie failų naudojant „Microsoft Windows“<a class="headerlink" href="#accessing-files-using-microsoft-windows" title="Link to this heading"></a></h2>
+<p>Jei naudojate originalią „WebDAV“ versiją „Windows“ sistemoje, galite susieti „Nextcloud“ su nauju disku naudodami „Windows Explorer“. Susiejimas su disku leidžia naršyti „Nextcloud“ serveryje saugomus failus taip, kaip naršytumėte susietame tinklo diske saugomus failus.</p>
+<p>Norint naudoti šią funkciją, reikalingas tinklo ryšys. Jei norite saugoti failus neprisijungę prie interneto, naudokite darbalaukio klientą, kad sinchronizuotumėte visus „Nextcloud“ failus su vienu ar keliais vietinio standžiojo disko katalogais.</p>
+<div class="admonition note">
+<p class="admonition-title">Pastaba</p>
+<p>Dabar „Windows 10“ numatyta leisti naudoti paprastąjį autentifikavimą, jei prieš prijungiant diską yra įjungtas HTTPS.</p>
+<p>Senesnėse „Windows“ versijose „Windows Registry“ registre reikia įjungti „Basic Authentication“:</p>
+<ul class="simple">
+<li><p>Paleiskite „regedit“ ir pereikite į „HKEY_LOCAL_MACHINESYSTEMCurrentControlSetServicesWebClientParameters“.</p></li>
+<li><p>Sukurkite arba redaguokite „BasicAuthLevel“ (Windows Vista, 7 ir 8) arba „UseBasicAuth“ (Windows XP ir Windows Server 2003) „DWORD“ reikšmę ir nustatykite jos vertę „1“ SSL ryšiams. Reikšmė „0“ reiškia, kad bazinis autentifikavimas yra išjungtas, o reikšmė „2“ leidžia tiek SSL, tiek ne SSL ryšius (nerekomenduojama).</p></li>
+<li><p>Tada uždarykite registravimo redaktorių ir iš naujo paleiskite kompiuterį.</p></li>
+</ul>
+</div>
+<section id="mapping-drives-with-the-command-line">
+<h3>Diskų priskyrimas naudojant komandų eilutę<a class="headerlink" href="#mapping-drives-with-the-command-line" title="Link to this heading"></a></h3>
+<p>Šiame pavyzdyje parodoma, kaip prijungti diską naudojant komandų eilutę. Norėdami prijungti diską:</p>
+<ol class="arabic">
+<li><p>Atidarykite komandų eilutę „Windows“ sistemoje.</p></li>
+<li><p>Įveskite šią eilutę komandų eilutėje, kad kompiuteryje priskirtumėte Z diską:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">net</span> <span class="n">use</span> <span class="n">Z</span><span class="p">:</span> <span class="n">https</span><span class="p">:</span><span class="o">//&lt;</span><span class="n">drive_path</span><span class="o">&gt;/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span> <span class="o">/</span><span class="n">user</span><span class="p">:</span><span class="n">youruser</span> <span class="n">yourpassword</span>
+</pre></div>
+</div>
+<p>kur &lt;drive_path&gt; yra jūsų „Nextcloud“ serverio URL adresas. Pavyzdžiui:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">net</span> <span class="n">use</span> <span class="n">Z</span><span class="p">:</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span> <span class="o">/</span><span class="n">user</span><span class="p">:</span><span class="n">youruser</span> <span class="n">yourpassword</span>
+</pre></div>
+</div>
+<p>Kompiuteris priskiria jūsų „Nextcloud“ paskyros failus diskui, pažymėtam raide Z.</p>
+</li>
+</ol>
+<div class="admonition error">
+<p class="admonition-title">Klaida</p>
+<p>Jei pasirodo tokia klaida: „Įvyko sistemos klaida 67. Negalima rasti tinklo vardo“, arba dažnai nutrūksta ryšys, atidarykite programėlę <strong>Paslaugos</strong> ir įsitikinkite, kad paslauga „WebClient“ veikia ir paleidžiama automatiškai kompiuterio paleidimo metu.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Pastaba</p>
+<p>Nors to daryti nerekomenduojama, Nextcloud serverį taip pat galima prijungti naudojant HTTP protokolą, paliekant ryšį neužšifruotą.</p>
+<blockquote>
+<div><p>Jei planuojate naudoti HTTP ryšiu įrenginiuose būdami viešoje vietoje, primygtinai rekomenduojame naudoti VPN tunelį, kad būtų užtikrintas reikiamas saugumas.</p>
+</div></blockquote>
+<p>Alternatyvi komandos sintaksė yra tokia:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">net</span> <span class="n">use</span> <span class="n">Z</span><span class="p">:</span> \\<span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="nd">@ssl</span>\<span class="n">nextcloud</span>\<span class="n">remote</span><span class="o">.</span><span class="n">php</span>\<span class="n">dav</span> <span class="o">/</span><span class="n">user</span><span class="p">:</span><span class="n">youruser</span>
+<span class="n">yourpassword</span>
+</pre></div>
+</div>
+</div>
+</section>
+<section id="mapping-drives-with-windows-explorer">
+<h3>Diskų priskyrimas naudojant „Windows Explorer“<a class="headerlink" href="#mapping-drives-with-windows-explorer" title="Link to this heading"></a></h3>
+<p>Kaip prijungti diską naudojant „Microsoft Windows Explorer“:</p>
+<ol class="arabic">
+<li><p>Atidarykite „Windows Explorer“ savo kompiuteryje su „MS Windows“ operacine sistema.</p></li>
+<li><p>Dešiniuoju pelės mygtuku spustelėkite įrašą <strong>Computer</strong> ir išskleidžiamajame meniu pasirinkite <strong>Map network drive…</strong>.</p></li>
+<li><p>Pasirinkite vietinį tinklo diską, su kuriuo norite susieti „Nextcloud“.</p></li>
+<li><p>Įveskite savo „Nextcloud“ elemento adresą, po kurio pridėkite <strong>/remote.php/dav/files/USERNAME/</strong>.</p>
+<p>Pavyzdžiui:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span><span class="o">/</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Pastaba</p>
+<p>Jei naudojate SSL apsaugotus serverius, pažymėkite parinktį <strong>„Prisijungti iš naujo prisijungus“</strong>, kad prisijungimo duomenys būtų išsaugoti ir po vėlesnių sistemos perkrovimų. Jei norite prisijungti prie „Nextcloud“ serverio kitu vartotoju, pažymėkite parinktį <strong>„Prisijungti naudojant kitus prisijungimo duomenis“</strong>.</p>
+</div>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../../_images/explorer_webdav.png"><img alt="„Windows Explorer“ ekrano kopija, kurioje matomas WebDAV priskyrimas" src="../../_images/explorer_webdav.png" style="width: 487.20000000000005px; height: 358.40000000000003px;" />
+</a>
+</figure>
+</li>
+</ol>
+<ol class="arabic simple" start="5">
+<li><p>Spustelėkite mygtuką „Finish“.</p></li>
+</ol>
+<p>„Windows Explorer“ prijungia tinklo diską, todėl jūsų „Nextcloud“ elementas tampa prieinamu.</p>
+</section>
+</section>
+<section id="accessing-files-using-cyberduck">
+<h2>Prieiga prie failų naudojant „Cyberduck“<a class="headerlink" href="#accessing-files-using-cyberduck" title="Link to this heading"></a></h2>
+<p>„Cyberduck &lt;<a class="reference external" href="https://cyberduck.io/">https://cyberduck.io/</a>&gt;`_“ yra atvirojo kodo FTP, SFTP, WebDAV, „OpenStack Swift“ ir „Amazon S3“ naršyklė, skirta failų perdavimui macOS ir Windows sistemose.</p>
+<div class="admonition note">
+<p class="admonition-title">Pastaba</p>
+<p>Šiame pavyzdyje naudojama „Cyberduck“ 4.2.1 versija.</p>
+</div>
+<p>Norėdami naudoti „Cyberduck“:</p>
+<ol class="arabic">
+<li><p>Nurodykite serverį be jokios pradinės protokolo informacijos.</p>
+<p>Pavyzdžiui: „example.com“</p>
+</li>
+<li><p>Nurodykite tinkamą prievadą.</p>
+<p>Pasirinktas prievadas priklauso nuo to, ar jūsų „Nextcloud“ serveris palaiko SSL. „Cyberduck“ reikalauja pasirinkti kitą ryšio tipą, jei planuojate naudoti SSL.</p>
+<dl class="simple">
+<dt>Pavyzdžiui:</dt><dd><ul class="simple">
+<li><p>„80“ – neužšifruotas WebDAV</p></li>
+<li><p>„443“, skirtas saugiam „WebDAV“ (HTTPS/SSL)</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><p>Norėdami pridėti likusią „WebDAV“ URL dalį lauke „Path“, naudokite išskleidžiamąjį meniu „More Options“.</p>
+<p>Pavyzdžiui: „remote.php/dav/files/USERNAME/“</p>
+</li>
+</ol>
+<p>Dabar „Cyberduck“ suteikia prieigą prie failų „Nextcloud“ serveryje.</p>
+</section>
+<section id="accessing-public-shares-over-webdav">
+<h2>Prieiga prie viešų bendrinimų per WebDAV<a class="headerlink" href="#accessing-public-shares-over-webdav" title="Link to this heading"></a></h2>
+<p>„Nextcloud“ suteikia galimybę anonimiškai prisijungti prie viešų bendrinamų aplankų per WebDAV.</p>
+<p>Norėdami pasiekti viešąjį aplanką, atidarykite:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">example</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">public</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">USERNAME</span>
+</pre></div>
+</div>
+<p>WebDAV kliente kaip vartotojo vardą naudokite bendrinimo žymą, o kaip slaptažodį – (neprivalomą) bendrinimo slaptažodį. Pavyzdžiui, jei bendrinimo nuoroda yra <a class="reference external" href="https://example.com/s/kFy9Lek5sm928xP">https://example.com/s/kFy9Lek5sm928xP</a>, vartotojo vardas bus „kFy9Lek5sm928xP“.</p>
+<div class="admonition note">
+<p class="admonition-title">Pastaba</p>
+<p><strong>Settings</strong> → <strong>Administration</strong> → <strong>Sharing</strong> → <strong>Allow users on this server to send shares to other servers</strong>. Ši parinktis taip pat leidžia naudotis viešais bendrinimais per WebDAV ir turi būti įjungta, kad ši funkcija veiktų, išskyrus atvejus, kai naudojamas cURL (žr. toliau).</p>
+</div>
+</section>
+<section id="known-problems">
+<h2>Žinomos problemos<a class="headerlink" href="#known-problems" title="Link to this heading"></a></h2>
+<section id="id4">
+<h3>Problema<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
+<p>„Windows“ nesijungia naudojant HTTPS.</p>
+</section>
+<section id="solution-1">
+<h3>Sprendimas 1<a class="headerlink" href="#solution-1" title="Link to this heading"></a></h3>
+<p>„Windows“ WebDAV klientas gali nepalaikyti serverio vardo nurodymo (SNI) funkcijos šifruotuose ryšiuose. Jei susiduriate su klaida, bandydami prijungti SSL šifruotą „Nextcloud“ elementą, susisiekite su savo paslaugų teikėju dėl dedikuotojo IP adreso priskyrimo jūsų SSL serveriui.</p>
+</section>
+<section id="solution-2">
+<h3>Sprendimas 2<a class="headerlink" href="#solution-2" title="Link to this heading"></a></h3>
+<p>„Windows WebDAV“ klientas gali nepalaikyti TLSv1.1 ir TLSv1.2 ryšių. Jei savo serverio konfigūracijoje nustatėte, kad būtų teikiami tik TLSv1.1 ir naujesni ryšiai, prisijungimas prie jūsų serverio gali nepavykti. Daugiau informacijos rasite „<a class="reference external" href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa382925.aspx#WinHTTP_5.1_Features">WinHTTP</a>“ dokumentacijoje.</p>
+</section>
+<section id="id5">
+<h3>Problema<a class="headerlink" href="#id5" title="Link to this heading"></a></h3>
+<p>Gausite tokį klaidos pranešimą: <strong>Error 0x800700DF: The file size exceeds the limit allowed and cannot be saved.</strong></p>
+</section>
+<section id="id6">
+<h3>Sprendimas<a class="headerlink" href="#id6" title="Link to this heading"></a></h3>
+<p>„Windows“ riboja didžiausią failo, perkeliama iš arba į „WebDAV“ bendrinimo aplanką, dydį. Galite padidinti reikšmę „FileSizeLimitInBytes“, esančią „HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\WebClient\Parameters“, spustelėdami mygtuką <strong>„Modify“</strong>.</p>
+<p>Norėdami padidinti ribą iki maksimalios 4 GB vertės, pasirinkite <strong>Decimal</strong>, įveskite reikšmę „4294967295“ ir perkraukite „Windows“ arba iš naujo paleiskite <strong>WebClient</strong> paslaugą.</p>
+</section>
+<section id="id7">
+<h3>Problema<a class="headerlink" href="#id7" title="Link to this heading"></a></h3>
+<p>Pridėjus „WebDAV“ diską „Windows“ sistemoje, atlikus aukščiau aprašytus veiksmus, „Nextcloud“ nerodomas tikslus laisvos vietos dydis, o vietoj to rodomas C: disko dydis su jo laisva vieta.</p>
+</section>
+<section id="answer">
+<h3>Atsakymas<a class="headerlink" href="#answer" title="Link to this heading"></a></h3>
+<p>Deja, tai yra pats WebDAV protokolo trūkumas, nes jis nesuteikia klientui galimybės gauti informacijos apie laisvą vietą serveryje. „Windows“ automatiškai rodo C: disko dydį ir jame esančią laisvą vietą. Taigi, deja, tikro sprendimo šiai problemai nėra.</p>
+</section>
+<section id="id8">
+<h3>Problema<a class="headerlink" href="#id8" title="Link to this heading"></a></h3>
+<p>Nepavyksta prisijungti prie failų iš „Microsoft Office“ per WebDAV.</p>
+</section>
+<section id="id9">
+<h3>Sprendimas<a class="headerlink" href="#id9" title="Link to this heading"></a></h3>
+<p>Žinomos problemos ir jų sprendimai aprašyti straipsnyje <a class="reference external" href="https://support.microsoft.com/kb/2123563">KB2123563</a>.</p>
+</section>
+<section id="id10">
+<h3>Problema<a class="headerlink" href="#id10" title="Link to this heading"></a></h3>
+<p>Naudojant savarankiškai pasirašytą sertifikatą, „Windows“ sistemoje neįmanoma priskirti „Nextcloud“ kaip WebDAV disko.</p>
+</section>
+<section id="id11">
+<h3>Sprendimas<a class="headerlink" href="#id11" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Prieiga prie jūsų „Nextcloud“ instancijos per mėgstamą žiniatinklio naršyklę.</p></li>
+<li><p>Spauskite toliau, kol naršyklės būsenos juostoje pasirodys pranešimas apie sertifikato klaidą.</p></li>
+<li><p>Peržiūrėkite sertifikatą, tada skirtuke „Details“ pasirinkite „Copy to File“.</p></li>
+<li><p>Išsaugokite failą darbalaukyje, suteikdami jam bet kokį pavadinimą, pavyzdžiui, „manoNextcloud.pem“.</p></li>
+<li><p>Eikite į meniu „Start“ &gt; „Run“, įveskite „MMC“ ir spustelėkite „OK“, kad atidarytumėte „Microsoft Management Console“.</p></li>
+<li><p>Eikite į meniu „File“ &gt; „Add/Remove Snap-In“.</p></li>
+<li><p>Pasirinkite „Certificates“, spustelėkite „Add“, pasirinkite „My User Account“, tada „Finish“ ir galiausiai „OK“.</p></li>
+<li><p>Eiti iki „Trust Root Certification Authorities, Certificates“.</p></li>
+<li><p>Dešiniuoju pelės klavišu spustelėkite „Certificates“, pasirinkite „All Tasks“ ir „Import“.</p></li>
+<li><p>Pasirinkite išsaugotą sertifikatą iš darbalaukio.</p></li>
+<li><p>Pasirinkite „Place all certificates in the following store“ ir spustelėkite „Browse“.</p></li>
+<li><p>Pažymėkite parinktį „Show Physical Stores“, tada išskleiskite sekciją „Trusted Root Certification Authorities“, joje pasirinkite „Local Computer“, spustelėkite „OK“ ir užbaikite procesą.</p></li>
+<li><p>Peržiūrėkite sąrašą ir įsitikinkite, kad jame matomas sertifikatas. Greičiausiai, kad jį pamatytumėte, reikės atnaujinti puslapį paspaudus „Refresh“.</p></li>
+<li><p>Išeiti iš MMC</p></li>
+</ol>
+<p>„Firefox“ vartotojams:</p>
+<ol class="arabic simple">
+<li><p>Paleiskite naršyklę, eikite į „Application menu“ &gt; „History“ &gt; „Clear recent history…“</p></li>
+<li><p>Išskleidžiamajame meniu „Time range to clear“ pasirinkite „Everything“.</p></li>
+<li><p>Pažymėkite langelį „Active Logins“</p></li>
+<li><p>Spustelėkite mygtuką „Clear now“</p></li>
+<li><p>Uždarykite naršyklę, tada vėl atidarykite ir išbandykite.</p></li>
+</ol>
+<p>„Chrome“ pagrindu sukurtų naršyklių („Chrome“, „Chromium“, „Microsoft Edge“) naudotojams:</p>
+<ol class="arabic simple">
+<li><p>Atidarykite „Windows Control Panel“, eikite žemyn iki „Internet Options“</p></li>
+<li><p>Skirtuke „Content“ spustelėkite mygtuką „Clear SSL State“.</p></li>
+<li><p>Uždarykite naršyklę, tada vėl atidarykite ir išbandykite.</p></li>
+</ol>
+</section>
+</section>
+<section id="accessing-files-using-curl">
+<h2>Prieiga prie failų naudojant „cURL“<a class="headerlink" href="#accessing-files-using-curl" title="Link to this heading"></a></h2>
+<p>Kadangi „WebDAV“ yra HTTP plėtinys, „cURL“ gali būti naudojamas failų operacijoms skriptuoti.</p>
+<div class="admonition note">
+<p class="admonition-title">Pastaba</p>
+<p><strong>Settings</strong> → <strong>Administration</strong> → <strong>Sharing</strong> → <strong>Allow users on this server to send shares to other servers</strong>. Jei ši parinktis išjungta, į „cURL“ reikia perduoti parinktį „–header „X-Requested-With: XMLHttpRequest““.</p>
+</div>
+<p>Norėdami sukurti aplanką su dabartine data kaip pavadinimu:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>curl<span class="w"> </span>-u<span class="w"> </span>user:pass<span class="w"> </span>-X<span class="w"> </span>MKCOL<span class="w"> </span><span class="s2">&quot;https://example.com/nextcloud/remote.php/dav/files/USERNAME/</span><span class="k">$(</span>date<span class="w"> </span><span class="s1">&#39;+%d-%b-%Y&#39;</span><span class="k">)</span><span class="s2">&quot;</span>
+</pre></div>
+</div>
+<p>Norėdami įkelti failą „error.log“ į tą katalogą:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>curl<span class="w"> </span>-u<span class="w"> </span>user:pass<span class="w"> </span>-T<span class="w"> </span>error.log<span class="w"> </span><span class="s2">&quot;https://example.com/nextcloud/remote.php/dav/files/USERNAME/</span><span class="k">$(</span>date<span class="w"> </span><span class="s1">&#39;+%d-%b-%Y&#39;</span><span class="k">)</span><span class="s2">/error.log&quot;</span>
+</pre></div>
+</div>
+<p>Norėdami perkelti failą:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>$<span class="w"> </span>curl<span class="w"> </span>-u<span class="w"> </span>user:pass<span class="w"> </span>-X<span class="w"> </span>MOVE<span class="w"> </span>--header<span class="w"> </span><span class="s1">&#39;Destination: https://example.com/nextcloud/remote.php/dav/files/USERNAME/target.jpg&#39;</span><span class="w"> </span>https://example.com/nextcloud/remote.php/dav/files/USERNAME/source.jpg
+</pre></div>
+</div>
+<p>Norėdami gauti šakniniame aplanke esančių failų ypatybes:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="w">    </span>$<span class="w"> </span>curl<span class="w"> </span>-X<span class="w"> </span>PROPFIND<span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;Depth: 1&quot;</span><span class="w"> </span>-u<span class="w"> </span>user:pass<span class="w"> </span>https://example.com/nextcloud/remote.php/dav/files/USERNAME/<span class="w"> </span><span class="p">|</span><span class="w"> </span>xml_pp
+<span class="w">    </span>&lt;?xml<span class="w"> </span><span class="nv">version</span><span class="o">=</span><span class="s2">&quot;1.0&quot;</span><span class="w"> </span><span class="nv">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span>?&gt;
+&lt;d:multistatus<span class="w"> </span>xmlns:d<span class="o">=</span><span class="s2">&quot;DAV:&quot;</span><span class="w"> </span>xmlns:oc<span class="o">=</span><span class="s2">&quot;http://nextcloud.org/ns&quot;</span><span class="w"> </span>xmlns:s<span class="o">=</span><span class="s2">&quot;http://sabredav.org/ns&quot;</span>&gt;
+<span class="w">  </span>&lt;d:response&gt;
+<span class="w">    </span>&lt;d:href&gt;/nextcloud/remote.php/dav/files/USERNAME/&lt;/d:href&gt;
+<span class="w">    </span>&lt;d:propstat&gt;
+<span class="w">      </span>&lt;d:prop&gt;
+<span class="w">        </span>&lt;d:getlastmodified&gt;Tue,<span class="w"> </span><span class="m">13</span><span class="w"> </span>Oct<span class="w"> </span><span class="m">2015</span><span class="w"> </span><span class="m">17</span>:07:45<span class="w"> </span>GMT&lt;/d:getlastmodified&gt;
+<span class="w">        </span>&lt;d:resourcetype&gt;
+<span class="w">          </span>&lt;d:collection/&gt;
+<span class="w">        </span>&lt;/d:resourcetype&gt;
+<span class="w">        </span>&lt;d:quota-used-bytes&gt;163&lt;/d:quota-used-bytes&gt;
+<span class="w">        </span>&lt;d:quota-available-bytes&gt;11802275840&lt;/d:quota-available-bytes&gt;
+<span class="w">        </span>&lt;d:getetag&gt;<span class="s2">&quot;561d3a6139d05&quot;</span>&lt;/d:getetag&gt;
+<span class="w">      </span>&lt;/d:prop&gt;
+<span class="w">      </span>&lt;d:status&gt;HTTP/1.1<span class="w"> </span><span class="m">200</span><span class="w"> </span>OK&lt;/d:status&gt;
+<span class="w">    </span>&lt;/d:propstat&gt;
+<span class="w">  </span>&lt;/d:response&gt;
+<span class="w">  </span>&lt;d:response&gt;
+<span class="w">    </span>&lt;d:href&gt;/nextcloud/remote.php/dav/files/USERNAME/welcome.txt&lt;/d:href&gt;
+<span class="w">    </span>&lt;d:propstat&gt;
+<span class="w">      </span>&lt;d:prop&gt;
+<span class="w">        </span>&lt;d:getlastmodified&gt;Tue,<span class="w"> </span><span class="m">13</span><span class="w"> </span>Oct<span class="w"> </span><span class="m">2015</span><span class="w"> </span><span class="m">17</span>:07:35<span class="w"> </span>GMT&lt;/d:getlastmodified&gt;
+<span class="w">        </span>&lt;d:getcontentlength&gt;163&lt;/d:getcontentlength&gt;
+<span class="w">        </span>&lt;d:resourcetype/&gt;
+<span class="w">        </span>&lt;d:getetag&gt;<span class="s2">&quot;47465fae667b2d0fee154f5e17d1f0f1&quot;</span>&lt;/d:getetag&gt;
+<span class="w">        </span>&lt;d:getcontenttype&gt;text/plain&lt;/d:getcontenttype&gt;
+<span class="w">      </span>&lt;/d:prop&gt;
+<span class="w">      </span>&lt;d:status&gt;HTTP/1.1<span class="w"> </span><span class="m">200</span><span class="w"> </span>OK&lt;/d:status&gt;
+<span class="w">    </span>&lt;/d:propstat&gt;
+<span class="w">  </span>&lt;/d:response&gt;
+&lt;/d:multistatus&gt;
+</pre></div>
+</div>
+</section>
+<section id="accessing-files-using-winscp">
+<h2>Prieiga prie failų naudojant „WinSCP“<a class="headerlink" href="#accessing-files-using-winscp" title="Link to this heading"></a></h2>
+<p>„WinSCP &lt;<a class="reference external" href="https://winscp.net/eng/docs/introduction/">https://winscp.net/eng/docs/introduction/</a>&gt;`_ yra atvirojo kodo nemokamas SFTP, FTP, WebDAV, S3 ir SCP klientas, skirtas „Windows“. Pagrindinė jo funkcija yra failų perdavimas tarp vietinio ir nuotolinio kompiuterio. Be to, „WinSCP“ siūlo skriptų rašymo ir pagrindines failų tvarkymo funkcijas.</p>
+<p>Galite atsisiųsti &lt;<a class="reference external" href="https://winscp.net/eng/downloads.php/">https://winscp.net/eng/downloads.php/</a>&gt; nešiojamąją „WinSCP“ versiją ir paleisti ją „Linux“ sistemoje naudodami „Wine“ &lt;<a class="reference external" href="https://wiki.winehq.org/Main_Page/">https://wiki.winehq.org/Main_Page/</a>&gt;.</p>
+<p>Norėdami paleisti „WinSCP“ sistemoje „Linux“, atsisiųskite „wine“ per savo distribucijos paketų tvarkyklę ir paleiskite ją naudodami komandą: „wine WinSCP.exe“.</p>
+<p>Norėdami prisijungti prie „Nextcloud“:</p>
+<ul class="simple">
+<li><p>Paleisti WinSCP</p></li>
+<li><p>Meniu paspauskite „Session“</p></li>
+<li><p>Paspauskite meniu parinktį „New Session“</p></li>
+<li><p>Išskleidžiamajame meniu „File protocol“ nustatykite reikšmę „WebDAV“</p></li>
+<li><p>Nustatykite „Encryption“ parinktį į „TLS/SSL Implicit encryption“.</p></li>
+<li><p>Užpildykite pagrindinio kompiuterio pavadinimo lauką: „example.com“</p></li>
+<li><p>Užpildykite vartotojo vardo lauką: „NEXTCLOUDUSERNAME“</p></li>
+<li><p>Užpildykite slaptažodžio lauką: „NEXTCLOUDPASSWORD“</p></li>
+<li><p>Paspauskite mygtuką „Advanced…“</p></li>
+<li><p>Kairėje pusėje eikite į „Environment“, „Directories“.</p></li>
+<li><p>Užpildykite lauką „Remote directory“ šia informacija: <code class="docutils literal notranslate"><span class="pre">/nextcloud/remote.php/dav/files/NEXTCLOUDUSERNAME/</span></code></p></li>
+<li><p>Paspauskite mygtuką „OK“</p></li>
+<li><p>Paspauskite mygtuką „Save“</p></li>
+<li><p>Pasirinkite norimas parinktis ir paspauskite mygtuką „OK“</p></li>
+<li><p>Norėdami prisijungti prie „Nextcloud“, paspauskite mygtuką „Login“.</p></li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Pastaba</p>
+<p>Rekomenduojama naudoti programėlės slaptažodį, jei naudojate TOTP, nes rašymo metu (2022-11-07) „WinSCP“ nesupranta TOTP su „Nextcloud“.</p>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Poraštė">
+        <a href="access_webgui.html" class="btn btn-neutral float-left" title="Prieiga prie failų naudojant „Nextcloud“ žiniatinklio sąsają" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Ankstesnis</a>
+        <a href="deleted_file_management.html" class="btn btn-neutral float-right" title="Ištrintų failų tvarkymas" accesskey="n" rel="next">Kitas <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+  
+  <!-- Here go the languages -->
+
+  
+  
+
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      🌐 lt
+      <span class="fa fa-caret-down"></span>
+       ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>🌐 Languages</dt>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ar/"
+               
+            >
+              Arabic
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/br/"
+               
+            >
+              Breton
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ca/"
+               
+            >
+              Catalan
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_CN/"
+               
+            >
+              Chinese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_HK/"
+               
+            >
+              Chinese (HK)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_TW/"
+               
+            >
+              Chinese (TW)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/cs/"
+               
+            >
+              Czech
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/da/"
+               
+            >
+              Danish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nl/"
+               
+            >
+              Dutch
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/en/"
+               
+            >
+              English
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/fi_FI/"
+               
+            >
+              Finnish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/fr/"
+               
+            >
+              French
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/gl/"
+               
+            >
+              Galician
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/de/"
+               
+            >
+              German
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/el/"
+               
+            >
+              Greek
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/hu_HU/"
+               
+            >
+              Hungarian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/id/"
+               
+            >
+              Indonesian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ga/"
+               
+            >
+              Irish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/it/"
+               
+            >
+              Italian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ja_JP/"
+               
+            >
+              Japanese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ko/"
+               
+            >
+              Korean
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/lt/"
+               
+               style="color: var(--dark-link-color);"
+               
+            >
+              lt
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/mn/"
+               
+            >
+              Mongolian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nb_NO/"
+               
+            >
+              Norwegian (NB)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nn/"
+               
+            >
+              Norwegian (NN)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pl/"
+               
+            >
+              Polish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pt_PT/"
+               
+            >
+              Portuguese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pt_BR/"
+               
+            >
+              Portuguese (BR)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ro/"
+               
+            >
+              Romanian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ru/"
+               
+            >
+              Russian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/si/"
+               
+            >
+              Sinhala
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sk_SK/"
+               
+            >
+              Slovakian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sr/"
+               
+            >
+              Slovenian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/es/"
+               
+            >
+              Spanish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sv/"
+               
+            >
+              Swedish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ta/"
+               
+            >
+              Tamil
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/tr/"
+               
+            >
+              Turkish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/uk_UA/"
+               
+            >
+              Ukrainian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/uz/"
+               
+            >
+              Uzbek
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/vi/"
+               
+            >
+              Vietnamese
+            </a>
+          </dd>
+        
+      </dl>
+    </div>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Versijos</dt>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/latest/user_manual"
+               
+               style="color: var(--dark-link-color);"
+               
+            >
+              latest
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/stable/user_manual"
+               
+            >
+              stable
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/32/user_manual"
+               
+            >
+              32
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/31/user_manual"
+               
+            >
+              31
+            </a>
+          </dd>
+        
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
