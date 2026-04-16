@@ -159,12 +159,9 @@
 <p>Адміністратори Windows мають більше можливостей для запобігання автоматичним оновленням у середовищі Windows, використовуючи один з двох методів. Перший метод дозволяє користувачам перевизначати механізм автоматичної перевірки оновлень, тоді як другий метод запобігає будь-яким ручним перевизначенням.</p>
 <p>Заборонити автоматичне оновлення, але дозволити ручне перевизначення:</p>
 <ol class="arabic">
-<li><p>Відредагуйте ці розділи реєстру:</p>
+<li><p>Відредагуйте цей розділ реєстру:</p>
 <blockquote>
-<div><ol class="loweralpha simple">
-<li><p>(32-bit-Windows) <code class="docutils literal notranslate"><span class="pre">HKEY_LOCAL_MACHINE\Software\Nextcloud\Nextcloud</span></code>.</p></li>
-<li><p>(64-bit-Windows) <code class="docutils literal notranslate"><span class="pre">HKEY_LOCAL_MACHINE\Software\Wow6432Node\Nextcloud\Nextcloud</span></code>.</p></li>
-</ol>
+<div><p><code class="docutils literal notranslate"><span class="pre">HKEY_LOCAL_MACHINE\Software\Nextcloud</span> <span class="pre">GmbH\Nextcloud</span></code></p>
 </div></blockquote>
 </li>
 <li><p>Додайте ключ <code class="docutils literal notranslate"><span class="pre">skipUpdateCheck</span></code> (типу DWORD).</p></li>
@@ -187,7 +184,9 @@
 </ol>
 <div class="admonition note">
 <p class="admonition-title">Примітка</p>
-<p>брендовані клієнти мають різні ключові назви</p>
+<p>Branded clients use a different key in place of
+<code class="docutils literal notranslate"><span class="pre">Nextcloud</span> <span class="pre">GmbH\Nextcloud</span></code> that matches the branded application vendor and
+name.</p>
 </div>
 </section>
 <section id="preventing-automatic-updates-in-linux-environments">

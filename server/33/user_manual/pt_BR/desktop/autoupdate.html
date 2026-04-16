@@ -159,12 +159,9 @@
 <p>Os administradores do Windows têm mais opções para evitar atualizações automáticas em ambientes Windows usando um dos dois métodos. O primeiro método permite que os usuários substituam o mecanismo de verificação de atualização automática, enquanto o segundo método impede qualquer substituição manual.</p>
 <p>Para bloquear atualizações automáticas, mas permitir substituições manuais:</p>
 <ol class="arabic">
-<li><p>Edite estas chaves do Registro:</p>
+<li><p>Edite esta chave do Registro:</p>
 <blockquote>
-<div><ol class="loweralpha simple">
-<li><p>(Windows de 32 bits) <code class="docutils literal notranslate"><span class="pre">HKEY_LOCAL_MACHINE\Software\Nextcloud\Nextcloud</span></code></p></li>
-<li><p>(Windows de 64 bits) <code class="docutils literal notranslate"><span class="pre">HKEY_LOCAL_MACHINE\Software\Wow6432Node\Nextcloud\Nextcloud</span></code></p></li>
-</ol>
+<div><p><code class="docutils literal notranslate"><span class="pre">HKEY_LOCAL_MACHINE\Software\Nextcloud</span> <span class="pre">GmbH\Nextcloud</span></code></p>
 </div></blockquote>
 </li>
 <li><p>Adicione a chave <code class="docutils literal notranslate"><span class="pre">skipUpdateCheck</span></code> (do tipo DWORD).</p></li>
@@ -187,7 +184,9 @@
 </ol>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
-<p>clientes de marca têm nomes de chave diferentes</p>
+<p>Branded clients use a different key in place of
+<code class="docutils literal notranslate"><span class="pre">Nextcloud</span> <span class="pre">GmbH\Nextcloud</span></code> that matches the branded application vendor and
+name.</p>
 </div>
 </section>
 <section id="preventing-automatic-updates-in-linux-environments">

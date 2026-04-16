@@ -159,12 +159,9 @@
 <p>Windows 管理員可以使用兩種方法中的一種來防止 Windows 環境中的自動更新。第一種方法允許用戶覆蓋自動更新檢查機制，而第二種方法則防止任何手動覆蓋。</p>
 <p>要防止自動更新，但允許手動覆蓋：</p>
 <ol class="arabic">
-<li><p>編輯這些註冊表鍵：</p>
+<li><p>編輯此註冊表鍵：</p>
 <blockquote>
-<div><ol class="loweralpha simple">
-<li><p>(32 位 Windows) <code class="docutils literal notranslate"><span class="pre">HKEY_LOCAL_MACHINE\Software\Nextcloud\Nextcloud</span></code></p></li>
-<li><p>(64 位 Windows) <code class="docutils literal notranslate"><span class="pre">HKEY_LOCAL_MACHINE\Software\Wow6432Node\Nextcloud\Nextcloud</span></code></p></li>
-</ol>
+<div><p><code class="docutils literal notranslate"><span class="pre">HKEY_LOCAL_MACHINE\Software\Nextcloud</span> <span class="pre">GmbH\Nextcloud</span></code></p>
 </div></blockquote>
 </li>
 <li><p>添加鍵 <a href="#id1"><span class="problematic" id="id2">``</span></a>skipUpdateCheck``（類型為 DWORD）。</p></li>
@@ -187,7 +184,9 @@
 </ol>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>品牌客戶端有不同的鍵名</p>
+<p>Branded clients use a different key in place of
+<code class="docutils literal notranslate"><span class="pre">Nextcloud</span> <span class="pre">GmbH\Nextcloud</span></code> that matches the branded application vendor and
+name.</p>
 </div>
 </section>
 <section id="preventing-automatic-updates-in-linux-environments">

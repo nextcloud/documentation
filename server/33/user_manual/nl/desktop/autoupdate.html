@@ -159,12 +159,9 @@
 <p>Windows-beheerders hebben meer opties om automatische updates in Windows-omgevingen te voorkomen door een van de volgende twee methoden te gebruiken. Met de eerste methode kunnen gebruikers het automatische updatecontrolemechanisme overschrijven, terwijl de tweede methode handmatige overschrijvingen voorkomt.</p>
 <p>Automatische updates uitschakelen maar handmatig uitvoeren toestaan:</p>
 <ol class="arabic">
-<li><p>Edit deze Register-sleutels:</p>
+<li><p>Wijzig deze Register-sleutel:</p>
 <blockquote>
-<div><ol class="loweralpha simple">
-<li><p>(32-bit-Windows) <code class="docutils literal notranslate"><span class="pre">HKEY_LOCAL_MACHINE\Software\Nextcloud\Nextcloud</span></code></p></li>
-<li><p>(64-bit-Windows) <code class="docutils literal notranslate"><span class="pre">HKEY_LOCAL_MACHINE\Software\Wow6432Node\Nextcloud\Nextcloud</span></code></p></li>
-</ol>
+<div><p><code class="docutils literal notranslate"><span class="pre">HKEY_LOCAL_MACHINE\Software\Nextcloud</span> <span class="pre">GmbH\Nextcloud</span></code></p>
 </div></blockquote>
 </li>
 <li><p>Voeg de sleutel <code class="docutils literal notranslate"><span class="pre">skipUpdateCheck</span></code> (van type DWORD) toe.</p></li>
@@ -187,7 +184,9 @@
 </ol>
 <div class="admonition note">
 <p class="admonition-title">Notitie</p>
-<p>gepersonaliseerde clients hebben andere sleutel-namen</p>
+<p>Branded clients use a different key in place of
+<code class="docutils literal notranslate"><span class="pre">Nextcloud</span> <span class="pre">GmbH\Nextcloud</span></code> that matches the branded application vendor and
+name.</p>
 </div>
 </section>
 <section id="preventing-automatic-updates-in-linux-environments">

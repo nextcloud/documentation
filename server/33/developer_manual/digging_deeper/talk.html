@@ -189,17 +189,29 @@
 </div>
 <section id="customize-the-conversation">
 <h3>Customize the conversation<a class="headerlink" href="#customize-the-conversation" title="Link to this heading"></a></h3>
-<p>It’s possible to adjust the defaults.</p>
+<p>It’s possible to adjust the defaults:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">setPublic</span></code>: Make the conversation public (allowing anyone with the link to access the conversation).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">setMeetingDate</span></code> (since Nextcloud 32.0.9, 33.0.3 and 34.0.0): Mark a conversation as related to a meeting.
+This will make Talk automatically expire the conversation 4 weeks (value is configurable)
+after the meeting, unless the owner confirms the conversation should remain.</p></li>
+</ul>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
 
 <span class="sd">/** @var \OCP\Talk\IBroker $broker */</span>
 <span class="sd">/** @var \OCP\IUser $alice */</span>
 <span class="sd">/** @var \OCP\IUser $bob */</span>
 <span class="nv">$options</span> <span class="o">=</span> <span class="nv">$broker</span><span class="o">-&gt;</span><span class="na">newConversationOptions</span><span class="p">();</span>
+<span class="nv">$options</span><span class="o">-&gt;</span><span class="na">setPublic</span><span class="p">();</span>
+<span class="nv">$options</span><span class="o">-&gt;</span><span class="na">setMeetingDate</span><span class="p">(</span>
+    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">timeFactory</span><span class="o">-&gt;</span><span class="na">getDateTime</span><span class="p">(</span><span class="k">new</span> <span class="nx">\DateTime</span><span class="p">(</span><span class="s1">&#39;2026-04-07 13:00&#39;</span><span class="p">)),</span>
+    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">timeFactory</span><span class="o">-&gt;</span><span class="na">getDateTime</span><span class="p">(</span><span class="k">new</span> <span class="nx">\DateTime</span><span class="p">(</span><span class="s1">&#39;2026-04-07 14:00&#39;</span><span class="p">)),</span>
+<span class="p">);</span>
+
 <span class="nv">$conversation</span> <span class="o">=</span> <span class="nv">$broker</span><span class="o">-&gt;</span><span class="na">createConversation</span><span class="p">(</span>
     <span class="s1">&#39;Weekly 1:1&#39;</span><span class="p">,</span>
     <span class="p">[</span><span class="nv">$alice</span><span class="p">,</span> <span class="nv">$bob</span><span class="p">],</span>
-    <span class="nv">$broker</span><span class="o">-&gt;</span><span class="na">newConversationOptions</span><span class="p">()</span><span class="o">-&gt;</span><span class="na">setPublic</span><span class="p">()</span>
+    <span class="nv">$options</span>
 <span class="p">);</span>
 </pre></div>
 </div>
@@ -229,7 +241,7 @@
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Apr 02, 2026.
+      <span class="lastupdated">Last updated on Apr 16, 2026.
       </span></p>
   </div>
 

@@ -159,12 +159,9 @@
 <p>Οι διαχειριστές Windows έχουν περισσότερες επιλογές για την αποτροπή αυτόματων ενημερώσεων σε περιβάλλοντα Windows χρησιμοποιώντας μία από δύο μεθόδους. Η πρώτη μέθοδος επιτρέπει στους χρήστες να παρακάμψουν τον μηχανισμό αυτόματου ελέγχου ενημερώσεων, ενώ η δεύτερη μέθοδος εμποδίζει οποιαδήποτε χειροκίνητη παράκαμψη.</p>
 <p>Για αποτροπή αυτόματων ενημερώσεων, αλλά με δυνατότητα χειροκίνητης παράκαμψης:</p>
 <ol class="arabic">
-<li><p>Επεξεργαστείτε αυτά τα κλειδιά μητρώου:</p>
+<li><p>Επεξεργαστείτε αυτό το κλειδί μητρώου:</p>
 <blockquote>
-<div><ol class="loweralpha simple">
-<li><p>(32-bit-Windows) <code class="docutils literal notranslate"><span class="pre">HKEY_LOCAL_MACHINE\Software\Nextcloud\Nextcloud</span></code></p></li>
-<li><p>(64-bit-Windows) <code class="docutils literal notranslate"><span class="pre">HKEY_LOCAL_MACHINE\Software\Wow6432Node\Nextcloud\Nextcloud</span></code></p></li>
-</ol>
+<div><p><code class="docutils literal notranslate"><span class="pre">HKEY_LOCAL_MACHINE\Software\Nextcloud</span> <span class="pre">GmbH\Nextcloud</span></code></p>
 </div></blockquote>
 </li>
 <li><p>Προσθέστε το κλειδί <code class="docutils literal notranslate"><span class="pre">skipUpdateCheck</span></code> (τύπου DWORD).</p></li>
@@ -187,7 +184,9 @@
 </ol>
 <div class="admonition note">
 <p class="admonition-title">Σημείωση</p>
-<p>τα προγράμματα-πελάτες με επωνυμία έχουν διαφορετικά ονόματα κλειδιών</p>
+<p>Branded clients use a different key in place of
+<code class="docutils literal notranslate"><span class="pre">Nextcloud</span> <span class="pre">GmbH\Nextcloud</span></code> that matches the branded application vendor and
+name.</p>
 </div>
 </section>
 <section id="preventing-automatic-updates-in-linux-environments">

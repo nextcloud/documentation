@@ -159,12 +159,9 @@
 <p>Gli amministratori di Windows hanno a disposizione più opzioni per impedire gli aggiornamenti automatici negli ambienti Windows, utilizzando uno dei due metodi seguenti. Il primo metodo consente agli utenti di ignorare il meccanismo di controllo automatico degli aggiornamenti, mentre il secondo metodo impedisce qualsiasi override manuale.</p>
 <p>Per impedire gli aggiornamenti automatici, ma consentire gli override manuali:</p>
 <ol class="arabic">
-<li><p>Modifica queste chiavi del Registro di sistema:</p>
+<li><p>Modifica questa chiave del Registro di sistema:</p>
 <blockquote>
-<div><ol class="loweralpha simple">
-<li><p>(32-bit-Windows) <code class="docutils literal notranslate"><span class="pre">HKEY_LOCAL_MACHINE\Software\Nextcloud\Nextcloud</span></code></p></li>
-<li><p>(64-bit-Windows) <code class="docutils literal notranslate"><span class="pre">HKEY_LOCAL_MACHINE\Software\Wow6432Node\Nextcloud\Nextcloud</span></code></p></li>
-</ol>
+<div><p><code class="docutils literal notranslate"><span class="pre">HKEY_LOCAL_MACHINE\Software\Nextcloud</span> <span class="pre">GmbH\Nextcloud</span></code></p>
 </div></blockquote>
 </li>
 <li><p>Aggiungere la chiave <code class="docutils literal notranslate"><span class="pre">skipUpdateCheck</span></code> (di tipo DWORD).</p></li>
@@ -187,7 +184,9 @@
 </ol>
 <div class="admonition note">
 <p class="admonition-title">Nota</p>
-<p>i clienti con marchio hanno nomi di chiave diversi</p>
+<p>Branded clients use a different key in place of
+<code class="docutils literal notranslate"><span class="pre">Nextcloud</span> <span class="pre">GmbH\Nextcloud</span></code> that matches the branded application vendor and
+name.</p>
 </div>
 </section>
 <section id="preventing-automatic-updates-in-linux-environments">
