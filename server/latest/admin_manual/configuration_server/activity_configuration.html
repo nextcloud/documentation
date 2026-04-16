@@ -80,11 +80,21 @@
 <li class="toctree-l2"><a class="reference internal" href="security_setup_warnings.html">Warnings on admin page</a></li>
 <li class="toctree-l2"><a class="reference internal" href="config_sample_php_parameters.html">Configuration Parameters</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Activity app</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#enabling-the-activity-app">Enabling the activity app</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#configuring-your-nextcloud-for-the-activity-app">Configuring your Nextcloud for the activity app</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#activities-in-groupfolders-or-external-storages">Activities in groupfolders or external storages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuring-your-nextcloud-for-the-activity-app">Configuring your Nextcloud for the Activity app</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#enabling-email-notifications">Enabling email notifications</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#admin-settings">Admin settings</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#configuration-reference">Configuration reference</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#activities-in-team-folders-or-external-storages">Activities in team folders or external storages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#excluding-users-from-activity-expiration">Excluding users from activity expiration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#better-scheduling-of-activity-emails">Better scheduling of activity emails</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#excluding-users-from-the-activity-expiration">Excluding users from the activity expiration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#troubleshooting">Troubleshooting</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#users-are-not-receiving-notification-emails">Users are not receiving notification emails</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#activities-are-missing-for-shared-files-or-team-folders">Activities are missing for shared files or team folders</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#database-growing-large-due-to-activity-data">Database growing large due to activity data</a></li>
+</ul>
+</li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="admin_delegation_configuration.html">Administration privileges (Delegation)</a></li>
@@ -184,72 +194,110 @@
              
   <section id="activity-app">
 <h1>Activity app<a class="headerlink" href="#activity-app" title="Link to this heading"></a></h1>
-<p>You can configure your Nextcloud server to automatically send out e-mail notifications
-to your users for various events like:</p>
-<ul class="simple">
-<li><p>A file or folder has been shared</p></li>
-<li><p>A new file or folder has been created</p></li>
-<li><p>A file or folder has been changed</p></li>
-<li><p>A file or folder has been deleted</p></li>
-</ul>
-<p>Users can see actions (delete, add, modify) that happen to files they have access to.
-Sharing actions are only visible to the sharer and sharee.</p>
-<section id="enabling-the-activity-app">
-<h2>Enabling the activity app<a class="headerlink" href="#enabling-the-activity-app" title="Link to this heading"></a></h2>
-<p>The Activity App is shipped and enabled by default. If it is not enabled
-simply go to your Nextcloud Apps page to enable it.</p>
-</section>
+<p>The Activity app tracks events across your Nextcloud instance and can
+notify users via the activity stream, email, and push notifications.
+It is shipped and enabled by default.</p>
+<figure class="align-default" id="id1">
+<img alt="../_images/activity-settings-admin.png" src="../_images/activity-settings-admin.png" />
+<figcaption>
+<p><span class="caption-text"><em>The Activity admin settings page showing default notification
+preferences for new accounts.</em></span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
 <section id="configuring-your-nextcloud-for-the-activity-app">
-<h2>Configuring your Nextcloud for the activity app<a class="headerlink" href="#configuring-your-nextcloud-for-the-activity-app" title="Link to this heading"></a></h2>
-<p>To configure your Nextcloud to send out e-mail notifications a working
-<a class="reference internal" href="email_configuration.html"><span class="doc">Email</span></a> is mandatory.</p>
-<p>Furthermore it is recommended to configure the background job <code class="docutils literal notranslate"><span class="pre">Webcron</span></code> or
-<code class="docutils literal notranslate"><span class="pre">Cron</span></code> as described in <a class="reference internal" href="background_jobs_configuration.html"><span class="doc">Background jobs</span></a>.</p>
-<p>There is also a configuration option <code class="docutils literal notranslate"><span class="pre">activity_expire_days</span></code> available in your
-<code class="docutils literal notranslate"><span class="pre">config.php</span></code> which allows you to clean-up older activities from the database.</p>
+<h2>Configuring your Nextcloud for the Activity app<a class="headerlink" href="#configuring-your-nextcloud-for-the-activity-app" title="Link to this heading"></a></h2>
+<section id="enabling-email-notifications">
+<h3>Enabling email notifications<a class="headerlink" href="#enabling-email-notifications" title="Link to this heading"></a></h3>
+<p>To send activity notification emails, a working
+<a class="reference internal" href="email_configuration.html"><span class="doc">Email</span></a> is required.</p>
+<p>It is also recommended to configure the background job to <code class="docutils literal notranslate"><span class="pre">Webcron</span></code>
+or <code class="docutils literal notranslate"><span class="pre">Cron</span></code> as described in <a class="reference internal" href="background_jobs_configuration.html"><span class="doc">Background jobs</span></a>.
+The <code class="docutils literal notranslate"><span class="pre">Ajax</span></code> mode may delay or skip email delivery.</p>
 </section>
-<section id="activities-in-groupfolders-or-external-storages">
-<span id="label-activities-groupfolders"></span><h2>Activities in groupfolders or external storages<a class="headerlink" href="#activities-in-groupfolders-or-external-storages" title="Link to this heading"></a></h2>
-<p>By default activities in groupfolders or external storages are only generated for the current user.
-This is due to the logic of groupfolders and external storages. There is a config flag
-<code class="docutils literal notranslate"><span class="pre">activity_use_cached_mountpoints</span></code> that makes activities in groupfolders and external storages work
-like in normal shares when set to <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
+<section id="admin-settings">
+<h3>Admin settings<a class="headerlink" href="#admin-settings" title="Link to this heading"></a></h3>
+<p>As an administrator, you can:</p>
+<ul class="simple">
+<li><p>Enable or disable notification emails globally using the
+<strong>Enable notification emails</strong> checkbox in <strong>Settings</strong> &gt;
+<strong>Administration</strong> &gt; <strong>Activity</strong>.</p></li>
+<li><p>Configure the default notification preferences for new accounts.
+Existing users keep their personal settings. The defaults apply
+to accounts created after the change.</p></li>
+</ul>
+</section>
+</section>
+<section id="configuration-reference">
+<h2>Configuration reference<a class="headerlink" href="#configuration-reference" title="Link to this heading"></a></h2>
+<p>The following <code class="docutils literal notranslate"><span class="pre">config.php</span></code> options control Activity app behavior.</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 30.0%" />
+<col style="width: 15.0%" />
+<col style="width: 55.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Option</p></th>
+<th class="head"><p>Default</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">activity_expire_days</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">365</span></code></p></td>
+<td><p>Number of days to retain activity records. A daily background
+job deletes all activities older than this value. Set to <code class="docutils literal notranslate"><span class="pre">0</span></code>
+to disable expiration.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">activity_use_cached_mountpoints</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+<td><p>When <code class="docutils literal notranslate"><span class="pre">true</span></code>, activities in team folders and external storages
+are generated for all users with access, not just the current
+user. See <a class="reference internal" href="#label-activities-groupfolders"><span class="std std-ref">Activities in team folders or external storages</span></a> for details and
+caveats.</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">activity_expire_exclude_users</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">[]</span></code></p></td>
+<td><p>An array of user IDs whose activity records are never deleted
+by the expiration job. See <a class="reference internal" href="#label-activities-exclude-users"><span class="std std-ref">Excluding users from activity expiration</span></a>.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="activities-in-team-folders-or-external-storages">
+<span id="label-activities-groupfolders"></span><h2>Activities in team folders or external storages<a class="headerlink" href="#activities-in-team-folders-or-external-storages" title="Link to this heading"></a></h2>
+<p>By default, activities in team folders or external storages are only
+generated for the current user. This is due to the underlying logic
+of these storage backends. The config flag
+<code class="docutils literal notranslate"><span class="pre">activity_use_cached_mountpoints</span></code> makes activities work like in
+normal shares when set to <code class="docutils literal notranslate"><span class="pre">true</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;activity_use_cached_mountpoints&#39;</span> <span class="o">=&gt;</span> <span class="n">true</span><span class="p">,</span>
+</pre></div>
+</div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
 <p>This config option comes with the following limitations:</p>
 <ol class="arabic simple">
-<li><p>If “Advanced Permissions” (ACLs) are enabled in a groupfolder, the activities don’t respect the permissions and therefore all users see all activities, even for files and directories they don’t have access to. <strong>This potentially leaks sensitive information!</strong> See <a class="reference external" href="https://github.com/nextcloud/groupfolders/issues/1057">this issue</a> for more information.</p></li>
-<li><p>Users that had access to a groupfolder, share or external storage can see activities in their stream and emails that happen after they are removed until they login again</p></li>
-<li><p>Users that are newly added to a groupfolder, share or external storage can not see activities in their stream nor emails that happen after they are added until they login again</p></li>
+<li><p>If “Advanced Permissions” (ACLs) are enabled in a team folder,
+activities do not respect the permissions and all users see all
+activities, even for files and directories they do not have
+access to. <strong>This potentially leaks sensitive information!</strong> See
+<a class="reference external" href="https://github.com/nextcloud/groupfolders/issues/1057">this issue</a>
+for more information.</p></li>
+<li><p>Users that had access to a team folder, share or external
+storage can see activities in their stream and emails that
+happen after they are removed until they log in again.</p></li>
+<li><p>Users that are newly added to a team folder, share or external
+storage cannot see activities in their stream nor emails that
+happen after they are added until they log in again.</p></li>
 </ol>
 </div>
 </section>
-<section id="better-scheduling-of-activity-emails">
-<h2>Better scheduling of activity emails<a class="headerlink" href="#better-scheduling-of-activity-emails" title="Link to this heading"></a></h2>
-<p>In certain scenarios it makes sense to send the activity emails out more regularly,
-e.g. you want to send the hourly emails always at the full hour, daily emails before
-people start to work in the morning and weekly mails shall be send on monday morning,
-so people can read up when starting into the week.</p>
-<p>A console command is available to trigger sending those emails.
-This allows to set up special cron jobs on your server with the known
-granularity, instead of relying on the Nextcloud cron feature which is not very flexible
-on scheduling.</p>
-<p>To implement the samples mentioned above, the following three entries are necessary:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># crontab -u www-data -e</span>
- <span class="mi">0</span>  <span class="o">*</span>  <span class="o">*</span>  <span class="o">*</span>  <span class="o">*</span>    <span class="n">php</span> <span class="o">-</span><span class="n">f</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">occ</span> <span class="n">activity</span><span class="p">:</span><span class="n">send</span><span class="o">-</span><span class="n">mails</span> <span class="n">hourly</span>
-<span class="mi">30</span>  <span class="mi">7</span>  <span class="o">*</span>  <span class="o">*</span>  <span class="o">*</span>    <span class="n">php</span> <span class="o">-</span><span class="n">f</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">occ</span> <span class="n">activity</span><span class="p">:</span><span class="n">send</span><span class="o">-</span><span class="n">mails</span> <span class="n">daily</span>
-<span class="mi">30</span>  <span class="mi">7</span>  <span class="o">*</span>  <span class="o">*</span>  <span class="n">MON</span>  <span class="n">php</span> <span class="o">-</span><span class="n">f</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">occ</span> <span class="n">activity</span><span class="p">:</span><span class="n">send</span><span class="o">-</span><span class="n">mails</span> <span class="n">weekly</span>
-</pre></div>
-</div>
-<p>If you want to manually send out all activity emails which are queued, you can run
-<code class="docutils literal notranslate"><span class="pre">occ</span> <span class="pre">activity:send-mails</span></code> without any argument.</p>
-</section>
-<section id="excluding-users-from-the-activity-expiration">
-<h2>Excluding users from the activity expiration<a class="headerlink" href="#excluding-users-from-the-activity-expiration" title="Link to this heading"></a></h2>
-<p>For certain users, it might make sense to never expire their activity data, for example
-administrators.
-You can set the config value <cite>activity_expire_exclude_users</cite> in your Nextcloud config to
-exclude these users from expiration:</p>
+<section id="excluding-users-from-activity-expiration">
+<span id="label-activities-exclude-users"></span><h2>Excluding users from activity expiration<a class="headerlink" href="#excluding-users-from-activity-expiration" title="Link to this heading"></a></h2>
+<p>For certain users, it might make sense to never expire their activity
+data, for example administrators. Set the config value
+<code class="docutils literal notranslate"><span class="pre">activity_expire_exclude_users</span></code> in your <code class="docutils literal notranslate"><span class="pre">config.php</span></code>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;activity_expire_exclude_users&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
   <span class="s1">&#39;admin&#39;</span><span class="p">,</span>
   <span class="s1">&#39;group_admin&#39;</span><span class="p">,</span>
@@ -257,7 +305,67 @@ exclude these users from expiration:</p>
 <span class="p">]</span>
 </pre></div>
 </div>
-<p>For these users, their activity records will never deleted from the database.</p>
+<p>For these users, their activity records will never be deleted from the
+database.</p>
+</section>
+<section id="better-scheduling-of-activity-emails">
+<h2>Better scheduling of activity emails<a class="headerlink" href="#better-scheduling-of-activity-emails" title="Link to this heading"></a></h2>
+<p>In certain scenarios it makes sense to send the activity emails more
+regularly. For example, you may want to send the hourly emails always
+at the full hour, daily emails before people start to work in the
+morning, and weekly emails on Monday morning.</p>
+<p>A console command is available to trigger sending those emails. This
+allows you to set up custom cron jobs with specific timing instead of
+relying on the Nextcloud background job:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># crontab -u www-data -e</span>
+ <span class="mi">0</span>  <span class="o">*</span>  <span class="o">*</span>  <span class="o">*</span>  <span class="o">*</span>    <span class="n">php</span> <span class="o">-</span><span class="n">f</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">occ</span> <span class="n">activity</span><span class="p">:</span><span class="n">send</span><span class="o">-</span><span class="n">mails</span> <span class="n">hourly</span>
+<span class="mi">30</span>  <span class="mi">7</span>  <span class="o">*</span>  <span class="o">*</span>  <span class="o">*</span>    <span class="n">php</span> <span class="o">-</span><span class="n">f</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">occ</span> <span class="n">activity</span><span class="p">:</span><span class="n">send</span><span class="o">-</span><span class="n">mails</span> <span class="n">daily</span>
+<span class="mi">30</span>  <span class="mi">7</span>  <span class="o">*</span>  <span class="o">*</span>  <span class="n">MON</span>  <span class="n">php</span> <span class="o">-</span><span class="n">f</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">occ</span> <span class="n">activity</span><span class="p">:</span><span class="n">send</span><span class="o">-</span><span class="n">mails</span> <span class="n">weekly</span>
+</pre></div>
+</div>
+<p>If you want to manually send out all queued activity emails, you can
+run <code class="docutils literal notranslate"><span class="pre">occ</span> <span class="pre">activity:send-mails</span></code> without any argument.</p>
+</section>
+<section id="troubleshooting">
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading"></a></h2>
+<section id="users-are-not-receiving-notification-emails">
+<h3>Users are not receiving notification emails<a class="headerlink" href="#users-are-not-receiving-notification-emails" title="Link to this heading"></a></h3>
+<ol class="arabic simple">
+<li><p>Verify that email is configured correctly. Send a test email from
+<strong>Settings</strong> &gt; <strong>Administration</strong> &gt; <strong>Basic settings</strong>.</p></li>
+<li><p>Check that <strong>Enable notification emails</strong> is turned on in
+<strong>Settings</strong> &gt; <strong>Administration</strong> &gt; <strong>Activity</strong>.</p></li>
+<li><p>Verify that the user has email notifications enabled in their
+personal notification settings (<strong>Settings</strong> &gt; <strong>Personal</strong> &gt;
+<strong>Notifications</strong>).</p></li>
+<li><p>Ensure the background job is running. If you use <code class="docutils literal notranslate"><span class="pre">Cron</span></code>, check
+that the system cron job is executing
+<code class="docutils literal notranslate"><span class="pre">php</span> <span class="pre">-f</span> <span class="pre">/var/www/nextcloud/cron.php</span></code> regularly.</p></li>
+<li><p>Check the Nextcloud log (<code class="docutils literal notranslate"><span class="pre">data/nextcloud.log</span></code>) for mail-related
+errors.</p></li>
+</ol>
+</section>
+<section id="activities-are-missing-for-shared-files-or-team-folders">
+<h3>Activities are missing for shared files or team folders<a class="headerlink" href="#activities-are-missing-for-shared-files-or-team-folders" title="Link to this heading"></a></h3>
+<p>By default, activities in team folders and external storages are only
+generated for the acting user. See
+<a class="reference internal" href="#label-activities-groupfolders"><span class="std std-ref">Activities in team folders or external storages</span></a> for how to enable activities for
+all users with access.</p>
+</section>
+<section id="database-growing-large-due-to-activity-data">
+<h3>Database growing large due to activity data<a class="headerlink" href="#database-growing-large-due-to-activity-data" title="Link to this heading"></a></h3>
+<p>The Activity app stores all events in the database. On instances with
+many users or high file turnover, this can lead to significant
+database growth. To manage this:</p>
+<ul class="simple">
+<li><p>Set <code class="docutils literal notranslate"><span class="pre">activity_expire_days</span></code> to a lower value (e.g. <code class="docutils literal notranslate"><span class="pre">90</span></code> or
+<code class="docutils literal notranslate"><span class="pre">180</span></code>) to automatically clean up older records.</p></li>
+<li><p>Monitor the <code class="docutils literal notranslate"><span class="pre">oc_activity</span></code> and <code class="docutils literal notranslate"><span class="pre">oc_activity_mq</span></code> tables directly
+if you need to assess current size.</p></li>
+<li><p>Ensure the Nextcloud background job is running so that the daily
+expiration job executes.</p></li>
+</ul>
+</section>
 </section>
 </section>
 
