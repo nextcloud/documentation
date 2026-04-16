@@ -106,7 +106,7 @@ Retrieving the configuration value will require to specify the fact that it is s
 Consuming the UserConfig API
 ----------------------------
 
-To consume the API, you first need to :ref:`inject<dependency-injection>` ``\OCP\IUserConfig``
+To consume the API, you first need to :ref:`inject<dependency-injection>` ``\OCP\Config\IUserConfig``
 
 
 Storing a config value
