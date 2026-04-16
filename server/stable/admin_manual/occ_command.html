@@ -79,12 +79,12 @@
 <li class="toctree-l1"><a class="reference internal" href="configuration_server/index.html">Nextcloud configuration</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Using the occ command</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="#occ-command-directory">occ command Directory</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#run-occ-as-your-http-user">Run occ as your HTTP user</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#running-occ">Running occ</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#environment-variables">Environment variables</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="#enabling-autocompletion">Enabling autocompletion</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#run-commands-in-maintenance-mode">Run commands in maintenance mode</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#limitations-in-maintenance-mode">Limitations in maintenance mode</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#apps-commands">Apps commands</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#background-jobs-selector">Background jobs selector</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#config-commands">Config commands</a><ul>
@@ -277,8 +277,8 @@ on your Nextcloud files and directories.</p>
 <section id="occ-command-directory">
 <h2>occ command Directory<a class="headerlink" href="#occ-command-directory" title="Link to this heading"></a></h2>
 <ul class="simple">
-<li><p><a class="reference internal" href="#http-user-label"><span class="std std-ref">Run occ as your HTTP user</span></a></p></li>
-<li><p><a class="reference internal" href="#run-commands-in-maintenance-mode"><span class="std std-ref">Run commands in maintenance mode</span></a></p></li>
+<li><p><a class="reference internal" href="#http-user-label"><span class="std std-ref">Running occ</span></a></p></li>
+<li><p><a class="reference internal" href="#run-commands-in-maintenance-mode"><span class="std std-ref">Limitations in maintenance mode</span></a></p></li>
 <li><p><a class="reference internal" href="#apps-commands-label"><span class="std std-ref">Apps commands</span></a></p></li>
 <li><p><a class="reference internal" href="#background-jobs-selector-label"><span class="std std-ref">Background jobs selector</span></a></p></li>
 <li><p><a class="reference internal" href="#config-commands-label"><span class="std std-ref">Config commands</span></a></p></li>
@@ -311,8 +311,10 @@ on your Nextcloud files and directories.</p>
 <li><p><a class="reference internal" href="#debugging">Debugging</a></p></li>
 </ul>
 </section>
-<section id="run-occ-as-your-http-user">
-<span id="http-user-label"></span><h2>Run occ as your HTTP user<a class="headerlink" href="#run-occ-as-your-http-user" title="Link to this heading"></a></h2>
+<section id="running-occ">
+<span id="http-user-label"></span><h2>Running occ<a class="headerlink" href="#running-occ" title="Link to this heading"></a></h2>
+<p>You must run <code class="docutils literal notranslate"><span class="pre">occ</span></code> as your HTTP user so that the file ownership and permissions
+on your Nextcloud data directory stay consistent with the web server.</p>
 <p>The HTTP user is different on the various Linux distributions:</p>
 <ul class="simple">
 <li><p>The HTTP user and group in Debian/Ubuntu is www-data.</p></li>
@@ -428,12 +430,14 @@ The default is plain text, but it can also be <code class="docutils literal notr
 and <code class="docutils literal notranslate"><span class="pre">encryption:list-modules</span></code></p>
 <section id="environment-variables">
 <h3>Environment variables<a class="headerlink" href="#environment-variables" title="Link to this heading"></a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">sudo</span></code> does not forward environment variables by default. Put the variables before the <code class="docutils literal notranslate"><span class="pre">php</span></code> command:</p>
+<p><code class="docutils literal notranslate"><span class="pre">sudo</span></code> does not forward environment variables by default. You can prepend the
+variable and use the <code class="docutils literal notranslate"><span class="pre">-E</span></code> switch to pass it through:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">NC_debug</span><span class="o">=</span><span class="n">true</span> <span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">status</span>
 </pre></div>
 </div>
-<p>Alternatively, you can <code class="docutils literal notranslate"><span class="pre">export</span></code> the variable or use the <code class="docutils literal notranslate"><span class="pre">-E</span></code> switch for <code class="docutils literal notranslate"><span class="pre">sudo</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">NC_debug</span><span class="o">=</span><span class="n">true</span> <span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">status</span>
+<p>Alternatively, <code class="docutils literal notranslate"><span class="pre">export</span></code> the variable first:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">NC_debug</span><span class="o">=</span><span class="n">true</span>
+<span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">status</span>
 </pre></div>
 </div>
 </section>
@@ -463,18 +467,18 @@ you need to specify <code class="docutils literal notranslate"><span class="pre"
 <p>If you want the completion to apply automatically for all new shell sessions, add the command to your
 shell’s profile (eg. <code class="docutils literal notranslate"><span class="pre">~/.bash_profile</span></code> or <code class="docutils literal notranslate"><span class="pre">~/.zshrc</span></code>).</p>
 </section>
-<section id="run-commands-in-maintenance-mode">
-<span id="id1"></span><h2>Run commands in maintenance mode<a class="headerlink" href="#run-commands-in-maintenance-mode" title="Link to this heading"></a></h2>
-<p>In maintenance mode, apps are not loaded <a class="footnote-reference brackets" href="#id4" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>, so commands from apps are unavailable. Commands integrated into Nextcloud server are available in maintenance mode.</p>
+<section id="limitations-in-maintenance-mode">
+<span id="run-commands-in-maintenance-mode"></span><h2>Limitations in maintenance mode<a class="headerlink" href="#limitations-in-maintenance-mode" title="Link to this heading"></a></h2>
+<p>In maintenance mode, apps are not loaded <a class="footnote-reference brackets" href="#id3" id="id1" role="doc-noteref"><span class="fn-bracket">[</span>1<span class="fn-bracket">]</span></a>, so commands from apps are unavailable. Commands integrated into Nextcloud server are available in maintenance mode.</p>
 <p>We discourage the use of maintenance mode unless the command explicitly prompts you to do so or unless the commands’ documentation explicitly states that maintenance mode should be used.</p>
-<p>A command may use events to communicate with other apps. An app can only react to an event when loaded. Example: The command user:delete deletes a user account. UserDeletedEvent is emitted. Calendar app implements an event listener to delete user data <a class="footnote-reference brackets" href="#id5" id="id3" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>. In maintenance mode, the Calendar app is not loaded, and hence the user data not deleted.</p>
+<p>A command may use events to communicate with other apps. An app can only react to an event when loaded. Example: The command user:delete deletes a user account. UserDeletedEvent is emitted. Calendar app implements an event listener to delete user data <a class="footnote-reference brackets" href="#id4" id="id2" role="doc-noteref"><span class="fn-bracket">[</span>2<span class="fn-bracket">]</span></a>. In maintenance mode, the Calendar app is not loaded, and hence the user data not deleted.</p>
 <aside class="footnote-list brackets">
-<aside class="footnote brackets" id="id4" role="doc-footnote">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">1</a><span class="fn-bracket">]</span></span>
+<aside class="footnote brackets" id="id3" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id1">1</a><span class="fn-bracket">]</span></span>
 <p>Exception: <a class="reference external" href="https://github.com/nextcloud/server/blob/75f17b60945e15effc3eea41393eef2b13937226/lib/base.php#L780">The settings app is loaded</a></p>
 </aside>
-<aside class="footnote brackets" id="id5" role="doc-footnote">
-<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id3">2</a><span class="fn-bracket">]</span></span>
+<aside class="footnote brackets" id="id4" role="doc-footnote">
+<span class="label"><span class="fn-bracket">[</span><a role="doc-backlink" href="#id2">2</a><span class="fn-bracket">]</span></span>
 <p><a class="reference external" href="https://github.com/nextcloud/calendar/blob/87e8586971a8676dc15a90f0cd969274678b7009/lib/Listener/UserDeletedListener.php">Calendar app event listener for UserDeletedEvent</a></p>
 </aside>
 </aside>
@@ -579,23 +583,23 @@ enabled or disabled:</p>
 </section>
 <section id="background-jobs-selector">
 <span id="background-jobs-selector-label"></span><h2>Background jobs selector<a class="headerlink" href="#background-jobs-selector" title="Link to this heading"></a></h2>
-<p>Use the <code class="docutils literal notranslate"><span class="pre">background</span></code> command to select which scheduler you want to use for
-controlling background jobs, Ajax, Webcron, or Cron. This is the same as using
+<p>Use the <code class="docutils literal notranslate"><span class="pre">background</span></code> commands to select which scheduler you want to use for
+controlling background jobs. This is the same as using
 the <strong>Cron</strong> section on your Nextcloud Admin page:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">background</span>
- <span class="n">background</span><span class="p">:</span><span class="n">ajax</span>       <span class="n">Use</span> <span class="n">ajax</span> <span class="n">to</span> <span class="n">run</span> <span class="n">background</span> <span class="n">jobs</span>
- <span class="n">background</span><span class="p">:</span><span class="n">cron</span>       <span class="n">Use</span> <span class="n">cron</span> <span class="n">to</span> <span class="n">run</span> <span class="n">background</span> <span class="n">jobs</span>
- <span class="n">background</span><span class="p">:</span><span class="n">webcron</span>    <span class="n">Use</span> <span class="n">webcron</span> <span class="n">to</span> <span class="n">run</span> <span class="n">background</span> <span class="n">jobs</span>
+ <span class="n">background</span><span class="p">:</span><span class="n">cron</span>       <span class="n">Set</span> <span class="n">background</span> <span class="n">jobs</span> <span class="n">to</span> <span class="n">cron</span> <span class="n">mode</span>
+ <span class="n">background</span><span class="p">:</span><span class="n">ajax</span>       <span class="n">Set</span> <span class="n">background</span> <span class="n">jobs</span> <span class="n">to</span> <span class="n">ajax</span> <span class="n">mode</span>
+ <span class="n">background</span><span class="p">:</span><span class="n">webcron</span>    <span class="n">Set</span> <span class="n">background</span> <span class="n">jobs</span> <span class="n">to</span> <span class="n">webcron</span> <span class="n">mode</span>
 </pre></div>
 </div>
-<p>This example selects Ajax:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">background</span><span class="p">:</span><span class="n">ajax</span>
-  <span class="n">Set</span> <span class="n">mode</span> <span class="k">for</span> <span class="n">background</span> <span class="n">jobs</span> <span class="n">to</span> <span class="s1">&#39;ajax&#39;</span>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">background</span><span class="p">:</span><span class="n">cron</span>
+  <span class="n">Set</span> <span class="n">mode</span> <span class="k">for</span> <span class="n">background</span> <span class="n">jobs</span> <span class="n">to</span> <span class="s1">&#39;cron&#39;</span>
 </pre></div>
 </div>
 <p>The other two commands are:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">background:cron</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">background:ajax</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">background:webcron</span></code></p></li>
 </ul>
 <p>See <a class="reference internal" href="configuration_server/background_jobs_configuration.html"><span class="doc">Background jobs</span></a> to learn more.</p>
@@ -1009,8 +1013,6 @@ convert from SQLite to one of these other databases.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">db</span>
  <span class="n">db</span><span class="p">:</span><span class="n">convert</span><span class="o">-</span><span class="nb">type</span>           <span class="n">Convert</span> <span class="n">the</span> <span class="n">Nextcloud</span> <span class="n">database</span> <span class="n">to</span> <span class="n">the</span> <span class="n">newly</span>
                            <span class="n">configured</span> <span class="n">one</span>
- <span class="n">db</span><span class="p">:</span><span class="n">generate</span><span class="o">-</span><span class="n">change</span><span class="o">-</span><span class="n">script</span> <span class="n">generates</span> <span class="n">the</span> <span class="n">change</span> <span class="n">script</span> <span class="kn">from</span><span class="w"> </span><span class="nn">the</span> <span class="n">current</span>
-                           <span class="n">connected</span> <span class="n">db</span> <span class="n">to</span> <span class="n">db_structure</span><span class="o">.</span><span class="n">xml</span>
 </pre></div>
 </div>
 <p>You need:</p>
@@ -2365,6 +2367,10 @@ check for that user via the occ command:</p>
 </section>
 <section id="antivirus">
 <span id="antivirus-commands-label"></span><h2>Antivirus<a class="headerlink" href="#antivirus" title="Link to this heading"></a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>These commands require the <a class="reference external" href="https://apps.nextcloud.com/apps/files_antivirus">files_antivirus</a> app to be installed and enabled.</p>
+</div>
 <p>Get info about files in the scan queue:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">files_antivirus</span><span class="p">:</span><span class="n">status</span> <span class="p">[</span><span class="o">-</span><span class="n">v</span><span class="p">]</span>
 </pre></div>

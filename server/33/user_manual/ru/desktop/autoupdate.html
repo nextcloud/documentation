@@ -159,12 +159,9 @@
 <p>У администраторов Windows есть больше возможностей предотвратить автоматическое обновление в среде Windows, используя один из двух методов. Первый метод позволяет пользователям переопределить механизм автоматической проверки обновлений, в то время как второй метод предотвращает любые переопределения вручную.</p>
 <p>Чтобы предотвратить автоматическое обновление, но разрешить ручное переопределение:</p>
 <ol class="arabic">
-<li><p>Отредактируйте эти разделы реестра:</p>
+<li><p>Отредактируйте этот раздел реестра:</p>
 <blockquote>
-<div><ol class="loweralpha simple">
-<li><p>(32-bit-Windows) <code class="docutils literal notranslate"><span class="pre">HKEY_LOCAL_MACHINE\Software\Nextcloud\Nextcloud</span></code></p></li>
-<li><p>(64-bit-Windows) <code class="docutils literal notranslate"><span class="pre">HKEY_LOCAL_MACHINE\Software\Wow6432Node\Nextcloud\Nextcloud</span></code></p></li>
-</ol>
+<div><p><code class="docutils literal notranslate"><span class="pre">HKEY_LOCAL_MACHINE\Software\Nextcloud</span> <span class="pre">GmbH\Nextcloud</span></code></p>
 </div></blockquote>
 </li>
 <li><p>Добавьте ключ <cite>skipUpdateCheck</cite> (типа DWORD).</p></li>
@@ -187,7 +184,9 @@
 </ol>
 <div class="admonition note">
 <p class="admonition-title">Примечание</p>
-<p>у фирменных клиентов разные ключевые названия</p>
+<p>Branded clients use a different key in place of
+<code class="docutils literal notranslate"><span class="pre">Nextcloud</span> <span class="pre">GmbH\Nextcloud</span></code> that matches the branded application vendor and
+name.</p>
 </div>
 </section>
 <section id="preventing-automatic-updates-in-linux-environments">
