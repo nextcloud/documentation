@@ -7,7 +7,7 @@
   <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Breakout rooms &mdash; Nextcloud latest User Manual latest Dokumentation</title>
+  <title>Breakout-Räume &mdash; Nextcloud latest User Manual latest Dokumentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
@@ -32,7 +32,7 @@
     <link rel="index" title="Stichwortverzeichnis" href="../genindex.html" />
     <link rel="search" title="Suche" href="../search.html" />
     <link rel="next" title="Bots und Befehle" href="bots.html" />
-    <link rel="prev" title="Call recording" href="call_recording.html" /> 
+    <link rel="prev" title="Anrufaufzeichnung" href="call_recording.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -62,6 +62,7 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../index.html">Nextcloud latest - Einführung zur Benutzeranleitung</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../webinterface.html">Die Weboberfläche von Nextcloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../activity.html">Using the Activity app</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../files/index.html">Dateien &amp; Synchronisation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Talk</a><ul class="current">
@@ -71,17 +72,17 @@
 <li class="toctree-l2"><a class="reference internal" href="federation_index.html">Federation</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="moderator_index.html">Für die Moderation</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="webinar.html">Webinar und Lobby</a></li>
-<li class="toctree-l3"><a class="reference internal" href="call_recording.html">Call recording</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Breakout rooms</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#configure-breakout-rooms">Configure breakout rooms</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#manage-breakout-rooms">Manage breakout rooms</a></li>
+<li class="toctree-l3"><a class="reference internal" href="call_recording.html">Anrufaufzeichnung</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Breakout-Räume</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#configure-breakout-rooms">Breakout-Räume einrichten</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#manage-breakout-rooms">Breakout-Räume verwalten</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="bots.html">Bots und Befehle</a></li>
 <li class="toctree-l3"><a class="reference internal" href="matterbridge.html">Matterbridge</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="guest.html">Join a call or chat as guest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guest.html">Einem Anruf beitreten oder als Gast chatten</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop-Clients</a></li>
@@ -108,7 +109,7 @@
       <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="index.html">Talk</a></li>
           <li class="breadcrumb-item"><a href="moderator_index.html">Für die Moderation</a></li>
-      <li class="breadcrumb-item active">Breakout rooms</li>
+      <li class="breadcrumb-item active">Breakout-Räume</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/talk/breakout_rooms.rst" class="fa fa-github"> Auf GitHub bearbeiten</a>
       </li>
@@ -119,42 +120,40 @@
            <div itemprop="articleBody">
              
   <section id="breakout-rooms">
-<h1>Breakout rooms<a class="headerlink" href="#breakout-rooms" title="Link to this heading"></a></h1>
-<p>Breakout rooms allow you to divide a Nextcloud Talk call into smaller groups for more focused discussions. The moderator of the call can create multiple breakout rooms and assign participants to each room.</p>
+<h1>Breakout-Räume<a class="headerlink" href="#breakout-rooms" title="Link to this heading"></a></h1>
+<p>MIt Breakout-Räumen können Sie einen Nextcloud Talk-Anruf für gezieltere Diskussionen in kleinere Gruppen aufteilen. Der Moderator des Anrufs kann mehrere Breakout-Räume erstellen und jedem Raum Teilnehmer zuweisen.</p>
 <div class="admonition note">
 <p class="admonition-title">Bemerkung</p>
-<p>Breakout rooms are currently not available in conversations that are joinable by guests (public conversations).</p>
+<p>Breakout-Räume sind derzeit in Unterhaltungen, denen Gäste beitreten können (öffentliche Unterhaltungen), nicht verfügbar.</p>
 </div>
 <section id="configure-breakout-rooms">
-<h2>Configure breakout rooms<a class="headerlink" href="#configure-breakout-rooms" title="Link to this heading"></a></h2>
-<p>To create breakout rooms, you need to be a moderator in a group conversation. Click on the top-bar menu and click on <code class="docutils literal notranslate"><span class="pre">Setup</span> <span class="pre">breakout</span> <span class="pre">rooms</span></code>.</p>
+<h2>Breakout-Räume einrichten<a class="headerlink" href="#configure-breakout-rooms" title="Link to this heading"></a></h2>
+<p>Um Breakout-Räume zu erstellen, müssen Sie Moderator einer Gruppenunterhaltung sein. Klicken Sie auf das Menü in der oberen Leiste und dann auf <code class="docutils literal notranslate"><span class="pre">Breakout-Räume</span> <span class="pre">einrichten</span></code>.</p>
 <a class="reference internal image-reference" href="../../_images/talk-breakout-rooms-setup.png"><img alt="../../_images/talk-breakout-rooms-setup.png" src="../../_images/talk-breakout-rooms-setup.png" style="width: 400px;" />
 </a>
-<p>A dialog will open where you can specify the number of rooms you want to create and the participants assignment method.
-You have three options:</p>
+<p>Es öffnet sich ein Dialog, in dem Sie die Anzahl der zu erstellenden Räume und die Methode zur Teilnehmerzuweisung festlegen können. Sie haben drei Optionen:</p>
 <ul class="simple">
-<li><p><strong>Automatically assign participants</strong>: Talk will automatically assign participants to the rooms.</p></li>
-<li><p><strong>Manually assign participants</strong>: You’ll go through a participants editor where you can assign participants to rooms.</p></li>
-<li><p><strong>Allow participants choose</strong>: Participants will be able to join breakout rooms themselves.</p></li>
+<li><p><strong>Teilnehmer automatisch zuweisen</strong>: Talk weist den Räumen automatisch Teilnehmer zu.</p></li>
+<li><p><strong>Teilnehmer manuell zuweisen</strong>: Sie durchlaufen einen Teilnehmereditor, in dem Sie Teilnehmer Räumen zuweisen können.</p></li>
+<li><p><strong>Teilnehmern die Wahl lassen</strong>: Die Teilnehmer können den Breakout-Räumen selbst beitreten.</p></li>
 </ul>
 <a class="reference internal image-reference" href="../../_images/talk-breakout-rooms-setup-dialog.png"><img alt="../../_images/talk-breakout-rooms-setup-dialog.png" src="../../_images/talk-breakout-rooms-setup-dialog.png" style="width: 500px;" />
 </a>
 </section>
 <section id="manage-breakout-rooms">
-<h2>Manage breakout rooms<a class="headerlink" href="#manage-breakout-rooms" title="Link to this heading"></a></h2>
-<p>Once the breakout rooms are created, you will be able to see them in the sidebar.</p>
+<h2>Breakout-Räume verwalten<a class="headerlink" href="#manage-breakout-rooms" title="Link to this heading"></a></h2>
+<p>Sobald die Breakout-Räume erstellt wurden, können Sie sie in der Seitenleiste sehen.</p>
 <a class="reference internal image-reference" href="../../_images/talk-breakout-rooms-sidebar.png"><img alt="../../_images/talk-breakout-rooms-sidebar.png" src="../../_images/talk-breakout-rooms-sidebar.png" style="width: 500px;" />
 </a>
-<p>From the sidebar header, you can:</p>
+<p>Von der Kopfzeile der Seitenleiste aus können Sie folgendes:</p>
 <ul class="simple">
-<li><p><strong>Start and stop the breakout rooms</strong>: this will move all the users in the parent conversation to their respective breakout rooms.</p></li>
-<li><p><strong>Broadcast a message to all the rooms</strong>: this will send a message to all the rooms at the same time.</p></li>
-<li><p><strong>Make changes to the assigned participants</strong>: this will open the participants editor where you can change which participants are assigned to which breakout room. From this dialog it’s also possible to delete the breakout rooms.</p></li>
+<li><p><strong>Breakout-Räume starten und stoppen</strong>: Dadurch werden alle Benutzer in der übergeordneten Unterhaltung in ihre jeweiligen Breakout-Räume verschoben.</p></li>
+<li><p><strong>Nachricht an alle Räume senden</strong>: Damit wird gleichzeitig eine Nachricht an alle Räume gesendet.</p></li>
+<li><p><strong>Änderungen an den zugewiesenen Teilnehmern vornehmen</strong>: Dadurch wird der Teilnehmer-Editor geöffnet, in dem Sie ändern können, welche Teilnehmer welchem Breakout-Raum zugewiesen wird. Von diesem Dialog aus ist es auch möglich, die Breakout-Räume zu löschen.</p></li>
 </ul>
 <a class="reference internal image-reference" href="../../_images/talk-breakout-rooms-sidebar-header.png"><img alt="../../_images/talk-breakout-rooms-sidebar-header.png" src="../../_images/talk-breakout-rooms-sidebar-header.png" style="width: 400px;" />
 </a>
-<p>From the breakout room element in the sidebar, you can also join a particular breakout room or send a message to a
-specific room.</p>
+<p>Über das Breakout-Raum-Element in der Seitenleiste können Sie auch einem bestimmten Breakout-Raum beitreten oder eine Nachricht an einen bestimmten Raum senden.</p>
 <a class="reference internal image-reference" href="../../_images/talk-breakout-rooms-sidebar-item.png"><img alt="../../_images/talk-breakout-rooms-sidebar-item.png" src="../../_images/talk-breakout-rooms-sidebar-item.png" style="width: 400px;" />
 </a>
 </section>
@@ -164,7 +163,7 @@ specific room.</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="call_recording.html" class="btn btn-neutral float-left" title="Call recording" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Zurück</a>
+        <a href="call_recording.html" class="btn btn-neutral float-left" title="Anrufaufzeichnung" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Zurück</a>
         <a href="bots.html" class="btn btn-neutral float-right" title="Bots und Befehle" accesskey="n" rel="next">Weiter <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
@@ -190,6 +189,8 @@ specific room.</p>
 
   
   
+  
+    
   
     
   
@@ -453,6 +454,14 @@ specific room.</p>
           </dd>
         
           <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/lt/"
+               
+            >
+              lt
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
             <a href="/server/latest/user_manual/mn/"
                
             >
@@ -636,20 +645,6 @@ specific room.</p>
             </a>
           </dd>
         
-      </dl>
-      <dl>
-        <dt>Downloads</dt>
-        
-      </dl>
-      <dl>
-        
-        <dt>Auf "Read the docs"</dt>
-        <dd>
-          <a href="///projects//?fromdocs=">Projekt Startseite</a>
-        </dd>
-        <dd>
-          <a href="///builds//?fromdocs=">Builds</a>
-        </dd>
       </dl>
     </div>
   </div>

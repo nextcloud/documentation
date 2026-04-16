@@ -1,0 +1,753 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="lt" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prieiga prie failų naudojant „Nextcloud“ žiniatinklio sąsają &mdash; Nextcloud latest User Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=bc97f5cf" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://docs.nextcloud.com/server/stable/user_manual/files/access_webgui.html" />
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=865490d1"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../_static/translations.js?v=e4682f4a"></script>
+      <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <script src="../../_static/js/versions.js"></script>
+    <link rel="index" title="Indeksas" href="../genindex.html" />
+    <link rel="search" title="Paieška" href="../search.html" />
+    <link rel="next" title="Prieiga prie „Nextcloud“ failų naudojant „WebDAV“" href="access_webdav.html" />
+    <link rel="prev" title="Files &amp; synchronization" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Ieškoti dokumentuose" aria-label="Ieškoti dokumentuose" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigacijos meniu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Nextcloud latest user manual introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">The Nextcloud Web interface</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../activity.html">Using the Activity app</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Files &amp; synchronization</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Prieiga prie failų naudojant „Nextcloud“ žiniatinklio sąsają</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#tagging-files">Failų žymėjimas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#comments">Komentarai</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#video-player">Vaizdo grotuvas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#file-controls">Failų valdikliai</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#previewing-files">Failų peržiūra</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#navigating-inside-your-nextcloud">Navigacija jūsų „Nextcloud“ sistemoje</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sharing-status-icons">Bendrinimo būsenos piktogramos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#creating-or-uploading-files-and-directories">Failų ir katalogų kūrimas arba įkėlimas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#selecting-files-or-folders">Failų arba aplankų pasirinkimas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#filtering-the-files-view">Failų peržiūros filtravimas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#moving-files">Failų perkėlimas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#creating-or-connecting-to-a-federation-share-link">Federacijos bendrinimo nuorodos kūrimas arba prisijungimas prie jos</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="access_webdav.html">Prieiga prie „Nextcloud“ failų naudojant „WebDAV“</a></li>
+<li class="toctree-l2"><a class="reference internal" href="deleted_file_management.html">Ištrintų failų tvarkymas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="desktop_mobile_sync.html">Stacionariųjų ir mobiliųjų įrenginių sinchronizavimas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="encrypting_files.html">Šifravimas serverio pusėje</a></li>
+<li class="toctree-l2"><a class="reference internal" href="using_e2ee.html">Using end-to-end encryption</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sharing.html">File Sharing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sharing.html#federated-shares">Federated Shares</a></li>
+<li class="toctree-l2"><a class="reference internal" href="file_drop.html">Anoniminių įkėlimų kūrimas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="large_file_upload.html">Didelių failų įkėlimai</a></li>
+<li class="toctree-l2"><a class="reference internal" href="quota.html">Saugojimo kvota</a></li>
+<li class="toctree-l2"><a class="reference internal" href="version_control.html">Version control</a></li>
+<li class="toctree-l2"><a class="reference internal" href="projects.html">Projektai</a></li>
+<li class="toctree-l2"><a class="reference internal" href="transfer_ownership.html">Transfer Ownership</a></li>
+<li class="toctree-l2"><a class="reference internal" href="federated_cloud_sharing.html">Federuotų bendrinimų naudojimas</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Talk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Clients</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">Setting your preferences</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Universal access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Using two-factor authentication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Manage connected browsers and devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">Išorinė saugykla</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobilios navigacijos meniu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest User Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Puslapių navigacija">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Files &amp; synchronization</a></li>
+      <li class="breadcrumb-item active">Prieiga prie failų naudojant „Nextcloud“ žiniatinklio sąsają</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/files/access_webgui.rst" class="fa fa-github"> Keisti GitHub'e</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="accessing-your-files-using-the-nextcloud-web-interface">
+<h1>Prieiga prie failų naudojant „Nextcloud“ žiniatinklio sąsają<a class="headerlink" href="#accessing-your-files-using-the-nextcloud-web-interface" title="Link to this heading"></a></h1>
+<p>Naudodami „Nextcloud“ žiniatinklio sąsają galite pasiekti savo „Nextcloud“ failus ir kurti, peržiūrėti, redaguoti, ištrinti, bendrinti bei pakartotinai bendrinti. Jūsų „Nextcloud“ administratorius turi galimybę išjungti šias funkcijas, todėl jei kurios nors iš jų jūsų sistemoje trūksta, kreipkitės į serverio administratorių.</p>
+<figure class="align-default">
+<img alt="Failų peržiūros ekranas." src="../../_images/users-files.png" />
+</figure>
+<section id="tagging-files">
+<h2>Failų žymėjimas<a class="headerlink" href="#tagging-files" title="Link to this heading"></a></h2>
+<p>Failams galite priskirti žymas. Norėdami sukurti žymas, atidarykite failą išsamios informacijos rodinyje. Tada įveskite savo žymas. Norėdami įvesti daugiau nei vieną žymą, sukūrę kiekvieną žymą, paspauskite klavišą „Enter“. Visos žymos yra sistemos žymos ir jas bendrina visi jūsų „Nextcloud“ serverio naudotojai.</p>
+<figure class="align-default">
+<img alt="Failų žymėjimų kūrimas." src="../../_images/files_page-7.png" />
+</figure>
+<p>Tada naudokite žymėjimų filtrą kairėje šoninėje juostoje, kad filtruotumėte failus pagal žymėjimus:</p>
+<figure class="align-default">
+<img alt="Failų žymėjimų peržiūra." src="../../_images/files_page-8.png" />
+</figure>
+</section>
+<section id="comments">
+<h2>Komentarai<a class="headerlink" href="#comments" title="Link to this heading"></a></h2>
+<p>Norėdami pridėti ir skaityti komentarus bet kuriame faile ar aplanke, naudokite išsamios informacijos rodinį. Komentarai matomi visiems, turintiems prieigą prie failo:</p>
+<figure class="align-default">
+<img alt="Komentarų kūrimas ir peržiūra." src="../../_images/file_menu_comments_2.png" />
+</figure>
+</section>
+<section id="video-player">
+<h2>Vaizdo grotuvas<a class="headerlink" href="#video-player" title="Link to this heading"></a></h2>
+<p>„Nextcloud“ vaizdo įrašus galite leisti naudodami vaizdo įrašų grotuvo programėlę tiesiog spustelėdami failą. Vaizdo įrašų transliacija naudojant vietinį „Nextcloud“ vaizdo grotuvą priklauso nuo jūsų žiniatinklio naršyklės ir vaizdo įrašo formato. Jei „Nextcloud“ administratorius įjungė vaizdo įrašų transliaciją ir ji neveikia jūsų žiniatinklio naršyklėje, tai gali būti naršyklės problema. Palaikomus multimedijos formatus žiniatinklio naršyklėse rasite adresu <a class="reference external" href="https://developer.mozilla.org/en-US/docs/Web/HTML/Supported_media_formats#Browser_compatibility">https://developer.mozilla.org/en-US/docs/Web/HTML/Supported_media_formats#Browser_compatibility</a>.</p>
+<figure class="align-default">
+<img alt="Filmo peržiūra." src="../../_images/video_player_2.png" />
+</figure>
+</section>
+<section id="file-controls">
+<h2>Failų valdikliai<a class="headerlink" href="#file-controls" title="Link to this heading"></a></h2>
+<p>„Nextcloud“ gali rodyti įvairių failų tipų, pvz., vaizdų, garso failų ir tekstinių failų, miniatiūrų peržiūras. Konkrečius palaikomus tipus nustato serverio administratorius. Užveskite pelės žymeklį ant failo ar aplanko, kad būtų rodomi šių operacijų valdikliai:</p>
+<dl>
+<dt>Mėgstamiausi</dt><dd><p>Spustelėkite žvaigždutę kairėje failo piktogramos pusėje, kad pažymėtumėte jį kaip mėgstamiausią:</p>
+<figure class="align-default">
+<img alt="Mėgstamiausių failų žymėjimas." src="../../_images/files_page-1.png" />
+</figure>
+<p>Taip pat galite greitai rasti visus mėgstamiausius naudodami filtrą „Mėgstamiausi“, esantį kairėje šoninėje juostoje.</p>
+</dd>
+<dt>Papildomas meniu</dt><dd><p>Papildomas meniu (trys taškai) rodo failo informaciją ir leidžia pervadinti, atsisiųsti arba ištrinti failus:</p>
+<figure class="align-default">
+<img alt="Papildomas meniu." src="../../_images/files_page-3.png" />
+</figure>
+<p>Išsamios informacijos rodinyje rodoma informacija apie Veiklas, Bendrinimą ir Versijas:</p>
+</dd>
+</dl>
+<figure class="align-default">
+<img alt="Išsamios informacijos ekranas." src="../../_images/files_page-4.png" />
+</figure>
+<p>Kairiajame apatiniame kampe esanti ratuko piktograma <strong>Nustatymai</strong> leidžia rodyti arba paslėpti paslėptus failus „Nextcloud“ žiniatinklio sąsajoje. Jie taip pat vadinami „dotfiles“, nes jų pavadinimai prasideda tašku, pvz., „.mailfile“. Taškas nurodo operacinei sistemai paslėpti šiuos failus failų naršyklėse, nebent nuspręstumėte juos rodyti. Paprastai tai yra konfigūracijos failai, todėl galimybė juos paslėpti padeda išvengti netvarkos.</p>
+<figure class="align-default">
+<img alt="Paslėptų failų slėpimas arba rodymas." src="../../_images/hidden_files.png" />
+</figure>
+</section>
+<section id="previewing-files">
+<h2>Failų peržiūra<a class="headerlink" href="#previewing-files" title="Link to this heading"></a></h2>
+<p>„Nextcloud“ įterptuosiuose peržiūros įrankiuose galite peržiūrėti nesuspaustus tekstinius failus, „OpenDocument“ failus, vaizdo įrašus ir vaizdo failus, spustelėdami failo pavadinimą. Jei „Nextcloud“ administratorius įjungė šią funkciją, galbūt galėsite peržiūrėti ir kitų tipų failus. Jei „Nextcloud“ negali atidaryti failo, ji pradeda atsisiuntimo procesą ir atsisiunčia failą į jūsų kompiuterį.</p>
+</section>
+<section id="navigating-inside-your-nextcloud">
+<h2>Navigacija jūsų „Nextcloud“ sistemoje<a class="headerlink" href="#navigating-inside-your-nextcloud" title="Link to this heading"></a></h2>
+<p>Naršyti po „Nextcloud“ aplankus labai paprasta: užtenka paspausti ant aplanko, kad jį atidarytumėte, ir naudoti naršyklės grįžimo mygtuką, kad pereitumėte į ankstesnį lygį. Be to, „Nextcloud“ viršuje, „Failai“ laukelyje, yra navigacijos juosta, skirta greitam naršymui.</p>
+</section>
+<section id="sharing-status-icons">
+<h2>Bendrinimo būsenos piktogramos<a class="headerlink" href="#sharing-status-icons" title="Link to this heading"></a></h2>
+<p>Kiekvienas bendrai naudojamas aplankas pažymėtas piktograma „Bendrai naudojamas“. Viešos nuorodos pažymėtos grandinės piktograma. Aplankai, kurie nėra bendrai naudojami, nepažymėti:</p>
+<figure class="align-default">
+<img alt="Dalytis būsenos piktogramomis." src="../../_images/files_page-5.png" />
+</figure>
+</section>
+<section id="creating-or-uploading-files-and-directories">
+<h2>Failų ir katalogų kūrimas arba įkėlimas<a class="headerlink" href="#creating-or-uploading-files-and-directories" title="Link to this heading"></a></h2>
+<p>Įkelkite arba sukurkite naujus failus ar aplankus tiesiogiai „Nextcloud“ aplanke, spustelėdami mygtuką <em>Naujas</em> programėlėje „Failai“:</p>
+<figure class="align-default">
+<img alt="Naujas meniu „Failas/Aplankas/Įkelti“." src="../../_images/files_page-6.png" />
+</figure>
+<p>Mygtukas <em>Naujas</em> siūlo šias galimybes:</p>
+<dl class="simple">
+<dt>Rodyklė į viršų</dt><dd><p>Įkelkite failus iš savo kompiuterio į „Nextcloud“. Failus taip pat galite įkelti, perkelę juos iš failų tvarkyklės.</p>
+</dd>
+<dt>Tekstinis failas</dt><dd><p>Sukuria naują tekstinį failą ir įtraukia jį į dabartinį aplanką.</p>
+</dd>
+<dt>Aplankas</dt><dd><p>Sukuria naują aplanką esamame aplanke.</p>
+</dd>
+</dl>
+</section>
+<section id="selecting-files-or-folders">
+<h2>Failų arba aplankų pasirinkimas<a class="headerlink" href="#selecting-files-or-folders" title="Link to this heading"></a></h2>
+<p>Galite pažymėti vieną ar kelis failus arba aplankus, pažymėdami atitinkamus langelius. Norėdami pažymėti visus esamo katalogo failus, pažymėkite langelį, esantį failų sąrašo viršuje.</p>
+<p>Pasirinkę kelis failus, galite juos visus ištrinti arba atsisiųsti kaip ZIP failą, naudodami viršuje esančius mygtukus „Ištrinti“ arba „Atsisiųsti“.</p>
+<div class="admonition note">
+<p class="admonition-title">Pastaba</p>
+<p>Jei mygtukas „Atsisiųsti“ nematomas, tai reiškia, kad administratorius išjungė šią funkciją.</p>
+</div>
+</section>
+<section id="filtering-the-files-view">
+<h2>Failų peržiūros filtravimas<a class="headerlink" href="#filtering-the-files-view" title="Link to this heading"></a></h2>
+<p>Kairiajame „Failai“ puslapio šoniniame meniu yra keletas filtrų, skirtų greitam failų rūšiavimui ir tvarkymui.</p>
+<dl class="simple">
+<dt>Visi failai</dt><dd><p>Numatytasis rodinys; rodo visus failus, prie kurių turite prieigą.</p>
+</dd>
+<dt>Mėgstamiausi</dt><dd><p>Failai arba aplankai, pažymėti geltona žvaigždute.</p>
+</dd>
+<dt>Bendrinta su jumis</dt><dd><p>Rodo visus failus, kuriuos su jumis bendrino kitas vartotojas arba grupė.</p>
+</dd>
+<dt>Bendrinama su kitais</dt><dd><p>Rodo visus failus, kuriuos bendrinote su kitais vartotojais arba grupėmis.</p>
+</dd>
+<dt>Bendrinama naudojant nuorodą</dt><dd><p>Rodo visus failus, kuriuos bendrinate per viešą nuorodą.</p>
+</dd>
+<dt>Išorinė saugykla (neprivaloma)</dt><dd><p>Failai, prie kurių turite prieigą išoriniuose saugojimo įrenginiuose ir paslaugose, tokiose kaip „Amazon S3“, SMB/CIFS, FTP…</p>
+</dd>
+</dl>
+</section>
+<section id="moving-files">
+<h2>Failų perkėlimas<a class="headerlink" href="#moving-files" title="Link to this heading"></a></h2>
+<p>Failus ir aplankus galite perkelti vilkdami juos į bet kurį katalogą.</p>
+</section>
+<section id="creating-or-connecting-to-a-federation-share-link">
+<h2>Federacijos bendrinimo nuorodos kūrimas arba prisijungimas prie jos<a class="headerlink" href="#creating-or-connecting-to-a-federation-share-link" title="Link to this heading"></a></h2>
+<p>„Federated Cloud Sharing“ leidžia prijungti failų bendrinimo aplankus iš nuotolinių „Nextcloud“ serverių ir valdyti juos kaip vietinį bendrinimą. Žr. <a class="reference internal" href="federated_cloud_sharing.html"><span class="doc">Federuotų bendrinimų naudojimas</span></a>, kad sužinotumėte, kaip kurti ir prisijungti prie naujų „Federated Cloud“ bendrinamų aplankų.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Poraštė">
+        <a href="index.html" class="btn btn-neutral float-left" title="Files &amp; synchronization" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Ankstesnis</a>
+        <a href="access_webdav.html" class="btn btn-neutral float-right" title="Prieiga prie „Nextcloud“ failų naudojant „WebDAV“" accesskey="n" rel="next">Kitas <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+  
+  <!-- Here go the languages -->
+
+  
+  
+
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      🌐 lt
+      <span class="fa fa-caret-down"></span>
+       ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>🌐 Languages</dt>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ar/"
+               
+            >
+              Arabic
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/br/"
+               
+            >
+              Breton
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ca/"
+               
+            >
+              Catalan
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_CN/"
+               
+            >
+              Chinese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_HK/"
+               
+            >
+              Chinese (HK)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_TW/"
+               
+            >
+              Chinese (TW)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/cs/"
+               
+            >
+              Czech
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/da/"
+               
+            >
+              Danish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nl/"
+               
+            >
+              Dutch
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/en/"
+               
+            >
+              English
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/fi_FI/"
+               
+            >
+              Finnish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/fr/"
+               
+            >
+              French
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/gl/"
+               
+            >
+              Galician
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/de/"
+               
+            >
+              German
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/el/"
+               
+            >
+              Greek
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/hu_HU/"
+               
+            >
+              Hungarian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/id/"
+               
+            >
+              Indonesian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ga/"
+               
+            >
+              Irish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/it/"
+               
+            >
+              Italian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ja_JP/"
+               
+            >
+              Japanese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ko/"
+               
+            >
+              Korean
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/lt/"
+               
+               style="color: var(--dark-link-color);"
+               
+            >
+              lt
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/mn/"
+               
+            >
+              Mongolian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nb_NO/"
+               
+            >
+              Norwegian (NB)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nn/"
+               
+            >
+              Norwegian (NN)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pl/"
+               
+            >
+              Polish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pt_PT/"
+               
+            >
+              Portuguese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pt_BR/"
+               
+            >
+              Portuguese (BR)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ro/"
+               
+            >
+              Romanian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ru/"
+               
+            >
+              Russian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/si/"
+               
+            >
+              Sinhala
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sk_SK/"
+               
+            >
+              Slovakian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sr/"
+               
+            >
+              Slovenian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/es/"
+               
+            >
+              Spanish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sv/"
+               
+            >
+              Swedish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ta/"
+               
+            >
+              Tamil
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/tr/"
+               
+            >
+              Turkish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/uk_UA/"
+               
+            >
+              Ukrainian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/uz/"
+               
+            >
+              Uzbek
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/vi/"
+               
+            >
+              Vietnamese
+            </a>
+          </dd>
+        
+      </dl>
+    </div>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Versijos</dt>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/latest/user_manual"
+               
+               style="color: var(--dark-link-color);"
+               
+            >
+              latest
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/stable/user_manual"
+               
+            >
+              stable
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/32/user_manual"
+               
+            >
+              32
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/31/user_manual"
+               
+            >
+              31
+            </a>
+          </dd>
+        
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
