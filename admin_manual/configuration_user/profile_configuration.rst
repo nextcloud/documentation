@@ -380,19 +380,45 @@ With more restrictive scopes (especially ``Private``), expect reduced visibility
 
 In short: tighter privacy reduces profile-based convenience and discoverability.
 
-.. TODO/Future additions
-   - Sharing settings + Mentions + Property Scope interactions (i.e. auto-completion, group/user-to-group/user sharing)
-   - Since default visibility scope changes only apply to new users, perhaps we can cover whether there's a migration path for existing users?
-   - better integrate (cross-link? separate out?) with chapters covering sharing and federation
-   - unify with User Manual
-   - Dev Manual coverage 
-   - better distinguish user facing profile field visibility settings from admin instance-level scope settings
-   - better "known user context" description
-   - better "public contexts" description
-   - better "lookup server" description/context
-      - https://github.com/nextcloud/lookup-server?tab=readme-ov-file#what-is-lookup-server
-      - https://github.com/nextcloud/lookup-server/blob/master/doc/architecture.md#overview
-   - better "varies by feature/UI/API/app" description
-   - more definite statements; more direct statements
-   - simplify simplify simplify
+Scopes and existing users
+-------------------------
+
+The ``account_manager.default_property_scope`` config only applies to **new** users.
+Existing users keep their stored scopes.
+
+There is currently no admin-level mechanism to bulk-change scopes for existing
+users. The OCS provisioning API only allows users to change their **own** scopes —
+admins cannot set scopes on behalf of other users.
+
+Users can update their own scopes in **Personal settings** → **Personal info** →
+**Edit your Profile visibility**, or via the API::
+
+  curl -s -u alice:password -X PUT \
+    "https://cloud.example.com/ocs/v2.php/cloud/users/alice" \
+    -H "OCS-APIRequest: true" \
+    -d "key=phoneScope&value=v2-private"
+
+The scope key is the property name with ``Scope`` appended. Available keys:
+
+``displaynameScope``, ``emailScope``, ``phoneScope``, ``addressScope``,
+``websiteScope``, ``twitterScope``, ``blueskyScope``, ``fediverseScope``,
+``organisationScope``, ``roleScope``, ``headlineScope``, ``biographyScope``,
+``birthdateScope``, ``avatarScope``, ``pronounsScope``
+
+Allowed scope values:
+
+- ``v2-private`` — Private
+- ``v2-local`` — Local
+- ``v2-federated`` — Federated
+- ``v2-published`` — Published
+
+.. note::
+   ``displaynameScope`` and ``emailScope`` cannot be set to ``v2-private``.
+   The server enforces a minimum of ``v2-local`` for these properties.
+
+See also
+--------
+
+- :doc:`../configuration_files/file_sharing_configuration` — sharing and autocomplete settings that interact with profile visibility
+- `User manual: Personal settings <https://docs.nextcloud.com/server/latest/user_manual/en/userpreferences.html>`_ — user-facing profile and personal info settings
 

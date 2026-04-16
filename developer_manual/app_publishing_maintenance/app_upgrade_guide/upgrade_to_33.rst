@@ -212,6 +212,7 @@ Changed APIs
 - The ``setObjectId`` and ``getObjectId`` methods of ``\OCP\Activity\IEvent`` were changed to return/accept a string in addition to an int. The string is suppose to be a snowflake id.
 - The ``\OCP\TaskProcessing\Task`` class now has ``getIncludeWatermark`` and ``setIncludeWatermark`` methods for indicating whether the provider should add a watermark to the generated output.
 - The TaskProcessing OCS API now also accepts the ``includeWatermark`` flag when scheduling tasks
+- ``\OCP\Notification\INotification::setIcon``, ``\OCP\Notification\INotification::setLink`` and ``\OCP\Notification\IAction::setLink`` now throw ``\OCP\Notification\InvalidValueException`` when the provided link is not absolute as previously announced in :doc:`./upgrade_to_30`
 
 Deprecated APIs
 ^^^^^^^^^^^^^^^
