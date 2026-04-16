@@ -1,9 +1,10 @@
 Matterbridge
 ============
 
-.. FIXME extend with links to win42 and talk_matterbridge, or some basic setup, or remove?
-
 Matterbridge integration in Nextcloud Talk makes it possible to create 'bridges' between Talk conversations and conversations on other chat services like MS Teams, Discord, Matrix and others. You can find a list of supported protocols `on the Matterbridge github page. <https://github.com/42wim/matterbridge#features>`_
+
+.. note::
+   The Matterbridge app must be installed by an administrator before this feature is available. See the `Talk administration documentation <https://nextcloud-talk.readthedocs.io/en/latest/matterbridge/>`_ for setup instructions.
 
 A moderator can add a Matterbridge connection in the chat conversation settings.
 
