@@ -24,11 +24,10 @@ report showing how many users you have, and when a user was last logged in::
   user:keys:verify                    Verify if the stored public key matches the stored private key
   user:lastseen                       shows when the user was logged in last time
   user:list                           shows list of all registered users
+  user:profile                        Read and modify user profile data
   user:report                         shows how many users have access
   user:resetpassword                  Resets the password of the named user
   user:setting                        Read and modify user settings
-  user:keys:verify                    Verify that the stored public key matches
-                                      the stored private key
 
 user:add
 ^^^^^^^^
