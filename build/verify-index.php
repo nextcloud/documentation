@@ -9,13 +9,14 @@
  * - Relative documentation links point to existing files
  * 
  * Environment Variables:
- * - VERIFY_DOCS_BASE_URL: Base URL for documentation files (default: https://docs.nextcloud.com)
+ * - VERIFY_DOCS_BASE_URL: Base URL for documentation files (default: https://nextcloud.github.io/documentation/)
  *   Set to empty string to skip file existence checks
  */
 
-$html_file = 'build/index.html';
-$base_url = getenv('VERIFY_DOCS_BASE_URL') ?: 'https://docs.nextcloud.com';
+# If custom domain is enabled, this should still handle the redirection
+$base_url = getenv('VERIFY_DOCS_BASE_URL') ?: 'https://nextcloud.github.io/documentation/';
 
+$html_file = 'build/index.html';
 if (!file_exists($html_file)) {
 	fwrite(STDERR, "⚠️  $html_file not found\n");
 	exit(0);

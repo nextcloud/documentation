@@ -110,7 +110,7 @@ Changing Installed Features
 
 You can change the installed features later by using ``REMOVE`` and ``ADDDEFAULT`` properties.
 
-1. If you want to add the the desktop shortcut later, run the following command::
+1. If you want to add the desktop shortcut later, run the following command::
 
     msiexec /passive /i Nextcloud-x.y.z-x64.msi ADDDEFAULT="DesktopShortcut"
 
