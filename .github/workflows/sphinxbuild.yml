@@ -129,7 +129,7 @@ jobs:
 
       - name: Install LaTeX from cache
         if: ${{ matrix.manual.build_pdf_path }}
-        timeout-minutes: 3
+        timeout-minutes: 5
         run: |
           sudo DEBIAN_FRONTEND=noninteractive apt-get update
           sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
