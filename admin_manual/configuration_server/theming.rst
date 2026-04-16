@@ -65,8 +65,6 @@ This requires:
 Branded clients
 ---------------
 
-.. TODO: Consider dropping this section (other than the note) since this isn't even available/applicable for non-enterprise users (who presumably will use docs at https://portal.nextcloud.com).
-
 .. note:: Nextcloud GmbH - the company that employs Nextcloud's core maintainers - offers branding services, providing sync clients (mobile and desktop) that use your corporate identity and are pre-configured for your users. For more information on advanced branding and enterprise support offerings, `contact Nextcloud GmbH <https://nextcloud.com/enterprise/>`_.
 
 The theming app supports changing the URLs for the mobile apps (Android and iOS) that appear when users access the web interface from mobile devices. By default, these links point to the official Nextcloud apps, but you can set them to branded versions.
