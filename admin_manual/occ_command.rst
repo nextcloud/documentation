@@ -51,8 +51,11 @@ occ command Directory
 
 .. _http_user_label:
 
-Run occ as your HTTP user
--------------------------
+Running occ
+-----------
+
+You must run ``occ`` as your HTTP user so that the file ownership and permissions
+on your Nextcloud data directory stay consistent with the web server.
 
 The HTTP user is different on the various Linux distributions:
 
@@ -169,13 +172,15 @@ and ``encryption:list-modules``
 Environment variables
 ^^^^^^^^^^^^^^^^^^^^^
 
-``sudo`` does not forward environment variables by default. Put the variables before the ``php`` command::
+``sudo`` does not forward environment variables by default. You can prepend the
+variable and use the ``-E`` switch to pass it through::
 
   NC_debug=true sudo -E -u www-data php occ status
 
-Alternatively, you can ``export`` the variable or use the ``-E`` switch for ``sudo``::
+Alternatively, ``export`` the variable first::
 
-  NC_debug=true sudo -E -u www-data php occ status
+  export NC_debug=true
+  sudo -E -u www-data php occ status
 
 Enabling autocompletion
 -----------------------
@@ -205,7 +210,7 @@ shell's profile (eg. ``~/.bash_profile`` or ``~/.zshrc``).
 
 .. _run_commands_in_maintenance_mode:
 
-Run commands in maintenance mode
+Limitations in maintenance mode
 --------------------------------
 
 In maintenance mode, apps are not loaded [1]_, so commands from apps are unavailable. Commands integrated into Nextcloud server are available in maintenance mode.
@@ -322,23 +327,23 @@ To update an app to an unstable release, for instance News::
 Background jobs selector
 ------------------------
 
-Use the ``background`` command to select which scheduler you want to use for
-controlling background jobs, Ajax, Webcron, or Cron. This is the same as using
+Use the ``background`` commands to select which scheduler you want to use for
+controlling background jobs. This is the same as using
 the **Cron** section on your Nextcloud Admin page::
 
  background
-  background:ajax       Use ajax to run background jobs
-  background:cron       Use cron to run background jobs
-  background:webcron    Use webcron to run background jobs
+  background:cron       Set background jobs to cron mode
+  background:ajax       Set background jobs to ajax mode
+  background:webcron    Set background jobs to webcron mode
 
-This example selects Ajax::
+Example::
 
- sudo -E -u www-data php occ background:ajax
-   Set mode for background jobs to 'ajax'
+ sudo -E -u www-data php occ background:cron
+   Set mode for background jobs to 'cron'
 
 The other two commands are:
 
-* ``background:cron``
+* ``background:ajax``
 * ``background:webcron``
 
 See :doc:`configuration_server/background_jobs_configuration` to learn more.
@@ -795,8 +800,6 @@ convert from SQLite to one of these other databases.
  db
   db:convert-type           Convert the Nextcloud database to the newly
                             configured one
-  db:generate-change-script generates the change script from the current
-                            connected db to db_structure.xml
 
 You need:
 
@@ -2237,6 +2240,9 @@ invisible  No       No
 
 Antivirus
 ---------
+
+.. note::
+   These commands require the `files_antivirus <https://apps.nextcloud.com/apps/files_antivirus>`_ app to be installed and enabled.
 
 Get info about files in the scan queue::
 
