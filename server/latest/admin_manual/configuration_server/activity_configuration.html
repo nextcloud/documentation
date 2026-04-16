@@ -86,7 +86,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#configuration-reference">Configuration reference</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#activities-in-team-folders-or-external-storages">Activities in team folders or external storages</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#activities-in-team-folders-or-external-storages">Activities in Team Folders or External Storages</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#excluding-users-from-activity-expiration">Excluding users from activity expiration</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#better-scheduling-of-activity-emails">Better scheduling of activity emails</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#troubleshooting">Troubleshooting</a><ul>
@@ -194,9 +194,18 @@
              
   <section id="activity-app">
 <h1>Activity app<a class="headerlink" href="#activity-app" title="Link to this heading"></a></h1>
-<p>The Activity app tracks events across your Nextcloud instance and can
+<p>The Activity app records and summarizes user-visible events across your Nextcloud instance and can
 notify users via the activity stream, email, and push notifications.
 It is shipped and enabled by default.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The Activity app is designed for user notifications, not for
+compliance or auditing. Users can enable or disable activity
+tracking for their own account, so the activity stream is not a
+reliable audit trail. If you need a complete log of all actions
+on your instance, use the <strong>admin_audit</strong> app instead — see
+<a class="reference internal" href="logging_configuration.html"><span class="doc">Logging</span></a>.</p>
+</div>
 <figure class="align-default" id="id1">
 <img alt="../_images/activity-settings-admin.png" src="../_images/activity-settings-admin.png" />
 <figcaption>
@@ -210,9 +219,9 @@ preferences for new accounts.</em></span><a class="headerlink" href="#id1" title
 <h3>Enabling email notifications<a class="headerlink" href="#enabling-email-notifications" title="Link to this heading"></a></h3>
 <p>To send activity notification emails, a working
 <a class="reference internal" href="email_configuration.html"><span class="doc">Email</span></a> is required.</p>
-<p>It is also recommended to configure the background job to <code class="docutils literal notranslate"><span class="pre">Webcron</span></code>
-or <code class="docutils literal notranslate"><span class="pre">Cron</span></code> as described in <a class="reference internal" href="background_jobs_configuration.html"><span class="doc">Background jobs</span></a>.
-The <code class="docutils literal notranslate"><span class="pre">Ajax</span></code> mode may delay or skip email delivery.</p>
+<p>It is also recommended to configure the background job run mode to a system
+run mode (<code class="docutils literal notranslate"><span class="pre">System</span> <span class="pre">Cron</span></code> or <code class="docutils literal notranslate"><span class="pre">systemd</span></code>) as described in <a class="reference internal" href="background_jobs_configuration.html"><span class="doc">Background jobs</span></a>.
+The <code class="docutils literal notranslate"><span class="pre">Ajax</span></code> and <code class="docutils literal notranslate"><span class="pre">Webcron</span></code> modes may delay or skip email delivery.</p>
 </section>
 <section id="admin-settings">
 <h3>Admin settings<a class="headerlink" href="#admin-settings" title="Link to this heading"></a></h3>
@@ -246,14 +255,13 @@ to accounts created after the change.</p></li>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">activity_expire_days</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">365</span></code></p></td>
 <td><p>Number of days to retain activity records. A daily background
-job deletes all activities older than this value. Set to <code class="docutils literal notranslate"><span class="pre">0</span></code>
-to disable expiration.</p></td>
+job deletes all activities older than this value. Minimum is <code class="docutils literal notranslate"><span class="pre">1</span></code> day.</p></td>
 </tr>
 <tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">activity_use_cached_mountpoints</span></code></p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
 <td><p>When <code class="docutils literal notranslate"><span class="pre">true</span></code>, activities in team folders and external storages
-are generated for all users with access, not just the current
-user. See <a class="reference internal" href="#label-activities-groupfolders"><span class="std std-ref">Activities in team folders or external storages</span></a> for details and
+are generated for all users with access, not just the acting
+user. See <a class="reference internal" href="#label-activities-groupfolders"><span class="std std-ref">Activities in Team Folders or External Storages</span></a> for details and
 caveats.</p></td>
 </tr>
 <tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">activity_expire_exclude_users</span></code></p></td>
@@ -265,7 +273,7 @@ by the expiration job. See <a class="reference internal" href="#label-activities
 </table>
 </section>
 <section id="activities-in-team-folders-or-external-storages">
-<span id="label-activities-groupfolders"></span><h2>Activities in team folders or external storages<a class="headerlink" href="#activities-in-team-folders-or-external-storages" title="Link to this heading"></a></h2>
+<span id="label-activities-groupfolders"></span><h2>Activities in Team Folders or External Storages<a class="headerlink" href="#activities-in-team-folders-or-external-storages" title="Link to this heading"></a></h2>
 <p>By default, activities in team folders or external storages are only
 generated for the current user. This is due to the underlying logic
 of these storage backends. The config flag
@@ -274,23 +282,26 @@ normal shares when set to <code class="docutils literal notranslate"><span class
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;activity_use_cached_mountpoints&#39;</span> <span class="o">=&gt;</span> <span class="n">true</span><span class="p">,</span>
 </pre></div>
 </div>
+<div class="admonition danger">
+<p class="admonition-title">Danger</p>
+<p>If “Advanced Permissions” (ACLs) are enabled in a team folder,
+activities do not respect those permissions. As a result, users may
+see activity entries for files and directories they cannot access.
+<strong>This can leak sensitive information.</strong> See
+<a class="reference external" href="https://github.com/nextcloud/groupfolders/issues/1057">this issue</a>
+for more information.</p>
+</div>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p>This config option comes with the following limitations:</p>
-<ol class="arabic simple">
-<li><p>If “Advanced Permissions” (ACLs) are enabled in a team folder,
-activities do not respect the permissions and all users see all
-activities, even for files and directories they do not have
-access to. <strong>This potentially leaks sensitive information!</strong> See
-<a class="reference external" href="https://github.com/nextcloud/groupfolders/issues/1057">this issue</a>
-for more information.</p></li>
-<li><p>Users that had access to a team folder, share or external
-storage can see activities in their stream and emails that
-happen after they are removed until they log in again.</p></li>
-<li><p>Users that are newly added to a team folder, share or external
-storage cannot see activities in their stream nor emails that
-happen after they are added until they log in again.</p></li>
-</ol>
+<p>Users who previously had access to a team folder, share, or external
+storage can continue to see new activity entries in their stream and
+emails until they log in again after access is removed.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Users who are newly added to a team folder, share, or external
+storage will not see new activity entries in their stream or emails
+until they log in again after access is granted.</p>
 </div>
 </section>
 <section id="excluding-users-from-activity-expiration">
@@ -349,7 +360,7 @@ errors.</p></li>
 <h3>Activities are missing for shared files or team folders<a class="headerlink" href="#activities-are-missing-for-shared-files-or-team-folders" title="Link to this heading"></a></h3>
 <p>By default, activities in team folders and external storages are only
 generated for the acting user. See
-<a class="reference internal" href="#label-activities-groupfolders"><span class="std std-ref">Activities in team folders or external storages</span></a> for how to enable activities for
+<a class="reference internal" href="#label-activities-groupfolders"><span class="std std-ref">Activities in Team Folders or External Storages</span></a> for how to enable activities for
 all users with access.</p>
 </section>
 <section id="database-growing-large-due-to-activity-data">
@@ -360,10 +371,10 @@ database growth. To manage this:</p>
 <ul class="simple">
 <li><p>Set <code class="docutils literal notranslate"><span class="pre">activity_expire_days</span></code> to a lower value (e.g. <code class="docutils literal notranslate"><span class="pre">90</span></code> or
 <code class="docutils literal notranslate"><span class="pre">180</span></code>) to automatically clean up older records.</p></li>
-<li><p>Monitor the <code class="docutils literal notranslate"><span class="pre">oc_activity</span></code> and <code class="docutils literal notranslate"><span class="pre">oc_activity_mq</span></code> tables directly
-if you need to assess current size.</p></li>
 <li><p>Ensure the Nextcloud background job is running so that the daily
 expiration job executes.</p></li>
+<li><p>To assess current database usage, check the size of the
+<code class="docutils literal notranslate"><span class="pre">oc_activity</span></code> and <code class="docutils literal notranslate"><span class="pre">oc_activity_mq</span></code> tables directly.</p></li>
 </ul>
 </section>
 </section>
