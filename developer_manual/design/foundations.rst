@@ -17,7 +17,7 @@ Primary color
 .. figure:: ../images/colour-primary.svg
    :alt: Nextcloud primary color swatch showing blue #0082C9
 
-		#0082C9
+   #0082C9
 
 While this is the primary color associated with Nextcloud and can be used to draw attention to an element, it is best to limit the usage of this to primary actions and other important elements.
 
