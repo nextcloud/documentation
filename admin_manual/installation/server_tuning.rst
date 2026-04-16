@@ -2,9 +2,10 @@
 Server tuning
 =============
 
-.. TODO: Add introductory paragraph
-.. TODO: Sort according to (generalized) difficulty
-.. TODO: Consider adding a category (or even table) with Impact vs Difficulty
+This page collects configuration changes that can improve the performance of
+your Nextcloud server. Most items only require editing a configuration file or
+installing a package, while a few involve additional services. Start with the
+ones that match your setup and revisit the rest as your instance grows.
 
 Using cron to perform background jobs
 -------------------------------------
