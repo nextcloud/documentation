@@ -101,6 +101,23 @@
 <li class="toctree-l2"><a class="reference internal" href="app_recognize.html">App: Recognize</a></li>
 <li class="toctree-l2"><a class="reference internal" href="app_context_chat.html">App: Context Chat</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">App: Context Agent (context_agent)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#currently-implemented-tools">Currently implemented tools</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#artificial-intelligence-tools">Artificial intelligence tools</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#calendar-tools">Calendar tools</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tasks-tools">Tasks tools</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#circles-teams-tools">Circles/teams tools</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#contacts-tools">Contacts tools</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cookbook-tools">Cookbook tools</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#deck-tools">Deck tools</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#files-tools">Files tools</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#forms-tools">Forms tools</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#search-tools">Search tools</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#share-tools">Share tools</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#talk-tools">Talk tools</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#miscellaneous-tools">Miscellaneous tools</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#combining-tools">Combining tools</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#custom-tools-using-mcp">Custom Tools using MCP</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#requirements">Requirements</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#installation">Installation</a><ul>
@@ -185,43 +202,11 @@
 <p id="ai-app-context-agent">The <em>context_agent</em> app is the app that provides AI agent functionality in Nextcloud and acts as a backend for the <a class="reference internal" href="app_assistant.html#ai-app-assistant"><span class="std std-ref">Nextcloud Assistant app</span></a>. Nextcloud can provide customer support upon request, please talk to your account manager for the possibilities.</p>
 <p>When the Context Agent app is installed the AI Chat in Nextcloud Assistant will be able to interact with your Nextcloud apps via virtual integrations that are called “tools”. They allow the Assistant to perform actions in your Nextcloud upon sending instructions in a chat message.
 Tool groups are only available if their requirements are met. They can be en- and disabled in the AI admin settings.</p>
-<p>Currently implemented tools:</p>
+<section id="currently-implemented-tools">
+<h2>Currently implemented tools<a class="headerlink" href="#currently-implemented-tools" title="Link to this heading"></a></h2>
+<section id="artificial-intelligence-tools">
+<h3>Artificial intelligence tools<a class="headerlink" href="#artificial-intelligence-tools" title="Link to this heading"></a></h3>
 <ul class="simple">
-<li><p>List the user’s calendars</p>
-<ul>
-<li><p>Example prompt: <em>“List my calendars”</em></p></li>
-</ul>
-</li>
-<li><p>List the user’s talk conversations (requires <a class="reference external" href="https://apps.nextcloud.com/apps/spreed">Talk</a>)</p>
-<ul>
-<li><p>Example prompt: <em>“List my talk conversations”</em></p></li>
-</ul>
-</li>
-<li><p>List messages in a talk conversation (requires <a class="reference external" href="https://apps.nextcloud.com/apps/spreed">Talk</a>)</p>
-<ul>
-<li><p>Example prompt: <em>“List the latest messages in my conversation with Andrew”</em></p></li>
-</ul>
-</li>
-<li><p>Send a message to a talk conversation (requires <a class="reference external" href="https://apps.nextcloud.com/apps/spreed">Talk</a>)</p>
-<ul>
-<li><p>Example prompt: <em>“Can you send a joke to Andrew in talk?”</em></p></li>
-</ul>
-</li>
-<li><p>Create a public talk conversation (requires <a class="reference external" href="https://apps.nextcloud.com/apps/spreed">Talk</a>)</p>
-<ul>
-<li><p>Example prompt: <em>“Can you create a new public talk conversation titled ‘Press conference’?”</em></p></li>
-</ul>
-</li>
-<li><p>Find a person in the user’s contacts</p>
-<ul>
-<li><p>Example prompt: <em>“What is Andrew’s Email address?”</em></p></li>
-</ul>
-</li>
-<li><p>Find the current user’s details</p>
-<ul>
-<li><p>Example prompt: <em>“Where do I live?”</em></p></li>
-</ul>
-</li>
 <li><p>Ask a question to context chat (requires <a class="reference internal" href="app_context_chat.html#ai-app-context-chat"><span class="std std-ref">Context Chat</span></a>)</p>
 <ul>
 <li><p>Example prompt: <em>“What is the company’s sick leave process?”</em></p></li>
@@ -244,6 +229,352 @@ Tool groups are only available if their requirements are met. They can be en- an
 <li><p>Example prompt: <em>“Can you generate me an image of a cartoon drawing of a roman soldier typing something on a laptop?”</em></p></li>
 </ul>
 </li>
+</ul>
+</section>
+<section id="calendar-tools">
+<h3>Calendar tools<a class="headerlink" href="#calendar-tools" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>List the user’s calendars</p>
+<ul>
+<li><p>Example prompt: <em>“List my calendars”</em></p></li>
+</ul>
+</li>
+<li><p>Schedule an event in the user’s calendar</p>
+<ul>
+<li><p>Example prompt: <em>“Schedule an event with Andrew tomorrow at noon.”</em></p></li>
+</ul>
+</li>
+<li><p>Find free times in users’ calendar</p>
+<ul>
+<li><p>Example prompt: <em>“Find a free 1-hour slot for a meeting with me and Marco next week.”</em></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="tasks-tools">
+<h3>Tasks tools<a class="headerlink" href="#tasks-tools" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Create a task</p>
+<ul>
+<li><p>Example prompt: <em>“Create a task for grocery shopping with due date tomorrow.”</em></p></li>
+</ul>
+</li>
+<li><p>List tasks</p>
+<ul>
+<li><p>Example prompt: <em>“List my outstanding tasks”</em></p></li>
+</ul>
+</li>
+<li><p>Complete a task</p>
+<ul>
+<li><p>Example prompt: <em>“Mark the grocery shopping task as completed.”</em></p></li>
+</ul>
+</li>
+<li><p>Update a task’s details</p>
+<ul>
+<li><p>Example prompt: <em>“Change the priority of the grocery shopping task to the highest possible priority.”</em></p></li>
+<li><p>Example prompt: <em>“Change the due date of my work report task to the beginning of next week.”</em></p></li>
+</ul>
+</li>
+<li><p>Delete a task</p>
+<ul>
+<li><p>Example prompt: <em>“Delete the grocery shopping task in my tasks.”</em></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="circles-teams-tools">
+<h3>Circles/teams tools<a class="headerlink" href="#circles-teams-tools" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>List circles</p>
+<ul>
+<li><p>Example prompt: <em>“List all my teams.”</em></p></li>
+</ul>
+</li>
+<li><p>List circle members</p>
+<ul>
+<li><p>Example prompt: <em>“List all members of my Content Marketing team.”</em></p></li>
+</ul>
+</li>
+<li><p>Create new circle</p>
+<ul>
+<li><p>Example prompt: <em>“Create a new team called ‘Hiking group’.”</em></p></li>
+</ul>
+</li>
+<li><p>Add members to circles</p>
+<ul>
+<li><p>Example prompt: <em>“Add Ralph to the Hiking group team.”</em></p></li>
+</ul>
+</li>
+<li><p>Remove members from circles</p>
+<ul>
+<li><p>Example prompt: <em>“Remove ralph from the Hiking group team.”</em></p></li>
+</ul>
+</li>
+<li><p>Change circle details</p>
+<ul>
+<li><p>Example prompt: <em>“Change the name of the Hiking group team to ‘Outdoor group’.”</em></p></li>
+<li><p>Example prompt: <em>“Add the following description to the Hiking group team: We go hiking together once a month. Come join us.”</em></p></li>
+</ul>
+</li>
+<li><p>Delete a circle</p>
+<ul>
+<li><p>Example prompt: <em>“Delete the Hiking group team.”</em></p></li>
+</ul>
+</li>
+<li><p>Share a file with a circle</p>
+<ul>
+<li><p>Example prompt: <em>“Share my Hiking plans.md file with the Hiking group team.”</em></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="contacts-tools">
+<h3>Contacts tools<a class="headerlink" href="#contacts-tools" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Find a contact</p>
+<ul>
+<li><p>Example prompt: <em>“What is Anna’s email address?”</em></p></li>
+</ul>
+</li>
+<li><p>Find a user’s ID</p>
+<ul>
+<li><p>Example prompt: <em>“What is Ralph’s userID?”</em></p></li>
+</ul>
+</li>
+<li><p>Find the current user’s details</p>
+<ul>
+<li><p>Example prompt: <em>“Where do I live?”</em></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="cookbook-tools">
+<h3>Cookbook tools<a class="headerlink" href="#cookbook-tools" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>List recipes</p>
+<ul>
+<li><p>Example prompt: <em>“List my recipes.”</em></p></li>
+</ul>
+</li>
+<li><p>Search for recipes</p>
+<ul>
+<li><p>Example prompt: <em>“Do I have any Spaghetti recipes?”</em></p></li>
+</ul>
+</li>
+<li><p>Get recipe details</p>
+<ul>
+<li><p>Example prompt: <em>“Can you give me the details of my Spaghetti Carbonara recipe?”</em></p></li>
+</ul>
+</li>
+<li><p>Create a new recipe</p>
+<ul>
+<li><p>Example prompt: <em>“Create a recipe for Guacamole in my cookbook.”</em></p></li>
+</ul>
+</li>
+<li><p>Delete a recipe</p>
+<ul>
+<li><p>Example prompt: <em>“Remove the Guacamole recipe from my cookbook.”</em></p></li>
+</ul>
+</li>
+<li><p>List recipe categories</p>
+<ul>
+<li><p>Example prompt: <em>“Which recipe categories do I have in my cookbook?”</em></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="deck-tools">
+<h3>Deck tools<a class="headerlink" href="#deck-tools" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>List deck boards</p>
+<ul>
+<li><p>Example prompt: <em>“List the deck boards I have access to.”</em></p></li>
+</ul>
+</li>
+<li><p>Add a new card</p>
+<ul>
+<li><p>Example prompt: <em>“Can you add a card with title ‘Repair kitchen sink’ to my Personal deck board?”</em></p></li>
+</ul>
+</li>
+<li><p>Add a label to a card</p>
+<ul>
+<li><p>Example prompt: <em>“Can you add the label ‘Urget’ to the ‘repair kitchen sink’ card in my personal deck board?”</em></p></li>
+</ul>
+</li>
+<li><p>Assign a card to a user</p>
+<ul>
+<li><p>Example prompt: <em>“Can you assign the ‘Repair kitchen sink’ card in my Personal deck board to Andrew?”</em></p></li>
+</ul>
+</li>
+<li><p>Delete a card</p>
+<ul>
+<li><p>Example prompt: <em>“Delete the ‘Repair kitchen sink’ card in my Personal deck board.”</em></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="files-tools">
+<h3>Files tools<a class="headerlink" href="#files-tools" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>Get contents of a file</p>
+<ul>
+<li><p>Example prompt: <em>“Can you fetch the following file in my documents? Design/Planning.md”</em></p></li>
+<li><p>Example prompt: <em>“Can you fetch the following file in my documents? https://mycloud.com/f/98543234”</em></p></li>
+</ul>
+</li>
+<li><p>Retrieve folder tree</p>
+<ul>
+<li><p>Example prompt: <em>“List my files.”</em></p></li>
+</ul>
+</li>
+<li><p>Create a public link for a file or folder</p>
+<ul>
+<li><p>Example prompt: <em>“Create a public link for the following file: Design/Planning.md”</em></p></li>
+</ul>
+</li>
+<li><p>Create a new file</p>
+<ul>
+<li><p>Example prompt: <em>“Create a new file Ideas.md in my files and fill it with ideas for hiking destinations in the black forest.”</em></p></li>
+</ul>
+</li>
+<li><p>Create a new folder</p>
+<ul>
+<li><p>Example prompt: <em>“Create a new folder ‘Hiking plans’ in my files.”</em></p></li>
+</ul>
+</li>
+<li><p>Move a file</p>
+<ul>
+<li><p>Example prompt: <em>“Move the Ideas.md file into the Hiking plans folder.”</em></p></li>
+</ul>
+</li>
+<li><p>Copy a file</p>
+<ul>
+<li><p>Example prompt: <em>“Copy the Ideas.md file into my Notes folder.”</em></p></li>
+</ul>
+</li>
+<li><p>Delete a file</p>
+<ul>
+<li><p>Example prompt: <em>“Delete the Ideas.md file.”</em></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="forms-tools">
+<h3>Forms tools<a class="headerlink" href="#forms-tools" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>List all forms</p>
+<ul>
+<li><p>Example prompt: <em>“List all the forms I have access to.”</em></p></li>
+</ul>
+</li>
+<li><p>Get details of a form</p>
+<ul>
+<li><p>Example prompt: <em>“Can you give me all details about the Retreat signup form?”</em></p></li>
+</ul>
+</li>
+<li><p>Add a question to a form</p>
+<ul>
+<li><p>Example prompt: <em>“Add the following question to the retreat signup form: ‘Number of days attending’.”</em></p></li>
+</ul>
+</li>
+<li><p>Retrieve all responses of a form</p>
+<ul>
+<li><p>Example prompt: <em>“List all responses to the Retreat signup form.”</em></p></li>
+</ul>
+</li>
+<li><p>Update form settings</p>
+<ul>
+<li><p>Example prompt: <em>“Make the Retreat signup form expire end of next week.”</em></p></li>
+</ul>
+</li>
+<li><p>Delete a form</p>
+<ul>
+<li><p>Example prompt: <em>“Delete the Retreat signup form.”</em></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="search-tools">
+<h3>Search tools<a class="headerlink" href="#search-tools" title="Link to this heading"></a></h3>
+<p>All search providers in Nextcloud are also automatically available as tools.</p>
+<ul class="simple">
+<li><p>Search for files</p>
+<ul>
+<li><p>Example prompt: <em>“List all the powerpoint presentations in my files with file ending pptx.”</em></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="share-tools">
+<h3>Share tools<a class="headerlink" href="#share-tools" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>List shares</p>
+<ul>
+<li><p>Example prompt: <em>“List all files that were shared with me.”</em></p></li>
+<li><p>Example prompt: <em>“List the shares of the Design/Ideas.md file.”</em></p></li>
+</ul>
+</li>
+<li><p>Share a file or folder with a user</p>
+<ul>
+<li><p>Example prompt: <em>“Share the Design/Ideas.md file with the user martin.”</em></p></li>
+</ul>
+</li>
+<li><p>Share a file or folder with a group</p>
+<ul>
+<li><p>Example prompt: <em>“Share the Design/Ideas.md file with the group Designers.”</em></p></li>
+</ul>
+</li>
+<li><p>Update a share’s permissions</p>
+<ul>
+<li><p>Example prompt: <em>“Only allow martin read only access on the share of the Design/Ideas.md file.”</em></p></li>
+</ul>
+</li>
+<li><p>Delete a share</p>
+<ul>
+<li><p>Example prompt: <em>“Remove the share of the Design/Ideas.md file with martin.”</em></p></li>
+</ul>
+</li>
+<li><p>List user groups</p>
+<ul>
+<li><p>Example prompt: <em>“Which user groups are there?”</em></p></li>
+</ul>
+</li>
+<li><p>Retrieve share details</p></li>
+</ul>
+<blockquote>
+<div><ul class="simple">
+<li><p>Example prompt: <em>“Does martin have write access to the Design/Ideas.md file I shared with him?”</em></p></li>
+</ul>
+</div></blockquote>
+</section>
+<section id="talk-tools">
+<h3>Talk tools<a class="headerlink" href="#talk-tools" title="Link to this heading"></a></h3>
+<ul class="simple">
+<li><p>List the user’s talk conversations (requires <a class="reference external" href="https://apps.nextcloud.com/apps/spreed">Talk</a>)</p>
+<ul>
+<li><p>Example prompt: <em>“List my talk conversations”</em></p></li>
+</ul>
+</li>
+<li><p>List messages in a talk conversation (requires <a class="reference external" href="https://apps.nextcloud.com/apps/spreed">Talk</a>)</p>
+<ul>
+<li><p>Example prompt: <em>“List the latest messages in my conversation with Andrew”</em></p></li>
+</ul>
+</li>
+<li><p>Send a message to a talk conversation (requires <a class="reference external" href="https://apps.nextcloud.com/apps/spreed">Talk</a>)</p>
+<ul>
+<li><p>Example prompt: <em>“Can you send a joke to Andrew in talk?”</em></p></li>
+</ul>
+</li>
+<li><p>Create a public talk conversation (requires <a class="reference external" href="https://apps.nextcloud.com/apps/spreed">Talk</a>)</p>
+<ul>
+<li><p>Example prompt: <em>“Can you create a new public talk conversation titled ‘Press conference’?”</em></p></li>
+</ul>
+</li>
+</ul>
+</section>
+<section id="miscellaneous-tools">
+<h3>Miscellaneous tools<a class="headerlink" href="#miscellaneous-tools" title="Link to this heading"></a></h3>
+<ul class="simple">
 <li><p>Get coordinates for an Address from Open Street Maps Nomatim</p>
 <ul>
 <li><p>Example prompt: <em>“What are the coordinates for Berlin, Germany?”</em></p></li>
@@ -259,31 +590,6 @@ Tool groups are only available if their requirements are met. They can be en- an
 <li><p>Example prompt: <em>“How is the weather in Berlin?”</em></p></li>
 </ul>
 </li>
-<li><p>Schedule an event in the user’s calendar</p>
-<ul>
-<li><p>Example prompt: <em>“Schedule an event with Andrew tomorrow at noon.”</em></p></li>
-</ul>
-</li>
-<li><p>Find free times in users’ calendar</p>
-<ul>
-<li><p>Example prompt: <em>“Find a free 1-hour slot for a meeting with me and Marco next week.”</em></p></li>
-</ul>
-</li>
-<li><p>Create a deck card (requires <a class="reference external" href="https://apps.nextcloud.com/apps/deck">Deck</a>)</p>
-<ul>
-<li><p>Example prompt: <em>“Create a deck card for ‘Buy Groceries’ in my Personal board.”</em></p></li>
-</ul>
-</li>
-<li><p>Access information in deck boards (requires <a class="reference external" href="https://apps.nextcloud.com/apps/deck">Deck</a>)</p>
-<ul>
-<li><p>Example prompt: <em>“Which deck cards are currently in the To do list in my Personal board?”</em></p></li>
-</ul>
-</li>
-<li><p>Create a task</p>
-<ul>
-<li><p>Example prompt: <em>“Create a task for ‘Renovate flat’ in my Personal calendar. The task should be due Monday next week.”</em></p></li>
-</ul>
-</li>
 <li><p>Search for youtube videos</p>
 <ul>
 <li><p>Example prompt: <em>“Show me the youtube video of the Nextcloud hub 10 launch.”</em></p></li>
@@ -297,21 +603,6 @@ Tool groups are only available if their requirements are met. They can be en- an
 <li><p>Send an email via Nextcloud Mail (requires <a class="reference external" href="https://apps.nextcloud.com/apps/mail">Mail</a>)</p>
 <ul>
 <li><p>Example prompt: <em>“Send a test email from my carry&#64;company.com account to Andrew&#64;company.com”</em></p></li>
-</ul>
-</li>
-<li><p>Get contents of a file</p>
-<ul>
-<li><p>Example prompt: <em>“Can you summarize the following file in my documents? Design/Planning.md”</em></p></li>
-</ul>
-</li>
-<li><p>Generate a public share link for a file</p>
-<ul>
-<li><p>Example prompt: <em>“Can create a share link for the following file in my documents? Design/Planning.md”</em></p></li>
-</ul>
-</li>
-<li><p>Get the folder tree of the user’s files</p>
-<ul>
-<li><p>Example prompt: <em>“Can you show me the folder tree of my files?”</em></p></li>
 </ul>
 </li>
 <li><p>Determine public transport routes (requires a <a class="reference external" href="https://www.here.com/">HERE</a> API key configured in the admin settings)</p>
@@ -332,6 +623,10 @@ Tool groups are only available if their requirements are met. They can be en- an
 <li><p>Create a new work package in a given project in OpenProject (requires the <a class="reference external" href="https://apps.nextcloud.com/apps/integration_openproject">OpenProject integration</a>)
 * Example prompt: <em>“Create a work package called ‘Publish release video’ in the ‘Product launch’ project in OpenProject”</em></p></li>
 </ul>
+</section>
+</section>
+<section id="combining-tools">
+<h2>Combining tools<a class="headerlink" href="#combining-tools" title="Link to this heading"></a></h2>
 <p>These tools can also be combined by the agent to fulfil tasks like the following:</p>
 <blockquote>
 <div><ul class="simple">
@@ -359,6 +654,19 @@ Tool groups are only available if their requirements are met. They can be en- an
 </ul>
 </div></blockquote>
 </div></blockquote>
+<ul class="simple">
+<li><p><em>“Which of my files are from Anna?”</em></p>
+<ul>
+<li><p>Looks up Anna’s userID and searches for files that belong to her</p></li>
+</ul>
+</li>
+<li><p><em>“Send the content of my draft.md file to Andrew in Talk”</em></p>
+<ul>
+<li><p>Gets the content of the file and sends it in a 1-1 Talk conversation with Andrew</p></li>
+</ul>
+</li>
+</ul>
+</section>
 <section id="custom-tools-using-mcp">
 <h2>Custom Tools using MCP<a class="headerlink" href="#custom-tools-using-mcp" title="Link to this heading"></a></h2>
 <p>Model Context Protocol (MCP) is a protocol that enables Large Language Models (LLMs) to interact with external data sources and tools.
