@@ -1,0 +1,564 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Apps, background jobs &amp; config commands &mdash; Nextcloud latest Administration Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=bc97f5cf" />
+      <link rel="stylesheet" type="text/css" href="_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://docs.nextcloud.com/server/stable/admin_manual/occ_apps.html" />
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=a49d5d77"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="_static/copybutton.js?v=f281be69"></script>
+      <script src="_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="_static/js/theme.js"></script>
+    <script src="_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="DAV &amp; database commands" href="occ_database.html" />
+    <link rel="prev" title="Using the occ command" href="occ_command.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="contents.html">
+            
+              <img src="_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_schedule.html">Maintenance and release schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gdpr/index.html">GDPR-compliance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="declarations/index.html">Declarations</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Release notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="release_notes/index.html">Critical changes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="installation/index.html">Installation and server configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration_database/index.html">Database configuration</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Configuration</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="configuration_server/index.html">Nextcloud configuration</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="occ_command.html">Using the occ command</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="occ_command.html#running-occ">Running occ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="occ_command.html#enabling-autocompletion">Enabling autocompletion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="occ_command.html#limitations-in-maintenance-mode">Limitations in maintenance mode</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="occ_command.html#command-reference">Command reference</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Apps, background jobs &amp; config commands</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#apps-commands">Apps commands</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#background-jobs-selector">Background jobs selector</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#config-commands">Config commands</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="occ_database.html">DAV &amp; database commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="occ_files.html">Files &amp; encryption commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="occ_ldap.html">LDAP commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="occ_users.html">User &amp; group commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="occ_system.html">System &amp; maintenance commands</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference/index.html">Reference management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="webhook_listeners/index.html">Webhook Listeners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="windmill_workflows/index.html">Windmill Workflows</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Files</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="configuration_files/index.html">File sharing and management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="file_workflows/index.html">Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration_mimetypes/index.html">Mimetypes management</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Apps</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="apps_management.html">Apps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exapps_management/index.html">ExApps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ai/index.html">Artificial Intelligence</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Users</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="configuration_user/index.html">User management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="desktop/index.html">Desktop Clients</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Groupware</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="groupware/index.html">Groupware</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Office</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="office/index.html">Office</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Maintenance</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="configuration_monitoring/index.html">Monitoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="maintenance/index.html">Maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="issues/index.html">Issues and troubleshooting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://help.nextcloud.com/">Community Help Forum</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.nextcloud.com/">User Manuals</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.nextcloud.com/">Developer Manuals</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://nextcloud.com/install/">Download</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://apps.nextcloud.com">App Store</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://help.nextcloud.com/t/translation-knowledge-valid-for-the-entire-nextcloud-project-wiki/51550">Translations</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/nextcloud/">GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/nextcloud/server/wiki/Maintenance-and-Release-Schedule">Supported versions</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://nextcloud.com/enterprise/">Nextcloud Enterprise</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/nextcloud/server/blob/master/COPYING-README">License</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://nextcloud.com/">Nextcloud GmbH</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="contents.html">Nextcloud latest Administration Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="occ_command.html">Using the occ command</a></li>
+      <li class="breadcrumb-item active">Apps, background jobs &amp; config commands</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/admin_manual/occ_apps.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="apps-background-jobs-config-commands">
+<h1>Apps, background jobs &amp; config commands<a class="headerlink" href="#apps-background-jobs-config-commands" title="Link to this heading"></a></h1>
+<section id="apps-commands">
+<span id="apps-commands-label"></span><h2>Apps commands<a class="headerlink" href="#apps-commands" title="Link to this heading"></a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">app</span></code> commands list, enable, and disable apps:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">app</span>
+ <span class="n">app</span><span class="p">:</span><span class="n">install</span>      <span class="n">install</span> <span class="n">selected</span> <span class="n">app</span>
+ <span class="n">app</span><span class="p">:</span><span class="n">disable</span>      <span class="n">disable</span> <span class="n">an</span> <span class="n">app</span>
+ <span class="n">app</span><span class="p">:</span><span class="n">enable</span>       <span class="n">enable</span> <span class="n">an</span> <span class="n">app</span>
+ <span class="n">app</span><span class="p">:</span><span class="n">getpath</span>      <span class="n">get</span> <span class="n">an</span> <span class="n">absolute</span> <span class="n">path</span> <span class="n">to</span> <span class="n">the</span> <span class="n">app</span> <span class="n">directory</span>
+ <span class="n">app</span><span class="p">:</span><span class="nb">list</span>         <span class="nb">list</span> <span class="nb">all</span> <span class="n">available</span> <span class="n">apps</span>
+ <span class="n">app</span><span class="p">:</span><span class="n">update</span>       <span class="n">update</span> <span class="n">an</span> <span class="n">app</span> <span class="ow">or</span> <span class="nb">all</span> <span class="n">apps</span>
+ <span class="n">app</span><span class="p">:</span><span class="n">remove</span>       <span class="n">disable</span> <span class="ow">and</span> <span class="n">remove</span> <span class="n">an</span> <span class="n">app</span>
+</pre></div>
+</div>
+<p>Download and install an app:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">app</span><span class="p">:</span><span class="n">install</span> <span class="n">twofactor_totp</span>
+</pre></div>
+</div>
+<p>Install but don’t enable:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">app</span><span class="p">:</span><span class="n">install</span> <span class="o">--</span><span class="n">keep</span><span class="o">-</span><span class="n">disabled</span> <span class="n">twofactor_totp</span>
+</pre></div>
+</div>
+<p>Install regardless of the Nextcloud version requirement:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">app</span><span class="p">:</span><span class="n">install</span> <span class="o">--</span><span class="n">force</span> <span class="n">twofactor_totp</span>
+</pre></div>
+</div>
+<p>List all of your installed apps, and show whether they are
+enabled or disabled:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">app</span><span class="p">:</span><span class="nb">list</span>
+</pre></div>
+</div>
+<p>List all of your installed and enabled (flag <code class="docutils literal notranslate"><span class="pre">--enabled</span></code>) or disabled (flag <code class="docutils literal notranslate"><span class="pre">--disabled</span></code>) apps:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">app</span><span class="p">:</span><span class="nb">list</span> <span class="o">--</span><span class="n">enabled</span>
+</pre></div>
+</div>
+<p>List non-shipped installed apps only:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">app</span><span class="p">:</span><span class="nb">list</span> <span class="o">--</span><span class="n">shipped</span> <span class="n">false</span>
+</pre></div>
+</div>
+<p>Enable an app, for example the External Storage Support app:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">app</span><span class="p">:</span><span class="n">enable</span> <span class="n">files_external</span>
+<span class="n">files_external</span> <span class="n">enabled</span>
+</pre></div>
+</div>
+<p>Enable an app regardless of the Nextcloud version requirement:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">app</span><span class="p">:</span><span class="n">enable</span> <span class="o">--</span><span class="n">force</span> <span class="n">files_external</span>
+<span class="n">files_external</span> <span class="n">enabled</span>
+</pre></div>
+</div>
+<p>Enable an app for specific groups of users (i.e. restrict an app so only specific groups can see and use them):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">app</span><span class="p">:</span><span class="n">enable</span> <span class="o">--</span><span class="n">groups</span> <span class="n">admin</span> <span class="o">--</span><span class="n">groups</span> <span class="n">sales</span> <span class="n">files_external</span>
+<span class="n">files_external</span> <span class="n">enabled</span> <span class="k">for</span> <span class="n">groups</span><span class="p">:</span> <span class="n">admin</span><span class="p">,</span> <span class="n">sales</span>
+</pre></div>
+</div>
+<p>Enable multiple apps simultaneously:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">app</span><span class="p">:</span><span class="n">enable</span> <span class="n">app1</span> <span class="n">app2</span> <span class="n">app3</span>
+<span class="n">app1</span> <span class="n">enabled</span>
+<span class="n">app2</span> <span class="n">enabled</span>
+<span class="n">app3</span> <span class="n">enabled</span>
+</pre></div>
+</div>
+<p>Disable an app:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">app</span><span class="p">:</span><span class="n">disable</span> <span class="n">files_external</span>
+<span class="n">files_external</span> <span class="n">disabled</span>
+</pre></div>
+</div>
+<p>Disable and remove an app:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">app</span><span class="p">:</span><span class="n">remove</span> <span class="n">files_external</span>
+<span class="n">files_external</span> <span class="n">disabled</span>
+<span class="n">files_external</span> <span class="mf">1.21.0</span> <span class="n">removed</span>
+</pre></div>
+</div>
+<p>Remove an app, but keep the app data:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">app</span><span class="p">:</span><span class="n">remove</span> <span class="o">--</span><span class="n">keep</span><span class="o">-</span><span class="n">data</span> <span class="n">files_external</span>
+<span class="n">files_external</span> <span class="mf">1.21.0</span> <span class="n">removed</span>
+</pre></div>
+</div>
+<p>You can get the full filepath to an app:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">app</span><span class="p">:</span><span class="n">getpath</span> <span class="n">notifications</span>
+<span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">apps</span><span class="o">/</span><span class="n">notifications</span>
+</pre></div>
+</div>
+<p>To update an app, for instance Contacts:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">app</span><span class="p">:</span><span class="n">update</span> <span class="n">contacts</span>
+</pre></div>
+</div>
+<p>To update all apps:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">app</span><span class="p">:</span><span class="n">update</span> <span class="o">--</span><span class="nb">all</span>
+</pre></div>
+</div>
+<p>To show available update(s) without updating:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">app</span><span class="p">:</span><span class="n">update</span> <span class="o">--</span><span class="n">showonly</span>
+</pre></div>
+</div>
+<p>To update an app to an unstable release, for instance News:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">app</span><span class="p">:</span><span class="n">update</span> <span class="o">--</span><span class="n">allow</span><span class="o">-</span><span class="n">unstable</span> <span class="n">news</span>
+</pre></div>
+</div>
+</section>
+<section id="background-jobs-selector">
+<span id="background-jobs-selector-label"></span><h2>Background jobs selector<a class="headerlink" href="#background-jobs-selector" title="Link to this heading"></a></h2>
+<p>Use the <code class="docutils literal notranslate"><span class="pre">background</span></code> commands to select which scheduler you want to use for
+controlling background jobs. This is the same as using
+the <strong>Cron</strong> section on your Nextcloud Admin page:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">background</span>
+ <span class="n">background</span><span class="p">:</span><span class="n">cron</span>       <span class="n">Set</span> <span class="n">background</span> <span class="n">jobs</span> <span class="n">to</span> <span class="n">cron</span> <span class="n">mode</span>
+ <span class="n">background</span><span class="p">:</span><span class="n">ajax</span>       <span class="n">Set</span> <span class="n">background</span> <span class="n">jobs</span> <span class="n">to</span> <span class="n">ajax</span> <span class="n">mode</span>
+ <span class="n">background</span><span class="p">:</span><span class="n">webcron</span>    <span class="n">Set</span> <span class="n">background</span> <span class="n">jobs</span> <span class="n">to</span> <span class="n">webcron</span> <span class="n">mode</span>
+</pre></div>
+</div>
+<p>Example:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">background</span><span class="p">:</span><span class="n">cron</span>
+  <span class="n">Set</span> <span class="n">mode</span> <span class="k">for</span> <span class="n">background</span> <span class="n">jobs</span> <span class="n">to</span> <span class="s1">&#39;cron&#39;</span>
+</pre></div>
+</div>
+<p>The other two commands are:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">background:ajax</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">background:webcron</span></code></p></li>
+</ul>
+<p>See <a class="reference internal" href="configuration_server/background_jobs_configuration.html"><span class="doc">Background jobs</span></a> to learn more.</p>
+</section>
+<section id="config-commands">
+<span id="config-commands-label"></span><h2>Config commands<a class="headerlink" href="#config-commands" title="Link to this heading"></a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">config</span></code> commands are used to configure the Nextcloud server:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">config</span>
+ <span class="n">config</span><span class="p">:</span><span class="n">app</span><span class="p">:</span><span class="n">delete</span>      <span class="n">Delete</span> <span class="n">an</span> <span class="n">app</span> <span class="n">config</span> <span class="n">value</span>
+ <span class="n">config</span><span class="p">:</span><span class="n">app</span><span class="p">:</span><span class="n">get</span>         <span class="n">Get</span> <span class="n">an</span> <span class="n">app</span> <span class="n">config</span> <span class="n">value</span>
+ <span class="n">config</span><span class="p">:</span><span class="n">app</span><span class="p">:</span><span class="nb">set</span>         <span class="n">Set</span> <span class="n">an</span> <span class="n">app</span> <span class="n">config</span> <span class="n">value</span>
+ <span class="n">config</span><span class="p">:</span><span class="kn">import</span><span class="w">          </span><span class="nn">Import</span> <span class="n">a</span> <span class="nb">list</span> <span class="n">of</span> <span class="n">configs</span>
+ <span class="n">config</span><span class="p">:</span><span class="nb">list</span>            <span class="n">List</span> <span class="nb">all</span> <span class="n">configs</span>
+ <span class="n">config</span><span class="p">:</span><span class="n">system</span><span class="p">:</span><span class="n">delete</span>   <span class="n">Delete</span> <span class="n">a</span> <span class="n">system</span> <span class="n">config</span> <span class="n">value</span>
+ <span class="n">config</span><span class="p">:</span><span class="n">system</span><span class="p">:</span><span class="n">get</span>      <span class="n">Get</span> <span class="n">a</span> <span class="n">system</span> <span class="n">config</span> <span class="n">value</span>
+ <span class="n">config</span><span class="p">:</span><span class="n">system</span><span class="p">:</span><span class="nb">set</span>      <span class="n">Set</span> <span class="n">a</span> <span class="n">system</span> <span class="n">config</span> <span class="n">value</span>
+</pre></div>
+</div>
+<p>While setting a configuration value, multiple options are available:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">--value=VALUE</span></code> change the configuration value</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--type=TYPE</span></code> change the type of the value. Use carefully; can break your instance</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--lazy|--no-lazy</span></code> set value as <cite>lazy</cite></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--sensitive|--no-sensitive</span></code> set value as <cite>sensitive</cite></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--update-only</span></code> only updates if a value is already stored</p></li>
+</ul>
+</div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>See <a class="reference external" href="https://docs.nextcloud.com/server/latest/developer_manual/digging_deeper/config/appconfig.html#concept-overview">Appconfig Concepts</a> to learn more about <cite>typed value</cite>, <cite>lazy</cite> and <cite>sensitive</cite> flag.</p>
+</div>
+<p>You can list all configuration values with one command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="nb">list</span>
+</pre></div>
+</div>
+<p>By default, passwords and other sensitive data are omitted from the report, so
+the output can be posted publicly (e.g. as part of a bug report). In order to
+generate a full backport of all configuration values the <code class="docutils literal notranslate"><span class="pre">--private</span></code> flag
+needs to be set:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="nb">list</span> <span class="o">--</span><span class="n">private</span>
+</pre></div>
+</div>
+<p>The exported content can also be imported again to allow the fast setup of
+similar instances. The import command will only add or update values. Values
+that exist in the current configuration, but not in the one that is being
+imported are left untouched:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="kn">import</span><span class="w"> </span><span class="nn">filename.json</span>
+</pre></div>
+</div>
+<p>It is also possible to import remote files, by piping the input:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="kn">import</span><span class="w"> </span><span class="o">&lt;</span> <span class="n">local</span><span class="o">-</span><span class="n">backup</span><span class="o">.</span><span class="n">json</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>While it is possible to update/set/delete the versions and installation
+statuses of apps and Nextcloud itself, it is <strong>not</strong> recommended to do this
+directly. Use the <code class="docutils literal notranslate"><span class="pre">occ</span> <span class="pre">app:enable</span></code>, <code class="docutils literal notranslate"><span class="pre">occ</span> <span class="pre">app:disable</span></code> and <code class="docutils literal notranslate"><span class="pre">occ</span> <span class="pre">app:update</span></code>
+commands instead.</p>
+</div>
+<section id="getting-a-single-configuration-value">
+<h3>Getting a single configuration value<a class="headerlink" href="#getting-a-single-configuration-value" title="Link to this heading"></a></h3>
+<p>These commands get the value of a single app or system configuration:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="n">system</span><span class="p">:</span><span class="n">get</span> <span class="n">version</span>
+<span class="mf">19.0.0.12</span>
+
+<span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="n">app</span><span class="p">:</span><span class="n">get</span> <span class="n">activity</span> <span class="n">installed_version</span>
+<span class="mf">2.2.1</span>
+</pre></div>
+</div>
+</section>
+<section id="setting-a-single-configuration-value">
+<h3>Setting a single configuration value<a class="headerlink" href="#setting-a-single-configuration-value" title="Link to this heading"></a></h3>
+<p>These commands set the value of a single app or system configuration:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="n">system</span><span class="p">:</span><span class="nb">set</span> <span class="n">logtimezone</span>
+<span class="o">--</span><span class="n">value</span><span class="o">=</span><span class="s2">&quot;Europe/Berlin&quot;</span>
+<span class="n">System</span> <span class="n">config</span> <span class="n">value</span> <span class="n">logtimezone</span> <span class="nb">set</span> <span class="n">to</span> <span class="n">Europe</span><span class="o">/</span><span class="n">Berlin</span>
+
+<span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="n">app</span><span class="p">:</span><span class="nb">set</span> <span class="n">files_sharing</span>
+<span class="n">incoming_server2server_share_enabled</span> <span class="o">--</span><span class="n">value</span><span class="o">=</span><span class="s2">&quot;yes&quot;</span>
+<span class="n">Config</span> <span class="n">value</span> <span class="n">incoming_server2server_share_enabled</span> <span class="k">for</span> <span class="n">app</span> <span class="n">files_sharing</span> <span class="nb">set</span> <span class="n">to</span> <span class="n">yes</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">config:system:set</span></code> command creates the value, if it does not already
+exist. To update an existing value,  set <code class="docutils literal notranslate"><span class="pre">--update-only</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="n">system</span><span class="p">:</span><span class="nb">set</span> <span class="n">doesnotexist</span> <span class="o">--</span><span class="n">value</span><span class="o">=</span><span class="s2">&quot;true&quot;</span>
+<span class="o">--</span><span class="nb">type</span><span class="o">=</span><span class="n">boolean</span> <span class="o">--</span><span class="n">update</span><span class="o">-</span><span class="n">only</span>
+<span class="n">Value</span> <span class="ow">not</span> <span class="n">updated</span><span class="p">,</span> <span class="k">as</span> <span class="n">it</span> <span class="n">has</span> <span class="ow">not</span> <span class="n">been</span> <span class="nb">set</span> <span class="n">before</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>Note that in order to write a Boolean, float, or integer value to the
+configuration file, you need to specify the type on your command. This
+applies only to the <code class="docutils literal notranslate"><span class="pre">config:system:set</span></code> command. The following values are
+known:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">boolean</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">float</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">integer</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">json</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">null</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">string</span></code> (default)</p></li>
+</ul>
+<p>When you want to e.g. disable the maintenance mode run the following command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="n">system</span><span class="p">:</span><span class="nb">set</span> <span class="n">maintenance</span> <span class="o">--</span><span class="n">value</span><span class="o">=</span><span class="n">false</span> <span class="o">--</span><span class="nb">type</span><span class="o">=</span><span class="n">boolean</span>
+<span class="n">Nextcloud</span> <span class="ow">is</span> <span class="ow">in</span> <span class="n">maintenance</span> <span class="n">mode</span> <span class="o">-</span> <span class="n">no</span> <span class="n">app</span> <span class="n">have</span> <span class="n">been</span> <span class="n">loaded</span>
+<span class="n">System</span> <span class="n">config</span> <span class="n">value</span> <span class="n">maintenance</span> <span class="nb">set</span> <span class="n">to</span> <span class="n">boolean</span> <span class="n">false</span>
+</pre></div>
+</div>
+</section>
+<section id="setting-an-array-configuration-value">
+<h3>Setting an array configuration value<a class="headerlink" href="#setting-an-array-configuration-value" title="Link to this heading"></a></h3>
+<p>Some configurations (e.g. the trusted domain setting) are an array of data.
+In this case, <code class="docutils literal notranslate"><span class="pre">config:system:get</span></code> for this key will return multiple values:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="n">system</span><span class="p">:</span><span class="n">get</span> <span class="n">trusted_domains</span>
+<span class="n">localhost</span>
+<span class="n">nextcloud</span><span class="o">.</span><span class="n">local</span>
+<span class="n">sample</span><span class="o">.</span><span class="n">tld</span>
+</pre></div>
+</div>
+<p>To set one of multiple values, you need to specify the array index as the
+second <code class="docutils literal notranslate"><span class="pre">name</span></code> in the <code class="docutils literal notranslate"><span class="pre">config:system:set</span></code> command, separated by a
+space. For example, to replace <code class="docutils literal notranslate"><span class="pre">sample.tld</span></code> with <code class="docutils literal notranslate"><span class="pre">example.com</span></code>,
+<code class="docutils literal notranslate"><span class="pre">trusted_domains</span> <span class="pre">=&gt;</span> <span class="pre">2</span></code> needs to be set:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="n">system</span><span class="p">:</span><span class="nb">set</span> <span class="n">trusted_domains</span> <span class="mi">2</span> <span class="o">--</span><span class="n">value</span><span class="o">=</span><span class="n">example</span><span class="o">.</span><span class="n">com</span>
+<span class="n">System</span> <span class="n">config</span> <span class="n">value</span> <span class="n">trusted_domains</span> <span class="o">=&gt;</span> <span class="mi">2</span> <span class="nb">set</span> <span class="n">to</span> <span class="n">string</span> <span class="n">example</span><span class="o">.</span><span class="n">com</span>
+
+<span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="n">system</span><span class="p">:</span><span class="n">get</span> <span class="n">trusted_domains</span>
+<span class="n">localhost</span>
+<span class="n">nextcloud</span><span class="o">.</span><span class="n">local</span>
+<span class="n">example</span><span class="o">.</span><span class="n">com</span>
+</pre></div>
+</div>
+<p>Alternatively, you can set the entry array at once by using the <code class="docutils literal notranslate"><span class="pre">json</span></code> type:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="n">system</span><span class="p">:</span><span class="nb">set</span> <span class="n">trusted_domains</span> <span class="o">--</span><span class="nb">type</span> <span class="n">json</span> <span class="o">--</span><span class="n">value</span> <span class="s1">&#39;[&quot;nextcloud.local&quot;,&quot;example.com&quot;]&#39;</span>
+<span class="n">System</span> <span class="n">config</span> <span class="n">value</span> <span class="n">trusted_domains</span> <span class="nb">set</span> <span class="n">to</span> <span class="n">json</span> <span class="p">[</span><span class="s2">&quot;nextcloud.local&quot;</span><span class="p">,</span><span class="s2">&quot;example.com&quot;</span><span class="p">]</span>
+
+<span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="n">system</span><span class="p">:</span><span class="n">get</span> <span class="n">trusted_domains</span>
+<span class="n">nextcloud</span><span class="o">.</span><span class="n">local</span>
+<span class="n">example</span><span class="o">.</span><span class="n">com</span>
+</pre></div>
+</div>
+</section>
+<section id="setting-a-hierarchical-configuration-value">
+<h3>Setting a hierarchical configuration value<a class="headerlink" href="#setting-a-hierarchical-configuration-value" title="Link to this heading"></a></h3>
+<p>Some configurations use hierarchical data. For example, the settings
+for the Redis cache would look like this in the <code class="docutils literal notranslate"><span class="pre">config.php</span></code> file:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;redis&#39;</span> <span class="o">=&gt;</span> <span class="n">array</span><span class="p">(</span>
+  <span class="s1">&#39;host&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;/var/run/redis/redis.sock&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;port&#39;</span> <span class="o">=&gt;</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="s1">&#39;dbindex&#39;</span> <span class="o">=&gt;</span> <span class="mi">0</span><span class="p">,</span>
+  <span class="s1">&#39;password&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;secret&#39;</span><span class="p">,</span>
+  <span class="s1">&#39;timeout&#39;</span> <span class="o">=&gt;</span> <span class="mf">1.5</span><span class="p">,</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<p>Setting such hierarchical values works similarly to setting an array
+value above. For this Redis example, use the following commands:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="n">system</span><span class="p">:</span><span class="nb">set</span> <span class="n">redis</span> <span class="n">host</span> \
+<span class="o">--</span><span class="n">value</span><span class="o">=/</span><span class="n">var</span><span class="o">/</span><span class="n">run</span><span class="o">/</span><span class="n">redis</span><span class="o">/</span><span class="n">redis</span><span class="o">.</span><span class="n">sock</span>
+<span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="n">system</span><span class="p">:</span><span class="nb">set</span> <span class="n">redis</span> <span class="n">port</span> <span class="o">--</span><span class="n">value</span><span class="o">=</span><span class="mi">0</span>
+<span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="n">system</span><span class="p">:</span><span class="nb">set</span> <span class="n">redis</span> <span class="n">dbindex</span> <span class="o">--</span><span class="n">value</span><span class="o">=</span><span class="mi">0</span>
+<span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="n">system</span><span class="p">:</span><span class="nb">set</span> <span class="n">redis</span> <span class="n">password</span> <span class="o">--</span><span class="n">value</span><span class="o">=</span><span class="n">secret</span>
+<span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="n">system</span><span class="p">:</span><span class="nb">set</span> <span class="n">redis</span> <span class="n">timeout</span> <span class="o">--</span><span class="n">value</span><span class="o">=</span><span class="mf">1.5</span>
+</pre></div>
+</div>
+<p>Alternatively, you can set the entry configuration at once by using the <code class="docutils literal notranslate"><span class="pre">json</span></code> type:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="n">system</span><span class="p">:</span><span class="nb">set</span> <span class="n">redis</span> <span class="o">--</span><span class="nb">type</span> <span class="n">json</span> <span class="o">--</span><span class="n">value</span> <span class="s1">&#39;{&quot;host&quot;:&quot;/var/run/redis/redis.sock&quot;,&quot;port&quot;:0,&quot;dbindex&quot;:0,&quot;password&quot;:&quot;secret&quot;,&quot;timeout&quot;:1.5}&#39;</span>
+</pre></div>
+</div>
+</section>
+<section id="deleting-a-single-configuration-value">
+<h3>Deleting a single configuration value<a class="headerlink" href="#deleting-a-single-configuration-value" title="Link to this heading"></a></h3>
+<p>These commands delete the configuration of an app or system configuration:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="n">system</span><span class="p">:</span><span class="n">delete</span> <span class="n">maintenance</span><span class="p">:</span><span class="n">mode</span>
+<span class="n">System</span> <span class="n">config</span> <span class="n">value</span> <span class="n">maintenance</span><span class="p">:</span><span class="n">mode</span> <span class="n">deleted</span>
+
+<span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="n">app</span><span class="p">:</span><span class="n">delete</span> <span class="n">appname</span> <span class="n">provisioning_api</span>
+<span class="n">Config</span> <span class="n">value</span> <span class="n">provisioning_api</span> <span class="n">of</span> <span class="n">app</span> <span class="n">appname</span> <span class="n">deleted</span>
+</pre></div>
+</div>
+<p>The delete command will by default not complain if the configuration was not set
+before. If you want to be notified in that case, set the
+<code class="docutils literal notranslate"><span class="pre">--error-if-not-exists</span></code> flag:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="n">system</span><span class="p">:</span><span class="n">delete</span> <span class="n">doesnotexist</span>
+<span class="o">--</span><span class="n">error</span><span class="o">-</span><span class="k">if</span><span class="o">-</span><span class="ow">not</span><span class="o">-</span><span class="n">exists</span>
+<span class="n">Config</span> <span class="n">provisioning_api</span> <span class="n">of</span> <span class="n">app</span> <span class="n">appname</span> <span class="n">could</span> <span class="ow">not</span> <span class="n">be</span> <span class="n">deleted</span> <span class="n">because</span> <span class="n">it</span> <span class="n">did</span> <span class="ow">not</span>
+<span class="n">exist</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="occ_command.html" class="btn btn-neutral float-left" title="Using the occ command" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="occ_database.html" class="btn btn-neutral float-right" title="DAV &amp; database commands" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Versions</dt>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/latest/admin_manual"
+             
+             style="color: var(--dark-link-color);"
+             
+          >
+            latest
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/stable/admin_manual"
+             
+          >
+            stable
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/32/admin_manual"
+             
+          >
+            32
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/31/admin_manual"
+             
+          >
+            31
+          </a>
+        </dd>
+        
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,502 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>DAV &amp; database commands &mdash; Nextcloud latest Administration Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=bc97f5cf" />
+      <link rel="stylesheet" type="text/css" href="_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://docs.nextcloud.com/server/stable/admin_manual/occ_database.html" />
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=a49d5d77"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="_static/copybutton.js?v=f281be69"></script>
+      <script src="_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="_static/js/theme.js"></script>
+    <script src="_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Files &amp; encryption commands" href="occ_files.html" />
+    <link rel="prev" title="Apps, background jobs &amp; config commands" href="occ_apps.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="contents.html">
+            
+              <img src="_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_schedule.html">Maintenance and release schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gdpr/index.html">GDPR-compliance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="declarations/index.html">Declarations</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Release notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="release_notes/index.html">Critical changes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="installation/index.html">Installation and server configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration_database/index.html">Database configuration</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Configuration</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="configuration_server/index.html">Nextcloud configuration</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="occ_command.html">Using the occ command</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="occ_command.html#running-occ">Running occ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="occ_command.html#enabling-autocompletion">Enabling autocompletion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="occ_command.html#limitations-in-maintenance-mode">Limitations in maintenance mode</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="occ_command.html#command-reference">Command reference</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="occ_apps.html">Apps, background jobs &amp; config commands</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">DAV &amp; database commands</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#dav-commands">Dav commands</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#database-conversion">Database conversion</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#add-missing-indices">Add missing indices</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="occ_files.html">Files &amp; encryption commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="occ_ldap.html">LDAP commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="occ_users.html">User &amp; group commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="occ_system.html">System &amp; maintenance commands</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference/index.html">Reference management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="webhook_listeners/index.html">Webhook Listeners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="windmill_workflows/index.html">Windmill Workflows</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Files</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="configuration_files/index.html">File sharing and management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="file_workflows/index.html">Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration_mimetypes/index.html">Mimetypes management</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Apps</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="apps_management.html">Apps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exapps_management/index.html">ExApps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ai/index.html">Artificial Intelligence</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Users</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="configuration_user/index.html">User management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="desktop/index.html">Desktop Clients</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Groupware</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="groupware/index.html">Groupware</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Office</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="office/index.html">Office</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Maintenance</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="configuration_monitoring/index.html">Monitoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="maintenance/index.html">Maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="issues/index.html">Issues and troubleshooting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://help.nextcloud.com/">Community Help Forum</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.nextcloud.com/">User Manuals</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.nextcloud.com/">Developer Manuals</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://nextcloud.com/install/">Download</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://apps.nextcloud.com">App Store</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://help.nextcloud.com/t/translation-knowledge-valid-for-the-entire-nextcloud-project-wiki/51550">Translations</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/nextcloud/">GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/nextcloud/server/wiki/Maintenance-and-Release-Schedule">Supported versions</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://nextcloud.com/enterprise/">Nextcloud Enterprise</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/nextcloud/server/blob/master/COPYING-README">License</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://nextcloud.com/">Nextcloud GmbH</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="contents.html">Nextcloud latest Administration Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="occ_command.html">Using the occ command</a></li>
+      <li class="breadcrumb-item active">DAV &amp; database commands</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/admin_manual/occ_database.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="dav-database-commands">
+<h1>DAV &amp; database commands<a class="headerlink" href="#dav-database-commands" title="Link to this heading"></a></h1>
+<section id="dav-commands">
+<span id="dav-label"></span><h2>Dav commands<a class="headerlink" href="#dav-commands" title="Link to this heading"></a></h2>
+<p>Manage addressbooks and calendars:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dav</span>
+ <span class="n">dav</span><span class="p">:</span><span class="n">create</span><span class="o">-</span><span class="n">addressbook</span>          <span class="n">Create</span> <span class="n">a</span> <span class="n">dav</span> <span class="n">addressbook</span>
+ <span class="n">dav</span><span class="p">:</span><span class="n">create</span><span class="o">-</span><span class="n">calendar</span>             <span class="n">Create</span> <span class="n">a</span> <span class="n">dav</span> <span class="n">calendar</span>
+ <span class="n">dav</span><span class="p">:</span><span class="n">create</span><span class="o">-</span><span class="n">subscription</span>         <span class="n">Create</span> <span class="n">a</span> <span class="n">dav</span> <span class="n">subscription</span>
+ <span class="n">dav</span><span class="p">:</span><span class="n">delete</span><span class="o">-</span><span class="n">calendar</span>             <span class="n">Delete</span> <span class="n">a</span> <span class="n">dav</span> <span class="n">calendar</span>
+ <span class="n">dav</span><span class="p">:</span><span class="n">delete</span><span class="o">-</span><span class="n">subscription</span>         <span class="n">Delete</span> <span class="n">a</span> <span class="n">calendar</span> <span class="n">subscription</span> <span class="k">for</span> <span class="n">a</span> <span class="n">user</span>
+ <span class="n">dav</span><span class="p">:</span><span class="n">fix</span><span class="o">-</span><span class="n">missing</span><span class="o">-</span><span class="n">caldav</span><span class="o">-</span><span class="n">changes</span>  <span class="n">Insert</span> <span class="n">missing</span> <span class="n">calendarchanges</span> <span class="n">rows</span> <span class="k">for</span> <span class="n">existing</span> <span class="n">events</span>
+ <span class="n">dav</span><span class="p">:</span><span class="nb">list</span><span class="o">-</span><span class="n">addressbooks</span>           <span class="n">List</span> <span class="nb">all</span> <span class="n">addressbooks</span> <span class="n">of</span> <span class="n">a</span> <span class="n">user</span>
+ <span class="n">dav</span><span class="p">:</span><span class="nb">list</span><span class="o">-</span><span class="n">calendars</span>              <span class="n">List</span> <span class="nb">all</span> <span class="n">calendars</span> <span class="n">of</span> <span class="n">a</span> <span class="n">user</span>
+ <span class="n">dav</span><span class="p">:</span><span class="nb">list</span><span class="o">-</span><span class="n">subscriptions</span>          <span class="n">List</span> <span class="nb">all</span> <span class="n">calendar</span> <span class="n">subscriptions</span> <span class="k">for</span> <span class="n">a</span> <span class="n">user</span>
+ <span class="n">dav</span><span class="p">:</span><span class="n">move</span><span class="o">-</span><span class="n">calendar</span>               <span class="n">Move</span> <span class="n">a</span> <span class="n">calendar</span> <span class="kn">from</span><span class="w"> </span><span class="nn">an</span> <span class="n">user</span> <span class="n">to</span> <span class="n">another</span>
+ <span class="n">dav</span><span class="p">:</span><span class="n">remove</span><span class="o">-</span><span class="n">invalid</span><span class="o">-</span><span class="n">shares</span>       <span class="n">Remove</span> <span class="n">invalid</span> <span class="n">dav</span> <span class="n">shares</span>
+ <span class="n">dav</span><span class="p">:</span><span class="n">retention</span><span class="p">:</span><span class="n">clean</span><span class="o">-</span><span class="n">up</span>
+ <span class="n">dav</span><span class="p">:</span><span class="n">send</span><span class="o">-</span><span class="n">event</span><span class="o">-</span><span class="n">reminders</span>        <span class="n">Sends</span> <span class="n">event</span> <span class="n">reminders</span>
+ <span class="n">dav</span><span class="p">:</span><span class="n">sync</span><span class="o">-</span><span class="n">birthday</span><span class="o">-</span><span class="n">calendar</span>      <span class="n">Synchronizes</span> <span class="n">the</span> <span class="n">birthday</span> <span class="n">calendar</span>
+ <span class="n">dav</span><span class="p">:</span><span class="n">sync</span><span class="o">-</span><span class="n">system</span><span class="o">-</span><span class="n">addressbook</span>     <span class="n">Synchronizes</span> <span class="n">users</span> <span class="n">to</span> <span class="n">the</span> <span class="n">system</span> <span class="n">addressbook</span>
+<span class="n">calendar</span>
+ <span class="n">calendar</span><span class="p">:</span><span class="n">export</span>                 <span class="n">Export</span> <span class="n">a</span> <span class="n">calendar</span> <span class="n">of</span> <span class="n">a</span> <span class="n">user</span>
+ <span class="n">calendar</span><span class="p">:</span><span class="kn">import</span><span class="w">                 </span><span class="nn">Import</span> <span class="n">a</span> <span class="n">calendar</span> <span class="n">to</span> <span class="n">a</span> <span class="n">user</span>
+</pre></div>
+</div>
+<section id="manage-addressbooks">
+<h3>Manage addressbooks<a class="headerlink" href="#manage-addressbooks" title="Link to this heading"></a></h3>
+<section id="list-all-addressbooks-of-a-user">
+<h4>List all addressbooks of a user<a class="headerlink" href="#list-all-addressbooks-of-a-user" title="Link to this heading"></a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">dav:list-addressbooks</span> <span class="pre">&lt;uid&gt;</span></code></p>
+<p>This example will list all addressbooks for user annie:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">dav</span><span class="p">:</span><span class="nb">list</span><span class="o">-</span><span class="n">addressbooks</span> <span class="n">annie</span>
+</pre></div>
+</div>
+</section>
+<section id="create-a-addressbook-for-a-user">
+<h4>Create a addressbook for a user<a class="headerlink" href="#create-a-addressbook-for-a-user" title="Link to this heading"></a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">dav:create-addressbook</span> <span class="pre">&lt;user&gt;</span> <span class="pre">&lt;name&gt;</span></code></p>
+<p>This example creates the addressbook <code class="docutils literal notranslate"><span class="pre">mollybook</span></code> for the user molly:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">dav</span><span class="p">:</span><span class="n">create</span><span class="o">-</span><span class="n">addressbook</span> <span class="n">molly</span> <span class="n">mollybook</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="manage-calendars">
+<h3>Manage calendars<a class="headerlink" href="#manage-calendars" title="Link to this heading"></a></h3>
+<section id="list-all-calendars-of-a-user">
+<h4>List all calendars of a user<a class="headerlink" href="#list-all-calendars-of-a-user" title="Link to this heading"></a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">dav:list-calendars</span> <span class="pre">&lt;uid&gt;</span></code></p>
+<p>This example will list all calendars for user annie:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">dav</span><span class="p">:</span><span class="nb">list</span><span class="o">-</span><span class="n">calendars</span> <span class="n">annie</span>
+</pre></div>
+</div>
+</section>
+<section id="create-a-calendar-for-a-user">
+<h4>Create a calendar for a user<a class="headerlink" href="#create-a-calendar-for-a-user" title="Link to this heading"></a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">dav:create-calendar</span> <span class="pre">&lt;user&gt;</span> <span class="pre">&lt;name&gt;</span></code></p>
+<p>This example creates the calendar <code class="docutils literal notranslate"><span class="pre">mollycal</span></code> for the user molly:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">dav</span><span class="p">:</span><span class="n">create</span><span class="o">-</span><span class="n">calendar</span> <span class="n">molly</span> <span class="n">mollycal</span>
+</pre></div>
+</div>
+</section>
+<section id="delete-a-calendar-for-a-user">
+<h4>Delete a calendar for a user<a class="headerlink" href="#delete-a-calendar-for-a-user" title="Link to this heading"></a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">dav:delete-calendar</span> <span class="pre">[--birthday]</span> <span class="pre">[-f|--force]</span> <span class="pre">[--]</span> <span class="pre">&lt;uid&gt;</span> <span class="pre">[&lt;name&gt;]</span></code> deletes the
+calendar named <code class="docutils literal notranslate"><span class="pre">name</span></code> (or the birthday calendar if <code class="docutils literal notranslate"><span class="pre">--birthday</span></code> is
+specified) of the user <code class="docutils literal notranslate"><span class="pre">uid</span></code>. You can use the force option <code class="docutils literal notranslate"><span class="pre">-f</span></code> or
+<code class="docutils literal notranslate"><span class="pre">--force</span></code> to delete the calendar instead of moving it to the trashbin.</p>
+<p>This example will delete the calendar mollycal of user molly:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">dav</span><span class="p">:</span><span class="n">delete</span><span class="o">-</span><span class="n">calendar</span> <span class="n">molly</span> <span class="n">mollycal</span>
+</pre></div>
+</div>
+<p>This example will delete the birthday calendar of user molly:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">dav</span><span class="p">:</span><span class="n">delete</span><span class="o">-</span><span class="n">calendar</span> <span class="o">--</span><span class="n">birthday</span> <span class="n">molly</span>
+</pre></div>
+</div>
+</section>
+<section id="move-a-calendar-of-a-user">
+<h4>Move a calendar of a user<a class="headerlink" href="#move-a-calendar-of-a-user" title="Link to this heading"></a></h4>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Note that this will change existing share URLs.</p>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">dav:move-calendar</span> <span class="pre">[-f|--force]</span> <span class="pre">[--]</span> <span class="pre">&lt;name&gt;</span> <span class="pre">&lt;sourceuid&gt;</span> <span class="pre">&lt;destinationuid&gt;</span></code> allows the admin to move a calendar named <code class="docutils literal notranslate"><span class="pre">name</span></code> from a user <code class="docutils literal notranslate"><span class="pre">sourceuid</span></code> to the user <code class="docutils literal notranslate"><span class="pre">destinationuid</span></code>. You can use the force option <cite>-f</cite> to enforce the move if there are conflicts with existing shares. The system will also generate a new unique calendar name in case there is a conflict over the destination user.</p>
+<p>This example will move calendar named personal from user dennis to user sabine:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">dav</span><span class="p">:</span><span class="n">move</span><span class="o">-</span><span class="n">calendar</span> <span class="n">personal</span> <span class="n">dennis</span> <span class="n">sabine</span>
+</pre></div>
+</div>
+</section>
+<section id="export-a-calendar-of-a-user">
+<h4>Export a calendar of a user<a class="headerlink" href="#export-a-calendar-of-a-user" title="Link to this heading"></a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">calendar:export</span> <span class="pre">[--format</span> <span class="pre">FORMAT]</span> <span class="pre">[--location</span> <span class="pre">LOCATION]</span> <span class="pre">[--]</span> <span class="pre">&lt;uid&gt;</span> <span class="pre">&lt;uri&gt;</span></code> exports the calendar entries from a calendar with the given <code class="docutils literal notranslate"><span class="pre">uri</span></code> of user <code class="docutils literal notranslate"><span class="pre">uid</span></code>.</p>
+<p><strong>Arguments:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">uid</span></code> (mandatory): User ID whose calendar will be exported.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cid</span></code> (mandatory): Calendar URI to export.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--format</span> <span class="pre">FORMAT</span></code> (optional, defaults to <code class="docutils literal notranslate"><span class="pre">ical</span></code>): Output format. One of <code class="docutils literal notranslate"><span class="pre">ical</span></code>, <code class="docutils literal notranslate"><span class="pre">xcal</span></code>, or <code class="docutils literal notranslate"><span class="pre">jcal</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--location</span> <span class="pre">&lt;file</span> <span class="pre">path&gt;</span></code> (optional, defaults to stdout): Path to the file to export to. If omitted, output is written to standard output.</p></li>
+</ul>
+<p>The output format can be specified with the <code class="docutils literal notranslate"><span class="pre">--format</span></code> option. Valid formats are <code class="docutils literal notranslate"><span class="pre">ical</span></code> standard format (RFC 5545), <code class="docutils literal notranslate"><span class="pre">xcal</span></code> XML iCalendar (RFC 6321), and <code class="docutils literal notranslate"><span class="pre">jcal</span></code> JSON iCalendar (RFC 7265).</p>
+<p>This example will export the calendar named personal of user dennis to a file named personal.ics in standard format:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">calendar</span><span class="p">:</span><span class="n">export</span> <span class="n">dennis</span> <span class="n">personal</span> <span class="o">--</span><span class="n">location</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">personal</span><span class="o">.</span><span class="n">ics</span>
+</pre></div>
+</div>
+<p>This example will export the calendar in XML iCalendar format:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">calendar</span><span class="p">:</span><span class="n">export</span> <span class="n">dennis</span> <span class="n">personal</span> <span class="o">--</span><span class="nb">format</span> <span class="n">xcal</span> <span class="o">--</span><span class="n">location</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">personal</span><span class="o">.</span><span class="n">xcal</span>
+</pre></div>
+</div>
+<p>This example will export the calendar in JSON iCalendar format to standard output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">calendar</span><span class="p">:</span><span class="n">export</span> <span class="n">dennis</span> <span class="n">personal</span> <span class="o">--</span><span class="nb">format</span> <span class="n">jcal</span>
+</pre></div>
+</div>
+</section>
+<section id="import-a-calendar-to-a-user">
+<h4>Import a calendar to a user<a class="headerlink" href="#import-a-calendar-to-a-user" title="Link to this heading"></a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">calendar:import</span> <span class="pre">[--format</span> <span class="pre">FORMAT]</span> <span class="pre">[--errors</span> <span class="pre">ERRORS]</span> <span class="pre">[--validation</span> <span class="pre">VALIDATION]</span> <span class="pre">[--supersede]</span> <span class="pre">[--show-created]</span> <span class="pre">[--show-updated]</span> <span class="pre">[--show-skipped]</span> <span class="pre">[--show-errors]</span> <span class="pre">[--]</span> <span class="pre">&lt;uid&gt;</span> <span class="pre">&lt;uri&gt;</span> <span class="pre">[&lt;location&gt;]</span></code> imports a calendar entries to the calendar with the given <code class="docutils literal notranslate"><span class="pre">uri</span></code> of user <code class="docutils literal notranslate"><span class="pre">uid</span></code>.</p>
+<p><strong>Arguments:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">uid</span></code> (mandatory): User ID to import the calendar for.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">uri</span></code> (mandatory): Calendar URI to import into.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">location</span></code> (optional, defaults to stdin): Path to the file to import. If omitted, reads from standard input.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--format</span> <span class="pre">FORMAT</span></code> (optional, defaults to <code class="docutils literal notranslate"><span class="pre">ical</span></code>): Input format. One of <code class="docutils literal notranslate"><span class="pre">ical</span></code>, <code class="docutils literal notranslate"><span class="pre">xcal</span></code>, or <code class="docutils literal notranslate"><span class="pre">jcal</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--supersede</span></code> (optional): Force override of existing objects with the same UID.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--show-created</span></code> (optional): Show UID of created objects after import.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--show-updated</span></code> (optional): Show UID of updated objects after import.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--show-skipped</span></code> (optional): Show UID of skipped objects (e.g., duplicates or invalid entries).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--show-errors</span></code> (optional): Show UID of objects with errors during import.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--errors</span> <span class="pre">ERRORS</span></code> (optional): How to handle errors. <code class="docutils literal notranslate"><span class="pre">0</span></code> = continue on error, <code class="docutils literal notranslate"><span class="pre">1</span></code> = fail on error.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">--validation</span> <span class="pre">VALIDATION</span></code> (optional): How to handle object validation. <code class="docutils literal notranslate"><span class="pre">0</span></code> = no validation, <code class="docutils literal notranslate"><span class="pre">1</span></code> = validate and skip on issue, <code class="docutils literal notranslate"><span class="pre">2</span></code> = validate and fail on issue.</p></li>
+</ul>
+<p>The input format can be specified with the <code class="docutils literal notranslate"><span class="pre">--format</span></code> option, valid formats are <code class="docutils literal notranslate"><span class="pre">ical</span></code> standard format (RFC 5545), <code class="docutils literal notranslate"><span class="pre">xcal</span></code> XML iCalendar (RFC 6321) and <code class="docutils literal notranslate"><span class="pre">jcal</span></code> JSON iCalendar (RFC 7265), the default is <code class="docutils literal notranslate"><span class="pre">ical</span></code>.</p>
+<p>This example will import from a file named personal.ics in standard format to the calendar named personal of user dennis:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">calendar</span><span class="p">:</span><span class="kn">import</span><span class="w"> </span><span class="nn">dennis</span> <span class="n">personal</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">personal</span><span class="o">.</span><span class="n">ics</span>
+</pre></div>
+</div>
+<p>This example will import from a file named personal.xcal in XML iCalendar format to the calendar named personal of user dennis:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">calendar</span><span class="p">:</span><span class="kn">import</span><span class="w"> </span><span class="o">--</span><span class="nb">format</span> <span class="n">xcal</span> <span class="n">dennis</span> <span class="n">personal</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">personal</span><span class="o">.</span><span class="n">xcal</span>
+</pre></div>
+</div>
+<p>This example will import from a file named personal.jcal in JSON iCalendar format to the calendar named personal of user dennis:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">calendar</span><span class="p">:</span><span class="kn">import</span><span class="w"> </span><span class="o">--</span><span class="nb">format</span> <span class="n">jcal</span> <span class="n">dennis</span> <span class="n">personal</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">personal</span><span class="o">.</span><span class="n">jcal</span>
+</pre></div>
+</div>
+<p>This example will import from standard input to the calendar named personal of user dennis:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">personal</span><span class="o">.</span><span class="n">ics</span> <span class="o">|</span> <span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">calendar</span><span class="p">:</span><span class="kn">import</span><span class="w"> </span><span class="nn">dennis</span> <span class="n">personal</span>
+</pre></div>
+</div>
+</section>
+<section id="misc">
+<h4>Misc<a class="headerlink" href="#misc" title="Link to this heading"></a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">dav:fix-missing-caldav-changes</span> <span class="pre">[&lt;user&gt;]</span></code> attempts to restore calendar sync changes when data in the calendarchanges table has been lost. If the user ID is omitted, the command runs for all users, which may take some time to complete.</p>
+<p><code class="docutils literal notranslate"><span class="pre">dav:retention:clean-up</span></code> deletes elements from the CalDAV trash that are due for removal.</p>
+<p><code class="docutils literal notranslate"><span class="pre">dav:remove-invalid-shares</span></code> removes invalid shares that were created due to a bug in the calendar app.</p>
+<p><code class="docutils literal notranslate"><span class="pre">dav:send-event-reminders</span></code> is a command that should be called regularly through a dedicated
+cron job to send event reminder notifications. See <a class="reference internal" href="groupware/calendar.html"><span class="doc">Calendar / CalDAV</span></a> for more information on how to use this command.</p>
+</section>
+</section>
+<section id="manage-calendar-subscriptions">
+<h3>Manage calendar subscriptions<a class="headerlink" href="#manage-calendar-subscriptions" title="Link to this heading"></a></h3>
+<section id="list-all-calendar-subscriptions-of-a-user">
+<h4>List all calendar subscriptions of a user<a class="headerlink" href="#list-all-calendar-subscriptions-of-a-user" title="Link to this heading"></a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">dav:list-subscriptions</span> <span class="pre">&lt;uid&gt;</span></code></p>
+<p>This example will list all calendar subscriptions for user annie:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">dav</span><span class="p">:</span><span class="nb">list</span><span class="o">-</span><span class="n">subscriptions</span> <span class="n">annie</span>
+</pre></div>
+</div>
+</section>
+<section id="create-a-calendar-subscription-for-a-user">
+<h4>Create a calendar subscription for a user<a class="headerlink" href="#create-a-calendar-subscription-for-a-user" title="Link to this heading"></a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">dav:create-subscription</span> <span class="pre">&lt;user&gt;</span> <span class="pre">&lt;name&gt;</span> <span class="pre">&lt;url&gt;</span> <span class="pre">[&lt;color&gt;]</span></code></p>
+<p>This example creates the subscription for the lunar calendar <code class="docutils literal notranslate"><span class="pre">Lunar</span> <span class="pre">Calendar</span></code> for the user molly:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">dav</span><span class="p">:</span><span class="n">create</span><span class="o">-</span><span class="n">subscription</span> <span class="n">molly</span> <span class="s2">&quot;Lunar Calendar&quot;</span> <span class="n">webcal</span><span class="p">:</span><span class="o">//</span><span class="n">cantonbecker</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">astronomy</span><span class="o">-</span><span class="n">calendar</span><span class="o">/</span><span class="n">astrocal</span><span class="o">.</span><span class="n">ics</span>
+</pre></div>
+</div>
+<p>Optionally, a color for the new subscription calendar can be passed as a HEX color code:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">dav</span><span class="p">:</span><span class="n">create</span><span class="o">-</span><span class="n">subscription</span> <span class="n">molly</span> <span class="s2">&quot;Lunar Calendar&quot;</span> <span class="n">calendar</span> <span class="n">webcal</span><span class="p">:</span><span class="o">//</span><span class="n">cantonbecker</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">astronomy</span><span class="o">-</span><span class="n">calendar</span><span class="o">/</span><span class="n">astrocal</span><span class="o">.</span><span class="n">ics</span> <span class="s2">&quot;#ff5733&quot;</span>
+</pre></div>
+</div>
+<p>If not set, the theming default color will be used.</p>
+</section>
+<section id="delete-a-calendar-subscription-for-a-user">
+<h4>Delete a calendar subscription for a user<a class="headerlink" href="#delete-a-calendar-subscription-for-a-user" title="Link to this heading"></a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">dav:delete-subscription</span> <span class="pre">&lt;uid&gt;</span> <span class="pre">&lt;uri&gt;</span></code></p>
+<p>This example deletes the subscription for the lunar calendar <code class="docutils literal notranslate"><span class="pre">Lunar</span> <span class="pre">Calendar</span></code> for the user molly:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">dav</span><span class="p">:</span><span class="n">delete</span><span class="o">-</span><span class="n">subscription</span> <span class="n">molly</span> <span class="s2">&quot;Lunar Calendar&quot;</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="sync-system-address-book">
+<span id="dav-sync-system-address-book"></span><h3>Sync system address book<a class="headerlink" href="#sync-system-address-book" title="Link to this heading"></a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">dav:sync-system-addressbook</span></code> synchronizes all users to the <a class="reference internal" href="groupware/contacts.html#system-address-book"><span class="std std-ref">system
+address book</span></a>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">dav</span><span class="p">:</span><span class="n">sync</span><span class="o">-</span><span class="n">system</span><span class="o">-</span><span class="n">addressbook</span>
+</pre></div>
+</div>
+</section>
+<section id="sync-birthday-calendar">
+<h3>Sync birthday calendar<a class="headerlink" href="#sync-birthday-calendar" title="Link to this heading"></a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">dav:sync-birthday-calendar</span> <span class="pre">[&lt;user&gt;]</span></code> adds all birthdays to your calendar from
+addressbooks shared with you. This example syncs to your calendar from user bernie:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">dav</span><span class="p">:</span><span class="n">sync</span><span class="o">-</span><span class="n">birthday</span><span class="o">-</span><span class="n">calendar</span> <span class="n">bernie</span>
+</pre></div>
+</div>
+</section>
+<section id="disable-creation-of-example-events">
+<h3>Disable creation of example events<a class="headerlink" href="#disable-creation-of-example-events" title="Link to this heading"></a></h3>
+<p>This will disable the automatic creation of example events in calendar:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="n">app</span><span class="p">:</span><span class="nb">set</span> <span class="n">dav</span> <span class="n">create_example_event</span> <span class="o">--</span><span class="n">value</span><span class="o">=</span><span class="n">false</span> <span class="o">--</span><span class="nb">type</span><span class="o">=</span><span class="n">boolean</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="database-conversion">
+<span id="database-conversion-label"></span><h2>Database conversion<a class="headerlink" href="#database-conversion" title="Link to this heading"></a></h2>
+<p>The SQLite database is good for testing, and for Nextcloud servers with small
+single-user workloads that do not use sync clients, but production servers with
+multiple users should use MariaDB, MySQL, or PostgreSQL. You can use <code class="docutils literal notranslate"><span class="pre">occ</span></code> to
+convert from SQLite to one of these other databases.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">db</span>
+ <span class="n">db</span><span class="p">:</span><span class="n">convert</span><span class="o">-</span><span class="nb">type</span>           <span class="n">Convert</span> <span class="n">the</span> <span class="n">Nextcloud</span> <span class="n">database</span> <span class="n">to</span> <span class="n">the</span> <span class="n">newly</span>
+                           <span class="n">configured</span> <span class="n">one</span>
+</pre></div>
+</div>
+<p>You need:</p>
+<ul class="simple">
+<li><p>Your desired database and its PHP connector installed.</p></li>
+<li><p>The login and password of a database admin user.</p></li>
+<li><p>The database port number, if it is a non-standard port.</p></li>
+</ul>
+<p>This is example converts SQLite to MySQL/MariaDB:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">db</span><span class="p">:</span><span class="n">convert</span><span class="o">-</span><span class="nb">type</span> <span class="n">mysql</span> <span class="n">oc_dbuser</span> <span class="mf">127.0.0.1</span>
+<span class="n">oc_database</span>
+</pre></div>
+</div>
+<p>For a more detailed explanation see
+<a class="reference internal" href="configuration_database/db_conversion.html"><span class="doc">Converting database type</span></a></p>
+</section>
+<section id="add-missing-indices">
+<span id="database-add-indices-label"></span><h2>Add missing indices<a class="headerlink" href="#add-missing-indices" title="Link to this heading"></a></h2>
+<p>It might happen that we add from time to time new indices to already existing database tables,
+for example to improve performance. In order to check your database for missing indices run
+following command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">db</span><span class="p">:</span><span class="n">add</span><span class="o">-</span><span class="n">missing</span><span class="o">-</span><span class="n">indices</span>
+</pre></div>
+</div>
+<p>Use option <code class="docutils literal notranslate"><span class="pre">--dry-run</span></code> to output the SQL queries without running them.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="occ_apps.html" class="btn btn-neutral float-left" title="Apps, background jobs &amp; config commands" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="occ_files.html" class="btn btn-neutral float-right" title="Files &amp; encryption commands" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Versions</dt>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/latest/admin_manual"
+             
+             style="color: var(--dark-link-color);"
+             
+          >
+            latest
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/stable/admin_manual"
+             
+          >
+            stable
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/32/admin_manual"
+             
+          >
+            32
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/31/admin_manual"
+             
+          >
+            31
+          </a>
+        </dd>
+        
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
