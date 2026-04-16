@@ -50,8 +50,6 @@ who changed the password of an item or made it public, the
 `admin audit log <https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/logging_configuration.html#admin-audit-log>`_
 is the correct place.
 
-.. TODO ON RELEASE: Update version number above on release
-
 You can easily add a log by simply emitting an ``OCP\Log\Audit\CriticalActionPerformedEvent`` event:
 
 .. code-block:: php
