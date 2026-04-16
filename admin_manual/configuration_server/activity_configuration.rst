@@ -2,9 +2,18 @@
 Activity app
 ============
 
-The Activity app tracks events across your Nextcloud instance and can
+The Activity app records and summarizes user-visible events across your Nextcloud instance and can
 notify users via the activity stream, email, and push notifications.
 It is shipped and enabled by default.
+
+.. note::
+
+   The Activity app is designed for user notifications, not for
+   compliance or auditing. Users can enable or disable activity
+   tracking for their own account, so the activity stream is not a
+   reliable audit trail. If you need a complete log of all actions
+   on your instance, use the **admin_audit** app instead — see
+   :doc:`logging_configuration`.
 
 .. figure:: ../images/activity-settings-admin.png
 
@@ -21,9 +30,9 @@ Enabling email notifications
 To send activity notification emails, a working
 :doc:`email_configuration` is required.
 
-It is also recommended to configure the background job to ``Webcron``
-or ``Cron`` as described in :doc:`background_jobs_configuration`.
-The ``Ajax`` mode may delay or skip email delivery.
+It is also recommended to configure the background job run mode to a system
+run mode (``System Cron`` or ``systemd``) as described in :doc:`background_jobs_configuration`.
+The ``Ajax`` and ``Webcron`` modes may delay or skip email delivery.
 
 
 Admin settings
@@ -54,12 +63,11 @@ The following ``config.php`` options control Activity app behavior.
    * - ``activity_expire_days``
      - ``365``
      - Number of days to retain activity records. A daily background
-       job deletes all activities older than this value. Set to ``0``
-       to disable expiration.
+       job deletes all activities older than this value. Minimum is ``1`` day.
    * - ``activity_use_cached_mountpoints``
      - ``false``
      - When ``true``, activities in team folders and external storages
-       are generated for all users with access, not just the current
+       are generated for all users with access, not just the acting
        user. See :ref:`label-activities-groupfolders` for details and
        caveats.
    * - ``activity_expire_exclude_users``
@@ -70,7 +78,7 @@ The following ``config.php`` options control Activity app behavior.
 
 .. _label-activities-groupfolders:
 
-Activities in team folders or external storages
+Activities in Team Folders or External Storages
 -----------------------------------------------
 
 By default, activities in team folders or external storages are only
@@ -83,22 +91,26 @@ normal shares when set to ``true``.
 
   'activity_use_cached_mountpoints' => true,
 
+.. danger::
+
+   If "Advanced Permissions" (ACLs) are enabled in a team folder,
+   activities do not respect those permissions. As a result, users may
+   see activity entries for files and directories they cannot access.
+   **This can leak sensitive information.** See
+   `this issue <https://github.com/nextcloud/groupfolders/issues/1057>`_
+   for more information.
+
 .. warning::
 
-   This config option comes with the following limitations:
+   Users who previously had access to a team folder, share, or external
+   storage can continue to see new activity entries in their stream and
+   emails until they log in again after access is removed.
 
-   1. If "Advanced Permissions" (ACLs) are enabled in a team folder,
-      activities do not respect the permissions and all users see all
-      activities, even for files and directories they do not have
-      access to. **This potentially leaks sensitive information!** See
-      `this issue <https://github.com/nextcloud/groupfolders/issues/1057>`_
-      for more information.
-   2. Users that had access to a team folder, share or external
-      storage can see activities in their stream and emails that
-      happen after they are removed until they log in again.
-   3. Users that are newly added to a team folder, share or external
-      storage cannot see activities in their stream nor emails that
-      happen after they are added until they log in again.
+.. note::
+
+   Users who are newly added to a team folder, share, or external
+   storage will not see new activity entries in their stream or emails
+   until they log in again after access is granted.
 
 
 .. _label-activities-exclude-users:
@@ -177,7 +189,7 @@ database growth. To manage this:
 
 * Set ``activity_expire_days`` to a lower value (e.g. ``90`` or
   ``180``) to automatically clean up older records.
-* Monitor the ``oc_activity`` and ``oc_activity_mq`` tables directly
-  if you need to assess current size.
 * Ensure the Nextcloud background job is running so that the daily
   expiration job executes.
+* To assess current database usage, check the size of the
+  ``oc_activity`` and ``oc_activity_mq`` tables directly.
