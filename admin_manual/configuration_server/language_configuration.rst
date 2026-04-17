@@ -10,8 +10,7 @@ If this does not work properly or you want to make sure that Nextcloud always
 starts with a given language, you can set a **default_language** parameter in the
 :file:`config/config.php`.
 
-.. note:: The default_language parameter is only used, when the browser does not 
-   send any language, and the user hasn't configured own language preferences.
+.. note:: The default_language parameter is only used when the browser does not send any language, and the user hasn’t configured their own language preferences. This sets the default language on your Nextcloud server, using ISO_639-1 language codes such as en for English, de for German, and fr for French. Nextcloud has two distinguished language codes for German, de and de_DE. de is used for informal German and de_DE for formal German. By setting this value to de_DE, you can enforce the formal version of German unless the user has chosen something different explicitly.
 
 ::
 

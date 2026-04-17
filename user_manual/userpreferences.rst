@@ -31,7 +31,7 @@ include the following:
 * List of your Group memberships
 * Change your password
 * :doc:`user_2fa`
-* :doc:`userpreferences`
+* User preferences
 * Choose the language for your Nextcloud interface
 * Choose your preferred first day of the week
 * Links to desktop and mobile apps
