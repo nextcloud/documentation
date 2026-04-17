@@ -33,8 +33,6 @@ configuration report with the :ref:`occ config command
 .. _FAQ page: https://help.nextcloud.com/t/how-to-faq-wiki
 .. _bugtracker: https://docs.nextcloud.com/server/33/developer_manual/prologue/bugtracker/index.html
 
-.. TODO ON RELEASE: Update version number above on release
-
 General troubleshooting
 -----------------------
 
@@ -414,8 +412,6 @@ does not match the actual data stored in the user's ``data/$userId/files`` direc
 
    Metadata, versions, trashbin and encryption keys are not counted in the used space above.
    Please refer to the `quota documentation <https://docs.nextcloud.com/server/33/user_manual/en/files/quota.html>`_ for details.
-
-.. TODO ON RELEASE: Update version number above on release
 
 Running the following command can help fix the sizes and quota for a given user::
 
