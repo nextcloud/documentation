@@ -140,7 +140,12 @@ jobs:
         if: ${{ matrix.manual.build_pdf_path }}
         timeout-minutes: 5
         run: |
-          sudo dpkg -i --force-depends ${{ runner.temp }}/.cache/archives/*.deb
+          debs=(${{ runner.temp }}/.cache/archives/*.deb)
+          if [ ! -e "${debs[0]}" ]; then
+            echo "No .deb files found in cache archives — cache may be empty or missing." >&2
+            exit 1
+          fi
+          sudo dpkg -i --force-depends "${debs[@]}"
           sudo DEBIAN_FRONTEND=noninteractive apt-get install -f -y --no-install-recommends \
             -o Dir::State::lists="${{ runner.temp }}/.cache/lists"
 
