@@ -79,7 +79,12 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Installation wizard</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#quick-start">Quick start</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#data-directory-location">Data directory location</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#database-choice">Database choice</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#database-choice">Database choice</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#automatic-database-user-creation">Automatic database user creation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#autoconfig">Autoconfig</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#completing-installation">Completing Installation</a></li>
+</ul>
+</li>
 <li class="toctree-l3"><a class="reference internal" href="#trusted-domains">Trusted domains</a></li>
 </ul>
 </li>
@@ -185,14 +190,20 @@ Wizard.
 This is just three steps:</p>
 <ol class="arabic simple">
 <li><p>Point your Web browser to <code class="docutils literal notranslate"><span class="pre">http://localhost/nextcloud</span></code></p></li>
-<li><p>Enter your desired administrator’s username and password.</p></li>
-<li><p>Click <strong>Finish Setup</strong>.</p></li>
+<li><p>Enter your desired administration account name and password.</p></li>
+<li><p>Click <strong>Install</strong>.</p></li>
 </ol>
 <figure class="align-default">
-<a class="reference internal image-reference" href="../_images/install-wizard-a.png"><img alt="screenshot of the installation wizard" src="../_images/install-wizard-a.png" style="width: 240.75px; height: 609.0px;" />
+<a class="reference internal image-reference" href="../_images/install-wizard-initial.png"><img alt="screenshot of the installation wizard" src="../_images/install-wizard-initial.png" style="width: 342.0px; height: 676.5px;" />
 </a>
 </figure>
 <p>You’re finished and can start using your new Nextcloud server.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The wizard includes a real-time password strength indicator that rates your
+chosen password from “too weak” to “extremely strong”. For security, choose
+a password rated at least “strong”.</p>
+</div>
 <p>Of course, there is much more that you can do to set up your Nextcloud server for
 best performance and security. In the following sections we will cover important
 installation and post-installation steps.</p>
@@ -204,50 +215,113 @@ installation and post-installation steps.</p>
 </section>
 <section id="data-directory-location">
 <span id="data-directory-location-label"></span><h2>Data directory location<a class="headerlink" href="#data-directory-location" title="Link to this heading"></a></h2>
-<p>Click <strong>Storage and Database</strong> to expose additional installation configuration
-options for your Nextcloud data directory and database.</p>
-<figure class="align-default">
-<a class="reference internal image-reference" href="../_images/install-wizard-a1.png"><img alt="installation wizard with all options exposed" src="../_images/install-wizard-a1.png" style="width: 216.0px; height: 563.25px;" />
-</a>
-</figure>
+<p>Expand the <strong>Storage &amp; database</strong> section to expose additional installation
+configuration options for your Nextcloud data directory and database.</p>
 <p>You should locate your Nextcloud data directory outside of your Web root if you
 are using an HTTP server other than Apache, or you may wish to store your
 Nextcloud data in a different location for other reasons (e.g. on a storage
 server). It is best to configure your data directory location at installation,
 as it is difficult to move after installation. You may put it anywhere; in this
-example is it located in <code class="docutils literal notranslate"><span class="pre">/opt/nextcloud/</span></code>. This directory must already exist,
+example it is located in <code class="docutils literal notranslate"><span class="pre">/opt/nextcloud/</span></code>. This directory must already exist,
 and must be owned by your HTTP user.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If the wizard detects that your <code class="docutils literal notranslate"><span class="pre">.htaccess</span></code> file is not working (for
+example, because you are using Nginx or another non-Apache web server), it
+will display a <strong>Security warning</strong> indicating that your data directory and
+files may be accessible from the internet. Refer to the
+<a class="reference internal" href="harden_server.html"><span class="doc">Hardening and security guidance</span></a> documentation for guidance on
+securing your data directory.</p>
+</div>
 </section>
 <section id="database-choice">
 <span id="database-choice-label"></span><h2>Database choice<a class="headerlink" href="#database-choice" title="Link to this heading"></a></h2>
-<p>SQLite is the default database for Nextcloud Server and it is good only for
-testing and lightweight single-user setups without client synchronization.
-Supported databases are MySQL, MariaDB, Oracle, and PostgreSQL, and we
+<p>SQLite is the default database for Nextcloud Server. When SQLite is selected,
+the wizard displays a <strong>Performance warning</strong>:</p>
+<blockquote>
+<div><p><em>SQLite should only be used for minimal and development instances. For
+production we recommend a different database backend. If you use clients for
+file syncing, the use of SQLite is highly discouraged.</em></p>
+</div></blockquote>
+<p>Supported databases are MySQL, MariaDB, Oracle, and PostgreSQL, and we
 recommend <a class="reference internal" href="system_requirements.html"><span class="doc">MySQL/MariaDB</span></a>. Your database and PHP
 connectors must be installed before you run the Installation Wizard. When
 you install Nextcloud from packages all the necessary dependencies will be
 satisfied (see <a class="reference internal" href="source_installation.html"><span class="doc">Installation on Linux</span></a> for a detailed listing of required
-and optional PHP modules). You will need the root database login, or any
-administrator login , and then enter any name you want for your Nextcloud database.
-Be careful your administrator login needs to have the permissions to create
-and modify databases and they needs to have the permissions to grant permissions
-to other users.</p>
-<p>After you enter your root or administrator login for your database, the
-installer creates a special database user with privileges limited to the
-Nextcloud database. Then Nextcloud needs only the special Nextcloud database
-user, and drops the root dB login. This user is named for your Nextcloud admin
-user, with an <code class="docutils literal notranslate"><span class="pre">oc_</span></code> prefix, and then given a random password. The Nextcloud
-database user and password are written into <code class="docutils literal notranslate"><span class="pre">config.php</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;dbuser&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;oc_molly&#39;</span><span class="p">,</span>
+and optional PHP modules). If only one database driver is available, the wizard
+will show a notice and a link to the documentation on how to install additional
+PHP modules.</p>
+<p>When you select a database other than SQLite, the wizard exposes additional
+fields:</p>
+<ul class="simple">
+<li><p><strong>Database user</strong>: The username to connect to the database server. If this
+user has sufficient privileges (e.g. the ability to query <code class="docutils literal notranslate"><span class="pre">mysql.user</span></code> for
+MySQL, or the <code class="docutils literal notranslate"><span class="pre">CREATEROLE</span></code> privilege for PostgreSQL), the wizard will
+attempt to create a dedicated Nextcloud database user with limited privileges
+(see below). If the user lacks those privileges, the wizard gracefully falls
+back to using the provided credentials directly.</p></li>
+<li><p><strong>Database password</strong>: The password for the database user above.</p></li>
+<li><p><strong>Database name</strong>: The name you want for your Nextcloud database. The wizard
+will create it if it does not already exist and the user has
+<code class="docutils literal notranslate"><span class="pre">CREATE</span> <span class="pre">DATABASE</span></code> privileges.</p></li>
+<li><p><strong>Database host</strong>: The hostname (and optionally port) of your database
+server, e.g. <code class="docutils literal notranslate"><span class="pre">localhost</span></code> or <code class="docutils literal notranslate"><span class="pre">db.example.com:3306</span></code>. The default is
+<code class="docutils literal notranslate"><span class="pre">localhost</span></code>. You can also specify a Unix socket path here. The wizard
+shows a helper hint: <em>“Please specify the port number along with the host
+name (e.g., localhost:5432).”</em></p></li>
+<li><p><strong>Database tablespace</strong> <em>(Oracle only)</em>: Shown only when Oracle is selected.</p></li>
+</ul>
+<section id="automatic-database-user-creation">
+<h3>Automatic database user creation<a class="headerlink" href="#automatic-database-user-creation" title="Link to this heading"></a></h3>
+<p>When the provided database user has administrative privileges, the installer
+attempts to create a dedicated database user with privileges limited to the
+Nextcloud database. This avoids storing your administrative database credentials
+in <code class="docutils literal notranslate"><span class="pre">config.php</span></code>.</p>
+<p>If privileges are sufficient, the install creates a user named <code class="docutils literal notranslate"><span class="pre">oc_admin</span></code>.
+If that user already exists, a numeric suffix is appended (<code class="docutils literal notranslate"><span class="pre">oc_admin1</span></code>,
+<code class="docutils literal notranslate"><span class="pre">oc_admin2</span></code>, etc.) until an available username is found.</p>
+<p>A random password is generated for the new user. The resulting credentials are
+written into <code class="docutils literal notranslate"><span class="pre">config.php</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;dbuser&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;oc_admin&#39;</span><span class="p">,</span>
 <span class="s1">&#39;dbpassword&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;pX65Ty5DrHQkYPE5HRsDvyFHlZZHcm&#39;</span><span class="p">,</span>
 </pre></div>
 </div>
-<p>Click Finish Setup, and start using your new Nextcloud server.</p>
+<p>If the provided user lacks the privileges to create new database users, the
+installer falls back to using the provided credentials directly.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>You can also explicitly prevent automatic user creation by setting the following
+in your <code class="docutils literal notranslate"><span class="pre">config.php</span></code> before running the wizard (or via an autoconfig file):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;setup_create_db_user&#39;</span> <span class="o">=&gt;</span> <span class="n">false</span><span class="p">,</span>
+</pre></div>
+</div>
+<p>This is useful when your database administrator has already created a dedicated
+user for Nextcloud. In that case the wizard will use the database credentials
+you provide directly, without attempting to create a new user or query
+administrative privileges.</p>
+</div>
+</section>
+<section id="autoconfig">
+<h3>Autoconfig<a class="headerlink" href="#autoconfig" title="Link to this heading"></a></h3>
+<p>If an autoconfig file is detected, the wizard displays a success notice:
+<em>“Autoconfig file detected — The setup form below is pre-filled with the
+values from the config file.”</em> The <strong>Storage &amp; database</strong> section is
+automatically collapsed when the autoconfig provides valid values. For
+details on autoconfig files, see <a class="reference internal" href="../configuration_server/automatic_configuration.html"><span class="doc">Automatic setup</span></a>.</p>
 <figure class="align-default">
-<a class="reference internal image-reference" href="../_images/install-wizard-a2.png"><img alt="Nextcloud welcome screen after a successful installation" src="../_images/install-wizard-a2.png" style="width: 996.75px; height: 573.0px;" />
+<a class="reference internal image-reference" href="../_images/install-wizard-autoconfig.png"><img alt="Nextcloud wizard screen when an autoconfig file is detected" src="../_images/install-wizard-autoconfig.png" style="width: 298.5px; height: 408.0px;" />
+</a>
+</figure>
+</section>
+<section id="completing-installation">
+<h3>Completing Installation<a class="headerlink" href="#completing-installation" title="Link to this heading"></a></h3>
+<p>Click <strong>Install</strong>, and start using your new Nextcloud server.</p>
+<figure class="align-default">
+<a class="reference internal image-reference" href="../_images/install-wizard-firstrunwizard.png"><img alt="Nextcloud welcome screen after a successful installation" src="../_images/install-wizard-firstrunwizard.png" style="width: 1432.5px; height: 737.25px;" />
 </a>
 </figure>
 <p>Now we will look at some important post-installation steps.</p>
+</section>
 </section>
 <section id="trusted-domains">
 <span id="trusted-domains-label"></span><h2>Trusted domains<a class="headerlink" href="#trusted-domains" title="Link to this heading"></a></h2>
@@ -256,7 +330,8 @@ database user and password are written into <code class="docutils literal notran
 are allowed to log into Nextcloud only when they point their browsers to a
 URL that is listed in the <code class="docutils literal notranslate"><span class="pre">trusted_domains</span></code> setting. This is not a
 list of allowed client-side domains or IP addresses.
-You may use IP addresses and domain names.
+You may use IP addresses and domain names. Wildcard patterns using <code class="docutils literal notranslate"><span class="pre">*</span></code> are
+also supported (e.g. <code class="docutils literal notranslate"><span class="pre">*.example.com</span></code>).
 A typical configuration looks like this:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;trusted_domains&#39;</span> <span class="o">=&gt;</span>
   <span class="n">array</span> <span class="p">(</span>
@@ -267,12 +342,16 @@ A typical configuration looks like this:</p>
 <span class="p">),</span>
 </pre></div>
 </div>
-<p>Note:</p>
-<p>The loopback address, <code class="docutils literal notranslate"><span class="pre">127.0.0.1</span></code>, is automatically whitelisted, so as long
-as you have access to the physical server you can always log in. In the event
-that a load balancer is in place there will be no issues as long as it sends
-the correct X-Forwarded-Host header. When a user tries a URL that
-is not whitelisted the following error appears:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The loopback addresses <code class="docutils literal notranslate"><span class="pre">localhost</span></code>, <code class="docutils literal notranslate"><span class="pre">127.0.0.1</span></code>, and <code class="docutils literal notranslate"><span class="pre">[::1]</span></code> are
+always treated as trusted regardless of the <code class="docutils literal notranslate"><span class="pre">trusted_domains</span></code>
+configuration. This means that as long as you have access to the physical
+server you can always log in. In the event that a load balancer or reverse
+proxy is in place there will be no issues as long as it sends the correct
+<code class="docutils literal notranslate"><span class="pre">X-Forwarded-Host</span></code> header.</p>
+</div>
+<p>When a user tries a URL that is not whitelisted the following error appears:</p>
 <figure class="align-default">
 <a class="reference internal image-reference" href="../_images/install-wizard-a4.png"><img alt="Error message when URL is not whitelisted" src="../_images/install-wizard-a4.png" style="width: 541.5px; height: 230.25px;" />
 </a>
