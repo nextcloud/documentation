@@ -503,8 +503,86 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.COMMAND_BOT_PAT }}
 
+  # ============================================================================
+  # NETLIFY PREVIEW
+  # ============================================================================
+  # This job deploys a per-PR documentation preview to Netlify.
+  # It only runs on pull_request events (never on push/merge).
+  #
+  # The stable preview URL for PR #N is:
+  #   https://pr-<N>--<site>.netlify.app/
+  #
+  # Required repository secrets:
+  #   NETLIFY_AUTH_TOKEN  – Netlify personal access token
+  #   NETLIFY_SITE_ID     – ID of the target Netlify site
+  # ============================================================================
+  netlify-preview:
+    name: Deploy preview to Netlify
+    needs: stage-and-check
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      pull-requests: write
+
+    steps:
+      - name: Restore staged artifacts from cache
+        uses: actions/cache/restore@668228422ae6a00e4ad889ee87cd7109ec5666a7 # v5.0.4
+        with:
+          path: stage/
+          key: staged-docs-${{ github.sha }}
+          fail-on-cache-miss: true
+
+      - name: Assemble Netlify deploy directory
+        run: |
+          branch="${{ needs.stage-and-check.outputs.branch_name }}"
+          mkdir -p netlify-deploy
+
+          # Flatten stage/<branch>/<manual>/ into netlify-deploy/<manual>/
+          for manual_dir in "stage/${branch}/"/*/; do
+            if [ -d "$manual_dir" ]; then
+              manual_name="$(basename "$manual_dir")"
+              cp -r "$manual_dir" "netlify-deploy/${manual_name}"
+            fi
+          done
+
+          # Create a root index linking to each manual
+          cat > netlify-deploy/index.html << 'ENDHTML'
+          <!DOCTYPE html>
+          <html lang="en">
+          <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Nextcloud Documentation Preview</title>
+          </head>
+          <body>
+            <h1>Nextcloud Documentation Preview</h1>
+            <ul>
+              <li><a href="user_manual/">User Manual</a></li>
+              <li><a href="admin_manual/">Administration Manual</a></li>
+              <li><a href="developer_manual/">Developer Manual</a></li>
+            </ul>
+          </body>
+          </html>
+          ENDHTML
+
+      - name: Deploy to Netlify
+        uses: nwtgck/actions-netlify@4cbaf4c08f1a7bfa537d6113472ef4424e4eb654 # v3.0
+        with:
+          publish-dir: './netlify-deploy'
+          production-deploy: false
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          deploy-message: "Preview for PR #${{ github.event.number }}"
+          alias: pr-${{ github.event.number }}
+          enable-pull-request-comment: true
+          enable-commit-comment: false
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+
   summary:
-    needs: [build, stage-and-check, deploy]
+    needs: [build, stage-and-check, deploy, netlify-preview]
     runs-on: ubuntu-latest-low
     if: always()
 
@@ -520,8 +598,10 @@ jobs:
           then
             echo "This workflow ran for a pull request. We need build and stage-and-check to succeed, but deploy will be skipped"
             if ${{ needs.build.result != 'success' || needs.stage-and-check.result != 'success' || needs.deploy.result != 'skipped' }}; then exit 1; fi
+            if ${{ needs.netlify-preview.result != 'success' && needs.netlify-preview.result != 'skipped' }}; then exit 1; fi
           else
             echo "This workflow ran for a push. We need all jobs to succeed, including deploy"
             if ${{ needs.build.result != 'success' || needs.stage-and-check.result != 'success' || needs.deploy.result != 'success' }}; then exit 1; fi
+            if ${{ needs.netlify-preview.result != 'skipped' }}; then exit 1; fi
           fi
-          
+
