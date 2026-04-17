@@ -547,23 +547,6 @@ jobs:
           </html>
           INDEXEOF
 
-          # For user_manual, create a redirect from user_manual/index.html → user_manual/en/
-          if [ -d server/user_manual ]; then
-            cat > server/user_manual/index.html <<'REDIRECTEOF'
-          <!DOCTYPE html>
-          <html lang="en">
-          <head>
-            <meta charset="UTF-8">
-            <meta http-equiv="refresh" content="0; url=en/">
-            <title>Redirecting…</title>
-          </head>
-          <body>
-            <p>Redirecting to <a href="en/">user_manual/en/</a>…</p>
-          </body>
-          </html>
-          REDIRECTEOF
-          fi
-
       - name: Deploy to Netlify
         id: netlify
         if: github.event_name == 'pull_request'
