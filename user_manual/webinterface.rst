@@ -66,7 +66,8 @@ The Nextcloud user interface contains the following fields and functions:
    Files Application View to upload them to your instance.
 
 * **Search** field (6): Click on the Magnifier in the upper right corner
-  to search for files and entries of the current app.
+  to perform a :ref:`unified search <unified-search>` across your Nextcloud
+  or search for entries within the current app.
 
 * **Contacts Menu** (7): Gives you an overview about your contacts and users on
   your server. Dependent on the given details and available apps, you can
@@ -93,3 +94,13 @@ The Nextcloud user interface contains the following fields and functions:
   * Nextcloud Version information
 
 See :doc:`userpreferences` section to learn more about these settings.
+
+Unified search
+--------------
+
+.. _unified-search:
+
+Nextcloud's unified search combines results from all your installed apps
+(Files, Mail, Contacts, Calendar, etc.) into a single view. Click the search
+magnifier in the header, type your search term, and results appear grouped
+by app.

@@ -29,5 +29,3 @@ You can find additional information here:
 
 .. _`User manual`: https://docs.nextcloud.com/server/33/user_manual/en/desktop/index.html
 .. _`Developer manual`: https://docs.nextcloud.com/server/33/developer_manual/desktop/index.html
-
-.. TODO ON RELEASE: Update version number above on release

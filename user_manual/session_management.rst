@@ -43,7 +43,7 @@ those individually if necessary:
    enter the password on the new client immediately.
 
 
-.. note:: If you are :doc:`user_2fa` for your account,
+.. note:: If you use :doc:`user_2fa` for your account,
    device-specific passwords are the only way to configure clients. The
    server will deny connections of clients using your login password then.
 

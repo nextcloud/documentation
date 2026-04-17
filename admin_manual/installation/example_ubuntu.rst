@@ -16,8 +16,6 @@ following commands in a terminal::
   If you are planning on running additional apps, keep in mind that they might
   require additional packages.  See `Prerequisites for manual installation <https://docs.nextcloud.com/server/33/admin_manual/installation/source_installation.html#prerequisites-for-manual-installation>`_ for details.
 
-.. TODO ON RELEASE: Update version number above on release
-
 Now you need to create a database user and the database itself by using the
 MySQL command line interface. The database tables will be created by Nextcloud
 when you login for the first time.

@@ -127,6 +127,16 @@ Refresh mailbox
 You can manually trigger a sync of your mailbox by clicking the refresh button located at the top of the mailbox list.
 Starting from ``version 5.7`` triggering the sync will also refresh the list of folders for the selected account.
 
+Unified search
+~~~~~~~~~~~~~~
+
+The Mail app integrates with Nextcloud's :ref:`unified search <unified-search>`
+feature (see :doc:`../webinterface` for details). You can search for emails across
+all your accounts using the search bar in the Nextcloud header.
+
+Mail searches email subjects and sender/recipient fields. To search email bodies,
+use the mailbox search feature in the app.
+
 Search in mailbox
 ~~~~~~~~~~~~~~~~~
 
