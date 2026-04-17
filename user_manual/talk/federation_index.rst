@@ -8,7 +8,7 @@ This feature must be enabled by a system administrator.
 Sending an invitation
 ---------------------
 
-.. FIXME document where a user can find their CloudID to get invited
+To receive an invitation, the other party needs your CloudID. You can find your CloudID in **Personal settings** under **Sharing** — it looks like ``user@cloud.example.com``.
 
 The moderator of the conversation can send an invite to a participant on a different server:
 

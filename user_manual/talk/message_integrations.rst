@@ -2,7 +2,9 @@
 Apps integrating with messages
 ==============================
 
-.. FIXME Mention integration with Notes, Tasks, …
+.. FIXME Add documentation and screenshots for Notes and Tasks integration with Talk messages
+
+Several apps integrate with Talk messages, allowing you to turn messages into actionable items or share content directly in conversations.
 
 Deck
 ----

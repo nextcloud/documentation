@@ -62,4 +62,4 @@ This section informs participants that the call may be recorded. To give explici
 .. image:: images/give-recording-consent-checked.png
     :width: 500px
 
-.. FIXME add where they can be rewatched afterwards
+After a call ends, the recording is processed and saved to the chat as a shared file. Participants can play it back directly from the chat or download it from the conversation's shared items.
