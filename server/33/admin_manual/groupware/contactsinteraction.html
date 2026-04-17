@@ -1,0 +1,319 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contacts Interaction &mdash; Nextcloud latest Administration Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=e59714d7" />
+      <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=8ff6e0db" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://docs.nextcloud.com/server/stable/admin_manual/groupware/contactsinteraction.html" />
+      <script src="../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../_static/documentation_options.js?v=a49d5d77"></script>
+      <script src="../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../_static/copybutton.js?v=f281be69"></script>
+      <script src="../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../_static/js/theme.js"></script>
+    <script src="../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Mail" href="mail.html" />
+    <link rel="prev" title="Contacts / CardDAV" href="contacts.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../release_schedule.html">Maintenance and release schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../gdpr/index.html">GDPR-compliance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../declarations/index.html">Declarations</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Release notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../release_notes/index.html">Critical changes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../installation/index.html">Installation and server configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_database/index.html">Database configuration</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Configuration</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_server/index.html">Nextcloud configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../occ_command.html">Using the occ command</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../reference/index.html">Reference management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webhook_listeners/index.html">Webhook Listeners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../windmill_workflows/index.html">Windmill Workflows</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Files</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_files/index.html">File sharing and management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../file_workflows/index.html">Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_mimetypes/index.html">Mimetypes management</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Apps</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../apps_management.html">Apps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../exapps_management/index.html">ExApps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ai/index.html">Artificial Intelligence</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Users</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_user/index.html">User management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Clients</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Groupware</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Groupware</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="calendar.html">Calendar / CalDAV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="contacts.html">Contacts / CardDAV</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Contacts Interaction</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#how-interactions-are-tracked">How interactions are tracked</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-recently-contacted-address-book">The recently contacted address book</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data-retention">Data retention</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#user-deletion">User deletion</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="mail.html">Mail</a></li>
+<li class="toctree-l2"><a class="reference internal" href="out_of_office.html">Out-of-office feature</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Office</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../office/index.html">Office</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Maintenance</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../configuration_monitoring/index.html">Monitoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../maintenance/index.html">Maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../issues/index.html">Issues and troubleshooting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://help.nextcloud.com/">Community Help Forum</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.nextcloud.com/">User Manuals</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.nextcloud.com/">Developer Manuals</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://nextcloud.com/install/">Download</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://apps.nextcloud.com">App Store</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://help.nextcloud.com/t/translation-knowledge-valid-for-the-entire-nextcloud-project-wiki/51550">Translations</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/nextcloud/">GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/nextcloud/server/wiki/Maintenance-and-Release-Schedule">Supported versions</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://nextcloud.com/enterprise/">Nextcloud Enterprise</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/nextcloud/server/blob/master/COPYING-README">License</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://nextcloud.com/">Nextcloud GmbH</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest Administration Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Groupware</a></li>
+      <li class="breadcrumb-item active">Contacts Interaction</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/admin_manual/groupware/contactsinteraction.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="contacts-interaction">
+<h1>Contacts Interaction<a class="headerlink" href="#contacts-interaction" title="Link to this heading"></a></h1>
+<p>The Contacts Interaction app automatically tracks which people a user has recently interacted with
+and provides this data as a read-only CardDAV address book called <strong>Recently contacted</strong>. This
+enables autocomplete suggestions in sharing dialogs, email composition, calendar invitations and
+other places that query the user’s address books — even for people who are not saved as explicit
+contacts.</p>
+<p>The app is shipped with Nextcloud and enabled by default. It can be disabled.</p>
+<section id="how-interactions-are-tracked">
+<h2>How interactions are tracked<a class="headerlink" href="#how-interactions-are-tracked" title="Link to this heading"></a></h2>
+<p>The app listens for <code class="docutils literal notranslate"><span class="pre">ContactInteractedWithEvent</span></code> events dispatched by other Nextcloud apps. The
+following apps dispatch this event:</p>
+<ul class="simple">
+<li><p><strong>File sharing</strong>: When a user creates a share with another local user, an email address or a
+federated remote user.</p></li>
+<li><p><strong>Calendar</strong>: When a user shares a calendar with another user.</p></li>
+<li><p><strong>Mail</strong>: When a user sends an email.</p></li>
+</ul>
+<p>Any app can integrate by dispatching a <code class="docutils literal notranslate"><span class="pre">ContactInteractedWithEvent</span></code> with at least one identifier:
+a Nextcloud user ID, an email address or a federated cloud ID.</p>
+<p>When an interaction is recorded, the app first checks whether the contacted person already exists in
+one of the user’s regular address books. If a match is found, no entry is created in the recently
+contacted address book since the person is already a known contact. Self-interactions (where the
+user interacts with themselves) are also ignored.</p>
+<p>For new contacts, a minimal vCard is generated containing:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">FN</span></code> (display name): Resolved from the Nextcloud user profile if the person is a local user,
+falling back to the email address or federated cloud ID.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">EMAIL</span></code>: Included when an email address is known.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CLOUD</span></code>: Included when a federated cloud ID is known.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">CATEGORIES</span></code>: Set to <code class="docutils literal notranslate"><span class="pre">Recently</span> <span class="pre">contacted</span></code>, which allows the Contacts app to identify entries
+from this address book and offer users the option to copy them to a regular address book.</p></li>
+</ul>
+<p>If the same person is contacted again, the existing entry’s timestamp is updated rather than
+creating a duplicate.</p>
+</section>
+<section id="the-recently-contacted-address-book">
+<h2>The recently contacted address book<a class="headerlink" href="#the-recently-contacted-address-book" title="Link to this heading"></a></h2>
+<p>Each user’s recently contacted address book is accessible via CardDAV at:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">addressbooks</span><span class="o">/</span><span class="n">users</span><span class="o">/</span><span class="p">{</span><span class="n">userId</span><span class="p">}</span><span class="o">/</span><span class="n">z</span><span class="o">-</span><span class="n">app</span><span class="o">-</span><span class="n">generated</span><span class="o">--</span><span class="n">contactsinteraction</span><span class="o">--</span><span class="n">recent</span><span class="o">/</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">z-app-generated</span></code> prefix ensures the address book sorts after user-created address books. Users
+cannot create their own address books with this reserved prefix.</p>
+<p>The address book is <strong>read-only</strong> and <strong>not shareable</strong>. Users cannot create, modify or delete
+entries. Entries are only removed automatically by the cleanup job or when a user account is deleted.</p>
+<p>The address book is visible in:</p>
+<ul class="simple">
+<li><p><strong>CardDAV clients</strong>: Any client syncing with the user’s Nextcloud (e.g., Thunderbird, macOS
+Contacts, DAVx5) will see the address book.</p></li>
+<li><p><strong>Nextcloud Contacts</strong>: The address book and its entries appear in the Contacts UI if the
+Contacts app is enabled. Contacts from this address book can be copied to a regular address book.</p></li>
+<li><p><strong>Autocomplete</strong>: Entries are available for recipient suggestions in sharing dialogs and other
+places across the Nextcloud web interface.</p></li>
+</ul>
+</section>
+<section id="data-retention">
+<h2>Data retention<a class="headerlink" href="#data-retention" title="Link to this heading"></a></h2>
+<p>A background job runs every 24 hours and removes entries that have not been updated within the last
+7 days. Both the retention period and the cleanup interval are fixed and cannot be configured.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The cleanup job depends on the Nextcloud background job system. Make sure cron is configured
+correctly for your instance. See <a class="reference internal" href="../configuration_server/background_jobs_configuration.html"><span class="doc">Background jobs</span></a>.</p>
+</div>
+</section>
+<section id="user-deletion">
+<h2>User deletion<a class="headerlink" href="#user-deletion" title="Link to this heading"></a></h2>
+<p>When a user account is deleted, all of that user’s recently contacted entries are automatically
+removed from the database.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="contacts.html" class="btn btn-neutral float-left" title="Contacts / CardDAV" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="mail.html" class="btn btn-neutral float-right" title="Mail" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Versions</dt>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/latest/admin_manual"
+             
+             style="color: var(--dark-link-color);"
+             
+          >
+            latest
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/stable/admin_manual"
+             
+          >
+            stable
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/32/admin_manual"
+             
+          >
+            32
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/31/admin_manual"
+             
+          >
+            31
+          </a>
+        </dd>
+        
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
