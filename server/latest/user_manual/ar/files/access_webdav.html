@@ -11,7 +11,7 @@
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=bc97f5cf" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=e7c79d26" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
 
@@ -31,7 +31,7 @@
     <script src="../../_static/js/versions.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="بحث" href="../search.html" />
-    <link rel="next" title="إدارة الملفات المحذوفة" href="deleted_file_management.html" />
+    <link rel="next" title="المُزامَنة مع سطح المكتب و الهواتف" href="desktop_mobile_sync.html" />
     <link rel="prev" title="الوصول إلى ملفاتك باستخدام واجهة ويب نكست كلاود" href="access_webgui.html" /> 
 </head>
 
@@ -64,62 +64,30 @@
 <li class="toctree-l1"><a class="reference internal" href="../webinterface.html">واجهة وب نكست كلاود The Nextcloud Web interface</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../activity.html">Using the Activity app</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">الملفات &amp; التزامن</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="access_webgui.html">الوصول إلى ملفاتك باستخدام واجهة ويب نكست كلاود</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">الوصول إلى ملفات نكست كلاود باستعمال WebDAV</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#official-nextcloud-desktop-and-mobile-clients">تطبيقات عملاء clients نكست كلاود الرسمية لسطح المكتب والأجهزة المحمولة</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#third-party-webdav-clients">عملاء WebDAV من طرف ثالث</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#accessing-files-using-linux">الوصول للملفات باستعمال لينكس</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#nautilus-file-manager">مدير الملفات &quot;ناوتيلس&quot; Nautilus</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#accessing-files-with-kde-and-dolphin-file-manager">الوصول إلى الملفات باستعمال مدير ملفات KDE و Dolphin</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="accessing.html">Accessing your files</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="access_webgui.html">الوصول إلى ملفاتك باستخدام واجهة ويب نكست كلاود</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">الوصول إلى ملفات نكست كلاود باستعمال WebDAV</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#official-nextcloud-desktop-and-mobile-clients">تطبيقات عملاء clients نكست كلاود الرسمية لسطح المكتب والأجهزة المحمولة</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#third-party-webdav-clients">عملاء WebDAV من طرف ثالث</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#accessing-files-using-linux">الوصول للملفات باستعمال لينكس</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#creating-webdav-mounts-on-the-linux-command-line">إنشاء ارتباطات mounts لـ WebDAV باستعمال سطر الأوامر في لينكس</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#known-issues">إشكالات معروفة</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#accessing-files-using-macos">الوصول للملفات باستخدام macOS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#accessing-files-using-microsoft-windows">الوصول إلى الملفات باستعمال مايكروسوفت وندوز</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#accessing-files-using-cyberduck">الوصول إلى الملفات باستعمال Cyberduck</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#accessing-public-shares-over-webdav">الوصول إلى المشاركات العامة عبر WebDAV</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#known-problems">إشكاليّات معروفة</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#accessing-files-using-curl">الوصول إلى الملفات باستعمال cURL</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#accessing-files-using-winscp">الوصول إلى الملفات باستعمال WinSCP</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#creating-webdav-mounts-on-the-linux-command-line">إنشاء ارتباطات mounts لـ WebDAV باستعمال سطر الأوامر في لينكس</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#known-issues">إشكالات معروفة</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#problem">مشكلة</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#solution">الحل</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id1">مشكلة</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id2">الحل</a></li>
+<li class="toctree-l3"><a class="reference internal" href="desktop_mobile_sync.html">المُزامَنة مع سطح المكتب و الهواتف</a></li>
+<li class="toctree-l3"><a class="reference internal" href="large_file_upload.html">رفع ملفات كبيرة</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#accessing-files-using-macos">الوصول للملفات باستخدام macOS</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#accessing-files-using-microsoft-windows">الوصول إلى الملفات باستعمال مايكروسوفت وندوز</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#mapping-drives-with-the-command-line">تعيين mapping محركات الأقراص باستخدام سطر الأوامر</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#mapping-drives-with-windows-explorer">تعيين الأقراص باستعمال متصفح وندوز إكبسلورير</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#accessing-files-using-cyberduck">الوصول إلى الملفات باستعمال Cyberduck</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#accessing-public-shares-over-webdav">الوصول إلى المشاركات العامة عبر WebDAV</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#known-problems">إشكاليّات معروفة</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id4">مشكلة</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#solution-1">الحل 1</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#solution-2">الحل 2</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id5">مشكلة</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id6">الحل</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id7">مشكلة</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#answer">الجواب</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id8">مشكلة</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id9">الحل</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id10">مشكلة</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id11">الحل</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#accessing-files-using-curl">الوصول إلى الملفات باستعمال cURL</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#accessing-files-using-winscp">الوصول إلى الملفات باستعمال WinSCP</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="deleted_file_management.html">إدارة الملفات المحذوفة</a></li>
-<li class="toctree-l2"><a class="reference internal" href="desktop_mobile_sync.html">المُزامَنة مع سطح المكتب و الهواتف</a></li>
-<li class="toctree-l2"><a class="reference internal" href="encrypting_files.html">Using server-side encryption</a></li>
-<li class="toctree-l2"><a class="reference internal" href="using_e2ee.html">Using end-to-end encryption</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sharing.html">مشاركة الملفات</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sharing.html#federated-shares">مشاركات اتحادية</a></li>
-<li class="toctree-l2"><a class="reference internal" href="file_drop.html">تمكين عمليات رفع مجهولة</a></li>
-<li class="toctree-l2"><a class="reference internal" href="large_file_upload.html">رفع ملفات كبيرة</a></li>
-<li class="toctree-l2"><a class="reference internal" href="quota.html">الحصة التخزينية Storage quota</a></li>
-<li class="toctree-l2"><a class="reference internal" href="version_control.html">إدارة النُّسَخ Version Control</a></li>
-<li class="toctree-l2"><a class="reference internal" href="projects.html">المشاريع Projects</a></li>
-<li class="toctree-l2"><a class="reference internal" href="transfer_ownership.html">نقل المِلْكِيَّة</a></li>
-<li class="toctree-l2"><a class="reference internal" href="federated_cloud_sharing.html">إستعمال المشاركات الاتحادية Federated Shares</a></li>
+<li class="toctree-l2"><a class="reference internal" href="managing.html">Managing your files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="collaboration.html">Sharing &amp; collaboration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security.html">Security &amp; encryption</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">أدوات العمل التعاوني Groupware</a></li>
@@ -147,6 +115,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="index.html">الملفات &amp; التزامن</a></li>
+          <li class="breadcrumb-item"><a href="accessing.html">Accessing your files</a></li>
       <li class="breadcrumb-item active">الوصول إلى ملفات نكست كلاود باستعمال WebDAV</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/files/access_webdav.rst" class="fa fa-github"> Edit on GitHub</a>
@@ -651,7 +620,7 @@ Complete the Import.</p></li>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="access_webgui.html" class="btn btn-neutral float-left" title="الوصول إلى ملفاتك باستخدام واجهة ويب نكست كلاود" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="deleted_file_management.html" class="btn btn-neutral float-right" title="إدارة الملفات المحذوفة" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="desktop_mobile_sync.html" class="btn btn-neutral float-right" title="المُزامَنة مع سطح المكتب و الهواتف" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

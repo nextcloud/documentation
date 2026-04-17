@@ -11,7 +11,7 @@
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=bc97f5cf" />
+      <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=e7c79d26" />
       <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/general.css?v=c0a7eb24" />
       <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
 
@@ -73,6 +73,15 @@
 <li class="toctree-l2"><a class="reference internal" href="backgroundjobs.html">Background jobs (Cron)</a></li>
 <li class="toctree-l2"><a class="reference internal" href="caching.html">Caching</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Logging</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#basic-usage">Basic usage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#available-log-methods">Available log methods</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#log-level-mapping">Log level mapping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#message-interpolation">Message interpolation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#context-array">Context array</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#logging-exceptions">Logging exceptions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#custom-log-file">Custom log file</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#structured-data-logging">Structured data logging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#listening-to-log-events">Listening to log events</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#admin-audit-logging">Admin audit logging</a></li>
 </ul>
 </li>
@@ -120,28 +129,36 @@
              
   <section id="logging">
 <h1>Logging<a class="headerlink" href="#logging" title="Link to this heading"></a></h1>
-<p>The logger is present by default in the container. The app that is logging is
-set automatically. Nextcloud uses a <a class="reference internal" href="../digging_deeper/psr.html#psr3"><span class="std std-ref">PSR3</span></a> logger.</p>
-<p>The logger can be used in the following way:</p>
+<p>Nextcloud uses a <a class="reference internal" href="../digging_deeper/psr.html#psr3"><span class="std std-ref">PSR-3</span></a> logger (<code class="docutils literal notranslate"><span class="pre">Psr\Log\LoggerInterface</span></code>).
+The recommended way to use it is via <a class="reference internal" href="dependency_injection.html#id2"><span class="std std-ref">dependency injection</span></a>.</p>
+<section id="basic-usage">
+<h2>Basic usage<a class="headerlink" href="#basic-usage" title="Link to this heading"></a></h2>
+<p>Inject <code class="docutils literal notranslate"><span class="pre">Psr\Log\LoggerInterface</span></code> into your class. When the logger is resolved
+from an app container, Nextcloud automatically wraps it so that every log
+message is attributed to your app – you do <strong>not</strong> need to pass an app name
+yourself:</p>
 <div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
 <span class="k">namespace</span> <span class="nx">OCA\MyApp\Service</span><span class="p">;</span>
 
 <span class="k">use</span> <span class="nx">Psr\Log\LoggerInterface</span><span class="p">;</span>
 
 <span class="k">class</span> <span class="nc">AuthorService</span> <span class="p">{</span>
-    <span class="k">private</span> <span class="nx">LoggerInterface</span> <span class="nv">$logger</span><span class="p">;</span>
-    <span class="k">private</span> <span class="nx">string</span> <span class="nv">$appName</span><span class="p">;</span>
-
-    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">LoggerInterface</span> <span class="nv">$logger</span><span class="p">,</span> <span class="nx">string</span> <span class="nv">$appName</span><span class="p">){</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">logger</span> <span class="o">=</span> <span class="nv">$logger</span><span class="p">;</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">appName</span> <span class="o">=</span> <span class="nv">$appName</span><span class="p">;</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span>
+        <span class="k">private</span> <span class="nx">LoggerInterface</span> <span class="nv">$logger</span><span class="p">,</span>
+    <span class="p">)</span> <span class="p">{</span>
     <span class="p">}</span>
 
-    <span class="k">public</span> <span class="k">function</span> <span class="nf">log</span><span class="p">(</span><span class="nv">$message</span><span class="p">)</span> <span class="p">{</span>
-        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">logger</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="nv">$message</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;extra_context&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;my extra context&#39;</span><span class="p">]);</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">doSomething</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">logger</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="s1">&#39;Something went wrong&#39;</span><span class="p">);</span>
     <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Behind the scenes, each app’s DI container registers a <code class="docutils literal notranslate"><span class="pre">ScopedPsrLogger</span></code>
+that prepends <code class="docutils literal notranslate"><span class="pre">['app'</span> <span class="pre">=&gt;</span> <span class="pre">'&lt;your-app-id&gt;']</span></code> to the context of every call.
+You do not need to set this manually.</p>
 </div>
 <p>In cases where you can not <a class="reference internal" href="dependency_injection.html#id2"><span class="std std-ref">inject</span></a> a logger into a class, you can use
 the <code class="docutils literal notranslate"><span class="pre">\OCP\Log\logger</span></code> function to acquire a logger instance. As a first argument you need to pass
@@ -150,9 +167,229 @@ the app ID.</p>
 
 <span class="k">use</span> <span class="k">function</span> <span class="nf">OCP\Log\logger</span><span class="p">;</span>
 
-<span class="nx">logger</span><span class="p">(</span><span class="s1">&#39;calendar&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">warning</span><span class="p">(</span><span class="s1">&#39;look, no dependency injection&#39;</span><span class="p">);</span>
+<span class="nx">logger</span><span class="p">(</span><span class="s1">&#39;my_app&#39;</span><span class="p">)</span><span class="o">-&gt;</span><span class="na">warning</span><span class="p">(</span><span class="s1">&#39;look, no dependency injection&#39;</span><span class="p">);</span>
 </pre></div>
 </div>
+</section>
+<section id="available-log-methods">
+<h2>Available log methods<a class="headerlink" href="#available-log-methods" title="Link to this heading"></a></h2>
+<p>The logger exposes the full set of PSR-3 methods:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">emergency()</span></code> – System is unusable</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">alert()</span></code> – Action must be taken immediately</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">critical()</span></code> – Critical conditions</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">error()</span></code> – Runtime errors</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">warning()</span></code> – Exceptional occurrences that are not errors</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">notice()</span></code> – Normal but significant events</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">info()</span></code> – Interesting events (e.g. user logs in)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">debug()</span></code> – Detailed debug information</p></li>
+</ul>
+<p>Each method has the signature <code class="docutils literal notranslate"><span class="pre">(string|\Stringable</span> <span class="pre">$message,</span> <span class="pre">array</span> <span class="pre">$context</span> <span class="pre">=</span> <span class="pre">[]):</span> <span class="pre">void</span></code>.</p>
+</section>
+<section id="log-level-mapping">
+<h2>Log level mapping<a class="headerlink" href="#log-level-mapping" title="Link to this heading"></a></h2>
+<p>PSR-3 defines eight severity levels, but Nextcloud internally uses five numeric
+levels (set via the <code class="docutils literal notranslate"><span class="pre">loglevel</span></code> setting in <code class="docutils literal notranslate"><span class="pre">config.php</span></code>). The mapping is:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>PSR-3 level</p></th>
+<th class="head"><p>Nextcloud level</p></th>
+<th class="head"><p>Numeric value</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">emergency</span></code></p></td>
+<td><p>FATAL</p></td>
+<td><p>4</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">alert</span></code>, <code class="docutils literal notranslate"><span class="pre">critical</span></code>, <code class="docutils literal notranslate"><span class="pre">error</span></code></p></td>
+<td><p>ERROR</p></td>
+<td><p>3</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">warning</span></code></p></td>
+<td><p>WARN</p></td>
+<td><p>2</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">notice</span></code>, <code class="docutils literal notranslate"><span class="pre">info</span></code></p></td>
+<td><p>INFO</p></td>
+<td><p>1</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">debug</span></code></p></td>
+<td><p>DEBUG</p></td>
+<td><p>0</p></td>
+</tr>
+</tbody>
+</table>
+<p>A message is written to the log only when its numeric level is <strong>≥</strong> the
+configured <code class="docutils literal notranslate"><span class="pre">loglevel</span></code> (default: <code class="docutils literal notranslate"><span class="pre">2</span></code> / WARN).</p>
+</section>
+<section id="message-interpolation">
+<h2>Message interpolation<a class="headerlink" href="#message-interpolation" title="Link to this heading"></a></h2>
+<p>Nextcloud supports PSR-3 message interpolation. Context values whose keys
+appear as <code class="docutils literal notranslate"><span class="pre">{placeholder}</span></code> tokens in the message string are substituted
+automatically:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">logger</span><span class="o">-&gt;</span><span class="na">warning</span><span class="p">(</span><span class="s1">&#39;User {user} failed to log in&#39;</span><span class="p">,</span> <span class="p">[</span>
+    <span class="s1">&#39;user&#39;</span> <span class="o">=&gt;</span> <span class="nv">$userId</span><span class="p">,</span>
+<span class="p">]);</span>
+</pre></div>
+</div>
+<p>This produces a log message like <code class="docutils literal notranslate"><span class="pre">User</span> <span class="pre">jane</span> <span class="pre">failed</span> <span class="pre">to</span> <span class="pre">log</span> <span class="pre">in</span></code>. The <code class="docutils literal notranslate"><span class="pre">user</span></code>
+key is consumed by the interpolation and will not appear separately in the
+stored log entry.</p>
+</section>
+<section id="context-array">
+<h2>Context array<a class="headerlink" href="#context-array" title="Link to this heading"></a></h2>
+<p>The second argument to every log method is a context array. Nextcloud
+recognises several special keys:</p>
+<dl>
+<dt><code class="docutils literal notranslate"><span class="pre">exception</span></code></dt><dd><p>If the context contains an <code class="docutils literal notranslate"><span class="pre">exception</span></code> key whose value is a
+<code class="docutils literal notranslate"><span class="pre">\Throwable</span></code>, Nextcloud will serialize the full exception (class name,
+message, code, file, line, stack trace and any previous exceptions). <strong>This
+is the recommended way to log exceptions:</strong></p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">try</span> <span class="p">{</span>
+    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">doRiskyThing</span><span class="p">();</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">\Exception</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">logger</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="s1">&#39;Operation failed&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;exception&#39;</span> <span class="o">=&gt;</span> <span class="nv">$e</span><span class="p">]);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>You can provide a custom message as the first argument; if you omit it, the
+exception’s own message is used.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">app</span></code></dt><dd><p>Identifies the app that produced the message. This is <strong>set automatically</strong>
+when you obtain the logger via dependency injection or the <code class="docutils literal notranslate"><span class="pre">logger()</span></code>
+helper. You can override it explicitly if needed:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">logger</span><span class="o">-&gt;</span><span class="na">info</span><span class="p">(</span><span class="s1">&#39;Cross-app note&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;app&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;other_app&#39;</span><span class="p">]);</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+<p>Any other keys you add to the context array are included in the log entry as
+additional data:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">logger</span><span class="o">-&gt;</span><span class="na">info</span><span class="p">(</span><span class="s1">&#39;Cron job finished&#39;</span><span class="p">,</span> <span class="p">[</span>
+    <span class="s1">&#39;duration&#39;</span> <span class="o">=&gt;</span> <span class="nv">$seconds</span><span class="p">,</span>
+    <span class="s1">&#39;items_processed&#39;</span> <span class="o">=&gt;</span> <span class="nv">$count</span><span class="p">,</span>
+<span class="p">]);</span>
+</pre></div>
+</div>
+</section>
+<section id="logging-exceptions">
+<h2>Logging exceptions<a class="headerlink" href="#logging-exceptions" title="Link to this heading"></a></h2>
+<p>As shown above, passing an <code class="docutils literal notranslate"><span class="pre">exception</span></code> key in the context triggers detailed
+exception serialization. This is preferred over manually calling
+<code class="docutils literal notranslate"><span class="pre">$e-&gt;getMessage()</span></code> because Nextcloud will capture the full stack trace and
+chain of previous exceptions.</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">try</span> <span class="p">{</span>
+    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">service</span><span class="o">-&gt;</span><span class="na">process</span><span class="p">(</span><span class="nv">$data</span><span class="p">);</span>
+<span class="p">}</span> <span class="k">catch</span> <span class="p">(</span><span class="nx">\OCP\DB\Exception</span> <span class="nv">$e</span><span class="p">)</span> <span class="p">{</span>
+    <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">logger</span><span class="o">-&gt;</span><span class="na">error</span><span class="p">(</span><span class="s1">&#39;Database operation failed for item {id}&#39;</span><span class="p">,</span> <span class="p">[</span>
+        <span class="s1">&#39;id&#39;</span> <span class="o">=&gt;</span> <span class="nv">$itemId</span><span class="p">,</span>
+        <span class="s1">&#39;exception&#39;</span> <span class="o">=&gt;</span> <span class="nv">$e</span><span class="p">,</span>
+    <span class="p">]);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>You can combine message interpolation with exception logging – Nextcloud
+handles both.</p>
+</section>
+<section id="custom-log-file">
+<h2>Custom log file<a class="headerlink" href="#custom-log-file" title="Link to this heading"></a></h2>
+<p>If your app needs to write to a <strong>separate log file</strong> (for example, to keep
+verbose debug output out of the main log), you can use
+<code class="docutils literal notranslate"><span class="pre">OCP\Log\ILogFactory::getCustomPsrLogger()</span></code>:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="k">namespace</span> <span class="nx">OCA\MyApp\Service</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCP\Log\ILogFactory</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">Psr\Log\LoggerInterface</span><span class="p">;</span>
+
+<span class="k">class</span> <span class="nc">ImportService</span> <span class="p">{</span>
+    <span class="k">private</span> <span class="nx">LoggerInterface</span> <span class="nv">$importLogger</span><span class="p">;</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="fm">__construct</span><span class="p">(</span><span class="nx">ILogFactory</span> <span class="nv">$logFactory</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">importLogger</span> <span class="o">=</span> <span class="nv">$logFactory</span><span class="o">-&gt;</span><span class="na">getCustomPsrLogger</span><span class="p">(</span>
+            <span class="s1">&#39;/var/log/nextcloud/import.log&#39;</span>
+        <span class="p">);</span>
+    <span class="p">}</span>
+
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">run</span><span class="p">()</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
+        <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">importLogger</span><span class="o">-&gt;</span><span class="na">info</span><span class="p">(</span><span class="s1">&#39;Import started&#39;</span><span class="p">);</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>The method signature is:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">public</span> <span class="k">function</span> <span class="nf">getCustomPsrLogger</span><span class="p">(</span>
+    <span class="nx">string</span> <span class="nv">$path</span><span class="p">,</span>
+    <span class="nx">string</span> <span class="nv">$type</span> <span class="o">=</span> <span class="s1">&#39;file&#39;</span><span class="p">,</span>
+    <span class="nx">string</span> <span class="nv">$tag</span> <span class="o">=</span> <span class="s1">&#39;Nextcloud&#39;</span>
+<span class="p">)</span><span class="o">:</span> <span class="nx">LoggerInterface</span><span class="p">;</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">$type</span></code> can be <code class="docutils literal notranslate"><span class="pre">file</span></code> (default), <code class="docutils literal notranslate"><span class="pre">errorlog</span></code>, <code class="docutils literal notranslate"><span class="pre">syslog</span></code>, or <code class="docutils literal notranslate"><span class="pre">systemd</span></code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><code class="docutils literal notranslate"><span class="pre">getCustomPsrLogger</span></code> has been available since Nextcloud 22.
+The <code class="docutils literal notranslate"><span class="pre">$type</span></code> and <code class="docutils literal notranslate"><span class="pre">$tag</span></code> parameters were added in Nextcloud 24.</p>
+</div>
+</section>
+<section id="structured-data-logging">
+<h2>Structured data logging<a class="headerlink" href="#structured-data-logging" title="Link to this heading"></a></h2>
+<p>For advanced use cases, the logger also implements <code class="docutils literal notranslate"><span class="pre">OCP\Log\IDataLogger</span></code>
+(since Nextcloud 18.0.1), which provides a <code class="docutils literal notranslate"><span class="pre">logData()</span></code> method for logging
+arbitrary structured data:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="k">use</span> <span class="nx">OCP\Log\IDataLogger</span><span class="p">;</span>
+
+<span class="sd">/** @var IDataLogger $logger */</span>
+<span class="nv">$logger</span> <span class="o">=</span> <span class="nx">\OCP\Server</span><span class="o">::</span><span class="na">get</span><span class="p">(</span><span class="nx">\Psr\Log\LoggerInterface</span><span class="o">::</span><span class="na">class</span><span class="p">);</span>
+<span class="nv">$logger</span><span class="o">-&gt;</span><span class="na">logData</span><span class="p">(</span><span class="s1">&#39;Sync completed&#39;</span><span class="p">,</span> <span class="p">[</span>
+    <span class="s1">&#39;provider&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;caldav&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;items&#39;</span> <span class="o">=&gt;</span> <span class="mi">42</span><span class="p">,</span>
+<span class="p">],</span> <span class="p">[</span>
+    <span class="s1">&#39;app&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;my_app&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;level&#39;</span> <span class="o">=&gt;</span> <span class="nx">\OCP\ILogger</span><span class="o">::</span><span class="na">INFO</span><span class="p">,</span>
+<span class="p">]);</span>
+</pre></div>
+</div>
+<p>The first argument is a message string, the second is the structured data array,
+and the third is an optional context array (which accepts the <code class="docutils literal notranslate"><span class="pre">app</span></code> and
+<code class="docutils literal notranslate"><span class="pre">level</span></code> keys described above).</p>
+</section>
+<section id="listening-to-log-events">
+<h2>Listening to log events<a class="headerlink" href="#listening-to-log-events" title="Link to this heading"></a></h2>
+<p>If your app needs to react when log messages are written (e.g. to forward them
+to an external monitoring service), you can listen for the
+<code class="docutils literal notranslate"><span class="pre">OCP\Log\BeforeMessageLoggedEvent</span></code> event (since Nextcloud 28):</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="o">&lt;?</span><span class="nx">php</span>
+<span class="k">namespace</span> <span class="nx">OCA\MyApp\Listener</span><span class="p">;</span>
+
+<span class="k">use</span> <span class="nx">OCP\EventDispatcher\Event</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\EventDispatcher\IEventListener</span><span class="p">;</span>
+<span class="k">use</span> <span class="nx">OCP\Log\BeforeMessageLoggedEvent</span><span class="p">;</span>
+
+<span class="sd">/** @template-implements IEventListener&lt;BeforeMessageLoggedEvent&gt; */</span>
+<span class="k">class</span> <span class="nc">LogEventListener</span> <span class="k">implements</span> <span class="nx">IEventListener</span> <span class="p">{</span>
+    <span class="k">public</span> <span class="k">function</span> <span class="nf">handle</span><span class="p">(</span><span class="nx">Event</span> <span class="nv">$event</span><span class="p">)</span><span class="o">:</span> <span class="nx">void</span> <span class="p">{</span>
+        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nv">$event</span> <span class="nx">instanceof</span> <span class="nx">BeforeMessageLoggedEvent</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span><span class="p">;</span>
+        <span class="p">}</span>
+
+        <span class="nv">$app</span> <span class="o">=</span> <span class="nv">$event</span><span class="o">-&gt;</span><span class="na">getApp</span><span class="p">();</span>
+        <span class="nv">$level</span> <span class="o">=</span> <span class="nv">$event</span><span class="o">-&gt;</span><span class="na">getLevel</span><span class="p">();</span>
+        <span class="nv">$message</span> <span class="o">=</span> <span class="nv">$event</span><span class="o">-&gt;</span><span class="na">getMessage</span><span class="p">();</span> <span class="c1">// array with the log entry</span>
+        <span class="c1">// ... forward to external service</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Register the listener in your <code class="docutils literal notranslate"><span class="pre">Application::register()</span></code> method:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$context</span><span class="o">-&gt;</span><span class="na">registerEventListener</span><span class="p">(</span>
+    <span class="nx">BeforeMessageLoggedEvent</span><span class="o">::</span><span class="na">class</span><span class="p">,</span>
+    <span class="nx">LogEventListener</span><span class="o">::</span><span class="na">class</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+</section>
 <section id="admin-audit-logging">
 <h2>Admin audit logging<a class="headerlink" href="#admin-audit-logging" title="Link to this heading"></a></h2>
 <p>If you want to log things less for system administration but for compliance reasons, e.g. who accessed which file,
@@ -169,6 +406,17 @@ is the correct place.</p>
     <span class="p">[</span><span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;My App ID&#39;</span><span class="p">]</span>
 <span class="p">);</span>
 <span class="nv">$dispatcher</span><span class="o">-&gt;</span><span class="na">dispatchTyped</span><span class="p">(</span><span class="nv">$event</span><span class="p">);</span>
+</pre></div>
+</div>
+<p>The constructor also accepts an optional third parameter
+<code class="docutils literal notranslate"><span class="pre">bool</span> <span class="pre">$obfuscateParameters</span> <span class="pre">=</span> <span class="pre">false</span></code>. Set it to <code class="docutils literal notranslate"><span class="pre">true</span></code> when the parameters
+may contain sensitive information (passwords, tokens, etc.) that should not be
+written in clear text to the audit log:</p>
+<div class="highlight-php notranslate"><div class="highlight"><pre><span></span><span class="nv">$event</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">\OCP\Log\Audit\CriticalActionPerformedEvent</span><span class="p">(</span>
+    <span class="s1">&#39;Password changed for user %s&#39;</span><span class="p">,</span>
+    <span class="p">[</span><span class="s1">&#39;name&#39;</span> <span class="o">=&gt;</span> <span class="nv">$userId</span><span class="p">],</span>
+    <span class="k">true</span>  <span class="c1">// obfuscate parameters in the audit log</span>
+<span class="p">);</span>
 </pre></div>
 </div>
 </section>
