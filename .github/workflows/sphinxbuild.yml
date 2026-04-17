@@ -383,18 +383,20 @@ jobs:
   # ============================================================================
   # DEPLOY
   # ============================================================================
-  # This job is responsible for:
-  # 1. Downloading the staged artifacts from stage-and-check
-  # 2. Applying them to the gh-pages branch
-  # 3. Creating a pull request for the deployment
+  # This job handles two cases based on the event type:
   #
-  # This job ONLY runs on pushes (not on pull requests), since we only want
-  # to deploy when code is merged to master or a stable branch.
+  #   push  → Apply staged artifacts to gh-pages and open a PR for the update.
+  #
+  #   pull_request → Check out gh-pages, overlay the new artifacts, and deploy
+  #                  the full server/ tree to Netlify as a preview (optional –
+  #                  Netlify failure does NOT block the PR).
+  #
+  # In both cases the job checks out gh-pages first, so the full existing
+  # documentation is available before the new artifacts are applied.
   # ============================================================================
   deploy:
     name: Deploy documentation for gh-pages
     needs: stage-and-check
-    if: github.event_name == 'push'
     runs-on: ubuntu-latest
 
     permissions:
@@ -480,7 +482,7 @@ jobs:
       - name: Create Pull Request for documentation deployment
         uses: peter-evans/create-pull-request@c0f553fe549906ede9cf27b5156039d195d2ece0 # v8.1.0
         id: cpr
-        if: steps.apply.outputs.has_changes == 'true'
+        if: steps.apply.outputs.has_changes == 'true' && github.event_name == 'push'
         with:
           token: ${{ secrets.COMMAND_BOT_PAT }}
           commit-message: "chore: update documentation for `${{ needs.stage-and-check.outputs.branch_name }}`"
@@ -503,79 +505,26 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.COMMAND_BOT_PAT }}
 
-  # ============================================================================
-  # NETLIFY PREVIEW
-  # ============================================================================
-  # This job deploys a per-PR documentation preview to Netlify.
-  # It only runs on pull_request events (never on push/merge).
-  #
-  # Only the artifacts built for the current branch are deployed, with a simple
-  # index.html listing the available manuals.
-  #
-  # The stable preview URL for PR #N is:
-  #   https://pr-<N>--<site>.netlify.app/
-  #
-  # Required repository secrets:
-  #   NETLIFY_AUTH_TOKEN  – Netlify personal access token
-  #   NETLIFY_SITE_ID     – ID of the target Netlify site
-  # ============================================================================
-  netlify-preview:
-    name: Deploy preview to Netlify
-    needs: stage-and-check
-    if: github.event_name == 'pull_request'
-    runs-on: ubuntu-latest
-
-    permissions:
-      contents: read
-      pull-requests: write
-
-    steps:
-      - name: Restore staged artifacts from cache
-        uses: actions/cache/restore@668228422ae6a00e4ad889ee87cd7109ec5666a7 # v5.0.4
-        with:
-          path: stage/
-          key: staged-docs-${{ github.sha }}
-          fail-on-cache-miss: true
-
-      - name: Generate index.html for preview
-        run: |
-          branch="${{ needs.stage-and-check.outputs.branch_name }}"
-          preview_dir="stage/${branch}"
-
-          cat > "${preview_dir}/index.html" <<'EOF'
-          <!DOCTYPE html>
-          <html lang="en">
-          <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Nextcloud Documentation Preview</title>
-          </head>
-          <body>
-            <h1>Nextcloud Documentation Preview</h1>
-            <ul>
-          EOF
-
-          for manual_dir in "${preview_dir}"/*/; do
-            [ -d "$manual_dir" ] || continue
-            manual="$(basename "$manual_dir")"
-            echo "    <li><a href=\"${manual}/\">${manual}</a></li>" >> "${preview_dir}/index.html"
-          done
-
-          cat >> "${preview_dir}/index.html" <<'EOF'
-            </ul>
-          </body>
-          </html>
-          EOF
-
+      # ========================================================================
+      # NETLIFY PREVIEW (pull_request events only)
+      # ========================================================================
+      # At this point the working directory is the gh-pages checkout with the
+      # newly staged artifacts already applied, so server/ is a complete,
+      # up-to-date snapshot of the full documentation site.
+      # Netlify failure is non-fatal – the step uses continue-on-error so it
+      # does not block the PR.
+      # ========================================================================
       - name: Install Netlify CLI
+        if: github.event_name == 'pull_request'
         run: npm install -g netlify-cli
 
       - name: Deploy to Netlify
         id: netlify
+        if: github.event_name == 'pull_request'
+        continue-on-error: true
         run: |
-          branch="${{ needs.stage-and-check.outputs.branch_name }}"
           output=$(netlify deploy \
-            --dir="stage/${branch}" \
+            --dir=server \
             --site="${{ secrets.NETLIFY_SITE_ID }}" \
             --auth="${{ secrets.NETLIFY_AUTH_TOKEN }}" \
             --alias="pr-${{ github.event.number }}" \
@@ -590,6 +539,7 @@ jobs:
           echo "deploy_url=${deploy_url}" >> $GITHUB_OUTPUT
 
       - name: Comment preview URL on PR
+        if: github.event_name == 'pull_request' && steps.netlify.outputs.deploy_url != ''
         uses: actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea # v7.0.1
         with:
           script: |
@@ -620,8 +570,11 @@ jobs:
               });
             }
 
+  # ============================================================================
+  # SUMMARY
+  # ============================================================================
   summary:
-    needs: [build, stage-and-check, deploy, netlify-preview]
+    needs: [build, stage-and-check, deploy]
     runs-on: ubuntu-latest-low
     if: always()
 
@@ -635,12 +588,10 @@ jobs:
         run: |
           if ${{ github.event_name == 'pull_request' }}
           then
-            echo "This workflow ran for a pull request. We need build and stage-and-check to succeed, but deploy will be skipped"
-            if ${{ needs.build.result != 'success' || needs.stage-and-check.result != 'success' || needs.deploy.result != 'skipped' }}; then exit 1; fi
-            if ${{ needs.netlify-preview.result != 'success' && needs.netlify-preview.result != 'skipped' }}; then exit 1; fi
+            echo "This workflow ran for a pull request. We need build, stage-and-check and deploy to succeed"
+            if ${{ needs.build.result != 'success' || needs.stage-and-check.result != 'success' || needs.deploy.result != 'success' }}; then exit 1; fi
           else
             echo "This workflow ran for a push. We need all jobs to succeed, including deploy"
             if ${{ needs.build.result != 'success' || needs.stage-and-check.result != 'success' || needs.deploy.result != 'success' }}; then exit 1; fi
-            if ${{ needs.netlify-preview.result != 'skipped' }}; then exit 1; fi
           fi
 
