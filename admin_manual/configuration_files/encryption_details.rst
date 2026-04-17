@@ -2,7 +2,7 @@
 Server-side encryption details
 ==============================
 
-This document - provided by `SysEleven <https://syseleven.de>`_ - describes the server-side encryption scheme implemented by Nextcloud's default encryption module. This includes:
+This document describes the server-side encryption scheme implemented by Nextcloud's default encryption module. This includes:
 
 - the encryption and signature of files with a master key.
 - the encryption and signature of files with a public sharing key.
@@ -356,5 +356,3 @@ Sources
 - `Sourcecode: Generation of the File Key <https://github.com/nextcloud/server/blob/a374d8837d6de459500e619cf608e0721ea14574/apps/encryption/lib/Crypto/Crypt.php#L645>`_
 - `Sourcecode: Generation of the Initialization Vector <https://github.com/nextcloud/server/blob/a374d8837d6de459500e619cf608e0721ea14574/apps/encryption/lib/Crypto/Crypt.php#L634>`_
 - `Sourcecode: Generation of a Key Pair <https://github.com/nextcloud/server/blob/a374d8837d6de459500e619cf608e0721ea14574/apps/encryption/lib/Crypto/Crypt.php#L153>`_
-
-.. TODO ON RELEASE: Update version number above on release

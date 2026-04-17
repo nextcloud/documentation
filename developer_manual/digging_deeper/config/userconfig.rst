@@ -15,6 +15,12 @@ On top of storing and accessing your configuration values, ``IUserConfig`` comes
 
 .. _userconfig_concepts:
 
+.. note::
+	See `Lexicon Concepts`_ to learn more about **Lexicon**, a way to fully define your configuration keys and avoid conflict when using it in your code.
+
+.. _Lexicon Concepts: https://docs.nextcloud.com/server/latest/developer_manual/digging_deeper/config/lexicon.html#concept-overview
+
+
 Typed Config Values
 ^^^^^^^^^^^^^^^^^^^
 
@@ -100,7 +106,7 @@ Retrieving the configuration value will require to specify the fact that it is s
 Consuming the UserConfig API
 ----------------------------
 
-To consume the API, you first need to :ref:`inject<dependency-injection>` ``\OCP\IUserConfig``
+To consume the API, you first need to :ref:`inject<dependency-injection>` ``\OCP\Config\IUserConfig``
 
 
 Storing a config value

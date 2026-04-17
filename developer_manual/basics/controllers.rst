@@ -393,6 +393,10 @@ A :doc:`template <front-end/templates>` can be rendered by returning a TemplateR
 
     }
 
+Showing a template is the only exception to the rule to :ref:`not disable CSRF checks <csrf_introduction>`:
+The user might type the URL directly (or use a browser bookmark or similar) to navigate to a HTML template.
+Therefore, usage of the ``#[NoCSRFRequired]`` attribute (see :ref:`below<controller_authentication>`) is acceptable in this context.
+
 Public page templates
 ^^^^^^^^^^^^^^^^^^^^^
 
@@ -434,6 +438,11 @@ A ``OCP\\AppFramework\\Http\\Template\\SimpleMenuAction`` will be a link with an
 developers can implement their own types of menu renderings by adding a custom
 class implementing the ``OCP\\AppFramework\\Http\\Template\\IMenuAction`` interface.
 
+As the public template is also some HTML template, the same argumentation as for :ref:`regular templates<controller_template>` regarding the CSRF checks hold true:
+The usage of ``#[NoCSRFRequired]`` for public pages is considered acceptable for some pages:
+Each page that the user should be able to directly access (by typing/pastig the URL in the browser or clicking on a link in a mail) should have this attribute set.
+For multi-page forms in the second and later stages, this should **not** be set as the user should follow the series of pages.
+
 Data-based responses
 --------------------
 
@@ -448,10 +457,14 @@ The user only indirectly requested the data by user interaction with the fronten
 OCS
 ^^^
 
-.. note::
-    This is purely for compatibility reasons. If you are planning to offer an external API, go for a :ref:`REST APIs <rest-apis>` instead.
-
 In order to simplify exchange of data between the Nextcloud backend and any client (be it the web frontend or whatever else), the OCS API has been introduced.
+Here, JSON and XML responders have been prepared and are installed without additional effort.
+
+.. note::
+    The usage of OCS is closely related to the usage of :doc:`../digging_deeper/rest_apis`.
+    Unless you have a clear use-case, it is advised to use OCS over pure REST.
+    A more detailed description can be found in :ref:`ocs-vs-rest`.
+
 To use OCS in your API you can use the **OCP\\AppFramework\\OCSController** base class and return your data in the form of a **DataResponse** in the following way:
 
 .. code-block:: php
@@ -509,6 +522,10 @@ Now your method will be reachable via ``<server>/ocs/v2.php/apps/<APPNAME>/api/v
 JSON
 ^^^^
 
+.. warning::
+    The usage of standard controller to access content data like JSON (no HTML) is considered legacy.
+    Better use :ref:`OCS <ocscontroller>` for this type of requests.
+
 Returning JSON is simple, just pass an array to a JSONResponse:
 
 .. code-block:: php
@@ -546,6 +563,11 @@ Because returning JSON is such a common task, there's even a shorter way to do t
     }
 
 Why does this work? Because the dispatcher sees that the controller did not return a subclass of a Response and asks the controller to turn the value into a Response. That's where responders come in.
+
+.. deprecated:: 30
+
+    Usage of "index.php"-controllers for data transmission should be avoided. Use OCS instead.
+
 
 Handling errors
 ^^^^^^^^^^^^^^^

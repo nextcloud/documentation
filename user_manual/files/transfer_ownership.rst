@@ -15,8 +15,6 @@ ownerships of those transferred files/folders will also be transferred.
 	.. note:: The username autocompletion or listing may be limited due to administrative visibility configuration.
 	   See `administrator documentation <https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/file_sharing_configuration.html>`_ for details.
 
-.. TODO ON RELEASE: Update version number above on release
-
 #. The target user receives a notification where they are being asked whether to
    accept or reject the incoming transfer.
 

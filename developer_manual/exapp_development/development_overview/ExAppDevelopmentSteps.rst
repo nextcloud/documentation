@@ -49,7 +49,7 @@ More details are available in the :ref:`ExAppOverview` section.
 3. Development
 --------------
 
-The basic development process contains from the following steps:
+The basic development process consists of the following steps:
 
 - Implement the ExApp <-> Nextcloud :ref:`lifecycle methods <ex_app_lifecycle_methods>`:
 	#. ``/heartbeat``: ExApp heartbeat method

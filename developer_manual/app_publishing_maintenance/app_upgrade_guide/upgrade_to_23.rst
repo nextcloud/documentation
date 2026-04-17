@@ -30,3 +30,11 @@ Updated core libraries
 *****************
 
 The Doctrine Database Abstraction Layer (dbal) powers Nextcloud's database connection and query builder. In Nextcloud 23 this dependency was updated from 3.0 to 3.1. As a consequence the ``\OC\DB\QueryBuilder\QueryBuilder::getFirstResult`` method now returns ``0`` instead of ``null`` if ``\OC\DB\QueryBuilder\QueryBuilder::setFirstResult`` wasn't called.
+
+Front-end changes
+-----------------
+
+Deprecated APIs
+^^^^^^^^^^^^^^^
+
+* The `OCA.Sharing.ExternalLinkActions` API was deprecated in favor of `OCA.Sharing.ExternalShareAction`.
