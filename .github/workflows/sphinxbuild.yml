@@ -380,6 +380,64 @@ jobs:
           path: stage/
           key: staged-docs-${{ github.sha }}
 
+      # ========================================================================
+      # ASSEMBLE FULL NETLIFY PREVIEW CONTENT
+      # ========================================================================
+      # Combine the existing gh-pages content (all versions) with the newly
+      # built artifacts so the Netlify preview shows the complete site.
+      #
+      # Structure of the merged output (netlify-full/):
+      #   netlify-full/
+      #   ├── index.html          ← generated version listing
+      #   ├── latest/             ← from gh-pages or newly built
+      #   ├── stable/             ← from gh-pages or newly built
+      #   └── <N>/                ← older versions from gh-pages
+      # ========================================================================
+      - name: Assemble full documentation for Netlify preview
+        run: |
+          branch="${{ steps.branch.outputs.branch_name }}"
+          additional="${{ steps.branch.outputs.additional_deployment }}"
+
+          mkdir -p netlify-full
+
+          # Start with the full existing gh-pages content as the base
+          if [ -d "validation-context/server" ]; then
+            cp -r validation-context/server/. netlify-full/
+          fi
+
+          # Override the current branch's folder with the freshly built content
+          rm -rf "netlify-full/${branch}"
+          cp -r "stage/${branch}" "netlify-full/${branch}"
+
+          # For the highest stable branch, also override its versioned folder
+          if [ -n "${additional}" ]; then
+            rm -rf "netlify-full/${additional}"
+            cp -r "stage/${branch}" "netlify-full/${additional}"
+          fi
+
+          # Generate a root index.html listing all version folders
+          echo '<!DOCTYPE html>' > netlify-full/index.html
+          echo '<html lang="en"><head>' >> netlify-full/index.html
+          echo '<meta charset="UTF-8">' >> netlify-full/index.html
+          echo '<meta name="viewport" content="width=device-width, initial-scale=1.0">' >> netlify-full/index.html
+          echo '<title>Nextcloud Documentation Preview</title>' >> netlify-full/index.html
+          echo '</head><body>' >> netlify-full/index.html
+          echo '<h1>Nextcloud Documentation Preview</h1><ul>' >> netlify-full/index.html
+          for version_dir in netlify-full/*/; do
+            version="$(basename "$version_dir")"
+            echo "<li><a href=\"${version}/\">${version}</a></li>" >> netlify-full/index.html
+          done
+          echo '</ul></body></html>' >> netlify-full/index.html
+
+          echo "Full Netlify deploy structure:"
+          find netlify-full -maxdepth 2 -type d
+
+      - name: Cache full documentation for Netlify preview
+        uses: actions/cache/save@668228422ae6a00e4ad889ee87cd7109ec5666a7 # v5.0.4
+        with:
+          path: netlify-full/
+          key: netlify-full-docs-${{ github.sha }}
+
   # ============================================================================
   # DEPLOY
   # ============================================================================
@@ -527,50 +585,17 @@ jobs:
       pull-requests: write
 
     steps:
-      - name: Restore staged artifacts from cache
+      - name: Restore full documentation from cache
         uses: actions/cache/restore@668228422ae6a00e4ad889ee87cd7109ec5666a7 # v5.0.4
         with:
-          path: stage/
-          key: staged-docs-${{ github.sha }}
+          path: netlify-full/
+          key: netlify-full-docs-${{ github.sha }}
           fail-on-cache-miss: true
-
-      - name: Assemble Netlify deploy directory
-        run: |
-          branch="${{ needs.stage-and-check.outputs.branch_name }}"
-          mkdir -p netlify-deploy
-
-          # Flatten stage/<branch>/<manual>/ into netlify-deploy/<manual>/
-          for manual_dir in "stage/${branch}/"/*/; do
-            if [ -d "$manual_dir" ]; then
-              manual_name="$(basename "$manual_dir")"
-              cp -r "$manual_dir" "netlify-deploy/${manual_name}"
-            fi
-          done
-
-          # Create a root index linking to each manual
-          cat > netlify-deploy/index.html << 'ENDHTML'
-          <!DOCTYPE html>
-          <html lang="en">
-          <head>
-            <meta charset="UTF-8">
-            <meta name="viewport" content="width=device-width, initial-scale=1.0">
-            <title>Nextcloud Documentation Preview</title>
-          </head>
-          <body>
-            <h1>Nextcloud Documentation Preview</h1>
-            <ul>
-              <li><a href="user_manual/">User Manual</a></li>
-              <li><a href="admin_manual/">Administration Manual</a></li>
-              <li><a href="developer_manual/">Developer Manual</a></li>
-            </ul>
-          </body>
-          </html>
-          ENDHTML
 
       - name: Deploy to Netlify
         uses: nwtgck/actions-netlify@4cbaf4c08f1a7bfa537d6113472ef4424e4eb654 # v3.0
         with:
-          publish-dir: './netlify-deploy'
+          publish-dir: './netlify-full'
           production-deploy: false
           github-token: ${{ secrets.GITHUB_TOKEN }}
           deploy-message: "Preview for PR #${{ github.event.number }}"
