@@ -380,64 +380,6 @@ jobs:
           path: stage/
           key: staged-docs-${{ github.sha }}
 
-      # ========================================================================
-      # ASSEMBLE FULL NETLIFY PREVIEW CONTENT
-      # ========================================================================
-      # Combine the existing gh-pages content (all versions) with the newly
-      # built artifacts so the Netlify preview shows the complete site.
-      #
-      # Structure of the merged output (netlify-full/):
-      #   netlify-full/
-      #   ├── index.html          ← generated version listing
-      #   ├── latest/             ← from gh-pages or newly built
-      #   ├── stable/             ← from gh-pages or newly built
-      #   └── <N>/                ← older versions from gh-pages
-      # ========================================================================
-      - name: Assemble full documentation for Netlify preview
-        run: |
-          branch="${{ steps.branch.outputs.branch_name }}"
-          additional="${{ steps.branch.outputs.additional_deployment }}"
-
-          mkdir -p netlify-full
-
-          # Start with the full existing gh-pages content as the base
-          if [ -d "validation-context/server" ]; then
-            cp -r validation-context/server/. netlify-full/
-          fi
-
-          # Override the current branch's folder with the freshly built content
-          rm -rf "netlify-full/${branch}"
-          cp -r "stage/${branch}" "netlify-full/${branch}"
-
-          # For the highest stable branch, also override its versioned folder
-          if [ -n "${additional}" ]; then
-            rm -rf "netlify-full/${additional}"
-            cp -r "stage/${branch}" "netlify-full/${additional}"
-          fi
-
-          # Generate a root index.html listing all version folders
-          echo '<!DOCTYPE html>' > netlify-full/index.html
-          echo '<html lang="en"><head>' >> netlify-full/index.html
-          echo '<meta charset="UTF-8">' >> netlify-full/index.html
-          echo '<meta name="viewport" content="width=device-width, initial-scale=1.0">' >> netlify-full/index.html
-          echo '<title>Nextcloud Documentation Preview</title>' >> netlify-full/index.html
-          echo '</head><body>' >> netlify-full/index.html
-          echo '<h1>Nextcloud Documentation Preview</h1><ul>' >> netlify-full/index.html
-          for version_dir in netlify-full/*/; do
-            version="$(basename "$version_dir")"
-            echo "<li><a href=\"${version}/\">${version}</a></li>" >> netlify-full/index.html
-          done
-          echo '</ul></body></html>' >> netlify-full/index.html
-
-          echo "Full Netlify deploy structure:"
-          find netlify-full -maxdepth 2 -type d
-
-      - name: Cache full documentation for Netlify preview
-        uses: actions/cache/save@668228422ae6a00e4ad889ee87cd7109ec5666a7 # v5.0.4
-        with:
-          path: netlify-full/
-          key: netlify-full-docs-${{ github.sha }}
-
   # ============================================================================
   # DEPLOY
   # ============================================================================
@@ -567,6 +509,9 @@ jobs:
   # This job deploys a per-PR documentation preview to Netlify.
   # It only runs on pull_request events (never on push/merge).
   #
+  # Only the artifacts built for the current branch are deployed, with a simple
+  # index.html listing the available manuals.
+  #
   # The stable preview URL for PR #N is:
   #   https://pr-<N>--<site>.netlify.app/
   #
@@ -585,26 +530,95 @@ jobs:
       pull-requests: write
 
     steps:
-      - name: Restore full documentation from cache
+      - name: Restore staged artifacts from cache
         uses: actions/cache/restore@668228422ae6a00e4ad889ee87cd7109ec5666a7 # v5.0.4
         with:
-          path: netlify-full/
-          key: netlify-full-docs-${{ github.sha }}
+          path: stage/
+          key: staged-docs-${{ github.sha }}
           fail-on-cache-miss: true
 
+      - name: Generate index.html for preview
+        run: |
+          branch="${{ needs.stage-and-check.outputs.branch_name }}"
+          preview_dir="stage/${branch}"
+
+          cat > "${preview_dir}/index.html" <<'EOF'
+          <!DOCTYPE html>
+          <html lang="en">
+          <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Nextcloud Documentation Preview</title>
+          </head>
+          <body>
+            <h1>Nextcloud Documentation Preview</h1>
+            <ul>
+          EOF
+
+          for manual_dir in "${preview_dir}"/*/; do
+            [ -d "$manual_dir" ] || continue
+            manual="$(basename "$manual_dir")"
+            echo "    <li><a href=\"${manual}/\">${manual}</a></li>" >> "${preview_dir}/index.html"
+          done
+
+          cat >> "${preview_dir}/index.html" <<'EOF'
+            </ul>
+          </body>
+          </html>
+          EOF
+
+      - name: Install Netlify CLI
+        run: npm install -g netlify-cli
+
       - name: Deploy to Netlify
-        uses: nwtgck/actions-netlify@4cbaf4c08f1a7bfa537d6113472ef4424e4eb654 # v3.0
+        id: netlify
+        run: |
+          branch="${{ needs.stage-and-check.outputs.branch_name }}"
+          output=$(netlify deploy \
+            --dir="stage/${branch}" \
+            --site="${{ secrets.NETLIFY_SITE_ID }}" \
+            --auth="${{ secrets.NETLIFY_AUTH_TOKEN }}" \
+            --alias="pr-${{ github.event.number }}" \
+            --message="Preview for PR #${{ github.event.number }}" \
+            --json)
+          deploy_url=$(echo "$output" | jq -r '.deploy_url // .url')
+          if [ -z "$deploy_url" ] || [ "$deploy_url" = "null" ]; then
+            echo "Failed to get deploy URL from Netlify output:" >&2
+            echo "$output" >&2
+            exit 1
+          fi
+          echo "deploy_url=${deploy_url}" >> $GITHUB_OUTPUT
+
+      - name: Comment preview URL on PR
+        uses: actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea # v7.0.1
         with:
-          publish-dir: './netlify-full'
-          production-deploy: false
-          github-token: ${{ secrets.GITHUB_TOKEN }}
-          deploy-message: "Preview for PR #${{ github.event.number }}"
-          alias: pr-${{ github.event.number }}
-          enable-pull-request-comment: true
-          enable-commit-comment: false
-        env:
-          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
-          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+          script: |
+            const deployUrl = '${{ steps.netlify.outputs.deploy_url }}';
+            const marker = '<!-- netlify-preview -->';
+            const body = `${marker}\n:rocket: **Netlify preview deployed:** ${deployUrl}`;
+
+            const { data: comments } = await github.rest.issues.listComments({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+            });
+
+            const existing = comments.find(c => c.body.includes(marker));
+            if (existing) {
+              await github.rest.issues.updateComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                comment_id: existing.id,
+                body,
+              });
+            } else {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                body,
+              });
+            }
 
   summary:
     needs: [build, stage-and-check, deploy, netlify-preview]
