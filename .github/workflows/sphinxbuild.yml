@@ -380,79 +380,25 @@ jobs:
           path: stage/
           key: staged-docs-${{ github.sha }}
 
-      # ========================================================================
-      # ASSEMBLE FULL NETLIFY PREVIEW CONTENT
-      # ========================================================================
-      # Combine the existing gh-pages content (all versions) with the newly
-      # built artifacts so the Netlify preview shows the complete site.
-      #
-      # Structure of the merged output (netlify-full/):
-      #   netlify-full/
-      #   ├── index.html          ← generated version listing
-      #   ├── latest/             ← from gh-pages or newly built
-      #   ├── stable/             ← from gh-pages or newly built
-      #   └── <N>/                ← older versions from gh-pages
-      # ========================================================================
-      - name: Assemble full documentation for Netlify preview
-        run: |
-          branch="${{ steps.branch.outputs.branch_name }}"
-          additional="${{ steps.branch.outputs.additional_deployment }}"
-
-          mkdir -p netlify-full
-
-          # Start with the full existing gh-pages content as the base
-          if [ -d "validation-context/server" ]; then
-            cp -r validation-context/server/. netlify-full/
-          fi
-
-          # Override the current branch's folder with the freshly built content
-          rm -rf "netlify-full/${branch}"
-          cp -r "stage/${branch}" "netlify-full/${branch}"
-
-          # For the highest stable branch, also override its versioned folder
-          if [ -n "${additional}" ]; then
-            rm -rf "netlify-full/${additional}"
-            cp -r "stage/${branch}" "netlify-full/${additional}"
-          fi
-
-          # Generate a root index.html listing all version folders
-          echo '<!DOCTYPE html>' > netlify-full/index.html
-          echo '<html lang="en"><head>' >> netlify-full/index.html
-          echo '<meta charset="UTF-8">' >> netlify-full/index.html
-          echo '<meta name="viewport" content="width=device-width, initial-scale=1.0">' >> netlify-full/index.html
-          echo '<title>Nextcloud Documentation Preview</title>' >> netlify-full/index.html
-          echo '</head><body>' >> netlify-full/index.html
-          echo '<h1>Nextcloud Documentation Preview</h1><ul>' >> netlify-full/index.html
-          for version_dir in netlify-full/*/; do
-            version="$(basename "$version_dir")"
-            echo "<li><a href=\"${version}/\">${version}</a></li>" >> netlify-full/index.html
-          done
-          echo '</ul></body></html>' >> netlify-full/index.html
-
-          echo "Full Netlify deploy structure:"
-          find netlify-full -maxdepth 2 -type d
-
-      - name: Cache full documentation for Netlify preview
-        uses: actions/cache/save@668228422ae6a00e4ad889ee87cd7109ec5666a7 # v5.0.4
-        with:
-          path: netlify-full/
-          key: netlify-full-docs-${{ github.sha }}
-
   # ============================================================================
   # DEPLOY
   # ============================================================================
-  # This job is responsible for:
-  # 1. Downloading the staged artifacts from stage-and-check
-  # 2. Applying them to the gh-pages branch
-  # 3. Creating a pull request for the deployment
+  # This job handles two scenarios:
   #
-  # This job ONLY runs on pushes (not on pull requests), since we only want
-  # to deploy when code is merged to master or a stable branch.
+  # Push to master/stable:
+  #   Applies the staged artifacts to the gh-pages branch and creates a PR.
+  #
+  # Pull request:
+  #   Applies the staged artifacts on top of gh-pages content and deploys the
+  #   result to a Netlify preview (no gh-pages PR is created).
+  #
+  # Required repository secrets for Netlify previews:
+  #   NETLIFY_AUTH_TOKEN  – Netlify personal access token
+  #   NETLIFY_SITE_ID     – ID of the target Netlify site
   # ============================================================================
   deploy:
-    name: Deploy documentation for gh-pages
+    name: Deploy documentation
     needs: stage-and-check
-    if: github.event_name == 'push'
     runs-on: ubuntu-latest
 
     permissions:
@@ -533,12 +479,13 @@ jobs:
 
         # Remove the stage/ directory BEFORE creating the PR so it doesn't get committed
       - name: Clean up staging cache before commit
+        if: github.event_name == 'push'
         run: rm -rf stage/
 
       - name: Create Pull Request for documentation deployment
         uses: peter-evans/create-pull-request@c0f553fe549906ede9cf27b5156039d195d2ece0 # v8.1.0
         id: cpr
-        if: steps.apply.outputs.has_changes == 'true'
+        if: github.event_name == 'push' && steps.apply.outputs.has_changes == 'true'
         with:
           token: ${{ secrets.COMMAND_BOT_PAT }}
           commit-message: "chore: update documentation for `${{ needs.stage-and-check.outputs.branch_name }}`"
@@ -557,45 +504,15 @@ jobs:
 
       - name: Enable Pull Request Automerge
         run: gh pr merge --merge --auto "${{ steps.cpr.outputs.pull-request-number }}"
-        if: steps.cpr.outputs.pull-request-number != ''
+        if: github.event_name == 'push' && steps.cpr.outputs.pull-request-number != ''
         env:
           GH_TOKEN: ${{ secrets.COMMAND_BOT_PAT }}
 
-  # ============================================================================
-  # NETLIFY PREVIEW
-  # ============================================================================
-  # This job deploys a per-PR documentation preview to Netlify.
-  # It only runs on pull_request events (never on push/merge).
-  #
-  # The stable preview URL for PR #N is:
-  #   https://pr-<N>--<site>.netlify.app/
-  #
-  # Required repository secrets:
-  #   NETLIFY_AUTH_TOKEN  – Netlify personal access token
-  #   NETLIFY_SITE_ID     – ID of the target Netlify site
-  # ============================================================================
-  netlify-preview:
-    name: Deploy preview to Netlify
-    needs: stage-and-check
-    if: github.event_name == 'pull_request'
-    runs-on: ubuntu-latest
-
-    permissions:
-      contents: read
-      pull-requests: write
-
-    steps:
-      - name: Restore full documentation from cache
-        uses: actions/cache/restore@668228422ae6a00e4ad889ee87cd7109ec5666a7 # v5.0.4
-        with:
-          path: netlify-full/
-          key: netlify-full-docs-${{ github.sha }}
-          fail-on-cache-miss: true
-
       - name: Deploy to Netlify
         uses: nwtgck/actions-netlify@4cbaf4c08f1a7bfa537d6113472ef4424e4eb654 # v3.0
+        if: github.event_name == 'pull_request'
         with:
-          publish-dir: './netlify-full'
+          publish-dir: './server'
           production-deploy: false
           github-token: ${{ secrets.GITHUB_TOKEN }}
           deploy-message: "Preview for PR #${{ github.event.number }}"
@@ -607,7 +524,7 @@ jobs:
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
 
   summary:
-    needs: [build, stage-and-check, deploy, netlify-preview]
+    needs: [build, stage-and-check, deploy]
     runs-on: ubuntu-latest-low
     if: always()
 
@@ -621,12 +538,10 @@ jobs:
         run: |
           if ${{ github.event_name == 'pull_request' }}
           then
-            echo "This workflow ran for a pull request. We need build and stage-and-check to succeed, but deploy will be skipped"
-            if ${{ needs.build.result != 'success' || needs.stage-and-check.result != 'success' || needs.deploy.result != 'skipped' }}; then exit 1; fi
-            if ${{ needs.netlify-preview.result != 'success' && needs.netlify-preview.result != 'skipped' }}; then exit 1; fi
+            echo "This workflow ran for a pull request. We need build, stage-and-check, and deploy (Netlify preview) to succeed"
+            if ${{ needs.build.result != 'success' || needs.stage-and-check.result != 'success' || needs.deploy.result != 'success' }}; then exit 1; fi
           else
             echo "This workflow ran for a push. We need all jobs to succeed, including deploy"
             if ${{ needs.build.result != 'success' || needs.stage-and-check.result != 'success' || needs.deploy.result != 'success' }}; then exit 1; fi
-            if ${{ needs.netlify-preview.result != 'skipped' }}; then exit 1; fi
           fi
 
