@@ -92,6 +92,8 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#database">Database</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#redis">Redis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installing-nextcloud">Installing Nextcloud</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#selinux">SELinux</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="example_openbsd.html">Example installation on OpenBSD</a></li>
@@ -290,7 +292,9 @@ see the <a class="reference internal" href="../configuration_database/linux_data
 <span class="n">systemctl</span> <span class="n">start</span> <span class="n">redis</span><span class="o">.</span><span class="n">service</span>
 </pre></div>
 </div>
-<p><strong>Installing Nextcloud</strong></p>
+</section>
+<section id="installing-nextcloud">
+<h2>Installing Nextcloud<a class="headerlink" href="#installing-nextcloud" title="Link to this heading"></a></h2>
 <p>Nearly there, so keep at it, you are doing great!</p>
 <p>Now download the archive of the latest Nextcloud version:</p>
 <ul>
@@ -343,7 +347,9 @@ or nextcloud-x.y.z.tar.bz2.sha256.</p></li>
 <span class="n">firewall</span><span class="o">-</span><span class="n">cmd</span> <span class="o">--</span><span class="n">reload</span>
 </pre></div>
 </div>
-<p><strong>SELinux</strong></p>
+</section>
+<section id="selinux">
+<h2>SELinux<a class="headerlink" href="#selinux" title="Link to this heading"></a></h2>
 <p>Again, there is an extensive write-up done on SELinux which can be found at <a class="reference internal" href="selinux_configuration.html"><span class="doc">SELinux configuration</span></a>, so if you are using SELinux in Enforcing mode, please run the commands suggested on that page.
 The following commands only refers to this tutorial:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">semanage</span> <span class="n">fcontext</span> <span class="o">-</span><span class="n">a</span> <span class="o">-</span><span class="n">t</span> <span class="n">httpd_sys_rw_content_t</span> <span class="s1">&#39;/var/www/html/nextcloud/data(/.*)?&#39;</span>
