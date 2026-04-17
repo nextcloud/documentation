@@ -11,7 +11,7 @@
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=bc97f5cf" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=e7c79d26" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
 
@@ -31,7 +31,7 @@
     <script src="../../_static/js/versions.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Søk" href="../search.html" />
-    <link rel="next" title="Administrere slettede filer" href="deleted_file_management.html" />
+    <link rel="next" title="Skrivebords- og mobilsynkronisering" href="desktop_mobile_sync.html" />
     <link rel="prev" title="Få tilgang til filene dine ved hjelp av Nextcloud-nettgrensesnittet" href="access_webgui.html" /> 
 </head>
 
@@ -64,62 +64,30 @@
 <li class="toctree-l1"><a class="reference internal" href="../webinterface.html">Nextcloud-nettgrensesnittet</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../activity.html">Using the Activity app</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Filer og synkronisering</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="access_webgui.html">Få tilgang til filene dine ved hjelp av Nextcloud-nettgrensesnittet</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Tilgang til Nextcloud filer ved hjelp av WebDAV</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#official-nextcloud-desktop-and-mobile-clients">Offisielle Nextcloud PC og mobile klienter</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#third-party-webdav-clients">Tredjeparts WebDAV-klienter</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#accessing-files-using-linux">Tilgang til filer ved hjelp av Linux</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#nautilus-file-manager">Nautilus filbehandler</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#accessing-files-with-kde-and-dolphin-file-manager">Tilgang til filer ved hjelp av KDE og Dolphin-filbehandler</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="accessing.html">Accessing your files</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="access_webgui.html">Få tilgang til filene dine ved hjelp av Nextcloud-nettgrensesnittet</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Tilgang til Nextcloud filer ved hjelp av WebDAV</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#official-nextcloud-desktop-and-mobile-clients">Offisielle Nextcloud PC og mobile klienter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#third-party-webdav-clients">Tredjeparts WebDAV-klienter</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#accessing-files-using-linux">Tilgang til filer ved hjelp av Linux</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#creating-webdav-mounts-on-the-linux-command-line">Opprette WebDAV-monteringer på Linux-kommandolinjen</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#known-issues">Kjente problemstillinger</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#accessing-files-using-macos">Tilgang til filer ved hjelp av macOS</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#accessing-files-using-microsoft-windows">Tilgang til filer ved hjelp av Microsoft Windows</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#accessing-files-using-cyberduck">Tilgang til filer ved hjelp av Cyberduck</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#accessing-public-shares-over-webdav">Tilgang til offentlige delinger over WebDAV</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#known-problems">Kjente problemer</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#accessing-files-using-curl">Tilgang til filer ved hjelp av cURL</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#accessing-files-using-winscp">Tilgang til filer ved hjelp av WinSCP</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#creating-webdav-mounts-on-the-linux-command-line">Opprette WebDAV-monteringer på Linux-kommandolinjen</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#known-issues">Kjente problemstillinger</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#problem">Problem</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#solution">Løsning</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id1">Problem</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id2">Løsning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="desktop_mobile_sync.html">Skrivebords- og mobilsynkronisering</a></li>
+<li class="toctree-l3"><a class="reference internal" href="large_file_upload.html">Store filopplastinger</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#accessing-files-using-macos">Tilgang til filer ved hjelp av macOS</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#accessing-files-using-microsoft-windows">Tilgang til filer ved hjelp av Microsoft Windows</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#mapping-drives-with-the-command-line">Tilordne stasjoner med kommandolinjen</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#mapping-drives-with-windows-explorer">Tilordne stasjoner med Windows Utforsker</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#accessing-files-using-cyberduck">Tilgang til filer ved hjelp av Cyberduck</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#accessing-public-shares-over-webdav">Tilgang til offentlige delinger over WebDAV</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#known-problems">Kjente problemer</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#id4">Problem</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#solution-1">Løsning 1</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#solution-2">Løsning 2</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id5">Problem</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id6">Løsning</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id7">Problem</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#answer">Svar</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id8">Problem</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id9">Løsning</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id10">Problem</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id11">Løsning</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#accessing-files-using-curl">Tilgang til filer ved hjelp av cURL</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#accessing-files-using-winscp">Tilgang til filer ved hjelp av WinSCP</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="deleted_file_management.html">Administrere slettede filer</a></li>
-<li class="toctree-l2"><a class="reference internal" href="desktop_mobile_sync.html">Skrivebords- og mobilsynkronisering</a></li>
-<li class="toctree-l2"><a class="reference internal" href="encrypting_files.html">Using server-side encryption</a></li>
-<li class="toctree-l2"><a class="reference internal" href="using_e2ee.html">Using end-to-end encryption</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sharing.html">Fildeling</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sharing.html#federated-shares">Forente delinger</a></li>
-<li class="toctree-l2"><a class="reference internal" href="file_drop.html">Foreta anonyme opplastinger</a></li>
-<li class="toctree-l2"><a class="reference internal" href="large_file_upload.html">Store filopplastinger</a></li>
-<li class="toctree-l2"><a class="reference internal" href="quota.html">Lagringskvote</a></li>
-<li class="toctree-l2"><a class="reference internal" href="version_control.html">Versjonskontroll</a></li>
-<li class="toctree-l2"><a class="reference internal" href="projects.html">Prosjekter</a></li>
-<li class="toctree-l2"><a class="reference internal" href="transfer_ownership.html">Overføre eierskap</a></li>
-<li class="toctree-l2"><a class="reference internal" href="federated_cloud_sharing.html">Bruk av sammenknyttede deleressurser</a></li>
+<li class="toctree-l2"><a class="reference internal" href="managing.html">Managing your files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="collaboration.html">Sharing &amp; collaboration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="security.html">Security &amp; encryption</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
@@ -147,6 +115,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="index.html">Filer og synkronisering</a></li>
+          <li class="breadcrumb-item"><a href="accessing.html">Accessing your files</a></li>
       <li class="breadcrumb-item active">Tilgang til Nextcloud filer ved hjelp av WebDAV</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/files/access_webdav.rst" class="fa fa-github"> Edit on GitHub</a>
@@ -651,7 +620,7 @@ Complete the Import.</p></li>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="access_webgui.html" class="btn btn-neutral float-left" title="Få tilgang til filene dine ved hjelp av Nextcloud-nettgrensesnittet" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="deleted_file_management.html" class="btn btn-neutral float-right" title="Administrere slettede filer" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="desktop_mobile_sync.html" class="btn btn-neutral float-right" title="Skrivebords- og mobilsynkronisering" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

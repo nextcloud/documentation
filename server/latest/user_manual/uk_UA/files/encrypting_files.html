@@ -11,7 +11,7 @@
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
-      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=bc97f5cf" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=e7c79d26" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
       <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
 
@@ -32,7 +32,7 @@
     <link rel="index" title="Індекс" href="../genindex.html" />
     <link rel="search" title="Пошук" href="../search.html" />
     <link rel="next" title="Using end-to-end encryption" href="using_e2ee.html" />
-    <link rel="prev" title="Синхронізація настільних і мобільних пристроїв" href="desktop_mobile_sync.html" /> 
+    <link rel="prev" title="Security &amp; encryption" href="security.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -64,40 +64,20 @@
 <li class="toctree-l1"><a class="reference internal" href="../webinterface.html">Інтерфейс веб-версії Nextcloud</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../activity.html">Using the Activity app</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Файли та синхронізація</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="access_webgui.html">Доступ до файлів за допомогою веб-інтерфейсу Nextcloud</a></li>
-<li class="toctree-l2"><a class="reference internal" href="access_webdav.html">Доступ до файлів Nextcloud за допомогою WebDAV</a></li>
-<li class="toctree-l2"><a class="reference internal" href="deleted_file_management.html">Управління видаленими файлами</a></li>
-<li class="toctree-l2"><a class="reference internal" href="desktop_mobile_sync.html">Синхронізація настільних і мобільних пристроїв</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Using server-side encryption</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#encryption-faq">Поширені запитання про шифрування</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#how-can-encryption-be-disabled">Як вимкнути шифрування?</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#is-it-possible-to-disable-encryption-with-the-recovery-key">Чи можна вимкнути шифрування за допомогою ключа відновлення?</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#can-encryption-be-disabled-without-the-user-s-password">Чи можна вимкнути шифрування без пароля користувача?</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#is-it-planned-to-move-this-to-the-next-user-login-or-a-background-job">Чи планується перенести це на наступний вхід користувача або фонову роботу?</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#is-group-sharing-possible-with-the-recovery-key">Чи можливий спільний доступ до групи за допомогою ключа відновлення?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="accessing.html">Accessing your files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="managing.html">Managing your files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="collaboration.html">Sharing &amp; collaboration</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="security.html">Security &amp; encryption</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Using server-side encryption</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#encryption-faq">Поширені запитання про шифрування</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#using-encryption">Використання шифрування</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sharing-encrypted-files">Обмін зашифрованими файлами</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#files-not-encrypted">Файли не зашифровані</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#using-encryption">Використання шифрування</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#sharing-encrypted-files">Обмін зашифрованими файлами</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#recovery-key-password">Пароль для відновлення ключа</a></li>
+<li class="toctree-l3"><a class="reference internal" href="using_e2ee.html">Using end-to-end encryption</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#files-not-encrypted">Файли не зашифровані</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#change-private-key-password">Змінити пароль приватного ключа</a></li>
-</ul>
-</li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="using_e2ee.html">Using end-to-end encryption</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sharing.html">Обмін файлами</a></li>
-<li class="toctree-l2"><a class="reference internal" href="sharing.html#federated-shares">Федеративні акції</a></li>
-<li class="toctree-l2"><a class="reference internal" href="file_drop.html">Зробити анонімні завантаження</a></li>
-<li class="toctree-l2"><a class="reference internal" href="large_file_upload.html">Завантаження великих файлів</a></li>
-<li class="toctree-l2"><a class="reference internal" href="quota.html">Квота зберігання</a></li>
-<li class="toctree-l2"><a class="reference internal" href="version_control.html">Контроль версій</a></li>
-<li class="toctree-l2"><a class="reference internal" href="projects.html">Проекти</a></li>
-<li class="toctree-l2"><a class="reference internal" href="transfer_ownership.html">Передати право власності</a></li>
-<li class="toctree-l2"><a class="reference internal" href="federated_cloud_sharing.html">Використання акцій федерації</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Програмне забезпечення для групової роботи</a></li>
@@ -125,6 +105,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="index.html">Файли та синхронізація</a></li>
+          <li class="breadcrumb-item"><a href="security.html">Security &amp; encryption</a></li>
       <li class="breadcrumb-item active">Using server-side encryption</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/files/encrypting_files.rst" class="fa fa-github"> Edit on GitHub</a>
@@ -220,7 +201,7 @@ still change your password whenever you want.</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="desktop_mobile_sync.html" class="btn btn-neutral float-left" title="Синхронізація настільних і мобільних пристроїв" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="security.html" class="btn btn-neutral float-left" title="Security &amp; encryption" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="using_e2ee.html" class="btn btn-neutral float-right" title="Using end-to-end encryption" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
