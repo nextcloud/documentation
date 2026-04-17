@@ -85,7 +85,7 @@ Sometimes you may want to change the color or the entire name of a previous
 imported or created calendar. You may also want to export it to your local
 hard drive or delete it forever.
 
-.. note:: Please keep in mind that deleting a calendar is a irreversible action.
+.. note:: Please keep in mind that deleting a calendar is an irreversible action.
           After deletion, there is no way of restoring the calendar unless you
           have a local backup.
 
