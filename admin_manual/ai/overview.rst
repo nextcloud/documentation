@@ -187,7 +187,7 @@ Frontend apps
 
 * `Assistant <https://apps.nextcloud.com/apps/assistant>`_ for offering a graphical UI and a smart picker
 * `Deck <https://apps.nextcloud.com/apps/deck>`_ for inserting images with the smart picker
-* *Text* for inserting images with the assistant and smart picker
+* `Text` for inserting images with the assistant and smart picker
 * `Notes <https://apps.nextcloud.com/apps/notes>`_ for inserting images with the assistant and smart picker
 * `Collectives <https://apps.nextcloud.com/apps/collectives>`_ for inserting images with the assistant and smart picker
 * `Whiteboard <https://apps.nextcloud.com/apps/whiteboard>`_ for inserting images with the assistant and smart picker, generating diagrams and flowcharts with Mermaid
