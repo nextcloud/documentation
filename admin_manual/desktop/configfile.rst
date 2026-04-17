@@ -11,8 +11,13 @@ On Microsoft Windows systems:
         ``%APPDATA%\Nextcloud\nextcloud.cfg``
 
 On macOS systems:
-        ``$HOME/Library/Preferences/Nextcloud/nextcloud.cfg``
+        Starting with version 33.0.0: ``$HOME/Library/Containers/com.nextcloud.desktopclient/Data/Library/Preferences/Nextcloud/nextcloud.cfg``
+        
+        On older versions: ``$HOME/Library/Preferences/Nextcloud/nextcloud.cfg``
 
+.. note::
+    In a Citrix workspace, the user's Roaming profile need to be persisted between sessions. 
+    The failure on doing so will result in users having to set up their account again in every new session.
 
 The configuration file contains settings using the Microsoft Windows .ini file
 format. You can overwrite changes using the Nextcloud configuration dialog.

@@ -33,8 +33,6 @@ configuration report with the :ref:`occ config command
 .. _FAQ page: https://help.nextcloud.com/t/how-to-faq-wiki
 .. _bugtracker: https://docs.nextcloud.com/server/latest/developer_manual/prologue/bugtracker/index.html
 
-.. TODO ON RELEASE: Update version number above on release
-
 General troubleshooting
 -----------------------
 
@@ -215,9 +213,7 @@ these modules:
 * mod_security
 * mod_reqtimeout
 * mod_deflate
-* libapache2-mod-php*filter (use libapache2-mod-php8.3 instead)
-* mod_spdy together with libapache2-mod-php5 / mod_php (use fcgi or php-fpm
-  instead)
+* mod_spdy
 * mod_dav
 * mod_xsendfile / X-Sendfile (causing broken downloads if not configured
   correctly)
@@ -376,25 +372,6 @@ Troubleshooting contacts & calendar
 .. tip::
   Please also refer to the troubleshooting article in the groupware section: :ref:`troubleshooting_groupware`.
 
-Unable to update contacts or events
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-If you get an error like:
-
-``PATCH https://example.com/remote.php/dav HTTP/1.0 501 Not Implemented``
-
-it is likely caused by one of the following reasons:
-
-Using Pound reverse-proxy/load balancer
-  As of writing this Pound doesn't support the HTTP/1.1 verb.
-  Pound is easily `patched
-  <http://www.apsis.ch/pound/pound_list/archive/2013/2013-08/1377264673000>`_
-  to support HTTP/1.1.
-
-Misconfigured Web server
-  Your Web server is misconfigured and blocks the needed DAV methods.
-  Please refer to :ref:`trouble-webdav-label` above for troubleshooting steps.
-
 Troubleshooting data-directory
 ------------------------------
 
@@ -436,8 +413,6 @@ does not match the actual data stored in the user's ``data/$userId/files`` direc
    Metadata, versions, trashbin and encryption keys are not counted in the used space above.
    Please refer to the `quota documentation <https://docs.nextcloud.com/server/latest/user_manual/en/files/quota.html>`_ for details.
 
-.. TODO ON RELEASE: Update version number above on release
-
 Running the following command can help fix the sizes and quota for a given user::
 
  sudo -E -u www-data php occ files:scan -vvv <user-id>
@@ -450,59 +425,11 @@ You can run the following SQL query to reset those after **backing up the databa
 
  UPDATE oc_filecache SET unencrypted_size=0 WHERE encrypted=0; 
 
-Troubleshooting downloading or decrypting files
------------------------------------------------
+Troubleshooting encrypted files
+-------------------------------
 
-Bad signature error
-^^^^^^^^^^^^^^^^^^^
-
-In some rare cases it can happen that encrypted files cannot be downloaded
-and return a "500 Internal Server Error". If the Nextcloud log contains an error about
-"Bad Signature", then the following command can be used to repair affected files::
-
- occ encryption:fix-encrypted-version userId --path=/path/to/broken/file.txt
-
-Replace "userId" and the path accordingly.
-The command will do a test decryption for all files and automatically repair the ones with a signature error.
-
-.. _troubleshooting_encryption_key_not_found:
-
-Encryption key cannot be found
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-If the logs contain an error stating that the encryption key cannot be found, you can manually search the data directory for a folder that has the same name as the file name.
-For example if a file "example.md" cannot be decrypted, run::
-
-    find path/to/datadir -name example.md -type d
-
-Then check the results located in the ``files_encryption`` folder.
-If the key folder is in the wrong location, you can move it to the correct folder and try again.
-
-The ``data/files_encryption`` folder contains encryption keys for group folders and system-wide external storages
-while ``data/$userid/files_encryption`` contains the keys for specific user storage files.
-
-.. note::
-
-   This can happen if encryption was disabled at some point but the :ref:`occ command for decrypt-all<occ_disable_encryption_label>` was not run, and
-   then someone moved the files to another location. Since encryption was disabled, the keys did not get moved.
-
-Encryption key cannot be found with external storage or group folders
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-To resolve this issue, please run the following command::
-
-    sudo -E -u www-data php occ encryption:fix-key-location <user-id>
-
-This will attempt to recover keys that were not moved properly.
-
-If this doesn't resolve the problem, please refer to the section :ref:`Encryption key cannot be found<troubleshooting_encryption_key_not_found>` for a manual procedure.
-
-.. note::
-
-   There were two known issues where:
-
-   - moving files between an encrypted and non-encrypted storage like external storage or group folder `would not move the keys with the files <https://github.com/nextcloud/groupfolders/issues/1896>`_.
-   - putting files on system-wide external storage would store the keys in the `wrong location <https://github.com/nextcloud/server/pull/32690>`_.
+.. tip::
+  Please also refer to the troubleshooting section in the encryption chapter: :doc:`../configuration_files/encryption_configuration`.
 
 Fair Use Policy
 ---------------

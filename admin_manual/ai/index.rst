@@ -16,4 +16,7 @@ Artificial Intelligence
     app_context_agent
     app_summary_bot
     app_text2speech_kokoro
+    app_live_transcription
     ai_as_a_service
+    insight_and_debugging
+    eu_ai_act

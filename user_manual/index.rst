@@ -17,4 +17,4 @@ them with your Nextcloud server. Place files in your local shared directories,
 and those files are immediately synchronized to the server and to other devices
 using the Nextcloud Desktop Sync Client, Android app, or iOS app.
 
-`Help translate <https://www.transifex.com/nextcloud/nextcloud-user-documentation/>`_.
+`Help translate <https://explore.transifex.com/nextcloud/nextcloud-user-documentation/>`_.

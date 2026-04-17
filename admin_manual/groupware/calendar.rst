@@ -28,7 +28,7 @@ You can customize the events user interface.
 Hide export buttons
 ~~~~~~~~~~~~~~~~~~~
 
-By default users can export their calendar data from the editor and the sidebar. Admins can disable this feature::
+By default users can export their calendar data from the event editor. Admins can disable this feature::
 
  sudo -E -u www-data php occ config:app:set calendar hideEventExport --value=yes
 
@@ -39,6 +39,12 @@ Be sure to have configured the email server first so that the invitations go thr
 See :doc:`../configuration_server/email_configuration`.
 
 You must also make sure the "Send invitations to attendees" setting is activated in the admin setting groupware section for the emails to be sent.
+
+Administrators can disable the sending of invitations to external participants with the following command::
+
+ sudo -E -u www-data php occ config:app:set dav caldav_external_attendees_disabled --value yes
+
+This prevents invitations from being sent to attendees outside the instance and hides external contacts from the invitee search.
 
 Birthday calendar
 -----------------
@@ -134,6 +140,24 @@ If you need to allow this, change the following parameter to::
 
  sudo -E -u www-data php occ config:app:set dav webcalAllowLocalAccess --value yes
 
+Federated calendar shares
+-------------------------
+
+.. versionadded:: 32.0.0
+.. versionchanged:: 33.0.0 Federated calendar shares are now read/write.
+
+Nextcloud supports creating federated calendar shares.
+A user is able to share a calendar with a remote user on a federated instance.
+Starting with Nextcloud 33, remote users are able to create, edit, and delete events inside the
+shared calendar. In Nextcloud 32, shares were read-only.
+
+The feature can be optionally disabled through an app config.
+Run the following command to disable creating new federated calendar shares for all users::
+
+  sudo -E -u www-data php occ config:app:set dav enableCalendarFederation --type=bool --value=false
+
+Note that existing shares will be deleted when the feature is disabled as they will fail to sync.
+
 Trash bin
 ---------
 
@@ -179,3 +203,51 @@ or::
 
   # Allow users to create calendars/subscriptions without restriction
   sudo -E -u www-data php occ config:app:set dav maximumCalendarsSubscriptions --type=integer --value=-1
+
+Example event
+-------------
+
+.. versionadded:: 32.0.0
+
+When a user logs in for the first time an example event is created in their personal calendar.
+As an admin, you can disable the creation of the example event.
+It is also possible to replace the default event with a custom one.
+
+To disable the creation of the example event for new users:
+
+1. Navigate to the Groupware settings in the admin settings.
+2. Scroll down to the "Example content" section.
+3. Disable the "Add example event ..." setting with the checkbox
+
+To replace the built-in default event with a custom one:
+
+1. Navigate to the Groupware settings in the admin settings.
+2. Press the "Import calendar event" button.
+3. Choose an ICS file to be imported.
+
+.. note:: The start and end date will be overwritten with dates in the future when a custom event
+   is supplied to ensure that the user sees the event.
+
+It is also possible to revert to the default built-in event by pressing the "Reset to default"
+button next to the import button.
+
+.. _caldav-data-retention:
+
+Data retention
+--------------
+
+.. versionadded:: 26.0.0
+
+You can configure how long Nextcloud keeps some of the calendar sync tokens.
+
+Sync tokens
+~~~~~~~~~~~
+
+The CalDAV backend keeps track of any modifications of calendars. That is anything added, modified or removed. The data is used for differential synchronization of offline clients like Thunderbird. At a certain point in time, the data can be considered outdated assuming there will be no more client needing it. This can help keep the database table `calendarchanges` small::
+
+  sudo -E -u www-data php occ config:app:set totalNumberOfSyncTokensToKeep --value=30000
+
+The default is keeping 10,000 entries. This option should be set adequate to the number of users. E.g. on an installation with 5000 active synced calendars the system would only keep an average of 10 changes per calendar. This will lead to premature data deletion and synchronization problems.
+
+
+.. warning:: This setting will also influence :ref:`CardDAV data retention<carddav-data-retention>`.

@@ -19,10 +19,10 @@ synchronization is current and you are connected to your Nextcloud server.
 The blue icon with the white semi-circles means synchronization is in progress.
 
 .. figure:: images/icon-paused.png
-   :alt: Status icon, yellow circle and vertical parallel
+   :alt: Status icon, grey circle and vertical parallel
     lines
 
-The yellow icon with the parallel lines tells you your synchronization
+The grey icon with the parallel lines tells you your synchronization
 has been paused. (Most likely by you.)
 
 .. figure:: images/icon-offline.png
