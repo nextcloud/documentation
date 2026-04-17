@@ -42,7 +42,13 @@ jobs:
       - name: Download LaTeX packages (cache miss only)
         if: steps.cache-latex-apt.outputs.cache-hit != 'true'
         run: |
-          sudo DEBIAN_FRONTEND=noninteractive apt-get update -o Dir::State::lists="${{ runner.temp }}/.cache/lists"
+          for i in 1 2 3; do
+            sudo DEBIAN_FRONTEND=noninteractive apt-get update \
+              -o Dir::State::lists="${{ runner.temp }}/.cache/lists" \
+              -o Acquire::Retries=3 && break
+            echo "apt-get update failed (attempt $i), retrying in 15s..."
+            sleep 15
+          done
           sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
             --download-only \
             -o Dir::State::lists="${{ runner.temp }}/.cache/lists" \
