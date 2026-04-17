@@ -23,13 +23,16 @@ jobs:
       - name: Configure apt cache
         run: |
           mkdir -p ${{ runner.temp }}/.cache/archives
+          mkdir -p ${{ runner.temp }}/.cache/lists
           echo 'Dir::Cache::archives "${{ runner.temp }}/.cache/archives";' | sudo tee /etc/apt/apt.conf.d/apt-cache-tmp
 
       - name: Cache LaTeX apt packages
         id: cache-latex-apt
         uses: actions/cache@668228422ae6a00e4ad889ee87cd7109ec5666a7 # v5.0.4
         with:
-          path: ${{ runner.temp }}/.cache/archives
+          path: |
+            ${{ runner.temp }}/.cache/archives
+            ${{ runner.temp }}/.cache/lists
           key: latex-apt-${{ runner.os }}-${{ runner.arch }}-ubuntu-24.04-texlive-2023-v2
           restore-keys: |
             latex-apt-${{ runner.os }}-${{ runner.arch }}-ubuntu-24.04-
@@ -39,20 +42,23 @@ jobs:
       - name: Download LaTeX packages (cache miss only)
         if: steps.cache-latex-apt.outputs.cache-hit != 'true'
         run: |
-          sudo DEBIAN_FRONTEND=noninteractive apt-get update
+          sudo DEBIAN_FRONTEND=noninteractive apt-get update -o Dir::State::lists="${{ runner.temp }}/.cache/lists"
           sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
             --download-only \
+            -o Dir::State::lists="${{ runner.temp }}/.cache/lists" \
             python3-pil python3-pip texlive-fonts-recommended latexmk \
             texlive-latex-extra texlive-latex-recommended texlive-xetex \
             texlive-fonts-extra-links texlive-fonts-extra xindy tex-gyre
           # Ensure downloaded packages are owned by the current user so they can be cached
-          sudo chown -R $(id -u):$(id -g) ${{ runner.temp }}/.cache/archives
+          sudo chown -R $(id -u):$(id -g) ${{ runner.temp }}/.cache/
 
       - name: Save LaTeX apt cache (cache miss only)
         if: steps.cache-latex-apt.outputs.cache-hit != 'true'
         uses: actions/cache/save@668228422ae6a00e4ad889ee87cd7109ec5666a7 # v5.0.4
         with:
-          path: ${{ runner.temp }}/.cache/archives
+          path: |
+            ${{ runner.temp }}/.cache/archives
+            ${{ runner.temp }}/.cache/lists
           key: latex-apt-${{ runner.os }}-${{ runner.arch }}-ubuntu-24.04-texlive-2023-v2
 
   build:
@@ -114,6 +120,7 @@ jobs:
         if: ${{ matrix.manual.build_pdf_path }}
         run: |
           mkdir -p ${{ runner.temp }}/.cache/archives
+          mkdir -p ${{ runner.temp }}/.cache/lists
           echo 'Dir::Cache::archives "${{ runner.temp }}/.cache/archives";' | sudo tee /etc/apt/apt.conf.d/apt-cache-tmp
 
       - name: Restore LaTeX apt cache
@@ -121,7 +128,9 @@ jobs:
         uses: actions/cache/restore@668228422ae6a00e4ad889ee87cd7109ec5666a7 # v5.0.4
         with:
           # Use relative path https://github.com/actions/cache/issues/1127
-          path: ${{ runner.temp }}/.cache/archives
+          path: |
+            ${{ runner.temp }}/.cache/archives
+            ${{ runner.temp }}/.cache/lists
           key: latex-apt-${{ runner.os }}-${{ runner.arch }}-ubuntu-24.04-texlive-2023-v2
           restore-keys: |
             latex-apt-${{ runner.os }}-${{ runner.arch }}-ubuntu-24.04-
@@ -131,12 +140,9 @@ jobs:
         if: ${{ matrix.manual.build_pdf_path }}
         timeout-minutes: 5
         run: |
-          sudo DEBIAN_FRONTEND=noninteractive apt-get update
-          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
-            --no-download \
-            python3-pil python3-pip texlive-fonts-recommended latexmk \
-            texlive-latex-extra texlive-latex-recommended texlive-xetex \
-            texlive-fonts-extra-links texlive-fonts-extra xindy tex-gyre
+          sudo dpkg -i --force-depends ${{ runner.temp }}/.cache/archives/*.deb
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -f -y --no-install-recommends \
+            -o Dir::State::lists="${{ runner.temp }}/.cache/lists"
 
       - name: Build html documentation
         run: cd ${{ matrix.manual.directory }} && make ${{ matrix.manual.make_target }}
