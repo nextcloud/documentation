@@ -17,8 +17,6 @@ This can be done by following these steps:
    `doesn't support Nextcloud's WebFlow login yet <https://gitlab.gnome.org/GNOME/gnome-online-accounts/issues/81>`_
    (`Learn more <https://docs.nextcloud.com/server/31/user_manual/session_management.html#managing-devices>`_):
 
-   .. TODO ON RELEASE: Update version number above on release
-
    .. image:: ../images/goa-add-nextcloud-account.png
 
 #. In the next window, select which resources GNOME should access and
