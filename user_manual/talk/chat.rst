@@ -88,7 +88,7 @@ You can also type `/` in the chat input to open the selector.
 .. image:: images/smart-picker.png
    :width: 400px
 
-.. FIXME Mention integration apps like github, gitlab, giphy, …
+Several integration apps can extend the Smart Picker with additional content types, such as GitHub and GitLab issues, Giphy GIFs, and more. Ask your administrator which integrations are available on your instance.
 
 Replying to messages and more
 -----------------------------

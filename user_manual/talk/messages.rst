@@ -36,7 +36,7 @@ In the submenu, you can select an appropriate time to receive a notification lat
 .. image:: images/configure-message-reminder.png
    :width: 400px
 
-.. FIXME Mention integration with Note-to-self and Forwarding
+You can also forward a message to another conversation using the ``...`` menu, or send it to your **Note to self** conversation for personal reference.
 
 Messages search in a conversation
 ---------------------------------
