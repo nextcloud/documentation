@@ -33,8 +33,6 @@ For documentation on development topics, see:
 - The individual repositories on GitHub within `the @nextcloud organization <https://github.com/nextcloud/>`_
 - `Nextcloud Development Manual <https://docs.nextcloud.com/server/latest/developer_manual/>`_
 
-.. TODO ON RELEASE: Update version number above on release
-
 Core Components
 ---------------
 
