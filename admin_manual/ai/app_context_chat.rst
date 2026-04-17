@@ -6,14 +6,14 @@ App: Context Chat
 
 Context Chat is an :ref:`assistant<ai-app-assistant>` feature that is implemented via an ensemble of two apps:
 
- * the *context_chat* app, written purely in PHP
- * the *context_chat_backend* ExternalApp written in Python
+ * the ``context_chat`` app, written purely in PHP
+ * the ``context_chat_backend`` ExternalApp written in Python
 
-Together they provide the ContextChat text processing tasks accessible via the :ref:`Nextcloud Assistant app<ai-app-assistant>`.
+Together they provide the ContextChat *text processing* and *search* tasks accessible via the :ref:`Nextcloud Assistant app<ai-app-assistant>`.
 
-The *context_chat* and *context_chat_backend* apps will use the Free text-to-text task processing providers like OpenAI integration, LLM2, etc. and such a provider is required on a fresh install, or it can be configured to run open source models entirely on-premises. Nextcloud can provide customer support upon request, please talk to your account manager for the possibilities.
+The ``context_chat`` and ``context_chat_backend`` apps will use the configured text-to-text task processing provider, which is required on a fresh install. It can be configured to run open source models entirely on-premises, see the list of providers :ref:`here <tp-consumer-apps>` in the "Backend apps" section.
 
-This app supports input and output in the same languages that the currently configured Free text-to-text task processing provider supports.
+This app supports input and output in the same languages that the currently configured text-to-text task processing provider supports.
 
 Requirements
 ------------
@@ -26,18 +26,16 @@ Requirements
 * GPU Setup Sizing
 
    * A NVIDIA GPU with at least 2GB VRAM
-      * The requirements for the Free text-to-text providers should be checked separately
-      * llm2's requirements can be found :ref:`here <ai-app-llm2>`
-      * integration_openai does not have any additional GPU requirements
+      * The requirements for the text-to-text providers should be checked separately for each app :ref:`here <tp-consumer-apps>` in the "Backend apps" section, as they can vary greatly based on the model used and whether the provider is hosted locally or remotely.
    * At least 8GB of system RAM
       * 2 GB + additional 500MB for each concurrent request made to the backend if configuration parameters are changed
 
 * CPU Setup Sizing
 
    * At least 12GB of system RAM
-      * 2 GB + additional 500MB for each request made to the backend if the Free text-to-text provider is not on the same machine
+      * 2 GB + additional 500MB for each additional concurrent query request
       * 8 GB is recommended in the above case for the default settings
-   * This app makes use of the configured free text-to-text task processing provider instead of running its own language model by default, you will thus need 4+ cores for the embedding model only (backed configuration needs changes to make use of the extra cores, refer to `Configuration Options (Backend)`_)
+   * This app makes use of the configured text-to-text task processing provider instead of running its own language model by default, thus 4+ cores for the embedding model is needed
 
 * A dedicated machine is recommended
 
@@ -50,20 +48,20 @@ Installation
 ------------
 
 1. Make sure the :ref:`Nextcloud Assistant app<ai-app-assistant>` is installed
-2. Setup a :ref:`Deploy Demon <ai-app_api>` in AppAPI Admin settings
-3. Install the *context_chat_backend* ExApp via the "Apps" page in Nextcloud, or by executing (checkout the readme at https://github.com/nextcloud/context_chat_backend for manual install steps)
+2. Setup a :ref:`Deploy Daemon <ai-app_api>` in AppAPI Admin settings
+3. Install the ``context_chat_backend`` ExApp via the "Apps" page in Nextcloud, or by executing (checkout the readme at https://github.com/nextcloud/context_chat_backend for manual install steps)
 
 .. code-block::
 
    occ app_api:app:register context_chat_backend
 
-4. Install the *context_chat* app via the "Apps" page in Nextcloud, or by executing
+4. Install the ``context_chat`` app via the "Apps" page in Nextcloud, or by executing
 
 .. code-block::
 
    occ app:enable context_chat
 
-5. Install a text generation backend like :ref:`llm2 <ai-app-llm2>` or `integration_openai <https://github.com/nextcloud/integration_openai>`_ via the "Apps" page in Nextcloud
+5. Install a text-to-text provider (text generation provider) via the "Apps" page in Nextcloud. A list of providers can be found :ref:`here <tp-consumer-apps>` in the "Backend apps" section.
 
 6. Optionally but recommended, setup background workers for faster pickup of tasks. See :ref:`the relevant section in AI Overview<ai-overview_improve-ai-task-pickup-speed>` for more information.
 
@@ -81,13 +79,13 @@ Auto-indexing
 
 The indexing jobs are set up to run during the Nextcloud instance's maintenance window (typically during the night) only. If you have not set a maintenance window, indexing will run 24/7.
 
-You can set up a background job worker explicitly for Context Chat to avoid slowing down normal background job operation on larger instances.
+| You can set up a separate cron job to run every 30 minutes for Context Chat to avoid slowing down normal background job operation on larger instances.
+| The following command can bypass the maintenance window so it can either be set to run during the day even with a maintenance window set, or it can be set to run during the weekends 24/7 to speed up the indexing process.
 
 .. code-block::
 
    php cron.php "OCA\\ContextChat\\BackgroundJobs\\IndexerJob" "OCA\\ContextChat\\BackgroundJobs\\ActionJob" "OCA\\ContextChat\\BackgroundJobs\\SubmitContentJob" "OCA\\ContextChat\\BackgroundJobs\\StorageCrawlJob" "OCA\\ContextChat\\BackgroundJobs\\InitialContentImportJob"
 
-You can set this command to run every 15 minutes on weekends using cron for example.
 
 Synchronous indexing
 ~~~~~~~~~~~~~~~~~~~~
@@ -104,12 +102,38 @@ Synchronous indexing
 Scaling
 -------
 
-It is currently not possible to scale ExApps like Context Chat, we are working on this. Based on our calculations an instance has a rough capacity of 1000 user requests per hour. However, this number is based on theory and we do appreciate real-world feedback on this.
+Listed below are the major parts of the system that can be scaled independently to improve performance:
+
+1. The text-to-text task processing provider (from among the list of providers :ref:`here <tp-consumer-apps>` in the "Backend apps" section)
+
+   The text-to-text task processing provider can be scaled by using a hosted service using the `OpenAI and LocalAI integration (via OpenAI API) <https://apps.nextcloud.com/apps/integration_openai>`_ like OpenAI or by hosting your own model on powerful hardware.
+
+2. The vector DB performance
+
+   | The vector DB performance can be scaled by using a dedicated or cluster setup for PostgreSQL with the pgvector extension.
+   | The connection string of the external vector DB can be set using the environment variable ``EXTERNAL_DB`` during deployment in the "Deploy Options".
+
+3. The embedding model performance
+
+   | The embedding model performance can be scaled by using a hosted embedding service, locally or remotely hosted. It should be able to serve an OpenAI-compatible API.
+   | The embedding service URL can be set using the environment variable ``CC_EM_BASE_URL`` during deployment in the "Deploy Options". Other options like the model name, api key, or username and password can be set using the environment variables ``CC_EM_MODEL_NAME``, ``CC_EM_API_KEY``, ``CC_EM_USERNAME``, and ``CC_EM_PASSWORD`` respectively.
+
+One part of the system that cannot be scaled yet is the parsing of the documents to extract text.
+This is currently done in a single instance of the ``context_chat_backend`` ExApp.
+It is a CPU-bound task so having a powerful CPU will help speed up the parsing process.
+
+If ``context_chat_backend`` is already deployed, you can change these environment variables by redeploying it with the new values.
+
+1. Go to Apps page -> search for "Context Chat Backend"
+2. Disable and remove the app taking care the data is not removed
+3. Set the "Deploy Options" with the new environment variables
+4. Reinstall the app
+
 
 App store
 ---------
 
-You can also find the *context_chat* app in our app store, where you can write a review: `<https://apps.nextcloud.com/apps/context_chat>`_
+You can also find the ``context_chat`` app in our app store, where you can write a review: `<https://apps.nextcloud.com/apps/context_chat>`_
 
 Repository
 ----------
@@ -123,11 +147,11 @@ Commands (OCC)
 
 The options for each command can be found like this, using scan as example: ``context_chat:scan --help``
 
-* ``context_chat:diagnostics``
-   Check currently running ContextChat background processes.
-
 * ``context_chat:prompt``
    Ask a question about your data, with options for selective context.
+
+* ``context_chat:search``
+   Perform a semantic (vector DB based) search on your indexed documents, with options for selective context.
 
 * ``context_chat:scan``
    Scan and index the user's documents based on the user ID provided, synchronously.
@@ -139,73 +163,35 @@ The options for each command can be found like this, using scan as example: ``co
    | These file and ownership changes are synced with the backed through this actions queue.
 
 
-Configuration Options (OCC)
----------------------------
+Configuration Options
+---------------------
 
-* ``auto_indexing`` boolean (default: true)
-   To allow/disallow the IndexerJob from running in the background
-
-.. code-block::
-
-   occ config:app:set context_chat auto_indexing --value=true --type=boolean
-
-* ``indexing_batch_size`` integer (default: 5000)
-   The number of files to index per run of the indexer background job (this is limited by `indexing_max_time`)
+* ``auto_indexing`` string (default: 'true')
+   To allow/disallow the IndexerJob from running in the background. Not required to be configured normally.
 
 .. code-block::
 
-   occ config:app:set context_chat indexing_batch_size --value=100 --type=integer
-
-* ``indexing_job_interval`` integer (default: 1800)
-   The interval at which the indexer jobs run in seconds
-
-.. code-block::
-
-   occ config:app:set context_chat indexing_job_interval --value=1800 --type=integer
-
-* ``indexing_max_time`` integer (default: 1800)
-   The number of seconds to index files for per run, regardless of batch size
-
-.. code-block::
-
-   occ config:app:set context_chat indexing_max_time --value=1800 --type=integer
-
-* ``request_timeout`` integer (default: 3000)
-   Request timeout in seconds for all requests made to the Context chat backend (the external app in AppAPI).
-   If a docker socket proxy is used, the ``TIMEOUT_SERVER`` environment variable should be set to a value higher than ``request_timeout``.
-
-.. code-block::
-
-   occ config:app:set context_chat request_timeout --value=3 --type=integer
-
-
-Configuration Options (Backend)
--------------------------------
-
-Refer to `the Configuration head <https://github.com/nextcloud/context_chat_backend?tab=readme-ov-file#configuration>`_ in the backend's readme.
+   occ config:app:set context_chat auto_indexing --value='true' --type=string
 
 
 Logs
 ----
 
-Logs for the ``context_chat`` PHP app can be found in the Nextcloud log file, which is usually located in the Nextcloud data directory. The log file is named ``nextcloud.log``.
+Logs for both the ``context_chat`` PHP app and the ``context_chat_backend`` ExApp can be found in the admin settings of your Nextcloud GUI as well as in the Context Chat log file, which is usually located in the Nextcloud data directory. The log file is named ``context_chat.log``.
 
-| For the backend, warning and error logs can be found in the docker container logs, and the complete logs can be found in ``logs/`` directory in the persistent storage of the docker container.
-| That will be ``/nc_app_context_chat_backend/logs/`` in the docker container.
-| See `the Logs head <https://github.com/nextcloud/context_chat_backend?tab=readme-ov-file#logs>`_ in the backend's readme for more information.
+Troubleshooting
+---------------
 
-Possibility of Data Leak
-------------------------
-
-| It is possible that some users who had access to certain files/folders (and have later have been denied this access) still have access to the content of those files/folders through the Context Chat app. We're working on a solution for this.
-| The users who never had access to a particular file/folder will NOT be able to see those contents in any way.
+1. If the docker container seems to suddenly restart during indexing or querying, it could be related to RAM/storage filling up, or AVX being unavailable on the system. AVX can be checked using ``grep -i avx /proc/cpuinfo`` command on the host system. If AVX is not available, the app will not work.
+2. Look for issues in the diagnostic logs, the server logs and the docker container ``nc_app_context_chat_container`` logs. If unsure, open an issue in either of the repositories.
+3. Check "Admin settings -> Context Chat" for statistics and information about the indexing process.
 
 File access control rules not supported
 ---------------------------------------
 
-In Nextcloud you can set up file access control rules using the [files_accesscontrol](https://apps.nextcloud.com/apps/files_accesscontrol) app to restrict access to certain files.
+In Nextcloud you can set up file access control rules using the `files_accesscontrol <https://apps.nextcloud.com/apps/files_accesscontrol>`_ app to restrict access to certain files.
 
-| Context Chat does **not** follow these rules
+| Context Chat does **not** follow these rules.
 
 It is thus possible for users who have been denied access to a document via the files_accesscontrol app to still gain access via Context Chat
 if the document is visible in the files app for the user in question.
@@ -215,5 +201,7 @@ Known Limitations
 
 * Language models are likely to generate false information and should thus only be used in situations that are not critical. It's recommended to only use AI at the beginning of a creation process and not at the end, so that outputs of AI serve as a draft for example and not as final product. Always check the output of language models before using it and make sure whether it meets your use-case's quality requirements.
 * Customer support is available upon request, however we can't solve false or problematic output, most performance issues, or other problems caused by the underlying model. Support is thus limited only to bugs directly caused by the implementation of the app (connectors, API, front-end, AppAPI).
-* Large files are not supported in "Selective context" in the Assistant UI if they have not been indexed before. Use ``occ context_chat:scan <user_id> -d <directory_path>`` to index the desired directory synchronously and then use the Selective context option. "Large files" could mean differently for different users. It depends on the amount of text inside the documents in question and the hardware on which the indexer is running. Generally 20 MB should be large for a CPU-backed setup and 100 MB for a GPU-backed system.
+* Files larger than 100MB are not supported
 * Password protected PDFs or any other files are not supported. There will be error logs mentioning cryptography and AES in the docker container when such files are encountered but it is nothing to worry about, they will be simply ignored and the system will continue to function normally.
+* Podman and Kubernetes are currently not supported for the Context Chat Backend ExApp.
+* External storages (through ``files_external``) may not work as well as the local storage.

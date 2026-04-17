@@ -1,39 +1,99 @@
 {% if READTHEDOCS %}
-{# Add rst-badge after rst-versions for small badge style. #}
+  {# Add rst-badge after rst-versions for small badge style. #}
+  <!-- Here go the languages -->
+
+  {# Language code to name mapping #}
+  {% set language_names = {
+    'af': 'Afrikaans',
+    'ar': 'Arabic',
+    'br': 'Breton',
+    'ca': 'Catalan',
+    'cs': 'Czech',
+    'da': 'Danish',
+    'de': 'German',
+    'el': 'Greek',
+    'eo': 'Esperanto',
+    'es': 'Spanish',
+    'en': 'English',
+    'eu': 'Basque',
+    'fi_FI': 'Finnish',
+    'fr': 'French',
+    'hr': 'Croatian',
+    'hu_HU': 'Hungarian',
+    'ga': 'Irish',
+    'gl': 'Galician',
+    'id': 'Indonesian',
+    'it': 'Italian',
+    'ja_JP': 'Japanese',
+    'ko': 'Korean',
+    'mn': 'Mongolian',
+    'nb_NO': 'Norwegian (NB)',
+    'nl': 'Dutch',
+    'nn': 'Norwegian (NN)',
+    'pl': 'Polish',
+    'pt_PT': 'Portuguese',
+    'pt_BR': 'Portuguese (BR)',
+    'ro': 'Romanian',
+    'ru': 'Russian',
+    'si': 'Sinhala',
+    'sk_SK': 'Slovakian',
+    'sq': 'Albanian',
+    'sr': 'Slovenian',
+    'sv': 'Swedish',
+    'ta': 'Tamil',
+    'tr': 'Turkish',
+    'uk_UA': 'Ukrainian',
+    'uz': 'Uzbek',
+    'vi': 'Vietnamese',
+    'zh_CN': 'Chinese',
+    'zh_HK': 'Chinese (HK)',
+    'zh_TW': 'Chinese (TW)'
+  } %}
+
+  {# Build list of {code, name} pairs for available languages #}
+  {% set language_tuples = [] %}
+  {% for code in available_languages %}
+    {% set _ = language_tuples.append({'code': code, 'name': language_names.get(code, code)}) %}
+  {% endfor %}
+  {% set sorted_languages = language_tuples | sort(attribute='name') %}
+
   <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
     <span class="rst-current-version" data-toggle="rst-current-version">
-      <span class="fa fa-book"> Read the Docs</span>
-      v: {{ current_version }}
+      🌐 {{ language_names.get(language, language) }}
+      <span class="fa fa-caret-down"></span>
+       ☁️ {{ current_version }}
       <span class="fa fa-caret-down"></span>
     </span>
     <div class="rst-other-versions">
       <dl>
-        <dt>Languages</dt>
-          <!--Here goes the Langs-->
+        <dt>🌐 {{ _('Languages') }}</dt>
+        {% for lang in sorted_languages %}
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/{{ lang.code }}/"
+               {% if lang.code == language %}
+               style="color: var(--dark-link-color);"
+               {% endif %}
+            >
+              {{ lang.name }}
+            </a>
+          </dd>
+        {% endfor %}
       </dl>
     </div>
     <div class="rst-other-versions">
       <dl>
-        <dt>{{ _('Versions') }}</dt>
-        {% for slug, url in versions %}
-          <dd><a href="{{ url }}">{{ slug }}</a></dd>
-        {% endfor %}
-      </dl>
-      <dl>
-        <dt>{{ _('Downloads') }}</dt>
-        {% for type, url in downloads %}
-          <dd><a href="{{ url }}">{{ type }}</a></dd>
-        {% endfor %}
-      </dl>
-      <dl>
-        {# Translators: The phrase "Read the Docs" is not translated #}
-        <dt>{{ _('On Read the Docs') }}</dt>
-          <dd>
-            <a href="//{{ PRODUCTION_DOMAIN }}/projects/{{ slug }}/?fromdocs={{ slug }}">{{ _('Project Home') }}</a>
+        <dt>☁️ {{ _('Versions') }}</dt>
+        {% for slug, url in versions|reverse %}
+          <dd style="width: 32%">
+            <a href="{{ url }}"
+               {% if current_version == slug %}
+               style="color: var(--dark-link-color);"
+               {% endif %}
+            >
+              {{ slug }}
+            </a>
           </dd>
-          <dd>
-            <a href="//{{ PRODUCTION_DOMAIN }}/builds/{{ slug }}/?fromdocs={{ slug }}">{{ _('Builds') }}</a>
-          </dd>
+        {% endfor %}
       </dl>
     </div>
   </div>

@@ -125,3 +125,18 @@ such as ``http://192.168.10.50``, then your share URL will be something like
 accessible outside of your LAN. This also applies to using the server name; for 
 access outside of your LAN you need to use a fully-qualified domain name such as 
 ``http://myserver.example.com``, rather than ``http://myserver``.
+
+.. _federated_shares_display:
+
+Changing the display of federated shares
+----------------------------------------
+
+By default, federated shares are displayed in a separate section in the Nextcloud interface.
+It is possible to change this behavior and display them in the same section as internal shares.
+This can be controlled with a ``occ`` command:
+
+.. code-block:: bash
+
+    occ config:app:set --value false --type boolean files_sharing show_federated_shares_as_internal
+
+Set the value to ``true`` to display federated shares mixed with internal shares, or ``false`` to keep them in a separate section (default).

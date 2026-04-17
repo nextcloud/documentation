@@ -66,7 +66,7 @@ This request returns the available metadata of a user. Admin users can see the i
 			<storageLocation>/path/to/storage/location/userid</storageLocation>
 			<id>userid</id>
 			<lastLogin>1578283711000</lastLogin>
-			<backend>Database</database>
+			<backend>Database</backend>
 			<subadmin/>
 			<quota>
 				<free>20632824998</free>

@@ -23,8 +23,10 @@ Request data
 
 	{
 		"configKey": "key",
-		"configValue": "value"
+		"configValue": "value",
+		"sensitive": "store value encrypted in the database (0/1, default: 0)"
 	}
+
 
 Response data
 *************

@@ -109,6 +109,7 @@ Scaling
 -------
 
 It is currently not possible to scale this app, we are working on this. Based on our calculations an instance has a rough capacity of 1000 user requests per hour. However, this number is based on theory and we do appreciate real-world feedback on this.
+If you would like to scale up your language model usage, we recommend using an :ref:`AI as a Service provider<ai-ai_as_a_service>` or hosting a service compatible with the OpenAI API yourself that can be scaled up and connecting nextcloud to it via the `integration_openai app <https://apps.nextcloud.com/apps/integration_openai>`_.
 
 App store
 ---------
@@ -138,7 +139,7 @@ Addendum: Running with a fully open model
 
 If you would like to use a fully open model that scores a green score on our Ethical AI rating, we recommend the following model:
 
-* OLMo 2 (either in 7B or 13B): `<https://huggingface.co/allenai/OLMo-2-1124-7B-Instruct-GGUF>`_
+* Olmo 3 (either in 7B or 32B): `<https://huggingface.co/allenai/Olmo-3-7B-Instruct>`_
 
 What makes OLMo a fully open model?
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

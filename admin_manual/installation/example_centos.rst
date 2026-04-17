@@ -136,7 +136,8 @@ Redis
     systemctl start redis.service
 
 
-**Installing Nextcloud**
+Installing Nextcloud
+--------------------
 
 Nearly there, so keep at it, you are doing great!
 
@@ -189,7 +190,8 @@ Create a firewall rule for access to apache::
     firewall-cmd --zone=public --add-service=http --permanent
     firewall-cmd --reload
 
-**SELinux**
+SELinux
+-------
 
 Again, there is an extensive write-up done on SELinux which can be found at :doc:`../installation/selinux_configuration`, so if you are using SELinux in Enforcing mode, please run the commands suggested on that page.
 The following commands only refers to this tutorial::

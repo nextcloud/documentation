@@ -10,7 +10,7 @@ This app supports input and output in languages other than English if the underl
 
 This app uses `faster-whisper <https://github.com/SYSTRAN/faster-whisper>`_ under the hood. Output quality will differ depending on which model you use, we recommend the following models:
 
- * OpenAI Whisper large-v2 or v3 (multilingual)
+ * OpenAI Whisper large v3 turbo (multilingual)
  * OpenAI Whisper medium.en (English only)
 
 Whisper large v3 supports about ~100 languages and shows outstanding performance in ~10 of them. For more details see the `OpenAI Whisper paper <https://cdn.openai.com/papers/whisper.pdf>`_
@@ -77,4 +77,3 @@ Known Limitations
 * Make sure to test the language model you are using it for whether it meets the use-case's quality requirements
 * Language models notoriously have a high energy consumption, if you want to reduce load on your server you can choose smaller models or quantized models in exchange for lower accuracy
 * Customer support is available upon request, however we can't solve false or problematic output, most performance issues, or other problems caused by the underlying model. Support is thus limited only to bugs directly caused by the implementation of the app (connectors, API, front-end, AppAPI)
-* Due to technical limitations that we are in the process of mitigating, each task currently incurs a time cost of between 0 and 5 minutes in addition to the actual processing time

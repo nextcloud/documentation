@@ -15,12 +15,13 @@ Primary color
 ^^^^^^^^^^^^^
 
 .. figure:: ../images/colour-primary.svg
-	 	
-		#0082C9
+   :alt: Nextcloud primary color swatch showing blue #0082C9
+
+   #0082C9
 
 While this is the primary color associated with Nextcloud and can be used to draw attention to an element, it is best to limit the usage of this to primary actions and other important elements.
 
-.. note:: 
+.. note::
 	 The primary color can be customized by admins through theming, but the default experience will be Nextcloud blue. If the primary color is themed to something very light like a shade of yellow, the text or header icons will be inverted to dark automatically.
 
 * On web: ``var(--color-primary-element)``
@@ -34,10 +35,12 @@ Background color
 .. list-table::
 
     * - .. figure:: ../images/colour-main-background.svg
+           :alt: Light theme background color swatch showing white #FFFFFF
 
            Background for light theme: #FFFFFF
 
       - .. figure:: ../images/colour-dark-theme-main-backgroud.svg
+           :alt: Dark theme background color swatch showing dark grey #181818
 
            Background for dark theme: #181818
 
@@ -55,10 +58,12 @@ Text color
 .. list-table::
 
     * - .. figure:: ../images/colour-main-text.svg
+           :alt: Light theme text color swatch showing near-black #222222
 
            Text in light theme: #222222
 
       - .. figure:: ../images/colour-dark-theme-main-text.svg
+           :alt: Dark theme text color swatch showing light grey #D8D8D8
 
            Text in dark theme: #D8D8D8
 
@@ -73,10 +78,12 @@ This is the main color for the text in light theme, and in dark theme.
 .. list-table::
 
     * - .. figure:: ../images/colour-text-maxcontrast.svg
+           :alt: Light theme secondary text color swatch showing grey #767676
 
            Secondary text in light theme: #767676
 
       - .. figure:: ../images/colour-dark-theme-text-maxcontrast.svg
+           :alt: Dark theme secondary text color swatch showing medium grey #8C8C8C
 
            Secondary text in dark theme: #8C8C8C
 
@@ -95,18 +102,22 @@ Status and indicators
 .. list-table::
 
     * - .. figure:: ../images/color-info.svg
+           :alt: Info status color swatch showing blue #006AA3
 
            Info: #006AA3
 
       - .. figure:: ../images/color-success.svg
+           :alt: Success status color swatch showing green #46BA61
 
            Success: #46BA61
 
       - .. figure:: ../images/color-error.svg
+           :alt: Error status color swatch showing red #E9322D
 
            Error: #E9322D
 
       - .. figure:: ../images/color-warning.svg
+           :alt: Warning status color swatch showing amber #ECA700
 
            Warning: #ECA700
 
@@ -160,7 +171,7 @@ Icons
 .. image:: ../images/material-icons.png
    :alt: Material icons
 
-Icons can be used to communicate the intent of an action, or to provide visual interest to the screen. We use monochrome icons on all platforms: `Material Symbols (not Material Icons, and 20 px default filled) <https://fonts.google.com/icons?icon.set=Material+Symbols&selected=Material+Symbols+Outlined:search:FILL@1;wght@400;GRAD@0;opsz@20&icon.size=20>`_ for web, Android, Windows and Linux, and `SF Symbols (default weight, scale and variant) <https://developer.apple.com/sf-symbols/>`_ for iOS and macOS.
+Icons can be used to communicate the intent of an action, or to provide visual interest to the screen. We use monochrome icons on all platforms: `Material Symbols (not Material Icons, and 20 px default outlined) <https://fonts.google.com/icons?icon.set=Material+Symbols&selected=Material+Symbols+Outlined:search:FILL@0;wght@400;GRAD@0;opsz@20&icon.size=20>`_ for web, Android, Windows and Linux, and `SF Symbols (default weight, scale and variant) <https://developer.apple.com/sf-symbols/>`_ for iOS and macOS.
 
 This is except for the icon of the app itself, which can be a custom icon. Most use an app icon from Material Symbols as well though to keep consistency.
 
@@ -191,7 +202,7 @@ The wording and language in your app sets the tone and approachability of your a
 * Don’t write in ALL CAPS, as it is not as readable and comes off as shouting and aggressive. Also use Sentence case and not Capital Case, with the exception of product names like Nextcloud Talk, Nextcloud Hub, etc.
 * We are a community, so better write "We are happy to announce" instead of "I am happy to announce".
 * If your app content is empty, it can be helpful to add an engaging message. "Add or import your first bookmark!" is much nicer than "No bookmarks yet".
-* Try to avoid using "my" or "your" like in "My files" or "Your files", instead using "All files". For longer sentences where it cannot be avoided, use "your", never "my". 
+* Try to avoid using "my" or "your" like in "My files" or "Your files", instead using "All files". For longer sentences where it cannot be avoided, use "your", never "my".
 * Use gender neutral language. This `international guide to gender-inclusive writing <https://uxcontent.com/the-international-guide-to-gender-inclusive-writing/>`_ contains info and examples on gender neutral wording for different languages.
 * Use full names instead of only first names while addressing the person using your app.
 * For any "Delete" action, give context to what it will delete, like "Delete conversation" or "Delete user" so that it is clear specifically for this destructive action.

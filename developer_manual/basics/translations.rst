@@ -119,6 +119,18 @@ They differ a bit in terms of usage compared to php:
     t('myapp', '{name} is available. Get {linkstart}more information{linkend}', {name: 'Nextcloud 16', linkstart: '<a href="...">', linkend: '</a>'});
     n('myapp', 'Import %n calendar into {collection}', 'Import %n calendars into {collection}', selectionLength, {collection: 'Nextcloud'});
 
+
+ExApps (Python)
+---------------
+
+For ExApps, Python is currently only supported for automated Transifex translations.
+
+Alongside the usual ``l10n/*.json`` and ``l10n/*.js`` files, translation source files located in ``translationfiles/<lang>/*.po`` are also included in the Transifex sync.
+These ``.po`` files can be compiled into ``.mo`` files, which are typically used by the ExApp backend for runtime translations.
+
+For more details, see :ref:`ex_app_translations_page`.
+
+
 Guidelines
 ----------
 
@@ -138,9 +150,14 @@ Dos and Don'ts
      - ``'``
      - Use ascii single quote
    * - ``Loading...``
-     - ``Loading …``
-     - | Use unicode triple-dot character.
-       | Add a space before the triple-dot when trimming a sentence instead of a word.
+     - ``Loading …``
+     - | Use **Unicode triple-dot** character.
+       | Add a **non-breaking space** before the triple-dot when trimming a sentence instead of a word.
+   * - | ``Loading …``
+       | (a general space ``U+0020``)
+     - | ``Loading …``
+       | (a non-breaking space ``U+00A0``)
+     - | Only use a **non-breaking space** before the triple-dot (``U+00A0``).
    * - Don't
      - Do not
      - Using the spelled out version is easier to understand and makes translating easier.
@@ -326,7 +343,7 @@ iOS
 Adding translations
 -------------------
 
-The steps how to set up translations for an app have been moved to it's own page in the "App development" chapter: :ref:`Translation setup`
+The steps how to set up translations for an app have been moved to it's own page in the "App development" chapter: :ref:`Translation`
 
 Testing translations
 --------------------

@@ -36,3 +36,17 @@ Automated clean-up of app password
 ----------------------------------
 
 Nextcloud 30 will :ref:`clean-up unused app passwords<authentication-app-password-clean-up>`.
+
+Monitoring: Counting of active users
+------------------------------------
+
+Starting with Nextcloud 30.0.12 the monitoring app was adjusted to count the active users in the same way as occ user:report and the support app.
+
+AppAPI (app_api) is now a default app
+-------------------------------------
+
+Starting with Nextcloud 30.0.1, the AppAPI app is included and enabled by default. See :doc:`../exapps_management/index` for details.
+
+You can disable this app in the standard manner via the *Apps* menu if you do not expect to use AppAPI integrations in the near future.
+
+If AppAPI is disabled, other apps that depend on it will not be visible in the app store. AppAPI-related setup checks will also be deactivated.

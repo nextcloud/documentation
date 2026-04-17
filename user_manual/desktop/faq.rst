@@ -115,3 +115,14 @@ This option provides the ability to either: keep the existing data (synced by th
 
 Make your choice and click "**Connect...**".
 This will then step you through the Connection Wizard, just as you did when you setup the previous sync connection, but giving you the opportunity to choose a new sync directory.
+
+I would like to change the language of the user interface
+---------------------------------------------------------
+
+To do this, the configuration file ``nextcloud.cfg`` must be changed.
+A line with the desired language must be added to the ``General`` section.
+
+.. code-block:: none
+
+   [General]
+   language=de

@@ -11,8 +11,13 @@ On Microsoft Windows systems:
         ``%APPDATA%\Nextcloud\nextcloud.cfg``
 
 On macOS systems:
-        ``$HOME/Library/Preferences/Nextcloud/nextcloud.cfg``
+        Starting with version 33.0.0: ``$HOME/Library/Containers/com.nextcloud.desktopclient/Data/Library/Preferences/Nextcloud/nextcloud.cfg``
+        
+        On older versions: ``$HOME/Library/Preferences/Nextcloud/nextcloud.cfg``
 
+.. note::
+    In a Citrix workspace, the user's Roaming profile need to be persisted between sessions. 
+    The failure on doing so will result in users having to set up their account again in every new session.
 
 The configuration file contains settings using the Microsoft Windows .ini file
 format. You can overwrite changes using the Nextcloud configuration dialog.
@@ -22,19 +27,19 @@ format. You can overwrite changes using the Nextcloud configuration dialog.
 
 Some interesting values that can be set on the configuration file are:
 
-+----------------------------------------------------------------------------------------------------------------------------------------------------------+
-| ``[Nextcloud]`` section                                                                                                                                  |
-+=================================+===============+========================================================================================================+
-| Variable                        | Default       | Meaning                                                                                                |
-+---------------------------------+---------------+--------------------------------------------------------------------------------------------------------+
-| ``remotePollInterval``          | ``30000``     | Specifies the poll time for the remote repository in milliseconds.                                     |
-+---------------------------------+---------------+--------------------------------------------------------------------------------------------------------+
-| ``forceSyncInterval``           | ``7200000``   | The duration of no activity after which a synchronization run shall be triggered automatically.        |
-+---------------------------------+---------------+--------------------------------------------------------------------------------------------------------+
-| ``fullLocalDiscoveryInterval``  | ``3600000``   | The interval after which the next synchronization will perform a full local discovery.                 |
-+---------------------------------+---------------+--------------------------------------------------------------------------------------------------------+
-| ``notificationRefreshInterval`` | ``300000``    | Specifies the default interval of checking for new server notifications in milliseconds.               |
-+---------------------------------+---------------+--------------------------------------------------------------------------------------------------------+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------+
+| ``[Nextcloud]`` section                                                                                                                                       |
++=================================+====================+========================================================================================================+
+| Variable                        | Default            | Meaning                                                                                                |
++---------------------------------+--------------------+--------------------------------------------------------------------------------------------------------+
+| ``remotePollInterval``          | ``30000`` (30 sec) | Specifies the poll time for the remote repository in milliseconds.                                     |
++---------------------------------+--------------------+--------------------------------------------------------------------------------------------------------+
+| ``forceSyncInterval``           | ``7200000`` (2 hr) | The duration of no activity after which a synchronization run shall be triggered automatically.        |
++---------------------------------+--------------------+--------------------------------------------------------------------------------------------------------+
+| ``fullLocalDiscoveryInterval``  | ``3600000`` (1 hr) | The interval after which the next synchronization will perform a full local discovery.                 |
++---------------------------------+--------------------+--------------------------------------------------------------------------------------------------------+
+| ``notificationRefreshInterval`` | ``60000``  (1 min) | Specifies the default interval of checking for new server notifications in milliseconds.               |
++---------------------------------+--------------------+--------------------------------------------------------------------------------------------------------+
 
 
 +----------------------------------------------------------------------------------------------------------------------------------------------------------------------+

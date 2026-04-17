@@ -33,7 +33,9 @@ same URL you use to access Nextcloud from your web browser - e.g.::
 
     https://cloud.example.com
 
-    https://example.com/nextcloud (if Nextcloud is installed in a subdirectory called "nextcloud")
+If Nextcloud is installed in a subdirectory called "nextcloud"::
+
+    https://example.com/nextcloud
 
 Third-party WebDAV clients
 --------------------------
@@ -57,7 +59,9 @@ The URL to use when configuring third-party apps to connect to Nextcloud is a bi
 
     https://cloud.example.com/remote.php/dav/files/USERNAME/
 
-    https://example.com/nextcloud/remote.php/dav/files/USERNAME/ (if Nextcloud is installed in a subdirectory called "nextcloud")
+If Nextcloud is installed in a subdirectory called "nextcloud"::
+
+    https://example.com/nextcloud/remote.php/dav/files/USERNAME/
 
 .. note:: When using a third-party WebDAV client (including your operating system's
    built-in client), you should use an application password for login rather than your
@@ -72,7 +76,12 @@ The URL to use when configuring third-party apps to connect to Nextcloud is a bi
    URL of your Nextcloud server (omit the directory part if the installation is
    in the root of your domain), and **USERNAME** with the username of the connecting user.
 
-   See the WebDAV URL (bottom left in settings) on your Nextcloud.
+   See the WebDAV URL, to be found in Files Settings -> WebDAV in the Files on your Nextcloud account.
+
+   .. image:: ../images/webdav_link.png
+    :alt: Screenshot of the Files settings showing the personal WebDAV link
+
+
 
 
 Accessing files using Linux
@@ -215,8 +224,6 @@ Accessing files using macOS
 
 .. note:: The macOS Finder suffers from a `series of implementation problems <http://sabre.io/dav/clients/finder/>`_ and should only be used if the Nextcloud server runs on **Apache** and **mod_php**, or **Nginx 1.3.8+**. Alternative macOS-compatible clients capable of accessing WebDAV shares include open source apps like `Cyberduck <https://cyberduck.io/>`_ (see instructions `here <https://docs.nextcloud.com/server/latest/user_manual/files/access_webdav.html#accessing-files-using-cyberduck>`_) and `Filezilla <https://filezilla-project.org>`_. Commercial clients include `Mountain Duck <https://mountainduck.io/>`_, `Forklift <https://binarynights.com/>`_, `Transmit <https://panic.com/>`_, and `Commander One <https://mac.eltima.com/>`_.
 
-.. TODO ON RELEASE: Update version number above on release
-
 To access files through the macOS Finder:
 
 #. From the Finder's top menu bar, choose **Go > Connect to Server…**:
@@ -353,7 +360,7 @@ Nextcloud provides the possibility to access public shares anonymously over WebD
 
 To access the public share, open::
 
-  https://example.com/nextcloud/public.php/webdav
+  https://example.com/nextcloud/public.php/dav/files/USERNAME
 
 in a WebDAV client, use the share token as username and the (optional) share password as the password. For example, with a share link https://example.com/s/kFy9Lek5sm928xP, ``kFy9Lek5sm928xP`` will be the username.
 

@@ -65,6 +65,13 @@ Emitted when the authentication fails
 
 Emitted when the authentication fails, but only if the login name can be associated with an existing user.
 
+``OCP\Authentication\Events\TokenInvalidatedEvent``
+***************************************************
+
+.. versionadded:: 32
+
+Emitted when an authentication token is invalidated.
+
 ``OCP\Authentication\TwoFactorAuth\RegistryEvent``
 **************************************************
 
@@ -519,6 +526,11 @@ Event fired after the filesystem has been torn down
 ********************************************
 
 .. versionadded:: 28
+
+``OCP\Files\ObjectStore\Events\BucketCreatedEvent``
+***************************************************
+
+.. versionadded:: 33
 
 
 ``OCP\Files\Template\BeforeGetTemplatesEvent``

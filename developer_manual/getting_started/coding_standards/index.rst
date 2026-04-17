@@ -41,12 +41,14 @@ The most important labels and their meaning:
   * ``4. to release`` - reviewed PR that awaits unfreeze of a branch to get merged or has pending CI jobs
   * ``needs info`` - this issue needs further information from the reporter, see :doc:`../../prologue/bugtracker/triaging`.
     This tag is typically combined with ``0. to triage`` to signal a bug report is not confirmed yet or a feature request has not been approved.
+  * ``needs review`` - this issue needs further investigation from the Nextcloud team, see :doc:`../../prologue/bugtracker/triaging`.
 
 * Tags showing the type of issue or PR
 
   * ``bug`` - this issue is a bug
   * ``enhancement`` - this issue is a feature request/idea for improvement of Nextcloud
   * ``technical debt`` - this issue or PR is about `technical debt <https://en.wikipedia.org/wiki/Technical_debt>`_
+  * ``overview`` - this issue is a summary of a global effort, usually referencing other issues
 
 * Tags that classify an issue or PR
 

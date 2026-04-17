@@ -69,7 +69,7 @@ Other command line switches supported by ``nextcloudcmd`` include the following:
        Use`netrc(5)` for login.
 
 ``--non-interactive``
-       Do not prompt for questions.
+       Do not prompt for questions and tries to read $NC_USER and $NC_PASSWORD from the environment.
 
 ``--silent``, ``--s``
        Inhibits verbose log output.

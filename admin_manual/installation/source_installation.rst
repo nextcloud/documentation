@@ -418,7 +418,7 @@ However, the snap is opinionated and there are `requirements <https://github.com
 - Nextcloud snap uses recommended PHP.
 
 Installation
-------------
+^^^^^^^^^^^^
 
 **On Ubuntu**
 
@@ -439,26 +439,26 @@ If your hostname is ``localhost``  or ``localhost.localdomain``, like on an Ubun
 ``nextcloud.local`` will be used instead. 
 
 1st login
----------
+^^^^^^^^^
 
 Upon visiting the Nextcloud installation for the first time, you will be prompted to enter an admin username 
 and password before Nextcloud is initialised. This may take a while depending on resources and the device.
 After you provide that information you will be logged in and able to install apps, create users, and upload files.
 
 HTTPS encryption
-----------------
+^^^^^^^^^^^^^^^^
 
 Nextcloud snap includes a service for automated HTTPS encryption and automated renewal using Lets Encrypt, 
 or self-signed certificates. Run ``nextcloud.enable-https -h`` for more information. `Managing encryption <https://github.com/nextcloud-snap/nextcloud-snap/wiki/Managing-HTTP-encryption-(HTTPS)>`_.
 
 Configuration
--------------
+^^^^^^^^^^^^^
 
 While the default Nextcloud configurations are mostly fine, it may be necessary to fine tune Nextcloud snap by
 editing configuration files manually or using the management console. `Configuring Nextcloud snap <https://github.com/nextcloud-snap/nextcloud-snap/wiki/Configure-Nextcloud-snap>`_.
 
 External media
---------------
+^^^^^^^^^^^^^^
 
 `Snap confinement <https://snapcraft.io/docs/snap-confinement>`_ is a security feature and determines the amount of access an application has to system resources, 
 such as files, the network, peripherals and services. Thus your Nextcloud snap is securely confined from the host 

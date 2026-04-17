@@ -93,7 +93,7 @@ The bootstrap of the Vue app (`UI Example bootstrap <https://github.com/nextclou
     import { translate, translatePlural } from '@nextcloud/l10n'
     import { generateUrl } from '@nextcloud/router'
     import { APP_API_PROXY_URL_PREFIX, EX_APP_ID } from './constants/AppAPI.js'
-    import { getRequestToken } from '@nextcloud/auth'
+    import { getCSPNonce } from '@nextcloud/auth'
 
     Vue.prototype.t = translate
     Vue.prototype.n = translatePlural
@@ -101,7 +101,7 @@ The bootstrap of the Vue app (`UI Example bootstrap <https://github.com/nextclou
     Vue.prototype.OCA = window.OCA
 
     __webpack_public_path__ = generateUrl(`${APP_API_PROXY_URL_PREFIX}/${EX_APP_ID}/js/`) // eslint-disable-line
-    __webpack_nonce__ = btoa(getRequestToken()) // eslint-disable-line
+    __webpack_nonce__ = getCSPNonce() // eslint-disable-line
 
 
 Frontend routing
@@ -133,11 +133,12 @@ The same applies to the frontend API requests to the ExApp backend API:
 L10n translations
 -----------------
 
-Currently, only :ref:`manual translations <manual-translation>` are supported.
 To add support of your programming language from translations string extraction using Nextcloud translation tool,
 you just need to add your file extensions to it `in createPotFile <https://github.com/nextcloud/docker-ci/blob/master/translations/translationtool/src/translationtool.php#L69>`_
 and down below adjust the ``--language`` and ``keyword`` parameters.
-Here is an example using translationtool adjusted in the same way:
+
+Currently only Python is supported as an additional language in translationtool for ExApps.
+Here is an example using translationtool adjusted for Python:
 
 .. code-block::
 
@@ -158,7 +159,7 @@ Here is an example using translationtool adjusted in the same way:
      			$keywords = '';
      			if (substr($entry, -4) === '.php') {
      				$keywords = '--keyword=t --keyword=n:1,2';
-    +			} else if (substr($entry, -3) === '.py') {
+    +			} elseif (substr($entry, -3) === '.py') {
     +				$keywords = '--keyword=_ --keyword=_n:1,2';
      			} else {
      				$keywords = '--keyword=t:2 --keyword=n:2,3';
@@ -167,7 +168,7 @@ Here is an example using translationtool adjusted in the same way:
      			$language = '--language=';
      			if (substr($entry, -4) === '.php') {
      				$language .= 'PHP';
-    +			} else if (substr($entry, -3) === '.py') {
+    +			} elseif (substr($entry, -3) === '.py') {
     +				$language .= 'Python';
      			} else {
      				$language .= 'Javascript';
@@ -187,46 +188,13 @@ and can be used to translate ExApp strings on the backend or frontend in the sam
 
 
 You might need to convert the translation files to the format that is used in your language.
-And this can be done with simple bash script, as `in our example for Python <https://github.com/nextcloud/ui_example/blob/main/scripts/convert_to_locale.sh>`_:
+And this can be done with simple bash scripts, as `in our example for Python <https://github.com/nextcloud/ui_example>`_:
 
+- `scripts/compile_po_to_mo.sh <https://github.com/nextcloud/ui_example/tree/main/scripts/compile_po_to_mo.sh>`_: compiles the ``.po`` files to ``.mo`` files. (needed in case of Transifex sync, only ``.po`` and ``l10n/*js|json`` files are provided)
+- `scripts/copy_translations.sh <https://github.com/nextcloud/ui_example/tree/main/scripts/copy_translations.sh>`_: for Python example ExApp transforms ``translationfiles/<lang>/*.(po|mo)`` into the locale folder structure: ``<locale_dir>/<lang>/LC_MESSAGES/*.(po|mo)``. This can be adjusted to your needs, depending on the language you are using.
 
-.. code-block::
-
-	#!/bin/bash
-
-	# This script is used to transform default translation files folders (translationfiles/<lang>/*.(po|mo))
-	# to the locale folder (locale/<lang>/LC_MESSAGES/*.(po|mo))
-
-	cd ..
-
-	# Remove the locale/* if it exists to cleanup the old translations
-	if [ -d "locale" ]; then
-	  rm -rf locale/*
-	fi
-
-	# Create the locale folder if it doesn't exist
-	if [ ! -d "locale" ]; then
-	  mkdir locale
-	fi
-
-	# Loop through the translation folders and copy the files to the locale folder
-	# Skip the templates folder
-
-	for lang in translationfiles/*; do
-	  if [ -d "$lang" ]; then
-		lang=$(basename $lang)
-		if [ "$lang" != "templates" ]; then
-		  if [ ! -d "locale/$lang/LC_MESSAGES" ]; then
-			mkdir -p locale/$lang/LC_MESSAGES
-		  fi
-		  # Echo the language being copied
-		  echo "Copying $lang locale"
-		  cp translationfiles/$lang/*.po locale/$lang/LC_MESSAGES/
-		  cp translationfiles/$lang/*.mo locale/$lang/LC_MESSAGES/
-		fi
-	  fi
-	done
-
+.. note::
+	Your translations conversion should be also included in `Dockerfile <https://github.com/nextcloud/ui_example/blob/main/Dockerfile>`_ build process, so that the ExApp translations are available in the Docker image.
 
 
 Makefile
@@ -242,7 +210,8 @@ It is recommended to use the following default set of commands:
 - ``register``: performs registration of running manually ExApp using the ``manual_install`` Deploy daemon.
 - ``translation_templates``: execute translationtool.phar to extract translation strings from sources (frontend and backend).
 - ``convert_translations_nc``: converts translations to Nextcloud format files (json, js).
-- ``convert_to_locale``: copies translations to the common locale/<lang>/LC_MESSAGES/<appid>.(po|mo). Depending on the language, you might need to adjust the script.
+- ``compile_po_to_mo``: compiles the ``.po`` files to ``.mo`` files using the ``scripts/compile_po_to_mo.sh`` script.
+- ``copy_translations``: copies translations to needed location depending on your ExApp backend programming language.
 
 .. note::
 	These Makefiles are typically written to work in the `nextcloud-docker-dev <https://github.com/juliusknorr/nextcloud-docker-dev>`_ development environment.

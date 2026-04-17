@@ -25,7 +25,7 @@ Request data
 	{
 		"configKey": "key",
 		"configValue": "value"
-		"sensitive": "sensitive flag affecting the visibility of the value (0/1, default: 0)"
+		"sensitive": "store value encrypted in the database (0/1, default: 0)"
 	}
 
 

@@ -1,3 +1,5 @@
+.. _ex_app_translations_page:
+
 Translations
 ============
 
@@ -19,8 +21,23 @@ For the front-end part, AppAPI will inject the current user's locale ``l10n/<lan
 Back-end
 ********
 
-For the back-end part of ExApp, which can be written in different programming languages, it is **up to the developer to decide** how to handle and translations files.
+For the back-end part of ExApp, which can be written in different programming languages, it is **up to the developer to decide** how to handle translations files.
 There is an example repository with translations: `UI example with translations <https://github.com/nextcloud/ui_example>`_.
+
+There are two Python functions used by `translationtool <https://github.com/nextcloud/docker-ci/tree/master/translations/translationtool>`_ to extract translation string: ``_('singular string')`` and ``_n('singular string', 'plural string', count)``.
+
+
+Manual translations
+*******************
+
+Manual translations instructions can be found :ref:`here <ex_app_translations>`.
+
+
+Transifex sync
+--------------
+
+For automated Transifex sync there are only ``.po`` files included.
+You can then compile them to ``.mo`` files using `ui_example's <https://github.com/nextcloud/ui_example/tree/main/scripts/compile_po_to_mo.sh>`_ ``scripts/compile_po_to_mo.sh`` script.
 
 
 Manual install
@@ -29,8 +46,6 @@ Manual install
 For the ``manual-install`` type, an administrator will have to manually extract to the server's `writable apps directory <https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/config_sample_php_parameters.html#apps-paths>`_ ``l10n`` folder of the ExApp
 (e.g. ``/path/to/apps-writable/<appid>/l10n/*.(js|json)``).
 This will allow the server to access the ExApp's strings with translations.
-
-.. TODO ON RELEASE: Update version number above on release
 
 .. note::
 

@@ -8,6 +8,30 @@ PHP public API
 The public API is contained in the OCP namespace. See the `OCP API reference
 <https://nextcloud-server.netlify.app/>`_ for further details.
 
+The API is split into two categories. Those are indicated by attributes.
+
+``Consumable``, ``Listenable`` and ``Catchable``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Interfaces, Enums and classes that have the ``OCP\AppFramework\Attribute\Consumable`` attribute, must only be consumed by apps and can not be implemented by apps themselves.
+This means the server side can extend the interface with new methods or reduce returned types of existing methods without it being consider an API break.
+However argument types of existing methods can **not** be reduced.
+Same rules apply to ``OCP\EventsDispatcher\Event`` that have the ``OCP\AppFramework\Attribute\Listenable`` attribute and ``Exception`` with the ``OCP\AppFramework\Attribute\Catchable`` attribute.
+
+``Implementable``, ``Dispatchable`` and ``Throwable``
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Interfaces, Enums and classes that have the ``OCP\AppFramework\Attribute\Implementable`` attribute, can be implemented by apps.
+This means the server side can **not** extend the interface with new methods or reduce returned types of existing methods without it being consider an API break.
+However argument types of existing methods can be reduced.
+Same rules apply to ``OCP\EventsDispatcher\Event`` that have the ``OCP\AppFramework\Attribute\Dispatchable`` attribute and ``Exception`` with the ``OCP\AppFramework\Attribute\Throwable`` attribute.
+
+``ExceptionalImplementable``
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Despite not being implementable for all apps, some interfaces can have the ``OCP\AppFramework\Attribute\ExceptionalImplementable`` attribute indicating that they are implementable by a single app (or multiple).
+In those cases the general ``OCP\AppFramework\Attribute\Consumable`` rules apply, but the app maintainers or repository of named exceptions have to be informed during the process of a pull request, leaving them enough time to align with the upcoming change.
+
 
 PHP unstable API
 ----------------

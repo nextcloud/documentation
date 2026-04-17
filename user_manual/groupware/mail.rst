@@ -20,6 +20,34 @@ Switch layout
 
 .. figure:: images/mail_layout.png
 
+Use Compact Mode
+~~~~~~~~~~~~~~~~
+.. versionadded:: 5.7.0
+
+Compact mode offers a cleaner and more efficient way to view your messages. Avatars are hidden, selection checkboxes are always visible, and the preview of messages is removed. It saves space allowing you to see more emails at once.
+
+1. Visit the mail settings
+2. Go to **Appearance**
+3. Toggle the Compact Mode
+
+.. figure:: images/use-compact-mode.png
+
+Message Display / Operation Mode
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. versionadded:: 5.2
+
+Mail has the ability to switch between two different message view and operation modes: *Threaded* and *Singleton*.
+
+In *Threaded* mode, messages are grouped by conversation. In the mailbox message list, related messages are stacked so only the most recent message is shown, and all relates messages are shown in message display panel after the stacked message is selected. This is useful for following discussions and understanding the context of replies. In this mode, message operation like move and delete apply to the entire thread, meaning that when you move or delete a thread, all messages within that thread are affected.
+
+In *Singleton* mode, messages are displayed individually, in both the mailbox message list and message display panel and operation like move and delete apply to only the selected message. This mode is useful when you want to manage messages separately without affecting the entire conversation.
+
+1. Visit mail settings
+2. Choose between *Threaded*, *Singleton*
+
+.. figure:: images/mail_display-mode.png
+
 Add a new mail account
 ~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -40,6 +68,17 @@ Change sort order
 
 .. note:: This change will apply across all your accounts and mailboxes
 
+Sort favorites up
+~~~~~~~~~~~~~~~~~
+
+.. versionadded:: 5.7 Nextcloud 31 or newer
+
+This setting allows you to show messages set as favorite in a separate section on top of the message list.
+
+1. Visit mail settings
+2. Go to *Appearance*
+3. Enable sorting favorites up 
+
 .. _mail-scheduled-messages:
 
 Scheduled messages
@@ -54,6 +93,9 @@ Priority inbox
 ~~~~~~~~~~~~~~
 Priority inbox has 2 section *Important* and *Others*.
 Messages will automatically be marked as important based on which messages you interacted with or marked as important. In the beginning you might have to manually change the importance to teach the system, but it will improve over time.
+
+The automatic classification is optional. You can opt-out when setting up an account. The classification can also be turned on and off in the account settings at any time.
+
 
 .. figure:: images/priority-inbox.png
 
@@ -90,6 +132,22 @@ Mail can move a message to a different folder when it is marked as junk.
 5) Click Move messages to Junk folder
 
 .. figure:: images/mail_move-message-to-junk-folder.png
+
+Refresh mailbox
+~~~~~~~~~~~~~~~~
+
+You can manually trigger a sync of your mailbox by clicking the refresh button located at the top of the mailbox list.
+Starting from ``version 5.7`` triggering the sync will also refresh the list of folders for the selected account.
+
+Unified search
+~~~~~~~~~~~~~~
+
+The Mail app integrates with Nextcloud's :ref:`unified search <unified-search>`
+feature (see :doc:`../webinterface` for details). You can search for emails across
+all your accounts using the search bar in the Nextcloud header.
+
+Mail searches email subjects and sender/recipient fields. To search email bodies,
+use the mailbox search feature in the app.
 
 Search in mailbox
 ~~~~~~~~~~~~~~~~~
@@ -158,6 +216,21 @@ Compose messages
 1. Click new message on the top left of your screen
 2. Start writing your message
 
+Minimize the composer modal
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. versionadded:: 3.2
+
+The composer modal can be minimized while writing a new message, editing an existing draft or a message from the outbox. Simply click the minimize button on the top right of the modal or click anywhere outside the modal.
+
+.. figure:: images/mail-minimize-composer.png
+
+You can resume your minimized message by clicking anywhere on the indicator on the bottom right of your screen.
+
+.. figure:: images/mail-composer-indicator.png
+
+Press close button on the modal or the indicator in the bottom right corner to stop editing a message. A draft will be saved automatically into your draft mailbox.
+
 
 Recipient info on composer
 --------------------------
@@ -179,20 +252,14 @@ By doing so the contact will be automatically added as a recipient.
 
 .. note::  Only contacts with a valid email address will be suggested.
 
-Minimize the composer modal
-~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Text blocks
+-----------
 
-.. versionadded:: 3.2
+.. versionadded:: 5.2
 
-The composer modal can be minimized while writing a new message, editing an existing draft or editing a message from the outbox. Simply click the minimize button on the top right of the modal or click anywhere outside the modal.
-
-.. figure:: images/mail-minimize-composer.png
-
-You can resume your minimized message by clicking anywhere on the indicator on the bottom right of your screen.
-
-.. figure:: images/mail-composer-indicator.png
-
-Press the close button on the modal or the indicator in the bottom right corner to stop editing a message. A draft will be saved automatically into your draft mailbox.
+Text blocks are predefined snippets of text that can be inserted into your email. They can be created and managed in the mail settings.
+They can be inserted into the composer by typing ``!`` and then selecting the block from the list or from the composer actions.
+Text blocks can be shared with users and user groups.
 
 Outbox
 ------
@@ -300,6 +367,17 @@ When looking through your mailbox you will see a short AI generated summary of y
 
 .. note:: Please note that the feature has to be enabled by the administrator
 
+Quick actions
+-------------
+.. versionadded:: 5.5 (Nextcloud 30)
+
+Allows you to group action steps that you would normally perform on envelopes such as tagging, moving, marking as read ... into quick actions that can be executed with a single click.
+Quick actions are scoped to one mail account and can be created and managed in the mail settings under "Quick actions" or directly from the envelope action menu.
+
+.. note:: Some action steps such as `Mark as spam`, `Move thread` and `Delete thread` are mutually exclusive and cannot be part of the same quick action, they also can't be re-ordered and will always be executed last.
+
+.. note:: Please note that quick actions will be performed on all messages in a thread when executed on one.
+
 Message actions
 ---------------
 
@@ -340,6 +418,8 @@ Mail translation
 You are able to translate messages to your configured languages similarly to Talk.
 
 .. note:: Please note that translation features have to be enabled on the server
+
+.. note:: Since version 5.3, if LLM is enabled by admin, translations will be suggested
 
 Thread summary
 --------------
@@ -391,12 +471,12 @@ How to Delete a Filter
 4. Hover over the filter you wish to delete, then click the trash icon.
 
 
-Tests
-^^^^^
+Conditions
+^^^^^^^^^^
 
-Tests are applied to incoming emails on your mail server, targeting fields such as subject (the email\'s subject line), from (the sender), and to (the recipient). You can use the following operators to define conditions for these fields:
+Conditions are applied to incoming emails on your mail server, targeting fields such as Subject, Sender, and Recipient. You can use the following operators to define conditions for these fields:
 
-- **is**: An exact match. The field must be identical to the provided value.
+- **is exactly**: An exact match. The field must be identical to the provided value.
 - **contains**: A substring match. The field matches if the provided value is contained within it. For example, "report" would match "port".
 - **matches**: A pattern match using wildcards. The "*" symbol represents any number of characters (including none), while "?" represents exactly one character. For example, "*report*" would match "Business report 2024".
 
@@ -408,6 +488,17 @@ Actions are triggered when the specified tests are true. The following actions a
 - **fileinto**: Moves the message into a specified folder.
 - **addflag**: Adds a flag to the message.
 - **stop**: Halts the execution of the filter script. No further filters with will be processed after this action.
+
+Create a filter from a message
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. versionadded:: 5.2
+
+To create a filter from a given message, open the message and then open the menu by clicking on the three dots. Next, click on "More actions" followed by "Create mail filter."
+
+In the dialog, please select the conditions to match incoming messages and continue by clicking on "Create mail filter."
+
+.. figure:: images/mail_create_filter_from_message.png
 
 
 Follow-up reminders
@@ -458,3 +549,64 @@ To add an internal address:
 3. Enable the internal addresses by clicking on the checkbox
 4. Click the Add internal address button
 5. Enter the address or domain and click Add
+
+Dashboard integration
+---------------------
+
+.. versionadded:: 1.8
+
+The mail app offers two widgets designed for integration with Nextcloud's dashboard:
+
+* Unread mails: This widget displays unread emails.
+* Important mails: This widget shows emails that have been flagged as important.
+
+These widgets utilize the emails from the email accounts that are set up for your account.
+
+Calendar integration
+--------------------
+
+The Mail app integrates with the Calendar app to help you manage meeting invitations and keep your calendar up to date.
+
+Meeting invitations
+~~~~~~~~~~~~~~~~~~~
+
+When you receive a message containing a meeting invitation, the Mail app automatically detects the attached calendar file and displays a formatted action section to help you respond.
+
+You can:
+
+* **Accept** the invitation
+* **Decline** the invitation
+* **Tentatively accept** the invitation
+
+Your response is sent directly from the Mail app, and the event is added to your primary calendar accordingly.
+
+You can also manually add a meeting invitation to a specific calendar:
+
+1. Open the message with the meeting invitation
+2. Scroll to the bottom of the message to the attachments section
+3. Select the calendar file (usually with a .ics extension), then click the three dots menu.
+4. Click "Import in to calendar" and choose the desired calendar.
+
+Meeting invitation automation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+When a meeting organizer sends updates to an existing event (such as time changes or location updates), the Mail app processes these automatically and updates the corresponding event in your calendar.
+
+.. versionadded:: 5.7 (Nextcloud 32 or newer)
+
+You can also configure Mail to automatically add all new meeting invitations to your calendar without requiring manual acceptance. The invitations will be added to the calendar as tentative.
+
+To enable this feature:
+
+1. Visit account settings of a specific mail account
+2. Navigate to Calendar settings section
+3. Enable *Automatically create tentative appointments in calendar*
+
+.. note:: With this setting enabled, invitations will still appear in your mail list, but they will be automatically added to your calendar.
+
+Keyboard shortcuts
+------------------
+
+The Mail app implements several keyboard shortcuts to speed up your experience.
+
+For a full list of the supported shortcuts, check out the Mail settings in your instance.
