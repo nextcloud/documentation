@@ -30,8 +30,6 @@ In KOrganizer and Kalendar:
 
 3. Enter your username. As password, you need to generate an app-password/token (`Learn more <https://docs.nextcloud.com/server/32/user_manual/en/session_management.html#managing-devices>`_):
 
-.. TODO ON RELEASE: Update version number above on release
-
 .. image:: ../images/korganizer_credentials.png
 
 4. Choose ``Nextcloud`` as Groupware server option:
