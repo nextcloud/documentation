@@ -31,7 +31,6 @@ have an **Featured**-tag.
 
 .. note:: If you would like to develop your own Nextcloud app, you can find out
           more information in our `developer manual <https://docs.nextcloud.com/server/32/go.php?to=developer-manual>`_.
-.. TODO ON RELEASE: Update version number above on release
 
 All apps must be licensed under AGPLv3+ or any compatible license.
 
