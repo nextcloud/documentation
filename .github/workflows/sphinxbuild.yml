@@ -10,87 +10,500 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  group: build-documentation-${{ github.head_ref || github.run_id }}
+  cancel-in-progress: true
+
 jobs:
-  user_manual:
+  setup-latex-cache:
+    name: Cache LaTeX packages
     runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
-      with:
-        persist-credentials: false
-    - uses: actions/setup-python@83679a892e2d95755f2dac6acb0bfd1e9ac5d548 # v6
-      with:
-        python-version: '3.12'
-        cache: 'pip'
-    - name: Install pip dependencies
-      run: pip install -r requirements.txt
-    - name: Build using Makefile
-      run: cd user_manual && make html
-    - name: Pack  the results in local tar file
-      shell: bash
-      run: tar czf /tmp/documentation.tar.gz -C user_manual/_build/html .
-    - name: Upload static documentation
-      uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0
-      with:
-        name: User manual.zip
-        path: "/tmp/documentation.tar.gz"
 
-  user_manual-en:
-    runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
-      with:
-        persist-credentials: false
-    - uses: actions/setup-python@83679a892e2d95755f2dac6acb0bfd1e9ac5d548 # v6
-      with:
-        python-version: '3.12'
-        cache: 'pip'
-    - name: Install pip dependencies
-      run: pip install -r requirements.txt
-    - name: Build using Makefile
-      run: cd user_manual && make html-lang-en
+      - name: Configure apt cache
+        run: |
+          mkdir -p ${{ runner.temp }}/.cache/archives
+          echo 'Dir::Cache::archives "${{ runner.temp }}/.cache/archives";' | sudo tee /etc/apt/apt.conf.d/apt-cache-tmp
 
-  developer_manual:
-    runs-on: ubuntu-latest
-    steps:
-    - uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
-      with:
-        persist-credentials: false
-    - uses: actions/setup-python@83679a892e2d95755f2dac6acb0bfd1e9ac5d548 # v6
-      with:
-        python-version: '3.12'
-        cache: 'pip'
-    - name: Install pip dependencies
-      run: pip install -r requirements.txt
-    - name: Build using Makefile
-      run: cd developer_manual && make html
-    - name: Pack the results in local tar file
-      shell: bash
-      run: tar czf /tmp/documentation.tar.gz -C developer_manual/_build/html/com .
-    - name: Upload static documentation
-      uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0
-      with:
-        name: Developer manual.zip
-        path: "/tmp/documentation.tar.gz"
+      - name: Cache LaTeX apt packages
+        id: cache-latex-apt
+        uses: actions/cache@668228422ae6a00e4ad889ee87cd7109ec5666a7 # v5.0.4
+        with:
+          path: ${{ runner.temp }}/.cache/archives
+          key: latex-apt-${{ runner.os }}-${{ runner.arch }}-ubuntu-24.04-texlive-2023
+          restore-keys: |
+            latex-apt-${{ runner.os }}-${{ runner.arch }}-ubuntu-24.04-
+            latex-apt-${{ runner.os }}-${{ runner.arch }}-
+          lookup-only: true
 
-  admin_manual:
+      - name: Download LaTeX packages (cache miss only)
+        if: steps.cache-latex-apt.outputs.cache-hit != 'true'
+        run: |
+          sudo DEBIAN_FRONTEND=noninteractive apt-get update
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+            --download-only \
+            python3-pil python3-pip texlive-fonts-recommended latexmk \
+            texlive-latex-extra texlive-latex-recommended texlive-xetex \
+            texlive-fonts-extra-links texlive-fonts-extra xindy
+          # Ensure downloaded packages are owned by the current user so they can be cached
+          sudo chown -R $(id -u):$(id -g) ${{ runner.temp }}/.cache/archives
+
+      - name: Save LaTeX apt cache (cache miss only)
+        if: steps.cache-latex-apt.outputs.cache-hit != 'true'
+        uses: actions/cache/save@668228422ae6a00e4ad889ee87cd7109ec5666a7 # v5.0.4
+        with:
+          path: ${{ runner.temp }}/.cache/archives
+          key: latex-apt-${{ runner.os }}-${{ runner.arch }}-ubuntu-24.04-texlive-2023
+
+  build:
+    name: Build ${{ matrix.manual.name }}
     runs-on: ubuntu-latest
+    needs: setup-latex-cache
+
+    strategy:
+      matrix:
+        manual:
+          - name: "user_manual"
+            directory: "user_manual"
+            make_target: "html"
+            build_path: "_build/html"
+            build_pdf_path: "_build/latex"
+            publish: true
+
+          - name: "user_manual-en"
+            directory: "user_manual"
+            make_target: "html-lang-en"
+            build_path: "_build/html"
+            publish: false
+
+          - name: "developer_manual"
+            directory: "developer_manual"
+            make_target: "html"
+            build_path: "_build/html/com"
+            publish: true
+
+          - name: "admin_manual"
+            directory: "admin_manual"
+            make_target: "html"
+            build_path: "_build/html/com"
+            build_pdf_path: "_build/latex"
+            publish: true
+
     steps:
-    - uses: actions/checkout@8e8c483db84b4bee98b60c0593521ed34d9990e8 # v6.0.1
-      with:
-        persist-credentials: false
-    - uses: actions/setup-python@83679a892e2d95755f2dac6acb0bfd1e9ac5d548 # v6
-      with:
-        python-version: '3.12'
-        cache: 'pip'
-    - name: Install pip dependencies
-      run: pip install -r requirements.txt
-    - name: Build using Makefile
-      run: cd admin_manual && make html
-    - name: Pack the results in local tar file
-      shell: bash
-      run: tar czf /tmp/documentation.tar.gz -C admin_manual/_build/html/com .
-    - name: Upload static documentation
-      uses: actions/upload-artifact@b7c566a772e6b6bfb58ed0dc250532a479d7789f # v6.0.0
-      with:
-        name: Administration manual.zip
-        path: "/tmp/documentation.tar.gz"
+      - name: Cache git metadata
+        uses: actions/cache@668228422ae6a00e4ad889ee87cd7109ec5666a7 # v5.0.4
+        with:
+          path: .git
+          key: git-metadata-${{ github.sha }}
+          restore-keys: |
+            git-metadata-${{ github.sha }}
+            git-metadata
+
+      - name: Checkout repository
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
+      - uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5.6.0
+        with:
+          python-version: "3.12"
+          cache: "pip"
+
+      - name: Install pip dependencies
+        run: pip install -r requirements.txt
+
+      - name: Configure apt cache
+        if: ${{ matrix.manual.build_pdf_path }}
+        run: |
+          mkdir -p ${{ runner.temp }}/.cache/archives
+          echo 'Dir::Cache::archives "${{ runner.temp }}/.cache/archives";' | sudo tee /etc/apt/apt.conf.d/apt-cache-tmp
+
+      - name: Restore LaTeX apt cache
+        if: ${{ matrix.manual.build_pdf_path }}
+        uses: actions/cache/restore@668228422ae6a00e4ad889ee87cd7109ec5666a7 # v5.0.4
+        with:
+          # Use relative path https://github.com/actions/cache/issues/1127
+          path: ${{ runner.temp }}/.cache/archives
+          key: latex-apt-${{ runner.os }}-${{ runner.arch }}-ubuntu-24.04-texlive-2023
+          restore-keys: |
+            latex-apt-${{ runner.os }}-${{ runner.arch }}-ubuntu-24.04-
+            latex-apt-${{ runner.os }}-${{ runner.arch }}-
+
+      - name: Install LaTeX from cache
+        if: ${{ matrix.manual.build_pdf_path }}
+        timeout-minutes: 3
+        run: |
+          sudo DEBIAN_FRONTEND=noninteractive apt-get update
+          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
+            --no-download \
+            python3-pil python3-pip texlive-fonts-recommended latexmk \
+            texlive-latex-extra texlive-latex-recommended texlive-xetex \
+            texlive-fonts-extra-links texlive-fonts-extra xindy
+
+      - name: Build html documentation
+        run: cd ${{ matrix.manual.directory }} && make ${{ matrix.manual.make_target }}
+
+      - name: Compute PDF release version
+        if: ${{ matrix.manual.build_pdf_path }}
+        id: pdf_version
+        run: |
+          branch="${GITHUB_REF#refs/heads/}"
+          if [[ "$branch" == stable* ]]; then
+            echo "release=${branch#stable}" >> $GITHUB_OUTPUT
+          else
+            echo "release=latest" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Build pdf documentation
+        if: ${{ matrix.manual.build_pdf_path }}
+        env:
+          DOCS_RELEASE: ${{ steps.pdf_version.outputs.release }}
+        run: |
+          set -e
+          cd ${{ matrix.manual.directory }}
+          make latexpdf
+          ls -la ${{ matrix.manual.build_pdf_path }}
+          cp ${{ matrix.manual.build_pdf_path }}/*.pdf ${{ matrix.manual.build_path }}/
+
+      - name: Upload static documentation
+        uses: actions/upload-artifact@bbbca2ddaa5d8feaa63e36b76fdaad77386f024f # v7.0.0
+        if: ${{ matrix.manual.publish }}
+        with:
+          name: ${{ matrix.manual.name }}
+          path: ${{ matrix.manual.directory }}/${{ matrix.manual.build_path }}
+
+  # ============================================================================
+  # STAGE AND VALIDATE
+  # ============================================================================
+  # This job is responsible for:
+  # 1. Determining deployment target folder names (branch_name/version_name)
+  # 2. Organizing build artifacts into a clean structure
+  # 3. Validating the documentation (link checking)
+  # 4. Uploading a minimal staging artifact for the deploy job
+  #
+  # IMPORTANT: This job does NOT modify gh-pages. It only prepares and validates
+  # the artifacts that will be deployed. The actual deployment happens in the
+  # deploy job.
+  # ============================================================================
+  stage-and-check:
+    name: Stage and check documentation
+    needs: build
+    runs-on: ubuntu-latest
+
+    outputs:
+      # branch_name: The primary deployment folder name for this branch
+      #   - master → "latest"
+      #   - stable<N> (if highest) → "stable"
+      #   - stable<N> (if not highest) → "<N>" (numeric version)
+      branch_name: ${{ steps.branch.outputs.branch_name }}
+      
+      # additional_deployment: ONLY set if deploying the highest stable branch
+      #   - If this IS the highest stable → "<N>" (numeric version, e.g. "32")
+      #   - Otherwise → "" (empty string)
+      # 
+      # This allows the highest stable to be deployed to TWO locations:
+      #   server/stable/    (via branch_name)
+      #   server/<N>/       (via additional_deployment)
+      additional_deployment: ${{ steps.branch.outputs.additional_deployment }}
+
+    steps:
+      - name: Cache git metadata
+        uses: actions/cache@668228422ae6a00e4ad889ee87cd7109ec5666a7 # v5.0.4
+        with:
+          path: .git
+          key: git-metadata-${{ github.sha }}
+          restore-keys: |
+            git-metadata-${{ github.sha }}
+            git-metadata
+
+      - name: Checkout repository
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+
+      - name: Download all artifacts
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        with:
+          path: artifacts/
+
+      # ========================================================================
+      # PREPARE FOR LINK VALIDATION: BUILD FULL PAGE CONTEXT
+      # ========================================================================
+      # We need to validate links in the new documentation, but some links may
+      # point to other versions or branches that are already deployed. So we:
+      # 1. Fetch the existing gh-pages content (old versions)
+      # 2. Merge in the new artifacts (what we're about to deploy)
+      # 3. Run link checks only on the NEW content, but with full context
+      # ========================================================================
+      # ========================================================================
+      # FETCH GH-PAGES FOR LINK VALIDATION CONTEXT
+      # ========================================================================
+      # We need the existing gh-pages content (old versions) so that link
+      # validation can resolve cross-version references. We use git cache
+      # to make this fast.
+      # ========================================================================
+      - name: Cache git metadata for gh-pages
+        uses: actions/cache@668228422ae6a00e4ad889ee87cd7109ec5666a7 # v5.0.4
+        with:
+          path: .git
+          key: git-metadata-${{ github.sha }}
+          restore-keys: |
+            git-metadata-${{ github.sha }}
+            git-metadata
+
+      - name: Checkout gh-pages branch for validation context
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          ref: gh-pages
+          fetch-depth: 1
+          path: validation-context
+
+      # ========================================================================
+      # DETERMINE DEPLOYMENT TARGETS (branch_name and version_name)
+      # ========================================================================
+      # Logic:
+      # 1. Determine current_branch: use GITHUB_REF if push, GITHUB_BASE_REF if PR
+      # 2. Find the highest numbered stable branch from git remotes
+      # 3. Map the current branch to deployment folder names:
+      #
+      #    master → branch_name=latest (no version_name)
+      #
+      #    stable<N> where N is highest → branch_name=stable, version_name=<N>
+      #      (deployed to both server/stable/ and server/<N>/)
+      #
+      #    stable<N> where N is not highest → branch_name=<N> (no version_name)
+      #      (deployed only to server/<N>/)
+      #
+      #    Any other branch → branch_name=<branch> (no version_name)
+      # ========================================================================
+      - name: Determine deployment targets (branch_name and version_name)
+        id: branch
+        run: |
+          # Determine which branch we're building from
+          current_branch=${GITHUB_REF#refs/heads/}
+          if [ "$GITHUB_EVENT_NAME" = "pull_request" ]; then
+            current_branch=${GITHUB_BASE_REF}
+          fi
+
+          # Find the highest numbered stable branch from the remote
+          # e.g., "stable30", "stable31", "stable32" → extract "32"
+          highest_stable=$(git ls-remote --heads origin | sed -n 's?.*refs/heads/stable\([0-9]\{2\}\)$?\1?p' | sort -n | tail -1)
+          highest_stable_branch="stable${highest_stable}"
+
+          echo "Current branch: $current_branch"
+          echo "Highest stable branch found: $highest_stable_branch"
+
+          # Map branch to deployment folder names
+          case "$current_branch" in
+            "master")
+              # master always deploys to "latest"
+              echo "branch_name=latest" >> $GITHUB_OUTPUT
+              ;;
+            "$highest_stable_branch")
+              # Highest stable gets TWO locations: both "stable" and "<N>"
+              echo "branch_name=stable" >> $GITHUB_OUTPUT
+              echo "additional_deployment=${highest_stable}" >> $GITHUB_OUTPUT
+              ;;
+            *)
+              # Other branches (including older stable branches) get their branch name
+              # For stable<N> where N is not highest: strip "stable" prefix to get just "<N>"
+              branch_for_deploy="${current_branch#stable}"
+              echo "branch_name=$branch_for_deploy" >> $GITHUB_OUTPUT
+              ;;
+          esac
+
+      - name: Log deployment targets
+        run: |
+          echo "Deployment target folder: ${{ steps.branch.outputs.branch_name }}"
+          echo "Additional deployment folder (if applicable): ${{ steps.branch.outputs.additional_deployment }}"
+
+      # ========================================================================
+      # ORGANIZE ARTIFACTS FOR DEPLOYMENT
+      # ========================================================================
+      # Create a clean, minimal staging structure:
+      # - Deploy only the NEW artifacts for this branch
+      # - No need to include existing versions (we'll merge them during deploy)
+      # ========================================================================
+      - name: Organize artifacts for deployment
+        id: organize
+        run: |
+          branch="${{ steps.branch.outputs.branch_name }}"
+
+          # Create the branch folder directly
+          mkdir -p "stage/${branch}"
+
+          # Copy artifacts preserving their manual folder structure
+          # Each artifact (user_manual, admin_manual, developer_manual) contains
+          # the build output that should be placed in a folder named after the artifact
+          for artifact in artifacts/*; do
+            if [ -d "$artifact" ]; then
+              manual_name="$(basename "$artifact")"
+              # Create the manual-specific folder
+              mkdir -p "stage/${branch}/${manual_name}"
+              # Copy artifact contents into the manual folder
+              cp -r "$artifact/"* "stage/${branch}/${manual_name}/"
+            fi
+          done
+
+          # Move PDF files to the root of the branch folder for cleaner structure
+          find "stage/${branch}/" -maxdepth 2 -name "*.pdf" -type f -exec mv {} "stage/${branch}/" \;
+
+          # Clean up empty directories
+          find stage -type d -empty -delete
+
+          echo "Staged artifacts for ${branch}:"
+          find stage -type f | head -20
+
+      # ========================================================================
+      # CACHE STAGING ARTIFACTS
+      # ========================================================================
+      # Cache the staging folder for use in deploy job.
+      # This avoids artifact storage overhead (saves ~1.8GB).
+      # ========================================================================
+      - name: Cache staged artifacts
+        uses: actions/cache/save@668228422ae6a00e4ad889ee87cd7109ec5666a7 # v5.0.4
+        with:
+          path: stage/
+          key: staged-docs-${{ github.sha }}
+
+  # ============================================================================
+  # DEPLOY
+  # ============================================================================
+  # This job is responsible for:
+  # 1. Downloading the staged artifacts from stage-and-check
+  # 2. Applying them to the gh-pages branch
+  # 3. Creating a pull request for the deployment
+  #
+  # This job ONLY runs on pushes (not on pull requests), since we only want
+  # to deploy when code is merged to master or a stable branch.
+  # ============================================================================
+  deploy:
+    name: Deploy documentation for gh-pages
+    needs: stage-and-check
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: write
+      pull-requests: write
+
+    steps:
+      - name: Cache git metadata
+        uses: actions/cache@668228422ae6a00e4ad889ee87cd7109ec5666a7 # v5.0.4
+        with:
+          path: .git
+          key: git-metadata-${{ github.sha }}
+          restore-keys: |
+            git-metadata-${{ github.sha }}
+            git-metadata
+
+      - name: Checkout gh-pages branch
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          ref: gh-pages
+          fetch-depth: 1
+          persist-credentials: false
+
+      - name: Restore staged artifacts from cache
+        uses: actions/cache/restore@668228422ae6a00e4ad889ee87cd7109ec5666a7 # v5.0.4
+        with:
+          path: stage/
+          key: staged-docs-${{ github.sha }}
+          fail-on-cache-miss: true
+
+      # ========================================================================
+      # APPLY STAGED ARTIFACTS TO GH-PAGES
+      # ========================================================================
+      # Strategy:
+      # - Copy from stage/<branch_name>/ to server/<branch_name>/
+      # - If version_name is set, ALSO copy to server/<version_name>/
+      # - This allows the highest stable to live in both locations
+      # ========================================================================
+      - name: Apply staged artifacts to gh-pages
+        id: apply
+        run: |
+          branch="${{ needs.stage-and-check.outputs.branch_name }}"
+          additional="${{ needs.stage-and-check.outputs.additional_deployment }}"
+
+          changed=0
+
+          # Deploy to primary branch folder
+          echo "Deploying to server/${branch}/"
+          if [ -d "stage/${branch}" ]; then
+            rm -rf "server/${branch}"
+            mkdir -p "server/${branch}"
+            cp -r "stage/${branch}/"* "server/${branch}/" || true
+            changed=1
+          fi
+
+          # If this is the highest stable branch, also deploy to its versioned folder
+          if [ -n "${additional}" ]; then
+            echo "Also deploying to server/${additional}/ (additional versioned deployment)"
+            rm -rf "server/${additional}"
+            mkdir -p "server/${additional}"
+            cp -r "stage/${branch}/"* "server/${additional}/" || true
+            changed=1
+          fi
+
+          # Clean up empty directories
+          find . -type d -empty -delete
+
+          # Log the final directory structure for debugging
+          echo "Final server/ structure:"
+          find server -type d -maxdepth 2
+
+          # Check if there are actual changes
+          if git diff --quiet HEAD; then
+            echo "has_changes=false" >> $GITHUB_OUTPUT
+          else
+            echo "has_changes=true" >> $GITHUB_OUTPUT
+          fi
+
+        # Remove the stage/ directory BEFORE creating the PR so it doesn't get committed
+      - name: Clean up staging cache before commit
+        run: rm -rf stage/
+
+      - name: Create Pull Request for documentation deployment
+        uses: peter-evans/create-pull-request@c0f553fe549906ede9cf27b5156039d195d2ece0 # v8.1.0
+        id: cpr
+        if: steps.apply.outputs.has_changes == 'true'
+        with:
+          token: ${{ secrets.COMMAND_BOT_PAT }}
+          commit-message: "chore: update documentation for `${{ needs.stage-and-check.outputs.branch_name }}`"
+          committer: nextcloud-command <nextcloud-command@users.noreply.github.com>
+          author: nextcloud-command <nextcloud-command@users.noreply.github.com>
+          signoff: true
+          branch: "automated/deploy/documentation-${{ needs.stage-and-check.outputs.branch_name }}"
+          base: gh-pages
+          title: "Documentation update for `${{ needs.stage-and-check.outputs.branch_name }}`"
+          body: |
+            This PR was automatically generated by the CI workflow and
+            includes the latest changes for the `${{ needs.stage-and-check.outputs.branch_name }}` branch.
+
+          delete-branch: true
+          labels: "automated, 3. to review"
+
+      - name: Enable Pull Request Automerge
+        run: gh pr merge --merge --auto "${{ steps.cpr.outputs.pull-request-number }}"
+        if: steps.cpr.outputs.pull-request-number != ''
+        env:
+          GH_TOKEN: ${{ secrets.COMMAND_BOT_PAT }}
+
+  summary:
+    needs: [build, stage-and-check, deploy]
+    runs-on: ubuntu-latest-low
+    if: always()
+
+    permissions:
+      contents: read
+
+    name: build-deploy-summary
+
+    steps:
+      - name: Summary status
+        run: |
+          if ${{ github.event_name == 'pull_request' }}
+          then
+            echo "This workflow ran for a pull request. We need build and stage-and-check to succeed, but deploy will be skipped"
+            if ${{ needs.build.result != 'success' || needs.stage-and-check.result != 'success' || needs.deploy.result != 'skipped' }}; then exit 1; fi
+          else
+            echo "This workflow ran for a push. We need all jobs to succeed, including deploy"
+            if ${{ needs.build.result != 'success' || needs.stage-and-check.result != 'success' || needs.deploy.result != 'success' }}; then exit 1; fi
+          fi
+          

@@ -96,6 +96,7 @@ Technical details
 * Supported inputs are all text based ones and buttons type ones
 
 .. image:: ../images/popover-position.png
+   :alt: Diagram showing required 14px right distance for popover menu positioning relative to the three-dot icon
 
 Alignment
 ---------
