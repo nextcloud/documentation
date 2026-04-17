@@ -49,5 +49,3 @@ If it's still not working, have a look at `Troubleshooting Contacts & Calendar`_
 
 .. _Troubleshooting Contacts & Calendar: https://docs.nextcloud.com/server/31/admin_manual/issues/general_troubleshooting.html#troubleshooting-contacts-calendar
 .. _Troubleshooting Service Discovery: https://docs.nextcloud.com/server/31/admin_manual/issues/general_troubleshooting.html#service-discovery
-
-.. TODO ON RELEASE: Update version number above on release

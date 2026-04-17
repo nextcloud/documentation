@@ -39,5 +39,3 @@ respective manuals:
 
 .. _`Nextcloud User Manual`: https://docs.nextcloud.com/server/31/user_manual/en/
 .. _`Nextcloud Desktop Client`: https://docs.nextcloud.com/desktop/latest/
-
-.. TODO ON RELEASE: Update version number above on release

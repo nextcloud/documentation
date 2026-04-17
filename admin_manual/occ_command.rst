@@ -961,8 +961,6 @@ The command line option ``--transfer-incoming-shares`` overwrites the config.php
 Users may also transfer files or folders selectively by themselves.
 See `user documentation <https://docs.nextcloud.com/server/31/user_manual/en/files/transfer_ownership.html>`_ for details.
 
-.. TODO ON RELEASE: Update version number above on release
-
 .. _occ_sharing_label:
 
 Files Sharing
