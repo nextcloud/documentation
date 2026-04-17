@@ -108,12 +108,17 @@ In downstream apps like Context Chat and assistant, users can use the text proce
 Frontend apps
 ~~~~~~~~~~~~~
 
-* *Text* for offering an inline graphical UI for the various tasks
 * `Assistant <https://apps.nextcloud.com/apps/assistant>`_ for offering a graphical UI for the various tasks, a smart picker and "Chat with AI" functionality
 * `Mail <https://apps.nextcloud.com/apps/mail>`_ for summarizing mail threads (see :ref:`the Nextcloud Mail docs<mail_thread_summary>` for how to enable this)
 * `Summary Bot <https://apps.nextcloud.com/apps/summary_bot>`_ for summarizing chat histories in `Talk <https://apps.nextcloud.com/apps/spreed>`_
 * `Talk <https://apps.nextcloud.com/apps/spreed>`_ for summarizing chat history (see `Nextcloud Talk docs <https://nextcloud-talk.readthedocs.io/en/latest/settings/#app-configuration>`_ for how to enable this)
-
+* `Text <https://apps.nextcloud.com/apps/text>`_ for offering an inline graphical UI for the various tasks
+* `Collectives <https://apps.nextcloud.com/apps/collectives>`_ integrating Assistant through the smart picker to offer a graphical UI for the various tasks
+* `Notes <https://apps.nextcloud.com/apps/notes>`_ integrating Assistant through the smart picker to offer a graphical UI for the various tasks
+* `Whiteboard <https://apps.nextcloud.com/apps/whiteboard>`_ integrating Assistant through the smart picker to offer a graphical UI for the various tasks
+* `Deck <https://apps.nextcloud.com/apps/deck>`_ integrating Assistant through the smart picker to offer a graphical UI for the various tasks
+* `Nextcloud Office <https://apps.nextcloud.com/apps/richdocuments>`_ integrating Assistant through the smart picker to offer a graphical UI for the various tasks in documents
+* `Desktop Clients <https://docs.nextcloud.com/server/latest/user_manual/en/desktop/index.html>`_ for simple "Chat with AI"
 
 Backend apps
 ~~~~~~~~~~~~
@@ -134,10 +139,15 @@ In downstream apps like the Text app, users can use the translation functionalit
 Frontend apps
 ~~~~~~~~~~~~~
 
-* *Text* for offering the translation menu
 * `Assistant <https://apps.nextcloud.com/apps/assistant>`_ offering a graphical translation UI
 * `Analytics <https://apps.nextcloud.com/apps/analytics>`_ for translating graph labels
 * `Talk <https://apps.nextcloud.com/apps/spreed>`_ for translating messages and live translations in calls in conjunction with the :ref:`Live Transcription app <ai-live-transcription>`
+* `Deck <https://apps.nextcloud.com/apps/deck>`_ for offering a translation UI in the card description
+* *Text* for offering the translation menu
+* `Notes <https://apps.nextcloud.com/apps/notes>`_ for offering a translation UI in the note content
+* `Collectives <https://apps.nextcloud.com/apps/collectives>`_ for offering a translation UI in the page content
+* `Whiteboard <https://apps.nextcloud.com/apps/whiteboard>`_ for offering a translation UI through the assistant
+* `Nextcloud Office <https://apps.nextcloud.com/apps/richdocuments>`_ for offering translation UI in the document content
 
 Backend apps
 ~~~~~~~~~~~~
@@ -177,6 +187,12 @@ Frontend apps
 ~~~~~~~~~~~~~
 
 * `Assistant <https://apps.nextcloud.com/apps/assistant>`_ for offering a graphical UI and a smart picker
+* `Deck <https://apps.nextcloud.com/apps/deck>`_ for inserting images with the smart picker
+* `Text` for inserting images with the assistant and smart picker
+* `Notes <https://apps.nextcloud.com/apps/notes>`_ for inserting images with the assistant and smart picker
+* `Collectives <https://apps.nextcloud.com/apps/collectives>`_ for inserting images with the assistant and smart picker
+* `Whiteboard <https://apps.nextcloud.com/apps/whiteboard>`_ for inserting images with the assistant and smart picker, generating diagrams and flowcharts with Mermaid
+* `Nextcloud Office <https://apps.nextcloud.com/apps/richdocuments>`_ for inserting images with the assistant and smart picker
 
 Backend apps
 ~~~~~~~~~~~~

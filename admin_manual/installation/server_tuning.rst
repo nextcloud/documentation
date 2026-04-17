@@ -175,13 +175,7 @@ To change the default from ``2`` and check for changes on disk at most every ``6
 
   opcache.revalidate_freq = 60
 
-Alternatively, you can disable the revalidation completely:
-
-.. code:: ini
-
-  opcache.validate_timestamps = 0
-
-Any server or app upgrades, or changes to ``config.php``, will then require restarting PHP (or otherwise manually clearing the cache or invalidating this particular script).
+Any Server/app upgrades or changes to ``config.php`` will then require restarting PHP (or otherwise manually clearing the cache or invalidating this particular script).
 
 .. warning::
    Please do not report bugs or odd behavior after upgrading Nextcloud or Nextcloud apps until after you've 
