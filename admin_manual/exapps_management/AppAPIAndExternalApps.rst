@@ -100,9 +100,9 @@ If successful, the ExApp will be displayed under the "Your apps" list.
 FAQ
 ---
 
-* I have two graphics cards XXX with 6/8/Y GB of ram each. How can I run something which does not fit into one graphics card?
+* I have two graphics cards (e.g. NVIDIA RTX 3060) with 8 GB of VRAM each. How can I run something which does not fit into one graphics card?
     * Distributing models across multiple GPUs is currently not supported. You will need a GPU that fits all of the model you are trying to use.
-* I have YYY graphics card that does not supports CUDA - can I use it and how?
+* I have a graphics card that does not support CUDA - can I use it and how?
     * No, our AI apps require GPUs with CUDA support to function at this time.
 * What is the minimum VRAM size requirement for the GPU if I want to install multiple apps?
     * When running multiple ExApps on the same GPU, the GPU must hold the largest model amongst the apps you install.
