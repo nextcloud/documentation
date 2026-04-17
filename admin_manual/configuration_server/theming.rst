@@ -11,7 +11,7 @@ Customize the appearance of Nextcloud
 
 You can change the following aspects of your instance's appearance:
 
-.. figure:: ../configuration_server/images/theming1.png
+.. figure:: images/theming1.png
 
 * **Name** (e.g., ACME Inc. Cloud).
 * **Web link** (e.g., https://acme.inc/).
@@ -21,7 +21,7 @@ You can change the following aspects of your instance's appearance:
 * **Logo**: Appears in the header and on the login page (default size: 62x34 px).
 * **Background and login image**: Sets the page background.
 
-.. figure:: ../configuration_server/images/theming2.png
+.. figure:: images/theming2.png
 
 * **Additional legal links**: Legal notice and privacy policy.
 * **Custom header logo and favicon**: Optionally override the auto-generated favicon based on your logo.
