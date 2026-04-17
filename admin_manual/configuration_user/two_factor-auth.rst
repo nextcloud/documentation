@@ -55,8 +55,6 @@ By default 2FA is *optional*, hence users are given the choice whether to enable
 it for their account `under their personal settings <https://docs.nextcloud.com/server/33/user_manual/en/user_2fa.html>`_.
 Admins may, however, enforce the use of 2FA.
 
-.. TODO ON RELEASE: Update version number above on release
-
 Enforcement is possible system-wide (all users) or for selected groups only. Select groups
 can also be excluded from 2FA requirements. 
 

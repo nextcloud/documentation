@@ -69,8 +69,6 @@ In a script, when sending a request to Nextcloud, make sure that the ``EX-APP-ID
 Your custom scripts can make requests to any endpoint of the
 `Nextcloud OCS API <https://docs.nextcloud.com/server/33/developer_manual/_static/openapi.html>`_ .
 
-.. TODO ON RELEASE: Update version number above on release
-
 .. code-block:: javascript
 
    import * as wmill from "windmill-client";
@@ -199,5 +197,3 @@ If the Windmill Hub does not contain any script to perform the action you have i
 you can take an existing Nextcloud script as example and create your own.
 Your custom scripts can make requests to any endpoint of the
 `Nextcloud OCS API <https://docs.nextcloud.com/server/33/developer_manual/_static/openapi.html>`_ .
-
-.. TODO ON RELEASE: Update version number above on release
