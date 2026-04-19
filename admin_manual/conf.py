@@ -144,3 +144,8 @@ pdf_documents = [
 current_docs = 'admin_manual'
 html_context['versions'] = generateVersionsDocs(current_docs)
 html_context['theme_vcs_pageview_mode'] += current_docs
+
+redirects = {
+    # consolidated with Deployment chapter 4/2026
+    "desktop/accountcommand": "desktop/massdeployment",
+}
