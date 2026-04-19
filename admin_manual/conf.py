@@ -31,6 +31,7 @@ extensions += [
     'rst2pdf.pdfbuilder',
     'sphinx.ext.intersphinx',
     'sphinx_toolbox.sidebar_links',
+    'sphinx_reredirects',
 ]
 
 templates_path = [
