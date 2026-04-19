@@ -13,6 +13,7 @@ synchronized between your computer and your Nextcloud server.
    usage
    commandline
    options
+   configfile
    envvars
    autoupdate
    updatechannel
