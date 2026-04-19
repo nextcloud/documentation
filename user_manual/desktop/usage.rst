@@ -281,3 +281,13 @@ this list:
 - Files are removed that cause individual errors three times during a
   synchronization. However, the client provides the option of retrying a
   synchronization three additional times on files that produce errors.
+
+Virtual Files on macOS
+----------------------
+
+For information about using virtual files integration on macOS, see:
+
+.. toctree::
+   :maxdepth: 1
+
+   macosvfs
