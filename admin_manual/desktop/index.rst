@@ -19,7 +19,6 @@ Your files are always automatically synchronized between your Nextcloud server, 
    configfile
    envvars
    commandline
-   accountcommand
    troubleshooting
   
 You can find additional information here:
