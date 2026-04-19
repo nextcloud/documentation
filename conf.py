@@ -10,10 +10,16 @@ now = datetime.datetime.now()
 
 os.environ["READTHEDOCS"] = "True"
 
-extensions = ['sphinx_rtd_theme', 'sphinx_rtd_dark_mode', 'sphinx_copybutton', 'sphinxcontrib.mermaid']
+extensions = [
+    'sphinx_rtd_theme',
+    'sphinx_rtd_dark_mode',
+    'sphinx_copybutton',
+    'sphinxcontrib.mermaid',
+    'notfound.extension',
+]
 
 # General information about the project.
-copyright = str(now.year) + ' Nextcloud GmbH'
+copyright = '2016-' + str(now.year) + ' Nextcloud GmbH and Nextcloud contributors'
 
 # The version info for the project you're documenting, acts as replacement for
 # |version| and |release|, also used in various other places throughout the
@@ -47,6 +53,9 @@ html_theme_options = {
 # relative path to subdirectories
 html_logo = "../_shared_assets/static/logo-white.png"
 
+# disable including the reST sources in HTML builds (in _sources/) (default is True)
+html_copy_source = False
+
 # substitutions go here
 rst_epilog = """
 .. |version| replace:: %s
@@ -62,10 +71,10 @@ def setup(app):
 
 
 # building the versions list
-version_start = 28		# THIS IS THE OLDEST SUPPORTED VERSION NUMBER
+version_start = 31		# THIS IS THE OLDEST SUPPORTED VERSION NUMBER
 
 						# THIS IS THE VERSION THAT IS MAPPED TO https://docs.nextcloud.com/server/stable/
-version_stable = 30		# CHANGING IT MUST RESULT IN A CHANGE OF THE SYMLINK ON THE LIVE SERVER
+version_stable = 32		# CHANGING IT MUST RESULT IN A CHANGE OF THE SYMLINK ON THE LIVE SERVER
 
 # Also search for "TODO ON RELEASE" in the rst files
 
@@ -121,3 +130,25 @@ if (version.isdigit() and version < version_start):
 default_dark_mode = False
 
 latex_engine = "xelatex"
+
+# -- Options for sphinx-notfound-page extension -----------------------------------
+# https://github.com/readthedocs/sphinx-notfound-page
+
+# content context passed to the 404 template
+notfound_context = {
+    "title": "404 Page Not Found",
+    "body": """
+<h1>Page Not Found</h1>
+<h2>Sorry, we can't seem to find the page you're looking for.</h2>
+<h6>Error code: 404</h6>
+
+<h3>Here are some alternatives:</h3>
+<ol>
+  <li>Try using the search box.</li>
+  <li>Check the content menu on the side of this page.</li>
+  <li>Regroup at our <a href="/">documentation homepage.</a></p></li>
+</ol>
+""",
+}
+
+notfound_urls_prefix = None
