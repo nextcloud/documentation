@@ -294,7 +294,7 @@ Linux:
      --apppassword Jliy12356785jxnHa2ZCiZ9MX48ncECwDso95Pq3a5HABjY34ZvhZiXrPfpKWUg7aOHAX5 \
      --serverurl https://cloud.example.com \
      --localdirpath "/home/admin/Nextcloud-sync-folder" \
-     --remotedirpath /Music
+     --remotedirpath /Music \
      --isvfsenabled 0
 
 macOS:
@@ -306,7 +306,7 @@ macOS:
      --apppassword Jliy12356785jxnHa2ZCiZ9MX48ncECwDso95Pq3a5HABjY34ZvhZiXrPfpKWUg7aOHAX5 \
      --serverurl https://cloud.example.com \
      --localdirpath "/Users/admin/Nextcloud-sync-folder" \
-     --remotedirpath /Music
+     --remotedirpath /Music \
      --isvfsenabled 1
 
 Recommendations
@@ -326,7 +326,9 @@ For reliable deployment automation:
 Interactive wizard preconfiguration
 -----------------------------------
 
-If you want to automate an Account Setup Wizard to allow the user skip entering server URL and local sync folder path in UI, you can use command-line parameters.
+If you want to automate the Account Setup Wizard so that users can skip entering
+the server URL and local sync folder path in the UI, you can use command-line
+parameters.
 
 When you specify both, the desktop client's Account Setup Wizard will jump straight to opening a browser for account authentication or connection without the need to enter any of the connection details.
 
