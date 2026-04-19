@@ -55,10 +55,10 @@ jobs:
         # Extract version from branch name (e.g., stable32 -> 32)
         VERSION=$(echo "${{ matrix.target_branch }}" | sed 's/stable//')
         
-        # For branches stable19-stable31, use Python 3.10 instead of 3.12
+        # For branches stable19-stable31, use Python 3.10 instead of 3.13
         if [ "$VERSION" -le 31 ]; then
-          if grep -q "3.12" "${{ inputs.file_path }}"; then
-            sed -i 's/3\.12/3.10/g' "${{ inputs.file_path }}"
+          if grep -q "3.13" "${{ inputs.file_path }}"; then
+            sed -i 's/3\.13/3.10/g' "${{ inputs.file_path }}"
             echo "Updated Python version to 3.10 for stable$VERSION"
           fi
         fi
