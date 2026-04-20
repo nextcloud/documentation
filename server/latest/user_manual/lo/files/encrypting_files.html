@@ -1,0 +1,698 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="lo" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ການນຳໃຊ້ການເຂົ້າລະຫັດຢູ່ຝັ່ງເຊີເວີ &mdash; Nextcloud latest User Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=e7c79d26" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://docs.nextcloud.com/server/stable/user_manual/files/encrypting_files.html" />
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=1fed0ad5"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <script src="../../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Using end-to-end encryption" href="using_e2ee.html" />
+    <link rel="prev" title="Security &amp; encryption" href="security.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Nextcloud latest user manual introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">ສ່ວນຕິດຕໍ່ຜູ້ໃຊ້ຜ່ານເວັບຂອງ Nextcloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../activity.html">Using the Activity app</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Files &amp; synchronization</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="accessing.html">Accessing your files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="managing.html">Managing your files</a></li>
+<li class="toctree-l2"><a class="reference internal" href="collaboration.html">Sharing &amp; collaboration</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="security.html">Security &amp; encryption</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">ການນຳໃຊ້ການເຂົ້າລະຫັດຢູ່ຝັ່ງເຊີເວີ</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#encryption-faq">ຄຳຖາມທີ່ພົບເລື້ອຍກ່ຽວກັບການເຂົ້າລະຫັດ</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#using-encryption">ການນຳໃຊ້ການເຂົ້າລະຫັດ</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#sharing-encrypted-files">ການແບ່ງປັນໄຟລ໌ທີ່ຖືກເຂົ້າລະຫັດ</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#files-not-encrypted">ໄຟລ໌ທີ່ບໍ່ຖືກເຂົ້າລະຫັດ</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="using_e2ee.html">Using end-to-end encryption</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">ກຸ່ມຊອບແວ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Talk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">ການຕັ້ງຄ່າຄວາມມັກຂອງທ່ານ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Universal access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Using two-factor authentication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Manage connected browsers and devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">ບ່ອນເກັບຂໍ້ມູນພາຍນອກ</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest User Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Files &amp; synchronization</a></li>
+          <li class="breadcrumb-item"><a href="security.html">Security &amp; encryption</a></li>
+      <li class="breadcrumb-item active">ການນຳໃຊ້ການເຂົ້າລະຫັດຢູ່ຝັ່ງເຊີເວີ</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/files/encrypting_files.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="using-server-side-encryption">
+<h1>ການນຳໃຊ້ການເຂົ້າລະຫັດຢູ່ຝັ່ງເຊີເວີ<a class="headerlink" href="#using-server-side-encryption" title="Link to this heading"></a></h1>
+<p>Nextcloud ມີແອັບການເຂົ້າລະຫັດຢູ່ຝັ່ງເຊີເວີມາໃຫ້, ແລະ ເມື່ອຜູ້ດູແລລະບົບ Nextcloud ຂອງທ່ານເປີດໃຊ້ງານມັນ, ໄຟລ໌ຂໍ້ມູນ Nextcloud ທັງໝົດຂອງທ່ານຈະຖືກເຂົ້າລະຫັດໂດຍອັດຕະໂນມັດຢູ່ເທິງເຊີເວີ. ການເຂົ້າລະຫັດແມ່ນມີຜົນທົ່ວທັງເຊີເວີ, ສະນັ້ນ ເມື່ອມັນຖືກເປີດໃຊ້ງານແລ້ວ ທ່ານຈະບໍ່ສາມາດເລືອກທີ່ຈະບໍ່ເຂົ້າລະຫັດໄຟລ໌ຂອງທ່ານໄດ້. ທ່ານບໍ່ຈຳເປັນຕ້ອງເຮັດຫຍັງເປັນພິເສດ, ເພາະມັນໃຊ້ຂໍ້ມູນການເຂົ້າສູ່ລະບົບ Nextcloud ຂອງທ່ານເປັນລະຫັດຜ່ານສຳລັບກະແຈການເຂົ້າລະຫັດສ່ວນຕົວຂອງທ່ານເອງ. ພຽງແຕ່ອອກຈາກລະບົບແລ້ວເຂົ້າສູ່ລະບົບຄືນໃໝ່ ກໍສາມາດຈັດການ ແລະ ແບ່ງປັນໄຟລ໌ຂອງທ່ານໄດ້ຕາມປົກກະຕິ, ແລະ ທ່ານຍັງສາມາດປ່ຽນລະຫັດຜ່ານຂອງທ່ານໄດ້ທຸກເວລາທີ່ຕ້ອງການ.</p>
+<p>ຈຸດປະສົງຫຼັກແມ່ນເພື່ອເຂົ້າລະຫັດໄຟລ໌ໃນການບໍລິການເກັບຂໍ້ມູນທາງໄກທີ່ເຊື່ອມຕໍ່ກັບເຊີເວີ Nextcloud ຂອງທ່ານ. ນີ້ແມ່ນວິທີທີ່ງ່າຍ ແລະ ສະດວກໃນການປົກປ້ອງໄຟລ໌ຂອງທ່ານໃນບ່ອນເກັບຂໍ້ມູນທາງໄກ. ທ່ານສາມາດແບ່ງປັນໄຟລ໌ທາງໄກຂອງທ່ານຜ່ານ Nextcloud ໄດ້ຕາມປົກກະຕິ, ແນວໃດກໍຕາມ ທ່ານບໍ່ສາມາດແບ່ງປັນໄຟລ໌ທີ່ຖືກເຂົ້າລະຫັດໂດຍກົງຈາກບໍລິການທາງໄກທີ່ທ່ານກຳລັງໃຊ້ຢູ່ໄດ້, ເພາະວ່າກະແຈການເຂົ້າລະຫັດຖືກເກັບໄວ້ໃນເຊີເວີ Nextcloud ຂອງທ່ານ ແລະ ຈະບໍ່ຖືກເປີດເຜີຍໃຫ້ກັບຜູ້ໃຫ້ບໍລິການພາຍນອກ.</p>
+<p>ຫາກເຊີເວີ Nextcloud ຂອງທ່ານບໍ່ໄດ້ເຊື່ອມຕໍ່ກັບບໍລິການເກັບຂໍ້ມູນທາງໄກໃດໆ, ມັນຈະເປັນການດີກວ່າທີ່ຈະໃຊ້ການເຂົ້າລະຫັດຮູບແບບອື່ນ ເຊັ່ນ: ການເຂົ້າລະຫັດລະດັບໄຟລ໌ ຫຼື ການເຂົ້າລະຫັດທັງໝົດຂອງດິສກ໌. ເພາະວ່າກະແຈຖືກເກັບໄວ້ໃນເຊີເວີ Nextcloud ຂອງທ່ານ, ມັນຈຶ່ງເປັນໄປໄດ້ທີ່ຜູ້ດູແລລະບົບ Nextcloud ອາດຈະເຂົ້າເບິ່ງໄຟລ໌ຂອງທ່ານໄດ້, ແລະ ຫາກເຊີເວີຖືກບຸກລຸກ ຜູ້ບຸກລຸກອາດຈະສາມາດເຂົ້າເຖິງໄຟລ໌ຂອງທ່ານໄດ້. (ອ່ານ <a class="reference external" href="https://nextcloud.com/blog/encryption-in-nextcloud/">ການເຂົ້າລະຫັດໃນ Nextcloud</a> ເພື່ອຮຽນຮູ້ເພີ່ມເຕີມ.)</p>
+<section id="encryption-faq">
+<h2>ຄຳຖາມທີ່ພົບເລື້ອຍກ່ຽວກັບການເຂົ້າລະຫັດ<a class="headerlink" href="#encryption-faq" title="Link to this heading"></a></h2>
+<section id="how-can-encryption-be-disabled">
+<h3>ຈະປິດການເຂົ້າລະຫັດໄດ້ແນວໃດ?<a class="headerlink" href="#how-can-encryption-be-disabled" title="Link to this heading"></a></h3>
+<p>ວິທີດຽວທີ່ຈະປິດການເຂົ້າລະຫັດໄດ້ແມ່ນການເປີດໃຊ້ສະຄຣິບ <a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/occ_command.html#encryption-label">&quot;ຖອດລະຫັດທັງໝົດ&quot;</a>, ເຊິ່ງຈະຖອດລະຫັດໄຟລ໌ທັງໝົດ ແລະ ປິດການເຂົ້າລະຫັດ.</p>
+</section>
+<section id="is-it-possible-to-disable-encryption-with-the-recovery-key">
+<h3>ເປັນໄປໄດ້ບໍ່ທີ່ຈະປິດການເຂົ້າລະຫັດດ້ວຍກະແຈກູ້ຄືນ?<a class="headerlink" href="#is-it-possible-to-disable-encryption-with-the-recovery-key" title="Link to this heading"></a></h3>
+<p>ໄດ້, <em>ຖ້າຫາກ</em> ຜູ້ໃຊ້ທຸກຄົນໃຊ້ <a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/encryption_configuration.html#enabling-users-file-recovery-keys">ກະແຈກູ້ຄືນໄຟລ໌</a>, ຄຳສັ່ງ <a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/occ_command.html#encryption-label">&quot;ຖອດລະຫັດທັງໝົດ&quot;</a> ຈະໃຊ້ມັນເພື່ອຖອດລະຫັດໄຟລ໌ທັງໝົດ.</p>
+</section>
+<section id="can-encryption-be-disabled-without-the-user-s-password">
+<h3>ສາມາດປິດການເຂົ້າລະຫັດໂດຍບໍ່ມີລະຫັດຜ່ານຂອງຜູ້ໃຊ້ໄດ້ບໍ່?<a class="headerlink" href="#can-encryption-be-disabled-without-the-user-s-password" title="Link to this heading"></a></h3>
+<p>ຫາກທ່ານບໍ່ມີລະຫັດຜ່ານຂອງຜູ້ໃຊ້ ຫຼື <a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/encryption_configuration.html#enabling-users-file-recovery-keys">ກະແຈກູ້ຄືນໄຟລ໌</a>, ມັນກໍຈະບໍ່ມີວິທີໃດທີ່ຈະຖອດລະຫັດໄຟລ໌ທັງໝົດໄດ້. ຍິ່ງໄປກວ່ານັ້ນ, ການເປີດໃຊ້ມັນຕອນເຂົ້າສູ່ລະບົບອາດຈະເປັນອັນຕະລາຍ, ເພາະວ່າມັນມີໂອກາດສູງທີ່ຈະເກີດການໝົດເວລາຂອງລະບົບ (timeout).</p>
+</section>
+<section id="is-it-planned-to-move-this-to-the-next-user-login-or-a-background-job">
+<h3>ມີແຜນທີ່ຈະຍ້າຍສິ່ງນີ້ໄປໄວ້ໃນການເຂົ້າສູ່ລະບົບຄັ້ງຕໍ່ໄປ ຫຼື ໃຫ້ເປັນວຽກງານພື້ນຫຼັງ (background job) ບໍ່?<a class="headerlink" href="#is-it-planned-to-move-this-to-the-next-user-login-or-a-background-job" title="Link to this heading"></a></h3>
+<p>ຖ້າພວກເຮົາເຮັດແນວນັ້ນ, ພວກເຮົາຈຳເປັນຕ້ອງໄດ້ເກັບລະຫັດຜ່ານການເຂົ້າສູ່ລະບົບຂອງທ່ານໄວ້ໃນຖານຂໍ້ມູນ. ສິ່ງນີ້ອາດຈະຖືກເບິ່ງວ່າເປັນບັນຫາດ້ານຄວາມປອດໄພ, ດັ່ງນັ້ນຈຶ່ງບໍ່ມີແຜນການທີ່ຈະເຮັດແບບນັ້ນ.</p>
+</section>
+<section id="is-group-sharing-possible-with-the-recovery-key">
+<h3>ການແບ່ງປັນແບບກຸ່ມສາມາດໃຊ້ຮ່ວມກັບກະແຈກູ້ຄືນໄດ້ບໍ່?<a class="headerlink" href="#is-group-sharing-possible-with-the-recovery-key" title="Link to this heading"></a></h3>
+<p>ຖ້າທ່ານໝາຍເຖິງການເພີ່ມຜູ້ໃຊ້ເຂົ້າໃນກຸ່ມແລ້ວໃຫ້ມັນເຮັດວຽກໄດ້ເອງເລີຍບໍ? ຄຳຕອບຄືບໍ່ໄດ້. ສິ່ງນີ້ຈະເຮັດວຽກໄດ້ສະເພາະກັບກະແຈຫຼັກ (master key) ເທົ່ານັ້ນ.</p>
+</section>
+</section>
+<section id="using-encryption">
+<h2>ການນຳໃຊ້ການເຂົ້າລະຫັດ<a class="headerlink" href="#using-encryption" title="Link to this heading"></a></h2>
+<p>ການເຂົ້າລະຫັດຂອງ Nextcloud ແມ່ນຕັ້ງຄ່າຄັ້ງດຽວແລ້ວປະໄວ້ໄດ້ເລີຍ, ແຕ່ທ່ານຍັງມີບາງຕົວເລືອກທີ່ສາມາດໃຊ້ໄດ້.</p>
+<p>ເມື່ອຜູ້ດູແລລະບົບ Nextcloud ຂອງທ່ານເປີດໃຊ້ງານການເຂົ້າລະຫັດເປັນຄັ້ງທຳອິດ, ທ່ານຕ້ອງອອກຈາກລະບົບແລ້ວເຂົ້າສູ່ລະບົບຄືນໃໝ່ເພື່ອສ້າງກະແຈການເຂົ້າລະຫັດຂອງທ່ານ ແລະ ເຂົ້າລະຫັດໄຟລ໌ຂອງທ່ານ. ເມື່ອການເຂົ້າລະຫັດຖືກເປີດໃຊ້ໃນເຊີເວີ Nextcloud ຂອງທ່ານແລ້ວ, ທ່ານຈະເຫັນແຖບຂໍ້ຄວາມສີເຫຼືອງໃນໜ້າໄຟລ໌ຂອງທ່ານເພື່ອເຕືອນໃຫ້ທ່ານອອກຈາກລະບົບແລ້ວເຂົ້າສູ່ລະບົບຄືນໃໝ່:</p>
+<figure class="align-default">
+<img alt="../../_images/encryption1.png" src="../../_images/encryption1.png" />
+</figure>
+<p>ເມື່ອທ່ານເຂົ້າສູ່ລະບົບຄືນໃໝ່ ມັນຈະໃຊ້ເວລາຄາວໜຶ່ງເພື່ອດຳເນີນການ, ຂຶ້ນກັບວ່າທ່ານມີໄຟລ໌ຫຼາຍປານໃດ, ຈາກນັ້ນທ່ານຈະຖືກສົ່ງກັບໄປຍັງໜ້າຫຼັກ Nextcloud ຂອງທ່ານ.</p>
+<figure class="align-default">
+<img alt="../../_images/encryption2.png" src="../../_images/encryption2.png" />
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>ທ່ານຕ້ອງບໍ່ເຮັດລະຫັດຜ່ານ Nextcloud ຂອງທ່ານເສຍຢ່າງເດັດຂາດ, ເພາະທ່ານຈະສູນເສຍການເຂົ້າເຖິງໄຟລ໌ຂອງທ່ານ. ເຖິງຢ່າງໃດກໍຕາມ, ຍັງມີຕົວເລືອກການກູ້ຄືນທີ່ຜູ້ດູແລລະບົບ Nextcloud ອາດຈະເປີດໃຊ້ງານ; ເບິ່ງສ່ວນລະຫັດຜ່ານກະແຈກູ້ຄືນ (ຂ້າງລຸ່ມ) ເພື່ອຮຽນຮູ້ກ່ຽວກັບເລື່ອງນີ້.</p>
+</div>
+</section>
+<section id="sharing-encrypted-files">
+<h2>ການແບ່ງປັນໄຟລ໌ທີ່ຖືກເຂົ້າລະຫັດ<a class="headerlink" href="#sharing-encrypted-files" title="Link to this heading"></a></h2>
+<p>ສະເພາະຜູ້ໃຊ້ທີ່ມີກະແຈການເຂົ້າລະຫັດສ່ວນຕົວເທົ່ານັ້ນທີ່ຈະສາມາດເຂົ້າເຖິງໄຟລ໌ ແລະ ໂຟນເດີທີ່ຖືກແບ່ງປັນແບບເຂົ້າລະຫັດໄດ້. ຜູ້ໃຊ້ທີ່ຍັງບໍ່ທັນໄດ້ສ້າງກະແຈການເຂົ້າລະຫັດສ່ວນຕົວຈະບໍ່ສາມາດເຂົ້າເຖິງໄຟລ໌ທີ່ຖືກແບ່ງປັນແບບເຂົ້າລະຫັດໄດ້; ເຂົາເຈົ້າຈະເຫັນຊື່ໂຟນເດີ ແລະ ຊື່ໄຟລ໌, ແຕ່ຈະບໍ່ສາມາດເປີດ ຫຼື ດາວໂຫຼດໄຟລ໌ໄດ້. ເຂົາເຈົ້າຈະເຫັນແຖບເຕືອນສີເຫຼືອງທີ່ລະບຸວ່າ &quot;ແອັບການເຂົ້າລະຫັດຖືກເປີດໃຊ້ງານແລ້ວ ແຕ່ກະແຈຂອງທ່ານຍັງບໍ່ທັນໄດ້ຖືກຕັ້ງຄ່າເລີ່ມຕົ້ນ, ກະລຸນາອອກຈາກລະບົບແລ້ວເຂົ້າສູ່ລະບົບຄືນໃໝ່.&quot;</p>
+<p>ເຈົ້າຂອງການແບ່ງປັນອາດຈະຕ້ອງໄດ້ແບ່ງປັນໄຟລ໌ຄືນໃໝ່ຫຼັງຈາກເປີດໃຊ້ການເຂົ້າລະຫັດແລ້ວ; ຜູ້ໃຊ້ທີ່ພະຍາຍາມເຂົ້າເຖິງການແບ່ງປັນຈະເຫັນຂໍ້ຄວາມແນະນຳໃຫ້ເຂົາເຈົ້າບອກເຈົ້າຂອງການແບ່ງປັນໃຫ້ແບ່ງປັນໄຟລ໌ກັບເຂົາເຈົ້າຄືນໃໝ່. ສຳລັບການແບ່ງປັນແບບບຸກຄົນ, ໃຫ້ຍົກເລີກການແບ່ງປັນແລ້ວແບ່ງປັນໄຟລ໌ຄືນໃໝ່. ສຳລັບການແບ່ງປັນແບບກຸ່ມ, ໃຫ້ແບ່ງປັນກັບບຸກຄົນໃດໜຶ່ງທີ່ບໍ່ສາມາດເຂົ້າເຖິງການແບ່ງປັນນັ້ນໄດ້. ສິ່ງນີ້ຈະເປັນການອັບເດດການເຂົ້າລະຫັດ, ຈາກນັ້ນເຈົ້າຂອງການແບ່ງປັນຈຶ່ງສາມາດລຶບການແບ່ງປັນແບບບຸກຄົນອອກໄດ້.</p>
+<section id="recovery-key-password">
+<h3>ລະຫັດຜ່ານກະແຈກູ້ຄືນ<a class="headerlink" href="#recovery-key-password" title="Link to this heading"></a></h3>
+<p>ຫາກຜູ້ດູແລລະບົບ Nextcloud ຂອງທ່ານໄດ້ເປີດໃຊ້ຄຸນສົມບັດກະແຈກູ້ຄືນ, ທ່ານສາມາດເລືອກໃຊ້ຄຸນສົມບັດນີ້ສຳລັບບັນຊີຂອງທ່ານໄດ້. ຫາກທ່ານເປີດໃຊ້ &quot;ການກູ້ຄືນລະຫັດຜ່ານ&quot; ຜູ້ດູແລລະບົບຈະສາມາດອ່ານຂໍ້ມູນຂອງທ່ານໄດ້ດ້ວຍລະຫັດຜ່ານພິເສດ. ຄຸນສົມບັດນີ້ຊ່ວຍໃຫ້ຜູ້ດູແລລະບົບສາມາດກູ້ຄືນໄຟລ໌ຂອງທ່ານໄດ້ໃນກໍລະນີທີ່ທ່ານລືມລະຫັດຜ່ານ Nextcloud ຂອງທ່ານ. ຫາກບໍ່ໄດ້ເປີດໃຊ້ກະແຈກູ້ຄືນ, ມັນກໍຈະບໍ່ມີວິທີການໃດທີ່ຈະກູ້ຄືນໄຟລ໌ຂອງທ່ານໄດ້ ຫາກທ່ານເຮັດລະຫັດຜ່ານເສຍ.</p>
+<figure class="align-default">
+<img alt="../../_images/encryption3.png" src="../../_images/encryption3.png" />
+</figure>
+</section>
+</section>
+<section id="files-not-encrypted">
+<h2>ໄຟລ໌ທີ່ບໍ່ຖືກເຂົ້າລະຫັດ<a class="headerlink" href="#files-not-encrypted" title="Link to this heading"></a></h2>
+<p>ສະເພາະຂໍ້ມູນພາຍໃນໄຟລ໌ຂອງທ່ານເທົ່ານັ້ນທີ່ຖືກເຂົ້າລະຫັດ, ບໍ່ແມ່ນຊື່ໄຟລ໌ ຫຼື ໂຄງສ້າງໂຟນເດີ. ໄຟລ໌ເຫຼົ່ານີ້ຈະບໍ່ຖືກເຂົ້າລະຫັດເລີຍ:</p>
+<ul class="simple">
+<li><p>ໄຟລ໌ເກົ່າໃນຖັງຂີ້ເຫຍື້ອ.</p></li>
+<li><p>ຮູບພາບຕົວຢ່າງ (thumbnails) ຈາກແອັບ Gallery.</p></li>
+<li><p>ການສະແດງຕົວຢ່າງ (previews) ຈາກແອັບ Files.</p></li>
+<li><p>ດັດຊະນີການຄົ້ນຫາ (search index) ຈາກແອັບຄົ້ນຫາຂໍ້ຄວາມທັງໝົດ.</p></li>
+<li><p>ຂໍ້ມູນຂອງແອັບຈາກພາກສ່ວນທີສາມ</p></li>
+</ul>
+<p>ສະເພາະໄຟລ໌ທີ່ຖືກແບ່ງປັນກັບຜູ້ໃຫ້ບໍລິການເກັບຂໍ້ມູນພາກສ່ວນທີສາມເທົ່ານັ້ນທີ່ຈະສາມາດເຂົ້າລະຫັດໄດ້, ສ່ວນໄຟລ໌ອື່ນໆທີ່ເຫຼືອອາດຈະບໍ່ຖືກເຂົ້າລະຫັດ.</p>
+<section id="change-private-key-password">
+<h3>ປ່ຽນລະຫັດຜ່ານກະແຈສ່ວນຕົວ<a class="headerlink" href="#change-private-key-password" title="Link to this heading"></a></h3>
+<p>ຕົວເລືອກນີ້ຈະສາມາດໃຊ້ໄດ້ກໍຕໍ່ເມື່ອລະຫັດຜ່ານການເຂົ້າລະຫັດບໍ່ໄດ້ຖືກປ່ຽນໂດຍຜູ້ດູແລລະບົບ, ແຕ່ມີພຽງລະຫັດຜ່ານການເຂົ້າສູ່ລະບົບເທົ່ານັ້ນທີ່ຖືກປ່ຽນ. ສິ່ງນີ້ສາມາດເກີດຂຶ້ນໄດ້ຫາກຜູ້ໃຫ້ບໍລິການ Nextcloud ຂອງທ່ານໃຊ້ລະບົບຈັດການຜູ້ໃຊ້ພາຍນອກ (ຕົວຢ່າງ: LDAP) ແລະ ປ່ຽນລະຫັດຜ່ານຂອງທ່ານຜ່ານການຕັ້ງຄ່ານັ້ນ. ໃນກໍລະນີນີ້ນ, ທ່ານສາມາດຕັ້ງລະຫັດຜ່ານການເຂົ້າລະຫັດໃຫ້ເປັນລະຫັດຜ່ານການເຂົ້າສູ່ລະບົບອັນໃໝ່ໄດ້ ໂດຍການລະບຸລະຫັດຜ່ານການເຂົ້າສູ່ລະບົບທັງອັນເກົ່າ ແລະ ອັນໃໝ່. ແອັບການເຂົ້າລະຫັດຈະເຮັດວຽກໄດ້ກໍຕໍ່ເມື່ອລະຫັດຜ່ານການເຂົ້າສູ່ລະບົບ ແລະ ລະຫັດຜ່ານການເຂົ້າລະຫັດຂອງທ່ານແມ່ນອັນດຽວກັນ.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="security.html" class="btn btn-neutral float-left" title="Security &amp; encryption" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="using_e2ee.html" class="btn btn-neutral float-right" title="Using end-to-end encryption" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+  
+  <!-- Here go the languages -->
+
+  
+  
+
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      🌐 lo
+      <span class="fa fa-caret-down"></span>
+       ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>🌐 ພາສາ</dt>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ar/"
+               
+            >
+              Arabic
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/br/"
+               
+            >
+              Breton
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ca/"
+               
+            >
+              Catalan
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_CN/"
+               
+            >
+              Chinese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_HK/"
+               
+            >
+              Chinese (HK)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_TW/"
+               
+            >
+              Chinese (TW)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/cs/"
+               
+            >
+              Czech
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/da/"
+               
+            >
+              Danish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nl/"
+               
+            >
+              Dutch
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/en/"
+               
+            >
+              English
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/fi_FI/"
+               
+            >
+              Finnish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/fr/"
+               
+            >
+              French
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/gl/"
+               
+            >
+              Galician
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/de/"
+               
+            >
+              German
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/el/"
+               
+            >
+              Greek
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/hu_HU/"
+               
+            >
+              Hungarian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/id/"
+               
+            >
+              Indonesian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ga/"
+               
+            >
+              Irish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/it/"
+               
+            >
+              Italian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ja_JP/"
+               
+            >
+              Japanese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ko/"
+               
+            >
+              Korean
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/lo/"
+               
+               style="color: var(--dark-link-color);"
+               
+            >
+              lo
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/lt/"
+               
+            >
+              lt
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/mn/"
+               
+            >
+              Mongolian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nb_NO/"
+               
+            >
+              Norwegian (NB)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nn/"
+               
+            >
+              Norwegian (NN)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pl/"
+               
+            >
+              Polish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pt_PT/"
+               
+            >
+              Portuguese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pt_BR/"
+               
+            >
+              Portuguese (BR)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ro/"
+               
+            >
+              Romanian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ru/"
+               
+            >
+              Russian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/si/"
+               
+            >
+              Sinhala
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sk_SK/"
+               
+            >
+              Slovakian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sr/"
+               
+            >
+              Slovenian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/es/"
+               
+            >
+              Spanish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sv/"
+               
+            >
+              Swedish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ta/"
+               
+            >
+              Tamil
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/tr/"
+               
+            >
+              Turkish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/uk_UA/"
+               
+            >
+              Ukrainian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/uz/"
+               
+            >
+              Uzbek
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/vi/"
+               
+            >
+              Vietnamese
+            </a>
+          </dd>
+        
+      </dl>
+    </div>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ ເວີຊັນ</dt>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/latest/user_manual"
+               
+               style="color: var(--dark-link-color);"
+               
+            >
+              latest
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/stable/user_manual"
+               
+            >
+              stable
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/32/user_manual"
+               
+            >
+              32
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/31/user_manual"
+               
+            >
+              31
+            </a>
+          </dd>
+        
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

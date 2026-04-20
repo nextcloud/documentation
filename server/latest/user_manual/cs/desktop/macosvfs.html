@@ -31,7 +31,7 @@
     <script src="../../_static/js/versions.js"></script>
     <link rel="index" title="Rejstřík" href="../genindex.html" />
     <link rel="search" title="Vyhledávání" href="../search.html" />
-    <link rel="next" title="Nástroj pro automatickou aktualizaci" href="autoupdate.html" />
+    <link rel="next" title="Using the Command-Line Client" href="commandline.html" />
     <link rel="prev" title="Používání synchronizačního klienta" href="usage.html" /> 
 </head>
 
@@ -66,29 +66,29 @@
 <li class="toctree-l1"><a class="reference internal" href="../files/index.html">Soubory a synchronizace</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Software pro podporu spolupráce</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Talk</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Klienti pro desktop</a><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Desktop Client</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="installation.html">Instalace</a></li>
 <li class="toctree-l2"><a class="reference internal" href="uninstallation.html">Uninstallation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="usage.html">Používání synchronizačního klienta</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">macOS Virtual Files Client</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#supported-features">Podporované funkce</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#configuration">Nastavení</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#finder-integration">Napojení na Finder</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#sync-status-indicators">Indikátory stavu synchronizace</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#context-menu-actions">Akce kontextové nabídky</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#keep-downloaded">Keep Downloaded</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#locking">Locking</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#sharing">Sharing</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#file-actions">File actions</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#known-issues">Known issues</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#macos-extensions-conflict">macOS Extensions conflict</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#alias-files">Alias files</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="usage.html">Používání synchronizačního klienta</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="usage.html#systray-icon">Ikona v oznamovací oblasti systémového panelu</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usage.html#configuring-nextcloud-account-settings">Nastavování Nextcloud účtu</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usage.html#adding-new-accounts">Přidávání nových účtů</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usage.html#file-manager-overlay-icons">Překryvné ikony správce souborů</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usage.html#set-the-user-status">Nastavit stav uživatele</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usage.html#sharing-from-your-desktop">Sdílení z vašeho desktopu</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usage.html#general-window">Obecné okno</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usage.html#using-the-network-window">Použití okna Síť</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usage.html#using-the-ignored-files-editor">Používání editoru seznamu souborů k ignorování</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="usage.html#virtual-files-on-macos">Virtual Files on macOS</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">macOS Virtual Files Client</a></li>
 </ul>
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="commandline.html">Using the Command-Line Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html">Command-Line Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configfile.html">Configuration File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="envvars.html">Environment Variables</a></li>
 <li class="toctree-l2"><a class="reference internal" href="autoupdate.html">Nástroj pro automatickou aktualizaci</a></li>
 <li class="toctree-l2"><a class="reference internal" href="updatechannel.html">Kanály aktualizací</a></li>
 <li class="toctree-l2"><a class="reference internal" href="conflicts.html">Kolize</a></li>
@@ -116,7 +116,8 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="index.html">Klienti pro desktop</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Desktop Client</a></li>
+          <li class="breadcrumb-item"><a href="usage.html">Používání synchronizačního klienta</a></li>
       <li class="breadcrumb-item active">macOS Virtual Files Client</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/desktop/macosvfs.rst" class="fa fa-github"> Edit on GitHub</a>
@@ -258,7 +259,7 @@ To avoid the issue entirely, right-click the alias file in Finder and choose
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="usage.html" class="btn btn-neutral float-left" title="Používání synchronizačního klienta" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="autoupdate.html" class="btn btn-neutral float-right" title="Nástroj pro automatickou aktualizaci" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="commandline.html" class="btn btn-neutral float-right" title="Using the Command-Line Client" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
@@ -283,6 +284,8 @@ To avoid the issue entirely, right-click the alias file in Finder and choose
 
   
   
+  
+    
   
     
   
@@ -544,6 +547,14 @@ To avoid the issue entirely, right-click the alias file in Finder and choose
                
             >
               Korean
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/lo/"
+               
+            >
+              lo
             </a>
           </dd>
         

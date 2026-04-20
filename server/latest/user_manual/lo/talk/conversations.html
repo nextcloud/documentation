@@ -1,0 +1,777 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="lo" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ການສົນທະນາ &mdash; Nextcloud latest User Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=e7c79d26" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://docs.nextcloud.com/server/stable/user_manual/talk/conversations.html" />
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=1fed0ad5"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <script src="../../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="ເປີດການສົນທະນາ" href="open_conversations.html" />
+    <link rel="prev" title="Conversations" href="conversation_index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Nextcloud latest user manual introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">ສ່ວນຕິດຕໍ່ຜູ້ໃຊ້ຜ່ານເວັບຂອງ Nextcloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../activity.html">Using the Activity app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../files/index.html">Files &amp; synchronization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">ກຸ່ມຊອບແວ</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Talk</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="chat_index.html">Chat</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="conversation_index.html">Conversations</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">ການສົນທະນາ</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#private-one-to-one-conversations">1. ການສົນທະນາສ່ວນຕົວ (ແບບຕົວຕໍ່ຕົວ)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#group-conversations">2. ການສົນທະນາແບບກຸ່ມ</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#note-to-self">3. ບັນທຶກເຖິງຕົນເອງ</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#disposable-conversations">4. ການສົນທະນາແບບຊົ່ວຄາວ</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="open_conversations.html">ເປີດການສົນທະນາ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="appearance.html">ຮູບລັກສະນະ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="files_integration.html">Files integration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="calendar_integration.html">ການເຊື່ອມຕໍ່ປະຕິທິນກັບ Talk</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="call_index.html">ການໂທ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="federation_index.html">ເຄືອຂ່າຍຮ່ວມ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="moderator_index.html">For moderators</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guest.html">Join a call or chat as guest</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">ການຕັ້ງຄ່າຄວາມມັກຂອງທ່ານ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Universal access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Using two-factor authentication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Manage connected browsers and devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">ບ່ອນເກັບຂໍ້ມູນພາຍນອກ</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest User Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Talk</a></li>
+          <li class="breadcrumb-item"><a href="conversation_index.html">Conversations</a></li>
+      <li class="breadcrumb-item active">ການສົນທະນາ</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/talk/conversations.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="conversations">
+<h1>ການສົນທະນາ<a class="headerlink" href="#conversations" title="Link to this heading"></a></h1>
+<p>ການແຊັດ ແລະ ການໂທ ແມ່ນເກີດຂຶ້ນພາຍໃນການສົນທະນາ. ທ່ານສາມາດສ້າງການສົນທະນາໄດ້ຕາມຈຳນວນທີ່ຕ້ອງການ. ມີການສົນທະນາປະເພດຕ່າງໆ ດັ່ງນີ້:</p>
+<section id="private-one-to-one-conversations">
+<h2>1. ການສົນທະນາສ່ວນຕົວ (ແບບຕົວຕໍ່ຕົວ)<a class="headerlink" href="#private-one-to-one-conversations" title="Link to this heading"></a></h2>
+<p>ນີ້ແມ່ນບ່ອນທີ່ທ່ານໃຊ້ແຊັດ ຫຼື ໂທຫາຜູ້ໃຊ້ Talk ຄົນອື່ນແບບສ່ວນຕົວ.</p>
+<p>ໃນແຖບດ້ານຂ້າງເນື້ອໃນ, ທ່ານສາມາດຊອກຫາຂໍ້ມູນເພີ່ມເຕີມກ່ຽວກັບບຸກຄົນທີ່ທ່ານກຳລັງສົນທະນານຳ ເຊັ່ນ: ທີ່ຢູ່ອີເມວ, ເບີໂທລະສັບ ຫຼື ລາຍລະອຽດອື່ນໆ ທີ່ພວກເຂົາໄດ້ແບ່ງປັນໄວ້ໃນໂປຣໄຟລ໌.</p>
+<a class="reference internal image-reference" href="../../_images/one-to-one-right-sidebar.png"><img alt="../../_images/one-to-one-right-sidebar.png" src="../../_images/one-to-one-right-sidebar.png" style="width: 300px;" />
+</a>
+<p>ບໍ່ມີໃຜນອກຈາກທ່ານ ແລະ ຄູ່ສົນທະນາ ທີ່ຈະສາມາດເຫັນການສົນທະນານີ້ ຫຼື ເຂົ້າຮ່ວມການໂທໄດ້. ທ່ານສາມາດປ່ຽນການໂທທີ່ກຳລັງດຳເນີນຢູ່ ໃຫ້ເປັນການສົນທະນາແບບກຸ່ມໃໝ່ໄດ້ໂດຍການເພີ່ມບຸກຄົນອື່ນເຂົ້າມາ. ການໂທຈະດຳເນີນຕໍ່ໄປຢູ່ທີ່ນັ້ນໂດຍບໍ່ມີການຂັດຈັງຫວະ.</p>
+<a class="reference internal image-reference" href="../../_images/one-to-one-extend.png"><img alt="../../_images/one-to-one-extend.png" src="../../_images/one-to-one-extend.png" style="width: 300px;" />
+</a>
+<p>ຫາກຜູ້ໃຊ້ບໍ່ວ່າງ ແລະ ໄດ້ຕັ້ງສະຖານະ <strong>ບໍ່ຢູ່ວຽກ</strong> ໃນ <code class="docutils literal notranslate"><span class="pre">ການຕັ້ງຄ່າສ່ວນຕົວ</span> <span class="pre">&gt;</span> <span class="pre">ສະຖານະການວ່າງ</span></code>, ທ່ານຈະເຫັນຂໍ້ມູນເພີ່ມເຕີມໃນການສົນທະນານີ້ ເຊັ່ນ: ຄຳອະທິບາຍທີ່ລະບຸໄວ້, ວັນທີທີ່ບໍ່ຢູ່ ຫຼື ຜູ້ທີ່ຈະມາເຮັດວຽກແທນ.</p>
+<a class="reference internal image-reference" href="../../_images/one-to-one-out-of-office.png"><img alt="../../_images/one-to-one-out-of-office.png" src="../../_images/one-to-one-out-of-office.png" style="width: 500px;" />
+</a>
+</section>
+<section id="group-conversations">
+<h2>2. ການສົນທະນາແບບກຸ່ມ<a class="headerlink" href="#group-conversations" title="Link to this heading"></a></h2>
+<p>ການສົນທະນາແບບກຸ່ມສາມາດມີຄົນເຂົ້າຮ່ວມໄດ້ຕາມຈຳນວນທີ່ຕ້ອງການ. ທ່ານສາມາດເພີ່ມຜູ້ໃຊ້ພາຍໃນ, ແຂກຜ່ານອີເມວ, ກຸ່ມ ຫຼື ທີມ ເຂົ້າໃນການສົນທະນາແບບກຸ່ມໄດ້ໃນຕອນສ້າງ ຫຼື ເມື່ອສ້າງແລ້ວ ຜ່ານແຖບ <code class="docutils literal notranslate"><span class="pre">ຜູ້ເຂົ້າຮ່ວມ</span></code>.</p>
+<p>ການສົນທະນາແບບກຸ່ມສາມາດແບ່ງປັນຜ່ານລິ້ງສາທາລະນະ ເພື່ອໃຫ້ແຂກສາມາດເຂົ້າຮ່ວມແຊັດ ແລະ ໂທໄດ້. ນອກຈາກນີ້ ຍັງສາມາດເປີດໃຫ້ຜູ້ໃຊ້ທີ່ລົງທະບຽນແລ້ວ (ຫຼື ຜູ້ໃຊ້ຈາກແອັບ 'Guests') ສາມາດຄົ້ນຫາ ແລະ ເຂົ້າຮ່ວມການສົນທະນານີ້ໄດ້.</p>
+<a class="reference internal image-reference" href="../../_images/group-public-settings.png"><img alt="../../_images/group-public-settings.png" src="../../_images/group-public-settings.png" style="width: 400px;" />
+</a>
+</section>
+<section id="note-to-self">
+<h2>3. ບັນທຶກເຖິງຕົນເອງ<a class="headerlink" href="#note-to-self" title="Link to this heading"></a></h2>
+<p>ນີ້ແມ່ນການສົນທະນາແບບພິເສດກັບຕົວທ່ານເອງ. ຂໍ້ຄວາມຢູ່ທີ່ນີ້ຈະບໍ່ມີການຈຳກັດໃນການແກ້ໄຂ ຫຼື ລຶບ. ທ່ານສາມາດໃຊ້ມັນເພື່ອ:</p>
+<ul class="simple">
+<li><p><strong>ບັນທຶກຂໍ້ຄວາມ</strong>: ຂຽນໄອເດຍ, ແຈ້ງເຕືອນ ຫຼື ຂໍ້ມູນສຳຄັນທີ່ທ່ານຕ້ອງການເກັບໄວ້ໃກ້ຕົວ.</p></li>
+<li><p><strong>ສ້າງລາຍການສິ່ງທີ່ຕ້ອງເຮັດ</strong>: ໃຊ້ໄວຍາກອນ Markdown ເພື່ອສ້າງລາຍການກວດສອບສຳລັບວຽກທີ່ທ່ານຕ້ອງເຮັດໃຫ້ສຳເລັດ.</p></li>
+<li><p><strong>ສົ່ງຕໍ່ຂໍ້ຄວາມຈາກແຊັດອື່ນ</strong>: ໃຊ້ເມນູຂໍ້ຄວາມເພື່ອສົ່ງຕໍ່ຂໍ້ຄວາມສຳຄັນຈາກການສົນທະນາອື່ນ ມາຍັງບັນທຶກເຖິງຕົນເອງຂອງທ່ານ.</p></li>
+</ul>
+<a class="reference internal image-reference" href="../../_images/note-to-self.png"><img alt="../../_images/note-to-self.png" src="../../_images/note-to-self.png" style="width: 500px;" />
+</a>
+</section>
+<section id="disposable-conversations">
+<h2>4. ການສົນທະນາແບບຊົ່ວຄາວ<a class="headerlink" href="#disposable-conversations" title="Link to this heading"></a></h2>
+<p>ການສົນທະນາເຫຼົ່ານີ້ກວມເອົາບາງກໍລະນີພິເສດ ແລະ ຄົງຢູ່ພາຍໃນໄລຍະເວລາທີ່ຈຳກັດ. ໄລຍະເວລາໃນການເກັບຮັກສາສາມາດກຳນົດໄດ້ໂດຍຜູ້ດູແລລະບົບ:</p>
+<ul class="simple">
+<li><p><strong>ການປະຊຸມແບບທັນທີ</strong>: ການສົນທະນາເຫຼົ່ານີ້ສາມາດສ້າງຂຶ້ນສຳລັບການປະຊຸມແບບດ່ວນ. ສາມາດເລີ່ມຕົ້ນໄດ້ທັນທີຈາກແຜງຄວບຄຸມ Talk.</p></li>
+<li><p><strong>ການສົນທະນາແບບກິດຈະກຳ</strong>: ສິ່ງເຫຼົ່ານີ້ຖືກສ້າງຂຶ້ນເມື່ອຖືກຕັ້ງໃຫ້ເປັນສະຖານທີ່ກິດຈະກຳໂດຍແອັບປະຕິທິນ (Calendar).</p></li>
+<li><p><strong>ການສົນທະນາຜ່ານໂທລະສັບ</strong>: ສິ່ງເຫຼົ່ານີ້ໃຊ້ສຳລັບການໂທເຂົ້າ ແລະ ໂທອອກຜ່ານ SIP (ຕ້ອງມີປະຕູເຊື່ອມຕໍ່ SIP).</p></li>
+<li><p><strong>ການຢືນຢັນດ້ວຍວິດີໂອ</strong>: ສິ່ງເຫຼົ່ານີ້ຖືກສ້າງຂຶ້ນເມື່ອມີຄົນພະຍາຍາມເຂົ້າເຖິງລິ້ງສາທາລະນະທີ່ປ້ອງກັນດ້ວຍລະຫັດຜ່ານ ພ້ອມທັງມີການຢືນຢັນດ້ວຍວິດີໂອ (ຈະຖືກລຶບທັນທີຫຼັງຈາກການໂທສິ້ນສຸດ).</p></li>
+</ul>
+<a class="reference internal image-reference" href="../../_images/instant-meeting-dispose.png"><img alt="../../_images/instant-meeting-dispose.png" src="../../_images/instant-meeting-dispose.png" style="width: 500px;" />
+</a>
+<section id="talk-dashboard">
+<h3>ແຜງຄວບຄຸມ Talk<a class="headerlink" href="#talk-dashboard" title="Link to this heading"></a></h3>
+<p>ແຜງຄວບຄຸມ Talk ແມ່ນສູນກາງຂອງທ່ານສຳລັບການຈັດການ ແລະ ເຂົ້າເຖິງການສົນທະນາຕ່າງໆ. ມັນຈະສະແດງພາບລວມຂອງ:</p>
+<ul class="simple">
+<li><p>ການກ່າວເຖິງ ແລະ ຂໍ້ຄວາມທີ່ຍັງບໍ່ໄດ້ອ່ານໃນແຊັດສ່ວນຕົວ;</p></li>
+<li><p>ການແຈ້ງເຕືອນຂໍ້ຄວາມ ທີ່ກຳນົດໄວ້ເພື່ອຈັດການໃນພາຍຫຼັງ;</p></li>
+<li><p>ການປະຊຸມທີ່ວາງແຜນໄວ້ ພ້ອມກັບລາຍລະອຽດກິດຈະກຳ ແລະ ປຸ່ມລັດເພື່ອເຂົ້າຮ່ວມ;</p></li>
+<li><p>ການດຳເນີນການລັດເພື່ອສ້າງການສົນທະນາໃໝ່, ເຂົ້າຮ່ວມອັນທີ່ເປີດຢູ່ ຫຼື ກວດສອບອຸປະກອນສື່ຂອງທ່ານຢ່າງວ່ອງໄວ.</p></li>
+</ul>
+<a class="reference internal image-reference" href="../../_images/talk-dashboard.png"><img alt="../../_images/talk-dashboard.png" src="../../_images/talk-dashboard.png" style="width: 600px;" />
+</a>
+</section>
+<section id="creating-a-conversation">
+<h3>ການສ້າງການສົນທະນາ<a class="headerlink" href="#creating-a-conversation" title="Link to this heading"></a></h3>
+<p>ທ່ານສາມາດສ້າງແຊັດສ່ວນຕົວ (ແບບຕົວຕໍ່ຕົວ) ໄດ້ໂດຍການຄົ້ນຫາຊື່ຜູ້ໃຊ້, ກຸ່ມ ຫຼື ທີມ ແລ້ວກົດເລືອກ. ສຳລັບຜູ້ໃຊ້ຄົນດຽວ, ການສົນທະນາຈະຖືກສ້າງຂຶ້ນທັນທີ ແລະ ທ່ານສາມາດເລີ່ມແຊັດໄດ້ເລີຍ. ສຳລັບກຸ່ມ ຫຼື ວົງລ້ອມ (Circle) ທ່ານຈະຕ້ອງໄດ້ຕັ້ງຊື່ ແລະ ການຕັ້ງຄ່າກ່ອນທີ່ຈະສ້າງການສົນທະນາ ແລະ ເພີ່ມຜູ້ເຂົ້າຮ່ວມ.</p>
+<a class="reference internal image-reference" href="../../_images/chat-with-one-user.png"><img alt="../../_images/chat-with-one-user.png" src="../../_images/chat-with-one-user.png" style="width: 400px;" />
+</a>
+<p>ຫາກທ່ານຕ້ອງການສ້າງການສົນທະນາແບບກຸ່ມທີ່ກຳນົດເອງ, ໃຫ້ຄລິກປຸ່ມຂ້າງຫ້ອງຄົ້ນຫາ ແລະ ປຸ່ມຕົວກອງ ແລ້ວເລືອກ <code class="docutils literal notranslate"><span class="pre">ສ້າງການສົນທະນາໃໝ່</span></code>.</p>
+<a class="reference internal image-reference" href="../../_images/create-new-conversation.png"><img alt="../../_images/create-new-conversation.png" src="../../_images/create-new-conversation.png" style="width: 400px;" />
+</a>
+<p>ຈາກນັ້ນທ່ານສາມາດເລືອກຊື່ການສົນທະນາ, ໃສ່ຄຳອະທິບາຍ ແລະ ຕັ້ງຮູບຕົວແທນ (ດ້ວຍການອັບໂຫຼດຮູບ ຫຼື ອີໂມຈິ), ແລະ ເລືອກວ່າຈະເປີດການສົນທະນາໃຫ້ຜູ້ໃຊ້ພາຍນອກເຂົ້າຮ່ວມໄດ້ບໍ່ ແລະ ຜູ້ໃຊ້ອື່ນໆໃນເຊີບເວີສາມາດເຫັນ ຫຼື ເຂົ້າຮ່ວມການສົນທະນານີ້ໄດ້ຫຼືບໍ່.</p>
+<a class="reference internal image-reference" href="../../_images/creating-open-conversation.png"><img alt="../../_images/creating-open-conversation.png" src="../../_images/creating-open-conversation.png" style="width: 500px;" />
+</a>
+<p>ໃນຂັ້ນຕອນທີສອງ, ທ່ານສາມາດເພີ່ມຜູ້ເຂົ້າຮ່ວມ ແລະ ສຳເລັດການສ້າງການສົນທະນາ.</p>
+<a class="reference internal image-reference" href="../../_images/add-participants.png"><img alt="../../_images/add-participants.png" src="../../_images/add-participants.png" style="width: 500px;" />
+</a>
+<p>ຫຼັງຈາກຢືນຢັນແລ້ວ ທ່ານຈະຖືກສົ່ງໄປຫາການສົນທະນາໃໝ່ ແລະ ສາມາດເລີ່ມການສື່ສານໄດ້ທັນທີ.</p>
+<a class="reference internal image-reference" href="../../_images/new-room.png"><img alt="../../_images/new-room.png" src="../../_images/new-room.png" style="width: 700px;" />
+</a>
+</section>
+<section id="filter-your-conversations">
+<h3>ກອງການສົນທະນາຂອງທ່ານ<a class="headerlink" href="#filter-your-conversations" title="Link to this heading"></a></h3>
+<p>ທ່ານສາມາດກອງການສົນທະນາໄດ້ໂດຍໃຊ້ປຸ່ມຕົວກອງຂ້າງຫ້ອງຄົ້ນຫາ. ມີຫຼາຍຕົວເລືອກໃນການກອງ: 1. <strong>ການກ່າວເຖິງທີ່ຍັງບໍ່ໄດ້ອ່ານ</strong>: ເບິ່ງການສົນທະນາສ່ວນຕົວ ຫຼື ແບບກຸ່ມທີ່ຍັງບໍ່ໄດ້ອ່ານ ບ່ອນທີ່ທ່ານຖືກກ່າວເຖິງ. 2. <strong>ຂໍ້ຄວາມທີ່ຍັງບໍ່ໄດ້ອ່ານ</strong>: ເບິ່ງຂໍ້ຄວາມທີ່ຍັງບໍ່ໄດ້ອ່ານໃນທຸກການສົນທະນາທີ່ທ່ານເປັນສ່ວນໜຶ່ງ. 3. <strong>ການສົນທະນາແບບກິດຈະກຳ</strong>: ເບິ່ງທຸກການສົນທະນາທີ່ສ້າງຂຶ້ນສຳລັບກິດຈະກຳທີ່ກຳລັງຈະມາເຖິງ ຫຼື ທີ່ຜ່ານມາ.</p>
+<a class="reference internal image-reference" href="../../_images/filters-menu.png"><img alt="../../_images/filters-menu.png" src="../../_images/filters-menu.png" style="width: 400px;" />
+</a>
+<p>ຈາກນັ້ນທ່ານສາມາດລ້າງຕົວກອງໄດ້ຈາກເມນູຕົວກອງ.</p>
+<a class="reference internal image-reference" href="../../_images/clear-filter.png"><img alt="../../_images/clear-filter.png" src="../../_images/clear-filter.png" style="width: 400px;" />
+</a>
+</section>
+<section id="archive-conversations">
+<h3>ຈັດເກັບການສົນທະນາ<a class="headerlink" href="#archive-conversations" title="Link to this heading"></a></h3>
+<p>ທ່ານສາມາດຈັດເກັບການສົນທະນາທີ່ບໍ່ຕ້ອງການເຫັນໃນລາຍການສົນທະນາຫຼັກແລ້ວ. ເມື່ອການສົນທະນາຖືກຈັດເກັບ, ມັນຈະຖືກຍ້າຍໄປຢູ່ສ່ວນ <code class="docutils literal notranslate"><span class="pre">ການສົນທະນາທີ່ຈັດເກັບແລ້ວ</span></code>. ການສົນທະນາທີ່ຈັດເກັບແລ້ວຈະບໍ່ປາກົດໃນລາຍການສົນທະນາຫຼັກ, ແຕ່ມັນຍັງຈະແຈ້ງເຕືອນຕາມລະດັບທີ່ຕັ້ງໄວ້ໃນການຕັ້ງຄ່າ.</p>
+<a class="reference internal image-reference" href="../../_images/archived-conversations-list.png"><img alt="../../_images/archived-conversations-list.png" src="../../_images/archived-conversations-list.png" style="width: 400px;" />
+</a>
+<p>ລາຍການດັ່ງກ່າວສາມາດເຂົ້າເຖິງໄດ້ຈາກປຸ່ມຢູ່ທາງລຸ່ມຂອງແຖບນຳທາງ.</p>
+<a class="reference internal image-reference" href="../../_images/archived-conversations-button.png"><img alt="../../_images/archived-conversations-button.png" src="../../_images/archived-conversations-button.png" style="width: 400px;" />
+</a>
+</section>
+<section id="managing-a-conversation">
+<h3>ການຈັດການການສົນທະນາ<a class="headerlink" href="#managing-a-conversation" title="Link to this heading"></a></h3>
+<p>ທ່ານຈະເປັນຜູ້ຄວບຄຸມສະເໝີໃນການສົນທະນາໃໝ່ຂອງທ່ານ. ໃນລາຍຊື່ຜູ້ເຂົ້າຮ່ວມ ທ່ານສາມາດຍົກລະດັບຜູ້ເຂົ້າຮ່ວມຄົນອື່ນໃຫ້ເປັນຜູ້ຄວບຄຸມໄດ້ ໂດຍການໃຊ້ເມນູ <code class="docutils literal notranslate"><span class="pre">...</span></code> ຢູ່ເບື້ອງຂວາຂອງຊື່ຜູ້ໃຊ້, ກຳນົດສິດອະນຸຍາດ ຫຼື ລຶບພວກເຂົາອອກຈາກການສົນທະນາ.</p>
+<p>ການປ່ຽນແປງສິດອະນຸຍາດຂອງຜູ້ໃຊ້ທີ່ເຂົ້າຮ່ວມການສົນທະນາສາທາລະນະ ຈະເປັນການເພີ່ມພວກເຂົາເຂົ້າໃນການສົນທະນາແບບຖາວອນ.</p>
+<a class="reference internal image-reference" href="../../_images/participant-menu.png"><img alt="../../_images/participant-menu.png" src="../../_images/participant-menu.png" style="width: 400px;" />
+</a>
+<p>ຜູ້ຄວບຄຸມສາມາດຕັ້ງຄ່າການສົນທະນາໄດ້. ເເລືອກ <code class="docutils literal notranslate"><span class="pre">ການຕັ້ງຄ່າການສົນທະນາ</span></code> ຈາກເມນູ <code class="docutils literal notranslate"><span class="pre">...</span></code> ຂອງການສົນທະນາຢູ່ທາງເທິງເພື່ອເຂົ້າເຖິງການຕັ້ງຄ່າ.</p>
+<a class="reference internal image-reference" href="../../_images/open-settings.png"><img alt="../../_images/open-settings.png" src="../../_images/open-settings.png" style="width: 500px;" />
+</a>
+<p>ຢູ່ບ່ອນນີ້ທ່ານສາມາດຕັ້ງຄ່າຄຳອະທິບາຍ, ການເຂົ້າເຖິງຂອງແຂກ, ຕັ້ງວ່າການສົນທະນາຈະໃຫ້ຜູ້ອື່ນໃນເຊີບເວີເຫັນໄດ້ຫຼືບໍ່ ແລະ ອື່ນໆ.</p>
+<a class="reference internal image-reference" href="../../_images/conversation-settings-dialog.png"><img alt="../../_images/conversation-settings-dialog.png" src="../../_images/conversation-settings-dialog.png" style="width: 600px;" />
+</a>
+</section>
+<section id="ban-participants">
+<h3>ສັ່ງຫ້າມຜູ້ເຂົ້າຮ່ວມ<a class="headerlink" href="#ban-participants" title="Link to this heading"></a></h3>
+<p>ເພື່ອຊ່ວຍໃຫ້ການສົນທະນາປອດໄພ ແລະ ຢູ່ພາຍໃຕ້ການຄວບຄຸມ, ຜູ້ຄວບຄຸມສາມາດສັ່ງຫ້າມ (ແບນ) ຜູ້ເຂົ້າຮ່ວມຈາກການສົນທະນາໄດ້. ສິ່ງນີ້ໃຊ້ໄດ້ທັງຜູ້ໃຊ້ພາຍໃນ ແລະ ແຂກ; ສຳລັບແຂກ, ທີ່ຢູ່ IP ຂອງພວກເຂົາກໍຈະຖືກແບນນຳ.</p>
+<p>ໃນລາຍຊື່ຜູ້ເຂົ້າຮ່ວມ, ໃຫ້ເລືອກຜູ້ໃຊ້ ຫຼື ແຂກ, ແລ້ວຄລິກ <code class="docutils literal notranslate"><span class="pre">ລຶບຜູ້ເຂົ້າຮ່ວມ</span></code>.</p>
+<a class="reference internal image-reference" href="../../_images/ban-participant.png"><img alt="../../_images/ban-participant.png" src="../../_images/ban-participant.png" style="width: 300px;" />
+</a>
+<p>ຢູ່ທີ່ນັ້ນ, ໃຫ້ໝາຍຕິກໃສ່ຊ່ອງ <code class="docutils literal notranslate"><span class="pre">ສັ່ງຫ້າມຈາກການສົນທະນານີ້ພ້ອມ</span></code> ແລະ ລະບຸເຫດຜົນໃນການສັ່ງຫ້າມ. ຜູ້ໃຊ້ທີ່ຖືກແບນຈະຖືກລຶບອອກ ແລະ ບໍ່ສາມາດກັບເຂົ້າມາຮ່ວມໃໝ່ໄດ້.</p>
+<a class="reference internal image-reference" href="../../_images/ban-participant-dialog.png"><img alt="../../_images/ban-participant-dialog.png" src="../../_images/ban-participant-dialog.png" style="width: 400px;" />
+</a>
+<p>ທ່ານສາມາດຊອກຫາລາຍຊື່ຜູ້ໃຊ້ທີ່ຖືກແບນໄດ້ໃນພາຍຫຼັງຢູ່ສ່ວນ <code class="docutils literal notranslate"><span class="pre">ການຄວບຄຸມ</span></code> ຂອງການຕັ້ງຄ່າການສົນທະນາ. ຢູ່ທີ່ນີ້, ທ່ານສາມາດເຫັນເຫດຜົນຂອງການສັ່ງຫ້າມ ແລະ ຍົກເລີກມັນໄດ້ຫາກຕ້ອງການ.</p>
+<a class="reference internal image-reference" href="../../_images/ban-participant-list.png"><img alt="../../_images/ban-participant-list.png" src="../../_images/ban-participant-list.png" style="width: 400px;" />
+</a>
+</section>
+<section id="messages-expiration">
+<h3>ການໝົດອາຍຸຂອງຂໍ້ຄວາມ<a class="headerlink" href="#messages-expiration" title="Link to this heading"></a></h3>
+<p>ຜູ້ຄວບຄຸມສາມາດຕັ້ງຄ່າການໝົດອາຍຸຂອງຂໍ້ຄວາມໄດ້ທີ່ <code class="docutils literal notranslate"><span class="pre">ການຕັ້ງຄ່າການສົນທະນາ</span></code> ພາຍໃຕ້ສ່ວນ <code class="docutils literal notranslate"><span class="pre">ການຄວບຄຸມ</span></code>. ເມື່ອຂໍ້ຄວາມຮອດກຳນົດເວລາໝົດອາຍຸ, ມັນຈະຖືກລຶບອອກຈາກການສົນທະນາໂດຍອັດຕະໂນມັດ. ໄລຍະເວລາໝົດອາຍຸທີ່ມີໃຫ້ເລືອກແມ່ນ 1 ຊົ່ວໂມງ, 8 ຊົ່ວໂມງ, 1 ວັນ, 1 ອາທິດ, 4 ອາທິດ ຫຼື ບໍ່ເລີຍ (ເຊິ່ງເປັນຄ່າເລີ່ມຕົ້ນ).</p>
+<a class="reference internal image-reference" href="../../_images/messages-expiration.png"><img alt="../../_images/messages-expiration.png" src="../../_images/messages-expiration.png" style="width: 500px;" />
+</a>
+</section>
+<section id="notifications-and-privacy">
+<h3>ການແຈ້ງເຕືອນ ແລະ ຄວາມເປັນສ່ວນຕົວ<a class="headerlink" href="#notifications-and-privacy" title="Link to this heading"></a></h3>
+<p>ໂດຍເລີ່ມຕົ້ນ, Nextcloud Talk ຈະແຈ້ງເຕືອນທ່ານກ່ຽວກັບ:</p>
+<ul class="simple">
+<li><p>ຂໍ້ຄວາມໃໝ່ໃນການສົນທະນາສ່ວນຕົວ;</p></li>
+<li><p>ການຕອບກັບຂໍ້ຄວາມທີ່ທ່ານສົ່ງ;</p></li>
+<li><p>ຂໍ້ຄວາມທີ່ກ່າວເຖິງທ່ານ ຫຼື ກຸ່ມ/ທີມ ທີ່ທ່ານເປັນສະມາຊິກ;</p></li>
+<li><p>ການເລີ່ມຕົ້ນໂທໃນການສົນທະນາທີ່ທ່ານເປັນສ່ວນໜຶ່ງ.</p></li>
+</ul>
+<p>ທ່ານສາມາດປ່ຽນແປງພຶດຕິກຳນີ້ໄດ້ໃນການຕັ້ງຄ່າການສົນທະນາ. ນອກຈາກນີ້, ທ່ານຍັງສາມາດຕັ້ງຄ່າ:</p>
+<ul class="simple">
+<li><p><strong>ການສົນທະນາທີ່ສຳຄັນ</strong>: ທ່ານຈະໄດ້ຮັບການແຈ້ງເຕືອນສະເໝີກ່ຽວກັບຂໍ້ຄວາມໃໝ່ ເຖິງແມ່ນວ່າທ່ານຈະຢູ່ໃນໂໝດ &quot;ຫ້າມລົບກວນ&quot; (Do Not Disturb) ກໍຕາມ;</p></li>
+<li><p><strong>ການສົນທະນາທີ່ລະອຽດອ່ອນ</strong>: ເນື້ອໃນຂອງຂໍ້ຄວາມຈະບໍ່ຖືກສະແດງໃນລາຍການສົນທະນາ ແລະ ຈະຖືກປິດບັງຈາກການແຈ້ງເຕືອນ.</p></li>
+</ul>
+<a class="reference internal image-reference" href="../../_images/conversation-notifications.png"><img alt="../../_images/conversation-notifications.png" src="../../_images/conversation-notifications.png" style="width: 300px;" />
+</a>
+<p>ເພື່ອໃຫ້ມີການຄວບຄຸມຄວາມເປັນສ່ວນຕົວຂອງທ່ານຫຼາຍຂຶ້ນ, ທ່ານຍັງສາມາດຕັ້ງຄ່າການສະແດງສະຖານະການພິມ ແລະ ສະຖານະການອ່ານໄດ້ໃນ <code class="docutils literal notranslate"><span class="pre">ການຕັ້ງຄ່າ</span> <span class="pre">Talk</span></code>:</p>
+<a class="reference internal image-reference" href="../../_images/privacy-settings.png"><img alt="../../_images/privacy-settings.png" src="../../_images/privacy-settings.png" style="width: 600px;" />
+</a>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="conversation_index.html" class="btn btn-neutral float-left" title="Conversations" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="open_conversations.html" class="btn btn-neutral float-right" title="ເປີດການສົນທະນາ" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+  
+  <!-- Here go the languages -->
+
+  
+  
+
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      🌐 lo
+      <span class="fa fa-caret-down"></span>
+       ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>🌐 ພາສາ</dt>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ar/"
+               
+            >
+              Arabic
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/br/"
+               
+            >
+              Breton
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ca/"
+               
+            >
+              Catalan
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_CN/"
+               
+            >
+              Chinese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_HK/"
+               
+            >
+              Chinese (HK)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_TW/"
+               
+            >
+              Chinese (TW)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/cs/"
+               
+            >
+              Czech
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/da/"
+               
+            >
+              Danish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nl/"
+               
+            >
+              Dutch
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/en/"
+               
+            >
+              English
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/fi_FI/"
+               
+            >
+              Finnish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/fr/"
+               
+            >
+              French
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/gl/"
+               
+            >
+              Galician
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/de/"
+               
+            >
+              German
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/el/"
+               
+            >
+              Greek
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/hu_HU/"
+               
+            >
+              Hungarian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/id/"
+               
+            >
+              Indonesian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ga/"
+               
+            >
+              Irish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/it/"
+               
+            >
+              Italian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ja_JP/"
+               
+            >
+              Japanese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ko/"
+               
+            >
+              Korean
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/lo/"
+               
+               style="color: var(--dark-link-color);"
+               
+            >
+              lo
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/lt/"
+               
+            >
+              lt
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/mn/"
+               
+            >
+              Mongolian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nb_NO/"
+               
+            >
+              Norwegian (NB)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nn/"
+               
+            >
+              Norwegian (NN)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pl/"
+               
+            >
+              Polish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pt_PT/"
+               
+            >
+              Portuguese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pt_BR/"
+               
+            >
+              Portuguese (BR)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ro/"
+               
+            >
+              Romanian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ru/"
+               
+            >
+              Russian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/si/"
+               
+            >
+              Sinhala
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sk_SK/"
+               
+            >
+              Slovakian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sr/"
+               
+            >
+              Slovenian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/es/"
+               
+            >
+              Spanish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sv/"
+               
+            >
+              Swedish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ta/"
+               
+            >
+              Tamil
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/tr/"
+               
+            >
+              Turkish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/uk_UA/"
+               
+            >
+              Ukrainian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/uz/"
+               
+            >
+              Uzbek
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/vi/"
+               
+            >
+              Vietnamese
+            </a>
+          </dd>
+        
+      </dl>
+    </div>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ ເວີຊັນ</dt>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/latest/user_manual"
+               
+               style="color: var(--dark-link-color);"
+               
+            >
+              latest
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/stable/user_manual"
+               
+            >
+              stable
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/32/user_manual"
+               
+            >
+              32
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/31/user_manual"
+               
+            >
+              31
+            </a>
+          </dd>
+        
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

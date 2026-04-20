@@ -66,7 +66,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../files/index.html">Dateien &amp; Synchronisation</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Talk</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Desktop-Clients</a><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Desktop Client</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Deinstallation</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#general-instructions">Allgemeine Anweisungen</a><ul>
@@ -78,7 +78,10 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="usage.html">Verwenden des Synchronisierungsclients</a></li>
-<li class="toctree-l2"><a class="reference internal" href="macosvfs.html">macOS Virtual Files-Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="commandline.html">Using the Command-Line Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html">Command-Line Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configfile.html">Configuration File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="envvars.html">Environment Variables</a></li>
 <li class="toctree-l2"><a class="reference internal" href="autoupdate.html">Der automatische Updater</a></li>
 <li class="toctree-l2"><a class="reference internal" href="updatechannel.html">Update-Kanäle</a></li>
 <li class="toctree-l2"><a class="reference internal" href="conflicts.html">Konflikte</a></li>
@@ -106,7 +109,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="index.html">Desktop-Clients</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Desktop Client</a></li>
       <li class="breadcrumb-item active">Deinstallation</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/desktop/uninstallation.rst" class="fa fa-github"> Auf GitHub bearbeiten</a>
@@ -126,9 +129,9 @@
 <ol class="arabic">
 <li><p>Sicherstellen, dass Sie den Desktop-Client beenden, bevor dieser entfernt wird.</p></li>
 <li><p><em>Deinstallieren</em> Sie den Desktop-Client.</p></li>
-<li><p>Sie sollten außerdem berücksichtigen, dass durch die Deinstallation des Desktop-Clients die Konfigurationsdatei des Benutzers &lt;<a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/desktop/configfile.html#configuration-file">https://docs.nextcloud.com/server/latest/admin_manual/desktop/configfile.html#configuration-file</a>&gt;`_ und die synchronisierten Daten nicht entfernt werden.</p>
+<li><p>Sie sollten außerdem berücksichtigen, dass durch die Deinstallation des Desktop-Clients die <a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/desktop/configfile.html#configuration-file">Konfigurationsdatei des Benutzers</a> und die synchronisierten Daten nicht entfernt werden.</p>
 <blockquote>
-<div><p>Zum Löschen von Daten (Synchronisierungsordner) empfiehlt sich die Serverfunktion <cite>Remote-Löschen</cite> &lt;siehe &lt;<a class="reference external" href="https://nextcloud.com/de/blog/nextcloud-desktop-client-2-6-1-brings-remote-wipe-dark-mode-support-to-mac-os-x-and-more/">https://nextcloud.com/de/blog/nextcloud-desktop-client-2-6-1-brings-remote-wipe-dark-mode-support-to-mac-os-x-and-more/</a>&gt;`_. Diese Funktion ist auf allen Clients verfügbar.</p>
+<div><p>Zum Löschen von Daten (Synchronisierungsordner) empfiehlt sich die Serverfunktion <a class="reference external" href="https://nextcloud.com/de/blog/nextcloud-desktop-client-2-6-1-brings-remote-wipe-dark-mode-support-to-mac-os-x-and-more/">Remote-Löschen &lt;siehe</a>. Diese Funktion ist auf allen Clients verfügbar.</p>
 </div></blockquote>
 </li>
 </ol>
@@ -151,7 +154,7 @@
 <h3>macOS<a class="headerlink" href="#macos" title="Link to this heading"></a></h3>
 <p>Neben dem Löschen des Desktop-Clients aus dem Ordner <em>Programme</em> müssen Sie möglicherweise auch alle zugehörigen Daten entfernen, insbesondere wenn Sie virtuelle Dateien verwenden.</p>
 <ol class="arabic simple">
-<li><p>Um die Software einfach zu deinstallieren, können Sie dies über das Launchpad oder den Finder tun &lt;<a class="reference external" href="https://support.apple.com/en-us/102610">https://support.apple.com/en-us/102610</a>&gt;`_.</p></li>
+<li><p>Um die Software einfach zu deinstallieren, können Sie dies über das <a class="reference external" href="https://support.apple.com/en-us/102610">Launchpad oder den Finder tun</a>.</p></li>
 <li><p>Zur vollständigen Löschung aller zugehörigen Daten können folgende Befehle verwendet werden:</p></li>
 </ol>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rm<span class="w"> </span>-rf<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$HOME</span><span class="s2">/Library/Application Scripts/com.nextcloud.desktopclient&quot;</span>*
@@ -217,6 +220,8 @@ rm<span class="w"> </span>-f<span class="w">  </span><span class="s2">&quot;</sp
 
   
   
+  
+    
   
     
   
@@ -478,6 +483,14 @@ rm<span class="w"> </span>-f<span class="w">  </span><span class="s2">&quot;</sp
                
             >
               Korean
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/lo/"
+               
+            >
+              lo
             </a>
           </dd>
         

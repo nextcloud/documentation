@@ -31,7 +31,7 @@
     <script src="../../_static/js/versions.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Søk" href="../search.html" />
-    <link rel="next" title="The Automatic Updater" href="autoupdate.html" />
+    <link rel="next" title="Using the Command-Line Client" href="commandline.html" />
     <link rel="prev" title="Using the Synchronization Client" href="usage.html" /> 
 </head>
 
@@ -66,29 +66,29 @@
 <li class="toctree-l1"><a class="reference internal" href="../files/index.html">Filer og synkronisering</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Talk</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Desktop Clients</a><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Desktop Client</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="installation.html">Installation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="uninstallation.html">Uninstallation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="usage.html">Using the Synchronization Client</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">macOS Virtual Files Client</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#supported-features">Supported features</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#configuration">Configuration</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#finder-integration">Finder integration</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#sync-status-indicators">Sync status indicators</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#context-menu-actions">Context menu actions</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#keep-downloaded">Keep Downloaded</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#locking">Locking</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#sharing">Sharing</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#file-actions">File actions</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#known-issues">Known issues</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#macos-extensions-conflict">macOS Extensions conflict</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#alias-files">Alias files</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="usage.html">Using the Synchronization Client</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="usage.html#systray-icon">Systray Icon</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usage.html#configuring-nextcloud-account-settings">Configuring Nextcloud Account Settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usage.html#adding-new-accounts">Adding New Accounts</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usage.html#file-manager-overlay-icons">File Manager Overlay Icons</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usage.html#set-the-user-status">Set the user status</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usage.html#sharing-from-your-desktop">Sharing From Your Desktop</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usage.html#general-window">General Window</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usage.html#using-the-network-window">Using the Network Window</a></li>
+<li class="toctree-l3"><a class="reference internal" href="usage.html#using-the-ignored-files-editor">Using the Ignored Files Editor</a></li>
+<li class="toctree-l3 current"><a class="reference internal" href="usage.html#virtual-files-on-macos">Virtual Files on macOS</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">macOS Virtual Files Client</a></li>
 </ul>
 </li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="commandline.html">Using the Command-Line Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html">Command-Line Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configfile.html">Configuration File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="envvars.html">Environment Variables</a></li>
 <li class="toctree-l2"><a class="reference internal" href="autoupdate.html">The Automatic Updater</a></li>
 <li class="toctree-l2"><a class="reference internal" href="updatechannel.html">Update channels</a></li>
 <li class="toctree-l2"><a class="reference internal" href="conflicts.html">Conflicts</a></li>
@@ -116,7 +116,8 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="index.html">Desktop Clients</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Desktop Client</a></li>
+          <li class="breadcrumb-item"><a href="usage.html">Using the Synchronization Client</a></li>
       <li class="breadcrumb-item active">macOS Virtual Files Client</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/desktop/macosvfs.rst" class="fa fa-github"> Edit on GitHub</a>
@@ -258,7 +259,7 @@ To avoid the issue entirely, right-click the alias file in Finder and choose
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="usage.html" class="btn btn-neutral float-left" title="Using the Synchronization Client" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="autoupdate.html" class="btn btn-neutral float-right" title="The Automatic Updater" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="commandline.html" class="btn btn-neutral float-right" title="Using the Command-Line Client" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
@@ -283,6 +284,8 @@ To avoid the issue entirely, right-click the alias file in Finder and choose
 
   
   
+  
+    
   
     
   
@@ -542,6 +545,14 @@ To avoid the issue entirely, right-click the alias file in Finder and choose
                
             >
               Korean
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/lo/"
+               
+            >
+              lo
             </a>
           </dd>
         

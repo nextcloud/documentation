@@ -31,7 +31,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Uninstallation" href="uninstallation.html" />
-    <link rel="prev" title="Cliaint Deisce" href="index.html" /> 
+    <link rel="prev" title="Desktop Client" href="index.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -65,25 +65,22 @@
 <li class="toctree-l1"><a class="reference internal" href="../files/index.html">Comhaid &amp; sioncronú</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Earraí grúpa</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Caint</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Cliaint Deisce</a><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Desktop Client</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Suiteáil</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#download">Download</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#supported-server-versions">Supported server versions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#system-requirements">Riachtanais Chórais</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#customizing-the-windows-installation">Suiteáil Windows a shaincheapadh</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#features">Gnéithe</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id1">Suiteáil</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#changing-installed-features">Gnéithe Suiteáilte a Athrú</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#installation-folder">Fillteán Suiteála</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#disabling-automatic-updates">Nuashonruithe Uathoibríocha a Dhíchumasú</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#launch-after-installation">Seoladh Tar éis Suiteáil</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#no-reboot-after-installation">Gan Atosaigh Tar éis Suiteáil</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#installation-wizard">Treoraí Suiteáil</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#install-on-macos-and-windows">Install on macOS and Windows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#install-on-linux">Install on Linux</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#initial-setup">Initial Setup</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="uninstallation.html">Uninstallation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="usage.html">Ag baint úsáide as an gCliant Sioncrónaithe</a></li>
-<li class="toctree-l2"><a class="reference internal" href="macosvfs.html">Cliant Comhad Fíorúil macOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="commandline.html">Using the Command-Line Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html">Command-Line Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configfile.html">Configuration File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="envvars.html">Environment Variables</a></li>
 <li class="toctree-l2"><a class="reference internal" href="autoupdate.html">An Nuashonrú Uathoibríoch</a></li>
 <li class="toctree-l2"><a class="reference internal" href="updatechannel.html">Nuashonraigh cainéil</a></li>
 <li class="toctree-l2"><a class="reference internal" href="conflicts.html">Coinbhleachtaí</a></li>
@@ -111,7 +108,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="index.html">Cliaint Deisce</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Desktop Client</a></li>
       <li class="breadcrumb-item active">Suiteáil</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/desktop/installation.rst" class="fa fa-github"> Edit on GitHub</a>
@@ -124,21 +121,28 @@
              
   <section id="installation">
 <h1>Suiteáil<a class="headerlink" href="#installation" title="Link to this heading"></a></h1>
-<p>Is féidir leat an leagan is déanaí de Chliant Sioncrónaithe Deisce Nextcloud a íoslódáil ón <a class="reference external" href="https://nextcloud.com/download/#install-clients">leathanach íoslódála Nextcloud</a>. Tá cliaint ann le haghaidh Linux, macOS, agus Microsoft Windows.</p>
-<p>Is iad na heisiúintí freastalaí a dtacaítear leo faoi láthair ná na trí leagan cobhsaí is déanaí tráth foilsithe. Ciallaíonn sé go bhfuil an latest tá sraith scaoileadh ag tacú le mórleaganacha freastalaí cobhsaí. Féach <a class="reference external" href="https://github.com/nextcloud/server/wiki/Maintenance-and-Release-Schedule">https://github.com/nextcloud/server/wiki/Maintenance-and-Release-Schedule</a> le haghaidh mórleaganacha a dtacaítear leo.</p>
-<p>Tá an suiteáil ar macOS agus Windows mar an gcéanna le haon fheidhmchlár bogearraí: íoslódáil an clár agus ansin cliceáil faoi dhó chun an tsuiteáil a sheoladh, agus ansin lean an draoi suiteála. Tar éis é a shuiteáil agus a chumrú coimeádfaidh an cliant sioncronaithe é féin cothrom le dáta go huathoibríoch; féach <a class="reference internal" href="autoupdate.html"><span class="doc">An Nuashonrú Uathoibríoch</span></a> le haghaidh tuilleadh eolais.</p>
-<p>Ní mór d'úsáideoirí Linux na treoracha ar an leathanach íoslódála a leanúint chun an stór cuí dá ndáileadh Linux a chur leis, an eochair sínithe a shuiteáil, agus ansin a mbainisteoirí pacáiste a úsáid chun an cliant sioncrónaithe deisce a shuiteáil. Déanfaidh úsáideoirí Linux a gcliaint sioncronaithe a nuashonrú freisin trí bhainisteoir pacáiste, agus taispeánfaidh an cliant fógra nuair a bheidh nuashonrú ar fáil.</p>
-<p>Ní mór go mbeadh bainisteoir pasfhocail cumasaithe ag úsáideoirí Linux freisin, mar shampla GNOME Keyring nó KWallet, ionas gur féidir leis an gcliant sioncronaithe logáil isteach go huathoibríoch.</p>
+<section id="download">
+<h2>Download<a class="headerlink" href="#download" title="Link to this heading"></a></h2>
+<p>You can download the latest version of the Nextcloud Desktop Synchronization Client
+from the <a class="reference external" href="https://nextcloud.com/download/#install-clients">Nextcloud download page</a>. Clients are available for Linux, macOS, and
+Microsoft Windows.</p>
 <p>Gheobhaidh tú naisc freisin chuig cartlanna cód foinse agus leaganacha níos sine ar an leathanach íoslódála.</p>
+</section>
+<section id="supported-server-versions">
+<h2>Supported server versions<a class="headerlink" href="#supported-server-versions" title="Link to this heading"></a></h2>
+<p>Each desktop client release supports the latest three stable Nextcloud server
+major versions at the time of release. See the <a class="reference external" href="https://github.com/nextcloud/server/wiki/Maintenance-and-Release-Schedule">Nextcloud Server release schedule</a>
+for supported major versions.</p>
+</section>
 <section id="system-requirements">
 <h2>Riachtanais Chórais<a class="headerlink" href="#system-requirements" title="Link to this heading"></a></h2>
-<ul class="simple">
+<ul>
 <li><p>Windows 10+ (64-giotán amháin)</p></li>
 <li><p>macOS 12.0+ (64-giotán amháin)</p></li>
-<li><dl class="simple">
-<dt>Linux (Ubuntu 24.04 nó openSUSE 15.5 nó Alma 8 nó ...) (64-giotán amháin)</dt><dd><p>I gcás dáiltí Linux, tacaímid, más féidir go teicniúil, leis na heisiúintí LTS reatha. I gcás BSD, tacaímid leo más féidir go teicniúil ach ní dhéanaimid tástáil orthu.</p>
-</dd>
-</dl>
+<li><p>Linux (Ubuntu 24.04 nó openSUSE 15.5 nó Alma 8 nó ...) (64-giotán amháin)</p>
+<p>For Linux distributions, we support, if technically feasible, the current
+LTS releases. For BSD, we support them if technically feasible, but we do not
+test them.</p>
 </li>
 </ul>
 <div class="admonition note">
@@ -151,153 +155,66 @@
 </ul>
 </div>
 </section>
-<section id="customizing-the-windows-installation">
-<h2>Suiteáil Windows a shaincheapadh<a class="headerlink" href="#customizing-the-windows-installation" title="Link to this heading"></a></h2>
-<p>Más mian leat Cliant Sioncrónaithe Deisce Nextcloud a shuiteáil ar do chóras áitiúil, is féidir leat an comhad <cite>.msi</cite> a sheoladh agus é a chumrú sa draoi a thagann aníos.</p>
-<section id="features">
-<h3>Gnéithe<a class="headerlink" href="#features" title="Link to this heading"></a></h3>
-<p>Soláthraíonn an suiteálaí MSI roinnt gnéithe is féidir a shuiteáil nó a bhaint ina n-aonar, ar féidir leat a rialú freisin trí ordú-líne, má tá an suiteáil á uathoibriú agat, ansin rith an t-ordú seo a leanas:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">passive</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span>
-</pre></div>
-</div>
-<p>Suiteáilfidh an t-ordú Cliant Sioncrónaithe Deisce Nextcloud isteach sa suíomh réamhshocraithe leis na gnéithe réamhshocraithe cumasaithe. Más mian leat a dhíchumasú, m.sh., deilbhíní aicearra deisce is féidir leat an t-ordú thuas a athrú go díreach chuig an méid seo a leanas:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">passive</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">REMOVE</span><span class="o">=</span><span class="n">DesktopShortcut</span>
-</pre></div>
-</div>
-<p>Féach an tábla seo a leanas le haghaidh liosta de na gnéithe atá ar fáil:</p>
-<table class="docutils align-default">
-<thead>
-<tr class="row-odd"><th class="head"><p>Gné</p></th>
-<th class="head"><p>Cumasaithe de réir réamhshocraithe</p></th>
-<th class="head"><p>Cur síos</p></th>
-<th class="head"><p>Maoin le díchumasú</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>Cliant</p></td>
-<td><p>Sea, ag teastáil</p></td>
-<td><p>An cliant iarbhír</p></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p>Aicearra Deisce</p></td>
-<td><p>Tá</p></td>
-<td><p>Cuireann sé aicearra leis an deasc</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">NO_DESKTOP_SHORTCUT</span></code></p></td>
-</tr>
-<tr class="row-even"><td><p>Aicearraí StartMenu</p></td>
-<td><p>Tá</p></td>
-<td><p>Cuireann sé aicearra leis an roghchlár tosaigh</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">NO_START_MENU_SHORTCUTS</span></code></p></td>
-</tr>
-<tr class="row-odd"><td><p>Eisínteachtaí Shell</p></td>
-<td><p>Tá</p></td>
-<td><p>Cuireann comhtháthú Explorer leis</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">NO_SHELL_EXTENSIONS</span></code></p></td>
-</tr>
-</tbody>
-</table>
+<section id="install-on-macos-and-windows">
+<h2>Install on macOS and Windows<a class="headerlink" href="#install-on-macos-and-windows" title="Link to this heading"></a></h2>
+<p>Installation on macOS and Windows is the same as for any other software
+application: download the program and then double-click it to launch the
+installation, and then follow the installation wizard. After it is installed and
+configured the desktop client will automatically keep itself updated; see
+<a class="reference internal" href="autoupdate.html"><span class="doc">An Nuashonrú Uathoibríoch</span></a> for more information.</p>
+<p>For administrator-focused deployment options such as advanced Windows MSI
+configuration, non-interactive account provisioning, and command-line wizard
+preconfiguration, see the Admin Manual chapter on desktop client deployment and
+setup.</p>
 </section>
-<section id="id1">
-<h3>Suiteáil<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
-<p>Is féidir leat a roghnú freisin an cliant féin a shuiteáil ach an t-ordú seo a leanas a úsáid:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">passive</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">ADDDEFAULT</span><span class="o">=</span><span class="n">Client</span>
-</pre></div>
-</div>
-<p>Más mian leat mar shampla gach rud a shuiteáil ach an ghné <code class="docutils literal notranslate"><span class="pre">DesktopShortcut</span></code> agus <code class="docutils literal notranslate"><span class="pre">ShellExtensions</span></code>, tá dhá fhéidearthacht agat:</p>
-<ol class="arabic">
-<li><p>Ainmníonn tú go sainráite na gnéithe go léir is mian leat a shuiteáil (liosta bán) ina bhfuil <code class="docutils literal notranslate"><span class="pre">Client</span></code> suiteáilte i gcónaí ar aon nós:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">passive</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">ADDDEFAULT</span><span class="o">=</span><span class="n">StartMenuShortcuts</span>
-</pre></div>
-</div>
-</li>
-<li><p>Téann tú thar na hairíonna <code class="docutils literal notranslate"><span class="pre">NO_DESKTOP_SHORTCUT</span></code> agus <code class="docutils literal notranslate"><span class="pre">NO_SHELL_EXTENSIONS</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">passive</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">NO_DESKTOP_SHORTCUT</span><span class="o">=</span><span class="s2">&quot;1&quot;</span> <span class="n">NO_SHELL_EXTENSIONS</span><span class="o">=</span><span class="s2">&quot;1&quot;</span>
-</pre></div>
-</div>
-</li>
-</ol>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Cuimhníonn an Nextcloud <code class="docutils literal notranslate"><span class="pre">.msi</span></code> na hairíonna seo, mar sin ní gá duit iad a shonrú ar uasghráduithe.</p>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Ní féidir leat iad seo a úsáid chun na gnéithe suiteáilte a athrú, más mian leat é sin a dhéanamh, féach an chéad chuid eile.</p>
-</div>
+<section id="install-on-linux">
+<h2>Install on Linux<a class="headerlink" href="#install-on-linux" title="Link to this heading"></a></h2>
+<p>For Linux, Nextcloud officially provides the desktop client as an AppImage on
+the <a class="reference external" href="https://nextcloud.com/download/#install-clients">Nextcloud download page</a>.</p>
+<p>Some Linux distributions also provide the Nextcloud desktop client through their
+package managers. These packages are maintained by the distribution or community,
+not by Nextcloud. If you prefer a package-managed installation, refer to your
+distribution's documentation.</p>
+<p>Linux users must also have a password manager enabled, such as GNOME Keyring or
+KWallet, so that the desktop client can log in automatically.</p>
 </section>
-<section id="changing-installed-features">
-<h3>Gnéithe Suiteáilte a Athrú<a class="headerlink" href="#changing-installed-features" title="Link to this heading"></a></h3>
-<p>Is féidir leat na gnéithe suiteáilte a athrú ar ball trí úsáid a bhaint as airíonna <code class="docutils literal notranslate"><span class="pre">REMOVE</span></code> agus <code class="docutils literal notranslate"><span class="pre">ADDDEFAULT</span></code>.</p>
-<ol class="arabic">
-<li><p>If you want to add the desktop shortcut later, run the following command:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">passive</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">ADDDEFAULT</span><span class="o">=</span><span class="s2">&quot;DesktopShortcut&quot;</span>
-</pre></div>
-</div>
-</li>
-<li><p>Más mian leat é a bhaint, níl ort ach an t-ordú seo a leanas a rith:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">passive</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">REMOVE</span><span class="o">=</span><span class="s2">&quot;DesktopShortcut&quot;</span>
-</pre></div>
-</div>
-</li>
-</ol>
-<p>Coinníonn Windows súil ar na gnéithe suiteáilte agus ní dhéanfaidh úsáid <code class="docutils literal notranslate"><span class="pre">REMOVE</span></code> nó <code class="docutils literal notranslate"><span class="pre">ADDDEFAULT</span></code> ach difear do na gnéithe luaite.</p>
-<p>Déan comparáid idir <a class="reference external" href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa371194(v=vs.85).aspx">REMOVE</a> agus <cite>ADDDEFAULT &lt;https://msdn.microsoft.com/en-us/library/windows/desktop/16v=an Windows</cite> Treoir Suiteálaí.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Ní féidir leat <code class="docutils literal notranslate"><span class="pre">REMOVE</span></code> a shonrú ar an tsuiteáil tosaigh mar díchumasóidh sé gach gné.</p>
-</div>
-</section>
-<section id="installation-folder">
-<h3>Fillteán Suiteála<a class="headerlink" href="#installation-folder" title="Link to this heading"></a></h3>
-<p>Is féidir leat an fillteán suiteála a choigeartú ach an t-airí <code class="docutils literal notranslate"><span class="pre">INSTALLDIR</span></code> a shonrú mar seo:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">passive</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">INSTALLDIR</span><span class="o">=</span><span class="s2">&quot;C:\Program Files\Non Standard Nextcloud Client Folder&quot;</span>
-</pre></div>
-</div>
-<p>Bí cúramach agus PowerShell á n-úsáid in ionad `` cmd.exe``, féadann sé a bheith deacair an spás bán a fháil chun éalú díreach ansin. Ní oibríonn ach an <code class="docutils literal notranslate"><span class="pre">INSTALLDIR</span></code> a shonrú mar seo ar an gcéad suiteáil, ní féidir leat an <code class="docutils literal notranslate"><span class="pre">.msi</span></code> a athagairt le cosán eile. Más gá duit é a athrú fós, díshuiteáil ar dtús é agus athshuiteáil leis an gcosán nua é.</p>
-</section>
-<section id="disabling-automatic-updates">
-<h3>Nuashonruithe Uathoibríocha a Dhíchumasú<a class="headerlink" href="#disabling-automatic-updates" title="Link to this heading"></a></h3>
-<p>Chun nuashonruithe uathoibríocha a dhíchumasú, is féidir leat an t-airí <code class="docutils literal notranslate"><span class="pre">SKIPAUTOUPDATE</span></code> a chur ar aghaidh.:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">passive</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">SKIPAUTOUPDATE</span><span class="o">=</span><span class="s2">&quot;1&quot;</span>
-</pre></div>
-</div>
-</section>
-<section id="launch-after-installation">
-<h3>Seoladh Tar éis Suiteáil<a class="headerlink" href="#launch-after-installation" title="Link to this heading"></a></h3>
-<p>Chun an cliant a sheoladh go huathoibríoch tar éis é a shuiteáil, is féidir leat pas a fháil sa mhaoin <code class="docutils literal notranslate"><span class="pre">LAUNCH</span></code>.:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">LAUNCH</span><span class="o">=</span><span class="s2">&quot;1&quot;</span>
-</pre></div>
-</div>
-<p>Baineann an rogha seo an ticbhosca freisin chun ligean d’úsáideoirí cinneadh a dhéanamh an bhfuil siad ag iarraidh an cliant a sheoladh ar mhodh neamh-éighníomhach/ciúin.</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Níl aon éifeacht ag an rogha seo gan GUI.</p>
-</div>
-</section>
-<section id="no-reboot-after-installation">
-<h3>Gan Atosaigh Tar éis Suiteáil<a class="headerlink" href="#no-reboot-after-installation" title="Link to this heading"></a></h3>
-<p>Déanann Cliant Nextcloud atosaigh a sceidealú tar éis é a shuiteáil chun a chinntiú go bhfuil an síneadh Explorer (dí) luchtaithe i gceart. Má tá tú ag tabhairt aire don atosaigh tú féin, is féidir leat an t-airí <code class="docutils literal notranslate"><span class="pre">REBOOT</span></code> a shocrú</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">REBOOT</span><span class="o">=</span><span class="n">ReallySuppress</span>
-</pre></div>
-</div>
-<p>Fágfaidh sé seo go scoirfear <code class="docutils literal notranslate"><span class="pre">msiexec</span></code> le hearráid <code class="docutils literal notranslate"><span class="pre">ERROR_SUCCESS_REBOOT_REQUIRED</span></code> (3010). Má léirmhíníonn d’uirlisiú imlonnaithe seo mar fhíorearráid agus gur mhaith leat é sin a sheachaint, b’fhéidir gur mhaith leat an <code class="docutils literal notranslate"><span class="pre">DO_NOT_SCHEDULE_REBOOT</span></code> a shocrú ina ionad sin:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">DO_NOT_SCHEDULE_REBOOT</span><span class="o">=</span><span class="s2">&quot;1&quot;</span>
-</pre></div>
-</div>
-</section>
-</section>
-<section id="installation-wizard">
-<h2>Treoraí Suiteáil<a class="headerlink" href="#installation-wizard" title="Link to this heading"></a></h2>
-<p>Tógann an draoi suiteála tú céim ar chéim trí roghanna cumraíochta agus socrú cuntais. Ar dtús, ní mór duit URL do fhreastalaí Nextcloud a chur isteach.</p>
+<section id="initial-setup">
+<h2>Initial Setup<a class="headerlink" href="#initial-setup" title="Link to this heading"></a></h2>
+<p>After installation, the initial setup wizard is triggered. In the setup wizard,
+you can log in to your server, create an account with a provider, and configure
+which folders to sync. The wizard will guide you step-by-step through the
+essential configuration options and basic account setup.</p>
+<p>First, you need to enter the URL of your Nextcloud server.</p>
 <img alt="foirm le roghnú idir logáil isteach agus clárú" src="../../_images/wizard_welcome.png" />
-<p>Má tá cuntas agat cheana féin ar shampla Nextcloud, ba mhaith leat an cnaipe <code class="docutils literal notranslate"><span class="pre">Logáil</span> <span class="pre">isteach</span> <span class="pre">i</span> <span class="pre">do</span> <span class="pre">Nextcloud</span></code> a bhrú. Mura bhfuil sampla Nextcloud agat agus cuntas ann, b’fhéidir gur mhaith leat cuntas a chlárú le soláthraí. Brúigh <code class="docutils literal notranslate"><span class="pre">Cruthaigh</span> <span class="pre">cuntas</span> <span class="pre">le</span> <span class="pre">Soláthraí</span></code> sa chás sin. Cuimhnigh le do thoil go bhféadfadh an cliant deisce a bheith tógtha gan tacaíocht soláthraí. Sa chás sin, ní fheicfidh tú an leathanach seo. Ina áit sin, tabharfar leid duit leis an gcéad leathanach eile.</p>
+<p>If you already have an account on a Nextcloud instance, click <code class="docutils literal notranslate"><span class="pre">Login</span> <span class="pre">to</span> <span class="pre">your</span>
+<span class="pre">Nextcloud</span></code>. If you do not yet have a Nextcloud instance or an account, you may
+need to create one first. Alternatively, you might want to register an account
+with a provider. Press <code class="docutils literal notranslate"><span class="pre">Create</span> <span class="pre">account</span> <span class="pre">with</span> <span class="pre">Provider</span></code> in that case.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The desktop client build you are using may have been built without provider
+support. In that case, you won't see this page and will immediately see the
+next page.</p>
+</div>
 <img alt="foirm chun URL freastalaí Nextcloud a iontráil" src="../../_images/wizard_setup.png" />
 <p>Cuir isteach an URL do do shampla Nextcloud. Is é an URL an URL céanna a chlóscríobhann tú isteach i do bhrabhsálaí nuair a dhéanann tú iarracht rochtain a fháil ar do shampla Nextcloud.</p>
 <img alt="foirm ag fanacht ar údarú" src="../../_images/wizard_flow2.png" />
-<p>Anois ba chóir do bhrabhsálaí gréasáin a oscailt agus tú a spreagadh chun logáil isteach i do shampla Nextcloud. Cuir isteach d'ainm úsáideora agus do phasfhocal i do bhrabhsálaí gréasáin agus deonaigh rochtain. Tar éis duit é sin a dhéanamh, téigh ar ais chuig an draoi. Cuimhnigh le do thoil go mb’fhéidir nach mbeidh ort d’ainm úsáideora agus do phasfhocal a chur isteach má tá tú logáilte isteach i do bhrabhsálaí cheana féin.</p>
+<p>Now your web browser should open and prompt you to log in to your
+Nextcloud instance. Enter your username and password in your web
+browser and click <em>Grant access</em> when prompted. After you do that,
+go back to the wizard.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You might not need to enter your username and password if you are
+already logged in to your web browser.</p>
+</div>
 <img alt="Roghnaigh cé na fillteáin chianda atá le sioncronú, agus cén fillteán áitiúil le stóráil iad isteach." src="../../_images/wizard_advanced.png" />
 <p>Ar an scáileán roghanna fillteán logánta, is féidir leat do chuid comhad go léir a shioncronú ar an bhfreastalaí Nextcloud, nó fillteáin aonair a roghnú. Is é <code class="docutils literal notranslate"><span class="pre">Nextcloud</span></code> an fillteán sioncronaithe áitiúil réamhshocraithe, i do eolaire baile. Is féidir leat é seo a athrú freisin.</p>
-<p>Nuair a bheidh do fhillteáin sioncronaithe críochnaithe agat, cliceáil ar an gcnaipe Ceangail ag bun ar dheis. Déanfaidh an cliant iarracht ceangal a dhéanamh le do fhreastalaí Nextcloud, agus nuair a éiríonn leis, dúnann an draoi é féin. Is féidir leat an ghníomhaíocht sioncronaithe a fheiceáil anois má osclaíonn tú an príomh-idirphlé trí chliceáil ar dheilbhín an tráidire.</p>
+<p>When you have completed selecting your sync folders, click the <em>Connect</em>
+button at the bottom right. The client will attempt to connect to your
+Nextcloud server. If it is successful, the wizard will close itself. You
+can then observe the sync activity and open the main dialog by clicking
+on the tray icon.</p>
 </section>
 </section>
 
@@ -305,7 +222,7 @@
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="index.html" class="btn btn-neutral float-left" title="Cliaint Deisce" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="index.html" class="btn btn-neutral float-left" title="Desktop Client" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="uninstallation.html" class="btn btn-neutral float-right" title="Uninstallation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
@@ -331,6 +248,8 @@
 
   
   
+  
+    
   
     
   
@@ -592,6 +511,14 @@
                
             >
               Korean
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/lo/"
+               
+            >
+              lo
             </a>
           </dd>
         

@@ -32,7 +32,7 @@
     <link rel="index" title="색인" href="../genindex.html" />
     <link rel="search" title="검색" href="../search.html" />
     <link rel="next" title="Uninstallation" href="uninstallation.html" />
-    <link rel="prev" title="데스크톱 클라이언트" href="index.html" /> 
+    <link rel="prev" title="Desktop Client" href="index.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -66,25 +66,22 @@
 <li class="toctree-l1"><a class="reference internal" href="../files/index.html">파일 및 동기화</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Talk</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">데스크톱 클라이언트</a><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Desktop Client</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">설치</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#download">Download</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#supported-server-versions">Supported server versions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#system-requirements">시스템 요구사항</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#customizing-the-windows-installation">사용자 지정 윈도우즈 설치</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#features">기능</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id1">설치</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#changing-installed-features">설치된 기능 변경</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#installation-folder">설치 폴더</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#disabling-automatic-updates">자동 업데이트 비활성화</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#launch-after-installation">설치 후 실행</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#no-reboot-after-installation">설치 후 재부팅 생략</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#installation-wizard">설치 마법사</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#install-on-macos-and-windows">Install on macOS and Windows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#install-on-linux">Install on Linux</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#initial-setup">Initial Setup</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="uninstallation.html">Uninstallation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="usage.html">동기화 클라이언트 사용하기</a></li>
-<li class="toctree-l2"><a class="reference internal" href="macosvfs.html">macOS Virtual Files Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="commandline.html">Using the Command-Line Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html">Command-Line Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configfile.html">Configuration File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="envvars.html">Environment Variables</a></li>
 <li class="toctree-l2"><a class="reference internal" href="autoupdate.html">자동 업데이터</a></li>
 <li class="toctree-l2"><a class="reference internal" href="updatechannel.html">업데이트 채널</a></li>
 <li class="toctree-l2"><a class="reference internal" href="conflicts.html">충돌</a></li>
@@ -112,7 +109,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="index.html">데스크톱 클라이언트</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Desktop Client</a></li>
       <li class="breadcrumb-item active">설치</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/desktop/installation.rst" class="fa fa-github"> Edit on GitHub</a>
@@ -125,24 +122,28 @@
              
   <section id="installation">
 <h1>설치<a class="headerlink" href="#installation" title="Link to this heading"></a></h1>
-<p>You can download the latest version of the Nextcloud Desktop Synchronization
-Client from the <a class="reference external" href="https://nextcloud.com/download/#install-clients">Nextcloud download page</a>.
-There are clients for Linux, macOS, and Microsoft Windows.</p>
-<p>현재 지원되는 서버 릴리즈는 발행 시점에서 마지막 3개의 안정 버전입니다. 이것은 latest 릴리즈 시리즈가 지원되는 안정 서버 major 버전인 것을 의미합니다. 지원되는 major 버전에 관해서는 <a class="reference external" href="https://github.com/nextcloud/server/wiki/Maintenance-and-Release-Schedule">https://github.com/nextcloud/server/wiki/Maintenance-and-Release-Schedule</a> 을 참고하십시오.</p>
-<p>macOS와 윈도우즈에서의 설치는 다른 소프트웨어 어플리케이션의 경우와 동일합니다: 프로그램을 다운로드하고 더블 클릭하여 설치를 실행하고 설치 마법사를 따르십시오. 설치 이후 설정된 동기 클라이언트가 자동적으로 프로그램의 업데이트 상태를 유지합니다; 자세한 정보는 <a class="reference internal" href="autoupdate.html"><span class="doc">자동 업데이터</span></a>  를 참고하십시오.</p>
-<p>리눅스 사용자는 자신의 리눅스 배포판에 맞는 저장소를 추가하기 위해 다운로드 페이지의 안내를 따라 서명키를 설치하고 자신의 패키지 관리자를 통하여 데스크톱 동기 클라이언트를 설치합니다. 리눅스 사용자는 패키지 관리자를 통하여 자신의 동기 클라이언트를 업데이트할 수 있고 클라이언트는 업데이트가 가능할 때 알림을 표시합니다.</p>
-<p>리눅스 사용자는 동기 클라이언트가 자동적으로 로그인할 수 있도록 GNOME Keyring 이나 KWallet 과 같은 패스워드 관리자 또한 반드시 활성화해야합니다.</p>
+<section id="download">
+<h2>Download<a class="headerlink" href="#download" title="Link to this heading"></a></h2>
+<p>You can download the latest version of the Nextcloud Desktop Synchronization Client
+from the <a class="reference external" href="https://nextcloud.com/download/#install-clients">Nextcloud download page</a>. Clients are available for Linux, macOS, and
+Microsoft Windows.</p>
 <p>소스 코드 아카이브와 이전 버전의 링크를 다운로드 페이지에서 찾을 수 있습니다.</p>
+</section>
+<section id="supported-server-versions">
+<h2>Supported server versions<a class="headerlink" href="#supported-server-versions" title="Link to this heading"></a></h2>
+<p>Each desktop client release supports the latest three stable Nextcloud server
+major versions at the time of release. See the <a class="reference external" href="https://github.com/nextcloud/server/wiki/Maintenance-and-Release-Schedule">Nextcloud Server release schedule</a>
+for supported major versions.</p>
+</section>
 <section id="system-requirements">
 <h2>시스템 요구사항<a class="headerlink" href="#system-requirements" title="Link to this heading"></a></h2>
-<ul class="simple">
+<ul>
 <li><p>윈도우즈 10 이상 (64비트 전용)</p></li>
 <li><p>macOS 12.0+ (64-bits only)</p></li>
-<li><dl class="simple">
-<dt>Linux (Ubuntu 24.04 or openSUSE 15.5 or Alma 8 or …) (64-bits only)</dt><dd><p>For Linux distributions, we support, if technically feasible, the current LTS releases.
-For BSD, we support them if technically feasible but we do not test.</p>
-</dd>
-</dl>
+<li><p>Linux (Ubuntu 24.04 or openSUSE 15.5 or Alma 8 or …) (64-bits only)</p>
+<p>For Linux distributions, we support, if technically feasible, the current
+LTS releases. For BSD, we support them if technically feasible, but we do not
+test them.</p>
 </li>
 </ul>
 <div class="admonition note">
@@ -155,153 +156,66 @@ For BSD, we support them if technically feasible but we do not test.</p>
 </ul>
 </div>
 </section>
-<section id="customizing-the-windows-installation">
-<h2>사용자 지정 윈도우즈 설치<a class="headerlink" href="#customizing-the-windows-installation" title="Link to this heading"></a></h2>
-<p>로컬 시스템에 단순히 Nextcloud 데스크톱 동기화 클라이언트를 설치하려면 <cite>.msi</cite> 파일을 실행하고 팝업된 마법사로 설정합니다.</p>
-<section id="features">
-<h3>기능<a class="headerlink" href="#features" title="Link to this heading"></a></h3>
-<p>MSI 인스톨러는 개별적으로 설치되거나 제거할 수 있는 여러 기능을 제공하고, command line을 통하여 제어할 수 있으며, 설치를 자동화하고 있다면 다음 명령으로 실행합니다:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">passive</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span>
-</pre></div>
-</div>
-<p>명령은 Nextcloud 동기화 클라이언트를 기본 설치 위치에 기본 기능을 활성화한 상태로 설치할 것입니다. 데스크톱 바로가기 등의 일부 기능을 비활성화하기 원한다면 간단히 위의 명령을 다음과 같이 변경할 수 있습니다:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">passive</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">REMOVE</span><span class="o">=</span><span class="n">DesktopShortcut</span>
-</pre></div>
-</div>
-<p>사용 가능한 기능의 리스트은 다음 테이블을 참고하십시오:</p>
-<table class="docutils align-default">
-<thead>
-<tr class="row-odd"><th class="head"><p>기능</p></th>
-<th class="head"><p>기본으로 활성화됨</p></th>
-<th class="head"><p>설명</p></th>
-<th class="head"><p>비활성화할 속성</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>클라이언트</p></td>
-<td><p>요구됨</p></td>
-<td><p>실제 클라이언트</p></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p>DesktopShortcut</p></td>
-<td><p>예</p></td>
-<td><p>데스크탑에 바로가기 추가</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">NO_DESKTOP_SHORTCUT</span></code></p></td>
-</tr>
-<tr class="row-even"><td><p>StartMenuShortcuts</p></td>
-<td><p>예</p></td>
-<td><p>시작 메뉴에 바로가기 추가</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">NO_START_MENU_SHORTCUTS</span></code></p></td>
-</tr>
-<tr class="row-odd"><td><p>ShellExtensions</p></td>
-<td><p>예</p></td>
-<td><p>탐색기 통합 추가</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">NO_SHELL_EXTENSIONS</span></code></p></td>
-</tr>
-</tbody>
-</table>
+<section id="install-on-macos-and-windows">
+<h2>Install on macOS and Windows<a class="headerlink" href="#install-on-macos-and-windows" title="Link to this heading"></a></h2>
+<p>Installation on macOS and Windows is the same as for any other software
+application: download the program and then double-click it to launch the
+installation, and then follow the installation wizard. After it is installed and
+configured the desktop client will automatically keep itself updated; see
+<a class="reference internal" href="autoupdate.html"><span class="doc">자동 업데이터</span></a> for more information.</p>
+<p>For administrator-focused deployment options such as advanced Windows MSI
+configuration, non-interactive account provisioning, and command-line wizard
+preconfiguration, see the Admin Manual chapter on desktop client deployment and
+setup.</p>
 </section>
-<section id="id1">
-<h3>설치<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
-<p>다음 명령을 통하여 클라이언트 자체만 설치하도록 선택할 수 있습니다:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">passive</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">ADDDEFAULT</span><span class="o">=</span><span class="n">Client</span>
-</pre></div>
-</div>
-<p>If you for instance want to install everything but the <code class="docutils literal notranslate"><span class="pre">DesktopShortcut</span></code> and the <code class="docutils literal notranslate"><span class="pre">ShellExtensions</span></code> feature, you have two possibilities:</p>
-<ol class="arabic">
-<li><p><code class="docutils literal notranslate"><span class="pre">Client</span></code> 가 항상 설치되는 곳에 실제로 설치하기 원하는 모든 기능의 이름을 명시적으로 지정합니다(화이트리스트):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">passive</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">ADDDEFAULT</span><span class="o">=</span><span class="n">StartMenuShortcuts</span>
-</pre></div>
-</div>
-</li>
-<li><p><code class="docutils literal notranslate"><span class="pre">NO_DESKTOP_SHORTCUT</span></code> 과 <code class="docutils literal notranslate"><span class="pre">NO_SHELL_EXTENSIONS</span></code> 속성을 지정합니다:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">passive</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">NO_DESKTOP_SHORTCUT</span><span class="o">=</span><span class="s2">&quot;1&quot;</span> <span class="n">NO_SHELL_EXTENSIONS</span><span class="o">=</span><span class="s2">&quot;1&quot;</span>
-</pre></div>
-</div>
-</li>
-</ol>
-<div class="admonition note">
-<p class="admonition-title">참고</p>
-<p>Nextcloud <code class="docutils literal notranslate"><span class="pre">.msi</span></code> 는 이 속성들을 기억하기 때문에 업그레이드시 지정할 필요가 없습니다.</p>
-</div>
-<div class="admonition note">
-<p class="admonition-title">참고</p>
-<p>설치된 기능을 변경하기 위해서 이것을 사용할 수 없습니다. 변경하기를 원하면 다음 섹션을 참고하십시오.</p>
-</div>
+<section id="install-on-linux">
+<h2>Install on Linux<a class="headerlink" href="#install-on-linux" title="Link to this heading"></a></h2>
+<p>For Linux, Nextcloud officially provides the desktop client as an AppImage on
+the <a class="reference external" href="https://nextcloud.com/download/#install-clients">Nextcloud download page</a>.</p>
+<p>Some Linux distributions also provide the Nextcloud desktop client through their
+package managers. These packages are maintained by the distribution or community,
+not by Nextcloud. If you prefer a package-managed installation, refer to your
+distribution’s documentation.</p>
+<p>Linux users must also have a password manager enabled, such as GNOME Keyring or
+KWallet, so that the desktop client can log in automatically.</p>
 </section>
-<section id="changing-installed-features">
-<h3>설치된 기능 변경<a class="headerlink" href="#changing-installed-features" title="Link to this heading"></a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">REMOVE</span></code> 와 <code class="docutils literal notranslate"><span class="pre">ADDDEFAULT</span></code> 속성을 사용하여 설치된 기능을 이후에 변경할 수 있습니다.</p>
-<ol class="arabic">
-<li><p>If you want to add the desktop shortcut later, run the following command:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">passive</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">ADDDEFAULT</span><span class="o">=</span><span class="s2">&quot;DesktopShortcut&quot;</span>
-</pre></div>
-</div>
-</li>
-<li><p>제거하기를 원한다면 간단히 다음 명령을 실행하십시오:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">passive</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">REMOVE</span><span class="o">=</span><span class="s2">&quot;DesktopShortcut&quot;</span>
-</pre></div>
-</div>
-</li>
-</ol>
-<p>윈도우즈는 설치된 기능을 추적하고 <code class="docutils literal notranslate"><span class="pre">REMOVE</span></code> 와 <code class="docutils literal notranslate"><span class="pre">ADDDEFAULT</span></code> 사용은 언급된 기능들에만 반영됩니다.</p>
-<p>윈도우즈 설치 가이드의  <a class="reference external" href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa371194(v=vs.85).aspx">REMOVE</a> 와 <a class="reference external" href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa367518(v=vs.85).aspx">ADDDEFAULT</a> 를 비교하십시오.</p>
-<div class="admonition note">
-<p class="admonition-title">참고</p>
-<p><code class="docutils literal notranslate"><span class="pre">REMOVE</span></code> 는 모든 기능을 비활성화하기 때문에 초기 설치 시에는 지정할 수 없습니다.</p>
-</div>
-</section>
-<section id="installation-folder">
-<h3>설치 폴더<a class="headerlink" href="#installation-folder" title="Link to this heading"></a></h3>
-<p>다음과 같이 <code class="docutils literal notranslate"><span class="pre">INSTALLDIR</span></code> 속성을 지정하여 설치 폴더를 조정할 수 있습니다:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">passive</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">INSTALLDIR</span><span class="o">=</span><span class="s2">&quot;C:\Program Files\Non Standard Nextcloud Client Folder&quot;</span>
-</pre></div>
-</div>
-<p><code class="docutils literal notranslate"><span class="pre">cmd.exe</span></code> 대신 파워쉘을 사용하는 경우 공백 문자 이스케이프에 주의하십시오. 이와 같이 <code class="docutils literal notranslate"><span class="pre">INSTALLDIR</span></code> 를 지정하는 것은 처음 설치 시에만 동작하고, <code class="docutils literal notranslate"><span class="pre">.msi</span></code> 를 다른 경로로 단순히 재호출 할 수 없습니다. 그래도 변경이 필요하다면 먼저 설치 제거 후 새 경로로 재 설치하십시오.</p>
-</section>
-<section id="disabling-automatic-updates">
-<h3>자동 업데이트 비활성화<a class="headerlink" href="#disabling-automatic-updates" title="Link to this heading"></a></h3>
-<p>자동 업데이트를 비활성화하기 위해서 <code class="docutils literal notranslate"><span class="pre">SKIPAUTOUPDATE</span></code> 속성을 지정할 수 있습니다:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">passive</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">SKIPAUTOUPDATE</span><span class="o">=</span><span class="s2">&quot;1&quot;</span>
-</pre></div>
-</div>
-</section>
-<section id="launch-after-installation">
-<h3>설치 후 실행<a class="headerlink" href="#launch-after-installation" title="Link to this heading"></a></h3>
-<p>설치 후 클라이언트를 자동적으로 실행하기 위해서 <code class="docutils literal notranslate"><span class="pre">LAUNCH</span></code> 속성을 지정할 수 있습니다:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">LAUNCH</span><span class="o">=</span><span class="s2">&quot;1&quot;</span>
-</pre></div>
-</div>
-<p>이 옵션은 또한 사용자가 선택할 수 있는 체크 박스를 제거하는데, 이것은 패시브 모드가 아니거나 quite 모드에 대하여 클라이언트를 실행하기 원하는 경우 사용될 수 있습니다.</p>
-<div class="admonition note">
-<p class="admonition-title">참고</p>
-<p>이 옵션은 GUI 이외에는 아무런 효과가 없습니다.</p>
-</div>
-</section>
-<section id="no-reboot-after-installation">
-<h3>설치 후 재부팅 생략<a class="headerlink" href="#no-reboot-after-installation" title="Link to this heading"></a></h3>
-<p>Nextcloud 클라이언트는 탐색기 확장을 정확히 불러오거나 해제하기 위해서 설치 후 재부팅을 예약합니다. 직접 재부팅을 하려는 경우 <code class="docutils literal notranslate"><span class="pre">REBOOT</span></code> 속성을 설정할 수 있습니다:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">REBOOT</span><span class="o">=</span><span class="n">ReallySuppress</span>
-</pre></div>
-</div>
-<p>이것은 <code class="docutils literal notranslate"><span class="pre">msiexec</span></code> 가 <code class="docutils literal notranslate"><span class="pre">ERROR_SUCCESS_REBOOT_REQUIRED</span></code> (3010) 오류로 종료하게 만듭니다. 만약 배포툴에서 이것을 실제 오류로 해석하는 것을 막기 위해서는 그 대신 <code class="docutils literal notranslate"><span class="pre">DO_NOT_SCHEDULE_REBOOT</span></code> 을 설정하기를 원할 수 있습니다:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">DO_NOT_SCHEDULE_REBOOT</span><span class="o">=</span><span class="s2">&quot;1&quot;</span>
-</pre></div>
-</div>
-</section>
-</section>
-<section id="installation-wizard">
-<h2>설치 마법사<a class="headerlink" href="#installation-wizard" title="Link to this heading"></a></h2>
-<p>설치 마법사는 설정 옵션과 계정 설정을 단계별로 진행합니다. 먼저 Nextcloud 서버의 URL을 입력해야 합니다.</p>
+<section id="initial-setup">
+<h2>Initial Setup<a class="headerlink" href="#initial-setup" title="Link to this heading"></a></h2>
+<p>After installation, the initial setup wizard is triggered. In the setup wizard,
+you can log in to your server, create an account with a provider, and configure
+which folders to sync. The wizard will guide you step-by-step through the
+essential configuration options and basic account setup.</p>
+<p>First, you need to enter the URL of your Nextcloud server.</p>
 <img alt="로그인과 등록 중 선택할 수 있는 form" src="../../_images/wizard_welcome.png" />
-<p>Nextcloud 인스턴스에 계정이 이미 있는 경우 <code class="docutils literal notranslate"><span class="pre">Login</span> <span class="pre">to</span> <span class="pre">your</span> <span class="pre">Nextcloud</span></code> 버튼을 누릅니다. Nextcloud 인스턴스에 계정이 없는 경우 제공자에 계정을 등록할 수 있습니다. 이 경우 <code class="docutils literal notranslate"><span class="pre">Create</span> <span class="pre">account</span> <span class="pre">with</span> <span class="pre">Provider</span></code> 을 누릅니다. 데스크톱 클라이언트가 제공자 지원에 대하여 빌드되지 않았을 수 있는 것에 주의하십시오. 이 경우 이 페이지를 볼 수 없을 것입니다. 그 대신 다음 페이지 표시됩니다.</p>
+<p>If you already have an account on a Nextcloud instance, click <code class="docutils literal notranslate"><span class="pre">Login</span> <span class="pre">to</span> <span class="pre">your</span>
+<span class="pre">Nextcloud</span></code>. If you do not yet have a Nextcloud instance or an account, you may
+need to create one first. Alternatively, you might want to register an account
+with a provider. Press <code class="docutils literal notranslate"><span class="pre">Create</span> <span class="pre">account</span> <span class="pre">with</span> <span class="pre">Provider</span></code> in that case.</p>
+<div class="admonition note">
+<p class="admonition-title">참고</p>
+<p>The desktop client build you are using may have been built without provider
+support. In that case, you won’t see this page and will immediately see the
+next page.</p>
+</div>
 <img alt="Nextcloud 서버 URL을 입력하는 form" src="../../_images/wizard_setup.png" />
 <p>Nextcloud 인스턴스의 URL를 입력하십시오. URL은 Nextcloud 인스턴스에 접근하려고 할 때 브라우저에서 입력하는 URL과 동일합니다.</p>
 <img alt="인증을 기다리는 form" src="../../_images/wizard_flow2.png" />
-<p>이제 웹 브라우저가 열리고 Nextcloud 인스턴스에 로그인 하도록 표시됩니다. 접근 권한을 허용하기 위해서 웹 브라우저에서 사용자 이름과 암호를 입력합니다. 브라우저에서 이미 로그인 된 경우 사용자 이름과 암호를 입력하지 않아도 될 수 있다는 것에 유의하십시오.</p>
+<p>Now your web browser should open and prompt you to log in to your
+Nextcloud instance. Enter your username and password in your web
+browser and click <em>Grant access</em> when prompted. After you do that,
+go back to the wizard.</p>
+<div class="admonition note">
+<p class="admonition-title">참고</p>
+<p>You might not need to enter your username and password if you are
+already logged in to your web browser.</p>
+</div>
 <img alt="동기화를 원하는 원격 폴더를 선택하고 저장할 로컬 폴더를 선택합니다." src="../../_images/wizard_advanced.png" />
 <p>로컬 폴더 옵션에서 Nextcloud 서버의 모든 파일을 동기화하거나 개별 폴더를 선택할 수 있습니다. 기본 로컬 동기 폴더는 홈 디렉토리의 <code class="docutils literal notranslate"><span class="pre">Nextcloud</span></code> 입니다. 이것도 변경할 수 있습니다.</p>
-<p>동기화 폴더 선택을 완료했으면 우측 하단의 연결 버튼을 클릭합니다. 클라이언트는 Nextcloud 서버와 연결을 시도하고 성공 시 마법사를 닫습니다. 트레이 아이콘을 클릭하여 메인 다이얼로그를 열면 동기화 활동을 확인할 수 있습니다.</p>
+<p>When you have completed selecting your sync folders, click the <em>Connect</em>
+button at the bottom right. The client will attempt to connect to your
+Nextcloud server. If it is successful, the wizard will close itself. You
+can then observe the sync activity and open the main dialog by clicking
+on the tray icon.</p>
 </section>
 </section>
 
@@ -309,7 +223,7 @@ For BSD, we support them if technically feasible but we do not test.</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="index.html" class="btn btn-neutral float-left" title="데스크톱 클라이언트" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="index.html" class="btn btn-neutral float-left" title="Desktop Client" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="uninstallation.html" class="btn btn-neutral float-right" title="Uninstallation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
@@ -335,6 +249,8 @@ For BSD, we support them if technically feasible but we do not test.</p>
 
   
   
+  
+    
   
     
   
@@ -596,6 +512,14 @@ For BSD, we support them if technically feasible but we do not test.</p>
                
             >
               Korean
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/lo/"
+               
+            >
+              lo
             </a>
           </dd>
         

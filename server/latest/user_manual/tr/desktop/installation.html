@@ -32,7 +32,7 @@
     <link rel="index" title="Dizin" href="../genindex.html" />
     <link rel="search" title="Ara" href="../search.html" />
     <link rel="next" title="Uninstallation" href="uninstallation.html" />
-    <link rel="prev" title="Bilgisayar istemcileri" href="index.html" /> 
+    <link rel="prev" title="Desktop Client" href="index.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -66,25 +66,22 @@
 <li class="toctree-l1"><a class="reference internal" href="../files/index.html">Dosyalar ve eşitleme</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Konuş</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Bilgisayar istemcileri</a><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Desktop Client</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Kurulum</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#download">Download</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#supported-server-versions">Supported server versions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#system-requirements">Sistem gereksinimleri</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#customizing-the-windows-installation">Windows kurulumunu özelleştirmek</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#features">Özellikler</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id1">Kurulum</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#changing-installed-features">Kurulu özellikleri değiştirmek</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#installation-folder">Kurulum klasörü</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#disabling-automatic-updates">Otomatik güncellemeleri kapatmak</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#launch-after-installation">Kurulumdan sonra başlatmak</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#no-reboot-after-installation">Kurulumdan sonra bilgisayarın yeniden başlatılmasını engellemek</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#installation-wizard">Kurulum yardımcısı</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#install-on-macos-and-windows">Install on macOS and Windows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#install-on-linux">Install on Linux</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#initial-setup">Initial Setup</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="uninstallation.html">Uninstallation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="usage.html">Eşitleme istemcisini kullanmak</a></li>
-<li class="toctree-l2"><a class="reference internal" href="macosvfs.html">macOS Virtual Files Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="commandline.html">Using the Command-Line Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html">Command-Line Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configfile.html">Configuration File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="envvars.html">Environment Variables</a></li>
 <li class="toctree-l2"><a class="reference internal" href="autoupdate.html">Otomatik güncelleyici</a></li>
 <li class="toctree-l2"><a class="reference internal" href="updatechannel.html">Güncelleme kanalları</a></li>
 <li class="toctree-l2"><a class="reference internal" href="conflicts.html">Çakışmalar</a></li>
@@ -112,7 +109,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="index.html">Bilgisayar istemcileri</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Desktop Client</a></li>
       <li class="breadcrumb-item active">Kurulum</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/desktop/installation.rst" class="fa fa-github"> GitHub'da Düzenle</a>
@@ -125,22 +122,28 @@
              
   <section id="installation">
 <h1>Kurulum<a class="headerlink" href="#installation" title="Link to this heading"></a></h1>
-<p>Nextcloud bilgisayar eşitleme istemcisinin güncel sürümünü <a class="reference external" href="https://nextcloud.com/download/#install-clients">Nextcloud indirme sayfasından</a> indirebilirsiniz. Linux, macOS ve Microsoft Windows için istemciler var.</p>
-<p>Şu anda desteklenen sunucu sürümleri, yayın sırasında en son üç kararlı sürümdür. Bu, latest sürümü serisinin kararlı sunucu ana sürümlerini desteklediği anlamına gelir. Desteklenen ana sürümler için <a class="reference external" href="https://github.com/nextcloud/server/wiki/Maintenance-and-Release-Schedule">https://github.com/nextcloud/server/wiki/Maintenance-and-Release-Schedule</a> adresine bakabilirsiniz.</p>
-<p>macOS ve Windows üzerinde kurulum, herhangi bir yazılım uygulamasıyla aynıdır: Paketi indirin ve ardından kurulumu başlatmak için çift tıklayın. Ardından kurulum yardımcısını izleyin. Eşitleme istemcisi kurulduktan ve yapılandırıldıktan sonra otomatik olarak kendini güncel tutar. Ayrıntılı bilgi almak için <a class="reference internal" href="autoupdate.html"><span class="doc">Otomatik güncelleyici</span></a> bölümüne bakabilirsiniz.</p>
-<p>Linux kullanıcıları, indirme sayfasındaki yönergeleri izleyerek Linux dağıtımları için uygun depoyu eklemeli, imzalama anahtarını kurmalı ve bilgisayar eşitleme istemcisini kurmak için paket yöneticilerini kullanmalıdır. Linux kullanıcıları ayrıca eşitleme istemcilerini paket yöneticisi ile günceller ve bir güncelleme yayınlandığında istemcide bir bildirim görüntülenir.</p>
-<p>Linux kullanıcıları, eşitleme istemcisinin otomatik olarak oturum açabilmesi için GNOME Anahtarlık veya KWallet gibi bir parola yöneticisini de kullanıma almış olmalıdır.</p>
+<section id="download">
+<h2>Download<a class="headerlink" href="#download" title="Link to this heading"></a></h2>
+<p>You can download the latest version of the Nextcloud Desktop Synchronization Client
+from the <a class="reference external" href="https://nextcloud.com/download/#install-clients">Nextcloud download page</a>. Clients are available for Linux, macOS, and
+Microsoft Windows.</p>
 <p>Ayrıca indirme sayfasında kaynak kod arşivleri ve eski sürüm bağlantılarını bulabilirsiniz.</p>
+</section>
+<section id="supported-server-versions">
+<h2>Supported server versions<a class="headerlink" href="#supported-server-versions" title="Link to this heading"></a></h2>
+<p>Each desktop client release supports the latest three stable Nextcloud server
+major versions at the time of release. See the <a class="reference external" href="https://github.com/nextcloud/server/wiki/Maintenance-and-Release-Schedule">Nextcloud Server release schedule</a>
+for supported major versions.</p>
+</section>
 <section id="system-requirements">
 <h2>Sistem gereksinimleri<a class="headerlink" href="#system-requirements" title="Link to this heading"></a></h2>
-<ul class="simple">
+<ul>
 <li><p>Windows 10+ (yalnızca 64 bit)</p></li>
 <li><p>macOS 12.0+ (yalnızca 64 bit)</p></li>
-<li><dl class="simple">
-<dt>Linux (Ubuntu 24.04 or openSUSE 15.5 or Alma 8 or …) (64-bits only)</dt><dd><p>For Linux distributions, we support, if technically feasible, the current LTS releases.
-For BSD, we support them if technically feasible but we do not test.</p>
-</dd>
-</dl>
+<li><p>Linux (Ubuntu 24.04 or openSUSE 15.5 or Alma 8 or …) (64-bits only)</p>
+<p>For Linux distributions, we support, if technically feasible, the current
+LTS releases. For BSD, we support them if technically feasible, but we do not
+test them.</p>
 </li>
 </ul>
 <div class="admonition note">
@@ -153,153 +156,66 @@ For BSD, we support them if technically feasible but we do not test.</p>
 </ul>
 </div>
 </section>
-<section id="customizing-the-windows-installation">
-<h2>Windows kurulumunu özelleştirmek<a class="headerlink" href="#customizing-the-windows-installation" title="Link to this heading"></a></h2>
-<p>Yerel sisteminize yalnızca Nextcloud bilgisayar eşitleme istemcisini kurmak istiyorsanız, <cite>.msi</cite> dosyasını başlatabilir ve açılan yardımcıdan yapılandırabilirsiniz.</p>
-<section id="features">
-<h3>Özellikler<a class="headerlink" href="#features" title="Link to this heading"></a></h3>
-<p>MSI kurucu, kurulumu otomatikleştiriyorsanız, komut satırından da yönetebileceğiniz, ayrı ayrı kurulabilen veya kaldırılabilen çeşitli özellikler sağlar. Ardından şu komutu çalıştırın:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">passive</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span>
-</pre></div>
-</div>
-<p>Komut, Nextcloud bilgisayar eşitleme istemcisini varsayılan özellikler açık olarak varsayılan konuma kurar. Örneğin masaüstü kısayol simgelerini kaldırmak istiyorsanız, yukarıdaki komutu şu şekilde değiştirebilirsiniz:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">passive</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">REMOVE</span><span class="o">=</span><span class="n">DesktopShortcut</span>
-</pre></div>
-</div>
-<p>Kullanılabilecek özelliklerin listesi için şu tabloya bakabilirsiniz:</p>
-<table class="docutils align-default">
-<thead>
-<tr class="row-odd"><th class="head"><p>Özellik</p></th>
-<th class="head"><p>Varsayılan olarak açık</p></th>
-<th class="head"><p>Açıklama</p></th>
-<th class="head"><p>Kapatılacak yer</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>İstemci</p></td>
-<td><p>Evet, zorunlu</p></td>
-<td><p>Güncel istemci</p></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p>DesktopShortcut</p></td>
-<td><p>Evet</p></td>
-<td><p>Masaüstüne kısayol ekler</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">NO_DESKTOP_SHORTCUT</span></code></p></td>
-</tr>
-<tr class="row-even"><td><p>StartMenuShortcuts</p></td>
-<td><p>Evet</p></td>
-<td><p>Başlkangıç menüsüne kısayol ekler</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">NO_START_MENU_SHORTCUTS</span></code></p></td>
-</tr>
-<tr class="row-odd"><td><p>ShellExtensions</p></td>
-<td><p>Evet</p></td>
-<td><p>Windows gezgini bütünleştirmesi ekler</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">NO_SHELL_EXTENSIONS</span></code></p></td>
-</tr>
-</tbody>
-</table>
+<section id="install-on-macos-and-windows">
+<h2>Install on macOS and Windows<a class="headerlink" href="#install-on-macos-and-windows" title="Link to this heading"></a></h2>
+<p>Installation on macOS and Windows is the same as for any other software
+application: download the program and then double-click it to launch the
+installation, and then follow the installation wizard. After it is installed and
+configured the desktop client will automatically keep itself updated; see
+<a class="reference internal" href="autoupdate.html"><span class="doc">Otomatik güncelleyici</span></a> for more information.</p>
+<p>For administrator-focused deployment options such as advanced Windows MSI
+configuration, non-interactive account provisioning, and command-line wizard
+preconfiguration, see the Admin Manual chapter on desktop client deployment and
+setup.</p>
 </section>
-<section id="id1">
-<h3>Kurulum<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
-<p>Ayrıca, şu komutu kullanarak yalnızca istemcinin kendisini kurmayı da seçebilirsiniz:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">passive</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">ADDDEFAULT</span><span class="o">=</span><span class="n">Client</span>
-</pre></div>
-</div>
-<p>Örneğin <code class="docutils literal notranslate"><span class="pre">DesktopShortcut</span></code> ve <code class="docutils literal notranslate"><span class="pre">ShellExtensions</span></code> özelliği dışında her şeyi kurmak istiyorsanız, iki seçeneğiniz vardır:</p>
-<ol class="arabic">
-<li><p><code class="docutils literal notranslate"><span class="pre">Client</span></code> her zaman kurulduğundan, kurmak istediğiniz tüm özellikleri (beyaz liste) açıkça belirtebilirsiniz:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">passive</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">ADDDEFAULT</span><span class="o">=</span><span class="n">StartMenuShortcuts</span>
-</pre></div>
-</div>
-</li>
-<li><p><code class="docutils literal notranslate"><span class="pre">NO_DESKTOP_SHORTCUT</span></code> ve <code class="docutils literal notranslate"><span class="pre">NO_SHELL_EXTENSIONS</span></code> özelliklerini iletebilirsiniz:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">passive</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">NO_DESKTOP_SHORTCUT</span><span class="o">=</span><span class="s2">&quot;1&quot;</span> <span class="n">NO_SHELL_EXTENSIONS</span><span class="o">=</span><span class="s2">&quot;1&quot;</span>
-</pre></div>
-</div>
-</li>
-</ol>
-<div class="admonition note">
-<p class="admonition-title">Not</p>
-<p>Nextcloud <code class="docutils literal notranslate"><span class="pre">.msi</span></code> bu özellikleri anımsar. Bu nedenle yükseltmelerde bunları yeniden belirtmeniz gerekmez.</p>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Not</p>
-<p>Kurulu özellikleri değiştirmek için bunları kullanamazsınız. Bunu yapmak istiyorsanız bir sonraki bölüme bakın.</p>
-</div>
+<section id="install-on-linux">
+<h2>Install on Linux<a class="headerlink" href="#install-on-linux" title="Link to this heading"></a></h2>
+<p>For Linux, Nextcloud officially provides the desktop client as an AppImage on
+the <a class="reference external" href="https://nextcloud.com/download/#install-clients">Nextcloud download page</a>.</p>
+<p>Some Linux distributions also provide the Nextcloud desktop client through their
+package managers. These packages are maintained by the distribution or community,
+not by Nextcloud. If you prefer a package-managed installation, refer to your
+distribution’s documentation.</p>
+<p>Linux users must also have a password manager enabled, such as GNOME Keyring or
+KWallet, so that the desktop client can log in automatically.</p>
 </section>
-<section id="changing-installed-features">
-<h3>Kurulu özellikleri değiştirmek<a class="headerlink" href="#changing-installed-features" title="Link to this heading"></a></h3>
-<p>Kurulu özellikleri daha sonra <code class="docutils literal notranslate"><span class="pre">REMOVE</span></code> ve <code class="docutils literal notranslate"><span class="pre">ADDEFAULT</span></code> özelliklerini kullanarak değiştirebilirsiniz.</p>
-<ol class="arabic">
-<li><p>If you want to add the desktop shortcut later, run the following command:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">passive</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">ADDDEFAULT</span><span class="o">=</span><span class="s2">&quot;DesktopShortcut&quot;</span>
-</pre></div>
-</div>
-</li>
-<li><p>Kaldırmak istiyorsanız, şu komutu yürütmeniz yeterlidir:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">passive</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">REMOVE</span><span class="o">=</span><span class="s2">&quot;DesktopShortcut&quot;</span>
-</pre></div>
-</div>
-</li>
-</ol>
-<p>Windows, kurulu özellikleri izler. <code class="docutils literal notranslate"><span class="pre">REMOVE</span></code> veya <code class="docutils literal notranslate"><span class="pre">ADDEFAULT</span></code> kullanmak yalnızca belirtilen özellikleri etkiler.</p>
-<p>Windows kurucu rehberinden <a class="reference external" href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa371194(v=vs.85).aspx">REMOVE</a> ve <a class="reference external" href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa367518(v=vs.85).aspx">ADDDEFAULT</a> karşılaştırmasını yapabilirsiniz.</p>
-<div class="admonition note">
-<p class="admonition-title">Not</p>
-<p>Tüm özellikleri kullanımdan kaldıracağından, ilk kurulumda <code class="docutils literal notranslate"><span class="pre">REMOVE</span></code> kullanamazsınız.</p>
-</div>
-</section>
-<section id="installation-folder">
-<h3>Kurulum klasörü<a class="headerlink" href="#installation-folder" title="Link to this heading"></a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">INSTALLDIR</span></code> özelliğini şu şekilde belirterek kurulum klasörünü ayarlayabilirsiniz:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">passive</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">INSTALLDIR</span><span class="o">=</span><span class="s2">&quot;C:\Program Files\Non Standard Nextcloud Client Folder&quot;</span>
-</pre></div>
-</div>
-<p><code class="docutils literal notranslate"><span class="pre">cmd.exe</span></code> yerine PowerShell kullanırken dikkatli olun. Boşlukların komuttan kaçılmasını engellemek zor olabilir. <code class="docutils literal notranslate"><span class="pre">INSTALLDIR</span></code> bu şekilde belirtmek yalnızca ilk kurulumda çalışır, <code class="docutils literal notranslate"><span class="pre">.msi</span></code> kurucuyu farklı bir yolla yeniden çağıramazsınız. Gene de değiştirmeniz gerekiyorsa, önce kaldırın ve yeni yolu kullanarak yeniden kurun.</p>
-</section>
-<section id="disabling-automatic-updates">
-<h3>Otomatik güncellemeleri kapatmak<a class="headerlink" href="#disabling-automatic-updates" title="Link to this heading"></a></h3>
-<p>Otomatik güncellemeleri kapatmak için <code class="docutils literal notranslate"><span class="pre">SKIPAUTOUPDATE</span></code> özelliğini iletebilirsiniz.:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">passive</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">SKIPAUTOUPDATE</span><span class="o">=</span><span class="s2">&quot;1&quot;</span>
-</pre></div>
-</div>
-</section>
-<section id="launch-after-installation">
-<h3>Kurulumdan sonra başlatmak<a class="headerlink" href="#launch-after-installation" title="Link to this heading"></a></h3>
-<p>Kurulumdan sonra istemciyi otomatik olarak başlatmak için <code class="docutils literal notranslate"><span class="pre">LAUNCH</span></code> özelliğini iletebilirsiniz.:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">LAUNCH</span><span class="o">=</span><span class="s2">&quot;1&quot;</span>
-</pre></div>
-</div>
-<p>Bu seçenek ayrıca, kullanıcıların istemciyi pasif olmayan/sessiz kip ile başlatmak isteyip istemediklerine karar vermelerini sağlayan işaret kutusunu kaldırır.</p>
-<div class="admonition note">
-<p class="admonition-title">Not</p>
-<p>Bu seçeneğin görsel arayüz olmadan herhangi bir etkisi yoktur.</p>
-</div>
-</section>
-<section id="no-reboot-after-installation">
-<h3>Kurulumdan sonra bilgisayarın yeniden başlatılmasını engellemek<a class="headerlink" href="#no-reboot-after-installation" title="Link to this heading"></a></h3>
-<p>Nextcloud istemcisi, Windows gezgini eklentisinin doğru şekilde yüklendiğinden ya da kaldırıldığından emin olmak için kurulumdan sonra bir yeniden başlatma zamanlar. Yeniden başlatmayı kendiniz yapıyorsanız, <code class="docutils literal notranslate"><span class="pre">REBOOT</span></code> özelliğini ayarlayabilirsiniz:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">REBOOT</span><span class="o">=</span><span class="n">ReallySuppress</span>
-</pre></div>
-</div>
-<p>Bu, <code class="docutils literal notranslate"><span class="pre">msiexec</span></code> kurucusunun <code class="docutils literal notranslate"><span class="pre">ERROR_SUCCESS_REBOOT_REQUIRED</span></code> (3010) hatasıyla sonlanmasını sağlar. Dağıtım aracınız bunu gerçek bir hata olarak yorumluyorsa ve bundan kaçınmak istiyorsanız, bunun yerine <code class="docutils literal notranslate"><span class="pre">DO_NOT_SCHEDULE_REBOOT</span></code> özelliğini ayarlamak isteyebilirsiniz:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">DO_NOT_SCHEDULE_REBOOT</span><span class="o">=</span><span class="s2">&quot;1&quot;</span>
-</pre></div>
-</div>
-</section>
-</section>
-<section id="installation-wizard">
-<h2>Kurulum yardımcısı<a class="headerlink" href="#installation-wizard" title="Link to this heading"></a></h2>
-<p>Kurulum yardımcısı, yapılandırma seçenekleri ve hesap kurulumu boyunca sizi adım adım yönlendirir. Öncelikle, Nextcloud sunucunuzun adresini yazmanız gerekir.</p>
+<section id="initial-setup">
+<h2>Initial Setup<a class="headerlink" href="#initial-setup" title="Link to this heading"></a></h2>
+<p>After installation, the initial setup wizard is triggered. In the setup wizard,
+you can log in to your server, create an account with a provider, and configure
+which folders to sync. The wizard will guide you step-by-step through the
+essential configuration options and basic account setup.</p>
+<p>First, you need to enter the URL of your Nextcloud server.</p>
 <img alt="Oturum ve hesap açma arasında seçim yapmak için form" src="../../_images/wizard_welcome.png" />
-<p>Bir Nextcloud kopyasında zaten bir hesabınız varsa, <code class="docutils literal notranslate"><span class="pre">Nextcloud</span> <span class="pre">oturumu</span> <span class="pre">aç</span></code> düğmesine basmak istersiniz. Orada bir Nextcloud kopyanız ve bir hesabınız yoksa, bir hizmet sağlayıcıda hesap açmak isteyebilirsiniz. Bu durumda <code class="docutils literal notranslate"><span class="pre">Sağlayıcı</span> <span class="pre">ile</span> <span class="pre">hesap</span> <span class="pre">aç</span></code> üzerine basın. Lütfen bilgisayar istemcisinin hizmet sağlayıcı desteği olmadan derlenmiş olabileceğini unutmayın. Bu durumda, bu sayfayı görmezsiniz. Bunun yerine, bir sonraki sayfada sizden istenir.</p>
+<p>If you already have an account on a Nextcloud instance, click <code class="docutils literal notranslate"><span class="pre">Login</span> <span class="pre">to</span> <span class="pre">your</span>
+<span class="pre">Nextcloud</span></code>. If you do not yet have a Nextcloud instance or an account, you may
+need to create one first. Alternatively, you might want to register an account
+with a provider. Press <code class="docutils literal notranslate"><span class="pre">Create</span> <span class="pre">account</span> <span class="pre">with</span> <span class="pre">Provider</span></code> in that case.</p>
+<div class="admonition note">
+<p class="admonition-title">Not</p>
+<p>The desktop client build you are using may have been built without provider
+support. In that case, you won’t see this page and will immediately see the
+next page.</p>
+</div>
 <img alt="Nextcloud sunucu adresinin yazılacağı form" src="../../_images/wizard_setup.png" />
 <p>Nextcloud kopyanızın adresini yazın. Adres, Nextcloud kopyanıza erişirken tarayıcınıza yazdığınız adres ile aynıdır.</p>
 <img alt="Kimlik doğrulaması beklenen form" src="../../_images/wizard_flow2.png" />
-<p>Artık tarayıcınız açılmalı ve Nextcloud kopyanızda oturum açmanız istenmelidir. Tarayıcınıza kullanıcı adınızı ve parolanızı yazın ve erişme izni verin. Bunu yaptıktan sonra yardımcıya geri dönün. Tarayıcınızda zaten oturum açtıysanız kullanıcı adınızı ve parolanızı yazmanıza gerek olmayabileceğini lütfen unutmayın.</p>
+<p>Now your web browser should open and prompt you to log in to your
+Nextcloud instance. Enter your username and password in your web
+browser and click <em>Grant access</em> when prompted. After you do that,
+go back to the wizard.</p>
+<div class="admonition note">
+<p class="admonition-title">Not</p>
+<p>You might not need to enter your username and password if you are
+already logged in to your web browser.</p>
+</div>
 <img alt="Eşitlenecek uzak klasörleri ve onların hangi yerel klasöre kaydedileceğini  seçin." src="../../_images/wizard_advanced.png" />
 <p>Yerel klasör seçenekleri ekranında, Nextcloud sunucusundaki tüm dosyalarınızı eşitleyebilir ya da eşitlenecek klasörleri tek tek seçebilirsiniz. Varsayılan yerel eşitleme klasörü, giriş klasörünüzdeki <code class="docutils literal notranslate"><span class="pre">Nextcloud</span></code> klasörüdür. Bunu da değiştirebilirsiniz.</p>
-<p>Eşitleme klasörlerinizi seçmeyi tamamladığınızda, sağ alttaki Bağlan düğmesine tıklayın. İstemci, Nextcloud sunucunuza bağlanmaya çalışacak ve başarılı olduğunda yardımcı kendisini kapatacaktır. Tepsi simgesine tıklayarak ana pencereyi açarsanız eşitleme etkinliğini izleyebilirsiniz.</p>
+<p>When you have completed selecting your sync folders, click the <em>Connect</em>
+button at the bottom right. The client will attempt to connect to your
+Nextcloud server. If it is successful, the wizard will close itself. You
+can then observe the sync activity and open the main dialog by clicking
+on the tray icon.</p>
 </section>
 </section>
 
@@ -307,7 +223,7 @@ For BSD, we support them if technically feasible but we do not test.</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="index.html" class="btn btn-neutral float-left" title="Bilgisayar istemcileri" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Önceki</a>
+        <a href="index.html" class="btn btn-neutral float-left" title="Desktop Client" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Önceki</a>
         <a href="uninstallation.html" class="btn btn-neutral float-right" title="Uninstallation" accesskey="n" rel="next">Sonraki <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
@@ -333,6 +249,8 @@ For BSD, we support them if technically feasible but we do not test.</p>
 
   
   
+  
+    
   
     
   
@@ -592,6 +510,14 @@ For BSD, we support them if technically feasible but we do not test.</p>
                
             >
               Korean
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/lo/"
+               
+            >
+              lo
             </a>
           </dd>
         

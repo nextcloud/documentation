@@ -32,7 +32,7 @@
     <link rel="index" title="Indice" href="../genindex.html" />
     <link rel="search" title="Cerca" href="../search.html" />
     <link rel="next" title="Uninstallation" href="uninstallation.html" />
-    <link rel="prev" title="Desktop Clients" href="index.html" /> 
+    <link rel="prev" title="Desktop Client" href="index.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -66,25 +66,22 @@
 <li class="toctree-l1"><a class="reference internal" href="../files/index.html">File e sincronizzazione</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Talk</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Desktop Clients</a><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Desktop Client</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Installazione</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#download">Download</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#supported-server-versions">Supported server versions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#system-requirements">Requisiti di sistema</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#customizing-the-windows-installation">Personalizzazione dell’installazione di Windows</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#features">Caratteristiche</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id1">Installazione</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#changing-installed-features">Modifica delle funzionalità installate</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#installation-folder">Cartella di installazione</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#disabling-automatic-updates">Disabilitazione degli aggiornamenti automatici</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#launch-after-installation">Avvio dopo l’installazione</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#no-reboot-after-installation">Nessun riavvio dopo l’installazione</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#installation-wizard">Procedura guidata di installazione</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#install-on-macos-and-windows">Install on macOS and Windows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#install-on-linux">Install on Linux</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#initial-setup">Initial Setup</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="uninstallation.html">Uninstallation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="usage.html">Utilizzo del client di sincronizzazione</a></li>
-<li class="toctree-l2"><a class="reference internal" href="macosvfs.html">macOS Virtual Files Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="commandline.html">Using the Command-Line Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html">Command-Line Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configfile.html">Configuration File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="envvars.html">Environment Variables</a></li>
 <li class="toctree-l2"><a class="reference internal" href="autoupdate.html">L’aggiornamento automatico</a></li>
 <li class="toctree-l2"><a class="reference internal" href="updatechannel.html">Aggiorna i canali</a></li>
 <li class="toctree-l2"><a class="reference internal" href="conflicts.html">Conflitti</a></li>
@@ -112,7 +109,7 @@
           <div role="navigation" aria-label="Naviga tra le pagine">
   <ul class="wy-breadcrumbs">
       <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="index.html">Desktop Clients</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Desktop Client</a></li>
       <li class="breadcrumb-item active">Installazione</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/desktop/installation.rst" class="fa fa-github"> Modifica su GitHub</a>
@@ -125,22 +122,28 @@
              
   <section id="installation">
 <h1>Installazione<a class="headerlink" href="#installation" title="Link to this heading"></a></h1>
-<p>Puoi scaricare l’ultima versione del client di sincronizzazione desktop Nextcloud dalla pagina di download di Nextcloud. Sono disponibili client per Linux, macOS e Microsoft Windows.</p>
-<p>Le versioni server attualmente supportate sono le ultime tre versioni stabili al momento della pubblicazione. Ciò significa che la serie di versioni latest supporta le versioni principali stabili del server. Consultare <a class="reference external" href="https://github.com/nextcloud/server/wiki/Maintenance-and-Release-Schedule">https://github.com/nextcloud/server/wiki/Maintenance-and-Release-Schedule</a> per informazioni sulle versioni principali supportate.</p>
-<p>L’installazione su macOS e Windows è la stessa di qualsiasi applicazione software: scarica il programma, fai doppio clic per avviare l’installazione e segui la procedura guidata. Dopo l’installazione e la configurazione, il client di sincronizzazione si manterrà automaticamente aggiornato; per maggiori informazioni, consulta <a class="reference internal" href="autoupdate.html"><span class="doc">L’aggiornamento automatico</span></a>.</p>
-<p>Gli utenti Linux devono seguire le istruzioni nella pagina di download per aggiungere il repository appropriato per la propria distribuzione Linux, installare la chiave di firma e quindi utilizzare i propri gestori di pacchetti per installare il client di sincronizzazione desktop. Gli utenti Linux aggiorneranno anche i propri client di sincronizzazione tramite il gestore di pacchetti e il client visualizzerà una notifica quando un aggiornamento è disponibile.</p>
-<p>Gli utenti Linux devono inoltre avere abilitato un gestore di password, come GNOME Keyring o KWallet, in modo che il client di sincronizzazione possa effettuare l’accesso automaticamente.</p>
+<section id="download">
+<h2>Download<a class="headerlink" href="#download" title="Link to this heading"></a></h2>
+<p>You can download the latest version of the Nextcloud Desktop Synchronization Client
+from the <a class="reference external" href="https://nextcloud.com/download/#install-clients">Nextcloud download page</a>. Clients are available for Linux, macOS, and
+Microsoft Windows.</p>
 <p>Nella pagina di download troverete anche link agli archivi del codice sorgente e alle versioni precedenti.</p>
+</section>
+<section id="supported-server-versions">
+<h2>Supported server versions<a class="headerlink" href="#supported-server-versions" title="Link to this heading"></a></h2>
+<p>Each desktop client release supports the latest three stable Nextcloud server
+major versions at the time of release. See the <a class="reference external" href="https://github.com/nextcloud/server/wiki/Maintenance-and-Release-Schedule">Nextcloud Server release schedule</a>
+for supported major versions.</p>
+</section>
 <section id="system-requirements">
 <h2>Requisiti di sistema<a class="headerlink" href="#system-requirements" title="Link to this heading"></a></h2>
-<ul class="simple">
+<ul>
 <li><p>Windows 10+ (solo 64 bit)</p></li>
 <li><p>macOS 12.0+ (solo 64 bit)</p></li>
-<li><dl class="simple">
-<dt>Linux (Ubuntu 24.04 or openSUSE 15.5 or Alma 8 or …) (64-bits only)</dt><dd><p>For Linux distributions, we support, if technically feasible, the current LTS releases.
-For BSD, we support them if technically feasible but we do not test.</p>
-</dd>
-</dl>
+<li><p>Linux (Ubuntu 24.04 or openSUSE 15.5 or Alma 8 or …) (64-bits only)</p>
+<p>For Linux distributions, we support, if technically feasible, the current
+LTS releases. For BSD, we support them if technically feasible, but we do not
+test them.</p>
 </li>
 </ul>
 <div class="admonition note">
@@ -153,153 +156,66 @@ For BSD, we support them if technically feasible but we do not test.</p>
 </ul>
 </div>
 </section>
-<section id="customizing-the-windows-installation">
-<h2>Personalizzazione dell’installazione di Windows<a class="headerlink" href="#customizing-the-windows-installation" title="Link to this heading"></a></h2>
-<p>Se vuoi semplicemente installare Nextcloud Desktop Synchronization Client sul tuo sistema locale, puoi semplicemente avviare il file <cite>.msi</cite> e configurarlo nella procedura guidata che si apre.</p>
-<section id="features">
-<h3>Caratteristiche<a class="headerlink" href="#features" title="Link to this heading"></a></h3>
-<p>Il programma di installazione MSI fornisce diverse funzionalità che possono essere installate o rimosse singolarmente, e che è possibile controllare anche tramite riga di comando. Se si desidera automatizzare l’installazione, eseguire il seguente comando:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">passive</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span>
-</pre></div>
-</div>
-<p>Il comando installerà il client di sincronizzazione desktop Nextcloud nella posizione predefinita con le funzionalità predefinite abilitate. Se si desidera disabilitare, ad esempio, le icone di collegamento sul desktop, è sufficiente modificare il comando precedente come segue:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">passive</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">REMOVE</span><span class="o">=</span><span class="n">DesktopShortcut</span>
-</pre></div>
-</div>
-<p>Per un elenco delle funzionalità disponibili, consultare la tabella seguente:</p>
-<table class="docutils align-default">
-<thead>
-<tr class="row-odd"><th class="head"><p>Caratteristica</p></th>
-<th class="head"><p>Abilitato per impostazione predefinita</p></th>
-<th class="head"><p>Descrizione</p></th>
-<th class="head"><p>Proprietà da disabilitare</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>Client</p></td>
-<td><p>Sì, richiesto</p></td>
-<td><p>Il client attuale</p></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p>Collegamento sul desktop</p></td>
-<td><p>Si</p></td>
-<td><p>Aggiunge un collegamento al desktop</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">NO_DESKTOP_SHORTCUT</span></code></p></td>
-</tr>
-<tr class="row-even"><td><p>Scorciatoie del menu Start</p></td>
-<td><p>Si</p></td>
-<td><p>Aggiunge un collegamento al menu di avvio</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">NO_START_MENU_SHORTCUTS</span></code></p></td>
-</tr>
-<tr class="row-odd"><td><p>ShellExtensions</p></td>
-<td><p>Si</p></td>
-<td><p>Aggiunge l’integrazione di Explorer</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">NO_SHELL_EXTENSIONS</span></code></p></td>
-</tr>
-</tbody>
-</table>
+<section id="install-on-macos-and-windows">
+<h2>Install on macOS and Windows<a class="headerlink" href="#install-on-macos-and-windows" title="Link to this heading"></a></h2>
+<p>Installation on macOS and Windows is the same as for any other software
+application: download the program and then double-click it to launch the
+installation, and then follow the installation wizard. After it is installed and
+configured the desktop client will automatically keep itself updated; see
+<a class="reference internal" href="autoupdate.html"><span class="doc">L’aggiornamento automatico</span></a> for more information.</p>
+<p>For administrator-focused deployment options such as advanced Windows MSI
+configuration, non-interactive account provisioning, and command-line wizard
+preconfiguration, see the Admin Manual chapter on desktop client deployment and
+setup.</p>
 </section>
-<section id="id1">
-<h3>Installazione<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
-<p>È anche possibile scegliere di installare solo il client stesso utilizzando il seguente comando:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">passive</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">ADDDEFAULT</span><span class="o">=</span><span class="n">Client</span>
-</pre></div>
-</div>
-<p>Se, ad esempio, si desidera installare tutto tranne la funzionalità <code class="docutils literal notranslate"><span class="pre">DesktopShortcut</span></code> e <code class="docutils literal notranslate"><span class="pre">ShellExtensions</span></code>, si hanno due possibilità:</p>
-<ol class="arabic">
-<li><p>Nomini esplicitamente tutte le funzionalità che desideri effettivamente installare (whitelist), dove il <code class="docutils literal notranslate"><span class="pre">Client</span></code> è comunque sempre installato:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">passive</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">ADDDEFAULT</span><span class="o">=</span><span class="n">StartMenuShortcuts</span>
-</pre></div>
-</div>
-</li>
-<li><p>Si passano le proprietà <code class="docutils literal notranslate"><span class="pre">NO_DESKTOP_SHORTCUT</span></code> e <code class="docutils literal notranslate"><span class="pre">NO_SHELL_EXTENSIONS</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">passive</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">NO_DESKTOP_SHORTCUT</span><span class="o">=</span><span class="s2">&quot;1&quot;</span> <span class="n">NO_SHELL_EXTENSIONS</span><span class="o">=</span><span class="s2">&quot;1&quot;</span>
-</pre></div>
-</div>
-</li>
-</ol>
-<div class="admonition note">
-<p class="admonition-title">Nota</p>
-<p>Il file <code class="docutils literal notranslate"><span class="pre">.msi</span></code> di Nextcloud ricorda queste proprietà, quindi non è necessario specificarle durante gli aggiornamenti.</p>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Nota</p>
-<p>Non è possibile utilizzarli per modificare le funzionalità installate; se si desidera farlo, consultare la sezione successiva.</p>
-</div>
+<section id="install-on-linux">
+<h2>Install on Linux<a class="headerlink" href="#install-on-linux" title="Link to this heading"></a></h2>
+<p>For Linux, Nextcloud officially provides the desktop client as an AppImage on
+the <a class="reference external" href="https://nextcloud.com/download/#install-clients">Nextcloud download page</a>.</p>
+<p>Some Linux distributions also provide the Nextcloud desktop client through their
+package managers. These packages are maintained by the distribution or community,
+not by Nextcloud. If you prefer a package-managed installation, refer to your
+distribution’s documentation.</p>
+<p>Linux users must also have a password manager enabled, such as GNOME Keyring or
+KWallet, so that the desktop client can log in automatically.</p>
 </section>
-<section id="changing-installed-features">
-<h3>Modifica delle funzionalità installate<a class="headerlink" href="#changing-installed-features" title="Link to this heading"></a></h3>
-<p>È possibile modificare in seguito le funzionalità installate utilizzando le proprietà <code class="docutils literal notranslate"><span class="pre">REMOVE</span></code> e <code class="docutils literal notranslate"><span class="pre">ADDDEFAULT</span></code>.</p>
-<ol class="arabic">
-<li><p>If you want to add the desktop shortcut later, run the following command:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">passive</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">ADDDEFAULT</span><span class="o">=</span><span class="s2">&quot;DesktopShortcut&quot;</span>
-</pre></div>
-</div>
-</li>
-<li><p>Se vuoi rimuoverlo, esegui semplicemente il seguente comando:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">passive</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">REMOVE</span><span class="o">=</span><span class="s2">&quot;DesktopShortcut&quot;</span>
-</pre></div>
-</div>
-</li>
-</ol>
-<p>Windows tiene traccia delle funzionalità installate e l’utilizzo di <code class="docutils literal notranslate"><span class="pre">REMOVE</span></code> o <code class="docutils literal notranslate"><span class="pre">ADDDEFAULT</span></code> avrà effetto solo sulle funzionalità menzionate.</p>
-<p>Confronta <a class="reference external" href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa371194(v=vs.85).aspx">REMOVE</a> e <a class="reference external" href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa367518(v=vs.85).aspx">ADDDEFAULT</a> nella Guida di Windows Installer.</p>
-<div class="admonition note">
-<p class="admonition-title">Nota</p>
-<p>Non è possibile specificare <code class="docutils literal notranslate"><span class="pre">REMOVE</span></code> durante l’installazione iniziale, poiché ciò disabiliterebbe tutte le funzionalità.</p>
-</div>
-</section>
-<section id="installation-folder">
-<h3>Cartella di installazione<a class="headerlink" href="#installation-folder" title="Link to this heading"></a></h3>
-<p>È possibile modificare la cartella di installazione specificando la proprietà <code class="docutils literal notranslate"><span class="pre">INSTALLDIR</span></code> in questo modo:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">passive</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">INSTALLDIR</span><span class="o">=</span><span class="s2">&quot;C:\Program Files\Non Standard Nextcloud Client Folder&quot;</span>
-</pre></div>
-</div>
-<p>Fate attenzione quando usate PowerShell invece di <code class="docutils literal notranslate"><span class="pre">cmd.exe</span></code>, perché può essere complicato far sì che gli spazi vuoti vengano espulsi correttamente. Specificare <code class="docutils literal notranslate"><span class="pre">INSTALLDIR</span></code> in questo modo funziona solo alla prima installazione; non è possibile semplicemente richiamare <code class="docutils literal notranslate"><span class="pre">.msi</span></code> con un percorso diverso. Se dovete comunque modificarlo, disinstallatelo prima e reinstallatelo con il nuovo percorso.</p>
-</section>
-<section id="disabling-automatic-updates">
-<h3>Disabilitazione degli aggiornamenti automatici<a class="headerlink" href="#disabling-automatic-updates" title="Link to this heading"></a></h3>
-<p>Per disattivare gli aggiornamenti automatici, puoi passare la proprietà <code class="docutils literal notranslate"><span class="pre">SKIPAUTOUPDATE</span></code>.:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">passive</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">SKIPAUTOUPDATE</span><span class="o">=</span><span class="s2">&quot;1&quot;</span>
-</pre></div>
-</div>
-</section>
-<section id="launch-after-installation">
-<h3>Avvio dopo l’installazione<a class="headerlink" href="#launch-after-installation" title="Link to this heading"></a></h3>
-<p>Per avviare automaticamente il client dopo l’installazione, è possibile passare la proprietà <code class="docutils literal notranslate"><span class="pre">LAUNCH</span></code>.:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">LAUNCH</span><span class="o">=</span><span class="s2">&quot;1&quot;</span>
-</pre></div>
-</div>
-<p>Questa opzione rimuove anche la casella di controllo che consente agli utenti di decidere se avviare il client in modalità non passiva/silenziosa.</p>
-<div class="admonition note">
-<p class="admonition-title">Nota</p>
-<p>Questa opzione non ha alcun effetto senza GUI.</p>
-</div>
-</section>
-<section id="no-reboot-after-installation">
-<h3>Nessun riavvio dopo l’installazione<a class="headerlink" href="#no-reboot-after-installation" title="Link to this heading"></a></h3>
-<p>Il client Nextcloud pianifica un riavvio dopo l’installazione per assicurarsi che l’estensione Explorer sia caricata correttamente (o non caricata). Se si desidera eseguire autonomamente il riavvio, è possibile impostare la proprietà <code class="docutils literal notranslate"><span class="pre">REBOOT</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">REBOOT</span><span class="o">=</span><span class="n">ReallySuppress</span>
-</pre></div>
-</div>
-<p>Questo farà sì che <code class="docutils literal notranslate"><span class="pre">msiexec</span></code> si chiuda con l’errore <code class="docutils literal notranslate"><span class="pre">ERROR_SUCCESS_REBOOT_REQUIRED</span></code> (3010). Se gli strumenti di distribuzione lo interpretano come un errore effettivo e si desidera evitarlo, è possibile impostare <code class="docutils literal notranslate"><span class="pre">DO_NOT_SCHEDULE_REBOOT</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">DO_NOT_SCHEDULE_REBOOT</span><span class="o">=</span><span class="s2">&quot;1&quot;</span>
-</pre></div>
-</div>
-</section>
-</section>
-<section id="installation-wizard">
-<h2>Procedura guidata di installazione<a class="headerlink" href="#installation-wizard" title="Link to this heading"></a></h2>
-<p>La procedura guidata di installazione ti guiderà passo dopo passo attraverso le opzioni di configurazione e la configurazione dell’account. Per prima cosa, devi inserire l’URL del tuo server Nextcloud.</p>
+<section id="initial-setup">
+<h2>Initial Setup<a class="headerlink" href="#initial-setup" title="Link to this heading"></a></h2>
+<p>After installation, the initial setup wizard is triggered. In the setup wizard,
+you can log in to your server, create an account with a provider, and configure
+which folders to sync. The wizard will guide you step-by-step through the
+essential configuration options and basic account setup.</p>
+<p>First, you need to enter the URL of your Nextcloud server.</p>
 <img alt="modulo per scegliere tra login e registrazione" src="../../_images/wizard_welcome.png" />
-<p>Se hai già un account su un’istanza Nextcloud, premi il pulsante <code class="docutils literal notranslate"><span class="pre">Accedi</span> <span class="pre">al</span> <span class="pre">tuo</span> <span class="pre">Nextcloud</span></code>. Se non hai un’istanza Nextcloud e un account, potresti voler registrare un account con un provider. In tal caso, premi <code class="docutils literal notranslate"><span class="pre">Crea</span> <span class="pre">account</span> <span class="pre">con</span> <span class="pre">il</span> <span class="pre">provider</span></code>. Tieni presente che il client desktop potrebbe essere stato creato senza il supporto del provider. In tal caso, non vedrai questa pagina. Verrà invece visualizzata la pagina successiva.</p>
+<p>If you already have an account on a Nextcloud instance, click <code class="docutils literal notranslate"><span class="pre">Login</span> <span class="pre">to</span> <span class="pre">your</span>
+<span class="pre">Nextcloud</span></code>. If you do not yet have a Nextcloud instance or an account, you may
+need to create one first. Alternatively, you might want to register an account
+with a provider. Press <code class="docutils literal notranslate"><span class="pre">Create</span> <span class="pre">account</span> <span class="pre">with</span> <span class="pre">Provider</span></code> in that case.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>The desktop client build you are using may have been built without provider
+support. In that case, you won’t see this page and will immediately see the
+next page.</p>
+</div>
 <img alt="modulo per l'inserimento dell'URL del server Nextcloud" src="../../_images/wizard_setup.png" />
 <p>Inserisci l’URL della tua istanza Nextcloud. L’URL è lo stesso che digiti nel browser quando provi ad accedere alla tua istanza Nextcloud.</p>
 <img alt="modulo in attesa di autorizzazione" src="../../_images/wizard_flow2.png" />
-<p>Ora il browser web dovrebbe aprirsi e chiederti di accedere alla tua istanza Nextcloud. Inserisci nome utente e password nel browser e concedi l’accesso. Dopodiché, torna alla procedura guidata. Tieni presente che potresti non dover inserire nome utente e password se hai già effettuato l’accesso al browser.</p>
+<p>Now your web browser should open and prompt you to log in to your
+Nextcloud instance. Enter your username and password in your web
+browser and click <em>Grant access</em> when prompted. After you do that,
+go back to the wizard.</p>
+<div class="admonition note">
+<p class="admonition-title">Nota</p>
+<p>You might not need to enter your username and password if you are
+already logged in to your web browser.</p>
+</div>
 <img alt="Seleziona quali cartelle remote sincronizzare e in quale cartella locale archiviarle." src="../../_images/wizard_advanced.png" />
 <p>Nella schermata delle opzioni della cartella locale, puoi sincronizzare tutti i tuoi file sul server Nextcloud o selezionare singole cartelle. La cartella di sincronizzazione locale predefinita è <code class="docutils literal notranslate"><span class="pre">Nextcloud</span></code>, nella tua directory home. Puoi anche modificarla.</p>
-<p>Dopo aver selezionato le cartelle di sincronizzazione, clicca sul pulsante Connetti in basso a destra. Il client tenterà di connettersi al server Nextcloud e, se l’operazione va a buon fine, la procedura guidata si chiuderà. Ora puoi osservare l’attività di sincronizzazione aprendo la finestra di dialogo principale cliccando sull’icona nella barra delle applicazioni.</p>
+<p>When you have completed selecting your sync folders, click the <em>Connect</em>
+button at the bottom right. The client will attempt to connect to your
+Nextcloud server. If it is successful, the wizard will close itself. You
+can then observe the sync activity and open the main dialog by clicking
+on the tray icon.</p>
 </section>
 </section>
 
@@ -307,7 +223,7 @@ For BSD, we support them if technically feasible but we do not test.</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Piè di pagina">
-        <a href="index.html" class="btn btn-neutral float-left" title="Desktop Clients" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Precedente</a>
+        <a href="index.html" class="btn btn-neutral float-left" title="Desktop Client" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Precedente</a>
         <a href="uninstallation.html" class="btn btn-neutral float-right" title="Uninstallation" accesskey="n" rel="next">Prossimo <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
@@ -333,6 +249,8 @@ For BSD, we support them if technically feasible but we do not test.</p>
 
   
   
+  
+    
   
     
   
@@ -594,6 +512,14 @@ For BSD, we support them if technically feasible but we do not test.</p>
                
             >
               Korean
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/lo/"
+               
+            >
+              lo
             </a>
           </dd>
         

@@ -7,7 +7,7 @@
   <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Mass Deployment And Account Creation &mdash; Nextcloud latest Administration Manual latest documentation</title>
+  <title>Desktop Client Deployment and Setup &mdash; Nextcloud latest Administration Manual latest documentation</title>
       <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
@@ -30,8 +30,8 @@
     <script src="../_static/js/versions.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Configuration File" href="configfile.html" />
-    <link rel="prev" title="Options" href="options.html" /> 
+    <link rel="next" title="Troubleshooting" href="troubleshooting.html" />
+    <link rel="prev" title="Desktop Clients" href="index.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -98,12 +98,36 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../configuration_user/index.html">User management</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Desktop Clients</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="options.html">Options</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Mass Deployment And Account Creation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="configfile.html">Configuration File</a></li>
-<li class="toctree-l2"><a class="reference internal" href="envvars.html">Environment Variables</a></li>
-<li class="toctree-l2"><a class="reference internal" href="commandline.html">Command Line Client</a></li>
-<li class="toctree-l2"><a class="reference internal" href="accountcommand.html">Command-line Account Setup</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Desktop Client Deployment and Setup</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#choosing-the-right-approach">Choosing the right approach</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#advanced-windows-deployment-options">Advanced Windows deployment options</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#features">Features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#installation">Installation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#changing-installed-features">Changing installed features</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#installation-folder">Installation folder</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#disabling-automatic-updates">Disabling automatic updates</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#launch-after-installation">Launch after installation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#no-reboot-after-installation">No reboot after installation</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#non-interactive-account-provisioning">Non-interactive account provisioning</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#required-parameters">Required parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#optional-parameters">Optional parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#behavior">Behavior</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#common-failure-cases">Common failure cases</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#examples">Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#recommendations">Recommendations</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#interactive-wizard-preconfiguration">Interactive wizard preconfiguration</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id3">Behavior</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#important-distinction-from-non-interactive-provisioning">Important distinction from non-interactive provisioning</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#summary">Summary</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a></li>
 </ul>
 </li>
@@ -152,7 +176,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="index.html">Desktop Clients</a></li>
-      <li class="breadcrumb-item active">Mass Deployment And Account Creation</li>
+      <li class="breadcrumb-item active">Desktop Client Deployment and Setup</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/admin_manual/desktop/massdeployment.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
@@ -162,41 +186,366 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="mass-deployment-and-account-creation">
-<h1>Mass Deployment And Account Creation<a class="headerlink" href="#mass-deployment-and-account-creation" title="Link to this heading"></a></h1>
-<p>It is possible to perform mass deployment of the Nextcloud desktop client by passing certain command-line parameters from the deployment step to Nextcloud desktop client executable after the initial setup.
-This will allow desktop client to generate a config (.cfg) file that will be used during subsequent launches.
-A config file will have a corresponding account written into it similar to if you have added it manually via the desktop client’s UI.
-The desktop client will exit with code 0 if account has been added successfully, or 1 in case of failure.
-Detailed failure message is printed to the desktop client logs.</p>
-<p>The following parameters are supported:</p>
+  <section id="desktop-client-deployment-and-setup">
+<h1>Desktop Client Deployment and Setup<a class="headerlink" href="#desktop-client-deployment-and-setup" title="Link to this heading"></a></h1>
+<p>This chapter describes administrator-facing deployment and setup options for the Nextcloud Desktop client.</p>
+<p>These options are intended for managed rollouts and other administrative scenarios, such as deployment scripts, software-management platforms, login scripts, MDM or RMM workflows, and other automated installation or configuration processes.</p>
+<p>Depending on your deployment goals, you can use the desktop client in one of several ways:</p>
+<ul class="simple">
+<li><p>customize Windows installation behavior,</p></li>
+<li><p>create an account automatically during deployment without user interaction, or</p></li>
+<li><p>prefill or constrain the interactive setup wizard.</p></li>
+</ul>
+<section id="choosing-the-right-approach">
+<h2>Choosing the right approach<a class="headerlink" href="#choosing-the-right-approach" title="Link to this heading"></a></h2>
+<p>Use the option that best matches your deployment goal:</p>
 <dl class="simple">
-<dt><code class="docutils literal notranslate"><span class="pre">--userid</span></code></dt><dd><p>(required) userId (username as on the server) to pass when creating an account via command-line.</p>
+<dt><strong>I want to customize how the client is installed on managed Windows systems.</strong></dt><dd><p>See <a class="reference internal" href="#windows-installation-customization"><span class="std std-ref">Advanced Windows deployment options</span></a>.</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">--apppassword</span></code></dt><dd><p>(required) appPassword to pass when creating an account via command-line (see the <code class="docutils literal notranslate"><span class="pre">login-flow</span></code> section in server documentation on how to generate the app password).</p>
+<dt><strong>I want to silently create an account during deployment.</strong></dt><dd><p>See <a class="reference internal" href="#non-interactive-account-provisioning"><span class="std std-ref">Non-interactive account provisioning</span></a>.</p>
 </dd>
-<dt><code class="docutils literal notranslate"><span class="pre">--localdirpath</span></code></dt><dd><p>(optional) path where to create a local sync folder when creating an account via command-line. If skipped, then default local sync folder path (/home/&lt;userid&gt;/Nextcloud&lt;n&gt; for Linux/mac or C:/&lt;userid&gt;/Nextcloud&lt;n&gt; for Windows) will be generated by desktop client.</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">--isvfsenabled</span></code></dt><dd><p>(optional) whether to set a VFS or non-VFS folder (1 for ‘yes’ or 0 for ‘no’) when creating an account via command-line. Default is 0.</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">--remotedirpath</span></code></dt><dd><p>(optional) path to a remote subfolder when creating an account via command-line. e.g. If the server has folders “/Photos”, “/Documents”, “/Music” you can pass “/Music” and then this folder will get set up as remote root.</p>
-</dd>
-<dt><code class="docutils literal notranslate"><span class="pre">--serverurl</span></code></dt><dd><p>(required) a server URL to use when creating an account via command-line. (NOTE: There is another parameter supported by Nextcloud desktop client <code class="docutils literal notranslate"><span class="pre">--overrideserverurl</span></code> but it SHOULD NOT be used here as it is intended for setup via UI with wizard)</p>
+<dt><strong>I want users to complete setup interactively, but with predefined values or restrictions.</strong></dt><dd><p>See <a class="reference internal" href="#interactive-wizard-preconfiguration"><span class="std std-ref">Interactive wizard preconfiguration</span></a>.</p>
 </dd>
 </dl>
-<p>Examples:</p>
+</section>
+<section id="advanced-windows-deployment-options">
+<span id="windows-installation-customization"></span><h2>Advanced Windows deployment options<a class="headerlink" href="#advanced-windows-deployment-options" title="Link to this heading"></a></h2>
+<p>If you just want to install the desktop client on your local system, simply launch the <code class="docutils literal notranslate"><span class="pre">.msi</span></code> file and follow the installation wizard.</p>
+<p>The following options are intended for advanced Windows installations, for example when automating deployment or customizing installed features.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Windows installation customization controls how the client is installed.
+It does not by itself create or configure a desktop-client account.
+If you want to configure an account after installation, see <a class="reference internal" href="#non-interactive-account-provisioning"><span class="std std-ref">Non-interactive account provisioning</span></a> or <a class="reference internal" href="#interactive-wizard-preconfiguration"><span class="std std-ref">Interactive wizard preconfiguration</span></a>.</p>
+</div>
+<section id="features">
+<h3>Features<a class="headerlink" href="#features" title="Link to this heading"></a></h3>
+<p>The MSI installer provides several features that can be installed or removed individually, which you can also control via the command line.
+If you are automating the installation, run the following command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">passive</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span>
+</pre></div>
+</div>
+<p>The command installs the client into the default location with the default features enabled.</p>
+<p>If you want to disable, for example, desktop shortcut icons, you can change the command to the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">passive</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">REMOVE</span><span class="o">=</span><span class="n">DesktopShortcut</span>
+</pre></div>
+</div>
+<p>See the following table for a list of available features:</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Feature</p></th>
+<th class="head"><p>Enabled by default</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>Property to disable</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Client</p></td>
+<td><p>Yes, required</p></td>
+<td><p>The actual client</p></td>
+<td></td>
+</tr>
+<tr class="row-odd"><td><p>DesktopShortcut</p></td>
+<td><p>Yes</p></td>
+<td><p>Adds a shortcut to the desktop</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">NO_DESKTOP_SHORTCUT</span></code></p></td>
+</tr>
+<tr class="row-even"><td><p>StartMenuShortcuts</p></td>
+<td><p>Yes</p></td>
+<td><p>Adds a shortcut to the start menu</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">NO_START_MENU_SHORTCUTS</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>ShellExtensions</p></td>
+<td><p>Yes</p></td>
+<td><p>Adds Explorer integration</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">NO_SHELL_EXTENSIONS</span></code></p></td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="installation">
+<h3>Installation<a class="headerlink" href="#installation" title="Link to this heading"></a></h3>
+<p>You can also choose to only install the client itself by using the following command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">passive</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">ADDDEFAULT</span><span class="o">=</span><span class="n">Client</span>
+</pre></div>
+</div>
+<p>For example, if you want to install everything except the <code class="docutils literal notranslate"><span class="pre">DesktopShortcut</span></code> and the <code class="docutils literal notranslate"><span class="pre">ShellExtensions</span></code> feature, you have two possibilities:</p>
+<ol class="arabic">
+<li><p>Explicitly name all the features you actually want to install (whitelist), where <code class="docutils literal notranslate"><span class="pre">Client</span></code> is always installed anyway:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">passive</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">ADDDEFAULT</span><span class="o">=</span><span class="n">StartMenuShortcuts</span>
+</pre></div>
+</div>
+</li>
+<li><p>Pass the <code class="docutils literal notranslate"><span class="pre">NO_DESKTOP_SHORTCUT</span></code> and <code class="docutils literal notranslate"><span class="pre">NO_SHELL_EXTENSIONS</span></code> properties:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">passive</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">NO_DESKTOP_SHORTCUT</span><span class="o">=</span><span class="s2">&quot;1&quot;</span> <span class="n">NO_SHELL_EXTENSIONS</span><span class="o">=</span><span class="s2">&quot;1&quot;</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The Nextcloud <code class="docutils literal notranslate"><span class="pre">.msi</span></code> remembers these properties, so you do not need to specify them again on upgrades.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You cannot use these to change the installed features after installation.
+If you want to do that, see the next section.</p>
+</div>
+</section>
+<section id="changing-installed-features">
+<h3>Changing installed features<a class="headerlink" href="#changing-installed-features" title="Link to this heading"></a></h3>
+<p>You can change the installed features later by using the <code class="docutils literal notranslate"><span class="pre">REMOVE</span></code> and <code class="docutils literal notranslate"><span class="pre">ADDDEFAULT</span></code> properties.</p>
+<p>To add the desktop shortcut later, run the following command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">passive</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">ADDDEFAULT</span><span class="o">=</span><span class="s2">&quot;DesktopShortcut&quot;</span>
+</pre></div>
+</div>
+<p>To remove it, run the following command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">passive</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">REMOVE</span><span class="o">=</span><span class="s2">&quot;DesktopShortcut&quot;</span>
+</pre></div>
+</div>
+<p>Windows keeps track of the installed features, and <code class="docutils literal notranslate"><span class="pre">REMOVE</span></code> or <code class="docutils literal notranslate"><span class="pre">ADDDEFAULT</span></code> affects only the specified features.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You cannot specify <code class="docutils literal notranslate"><span class="pre">REMOVE</span></code> on initial installation, as it will disable all features.</p>
+</div>
+</section>
+<section id="installation-folder">
+<h3>Installation folder<a class="headerlink" href="#installation-folder" title="Link to this heading"></a></h3>
+<p>You can adjust the installation folder by specifying the <code class="docutils literal notranslate"><span class="pre">INSTALLDIR</span></code> property:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">passive</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">INSTALLDIR</span><span class="o">=</span><span class="s2">&quot;C:\Program Files\Non Standard Nextcloud Client Folder&quot;</span>
+</pre></div>
+</div>
+<p>Be careful when using PowerShell instead of <code class="docutils literal notranslate"><span class="pre">cmd.exe</span></code>; getting the whitespace escaping right can be tricky.</p>
+<p>Specifying <code class="docutils literal notranslate"><span class="pre">INSTALLDIR</span></code> like this only works on first installation; you cannot simply re-run the <code class="docutils literal notranslate"><span class="pre">.msi</span></code> with a different path.
+If you still need to change it, uninstall the client first and then reinstall it to the new location.</p>
+</section>
+<section id="disabling-automatic-updates">
+<h3>Disabling automatic updates<a class="headerlink" href="#disabling-automatic-updates" title="Link to this heading"></a></h3>
+<p>To disable automatic updates, pass the <code class="docutils literal notranslate"><span class="pre">SKIPAUTOUPDATE</span></code> property:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">passive</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">SKIPAUTOUPDATE</span><span class="o">=</span><span class="s2">&quot;1&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="launch-after-installation">
+<h3>Launch after installation<a class="headerlink" href="#launch-after-installation" title="Link to this heading"></a></h3>
+<p>To launch the client automatically after installation, pass the <code class="docutils literal notranslate"><span class="pre">LAUNCH</span></code> property:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">LAUNCH</span><span class="o">=</span><span class="s2">&quot;1&quot;</span>
+</pre></div>
+</div>
+<p>This option also removes the checkbox that lets users decide whether to launch the client during non-passive or non-quiet installations.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This option does not have any effect without a GUI.</p>
+</div>
+</section>
+<section id="no-reboot-after-installation">
+<h3>No reboot after installation<a class="headerlink" href="#no-reboot-after-installation" title="Link to this heading"></a></h3>
+<p>The client schedules a reboot after installation to make sure the Explorer extension is correctly loaded or unloaded.
+If you are handling reboots yourself, you can set the <code class="docutils literal notranslate"><span class="pre">REBOOT</span></code> property:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">REBOOT</span><span class="o">=</span><span class="n">ReallySuppress</span>
+</pre></div>
+</div>
+<p>This makes <code class="docutils literal notranslate"><span class="pre">msiexec</span></code> exit with error <code class="docutils literal notranslate"><span class="pre">ERROR_SUCCESS_REBOOT_REQUIRED</span></code> (3010).
+If your deployment tooling interprets this as an actual error and you want to avoid that, you may want to set <code class="docutils literal notranslate"><span class="pre">DO_NOT_SCHEDULE_REBOOT</span></code> instead:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">DO_NOT_SCHEDULE_REBOOT</span><span class="o">=</span><span class="s2">&quot;1&quot;</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="non-interactive-account-provisioning">
+<span id="id1"></span><h2>Non-interactive account provisioning<a class="headerlink" href="#non-interactive-account-provisioning" title="Link to this heading"></a></h2>
+<p>The Nextcloud Desktop client supports non-interactive account provisioning from the command line.</p>
+<p>This is intended for deployment automation and other managed-installation scenarios where an administrator wants to create a desktop-client account without requiring the user to go through the graphical setup wizard.</p>
+<p>In a typical deployment workflow, you deploy the desktop client package first, then invoke the desktop client executable with provisioning parameters as part of your automation.</p>
+<p>When the required parameters are provided, the client attempts to create an account and store it in the client’s normal configuration so that subsequent launches behave as if the account had been added through the graphical user interface.</p>
+<p>If account creation succeeds, the client exits with code <code class="docutils literal notranslate"><span class="pre">0</span></code>.
+If account creation fails, the client exits with code <code class="docutils literal notranslate"><span class="pre">1</span></code>.</p>
+<p>Detailed status and failure information is written to the desktop client logs.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>This workflow is distinct from interactive wizard preconfiguration.
+If you want to prefill or constrain the setup wizard instead of directly provisioning an account, see <a class="reference internal" href="#interactive-wizard-preconfiguration"><span class="std std-ref">Interactive wizard preconfiguration</span></a>.</p>
+</div>
+<section id="required-parameters">
+<h3>Required parameters<a class="headerlink" href="#required-parameters" title="Link to this heading"></a></h3>
+<p>The following parameters are required for non-interactive account provisioning:</p>
+<dl>
+<dt><code class="docutils literal notranslate"><span class="pre">--userid</span></code></dt><dd><p>The user ID to configure in the desktop client.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--apppassword</span></code></dt><dd><p>The app password to use for authentication.</p>
+<p>App passwords should be used instead of a user’s regular login password.
+See the server documentation for the login flow and app password generation process.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--serverurl</span></code></dt><dd><p>The base URL of the Nextcloud server to use for the account.</p>
+</dd>
+</dl>
+</section>
+<section id="optional-parameters">
+<h3>Optional parameters<a class="headerlink" href="#optional-parameters" title="Link to this heading"></a></h3>
+<dl>
+<dt><code class="docutils literal notranslate"><span class="pre">--localdirpath</span></code></dt><dd><p>The local path to use for the sync folder.</p>
+<p>If omitted, the desktop client chooses its normal default sync-folder location for the platform.</p>
+<p>If this option is provided and the target directory already exists and is not empty, account provisioning fails.</p>
+<p>If this option is provided and the directory does not yet exist, the client attempts to create it.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--remotedirpath</span></code></dt><dd><p>The remote path to sync.</p>
+<p>If omitted, the default is <code class="docutils literal notranslate"><span class="pre">/</span></code> (the account root on the server).</p>
+<p>Example: if the server contains folders such as <code class="docutils literal notranslate"><span class="pre">/Photos</span></code>, <code class="docutils literal notranslate"><span class="pre">/Documents</span></code>, and <code class="docutils literal notranslate"><span class="pre">/Music</span></code>, specifying <code class="docutils literal notranslate"><span class="pre">/Music</span></code> creates a sync connection for that remote subfolder instead of the entire account root.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--isvfsenabled</span></code></dt><dd><p>Controls whether the created sync connection should use virtual files.</p>
+<p>Use <code class="docutils literal notranslate"><span class="pre">1</span></code> to enable virtual files and <code class="docutils literal notranslate"><span class="pre">0</span></code> to disable them.</p>
+<p>Virtual file support depends on the client build, operating system, and runtime availability of the required virtual-file functionality.
+Only enable this option on platforms and builds where virtual files are supported.</p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--confdir</span></code></dt><dd><p>Overrides the configuration directory used by the client process.</p>
+<p>This is a general client option rather than a provisioning-specific option.
+It is only needed if you intentionally want to use a non-default configuration directory.</p>
+<p>If you use this option during provisioning, subsequent desktop-client launches must use the same configuration directory, or the provisioned account may not appear in later GUI sessions.</p>
+</dd>
+</dl>
+</section>
+<section id="behavior">
+<h3>Behavior<a class="headerlink" href="#behavior" title="Link to this heading"></a></h3>
+<p>When started with the required provisioning parameters, the desktop client attempts to:</p>
+<ol class="arabic simple">
+<li><p>validate the provided command-line parameters,</p></li>
+<li><p>create the local sync folder if needed,</p></li>
+<li><p>authenticate to the server using the provided app password,</p></li>
+<li><p>verify server access, and</p></li>
+<li><p>store the resulting account in the client’s normal configuration.</p></li>
+</ol>
+<p>On later launches, the configured account is available as a normal desktop-client account, provided the client is started with the same configuration context.</p>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>The desktop client does not mount the server into the local path like a network filesystem.
+It creates a sync connection.
+An empty local folder does not by itself mean that provisioning failed.</p>
+</div>
+</section>
+<section id="common-failure-cases">
+<h3>Common failure cases<a class="headerlink" href="#common-failure-cases" title="Link to this heading"></a></h3>
+<p>Account provisioning can fail for reasons including:</p>
 <ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">C:\Program</span> <span class="pre">Files\Nextcloud\nextcloud.exe&quot;</span> <span class="pre">--userid</span> <span class="pre">admin</span> <span class="pre">--apppassword</span> <span class="pre">Jliy12356785jxnHa2ZCiZ9MX48ncECwDso95Pq3a5HABjY34ZvhZiXrPfpKWUg7aOHAX5</span> <span class="pre">--localdirpath</span> <span class="pre">&quot;D:\\Nextcloud-sync-folder&quot;</span> <span class="pre">--remotedirpath</span> <span class="pre">/Music</span> <span class="pre">--serverurl</span> <span class="pre">&quot;https://cloud.example.com&quot;</span> <span class="pre">--isvfsenabled</span> <span class="pre">1&quot;</span></code> - this will create a config file for user admin on the server <a class="reference external" href="https://cloud.example.com">https://cloud.example.com</a> and set a remote root folder to “Music”, the local sync folder will get created with VFS mode.</p></li>
-<li><p>For Linux and mac the same example as above will work but <code class="docutils literal notranslate"><span class="pre">nextcloud.exe</span> <span class="pre">path</span></code> and <code class="docutils literal notranslate"><span class="pre">--localdirpath</span></code> value should get changed to platform specific format (e.g. <code class="docutils literal notranslate"><span class="pre">no</span> <span class="pre">.exe</span> <span class="pre">extension</span></code> and <code class="docutils literal notranslate"><span class="pre">/home/&lt;user</span> <span class="pre">folder&gt;</span></code> format)</p></li>
+<li><p>one or more required parameters are missing or invalid,</p></li>
+<li><p>an account for the same user and server already exists,</p></li>
+<li><p>the specified local sync folder already exists and is not empty,</p></li>
+<li><p>the specified local sync folder could not be created,</p></li>
+<li><p>the server URL is incorrect,</p></li>
+<li><p>the app password is invalid,</p></li>
+<li><p>the authenticated request is redirected unexpectedly,</p></li>
+<li><p>the server denies access to the configured account, or</p></li>
+<li><p>the server returns an invalid response to the authenticated WebDAV request.</p></li>
 </ul>
+<p>In these cases, the client exits with code <code class="docutils literal notranslate"><span class="pre">1</span></code> and writes more detailed information to the logs.</p>
+</section>
+<section id="examples">
+<h3>Examples<a class="headerlink" href="#examples" title="Link to this heading"></a></h3>
+<p>Windows:</p>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;C:\Program Files\Nextcloud\nextcloud.exe&quot;</span> <span class="p">^</span>
+  <span class="p">-</span><span class="n">-userid</span> <span class="n">admin</span> <span class="p">^</span>
+  <span class="p">-</span><span class="n">-apppassword</span> <span class="n">Jliy12356785jxnHa2ZCiZ9MX48ncECwDso95Pq3a5HABjY34ZvhZiXrPfpKWUg7aOHAX5</span> <span class="p">^</span>
+  <span class="p">-</span><span class="n">-serverurl</span> <span class="n">https</span><span class="p">://</span><span class="n">cloud</span><span class="p">.</span><span class="n">example</span><span class="p">.</span><span class="n">com</span> <span class="p">^</span>
+  <span class="p">-</span><span class="n">-localdirpath</span> <span class="s2">&quot;D:\Nextcloud-sync-folder&quot;</span> <span class="p">^</span>
+  <span class="p">-</span><span class="n">-remotedirpath</span> <span class="p">/</span><span class="n">Music</span> <span class="p">^</span>
+  <span class="p">-</span><span class="n">-isvfsenabled</span> <span class="n">1</span>
+</pre></div>
+</div>
+<p>Linux:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>nextcloud<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--userid<span class="w"> </span>admin<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--apppassword<span class="w"> </span>Jliy12356785jxnHa2ZCiZ9MX48ncECwDso95Pq3a5HABjY34ZvhZiXrPfpKWUg7aOHAX5<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--serverurl<span class="w"> </span>https://cloud.example.com<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--localdirpath<span class="w"> </span><span class="s2">&quot;/home/admin/Nextcloud-sync-folder&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--remotedirpath<span class="w"> </span>/Music<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--isvfsenabled<span class="w"> </span><span class="m">0</span>
+</pre></div>
+</div>
+<p>macOS:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>nextcloud<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--userid<span class="w"> </span>admin<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--apppassword<span class="w"> </span>Jliy12356785jxnHa2ZCiZ9MX48ncECwDso95Pq3a5HABjY34ZvhZiXrPfpKWUg7aOHAX5<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--serverurl<span class="w"> </span>https://cloud.example.com<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--localdirpath<span class="w"> </span><span class="s2">&quot;/Users/admin/Nextcloud-sync-folder&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--remotedirpath<span class="w"> </span>/Music<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--isvfsenabled<span class="w"> </span><span class="m">1</span>
+</pre></div>
+</div>
+</section>
+<section id="recommendations">
+<h3>Recommendations<a class="headerlink" href="#recommendations" title="Link to this heading"></a></h3>
+<p>For reliable deployment automation:</p>
+<ul class="simple">
+<li><p>use app passwords rather than regular user passwords,</p></li>
+<li><p>ensure that the server URL is the correct base URL for the Nextcloud instance,</p></li>
+<li><p>use a new or empty local sync directory,</p></li>
+<li><p>validate that the target remote path exists and is accessible to the user,</p></li>
+<li><p>enable <code class="docutils literal notranslate"><span class="pre">--isvfsenabled</span></code> only on supported platforms and builds, and</p></li>
+<li><p>avoid <code class="docutils literal notranslate"><span class="pre">--confdir</span></code> unless you intentionally need a non-default configuration location.</p></li>
+</ul>
+</section>
+</section>
+<section id="interactive-wizard-preconfiguration">
+<span id="id2"></span><h2>Interactive wizard preconfiguration<a class="headerlink" href="#interactive-wizard-preconfiguration" title="Link to this heading"></a></h2>
+<p>If you want to automate the Account Setup Wizard so that users can skip entering
+the server URL and local sync folder path in the UI, you can use command-line
+parameters.</p>
+<p>When you specify both, the desktop client’s Account Setup Wizard will jump straight to opening a browser for account authentication or connection without the need to enter any of the connection details.</p>
+<p>The local sync folder will also be selected to the one you specify instead of using the default path.</p>
+<p>The following parameters are supported:</p>
+<dl>
+<dt><code class="docutils literal notranslate"><span class="pre">--overridelocaldir</span></code></dt><dd><p>Specify a local directory to be used in the account setup wizard.</p>
+<p>Example: <code class="docutils literal notranslate"><span class="pre">/home/nextcloud-sync-folder</span></code></p>
+</dd>
+<dt><code class="docutils literal notranslate"><span class="pre">--overrideserverurl</span></code></dt><dd><p>Specify a server URL to use for the force override in the account setup wizard.</p>
+<p>Example: <code class="docutils literal notranslate"><span class="pre">https://cloud.example.com</span></code></p>
+</dd>
+</dl>
+<section id="id3">
+<h3>Behavior<a class="headerlink" href="#id3" title="Link to this heading"></a></h3>
+<p>These options affect the behavior of the interactive setup wizard.
+They do not directly create an account in the same way as non-interactive account provisioning.</p>
+<p>Use this approach when you want the user to complete setup interactively, but want to prefill, constrain, or guide the process.</p>
+</section>
+<section id="id4">
+<h3>Examples<a class="headerlink" href="#id4" title="Link to this heading"></a></h3>
+<p>Windows:</p>
+<div class="highlight-powershell notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;C:\Program Files\Nextcloud\nextcloud.exe&quot;</span> <span class="p">-</span><span class="n">-overridelocaldir</span> <span class="s2">&quot;D:/work/nextcloud-sync-folder&quot;</span> <span class="p">-</span><span class="n">-overrideserverurl</span> <span class="n">https</span><span class="p">://</span><span class="n">cloud</span><span class="p">.</span><span class="n">example</span><span class="p">.</span><span class="n">com</span>
+</pre></div>
+</div>
+<p>Linux and macOS:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>nextcloud<span class="w"> </span>--overridelocaldir<span class="w"> </span><span class="s2">&quot;/home/&lt;user&gt;/nextcloud-sync-folder&quot;</span><span class="w"> </span>--overrideserverurl<span class="w"> </span>https://cloud.example.com
+</pre></div>
+</div>
+</section>
+<section id="important-distinction-from-non-interactive-provisioning">
+<h3>Important distinction from non-interactive provisioning<a class="headerlink" href="#important-distinction-from-non-interactive-provisioning" title="Link to this heading"></a></h3>
+<p>Use wizard preconfiguration when you still want the user to complete setup in the graphical interface.</p>
+<p>Use non-interactive account provisioning when you want deployment automation to create the account directly.</p>
+<p>In other words:</p>
+<ul class="simple">
+<li><p>non-interactive provisioning creates the account automatically;</p></li>
+<li><p>wizard preconfiguration influences the setup wizard, but still relies on interactive completion.</p></li>
+</ul>
+</section>
+</section>
+<section id="summary">
+<h2>Summary<a class="headerlink" href="#summary" title="Link to this heading"></a></h2>
+<p>The Nextcloud Desktop client supports multiple administrator-facing deployment and setup workflows.</p>
+<p>Choose the workflow that best matches your environment:</p>
+<ul class="simple">
+<li><p>use advanced Windows deployment options to control installation behavior on managed Windows systems,</p></li>
+<li><p>use non-interactive account provisioning to create desktop-client accounts automatically during deployment,</p></li>
+<li><p>use interactive wizard preconfiguration to guide users through a constrained or prefilled first-run setup process.</p></li>
+</ul>
+</section>
 </section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="options.html" class="btn btn-neutral float-left" title="Options" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="configfile.html" class="btn btn-neutral float-right" title="Configuration File" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="index.html" class="btn btn-neutral float-left" title="Desktop Clients" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="troubleshooting.html" class="btn btn-neutral float-right" title="Troubleshooting" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
