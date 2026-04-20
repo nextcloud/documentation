@@ -11,7 +11,10 @@ synchronized between your computer and your Nextcloud server.
    installation
    uninstallation
    usage
-   macosvfs
+   commandline
+   options
+   configfile
+   envvars
    autoupdate
    updatechannel
    conflicts

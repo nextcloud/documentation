@@ -1,6 +1,6 @@
-===================
-Command Line Client
-===================
+=============================
+Using the Command-Line Client
+=============================
 
 The Nextcloud Client packages contain a command line client, ``nextcloudcmd``, that can 
 be used to synchronize Nextcloud files to client machines.
