@@ -7,7 +7,7 @@
   <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Transcription and translation &mdash; Nextcloud latest User Manual latest documentation</title>
+  <title>轉錄與翻譯 &mdash; Nextcloud latest User Manual latest documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
@@ -32,7 +32,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Federation" href="federation_index.html" />
-    <link rel="prev" title="Call layout" href="call_views.html" /> 
+    <link rel="prev" title="通話佈局" href="call_views.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -66,25 +66,25 @@
 <li class="toctree-l1"><a class="reference internal" href="../files/index.html">檔案與同步</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Talk</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="chat_index.html">Chat</a></li>
-<li class="toctree-l2"><a class="reference internal" href="conversation_index.html">Conversations</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="call_index.html">Calls</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="chat_index.html">聊天</a></li>
+<li class="toctree-l2"><a class="reference internal" href="conversation_index.html">對話</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="call_index.html">通話</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="call.html">加入通話</a></li>
-<li class="toctree-l3"><a class="reference internal" href="call_screenshare.html">Screen sharing</a></li>
-<li class="toctree-l3"><a class="reference internal" href="call_views.html">Call layout</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Transcription and translation</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#call-live-transcription">Call live transcription</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#live-translation">Live translation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="call_screenshare.html">螢幕分享</a></li>
+<li class="toctree-l3"><a class="reference internal" href="call_views.html">通話佈局</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">轉錄與翻譯</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#call-live-transcription">通話即時轉錄</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#live-translation">即時翻譯</a></li>
 </ul>
 </li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="federation_index.html">Federation</a></li>
-<li class="toctree-l2"><a class="reference internal" href="moderator_index.html">For moderators</a></li>
-<li class="toctree-l2"><a class="reference internal" href="guest.html">Join a call or chat as guest</a></li>
+<li class="toctree-l2"><a class="reference internal" href="moderator_index.html">供主持人使用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="guest.html">以訪客身份加入通話或聊天</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">桌面客戶端</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Client</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">設置您的偏好</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../universal_access.html">普遍存取</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">使用雙重身份驗證</a></li>
@@ -107,8 +107,8 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="index.html">Talk</a></li>
-          <li class="breadcrumb-item"><a href="call_index.html">Calls</a></li>
-      <li class="breadcrumb-item active">Transcription and translation</li>
+          <li class="breadcrumb-item"><a href="call_index.html">通話</a></li>
+      <li class="breadcrumb-item active">轉錄與翻譯</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/talk/call_transcription.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
@@ -119,18 +119,16 @@
            <div itemprop="articleBody">
              
   <section id="transcription-and-translation">
-<h1>Transcription and translation<a class="headerlink" href="#transcription-and-translation" title="Link to this heading"></a></h1>
+<h1>轉錄與翻譯<a class="headerlink" href="#transcription-and-translation" title="Link to this heading"></a></h1>
 <section id="call-live-transcription">
-<h2>Call live transcription<a class="headerlink" href="#call-live-transcription" title="Link to this heading"></a></h2>
-<p>Call live transcription transcribes speech in real-time during a call. It is set up by the system administration (High-performance backend and <a class="reference external" href="https://apps.nextcloud.com/apps/live_transcription">Live Transcription App</a> are required).
-Moderators need to set the transcription language in the conversation settings. All participants can then enable or disable the transcription for themselves in the call bottom bar.
-When enabled, the transcription appears at the bottom of the screen and is updated in real-time.</p>
+<h2>通話即時轉錄<a class="headerlink" href="#call-live-transcription" title="Link to this heading"></a></h2>
+<p>通話即時轉錄會在通話期間即時將語音轉換為文字。此功能需由系統管理員設定（需要高效能後端及 <a class="reference external" href="https://apps.nextcloud.com/apps/live_transcription">Live Transcription App</a>）。主持人需在對話設定中設定轉錄語言，其後所有參與者均可在通話底部工具列中自行啟用或停用轉錄。啟用後，轉錄內容會顯示於畫面底部，並即時更新。</p>
 <a class="reference internal image-reference" href="../../_images/call-transcription.png"><img alt="../../_images/call-transcription.png" src="../../_images/call-transcription.png" style="width: 500px;" />
 </a>
 </section>
 <section id="live-translation">
-<h2>Live translation<a class="headerlink" href="#live-translation" title="Link to this heading"></a></h2>
-<p>With the <cite>live_transcription</cite> provider app enabled, you can also use live translation. Instead of receiving the transcription in the original language, it will be translated to the language of your choice.</p>
+<h2>即時翻譯<a class="headerlink" href="#live-translation" title="Link to this heading"></a></h2>
+<p>啟用 <cite>live_transcription</cite> 提供者應用程式後，你亦可使用即時翻譯。轉錄內容將不再以原始語言顯示，而會翻譯成你所選擇的語言。</p>
 <a class="reference internal image-reference" href="../../_images/call-translation-actions.png"><img alt="../../_images/call-translation-actions.png" src="../../_images/call-translation-actions.png" style="width: 400px;" />
 </a>
 </section>
@@ -140,7 +138,7 @@ When enabled, the transcription appears at the bottom of the screen and is updat
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="call_views.html" class="btn btn-neutral float-left" title="Call layout" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="call_views.html" class="btn btn-neutral float-left" title="通話佈局" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="federation_index.html" class="btn btn-neutral float-right" title="Federation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
@@ -166,6 +164,8 @@ When enabled, the transcription appears at the bottom of the screen and is updat
 
   
   
+  
+    
   
     
   
@@ -425,6 +425,14 @@ When enabled, the transcription appears at the bottom of the screen and is updat
                
             >
               Korean
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/lo/"
+               
+            >
+              lo
             </a>
           </dd>
         

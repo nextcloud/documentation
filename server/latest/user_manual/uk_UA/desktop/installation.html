@@ -32,7 +32,7 @@
     <link rel="index" title="Індекс" href="../genindex.html" />
     <link rel="search" title="Пошук" href="../search.html" />
     <link rel="next" title="Uninstallation" href="uninstallation.html" />
-    <link rel="prev" title="Десктопні клієнти" href="index.html" /> 
+    <link rel="prev" title="Desktop Client" href="index.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -66,25 +66,22 @@
 <li class="toctree-l1"><a class="reference internal" href="../files/index.html">Файли та синхронізація</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Програмне забезпечення для групової роботи</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Розмови</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Десктопні клієнти</a><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Desktop Client</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Встановлення</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#download">Download</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#supported-server-versions">Supported server versions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#system-requirements">Системні вимоги</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#customizing-the-windows-installation">Налаштування інсталяції Windows</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#features">Особливості</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id1">Встановлення</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#changing-installed-features">Зміна встановлених функцій</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#installation-folder">Папка інсталяції</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#disabling-automatic-updates">Вимкнення автоматичних оновлень</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#launch-after-installation">Запуск після встановлення</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#no-reboot-after-installation">Не потребує перезавантаження після встановлення</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#installation-wizard">Майстер встановлення</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#install-on-macos-and-windows">Install on macOS and Windows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#install-on-linux">Install on Linux</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#initial-setup">Initial Setup</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="uninstallation.html">Uninstallation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="usage.html">Використання Клієнта синхронізації</a></li>
-<li class="toctree-l2"><a class="reference internal" href="macosvfs.html">macOS Virtual Files Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="commandline.html">Using the Command-Line Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html">Command-Line Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configfile.html">Configuration File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="envvars.html">Environment Variables</a></li>
 <li class="toctree-l2"><a class="reference internal" href="autoupdate.html">Автоматичне оновлення</a></li>
 <li class="toctree-l2"><a class="reference internal" href="updatechannel.html">Оновлення каналів</a></li>
 <li class="toctree-l2"><a class="reference internal" href="conflicts.html">Конфлікти</a></li>
@@ -112,7 +109,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="index.html">Десктопні клієнти</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Desktop Client</a></li>
       <li class="breadcrumb-item active">Встановлення</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/desktop/installation.rst" class="fa fa-github"> Edit on GitHub</a>
@@ -125,22 +122,28 @@
              
   <section id="installation">
 <h1>Встановлення<a class="headerlink" href="#installation" title="Link to this heading"></a></h1>
-<p>Ви можете завантажити останню версію Nextcloud Desktop Synchronization Client зі сторінки завантаження Nextcloud. Існують клієнти для Linux, macOS та Microsoft Windows.</p>
-<p>Наразі підтримуються три останні стабільні версії сервера на момент публікації. Це означає, що серія випусків <a href="#id2"><span class="problematic" id="id3">|версії|</span></a> підтримує стабільні основні версії сервера. Список підтримуваних основних версій дивіться на сторінці <a class="reference external" href="https://github.com/nextcloud/server/wiki/Maintenance-and-Release-Schedule">https://github.com/nextcloud/server/wiki/Maintenance-and-Release-Schedule</a>.</p>
-<p>Інсталяція на macOS і Windows відбувається так само, як і для будь-якої іншої програми: завантажте програму, двічі клацніть її, щоб запустити інсталяцію, а потім дотримуйтесь вказівок майстра інсталяції. Після встановлення та налаштування клієнт синхронізації автоматично оновлюватиметься; див. <a class="reference internal" href="autoupdate.html"><span class="doc">Автоматичне оновлення</span></a> для отримання додаткової інформації.</p>
-<p>Користувачі Linux повинні слідувати інструкціям на сторінці завантаження, щоб додати відповідний репозиторій для свого дистрибутива Linux, інсталювати ключ підпису, а потім за допомогою менеджера пакетів встановити клієнт синхронізації на робочому столі. Користувачі Linux також оновлюватимуть свої клієнти синхронізації за допомогою менеджера пакунків, і клієнт покаже сповіщення про доступність оновлення.</p>
-<p>Користувачі Linux також повинні мати увімкнений менеджер паролів, наприклад, GNOME Keyring або KWallet, щоб клієнт синхронізації міг увійти автоматично.</p>
+<section id="download">
+<h2>Download<a class="headerlink" href="#download" title="Link to this heading"></a></h2>
+<p>You can download the latest version of the Nextcloud Desktop Synchronization Client
+from the <a class="reference external" href="https://nextcloud.com/download/#install-clients">Nextcloud download page</a>. Clients are available for Linux, macOS, and
+Microsoft Windows.</p>
 <p>На сторінці завантаження ви також знайдете посилання на архіви вихідного коду та старіші версії.</p>
+</section>
+<section id="supported-server-versions">
+<h2>Supported server versions<a class="headerlink" href="#supported-server-versions" title="Link to this heading"></a></h2>
+<p>Each desktop client release supports the latest three stable Nextcloud server
+major versions at the time of release. See the <a class="reference external" href="https://github.com/nextcloud/server/wiki/Maintenance-and-Release-Schedule">Nextcloud Server release schedule</a>
+for supported major versions.</p>
+</section>
 <section id="system-requirements">
 <h2>Системні вимоги<a class="headerlink" href="#system-requirements" title="Link to this heading"></a></h2>
-<ul class="simple">
+<ul>
 <li><p>Windows 10+ (лише 64-розрядні)</p></li>
 <li><p>macOS 12.0+ (лише 64-розрядні)</p></li>
-<li><dl class="simple">
-<dt>Linux (Ubuntu 24.04 or openSUSE 15.5 or Alma 8 or …) (64-bits only)</dt><dd><p>For Linux distributions, we support, if technically feasible, the current LTS releases.
-For BSD, we support them if technically feasible but we do not test.</p>
-</dd>
-</dl>
+<li><p>Linux (Ubuntu 24.04 or openSUSE 15.5 or Alma 8 or …) (64-bits only)</p>
+<p>For Linux distributions, we support, if technically feasible, the current
+LTS releases. For BSD, we support them if technically feasible, but we do not
+test them.</p>
 </li>
 </ul>
 <div class="admonition note">
@@ -153,153 +156,66 @@ For BSD, we support them if technically feasible but we do not test.</p>
 </ul>
 </div>
 </section>
-<section id="customizing-the-windows-installation">
-<h2>Налаштування інсталяції Windows<a class="headerlink" href="#customizing-the-windows-installation" title="Link to this heading"></a></h2>
-<p>Якщо ви просто хочете встановити клієнт синхронізації Nextcloud Desktop Synchronization Client на вашу локальну систему, ви можете просто запустити файл <cite>.msi</cite> і налаштувати його у майстрі, що з’явиться.</p>
-<section id="features">
-<h3>Особливості<a class="headerlink" href="#features" title="Link to this heading"></a></h3>
-<p>Інсталятор MSI надає кілька функцій, які можна встановити або видалити окремо, якими також можна керувати за допомогою командного рядка, якщо ви автоматизуєте встановлення, то виконайте наступну команду:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">passive</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span>
-</pre></div>
-</div>
-<p>Команда встановить клієнт синхронізації робочого столу Nextcloud у місце за замовчуванням з увімкненими за замовчуванням функціями. Якщо ви хочете вимкнути, наприклад, ярлики на робочому столі, ви можете просто змінити наведену вище команду на наступну:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">passive</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">REMOVE</span><span class="o">=</span><span class="n">DesktopShortcut</span>
-</pre></div>
-</div>
-<p>Перелік доступних функцій наведено в наступній таблиці:</p>
-<table class="docutils align-default">
-<thead>
-<tr class="row-odd"><th class="head"><p>Особливість</p></th>
-<th class="head"><p>Увімкнено за замовчуванням</p></th>
-<th class="head"><p>Опис</p></th>
-<th class="head"><p>Власність для відключення</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>Клієнт</p></td>
-<td><p>Так, обов’язково</p></td>
-<td><p>Фактичний клієнт</p></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p>Ярлик на робочому столі</p></td>
-<td><p>Так.</p></td>
-<td><p>Додає ярлик на робочий стіл</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">НЕ_МАЄ_ШОРТКАТУ_ДЛЯ_РОБОЧОГО_СТОЛУ</span></code></p></td>
-</tr>
-<tr class="row-even"><td><p>ПускМенюШорткати</p></td>
-<td><p>Так.</p></td>
-<td><p>Додає ярлик до меню «Пуск</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">НЕ_Є_ШОРТКАТІВ_ПУСКОВОГО_МЕНЮ</span></code>.</p></td>
-</tr>
-<tr class="row-odd"><td><p>ShellExtensions</p></td>
-<td><p>Так.</p></td>
-<td><p>Додано інтеграцію з Провідником</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">NO_SHELL_EXTENSIONS</span></code> (НЕМАЄ РОЗШИРЕНЬ ОБОЛОНКИ)</p></td>
-</tr>
-</tbody>
-</table>
+<section id="install-on-macos-and-windows">
+<h2>Install on macOS and Windows<a class="headerlink" href="#install-on-macos-and-windows" title="Link to this heading"></a></h2>
+<p>Installation on macOS and Windows is the same as for any other software
+application: download the program and then double-click it to launch the
+installation, and then follow the installation wizard. After it is installed and
+configured the desktop client will automatically keep itself updated; see
+<a class="reference internal" href="autoupdate.html"><span class="doc">Автоматичне оновлення</span></a> for more information.</p>
+<p>For administrator-focused deployment options such as advanced Windows MSI
+configuration, non-interactive account provisioning, and command-line wizard
+preconfiguration, see the Admin Manual chapter on desktop client deployment and
+setup.</p>
 </section>
-<section id="id1">
-<h3>Встановлення<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
-<p>Ви також можете встановити лише сам клієнт за допомогою наступної команди:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">passive</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">ADDDEFAULT</span><span class="o">=</span><span class="n">Client</span>
-</pre></div>
-</div>
-<p>Якщо ви, наприклад, хочете встановити все, окрім <code class="docutils literal notranslate"><span class="pre">ShellExtensions</span></code> та ярлика на робочому столі, у вас є два варіанти:</p>
-<ol class="arabic">
-<li><p>Ви явно вказуєте всі функції, які ви дійсно хочете встановити (білий список), де <code class="docutils literal notranslate"><span class="pre">Клієнт</span></code> завжди встановлений у будь-якому випадку:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">passive</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">ADDDEFAULT</span><span class="o">=</span><span class="n">StartMenuShortcuts</span>
-</pre></div>
-</div>
-</li>
-<li><p>Ви передаєте властивості <code class="docutils literal notranslate"><span class="pre">NO_DESKTOP_SHORTCUT</span></code> та <code class="docutils literal notranslate"><span class="pre">NO_SHELL_EXTENSIONS</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">passive</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">NO_DESKTOP_SHORTCUT</span><span class="o">=</span><span class="s2">&quot;1&quot;</span> <span class="n">NO_SHELL_EXTENSIONS</span><span class="o">=</span><span class="s2">&quot;1&quot;</span>
-</pre></div>
-</div>
-</li>
-</ol>
-<div class="admonition note">
-<p class="admonition-title">Примітка</p>
-<p>Файл <code class="docutils literal notranslate"><span class="pre">.msi</span></code> Nextcloud запам’ятовує ці властивості, тому вам не потрібно вказувати їх при оновленні.</p>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Примітка</p>
-<p>Ви не можете використовувати їх для зміни встановлених функцій, якщо ви хочете це зробити, зверніться до наступного розділу.</p>
-</div>
+<section id="install-on-linux">
+<h2>Install on Linux<a class="headerlink" href="#install-on-linux" title="Link to this heading"></a></h2>
+<p>For Linux, Nextcloud officially provides the desktop client as an AppImage on
+the <a class="reference external" href="https://nextcloud.com/download/#install-clients">Nextcloud download page</a>.</p>
+<p>Some Linux distributions also provide the Nextcloud desktop client through their
+package managers. These packages are maintained by the distribution or community,
+not by Nextcloud. If you prefer a package-managed installation, refer to your
+distribution’s documentation.</p>
+<p>Linux users must also have a password manager enabled, such as GNOME Keyring or
+KWallet, so that the desktop client can log in automatically.</p>
 </section>
-<section id="changing-installed-features">
-<h3>Зміна встановлених функцій<a class="headerlink" href="#changing-installed-features" title="Link to this heading"></a></h3>
-<p>Ви можете змінити встановлені функції пізніше за допомогою властивостей <code class="docutils literal notranslate"><span class="pre">REMOVE</span></code> та <code class="docutils literal notranslate"><span class="pre">ADDDEFAULT</span></code>.</p>
-<ol class="arabic">
-<li><p>If you want to add the desktop shortcut later, run the following command:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">passive</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">ADDDEFAULT</span><span class="o">=</span><span class="s2">&quot;DesktopShortcut&quot;</span>
-</pre></div>
-</div>
-</li>
-<li><p>Якщо ви хочете видалити його, просто виконайте наступну команду:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">passive</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">REMOVE</span><span class="o">=</span><span class="s2">&quot;DesktopShortcut&quot;</span>
-</pre></div>
-</div>
-</li>
-</ol>
-<p>Windows стежить за встановленими програмами, і використання команд <code class="docutils literal notranslate"><span class="pre">ВИДАЛИТИ</span></code> або <code class="docutils literal notranslate"><span class="pre">ДОДАТИ</span> <span class="pre">за</span> <span class="pre">замовчуванням</span></code> вплине лише на згадані програми.</p>
-<p>Порівняйте <a href="#id4"><span class="problematic" id="id5">`REMOVE &amp;lt;https://msdn.microsoft.com/en-us/library/windows/desktop/aa371194(v=vs.85).aspx&amp;gt;`_</span></a> і <a href="#id6"><span class="problematic" id="id7">`ADDDEFAULT &amp;lt;https://msdn.microsoft.com/en-us/library/windows/desktop/aa367518(v=vs.85).aspx&amp;gt;`_</span></a> у посібнику з встановлення Windows.</p>
-<div class="admonition note">
-<p class="admonition-title">Примітка</p>
-<p>Ви не можете вказати <code class="docutils literal notranslate"><span class="pre">ВИДАЛИТИ</span></code> під час початкового встановлення, оскільки це вимкне всі можливості.</p>
-</div>
-</section>
-<section id="installation-folder">
-<h3>Папка інсталяції<a class="headerlink" href="#installation-folder" title="Link to this heading"></a></h3>
-<p>Ви можете змінити папку встановлення, вказавши властивість <code class="docutils literal notranslate"><span class="pre">INSTALLDIR</span></code> наступним чином:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">passive</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">INSTALLDIR</span><span class="o">=</span><span class="s2">&quot;C:\Program Files\Non Standard Nextcloud Client Folder&quot;</span>
-</pre></div>
-</div>
-<p>Будьте обережні, використовуючи PowerShell замість <code class="docutils literal notranslate"><span class="pre">cmd.exe</span></code>, може бути складно вилучити пробіли саме там. Вказання <code class="docutils literal notranslate"><span class="pre">INSTALLDIR</span></code> таким чином працює лише під час першого встановлення, ви не можете просто повторно викликати <code class="docutils literal notranslate"><span class="pre">.msi</span></code> з іншим шляхом. Якщо вам все одно потрібно змінити його, спочатку видаліть програму, а потім перевстановіть її за новим шляхом.</p>
-</section>
-<section id="disabling-automatic-updates">
-<h3>Вимкнення автоматичних оновлень<a class="headerlink" href="#disabling-automatic-updates" title="Link to this heading"></a></h3>
-<p>Щоб вимкнути автоматичні оновлення, ви можете передати властивість <code class="docutils literal notranslate"><span class="pre">SKIPAUTOUPDATE</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">passive</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">SKIPAUTOUPDATE</span><span class="o">=</span><span class="s2">&quot;1&quot;</span>
-</pre></div>
-</div>
-</section>
-<section id="launch-after-installation">
-<h3>Запуск після встановлення<a class="headerlink" href="#launch-after-installation" title="Link to this heading"></a></h3>
-<p>Для автоматичного запуску клієнта після встановлення ви можете передати властивість <code class="docutils literal notranslate"><span class="pre">LAUNCH</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">LAUNCH</span><span class="o">=</span><span class="s2">&quot;1&quot;</span>
-</pre></div>
-</div>
-<p>Цей параметр також прибирає прапорець, щоб дозволити користувачам вирішувати, чи хочуть вони запускати клієнт у непасивному/тихому режимі.</p>
-<div class="admonition note">
-<p class="admonition-title">Примітка</p>
-<p>Ця опція не має жодного ефекту без графічного інтерфейсу.</p>
-</div>
-</section>
-<section id="no-reboot-after-installation">
-<h3>Не потребує перезавантаження після встановлення<a class="headerlink" href="#no-reboot-after-installation" title="Link to this heading"></a></h3>
-<p>Клієнт Nextcloud планує перезавантаження після встановлення, щоб переконатися, що розширення Провідника правильно (роз)завантажено. Якщо ви дбаєте про перезавантаження самостійно, ви можете встановити властивість <code class="docutils literal notranslate"><span class="pre">REBOOT</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">REBOOT</span><span class="o">=</span><span class="n">ReallySuppress</span>
-</pre></div>
-</div>
-<p>Це призведе до завершення роботи <code class="docutils literal notranslate"><span class="pre">msiexec</span></code> з помилкою <code class="docutils literal notranslate"><span class="pre">ERROR_SUCCESS_REBOOT_REQUIRED</span></code> (3010). Якщо ваш інструментарій розгортання інтерпретує це як справжню помилку і ви хочете уникнути цього, ви можете встановити <code class="docutils literal notranslate"><span class="pre">DO_NOT_SCHEDULE_REBOOT</span></code> замість:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">DO_NOT_SCHEDULE_REBOOT</span><span class="o">=</span><span class="s2">&quot;1&quot;</span>
-</pre></div>
-</div>
-</section>
-</section>
-<section id="installation-wizard">
-<h2>Майстер встановлення<a class="headerlink" href="#installation-wizard" title="Link to this heading"></a></h2>
-<p>Майстер установки крок за кроком проведе вас через параметри конфігурації та налаштування облікового запису. Спочатку потрібно ввести URL-адресу вашого сервера Nextcloud.</p>
+<section id="initial-setup">
+<h2>Initial Setup<a class="headerlink" href="#initial-setup" title="Link to this heading"></a></h2>
+<p>After installation, the initial setup wizard is triggered. In the setup wizard,
+you can log in to your server, create an account with a provider, and configure
+which folders to sync. The wizard will guide you step-by-step through the
+essential configuration options and basic account setup.</p>
+<p>First, you need to enter the URL of your Nextcloud server.</p>
 <img alt="форма для вибору між входом та реєстрацією" src="../../_images/wizard_welcome.png" />
-<p>Якщо у вас вже є обліковий запис у Nextcloud, натисніть кнопку «Увійдіть до свого Nextcloud». Якщо у вас немає екземпляра Nextcloud і облікового запису в ньому, можливо, ви захочете зареєструвати обліковий запис у провайдера. У такому випадку натисніть кнопку <code class="docutils literal notranslate"><span class="pre">Створити</span> <span class="pre">обліковий</span> <span class="pre">запис</span> <span class="pre">у</span> <span class="pre">провайдера</span></code>. Будь ласка, майте на увазі, що десктопний клієнт міг бути зібраний без підтримки провайдера. У такому випадку ви не побачите цієї сторінки. Замість неї ви побачите наступну сторінку.</p>
+<p>If you already have an account on a Nextcloud instance, click <code class="docutils literal notranslate"><span class="pre">Login</span> <span class="pre">to</span> <span class="pre">your</span>
+<span class="pre">Nextcloud</span></code>. If you do not yet have a Nextcloud instance or an account, you may
+need to create one first. Alternatively, you might want to register an account
+with a provider. Press <code class="docutils literal notranslate"><span class="pre">Create</span> <span class="pre">account</span> <span class="pre">with</span> <span class="pre">Provider</span></code> in that case.</p>
+<div class="admonition note">
+<p class="admonition-title">Примітка</p>
+<p>The desktop client build you are using may have been built without provider
+support. In that case, you won’t see this page and will immediately see the
+next page.</p>
+</div>
 <img alt="форма для введення URL-адреси сервера Nextcloud" src="../../_images/wizard_setup.png" />
 <p>Введіть URL-адресу вашого екземпляра Nextcloud. Це та сама URL-адреса, яку ви вводите в браузері, коли намагаєтеся отримати доступ до свого екземпляра Nextcloud.</p>
 <img alt="форма, що очікує на авторизацію" src="../../_images/wizard_flow2.png" />
-<p>Тепер ваш веб-браузер має відкритися і запропонувати вам увійти до вашого екземпляру Nextcloud. Введіть своє ім’я користувача та пароль у веб-браузері та надайте доступ. Після цього поверніться до майстра. Будь ласка, майте на увазі, що вам може не знадобитися вводити ім’я користувача та пароль, якщо ви вже ввійшли у свій браузер.</p>
+<p>Now your web browser should open and prompt you to log in to your
+Nextcloud instance. Enter your username and password in your web
+browser and click <em>Grant access</em> when prompted. After you do that,
+go back to the wizard.</p>
+<div class="admonition note">
+<p class="admonition-title">Примітка</p>
+<p>You might not need to enter your username and password if you are
+already logged in to your web browser.</p>
+</div>
 <img alt="Виберіть, які віддалені папки синхронізувати, а в якій локальній папці зберігати їх зберігати." src="../../_images/wizard_advanced.png" />
 <p>На екрані параметрів локальної папки ви можете синхронізувати всі файли на сервері Nextcloud або вибрати окремі папки. За замовчуванням локальною папкою для синхронізації є <code class="docutils literal notranslate"><span class="pre">Nextcloud</span></code> у вашому домашньому каталозі. Ви також можете змінити її.</p>
-<p>Коли ви завершите вибір папок для синхронізації, натисніть кнопку «Підключитися» внизу праворуч. Клієнт спробує підключитися до вашого сервера Nextcloud, і коли це вдасться, майстер закриється. Тепер ви можете спостерігати за процесом синхронізації, якщо відкриєте основний діалог, натиснувши на іконку у треї.</p>
+<p>When you have completed selecting your sync folders, click the <em>Connect</em>
+button at the bottom right. The client will attempt to connect to your
+Nextcloud server. If it is successful, the wizard will close itself. You
+can then observe the sync activity and open the main dialog by clicking
+on the tray icon.</p>
 </section>
 </section>
 
@@ -307,7 +223,7 @@ For BSD, we support them if technically feasible but we do not test.</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="index.html" class="btn btn-neutral float-left" title="Десктопні клієнти" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="index.html" class="btn btn-neutral float-left" title="Desktop Client" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="uninstallation.html" class="btn btn-neutral float-right" title="Uninstallation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
@@ -333,6 +249,8 @@ For BSD, we support them if technically feasible but we do not test.</p>
 
   
   
+  
+    
   
     
   
@@ -592,6 +510,14 @@ For BSD, we support them if technically feasible but we do not test.</p>
                
             >
               Korean
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/lo/"
+               
+            >
+              lo
             </a>
           </dd>
         

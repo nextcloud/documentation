@@ -1,0 +1,856 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="lo" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ການນຳໃຊ້ແອັບລາຍຊື່ຜູ້ຕິດຕໍ່ &mdash; Nextcloud latest User Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=e7c79d26" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://docs.nextcloud.com/server/stable/user_manual/groupware/contacts.html" />
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=1fed0ad5"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <script src="../../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Using the Calendar app" href="calendar.html" />
+    <link rel="prev" title="ກຸ່ມຊອບແວ" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Nextcloud latest user manual introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">ສ່ວນຕິດຕໍ່ຜູ້ໃຊ້ຜ່ານເວັບຂອງ Nextcloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../activity.html">Using the Activity app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../files/index.html">Files &amp; synchronization</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">ກຸ່ມຊອບແວ</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">ການນຳໃຊ້ແອັບລາຍຊື່ຜູ້ຕິດຕໍ່</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#adding-contacts">ການເພີ່ມລາຍຊື່ຜູ້ຕິດຕໍ່</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#importing-virtual-contacts">ການນຳເຂົ້າລາຍຊື່ຜູ້ຕິດຕໍ່ແບບສະເໝືອນ</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#adding-contacts-manually">ການເພີ່ມລາຍຊື່ຜູ້ຕິດຕໍ່ດ້ວຍຕົນເອງ</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#edit-or-remove-contact-information">ແກ້ໄຂ ຫຼື ລົບຂໍ້ມູນລາຍຊື່ຜູ້ຕິດຕໍ່</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#contact-picture">ຮູບພາບລາຍຊື່ຜູ້ຕິດຕໍ່</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#managing-multiple-contacts-at-a-time">ການຈັດການລາຍຊື່ຜູ້ຕິດຕໍ່ຫຼາຍລາຍການໃນເທື່ອດຽວ</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#merging-duplicate-contacts">ການຮວມລາຍຊື່ຜູ້ຕິດຕໍ່ທີ່ຊ້ຳກັນ</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#organize-your-contacts-with-contact-groups">ຈັດລະບຽບລາຍຊື່ຜູ້ຕິດຕໍ່ດ້ວຍກຸ່ມລາຍຊື່</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#adding-and-managing-address-books">ການເພີ່ມ ແລະ ການຈັດການປຶ້ມທີ່ຢູ່</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#teams">ທີມ</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#create-a-team">ສ້າງທີມ</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#team-roles">ບົດບາດພາຍໃນທີມ</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#add-members-to-a-team">ເພີ່ມສະມາຊິກເຂົ້າໃນທີມ</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#team-options">ຕົວເລືອກທີມ</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#shared-items">ລາຍການທີ່ແບ່ງປັນ</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="calendar.html">Using the Calendar app</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mail.html">ການໃຊ້ງານແອັບເມລ (Mail)</a></li>
+<li class="toctree-l2"><a class="reference internal" href="absence.html">ການຕັ້ງຄ່າຂໍ້ຄວາມບໍ່ຢູ່ຫ້ອງການ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_android.html">Synchronizing with Android</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_ios.html">Synchronizing with iOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_osx.html">Synchronizing with macOS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_thunderbird.html">Synchronizing with Thunderbird</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_kde.html">Synchronizing with KDE Kontact</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_gnome.html">Synchronizing with the GNOME desktop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="sync_windows10.html">Synchronizing with Windows 10</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Talk</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../desktop/index.html">Desktop Client</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">ການຕັ້ງຄ່າຄວາມມັກຂອງທ່ານ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Universal access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Using two-factor authentication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Manage connected browsers and devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">ບ່ອນເກັບຂໍ້ມູນພາຍນອກ</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest User Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">ກຸ່ມຊອບແວ</a></li>
+      <li class="breadcrumb-item active">ການນຳໃຊ້ແອັບລາຍຊື່ຜູ້ຕິດຕໍ່</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/groupware/contacts.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="using-the-contacts-app">
+<h1>ການນຳໃຊ້ແອັບລາຍຊື່ຜູ້ຕິດຕໍ່<a class="headerlink" href="#using-the-contacts-app" title="Link to this heading"></a></h1>
+<p>ແອັບລາຍຊື່ຜູ້ຕິດຕໍ່ບໍ່ໄດ້ຖືກເປີດໃຊ້ງານໄວ້ເປັນຄ່າມາດຕະຖານໃນ Nextcloud latest ແລະ ຈຳເປັນຕ້ອງໄດ້ຕິດຕັ້ງແຍກຕ່າງຫາກຈາກ App Store ຂອງພວກເຮົາ.</p>
+<p>ແອັບ Nextcloud Contacts ມີຄວາມຄ້າຍຄືກັນກັບແອັບລາຍຊື່ຜູ້ຕິດຕໍ່ໃນມືຖືອື່ນໆ, ແຕ່ມີຟັງຊັນການເຮັດວຽກທີ່ຫຼາຍກວ່າ. ໃຫ້ພວກເຮົາລອງເບິ່ງຄຸນສົມບັດພື້ນຖານທີ່ຈະຊ່ວຍໃຫ້ທ່ານຈັດການປຶ້ມທີ່ຢູ່ຂອງທ່ານໃນແອັບພລິເຄຊັນນີ້.</p>
+<p>ດ້ານລຸ່ມນີ້, ທ່ານຈະໄດ້ຮຽນຮູ້ວິທີການເພີ່ມລາຍຊື່ຜູ້ຕິດຕໍ່, ການແກ້ໄຂ ຫຼື ລົບລາຍຊື່ຜູ້ຕິດຕໍ່, ການອັບໂຫຼດຮູບພາບລາຍຊື່ຜູ້ຕິດຕໍ່ ແລະ ການຈັດການປຶ້ມທີ່ຢູ່ຂອງທ່ານ.</p>
+<section id="adding-contacts">
+<h2>ການເພີ່ມລາຍຊື່ຜູ້ຕິດຕໍ່<a class="headerlink" href="#adding-contacts" title="Link to this heading"></a></h2>
+<p>ເມື່ອທ່ານເຂົ້າໃຊ້ແອັບລາຍຊື່ຜູ້ຕິດຕໍ່ເປັນຄັ້ງທຳອິດ, ປຶ້ມທີ່ຢູ່ຂອງລະບົບທີ່ປະກອບດ້ວຍຜູ້ໃຊ້ທັງໝົດໃນລະບົບທີ່ທ່ານໄດ້ຮັບອະນຸຍາດໃຫ້ເຫັນ, ພ້ອມກັບປຶ້ມທີ່ຢູ່ເລີ່ມຕົ້ນທີ່ວ່າງເປົ່າຈະປາກົດຂຶ້ນ:</p>
+<figure class="align-default" id="id1">
+<img alt="../../_images/contacts_empty.png" src="../../_images/contacts_empty.png" />
+<figcaption>
+<p><span class="caption-text"><em>ປຶ້ມທີ່ຢູ່ເລີ່ມຕົ້ນ (ວ່າງເປົ່າ)</em></span><a class="headerlink" href="#id1" title="Link to this image"></a></p>
+</figcaption>
+</figure>
+<p>ເພື່ອເພີ່ມລາຍຊື່ຜູ້ຕິດຕໍ່ເຂົ້າໃນປຶ້ມທີ່ຢູ່ຂອງທ່ານ, ທ່ານສາມາດໃຊ້ວິທີໃດໜຶ່ງດັ່ງຕໍ່ໄປນີ້:</p>
+<ul class="simple">
+<li><p>ນຳເຂົ້າລາຍຊື່ຜູ້ຕິດຕໍ່ໂດຍໃຊ້ໄຟລ໌ Virtual Contact File (VCF/vCard)</p></li>
+<li><p>ເພີ່ມລາຍຊື່ຜູ້ຕິດຕໍ່ດ້ວຍຕົນເອງ</p></li>
+</ul>
+<p>ວິທີທີ່ໄວທີ່ສຸດໃນການເພີ່ມລາຍຊື່ຜູ້ຕິດຕໍ່ແມ່ນການໃຊ້ໄຟລ໌ Virtual Contact File (VCF/vCard).</p>
+<section id="importing-virtual-contacts">
+<h3>ການນຳເຂົ້າລາຍຊື່ຜູ້ຕິດຕໍ່ແບບສະເໝືອນ<a class="headerlink" href="#importing-virtual-contacts" title="Link to this heading"></a></h3>
+<p>ວິທີການນຳເຂົ້າລາຍຊື່ຜູ້ຕິດຕໍ່ໂດຍໃຊ້ໄຟລ໌ VCF/vCard:</p>
+<ol class="arabic">
+<li><p>ຢູ່ມຸມຊ້າຍເທິງຂອງໜ້າຈໍ ທ່ານຈະເຫັນປຸ່ມ &quot;ນຳເຂົ້າລາຍຊື່ຜູ້ຕິດຕໍ່&quot; ເຊິ່ງຈະປາກົດຂຶ້ນເມື່ອທ່ານຍັງບໍ່ມີລາຍຊື່ຜູ້ຕິດຕໍ່ເທົ່ານັ້ນ.</p></li>
+<li><p>ຊອກຫາ &quot;ການຕັ້ງຄ່າ&quot; ຢູ່ດ້ານລຸ່ມຂອງແຖບຂ້າງຊ້າຍ, ຖັດຈາກປຸ່ມຮູບເຟືອງ:</p>
+<blockquote>
+<div><figure class="align-default">
+<img alt="ປຸ່ມຮູບເຟືອງການຕັ້ງຄ່າລາຍຊື່ຜູ້ຕິດຕໍ່" src="../../_images/contact_bottombar.png" />
+</figure>
+</div></blockquote>
+</li>
+<li><p>ຄລິກທີ່ປຸ່ມຮູບເຟືອງ. ປຸ່ມ &quot;ນຳເຂົ້າ&quot; ຂອງແອັບລາຍຊື່ຜູ້ຕິດຕໍ່ຈະປາກົດຂຶ້ນ:</p>
+<blockquote>
+<div><figure class="align-default">
+<img alt="ຊ່ອງອັບໂຫຼດລາຍຊື່ຜູ້ຕິດຕໍ່" src="../../_images/contact_uploadbutton.png" />
+</figure>
+</div></blockquote>
+</li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>ແອັບລາຍຊື່ຜູ້ຕິດຕໍ່ຮອງຮັບການນຳເຂົ້າ vCard ເວີຊັນ 3.0 ແລະ 4.0 ເທົ່ານັ້ນ.</p>
+</div>
+<ol class="arabic simple" start="4">
+<li><p>ຄລິກທີ່ປຸ່ມ &quot;ນຳເຂົ້າ&quot; ແລະ ອັບໂຫຼດໄຟລ໌ VCF/vCard ຂອງທ່ານ.</p></li>
+</ol>
+<p>ຫຼັງຈາກການນຳເຂົ້າສຳເລັດແລ້ວ, ທ່ານຈະເຫັນລາຍຊື່ຜູ້ຕິດຕໍ່ໃໝ່ໃນປຶ້ມທີ່ຢູ່ຂອງທ່ານ.</p>
+</section>
+<section id="adding-contacts-manually">
+<h3>ການເພີ່ມລາຍຊື່ຜູ້ຕິດຕໍ່ດ້ວຍຕົນເອງ<a class="headerlink" href="#adding-contacts-manually" title="Link to this heading"></a></h3>
+<p>ຫາກທ່ານບໍ່ສາມາດນຳເຂົ້າລາຍຊື່ຜູ້ຕິດຕໍ່ແບບສະເໝືອນໄດ້, ແອັບລາຍຊື່ຜູ້ຕິດຕໍ່ຊ່ວຍໃຫ້ທ່ານສາມາດ <strong>ເພີ່ມລາຍຊື່ຜູ້ຕິດຕໍ່</strong> ດ້ວຍຕົນເອງໄດ້.</p>
+<p>ວິທີການສ້າງລາຍຊື່ຜູ້ຕິດຕໍ່ໃໝ່:</p>
+<ol class="arabic">
+<li><p>ຄລິກທີ່ປຸ່ມ <code class="docutils literal notranslate"><span class="pre">+</span> <span class="pre">ລາຍຊື່ຜູ້ຕິດຕໍ່ໃໝ່</span></code>.</p>
+<p>ການຕັ້ງຄ່າໜ້າການແກ້ໄຂຈະເປີດຂຶ້ນໃນສ່ວນສະແດງຜົນຂອງແອັບພລິເຄຊັນ:</p>
+</li>
+</ol>
+<blockquote>
+<div><figure class="align-default">
+<img alt="../../_images/contact_new.png" src="../../_images/contact_new.png" />
+</figure>
+</div></blockquote>
+<ol class="arabic simple" start="2">
+<li><p>ລະບຸຂໍ້ມູນລາຍຊື່ຜູ້ຕິດຕໍ່ໃໝ່ ແລ້ວຄລິກ ບັນທຶກ.</p></li>
+<li><p>ໂໝດການເບິ່ງຈະສະແດງຂໍ້ມູນທີ່ທ່ານໄດ້ເພີ່ມເຂົ້າໄປ</p></li>
+</ol>
+<blockquote>
+<div><figure class="align-default">
+<img alt="../../_images/contact_view_mode.png" src="../../_images/contact_view_mode.png" />
+</figure>
+</div></blockquote>
+</section>
+<section id="edit-or-remove-contact-information">
+<h3>ແກ້ໄຂ ຫຼື ລົບຂໍ້ມູນລາຍຊື່ຜູ້ຕິດຕໍ່<a class="headerlink" href="#edit-or-remove-contact-information" title="Link to this heading"></a></h3>
+<p>ແອັບລາຍຊື່ຜູ້ຕິດຕໍ່ຊ່ວຍໃຫ້ທ່ານສາມາດແກ້ໄຂ ຫຼື ລົບຂໍ້ມູນລາຍຊື່ຜູ້ຕິດຕໍ່ໄດ້.</p>
+<p>ວິທີການແກ້ໄຂ ຫຼື ລົບຂໍ້ມູນລາຍຊື່ຜູ້ຕິດຕໍ່:</p>
+<ol class="arabic simple">
+<li><p>ໄປທີ່ລາຍຊື່ຜູ້ຕິດຕໍ່ທີ່ທ່ານຕ້ອງການປ່ຽນແປງ.</p></li>
+<li><p>ເລືອກຂໍ້ມູນໃນຊ່ອງທີ່ທ່ານຕ້ອງການແກ້ໄຂ ຫຼື ລົບອອກ.</p></li>
+<li><p>ດຳເນີນການປ່ຽນແປງ ຫຼື ຄລິກທີ່ຮູບຖັງຂີ້ເຫຍື້ອ.</p></li>
+</ol>
+<p>ການປ່ຽນແປງ ຫຼື ການລົບລ້າງຂໍ້ມູນລາຍຊື່ຜູ້ຕິດຕໍ່ໃດໆ ຈະມີຜົນທັນທີ.</p>
+<p>ບໍ່ແມ່ນທຸກລາຍຊື່ຜູ້ຕິດຕໍ່ທີ່ຈະສາມາດແກ້ໄຂໄດ້. ປຶ້ມທີ່ຢູ່ຂອງລະບົບບໍ່ອະນຸຍາດໃຫ້ທ່ານແກ້ໄຂຂໍ້ມູນຂອງຜູ້ອື່ນ, ທ່ານສາມາດແກ້ໄຂໄດ້ສະເພາະຂໍ້ມູນຂອງທ່ານເອງເທົ່ານັ້ນ. ຂໍ້ມູນຂອງທ່ານເອງຍັງສາມາດແກ້ໄຂໄດ້ໃນ <a class="reference internal" href="../userpreferences.html"><span class="doc">ການຕັ້ງຄ່າຜູ້ໃຊ້</span></a>.</p>
+</section>
+<section id="contact-picture">
+<h3>ຮູບພາບລາຍຊື່ຜູ້ຕິດຕໍ່<a class="headerlink" href="#contact-picture" title="Link to this heading"></a></h3>
+<p>ເພື່ອເພີ່ມຮູບພາບໃຫ້ກັບລາຍຊື່ຜູ້ຕິດຕໍ່ໃໝ່ຂອງທ່ານ, ໃຫ້ຄລິກທີ່ປຸ່ມອັບໂຫຼດ:</p>
+<figure class="align-default">
+<img alt="ຮູບພາບລາຍຊື່ຜູ້ຕິດຕໍ່ (ປຸ່ມອັບໂຫຼດ)" src="../../_images/contact_picture.png" />
+</figure>
+<p>ຫຼັງຈາກທີ່ທ່ານຕັ້ງຮູບພາບລາຍຊື່ຜູ້ຕິດຕໍ່ແລ້ວ, ມັນຈະມີລັກສະນະດັ່ງນີ້:</p>
+<figure class="align-default">
+<img alt="ຮູບພາບລາຍຊື່ຜູ້ຕິດຕໍ່ (ຕັ້ງຄ່າແລ້ວ)" src="../../_images/contact_picture_set.png" />
+</figure>
+<p>ຫາກທ່ານຕ້ອງການອັບໂຫຼດຮູບໃໝ່, ລົບອອກ, ເບິ່ງໃນຂະໜາດເຕັມ ຫຼື ດາວໂຫຼດ, ໃຫ້ຄລິກທີ່ຮູບລາຍຊື່ຜູ້ຕິດຕໍ່ເພື່ອໃຫ້ຕົວເລືອກຕ່າງໆປາກົດຂຶ້ນ:</p>
+<figure class="align-default">
+<img alt="../../_images/contact_picture_options.png" src="../../_images/contact_picture_options.png" />
+</figure>
+<p>ຫາກຜູ້ດູແລລະບົບອະນຸຍາດໃຫ້ມີການອັບເດດຈາກສື່ສັງຄົມອອນລາຍໃນການຕັ້ງຄ່າກຸ່ມວຽກຂອງຜູ້ດູແລ, ຜູ້ໃຊ້ຍັງສາມາດດຶງຮູບພາບລາຍຊື່ຜູ້ຕິດຕໍ່ໂດຍກົງຈາກເຄືອຂ່າຍສັງຄົມໄດ້. ໃນກໍລະນີນັ້ນ, ລາຍຊື່ຜູ້ຕິດຕໍ່ຕ້ອງມີການບັນທຶກຊື່ຜູ້ໃຊ້ໃນສ່ວນຂອງສື່ສັງຄົມອອນລາຍ. ແຕ່ລະລາຍການຂອງເຄືອຂ່າຍສັງຄົມທີ່ຮອງຮັບຈະມີການເພີ່ມລາຍການດາວໂຫຼດສຳລັບເຄືອຂ່າຍນັ້ນໆ. ໃນປັດຈຸບັນ, ເຄືອຂ່າຍສັງຄົມຕໍ່ໄປນີ້ແມ່ນຮອງຮັບ:</p>
+<ul class="simple">
+<li><p>Instagram</p></li>
+<li><p>Mastodon</p></li>
+<li><p>Tumblr</p></li>
+<li><p>Diaspora</p></li>
+<li><p>Xing</p></li>
+<li><p>Telegram</p></li>
+<li><p>Gravatar</p></li>
+</ul>
+<p>ຮູບໂປຣຟາຍຈາກສື່ສັງຄົມຈະຖືກດຶງມາໄດ້ກໍຕໍ່ເມື່ອມີການຕັ້ງຄ່າເປັນສາທາລະນະໂດຍບໍ່ຕ້ອງເຂົ້າສູ່ລະບົບເຄືອຂ່າຍສັງຄົມນັ້ນໆ. ໃນການຕັ້ງຄ່າຜູ້ໃຊ້ລາຍຊື່ຜູ້ຕິດຕໍ່, ທ່ານສາມາດເປີດການອັບເດດອັດຕະໂນມັດຈາກສື່ສັງຄົມໄດ້. ສິ່ງນີ້ຈະອັບເດດຮູບໂປຣຟາຍດ້ວຍຂໍ້ມູນໂປຣຟາຍສັງຄົມເປັນລາຍອາທິດ. ເຄືອຂ່າຍສັງຄົມຈະຖືກກວດສອບຕາມລຳດັບທີ່ລະບຸໄວ້ຂ້າງເທິງ.</p>
+</section>
+</section>
+<section id="managing-multiple-contacts-at-a-time">
+<h2>ການຈັດການລາຍຊື່ຜູ້ຕິດຕໍ່ຫຼາຍລາຍການໃນເທື່ອດຽວ<a class="headerlink" href="#managing-multiple-contacts-at-a-time" title="Link to this heading"></a></h2>
+<p>ແອັບລາຍຊື່ຜູ້ຕິດຕໍ່ຊ່ວຍໃຫ້ທ່ານສາມາດເລືອກລາຍຊື່ຜູ້ຕິດຕໍ່ຫຼາຍລາຍການ ແລະ ດຳເນີນການແບບເປັນກຸ່ມໄດ້. ເພື່ອເລືອກລາຍຊື່ຜູ້ຕິດຕໍ່ຫຼາຍລາຍການ, ໃຫ້ຄລິກທີ່ຮູບໂປຣຟາຍຂອງແຕ່ລະຄົນ, ຫຼື ຄລິກທີ່ຮູບໂປຣຟາຍຂອງລາຍຊື່ທຳອິດ ຈາກນັ້ນກົດປຸ່ມ Shift ຄ້າງໄວ້ແລ້ວຄລິກທີ່ລາຍຊື່ອື່ນໃນລາຍການເພື່ອເລືອກລາຍຊື່ທັງໝົດທີ່ຢູ່ລະຫວ່າງລາຍຊື່ທຳອິດ ແລະ ລາຍຊື່ທີສອງ.</p>
+<p>ສິ່ງນີ້ຈະສະແດງເມນູຢູ່ດ້ານເທິງຂອງລາຍການລາຍຊື່ຜູ້ຕິດຕໍ່ ພ້ອມກັບການດຳເນີນການຕ່າງໆທີ່ທ່ານສາມາດເຮັດໄດ້ກັບລາຍຊື່ທີ່ຖືກເລືອກ:</p>
+<figure class="align-default">
+<img alt="ການດຳເນີນການເມື່ອເລືອກຫຼາຍລາຍຊື່" src="../../_images/contact_multiselect.png" />
+</figure>
+<p>ໃນໂໝດການຈັດການເປັນກຸ່ມ, ປຸ່ມຮູບກາກະບາດຈະຍົກເລີກການເລືອກລາຍຊື່ທັງໝົດ, ໃນຂະນະທີ່ປຸ່ມຮູບຖັງຂີ້ເຫຍື້ອຈະລົບລາຍຊື່ຜູ້ຕິດຕໍ່ທີ່ເລືອກທັງໝົດ.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>ທ່ານອາດຈະບໍ່ສາມາດແກ້ໄຂ ຫຼື ລົບບາງລາຍຊື່ຜູ້ຕິດຕໍ່ໄດ້, ຕົວຢ່າງ: ຫາກລາຍຊື່ເຫຼົ່ານັ້ນຢູ່ໃນປຶ້ມທີ່ຢູ່ແບບອ່ານໄດ້ຢ່າງດຽວ. ໃນກໍລະນີນັ້ນ, ການດຳເນີນການທີ່ກ່ຽວຂ້ອງຈະຖືກປິດໃຊ້ງານ.</p>
+</div>
+<section id="merging-duplicate-contacts">
+<h3>ການຮວມລາຍຊື່ຜູ້ຕິດຕໍ່ທີ່ຊ້ຳກັນ<a class="headerlink" href="#merging-duplicate-contacts" title="Link to this heading"></a></h3>
+<p>ເພື່ອຮວມລາຍຊື່ຜູ້ຕິດຕໍ່, ໃຫ້ເລືອກສອງລາຍຊື່ແລ້ວຄລິກປຸ່ມ &quot;ຮວມລາຍຊື່ຜູ້ຕິດຕໍ່&quot; ຢູ່ດ້ານເທິງຂອງລາຍການ, ສິ່ງນີ້ຈະເປີດໜ້າຕ່າງທີ່ຊ່ວຍໃຫ້ທ່ານຮວມລາຍຊື່ທີ່ຊ້ຳກັນ. ໜ້າຕ່າງການຮວມຈະສະແດງລາຍລະອຽດຂອງທັງສອງລາຍຊື່ຄຽງຂ້າງກັນ, ແລະ ທ່ານສາມາດເລືອກໄດ້ວ່າຈະເກັບລາຍລະອຽດໃດໄວ້ໃນລາຍຊື່ທີ່ຮວມແລ້ວ.</p>
+<p>ຄຸນສົມບັດໃດໆທີ່ມີປຸ່ມ Radio (ວົງມົນ) ຈະມີໄດ້ພຽງຄ່າດຽວເທົ່ານັ້ນ, ດັ່ງນັ້ນຕ້ອງເລືອກຄ່າໃດໜຶ່ງ (ເຊັ່ນ: ຊື່ຂອງລາຍຊື່ຜູ້ຕິດຕໍ່), ໃນຂະນະທີ່ຊ່ອງໝາຍ (ປຸ່ມສີ່ຫຼ່ຽມ) ຊ່ວຍໃຫ້ທ່ານສາມາດເກັບທັງສອງຄ່າໄວ້ໄດ້ຫາກຕ້ອງການ (ເຊັ່ນ: ເບີໂທລະສັບ ຫຼື ທີ່ຢູ່ອີເມວ ເຊິ່ງມີໄດ້ຫຼາຍຄ່າ).</p>
+<p>ຫາກລາຍຊື່ຜູ້ຕິດຕໍ່ໃດໜຶ່ງຢູ່ໃນກຸ່ມ, ໂດຍຄ່າມາດຕະຖານແລ້ວ ລາຍຊື່ທີ່ຮວມແລ້ວຈະເປັນສ່ວນໜຶ່ງຂອງທຸກກຸ່ມທີ່ທັງສອງລາຍຊື່ເຄີຍຢູ່. ທ່ານສາມາດຍົກເລີກການເລືອກກຸ່ມໃດກໍໄດ້ໃນລະຫວ່າງການຮວມ ຫາກທ່ານບໍ່ຕ້ອງການໃຫ້ລາຍຊື່ທີ່ຮວມແລ້ວຢູ່ໃນກຸ່ມນັ້ນ.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>ໃນປັດຈຸບັນ ທ່ານສາມາດຮວມລາຍຊື່ຜູ້ຕິດຕໍ່ໄດ້ເທື່ອລະສອງລາຍການເທົ່ານັ້ນ, ແລະ ແນ່ນອນວ່າທ່ານສາມາດຮວມໄດ້ສະເພາະລາຍຊື່ທີ່ທ່ານມີສິດແກ້ໄຂເທົ່ານັ້ນ. ຫາກປຸ່ມການຮວມຖືກປິດໃຊ້ງານ, ໃຫ້ກວດເບິ່ງວ່າລາຍຊື່ທີ່ທ່ານເລືອກນັ້ນກົງກັບເງື່ອນໄຂເຫຼົ່ານີ້ຫຼືບໍ່.</p>
+</div>
+</section>
+</section>
+<section id="organize-your-contacts-with-contact-groups">
+<h2>ຈັດລະບຽບລາຍຊື່ຜູ້ຕິດຕໍ່ດ້ວຍກຸ່ມລາຍຊື່<a class="headerlink" href="#organize-your-contacts-with-contact-groups" title="Link to this heading"></a></h2>
+<p>ກຸ່ມລາຍຊື່ຊ່ວຍໃຫ້ທ່ານສາມາດຈັດລະບຽບລາຍຊື່ຜູ້ຕິດຕໍ່ຂອງທ່ານໃຫ້ເປັນກຸ່ມ.</p>
+<p>ເພື່ອສ້າງກຸ່ມລາຍຊື່ໃໝ່, ໃຫ້ຄລິກທີ່ເຄື່ອງໝາຍບວກຖັດຈາກ &quot;ກຸ່ມລາຍຊື່&quot; ໃນແຖບຂ້າງຊ້າຍ.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>ກຸ່ມລາຍຊື່ຕ້ອງມີສະມາຊິກຢ່າງໜ້ອຍໜຶ່ງຄົນເພື່ອໃຫ້ສາມາດບັນທຶກໄດ້. ກະລຸນາຮັບຊາບວ່າ ທ່ານສາມາດເພີ່ມລາຍຊື່ຜູ້ຕິດຕໍ່ຈາກປຶ້ມທີ່ຢູ່ທີ່ສາມາດຂຽນໄດ້ເຂົ້າໃນກຸ່ມລາຍຊື່ເທົ່ານັ້ນ. ລາຍຊື່ຈາກປຶ້ມທີ່ຢູ່ແບບອ່ານໄດ້ຢ່າງດຽວ, ເຊັ່ນ: ປຶ້ມທີ່ຢູ່ຂອງລະບົບ, ບໍ່ສາມາດເພີ່ມເຂົ້າໄດ້.</p>
+</div>
+</section>
+<section id="adding-and-managing-address-books">
+<h2>ການເພີ່ມ ແລະ ການຈັດການປຶ້ມທີ່ຢູ່<a class="headerlink" href="#adding-and-managing-address-books" title="Link to this heading"></a></h2>
+<p>ການຄລິກທີ່ປຸ່ມ &quot;ການຕັ້ງຄ່າ&quot; (ຮູບເຟືອງ) ຢູ່ດ້ານລຸ່ມຂອງແຖບຂ້າງຊ້າຍ ຈະຊ່ວຍໃຫ້ເຂົ້າເຖິງການຕັ້ງຄ່າຂອງແອັບລາຍຊື່ຜູ້ຕິດຕໍ່. ສ່ວນນີ້ຈະສະແດງປຶ້ມທີ່ຢູ່ທັງໝົດທີ່ມີ, ຕົວເລືອກຕ່າງໆສຳລັບແຕ່ລະປຶ້ມທີ່ຢູ່, ແລະ ຊ່ວຍໃຫ້ທ່ານສ້າງປຶ້ມທີ່ຢູ່ໃໝ່ໄດ້ ພຽງແຕ່ລະບຸຊື່ຂອງປຶ້ມທີ່ຢູ່:</p>
+<figure class="align-default">
+<img alt="ເພີ່ມປຶ້ມທີ່ຢູ່ໃນການຕັ້ງຄ່າລາຍຊື່ຜູ້ຕິດຕໍ່" src="../../_images/contact_manageaddressbook.png" />
+</figure>
+<p>ການຕັ້ງຄ່າລາຍຊື່ຜູ້ຕິດຕໍ່ຍັງເປັນບ່ອນທີ່ທ່ານສາມາດແບ່ງປັນ, ສົ່ງອອກ ແລະ ລົບປຶ້ມທີ່ຢູ່ໄດ້. ທ່ານຈະພົບເຫັນ URL CardDAV ໄດ້ຢູ່ທີ່ນັ້ນ.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>ລາຍຊື່ຜູ້ຕິດຕໍ່ໃນປຶ້ມທີ່ຢູ່ທີ່ຖືກປິດໃຊ້ງານ ຈະບໍ່ປາກົດໃນແອັບລາຍຊື່ຜູ້ຕິດຕໍ່ ແລະ ເມນູລາຍຊື່ຜູ້ຕິດຕໍ່.</p>
+</div>
+<p>ເບິ່ງ <a class="reference internal" href="index.html"><span class="doc">ກຸ່ມຊອບແວ</span></a> ສຳລັບລາຍລະອຽດເພີ່ມເຕີມກ່ຽວກັບການຊິງຄ໌ປຶ້ມທີ່ຢູ່ຂອງທ່ານກັບ iOS, macOS, Thunderbird ແລະ ໄຄເອັນ CardDAV ອື່ນໆ.</p>
+</section>
+<section id="teams">
+<h2>ທີມ<a class="headerlink" href="#teams" title="Link to this heading"></a></h2>
+<p>ການຮ່ວມມືແບບບໍ່ເປັນທາງການເກີດຂຶ້ນພາຍໃນອົງກອນ: ການຈັດກິດຈະກຳເປັນເວລາສອງສາມອາທິດ, ການລະດົມຄວາມຄິດໄລຍະສັ້ນລະຫວ່າງສະມາຊິກຈາກພາກສ່ວນຕ່າງໆ, ການຝຶກອົບຮົມ, ບ່ອນສ້າງຄວາມຜ່ອນຄາຍ ແລະ ສົ່ງເສີມການສ້າງທີມ, ຫຼື ພາຍໃນອົງກອນທີ່ມີໂຄງສ້າງແບບງ່າຍດາຍ.</p>
+<p>ດ້ວຍເຫດຜົນເຫຼົ່ານີ້, Nextcloud ຈຶ່ງຮອງຮັບ Teams (ທີມ), ເຊິ່ງເປັນຟີເຈີທີ່ຢູ່ໃນແອັບລາຍຊື່ຜູ້ຕິດຕໍ່, ບ່ອນທີ່ຜູ້ໃຊ້ທຸກຄົນສາມາດສ້າງທີມຂອງຕົນເອງໄດ້. ທີມສາມາດນຳໃຊ້ເພື່ອແບ່ງປັນໄຟລ໌ ແລະ ໂຟນເດີ, ຫຼື ເພີ່ມເຂົ້າໃນການສົນທະນາ Talk ໄດ້ ຄືກັນກັບກຸ່ມທົ່ວໄປ.</p>
+<figure class="align-default">
+<img alt="ທີມໃນເມນູເບື້ອງຊ້າຍຂອງແອັບລາຍຊື່ຜູ້ຕິດຕໍ່" src="../../_images/circle.png" />
+</figure>
+<section id="create-a-team">
+<h3>ສ້າງທີມ<a class="headerlink" href="#create-a-team" title="Link to this heading"></a></h3>
+<p>ໃນເມນູເບື້ອງຊ້າຍ, ໃຫ້ຄລິກທີ່ເຄື່ອງໝາຍ + ຖັດຈາກທີມ. ຕັ້ງຊື່ທີມ. ເມື່ອເຂົ້າສູ່ໜ້າການຕັ້ງຄ່າທີມ, ທ່ານສາມາດ:</p>
+<ul class="simple">
+<li><p>ເພີ່ມສະມາຊິກເຂົ້າໃນທີມຂອງທ່ານ</p></li>
+<li><p>ການຄລິກທີ່ເມນູສາມຈຸດຖັດຈາກຊື່ຜູ້ໃຊ້ ຈະຊ່ວຍໃຫ້ທ່ານສາມາດແກ້ໄຂບົດບາດຂອງເຂົາເຈົ້າພາຍໃນທີມໄດ້.</p></li>
+</ul>
+</section>
+<section id="team-roles">
+<h3>ບົດບາດພາຍໃນທີມ<a class="headerlink" href="#team-roles" title="Link to this heading"></a></h3>
+<p>ທີມຮອງຮັບບົດບາດ 4 ປະເພດ:</p>
+<ul class="simple">
+<li><p>ສະມາຊິກ</p></li>
+<li><p>ຜູ້ຄວບຄຸມ</p></li>
+<li><p>ຜູ້ດູແລ ສາມາດຕັ້ງຄ່າຕົວເລືອກຕ່າງໆຂອງທີມໄດ້ (ລວມເຖິງສິດຂອງຜູ້ຄວບຄຸມ)</p></li>
+<li><p>ເຈົ້າຂອງ</p></li>
+</ul>
+<p><strong>ສະມາຊິກ</strong></p>
+<p>ສະມາຊິກ ແມ່ນບົດບາດທີ່ມີສິດນ້ອຍທີ່ສຸດ. ສະມາຊິກສາມາດເຂົ້າເຖິງໄດ້ສະເພາະຊັບພະຍາກອນທີ່ແບ່ງປັນກັບທີມ ແລະ ເບິ່ງລາຍຊື່ສະມາຊິກໃນທີມໄດ້ເທົ່ານັ້ນ.</p>
+<p><strong>ຜູ້ຄວບຄຸມ</strong></p>
+<p>ນອກຈາກສິດຂອງສະມາຊິກແລ້ວ, ຜູ້ຄວບຄຸມຍັງສາມາດເຊີນ, ຢືນຢັນການເຊີນ ແລະ ຈັດການສະມາຊິກຂອງທີມໄດ້.</p>
+<p><strong>ຜູ້ດູແລ</strong></p>
+<p>ນອກຈາກສິດຂອງຜູ້ຄວບຄຸມແລ້ວ, ຜູ້ດູແລຍັງສາມາດຕັ້ງຄ່າຕົວເລືອກຕ່າງໆຂອງທີມໄດ້.</p>
+<p><strong>ເຈົ້າຂອງ</strong></p>
+<p>ນອກຈາກສິດຂອງຜູ້ດູແລແລ້ວ, ເຈົ້າຂອງຍັງສາມາດໂອນກຳມະສິດຂອງທີມໃຫ້ກັບສະມາຊິກຄົນອື່ນໃນທີມໄດ້. ໃນໜຶ່ງທີມສາມາດມີເຈົ້າຂອງໄດ້ພຽງແຕ່ຄົນດຽວເທົ່ານັ້ນ.</p>
+</section>
+<section id="add-members-to-a-team">
+<h3>ເພີ່ມສະມາຊິກເຂົ້າໃນທີມ<a class="headerlink" href="#add-members-to-a-team" title="Link to this heading"></a></h3>
+<p>ບັນຊີພາຍໃນ, ກຸ່ມ, ທີ່ຢູ່ອີເມວ ຫຼື ທີມອື່ນໆ ສາມາດເພີ່ມເຂົ້າເປັນສະມາຊິກຂອງທີມໄດ້. ສຳລັບກຸ່ມ ຫຼື ທີມ, ບົດບາດຈະມີຜົນກັບສະມາຊິກທຸກຄົນໃນກຸ່ມ ຫຼື ທີມນັ້ນ.</p>
+</section>
+<section id="team-options">
+<h3>ຕົວເລືອກທີມ<a class="headerlink" href="#team-options" title="Link to this heading"></a></h3>
+<p>ມີຕົວເລືອກຕ່າງໆໃຫ້ໃຊ້ໃນການຕັ້ງຄ່າທີມ, ຈັດການການເຊີນ ແລະ ສະມາຊິກ, ການເບິ່ງເຫັນຂອງທີມ, ການອະນຸຍາດໃຫ້ເປັນສະມາຊິກທີມອື່ນ ແລະ ການປ້ອງກັນດ້ວຍລະຫັດຜ່ານ.</p>
+<p><strong>ປ້ອງກັນບໍ່ໃຫ້ທີມເປັນສະມາຊິກຂອງທີມອື່ນ</strong></p>
+<p>ເມື່ອເປີດໃຊ້ຕົວເລືອກນີ້, ທີມຈະບໍ່ສາມາດຖືກເພີ່ມເຂົ້າເປັນສະມາຊິກຂອງທີມອື່ນໂດຍກົງໄດ້ອີກ. ເຖິງຢ່າງໃດກໍຕາມ, ຂໍ້ຈຳກັດນີ້ມີຜົນສະເພາະກັບການເພີ່ມໂດຍກົງໃໝ່ເທົ່ານັ້ນ. ສ່ວນການເປັນສະມາຊິກທີ່ມີຢູ່ແລ້ວຈະຍັງຄົງໄວ້, ແລະ ການເປັນສະມາຊິກຜ່ານທີມຫຼັກກໍຍັງສາມາດເຮັດໄດ້ຢູ່.</p>
+</section>
+<section id="shared-items">
+<h3>ລາຍການທີ່ແບ່ງປັນ<a class="headerlink" href="#shared-items" title="Link to this heading"></a></h3>
+<div class="versionadded">
+<p><span class="versionmodified added">Added in version 5.5.</span></p>
+</div>
+<figure class="align-default">
+<img alt="../../_images/shared-items.png" src="../../_images/shared-items.png" />
+</figure>
+<p>ລາຍການທີ່ຖືກແບ່ງປັນລະຫວ່າງສອງລາຍຊື່ຜູ້ຕິດຕໍ່ຈະຖືກສະແດງໃນແອັບລາຍຊື່ຜູ້ຕິດຕໍ່. ເຊິ່ງລວມເຖິງສື່, ກິດຈະກຳໃນປະຕິທິນ, ຫ້ອງສົນທະນາ ແລະ ບັດ Deck ທີ່ແບ່ງປັນ, ເຊິ່ງທັງໝົດນີ້ຈະເຫັນໄດ້ໃນລາຍລະອຽດຂອງລາຍຊື່ຜູ້ຕິດຕໍ່. ຟັງຊັນນີ້ຈຳກັດສະເພາະລາຍຊື່ຜູ້ຕິດຕໍ່ທີ່ມີຢູ່ໃນປຶ້ມທີ່ຢູ່ຂອງລະບົບເທົ່ານັ້ນ. ໃນປັດຈຸບັນ, ລະບົບຂອງພວກເຮົາຮອງຮັບການສະແດງລາຍການທີ່ແບ່ງປັນລະຫວ່າງສອງລາຍຊື່ຜູ້ຕິດຕໍ່ເທົ່ານັ້ນ.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="index.html" class="btn btn-neutral float-left" title="ກຸ່ມຊອບແວ" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="calendar.html" class="btn btn-neutral float-right" title="Using the Calendar app" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+  
+  <!-- Here go the languages -->
+
+  
+  
+
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      🌐 lo
+      <span class="fa fa-caret-down"></span>
+       ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>🌐 ພາສາ</dt>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ar/"
+               
+            >
+              Arabic
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/br/"
+               
+            >
+              Breton
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ca/"
+               
+            >
+              Catalan
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_CN/"
+               
+            >
+              Chinese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_HK/"
+               
+            >
+              Chinese (HK)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_TW/"
+               
+            >
+              Chinese (TW)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/cs/"
+               
+            >
+              Czech
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/da/"
+               
+            >
+              Danish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nl/"
+               
+            >
+              Dutch
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/en/"
+               
+            >
+              English
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/fi_FI/"
+               
+            >
+              Finnish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/fr/"
+               
+            >
+              French
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/gl/"
+               
+            >
+              Galician
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/de/"
+               
+            >
+              German
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/el/"
+               
+            >
+              Greek
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/hu_HU/"
+               
+            >
+              Hungarian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/id/"
+               
+            >
+              Indonesian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ga/"
+               
+            >
+              Irish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/it/"
+               
+            >
+              Italian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ja_JP/"
+               
+            >
+              Japanese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ko/"
+               
+            >
+              Korean
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/lo/"
+               
+               style="color: var(--dark-link-color);"
+               
+            >
+              lo
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/lt/"
+               
+            >
+              lt
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/mn/"
+               
+            >
+              Mongolian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nb_NO/"
+               
+            >
+              Norwegian (NB)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nn/"
+               
+            >
+              Norwegian (NN)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pl/"
+               
+            >
+              Polish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pt_PT/"
+               
+            >
+              Portuguese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pt_BR/"
+               
+            >
+              Portuguese (BR)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ro/"
+               
+            >
+              Romanian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ru/"
+               
+            >
+              Russian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/si/"
+               
+            >
+              Sinhala
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sk_SK/"
+               
+            >
+              Slovakian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sr/"
+               
+            >
+              Slovenian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/es/"
+               
+            >
+              Spanish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sv/"
+               
+            >
+              Swedish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ta/"
+               
+            >
+              Tamil
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/tr/"
+               
+            >
+              Turkish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/uk_UA/"
+               
+            >
+              Ukrainian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/uz/"
+               
+            >
+              Uzbek
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/vi/"
+               
+            >
+              Vietnamese
+            </a>
+          </dd>
+        
+      </dl>
+    </div>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ ເວີຊັນ</dt>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/latest/user_manual"
+               
+               style="color: var(--dark-link-color);"
+               
+            >
+              latest
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/stable/user_manual"
+               
+            >
+              stable
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/32/user_manual"
+               
+            >
+              32
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/31/user_manual"
+               
+            >
+              31
+            </a>
+          </dd>
+        
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

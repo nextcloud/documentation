@@ -31,8 +31,8 @@
     <script src="../../_static/js/versions.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Uninstallation" href="uninstallation.html" />
-    <link rel="prev" title="桌面客戶端" href="index.html" /> 
+    <link rel="next" title="解除安裝" href="uninstallation.html" />
+    <link rel="prev" title="Desktop Client" href="index.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -66,25 +66,22 @@
 <li class="toctree-l1"><a class="reference internal" href="../files/index.html">檔案與同步</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Talk</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">桌面客戶端</a><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Desktop Client</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">安裝</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#download">Download</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#supported-server-versions">Supported server versions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#system-requirements">系統要求</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#customizing-the-windows-installation">自定義 Windows 安裝</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#features">功能</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id1">安裝</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#changing-installed-features">更改已安裝的功能</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#installation-folder">安裝資料夾</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#disabling-automatic-updates">停用自動更新</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#launch-after-installation">安裝後啟動</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#no-reboot-after-installation">安裝後不重新啟動</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#install-on-macos-and-windows">Install on macOS and Windows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#install-on-linux">Install on Linux</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#initial-setup">Initial Setup</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#installation-wizard">安裝嚮導</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="uninstallation.html">Uninstallation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uninstallation.html">解除安裝</a></li>
 <li class="toctree-l2"><a class="reference internal" href="usage.html">使用同步客戶端</a></li>
-<li class="toctree-l2"><a class="reference internal" href="macosvfs.html">macOS Virtual Files Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="commandline.html">Using the Command-Line Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html">Command-Line Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configfile.html">Configuration File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="envvars.html">Environment Variables</a></li>
 <li class="toctree-l2"><a class="reference internal" href="autoupdate.html">自動更新器</a></li>
 <li class="toctree-l2"><a class="reference internal" href="updatechannel.html">更新頻道</a></li>
 <li class="toctree-l2"><a class="reference internal" href="conflicts.html">衝突</a></li>
@@ -112,7 +109,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="index.html">桌面客戶端</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Desktop Client</a></li>
       <li class="breadcrumb-item active">安裝</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/desktop/installation.rst" class="fa fa-github"> Edit on GitHub</a>
@@ -125,22 +122,28 @@
              
   <section id="installation">
 <h1>安裝<a class="headerlink" href="#installation" title="Link to this heading"></a></h1>
-<p>您可以從 <a class="reference external" href="https://nextcloud.com/download/#install-clients">Nextcloud 下載頁面</a> 下載最新版本的 Nextcloud 桌面同步客戶端。該客戶端支持 Linux、macOS 和 Microsoft Windows。</p>
-<p>目前支持的伺服器版本是發佈時最新的三個穩定版本。這意味著 latest 發佈系列支持穩定的伺服器主要版本。請參閱 <a class="reference external" href="https://github.com/nextcloud/server/wiki/Maintenance-and-Release-Schedule">https://github.com/nextcloud/server/wiki/Maintenance-and-Release-Schedule</a> 獲取支持的主要版本。</p>
-<p>在 macOS 和 Windows 上的安裝方式與任何軟件應用程式相同：下載程序，然後雙擊以啟動安裝，然後按照安裝嚮導進行操作。安裝和配置完成後，同步客戶端會自動保持更新；有關更多資訊，請參見 <a class="reference internal" href="autoupdate.html"><span class="doc">自動更新器</span></a>。</p>
-<p>Linux 用戶必須按照下載頁面上的指示添加適合其 Linux 發行版的存儲庫，安裝簽名密鑰，然後使用其包管理器安裝桌面同步客戶端。Linux 用戶還將通過包管理器更新其同步客戶端，當有可用更新時，客戶端會顯示通知。</p>
-<p>Linux 用戶還必須啟用密碼管理器，如 GNOME Keyring 或 KWallet，以便同步客戶端可以自動登錄。</p>
+<section id="download">
+<h2>Download<a class="headerlink" href="#download" title="Link to this heading"></a></h2>
+<p>You can download the latest version of the Nextcloud Desktop Synchronization Client
+from the <a class="reference external" href="https://nextcloud.com/download/#install-clients">Nextcloud download page</a>. Clients are available for Linux, macOS, and
+Microsoft Windows.</p>
 <p>您還可以在下載頁面上找到源代碼檔案和舊版本的鏈接。</p>
+</section>
+<section id="supported-server-versions">
+<h2>Supported server versions<a class="headerlink" href="#supported-server-versions" title="Link to this heading"></a></h2>
+<p>Each desktop client release supports the latest three stable Nextcloud server
+major versions at the time of release. See the <a class="reference external" href="https://github.com/nextcloud/server/wiki/Maintenance-and-Release-Schedule">Nextcloud Server release schedule</a>
+for supported major versions.</p>
+</section>
 <section id="system-requirements">
 <h2>系統要求<a class="headerlink" href="#system-requirements" title="Link to this heading"></a></h2>
-<ul class="simple">
+<ul>
 <li><p>Windows 10+（僅限 64 位）</p></li>
 <li><p>macOS 12.0+ (64-bits only)</p></li>
-<li><dl class="simple">
-<dt>Linux (Ubuntu 24.04 or openSUSE 15.5 or Alma 8 or ...) (64-bits only)</dt><dd><p>For Linux distributions, we support, if technically feasible, the current LTS releases.
-For BSD, we support them if technically feasible but we do not test.</p>
-</dd>
-</dl>
+<li><p>Linux (Ubuntu 24.04 or openSUSE 15.5 or Alma 8 or ...) (64-bits only)</p>
+<p>For Linux distributions, we support, if technically feasible, the current
+LTS releases. For BSD, we support them if technically feasible, but we do not
+test them.</p>
 </li>
 </ul>
 <div class="admonition note">
@@ -153,153 +156,66 @@ For BSD, we support them if technically feasible but we do not test.</p>
 </ul>
 </div>
 </section>
-<section id="customizing-the-windows-installation">
-<h2>自定義 Windows 安裝<a class="headerlink" href="#customizing-the-windows-installation" title="Link to this heading"></a></h2>
-<p>如果您只是想在本地系統上安裝 Nextcloud 桌面同步客戶端，您可以簡單地啟動 <cite>.msi</cite> 檔案並在彈出的嚮導中進行配置。</p>
-<section id="features">
-<h3>功能<a class="headerlink" href="#features" title="Link to this heading"></a></h3>
-<p>MSI 安裝程式提供了幾個可以單獨安裝或移除的功能，您也可以通過命令行控制它們。如果您正在自動化安裝，請運行以下命令：</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">passive</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span>
-</pre></div>
-</div>
-<p>該命令將把 Nextcloud 桌面同步客戶端安裝到默認位置並啟用默認功能。如果您想禁用，例如，桌面快捷方式圖標，您可以簡單地將上述命令更改為以下內容：</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">passive</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">REMOVE</span><span class="o">=</span><span class="n">DesktopShortcut</span>
-</pre></div>
-</div>
-<p>請參見以下表格以獲取可用功能的清單：</p>
-<table class="docutils align-default">
-<thead>
-<tr class="row-odd"><th class="head"><p>功能</p></th>
-<th class="head"><p>預設啟用</p></th>
-<th class="head"><p>描述</p></th>
-<th class="head"><p>停用屬性</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>客戶端</p></td>
-<td><p>是，必需的</p></td>
-<td><p>實際客戶端</p></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p>桌面快捷方式</p></td>
-<td><p>是</p></td>
-<td><p>在桌面添加快捷方式</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">NO_DESKTOP_SHORTCUT</span></code></p></td>
-</tr>
-<tr class="row-even"><td><p>StartMenuShortcuts</p></td>
-<td><p>是</p></td>
-<td><p>在開始選項單添加快捷方式</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">NO_START_MENU_SHORTCUTS</span></code></p></td>
-</tr>
-<tr class="row-odd"><td><p>ShellExtensions</p></td>
-<td><p>是</p></td>
-<td><p>添加檔案管理器整合</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">NO_SHELL_EXTENSIONS</span></code></p></td>
-</tr>
-</tbody>
-</table>
+<section id="install-on-macos-and-windows">
+<h2>Install on macOS and Windows<a class="headerlink" href="#install-on-macos-and-windows" title="Link to this heading"></a></h2>
+<p>Installation on macOS and Windows is the same as for any other software
+application: download the program and then double-click it to launch the
+installation, and then follow the installation wizard. After it is installed and
+configured the desktop client will automatically keep itself updated; see
+<a class="reference internal" href="autoupdate.html"><span class="doc">自動更新器</span></a> for more information.</p>
+<p>For administrator-focused deployment options such as advanced Windows MSI
+configuration, non-interactive account provisioning, and command-line wizard
+preconfiguration, see the Admin Manual chapter on desktop client deployment and
+setup.</p>
 </section>
-<section id="id1">
-<h3>安裝<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
-<p>您還可以選擇僅安裝客戶端本身，使用以下命令：</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">passive</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">ADDDEFAULT</span><span class="o">=</span><span class="n">Client</span>
-</pre></div>
-</div>
-<p>例如，如果您想安裝所有功能，但不包括 <code class="docutils literal notranslate"><span class="pre">DesktopShortcut</span></code> 和 <code class="docutils literal notranslate"><span class="pre">ShellExtensions</span></code> 功能，您有兩種選擇：</p>
-<ol class="arabic">
-<li><p>您明確列出所有實際想要安裝的功能（白名單），其中 <code class="docutils literal notranslate"><span class="pre">Client</span></code> 一律會安裝：</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">passive</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">ADDDEFAULT</span><span class="o">=</span><span class="n">StartMenuShortcuts</span>
-</pre></div>
-</div>
-</li>
-<li><p>您傳遞 <code class="docutils literal notranslate"><span class="pre">NO_DESKTOP_SHORTCUT</span></code> 和 <code class="docutils literal notranslate"><span class="pre">NO_SHELL_EXTENSIONS</span></code> 屬性:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">passive</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">NO_DESKTOP_SHORTCUT</span><span class="o">=</span><span class="s2">&quot;1&quot;</span> <span class="n">NO_SHELL_EXTENSIONS</span><span class="o">=</span><span class="s2">&quot;1&quot;</span>
-</pre></div>
-</div>
-</li>
-</ol>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>Nextcloud 的 <code class="docutils literal notranslate"><span class="pre">.msi</span></code> 會記住這些屬性，因此在升級時不需要重新指定。</p>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>您無法使用這些來更改已安裝的功能，如果您想這樣做，請參見下一部分。</p>
-</div>
+<section id="install-on-linux">
+<h2>Install on Linux<a class="headerlink" href="#install-on-linux" title="Link to this heading"></a></h2>
+<p>For Linux, Nextcloud officially provides the desktop client as an AppImage on
+the <a class="reference external" href="https://nextcloud.com/download/#install-clients">Nextcloud download page</a>.</p>
+<p>Some Linux distributions also provide the Nextcloud desktop client through their
+package managers. These packages are maintained by the distribution or community,
+not by Nextcloud. If you prefer a package-managed installation, refer to your
+distribution's documentation.</p>
+<p>Linux users must also have a password manager enabled, such as GNOME Keyring or
+KWallet, so that the desktop client can log in automatically.</p>
 </section>
-<section id="changing-installed-features">
-<h3>更改已安裝的功能<a class="headerlink" href="#changing-installed-features" title="Link to this heading"></a></h3>
-<p>您可以稍後通過使用 <code class="docutils literal notranslate"><span class="pre">REMOVE</span></code> 和 <code class="docutils literal notranslate"><span class="pre">ADDDEFAULT</span></code> 屬性來更改已安裝的功能。</p>
-<ol class="arabic">
-<li><p>If you want to add the desktop shortcut later, run the following command:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">passive</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">ADDDEFAULT</span><span class="o">=</span><span class="s2">&quot;DesktopShortcut&quot;</span>
-</pre></div>
-</div>
-</li>
-<li><p>如果您想移除它，只需運行以下指令:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">passive</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">REMOVE</span><span class="o">=</span><span class="s2">&quot;DesktopShortcut&quot;</span>
-</pre></div>
-</div>
-</li>
-</ol>
-<p>Windows 會跟蹤已安裝的功能，使用 <code class="docutils literal notranslate"><span class="pre">REMOVE</span></code> 或 <code class="docutils literal notranslate"><span class="pre">ADDDEFAULT</span></code> 只會影響提到的功能。</p>
-<p>比較 <a class="reference external" href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa371194(v=vs.85).aspx">REMOVE</a> 和 <a class="reference external" href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa367518(v=vs.85).aspx">ADDDEFAULT</a> 參考 Windows 安裝程序指南。</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>您無法在初始安裝時指定 <code class="docutils literal notranslate"><span class="pre">REMOVE</span></code>，因為這會禁用所有功能。</p>
-</div>
-</section>
-<section id="installation-folder">
-<h3>安裝資料夾<a class="headerlink" href="#installation-folder" title="Link to this heading"></a></h3>
-<p>您可以通過指定 <code class="docutils literal notranslate"><span class="pre">INSTALLDIR</span></code> 屬性來調整安裝資料夾，如下所示:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">passive</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">INSTALLDIR</span><span class="o">=</span><span class="s2">&quot;C:\Program Files\Non Standard Nextcloud Client Folder&quot;</span>
-</pre></div>
-</div>
-<p>當使用 PowerShell 而不是 <code class="docutils literal notranslate"><span class="pre">cmd.exe</span></code> 時要小心，因為正確處理空格轉義可能會很棘手。像這樣指定 <code class="docutils literal notranslate"><span class="pre">INSTALLDIR</span></code> 只在第一次安裝時有效，您不能簡單地使用不同的路徑重新調用 <code class="docutils literal notranslate"><span class="pre">.msi</span></code>。如果仍然需要更改，請先卸載，然後使用新路徑重新安裝。</p>
-</section>
-<section id="disabling-automatic-updates">
-<h3>停用自動更新<a class="headerlink" href="#disabling-automatic-updates" title="Link to this heading"></a></h3>
-<p>要禁用自動更新，您可以傳遞 <code class="docutils literal notranslate"><span class="pre">SKIPAUTOUPDATE</span></code> 屬性。:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">passive</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">SKIPAUTOUPDATE</span><span class="o">=</span><span class="s2">&quot;1&quot;</span>
-</pre></div>
-</div>
-</section>
-<section id="launch-after-installation">
-<h3>安裝後啟動<a class="headerlink" href="#launch-after-installation" title="Link to this heading"></a></h3>
-<p>要在安裝後自動啟動客戶端，您可以傳遞 <code class="docutils literal notranslate"><span class="pre">LAUNCH</span></code> 屬性。:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">LAUNCH</span><span class="o">=</span><span class="s2">&quot;1&quot;</span>
-</pre></div>
-</div>
-<p>此選項還會移除復選框，讓用戶決定是否要在非被動/安靜模式下啟動客戶端。</p>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>此選項在沒有 GUI 的情況下不會有任何效果。</p>
-</div>
-</section>
-<section id="no-reboot-after-installation">
-<h3>安裝後不重新啟動<a class="headerlink" href="#no-reboot-after-installation" title="Link to this heading"></a></h3>
-<p>Nextcloud 客戶端在安裝後安排重新啟動，以確保 Explorer 擴展正確（卸載）加載。如果您自行處理重新啟動，則可以設置 <code class="docutils literal notranslate"><span class="pre">REBOOT</span></code> 屬性:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">REBOOT</span><span class="o">=</span><span class="n">ReallySuppress</span>
-</pre></div>
-</div>
-<p>這將使 <code class="docutils literal notranslate"><span class="pre">msiexec</span></code> 以錯誤 <code class="docutils literal notranslate"><span class="pre">ERROR_SUCCESS_REBOOT_REQUIRED``（3010）退出。如果您的部署工具將此解釋為實際錯誤，而您想避免這樣的情況，則可以設置</span> <span class="pre">``DO_NOT_SCHEDULE_REBOOT</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">DO_NOT_SCHEDULE_REBOOT</span><span class="o">=</span><span class="s2">&quot;1&quot;</span>
-</pre></div>
-</div>
-</section>
-</section>
-<section id="installation-wizard">
-<h2>安裝嚮導<a class="headerlink" href="#installation-wizard" title="Link to this heading"></a></h2>
-<p>安裝嚮導將逐步引導您完成配置選項和帳戶設置。首先，您需要輸入 Nextcloud 伺服器的 URL。</p>
+<section id="initial-setup">
+<h2>Initial Setup<a class="headerlink" href="#initial-setup" title="Link to this heading"></a></h2>
+<p>After installation, the initial setup wizard is triggered. In the setup wizard,
+you can log in to your server, create an account with a provider, and configure
+which folders to sync. The wizard will guide you step-by-step through the
+essential configuration options and basic account setup.</p>
+<p>First, you need to enter the URL of your Nextcloud server.</p>
 <img alt="選擇登錄或註冊的表單" src="../../_images/wizard_welcome.png" />
-<p>如果您已經在 Nextcloud 實例上擁有帳戶，您可以按下 <code class="docutils literal notranslate"><span class="pre">登錄到您的</span> <span class="pre">Nextcloud</span></code> 按鈕。如果您沒有 Nextcloud 實例和帳戶，您可能想要與提供商註冊帳戶。在這種情況下，請按 <code class="docutils literal notranslate"><span class="pre">使用提供商創建帳戶</span></code>。請記住，桌面客戶端可能未提供提供商支持。在這種情況下，您將不會看到此頁面，而是會被提示進入下一頁。</p>
+<p>If you already have an account on a Nextcloud instance, click <code class="docutils literal notranslate"><span class="pre">Login</span> <span class="pre">to</span> <span class="pre">your</span>
+<span class="pre">Nextcloud</span></code>. If you do not yet have a Nextcloud instance or an account, you may
+need to create one first. Alternatively, you might want to register an account
+with a provider. Press <code class="docutils literal notranslate"><span class="pre">Create</span> <span class="pre">account</span> <span class="pre">with</span> <span class="pre">Provider</span></code> in that case.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The desktop client build you are using may have been built without provider
+support. In that case, you won't see this page and will immediately see the
+next page.</p>
+</div>
 <img alt="輸入 Nextcloud 伺服器 URL 的表單" src="../../_images/wizard_setup.png" />
 <p>輸入您的 Nextcloud 實例的 URL。該 URL 與您嘗試訪問 Nextcloud 實例時在瀏覽器中輸入的 URL 相同。</p>
 <img alt="等待授權的表格" src="../../_images/wizard_flow2.png" />
-<p>現在您的網頁瀏覽器應該會打開並提示您登錄到 Nextcloud 實例。請在網頁瀏覽器中輸入您的用戶名和密碼並授予訪問權限。完成後，請返回到嚮導。請記住，如果您已經登錄到瀏覽器，則可能不需要再次輸入用戶名和密碼。</p>
+<p>Now your web browser should open and prompt you to log in to your
+Nextcloud instance. Enter your username and password in your web
+browser and click <em>Grant access</em> when prompted. After you do that,
+go back to the wizard.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You might not need to enter your username and password if you are
+already logged in to your web browser.</p>
+</div>
 <img alt="選擇要同步的遠端資料夾以及要存儲在本地的資料夾。" src="../../_images/wizard_advanced.png" />
 <p>在本地資料夾選項屏幕上，您可以同步 Nextcloud 伺服器上的所有檔案或選擇單個資料夾。預設的本地同步資料夾是 <code class="docutils literal notranslate"><span class="pre">Nextcloud</span></code>，位於您的主目錄中。您也可以更改這個設定。</p>
-<p>當您完成選擇同步資料夾後，請單擊右下角的連接按鈕。客戶端將嘗試連接到您的 Nextcloud 伺服器，當成功連接時，嚮導會自動關閉。您現在可以通過單擊系統托盤圖示來打開主對話框，觀察同步活動。</p>
+<p>When you have completed selecting your sync folders, click the <em>Connect</em>
+button at the bottom right. The client will attempt to connect to your
+Nextcloud server. If it is successful, the wizard will close itself. You
+can then observe the sync activity and open the main dialog by clicking
+on the tray icon.</p>
 </section>
 </section>
 
@@ -307,8 +223,8 @@ For BSD, we support them if technically feasible but we do not test.</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="index.html" class="btn btn-neutral float-left" title="桌面客戶端" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="uninstallation.html" class="btn btn-neutral float-right" title="Uninstallation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="index.html" class="btn btn-neutral float-left" title="Desktop Client" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="uninstallation.html" class="btn btn-neutral float-right" title="解除安裝" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
@@ -333,6 +249,8 @@ For BSD, we support them if technically feasible but we do not test.</p>
 
   
   
+  
+    
   
     
   
@@ -592,6 +510,14 @@ For BSD, we support them if technically feasible but we do not test.</p>
                
             >
               Korean
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/lo/"
+               
+            >
+              lo
             </a>
           </dd>
         

@@ -7,7 +7,7 @@
   <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Uninstallation &mdash; Nextcloud latest User Manual latest documentation</title>
+  <title>解除安裝 &mdash; Nextcloud latest User Manual latest documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
@@ -66,10 +66,10 @@
 <li class="toctree-l1"><a class="reference internal" href="../files/index.html">檔案與同步</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Groupware</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Talk</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">桌面客戶端</a><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Desktop Client</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="installation.html">安裝</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Uninstallation</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#general-instructions">General instructions</a><ul>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">解除安裝</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#general-instructions">一般指引</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#windows">Windows</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#macos">macOS</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#linux">Linux</a></li>
@@ -78,7 +78,10 @@
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="usage.html">使用同步客戶端</a></li>
-<li class="toctree-l2"><a class="reference internal" href="macosvfs.html">macOS Virtual Files Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="commandline.html">Using the Command-Line Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html">Command-Line Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configfile.html">Configuration File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="envvars.html">Environment Variables</a></li>
 <li class="toctree-l2"><a class="reference internal" href="autoupdate.html">自動更新器</a></li>
 <li class="toctree-l2"><a class="reference internal" href="updatechannel.html">更新頻道</a></li>
 <li class="toctree-l2"><a class="reference internal" href="conflicts.html">衝突</a></li>
@@ -106,8 +109,8 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="index.html">桌面客戶端</a></li>
-      <li class="breadcrumb-item active">Uninstallation</li>
+          <li class="breadcrumb-item"><a href="index.html">Desktop Client</a></li>
+      <li class="breadcrumb-item active">解除安裝</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/desktop/uninstallation.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
@@ -118,41 +121,41 @@
            <div itemprop="articleBody">
              
   <section id="uninstallation">
-<h1>Uninstallation<a class="headerlink" href="#uninstallation" title="Link to this heading"></a></h1>
-<p>It is safe to uninstall the files desktop client by using the built-in tools within your operating system.</p>
+<h1>解除安裝<a class="headerlink" href="#uninstallation" title="Link to this heading"></a></h1>
+<p>你可以使用作業系統內建工具安全地解除安裝檔案桌面客戶端。</p>
 <section id="general-instructions">
-<h2>General instructions<a class="headerlink" href="#general-instructions" title="Link to this heading"></a></h2>
-<p>In each operating system:</p>
+<h2>一般指引<a class="headerlink" href="#general-instructions" title="Link to this heading"></a></h2>
+<p>在每個作業系統中：</p>
 <ol class="arabic">
-<li><p>Make sure to <em>quit the desktop client</em> before removing it.</p></li>
-<li><p><em>Uninstall</em> the desktop client.</p></li>
-<li><p>You may also need to take into consideration that uninstalling the desktop client will not remove the <a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/desktop/configfile.html#configuration-file">user's configuration</a> file and synced data.</p>
+<li><p>在移除前，請確保已*結束桌面客戶端*。</p></li>
+<li><p><a href="#id1"><span class="problematic" id="id2">*</span></a>解除安裝*桌面客戶端。</p></li>
+<li><p>請注意，解除安裝桌面客戶端並不會移除`用戶配置檔案 &lt;<a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/desktop/configfile.html#configuration-file">https://docs.nextcloud.com/server/latest/admin_manual/desktop/configfile.html#configuration-file</a>&gt;`_ 及已同步的資料。</p>
 <blockquote>
-<div><p>For data removal (sync folders), consider using the server feature <a class="reference external" href="https://nextcloud.com/de/blog/nextcloud-desktop-client-2-6-1-brings-remote-wipe-dark-mode-support-to-mac-os-x-and-more/">remote wipe</a>. This feature is available across all clients.</p>
+<div><p>如需移除資料（同步資料夾），可考慮使用伺服器功能 <a class="reference external" href="https://nextcloud.com/de/blog/nextcloud-desktop-client-2-6-1-brings-remote-wipe-dark-mode-support-to-mac-os-x-and-more/">remote wipe</a>。此功能適用於所有客戶端。</p>
 </div></blockquote>
 </li>
 </ol>
-<p>Below are platform specific instructions.</p>
+<p>以下為各平台的詳細指引。</p>
 <section id="windows">
 <h3>Windows<a class="headerlink" href="#windows" title="Link to this heading"></a></h3>
-<p>There are two ways of removing the desktop client:</p>
+<p>移除桌面客戶端有兩種方式：</p>
 <ol class="arabic simple">
-<li><p>Using <cite>Add or Remove Programs</cite>.</p></li>
-<li><p>You can use the <a class="reference external" href="https://learn.microsoft.com/en-us/windows/win32/msi/standard-installer-command-line-options">msiexec</a> command line options:</p></li>
+<li><p>使用 <cite>Add or Remove Programs</cite>。</p></li>
+<li><p>你亦可使用 <a class="reference external" href="https://learn.microsoft.com/en-us/windows/win32/msi/standard-installer-command-line-options">msiexec</a> 指令列選項：</p></li>
 </ol>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>msiexec<span class="w"> </span>/uninstall<span class="w"> </span>Nextcloud-x.y.z-x64.msi<span class="w"> </span>/quiet<span class="sb">``</span>
 </pre></div>
 </div>
 <ol class="arabic simple" start="3">
-<li><p>The <a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/desktop/configfile.html#configuration-file">user's configuration</a> is located at <code class="docutils literal notranslate"><span class="pre">%APPDATA%\Nextcloud\nextcloud.cfg</span></code>.</p></li>
+<li><p><a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/desktop/configfile.html#configuration-file">用戶配置</a> 位於 <code class="docutils literal notranslate"><span class="pre">%APPDATA%\Nextcloud\nextcloud.cfg</span></code>.</p></li>
 </ol>
 </section>
 <section id="macos">
 <h3>macOS<a class="headerlink" href="#macos" title="Link to this heading"></a></h3>
-<p>Beyond deleting the desktop client from the <em>Applications</em> folder, you may also need to remove all related data, specially if you are using virtual files.</p>
+<p>除了從 <em>Applications</em> 資料夾刪除桌面客戶端外，你可能亦需要移除所有相關資料，尤其是在使用虛擬檔案時。</p>
 <ol class="arabic simple">
-<li><p>To simply uninstall the software: you can do this from the <a class="reference external" href="https://support.apple.com/en-us/102610">Launchpad or the Finder</a>.</p></li>
-<li><p>For the complete removal of all related data, the following commands can be used:</p></li>
+<li><p>如只需解除安裝軟件，可透過 <a class="reference external" href="https://support.apple.com/en-us/102610">Launchpad 或 Finder</a> 進行。</p></li>
+<li><p>如需完全移除所有相關資料，可使用以下指令：</p></li>
 </ol>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>rm<span class="w"> </span>-rf<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$HOME</span><span class="s2">/Library/Application Scripts/com.nextcloud.desktopclient&quot;</span>*
 rm<span class="w"> </span>-f<span class="w">  </span><span class="s2">&quot;</span><span class="nv">$HOME</span><span class="s2">/Library/Application Support/CrashReporter/Nextcloud_&quot;</span>*
@@ -167,22 +170,21 @@ rm<span class="w"> </span>-f<span class="w">  </span><span class="s2">&quot;</sp
 </pre></div>
 </div>
 <ol class="arabic simple" start="3">
-<li><p>From version 33.0.0 the <a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/desktop/configfile.html#configuration-file">user's configuration</a> is located at <code class="docutils literal notranslate"><span class="pre">$HOME/Library/Containers/com.nextcloud.desktopclient/Data/Library/Preferences/Nextcloud/nextcloud.cfg</span></code>.
-On older versions it is located at <code class="docutils literal notranslate"><span class="pre">$HOME/Library/Preferences/Nextcloud/nextcloud.cfg</span></code>.</p></li>
+<li><p>由版本 33.0.0 起，<a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/desktop/configfile.html#configuration-file">用戶設定檔</a> 位於 <code class="docutils literal notranslate"><span class="pre">$HOME/Library/Containers/com.nextcloud.desktopclient/Data/Library/Preferences/Nextcloud/nextcloud.cfg</span></code>；舊版本則位於 <code class="docutils literal notranslate"><span class="pre">$HOME/Library/Preferences/Nextcloud/nextcloud.cfg</span></code>。</p></li>
 </ol>
 </section>
 <section id="linux">
 <h3>Linux<a class="headerlink" href="#linux" title="Link to this heading"></a></h3>
-<p>It depends on how you installed the desktop client:</p>
+<p>取決於你安裝桌面客戶端的方式：</p>
 <ol class="arabic simple">
-<li><p>If you are running the Nextcloud AppImage, you can simply delete the AppImage file.</p></li>
-<li><p>If you have used your package manager to install the desktop client, you can use it to uninstall the desktop client as well. For example, on Ubuntu you can use the following command:</p></li>
+<li><p>如你使用 Nextcloud AppImage，只需刪除該 AppImage 檔案。</p></li>
+<li><p>如透過套件管理器安裝桌面客戶端，亦可透過其進行解除安裝。例如在 Ubuntu 上可使用以下指令：</p></li>
 </ol>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>remove<span class="w"> </span>nextcloud-desktop
 </pre></div>
 </div>
 <ol class="arabic simple" start="3">
-<li><p>The <a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/desktop/configfile.html#configuration-file">user's configuration</a> is located at <em>$HOME/.config/Nextcloud/nextcloud.cfg</em>.</p></li>
+<li><p><a class="reference external" href="https://docs.nextcloud.com/server/latest/admin_manual/desktop/configfile.html#configuration-file">用戶設定檔</a> 位於 <em>$HOME/.config/Nextcloud/nextcloud.cfg</em>。</p></li>
 </ol>
 </section>
 </section>
@@ -218,6 +220,8 @@ On older versions it is located at <code class="docutils literal notranslate"><s
 
   
   
+  
+    
   
     
   
@@ -477,6 +481,14 @@ On older versions it is located at <code class="docutils literal notranslate"><s
                
             >
               Korean
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/lo/"
+               
+            >
+              lo
             </a>
           </dd>
         

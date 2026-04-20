@@ -1,0 +1,802 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="lo" data-content_root="../">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ການນຳໃຊ້ຕົວລູກຂ່າຍການຊິງໂຄຣໄນ &mdash; Nextcloud latest User Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="../../_static/custom.css?v=e7c79d26" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="../../_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://docs.nextcloud.com/server/stable/user_manual/desktop/usage.html" />
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=1fed0ad5"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="../../_static/copybutton.js?v=f281be69"></script>
+      <script src="../../_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="../../_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <script src="../../_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="ລູກຂ່າຍໄຟລ໌ສະເໝືອນ macOS" href="macosvfs.html" />
+    <link rel="prev" title="Uninstallation" href="uninstallation.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../contents.html">
+            
+              <img src="../../_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../index.html">Nextcloud latest user manual introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../webinterface.html">ສ່ວນຕິດຕໍ່ຜູ້ໃຊ້ຜ່ານເວັບຂອງ Nextcloud</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../activity.html">Using the Activity app</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../files/index.html">Files &amp; synchronization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">ກຸ່ມຊອບແວ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Talk</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Desktop Client</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="installation.html">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uninstallation.html">Uninstallation</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">ການນຳໃຊ້ຕົວລູກຂ່າຍການຊິງໂຄຣໄນ</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#systray-icon">ໄອຄອນໃນຖາດລະບົບ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuring-nextcloud-account-settings">ການກຳນົດຄ່າການຕັ້ງຄ່າບັນຊີ Nextcloud</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#adding-new-accounts">ການເພີ່ມບັນຊີໃໝ່</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#file-manager-overlay-icons">ໄອຄອນຊ້ອນທັບໃນຕົວຈັດການໄຟລ໌</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#set-the-user-status">ຕັ້ງສະຖານະຜູ້ໃຊ້</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#sharing-from-your-desktop">ການແບ່ງປັນຈາກຄອມພິວເຕີຂອງທ່ານ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#general-window">ໜ້າຕ່າງທົ່ວໄປ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#using-the-network-window">ການນຳໃຊ້ໜ້າຕ່າງເຄືອຂ່າຍ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#using-the-ignored-files-editor">ການນຳໃຊ້ຕົວແກ້ໄຂໄຟລ໌ທີ່ຖືກລະເວັ້ນ</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#virtual-files-on-macos">Virtual Files on macOS</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="macosvfs.html">ລູກຂ່າຍໄຟລ໌ສະເໝືອນ macOS</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="commandline.html">Using the Command-Line Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html">Command-Line Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configfile.html">Configuration File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="envvars.html">Environment Variables</a></li>
+<li class="toctree-l2"><a class="reference internal" href="autoupdate.html">The Automatic Updater</a></li>
+<li class="toctree-l2"><a class="reference internal" href="updatechannel.html">Update channels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="conflicts.html">Conflicts</a></li>
+<li class="toctree-l2"><a class="reference internal" href="faq.html">FAQ</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../userpreferences.html">ການຕັ້ງຄ່າຄວາມມັກຂອງທ່ານ</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../universal_access.html">Universal access</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../user_2fa.html">Using two-factor authentication</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../session_management.html">Manage connected browsers and devices</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../external_storage/index.html">ບ່ອນເກັບຂໍ້ມູນພາຍນອກ</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../contents.html">Nextcloud latest User Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Desktop Client</a></li>
+      <li class="breadcrumb-item active">ການນຳໃຊ້ຕົວລູກຂ່າຍການຊິງໂຄຣໄນ</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/desktop/usage.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="using-the-synchronization-client">
+<h1>ການນຳໃຊ້ຕົວລູກຂ່າຍການຊິງໂຄຣໄນ<a class="headerlink" href="#using-the-synchronization-client" title="Link to this heading"></a></h1>
+<p>ຕົວລູກຂ່າຍ Nextcloud ສຳລັບຄອມພິວເຕີຈະເຮັດວຽກຢູ່ເບື້ອງຫຼັງ ແລະ ປະກົດໃຫ້ເຫັນເປັນໄອຄອນຢູ່ໃນຖາດລະບົບ (Windows, KDE), ແຖບເມນູ (macOS) ຫຼື ເຂດການແຈ້ງເຕືອນ (Linux).</p>
+<figure class="align-default">
+<img alt="ໄອຄອນສະຖານະ, ວົງມົນສີຂຽວ ແລະ ເຄື່ອງໝາຍຖືກສີຂາວ" src="../../_images/icon.png" />
+</figure>
+<p>ຕົວບົ່ງບີ້ສະຖານະຈະໃຊ້ໄອຄອນເພື່ອບອກສະຖານະປັດຈຸບັນຂອງການຊິງໂຄຣໄນ. ວົງມົນສີຂຽວທີ່ມີເຄື່ອງໝາຍຖືກສີຂາວບອກໃຫ້ຮູ້ວ່າການຊິງໂຄຣໄນຂອງທ່ານເປັນປັດຈຸບັນແລ້ວ ແລະ ທ່ານກຳລັງເຊື່ອມຕໍ່ກັບເຊີເວີ Nextcloud ຢູ່.</p>
+<figure class="align-default">
+<img alt="ໄອຄອນສະຖານະ, ວົງມົນສີຟ້າ ແລະ ຮູບເຄິ່ງວົງມົນສີຂາວ" src="../../_images/icon-syncing.png" />
+</figure>
+<p>ໄອຄອນສີຟ້າທີ່ມີຮູບເຄິ່ງວົງມົນສີຂາວໝາຍເຖິງການຊິງໂຄຣໄນກຳລັງດຳເນີນການຢູ່.</p>
+<figure class="align-default">
+<img alt="ໄອຄອນສະຖານະ, ວົງມົນສີເທົາ ແລະ ເສັ້ນຂະໜານແນວຕັ້ງ" src="../../_images/icon-paused.png" />
+</figure>
+<p>ໄອຄອນສີເທົາທີ່ມີເສັ້ນຂະໜານບອກໃຫ້ຮູ້ວ່າການຊິງໂຄຣໄນຂອງທ່ານຖືກຢຸດຊົ່ວຄາວ (ສ່ວນຫຼາຍແມ່ນທ່ານເປັນຜູ້ຢຸດເອງ).</p>
+<figure class="align-default">
+<img alt="ໄອຄອນສະຖານະ, ວົງມົນສີເທົາ ແລະ ຈຸດສີຂາວສາມຈຸດແນວນອນ" src="../../_images/icon-offline.png" />
+</figure>
+<p>ໄອຄອນສີເທົາທີ່ມີສາມຈຸດສີຂາວໝາຍເຖິງຕົວລູກຂ່າຍການຊິງຂອງທ່ານຂາດການເຊື່ອມຕໍ່ກັບເຊີເວີ Nextcloud.</p>
+<figure class="align-default">
+<img alt="ໄອຄອນສະຖານະ, ເຄື່ອງໝາຍ &quot;!&quot; ໃນວົງມົນສີເຫຼືອງ" src="../../_images/icon-information.png" />
+</figure>
+<p>ເມື່ອທ່ານເຫັນວົງມົນສີເຫຼືອງທີ່ມີເຄື່ອງໝາຍ &quot;!&quot; ນັ້ນແມ່ນໄອຄອນຂໍ້ມູນຂ່າວສານ, ທ່ານຄວນຄລິກໃສ່ມັນເພື່ອເບິ່ງລາຍລະອຽດທີ່ຕ້ອງການແຈ້ງໃຫ້ຊາບ.</p>
+<figure class="align-default">
+<img alt="ໄອຄອນສະຖານະ, ວົງມົນສີແດງ ແລະ ເຄື່ອງໝາຍ x ສີຂາວ" src="../../_images/icon-error.png" />
+</figure>
+<p>ວົງມົນສີແດງທີ່ມີເຄື່ອງໝາຍ &quot;x&quot; ສີຂາວ ບົ່ງບອກເຖິງຂໍ້ຜິດພາດໃນການກຳນົດຄ່າ ເຊັ່ນ: ການເຂົ້າສູ່ລະບົບບໍ່ຖືກຕ້ອງ ຫຼື URL ຂອງເຊີເວີບໍ່ຖືກຕ້ອງ.</p>
+<section id="systray-icon">
+<h2>ໄອຄອນໃນຖາດລະບົບ<a class="headerlink" href="#systray-icon" title="Link to this heading"></a></h2>
+<p>ການຄລິກຂວາໃສ່ໄອຄອນໃນຖາດລະບົບຈະເປີດເມນູເພື່ອເຂົ້າເຖິງການເຮັດວຽກຕ່າງໆຢ່າງໄວວາ.</p>
+<figure class="align-default">
+<img alt="ເມນູຄລິກຂວາຂອງຕົວລູກຂ່າຍການຊິງ" src="../../_images/traymenu.png" />
+</figure>
+<p>ເມນູນີ້ມີຕົວເລືອກດັ່ງຕໍ່ໄປນີ້:</p>
+<ul class="simple">
+<li><p>ເປີດໜ້າຕ່າງຫຼັກ</p></li>
+<li><p>ຢຸດການຊິງຊົ່ວຄາວ/ສືບຕໍ່ການຊິງ</p></li>
+<li><p>ການຕັ້ງຄ່າ</p></li>
+<li><p>ອອກຈາກ Nextcloud, ອອກຈາກລະບົບ ແລະ ປິດຕົວລູກຂ່າຍ</p></li>
+</ul>
+<p>ການຄລິກຊ້າຍໃສ່ໄອຄອນໃນຖາດລະບົບຈະເປີດໜ້າຕ່າງຫຼັກຂອງຕົວລູກຂ່າຍ.</p>
+<figure class="align-default">
+<img alt="ໜ້າຕ່າງຫຼັກ" src="../../_images/main_dialog.png" />
+</figure>
+<p>ໜ້າຕ່າງຫຼັກຈະສະແດງກິດຈະກຳຫຼ້າສຸດ, ຂໍ້ຜິດພາດ ແລະ ການແຈ້ງເຕືອນຈາກເຊີເວີ.</p>
+<p>ເມື່ອຄລິກໃສ່ໜ້າຕ່າງຫຼັກ ແລະ ຄລິກໃສ່ຮູບແທນຕົວ (Avatar) ຂອງຜູ້ໃຊ້, ຈະສາມາດເປີດການຕັ້ງຄ່າໄດ້.</p>
+</section>
+<section id="configuring-nextcloud-account-settings">
+<h2>ການກຳນົດຄ່າການຕັ້ງຄ່າບັນຊີ Nextcloud<a class="headerlink" href="#configuring-nextcloud-account-settings" title="Link to this heading"></a></h2>
+<figure class="align-default">
+<img alt="ໜ້າຕ່າງຫຼັກ" src="../../_images/settingsdialog.png" />
+</figure>
+<p>ຢູ່ທາງເທິງຂອງໜ້າຕ່າງຈະມີແທັບສຳລັບແຕ່ລະບັນຊີທີ່ໄດ້ຕັ້ງຄ່າໄວ້, ແລະ ອີກສອງແທັບສຳລັບການຕັ້ງຄ່າທົ່ວໄປ ແລະ ເຄືອຂ່າຍ. ໃນແທັບບັນຊີຂອງທ່ານຈະມີຟີເຈີດັ່ງນີ້:</p>
+<ul class="simple">
+<li><p>ສະຖານະການເຊື່ອມຕໍ່, ສະແດງໃຫ້ເຫັນວ່າທ່ານເຊື່ອມຕໍ່ກັບເຊີເວີ Nextcloud ໃດ ແລະ ຊື່ຜູ້ໃຊ້ Nextcloud ຂອງທ່ານ.</p></li>
+<li><p>ພື້ນທີ່ທີ່ໃຊ້ໄປ ແລະ ພື້ນທີ່ວ່າງເທິງເຊີເວີ.</p></li>
+<li><p>ສະຖານະການຊິງໂຄຣໄນປັດຈຸບັນ.</p></li>
+<li><p>ປຸ່ມ <strong>ເພີ່ມການເຊື່ອມຕໍ່ການຊິງໂຟນເດີ</strong>.</p></li>
+</ul>
+<p>ປຸ່ມນ້ອຍໆທີ່ມີສາມຈຸດ (ເມນູເພີ່ມເຕີມ) ທີ່ຢູ່ທາງເບື້ອງຂວາຂອງແຖບສະຖານະການຊິງ ຈະມີຕົວເລືອກເພີ່ມເຕີມ:</p>
+<ul class="simple">
+<li><p>ເປີດໂຟນເດີ</p></li>
+<li><p>ເລືອກສິ່ງທີ່ຈະຊິງ (ຕົວເລືອກນີ້ຈະປະກົດຂຶ້ນເມື່ອໂຄງສ້າງໄຟລ໌ຂອງທ່ານຖືກຫຍໍ້ໄວ້ ແລະ ຈະຂະຫຍາຍໂຄງສ້າງໄຟລ໌ອອກ)</p></li>
+<li><p>ຢຸດການຊິງຊົ່ວຄາວ / ສືບຕໍ່ການຊິງ</p></li>
+<li><p>ລົບການເຊື່ອມຕໍ່ການຊິງໂຟນເດີ</p></li>
+<li><p>ຄວາມພ້ອມໃຊ້ງານ (ໃຊ້ໄດ້ສະເພາະເມື່ອເປີດໃຊ້ການຮອງຮັບໄຟລ໌ສະເໝືອນ)</p></li>
+<li><p>ເປີດໃຊ້ການຮອງຮັບໄຟລ໌ສະເໝືອນ/ປິດໃຊ້ການຮອງຮັບໄຟລ໌ສະເໝືອນ</p></li>
+</ul>
+<p><strong>ເປີດໂຟນເດີ</strong> ຈະເປີດໂຟນເດີຊິງ Nextcloud ໃນເຄື່ອງຂອງທ່ານ.</p>
+<p><strong>ຢຸດການຊິງຊົ່ວຄາວ</strong> ຈະຢຸດການເຮັດວຽກຂອງການຊິງໂດຍບໍ່ມີການປ່ຽນແປງໃດໆກັບບັນຊີຂອງທ່ານ. ມັນຈະສືບຕໍ່ອັບເດດລາຍຊື່ໄຟລ໌ ແລະ ໂຟນເດີ ໂດຍບໍ່ມີການດາວໂຫຼດ ຫຼື ອັບເດດໄຟລ໌. ເພື່ອຢຸດກິດຈະກຳການຊິງທັງໝົດໃຫ້ໃຊ້ <strong>ລົບການເຊື່ອມຕໍ່ການຊິງໂຟນເດີ</strong>.</p>
+<figure class="align-default">
+<img alt="ຕົວເລືອກເພີ່ມເຕີມສຳລັບການຊິງ" src="../../_images/general_settings_folder_context_menu.png" />
+</figure>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Nextcloud ຈະບໍ່ເກັບຮັກສາ mtime (ເວລາທີ່ມີການແກ້ໄຂ) ຂອງໄດເລັກທໍຣີ, ແຕ່ມັນຈະອັບເດດ mtime ໃນໄຟລ໌. ເບິ່ງ <a class="reference external" href="https://github.com/owncloud/core/issues/7009">Wrong folder date when syncing</a> ສຳລັບການສົນທະນາກ່ຽວກັບເລື່ອງນີ້.</p>
+</div>
+</section>
+<section id="adding-new-accounts">
+<h2>ການເພີ່ມບັນຊີໃໝ່<a class="headerlink" href="#adding-new-accounts" title="Link to this heading"></a></h2>
+<p>ທ່ານສາມາດຕັ້ງຄ່າບັນຊີ Nextcloud ໄດ້ຫຼາຍບັນຊີໃນຕົວລູກຂ່າຍການຊິງ. ພຽງແຕ່ຄລິກທີ່ປຸ່ມ <strong>ບັນຊີ</strong> &gt; <strong>ເພີ່ມໃໝ່</strong> ໃນແທັບບັນຊີໃດໜຶ່ງເພື່ອເພີ່ມບັນຊີໃໝ່, ຈາກນັ້ນເຮັດຕາມຂັ້ນຕອນການສ້າງບັນຊີ. ບັນຊີໃໝ່ຈະປະກົດເປັນແທັບໃໝ່ໃນໜ້າຕ່າງການຕັ້ງຄ່າ, ເຊິ່ງທ່ານສາມາດປັບແຕ່ງການຕັ້ງຄ່າໄດ້ຕະຫຼອດເວລາ. ໃຊ້ <strong>ບັນຊີ</strong> &gt; <strong>ລົບອອກ</strong> ເພື່ອລົບບັນຊີ.</p>
+</section>
+<section id="file-manager-overlay-icons">
+<h2>ໄອຄອນຊ້ອນທັບໃນຕົວຈັດການໄຟລ໌<a class="headerlink" href="#file-manager-overlay-icons" title="Link to this heading"></a></h2>
+<p>ຕົວລູກຂ່າຍການຊິງ Nextcloud ຈະມີໄອຄອນຊ້ອນທັບ ເພີ່ມເຕີມຈາກໄອຄອນປະເພດໄຟລ໌ປົກກະຕິ ສຳລັບຕົວຈັດການໄຟລ໌ໃນລະບົບຂອງທ່ານ (Explorer ໃນ Windows, Finder ໃນ Mac ແລະ Nautilus ໃນ Linux) ເພື່ອບົ່ງບອກສະຖານະການຊິງຂອງໄຟລ໌ Nextcloud ຂອງທ່ານ.</p>
+<p>ໄອຄອນຊ້ອນທັບຈະຄ້າຍຄືກັບໄອຄອນໃນຖາດລະບົບທີ່ກ່າວມາຂ້າງເທິງ. ພວກມັນຈະສະແດງຜົນແຕກຕ່າງກັນໃນໄຟລ໌ ແລະ ໄດເລັກທໍຣີ ຕາມສະຖານະການຊິງ ແລະ ຂໍ້ຜິດພາດ.</p>
+<p>ໄອຄອນຊ້ອນທັບຂອງແຕ່ລະໄຟລ໌ຈະບົ່ງບອກສະຖານະການຊິງປັດຈຸບັນຂອງມັນ. ຖ້າໄຟລ໌ຖືກຊິງກົງກັບເວີຊັນໃນເຊີເວີແລ້ວ, ມັນຈະສະແດງເຄື່ອງໝາຍຖືກສີຂຽວ.</p>
+<p>ຖ້າໄຟລ໌ຖືກລະເວັ້ນຈາກການຊິງ, ຕົວຢ່າງເຊັ່ນ ຍ້ອນວ່າມັນຢູ່ໃນລາຍຊື່ທີ່ຍົກເວັ້ນ ຫຼື ຍ້ອນວ່າມັນເປັນ symbolic link, ມັນຈະສະແດງໄອຄອນເຕືອນ.</p>
+<p>ຖ້າມີຂໍ້ຜິດພາດໃນການຊິງ ຫຼື ໄຟລ໌ຖືກຕິດບັນຊີດຳ, ມັນຈະສະແດງເຄື່ອງໝາຍ X ສີແດງທີ່ເຫັນໄດ້ແຈ້ງ.</p>
+<p>ຖ້າໄຟລ໌ກຳລັງລໍຖ້າການຊິງ ຫຼື ກຳລັງຊິງຢູ່, ໄອຄອນຊ້ອນທັບຈະສະແດງເປັນຮູບລູກສອນໝູນວຽນສີຟ້າ.</p>
+<p>ເມື່ອຕົວລູກຂ່າຍອອບລາຍ, ຈະບໍ່ມີໄອຄອນໃດໆສະແດງຂຶ້ນ ເພື່ອບອກໃຫ້ຮູ້ວ່າໂຟນເດີບໍ່ໄດ້ຢູ່ໃນການຊິງ ແລະ ບໍ່ມີການປ່ຽນແປງໃດໆຖືກຊິງໄປຫາເຊີເວີ.</p>
+<p>ໄອຄອນຊ້ອນທັບຂອງໄດເລັກທໍຣີທີ່ຊິງແລ້ວຈະບົ່ງບອກສະຖານະຂອງໄຟລ໌ຕ່າງໆໃນໄດເລັກທໍຣີນັ້ນ. ຖ້າມີຂໍ້ຜິດພາດໃນການຊິງ, ໄດເລັກທໍຣີຈະຖືກໝາຍດ້ວຍໄອຄອນເຕືອນ.</p>
+<p>ຖ້າໄດເລັກທໍຣີມີໄຟລ໌ທີ່ຖືກລະເວັ້ນເຊິ່ງຖືກໝາຍດ້ວຍໄອຄອນເຕືອນ, ສິ່ງນີ້ຈະບໍ່ມີຜົນຕໍ່ສະຖານະຂອງໄດເລັກທໍຣີຫຼັກ (Parent directory).</p>
+</section>
+<section id="set-the-user-status">
+<h2>ຕັ້ງສະຖານະຜູ້ໃຊ້<a class="headerlink" href="#set-the-user-status" title="Link to this heading"></a></h2>
+<p>ຖ້າທ່ານໄດ້ຕິດຕັ້ງແອັບສະຖານະຜູ້ໃຊ້ໃນເຊີເວີ Nextcloud ຂອງທ່ານ, ທ່ານສາມາດຕັ້ງສະຖານະຜູ້ໃຊ້ໄດ້ຈາກຕົວລູກຂ່າຍຄອມພິວເຕີ. ໂດຍການເປີດໜ້າຕ່າງຫຼັກ, ຈາກນັ້ນຄລິກທີ່ຮູບແທນຕົວຂອງທ່ານ ແລະ ຄລິກທີ່ສາມຈຸດ. ໃນເມນູທີ່ເປີດຂຶ້ນໃຫ້ຄລິກທີ່ <strong>ຕັ້ງສະຖານະ</strong>.</p>
+<figure class="align-default">
+<img alt="ເປີດໜ້າຕ່າງສະຖານະຜູ້ໃຊ້ຈາກໜ້າຕ່າງຫຼັກ." src="../../_images/user_status_selector_main_dialog.png" />
+</figure>
+<p>ໃນໜ້າຕ່າງທີ່ເປີດຂຶ້ນ, ທ່ານສາມາດຕັ້ງສະຖານະອອນລາຍໄດ້ໂດຍການຄລິກເລືອກ <strong>ອອນລາຍ</strong>, <strong>ບໍ່ຢູ່</strong>, <strong>ຫ້າມລົບກວນ</strong> ຫຼື <strong>ເຊື່ອງຕົວ</strong>. ທ່ານຍັງສາມາດຕັ້ງຂໍ້ຄວາມສະຖານະເອງໄດ້ໃນຊ່ອງໃສ່ຂໍ້ຄວາມ ຫຼື ເລືອກຂໍ້ຄວາມສະຖານະທີ່ມີໄວ້ໃຫ້ແລ້ວ. ນອກຈາກນີ້ຍັງສາມາດຕັ້ງອີໂມຈິໄດ້ໂດຍການຄລິກປຸ່ມອີໂມຈິຂ້າງຊ່ອງໃສ່ຂໍ້ຄວາມ. ສິ່ງສຸດທ້າຍທີ່ທ່ານອາດຈະຕັ້ງຄ່າແມ່ນເວລາທີ່ຈະໃຫ້ລ້າງສະຖານະ. ທ່ານສາມາດເລືອກໄລຍະເວລາທີ່ຈະໃຫ້ລ້າງສະຖານະໄດ້ໂດຍການຄລິກປຸ່ມທາງເບື້ອງຊ້າຍຂອງຂໍ້ຄວາມ <strong>ລ້າງຂໍ້ຄວາມສະຖານະຫຼັງຈາກ</strong>.</p>
+<figure class="align-default">
+<img alt="ໜ້າຕ່າງສຳລັບຕັ້ງສະຖານະຜູ້ໃຊ້." src="../../_images/user_status-selector_dialog.png" />
+</figure>
+<p>ຖ້າທ່ານພໍໃຈກັບສະຖານະທີ່ສ້າງແລ້ວ, ທ່ານສາມາດເປີດໃຊ້ສະຖານະນີ້ໄດ້ດ້ວຍປຸ່ມ <strong>ຕັ້ງຂໍ້ຄວາມສະຖານະ</strong>. ຖ້າທ່ານມີສະຖານະທີ່ຕັ້ງໄວ້ກ່ອນແລ້ວ, ທ່ານສາມາດລ້າງສະຖານະໄດ້ໂດຍການຄລິກປຸ່ມ <strong>ລ້າງຂໍ້ຄວາມສະຖານະ</strong>.</p>
+</section>
+<section id="sharing-from-your-desktop">
+<h2>ການແບ່ງປັນຈາກຄອມພິວເຕີຂອງທ່ານ<a class="headerlink" href="#sharing-from-your-desktop" title="Link to this heading"></a></h2>
+<p>ຕົວລູກຂ່າຍການຊິງ Nextcloud ເຮັດວຽກຮ່ວມກັບຕົວຈັດການໄຟລ໌ຂອງທ່ານ. Finder ໃນ macOS ແລະ Explorer ໃນ Windows. ສຳລັບຜູ້ໃຊ້ Linux ຕ້ອງຕິດຕັ້ງແພັກເກັດເພີ່ມເຕີມຕາມຕົວຈັດການໄຟລ໌ທີ່ໃຊ້ ເຊັ່ນ: <code class="docutils literal notranslate"><span class="pre">nautilus-nextcloud</span></code> (Ubuntu/Debian), <code class="docutils literal notranslate"><span class="pre">dolphin-nextcloud</span></code> (Kubuntu), <code class="docutils literal notranslate"><span class="pre">nemo-nextcloud</span></code> ແລະ <code class="docutils literal notranslate"><span class="pre">caja-nextcloud</span></code>. ທ່ານສາມາດສ້າງລິ້ງແບ່ງປັນ ແລະ ແບ່ງປັນກັບຜູ້ໃຊ້ Nextcloud ພາຍໃນໄດ້ຄືກັນກັບການໃຊ້ຜ່ານເວັບໄຊ Nextcloud.</p>
+<p>ໃນຕົວຈັດການໄຟລ໌ຂອງທ່ານ, ໃຫ້ຄລິກຂວາໃສ່ໄຟລ໌ ແລະ ໃນເມນູໃຫ້ໄປທີ່ <strong>Nextcloud</strong> ຈາກນັ້ນຄລິກທີ່ <strong>ຕົວເລືອກການແບ່ງປັນ</strong> ເພື່ອເປີດໜ້າຕ່າງການແບ່ງປັນ.</p>
+<figure class="align-default">
+<img alt="ການແບ່ງປັນຈາກ Windows Explorer." src="../../_images/share_context_menu.png" />
+</figure>
+<p>ຈາກໜ້າຕ່າງນີ້ ທ່ານສາມາດແບ່ງປັນໄຟລ໌ໄດ້.</p>
+<figure class="align-default">
+<img alt="ໜ້າຕ່າງການແບ່ງປັນ" src="../../_images/share_dialog.png" />
+</figure>
+</section>
+<section id="general-window">
+<h2>ໜ້າຕ່າງທົ່ວໄປ<a class="headerlink" href="#general-window" title="Link to this heading"></a></h2>
+<p>ໜ້າຕ່າງທົ່ວໄປມີຕົວເລືອກການຕັ້ງຄ່າ ເຊັ່ນ <strong>ເລີ່ມວຽກເມື່ອເປີດເຄື່ອງ</strong>, <strong>ໃຊ້ໄອຄອນສີດຽວ</strong>, ແລະ <strong>ສະແດງການແຈ້ງເຕືອນຈາກເຊີເວີ</strong>. ນີ້ແມ່ນບ່ອນທີ່ທ່ານຈະພົບເຫັນປຸ່ມ <strong>ແກ້ໄຂໄຟລ໌ທີ່ຖືກລະເວັ້ນ</strong> ເພື່ອເປີດຕົວແກ້ໄຂລາຍຊື່ໄຟລ໌ທີ່ຖືກລະເວັ້ນ, ແລະ <strong>ຂໍການຢືນຢັນກ່ອນດາວໂຫຼດໂຟນເດີທີ່ມີຂະໜາດໃຫຍ່ກວ່າ [ຂະໜາດໂຟນເດີ]</strong>.</p>
+<figure class="align-default">
+<img alt="ໜ້າຕ່າງທົ່ວໄປປະກອບດ້ວຍຕົວເລືອກການຕັ້ງຄ່າ." src="../../_images/settings_general.png" />
+</figure>
+</section>
+<section id="using-the-network-window">
+<h2>ການນຳໃຊ້ໜ້າຕ່າງເຄືອຂ່າຍ<a class="headerlink" href="#using-the-network-window" title="Link to this heading"></a></h2>
+<p id="index-0">ໜ້າຕ່າງການຕັ້ງຄ່າເຄືອຂ່າຍຊ່ວຍໃຫ້ທ່ານກຳນົດຄ່າພຣັອກຊີ (Proxy) ແລະ ຈຳກັດແບນວິດໃນການດາວໂຫຼດ ແລະ ອັບໂຫຼດ.</p>
+<figure class="align-default">
+<img alt="../../_images/settings_network.png" src="../../_images/settings_network.png" />
+</figure>
+</section>
+<section id="using-the-ignored-files-editor">
+<span id="usingignoredfileseditor-label"></span><h2>ການນຳໃຊ້ຕົວແກ້ໄຂໄຟລ໌ທີ່ຖືກລະເວັ້ນ<a class="headerlink" href="#using-the-ignored-files-editor" title="Link to this heading"></a></h2>
+<p id="index-1">ທ່ານອາດຈະມີບາງໄຟລ໌ ຫຼື ໄດເລັກທໍຣີໃນເຄື່ອງທີ່ບໍ່ຕ້ອງການສຳຮອງຂໍ້ມູນ ແລະ ເກັບໄວ້ໃນເຊີເວີ. ເພື່ອລະບຸ ແລະ ຍົກເວັ້ນໄຟລ໌ ຫຼື ໄດເລັກທໍຣີເຫຼົ່ານີ້, ທ່ານສາມາດໃຊ້ <em>ຕົວແກ້ໄຂໄຟລ໌ທີ່ຖືກລະເວັ້ນ</em> (ໃນແທັບທົ່ວໄປ).</p>
+<figure class="align-default">
+<img alt="../../_images/ignored_files_editor.png" src="../../_images/ignored_files_editor.png" />
+</figure>
+<p>ເພື່ອຄວາມສະດວກ, ຕົວແກ້ໄຂໄດ້ມີລາຍຊື່ຮູບແບບການລະເວັ້ນມາດຕະຖານໄວ້ໃຫ້ແລ້ວ. ຮູບແບບເຫຼົ່ານີ້ຖືກເກັບໄວ້ໃນໄຟລ໌ລະບົບ (ປົກກະຕິແມ່ນ <code class="docutils literal notranslate"><span class="pre">sync-exclude.lst</span></code>) ທີ່ຢູ່ໃນໂຟນເດີຕິດຕັ້ງແອັບ Nextcloud. ທ່ານບໍ່ສາມາດແກ້ໄຂຮູບແບບທີ່ມີມາໃຫ້ເບື້ອງຕົ້ນນີ້ໄດ້ໂດຍກົງຈາກຕົວແກ້ໄຂ. ແນວໃດກໍຕາມ ຖ້າຈຳເປັນ, ທ່ານສາມາດເອົາເມົ້າໄປຊີ້ໃສ່ຮູບແບບໃດໜຶ່ງໃນລາຍຊື່ເພື່ອເບິ່ງທີ່ຢູ່ໄຟລ໌, ຈາກນັ້ນໄປຫາໄຟລ໌ນັ້ນ ແລະ ແກ້ໄຂໄຟລ໌ <code class="docutils literal notranslate"><span class="pre">sync-exclude.lst</span></code> ໄດ້.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>ການແກ້ໄຂໄຟລ໌ກຳນົດການຍົກເວັ້ນລະດັບລະບົບອາດຈະເຮັດໃຫ້ຕົວລູກຂ່າຍໃຊ້ງານບໍ່ໄດ້ ຫຼື ເຮັດວຽກຜິດພາດ.</p>
+</div>
+<p>ແຕ່ລະແຖວໃນຕົວແກ້ໄຂປະກອບດ້ວຍຂໍ້ຄວາມຮູບແບບການລະເວັ້ນ. ໃນການສ້າງຮູບແບບເອງ, ນອກຈາກການໃຊ້ຕົວອັກສອນປົກກະຕິແລ້ວ, ທ່ານຍັງສາມາດໃຊ້ຕົວອັກສອນພິເສດ (wildcards) ເພື່ອຈັບຄູ່ຂໍ້ມູນ. ຕົວຢ່າງ: ທ່ານສາມາດໃຊ້ດອກຈັນ (<code class="docutils literal notranslate"><span class="pre">*</span></code>) ແທນຕົວອັກສອນຈຳນວນເທົ່າໃດກໍໄດ້ ຫຼື ເຄື່ອງໝາຍຖາມ (<code class="docutils literal notranslate"><span class="pre">?</span></code>) ແທນຕົວອັກສອນຕົວດຽວ.</p>
+<p>ຮູບແບບທີ່ລົງທ້າຍດ້ວຍເຄື່ອງໝາຍສະແລັຊ (<code class="docutils literal notranslate"><span class="pre">/</span></code>) ຈະຖືກນຳໃຊ້ສະເພາະກັບໄດເລັກທໍຣີໃນເສັ້ນທາງທີ່ກຳລັງກວດສອບເທົ່ານັ້ນ.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>ລາຍການທີ່ເພີ່ມເອງໃນປັດຈຸບັນຍັງບໍ່ໄດ້ຖືກກວດສອບຄວາມຖືກຕ້ອງຂອງໄວຍາກອນໂດຍຕົວແກ້ໄຂ, ດັ່ງນັ້ນທ່ານຈະບໍ່ເຫັນການເຕືອນຖ້າຂຽນຜິດ. ຖ້າການຊິງຂອງທ່ານບໍ່ເຮັດວຽກຕາມທີ່ຄາດໄວ້, ໃຫ້ກວດສອບໄວຍາກອນຂອງທ່ານຄືນ.</p>
+</div>
+<p>ແຕ່ລະຮູບແບບໃນລາຍຊື່ຈະມີກ່ອງເຄື່ອງໝາຍຢູ່ທາງຫຼັງ. ເມື່ອກ່ອງຖືກໝາຍຖືກ, ນອກຈາກຈະລະເວັ້ນໄຟລ໌ ຫຼື ໄດເລັກທໍຣີທີ່ກົງກັບຮູບແບບແລ້ວ, ໄຟລ໌ໃດທີ່ກົງກັນຈະຖືກຖືວ່າເປັນ &quot;ເມຕາເດຕາຊົ່ວຄາວ&quot; (fleeting metadata) ແລະ ຈະຖືກລົບອອກໂດຍຕົວລູກຂ່າຍ.</p>
+<p>ນອກຈາກການຍົກເວັ້ນໄຟລ໌ ແລະ ໄດເລັກທໍຣີທີ່ໃຊ້ຮູບແບບທີ່ກຳນົດໃນລາຍຊື່ນີ້ແລ້ວ:</p>
+<ul class="simple">
+<li><p>ຕົວລູກຂ່າຍ Nextcloud ຈະຍົກເວັ້ນໄຟລ໌ທີ່ມີຕົວອັກສອນທີ່ບໍ່ສາມາດຊິງໄປຫາລະບົບໄຟລ໌ອື່ນໆໄດ້ສະເໝີ.</p></li>
+<li><p>ໄຟລ໌ທີ່ເຮັດໃຫ້ເກີດຂໍ້ຜິດພາດສະເພາະຕົວສາມຄັ້ງໃນລະຫວ່າງການຊິງຈະຖືກລົບອອກ. ແນວໃດກໍຕາມ, ຕົວລູກຂ່າຍຍັງມີຕົວເລືອກໃຫ້ລອງຊິງໃໝ່ອີກສາມຄັ້ງສຳລັບໄຟລ໌ທີ່ເກີດຂໍ້ຜິດພາດ.</p></li>
+</ul>
+</section>
+<section id="virtual-files-on-macos">
+<h2>Virtual Files on macOS<a class="headerlink" href="#virtual-files-on-macos" title="Link to this heading"></a></h2>
+<p>For information about using virtual files integration on macOS, see:</p>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="macosvfs.html">ລູກຂ່າຍໄຟລ໌ສະເໝືອນ macOS</a></li>
+</ul>
+</div>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="uninstallation.html" class="btn btn-neutral float-left" title="Uninstallation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="macosvfs.html" class="btn btn-neutral float-right" title="ລູກຂ່າຍໄຟລ໌ສະເໝືອນ macOS" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+  
+  <!-- Here go the languages -->
+
+  
+  
+
+  
+  
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+    
+  
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      🌐 lo
+      <span class="fa fa-caret-down"></span>
+       ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>🌐 ພາສາ</dt>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ar/"
+               
+            >
+              Arabic
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/br/"
+               
+            >
+              Breton
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ca/"
+               
+            >
+              Catalan
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_CN/"
+               
+            >
+              Chinese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_HK/"
+               
+            >
+              Chinese (HK)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/zh_TW/"
+               
+            >
+              Chinese (TW)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/cs/"
+               
+            >
+              Czech
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/da/"
+               
+            >
+              Danish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nl/"
+               
+            >
+              Dutch
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/en/"
+               
+            >
+              English
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/fi_FI/"
+               
+            >
+              Finnish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/fr/"
+               
+            >
+              French
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/gl/"
+               
+            >
+              Galician
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/de/"
+               
+            >
+              German
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/el/"
+               
+            >
+              Greek
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/hu_HU/"
+               
+            >
+              Hungarian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/id/"
+               
+            >
+              Indonesian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ga/"
+               
+            >
+              Irish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/it/"
+               
+            >
+              Italian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ja_JP/"
+               
+            >
+              Japanese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ko/"
+               
+            >
+              Korean
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/lo/"
+               
+               style="color: var(--dark-link-color);"
+               
+            >
+              lo
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/lt/"
+               
+            >
+              lt
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/mn/"
+               
+            >
+              Mongolian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nb_NO/"
+               
+            >
+              Norwegian (NB)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/nn/"
+               
+            >
+              Norwegian (NN)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pl/"
+               
+            >
+              Polish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pt_PT/"
+               
+            >
+              Portuguese
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/pt_BR/"
+               
+            >
+              Portuguese (BR)
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ro/"
+               
+            >
+              Romanian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ru/"
+               
+            >
+              Russian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/si/"
+               
+            >
+              Sinhala
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sk_SK/"
+               
+            >
+              Slovakian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sr/"
+               
+            >
+              Slovenian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/es/"
+               
+            >
+              Spanish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/sv/"
+               
+            >
+              Swedish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/ta/"
+               
+            >
+              Tamil
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/tr/"
+               
+            >
+              Turkish
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/uk_UA/"
+               
+            >
+              Ukrainian
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/uz/"
+               
+            >
+              Uzbek
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/vi/"
+               
+            >
+              Vietnamese
+            </a>
+          </dd>
+        
+      </dl>
+    </div>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ ເວີຊັນ</dt>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/latest/user_manual"
+               
+               style="color: var(--dark-link-color);"
+               
+            >
+              latest
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/stable/user_manual"
+               
+            >
+              stable
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/32/user_manual"
+               
+            >
+              32
+            </a>
+          </dd>
+        
+          <dd style="width: 32%">
+            <a href="https://docs.nextcloud.com/server/31/user_manual"
+               
+            >
+              31
+            </a>
+          </dd>
+        
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

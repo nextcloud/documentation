@@ -32,7 +32,7 @@
     <link rel="index" title="Rejstřík" href="../genindex.html" />
     <link rel="search" title="Vyhledávání" href="../search.html" />
     <link rel="next" title="Uninstallation" href="uninstallation.html" />
-    <link rel="prev" title="Klienti pro desktop" href="index.html" /> 
+    <link rel="prev" title="Desktop Client" href="index.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -66,25 +66,22 @@
 <li class="toctree-l1"><a class="reference internal" href="../files/index.html">Soubory a synchronizace</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../groupware/index.html">Software pro podporu spolupráce</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Talk</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Klienti pro desktop</a><ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Desktop Client</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Instalace</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#download">Download</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#supported-server-versions">Supported server versions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#system-requirements">Požadavky na systém</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#customizing-the-windows-installation">Přizpůsobení instalace do Windows</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#features">Funkce</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#id1">Instalace</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#changing-installed-features">Měnění nainstalovaných funkcí</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#installation-folder">Instalační složka</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#disabling-automatic-updates">Vypnutí automatických aktualizací</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#launch-after-installation">Spustit po instalaci</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#no-reboot-after-installation">Nerestartovat po instalaci</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="#installation-wizard">Průvodce instalací</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#install-on-macos-and-windows">Install on macOS and Windows</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#install-on-linux">Install on Linux</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#initial-setup">Initial Setup</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="uninstallation.html">Uninstallation</a></li>
 <li class="toctree-l2"><a class="reference internal" href="usage.html">Používání synchronizačního klienta</a></li>
-<li class="toctree-l2"><a class="reference internal" href="macosvfs.html">macOS Virtual Files Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="commandline.html">Using the Command-Line Client</a></li>
+<li class="toctree-l2"><a class="reference internal" href="options.html">Command-Line Options</a></li>
+<li class="toctree-l2"><a class="reference internal" href="configfile.html">Configuration File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="envvars.html">Environment Variables</a></li>
 <li class="toctree-l2"><a class="reference internal" href="autoupdate.html">Nástroj pro automatickou aktualizaci</a></li>
 <li class="toctree-l2"><a class="reference internal" href="updatechannel.html">Kanály aktualizací</a></li>
 <li class="toctree-l2"><a class="reference internal" href="conflicts.html">Kolize</a></li>
@@ -112,7 +109,7 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="index.html">Klienti pro desktop</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Desktop Client</a></li>
       <li class="breadcrumb-item active">Instalace</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/desktop/installation.rst" class="fa fa-github"> Edit on GitHub</a>
@@ -125,22 +122,28 @@
              
   <section id="installation">
 <h1>Instalace<a class="headerlink" href="#installation" title="Link to this heading"></a></h1>
-<p>Nejnovější verzi Nextcloud synchronizačního klienta pro počítač ze <a class="reference external" href="https://nextcloud.com/download/#install-clients">Stránky stahování Nextcloud</a>. Existují klienti pro Linux, macOS a Microsoft Windows.</p>
-<p>V okamžiku publikace tohoto jsou podporovanými vydáními serveru nejnovější tři stabilní verze. To znamená, že série vydání latest podporuje hlavní verze stabilního serveru. Viz <a class="reference external" href="https://github.com/nextcloud/server/wiki/Maintenance-and-Release-Schedule">https://github.com/nextcloud/server/wiki/Maintenance-and-Release-Schedule</a> ohledně podporovaných hlavních verzí.</p>
-<p>Instalace na macOS a Windows je stejná jako pro jakoukoli jinou aplikaci: stáhněte program a dvojklikem na něj spusťte instalaci a poté následujte průvodce instalací. Po instalaci a nastavení se synchronizační klient sám aktualizuje – podrobnosti viz <a class="reference internal" href="autoupdate.html"><span class="doc">Nástroj pro automatickou aktualizaci</span></a>.</p>
-<p>V případě Linuxu je třeba, aby uživatelé následovali pokyny na stránce se stahováním a přidali si příslušný repozitář pro jimi využívanou linuxovou distribuci, nainstalovali podepisovací klíč a poté pro instalaci synchronizačního klienta pro počítač použili jimi používané správce balíčků. Pomocí nich také synchronizačního klienta aktualizují – klient jen zobrazí upozornění, že je aktualizace k dispozici.</p>
-<p>V Linuxu je také třeba mít zapnutého správce hesel, jako např. Klíčenka GNOME nebo KWallet, aby se synchronizační klient mohl přihlašovat automaticky.</p>
+<section id="download">
+<h2>Download<a class="headerlink" href="#download" title="Link to this heading"></a></h2>
+<p>You can download the latest version of the Nextcloud Desktop Synchronization Client
+from the <a class="reference external" href="https://nextcloud.com/download/#install-clients">Nextcloud download page</a>. Clients are available for Linux, macOS, and
+Microsoft Windows.</p>
 <p>Na stránce pro stahování naleznete také archivy se zdrojovými kódy a starší verze aplikace.</p>
+</section>
+<section id="supported-server-versions">
+<h2>Supported server versions<a class="headerlink" href="#supported-server-versions" title="Link to this heading"></a></h2>
+<p>Each desktop client release supports the latest three stable Nextcloud server
+major versions at the time of release. See the <a class="reference external" href="https://github.com/nextcloud/server/wiki/Maintenance-and-Release-Schedule">Nextcloud Server release schedule</a>
+for supported major versions.</p>
+</section>
 <section id="system-requirements">
 <h2>Požadavky na systém<a class="headerlink" href="#system-requirements" title="Link to this heading"></a></h2>
-<ul class="simple">
+<ul>
 <li><p>Windows 10 a novější (pouze 64bitové)</p></li>
 <li><p>macOS 12.0 a novější (pouze 64bitové)</p></li>
-<li><dl class="simple">
-<dt>Linux (Ubuntu 24.04 or openSUSE 15.5 or Alma 8 or …) (64-bits only)</dt><dd><p>For Linux distributions, we support, if technically feasible, the current LTS releases.
-For BSD, we support them if technically feasible but we do not test.</p>
-</dd>
-</dl>
+<li><p>Linux (Ubuntu 24.04 or openSUSE 15.5 or Alma 8 or …) (64-bits only)</p>
+<p>For Linux distributions, we support, if technically feasible, the current
+LTS releases. For BSD, we support them if technically feasible, but we do not
+test them.</p>
 </li>
 </ul>
 <div class="admonition note">
@@ -153,153 +156,66 @@ For BSD, we support them if technically feasible but we do not test.</p>
 </ul>
 </div>
 </section>
-<section id="customizing-the-windows-installation">
-<h2>Přizpůsobení instalace do Windows<a class="headerlink" href="#customizing-the-windows-installation" title="Link to this heading"></a></h2>
-<p>Pokud chcete jen nainstalovat Nextcloud synchronizačního klienta na počítač, stačí spustit <cite>.msi</cite> soubor a nastavit ho v průvodci, který se objeví.</p>
-<section id="features">
-<h3>Funkce<a class="headerlink" href="#features" title="Link to this heading"></a></h3>
-<p>MSI instalátor poskytuje několik funkcí, které je možné jednotlivě nainstalovat nebo odebrat. To je možné ovládat prostřednictvím příkazového řádku. Pokud instalaci automatizujete, pak spusťte následující příkaz:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">passive</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span>
-</pre></div>
-</div>
-<p>Příkaz nainstaluje Nextcloud synchronizačního klienta pro počítač do výchozího umístění a se zapnutými výchozími funkcemi. Pokud chcete vypnout např. ikonu zástupce na ploše, stačí změnit výše uvedený příkaz na následující:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">passive</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">REMOVE</span><span class="o">=</span><span class="n">DesktopShortcut</span>
-</pre></div>
-</div>
-<p>Seznam funkcí k dispozici viz následující tabulka:</p>
-<table class="docutils align-default">
-<thead>
-<tr class="row-odd"><th class="head"><p>Funkce</p></th>
-<th class="head"><p>Zapnuto ve výchozím stavu</p></th>
-<th class="head"><p>Popis</p></th>
-<th class="head"><p>Vlastnost k vypnutí</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>Client</p></td>
-<td><p>Ano, vyžadováno</p></td>
-<td><p>Klient samotný</p></td>
-<td></td>
-</tr>
-<tr class="row-odd"><td><p>DesktopShortcut</p></td>
-<td><p>Ano</p></td>
-<td><p>Přidá zástupce na plochu</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">NO_DESKTOP_SHORTCUT</span></code></p></td>
-</tr>
-<tr class="row-even"><td><p>StartMenuShortcuts</p></td>
-<td><p>Ano</p></td>
-<td><p>Přidá zástupce do nabídky start</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">NO_START_MENU_SHORTCUTS</span></code></p></td>
-</tr>
-<tr class="row-odd"><td><p>ShellExtensions</p></td>
-<td><p>Ano</p></td>
-<td><p>Přidá napojení do Průzkumníka</p></td>
-<td><p><code class="docutils literal notranslate"><span class="pre">NO_SHELL_EXTENSIONS</span></code></p></td>
-</tr>
-</tbody>
-</table>
+<section id="install-on-macos-and-windows">
+<h2>Install on macOS and Windows<a class="headerlink" href="#install-on-macos-and-windows" title="Link to this heading"></a></h2>
+<p>Installation on macOS and Windows is the same as for any other software
+application: download the program and then double-click it to launch the
+installation, and then follow the installation wizard. After it is installed and
+configured the desktop client will automatically keep itself updated; see
+<a class="reference internal" href="autoupdate.html"><span class="doc">Nástroj pro automatickou aktualizaci</span></a> for more information.</p>
+<p>For administrator-focused deployment options such as advanced Windows MSI
+configuration, non-interactive account provisioning, and command-line wizard
+preconfiguration, see the Admin Manual chapter on desktop client deployment and
+setup.</p>
 </section>
-<section id="id1">
-<h3>Instalace<a class="headerlink" href="#id1" title="Link to this heading"></a></h3>
-<p>Je možné také zvolit instalaci klienta samotného a to pomocí následujícího příkazu:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">passive</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">ADDDEFAULT</span><span class="o">=</span><span class="n">Client</span>
-</pre></div>
-</div>
-<p>Pokud například chcete nainstalovat vše kromě funkcí <code class="docutils literal notranslate"><span class="pre">DesktopShortcut</span></code> a <code class="docutils literal notranslate"><span class="pre">ShellExtensions</span></code>, máte dvě možnosti:</p>
-<ol class="arabic">
-<li><p>Výslovně vyjmenovat veškeré funkce, které chcete skutečně nainstalovat (seznam povolených), kde <code class="docutils literal notranslate"><span class="pre">Client</span></code> je vždy i tak nainstalován:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">passive</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">ADDDEFAULT</span><span class="o">=</span><span class="n">StartMenuShortcuts</span>
-</pre></div>
-</div>
-</li>
-<li><p>Předat vlastnosti <code class="docutils literal notranslate"><span class="pre">NO_DESKTOP_SHORTCUT</span></code> a <code class="docutils literal notranslate"><span class="pre">NO_SHELL_EXTENSIONS</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">passive</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">NO_DESKTOP_SHORTCUT</span><span class="o">=</span><span class="s2">&quot;1&quot;</span> <span class="n">NO_SHELL_EXTENSIONS</span><span class="o">=</span><span class="s2">&quot;1&quot;</span>
-</pre></div>
-</div>
-</li>
-</ol>
-<div class="admonition note">
-<p class="admonition-title">Poznámka</p>
-<p>Pro <code class="docutils literal notranslate"><span class="pre">.msi</span></code> balíček s Nextcloud jsou tyto vlastnosti zapamatovány, takže je není třeba při přechodu na novější verze znovu zadávat.</p>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Poznámka</p>
-<p>Tyto není možné použít pro změnu nainstalovaných funkcí. Pokud chcete toto, podívejte se do další sekce.</p>
-</div>
+<section id="install-on-linux">
+<h2>Install on Linux<a class="headerlink" href="#install-on-linux" title="Link to this heading"></a></h2>
+<p>For Linux, Nextcloud officially provides the desktop client as an AppImage on
+the <a class="reference external" href="https://nextcloud.com/download/#install-clients">Nextcloud download page</a>.</p>
+<p>Some Linux distributions also provide the Nextcloud desktop client through their
+package managers. These packages are maintained by the distribution or community,
+not by Nextcloud. If you prefer a package-managed installation, refer to your
+distribution’s documentation.</p>
+<p>Linux users must also have a password manager enabled, such as GNOME Keyring or
+KWallet, so that the desktop client can log in automatically.</p>
 </section>
-<section id="changing-installed-features">
-<h3>Měnění nainstalovaných funkcí<a class="headerlink" href="#changing-installed-features" title="Link to this heading"></a></h3>
-<p>Nainstalované funkce je možné později změnit pomocí vlastností <code class="docutils literal notranslate"><span class="pre">REMOVE</span></code> a <code class="docutils literal notranslate"><span class="pre">ADDDEFAULT</span></code>.</p>
-<ol class="arabic">
-<li><p>If you want to add the desktop shortcut later, run the following command:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">passive</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">ADDDEFAULT</span><span class="o">=</span><span class="s2">&quot;DesktopShortcut&quot;</span>
-</pre></div>
-</div>
-</li>
-<li><p>Pokud ho chcete odebrat, stačí spustit následující příkaz:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">passive</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">REMOVE</span><span class="o">=</span><span class="s2">&quot;DesktopShortcut&quot;</span>
-</pre></div>
-</div>
-</li>
-</ol>
-<p>Windows si udržují přehled nainstalovaných funkcí a použití <code class="docutils literal notranslate"><span class="pre">REMOVE</span></code> nebo <code class="docutils literal notranslate"><span class="pre">ADDDEFAULT</span></code> se bude týkat pouze zmíněných funkcí.</p>
-<p>Porovnejte <a class="reference external" href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa371194(v=vs.85).aspx">REMOVE</a> and <a class="reference external" href="https://msdn.microsoft.com/en-us/library/windows/desktop/aa367518(v=vs.85).aspx">ADDDEFAULT</a> v příručce instalátoru Windows.</p>
-<div class="admonition note">
-<p class="admonition-title">Poznámka</p>
-<p>Při prvopočáteční instalaci není možné zadat <code class="docutils literal notranslate"><span class="pre">REMOVE</span></code>, protože to vypíná veškeré funkce.</p>
-</div>
-</section>
-<section id="installation-folder">
-<h3>Instalační složka<a class="headerlink" href="#installation-folder" title="Link to this heading"></a></h3>
-<p>Je možné změnit instalační složku zadáním vlastnosti  <code class="docutils literal notranslate"><span class="pre">INSTALLDIR</span></code>, nějak jako:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">passive</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">INSTALLDIR</span><span class="o">=</span><span class="s2">&quot;C:\Program Files\Non Standard Nextcloud Client Folder&quot;</span>
-</pre></div>
-</div>
-<p>Buďte opatrní při používání PowerShell namísto <code class="docutils literal notranslate"><span class="pre">cmd.exe</span></code> – v takovém případě může být ošemetné správně zbavit významu prázdné znaky. Zadání <code class="docutils literal notranslate"><span class="pre">INSTALLDIR</span></code> jako toto funguje pouze při první instalaci, není možné jednoduše znovu vyvolat <code class="docutils literal notranslate"><span class="pre">.msi</span></code> s odlišným popisem umístění. Pokud ho i tak potřebujete změnit, je třeba nejprve odinstalovat a nainstalovat znovu s novým popisem umístění.</p>
-</section>
-<section id="disabling-automatic-updates">
-<h3>Vypnutí automatických aktualizací<a class="headerlink" href="#disabling-automatic-updates" title="Link to this heading"></a></h3>
-<p>Pokud chcete vypnout automatické aktualizace, je možné předat vlastnost <code class="docutils literal notranslate"><span class="pre">SKIPAUTOUPDATE</span></code> .:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">passive</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">SKIPAUTOUPDATE</span><span class="o">=</span><span class="s2">&quot;1&quot;</span>
-</pre></div>
-</div>
-</section>
-<section id="launch-after-installation">
-<h3>Spustit po instalaci<a class="headerlink" href="#launch-after-installation" title="Link to this heading"></a></h3>
-<p>Pro automatické spuštění klienta po instalaci, je možné předat vlastnost <code class="docutils literal notranslate"><span class="pre">LAUNCH</span></code>.:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">LAUNCH</span><span class="o">=</span><span class="s2">&quot;1&quot;</span>
-</pre></div>
-</div>
-<p>Tato volba také odebere zaškrtávátko umožňující uživateli rozhodnout zda chce spustit klienta pro nepasivní/tichý režim.</p>
-<div class="admonition note">
-<p class="admonition-title">Poznámka</p>
-<p>Tato volba nemá žádný efekt bez grafického uživatel. rozhraní.</p>
-</div>
-</section>
-<section id="no-reboot-after-installation">
-<h3>Nerestartovat po instalaci<a class="headerlink" href="#no-reboot-after-installation" title="Link to this heading"></a></h3>
-<p>Klient Nextcloud po instalaci naplánuje restart, aby bylo zajištěno, že rozšíření pro Průzkumníka bude správně (od)načteno. Pokud restart zařizujete sami, je možné nastavit vlastnost <code class="docutils literal notranslate"><span class="pre">REBOOT</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">REBOOT</span><span class="o">=</span><span class="n">ReallySuppress</span>
-</pre></div>
-</div>
-<p>Toto způsobí, že <code class="docutils literal notranslate"><span class="pre">msiexec</span></code> skončí s chybou <code class="docutils literal notranslate"><span class="pre">ERROR_SUCCESS_REBOOT_REQUIRED</span></code> (3010). Pokud vámi využívaný nasazovací nástroj toto interpretuje jako skutečnou chybu a chcete tomu předejít, je možné namísto toho nastavit  <code class="docutils literal notranslate"><span class="pre">DO_NOT_SCHEDULE_REBOOT</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">msiexec</span> <span class="o">/</span><span class="n">i</span> <span class="n">Nextcloud</span><span class="o">-</span><span class="n">x</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">z</span><span class="o">-</span><span class="n">x64</span><span class="o">.</span><span class="n">msi</span> <span class="n">DO_NOT_SCHEDULE_REBOOT</span><span class="o">=</span><span class="s2">&quot;1&quot;</span>
-</pre></div>
-</div>
-</section>
-</section>
-<section id="installation-wizard">
-<h2>Průvodce instalací<a class="headerlink" href="#installation-wizard" title="Link to this heading"></a></h2>
-<p>Průvodce instalací vás provede krok za krokem volbami nastavení aplikace a účtu. Jako první je zapotřebí zadat URL Nextcloud serveru.</p>
+<section id="initial-setup">
+<h2>Initial Setup<a class="headerlink" href="#initial-setup" title="Link to this heading"></a></h2>
+<p>After installation, the initial setup wizard is triggered. In the setup wizard,
+you can log in to your server, create an account with a provider, and configure
+which folders to sync. The wizard will guide you step-by-step through the
+essential configuration options and basic account setup.</p>
+<p>First, you need to enter the URL of your Nextcloud server.</p>
 <img alt="formulář pro volbu mezi přihlášením a zaregistrováním se" src="../../_images/wizard_welcome.png" />
-<p>Pokud už máte účet na instanci Nextcloud, nejspíš budete chtít kliknout na tlačítko <code class="docutils literal notranslate"><span class="pre">Přihlásit</span> <span class="pre">do</span> <span class="pre">vámi</span> <span class="pre">využívaného</span> <span class="pre">Nextcloud</span></code>. Pokud nemáte instanci Nextcloud a účet na ní, nejspíš si budete chtít zaregistrovat účet u poskytovatele. V takovém případě klikněte na <code class="docutils literal notranslate"><span class="pre">Vytvořit</span> <span class="pre">účet</span> <span class="pre">u</span> <span class="pre">poskytovatele</span></code>. Mějte na paměti, že klient pro počítač může být sestaven bez podpory pro poskytovatele. V takovém případě tuto stránku neuvidíte. Namísto toho budete dotázáni následující stránkou.</p>
+<p>If you already have an account on a Nextcloud instance, click <code class="docutils literal notranslate"><span class="pre">Login</span> <span class="pre">to</span> <span class="pre">your</span>
+<span class="pre">Nextcloud</span></code>. If you do not yet have a Nextcloud instance or an account, you may
+need to create one first. Alternatively, you might want to register an account
+with a provider. Press <code class="docutils literal notranslate"><span class="pre">Create</span> <span class="pre">account</span> <span class="pre">with</span> <span class="pre">Provider</span></code> in that case.</p>
+<div class="admonition note">
+<p class="admonition-title">Poznámka</p>
+<p>The desktop client build you are using may have been built without provider
+support. In that case, you won’t see this page and will immediately see the
+next page.</p>
+</div>
 <img alt="formulář pro zadání URL Nextcloud serveru" src="../../_images/wizard_setup.png" />
 <p>Zadejte URL vámi využívané instance Nextcloud serveru. URL je stejná jako ta, kterou píšete do prohlížeče, když se pokoušíte přistoupit k webovému rozhraní této instance.</p>
 <img alt="formulář čekající na pověření" src="../../_images/wizard_flow2.png" />
-<p>Nyní by se měl otevřít vámi využívaný webový prohlížeč a dotázat se vás na přihlášení do vámi využívané instance Nextcloud. V prohlížeči zadejte své uživatelské jméno a heslo a udělte přístup. Jakmile to uděláte, přejděte zpět do průvodce. Mějte na paměti, že pokud jste už v prohlížeči byli přihlášení, nebude třeba zadávat uživatelské jméno a heslo.</p>
+<p>Now your web browser should open and prompt you to log in to your
+Nextcloud instance. Enter your username and password in your web
+browser and click <em>Grant access</em> when prompted. After you do that,
+go back to the wizard.</p>
+<div class="admonition note">
+<p class="admonition-title">Poznámka</p>
+<p>You might not need to enter your username and password if you are
+already logged in to your web browser.</p>
+</div>
 <img alt="Vyberte které vzdálené složky synchronizovat a ve kterých lokálních je ukládat." src="../../_images/wizard_advanced.png" />
 <p>Na obrazovce předvoleb místní složky je možné synchronizovat veškeré vaše soubory na Nextcloud server, nebo vybrat jednotlivé složky. Výchozí lokální synchronizační složka je <code class="docutils literal notranslate"><span class="pre">Nextcloud</span></code>, nacházející se ve vaší domovské složce. I to je možné změnit.</p>
-<p>Poté, co jste dokončili výběr své synchronizační složky, klikněte na tlačítko Připojit vpravo dole. Klient se pokusí připojit k vámi využívanému Nextcloud server a když se to povede, průvodce se zavře. Nyní je možné pozorovat synchronizační aktivitu, když otevřete hlavní dialog kliknutím na ikonu v oznamovací oblasti systémového panelu.</p>
+<p>When you have completed selecting your sync folders, click the <em>Connect</em>
+button at the bottom right. The client will attempt to connect to your
+Nextcloud server. If it is successful, the wizard will close itself. You
+can then observe the sync activity and open the main dialog by clicking
+on the tray icon.</p>
 </section>
 </section>
 
@@ -307,7 +223,7 @@ For BSD, we support them if technically feasible but we do not test.</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="index.html" class="btn btn-neutral float-left" title="Klienti pro desktop" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="index.html" class="btn btn-neutral float-left" title="Desktop Client" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="uninstallation.html" class="btn btn-neutral float-right" title="Uninstallation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
@@ -333,6 +249,8 @@ For BSD, we support them if technically feasible but we do not test.</p>
 
   
   
+  
+    
   
     
   
@@ -594,6 +512,14 @@ For BSD, we support them if technically feasible but we do not test.</p>
                
             >
               Korean
+            </a>
+          </dd>
+        
+          <dd style="width: 32%; vertical-align: top;">
+            <a href="/server/latest/user_manual/lo/"
+               
+            >
+              lo
             </a>
           </dd>
         
