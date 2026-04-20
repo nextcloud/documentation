@@ -439,32 +439,27 @@ jobs:
           branch="${{ needs.stage-and-check.outputs.branch_name }}"
           additional="${{ needs.stage-and-check.outputs.additional_deployment }}"
 
-          changed=0
+          # Copy built documentation into server folder
+          mkdir -p server/${branch}
+          for artifact in stage/${branch}/*; do
+            if [ -d "$artifact" ]; then
+              manual_name="$(basename "$artifact")"
+              rm -rf "server/${branch}/${manual_name}"
+              cp -r "$artifact" "server/${branch}/${manual_name}"
+            fi
+          done
 
-          # Deploy to primary branch folder
-          echo "Deploying to server/${branch}/"
-          if [ -d "stage/${branch}" ]; then
-            rm -rf "server/${branch}"
-            mkdir -p "server/${branch}"
-            cp -r "stage/${branch}/"* "server/${branch}/" || true
-            changed=1
-          fi
+          # Move pdf files to the root of the branch folder
+          mv server/${branch}/*/*.pdf server/${branch}/ 2>/dev/null || true
 
           # If this is the highest stable branch, also deploy to its versioned folder
           if [ -n "${additional}" ]; then
-            echo "Also deploying to server/${additional}/ (additional versioned deployment)"
-            rm -rf "server/${additional}"
-            mkdir -p "server/${additional}"
-            cp -r "stage/${branch}/"* "server/${additional}/" || true
-            changed=1
+            rm -rf server/${additional}
+            cp -r server/${branch} server/${additional}
           fi
 
-          # Clean up empty directories
+          # Cleanup empty directories
           find . -type d -empty -delete
-
-          # Log the final directory structure for debugging
-          echo "Final server/ structure:"
-          find server -type d -maxdepth 2
 
           # Check if there are actual changes
           if git diff --quiet HEAD; then
@@ -476,6 +471,33 @@ jobs:
         # Remove the stage/ directory BEFORE creating the PR so it doesn't get committed
       - name: Clean up staging cache before commit
         run: rm -rf stage/
+
+      # ========================================================================
+      # ADD REDIRECT FILES
+      # ========================================================================
+      - name: Add various redirects for go.php and user_manual english version
+        run: |
+          branch="${{ needs.stage-and-check.outputs.branch_name }}"
+          additional="${{ needs.stage-and-check.outputs.additional_deployment }}"
+
+          git fetch origin ${{ github.event.repository.default_branch }} ${{ github.ref_name }}
+
+          # Add go.php redirect from main branch
+          git checkout origin/${{ github.event.repository.default_branch }} -- go.php/index.html
+          mkdir -p server/${branch}/go.php
+          mv go.php/index.html server/${branch}/go.php/index.html
+
+          # Add user_manual english redirect
+          git checkout origin/${{ github.ref_name }} -- user_manual/index.html
+          mkdir -p server/${branch}/user_manual
+          mv user_manual/index.html server/${branch}/user_manual/index.html
+
+          # Also copy to versioned folder if applicable
+          if [ -n "${additional}" ]; then
+            mkdir -p server/${additional}/go.php server/${additional}/user_manual
+            cp server/${branch}/go.php/index.html server/${additional}/go.php/
+            cp server/${branch}/user_manual/index.html server/${additional}/user_manual/
+          fi
 
       - name: Create Pull Request for documentation deployment
         uses: peter-evans/create-pull-request@c0f553fe549906ede9cf27b5156039d195d2ece0 # v8.1.0
