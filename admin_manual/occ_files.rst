@@ -11,6 +11,8 @@ Encryption
 
  encryption
   encryption:change-key-storage-root   Change key storage root
+  encryption:clean-orphaned-keys       Scan the keys storage for orphaned
+                                       keys and remove them
   encryption:decrypt-all               Disable server-side encryption and
                                        decrypt all files
   encryption:disable                   Disable encryption
@@ -83,6 +85,16 @@ be quite slow as it needs to rewrite each encrypted file. If you do not do it fi
 will be migrated to drop their legacy filekey on the first modification. If you have
 old files from Nextcloud<25 still using base64 encoding this will migrate them to the
 binary format and save about 33% disk space.
+
+``encryption:clean-orphaned-keys`` scans the key storage for keys that no longer
+have a corresponding file and removes them. When run, it iterates over all user
+key stores, reports any orphaned keys found, and then interactively asks whether
+to delete all of them at once or specific ones individually::
+
+ sudo -E -u www-data php occ encryption:clean-orphaned-keys [<user>]
+
+The optional ``user`` argument limits the scan to a single user. If omitted, all
+users are scanned.
 
 See :doc:`../configuration_files/encryption_configuration` to learn more.
 
