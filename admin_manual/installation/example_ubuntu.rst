@@ -1,7 +1,7 @@
 .. _ubuntu_installation_label:
 
 ========================================
-Example installation on Ubuntu 22.04 LTS
+Example installation on Ubuntu 24.04 LTS
 ========================================
 
 You can use .deb packages to install the required and recommended modules for a
