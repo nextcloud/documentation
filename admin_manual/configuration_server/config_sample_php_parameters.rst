@@ -2632,6 +2632,21 @@ Memory caching backend for distributed data
 
 Defaults to ``none``
 
+memcache_customprefix
+^^^^^^^^^^^^^^^^^^^^^
+
+
+::
+
+	'memcache_customprefix' => 'mycustomprefix',
+
+Cache Key Prefix for Redis or Memcached
+
+* Used for avoiding collisions in the cache system
+* May be used for ACL restrictions in Redis
+
+Defaults to ``''`` (empty string)
+
 redis
 ^^^^^
 
