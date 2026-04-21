@@ -18,7 +18,7 @@
   
       <script src="../_static/jquery.js?v=5d32c60e"></script>
       <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../_static/documentation_options.js?v=f4332903"></script>
+      <script src="../_static/documentation_options.js?v=a49d5d77"></script>
       <script src="../_static/doctools.js?v=9bcbadda"></script>
       <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
       <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
@@ -281,6 +281,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#memory-caching-backend-configuration">Memory caching backend configuration</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#memcache-local">memcache.local</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#memcache-distributed">memcache.distributed</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#memcache-customprefix">memcache_customprefix</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#redis">redis</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#redis-cluster">redis.cluster</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#memcached-servers">memcached_servers</a></li>
@@ -2560,6 +2561,18 @@ For the local cache (you can configure two) take APCu.</p></li>
 </ul>
 <p>Defaults to <code class="docutils literal notranslate"><span class="pre">none</span></code></p>
 </section>
+<section id="memcache-customprefix">
+<h3>memcache_customprefix<a class="headerlink" href="#memcache-customprefix" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;memcache_customprefix&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;mycustomprefix&#39;</span><span class="p">,</span>
+</pre></div>
+</div>
+<p>Cache Key Prefix for Redis or Memcached</p>
+<ul class="simple">
+<li><p>Used for avoiding collisions in the cache system</p></li>
+<li><p>May be used for ACL restrictions in Redis</p></li>
+</ul>
+<p>Defaults to <code class="docutils literal notranslate"><span class="pre">''</span></code> (empty string)</p>
+</section>
 <section id="redis">
 <h3>redis<a class="headerlink" href="#redis" title="Link to this heading"></a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;redis&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
@@ -3908,26 +3921,18 @@ normal maintenance change. To disable this specific email the appconfig option
         </dd>
         
         <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/32/admin_manual"
+             
+          >
+            32
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
           <a href="https://docs.nextcloud.com/server/31/admin_manual"
              
           >
             31
-          </a>
-        </dd>
-        
-        <dd style="width: 32%">
-          <a href="https://docs.nextcloud.com/server/30/admin_manual"
-             
-          >
-            30
-          </a>
-        </dd>
-        
-        <dd style="width: 32%">
-          <a href="https://docs.nextcloud.com/server/29/admin_manual"
-             
-          >
-            29
           </a>
         </dd>
         
