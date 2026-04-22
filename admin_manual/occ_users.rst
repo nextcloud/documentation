@@ -278,20 +278,29 @@ group "beer"::
 
  sudo -E -u www-data php occ group:add beer
 
-Add an existing user to the specified group with the ``group:adduser``
+Add one or more existing users to the specified group with the ``group:adduser``
 command. The syntax is::
 
- group:adduser [gid] [uid]
+ group:adduser <gid> <uid1> [uid2 ... uidN]
 
 This example adds the user "denis" to the existing group "beer"::
 
  sudo -E -u www-data php occ group:adduser beer denis
 
-You can remove user from the group with the ``group:removeuser`` command.
+This example adds the users "denis", "dora" and "daisy" to the existing group "beer"::
+
+ sudo -E -u www-data php occ group:adduser beer denis dora daisy
+
+You can remove one or more users from the group with the ``group:removeuser`` command.
 This example removes the existing user "denis" from the existing
 group "beer"::
 
  sudo -E -u www-data php occ group:removeuser beer denis
+
+This example removes the existing user "denis", "dora" and "daisy" from the existing
+group "beer"::
+
+ sudo -E -u www-data php occ group:removeuser beer denis dora daisy
 
 Remove a group with the ``group:delete`` command. Removing a group doesn't
 remove users in a group. You cannot remove the "admin" group. This example
