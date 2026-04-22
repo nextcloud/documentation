@@ -9,53 +9,13 @@ on:
 
 permissions:
   contents: read
+  packages: read
 
 concurrency:
   group: build-documentation-${{ github.head_ref || github.run_id }}
   cancel-in-progress: true
 
 jobs:
-  setup-latex-cache:
-    name: Cache LaTeX packages
-    # Force running on GitHub-hosted runners
-    runs-on: ubuntu-24.04
-
-    steps:
-      - name: Check texlive-fonts-extra installed files cache
-        id: cache-fonts-extra
-        uses: actions/cache@668228422ae6a00e4ad889ee87cd7109ec5666a7 # v5.0.4
-        with:
-          path: ${{ github.workspace }}/.cache/texlive-fonts-extra
-          key: latex-fonts-extra-${{ runner.os }}-${{ runner.arch }}-ubuntu-24.04-texlive-2023-v1
-          lookup-only: true
-
-      - name: Install texlive-fonts-extra and cache installed files (cache miss only)
-        if: steps.cache-fonts-extra.outputs.cache-hit != 'true'
-        run: |
-          for i in 1 2 3; do
-            sudo DEBIAN_FRONTEND=noninteractive apt-get update \
-              -o Acquire::Retries=3 && break
-            echo "apt-get update failed (attempt $i), retrying in 15s..."
-            sleep 15
-          done
-          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends texlive-fonts-extra
-          mkdir -p "$GITHUB_WORKSPACE/.cache/texlive-fonts-extra"
-          while IFS= read -r f; do
-            [ -f "$f" ] || [ -L "$f" ] || continue
-            rel="${f#/}"
-            dir="$GITHUB_WORKSPACE/.cache/texlive-fonts-extra/$(dirname "$rel")"
-            mkdir -p "$dir"
-            sudo cp -P "$f" "$dir/"
-          done < <(dpkg -L texlive-fonts-extra)
-          sudo chown -R $(id -u):$(id -g) "$GITHUB_WORKSPACE/.cache/texlive-fonts-extra"
-
-      - name: Save texlive-fonts-extra installed files cache (cache miss only)
-        if: steps.cache-fonts-extra.outputs.cache-hit != 'true'
-        uses: actions/cache/save@668228422ae6a00e4ad889ee87cd7109ec5666a7 # v5.0.4
-        with:
-          path: ${{ github.workspace }}/.cache/texlive-fonts-extra
-          key: latex-fonts-extra-${{ runner.os }}-${{ runner.arch }}-ubuntu-24.04-texlive-2023-v1
-
   build-html:
     name: Building ${{ matrix.manual.name }} HTML
     runs-on: ubuntu-latest
@@ -115,8 +75,9 @@ jobs:
   # ============================================================================
   build-pdf:
     name: Building ${{ matrix.manual.name }} PDF
-    runs-on: [ubuntu-latest, self-hosted]
-    needs: setup-latex-cache
+    runs-on: ubuntu-latest
+    container:
+      image: ghcr.io/${{ github.repository }}/sphinx-latex:latest
 
     strategy:
       fail-fast: false
@@ -142,30 +103,6 @@ jobs:
       - name: Install pip dependencies
         run: pip install -r requirements.txt
 
-      - name: Restore texlive-fonts-extra installed files
-        uses: actions/cache/restore@668228422ae6a00e4ad889ee87cd7109ec5666a7 # v5.0.4
-        with:
-          path: ${{ github.workspace }}/.cache/texlive-fonts-extra
-          key: latex-fonts-extra-${{ runner.os }}-${{ runner.arch }}-ubuntu-24.04-texlive-2023-v1
-          fail-on-cache-miss: true
-
-      - name: Install texlive-fonts-extra from cache
-        run: sudo cp -r "$GITHUB_WORKSPACE/.cache/texlive-fonts-extra/." /
-
-      - name: Install LaTeX packages
-        run: |
-          for i in 1 2 3; do
-            sudo DEBIAN_FRONTEND=noninteractive apt-get update \
-              -o Acquire::Retries=3 && break
-            echo "apt-get update failed (attempt $i), retrying in 15s..."
-            sleep 15
-          done
-          sudo DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
-            texlive-fonts-recommended latexmk texlive-latex-extra \
-            texlive-latex-recommended texlive-xetex texlive-fonts-extra-links \
-            xindy tex-gyre
-          sudo mktexlsr
-
       - name: Compute PDF release version
         id: pdf_version
         run: |
@@ -190,6 +127,7 @@ jobs:
         with:
           name: ${{ matrix.manual.name }}-pdf
           path: ${{ matrix.manual.directory }}/${{ matrix.manual.build_pdf_path }}/*.pdf
+
 
   # ============================================================================
   # STAGE AND VALIDATE
