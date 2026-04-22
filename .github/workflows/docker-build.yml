@@ -6,6 +6,9 @@ on:
       - master
     paths:
       - ".docker/sphinx-latex/**"
+  pull_request:
+    paths:
+      - ".docker/sphinx-latex/**"
   workflow_dispatch:
 
 permissions:
@@ -25,6 +28,7 @@ jobs:
         uses: docker/setup-buildx-action@b5730e84e09ef46c65d80d5f65f899e59003028b # v3.10.0
 
       - name: Login to GitHub Container Registry
+        if: github.event_name != 'pull_request'
         uses: docker/login-action@74a5d142397b4f367a81961eba4e8cd7edddf772 # v3.4.0
         with:
           registry: ghcr.io
@@ -44,7 +48,7 @@ jobs:
         uses: docker/build-push-action@14487ce63c7a62a4a324b0bfb37086795e31c6c1 # v6.16.0
         with:
           context: .docker/sphinx-latex
-          push: true
+          push: ${{ github.event_name != 'pull_request' }}
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           cache-from: type=registry,ref=ghcr.io/${{ github.repository }}/sphinx-latex:latest
