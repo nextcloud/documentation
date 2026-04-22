@@ -12,7 +12,6 @@ RUN apt-get update \
     git \
     lsb-release \
     make \
-    python3-pip \
     latexmk \
     tex-gyre \
     texlive-fonts-extra \
