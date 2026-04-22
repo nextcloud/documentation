@@ -5,13 +5,12 @@ LABEL org.opencontainers.image.description="Sphinx + LaTeX build environment for
 LABEL org.opencontainers.image.licenses="AGPL-3.0"
 
 ENV DEBIAN_FRONTEND=noninteractive
-# Allow pip to install packages system-wide inside the container
-ENV PIP_BREAK_SYSTEM_PACKAGES=1
 
 RUN apt-get update \
   && apt-get install -y --no-install-recommends \
     curl \
     git \
+    lsb-release \
     make \
     python3-pip \
     latexmk \
@@ -25,3 +24,7 @@ RUN apt-get update \
     xindy \
   && mktexlsr \
   && rm -rf /var/lib/apt/lists/*
+
+# Allow pip to install packages system-wide inside the container (used by
+# actions/setup-python and plain pip invocations running as root)
+RUN printf '[global]\nbreak-system-packages = true\n' > /etc/pip.conf
