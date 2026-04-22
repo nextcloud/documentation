@@ -8,6 +8,9 @@ ENV DEBIAN_FRONTEND=noninteractive
 
 RUN apt-get update \
   && apt-get install -y --no-install-recommends \
+    curl \
+    git \
+    lsb-release \
     make \
     python3-pip \
     latexmk \
@@ -21,3 +24,7 @@ RUN apt-get update \
     xindy \
   && mktexlsr \
   && rm -rf /var/lib/apt/lists/*
+
+# Allow pip to install packages system-wide inside the container (used by
+# actions/setup-python and plain pip invocations running as root)
+RUN printf '[global]\nbreak-system-packages = true\n' > /etc/pip.conf
