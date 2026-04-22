@@ -69,7 +69,7 @@ use on their system.
 - *Strikethrough cloud*: The item is excluded from synchronization.
 - *Pie chart*: The item is currently being uploaded or downloaded, and the progress
   is visualized.
-- *Filled circle with downward arrow*: The item is available offline and will
+- *Filled circle with a pin*: The item is available offline and will
   be kept locally.
 - *No icon*: The item is available offline and up to date.
 
@@ -85,10 +85,19 @@ the context menu in Finder.
 Keep Downloaded
 ^^^^^^^^^^^^^^^
 
-Depending on the download state of a folder or file, the context menu will
-offer to always keep an item downloaded or free up local disk space by
-evicting the local copy while not actually deleting the item. This way, it
-stays available any time for download from the server.
+Files and folders can be marked to be kept downloaded and available offline 
+permanently. If this is chosen on folders, it will also apply to all their
+contents. This is especially useful for users with limited or no network
+access, as it ensures that they can always access their important files without
+needing to worry about connectivity. macOS will **not** free up local disk
+space by evicting items which are marked to be kept downloaded, even if they
+have not been accessed for a long time.
+
+This can be undone by selecting "Allow automatic freeing up space" on the same
+items.
+
+To always keep everything in an account available locally, you can select
+"Always keep downloaded" on the location root in the Finder sidebar.
 
 Locking
 ^^^^^^^
