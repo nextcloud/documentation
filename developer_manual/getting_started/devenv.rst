@@ -18,8 +18,6 @@ Set up Web server and database
 
 First `set up your Web server and database <https://docs.nextcloud.com/server/latest/admin_manual/installation/index.html>`_ (**Section**: Manual Installation - Prerequisites).
 
-.. TODO ON RELEASE: Update version number above on release
-
 Get the source
 --------------
 
@@ -27,8 +25,6 @@ There are two ways to obtain Nextcloud sources:
 
 * Using the `stable version <https://docs.nextcloud.com/server/latest/admin_manual/installation/index.html>`_
 * Using the development version from `GitHub`_ which will be explained below.
-
-.. TODO ON RELEASE: Update version number above on release
 
 To check out the source from `GitHub`_ you will need to install Git (see `Setting up Git <https://help.github.com/articles/set-up-git>`_ from the GitHub help)
 
@@ -54,7 +50,7 @@ Check out the code
 
 The following commands are using **/var/www** as the Web server's directory and **www-data** as user name and group.
 
-After the development tool installation make the directory writable so you install the code as your regular user, and don't need root privileges::
+Make the directory writable so you can install the code as your regular user, and don't need root privileges::
 
   sudo chmod o+rw /var/www
 
@@ -108,10 +104,10 @@ When upgrading the server code you might need to upgrade the app code as well be
 
 .. note:: The same applies to all the apps listed under ``alwaysEnabled`` in `shipped.json <https://github.com/nextcloud/server/blob/master/core/shipped.json#L49>`_ but most are already present in the server repository.
 
+.. _debugmode:
+
 Enabling debug mode
 ^^^^^^^^^^^^^^^^^^^
-
-.. _debugmode:
 
 .. note:: Do not enable this for production! This can create security problems and is only meant for debugging and development!
 

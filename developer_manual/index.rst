@@ -5,7 +5,7 @@ Nextcloud developer documentation
 =================================
 
 .. _Nextcloud App Store: https://apps.nextcloud.com/
-.. _Translation: https://www.transifex.com/nextcloud/
+.. _Translation: https://explore.transifex.com/nextcloud/
 .. _Documentation: https://github.com/nextcloud/documentation#nextcloud-documentation
 
 Table of contents
@@ -18,9 +18,11 @@ Table of contents
     getting_started/index
     basics/index
     app_development/index
-    core/index
+    exapp_development/index
+    server/index
     digging_deeper/index
     app_publishing_maintenance/index
     design/index
     html_css_design/index
     client_apis/index
+    desktop/index

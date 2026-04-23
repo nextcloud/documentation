@@ -12,7 +12,9 @@ Basic concepts
    middlewares
    events
    front-end/index
+   translations
    backgroundjobs
+   caching
    logging
    setting
    storage/index

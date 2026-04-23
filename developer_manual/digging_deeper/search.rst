@@ -14,7 +14,7 @@ The unified search combines a variable number of search providers into a unified
 Hence the search process consists of two steps.
 
  1. Fetch the current set of search provider IDs
- 2. Fetch each provider's search results
+ 2. Fetch each provider’s search results
 
 These two steps have to be run consecutively, but the individual requests in the second step can be dispatched and processed concurrently.
 
@@ -34,18 +34,46 @@ This will return a structure like
             },
             "data": [
                 {
-                    "id": "mail",
-                    "name": "Mail",
-                    "order": -50
+                    "id": "talk-message",
+                    "appId": "spreed",
+                    "name": "Messages",
+                    "icon": "/apps/spreed/img/app.svg",
+                    "order": -2,
+                    "triggers": ["talk-message"],
+                    "filters": {
+                        "term": "string",
+                        "since": "datetime",
+                        "until": "datetime",
+                        "person": "person"
+                    },
+                    "inAppSearch": false
                 },
                 {
                     "id": "files",
-                    "name": "Files",
-                    "order": 5
+                    "appId": "files",
+                    "name": "Fichiers",
+                    "icon": "/apps/files/img/app.svg",
+                    "order": 5,
+                    "triggers": ["files"],
+                    "filters": {
+                        "term": "string",
+                        "since": "datetime",
+                        "until": "datetime",
+                        "person": "person",
+                        "min-size": "int",
+                        "max-size": "int",
+                        "mime": "string",
+                        "type": "string"
+                    },
+                    "inAppSearch": false
                 }
             ]
         }
     }
+
+
+``filters`` list filters supported by the provider with their expected type
+
 
 Fetching individual search results
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -81,10 +109,10 @@ Fetching individual search results
         }
     }
 
-Search providers
-----------------
+Simple search providers
+-----------------------
 
-A **search provider** is a class the implements the interface ``\OCP\Search\IProvider``.
+A **search provider** is a class which implements the interface ``\OCP\Search\IProvider``.
 
 .. code-block:: php
 
@@ -109,7 +137,7 @@ A **search provider** is a class the implements the interface ``\OCP\Search\IPro
         }
 
         public function getOrder(string $route, array $routeParameters): int {
-            if (strpos($route, Application::APP_ID . '.') === 0) {
+            if (str_contains($route, Application::APP_ID)) {
                 // Active app, prefer my results
                 return -1;
             }
@@ -127,13 +155,85 @@ A **search provider** is a class the implements the interface ``\OCP\Search\IPro
         }
     }
 
-The method ``getId`` returns a string identifier of the registered provider. It has to be globally unique, hence must not conflict with any other apps. Therefore it's advised to use just the app ID (e.g. ``mail``) as ID or an ID that is prefixed with the app id, like ``mail_recipients``. ``getName`` is a translated name for your search results.
+The method ``getId`` returns a string identifier of the registered provider. It has to be globally unique, hence must not conflict with any other apps. Therefore it’s advised to use just the app ID (e.g. ``mail``) as ID or an ID that is prefixed with the app id, like ``mail_recipients``. ``getName`` is a translated name for your search results.
 
 The ``getOrder`` method returns the order of the provider for the current page. With the route parameter you can check if the route is from your app and in that case use a negative value. Otherwise your app should use a value around 50.
 
 The method ``search`` transforms a search request into a search result.
 
-The class would typically be saved into a file in ``lib/Search`` of your app but you are free to put it elsewhere as long as it's loadable by Nextcloud's :ref:`dependency injection container<dependency-injection>`.
+The class would typically be saved into a file in ``lib/Search`` of your app but you are free to put it elsewhere as long as it’s loadable by Nextcloud’s :ref:`dependency injection container<dependency-injection>`.
+
+
+Advanced search provider
+------------------------ 
+
+Since Nextcloud 28.0, it is possible to use advanced search providers by implementing ``\OCP\Search\IFilteringProvider``.
+This interface allows to supports other filtering types.
+
+.. code-block:: php
+
+    <?php
+
+    declare(strict_types=1);
+
+    namespace OCA\MyApp\Search;
+
+    use OCA\MyApp\AppInfo\Application;
+    use OCP\IUser;
+    use OCP\Search\FilterDefinition;
+    use OCP\Search\IFilteringProvider;
+
+    class Provider implements IFilteringProvider {
+
+        // TODO Implement functions from simple search provider
+
+	public function getSupportedFilters(): array {
+            return [
+                'term',
+                'since',
+                'until',
+                'person',
+                'custom_int',
+                'custom_user',
+                'custom_bool',
+            ];
+        }
+
+	public function getAlternateIds(): array {
+            return [];
+        }
+
+	public function getCustomFilters(): array {
+            return [
+                new FilterDefinition('custom_int', FilterDefinition::TYPE_INT),
+                new FilterDefinition('custom_user', FilterDefinition::TYPE_USER),
+                new FilterDefinition('custom_bool', FilterDefinition::TYPE_BOOL),
+            ];
+        }
+
+        public function search(IUser $user, ISearchQuery $query): SearchResult {
+            // Retrieve filters
+            /** @var $since ?DateTimeImmutable */
+            $since = $query->getFilter('since')?->get();
+            /** @var $user ?IUser */       
+            $user = $query->getFilter('custom_user')?->get();
+
+            // TODO Do actual search 
+            
+            return new SearchResult(/* … */);
+        }
+    }
+
+``getSupportedFilters`` lists the filters supported by the provider. If filters send by client are not supported, the provider will not receive the request.
+
+``getCustomFilters`` allows to declare specific filters. In current state, the specific filters will only be available in the API.
+
+External search provider
+------------------------
+
+Since Nextcloud 32, to improve privacy, you can extend your provider with the ``\OCP\Search\IExternalProvider`` interface and implement the ``isExternalProvider()`` method to indicate that the search is performed on external (3rd-party) resources.
+In the Unified Search UI, searching through these providers is disabled by default (via toggle switch).
+
 
 Provider registration
 ---------------------
@@ -172,7 +272,7 @@ Search requests are processed in the ``search`` method. The ``$user`` object is 
 
 The result is encapsulated in the ``SearchResult`` class that offers two static factory methods ``complete`` and ``paginated``. Both of these methods take an array of ``SearchResultEntry`` objects.
 
-Next, you'll see a dummy provider that returns a static set of results.
+Next, you’ll see a dummy provider that returns a static set of results.
 
 .. code-block:: php
 
@@ -254,7 +354,7 @@ Each of the result entry has
 * A subline, e.g. the path to a file
 * A resource URL that makes it possible to navigate to the details of this result
 * Optional icon CSS class that is applied then the thumbnail URL was not set
-* A boolean rounded, whether the thumbnail should be rounded, e.g. when it's an avatar
+* A boolean rounded, whether the thumbnail should be rounded, e.g. when it’s an avatar
 
 Apps **may** return the full result in ``search``, but in most cases the size of the result set can become too big to fit into one HTTP request and is complicated to display to the user, hence the set should be split into chunks – it should be **paginated**.
 
@@ -330,7 +430,7 @@ For **offset-based pagination** you return ``$query->getLimit()`` results and sp
 
 So the first call will get a cursor of ``null`` and a limit of, say, 20. So the first 20 rows are fetched. The next call will have a cursor of 20, so the 20st to 39th rows are fetched.
 
-The downside of a offset-based pagination is that when the underlying data changes (new entries are inserted into or deleted from the database, files change), the offset might be out of sync from on request to its successor. Therefor, if possible, a true cursor-based pagination is preferable.
+The downside of a offset-based pagination is that when the underlying data changes (new entries are inserted into or deleted from the database, files change), the offset might be out of sync from on request to its successor. Therefore, if possible, a true cursor-based pagination is preferable.
 
 For a **cursor-based pagination** a app-specific property is used to know a reference to the last element of the previous search request. The presumption of this algorithm is that the result set is sorted by an attribute and this attribute is an ``int`` or ``string``. The attribute value of the last element in the result page determines the cursor for the next search request. Again, a small example shall demonstrate how this works.
 
@@ -404,7 +504,7 @@ For a **cursor-based pagination** a app-specific property is used to know a refe
 Optional attributes
 ^^^^^^^^^^^^^^^^^^^
 
-The unified search is available via OCS, which means client application like the mobile apps can use it to get access to the server search mechanism. The default properties of a search result entry might be difficult to parse and interpret in those clients, hence it's possible to add optional string attributes to each entry.
+The unified search is available via OCS, which means client application like the mobile apps can use it to get access to the server search mechanism. The default properties of a search result entry might be difficult to parse and interpret in those clients, hence it’s possible to add optional string attributes to each entry.
 
 .. code-block:: php
 
@@ -416,6 +516,13 @@ The unified search is available via OCS, which means client application like the
     $entry->addAttribute("boardId", "567");
 
 .. note:: This method was added in Nextcloud 21. If your app also targets Nextcloud 20 you should either not use it or add a version check to invoke the method only conditionally.
+
+Declare in-app search 
+---------------------
+
+If your application also have in-app search (like ``mail`` or ``talk``), your provider can also implements interface ``\OCP\Search\IInAppSearch``.
+
+This will add a link for it after search results.
 
 Privacy
 -------

@@ -4,6 +4,12 @@
 Settings
 ========
 
+.. toctree::
+   :maxdepth: 3
+
+   declarative_settings
+
+
 .. sectionauthor:: Arthur Schiwon <blizzz@arthur-schiwon.de>
 
 An app can register both admin settings as well as personal settings.
@@ -20,7 +26,7 @@ For the settings to show up, three things are necessary:
 2. A template
 3. The implementing class specified in the app's info.xml
 
-Below is an example of an implementor of the ISettings interface. It is based
+Below is an example of an implementer of the ISettings interface. It is based
 on the survey_client solution.
 
 .. code-block:: php
@@ -194,7 +200,7 @@ Then, the implementing class should be added to the info.xml. Settings will be
 registered upon installation and update. When settings are added to an existing,
 installed, and enabled app, it should be made sure that the version is
 increased so Nextcloud can register the class. It is only possible to register
-one ISettings implementor.
+one ISettings implementer.
 
 For a more complex example using embedded templates have a look at the
 implementation of the **user_ldap** app.

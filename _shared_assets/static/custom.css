@@ -2,6 +2,16 @@
  * FIX THE DESIGN OF THE RTD THEME
  */
 
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: system-ui, -apple-system, "Segoe UI", Roboto, Oxygen-Sans, Cantarell, Ubuntu, "Helvetica Neue", "Noto Sans", "Liberation Sans", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
 /* NC blue */
 .wy-side-nav-search {
 	background-color: #0082c9;
@@ -55,6 +65,24 @@
 	background: rgba(0, 130, 201, 0.1)
 }
 
+/* Fix code within tables - remove too big margins */
+.rst-content td {
+	div[class^="highlight"]:last-of-type,
+	pre.literal-block:last-of-type {
+		margin-block: 1px !important;
+	}
+}
+
+/* Screenshots — add subtle shadow to distinguish from page background */
+.rst-content img {
+	border-radius: 10px;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);
+}
+
+html[data-theme="dark"] .rst-content img {
+	box-shadow: 0 2px 8px rgba(255, 255, 255, 0.15);
+}
+
 /* ICONS LIST */
 div#list-of-available-icons > blockquote {
 	margin: 0;
@@ -92,4 +120,20 @@ div#list-of-available-icons > blockquote > div > div > p {
 	font-size: 90%;
 	font-style: normal;
 	text-align: center;
+}
+
+.wy-nav-content {
+	max-width: clamp(800px, calc(100vw - 600px), 1200px) !important;
+}
+
+.wy-nav-content section {
+	max-width: 900px;
+}
+
+table.docutils {
+	min-width: 50%;
+}
+
+#code-style table.docutils {
+	width: 100%;
 }

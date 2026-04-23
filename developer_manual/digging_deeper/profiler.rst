@@ -11,6 +11,15 @@ The profiler application is available on `GitHub <https://github.com/nextcloud/p
 you need to clone the stableX branch if you are using Nextcloud X or master if you are
 using the latest development version of Nextcloud.
 
+.. code-block:: bash
+
+   major_version=$(sudo -E -u www-data php occ version 2>&1 | awk -F'[. ]' '{print $2;exit}')
+   cd apps/
+   git clone --branch stable$major_version https://github.com/nextcloud/profiler.git
+   cd profiler
+   cd ../..
+
+
 Enable the app
 --------------
 
@@ -45,6 +54,7 @@ run, how many database and LDAP requests it did, how often did the cache hit and
 the toolbar track the XHR requests created by the JavaScript frontend.
 
 .. image:: ../images/profiler-toolbar.png
+   :alt: Nextcloud profiler toolbar showing request timing, database queries, LDAP requests, and cache statistics
 
 You can hover on top of the toolbar information to show more detailed information and also
 click on the toolbar to show all the information collected.
@@ -62,6 +72,7 @@ The General Request and Response View
 .....................................
 
 .. image:: ../images/profiler-request.png
+   :alt: Profiler general request and response view showing controller, response headers, and request parameters
 
 This view gives you general information about the request. For example,
 which Controller and method was used, what where the response headers, the
@@ -76,6 +87,7 @@ the query to see if an index was used and also see the backtrace to better under
 why the query was executed.
 
 .. image:: ../images/profiler-database.png
+   :alt: Profiler database queries view listing executed queries with execution time and explain options
 
 It's important to keep the number of queries executed to a minimum since the database
 is often a limiting factor in a Nextcloud installation. In particular try to avoid the
@@ -96,6 +108,7 @@ This view display all the logged events and allow you to determine in which part
 programe the more time is spent.
 
 .. image:: ../images/profiler-event.png
+   :alt: Profiler event view displaying logged events and time spent in each part of the program
 
 The Cache View
 ..............
@@ -104,6 +117,7 @@ This view display all the access to the cache. It allows to detect cache hits an
 as well as getting an idea of the time spent on Redis.
 
 .. image:: ../images/profiler-cache.png
+   :alt: Profiler cache view showing cache hits, misses, and time spent on Redis operations
 
 Contributing
 ------------

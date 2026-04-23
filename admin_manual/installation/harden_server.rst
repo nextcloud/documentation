@@ -79,7 +79,7 @@ Disable preview image generation
 
 Nextcloud is able to generate preview images of common filetypes such as images 
 or text files. By default the preview generation for some file types that we 
-consider secure enough for deployment is enabled by default. However, 
+consider secure enough for deployment is enabled. However, 
 administrators should be aware that these previews are generated using PHP 
 libraries written in C which might be vulnerable to attack vectors.
 
@@ -177,6 +177,23 @@ information about the TLS settings.
 
 Also ensure that HTTP compression is disabled to mitigate the BREACH attack.
 
+Restrict admin actions to a specific range of IP addresses
+----------------------------------------------------------
+
+Configure ``allowed_admin_ranges`` in ``config.php`` to restrict the admin actions to trusted IP ranges.
+
+This can be achieved with this kind of setting, usually using private IP ranges::
+
+  'allowed_admin_ranges' => [
+    '127.0.0.1/8',
+    '192.168.0.0/16',
+    'fd00::/8',
+  ],
+
+All requests originating from IP addresses outside of these ranges will not be able to execute admin actions.
+
+Administrators connected from untrusted IP addresses will be able to use Nextcloud, but all admin specific actions will be hidden.
+
 Use a dedicated domain for Nextcloud
 ------------------------------------
 
@@ -204,8 +221,6 @@ These include:
 
 - ``X-Content-Type-Options: nosniff``
 	- Instructs some browsers to not sniff the mimetype of files. This is used for example to prevent browsers from interpreting text files as JavaScript.
-- ``X-XSS-Protection: 1; mode=block``
-	- Instructs browsers to enable their browser side Cross-Site-Scripting filter.
 - ``X-Robots-Tag: noindex, nofollow``
 	- Instructs search machines to not index these pages and not follow any links there.
 - ``X-Frame-Options: SAMEORIGIN``
@@ -233,28 +248,89 @@ security headers are shipped.
 .. _Web TLS Profiler: https://tlsprofiler.danielfett.de/
 .. _RFC 4086 ("Randomness Requirements for Security"): https://tools.ietf.org/html/rfc4086#section-5.2
 
+.. _connections_to_remote_servers:
+
 Connections to remote servers
 -----------------------------
 
-Some Nextcloud functionalites require connecting to remote servers. Depending on 
-your server setup, these are the possible connections:
+Some functionalities require the Nextcloud server to be able to connect remote systems via https/443.
+This paragraph also includes the data which is being transmitted to the Nextcloud GmbH.
+Depending on your server setup, these are the possible connections:
 
-- www.nextcloud.com, www.startpage.com, www.eff.org, www.edri.org for checking the internet connection
-- cloud.nextcloud.com (https) for validating the enterprise subscription
-- updates.nextcloud.com (https) for Nextcloud server updates
-- push-notifications.nextcloud.com (https) for sending push notifications to mobile clients
-- pushfeed.nextcloud.com (https) for the Nextcloud announcements app
-- lookup.nextcloud.com (https) for updating and lookups to the federated sharing addressbook
-- surveyserver.nextcloud.com (https) if the admin has agreed to share anonymized data
-- apps.nextcloud.com (https) for available apps and their updates 
-- github.com (https) for downloading Nextcloud standard apps
+- connectivity.nextcloud.com, www.eff.org, edri.org
+	- `optional (config)`_
+	- for checking the internet connection
+- cloud.nextcloud.com
+	- used for enterprise license monitoring
+	- submitted data: subscription key, user count
+- updates.nextcloud.com
+	- to check for available Nextcloud server updates
+	- submitted data: server version, subscription key, install time, instance id, instance size
+- apps.nextcloud.com, ltd[1-3].nextcloud.com, garm[1-5].nextcloud.com
+	- to check for available apps and their updates
+	- source is apps.nextcloud.com the ltd and garm servers are just mirroring the apps.json file
+	- submitted data: subscription key
+- github.com, objects.githubusercontent.com, release-assets.githubusercontent.com
+	- to download Nextcloud standard apps
+	- to download Nextcloud server releases
+- push-notifications.nextcloud.com
+	- sending push notifications to mobile clients
+	- submitted data: unique device identifier, public key, push token
+- pushfeed.nextcloud.com
+	- optional
+	- checking for updates to be shown in the Nextcloud Announcements app
+- lookup.nextcloud.com
+	- optional
+	- for updating and lookups to the federated sharing addressbook
+	- submitted data: *pending*
+- surveyserver.nextcloud.com
+	- optional
+	- if the admin has agreed to share anonymized server data
+	- submitted data: statistical data. see here for the `detailed field list`_
+- nominatim.openstreetmap.org
+	- optional
+	- if the weather status app is enabled and used
+	- submitted data: address manually entered by the user to resolve to longitude and latitude
+- api.opentopodata.org
+	- optional
+	- if the weather status app is enabled and used
+	- submitted data: address manually entered by the user to resolve the altitude of the location
+- api.met.no
+	- optional
+	- if the weather status app is enabled and used
+	- submitted data: longitude and latitude configured in the weather status app by the individual user
 - Any remote Nextcloud server that is connected with federated sharing
+- When downloading apps from the App store other domains might be accessed, based on the choice of the app developers where they host the releases. For all official Nextcloud apps this is not the case though, because they are hosted on Github.
+
+.. _optional (config): https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/config_sample_php_parameters.html#has-internet-connection
+.. _detailed field list: https://github.com/nextcloud/survey_client
+
 
 Setup fail2ban
 --------------
 
 Exposing your server to the internet will inevitably lead to the exposure of the 
 services running on the internet-exposed ports to brute force login attempts.
+
+This guide will enable blocking of the originating IP addresses at an operating
+system level, so the webserver, PHP and the database do not need to handle this
+unnecessary traffic at all.
+
+Nextcloud prerequisites
+^^^^^^^^^^^^^^^^^^^^^^^
+
+Nextcloud logs failed login attempts in ``nextcloud.log`` with log level ``2``,
+so you need to define a ``loglevel`` of ``2`` or less in ``config.php``.
+
+Make sure your ``nextcloud.log`` is writeable by your webserver user, possibly by
+defining a correct ``logfilemode`` in ``config.php``.
+
+Perform a bad login attempt and check whether it does get logged to ``nextcloud.log``.
+
+Note that ``audit.log`` (if enabled) currently only logs successful logins and cannot be used.
+
+Fail2ban introduction
+^^^^^^^^^^^^^^^^^^^^^
 
 Fail2ban is a service that uses iptables to automatically drop connections for a
 pre-defined amount of time from IPs that continuously failed to authenticate to 
@@ -280,6 +356,7 @@ following contents::
   [Definition]
   _groupsre = (?:(?:,?\s*"\w+":(?:"[^"]+"|\w+))*)
   failregex = ^\{%(_groupsre)s,?\s*"remoteAddr":"<HOST>"%(_groupsre)s,?\s*"message":"Login failed:
+              ^\{%(_groupsre)s,?\s*"remoteAddr":"<HOST>"%(_groupsre)s,?\s*"message":"Two-factor challenge failed:
               ^\{%(_groupsre)s,?\s*"remoteAddr":"<HOST>"%(_groupsre)s,?\s*"message":"Trusted domain error.
   datepattern = ,?\s*"time"\s*:\s*"%%Y-%%m-%%d[T ]%%H:%%M:%%S(%%z)?"
 
@@ -309,5 +386,14 @@ Restart the fail2ban service. You can check the status of your Nextcloud jail by
 running::
 
   fail2ban-client status nextcloud
+
+If you need to unban certain IP addresses (``1.2.3.4`` in this example),
+you may do so by issuing::
+
+  fail2ban-client unban 1.2.3.4
+
+There may be scenarios where you want to more permantently ban certain IP
+addresses that repeatedly generate bad login attempts (or other attacks) by
+using fail2ban's ``recidive`` feature.
 
 .. _fail2ban download page: https://www.fail2ban.org/wiki/index.php/Downloads

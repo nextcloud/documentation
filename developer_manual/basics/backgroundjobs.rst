@@ -162,3 +162,40 @@ For example you could add or remove a certain job based on some controller:
 
 This provides more fine grained control and you can pass arguments to your background
 jobs easily.
+
+Scheduling
+^^^^^^^^^^
+
+A background job can be scheduled to run after a specific time and date. This avoids maintaining a time check inside a background job.
+
+Beware that the reliability of the execution time is limited. Systems that do not use system cron may have no active users and therefore no reliable cron trigger at the target time. System cron can also not guarantee that the job is picked up right away if the background job queue is full. The only guarantee you get is that the job is not picked up earlier than the specified time.
+
+.. code-block:: php
+    :caption: lib/Service/ShareService.php
+    :emphasize-lines: 19-23
+
+    <?php
+
+    namespace OCA\MyApp\Service;
+
+    use OCA\MyApp\BackgroundJob\RevokeShare;
+    use OCP\BackgroundJob\IJobList;
+
+    class ShareService {
+
+        private IJobList $jobList
+
+        public function __construct(IJobList $jobList) {
+            $this->jobList = $jobList;
+        }
+
+        public function shareWithUser(string $uid, int $expiration) {
+            // create an expiring share
+
+            $this->jobList->scheduleAfter(
+                RevokeShare::class, 
+                ['id' => $shareId],
+                $expiration,
+            );
+        }
+    }

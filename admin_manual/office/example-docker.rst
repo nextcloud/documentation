@@ -92,9 +92,10 @@ After configuring these do restart your apache using ``systemctl restart apache2
 Configure the app in Nextcloud
 *********************************
 
-Go to the Apps section and choose "Office & text"
-Install the "Collabora Online app"
-Admin -> Office -> Specify the server you have setup before (e.g. "https://office.example.com")
+- Go to the Apps section and choose "Office & text"
+- Install the "Nextcloud Office" app
+- Go to Admin -> Office -> Specify the server you have setup before (e.g. "https://office.example.com")
+
 Congratulations, your Nextcloud has Collabora Online Office integrated!
 
 

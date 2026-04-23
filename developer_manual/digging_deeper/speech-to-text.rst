@@ -6,6 +6,9 @@ Speech-To-Text
 
 .. versionadded:: 27
 
+.. deprecated:: 30
+    Use the TaskProcessing API instead
+
 Nextcloud offers a **Speech-To-Text** API. The overall idea is that there is a central OCP API that apps can use to request transcriptions of audio or video files. To be technology agnostic any app can provide this Speech-To-Text functionality by registering a Speech-To-Text provider.
 
 Consuming the Speech-To-Text API
@@ -56,13 +59,13 @@ The corresponding ``MyReferenceListener`` class can look like:
             }
 
             if ($event instanceof TranscriptionSuccessfulEvent) {
-                $transcript = $event->getTranscript()
+                $transcript = $event->getTranscript();
                 // store $transcript somewhere
             }
 
-            if ($event instanceof TranscriptionSuccessfulEvent) {
-                $error = $event->getErrorMessage()
-                $userId = $event->getUserId()
+            if ($event instanceof TranscriptionFailedEvent) {
+                $error = $event->getErrorMessage();
+                $userId = $event->getUserId();
                 // Notify relevant user about failure
             }
         }
@@ -108,6 +111,51 @@ The method ``getName`` returns a string to identify the registered provider in t
 The method ``transcribeFile`` transcribes the passed file and returns the transcript. In case transcription fails, you should throw a ``RuntimeException`` with an explanatory error message.
 
 The class would typically be saved into a file in ``lib/SpeechToText`` of your app but you are free to put it elsewhere as long as it's loadable by Nextcloud's :ref:`dependency injection container<dependency-injection>`.
+
+Provider with user context
+--------------------------
+
+.. versionadded:: 29.0.0
+
+Sometimes the processing of a the task may depend upon which user requested the task.
+You can now obtain this information in your provider by additionally implementing the ``OCP\SpeechToText\ISpeechToTextProviderWithUserId`` interface:
+
+.. code-block:: php
+    :emphasize-lines: 9,12,14,25,26,27
+
+    <?php
+
+    declare(strict_types=1);
+
+    namespace OCA\MyApp\SpeechToText;
+
+    use OCA\MyApp\AppInfo\Application;
+    use OCP\Files\File;
+    use OCP\SpeechToText\ISpeechToTextProviderWithUserId;
+    use OCP\IL10N;
+
+    class Provider implements ISpeechToTextProviderWithUserId {
+
+        private ?string $userId = null;
+
+        public function __construct(
+            private IL10N $l,
+        ) {
+        }
+
+        public function getName(): string {
+            return $this->l->t('My awesome speech to text provider');
+        }
+
+        public function setUserId(?string $userId): void {
+            $this->userId = $userId;
+        }
+
+        public function transcribeFile(File $file): string {
+            // transcribe file here with the use of $this->userId context and return transcript
+        }
+    }
+
 
 Provider registration
 ---------------------

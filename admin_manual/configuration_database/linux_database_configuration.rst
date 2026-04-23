@@ -6,15 +6,19 @@ Nextcloud requires a database in which administrative data is stored. The follow
 
 * `MySQL <https://www.mysql.com/>`_ / `MariaDB <https://mariadb.org/>`_
 * `PostgreSQL <https://www.postgresql.org/>`_
-* `Oracle <http://www.oracle.com/>`_
+* `Oracle <http://www.oracle.com/>`_ (*only for Nextcloud Enterprise*)
 
-The MySQL or MariaDB databases are the recommended database engines.
+The PostgreSQL or MariaDB databases are the recommended database engines.
+
+.. tip:: Not all versions of every supported database are recommended. Please review the Nextcloud :doc:`System Requirements <../installation/system_requirements>`
+   before settling on a particular version.
 
 Requirements
 ------------
 
-Choosing to use MySQL / MariaDB, PostgreSQL, or Oracle as your database
-requires that you install and set up the server software first.
+* Decide whether you wish to use MySQL / MariaDB, PostgreSQL, or Oracle as your database
+* Pick a recommended version of your database by checking the Nextcloud :doc:`System Requirements <../installation/system_requirements>`
+* Install and set up the chosen database server software (and preferred version) before deploying Nextcloud Server
 
 .. note:: The steps for configuring a third party database are beyond the
   scope of this document.  Please refer to the documentation for your specific
@@ -29,12 +33,14 @@ As discussed above Nextcloud is using the ``TRANSACTION_READ_COMMITTED`` transac
 level. Some database configurations are enforcing other transaction isolation levels. To avoid
 data loss under high load scenarios (e.g. by using the sync client with many clients/users and
 many parallel operations) you need to configure the transaction isolation level accordingly.
-Please refer to the `MySQL manual <https://dev.mysql.com/doc/refman/5.7/en/set-transaction.html>`_
+Please refer to the `MySQL manual <https://dev.mysql.com/doc/refman/8.0/en/set-transaction.html>`_
 for detailed information.
 
 Parameters
 ----------
 For setting up Nextcloud to use any database, use the instructions in :doc:`../installation/installation_wizard`. You should not have to edit the respective values in the :file:`config/config.php`.  However, in special cases (for example, if you want to connect your Nextcloud instance to a database created by a previous installation of Nextcloud), some modification might be required.
+
+.. _db-config-mysql-label:
 
 Configuring a MySQL or MariaDB database
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -71,6 +77,10 @@ To start the MySQL command line mode use::
 
   mysql -uroot -p
 
+When using MariaDB use::
+
+  mariadb -uroot -p
+
 Then a **mysql>** or **MariaDB [root]>** prompt will appear. Now enter the following lines and confirm them with the enter key:
 
 ::
@@ -78,7 +88,6 @@ Then a **mysql>** or **MariaDB [root]>** prompt will appear. Now enter the follo
   CREATE USER 'username'@'localhost' IDENTIFIED BY 'password';
   CREATE DATABASE IF NOT EXISTS nextcloud CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci;
   GRANT ALL PRIVILEGES on nextcloud.* to 'username'@'localhost';
-  FLUSH privileges;
 
 You can quit the prompt by entering::
 
@@ -122,6 +131,8 @@ This just covers the SSL database configuration on the Nextcloud server. First y
   ],
 
 Adjust the paths to the pem files for your environment.
+
+.. _db-config-postgresql-label:
 
 PostgreSQL database
 ^^^^^^^^^^^^^^^^^^^
@@ -270,7 +281,7 @@ the respective host name::
   +---------------+--------+
   | Variable_name | Value  |
   +---------------+--------+
-  | version       | 8.0.22 |
+  | version       | 8.0.36 |
   +---------------+--------+
   1 row in set (0.00 sec)
   mysql> quit
@@ -290,7 +301,7 @@ the respective host name::
 ::
 
   postgres=# SELECT version();
-  PostgreSQL 8.4.12 on i686-pc-linux-gnu, compiled by GCC gcc (GCC) 4.1.3 20080704 (prerelease), 32-bit
+  PostgreSQL 16.2 on i686-pc-linux-gnu, compiled by GCC gcc (GCC) 4.1.3 20080704 (prerelease), 32-bit
   (1 row)
   postgres=# \q
 

@@ -14,8 +14,6 @@ Nextcloud users can share files and folders. Possible targets are:
 .. note:: Some options may not be available due to administrative configuration.
    See `administrator documentation <https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/file_sharing_configuration.html>`__ for details.
 
-.. TODO ON RELEASE: Update version number above on release
-
 
 Public link shares
 ------------------
@@ -60,6 +58,8 @@ For adjusting the acceptance setting, go to **Settings** > **Personal** > **Shar
 
 .. figure:: ../images/sharing_autoAcceptSetting.png
 
+
+.. warning:: If the owner renames a shared file or folder, the new name will not be reflected on the recipient's side. This is needed to prevent overwriting existing files or folders on the recipient's end.
 
 Others with access
 ------------------

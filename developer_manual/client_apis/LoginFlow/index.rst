@@ -16,7 +16,7 @@ Opening the webview
 The client should open a webview to :code:`<server>/index.php/login/flow`. Be sure to set the :code:`OCS-APIREQUEST`
 header to :code:`true`.
 
-The client will register an URL handler to catch urls of the :code:`nc` protocol. This is required to obtain the
+The client will register a URL handler to catch urls of the :code:`nc` protocol. This is required to obtain the
 credentials in the final stage.
 
 This should be a one time webview. Which means:

@@ -4,6 +4,59 @@
 Security
 ========
 
+.. _programmatic-rate-limiting:
+
+Rate Limiting
+-------------
+
+Rate limiting can be used to restrict how often someone can execute an operation in a defined time frame. For app framework controllers it is recommended to use rate limiting attributes.
+
+Outside controllers, e.g. in DAV code, it's also possible to guard operations by :ref:`injecting<dependency-injection>` ``\OCP\Security\RateLimiting\ILimiter`` and registering requests *before* the operation:
+
+.. code-block:: php
+    :emphasize-lines: 13-21, 27-36
+
+    <?php
+
+    use OCP\Security\RateLimiting\ILimiter;
+
+    class MyDavPlugin {
+        private ILimiter $limiter;
+
+        public function __construct(ILimiter $limiter) {
+            $this->limiter = $limiter;
+        }
+
+        public function calledAnonymously(): void {
+            try {
+                $this->limiter->registerAnonRequest(
+                    'my-dav-plugin-anon',
+                    5, // Allow five executions …
+                    60 * 60, // … per hour
+                );
+            } catch (IRateLimitExceededException $exception) {
+                // Respond with a HTTP 429 error
+            }
+
+            // No rate limiting reached. Carry on.
+        }
+
+        public function calledByUser(IUser $user): void {
+            try {
+                $this->limiter->registerUserRequest(
+                    'my-dav-plugin-user',
+                    5, // Allow five executions …
+                    60 * 60, // … per hour
+                    $user
+                );
+            } catch (IRateLimitExceededException $exception) {
+                // Respond with a HTTP 429 error
+            }
+
+            // No rate limiting reached. Carry on.
+        }
+    }
+
 Remote Host Validation
 ----------------------
 

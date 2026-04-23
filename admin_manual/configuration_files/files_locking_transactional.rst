@@ -22,8 +22,8 @@ the same document. Multiple users can open and edit a file at the same time and
 Transactional File locking does not prevent this. Rather, it prevents
 simultaneous file saving.
 
-File locking is enabled by default, using the database locking backend. This
-places a significant load on your database. Using ``memcache.locking`` relieves
+Transactional File locking will use the database locking backend by default. This
+places a significant load on your database. Setting ``memcache.locking`` relieves
 the database load and improves performance. Admins of Nextcloud servers with
 heavy workloads should install a memcache. (See
 :doc:`../configuration_server/caching_configuration`.)
@@ -32,7 +32,6 @@ To use a memcache with Transactional File Locking, you must install the Redis
 server and corresponding PHP module. After installing Redis you must enter a
 configuration in your ``config.php`` file like this example::
 
-  'filelocking.enabled' => true,
   'memcache.locking' => '\OC\Memcache\Redis',
   'redis' => array(
        'host' => 'localhost',
@@ -48,19 +47,15 @@ If you want to configure Redis to listen on an Unix socket (which is
 recommended if Redis is running on the same system as Nextcloud) use this example
 ``config.php`` configuration::
 
-  'filelocking.enabled' => true,
   'memcache.locking' => '\OC\Memcache\Redis',
   'redis' => array(
-       'host' => '/var/run/redis/redis.sock',
+       'host' => '/run/redis/redis-server.sock',
        'port' => 0,
        'timeout' => 0.0,
         ),
 
 See ``config.sample.php`` to see configuration examples for Redis, and for all
 supported memcaches.
-
-If you are on Ubuntu you can follow `this guide
-<https://www.techandme.se/how-to-configure-redis-cache-in-ubuntu-14-04-with-owncloud/>`_ for a complete installation from scratch.
 
 Learn more about Redis at `Redis <http://redis.io/>`_. Memcached, the popular
 distributed memory caching system, is not suitable for the new file locking

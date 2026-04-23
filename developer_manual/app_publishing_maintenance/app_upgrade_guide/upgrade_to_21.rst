@@ -7,7 +7,7 @@ Upgrade to Nextcloud 21
 Back-end changes
 ----------------
 
-The biggest change in Nextcloud 21 is the initial support for PHP8 and the corresponding updates of many core dependencies, which could have direct and indirect consequences for apps.
+The biggest change in Nextcloud 21 is the initial support for PHP 8 and the corresponding updates of many core dependencies, which could have direct and indirect consequences for apps.
 
 PHP 8 support
 ^^^^^^^^^^^^^
@@ -80,5 +80,5 @@ Nextcloud 21 is the last major release that supports an app's ``appinfo/database
 Replaced well-known handler API
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-There was an old, unused and inofficial mechanism to hook into well-known discovery via config settings. This includes ``host-meta``, ``host-meta.json``, ``nodeinfo`` and ``webfinger``. A :ref:`new public API replaces this mechanism<web-host-metadata>` in Nextcloud 21.
+There was an old, unused and unofficial mechanism to hook into well-known discovery via config settings. This includes ``host-meta``, ``host-meta.json``, ``nodeinfo`` and ``webfinger``. A :ref:`new public API replaces this mechanism<web-host-metadata>` in Nextcloud 21.
 

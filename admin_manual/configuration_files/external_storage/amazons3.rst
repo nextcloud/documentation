@@ -9,6 +9,8 @@ To connect an Amazon S3 (or compatible) bucket to Nextcloud you will need to kno
 - S3 secret access key
 - S3 region (if Amazon hosted) or S3 hostname (if non-Amazon hosted) [Note: If specifying a hostname, use the generic S3 endpoint hostname, **not** the hostname that contains your bucket name]
 
+.. attention:: Some S3-compatible storages, including Amazon S3, allow repeating delimiters :code:`/` (:code:`e.g. Photos//cat.png`). This is unsupported and prefixes with repeating delimiters and its contents are ignored.
+
 In the **Folder name** field enter a folder name to use as the local mountpoint for this
 external storage. If this does not exist it will be created.
 
@@ -41,6 +43,8 @@ access your S3 mount.
 
 The ``Enable SSL`` checkbox enables HTTPS connections and generally preferred. It is the default unless 
 you disable it here.
+
+Optionally, a 32-byte base64 encoded SSE-C key can be provided for server side encryption. See :doc:`../primary_storage` and the `SSE-C AWS documentation <https://docs.aws.amazon.com/AmazonS3/latest/userguide/ServerSideEncryptionCustomerKeys.html>`_ for more information how to generate a key.
 
 .. figure:: images/amazons3.png
    :alt:

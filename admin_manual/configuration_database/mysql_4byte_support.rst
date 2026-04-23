@@ -43,7 +43,7 @@ The result should look like this::
 3. Open a shell, change dir (adjust ``/var/www/nextcloud`` to your nextcloud location if needed), and put your nextcloud instance in maintenance mode, if it isn't already::
 
    $ cd /var/www/nextcloud
-   $ sudo -u www-data php occ maintenance:mode --on
+   $ sudo -E -u www-data php occ maintenance:mode --on
 
 4. Change your databases character set and collation:
 
@@ -53,11 +53,11 @@ The result should look like this::
 
 5. Set the ``mysql.utf8mb4`` config to true in your config.php::
 
-    $ sudo -u www-data php occ config:system:set mysql.utf8mb4 --type boolean --value="true"
+    $ sudo -E -u www-data php occ config:system:set mysql.utf8mb4 --type boolean --value="true"
 
 6. Convert all existing tables to the new collation by running the repair step::
 
-    $ sudo -u www-data php occ maintenance:repair
+    $ sudo -E -u www-data php occ maintenance:repair
 
 .. note::
 
@@ -65,7 +65,7 @@ The result should look like this::
 
 7. Disable maintenance mode::
 
-   $ sudo -u www-data php occ maintenance:mode --off
+   $ sudo -E -u www-data php occ maintenance:mode --off
 
 Now you should be able to use Emojis in your file names, calendar events, comments and many more.
 

@@ -7,5 +7,4 @@ Getting started
 
    development_process
    devenv
-   codingguidelines
-   debugging
+   coding_standards/index

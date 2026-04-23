@@ -33,8 +33,6 @@ configuration report with the :ref:`occ config command
 .. _FAQ page: https://help.nextcloud.com/t/how-to-faq-wiki
 .. _bugtracker: https://docs.nextcloud.com/server/latest/developer_manual/prologue/bugtracker/index.html
 
-.. TODO ON RELEASE: Update version number above on release
-
 General troubleshooting
 -----------------------
 
@@ -51,14 +49,37 @@ different issues. Always disable 3rd party apps before upgrades, and for
 troubleshooting. Please refer to the :ref:`apps_commands_label` on how
 to disable an app from command line.
 
-Nextcloud logfiles
-^^^^^^^^^^^^^^^^^^
+Internal Server Errors
+^^^^^^^^^^^^^^^^^^^^^^
 
-In a standard Nextcloud installation the log level is set to ``Normal``. To find
-any issues you need to raise the log level to ``All`` in your ``config.php``
-file, or to **Everything** on your Nextcloud Admin page. Please see
-:doc:`../configuration_server/logging_configuration` for more information on
-these log levels.
+An Internal Server Error, sometimes called a "500 error", indicates that the web server 
+encountered an unexpected condition that prevented it from fulfilling the request.
+
+This error response is a generic "catch-all" response. To find out the source of the
+error you will need to check your Nextcloud log (located in `data/nextcloud.log` by 
+default) and possibly your web server's error log (depending on where the failure is
+occurring). 
+
+.. tip:: Whenever possible, Nextcloud will include the "Request id" in the error. This
+    request ID can be searched for in your Nextcloud log file to find entries associated
+    with the failing transaction.
+
+Nextcloud log files
+^^^^^^^^^^^^^^^^^^^
+
+The Nextcloud log file is located in the data directory by default - e.g.
+``data/nextcloud.log``. If the Web UI is still reachable, it is also available
+via *Administration settings->Logging*.
+
+.. tip:: When asking for help, the entire raw log entry is generally required.
+
+.. note:  In a standard Nextcloud installation the log level is set to ``2``. This is 
+    known as the ``WARN`` level. It is sufficient for catching for day-to-day problems 
+    (warnings, errors, and fatal errors).
+
+For some situations you may need to adjust the log level in your ``config.php``
+file. Please see :doc:`../configuration_server/logging_configuration` for more 
+information on these log levels.
 
 Some logging - for example JavaScript console logging - needs debugging
 enabled. Edit :file:`config/config.php` and change ``'debug' => false,`` to
@@ -67,9 +88,6 @@ enabled. Edit :file:`config/config.php` and change ``'debug' => false,`` to
 For JavaScript issues you will also need to view the javascript console. All
 major browsers have developer tools for viewing the console, and you
 usually access them by pressing F12.
-
-.. note:: The logfile of Nextcloud is located in the data directory
-   ``nextcloud/data/nextcloud.log``.
 
 .. _label-phpinfo:
 
@@ -171,7 +189,7 @@ Web server and Nextcloud itself.
    Linux distros or operating systems they can differ.
 
 * The logfile of Apache2 is located in ``/var/log/apache2/error.log``.
-* The logfile of PHP can be configured in your ``/etc/php/8.0/apache2/php.ini``.
+* The logfile of PHP can be configured in your ``/etc/php/8.3/apache2/php.ini``.
   You need to set the directive ``log_errors`` to ``On`` and choose the path
   to store the logfile in the ``error_log`` directive. After those changes you
   need to restart your Web server.
@@ -195,9 +213,7 @@ these modules:
 * mod_security
 * mod_reqtimeout
 * mod_deflate
-* libapache2-mod-php*filter (use libapache2-mod-php8.0 instead)
-* mod_spdy together with libapache2-mod-php5 / mod_php (use fcgi or php-fpm
-  instead)
+* mod_spdy
 * mod_dav
 * mod_xsendfile / X-Sendfile (causing broken downloads if not configured
   correctly)
@@ -210,6 +226,7 @@ these modules:
 
 3. PHP
 
+* Tideways
 * eAccelerator
 
 .. _trouble-webdav-label:
@@ -332,7 +349,7 @@ appear in the file listing, or they will appear and not be accessible.
 
 When this happens, please run the :ref:`files scanner<occ_files_scan_label>`, for example with::
 
-  sudo -u www-data php occ files:scan --all
+  sudo -E -u www-data php occ files:scan --all
 
 If the scanner tells about an encoding issue on the affected file, please enable Mac encoding compatibility in the :ref:`mount options<external_storage_mount_options_label>`
 and then :ref:`rescan the external storage<occ_files_scan_label>`.
@@ -352,24 +369,8 @@ and then :ref:`rescan the external storage<occ_files_scan_label>`.
 Troubleshooting contacts & calendar
 -----------------------------------
 
-Unable to update contacts or events
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-If you get an error like:
-
-``PATCH https://example.com/remote.php/dav HTTP/1.0 501 Not Implemented``
-
-it is likely caused by one of the following reasons:
-
-Using Pound reverse-proxy/load balancer
-  As of writing this Pound doesn't support the HTTP/1.1 verb.
-  Pound is easily `patched
-  <http://www.apsis.ch/pound/pound_list/archive/2013/2013-08/1377264673000>`_
-  to support HTTP/1.1.
-
-Misconfigured Web server
-  Your Web server is misconfigured and blocks the needed DAV methods.
-  Please refer to :ref:`trouble-webdav-label` above for troubleshooting steps.
+.. tip::
+  Please also refer to the troubleshooting article in the groupware section: :ref:`troubleshooting_groupware`.
 
 Troubleshooting data-directory
 ------------------------------
@@ -386,7 +387,7 @@ Unofficially moving the data directory can be done as follows:
 6. Ensure permissions are still correct
 7. Restart apache
 
-.. warning
+.. warning::
    However this is not supported and you risk breaking your database.
 
 For a safe moving of data directory, supported by Nextcloud, recommended actions are:
@@ -398,7 +399,7 @@ For a safe moving of data directory, supported by Nextcloud, recommended actions
 5. Ensure permissions are still correct
 6. Restart apache
 
-.. warning
+.. warning::
    Note, you may need to configure your webserver to support symlinks.
 
 Troubleshooting quota or size issues
@@ -412,11 +413,9 @@ does not match the actual data stored in the user's ``data/$userId/files`` direc
    Metadata, versions, trashbin and encryption keys are not counted in the used space above.
    Please refer to the `quota documentation <https://docs.nextcloud.com/server/latest/user_manual/en/files/quota.html>`_ for details.
 
-.. TODO ON RELEASE: Update version number above on release
-
 Running the following command can help fix the sizes and quota for a given user::
 
- sudo -u www-data php occ files:scan -vvv <user-id>
+ sudo -E -u www-data php occ files:scan -vvv <user-id>
 
 If **encryption was enabled earlier on the instance and disabled later on**, it is likely that some
 size values in the database did not correctly get reset upon decrypting.
@@ -426,59 +425,11 @@ You can run the following SQL query to reset those after **backing up the databa
 
  UPDATE oc_filecache SET unencrypted_size=0 WHERE encrypted=0; 
 
-Troubleshooting downloading or decrypting files
------------------------------------------------
+Troubleshooting encrypted files
+-------------------------------
 
-Bad signature error
-^^^^^^^^^^^^^^^^^^^
-
-In some rare cases it can happen that encrypted files cannot be downloaded
-and return a "500 Internal Server Error". If the Nextcloud log contains an error about
-"Bad Signature", then the following command can be used to repair affected files::
-
- occ encryption:fix-encrypted-version userId --path=/path/to/broken/file.txt
-
-Replace "userId" and the path accordingly.
-The command will do a test decryption for all files and automatically repair the ones with a signature error.
-
-.. _troubleshooting_encryption_key_not_found:
-
-Encryption key cannot be found
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-If the logs contain an error stating that the encryption key cannot be found, you can manually search the data directory for a folder that has the same name as the file name.
-For example if a file "example.md" cannot be decrypted, run::
-
-    find path/to/datadir -name example.md -type d
-
-Then check the results located in the ``files_encryption`` folder.
-If the key folder is in the wrong location, you can move it to the correct folder and try again.
-
-The ``data/files_encryption`` folder contains encryption keys for group folders and system-wide external storages
-while ``data/$userid/files_encryption`` contains the keys for specific user storage files.
-
-.. note::
-
-   This can happen if encryption was disabled at some point but the :ref:`occ command for decrypt-all<occ_disable_encryption_label>` was not run, and
-   then someone moved the files to another location. Since encryption was disabled, the keys did not get moved.
-
-Encryption key cannot be found with external storage or group folders
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-To resolve this issue, please run the following command::
-
-    sudo -u www-data php occ encryption:fix-key-location <user-id>
-
-This will attempt to recover keys that were not moved properly.
-
-If this doesn't resolve the problem, please refer to the section :ref:`Encryption key cannot be found<troubleshooting_encryption_key_not_found>` for a manual procedure.
-
-.. note::
-
-   There were two known issues where:
-
-   - moving files between an encrypted and non-encrypted storage like external storage or group folder `would not move the keys with the files <https://github.com/nextcloud/groupfolders/issues/1896>`_.
-   - putting files on system-wide external storage would store the keys in the `wrong location <https://github.com/nextcloud/server/pull/32690>`_.
+.. tip::
+  Please also refer to the troubleshooting section in the encryption chapter: :doc:`../configuration_files/encryption_configuration`.
 
 Fair Use Policy
 ---------------

@@ -21,17 +21,16 @@ During the Nextcloud server installation, some apps are enabled by default.
 To see which apps are enabled go to your Apps page.
 
 Those apps are supported and developed by Nextcloud GmbH directly and
-have an **Featured**-tag. See :doc:`installation/apps_supported` for a list of supported apps.
+have an **Featured**-tag.
 
-.. note:: Your Nextcloud server needs to be able to communicate with 
-          ``https://apps.nextcloud.com`` to list and download apps. Please make sure to whitelist this target in your firewall or proxy if necessary.
+.. note:: Your Nextcloud server needs to be able to communicate with
+          ``https://apps.nextcloud.com``, ``https://ltd[1-3].nextcloud.com``, ``https://garm[1-5].nextcloud.com`` to list and download apps. Please make sure to whitelist this target in your firewall or proxy if necessary.
 
 .. note:: To get access to work-arounds, long-term-support, priority bug fixing
           and custom consulting for supported apps, contact our `sales team <https://nextcloud.com/enterprise/>`_.
 
 .. note:: If you would like to develop your own Nextcloud app, you can find out
           more information in our `developer manual <https://docs.nextcloud.com/server/latest/go.php?to=developer-manual>`_.
-.. TODO ON RELEASE: Update version number above on release
 
 All apps must be licensed under AGPLv3+ or any compatible license.
 
@@ -55,12 +54,63 @@ in the Application View field. Clicking the **Enable** button will enable the ap
 If the app is not part of the Nextcloud installation, it will be downloaded from
 the app store, installed and enabled.
 
-App updates will also be offered to you on this page. Simply click on the **Update** 
-button to update a specific app or use the **Update all** button on top of the page to 
+App updates will also be offered to you on this page. Simply click on the **Update**
+button to update a specific app or use the **Update all** button on top of the page to
 update all apps.
 
-.. note:: **Beta releases**: You can also install beta releases of apps directly from here by 
+.. note:: **Beta releases**: You can also install beta releases of apps directly from here by
           switching your Nextcloud to the beta channel in the admin overview.
+
+Update notifications
+^^^^^^^^^^^^^^^^^^^^
+
+The always installed ``updatenotification`` app allows administrators to be notified on available app and Nextcloud updates.
+Moreover, since Nextcloud 29, this app also allows to notify users about updated apps and the changes that are included in the update.
+This notification is enabled by default if the app provides a changelog.
+
+To disable user notifications use:
+
+::
+
+  occ config:app:set --type boolean --value="false" updatenotification app_updated.enabled
+
+By default guest users, when using the guests app, are not notified, to enable notifications also for them use:
+
+::
+
+  occ config:app:set --type boolean --value="true" updatenotification app_updated.notify_guests
+
+Enabling apps via occ command
+-----------------------------
+
+In addition to managing apps via the web interface, administrators can also enable or disable apps using the `occ` command.
+
+To enable an app, use the following command:
+
+::
+
+  occ app:enable <app-id>
+
+For example, to enable the "files" app, run:
+
+::
+
+  occ app:enable files
+
+To enable the app for specific groups, use the `--groups` option:
+
+::
+  
+  occ app:enable files --groups=admin
+
+
+This command enables the "files" app only for the "admin" group.
+
+To disable an app, use:
+
+::
+
+  occ app:disable <app-id>
 
 Using private API
 -----------------
@@ -77,9 +127,9 @@ folder. The key **url** defines the HTTP web path to that folder, starting at
 the Nextcloud web root. The key **writable** indicates if a user can install apps
 in that folder.
 
-.. note:: To ensure that the default **/apps/** folder only contains apps
-   shipped with Nextcloud, follow this example to setup an **/apps2/** folder
-   which will be used to store all other apps.
+Example: To ensure that the default ``/apps/`` folder only contains apps shipped
+with Nextcloud, follow this example to setup an ``/extra-apps/`` folder
+which will be used to store any additional apps you install:
 
 ::
 
@@ -90,18 +140,22 @@ in that folder.
                 "writable" => false,
         ],
         [
-                "path"     => OC::$SERVERROOT . "/apps2",
-                "url"      => "/apps2",
+                "path"     => OC::$SERVERROOT . "/extra-apps",
+                "url"      => "/extra-apps",
                 "writable" => true,
         ],
     ],
 
-.. note:: Apps paths can be located outside the server root.  However, for any
-   **path** outside the server root, you need to create a symlink in  the server
-   root that points **url** to **path**.
-   For instance, if **path** is ``/var/local/lib/nextcloud/apps``, and **url**
-   is ``/apps2``, then you would do this in the server root:
-   ``ln -sf /var/local/lib/nextcloud/apps ./apps2``
+.. danger:: Make sure that the values you choose for ``path`` and ``url`` for any custom
+   apps directories do not conflict with directories which already exist in your Nextcloud
+   Server root (installation directory).
+
+.. tip:: Apps paths can be located outside the server root.  However, for any
+   **path** outside the server root, you need to create a symbolic link in the server
+   root that points **url** to **path**. For instance, if **path** is
+   ``/var/local/lib/nextcloud/extra-apps``, and **url** is ``/extra-apps``, then
+   you would use the command ``ln`` to create the symbolic link like this:
+   ``ln -sf /var/local/lib/nextcloud/extra-apps ./extra-apps``
 
 Using a self hosted apps store
 ------------------------------
@@ -124,6 +178,6 @@ To enable a self hosted apps store:
     "appstoreurl" => "https://my.appstore.instance/v1",
 
 
-By default the apps store is enabled and configured to use ``https://apps.nextcloud.com/api/v1`` as apps store url. Nextcloud will fetch ``apps.json`` and ``categories.json`` from there. To use the defaults again remove **appstoreenabled** and **appstoreurl** from the configuration. 
+By default the apps store is enabled and configured to use ``https://apps.nextcloud.com/api/v1`` as apps store url. Nextcloud will fetch ``apps.json`` and ``categories.json`` from there. To use the defaults again remove **appstoreenabled** and **appstoreurl** from the configuration.
 
 Example: If ``categories.json`` is available at ``https://apps.nextcloud.com/api/v1/categories.json`` the apps store url is ``https://apps.nextcloud.com/api/v1``.

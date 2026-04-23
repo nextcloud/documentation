@@ -31,7 +31,17 @@ for this config, the background jobs which advertise themselves as not time-sens
 will be delayed during the "working" hours and only run in the 4 hours after the given
 time. This is e.g. used for activity expiration, suspicious login training, and update checks.
 
-A value of 1 e.g. will only run these background jobs between 01:00am UTC and 05:00am UTC.
+A value of 1 e.g. will only run these background jobs between 01:00am UTC and 05:00am UTC::
+
+  'maintenance_window_start' => 1,
+
+If you don't care when these jobs run, you can set the value to ``100``, but beware that 
+resource intensive jobs may then run unnecessarily during high usage periods. This may lead to
+slower performance and a lower quality user experience.
+
+This setting may also be set directly via ``occ`` just like any other configuration parameter::
+
+  occ config:system:set maintenance_window_start --type=integer --value=1
 
 Cron jobs
 ---------
@@ -106,8 +116,6 @@ Which returns::
           path to your current Nextcloud installation.
 
 .. note:: On some systems it might be required to call **php-cli** instead of **php**.
-
-.. note:: For some configurations, it might be necessary to append ``--define apc.enable_cli=1`` to the cron command. Please refer to :doc:`./caching_configuration` (section APCu).
 
 .. note:: Please refer to the crontab man page for the exact command syntax.
 
