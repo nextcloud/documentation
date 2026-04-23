@@ -105,6 +105,7 @@ Added APIs
 - New method ``\OCP\Files\Template\BeforeGetTemplatesEvent::shouldGetFields`` to get the event's ``withFields`` property, which should determine whether or not to perform template field extraction on the returned templates.
 - New method ``\OCP\IUser::canChangeEmail`` allowing to check if the user backend allows the user to change their email address.
 - New method ``\OCP\IDateTimeZone::getDefaultTimezone`` allowing to get the default timezone configured for Nextcloud.
+- New method ``\OCA\Files_Versions\Versions\IVersionBackend::getRevision`` to get the version revision from a node.
 - New ``OCP\SystemTag\TagAssignedEvent`` emitted by the system tag object mapper
 - New ``OCP\SystemTag\TagUnassignedEvent`` emitted by the system tag object mapper
 - Task processing API:
@@ -122,6 +123,7 @@ Changed APIs
 - ``\OCP\Files\Template\BeforeGetTemplatesEvent`` now takes an optional boolean constructor value, ``withFields``, that allows you to explicitly control whether template fields should be extracted. The default value is ``false``.
 - ``\OCP\IDateTimeZone::getTimezone`` now has a new optional string parameter ``userId`` allowing to request the timezone of another user than the current.
 - ``\OCP\IDBConnection::getDatabaseProvider`` now has a new optional boolean parameter ``strict``. When specified the output will differentiate between MySQL and MariaDB. Otherwise MariaDB will be returned as MySQL
+- ``\OCP\Notification\INotification::setIcon``, ``\OCP\Notification\INotification::setLink`` and ``\OCP\Notification\IAction::setLink`` now throw ``\OCP\Notification\InvalidValueException`` when the provided link is not absolute as previously announced in :doc:`./upgrade_to_30`
 
 Deprecated APIs
 ^^^^^^^^^^^^^^^

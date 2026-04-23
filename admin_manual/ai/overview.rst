@@ -108,12 +108,17 @@ In downstream apps like Context Chat and assistant, users can use the text proce
 Frontend apps
 ~~~~~~~~~~~~~
 
-* *Text* for offering an inline graphical UI for the various tasks
 * `Assistant <https://apps.nextcloud.com/apps/assistant>`_ for offering a graphical UI for the various tasks, a smart picker and "Chat with AI" functionality
 * `Mail <https://apps.nextcloud.com/apps/mail>`_ for summarizing mail threads (see :ref:`the Nextcloud Mail docs<mail_thread_summary>` for how to enable this)
 * `Summary Bot <https://apps.nextcloud.com/apps/summary_bot>`_ for summarizing chat histories in `Talk <https://apps.nextcloud.com/apps/spreed>`_
 * `Talk <https://apps.nextcloud.com/apps/spreed>`_ for summarizing chat history (see `Nextcloud Talk docs <https://nextcloud-talk.readthedocs.io/en/latest/settings/#app-configuration>`_ for how to enable this)
-
+* `Text <https://apps.nextcloud.com/apps/text>`_ for offering an inline graphical UI for the various tasks
+* `Collectives <https://apps.nextcloud.com/apps/collectives>`_ integrating Assistant through the smart picker to offer a graphical UI for the various tasks
+* `Notes <https://apps.nextcloud.com/apps/notes>`_ integrating Assistant through the smart picker to offer a graphical UI for the various tasks
+* `Whiteboard <https://apps.nextcloud.com/apps/whiteboard>`_ integrating Assistant through the smart picker to offer a graphical UI for the various tasks
+* `Deck <https://apps.nextcloud.com/apps/deck>`_ integrating Assistant through the smart picker to offer a graphical UI for the various tasks
+* `Nextcloud Office <https://apps.nextcloud.com/apps/richdocuments>`_ integrating Assistant through the smart picker to offer a graphical UI for the various tasks in documents
+* `Desktop Clients <https://docs.nextcloud.com/server/latest/user_manual/en/desktop/index.html>`_ for simple "Chat with AI"
 
 Backend apps
 ~~~~~~~~~~~~
@@ -134,10 +139,15 @@ In downstream apps like the Text app, users can use the translation functionalit
 Frontend apps
 ~~~~~~~~~~~~~
 
-* *Text* for offering the translation menu
 * `Assistant <https://apps.nextcloud.com/apps/assistant>`_ offering a graphical translation UI
 * `Analytics <https://apps.nextcloud.com/apps/analytics>`_ for translating graph labels
 * `Talk <https://apps.nextcloud.com/apps/spreed>`_ for translating messages and live translations in calls in conjunction with the :ref:`Live Transcription app <ai-live-transcription>`
+* `Deck <https://apps.nextcloud.com/apps/deck>`_ for offering a translation UI in the card description
+* *Text* for offering the translation menu
+* `Notes <https://apps.nextcloud.com/apps/notes>`_ for offering a translation UI in the note content
+* `Collectives <https://apps.nextcloud.com/apps/collectives>`_ for offering a translation UI in the page content
+* `Whiteboard <https://apps.nextcloud.com/apps/whiteboard>`_ for offering a translation UI through the assistant
+* `Nextcloud Office <https://apps.nextcloud.com/apps/richdocuments>`_ for offering translation UI in the document content
 
 Backend apps
 ~~~~~~~~~~~~
@@ -177,6 +187,12 @@ Frontend apps
 ~~~~~~~~~~~~~
 
 * `Assistant <https://apps.nextcloud.com/apps/assistant>`_ for offering a graphical UI and a smart picker
+* `Deck <https://apps.nextcloud.com/apps/deck>`_ for inserting images with the smart picker
+* `Text` for inserting images with the assistant and smart picker
+* `Notes <https://apps.nextcloud.com/apps/notes>`_ for inserting images with the assistant and smart picker
+* `Collectives <https://apps.nextcloud.com/apps/collectives>`_ for inserting images with the assistant and smart picker
+* `Whiteboard <https://apps.nextcloud.com/apps/whiteboard>`_ for inserting images with the assistant and smart picker, generating diagrams and flowcharts with Mermaid
+* `Nextcloud Office <https://apps.nextcloud.com/apps/richdocuments>`_ for inserting images with the assistant and smart picker
 
 Backend apps
 ~~~~~~~~~~~~
@@ -317,6 +333,9 @@ Most AI tasks will be run as part of the background job system in Nextcloud whic
 To pick up scheduled jobs faster you can set up background job workers inside your Nextcloud main server/container that process AI tasks as soon as they are scheduled.
 If the PHP code or the Nextcloud settings values are changed while a worker is running, those changes won't be effective inside the runner. For that reason, the worker needs to be restarted regularly. It is done with a timeout of N seconds which means any changes to the settings or the code will be picked up after N seconds (worst case scenario). This timeout does not, in any way, affect the processing or the timeout of the AI tasks.
 
+.. versionchanged:: 32.0.7
+    The command to run the worker has changed from ``background-job:worker`` to ``taskprocessing:worker``. If you are running an older version of Nextcloud, please use the old command.
+
 Screen or tmux session
 ^^^^^^^^^^^^^^^^^^^^^^
 
@@ -325,13 +344,13 @@ It would be best to run one command per screen session or per tmux window/pane t
 
 .. code-block::
 
-   set -e; while true; do sudo -E -u www-data php occ background-job:worker -v -t 60 "OC\TaskProcessing\SynchronousBackgroundJob"; done
+   set -e; while true; do sudo -E -u www-data php occ taskprocessing:worker -v -t 60; done
 
 For Nextcloud-AIO you should use this command on the host server.
 
 .. code-block::
 
-   set -e; while true; do docker exec -it nextcloud-aio-nextcloud sudo -E -u www-data php occ background-job:worker -v -t 60 "OC\TaskProcessing\SynchronousBackgroundJob"; done
+   set -e; while true; do docker exec -it nextcloud-aio-nextcloud sudo -E -u www-data php occ taskprocessing:worker -v -t 60; done
 
 You may want to adjust the number of workers and the timeout (in seconds) to your needs.
 The logs of the worker can be checked by attaching to the screen or tmux session.
@@ -363,7 +382,7 @@ Systemd service
    #!/bin/sh
    echo "Starting Nextcloud AI Worker $1"
    cd /path/to/nextcloud
-   sudo -E -u www-data php occ background-job:worker -t 60 'OC\TaskProcessing\SynchronousBackgroundJob'
+   sudo -E -u www-data php occ taskprocessing:worker -v -t 60
 
 You may want to adjust the timeout to your needs (in seconds).
 

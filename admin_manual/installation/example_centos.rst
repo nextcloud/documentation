@@ -220,6 +220,7 @@ Example config::
     'memcache.distributed' => '\OC\Memcache\Redis',
     'memcache.locking' => '\OC\Memcache\Redis',
     'memcache.local' => '\OC\Memcache\APCu',
+    'memcache_customprefix' => 'nextcloud_centos',
     'redis' => array(
       'host' => 'localhost',
       'port' => 6379,

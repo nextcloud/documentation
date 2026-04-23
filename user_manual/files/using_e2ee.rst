@@ -9,7 +9,7 @@ The server never sees the unencrypted files, further protecting user privacy and
 Enabling E2EE
 -------------
 
-If your administrator enabled the [End-to-End Encryption app](https://apps.nextcloud.com/apps/end_to_end_encryption), you can start using it from one of your devices.
+If your administrator enabled the `End-to-End Encryption app <https://apps.nextcloud.com/apps/end_to_end_encryption>`_, you can start using it from one of your devices.
 Open the settings of the Nextcloud client and look for the EE2E encryption settings.
 
 .. raw:: html
