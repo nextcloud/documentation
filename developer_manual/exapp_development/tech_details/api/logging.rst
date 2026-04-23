@@ -25,7 +25,7 @@ Request data
 	}
 
 
-The possible values of ``log_lvl`` are described here: `Nextcloud Log level <https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/logging_configuration.html#log-level>`_
+The possible values of ``log_lvl`` are described here: `Nextcloud Log level <../../../../admin_manual/configuration_server/logging_configuration.rst#log-level>`_
 
 Response data
 *************

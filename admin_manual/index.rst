@@ -25,13 +25,13 @@ For documentation on Nextcloud web, desktop, or mobile clients, see:
 - `Nextcloud User Manual`_
 - `Nextcloud Desktop Client`_
 
-.. _`Nextcloud User Manual`: https://docs.nextcloud.com/server/latest/user_manual/en/
+.. _`Nextcloud User Manual`: ../user_manual/index.rst
 .. _`Nextcloud Desktop Client`: https://docs.nextcloud.com/desktop/latest/
 
 For documentation on development topics, see:
 
 - The individual repositories on GitHub within `the @nextcloud organization <https://github.com/nextcloud/>`_
-- `Nextcloud Development Manual <https://docs.nextcloud.com/server/latest/developer_manual/>`_
+- `Nextcloud Development Manual <../developer_manual/index.rst>`_
 
 Core Components
 ---------------
