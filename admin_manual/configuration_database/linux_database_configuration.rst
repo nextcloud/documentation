@@ -47,9 +47,9 @@ Configuring a MySQL or MariaDB database
 
 If you decide to use a MySQL or MariaDB database, ensure the following:
 
-* The transaction isolation level is set to "READ-COMMITTED" in your MariaDB server configuration :file:`/etc/mysql/my.cnf` to persist even after a restart of your database server.
+* The following settings are configured in your MySQL/MariaDB server configuration :file:`/etc/mysql/my.cnf` and persist after a restart of the database server.
 
-  Verify the **transaction_isolation** and **binlog_format**:
+  ``character_set_server`` and ``collation_server`` are required for :doc:`4-byte UTF-8 support <mysql_4byte_support>`. ``transaction_isolation`` must be set to ``READ-COMMITTED`` to avoid data loss under high load. ``binlog_format`` must be set to ``ROW`` when binary logging is enabled with ``READ-COMMITTED`` isolation:
 
 ::
 
@@ -63,7 +63,7 @@ If you decide to use a MySQL or MariaDB database, ensure the following:
 
 Please refer to the `page in the MySQL manual <https://mariadb.com/kb/en/library/set-transaction/#read-committed>`_.
 
-* That you have installed and enabled the pdo_mysql extension in PHP
+* That you have installed and enabled the ``pdo_mysql`` extension in PHP
 
 * That the **mysql.default_socket** points to the correct socket (if the database runs on the same server as Nextcloud).
 
@@ -143,7 +143,7 @@ For further services and users, we recommend to create a separate
 database or PostgreSQL instance.
 
 If you decide to use a PostgreSQL database make sure that you have installed
-and enabled the PostgreSQL extension **pdo_pgsql** in PHP.
+and enabled the PostgreSQL extension ``pdo_pgsql`` in PHP.
 
 The default configuration for PostgreSQL (at least in Ubuntu 14.04) is to use the peer authentication method. Check :file:`/etc/postgresql/9.3/main/pg_hba.conf` to find out which authentication method is used in your setup.
 To start the postgres command line mode use::
