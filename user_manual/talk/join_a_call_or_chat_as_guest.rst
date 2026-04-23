@@ -58,3 +58,23 @@ In the conversation menu you can choose to go full-screen. You can also do this 
 
 .. image:: images/guest-room-menu.png
     :width: 500px
+
+Joining as an email guest
+-------------------------
+
+A guest can be invited to a conversation via email. The email contains a link to join the conversation.
+If the guest clicks the link, they will be redirected to the conversation with an individual access token.
+
+.. image:: images/guest-invitation-email.png
+    :width: 500px
+
+An invitation can be done via inserting the email address in ``Participants`` tab search field.
+
+.. image:: images/guest-email-invitation.png
+    :width: 500px
+
+You can bulk invite email participants by uploading a CSV file. The option is available in the conversation settings under ``Meeting`` section.
+
+.. image:: images/guest-invitation-bulk.png
+    :width: 500px
+

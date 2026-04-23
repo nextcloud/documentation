@@ -18,7 +18,7 @@ Installation
 Listening to events
 -------------------
 
-You can use the OCS API to add webhooks for specific events: https://docs.nextcloud.com/server/latest/developer_manual/_static/openapi.html#/operations/webhook_listeners-webhooks-index
+You can use the OCS API to add webhooks for specific events: https://docs.nextcloud.com/server/32/developer_manual/_static/openapi.html#/operations/webhook_listeners-webhooks-index
 
 .. TODO ON RELEASE: Update version number above on release
 
@@ -662,7 +662,7 @@ This is an exhaustive list of available events. It features the event ID and the
       }
     }
 
-* OCP\\SystemTag\\MapperEvent
+ * OCP\\SystemTag\\TagAssignedEvent
 
   .. code-block:: text
 
@@ -671,9 +671,23 @@ This is an exhaustive list of available events. It features the event ID and the
       "time": int,
       "event": array{
         "class": string,
-        'eventType' => 'OCP\SystemTag\ISystemTagObjectMapper::assignTags' | 'OCP\SystemTag\ISystemTagObjectMapper::unassignTags',
-		'objectType' => string (e.g. 'files'),
-        'objectId' => string,
-        'tagIds' => int[],
+        "objectType": string (e.g. 'files'),
+        "objectIds": string[],
+        "tagIds": int[],
+      }
+    }
+
+ * OCP\\SystemTag\\TagUnassignedEvent
+
+  .. code-block:: text
+
+    array {
+      "user": array {"uid": string, "displayName": string},
+      "time": int,
+      "event": array{
+        "class": string,
+        "objectType": string (e.g. 'files'),
+        "objectIds": string[],
+        "tagIds": int[],
       }
     }

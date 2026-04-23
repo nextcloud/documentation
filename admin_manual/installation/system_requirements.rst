@@ -20,12 +20,12 @@ For best performance, stability and functionality we have documented some recomm
 |                  | - Red Hat Enterprise Linux 8                                          |
 |                  | - Debian 12 (Bookworm)                                                |
 |                  | - SUSE Linux Enterprise Server 15                                     |
-|                  | - openSUSE Leap 15.5                                                  |
+|                  | - openSUSE Leap 15.6                                                  |
 |                  | - CentOS Stream                                                       |
 |                  | - Alpine Linux                                                        |
 +------------------+-----------------------------------------------------------------------+
 | Database         | - MySQL 8.0 / **8.4** or MariaDB 10.6/ **10.11** (recommended) / 11.4 |
-|                  | - Oracle Database 11g, 18, 21, 23                                     |
+|                  | - Oracle Database 11g, 19c, 21c, 23ai                                 |
 |                  |   (*only as part of an enterprise subscription*)                      |
 |                  | - PostgreSQL 13/14/15/16/17                                           |
 |                  | - SQLite 3.24+ (*only recommended for testing and minimal-instances*) |
@@ -40,6 +40,8 @@ For best performance, stability and functionality we have documented some recomm
 +------------------+-----------------------------------------------------------------------+
 
 See :doc:`source_installation` for minimum PHP-modules and additional software for installing Nextcloud.
+
+To ensure the full functionality of your Nextcloud, please make sure that the server can reach the :ref:`required remote systems<connections_to_remote_servers>`. 
 
 CPU Architecture and OS
 ^^^^^^^^^^^^^^^^^^^^^^^

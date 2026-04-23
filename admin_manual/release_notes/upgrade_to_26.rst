@@ -21,6 +21,10 @@ A brief overview of changes:
 
 See for more information: :ref:`email-smtp-config`.
 
+DAV sync tokens retention
+-------------------------
+
+A mechanism to clean up old CalDAV and CardDAV sync tokens has been added. See :ref:`CalDAV retention <caldav-data-retention>` and :ref:`CardDAV retention <carddav-data-retention>` and make sure it fits your installation size.
 
 Web server configuration
 ------------------------

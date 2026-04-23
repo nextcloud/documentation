@@ -13,8 +13,8 @@ Installation
 ------------
 
 1. Make sure the `Nextcloud Talk app <https://apps.nextcloud.com/apps/spreed>`_ is installed.
-2. Make sure the High-Performance Backend is installed and configured in Nextcloud Talk settings. See the `Nextcloud Talk install manual <https://nextcloud-talk.readthedocs.io/en/latest/quick-install/>`_ for more information.
-3. Setup a :ref:`Deploy Demon <ai-app_api>` in AppAPI Admin settings.
+2. Make sure the High-Performance Backend (latest or released after September 2025) is installed and configured in Nextcloud Talk settings. See the `Nextcloud Talk install manual <https://nextcloud-talk.readthedocs.io/en/latest/quick-install/>`_ for more information.
+3. Setup a :ref:`Deploy Daemon <ai-app_api>` in AppAPI Admin settings.
 4. Install the **live_transcription** app via the "Apps" page in Nextcloud, or by executing
 
 .. code-block::
@@ -38,6 +38,59 @@ Installation
 
    The environment variables ``LT_HPB_URL`` and ``LT_INTERNAL_SECRET`` must be set in the Deploy Options,
    and the High-Performance Backend must be functionally configured in Nextcloud Talk settings for the app to work.
+
+
+Requirements
+------------
+
+* Nextcloud AIO is supported
+* We currently support NVIDIA GPUs and x86_64 CPUs. Only CPU-based transcription is supported and works well on modern x86 CPUs.
+* CUDA >= v12.4.1 on your host system for GPU-based transcription
+* GPU Sizing
+
+   * A NVIDIA GPU with at least 10 GB VRAM
+   * 16 GB of system RAM should be enough for one or two concurrent calls
+
+* CPU Sizing
+
+   * x86 CPU with 4 threads. Additional 2 threads per concurrent call.
+   * 16 GB of RAM should be enough for one or two concurrent calls
+
+* Space usage
+   * ~ 2.8 GB for the docker container
+   * ~ 6.0 GB for the default models
+
+.. note::
+
+   We currently have very little real-world experience running this software on production instances.
+   The above sizing recommendations come from our estimates and are not real-world benchmarks.
+   Actual requirements will vary based on factors such as the number of concurrent calls, audio quality, and selected languages.
+   Please do thorough testing to confirm your hardware meets your needs.
+
+Logs
+----
+
+| Warnings and errors are logged to the main Nextcloud server logs.
+| To inspect the detailed JSON logs for lower levels, the following commands can help.
+
+To view docker stdout/err logs:
+
+.. code-block:: bash
+
+   docker logs -f -n400 nc_app_live_transcription
+
+| To view the JSON logs:
+| The logs are rotated when file size exceeds 20 MiB. The older log files are named ``lt.log.1``, ``lt.log.2``, and so on.
+
+.. code-block:: bash
+
+   docker exec -it nc_app_live_transcription tail -f -n400 /nc_app_live_transcription_data/logs/lt.log
+
+To download the JSON logs:
+
+.. code-block:: bash
+
+   docker cp nc_app_live_transcription:/nc_app_live_transcription_data/logs/ /tmp/nc_app_live_transcription_logs
 
 
 App store

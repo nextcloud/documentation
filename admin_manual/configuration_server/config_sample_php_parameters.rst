@@ -243,6 +243,8 @@ installer. (There are also per-user salts.) If you lose this salt, you lose
 all your passwords. This example is for documentation only, and you should
 never use it.
 
+.. deprecated:: This salt is deprecated and only used for legacy-compatibility, developers should *NOT* use this value for anything nowadays.  'passwordsalt' => 'd3c944a9af095aa08f',
+
 secret
 ^^^^^^
 
@@ -872,6 +874,35 @@ Disabling this is discouraged for security reasons.
 
 Defaults to ``true``
 
+ratelimit_overwrite
+^^^^^^^^^^^^^^^^^^^
+
+
+::
+
+	'ratelimit_overwrite' => [
+		'profile.profilepage.index' => [
+			'user' => ['limit' => 300, 'period' => 3600],
+			'anon' => ['limit' => 1, 'period' => 300],
+		]
+	],
+
+Overwrite the individual rate limit for a specific route
+
+From time to time it can be necessary to extend the rate limit of a specific route,
+depending on your usage pattern or when you script some actions.
+Instead of completely disabling the rate limit or excluding an IP address from the
+rate limit, the following config allows to overwrite the rate limit duration and period.
+
+The first level key is the name of the route. You can find the route name from a URL
+using the ``occ router:list`` command of your server.
+
+You can also specify different limits for logged-in users with the ``user`` key
+and not-logged-in users with the ``anon`` key. However, if there is no specific ``user`` limit,
+the ``anon`` limit is also applied for logged-in users.
+
+Defaults to empty array ``[]``
+
 security.ipv6_normalized_subnet_size
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -917,9 +948,13 @@ characters).
 
 By default, the passwords are stored encrypted in the database.
 
-WARNING: If disabled, password changes on the user backend (e.g., on LDAP) no
-longer log connected clients out automatically. Users can still disconnect
-the clients by deleting the app token from the security settings.
+
+
+.. warning::
+
+  If disabled, password changes on the user backend (e.g., on LDAP) no
+  longer log connected clients out automatically. Users can still disconnect
+  the clients by deleting the app token from the security settings.
 
 hide_login_form
 ^^^^^^^^^^^^^^^
@@ -1004,8 +1039,12 @@ mail_smtpdebug
 
 Enable SMTP class debugging.
 
-NOTE: ``loglevel`` will likely need to be adjusted too. See docs:
-  https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/email_configuration.html#enabling-debug-mode
+
+
+.. note::
+
+  ``loglevel`` will likely need to be adjusted too. See docs:
+    https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/email_configuration.html#enabling-debug-mode
 
 Defaults to ``false``
 
@@ -2142,9 +2181,8 @@ indicates if a Web server can write files to that folder.
 Previews
 --------
 
-Nextcloud supports previews of image files, the covers of MP3 files, and text
-files. These options control enabling and disabling previews, and thumbnail
-size.
+Nextcloud supports generating previews for various file types, such as images, audio files, and text files.
+These options control enabling and disabling previews, and thumbnail size.
 
 
 enable_previews
@@ -2158,7 +2196,6 @@ enable_previews
 By default, Nextcloud can generate previews for the following filetypes:
 
 - Image files
-- Covers of MP3 files
 - Text documents
 
 Valid values are ``true``, to enable previews, or
@@ -2335,7 +2372,6 @@ enabledPreviewProviders
 		'OC\Preview\JPEG',
 		'OC\Preview\Krita',
 		'OC\Preview\MarkDown',
-		'OC\Preview\MP3',
 		'OC\Preview\OpenDocument',
 		'OC\Preview\PNG',
 		'OC\Preview\TXT',
@@ -2347,21 +2383,21 @@ Only register providers that have been explicitly enabled
 The following providers are disabled by default due to performance or privacy
 concerns:
 
+ - ``OC\Preview\EMF``
  - ``OC\Preview\Font``
  - ``OC\Preview\HEIC``
  - ``OC\Preview\Illustrator``
- - ``OC\Preview\Movie``
+ - ``OC\Preview\MP3``
  - ``OC\Preview\MSOffice2003``
  - ``OC\Preview\MSOffice2007``
  - ``OC\Preview\MSOfficeDoc``
+ - ``OC\Preview\Movie``
  - ``OC\Preview\PDF``
  - ``OC\Preview\Photoshop``
  - ``OC\Preview\Postscript``
- - ``OC\Preview\StarOffice``
  - ``OC\Preview\SVG``
+ - ``OC\Preview\StarOffice``
  - ``OC\Preview\TIFF``
- - ``OC\Preview\EMF``
-
 
 Defaults to the following providers:
 
@@ -2370,7 +2406,6 @@ Defaults to the following providers:
  - ``OC\Preview\JPEG``
  - ``OC\Preview\Krita``
  - ``OC\Preview\MarkDown``
- - ``OC\Preview\MP3``
  - ``OC\Preview\OpenDocument``
  - ``OC\Preview\PNG``
  - ``OC\Preview\TXT``
@@ -2438,6 +2473,8 @@ sort_groups_by_name
 Sort groups in the user settings by name instead of the user count
 
 By enabling this, the user count beside the group name is disabled as well.
+
+.. deprecated:: since Nextcloud 29 - Use the frontend instead or set the app config value `group.sortBy` for `core` to `2`
 
 Comments
 --------
@@ -2595,6 +2632,21 @@ Memory caching backend for distributed data
 
 Defaults to ``none``
 
+memcache_customprefix
+^^^^^^^^^^^^^^^^^^^^^
+
+
+::
+
+	'memcache_customprefix' => 'mycustomprefix',
+
+Cache Key Prefix for Redis or Memcached
+
+* Used for avoiding collisions in the cache system
+* May be used for ACL restrictions in Redis
+
+Defaults to ``''`` (empty string)
+
 redis
 ^^^^^
 
@@ -2662,11 +2714,15 @@ Available failover modes:
  - \\RedisCluster::FAILOVER_ERROR - failover to slaves for read commands if master is unavailable (recommended)
  - \\RedisCluster::FAILOVER_DISTRIBUTE - randomly distribute read commands across master and slaves
 
-WARNING: FAILOVER_DISTRIBUTE is a not recommended setting, and we strongly
-suggest to not use it if you use Redis for file locking. Due to the way Redis
-is synchronized, it could happen that the read for an existing lock is
-scheduled to a slave that is not fully synchronized with the connected master
-which then causes a FileLocked exception.
+
+
+.. warning::
+
+  FAILOVER_DISTRIBUTE is a not recommended setting, and we strongly
+  suggest to not use it if you use Redis for file locking. Due to the way Redis
+  is synchronized, it could happen that the read for an existing lock is
+  scheduled to a slave that is not fully synchronized with the connected master
+  which then causes a FileLocked exception.
 
 See https://redis.io/topics/cluster-spec for details about the Redis cluster
 
@@ -2812,11 +2868,15 @@ exclusive access to the object store container because it only stores the
 binary data for each file. The metadata is currently kept in the local
 database for performance reasons.
 
-WARNING: The current implementation is incompatible with any app that uses
-direct file I/O and circumvents our virtual filesystem. That includes
-Encryption and Gallery. Gallery will store thumbnails directly in the
-filesystem, and encryption will cause severe overhead because key files need
-to be fetched in addition to any requested file.
+
+
+.. warning::
+
+  The current implementation is incompatible with any app that uses
+  direct file I/O and circumvents our virtual filesystem. That includes
+  Encryption and Gallery. Gallery will store thumbnails directly in the
+  filesystem, and encryption will cause severe overhead because key files need
+  to be fetched in addition to any requested file.
 
 objectstore
 ^^^^^^^^^^^
@@ -2852,6 +2912,36 @@ objectstore
 	],
 
 To use Swift V3
+
+objectstore
+^^^^^^^^^^^
+
+
+::
+
+	'objectstore' => [
+		'class' => 'OC\\Files\\ObjectStore\\S3',
+		'arguments' => [
+			'bucket' => 'nextcloud',
+			'key' => 'your-access-key',
+			'secret' => 'your-secret-key',
+			'hostname' => 's3.example.com',
+			'port' => 443,
+			'use_ssl' => true,
+			'region' => 'us-east-1',
+			// optional: Maximum number of retry attempts for failed S3 requests
+			// Default: 5
+			'retriesMaxAttempts' => 5,
+			// Data Integrity Protections for Amazon S3 (https://docs.aws.amazon.com/sdkref/latest/guide/feature-dataintegrity.html)
+			// Valid values are "when_required" (default) and "when_supported".
+			// To ensure compatibility with 3rd party S3 implementations, Nextcloud disables it by default. However, if you are
+			// using Amazon S3 (or any other implementation that supports it) we recommend enabling it by using "when_supported".
+			'request_checksum_calculation' => 'when_required',
+			'response_checksum_validation' => 'when_required',
+		],
+	],
+
+To use S3 object storage
 
 objectstore.multibucket.preview-distribution
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -3212,6 +3302,22 @@ This option allows overriding the automatic collation choice. Example:
 This setting does not affect table creation or setup, where utf8[mb4]_bin is
 always used. It applies only to SQL queries using LIKE comparison operators.
 
+pgsql_ssl
+^^^^^^^^^
+
+
+::
+
+	'pgsql_ssl' => [
+		'mode' => '',
+		'cert' => '',
+		'rootcert' => '',
+		'key' => '',
+		'crl' => '',
+	],
+
+PostgreSQL SSL connection
+
 supportedDatabases
 ^^^^^^^^^^^^^^^^^^
 
@@ -3283,7 +3389,11 @@ Block specific files or filenames, disallowing uploads or access (read and write
 
 ``.htaccess`` is blocked by default.
 
-WARNING: Use this only if you understand the implications.
+
+
+.. warning::
+
+  Use this only if you understand the implications.
 
 Note: This list is case-insensitive.
 
@@ -3451,8 +3561,12 @@ localstorage.allowsymlinks
 
 Allow local storage to contain symlinks.
 
-WARNING: Not recommended, as this allows Nextcloud to access files outside the
-data directory, posing a potential security risk.
+
+
+.. warning::
+
+  Not recommended, as this allows Nextcloud to access files outside the
+  data directory, posing a potential security risk.
 
 Defaults to ``false``
 
@@ -3842,7 +3956,11 @@ csrf.optout
 List of user agents exempt from SameSite cookie protection due to non-standard
 HTTP behavior.
 
-WARNING: Use only if you understand the implications.
+
+
+.. warning::
+
+  Use only if you understand the implications.
 
 Defaults to:
 - /^WebDAVFS/ (OS X Finder)
@@ -3860,7 +3978,11 @@ Specify allowed user agents for Login Flow V2 using regular expressions.
 
 User agents not matching this list are denied access to Login Flow V2.
 
-WARNING: Use only if you understand the implications.
+
+
+.. warning::
+
+  Use only if you understand the implications.
 
 Example: Allow only the Nextcloud Android app:
 'core.login_flow_v2.allowed_user_agents' => ['/Nextcloud-android/i'],
@@ -3950,9 +4072,13 @@ query_log_file
 
 Log all database queries to a file.
 
-WARNING: This significantly reduces server performance and is intended only
-for debugging or profiling query interactions. Sensitive data may be logged in
-plain text.
+
+
+.. warning::
+
+  This significantly reduces server performance and is intended only
+  for debugging or profiling query interactions. Sensitive data may be logged in
+  plain text.
 
 query_log_file_requestid
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -3977,7 +4103,11 @@ query_log_file_parameters
 Include all query parameters in the query log when set to `yes`.
 
 Requires `query_log_file` to be set.
-WARNING: This may log sensitive data in plain text.
+
+
+.. warning::
+
+  This may log sensitive data in plain text.
 
 query_log_file_backtrace
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -4001,9 +4131,13 @@ redis_log_file
 
 Log all Redis requests to a file.
 
-WARNING: This significantly reduces server performance and is intended only
-for debugging or profiling Redis interactions. Sensitive data may be logged in
-plain text.
+
+
+.. warning::
+
+  This significantly reduces server performance and is intended only
+  for debugging or profiling Redis interactions. Sensitive data may be logged in
+  plain text.
 
 diagnostics.logging
 ^^^^^^^^^^^^^^^^^^^
@@ -4169,7 +4303,7 @@ files.chunked_upload.max_parallel_count
 
 Maximum number of chunks uploaded in parallel during chunked uploads. Higher
 counts increase throughput but consume more server resources, with diminishing
-returns.
+returns. Value must be a positive integer.
 
 Defaults to ``5``
 
@@ -4198,6 +4332,20 @@ Enable PHP 8.4 lazy objects for Dependency Injection to improve performance by
 avoiding instantiation of unused objects.
 
 Defaults to ``true``
+
+default_certificates_bundle_path
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+
+::
+
+	'default_certificates_bundle_path' => \OC::$SERVERROOT . '/resources/config/ca-bundle.crt',
+
+Change the default certificates bundle used for trusting certificates.
+
+Nextcloud ships its own up-to-date certificates bundle, but in certain cases admins may wish to specify a different bundle, for example the one shipped by their distro.
+
+Defaults to `\\OC::$SERVERROOT . '/resources/config/ca-bundle.crt'`.
 
 .. ALL_OTHER_SECTIONS_END
 .. Generated content above. Don't change this.

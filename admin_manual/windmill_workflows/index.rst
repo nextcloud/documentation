@@ -60,7 +60,7 @@ Each workflow in Windmill is a listener to a Nextcloud Webhook Event.
 If you are using the ExApp-packaged Windmill, it will automatically register webhooks for the workflows you build using the following mechanism.
 If you are not using the ExApp-packaged windmill install then you will have to register
 webhooks for your workflows manually via the webhook_listeners API:
-see https://docs.nextcloud.com/server/latest/developer_manual/_static/openapi.html#/operations/webhook_listeners-webhooks-index
+see https://docs.nextcloud.com/server/32/developer_manual/_static/openapi.html#/operations/webhook_listeners-webhooks-index
 
 .. TODO ON RELEASE: Update version number above on release
 
@@ -90,7 +90,9 @@ you can run a flow named "Synchronize Hub Resource types with instance" in the W
 You can create your own Nextcloud-related scripts by taking one of the existing ones as example.
 In a script, when sending a request to Nextcloud, make sure that the ``EX-APP-ID`` header is set to ``flow``.
 Your custom scripts can make requests to any endpoint of the
-`Nextcloud OCS API <https://docs.nextcloud.com/server/latest/developer_manual/_static/openapi.html>`_ .
+`Nextcloud OCS API <https://docs.nextcloud.com/server/32/developer_manual/_static/openapi.html>`_ .
+
+.. TODO ON RELEASE: Update version number above on release
 
 All the scripts we provide have a set of common input parameters:
 
@@ -149,5 +151,6 @@ Can I create a script?
 If the Windmill Hub does not contain any script to perform the action you have in mind,
 you can take an existing Nextcloud script as example and create your own.
 Your custom scripts can make requests to any endpoint of the
-`Nextcloud OCS API <https://docs.nextcloud.com/server/latest/developer_manual/_static/openapi.html>`_ .
+`Nextcloud OCS API <https://docs.nextcloud.com/server/32/developer_manual/_static/openapi.html>`_ .
 
+.. TODO ON RELEASE: Update version number above on release

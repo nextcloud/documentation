@@ -51,8 +51,11 @@ occ command Directory
 
 .. _http_user_label:
 
-Run occ as your HTTP user
--------------------------
+Running occ
+-----------
+
+You must run ``occ`` as your HTTP user so that the file ownership and permissions
+on your Nextcloud data directory stay consistent with the web server.
 
 The HTTP user is different on the various Linux distributions:
 
@@ -169,13 +172,15 @@ and ``encryption:list-modules``
 Environment variables
 ^^^^^^^^^^^^^^^^^^^^^
 
-``sudo`` does not forward environment variables by default. Put the variables before the ``php`` command::
+``sudo`` does not forward environment variables by default. You can prepend the
+variable and use the ``-E`` switch to pass it through::
 
   NC_debug=true sudo -E -u www-data php occ status
 
-Alternatively, you can ``export`` the variable or use the ``-E`` switch for ``sudo``::
+Alternatively, ``export`` the variable first::
 
-  NC_debug=true sudo -E -u www-data php occ status
+  export NC_debug=true
+  sudo -E -u www-data php occ status
 
 Enabling autocompletion
 -----------------------
@@ -205,7 +210,7 @@ shell's profile (eg. ``~/.bash_profile`` or ``~/.zshrc``).
 
 .. _run_commands_in_maintenance_mode:
 
-Run commands in maintenance mode
+Limitations in maintenance mode
 --------------------------------
 
 In maintenance mode, apps are not loaded [1]_, so commands from apps are unavailable. Commands integrated into Nextcloud server are available in maintenance mode.
@@ -322,23 +327,23 @@ To update an app to an unstable release, for instance News::
 Background jobs selector
 ------------------------
 
-Use the ``background`` command to select which scheduler you want to use for
-controlling background jobs, Ajax, Webcron, or Cron. This is the same as using
+Use the ``background`` commands to select which scheduler you want to use for
+controlling background jobs. This is the same as using
 the **Cron** section on your Nextcloud Admin page::
 
  background
-  background:ajax       Use ajax to run background jobs
-  background:cron       Use cron to run background jobs
-  background:webcron    Use webcron to run background jobs
+  background:cron       Set background jobs to cron mode
+  background:ajax       Set background jobs to ajax mode
+  background:webcron    Set background jobs to webcron mode
 
-This example selects Ajax::
+Example::
 
- sudo -E -u www-data php occ background:ajax
-   Set mode for background jobs to 'ajax'
+ sudo -E -u www-data php occ background:cron
+   Set mode for background jobs to 'cron'
 
 The other two commands are:
 
-* ``background:cron``
+* ``background:ajax``
 * ``background:webcron``
 
 See :doc:`configuration_server/background_jobs_configuration` to learn more.
@@ -372,9 +377,7 @@ While setting a configuration value, multiple options are available:
 .. note::
 	See `Appconfig Concepts`_ to learn more about `typed value`, `lazy` and `sensitive` flag.
 
-.. _Appconfig Concepts: https://docs.nextcloud.com/server/latest/developer_manual/digging_deeper/config/appconfig.html#concept-overview
-
-.. TODO ON RELEASE: Update version number above on release
+.. _Appconfig Concepts: https://docs.nextcloud.com/server/32/developer_manual/digging_deeper/config/appconfig.html#concept-overview
 
 You can list all configuration values with one command::
 
@@ -559,6 +562,9 @@ Manage addressbooks and calendars::
   dav:send-event-reminders        Sends event reminders
   dav:sync-birthday-calendar      Synchronizes the birthday calendar
   dav:sync-system-addressbook     Synchronizes users to the system addressbook
+ calendar
+  calendar:export                 Export a calendar of a user
+  calendar:import                 Import a calendar to a user
 
 
 Manage addressbooks
@@ -634,6 +640,71 @@ This example will move calendar named personal from user dennis to user sabine: 
 
  sudo -E -u www-data php occ dav:move-calendar personal dennis sabine
 
+
+Export a calendar of a user
+"""""""""""""""""""""""""""
+
+``calendar:export [--format FORMAT] [--location LOCATION] [--] <uid> <uri>`` exports the calendar entries from a calendar with the given ``uri`` of user ``uid``.
+
+**Arguments:**
+
+* ``uid`` (mandatory): User ID whose calendar will be exported.
+* ``cid`` (mandatory): Calendar URI to export.
+* ``--format FORMAT`` (optional, defaults to ``ical``): Output format. One of ``ical``, ``xcal``, or ``jcal``.
+* ``--location <file path>`` (optional, defaults to stdout): Path to the file to export to. If omitted, output is written to standard output.
+
+The output format can be specified with the ``--format`` option. Valid formats are ``ical`` standard format (RFC 5545), ``xcal`` XML iCalendar (RFC 6321), and ``jcal`` JSON iCalendar (RFC 7265).
+
+This example will export the calendar named personal of user dennis to a file named personal.ics in standard format: ::
+
+ sudo -E -u www-data php occ calendar:export dennis personal --location /tmp/personal.ics
+
+This example will export the calendar in XML iCalendar format: ::
+
+ sudo -E -u www-data php occ calendar:export dennis personal --format xcal --location /tmp/personal.xcal
+
+This example will export the calendar in JSON iCalendar format to standard output: ::
+
+ sudo -E -u www-data php occ calendar:export dennis personal --format jcal
+
+
+Import a calendar to a user
+"""""""""""""""""""""""""""
+
+``calendar:import [--format FORMAT] [--errors ERRORS] [--validation VALIDATION] [--supersede] [--show-created] [--show-updated] [--show-skipped] [--show-errors] [--] <uid> <uri> [<location>]`` imports a calendar entries to the calendar with the given ``uri`` of user ``uid``.
+
+**Arguments:**
+
+* ``uid`` (mandatory): User ID to import the calendar for.
+* ``uri`` (mandatory): Calendar URI to import into.
+* ``location`` (optional, defaults to stdin): Path to the file to import. If omitted, reads from standard input.
+* ``--format FORMAT`` (optional, defaults to ``ical``): Input format. One of ``ical``, ``xcal``, or ``jcal``.
+* ``--supersede`` (optional): Force override of existing objects with the same UID.
+* ``--show-created`` (optional): Show UID of created objects after import.
+* ``--show-updated`` (optional): Show UID of updated objects after import.
+* ``--show-skipped`` (optional): Show UID of skipped objects (e.g., duplicates or invalid entries).
+* ``--show-errors`` (optional): Show UID of objects with errors during import.
+* ``--errors ERRORS`` (optional): How to handle errors. ``0`` = continue on error, ``1`` = fail on error.
+* ``--validation VALIDATION`` (optional): How to handle object validation. ``0`` = no validation, ``1`` = validate and skip on issue, ``2`` = validate and fail on issue.
+
+The input format can be specified with the ``--format`` option, valid formats are ``ical`` standard format (RFC 5545), ``xcal`` XML iCalendar (RFC 6321) and ``jcal`` JSON iCalendar (RFC 7265), the default is ``ical``.
+
+This example will import from a file named personal.ics in standard format to the calendar named personal of user dennis: ::
+
+  sudo -E -u www-data php occ calendar:import dennis personal /tmp/personal.ics
+
+This example will import from a file named personal.xcal in XML iCalendar format to the calendar named personal of user dennis: ::
+
+  sudo -E -u www-data php occ calendar:import --format xcal dennis personal /tmp/personal.xcal
+
+This example will import from a file named personal.jcal in JSON iCalendar format to the calendar named personal of user dennis: ::
+  
+  sudo -E -u www-data php occ calendar:import --format jcal dennis personal /tmp/personal.jcal
+
+This example will import from standard input to the calendar named personal of user dennis: ::
+  
+  cat /tmp/personal.ics | sudo -E -u www-data php occ calendar:import dennis personal
+
 Misc
 """"
 
@@ -704,6 +775,13 @@ addressbooks shared with you. This example syncs to your calendar from user bern
 
  sudo -E -u www-data php occ dav:sync-birthday-calendar bernie
 
+Disable creation of example events
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+This will disable the automatic creation of example events in calendar: ::
+
+ sudo -E -u www-data php occ config:app:set dav create_example_event --value=false --type=boolean
+
 
 .. _database_conversion_label:
 
@@ -720,8 +798,6 @@ convert from SQLite to one of these other databases.
  db
   db:convert-type           Convert the Nextcloud database to the newly
                             configured one
-  db:generate-change-script generates the change script from the current
-                            connected db to db_structure.xml
 
 You need:
 
@@ -1072,9 +1148,7 @@ The command line option ``--transfer-incoming-shares`` overwrites the config.php
  sudo -E -u www-data php occ files:transfer-ownership --transfer-incoming-shares=0 <source-user> <destination-user>
 
 Users may also transfer files or folders selectively by themselves.
-See `user documentation <https://docs.nextcloud.com/server/latest/user_manual/en/files/transfer_ownership.html>`_ for details.
-
-.. TODO ON RELEASE: Update version number above on release
+See `user documentation <https://docs.nextcloud.com/server/32/user_manual/en/files/transfer_ownership.html>`_ for details.
 
 .. _occ_files_windows_filenames:
 
@@ -1165,9 +1239,7 @@ Verify your app::
   sudo -E -u www-data php occ integrity:check-app --path=/pathto/app appname
 
 When it returns nothing, your app is signed correctly. When it returns a message then there is an error. See `Code Signing
-<https://docs.nextcloud.com/server/latest/developer_manual/app_publishing_maintenance/code_signing.html#how-to-get-your-app-signed>`_ in the Developer manual for more detailed information.
-
-.. TODO ON RELEASE: Update version number above on release
+<https://docs.nextcloud.com/server/32/developer_manual/app_publishing_maintenance/code_signing.html#how-to-get-your-app-signed>`_ in the Developer manual for more detailed information.
 
 ``integrity:sign-core`` is for Nextcloud core developers only.
 
@@ -2162,6 +2234,9 @@ invisible  No       No
 
 Antivirus
 ---------
+
+.. note::
+   These commands require the `files_antivirus <https://apps.nextcloud.com/apps/files_antivirus>`_ app to be installed and enabled.
 
 Get info about files in the scan queue::
 

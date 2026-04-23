@@ -158,12 +158,6 @@ To change the default from ``2`` and check for changes on disk at most every ``6
 
   opcache.revalidate_freq = 60
 
-To disable the revalidation completely:
-
-.. code:: ini
-
-  opcache.validate_timestamps = 0
-
 Any Server/app upgrades or changes to ``config.php`` will then require restarting PHP (or otherwise manually clearing the cache or invalidating this particular script).
 
 .. warning::
@@ -222,7 +216,6 @@ Nextcloud to use Imaginary by editing your `config.php`:
 .. code:: php
 
     'enabledPreviewProviders' => [
-        'OC\Preview\MP3',
         'OC\Preview\TXT',
         'OC\Preview\MarkDown',
         'OC\Preview\OpenDocument',

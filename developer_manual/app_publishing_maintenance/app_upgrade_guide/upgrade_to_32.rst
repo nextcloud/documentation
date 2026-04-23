@@ -60,6 +60,7 @@ Deprecated APIs
 
 - ``--color-error-rgb``, ``--color-info-rgb``, ``--color-success-rgb``, ``--color-warning-rgb`` are deprecated.
   Instead use the native CSS color utils with the the existing variables like ``--color-error`` and similar.
+- The ``OC.SystemTags`` api is deprecated. If you need to get the list of system tags, check `this merge request <https://github.com/nextcloud/files_retention/pull/855>`_ for how to fetch the tags directly.
 
 Removed APIs
 ^^^^^^^^^^^^
@@ -127,6 +128,8 @@ Added APIs
   - New task processing task type ``OCP\TaskProcessing\AnalyzeImages`` to ask questions about images.
   - New method ``OCP\TaskProcessing\Manager::getAvailableTaskTypeIds`` to list only task type IDs without meta-data (faster than ``OCP\TaskProcessing\Manager::getAvailableTaskTypes``)
 
+- New ``OCP\Mail\IEmailValidator`` to validate an email address.
+
 Changed APIs
 ^^^^^^^^^^^^
 
@@ -146,6 +149,7 @@ Deprecated APIs
 - ``\OC_User::clearBackends`` is deprecated, please use ``\OCP\IUserManager::clearBackends`` available since 8.0.0
 - ``\OC_Helper::isReadOnlyConfigEnabled`` is deprecated, please use the ``config_is_read_only`` system config directly.
 - ``\OCP\OCM\IOCMProvider`` is deprecated, please use ``\OCP\OCM\ICapabilityAwareOCMProvider`` available since 32.0.0
+- ``\OCP\Mail\IMailer::validateMailAddress`` is deprecated, please use ``\OCP\Mail\IEmailValidator`` available since 32.0.0
 
 Removed APIs
 ^^^^^^^^^^^^

@@ -6,7 +6,7 @@ USER root
 RUN export DEBIAN_FRONTEND=noninteractive \
     && apt-get update \
     && apt-get -y install --no-install-recommends \
-        curl gnupg2 git nano make graphviz imagemagick inkscape sass unzip wget php-cli npm latexmk texlive-latex-extra tex-gyre \
+        curl gnupg2 git nano make graphviz imagemagick inkscape sass unzip wget php-cli npm latexmk texlive-latex-extra tex-gyre texlive-xetex \
     && wget https://getcomposer.org/installer -qO /tmp/composer-setup.php \
     && php /tmp/composer-setup.php \
     && mv composer.phar /usr/local/bin/composer \
