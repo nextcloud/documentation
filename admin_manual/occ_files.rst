@@ -336,7 +336,7 @@ The command line option ``--transfer-incoming-shares`` overwrites the config.php
  sudo -E -u www-data php occ files:transfer-ownership --transfer-incoming-shares=0 <source-user> <destination-user>
 
 Users may also transfer files or folders selectively by themselves.
-See `user documentation <https://docs.nextcloud.com/server/latest/user_manual/en/files/transfer_ownership.html>`_ for details.
+See `user documentation <../user_manual/files/transfer_ownership.rst>`_ for details.
 
 .. _occ_files_windows_filenames:
 
@@ -427,7 +427,7 @@ Verify your app::
   sudo -E -u www-data php occ integrity:check-app --path=/pathto/app appname
 
 When it returns nothing, your app is signed correctly. When it returns a message then there is an error. See `Code Signing
-<https://docs.nextcloud.com/server/latest/developer_manual/app_publishing_maintenance/code_signing.html#how-to-get-your-app-signed>`_ in the Developer manual for more detailed information.
+<../developer_manual/app_publishing_maintenance/code_signing.rst#how-to-get-your-app-signed>`_ in the Developer manual for more detailed information.
 
 ``integrity:sign-core`` is for Nextcloud core developers only.
 

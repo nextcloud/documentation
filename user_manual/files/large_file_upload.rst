@@ -9,5 +9,5 @@ Modifying certain Nextcloud variables requires administrative access. If you req
 * Contact your administrator to request an increase in these variables
 
 * Refer to the section in the `Administration Documentation
-  <https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/big_file_upload_configuration.html>`_ that describes how to manage file
+  <../../admin_manual/configuration_files/big_file_upload_configuration.rst>`_ that describes how to manage file
   upload size limits.

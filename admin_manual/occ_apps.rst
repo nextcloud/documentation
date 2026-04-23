@@ -157,7 +157,7 @@ While setting a configuration value, multiple options are available:
 .. note::
 	See `Appconfig Concepts`_ to learn more about `typed value`, `lazy` and `sensitive` flag.
 
-.. _Appconfig Concepts: https://docs.nextcloud.com/server/latest/developer_manual/digging_deeper/config/appconfig.html#concept-overview
+.. _Appconfig Concepts: ../developer_manual/digging_deeper/config/appconfig.rst#concept-overview
 
 You can list all configuration values with one command::
 
