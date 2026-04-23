@@ -15,7 +15,7 @@ Due to naming changes in the Collabora Online releases it may be required to adj
 - Paths with ``lool`` have been renamed to ``cool``
 - Paths with ``loleaflet`` have been renamed to ``browser``
 
-Fully detailed reverse proxy configration guides for various solutions can be found at https://sdk.collaboraonline.com/docs/installation/Proxy_settings.html
+Fully detailed reverse proxy configuration guides for various solutions can be found at https://sdk.collaboraonline.com/docs/installation/Proxy_settings.html
 
 Upgrade distribution packages
 *****************************

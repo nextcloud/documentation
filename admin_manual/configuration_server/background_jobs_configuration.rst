@@ -27,11 +27,21 @@ Parameters
 
 In the ``config/config.php`` file you can specify this config.
 Some background jobs only run once a day. When an hour is defined (timezone is UTC)
-for this config, the background jobs which advertise themselves as not time sensitive
+for this config, the background jobs which advertise themselves as not time-sensitive
 will be delayed during the "working" hours and only run in the 4 hours after the given
-time. This is e.g. used for activity expiration, suspicious login training and update checks.
+time. This is e.g. used for activity expiration, suspicious login training, and update checks.
 
-A value of 1 e.g. will only run these background jobs between 01:00am UTC and 05:00am UTC.
+A value of 1 e.g. will only run these background jobs between 01:00am UTC and 05:00am UTC::
+
+  'maintenance_window_start' => 1,
+
+If you don't care when these jobs run, you can set the value to ``100``, but beware that 
+resource intensive jobs may then run unnecessarily during high usage periods. This may lead to
+slower performance and a lower quality user experience.
+
+This setting may also be set directly via ``occ`` just like any other configuration parameter::
+
+  occ config:system:set maintenance_window_start --type=integer --value=1
 
 Cron jobs
 ---------
@@ -48,7 +58,7 @@ AJAX
 The AJAX scheduling method is the default option. Unfortunately, however, it is
 also the least reliable. Each time a user visits the Nextcloud page, a single
 background job is executed. The advantage of this mechanism is that it does not
-require access to the system nor registration with a third party service. The
+require access to the system nor registration with a third-party service. The
 disadvantage of this mechanism, when compared to the Webcron service, is that it
 requires regular visits to the page for it to be triggered.
 
@@ -68,11 +78,11 @@ access your server using the Internet. For example::
 
   URL to call: http[s]://<domain-of-your-server>/nextcloud/cron.php
 
-.. warning:: Since WebCron is still executed via web, the webserver in most case limits the
-   resources on the execution. To avoid interrupts inside jobs only 1 jobs is executed
+.. warning:: Since WebCron is still executed via the web, the webserver in most cases limits the
+   resources on the execution. To avoid interrupts inside jobs only 1 job is executed
    per call. When webcron is called once every 5 minutes this limits your instance to
-   288 background jobs per day, which is only suitable for very small instance.
-   For bigger instances it is recommended to use ``cron``.
+   288 background jobs per day, which is only suitable for very small instances.
+   For bigger instances, it is recommended to use ``cron``.
 
 .. _system-cron-configuration-label:
 
@@ -107,8 +117,6 @@ Which returns::
 
 .. note:: On some systems it might be required to call **php-cli** instead of **php**.
 
-.. note:: For some configurations, it might be neccessary to append ``--define apc.enable_cli=1`` to the cron command. Please refer to :doc:`./caching_configuration` (section APCu).
-
 .. note:: Please refer to the crontab man page for the exact command syntax.
 
 .. _easyCron: https://www.easycron.com/
@@ -127,10 +135,13 @@ This approach requires two files: **nextcloudcron.service** and **nextcloudcron.
 
   [Service]
   User=www-data
+  ExecCondition=php -f /var/www/nextcloud/occ status -e
   ExecStart=/usr/bin/php -f /var/www/nextcloud/cron.php
   KillMode=process
 
 Replace the user ``www-data`` with the user of your http server and ``/var/www/nextcloud/cron.php`` with the location of **cron.php** in your nextcloud directory.
+
+The `ExecCondition` checks that the nextcloud instance is operating normally before running the background job, and skips it if otherwise.
 
 The ``KillMode=process`` setting is necessary for external programs that are started by the cron job to keep running after the cron job has finished.
 
@@ -149,7 +160,7 @@ Note that the **.service** unit file does not need an ``[Install]`` section. Ple
   [Install]
   WantedBy=timers.target
 
-The important parts in the timer-unit are ``OnBootSec`` and ``OnUnitActiveSec``. ``OnBootSec`` will start the timer 5 minutes after boot, otherwise you would have to start it manually after every boot. ``OnUnitActiveSec`` will set a 5 minute timer after the service-unit was last activated.
+The important parts in the timer-unit are ``OnBootSec`` and ``OnUnitActiveSec``. ``OnBootSec`` will start the timer 5 minutes after boot, otherwise, you would have to start it manually after every boot. ``OnUnitActiveSec`` will set a 5-minute timer after the service-unit was last activated.
 
 Now all that is left is to start and enable the timer by running this command::
 

@@ -51,7 +51,7 @@ The code that initializes an app or anything that should run for every request a
 PSR-3 integration
 ^^^^^^^^^^^^^^^^^
 
-Nextcloud 20 is the first major release of Nextcloud that brings full compatibility with :ref:`psr3`. From this point on it is highly recommended to use this interface mainly as the old ``\OCP\ILogger`` got deprecated with the last remaining changes. The majority of methods are identical between the Nextcloud-specific interface and the PSR one. Pay attention to usages of ``\OCP\ILogger::logException`` as that method does not exist on the PSR logger. However, you can specifcy an ``exception`` key in the ``$context`` argument of any ``\Psr\Log\LoggerInterface`` method and Nextcloud will format it like it did with the old ``logException``.
+Nextcloud 20 is the first major release of Nextcloud that brings full compatibility with :ref:`psr3`. From this point on it is highly recommended to use this interface mainly as the old ``\OCP\ILogger`` got deprecated with the last remaining changes. The majority of methods are identical between the Nextcloud-specific interface and the PSR one. Pay attention to usages of ``\OCP\ILogger::logException`` as that method does not exist on the PSR logger. However, you can specify an ``exception`` key in the ``$context`` argument of any ``\Psr\Log\LoggerInterface`` method and Nextcloud will format it like it did with the old ``logException``.
 
 .. _upgrade-psr11:
 
@@ -84,7 +84,7 @@ becomes
   $container->registerService('DecryptAll', function (ContainerInterface $c) {
     return new DecryptAll(
       $c->get('Util'),
-      $c->get(KeyManager::class'),
+      $c->get(KeyManager::class),
       $c->get('Crypt'),
       $c->get(ISession::class)
     )

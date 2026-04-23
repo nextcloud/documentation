@@ -18,16 +18,14 @@ configured in :file:`config/config.php`
 
 Set the :file:`trusted_proxies` parameter as an array of:
 
-* IPv4 addresses, 
+* IPv4 addresses 
 * IPv4 ranges in CIDR notation
 * IPv6 addresses
+* IPv6 ranges in CIDR notation
 
 to define the servers Nextcloud should trust as proxies. This parameter
 provides protection against client spoofing, and you should secure those
 servers as you would your Nextcloud server.
-
-.. note:: CIDR notation for IPv6 is currently work in progress and thus not
-  available as of yet.
 
 A reverse proxy can define HTTP headers with the original client IP address,
 and Nextcloud can use those headers to retrieve that IP address. Nextcloud uses
@@ -51,6 +49,7 @@ or webroot you can use the **overwrite** parameters inside the :file:`config/con
 * :file:`overwriteprotocol` set the protocol of the proxy. You can choose between the two options **http** and **https**.
 * :file:`overwritewebroot` set the absolute web path of the proxy to the Nextcloud folder.
 * :file:`overwritecondaddr` overwrite the values dependent on the remote address. The value must be a **regular expression** of the IP addresses of the proxy. This is useful when you use a reverse SSL proxy only for https access and you want to use the automatic detection for http access.
+* :file:`overwrite.cli.url` the base URL for any URLs which are generated within Nextcloud using any kind of command line tools. For example, the value set here will be used by the notifications area.
 
 Leave the value empty or omit the parameter to keep the automatic detection.
 
@@ -73,32 +72,42 @@ Thanks to `@ffried <https://github.com/ffried>`_ for apache2 example.
 Traefik 1
 ^^^^^^^^^
 
-Using docker tags:
+Using Docker labels:
 ::
 
   traefik.frontend.redirect.permanent: 'true'
-  traefik.frontend.redirect.regex: https://(.*)/.well-known/(card|cal)dav
-  traefik.frontend.redirect.replacement: https://$1/remote.php/dav/
+  traefik.frontend.redirect.regex: 'https://(.*)/.well-known/(?:card|cal)dav'
+  traefik.frontend.redirect.replacement: 'https://$$1/remote.php/dav'
 
 Using traefik.toml:
 ::
 
   [frontends.frontend1.redirect]
-    regex = "https://(.*)/.well-known/(card|cal)dav"
-    replacement = "https://$1/remote.php/dav/
+    regex = "https://(.*)/.well-known/(?:card|cal)dav"
+    replacement = "https://$1/remote.php/dav
     permanent = true
 
 Thanks to `@pauvos <https://github.com/pauvos>`_ and `@mrtumnus <https://github.com/mrtumnus>`_ for traefik examples.
 
 Traefik 2
 ^^^^^^^^^
+
+Using Docker labels:
+::
+
+  - "traefik.http.routers.nextcloud.middlewares=nextcloud_redirectregex@docker"
+  - "traefik.http.middlewares.nextcloud_redirectregex.redirectregex.permanent=true"
+  - "traefik.http.middlewares.nextcloud_redirectregex.redirectregex.regex=https://(.*)/.well-known/(?:card|cal)dav"
+  - "traefik.http.middlewares.nextcloud_redirectregex.redirectregex.replacement=https://$${1}/remote.php/dav"
+
+Using a TOML file:
 ::
 
   [http.middlewares]
     [http.middlewares.nextcloud-redirectregex.redirectRegex]
       permanent = true
-      regex = "https://(.*)/.well-known/(card|cal)dav"
-      replacement = "https://${1}/remote.php/dav/"
+      regex = "https://(.*)/.well-known/(?:card|cal)dav"
+      replacement = "https://${1}/remote.php/dav"
 
 HAProxy
 ^^^^^^^
@@ -109,6 +118,7 @@ HAProxy
 
 NGINX
 ^^^^^
+If using nginx as Nextcloud's webserver from behind another nginx reverse proxy, put this only in the reverse proxy's configuration.
 ::
 
     location /.well-known/carddav {
@@ -118,21 +128,21 @@ NGINX
     location /.well-known/caldav {
         return 301 $scheme://$host/remote.php/dav;
     }
+    
+    location ^~ /.well-known {
+        return 301 $scheme://$host/index.php$uri;  
+    }
 
-or
-
-::
-
-  rewrite ^/\.well-known/carddav https://$server_name/remote.php/dav/ redirect;
-  rewrite ^/\.well-known/caldav https://$server_name/remote.php/dav/ redirect;
+When using NGINX Proxy Manager, the entry ``proxy_hide_header Upgrade;`` must be added in the *"Advanced Settings"*
+of the proxy host under *"Custom Nginx Configuration"*, otherwise mobile devices (iPad, iPhone etc.) will simply receive the Error Message "Connection Closed".
 
 Caddy
 ^^^^^
 ::
 
     subdomain.example.com {
-        rewrite /.well-known/carddav /remote.php/dav
-        rewrite /.well-known/caldav /remote.php/dav
+        redir /.well-known/carddav /remote.php/dav/ 301
+        redir /.well-known/caldav /remote.php/dav/ 301
 
         reverse_proxy {$NEXTCLOUD_HOST:localhost}
     }
@@ -171,6 +181,7 @@ you can set the following parameters inside the :file:`config/config.php`.
     'overwriteprotocol' => 'https',
     'overwritewebroot'  => '/domain.tld/nextcloud',
     'overwritecondaddr' => '^10\.0\.0\.1$',
+    'overwrite.cli.url' => 'https://domain.tld/',
   );
 
 .. note:: If you want to use the SSL proxy during installation you have to

@@ -22,22 +22,23 @@ basic HTTP authentication header.
 
 Status codes:
 
-* 100 - successful
-* 101 - invalid input data
-* 102 - username already exists
-* 103 - unknown error occurred whilst adding the user
+* 101 - invalid argument
+* 102 - user already exists
+* 103 - cannot create sub-admins for admin group
 * 104 - group does not exist
 * 105 - insufficient privileges for group
-* 106 - no group specified (required for subadmins)
-* 107 - all errors that contain a hint - for example "Password is among the 1,000,000 most common ones. Please make it unique." (this code was added in 12.0.6 & 13.0.1)
-* 108 - password and email empty. Must set password or an email
-* 109 - invitation email cannot be send
+* 106 - no group specified (required for sub-admins)
+* 107 - hint exceptions
+* 108 - an email address is required, to send a password link to the user.
+* 109 - sub-admin group does not exist
+* 110 - required email address was not provided
+* 111 - could not create non-existing user ID
 
 Example
 ^^^^^^^
 ::
 
-  $ curl -X POST http://admin:secret@example.com/ocs/v1.php/cloud/users -d userid="Frank" -d password="frankspassword"
+  $ curl -X POST http://admin:secret@example.com/ocs/v1.php/cloud/users -d userid="Frank" -d password="frankspassword" -H "OCS-APIRequest: true"
 
 * Creates the user ``Frank`` with password ``frankspassword``
 * optionally groups can be specified by one or more ``groups[]`` query parameters:
@@ -79,7 +80,7 @@ Example
 ^^^^^^^
 ::
 
-  $ curl -X GET http://admin:secret@example.com/ocs/v1.php/cloud/users?search=Frank
+  $ curl -X GET http://admin:secret@example.com/ocs/v1.php/cloud/users?search=Frank -H "OCS-APIRequest: true"
 
 * Returns list of users matching the search string.
 
@@ -120,7 +121,7 @@ Example
 
 ::
 
-  $ curl -X GET http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank
+  $ curl -X GET http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank -H "OCS-APIRequest: true"
 
 * Returns information on the user ``Frank``
 
@@ -141,6 +142,7 @@ XML output
       <quota>0</quota>
       <email>frank@example.org</email>
       <displayname>Frank K.</displayname>
+      <display-name>Frank K.</display-name>
       <phone>0123 / 456 789</phone>
       <address>Foobar 12, 12345 Town</address>
       <website>https://nextcloud.com</website>
@@ -179,22 +181,23 @@ is done by sending a Basic HTTP Authorization header.
 
 Status codes:
 
-* 100 - successful
-* 101 - user not found
-* 102 - invalid input data
+* 101 - invalid argument
+* 107 - password policy (hint exception)
+* 112 - Setting the password is not supported by the users backend
+* 113 - editing field not allowed / field doesn’t exist
 
 Examples
 ^^^^^^^^
 
 ::
 
-  $ curl -X PUT http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank -d key="email" -d value="franksnewemail@example.org"
+  $ curl -X PUT http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank -d key="email" -d value="franksnewemail@example.org" -H "OCS-APIRequest: true"
 
 * Updates the email address for the user ``Frank``
 
 ::
 
-  $ curl -X PUT http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank -d key="quota" -d value="100MB"
+  $ curl -X PUT http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank -d key="quota" -d value="100MB" -H "OCS-APIRequest: true"
 
 * Updates the quota for the user ``Frank``
 
@@ -234,7 +237,7 @@ Examples
 
 ::
 
-  $ curl -X GET http://admin:secret@example.com/ocs/v1.php/cloud/user/fields
+  $ curl -X GET http://admin:secret@example.com/ocs/v1.php/cloud/user/fields -H "OCS-APIRequest: true"
 
 * Gets the list of fields
 
@@ -281,7 +284,7 @@ Example
 
 ::
 
-  $ curl -X PUT http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/disable
+  $ curl -X PUT http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/disable -H "OCS-APIRequest: true"
 
 * Disables the user ``Frank``
 
@@ -320,7 +323,7 @@ Example
 
 ::
 
-  $ curl -X PUT http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/enable
+  $ curl -X PUT http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/enable -H "OCS-APIRequest: true"
 
 * Enables the user ``Frank``
 
@@ -359,7 +362,7 @@ Example
 
 ::
 
-  $ curl -X DELETE http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank
+  $ curl -X DELETE http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank -H "OCS-APIRequest: true"
 
 * Deletes the user ``Frank``
 
@@ -396,7 +399,7 @@ Example
 
 ::
 
-  $ curl -X GET http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/groups
+  $ curl -X GET http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/groups -H "OCS-APIRequest: true"
 
 * Retrieves a list of groups of which ``Frank`` is a member
 
@@ -444,7 +447,7 @@ Example
 
 ::
 
-  $ curl -X POST http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/groups -d groupid="newgroup"
+  $ curl -X POST http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/groups -d groupid="newgroup" -H "OCS-APIRequest: true"
 
 * Adds the user ``Frank`` to the group ``newgroup``
 
@@ -487,7 +490,7 @@ Example
 
 ::
 
-  $ curl -X DELETE http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/groups -d groupid="newgroup"
+  $ curl -X DELETE http://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/groups -d groupid="newgroup" -H "OCS-APIRequest: true"
 
 * Removes the user ``Frank`` from the group ``newgroup``
 
@@ -529,7 +532,7 @@ Example
 
 ::
 
-  $ curl -X POST https://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/subadmins -d groupid="group"
+  $ curl -X POST https://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/subadmins -d groupid="group" -H "OCS-APIRequest: true"
 
 * Makes the user ``Frank`` a subadmin of the ``group`` group
 
@@ -571,7 +574,7 @@ Example
 
 ::
 
-  $ curl -X DELETE https://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/subadmins -d groupid="oldgroup"
+  $ curl -X DELETE https://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/subadmins -d groupid="oldgroup" -H "OCS-APIRequest: true"
 
 * Removes ``Frank's`` subadmin rights from the ``oldgroup`` group
 
@@ -610,7 +613,7 @@ Example
 
 ::
 
-  $ curl -X GET https://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/subadmins
+  $ curl -X GET https://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/subadmins -H "OCS-APIRequest: true"
 
 * Returns the groups of which ``Frank`` is a subadmin
 
@@ -651,7 +654,7 @@ Example
 
 ::
 
-  $ curl -X POST https://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/welcome
+  $ curl -X POST https://admin:secret@example.com/ocs/v1.php/cloud/users/Frank/welcome -H "OCS-APIRequest: true"
 
 * Sends the welcome email to ``Frank``
 

@@ -46,7 +46,12 @@ A new conversation needs a name and at least one moderator. By default this conv
 Customize the conversation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-It's possible to adjust the defaults.
+It's possible to adjust the defaults:
+
+- ``setPublic``: Make the conversation public (allowing anyone with the link to access the conversation).
+- ``setMeetingDate`` (since Nextcloud 32.0.9, 33.0.3 and 34.0.0): Mark a conversation as related to a meeting.
+  This will make Talk automatically expire the conversation 4 weeks (value is configurable)
+  after the meeting, unless the owner confirms the conversation should remain.
 
 .. code-block:: php
 
@@ -56,8 +61,26 @@ It's possible to adjust the defaults.
     /** @var \OCP\IUser $alice */
     /** @var \OCP\IUser $bob */
     $options = $broker->newConversationOptions();
+    $options->setPublic();
+    $options->setMeetingDate(
+        $this->timeFactory->getDateTime(new \DateTime('2026-04-07 13:00')),
+        $this->timeFactory->getDateTime(new \DateTime('2026-04-07 14:00')),
+    );
+
     $conversation = $broker->createConversation(
         'Weekly 1:1',
         [$alice, $bob],
-        $broker->newConversationOptions()->setPublic()
+        $options
     );
+
+Delete a conversation
+---------------------
+
+A conversation can be deleted by id (token).
+
+.. code-block:: php
+
+    <?php
+
+    /** @var \OCP\Talk\IBroker $broker */
+    $broker->deleteConversation('abc123');

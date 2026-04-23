@@ -16,6 +16,8 @@ You can find out more about Nextcloud Groupware `on our website <https://nextclo
 
    contacts
    calendar
+   mail
+   absence
    sync_android
    sync_ios
    sync_osx

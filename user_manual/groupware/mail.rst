@@ -1,0 +1,612 @@
+===================
+Using the Mail app
+===================
+
+.. note:: The Mail app comes installed with Nextcloud Hub by default, but can be disabled.
+          Please ask your Administrator for it.
+
+.. figure:: images/mail.png
+
+Managing your mail account
+---------------------------
+
+Switch layout
+~~~~~~~~~~~~~
+
+.. versionadded:: 3.6
+
+1. Visit mail settings
+2. Choose between *List*, *Vertical split* and *Horizontal split*
+
+.. figure:: images/mail_layout.png
+
+Use Compact Mode
+~~~~~~~~~~~~~~~~
+.. versionadded:: 5.7.0
+
+Compact mode offers a cleaner and more efficient way to view your messages. Avatars are hidden, selection checkboxes are always visible, and the preview of messages is removed. It saves space allowing you to see more emails at once.
+
+1. Visit the mail settings
+2. Go to **Appearance**
+3. Toggle the Compact Mode
+
+.. figure:: images/use-compact-mode.png
+
+Message Display / Operation Mode
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. versionadded:: 5.2
+
+Mail has the ability to switch between two different message view and operation modes: *Threaded* and *Singleton*.
+
+In *Threaded* mode, messages are grouped by conversation. In the mailbox message list, related messages are stacked so only the most recent message is shown, and all relates messages are shown in message display panel after the stacked message is selected. This is useful for following discussions and understanding the context of replies. In this mode, message operation like move and delete apply to the entire thread, meaning that when you move or delete a thread, all messages within that thread are affected.
+
+In *Singleton* mode, messages are displayed individually, in both the mailbox message list and message display panel and operation like move and delete apply to only the selected message. This mode is useful when you want to manage messages separately without affecting the entire conversation.
+
+1. Visit mail settings
+2. Choose between *Threaded*, *Singleton*
+
+.. figure:: images/mail_display-mode.png
+
+Add a new mail account
+~~~~~~~~~~~~~~~~~~~~~~~
+
+1. Enable mail app from the apps
+2. Click the mail icon on the header
+3. Fill up the login form (auto or manual)
+
+.. figure:: images/new-mail-account.png
+
+Change sort order
+~~~~~~~~~~~~~~~~~
+
+.. versionadded:: 3.5
+
+1. Visit mail settings
+2. Go to *Sorting*
+3. You can choose *Oldest* or *Newest* mail first
+
+.. note:: This change will apply across all your accounts and mailboxes
+
+Sort favorites up
+~~~~~~~~~~~~~~~~~
+
+.. versionadded:: 5.7 Nextcloud 31 or newer
+
+This setting allows you to show messages set as favorite in a separate section on top of the message list.
+
+1. Visit mail settings
+2. Go to *Appearance*
+3. Enable sorting favorites up 
+
+.. _mail-scheduled-messages:
+
+Scheduled messages
+~~~~~~~~~~~~~~~~~~~
+1. Click new message button on top left of your screen
+2. Click the (...) action menu on the modal composer
+3. Click *send later*
+
+.. figure:: images/scheduled-msg.png
+
+Priority inbox
+~~~~~~~~~~~~~~
+Priority inbox has 2 section *Important* and *Others*.
+Messages will automatically be marked as important based on which messages you interacted with or marked as important. In the beginning you might have to manually change the importance to teach the system, but it will improve over time.
+
+The automatic classification is optional. You can opt-out when setting up an account. The classification can also be turned on and off in the account settings at any time.
+
+
+.. figure:: images/priority-inbox.png
+
+All inboxes
+~~~~~~~~~~~~
+All messages from all the accounts you have logged in, will be shown here chronologically.
+
+.. _mail-account-settings:
+
+Account settings
+~~~~~~~~~~~~~~~~
+Your account settings such as:
+
+1. Aliases
+2. Signature
+3. Default Folders
+4. Autoresponder
+5. Trusted senders
+6. ..and more
+
+Can be found in the action menu of a mail account. There you can edit, add or remove settings depending on your need.
+
+Move messages to Junk folder
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. versionadded:: 3.4
+
+Mail can move a message to a different folder when it is marked as junk.
+
+1) Visit Account settings
+2) Go to Default folders
+3) Check that a folder is selected for the junk messages
+4) Go to Junk settings
+5) Click Move messages to Junk folder
+
+.. figure:: images/mail_move-message-to-junk-folder.png
+
+Refresh mailbox
+~~~~~~~~~~~~~~~~
+
+You can manually trigger a sync of your mailbox by clicking the refresh button located at the top of the mailbox list.
+Starting from ``version 5.7`` triggering the sync will also refresh the list of folders for the selected account.
+
+Unified search
+~~~~~~~~~~~~~~
+
+The Mail app integrates with Nextcloud's :ref:`unified search <unified-search>`
+feature (see :doc:`../webinterface` for details). You can search for emails across
+all your accounts using the search bar in the Nextcloud header.
+
+Mail searches email subjects and sender/recipient fields. To search email bodies,
+use the mailbox search feature in the app.
+
+Search in mailbox
+~~~~~~~~~~~~~~~~~
+
+.. versionadded:: 2.1
+
+At the top of the envelope list in any mail layout, there is a search field shortcut for searching email subjects. Starting from ``version 3.7``, this shortcut allows you to search by subject, recipient (to), or sender (from) by default.
+
+
+Advanced search in mailbox
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. versionadded:: 3.4
+
+You can access our advanced search feature through a modal located at the end of the search shortcut.
+
+Enable mail body search
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. versionadded:: 3.5
+
+Mail bodies can now be searched, this feature is opt-in because of potential performance issues.
+
+To enable it:
+
+1) Visit Account settings
+2) Go to Mailbox search
+3) Enable mail body search
+
+.. warning:: If you want to also enable it for unified mailboxes you have to do so in Mail settings
+
+By enabling it the main search box will now search in both subjects and mail bodies, and a separate *Body* option
+will appear in advanced search.
+
+Account delegation
+~~~~~~~~~~~~~~~~~~
+
+The app allows account delegation so that one user can send emails from the address of another.
+
+1) The delegation has to be configured on the mail server by an admin
+2) Add the other email address as an alias for your own email account
+3) When sending an email, select the alias as sender
+
+.. warning:: The sent email might not be visible to the original account if it's stored in your personal *Sent* mailbox.
+
+Automatic trash deletion
+~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. versionadded:: 3.4
+
+The Mail app can automatically delete messages in the trash folder after a certain number of days.
+
+1) Visit Account settings
+2) Go to Automatic trash deletion
+3) Enter the number of days after which messages should be deleted
+
+Disable trash retention by leaving the field empty or setting it to 0.
+
+.. note::  Only mails deleted after enabling trash retention will be processed.
+
+.. figure:: images/mail_trash_retention_settings.png
+
+Compose messages
+----------------
+
+1. Click new message on the top left of your screen
+2. Start writing your message
+
+Minimize the composer modal
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. versionadded:: 3.2
+
+The composer modal can be minimized while writing a new message, editing an existing draft or a message from the outbox. Simply click the minimize button on the top right of the modal or click anywhere outside the modal.
+
+.. figure:: images/mail-minimize-composer.png
+
+You can resume your minimized message by clicking anywhere on the indicator on the bottom right of your screen.
+
+.. figure:: images/mail-composer-indicator.png
+
+Press close button on the modal or the indicator in the bottom right corner to stop editing a message. A draft will be saved automatically into your draft mailbox.
+
+
+Recipient info on composer
+--------------------------
+
+.. versionadded:: 4.2
+
+When you add your first recipient or contact in the "To" field, a right pane will appear displaying the saved profile details of that contact.
+Adding a second contact will collapse the list, allowing you to select and expand any contact you added to view their details.
+If you prefer to focus solely on writing in the composer, you can hide the right pane by clicking the expand icon in the top-right corner.
+To show the right pane again, simply click the minimize icon in the same location.
+
+Mention contacts
+----------------
+
+.. versionadded:: 4.2
+
+You can mention contacts in your message by typing ``@`` and then selecting the contact from the list.
+By doing so the contact will be automatically added as a recipient.
+
+.. note::  Only contacts with a valid email address will be suggested.
+
+Text blocks
+-----------
+
+.. versionadded:: 5.2
+
+Text blocks are predefined snippets of text that can be inserted into your email. They can be created and managed in the mail settings.
+They can be inserted into the composer by typing ``!`` and then selecting the block from the list or from the composer actions.
+Text blocks can be shared with users and user groups.
+
+Outbox
+------
+
+When a message has been composed and the "Send" button was clicked, the message is added to the outbox which can be found in the bottom left corner of the left sidebar.
+
+You can also set the date and time for the send operation to a point in the future (see :ref:`Scheduled messages <mail-scheduled-messages>`)- the message will be kept in the outbox until your chosen date and time arrives, then it will be sent automatically.
+
+The outbox is only visible when there is a message waiting to be handled by the outbox.
+
+You can re- open the composer for a message in the outbox any time before the "send"- operation is triggered.
+
+.. note::
+   When an error occurs during sending, three error messages are possible:
+
+   Could not copy to "Sent" mailbox
+      The mail was sent but couldn't be copied to the "Sent" mailbox. This error will be handled by the outbox and the copy operation will be tried again.
+   Mail server error
+      Sending was unsuccessful with a state than can be retried (ex: the SMTP server couldn't be reached). The outbox will retry sending the message.
+   Message could not be sent
+      Sending might or might not have failed. The mail server can't tell us the state of the message. Since the Mail app has no way to determine the state of the message (sent or unsent) the message will stay in the outbox and the account user has to decide how to proceed.
+
+
+Mailbox actions
+---------------
+
+Add a mailbox
+~~~~~~~~~~~~~~
+1. Open the action menu of an account
+2. Click add mailbox
+
+Add a submailbox
+~~~~~~~~~~~~~~~~~
+1. Open the action menu of a mailbox
+2. Click add submailbox
+
+Shared mailbox
+~~~~~~~~~~~~~~~
+If a mailbox was shared with you with some specific rights, that mailbox will show as a new mailbox with a shared icon as below:
+
+.. figure:: images/shared-mailbox-icon.png
+
+Envelope actions
+----------------
+
+Create an event
+~~~~~~~~~~~~~~~
+Create an event for a certain message/thread directly via mail app
+
+1. Open action menu of an envelope
+2. Click *More actions*
+3. Click *Create event*
+
+.. note:: Event title and an agenda is created for you if the administrator has enabled it.
+
+Create a task
+~~~~~~~~~~~~~
+
+.. versionadded:: 3.2
+
+Create an task for a certain message/thread directly via mail app
+
+1. Open action menu of an envelope
+2. Click *more actions*
+3. Click *create task*
+
+.. note:: Tasks are stored in supported calendars. If there is no compatible calendar you can create a new one with the :ref:`calendar app<calendar-app>`.
+
+Edit tags
+~~~~~~~~~~
+1. Open action menu of an envelope
+2. Click *Edit tags*
+3. On the tags modal, set/unset tags
+
+Change color for tags
+~~~~~~~~~~~~~~~~~~~~~
+
+.. versionadded:: 3.5
+
+.. figure:: images/change-tag-color.png
+
+Upon creating a tag, a randomly assigned color is automatically chosen. Once the tag is saved, you have the flexibility to customize its color according to your preferences. This feature can be found on the Tag modal action menu.
+
+Delete tags
+~~~~~~~~~~~
+
+.. versionadded:: 3.5
+
+.. figure:: images/delete-tag.png
+
+You now have the ability to delete tags that you have previously created. To access this feature:
+
+1. Open the action menu of an envelope/thread.
+2. Select Edit tags.
+3. Within the tags modal, open the action menu for the specific tag you wish to delete.
+
+.. note:: Please note that default tags such as Work, To do, Personal, and Later cannot be deleted, they can only be renamed.
+
+AI summary
+~~~~~~~~~~
+
+.. versionadded:: 4.2
+
+When looking through your mailbox you will see a short AI generated summary of your emails as a preview.
+
+.. note:: Please note that the feature has to be enabled by the administrator
+
+Quick actions
+-------------
+.. versionadded:: 5.5 (Nextcloud 30)
+
+Allows you to group action steps that you would normally perform on envelopes such as tagging, moving, marking as read ... into quick actions that can be executed with a single click.
+Quick actions are scoped to one mail account and can be created and managed in the mail settings under "Quick actions" or directly from the envelope action menu.
+
+.. note:: Some action steps such as `Mark as spam`, `Move thread` and `Delete thread` are mutually exclusive and cannot be part of the same quick action, they also can't be re-ordered and will always be executed last.
+
+.. note:: Please note that quick actions will be performed on all messages in a thread when executed on one.
+
+Message actions
+---------------
+
+Unsubscribe from a mailing list
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. versionadded:: 3.1
+
+Some mailing lists and newsletters allow to be unsubscribed easily. If the Mail app detects messages from such a sender, it will show an *Unsubscribe* button next to the sender information. Click and confirm to unsubscribe from the list.
+
+Snooze
+~~~~~~
+
+.. versionadded:: 3.4
+
+Snoozing a message or thread moves it into a dedicated mailbox until the selected snooze date is reached and the message or thread is moved back to the original mailbox.
+
+1. Open action menu of an envelope or thread
+2. Click *Snooze*
+3. Select how long the message or thread should be snoozed
+
+Smart replies
+~~~~~~~~~~~~~
+
+.. versionadded:: 3.6
+
+When you open a message in the Mail app, it proposes AI-generated replies. By simply clicking on a suggested reply, the composer opens with the response pre-filled.
+
+.. note:: Please note that the feature has to be enabled by the administrator
+
+.. note:: Supported languages depend on the used large language model
+
+Mail translation
+~~~~~~~~~~~~~~~~
+
+.. versionadded:: 4.2
+
+You are able to translate messages to your configured languages similarly to Talk.
+
+.. note:: Please note that translation features have to be enabled on the server
+
+.. note:: Since version 5.3, if LLM is enabled by admin, translations will be suggested
+
+Thread summary
+--------------
+
+The mail app supports summarizing message threads that contain 3 or more messages.
+
+.. versionadded:: 3.4
+
+.. note:: Please note that the feature has to be enabled by the administrator
+
+.. note:: Please note that this feature only works well with integration_openai. Local LLMs take too long to respond and the summary request is likely to time out and still create significant system load.
+
+Filtering and autoresponder
+---------------------------
+
+The Mail app has a editor for Sieve scripts, an interface to configure autoresponders and an interface to configure filters. Sieve has to be enabled in the :ref:`account settings <mail-account-settings>`.
+
+Autoresponders
+~~~~~~~~~~~~~~
+
+.. versionadded:: 3.5 Autoresponder can follow system settings.
+
+The autoresponder is off by default. It can be set manually, or follow the system settings. Following system settings means that the long absence message entered on the :ref:`Absence settings section <groupware-absence>` is applied automatically.
+
+Filter
+~~~~~~
+
+.. versionadded:: 4.1
+
+Mail 4.1 includes a simple editor to configure filter rules.
+
+
+.. note:: Importing existing filters is not supported. However, all existing filters will remain active and unchanged.  We recommend backing up your current script through the Sieve script editor as a precaution.
+
+How to Add a New Filter
+^^^^^^^^^^^^^^^^^^^^^^^
+
+1. Open your account settings.
+2. Verify that Sieve is enabled for your account (see Sieve server settings).
+3. Click on Filters.
+4. Select New Filter to create a new rule.
+
+How to Delete a Filter
+^^^^^^^^^^^^^^^^^^^^^^
+
+1. Open your account settings.
+2. Ensure that Sieve is enabled for your account (see Sieve server settings).
+3. Click on Filters.
+4. Hover over the filter you wish to delete, then click the trash icon.
+
+
+Conditions
+^^^^^^^^^^
+
+Conditions are applied to incoming emails on your mail server, targeting fields such as Subject, Sender, and Recipient. You can use the following operators to define conditions for these fields:
+
+- **is exactly**: An exact match. The field must be identical to the provided value.
+- **contains**: A substring match. The field matches if the provided value is contained within it. For example, "report" would match "port".
+- **matches**: A pattern match using wildcards. The "*" symbol represents any number of characters (including none), while "?" represents exactly one character. For example, "*report*" would match "Business report 2024".
+
+Actions
+^^^^^^^
+
+Actions are triggered when the specified tests are true. The following actions are available:
+
+- **fileinto**: Moves the message into a specified folder.
+- **addflag**: Adds a flag to the message.
+- **stop**: Halts the execution of the filter script. No further filters with will be processed after this action.
+
+Create a filter from a message
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+.. versionadded:: 5.2
+
+To create a filter from a given message, open the message and then open the menu by clicking on the three dots. Next, click on "More actions" followed by "Create mail filter."
+
+In the dialog, please select the conditions to match incoming messages and continue by clicking on "Create mail filter."
+
+.. figure:: images/mail_create_filter_from_message.png
+
+
+Follow-up reminders
+-------------------
+
+.. versionadded:: 4.0
+
+The Mail app will automatically remind you when an outgoing email did not receive a response.
+Each sent email will be analyzed by an AI to check whether a reply is expected.
+After four days all relevant emails will be shown in your priority inbox.
+
+When clicking on such an email a button will be shown to quickly follow up with all recipients.
+It is also possible to disable follow-up reminders for a sent email.
+
+.. note:: Please note that the feature has to be enabled by the administrator.
+
+Security
+--------
+
+Phishing detection
+~~~~~~~~~~~~~~~~~~
+
+.. versionadded:: 4.0
+
+The Mail app will check for potential phishing attempts and will display a warning to the user.
+
+The checks are the following:
+
+* The sender address saved in the addressbook is not the same as the one in the mail account
+* The sender is using a custom email address that doesn't match the from address
+* The sent date is set in the future
+* Links in the message body are not pointing to the displayed text
+* The reply-to address is not the same as the sender address
+
+.. note:: Please note that the warning does not mean that the message is a phishing attempt. It only means that the Mail app detected a potential phishing attempt.
+
+Internal addresses
+~~~~~~~~~~~~~~~~~~
+
+.. versionadded:: 4.0
+
+The Mail app allows adding internal addresses and domains, and will warn the user if the address is not in the list, when sending and upon receiving a message.
+
+To add an internal address:
+
+1. Open the mail settings
+2. Navigate to Privacy and security section
+3. Enable the internal addresses by clicking on the checkbox
+4. Click the Add internal address button
+5. Enter the address or domain and click Add
+
+Dashboard integration
+---------------------
+
+.. versionadded:: 1.8
+
+The mail app offers two widgets designed for integration with Nextcloud's dashboard:
+
+* Unread mails: This widget displays unread emails.
+* Important mails: This widget shows emails that have been flagged as important.
+
+These widgets utilize the emails from the email accounts that are set up for your account.
+
+Calendar integration
+--------------------
+
+The Mail app integrates with the Calendar app to help you manage meeting invitations and keep your calendar up to date.
+
+Meeting invitations
+~~~~~~~~~~~~~~~~~~~
+
+When you receive a message containing a meeting invitation, the Mail app automatically detects the attached calendar file and displays a formatted action section to help you respond.
+
+You can:
+
+* **Accept** the invitation
+* **Decline** the invitation
+* **Tentatively accept** the invitation
+
+Your response is sent directly from the Mail app, and the event is added to your primary calendar accordingly.
+
+You can also manually add a meeting invitation to a specific calendar:
+
+1. Open the message with the meeting invitation
+2. Scroll to the bottom of the message to the attachments section
+3. Select the calendar file (usually with a .ics extension), then click the three dots menu.
+4. Click "Import in to calendar" and choose the desired calendar.
+
+Meeting invitation automation
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+When a meeting organizer sends updates to an existing event (such as time changes or location updates), the Mail app processes these automatically and updates the corresponding event in your calendar.
+
+.. versionadded:: 5.7 (Nextcloud 32 or newer)
+
+You can also configure Mail to automatically add all new meeting invitations to your calendar without requiring manual acceptance. The invitations will be added to the calendar as tentative.
+
+To enable this feature:
+
+1. Visit account settings of a specific mail account
+2. Navigate to Calendar settings section
+3. Enable *Automatically create tentative appointments in calendar*
+
+.. note:: With this setting enabled, invitations will still appear in your mail list, but they will be automatically added to your calendar.
+
+Keyboard shortcuts
+------------------
+
+The Mail app implements several keyboard shortcuts to speed up your experience.
+
+For a full list of the supported shortcuts, check out the Mail settings in your instance.

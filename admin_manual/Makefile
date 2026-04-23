@@ -3,7 +3,7 @@
 
 # You can set these variables from the command line.
 SPHINXOPTS    +=
-SPHINXBUILD   = sphinx-build
+SPHINXBUILD   = buf_size=1000000 sphinx-build
 PAPER         =
 BUILDDIR      = _build
 
@@ -52,7 +52,7 @@ html-release:
 	@echo "Build finished. The HTML pages are in $(BUILDDIR)/html/release."
 
 html-com:
-	$(SPHINXBUILD) -b html -D html_theme='sphinx_rtd_theme' $(ALLSPHINXOPTS) $(BUILDDIR)/html/com
+	$(SPHINXBUILD) -W -b html -D html_theme='sphinx_rtd_theme' $(ALLSPHINXOPTS) $(BUILDDIR)/html/com
 	@echo
 	@echo "Build finished. The HTML pages are in $(BUILDDIR)/html/com."
 
@@ -115,11 +115,15 @@ latex:
 latexpdf:
 	$(SPHINXBUILD) -b latex $(ALLSPHINXOPTS) $(BUILDDIR)/latex
 	@echo "Running LaTeX files through pdflatex..."
-	$(MAKE) -C $(BUILDDIR)/latex all-pdf
+	buf_size=10000000 $(MAKE) -C $(BUILDDIR)/latex all-pdf
 	@echo "pdflatex finished; the PDF files are in $(BUILDDIR)/latex."
 
 pdf:
-	$(SPHINXBUILD) -b pdf $(ALLSPHINXOPTS) $(BUILDDIR)/pdf
+	$(SPHINXBUILD) -b pdf $(ALLSPHINXOPTS) $(BUILDDIR)/pdf || exit 1
+	@if [ ! -s $(BUILDDIR)/pdf/*.pdf ]; then \
+		echo "Error: PDF files are empty or missing"; \
+		exit 1; \
+	fi
 	@echo
 	@echo "build finished. the text files are in $(BUILDDIR)/pdf."
 

@@ -1,14 +1,14 @@
 .. _app-store-publishing:
 
-====================
-App store publishing
-====================
+=============================
+The Nextcloud app store rules
+=============================
 
 .. sectionauthor:: Jos Poortvliet <jospoortvliet@gmail.com>
 
-The Nextcloud app store
------------------------
-The Nextcloud app store is built into Nextcloud to allow you to get your apps to users as easily and safely as possible. The app store and the process of publishing apps aims to be:
+
+The Nextcloud app store is built into Nextcloud to allow you to get your apps to users as easily and safely as possible.
+The app store and the process of publishing apps aims to be:
 
 * secure
 * transparent
@@ -16,12 +16,8 @@ The Nextcloud app store is built into Nextcloud to allow you to get your apps to
 * fair
 * easy to maintain
 
-Getting an app approved
------------------------
-You can find documentation on getting apps in our app store `here. <https://nextcloudappstore.readthedocs.io/en/latest/developer.html#publishing-apps-on-the-app-store>`_
-
 Losing a rating
-^^^^^^^^^^^^^^^
+---------------
 Apps can lose their rating when:
 
 * they are found to no longer satisfy the requirements
@@ -35,7 +31,7 @@ These are the app guidelines an app has to comply with to have a chance to be ap
 Legal and security
 ^^^^^^^^^^^^^^^^^^
 
-* Apps must be licensed under AGPLv3+ or any compatible license.
+* Apps must be licensed under AGPL-3.0-or-later or any compatible license.
 * Apps must not use 'Nextcloud' in their name.
 * Irregular and unannounced security audits of all apps can and will take place.
 * If any indication of malicious intent or bad faith is found the developer(s) in question can count on a minimum 2 year ban from any Nextcloud infrastructure.
@@ -56,7 +52,7 @@ Be technically sound
 Respect the users
 ^^^^^^^^^^^^^^^^^
 
-* Apps have to follow design and `HTML/CSS layout guidelines <../app/css.html>`_.
+* Apps have to follow design and `HTML/CSS layout guidelines <../html_css_design/css.html>`_.
 * Apps correctly clean up after themselves on uninstall and correctly handle up- and downgrades.
 * Apps clearly communicate their intended purpose and active features, including features introduced through updates.
 * Apps respect the users' choices and do not make unexpected changes, or limit users' ability to revert them. For example, they do not remove other apps or disable settings.
@@ -81,7 +77,7 @@ Requirements
 ^^^^^^^^^^^^
 To deliver on the promises above, we have two simple rules.
 
-* You work and communicate according to the values of our `Code of Conduct <../general/code-of-conduct.html>`_
+* You work and communicate according to the values of our `Code of Conduct <https://nextcloud.com/contribute/code-of-conduct/>`_
 * When you are no longer active, our admins can decide to hand over maintainership to another contributor
 
 We want to make sure that when you find other things in life which are more urgent or otherwise are unable to help your project anymore, it does not become 'dead code' as long as there are people who want to keep it alive. This is not fair to users, who would be forced to remove the app and install another.

@@ -1,0 +1,77 @@
+=======================
+Upgrade to Nextcloud 34
+=======================
+
+Front-end changes
+-----------------
+
+Added APIs
+^^^^^^^^^^
+
+- TBD
+
+Changed APIs
+^^^^^^^^^^^^
+
+- TBD
+
+Deprecated APIs
+^^^^^^^^^^^^^^^
+
+- TBD
+
+Removed APIs
+^^^^^^^^^^^^
+
+- ``OC.Dialogs.fileexists`` was deprecated and is now removed.
+  Use the conflict picker from the ``@nextcloud/dialogs`` library instead.
+- ``OC.Notifications`` was deprecated and is now removed.
+  Use the notification API from the ``@nextcloud/dialogs`` library instead.
+- ``OC.Apps`` was deprecated and is now removed.
+  Use Vue components from the ``@nextcloud/vue`` instead.
+- ``OC.*menu*`` methods were deprecated and are now removed.
+  Use Vue components from the ``@nextcloud/vue`` instead.
+- Magic handling of ``.live-relative-timestamp`` (elements with this class were automatically updated to show relative timestamps) was removed.
+  Use the ``NcDateTime`` component from the ``@nextcloud/vue`` library instead
+- The global ``snapper`` was deprecated and is now removed.
+  For the app navigation please migrate your app to Vue
+  and use the ``NcAppNavigation`` component from the ``@nextcloud/vue`` library instead.
+- Some deprecated globally shared libraries were removed. If you still rely on them, you need to bundle them with your app:
+
+  - ``jQuery`` was deprecated and scheduled for removal since Nextcloud 19.
+  - ``jQuery UI`` was deprecated and scheduled for removal since Nextcloud 19.
+  - ``Backbone`` was deprecated and scheduled for removal since Nextcloud 19.
+  - ``OC.Files.Client`` as it was extending the ``Backbone``.
+
+
+Back-end changes
+----------------
+
+Added Events
+^^^^^^^^^^^^
+
+- TBD
+
+Added APIs
+^^^^^^^^^^
+
+- ``\OCP\DB\QueryBuilder\ITypedQueryBuilder`` is added in favour of ``\OCP\DB\QueryBuilder\IQueryBuilder`` and can be accessed through ``\OCP\IDBConnection::getTypedQueryBuilder``.
+  This query builder has the benefit of accurately returning the selected columns in a query result, increasing type safety.
+- ``\OCP\Talk\IConversationOptions`` has been extended, to allow defining the newly created conversation as related to a meeting with it's start and end date.
+  The information is used by Talk to automatically clean up such conversations after a given time.
+
+Changed APIs
+^^^^^^^^^^^^
+
+- ``\OCP\Notification\INotification::setIcon``, ``\OCP\Notification\INotification::setLink`` and ``\OCP\Notification\IAction::setLink`` now throw ``\OCP\Notification\InvalidValueException`` when the provided link is not absolute as previously announced in :doc:`./upgrade_to_30`
+
+Deprecated APIs
+^^^^^^^^^^^^^^^
+
+- TBD
+
+Removed APIs
+^^^^^^^^^^^^
+
+- ``\OCP\Share_Backend``, ``\OCP\Share_Backend_Collection``, ``\OCP\Share_Backend_File_Dependent`` were removed. This old
+  share backend was replaced in Nextcloud 9 with a new backend system based on ``IShareProvider``.

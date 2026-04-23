@@ -1,3 +1,5 @@
+.. _email-config:
+
 =====
 Email
 =====
@@ -29,27 +31,49 @@ Sendmail when your mail server is on the same machine as Nextcloud.
    drop-in Sendmail replacement such as Postfix, Exim, or Courier. All of
    these include a ``sendmail`` binary, and are freely-interchangeable.
 
+.. _email-smtp-config:
+
+Mail Providers
+--------------
+
+.. versionadded:: 30
+
+A mail provider is an app that provides outbound mail service to Nextcloud and allows the sending of system emails
+directly through a user's configured personal email account instead of the system email account.
+At present, this functionality is limited to calendar invitations.
+This feature automatically matches a users email address to a configured mail provider account, when a system message is sent.
+The only app that supports this functionality at present is Nextcloud Mail 4.1 or higher, a configured email account is required.
+
 Configuring an SMTP server
 --------------------------
 
 You need the following information from your mail server administrator to
 connect Nextcloud to a remote SMTP server:
 
-* Encryption type: None, SSL/TLS, or STARTTLS
+.. warning:: There were changes to the 3rd party mailer library in Nextcloud 26:
+    
+    * STARTTLS cannot be enforced. It will be used automatically if the mail server supports it. The encryption type should be set to 'None/STARTTLS' in this case. See :ref:`here<TLSPeerVerification>` for an example on how to configure self signed certificates.
+    * NTLM authentication for Microsoft Exchange is not supported by the new mailer library. Try using `basic authentication <https://learn.microsoft.com/en-us/exchange/client-developer/exchange-web-services/authentication-and-ews-in-exchange#basic-authentication>`_ instead.
+    * Outlook and Microsoft Exchange have discontinued support for Basic authentication. It is no longer possible to use their services as your default email handler.
+
+* Encryption type: None/STARTTLS or SSL
 
 * The From address you want your outgoing Nextcloud mails to use
 
 * Whether authentication is required
 
-* Authentication method: None, Login, Plain, or NT LAN Manager
+* Authentication: when authentication is required, the underlying mailer will try the following authentication methods in the order they're listed:
+
+    * CramMd5
+    * Login
+    * Plain
+    * XOAuth2
 
 * The server's IP address or fully-qualified domain name and the SMTP port
 
 * Login credentials (if required)
 
 .. note:: The ``overwrite.cli.url`` parameter from ``config.php`` will be used for the SMTP EHLO.
-
-.. figure:: ../images/smtp-config-smtp.png
 
 Your changes are saved immediately, and you can click the Send Email button to
 test your configuration. This sends a test message to the email address you
@@ -60,6 +84,7 @@ configured on your Personal page. The test message says::
   --
   Nextcloud
   a safe home for all your data
+
 
 Configuring Sendmail/qmail
 --------------------------
@@ -83,7 +108,7 @@ settings and look the same in all the different email clients out there.
    showing HTML on the client (or removing the HTML part in the mail server).
 
 Modifying the look of emails beyond the theming app capabilities
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 You can overwrite templates by writing a class that implements the template interface
 (or extends it to not need to copy over everything). Easiest way is to then put this class into
@@ -111,7 +136,7 @@ Let's assume that we need to override the email header::
 
    class MyClass extends EMailTemplate
    {
-      protected $header = <<<EOF
+      protected string $header = <<<EOF
          <table align="center" class="wrapper">
                // your theme email header modification
          </table>
@@ -131,7 +156,7 @@ If you prefer, you may set your mail server parameters in ``config/config.php``.
 The following examples are for SMTP, Sendmail, and Qmail.
 
 SMTP
-^^^^
+""""
 
 If you want to send email using a local or remote SMTP server it is necessary
 to enter the name or IP address of the server, optionally followed by a colon
@@ -164,31 +189,18 @@ used:
 
 ::
 
-  "mail_smtpsecure"   => '',
+    "mail_smtpsecure"   => '',
 
-If the SMTP server only accepts secure connections you can choose between
-the following two variants:
+The connection will be upgraded automatically via STARTTLS if the SMTP server
+supports it.
 
-SSL
-^^^
-
-A secure connection will be initiated using the SMTPS protocol
-which uses the port 465/tcp:
+If required by the SMTP server, a secure SSL/TLS connection can be enforced
+via the SMTPS protocol which uses the port 465/tcp:
 
 ::
 
     "mail_smtphost"     => "smtp.server.dom:465",
     "mail_smtpsecure"   => 'ssl',
-
-TLS
-^^^
-A secure connection will be initiated using the STARTTLS protocol which
-uses the default port 25/tcp:
-
-::
-
-    "mail_smtphost"     => "smtp.server.dom",
-    "mail_smtpsecure"   => 'tls',
 
 And finally it is necessary to configure if the SMTP server requires
 authentication, if not, the default values can be taken as is.
@@ -200,25 +212,16 @@ authentication, if not, the default values can be taken as is.
     "mail_smtppassword" => "",
 
 If SMTP authentication is required you have to set the required username
-and password and can optionally choose between the authentication types
-**LOGIN** (default) or **PLAIN**.
+and password.
 
 ::
 
     "mail_smtpauth"     => true,
-    "mail_smtpauthtype" => "LOGIN",
     "mail_smtpname"     => "username",
     "mail_smtppassword" => "password",
 
-Advanced users can add additional stream options in ``config/config.php``,
-which maps directly to `Swift Mailer's <https://swiftmailer.symfony.com/>`_
-``streamOptions`` configuration parameter:
-::
-
-    "mail_smtpstreamoptions" => array(),
-
 Sendmail
-^^^^^^^^
+""""""""
 
 If you want to use the well known Sendmail program to send email, it is
 necessary to have an installed and working email system on your \*nix server.
@@ -238,7 +241,7 @@ Nextcloud should be able to send email out of the box.
     "mail_smtppassword" => "",
 
 qmail
-^^^^^
+"""""
 
 If you want to use the qmail program to send email, it is necessary to have an
 installed and working qmail email system on your server. The qmail binary
@@ -268,20 +271,33 @@ of the Admin settings page.
 Troubleshooting
 ---------------
 
-If you are unable to send email, try turning on debugging. Do this by enabling
-the ``mail_smtpdebug`` parameter in ``config/config.php``.
+Enabling debug mode
+"""""""""""""""""""
+
+If you are unable to send email, it might be useful to activate further debug
+messages by enabling the ``mail_smtpdebug`` parameter and temporarily setting your NC loglevel to DEBUG:
 
 ::
 
-    "mail_smtpdebug" => true;
+    "mail_smtpdebug" => true,
+    "loglevel" => 0,
+
+Be cautious setting your ``loglevel`` to DEBUG (``0``) since it'll apply to everything occurring on your NC instance, not just email. 
+And don't forget to set it back to a more reasonable level when you're done troubleshooting:
+
+::
+
+    "mail_smtpdebug" => false,
+    "loglevel" => 2,
 
 .. note:: Immediately after pressing the **Send email** button, as described
    before, several **SMTP -> get_lines(): ...** messages appear on the screen.
    This is expected behavior and can be ignored.
 
-**Question**: Why is my web domain different from my mail domain?
+Why is my web domain different from my mail domain?
+"""""""""""""""""""""""""""""""""""""""""""""""""""
 
-**Answer**: The default domain name used for the sender address is the hostname
+The default domain name used for the sender address is the hostname
 where your Nextcloud installation is served. If you have a different mail domain
 name you can override this behavior by setting the following configuration
 parameter:
@@ -295,9 +311,10 @@ reset email) having the domain part of the sender address appear as follows::
 
   no-reply@example.com
 
-**Question**: How can I find out if an SMTP server is reachable?
+How can I find out if an SMTP server is reachable?
+""""""""""""""""""""""""""""""""""""""""""""""""""
 
-**Answer**: Use the ping command to check the server availability::
+Use the ping command to check the server availability::
 
   ping smtp.server.dom
 
@@ -308,10 +325,10 @@ reset email) having the domain part of the sender address appear as follows::
   time=3.64ms
 
 
-**Question**: How can I find out if the SMTP server is listening on a specific
-TCP port?
+How can I find out if the SMTP server is listening on a specific TCP port?
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-**Answer**: The best way to get mail server information is to ask your mail
+The best way to get mail server information is to ask your mail
 server admin. If you are the mail server admin, or need information in a
 hurry, you can use the ``netstat`` command. This example shows all active
 servers on your system, and the ports they are listening on. The SMTP server is
@@ -344,16 +361,16 @@ listening on localhost port 25.
 * 995/tcp/udp is encrypted pop3s
 
 
-**Question**: How can I determine if the SMTP server supports the SMTPS
-protocol?
+How can I determine if the SMTP server supports the SMTPS protocol?
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-**Answer**: A good indication that the SMTP server supports the SMTPS protocol
+A good indication that the SMTP server supports the SMTPS protocol
 is that it is listening on the `submissions` port **465**.
 
-**Question**: How can I determine what authorization and encryption protocols
-the mail server supports?
+How can I determine what authorization and encryption protocols the mail server supports?
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-**Answer**: SMTP servers usually announce the availability of STARTTLS
+SMTP servers usually announce the availability of STARTTLS
 immediately after a connection has been established. You can easily check this
 using the ``telnet`` command.
 
@@ -381,10 +398,12 @@ using the ``telnet`` command.
   221 smtp.domain.dom closing connection
   Connection closed by foreign host.
 
-**Question**: How can I send mail when using self-signed certificates if
-remote SMTP server do not have options to allow this on their side?
+.. _TLSPeerVerification:
 
-**Answer**: If you are having remote SMTP setup, you can try adding this
+How can I send mail using self-signed certificates or use STARTTLS with self signed certificates?
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+To disable peer verification or to use self signed certificates, add the following
 to your ``config/config.php``::
 
     "mail_smtpstreamoptions" => array(
@@ -395,15 +414,11 @@ to your ``config/config.php``::
         )
     ),
 
-Enabling debug mode
--------------------
 
-If you are unable to send email, it might be useful to activate further debug
-messages by enabling the ``mail_smtpdebug`` parameter:
+All emails keep getting rejected even though only one email address is invalid.
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-::
-
-    "mail_smtpdebug" => true,
+Partial sending, i. e. sending to all but the faulty email address is not possible.
 
 .. note:: Immediately after pressing the **Send email** button, as described
    before, several **SMTP -> get_lines(): ...** messages appear on the screen.

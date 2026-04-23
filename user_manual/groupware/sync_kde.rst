@@ -28,7 +28,7 @@ In Kalendar:
 
 In KOrganizer and Kalendar:
 
-3. Enter your username. As password, you need to generate an app-password/token (`Learn more <https://docs.nextcloud.com/server/stable/user_manual/session_management.html#managing-devices>`_):
+3. Enter your username. As password, you need to generate an app-password/token (`Learn more <https://docs.nextcloud.com/server/latest/user_manual/en/session_management.html#managing-devices>`_):
 
 .. image:: ../images/korganizer_credentials.png
 
@@ -36,7 +36,7 @@ In KOrganizer and Kalendar:
 
 .. image:: ../images/KOrganizer_groupware_server.png
 
-5. Enter your Nextcloud server URL and, if needed, installation path (anything that comes after the first /, for example ``mynextcloud`` in ``https://exampe.com/mynextcloud``). Then click next:
+5. Enter your Nextcloud server URL and, if needed, installation path (anything that comes after the first /, for example ``mynextcloud`` in ``https://example.com/mynextcloud``). Then click next:
 
 .. image:: ../images/KOrganizer_server_address.png
 

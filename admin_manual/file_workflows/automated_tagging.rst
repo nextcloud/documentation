@@ -27,7 +27,7 @@ navigate to the configuration and locate the Workflow settings.
 In the example you can see a simple rule with only one condition.
 It will tag all files with the restricted tag ``Protected file`` that are
 uploaded into a folder that is tagged with ``Protect content``. No user can
-remove the tag ``Protected file`` and therefor access control and retention
+remove the tag ``Protected file`` and therefore access control and retention
 both work fine without users being able to work around them.
 
 In this case folder will be also tagged with tag ``Protected file``, to avoid
@@ -40,6 +40,12 @@ Available rules
 ---------------
 
 The available rules can be seen in the access control section: :ref:`available-rules-label`.
+
+.. note::
+
+    Please note that the rules do not apply when creating external storages and groupfolders.
+    The root folders of those need to be tagged manually with the desired initial tags.
+    Items created inside later on apply the rules as defined.
 
 Executing actions
 -----------------

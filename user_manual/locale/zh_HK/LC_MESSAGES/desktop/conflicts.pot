@@ -1,0 +1,139 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) 2025 Nextcloud GmbH
+# This file is distributed under the same license as the Nextcloud latest User Manual package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+# 
+# Translators:
+# Café Tango, 2025
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Nextcloud latest User Manual latest\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-02-12 13:02+0000\n"
+"PO-Revision-Date: 2025-02-12 13:33+0000\n"
+"Last-Translator: Café Tango, 2025\n"
+"Language-Team: Chinese (Hong Kong) (https://app.transifex.com/nextcloud/teams/64236/zh_HK/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Language: zh_HK\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+
+#: ../../desktop/conflicts.rst:3
+msgid "Conflicts"
+msgstr "衝突"
+
+#: ../../desktop/conflicts.rst:6
+msgid "Overview"
+msgstr "概覽"
+
+#: ../../desktop/conflicts.rst:8
+msgid ""
+"The Nextcloud desktop client uploads local changes and downloads remote "
+"changes. When a file has changed on the local side and on the remote between"
+" synchronization runs the client will be unable to resolve the situation on "
+"its own. It will create a conflict file with the local version, download the"
+" remote version and notify the user that a conflict occurred which needs "
+"attention."
+msgstr ""
+"Nextcloud "
+"桌面客戶端會上傳近端更改並下載遠端更改。當檔案在近端和遠端之間的同步過程中同時發生變更時，客戶端無法自行解決此問題。它會創建一個衝突檔案以保存近端版本，下載遠端版本，並通知用戶發生了需要處理的衝突。"
+
+#: ../../desktop/conflicts.rst:15
+msgid "Example"
+msgstr "範例"
+
+#: ../../desktop/conflicts.rst:17
+msgid ""
+"Imagine there is a file called ``mydata.txt`` your synchronized folder. It "
+"has not changed for a while and contains the text \"contents\" locally and "
+"remotely. Now, nearly at the same time you update it locally to say \"local "
+"contents\" while the file on the server gets updated to contain \"remote "
+"contents\" by someone else."
+msgstr ""
+"假設在您的同步資料夾中有一個名為 ``mydata.txt`` 的檔案。它一段時間沒有變更，並且近端和遠端都包含文本 "
+"\"contents\"。現在，幾乎在同一時間，您將其近端更新為 \"local contents\"，而伺服器上的檔案被其他人更新為 \"remote"
+" contents\"。"
+
+#: ../../desktop/conflicts.rst:22
+msgid ""
+"When attempting to upload your local changes the desktop client will notice "
+"that the server version has also changed. It creates a conflict and you will"
+" now have two files on your local machine:"
+msgstr "當您嘗試上傳近端更新時，桌面客戶端會注意到伺服器版本也已更新。它會創建一個衝突，您現在在近端計算機上將會有兩個檔案："
+
+#: ../../desktop/conflicts.rst:26
+msgid "``mydata.txt`` containing \"remote contents\""
+msgstr "``mydata.txt`` 包含 \"remote contents\""
+
+#: ../../desktop/conflicts.rst:27
+msgid ""
+"``mydata (conflicted copy 2018-04-10 093612).txt`` containing \"local "
+"contents\""
+msgstr "``mydata (conflicted copy 2018-04-10 093612).txt`` 包含 \"local contents\""
+
+#: ../../desktop/conflicts.rst:29
+msgid ""
+"In this situation the file ``mydata.txt`` has the remote changes (and will "
+"continue to be updated with further remote changes when they happen), but "
+"your local adjustments have not been sent to the server (unless the server "
+"enables conflict uploading, see below)."
+msgstr ""
+"在這種情況下，檔案 ``mydata.txt`` "
+"擁有遠端更改（並將在有進一步的遠端更改時繼續更新），但您的近端調整尚未發送到伺服器（除非伺服器啟用衝突上傳，請參見下文）。"
+
+#: ../../desktop/conflicts.rst:34
+msgid ""
+"The desktop client notifies you of this situation via system notifications, "
+"the system tray icon and a yellow \"unresolved conflicts\" badge in the "
+"account settings window. Clicking this badge shows a list that includes the "
+"unresolved conflicts and clicking one of them opens an explorer window "
+"pointing at the relevant file."
+msgstr ""
+"桌面客戶端通過系統通知、系統托盤圖示和帳戶設置窗口中的黃色 \"未解決衝突\" "
+"徽章通知您此情況。點擊此徽章會顯示一個包含未解決衝突的清單，點擊其中一個會打開一個檔案管理器窗口，指向相關檔案。"
+
+#: ../../desktop/conflicts.rst:39
+msgid ""
+"To resolve this conflict, open both files, compare the differences and copy "
+"your local changes from the \"conflicted copy\" file into the base file "
+"where applicable. In this example you might change ``mydata.txt`` to say "
+"\"local and remote contents\" and delete the file with \"conflicted copy\" "
+"in its name. With that, the conflict is resolved."
+msgstr ""
+"要解決這個衝突，打開這兩個檔案，比較差異，並在適用的情況下將您的本地更改從 \"conflicted copy\" "
+"檔案複製到基檔。以這個範例為例，您可以將 ``mydata.txt`` 更改為 \"local and remote contents\" "
+"並刪除名稱中帶有 \"conflicted copy\" 的檔案。這樣，衝突就解決了。"
+
+#: ../../desktop/conflicts.rst:46
+msgid "Uploading conflicts (experimental)"
+msgstr "上傳衝突（實驗性）"
+
+#: ../../desktop/conflicts.rst:48
+msgid ""
+"By default the conflict file (the file with \"conflicted copy\" in its name "
+"that contains your local conflicting changes) is not uploaded to the server."
+" The idea is that you, the author of the changes, are the best person for "
+"resolving the conflict and showing the conflict to other users might create "
+"confusion."
+msgstr ""
+"預設情況下，衝突檔案（名稱中帶有 \"conflicted copy\" "
+"的檔案，包含您的本地衝突更改）不會上傳到伺服器。這樣設計的想法是，您作為變更的作者，是解決衝突的最佳人選，將衝突顯示給其他用戶可能會造成混淆。"
+
+#: ../../desktop/conflicts.rst:53
+msgid ""
+"However, in some scenarios it makes a lot of sense to upload these "
+"conflicting changes such that local work can become visible even if the "
+"conflict won't be resolved immediately."
+msgstr "然而，在某些情況下，上傳這些衝突的更改是非常合理的，這樣即使衝突不會立即解決，近端工作也能變得可見。"
+
+#: ../../desktop/conflicts.rst:57
+msgid ""
+"In the future there might be a server-wide switch for this behavior. For now"
+" it can already be tested by setting the environment variable "
+"``OWNCLOUD_UPLOAD_CONFLICT_FILES=1``."
+msgstr ""
+"未來可能會有一個全伺服器的開關來控制這種行為。目前可以通過設置環境變數 ``OWNCLOUD_UPLOAD_CONFLICT_FILES=1`` "
+"來進行測試。"

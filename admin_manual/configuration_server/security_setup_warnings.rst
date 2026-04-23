@@ -77,6 +77,9 @@ For enhanced security we recommend enabling HSTS as described in our security ti
 The HSTS header needs to be configured within your Web server by following the
 :ref:`enable-hsts-label` documentation
 
+You can see if the header is appearing in requests by using your browser inspector
+or using a tool such as cURL: ``curl --head https://cloud.domain.tld``.
+
 /dev/urandom is not readable by PHP
 -----------------------------------
 
@@ -110,9 +113,7 @@ There are known bugs in older OpenSSL and NSS versions leading to misbehavior in
 combination with remote hosts using SNI. A technology used by most of the HTTPS
 websites. To ensure that Nextcloud will work properly you need to update OpenSSL
 to at least 1.0.2b or 1.0.1d. For NSS the patch version depends on your distribution
-and an heuristic is running the test which actually reproduces the bug. There
-are distributions such as RHEL/CentOS which have this backport still `pending 
-<https://bugzilla.redhat.com/show_bug.cgi?id=1241172>`_.
+and an heuristic is running the test which actually reproduces the bug.
 
 Your Web server is not set up properly to resolve /.well-known/caldav/ or /.well-known/carddav/
 -----------------------------------------------------------------------------------------------
@@ -125,10 +126,10 @@ Some files have not passed the integrity check
 
 Please refer to the :ref:`code_signing_fix_warning_label` documentation how to debug this issue.
 
-Your database does not run with "READ COMMITED" transaction isolation level
----------------------------------------------------------------------------
+Your database does not run with "READ COMMITTED" transaction isolation level
+----------------------------------------------------------------------------
 
-"Your database does not run with "READ COMMITED" transaction isolation level.
+"Your database does not run with "READ COMMITTED" transaction isolation level.
 This can cause problems when multiple actions are executed in parallel."
 
 Please refer to :ref:`db-transaction-label` how to configure your database for this requirement.

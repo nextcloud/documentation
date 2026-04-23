@@ -119,11 +119,10 @@ examples will assume that you are trying to sign an application named
 "contacts".
 
 1. Generate a private key and CSR: ``openssl req -nodes -newkey rsa:4096 -keyout contacts.key -out contacts.csr -subj "/CN=contacts"``. Replace "contacts" with your application identifier.
-2. Post the CSR at https://github.com/nextcloud/app-certificate-requests, and configure
-   your GitHub account to show your mail address in your profile. Nextcloud
-   might ask you for further information to verify that you're the legitimate
-   owner of the application. Make sure to keep the private key file (``contacts.key``)
-   secret and not disclose it to any third parties.
+2. Post the CSR at https://github.com/nextcloud/app-certificate-requests, in a
+   new pull request with the link of a public repository with the code of your
+   app. Make sure to keep the private key file (``contacts.key``) secret and
+   not disclose it to any third parties.
 3. Nextcloud will provide you with the signed certificate.
 4. Run ``./occ integrity:sign-app`` to sign your application, and specify
    your private and public keys as well as the path to the application.

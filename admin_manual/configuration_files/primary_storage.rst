@@ -11,21 +11,32 @@ By default, files are stored in :code:`nextcloud/data` or another directory conf
 in the :code:`config.php` of your Nextcloud instance. This data directory might
 still be used for compatibility reasons)
 
-------------
-Implications
-------------
+---------------------------------
+Differences from External Storage
+---------------------------------
 
-When using an object store as primary storage, Nextcloud assumes exclusive access
-over the bucket being used.
+When  an object store is used as Primary Storage, Nextcloud requires exclusive access
+over the bucket being used. All metadata (filenames, directory structures, etc) 
+is stored in Nextcloud and not in the object store. The metadata is only stored in the database and the 
+object store only holds the file content by unique identifier.
 
-Contrary to using an object store as external storage, when an object store is used
-as primary storage, no metadata (names, directory structures, etc) is stored in the
-object store. The metadata is only stored in the database and the object store only
-holds the file content by unique identifier.
+~~~~~~~~~~~~~~~~~~~~~~~~
+Performance Implications
+~~~~~~~~~~~~~~~~~~~~~~~~
 
-Because of this primary object stores usually perform better than when using the same
-object store as external storage but it restricts being able to access the files from
-outside of Nextcloud.
+Because of this, object stores configured as Primary Storage usually perform better than 
+when using the same object store via the External Storage support application, but the downside 
+is being unable to access the files from outside of Nextcloud. This makes using an object store 
+as Primary Storage distinct from using an object store via External Storage.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Data Backup and Recovery Implications
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+One impact of using an object store as Primary Storage is that your data backup strategy 
+needs to incorporate this. **Your data is no longer stored on your Nextcloud server, but your 
+files are also no longer accessible by simply bypassing your Nextcloud server and accessing 
+your object store directly.**
 
 -------------
 Configuration
@@ -116,39 +127,115 @@ V3 Authentication:
 Simple Storage Service (S3)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The simple storage service (S3) backend mounts a bucket on an Amazon S3 object
+The Simple Storage Service (S3) backend mounts a bucket on an Amazon S3 object
 storage or compatible implementation (e.g. Minio or Ceph Object Gateway) into the
 virtual filesystem.
 
 The class to be used is :code:`\\OC\\Files\\ObjectStore\\S3`
+
+Amazon-hosted S3:
 
 ::
 
 	'objectstore' => [
 		'class' => '\\OC\\Files\\ObjectStore\\S3',
 		'arguments' => [
-			'bucket' => 'nextcloud',
-			'autocreate' => true,
-			'key'    => 'EJ39ITYZEUH5BGWDRUFY',
+			'bucket' => 'my-nextcloud-store',
+			'region' => 'us-east-1',
+			'key' => 'EJ39ITYZEUH5BGWDRUFY',
 			'secret' => 'M5MrXTRjkyMaxXPe2FRXMTfTfbKEnZCu+7uRTVSj',
-			'hostname' => 'example.com',
-			'port' => 1234,
-			'use_ssl' => true,
-			'region' => 'optional',
-			// required for some non Amazon S3 implementations
-			'use_path_style'=>true
 		],
 	],
 
-.. note:: Not all configuration options are required for all S3 servers. Overriding
-          the hostname, port and region of your S3 server is only required for
-          non-Amazon implementations, which in turn usually don't require the region to be set.
+Non-Amazon hosted S3:
 
-.. note:: :code:`use_path_style` is usually not required (and is, in fact, incompatible
-          with newer Amazon datacenters), but can be used with non-Amazon servers
-          where the DNS infrastructure cannot be controlled. Ordinarily, requests
-          will be made with http://bucket.hostname.domain/, but with path style enabled,
-          requests are made with http://hostname.domain/bucket instead.
+::
+
+	'objectstore' => [
+		'class' => '\\OC\\Files\\ObjectStore\\S3',
+		'arguments' => [
+			'bucket' => 'my-nextcloud-store',
+			'hostname' => 's3.example.com',
+			'key' => 'EJ39ITYZEUH5BGWDRUFY',
+			'secret' => 'M5MrXTRjkyMaxXPe2FRXMTfTfbKEnZCu+7uRTVSj',
+			'port' => 8443,
+			// required for some non-Amazon S3 implementations
+			'use_path_style' => true,
+		],
+	],
+
+Minimum required parameters are:
+
+* :code:`bucket` [Note: Even if non-Amazon hosted, bucket names must meet AWS S3 naming requirements regardless of what your S3 provider/platform considers acceptable - i.e. no underscores]
+* :code:`key`
+* :code:`secret`
+
+.. note:: You will *probably* need to specify additional parameters beyond these, unless the default 
+          values (see below) exactly match your situation. In particular, your :code:`region` (if Amazon 
+	  hosted) or :code:`hostname` (if non-Amazon hosted).
+
+Optional parameters most commonly needing adjustment (and their defaults values if left 
+unconfigured):
+
+* :code:`region` defaults to :code:`eu-west-1`
+* :code:`storageClass` defaults to :code:`STANDARD`
+* :code:`hostname` defaults to :code:`s3.REGION.amazonaws.com` [Note: If using this parameter (non-Amazon), specify the generic S3 endpoint hostname, **not** the hostname that contains your bucket name]
+* :code:`use_ssl` defaults to :code:`true`
+
+Optional parameters sometimes needing adjustment:
+
+* :code:`use_path_style` defaults to :code:`false`
+* :code:`port` defaults to :code:`443`
+* :code:`sse_c_key` has no default
+
+Optional parameters less commonly needing adjustment:
+
+* :code:`concurrency` defaults to :code:`5` [Note: This defines the maximum number of concurrent multipart uploads]
+* :code:`proxy` defaults to :code:`false`
+* :code:`connect_timeout` defaults to :code:`5` [Note: the connection timeout is
+  set in seconds, but decimal precision can be used for subsecond accuracy (for
+  example, 4.2 for 4200 milliseconds)]
+* :code:`timeout` defaults to :code:`15`
+* :code:`uploadPartSize` defaults to :code:`524288000`
+* :code:`putSizeLimit` defaults to :code:`104857600`
+* :code:`useMultipartCopy` defaults to :code:`true`
+* :code:`copySizeLimit` defaults to :code:`5242880000`
+* :code:`legacy_auth` has no default
+* :code:`version` defaults to :code:`latest`
+* :code:`verify_bucket_exists` defaults to :code:`true` [Note: Setting this to :code:`false` *after* confirming the bucket has been created may provide a performance benefit, but may not be possible in multibucket scenarios.]
+
+**If you are using Amazon S3:** the :code:`region` parameter is required unless you're happy with 
+the default of :code:`eu-west-1`. There is no need to override the :code:`hostname` or :code:`port`. 
+And :code:`storageClass` only needs to be modified if you're using a different configuration at AWS. 
+Lastly, :code:`use_path_style` is rarely required with Amazon, but some legacy Amazon datacenters 
+may require it.
+
+**If you using a non-Amazon hosted S3 store:** you will need to set the :code:`hostname` 
+parameter (and can ignore the :code:`region` parameter). You may need to use :code:`use_path_style` 
+if your non-Amazon S3 store does *not* support requests like :code:`https://bucket.hostname.domain/`.
+Setting :code:`use_path_style` to true configures the S3 client to make requests like 
+:code:`https://hostname.domain/bucket` instead.
+
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Microsoft Azure Blob Storage
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+The Azure Blob Storage backend mounts a container on Microsoft's Azure Blob Storage into the
+virtual filesystem.
+
+The class to be used is :code:`\\OC\\Files\\ObjectStore\\Azure`
+
+::
+
+	'objectstore' => [
+		'class' => '\\OC\\Files\\ObjectStore\\Azure',
+		'arguments' => [
+			'container' => 'nextcloud',
+			'autocreate' => true,
+			'account_name' => 'account_name',
+			'account_key' => 'xxxxxxxxxx'
+		],
+	],
 
 ------------------------
 Multibucket Object Store
@@ -157,14 +244,15 @@ Multibucket Object Store
 It's possible to configure Nextcloud to distribute the data over multiple buckets
 for scalability purposes.
 
-To setup multiple buckets, use :code:`'objectstore_multibucket'` storage backend
-in :code:`config.php`:
+To setup multiple buckets, set :code:`'multibucket => true'` in the object store
+configuration in :code:`config.php`:
 
 ::
 
-	'objectstore_multibucket' => [
+	'objectstore' => [
 		'class' => 'Object\\Storage\\Backend\\Class',
 		'arguments' => [
+			'multibucket' => true,
 			// optional, defaults to 64
 			'num_buckets' => 64,
 			// will be postfixed by an integer in the range from 0 to (num_nuckets-1)
@@ -182,3 +270,122 @@ all files for that user in their corresponding bucket.
 
 You can find out more information about upscaling with object storage and Nextcloud in the
 `Nextcloud customer portal <https://portal.nextcloud.com/article/object-store-as-primary-storage-16.html>`_.
+
+----------------------------------------------------------------
+Multibucket Object Store with per Bucket configuration overrides
+----------------------------------------------------------------
+
+When using an Object Store with :code:`'multibucket => true'` it is possible to configure overrides for all config options per bucket:
+
+::
+
+	'objectstore' => [
+		'class' => 'Object\\Storage\\Backend\\Class',
+		'arguments' => [
+			'multibucket' => true,
+			'bucket' => 'nextcloud_',
+			'perBucket' => [
+				'nextcloud_1' => [
+					'port' => 9999,
+				],
+			],
+		],
+	],
+
+This can be useful for example if you want to configure credentials per bucket that is used by a Team folder.
+A script for provisioning new Team folders this way could look like this (first make sure the bucket exists with those credentials):
+
+::
+
+	occ config:system:set --type=string --value=KEYVALUE objectstore arguments perBucket BUCKETNAME key
+	occ config:system:set --type=string --value=SECRETVALUE objectstore arguments perBucket BUCKETNAME secret
+	occ groupfolders:create --bucket BUCKETNAME TEAMFOLDERNAME
+
+The credentials must be set before the new Team folder is created.
+
+---------------------------
+Multi-instance Object Store
+---------------------------
+
+It's possible to configure Nextcloud to distribute the data over multiple object store
+instances for further scaling and gradual migration.
+
+To setup multiple buckets, set :code:`'objectstore'` to an array of named configurations
+configuration in :code:`config.php` and set the :code:`'default'` to the name of the
+configuration to use for newly created users:
+
+::
+
+	'objectstore' => [
+		'default' => 'server2',
+		'root' => 'server1',
+		'server1' => [
+			'class' => 'Object\\Storage\\Backend\\Class',
+			'arguments' => [
+				'hostname' => 's3-server1.example.com',
+				'bucket' => 's1_nextcloud',
+				...
+			],
+		],
+		'server2' => [
+		'class' => 'Object\\Storage\\Backend\\Class',
+			'arguments' => [
+				'multibucket' => true,
+				'hostname' => 's3-server2.example.com',
+				'bucket' => 's2_nextcloud_',
+				...
+			],
+		],
+	],
+
+.. note:: Bucket names must be unique between all configured object store instances.
+
+Newly created users will be mapped to the object store instance set in :code:`default`.
+Files that are not part of the users storage are put in the :code:`root` instance, or
+in the :code:`default` instance if no :code:`root` instance is configured.
+
+In the above example, if :code:`server2` is starting to run low on capacity, an admin can
+setup and configure a new :code:`server3` and change the :code:`default` to :code:`server3`.
+Than any newly created user will have their files put on :code:`server3`.
+
+.. note:: As with multibucket object store, the user-to-instance mapping is only created once,
+          so only newly created users will be mapped to the new default instance.
+
+It is possible to mix different object store backends and multibucket and non-multibucket in
+a multi-instance configuration.
+
+---------------------------
+S3 SSE-C encryption support
+---------------------------
+
+Nextcloud supports server side encryption, also known as `SSE-C <http://docs.aws.amazon.com/AmazonS3/latest/dev/ServerSideEncryptionCustomerKeys.html>`_, with compatible S3 bucket provider. The encryption and decryption happens on the S3 bucket side with a key provided by the Nextcloud server.
+
+The key can be specified with the :code:`sse_c_key` parameter which needs to be provided as a base64 encoded string with a maximum length of 32 bytes. A random key could be generated using the the following command:
+
+::
+
+	openssl rand 32 | base64
+
+
+The following example shows how to configure the S3 object store with SSE-C encryption support in the objectstore section of the Nextcloud config.php file:
+
+::
+
+	'objectstore' => [
+		array (
+			'class' => 'OC\\Files\\ObjectStore\\S3',
+			'arguments' =>
+			array (
+				'bucket' => 'nextcloud',
+				'key' => 'nextcloud',
+				'secret' => 'nextcloud',
+				'hostname' => 's3',
+				'port' => '443',
+				'use_ssl' => true,
+				'use_path_style' => true,
+				'autocreate' => true,
+				'verify_bucket_exists' => true,
+				'sse_c_key' => 'o9d3Q9tHcPMv6TIpH53MSXaUmY91YheZRwuIhwCFRSs=',
+			),
+		);
+	],

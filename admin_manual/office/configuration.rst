@@ -11,6 +11,7 @@ Collabora Online Server
 URL (and port) of the Collabora Online server that provides the editing functionality as a WOPI client. Collabora Online should use the same protocol (http:// or https://) as the server installation. Naturally, https:// is recommended.
 
 Restrict usage to specific groups
+*********************************
 By default the app is enabled for all. When this setting is active, only members of specified groups can use Nextcloud Office.
 
 Restrict edit to specific groups
@@ -26,7 +27,7 @@ Enable access for external apps
 Nextcloud internally passes an access token to Collabora Online that is used later by it to do various operations. By default, it's not possible to generate this token by 3rd parties; only Nextcloud can generate and pass it to Collabora Online.
 
 In some applications, it might be necessary to generate the token by a 3rd party application. For this, one needs to add the 3rd party application (external apps) in this setting. You need to add an application identifier and a secret
-token. These credentials then can be used by the 3rd party application to make calls to `wopi/extapp/data/{fileId}` to fetch the access token and URL source for given fileId, both required to open a connection to Collabora Online.
+token. These credentials then can be used by the 3rd party application to make calls to `ajax/extapp/data/{fileId}` to fetch the access token and URL source for given fileId, both required to open a connection to Collabora Online.
 
 Canonical webroot
 *****************
@@ -60,3 +61,27 @@ When you install coolwsd package, the post-install script will look for addition
 
 .. seealso::
     https://sdk.collaboraonline.com/docs/installation/Fonts.html
+
+
+Secure view settings
+********************
+
+The secure view settings enables Nextcloud to embed watermarks on your office files. The watermark may be set according to different rules:
+
+- **Tags:** will watermark files for files containing the defined tags
+- **Groups:** will watermark files when opened by users belonging to the defined groups.
+- **All shares:** will watermark files accessed via a share.
+- **Read-only shares:** will watermark files if they are accessed via a read-only share.
+
+.. warning::
+    To enforce the confidentiality of your files it is crucial to restrict the ability to download the documents.
+
+    This includes ensuring that your `WOPI configuration <#wopi-settings>`_ is configured to only serve documents between Nextcloud and Collabora.
+
+
+Wopi settings
+*************
+
+It is highly recommended to restrict WOPI requests to the IP addresses of the Collabora servers that are expected to request files from the Nextcloud installation. This can be done by setting the ``Allow list for WOPI requests`` option from the Office admin settings.
+
+Similarly, it is advised to configure `Collabora's WOPI host configuration <https://sdk.collaboraonline.com/docs/installation/Configuration.html#multihost-configuration>`_ to only serve IPs from expected hosts.

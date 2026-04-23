@@ -256,7 +256,7 @@ Code example
 Move a file or folder
 ---------------------
 
-Move an exisintg file or folder to a different location in the Nextcloud server. Parameters needed are the path
+Move an existing file or folder to a different location in the Nextcloud server. Parameters needed are the path
 to the file or folder to move, and the new path desired for it. The parent folder of the new path must exist in
 the server.
 

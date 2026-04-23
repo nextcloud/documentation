@@ -15,18 +15,21 @@ and data, and it automates updating
    you have paid support or ask for help in the Nextcloud forums to see if your
    issue can be resolved without downgrading.
 
-You should maintain regular backups (see :doc:`backup`), and make a backup
-before every update. The built-in updater does not backup your database or data
-directory.
+.. danger::
+   You should maintain regular backups (see :doc:`backup`), and make a backup
+   before every update. The built-in updater does not backup your database or data
+   directory.
 
 What does the updater do?
 -------------------------
 
 .. note::
-   The updater itself only replaces the existing files with the ones from the
-   version it updates to. The migration steps needs to be executed afterwards.
-   The command line mode provides a way to do this right after the code was
-   successfully replaced.
+   The built-in updater itself only replaces the existing files with the ones from the
+   version it updates to. The migration phase, which upgrades your database and apps, 
+   needs to be executed afterwards. In command line mode, the updater offers to trigger this
+   for you right after the code was successfully replaced by running ``occ upgrade`` for you. 
+   In web mode, the updater finishes and then offers to send you back to your instance's main 
+   URL to trigger the migration phase's web UI.
 
 The built-in updater performs these operations:
 
@@ -76,7 +79,7 @@ steps:
     a new update available. Go to the admin settings page and scroll to the
     section "Version". This section has a button to open the updater. This
     section as well as the update notification is only available if the update
-    notication app is enabled in the apps management.
+    notification app is enabled in the apps management.
 
 .. figure:: images/updater-1-update-available.png
 
@@ -132,7 +135,7 @@ This is how the command line based update would continue:
 
 .. code::
 
-    $ sudo -u www-data php ./occ upgrade
+    $ sudo -E -u www-data php ./occ upgrade
     Nextcloud or one of the apps require upgrade - only a limited number of commands are available
     You may use your browser or the occ upgrade command to do the upgrade
     Set log level to debug
@@ -160,25 +163,20 @@ Using the command line based updater
 The command line based updater works in the exact same way the web based
 updater works. The steps and checks are the very same.
 
-.. warning:: APCu is disabled by default on CLI which could cause issues with nextcloud's
-   command line based updater. Please make sure you set the ``apc.enable_cli`` to ``1`` on your ``php.ini``
-   config file or append ``--define apc.enable_cli=1`` to the command line based updater call
-   (like ``sudo -u www-data php --define apc.enable_cli=1 /var/www/nextcloud/updater/updater.phar``).
-
 The steps are basically the same as for the web based updater:
 
 1.  You should see a notification at the top of any Nextcloud page when there is
     a new update available. Go to the admin settings page and scroll to the
     section "Version". This section has a button to open the updater. This
     section as well as the update notification is only available if the update
-    notication app is enabled in the apps management.
+    notification app is enabled in the apps management.
 
 .. image:: images/updater-1-update-available.png
 
 2. Instead of clicking that button you can now invoke the command line based
    updater by going into the `updater/` directory in the Nextcloud directory
    and executing the `updater.phar` as the web server user. (i.e.
-   ``sudo -u www-data php /var/www/nextcloud/updater/updater.phar``)
+   ``sudo -E -u www-data php /var/www/nextcloud/updater/updater.phar``)
 
 .. image:: images/updater-cli-2-start-updater.png
    :class: terminal-image
@@ -221,12 +219,38 @@ It is possible to run the command line based updater in a non-interactive mode.
 The updater then doesn't ask any interactive questions. It is assumed that if
 an update is available it should be installed and the ``occ upgrade`` command
 is executed as well. After finishing the maintenance mode will be turned off
-except an error occured during the ``occ upgrade`` or the replacement of the
+except an error occurred during the ``occ upgrade`` or the replacement of the
 code.
 
 To execute this, run the command with the ``--no-interaction`` option. (i.e.
-``sudo -u www-data php /var/www/nextcloud/updater/updater.phar --no-interaction``)
+``sudo -E -u www-data php /var/www/nextcloud/updater/updater.phar --no-interaction``)
 
 .. image:: images/updater-cli-8-no-interaction.png
    :class: terminal-image
 
+Troubleshooting
+---------------
+
+* The built-in updater logs all of its actions to a dedicated log file called 
+  ``updater.log`` located in your configured ``datadirectory`` 
+  (e.g. ``/var/www/html/data/updater.log``). This file can be helpful in isolating
+  where things are failing. It will also be needed if you reach out for assistance
+  on the community help forum (https://help.nextcloud.com).
+
+* If you are having problems using the Updater in web-mode, you should try using
+  command-line mode (if it's an option in your environment). Command-line avoids 
+  issues with web server timeouts, which can be problematic since sometimes the 
+  Updater can take a long time to complete certain steps.
+
+* If the problem seems to be during the backup step, you can try disabling the
+  backups the updater automatically creates of the installation files. Keep in 
+  mind these backups do **not** include your data (which you are already hopefully
+  doing). The backup step can only be disabled while in command-line mode. Append
+  the option ``--no-backup`` to the ``updater.phar`` command. 
+
+* If you accidentally say no when the command-line mode of the updater asks if you'd
+  like to run ``occ upgrade``, you can safely execute ``occ upgrade`` manually or 
+  simply visit the URL of your instance to complete the database migrations and app
+  upgrade phase.
+
+* Reach out to the community help forum for assistance (https://help.nextcloud.com)

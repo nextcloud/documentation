@@ -24,7 +24,7 @@ the new location. It is also assumed that the authentication method
 .. warning:: At NO TIME any changes to the **ORIGINAL** system are required
     **EXCEPT** putting Nextcloud into maintenance mode.
 
-    This ensures, should anything unforseen happen you can go
+    This ensures, should anything unforeseen happen you can go
     back to your existing installation and provide your users
     with a running Nextcloud while debugging the problem.
 
@@ -56,9 +56,16 @@ the new location. It is also assumed that the authentication method
     Depending on the original installation method and the OS the files are
     located in different locations. On the new system make sure to pick the
     appropriate locations. If you change any paths, make sure to adapt the paths
-    in the Nextcloud config.php file. Note: This step might take several hours,
-    depending on your installation.
-	
+    in the Nextcloud config.php file.
+
+    .. note::
+      This step might take several hours, depending on your installation.
+
+    .. warning::
+      Changing the location of the data directory might cause a corruption of relations
+      in the database and is not supported.
+
+
 #.  Check the config.php file of the **ORIGINAL** system to see if it has
     the ``data-fingerprint`` set to a non-empty value. If this is the case, make
     sure to also run the ``maintenance:data-fingerprint`` command on the **NEW**

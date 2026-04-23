@@ -6,6 +6,24 @@ This document provides a quick overview of the OCS API endpoints supported in Ne
 
 All requests need to provide authentication information, either as a Basic Auth header or by passing a set of valid session cookies, if not stated otherwise.
 
+Authentication
+--------------
+
+Authentication can happen either via username / password (or app token) or with OIDC tokens, see the examples below:
+
+
+Username/Password:
+
+.. code-block:: bash
+
+    curl -u username:password -X GET 'https://cloud.example.com/ocs/v1.php/...' -H "OCS-APIRequest: true"
+
+
+OIDC Token:
+
+.. code-block:: bash
+
+    curl -X GET 'https://cloud.example.com/ocs/v1.php/...' -H "OCS-APIRequest: true" -H "Authorization: Bearer ID_TOKEN"
 
 Testing requests with curl
 --------------------------
@@ -48,7 +66,7 @@ This request returns the available metadata of a user. Admin users can see the i
 			<storageLocation>/path/to/storage/location/userid</storageLocation>
 			<id>userid</id>
 			<lastLogin>1578283711000</lastLogin>
-			<backend>Database</database>
+			<backend>Database</backend>
 			<subadmin/>
 			<quota>
 				<free>20632824998</free>
@@ -59,6 +77,7 @@ This request returns the available metadata of a user. Admin users can see the i
 			</quota>
 			<email>user@foo.de</email>
 			<displayname>John Doe</displayname>
+			<display-name>John Doe</display-name>
 			<phone></phone>
 			<address></address>
 			<website>https://example.com</website>
@@ -180,7 +199,7 @@ This when the primary color is e.g. set to ``#000000`` the ``color-elemenet-dark
 Text and icons on these elements should use ``color-text``.
 
 
-The background value can either be an URL to the background image or a hex color value.
+The background value can either be a URL to the background image or a hex color value.
 
 Direct Download
 ---------------
@@ -218,12 +237,32 @@ An example curl command would be:
 
      curl -i -u master -X GET -H "OCS-APIRequest: true" 'https://my.nextcloud/ocs/v2.php/core/autocomplete/get?search=JOANNE%40EMAIL.ISP&itemType=%20&itemId=%20&shareTypes[]=8&limit=2'
 
-That would look for JOANNE@EMAIL.ISP as guest user. Maximum 2 results to be returned for a regular user, the shareTypes array would carry only "0".
-``itemType`` and ``itemId`` are left (set to a white space), essentially they are to give context about the use case, so sorters can do their work (like who 
-commented last). It can be an option for filtering on a later stage but you can also leave them out as per the below example.
+That would look for JOANNE@EMAIL.ISP as guest user. Maximum 2 results to be returned for a regular user, the
+shareTypes array would carry only "8". ``itemType`` and ``itemId`` are left out (set to a white space),
+essentially they are to give context about the use case, so sorters can do their work (like who commented last).
+It can be an option for filtering on a later stage but you can also leave them out as per the below example.
 
 .. code::
 
      curl -i -u master -X GET -H "OCS-APIRequest: true" 'https://my.nextcloud/ocs/v2.php/core/autocomplete/get?search=JOANNE%40EMAIL.ISP&shareTypes[]=8&limit=2'
 
-The shareType would default to regular users if you left it out), the limit defaults to 10.
+The shareType defaults to regular users if you left it out), the limit defaults to 10.
+
+Filtering the auto-complete results
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+In case needed, you can also further filter the auto-complete results on the PHP side using the
+``OCP\Collaboration\AutoComplete\AutoCompleteEvent`` event. The event gives you access to the current
+result set, the item and share types and some more information that you can use to e.g. limit the autocomplete
+results to users that are actually in the current chat conversation.
+
+.. _api-force-language:
+
+Force language for a given call
+-------------------------------
+
+All Nextcloud API calls support forcing the language using the query parameter ``forceLanguage``. It will override any user setting for the given call.
+
+.. code-block:: bash
+
+    curl -u username:password -X GET 'https://cloud.example.com/ocs/v1.php/...?forceLanguage=en' -H "OCS-APIRequest: true"

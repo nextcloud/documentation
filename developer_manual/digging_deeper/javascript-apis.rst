@@ -35,6 +35,7 @@ Development
 Most packages are written in TypeScript in order to generate better API docs automatically but also to ensure compatibility with Nextcloud server in a programmatic way. The server is typed in `a dedicated npm package <https://www.npmjs.com/package/@nextcloud/typings>`_ that is used to check type soundness.
 
 
+
 Packages in detail
 ^^^^^^^^^^^^^^^^^^
 
@@ -42,70 +43,92 @@ Packages in detail
 The rest of this section will cover a rough overview of which packages are provided and what they are used for.
 
 
+.. _js-library_nextcloud-auth:
+
 ``@nextcloud/auth``
 ^^^^^^^^^^^^^^^^^^^
 
-This package provides information about the current user and session. Documentation: https://nextcloud.github.io/nextcloud-auth/
+This package provides information about the current user and session. Documentation: https://nextcloud-libraries.github.io/nextcloud-auth/
 
 ``@nextcloud/axios``
 ^^^^^^^^^^^^^^^^^^^^
 
-This package provides an `Axios <https://www.npmjs.com/package/axios>`_ HTTP client instance, ready to send request to the Nextcloud server. If you use this instance you do not have to care about authentication and special headers. Documentation: https://nextcloud.github.io/nextcloud-axios/
+This package provides an `Axios <https://www.npmjs.com/package/axios>`_ HTTP client instance, ready to send request to the Nextcloud server. If you use this instance you do not have to care about authentication and special headers. Documentation: https://nextcloud-libraries.github.io/nextcloud-axios/
+
+.. _js-library_nextcloud-event-bus:
 
 ``@nextcloud/event-bus``
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-This package provides a simple event bus implementation that integrates with server and other apps. Thus it is one of the recommended ways of inter-app communication. Documentation: https://nextcloud.github.io/nextcloud-event-bus/
+This package provides a simple event bus implementation that integrates with server and other apps. Thus it is one of the recommended ways of inter-app communication. Documentation: https://nextcloud-libraries.github.io/nextcloud-event-bus/
+
+.. _js-library_nextcloud-dialogs:
 
 ``@nextcloud/dialogs``
 ^^^^^^^^^^^^^^^^^^^^^^
 
-This package provides access to UI dialogs in Nextcloud. Documentation: https://nextcloud.github.io/nextcloud-dialogs/
+This package provides access to UI dialogs in Nextcloud. Documentation: https://nextcloud-libraries.github.io/nextcloud-dialogs/
+
+.. _js-library_nextcloud-files:
 
 ``@nextcloud/files``
 ^^^^^^^^^^^^^^^^^^^^
 
-This package provides helper functions around the Files app. Documentation: https://nextcloud.github.io/nextcloud-files/
+This package provides methods to access the public API of the Files app, helper functions to access Nextcloud files using WebDAV,
+and utility functions to work with files and folders. Documentation: https://nextcloud-libraries.github.io/nextcloud-files/
 
 ``@nextcloud/initial-state``
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This package provides the counterpart for the `\\OCP\\IInitialStateService` on the back-end. Use it to retrieve your stored data on page load. Documentation: https://nextcloud.github.io/nextcloud-initial-state/
+This package provides the counterpart for the `\\OCP\\IInitialStateService` on the back-end. Use it to retrieve your stored data on page load. Documentation: https://nextcloud-libraries.github.io/nextcloud-initial-state/
 
 ``@nextcloud/l10n``
 ^^^^^^^^^^^^^^^^^^^
 
-This package provides everything around localization, like access to the current user's locale and translation helpers. Documentation: https://nextcloud.github.io/nextcloud-l10n/
+This package provides everything around localization, like access to the current user's locale and translation helpers. Documentation: https://nextcloud-libraries.github.io/nextcloud-l10n/
 
 ``@nextcloud/logger``
 ^^^^^^^^^^^^^^^^^^^^^
 
-This package provides a unified logging helper that adds app names, severity and other context to log messages. Use it to enhance the output of your app's logs, useful for development and triaging bug reports. Documentation: https://nextcloud.github.io/nextcloud-logger/
+This package provides a unified logging helper that adds app names, severity and other context to log messages. Use it to enhance the output of your app's logs, useful for development and triaging bug reports. Documentation: https://nextcloud-libraries.github.io/nextcloud-logger/
 
 ``@nextcloud/moment``
 ^^^^^^^^^^^^^^^^^^^^^
 
-This package provides a modified version of `moment.js <https://momentjs.com/>`_ with the current user's locale set. Documentation: https://nextcloud.github.io/nextcloud-moment/
+This package provides a modified version of `moment.js <https://momentjs.com/>`_ with the current user's locale set. Documentation: https://nextcloud-libraries.github.io/nextcloud-moment/
 
 ``@nextcloud/password-confirmation``
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This package makes it possible to ask a user for confirmation on actions that have a `@PasswordConfirmationRequired` set on the controller method. Use it for critical actions. Documentation: https://nextcloud.github.io/nextcloud-password-confirmation/
+This package makes it possible to ask a user for confirmation on actions that have the ``#[PasswordConfirmationRequired]`` attribute or ``@PasswordConfirmationRequired`` annotation set on the controller method. Use it for critical actions. Documentation: https://nextcloud-libraries.github.io/nextcloud-password-confirmation/
 
 ``@nextcloud/paths``
 ^^^^^^^^^^^^^^^^^^^^
 
-This package provides various helpers for file and folder paths. Documentation: https://nextcloud.github.io/nextcloud-paths/
+This package provides various helpers for file and folder paths. Documentation: https://nextcloud-libraries.github.io/nextcloud-paths/
 
 ``@nextcloud/router``
 ^^^^^^^^^^^^^^^^^^^^^
 
-This package provides helpers to generate URLs, e.g. to access assets and REST APIs of your app or the Nextcloud server. Documentation: https://nextcloud.github.io/nextcloud-router/
+This package provides helpers to generate URLs, e.g. to access assets and REST APIs of your app or the Nextcloud server. Documentation: https://nextcloud-libraries.github.io/nextcloud-router/
+
+.. _js-library_nextcloud-sharing:
+
+``@nextcloud/sharing``
+^^^^^^^^^^^^^^^^^^^^^^
+
+This package provides helpers interact with the Files sharing app, e.g. to detect if the current page is a public share and retrieving the sharing token.
+Documentation: https://nextcloud-libraries.github.io/nextcloud-sharing/
+
+.. _js-library_nextcloud-vue:
 
 ``@nextcloud/vue``
 ^^^^^^^^^^^^^^^^^^
 
-This package provides lots of nextcloud components allowing you to quickly build UIs. Documentation: https://nextcloud-vue-components.netlify.com/
+This package provides lots of Vue components allowing you to quickly build UIs in Nextcloud design.
+
+- Documentation: https://nextcloud-vue-components.netlify.app/
+- Source code: https://github.com/nextcloud-libraries/nextcloud-vue
 
 Events
 ------
@@ -113,7 +136,7 @@ Events
 Network state changes
 ^^^^^^^^^^^^^^^^^^^^^
 
-Your app can react to lost network connectivity, e.g. to gracefully handle this state where no server interaction is possible. Since the communication with the server mostly requires a valid CSRF token, you might not want to send any request before the token was udpated. Nextcloud can notify you when this has happened. Use the ``@nextcloud/event-bus`` to listen for the ``networkOnline`` and ``networkOffline`` events:
+Your app can react to lost network connectivity, e.g. to gracefully handle this state where no server interaction is possible. Since the communication with the server mostly requires a valid CSRF token, you might not want to send any request before the token was updated. Nextcloud can notify you when this has happened. Use the ``@nextcloud/event-bus`` to listen for the ``networkOnline`` and ``networkOffline`` events:
 
 .. code-block:: js
 

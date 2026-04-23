@@ -1,34 +1,94 @@
+.. _ApplicationJs:
+
 ==========
 JavaScript
 ==========
 
 .. sectionauthor:: Bernhard Posselt <dev@bernhard-posselt.com>
 
-The JavaScript files reside in the **js/** folder and should be included in the template:
+The JavaScript files reside in the **js/** folder and should be included
+in the appropriate controller. There are two methods to inject your JavaScript files.
+
+  1. ``Util::addScript``
+  2. ``Util::addInitScript``
 
 .. code-block:: php
 
-  <?php
-  // add one file
-  script('myapp', 'script');  // adds js/script.js
+  /**
+   * Add a javascript file
+   *
+   * @param string $application Your application ID, e.g. 'your_app'
+   * @param string $file Your script name, e.g. 'main'
+   * @param string $afterAppId Optional, the script will be loaded after this app
+   * @param bool $prepend Optional, if true the script will be prepended to this app scripts list
+   */
+   public static function addScript(string $application, string $file = null, string $afterAppId = 'core', bool $prepend = false): void
 
-  // add multiple files in the same app
-  script('myapp', array('script', 'navigation'));  //  adds js/script.js js/navigation.js
+  /**
+   * Add a standalone init js file that is loaded for initialization.
+   * Be careful loading scripts using this method as they are loaded early
+   * and block the initial page rendering. They should not have dependencies
+   * on any other scripts than core-common and core-main.
+   *
+   * @param string $application Your application ID, e.g. 'your_app'
+   * @param string $file Your script name, e.g. 'main'
+   */
+   public static function addInitScript(string $application, string $file): void
 
-  // add vendor files (also allows the array syntax)
-  vendor_script('myapp', 'script');  //  adds vendor/script.js
+.. note:: If your script is only needed after a specific event, e.g. after the Files app is loaded,
+   you will have to register a Listener in your app ``Appinfo/Application.php``.
 
-If the script file is only needed when the file list is displayed, you should
-listen to the ``OCA\Files::loadAdditionalScripts`` event:
+Here is an example for the Files app (which emits the ``LoadAdditionalScriptsEvent``).
+For more information about app bootstrapping, see the :ref:`application-php` section.
 
 .. code-block:: php
 
-  <?php
-  $eventDispatcher = \OC::$server->getEventDispatcher();
-  $eventDispatcher->addListener('OCA\Files::loadAdditionalScripts', function() {
-    script('myapp', 'script');  // adds js/script.js
-    vendor_script('myapp', 'script');  //  adds vendor/script.js
-  });
+  namespace OCA\YourApp\AppInfo;
+
+  use OCA\Files\Event\LoadAdditionalScriptsEvent;
+  use OCA\YourApp\Listener\LoadAdditionalListener;
+  use OCP\AppFramework\App;
+  use OCP\AppFramework\Bootstrap\IBootContext;
+  use OCP\AppFramework\Bootstrap\IBootstrap;
+  use OCP\AppFramework\Bootstrap\IRegistrationContext;
+
+  /**
+   * @package OCA\YourApp\AppInfo
+   */
+  class Application extends App implements IBackendProvider, IAuthMechanismProvider, IBootstrap {
+    public const APP_ID = 'your_app';
+
+    public function __construct(array $urlParams = []) {
+      parent::__construct(self::APP_ID, $urlParams);
+    }
+
+    public function register(IRegistrationContext $context): void {
+      $context->registerEventListener(LoadAdditionalScriptsEvent::class, LoadAdditionalListener::class);
+    }
+
+    public function boot(IBootContext $context): void {}
+
+.. code-block:: php
+
+  namespace OCA\YourApp\Listener;
+
+  use OCA\YourApp\AppInfo\Application;
+  use OCA\Files\Event\LoadAdditionalScriptsEvent;
+  use OCP\EventDispatcher\Event;
+  use OCP\EventDispatcher\IEventListener;
+  use OCP\Util;
+
+  class LoadAdditionalListener implements IEventListener {
+
+      public function handle(Event $event): void {
+          if (!($event instanceof LoadAdditionalScriptsEvent)) {
+              return;
+          }
+
+          Util::addInitScript(Application::APP_ID, 'init');
+          Util::addScript(Application::APP_ID, 'main', 'files');
+      }
+  }
 
 
 Sending the CSRF token
@@ -110,11 +170,12 @@ and a JS part (that fetches and parses the state).
 Providing the initial state with PHP
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 Providing state in PHP is done via the ``OCP\AppFramework\Services\IInitialState``. This service
-has two methods you can use to provide the initial state.
+has two methods you can use to provide the initial state. They will automatically be scoped
+to your app, so you don't have to provide your app id anymore.
 
-* ``provideInitialState(string $appName, string $key, $data)``:
+* ``provideInitialState(string $key, $data)``:
   If you know for sure your state will be used. For example on the settings page of your app.
-* ``provideLazyInitialState(string $appName, string $key, Closure $closure)``:
+* ``provideLazyInitialState(string $key, Closure $closure)``:
   If you want to inject your state on a general page. For example the initial state of the notifications app. The callback will be invoked if and only if a template is rendered.
 
 You call both methods with the name of your app and a key. This is to scope
@@ -150,6 +211,8 @@ function
 Now state will contain the provided state which you can use as any variable. It
 is as simple as that.
 
+.. _basics_frontend_javascript_keyboard_shortcuts:
+
 
 Keyboard shortcuts
 ------------------
@@ -164,6 +227,6 @@ Nextcloud wide. You can check the setting with the following function which retu
 
     OCP.Accessibility.disableKeyboardShortcuts();
 
-If that is the case, no additional shortcuts shall be registered by any app. Only space
-to toggle checkboxes and enter to submit the currently active buttons or links are okay,
+If that is the case, no additional shortcuts shall be registered by any app. Only ``space``
+to toggle checkboxes and ``enter`` to submit the currently active buttons or links are okay,
 as any other shortcut might interfere with screenreaders and other accessibility tools.

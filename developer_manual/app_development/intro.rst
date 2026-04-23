@@ -22,20 +22,19 @@ Alternatively, if you would like to contribute to an existing app instead of cre
     
 You can then configure Nextcloud to run apps from this directory, by changing your `app_paths` system config in your `config.php`
 
-    'apps_paths' => 
-    array (
-      0 => 
-      array (
-        'path' => '/var/www/html/apps',
-        'url' => '/apps',
-        'writable' => false,
-      ),
-      1 => 
-      array (
-        'path' => '/var/www/html/apps-extra',
-        'url' => '/apps-extra',
-        'writable' => false,
-      ),
+.. code-block:: php
+
+    'apps_paths' => array (
+        0 => array (
+            'path' => '/var/www/html/apps',
+            'url' => '/apps',
+            'writable' => false,
+        ),
+        1 => array (
+            'path' => '/var/www/html/apps-extra',
+            'url' => '/apps-extra',
+            'writable' => false,
+        ),
     ),
     
 Finally, clone the app to which you would like to contribute inside the `apps-extra` folder. For example:

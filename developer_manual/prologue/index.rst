@@ -9,3 +9,4 @@ Prologue
    help_communication
    bugtracker/index
    security
+   compatibility_app_ecosystem

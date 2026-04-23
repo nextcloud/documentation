@@ -2,115 +2,41 @@
 Installation on Linux
 =====================
 
+There are multiple ways of installing Nextcloud depending on your preferences, requirements and goals.
+
+If you prefer an automated installation, you have the option to:
+
+* use the `official Nextcloud installation method <https://github.com/nextcloud/all-in-one#nextcloud-all-in-one>`_. Nextcloud AIO provides easy deployment and maintenance with most features included in this one Nextcloud instance. It includes Office, a turnkey Backup solution, Imaginary (for previews of heic, heif, illustrator, pdf, svg, tiff and webp) and more.
+* use the `community Snap Package <https://snapcraft.io/nextcloud>`_. This includes a full production-ready stack, will maintain your HTTPS certificates for you, and will automatically update as needed to stay secure.
+* use the `community Nextcloud VM Appliance <https://github.com/nextcloud/vm/>`_ (aka Nextcloud Virtual Machine or NcVM). This helps you create a personal or corporate Nextcloud Server faster and easier. It can be used install directly on a clean Ubuntu Server or downloaded as a fully functioning VM.
+* use the `community NextcloudPi scripts <https://nextcloudpi.com/>`_ (based on Debian). It will setup everything for you and include scripts for automated installation of apps like: Collabora, OnlyOffice, Talk and so on.
+* use the `community Nextcloud Docker image <https://hub.docker.com/_/nextcloud/>`_. This image is designed to be used in a micro-service environment. There are two versions of the image you can choose from: the Apache one contains a full Nextcloud installation including an Apache web server. The second option is an FPM installation and runs a FastCGI process that serves your Nextcloud installation (you will need to supply your preferred web, database and other desired supplementary services).
+
+.. note:: Please note that the community options are not officially supported by Nextcloud GmbH.
+
+.. tip:: For an enterprise-ready and scalable installation based on Helm Charts (also available for Podman), please `contact Nextcloud GmbH <https://nextcloud.com/enterprise/>`_.
+
 In case you prefer installing from the source tarball, you can setup Nextcloud
 from scratch using a classic LAMP stack (Linux, Apache, MySQL/MariaDB, PHP).
 This document provides a complete walk-through for installing Nextcloud on
 Ubuntu 18.04 LTS Server with Apache and MariaDB, using `the Nextcloud .tar
 archive <https://nextcloud.com/install/>`_. This method is recommended to install Nextcloud.
 
-.. note:: Admins of SELinux-enabled distributions such as CentOS, Fedora, and
-   Red Hat Enterprise Linux may need to set new rules to enable installing
-   Nextcloud. See :ref:`selinux_tips_label` for a suggested configuration.
-
-
-If you prefer a more automated installation of Nextcloud and there are no packages for your Linux distribution, you have the option to
-install the community `Snap Package <https://snapcraft.io/nextcloud>`_. This includes a full production-ready stack, will maintain your HTTPS certificates for you, and will automatically update as needed to stay secure. You can also use the `Nextcloud VM scripts <https://github.com/nextcloud/vm/>`_ to install directly on a clean Ubuntu Server. It will setup everything for you and include scripts for automated installation of apps like; Collabora, OnlyOffice, Talk and so on. Please note that those two options are not officially supported by Nextcloud GmbH.
-
-
 This installation guide is giving a general overview of required dependencies and their configuration. For a distribution specific setup guide have a look at the :doc:`./example_ubuntu` and :doc:`./example_centos`.
 
 .. _prerequisites_label:
 
+
+.. note:: Admins of SELinux-enabled distributions such as CentOS, Fedora, and
+   Red Hat Enterprise Linux may need to set new rules to enable installing
+   Nextcloud. See :ref:`selinux_tips_label` for a suggested configuration.
+
 Prerequisites for manual installation
 -------------------------------------
 
-The Nextcloud .tar archive contains all of the required PHP modules. This
-section lists all required and optional PHP modules.  Consult the `PHP manual
-<https://php.net/manual/en/extensions.php>`_ for more information on modules.
-Your Linux distribution should have packages for all required modules. You can
-check the presence of a module by typing ``php -m | grep -i <module_name>``.
-If you get a result, the module is present.
-
-Required:
-
-* PHP (see :doc:`./system_requirements.rst` for a list of supported versions)
-* PHP module ctype
-* PHP module curl
-* PHP module dom
-* PHP module filter (only on Mageia and FreeBSD)
-* PHP module GD
-* PHP module hash (only on FreeBSD)
-* PHP module JSON (included with PHP >= 8.0)
-* PHP module libxml (Linux package libxml2 must be >=2.7.0)
-* PHP module mbstring
-* PHP module openssl (included with PHP >= 8.0)
-* PHP module posix
-* PHP module session
-* PHP module SimpleXML
-* PHP module XMLReader
-* PHP module XMLWriter
-* PHP module zip
-* PHP module zlib
-
-Database connectors (pick the one for your database:)
-
-* PHP module pdo_sqlite (>= 3, usually not recommended for performance reasons)
-* PHP module pdo_mysql (MySQL/MariaDB)
-* PHP module pdo_pgsql (PostgreSQL)
-
-*Recommended* packages:
-
-* PHP module fileinfo (highly recommended, enhances file analysis performance; required to set custom theming images or if PHP module imagick with SVG support is installed)
-* PHP module bz2 (recommended, required for extraction of apps)
-* PHP module intl (increases language translation performance and fixes sorting
-  of non-ASCII characters)
-
-Required for specific apps:
-
-* PHP module ldap (for LDAP integration)
-* PHP module smbclient  (SMB/CIFS integration, see
-  :doc:`../configuration_files/external_storage/smb`)
-* PHP module ftp (for FTP storage / external user authentication)
-* PHP module imap (for external user authentication)
-* PHP module bcmath (for passwordless login)
-* PHP module gmp (for passwordless login)
-
-Recommended for specific apps (*optional*):
-
-* PHP module gmp (for SFTP storage)
-* PHP module exif (for image rotation in pictures app)
-
-For enhanced server performance (*optional*) select one of the following
-memcaches:
-
-* PHP module apcu (>= 4.0.6)
-* PHP module memcached
-* PHP module redis (>= 2.2.6, required for Transactional File Locking)
-
-See :doc:`../configuration_server/caching_configuration` to learn how to select
-and configure a memcache.
-
-For preview generation (*optional*):
-
-* PHP module imagick
-* avconv or ffmpeg
-* OpenOffice or LibreOffice
-
-.. note::
-   If the preview generation of PDF files fails with a "not authorized" error message, you must adjust the imagick policy file.
-   See https://cromwell-intl.com/open-source/pdf-not-authorized.html
-
-For command line processing (*optional*):
-
-* PHP module pcntl (enables command interruption by pressing ``ctrl-c``)
-
-.. note::
-   You also need to ensure that pcntl_signal and pcntl_signal_dispatch are not disabled
-   in your php.ini file.
-
-For command line updater (*optional*):
-
-* PHP module phar (upgrades Nextcloud by running ``sudo -u www-data php /var/www/nextcloud/updater/updater.phar``)
+The Nextcloud .tar archive contains all of the required PHP modules.
+Your Linux distribution should have packages for all required modules.
+See :doc:`php_configuration` for a list of required and suggested modules.
 
 You don’t need the WebDAV module for your Web server (i.e. Apache’s
 ``mod_webdav``), as Nextcloud has a built-in WebDAV server of its own,
@@ -196,6 +122,14 @@ Additional Apache configurations
 
     a2enmod setenvif
 
+  and apply the following modifications the configuration::
+
+    ProxyFCGIBackendType FPM
+    
+    <FilesMatch remote.php>
+      SetEnvIf Authorization "(.*)" HTTP_AUTHORIZATION=$1
+    </FilesMatch>
+
 * You must disable any server-configured authentication for Nextcloud, as it
   uses Basic authentication internally for DAV services. If you have turned on
   authentication on a parent folder (via e.g. an ``AuthType Basic``
@@ -241,9 +175,13 @@ if your setup is available on ``https://example.org/nextcloud`` or::
 if it isn't installed in a subfolder. Finally run this occ-command to update
 your .htaccess file::
 
-    sudo -u www-data php /var/www/nextcloud/occ maintenance:update:htaccess
+    sudo -E -u www-data php /var/www/nextcloud/occ maintenance:update:htaccess
 
 After each update, these changes are automatically applied to the ``.htaccess``-file.
+
+.. note:: In case the automatically added ``.htaccess`` configuration `SetEnv front_controller_active true` does not work for your environment:
+   Edit ``config/config.php`` and add ``'htaccess.IgnoreFrontController' => true``.
+   See :doc:`../configuration_server/config_sample_php_parameters` for a detailed description.
 
 .. _enabling_ssl_label:
 
@@ -263,10 +201,10 @@ the default site. Open a terminal and run::
     service apache2 reload
 
 .. note:: Self-signed certificates have their drawbacks - especially when you
-          plan to make your Nextcloud server publicly accessible. You might
-          want to consider getting a certificate signed by a commercial signing
-          authority. Check with your domain name registrar or hosting service
-          for good deals on commercial certificates.
+          plan to make your Nextcloud server publicly accessible. Consider getting
+          a certificate signed by a signing authority. Check with your domain name
+          registrar or hosting service for good deals on commercial certificates.
+          Or use a free `Let's Encrypt <https://letsencrypt.org/>`_ ones.
 
 .. _installation_wizard_label:
 
@@ -288,6 +226,18 @@ To use ``occ`` see :doc:`command_line_installation`.
 
 To use the graphical Installation Wizard see :doc:`installation_wizard`.
 
+.. _background_jobs_label:
+
+Setting up background jobs
+--------------------------
+
+Nextcloud requires that some tasks are run regularly. These may include
+maintenance tasks to ensure optimal performance or time sensitive tasks like
+sending notifications.
+
+See :doc:`../configuration_server/background_jobs_configuration` for a detailed
+description and the benefits.
+
 .. _selinux_tips_label:
 
 SELinux configuration tips
@@ -296,49 +246,50 @@ SELinux configuration tips
 See :doc:`selinux_configuration` for a suggested configuration for
 SELinux-enabled distributions such as Fedora and CentOS.
 
-.. _php_ini_tips_label:
-
-php.ini configuration notes
----------------------------
-
-Keep in mind that changes to ``php.ini`` may have to be configured on more than one
-ini file. This can be the case, for example, for the ``date.timezone`` setting.
-
-**php.ini - used by the Web server:**
-::
-
-    /etc/php/7.4/apache2/php.ini
-  or
-    /etc/php/7.4/fpm/php.ini
-  or ...
-
-**php.ini - used by the php-cli and so by Nextcloud CRON jobs:**
-::
-
-    /etc/php/7.4/cli/php.ini
-
-.. note:: Path names have to be set in respect of the installed PHP
-          (>= 7.3 or 7.4) as applicable.
-
 .. _php_fpm_tips_label:
 
-php-fpm configuration notes
----------------------------
+PHP-FPM configuration 
+---------------------
 
-**System environment variables**
+Overview
+^^^^^^^^
+
+`PHP-FPM <https://www.php.net/manual/en/install.fpm.php>`_ is a FastCGI based 
+implementation of PHP containing features useful for busy web sites and large web 
+applications. Using it with Nextcloud is an advanced topic and requires getting
+familiar with how PHP-FPM functions. In most cases the defaults are not ideal for
+use with Nextcloud. Here we'll highlight a few of the most important areas that
+should be adjusted.
+
+Process manager
+^^^^^^^^^^^^^^^
+
+The default value for ``pm.max_children`` in many PHP-FPM installations is
+lower than appropriate. Having a low value may cause client connectivity 
+problems, unexplained errors, and performance problems. It is a common cause
+of *Gateway Timeouts*. Having too high of a value in relation to available
+resources (such as memory), however, will also lead to problems. The default
+value is often ``5``. This greatly limits simultaneously connections to your
+Nextcloud instance and, unless you are severely resource constraints, will 
+underutilize your hardware. Check the :doc:`../installation/server_tuning` 
+chapter for some guidance and resources for coming up with appropriate values,
+as well as other related parameters.
+
+System environment variables
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 When you are using ``php-fpm``, system environment variables like
 PATH, TMP or others are not automatically populated in the same way as
 when using ``php-cli``. A PHP call like ``getenv('PATH');`` can therefore
 return an empty result. So you may need to manually configure environment
-variables in the appropropriate ``php-fpm`` ini/config file.
+variables in the appropriate ``php-fpm`` ini/config file.
 
 Here are some example root paths for these ini/config files:
 
 +-----------------------+-----------------------+
 | Debian/Ubuntu/Mint    | CentOS/Red Hat/Fedora |
 +-----------------------+-----------------------+
-| ``/etc/php/7.4/fpm/`` | ``/etc/php-fpm.d/``   |
+| ``/etc/php/8.3/fpm/`` | ``/etc/php-fpm.d/``   |
 +-----------------------+-----------------------+
 
 In both examples, the ini/config file is called ``www.conf``, and depending on
@@ -365,7 +316,7 @@ you must add them.
 
 Alternatively it is possible to use the environment variables of your system by modifying::
 
-    /etc/php/7.4/fpm/pool.d/www.conf
+    /etc/php/8.3/fpm/pool.d/www.conf
 
 and uncommenting the line::
 
@@ -380,14 +331,16 @@ Please keep in mind that it is possible to create different settings for
 ``php-cli`` and ``php-fpm``, and for different domains and Web sites.
 The best way to check your settings is with :ref:`label-phpinfo`.
 
-**Maximum upload size**
+Maximum upload size
+^^^^^^^^^^^^^^^^^^^
 
 If you want to increase the maximum upload size, you will also have to modify
 your ``php-fpm`` configuration and increase the ``upload_max_filesize`` and
 ``post_max_size`` values. You will need to restart ``php-fpm`` and your HTTP
 server in order for these changes to be applied.
 
-**.htaccess notes for Apache**
+.htaccess
+^^^^^^^^^
 
 Nextcloud comes with its own ``nextcloud/.htaccess`` file. Because ``php-fpm``
 can't read PHP settings in ``.htaccess`` these settings and permissions must
@@ -429,7 +382,7 @@ Download the the Appliance here:
 
 The `Nextcloud VM`_ is maintained by
 `T&M Hansson IT <https://www.hanssonit.se/nextcloud-vm/>`_ and several different versions are
-offered. Collabora, OnlyOffice, Full Text Search and other apps can easily be installed with the included scripts which you can choose to run during the first setup, or download them later and run it afterwards. You can find all the currently available automated app installations `on GitHub <https://github.com/nextcloud/vm/tree/master/apps/>`_.
+offered. Collabora, OnlyOffice, Full Text Search and other apps can easily be installed with the included scripts which you can choose to run during the first setup, or download them later and run it afterwards. You can find all the currently available automated app installations `on GitHub <https://github.com/nextcloud/vm/blob/main/apps/>`_.
 
 The VM comes in different sizes and versions.
 
@@ -447,15 +400,81 @@ For complete instructions and downloads see:
 Installing via Snap packages
 ----------------------------
 
-A snap is a zip file containing an application together with its dependencies,
-and a description of how it should safely be run on your system, especially
-the different ways it should talk to other software. Most importantly snaps are
-designed to be secure, sandboxed, containerized applications isolated from the
-underlying system and from other applications.
+Nextcloud snap is a community driven installation method and is designed 
+to be easy to install and simple to maintain. The ideal Nextcloud snap is
+an "install and forget" Nextcloud instance that works on most architectures
+and updates itself without needing administrative skills. 
+Combining Nextcloud with snapd makes it a perfect fit for IoT or 
+scalable environments. `Snapd <https://snapcraft.io/docs>`_ is a secure 
+and robust technology which the Nextcloud snap team has embraced.
 
-To install the Nextcloud Snap Package, run the following command in a terminal::
+Most importantly snaps are designed to be secure, sandboxed, containerized 
+applications isolated from the underlying system and from other applications.
 
-    sudo snap install nextcloud
+However, the snap is opinionated and there are `requirements <https://github.com/nextcloud-snap/nextcloud-snap/wiki/Installation-requirements>`_ to be met. 
+
+- Nextcloud snap uses recommended Apache.
+- Nextcloud snap uses recommended MySQL.
+- Nextcloud snap uses recommended PHP.
+
+Installation
+^^^^^^^^^^^^
+
+**On Ubuntu**
+
+* https://snapcraft.io/nextcloud
+* Install Nextcloud ``sudo snap install nextcloud``
+
+**All other distros**
+`be warned <https://github.com/nextcloud-snap/nextcloud-snap/wiki/Why-Ubuntu-is-the-only-supported-distro/>`_
+
+By default the latest stable Nextcloud snap release will be installed and it will automatically update to 
+subsequent stable releases, but there are `other releases available as well <https://github.com/nextcloud/nextcloud-snap/wiki/Release-strategy>`_ 
+and you have full control of `automatic updates <https://github.com/nextcloud-snap/nextcloud-snap/wiki/Managing-automatic-updates>`_.
+
+After installation, Nextcloud will start automatically.  
+Assuming you and the device on which it was installed are on the same network, you will reach the Nextcloud 
+installation by visiting ``<hostname>.local`` or the IP address of the instance in your browser. 
+If your hostname is ``localhost``  or ``localhost.localdomain``, like on an Ubuntu Core device, 
+``nextcloud.local`` will be used instead. 
+
+1st login
+^^^^^^^^^
+
+Upon visiting the Nextcloud installation for the first time, you will be prompted to enter an admin username 
+and password before Nextcloud is initialised. This may take a while depending on resources and the device.
+After you provide that information you will be logged in and able to install apps, create users, and upload files.
+
+HTTPS encryption
+^^^^^^^^^^^^^^^^
+
+Nextcloud snap includes a service for automated HTTPS encryption and automated renewal using Lets Encrypt, 
+or self-signed certificates. Run ``nextcloud.enable-https -h`` for more information. `Managing encryption <https://github.com/nextcloud-snap/nextcloud-snap/wiki/Managing-HTTP-encryption-(HTTPS)>`_.
+
+Configuration
+^^^^^^^^^^^^^
+
+While the default Nextcloud configurations are mostly fine, it may be necessary to fine tune Nextcloud snap by
+editing configuration files manually or using the management console. `Configuring Nextcloud snap <https://github.com/nextcloud-snap/nextcloud-snap/wiki/Configure-Nextcloud-snap>`_.
+
+External media
+^^^^^^^^^^^^^^
+
+`Snap confinement <https://snapcraft.io/docs/snap-confinement>`_ is a security feature and determines the amount of access an application has to system resources, 
+such as files, the network, peripherals and services. Thus your Nextcloud snap is securely confined from the host 
+system. Unless you specifically allow the Nextcloud snap to access the ``/media`` or ``/mnt`` directories on the 
+host system, you will not be able to access any other directory outside of the confinement.
+
+Removable media or external storage must be mounted to either ``/media`` or ``/mnt`` as root with root permissions 
+and connected to Snap! `Managing external media and storage <https://github.com/nextcloud-snap/nextcloud-snap/wiki/Managing-external-media,-shares-and-storage>`_
+
+The interface providing the ability to access removable media is not automatically connected upon install, to use 
+external storage (or otherwise use a device in ``/media`` or ``/mnt`` for data), you need to give the snap permission 
+to access removable media by connecting that interface:
+
+``sudo snap connect nextcloud:removable-media`` 
+
+Further documentation, an extensive `Wiki <https://github.com/nextcloud-snap/nextcloud-snap/wiki>`_ and `FAQ's <https://github.com/nextcloud-snap/nextcloud-snap/wiki/FAQ's>`_  can be found on the `developers GitHub <https://github.com/nextcloud-snap/nextcloud-snap>`_.
 
 .. note:: The `snapd technology <http://snapcraft.io/docs/core/>`_ is the core
    that powers snaps, and it offers a new way to package, distribute, update and
@@ -492,12 +511,19 @@ See the `TrueNAS installation documentation <https://www.truenas.com/docs/core/s
 Installation via install script
 -------------------------------
 
-One of the easiest ways of installing is to use the Nextcloud VM scripts. It's basically just two steps:
+One of the easiest ways of installing is to use the Nextcloud VM or NextcloudPI scripts. It's basically just two steps:
 
-1. Download the latest `installation script <https://github.com/nextcloud/vm/blob/master/nextcloud_install_production.sh/>`_.
+1. Download the latest `VM installation script <https://github.com/nextcloud/vm/blob/main/nextcloud_install_production.sh/>`_.
 2. Run the script with::
 
     sudo bash nextcloud_install_production.sh
+
+or
+
+1. Download the latest `PI installation script <https://raw.githubusercontent.com/nextcloud/nextcloudpi/master/install.sh>`_.
+2. Run the script with::
+
+    sudo bash install.sh
 
 A guided setup will follow and the only thing you have to do it to follow the on screen instructions, when given to you.
 

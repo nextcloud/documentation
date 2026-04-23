@@ -22,7 +22,6 @@ new dependencies in your constructor or methods but pass them in. So this:
 
 .. code-block:: php
 
-  <?php
   use OCP\IDBConnection;
 
   // without dependency injection
@@ -38,8 +37,6 @@ would turn into this by using Dependency Injection:
 
 .. code-block:: php
 
-  <?php
-
   use OCP\IDBConnection;
 
   // with dependency injection
@@ -51,6 +48,34 @@ would turn into this by using Dependency Injection:
     }
   }
 
+Controller injection
+--------------------
+
+For controllers it's possible to also have dependencies injected into methods.
+
+.. code-block:: php
+  :caption: lib/Controller/ApiController.php
+  :emphasize-lines: 12-13, 16-17
+
+  <?php
+
+  namespace OCA\MyApp\Controller;
+
+  use OCP\IRequest;
+
+  class ApiController {
+      public function __construct($appName, IRequest $request) {
+          parent::__construct($appName, $request);
+      }
+
+      public function foo(FooService $service) {
+          $service->foo();
+      }
+
+      public function bar(BarService $service) {
+          $service->bar();
+      }
+  }
 
 Using a container
 -----------------
@@ -72,7 +97,7 @@ with the container might feel familiar if you've worked with other php applicati
 before that also adhere to the convention.
 
 To add the app's classes simply open the :file:`lib/AppInfo/Application.php` and
-use the **registerService** method on the container object:
+use the **IRegistrationContext::registerService** method:
 
 .. code-block:: php
 
@@ -81,30 +106,36 @@ use the **registerService** method on the container object:
   namespace OCA\MyApp\AppInfo;
 
   use OCP\AppFramework\App;
+  use OCP\AppFramework\Bootstrap\IBootstrap;
+  use OCP\AppFramework\Bootstrap\IBootContext;
+  use OCP\AppFramework\Bootstrap\IRegistrationContext;
+  use OCP\IDBConnection;
 
   use OCA\MyApp\Controller\AuthorController;
   use OCA\MyApp\Service\AuthorService;
   use OCA\MyApp\Db\AuthorMapper;
-  use OCP\IDBConnection;
-  use OCP\IServerContainer;
   use Psr\Container\ContainerInterface;
 
-  class Application extends App {
+  class Application extends App implements IBootstrap {
+
+    public function __construct(array $urlParams = []){
+      parent::__construct('myapp', $urlParams);
+    }
+
+    public boot(IBootContext $context): void {
+      // ...
+    }
 
     /**
      * Define your dependencies in here
      */
-    public function __construct(array $urlParams = []){
-      parent::__construct('myapp', $urlParams);
-
-      $container = $this->getContainer();
-
+    public function register(IRegistrationContext $context): void {
       /**
        * Controllers
        */
-      $container->registerService(AuthorController::class, function(ContainerInterface $c): AuthorController {
+      $context->registerService(AuthorController::class, function(ContainerInterface $c): AuthorController {
         return new AuthorController(
-          $c->get('AppName'),
+          $c->get('appName'),
           $c->get(Request::class),
           $c->get(AuthorService::class)
         );
@@ -113,7 +144,7 @@ use the **registerService** method on the container object:
       /**
        * Services
        */
-      $container->registerService(AuthorService::class, function(ContainerInterface $c): AuthorService {
+      $context->registerService(AuthorService::class, function(ContainerInterface $c): AuthorService {
         return new AuthorService(
           $c->get(AuthorMapper::class)
         );
@@ -122,7 +153,7 @@ use the **registerService** method on the container object:
       /**
        * Mappers
        */
-      $container->registerService(AuthorMapper::class, function(ContainerInterface $c): AuthorMapper {
+      $context->registerService(AuthorMapper::class, function(ContainerInterface $c): AuthorMapper {
         return new AuthorMapper(
           $c->get(IDBConnection::class)
         );
@@ -139,12 +170,12 @@ The container works in the following way:
 * The matched route queries **AuthorController** service from the container::
 
     return new AuthorController(
-      $c->get('AppName'),
+      $c->get('appName'),
       $c->get(Request::class),
       $c->get(AuthorService::class)
     );
 
-* The **AppName** is queried and returned from the base class
+* The **appName** is queried and returned from the base class
 * The **Request** is queried and returned from the server container
 * **AuthorService** is queried::
 
@@ -198,9 +229,9 @@ So basically the following is now possible:
       public MyTestClass $class;
       public string $appName;
 
-      public function __construct(MyTestClass $class, string $AppName) {
+      public function __construct(MyTestClass $class, string $appName) {
           $this->class = $class;
-          $this->appName = $AppName;
+          $this->appName = $appName;
       }
   }
 
@@ -213,7 +244,7 @@ So basically the following is now possible:
   $class2->appName === 'myname';  // true
   $class2 === $app->getContainer()->get(MyTestClass2::class);  // true
 
-.. note:: $AppName is resolved because the container registered a parameter under the key 'AppName' which will return the app id. The lookup is case sensitive so while $AppName will work correctly, using $appName as a constructor parameter will fail.
+.. note:: $appName is resolved because the container registered a parameter under the key 'appName' which will return the app id.
 
 How does it affect the request lifecycle
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -252,8 +283,8 @@ The only thing that needs to be done to add a route and a controller method is n
   use OCP\IRequest;
 
   class PageController {
-      public function __construct($AppName, IRequest $request) {
-          parent::__construct($AppName, $request);
+      public function __construct($appName, IRequest $request) {
+          parent::__construct($appName, $request);
       }
 
       public function index() {
@@ -278,26 +309,36 @@ Interfaces and primitive types can not be instantiated, so the container can not
   use OCA\MyApp\Db\AuthorMapper;
   use OCA\MyApp\Db\IAuthorMapper;
 
-  class Application extends \OCP\AppFramework\App {
+  use OCP\AppFramework\App;
+  use OCP\AppFramework\Bootstrap\IBootstrap;
+  use OCP\AppFramework\Bootstrap\IBootContext;
+  use OCP\AppFramework\Bootstrap\IRegistrationContext;
+  use Psr\Container\ContainerInterface;
+
+  class Application extends App implements IBootstrap {
+
+      public function __construct(array $urlParams = []){
+          parent::__construct('myapp', $urlParams);
+      }
+
+      public boot(IBootContext $context): void {
+          // ...
+      }
 
       /**
        * Define your dependencies in here
        */
-      public function __construct(array $urlParams = []){
-          parent::__construct('myapp', $urlParams);
-
-          $container = $this->getContainer();
-
+      public function register(IRegistrationContext $context): void {
           // AuthorMapper requires a location as string called $TableName
-          $container->registerParameter('TableName', 'my_app_table');
+          $context->registerParameter('TableName', 'my_app_table');
 
           // the interface is called IAuthorMapper and AuthorMapper implements it
-          $container->registerService(IAuthorMapper::class, function (ContainerInterface $c): AuthorMapper {
+          $context->registerService(IAuthorMapper::class, function (ContainerInterface $c): AuthorMapper {
               return $c->get(AuthorMapper::class);
           });
 
           // Less verbose alternative
-          $container->registerAlias(IAuthorMapper::class, AuthorMapper::class);
+          $context->registerServiceAlias(IAuthorMapper::class, AuthorMapper::class);
       }
 
   }
@@ -309,46 +350,54 @@ The following parameter names and type hints can be used to inject core services
 
 Parameters:
 
-* **AppName**: The app id
-* **WebRoot**: The path to the Nextcloud installation
-* **UserId**: The id of the current user
+* **appName**: The app id
+* **userId**: The id of the current user
+* **webRoot**: The path to the Nextcloud installation
+
+Aliases:
+
+* **AppName**: resolves to ``appName`` (deprecated)
+* **Request**: resolves to ``\OCP\IRequest``
+* **ServerContainer**: resolves to ``\OCP\IServerContainer`` (deprecated)
+* **UserId**: resolves to ``userId`` (deprecated)
+* **WebRoot**: resolves to ``webRoot`` (deprecated)
 
 Types:
 
-* **OCP\\IAppConfig**
-* **OCP\\IAppManager**
-* **OCP\\IAvatarManager**
-* **OCP\\Activity\\IManager**
-* **OCP\\ICache**
-* **OCP\\ICacheFactory**
-* **OCP\\IConfig**
-* **OCP\\AppFramework\\Utility\\IControllerMethodReflector**
-* **OCP\\Contacts\\IManager**
-* **OCP\\IDateTimeZone**
-* **OCP\\IDBConnection**
-* **OCP\\Diagnostics\\IEventLogger**
-* **OCP\\Diagnostics\\IQueryLogger**
-* **OCP\\Files\\Config\\IMountProviderCollection**
-* **OCP\\Files\\IRootFolder**
-* **OCP\\IGroupManager**
-* **OCP\\IL10N**
-* **OCP\\ILogger**
-* **OCP\\BackgroundJob\\IJobList**
-* **OCP\\INavigationManager**
-* **OCP\\IPreview**
-* **OCP\\IRequest**
-* **OCP\\AppFramework\\Utility\\ITimeFactory**
-* **OCP\\ITagManager**
-* **OCP\\ITempManager**
-* **OCP\\Route\\IRouter**
-* **OCP\\ISearch**
-* **OCP\\ISearch**
-* **OCP\\Security\\ICrypto**
-* **OCP\\Security\\IHasher**
-* **OCP\\Security\\ISecureRandom**
-* **OCP\\IURLGenerator**
-* **OCP\\IUserManager**
-* **OCP\\IUserSession**
+* ``\OCP\IAppConfig``
+* ``\OCP\IAppManager``
+* ``\OCP\IAvatarManager``
+* ``\OCP\Activity\IManager``
+* ``\OCP\ICache``
+* ``\OCP\ICacheFactory``
+* ``\OCP\IConfig``
+* ``\OCP\AppFramework\Utility\IControllerMethodReflector``
+* ``\OCP\Contacts\IManager``
+* ``\OCP\IDateTimeZone``
+* ``\OCP\IDBConnection``
+* ``\OCP\Diagnostics\IEventLogger``
+* ``\OCP\Diagnostics\IQueryLogger``
+* ``\OCP\Files\Config\IMountProviderCollection``
+* ``\OCP\Files\IRootFolder``
+* ``\OCP\IGroupManager``
+* ``\OCP\IL10N``
+* ``\OCP\BackgroundJob\IJobList``
+* ``\OCP\INavigationManager``
+* ``\OCP\IPreview``
+* ``\OCP\IRequest``
+* ``\OCP\AppFramework\Utility\ITimeFactory``
+* ``\OCP\ITagManager``
+* ``\OCP\ITempManager``
+* ``\OCP\Route\IRouter``
+* ``\OCP\ISearch``
+* ``\OCP\Security\ICrypto``
+* ``\OCP\Security\IHasher``
+* ``\OCP\Security\ISecureRandom``
+* ``\OCP\IURLGenerator``
+* ``\OCP\IUserManager``
+* ``\OCP\IUserSession``
+* ``\Psr\Container\ContainerInterface``
+* ``\Psr\Log\LoggerInterface``
 
 How to enable it
 ^^^^^^^^^^^^^^^^
@@ -394,12 +443,32 @@ What not to inject:
 
 .. _`reflection`: https://www.php.net/manual/en/book.reflection.php
 
+Optional services
+-----------------
+
+.. versionadded:: 28
+
+If an injected dependency can't be found or build, an exception is thrown. This can be avoided by using the a nullable type notation for a dependency:
+
+.. code-block:: php
+  :emphasize-lines: 6
+
+  namespace OCA\MyApp\MyService;
+
+  use Some\Service;
+
+  class MyService {
+    public function __construct(private ?Service $service) {
+    }
+  }
+
+If ``\Some\Service`` exists and can be built, it will be injected. Else ``MyService`` will receive ``null``.
 
 Accessing the container from anywhere
-------------------------------------
+-------------------------------------
 
-Sometimes it can be hard to inject some service inside legacy code, in these case
-you can use :code:`OCP\Server::get(MyService::class)`. This should only be used in
+Sometimes it can be hard to inject some service inside legacy code, in these cases
+you can use :code:`OCP\Server::get(MyService::class)`. This should only be used as
 the last resort, as this makes your code more complicated to unit test and is
 considered an anti-pattern.
 

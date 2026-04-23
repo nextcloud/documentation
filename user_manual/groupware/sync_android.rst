@@ -38,10 +38,7 @@ With the Nextcloud mobile app
 5. After this, DAVx⁵ will close and the Nextcloud app reappears. In
    order to finish setup, you have to manually launch DAVx⁵ again.
 6. Tap on the icon for the account DAVx⁵ has just created, when requested grant DAVx⁵ access
-   to your calendars and contacts. Optionally install OpenTasks 
-   (`Google Play Store <https://play.google.com/store/apps/details?id=org.dmfs.tasks>`__ or
-   `F-Droid <https://f-droid.org/packages/org.dmfs.tasks/>`__)
-   and grant DAVx⁵ access to your tasks, too.
+   to your calendars and contacts.
 7. When you tap the icon for the account DAVx⁵ has set up, it will
    discover the available address books and calendars. Choose which
    ones you want to synchronize and finish.
@@ -59,9 +56,8 @@ steps are required:
    `F-Droid <https://f-droid.org/packages/org.dmfs.tasks/>`__).
 3. Create a new account ("+" button).
 4. Select **Connection with URL and username**.
-   **Base URL:** URL of your Nextcloud instance (e.g. ``https://sub.example.com/remote.php/dav``) and 
-   **Contact Group Method:** as credentials.
-5. Choose the option ``Groups are per-contact categories``.
+   **Base URL:** URL of your Nextcloud instance (e.g. ``https://sub.example.com/remote.php/dav``) and your credentials.
+5. For the **Contact Group Method:** choose the option ``Groups are per-contact categories``.
 6. Click **Connect**.
 7. Select the data you want to sync.
 8. When requested, grant access permissions to DAVx⁵ for your
@@ -70,7 +66,12 @@ steps are required:
 .. note:: Enter your email address as DAVx⁵ account name (mandatory if you want
    to be able to send calendar invitation). If your email address is
    registered in your Nextcloud preferences and you have set up your
-   account using the Nextcloud mobile app, this all should be aready the case.
+   account using the Nextcloud mobile app, this all should be already the case.
+
+
+.. note:: Using user name and password will not work if 2-Factor-Authentication
+   is enabled and will throw a generic "Unknown resource" error.
+   Use a :ref:`dedicated App password <managing_devices>` instead.
 
 
 .. tip:: DAVx⁵ lists the calendar subscriptions made through the Nextcloud Calendar app, but you need to install the `ICSx⁵ (formerly known as ICSDroid) <https://icsx5.bitfire.at/>`__ app on your Android device, `from the Google Play Store <https://play.google.com/store/apps/details?id=at.bitfire.icsdroid>`__ or `from F-Droid <https://f-droid.org/packages/at.bitfire.icsdroid/>`__ to sync them.

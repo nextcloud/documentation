@@ -1,24 +1,27 @@
+.. _nginx-config:
+
 ===================
 NGINX configuration
 ===================
 
-.. warning::
-    Please note that webservers other than Apache 2.x are not officially supported.
+This page covers how to run a Nextcloud server using NGINX backed by PHP-FPM, which is also an officially supported setup.
 
-.. note::
-    This page covers example NGINX configurations to run a Nextcloud server.
-    These configurations examples were originally provided by `@josh4trunks <https://github.com/josh4trunks>`_
-    and are exclusively community-maintained. (Thank you contributors!)
+- You need to insert the following code into **your Nginx configuration file**.
+  Choose the appropriate example based on whether you are deploying :ref:`nginx_webroot_example` (i.e. :code:`https://cloud.example.com/`) or :ref:`nginx_subdir_example` (i.e. :code:`https://cloud.example.com/nextcloud`).
+- Adjust the server directive under :code:`upstream php-handler` to match your PHP installation's configured FPM listener (a misconfiguration here will result in a :code:`502 Bad Gateway` - see :ref:`nginx_php_handler_tips` for details)
+- Adjust the existing :code:`server_name` directives found under *both* :code:`server` sections to your real hostname
+- Adjust :code:`root` to the webroot of your Nextcloud installation 
+- Adjust the :code:`ssl_certificate` and :code:`ssl_certificate_key` directives to the real paths for your signed 
+  certificate and private key. Make sure your SSL certificates are readable by the nginx server process (see `nginx HTTPS SSL 
+  Module documentation <https://wiki.nginx.org/HttpSslModule>`_).
+- If using Let's Encrypt as TLS certificate and nginx as webserver, set `ssl_stapling` and `ssl_stapling_verify` to `off`
+  in main nginx config (see [Let's Encrypt blog post](https://letsencrypt.org/2024/12/05/ending-ocsp)).
+- Be careful about line breaks if you copy the examples, as long lines may be
+  broken for page display and result in an invalid configuration files.
+- Some environments might need a ``cgi.fix_pathinfo`` set to ``1`` in their
+  ``php.ini``.
 
--  You need to insert the following code into **your Nginx configuration file.**
--  Adjust **server_name**, **root**, **ssl_certificate** and
-   **ssl_certificate_key** to suit your needs.
--  Make sure your SSL certificates are readable by the server (see `nginx HTTP
-   SSL Module documentation <https://wiki.nginx.org/HttpSslModule>`_).
--  Be careful about line breaks if you copy the examples, as long lines may be
-   broken for page formatting.
--  Some environments might need a ``cgi.fix_pathinfo`` set to ``1`` in their
-   ``php.ini``.
+.. _nginx_webroot_example:
 
 Nextcloud in the webroot of NGINX
 ---------------------------------
@@ -29,6 +32,8 @@ webroot of your nginx installation. In this example it is
 
 .. literalinclude:: nginx-root.conf.sample
    :language: nginx
+
+.. _nginx_subdir_example:
 
 Nextcloud in a subdir of the NGINX webroot
 ------------------------------------------
@@ -50,6 +55,25 @@ The configuration differs from the "Nextcloud in webroot" configuration above in
 
 Tips and tricks
 ---------------
+
+.. _nginx_php_handler_tips:
+
+PHP-Handler Configuration / Avoiding "502 Bad Gateway"
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The :code:`server` line within the :code:`upstream php-handler` above needs to be adjusted to reflect your local PHP FPM configuration. It must match whatever is configured for the :code:`listen` directive within the PHP FPM pool you'll be using for NC.
+
+Many Linux distributions define a listener for a default PHP-FPM pool called :code:`www` in a file called :code:`www.conf` located somewhere like :code:`/etc/php/8.1/pool.d`.
+
+Look for the line that is set to something like: 
+ 
+:code:`listen = /var/run/php/php-fpm.sock`
+or
+:code:`listen = 127.0.0.1:9000`
+ 
+If PHP FPM will be running on the same host as NGINX (it's probably a safe assumption it will be if you're unsure), it is recommended you use the UNIX socket (i.e. :code:`/var/run/php/php-fpm.sock`) rather than TCP (:code:`127.0.0.1:9000`) for maximum performance (though either will work as long as your NGINX and PHP FPM configurations match).
+
+After deciding how you'd prefer to connect NGINX with PHP FPM (and, if necessary, updating your local PHP FPM configuration and restarting FPM), set your NGINX configuration's :code:`upstream php-handler` :code:`server` to match your preference (Note: If using UNIX sockets, prepend :code:`unix:` in the NGINX configuration, but *not* in your PHP FPM :code:`www.conf`). 
 
 Suppressing log messages
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -96,7 +120,7 @@ Upload of files greater than 10 MiB fails
 
 If you configure nginx (globally) to block all requests to (hidden) dot files,
 it may be not possible to upload files greater than 10 MiB using the webpage
-due to Nextclouds requirement to upload the file to an url ending with ``/.file``.
+due to Nextclouds requirement to upload the file to a URL ending with ``/.file``.
 
 You may require to change:
 
@@ -110,7 +134,9 @@ to the following to re-allow file uploads:
 
     location ~ /\.(?!file).* {
 
-See `issue #8802 on nextcloud/server <https://github.com/nextcloud/server/issues/8802>` for more information.
+See `issue #8802 on nextcloud/server <https://github.com/nextcloud/server/issues/8802>`_ for more information.
+
+Other parameters besides the above are relevant to uploading large files (see :ref:`uploading_big_files`).
 
 Login loop without any clue in access.log, error.log, nor nextcloud.log
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

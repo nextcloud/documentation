@@ -10,30 +10,26 @@ Icons
 List of available icons
 =======================
 
-White icons only have a grey background on this documentation page for readability purposes.
+.. deprecated:: 25
 
- .. include:: icons.txt
+The icons available in the core/img/ folder of the server are deprecated. You can use them at own risk.
+Due to a change of the way the list is produced now on the server it can no longer be automatically turned into documentation.
 
-..  _svgcolorapi:
+Please use `Material design icons`_ instead.
+
+.. _svgcolorapi:
 
 Svg color api
 =============
 
-More informations about scss and this api: :ref:`scss mixins and functions <cssicons>`
+.. deprecated:: 25
 
-You can request and color any svg icons used in nextcloud with this api.
-The server will directly change the colours of the ``circle``, ``rect`` and ``path`` elements in the svg you provide.
-Simply use those urls:
+The svg API is not supported anymore due to performance reasons.
 
-* ``https://yourdomain/svg/core/actions/menu?color=ffffff``
-  Will serve the svg located in the core/img directory as a white icon
-  ``/core/img/actions/menu.svg``
+Please use `Material design icons`_ instead.
 
-* ``https://yourdomain/svg/core/places/calendar?color=0082c9``
-  Will serve the svg located in the core/img directory with the color #0082c9
-  ``/core/img/places/calendar.svg``
+Material design icons
+=====================
 
-* ``https://yourdomain/svg/files/app?color=000000``
-  Will serve the svg located in the files app ``img`` directory ad a black icon
-  ``/app/files/img/app.svg``
-
+If you need more than the shipped default icons, using the material-design-icons would be a good idea.
+For usage with vuejs look over here: https://nextcloud-vue-components.netlify.app/#/Components/NcIconSvgWrapper

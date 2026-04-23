@@ -5,9 +5,7 @@ SFTP
 Nextcloud's SFTP (SSH File Transfer Protocol) backend supports both password and 
 public key authentication. 
 
-The **Host** field is required; a port can be specified as part of the **Host** 
-field in the following format: ``hostname.domain:port``. The default port is 22 
-(SSH).
+The **Host** field is required. The default port is 22 (SSH).
 
 For public key authentication, you can generate a public/private key pair from 
 your **SFTP with secret key login** configuration.

@@ -4,7 +4,7 @@
 Events
 ======
 
-Events are used to communicate between different aspects of the Nextcloud eco system. They are used in the Nextcloud server internally, for server-to-apps communcation as well as inter-app communication.
+Events are used to communicate between different aspects of the Nextcloud eco system. They are used in the Nextcloud server internally, for server-to-apps communication as well as inter-app communication.
 
 
 Overview
@@ -13,7 +13,6 @@ Overview
 The term "events" is a bit broad in Nextcloud and there are multiple ways of emitting them.
 
 * `OCP event dispatcher`_
-* `Symfony event dispatcher`_
 * `Hooks`_
 * `Public Emitter`_
 
@@ -30,11 +29,13 @@ The name should reflect the subject and the actions. Suffixing event classes wit
 
 For example, if a user is created, a `UserCreatedEvent` will be emitted.
 
-Events are ususally evmitted *after* the event has happened. If it's emitted before, it should be prefixed with `Before`.
+Events are usually emitted *after* the event has happened. If it's emitted before, it should be prefixed with `Before`.
 
 Thus `BeforeUserCreatedEvent` is emitted *before* the user data is written to the database.
 
-.. note:: Although you may chose to name your event classes differently, sticking to the convention will allow Nextcloud developers understand each other's apps more easily.
+.. note:: Although you may choose to name your event classes differently, sticking to the convention will allow Nextcloud developers understand each other's apps more easily.
+
+.. note:: For backwards compatibility with the Symfony class `GenericEvent <https://symfony.com/doc/current/components/event_dispatcher/generic_event.html>`_, Nextcloud also provides a ``\OCP\EventDispatcher\Event`` class. With the release of Nextcloud 22 this class has been deprecated. Named and typed event classes should be used instead.
 
 Writing events
 ``````````````
@@ -98,7 +99,7 @@ You can use simple callback to react on events. They will receive the event obje
     class Application extends App {
         public function __construct() {
             parent::__construct('myapp');
-                /* @var IEventDispatcher $eventDispatcher */
+                /* @var IEventDispatcher $dispatcher */
                 $dispatcher = $this->getContainer()->query(IEventDispatcher::class);
                 $dispatcher->addListener(AddEvent::class, function(AddEvent $event) {
                     // ...
@@ -169,573 +170,238 @@ Here you find an overview of the public events that can be consumed in apps. See
 ``\OCA\DAV\Events\AddressBookCreatedEvent``
 *******************************************
 
-*Available in Nextcloud 20 and later.*
+.. versionadded:: 20
 
 This event is triggered when a user creates a new address-book.
 
 ``\OCA\DAV\Events\AddressBookDeletedEvent``
 *******************************************
 
-*Available in Nextcloud 20 and later.*
+.. versionadded:: 20
 
 This event is triggered when a user deletes an address-book.
 
 ``\OCA\DAV\Events\AddressBookShareUpdatedEvent``
 ************************************************
 
-*Available in Nextcloud 20 and later.*
+.. versionadded:: 20
 
 This event is triggered when a user shares or unshares an address-book.
 
 ``\OCA\DAV\Events\AddressBookUpdatedEvent``
 *******************************************
 
-*Available in Nextcloud 20 and later.*
+.. versionadded:: 20
 
 This event is triggered when a user updates an address-book.
 
 ``\OCA\DAV\Events\CachedCalendarObjectCreatedEvent``
 ****************************************************
 
-*Available in Nextcloud 20 and later.*
+.. versionadded:: 20
 
 This event is triggered when a cached calendar object is being created while fetching a calendar-subscription.
 
 ``\OCA\DAV\Events\CachedCalendarObjectDeletedEvent``
 ****************************************************
 
-*Available in Nextcloud 20 and later.*
+.. versionadded:: 20
 
 This event is triggered when a cached calendar object is being deleted while fetching a calendar-subscription.
 
 ``\OCA\DAV\Events\CachedCalendarObjectUpdatedEvent``
 ****************************************************
 
-*Available in Nextcloud 20 and later.*
+.. versionadded:: 20
 
 This event is triggered when a cached calendar object is being updated while fetching a calendar-subscription.
 
 ``\OCA\DAV\Events\CalendarCreatedEvent``
 ****************************************
 
-*Available in Nextcloud 20 and later.*
+.. versionadded:: 20
 
 This event is triggered when a user creates a new calendar.
 
 ``\OCA\DAV\Events\CalendarDeletedEvent``
 ****************************************
 
-*Available in Nextcloud 20 and later.*
+.. versionadded:: 20
 
 This event is triggered when a user deletes a calendar.
 
 ``\OCA\DAV\Events\CalendarObjectCreatedEvent``
 **********************************************
 
-*Available in Nextcloud 20 and later.*
+.. versionadded:: 20
 
 This event is triggered when a user creates a calendar-object.
 
 ``\OCA\DAV\Events\CalendarObjectDeletedEvent``
 **********************************************
 
-*Available in Nextcloud 20 and later.*
+.. versionadded:: 20
 
 This event is triggered when a user deletes a calendar-object.
 
 ``\OCA\DAV\Events\CalendarObjectUpdatedEvent``
 **********************************************
 
-*Available in Nextcloud 20 and later.*
+.. versionadded:: 20
 
 This event is triggered when a user updates a calendar-object.
 
 ``\OCA\DAV\Events\CalendarPublishedEvent``
 ******************************************
 
-*Available in Nextcloud 20 and later.*
+.. versionadded:: 20
 
 This event is triggered when a user publishes a calendar.
 
 ``\OCA\DAV\Events\CalendarShareUpdatedEvent``
 *********************************************
 
-*Available in Nextcloud 20 and later.*
+.. versionadded:: 20
 
 This event is triggered when a user shares or unshares a calendar.
 
 ``\OCA\DAV\Events\CalendarUnpublishedEvent``
 ********************************************
 
-*Available in Nextcloud 20 and later.*
+.. versionadded:: 20
 
 This event is triggered when a user unpublishes calendar.
 
 ``\OCA\DAV\Events\CalendarUpdatedEvent``
 ****************************************
 
-*Available in Nextcloud 20 and later.*
+.. versionadded:: 20
 
 This event is triggered when a user updates a calendar.
 
 ``\OCA\DAV\Events\CardCreatedEvent``
 ************************************
 
-*Available in Nextcloud 20 and later.*
+.. versionadded:: 20
 
 This event is triggered when a user creates a new card in an address-book.
 
 ``\OCA\DAV\Events\CardDeletedEvent``
 ************************************
 
-*Available in Nextcloud 20 and later.*
+.. versionadded:: 20
 
 This event is triggered when a user deletes a card in an address-book.
 
 ``\OCA\DAV\Events\CardUpdatedEvent``
 ************************************
 
-*Available in Nextcloud 20 and later.*
+.. versionadded:: 20
 
 This event is triggered when a user updates a card in an address-book.
+
+``OCA\DAV\Events\SabrePluginAddEvent``
+**************************************
+
+.. versionadded:: 28
+
+This event is triggered during the setup of the SabreDAV server to allow the registration of additional plugins.
 
 ``\OCA\DAV\Events\SabrePluginAuthInitEvent``
 ********************************************
 
-*Available in Nextcloud 20 and later.*
+.. versionadded:: 20
 
 This event is triggered during the setup of the SabreDAV server to allow the registration of additional authentication backends.
 
 ``\OCA\DAV\Events\SubscriptionCreatedEvent``
 ********************************************
 
-*Available in Nextcloud 20 and later.*
+.. versionadded:: 20
 
 This event is triggered when a user creates a new calendar-subscription.
 
 ``\OCA\DAV\Events\SubscriptionDeletedEvent``
 ********************************************
 
-*Available in Nextcloud 20 and later.*
+.. versionadded:: 20
 
 This event is triggered when a user deletes a calendar-subscription.
 
 ``\OCA\DAV\Events\SubscriptionUpdatedEvent``
 ********************************************
 
-*Available in Nextcloud 20 and later.*
+.. versionadded:: 20
 
 This event is triggered when a user deletes a calendar-subscription.
 
 ``\OCA\FederatedFileSharing\Events\FederatedShareAddedEvent``
 *************************************************************
 
-*Available in Nextcloud 20 and later.*
+.. versionadded:: 20
 
 This event is triggered when a federated share is successfully added.
 
 ``\OCA\Files\Event\LoadAdditionalScriptsEvent``
 ***********************************************
 
-*Available in Nextcloud 17 and later.*
+.. versionadded:: 17
 
-This event is triggered when the files app is rendered. It canb e used to add additional scripts to the files app.
+This event is triggered when the files app is rendered. It can be used to add additional scripts to the files app.
 
 ``\OCA\Files_Sharing\Event\BeforeTemplateRenderedEvent``
 ********************************************************
 
-*Available in Nextcloud 20 and later.*
+.. versionadded:: 20
 
 Emitted before the rendering step of the public share page happens. The event holds a flag that specifies if it is the authentication page of a public share.
+
+``\OCA\Files_Trashbin\Events\MoveToTrashEvent``
+***********************************************
+
+.. versionadded:: 28
+
+Emitted after a file or folder is moved to the trashbin.
 
 ``\OCA\Settings\Events\BeforeTemplateRenderedEvent``
 ********************************************************
 
-*Available in Nextcloud 20 and later.*
+.. versionadded:: 20
 
 This event is triggered right before the user management template is rendered.
 
 ``\OCA\User_LDAP\Events\GroupBackendRegistered``
 ************************************************
 
-*Available in Nextcloud 20 and later.*
+.. versionadded:: 20
 
 This event is triggered right after the LDAP group backend is registered.
 
 ``\OCA\User_LDAP\Events\UserBackendRegistered``
 ************************************************
 
-*Available in Nextcloud 20 and later.*
+.. versionadded:: 20
 
 This event is triggered right after the LDAP user backend is registered.
 
 ``\OCA\Viewer\Event\LoadViewer``
 ********************************
 
-*Available in Nextcloud 17 and later.*
+.. versionadded:: 17
 
 This event is triggered whenever the viewer is loaded and extensions should be loaded.
 
-``\OCP\AppFramework\Http\Events\BeforeTemplateRenderedEvent``
-*************************************************************
-
-*Available in Nextcloud 20 and later.*
-
-Emitted before the rendering step of each TemplateResponse. The event holds a flag that specifies if an user is logged in.
-
-``\OCP\Authentication\Events\LoginFailedEvent``
-***********************************************
-
-*Available in Nextcloud 19 and later.*
-
-Emitted when the authentication fails, but only if the login name can be associated with an existing user.
-
-``\OCP\Authentication\TwoFactorAuth\TwoFactorProviderDisabled``
-***************************************************************
-
-*Available in Nextcloud 20 and later.*
-
-``\OCP\Contacts\Events\ContactInteractedWithEvent``
-***************************************************
-
-*Available in Nextcloud 19 and later.*
-
-Event emitted by apps whenever there was an interaction with another user or contact.
-
-It is an event that allows apps to notify other components about an interaction between two users. This can be used to build better recommendations and suggestions in user interfaces.
-
-Emitters should add at least one identifier (uid, email, federated cloud ID) of the recipient of the interaction.
-
-``\OCP\DirectEditing\RegisterDirectEditorEvent``
-************************************************
-
-*Available in Nextcloud 18 and later.*
-
-Event to allow to register the direct editor.
-
-``\OCP\Files\Events\BeforeFileScannedEvent``
-********************************************
-
-*Available in Nextcloud 18 and later.*
-
-``\OCP\Files\Events\BeforeFolderScannedEvent``
-**********************************************
-
-*Available in Nextcloud 18 and later.*
-
-``\OCP\Files\Events\FileCacheUpdated``
-**************************************
-
-*Available in Nextcloud 18 and later.*
-
-``\OCP\Files\Events\FileScannedEvent``
-**************************************
-
-*Available in Nextcloud 18 and later.*
-
-``\OCP\Files\Events\FolderScannedEvent``
-****************************************
-
-*Available in Nextcloud 18 and later.*
-
-``\OCP\Files\Events\NodeAddedToCache``
-**************************************
-
-*Available in Nextcloud 18 and later.*
-
-``\OCP\Files\Events\NodeRemovedFromCache``
-******************************************
-
-*Available in Nextcloud 18 and later.*
-
-``\OCP\Group\Events\BeforeGroupCreatedEvent``
-*********************************************
-
-*Available in Nextcloud 18 and later.*
-
-``\OCP\Group\Events\BeforeGroupDeletedEvent``
-*********************************************
-
-*Available in Nextcloud 18 and later.*
-
-``\OCP\Group\Events\BeforeUserAddedEvent``
-******************************************
-
-*Available in Nextcloud 18 and later.*
-
-``\OCP\Group\Events\BeforeUserRemovedEvent``
-********************************************
-
-*Available in Nextcloud 18 and later.*
-
-Deprecated in 20.0.0 - it can't be guaranteed that this event is triggered in all case (e.g. for LDAP users this isn't possible)
-
-``\OCP\Group\Events\GroupCreatedEvent``
-***************************************
-
-*Available in Nextcloud 18 and later.*
-
-``\OCP\Group\Events\GroupDeletedEvent``
-***************************************
-
-*Available in Nextcloud 18 and later.*
-
-``\OCP\Group\Events\SubAdminAddedEvent``
-****************************************
-
-*Available in Nextcloud 21 and later.*
-
-``\OCP\Group\Events\SubAdminRemovedEvent``
-******************************************
-
-*Available in Nextcloud 21 and later.*
-
-``\OCP\Group\Events\UserAddedEvent``
-************************************
-
-*Available in Nextcloud 18 and later.*
-
-``\OCP\Group\Events\UserRemovedEvent``
-**************************************
-
-*Available in Nextcloud 18 and later.*
-
-``\OCP\Mail\Events\BeforeMessageSent``
-**************************************
-
-*Available in Nextcloud 19 and later.*
-
-Emitted before a system mail is sent. It can be used to alter the message.
-
-``\OCP\Security\CSP\AddContentSecurityPolicyEvent``
-***************************************************
-
-*Available in Nextcloud 17 and later.*
-
-Allows to inject something into the default content policy. This is for example useful when you're injecting Javascript code into a view belonging to another controller and cannot modify its Content-Security-Policy itself. Note that the adjustment is only applied to applications that use AppFramework controllers.
-
-WARNING: Using this API incorrectly may make the instance more insecure. Do think twice before adding whitelisting resources. Please do also note that it is not possible to use the `disallowXYZ` functions.
-
-``\OCP\Security\Events\GenerateSecurePasswordEvent``
-****************************************************
-
-*Available in Nextcloud 18 and later.*
-
-``\OCP\Security\Events\ValidatePasswordPolicyEvent``
-****************************************************
-
-*Available in Nextcloud 18 and later.*
-
-``\OCP\Security\FeaturePolicy\AddFeaturePolicyEvent``
-*****************************************************
-
-*Available in Nextcloud 17 and later.*
-
-Event that allows to register a feature policy header to a request.
-
-``\OCP\Share\Events\ShareCreatedEvent``
-***************************************
-
-*Available in Nextcloud 18 and later.*
-
-``\OCP\Share\Events\VerifyMountPointEvent``
-*******************************************
-
-*Available in Nextcloud 19 and later.*
-
-``\OCP\User\Events\BeforeUserLoggedInWithCookieEvent``
-******************************************************
-
-*Available in Nextcloud 18 and later.*
-
-Emitted before a user is logged in via remember-me cookies.
-
-``\OCP\User\Events\UserLoggedInWithCookieEvent``
-************************************************
-
-*Available in Nextcloud 18 and later.*
-
-Emitted when a user has been succesfully logged in via remember-me cookies.
-
-``\OCP\User\Events\BeforePasswordUpdatedEvent``
-***********************************************
-
-*Available in Nextcloud 18 and later.*
-
-Emitted before the user password is updated.
-
-``\OCP\User\Events\PasswordUpdatedEvent``
-*****************************************
-
-*Available in Nextcloud 18 and later.*
-
-Emitted when the user password has been updated.
-
-``\OCP\User\Events\BeforeUserCreatedEvent``
-*******************************************
-
-*Available in Nextcloud 18 and later.*
-
-Emitted before a new user is created on the back-end.
-
-``\OCP\User\Events\UserCreatedEvent``
-*************************************
-
-*Available in Nextcloud 18 and later.*
-
-Emitted when a new user has been created on the back-end.
-
-``\OCP\User\Events\BeforeUserDeletedEvent``
-*******************************************
-
-*Available in Nextcloud 18 and later.*
-
-``\OCP\User\Events\UserDeletedEvent``
-*************************************
-
-*Available in Nextcloud 18 and later.*
-
-``\OCP\User\Events\BeforeUserLoggedInEvent``
-********************************************
-
-*Available in Nextcloud 18 and later.*
-
-``\OCP\User\Events\BeforeUserLoggedOutEvent``
-*********************************************
-
-*Available in Nextcloud 18 and later.*
-
-Emitted before a user is logged out.
-
-``\OCP\User\Events\PostLoginEvent``
-***********************************
-
-*Available in Nextcloud 18 and later.*
-
-``\OCP\User\Events\UserChangedEvent``
-*************************************
-
-*Available in Nextcloud 18 and later.*
-
-``\OCP\User\Events\UserLiveStatusEvent``
-****************************************
-
-*Available in Nextcloud 20 and later.*
-
-``\OCP\User\Events\UserLoggedInEvent``
-**************************************
-
-*Available in Nextcloud 18 and later.*
-
-``\OCP\User\Events\UserLoggedOutEvent``
-***************************************
-
-*Available in Nextcloud 18 and later.*
-
-Emitted when a user has been logged out successfully.
-
-``\OCP\WorkflowEngine\LoadSettingsScriptsEvent``
-************************************************
-
-*Available in Nextcloud 20 and later.*
-
-Emitted when the workflow engine settings page is loaded.
-
-``\OCP\WorkflowEngine\RegisterChecksEvent``
-*******************************************
-
-*Available in Nextcloud 18 and later.*
-
-``\OCP\WorkflowEngine\RegisterEntitiesEvent``
-*********************************************
-
-*Available in Nextcloud 18 and later.*
-
-``\OCP\WorkflowEngine\RegisterOperationsEvent``
-***********************************************
-
-*Available in Nextcloud 18 and later.*
-
-Symfony event dispatcher
-------------------------
-
-.. warning:: Using the Symfony event dispatcher mechanism is discouraged. Use the `OCP event dispatcher`_ abstraction instead.
-
-tbd
-
+.. include:: _available_events_ocp.rst
 
 Hooks
 -----
 
-.. warning:: The hooks mechanism is deprecated. Use the `OCP event dispatcher`_ instead.
+.. deprecated:: 18
+    Use the `OCP event dispatcher`_ instead.
 
 .. sectionauthor:: Bernhard Posselt <dev@bernhard-posselt.com>
 
-Hooks are used to execute code before or after an event has occurred. This is for instance useful to run cleanup code after users, groups or files have been deleted. Hooks should be registered in the :doc:`app.php <../app_development/init>`:
-
-.. code-block:: php
-
-    <?php
-    namespace OCA\MyApp\AppInfo;
-
-    $app = new Application();
-    $app->getContainer()->query('UserHooks')->register();
-
-The hook logic should be in a separate class that is being registered in the `App contructor <dependency_injection.html#using-a-container>`__:
-
-.. code-block:: php
-
-    <?php
-
-    namespace OCA\MyApp\AppInfo;
-
-    use \OCP\AppFramework\App;
-
-    use \OCA\MyApp\Hooks\UserHooks;
-
-
-    class Application extends App {
-
-        public function __construct(array $urlParams=array()){
-            parent::__construct('myapp', $urlParams);
-
-            $container = $this->getContainer();
-
-            /**
-             * Controllers
-             */
-            $container->registerService('UserHooks', function($c) {
-                return new UserHooks(
-                    $c->query('ServerContainer')->getUserManager()
-                );
-            });
-        }
-    }
-
-.. code-block:: php
-
-    <?php
-
-    namespace OCA\MyApp\Hooks;
-
-    use OCP\IUserManager;
-
-    class UserHooks {
-
-        private $userManager;
-
-        public function __construct(IUserManager $userManager){
-            $this->userManager = $userManager;
-        }
-
-        public function register() {
-            $callback = function($user) {
-                // your code that executes before $user is deleted
-            };
-            $this->userManager->listen('\OC\User', 'preDelete', $callback);
-        }
-
-    }
+Hooks are used to execute code before or after an event has occurred. This is for instance useful to run cleanup code after users, groups or files have been deleted. Hooks should be registered in the :doc:`Bootstrapping process <../app_development/bootstrap>`.
 
 Available hooks
 ```````````````
@@ -768,7 +434,7 @@ The following hooks are available:
 Session
 ```````
 
-Injectable from the ServerContainer by calling the method **getUserSession()**.
+Injectable from the ServerContainer with the ``\OCP\IUserSession`` service.
 
 Hooks available in scope **\\OC\\User**:
 
@@ -786,7 +452,7 @@ Hooks available in scope **\\OC\\User**:
 UserManager
 ```````````
 
-Injectable from the ServerContainer by calling the method **getUserManager()**.
+Injectable from the ServerContainer with the ``\OCP\IUserManager`` service.
 
 Hooks available in scope **\\OC\\User**:
 
@@ -851,8 +517,9 @@ Filesystem scanner hooks available in scope **\\OC\\Files\\Utils\\Scanner**:
 
 
 Public emitter
---------------------
+--------------
 
-.. warning:: The public emitter mechanism is deprecated. Use the `OCP event dispatcher`_ instead.
+.. deprecated:: 18
+    Use the `OCP event dispatcher`_ instead.
 
 tbd

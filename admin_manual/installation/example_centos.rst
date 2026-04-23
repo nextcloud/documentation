@@ -60,7 +60,7 @@ PHP
 
 
 
-Setting up remirepo with PHP 7.4
+Setting up remirepo with PHP 8.2
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 More details can be found on ``https://blog.remirepo.net/pages/Config-en``
@@ -79,23 +79,23 @@ Command to install the yum-utils package (for the yum-config-manager command):
 
 You want a single version which means replacing base packages from the distribution. Packages have the same name than the base repository, ie php-\*. Some common dependencies are available in remi-safe repository, which is enabled by default.
 
-You have to enable the module stream for 7.4:
+You have to enable the module stream for 8.2:
 
 ::
 
     dnf module reset php
-    dnf module install php:remi-7.4
+    dnf module install php:remi-8.2
     dnf update
-
 
 
 Installing PHP and the required modules
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Next install the PHP modules needed for this install. Remember, because this is a limited basic install, we only install the neccessary modules, not all of them. If you are making a more complete install, please refer to PHP module list in the source installation documentation, :doc:`../installation/source_installation`.::
+Next, install the PHP modules needed for this install. Remember, because this is a limited basic install, we only install the necessary modules, not all of them. If you are making a more complete install, please refer to PHP module list in the source installation documentation, :doc:`../installation/source_installation`::
 
-    dnf install -y php php-gd php-mbstring php-intl php-pecl-apcu\
+    dnf install -y php php-cli php-gd php-mbstring php-intl php-pecl-apcu\
          php-mysqlnd php-opcache php-json php-zip
+
 
 Installing optional modules redis/imagick
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -136,7 +136,8 @@ Redis
     systemctl start redis.service
 
 
-**Installing Nextcloud**
+Installing Nextcloud
+--------------------
 
 Nearly there, so keep at it, you are doing great!
 
@@ -189,7 +190,8 @@ Create a firewall rule for access to apache::
     firewall-cmd --zone=public --add-service=http --permanent
     firewall-cmd --reload
 
-**SELinux**
+SELinux
+-------
 
 Again, there is an extensive write-up done on SELinux which can be found at :doc:`../installation/selinux_configuration`, so if you are using SELinux in Enforcing mode, please run the commands suggested on that page.
 The following commands only refers to this tutorial::
@@ -218,6 +220,7 @@ Example config::
     'memcache.distributed' => '\OC\Memcache\Redis',
     'memcache.locking' => '\OC\Memcache\Redis',
     'memcache.local' => '\OC\Memcache\APCu',
+    'memcache_customprefix' => 'nextcloud_centos',
     'redis' => array(
       'host' => 'localhost',
       'port' => 6379,

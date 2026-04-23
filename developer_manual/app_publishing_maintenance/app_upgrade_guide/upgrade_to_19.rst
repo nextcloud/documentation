@@ -7,6 +7,11 @@ Upgrade to Nextcloud 19
 Front-end changes
 -----------------
 
+Babel Polyfill removal
+^^^^^^^^^^^^^^^^^^^^^^
+
+Nextcloud 19 no longer ships a global Babel Polyfill but uses core-js instead. Make sure your front-end scripts don't reply on polyfilled browser APIs.
+
 jQuery deprecation
 ^^^^^^^^^^^^^^^^^^
 

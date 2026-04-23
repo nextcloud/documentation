@@ -7,10 +7,10 @@ Installation and server configuration
 
    system_requirements
    deployment_recommendations
+   php_configuration
    source_installation
    installation_wizard
    command_line_installation
-   apps_supported
    selinux_configuration
    nginx
    harden_server
@@ -19,3 +19,5 @@ Installation and server configuration
    example_ubuntu
    example_centos
    example_openbsd
+
+   uninstallation

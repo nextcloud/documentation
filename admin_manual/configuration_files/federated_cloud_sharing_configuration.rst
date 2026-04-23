@@ -24,12 +24,10 @@ is a few steps on the originating server.
    servers** and **Allow users on this server to receive shares from other 
    servers** are enabled. 
 
-3. Now go to the Federation 
-   section. By default, **Add server automatically once a federated share was 
-   created successfully** is checked. The Federation app supports creating a 
+3. Now go to the Federation section. The Federation app supports creating a
    list of trusted Nextcloud servers, which allows the trusted servers to 
    exchange user directories and auto-complete the names of external users when 
-   you create shares. If you do not want this enabled, then un-check it.
+   you create shares.
 
 .. figure:: images/federation-0.png
    
@@ -53,14 +51,19 @@ Configuring trusted Nextcloud servers
 
 You may create a list of trusted Nextcloud servers for Federation sharing. This 
 allows your linked Nextcloud servers to share user directories, and to auto-fill 
-user names in share dialogs. If **Add server automatically once a federated 
-share was created successfully** is enabled on your Admin page, servers will be 
-automatically added to your trusted list when you create new Federation shares.
+user names in share dialogs.
 
 You may also enter Nextcloud server URLs in the **Add Nextcloud Server** field. 
-The yellow light indicates a successful connection, with no user names 
-exchanged. The green light indicates a successful connection with user names 
-exchanged. A red light means the connection failed.
+
+A red light means the connection failed. The yellow light indicates a successful 
+connection, with no user names exchanged. The green light indicates a successful 
+connection with user names exchanged. 
+
+The prerequisiste for a green status is that the trusted servers were maintained
+in both interacting Nextcloud servers. 
+Additionally ``occ federation:sync-addressbooks`` must have been executed (part of 
+cron job list). The delay to execute the cron is based on local configuration of
+the cron frequency.
 
 .. figure:: images/federation-1.png
 
@@ -107,6 +110,7 @@ manage federated cloud shares:
 * Check ``Set default expiration date`` to require an expiration date on link 
   shares.
 * Check ``Allow public uploads`` to allow two-way file sharing.
+* If you encounter timeouts for downloading or uploading large files, you can use the option ``davstorage.request_timeout`` in your ``config.php`` to increase the timeout. The default value is 30 seconds.
 
 Your Apache Web server must have ``mod_rewrite`` enabled, and you must have 
 ``trusted_domains`` correctly configured in ``config.php`` to allow external 
@@ -121,3 +125,18 @@ such as ``http://192.168.10.50``, then your share URL will be something like
 accessible outside of your LAN. This also applies to using the server name; for 
 access outside of your LAN you need to use a fully-qualified domain name such as 
 ``http://myserver.example.com``, rather than ``http://myserver``.
+
+.. _federated_shares_display:
+
+Changing the display of federated shares
+----------------------------------------
+
+By default, federated shares are displayed in a separate section in the Nextcloud interface.
+It is possible to change this behavior and display them in the same section as internal shares.
+This can be controlled with a ``occ`` command:
+
+.. code-block:: bash
+
+    occ config:app:set --value false --type boolean files_sharing show_federated_shares_as_internal
+
+Set the value to ``true`` to display federated shares mixed with internal shares, or ``false`` to keep them in a separate section (default).

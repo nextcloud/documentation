@@ -16,7 +16,7 @@ Opening the webview
 The client should open a webview to :code:`<server>/index.php/login/flow`. Be sure to set the :code:`OCS-APIREQUEST`
 header to :code:`true`.
 
-The client will register an URL handler to catch urls of the :code:`nc` protocol. This is required to obtain the
+The client will register a URL handler to catch urls of the :code:`nc` protocol. This is required to obtain the
 credentials in the final stage.
 
 This should be a one time webview. Which means:
@@ -25,7 +25,7 @@ This should be a one time webview. Which means:
 * Passwords should not be stored
 * No state should be preserved after the webview has terminated
 
-To have a good user experince please consider the following things:
+To have a good user experience please consider the following things:
 
 * set a proper :code:`ACCEPT_LANGUAGE` header
 * set a proper :code:`USER_AGENT` header
@@ -48,9 +48,13 @@ On the final login the server will do a redirect to a url of the following forma
 
 	nc://login/server:<server>&user:<loginname>&password:<password>
 
-* server: The address of the server to connect to. The server may specify a protocol (http or https). If no protocol is specified the client will assume https.
-* loginname: The username that the client must use to login. **Note:** Keep in mind that this is the loginname and could be different from the username. For example the email address could be used to login but not for generating the webdav URL. You could fetch the actual username from the OCS API endpoint :code:`<server>/ocs/v1.php/cloud/user`.
-* password: The password that the client must use to login and store securely
+* ``server``: The address of the server to connect to. The server may specify a protocol (http or https). If no protocol is specified the client will assume https.
+* ``loginname``: The username that the client must use to login. **Note:** Keep in mind that this is the loginname and could be different from the username. For example the email address could be used to login but not for generating the webdav URL. You could fetch the actual username from the OCS API endpoint ``<server>/ocs/v1.php/cloud/user``.
+* ``password``: The password that the client must use to login and store securely
+
+.. note::
+
+	``loginname`` and ``password`` are encoded by PHP's `urlencode <https://www.php.net/manual/en/function.urlencode.php>`_, which differs from `RFC 3986 <http://www.faqs.org/rfcs/rfc3986.html>`_. You may need to replace plus signs :code:`'+'` with spaces :code:`' '` before decoding.
 
 This information will be used by the client to create a new account.
 After this the webview is destroyed including all the state the webview holds.

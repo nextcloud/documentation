@@ -7,7 +7,7 @@ Upgrade to Nextcloud 14
 General
 -------
 
-* php7.0 and php7.1 support added.
+* PHP 7.0 and PHP 7.1 support added.
 * Introduction of type hints for scalar types in public APIs according to existing PHPDoc.
 
 Front-end changes
@@ -24,7 +24,7 @@ Back-end changes
 ----------------
 
 Changed APIs
-************
+^^^^^^^^^^^^
 
 * ``AppFramework\Http\Request::getHeader`` always returns a string (and not null).
 * ``Security\ICrypto::decrypt`` only accepts strings.

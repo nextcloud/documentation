@@ -4,6 +4,18 @@ How to test ...
 
 This page should explain how to test given features in Nextcloud.
 
+Email sending
+-------------
+
+::
+
+    docker run -d -p 1025:1025 -p 8025:8025 mailhog/mailhog
+    occ config:system:set mail_smtpmode --value=smtp
+    occ config:system:set mail_smtphost --value=127.0.0.1
+    occ config:system:set mail_smtpport --value=1025 --type=integer
+
+Then after having Nextcloud send some emails, open http://127.0.0.1:8025 to view them.
+
 Redis
 -----
 
@@ -12,8 +24,8 @@ First you need to install the `phpredis extension <https://github.com/phpredis/p
 
    pecl install redis
 
-Cluster
--------
+Redis Cluster
+-------------
 
 For a local Redis cluster setup there are some docker script collected in `this repository <https://github.com/Grokzen/docker-redis-cluster>`_. It boils down to clone the repo and run `make up`. Then the redis cluster is available at ``localhost:7000``.
 
@@ -29,15 +41,71 @@ Following ``config.php`` can be used::
       'failover_mode' => \RedisCluster::FAILOVER_ERROR,
    ],
 
-SMB
----
+Primary object store with S3
+----------------------------
 
 ::
 
-    mkdir /tmp/samba
+    docker run -p 9000:9000 minio/minio server /data
+
+The edit ``config.php`` and add the following section::
+
+    'objectstore' =>
+        array (
+            'class' => 'OC\\Files\\ObjectStore\\S3',
+            'arguments' =>
+            array (
+                'bucket' => 'nextcloud-dev',
+                'key' => 'minioadmin',
+                'secret' => 'minioadmin',
+                'hostname' => 'localhost',
+                'port' => '9000',
+                'use_ssl' => false,
+                'use_path_style' => true,
+            ),
+        ),
+
+S3 external storage
+-------------------
+
+::
+
+    occ app:enable files_external
+
+    docker run -p 9000:9000 minio/minio server /data
+
+Then add an external storage in the web UI using the following configuration:
+
+- Authentication type: Access key
+- Access key: minioadmin
+- Secret key: minioadmin
+- Bucket: nextcloud-dev
+- Hostname: localhost
+- Port: 9000
+- Region: leave empty
+- Storage class: leave empty
+- Enable SSL: false
+- Enable path style: yes
+
+SMB external storage
+--------------------
+
+SMB external storage can be tested with Docker. The following commands create an SMB server with a public (shared) directory and user home directories for the credentials ``smb1:pwd1`` and ``smb2:pwd2``.
+
+::
+
+    occ app:enable files_external
+
+    mkdir -p /tmp/samba/{public,home/{smb1,smb2}}
+    chmod a+rw /tmp/samba/home/smb*
     docker run -it -p 139:139 -p 445:445 \
-        -v /tmp/samba:/smbmount dperson/samba \
-        -u "user;password" -s "public;/smbmount;yes;no;yes"
+        -v /tmp/samba/public:/smbpublic \
+        -v /tmp/samba/home:/smbhome \
+        dperson/samba \
+        -u "smb1;pwd1" \
+        -u "smb2;pwd2" \
+        -s "public;/smbmount;yes;no;yes" \
+        -s "home;/smbhome/%U;yes;no;no;all;none"
 
 Make sure that smbclient is installed on your Nextcloud server and has the following configuration:
 
@@ -53,7 +121,8 @@ The setup can be verified with
 
 ::
 
-    smbclient //127.0.0.1/public -u user
+    smbclient //127.0.0.1/public -U smb1                 # Shared storage for all users
+    smbclient //127.0.0.1/home -U smb1 --password=pwd1   # Home storage
 
 SAML setup with onelogin
 ------------------------

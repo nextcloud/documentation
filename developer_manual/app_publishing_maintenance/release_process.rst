@@ -10,9 +10,9 @@ Release process
 Overview
 --------
 
-This page documents the overall process and tasks of releasing a Nextcloud app to the app store, as well as preparation and follow-up tasks.
+This page documents the overall process and tasks of releasing a Nextcloud app to the public, as well as preparation and follow-up tasks.
 
-Not all of the described steps will apply to all apps on the app store. Some require fewer steps, for others there is some additional work to do. Adjust the process accordingly.
+Not all of the described steps will apply to all apps. Some require fewer steps, for others there is some additional work to do. Adjust the process accordingly.
 
 
 Before the release
@@ -56,7 +56,7 @@ Increment the minor version number when
 * A new major or minor version of PHP will be supported
 * An additional database type is supported
 * A Nextcloud version that has reached EOL is dropped, e.g. when Nextcloud 19 is removed
-* A PHP version that has reached EOL is dropped, e.g. when PHP7.3 is removed
+* A PHP version that has reached EOL is dropped, e.g. when PHP 7.3 is removed
 * Any other change that keeps the app compatible with previously compatible environments (forward compatibility)
 
 .. tip:: Example: the app is at version 3.7.2. The next minor version will be 3.8.0.
@@ -67,7 +67,7 @@ Major update
 Increment the major version number when
 
 * The app drops support for a major version of Nextcloud that hasn't reached EOL, e.g. when Nextcloud 23 support is removed and the app now requires Nextcloud 24 or newer
-* The app drops support for a major or minor version of PHP that hasn't rached EOL, e.g. when PHP8.0 is removed and the app now requires PHP8.1 or newer
+* The app drops support for a major or minor version of PHP that hasn't rached EOL, e.g. when PHP 8.0 is removed and the app now requires PHP 8.1 or newer
 * A database type is no longer supported, e.g. when the maintainer decides to stop SQLite support
 * Any other change that makes the app incompatible with a previously compatible environment (breaking change)
 
@@ -91,7 +91,7 @@ The release process is identical to the one of a final release, only the version
 
 The updater channel defines if pre-releases are installed by the server. This setting can be found in the admin setting or in the ``config/config.php`` file. The server will install pre-releases if its update channel is set ``beta``, ``daily``, or ``git``. For all other settings, pre-releases will not be installed.
 
-.. tip:: Don't publish the pre-releases as nightly version on the app store or Nextcloud installations won't be able to update. Releasing with any (alpha-numeric) suffix is sufficient to mark the release as not production ready and instances are still able to update to it.
+.. tip:: Don't publish the pre-releases as nightly version on the app store or Nextcloud installations won't be able to update. Releasing with any (alphanumeric) suffix is sufficient to mark the release as not production ready and instances are still able to update to it.
 
 Nightly releases
 ~~~~~~~~~~~~~~~~
@@ -138,3 +138,45 @@ Prepare follow-up releases
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 The target milestone was closed in the release preparation. Now it's time to create a new milestone for the next release(s).
+
+
+Shipped Apps
+------------
+
+The majority of apps is distributed via the Nextcloud app store. A few apps are bundled and shipped with Nextcloud. There are a few things to keep in mind for them.
+
+Git branch management
+~~~~~~~~~~~~~~~~~~~~~
+
+The release script simply git-clones app repositories. Repositories of shipped apps need branches to correspond to the branches in the `Nextcloud server repository <https://github.com/nextcloud/server>`_:
+
+* ``master`` branch is used to create the daily builds of Nextcloud
+* ``stable*`` branches are used to build stable releases, e.g. ``stable24`` for Nextcloud 24.x.y.
+
+Because apps are just cloned, it is not possible to have a build step for shipped apps. Shipped apps have to *vendor* all their release artifacts.
+
+Example:
+
+* App uses ``composer`` dependencies: commit all production dependencies in the ``vendor`` directory
+* App uses ``npm`` dependencies and front-end build tools: commit all front-end artifacts in the ``js`` directory
+
+Versioning
+~~~~~~~~~~
+
+Since every ``stable*`` branch targets only one major version of Nextcloud and drops the previous one, it's best to have one major version of the app per stable branch. See :ref:`app versioning <app-versioning>` for details.
+
+Example:
+
+* ``master``: Version 8.0.0, targeting Nextcloud 27
+* ``stable26``: Version 7.0.0, targeting Nextcloud 26
+* ``stable25``: Version 6.0.0, targeting Nextcloud 25
+
+Backported fixes increase the patch version on a stable branch. Backported features increase the minor version.
+
+
+Hybrid Distribution
+~~~~~~~~~~~~~~~~~~~
+
+In very rare situations apps can be shipped **and** distributed via the app store. In those cases it is important to ensure the shipped version is equal or higher than the app store version to prevent a downgrade during the update of Nextcloud.
+
+Hybrid distribution is not recommended.

@@ -13,6 +13,7 @@ The info.xml is validated using an XML Schema which can be accessed `online <htt
 A minimum valid **info.xml** would look like this:
 
 .. code-block:: xml
+    :caption: appinfo/info.xml
 
     <?xml version="1.0"?>
     <info xmlns:xsi= "http://www.w3.org/2001/XMLSchema-instance"
@@ -22,18 +23,19 @@ A minimum valid **info.xml** would look like this:
         <summary>An RSS/Atom feed reader</summary>
         <description>An RSS/Atom feed reader</description>
         <version>8.8.2</version>
-        <licence>agpl</licence>
+        <licence>AGPL-3.0-or-later</licence>
         <author>Bernhard Posselt</author>
         <category>multimedia</category>
         <bugs>https://github.com/nextcloud/news/issues</bugs>
         <dependencies>
-            <nextcloud min-version="10"/>
+            <nextcloud min-version="31"/>
         </dependencies>
     </info>
 
 A full blown example would look like this (needs to be utf-8 encoded):
 
 .. code-block:: xml
+    :caption: appinfo/info.xml
 
     <?xml version="1.0"?>
     <info xmlns:xsi= "http://www.w3.org/2001/XMLSchema-instance"
@@ -45,7 +47,7 @@ A full blown example would look like this (needs to be utf-8 encoded):
         <description lang="en"># Description\nAn RSS/Atom feed reader</description>
         <description lang="de"><![CDATA[# Beschreibung\nEine Nachrichten App, welche mit [RSS/Atom](https://en.wikipedia.org/wiki/RSS) umgehen kann]]></description>
         <version>8.8.2</version>
-        <licence>agpl</licence>
+        <licence>AGPL-3.0-or-later</licence>
         <author mail="mail@provider.com" homepage="http://example.com">Bernhard Posselt</author>
         <author>Alessandro Cosentino</author>
         <author>Jan-Christoph Borchardt</author>
@@ -73,7 +75,7 @@ A full blown example would look like this (needs to be utf-8 encoded):
             <lib>curl</lib>
             <lib>SimpleXML</lib>
             <lib>iconv</lib>
-            <nextcloud min-version="9" max-version="10"/>
+            <nextcloud min-version="31" max-version="32"/>
         </dependencies>
         <background-jobs>
             <job>OCA\DAV\CardDAV\Sync\SyncJob</job>
@@ -173,25 +175,43 @@ version
 
 licence
     * required
-    * must contain **agpl**, **mpl*** and/or **apache** as the only valid values. These refer to the AGPLv3, MPL 2.0 and Apache License 2.0
+    * can occur multiple times with different licenses
+    * must contain one of the following licenses (for apps targeting v31 or higher, see the `SPDX License List <https://spdx.org/licenses/>`_ for details):
+
+        * **AGPL-3.0-only**
+        * **AGPL-3.0-or-later**
+        * **Apache-2.0**
+        * **GPL-3.0-only**
+        * **GPL-3.0-or-later**
+        * **MIT**
+        * **MPL-2.0**
+
+    * (deprecated, for apps targeting v30 or lower) the following shorthand aliases are also used:
+
+        * **agpl** (AGPL-3.0)
+        * **apache** (Apache-2.0)
+        * **gpl3** (GPL-3.0)
+        * **mit** (MIT)
+        * **mpl** (MPL-2.0)
+
 author
     * required
     * can occur multiple times with different authors
     * can contain a **mail** attribute which must be an email
-    * can contain a **homepage** which must be an URL
+    * can contain a **homepage** which must be a URL
     * will not (yet) be rendered on the App Store
     * will be provided through the REST API
 documentation/user
     * optional
-    * must contain an URL to the user documentation
+    * must contain a URL to the user documentation
     * will be rendered on the app detail page
 documentation/admin
     * optional
-    * must contain an URL to the admin documentation
+    * must contain a URL to the admin documentation
     * will be rendered on the app detail page
 documentation/developer
     * optional
-    * must contain an URL to the developer documentation
+    * must contain a URL to the developer documentation
     * will be rendered on the app detail page
 category
     * optional
@@ -217,20 +237,20 @@ category
     * can occur more than once with different categories
 website
     * optional
-    * must contain an URL to the project's homepage
+    * must contain a URL to the project's homepage
     * will be rendered on the app detail page
 discussion
     * optional
-    * must contain an URL to the project's discussion page/forum
+    * must contain a URL to the project's discussion page/forum
     * will be rendered on the app detail page as the "ask question or discuss" button
-    * if absent, it will default to our forum at https://help.nextcloud.com/ and create a new category in the apps category
+    * if absent, it will default to our forum at https://help.nextcloud.com/
 bugs
     * required
-    * must contain an URL to the project's bug tracker
+    * must contain a URL to the project's bug tracker
     * will be rendered on the app detail page
 repository
     * optional
-    * must contain an URL to the project's repository
+    * must contain a URL to the project's repository
     * can contain a **type** attribute, **git**, **mercurial**, **subversion** and **bzr** are allowed values, defaults to **git**
     * currently not used
 screenshot
@@ -264,10 +284,12 @@ dependencies/lib
     * can contain a **min-version** attribute (maximum 3 digits separated by dots)
     * can contain a **max-version** attribute (maximum 3 digits separated by dots)
 dependencies/nextcloud
-    * required on Nextcloud 11 or higher
-    * if absent white-listed owncloud versions will be taken from the owncloud element (see below)
+    * required
     * must contain a **min-version** attribute (maximum 3 digits separated by dots)
-    * can contain a **max-version** attribute (maximum 3 digits separated by dots)
+    * must contain a **max-version** attribute (maximum 3 digits separated by dots)
+	
+.. note:: Dependencies `dependencies/php`, `dependencies/database` and `dependencies/lib` are checked at installation time (not on update time), hence applications need to stick to the dependencies supported by a major version of Nextcloud the moment an app releases support for that version, i.e. app needs to support the same PHP version-range the supported Nextcloud version supports.
+	
 background-jobs/job
     * optional
     * must contain a php class which is run as background jobs
@@ -373,3 +395,15 @@ The following elements are either deprecated or for internal use only and will f
 * **remote**
 * **requiremin**
 * **requiremax**
+
+.. _app changelog:
+
+Changelog
+---------
+
+Apps can provide a changelog. This should be written in the `keep a changelog <https://keepachangelog.com/>`_.
+
+If the apps provide a ``CHANGELOG.md`` file in the project root, this file will be used to show changes for the released version in the app store and for administrators in the app settings.
+
+Moreover, since Nextcloud 29, if the ``updatenotification`` app is enabled, apps can also provide a changelog for the users.
+The app will notify users about after the app update if either a ``CHANGELOG.language.md`` (where ``language`` is the language code of that user) or a fallback ``CHANGELOG.en.md`` is available.

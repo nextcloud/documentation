@@ -52,7 +52,7 @@ html-release:
 	@echo "Build finished. The HTML pages are in $(BUILDDIR)/html/release."
 
 html-com:
-	$(SPHINXBUILD) -b html -D html_theme='sphinx_rtd_theme' $(ALLSPHINXOPTS) $(BUILDDIR)/html/com
+	$(SPHINXBUILD) -W -b html -D html_theme='sphinx_rtd_theme' $(ALLSPHINXOPTS) $(BUILDDIR)/html/com
 	@echo
 	@echo "Build finished. The HTML pages are in $(BUILDDIR)/html/com."
 
@@ -115,7 +115,7 @@ latex:
 latexpdf:
 	$(SPHINXBUILD) -b latex $(ALLSPHINXOPTS) $(BUILDDIR)/latex
 	@echo "Running LaTeX files through pdflatex..."
-	$(MAKE) -C $(BUILDDIR)/latex all-pdf
+	buf_size=10000000 $(MAKE) -C $(BUILDDIR)/latex all-pdf
 	@echo "pdflatex finished; the PDF files are in $(BUILDDIR)/latex."
 
 pdf:
