@@ -7,7 +7,7 @@
   <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Basic APIs &mdash; Nextcloud latest Developer Manual latest documentation</title>
+  <title>Basic File &amp; Folder Operations &mdash; Nextcloud latest Developer Manual latest documentation</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
@@ -30,8 +30,8 @@
     <script src="../../_static/js/versions.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Search" href="search.html" />
-    <link rel="prev" title="Webdav" href="index.html" /> 
+    <link rel="next" title="Chunked file upload" href="chunking.html" />
+    <link rel="prev" title="WebDAV" href="index.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -77,10 +77,11 @@
 <li class="toctree-l2"><a class="reference internal" href="../LoginFlow/index.html">Login Flow</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../OCS/index.html">OCS API</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../RemoteWipe/index.html">Remote wipe</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="index.html">Webdav</a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Basic APIs</a><ul>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">WebDAV</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Basic File &amp; Folder Operations</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#webdav-basics">WebDAV basics</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#testing-requests">Testing requests</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quick-method-header-cheat-sheet">Quick method/header cheat sheet</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#requesting-properties">Requesting properties</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#listing-folders-rfc4918">Listing folders (rfc4918)</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#downloading-files">Downloading files</a></li>
@@ -96,11 +97,11 @@
 <li class="toctree-l4"><a class="reference internal" href="#response-headers">Response Headers</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="search.html">Search</a></li>
-<li class="toctree-l3"><a class="reference internal" href="trashbin.html">Trashbin</a></li>
-<li class="toctree-l3"><a class="reference internal" href="versions.html">Versions</a></li>
 <li class="toctree-l3"><a class="reference internal" href="chunking.html">Chunked file upload</a></li>
 <li class="toctree-l3"><a class="reference internal" href="bulkupload.html">File bulk upload</a></li>
+<li class="toctree-l3"><a class="reference internal" href="trashbin.html">Trashbin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="versions.html">Versions</a></li>
+<li class="toctree-l3"><a class="reference internal" href="search.html">Search</a></li>
 <li class="toctree-l3"><a class="reference internal" href="comments.html">Comments</a></li>
 </ul>
 </li>
@@ -125,8 +126,8 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="../index.html">Clients and Client APIs</a></li>
-          <li class="breadcrumb-item"><a href="index.html">Webdav</a></li>
-      <li class="breadcrumb-item active">Basic APIs</li>
+          <li class="breadcrumb-item"><a href="index.html">WebDAV</a></li>
+      <li class="breadcrumb-item active">Basic File &amp; Folder Operations</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/developer_manual/client_apis/WebDAV/basic.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
@@ -136,15 +137,17 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="basic-apis">
-<span id="webdavindex"></span><h1>Basic APIs<a class="headerlink" href="#basic-apis" title="Link to this heading"></a></h1>
+  <section id="basic-file-folder-operations">
+<span id="webdavindex"></span><h1>Basic File &amp; Folder Operations<a class="headerlink" href="#basic-file-folder-operations" title="Link to this heading"></a></h1>
 <p>This document provides a quick overview of the WebDAV operations supported in Nextcloud, to keep things readable it won’t go into many details
 for each operation, further information for each operation can be found in the corresponding RFC where applicable.</p>
 <section id="webdav-basics">
 <h2>WebDAV basics<a class="headerlink" href="#webdav-basics" title="Link to this heading"></a></h2>
-<p>The base url for all (authenticated) WebDAV operations for a Nextcloud instance is <code class="code docutils literal notranslate"><span class="pre">/remote.php/dav</span></code>.</p>
+<p>The base url for all (authenticated) WebDAV operations for a Nextcloud instance is <code class="code docutils literal notranslate"><span class="pre">/remote.php/dav</span></code>. For file operations, this usually
+means paths below <code class="code docutils literal notranslate"><span class="pre">/remote.php/dav/files/{user}/...</span></code>.</p>
 <p>All requests need to provide authentication information, either as a basic auth header or by passing a set of valid session cookies.</p>
-<p>If your Nextcloud installation uses an external auth provider (such as an OIDC server) you may have to create an app password.
+<p>If your Nextcloud installation uses an external auth provider (such as an OIDC server) or enforces policies like 2FA, you may need to create an
+app password for WebDAV clients and scripts.
 To do that, go to your personal security settings and create one. It will provide a username and password which you can use within the Basic Auth header.</p>
 <section id="public-shares">
 <h3>Public shares<a class="headerlink" href="#public-shares" title="Link to this heading"></a></h3>
@@ -155,6 +158,12 @@ If a password is set for the share then a basic auth header must be sent with <c
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>This endpoint for public shares is available since Nextcloud 29.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>For non-GET requests (e.g. PROPFIND, PUT) to <code class="docutils literal notranslate"><span class="pre">/public.php/dav</span></code>, the request must include the header
+<code class="docutils literal notranslate"><span class="pre">X-Requested-With:</span> <span class="pre">XMLHttpRequest</span></code>, unless outgoing server-to-server sharing is enabled on the instance.
+Without this header, the server will reject the request with a <code class="docutils literal notranslate"><span class="pre">401</span> <span class="pre">Not</span> <span class="pre">Authenticated</span></code> response.</p>
 </div>
 </section>
 </section>
@@ -207,10 +216,79 @@ If a password is set for the share then a basic auth header must be sent with <c
 </div>
 </section>
 </section>
+<section id="quick-method-header-cheat-sheet">
+<h2>Quick method/header cheat sheet<a class="headerlink" href="#quick-method-header-cheat-sheet" title="Link to this heading"></a></h2>
+<p>The table below summarizes common WebDAV methods used by Nextcloud and the most relevant headers.</p>
+<table class="docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head"><p>Method</p></th>
+<th class="head"><p>Typical endpoint</p></th>
+<th class="head"><p>Important request headers</p></th>
+<th class="head"><p>Notes</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>PROPFIND</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">/remote.php/dav/files/{user}/path</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Depth:</span> <span class="pre">0</span></code> (properties of node only)</p></td>
+<td><p>Without <code class="docutils literal notranslate"><span class="pre">Depth:</span> <span class="pre">0</span></code>, folder listings include child entries.</p></td>
+</tr>
+<tr class="row-odd"><td><p>REPORT</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">/remote.php/dav/files/{user}/path</span></code></p></td>
+<td><p>(none required)</p></td>
+<td><p>Used for filtered queries such as favorites.</p></td>
+</tr>
+<tr class="row-even"><td><p>GET (file)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">/remote.php/dav/files/{user}/file</span></code></p></td>
+<td><p>(none required)</p></td>
+<td><p>Downloads file content.</p></td>
+</tr>
+<tr class="row-odd"><td><p>GET (dir)</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">/remote.php/dav/files/{user}/folder</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Accept:</span> <span class="pre">application/zip</span></code> or
+<code class="docutils literal notranslate"><span class="pre">Accept:</span> <span class="pre">application/x-tar</span></code></p></td>
+<td><p>Nextcloud extension for folder archive download.</p></td>
+</tr>
+<tr class="row-even"><td><p>PUT</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">/remote.php/dav/files/{user}/file</span></code></p></td>
+<td><p>Optional: <code class="docutils literal notranslate"><span class="pre">X-OC-MTime</span></code>, <code class="docutils literal notranslate"><span class="pre">X-OC-CTime</span></code>,
+<code class="docutils literal notranslate"><span class="pre">OC-Checksum</span></code>, <code class="docutils literal notranslate"><span class="pre">OC-Total-Length</span></code>,
+<code class="docutils literal notranslate"><span class="pre">X-NC-WebDAV-AutoMkcol</span></code></p></td>
+<td><p>Uploads/overwrites file content.</p></td>
+</tr>
+<tr class="row-odd"><td><p>MKCOL</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">/remote.php/dav/files/{user}/folder</span></code></p></td>
+<td><p>(none required)</p></td>
+<td><p>Creates a folder.</p></td>
+</tr>
+<tr class="row-even"><td><p>DELETE</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">/remote.php/dav/files/{user}/path</span></code></p></td>
+<td><p>(none required)</p></td>
+<td><p>Folder deletes are recursive.</p></td>
+</tr>
+<tr class="row-odd"><td><p>MOVE</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">/remote.php/dav/files/{user}/path</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Destination:</span> <span class="pre">&lt;full</span> <span class="pre">URL&gt;</span></code></p></td>
+<td><p>Optional: <code class="docutils literal notranslate"><span class="pre">Overwrite:</span> <span class="pre">T</span></code> (default) or <code class="docutils literal notranslate"><span class="pre">Overwrite:</span> <span class="pre">F</span></code>.</p></td>
+</tr>
+<tr class="row-even"><td><p>COPY</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">/remote.php/dav/files/{user}/path</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">Destination:</span> <span class="pre">&lt;full</span> <span class="pre">URL&gt;</span></code></p></td>
+<td><p>Optional: <code class="docutils literal notranslate"><span class="pre">Overwrite:</span> <span class="pre">T</span></code> (default) or <code class="docutils literal notranslate"><span class="pre">Overwrite:</span> <span class="pre">F</span></code>.</p></td>
+</tr>
+<tr class="row-odd"><td><p>PROPPATCH</p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">/remote.php/dav/files/{user}/path</span></code></p></td>
+<td><p>(none required)</p></td>
+<td><p>Sets properties such as <code class="docutils literal notranslate"><span class="pre">oc:favorite</span></code>.</p></td>
+</tr>
+</tbody>
+</table>
+</section>
 <section id="requesting-properties">
 <h2>Requesting properties<a class="headerlink" href="#requesting-properties" title="Link to this heading"></a></h2>
 <p>By default, a <code class="code docutils literal notranslate"><span class="pre">PROPFIND</span></code> request will only return a small number of properties for each file: last modified date, file size, whether it’s a folder, etag and mime type.</p>
-<p>You can request additional properties by sending a request body with the <code class="code docutils literal notranslate"><span class="pre">PROPFIND</span></code> request that lists all requested properties.</p>
+<p>You can request additional properties by sending a request body with the <code class="code docutils literal notranslate"><span class="pre">PROPFIND</span></code> request that lists all requested properties.
+If a property is not supported for a resource, the server will report it as not found in the multi-status response for that property.</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
 <span class="nt">&lt;d:propfind</span><span class="w"> </span><span class="na">xmlns:d=</span><span class="s">&quot;DAV:&quot;</span><span class="w"> </span><span class="na">xmlns:oc=</span><span class="s">&quot;http://owncloud.org/ns&quot;</span><span class="w"> </span><span class="na">xmlns:nc=</span><span class="s">&quot;http://nextcloud.org/ns&quot;</span><span class="nt">&gt;</span>
 <span class="w">  </span><span class="nt">&lt;d:prop&gt;</span>
@@ -264,18 +342,24 @@ It is usual to declare prefixes for those namespace in the <code class="docutils
 </table>
 <p>And here is how it should look in your DAV request:</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span><span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
-<span class="w">    </span><span class="nt">&lt;d:propfind</span>
-<span class="w">        </span><span class="na">xmlns:d=</span><span class="s">&quot;DAV:&quot;</span>
-<span class="w">        </span><span class="na">xmlns:oc=</span><span class="s">&quot;http://owncloud.org/ns&quot;</span>
-<span class="w">        </span><span class="na">xmlns:nc=</span><span class="s">&quot;http://nextcloud.org/ns&quot;</span>
-<span class="w">        </span><span class="na">xmlns:ocs=</span><span class="s">&quot;http://open-collaboration-services.org/ns&quot;</span><span class="nt">&gt;</span>
-<span class="w">        </span>xmlns:ocm=&quot;http://open-cloud-mesh.org/ns&quot;&gt;
+<span class="nt">&lt;d:propfind</span>
+<span class="w">    </span><span class="na">xmlns:d=</span><span class="s">&quot;DAV:&quot;</span>
+<span class="w">    </span><span class="na">xmlns:oc=</span><span class="s">&quot;http://owncloud.org/ns&quot;</span>
+<span class="w">    </span><span class="na">xmlns:nc=</span><span class="s">&quot;http://nextcloud.org/ns&quot;</span>
+<span class="w">    </span><span class="na">xmlns:ocs=</span><span class="s">&quot;http://open-collaboration-services.org/ns&quot;</span>
+<span class="w">    </span><span class="na">xmlns:ocm=</span><span class="s">&quot;http://open-cloud-mesh.org/ns&quot;</span><span class="nt">&gt;</span>
 <span class="w">    </span>...
+<span class="nt">&lt;/d:propfind&gt;</span>
 </pre></div>
 </div>
 </section>
 <section id="supported-properties">
 <h3>Supported properties<a class="headerlink" href="#supported-properties" title="Link to this heading"></a></h3>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Properties in the <code class="docutils literal notranslate"><span class="pre">d:</span></code> namespace are standard WebDAV properties (RFC 4918).
+Most properties in <code class="docutils literal notranslate"><span class="pre">oc:</span></code>, <code class="docutils literal notranslate"><span class="pre">nc:</span></code>, <code class="docutils literal notranslate"><span class="pre">ocs:</span></code>, and <code class="docutils literal notranslate"><span class="pre">ocm:</span></code> are Nextcloud-specific extensions.</p>
+</div>
 <table class="docutils align-default">
 <thead>
 <tr class="row-odd"><th class="head"><p>Property</p></th>
@@ -384,7 +468,8 @@ It is usual to declare prefixes for those namespace in the <code class="docutils
 <div class="line">The permissions that the user has over the</div>
 <div class="line">file or folder. The value is a string</div>
 <div class="line">containing letters for all available</div>
-<div class="line">permissions.</div>
+<div class="line">permissions. On public shares, <code class="docutils literal notranslate"><span class="pre">S</span></code> and</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">M</span></code> are stripped from the returned value.</div>
 </div>
 </td>
 <td><div class="line-block">
@@ -417,8 +502,11 @@ It is usual to declare prefixes for those namespace in the <code class="docutils
 </td>
 </tr>
 <tr class="row-even"><td><p>&lt;nc:hide-download /&gt;</p></td>
-<td><p>For shares this indicate if any download action
-should be hidden from the user or not.</p></td>
+<td><div class="line-block">
+<div class="line">For shares, indicate if any download</div>
+<div class="line">action should be hidden or not.</div>
+</div>
+</td>
 <td><p><code class="docutils literal notranslate"><span class="pre">true</span></code> or <code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p>&lt;nc:is-encrypted /&gt;</p></td>
@@ -429,7 +517,7 @@ should be hidden from the user or not.</p></td>
 </div>
 </td>
 </tr>
-<tr class="row-even"><td><p>&lt;nc:is-mount-root&gt;</p></td>
+<tr class="row-even"><td><p>&lt;nc:is-mount-root /&gt;</p></td>
 <td><div class="line-block">
 <div class="line">This is a special property which is used to</div>
 <div class="line">determine if a node is a mount root or not,</div>
@@ -542,7 +630,7 @@ should be hidden from the user or not.</p></td>
 <td><p>Whether a preview of the file is available.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">true</span></code> or <code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
 </tr>
-<tr class="row-odd"><td><p>&lt;nc:hidden&gt;</p></td>
+<tr class="row-odd"><td><p>&lt;nc:hidden /&gt;</p></td>
 <td><div class="line-block">
 <div class="line">Defines if a file should be hidden</div>
 <div class="line">Currently only used for live photos</div>
@@ -654,12 +742,19 @@ should be hidden from the user or not.</p></td>
 <td></td>
 </tr>
 <tr class="row-even"><td><p>&lt;nc:lock-time&gt;</p></td>
-<td><p>Date when the lock was created as a timestamp.</p></td>
+<td><div class="line-block">
+<div class="line">Date when the lock was created</div>
+<div class="line">as a timestamp.</div>
+</div>
+</td>
 <td><p><code class="docutils literal notranslate"><span class="pre">1675789581</span></code></p></td>
 </tr>
 <tr class="row-odd"><td><p>&lt;nc:lock-timeout&gt;</p></td>
-<td><p>TTL of the lock in seconds staring from the
-creation time.</p></td>
+<td><div class="line-block">
+<div class="line">TTL of the lock in seconds starting</div>
+<div class="line">from the creation time.</div>
+</div>
+</td>
 <td><p><code class="docutils literal notranslate"><span class="pre">0</span></code> = No timeout</p></td>
 </tr>
 <tr class="row-even"><td><p>&lt;nc:lock-token&gt;</p></td>
@@ -682,8 +777,38 @@ creation time.</p></td>
 <td><p>The author’s id of a specified file version.</p></td>
 <td><p><code class="docutils literal notranslate"><span class="pre">admin</span></code>, <code class="docutils literal notranslate"><span class="pre">jane</span></code>, <code class="docutils literal notranslate"><span class="pre">thisAuthorsID</span></code></p></td>
 </tr>
+<tr class="row-even"><td><p>&lt;nc:is-federated /&gt;</p></td>
+<td><div class="line-block">
+<div class="line">Whether the node originates from a</div>
+<div class="line">federated (server-to-server) share.</div>
+</div>
+</td>
+<td><p><code class="docutils literal notranslate"><span class="pre">true</span></code> or <code class="docutils literal notranslate"><span class="pre">false</span></code></p></td>
+</tr>
+<tr class="row-odd"><td><p>&lt;nc:metadata_etag /&gt;</p></td>
+<td><div class="line-block">
+<div class="line">An etag covering the file’s metadata. Changes</div>
+<div class="line">when metadata (not content), is updated.</div>
+</div>
+</td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p>&lt;nc:download-url-expiration /&gt;</p></td>
+<td><div class="line-block">
+<div class="line">Expiration date/time of a direct download</div>
+<div class="line">URL (if one has been generated).</div>
+</div>
+</td>
+<td></td>
+</tr>
 </tbody>
 </table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Properties prefixed with <code class="docutils literal notranslate"><span class="pre">nc:metadata-</span></code> (e.g. <code class="docutils literal notranslate"><span class="pre">nc:metadata-blurhash</span></code>) are dynamic, app-registered
+metadata properties. They are not listed individually here as they depend on which apps are enabled.
+You can request them via PROPFIND like any other property.</p>
+</div>
 </section>
 </section>
 <section id="listing-folders-rfc4918">
@@ -733,10 +858,12 @@ The <code class="code docutils literal notranslate"><span class="pre">Accept</sp
 </div>
 <p>As setting headers is not possible with HTML links it is also possible to provide this both options as query parameters.
 In this case the <code class="code docutils literal notranslate"><span class="pre">Accept</span></code> header value must be passed as the <code class="code docutils literal notranslate"><span class="pre">accept</span></code> query parameter.
+Both full MIME types (<code class="code docutils literal notranslate"><span class="pre">application/zip</span></code>, <code class="code docutils literal notranslate"><span class="pre">application/x-tar</span></code>) and shorthand values (<code class="code docutils literal notranslate"><span class="pre">zip</span></code>, <code class="code docutils literal notranslate"><span class="pre">tar</span></code>) are accepted.
 The optional files list can be provided as a JSON encoded array through the <code class="code docutils literal notranslate"><span class="pre">files</span></code> query parameter.</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>GET remote.php/dav/files/user/path/to/folder?accept=zip&amp;files=[&quot;image.png&quot;,&quot;document.txt&quot;]
 </pre></div>
 </div>
+<p>When using query parameters, ensure values are URL-encoded. In particular, <code class="code docutils literal notranslate"><span class="pre">files</span></code> must be a URL-encoded JSON array.</p>
 </section>
 <section id="uploading-files">
 <h2>Uploading files<a class="headerlink" href="#uploading-files" title="Link to this heading"></a></h2>
@@ -768,7 +895,7 @@ The optional files list can be provided as a JSON encoded array through the <cod
 <span class="n">Destination</span><span class="p">:</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">cloud</span><span class="o">.</span><span class="n">example</span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">user</span><span class="o">/</span><span class="n">new</span><span class="o">/</span><span class="n">location</span>
 </pre></div>
 </div>
-<p>The overwrite behavior of the move can be controlled by setting the <code class="code docutils literal notranslate"><span class="pre">Overwrite</span></code> head to <code class="code docutils literal notranslate"><span class="pre">T</span></code> or <code class="code docutils literal notranslate"><span class="pre">F</span></code> to enable or disable overwriting respectively.</p>
+<p>The overwrite behavior of the move can be controlled by setting the <code class="code docutils literal notranslate"><span class="pre">Overwrite</span></code> header to <code class="code docutils literal notranslate"><span class="pre">T</span></code> or <code class="code docutils literal notranslate"><span class="pre">F</span></code> to enable or disable overwriting respectively.</p>
 </section>
 <section id="copying-files-and-folders-rfc4918">
 <h2>Copying files and folders (<a class="reference external" href="https://tools.ietf.org/html/rfc4918">rfc4918</a>)<a class="headerlink" href="#copying-files-and-folders-rfc4918" title="Link to this heading"></a></h2>
@@ -777,11 +904,11 @@ The optional files list can be provided as a JSON encoded array through the <cod
 <span class="n">Destination</span><span class="p">:</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">cloud</span><span class="o">.</span><span class="n">example</span><span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">user</span><span class="o">/</span><span class="n">new</span><span class="o">/</span><span class="n">location</span>
 </pre></div>
 </div>
-<p>The overwrite behavior of the copy can be controlled by setting the <code class="code docutils literal notranslate"><span class="pre">Overwrite</span></code> head to <code class="code docutils literal notranslate"><span class="pre">T</span></code> or <code class="code docutils literal notranslate"><span class="pre">F</span></code> to enable or disable overwriting respectively.</p>
+<p>The overwrite behavior of the copy can be controlled by setting the <code class="code docutils literal notranslate"><span class="pre">Overwrite</span></code> header to <code class="code docutils literal notranslate"><span class="pre">T</span></code> or <code class="code docutils literal notranslate"><span class="pre">F</span></code> to enable or disable overwriting respectively.</p>
 </section>
 <section id="settings-favorites">
 <h2>Settings favorites<a class="headerlink" href="#settings-favorites" title="Link to this heading"></a></h2>
-<p>A file or folder can be marked as favorite by sending a <code class="code docutils literal notranslate"><span class="pre">PROPPATCH</span></code> request to the file or folder and setting the <code class="code docutils literal notranslate"><span class="pre">oc-favorite</span></code> property</p>
+<p>A file or folder can be marked as favorite by sending a <code class="code docutils literal notranslate"><span class="pre">PROPPATCH</span></code> request to the file or folder and setting the <code class="code docutils literal notranslate"><span class="pre">oc:favorite</span></code> property.</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span>PROPPATCH<span class="w"> </span>remote.php/dav/files/user/path/to/file
 <span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
 <span class="nt">&lt;d:propertyupdate</span><span class="w"> </span><span class="na">xmlns:d=</span><span class="s">&quot;DAV:&quot;</span><span class="w"> </span><span class="na">xmlns:oc=</span><span class="s">&quot;http://owncloud.org/ns&quot;</span><span class="nt">&gt;</span>
@@ -797,7 +924,7 @@ The optional files list can be provided as a JSON encoded array through the <cod
 </section>
 <section id="listing-favorites">
 <h2>Listing favorites<a class="headerlink" href="#listing-favorites" title="Link to this heading"></a></h2>
-<p>Favorites for a user can be retrieved by sending a <code class="code docutils literal notranslate"><span class="pre">REPORT</span></code> request and specifying <code class="code docutils literal notranslate"><span class="pre">oc:favorite</span></code> as a filter</p>
+<p>Favorites for a user can be retrieved by sending a <code class="code docutils literal notranslate"><span class="pre">REPORT</span></code> request and specifying <code class="code docutils literal notranslate"><span class="pre">oc:favorite</span></code> as a filter.</p>
 <div class="highlight-xml notranslate"><div class="highlight"><pre><span></span>REPORT<span class="w"> </span>remote.php/dav/files/user/path/to/folder
 <span class="cp">&lt;?xml version=&quot;1.0&quot;?&gt;</span>
 <span class="nt">&lt;oc:filter-files</span><span class="w">  </span><span class="na">xmlns:d=</span><span class="s">&quot;DAV:&quot;</span><span class="w"> </span><span class="na">xmlns:oc=</span><span class="s">&quot;http://owncloud.org/ns&quot;</span><span class="w"> </span><span class="na">xmlns:nc=</span><span class="s">&quot;http://nextcloud.org/ns&quot;</span><span class="nt">&gt;</span>
@@ -844,7 +971,9 @@ The optional files list can be provided as a JSON encoded array through the <cod
 <tr class="row-even"><td><p>OC-Checksum</p></td>
 <td><div class="line-block">
 <div class="line">A checksum that will be stored in the DB.</div>
-<div class="line">The server will not do any sort of  validation.</div>
+<div class="line">For regular <code class="docutils literal notranslate"><span class="pre">PUT</span></code> uploads, the server stores the value</div>
+<div class="line">without validation. During bulk uploads, the checksum</div>
+<div class="line"><strong>is</strong> validated against the uploaded content.</div>
 <div class="line">Currently used algorithms are <code class="docutils literal notranslate"><span class="pre">MD5</span></code>, <code class="docutils literal notranslate"><span class="pre">SHA1</span></code>, <code class="docutils literal notranslate"><span class="pre">SHA256</span></code>,</div>
 <div class="line"><code class="docutils literal notranslate"><span class="pre">SHA3-256</span></code>, <code class="docutils literal notranslate"><span class="pre">Adler32</span></code>.</div>
 </div>
@@ -853,12 +982,16 @@ The optional files list can be provided as a JSON encoded array through the <cod
 </tr>
 <tr class="row-odd"><td><p>X-Hash</p></td>
 <td><div class="line-block">
-<div class="line">Allow to request the file’s hash from the server.</div>
-<div class="line">The server will return the hash in a header named either:</div>
-<div class="line"><code class="docutils literal notranslate"><span class="pre">X-Hash-MD5</span></code>, <code class="docutils literal notranslate"><span class="pre">X-Hash-SHA1</span></code>, or <code class="docutils literal notranslate"><span class="pre">X-Hash-SHA256</span></code>.</div>
+<div class="line">On <code class="docutils literal notranslate"><span class="pre">PUT</span></code> requests, instructs the server to compute a hash</div>
+<div class="line">of the uploaded file content during the write. The server</div>
+<div class="line">returns the hash(es) in response headers named</div>
+<div class="line"><code class="docutils literal notranslate"><span class="pre">X-Hash-MD5</span></code>, <code class="docutils literal notranslate"><span class="pre">X-Hash-SHA1</span></code>, and/or <code class="docutils literal notranslate"><span class="pre">X-Hash-SHA256</span></code>.</div>
+<div class="line">Setting the value to <code class="docutils literal notranslate"><span class="pre">all</span></code> computes all three hashes.</div>
+<div class="line">Beware of performance implications!</div>
 </div>
 </td>
-<td><p><code class="docutils literal notranslate"><span class="pre">md5</span></code>, <code class="docutils literal notranslate"><span class="pre">sha1</span></code>, or <code class="docutils literal notranslate"><span class="pre">sha256</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">md5</span></code>, <code class="docutils literal notranslate"><span class="pre">sha1</span></code>, <code class="docutils literal notranslate"><span class="pre">sha256</span></code>,
+or <code class="docutils literal notranslate"><span class="pre">all</span></code></p></td>
 </tr>
 <tr class="row-even"><td><p>OC-Total-Length</p></td>
 <td><div class="line-block">
@@ -873,6 +1006,7 @@ The optional files list can be provided as a JSON encoded array through the <cod
 <td><div class="line-block">
 <div class="line">When set to <code class="docutils literal notranslate"><span class="pre">1</span></code>, instructs the server to automatically</div>
 <div class="line">create any missing parent directories when uploading a file.</div>
+<div class="line">Available since Nextcloud 32.</div>
 </div>
 </td>
 <td></td>
@@ -887,8 +1021,9 @@ The optional files list can be provided as a JSON encoded array through the <cod
 <div class="line"><code class="docutils literal notranslate"><span class="pre">OC-Total-Length</span></code> header on the <code class="docutils literal notranslate"><span class="pre">PUT</span></code> requests instead.</div>
 </div>
 </td>
-<td><p>Deprecated ⚠️</p>
-<p>You do not have to provide this anymore</p>
+<td><p>Deprecated</p>
+<p>You do not have to provide
+this anymore</p>
 </td>
 </tr>
 </tbody>
@@ -978,8 +1113,8 @@ The optional files list can be provided as a JSON encoded array through the <cod
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="index.html" class="btn btn-neutral float-left" title="Webdav" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="search.html" class="btn btn-neutral float-right" title="Search" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="index.html" class="btn btn-neutral float-left" title="WebDAV" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="chunking.html" class="btn btn-neutral float-right" title="Chunked file upload" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
