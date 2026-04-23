@@ -109,6 +109,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#cache-directory-location">Cache Directory location</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cache-key-prefix-for-redis-or-memcached">Cache Key Prefix for Redis or Memcached</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="dashboard_configuration.html">Dashboard app</a></li>
@@ -385,6 +386,7 @@ specify either the <code class="docutils literal notranslate"><span class="pre">
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;memcache.locking&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;\OC\Memcache\Redis&#39;</span><span class="p">,</span>
 <span class="s1">&#39;memcache.distributed&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;\OC\Memcache\Redis&#39;</span><span class="p">,</span>
 <span class="s1">&#39;memcache.local&#39;</span> <span class="o">=&gt;</span><span class="s1">&#39;\OC\Memcache\Redis&#39;</span> <span class="p">,</span>
+<span class="s1">&#39;memcache_customprefix&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;mynextcloudprefix&#39;</span><span class="p">,</span>
 <span class="s1">&#39;redis&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
    <span class="o">//</span> <span class="s1">&#39;host&#39;</span>      <span class="o">=&gt;</span> <span class="n">see</span> <span class="n">connection</span> <span class="n">parameters</span> <span class="n">below</span>
    <span class="o">//</span> <span class="s1">&#39;port&#39;</span>      <span class="o">=&gt;</span> <span class="n">see</span> <span class="n">connection</span> <span class="n">parameters</span> <span class="n">below</span>
@@ -401,6 +403,7 @@ are optional):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;memcache.locking&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;\OC\Memcache\Redis&#39;</span><span class="p">,</span>
 <span class="s1">&#39;memcache.distributed&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;\OC\Memcache\Redis&#39;</span><span class="p">,</span>
 <span class="s1">&#39;memcache.local&#39;</span> <span class="o">=&gt;</span><span class="s1">&#39;\OC\Memcache\Redis&#39;</span> <span class="p">,</span>
+<span class="s1">&#39;memcache_customprefix&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;mynextcloudprefix&#39;</span><span class="p">,</span>
 <span class="s1">&#39;redis.cluster&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span>
    <span class="s1">&#39;seeds&#39;</span> <span class="o">=&gt;</span> <span class="p">[</span> <span class="o">//</span> <span class="n">provide</span> <span class="n">some</span><span class="o">/</span><span class="nb">all</span> <span class="n">of</span> <span class="n">the</span> <span class="n">cluster</span> <span class="n">servers</span> <span class="n">to</span> <span class="n">bootstrap</span> <span class="n">discovery</span><span class="p">,</span> <span class="n">port</span> <span class="n">required</span>
       <span class="s1">&#39;cache-cluster:7000&#39;</span><span class="p">,</span>
@@ -571,6 +574,19 @@ and lists all the servers in the shared cache pool with their port numbers:</p>
 <p>The cache directory defaults to <code class="docutils literal notranslate"><span class="pre">data/$user/cache</span></code> where <code class="docutils literal notranslate"><span class="pre">$user</span></code> is the
 current user. You may use the <code class="docutils literal notranslate"><span class="pre">'cache_path'</span></code> directive in <code class="docutils literal notranslate"><span class="pre">config.php</span></code>
 (See <a class="reference internal" href="config_sample_php_parameters.html"><span class="doc">Configuration Parameters</span></a>) to select a different location.</p>
+</section>
+<section id="cache-key-prefix-for-redis-or-memcached">
+<h2>Cache Key Prefix for Redis or Memcached<a class="headerlink" href="#cache-key-prefix-for-redis-or-memcached" title="Link to this heading"></a></h2>
+<p>By default, Nextcloud generates a semi-unique prefix for cache keys using information like instance ID, version etc. to mitigate the problem of
+collisions when using the same cache for multiple Nextcloud instances.
+If you want to make sure to prevent collisions altogether, you can use the following
+setting to define your custom prefix:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;memcache_customprefix&#39;</span> <span class="o">=&gt;</span> <span class="s1">&#39;mynextcloudprefix&#39;</span><span class="p">,</span>
+</pre></div>
+</div>
+<p>This also allows you to create ACLs in Redis and limit the keys specific users can access
+(e.g. if you want to isolate specific Nextcloud instances when using the same cache).
+This may be security-relevant for you.</p>
 </section>
 </section>
 
