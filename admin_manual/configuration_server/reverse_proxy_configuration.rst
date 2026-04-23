@@ -146,10 +146,11 @@ Caddy
 
         reverse_proxy {$NEXTCLOUD_HOST:localhost}
     }
-    
+   
 Pomerium
 ^^^^^^^^
 ::
+
     - from: https://subdomain.example.com
       path: /.well-known/carddav
       redirect:
