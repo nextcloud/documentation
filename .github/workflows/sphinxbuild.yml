@@ -289,7 +289,14 @@ jobs:
           done
 
           # Move PDF files to the root of the branch folder for cleaner structure
-          find "stage/${branch}/" -maxdepth 2 -name "*.pdf" -type f -exec mv {} "stage/${branch}/" \;
+          echo "Looking for PDF files to move..."
+          find "stage/${branch}/" -maxdepth 2 -name "*.pdf" -type f
+          for pdf in "stage/${branch}"/*/*.pdf; do
+            if [ -f "$pdf" ]; then
+              echo "Moving PDF: $pdf"
+              mv "$pdf" "stage/${branch}/"
+            fi
+          done
 
           # Clean up empty directories
           find stage -type d -empty -delete
@@ -298,16 +305,17 @@ jobs:
           find stage -type f | head -20
 
       # ========================================================================
-      # CACHE STAGING ARTIFACTS
+      # UPLOAD STAGING ARTIFACTS
       # ========================================================================
-      # Cache the staging folder for use in deploy job.
-      # This avoids artifact storage overhead (saves ~1.8GB).
+      # Upload the staging folder for use in deploy job.
+      # This makes the content visible in the UI for debugging and inspection.
       # ========================================================================
-      - name: Cache staged artifacts
-        uses: actions/cache/save@668228422ae6a00e4ad889ee87cd7109ec5666a7 # v5.0.4
+      - name: Upload staged artifacts
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
         with:
+          name: staged-docs
           path: stage/
-          key: staged-docs-${{ github.sha }}
+          retention-days: 1
 
   # ============================================================================
   # DEPLOY
@@ -338,12 +346,11 @@ jobs:
           fetch-depth: 1
           persist-credentials: false
 
-      - name: Restore staged artifacts from cache
-        uses: actions/cache/restore@668228422ae6a00e4ad889ee87cd7109ec5666a7 # v5.0.4
+      - name: Download staged artifacts
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
         with:
+          name: staged-docs
           path: stage/
-          key: staged-docs-${{ github.sha }}
-          fail-on-cache-miss: true
 
       # ========================================================================
       # APPLY STAGED ARTIFACTS TO GH-PAGES
@@ -370,7 +377,14 @@ jobs:
           done
 
           # Move pdf files to the root of the branch folder
-          mv server/${branch}/*/*.pdf server/${branch}/ 2>/dev/null || true
+          echo "Looking for PDF files to copy..."
+          find stage/${branch}/ -name "*.pdf" -type f
+          for pdf in stage/${branch}/*.pdf; do
+            if [ -f "$pdf" ]; then
+              echo "Copying PDF: $pdf"
+              cp "$pdf" server/${branch}/
+            fi
+          done
 
           # If this is the highest stable branch, also deploy to its versioned folder
           if [ -n "${additional}" ]; then
