@@ -104,6 +104,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#haproxy">HAProxy</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#nginx">NGINX</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#caddy">Caddy</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#pomerium">Pomerium</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="#example">Example</a><ul>
@@ -322,6 +323,20 @@ of the proxy host under <em>“Custom Nginx Configuration”</em>, otherwise mob
 }
 </pre></div>
 </div>
+</section>
+<section id="pomerium">
+<h3>Pomerium<a class="headerlink" href="#pomerium" title="Link to this heading"></a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">from</span><span class="p">:</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">subdomain</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">com</span>
+  <span class="n">path</span><span class="p">:</span> <span class="o">/.</span><span class="n">well</span><span class="o">-</span><span class="n">known</span><span class="o">/</span><span class="n">carddav</span>
+  <span class="n">redirect</span><span class="p">:</span>
+    <span class="n">path_redirect</span><span class="p">:</span> <span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span>
+<span class="o">-</span> <span class="n">from</span><span class="p">:</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">subdomain</span><span class="o">.</span><span class="n">example</span><span class="o">.</span><span class="n">com</span>
+  <span class="n">path</span><span class="p">:</span> <span class="o">/.</span><span class="n">well</span><span class="o">-</span><span class="n">known</span><span class="o">/</span><span class="n">caldav</span>
+  <span class="n">redirect</span><span class="p">:</span>
+    <span class="n">path_redirect</span><span class="p">:</span> <span class="o">/</span><span class="n">remote</span><span class="o">.</span><span class="n">php</span><span class="o">/</span><span class="n">dav</span><span class="o">/</span>
+</pre></div>
+</div>
+<p>Thanks to <a class="reference external" href="https://github.com/JeffMatson">&#64;JeffMatson</a> for Pomerium example.</p>
 </section>
 </section>
 <section id="example">
