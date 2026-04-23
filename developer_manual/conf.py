@@ -63,6 +63,12 @@ html_short_title = "Developer Manual"
 # disable "Created using Sphinx" in the HTML footer (default is True)
 html_show_sphinx = False
 
+# Add canonical link in all generated pages linking to their respective equivalent
+# in `stable` (regardless of which version of the docs someone lands in).
+# Note, there is an argument to be made for having this link to `latest` instead,
+# but this is likely good enough and the most conservative for now.
+html_baseurl = "https://docs.nextcloud.com/server/stable/developer_manual/"
+
 html_last_updated_fmt = "%b %d, %Y"
 
 # -- Options for HTML help output --------------------------------------------
