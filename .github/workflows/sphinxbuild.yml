@@ -383,18 +383,20 @@ jobs:
   # ============================================================================
   # DEPLOY
   # ============================================================================
-  # This job is responsible for:
-  # 1. Downloading the staged artifacts from stage-and-check
-  # 2. Applying them to the gh-pages branch
-  # 3. Creating a pull request for the deployment
+  # This job handles two cases based on the event type:
   #
-  # This job ONLY runs on pushes (not on pull requests), since we only want
-  # to deploy when code is merged to master or a stable branch.
+  #   push  → Apply staged artifacts to gh-pages and open a PR for the update.
+  #
+  #   pull_request → Check out gh-pages, overlay the new artifacts, and deploy
+  #                  the full server/ tree to Netlify as a preview (optional –
+  #                  Netlify failure does NOT block the PR).
+  #
+  # In both cases the job checks out gh-pages first, so the full existing
+  # documentation is available before the new artifacts are applied.
   # ============================================================================
   deploy:
     name: Deploy documentation for gh-pages
     needs: stage-and-check
-    if: github.event_name == 'push'
     runs-on: ubuntu-latest
 
     permissions:
@@ -502,7 +504,7 @@ jobs:
       - name: Create Pull Request for documentation deployment
         uses: peter-evans/create-pull-request@5f6978faf089d4d20b00c7766989d076bb2fc7f1 # v8.1.1
         id: cpr
-        if: steps.apply.outputs.has_changes == 'true'
+        if: steps.apply.outputs.has_changes == 'true' && github.event_name == 'push'
         with:
           token: ${{ secrets.COMMAND_BOT_PAT }}
           commit-message: "chore: update documentation for `${{ needs.stage-and-check.outputs.branch_name }}`"
@@ -525,6 +527,103 @@ jobs:
         env:
           GH_TOKEN: ${{ secrets.COMMAND_BOT_PAT }}
 
+      # ========================================================================
+      # NETLIFY PREVIEW (pull_request events only)
+      # ========================================================================
+      # At this point the working directory is the gh-pages checkout with the
+      # newly staged artifacts already applied, so server/ is a complete,
+      # up-to-date snapshot of the full documentation site.
+      # Netlify failure is non-fatal – the step uses continue-on-error so it
+      # does not block the PR.
+      # ========================================================================
+      - name: Install Netlify CLI
+        if: github.event_name == 'pull_request'
+        run: npm install -g netlify-cli
+
+      - name: Generate index.html for preview
+        if: github.event_name == 'pull_request'
+        run: |
+          # Build a root index listing all top-level version folders
+          cat > server/index.html <<'INDEXEOF'
+          <!DOCTYPE html>
+          <html lang="en">
+          <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Nextcloud Documentation Preview</title>
+          </head>
+          <body>
+            <h1>Nextcloud Documentation Preview</h1>
+            <ul>
+          INDEXEOF
+
+          for version_dir in server/*/; do
+            [ -d "$version_dir" ] || continue
+            version="$(basename "$version_dir")"
+            echo "    <li><a href=\"${version}/\">${version}</a></li>" >> server/index.html
+          done
+
+          cat >> server/index.html <<'INDEXEOF'
+            </ul>
+          </body>
+          </html>
+          INDEXEOF
+
+      - name: Deploy to Netlify
+        id: netlify
+        if: github.event_name == 'pull_request'
+        continue-on-error: true
+        run: |
+          output=$(netlify deploy \
+            --dir=server \
+            --site="${{ secrets.NETLIFY_SITE_ID }}" \
+            --auth="${{ secrets.NETLIFY_AUTH_TOKEN }}" \
+            --alias="pr-${{ github.event.number }}" \
+            --message="Preview for PR #${{ github.event.number }}" \
+            --json)
+          deploy_url=$(echo "$output" | jq -r '.deploy_url // .url')
+          if [ -z "$deploy_url" ] || [ "$deploy_url" = "null" ]; then
+            echo "Failed to get deploy URL from Netlify output:" >&2
+            echo "$output" >&2
+            exit 1
+          fi
+          echo "deploy_url=${deploy_url}" >> $GITHUB_OUTPUT
+
+      - name: Comment preview URL on PR
+        if: github.event_name == 'pull_request' && steps.netlify.outputs.deploy_url != ''
+        uses: actions/github-script@60a0d83039c74a4aee543508d2ffcb1c3799cdea # v7.0.1
+        with:
+          script: |
+            const deployUrl = '${{ steps.netlify.outputs.deploy_url }}';
+            const marker = '<!-- netlify-preview -->';
+            const body = `${marker}\n:rocket: **Netlify preview deployed:** ${deployUrl}`;
+
+            const { data: comments } = await github.rest.issues.listComments({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+            });
+
+            const existing = comments.find(c => c.body.includes(marker));
+            if (existing) {
+              await github.rest.issues.updateComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                comment_id: existing.id,
+                body,
+              });
+            } else {
+              await github.rest.issues.createComment({
+                owner: context.repo.owner,
+                repo: context.repo.repo,
+                issue_number: context.issue.number,
+                body,
+              });
+            }
+
+  # ============================================================================
+  # SUMMARY
+  # ============================================================================
   summary:
     needs: [build, stage-and-check, deploy]
     runs-on: ubuntu-latest-low
@@ -540,10 +639,10 @@ jobs:
         run: |
           if ${{ github.event_name == 'pull_request' }}
           then
-            echo "This workflow ran for a pull request. We need build and stage-and-check to succeed, but deploy will be skipped"
-            if ${{ needs.build.result != 'success' || needs.stage-and-check.result != 'success' || needs.deploy.result != 'skipped' }}; then exit 1; fi
+            echo "This workflow ran for a pull request. We need build, stage-and-check and deploy to succeed"
+            if ${{ needs.build.result != 'success' || needs.stage-and-check.result != 'success' || needs.deploy.result != 'success' }}; then exit 1; fi
           else
             echo "This workflow ran for a push. We need all jobs to succeed, including deploy"
             if ${{ needs.build.result != 'success' || needs.stage-and-check.result != 'success' || needs.deploy.result != 'success' }}; then exit 1; fi
           fi
-          
+
