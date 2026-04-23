@@ -158,6 +158,12 @@ html_static_path = ['../_shared_assets/static', '_static']
 # If true, "Created using Sphinx" is shown in the HTML footer. Default is True.
 html_show_sphinx = False
 
+# Add canonical link in all generated pages linking to their respective equivalent
+# in `stable` (regardless of which version of the docs someone lands in).
+# Note, there is an argument to be made for having this link to `latest` instead,
+# but this is likely good enough and the most conservative for now.
+html_baseurl = "https://docs.nextcloud.com/server/stable/developer_manual/"
+
 # If true, "(C) Copyright ..." is shown in the HTML footer. Default is True.
 #html_show_copyright = True
 
