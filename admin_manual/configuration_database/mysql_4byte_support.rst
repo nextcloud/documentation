@@ -13,7 +13,7 @@ installation needs to be tweaked a bit.
 
     This manual only covers MySQL 8 or newer and MariaDB 10.2 or newer.
     If you use MariaDB 10.2, please check
-    `this older version <https://docs.nextcloud.com/server/20/admin_manual/configuration_database/mysql_4byte_support.html#mariadb-10-2-or-earlier>`_
+    `this older version <mysql_4byte_support.rst#mariadb-10-2-or-earlier>`_
     of the documentation. If you use an older version of MySQL or MariaDB, please note that they are no longer supported
     by the current Nextcloud version.
 
