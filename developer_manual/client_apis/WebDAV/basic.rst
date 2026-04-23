@@ -102,7 +102,7 @@ The table below summarizes common WebDAV methods used by Nextcloud and the most 
 | REPORT     | ``/remote.php/dav/files/{user}/path``     | (none required)                              | Used for filtered queries such as favorites.                |
 +------------+-------------------------------------------+----------------------------------------------+-------------------------------------------------------------+
 | GET (file) | ``/remote.php/dav/files/{user}/file``     | (none required)                              | Downloads file content.                                     |
-+------------+-------------------------------------------+---------------------------------------------+--------------------------------------------------------------+
++------------+-------------------------------------------+----------------------------------------------+-------------------------------------------------------------+
 | GET (dir)  | ``/remote.php/dav/files/{user}/folder``   | ``Accept: application/zip`` or               | Nextcloud extension for folder archive download.            |
 |            |                                           | ``Accept: application/x-tar``                |                                                             |
 +------------+-------------------------------------------+----------------------------------------------+-------------------------------------------------------------+
