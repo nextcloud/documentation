@@ -196,6 +196,7 @@ Command reference
 
    occ_apps
    occ_database
+   occ_encryption
    occ_files
    occ_ldap
    occ_users
