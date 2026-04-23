@@ -25,6 +25,6 @@ RUN apt-get update \
   && mktexlsr \
   && rm -rf /var/lib/apt/lists/*
 
-# Allow pip to install packages system-wide inside the container (used by
-# actions/setup-python and plain pip invocations running as root)
+# Allow pip to install packages system-wide inside the container when running
+# as root (avoids PEP 668 "externally managed environment" error)
 RUN printf '[global]\nbreak-system-packages = true\n' > /etc/pip.conf
