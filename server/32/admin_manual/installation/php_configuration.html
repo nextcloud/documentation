@@ -16,6 +16,7 @@
       <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
 
   
+    <link rel="canonical" href="https://docs.nextcloud.com/server/stable/admin_manual/installation/php_configuration.html" />
       <script src="../_static/jquery.js?v=5d32c60e"></script>
       <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
       <script src="../_static/documentation_options.js?v=a49d5d77"></script>
@@ -227,17 +228,21 @@ follow the below guidance to configure your new PHP installation for your new Ne
 <li><p><cite>fileinfo</cite> (included with PHP)</p></li>
 <li><p><cite>filter</cite> (only on Mageia and FreeBSD)</p></li>
 <li><p><cite>GD</cite></p></li>
-<li><p><cite>libxml</cite> (requires Linux package <cite>libxml2</cite> version &gt;= 2.7.0)</p></li>
+<li><p><cite>xml</cite> (provides SimpleXML, XMLReader and XMLWriter; requires Linux package <cite>libxml2</cite> version &gt;= 2.7.0)</p></li>
 <li><p><cite>mbstring</cite></p></li>
 <li><p><cite>OpenSSL</cite> (included with PHP)</p></li>
 <li><p><cite>posix</cite></p></li>
 <li><p><cite>session</cite> (included with PHP)</p></li>
-<li><p><cite>SimpleXML</cite></p></li>
-<li><p><cite>XMLReader</cite></p></li>
-<li><p><cite>XMLWriter</cite></p></li>
 <li><p><cite>zip</cite></p></li>
 <li><p><cite>zlib</cite></p></li>
 </ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>The PHP “xml” extension is commonly packaged as <cite>php-xml</cite> or shown as <cite>libxml</cite> by OS package managers. This
+extension provides the underlying libxml2 bindings and exposes SimpleXML, XMLReader and XMLWriter. Ensure the
+corresponding <cite>php-xml</cite> (or distribution-specific) package is installed so that SimpleXML, XMLReader and XMLWriter
+are available to PHP.</p>
+</div>
 <p>The <cite>ctype</cite>, <cite>fileinfo</cite>, and <cite>OpenSSL</cite> modules are generally included and enabled in PHP by default. Often
 some of the other required modules are automatically installed by OS distribution package managers.</p>
 <p><strong>How to check if a module is enabled:</strong></p>
@@ -270,6 +275,7 @@ some of the other required modules are automatically installed by OS distributio
 module is missing, accounts will not be able to log-in).</p>
 </div></blockquote>
 </li>
+<li><p><cite>sysvsem</cite>: Enables System V semaphores used by Nextcloud to coordinate preview generation across PHP processes. Recommended; if missing, previews still work but may be less reliable under heavy load.</p></li>
 </ul>
 </section>
 <section id="recommended-php-caching-modules">
@@ -430,85 +436,92 @@ performance and reliability. Choose and install your preferred combination of me
 <td></td>
 <td><p>Argon2 password hashing</p></td>
 </tr>
-<tr class="row-even"><td><p>ldap</p></td>
+<tr class="row-even"><td><p>sysvsem</p></td>
+<td></td>
+<td><p>✓</p></td>
+<td></td>
+<td><p>System V semaphore support used to coordinate
+preview generation across PHP processes.</p></td>
+</tr>
+<tr class="row-odd"><td><p>ldap</p></td>
 <td></td>
 <td></td>
 <td><p>✓</p></td>
 <td><p>LDAP integration</p></td>
 </tr>
-<tr class="row-odd"><td><p>smbclient</p></td>
+<tr class="row-even"><td><p>smbclient</p></td>
 <td></td>
 <td></td>
 <td><p>✓</p></td>
 <td><p>SMB/CIFS integration</p></td>
 </tr>
-<tr class="row-even"><td><p>ftp</p></td>
+<tr class="row-odd"><td><p>ftp</p></td>
 <td></td>
 <td></td>
 <td><p>✓</p></td>
 <td><p>FTP storage/authentication</p></td>
 </tr>
-<tr class="row-odd"><td><p>imap</p></td>
+<tr class="row-even"><td><p>imap</p></td>
 <td></td>
 <td></td>
 <td><p>✓</p></td>
 <td><p>External user authentication</p></td>
 </tr>
-<tr class="row-even"><td><p>gmp</p></td>
+<tr class="row-odd"><td><p>gmp</p></td>
 <td></td>
 <td></td>
 <td><p>✓ (optional)</p></td>
 <td><p>SFTP storage</p></td>
 </tr>
-<tr class="row-odd"><td><p>exif</p></td>
+<tr class="row-even"><td><p>exif</p></td>
 <td></td>
 <td></td>
 <td><p>✓ (optional)</p></td>
 <td><p>Image rotation in Pictures app</p></td>
 </tr>
-<tr class="row-even"><td><p>apcu</p></td>
+<tr class="row-odd"><td><p>apcu</p></td>
 <td></td>
 <td><p>✓</p></td>
 <td></td>
 <td><p>Performance caching</p></td>
 </tr>
-<tr class="row-odd"><td><p>memcached</p></td>
+<tr class="row-even"><td><p>memcached</p></td>
 <td></td>
 <td><p>✓</p></td>
 <td></td>
 <td><p>Performance caching</p></td>
 </tr>
-<tr class="row-even"><td><p>redis</p></td>
+<tr class="row-odd"><td><p>redis</p></td>
 <td></td>
 <td><p>✓</p></td>
 <td></td>
 <td><p>Transactional File Locking</p></td>
 </tr>
-<tr class="row-odd"><td><p>imagick</p></td>
+<tr class="row-even"><td><p>imagick</p></td>
 <td></td>
 <td></td>
 <td><p>✓ (optional)</p></td>
 <td><p>Image previews</p></td>
 </tr>
-<tr class="row-even"><td><p>avconv/ffmpeg</p></td>
+<tr class="row-odd"><td><p>avconv/ffmpeg</p></td>
 <td></td>
 <td></td>
 <td><p>✓ (optional)</p></td>
 <td><p>Video previews</p></td>
 </tr>
-<tr class="row-odd"><td><p>Open/LibreOffice</p></td>
+<tr class="row-even"><td><p>Open/LibreOffice</p></td>
 <td></td>
 <td></td>
 <td><p>✓ (optional)</p></td>
 <td><p>Document previews</p></td>
 </tr>
-<tr class="row-even"><td><p>pcntl</p></td>
+<tr class="row-odd"><td><p>pcntl</p></td>
 <td></td>
 <td></td>
 <td><p>✓ (optional)</p></td>
 <td><p>Command interruption in CLI</p></td>
 </tr>
-<tr class="row-odd"><td><p>phar</p></td>
+<tr class="row-even"><td><p>phar</p></td>
 <td></td>
 <td></td>
 <td><p>✓ (optional)</p></td>

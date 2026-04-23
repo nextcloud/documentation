@@ -16,6 +16,7 @@
       <link rel="stylesheet" type="text/css" href="../_static/dark_mode_css/dark.css?v=70edf1c7" />
 
   
+    <link rel="canonical" href="https://docs.nextcloud.com/server/stable/admin_manual/ai/app_context_chat.html" />
       <script src="../_static/jquery.js?v=5d32c60e"></script>
       <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
       <script src="../_static/documentation_options.js?v=a49d5d77"></script>
@@ -193,13 +194,13 @@
 <p id="ai-app-context-chat">Context Chat is an <a class="reference internal" href="app_assistant.html#ai-app-assistant"><span class="std std-ref">assistant</span></a> feature that is implemented via an ensemble of two apps:</p>
 <blockquote>
 <div><ul class="simple">
-<li><p>the <em>context_chat</em> app, written purely in PHP</p></li>
-<li><p>the <em>context_chat_backend</em> ExternalApp written in Python</p></li>
+<li><p>the <code class="docutils literal notranslate"><span class="pre">context_chat</span></code> app, written purely in PHP</p></li>
+<li><p>the <code class="docutils literal notranslate"><span class="pre">context_chat_backend</span></code> ExternalApp written in Python</p></li>
 </ul>
 </div></blockquote>
 <p>Together they provide the ContextChat <em>text processing</em> and <em>search</em> tasks accessible via the <a class="reference internal" href="app_assistant.html#ai-app-assistant"><span class="std std-ref">Nextcloud Assistant app</span></a>.</p>
-<p>The <em>context_chat</em> and <em>context_chat_backend</em> apps will use the Free text-to-text task processing providers like OpenAI integration, LLM2, etc. and such a provider is required on a fresh install, or it can be configured to run open source models entirely on-premises. Nextcloud can provide customer support upon request, please talk to your account manager for the possibilities.</p>
-<p>This app supports input and output in the same languages that the currently configured Free text-to-text task processing provider supports.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">context_chat</span></code> and <code class="docutils literal notranslate"><span class="pre">context_chat_backend</span></code> apps will use the configured text-to-text task processing provider, which is required on a fresh install. It can be configured to run open source models entirely on-premises, see the list of providers <a class="reference internal" href="overview.html#tp-consumer-apps"><span class="std std-ref">here</span></a> in the “Backend apps” section.</p>
+<p>This app supports input and output in the same languages that the currently configured text-to-text task processing provider supports.</p>
 <section id="requirements">
 <h2>Requirements<a class="headerlink" href="#requirements" title="Link to this heading"></a></h2>
 <ul>
@@ -213,9 +214,7 @@
 <div><ul class="simple">
 <li><dl class="simple">
 <dt>A NVIDIA GPU with at least 2GB VRAM</dt><dd><ul>
-<li><p>The requirements for the Free text-to-text providers should be checked separately</p></li>
-<li><p>llm2’s requirements can be found <a class="reference internal" href="app_llm2.html#ai-app-llm2"><span class="std std-ref">here</span></a></p></li>
-<li><p>integration_openai does not have any additional GPU requirements</p></li>
+<li><p>The requirements for the text-to-text providers should be checked separately for each app <a class="reference internal" href="overview.html#tp-consumer-apps"><span class="std std-ref">here</span></a> in the “Backend apps” section, as they can vary greatly based on the model used and whether the provider is hosted locally or remotely.</p></li>
 </ul>
 </dd>
 </dl>
@@ -235,13 +234,13 @@
 <div><ul class="simple">
 <li><dl class="simple">
 <dt>At least 12GB of system RAM</dt><dd><ul>
-<li><p>2 GB + additional 500MB for each request made to the backend if the Free text-to-text provider is not on the same machine</p></li>
+<li><p>2 GB + additional 500MB for each additional concurrent query request</p></li>
 <li><p>8 GB is recommended in the above case for the default settings</p></li>
 </ul>
 </dd>
 </dl>
 </li>
-<li><p>This app makes use of the configured free text-to-text task processing provider instead of running its own language model by default, you will thus need 4+ cores for the embedding model only</p></li>
+<li><p>This app makes use of the configured text-to-text task processing provider instead of running its own language model by default, thus 4+ cores for the embedding model is needed</p></li>
 </ul>
 </div></blockquote>
 </li>
@@ -257,19 +256,19 @@
 <ol class="arabic simple">
 <li><p>Make sure the <a class="reference internal" href="app_assistant.html#ai-app-assistant"><span class="std std-ref">Nextcloud Assistant app</span></a> is installed</p></li>
 <li><p>Setup a <a class="reference internal" href="../exapps_management/AppAPIAndExternalApps.html#ai-app-api"><span class="std std-ref">Deploy Daemon</span></a> in AppAPI Admin settings</p></li>
-<li><p>Install the <em>context_chat_backend</em> ExApp via the “Apps” page in Nextcloud, or by executing (checkout the readme at <a class="reference external" href="https://github.com/nextcloud/context_chat_backend">https://github.com/nextcloud/context_chat_backend</a> for manual install steps)</p></li>
+<li><p>Install the <code class="docutils literal notranslate"><span class="pre">context_chat_backend</span></code> ExApp via the “Apps” page in Nextcloud, or by executing (checkout the readme at <a class="reference external" href="https://github.com/nextcloud/context_chat_backend">https://github.com/nextcloud/context_chat_backend</a> for manual install steps)</p></li>
 </ol>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">occ</span> <span class="n">app_api</span><span class="p">:</span><span class="n">app</span><span class="p">:</span><span class="n">register</span> <span class="n">context_chat_backend</span>
 </pre></div>
 </div>
 <ol class="arabic simple" start="4">
-<li><p>Install the <em>context_chat</em> app via the “Apps” page in Nextcloud, or by executing</p></li>
+<li><p>Install the <code class="docutils literal notranslate"><span class="pre">context_chat</span></code> app via the “Apps” page in Nextcloud, or by executing</p></li>
 </ol>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">occ</span> <span class="n">app</span><span class="p">:</span><span class="n">enable</span> <span class="n">context_chat</span>
 </pre></div>
 </div>
 <ol class="arabic simple" start="5">
-<li><p>Install a text generation backend like <a class="reference internal" href="app_llm2.html#ai-app-llm2"><span class="std std-ref">llm2</span></a> or <a class="reference external" href="https://github.com/nextcloud/integration_openai">integration_openai</a> via the “Apps” page in Nextcloud</p></li>
+<li><p>Install a text-to-text provider (text generation provider) via the “Apps” page in Nextcloud. A list of providers can be found <a class="reference internal" href="overview.html#tp-consumer-apps"><span class="std std-ref">here</span></a> in the “Backend apps” section.</p></li>
 <li><p>Optionally but recommended, setup background workers for faster pickup of tasks. See <a class="reference internal" href="overview.html#ai-overview-improve-ai-task-pickup-speed"><span class="std std-ref">the relevant section in AI Overview</span></a> for more information.</p></li>
 </ol>
 <p><strong>Note</strong>: Both apps need to be installed and both major version and minor version of the two apps must match for the functionality to work (ie. “v1.3.4” and “v1.3.1”; but not “v1.3.4” and “v2.1.6”; and not “v1.3.4” and “v1.4.5”). Keep this in mind when updating.</p>
@@ -305,11 +304,38 @@
 </section>
 <section id="scaling">
 <h2>Scaling<a class="headerlink" href="#scaling" title="Link to this heading"></a></h2>
-<p>It is currently not possible to scale ExApps like Context Chat, we are working on this. Based on our calculations an instance has a rough capacity of 1000 user requests per hour. However, this number is based on theory and we do appreciate real-world feedback on this.</p>
+<p>Listed below are the major parts of the system that can be scaled independently to improve performance:</p>
+<ol class="arabic">
+<li><p>The text-to-text task processing provider (from among the list of providers <a class="reference internal" href="overview.html#tp-consumer-apps"><span class="std std-ref">here</span></a> in the “Backend apps” section)</p>
+<p>The text-to-text task processing provider can be scaled by using a hosted service using the <a class="reference external" href="https://apps.nextcloud.com/apps/integration_openai">OpenAI and LocalAI integration (via OpenAI API)</a> like OpenAI or by hosting your own model on powerful hardware.</p>
+</li>
+<li><p>The vector DB performance</p>
+<div class="line-block">
+<div class="line">The vector DB performance can be scaled by using a dedicated or cluster setup for PostgreSQL with the pgvector extension.</div>
+<div class="line">The connection string of the external vector DB can be set using the environment variable <code class="docutils literal notranslate"><span class="pre">EXTERNAL_DB</span></code> during deployment in the “Deploy Options”.</div>
+</div>
+</li>
+<li><p>The embedding model performance</p>
+<div class="line-block">
+<div class="line">The embedding model performance can be scaled by using a hosted embedding service, locally or remotely hosted. It should be able to serve an OpenAI-compatible API.</div>
+<div class="line">The embedding service URL can be set using the environment variable <code class="docutils literal notranslate"><span class="pre">CC_EM_BASE_URL</span></code> during deployment in the “Deploy Options”. Other options like the model name, api key, or username and password can be set using the environment variables <code class="docutils literal notranslate"><span class="pre">CC_EM_MODEL_NAME</span></code>, <code class="docutils literal notranslate"><span class="pre">CC_EM_API_KEY</span></code>, <code class="docutils literal notranslate"><span class="pre">CC_EM_USERNAME</span></code>, and <code class="docutils literal notranslate"><span class="pre">CC_EM_PASSWORD</span></code> respectively.</div>
+</div>
+</li>
+</ol>
+<p>One part of the system that cannot be scaled yet is the parsing of the documents to extract text.
+This is currently done in a single instance of the <code class="docutils literal notranslate"><span class="pre">context_chat_backend</span></code> ExApp.
+It is a CPU-bound task so having a powerful CPU will help speed up the parsing process.</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">context_chat_backend</span></code> is already deployed, you can change these environment variables by redeploying it with the new values.</p>
+<ol class="arabic simple">
+<li><p>Go to Apps page -&gt; search for “Context Chat Backend”</p></li>
+<li><p>Disable and remove the app taking care the data is not removed</p></li>
+<li><p>Set the “Deploy Options” with the new environment variables</p></li>
+<li><p>Reinstall the app</p></li>
+</ol>
 </section>
 <section id="app-store">
 <h2>App store<a class="headerlink" href="#app-store" title="Link to this heading"></a></h2>
-<p>You can also find the <em>context_chat</em> app in our app store, where you can write a review: <a class="reference external" href="https://apps.nextcloud.com/apps/context_chat">https://apps.nextcloud.com/apps/context_chat</a></p>
+<p>You can also find the <code class="docutils literal notranslate"><span class="pre">context_chat</span></code> app in our app store, where you can write a review: <a class="reference external" href="https://apps.nextcloud.com/apps/context_chat">https://apps.nextcloud.com/apps/context_chat</a></p>
 </section>
 <section id="repository">
 <h2>Repository<a class="headerlink" href="#repository" title="Link to this heading"></a></h2>
