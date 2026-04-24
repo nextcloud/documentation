@@ -29,6 +29,17 @@ The HTTP user is different on the various Linux distributions:
 * The HTTP user and group in Arch Linux is http.
 * The HTTP user in openSUSE is wwwrun, and the HTTP group is www.
 
+.. note::
+
+   APCu is disabled by default for the command-line mode of PHP, which can cause issues with Nextcloud's ``occ`` command. Please make sure you set the ``apc.enable_cli`` parameter to ``1`` in your PHP CLI's ``php.ini`` configuration file or append ``--define apc.enable_cli=1`` each time you invoke ``occ`` - e.g.::
+
+     sudo -u www-data php --define apc.enable_cli=1 occ config:list system
+
+   If you fail to do this, you will receive output such as the following::
+
+     An unhandled exception has been thrown:
+     OCP\HintException: [0]: Memcache \OC\Memcache\APCu not available for local cache (Is the matching PHP module installed and enabled?)
+
 If your HTTP server is configured to use a different PHP version than the
 default (/usr/bin/php), ``occ`` should be run with the same version. For
 example, in CentOS 6.5 with SCL-PHP70 installed, the command looks like this::

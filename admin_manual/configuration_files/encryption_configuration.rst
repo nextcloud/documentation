@@ -389,6 +389,6 @@ Further Reading
 - :ref:`occ Command Reference: Encryption <encryption_label>`
 - `How Nextcloud uses encryption to protect your data <https://nextcloud.com/blog/encryption-in-nextcloud/>`_
 - `Technical impact of Authenticated Encryption <https://hackerone.com/reports/108082>`_
-- `Nextcloud SSE Implementation Details <encryption_details.rst>`_
+- :doc:`Nextcloud SSE Implementation Details <encryption_details>`
 - `Nextcloud Encryption (SSE & E2EE) Recovery Tools <https://github.com/nextcloud/encryption-recovery-tools>`_
 - `Nextcloud E2EE Server API App (required for E2EE usage) <https://github.com/nextcloud/end_to_end_encryption/>`_

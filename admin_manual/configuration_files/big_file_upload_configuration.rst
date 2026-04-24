@@ -172,5 +172,5 @@ enough for PHP, webservers or any load balancers involved.
 Federated Cloud Sharing
 -----------------------
 
-If you are using `Federated Cloud Sharing <federated_cloud_sharing_configuration.rst>`_ and want to share large files, you can increase the timeout values for requests to the federated servers.
+If you are using :doc:`Federated Cloud Sharing <federated_cloud_sharing_configuration>` and want to share large files, you can increase the timeout values for requests to the federated servers.
 Therefore, you can set ``davstorage.request_timeout`` in your ``config.php``. The default value is 30 seconds.

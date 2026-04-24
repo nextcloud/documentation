@@ -14,7 +14,7 @@ following commands in a terminal::
 
 * This installs the packages for the Nextcloud core system. 
   If you are planning on running additional apps, keep in mind that they might
-  require additional packages.  See `Prerequisites for manual installation <source_installation.rst#prerequisites-for-manual-installation>`_ for details.
+  require additional packages.  See :ref:`Prerequisites for manual installation <prerequisites_label>` for details.
 
 Now you need to create a database user and the database itself by using the
 MySQL command line interface. The database tables will be created by Nextcloud

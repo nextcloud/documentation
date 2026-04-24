@@ -14,7 +14,7 @@ Files and notifications
    confirm to grant access.
 
    *Or*: In Nextcloud's web GUI, go to the
-   `user preferences <../userpreferences.rst>`_, go to
+   :doc:`user preferences <../userpreferences>`, go to
    **Security**. Generate an App password, click "Generate QR code" and
    tap the QR scanner icon in the Nextcloud app, point your phone's
    camera towards the screen.
@@ -33,7 +33,7 @@ With the Nextcloud mobile app
 3. Now, DAVx⁵ will open Nextcloud's Webflow login window, where you
    will have to enter your credentials and grant access.
 4. DAVx⁵ will open and ask you to create an account. Set the account
-   name to one of your choosing, and set **Contact Group Method** to
+   name to one of your choosing, and set **Contact group method** to
    **Groups are per-contact categories**.
 5. After this, DAVx⁵ will close and the Nextcloud app reappears. In
    order to finish setup, you have to manually launch DAVx⁵ again.
@@ -55,10 +55,13 @@ steps are required:
 2. Optionally install OpenTasks (`Google Play Store <https://play.google.com/store/apps/details?id=org.dmfs.tasks>`__ or
    `F-Droid <https://f-droid.org/packages/org.dmfs.tasks/>`__).
 3. Create a new account ("+" button).
-4. Select **Connection with URL and username**.
-   **Base URL:** URL of your Nextcloud instance (e.g. ``https://sub.example.com/remote.php/dav``) and your credentials.
-5. For the **Contact Group Method:** choose the option ``Groups are per-contact categories``.
-6. Click **Connect**.
+4. Select **Connection with URL and username** and complete the form.
+   **Base URL** is the URL of your Nextcloud instance (e.g. ``https://sub.example.com/remote.php/dav``),
+   **Username** is your Nextcloud username, and for **Password** use a :ref:`dedicated App password <managing_devices>`
+   instead of your account password.
+5. Click **Register**.
+6. In **Contact group method**, choose the option ``Groups are per-contact categories``; then select
+   **Create Account**.
 7. Select the data you want to sync.
 8. When requested, grant access permissions to DAVx⁵ for your
    contacts, calendars and optionally tasks.
