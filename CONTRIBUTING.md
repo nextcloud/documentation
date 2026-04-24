@@ -24,7 +24,8 @@ developer manuals.
 - **GitHub Discussions / Issues** – open an issue in this repository for
   documentation-specific questions and suggestions.
 - **Nextcloud Community Forum** – <https://help.nextcloud.com>
-- **Matrix / IRC** – `#nextcloud-dev` on `matrix.org` for real-time chat with
+- **Talk room** – join the public documentation chat room at
+  <https://cloud.nextcloud.com/call/uuz59j6z> for real-time chat with
   contributors.
 
 ---

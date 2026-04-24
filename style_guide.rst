@@ -283,8 +283,25 @@ Internal cross-references
 Prefer internal cross-references over hard-coded URLs so that links survive
 page moves.
 
+**Same manual — use** ``:doc:``
+   When the target page is in the same manual as the current page, always use a
+   ``:doc:`` reference with a path relative to the current file. Never use a
+   hard-coded ``https://docs.nextcloud.com`` URL for within-manual links::
+
+     See :doc:`../configuration_server/config_sample_php_parameters` for all
+     available options.
+
+**Different manual — use a** ``docs.nextcloud.com/latest/`` **URL**
+   When linking from one manual to a page in a different manual (e.g. from the
+   User Manual to the Administration Manual), use an absolute URL with
+   ``/latest/`` as the version segment. The build system automatically replaces
+   ``/latest/`` with the correct version number for stable branches::
+
+     See `Backup configuration <https://docs.nextcloud.com/latest/admin_manual/maintenance/backup.html>`_
+     for details.
+
 ``:doc:``
-   Reference another page by its path relative to the manual root::
+   Reference another page by its path relative to the current file::
 
      See :doc:`../configuration_server/config_sample_php_parameters` for all
      available options.
