@@ -174,7 +174,7 @@ Trashbin contents are not transferred::
 reference.)
 
 Users may also transfer files or folders selectively by themselves.
-See `user documentation <../../user_manual/files/transfer_ownership.html>`_ for details.
+See `user documentation <https://docs.nextcloud.com/server/latest/user_manual/en/files/transfer_ownership.html>`_ for details.
 
 
 Creating persistent file Shares

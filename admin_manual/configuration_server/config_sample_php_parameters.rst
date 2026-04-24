@@ -1074,7 +1074,7 @@ Enable SMTP class debugging.
 .. note::
 
   ``loglevel`` will likely need to be adjusted too. See docs:
-    email_configuration.rst#enabling-debug-mode
+    https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/email_configuration.html#enabling-debug-mode
 
 Defaults to ``false``
 
