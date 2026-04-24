@@ -190,6 +190,18 @@ on your Nextcloud data directory stay consistent with the web server.</p>
 <li><p>The HTTP user and group in Arch Linux is http.</p></li>
 <li><p>The HTTP user in openSUSE is wwwrun, and the HTTP group is www.</p></li>
 </ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>APCu is disabled by default for the command-line mode of PHP, which can cause issues with Nextcloud’s <code class="docutils literal notranslate"><span class="pre">occ</span></code> command. Please make sure you set the <code class="docutils literal notranslate"><span class="pre">apc.enable_cli</span></code> parameter to <code class="docutils literal notranslate"><span class="pre">1</span></code> in your PHP CLI’s <code class="docutils literal notranslate"><span class="pre">php.ini</span></code> configuration file or append <code class="docutils literal notranslate"><span class="pre">--define</span> <span class="pre">apc.enable_cli=1</span></code> each time you invoke <code class="docutils literal notranslate"><span class="pre">occ</span></code> - e.g.:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="o">--</span><span class="n">define</span> <span class="n">apc</span><span class="o">.</span><span class="n">enable_cli</span><span class="o">=</span><span class="mi">1</span> <span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="nb">list</span> <span class="n">system</span>
+</pre></div>
+</div>
+<p>If you fail to do this, you will receive output such as the following:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>An unhandled exception has been thrown:
+OCP\HintException: [0]: Memcache \OC\Memcache\APCu not available for local cache (Is the matching PHP module installed and enabled?)
+</pre></div>
+</div>
+</div>
 <p>If your HTTP server is configured to use a different PHP version than the
 default (/usr/bin/php), <code class="docutils literal notranslate"><span class="pre">occ</span></code> should be run with the same version. For
 example, in CentOS 6.5 with SCL-PHP70 installed, the command looks like this:</p>
