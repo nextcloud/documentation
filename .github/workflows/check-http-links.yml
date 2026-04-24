@@ -45,8 +45,7 @@ jobs:
               r'|10\.'
               r'|example\.com'
               r'|www\.example'
-              r'|<'           # placeholder like http://<host>
-              r'|\{'          # XML namespace or template like {http://...}
+              r'|<[a-zA-Z]'   # placeholder like http://<hostname> or http://<url of ...>
               r')',
               re.IGNORECASE,
           )

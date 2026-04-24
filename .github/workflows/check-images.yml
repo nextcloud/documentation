@@ -40,7 +40,7 @@ jobs:
           FAIL=0
           for file in ${{ steps.changed.outputs.files }}; do
             [ -f "$file" ] || continue
-            # Find every .. figure:: line and check that the next few lines contain :alt:
+            # Find every .. figure:: line and check that the option block contains :alt:
             python3 - "$file" <<'PYEOF'
           import sys, re
 
@@ -51,18 +51,33 @@ jobs:
           fail = False
           i = 0
           while i < len(lines):
-              # Match a figure directive (possibly indented)
-              if re.match(r'\s*\.\. figure::', lines[i]):
-                  # Look for :alt: within the next 10 lines (covers options block)
+              m = re.match(r'(\s*)\.\. figure::', lines[i])
+              if m:
+                  # The directive sits at indent level `base_indent`.
+                  # Its option block consists of lines indented strictly deeper than
+                  # `base_indent` and starting with ':'.  Blank lines between options
+                  # are also allowed.  Anything at base_indent or less signals that
+                  # the option block has ended.
+                  base_indent = len(m.group(1))
                   has_alt = False
-                  for j in range(i + 1, min(i + 11, len(lines))):
-                      stripped = lines[j].strip()
+                  j = i + 1
+                  while j < len(lines):
+                      line = lines[j]
+                      stripped = line.strip()
+                      if stripped == '':
+                          j += 1
+                          continue
+                      current_indent = len(line) - len(line.lstrip())
+                      if current_indent <= base_indent:
+                          # Back to or past the directive's own indent — options ended
+                          break
                       if re.match(r':alt:', stripped):
                           has_alt = True
                           break
-                      # Stop if we hit something that is clearly not a directive option
-                      if stripped and not stripped.startswith(':') and not stripped.startswith('..'):
+                      if not stripped.startswith(':'):
+                          # Non-option content (e.g. caption) — options are done
                           break
+                      j += 1
                   if not has_alt:
                       print(f"{path}:{i + 1}: figure directive is missing :alt: text")
                       fail = True
