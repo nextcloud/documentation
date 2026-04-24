@@ -33,7 +33,7 @@ With the Nextcloud mobile app
 3. Now, DAVx⁵ will open Nextcloud's Webflow login window, where you
    will have to enter your credentials and grant access.
 4. DAVx⁵ will open and ask you to create an account. Set the account
-   name to one of your choosing, and set **Contact Group Method** to
+   name to one of your choosing, and set **Contact group method** to
    **Groups are per-contact categories**.
 5. After this, DAVx⁵ will close and the Nextcloud app reappears. In
    order to finish setup, you have to manually launch DAVx⁵ again.
@@ -57,8 +57,8 @@ steps are required:
 3. Create a new account ("+" button).
 4. Select **Connection with URL and username** and complete the form.
    **Base URL** is the URL of your Nextcloud instance (e.g. ``https://sub.example.com/remote.php/dav``),
-   while **Username** and **Password** are your credentials. You should use an `app password <../session_management.html#managing-devices>`_
-   instead of your own password.
+   **Username** is your Nextcloud username, and for **Password** use a :ref:`dedicated App password <managing_devices>`
+   instead of your account password.
 5. Click **Register**.
 6. In **Contact group method**, choose the option ``Groups are per-contact categories``; then select
    **Create Account**.
