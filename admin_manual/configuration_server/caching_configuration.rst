@@ -341,7 +341,7 @@ prevent session corruption when using Redis as your session handler: ::
 More information on configuration of phpredis session handler can be found on the
 `PhpRedis GitHub page <https://github.com/phpredis/phpredis>`_
 
-..  _install_redis_label:
+.. _install_redis_label:
 
 
 Memcached

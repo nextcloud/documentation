@@ -4,7 +4,7 @@ App: Local Text-To-Speech (text2speech_kokoro)
 
 .. _ai-app-text2speech_kokoro:
 
-The *text2speech_kokoro* app is one of the apps that provide Text-To-Speech functionality in Nextcloud and act as a speech generation backend for the :ref:`Nextcloud Assistant app<ai-app-assistant>` and :ref:`other apps making use of the core `Text-To-Speech Task type<t2s-consumer-apps>`. The *text2speech_kokoro* app specifically runs only open source models and does so entirely on-premises. Nextcloud can provide customer support upon request, please talk to your account manager for the possibilities.
+The *text2speech_kokoro* app is one of the apps that provide Text-To-Speech functionality in Nextcloud and act as a speech generation backend for the :ref:`Nextcloud Assistant app<ai-app-assistant>` and :ref:`other apps making use of the core Text-To-Speech Task type <t2s-consumer-apps>`. The *text2speech_kokoro* app specifically runs only open source models and does so entirely on-premises. Nextcloud can provide customer support upon request, please talk to your account manager for the possibilities.
 
 This app uses `Kokoro <https://github.com/hexgrad/kokoro>`_ under the hood.
 

@@ -1,4 +1,4 @@
- .. _managing-deploy-daemons:
+.. _managing-deploy-daemons:
 
 Managing Deploy Daemons
 =======================

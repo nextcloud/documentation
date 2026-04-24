@@ -1,4 +1,4 @@
-..  _navigation:
+.. _design-introduction:
 
 ============
 Introduction

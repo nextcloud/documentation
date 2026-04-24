@@ -54,7 +54,7 @@ Rules
 * Do not edit the styling of this button.
 * Only **one** button is allowed here.
 
-..  _appnavigation:
+.. _appnavigation:
 
 =====================
 App navigation menu

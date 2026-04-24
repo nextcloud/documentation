@@ -1,6 +1,6 @@
 .. sectionauthor:: John Molakvoæ <skjnldsv@protonmail.com>
 .. codeauthor:: John Molakvoæ <skjnldsv@protonmail.com>
-..  _css:
+.. _css:
 
 ===
 CSS
@@ -9,7 +9,7 @@ CSS
 While the recommended way to develop the user interface is using Vue with the Nextcloud provided components,
 Nextcloud also provides CSS variables and classes to style components to have a consistent look.
 
-..  _cssvars:
+.. _cssvars:
 
 
 CSS variables
@@ -233,7 +233,7 @@ Element structure variables
 | ``--sidebar-max-width``                      | ``500px``                                      | Maximum width of the app sidebar on wide screens                                                          |
 +----------------------------------------------+------------------------------------------------+-----------------------------------------------------------------------------------------------------------+
 
-..  _cssclasses:
+.. _cssclasses:
 
 CSS classes
 ===========

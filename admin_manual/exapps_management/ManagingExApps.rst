@@ -35,7 +35,7 @@ Options
     * ``--silent`` *[optional]* - do not print to console
     * ``--test-deploy-mode`` *[optional]* - test deploy mode with additional status checks and slightly different logic
 
- .. _advanced_deploy_options_cli:
+.. _advanced_deploy_options_cli:
 
 Advanced Deploy Options
 ***********************

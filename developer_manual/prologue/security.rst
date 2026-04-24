@@ -8,7 +8,7 @@ This guideline highlights some of the most common security problems and how to p
 
 .. note:: **Program defensively**: for instance always check for CSRF or escape strings, even if you do not need it. This prevents future problems where you might miss a change that leads to a security hole.
 
-.. note:: All App Framework security features depend on the call of the controller through :php:meth:`OCA\\AppFramework\\App::main`. If the controller method is executed directly, no security checks are being performed!
+.. note:: All App Framework security features depend on the call of the controller through ``OCA\AppFramework\App::main``. If the controller method is executed directly, no security checks are being performed!
 
 SQL injection
 -------------
@@ -107,7 +107,7 @@ Clickjacking
 
 To prevent such attacks Nextcloud sends the `X-Frame-Options` header to all template responses. Don't remove this header if you don't really need it!
 
-This is already built into Nextcloud in :php:class:`OC_Template`.
+This is already built into Nextcloud in ``OC_Template``.
 
 Code executions / file inclusions
 ---------------------------------
