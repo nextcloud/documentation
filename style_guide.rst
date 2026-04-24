@@ -221,11 +221,15 @@ correctly. The most common languages used in this documentation are:
         sudo -u www-data php occ maintenance:install
 
 ``.. code-block:: php``
-   PHP code and ``config.php`` snippets::
+   PHP code and ``config.php`` snippets. When showing a single key from
+   ``config.php``, include enough context to make the placement clear::
 
      .. code-block:: php
 
-        'memcache.local' => '\OC\Memcache\APCu',
+        $CONFIG = [
+            // ...
+            'memcache.local' => '\OC\Memcache\APCu',
+        ];
 
 ``.. code-block:: nginx`` / ``.. code-block:: apache``
    Web server configuration blocks.
