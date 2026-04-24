@@ -24,9 +24,9 @@ Calendar
 Contacts
 --------
 
-1. Repeat steps 1–7 from the Calendar instructions. If you already have setup the Calendar synchronization, you can use the same account for this.
+1. Repeat steps 1–7 from the Calendar instructions. If you already have set up the Calendar synchronization, you can use the same account for this.
 
-2. Scroll to the bottom of the dialog box, select "Advanced mailbox settings". Scroll once more to the bottom of the dialog box and paste your CardDAV URL in the field labelled "Contacts server (CardDAV)".
+2. From the "Advanced mailbox settings" screen, scroll to the bottom of the dialog box and paste your CardDAV URL in the field labelled "Contacts server (CardDAV)".
 
 3. Replace the path "principals" within the URL with "addressbooks".
 
@@ -39,7 +39,7 @@ Troubleshooting: 2FA
 
 1. Log into Nextcloud. Click on your user icon, then click on "Settings".
 
-2. Click on "Security", then locate a button labeled "Create new app password". Next to this button, enter "Windows 10 Calendar app". Then, click the button, copy and paste the password. Use this password instead of your Nextcloud password for Step 8.
+2. Click on "Security", then locate a button labeled "Create new app password". Next to this button, enter "Windows 10 Calendar app". Then, click the button, copy and paste the password. Use this password instead of your Nextcloud password when prompted for credentials during setup, for example in Calendar step 8 or Contacts step 4.
 
 Troubleshooting: TLSv1.2
 ------------------------
