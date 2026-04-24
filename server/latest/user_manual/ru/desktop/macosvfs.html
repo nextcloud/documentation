@@ -7,7 +7,7 @@
   <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>macOS Virtual Files Client &mdash; документация Nextcloud latest User Manual latest</title>
+  <title>Клиент виртуальных файлов macOS &mdash; документация Nextcloud latest User Manual latest</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
@@ -68,7 +68,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../talk/index.html">Talk</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Desktop Client</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="installation.html">Установка</a></li>
-<li class="toctree-l2"><a class="reference internal" href="uninstallation.html">Uninstallation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="uninstallation.html">Удаление</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="usage.html">Using the Synchronization Client</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="usage.html#systray-icon">Systray Icon</a></li>
 <li class="toctree-l3"><a class="reference internal" href="usage.html#configuring-nextcloud-account-settings">Configuring Nextcloud Account Settings</a></li>
@@ -80,7 +80,7 @@
 <li class="toctree-l3"><a class="reference internal" href="usage.html#using-the-network-window">Using the Network Window</a></li>
 <li class="toctree-l3"><a class="reference internal" href="usage.html#using-the-ignored-files-editor">Using the Ignored Files Editor</a></li>
 <li class="toctree-l3 current"><a class="reference internal" href="usage.html#virtual-files-on-macos">Virtual Files on macOS</a><ul class="current">
-<li class="toctree-l4 current"><a class="current reference internal" href="#">macOS Virtual Files Client</a></li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">Клиент виртуальных файлов macOS</a></li>
 </ul>
 </li>
 </ul>
@@ -90,7 +90,7 @@
 <li class="toctree-l2"><a class="reference internal" href="configfile.html">Configuration File</a></li>
 <li class="toctree-l2"><a class="reference internal" href="envvars.html">Environment Variables</a></li>
 <li class="toctree-l2"><a class="reference internal" href="autoupdate.html">Автоматическое обновление</a></li>
-<li class="toctree-l2"><a class="reference internal" href="updatechannel.html">Update channels</a></li>
+<li class="toctree-l2"><a class="reference internal" href="updatechannel.html">Каналы Обновления</a></li>
 <li class="toctree-l2"><a class="reference internal" href="conflicts.html">Конфликты</a></li>
 <li class="toctree-l2"><a class="reference internal" href="faq.html">Часто задаваемые вопросы</a></li>
 </ul>
@@ -118,7 +118,7 @@
       <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="index.html">Desktop Client</a></li>
           <li class="breadcrumb-item"><a href="usage.html">Using the Synchronization Client</a></li>
-      <li class="breadcrumb-item active">macOS Virtual Files Client</li>
+      <li class="breadcrumb-item active">Клиент виртуальных файлов macOS</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/desktop/macosvfs.rst" class="fa fa-github"> Редактировать на GitHub</a>
       </li>
@@ -129,78 +129,58 @@
            <div itemprop="articleBody">
              
   <section id="macos-virtual-files-client">
-<h1>macOS Virtual Files Client<a class="headerlink" href="#macos-virtual-files-client" title="Ссылка на этот заголовок"></a></h1>
-<p>On macOS, our client can also seamlessly integrate Nextcloud files into macOS
-as a file provider extension. Any newly configured Nextcloud account will have
-the integration enabled by default.</p>
+<h1>Клиент виртуальных файлов macOS<a class="headerlink" href="#macos-virtual-files-client" title="Ссылка на этот заголовок"></a></h1>
+<p>В macOS наш клиент также может легко интегрировать файлы Nextcloud в macOS в качестве расширения поставщика файлов. Для любой вновь настроенной учётной записи Nextcloud интеграция будет включена по умолчанию.</p>
 <section id="supported-features">
-<h2>Supported features<a class="headerlink" href="#supported-features" title="Ссылка на этот заголовок"></a></h2>
+<h2>Поддерживаемые функции<a class="headerlink" href="#supported-features" title="Ссылка на этот заголовок"></a></h2>
 <ul class="simple">
-<li><p>Keeping files or whole folders available offline</p></li>
-<li><p>Freeing up local disk space by evicting local copies without deleting items</p></li>
-<li><p>Intelligent and automatic local data eviction</p></li>
-<li><p>File previews within Finder for files which are not downloaded yet</p></li>
-<li><p>Support for Apple-specific formats, for example Pages, Numbers or Keynote bundles</p></li>
-<li><p>Support for server-side file locking (if supported by the connected server)</p></li>
-<li><p>“Edit locally” support</p></li>
-<li><p>Sharing with other users</p></li>
-<li><p>Server-side actions integrated directly in Finder’s context menu</p></li>
-<li><p>Automatic discovery of server-side changes</p></li>
+<li><p>Сохранение файлов или целых папок доступными в автономном режиме</p></li>
+<li><p>Освобождение локального дискового пространства путем удаления локальных копий без удаления элементов.</p></li>
+<li><p>Интеллектуальное и автоматическое удаление локальных данных</p></li>
+<li><p>Предварительный просмотр файлов в Finder для файлов, которые ещё не загружены.</p></li>
+<li><p>Поддержка форматов, специфичных для Apple, например Pages, Numbers или пакетов Keynote.</p></li>
+<li><p>Поддержка блокировки файлов на стороне сервера (если поддерживается подключенным сервером)</p></li>
+<li><p>Поддержка «Редактировать локально»</p></li>
+<li><p>Совместное использование с другими пользователями</p></li>
+<li><p>Действия на стороне сервера интегрированы непосредственно в контекстное меню Finder</p></li>
+<li><p>Автоматическое обнаружение изменений на стороне сервера</p></li>
 </ul>
 </section>
 <section id="configuration">
-<h2>Configuration<a class="headerlink" href="#configuration" title="Ссылка на этот заголовок"></a></h2>
-<p>Virtual files-related settings can be adjusted on a per-account basis
-via the Nextcloud desktop client’s settings window.</p>
-<img alt="Screenshot of client settings for the file provider extension" src="../../_images/macosvfs-settings.jpg" />
-<p>Here the integration into Finder can be enabled or disabled.</p>
-<p>When disabling the file provider extension while still having unsynchronized
-changes, macOS will save the unsynchronized items in a folder that is
-automatically revealed after the integration is disabled.</p>
+<h2>Конфигурация<a class="headerlink" href="#configuration" title="Ссылка на этот заголовок"></a></h2>
+<p>Настройки, связанные с виртуальными файлами, можно настроить для каждой учётной записи через окно настроек настольного клиента Nextcloud.</p>
+<img alt="Скриншот настроек клиента для расширения поставщика файлов" src="../../_images/macosvfs-settings.jpg" />
+<p>Здесь можно включить или отключить интеграцию с Finder.</p>
+<p>При отключении расширения поставщика файлов при сохранении несинхронизированных изменений macOS сохранит несинхронизированные элементы в папке, которая автоматически открывается после отключения интеграции.</p>
 </section>
 <section id="finder-integration">
-<h2>Finder integration<a class="headerlink" href="#finder-integration" title="Ссылка на этот заголовок"></a></h2>
-<p>On macOS, remote storage like a Nextcloud files account appears like a
-dedicated location in the Finder sidebar. The actual location of the
-content on disk is defined by macOS.</p>
-<img alt="Finder sidebar showing a Nextcloud file provider domain" src="../../_images/macosvfs-finder-sidebar.jpg" />
+<h2>Интеграция с Finder<a class="headerlink" href="#finder-integration" title="Ссылка на этот заголовок"></a></h2>
+<p>В macOS удалённое хранилище, такое как учетная запись файлов Nextcloud, отображается как выделенное место на боковой панели Finder. Фактическое расположение содержимого на диске определяется macOS.</p>
+<img alt="Боковая панель Finder, показывающая домен поставщика файлов Nextcloud" src="../../_images/macosvfs-finder-sidebar.jpg" />
 <div class="admonition note">
 <p class="admonition-title">Примечание</p>
-<p>To accelerate server-side change detection, we recommend enabling the
-<code class="docutils literal notranslate"><span class="pre">notify_push</span></code> app on your Nextcloud server. This app will notify
-the desktop client of changes on the server as soon as they happen,
-reducing the time it takes for changes to appear in Finder.
-Otherwise the client needs to poll the server which will result in an
-increased delay between a change on the server and its local visibility.</p>
+<p>Чтобы ускорить обнаружение изменений на стороне сервера, мы рекомендуем включить приложение notify_push на вашем сервере Nextcloud. Это приложение будет уведомлять настольный клиент об изменениях на сервере, как только они произойдут, сокращая время, необходимое для появления изменений в Finder. В противном случае клиенту потребуется опросить сервер, что приведёт к увеличению задержки между изменением на сервере и его локальной видимостью.</p>
 </div>
 </section>
 <section id="sync-status-indicators">
-<h2>Sync status indicators<a class="headerlink" href="#sync-status-indicators" title="Ссылка на этот заголовок"></a></h2>
-<p>Similar to classic synchronization folders, Finder displays status
-indicators next to items. Unlike the custom indicators in classic
-synchronization folders, these standardized indicators are provided by macOS to
-ensure a consistent appearance across all cloud storage apps which a user may
-use on their system.</p>
+<h2>Индикаторы состояния синхронизации<a class="headerlink" href="#sync-status-indicators" title="Ссылка на этот заголовок"></a></h2>
+<p>Подобно классическим папкам синхронизации, Finder отображает индикаторы состояния рядом с элементами. В отличие от пользовательских индикаторов в классических папках синхронизации, эти стандартизированные индикаторы предоставляются macOS для обеспечения единообразного отображения во всех приложениях облачного хранилища, которые пользователь может использовать в своей системе.</p>
 <ul class="simple">
-<li><p><em>Cloud with downward arrow</em>: The item and its descendants are not downloaded
-yet. They can be downloaded, assuming a network connection is available.</p></li>
-<li><p><em>Outlined cloud</em>: The item is not fully uploaded yet in its current local
-state.</p></li>
-<li><p><em>Strikethrough cloud</em>: The item is excluded from synchronization.</p></li>
-<li><p><em>Pie chart</em>: The item is currently being uploaded or downloaded, and the progress
-is visualized.</p></li>
+<li><p><em>Облако со стрелкой вниз</em>: элемент и его потомки ещё не загружены. Их можно загрузить при условии наличия сетевого подключения.</p></li>
+<li><p><em>Контур облака</em>: элемент ещё не полностью загружен в своем текущем локальном состоянии.</p></li>
+<li><p><em>Зачеркнутое облако</em>: элемент исключён из синхронизации.</p></li>
+<li><p><em>Круговая диаграмма</em>: элемент в данный момент загружается или загружается, и прогресс визуализируется.</p></li>
 <li><p><em>Filled circle with a pin</em>: The item is available offline and will
 be kept locally.</p></li>
-<li><p><em>No icon</em>: The item is available offline and up to date.</p></li>
+<li><p><em>Нет значка</em>: элемент доступен офлайн и обновлен.</p></li>
 </ul>
 </section>
 <section id="context-menu-actions">
-<h2>Context menu actions<a class="headerlink" href="#context-menu-actions" title="Ссылка на этот заголовок"></a></h2>
-<img alt="Screenshot of Finder with an open context menu" src="../../_images/macosvfs-context-menu.jpg" />
-<p>The file provider extension also provides special Nextcloud features through
-the context menu in Finder.</p>
+<h2>Действия контекстного меню<a class="headerlink" href="#context-menu-actions" title="Ссылка на этот заголовок"></a></h2>
+<img alt="Скриншот Finder с открытым контекстным меню" src="../../_images/macosvfs-context-menu.jpg" />
+<p>Расширение поставщика файлов также предоставляет специальные функции Nextcloud через контекстное меню в Finder.</p>
 <section id="keep-downloaded">
-<h3>Keep Downloaded<a class="headerlink" href="#keep-downloaded" title="Ссылка на этот заголовок"></a></h3>
+<h3>Продолжайте скачивать<a class="headerlink" href="#keep-downloaded" title="Ссылка на этот заголовок"></a></h3>
 <p>Files and folders can be marked to be kept downloaded and available offline
 permanently. If this is chosen on folders, it will also apply to all their
 contents. This is especially useful for users with limited or no network
@@ -214,49 +194,29 @@ items.</p>
 «Always keep downloaded» on the location root in the Finder sidebar.</p>
 </section>
 <section id="locking">
-<h3>Locking<a class="headerlink" href="#locking" title="Ссылка на этот заголовок"></a></h3>
-<img alt="Screenshot of Finder showing the successful locking of a file" src="../../_images/macosvfs-file-locking.jpg" />
-<p>If the server supports file locking, the client will offer manual locking and
-unlocking of files in Finder.</p>
+<h3>Блокировка<a class="headerlink" href="#locking" title="Ссылка на этот заголовок"></a></h3>
+<img alt="Снимок экрана Finder, показывающий успешную блокировку файла" src="../../_images/macosvfs-file-locking.jpg" />
+<p>Если сервер поддерживает блокировку файлов, клиент предложит ручную блокировку и разблокировку файлов в Finder.</p>
 </section>
 <section id="sharing">
-<h3>Sharing<a class="headerlink" href="#sharing" title="Ссылка на этот заголовок"></a></h3>
-<img alt="Screenshot of Finder showing the share management" src="../../_images/macosvfs-file-sharing.jpg" />
-<p>When the server supports sharing and the item is allowed to be shared,
-then you can create new shares or manage existing shares for an item directly
-from the context menu in Finder, as in the Nextcloud web interface.</p>
+<h3>Общий доступ<a class="headerlink" href="#sharing" title="Ссылка на этот заголовок"></a></h3>
+<img alt="Скриншот окна Finder, показывающий управление общим доступом" src="../../_images/macosvfs-file-sharing.jpg" />
+<p>Когда сервер поддерживает общий доступ и к элементу разрешён общий доступ, вы можете создавать новые общие ресурсы или управлять существующими общими ресурсами для элемента непосредственно из контекстного меню в Finder, как в веб-интерфейсе Nextcloud.</p>
 </section>
 <section id="file-actions">
-<h3>File actions<a class="headerlink" href="#file-actions" title="Ссылка на этот заголовок"></a></h3>
-<p>If the server has apps installed which provide file actions for the selected
-file types, these actions will also be available in the context menu in Finder.
-This allows you to use server-side features of your Nextcloud instance directly
-from the Finder.</p>
+<h3>Действия с файлами<a class="headerlink" href="#file-actions" title="Ссылка на этот заголовок"></a></h3>
+<p>Если на сервере установлены приложения, которые обеспечивают действия с файлами для выбранных типов файлов, эти действия также будут доступны в контекстном меню Finder. Это позволяет вам использовать серверные функции вашего экземпляра Nextcloud непосредственно из Finder.</p>
 </section>
 </section>
 <section id="known-issues">
-<h2>Known issues<a class="headerlink" href="#known-issues" title="Ссылка на этот заголовок"></a></h2>
+<h2>Известные проблемы<a class="headerlink" href="#known-issues" title="Ссылка на этот заголовок"></a></h2>
 <section id="macos-extensions-conflict">
-<h3>macOS Extensions conflict<a class="headerlink" href="#macos-extensions-conflict" title="Ссылка на этот заголовок"></a></h3>
-<p>Due to technical limitations in macOS which are imposed by Apple,
-it is not possible to have the Finder integration for classic sync folders
-running in parallel to an enabled virtual files integration.
-This means that item decorations and context menu options will be
-unavailable for classic sync folders while the file provider extension is
-enabled.</p>
+<h3>Конфликт расширений macOS<a class="headerlink" href="#macos-extensions-conflict" title="Ссылка на этот заголовок"></a></h3>
+<p>Из-за технических ограничений macOS, наложенных Apple, интеграцию Finder для классических папок синхронизации невозможно запустить параллельно с включенной интеграцией виртуальных файлов. Это означает, что декораторы элементов и параметры контекстного меню будут недоступны для папок классической синхронизации, пока включено расширение поставщика файлов.</p>
 </section>
 <section id="alias-files">
-<h3>Alias files<a class="headerlink" href="#alias-files" title="Ссылка на этот заголовок"></a></h3>
-<p>When opening a macOS alias file stored on Nextcloud for the first time on a
-device where it has not yet been downloaded, the file may open as a binary
-document in a text editor instead of jumping to its target. This happens
-because macOS decides how to open a file before downloading it, and alias files
-carry no recognisable file extension or type information on the server — the
-only way to identify them is by reading their content. Once the file has been
-opened or downloaded once, Nextcloud Desktop learns that it is an alias and
-stores that information locally, so all subsequent opens will work correctly.
-To avoid the issue entirely, right-click the alias file in Finder and choose
-<strong>Keep Downloaded</strong> before opening it for the first time.</p>
+<h3>Файлы псевдонимов<a class="headerlink" href="#alias-files" title="Ссылка на этот заголовок"></a></h3>
+<p>При первом открытии файла псевдонима macOS, хранящегося в Nextcloud, на устройстве, где он ещё не был загружен, файл может открыться как двоичный документ в текстовом редакторе вместо перехода к цели. Это происходит потому, что macOS решает, как открыть файл перед его загрузкой, а файлы псевдонимов не несут на сервере распознаваемой информации о расширении файла или типе — единственный способ идентифицировать их — прочитать их содержимое. После того как файл был открыт или загружен один раз, Nextcloud Desktop узнает, что это псевдоним, и сохранит эту информацию локально, поэтому все последующие открытия будут работать правильно. Чтобы полностью избежать этой проблемы, щелкните правой кнопкой мыши файл псевдонима в Finder и выберите <strong>Продолжить загрузку</strong>, прежде чем открывать его в первый раз.</p>
 </section>
 </section>
 </section>
@@ -385,7 +345,7 @@ To avoid the issue entirely, right-click the alias file in Finder and choose
     </span>
     <div class="rst-other-versions">
       <dl>
-        <dt>🌐 Languages</dt>
+        <dt>🌐  Языки</dt>
         
           <dd style="width: 32%; vertical-align: top;">
             <a href="/server/latest/user_manual/ar/"

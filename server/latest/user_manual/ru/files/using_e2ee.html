@@ -7,7 +7,7 @@
   <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Using end-to-end encryption &mdash; документация Nextcloud latest User Manual latest</title>
+  <title>Использование сквозного шифрования &mdash; документация Nextcloud latest User Manual latest</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="../../_static/copybutton.css?v=76b2166b" />
@@ -65,15 +65,15 @@
 <li class="toctree-l1"><a class="reference internal" href="../activity.html">Using the Activity app</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Файлы и синхронизация</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="accessing.html">Доступ к вашим файлам</a></li>
-<li class="toctree-l2"><a class="reference internal" href="managing.html">Managing your files</a></li>
-<li class="toctree-l2"><a class="reference internal" href="collaboration.html">Sharing &amp; collaboration</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="security.html">Security &amp; encryption</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="managing.html">Управление вашими файлами</a></li>
+<li class="toctree-l2"><a class="reference internal" href="collaboration.html">Совместное использование и сотрудничество</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="security.html">Безопасность и шифрование</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="encrypting_files.html">Использование шифрования на стороне сервера</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Using end-to-end encryption</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#enabling-e2ee">Enabling E2EE</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#encrypting-a-folder">Encrypting a folder</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#adding-an-e2ee-device">Adding an E2EE device</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#displaying-the-mnemonic">Displaying the mnemonic</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Использование сквозного шифрования</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#enabling-e2ee">Включение E2EE</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#encrypting-a-folder">Шифрование папки</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#adding-an-e2ee-device">Добавление устройства E2EE</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#displaying-the-mnemonic">Отображение мнемоники</a></li>
 </ul>
 </li>
 </ul>
@@ -105,8 +105,8 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../contents.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="index.html">Файлы и синхронизация</a></li>
-          <li class="breadcrumb-item"><a href="security.html">Security &amp; encryption</a></li>
-      <li class="breadcrumb-item active">Using end-to-end encryption</li>
+          <li class="breadcrumb-item"><a href="security.html">Безопасность и шифрование</a></li>
+      <li class="breadcrumb-item active">Использование сквозного шифрования</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/user_manual/files/using_e2ee.rst" class="fa fa-github"> Редактировать на GitHub</a>
       </li>
@@ -117,95 +117,91 @@
            <div itemprop="articleBody">
              
   <section id="using-end-to-end-encryption">
-<h1>Using end-to-end encryption<a class="headerlink" href="#using-end-to-end-encryption" title="Ссылка на этот заголовок"></a></h1>
-<p>If enabled server side, Nextcloud provides the possibility to encrypt your files on your devices.
-This is called end-to-end encryption, or E2EE, because the files are encrypted on your device and only decrypted on your device.
-The server never sees the unencrypted files, further protecting user privacy and data security.</p>
+<h1>Использование сквозного шифрования<a class="headerlink" href="#using-end-to-end-encryption" title="Ссылка на этот заголовок"></a></h1>
+<p>Если включена серверная часть, Nextcloud предоставляет возможность шифровать ваши файлы на ваших устройствах. Это называется сквозным шифрованием, или E2EE, поскольку файлы шифруются на вашем устройстве и расшифровываются только на вашем устройстве. Сервер никогда не видит незашифрованные файлы, что обеспечивает дополнительную защиту конфиденциальности пользователей и безопасности данных.</p>
 <section id="enabling-e2ee">
-<h2>Enabling E2EE<a class="headerlink" href="#enabling-e2ee" title="Ссылка на этот заголовок"></a></h2>
-<p>If your administrator enabled the <a class="reference external" href="https://apps.nextcloud.com/apps/end_to_end_encryption">End-to-End Encryption app</a>, you can start using it from one of your devices.
-Open the settings of the Nextcloud client and look for the EE2E encryption settings.</p>
+<h2>Включение E2EE<a class="headerlink" href="#enabling-e2ee" title="Ссылка на этот заголовок"></a></h2>
+<p>Если ваш администратор включил приложение <a class="reference external" href="https://apps.nextcloud.com/apps/end_to_end_encryption">Приложение сквозного шифрования</a>, вы можете начать использовать его с одного из своих устройств. Откройте настройки клиента Nextcloud и найдите настройки шифрования EE2E.</p>
 <details>
-<summary>Desktop</summary><a class="reference internal image-reference" href="../../_images/e2ee-desktop-setup.png"><img alt="Setup E2EE on the desktop client" src="../../_images/e2ee-desktop-setup.png" style="width: 750px;" />
+<summary>Desktop</summary><a class="reference internal image-reference" href="../../_images/e2ee-desktop-setup.png"><img alt="Настройка E2EE в настольном клиенте" src="../../_images/e2ee-desktop-setup.png" style="width: 750px;" />
 </a>
 </details><details>
-<summary>Android</summary><a class="reference internal image-reference" href="../../_images/e2ee-android-setup.png"><img alt="Setup E2EE on Android" src="../../_images/e2ee-android-setup.png" style="width: 400px;" />
+<summary>Android</summary><a class="reference internal image-reference" href="../../_images/e2ee-android-setup.png"><img alt="Настройка E2EE в Android" src="../../_images/e2ee-android-setup.png" style="width: 400px;" />
 </a>
 </details><details>
-<summary>iOS</summary><a class="reference internal image-reference" href="../../_images/e2ee-ios-setup-1.png"><img alt="Setup E2EE on iOS step 1" src="../../_images/e2ee-ios-setup-1.png" style="width: 400px;" />
+<summary>iOS</summary><a class="reference internal image-reference" href="../../_images/e2ee-ios-setup-1.png"><img alt="Настройка E2EE в iOS шаг 1" src="../../_images/e2ee-ios-setup-1.png" style="width: 400px;" />
 </a>
-<a class="reference internal image-reference" href="../../_images/e2ee-ios-setup-2.png"><img alt="Setup E2EE on iOS step 2" src="../../_images/e2ee-ios-setup-2.png" style="width: 400px;" />
+<a class="reference internal image-reference" href="../../_images/e2ee-ios-setup-2.png"><img alt="Настройка E2EE в iOS шаг 2" src="../../_images/e2ee-ios-setup-2.png" style="width: 400px;" />
 </a>
-<a class="reference internal image-reference" href="../../_images/e2ee-ios-setup-3.png"><img alt="Setup E2EE on iOS step 3" src="../../_images/e2ee-ios-setup-3.png" style="width: 400px;" />
+<a class="reference internal image-reference" href="../../_images/e2ee-ios-setup-3.png"><img alt="Настройка E2EE в iOS шаг 3" src="../../_images/e2ee-ios-setup-3.png" style="width: 400px;" />
 </a>
 </details><details>
 <summary>Web</summary><div class="admonition warning">
 <p class="admonition-title">Предупреждение</p>
-<p>It is not possible to enable encryption on a folder in the browser. This must be done on a client app, either a desktop or mobile client.</p>
+<p>Невозможно включить шифрование папки в браузере. Это необходимо сделать в клиентском приложении, настольном или мобильном клиенте.</p>
 </div>
 </details><br /></section>
 <section id="encrypting-a-folder">
-<h2>Encrypting a folder<a class="headerlink" href="#encrypting-a-folder" title="Ссылка на этот заголовок"></a></h2>
+<h2>Шифрование папки<a class="headerlink" href="#encrypting-a-folder" title="Ссылка на этот заголовок"></a></h2>
 <div class="admonition warning">
 <p class="admonition-title">Предупреждение</p>
-<p>You can only enable encryption on empty folders.</p>
+<p>Вы можете включить шифрование только для пустых папок.</p>
 </div>
 <details>
-<summary>Desktop</summary><a class="reference internal image-reference" href="../../_images/e2ee-desktop-encrypt-1.png"><img alt="Encrypting a folder on the desktop client step 1" src="../../_images/e2ee-desktop-encrypt-1.png" style="width: 750px;" />
+<summary>Desktop</summary><a class="reference internal image-reference" href="../../_images/e2ee-desktop-encrypt-1.png"><img alt="Шифрование папки в настольном клиенте, шаг 1" src="../../_images/e2ee-desktop-encrypt-1.png" style="width: 750px;" />
 </a>
-<a class="reference internal image-reference" href="../../_images/e2ee-desktop-encrypt-2.png"><img alt="Encrypting a folder on the desktop client step 2" src="../../_images/e2ee-desktop-encrypt-2.png" style="width: 750px;" />
+<a class="reference internal image-reference" href="../../_images/e2ee-desktop-encrypt-2.png"><img alt="Шифрование папки в настольном клиенте, шаг 2" src="../../_images/e2ee-desktop-encrypt-2.png" style="width: 750px;" />
 </a>
-<a class="reference internal image-reference" href="../../_images/e2ee-desktop-encrypt-3.png"><img alt="Encrypting a folder on the desktop client step 3" src="../../_images/e2ee-desktop-encrypt-3.png" style="width: 750px;" />
-</a>
-</details><details>
-<summary>Android</summary><a class="reference internal image-reference" href="../../_images/e2ee-android-encrypt.png"><img alt="Encrypting a folder on an Android device" src="../../_images/e2ee-android-encrypt.png" style="width: 400px;" />
+<a class="reference internal image-reference" href="../../_images/e2ee-desktop-encrypt-3.png"><img alt="Шифрование папки в настольном клиенте, шаг 3" src="../../_images/e2ee-desktop-encrypt-3.png" style="width: 750px;" />
 </a>
 </details><details>
-<summary>iOS</summary><a class="reference internal image-reference" href="../../_images/e2ee-ios-encrypt.png"><img alt="Encrypting a folder on an iOS device" src="../../_images/e2ee-ios-encrypt.png" style="width: 400px;" />
+<summary>Android</summary><a class="reference internal image-reference" href="../../_images/e2ee-android-encrypt.png"><img alt="Шифрование папки в Android устройстве" src="../../_images/e2ee-android-encrypt.png" style="width: 400px;" />
+</a>
+</details><details>
+<summary>iOS</summary><a class="reference internal image-reference" href="../../_images/e2ee-ios-encrypt.png"><img alt="Шифрование папки в iOS устройстве" src="../../_images/e2ee-ios-encrypt.png" style="width: 400px;" />
 </a>
 </details><details>
 <summary>Web</summary><div class="admonition warning">
 <p class="admonition-title">Предупреждение</p>
-<p>It is not possible to enable encryption on a folder in the browser. This must be done on a client app, either a desktop or mobile client.</p>
+<p>Невозможно включить шифрование папки в браузере. Это необходимо сделать в клиентском приложении, настольном или мобильном клиенте.</p>
 </div>
 </details><br /></section>
 <section id="adding-an-e2ee-device">
-<h2>Adding an E2EE device<a class="headerlink" href="#adding-an-e2ee-device" title="Ссылка на этот заголовок"></a></h2>
+<h2>Добавление устройства E2EE<a class="headerlink" href="#adding-an-e2ee-device" title="Ссылка на этот заголовок"></a></h2>
 <details>
-<summary>Desktop</summary><a class="reference internal image-reference" href="../../_images/e2ee-desktop-add.png"><img alt="Setup a new desktop client" src="../../_images/e2ee-desktop-add.png" style="width: 750px;" />
+<summary>Desktop</summary><a class="reference internal image-reference" href="../../_images/e2ee-desktop-add.png"><img alt="Настроить новый настольный клиент" src="../../_images/e2ee-desktop-add.png" style="width: 750px;" />
 </a>
 </details><details>
-<summary>Android</summary><a class="reference internal image-reference" href="../../_images/e2ee-android-add.png"><img alt="Setup a new Android device" src="../../_images/e2ee-android-add.png" style="width: 400px;" />
+<summary>Android</summary><a class="reference internal image-reference" href="../../_images/e2ee-android-add.png"><img alt="Настроить новое устройство Android" src="../../_images/e2ee-android-add.png" style="width: 400px;" />
 </a>
 </details><details>
-<summary>iOS</summary><a class="reference internal image-reference" href="../../_images/e2ee-ios-add.png"><img alt="Setup a new iOS device" src="../../_images/e2ee-ios-add.png" style="width: 400px;" />
+<summary>iOS</summary><a class="reference internal image-reference" href="../../_images/e2ee-ios-add.png"><img alt="Настроить новое устройство iOS" src="../../_images/e2ee-ios-add.png" style="width: 400px;" />
 </a>
 </details><details>
-<summary>Web</summary><p>In the browser, first enable E2EE in the personal settings. This is needed, as E2EE is less secure in the browser, requiring you to fully trust the administrator to not alter the source code the browser will execute.
-E2EE folders are currently read-only. Therefore, it is not possible to add, remove, edit, or share an E2EE file from the browser.</p>
-<a class="reference internal image-reference" href="../../_images/e2ee-web-add-1.png"><img alt="Setup a new browser session step 1" src="../../_images/e2ee-web-add-1.png" style="width: 750px;" />
+<summary>Web</summary><p>В браузере сначала включите E2EE в личных настройках. Это необходимо, поскольку E2EE менее безопасен в браузере и требует от вас полного доверия администратору, который не изменит исходный код, который будет выполняться браузером. Папки E2EE в настоящее время доступны только для чтения. Поэтому невозможно добавлять, удалять, редактировать или делиться файлом E2EE из браузера.</p>
+<a class="reference internal image-reference" href="../../_images/e2ee-web-add-1.png"><img alt="Настройка нового сеанса браузера, шаг 1" src="../../_images/e2ee-web-add-1.png" style="width: 750px;" />
 </a>
-<a class="reference internal image-reference" href="../../_images/e2ee-web-add-2.png"><img alt="Setup a new browser session step 2" src="../../_images/e2ee-web-add-2.png" style="width: 750px;" />
+<a class="reference internal image-reference" href="../../_images/e2ee-web-add-2.png"><img alt="Настройка нового сеанса браузера, шаг 2" src="../../_images/e2ee-web-add-2.png" style="width: 750px;" />
 </a>
-<a class="reference internal image-reference" href="../../_images/e2ee-web-add-3.png"><img alt="Setup a new browser session step 3" src="../../_images/e2ee-web-add-3.png" style="width: 750px;" />
+<a class="reference internal image-reference" href="../../_images/e2ee-web-add-3.png"><img alt="Настройка нового сеанса браузера, шаг 3" src="../../_images/e2ee-web-add-3.png" style="width: 750px;" />
 </a>
 </details><br /></section>
 <section id="displaying-the-mnemonic">
-<h2>Displaying the mnemonic<a class="headerlink" href="#displaying-the-mnemonic" title="Ссылка на этот заголовок"></a></h2>
-<p>The mnemonic is a list of words that is used to encrypt and decrypt your files. It is important to keep this mnemonic safe, as it is the only way to access your files if you lose access to your device. If you lose access to your mnemonic, you will lose access to your files.</p>
+<h2>Отображение мнемоники<a class="headerlink" href="#displaying-the-mnemonic" title="Ссылка на этот заголовок"></a></h2>
+<p>Мнемоника — это список слов, который используется для шифрования и расшифровки файлов. Важно сохранить эту мнемонику в безопасности, поскольку это единственный способ получить доступ к вашим файлам, если вы потеряете доступ к своему устройству. Если вы потеряете доступ к своей мнемонике, вы потеряете доступ к своим файлам.</p>
 <details>
-<summary>Desktop</summary><a class="reference internal image-reference" href="../../_images/e2ee-desktop-mnemonic.png"><img alt="Displaying the mnemonic on the desktop client" src="../../_images/e2ee-desktop-mnemonic.png" style="width: 750px;" />
+<summary>Desktop</summary><a class="reference internal image-reference" href="../../_images/e2ee-desktop-mnemonic.png"><img alt="Отображение мнемоники в настольном клиенте" src="../../_images/e2ee-desktop-mnemonic.png" style="width: 750px;" />
 </a>
 </details><details>
-<summary>Android</summary><a class="reference internal image-reference" href="../../_images/e2ee-android-mnemonic.png"><img alt="Displaying the mnemonic on an Android device" src="../../_images/e2ee-android-mnemonic.png" style="width: 400px;" />
+<summary>Android</summary><a class="reference internal image-reference" href="../../_images/e2ee-android-mnemonic.png"><img alt="Отображение мнемоники в Android устройстве" src="../../_images/e2ee-android-mnemonic.png" style="width: 400px;" />
 </a>
 </details><details>
-<summary>iOS</summary><a class="reference internal image-reference" href="../../_images/e2ee-ios-mnemonic.png"><img alt="Displaying the mnemonic on an iOS device" src="../../_images/e2ee-ios-mnemonic.png" style="width: 400px;" />
+<summary>iOS</summary><a class="reference internal image-reference" href="../../_images/e2ee-ios-mnemonic.png"><img alt="Отображение мнемоники в iOS устройстве" src="../../_images/e2ee-ios-mnemonic.png" style="width: 400px;" />
 </a>
 </details><details>
 <summary>Web</summary><div class="admonition warning">
 <p class="admonition-title">Предупреждение</p>
-<p>It is not possible to display the mnemonic in the browser.</p>
+<p>Невозможно отобразить мнемонику в браузере.</p>
 </div>
 </details><br /></section>
 </section>
@@ -334,7 +330,7 @@ E2EE folders are currently read-only. Therefore, it is not possible to add, remo
     </span>
     <div class="rst-other-versions">
       <dl>
-        <dt>🌐 Languages</dt>
+        <dt>🌐  Языки</dt>
         
           <dd style="width: 32%; vertical-align: top;">
             <a href="/server/latest/user_manual/ar/"
