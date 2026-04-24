@@ -218,7 +218,7 @@ correctly. The most common languages used in this documentation are:
 
      .. code-block:: bash
 
-        sudo -u www-data php occ maintenance:install
+        sudo -E -u www-data php occ maintenance:install
 
 ``.. code-block:: php``
    PHP code and ``config.php`` snippets. When showing a single key from
