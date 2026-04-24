@@ -838,7 +838,7 @@ To turn off checks the following *Attributes* can be added before the controller
 * ``#[NoAdminRequired]``: Also users that are not admins can access the page
 * ``#[PublicPage]``: Everyone can access the page without having to log in
 * ``#[NoTwoFactorRequired]``: A user can access the page before the two-factor challenge has been passed (use this wisely and only in two-factor auth apps, e.g. to allow setup during login)
-* ``#[NoCSRFRequired]``: Don't check the CSRF token (use this wisely since you might create a security hole; to understand what it does see `CSRF in the security section <../prologue/security.html#cross-site-request-forgery>`__)
+* ``#[NoCSRFRequired]``: Don't check the CSRF token (use this wisely since you might create a security hole; to understand what it does see :ref:`CSRF in the security section <csrf_introduction>`)
 
 .. note::
 

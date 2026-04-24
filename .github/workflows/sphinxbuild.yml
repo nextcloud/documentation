@@ -186,22 +186,6 @@ jobs:
           path: artifacts/
 
       # ========================================================================
-      # PREPARE FOR LINK VALIDATION: BUILD FULL PAGE CONTEXT
-      # ========================================================================
-      # We need to validate links in the new documentation, but some links may
-      # point to other versions or branches that are already deployed. So we:
-      # 1. Fetch the existing gh-pages content (old versions)
-      # 2. Merge in the new artifacts (what we're about to deploy)
-      # 3. Run link checks only on the NEW content, but with full context
-      # ========================================================================
-      - name: Checkout gh-pages branch for validation context
-        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
-        with:
-          ref: gh-pages
-          fetch-depth: 1
-          path: validation-context
-
-      # ========================================================================
       # DETERMINE DEPLOYMENT TARGETS (branch_name and version_name)
       # ========================================================================
       # Logic:
@@ -307,8 +291,7 @@ jobs:
       # ========================================================================
       # UPLOAD STAGING ARTIFACTS
       # ========================================================================
-      # Upload the staging folder for use in deploy job.
-      # This makes the content visible in the UI for debugging and inspection.
+      # Upload the staging folder for use in both the deploy and link-check jobs.
       # ========================================================================
       - name: Upload staged artifacts
         uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
@@ -316,6 +299,53 @@ jobs:
           name: staged-docs
           path: stage/
           retention-days: 1
+
+  # ============================================================================
+  # LINK CHECK
+  # ============================================================================
+  # Runs in parallel with deploy. Downloads the staged artifacts, strips
+  # canonical links, then runs lychee against the new content only.
+  # ============================================================================
+  link-check:
+    name: Check for broken links
+    needs: stage-and-check
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Download staged artifacts
+        uses: actions/download-artifact@3e5f45b2cfb9172054b4087a40e8e0b5a5461e7c # v8.0.1
+        with:
+          name: staged-docs
+          path: stage/
+
+      - name: Strip canonical links from validation HTML
+        run: |
+          find "stage/${{ needs.stage-and-check.outputs.branch_name }}" -name '*.html' -print0 | while IFS= read -r -d '' f; do
+            perl -0pi -e 's{^\s*<link rel="canonical" href="https://docs\.nextcloud\.com/server/[^"]*" />\n}{}m' "$f"
+          done
+          ls -la stage/*
+
+      # We need to exclude certain links from the check:
+      # - go.php: This is a special redirect page
+      # - mailto: links: These are not valid URLs and will always fail
+      # - 404.html: This is not necessary
+      # - latest/stable/xx links from the version selector
+      - name: Check for broken links with lychee
+        uses: lycheeverse/lychee-action@8646ba30535128ac92d33dfc9133794bfdd9b411 # v2.8.0
+        with:
+          fail: true
+          token: ${{ secrets.GITHUB_TOKEN }}
+          jobSummary: true
+          args: |
+            --root-dir "$(pwd)/stage"
+            --offline --no-progress
+            --remap "https://docs.nextcloud.com/server/ file://$(pwd)/stage/"
+            --exclude 'go\.php' --exclude 'mailto:' --exclude-path '.*/404\.html' --exclude-path '.*/_static/.*'
+            --exclude "/user_manual/" --include "/user_manual/en/"
+            --exclude '^file://.*/stage/(latest|stable|[0-9]+)/(developer_manual|admin_manual|user_manual)/?$'
+            'stage/${{ needs.stage-and-check.outputs.branch_name }}/user_manual/en/**/*.html'
+            'stage/${{ needs.stage-and-check.outputs.branch_name }}/admin_manual/**/*.html'
+            'stage/${{ needs.stage-and-check.outputs.branch_name }}/developer_manual/**/*.html'
 
   # ============================================================================
   # DEPLOY
@@ -460,7 +490,7 @@ jobs:
           GH_TOKEN: ${{ secrets.COMMAND_BOT_PAT }}
 
   summary:
-    needs: [build-html, build-pdf, stage-and-check, deploy]
+    needs: [stage-and-check, link-check, deploy]
     runs-on: ubuntu-latest-low
     if: always()
 
@@ -474,10 +504,9 @@ jobs:
         run: |
           if ${{ github.event_name == 'pull_request' }}
           then
-            echo "This workflow ran for a pull request. We need build-html, build-pdf and stage-and-check to succeed, but deploy will be skipped"
-            if ${{ needs.build-html.result != 'success' || needs.build-pdf.result != 'success' || needs.stage-and-check.result != 'success' || needs.deploy.result != 'skipped' }}; then exit 1; fi
+            echo "This workflow ran for a pull request. We need stage-and-check and link-check to succeed, but deploy will be skipped"
+            if ${{ needs.stage-and-check.result != 'success' || needs.link-check.result != 'success' || needs.deploy.result != 'skipped' }}; then exit 1; fi
           else
             echo "This workflow ran for a push. We need all jobs to succeed, including deploy"
-            if ${{ needs.build-html.result != 'success' || needs.build-pdf.result != 'success' || needs.stage-and-check.result != 'success' || needs.deploy.result != 'success' }}; then exit 1; fi
+            if ${{ needs.stage-and-check.result != 'success' || needs.link-check.result != 'success' || needs.deploy.result != 'success' }}; then exit 1; fi
           fi
-          
