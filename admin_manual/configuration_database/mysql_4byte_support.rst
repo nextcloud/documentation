@@ -13,7 +13,7 @@ installation needs to be tweaked a bit.
 
     This guide applies only to MySQL 8 or newer and MariaDB 10.6 or newer.
     For a list of supported MySQL and MariaDB versions, see our
-    `system requirements documentation <../installation/system_requirements.html>`.
+    `system requirements documentation <../installation/system_requirements.rst>`_.
 
 1. Make sure the following InnoDB settings are set on your MySQL server::
 

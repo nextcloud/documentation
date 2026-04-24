@@ -14,7 +14,7 @@ Files and notifications
    confirm to grant access.
 
    *Or*: In Nextcloud's web GUI, go to the
-   `user preferences <../userpreferences.html>`_, go to
+   `user preferences <../userpreferences.rst>`_, go to
    **Security**. Generate an App password, click "Generate QR code" and
    tap the QR scanner icon in the Nextcloud app, point your phone's
    camera towards the screen.
