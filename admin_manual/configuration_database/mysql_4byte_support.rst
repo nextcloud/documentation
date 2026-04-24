@@ -11,11 +11,9 @@ installation needs to be tweaked a bit.
 
 .. warning::
 
-    This manual only covers MySQL 8 or newer and MariaDB 10.2 or newer.
-    If you use MariaDB 10.2, please check
-    `this older version <https://docs.nextcloud.com/server/20/admin_manual/configuration_database/mysql_4byte_support.html#mariadb-10-2-or-earlier>`_
-    of the documentation. If you use an older version of MySQL or MariaDB, please note that they are no longer supported
-    by the current Nextcloud version.
+    This guide applies only to MySQL 8 or newer and MariaDB 10.6 or newer.
+    For a list of supported MySQL and MariaDB versions, see our
+    `system requirements documentation <../installation/system_requirements.html>`.
 
 1. Make sure the following InnoDB settings are set on your MySQL server::
 
