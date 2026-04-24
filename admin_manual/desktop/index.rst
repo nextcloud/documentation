@@ -22,5 +22,5 @@ You can find additional information here:
 * `User manual`_
 * `Developer manual`_
 
-.. _`User manual`: ../../user_manual/desktop/index.rst
-.. _`Developer manual`: ../../developer_manual/desktop/index.rst
+.. _`User manual`: ../../user_manual/desktop/index.html
+.. _`Developer manual`: ../../developer_manual/desktop/index.html

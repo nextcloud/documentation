@@ -16,14 +16,14 @@ Please follow the steps on this page to set up your development environment manu
 Set up Web server and database
 ------------------------------
 
-First `set up your Web server and database <../../admin_manual/installation/index.rst>`_ (**Section**: Manual Installation - Prerequisites).
+First `set up your Web server and database <../../admin_manual/installation/index.html>`_ (**Section**: Manual Installation - Prerequisites).
 
 Get the source
 --------------
 
 There are two ways to obtain Nextcloud sources:
 
-* Using the `stable version <../../admin_manual/installation/index.rst>`_
+* Using the `stable version <../../admin_manual/installation/index.html>`_
 * Using the development version from `GitHub`_ which will be explained below.
 
 To check out the source from `GitHub`_ you will need to install Git (see `Setting up Git <https://help.github.com/articles/set-up-git>`_ from the GitHub help)
