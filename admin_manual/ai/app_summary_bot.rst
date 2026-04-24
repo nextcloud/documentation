@@ -125,7 +125,7 @@ Ethical AI Rating
 
 The ethical rating of the *Summary Bot*, which utilizes a model for text processing through the Nextcloud Assistant app, is significantly influenced by the choice and implementation of the underlying model.
 
-Learn more about the Nextcloud Ethical AI Rating `in our blog<https://nextcloud.com/blog/nextcloud-ethical-ai-rating/>`.
+Learn more about the Nextcloud Ethical AI Rating `in our blog <https://nextcloud.com/blog/nextcloud-ethical-ai-rating/>`_.
 
 Known Limitations
 -----------------

@@ -1,0 +1,57 @@
+name: Report open todos
+
+on:
+  pull_request:
+    paths:
+      - '**.rst'
+
+permissions:
+  contents: read
+
+jobs:
+  report-todos:
+    name: Report open .. todo:: directives
+    runs-on: ubuntu-latest-low
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          persist-credentials: false
+
+      - name: Find open todo directives and write step summary
+        run: |
+          # Collect all open .. todo:: directives across all RST files.
+          # This check is informational only and does not fail the build.
+          # It surfaces outstanding documentation work so reviewers are aware.
+          mapfile -t TODOS < <(
+            grep -rn "^\.\. todo::" --include="*.rst" \
+              --exclude-dir="_build" \
+              . | sort
+          )
+
+          if [ ${#TODOS[@]} -eq 0 ]; then
+            echo "No open \`\`.. todo::\`\` directives found." >> "$GITHUB_STEP_SUMMARY"
+            exit 0
+          fi
+
+          {
+            echo "## ⚠️ Open \`.. todo::\` directives (${#TODOS[@]})"
+            echo ""
+            echo "The following unresolved \`.. todo::\` items exist in the documentation."
+            echo "They are shown here for awareness — this check does **not** block the PR."
+            echo ""
+            echo "| File | Line | Content |"
+            echo "|------|------|---------|"
+            for todo in "${TODOS[@]}"; do
+              # Format: path:lineno:content
+              file=$(echo "$todo" | cut -d: -f1)
+              lineno=$(echo "$todo" | cut -d: -f2)
+              content=$(echo "$todo" | cut -d: -f3- | sed 's/^[[:space:]]*//' | sed 's/|/\\|/g')
+              echo "| \`$file\` | $lineno | $content |"
+            done
+          } >> "$GITHUB_STEP_SUMMARY"
+
+          echo "Found ${#TODOS[@]} open todo directive(s). See the job summary for details."
+          # Exit 0: this is informational, not a blocking failure
+          exit 0

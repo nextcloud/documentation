@@ -1,0 +1,42 @@
+name: Check TODO ON RELEASE markers
+
+on:
+  push:
+    branches:
+      - stable*
+
+permissions:
+  contents: read
+
+jobs:
+  check-todo-release:
+    name: Find TODO ON RELEASE markers
+    runs-on: ubuntu-latest-low
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          persist-credentials: false
+
+      - name: Find TODO ON RELEASE markers
+        run: |
+          # Search all RST files for TODO ON RELEASE comments and fail if any are found.
+          # These markers indicate content (e.g. version numbers) that must be updated
+          # when a new stable branch is cut from master.
+          mapfile -t MATCHES < <(grep -rn "TODO ON RELEASE" --include="*.rst" .)
+
+          if [ ${#MATCHES[@]} -gt 0 ]; then
+            printf "\e[0;31mERROR: Found %d 'TODO ON RELEASE' marker(s) that need attention:\e[0m\n" "${#MATCHES[@]}"
+            printf "\n"
+            for match in "${MATCHES[@]}"; do
+              printf "  %s\n" "$match"
+            done
+            printf "\n"
+            printf "These markers indicate content (e.g. version numbers) that must be\n"
+            printf "updated when a new stable branch is created from master.\n"
+            printf "Please update the marked content and remove the TODO ON RELEASE comment.\n"
+            exit 1
+          fi
+
+          echo "No TODO ON RELEASE markers found."

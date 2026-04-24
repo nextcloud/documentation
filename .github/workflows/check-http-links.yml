@@ -1,0 +1,102 @@
+name: Check HTTP links
+
+on:
+  pull_request:
+    paths:
+      - '**.rst'
+
+permissions:
+  contents: read
+
+jobs:
+  check-http-links:
+    name: Check for http:// links in changed files
+    runs-on: ubuntu-latest-low
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Get changed RST files
+        id: changed
+        run: |
+          git fetch --depth=1 origin "$GITHUB_BASE_REF"
+          files=$(git diff --name-only --diff-filter=d "origin/${GITHUB_BASE_REF}...HEAD" -- '*.rst' | tr '\n' ' ')
+          echo "files=$files" >> "$GITHUB_OUTPUT"
+
+      - name: Check for insecure http:// links
+        if: steps.changed.outputs.files != ''
+        run: |
+          # Use Python to skip http:// links that are inside code blocks or are
+          # known-acceptable patterns (localhost, example.com, IP addresses,
+          # XML namespace URIs, and command-line argument placeholders).
+          python3 - ${{ steps.changed.outputs.files }} <<'PYEOF'
+          import re, sys
+
+          # Patterns that are acceptable even as http:// links
+          ALLOWED = re.compile(
+              r'http://('
+              r'localhost'
+              r'|127\.'
+              r'|192\.168\.'
+              r'|10\.'
+              r'|example\.com'
+              r'|www\.example'
+              r'|<'           # placeholder like http://<host>
+              r'|\{'          # XML namespace or template like {http://...}
+              r')',
+              re.IGNORECASE,
+          )
+
+          files = [f for f in sys.argv[1:] if f]
+          fail = False
+
+          for path in files:
+              try:
+                  with open(path) as fh:
+                      lines = fh.readlines()
+              except FileNotFoundError:
+                  continue
+
+              in_code_block = False
+              code_indent = None
+
+              for lineno, raw in enumerate(lines, start=1):
+                  stripped = raw.rstrip('\n')
+
+                  # Track code blocks (.. code-block:: / :: / .. code::)
+                  if re.match(r'\s*\.\.\s+code(-block)?::', stripped) or re.match(r'\s*::\s*$', stripped):
+                      in_code_block = True
+                      code_indent = len(stripped) - len(stripped.lstrip())
+                      continue
+
+                  if in_code_block:
+                      if stripped.strip() == '':
+                          # Blank lines are allowed inside code blocks
+                          continue
+                      current_indent = len(stripped) - len(stripped.lstrip())
+                      if current_indent > code_indent:
+                          # Still inside the indented code block
+                          continue
+                      else:
+                          # Back to normal prose
+                          in_code_block = False
+
+                  # Also skip lines that are clearly part of a code example
+                  # (heavily indented lines inside directive blocks)
+                  if 'http://' not in stripped:
+                      continue
+
+                  for m in re.finditer(r'http://\S+', stripped):
+                      url = m.group(0)
+                      if ALLOWED.match(url):
+                          continue
+                      print(f"{path}:{lineno}: insecure http:// link found: {url}")
+                      print(f"  Please update to https:// if the destination supports it.")
+                      fail = True
+
+          sys.exit(1 if fail else 0)
+          PYEOF

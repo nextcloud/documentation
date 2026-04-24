@@ -1,0 +1,43 @@
+name: RST lint
+
+on:
+  pull_request:
+    paths:
+      - '**.rst'
+  push:
+    branches:
+      - master
+
+permissions:
+  contents: read
+
+jobs:
+  rst-lint:
+    name: Lint RST files
+    runs-on: ubuntu-latest-low
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          persist-credentials: false
+
+      - name: Set up Python
+        uses: actions/setup-python@a309ff8b426b58ec0e2a45f0f869d46889d02405 # v6.2.0
+        with:
+          python-version: "3.13"
+
+      - name: Install sphinx-lint
+        run: pip install sphinx-lint==1.0.2
+
+      - name: Run sphinx-lint
+        # horizontal-tab and trailing-whitespace have many pre-existing occurrences
+        # and are tracked separately; all other structural checks are enforced here.
+        run: |
+          sphinx-lint \
+            --ignore admin_manual/_build \
+            --ignore user_manual/_build \
+            --ignore developer_manual/_build \
+            --ignore admin_manual/configuration_server/config_sample_php_parameters.rst \
+            --disable horizontal-tab,trailing-whitespace \
+            admin_manual user_manual developer_manual

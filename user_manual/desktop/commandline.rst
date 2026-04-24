@@ -66,7 +66,7 @@ Other command line switches supported by ``nextcloudcmd`` include the following:
        Use `password` as the password.
 
 ``-n``
-       Use`netrc(5)` for login.
+       Use `netrc(5)` for login.
 
 ``--non-interactive``
        Do not prompt for questions and tries to read $NC_USER and $NC_PASSWORD from the environment.

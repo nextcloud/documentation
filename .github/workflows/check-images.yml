@@ -1,0 +1,128 @@
+name: Check images
+
+on:
+  pull_request:
+    paths:
+      - '**.rst'
+      - '**/images/**'
+      - '**/img/**'
+
+permissions:
+  contents: read
+
+jobs:
+  # ============================================================================
+  # ALT TEXT CHECK (1c)
+  # Only checks files changed in the PR so as not to block on the many
+  # pre-existing figures that are missing alt text.
+  # ============================================================================
+  check-alt-text:
+    name: Check alt text on changed files
+    runs-on: ubuntu-latest-low
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+
+      - name: Get changed RST files
+        id: changed
+        run: |
+          git fetch --depth=1 origin "$GITHUB_BASE_REF"
+          files=$(git diff --name-only --diff-filter=d "origin/${GITHUB_BASE_REF}...HEAD" -- '*.rst' | tr '\n' ' ')
+          echo "files=$files" >> "$GITHUB_OUTPUT"
+
+      - name: Check for figures without alt text
+        if: steps.changed.outputs.files != ''
+        run: |
+          FAIL=0
+          for file in ${{ steps.changed.outputs.files }}; do
+            [ -f "$file" ] || continue
+            # Find every .. figure:: line and check that the next few lines contain :alt:
+            python3 - "$file" <<'PYEOF'
+          import sys, re
+
+          path = sys.argv[1]
+          with open(path) as f:
+              lines = f.readlines()
+
+          fail = False
+          i = 0
+          while i < len(lines):
+              # Match a figure directive (possibly indented)
+              if re.match(r'\s*\.\. figure::', lines[i]):
+                  # Look for :alt: within the next 10 lines (covers options block)
+                  has_alt = False
+                  for j in range(i + 1, min(i + 11, len(lines))):
+                      stripped = lines[j].strip()
+                      if re.match(r':alt:', stripped):
+                          has_alt = True
+                          break
+                      # Stop if we hit something that is clearly not a directive option
+                      if stripped and not stripped.startswith(':') and not stripped.startswith('..'):
+                          break
+                  if not has_alt:
+                      print(f"{path}:{i + 1}: figure directive is missing :alt: text")
+                      fail = True
+              i += 1
+
+          sys.exit(1 if fail else 0)
+          PYEOF
+            [ $? -ne 0 ] && FAIL=1
+          done
+          exit $FAIL
+
+  # ============================================================================
+  # IMAGE EXISTENCE CHECK (1d)
+  # Checks ALL RST files to ensure every referenced image file exists on disk.
+  # Wildcard patterns (e.g. image.*) are resolved to at least one matching file.
+  # ============================================================================
+  check-image-existence:
+    name: Check referenced images exist
+    runs-on: ubuntu-latest-low
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+        with:
+          persist-credentials: false
+
+      - name: Check all image references resolve to existing files
+        run: |
+          python3 - <<'PYEOF'
+          import os, re, sys, glob as globmod
+
+          manuals = ['admin_manual', 'user_manual', 'developer_manual']
+          missing = []
+
+          for manual in manuals:
+              for root, dirs, files in os.walk(manual):
+                  dirs[:] = [d for d in dirs if d != '_build']
+                  for fname in files:
+                      if not fname.endswith('.rst'):
+                          continue
+                      fpath = os.path.join(root, fname)
+                      with open(fpath) as f:
+                          content = f.read()
+                      rst_dir = os.path.dirname(fpath)
+                      for m in re.finditer(r'\.\. (?:figure|image)::\s+(\S+)', content):
+                          img_path = m.group(1)
+                          full_path = os.path.normpath(os.path.join(rst_dir, img_path))
+                          # Handle Sphinx wildcard patterns (e.g. image.*)
+                          if '*' in full_path:
+                              if not globmod.glob(full_path):
+                                  missing.append((fpath, img_path))
+                          else:
+                              if not os.path.exists(full_path):
+                                  missing.append((fpath, img_path))
+
+          if missing:
+              print(f"ERROR: {len(missing)} image reference(s) point to missing files:")
+              for rst, img in missing:
+                  print(f"  {rst}: {img}")
+              sys.exit(1)
+          else:
+              print(f"All image references resolved successfully.")
+          PYEOF
