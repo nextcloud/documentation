@@ -200,9 +200,13 @@ with the SMB/CIFS backend.</p>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
 <p>The SMB/CIFS backend requires <code class="docutils literal notranslate"><span class="pre">smbclient</span></code> or
-the PHP smbclient module to be installed on the Nextcloud server. The PHP
-smbclient module is preferred, but either will work. These
-should be included in any Linux distribution. (See <a class="reference external" href="https://pecl.php.net/package/smbclient">PECL smbclient</a> if your distro does not include
+the PHP smbclient module (<code class="docutils literal notranslate"><span class="pre">php-smbclient</span></code> / <code class="docutils literal notranslate"><span class="pre">libsmbclient-php</span></code>) to be
+installed on the Nextcloud server. The PHP smbclient module is <strong>strongly
+preferred</strong> — without it, the backend falls back to spawning the
+<code class="docutils literal notranslate"><span class="pre">smbclient</span></code> binary, which has known limitations (notably, downloads of
+files larger than ~512 MB from external SMB shares can fail; see
+<a class="reference external" href="https://github.com/nextcloud/server/issues/31308">nextcloud/server#31308</a>). These should be
+included in any Linux distribution. (See <a class="reference external" href="https://pecl.php.net/package/smbclient">PECL smbclient</a> if your distro does not include
 them.)</p>
 </div>
 <p>You need the following information:</p>
