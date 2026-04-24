@@ -7,7 +7,7 @@
   <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Files &amp; encryption commands &mdash; Nextcloud latest Administration Manual latest documentation</title>
+  <title>Files commands &mdash; Nextcloud latest Administration Manual latest documentation</title>
       <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
       <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
@@ -31,7 +31,7 @@
     <link rel="index" title="Index" href="genindex.html" />
     <link rel="search" title="Search" href="search.html" />
     <link rel="next" title="LDAP commands" href="occ_ldap.html" />
-    <link rel="prev" title="DAV &amp; database commands" href="occ_database.html" /> 
+    <link rel="prev" title="Encryption commands" href="occ_encryption.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -84,8 +84,8 @@
 <li class="toctree-l2 current"><a class="reference internal" href="occ_command.html#command-reference">Command reference</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="occ_apps.html">Apps, background jobs &amp; config commands</a></li>
 <li class="toctree-l3"><a class="reference internal" href="occ_database.html">DAV &amp; database commands</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">Files &amp; encryption commands</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#encryption">Encryption</a></li>
+<li class="toctree-l3"><a class="reference internal" href="occ_encryption.html">Encryption commands</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Files commands</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#federation-sync">Federation sync</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#file-operations">File operations</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#files-sharing">Files Sharing</a></li>
@@ -166,7 +166,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="contents.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="occ_command.html">Using the occ command</a></li>
-      <li class="breadcrumb-item active">Files &amp; encryption commands</li>
+      <li class="breadcrumb-item active">Files commands</li>
       <li class="wy-breadcrumbs-aside">
               <a href="https://github.com/nextcloud/documentation/edit/master/admin_manual/occ_files.rst" class="fa fa-github"> Edit on GitHub</a>
       </li>
@@ -176,93 +176,9 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="files-encryption-commands">
-<h1>Files &amp; encryption commands<a class="headerlink" href="#files-encryption-commands" title="Link to this heading"></a></h1>
-<section id="encryption">
-<span id="encryption-label"></span><h2>Encryption<a class="headerlink" href="#encryption" title="Link to this heading"></a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">occ</span></code> includes a complete set of commands for managing encryption:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>encryption
- encryption:change-key-storage-root   Change key storage root
- encryption:clean-orphaned-keys       Scan the keys storage for orphaned
-                                      keys and remove them
- encryption:decrypt-all               Disable server-side encryption and
-                                      decrypt all files
- encryption:disable                   Disable encryption
- encryption:drop-legacy-filekey       Drop legacy filekey for files still using it
- encryption:enable                    Enable encryption
- encryption:enable-master-key         Enable the master key. Only available
-                                      for fresh installations with no existing
-                                      encrypted data! There is also no way to
-                                      disable it again.
- encryption:encrypt-all               Encrypt all files for all users
- encryption:list-modules              List all available encryption modules
- encryption:set-default-module        Set the encryption default module
- encryption:show-key-storage-root     Show current key storage root
- encryption:status                    Lists the current status of encryption
-</pre></div>
-</div>
-<p><code class="docutils literal notranslate"><span class="pre">encryption:status</span></code> shows whether you have active encryption, and your default
-encryption module. To enable encryption you must first enable the Encryption
-app, and then run <code class="docutils literal notranslate"><span class="pre">encryption:enable</span></code>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">app</span><span class="p">:</span><span class="n">enable</span> <span class="n">encryption</span>
-<span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">encryption</span><span class="p">:</span><span class="n">enable</span>
-<span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">encryption</span><span class="p">:</span><span class="n">status</span>
- <span class="o">-</span> <span class="n">enabled</span><span class="p">:</span> <span class="n">true</span>
- <span class="o">-</span> <span class="n">defaultModule</span><span class="p">:</span> <span class="n">OC_DEFAULT_MODULE</span>
-</pre></div>
-</div>
-<p><code class="docutils literal notranslate"><span class="pre">encryption:change-key-storage-root</span></code> is for moving your encryption keys to a
-different folder. It takes one argument, <code class="docutils literal notranslate"><span class="pre">newRoot</span></code>, which defines your new
-root folder:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">encryption</span><span class="p">:</span><span class="n">change</span><span class="o">-</span><span class="n">key</span><span class="o">-</span><span class="n">storage</span><span class="o">-</span><span class="n">root</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">oc</span><span class="o">-</span><span class="n">keys</span>
-</pre></div>
-</div>
-<p>You can see the current location of your keys folder:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">encryption</span><span class="p">:</span><span class="n">show</span><span class="o">-</span><span class="n">key</span><span class="o">-</span><span class="n">storage</span><span class="o">-</span><span class="n">root</span>
-<span class="n">Current</span> <span class="n">key</span> <span class="n">storage</span> <span class="n">root</span><span class="p">:</span>  <span class="n">default</span> <span class="n">storage</span> <span class="n">location</span> <span class="p">(</span><span class="n">data</span><span class="o">/</span><span class="p">)</span>
-</pre></div>
-</div>
-<p><code class="docutils literal notranslate"><span class="pre">encryption:list-modules</span></code> displays your available encryption modules. You will
-see a list of modules only if you have enabled the Encryption app. Use
-<code class="docutils literal notranslate"><span class="pre">encryption:set-default-module</span> <span class="pre">[module</span> <span class="pre">name]</span></code> to set your desired module.</p>
-<p><code class="docutils literal notranslate"><span class="pre">encryption:encrypt-all</span></code> encrypts all data files for all users. You must first
-put your Nextcloud server into <a class="reference internal" href="occ_system.html#maintenance-commands-label"><span class="std std-ref">maintenance
-mode</span></a> to prevent any user activity until encryption
-is completed.</p>
-<p><code class="docutils literal notranslate"><span class="pre">encryption:decrypt-all</span></code> decrypts all user data files, or optionally a single
-user:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">encryption</span><span class="p">:</span><span class="n">decrypt</span> <span class="n">freda</span>
-</pre></div>
-</div>
-<p>Users must have enabled recovery keys on their Personal pages.</p>
-<p>Note that if you do not have master key/recovery key enabled, you can ONLY
-decrypt files per user, one user at a time and NOT when in maintenance mode.
-You will need the users’ password to decrypt the files.</p>
-<p>Use <code class="docutils literal notranslate"><span class="pre">encryption:disable</span></code> to disable your encryption module. You must first put
-your Nextcloud server into <a class="reference internal" href="occ_system.html#maintenance-commands-label"><span class="std std-ref">maintenance mode</span></a>
-to prevent any user activity.</p>
-<p><code class="docutils literal notranslate"><span class="pre">encryption:enable-master-key</span></code> creates a new master key, which is used for all
-user data instead of individual user keys. This is especially useful to enable
-single-sign on. Use this only on fresh installations with no existing data, or
-on systems where encryption has not already been enabled. It is not possible to
-disable it.</p>
-<p><code class="docutils literal notranslate"><span class="pre">encryption:drop-legacy-filekey</span></code> scans the files for the legacy filekey
-format using RC4 and get rid of it (if master key is enabled). The operation can
-be quite slow as it needs to rewrite each encrypted file. If you do not do it files
-will be migrated to drop their legacy filekey on the first modification. If you have
-old files from Nextcloud&lt;25 still using base64 encoding this will migrate them to the
-binary format and save about 33% disk space.</p>
-<p><code class="docutils literal notranslate"><span class="pre">encryption:clean-orphaned-keys</span></code> scans the key storage for keys that no longer
-have a corresponding file and removes them. When run, it iterates over all user
-key stores, reports any orphaned keys found, and then interactively asks whether
-to delete all of them at once or specific ones individually:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">encryption</span><span class="p">:</span><span class="n">clean</span><span class="o">-</span><span class="n">orphaned</span><span class="o">-</span><span class="n">keys</span> <span class="p">[</span><span class="o">&lt;</span><span class="n">user</span><span class="o">&gt;</span><span class="p">]</span>
-</pre></div>
-</div>
-<p>The optional <code class="docutils literal notranslate"><span class="pre">user</span></code> argument limits the scan to a single user. If omitted, all
-users are scanned.</p>
-<p>See <a class="reference internal" href="configuration_files/encryption_configuration.html"><span class="doc">Server-side Encryption</span></a> to learn more.</p>
-</section>
+  <section id="files-commands">
+<h1>Files commands<a class="headerlink" href="#files-commands" title="Link to this heading"></a></h1>
+<p>Encryption commands have moved to <a class="reference internal" href="occ_encryption.html"><span class="doc">Encryption commands</span></a>.</p>
 <section id="federation-sync">
 <span id="federation-sync-label"></span><h2>Federation sync<a class="headerlink" href="#federation-sync" title="Link to this heading"></a></h2>
 <div class="admonition note">
@@ -566,7 +482,7 @@ ownCloud 7 to Nextcloud.</p>
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="occ_database.html" class="btn btn-neutral float-left" title="DAV &amp; database commands" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="occ_encryption.html" class="btn btn-neutral float-left" title="Encryption commands" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="occ_ldap.html" class="btn btn-neutral float-right" title="LDAP commands" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
