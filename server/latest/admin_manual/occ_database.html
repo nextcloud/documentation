@@ -84,9 +84,8 @@
 <li class="toctree-l2 current"><a class="reference internal" href="occ_command.html#command-reference">Command reference</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="occ_apps.html">Apps, background jobs &amp; config commands</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">DAV &amp; database commands</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#dav-commands">Dav commands</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#database-conversion">Database conversion</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#add-missing-indices">Add missing indices</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#dav-commands">DAV commands</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#database-commands">Database commands</a></li>
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="occ_files.html">Files &amp; encryption commands</a></li>
@@ -175,251 +174,465 @@
   <section id="dav-database-commands">
 <h1>DAV &amp; database commands<a class="headerlink" href="#dav-database-commands" title="Link to this heading"></a></h1>
 <section id="dav-commands">
-<span id="dav-label"></span><h2>Dav commands<a class="headerlink" href="#dav-commands" title="Link to this heading"></a></h2>
-<p>Manage addressbooks and calendars:</p>
+<span id="dav-label"></span><h2>DAV commands<a class="headerlink" href="#dav-commands" title="Link to this heading"></a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">dav</span></code> commands manage addressbooks, calendars, calendar subscriptions,
+absences, and related data:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dav</span>
- <span class="n">dav</span><span class="p">:</span><span class="n">create</span><span class="o">-</span><span class="n">addressbook</span>          <span class="n">Create</span> <span class="n">a</span> <span class="n">dav</span> <span class="n">addressbook</span>
- <span class="n">dav</span><span class="p">:</span><span class="n">create</span><span class="o">-</span><span class="n">calendar</span>             <span class="n">Create</span> <span class="n">a</span> <span class="n">dav</span> <span class="n">calendar</span>
- <span class="n">dav</span><span class="p">:</span><span class="n">create</span><span class="o">-</span><span class="n">subscription</span>         <span class="n">Create</span> <span class="n">a</span> <span class="n">dav</span> <span class="n">subscription</span>
- <span class="n">dav</span><span class="p">:</span><span class="n">delete</span><span class="o">-</span><span class="n">calendar</span>             <span class="n">Delete</span> <span class="n">a</span> <span class="n">dav</span> <span class="n">calendar</span>
- <span class="n">dav</span><span class="p">:</span><span class="n">delete</span><span class="o">-</span><span class="n">subscription</span>         <span class="n">Delete</span> <span class="n">a</span> <span class="n">calendar</span> <span class="n">subscription</span> <span class="k">for</span> <span class="n">a</span> <span class="n">user</span>
- <span class="n">dav</span><span class="p">:</span><span class="n">fix</span><span class="o">-</span><span class="n">missing</span><span class="o">-</span><span class="n">caldav</span><span class="o">-</span><span class="n">changes</span>  <span class="n">Insert</span> <span class="n">missing</span> <span class="n">calendarchanges</span> <span class="n">rows</span> <span class="k">for</span> <span class="n">existing</span> <span class="n">events</span>
- <span class="n">dav</span><span class="p">:</span><span class="nb">list</span><span class="o">-</span><span class="n">addressbooks</span>           <span class="n">List</span> <span class="nb">all</span> <span class="n">addressbooks</span> <span class="n">of</span> <span class="n">a</span> <span class="n">user</span>
- <span class="n">dav</span><span class="p">:</span><span class="nb">list</span><span class="o">-</span><span class="n">calendars</span>              <span class="n">List</span> <span class="nb">all</span> <span class="n">calendars</span> <span class="n">of</span> <span class="n">a</span> <span class="n">user</span>
- <span class="n">dav</span><span class="p">:</span><span class="nb">list</span><span class="o">-</span><span class="n">subscriptions</span>          <span class="n">List</span> <span class="nb">all</span> <span class="n">calendar</span> <span class="n">subscriptions</span> <span class="k">for</span> <span class="n">a</span> <span class="n">user</span>
- <span class="n">dav</span><span class="p">:</span><span class="n">move</span><span class="o">-</span><span class="n">calendar</span>               <span class="n">Move</span> <span class="n">a</span> <span class="n">calendar</span> <span class="kn">from</span><span class="w"> </span><span class="nn">an</span> <span class="n">user</span> <span class="n">to</span> <span class="n">another</span>
- <span class="n">dav</span><span class="p">:</span><span class="n">remove</span><span class="o">-</span><span class="n">invalid</span><span class="o">-</span><span class="n">shares</span>       <span class="n">Remove</span> <span class="n">invalid</span> <span class="n">dav</span> <span class="n">shares</span>
- <span class="n">dav</span><span class="p">:</span><span class="n">retention</span><span class="p">:</span><span class="n">clean</span><span class="o">-</span><span class="n">up</span>
- <span class="n">dav</span><span class="p">:</span><span class="n">send</span><span class="o">-</span><span class="n">event</span><span class="o">-</span><span class="n">reminders</span>        <span class="n">Sends</span> <span class="n">event</span> <span class="n">reminders</span>
- <span class="n">dav</span><span class="p">:</span><span class="n">sync</span><span class="o">-</span><span class="n">birthday</span><span class="o">-</span><span class="n">calendar</span>      <span class="n">Synchronizes</span> <span class="n">the</span> <span class="n">birthday</span> <span class="n">calendar</span>
- <span class="n">dav</span><span class="p">:</span><span class="n">sync</span><span class="o">-</span><span class="n">system</span><span class="o">-</span><span class="n">addressbook</span>     <span class="n">Synchronizes</span> <span class="n">users</span> <span class="n">to</span> <span class="n">the</span> <span class="n">system</span> <span class="n">addressbook</span>
+ <span class="n">dav</span><span class="p">:</span><span class="n">absence</span><span class="p">:</span><span class="n">get</span>                 <span class="n">get</span> <span class="n">the</span> <span class="n">out</span><span class="o">-</span><span class="n">of</span><span class="o">-</span><span class="n">office</span> <span class="n">absence</span> <span class="n">settings</span> <span class="k">for</span> <span class="n">a</span> <span class="n">user</span>
+ <span class="n">dav</span><span class="p">:</span><span class="n">absence</span><span class="p">:</span><span class="nb">set</span>                 <span class="nb">set</span> <span class="n">the</span> <span class="n">out</span><span class="o">-</span><span class="n">of</span><span class="o">-</span><span class="n">office</span> <span class="n">absence</span> <span class="n">settings</span> <span class="k">for</span> <span class="n">a</span> <span class="n">user</span>
+ <span class="n">dav</span><span class="p">:</span><span class="n">clear</span><span class="o">-</span><span class="n">calendar</span><span class="o">-</span><span class="n">unshares</span>     <span class="n">clear</span> <span class="n">calendar</span> <span class="n">unshares</span> <span class="k">for</span> <span class="n">a</span> <span class="n">user</span>
+ <span class="n">dav</span><span class="p">:</span><span class="n">clear</span><span class="o">-</span><span class="n">contacts</span><span class="o">-</span><span class="n">photo</span><span class="o">-</span><span class="n">cache</span>  <span class="n">clear</span> <span class="n">cached</span> <span class="n">contact</span> <span class="n">photos</span>
+ <span class="n">dav</span><span class="p">:</span><span class="n">create</span><span class="o">-</span><span class="n">addressbook</span>          <span class="n">create</span> <span class="n">a</span> <span class="n">dav</span> <span class="n">addressbook</span>
+ <span class="n">dav</span><span class="p">:</span><span class="n">create</span><span class="o">-</span><span class="n">calendar</span>             <span class="n">create</span> <span class="n">a</span> <span class="n">dav</span> <span class="n">calendar</span>
+ <span class="n">dav</span><span class="p">:</span><span class="n">create</span><span class="o">-</span><span class="n">subscription</span>         <span class="n">create</span> <span class="n">a</span> <span class="n">dav</span> <span class="n">subscription</span>
+ <span class="n">dav</span><span class="p">:</span><span class="n">delete</span><span class="o">-</span><span class="n">calendar</span>             <span class="n">delete</span> <span class="n">a</span> <span class="n">dav</span> <span class="n">calendar</span>
+ <span class="n">dav</span><span class="p">:</span><span class="n">delete</span><span class="o">-</span><span class="n">subscription</span>         <span class="n">delete</span> <span class="n">a</span> <span class="n">calendar</span> <span class="n">subscription</span> <span class="k">for</span> <span class="n">a</span> <span class="n">user</span>
+ <span class="n">dav</span><span class="p">:</span><span class="n">fix</span><span class="o">-</span><span class="n">missing</span><span class="o">-</span><span class="n">caldav</span><span class="o">-</span><span class="n">changes</span>  <span class="n">insert</span> <span class="n">missing</span> <span class="n">calendarchanges</span> <span class="n">rows</span> <span class="k">for</span> <span class="n">existing</span> <span class="n">events</span>
+ <span class="n">dav</span><span class="p">:</span><span class="nb">list</span><span class="o">-</span><span class="n">addressbooks</span>           <span class="nb">list</span> <span class="nb">all</span> <span class="n">addressbooks</span> <span class="n">of</span> <span class="n">a</span> <span class="n">user</span>
+ <span class="n">dav</span><span class="p">:</span><span class="nb">list</span><span class="o">-</span><span class="n">calendar</span><span class="o">-</span><span class="n">shares</span>        <span class="nb">list</span> <span class="nb">all</span> <span class="n">calendar</span> <span class="n">shares</span> <span class="k">for</span> <span class="n">a</span> <span class="n">user</span>
+ <span class="n">dav</span><span class="p">:</span><span class="nb">list</span><span class="o">-</span><span class="n">calendars</span>              <span class="nb">list</span> <span class="nb">all</span> <span class="n">calendars</span> <span class="n">of</span> <span class="n">a</span> <span class="n">user</span>
+ <span class="n">dav</span><span class="p">:</span><span class="nb">list</span><span class="o">-</span><span class="n">subscriptions</span>          <span class="nb">list</span> <span class="nb">all</span> <span class="n">calendar</span> <span class="n">subscriptions</span> <span class="k">for</span> <span class="n">a</span> <span class="n">user</span>
+ <span class="n">dav</span><span class="p">:</span><span class="n">move</span><span class="o">-</span><span class="n">calendar</span>               <span class="n">move</span> <span class="n">a</span> <span class="n">calendar</span> <span class="kn">from</span><span class="w"> </span><span class="nn">one</span> <span class="n">user</span> <span class="n">to</span> <span class="n">another</span>
+ <span class="n">dav</span><span class="p">:</span><span class="n">remove</span><span class="o">-</span><span class="n">invalid</span><span class="o">-</span><span class="n">shares</span>       <span class="n">remove</span> <span class="n">invalid</span> <span class="n">dav</span> <span class="n">shares</span>
+ <span class="n">dav</span><span class="p">:</span><span class="n">retention</span><span class="p">:</span><span class="n">clean</span><span class="o">-</span><span class="n">up</span>          <span class="n">delete</span> <span class="n">CalDAV</span> <span class="n">trash</span> <span class="n">elements</span> <span class="n">that</span> <span class="n">are</span> <span class="n">due</span> <span class="k">for</span> <span class="n">removal</span>
+ <span class="n">dav</span><span class="p">:</span><span class="n">send</span><span class="o">-</span><span class="n">event</span><span class="o">-</span><span class="n">reminders</span>        <span class="n">send</span> <span class="n">event</span> <span class="n">reminder</span> <span class="n">notifications</span>
+ <span class="n">dav</span><span class="p">:</span><span class="n">sync</span><span class="o">-</span><span class="n">birthday</span><span class="o">-</span><span class="n">calendar</span>      <span class="n">synchronize</span> <span class="n">the</span> <span class="n">birthday</span> <span class="n">calendar</span>
+ <span class="n">dav</span><span class="p">:</span><span class="n">sync</span><span class="o">-</span><span class="n">system</span><span class="o">-</span><span class="n">addressbook</span>     <span class="n">synchronize</span> <span class="n">users</span> <span class="n">to</span> <span class="n">the</span> <span class="n">system</span> <span class="n">addressbook</span>
 <span class="n">calendar</span>
- <span class="n">calendar</span><span class="p">:</span><span class="n">export</span>                 <span class="n">Export</span> <span class="n">a</span> <span class="n">calendar</span> <span class="n">of</span> <span class="n">a</span> <span class="n">user</span>
- <span class="n">calendar</span><span class="p">:</span><span class="kn">import</span><span class="w">                 </span><span class="nn">Import</span> <span class="n">a</span> <span class="n">calendar</span> <span class="n">to</span> <span class="n">a</span> <span class="n">user</span>
+ <span class="n">calendar</span><span class="p">:</span><span class="n">export</span>                 <span class="n">export</span> <span class="n">a</span> <span class="n">calendar</span> <span class="n">of</span> <span class="n">a</span> <span class="n">user</span>
+ <span class="n">calendar</span><span class="p">:</span><span class="kn">import</span><span class="w">                 </span><span class="nn">import</span> <span class="n">a</span> <span class="n">calendar</span> <span class="n">to</span> <span class="n">a</span> <span class="n">user</span>
 </pre></div>
 </div>
 <section id="manage-addressbooks">
 <h3>Manage addressbooks<a class="headerlink" href="#manage-addressbooks" title="Link to this heading"></a></h3>
-<section id="list-all-addressbooks-of-a-user">
-<h4>List all addressbooks of a user<a class="headerlink" href="#list-all-addressbooks-of-a-user" title="Link to this heading"></a></h4>
-<p><code class="docutils literal notranslate"><span class="pre">dav:list-addressbooks</span> <span class="pre">&lt;uid&gt;</span></code></p>
-<p>This example will list all addressbooks for user annie:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">dav</span><span class="p">:</span><span class="nb">list</span><span class="o">-</span><span class="n">addressbooks</span> <span class="n">annie</span>
+<section id="dav-list-addressbooks">
+<h4>dav:list-addressbooks<a class="headerlink" href="#dav-list-addressbooks" title="Link to this heading"></a></h4>
+<p>List all addressbooks for a user:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>sudo -E -u www-data php occ dav:list-addressbooks layla
++-------------+----------+-----------------------------+-------------------+----------+
+| Database ID | URI      | Owner principal             | Owner displayname | Writable |
++-------------+----------+-----------------------------+-------------------+----------+
+| contacts    | Contacts | principals/users/layla      | Layla Smith       |  ✓       |
++-------------+----------+-----------------------------+-------------------+----------+
 </pre></div>
 </div>
 </section>
-<section id="create-a-addressbook-for-a-user">
-<h4>Create a addressbook for a user<a class="headerlink" href="#create-a-addressbook-for-a-user" title="Link to this heading"></a></h4>
-<p><code class="docutils literal notranslate"><span class="pre">dav:create-addressbook</span> <span class="pre">&lt;user&gt;</span> <span class="pre">&lt;name&gt;</span></code></p>
-<p>This example creates the addressbook <code class="docutils literal notranslate"><span class="pre">mollybook</span></code> for the user molly:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">dav</span><span class="p">:</span><span class="n">create</span><span class="o">-</span><span class="n">addressbook</span> <span class="n">molly</span> <span class="n">mollybook</span>
+<section id="dav-create-addressbook">
+<h4>dav:create-addressbook<a class="headerlink" href="#dav-create-addressbook" title="Link to this heading"></a></h4>
+<p>Create an addressbook for a user:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">dav</span><span class="p">:</span><span class="n">create</span><span class="o">-</span><span class="n">addressbook</span> <span class="n">layla</span> <span class="n">work</span>
 </pre></div>
 </div>
 </section>
 </section>
 <section id="manage-calendars">
 <h3>Manage calendars<a class="headerlink" href="#manage-calendars" title="Link to this heading"></a></h3>
-<section id="list-all-calendars-of-a-user">
-<h4>List all calendars of a user<a class="headerlink" href="#list-all-calendars-of-a-user" title="Link to this heading"></a></h4>
-<p><code class="docutils literal notranslate"><span class="pre">dav:list-calendars</span> <span class="pre">&lt;uid&gt;</span></code></p>
-<p>This example will list all calendars for user annie:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">dav</span><span class="p">:</span><span class="nb">list</span><span class="o">-</span><span class="n">calendars</span> <span class="n">annie</span>
+<section id="dav-list-calendars">
+<h4>dav:list-calendars<a class="headerlink" href="#dav-list-calendars" title="Link to this heading"></a></h4>
+<p>List all calendars for a user:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>sudo -E -u www-data php occ dav:list-calendars layla
++----------+-------------+-----------------------------+-------------------+----------+
+| URI      | Displayname | Owner principal             | Owner displayname | Writable |
++----------+-------------+-----------------------------+-------------------+----------+
+| personal | Personal    | principals/users/layla      | Layla Smith       |  ✓       |
++----------+-------------+-----------------------------+-------------------+----------+
 </pre></div>
 </div>
 </section>
-<section id="create-a-calendar-for-a-user">
-<h4>Create a calendar for a user<a class="headerlink" href="#create-a-calendar-for-a-user" title="Link to this heading"></a></h4>
-<p><code class="docutils literal notranslate"><span class="pre">dav:create-calendar</span> <span class="pre">&lt;user&gt;</span> <span class="pre">&lt;name&gt;</span></code></p>
-<p>This example creates the calendar <code class="docutils literal notranslate"><span class="pre">mollycal</span></code> for the user molly:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">dav</span><span class="p">:</span><span class="n">create</span><span class="o">-</span><span class="n">calendar</span> <span class="n">molly</span> <span class="n">mollycal</span>
+<section id="dav-list-calendar-shares">
+<h4>dav:list-calendar-shares<a class="headerlink" href="#dav-list-calendar-shares" title="Link to this heading"></a></h4>
+<p>List all calendar shares for a user:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">dav</span><span class="p">:</span><span class="nb">list</span><span class="o">-</span><span class="n">calendar</span><span class="o">-</span><span class="n">shares</span> <span class="n">layla</span>
+  <span class="n">User</span> <span class="n">layla</span> <span class="n">has</span> <span class="n">no</span> <span class="n">calendar</span> <span class="n">shares</span>
+</pre></div>
+</div>
+<p>Use <code class="docutils literal notranslate"><span class="pre">--calendar-id</span></code> to filter results to a specific calendar.</p>
+</section>
+<section id="dav-create-calendar">
+<h4>dav:create-calendar<a class="headerlink" href="#dav-create-calendar" title="Link to this heading"></a></h4>
+<p>Create a calendar for a user:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">dav</span><span class="p">:</span><span class="n">create</span><span class="o">-</span><span class="n">calendar</span> <span class="n">layla</span> <span class="n">holidays</span>
 </pre></div>
 </div>
 </section>
-<section id="delete-a-calendar-for-a-user">
-<h4>Delete a calendar for a user<a class="headerlink" href="#delete-a-calendar-for-a-user" title="Link to this heading"></a></h4>
-<p><code class="docutils literal notranslate"><span class="pre">dav:delete-calendar</span> <span class="pre">[--birthday]</span> <span class="pre">[-f|--force]</span> <span class="pre">[--]</span> <span class="pre">&lt;uid&gt;</span> <span class="pre">[&lt;name&gt;]</span></code> deletes the
-calendar named <code class="docutils literal notranslate"><span class="pre">name</span></code> (or the birthday calendar if <code class="docutils literal notranslate"><span class="pre">--birthday</span></code> is
-specified) of the user <code class="docutils literal notranslate"><span class="pre">uid</span></code>. You can use the force option <code class="docutils literal notranslate"><span class="pre">-f</span></code> or
-<code class="docutils literal notranslate"><span class="pre">--force</span></code> to delete the calendar instead of moving it to the trashbin.</p>
-<p>This example will delete the calendar mollycal of user molly:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">dav</span><span class="p">:</span><span class="n">delete</span><span class="o">-</span><span class="n">calendar</span> <span class="n">molly</span> <span class="n">mollycal</span>
+<section id="dav-delete-calendar">
+<h4>dav:delete-calendar<a class="headerlink" href="#dav-delete-calendar" title="Link to this heading"></a></h4>
+<p>Delete a named calendar for a user:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">dav</span><span class="p">:</span><span class="n">delete</span><span class="o">-</span><span class="n">calendar</span> <span class="n">layla</span> <span class="n">holidays</span>
 </pre></div>
 </div>
-<p>This example will delete the birthday calendar of user molly:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">dav</span><span class="p">:</span><span class="n">delete</span><span class="o">-</span><span class="n">calendar</span> <span class="o">--</span><span class="n">birthday</span> <span class="n">molly</span>
+<p>Use <code class="docutils literal notranslate"><span class="pre">--birthday</span></code> to delete the birthday calendar instead of specifying
+a name. Use <code class="docutils literal notranslate"><span class="pre">-f</span></code> / <code class="docutils literal notranslate"><span class="pre">--force</span></code> to delete immediately instead of moving
+to the trashbin:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">dav</span><span class="p">:</span><span class="n">delete</span><span class="o">-</span><span class="n">calendar</span> <span class="o">--</span><span class="n">force</span> <span class="n">layla</span> <span class="n">holidays</span>
+<span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">dav</span><span class="p">:</span><span class="n">delete</span><span class="o">-</span><span class="n">calendar</span> <span class="o">--</span><span class="n">birthday</span> <span class="n">layla</span>
 </pre></div>
 </div>
 </section>
-<section id="move-a-calendar-of-a-user">
-<h4>Move a calendar of a user<a class="headerlink" href="#move-a-calendar-of-a-user" title="Link to this heading"></a></h4>
+<section id="dav-move-calendar">
+<h4>dav:move-calendar<a class="headerlink" href="#dav-move-calendar" title="Link to this heading"></a></h4>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Note that this will change existing share URLs.</p>
+<p>Moving a calendar changes its existing share URLs.</p>
 </div>
-<p><code class="docutils literal notranslate"><span class="pre">dav:move-calendar</span> <span class="pre">[-f|--force]</span> <span class="pre">[--]</span> <span class="pre">&lt;name&gt;</span> <span class="pre">&lt;sourceuid&gt;</span> <span class="pre">&lt;destinationuid&gt;</span></code> allows the admin to move a calendar named <code class="docutils literal notranslate"><span class="pre">name</span></code> from a user <code class="docutils literal notranslate"><span class="pre">sourceuid</span></code> to the user <code class="docutils literal notranslate"><span class="pre">destinationuid</span></code>. You can use the force option <cite>-f</cite> to enforce the move if there are conflicts with existing shares. The system will also generate a new unique calendar name in case there is a conflict over the destination user.</p>
-<p>This example will move calendar named personal from user dennis to user sabine:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">dav</span><span class="p">:</span><span class="n">move</span><span class="o">-</span><span class="n">calendar</span> <span class="n">personal</span> <span class="n">dennis</span> <span class="n">sabine</span>
+<p>Move a calendar from one user to another:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">dav</span><span class="p">:</span><span class="n">move</span><span class="o">-</span><span class="n">calendar</span> <span class="n">personal</span> <span class="n">layla</span> <span class="n">fred</span>
 </pre></div>
 </div>
+<p>Without <code class="docutils literal notranslate"><span class="pre">--force</span></code>, the command fails if the destination user already
+has a calendar with the same name, or if the calendar is shared with a
+group the destination user is not a member of.</p>
+<p>Use <code class="docutils literal notranslate"><span class="pre">-f</span></code> / <code class="docutils literal notranslate"><span class="pre">--force</span></code> to proceed anyway: conflicting group shares are
+dropped, and if the calendar name is already taken at the destination a
+new name is tried automatically (<code class="docutils literal notranslate"><span class="pre">personal-1</span></code>, <code class="docutils literal notranslate"><span class="pre">personal-2</span></code>, up to
+ten attempts). The command fails if no free name is found within those
+attempts.</p>
 </section>
-<section id="export-a-calendar-of-a-user">
-<h4>Export a calendar of a user<a class="headerlink" href="#export-a-calendar-of-a-user" title="Link to this heading"></a></h4>
-<p><code class="docutils literal notranslate"><span class="pre">calendar:export</span> <span class="pre">[--format</span> <span class="pre">FORMAT]</span> <span class="pre">[--location</span> <span class="pre">LOCATION]</span> <span class="pre">[--]</span> <span class="pre">&lt;uid&gt;</span> <span class="pre">&lt;uri&gt;</span></code> exports the calendar entries from a calendar with the given <code class="docutils literal notranslate"><span class="pre">uri</span></code> of user <code class="docutils literal notranslate"><span class="pre">uid</span></code>.</p>
-<p><strong>Arguments:</strong></p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">uid</span></code> (mandatory): User ID whose calendar will be exported.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">cid</span></code> (mandatory): Calendar URI to export.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">--format</span> <span class="pre">FORMAT</span></code> (optional, defaults to <code class="docutils literal notranslate"><span class="pre">ical</span></code>): Output format. One of <code class="docutils literal notranslate"><span class="pre">ical</span></code>, <code class="docutils literal notranslate"><span class="pre">xcal</span></code>, or <code class="docutils literal notranslate"><span class="pre">jcal</span></code>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">--location</span> <span class="pre">&lt;file</span> <span class="pre">path&gt;</span></code> (optional, defaults to stdout): Path to the file to export to. If omitted, output is written to standard output.</p></li>
-</ul>
-<p>The output format can be specified with the <code class="docutils literal notranslate"><span class="pre">--format</span></code> option. Valid formats are <code class="docutils literal notranslate"><span class="pre">ical</span></code> standard format (RFC 5545), <code class="docutils literal notranslate"><span class="pre">xcal</span></code> XML iCalendar (RFC 6321), and <code class="docutils literal notranslate"><span class="pre">jcal</span></code> JSON iCalendar (RFC 7265).</p>
-<p>This example will export the calendar named personal of user dennis to a file named personal.ics in standard format:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">calendar</span><span class="p">:</span><span class="n">export</span> <span class="n">dennis</span> <span class="n">personal</span> <span class="o">--</span><span class="n">location</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">personal</span><span class="o">.</span><span class="n">ics</span>
+<section id="dav-clear-calendar-unshares">
+<h4>dav:clear-calendar-unshares<a class="headerlink" href="#dav-clear-calendar-unshares" title="Link to this heading"></a></h4>
+<p>Clear stale calendar unshare records for a user. Useful when a user’s
+calendar sharing state has become inconsistent:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">dav</span><span class="p">:</span><span class="n">clear</span><span class="o">-</span><span class="n">calendar</span><span class="o">-</span><span class="n">unshares</span> <span class="n">layla</span>
+  <span class="n">User</span> <span class="n">layla</span> <span class="n">has</span> <span class="n">no</span> <span class="n">calendar</span> <span class="n">unshares</span>
 </pre></div>
 </div>
-<p>This example will export the calendar in XML iCalendar format:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">calendar</span><span class="p">:</span><span class="n">export</span> <span class="n">dennis</span> <span class="n">personal</span> <span class="o">--</span><span class="nb">format</span> <span class="n">xcal</span> <span class="o">--</span><span class="n">location</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">personal</span><span class="o">.</span><span class="n">xcal</span>
-</pre></div>
-</div>
-<p>This example will export the calendar in JSON iCalendar format to standard output:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">calendar</span><span class="p">:</span><span class="n">export</span> <span class="n">dennis</span> <span class="n">personal</span> <span class="o">--</span><span class="nb">format</span> <span class="n">jcal</span>
-</pre></div>
-</div>
-</section>
-<section id="import-a-calendar-to-a-user">
-<h4>Import a calendar to a user<a class="headerlink" href="#import-a-calendar-to-a-user" title="Link to this heading"></a></h4>
-<p><code class="docutils literal notranslate"><span class="pre">calendar:import</span> <span class="pre">[--format</span> <span class="pre">FORMAT]</span> <span class="pre">[--errors</span> <span class="pre">ERRORS]</span> <span class="pre">[--validation</span> <span class="pre">VALIDATION]</span> <span class="pre">[--supersede]</span> <span class="pre">[--show-created]</span> <span class="pre">[--show-updated]</span> <span class="pre">[--show-skipped]</span> <span class="pre">[--show-errors]</span> <span class="pre">[--]</span> <span class="pre">&lt;uid&gt;</span> <span class="pre">&lt;uri&gt;</span> <span class="pre">[&lt;location&gt;]</span></code> imports a calendar entries to the calendar with the given <code class="docutils literal notranslate"><span class="pre">uri</span></code> of user <code class="docutils literal notranslate"><span class="pre">uid</span></code>.</p>
-<p><strong>Arguments:</strong></p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">uid</span></code> (mandatory): User ID to import the calendar for.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">uri</span></code> (mandatory): Calendar URI to import into.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">location</span></code> (optional, defaults to stdin): Path to the file to import. If omitted, reads from standard input.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">--format</span> <span class="pre">FORMAT</span></code> (optional, defaults to <code class="docutils literal notranslate"><span class="pre">ical</span></code>): Input format. One of <code class="docutils literal notranslate"><span class="pre">ical</span></code>, <code class="docutils literal notranslate"><span class="pre">xcal</span></code>, or <code class="docutils literal notranslate"><span class="pre">jcal</span></code>.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">--supersede</span></code> (optional): Force override of existing objects with the same UID.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">--show-created</span></code> (optional): Show UID of created objects after import.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">--show-updated</span></code> (optional): Show UID of updated objects after import.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">--show-skipped</span></code> (optional): Show UID of skipped objects (e.g., duplicates or invalid entries).</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">--show-errors</span></code> (optional): Show UID of objects with errors during import.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">--errors</span> <span class="pre">ERRORS</span></code> (optional): How to handle errors. <code class="docutils literal notranslate"><span class="pre">0</span></code> = continue on error, <code class="docutils literal notranslate"><span class="pre">1</span></code> = fail on error.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">--validation</span> <span class="pre">VALIDATION</span></code> (optional): How to handle object validation. <code class="docutils literal notranslate"><span class="pre">0</span></code> = no validation, <code class="docutils literal notranslate"><span class="pre">1</span></code> = validate and skip on issue, <code class="docutils literal notranslate"><span class="pre">2</span></code> = validate and fail on issue.</p></li>
-</ul>
-<p>The input format can be specified with the <code class="docutils literal notranslate"><span class="pre">--format</span></code> option, valid formats are <code class="docutils literal notranslate"><span class="pre">ical</span></code> standard format (RFC 5545), <code class="docutils literal notranslate"><span class="pre">xcal</span></code> XML iCalendar (RFC 6321) and <code class="docutils literal notranslate"><span class="pre">jcal</span></code> JSON iCalendar (RFC 7265), the default is <code class="docutils literal notranslate"><span class="pre">ical</span></code>.</p>
-<p>This example will import from a file named personal.ics in standard format to the calendar named personal of user dennis:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">calendar</span><span class="p">:</span><span class="kn">import</span><span class="w"> </span><span class="nn">dennis</span> <span class="n">personal</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">personal</span><span class="o">.</span><span class="n">ics</span>
-</pre></div>
-</div>
-<p>This example will import from a file named personal.xcal in XML iCalendar format to the calendar named personal of user dennis:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">calendar</span><span class="p">:</span><span class="kn">import</span><span class="w"> </span><span class="o">--</span><span class="nb">format</span> <span class="n">xcal</span> <span class="n">dennis</span> <span class="n">personal</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">personal</span><span class="o">.</span><span class="n">xcal</span>
-</pre></div>
-</div>
-<p>This example will import from a file named personal.jcal in JSON iCalendar format to the calendar named personal of user dennis:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">calendar</span><span class="p">:</span><span class="kn">import</span><span class="w"> </span><span class="o">--</span><span class="nb">format</span> <span class="n">jcal</span> <span class="n">dennis</span> <span class="n">personal</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">personal</span><span class="o">.</span><span class="n">jcal</span>
-</pre></div>
-</div>
-<p>This example will import from standard input to the calendar named personal of user dennis:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">personal</span><span class="o">.</span><span class="n">ics</span> <span class="o">|</span> <span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">calendar</span><span class="p">:</span><span class="kn">import</span><span class="w"> </span><span class="nn">dennis</span> <span class="n">personal</span>
-</pre></div>
-</div>
-</section>
-<section id="misc">
-<h4>Misc<a class="headerlink" href="#misc" title="Link to this heading"></a></h4>
-<p><code class="docutils literal notranslate"><span class="pre">dav:fix-missing-caldav-changes</span> <span class="pre">[&lt;user&gt;]</span></code> attempts to restore calendar sync changes when data in the calendarchanges table has been lost. If the user ID is omitted, the command runs for all users, which may take some time to complete.</p>
-<p><code class="docutils literal notranslate"><span class="pre">dav:retention:clean-up</span></code> deletes elements from the CalDAV trash that are due for removal.</p>
-<p><code class="docutils literal notranslate"><span class="pre">dav:remove-invalid-shares</span></code> removes invalid shares that were created due to a bug in the calendar app.</p>
-<p><code class="docutils literal notranslate"><span class="pre">dav:send-event-reminders</span></code> is a command that should be called regularly through a dedicated
-cron job to send event reminder notifications. See <a class="reference internal" href="groupware/calendar.html"><span class="doc">Calendar / CalDAV</span></a> for more information on how to use this command.</p>
 </section>
 </section>
 <section id="manage-calendar-subscriptions">
 <h3>Manage calendar subscriptions<a class="headerlink" href="#manage-calendar-subscriptions" title="Link to this heading"></a></h3>
-<section id="list-all-calendar-subscriptions-of-a-user">
-<h4>List all calendar subscriptions of a user<a class="headerlink" href="#list-all-calendar-subscriptions-of-a-user" title="Link to this heading"></a></h4>
-<p><code class="docutils literal notranslate"><span class="pre">dav:list-subscriptions</span> <span class="pre">&lt;uid&gt;</span></code></p>
-<p>This example will list all calendar subscriptions for user annie:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">dav</span><span class="p">:</span><span class="nb">list</span><span class="o">-</span><span class="n">subscriptions</span> <span class="n">annie</span>
+<section id="dav-list-subscriptions">
+<h4>dav:list-subscriptions<a class="headerlink" href="#dav-list-subscriptions" title="Link to this heading"></a></h4>
+<p>List all calendar subscriptions for a user:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">dav</span><span class="p">:</span><span class="nb">list</span><span class="o">-</span><span class="n">subscriptions</span> <span class="n">layla</span>
+  <span class="n">User</span> <span class="n">layla</span> <span class="n">has</span> <span class="n">no</span> <span class="n">subscriptions</span>
 </pre></div>
 </div>
 </section>
-<section id="create-a-calendar-subscription-for-a-user">
-<h4>Create a calendar subscription for a user<a class="headerlink" href="#create-a-calendar-subscription-for-a-user" title="Link to this heading"></a></h4>
-<p><code class="docutils literal notranslate"><span class="pre">dav:create-subscription</span> <span class="pre">&lt;user&gt;</span> <span class="pre">&lt;name&gt;</span> <span class="pre">&lt;url&gt;</span> <span class="pre">[&lt;color&gt;]</span></code></p>
-<p>This example creates the subscription for the lunar calendar <code class="docutils literal notranslate"><span class="pre">Lunar</span> <span class="pre">Calendar</span></code> for the user molly:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">dav</span><span class="p">:</span><span class="n">create</span><span class="o">-</span><span class="n">subscription</span> <span class="n">molly</span> <span class="s2">&quot;Lunar Calendar&quot;</span> <span class="n">webcal</span><span class="p">:</span><span class="o">//</span><span class="n">cantonbecker</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">astronomy</span><span class="o">-</span><span class="n">calendar</span><span class="o">/</span><span class="n">astrocal</span><span class="o">.</span><span class="n">ics</span>
+<section id="dav-create-subscription">
+<h4>dav:create-subscription<a class="headerlink" href="#dav-create-subscription" title="Link to this heading"></a></h4>
+<p>Create a subscription calendar for a user:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">dav</span><span class="p">:</span><span class="n">create</span><span class="o">-</span><span class="n">subscription</span> <span class="n">layla</span> <span class="s2">&quot;Astronomy Calendar&quot;</span> \
+  <span class="n">webcal</span><span class="p">:</span><span class="o">//</span><span class="n">cantonbecker</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">astronomy</span><span class="o">-</span><span class="n">calendar</span><span class="o">/</span><span class="n">astrocal</span><span class="o">.</span><span class="n">ics</span>
 </pre></div>
 </div>
-<p>Optionally, a color for the new subscription calendar can be passed as a HEX color code:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">dav</span><span class="p">:</span><span class="n">create</span><span class="o">-</span><span class="n">subscription</span> <span class="n">molly</span> <span class="s2">&quot;Lunar Calendar&quot;</span> <span class="n">calendar</span> <span class="n">webcal</span><span class="p">:</span><span class="o">//</span><span class="n">cantonbecker</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">astronomy</span><span class="o">-</span><span class="n">calendar</span><span class="o">/</span><span class="n">astrocal</span><span class="o">.</span><span class="n">ics</span> <span class="s2">&quot;#ff5733&quot;</span>
+<p>Optionally pass a HEX color code for the calendar:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">dav</span><span class="p">:</span><span class="n">create</span><span class="o">-</span><span class="n">subscription</span> <span class="n">layla</span> <span class="s2">&quot;Astronomy Calendar&quot;</span> \
+  <span class="n">webcal</span><span class="p">:</span><span class="o">//</span><span class="n">cantonbecker</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">astronomy</span><span class="o">-</span><span class="n">calendar</span><span class="o">/</span><span class="n">astrocal</span><span class="o">.</span><span class="n">ics</span> <span class="s2">&quot;#ff5733&quot;</span>
 </pre></div>
 </div>
-<p>If not set, the theming default color will be used.</p>
+<p>If not set, the theming default color is used.</p>
 </section>
-<section id="delete-a-calendar-subscription-for-a-user">
-<h4>Delete a calendar subscription for a user<a class="headerlink" href="#delete-a-calendar-subscription-for-a-user" title="Link to this heading"></a></h4>
-<p><code class="docutils literal notranslate"><span class="pre">dav:delete-subscription</span> <span class="pre">&lt;uid&gt;</span> <span class="pre">&lt;uri&gt;</span></code></p>
-<p>This example deletes the subscription for the lunar calendar <code class="docutils literal notranslate"><span class="pre">Lunar</span> <span class="pre">Calendar</span></code> for the user molly:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">dav</span><span class="p">:</span><span class="n">delete</span><span class="o">-</span><span class="n">subscription</span> <span class="n">molly</span> <span class="s2">&quot;Lunar Calendar&quot;</span>
+<section id="dav-delete-subscription">
+<h4>dav:delete-subscription<a class="headerlink" href="#dav-delete-subscription" title="Link to this heading"></a></h4>
+<p>Delete a calendar subscription for a user:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">dav</span><span class="p">:</span><span class="n">delete</span><span class="o">-</span><span class="n">subscription</span> <span class="n">layla</span> <span class="s2">&quot;Astronomy Calendar&quot;</span>
 </pre></div>
 </div>
 </section>
 </section>
-<section id="sync-system-address-book">
-<span id="dav-sync-system-address-book"></span><h3>Sync system address book<a class="headerlink" href="#sync-system-address-book" title="Link to this heading"></a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">dav:sync-system-addressbook</span></code> synchronizes all users to the <a class="reference internal" href="groupware/contacts.html#system-address-book"><span class="std std-ref">system
-address book</span></a>:</p>
+<section id="manage-absences-out-of-office">
+<h3>Manage absences (out-of-office)<a class="headerlink" href="#manage-absences-out-of-office" title="Link to this heading"></a></h3>
+<section id="dav-absence-set">
+<h4>dav:absence:set<a class="headerlink" href="#dav-absence-set" title="Link to this heading"></a></h4>
+<p>Set the out-of-office absence for a user. <code class="docutils literal notranslate"><span class="pre">first-day</span></code> and <code class="docutils literal notranslate"><span class="pre">last-day</span></code>
+are inclusive and formatted as <code class="docutils literal notranslate"><span class="pre">YYYY-MM-DD</span></code>.</p>
+<ul class="simple">
+<li><p><strong>short-message</strong> — a brief one-liner displayed as the user’s status
+next to their name across the UI while they are absent (e.g. in
+contacts, chat, and user lists).</p></li>
+<li><p><strong>message</strong> — the full out-of-office text shown to users who try to
+reach the absent user.</p></li>
+<li><p><strong>replacement-user-id</strong> — optional; a colleague to contact instead.
+Their display name is stored alongside the absence and shown to others.</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">dav</span><span class="p">:</span><span class="n">absence</span><span class="p">:</span><span class="nb">set</span> <span class="n">layla</span> <span class="mi">2026</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">01</span> <span class="mi">2026</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">15</span> \
+  <span class="s2">&quot;On leave&quot;</span> \
+  <span class="s2">&quot;I am on leave until May 15. For urgent matters please contact my colleague.&quot;</span>
+</pre></div>
+</div>
+<p>To set an absence with a replacement user:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">dav</span><span class="p">:</span><span class="n">absence</span><span class="p">:</span><span class="nb">set</span> <span class="n">layla</span> <span class="mi">2026</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">01</span> <span class="mi">2026</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">15</span> \
+  <span class="s2">&quot;On leave&quot;</span> \
+  <span class="s2">&quot;I am on leave. Please contact fred for urgent matters.&quot;</span> \
+  <span class="n">fred</span>
+</pre></div>
+</div>
+</section>
+<section id="dav-absence-get">
+<h4>dav:absence:get<a class="headerlink" href="#dav-absence-get" title="Link to this heading"></a></h4>
+<p>Show the current absence settings for a user:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">dav</span><span class="p">:</span><span class="n">absence</span><span class="p">:</span><span class="n">get</span> <span class="n">layla</span>
+  <span class="n">Start</span> <span class="n">day</span><span class="p">:</span> <span class="mi">2026</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">01</span>
+  <span class="n">End</span> <span class="n">day</span><span class="p">:</span> <span class="mi">2026</span><span class="o">-</span><span class="mi">05</span><span class="o">-</span><span class="mi">15</span>
+  <span class="n">Short</span> <span class="n">message</span><span class="p">:</span> <span class="n">On</span> <span class="n">leave</span>
+  <span class="n">Message</span><span class="p">:</span> <span class="n">I</span> <span class="n">am</span> <span class="n">on</span> <span class="n">leave</span> <span class="n">until</span> <span class="n">May</span> <span class="mf">15.</span> <span class="n">For</span> <span class="n">urgent</span> <span class="n">matters</span> <span class="n">please</span> <span class="n">contact</span> <span class="n">my</span> <span class="n">colleague</span><span class="o">.</span>
+  <span class="n">Replacement</span> <span class="n">user</span><span class="p">:</span> <span class="n">none</span>
+  <span class="n">Replacement</span> <span class="n">display</span> <span class="n">name</span><span class="p">:</span> <span class="n">none</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="sync">
+<h3>Sync<a class="headerlink" href="#sync" title="Link to this heading"></a></h3>
+<section id="dav-sync-system-addressbook">
+<h4>dav:sync-system-addressbook<a class="headerlink" href="#dav-sync-system-addressbook" title="Link to this heading"></a></h4>
+<p id="dav-sync-system-address-book">Synchronize all users to the <a class="reference internal" href="groupware/contacts.html#system-address-book"><span class="std std-ref">system address book</span></a>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">dav</span><span class="p">:</span><span class="n">sync</span><span class="o">-</span><span class="n">system</span><span class="o">-</span><span class="n">addressbook</span>
+  <span class="n">Syncing</span> <span class="n">users</span> <span class="o">...</span>
 </pre></div>
 </div>
 </section>
-<section id="sync-birthday-calendar">
-<h3>Sync birthday calendar<a class="headerlink" href="#sync-birthday-calendar" title="Link to this heading"></a></h3>
-<p><code class="docutils literal notranslate"><span class="pre">dav:sync-birthday-calendar</span> <span class="pre">[&lt;user&gt;]</span></code> adds all birthdays to your calendar from
-addressbooks shared with you. This example syncs to your calendar from user bernie:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">dav</span><span class="p">:</span><span class="n">sync</span><span class="o">-</span><span class="n">birthday</span><span class="o">-</span><span class="n">calendar</span> <span class="n">bernie</span>
+<section id="dav-sync-birthday-calendar">
+<h4>dav:sync-birthday-calendar<a class="headerlink" href="#dav-sync-birthday-calendar" title="Link to this heading"></a></h4>
+<p>Add birthdays from shared addressbooks to a user’s calendar:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">dav</span><span class="p">:</span><span class="n">sync</span><span class="o">-</span><span class="n">birthday</span><span class="o">-</span><span class="n">calendar</span> <span class="n">layla</span>
+  <span class="n">Start</span> <span class="n">birthday</span> <span class="n">calendar</span> <span class="n">sync</span> <span class="k">for</span> <span class="n">layla</span>
 </pre></div>
 </div>
+</section>
+</section>
+<section id="maintenance">
+<h3>Maintenance<a class="headerlink" href="#maintenance" title="Link to this heading"></a></h3>
+<section id="dav-fix-missing-caldav-changes">
+<h4>dav:fix-missing-caldav-changes<a class="headerlink" href="#dav-fix-missing-caldav-changes" title="Link to this heading"></a></h4>
+<p>Restore missing calendar sync change records. If the <code class="docutils literal notranslate"><span class="pre">calendarchanges</span></code>
+table has lost data, clients may not sync correctly. Run for a single
+user, or omit the user ID to fix all users (may take some time on large
+instances):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">dav</span><span class="p">:</span><span class="n">fix</span><span class="o">-</span><span class="n">missing</span><span class="o">-</span><span class="n">caldav</span><span class="o">-</span><span class="n">changes</span> <span class="n">layla</span>
+<span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">dav</span><span class="p">:</span><span class="n">fix</span><span class="o">-</span><span class="n">missing</span><span class="o">-</span><span class="n">caldav</span><span class="o">-</span><span class="n">changes</span>
+</pre></div>
+</div>
+</section>
+<section id="dav-remove-invalid-shares">
+<h4>dav:remove-invalid-shares<a class="headerlink" href="#dav-remove-invalid-shares" title="Link to this heading"></a></h4>
+<p>Remove invalid DAV shares created by a bug in a previous version:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">dav</span><span class="p">:</span><span class="n">remove</span><span class="o">-</span><span class="n">invalid</span><span class="o">-</span><span class="n">shares</span>
+</pre></div>
+</div>
+</section>
+<section id="dav-retention-clean-up">
+<h4>dav:retention:clean-up<a class="headerlink" href="#dav-retention-clean-up" title="Link to this heading"></a></h4>
+<p>Delete elements from the CalDAV trash that are past their retention
+period:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">dav</span><span class="p">:</span><span class="n">retention</span><span class="p">:</span><span class="n">clean</span><span class="o">-</span><span class="n">up</span>
+</pre></div>
+</div>
+</section>
+<section id="dav-send-event-reminders">
+<h4>dav:send-event-reminders<a class="headerlink" href="#dav-send-event-reminders" title="Link to this heading"></a></h4>
+<p>Send pending calendar event reminder notifications. By default,
+Nextcloud sends reminders via the background job. To use this command
+instead, switch the mode first:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="n">app</span><span class="p">:</span><span class="nb">set</span> <span class="n">dav</span> <span class="n">sendEventRemindersMode</span> <span class="o">--</span><span class="n">value</span> <span class="n">occ</span>
+</pre></div>
+</div>
+<p>Then call the command regularly via a dedicated cron job to ensure
+reminders are sent on time:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">dav</span><span class="p">:</span><span class="n">send</span><span class="o">-</span><span class="n">event</span><span class="o">-</span><span class="n">reminders</span>
+</pre></div>
+</div>
+<p>See <a class="reference internal" href="groupware/calendar.html"><span class="doc">Calendar / CalDAV</span></a> for the recommended cron schedule.</p>
+</section>
+<section id="dav-clear-contacts-photo-cache">
+<h4>dav:clear-contacts-photo-cache<a class="headerlink" href="#dav-clear-contacts-photo-cache" title="Link to this heading"></a></h4>
+<p>Clear all cached contact photos. Useful after a migration or if contact
+avatars are not displaying correctly:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">dav</span><span class="p">:</span><span class="n">clear</span><span class="o">-</span><span class="n">contacts</span><span class="o">-</span><span class="n">photo</span><span class="o">-</span><span class="n">cache</span>
+  <span class="n">No</span> <span class="n">cached</span> <span class="n">contact</span> <span class="n">photos</span> <span class="n">found</span><span class="o">.</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="export-and-import-calendars">
+<h3>Export and import calendars<a class="headerlink" href="#export-and-import-calendars" title="Link to this heading"></a></h3>
+<section id="calendar-export">
+<h4>calendar:export<a class="headerlink" href="#calendar-export" title="Link to this heading"></a></h4>
+<p>Export a calendar to a file or standard output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">calendar</span><span class="p">:</span><span class="n">export</span> <span class="n">layla</span> <span class="n">personal</span> <span class="o">--</span><span class="n">location</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">personal</span><span class="o">.</span><span class="n">ics</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">--format</span></code> selects the output format (default: <code class="docutils literal notranslate"><span class="pre">ical</span></code>):</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ical</span></code> — iCalendar (RFC 5545)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">xcal</span></code> — XML iCalendar (RFC 6321)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">jcal</span></code> — JSON iCalendar (RFC 7265)</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">--location</span></code> sets the output file path. If omitted, output is written
+to standard output:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">calendar</span><span class="p">:</span><span class="n">export</span> <span class="n">layla</span> <span class="n">personal</span> <span class="o">--</span><span class="nb">format</span> <span class="n">xcal</span> \
+  <span class="o">--</span><span class="n">location</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">personal</span><span class="o">.</span><span class="n">xcal</span>
+<span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">calendar</span><span class="p">:</span><span class="n">export</span> <span class="n">layla</span> <span class="n">personal</span> <span class="o">--</span><span class="nb">format</span> <span class="n">jcal</span>
+</pre></div>
+</div>
+</section>
+<section id="calendar-import">
+<h4>calendar:import<a class="headerlink" href="#calendar-import" title="Link to this heading"></a></h4>
+<p>Import calendar entries into a user’s calendar:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">calendar</span><span class="p">:</span><span class="kn">import</span><span class="w"> </span><span class="nn">layla</span> <span class="n">personal</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">personal</span><span class="o">.</span><span class="n">ics</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">--format</span></code> selects the input format (default: <code class="docutils literal notranslate"><span class="pre">ical</span></code>). Same values
+as <code class="docutils literal notranslate"><span class="pre">calendar:export</span></code>. If <code class="docutils literal notranslate"><span class="pre">location</span></code> is omitted, reads from standard
+input:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">calendar</span><span class="p">:</span><span class="kn">import</span><span class="w"> </span><span class="o">--</span><span class="nb">format</span> <span class="n">xcal</span> <span class="n">layla</span> <span class="n">personal</span> \
+  <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">personal</span><span class="o">.</span><span class="n">xcal</span>
+<span class="n">cat</span> <span class="o">/</span><span class="n">tmp</span><span class="o">/</span><span class="n">personal</span><span class="o">.</span><span class="n">ics</span> <span class="o">|</span> <span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">calendar</span><span class="p">:</span><span class="kn">import</span><span class="w"> </span><span class="nn">layla</span> <span class="n">personal</span>
+</pre></div>
+</div>
+<p><code class="docutils literal notranslate"><span class="pre">--supersede</span></code> forces override of existing objects with the same UID.</p>
+<p>Validation behaviour is controlled with <code class="docutils literal notranslate"><span class="pre">--validation</span></code>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">0</span></code> — no validation</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">1</span></code> — validate, skip invalid entries</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">2</span></code> — validate, fail on invalid entries</p></li>
+</ul>
+<p>Error handling is controlled with <code class="docutils literal notranslate"><span class="pre">--errors</span></code>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">0</span></code> — continue on error (default)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">1</span></code> — fail on first error</p></li>
+</ul>
+<p>Use <code class="docutils literal notranslate"><span class="pre">--show-created</span></code>, <code class="docutils literal notranslate"><span class="pre">--show-updated</span></code>, <code class="docutils literal notranslate"><span class="pre">--show-skipped</span></code>, or
+<code class="docutils literal notranslate"><span class="pre">--show-errors</span></code> to see the UIDs of affected objects after import.</p>
+</section>
 </section>
 <section id="disable-creation-of-example-events">
 <h3>Disable creation of example events<a class="headerlink" href="#disable-creation-of-example-events" title="Link to this heading"></a></h3>
-<p>This will disable the automatic creation of example events in calendar:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="n">app</span><span class="p">:</span><span class="nb">set</span> <span class="n">dav</span> <span class="n">create_example_event</span> <span class="o">--</span><span class="n">value</span><span class="o">=</span><span class="n">false</span> <span class="o">--</span><span class="nb">type</span><span class="o">=</span><span class="n">boolean</span>
+<p>Disable the automatic creation of example events for new calendar
+users:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="n">app</span><span class="p">:</span><span class="nb">set</span> <span class="n">dav</span> <span class="n">create_example_event</span> \
+  <span class="o">--</span><span class="n">value</span><span class="o">=</span><span class="n">false</span> <span class="o">--</span><span class="nb">type</span><span class="o">=</span><span class="n">boolean</span>
 </pre></div>
 </div>
 </section>
 </section>
-<section id="database-conversion">
-<span id="database-conversion-label"></span><h2>Database conversion<a class="headerlink" href="#database-conversion" title="Link to this heading"></a></h2>
-<p>The SQLite database is good for testing, and for Nextcloud servers with small
-single-user workloads that do not use sync clients, but production servers with
-multiple users should use MariaDB, MySQL, or PostgreSQL. You can use <code class="docutils literal notranslate"><span class="pre">occ</span></code> to
-convert from SQLite to one of these other databases.</p>
+<section id="database-commands">
+<span id="database-conversion-label"></span><h2>Database commands<a class="headerlink" href="#database-commands" title="Link to this heading"></a></h2>
+<p>The <code class="docutils literal notranslate"><span class="pre">db</span></code> commands manage database schema, indices, and data conversions:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">db</span>
- <span class="n">db</span><span class="p">:</span><span class="n">convert</span><span class="o">-</span><span class="nb">type</span>           <span class="n">Convert</span> <span class="n">the</span> <span class="n">Nextcloud</span> <span class="n">database</span> <span class="n">to</span> <span class="n">the</span> <span class="n">newly</span>
-                           <span class="n">configured</span> <span class="n">one</span>
+ <span class="n">db</span><span class="p">:</span><span class="n">add</span><span class="o">-</span><span class="n">missing</span><span class="o">-</span><span class="n">columns</span>          <span class="n">add</span> <span class="n">missing</span> <span class="n">optional</span> <span class="n">columns</span> <span class="n">to</span> <span class="n">the</span> <span class="n">database</span> <span class="n">tables</span>
+ <span class="n">db</span><span class="p">:</span><span class="n">add</span><span class="o">-</span><span class="n">missing</span><span class="o">-</span><span class="n">indices</span>          <span class="n">add</span> <span class="n">missing</span> <span class="n">indices</span> <span class="n">to</span> <span class="n">the</span> <span class="n">database</span> <span class="n">tables</span>
+ <span class="n">db</span><span class="p">:</span><span class="n">add</span><span class="o">-</span><span class="n">missing</span><span class="o">-</span><span class="n">primary</span><span class="o">-</span><span class="n">keys</span>     <span class="n">add</span> <span class="n">missing</span> <span class="n">primary</span> <span class="n">keys</span> <span class="n">to</span> <span class="n">the</span> <span class="n">database</span> <span class="n">tables</span>
+ <span class="n">db</span><span class="p">:</span><span class="n">convert</span><span class="o">-</span><span class="n">filecache</span><span class="o">-</span><span class="n">bigint</span>     <span class="n">convert</span> <span class="n">the</span> <span class="n">ID</span> <span class="n">columns</span> <span class="n">of</span> <span class="n">the</span> <span class="n">filecache</span> <span class="n">to</span> <span class="n">BigInt</span>
+ <span class="n">db</span><span class="p">:</span><span class="n">convert</span><span class="o">-</span><span class="n">mysql</span><span class="o">-</span><span class="n">charset</span>        <span class="n">convert</span> <span class="n">charset</span> <span class="n">of</span> <span class="n">MySQL</span><span class="o">/</span><span class="n">MariaDB</span> <span class="n">to</span> <span class="n">utf8mb4</span>
+ <span class="n">db</span><span class="p">:</span><span class="n">convert</span><span class="o">-</span><span class="nb">type</span>                 <span class="n">convert</span> <span class="n">the</span> <span class="n">Nextcloud</span> <span class="n">database</span> <span class="n">to</span> <span class="n">a</span> <span class="n">different</span> <span class="nb">type</span>
+ <span class="n">db</span><span class="p">:</span><span class="n">schema</span><span class="p">:</span><span class="n">expected</span>              <span class="n">export</span> <span class="n">the</span> <span class="n">expected</span> <span class="n">database</span> <span class="n">schema</span> <span class="k">for</span> <span class="n">a</span> <span class="n">fresh</span> <span class="n">installation</span>
+ <span class="n">db</span><span class="p">:</span><span class="n">schema</span><span class="p">:</span><span class="n">export</span>                <span class="n">export</span> <span class="n">the</span> <span class="n">current</span> <span class="n">database</span> <span class="n">schema</span>
 </pre></div>
 </div>
-<p>You need:</p>
-<ul class="simple">
-<li><p>Your desired database and its PHP connector installed.</p></li>
-<li><p>The login and password of a database admin user.</p></li>
-<li><p>The database port number, if it is a non-standard port.</p></li>
-</ul>
-<p>This is example converts SQLite to MySQL/MariaDB:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">db</span><span class="p">:</span><span class="n">convert</span><span class="o">-</span><span class="nb">type</span> <span class="n">mysql</span> <span class="n">oc_dbuser</span> <span class="mf">127.0.0.1</span>
-<span class="n">oc_database</span>
-</pre></div>
-</div>
-<p>For a more detailed explanation see
-<a class="reference internal" href="configuration_database/db_conversion.html"><span class="doc">Converting database type</span></a></p>
-</section>
-<section id="add-missing-indices">
-<span id="database-add-indices-label"></span><h2>Add missing indices<a class="headerlink" href="#add-missing-indices" title="Link to this heading"></a></h2>
-<p>It might happen that we add from time to time new indices to already existing database tables,
-for example to improve performance. In order to check your database for missing indices run
-following command:</p>
+<section id="schema-maintenance">
+<h3>Schema maintenance<a class="headerlink" href="#schema-maintenance" title="Link to this heading"></a></h3>
+<section id="db-add-missing-indices">
+<h4>db:add-missing-indices<a class="headerlink" href="#db-add-missing-indices" title="Link to this heading"></a></h4>
+<p>Add any indices to the database that are defined in the schema but
+missing from the current installation. Run this after upgrades if
+performance has degraded or if prompted by the admin overview:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">db</span><span class="p">:</span><span class="n">add</span><span class="o">-</span><span class="n">missing</span><span class="o">-</span><span class="n">indices</span>
+  <span class="n">Done</span><span class="o">.</span>
 </pre></div>
 </div>
-<p>Use option <code class="docutils literal notranslate"><span class="pre">--dry-run</span></code> to output the SQL queries without running them.</p>
+<p>Use <code class="docutils literal notranslate"><span class="pre">--dry-run</span></code> to preview the SQL statements without executing them:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">db</span><span class="p">:</span><span class="n">add</span><span class="o">-</span><span class="n">missing</span><span class="o">-</span><span class="n">indices</span> <span class="o">--</span><span class="n">dry</span><span class="o">-</span><span class="n">run</span>
+</pre></div>
+</div>
+</section>
+<section id="db-add-missing-columns">
+<h4>db:add-missing-columns<a class="headerlink" href="#db-add-missing-columns" title="Link to this heading"></a></h4>
+<p>Add optional columns that are defined in the schema but missing from the
+current installation:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">db</span><span class="p">:</span><span class="n">add</span><span class="o">-</span><span class="n">missing</span><span class="o">-</span><span class="n">columns</span>
+  <span class="n">Done</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>Use <code class="docutils literal notranslate"><span class="pre">--dry-run</span></code> to preview the SQL statements without executing them.</p>
+</section>
+<section id="db-add-missing-primary-keys">
+<h4>db:add-missing-primary-keys<a class="headerlink" href="#db-add-missing-primary-keys" title="Link to this heading"></a></h4>
+<p>Add primary keys that are defined in the schema but missing from the
+current installation:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">db</span><span class="p">:</span><span class="n">add</span><span class="o">-</span><span class="n">missing</span><span class="o">-</span><span class="n">primary</span><span class="o">-</span><span class="n">keys</span>
+  <span class="n">Done</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>Use <code class="docutils literal notranslate"><span class="pre">--dry-run</span></code> to preview the SQL statements without executing them.</p>
+</section>
+</section>
+<section id="schema-inspection">
+<h3>Schema inspection<a class="headerlink" href="#schema-inspection" title="Link to this heading"></a></h3>
+<section id="db-schema-export">
+<h4>db:schema:export<a class="headerlink" href="#db-schema-export" title="Link to this heading"></a></h4>
+<p>Export the current database schema. Useful for debugging or comparing
+against the expected schema:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">db</span><span class="p">:</span><span class="n">schema</span><span class="p">:</span><span class="n">export</span>
+  <span class="o">-</span> <span class="n">oc_filecache</span><span class="p">:</span>
+    <span class="o">-</span> <span class="n">columns</span><span class="p">:</span>
+      <span class="o">-</span> <span class="n">checksum</span><span class="p">:</span>
+        <span class="o">-</span> <span class="n">name</span><span class="p">:</span> <span class="n">checksum</span>
+        <span class="o">-</span> <span class="nb">type</span><span class="p">:</span> <span class="n">string</span>
+</pre></div>
+</div>
+<p>Limit output to a single table:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">db</span><span class="p">:</span><span class="n">schema</span><span class="p">:</span><span class="n">export</span> <span class="n">oc_filecache</span>
+</pre></div>
+</div>
+<p>Use <code class="docutils literal notranslate"><span class="pre">--sql</span></code> to output SQL <code class="docutils literal notranslate"><span class="pre">CREATE</span> <span class="pre">TABLE</span></code> statements instead of the
+default structured format. Use <code class="docutils literal notranslate"><span class="pre">--output=json_pretty</span></code> for
+machine-readable output.</p>
+</section>
+<section id="db-schema-expected">
+<h4>db:schema:expected<a class="headerlink" href="#db-schema-expected" title="Link to this heading"></a></h4>
+<p>Export the expected schema for a fresh installation of the current
+version. Compare this against <code class="docutils literal notranslate"><span class="pre">db:schema:export</span></code> to identify
+divergences caused by incomplete upgrades or manual changes:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">db</span><span class="p">:</span><span class="n">schema</span><span class="p">:</span><span class="n">expected</span>
+<span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">db</span><span class="p">:</span><span class="n">schema</span><span class="p">:</span><span class="n">expected</span> <span class="n">oc_filecache</span>
+</pre></div>
+</div>
+<p>Supports the same <code class="docutils literal notranslate"><span class="pre">--sql</span></code> and <code class="docutils literal notranslate"><span class="pre">--output</span></code> options as
+<code class="docutils literal notranslate"><span class="pre">db:schema:export</span></code>.</p>
+</section>
+</section>
+<section id="data-conversions">
+<h3>Data conversions<a class="headerlink" href="#data-conversions" title="Link to this heading"></a></h3>
+<section id="db-convert-filecache-bigint">
+<h4>db:convert-filecache-bigint<a class="headerlink" href="#db-convert-filecache-bigint" title="Link to this heading"></a></h4>
+<p>Convert the <code class="docutils literal notranslate"><span class="pre">filecache</span></code> table’s ID columns from integer to BigInt.
+Required on large installations where file IDs have exceeded the integer
+limit. This command is non-destructive but may take time on large
+databases:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">db</span><span class="p">:</span><span class="n">convert</span><span class="o">-</span><span class="n">filecache</span><span class="o">-</span><span class="n">bigint</span>
+</pre></div>
+</div>
+</section>
+<section id="db-convert-mysql-charset">
+<h4>db:convert-mysql-charset<a class="headerlink" href="#db-convert-mysql-charset" title="Link to this heading"></a></h4>
+<p>Convert all MySQL or MariaDB tables to use <code class="docutils literal notranslate"><span class="pre">utf8mb4</span></code> (full Unicode,
+including emoji). Required for proper Unicode support. Run this once
+after switching to or upgrading MySQL/MariaDB:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">db</span><span class="p">:</span><span class="n">convert</span><span class="o">-</span><span class="n">mysql</span><span class="o">-</span><span class="n">charset</span>
+</pre></div>
+</div>
+</section>
+<section id="db-convert-type">
+<h4>db:convert-type<a class="headerlink" href="#db-convert-type" title="Link to this heading"></a></h4>
+<p id="database-add-indices-label">Convert the Nextcloud database from SQLite to MySQL, MariaDB, or
+PostgreSQL. SQLite is suitable for testing and single-user setups, but
+production servers with multiple users should use one of the other
+supported databases.</p>
+<p>Requirements:</p>
+<ul class="simple">
+<li><p>The target database and its PHP connector must be installed.</p></li>
+<li><p>Login credentials for a database admin user.</p></li>
+<li><p>The database port number, if non-standard.</p></li>
+</ul>
+<p>This example converts from SQLite to MySQL/MariaDB:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">db</span><span class="p">:</span><span class="n">convert</span><span class="o">-</span><span class="nb">type</span> <span class="n">mysql</span> <span class="n">oc_dbuser</span> <span class="mf">127.0.0.1</span> <span class="n">oc_database</span>
+</pre></div>
+</div>
+<p>For a detailed walkthrough see
+<a class="reference internal" href="configuration_database/db_conversion.html"><span class="doc">Converting database type</span></a>.</p>
+</section>
+</section>
 </section>
 </section>
 
