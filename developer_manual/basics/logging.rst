@@ -301,7 +301,7 @@ Admin audit logging
 
 If you want to log things less for system administration but for compliance reasons, e.g. who accessed which file,
 who changed the password of an item or made it public, the
-`admin audit log <../../admin_manual/configuration_server/logging_configuration.rst#admin-audit-log>`_
+`admin audit log <../../admin_manual/configuration_server/logging_configuration.html#admin-audit-log>`_
 is the correct place.
 
 You can easily add a log by simply emitting an ``OCP\Log\Audit\CriticalActionPerformedEvent`` event:

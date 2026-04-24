@@ -340,7 +340,7 @@ jobs:
             --root-dir "$(pwd)/stage"
             --offline --no-progress
             --remap "https://docs.nextcloud.com/server/ file://$(pwd)/stage/"
-            --exclude 'go\.php' --exclude 'mailto:' --exclude-path '.*/404\.html'
+            --exclude 'go\.php' --exclude 'mailto:' --exclude-path '.*/404\.html' --exclude-path '.*/_static/.*'
             --exclude "/user_manual/" --include "/user_manual/en/"
             --exclude '^file://.*/stage/(latest|stable|[0-9]+)/(developer_manual|admin_manual|user_manual)/?$'
             'stage/${{ needs.stage-and-check.outputs.branch_name }}/user_manual/en/**/*.html'
