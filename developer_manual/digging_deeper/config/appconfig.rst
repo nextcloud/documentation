@@ -24,7 +24,7 @@ In addition to simple read/write operations, ``IAppConfig`` supports:
 .. note::
    See `Lexicon Concepts`_ to learn more about **Lexicon**, a way to define configuration keys and avoid conflicts in your code.
 
-.. _Lexicon Concepts: lexicon.rst#concept-overview
+.. _Lexicon Concepts: lexicon.html#concept-overview
 
 
 AppFramework

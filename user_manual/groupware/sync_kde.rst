@@ -28,7 +28,7 @@ In Kalendar:
 
 In KOrganizer and Kalendar:
 
-3. Enter your username. As password, you need to generate an app-password/token (`Learn more <../session_management.rst#managing-devices>`_):
+3. Enter your username. As password, you need to generate an app-password/token (`Learn more <../session_management.html#managing-devices>`_):
 
 .. image:: ../images/korganizer_credentials.png
 

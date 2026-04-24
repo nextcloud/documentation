@@ -21,5 +21,5 @@ You can find additional information here:
 * `User manual`_
 * `Admin manual`_
 
-.. _`User manual`: ../../user_manual/desktop/index.rst
-.. _`Admin manual`: ../../admin_manual/desktop/index.rst
+.. _`User manual`: ../../user_manual/desktop/index.html
+.. _`Admin manual`: ../../admin_manual/desktop/index.html

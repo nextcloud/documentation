@@ -31,7 +31,7 @@ configuration report with the :ref:`occ config command
 
 .. _the Nextcloud Forums: https://help.nextcloud.com
 .. _FAQ page: https://help.nextcloud.com/t/how-to-faq-wiki
-.. _bugtracker: ../../developer_manual/prologue/bugtracker/index.rst
+.. _bugtracker: ../../developer_manual/prologue/bugtracker/index.html
 
 General troubleshooting
 -----------------------
@@ -411,7 +411,7 @@ does not match the actual data stored in the user's ``data/$userId/files`` direc
 .. note::
 
    Metadata, versions, trashbin and encryption keys are not counted in the used space above.
-   Please refer to the `quota documentation <../../user_manual/files/quota.rst>`_ for details.
+   Please refer to the `quota documentation <../../user_manual/files/quota.html>`_ for details.
 
 Running the following command can help fix the sizes and quota for a given user::
 

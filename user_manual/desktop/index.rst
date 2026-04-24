@@ -25,5 +25,5 @@ For additional information, see:
 * `Admin manual`_
 * `Developer manual`_
 
-.. _`Admin manual`: ../../admin_manual/desktop/index.rst
-.. _`Developer manual`: ../../developer_manual/desktop/index.rst
+.. _`Admin manual`: ../../admin_manual/desktop/index.html
+.. _`Developer manual`: ../../developer_manual/desktop/index.html

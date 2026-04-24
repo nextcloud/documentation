@@ -118,7 +118,7 @@ Frontend apps
 * `Whiteboard <https://apps.nextcloud.com/apps/whiteboard>`_ integrating Assistant through the smart picker to offer a graphical UI for the various tasks
 * `Deck <https://apps.nextcloud.com/apps/deck>`_ integrating Assistant through the smart picker to offer a graphical UI for the various tasks
 * `Nextcloud Office <https://apps.nextcloud.com/apps/richdocuments>`_ integrating Assistant through the smart picker to offer a graphical UI for the various tasks in documents
-* `Desktop Clients <../../user_manual/desktop/index.rst>`_ for simple "Chat with AI"
+* `Desktop Clients <../../user_manual/desktop/index.html>`_ for simple "Chat with AI"
 
 Backend apps
 ~~~~~~~~~~~~

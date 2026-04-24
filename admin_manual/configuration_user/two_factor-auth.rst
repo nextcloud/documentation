@@ -46,13 +46,13 @@ Other 2FA providers may be found in the App Store.
 .. figure:: ../images/2fa-app-install.png
 
 Developers can also `implement new two-factor provider 
-apps <../../developer_manual/digging_deeper/two-factor-provider.rst>`_.
+apps <../../developer_manual/digging_deeper/two-factor-provider.html>`_.
 
 Enforcing two-factor authentication
 -----------------------------------
 
 By default 2FA is *optional*, hence users are given the choice whether to enable
-it for their account `under their personal settings <../../user_manual/user_2fa.rst>`_.
+it for their account `under their personal settings <../../user_manual/user_2fa.html>`_.
 Admins may, however, enforce the use of 2FA.
 
 Enforcement is possible system-wide (all users) or for selected groups only. Select groups
