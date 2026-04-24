@@ -31,7 +31,9 @@ jobs:
           sync-labels: false
 
   triage-pr:
+    needs: [label-by-files]
     if: >
+      always() &&
       github.event_name == 'pull_request' &&
       (github.event.action == 'opened' || github.event.action == 'reopened')
     name: Apply default PR triage label
