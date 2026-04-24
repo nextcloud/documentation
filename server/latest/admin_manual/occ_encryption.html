@@ -1,0 +1,595 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" />
+  <meta name="readthedocs-addons-api-version" content="1"><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Encryption commands &mdash; Nextcloud latest Administration Manual latest documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+      <link rel="stylesheet" type="text/css" href="_static/copybutton.css?v=76b2166b" />
+      <link rel="stylesheet" type="text/css" href="_static/custom.css?v=e7c79d26" />
+      <link rel="stylesheet" type="text/css" href="_static/dark_mode_css/general.css?v=c0a7eb24" />
+      <link rel="stylesheet" type="text/css" href="_static/dark_mode_css/dark.css?v=70edf1c7" />
+
+  
+    <link rel="canonical" href="https://docs.nextcloud.com/server/stable/admin_manual/occ_encryption.html" />
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=a49d5d77"></script>
+      <script src="_static/doctools.js?v=9bcbadda"></script>
+      <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="_static/clipboard.min.js?v=a7894cd8"></script>
+      <script src="_static/copybutton.js?v=f281be69"></script>
+      <script src="_static/dark_mode_js/default_light.js?v=c2e647ce"></script>
+      <script src="_static/dark_mode_js/theme_switcher.js?v=358d3910"></script>
+    <script src="_static/js/theme.js"></script>
+    <script src="_static/js/versions.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Files commands" href="occ_files.html" />
+    <link rel="prev" title="DAV &amp; database commands" href="occ_database.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="contents.html">
+            
+              <img src="_static/logo-white.png" class="logo" alt="Logo"/>
+          </a>
+              <div class="switch-menus">
+                <div class="version-switch"></div>
+                <div class="language-switch"></div>
+              </div>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Getting Started</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Introduction</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release_schedule.html">Maintenance and release schedule</a></li>
+<li class="toctree-l1"><a class="reference internal" href="gdpr/index.html">GDPR-compliance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="declarations/index.html">Declarations</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Release notes</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="release_notes/index.html">Critical changes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Installation</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="installation/index.html">Installation and server configuration</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration_database/index.html">Database configuration</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Configuration</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="configuration_server/index.html">Nextcloud configuration</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="occ_command.html">Using the occ command</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="occ_command.html#running-occ">Running occ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="occ_command.html#enabling-autocompletion">Enabling autocompletion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="occ_command.html#limitations-in-maintenance-mode">Limitations in maintenance mode</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="occ_command.html#command-reference">Command reference</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="occ_apps.html">Apps, background jobs &amp; config commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="occ_database.html">DAV &amp; database commands</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Encryption commands</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#status-and-control">Status and control</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#encrypt-and-decrypt-all-data">Encrypt and decrypt all data</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#encryption-modules">Encryption modules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#key-storage">Key storage</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#master-key">Master key</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#maintenance-and-repair">Maintenance and repair</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#legacy-migration">Legacy migration</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="occ_files.html">Files commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="occ_ldap.html">LDAP commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="occ_users.html">User &amp; group commands</a></li>
+<li class="toctree-l3"><a class="reference internal" href="occ_system.html">System &amp; maintenance commands</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="reference/index.html">Reference management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="webhook_listeners/index.html">Webhook Listeners</a></li>
+<li class="toctree-l1"><a class="reference internal" href="windmill_workflows/index.html">Windmill Workflows</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Files</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="configuration_files/index.html">File sharing and management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="file_workflows/index.html">Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="configuration_mimetypes/index.html">Mimetypes management</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Apps</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="apps_management.html">Apps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="exapps_management/index.html">ExApps management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="ai/index.html">Artificial Intelligence</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Users</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="configuration_user/index.html">User management</a></li>
+<li class="toctree-l1"><a class="reference internal" href="desktop/index.html">Desktop Clients</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Groupware</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="groupware/index.html">Groupware</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Office</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="office/index.html">Office</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Maintenance</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="configuration_monitoring/index.html">Monitoring</a></li>
+<li class="toctree-l1"><a class="reference internal" href="maintenance/index.html">Maintenance</a></li>
+<li class="toctree-l1"><a class="reference internal" href="issues/index.html">Issues and troubleshooting</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Links</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference external" href="https://help.nextcloud.com/">Community Help Forum</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.nextcloud.com/">User Manuals</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://docs.nextcloud.com/">Developer Manuals</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://nextcloud.com/install/">Download</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://apps.nextcloud.com">App Store</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://help.nextcloud.com/t/translation-knowledge-valid-for-the-entire-nextcloud-project-wiki/51550">Translations</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/nextcloud/">GitHub</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/nextcloud/server/wiki/Maintenance-and-Release-Schedule">Supported versions</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://nextcloud.com/enterprise/">Nextcloud Enterprise</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://github.com/nextcloud/server/blob/master/COPYING-README">License</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://nextcloud.com/">Nextcloud GmbH</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="contents.html">Nextcloud latest Administration Manual</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content style-external-links">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="contents.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="occ_command.html">Using the occ command</a></li>
+      <li class="breadcrumb-item active">Encryption commands</li>
+      <li class="wy-breadcrumbs-aside">
+              <a href="https://github.com/nextcloud/documentation/edit/master/admin_manual/occ_encryption.rst" class="fa fa-github"> Edit on GitHub</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="encryption-commands">
+<span id="encryption-label"></span><h1>Encryption commands<a class="headerlink" href="#encryption-commands" title="Link to this heading"></a></h1>
+<p>The <code class="docutils literal notranslate"><span class="pre">encryption</span></code> commands manage server-side encryption, encryption keys, and
+encryption modules. The core commands are always available. Commands that
+operate on the encryption module itself (master key, key repair, legacy
+migration) require the <strong>Encryption</strong> app (<code class="docutils literal notranslate"><span class="pre">encryption</span></code>) to be enabled.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For a full guide to configuring server-side encryption, see
+<a class="reference internal" href="configuration_files/encryption_configuration.html"><span class="doc">Server-side Encryption</span></a>.</p>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">encryption</span>
+ <span class="n">encryption</span><span class="p">:</span><span class="n">change</span><span class="o">-</span><span class="n">key</span><span class="o">-</span><span class="n">storage</span><span class="o">-</span><span class="n">root</span>      <span class="n">change</span> <span class="n">key</span> <span class="n">storage</span> <span class="n">root</span>
+ <span class="n">encryption</span><span class="p">:</span><span class="n">clean</span><span class="o">-</span><span class="n">orphaned</span><span class="o">-</span><span class="n">keys</span>          <span class="n">scan</span> <span class="n">the</span> <span class="n">keys</span> <span class="n">storage</span> <span class="k">for</span> <span class="n">orphaned</span> <span class="n">keys</span> <span class="ow">and</span> <span class="n">remove</span> <span class="n">them</span>
+ <span class="n">encryption</span><span class="p">:</span><span class="n">decrypt</span><span class="o">-</span><span class="nb">all</span>                  <span class="n">disable</span> <span class="n">server</span><span class="o">-</span><span class="n">side</span> <span class="n">encryption</span> <span class="ow">and</span> <span class="n">decrypt</span> <span class="nb">all</span> <span class="n">files</span>
+ <span class="n">encryption</span><span class="p">:</span><span class="n">disable</span>                      <span class="n">disable</span> <span class="n">encryption</span>
+ <span class="n">encryption</span><span class="p">:</span><span class="n">disable</span><span class="o">-</span><span class="n">master</span><span class="o">-</span><span class="n">key</span>           <span class="n">disable</span> <span class="n">the</span> <span class="n">master</span> <span class="n">key</span> <span class="ow">and</span> <span class="n">use</span> <span class="n">per</span><span class="o">-</span><span class="n">user</span> <span class="n">keys</span> <span class="n">instead</span>
+ <span class="n">encryption</span><span class="p">:</span><span class="n">drop</span><span class="o">-</span><span class="n">legacy</span><span class="o">-</span><span class="n">filekey</span>          <span class="n">scan</span> <span class="n">the</span> <span class="n">files</span> <span class="k">for</span> <span class="n">the</span> <span class="n">legacy</span> <span class="n">filekey</span> <span class="nb">format</span> <span class="n">using</span> <span class="n">RC4</span> <span class="ow">and</span> <span class="n">get</span> <span class="n">rid</span> <span class="n">of</span> <span class="n">it</span>
+ <span class="n">encryption</span><span class="p">:</span><span class="n">enable</span>                       <span class="n">enable</span> <span class="n">encryption</span>
+ <span class="n">encryption</span><span class="p">:</span><span class="n">enable</span><span class="o">-</span><span class="n">master</span><span class="o">-</span><span class="n">key</span>            <span class="n">enable</span> <span class="n">the</span> <span class="n">master</span> <span class="n">key</span>
+ <span class="n">encryption</span><span class="p">:</span><span class="n">encrypt</span><span class="o">-</span><span class="nb">all</span>                  <span class="n">encrypt</span> <span class="nb">all</span> <span class="n">files</span> <span class="k">for</span> <span class="nb">all</span> <span class="n">users</span>
+ <span class="n">encryption</span><span class="p">:</span><span class="n">fix</span><span class="o">-</span><span class="n">encrypted</span><span class="o">-</span><span class="n">version</span>        <span class="n">fix</span> <span class="n">the</span> <span class="n">encrypted</span> <span class="n">version</span> <span class="k">if</span> <span class="n">the</span> <span class="n">encrypted</span> <span class="n">file</span><span class="p">(</span><span class="n">s</span><span class="p">)</span> <span class="n">are</span> <span class="ow">not</span> <span class="n">downloadable</span>
+ <span class="n">encryption</span><span class="p">:</span><span class="n">fix</span><span class="o">-</span><span class="n">key</span><span class="o">-</span><span class="n">location</span>             <span class="n">fix</span> <span class="n">the</span> <span class="n">location</span> <span class="n">of</span> <span class="n">encryption</span> <span class="n">keys</span> <span class="k">for</span> <span class="n">external</span> <span class="n">storage</span>
+ <span class="n">encryption</span><span class="p">:</span><span class="nb">list</span><span class="o">-</span><span class="n">modules</span>                 <span class="nb">list</span> <span class="nb">all</span> <span class="n">available</span> <span class="n">encryption</span> <span class="n">modules</span>
+ <span class="n">encryption</span><span class="p">:</span><span class="n">migrate</span><span class="o">-</span><span class="n">key</span><span class="o">-</span><span class="n">storage</span><span class="o">-</span><span class="nb">format</span>   <span class="n">migrate</span> <span class="n">the</span> <span class="nb">format</span> <span class="n">of</span> <span class="n">the</span> <span class="n">key</span> <span class="n">storage</span> <span class="n">to</span> <span class="n">a</span> <span class="n">newer</span> <span class="nb">format</span>
+ <span class="n">encryption</span><span class="p">:</span><span class="n">recover</span><span class="o">-</span><span class="n">user</span>                 <span class="n">recover</span> <span class="n">user</span> <span class="n">data</span> <span class="ow">in</span> <span class="n">case</span> <span class="n">of</span> <span class="n">password</span> <span class="n">loss</span>
+ <span class="n">encryption</span><span class="p">:</span><span class="n">scan</span><span class="p">:</span><span class="n">legacy</span><span class="o">-</span><span class="nb">format</span>           <span class="n">scan</span> <span class="n">the</span> <span class="n">files</span> <span class="k">for</span> <span class="n">the</span> <span class="n">legacy</span> <span class="nb">format</span>
+ <span class="n">encryption</span><span class="p">:</span><span class="nb">set</span><span class="o">-</span><span class="n">default</span><span class="o">-</span><span class="n">module</span>           <span class="nb">set</span> <span class="n">the</span> <span class="n">encryption</span> <span class="n">default</span> <span class="n">module</span>
+ <span class="n">encryption</span><span class="p">:</span><span class="n">show</span><span class="o">-</span><span class="n">key</span><span class="o">-</span><span class="n">storage</span><span class="o">-</span><span class="n">root</span>        <span class="n">show</span> <span class="n">current</span> <span class="n">key</span> <span class="n">storage</span> <span class="n">root</span>
+ <span class="n">encryption</span><span class="p">:</span><span class="n">status</span>                       <span class="n">lists</span> <span class="n">the</span> <span class="n">current</span> <span class="n">status</span> <span class="n">of</span> <span class="n">encryption</span>
+</pre></div>
+</div>
+<section id="status-and-control">
+<h2>Status and control<a class="headerlink" href="#status-and-control" title="Link to this heading"></a></h2>
+<section id="encryption-status">
+<h3>encryption:status<a class="headerlink" href="#encryption-status" title="Link to this heading"></a></h3>
+<p>Show whether encryption is enabled and which module is active:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">encryption</span><span class="p">:</span><span class="n">status</span>
+  <span class="o">-</span> <span class="n">enabled</span><span class="p">:</span> <span class="n">false</span>
+  <span class="o">-</span> <span class="n">defaultModule</span><span class="p">:</span> <span class="n">OC_DEFAULT_MODULE</span>
+</pre></div>
+</div>
+<p>Use <code class="docutils literal notranslate"><span class="pre">--output=json_pretty</span></code> for machine-readable output.</p>
+</section>
+<section id="encryption-enable">
+<h3>encryption:enable<a class="headerlink" href="#encryption-enable" title="Link to this heading"></a></h3>
+<p>Enable server-side encryption. The <strong>Encryption</strong> app must be enabled first and
+a default module must be configured:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">app</span><span class="p">:</span><span class="n">enable</span> <span class="n">encryption</span>
+<span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">encryption</span><span class="p">:</span><span class="n">enable</span>
+  <span class="n">Encryption</span> <span class="n">enabled</span>
+
+  <span class="n">Default</span> <span class="n">module</span><span class="p">:</span> <span class="n">OC_DEFAULT_MODULE</span>
+</pre></div>
+</div>
+</section>
+<section id="encryption-disable">
+<h3>encryption:disable<a class="headerlink" href="#encryption-disable" title="Link to this heading"></a></h3>
+<p>Disable server-side encryption. This only disables the encryption flag — it
+does not decrypt any files:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">encryption</span><span class="p">:</span><span class="n">disable</span>
+  <span class="n">Encryption</span> <span class="n">disabled</span>
+</pre></div>
+</div>
+<p>To also decrypt all existing files, run
+<code class="docutils literal notranslate"><span class="pre">encryption:decrypt-all</span></code> afterwards.</p>
+</section>
+</section>
+<section id="encrypt-and-decrypt-all-data">
+<h2>Encrypt and decrypt all data<a class="headerlink" href="#encrypt-and-decrypt-all-data" title="Link to this heading"></a></h2>
+<section id="encryption-encrypt-all">
+<h3>encryption:encrypt-all<a class="headerlink" href="#encryption-encrypt-all" title="Link to this heading"></a></h3>
+<p>Encrypt all files for all users. Encryption must be enabled before running
+this command. The command manages maintenance mode internally — do <strong>not</strong>
+enable maintenance mode first, as the command will fail if it is already
+active:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>sudo -E -u www-data php occ encryption:encrypt-all
+  You are about to encrypt all files stored in your Nextcloud installation.
+  Depending on the number of available files, and their size, this may take quite some time.
+  Please ensure that no user accesses their files during this time!
+  Note: The encryption module you use determines which files get encrypted.
+
+  Do you really want to continue? (y/n)
+</pre></div>
+</div>
+<p>The command requires an interactive terminal (TTY). If running inside a
+Docker container, use <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">exec</span> <span class="pre">-it</span></code>.</p>
+</section>
+<section id="encryption-decrypt-all">
+<h3>encryption:decrypt-all<a class="headerlink" href="#encryption-decrypt-all" title="Link to this heading"></a></h3>
+<p>Decrypt all files for all users, or for a single user. The command manages
+maintenance mode internally — do <strong>not</strong> enable maintenance mode first:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">encryption</span><span class="p">:</span><span class="n">decrypt</span><span class="o">-</span><span class="nb">all</span>
+<span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">encryption</span><span class="p">:</span><span class="n">decrypt</span><span class="o">-</span><span class="nb">all</span> <span class="n">layla</span>
+</pre></div>
+</div>
+<p>When decrypting all users, server-side encryption is disabled automatically.
+When decrypting a single user, encryption remains enabled for others.</p>
+<p>Depending on the encryption module in use, decryption may require:</p>
+<ul class="simple">
+<li><p><strong>Master key mode</strong> — no extra credentials needed.</p></li>
+<li><p><strong>Per-user key mode</strong> — the user must have enabled the recovery key on their
+personal settings page.</p></li>
+</ul>
+<p>The command requires an interactive terminal (TTY). If running inside a
+Docker container, use <code class="docutils literal notranslate"><span class="pre">docker</span> <span class="pre">exec</span> <span class="pre">-it</span></code>.</p>
+</section>
+</section>
+<section id="encryption-modules">
+<h2>Encryption modules<a class="headerlink" href="#encryption-modules" title="Link to this heading"></a></h2>
+<section id="encryption-list-modules">
+<h3>encryption:list-modules<a class="headerlink" href="#encryption-list-modules" title="Link to this heading"></a></h3>
+<p>List all available encryption modules. The active default module is marked
+with <code class="docutils literal notranslate"><span class="pre">[default*]</span></code>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">encryption</span><span class="p">:</span><span class="nb">list</span><span class="o">-</span><span class="n">modules</span>
+  <span class="o">-</span> <span class="n">OC_DEFAULT_MODULE</span><span class="p">:</span> <span class="n">Default</span> <span class="n">encryption</span> <span class="n">module</span> <span class="p">[</span><span class="n">default</span><span class="o">*</span><span class="p">]</span>
+</pre></div>
+</div>
+</section>
+<section id="encryption-set-default-module">
+<h3>encryption:set-default-module<a class="headerlink" href="#encryption-set-default-module" title="Link to this heading"></a></h3>
+<p>Set the default encryption module. Maintenance mode must be disabled:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">encryption</span><span class="p">:</span><span class="nb">set</span><span class="o">-</span><span class="n">default</span><span class="o">-</span><span class="n">module</span> <span class="n">OC_DEFAULT_MODULE</span>
+  <span class="n">Set</span> <span class="n">default</span> <span class="n">module</span> <span class="n">to</span> <span class="s2">&quot;OC_DEFAULT_MODULE&quot;</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="key-storage">
+<h2>Key storage<a class="headerlink" href="#key-storage" title="Link to this heading"></a></h2>
+<section id="encryption-show-key-storage-root">
+<h3>encryption:show-key-storage-root<a class="headerlink" href="#encryption-show-key-storage-root" title="Link to this heading"></a></h3>
+<p>Show where encryption keys are stored:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">encryption</span><span class="p">:</span><span class="n">show</span><span class="o">-</span><span class="n">key</span><span class="o">-</span><span class="n">storage</span><span class="o">-</span><span class="n">root</span>
+  <span class="n">Current</span> <span class="n">key</span> <span class="n">storage</span> <span class="n">root</span><span class="p">:</span>  <span class="n">default</span> <span class="n">storage</span> <span class="n">location</span> <span class="p">(</span><span class="n">data</span><span class="o">/</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="encryption-change-key-storage-root">
+<h3>encryption:change-key-storage-root<a class="headerlink" href="#encryption-change-key-storage-root" title="Link to this heading"></a></h3>
+<p>Move encryption keys to a different directory. The target directory must exist
+and be writable by the web server user before running the command:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">encryption</span><span class="p">:</span><span class="n">change</span><span class="o">-</span><span class="n">key</span><span class="o">-</span><span class="n">storage</span><span class="o">-</span><span class="n">root</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">keys</span>
+  <span class="n">Change</span> <span class="n">key</span> <span class="n">storage</span> <span class="n">root</span> <span class="kn">from</span><span class="w"> </span><span class="nn">default</span> <span class="n">storage</span> <span class="n">location</span> <span class="n">to</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">keys</span>
+  <span class="n">Start</span> <span class="n">to</span> <span class="n">move</span> <span class="n">keys</span><span class="p">:</span>
+  <span class="p">[</span><span class="o">============================</span><span class="p">]</span>
+  <span class="n">Key</span> <span class="n">storage</span> <span class="n">root</span> <span class="n">successfully</span> <span class="n">changed</span> <span class="n">to</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">nextcloud</span><span class="o">/</span><span class="n">keys</span>
+</pre></div>
+</div>
+<p>Omit the argument to reset the key storage root back to the default
+location (<code class="docutils literal notranslate"><span class="pre">data/</span></code>). The command will ask for confirmation:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>sudo -E -u www-data php occ encryption:change-key-storage-root
+  No storage root given, do you want to reset the key storage root to the default location? (y/n)
+</pre></div>
+</div>
+</section>
+<section id="encryption-migrate-key-storage-format">
+<h3>encryption:migrate-key-storage-format<a class="headerlink" href="#encryption-migrate-key-storage-format" title="Link to this heading"></a></h3>
+<p>Migrate the key storage to the current format (JSON-wrapped, re-encrypted with
+the server secret). Run this once after upgrading from an installation that
+used the legacy key format:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">encryption</span><span class="p">:</span><span class="n">migrate</span><span class="o">-</span><span class="n">key</span><span class="o">-</span><span class="n">storage</span><span class="o">-</span><span class="nb">format</span>
+  <span class="n">Updating</span> <span class="n">key</span> <span class="n">storage</span> <span class="nb">format</span>
+  <span class="n">Start</span> <span class="n">to</span> <span class="n">update</span> <span class="n">the</span> <span class="n">keys</span><span class="p">:</span>
+  <span class="p">[</span><span class="o">============================</span><span class="p">]</span>
+  <span class="n">Key</span> <span class="n">storage</span> <span class="nb">format</span> <span class="n">successfully</span> <span class="n">updated</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="master-key">
+<h2>Master key<a class="headerlink" href="#master-key" title="Link to this heading"></a></h2>
+<p>The master key encrypts all user data with a single server-managed key. It is
+the recommended setup for new installations because it simplifies key
+management and enables admin-side decryption without per-user passwords. The
+master key is enabled by default when the Encryption app is first enabled.</p>
+<p>Both commands are only available when the <strong>Encryption</strong> app is enabled.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>Switching between master key and per-user key mode is only safe on a
+<strong>fresh installation with no existing encrypted data</strong>. If you switch modes
+on an instance that already has encrypted files, those files will become
+permanently inaccessible: the new mode looks for keys that were never
+created for the existing data. <strong>There is no recovery path.</strong> Always run
+<code class="docutils literal notranslate"><span class="pre">encryption:decrypt-all</span></code> first if you need to change modes on an existing
+installation.</p>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Despite the warning shown by both commands (“no way to enable/disable it
+again”), the switch is technically reversible as long as no encrypted data
+exists yet. The warning is intended to convey that you cannot safely switch
+modes once users have data.</p>
+</div>
+<section id="encryption-enable-master-key">
+<h3>encryption:enable-master-key<a class="headerlink" href="#encryption-enable-master-key" title="Link to this heading"></a></h3>
+<p>Enable the master key. Only use this on a <strong>fresh installation with no
+existing encrypted data</strong>. The command prompts for confirmation:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">encryption</span><span class="p">:</span><span class="n">enable</span><span class="o">-</span><span class="n">master</span><span class="o">-</span><span class="n">key</span>
+  <span class="n">Master</span> <span class="n">key</span> <span class="n">successfully</span> <span class="n">enabled</span><span class="o">.</span>
+</pre></div>
+</div>
+</section>
+<section id="encryption-disable-master-key">
+<h3>encryption:disable-master-key<a class="headerlink" href="#encryption-disable-master-key" title="Link to this heading"></a></h3>
+<p>Disable the master key and revert to per-user keys. Only use this on a
+<strong>fresh installation with no existing encrypted data</strong>. The command prompts
+for confirmation:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">encryption</span><span class="p">:</span><span class="n">disable</span><span class="o">-</span><span class="n">master</span><span class="o">-</span><span class="n">key</span>
+  <span class="n">Master</span> <span class="n">key</span> <span class="n">successfully</span> <span class="n">disabled</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>Switching to per-user keys has the following consequences:</p>
+<ul class="simple">
+<li><p><strong>Performance</strong> — per-user key operations are slower. Each user’s key must
+be derived individually on every file access.</p></li>
+<li><p><strong>Password loss means data loss</strong> — without the master key there is no
+admin-side decryption path. Each user must enable the recovery key on their
+personal settings page <em>before</em> losing their password. Without it,
+<code class="docutils literal notranslate"><span class="pre">encryption:recover-user</span></code> cannot help and the files cannot be recovered.</p></li>
+<li><p><strong>Admin decryption is no longer possible</strong> — admins cannot decrypt or access
+a user’s files without that user’s password or a pre-set recovery key.</p></li>
+</ul>
+</section>
+</section>
+<section id="maintenance-and-repair">
+<h2>Maintenance and repair<a class="headerlink" href="#maintenance-and-repair" title="Link to this heading"></a></h2>
+<section id="encryption-clean-orphaned-keys">
+<h3>encryption:clean-orphaned-keys<a class="headerlink" href="#encryption-clean-orphaned-keys" title="Link to this heading"></a></h3>
+<p>Scan the key storage for keys that no longer have a corresponding file and
+remove them. Optionally limit the scan to a single user:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">encryption</span><span class="p">:</span><span class="n">clean</span><span class="o">-</span><span class="n">orphaned</span><span class="o">-</span><span class="n">keys</span>
+<span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">encryption</span><span class="p">:</span><span class="n">clean</span><span class="o">-</span><span class="n">orphaned</span><span class="o">-</span><span class="n">keys</span> <span class="n">layla</span>
+</pre></div>
+</div>
+<p>When orphaned keys are found, the command lists them and asks interactively
+whether to delete all, specific ones, or none:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>sudo -E -u www-data php occ encryption:clean-orphaned-keys layla
+  Key storage scan for layla
+  ==========================
+
+  Orphaned key found: /layla/files_encryption/keys/files/old-doc.pdf/OC_DEFAULT_MODULE/fileKey
+  Do you want to delete all orphaned keys? (y/n)
+</pre></div>
+</div>
+<p>If no orphaned keys are found, the command exits silently.</p>
+</section>
+<section id="encryption-fix-encrypted-version">
+<h3>encryption:fix-encrypted-version<a class="headerlink" href="#encryption-fix-encrypted-version" title="Link to this heading"></a></h3>
+<p>Fix the encrypted version counter in the file cache when encrypted files
+cannot be downloaded. Requires <strong>master key</strong> encryption.</p>
+<p>Run for a single user:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">encryption</span><span class="p">:</span><span class="n">fix</span><span class="o">-</span><span class="n">encrypted</span><span class="o">-</span><span class="n">version</span> <span class="n">layla</span>
+  <span class="n">Verifying</span> <span class="n">the</span> <span class="n">content</span> <span class="n">of</span> <span class="n">file</span> <span class="s2">&quot;/layla/files/Documents/report.pdf&quot;</span>
+  <span class="n">The</span> <span class="n">file</span> <span class="s2">&quot;/layla/files/Documents/report.pdf&quot;</span> <span class="ow">is</span><span class="p">:</span> <span class="n">OK</span>
+</pre></div>
+</div>
+<p>Run for all users:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">encryption</span><span class="p">:</span><span class="n">fix</span><span class="o">-</span><span class="n">encrypted</span><span class="o">-</span><span class="n">version</span> <span class="o">--</span><span class="nb">all</span>
+  <span class="n">Processing</span> <span class="n">files</span> <span class="k">for</span> <span class="n">layla</span>
+  <span class="n">Verifying</span> <span class="n">the</span> <span class="n">content</span> <span class="n">of</span> <span class="n">file</span> <span class="s2">&quot;/layla/files/Documents/report.pdf&quot;</span>
+  <span class="n">The</span> <span class="n">file</span> <span class="s2">&quot;/layla/files/Documents/report.pdf&quot;</span> <span class="ow">is</span><span class="p">:</span> <span class="n">OK</span>
+</pre></div>
+</div>
+<p>When a broken file is found, the command tries decrementing and then
+incrementing the encrypted version counter until the file can be read:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Attempting</span> <span class="n">to</span> <span class="n">fix</span> <span class="n">the</span> <span class="n">path</span><span class="p">:</span> <span class="s2">&quot;/layla/files/Documents/broken.pdf&quot;</span>
+<span class="n">Decrement</span> <span class="n">the</span> <span class="n">encrypted</span> <span class="n">version</span> <span class="n">to</span> <span class="mi">2</span>
+<span class="n">Fixed</span> <span class="n">the</span> <span class="n">file</span><span class="p">:</span> <span class="s2">&quot;/layla/files/Documents/broken.pdf&quot;</span> <span class="k">with</span> <span class="n">version</span> <span class="mi">2</span>
+</pre></div>
+</div>
+<p>Use <code class="docutils literal notranslate"><span class="pre">-p</span></code> / <code class="docutils literal notranslate"><span class="pre">--path</span></code> to limit the scan to a specific directory:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">encryption</span><span class="p">:</span><span class="n">fix</span><span class="o">-</span><span class="n">encrypted</span><span class="o">-</span><span class="n">version</span> <span class="n">layla</span> <span class="o">--</span><span class="n">path</span><span class="o">=</span><span class="s2">&quot;/Documents&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="encryption-fix-key-location">
+<h3>encryption:fix-key-location<a class="headerlink" href="#encryption-fix-key-location" title="Link to this heading"></a></h3>
+<p>Fix the location of encryption keys for files on external storage mounts. Run
+this when users cannot access files on external storage after a migration:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>sudo -E -u www-data php occ encryption:fix-key-location layla
+  Migrating key for /layla/files/ExternalDrive/report.pdf ✓
+</pre></div>
+</div>
+<p>Use <code class="docutils literal notranslate"><span class="pre">--dry-run</span></code> to list files that need migration without making any
+changes:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">encryption</span><span class="p">:</span><span class="n">fix</span><span class="o">-</span><span class="n">key</span><span class="o">-</span><span class="n">location</span> <span class="o">--</span><span class="n">dry</span><span class="o">-</span><span class="n">run</span> <span class="n">layla</span>
+  <span class="o">/</span><span class="n">layla</span><span class="o">/</span><span class="n">files</span><span class="o">/</span><span class="n">ExternalDrive</span><span class="o">/</span><span class="n">report</span><span class="o">.</span><span class="n">pdf</span> <span class="n">needs</span> <span class="n">migration</span>
+</pre></div>
+</div>
+</section>
+<section id="encryption-recover-user">
+<h3>encryption:recover-user<a class="headerlink" href="#encryption-recover-user" title="Link to this heading"></a></h3>
+<p>Recover a user’s files after a password loss. Only available in <strong>per-user
+key</strong> mode (not applicable when master key is enabled). The user must have
+enabled the recovery key in their personal settings before the password was
+lost.</p>
+<p>The command prompts for the recovery key password and the new login password:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">encryption</span><span class="p">:</span><span class="n">recover</span><span class="o">-</span><span class="n">user</span> <span class="n">layla</span>
+  <span class="n">Please</span> <span class="n">enter</span> <span class="n">the</span> <span class="n">recovery</span> <span class="n">key</span> <span class="n">password</span><span class="p">:</span>
+  <span class="n">Please</span> <span class="n">enter</span> <span class="n">the</span> <span class="n">new</span> <span class="n">login</span> <span class="n">password</span> <span class="k">for</span> <span class="n">the</span> <span class="n">user</span><span class="p">:</span>
+  <span class="n">Start</span> <span class="n">to</span> <span class="n">recover</span> <span class="n">users</span> <span class="n">files</span><span class="o">...</span> <span class="n">This</span> <span class="n">can</span> <span class="n">take</span> <span class="n">some</span> <span class="n">time</span><span class="o">...</span><span class="n">Done</span><span class="o">.</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="legacy-migration">
+<h2>Legacy migration<a class="headerlink" href="#legacy-migration" title="Link to this heading"></a></h2>
+<section id="encryption-drop-legacy-filekey">
+<h3>encryption:drop-legacy-filekey<a class="headerlink" href="#encryption-drop-legacy-filekey" title="Link to this heading"></a></h3>
+<p>Scan all files for the legacy RC4 filekey format and migrate them to the
+current format. Requires <strong>master key</strong> encryption. Files not migrated by this
+command will be migrated automatically on their next write. Running this
+command upfront also converts old base64-encoded files to binary format,
+saving approximately 33% disk space:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">encryption</span><span class="p">:</span><span class="n">drop</span><span class="o">-</span><span class="n">legacy</span><span class="o">-</span><span class="n">filekey</span>
+  <span class="n">Scanning</span> <span class="nb">all</span> <span class="n">files</span> <span class="k">for</span> <span class="n">legacy</span> <span class="n">filekey</span>
+  <span class="n">Scanning</span> <span class="nb">all</span> <span class="n">files</span> <span class="k">for</span> <span class="n">layla</span>
+  <span class="n">All</span> <span class="n">scanned</span> <span class="n">files</span> <span class="n">are</span> <span class="n">properly</span> <span class="n">encrypted</span><span class="o">.</span>
+</pre></div>
+</div>
+</section>
+<section id="encryption-scan-legacy-format">
+<h3>encryption:scan:legacy-format<a class="headerlink" href="#encryption-scan-legacy-format" title="Link to this heading"></a></h3>
+<p>Scan all files for the legacy encryption format. Use this to determine
+whether any files still need migration before disabling legacy format
+compatibility:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">encryption</span><span class="p">:</span><span class="n">scan</span><span class="p">:</span><span class="n">legacy</span><span class="o">-</span><span class="nb">format</span>
+  <span class="n">Scanning</span> <span class="nb">all</span> <span class="n">files</span> <span class="k">for</span> <span class="n">legacy</span> <span class="n">encryption</span>
+  <span class="n">Scanning</span> <span class="nb">all</span> <span class="n">files</span> <span class="k">for</span> <span class="n">layla</span>
+  <span class="n">All</span> <span class="n">scanned</span> <span class="n">files</span> <span class="n">are</span> <span class="n">properly</span> <span class="n">encrypted</span><span class="o">.</span> <span class="n">You</span> <span class="n">can</span> <span class="n">disable</span> <span class="n">the</span> <span class="n">legacy</span> <span class="n">compatibility</span> <span class="n">mode</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>If files using the legacy format are found, their paths are listed. Run
+<code class="docutils literal notranslate"><span class="pre">encryption:drop-legacy-filekey</span></code> to migrate them.</p>
+</section>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="occ_database.html" class="btn btn-neutral float-left" title="DAV &amp; database commands" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="occ_files.html" class="btn btn-neutral float-right" title="Files commands" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.</p>
+  </div>
+
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  
+
+  <div class="rst-versions" data-toggle="rst-versions" role="note" aria-label="versions">
+    <span class="rst-current-version" data-toggle="rst-current-version">
+      ☁️ latest
+      <span class="fa fa-caret-down"></span>
+    </span>
+    <div class="rst-other-versions">
+      <dl>
+        <dt>☁️ Versions</dt>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/latest/admin_manual"
+             
+             style="color: var(--dark-link-color);"
+             
+          >
+            latest
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/stable/admin_manual"
+             
+          >
+            stable
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/32/admin_manual"
+             
+          >
+            32
+          </a>
+        </dd>
+        
+        <dd style="width: 32%">
+          <a href="https://docs.nextcloud.com/server/31/admin_manual"
+             
+          >
+            31
+          </a>
+        </dd>
+        
+      </dl>
+    </div>
+  </div>
+<script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
