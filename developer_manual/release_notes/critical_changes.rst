@@ -1,8 +1,8 @@
-.. _upgrade_to_34:
+.. _critical-changes:
 
-=======================
-Upgrade to Nextcloud 34
-=======================
+================
+Critical changes
+================
 
 ..
     Add one section for each change.
@@ -18,7 +18,7 @@ Update info.xml to add Nextcloud 34 to the support range:
 .. code-block:: xml
 
   <dependencies>
-    <nextcloud min-version="33" max-version="33" />
+    <nextcloud min-version="34" max-version="34" />
   </dependencies>
 
 To allow installation on older versions too, just keep the previous min-version.

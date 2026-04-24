@@ -2,13 +2,18 @@
 Release notes
 =============
 
-This section is for developers and maintainers who are familiar with an earlier version of the documentation.
+Welcome to the release notes. This section is for developers and app maintainers upgrading from earlier versions.
 
-Here we try to summarize what's new. You will find the breaking changes at :ref:`upgrade_to_34`, new deprecations at :ref:`deprecated-apis` and new API features at :ref:`new-apis`.
+On this page you will find:
+
+- :ref:`critical-changes` - Critical changes that must be addressed for app compatibility
+- :ref:`new-apis` - New developer APIs and features
+- :ref:`deprecated-apis` - Deprecated APIs and their removal timeline
 
 .. toctree::
    :maxdepth: 3
+   :hidden:
 
+   critical_changes
    new
    deprecations
-   ../app_publishing_maintenance/app_upgrade_guide/upgrade_to_34
