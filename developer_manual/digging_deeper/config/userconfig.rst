@@ -16,9 +16,7 @@ On top of storing and accessing your configuration values, ``IUserConfig`` comes
 .. _userconfig_concepts:
 
 .. note::
-	See `Lexicon Concepts`_ to learn more about **Lexicon**, a way to fully define your configuration keys and avoid conflict when using it in your code.
-
-.. _Lexicon Concepts: lexicon.html#concept-overview
+	See :ref:`Lexicon Concepts <concept-overview>` to learn more about **Lexicon**, a way to fully define your configuration keys and avoid conflict when using it in your code.
 
 
 Typed Config Values

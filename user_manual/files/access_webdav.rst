@@ -92,8 +92,7 @@ You can access files in Linux operating systems using the following methods.
 Nautilus file manager
 ^^^^^^^^^^^^^^^^^^^^^
 
-**When you configure your Nextcloud account in the** `GNOME Control Center
-<../groupware/sync_gnome.html>`_, **your files will automatically be mounted
+**When you configure your Nextcloud account in the** :doc:`GNOME Control Center <../groupware/sync_gnome>`, **your files will automatically be mounted
 by Nautilus as a WebDAV share, unless you deselect file access**.
 
 You can also mount your Nextcloud files manually. Use the ``davs://``

@@ -98,7 +98,7 @@ forcing them.
    <https://github.com/owncloud/core/issues/7009>`_ for discussion of this.
 
 .. note:: There are more sharing options on config.php level available:
-   `Configuration Parameters <../configuration_server/config_sample_php_parameters.html#sharing>`_
+   :doc:`Configuration Parameters <../configuration_server/config_sample_php_parameters>`
 
 .. _transfer_userfiles_label:
 
@@ -174,7 +174,7 @@ Trashbin contents are not transferred::
 reference.)
 
 Users may also transfer files or folders selectively by themselves.
-See `user documentation <../../user_manual/files/transfer_ownership.html>`_ for details.
+See `user documentation <https://docs.nextcloud.com/server/latest/user_manual/en/files/transfer_ownership.html>`_ for details.
 
 
 Creating persistent file Shares

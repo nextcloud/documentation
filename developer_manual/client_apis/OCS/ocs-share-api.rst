@@ -225,7 +225,7 @@ Federated Cloud Shares
 ----------------------
 
 Both the sending and the receiving instance need to have federated cloud sharing
-enabled and configured. See `Configuring Federated Cloud Sharing <../../../admin_manual/configuration_files/federated_cloud_sharing_configuration.html>`_.
+enabled and configured. See `Configuring Federated Cloud Sharing <https://docs.nextcloud.com/server/latest/admin_manual/configuration_files/federated_cloud_sharing_configuration.html>`_.
 
 Create a new Federated Cloud Share
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
