@@ -1,24 +1,15 @@
+.. _upgrade_to_34:
+
 =======================
 Upgrade to Nextcloud 34
 =======================
 
+..
+    Add one section for each change.
+    Only list changes absolutely necessary to keep an app running. Use the dedicated deprecation and new features pages for optional changes and announcements.
+
 Front-end changes
 -----------------
-
-Added APIs
-^^^^^^^^^^
-
-- TBD
-
-Changed APIs
-^^^^^^^^^^^^
-
-- TBD
-
-Deprecated APIs
-^^^^^^^^^^^^^^^
-
-- TBD
 
 Removed APIs
 ^^^^^^^^^^^^
@@ -46,29 +37,6 @@ Removed APIs
 
 Back-end changes
 ----------------
-
-Added Events
-^^^^^^^^^^^^
-
-- TBD
-
-Added APIs
-^^^^^^^^^^
-
-- ``\OCP\DB\QueryBuilder\ITypedQueryBuilder`` is added in favour of ``\OCP\DB\QueryBuilder\IQueryBuilder`` and can be accessed through ``\OCP\IDBConnection::getTypedQueryBuilder``.
-  This query builder has the benefit of accurately returning the selected columns in a query result, increasing type safety.
-- ``\OCP\Talk\IConversationOptions`` has been extended, to allow defining the newly created conversation as related to a meeting with it's start and end date.
-  The information is used by Talk to automatically clean up such conversations after a given time.
-
-Changed APIs
-^^^^^^^^^^^^
-
-- ``\OCP\Notification\INotification::setIcon``, ``\OCP\Notification\INotification::setLink`` and ``\OCP\Notification\IAction::setLink`` now throw ``\OCP\Notification\InvalidValueException`` when the provided link is not absolute as previously announced in :doc:`./upgrade_to_30`
-
-Deprecated APIs
-^^^^^^^^^^^^^^^
-
-- TBD
 
 Removed APIs
 ^^^^^^^^^^^^
