@@ -199,6 +199,28 @@ A command may use events to communicate with other apps. An app can only react t
 .. [2] `Calendar app event listener for UserDeletedEvent <https://github.com/nextcloud/calendar/blob/87e8586971a8676dc15a90f0cd969274678b7009/lib/Listener/UserDeletedListener.php>`_
 
 
+.. _occ_debugging:
+
+Debugging
+---------
+
+Every ``occ`` command accepts the standard Symfony Console verbosity flags:
+
+* ``-v`` — normal output (errors, warnings, and key messages)
+* ``-vv`` — verbose output (additional progress detail)
+* ``-vvv`` — debug output (full trace, useful for diagnosing command failures)
+
+Example::
+
+ sudo -E -u www-data php occ files:scan --all -vv
+
+To also enable debug-level log output from Nextcloud itself, set the
+``NC_loglevel`` environment variable::
+
+ NC_loglevel=0 sudo -E -u www-data php occ status
+
+See :doc:`configuration_server/logging_configuration` for more on log levels.
+
 Command reference
 -----------------
 

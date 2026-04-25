@@ -4,6 +4,7 @@ Files commands
 
 Encryption commands have moved to :doc:`occ_encryption`.
 
+
 .. _federation_sync_label:
 
 Federation sync
@@ -310,6 +311,126 @@ Nextcloud user.
 
 Use ``files_external:import [filename]`` to import legacy JSON configurations,
 and to copy external mount configurations to another Nextcloud server.
+
+.. _trashbin_label:
+
+Trashbin
+--------
+
+.. note::
+  These commands are only available when the "Deleted files" app
+  (``files_trashbin``) is enabled.
+
+::
+
+ trashbin
+  trashbin:cleanup  remove deleted files
+  trashbin:expire   expire deleted files according to the configured retention policy
+  trashbin:restore  restore all deleted files according to the given filters
+  trashbin:size     configure or show the target trashbin size
+
+trashbin\:cleanup
+^^^^^^^^^^^^^^^^^^
+
+Remove all deleted files for all users, or for specific users::
+
+ sudo -E -u www-data php occ trashbin:cleanup
+ sudo -E -u www-data php occ trashbin:cleanup layla fred
+
+trashbin\:expire
+^^^^^^^^^^^^^^^^^
+
+Apply the configured trashbin retention policy and remove files that have
+exceeded the maximum retention age. Runs for all users by default, or for
+specific users::
+
+ sudo -E -u www-data php occ trashbin:expire
+ sudo -E -u www-data php occ trashbin:expire layla
+
+trashbin\:restore
+^^^^^^^^^^^^^^^^^^
+
+Restore deleted files according to the given filters. Restore all deleted files
+for all users::
+
+ sudo -E -u www-data php occ trashbin:restore --all-users
+
+Restore deleted files for specific users::
+
+ sudo -E -u www-data php occ trashbin:restore layla
+
+Use ``--scope`` to limit the restore to a specific scope; one of ``user``,
+``groupfolders``, or ``all`` (default: ``user``)::
+
+ sudo -E -u www-data php occ trashbin:restore --scope groupfolders layla
+
+Use ``--since`` and ``--until`` to limit the restore to files deleted within
+a given time window. Both options accept any format supported by PHP
+``strtotime``::
+
+ sudo -E -u www-data php occ trashbin:restore --scope all \
+   --since "2026-08-01 11:55:22" --until "2026-08-02 01:33:00" layla
+
+Use ``--dry-run`` to simulate the restore without making any changes::
+
+ sudo -E -u www-data php occ trashbin:restore --dry-run --all-users
+
+.. note::
+  Use ``-v`` or ``-vv`` to see more detail about the restore process and why
+  some files may be skipped.
+
+trashbin\:size
+^^^^^^^^^^^^^^
+
+Show or configure the target trashbin size. When called without arguments,
+shows the current configured size::
+
+ sudo -E -u www-data php occ trashbin:size
+
+Set the default trashbin size for all users::
+
+ sudo -E -u www-data php occ trashbin:size 10GB
+
+Set the trashbin size for a specific user::
+
+ sudo -E -u www-data php occ trashbin:size --user layla 5GB
+
+
+.. _versions_label:
+
+Versions
+--------
+
+.. note::
+  These commands are only available when the "Versions" app
+  (``files_versions``) is enabled.
+
+::
+
+ versions
+  versions:cleanup  delete file versions
+  versions:expire   expire file versions according to the configured retention policy
+
+versions\:cleanup
+^^^^^^^^^^^^^^^^^^
+
+Delete all file versions for all users, or for specific users. Use ``--path``
+to limit deletion to a specific path::
+
+ sudo -E -u www-data php occ versions:cleanup
+ sudo -E -u www-data php occ versions:cleanup layla
+ sudo -E -u www-data php occ versions:cleanup layla --path="/files/Documents"
+
+versions\:expire
+^^^^^^^^^^^^^^^^^
+
+Apply the configured version retention policy and remove versions that have
+exceeded the maximum retention age. Runs for all users by default, or for
+specific users::
+
+ sudo -E -u www-data php occ versions:expire
+ sudo -E -u www-data php occ versions:expire layla
+
 
 .. _integrity_check_label:
 
