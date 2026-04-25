@@ -14,6 +14,7 @@ migration) require the **Encryption** app (``encryption``) to be enabled.
    For a full guide to configuring server-side encryption, see
    :doc:`../configuration_files/encryption_configuration`.
 
+
 ::
 
  encryption
