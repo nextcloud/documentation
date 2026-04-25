@@ -6,12 +6,15 @@ App upgrade guide
 
 Once you've created and published the first version of your app, you will want to keep it up to date with the latest Nextcloud features.
 
+.. note::
+
+   For the latest release notes, see the :doc:`Release Notes </release_notes/index>`.
+
 These sub pages will cover the most important changes in Nextcloud, as well as some guides on how to upgrade existing apps.
 
 .. toctree::
    :maxdepth: 1
 
-   upgrade_to_34.rst
    upgrade_to_33.rst
    upgrade_to_32.rst
    upgrade_to_31.rst

@@ -137,7 +137,7 @@ If an autoconfig file is detected, the wizard displays a success notice:
 *"Autoconfig file detected — The setup form below is pre-filled with the
 values from the config file."* The **Storage & database** section is
 automatically collapsed when the autoconfig provides valid values. For
-details on autoconfig files, see :doc:`../configuration_server/automatic_configuration`.
+details on autoconfig files, see :doc:`automatic_configuration`.
 
 .. figure:: images/install-wizard-autoconfig.png
    :scale: 75%

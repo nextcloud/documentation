@@ -7,43 +7,43 @@ User & group commands
 User commands
 -------------
 
-The ``user`` commands create and remove users, reset passwords, manage authentication tokens / sessions, display a simple
-report showing how many users you have, and when a user was last logged in::
+The ``user`` commands create and manage user accounts, reset passwords,
+manage authentication tokens, and report on user activity::
 
  user
   user:add                            adds a user
-  user:add-app-password               adds a app password named "cli" (deprecated: alias for user:auth-tokens:add)
-  user:auth-tokens:add                Add app password for the named account
-  user:auth-tokens:delete             Deletes an authentication token
-  user:auth-tokens:list               List authentication tokens of an user
+  user:add-app-password               (deprecated) alias for user:auth-tokens:add
+  user:auth-tokens:add                add an app password for an account
+  user:auth-tokens:delete             delete an authentication token
+  user:auth-tokens:list               list authentication tokens for an account
   user:clear-avatar-cache             clear avatar cache
   user:delete                         deletes the specified user
   user:disable                        disables the specified user
   user:enable                         enables the specified user
-  user:info                           shows information about the specific user
-  user:keys:verify                    Verify if the stored public key matches the stored private key
-  user:lastseen                       shows when the user was logged in last time
-  user:list                           shows list of all registered users
-  user:profile                        Read and modify user profile data
-  user:report                         shows how many users have access
-  user:resetpassword                  Resets the password of the named user
-  user:setting                        Read and modify user settings
+  user:info                           show information about a user
+  user:keys:verify                    verify the stored public key matches the stored private key
+  user:lastseen                       show when a user was last logged in
+  user:list                           list all registered users
+  user:profile                        read and modify user profile data
+  user:report                         show how many users have access
+  user:resetpassword                  reset the password for a user
+  user:setting                        read and modify user settings
+  user:sync-account-data              sync user backend data to the accounts table
+  user:welcome                        send the welcome email to a user
 
 user:add
 ^^^^^^^^
 
-You can create a new user with their display name, login name, and any group
-memberships with the ``user:add`` command. The syntax is::
+Create a new user with a display name, login name, and optional group
+memberships::
 
- user:add [--password-from-env] [--generate-password] [--display-name[="..."]] [-g|--group[="..."]] [--email EMAIL]
- uid
+ user:add [--password-from-env] [--generate-password] [--display-name[="..."]] [-g|--group[="..."]] [--email EMAIL] uid
 
 The ``display-name`` corresponds to the **Full Name** on the Users page in your
-Nextcloud Web UI, and the ``uid`` is their **Username**, which is their
-login name. This example adds new user Layla Smith, and adds them to the
-**users** and **db-admins** groups. Any groups that do not exist are created::
+Nextcloud web interface, and the ``uid`` is their **Username** (login name).
+Any groups that do not exist are created automatically::
 
- sudo -E -u www-data php occ user:add --display-name="Layla Smith"
+ sudo -E -u www-data php occ user:add --display-name="Layla Smith" \
    --group="users" --group="db-admins" layla
    Enter password:
    Confirm password:
@@ -52,37 +52,30 @@ login name. This example adds new user Layla Smith, and adds them to the
    User "layla" added to group "users"
    User "layla" added to group "db-admins"
 
-Go to your Users page, and you will see your new user.
-
-``password-from-env`` allows you to set the user's password from an environment
-variable. This prevents the password from being exposed to all users via the
-process list, and will only be visible in the history of the user (root)
-running the command. This also permits creating scripts for adding multiple new
-users.
-
-To use ``password-from-env`` you must run as "real" root, rather than ``sudo``,
-because ``sudo`` strips environment variables. This example adds new user Fred
-Jones::
+``--password-from-env`` reads the password from the ``OC_PASS`` environment
+variable. This keeps the password out of the process list and allows scripting
+the creation of multiple users. Note that this requires running as the real
+``root`` user rather than ``sudo``, because ``sudo`` strips environment
+variables::
 
  export OC_PASS=newpassword
- sudo -E -u www-data php occ user:add --password-from-env --display-name="Fred Jones" --group="users" fred
- The user "fred" was created successfully
- Display name set to "Fred Jones"
- User "fred" added to group "users"
+ sudo -E -u www-data php occ user:add --password-from-env \
+   --display-name="Layla Smith" --group="users" layla
+ The user "layla" was created successfully
+ Display name set to "Layla Smith"
+ User "layla" added to group "users"
 
-``generate-password`` allows you to set a securely generated password for the user.
-This is never shown in the output and can be used to create users with temporary
-passwords. This can be used in conjunction with the ``email`` option to create
-users with a temporary password and send a welcome email to the user's email
-address without user interaction::
+``--generate-password`` sets a securely generated password that is never shown
+in the output. Combined with ``--email``, this creates a user with a temporary
+password and sends a welcome email::
 
  sudo -E -u www-data php occ user:add layla --generate-password --email layla@example.tld
    The account "layla" was created successfully
    Welcome email sent to layla@example.tld
 
-The ``email`` option allows you to set the user's email address when creating
-the user. A welcome email will be sent to the user's email address if
-``newUser.sendEmail`` is set to ``yes`` in ``core``'s app config or not set at all::
+``--email`` sets the user's email address and sends a welcome email if
+``newUser.sendEmail`` is set to ``yes`` in the ``core`` app config, or
+if it is not set at all (``yes`` is the default)::
 
  sudo -E -u www-data php occ user:add layla --email layla@example.tld
    Enter password:
@@ -93,7 +86,7 @@ the user. A welcome email will be sent to the user's email address if
 user:resetpassword
 ^^^^^^^^^^^^^^^^^^
 
-You can reset any user's password, including administrators (see
+Reset any user's password, including administrators (see
 :doc:`../configuration_user/reset_admin_password`)::
 
  sudo -E -u www-data php occ user:resetpassword layla
@@ -101,13 +94,13 @@ You can reset any user's password, including administrators (see
    Confirm the new password:
    Successfully reset password for layla
 
-It is possible to clear a user's passwords with ``--no-password`` ::
+Clear a user's password with ``--no-password``::
 
  sudo -E -u www-data php occ user:resetpassword --no-password layla
    Are you sure you want to clear the password for layla?
    Successfully reset password for layla
 
-You may also use ``password-from-env`` to reset passwords::
+You may also use ``--password-from-env`` to reset passwords non-interactively::
 
  export OC_PASS=newpassword
  sudo -E -u www-data php occ user:resetpassword --password-from-env layla
@@ -116,19 +109,34 @@ You may also use ``password-from-env`` to reset passwords::
 user:delete
 ^^^^^^^^^^^
 
-You can delete users::
+Delete a user::
 
- sudo -E -u www-data php occ user:delete fred
+ sudo -E -u www-data php occ user:delete layla
+
+user:disable and user:enable
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+.. _disable_user_label:
+
+Disable a user. Their active sessions will be invalidated within
+5 minutes. To invalidate sessions immediately, use
+``user:auth-tokens:delete`` before or after disabling the account::
+
+ sudo -E -u www-data php occ user:disable <username>
+
+Re-enable a disabled user::
+
+ sudo -E -u www-data php occ user:enable <username>
 
 user:lastseen
 ^^^^^^^^^^^^^
 
-View a specific user's most recent login::
+Show a specific user's most recent login::
 
  sudo -E -u www-data php occ user:lastseen layla
    layla's last login: 2024-03-20 17:18
 
-View a list of all users' most recent login::
+Show all users' most recent logins::
 
  sudo -E -u www-data php occ user:lastseen --all
    albert's last login: 2024-03-18 10:30
@@ -136,30 +144,71 @@ View a list of all users' most recent login::
    layla's last login: 2024-03-20 17:18
    stephanie's last login: 2024-01-11 13:26
 
+user:list
+^^^^^^^^^
+
+List all registered users. By default, output is limited to 500 users;
+use ``--limit`` and ``--offset`` to page through larger sets::
+
+ sudo -E -u www-data php occ user:list
+   - admin: admin
+   - layla: Layla Smith
+   - fred: Fred Jones
+
+Use ``--disabled`` to list only disabled users, and ``--info`` to include
+additional backend details.
+
+user:info
+^^^^^^^^^
+
+Show account details for a user, including display name, email, groups,
+quota, and storage usage::
+
+ sudo -E -u www-data php occ user:info layla
+   - user_id: layla
+   - display_name: Layla Smith
+   - email: layla@example.tld
+   - cloud_id: layla@cloud.example.tld
+   - enabled: true
+   - groups:
+     - users
+     - db-admins
+   - quota: none
+   - storage:
+     - free: 162409623552
+     - used: 1110
+     - total: 162409624662
+     - relative: 0
+     - quota: -3
+   - first_seen: 2024-03-01T08:44:46+00:00
+   - last_seen: 2024-03-20T17:18:00+00:00
+   - user_directory: /var/www/nextcloud/data/layla
+   - backend: Database
+
 user:profile
 ^^^^^^^^^^^^
 
 Read user profile properties::
 
-  sudo -E -u www-data php occ user:profile admin
-    - displayname: admin
-    - address: Berlin
-    - email: admin@example.net
-    - profile_enabled: 1
-    - pronouns: they/them
+ sudo -E -u www-data php occ user:profile layla
+   - displayname: Layla Smith
+   - address: Berlin
+   - email: layla@example.tld
+   - profile_enabled: 1
+   - pronouns: they/them
 
-Get a single profile property for a user::
+Get a single profile property::
 
-    sudo -E -u www-data php occ user:profile address
-      Berlin
+ sudo -E -u www-data php occ user:profile layla address
+   Berlin
 
 Set a profile property::
 
-    sudo -E -u www-data php occ user:profile address Stuttgart
+ sudo -E -u www-data php occ user:profile layla address Stuttgart
 
 Delete a profile property::
 
-    sudo -E -u www-data php occ user:profile address --delete
+ sudo -E -u www-data php occ user:profile layla address --delete
 
 user:setting
 ^^^^^^^^^^^^
@@ -196,8 +245,8 @@ Delete a setting::
 user:report
 ^^^^^^^^^^^
 
-Generate a simple report that counts all users, including users on external user
-authentication servers such as LDAP::
+Show a count of all users, including users on external authentication
+backends such as LDAP::
 
  sudo -E -u www-data php occ user:report
  +------------------+----+
@@ -213,138 +262,245 @@ authentication servers such as LDAP::
  | disabled users   | 0  |
  +------------------+----+
 
-`active users` shows the number of users which logged in at least once.
-`disabled users` shows the number of users which are disabled.
+Active users are those who have logged in at least once. Users who have
+never logged in are not counted as active or disabled. Some backends do
+not support a user count and may show as zero.
 
-There might be a discrepancy between the total number of users compared to the number of active users and the number of disabled users.
-Users that have never logged in before are not counted as active or disabled users.
-Some user backends also do not allow a count for the number of users.
+user:auth-tokens:list
+^^^^^^^^^^^^^^^^^^^^^
 
-user:list
-^^^^^^^^^
+List all active authentication tokens (sessions and app passwords) for a
+user::
 
-You can use the command ``user:list`` to list users. By default it will limit the output to 500 users but you can override that with options ``--limit`` and ``--offset``. Use ``--disabled`` to only list disabled users.
+ sudo -E -u www-data php occ user:auth-tokens:list layla
+ +----+------------------+---------------------------+-----------+------------+
+ | id | name             | lastActivity              | type      | scope      |
+ +----+------------------+---------------------------+-----------+------------+
+ | 42 | Firefox on Linux | 2024-03-20T17:18:00+00:00 | temporary | filesystem |
+ | 47 | Backup script    | 2024-03-19T08:00:00+00:00 | permanent | filesystem |
+ +----+------------------+---------------------------+-----------+------------+
 
-user:info
-^^^^^^^^^
+Use ``--output=json`` or ``--output=json_pretty`` for machine-readable output.
 
-With the ``user:info`` command, you can access an account information such as: user id, display name, quota, groups, storage usage... and many more
+user:auth-tokens:add
+^^^^^^^^^^^^^^^^^^^^
 
-.. code-block::
+Create an app password for a user. If no login password is provided, the
+generated token will have limited capabilities (operations that require the
+login password will fail)::
 
-  user:info admin
-    - user_id: admin
-    - display_name: admin
-    - email: admin@domain.com
-    - cloud_id: admin@cloud.domain.com
-    - enabled: true
-    - groups:
-      - admin
-      - users
-    - quota: none
-    - storage:
-      - free: 162409623552
-      - used: 1110
-      - total: 162409624662
-      - relative: 0
-      - quota: -3
-    - first_seen: 2025-03-14T08:44:46+00:00
-    - last_seen: 2025-03-25T20:21:13+00:00
-    - user_directory: /var/www/nextcloud/data/admin
-    - backend: Database
+ sudo -E -u www-data php occ user:auth-tokens:add --name="Backup script" layla
+   Enter password:
+   app password: kFrH9-TXk4s-gUoOQ-KOVH8
+
+Use ``--password-from-env`` to read the login password from ``NC_PASS``
+non-interactively::
+
+ export NC_PASS=userpassword
+ sudo -E -u www-data php occ user:auth-tokens:add --name="CI runner" \
+   --password-from-env layla
+
+user:auth-tokens:delete
+^^^^^^^^^^^^^^^^^^^^^^^
+
+Delete a specific token by its ID (from ``user:auth-tokens:list``)::
+
+ sudo -E -u www-data php occ user:auth-tokens:delete layla 47
+
+Delete all tokens for a user that have not been used since a given date::
+
+ sudo -E -u www-data php occ user:auth-tokens:delete layla \
+   --last-used-before="2024-01-01"
+
+user:clear-avatar-cache
+^^^^^^^^^^^^^^^^^^^^^^^
+
+Clear the cached avatar images for all users. Useful after changing avatar
+storage settings or after migrating user data::
+
+ sudo -E -u www-data php occ user:clear-avatar-cache
+
+user:keys:verify
+^^^^^^^^^^^^^^^^
+
+Verify that the stored public key for a user matches their stored private
+key. Returns a confirmation or mismatch notice. Useful for diagnosing
+end-to-end encryption issues::
+
+ sudo -E -u www-data php occ user:keys:verify layla
+   Stored public key matches stored private key
+
+user:sync-account-data
+^^^^^^^^^^^^^^^^^^^^^^^
+
+Sync user data from the configured user backends (LDAP, SAML, etc.) to
+the Nextcloud accounts table. Useful after backend changes to ensure
+profile data, email addresses, and display names are up to date::
+
+ sudo -E -u www-data php occ user:sync-account-data
+   layla - updated
+
+Use ``--limit`` and ``--offset`` to process users in batches.
+
+user:welcome
+^^^^^^^^^^^^
+
+Send the welcome email to a user. The instance must have a working email
+configuration::
+
+ sudo -E -u www-data php occ user:welcome layla
+
+Add ``--reset-password`` to include a password reset link in the email::
+
+ sudo -E -u www-data php occ user:welcome --reset-password layla
+
 
 .. _group_commands_label:
 
 Group commands
 --------------
 
-The ``group`` commands create and remove groups, add and remove users in
-groups, display a list of all users in a group::
+The ``group`` commands create and manage groups and their memberships::
 
  group
   group:add                           add a group
-  group:delete                        remove a group
   group:adduser                       add a user to a group
-  group:removeuser                    remove a user from a group
+  group:delete                        remove a group
+  group:info                          show information about a group
   group:list                          list configured groups
+  group:removeuser                    remove a user from a group
 
-You can create a new group with the ``group:add`` command. The syntax is::
+group:add
+^^^^^^^^^
 
- group:add [gid]
+Create a new group::
 
-The ``gid`` corresponds to the group name you entering after clicking
-"Add group" on the Users page in your Nextcloud Web UI. This example adds new
-group "beer"::
+ sudo -E -u www-data php occ group:add milliways
 
- sudo -E -u www-data php occ group:add beer
+group:adduser and group:removeuser
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Add an existing user to the specified group with the ``group:adduser``
-command. The syntax is::
+Add a user to a group::
 
- group:adduser [gid] [uid]
+ sudo -E -u www-data php occ group:adduser milliways layla
 
-This example adds the user "denis" to the existing group "beer"::
+Remove a user from a group::
 
- sudo -E -u www-data php occ group:adduser beer denis
+ sudo -E -u www-data php occ group:removeuser milliways layla
 
-You can remove user from the group with the ``group:removeuser`` command.
-This example removes the existing user "denis" from the existing
-group "beer"::
+group:delete
+^^^^^^^^^^^^
 
- sudo -E -u www-data php occ group:removeuser beer denis
+Remove a group. This does not delete the users in the group. The
+``admin`` group cannot be removed::
 
-Remove a group with the ``group:delete`` command. Removing a group doesn't
-remove users in a group. You cannot remove the "admin" group. This example
-removes the existing group "beer"::
+ sudo -E -u www-data php occ group:delete milliways
 
- sudo -E -u www-data php occ group:delete beer
+group:list
+^^^^^^^^^^
 
-List configured groups via the ``group:list`` command. The syntax is::
+List configured groups. Optionally filter by a search string::
 
- group:list [-l|--limit [LIMIT]] [-o|--offset [OFFSET]] [-i|--info] [--output [OUTPUT]]
+ sudo -E -u www-data php occ group:list
+   - admin:
+     - admin
+   - milliways:
+     - layla
+   - users:
+     - layla
 
-``limit`` allows you to specify the number of groups to retrieve (default: ``500``).
+ sudo -E -u www-data php occ group:list milli
+   - milliways:
+     - layla
 
-``offset`` is an offset for retrieving groups.
+Use ``--limit`` and ``--offset`` to page through large numbers of groups.
+Use ``--info`` to include the backend for each group.
+Use ``--output=json`` or ``--output=json_pretty`` for machine-readable output.
 
-``info`` Show additional info (backend).
+group:info
+^^^^^^^^^^
 
-``output`` Output format: ``plain``, ``json`` or ``json_pretty`` (default: ``plain``).
+Show details about a group, including its members and backend::
+
+ sudo -E -u www-data php occ group:info admin
+   - groupID: admin
+   - displayName: admin
+   - backends:
+     - Database
+
+Use ``--output=json_pretty`` for machine-readable output.
 
 
 .. _two_factor_auth_label:
 
 Two-factor authentication
 -------------------------
-If a two-factor provider app is enabled, it is enabled for all users by default
-(though the provider can decide whether or not the user has to pass the challenge).
-In the case of a user losing access to the second factor (e.g. lost phone with
-two-factor SMS verification), the admin can try to disable the two-factor
-check for that user via the occ command::
+
+The ``twofactorauth`` commands manage two-factor authentication (2FA)
+enforcement and provider state::
+
+ twofactorauth
+  twofactorauth:cleanup               clean up provider associations for a removed provider
+  twofactorauth:disable               disable 2FA for a user (provider-specific)
+  twofactorauth:enable                enable 2FA for a user (provider-specific)
+  twofactorauth:enforce               enforce or disable mandatory 2FA globally or per group
+  twofactorauth:state                 show the 2FA state for a user
+
+twofactorauth:disable and twofactorauth:enable
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+If a user loses access to their second factor (for example, a lost phone),
+an admin can disable 2FA for that user for a specific provider::
 
  sudo -E -u www-data php occ twofactorauth:disable <uid> <provider_id>
 
-.. note:: This is not supported by all providers.
-
-To re-enable two-factor auth again use the following command::
+Re-enable 2FA for the user::
 
  sudo -E -u www-data php occ twofactorauth:enable <uid> <provider_id>
 
-.. note:: This is not supported by all providers.
+.. note::
 
-.. _disable_user_label:
+   Not all 2FA providers support per-user enable/disable via occ.
 
-Disable users
--------------
-Admins can disable users via the occ command too::
+twofactorauth:enforce
+^^^^^^^^^^^^^^^^^^^^^
 
- sudo -E -u www-data php occ user:disable <username>
+Enforce 2FA for all users::
 
-Use the following command to enable the user again::
+ sudo -E -u www-data php occ twofactorauth:enforce --on
+   Two-factor authentication is enforced for all users
 
- sudo -E -u www-data php occ user:enable <username>
+Enforce 2FA only for specific groups, optionally excluding others::
 
-Note that once users are disabled, their connected browsers will be disconnected.
+ sudo -E -u www-data php occ twofactorauth:enforce --on \
+   --group=admin --group=finance --exclude=service-accounts
+   Two-factor authentication is enforced for members of the group(s) admin, finance
+
+Disable enforcement::
+
+ sudo -E -u www-data php occ twofactorauth:enforce --off
+   Two-factor authentication is not enforced
+
+twofactorauth:state
+^^^^^^^^^^^^^^^^^^^
+
+Show whether 2FA is enabled, enforced, and which providers are active for
+a user::
+
+ sudo -E -u www-data php occ twofactorauth:state layla
+   Two-factor authentication is not enabled for user layla
+
+   Disabled providers:
+   - backup_codes
+   - totp
+
+twofactorauth:cleanup
+^^^^^^^^^^^^^^^^^^^^^
+
+Remove stored 2FA provider associations for a provider that has been
+uninstalled. This cleans up stale data after removing a 2FA app::
+
+ sudo -E -u www-data php occ twofactorauth:cleanup <provider_id>
 
 
 .. _system_tags_commands_label:
@@ -352,25 +508,10 @@ Note that once users are disabled, their connected browsers will be disconnected
 System Tags
 -----------
 
-List tags::
+System tags are admin-managed labels that can be assigned to files for
+use in workflows and automated actions.
 
-  sudo -E -u www-data php occ tag:list
-
-Add a tag::
-
-  sudo -E -u www-data php occ tag:add <name> <access>
-
-Edit a tag::
-
-  sudo -E -u www-data php occ tag:edit --name <name> --access <access> <id>
-
-`--name` and `--access` are optional.
-
-Delete a tag::
-
-  sudo -E -u www-data php occ tag:delete <id>
-
-Access level
+Tags have three access levels:
 
 ========== ======== ==========
 Level      Visible¹ Assignable²
@@ -383,4 +524,70 @@ invisible  No       No
 | ¹ User can see the tag
 | ² User can assign the tag to a file
 
+See :doc:`../file_workflows/automated_tagging` for typical use cases for
+restricted and invisible tags, such as retention and access control.
 
+tag\:list
+^^^^^^^^^
+
+List all system tags::
+
+ sudo -E -u www-data php occ tag:list
+   - 1:
+     - name: confidential
+     - access: restricted
+   - 2:
+     - name: needs-review
+     - access: public
+
+tag\:add
+^^^^^^^^
+
+Create a new system tag::
+
+ sudo -E -u www-data php occ tag:add confidential restricted
+   - id: 1
+   - name: confidential
+   - access: restricted
+
+tag\:edit
+^^^^^^^^^
+
+Rename a tag or change its access level. Use the tag ID from ``tag:list``::
+
+ sudo -E -u www-data php occ tag:edit --name "reviewed" --color="" 2
+   Tag updated ("reviewed", true, true, "")
+
+``--name`` and ``--access`` are optional. ``--color=""`` must be passed
+explicitly due to a known issue with the command.
+
+tag\:delete
+^^^^^^^^^^^
+
+Delete a tag by its ID::
+
+ sudo -E -u www-data php occ tag:delete 1
+   The specified tag was deleted
+
+Assigning tags to files
+^^^^^^^^^^^^^^^^^^^^^^^
+
+Add one or more tags to a file or directory (specified by file ID or path).
+The ``access`` argument identifies which tag to apply — because two tags can
+share the same name but have different access levels, both name and access
+level are required to uniquely identify a tag. If no matching tag exists, it
+is created automatically::
+
+ sudo -E -u www-data php occ tag:files:add /layla/files/report.pdf confidential restricted
+   restricted tag named confidential added.
+
+Multiple tags can be specified as a comma-separated list. All tags in a
+single call must share the same access level.
+
+Remove specific tags from a file::
+
+ sudo -E -u www-data php occ tag:files:delete /layla/files/report.pdf confidential restricted
+
+Remove all tags from a file::
+
+ sudo -E -u www-data php occ tag:files:delete-all /layla/files/report.pdf

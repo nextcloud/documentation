@@ -1,6 +1,6 @@
-=======
-Options
-=======
+====================
+Command-Line Options
+====================
 
 You have the option of starting your Nextcloud desktop client with the 
 ``nextcloud`` command. The following options are supported:
