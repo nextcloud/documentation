@@ -18,4 +18,3 @@ Table of contents
     universal_access
     user_2fa
     session_management
-    external_storage/index

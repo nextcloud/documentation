@@ -9,3 +9,4 @@ Accessing your files
    access_webdav
    desktop_mobile_sync
    large_file_upload
+   external_storage
