@@ -45,6 +45,7 @@ Removed front-end APIs and libraries
   - ``jQuery UI`` was deprecated and scheduled for removal since Nextcloud 19.
   - ``Backbone`` was deprecated and scheduled for removal since Nextcloud 19.
   - ``OC.Files.Client`` as it was extending the ``Backbone``.
+  - ``Handlebars`` was deprecated and scheduled for removal since Nextcloud 19.
 
 
 Removed back-end APIs
