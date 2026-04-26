@@ -307,7 +307,7 @@ use the <strong>IRegistrationContext::registerService</strong> method:</p>
 </div>
 </li>
 <li><p><strong>AuthorMapper</strong> is queried:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$container-&gt;registerService(AuthorMappers::class, function(ContainerInterface $c): AuthorMapper {
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$container-&gt;registerService(AuthorMapper::class, function(ContainerInterface $c): AuthorMapper {
   return new AuthorService(
     $c-&gt;get(IDBConnection::class)
   );
@@ -591,7 +591,7 @@ considered an anti-pattern.</p>
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Apr 23, 2026.
+      <span class="lastupdated">Last updated on Apr 26, 2026.
       </span></p>
   </div>
 

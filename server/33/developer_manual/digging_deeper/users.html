@@ -360,10 +360,10 @@
         <span class="nv">$managers</span> <span class="o">=</span> <span class="nb">array_map</span><span class="p">(</span><span class="k">function</span><span class="p">(</span><span class="nx">string</span> <span class="nv">$uid</span><span class="p">)</span> <span class="p">{</span>
             <span class="k">return</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">userManager</span><span class="o">-&gt;</span><span class="na">get</span><span class="p">(</span><span class="nv">$uid</span><span class="p">);</span>
         <span class="p">},</span> <span class="nv">$managerUids</span><span class="p">));</span>
-        <span class="c1">// Remove and managers that no longer exist as user</span>
+        <span class="c1">// Remove any managers that no longer exist as users</span>
         <span class="nv">$existingManagers</span> <span class="o">=</span> <span class="nb">array_filter</span><span class="p">(</span><span class="nv">$managers</span><span class="p">);</span>
 <span class="hll">        <span class="nv">$user</span><span class="o">-&gt;</span><span class="na">setManagerUids</span><span class="p">(</span><span class="nb">array_map</span><span class="p">(</span><span class="k">function</span><span class="p">(</span><span class="nx">IUser</span> <span class="nv">$admin</span><span class="p">)</span> <span class="p">{</span>
-</span><span class="hll">            <span class="k">return</span> <span class="nv">$user</span><span class="o">-&gt;</span><span class="na">getUID</span><span class="p">();</span>
+</span><span class="hll">            <span class="k">return</span> <span class="nv">$admin</span><span class="o">-&gt;</span><span class="na">getUID</span><span class="p">();</span>
 </span><span class="hll">        <span class="p">},</span> <span class="nv">$existingManagers</span><span class="p">));</span>
 </span>    <span class="p">}</span>
 <span class="p">}</span>
@@ -386,7 +386,7 @@
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Apr 23, 2026.
+      <span class="lastupdated">Last updated on Apr 26, 2026.
       </span></p>
   </div>
 
