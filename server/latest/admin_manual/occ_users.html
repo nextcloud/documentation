@@ -225,9 +225,8 @@ Any groups that do not exist are created automatically:</p>
 </div>
 <p><code class="docutils literal notranslate"><span class="pre">--password-from-env</span></code> reads the password from the <code class="docutils literal notranslate"><span class="pre">OC_PASS</span></code> environment
 variable. This keeps the password out of the process list and allows scripting
-the creation of multiple users. Note that this requires running as the real
-<code class="docutils literal notranslate"><span class="pre">root</span></code> user rather than <code class="docutils literal notranslate"><span class="pre">sudo</span></code>, because <code class="docutils literal notranslate"><span class="pre">sudo</span></code> strips environment
-variables:</p>
+the creation of multiple users. Note that <code class="docutils literal notranslate"><span class="pre">sudo</span></code> strips environment variables
+by default; the <code class="docutils literal notranslate"><span class="pre">-E</span></code> flag preserves them, as shown in the example below:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">OC_PASS</span><span class="o">=</span><span class="n">newpassword</span>
 <span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">user</span><span class="p">:</span><span class="n">add</span> <span class="o">--</span><span class="n">password</span><span class="o">-</span><span class="n">from</span><span class="o">-</span><span class="n">env</span> \
   <span class="o">--</span><span class="n">display</span><span class="o">-</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Layla Smith&quot;</span> <span class="o">--</span><span class="n">group</span><span class="o">=</span><span class="s2">&quot;users&quot;</span> <span class="n">layla</span>

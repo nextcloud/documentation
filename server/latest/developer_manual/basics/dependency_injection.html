@@ -308,7 +308,7 @@ use the <strong>IRegistrationContext::registerService</strong> method:</p>
 </div>
 </li>
 <li><p><strong>AuthorMapper</strong> is queried:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$container-&gt;registerService(AuthorMappers::class, function(ContainerInterface $c): AuthorMapper {
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>$container-&gt;registerService(AuthorMapper::class, function(ContainerInterface $c): AuthorMapper {
   return new AuthorService(
     $c-&gt;get(IDBConnection::class)
   );
