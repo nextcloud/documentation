@@ -29,7 +29,8 @@ You can view the content of this endpoint with the following command:
   curl "https://your.domain/metrics"
 
 
-If for some reason you want to disable some metrics (eg. if they take too long to generate), you can disable them by adding their class name into ``openmetrics_skipped_classes``
+If for some reason you want to disable some metrics (eg. if they take too long to generate), you can disable them by
+adding their class name into ``openmetrics_skipped_classes``
 
 ::
 

@@ -135,7 +135,8 @@ Look for entries that start with any of the following:
 If all clients appear to be coming from the same IP address and that IP address happens to be your 
 proxy, you need to review your ``trusted_proxies`` configuration. 
 
-If the IP address is a common connection point, such as a multi-user office location, it can be an option to whitelist it,
+If the IP address is a common connection point, such as a multi-user office location, it can be an option to whitelist
+it,
 with the draw back that users have to be trust-worthy.
 
 For testing purposes you want want to whitelist your own IP address to see if the problem disappears.

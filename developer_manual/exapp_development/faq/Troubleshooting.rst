@@ -10,14 +10,16 @@ How to troubleshoot networking issues?
 Networking issues can be not so straightforward to identify and resolve.
 Here are some common steps to verify the network configuration:
 
-- Verify that the Deploy daemon is running and accessible (AppAPI admin settings - Select Deploy daemon - Check connection).
+- Verify that the Deploy daemon is running and accessible (AppAPI admin settings - Select Deploy daemon - Check
+  connection).
 - Verify the network mode and access levels, firewall, VPN, etc.
 - Verify that Nextcloud is reachable from the Deploy daemon host
 - Verify that the Deploy daemon host is reachable from the Nextcloud host
 - Verify that Nextcloud is reachable from the ExApp container
 - Verify that there are no DNS resolution issues
 - Verify that there are no SSL certificate issues
-- If there are HTTP 401 Unauthorized errors, check the ExApp (``docker logs nc_app_<appid>``) / Nextcloud logs, on which API route it fails to authenticate, try to re-enable AppAPI and re-install the ExApp.
+- If there are HTTP 401 Unauthorized errors, check the ExApp (``docker logs nc_app_<appid>``) / Nextcloud logs, on which
+  API route it fails to authenticate, try to re-enable AppAPI and re-install the ExApp.
 
 .. note::
    If your case is not documented here or doesn't exist in GitHub issues,
@@ -49,5 +51,6 @@ ExApps management list of apps from App Store is empty
 ------------------------------------------------------
 
 This issue may occur if you are loading the ExApps management (or regular Apps management) page
-frequently during the short period of time, and therefore your IP address can be blocked by the App Store rate-limits protection.
+frequently during the short period of time, and therefore your IP address can be blocked by the App Store rate-limits
+protection.
 Please wait a while and try again.

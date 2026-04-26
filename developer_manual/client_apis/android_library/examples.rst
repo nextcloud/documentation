@@ -426,6 +426,9 @@ Tips
 * Paths must not be on URL Encoding
 * Correct path: ``https://example.com/nextcloud/remote.php/dav/PopMusic``
 * Wrong path: ``https://example.com/nextcloud/remote.php/dav/Pop%20Music/``
-* There are some forbidden characters to be used in folder and file names on the server, same on the Nextcloud Android Library "\","/","<",">",":",""","|","?","*"
-* Upload and download actions may be cancelled thanks to the objects uploadOperation.cancel(), downloadOperation.cancel()
-* Unit tests, before launching unit tests you have to enter your account information (server URL, user and password) on TestActivity.java
+* There are some forbidden characters to be used in folder and file names on the server, same on the Nextcloud Android
+  Library "\","/","<",">",":",""","|","?","*"
+* Upload and download actions may be cancelled thanks to the objects uploadOperation.cancel(),
+  downloadOperation.cancel()
+* Unit tests, before launching unit tests you have to enter your account information (server URL, user and password) on
+  TestActivity.java

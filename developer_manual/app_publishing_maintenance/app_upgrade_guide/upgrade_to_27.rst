@@ -25,12 +25,15 @@ Front-end changes
 General
 ^^^^^^^
 
-* With Nextcloud 27 you can also provide module javascript files with the ``.mjs`` file extension. For backwards compatibility you can provide files with the same name but the ``.js`` file extension which will be loaded for Nextcloud versions before 27.
+* With Nextcloud 27 you can also provide module javascript files with the ``.mjs`` file extension. For backwards
+  compatibility you can provide files with the same name but the ``.js`` file extension which will be loaded for
+  Nextcloud versions before 27.
 
 Added APIs
 ^^^^^^^^^^
 
-* A new Files Router API allows you to control the files router service and update views, queries or param without page reload. See :ref:`FilesAPI`
+* A new Files Router API allows you to control the files router service and update views, queries or param without page
+  reload. See :ref:`FilesAPI`
 
 Back-end changes
 ----------------
@@ -38,12 +41,16 @@ Back-end changes
 Optimized class loader
 ^^^^^^^^^^^^^^^^^^^^^^
 
-This documentation previously recommended using any composer class loader optimization in :ref:`app-custom-classloader`. Unfortunately authoritative class maps do not work with the upgrade process of Nextcloud apps. When app code is replaced during an app upgrade, the autoloader has to load *new* classes as well. Authoritative class loaders don't do that by design. Use the simple class map optimization only.
+This documentation previously recommended using any composer class loader optimization in :ref:`app-custom-classloader`.
+Unfortunately authoritative class maps do not work with the upgrade process of Nextcloud apps. When app code is replaced
+during an app upgrade, the autoloader has to load *new* classes as well. Authoritative class loaders don't do that by
+design. Use the simple class map optimization only.
 
 Removal of PSR-0 class loader
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Nextcloud 27 no longer loads classes in the deprecated :ref:`PSR-0 naming standard<psr0>`. :ref:`Update the structure to PSR-4<app-psr4-autoloader>` or :ref:`ship a custom autoloader<app-custom-classloader>`.
+Nextcloud 27 no longer loads classes in the deprecated :ref:`PSR-0 naming standard<psr0>`. :ref:`Update the structure to
+PSR-4<app-psr4-autoloader>` or :ref:`ship a custom autoloader<app-custom-classloader>`.
 
 Added APIs
 ^^^^^^^^^^

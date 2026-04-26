@@ -166,7 +166,8 @@ Non-Amazon hosted S3:
 
 Minimum required parameters are:
 
-* :code:`bucket` [Note: Even if non-Amazon hosted, bucket names must meet AWS S3 naming requirements regardless of what your S3 provider/platform considers acceptable - i.e. no underscores]
+* :code:`bucket` [Note: Even if non-Amazon hosted, bucket names must meet AWS S3 naming requirements regardless of what
+  your S3 provider/platform considers acceptable - i.e. no underscores]
 * :code:`key`
 * :code:`secret`
 
@@ -179,7 +180,8 @@ unconfigured):
 
 * :code:`region` defaults to :code:`eu-west-1`
 * :code:`storageClass` defaults to :code:`STANDARD`
-* :code:`hostname` defaults to :code:`s3.REGION.amazonaws.com` [Note: If using this parameter (non-Amazon), specify the generic S3 endpoint hostname, **not** the hostname that contains your bucket name]
+* :code:`hostname` defaults to :code:`s3.REGION.amazonaws.com` [Note: If using this parameter (non-Amazon), specify the
+  generic S3 endpoint hostname, **not** the hostname that contains your bucket name]
 * :code:`use_ssl` defaults to :code:`true`
 
 Optional parameters sometimes needing adjustment:
@@ -202,7 +204,8 @@ Optional parameters less commonly needing adjustment:
 * :code:`copySizeLimit` defaults to :code:`5242880000`
 * :code:`legacy_auth` has no default
 * :code:`version` defaults to :code:`latest`
-* :code:`verify_bucket_exists` defaults to :code:`true` [Note: Setting this to :code:`false` *after* confirming the bucket has been created may provide a performance benefit, but may not be possible in multibucket scenarios.]
+* :code:`verify_bucket_exists` defaults to :code:`true` [Note: Setting this to :code:`false` *after* confirming the
+  bucket has been created may provide a performance benefit, but may not be possible in multibucket scenarios.]
 
 **If you are using Amazon S3:** the :code:`region` parameter is required unless you're happy with 
 the default of :code:`eu-west-1`. There is no need to override the :code:`hostname` or :code:`port`. 
@@ -275,7 +278,8 @@ You can find out more information about upscaling with object storage and Nextcl
 Multibucket Object Store with per Bucket configuration overrides
 ----------------------------------------------------------------
 
-When using an Object Store with :code:`'multibucket => true'` it is possible to configure overrides for all config options per bucket:
+When using an Object Store with :code:`'multibucket => true'` it is possible to configure overrides for all config
+options per bucket:
 
 ::
 
@@ -293,7 +297,8 @@ When using an Object Store with :code:`'multibucket => true'` it is possible to 
 	],
 
 This can be useful for example if you want to configure credentials per bucket that is used by a Team folder.
-A script for provisioning new Team folders this way could look like this (first make sure the bucket exists with those credentials):
+A script for provisioning new Team folders this way could look like this (first make sure the bucket exists with those
+credentials):
 
 ::
 
@@ -360,14 +365,16 @@ S3 SSE-C encryption support
 
 Nextcloud supports server side encryption, also known as `SSE-C <https://docs.aws.amazon.com/AmazonS3/latest/dev/ServerSideEncryptionCustomerKeys.html>`_, with compatible S3 bucket provider. The encryption and decryption happens on the S3 bucket side with a key provided by the Nextcloud server.
 
-The key can be specified with the :code:`sse_c_key` parameter which needs to be provided as a base64 encoded string with a maximum length of 32 bytes. A random key could be generated using the the following command:
+The key can be specified with the :code:`sse_c_key` parameter which needs to be provided as a base64 encoded string with
+a maximum length of 32 bytes. A random key could be generated using the the following command:
 
 ::
 
 	openssl rand 32 | base64
 
 
-The following example shows how to configure the S3 object store with SSE-C encryption support in the objectstore section of the Nextcloud config.php file:
+The following example shows how to configure the S3 object store with SSE-C encryption support in the objectstore
+section of the Nextcloud config.php file:
 
 ::
 

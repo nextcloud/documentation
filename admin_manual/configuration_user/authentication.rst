@@ -7,7 +7,9 @@ Authentication
 App passwords
 ^^^^^^^^^^^^^
 
-App passwords allow users to authenticate multiple client applications against their Nextcloud account without giving the application the login password. App passwords are mandatory for accounts with :ref:`two-factor authentication<two-factor-auth>` enabled.
+App passwords allow users to authenticate multiple client applications against their Nextcloud account without giving
+the application the login password. App passwords are mandatory for accounts with :ref:`two-factor
+authentication<two-factor-auth>` enabled.
 
 Some clients support *remote wipe*, which makes the connected application delete its local data.
 
@@ -18,7 +20,8 @@ Automated clean-up
 
 .. versionadded:: 30
 
-Nextcloud will delete unused passwords. Passwords set for *remote wipe* are deleted after 60 days of no usage. App passwords of client applications are deleted after 365 days of no usage.
+Nextcloud will delete unused passwords. Passwords set for *remote wipe* are deleted after 60 days of no usage. App
+passwords of client applications are deleted after 365 days of no usage.
 
 The time spans can be overwritten with configuration::
 

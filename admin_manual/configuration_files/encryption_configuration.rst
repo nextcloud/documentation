@@ -322,7 +322,8 @@ User Keys: Sharing & Recovery
 LDAP and External User Backends
 -------------------------------
 
-- If using LDAP/Samba and changing passwords on the backend, users will need both their old and new passwords on next login.
+- If using LDAP/Samba and changing passwords on the backend, users will need both their old and new passwords on next
+  login.
 - If recovery key is enabled, admins can reset the password via Nextcloud and notify users.
 
 Troubleshooting
@@ -349,7 +350,8 @@ The command will perform a test decryption for all files and automatically repai
 Encryption key cannot be found
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-If the logs contain an error stating that the encryption key cannot be found, you can manually search the data directory for a folder that has the same name as the file name.
+If the logs contain an error stating that the encryption key cannot be found, you can manually search the data directory
+for a folder that has the same name as the file name.
 For example, if a file "example.md" cannot be decrypted, run::
 
    find path/to/datadir -name example.md -type d
@@ -374,7 +376,8 @@ To resolve this issue, run the following command::
 
 This will attempt to recover keys that were not moved properly.
 
-If this doesn't resolve the problem, refer to the section :ref:`Encryption key cannot be found<troubleshooting_encryption_key_not_found>` for a manual procedure.
+If this doesn't resolve the problem, refer to the section :ref:`Encryption key cannot be
+found<troubleshooting_encryption_key_not_found>` for a manual procedure.
 
 .. note::
 

@@ -8,7 +8,8 @@ JavaScript and Typescript
 General rules and advice
 ------------------------
 
-- Nextcloud uses Vue.js for its interface, for a consistent user interface we recommend apps to also use Vue with :ref:`provided components <js-library_nextcloud-vue>`.
+- Nextcloud uses Vue.js for its interface, for a consistent user interface we recommend apps to also use Vue with
+  :ref:`provided components <js-library_nextcloud-vue>`.
   Yet also vanilla JavaScript and HTML can be used.
 - We recommend using Typescript for its type checking and improved static code analysis features.
 - Do not create global variables, instead if needed use global namespace objects like ``OCA.YourApp.…``
@@ -17,7 +18,8 @@ General rules and advice
 ESLint config
 ^^^^^^^^^^^^^
 
-There is a shared configuration for `eslint <https://eslint.org/>`_ that you can use to automatically format your Nextcloud apps's JavaScript and Typescript code.
+There is a shared configuration for `eslint <https://eslint.org/>`_ that you can use to automatically format your
+Nextcloud apps's JavaScript and Typescript code.
 It consists of two parts: a `config package <https://github.com/nextcloud-libraries/eslint-config>`_ that contains the formatting preferences
 and a `plugin <https://github.com/nextcloud-libraries/eslint-plugin>`_ to detect deprecated and removed APIs in your code. See their readmes for instructions.
 
@@ -50,7 +52,8 @@ Filenames
 
 We do not have strict rules for filenames, either kebab case or camel case will work.
 
-Yet we strongly recommend for Vue apps to follow the Vue recommendations and use the same filename as the component name.
+Yet we strongly recommend for Vue apps to follow the Vue recommendations and use the same filename as the component
+name.
 E.g. if your component is called ``AppRoot`` then the file should be called ``AppRoot.vue``.
 
 Code style
@@ -80,7 +83,8 @@ Naming and casing
 - For readability only capitalize the first letter of abbreviations like ``callHttpApi()`` instead of ``callHTTPAPI()``.
 - Sub-components should be prefixed.
   E.g. splitting a component like ``FileListEntry`` into smaller components called ``FileListEntryName``, ``FileListEntryIcon`` …
-- Components should not have single-word names, this could conflict with current or future native HTML tags as these are always single-word.
+- Components should not have single-word names, this could conflict with current or future native HTML tags as these are
+  always single-word.
   E.g. if you have a settings view, do not call it ``Settings`` but ``SettingsView`` or ``UserSettings`` etc.
 
 .. list-table:: Use camelCase for functions, methods, properties, and variables

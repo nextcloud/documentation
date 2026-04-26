@@ -67,7 +67,8 @@ Any other items that are created afterwards will need to be added on demand.
 Using the IContentManager service
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-To add content and register your provider implementation you will need to use the ``\OCP\ContextChat\IContentManager`` service.
+To add content and register your provider implementation you will need to use the ``\OCP\ContextChat\IContentManager``
+service.
 
 The ``IContentManager`` class has the following methods:
 

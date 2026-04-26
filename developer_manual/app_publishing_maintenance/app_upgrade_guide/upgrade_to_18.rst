@@ -41,7 +41,8 @@ New APIs
 Deprecations
 ^^^^^^^^^^^^
 
-* ``\OCP\Collaboration\Resources\IManager::registerResourceProvider``: use ``\OCP\Collaboration\Resources\IProviderManager::registerResourceProvider`` instead.
+* ``\OCP\Collaboration\Resources\IManager::registerResourceProvider``: use
+  ``\OCP\Collaboration\Resources\IProviderManager::registerResourceProvider`` instead.
 
 Behavioral changes
 ------------------

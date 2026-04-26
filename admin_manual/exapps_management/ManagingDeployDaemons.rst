@@ -17,7 +17,10 @@ Register
 
 Register Deploy Daemon (DaemonConfig).
 
-Command: ``app_api:daemon:register [--net NET] [--haproxy_password HAPROXY_PASSWORD] [--compute_device COMPUTE_DEVICE] [--set-default] [--harp] [--harp_frp_address HARP_FRP_ADDRESS] [--harp_shared_key HARP_SHARED_KEY] [--harp_docker_socket_port HARP_DOCKER_SOCKET_PORT] [--harp_exapp_direct] [--] <name> <display-name> <accepts-deploy-id> <protocol> <host> <nextcloud_url>``
+Command: ``app_api:daemon:register [--net NET] [--haproxy_password HAPROXY_PASSWORD] [--compute_device COMPUTE_DEVICE]
+[--set-default] [--harp] [--harp_frp_address HARP_FRP_ADDRESS] [--harp_shared_key HARP_SHARED_KEY]
+[--harp_docker_socket_port HARP_DOCKER_SOCKET_PORT] [--harp_exapp_direct] [--] <name> <display-name> <accepts-deploy-id>
+<protocol> <host> <nextcloud_url>``
 
 Arguments
 *********
@@ -34,30 +37,41 @@ Options
 
 * ``--net [network-name]``  - ``[required]`` network name to bind docker container to (default: ``host``)
 * ``--haproxy_password HAPROXY_PASSWORD`` - ``[optional]`` password for AppAPI Docker Socket Proxy
-* ``--compute_device GPU`` - ``[optional]`` GPU device to expose to the daemon (e.g. ``cpu|cuda|rocm``, default: ``cpu``)
+* ``--compute_device GPU`` - ``[optional]`` GPU device to expose to the daemon (e.g. ``cpu|cuda|rocm``, default:
+  ``cpu``)
 * ``--set-default`` - ``[optional]`` set created daemon as default for ExApps installation
 * ``--harp`` - ``[optional]`` Flag to set daemon to use HaRP for all docker and exapp communication
-* ``--harp_frp_address`` - ``[optional]`` [host]:[port] of the HaRP FRP server, default host is same as HaRP host and port is 8782
+* ``--harp_frp_address`` - ``[optional]`` [host]:[port] of the HaRP FRP server, default host is same as HaRP host and
+  port is 8782
 * ``--harp_shared_key`` - ``[optional]`` HaRP shared key for secure communication between HaRP and AppAPI
-* ``--harp_docker_socket_port`` - ``[optional]`` 'remotePort' of the FRP client of the remote docker socket proxy. There is one included in the harp container so this can be skipped for default setups. (default: "24000")
-* ``--harp_exapp_direct`` - ``[optional]`` Flag for the advanced setups only. Disables the FRP tunnel between ExApps and HaRP.
+* ``--harp_docker_socket_port`` - ``[optional]`` 'remotePort' of the FRP client of the remote docker socket proxy. There
+  is one included in the harp container so this can be skipped for default setups. (default: "24000")
+* ``--harp_exapp_direct`` - ``[optional]`` Flag for the advanced setups only. Disables the FRP tunnel between ExApps and
+  HaRP.
 
 Usage Examples
 **************
 
-* Register a HaRP deploy daemon within the ``nextcloud`` docker network, with the ``appapi-harp`` container as the host and the ``appapi-harp:8782`` as the FRP server address. This can be paired with a HaRP container running in the same network.
+* Register a HaRP deploy daemon within the ``nextcloud`` docker network, with the ``appapi-harp`` container as the host
+  and the ``appapi-harp:8782`` as the FRP server address. This can be paired with a HaRP container running in the same
+  network.
 
 	.. code-block:: bash
 
 		occ app_api:daemon:register harp_proxy_docker "Harp Proxy (Docker)" "docker-install" "http" "appapi-harp:8780" "http://nextcloud.local" --net nextcloud --harp --harp_frp_address "appapi-harp:8782" --harp_shared_key "some_very_secure_password" --set-default --compute_device=cuda
 
-* Register a HaRP deploy daemon with the ``localhost`` as the host and the ``localhost:8782`` as the FRP server address. This can be paired with a HaRP container running in the host network mode or has exposed the ports ``8780`` and ``8782`` to the host.
+* Register a HaRP deploy daemon with the ``localhost`` as the host and the ``localhost:8782`` as the FRP server address.
+  This can be paired with a HaRP container running in the host network mode or has exposed the ports ``8780`` and
+  ``8782`` to the host.
 
 	.. code-block:: bash
 
 		app_api:daemon:register harp_proxy_host "Harp Proxy (Host)" "docker-install" "http" "localhost:8780" "http://nextcloud.local" --harp --harp_frp_address "localhost:8782" --harp_shared_key "some_very_secure_password" --set-default --compute_device=cuda
 
-* Register a manual install deploy daemon with HaRP support. This can be paired with a HaRP container running in the same network. The HaRP container need not have access to a docker socket or any other ports exposed to the host. It will not create docker containers of the ExApps but will only proxy the requests to the ExApp process manually launched by the user.
+* Register a manual install deploy daemon with HaRP support. This can be paired with a HaRP container running in the
+  same network. The HaRP container need not have access to a docker socket or any other ports exposed to the host. It
+  will not create docker containers of the ExApps but will only proxy the requests to the ExApp process manually
+  launched by the user.
 
 	.. note::
 		| The ExApp process should have a FRP Client (frpc) running in the same network as the HaRP container or should be able to connect to the ports exposed by the HaRP container.
@@ -67,7 +81,9 @@ Usage Examples
 
 		app_api:daemon:register manual_install_harp "Harp Manual Install" "manual-install" "http" "appapi-harp:8780" "http://nextcloud.local" --net nextcloud --harp --harp_frp_address "appapi-harp:8782" --harp_shared_key "some_very_secure_password"
 
-* Register a Docker Socket Proxy deploy daemon with the ``nextcloud-appapi-dsp:2375`` as the host and the ``nextcloud`` docker network. This can be paired with a Docker Socket Proxy container running in the same network with the default port ``2375``.
+* Register a Docker Socket Proxy deploy daemon with the ``nextcloud-appapi-dsp:2375`` as the host and the ``nextcloud``
+  docker network. This can be paired with a Docker Socket Proxy container running in the same network with the default
+  port ``2375``.
 
 	.. code-block:: bash
 
@@ -79,13 +95,17 @@ Usage Examples
 
 		app_api:daemon:register manual_install "Manual Install" "manual-install" "http" null "http://nextcloud.local"
 
-* Register a local docker deploy daemon with the ``/var/run/docker.sock`` as the socket and the host, and the ``nextcloud`` docker network. This does not need a Docker Socket Proxy container. The compute device used by this daemon is ``CPU``.
+* Register a local docker deploy daemon with the ``/var/run/docker.sock`` as the socket and the host, and the
+  ``nextcloud`` docker network. This does not need a Docker Socket Proxy container. The compute device used by this
+  daemon is ``CPU``.
 
 	.. code-block:: bash
 
 		app_api:daemon:register local_docker "Docker Local" "docker-install" "http" "/var/run/docker.sock" "http://nextcloud.local" --net=nextcloud
 
-* Register a local docker deploy daemon with the ``/var/run/docker.sock`` as the socket and the host, and the ``nextcloud`` docker network. This does not need a Docker Socket Proxy container. The compute device used by this daemon is ``CUDA`` (NVIDIA).
+* Register a local docker deploy daemon with the ``/var/run/docker.sock`` as the socket and the host, and the
+  ``nextcloud`` docker network. This does not need a Docker Socket Proxy container. The compute device used by this
+  daemon is ``CUDA`` (NVIDIA).
 
 	.. code-block:: bash
 

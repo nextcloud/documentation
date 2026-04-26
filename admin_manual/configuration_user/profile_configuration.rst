@@ -419,6 +419,7 @@ Allowed scope values:
 See also
 --------
 
-- :doc:`../configuration_files/file_sharing_configuration` — sharing and autocomplete settings that interact with profile visibility
+- :doc:`../configuration_files/file_sharing_configuration` — sharing and autocomplete settings that interact with
+  profile visibility
 - `User manual: Personal settings <https://docs.nextcloud.com/server/latest/user_manual/en/userpreferences.html>`_ — user-facing profile and personal info settings
 

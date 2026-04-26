@@ -15,7 +15,8 @@ can be accessed through::
 
 .. note:: To prevent XSS the following PHP **functions for printing are forbidden: echo, print() and <?=**. Instead use the **p()** function for printing your values. Should you require unescaped printing, **double check for XSS** and use: :php:func:`print_unescaped()`.
 
-Printing values is done by using the :php:func:`p()` function, printing HTML is done by using :php:func:`print_unescaped()`.
+Printing values is done by using the :php:func:`p()` function, printing HTML is done by using
+:php:func:`print_unescaped()`.
 
 :file:`templates/main.php`
 
@@ -35,7 +36,8 @@ Templates can also include other templates by using the **$this->inc('templateNa
 
   <?php print_unescaped($this->inc('sub.inc')); ?>
 
-The parent variables will also be available in the included templates, but should you require it, you can also pass new variables to it by using the second optional parameter as array for **$this->inc**.
+The parent variables will also be available in the included templates, but should you require it, you can also pass new
+variables to it by using the second optional parameter as array for **$this->inc**.
 
 :file:`templates/sub.inc.php`
 

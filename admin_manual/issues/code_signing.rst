@@ -53,7 +53,8 @@ Code signing is required for all applications on apps.nextcloud.com.
 Fixing invalid code integrity messages
 --------------------------------------
 
-A code integrity error message ("Some files have not passed the integrity check…") appears on your Nextcloud admin page under "Overview", which provides
+A code integrity error message ("Some files have not passed the integrity check…") appears on your Nextcloud admin page
+under "Overview", which provides
 the following options:
 
 1. Link to this documentation entry.

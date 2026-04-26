@@ -74,7 +74,8 @@ Provider removal
 
 Nextcloud keeps records about the enabled two-factor authentication providers of every user.
 If a provider is simply removed/:ref:`disabled <apps_commands_label>`,
-Nextcloud will still consider the provider active for the user at login and show a warning like *Could not load at least one of your enabled two-factor auth methods*.
+Nextcloud will still consider the provider active for the user at login and show a warning like *Could not load at least
+one of your enabled two-factor auth methods*.
 
 The associations of removed providers can be cleaned up via :ref:`occ <occ>`::
 

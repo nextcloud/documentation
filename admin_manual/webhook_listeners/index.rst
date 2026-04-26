@@ -147,7 +147,8 @@ The logs of the worker can be checked by attaching to the screen or tmux session
 Systemd service
 ^^^^^^^^^^^^^^^
 
-1. Create a systemd service file in ``/etc/systemd/system/nextcloud-webhook-worker@.service`` with the following content:
+1. Create a systemd service file in ``/etc/systemd/system/nextcloud-webhook-worker@.service`` with the following
+   content:
 
 .. code-block:: ini
 
@@ -164,7 +165,8 @@ Systemd service
    [Install]
    WantedBy=multi-user.target
 
-2. Create a shell script in ``/opt/nextcloud-webhook-worker/taskprocessing.sh`` with the following content and make sure to make it executable:
+2. Create a shell script in ``/opt/nextcloud-webhook-worker/taskprocessing.sh`` with the following content and make sure
+   to make it executable:
 
 .. code-block:: bash
 
@@ -199,7 +201,8 @@ The complete logs of the workers can be checked with (replace 1 with the worker 
 
    sudo journalctl -xeu nextcloud-webhook-worker@1.service -f
 
-It is recommended to restart this worker at least once a day to make sure code changes are effective and avoid memory leaks, in this example the service restarts every 60 seconds.
+It is recommended to restart this worker at least once a day to make sure code changes are effective and avoid memory
+leaks, in this example the service restarts every 60 seconds.
 
 Nextcloud Webhook Events
 ------------------------
@@ -345,7 +348,8 @@ Applies to:
 Where:
 
 - ``"source"`` is an object representing the original node, with ``"id"`` (integer) and ``"path"`` (string)
-- ``"target"`` is an object representing the resulting/copied/restored/renamed node, with ``"id"`` (integer) and ``"path"`` (string)
+- ``"target"`` is an object representing the resulting/copied/restored/renamed node, with ``"id"`` (integer) and
+  ``"path"`` (string)
 
 .. note::
 

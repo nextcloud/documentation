@@ -173,8 +173,10 @@ For the global rules and/or layout, you can check the dedicated :ref:`popover me
         </ul>
     </div>
 
-The menu is hidden by default and has to be triggered by adding the ``open`` class to the ``app-navigation-entry-menu`` div.
-In case of AngularJS the following small directive can be added to handle all the display and click logic out of the box:
+The menu is hidden by default and has to be triggered by adding the ``open`` class to the ``app-navigation-entry-menu``
+div.
+In case of AngularJS the following small directive can be added to handle all the display and click logic out of the
+box:
 
 .. code-block:: js
 
@@ -223,7 +225,8 @@ Do not change the alignment of the text. If you're using
 
     <li class="app-navigation-entry-utils-counter">1</li>
 
-The counter should be limited to 999 and turn to 999+ if any higher number is given. If AngularJS is used the following filter can be used to get the correct behavior:
+The counter should be limited to 999 and turn to 999+ if any higher number is given. If AngularJS is used the following
+filter can be used to get the correct behavior:
 
 .. code-block:: js
 
@@ -286,7 +289,8 @@ The same way we display the menu three-dot-icon button, you're allowed to use up
 Drag and drop
 -------------
 
-The class which should be applied to a first level element **li** that hosts or can host a second level is **drag-and-drop**.
+The class which should be applied to a first level element **li** that hosts or can host a second level is
+**drag-and-drop**.
 This will cause the hovered entry to slide down giving a visual hint that it can accept the dragged element.
 In case of jQuery UI's droppable feature, the **hoverClass** option should be set to the **drag-and-drop** class.
 
@@ -459,7 +463,8 @@ Various information
 -------------------
 
 * You can add the ``icon-loading-small`` class to any ``li`` element to set it in a `loading` state.
-* Every element as a ``min-height`` of 44px as that is the minimum recommended touch target. It also helps with clickability and separation on desktop environments.
+* Every element as a ``min-height`` of 44px as that is the minimum recommended touch target. It also helps with
+  clickability and separation on desktop environments.
 
 =========
 Settings
@@ -470,7 +475,8 @@ Introduction
 
 To create a settings area create a div with the id ``app-settings`` inside the ``app-navigation`` div.
 
-* The data attribute ``data-apps-slide-toggle`` slides up a target area using a jQuery selector and hides the area if the user clicks outside of it.
+* The data attribute ``data-apps-slide-toggle`` slides up a target area using a jQuery selector and hides the area if
+  the user clicks outside of it.
 * Max height of the settings area is 300px. Do **not** change that.
 * Keep it clear, organized and simple.
 

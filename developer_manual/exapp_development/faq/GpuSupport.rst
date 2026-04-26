@@ -6,7 +6,8 @@ How to enable GPU support for the Deploy daemon?
 
 To enable GPU support, you have to specify the GPU compute device when registering the Deploy daemon configuration.
 
-In this way, by default, AppAPI will create ExApp containers with request to the Docker Engine to attach all available GPU devices.
+In this way, by default, AppAPI will create ExApp containers with request to the Docker Engine to attach all available
+GPU devices.
 This also involves the specific ExApp supporting work with GPU internally
 and the necessary Docker runtime toolkits installed on the Deploy daemon host:
 

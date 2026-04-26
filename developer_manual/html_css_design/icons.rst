@@ -13,7 +13,8 @@ List of available icons
 .. deprecated:: 25
 
 The icons available in the core/img/ folder of the server are deprecated. You can use them at own risk.
-Due to a change of the way the list is produced now on the server it can no longer be automatically turned into documentation.
+Due to a change of the way the list is produced now on the server it can no longer be automatically turned into
+documentation.
 
 Please use `Material design icons`_ instead.
 

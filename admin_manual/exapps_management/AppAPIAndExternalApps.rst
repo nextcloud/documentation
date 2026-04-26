@@ -6,16 +6,19 @@ AppAPI and External Apps
 
 Previously, Nextcloud only supported applications written in the PHP programming language.
 In order to support a wider range of use cases,
-an ecosystem for **ExApps** (short for "External Apps") was introduced, allowing for the installation of apps as Docker containers.
+an ecosystem for **ExApps** (short for "External Apps") was introduced, allowing for the installation of apps as Docker
+containers.
 
-Most of our :doc:`Artificial Intelligence <../ai/index>` (AI) apps are developed as ExApps and thus may require some preparation of your Nextcloud instance before you can install them.
+Most of our :doc:`Artificial Intelligence <../ai/index>` (AI) apps are developed as ExApps and thus may require some
+preparation of your Nextcloud instance before you can install them.
 
 Installing AppAPI
 -----------------
 
 All ExApps require the `AppAPI <https://apps.nextcloud.com/apps/app_api>`_ Nextcloud app as a dependency.
 As of Nextcloud version 30.0.1, AppAPI is automatically installed by default.
-If AppAPI is not installed, you can still install it by simply navigating to the Apps management page in your Nextcloud instance and search for AppAPI from the Tools category.
+If AppAPI is not installed, you can still install it by simply navigating to the Apps management page in your Nextcloud
+instance and search for AppAPI from the Tools category.
 
 Setup deploy daemon
 -------------------
@@ -42,7 +45,8 @@ HaRP
 1. Setup a Docker container called `HaRP <https://github.com/nextcloud/HaRP?tab=readme-ov-file#how-to-install-it>`_ that proxies access to Docker and to the ExApps for your Nextcloud instance. Be mindful of changing the values of ``HP_SHARED_KEY`` and ``NC_INSTANCE_URL``.
 2. Go to AppAPI admin settings.
 3. Click on the "Register Daemon" button.
-4. | A filled form should appear. This default configuration ``HaRP Proxy (Host)`` should work for most setups. For Nextcloud AIO, use ``HaRP All-in-One``.
+4. | A filled form should appear. This default configuration ``HaRP Proxy (Host)`` should work for most setups. For
+   Nextcloud AIO, use ``HaRP All-in-One``.
    | If you are using Nextcloud in a custom docker network and would want the HaRP container to be limited to it, use the ``HaRP Proxy (Docker)`` option to have the fields pre-filled with the common options or change them manually.
    | Here, you should ensure the HaRP container itself is launched with the same network as your Nextcloud instance optionally with no ports exposed to the host in step 1, and the same docker network is mentioned in the ``Network`` field in the deploy config.
 5. Ensure the same shared key is used in the HaRP container and in the AppAPI settings.
@@ -51,8 +55,11 @@ HaRP
 8. Set up a location redirect in your Nextcloud's main proxy configuration to redirect requests to the HaRP container. Some examples for popular reverse proxies can be found in `Configuring Your Reverse Proxy <https://github.com/nextcloud/harp?tab=readme-ov-file#configuring-your-reverse-proxy>`_ in the HaRP readme.
 9. Test the whole setup with "Test deploy" in the 3-dots menu of the Deploy Daemon.
 
-This is suitable for local setups where the Nextcloud server and the ExApps are on the same machine or in the same docker network.
-The ExApps in this configuration or the ExApp server need not expose any ExApp related port (23000-23999) necessarily to the host, nor do they need to be reachable from the host. They should be able to reach the HaRP container at the FRP port and the Nextcloud instance.
+This is suitable for local setups where the Nextcloud server and the ExApps are on the same machine or in the same
+docker network.
+The ExApps in this configuration or the ExApp server need not expose any ExApp related port (23000-23999) necessarily to
+the host, nor do they need to be reachable from the host. They should be able to reach the HaRP container at the FRP
+port and the Nextcloud instance.
 For different/remote setups, see deployment configuration examples :doc:`here <./DeployConfigurations>`.
 
 .. note::
@@ -100,7 +107,8 @@ If successful, the ExApp will be displayed under the "Your apps" list.
 FAQ
 ---
 
-* I have two graphics cards (e.g. NVIDIA RTX 3060) with 8 GB of VRAM each. How can I run something which does not fit into one graphics card?
+* I have two graphics cards (e.g. NVIDIA RTX 3060) with 8 GB of VRAM each. How can I run something which does not fit
+  into one graphics card?
     * Distributing models across multiple GPUs is currently not supported. You will need a GPU that fits all of the model you are trying to use.
 * I have a graphics card that does not support CUDA - can I use it and how?
     * No, our AI apps require GPUs with CUDA support to function at this time.
@@ -118,7 +126,9 @@ Docker Socket Proxy vs HaRP
 | `FRP <https://github.com/fatedier/frp>`_ is used to create a tunnel between the ExApp and the HaRP container so there is no need for the ExApp containers to expose any ports to the host or to be reachable from the Nextcloud server.
 | The Nextcloud server can reach the ExApp containers through the HaRP container.
 
-HaRP has an additional benefit of being able to proxy requests coming from the Web interface or an API to the ExApp container without being proxied through the Nextcloud server, saving resources, improving performance and supporting additional protocols like WebSockets.
+HaRP has an additional benefit of being able to proxy requests coming from the Web interface or an API to the ExApp
+container without being proxied through the Nextcloud server, saving resources, improving performance and supporting
+additional protocols like WebSockets.
 
 HaRP is the recommended way to run ExApps, but if you are not able to use it, Docker Socket Proxy is still supported.
 

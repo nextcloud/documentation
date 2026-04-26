@@ -2,7 +2,9 @@
 Synchronizing with Thunderbird
 ==============================
 
-`Thunderbird <https://www.thunderbird.net>`_ is a feature-rich and mature mail client that can be turned into a full-fledged Personal Information Manager (PIM). Since version 102, it supports address book synchronization via CardDAV and automatic discovery of calendars and address books available on the server.
+`Thunderbird <https://www.thunderbird.net>`_ is a feature-rich and mature mail client that can be turned into a
+full-fledged Personal Information Manager (PIM). Since version 102, it supports address book synchronization via CardDAV
+and automatic discovery of calendars and address books available on the server.
 
 
 Recommended method
@@ -20,7 +22,8 @@ Contacts
 #. The previous window will be refreshed and ask you which address books you wish to sync.
 #. Choose and then click **Continue**.
 
-If you later want to add a new address book, you can redo all of those steps and only the books not already synchronized will be suggested.
+If you later want to add a new address book, you can redo all of those steps and only the books not already synchronized
+will be suggested.
 
 .. note:: If your account uses two-factor authentication, you need a :ref:`dedicated app password <managing_devices>` for login rather than your
    regular password.
@@ -28,7 +31,8 @@ If you later want to add a new address book, you can redo all of those steps and
 Calendars
 ~~~~~~~~~
 
-#. Go to the calendar view in Thunderbird and select the **New Calendar...** button at the bottom of the left side panel.
+#. Go to the calendar view in Thunderbird and select the **New Calendar...** button at the bottom of the left side
+   panel.
 #. Choose **On the network**:
 
    .. image:: ../images/new_calendar.png
@@ -59,6 +63,7 @@ Alternative: Using the CardBook add-on (Contacts only)
 
    .. image:: ../images/addressbook_name.png
 
-#. When you are finished, CardBook synchronizes your address books. You can always trigger a synchronization manually by clicking "Synchronize" in the top left corner of CardBook:
+#. When you are finished, CardBook synchronizes your address books. You can always trigger a synchronization manually by
+   clicking "Synchronize" in the top left corner of CardBook:
 
    .. image:: ../images/synchronize_cardbook.png

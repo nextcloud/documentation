@@ -4,11 +4,13 @@ Release Automation
 
 .. sectionauthor:: Benjamin Brahmer <info@b-brahmer.de>
 
-Automation is a great thing, it prevents mistakes and makes your life easier, which gives you more time to work on all those features you wanted to implement.
+Automation is a great thing, it prevents mistakes and makes your life easier, which gives you more time to work on all
+those features you wanted to implement.
 
 GitHub Actions
 --------------
-If your application's repository lives on GitHub, as many Nextcloud applications do, GitHub Actions is a great way to automate the release of your app from the git repository into the Nextcloud App Store.
+If your application's repository lives on GitHub, as many Nextcloud applications do, GitHub Actions is a great way to
+automate the release of your app from the git repository into the Nextcloud App Store.
 
 One easy way to get you started is to use https://github.com/R0Wi/nextcloud-appstore-push-action in your repository together with a few other actions. You can automatically build your app and publish it to the App Store. It supports pre-releases and code signing.
 To get started you create a new yaml file in the ``.github/workflows`` directory.
@@ -90,7 +92,8 @@ To get started you create a new yaml file in the ``.github/workflows`` directory
         - name: Delete crt and key from local storage
           run: rm -f ~/.nextcloud/certificates/*
 
-Make sure to check the used actions for useful updates, as they are pinned to a specific sha1 to prevent unnoticed harmful changes.
+Make sure to check the used actions for useful updates, as they are pinned to a specific sha1 to prevent unnoticed
+harmful changes.
 
 For this workflow to work we need to provide a few variables.
 
@@ -106,14 +109,18 @@ If your repository lives within the nextcloud organization you need to use an en
           environment: release
           runs-on: ubuntu-latest
 
-In this example we use the "release" environment, open the settings of your repository and open the "Environments" tab, add a new environment with the name "release", make sure to activate "Required reviewers" only add the people you trust, they will be able to approve a release.
+In this example we use the "release" environment, open the settings of your repository and open the "Environments" tab,
+add a new environment with the name "release", make sure to activate "Required reviewers" only add the people you trust,
+they will be able to approve a release.
 Save your rules and at the bottom add the following environment secrets.
 
 * ``APP_PRIVATE_KEY`` your apps private key
 * ``APP_PUBLIC_CRT`` your apps certificate, this one could be public but for easy usage we add it as a secret
 * ``APPSTORE_TOKEN`` you get this from the App Store as a registered developer https://apps.nextcloud.com/account/token
 
-If your app does not live in the Nextcloud organization you may also add the secrets above to the "Secrets" section but be careful everyone with write access to your repository will be able to create releases. Make also sure to delete the environment statement.
+If your app does not live in the Nextcloud organization you may also add the secrets above to the "Secrets" section but
+be careful everyone with write access to your repository will be able to create releases. Make also sure to delete the
+environment statement.
 
 If you don't use code signing for your app you can delete the following section in your yaml.
 
@@ -127,7 +134,8 @@ Also make sure to remove ``environment: release`` .
 
 Makefile changes for code signing
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-As your certificate and your private key now are stored in environment variables you need somehow convert them to a file.
+As your certificate and your private key now are stored in environment variables you need somehow convert them to a
+file.
 One example you may use is provided by the news app.
 
 .. code-block:: php
@@ -162,7 +170,8 @@ One example you may use is provided by the news app.
 
     echo "Done...\n";
 
-It's a very simple php script that takes an environment variable and a filepath and dumps whatever it finds in the variable into the file.
+It's a very simple php script that takes an environment variable and a filepath and dumps whatever it finds in the
+variable into the file.
 After storing that script somewhere in your repository, you can use it in your Makefile.
 
 .. code-block:: bash
@@ -197,7 +206,9 @@ The process
 ~~~~~~~~~~~
 
 1. Create a new release via GitHub, put whatever information you usually put.
-2. Decide if this should be a normal or a pre-release, pre-releases will be uploaded as nightly version to the App Store.
-3. When you are done, publish the release and wait a few minutes, you will see a request to approve the release, in Actions or your notifications.
+2. Decide if this should be a normal or a pre-release, pre-releases will be uploaded as nightly version to the App
+   Store.
+3. When you are done, publish the release and wait a few minutes, you will see a request to approve the release, in
+   Actions or your notifications.
 4. If everything worked you find a ``appname.tar.gz`` as an attachment of the release.
 5. Check the App Store for your newly released version, congratulations on your first automatically released app.

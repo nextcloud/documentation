@@ -2,7 +2,8 @@
 Migration from Collabora Online
 ===============================
 
-Nextcloud Office is based on Collabora Online so for enabling all Nextcloud Office functionality it would be enough to update to the most recent release. Nextcloud Office is available since CODE 21.11.
+Nextcloud Office is based on Collabora Online so for enabling all Nextcloud Office functionality it would be enough to
+update to the most recent release. Nextcloud Office is available since CODE 21.11.
 
 .. note::
     This upgrade guide is aimed for upgrading from CODE 6.4 to CODE 21.11.
@@ -10,7 +11,8 @@ Nextcloud Office is based on Collabora Online so for enabling all Nextcloud Offi
 Update the reverse proxy configuration
 **************************************
 
-Due to naming changes in the Collabora Online releases it may be required to adjust reverse proxy configurations that are already in use for previously existing setups.
+Due to naming changes in the Collabora Online releases it may be required to adjust reverse proxy configurations that
+are already in use for previously existing setups.
 
 - Paths with ``lool`` have been renamed to ``cool``
 - Paths with ``loleaflet`` have been renamed to ``browser``

@@ -92,7 +92,8 @@ During this step, the ExApp registers all the required and available APIs of the
 Possible errors:
 
 - ExApp did not respond to the enable request
-- ExApp failed to enable due to a failure in registering AppAPI Nextcloud AppFramework APIs (this should be visible both in the container logs and in the Nextcloud logs if there are any errors)
+- ExApp failed to enable due to a failure in registering AppAPI Nextcloud AppFramework APIs (this should be visible both
+  in the container logs and in the Nextcloud logs if there are any errors)
 
 
 Download Logs

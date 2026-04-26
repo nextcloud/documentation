@@ -7,7 +7,8 @@ is to use our `Docker Socket Proxy implementation <https://github.com/nextcloud/
 Nextcloud AppAPI DSP
 --------------------
 
-Nextcloud AppAPI DSP (Docker Socket Proxy) is a simple Docker container that provides a secure way to access the Docker Engine API and ExApps.
+Nextcloud AppAPI DSP (Docker Socket Proxy) is a simple Docker container that provides a secure way to access the Docker
+Engine API and ExApps.
 It is secured with haproxy Basic authentication.
 There are two parts of reverse proxy configuration:
 

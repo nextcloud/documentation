@@ -2,7 +2,8 @@
 Update channels
 ===============
 
-Whether you want the latest features, want to help with testing, or just want to wait until everything is perfectly ready to go, we’ve got options for you. 
+Whether you want the latest features, want to help with testing, or just want to wait until everything is perfectly
+ready to go, we’ve got options for you.
 
 The desktop client has 4 update channels: *Enterprise*, *Stable*, *Beta* and *Daily*. 
 

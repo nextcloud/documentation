@@ -2,9 +2,12 @@
 Contacts Menu
 =============
 
-Nextcloud shows a *Contacts menu* in the right corner of the header. This menu lists a user's contacts. These contact entries can be extended by apps.
+Nextcloud shows a *Contacts menu* in the right corner of the header. This menu lists a user's contacts. These contact
+entries can be extended by apps.
 
-Apps that extend the contacts menu implement an IProvider or IBulkProvider. The ``process`` method of IProvider is called for every entry show in the contacts menu. The ``process`` method of IBulkProvider is called for all entries at once. If it's cheaper to fetch data in one operation, use the IBulkProvider.
+Apps that extend the contacts menu implement an IProvider or IBulkProvider. The ``process`` method of IProvider is
+called for every entry show in the contacts menu. The ``process`` method of IBulkProvider is called for all entries at
+once. If it's cheaper to fetch data in one operation, use the IBulkProvider.
 
 .. code-block:: php
     :caption: lib/ContactsMenu/MyProvider.php
@@ -70,7 +73,8 @@ The ``IEntry`` objects offer getters to contact infos:
 Actions
 ^^^^^^^
 
-Providers can add actions to contact entries. Right now email and link actions are supported. These are created with the help of the ``IActionFactory``.
+Providers can add actions to contact entries. Right now email and link actions are supported. These are created with the
+help of the ``IActionFactory``.
 
 .. code-block:: php
     :caption: lib/ContactsMenu/LinkProvider.php
@@ -111,4 +115,5 @@ Providers can add actions to contact entries. Right now email and link actions a
 User status
 ^^^^^^^^^^^
 
-Providers can set a user status via ``IEntry::setStatus``. This mechanism is reserved for Nextcloud's user status. Don't use it.
+Providers can set a user status via ``IEntry::setStatus``. This mechanism is reserved for Nextcloud's user status. Don't
+use it.

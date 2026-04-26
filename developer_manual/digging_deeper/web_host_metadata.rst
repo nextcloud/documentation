@@ -4,7 +4,8 @@
 Web Host Metadata
 =================
 
-`RFC6415`_ defines how web hosts can expose their metadata through resources. Starting with Nextcloud 21, it's possible to register handlers for HTTP requests to the ``.well-known/*`` route.
+`RFC6415`_ defines how web hosts can expose their metadata through resources. Starting with Nextcloud 21, it's possible
+to register handlers for HTTP requests to the ``.well-known/*`` route.
 
 Writing a handler
 -----------------
@@ -27,7 +28,10 @@ A well known handler is a simple class that implements the ``\OCP\Http\WellKnown
 
     }
 
-The basic concept is that every handler will be called consecutively. A handler can react to the request and return a new response object or modify the one of the previous handler. The first handler will get a ``$previousResponse`` of null. The second handler gets whatever the first handler returned, so either ``null`` or an instance of ``\OCP\Http\WellKnown\IResponse``.
+The basic concept is that every handler will be called consecutively. A handler can react to the request and return a
+new response object or modify the one of the previous handler. The first handler will get a ``$previousResponse`` of
+null. The second handler gets whatever the first handler returned, so either ``null`` or an instance of
+``\OCP\Http\WellKnown\IResponse``.
 
 
 Example generic handler

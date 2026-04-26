@@ -28,7 +28,10 @@ purpose there are several events emitted that an app can act upon.
 * ``OCA\Files::loadAdditionalScripts`` (string): loaded on the files list page
 * ``OCA\Files_Sharing::loadAdditionalScripts`` (string): loaded on the public sharing page
 * ``OCA\Files_Sharing::loadAdditionalScripts::publicShareAuth`` (string): loaded on the public share authentication page
-* ``OCP\AppFramework\Http\TemplateResponse::EVENT_LOAD_ADDITIONAL_SCRIPTS`` (constant): loaded when a template response is finished
-* ``OCP\AppFramework\Http\TemplateResponse::EVENT_LOAD_ADDITIONAL_SCRIPTS_LOGGEDIN`` (constant): loaded when a template response is finished for a logged in user
+* ``OCP\AppFramework\Http\TemplateResponse::EVENT_LOAD_ADDITIONAL_SCRIPTS`` (constant): loaded when a template response
+  is finished
+* ``OCP\AppFramework\Http\TemplateResponse::EVENT_LOAD_ADDITIONAL_SCRIPTS_LOGGEDIN`` (constant): loaded when a template
+  response is finished for a logged in user
 
-You can subscribe listeners to these events in the :ref:`bootstrapping code<Bootstrapping>` of the app. See the :ref:`events documentation<Events>` for more details on the event dispatcher and available events.
+You can subscribe listeners to these events in the :ref:`bootstrapping code<Bootstrapping>` of the app. See the
+:ref:`events documentation<Events>` for more details on the event dispatcher and available events.

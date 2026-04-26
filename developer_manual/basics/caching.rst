@@ -11,7 +11,9 @@ Types of caches
 
 Nextcloud offers in-memory, local and distributed caches. The caching back-end (APCu, Redis, Memcached) is configurable.
 
-For single server setups, admins typically only configure one type of cache. Larger installations can have two types of cache. The Nextcloud API lets you pick a cache type. The following table tries to highlight the main advantages and disadvantages of each type.
+For single server setups, admins typically only configure one type of cache. Larger installations can have two types of
+cache. The Nextcloud API lets you pick a cache type. The following table tries to highlight the main advantages and
+disadvantages of each type.
 
 +------------------------+-------------------+--------------------+-------------------+
 |                        | In-memory cache   | Local cache        | Distributed cache |
@@ -23,7 +25,9 @@ For single server setups, admins typically only configure one type of cache. Lar
 | **Expiration**         | End of process    | TTL reached        | TTL reached       |
 +------------------------+-------------------+--------------------+-------------------+
 
-For scalability it should be preferred to use local caches. A local cache has to be populated on each application server, but avoids creating a bottleneck of too much traffic on the distributed cache. A distributed cache is most useful for data that *has to be synchronized* across the full Nextcloud cluster.
+For scalability it should be preferred to use local caches. A local cache has to be populated on each application
+server, but avoids creating a bottleneck of too much traffic on the distributed cache. A distributed cache is most
+useful for data that *has to be synchronized* across the full Nextcloud cluster.
 
 In-memory cache
 ---------------
@@ -60,7 +64,8 @@ The ``OCP\Cache\CappedMemoryCache`` class is an in-memory cache that can be used
     }
 
 
-A cache instance can also be built by the cache factory. This approach allows mocking the injected factory for finer control during :ref:`unit testing<testing-php>`:
+A cache instance can also be built by the cache factory. This approach allows mocking the injected factory for finer
+control during :ref:`unit testing<testing-php>`:
 
 .. code-block:: php
     :caption: lib/Service/PictureService.php

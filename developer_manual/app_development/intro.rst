@@ -20,7 +20,8 @@ Alternatively, if you would like to contribute to an existing app instead of cre
 
     cd /var/www/nextcloud/apps-extra
     
-You can then configure Nextcloud to run apps from this directory, by changing your `app_paths` system config in your `config.php`
+You can then configure Nextcloud to run apps from this directory, by changing your `app_paths` system config in your
+`config.php`
 
 .. code-block:: php
 

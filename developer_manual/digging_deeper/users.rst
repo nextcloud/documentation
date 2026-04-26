@@ -57,7 +57,8 @@ Creating a user is done by passing a username and password to the create method:
 Modifying users
 ---------------
 
-Users can be modified by getting a user by the userId or by a search pattern. The returned user objects can then be used to:
+Users can be modified by getting a user by the userId or by a search pattern. The returned user objects can then be used
+to:
 
 * Delete them
 * Set a new password
@@ -99,7 +100,8 @@ Users can be modified by getting a user by the userId or by a search pattern. Th
 User session information
 ------------------------
 
-To login, logout or getting the currently logged in user, the IUserSession service that can be :ref:`injected<dependency-injection>`.
+To login, logout or getting the currently logged in user, the IUserSession service that can be
+:ref:`injected<dependency-injection>`.
 
 .. code-block:: php
     :caption: lib/Service/UserService.php
@@ -186,7 +188,8 @@ User managers
 
 .. versionadded:: 27
 
-Nextcloud users can be defined as managers of other users. This is an informational property and has no influence on authorization. A user manager is not to confuse with admins or sub admins.
+Nextcloud users can be defined as managers of other users. This is an informational property and has no influence on
+authorization. A user manager is not to confuse with admins or sub admins.
 
 .. code-block:: php
     :caption: lib/Service/UserService.php

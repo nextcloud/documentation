@@ -94,7 +94,8 @@ For more information about app bootstrapping, see the :ref:`application-php` sec
 Sending the CSRF token
 ----------------------
 
-If any other JavaScript request library than jQuery is being used, the requests need to send the CSRF token as an HTTP header named **requesttoken**. The token is available in the global variable **OC.requestToken**.
+If any other JavaScript request library than jQuery is being used, the requests need to send the CSRF token as an HTTP
+header named **requesttoken**. The token is available in the global variable **OC.requestToken**.
 
 For AngularJS the following lines would need to be added:
 

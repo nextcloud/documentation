@@ -17,8 +17,10 @@ DaemonConfig registration
 -------------------------
 
 The first step is to register the DaemonConfig, where your ExApps will be deployed.
-Before that, you will need to configure your Docker socket to be accessible by the Nextcloud instance and webserver user.
-If you use the remote Docker Engine API, you will need to expose it so that it is accessible by the Nextcloud instance and import certificates.
+Before that, you will need to configure your Docker socket to be accessible by the Nextcloud instance and webserver
+user.
+If you use the remote Docker Engine API, you will need to expose it so that it is accessible by the Nextcloud instance
+and import certificates.
 
 .. note::
 	For now, only the Docker daemon ``accepts-deploy-id: docker-install`` is supported.
@@ -93,7 +95,8 @@ For development purposes, you can install the ExApp manually.
 There is a ``manual-install`` DeployConfig type, which can be used in case of development.
 To register an ExApp with it, you need to provide the app info as a JSON string or a path to the app's info.xml file.
 
-For all examples and applications we release, we usually add the ``manual_install`` command in it's Makefile for easier development.
+For all examples and applications we release, we usually add the ``manual_install`` command in it's Makefile for easier
+development.
 
 .. code-block:: bash
 

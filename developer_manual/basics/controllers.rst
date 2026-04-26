@@ -4,7 +4,8 @@ Controllers
 
 .. sectionauthor:: Bernhard Posselt <dev@bernhard-posselt.com>
 
-Controllers are used to connect :doc:`routes <routing>` with app logic. Think of it as callbacks that are executed once a request has come in. Controllers are defined inside the **lib/Controller/** directory.
+Controllers are used to connect :doc:`routes <routing>` with app logic. Think of it as callbacks that are executed once
+a request has come in. Controllers are defined inside the **lib/Controller/** directory.
 
 To create a controller, simply extend the Controller class and create a method that should be executed on a request:
 
@@ -51,7 +52,9 @@ This name is processed in the following way:
     AuthorApiController
     someMethod
 
-* Now retrieve the service listed under **AuthorApiController** from the container, look up the parameters of the **someMethod** method in the request, cast them if there are PHPDoc type annotations and execute the **someMethod** method on the controller with those parameters.
+* Now retrieve the service listed under **AuthorApiController** from the container, look up the parameters of the
+  **someMethod** method in the request, cast them if there are PHPDoc type annotations and execute the **someMethod**
+  method on the controller with those parameters.
 
 Getting request parameters
 --------------------------
@@ -221,7 +224,10 @@ Reading and writing session variables
 
 To set, get or modify session variables, the ISession object has to be injected into the controller.
 
-Nextcloud will read existing session data at the beginning of the request lifecycle and close the session afterwards. This means that in order to write to the session, the session has to be opened first. This is done implicitly when calling the set method, but would close immediately afterwards. To prevent this, the session has to be explicitly opened by calling the reopen method.
+Nextcloud will read existing session data at the beginning of the request lifecycle and close the session afterwards.
+This means that in order to write to the session, the session has to be opened first. This is done implicitly when
+calling the set method, but would close immediately afterwards. To prevent this, the session has to be explicitly opened
+by calling the reopen method.
 
 Alternatively, you can use the ``#[UseSession]`` attribute to automatically open and close the session for you.
 
@@ -254,7 +260,11 @@ Alternatively, you can use the ``#[UseSession]`` attribute to automatically open
         }
 
 
-In case the session may be read and written by concurrent requests of your application, keeping the session open during your controller method execution may be required to ensure that the session is locked and no other request can write to the session at the same time. When reopening the session, the session data will also get updated with the latest changes from other requests. Using the annotation will keep the session lock for the whole duration of the controller method execution.
+In case the session may be read and written by concurrent requests of your application, keeping the session open during
+your controller method execution may be required to ensure that the session is locked and no other request can write to
+the session at the same time. When reopening the session, the session data will also get updated with the latest changes
+from other requests. Using the annotation will keep the session lock for the whole duration of the controller method
+execution.
 
 For additional information on how session locking works in PHP see the article about `PHP Session Locking: How To Prevent Sessions Blocking in PHP requests <https://ma.ttias.be/php-session-locking-prevent-sessions-blocking-in-requests/>`_.
 
@@ -342,7 +352,8 @@ Similar to how every controller receives a request object, every controller meth
 This can be in the form of a Response subclass or in the form of a value that can be handled by a registered responder.
 
 There are different kinds of responses available, like HTML-based responses, data responses, or other.
-The app decides of which kind the response is, by returning an appropriate ``Response`` object in the corresponding controller method.
+The app decides of which kind the response is, by returning an appropriate ``Response`` object in the corresponding
+controller method.
 The following sections give an overview over the various kinds and how to implement them.
 
 .. _controller_html_responses:
@@ -352,8 +363,10 @@ HTML-based Responses
 
 HTML pages are typically served using template responses.
 This is typically used as a starting point to load the website.
-This code linked by the template is by default encapsulated by the server to provide some common styling (e.g. the header row).
-The code then uses JavaScript to load further components (see :ref:`Frontend building in Vue<ApplicationJs>`) and the actual data.
+This code linked by the template is by default encapsulated by the server to provide some common styling (e.g. the
+header row).
+The code then uses JavaScript to load further components (see :ref:`Frontend building in Vue<ApplicationJs>`) and the
+actual data.
 This section only focuses on the actual HTML content, not the data to fill into the dynamic pages.
 
 .. _controller_template:
@@ -361,7 +374,8 @@ This section only focuses on the actual HTML content, not the data to fill into 
 Templates
 ^^^^^^^^^
 
-A :doc:`template <front-end/templates>` can be rendered by returning a TemplateResponse. A TemplateResponse takes the following parameters:
+A :doc:`template <front-end/templates>` can be rendered by returning a TemplateResponse. A TemplateResponse takes the
+following parameters:
 
 * **appName**: tells the template engine in which app the template should be located
 * **templateName**: the name of the template inside the templates/ folder without the .php extension
@@ -373,7 +387,8 @@ A :doc:`template <front-end/templates>` can be rendered by returning a TemplateR
 
     $_['key']
 
-* **renderAs**: defaults to *user*, tells Nextcloud if it should include it in the web interface, or in case *blank* is passed solely render the template
+* **renderAs**: defaults to *user*, tells Nextcloud if it should include it in the web interface, or in case *blank* is
+  passed solely render the template
 
 .. code-block:: php
 
@@ -395,7 +410,8 @@ A :doc:`template <front-end/templates>` can be rendered by returning a TemplateR
 
 Showing a template is the only exception to the rule to :ref:`not disable CSRF checks <csrf_introduction>`:
 The user might type the URL directly (or use a browser bookmark or similar) to navigate to a HTML template.
-Therefore, usage of the ``#[NoCSRFRequired]`` attribute (see :ref:`below<controller_authentication>`) is acceptable in this context.
+Therefore, usage of the ``#[NoCSRFRequired]`` attribute (see :ref:`below<controller_authentication>`) is acceptable in
+this context.
 
 Public page templates
 ^^^^^^^^^^^^^^^^^^^^^
@@ -438,10 +454,13 @@ A ``OCP\\AppFramework\\Http\\Template\\SimpleMenuAction`` will be a link with an
 developers can implement their own types of menu renderings by adding a custom
 class implementing the ``OCP\\AppFramework\\Http\\Template\\IMenuAction`` interface.
 
-As the public template is also some HTML template, the same argumentation as for :ref:`regular templates<controller_template>` regarding the CSRF checks hold true:
+As the public template is also some HTML template, the same argumentation as for :ref:`regular
+templates<controller_template>` regarding the CSRF checks hold true:
 The usage of ``#[NoCSRFRequired]`` for public pages is considered acceptable for some pages:
-Each page that the user should be able to directly access (by typing/pasting the URL in the browser or clicking on a link in a mail) should have this attribute set.
-For multi-page forms in the second and later stages, this should **not** be set as the user should follow the series of pages.
+Each page that the user should be able to directly access (by typing/pasting the URL in the browser or clicking on a
+link in a mail) should have this attribute set.
+For multi-page forms in the second and later stages, this should **not** be set as the user should follow the series of
+pages.
 
 Data-based responses
 --------------------
@@ -457,7 +476,8 @@ The user only indirectly requested the data by user interaction with the fronten
 OCS
 ^^^
 
-In order to simplify exchange of data between the Nextcloud backend and any client (be it the web frontend or whatever else), the OCS API has been introduced.
+In order to simplify exchange of data between the Nextcloud backend and any client (be it the web frontend or whatever
+else), the OCS API has been introduced.
 Here, JSON and XML responders have been prepared and are installed without additional effort.
 
 .. note::
@@ -465,7 +485,8 @@ Here, JSON and XML responders have been prepared and are installed without addit
     Unless you have a clear use-case, it is advised to use OCS over pure REST.
     A more detailed description can be found in :ref:`ocs-vs-rest`.
 
-To use OCS in your API you can use the **OCP\\AppFramework\\OCSController** base class and return your data in the form of a **DataResponse** in the following way:
+To use OCS in your API you can use the **OCP\\AppFramework\\OCSController** base class and return your data in the form
+of a **DataResponse** in the following way:
 
 .. code-block:: php
 
@@ -487,16 +508,20 @@ To use OCS in your API you can use the **OCP\\AppFramework\\OCSController** base
 
     }
 
-For ``OCSController`` classes and their methods, :ref:`responders <controller-responders>` can be registered as with any other ``Controller`` method.
+For ``OCSController`` classes and their methods, :ref:`responders <controller-responders>` can be registered as with any
+other ``Controller`` method.
 The ``OCSController`` class have however automatically two responders pre-installed:
-Both JSON (``application/json``) and XML (``text/xml``) are generated on-the-fly depending on the request by the browser/user.
-To select the output format, the ``?format=`` query parameter or the ``Accept`` header of the request work out of the box, no intervention is required.
+Both JSON (``application/json``) and XML (``text/xml``) are generated on-the-fly depending on the request by the
+browser/user.
+To select the output format, the ``?format=`` query parameter or the ``Accept`` header of the request work out of the
+box, no intervention is required.
 It is advised to prefer the header generally, as this is the more standardized way.
 
 To make routing work for OCS, the route must be registered in the core.
 This can be done in two ways:
 You can add an attribute `#[ApiRoute]` to the controller method.
-Alternatively, you can add :ref:`a separate 'ocs' entry<routes_ocs>` to the routing table in ``appinfo/routes.php`` of your app.
+Alternatively, you can add :ref:`a separate 'ocs' entry<routes_ocs>` to the routing table in ``appinfo/routes.php`` of
+your app.
 Inside these, there are the same information as there are for normal routes.
 
 .. code-block:: php
@@ -562,7 +587,8 @@ Because returning JSON is such a common task, there's even a shorter way to do t
 
     }
 
-Why does this work? Because the dispatcher sees that the controller did not return a subclass of a Response and asks the controller to turn the value into a Response. That's where responders come in.
+Why does this work? Because the dispatcher sees that the controller did not return a subclass of a Response and asks the
+controller to turn the value into a Response. That's where responders come in.
 
 .. deprecated:: 30
 
@@ -574,7 +600,8 @@ Handling errors
 
 Sometimes a request should fail, for instance if an author with id 1 is requested but does not exist. In that case use an appropriate `HTTP error code <https://en.wikipedia.org/wiki/List_of_HTTP_status_codes#4xx_Client_Error>`_ to signal the client that an error occurred.
 
-Each response subclass has access to the **setStatus** method which lets you set an HTTP status code. To return a JSONResponse signaling that the author with id 1 has not been found, use the following code:
+Each response subclass has access to the **setStatus** method which lets you set an HTTP status code. To return a
+JSONResponse signaling that the author with id 1 has not been found, use the following code:
 
 .. code-block:: php
 
@@ -661,7 +688,8 @@ By default there is only a responder for JSON but more can be added easily:
 
 .. note:: The above example would only return XML if the **format** parameter was *xml*. If you want to return an XMLResponse regardless of the format parameter, extend the Response class and return a new instance of it from the controller method instead.
 
-Because returning values works fine in case of a success but not in case of failure that requires a custom HTTP error code, you can always wrap the value in a **DataResponse**. This works for both normal responses and error responses.
+Because returning values works fine in case of a success but not in case of failure that requires a custom HTTP error
+code, you can always wrap the value in a **DataResponse**. This works for both normal responses and error responses.
 
 .. code-block:: php
 
@@ -738,7 +766,8 @@ A file download can be triggered by returning a DownloadResponse:
 Creating custom responses
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-If no premade Response fits the needed use case, it is possible to extend the Response base class and custom Response. The only thing that needs to be implemented is the **render** method which returns the result as string.
+If no premade Response fits the needed use case, it is possible to extend the Response base class and custom Response.
+The only thing that needs to be implemented is the **render** method which returns the result as string.
 
 Creating a custom XMLResponse class could look like this:
 
@@ -769,7 +798,9 @@ Creating a custom XMLResponse class could look like this:
 Streamed and lazily rendered responses
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-By default all responses are rendered at once and sent as a string through middleware. In certain cases this is not a desirable behavior, for instance if you want to stream a file in order to save memory. To do that use the now available **OCP\\AppFramework\\Http\\StreamResponse** class:
+By default all responses are rendered at once and sent as a string through middleware. In certain cases this is not a
+desirable behavior, for instance if you want to stream a file in order to save memory. To do that use the now available
+**OCP\\AppFramework\\Http\\StreamResponse** class:
 
 .. code-block:: php
 
@@ -787,7 +818,8 @@ By default all responses are rendered at once and sent as a string through middl
 
     }
 
-If you want to use a custom, lazily rendered response simply implement the interface **OCP\\AppFramework\\Http\\ICallbackResponse** for your response:
+If you want to use a custom, lazily rendered response simply implement the interface
+**OCP\\AppFramework\\Http\\ICallbackResponse** for your response:
 
 .. code-block:: php
 
@@ -831,14 +863,17 @@ By default every controller method enforces the maximum security, which is:
 Loosening the default restrictions
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Most of the time though it makes sense to also allow normal users to access the page and the ``PageController->index()`` method should not check the CSRF token because it has not yet been sent to the client and because of that can't work.
+Most of the time though it makes sense to also allow normal users to access the page and the ``PageController->index()``
+method should not check the CSRF token because it has not yet been sent to the client and because of that can't work.
 
 To turn off checks the following *Attributes* can be added before the controller:
 
 * ``#[NoAdminRequired]``: Also users that are not admins can access the page
 * ``#[PublicPage]``: Everyone can access the page without having to log in
-* ``#[NoTwoFactorRequired]``: A user can access the page before the two-factor challenge has been passed (use this wisely and only in two-factor auth apps, e.g. to allow setup during login)
-* ``#[NoCSRFRequired]``: Don't check the CSRF token (use this wisely since you might create a security hole; to understand what it does see :ref:`CSRF in the security section <csrf_introduction>`)
+* ``#[NoTwoFactorRequired]``: A user can access the page before the two-factor challenge has been passed (use this
+  wisely and only in two-factor auth apps, e.g. to allow setup during login)
+* ``#[NoCSRFRequired]``: Don't check the CSRF token (use this wisely since you might create a security hole; to
+  understand what it does see :ref:`CSRF in the security section <csrf_introduction>`)
 
 .. note::
 
@@ -857,7 +892,8 @@ Showing an HTML page by the user
 A typical app needs an ``index.html`` page to show all content within.
 This page should be visible by all users in the instance.
 Therefore, you need to loosen the restriction from admins only (``#[NoAdminRequired]``).
-Additionally, as the user might not have a CSRF checker cookie set yet, the CSRF checks should be disabled (which is fine as this is a template response).
+Additionally, as the user might not have a CSRF checker cookie set yet, the CSRF checks should be disabled (which is
+fine as this is a template response).
 
 .. code-block:: php
 
@@ -879,7 +915,8 @@ Additionally, as the user might not have a CSRF checker cookie set yet, the CSRF
 
     }
 
-If the page should only be visible to the admin, you can keep the restrictive default by omitting the attribute ``#[NoAdminRequired]``.
+If the page should only be visible to the admin, you can keep the restrictive default by omitting the attribute
+``#[NoAdminRequired]``.
 
 Getting data from the backend using AJAX requests
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -944,20 +981,26 @@ A controller method that turns off all checks would look like this:
 Rate limiting
 ^^^^^^^^^^^^^
 
-Nextcloud supports rate limiting on a controller method basis and in a :ref:`programmatic way<programmatic-rate-limiting>`. By default controller methods are not rate limited. Rate limiting should be used on expensive or security sensitive functions (e.g. password resets) to increase the overall security of your application.
+Nextcloud supports rate limiting on a controller method basis and in a :ref:`programmatic
+way<programmatic-rate-limiting>`. By default controller methods are not rate limited. Rate limiting should be used on
+expensive or security sensitive functions (e.g. password resets) to increase the overall security of your application.
 
-The native rate limiting will return a 429 status code to clients when the limit is reached and a default Nextcloud error page. When implementing rate limiting in your application, you should thus consider handling error situations where a 429 is returned by Nextcloud.
+The native rate limiting will return a 429 status code to clients when the limit is reached and a default Nextcloud
+error page. When implementing rate limiting in your application, you should thus consider handling error situations
+where a 429 is returned by Nextcloud.
 
 To enable rate limiting the following *Attributes* can be added to the controller:
 
-* ``#[UserRateLimit(limit: int, period: int)]``: The rate limiting that is applied to logged-in users. If not specified Nextcloud will fallback to ``AnonRateLimit`` if available.
+* ``#[UserRateLimit(limit: int, period: int)]``: The rate limiting that is applied to logged-in users. If not specified
+  Nextcloud will fallback to ``AnonRateLimit`` if available.
 * ``#[AnonRateLimit(limit: int, period: int)]``: The rate limiting that is applied to guests.
 
 .. note::
 
     The attributes are only available in Nextcloud 27 or later. In older versions the ``@UserRateThrottle(limit=int, period=int)`` and ``@AnonRateThrottle(limit=int, period=int)`` annotation can be used. If both are present, the attribute will be considered first.
 
-A controller method that would allow five requests for logged-in users and one request for anonymous users within the last 100 seconds would look as following:
+A controller method that would allow five requests for logged-in users and one request for anonymous users within the
+last 100 seconds would look as following:
 
 .. code-block:: php
     :emphasize-lines: 14-15
@@ -985,19 +1028,26 @@ A controller method that would allow five requests for logged-in users and one r
 Brute-force protection
 ^^^^^^^^^^^^^^^^^^^^^^
 
-Nextcloud supports brute-force protection on an action basis. By default controller methods are not protected. Brute-force protection should be used on security sensitive functions (e.g. login attempts) to increase the overall security of your application.
+Nextcloud supports brute-force protection on an action basis. By default controller methods are not protected.
+Brute-force protection should be used on security sensitive functions (e.g. login attempts) to increase the overall
+security of your application.
 
-The native brute-force protection will slow down requests if too many violations have been found. This slow down will be applied to all requests against a brute-force protected controller with the same action from the affected IP.
+The native brute-force protection will slow down requests if too many violations have been found. This slow down will be
+applied to all requests against a brute-force protected controller with the same action from the affected IP.
 
 To enable brute force protection the following *Attribute* can be added to the controller:
 
-* ``#[BruteForceProtection(action: 'string')]``: "string" is the name of the action. Such as "login" or "reset". Brute-force attempts are on a per-action basis; this means if a violation for the "login" action is triggered, other actions such as "reset" or "foobar" are not affected.
+* ``#[BruteForceProtection(action: 'string')]``: "string" is the name of the action. Such as "login" or "reset".
+  Brute-force attempts are on a per-action basis; this means if a violation for the "login" action is triggered, other
+  actions such as "reset" or "foobar" are not affected.
 
 .. note::
 
     The attribute is only available in Nextcloud 27 or later. In older versions the ``@BruteForceProtection(action=string)`` annotation can be used, but that does not allow multiple assignments to a single controller method.
 
-Then the **throttle()** method has to be called on the response in case of a violation. Doing so will increase the throttle counter and make following requests slower, until a slowness of roughly 30 seconds is reached and the controller returns a ``429 Too Many Requests`` status without further processing the request.
+Then the **throttle()** method has to be called on the response in case of a violation. Doing so will increase the
+throttle counter and make following requests slower, until a slowness of roughly 30 seconds is reached and the
+controller returns a ``429 Too Many Requests`` status without further processing the request.
 
 A controller method that would implement brute-force protection with an action of "foobar" would look as following:
 
@@ -1027,7 +1077,10 @@ A controller method that would implement brute-force protection with an action o
         }
     }
 
-A controller can also have multiple factors to brute force against. In this case you can specify multiple attributes and then in the throttle you specify the action which was violated. This is especially useful when a secret, in the sample below token, could be guessed on multiple endpoints e.g. a share token on the API level, preview endpoint, frontend controller, etc. while another secret (password), is specific to this one controller method.
+A controller can also have multiple factors to brute force against. In this case you can specify multiple attributes and
+then in the throttle you specify the action which was violated. This is especially useful when a secret, in the sample
+below token, could be guessed on multiple endpoints e.g. a share token on the API level, preview endpoint, frontend
+controller, etc. while another secret (password), is specific to this one controller method.
 
 .. code-block:: php
     :emphasize-lines: 11-12,16,20
@@ -1061,11 +1114,13 @@ Modifying the content security policy
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 By default Nextcloud disables all resources which are not served on the same domain, forbids cross domain requests and disables inline CSS and JavaScript by setting a `Content Security Policy <https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy>`_.
-However if an app relies on third-party media or other features which are forbidden by the current policy the policy can be relaxed.
+However if an app relies on third-party media or other features which are forbidden by the current policy the policy can
+be relaxed.
 
 .. note:: Double check your content and edge cases before you relax the policy! Also read the `documentation provided by MDN <https://developer.mozilla.org/en-US/docs/Web/Security/CSP/Introducing_Content_Security_Policy>`_
 
-To relax the policy pass an instance of the ContentSecurityPolicy class to your response. The methods on the class can be chained.
+To relax the policy pass an instance of the ContentSecurityPolicy class to your response. The methods on the class can
+be chained.
 
 The following methods turn off security features by passing in **true** as the **$isAllowed** parameter
 

@@ -110,7 +110,8 @@ manage federated cloud shares:
 * Check ``Set default expiration date`` to require an expiration date on link 
   shares.
 * Check ``Allow public uploads`` to allow two-way file sharing.
-* If you encounter timeouts for downloading or uploading large files, you can use the option ``davstorage.request_timeout`` in your ``config.php`` to increase the timeout. The default value is 30 seconds.
+* If you encounter timeouts for downloading or uploading large files, you can use the option
+  ``davstorage.request_timeout`` in your ``config.php`` to increase the timeout. The default value is 30 seconds.
 
 Your Apache Web server must have ``mod_rewrite`` enabled, and you must have 
 ``trusted_domains`` correctly configured in ``config.php`` to allow external 
@@ -139,4 +140,5 @@ This can be controlled with a ``occ`` command:
 
     occ config:app:set --value false --type boolean files_sharing show_federated_shares_as_internal
 
-Set the value to ``true`` to display federated shares mixed with internal shares, or ``false`` to keep them in a separate section (default).
+Set the value to ``true`` to display federated shares mixed with internal shares, or ``false`` to keep them in a
+separate section (default).

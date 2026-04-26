@@ -9,8 +9,10 @@ available in the `taskprocessing` namespace.
 
 All commands listed here accept an `--output` parameter that can be set to `plain`, `json` or `json_pretty`.
 
-Tasks are retained in the database for 6 months. Note, however, that there is no strict write-only guarantee for these logs.
-This means Nextcloud will not change the task logs in the database once the task has ended, but any administrator with database access
+Tasks are retained in the database for 6 months. Note, however, that there is no strict write-only guarantee for these
+logs.
+This means Nextcloud will not change the task logs in the database once the task has ended, but any administrator with
+database access
 has the power to change them.
 
 Get a task by id

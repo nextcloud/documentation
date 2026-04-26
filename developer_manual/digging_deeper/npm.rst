@@ -63,7 +63,8 @@ This command should be added to ``package.json`` as ``dev``  and ``watch`` scrip
     }
   }
 
-The development build is invoked with ``npm run dev`` or if you want to leave the process running and update on every change made to the source files, ``npm run watch``.
+The development build is invoked with ``npm run dev`` or if you want to leave the process running and update on every
+change made to the source files, ``npm run watch``.
 
 npm test
 --------

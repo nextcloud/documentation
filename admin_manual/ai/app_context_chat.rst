@@ -9,11 +9,15 @@ Context Chat is an :ref:`assistant<ai-app-assistant>` feature that is implemente
  * the ``context_chat`` app, written purely in PHP
  * the ``context_chat_backend`` ExternalApp written in Python
 
-Together they provide the ContextChat *text processing* and *search* tasks accessible via the :ref:`Nextcloud Assistant app<ai-app-assistant>`.
+Together they provide the ContextChat *text processing* and *search* tasks accessible via the :ref:`Nextcloud Assistant
+app<ai-app-assistant>`.
 
-The ``context_chat`` and ``context_chat_backend`` apps will use the configured text-to-text task processing provider, which is required on a fresh install. It can be configured to run open source models entirely on-premises, see the list of providers :ref:`here <tp-consumer-apps>` in the "Backend apps" section.
+The ``context_chat`` and ``context_chat_backend`` apps will use the configured text-to-text task processing provider,
+which is required on a fresh install. It can be configured to run open source models entirely on-premises, see the list
+of providers :ref:`here <tp-consumer-apps>` in the "Backend apps" section.
 
-This app supports input and output in the same languages that the currently configured text-to-text task processing provider supports.
+This app supports input and output in the same languages that the currently configured text-to-text task processing
+provider supports.
 
 Requirements
 ------------
@@ -42,7 +46,9 @@ Requirements
 Space usage
 ~~~~~~~~~~~
 
-This app employs a bundled DB with Vector support called `PostgreSQL <https://www.postgresql.org/>`_. All the users' textual data is duplicated, chunked and stored on disk in this vector DB along with semantic embedding vectors for the content.
+This app employs a bundled DB with Vector support called `PostgreSQL <https://www.postgresql.org/>`_. All the users'
+textual data is duplicated, chunked and stored on disk in this vector DB along with semantic embedding vectors for the
+content.
 
 Installation
 ------------
@@ -61,11 +67,15 @@ Installation
 
    occ app:enable context_chat
 
-5. Install a text-to-text provider (text generation provider) via the "Apps" page in Nextcloud. A list of providers can be found :ref:`here <tp-consumer-apps>` in the "Backend apps" section.
+5. Install a text-to-text provider (text generation provider) via the "Apps" page in Nextcloud. A list of providers can
+   be found :ref:`here <tp-consumer-apps>` in the "Backend apps" section.
 
-6. Optionally but recommended, setup background workers for faster pickup of tasks. See :ref:`the relevant section in AI Overview<ai-overview_improve-ai-task-pickup-speed>` for more information.
+6. Optionally but recommended, setup background workers for faster pickup of tasks. See :ref:`the relevant section in AI
+   Overview<ai-overview_improve-ai-task-pickup-speed>` for more information.
 
-**Note**: Both apps need to be installed and both major version and minor version of the two apps must match for the functionality to work (ie. "v1.3.4" and "v1.3.1"; but not "v1.3.4" and "v2.1.6"; and not "v1.3.4" and "v1.4.5"). Keep this in mind when updating.
+**Note**: Both apps need to be installed and both major version and minor version of the two apps must match for the
+functionality to work (ie. "v1.3.4" and "v1.3.1"; but not "v1.3.4" and "v2.1.6"; and not "v1.3.4" and "v1.4.5"). Keep
+this in mind when updating.
 
 
 Initial loading of data
@@ -77,7 +87,8 @@ Auto-indexing
 | Context chat will automatically load user data into the Vector DB using asynchronous background jobs.
 | The initial loading of data can take a long time depending on the number of files and their size.
 
-The indexing jobs are set up to run during the Nextcloud instance's maintenance window (typically during the night) only. If you have not set a maintenance window, indexing will run 24/7.
+The indexing jobs are set up to run during the Nextcloud instance's maintenance window (typically during the night)
+only. If you have not set a maintenance window, indexing will run 24/7.
 
 | You can set up a separate cron job to run every 30 minutes for Context Chat to avoid slowing down normal background job operation on larger instances.
 | The following command can bypass the maintenance window so it can either be set to run during the day even with a maintenance window set, or it can be set to run during the weekends 24/7 to speed up the indexing process.
@@ -97,14 +108,16 @@ Synchronous indexing
 
    occ context_chat:scan <user_id>
 
-**Note**: The synchronous command could take several days to complete. On larger systems we thus recommend to use auto-indexing.
+**Note**: The synchronous command could take several days to complete. On larger systems we thus recommend to use
+auto-indexing.
 
 Scaling
 -------
 
 Listed below are the major parts of the system that can be scaled independently to improve performance:
 
-1. The text-to-text task processing provider (from among the list of providers :ref:`here <tp-consumer-apps>` in the "Backend apps" section)
+1. The text-to-text task processing provider (from among the list of providers :ref:`here <tp-consumer-apps>` in the
+   "Backend apps" section)
 
    The text-to-text task processing provider can be scaled by using a hosted service using the `OpenAI and LocalAI integration (via OpenAI API) <https://apps.nextcloud.com/apps/integration_openai>`_ like OpenAI or by hosting your own model on powerful hardware.
 
@@ -122,7 +135,8 @@ One part of the system that cannot be scaled yet is the parsing of the documents
 This is currently done in a single instance of the ``context_chat_backend`` ExApp.
 It is a CPU-bound task so having a powerful CPU will help speed up the parsing process.
 
-If ``context_chat_backend`` is already deployed, you can change these environment variables by redeploying it with the new values.
+If ``context_chat_backend`` is already deployed, you can change these environment variables by redeploying it with the
+new values.
 
 1. Go to Apps page -> search for "Context Chat Backend"
 2. Disable and remove the app taking care the data is not removed
@@ -177,13 +191,18 @@ Configuration Options
 Logs
 ----
 
-Logs for both the ``context_chat`` PHP app and the ``context_chat_backend`` ExApp can be found in the admin settings of your Nextcloud GUI as well as in the Context Chat log file, which is usually located in the Nextcloud data directory. The log file is named ``context_chat.log``.
+Logs for both the ``context_chat`` PHP app and the ``context_chat_backend`` ExApp can be found in the admin settings of
+your Nextcloud GUI as well as in the Context Chat log file, which is usually located in the Nextcloud data directory.
+The log file is named ``context_chat.log``.
 
 Troubleshooting
 ---------------
 
-1. If the docker container seems to suddenly restart during indexing or querying, it could be related to RAM/storage filling up, or AVX being unavailable on the system. AVX can be checked using ``grep -i avx /proc/cpuinfo`` command on the host system. If AVX is not available, the app will not work.
-2. Look for issues in the diagnostic logs, the server logs and the docker container ``nc_app_context_chat_container`` logs. If unsure, open an issue in either of the repositories.
+1. If the docker container seems to suddenly restart during indexing or querying, it could be related to RAM/storage
+   filling up, or AVX being unavailable on the system. AVX can be checked using ``grep -i avx /proc/cpuinfo`` command on
+   the host system. If AVX is not available, the app will not work.
+2. Look for issues in the diagnostic logs, the server logs and the docker container ``nc_app_context_chat_container``
+   logs. If unsure, open an issue in either of the repositories.
 3. Check "Admin settings -> Context Chat" for statistics and information about the indexing process.
 
 File access control rules not supported
@@ -193,15 +212,23 @@ In Nextcloud you can set up file access control rules using the `files_accesscon
 
 | Context Chat does **not** follow these rules.
 
-It is thus possible for users who have been denied access to a document via the files_accesscontrol app to still gain access via Context Chat
+It is thus possible for users who have been denied access to a document via the files_accesscontrol app to still gain
+access via Context Chat
 if the document is visible in the files app for the user in question.
 
 Known Limitations
 -----------------
 
-* Language models are likely to generate false information and should thus only be used in situations that are not critical. It's recommended to only use AI at the beginning of a creation process and not at the end, so that outputs of AI serve as a draft for example and not as final product. Always check the output of language models before using it and make sure whether it meets your use-case's quality requirements.
-* Customer support is available upon request, however we can't solve false or problematic output, most performance issues, or other problems caused by the underlying model. Support is thus limited only to bugs directly caused by the implementation of the app (connectors, API, front-end, AppAPI).
+* Language models are likely to generate false information and should thus only be used in situations that are not
+  critical. It's recommended to only use AI at the beginning of a creation process and not at the end, so that outputs
+  of AI serve as a draft for example and not as final product. Always check the output of language models before using
+  it and make sure whether it meets your use-case's quality requirements.
+* Customer support is available upon request, however we can't solve false or problematic output, most performance
+  issues, or other problems caused by the underlying model. Support is thus limited only to bugs directly caused by the
+  implementation of the app (connectors, API, front-end, AppAPI).
 * Files larger than 100MB are not supported
-* Password protected PDFs or any other files are not supported. There will be error logs mentioning cryptography and AES in the docker container when such files are encountered but it is nothing to worry about, they will be simply ignored and the system will continue to function normally.
+* Password protected PDFs or any other files are not supported. There will be error logs mentioning cryptography and AES
+  in the docker container when such files are encountered but it is nothing to worry about, they will be simply ignored
+  and the system will continue to function normally.
 * Podman and Kubernetes are currently not supported for the Context Chat Backend ExApp.
 * External storages (through ``files_external``) may not work as well as the local storage.

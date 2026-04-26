@@ -469,7 +469,10 @@ User Home Folder Naming Rule:
 
   * Example: *cn*
 
-In new Nextcloud installations the home folder rule is enforced. This means that once you set a home folder naming rule (get a home folder from an LDAP attribute), it must be available for all users. If it isn't available for a user, then that user will not be able to login. Also, the filesystem will not be set up for that user, so their file shares will not be available to other users.
+In new Nextcloud installations the home folder rule is enforced. This means that once you set a home folder naming rule
+(get a home folder from an LDAP attribute), it must be available for all users. If it isn't available for a user, then
+that user will not be able to login. Also, the filesystem will not be set up for that user, so their file shares will
+not be available to other users.
 
 In migrated Nextcloud installations the old behavior still applies, which is using the Nextcloud username as the home folder when an LDAP attribute is not set. You may change this enforcing the home folder rule with the ``occ`` command in Nextcloud, like this example on Ubuntu::
 
@@ -483,7 +486,11 @@ User Profile attributes
 .. figure:: ../images/ldap-advanced-4-attributes.png
    :alt: User Profile Attributes.
 
-After configuring those attributes, the User Profile data will be overwritten with the according data from LDAP.  The checksum of data from LDAP will be stored in user settings ``user_ldap``, ``lastProfileChecksum`` and profile update is skipped as long as data from LDAP doesn't change.  If ``memcache.distributed`` is enabled in ``config.php`` the checksum will be cached and the checking will be skipped, as long as the cached value exists (expires after ``ldapCacheTTL`` seconds).
+After configuring those attributes, the User Profile data will be overwritten with the according data from LDAP.  The
+checksum of data from LDAP will be stored in user settings ``user_ldap``, ``lastProfileChecksum`` and profile update is
+skipped as long as data from LDAP doesn't change.  If ``memcache.distributed`` is enabled in ``config.php`` the checksum
+will be cached and the checking will be skipped, as long as the cached value exists (expires after ``ldapCacheTTL``
+seconds).
 
 Please be aware:
   - The user can change the data in profile, but it will get overwritten if changed in LDAP
@@ -494,7 +501,8 @@ Please be aware:
   - Having misformatted data in LDAP will most probably leave you with empty user profile fields
   - Setting the global ``profile.enabled => false`` on ``config.php`` skips the code
 
-By calling ``sudo -E -u www-data php occ ldap:check-user --update <uid>`` the users data from LDAP will be displayed and the profile gets updated. To get the correct ``<uid>`` value for any user you can use ``php occ user:list``.
+By calling ``sudo -E -u www-data php occ ldap:check-user --update <uid>`` the users data from LDAP will be displayed and
+the profile gets updated. To get the correct ``<uid>`` value for any user you can use ``php occ user:list``.
 
 .. note:: After unsetting an attribute name here, the data won't be deleted from user profile. Setting an nonexisting attribute will empty the corresponding profile field.
 

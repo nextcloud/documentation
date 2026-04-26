@@ -12,11 +12,14 @@ Access calendars and events
 Calendar objects
 ~~~~~~~~~~~~~~~~
 
-You can query the contents of calendars in the back end through the calendar manager service. Queries are always scoped to a principal (user) but may follow further search criteria like string matches or date ranges.
+You can query the contents of calendars in the back end through the calendar manager service. Queries are always scoped
+to a principal (user) but may follow further search criteria like string matches or date ranges.
 
-:ref:`Inject <dependency-injection>` the calendar manager into your class. Then you can use ``newQuery`` and ``searchForPrincipal`` to build and execute a search query.
+:ref:`Inject <dependency-injection>` the calendar manager into your class. Then you can use ``newQuery`` and
+``searchForPrincipal`` to build and execute a search query.
 
-In the following example you see a basic use case of the calendar query API where specific user's calendar is searched for any events and tasks during a given duration.
+In the following example you see a basic use case of the calendar query API where specific user's calendar is searched
+for any events and tasks during a given duration.
 
 .. code-block:: php
 
@@ -58,9 +61,11 @@ Study the interface ``\OCP\Calendar\ICalendarQuery`` to learn more about other q
 Calendars
 ~~~~~~~~~
 
-You can access calendars through the ``IManager``. :ref:`Inject <dependency-injection>` the service, then use the ``getCalendarsForPrincipal`` method.
+You can access calendars through the ``IManager``. :ref:`Inject <dependency-injection>` the service, then use the
+``getCalendarsForPrincipal`` method.
 
-You can either query all calendars of the principal if you omit the second argument, or look for specific calendars only. See the examples below.
+You can either query all calendars of the principal if you omit the second argument, or look for specific calendars
+only. See the examples below.
 
 .. code-block:: php
 
@@ -100,14 +105,16 @@ You can either query all calendars of the principal if you omit the second argum
 
     }
 
-The returned objects implement ``\OCP\Calendar\ICalendar``. Study the interface methods to discover what data is available.
+The returned objects implement ``\OCP\Calendar\ICalendar``. Study the interface methods to discover what data is
+available.
 
 .. note:: All calendars are by default only readable, therefore ``ICalendar`` does not offer methods for mutation. Some of the calendars are mutable, however, and they may further extend the interface ``\OCP\Calendar\ICreateFromString``.
 
 Create calendar events
 ----------------------
 
-Calendar events can either be imported from raw ICS strings or built programmatically using the ``ICalendarEventBuilder`` interface.
+Calendar events can either be imported from raw ICS strings or built programmatically using the
+``ICalendarEventBuilder`` interface.
 Please consider the example below to see both methods in action.
 
 .. code-block:: php
@@ -177,7 +184,8 @@ Calendar providers
 
 The Nextcloud groupware integration provides access to internal calendars.
 It is, however, for third party apps possible to provide individual calendars.
-The section :ref:`Integration of custom calendar providers<calendar-providers>` describes on how to implement a provider within the Nextcloud server.
+The section :ref:`Integration of custom calendar providers<calendar-providers>` describes on how to implement a provider
+within the Nextcloud server.
 
 Resources
 ---------
@@ -186,7 +194,8 @@ Nextcloud apps can provide resource back ends for the CalDAV server in Nextcloud
 
 To register a custom back end, create a class that implements ``\OCP\Calendar\Resource\IBackend``.
 
-In the :ref:`boot method of your Application class<Bootstrapping>` you can fetch the ``\OCP\Calendar\Resource\IManager`` instance and pass the fully qualified class name of your custom back end to ``registerBackend``.
+In the :ref:`boot method of your Application class<Bootstrapping>` you can fetch the ``\OCP\Calendar\Resource\IManager``
+instance and pass the fully qualified class name of your custom back end to ``registerBackend``.
 
 .. code-block:: php
 
@@ -221,7 +230,8 @@ Nextcloud apps can provide rooms back ends for the CalDAV server in Nextcloud.
 
 To register a custom back end, create a class that implements ``\OCP\Calendar\Room\IBackend``.
 
-In the :ref:`boot method of your Application class<Bootstrapping>` you can fetch the ``\OCP\Calendar\Room\IManager`` instance and pass the fully qualified class name of your custom back end to ``registerBackend``.
+In the :ref:`boot method of your Application class<Bootstrapping>` you can fetch the ``\OCP\Calendar\Room\IManager``
+instance and pass the fully qualified class name of your custom back end to ``registerBackend``.
 
 .. code-block:: php
 

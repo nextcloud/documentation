@@ -5,13 +5,15 @@ Translations
 
 ExApps translations work in the :ref:`same way as for PHP apps<Translations>` with a few adjustments and differences.
 
-In short, you just have to provide the ``l10n/<lang>.js`` (for front-end) and ``l10n/<lang>.json`` (for back-end) files for your app.
+In short, you just have to provide the ``l10n/<lang>.js`` (for front-end) and ``l10n/<lang>.json`` (for back-end) files
+for your app.
 
 
 Front-end
 *********
 
-For the front-end part, AppAPI will inject the current user's locale ``l10n/<lang>.js`` script, so that access to translated strings in kept the same as was before in PHP apps.
+For the front-end part, AppAPI will inject the current user's locale ``l10n/<lang>.js`` script, so that access to
+translated strings in kept the same as was before in PHP apps.
 
 .. note::
 
@@ -21,7 +23,8 @@ For the front-end part, AppAPI will inject the current user's locale ``l10n/<lan
 Back-end
 ********
 
-For the back-end part of ExApp, which can be written in different programming languages, it is **up to the developer to decide** how to handle translations files.
+For the back-end part of ExApp, which can be written in different programming languages, it is **up to the developer to
+decide** how to handle translations files.
 There is an example repository with translations: `UI example with translations <https://github.com/nextcloud/ui_example>`_.
 
 There are two Python functions used by `translationtool <https://github.com/nextcloud/docker-ci/tree/master/translations/translationtool>`_ to extract translation string: ``_('singular string')`` and ``_n('singular string', 'plural string', count)``.
@@ -56,7 +59,8 @@ This will allow the server to access the ExApp's strings with translations.
 Docker install
 **************
 
-For the ``docker-install`` type, AppAPI will extract the ``l10n`` folder to the server automatically during installation from the ExApp release archive.
+For the ``docker-install`` type, AppAPI will extract the ``l10n`` folder to the server automatically during installation
+from the ExApp release archive.
 
 
 Translation tool
@@ -64,4 +68,5 @@ Translation tool
 
 To add support for your language in Nextcloud `translationtool <https://github.com/nextcloud/docker-ci/tree/master/translations/translationtool>`_,
 feel free to create an issue in the `nextcloud/docker-ci <https://github.com/nextcloud/docker-ci>`_ repository
-or open a pull request with the changes made in the ``createPotFile`` function to extract and convert translation strings.
+or open a pull request with the changes made in the ``createPotFile`` function to extract and convert translation
+strings.

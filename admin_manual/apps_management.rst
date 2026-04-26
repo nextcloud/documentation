@@ -64,8 +64,10 @@ update all apps.
 Update notifications
 ^^^^^^^^^^^^^^^^^^^^
 
-The always installed ``updatenotification`` app allows administrators to be notified on available app and Nextcloud updates.
-Moreover, since Nextcloud 29, this app also allows to notify users about updated apps and the changes that are included in the update.
+The always installed ``updatenotification`` app allows administrators to be notified on available app and Nextcloud
+updates.
+Moreover, since Nextcloud 29, this app also allows to notify users about updated apps and the changes that are included
+in the update.
 This notification is enabled by default if the app provides a changelog.
 
 To disable user notifications use:
@@ -83,7 +85,8 @@ By default guest users, when using the guests app, are not notified, to enable n
 Enabling apps via occ command
 -----------------------------
 
-In addition to managing apps via the web interface, administrators can also enable or disable apps using the `occ` command.
+In addition to managing apps via the web interface, administrators can also enable or disable apps using the `occ`
+command.
 
 To enable an app, use the following command:
 
@@ -160,7 +163,8 @@ which will be used to store any additional apps you install:
 Using a self hosted apps store
 ------------------------------
 
-Enables the installation of apps from a self hosted apps store. Requires that at least one of the configured apps directories is writeable.
+Enables the installation of apps from a self hosted apps store. Requires that at least one of the configured apps
+directories is writeable.
 
 To enable a self hosted apps store:
 
@@ -178,6 +182,8 @@ To enable a self hosted apps store:
     "appstoreurl" => "https://my.appstore.instance/v1",
 
 
-By default the apps store is enabled and configured to use ``https://apps.nextcloud.com/api/v1`` as apps store url. Nextcloud will fetch ``apps.json`` and ``categories.json`` from there. To use the defaults again remove **appstoreenabled** and **appstoreurl** from the configuration.
+By default the apps store is enabled and configured to use ``https://apps.nextcloud.com/api/v1`` as apps store url.
+Nextcloud will fetch ``apps.json`` and ``categories.json`` from there. To use the defaults again remove
+**appstoreenabled** and **appstoreurl** from the configuration.
 
 Example: If ``categories.json`` is available at ``https://apps.nextcloud.com/api/v1/categories.json`` the apps store url is ``https://apps.nextcloud.com/api/v1``.

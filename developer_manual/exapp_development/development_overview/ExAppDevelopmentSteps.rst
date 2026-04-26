@@ -4,7 +4,8 @@ ExApp development
 =================
 
 The ExApp development process is similar to that of a regular Nextcloud (PHP) app,
-and should follow the same guidelines in terms of security, design and coding style (see :doc:`../../getting_started/development_process` for details)
+and should follow the same guidelines in terms of security, design and coding style (see
+:doc:`../../getting_started/development_process` for details)
 based on your programming language standards.
 
 Despite the fact, that ExApp can be developed in any language, it's still recommended to have the understanding
@@ -13,7 +14,8 @@ as they are usually similar to the ExApp backend to which Nextcloud communicates
 
 You can think of each ExApp as a microservice (Docker container)
 that runs separately from Nextcloud on the Deploy daemon, which can be remote or local.
-The communication between Nextcloud and ExApp is done via network secured with :doc:`AppAPIAuth <../tech_details/Authentication>`.
+The communication between Nextcloud and ExApp is done via network secured with :doc:`AppAPIAuth
+<../tech_details/Authentication>`.
 
 Let's go through the ExApp development steps briefly.
 
@@ -40,7 +42,8 @@ They contain the basic structure of the ExApp, including:
 - Dockerfile
 - ExApp backend
 - ExApp frontend
-- Manual translations tools setup and example script to convert translation files to Nextcloud l10n format and for your programming language
+- Manual translations tools setup and example script to convert translation files to Nextcloud l10n format and for your
+  programming language
 - Some necessary GitHub workflows (e.g. `Docker image build workflows <https://github.com/cloud-py-api/visionatrix/tree/main/.github/workflows>`_)
 
 More details are available in the :ref:`ExAppOverview` section.
@@ -111,7 +114,8 @@ For more info, see `the official docs for logging <https://docs.docker.com/confi
 
 Once the ExApp is ready, and the Docker image is available in the Docker registry,
 you can follow `the AppStore publishing process <https://nextcloudappstore.readthedocs.io/en/latest/developer.html>`_.
-It's the same as for the regular Nextcloud app, but with the requirement of :ref:`the ExApp specific fields <ex_app_info_xml_metadata>` in the ``appinfo/info.xml`` file.
+It's the same as for the regular Nextcloud app, but with the requirement of :ref:`the ExApp specific fields
+<ex_app_info_xml_metadata>` in the ``appinfo/info.xml`` file.
 
 
 6. Testing

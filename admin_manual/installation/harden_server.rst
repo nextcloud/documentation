@@ -17,12 +17,17 @@ Passwords
 Storage of access tokens
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-Upon successful authentication, Nextcloud issues an access token that clients will use for all future HTTP requests. This access token uniquely identifies a user and should not be stored on any system other than the client requesting it. The user password is also stored encrypted in the Nextcloud database. For encryption of the password, the token and an instance-specific secret is used.
+Upon successful authentication, Nextcloud issues an access token that clients will use for all future HTTP requests.
+This access token uniquely identifies a user and should not be stored on any system other than the client requesting it.
+The user password is also stored encrypted in the Nextcloud database. For encryption of the password, the token and an
+instance-specific secret is used.
 
-Leakage of the access token can have negative security consequences. Depending on the data access by the actor, the risk here is different:
+Leakage of the access token can have negative security consequences. Depending on the data access by the actor, the risk
+here is different:
 
 - An actor with access to only the access token can impersonate users and login as them.
-- An actor with access to the access token, the Nextcloud config file, and the Nextcloud database can decrypt user passwords stored in the database.
+- An actor with access to the access token, the Nextcloud config file, and the Nextcloud database can decrypt user
+  passwords stored in the database.
 
 Limit on password length
 ^^^^^^^^^^^^^^^^^^^^^^^^
@@ -192,7 +197,8 @@ This can be achieved with this kind of setting, usually using private IP ranges:
 
 All requests originating from IP addresses outside of these ranges will not be able to execute admin actions.
 
-Administrators connected from untrusted IP addresses will be able to use Nextcloud, but all admin specific actions will be hidden.
+Administrators connected from untrusted IP addresses will be able to use Nextcloud, but all admin specific actions will
+be hidden.
 
 Use a dedicated domain for Nextcloud
 ------------------------------------
@@ -300,7 +306,9 @@ Depending on your server setup, these are the possible connections:
 	- if the weather status app is enabled and used
 	- submitted data: longitude and latitude configured in the weather status app by the individual user
 - Any remote Nextcloud server that is connected with federated sharing
-- When downloading apps from the App store other domains might be accessed, based on the choice of the app developers where they host the releases. For all official Nextcloud apps this is not the case though, because they are hosted on Github.
+- When downloading apps from the App store other domains might be accessed, based on the choice of the app developers
+  where they host the releases. For all official Nextcloud apps this is not the case though, because they are hosted on
+  Github.
 
 .. _optional (config): https://docs.nextcloud.com/server/latest/admin_manual/configuration_server/config_sample_php_parameters.html#has-internet-connection
 .. _detailed field list: https://github.com/nextcloud/survey_client

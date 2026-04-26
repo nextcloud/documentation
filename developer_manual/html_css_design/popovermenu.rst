@@ -84,12 +84,14 @@ Technical details
 
 * The only allowed menu items elements are **a**, **button** and **span** for the checkbox and radio only.
 * You can mix between a and button on the same menu (in case of form or direct link) like the example above
-* You need to put the entire menu just after the three dot icon ``<div><span class="icon-more"></span><div class="popovermenu">...</div></div>``
+* You need to put the entire menu just after the three dot icon ``<div><span class="icon-more"></span><div
+  class="popovermenu">...</div></div>``
 * You do not need JS, CSS only is ok for positioning. JS is **still** required to handle the hide/show.
 * Only **one** ul is allowed.
 * Only **one level** of menu is allowed.
 * Every entry **needs** to have its own icon. This greatly improves the UX.
-* The required **right** distance to the border (or padding, whatever you want to use) of the three-dot icon should be 14px (5 for menu margin and 6 for arrow position)
+* The required **right** distance to the border (or padding, whatever you want to use) of the three-dot icon should be
+  14px (5 for menu margin and 6 for arrow position)
 * The ``span`` element **must** have the ``menuitem`` class.
 * The checkbox/radio must use the :ref:`nextcloud custom <checkboxes-and-radios>`
 * The form element is optional if you're using inputs.

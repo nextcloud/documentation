@@ -4,9 +4,13 @@ Introduction
 
 **Welcome to the Nextcloud Server Administration Guide.**
 
-This guide explains how to perform administrative tasks in Nextcloud, a highly versatile and scalable open-source platform for file synchronization and content collaboration. 
+This guide explains how to perform administrative tasks in Nextcloud, a highly versatile and scalable open-source
+platform for file synchronization and content collaboration.
 
-With over 400,000 deployments, Nextcloud can run on a simple two-user Raspberry Pi or scale to support global, distributed installations serving tens of millions of users. It can be deployed on-premises, in private or public clouds, or in hybrid environments. Supported by a large and growing community, Nextcloud is available in more than 60 languages.
+With over 400,000 deployments, Nextcloud can run on a simple two-user Raspberry Pi or scale to support global,
+distributed installations serving tens of millions of users. It can be deployed on-premises, in private or public
+clouds, or in hybrid environments. Supported by a large and growing community, Nextcloud is available in more than 60
+languages.
 
 The latest editions of the Nextcloud manuals are always available online at
 `docs.nextcloud.com <https://docs.nextcloud.com/>`_.
@@ -50,11 +54,13 @@ Editions
 Nextcloud Server is available in two editions:
 
 - **Community:** Community-supported (peer-to-peer help), 100% free.
-- **Enterprise:** Supported by core developers or authorized partners, with official packaging, extensive enterprise-specific documentation, and support options.
+- **Enterprise:** Supported by core developers or authorized partners, with official packaging, extensive
+  enterprise-specific documentation, and support options.
 
 *Both editions include all functionality and source code.*
 
-Enterprise editions can include deployment guidance, phone and email access to Nextcloud developers, official support for integrations and add-ons, custom branding, and extended support cycles, among other benefits.
+Enterprise editions can include deployment guidance, phone and email access to Nextcloud developers, official support
+for integrations and add-ons, custom branding, and extended support cycles, among other benefits.
 
 This guide primarily focuses on the Community edition, but the information applies to both editions.
 

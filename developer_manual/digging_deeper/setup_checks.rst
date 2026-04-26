@@ -78,7 +78,8 @@ for this example we will create a check that ensures the Nextcloud instance is n
     }
 
 
-First it is required to provide a name, the name which should summarize the check and should be provided as a user visible, thus translated string.
+First it is required to provide a name, the name which should summarize the check and should be provided as a user
+visible, thus translated string.
 
 .. code-block:: php
 
@@ -93,7 +94,8 @@ Setup checks are grouped by category, the category should be one of
 - ``security``: Related to the security of the instance
 - ``accounts``: Related to user accounts
 - ``system``: System status Related
-- Custom category: Will be merged into system. Examples for existing custom categories are  ``network`` and ``database``.
+- Custom category: Will be merged into system. Examples for existing custom categories are  ``network`` and
+  ``database``.
 
 .. code-block:: php
 
@@ -107,8 +109,10 @@ This function should perform the test and report the result as a ``OCP\SetupChec
 Available severity level are:
 
 - ``SetupResult::success``: Test succeeded no action needed.
-- ``SetupResult::info``: No action required but it can not be guaranteed that the check passed (e.g. missing precondition for running the test).
-- ``SetupResult::warning``: The test failed but the result is not fatal, yet the administrator should be warned about this.
+- ``SetupResult::info``: No action required but it can not be guaranteed that the check passed (e.g. missing
+  precondition for running the test).
+- ``SetupResult::warning``: The test failed but the result is not fatal, yet the administrator should be warned about
+  this.
 - ``SetupResult::error``: The test failed and some functionality is not available or might be broken.
 
 It is also possible to add a link to documentation to ease administrators solving the issue.
@@ -163,8 +167,10 @@ The ``run`` function of the JavaScript modules setup check could look like:
 
 The ``runRequest`` is provided by the ``CheckServerResponseTrait``, it accepts a HTTP request method
 as the first parameter (in this example ``HEAD``) and an URL with an absolute path, so meaning
-the full path but no host set, like provided when using the URL generator. One example string would be ``nextcloud/apps/settings/js/esm-test.mjs``.
-Internally the function requests that URL on all possible URLs (using the current host, the trusted domains and the cli overwrite URL),
+the full path but no host set, like provided when using the URL generator. One example string would be
+``nextcloud/apps/settings/js/esm-test.mjs``.
+Internally the function requests that URL on all possible URLs (using the current host, the trusted domains and the cli
+overwrite URL),
 and then yields a result for each request.
 
 ``CheckServerResponseTrait::serverConfigHelp`` provides information about

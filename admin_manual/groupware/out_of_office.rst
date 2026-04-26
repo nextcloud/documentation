@@ -28,7 +28,8 @@ command on your server:
     Disabling it will only hide the feature from the user interface. If the feature is enabled
     again, the periods will be visible again.
 
-Set the value for `hide_absence_settings` to `no` or delete the configuration option entirely to enable the feature again. The following
+Set the value for `hide_absence_settings` to `no` or delete the configuration option entirely to enable the feature
+again. The following
 command can be used to do so:
 
 ::

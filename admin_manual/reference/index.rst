@@ -9,7 +9,8 @@ The reference management system brings 2 features in Nextcloud:
 
 Both those features are generic and need to be extended by the Nextcloud apps.
 
-Apps can add support for some HTTP links so previews are rendered in various places like Text documents and Talk messages.
+Apps can add support for some HTTP links so previews are rendered in various places like Text documents and Talk
+messages.
 
 The Smart Picker is a frontend component which allows users to search or generate links or text.
 

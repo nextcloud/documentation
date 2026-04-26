@@ -6,12 +6,17 @@ Task Processing
 
 .. versionadded:: 30.0.0
 
-Nextcloud offers a **Task Processing** API which replaces the previously introduced :ref:`Text Processing<text_processing>`, :ref:`TextToImage<text2image>` and :ref:`Speech-To-Text<speech-to-text>` APIs. The overall idea is that there is a central OCP API that apps can use to schedule all kinds of tasks (mainly intended for AI tasks). To be technology agnostic any other app can provide this task functionality by registering Task Processing providers for specific Task types.
+Nextcloud offers a **Task Processing** API which replaces the previously introduced :ref:`Text
+Processing<text_processing>`, :ref:`TextToImage<text2image>` and :ref:`Speech-To-Text<speech-to-text>` APIs. The overall
+idea is that there is a central OCP API that apps can use to schedule all kinds of tasks (mainly intended for AI tasks).
+To be technology agnostic any other app can provide this task functionality by registering Task Processing providers for
+specific Task types.
 
 Consuming the Task Processing API
 ---------------------------------
 
-To consume the  Task Processing API, you will need to :ref:`inject<dependency-injection>` ``\OCP\TaskProcessing\IManager``. This manager offers the following methods:
+To consume the  Task Processing API, you will need to :ref:`inject<dependency-injection>`
+``\OCP\TaskProcessing\IManager``. This manager offers the following methods:
 
  * ``hasProviders()`` This method returns a boolean which indicates if any providers have been registered. If this is false you cannot use the TextProcessing feature.
  * ``getAvailableTaskTypes(bool $showDisabled = false)`` This method returns an array of enabled task types indexed by their ID with their names and additional metadata. If you set ``$showdisabled`` to ``true`` (available since NC31), it will include disabled task types. Since NC33 this will also include the ``isInternal`` field that signifies whether the task type is user-facing or intended for internal use only.
@@ -21,7 +26,8 @@ To consume the  Task Processing API, you will need to :ref:`inject<dependency-in
  * ``deleteTask(Task $task)`` This method deletes a task
  * ``cancelTask(int $id)`` This method cancels a task specified by its id.
 
-If you would like to use the task processing functionality in a client, there are also OCS endpoints available for this: :ref:`OCS Task Processing API<ocs-taskprocessing-api>`
+If you would like to use the task processing functionality in a client, there are also OCS endpoints available for this:
+:ref:`OCS Task Processing API<ocs-taskprocessing-api>`
 
 Tasks types
 ^^^^^^^^^^^
@@ -136,7 +142,8 @@ The following built-in task types are available:
 
 
 
-Task types can be disabled in the AI admin settings so they are not available for the Assistant or other apps even if they are implemented. All implemented Task types are enabled by default.
+Task types can be disabled in the AI admin settings so they are not available for the Assistant or other apps even if
+they are implemented. All implemented Task types are enabled by default.
 
 LLM Prompts and multilingual I/O
 ################################
@@ -146,7 +153,8 @@ When writing prompts for the TextToText task type in your apps, we recommend tes
 * OpenAI GPT-3.5
 * Llama 3.1
 
-Also, make sure that you instruct the model to use the correct language in its output. By default most models will answer in English if the main prompt is in English, even though the source data is in another language.
+Also, make sure that you instruct the model to use the correct language in its output. By default most models will
+answer in English if the main prompt is in English, even though the source data is in another language.
 A tweak to make sure of this is to instruct the model as follows:
 
 .. code-block:: php
@@ -181,14 +189,21 @@ For example the TextToImage type defines its input shape as follows:
         ];
     }
 
-The task input and output are always represented by an associative array. In this case, the task input for TextToImage must have an array key named ``'input'`` which must contain a text and an array key named ``'numberOfImages'`` which must contain a number.
+The task input and output are always represented by an associative array. In this case, the task input for TextToImage
+must have an array key named ``'input'`` which must contain a text and an array key named ``'numberOfImages'`` which
+must contain a number.
 
-If you want to simply use a task type, you can look up it's input and output shapes above or, if it is not built-in, in the documentation or implementation of the app introducing the task type. If you would like to use task types dynamically without knowing their shapes in advance, you can get their shape information from the ``IManager#getAvailableTaskTypes()`` method. The ShapeDescriptor class allows accessing the type data as well as human readable name and description using the ``getName()``, ``getDescription()`` and ``getShapeType()`` methods.
+If you want to simply use a task type, you can look up it's input and output shapes above or, if it is not built-in, in
+the documentation or implementation of the app introducing the task type. If you would like to use task types
+dynamically without knowing their shapes in advance, you can get their shape information from the
+``IManager#getAvailableTaskTypes()`` method. The ShapeDescriptor class allows accessing the type data as well as human
+readable name and description using the ``getName()``, ``getDescription()`` and ``getShapeType()`` methods.
 
 Shape types
 ~~~~~~~~~~~
 
-Input and output shape keys can have one of a pre-defined set of types, which are enumerated in the ``\OCP\TaskProcessing\EShapeType`` Enum:
+Input and output shape keys can have one of a pre-defined set of types, which are enumerated in the
+``\OCP\TaskProcessing\EShapeType`` Enum:
 
 .. code-block:: php
 
@@ -208,11 +223,15 @@ Input and output shape keys can have one of a pre-defined set of types, which ar
     	case ListOfFiles = 15;
     }
 
-When consuming the task processing API, ``Image``, ``Audio``, ``Video`` and ``File`` slots are filled with Nextcloud file IDs, so instead of supplying the image data directly as a string to the task you create a file for it and pass the id. Similarly, if the task outputs an image, you will receive a file ID in that slot.
+When consuming the task processing API, ``Image``, ``Audio``, ``Video`` and ``File`` slots are filled with Nextcloud
+file IDs, so instead of supplying the image data directly as a string to the task you create a file for it and pass the
+id. Similarly, if the task outputs an image, you will receive a file ID in that slot.
 
 Tasks
 ^^^^^
-To create a task we use the ``\OCP\TaskProcessing\Task`` class. Its constructor takes the following arguments: ``new \OCP\TaskProcessing\Task(string $taskTypeId, array $input, string $appId, ?string $userId, string $customId = '')``. For example:
+To create a task we use the ``\OCP\TaskProcessing\Task`` class. Its constructor takes the following arguments: ``new
+\OCP\TaskProcessing\Task(string $taskTypeId, array $input, string $appId, ?string $userId, string $customId = '')``. For
+example:
 
 .. code-block:: php
 
@@ -280,7 +299,8 @@ All tasks always have one of the below statuses:
 Listening to the task processing events
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Since ``scheduleTask`` does not block, you will need to listen to the following events in your app to obtain the output or be notified of any failure.
+Since ``scheduleTask`` does not block, you will need to listen to the following events in your app to obtain the output
+or be notified of any failure.
 
  * ``OCP\TaskProcessing\Events\TaskSuccessfulEvent`` This event class offers the ``getTask()`` method which returns the up-to-date task object, with the task output.
  * ``OCP\TaskProcessing\Events\TaskFailedEvent`` In addition to the ``getTask()`` method, this event class provides the ``getErrorMessage()`` method which returns the error message as a string (only in English and for debugging purposes, so don't show this to the user)
@@ -330,7 +350,8 @@ The corresponding ``MyPromptResultListener`` class can look like:
 Implementing a TaskProcessing provider
 --------------------------------------
 
-A **Task processing provider** will usually be a class that implements the interface ``OCP\TaskProcessing\ISynchrounousProvider``.
+A **Task processing provider** will usually be a class that implements the interface
+``OCP\TaskProcessing\ISynchrounousProvider``.
 
 .. code-block:: php
 
@@ -410,18 +431,31 @@ A **Task processing provider** will usually be a class that implements the inter
 
 The method ``getName`` returns a string to identify the registered provider in the user interface.
 
-The method ``process`` implements the task processing step. In case execution fails for some reason, you should throw a ``\OCP\TaskProcessing\Exception\ProcessingException`` with an explanatory error message.
-Since v33.0.0 you can now also throw an ``OCP\TaskProcessing\Exception\UserFacingProcessingException`` which includes a string parameter to set for error messages that will be propagated to the end-user, make sure to always translate these into the language of the user that requested the task. The rule of thumb of when to use a user-facing error message, is as follows: When the error happened due to a mistake from the user or the user can do something to fix the error, throw a user facing error. However, do make sure to not include implementation or server details in the user facing error message, that's what the normal error message is for; it will only be visible to administrators.
+The method ``process`` implements the task processing step. In case execution fails for some reason, you should throw a
+``\OCP\TaskProcessing\Exception\ProcessingException`` with an explanatory error message.
+Since v33.0.0 you can now also throw an ``OCP\TaskProcessing\Exception\UserFacingProcessingException`` which includes a
+string parameter to set for error messages that will be propagated to the end-user, make sure to always translate these
+into the language of the user that requested the task. The rule of thumb of when to use a user-facing error message, is
+as follows: When the error happened due to a mistake from the user or the user can do something to fix the error, throw
+a user facing error. However, do make sure to not include implementation or server details in the user facing error
+message, that's what the normal error message is for; it will only be visible to administrators.
 
-Important to note here is that ``Image``, ``Audio``, ``Video`` and ``File`` slots in the input array will be filled with ``\OCP\Files\File`` objects for your convenience. When outputting one of these you should simply return a string, the API will turn the data into a proper file for convenience. The ``$reportProgress`` parameter is a callback that you may use at will to report the task progress as a single float value between 0 and 1. Its return value will indicate if the task is still running (``true``) or if it was cancelled (``false``) and processing should be terminated.
+Important to note here is that ``Image``, ``Audio``, ``Video`` and ``File`` slots in the input array will be filled with
+``\OCP\Files\File`` objects for your convenience. When outputting one of these you should simply return a string, the
+API will turn the data into a proper file for convenience. The ``$reportProgress`` parameter is a callback that you may
+use at will to report the task progress as a single float value between 0 and 1. Its return value will indicate if the
+task is still running (``true``) or if it was cancelled (``false``) and processing should be terminated.
 
-This class would typically be saved into a file in ``lib/TaskProcessing`` of your app but you are free to put it elsewhere as long as it's loadable by Nextcloud's :ref:`dependency injection container<dependency-injection>`.
+This class would typically be saved into a file in ``lib/TaskProcessing`` of your app but you are free to put it
+elsewhere as long as it's loadable by Nextcloud's :ref:`dependency injection container<dependency-injection>`.
 
 Providing additional inputs and outputs
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Built-in task types often only specify the most basic input and output slots. If you would like to offer more input options
-with your provider you can specify optional inputs and outputs using the ``getOptionalInputShape`` and ``getOptionalOutputShape`` methods.
+Built-in task types often only specify the most basic input and output slots. If you would like to offer more input
+options
+with your provider you can specify optional inputs and outputs using the ``getOptionalInputShape`` and
+``getOptionalOutputShape`` methods.
 You will need to return an associative array of ``\OCP\TaskProcessing\ShapeDescriptor`` objects.
 
 .. code-block:: php
@@ -445,7 +479,8 @@ In the same vein you can also provide optional output shape slots in addition to
 Providing input defaults
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-With the method ``getInputShapeDefaults`` you can specify default values for input slots (which are defined by the task type). For example:
+With the method ``getInputShapeDefaults`` you can specify default values for input slots (which are defined by the task
+type). For example:
 
 .. code-block:: php
 
@@ -470,9 +505,12 @@ The same works for your optional input shapes that you defined in ``getOptionalI
 Working with Enum shape types
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Both input and output shapes as well as the optional input and output shapes allow declaring slots of type ``'Enum'``. An Enum
-is a type that only allows values from a pre-defined set. In the case of the TaskProcessing API this set is not defined by the task type, but
-by the provider implementing the task type using ``getInputShapeEnumValues``, ``getOutputShapeEnumValues``, ``getOptionalInputShapeEnumValues`` and ``getOptionalOutputShapeEnumValues``.
+Both input and output shapes as well as the optional input and output shapes allow declaring slots of type ``'Enum'``.
+An Enum
+is a type that only allows values from a pre-defined set. In the case of the TaskProcessing API this set is not defined
+by the task type, but
+by the provider implementing the task type using ``getInputShapeEnumValues``, ``getOutputShapeEnumValues``,
+``getOptionalInputShapeEnumValues`` and ``getOptionalOutputShapeEnumValues``.
 
 You could, for example, implement the above tone of voice slot using an Enum:
 
@@ -500,7 +538,8 @@ You could, for example, implement the above tone of voice slot using an Enum:
 Providing more task types
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-If you would like to implement providers that handle additional task types, you can create your own Task type classes implementing the ``OCP\TaskProcessing\ITaskType`` interface:
+If you would like to implement providers that handle additional task types, you can create your own Task type classes
+implementing the ``OCP\TaskProcessing\ITaskType`` interface:
 
 .. code-block:: php
 
@@ -549,7 +588,8 @@ Internal task types
 .. versionadded:: 33.0.0
 
 Other apps and clients will assume that task types are user-facing and will display them on the frontend. If your custom
-task types are not intended to be shown to users, you should implement the ``IInternalTaskType`` interface instead. This will
+task types are not intended to be shown to users, you should implement the ``IInternalTaskType`` interface instead. This
+will
 make sure that other apps and clients know not to show your custom task type to end users.
 
 
@@ -558,11 +598,16 @@ Triggerable providers
 
 .. versionadded:: 33.0.0
 
-Synchronous providers are executed automatically by a background job that will usually be targeted by a worker to make sure
-that it runs almost instantly. ExApps on the other hand used to have to poll the server for new tasks. Since the introduction of triggerable
-providers ExApps are now notified immediately of new tasks when they are scheduled. This is implemented via the ``ITriggerableProvider`` interface,
-which adds an additional ``trigger(): void`` method to the provider interface which is called when a new task is scheduled for this provider and
-there are no running tasks for it at the moment. Usually if you implement a provider in PHP you will not have to deal with this interface but it is documented
+Synchronous providers are executed automatically by a background job that will usually be targeted by a worker to make
+sure
+that it runs almost instantly. ExApps on the other hand used to have to poll the server for new tasks. Since the
+introduction of triggerable
+providers ExApps are now notified immediately of new tasks when they are scheduled. This is implemented via the
+``ITriggerableProvider`` interface,
+which adds an additional ``trigger(): void`` method to the provider interface which is called when a new task is
+scheduled for this provider and
+there are no running tasks for it at the moment. Usually if you implement a provider in PHP you will not have to deal
+with this interface but it is documented
 here for completeness.
 
 Provider and task type registration

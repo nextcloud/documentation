@@ -100,7 +100,8 @@ nginx
 
 If your site is behind a nginx frontend (for example a loadbalancer):
 
-By default, downloads will be limited to 1GB due to ``proxy_buffering`` and ``proxy_max_temp_file_size`` on the frontend.
+By default, downloads will be limited to 1GB due to ``proxy_buffering`` and ``proxy_max_temp_file_size`` on the
+frontend.
 
 * If you can access the frontend's configuration, disable `proxy_buffering <https://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_buffering>`_ or increase `proxy_max_temp_file_size <https://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_max_temp_file_size>`_ from the default 1GB.
 * If you do not have access to the frontend, set the `X-Accel-Buffering <https://nginx.org/en/docs/http/ngx_http_proxy_module.html#proxy_buffering>`_ header to ``add_header X-Accel-Buffering no;`` on your backend server.
@@ -172,5 +173,6 @@ enough for PHP, webservers or any load balancers involved.
 Federated Cloud Sharing
 -----------------------
 
-If you are using :doc:`Federated Cloud Sharing <federated_cloud_sharing_configuration>` and want to share large files, you can increase the timeout values for requests to the federated servers.
+If you are using :doc:`Federated Cloud Sharing <federated_cloud_sharing_configuration>` and want to share large files,
+you can increase the timeout values for requests to the federated servers.
 Therefore, you can set ``davstorage.request_timeout`` in your ``config.php``. The default value is 30 seconds.

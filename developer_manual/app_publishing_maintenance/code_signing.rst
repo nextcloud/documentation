@@ -118,7 +118,8 @@ Ensure that you keep all generated files to sign your application. The following
 examples will assume that you are trying to sign an application named
 "contacts".
 
-1. Generate a private key and CSR: ``openssl req -nodes -newkey rsa:4096 -keyout contacts.key -out contacts.csr -subj "/CN=contacts"``. Replace "contacts" with your application identifier.
+1. Generate a private key and CSR: ``openssl req -nodes -newkey rsa:4096 -keyout contacts.key -out contacts.csr -subj
+   "/CN=contacts"``. Replace "contacts" with your application identifier.
 2. Post the CSR at https://github.com/nextcloud/app-certificate-requests, in a
    new pull request with the link of a public repository with the code of your
    app. Make sure to keep the private key file (``contacts.key``) secret and

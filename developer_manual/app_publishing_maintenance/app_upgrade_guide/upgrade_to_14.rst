@@ -33,7 +33,8 @@ Changed APIs
 * ``\OCP\Mail`` and the email templates got type hints.
 * ``\OCP\Authentication\TwoFactorAuth`` got typehints and return type hints.
 * ``\OCP\Migration\IMigrationStep`` has two new methods.
-* ``EMailTemplate`` child classes should use the `%$1s` notation for replacements to be future compatible and be able to reuse parameters.
+* ``EMailTemplate`` child classes should use the `%$1s` notation for replacements to be future compatible and be able to
+  reuse parameters.
 
 Deprecated APIs
 ^^^^^^^^^^^^^^^

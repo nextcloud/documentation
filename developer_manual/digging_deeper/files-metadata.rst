@@ -10,7 +10,9 @@ Nextcloud includes an API to manage files' metadata, with a deep integration in 
 Concept overview
 ----------------
 
-When a file is created or modified on Nextcloud, a refresh of its metadata is initiated. You will then be able to listen to the `MetadataLiveEvent` event to create, update, or delete metadata. If you suspect your process to be hungry in time or resources, you can request for a background event called `MetadataBackgroundEvent` and do your work there.
+When a file is created or modified on Nextcloud, a refresh of its metadata is initiated. You will then be able to listen
+to the `MetadataLiveEvent` event to create, update, or delete metadata. If you suspect your process to be hungry in time
+or resources, you can request for a background event called `MetadataBackgroundEvent` and do your work there.
 
 Consuming the Files Metadata API
 --------------------------------
@@ -30,7 +32,8 @@ This manager offers the following methods:
 Live & Background Events
 ------------------------
 
-Two (2) events can be caught by your app to generate metadata. The first one is called on the main process, just after the upload/modification of the file.
+Two (2) events can be caught by your app to generate metadata. The first one is called on the main process, just after
+the upload/modification of the file.
 The second one is called on a background process, initiated by cronjob.
 
  * ``OCP\FilesMetadata\Event\MetadataLiveEvent``
@@ -363,7 +366,8 @@ This will return a result like:
 Metadata Query Helper
 ---------------------
 
-``IFilesMetadataManager::getMetadataQuery(IQueryBuilder $qb, string $fileTableAlias, string $fileIdField)`` returns a ``IMetadataQuery`` to help building Sql request with the following methods.
+``IFilesMetadataManager::getMetadataQuery(IQueryBuilder $qb, string $fileTableAlias, string $fileIdField)`` returns a
+``IMetadataQuery`` to help building Sql request with the following methods.
 Parameters when calling the method are the alias of the table, and the name of the field, that contains file ids.
 
  * ``retrieveMetadata()`` will add a select on the stored metadata

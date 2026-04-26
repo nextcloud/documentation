@@ -72,4 +72,5 @@ Sanitizing invalid filenames
 
 After enabling the feature the users have to manually adjust all invalid filenames
 to be able to keep working with them.
-As an alternative Nextcloud provides the :ref:`occ files:sanitize-filenames <occ_files_sanitize_filenames>` command to automatically rename all invalid files.
+As an alternative Nextcloud provides the :ref:`occ files:sanitize-filenames <occ_files_sanitize_filenames>` command to
+automatically rename all invalid files.

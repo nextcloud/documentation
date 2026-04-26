@@ -95,7 +95,8 @@ Redirect to ExApp UI page (top menu)
 .. note::
     Supported only for Nextcloud 28+.
 
-If you want to open some files in the ExApp UI, your FileActionsMenu has to be registered using OCS v2 version (``/apps/app_api/api/v2/ui/files-actions-menu``).
+If you want to open some files in the ExApp UI, your FileActionsMenu has to be registered using OCS v2 version
+(``/apps/app_api/api/v2/ui/files-actions-menu``).
 
 After that, AppAPI will expect in the JSON response of the ExApp ``action_handler``
 the ``redirect_handler`` - a relative path on the ExApp Top Menu page,

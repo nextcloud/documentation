@@ -10,7 +10,8 @@ FullTextSearch includes an OCS API to index the content of your Nextcloud into a
 Concept overview
 ----------------
 
-Because your structure might already host its own search engine, the FullTextSearch apps provide an OCS API to helps you index your users' content and maintain an up-to-date index.
+Because your structure might already host its own search engine, the FullTextSearch apps provide an OCS API to helps you
+index your users' content and maintain an up-to-date index.
 The OCS API will allow your script to:
 
 * returns a list of not indexed, or freshly updated, document from Nextcloud,
@@ -24,7 +25,8 @@ First steps
 Installing the apps
 ^^^^^^^^^^^^^^^^^^^
 
-On top of the `fulltextsearch` app, at least one content provider needs to be installed on the Nextcloud; meaning that a minimum of 2 apps have to be installed before using this feature:
+On top of the `fulltextsearch` app, at least one content provider needs to be installed on the Nextcloud; meaning that a
+minimum of 2 apps have to be installed before using this feature:
 
 .. code-block:: console
 
@@ -34,7 +36,8 @@ On top of the `fulltextsearch` app, at least one content provider needs to be in
 Initializing the collection
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Using `occ`, create a new collection that will be used to sync the content indexed on the external search engine with the current content of the Nextcloud.
+Using `occ`, create a new collection that will be used to sync the content indexed on the external search engine with
+the current content of the Nextcloud.
 
 .. code-block:: console
 
@@ -46,7 +49,8 @@ Using `occ`, create a new collection that will be used to sync the content index
 Linking a collection to a user account
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-By default this API can only be used with an admin account but, for security reason, you can choose to link a non-admin account and use this account when requesting the API.
+By default this API can only be used with an admin account but, for security reason, you can choose to link a non-admin
+account and use this account when requesting the API.
 
 .. code-block:: console
 
@@ -174,7 +178,8 @@ The endpoint to get data about a document is:
 Set document as indexed
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-Once a document has been indexed in your external search engine, you have to notice the FullTextSearch of this action. This is done by doing a ``POST`` request on the following path:
+Once a document has been indexed in your external search engine, you have to notice the FullTextSearch of this action.
+This is done by doing a ``POST`` request on the following path:
 
 ``/ocs/v2.php/apps/fulltextsearch/collection/<collection_name>/document/<provider_id>/<document_id>/done``
 

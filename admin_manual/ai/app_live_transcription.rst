@@ -32,14 +32,16 @@ Installation
 
    Changing these environment variables after installation is possible through a re-installation of the app after uninstalling it first.
 
-5. Install a Text-to-text task processing provider app for translation capabilities from the "Backend apps" section :ref:`here <mt-consumer-apps>`.
+5. Install a Text-to-text task processing provider app for translation capabilities from the "Backend apps" section
+   :ref:`here <mt-consumer-apps>`.
 
 Requirements
 ------------
 
 * Minimal Nextcloud version: 33
 * Nextcloud AIO is supported
-* We currently support NVIDIA GPUs and x86_64 CPUs. Only CPU-based transcription is also supported and works well on modern x86 CPUs.
+* We currently support NVIDIA GPUs and x86_64 CPUs. Only CPU-based transcription is also supported and works well on
+  modern x86 CPUs.
 * CUDA >= v12.4.1 on your host system for GPU-based transcription
 * GPU Sizing
 
@@ -103,7 +105,8 @@ Nextcloud customers should file bugs directly with our Customer Support.
 Limitations
 -----------
 
-* The generated transcripts may not be perfect and may contain errors. It can also depend on the audio quality and the speaker's accent.
+* The generated transcripts may not be perfect and may contain errors. It can also depend on the audio quality and the
+  speaker's accent.
 * The app currently supports only a limited number of languages. More languages may be added in the future.
 * The languages other than English may have lower accuracy mainly due to the shipped models being smaller.
 * The app currently does not support punctuation in the transcription.

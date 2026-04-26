@@ -4,7 +4,10 @@ JavaScript APIs
 
 Nextcloud apps can use existing JavaScript APIs to ease the development of front-end components and simple scripts.
 
-The APIs used to be provided via global variables, available on most pages of Nextcloud. To smoothen the development experience with modern development tools, this method is in the process of being deprecated and removed. Existing APIs are being migrated to npm packages and new APIs will only be available that way. The bottom of the page covers the basics of the global variable method, if you want to develop an app for old versions of Nextcloud.
+The APIs used to be provided via global variables, available on most pages of Nextcloud. To smoothen the development
+experience with modern development tools, this method is in the process of being deprecated and removed. Existing APIs
+are being migrated to npm packages and new APIs will only be available that way. The bottom of the page covers the
+basics of the global variable method, if you want to develop an app for old versions of Nextcloud.
 
 npm packages
 ------------
@@ -15,7 +18,10 @@ npm packages
 Usage
 ^^^^^
 
-The idea is that apps install these packages via `npm` and bundle the code with tools like `Babel <https://babeljs.io/>`_, `Webpack <https://webpack.js.org/>`_ or `Parcel <https://parceljs.org/>`_. This ensures that an app runs the exact same code independent of the Nextcloud version and also reduces the chances of running into conflicts with other apps.
+The idea is that apps install these packages via `npm` and bundle the code with tools like `Babel
+<https://babeljs.io/>`_, `Webpack <https://webpack.js.org/>`_ or `Parcel <https://parceljs.org/>`_. This ensures that an
+app runs the exact same code independent of the Nextcloud version and also reduces the chances of running into conflicts
+with other apps.
 
 For more details on the design considerations see `the discussion on GitHub <https://github.com/nextcloud/server/issues/15932>`_.
 
@@ -74,7 +80,8 @@ This package provides access to UI dialogs in Nextcloud. Documentation: https://
 ``@nextcloud/files``
 ^^^^^^^^^^^^^^^^^^^^
 
-This package provides methods to access the public API of the Files app, helper functions to access Nextcloud files using WebDAV,
+This package provides methods to access the public API of the Files app, helper functions to access Nextcloud files
+using WebDAV,
 and utility functions to work with files and folders. Documentation: https://nextcloud-libraries.github.io/nextcloud-files/
 
 ``@nextcloud/initial-state``
@@ -117,7 +124,8 @@ This package provides helpers to generate URLs, e.g. to access assets and REST A
 ``@nextcloud/sharing``
 ^^^^^^^^^^^^^^^^^^^^^^
 
-This package provides helpers interact with the Files sharing app, e.g. to detect if the current page is a public share and retrieving the sharing token.
+This package provides helpers interact with the Files sharing app, e.g. to detect if the current page is a public share
+and retrieving the sharing token.
 Documentation: https://nextcloud-libraries.github.io/nextcloud-sharing/
 
 .. _js-library_nextcloud-vue:
@@ -136,7 +144,10 @@ Events
 Network state changes
 ^^^^^^^^^^^^^^^^^^^^^
 
-Your app can react to lost network connectivity, e.g. to gracefully handle this state where no server interaction is possible. Since the communication with the server mostly requires a valid CSRF token, you might not want to send any request before the token was updated. Nextcloud can notify you when this has happened. Use the ``@nextcloud/event-bus`` to listen for the ``networkOnline`` and ``networkOffline`` events:
+Your app can react to lost network connectivity, e.g. to gracefully handle this state where no server interaction is
+possible. Since the communication with the server mostly requires a valid CSRF token, you might not want to send any
+request before the token was updated. Nextcloud can notify you when this has happened. Use the ``@nextcloud/event-bus``
+to listen for the ``networkOnline`` and ``networkOffline`` events:
 
 .. code-block:: js
 
@@ -154,23 +165,27 @@ Your app can react to lost network connectivity, e.g. to gracefully handle this 
 Global variables
 ----------------
 
-There are also global variables that acted as APIs in the past. The use of these variables is discouraged, as they lead to script loading order problems and the dependency hell, making it hard for the server component to update libraries.
+There are also global variables that acted as APIs in the past. The use of these variables is discouraged, as they lead
+to script loading order problems and the dependency hell, making it hard for the server component to update libraries.
 
 .. note:: Be careful with accessing global variables as their availability depends on the order in which scripts are loaded. Thus they might not have been assigned yet when your script runs. Use the document ``load`` event to wait until all scripts have been loaded and executed.
 
 OC – internal APIs
 ^^^^^^^^^^^^^^^^^^
 
-The ``OC`` variable provides access to many internals of the Nextcloud server. It's not intended for use by apps as the APIs may change any time.
+The ``OC`` variable provides access to many internals of the Nextcloud server. It's not intended for use by apps as the
+APIs may change any time.
 
 
 OCA – App APIs
 ^^^^^^^^^^^^^^
 
-Some apps use the ``OCA`` variable as a place to register their types. Except for edge cases with inter-app communication, you should not assign anything to this variable.
+Some apps use the ``OCA`` variable as a place to register their types. Except for edge cases with inter-app
+communication, you should not assign anything to this variable.
 
 
 OCP – Public APIs
 ^^^^^^^^^^^^^^^^^
 
-Some more stable APIs are exposed in the ``OCP`` "namespace". Since the release of the `npm packages`_, the got obsolete and thus will be deprecated.
+Some more stable APIs are exposed in the ``OCP`` "namespace". Since the release of the `npm packages`_, the got obsolete
+and thus will be deprecated.

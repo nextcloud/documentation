@@ -2,7 +2,8 @@
 Installation example with Docker
 ================================
 
-We'll describe how to get Nextcloud Office running on your server and how to integrate it into your Nextcloud using the docker image Nextcloud and Collabora built.
+We'll describe how to get Nextcloud Office running on your server and how to integrate it into your Nextcloud using the
+docker image Nextcloud and Collabora built.
 
 
 To install it the following dependencies are required:
@@ -17,7 +18,9 @@ To install it the following dependencies are required:
 Install the Collabora Online server
 **************************************
 
-The following steps will download the Collabora Online docker. Make sure to replace "cloud.example.com" with the host that your own Nextcloud runs on. If you want to use the docker container with more than one Nextcloud, you can add another `-e aliasgroup2=https://cloud2.example.com:443`.
+The following steps will download the Collabora Online docker. Make sure to replace "cloud.example.com" with the host
+that your own Nextcloud runs on. If you want to use the docker container with more than one Nextcloud, you can add
+another `-e aliasgroup2=https://cloud2.example.com:443`.
 
 .. code-block:: bash
 
@@ -28,7 +31,8 @@ The following steps will download the Collabora Online docker. Make sure to repl
         --cap-add MKNOD \
         collabora/code
 
-That will be enough. Once you have done that the server will listen on "localhost:9980". Now we just need to configure the locally installed Apache reverse proxy.
+That will be enough. Once you have done that the server will listen on "localhost:9980". Now we just need to configure
+the locally installed Apache reverse proxy.
 
 Install the Apache reverse proxy
 ***********************************
@@ -102,7 +106,8 @@ Congratulations, your Nextcloud has Collabora Online Office integrated!
 Updating
 ********
 
-Occasionally, new versions of this docker image are released with security and feature updates. We will of course let you know when that happens! This is how you upgrade to a new version:
+Occasionally, new versions of this docker image are released with security and feature updates. We will of course let
+you know when that happens! This is how you upgrade to a new version:
 
 Update the docker image:
     .. code-block:: bash

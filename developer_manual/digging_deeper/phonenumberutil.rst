@@ -32,7 +32,8 @@ When no region is given and the phone number can not be mapped to a single regio
   // Will output:
   // NULL
 
-The phone number can also be provided in an international format containing the region code. In this case, the default region is ignored:
+The phone number can also be provided in an international format containing the region code. In this case, the default
+region is ignored:
 
 .. code-block:: php
 
@@ -46,7 +47,8 @@ The phone number can also be provided in an international format containing the 
 Get the country code for a region
 ---------------------------------
 
-To check if a provided region is valid (2-letter code of ``ISO 3166-1``) and has a country code use ``getCountryCodeForRegion()``:
+To check if a provided region is valid (2-letter code of ``ISO 3166-1``) and has a country code use
+``getCountryCodeForRegion()``:
 
 .. code-block:: php
 

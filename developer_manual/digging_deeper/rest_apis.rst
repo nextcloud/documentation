@@ -6,7 +6,8 @@ REST APIs
 
 .. sectionauthor:: Bernhard Posselt <dev@bernhard-posselt.com>
 
-Offering a RESTful API is not different from creating a :doc:`route <../basics/routing>` and :doc:`controllers <../basics/controllers>` for the web interface.
+Offering a RESTful API is not different from creating a :doc:`route <../basics/routing>` and :doc:`controllers
+<../basics/controllers>` for the web interface.
 It is recommended though to inherit from ApiController and add ``#[CORS]`` attribute to the methods so that `web applications will also be able to access the API <https://developer.mozilla.org/en-US/docs/Web/HTTP/Access_control_CORS>`_.
 
 .. code-block:: php
@@ -31,7 +32,8 @@ It is recommended though to inherit from ApiController and add ``#[CORS]`` attri
 
     }
 
-CORS also needs a separate URL for the preflighted **OPTIONS** request that can easily be added by adding the following route:
+CORS also needs a separate URL for the preflighted **OPTIONS** request that can easily be added by adding the following
+route:
 
 .. code-block:: php
 
@@ -45,7 +47,8 @@ CORS also needs a separate URL for the preflighted **OPTIONS** request that can 
     )
 
 
-Keep in mind that multiple apps will likely depend on the API interface once it is published and they will move at different speeds to react to changes implemented in the API.
+Keep in mind that multiple apps will likely depend on the API interface once it is published and they will move at
+different speeds to react to changes implemented in the API.
 Therefore it is recommended to version the API in the URL to not break existing apps when backwards incompatible changes are introduced::
 
     /index.php/apps/myapp/api/1.0/resource
@@ -117,8 +120,10 @@ There are different ways a clients might interact with your APIs.
 These ways depend on your API configuration (what you allow) and on which route the request is finally made.
 
 - *Access from web frontend* means the user is accessing the Nextcloud web frontend with a web browser.
-- *Access from non-browser* is if the user accesses the resource or page using something that is not a web browser, like an Android app or a curl command.
-- *Access from external website* means that the user browses some third party web site and data from your Nextcloud server appears.
+- *Access from non-browser* is if the user accesses the resource or page using something that is not a web browser, like
+  an Android app or a curl command.
+- *Access from external website* means that the user browses some third party web site and data from your Nextcloud
+  server appears.
   The other website has to embed/load/use images, JSON data, or other resources from a URL pointing to the Nextcloud server, to be able to do this.
 
 .. hint::
@@ -161,12 +166,15 @@ These ways depend on your API configuration (what you allow) and on which route 
 Methods from ``Controller`` classes can return ``DataResponse`` objects similar to ``OCSController`` class methods.
 For methods of a ``Controller`` class, the data of this response is sent e.g. as JSON as you provide it.
 Basically, the output is very similar to what ``json_encode`` would do.
-In contrast, the ``OCSController`` will encapsulate the data in an outer shell that provides some more (meta) information.
+In contrast, the ``OCSController`` will encapsulate the data in an outer shell that provides some more (meta)
+information.
 For example a status code (similar to the HTTP status code) is transmitted at top level.
 The actual data is transmitted in the ``data`` property.
 
-As a rule of thumb one can conclude that OCS provides a good way to handle most use cases including sufficient security checks.
-The only exception to this is if you want to provide an API for external usage where you have to comply with an externally defined API scheme.
+As a rule of thumb one can conclude that OCS provides a good way to handle most use cases including sufficient security
+checks.
+The only exception to this is if you want to provide an API for external usage where you have to comply with an
+externally defined API scheme.
 Here, the encapsulation introduced in OCS and CSRF checks might be in your way.
 
 
@@ -177,13 +185,15 @@ Historical options
   The information in this section are mainly for reference purposes. Do not use the approaches in new code.
 
 Before Nextcloud 30 the plain ``Controller`` classes' methods did not respect the ``OCS-APIRequest`` header.
-Thus, to provide access to this type of controller methods for external apps, it was necessary to use the ``#[NoCSRFRequired]`` attribute (or the corresponding ``@NoCSRFRequired`` annotation).
+Thus, to provide access to this type of controller methods for external apps, it was necessary to use the
+``#[NoCSRFRequired]`` attribute (or the corresponding ``@NoCSRFRequired`` annotation).
 
 The following combinations of attributes were relevant for various scenarios:
 
 #. Plain frontend route: ``Controller`` class
 #. Plain frontend with CRSF checks disabled: ``Controller`` class and ``#[NoCSRFRequired]`` attribute on the method
-#. Plain frontend route with CORS enabled: ``Controller`` class and ``#[CORS]`` and ``#[NoCSRFRequired]`` attributes on the route
+#. Plain frontend route with CORS enabled: ``Controller`` class and ``#[CORS]`` and ``#[NoCSRFRequired]`` attributes on
+   the route
 #. OCS route: ``OCSController`` class
 #. OCS route with CORS enabled: ``OCSController`` class and ``#[CORS]`` attribute on the method
 

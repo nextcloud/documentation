@@ -126,7 +126,8 @@ systemd
 
 If systemd is installed on the system, a systemd timer could be an alternative to a cronjob.
 
-This approach requires two files: **nextcloudcron.service** and **nextcloudcron.timer**. Create these two files in ``/etc/systemd/system/``.
+This approach requires two files: **nextcloudcron.service** and **nextcloudcron.timer**. Create these two files in
+``/etc/systemd/system/``.
 
 **nextcloudcron.service** should look like this::
 
@@ -139,13 +140,17 @@ This approach requires two files: **nextcloudcron.service** and **nextcloudcron.
   ExecStart=/usr/bin/php -f /var/www/nextcloud/cron.php
   KillMode=process
 
-Replace the user ``www-data`` with the user of your http server and ``/var/www/nextcloud/cron.php`` with the location of **cron.php** in your nextcloud directory.
+Replace the user ``www-data`` with the user of your http server and ``/var/www/nextcloud/cron.php`` with the location of
+**cron.php** in your nextcloud directory.
 
-The `ExecCondition` checks that the nextcloud instance is operating normally before running the background job, and skips it if otherwise.
+The `ExecCondition` checks that the nextcloud instance is operating normally before running the background job, and
+skips it if otherwise.
 
-The ``KillMode=process`` setting is necessary for external programs that are started by the cron job to keep running after the cron job has finished.
+The ``KillMode=process`` setting is necessary for external programs that are started by the cron job to keep running
+after the cron job has finished.
 
-Note that the **.service** unit file does not need an ``[Install]`` section. Please check your setup because we recommended it in earlier versions of this admin manual.
+Note that the **.service** unit file does not need an ``[Install]`` section. Please check your setup because we
+recommended it in earlier versions of this admin manual.
 
 **nextcloudcron.timer** should look like this::
 
@@ -160,7 +165,9 @@ Note that the **.service** unit file does not need an ``[Install]`` section. Ple
   [Install]
   WantedBy=timers.target
 
-The important parts in the timer-unit are ``OnBootSec`` and ``OnUnitActiveSec``. ``OnBootSec`` will start the timer 5 minutes after boot, otherwise, you would have to start it manually after every boot. ``OnUnitActiveSec`` will set a 5-minute timer after the service-unit was last activated.
+The important parts in the timer-unit are ``OnBootSec`` and ``OnUnitActiveSec``. ``OnBootSec`` will start the timer 5
+minutes after boot, otherwise, you would have to start it manually after every boot. ``OnUnitActiveSec`` will set a
+5-minute timer after the service-unit was last activated.
 
 Now all that is left is to start and enable the timer by running this command::
 

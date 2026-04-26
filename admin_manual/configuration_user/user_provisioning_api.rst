@@ -15,7 +15,8 @@ The base URL for all calls to the Provisioning API is ``https://cloud.example.co
 
 All calls to OCS endpoints require the ``OCS-APIRequest`` header to be set to ``true``.
 
-All POST requests require the ``Content-Type: application/x-www-form-urlencoded`` header. (Note: Some libraries like cURL set this header automatically, others require setting the header explicitly.)
+All POST requests require the ``Content-Type: application/x-www-form-urlencoded`` header. (Note: Some libraries like
+cURL set this header automatically, others require setting the header explicitly.)
 
 .. toctree::
     :maxdepth: 1

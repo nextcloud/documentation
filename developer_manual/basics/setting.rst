@@ -169,7 +169,8 @@ setting with attribute.
     }
 
 
-If you have several ``IDelegatedSettings`` classes that are needed for a function, simply add the annotation multiple times.
+If you have several ``IDelegatedSettings`` classes that are needed for a function, simply add the annotation multiple
+times.
 them in the key "settings" and they must separate with semi-colons.
 
 .. note::

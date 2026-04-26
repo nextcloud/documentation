@@ -4,7 +4,8 @@ Lexicon
 
 .. versionadded:: 32
 
-Since v32, Nextcloud provides a way to centralize the definition of your app's configuration keys and values in a single place.
+Since v32, Nextcloud provides a way to centralize the definition of your app's configuration keys and values in a single
+place.
 
 
 .. _concept-overview:
@@ -30,7 +31,8 @@ Details about each config key are:
 Registering your Lexicon
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-The Lexicon is set in a local class that implements `\OCP\Config\Lexicon\ILexicon` and registered from your ``Application.php``:
+The Lexicon is set in a local class that implements `\OCP\Config\Lexicon\ILexicon` and registered from your
+``Application.php``:
 
 .. code-block:: php
 
@@ -70,7 +72,8 @@ Example of the registered ``ConfigLexicon.php``:
 
 Each method ``getUserConfigs()`` and ``getAppConfigs()`` returns a list of ``\OCP\Config\Lexicon\Entry``.
 
-``getStrictness()`` is used to define the expected behavior of the process when reaching a config keys that is not listed in your app's Config Lexicon.
+``getStrictness()`` is used to define the expected behavior of the process when reaching a config keys that is not
+listed in your app's Config Lexicon.
 Must returns a value from enum ``\OCP\Config\Lexicon\Strictness``.
 
 Available values:
@@ -102,8 +105,10 @@ Each config key is defined in a object through those arguments:
 Preset
 ^^^^^^
 
-With 32, Nextcloud comes with a list of `preset` to ease the default user experience, based on the context of the instance.
-The selection of a preset is optional and can be done right after the setup of Nextcloud, and any time in the future using this occ command:
+With 32, Nextcloud comes with a list of `preset` to ease the default user experience, based on the context of the
+instance.
+The selection of a preset is optional and can be done right after the setup of Nextcloud, and any time in the future
+using this occ command:
 
 .. code-block:: bash
 
@@ -112,7 +117,8 @@ The selection of a preset is optional and can be done right after the setup of N
 	$ ./occ config:preset PRIVATE
 	current preset: PRIVATE
 
-If you want your app to have a different default value based on the selected Preset, you need to generate a Closure as ``$defaultRaw`` when generating the Lexicon Entry.
+If you want your app to have a different default value based on the selected Preset, you need to generate a Closure as
+``$defaultRaw`` when generating the Lexicon Entry.
 The first parameter of the Closure is an Enum ``'\OCP\Config\Lexicon\Preset'`` that define the current Preset:
 
 .. code-block:: php

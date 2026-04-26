@@ -158,7 +158,9 @@ Obtaining the Client Log File
 Create Debug Archive
 ~~~~~~~~~~~~~~~~~~~~
 
-Since the 3.1.0 release we made it easier for users to provide debug information: debug logging is enabled by default with expiration time set to 24 hours and under the "General" settings, you can click on "Create Debug Archive ..." to pick the location of where the desktop client will export the logs and the database to a zip file.
+Since the 3.1.0 release we made it easier for users to provide debug information: debug logging is enabled by default
+with expiration time set to 24 hours and under the "General" settings, you can click on "Create Debug Archive ..." to
+pick the location of where the desktop client will export the logs and the database to a zip file.
 
 .. figure:: images/create_debug_archive.png
    :alt: Create debug archive
@@ -213,7 +215,8 @@ or directory.  This is a useful option for troubleshooting sporadic issues as
 it enables you to log large amounts of data and bypass the limited buffer
 settings associated with the log window.
 
-To enable logging to a directory, stop the client and add the following to the General section in the configuration file:
+To enable logging to a directory, stop the client and add the following to the General section in the configuration
+file:
 
 ::
 

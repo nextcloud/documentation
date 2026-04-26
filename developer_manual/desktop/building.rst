@@ -231,7 +231,8 @@ Setting up Microsoft Visual Studio
 Handling the dependencies 
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-We handle the dependencies using `KDE Craft <https://community.kde.org/Craft>`_ because it is easy to set it up and it makes the maintenance much more reliable in all platforms.
+We handle the dependencies using `KDE Craft <https://community.kde.org/Craft>`_ because it is easy to set it up and it
+makes the maintenance much more reliable in all platforms.
 
 1. Set up KDE Craft as instructed in `Get Involved/development/Windows - KDE Community Wiki <https://community.kde.org/Get_Involved/development/Windows>`_ -  it requires Python 3 and PowerShell.
 2. After running:
@@ -256,7 +257,9 @@ We handle the dependencies using `KDE Craft <https://community.kde.org/Craft>`_ 
 Compiling
 ^^^^^^^^^
 
-1. Make sure your environment variable %PATH% has no conflicting information to the environment you will use to compile the client. For instance, if you have installed OpenSSL previously and have added it to %PATH%, the OpenSSL installed might be a different version than what was installed via KDE Craft.
+1. Make sure your environment variable %PATH% has no conflicting information to the environment you will use to compile
+   the client. For instance, if you have installed OpenSSL previously and have added it to %PATH%, the OpenSSL installed
+   might be a different version than what was installed via KDE Craft.
 2. Open the Command Prompt (cmd.exe)
 3. Run:
 
@@ -288,7 +291,8 @@ Compiling
   cmake .. -G Ninja -DCMAKE_INSTALL_PREFIX=. -DCMAKE_PREFIX_PATH=C:\CraftRoot -DCMAKE_BUILD_TYPE=RelWithDebInfo
   cmake --build . --target install
   
-7. Now you can use `Qt Creator <https://doc.qt.io/qtcreator>`_ to import the build folder with its configurations to be able to work with the code.
+7. Now you can use `Qt Creator <https://doc.qt.io/qtcreator>`_ to import the build folder with its configurations to be
+   able to work with the code.
 
 Windows Installer (i.e. Deployment) Build (Cross-Compile)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

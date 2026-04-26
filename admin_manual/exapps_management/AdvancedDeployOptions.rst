@@ -6,7 +6,8 @@ Advanced Deploy Options
 
 AppAPI allows optionally to configure environment variables and mounts for the ExApp container.
 
-It is available via "Deploy options" modal next to "Deploy and Enable" button in the sidebar of the ExApp page on the Apps management page:
+It is available via "Deploy options" modal next to "Deploy and Enable" button in the sidebar of the ExApp page on the
+Apps management page:
 
 .. image:: ./img/advanced_deploy_options_1.png
 

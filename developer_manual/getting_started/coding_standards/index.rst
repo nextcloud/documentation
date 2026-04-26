@@ -7,7 +7,8 @@ General
 -------
 
 * Ideally, discuss your plans on the `forums <https://help.nextcloud.com>`_ to see if others want to work with you on it
-* We use `GitHub <https://github.com/nextcloud>`_, please get an account there and clone the repositories you want to work on
+* We use `GitHub <https://github.com/nextcloud>`_, please get an account there and clone the repositories you want to
+  work on
 * Fixes go directly to the main branch, nevertheless they need to be tested thoroughly.
 * New features are always developed in a branch and only merged to the main branch once they are fully done.
 * Software should work. We only put features into the main branch when they are complete.
@@ -19,7 +20,8 @@ General
   See :doc:`the code review page for more information <../../prologue/bugtracker/codereviews>`
 * It is key to keep changes separate and small. The bigger and more hairy a PR grows, the harder it is to get it in.
   So split things up where you can in smaller changes - if you need a small improvement like a API addition for a big feature addition, get it in first rather than adding it to the big piece of work!
-* Decisions are made by consensus. We strive for making the best technical decisions and as nobody can know everything, we collaborate.
+* Decisions are made by consensus. We strive for making the best technical decisions and as nobody can know everything,
+  we collaborate.
   That means a first negative comment might not be the final word, neither is positive feedback an immediate GO. Nextcloud is built out of modular pieces (apps) and maintainers have a strong influence.
   In case of disagreement we consult other seasoned contributors.
 
@@ -28,7 +30,8 @@ Labels
 
 We assign labels to issues and pull requests to make it easy to find them and to signal what needs to be done.
 Some of these are assigned by the developers, others by QA, bug triagers, project lead or maintainers and so on.
-It is not desired that users/reporters of bugs assign labels themselves, unless they are developers/contributors to Nextcloud.
+It is not desired that users/reporters of bugs assign labels themselves, unless they are developers/contributors to
+Nextcloud.
 
 The most important labels and their meaning:
 
@@ -58,16 +61,19 @@ The most important labels and their meaning:
   * ``design`` - this needs help from the design team or is a design-related issue/pull request
   * ``good first issue`` - these are issues which are relatively easy to solve and ideal for people who want to learn how to code in Nextcloud
 
-* ``backport-request`` - the pull requests also needs to be applied to older Nextcloud versions. This tag is typically assigned by automation.
+* ``backport-request`` - the pull requests also needs to be applied to older Nextcloud versions. This tag is typically
+  assigned by automation.
 
 User interface
 --------------
 
 * Software should get out of the way. Do things automatically instead of offering configuration options.
-* Software should be easy to use. Show only the most important elements. Secondary elements only on hover or via Advanced function.
+* Software should be easy to use. Show only the most important elements. Secondary elements only on hover or via
+  Advanced function.
 * User data is sacred. Provide undo instead of asking for confirmation - `which might be dismissed <http://www.alistapart.com/articles/neveruseawarning/>`_
 * The state of the application should be clear. If something loads, provide feedback.
-* Do not adapt broken concepts (for example design of desktop apps) just for the sake of consistency. We aim to provide a better interface, so let's find out how to do that!
+* Do not adapt broken concepts (for example design of desktop apps) just for the sake of consistency. We aim to provide
+  a better interface, so let's find out how to do that!
 * Regularly reset your installation to see how the first-run experience is like. And improve it.
 * Ideally do `usability testing <http://jancborchardt.net/usability-in-free-software>`_ to know how people use the software.
 * For further UX principles, read `Alex Faaborg from Mozilla <http://uxmag.com/articles/quantifying-usability>`_.
@@ -85,7 +91,8 @@ Coding standards
 * Code should be tested, ideally with unit and integration tests.
 * When you ``git pull``, always ``git pull --rebase`` to avoid generating extra commits like: *merged main into main*
 
-The most part of Nextcloud is written in PHP, Typescript / JavaScript, so we have some more fine grained coding standards for those languages:
+The most part of Nextcloud is written in PHP, Typescript / JavaScript, so we have some more fine grained coding
+standards for those languages:
 
 .. toctree::
 	:maxdepth: 1
@@ -98,7 +105,8 @@ License headers
 ---------------
 
 Nextcloud is licensed under the `GNU Affero General Public License v3.0 <https://www.gnu.org/licenses/agpl>`_.
-From 16 June 2016, we switched to "GNU Affero General Public License v3.0 or later" for better long-term maintainability.
+From 16 June 2016, we switched to "GNU Affero General Public License v3.0 or later" for better long-term
+maintainability.
 
 If you create a new file please use this header:
 
@@ -111,12 +119,14 @@ If you create a new file please use this header:
    
 The year should then be the creation time and the email address is optional.
 
-If you edit an existing file please, please keep the existing license header as it is and just add your copyright notice, if you consider your changes substantial enough to claim copyright.
+If you edit an existing file please, please keep the existing license header as it is and just add your copyright
+notice, if you consider your changes substantial enough to claim copyright.
 
 In order to do so there are two options:
 
 * If a generic header is already present, please just add yourself to the AUTHORS.md file
-* If no generic header is present, you can add yourself with a copyright line as described above. As a rule of thumb, this is the case if you contributed more than seven lines of code.
+* If no generic header is present, you can add yourself with a copyright line as described above. As a rule of thumb,
+  this is the case if you contributed more than seven lines of code.
 
 An example of a generic license header where adding yourself to the AUTHORS.md
 file is preferred please see the example below

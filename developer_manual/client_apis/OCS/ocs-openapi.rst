@@ -2,7 +2,8 @@
 OCS OpenAPI tutorial
 ====================
 
-This page explains how to add OpenAPI support to your app so you can automatically generate an OpenAPI specification from your code.
+This page explains how to add OpenAPI support to your app so you can automatically generate an OpenAPI specification
+from your code.
 
 Please read the whole tutorial before starting to adapt your app.
 
@@ -98,7 +99,9 @@ For details take a look at :ref:`OCS <ocscontroller>`.
 CAREFULLY handle empty values in JSON Responses
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-When defining API responses, it’s important to make explicit whether an empty value should be ``null``, an empty object (``{}``), or an empty array (``[]``) in the resulting JSON. The PHP type you return determines this, and using the wrong one can easily lead to confusing or inconsistent results for your API consumers.
+When defining API responses, it’s important to make explicit whether an empty value should be ``null``, an empty object
+(``{}``), or an empty array (``[]``) in the resulting JSON. The PHP type you return determines this, and using the wrong
+one can easily lead to confusing or inconsistent results for your API consumers.
 
 .. note::
 
@@ -117,15 +120,18 @@ Here is how PHP values are serialized to JSON:
 +-------------------+--------------------+
 
 - Use ``null`` to indicate that a value is explicitly absent. This should be preferred for most “empty” responses.
-- Use ``new \stdClass()`` **if and only if** the client expects an empty object (`{}`) rather than `null`. This is sometimes required by schema contracts that always expect an object shape, even if empty.
+- Use ``new \stdClass()`` **if and only if** the client expects an empty object (`{}`) rather than `null`. This is
+  sometimes required by schema contracts that always expect an object shape, even if empty.
 
 .. important::
 
    Returning ``new \stdClass()`` as an API response requires at least Nextcloud 28 to reliably serialize to ``{}``.
 
-- **Avoid returning ``[]``** for endpoints expected to yield a JSON object, as this will serialize to a JSON array (`[]`), causing downstream consumers to deal with unpredictable types.
+- **Avoid returning ``[]``** for endpoints expected to yield a JSON object, as this will serialize to a JSON array
+  (`[]`), causing downstream consumers to deal with unpredictable types.
 
-If you are modifying or extending existing APIs and are unable to use ``null`` or ``\stdClass()`` without breaking backward compatibility, you may type the result as ``list<empty>`` to signal an empty array is expected.
+If you are modifying or extending existing APIs and are unable to use ``null`` or ``\stdClass()`` without breaking
+backward compatibility, you may type the result as ``list<empty>`` to signal an empty array is expected.
 
 .. collapse:: Examples
 
@@ -245,10 +251,13 @@ When building your API you will probably only think about how to implement in th
 You need to consider what your code implies to someone trying to use your API through the OpenAPI specification.
 
 One common pitfall is a generic "catch-all" error handler that is reused across many endpoints.
-They are great for your API implementation because you have an easy catch-all solution and you do not need to worry about handling every error correctly.
-They are not great for your OpenAPI documentation and consumers because they will find that every error can occur on every endpoint which is most often not correct.
+They are great for your API implementation because you have an easy catch-all solution and you do not need to worry
+about handling every error correctly.
+They are not great for your OpenAPI documentation and consumers because they will find that every error can occur on
+every endpoint which is most often not correct.
 Instead you should implement manual error handling and only return the relevant errors where they can actually appear.
-You can still use helper methods with generic issue handlers where it makes sense, but only if all the controller methods that call the particular helper method actually throw the caught exceptions.
+You can still use helper methods with generic issue handlers where it makes sense, but only if all the controller
+methods that call the particular helper method actually throw the caught exceptions.
 
 In particular, avoid patterns that make *every* endpoint appear to throw *every* error handled by a shared helper,
 even when the endpoint cannot actually produce those errors.
@@ -431,7 +440,8 @@ responses and will not be represented correctly in the extracted OpenAPI specifi
 DO NOT use the ``addHeader`` (use ``setHeaders``)
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Psalm cannot trace headers set via ``addHeader()``, so they cannot be validated or included correctly in the extracted specification.
+Psalm cannot trace headers set via ``addHeader()``, so they cannot be validated or included correctly in the extracted
+specification.
 Use the ``setHeaders`` method instead.
 
 .. collapse:: Examples
@@ -529,7 +539,8 @@ Let's imagine you built a Todo list app for Nextcloud and have the following con
         }
     }
 
-What you want to do now is to firstly create the correct parameter annotations and add descriptions. It could look like this:
+What you want to do now is to firstly create the correct parameter annotations and add descriptions. It could look like
+this:
 
 .. code-block:: php
 
@@ -608,7 +619,8 @@ The return type for [`DataResponse`](https://github.com/nextcloud/server/blob/ma
 +--------------------------+----------------------------+
 
 Afterwards you can add the return types to all the other methods.
-If two different status codes return the same data structure and headers, you can use the union operator to indicate it: ``Http::STATUS_BAD_REQUEST|Http::STATUS_NOT_FOUND``.
+If two different status codes return the same data structure and headers, you can use the union operator to indicate it:
+``Http::STATUS_BAD_REQUEST|Http::STATUS_NOT_FOUND``.
 
 If you wonder about the return type syntax, the psalm documentation on [typing in Psalm](https://psalm.dev/docs/annotating_code/typing_in_psalm/) might be helpful.
 
@@ -678,7 +690,8 @@ Constants are available in ``OCP\AppFramework\Http\Attribute\OpenAPI::SCOPE_*`` 
 A controller and methods can have multiple scopes, however when a method has the attribute set,
 all scopes from the controller are ignored.
 
-Methods that require admin permissions due to missing ``#[NoAdminRequired]`` or a present ``#[PublicPage]`` attribute or the
+Methods that require admin permissions due to missing ``#[NoAdminRequired]`` or a present ``#[PublicPage]`` attribute or
+the
 matching annotation, default to the ``OpenAPI::SCOPE_ADMINISTRATION`` scope.
 
 .. code-block:: php
@@ -691,7 +704,8 @@ matching annotation, default to the ``OpenAPI::SCOPE_ADMINISTRATION`` scope.
         ...
     }
 
-The different scopes will be saved as ``openapi.json`` for the default scope and ``openapi-{scope}.json`` for the others.
+The different scopes will be saved as ``openapi.json`` for the default scope and ``openapi-{scope}.json`` for the
+others.
 
 Tags
 ----
@@ -743,7 +757,8 @@ To import and use the type definition you have to import it in your controller:
         ...
     }
 
-Now you can replace every occurrence of ``array{id: int, title: string, description: ?string, image: ?string}`` with ``TodoItem``.
+Now you can replace every occurrence of ``array{id: int, title: string, description: ?string, image: ?string}`` with
+``TodoItem``.
 
 Handle exceptions
 -----------------
@@ -783,9 +798,11 @@ Note that you should only used OCS*Exceptions, as any other Exception will resul
 Ignore certain endpoints
 ------------------------
 
-The tool already ignores all the endpoints that are not reachable from the outside, but some apps have reachable endpoints that are not APIs (e.g. serving some HTML).
+The tool already ignores all the endpoints that are not reachable from the outside, but some apps have reachable
+endpoints that are not APIs (e.g. serving some HTML).
 To ignore those you can add the ``#[OpenAPI(scope: OpenAPI::SCOPE_IGNORE)]`` attribute to the controller method
-or the controller class. There is also a deprecated ``#[IgnoreOpenAPI]`` attribute (deprecated since Nextcloud 28) for compatibility, but
+or the controller class. There is also a deprecated ``#[IgnoreOpenAPI]`` attribute (deprecated since Nextcloud 28) for
+compatibility, but
 ``OpenAPI::SCOPE_IGNORE`` should be preferred:
 
 .. code-block:: php
@@ -805,7 +822,8 @@ or the controller class. There is also a deprecated ``#[IgnoreOpenAPI]`` attribu
 Expose capabilities
 -------------------
 
-Imagine we take the same Todo app of the previous example and want to expose some capabilities to let clients know what they can expect.
+Imagine we take the same Todo app of the previous example and want to expose some capabilities to let clients know what
+they can expect.
 
 .. code-block:: php
 

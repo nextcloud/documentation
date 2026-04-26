@@ -23,7 +23,8 @@ If you select a language, the link will only be displayed for users with the sel
 This allows you to have different documentation links for users depending on their language.
 
 It is also possible to add links for a special device (recognized by the user agent).
-Currently the following options are available: All devices, Android app, iOS app, Desktop client and all others (Browsers).
+Currently the following options are available: All devices, Android app, iOS app, Desktop client and all others
+(Browsers).
 
 It is also possible to add links only for members of a given group.
 

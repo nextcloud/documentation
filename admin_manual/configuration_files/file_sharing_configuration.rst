@@ -5,7 +5,8 @@ File Sharing
 ============
 
 Nextcloud users can share files with their Nextcloud groups and other users on
-the same Nextcloud server, with Nextcloud users on :doc:`other Nextcloud servers <federated_cloud_sharing_configuration>`, and create public shares for people who are not
+the same Nextcloud server, with Nextcloud users on :doc:`other Nextcloud servers
+<federated_cloud_sharing_configuration>`, and create public shares for people who are not
 Nextcloud users. You have control of a number of user permissions on file shares.
 
 Configure your sharing policy on your Admin page in the Sharing section.
@@ -83,7 +84,8 @@ Configure your sharing policy on your Admin page in the Sharing section.
   * Check ``Allow username autocompletion to users based on phone number integration`` to limit
     username autocompletion to users when the share owner has synced their phone address book via the Nextcloud Talk mobile clients and it contained the phone number the user configured in their profile.
 
-* Check ``Allow autocompletion when entering the full name or email address (ignoring missing phonebook match and being in the same group)``
+* Check ``Allow autocompletion when entering the full name or email address (ignoring missing phonebook match and being
+  in the same group)``
   to show despite of the previous restrictions a user suggestion, when the complete display name or user id was typed.
 * Check ``Show disclaimer text on the public link upload page`` to set and show
   a disclaimer text on public links with hidden file lists. If you enable this feature a text input will be shown to input the disclaimer text.
@@ -105,7 +107,8 @@ forcing them.
 Advanced settings
 -------------------------------------------------------------------
 
-Here are some edge case settings which are not editable from the web interface, because they are only useful to small subset of administrators.
+Here are some edge case settings which are not editable from the web interface, because they are only useful to small
+subset of administrators.
 
 You can use the ``occ`` command to update those, for example:
 
@@ -198,7 +201,8 @@ Using File Drop Share links
 ------------------------------
 
 Using a File Drop Share allows users to upload files to Nextcloud through an unauthenticated session.
-File Drop Share links will only work when ``Allow public uploads`` is checked in the Sharing section of the Administration Settings page.
+File Drop Share links will only work when ``Allow public uploads`` is checked in the Sharing section of the
+Administration Settings page.
 
 .. note:: File Drop Shares currently have a limitation in that any files uploaded through an unauthenticated session will not be chunked.
     Therefore the maximum file size that can be uploaded through File Drop Shares depends entirely on settings set within your environment.

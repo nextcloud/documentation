@@ -4,7 +4,8 @@ OCS APIs overview
 
 This document provides a quick overview of the OCS API endpoints supported in Nextcloud.
 
-All requests need to provide authentication information, either as a Basic Auth header or by passing a set of valid session cookies, if not stated otherwise.
+All requests need to provide authentication information, either as a Basic Auth header or by passing a set of valid
+session cookies, if not stated otherwise.
 
 Authentication
 --------------
@@ -28,7 +29,8 @@ OIDC Token:
 Testing requests with curl
 --------------------------
 
-All OCS requests can be easily tested out using :code:`curl` by specifying the request method (:code:`GET`, :code:`PUT`, etc) and setting a request body where needed.
+All OCS requests can be easily tested out using :code:`curl` by specifying the request method (:code:`GET`, :code:`PUT`,
+etc) and setting a request body where needed.
 
 For example: you can perform a :code:`GET` request to get information about a user:
 
@@ -43,7 +45,8 @@ User metadata
 
 Since: 11.0.2, 12.0.0
 
-This request returns the available metadata of a user. Admin users can see the information of all users, while a default user only can access their own metadata.
+This request returns the available metadata of a user. Admin users can see the information of all users, while a default
+user only can access their own metadata.
 
 .. code-block:: http
 
@@ -175,7 +178,8 @@ Clients can obtain capabilities provided by the Nextcloud server and its apps vi
 Theming capabilities
 --------------------
 
-Values of the theming app are exposed through the capabilities API, allowing client developers to adjust the look of clients to the theming of different Nextcloud instances.
+Values of the theming app are exposed through the capabilities API, allowing client developers to adjust the look of
+clients to the theming of different Nextcloud instances.
 
 .. code:: xml
 
@@ -194,8 +198,10 @@ Values of the theming app are exposed through the capabilities API, allowing cli
 		<background-default></background-default>
 	</theming>
 
-For elements like radio buttons, input borders and more, instead of the primary ``color`` value, the ``color-element-bright`` should be used on bright background and ``color-element-dark`` on dark background.
-This when the primary color is e.g. set to ``#000000`` the ``color-elemenet-dark`` will be set to ``#555555`` so items are still visible. In the Nextcloud web UI only the top header uses ``color``, everything else uses ``color-element-*``.
+For elements like radio buttons, input borders and more, instead of the primary ``color`` value, the
+``color-element-bright`` should be used on bright background and ``color-element-dark`` on dark background.
+This when the primary color is e.g. set to ``#000000`` the ``color-elemenet-dark`` will be set to ``#555555`` so items
+are still visible. In the Nextcloud web UI only the top header uses ``color``, everything else uses ``color-element-*``.
 Text and icons on these elements should use ``color-text``.
 
 
@@ -261,7 +267,8 @@ results to users that are actually in the current chat conversation.
 Force language for a given call
 -------------------------------
 
-All Nextcloud API calls support forcing the language using the query parameter ``forceLanguage``. It will override any user setting for the given call.
+All Nextcloud API calls support forcing the language using the query parameter ``forceLanguage``. It will override any
+user setting for the given call.
 
 .. code-block:: bash
 

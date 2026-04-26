@@ -4,7 +4,8 @@
 Events
 ======
 
-Events are used to communicate between different aspects of the Nextcloud eco system. They are used in the Nextcloud server internally, for server-to-apps communication as well as inter-app communication.
+Events are used to communicate between different aspects of the Nextcloud eco system. They are used in the Nextcloud
+server internally, for server-to-apps communication as well as inter-app communication.
 
 
 Overview
@@ -20,12 +21,15 @@ The term "events" is a bit broad in Nextcloud and there are multiple ways of emi
 OCP event dispatcher
 --------------------
 
-This mechanism is a versatile and typed approach to events in Nextcloud's php code. It uses objects rather than just passing primitives or untyped arrays. This should help provide a better developer experience while lowering the risk of unexpected changes in the API that are hard to find after the initial implementation.
+This mechanism is a versatile and typed approach to events in Nextcloud's php code. It uses objects rather than just
+passing primitives or untyped arrays. This should help provide a better developer experience while lowering the risk of
+unexpected changes in the API that are hard to find after the initial implementation.
 
 Naming scheme
 `````````````
 
-The name should reflect the subject and the actions. Suffixing event classes with `Event` makes it easier to recognize their purpose.
+The name should reflect the subject and the actions. Suffixing event classes with `Event` makes it easier to recognize
+their purpose.
 
 For example, if a user is created, a `UserCreatedEvent` will be emitted.
 
@@ -84,7 +88,8 @@ A listener can be a simple callback function (or anything else that is `callable
 Listener callbacks
 ******************
 
-You can use simple callback to react on events. They will receive the event object as first and only parameter. You can type-hint the base `Event` class or the subclass you expect and register for.
+You can use simple callback to react on events. They will receive the event object as first and only parameter. You can
+type-hint the base `Event` class or the subclass you expect and register for.
 
 .. code-block:: php
 
@@ -112,7 +117,8 @@ You can use simple callback to react on events. They will receive the event obje
 Listener classes
 ****************
 
-A class that can handle an event will implement the ``\OCP\EventDispatcher\IEventListener`` interface. Class names should end with `Listener`.
+A class that can handle an event will implement the ``\OCP\EventDispatcher\IEventListener`` interface. Class names
+should end with `Listener`.
 
 .. code-block:: php
 
@@ -138,7 +144,8 @@ A class that can handle an event will implement the ``\OCP\EventDispatcher\IEven
 
 .. note:: Php parameter type hints are not allowed to be more specific than the type hints on the interface, thus you can't use `AddEvent` in the method signature but use an `instanceOf` instead.
 
-In the ``Application.php`` the event and the listener class are connected. The class is instantiated only when the actual event is fired.
+In the ``Application.php`` the event and the listener class are connected. The class is instantiated only when the
+actual event is fired.
 
 .. code-block:: php
 
@@ -312,7 +319,8 @@ This event is triggered during the setup of the SabreDAV server to allow the reg
 
 .. versionadded:: 20
 
-This event is triggered during the setup of the SabreDAV server to allow the registration of additional authentication backends.
+This event is triggered during the setup of the SabreDAV server to allow the registration of additional authentication
+backends.
 
 ``\OCA\DAV\Events\SubscriptionCreatedEvent``
 ********************************************
@@ -354,7 +362,8 @@ This event is triggered when the files app is rendered. It can be used to add ad
 
 .. versionadded:: 20
 
-Emitted before the rendering step of the public share page happens. The event holds a flag that specifies if it is the authentication page of a public share.
+Emitted before the rendering step of the public share page happens. The event holds a flag that specifies if it is the
+authentication page of a public share.
 
 ``\OCA\Files_Trashbin\Events\MoveToTrashEvent``
 ***********************************************
@@ -401,12 +410,15 @@ Hooks
 
 .. sectionauthor:: Bernhard Posselt <dev@bernhard-posselt.com>
 
-Hooks are used to execute code before or after an event has occurred. This is for instance useful to run cleanup code after users, groups or files have been deleted. Hooks should be registered in the :doc:`Bootstrapping process <../app_development/bootstrap>`.
+Hooks are used to execute code before or after an event has occurred. This is for instance useful to run cleanup code
+after users, groups or files have been deleted. Hooks should be registered in the :doc:`Bootstrapping process
+<../app_development/bootstrap>`.
 
 Available hooks
 ```````````````
 
-The scope is the first parameter that is passed to the **listen** method, the second parameter is the method and the third one the callback that should be executed once the hook is being called, e.g.:
+The scope is the first parameter that is passed to the **listen** method, the second parameter is the method and the
+third one the callback that should be executed once the hook is being called, e.g.:
 
 .. code-block:: php
 
@@ -480,7 +492,8 @@ Hooks available in scope **\\OC\\Group**:
 Filesystem root
 ```````````````
 
-Injectable from the ServerContainer by calling the method **getRootFolder()**, **getUserFolder()** or **getAppFolder()**.
+Injectable from the ServerContainer by calling the method **getRootFolder()**, **getUserFolder()** or
+**getAppFolder()**.
 
 To enable these events for your app you should add the following to your `info.xml` file:
 

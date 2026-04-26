@@ -15,7 +15,8 @@ This repository hosts three manuals:
 * **Administration Manual**
 * **Developers Manual**
 
-Please work in the appropriate branch: ``stable``-branches are for the respective release (e.g. 14.0 or 15.0), ``master`` is the latest version.
+Please work in the appropriate branch: ``stable``-branches are for the respective release (e.g. 14.0 or 15.0),
+``master`` is the latest version.
 
 Wrap prose lines at **120 characters** where practical. Long URLs, code
 examples, and table cells may exceed this limit. See the
@@ -137,10 +138,12 @@ Using pipenv
 1. Install ``pipenv`` - https://pipenv.readthedocs.io/en/latest/
 2. Change into the environment: ``pipenv shell``
 3. Install the dependencies ``pip install -r requirements.txt``
-4. Now you can use ``make ...`` to build all the stuff - for example ``make html`` to build the HTML flavor of all manuals
+4. Now you can use ``make ...`` to build all the stuff - for example ``make html`` to build the HTML flavor of all
+   manuals
    The build assets will be put into the individual documentation subdirectories like ``developer_manual/_build/html/com``
 
-To change into this environment you need to run ``pipenv shell`` to launch the shell and to exit you can use either ``exit`` or ``Ctrl`` + ``D``.
+To change into this environment you need to run ``pipenv shell`` to launch the shell and to exit you can use either
+``exit`` or ``Ctrl`` + ``D``.
 
 Using venv
 ^^^^^^^^^^
@@ -149,7 +152,8 @@ Using venv
 2. Only once: Create a venv (typically inside this repository): ``python -m venv venv``
 3. Activate the environment (inside this repository): ``source venv/bin/activate``
 4. Install the dependencies ``pip install -r requirements.txt``
-5. Now you can use ``make ...`` to build all the stuff - for example ``make html`` to build the HTML flavor of all manuals
+5. Now you can use ``make ...`` to build all the stuff - for example ``make html`` to build the HTML flavor of all
+   manuals
    The build assets will be put into the individual documentation subdirectories like ``developer_manual/_build/html/com``
 
 Building translated versions
@@ -166,7 +170,8 @@ Only available in user_manual:
 Autobuilding
 ^^^^^^^^^^^^
 
-When editing the documentation installing ``sphinx-autobuild`` though pip can be helpful. This will watch file changes and automatically reload the html preview:
+When editing the documentation installing ``sphinx-autobuild`` though pip can be helpful. This will watch file changes
+and automatically reload the html preview:
 
 1. Install ``pip install sphinx-autobuild``
 2. When building the developer documentation make sure to execute ``make openapi-spec`` in the repository root
@@ -180,7 +185,8 @@ Building PDF
 Building inside docker
 ^^^^^^^^^^^^^^^^^^^^^^
 
-1. Create a docker:: ``docker run --platform linux/amd64 --volume .:/docs --interactive --tty --name nextcloud-docs ghcr.io/nextcloud/continuous-integration-documentation:documentation-15 bash``
+1. Create a docker:: ``docker run --platform linux/amd64 --volume .:/docs --interactive --tty --name nextcloud-docs
+   ghcr.io/nextcloud/continuous-integration-documentation:documentation-15 bash``
 2. Change into the documentation directory: ``cd /docs``
 3. Only once: Create a venv: ``python -m venv venv``
 4. Activate the environment: ``source venv/bin/activate``
@@ -210,8 +216,10 @@ Using the VSCode DevContainer
 
 This repository contains a full-featured `VSCode DevContainer <https://code.visualstudio.com/docs/devcontainers/containers>`_.
 You can use it in your local development environment or via `GitHub Codespaces <https://github.com/features/codespaces>`_.
-Just open the container an use one of the commands from above to build the project. For example ``make`` to build the full
-documentation, ``make html`` to build the HTML documentation or ``make pdf`` to build the PDF documentation. You can also use
+Just open the container an use one of the commands from above to build the project. For example ``make`` to build the
+full
+documentation, ``make html`` to build the HTML documentation or ``make pdf`` to build the PDF documentation. You can
+also use
 ``make SPHINXBUILD=sphinx-autobuild html`` in combination with `port forwarding <https://code.visualstudio.com/docs/devcontainers/containers#_forwarding-or-publishing-a-port>`_
 to  watch file changes and automatically reload the html preview.
 

@@ -3,13 +3,18 @@ Overview
 ========
 
 
-We strive to bring Artificial Intelligence features to Nextcloud. This section highlights these features, how they work and where to find them.
-All of these features are completely optional. If you want to have them on your server, you need to install them via separate Nextcloud Apps.
+We strive to bring Artificial Intelligence features to Nextcloud. This section highlights these features, how they work
+and where to find them.
+All of these features are completely optional. If you want to have them on your server, you need to install them via
+separate Nextcloud Apps.
 
 Overview of AI features
 -----------------------
 
-Nextcloud uses modularity to separate raw AI functionality from the Graphical User interfaces and apps that make use of said functionality. Each instance can thus make use of various backends that provide the functionality for the same frontends and the same functionality can be implemented by multiple apps using on-premises processing or third-party AI service providers.
+Nextcloud uses modularity to separate raw AI functionality from the Graphical User interfaces and apps that make use of
+said functionality. Each instance can thus make use of various backends that provide the functionality for the same
+frontends and the same functionality can be implemented by multiple apps using on-premises processing or third-party AI
+service providers.
 
 .. figure:: images/ai_overview.png
   :scale: 60%
@@ -75,7 +80,12 @@ Nextcloud uses modularity to separate raw AI functionality from the Graphical Us
 Ethical AI Rating
 -----------------
 
-Until Hub 3, we succeeded in offering features without relying on proprietary blobs or third party services. Yet, while there is a large community developing ethical, safe and privacy-respecting technologies, there are many other relevant technologies users might want to use. We want to provide users with these cutting-edge technologies – but also be transparent. For some use cases, ChatGPT might be a reasonable solution, while for more private, professional or sensitive data, it is paramount to have a local, on-prem, open solution. To differentiate these, we developed an Ethical AI Rating.
+Until Hub 3, we succeeded in offering features without relying on proprietary blobs or third party services. Yet, while
+there is a large community developing ethical, safe and privacy-respecting technologies, there are many other relevant
+technologies users might want to use. We want to provide users with these cutting-edge technologies – but also be
+transparent. For some use cases, ChatGPT might be a reasonable solution, while for more private, professional or
+sensitive data, it is paramount to have a local, on-prem, open solution. To differentiate these, we developed an Ethical
+AI Rating.
 
 The rating has four levels:
  * Red
@@ -88,13 +98,15 @@ It is based on points from these factors:
  * Is the trained model freely available for self-hosting?
  * Is the training data available and free to use?
 
-If all of these points are met, we give a Green label. If none are met, it is Red. If 1 condition is met, it is Orange and if 2 conditions are met, Yellow.
+If all of these points are met, we give a Green label. If none are met, it is Red. If 1 condition is met, it is Orange
+and if 2 conditions are met, Yellow.
 
 
 Features used by other apps
 ---------------------------
 
-Some of our AI features are realized as generic APIs that any app can use and any app can provide an implementation for by registering a provider. So far, these are
+Some of our AI features are realized as generic APIs that any app can use and any app can provide an implementation for
+by registering a provider. So far, these are
 Machine translation, Speech-To-Text, Text-To-Speech, Image generation, Text processing and Context Chat.
 
 Text processing
@@ -103,7 +115,8 @@ Text processing
 .. _tp-consumer-apps:
 
 As you can see in the table above we have multiple apps offering text processing using Large language models.
-In downstream apps like Context Chat and assistant, users can use the text processing functionality regardless of which app implements it behind the scenes.
+In downstream apps like Context Chat and assistant, users can use the text processing functionality regardless of which
+app implements it behind the scenes.
 
 Frontend apps
 ~~~~~~~~~~~~~
@@ -123,7 +136,8 @@ Frontend apps
 Backend apps
 ~~~~~~~~~~~~
 
-* :ref:`llm2<ai-app-llm2>` - Runs open source AI LLM models on your own server hardware  (Customer support available upon request)
+* :ref:`llm2<ai-app-llm2>` - Runs open source AI LLM models on your own server hardware  (Customer support available
+  upon request)
 * `OpenAI and LocalAI integration (via OpenAI API) <https://apps.nextcloud.com/apps/integration_openai>`_ - Integrates with the OpenAI API to provide AI functionality from OpenAI servers  (Customer support available upon request; see :ref:`AI as a Service<ai-ai_as_a_service>`)
 * `IBM watsonx.ai integration (via IBM watsonx.ai as a Service) <https://apps.nextcloud.com/apps/integration_watsonx>`_ - Integrates with the IBM watsonx.ai API to provide AI functionality from IBM Cloud servers  (Customer support available upon request; see :ref:`AI as a Service<ai-ai_as_a_service>`)
 
@@ -133,8 +147,10 @@ Machine translation
 
 .. _mt-consumer-apps:
 
-As you can see in the table above we have multiple apps offering machine translation capabilities. Each app brings its own set of supported languages.
-In downstream apps like the Text app, users can use the translation functionality regardless of which app implements it behind the scenes.
+As you can see in the table above we have multiple apps offering machine translation capabilities. Each app brings its
+own set of supported languages.
+In downstream apps like the Text app, users can use the translation functionality regardless of which app implements it
+behind the scenes.
 
 Frontend apps
 ~~~~~~~~~~~~~
@@ -152,7 +168,8 @@ Frontend apps
 Backend apps
 ~~~~~~~~~~~~
 
-* :ref:`translate2 (ExApp)<ai-app-translate2>` - Runs open source AI translation models locally on your own server hardware (Customer support available upon request)
+* :ref:`translate2 (ExApp)<ai-app-translate2>` - Runs open source AI translation models locally on your own server
+  hardware (Customer support available upon request)
 * `OpenAI and LocalAI integration (via OpenAI API) <https://apps.nextcloud.com/apps/integration_openai>`_ - Integrates with the OpenAI API to provide AI functionality from OpenAI servers  (Customer support available upon request; see :ref:`AI as a Service<ai-ai_as_a_service>`)
 * `DeepL integration <https://apps.nextcloud.com/apps/integration_deepl>`__ - Integrates with the deepl API to provide translation functionality from Deepl.com servers (Only community supported)
 
@@ -161,7 +178,8 @@ Speech-To-Text
 
 .. _stt-consumer-apps:
 
-As you can see in the table above we have multiple apps offering Speech-To-Text capabilities. In downstream apps like the Talk app, users can use the transcription functionality regardless of which app implements it behind the scenes.
+As you can see in the table above we have multiple apps offering Speech-To-Text capabilities. In downstream apps like
+the Talk app, users can use the transcription functionality regardless of which app implements it behind the scenes.
 
 Frontend apps
 ~~~~~~~~~~~~~
@@ -172,7 +190,8 @@ Frontend apps
 Backend apps
 ~~~~~~~~~~~~
 
-* :ref:`stt_whisper2<ai-app-stt_whisper2>` - Runs open weights AI Speech-To-Text models on your own server hardware  (Customer support available upon request)
+* :ref:`stt_whisper2<ai-app-stt_whisper2>` - Runs open weights AI Speech-To-Text models on your own server hardware 
+  (Customer support available upon request)
 * `OpenAI and LocalAI integration (via OpenAI API) <https://apps.nextcloud.com/apps/integration_openai>`_ - Integrates with the OpenAI API to provide AI functionality from OpenAI servers  (Customer support available upon request; see :ref:`AI as a Service<ai-ai_as_a_service>`)
 
 
@@ -181,7 +200,9 @@ Image generation
 
 .. _t2i-consumer-apps:
 
-As you can see in the table above we have multiple apps offering Image generation capabilities. In downstream apps like the Text-to-Image helper app, users can use the image generation functionality regardless of which app implements it behind the scenes.
+As you can see in the table above we have multiple apps offering Image generation capabilities. In downstream apps like
+the Text-to-Image helper app, users can use the image generation functionality regardless of which app implements it
+behind the scenes.
 
 Frontend apps
 ~~~~~~~~~~~~~
@@ -199,7 +220,8 @@ Backend apps
 
 * `Local Stable Diffusion 2 (ExApp) <https://apps.nextcloud.com/apps/text2image_stablediffusion2>`_ (Customer support available upon request)
 * `OpenAI and LocalAI integration (via OpenAI API) <https://apps.nextcloud.com/apps/integration_openai>`_ - Integrates with the OpenAI API to provide AI functionality from OpenAI servers (Customer support available upon request; see :ref:`AI as a Service<ai-ai_as_a_service>`)
-* *integration_replicate* - Integrates with the replicate API to provide AI functionality from replicate servers (see :ref:`AI as a Service<ai-ai_as_a_service>`)
+* *integration_replicate* - Integrates with the replicate API to provide AI functionality from replicate servers (see
+  :ref:`AI as a Service<ai-ai_as_a_service>`)
 
 
 Text-To-Speech
@@ -207,7 +229,9 @@ Text-To-Speech
 
 .. _t2s-consumer-apps:
 
-As you can see in the table above we have multiple apps offering speech generation capabilities. In downstream apps like the assistant app, users can use the speech generation functionality regardless of which app implements it behind the scenes.
+As you can see in the table above we have multiple apps offering speech generation capabilities. In downstream apps like
+the assistant app, users can use the speech generation functionality regardless of which app implements it behind the
+scenes.
 
 Frontend apps
 ~~~~~~~~~~~~~
@@ -223,7 +247,10 @@ Backend apps
 
 Context Chat
 ^^^^^^^^^^^^
-Our Context Chat feature was introduced in Nextcloud Hub 7 (v28). It allows asking questions to the assistant related to your documents in Nextcloud. You will need to install both the context_chat app as well as the context_chat_backend External App. Be prepared that things might break or be a little rough around the edges. We look forward to your feedback!
+Our Context Chat feature was introduced in Nextcloud Hub 7 (v28). It allows asking questions to the assistant related to
+your documents in Nextcloud. You will need to install both the context_chat app as well as the context_chat_backend
+External App. Be prepared that things might break or be a little rough around the edges. We look forward to your
+feedback!
 
 Frontend apps
 ~~~~~~~~~~~~~
@@ -239,7 +266,8 @@ Backend apps
 Provider apps
 ~~~~~~~~~~~~~
 
-Apps can integrate their content with Context Chat to make it available for querying using Context Chat. The following apps have implemented this integration so far:
+Apps can integrate their content with Context Chat to make it available for querying using Context Chat. The following
+apps have implemented this integration so far:
 
 * *files*
 * `Analytics <https://apps.nextcloud.com/apps/analytics>`_
@@ -248,7 +276,8 @@ Apps can integrate their content with Context Chat to make it available for quer
 
 Context Chat Search
 ^^^^^^^^^^^^^^^^^^^
-Our Context Chat Search feature allows searching through your documents using natural language. You will need to install both the context_chat app as well as the context_chat_backend External App. We look forward to your feedback!
+Our Context Chat Search feature allows searching through your documents using natural language. You will need to install
+both the context_chat app as well as the context_chat_backend External App. We look forward to your feedback!
 
 Frontend apps
 ~~~~~~~~~~~~~
@@ -268,7 +297,8 @@ See *Context Chat* section above.
 
 Context Agent
 ^^^^^^^^^^^^^
-Our Context Agent feature was introduced in Nextcloud Hub 9 (v30). It allows asking the assistant to execute tasks related to Nextcloud. You will need to install both the context_agent app as well as a text processing provider.
+Our Context Agent feature was introduced in Nextcloud Hub 9 (v30). It allows asking the assistant to execute tasks
+related to Nextcloud. You will need to install both the context_agent app as well as a text processing provider.
 
 Frontend apps
 ~~~~~~~~~~~~~
@@ -283,7 +313,8 @@ Backend apps
 Provider apps
 ~~~~~~~~~~~~~
 
-* :ref:`llm2<ai-app-llm2>` - Runs open source AI LLM models on your own server hardware  (Customer support available upon request)
+* :ref:`llm2<ai-app-llm2>` - Runs open source AI LLM models on your own server hardware  (Customer support available
+  upon request)
 * `OpenAI and LocalAI integration (via OpenAI API) <https://apps.nextcloud.com/apps/integration_openai>`_ - Integrates with the OpenAI API to provide AI functionality from OpenAI servers  (Customer support available upon request; see :ref:`AI as a Service<ai-ai_as_a_service>`)
 
 
@@ -305,7 +336,8 @@ Backend apps
 Provider apps
 ~~~~~~~~~~~~~
 
-* :ref:`llm2<ai-app-llm2>` - Runs open source AI LLM models on your own server hardware  (Customer support available upon request)
+* :ref:`llm2<ai-app-llm2>` - Runs open source AI LLM models on your own server hardware  (Customer support available
+  upon request)
 * `OpenAI and LocalAI integration (via OpenAI API) <https://apps.nextcloud.com/apps/integration_openai>`_ - Integrates with the OpenAI API to provide AI functionality from OpenAI servers  (Customer support available upon request; see :ref:`AI as a Service<ai-ai_as_a_service>`)
 * `IBM watsonx.ai integration (via IBM watsonx.ai as a Service) <https://apps.nextcloud.com/apps/integration_watsonx>`_ - Integrates with the IBM watsonx.ai API to provide AI functionality from IBM Cloud servers  (Customer support available upon request; see :ref:`AI as a Service<ai-ai_as_a_service>`)
 
@@ -322,16 +354,22 @@ Frontend apps
 Backend apps
 ~~~~~~~~~~~~
 
-* :ref:`live_transcription<ai-live-transcription>` - Runs open weights AI Speech-To-Text models on your own server hardware (Customer support available upon request)
+* :ref:`live_transcription<ai-live-transcription>` - Runs open weights AI Speech-To-Text models on your own server
+  hardware (Customer support available upon request)
 
 .. _ai-overview_improve-ai-task-pickup-speed:
 
 Improve AI task pickup speed
 ----------------------------
 
-Most AI tasks will be run as part of the background job system in Nextcloud which only runs jobs every 5 minutes by default.
-To pick up scheduled jobs faster you can set up background job workers inside your Nextcloud main server/container that process AI tasks as soon as they are scheduled.
-If the PHP code or the Nextcloud settings values are changed while a worker is running, those changes won't be effective inside the runner. For that reason, the worker needs to be restarted regularly. It is done with a timeout of N seconds which means any changes to the settings or the code will be picked up after N seconds (worst case scenario). This timeout does not, in any way, affect the processing or the timeout of the AI tasks.
+Most AI tasks will be run as part of the background job system in Nextcloud which only runs jobs every 5 minutes by
+default.
+To pick up scheduled jobs faster you can set up background job workers inside your Nextcloud main server/container that
+process AI tasks as soon as they are scheduled.
+If the PHP code or the Nextcloud settings values are changed while a worker is running, those changes won't be effective
+inside the runner. For that reason, the worker needs to be restarted regularly. It is done with a timeout of N seconds
+which means any changes to the settings or the code will be picked up after N seconds (worst case scenario). This
+timeout does not, in any way, affect the processing or the timeout of the AI tasks.
 
 .. versionchanged:: 32.0.7
     The command to run the worker has changed from ``background-job:worker`` to ``taskprocessing:worker``. If you are running an older version of Nextcloud, please use the old command.
@@ -339,8 +377,10 @@ If the PHP code or the Nextcloud settings values are changed while a worker is r
 Screen or tmux session
 ^^^^^^^^^^^^^^^^^^^^^^
 
-Run the following occ command inside a screen or a tmux session, preferably 4 or more times for parallel processing of multiple requests by different or the same user (and as a requirement for some apps like context_chat).
-It would be best to run one command per screen session or per tmux window/pane to keep the logs visible and the worker easily restartable.
+Run the following occ command inside a screen or a tmux session, preferably 4 or more times for parallel processing of
+multiple requests by different or the same user (and as a requirement for some apps like context_chat).
+It would be best to run one command per screen session or per tmux window/pane to keep the logs visible and the worker
+easily restartable.
 
 .. code-block:: bash
 
@@ -375,7 +415,8 @@ Systemd service
    [Install]
    WantedBy=multi-user.target
 
-2. Create a shell script in ``/opt/nextcloud-ai-worker/taskprocessing.sh`` with the following content and make sure to make it executable:
+2. Create a shell script in ``/opt/nextcloud-ai-worker/taskprocessing.sh`` with the following content and make sure to
+   make it executable:
 
 .. code-block:: bash
 

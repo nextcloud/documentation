@@ -4,9 +4,13 @@ App: Context Agent (context_agent)
 
 .. _ai-app-context_agent:
 
-The *context_agent* app is the app that provides AI agent functionality in Nextcloud's "Chat with AI" feature and acts as a backend for the :ref:`Nextcloud Assistant app<ai-app-assistant>`. Nextcloud can provide customer support upon request, please talk to your account manager for the possibilities.
+The *context_agent* app is the app that provides AI agent functionality in Nextcloud's "Chat with AI" feature and acts
+as a backend for the :ref:`Nextcloud Assistant app<ai-app-assistant>`. Nextcloud can provide customer support upon
+request, please talk to your account manager for the possibilities.
 
-When the Context Agent app is installed the AI Chat in Nextcloud Assistant will be able to interact with your Nextcloud apps via virtual integrations that are called "tools". They allow the Assistant to perform actions in your Nextcloud upon sending instructions in a chat message.
+When the Context Agent app is installed the AI Chat in Nextcloud Assistant will be able to interact with your Nextcloud
+apps via virtual integrations that are called "tools". They allow the Assistant to perform actions in your Nextcloud
+upon sending instructions in a chat message.
 Tool groups are only available if their requirements are met. They can be en- and disabled in the AI admin settings.
 
 Currently implemented tools
@@ -325,7 +329,8 @@ Miscellaneous tools
 
   * Example prompt: *"Send a test email from my carry@company.com account to Andrew@company.com"*
 
-* Determine public transport routes (requires a `HERE <https://www.here.com/>`_ API key configured in the admin settings)
+* Determine public transport routes (requires a `HERE <https://www.here.com/>`_ API key configured in the admin
+  settings)
 
   * Example prompt: *"How can I get from Würzburg Hauptbahnhof to Berlin Hauptbahnhof?"*
 
@@ -369,8 +374,10 @@ These tools can also be combined by the agent to fulfil tasks like the following
 Custom Tools using MCP
 -----------------------
 
-Model Context Protocol (MCP) is a protocol that enables Large Language Models (LLMs) to interact with external data sources and tools.
-The Context Agent app allows administrators to extend its capabilities by adding custom services via MCP. This can be configured in the admin settings under "MCP Config," where you can provide a JSON configuration in the following format:
+Model Context Protocol (MCP) is a protocol that enables Large Language Models (LLMs) to interact with external data
+sources and tools.
+The Context Agent app allows administrators to extend its capabilities by adding custom services via MCP. This can be
+configured in the admin settings under "MCP Config," where you can provide a JSON configuration in the following format:
 
 .. code-block:: json
 
@@ -398,13 +405,15 @@ Installation
 0. Make sure the :ref:`Nextcloud Assistant app<ai-app-assistant>` is installed
 1. :ref:`Install AppAPI and setup a Deploy Demon<ai-app_api>`
 2. Install the "Context Agent" ExApp via the "Apps" page in the Nextcloud web admin user interface
-3. Install a text generation backend like :ref:`llm2 <ai-app-llm2>` or :ref:`integration_openai <ai-ai_as_a_service>` via the "Apps" page in Nextcloud
+3. Install a text generation backend like :ref:`llm2 <ai-app-llm2>` or :ref:`integration_openai <ai-ai_as_a_service>`
+   via the "Apps" page in Nextcloud
 
 
 Model requirements
 ~~~~~~~~~~~~~~~~~~
 
-This app requires underlying Large language models to support tool calling. The default model in *llm2* does support tool calling since version 2.4.0.
+This app requires underlying Large language models to support tool calling. The default model in *llm2* does support
+tool calling since version 2.4.0.
 Other models that may give good results are:
 
 * Google Gemma 3 12B or higher
@@ -417,9 +426,11 @@ See :ref:`llm2 documentation <ai-app-llm2>` on how to configure alternate models
 Using Nextcloud MCP Server
 --------------------------
 
-Context Agent exposes an MCP server that can be used by other large language models or applications to access the tools provided by Context Agent.
+Context Agent exposes an MCP server that can be used by other large language models or applications to access the tools
+provided by Context Agent.
 The server will be available at `https://your-nextcloud-domain.com/index.php/apps/app_api/proxy/context_agent/mcp/`, and
-it requires authentication via an app password passed in the `Authorization` header. Ex: `Authorization: Bearer <app-password>`.
+it requires authentication via an app password passed in the `Authorization` header. Ex: `Authorization: Bearer
+<app-password>`.
 
 Scaling
 -------
@@ -440,9 +451,12 @@ Nextcloud customers should file bugs directly with our Support system.
 
 Known Limitations
 -----------------
-* Make sure to test the language model you are using in concert with this app for whether they meet the use-case's quality requirements
-* Most models have difficulties with languages other than English. Some sometimes answer in another language than used by the user. 
-* Customer support is available upon request, however we can't solve false or problematic output, most performance issues, or other problems caused by the underlying model. 
+* Make sure to test the language model you are using in concert with this app for whether they meet the use-case's
+  quality requirements
+* Most models have difficulties with languages other than English. Some sometimes answer in another language than used
+  by the user.
+* Customer support is available upon request, however we can't solve false or problematic output, most performance
+  issues, or other problems caused by the underlying model.
   Support is thus limited only to bugs directly caused by the implementation of the app (connectors, API, front-end, AppAPI). We still try to optimize this as far as possible, so if you encounter any false or problematic output, you can report it `in a dedicated Github issue <https://github.com/nextcloud/context_agent/issues/51>`_ to help us improve this app. 
 * When multiple MCP services are configured that have tools with the same name undefined behavior will occur.
 * Only remote MCP services are supported (streamable_http transport).

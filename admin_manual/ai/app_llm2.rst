@@ -4,11 +4,16 @@ App: Local large language model (llm2)
 
 .. _ai-app-llm2:
 
-The *llm2* app is one of the apps that provide text processing functionality using Large language models in Nextcloud and act as a text processing backend for the :ref:`Nextcloud Assistant app<ai-app-assistant>`, the *mail* app and :ref:`other apps making use of the core Text Processing API<tp-consumer-apps>`. The *llm2* app specifically runs only open source models and does so entirely on-premises. Nextcloud can provide customer support upon request, please talk to your account manager for the possibilities.
+The *llm2* app is one of the apps that provide text processing functionality using Large language models in Nextcloud
+and act as a text processing backend for the :ref:`Nextcloud Assistant app<ai-app-assistant>`, the *mail* app and
+:ref:`other apps making use of the core Text Processing API<tp-consumer-apps>`. The *llm2* app specifically runs only
+open source models and does so entirely on-premises. Nextcloud can provide customer support upon request, please talk to
+your account manager for the possibilities.
 
 This app uses `llama.cpp <https://github.com/abetlen/llama-cpp-python>`_ under the hood and is thus compatible with any model in *gguf* format.
 
-However, we only test with Llama 3.1. Output quality will differ depending on which model you use and downstream tasks like summarization or Context Chat may not work on other models.
+However, we only test with Llama 3.1. Output quality will differ depending on which model you use and downstream tasks
+like summarization or Context Chat may not work on other models.
 We thus recommend the following models:
 
 * `Llama3.1 8b Instruct <https://huggingface.co/QuantFactory/Meta-Llama-3.1-8B-Instruct-GGUF>`_ (reasonable quality; fast; good acclaim; comes shipped with the app)
@@ -61,7 +66,8 @@ Installation
 Supplying alternate models
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-This app allows supplying alternate LLM models as *gguf* files in the ``/nc_app_llm2_data`` directory of the docker container.
+This app allows supplying alternate LLM models as *gguf* files in the ``/nc_app_llm2_data`` directory of the docker
+container.
 
 1. Download a **gguf** model e.g. from huggingface
 2. Copy the **gguf** file to ``/nc_app_llm2_data`` inside the docker container
@@ -72,11 +78,14 @@ This app allows supplying alternate LLM models as *gguf* files in the ``/nc_app_
 Configuring alternate models
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Since every model requires slightly different inference parameters, you can pass along a configuration file for the alternate model files you supply.
+Since every model requires slightly different inference parameters, you can pass along a configuration file for the
+alternate model files you supply.
 
-The configuration file for a model file must have the same name as the model file but must end in ``.json`` instead of ``.gguf``.
+The configuration file for a model file must have the same name as the model file but must end in ``.json`` instead of
+``.gguf``.
 
-The strings ``{system_prompt}`` and ``{user_prompt}`` are variables that will be filled in by the app, so they must be part of your prompt template.
+The strings ``{system_prompt}`` and ``{user_prompt}`` are variables that will be filled in by the app, so they must be
+part of your prompt template.
 
 Here is an example config file for Llama 2:
 
@@ -108,7 +117,9 @@ Here is an example configuration for Llama 3:
 Scaling
 -------
 
-It is currently not possible to scale this app, we are working on this. Based on our calculations an instance has a rough capacity of 1000 user requests per hour. However, this number is based on theory and we do appreciate real-world feedback on this.
+It is currently not possible to scale this app, we are working on this. Based on our calculations an instance has a
+rough capacity of 1000 user requests per hour. However, this number is based on theory and we do appreciate real-world
+feedback on this.
 If you would like to scale up your language model usage, we recommend using an :ref:`AI as a Service provider<ai-ai_as_a_service>` or hosting a service compatible with the OpenAI API yourself that can be scaled up and connecting nextcloud to it via the `integration_openai app <https://apps.nextcloud.com/apps/integration_openai>`_.
 
 App store
@@ -119,25 +130,35 @@ You can also find the app in our app store, where you can write a review: `<http
 Repository
 ----------
 
-You can find the app's code repository on GitHub where you can report bugs and contribute fixes and features: `<https://github.com/nextcloud/llm2>`_
+You can find the app's code repository on GitHub where you can report bugs and contribute fixes and features:
+`<https://github.com/nextcloud/llm2>`_
 
 Nextcloud customers should file bugs directly with our Support system.
 
 Known Limitations
 -----------------
 
-* We currently only support languages that the underlying model supports; correctness of language use in languages other than English may be poor depending on the language's coverage in the model's training data (We recommended model Llama 3 or other models explicitly trained on multiple languages)
+* We currently only support languages that the underlying model supports; correctness of language use in languages other
+  than English may be poor depending on the language's coverage in the model's training data (We recommended model Llama
+  3 or other models explicitly trained on multiple languages)
 * Language models can be bad at reasoning tasks
 * Language models can be bad at math
-* Language models are likely to generate false information and should thus only be used in situations that are not critical. It's recommended to only use AI at the beginning of a creation process and not at the end, so that outputs of AI serve as a draft for example and not as final product. Always check the output of language models before using it.
+* Language models are likely to generate false information and should thus only be used in situations that are not
+  critical. It's recommended to only use AI at the beginning of a creation process and not at the end, so that outputs
+  of AI serve as a draft for example and not as final product. Always check the output of language models before using
+  it.
 * Make sure to test the language model you are using it for whether it meets the use-case's quality requirements
-* Language models notoriously have a high energy consumption, if you want to reduce load on your server you can choose smaller models or quantized models in exchange for lower accuracy
-* Customer support is available upon request, however we can't solve false or problematic output, most performance issues, or other problems caused by the underlying model. Support is thus limited only to bugs directly caused by the implementation of the app (connectors, API, front-end, AppAPI)
+* Language models notoriously have a high energy consumption, if you want to reduce load on your server you can choose
+  smaller models or quantized models in exchange for lower accuracy
+* Customer support is available upon request, however we can't solve false or problematic output, most performance
+  issues, or other problems caused by the underlying model. Support is thus limited only to bugs directly caused by the
+  implementation of the app (connectors, API, front-end, AppAPI)
 
 Addendum: Running with a fully open model
 -----------------------------------------
 
-If you would like to use a fully open model that scores a green score on our Ethical AI rating, we recommend the following model:
+If you would like to use a fully open model that scores a green score on our Ethical AI rating, we recommend the
+following model:
 
 * Olmo 3 (either in 7B or 32B): `<https://huggingface.co/allenai/Olmo-3-7B-Instruct>`_
 
@@ -154,5 +175,6 @@ Limitations
 ~~~~~~~~~~~
 
 * OLMo currently only works well with English language input
-* In our tests it sometimes produced hallucinated or garbled output; make sure to thoroughly test the model for your use case
+* In our tests it sometimes produced hallucinated or garbled output; make sure to thoroughly test the model for your use
+  case
 * It cannot use tools, so cannot be used in conjunction with :ref:`Context Agent <ai-app-context_agent>`

@@ -4,7 +4,8 @@ Replication
 
 .. versionadded:: 29
 
-Nextcloud can natively split read and write operations on a database query level. Replicas are only used for reads. The default database connection will be used for writes and causal reads.
+Nextcloud can natively split read and write operations on a database query level. Replicas are only used for reads. The
+default database connection will be used for writes and causal reads.
 
 ::
 

@@ -2,7 +2,8 @@
 HTTP Client
 ===========
 
-Nextcloud comes with a simple HTTP client that can be used to send requests to other web servers. This client follows Nextcloud's configuration, security restrictions and proxy settings.
+Nextcloud comes with a simple HTTP client that can be used to send requests to other web servers. This client follows
+Nextcloud's configuration, security restrictions and proxy settings.
 
 Acquiring a HTTP Client
 -----------------------

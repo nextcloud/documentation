@@ -5,7 +5,8 @@ Front-end code
 Building Vue components and scripts
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-We are moving more and more toward using Vue.js in the front-end, starting with Settings. For building the code on changes, use these terminal commands in the root folder:
+We are moving more and more toward using Vue.js in the front-end, starting with Settings. For building the code on
+changes, use these terminal commands in the root folder:
 
 .. code-block:: console
 
@@ -44,7 +45,8 @@ Committing changes
 
 **When making changes, also commit the compiled files!**
 
-We still use Handlebars templates in some places in Files and Settings. We will replace these step-by-step with Vue.js, but in the meantime, you need to compile them separately.
+We still use Handlebars templates in some places in Files and Settings. We will replace these step-by-step with Vue.js,
+but in the meantime, you need to compile them separately.
 
 If you don’t have Handlebars installed yet, you can do it with this terminal command:
 
@@ -52,7 +54,8 @@ If you don’t have Handlebars installed yet, you can do it with this terminal c
     
    sudo npm install -g handlebars
 
-Then inside the root folder of your local Nextcloud development installation, run this command in the terminal every time you changed a ``.handlebars`` file to compile it:
+Then inside the root folder of your local Nextcloud development installation, run this command in the terminal every
+time you changed a ``.handlebars`` file to compile it:
 
 .. code-block:: console
     
@@ -73,4 +76,5 @@ To save some time, to only rebuild for a specific app, use the following and rep
 
     MODULE=user_status make build-js-production
 
-Please note that if you used ``make build-js`` or ``make watch-js`` before, you'll notice that a lot of files were marked as changed, so might need to clear the workspace first.
+Please note that if you used ``make build-js`` or ``make watch-js`` before, you'll notice that a lot of files were
+marked as changed, so might need to clear the workspace first.

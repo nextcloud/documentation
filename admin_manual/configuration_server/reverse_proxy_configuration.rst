@@ -46,10 +46,14 @@ to be manually overridden. If Nextcloud fails to automatically detect the hostna
 or webroot you can use the **overwrite** parameters inside the :file:`config/config.php`.
 
 * :file:`overwritehost` set the hostname of the proxy. You can also specify a port.
-* :file:`overwriteprotocol` set the protocol of the proxy. You can choose between the two options **http** and **https**.
+* :file:`overwriteprotocol` set the protocol of the proxy. You can choose between the two options **http** and
+  **https**.
 * :file:`overwritewebroot` set the absolute web path of the proxy to the Nextcloud folder.
-* :file:`overwritecondaddr` overwrite the values dependent on the remote address. The value must be a **regular expression** of the IP addresses of the proxy. This is useful when you use a reverse SSL proxy only for https access and you want to use the automatic detection for http access.
-* :file:`overwrite.cli.url` the base URL for any URLs which are generated within Nextcloud using any kind of command line tools. For example, the value set here will be used by the notifications area.
+* :file:`overwritecondaddr` overwrite the values dependent on the remote address. The value must be a **regular
+  expression** of the IP addresses of the proxy. This is useful when you use a reverse SSL proxy only for https access
+  and you want to use the automatic detection for http access.
+* :file:`overwrite.cli.url` the base URL for any URLs which are generated within Nextcloud using any kind of command
+  line tools. For example, the value set here will be used by the notifications area.
 
 Leave the value empty or omit the parameter to keep the automatic detection.
 
@@ -118,7 +122,8 @@ HAProxy
 
 NGINX
 ^^^^^
-If using nginx as Nextcloud's webserver from behind another nginx reverse proxy, put this only in the reverse proxy's configuration.
+If using nginx as Nextcloud's webserver from behind another nginx reverse proxy, put this only in the reverse proxy's
+configuration.
 ::
 
     location /.well-known/carddav {
@@ -134,7 +139,8 @@ If using nginx as Nextcloud's webserver from behind another nginx reverse proxy,
     }
 
 When using NGINX Proxy Manager, the entry ``proxy_hide_header Upgrade;`` must be added in the *"Advanced Settings"*
-of the proxy host under *"Custom Nginx Configuration"*, otherwise mobile devices (iPad, iPhone etc.) will simply receive the Error Message "Connection Closed".
+of the proxy host under *"Custom Nginx Configuration"*, otherwise mobile devices (iPad, iPhone etc.) will simply receive
+the Error Message "Connection Closed".
 
 Caddy
 ^^^^^

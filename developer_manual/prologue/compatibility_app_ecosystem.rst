@@ -4,11 +4,14 @@ Compatibility with the app ecosystem
 
 The Nextcloud app ecosystem consists of hundreds of apps and app maintainers.
 
-The development process may require changes that affect apps in this ecosystem. These changes may either be a change in standards or best practises, yet in more extreme cases the changes may also be breaking apps.
+The development process may require changes that affect apps in this ecosystem. These changes may either be a change in
+standards or best practises, yet in more extreme cases the changes may also be breaking apps.
 
-While developers are expected to aim for limiting the number of changes that break apps, this cannot always be avoided or is not always reasonable to do to maintain an up-to-date technology stack.
+While developers are expected to aim for limiting the number of changes that break apps, this cannot always be avoided
+or is not always reasonable to do to maintain an up-to-date technology stack.
 
-Informing app developers about any change that affect them is therefore key to a thriving ecosystem. This page describes the three procedures to document changes that are relevant to app developers.
+Informing app developers about any change that affect them is therefore key to a thriving ecosystem. This page describes
+the three procedures to document changes that are relevant to app developers.
 
 
 Documentation procedures of changes that affect app developers
@@ -20,7 +23,8 @@ There are three procedures in place to facilitate communication to app developer
 
   This means the development of your pull request cannot be considered done if you introduced changes (additions, removals or modifications) that affect app developers that you did not document.
 
-2. A change necessary for app developers to execute for app compatibility in a new version, has to be reported and documented by the author of the pull request in the :ref:`App Upgrade guide <app-upgrade-guide>` section.
+2. A change necessary for app developers to execute for app compatibility in a new version, has to be reported and
+   documented by the author of the pull request in the :ref:`App Upgrade guide <app-upgrade-guide>` section.
 
   The requirements for this documentation are:
 
@@ -35,4 +39,5 @@ There are three procedures in place to facilitate communication to app developer
   
 Other documentation requirements
 --------------------------------
-A change that affects administrators who upgrade their Nextcloud should be documented in the release notes section of the admin documentation of that release.
+A change that affects administrators who upgrade their Nextcloud should be documented in the release notes section of
+the admin documentation of that release.

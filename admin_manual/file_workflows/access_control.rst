@@ -110,7 +110,8 @@ option.
             otherwise any user can remove the tag to access the file again.
             The best way to do this is with the :doc:`automated_tagging`.
 
-* **File MIME type:** The MIME type of the file, e.g. ``text/plain`` for a text file or ``httpd/unix-directory`` for a folder.
+* **File MIME type:** The MIME type of the file, e.g. ``text/plain`` for a text file or ``httpd/unix-directory`` for a
+  folder.
 
   .. note:: see `mimetypealiases.dist.json <https://github.com/nextcloud/server/blob/master/resources/config/mimetypealiases.dist.json>`_ for a full list of possible MIME types.
 

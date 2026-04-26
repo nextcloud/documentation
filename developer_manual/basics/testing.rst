@@ -4,7 +4,8 @@ Testing
 
 .. sectionauthor:: Bernhard Posselt <dev@bernhard-posselt.com>
 
-All PHP classes can be tested with `PHPUnit <https://phpunit.de/>`_, JavaScript can be tested by using `Karma <http://karma-runner.github.io>`_.
+All PHP classes can be tested with `PHPUnit <https://phpunit.de/>`_, JavaScript can be tested by using `Karma
+<http://karma-runner.github.io>`_.
 
 .. _testing-php:
 
@@ -15,13 +16,17 @@ The PHP tests go into the **tests/** directory and PHPUnit can be run with::
 
     phpunit tests/
 
-When writing your own tests, please ensure that PHPUnit bootstraps from :file:`tests/bootstrap.php`, to set up various environment variables and autoloader registration correctly. Without this, you will see errors as the Nextcloud autoloader security policy prevents access to the tests/ subdirectory. This can be configured in your :file:`phpunit.xml` file as follows:
+When writing your own tests, please ensure that PHPUnit bootstraps from :file:`tests/bootstrap.php`, to set up various
+environment variables and autoloader registration correctly. Without this, you will see errors as the Nextcloud
+autoloader security policy prevents access to the tests/ subdirectory. This can be configured in your
+:file:`phpunit.xml` file as follows:
 
 .. code-block:: xml
 
     <phpunit bootstrap="../../tests/bootstrap.php">
 
-PHP classes should be tested by accessing them from the container to ensure that the container is wired up properly. Services that should be mocked can be replaced directly in the container.
+PHP classes should be tested by accessing them from the container to ensure that the container is wired up properly.
+Services that should be mocked can be replaced directly in the container.
 
 A test for the **AuthorStorage** class in :doc:`storage/filesystem`:
 

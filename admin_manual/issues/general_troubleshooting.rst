@@ -311,7 +311,8 @@ Make sure to change /nextcloud to the actual subfolder your Nextcloud instance i
    files by dropping any number of leading slashes, but it does not
    do so for the use in its main configuration files.
 
-If you are running NGINX, make sure ``location = /.well-known/carddav {`` and ``location = /.well-known/caldav {`` are properly configured as described in :doc:`../installation/nginx`, adapt to use a subfolder if necessary.
+If you are running NGINX, make sure ``location = /.well-known/carddav {`` and ``location = /.well-known/caldav {`` are
+properly configured as described in :doc:`../installation/nginx`, adapt to use a subfolder if necessary.
 
 Now change the URL in the client settings to just use:
 
@@ -351,7 +352,8 @@ When this happens, please run the :ref:`files scanner<occ_files_scan_label>`, fo
 
   sudo -E -u www-data php occ files:scan --all
 
-If the scanner tells about an encoding issue on the affected file, please enable Mac encoding compatibility in the :ref:`mount options<external_storage_mount_options_label>`
+If the scanner tells about an encoding issue on the affected file, please enable Mac encoding compatibility in the
+:ref:`mount options<external_storage_mount_options_label>`
 and then :ref:`rescan the external storage<occ_files_scan_label>`.
 
 .. note::
@@ -467,15 +469,28 @@ Fair Use Policy
 
 Nextcloud is open source and you can host it for free on your own server or at a provider.
 
-Nextcloud recommends Using Nextcloud Enterprise for deploying instances with more than 500 users. With that size, issues like a broken server or a data leak become very serious.
+Nextcloud recommends Using Nextcloud Enterprise for deploying instances with more than 500 users. With that size, issues
+like a broken server or a data leak become very serious.
 
-If there is an issue with the server, 500 people can't work. A data leak would risk the data of many users. In short, the server should be considered mission-critical. We believe you and your users would have a better experience with Nextcloud Enterprise.
+If there is an issue with the server, 500 people can't work. A data leak would risk the data of many users. In short,
+the server should be considered mission-critical. We believe you and your users would have a better experience with
+Nextcloud Enterprise.
 
-Nextcloud Enterprise is pre-configured and optimised for the needs of professional organisations rather than home users. It comes with support, security and scaling benefits, compliance expertise, and access to our knowledge about running a successful Nextcloud, to get the best possible experience for users and admins. This also reduces the load on our home user forum https://help.nextcloud.com from issues unique to big deployments.
+Nextcloud Enterprise is pre-configured and optimised for the needs of professional organisations rather than home users.
+It comes with support, security and scaling benefits, compliance expertise, and access to our knowledge about running a
+successful Nextcloud, to get the best possible experience for users and admins. This also reduces the load on our home
+user forum https://help.nextcloud.com from issues unique to big deployments.
 
-Nextcloud provides some infrastructure components needed for Nextcloud servers to run reliably. This includes notification, our app store and more. To ensure these resources do not get overloaded by administrators who run Nextcloud for thousands of users without providing financial resources to Nextcloud in return, these components are limited and will not work for more than 500 users.
+Nextcloud provides some infrastructure components needed for Nextcloud servers to run reliably. This includes
+notification, our app store and more. To ensure these resources do not get overloaded by administrators who run
+Nextcloud for thousands of users without providing financial resources to Nextcloud in return, these components are
+limited and will not work for more than 500 users.
 
-We believe all organisations who run Nextcloud for hundreds of users should be officially supported. We know there can be financial restrictions for non-profit organisations and, as we want everybody to have a chance to get the most out of Nextcloud, we have special offers for NGOs, small schools and other non-profits. Please reach out to talk to us about what is possible through the `contact form on our site <https://nextcloud.com/contact/>`_ or ask your system administrator to reach out.
+We believe all organisations who run Nextcloud for hundreds of users should be officially supported. We know there can
+be financial restrictions for non-profit organisations and, as we want everybody to have a chance to get the most out of
+Nextcloud, we have special offers for NGOs, small schools and other non-profits. Please reach out to talk to us about
+what is possible through the `contact form on our site <https://nextcloud.com/contact/>`_ or ask your system
+administrator to reach out.
 
 Other issues
 ------------

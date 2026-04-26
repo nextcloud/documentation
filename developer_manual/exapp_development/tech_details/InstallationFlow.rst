@@ -47,8 +47,10 @@ Init
 After the application is ready, which is determined by the previous step,
 AppAPI sends a ``POST`` request to the ``/init`` application endpoint.
 
-*If the application does not need to carry out long initialization, it has an option to not implement "/init" endpoint, so
-AppAPI will get 404 or 501 error on it's request, but you can consider that initialization to be done and this section can be skipped.*
+*If the application does not need to carry out long initialization, it has an option to not implement "/init" endpoint,
+so
+AppAPI will get 404 or 501 error on it's request, but you can consider that initialization to be done and this section
+can be skipped.*
 
 In case you want to implement "/init" endpoint, your application should:
 
@@ -74,7 +76,8 @@ Example of request payload with error::
 Enabled
 -------
 
-After receiving **progress: 100** (*or when the ExApp is not implementing the "/init" endpoint*), AppAPI enables the application.
+After receiving **progress: 100** (*or when the ExApp is not implementing the "/init" endpoint*), AppAPI enables the
+application.
 
 To enable or disable the application, a PUT request is sent to the ``/enabled`` endpoint.
 
@@ -98,7 +101,8 @@ This approach ensures that the application's state can be easily toggled using a
 .. note:: The ``/enabled`` endpoint shares both **enabling** and **disabling**,
 	so the app should determine what is going on using the ``enabled`` input parameter of the request.
 
-Inside the ``/enabled`` handler, the application should register all actions related to the Nextcloud, such as the UI and other stuff.
+Inside the ``/enabled`` handler, the application should register all actions related to the Nextcloud, such as the UI
+and other stuff.
 
 The response for this request should contain::
 

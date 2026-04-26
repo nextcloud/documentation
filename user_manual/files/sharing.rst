@@ -28,8 +28,10 @@ A number of options are available for public *folder* shares:
 
 * **Read only** to allow viewing and downloading
 * **Allow upload and editing**
-* With **File drop**, the sharee can only upload files to a folder without seeing the files that are already in that folder.
-* **Hide download** hides the download buttons and the default browser right-click options in order to make downloading for the sharee harder
+* With **File drop**, the sharee can only upload files to a folder without seeing the files that are already in that
+  folder.
+* **Hide download** hides the download buttons and the default browser right-click options in order to make downloading
+  for the sharee harder
 * **Password protect**
 * **Set expiration date** will automatically disable the share
 * **Note to recipient**
@@ -45,11 +47,13 @@ For public *file* shares, you may allow editing the file with one of Nextcloud's
 Internal shares with users and groups
 -------------------------------------
 
-When sharing with users, groups, circles or members of a Talk conversation, rights for the files or folder contents are adjustable:
+When sharing with users, groups, circles or members of a Talk conversation, rights for the files or folder contents are
+adjustable:
 
 .. figure:: ../images/sharing_internal.png
 
-As a sharee, you can configure if you automatically want to accept all incoming shares and have them added to your root folder, or if you
+As a sharee, you can configure if you automatically want to accept all incoming shares and have them added to your root
+folder, or if you
 want to be asked each time if you want to accept or decline the share.
 
 .. figure:: ../images/sharing_internal_acceptNotification.png
@@ -95,7 +99,8 @@ users on other Nextcloud servers.
 Creating a new Federation Share
 -------------------------------
 
-Federation sharing is enabled by default. Follow these steps to create a new share with other Nextcloud or ownCloud servers:
+Federation sharing is enabled by default. Follow these steps to create a new share with other Nextcloud or ownCloud
+servers:
 
 Go to your ``Files`` page and click the Share icon on the file or directory
 you want to share. In the sidebar enter the username and URL of the remote user
@@ -112,7 +117,8 @@ The sharee is receiving a notification in their Nextcloud, allowing them to eith
 Adding a public share to your Nextcloud
 ---------------------------------------
 
-Nextcloud public link share pages offer an option to add that file or folder as a federated share into your own Nextcloud instance.
+Nextcloud public link share pages offer an option to add that file or folder as a federated share into your own
+Nextcloud instance.
 Just enter your ``<username>@<nc-server-url>`` just like shown for outbound shares above:
 
 .. figure:: ../images/share-federation-3-public.png

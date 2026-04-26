@@ -105,18 +105,25 @@ SMB authentication
 Update notifications are not supported when using 'Login credentials, save in session' authentication.
 Using update notifications is only supported with 'Login credentials, save in database'.
 
-Even when using 'Login credentials, save in database' or 'User entered, stored in database' authentication the notify process
-can not use the credentials saved to attach to the smb shares because the notify process does not run in the context of a specific user
+Even when using 'Login credentials, save in database' or 'User entered, stored in database' authentication the notify
+process
+can not use the credentials saved to attach to the smb shares because the notify process does not run in the context of
+a specific user
 in those cases you can provide the username and password using the ``--username`` and ``--password`` arguments.
 
 Decrease sync delay
 ^^^^^^^^^^^^^^^^^^^
 
-Any updates detected by the notify command will only be synced to the client after the Nextcloud cron job has been executed
-(usually every 15 minutes). If this interval is too high for your use case, you can decrease it by running ``occ files:scan --unscanned --all``
-at the desired interval. Note that this might increase the server load and you'll need to ensure that there is no overlap between runs.
+Any updates detected by the notify command will only be synced to the client after the Nextcloud cron job has been
+executed
+(usually every 15 minutes). If this interval is too high for your use case, you can decrease it by running ``occ
+files:scan --unscanned --all``
+at the desired interval. Note that this might increase the server load and you'll need to ensure that there is no
+overlap between runs.
 
 Hidden files upload failure or not shown
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-If you have the configuration ``hide dot files = Yes``, you will not be able to upload a hidden file (dot file) nor will you be able to show hidden files on your filelist (even if the 'show hidden file' option is checked on the nextcloud settings.
+If you have the configuration ``hide dot files = Yes``, you will not be able to upload a hidden file (dot file) nor will
+you be able to show hidden files on your filelist (even if the 'show hidden file' option is checked on the nextcloud
+settings.
 Make sure you have the following option in your configuration: ``hide dot files = No``

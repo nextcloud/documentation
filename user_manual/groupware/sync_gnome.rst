@@ -2,8 +2,10 @@
 Synchronizing with the GNOME desktop
 ====================================
 
-The `GNOME desktop <https://www.gnome.org>`_ has built-in support for Nextcloud's calendar, contacts, and tasks which will be displayed by the Evolution Personal Information Manager (PIM), or the Calendar, Tasks, and Contacts apps.
-Similarly, Files integrates into the Nautilus file manager via WebDAV. The latter works only while the computer is connected.
+The `GNOME desktop <https://www.gnome.org>`_ has built-in support for Nextcloud's calendar, contacts, and tasks which
+will be displayed by the Evolution Personal Information Manager (PIM), or the Calendar, Tasks, and Contacts apps.
+Similarly, Files integrates into the Nautilus file manager via WebDAV. The latter works only while the computer is
+connected.
 
 This can be done by following these steps:
 
@@ -24,9 +26,11 @@ This can be done by following these steps:
 
    .. image:: ../images/goa-nextcloud-select.png
 
-Nextcloud tasks, calendars, and contacts should now be visible in the Evolution PIM, as well as the Task, Contacts, and Calendars apps.
+Nextcloud tasks, calendars, and contacts should now be visible in the Evolution PIM, as well as the Task, Contacts, and
+Calendars apps.
 
-Files will be shown as a WebDAV resource in the Nautilus file manager, and also be available in the GNOME file open/save dialogues.
+Files will be shown as a WebDAV resource in the Nautilus file manager, and also be available in the GNOME file open/save
+dialogues.
 Documents should be integrated into the GNOME Documents app.
 
 All resources should also be searchable from anywhere by pressing the Windows key and entering a search term.

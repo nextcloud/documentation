@@ -4,7 +4,8 @@ Public share template
 
 .. sectionauthor:: Louis Chmn <louis@chmn.me>
 
-It is possible to override the default public share view. This is possible by implementing the ``IPublicShareTemplateProvider`` interface.
+It is possible to override the default public share view. This is possible by implementing the
+``IPublicShareTemplateProvider`` interface.
 
 .. code-block:: php
 

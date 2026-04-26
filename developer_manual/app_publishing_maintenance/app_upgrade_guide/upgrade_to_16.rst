@@ -12,11 +12,13 @@ Front-end changes
 Deprecation of shipped JavaScript libraries
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The following libraries are considered as deprecated from Nextcloud 16 on. If you use one of those in your app, make sure to ship your own version that is properly bundled with your app.
+The following libraries are considered as deprecated from Nextcloud 16 on. If you use one of those in your app, make
+sure to ship your own version that is properly bundled with your app.
 
 * ``marked``
 * ``Clipboard`` -> now exported as ``ClipboardJS`` to resolve naming conflicts in Chrome.
-* Apps should ship their own javascript dependencies and not depend on server shipping for example jquery etc. Depending on the server dist package is deprecated starting NC16.
+* Apps should ship their own javascript dependencies and not depend on server shipping for example jquery etc. Depending
+  on the server dist package is deprecated starting NC16.
 * ``escapeHTML``
 * ``formatDate``
 * ``getURLParameter``
@@ -30,7 +32,9 @@ Back-end changes
 
 * PHP 7.0 support removed. PHP 7.1 or higher required.
 * PostgreSQL 9.5+ required.
-* Autoloading: In the past it was also possible to autoload PHP classes in apps by specify a list of classes and filenames in `appinfo/classpath.php`. This should not be used anymore and also isn't used by any app that is publicly available.
+* Autoloading: In the past it was also possible to autoload PHP classes in apps by specify a list of classes and
+  filenames in `appinfo/classpath.php`. This should not be used anymore and also isn't used by any app that is publicly
+  available.
 
 Removed APIs
 ^^^^^^^^^^^^

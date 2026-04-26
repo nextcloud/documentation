@@ -4,7 +4,11 @@ App: Local Image Generation (text2image_stablediffusion2)
 
 .. _ai-app-text2image_stablediffusion2:
 
-The *text2image_stablediffusion2* app is one of the apps that provide image generation functionality in Nextcloud and act as an image generation backend for the :ref:`Nextcloud Assistant app<ai-app-assistant>` and other apps making use of the image generation functionality. The *text2image_stablediffusion2* app specifically runs only open source models and does so entirely on-premises. Nextcloud can provide customer support upon request, please talk to your account manager for the possibilities.
+The *text2image_stablediffusion2* app is one of the apps that provide image generation functionality in Nextcloud and
+act as an image generation backend for the :ref:`Nextcloud Assistant app<ai-app-assistant>` and other apps making use of
+the image generation functionality. The *text2image_stablediffusion2* app specifically runs only open source models and
+does so entirely on-premises. Nextcloud can provide customer support upon request, please talk to your account manager
+for the possibilities.
 
 Requirements
 ------------
@@ -34,7 +38,9 @@ Installation
 Scaling
 -------
 
-It is currently not possible to scale this app, we are working on this. Based on our calculations an instance has a rough capacity of 120 image requests per hour (each user request can be for multiple images). However, this number is based on theory and we do appreciate real-world feedback on this.
+It is currently not possible to scale this app, we are working on this. Based on our calculations an instance has a
+rough capacity of 120 image requests per hour (each user request can be for multiple images). However, this number is
+based on theory and we do appreciate real-world feedback on this.
 
 App store
 ---------
@@ -55,6 +61,9 @@ Known Limitations
 * The model cannot render legible text
 * Faces and people in general may not be generated properly
 * The results for certain image generation requests can be biased and may enforce stereotypes
-* We currently only support languages that the underlying model supports; correctness of language use in languages other than English may be poor depending on the language's coverage in the model's training data
+* We currently only support languages that the underlying model supports; correctness of language use in languages other
+  than English may be poor depending on the language's coverage in the model's training data
 * Make sure to test the app for whether it meets the use-case's quality requirements
-* Customer support is available upon request, however we can't solve false or problematic output, most performance issues, or other problems caused by the underlying model. Support is thus limited only to bugs directly caused by the implementation of the app (connectors, API, front-end, AppAPI)
+* Customer support is available upon request, however we can't solve false or problematic output, most performance
+  issues, or other problems caused by the underlying model. Support is thus limited only to bugs directly caused by the
+  implementation of the app (connectors, API, front-end, AppAPI)

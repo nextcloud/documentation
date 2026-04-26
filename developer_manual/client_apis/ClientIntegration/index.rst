@@ -4,10 +4,12 @@
 Client Integration
 ==================
 
-With Nextcloud Hub 26 Winter we are introducing a new client integration API. It allows server side apps to expose integrations on Desktop and Mobile.
+With Nextcloud Hub 26 Winter we are introducing a new client integration API. It allows server side apps to expose
+integrations on Desktop and Mobile.
 For now we support adding app-defined actions to a "context menu" of files and folders.
 
-It allows providing easy integration of specific actions on clients without the need to write and maintain code on those platforms.
+It allows providing easy integration of specific actions on clients without the need to write and maintain code on those
+platforms.
 
 Supported clients
 -----------------
@@ -61,7 +63,8 @@ Requirements:
 - Current predefined params are ``fileId`` and ``filePath``,
 - ``{fileId}`` and ``{filePath}`` will be replaced by clients with actual values,
 - ``url`` placeholders are always replaced,
-- ``mimetype_filters`` is a comma-separated list of filters (matches anything that starts with the filter). If there is no filter, the action is shown for every file/folder.
+- ``mimetype_filters`` is a comma-separated list of filters (matches anything that starts with the filter). If there is
+  no filter, the action is shown for every file/folder.
 - All ``urls`` must be relative.
 - ``params`` is used for body params (currently only POST).
 - ``icon`` field should always provide an SVG.
@@ -86,7 +89,8 @@ The app in question can then handle the request and can send two different respo
 Declarative UI response
 ^^^^^^^^^^^^^^^^^^^^^^^
 The declarative UI response allows the app to send back a new UI to be rendered by the client: 
-- version: Indicates which version it is. Clients will be backwards compatible. If server sends a newer version than the client can understand the response will be ignored.
+- version: Indicates which version it is. Clients will be backwards compatible. If server sends a newer version than the
+  client can understand the response will be ignored.
 - tooltip: Translated text, which will be shown as tooltip / snackbar.
 
 .. code-block:: javascript 
@@ -118,12 +122,14 @@ The declarative UI response allows the app to send back a new UI to be rendered 
     }
   }
 
-At the moment only rows with text and url elements are supported, but in the future we will add more elements and options.
+At the moment only rows with text and url elements are supported, but in the future we will add more elements and
+options.
 
 Tooltip Response
 ^^^^^^^^^^^^^^^^
 The tooltip response is a regular DataResponse type, with payload:
-- version: Indicates which version it is. Clients will be backwards compatible. If server sends a newer version than the client can understand the response will be ignored.
+- version: Indicates which version it is. Clients will be backwards compatible. If server sends a newer version than the
+  client can understand the response will be ignored.
 - tooltip: Translated text, which will be shown as tooltip / snackbar.
 
 .. code-block:: javascript
@@ -181,7 +187,8 @@ Here is an example of using the Assistant app.
     },
   },
 
-The Assistant integration has a few endpoints for the client to show and execute. "Summarize using AI" and "Text-To-Speech using AI" appears at the bottom of each menu on the client side:
+The Assistant integration has a few endpoints for the client to show and execute. "Summarize using AI" and
+"Text-To-Speech using AI" appears at the bottom of each menu on the client side:
 
 |pic1| |pic2|
 
@@ -191,8 +198,11 @@ The Assistant integration has a few endpoints for the client to show and execute
 .. |pic2| image:: ../images/client-integration-android.png
    :width: 45%
 
-Looking at the "Summarize using AI" action, it will only show for files with mimetypes starting with "text/" or the specified document and PDF mimetypes, as described in `mimetype_filters`.
-When clicking on the action, the client will send a POST request to the specified URL, replacing {fileId} with the actual file id. The app can then handle the request and for example send a tooltip response back to the client. The client will show the tooltip to the user:
+Looking at the "Summarize using AI" action, it will only show for files with mimetypes starting with "text/" or the
+specified document and PDF mimetypes, as described in `mimetype_filters`.
+When clicking on the action, the client will send a POST request to the specified URL, replacing {fileId} with the
+actual file id. The app can then handle the request and for example send a tooltip response back to the client. The
+client will show the tooltip to the user:
 
 .. code-block:: javascript 
 

@@ -12,7 +12,9 @@ Uploading large files is always a bit problematic as your connection can be inte
 which will fail your entire upload. Nextcloud has a chunking API where you can
 upload smaller chunks which will be assembled on the server once they are all uploaded.
 
-There are two versions of the chunking API. Version 1 is the original version and version 2 was built as a backward compatible extension to support uploads directly to supporting target storages like S3. Version 2 is the recommended version to use.
+There are two versions of the chunking API. Version 1 is the original version and version 2 was built as a backward
+compatible extension to support uploads directly to supporting target storages like S3. Version 2 is the recommended
+version to use.
 
 Version 2 comes with a few additional requirements and limitations to consider (compared to version 1):
 
@@ -22,7 +24,8 @@ Version 2 comes with a few additional requirements and limitations to consider (
 - The size of chunks must be between 5MB and 5GB (except for the last chunk, which can be smaller)
 - Chunks cannot be downloaded from the upload directory
 
-Nextcloud will expire the upload directory after 24 hours of inactivity. This means that if you start an upload and do not finish it within 24 hours, the upload directory will be deleted and the upload will fail.
+Nextcloud will expire the upload directory after 24 hours of inactivity. This means that if you start an upload and do
+not finish it within 24 hours, the upload directory will be deleted and the upload will fail.
 
 Chunked upload v2
 =================

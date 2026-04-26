@@ -114,7 +114,8 @@ instance into your migration class like this:
 Migrations and Metadata
 -----------------------
 
-Since 30, details about migrations are available to administrator as metadata can be attached to your migration class by adding specific PHP Attributes:
+Since 30, details about migrations are available to administrator as metadata can be attached to your migration class by
+adding specific PHP Attributes:
 
 .. code-block:: php
     :emphasize-lines: 5-10
@@ -222,7 +223,10 @@ Show which migrations have been executed and which are pending for an app::
 Adding indices
 --------------
 
-Adding indices to existing tables can take long time, especially on large tables. Therefore it is recommended to not add the indices in the migration itself, but to indicate the index requirement to the server by adding a listener for the ``AddMissingIndicesEvent``. This way the migration can be executed in a separate step and do not block the upgrade process. For new installations the index should still be added to the migration that creates the table.
+Adding indices to existing tables can take long time, especially on large tables. Therefore it is recommended to not add
+the indices in the migration itself, but to indicate the index requirement to the server by adding a listener for the
+``AddMissingIndicesEvent``. This way the migration can be executed in a separate step and do not block the upgrade
+process. For new installations the index should still be added to the migration that creates the table.
 
 .. code-block:: php
 
@@ -241,9 +245,12 @@ Replacing indices
 
 .. versionadded:: 29.0.0
 
-Similar to adding an index to an existing table, it could be necessary to replace one or more indices with a new one. To avoid a gap between dropping the old indices in a migration and adding the new one through ``AddMissingIndicesEvent``, it is possible to do both at once in ``AddMissingIndicesEvent``.
+Similar to adding an index to an existing table, it could be necessary to replace one or more indices with a new one. To
+avoid a gap between dropping the old indices in a migration and adding the new one through ``AddMissingIndicesEvent``,
+it is possible to do both at once in ``AddMissingIndicesEvent``.
 
-If none of the previous indices are found, e.g. because they were optional and not created yet, the replacement index will be treated as *missing index*.
+If none of the previous indices are found, e.g. because they were optional and not created yet, the replacement index
+will be treated as *missing index*.
 
 .. note:: Make sure to not use the same index name for the new index as for old indices.
 

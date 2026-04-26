@@ -36,7 +36,8 @@ Get all shares from a given file/folder.
 * Method: GET
 
 * URL Arguments: path - (string) path to file/folder
-* URL Arguments: reshares - (boolean) returns not only the shares from the current user but all shares from the given file.
+* URL Arguments: reshares - (boolean) returns not only the shares from the current user but all shares from the given
+  file.
 * URL Arguments: subfiles - (boolean) returns all shares within a folder, given that
   *path* defines a folder
 * Mandatory fields: path
@@ -75,8 +76,10 @@ Share a file/folder with a user/group or as public link.
 * Method: POST
 
 * POST Arguments: path - (string) path to the file/folder which should be shared
-* POST Arguments: shareType - (int) 0 = user; 1 = group; 3 = public link; 4 = email; 6 = federated cloud share; 7 = circle; 10 = Talk conversation
-* POST Arguments: shareWith - (string) user / group id / email address / circleID / conversation name with which the file should be shared
+* POST Arguments: shareType - (int) 0 = user; 1 = group; 3 = public link; 4 = email; 6 = federated cloud share; 7 =
+  circle; 10 = Talk conversation
+* POST Arguments: shareWith - (string) user / group id / email address / circleID / conversation name with which the
+  file should be shared
 * POST Arguments: publicUpload - (string) allow public upload to a public shared folder (true/false)
 * POST Arguments: password - (string) password to protect public link Share with
 * POST Arguments: permissions - (int) 1 = read; 2 = update; 4 = create; 8 = delete;
@@ -131,7 +134,8 @@ Update a given share.
   shares. This argument expects a well formatted date string, e.g. 'YYYY-MM-DD'
 * PUT Arguments: note - (string) Adds a note for the share recipient.
 * PUT Arguments: attributes - (string) serialized JSON string for :ref:`share attributes<Share attributes>`
-* PUT Arguments: sendMail - (string) send an email to the recipient. This will not send an email on its own. You will have to use the :ref:`send-email<Send email>` endpoint to send the email. (true/false)
+* PUT Arguments: sendMail - (string) send an email to the recipient. This will not send an email on its own. You will
+  have to use the :ref:`send-email<Send email>` endpoint to send the email. (true/false)
 
 Statuscodes:
 

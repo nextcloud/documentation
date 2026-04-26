@@ -26,13 +26,15 @@ Install packages
 Configuration
 *************
 
-Edit /etc/coolwsd/coolwsd.xml. Collabora Online (coolwsd) service runs via systemd. After editing the configuration file, you have to restart the service:
+Edit /etc/coolwsd/coolwsd.xml. Collabora Online (coolwsd) service runs via systemd. After editing the configuration
+file, you have to restart the service:
 
 .. code-block:: bash
 
     sudo systemctl restart coolwsd
 
-The default configuration is looking for an SSL certificate and key, which are not present, so probably it’s the best to disable SSL, and optionally enable SSL termination, then set up the reverse proxy.
+The default configuration is looking for an SSL certificate and key, which are not present, so probably it’s the best to
+disable SSL, and optionally enable SSL termination, then set up the reverse proxy.
 
 .. seealso::
   Full configuration examples for reverse proxy setup can be found in the Collabora Online documentation:

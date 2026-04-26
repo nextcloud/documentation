@@ -2,7 +2,8 @@
 Server-side encryption details
 ==============================
 
-This document describes the server-side encryption scheme implemented by Nextcloud's default encryption module. This includes:
+This document describes the server-side encryption scheme implemented by Nextcloud's default encryption module. This
+includes:
 
 - the encryption and signature of files with a master key.
 - the encryption and signature of files with a public sharing key.
@@ -11,7 +12,8 @@ This document describes the server-side encryption scheme implemented by Nextclo
 
 These conventions apply throughout this document:
 
-- Given file paths in this document are relative to the Nextcloud data directory that can be retrieved as ``datadirectory`` from the ``config.php``.
+- Given file paths in this document are relative to the Nextcloud data directory that can be retrieved as
+  ``datadirectory`` from the ``config.php``.
 - Placeholders are denoted as ``$variable``. The variable has to be replaced with the appropriate information.
 - Static strings are denoted as ``"some string"``.
 - The concatenation of strings is denoted as ``$variable."some string"``.
@@ -21,23 +23,38 @@ These conventions apply throughout this document:
 Key type: master key
 --------------------
 
-This is the default encryption mode in Nextcloud. With master key encryption enabled there is one central key that is used to secure the files handled by Nextcloud. The master key is protected by the instance `secret` that is generated at installation time. The advantage of the master key encryption is that the encryption is transparent to the users but has the disadvantage that the server administrator is able to decrypt user files without knowing any user password.
+This is the default encryption mode in Nextcloud. With master key encryption enabled there is one central key that is
+used to secure the files handled by Nextcloud. The master key is protected by the instance `secret` that is generated at
+installation time. The advantage of the master key encryption is that the encryption is transparent to the users but has
+the disadvantage that the server administrator is able to decrypt user files without knowing any user password.
 
 Key type: public sharing key
 ----------------------------
 
-The public sharing key is used to secure files that have been publicly shared. The advantage of the public sharing key is that it is independent of the selected encryption mode so that Nextcloud is able to provide publicly shared files to outside parties.
+The public sharing key is used to secure files that have been publicly shared. The advantage of the public sharing key
+is that it is independent of the selected encryption mode so that Nextcloud is able to provide publicly shared files to
+outside parties.
 
 Key type: recovery key
 ----------------------
 
-The recovery key is used to provide a restore mechanism in cases where the user key encryption is enabled, where the administrator has enabled the recovery key feature and the user has opted into using the recovery key feature. The recovery key can then be used to restore files when users have lost their passwords. The recovery key is protected by a recovery password that the server administrator should store securely. The advantage of the recovery key is that files can be recovered but has the disadvantage that the server administrator is able to decrypt user files without knowing any user password.
+The recovery key is used to provide a restore mechanism in cases where the user key encryption is enabled, where the
+administrator has enabled the recovery key feature and the user has opted into using the recovery key feature. The
+recovery key can then be used to restore files when users have lost their passwords. The recovery key is protected by a
+recovery password that the server administrator should store securely. The advantage of the recovery key is that files
+can be recovered but has the disadvantage that the server administrator is able to decrypt user files without knowing
+any user password.
 
 Key type: user key
 ------------------
 
-User key encryption needs to be explicitly activated by calling ``./occ encryption:disable-master-key``. In older versions of Nextcloud this had been enabled by default.
-With user key encryption enabled all users have their own user keys that are used to secure the files handled by Nextcloud. The user keys are protected by the user passwords. The advantage is that the server administrator is not able to decrypt user files without knowing any user password - unless the file is publicly shared or a recovery key is defined - but has the disadvantage that files are permanently lost if the users forget their user passwords - unless the files are (publicly) shared or a recovery key is defined.
+User key encryption needs to be explicitly activated by calling ``./occ encryption:disable-master-key``. In older
+versions of Nextcloud this had been enabled by default.
+With user key encryption enabled all users have their own user keys that are used to secure the files handled by
+Nextcloud. The user keys are protected by the user passwords. The advantage is that the server administrator is not able
+to decrypt user files without knowing any user password - unless the file is publicly shared or a recovery key is
+defined - but has the disadvantage that files are permanently lost if the users forget their user passwords - unless the
+files are (publicly) shared or a recovery key is defined.
 
 .. note:: This method cannot be used with SAML authentication, because Nextcloud does not get a hold of any credentials whatsoever and therefore cannot use any users' passwords for encryption.
 
@@ -68,7 +85,8 @@ The locations of public key files depend on their key type:
 File type: private key file
 ---------------------------
 
-Private key files contain RSA private keys that are used to decrypt/unseal the share key files. The RSA private key is encrypted and signed with a password and stored in a format that is specific to the Nextcloud encryption module.
+Private key files contain RSA private keys that are used to decrypt/unseal the share key files. The RSA private key is
+encrypted and signed with a password and stored in a format that is specific to the Nextcloud encryption module.
 
 File format
 ^^^^^^^^^^^
@@ -93,7 +111,9 @@ The locations of private key files depend on their key type:
 File type: share key file
 -------------------------
 
-Share key files contain so-called envelope keys that are needed to decrypt the file key files. The envelope keys are created by ``openssl_seal()`` during the encryption and are needed for ``openssl_open()`` during the decryption. The envelope keys are encrypted with the public keys of the recipients that are allowed to read the actual files.
+Share key files contain so-called envelope keys that are needed to decrypt the file key files. The envelope keys are
+created by ``openssl_seal()`` during the encryption and are needed for ``openssl_open()`` during the decryption. The
+envelope keys are encrypted with the public keys of the recipients that are allowed to read the actual files.
 
 File format
 ^^^^^^^^^^^
@@ -107,7 +127,8 @@ The locations of share key files depend on the type of the encrypted file:
 
 - regular file: ``$username."/files_encryption/keys/files/".$filename."/OC_DEFAULT_MODULE/".$recipient.".shareKey"``
 - version file: *version files use the same location for the share key file as their regular file*
-- trashed file: ``$username."/files_encryption/keys/files_trashbin/files/".$filename.".d".$timestamp."/OC_DEFAULT_MODULE/".$recipient.".shareKey"``
+- trashed file:
+  ``$username."/files_encryption/keys/files_trashbin/files/".$filename.".d".$timestamp."/OC_DEFAULT_MODULE/".$recipient.".shareKey"``
 - trashed version file: *trashed version files use the same location for the share key file as their trashed file*
 
 .. _file_type_file_key_file_label:
@@ -115,7 +136,8 @@ The locations of share key files depend on the type of the encrypted file:
 File type: file key file
 ------------------------
 
-File key files contain symmetric keys used to encrypt the actual files. The file keys consist of 32 random bytes and are encrypted/sealed with the envelope keys stored in the share key files.
+File key files contain symmetric keys used to encrypt the actual files. The file keys consist of 32 random bytes and are
+encrypted/sealed with the envelope keys stored in the share key files.
 
 File format
 ^^^^^^^^^^^
@@ -129,7 +151,8 @@ The locations of the file key files depend on the type of the encrypted file:
 
 - regular file: ``$username."/files_encryption/keys/files/".$filename."/OC_DEFAULT_MODULE/fileKey"``
 - version file: *version files use the same location for the file key file as their regular file*
-- trashed file: ``$username."/files_encryption/keys/files_trashbin/files/".$filename.".d".$delete_timestamp."/OC_DEFAULT_MODULE/fileKey"``
+- trashed file:
+  ``$username."/files_encryption/keys/files_trashbin/files/".$filename.".d".$delete_timestamp."/OC_DEFAULT_MODULE/fileKey"``
 - trashed version file: *trashed version files use the same location for the file key file as their trashed file*
 
 .. _file_type_file_label:
@@ -137,7 +160,8 @@ The locations of the file key files depend on the type of the encrypted file:
 File type: file
 ---------------
 
-Files contain the actual file content. The file content is encrypted and signed with a password and stored in a format that is specific to the Nextcloud encryption module.
+Files contain the actual file content. The file content is encrypted and signed with a password and stored in a format
+that is specific to the Nextcloud encryption module.
 
 File format
 ^^^^^^^^^^^
@@ -159,17 +183,20 @@ The locations of the files depend on the type of the encrypted file:
 - regular file: ``$username."/files/".$filename``
 - version file: ``$username."/files_versions/".$filename.".v".$version_timestamp``
 - trashed file: ``$username."/files_trashbin/files/".$filename.".d".$delete_timestamp``
-- trashed version file: ``$username."/files_trashbin/versions/".$filename.".v".$version_timestamp.".d".$delete_timestamp``
+- trashed version file:
+  ``$username."/files_trashbin/versions/".$filename.".v".$version_timestamp.".d".$delete_timestamp``
 
 Key generation: generate the key pair
 -------------------------------------
 
-The key pair has to be generated with the ``openssl_pkey_new()`` function. Then the private key and public key are extracted from the the key resource with the ``openssl_pkey_export()`` function.
+The key pair has to be generated with the ``openssl_pkey_new()`` function. Then the private key and public key are
+extracted from the the key resource with the ``openssl_pkey_export()`` function.
 
 Key generation: store the public key
 ------------------------------------
 
-The public key is written to the ``$username.".publicKey"`` file as documented in :ref:`file_type_public_key_file_label`.
+The public key is written to the ``$username.".publicKey"`` file as documented in
+:ref:`file_type_public_key_file_label`.
 
 Key generation: store the private key
 -------------------------------------
@@ -177,9 +204,13 @@ Key generation: store the private key
 Derive the encryption key
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The salt for the encryption key is derived by creating a raw SHA256 hash of ``$uid.$instanceId.$instanceSecret`` with the ``hash()`` function. ``$instanceId`` can be retrieved as ``instanceid`` from the ``config.php``. ``$instanceSecret`` can be retrieved as ``secret`` from the ``config.php``.
+The salt for the encryption key is derived by creating a raw SHA256 hash of ``$uid.$instanceId.$instanceSecret`` with
+the ``hash()`` function. ``$instanceId`` can be retrieved as ``instanceid`` from the ``config.php``. ``$instanceSecret``
+can be retrieved as ``secret`` from the ``config.php``.
 
-The encryption key is then derived by creating a raw SHA256-PBKDF2 hash of the password with the salt, 100.000 rounds and (by default) with a target size of 32 bytes (as required for AES-256-CTR) with the ``hash_hmac()`` function (denoted as ``$passphrase``).
+The encryption key is then derived by creating a raw SHA256-PBKDF2 hash of the password with the salt, 100.000 rounds
+and (by default) with a target size of 32 bytes (as required for AES-256-CTR) with the ``hash_hmac()`` function (denoted
+as ``$passphrase``).
 
 The used password depends on the key type:
 
@@ -191,22 +222,27 @@ The used password depends on the key type:
 Encrypt the private key
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-The initialization vector is generated as a random string of 16 bytes with the ``random_bytes()`` function (denoted as ``$iv``). The private key is (by default) AES-256-CTR encrypted with the ``$iv`` and the ``$passphrase`` with the ``openssl_encrypt()`` function and returned as Base64 encoded without zero-padding (denoted as ``$encrypted``).
+The initialization vector is generated as a random string of 16 bytes with the ``random_bytes()`` function (denoted as
+``$iv``). The private key is (by default) AES-256-CTR encrypted with the ``$iv`` and the ``$passphrase`` with the
+``openssl_encrypt()`` function and returned as Base64 encoded without zero-padding (denoted as ``$encrypted``).
 
 Sign the private key
 ^^^^^^^^^^^^^^^^^^^^
 
-The message authentication key is derived by creating a raw SHA512 hash of ``$passphrase.$version.$position."a"`` with the ``hash()`` function.
+The message authentication key is derived by creating a raw SHA512 hash of ``$passphrase.$version.$position."a"`` with
+the ``hash()`` function.
 
 - ``$version`` is always ``"0"``.
 - ``$position`` is always ``"0"``.
 
-The signature is then derived by creating a hexadecimally encoded SHA256-HMAC of ``$encrypted`` and the message authentication key with the ``hash_hmac()`` function (denoted as ``$signature``).
+The signature is then derived by creating a hexadecimally encoded SHA256-HMAC of ``$encrypted`` and the message
+authentication key with the ``hash_hmac()`` function (denoted as ``$signature``).
 
 Store the private key
 ^^^^^^^^^^^^^^^^^^^^^
 
-The private key is written to the ``$username.".privateKey"`` file with the derived ``$encrypted``, ``$iv`` and ``$signature`` as documented in :ref:`file_type_private_key_file_label`.
+The private key is written to the ``$username.".privateKey"`` file with the derived ``$encrypted``, ``$iv`` and
+``$signature`` as documented in :ref:`file_type_private_key_file_label`.
 
 Encryption: generate the file key
 ---------------------------------
@@ -219,12 +255,14 @@ The file key is generated as a random string of 32 bytes with the ``random_bytes
 Read the public key
 ^^^^^^^^^^^^^^^^^^^
 
-The public keys of the recipients are read from the ``$username.".publicKey"`` files as documented in :ref:`file_type_public_key_file_label`.
+The public keys of the recipients are read from the ``$username.".publicKey"`` files as documented in
+:ref:`file_type_public_key_file_label`.
 
 Encrypt/seal the file key
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The file key is encrypted/sealed with the ``openssl_seal()`` function with the public keys. This returns the encrypted file key and the encrypted envelope keys for the recipients.
+The file key is encrypted/sealed with the ``openssl_seal()`` function with the public keys. This returns the encrypted
+file key and the encrypted envelope keys for the recipients.
 
 Store the file key
 ^^^^^^^^^^^^^^^^^^
@@ -234,7 +272,8 @@ The encrypted file key is stored in the ``"fileKey"`` file as documented in :ref
 Store the envelope keys
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-The encrypted envelope keys for the recipients are stored in the ``$username.".shareKey"`` files as documented in :ref:`file_type_share_key_file_label`.
+The encrypted envelope keys for the recipients are stored in the ``$username.".shareKey"`` files as documented in
+:ref:`file_type_share_key_file_label`.
 
 Encryption: encrypt the file
 ----------------------------
@@ -242,27 +281,41 @@ Encryption: encrypt the file
 Split the file
 ^^^^^^^^^^^^^^
 
-The file is split into 6072 bytes sized blocks. Only the last encrypted block may be shorter. Each block is referenced by its zero-based index within the file (denoted as ``$position``).
+The file is split into 6072 bytes sized blocks. Only the last encrypted block may be shorter. Each block is referenced
+by its zero-based index within the file (denoted as ``$position``).
 
 Encrypt the blocks
 ^^^^^^^^^^^^^^^^^^
 
-For each block the initialization vector is generated as a random string of 16 bytes with the ``random_bytes()`` function (denoted as ``$iv[$position]``). The block is (by default) AES-256-CTR encrypted with the ``$iv[$position]`` and the ``$filekey`` with the ``openssl_encrypt()`` function and returned as Base64 encoded without zero-padding (denoted as ``$encrypted[$position]``).
+For each block the initialization vector is generated as a random string of 16 bytes with the ``random_bytes()``
+function (denoted as ``$iv[$position]``). The block is (by default) AES-256-CTR encrypted with the ``$iv[$position]``
+and the ``$filekey`` with the ``openssl_encrypt()`` function and returned as Base64 encoded without zero-padding
+(denoted as ``$encrypted[$position]``).
 
 Sign the blocks
 ^^^^^^^^^^^^^^^
 
-The message authentication key is derived by creating a raw SHA512 hash of ``$filekey.$version.$position."a"`` with the ``hash()`` function.
+The message authentication key is derived by creating a raw SHA512 hash of ``$filekey.$version.$position."a"`` with the
+``hash()`` function.
 
-- ``$version`` is the ``encrypted`` value that can be retrieved from the ``oc_filecache`` table in the database and must not be zero. Take into account that a file in the ``oc_filecache`` table is identified by its ``path`` value as well as its ``storage`` value which references the ``numeric_id`` field in the ``oc_storages`` table. Including ``$version`` into the message authentication key prevents blocks from being swapped between different versions of the same file.
-- ``$position`` is the index of the current block starting at ``"0"`` and is appended with ``"end"`` for the last block of the file. Including ``$position`` into the message authentication key prevents blocks from being swapped within the same file. Furthermore, adding ``"end"`` to the message authentication key of the last block prevents file truncation attacks.
+- ``$version`` is the ``encrypted`` value that can be retrieved from the ``oc_filecache`` table in the database and must
+  not be zero. Take into account that a file in the ``oc_filecache`` table is identified by its ``path`` value as well
+  as its ``storage`` value which references the ``numeric_id`` field in the ``oc_storages`` table. Including
+  ``$version`` into the message authentication key prevents blocks from being swapped between different versions of the
+  same file.
+- ``$position`` is the index of the current block starting at ``"0"`` and is appended with ``"end"`` for the last block
+  of the file. Including ``$position`` into the message authentication key prevents blocks from being swapped within the
+  same file. Furthermore, adding ``"end"`` to the message authentication key of the last block prevents file truncation
+  attacks.
 
-The signature is then derived by creating a hexadecimally encoded SHA256-HMAC of ``$encrypted[$position]`` and the message authentication key with the ``hash_hmac()`` function (denoted as ``$signature[$position]``).
+The signature is then derived by creating a hexadecimally encoded SHA256-HMAC of ``$encrypted[$position]`` and the
+message authentication key with the ``hash_hmac()`` function (denoted as ``$signature[$position]``).
 
 Store the file
 ^^^^^^^^^^^^^^
 
-The encrypted file is written to the file with the derived ``$encrypted[0..$n]``, ``$iv[0..$n]`` and ``$signature[0..$n]`` as documented in :ref:`file_type_file_label`.
+The encrypted file is written to the file with the derived ``$encrypted[0..$n]``, ``$iv[0..$n]`` and
+``$signature[0..$n]`` as documented in :ref:`file_type_file_label`.
 
 Decryption: read the private key
 --------------------------------
@@ -270,14 +323,19 @@ Decryption: read the private key
 Read the private key file
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The private key is read from the ``$username.".privateKey"`` file and the values ``$encrypted``, ``$iv`` and ``$signature`` are parsed as documented in :ref:`file_type_private_key_file_label`.
+The private key is read from the ``$username.".privateKey"`` file and the values ``$encrypted``, ``$iv`` and
+``$signature`` are parsed as documented in :ref:`file_type_private_key_file_label`.
 
 Derive the decryption key
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The salt for the decryption key is derived by creating a raw SHA256 hash of ``$uid.$instanceId.$instanceSecret`` with the ``hash()`` function. ``$instanceId`` can be retrieved as ``instanceid`` from the ``config.php``. ``$instanceSecret`` can be retrieved as ``secret`` from the ``config.php``.
+The salt for the decryption key is derived by creating a raw SHA256 hash of ``$uid.$instanceId.$instanceSecret`` with
+the ``hash()`` function. ``$instanceId`` can be retrieved as ``instanceid`` from the ``config.php``. ``$instanceSecret``
+can be retrieved as ``secret`` from the ``config.php``.
 
-The decryption key is then derived by creating a raw SHA256-PBKDF2 hash of the password with the salt, 100.000 rounds and (by default) with a target size of 32 bytes (as required for AES-256-CTR) with the ``hash_hmac()`` function (denoted as ``$passphrase``).
+The decryption key is then derived by creating a raw SHA256-PBKDF2 hash of the password with the salt, 100.000 rounds
+and (by default) with a target size of 32 bytes (as required for AES-256-CTR) with the ``hash_hmac()`` function (denoted
+as ``$passphrase``).
 
 The used password depends on the key type:
 
@@ -289,17 +347,21 @@ The used password depends on the key type:
 Check the signature
 ^^^^^^^^^^^^^^^^^^^
 
-The message authentication key is derived by creating a raw SHA512 hash of ``$passphrase.$version.$position."a"`` with the ``hash()`` function.
+The message authentication key is derived by creating a raw SHA512 hash of ``$passphrase.$version.$position."a"`` with
+the ``hash()`` function.
 
 - ``$version`` is always ``"0"``.
 - ``$position`` is always ``"0"``.
 
-The signature is then derived by creating a hexadecimally encoded SHA256-HMAC of ``$encrypted`` and the message authentication key with the ``hash_hmac()`` function. Only proceed when the derived signature is equal to `$signature` which is checked with the ``hash_equals()`` function.
+The signature is then derived by creating a hexadecimally encoded SHA256-HMAC of ``$encrypted`` and the message
+authentication key with the ``hash_hmac()`` function. Only proceed when the derived signature is equal to `$signature`
+which is checked with the ``hash_equals()`` function.
 
 Decrypt the private key
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-The private key is (by default) AES-256-CTR decrypted with the ``$iv`` and the ``$passphrase`` with the ``openssl_decrypt()`` function.
+The private key is (by default) AES-256-CTR decrypted with the ``$iv`` and the ``$passphrase`` with the
+``openssl_decrypt()`` function.
 
 Decryption: read the file key
 -----------------------------
@@ -312,12 +374,14 @@ The encrypted file key is read from the ``"fileKey"`` file as documented in :ref
 Read the envelope key
 ^^^^^^^^^^^^^^^^^^^^^
 
-The encrypted envelope key for the recipient is read from the ``$username.".shareKey"`` file as documented in :ref:`file_type_share_key_file_label`.
+The encrypted envelope key for the recipient is read from the ``$username.".shareKey"`` file as documented in
+:ref:`file_type_share_key_file_label`.
 
 Decrypt/unseal the file key
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The encrypted file key is decrypted/unsealed with the ``openssl_open()`` function with the private key and encrypted envelope key for the recipient (denoted as ``$filekey``).
+The encrypted file key is decrypted/unsealed with the ``openssl_open()`` function with the private key and encrypted
+envelope key for the recipient (denoted as ``$filekey``).
 
 Decryption: decrypt the file
 ----------------------------
@@ -325,22 +389,36 @@ Decryption: decrypt the file
 Split the file
 ^^^^^^^^^^^^^^
 
-The encrypted file is split into a 8192 bytes sized header and one or more 8192 bytes sized blocks. Only the last encrypted block may be shorter. Each block is referenced by its zero-based index within the file (denoted as ``$position``). The values ``$encrypted[0..$n]``, ``$iv[0..$n]`` and ``$signature[0..$n]`` are parsed as documented in :ref:`file_type_file_label`.
+The encrypted file is split into a 8192 bytes sized header and one or more 8192 bytes sized blocks. Only the last
+encrypted block may be shorter. Each block is referenced by its zero-based index within the file (denoted as
+``$position``). The values ``$encrypted[0..$n]``, ``$iv[0..$n]`` and ``$signature[0..$n]`` are parsed as documented in
+:ref:`file_type_file_label`.
 
 Check the block signatures
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The message authentication key is derived by creating a raw SHA512 hash of ``$filekey.$version.$position."a"`` with the ``hash()`` function.
+The message authentication key is derived by creating a raw SHA512 hash of ``$filekey.$version.$position."a"`` with the
+``hash()`` function.
 
-- ``$version`` is the ``encrypted`` value that can be retrieved from the ``oc_filecache`` table in the database and must not be zero. Take into account that a file in the ``oc_filecache`` table is identified by its ``path`` value as well as its ``storage`` value which references the ``numeric_id`` field in the ``oc_storages`` table. Including ``$version`` into the message authentication key prevents blocks from being swapped between different versions of the same file.
-- ``$position`` is the index of the current block starting at ``"0"`` and is appended with ``"end"`` for the last block of the file. Including ``$position`` into the message authentication key prevents blocks from being swapped within the same file. Furthermore, adding ``"end"`` to the message authentication key of the last block prevents file truncation attacks.
+- ``$version`` is the ``encrypted`` value that can be retrieved from the ``oc_filecache`` table in the database and must
+  not be zero. Take into account that a file in the ``oc_filecache`` table is identified by its ``path`` value as well
+  as its ``storage`` value which references the ``numeric_id`` field in the ``oc_storages`` table. Including
+  ``$version`` into the message authentication key prevents blocks from being swapped between different versions of the
+  same file.
+- ``$position`` is the index of the current block starting at ``"0"`` and is appended with ``"end"`` for the last block
+  of the file. Including ``$position`` into the message authentication key prevents blocks from being swapped within the
+  same file. Furthermore, adding ``"end"`` to the message authentication key of the last block prevents file truncation
+  attacks.
 
-The signature is then derived by creating a hexadecimally encoded SHA256-HMAC of ``$encrypted[$position]`` and the message authentication key with the ``hash_hmac()`` function. Only proceed when the derived signature is equal to ``$signature[$position]`` which is checked with the ``hash_equals()`` function.
+The signature is then derived by creating a hexadecimally encoded SHA256-HMAC of ``$encrypted[$position]`` and the
+message authentication key with the ``hash_hmac()`` function. Only proceed when the derived signature is equal to
+``$signature[$position]`` which is checked with the ``hash_equals()`` function.
 
 Decrypt the blocks
 ^^^^^^^^^^^^^^^^^^
 
-Each block is (by default) AES-256-CTR decrypted with the ``$iv[$position]`` and the ``$filekey`` with the ``openssl_decrypt()`` function.
+Each block is (by default) AES-256-CTR decrypted with the ``$iv[$position]`` and the ``$filekey`` with the
+``openssl_decrypt()`` function.
 
 Sources
 -------

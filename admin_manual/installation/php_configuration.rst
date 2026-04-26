@@ -84,7 +84,8 @@ These modules are not required, but are highly recommended to improve functional
     bcrypt will be used if Argon2 is unavailable, but if passwords were previously hashed with Argon2 
     (such as when migrating an existing Nextcloud Server installation to a new server environment) and this 
     module is missing, accounts will not be able to log-in).
-- `sysvsem`: Enables System V semaphores used by Nextcloud to coordinate preview generation across PHP processes. Recommended; if missing, previews still work but may be less reliable under heavy load.
+- `sysvsem`: Enables System V semaphores used by Nextcloud to coordinate preview generation across PHP processes.
+  Recommended; if missing, previews still work but may be less reliable under heavy load.
 
 -------------------------------
 Recommended PHP Caching Modules
@@ -163,7 +164,8 @@ Adjust the following settings in your `php.ini` as needed for Nextcloud:
 - ``disable_functions``: Avoid disabling functions unless necessary.
 - ``max_execution_time``: See :doc:`../configuration_files/big_file_upload_configuration`
 - ``memory_limit``: Should be at least 512MB. See also :doc:`../configuration_files/big_file_upload_configuration`
-- ``opcache.enable`` and related settings: See :doc:`../configuration_server/caching_configuration` and :doc:`server_tuning`
+- ``opcache.enable`` and related settings: See :doc:`../configuration_server/caching_configuration` and
+  :doc:`server_tuning`
 - ``open_basedir``: See :doc:`harden_server`
 - ``upload_tmp_dir``: See :doc:`../configuration_files/big_file_upload_configuration`
 

@@ -4,19 +4,25 @@
 Search
 ======
 
-Nextcloud 20 offers a new **unified search**. The overall idea is to have one combined view for search, but have results of any data source displayed there. Hence this is logic is built on a pluggable architecture where apps register their search providers.
+Nextcloud 20 offers a new **unified search**. The overall idea is to have one combined view for search, but have results
+of any data source displayed there. Hence this is logic is built on a pluggable architecture where apps register their
+search providers.
 
 Concept overview
 ----------------
 
-The unified search combines a variable number of search providers into a unified search result for the user. To improve the user experience with search, the search results should be displayed quickly. Therefore parallelism is used to split the process into several requests that can be processed concurrently, to give the client (e.g. JavaScript in the browser) the ability to display partial search results as they come on.
+The unified search combines a variable number of search providers into a unified search result for the user. To improve
+the user experience with search, the search results should be displayed quickly. Therefore parallelism is used to split
+the process into several requests that can be processed concurrently, to give the client (e.g. JavaScript in the
+browser) the ability to display partial search results as they come on.
 
 Hence the search process consists of two steps.
 
  1. Fetch the current set of search provider IDs
  2. Fetch each provider’s search results
 
-These two steps have to be run consecutively, but the individual requests in the second step can be dispatched and processed concurrently.
+These two steps have to be run consecutively, but the individual requests in the second step can be dispatched and
+processed concurrently.
 
 Fetching provider IDs
 ^^^^^^^^^^^^^^^^^^^^^
@@ -155,19 +161,24 @@ A **search provider** is a class which implements the interface ``\OCP\Search\IP
         }
     }
 
-The method ``getId`` returns a string identifier of the registered provider. It has to be globally unique, hence must not conflict with any other apps. Therefore it’s advised to use just the app ID (e.g. ``mail``) as ID or an ID that is prefixed with the app id, like ``mail_recipients``. ``getName`` is a translated name for your search results.
+The method ``getId`` returns a string identifier of the registered provider. It has to be globally unique, hence must
+not conflict with any other apps. Therefore it’s advised to use just the app ID (e.g. ``mail``) as ID or an ID that is
+prefixed with the app id, like ``mail_recipients``. ``getName`` is a translated name for your search results.
 
-The ``getOrder`` method returns the order of the provider for the current page. With the route parameter you can check if the route is from your app and in that case use a negative value. Otherwise your app should use a value around 50.
+The ``getOrder`` method returns the order of the provider for the current page. With the route parameter you can check
+if the route is from your app and in that case use a negative value. Otherwise your app should use a value around 50.
 
 The method ``search`` transforms a search request into a search result.
 
-The class would typically be saved into a file in ``lib/Search`` of your app but you are free to put it elsewhere as long as it’s loadable by Nextcloud’s :ref:`dependency injection container<dependency-injection>`.
+The class would typically be saved into a file in ``lib/Search`` of your app but you are free to put it elsewhere as
+long as it’s loadable by Nextcloud’s :ref:`dependency injection container<dependency-injection>`.
 
 
 Advanced search provider
 ------------------------ 
 
-Since Nextcloud 28.0, it is possible to use advanced search providers by implementing ``\OCP\Search\IFilteringProvider``.
+Since Nextcloud 28.0, it is possible to use advanced search providers by implementing
+``\OCP\Search\IFilteringProvider``.
 This interface allows to supports other filtering types.
 
 .. code-block:: php
@@ -224,14 +235,18 @@ This interface allows to supports other filtering types.
         }
     }
 
-``getSupportedFilters`` lists the filters supported by the provider. If filters send by client are not supported, the provider will not receive the request.
+``getSupportedFilters`` lists the filters supported by the provider. If filters send by client are not supported, the
+provider will not receive the request.
 
-``getCustomFilters`` allows to declare specific filters. In current state, the specific filters will only be available in the API.
+``getCustomFilters`` allows to declare specific filters. In current state, the specific filters will only be available
+in the API.
 
 External search provider
 ------------------------
 
-Since Nextcloud 32, to improve privacy, you can extend your provider with the ``\OCP\Search\IExternalProvider`` interface and implement the ``isExternalProvider()`` method to indicate that the search is performed on external (3rd-party) resources.
+Since Nextcloud 32, to improve privacy, you can extend your provider with the ``\OCP\Search\IExternalProvider``
+interface and implement the ``isExternalProvider()`` method to indicate that the search is performed on external
+(3rd-party) resources.
 In the Unified Search UI, searching through these providers is disabled by default (via toggle switch).
 
 
@@ -268,9 +283,12 @@ The provider class is registered via the :ref:`bootstrap mechanism<Bootstrapping
 Handling search requests
 ------------------------
 
-Search requests are processed in the ``search`` method. The ``$user`` object is the user who the result shall be generated for. ``$query`` gives context information like the **search term**, the **sort order**, the **route information**, the **size limit** of a request and the **cursor** for follow-up request of paginated results.
+Search requests are processed in the ``search`` method. The ``$user`` object is the user who the result shall be
+generated for. ``$query`` gives context information like the **search term**, the **sort order**, the **route
+information**, the **size limit** of a request and the **cursor** for follow-up request of paginated results.
 
-The result is encapsulated in the ``SearchResult`` class that offers two static factory methods ``complete`` and ``paginated``. Both of these methods take an array of ``SearchResultEntry`` objects.
+The result is encapsulated in the ``SearchResult`` class that offers two static factory methods ``complete`` and
+``paginated``. Both of these methods take an array of ``SearchResultEntry`` objects.
 
 Next, you’ll see a dummy provider that returns a static set of results.
 
@@ -356,16 +374,21 @@ Each of the result entry has
 * Optional icon CSS class that is applied then the thumbnail URL was not set
 * A boolean rounded, whether the thumbnail should be rounded, e.g. when it’s an avatar
 
-Apps **may** return the full result in ``search``, but in most cases the size of the result set can become too big to fit into one HTTP request and is complicated to display to the user, hence the set should be split into chunks – it should be **paginated**.
+Apps **may** return the full result in ``search``, but in most cases the size of the result set can become too big to
+fit into one HTTP request and is complicated to display to the user, hence the set should be split into chunks – it
+should be **paginated**.
 
 Pagination
 ^^^^^^^^^^
 
-Paginated results work almost like complete results. The differences are that the ``SearchResult::paginated`` factory method is used to build the set and that you need a **cursor** for this.
+Paginated results work almost like complete results. The differences are that the ``SearchResult::paginated`` factory
+method is used to build the set and that you need a **cursor** for this.
 
 There are two ways to use the **cursor**: offset-based pagination and cursor-based pagination.
 
-For **offset-based pagination** you return ``$query->getLimit()`` results and specify this number as **cursor**. Any subsequent call where ``$query->getCursor()`` does not return ``null`` you take the value as **offset** for the next page. The following example shall demonstrate this use case.
+For **offset-based pagination** you return ``$query->getLimit()`` results and specify this number as **cursor**. Any
+subsequent call where ``$query->getCursor()`` does not return ``null`` you take the value as **offset** for the next
+page. The following example shall demonstrate this use case.
 
 .. code-block:: php
 
@@ -428,11 +451,17 @@ For **offset-based pagination** you return ``$query->getLimit()`` results and sp
         }
     }
 
-So the first call will get a cursor of ``null`` and a limit of, say, 20. So the first 20 rows are fetched. The next call will have a cursor of 20, so the 20st to 39th rows are fetched.
+So the first call will get a cursor of ``null`` and a limit of, say, 20. So the first 20 rows are fetched. The next call
+will have a cursor of 20, so the 20st to 39th rows are fetched.
 
-The downside of a offset-based pagination is that when the underlying data changes (new entries are inserted into or deleted from the database, files change), the offset might be out of sync from on request to its successor. Therefore, if possible, a true cursor-based pagination is preferable.
+The downside of a offset-based pagination is that when the underlying data changes (new entries are inserted into or
+deleted from the database, files change), the offset might be out of sync from on request to its successor. Therefore,
+if possible, a true cursor-based pagination is preferable.
 
-For a **cursor-based pagination** a app-specific property is used to know a reference to the last element of the previous search request. The presumption of this algorithm is that the result set is sorted by an attribute and this attribute is an ``int`` or ``string``. The attribute value of the last element in the result page determines the cursor for the next search request. Again, a small example shall demonstrate how this works.
+For a **cursor-based pagination** a app-specific property is used to know a reference to the last element of the
+previous search request. The presumption of this algorithm is that the result set is sorted by an attribute and this
+attribute is an ``int`` or ``string``. The attribute value of the last element in the result page determines the cursor
+for the next search request. Again, a small example shall demonstrate how this works.
 
 
 .. code-block:: php
@@ -504,7 +533,9 @@ For a **cursor-based pagination** a app-specific property is used to know a refe
 Optional attributes
 ^^^^^^^^^^^^^^^^^^^
 
-The unified search is available via OCS, which means client application like the mobile apps can use it to get access to the server search mechanism. The default properties of a search result entry might be difficult to parse and interpret in those clients, hence it’s possible to add optional string attributes to each entry.
+The unified search is available via OCS, which means client application like the mobile apps can use it to get access to
+the server search mechanism. The default properties of a search result entry might be difficult to parse and interpret
+in those clients, hence it’s possible to add optional string attributes to each entry.
 
 .. code-block:: php
 
@@ -520,11 +551,14 @@ The unified search is available via OCS, which means client application like the
 Declare in-app search 
 ---------------------
 
-If your application also have in-app search (like ``mail`` or ``talk``), your provider can also implements interface ``\OCP\Search\IInAppSearch``.
+If your application also have in-app search (like ``mail`` or ``talk``), your provider can also implements interface
+``\OCP\Search\IInAppSearch``.
 
 This will add a link for it after search results.
 
 Privacy
 -------
 
-All search providers have to value privacy and prevent leaking of sensitive data by default. Therefore search terms must not be sent to third parties by default. If a search provider makes use of third party services, user consent has to be acquired, e.g. by an opt-in toggle in the user's personal settings.
+All search providers have to value privacy and prevent leaking of sensitive data by default. Therefore search terms must
+not be sent to third parties by default. If a search provider makes use of third party services, user consent has to be
+acquired, e.g. by an opt-in toggle in the user's personal settings.

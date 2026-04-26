@@ -2,7 +2,9 @@
 Dashboard app
 =============
 
-The Nextcloud Dashboard is your starting point of the day, giving users an overview of your upcoming appointments, urgent emails, chat messages, incoming tickets, latest tweets and much more! Users can add the widgets they like and change the background to their liking.
+The Nextcloud Dashboard is your starting point of the day, giving users an overview of your upcoming appointments,
+urgent emails, chat messages, incoming tickets, latest tweets and much more! Users can add the widgets they like and
+change the background to their liking.
 
 Enabling the dashboard app
 --------------------------
@@ -13,7 +15,8 @@ simply go to your Nextcloud Apps page to enable it.
 Configuring your Nextcloud for the dashboard app
 -------------------------------------------------
 
-The dashboard widgets are provided by apps and have a unique identifier. This can be used to customize the default layout of the dashboard as an administrator. The layout is stored as a comma-separated list of widget identifiers.
+The dashboard widgets are provided by apps and have a unique identifier. This can be used to customize the default
+layout of the dashboard as an administrator. The layout is stored as a comma-separated list of widget identifiers.
 
 The layout of an existing user can be read with the following command::
 

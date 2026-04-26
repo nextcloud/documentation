@@ -34,12 +34,14 @@ Removed front-end APIs and libraries
   Use Vue components from the ``@nextcloud/vue`` instead.
 - ``OC.*menu*`` methods were deprecated and are now removed.
   Use Vue components from the ``@nextcloud/vue`` instead.
-- Magic handling of ``.live-relative-timestamp`` (elements with this class were automatically updated to show relative timestamps) was removed.
+- Magic handling of ``.live-relative-timestamp`` (elements with this class were automatically updated to show relative
+  timestamps) was removed.
   Use the ``NcDateTime`` component from the ``@nextcloud/vue`` library instead
 - The global ``snapper`` was deprecated and is now removed.
   For the app navigation please migrate your app to Vue
   and use the ``NcAppNavigation`` component from the ``@nextcloud/vue`` library instead.
-- Some deprecated globally shared libraries were removed. If you still rely on them, you need to bundle them with your app:
+- Some deprecated globally shared libraries were removed. If you still rely on them, you need to bundle them with your
+  app:
 
   - ``jQuery`` was deprecated and scheduled for removal since Nextcloud 19.
   - ``jQuery UI`` was deprecated and scheduled for removal since Nextcloud 19.
@@ -51,7 +53,8 @@ Removed front-end APIs and libraries
 Removed back-end APIs
 ---------------------
 
-- ``\OCP\Share_Backend``, ``\OCP\Share_Backend_Collection``, ``\OCP\Share_Backend_File_Dependent`` were removed. This old
+- ``\OCP\Share_Backend``, ``\OCP\Share_Backend_Collection``, ``\OCP\Share_Backend_File_Dependent`` were removed. This
+  old
   share backend was replaced in Nextcloud 9 with a new backend system based on ``IShareProvider``.
 
 

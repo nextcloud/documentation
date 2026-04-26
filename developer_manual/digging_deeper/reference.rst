@@ -269,7 +269,8 @@ The picker result then gets directly inserted in the content.
 NcReferencePickerModal
 ~~~~~~~~~~~~~~~~~~~~~~
 
-You display the Smart Picker by using the NcReferencePickerModal Vue component. It is available in the Nextcloud Vue library.
+You display the Smart Picker by using the NcReferencePickerModal Vue component. It is available in the Nextcloud Vue
+library.
 
 .. code-block:: javascript
 
@@ -277,9 +278,11 @@ You display the Smart Picker by using the NcReferencePickerModal Vue component. 
 
 Available props:
 
-* initialProvider (optional): If a reference provider object is passed, skip the provider selection and directly show this provider
+* initialProvider (optional): If a reference provider object is passed, skip the provider selection and directly show
+  this provider
 * focusOnCreate (optional, default: true): Focus on the main input element on creation
-* isInsideViewer (optional, default: false): Set this to true if NcReferencePickerModal is used inside the Viewer. This tells the Viewer to deal with the focus trap.
+* isInsideViewer (optional, default: false): Set this to true if NcReferencePickerModal is used inside the Viewer. This
+  tells the Viewer to deal with the focus trap.
 
 getLinkWithPicker
 ~~~~~~~~~~~~~~~~~
@@ -287,7 +290,8 @@ getLinkWithPicker
 To display the Smart Picker outside Vue, you can use the getLinkWithPicker helper function.
 It takes 2 parameters:
 
-* providerId (optional, default: null): The provider to select in the picker. If null, the provider selection is displayed first.
+* providerId (optional, default: null): The provider to select in the picker. If null, the provider selection is
+  displayed first.
 * isInsideViewer (optional): This will be passed internally to NcReferencePickerModal as the isInsideViewer prop.
 
 This function returns a promise that resolves with the picker result. This promise is rejected if the user closes
@@ -321,7 +325,8 @@ So we are mostly interested in the second type here: The ones using unified sear
 
 In Nextcloud's web UI, those providers are rendered with a
 `generic search Vue component <https://github.com/nextcloud/nextcloud-vue/blob/master/src/components/NcRichText/NcReferencePicker/NcSearch.vue>`_
-which shows a search input, lists the search result in a dropdown menu and directly submits the URL of the selected result.
+which shows a search input, lists the search result in a dropdown menu and directly submits the URL of the selected
+result.
 The search is done by directly querying the Unified Search OCS API. This is described later.
 
 To implement something similar to the Smart Picker in a client, it is required to know how to:
@@ -477,16 +482,20 @@ If you want your reference provider to be used by the Smart Picker, you need to 
 
 There are 2 ways to make your provider appear in the smart picker, in other words, 2 types of providers:
 
-* Either your reference provider implements the ``OCP\Collaboration\Reference\ISearchableReferenceProvider`` interface and you declare a list of unified search providers that will be used by the Smart Picker
-* Or you don't implement this ``ISearchableReferenceProvider`` interface and make sure you register a custom picker component in the frontend. This is described later in this documentation.
+* Either your reference provider implements the ``OCP\Collaboration\Reference\ISearchableReferenceProvider`` interface
+  and you declare a list of unified search providers that will be used by the Smart Picker
+* Or you don't implement this ``ISearchableReferenceProvider`` interface and make sure you register a custom picker
+  component in the frontend. This is described later in this documentation.
 
 Extend link preview support
 ---------------------------
 
 This section is focusing on the methods of the ``IReferenceProvider`` interface.
 
-Links that are not matched by any reference provider will always be handled by the server's OpenGraph provider as a fallback.
-This provider will try to get the information declared in the target page's meta tag. The link preview will be rendered with the
+Links that are not matched by any reference provider will always be handled by the server's OpenGraph provider as a
+fallback.
+This provider will try to get the information declared in the target page's meta tag. The link preview will be rendered
+with the
 default widget.
 
 For your provider to properly handle some links, you need to implement the ``matchReference`` and ``resolve``
@@ -498,7 +507,8 @@ additionally.
 Match links
 ~~~~~~~~~~~
 
-The ``matchReference`` method of ``IReferenceProvider`` tells the reference manager if a provider supports a link or not.
+The ``matchReference`` method of ``IReferenceProvider`` tells the reference manager if a provider supports a link or
+not.
 
 .. code-block:: php
 
@@ -700,15 +710,19 @@ in a custom fashion:
 Interactive widgets
 ~~~~~~~~~~~~~~~~~~~
 
-If you want to provide a custom widget that is interactive you can use the ``interactive`` attribute that is passed along the ``registerWidget`` function.
+If you want to provide a custom widget that is interactive you can use the ``interactive`` attribute that is passed
+along the ``registerWidget`` function.
 
 Apps will determine if they can render the interactive widget or not.
 
-When writing a custom widget make sure properly handle different restrictions to ensure that the widget is usable in any integrating app.
+When writing a custom widget make sure properly handle different restrictions to ensure that the widget is usable in any
+integrating app.
 
 - The width of the widget should be flexible and not exceed the width of the parent element.
-- The height can be flexible but might be limited by the parent element, so ensure that the widget can be scrolled if necessary
-- Your script will be loaded on every page that uses widget rendering so make sure to keep the script size as small as possible and use lazy loading for any additional resources
+- The height can be flexible but might be limited by the parent element, so ensure that the widget can be scrolled if
+  necessary
+- Your script will be loaded on every page that uses widget rendering so make sure to keep the script size as small as
+  possible and use lazy loading for any additional resources
 
 .. code-block:: javascript
 
@@ -737,13 +751,16 @@ Provide generic data for clients
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 In the web interface, the links that your app resolves are rendered with the OpenGraph widget
-or the custom reference widget you implemented. So you have complete freedom on which data format you put in your rich objects
+or the custom reference widget you implemented. So you have complete freedom on which data format you put in your rich
+objects
 because you also control the web rendering implementation.
 
-But as the web UI components cannot be used by desktop or mobile clients, they have to specifically support some rich objects
+But as the web UI components cannot be used by desktop or mobile clients, they have to specifically support some rich
+objects
 that are properly formatted.
 
-Here are some formatting suggestions for a few use cases. Use them if you want your resolved links to be rendered in clients.
+Here are some formatting suggestions for a few use cases. Use them if you want your resolved links to be rendered in
+clients.
 The idea is to add a generic attribute in your rich objects, regardless of the rich object type.
 
 Version control issue
@@ -767,7 +784,8 @@ Example implementation: `GitHub integration issue link preview <https://github.c
 Version control pull request
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Set the rich object's ``vcs_pull_request`` attribute to an object which contains the same attributes as in ``vcs_issue`` plus these ones:
+Set the rich object's ``vcs_pull_request`` attribute to an object which contains the same attributes as in ``vcs_issue``
+plus these ones:
 
 * ``merged``: Is it merged? (boolean)
 * ``draft``: Is it a draft? (boolean)
@@ -810,13 +828,15 @@ and either
 * or register a custom picker component
 
 This is an exclusive choice. You can't support search providers AND register a custom picker component.
-If you still want to mix both approaches, you can register a custom picker component which includes a custom search feature.
+If you still want to mix both approaches, you can register a custom picker component which includes a custom search
+feature.
 
 Extending ``ADiscoverableReferenceProvider`` implies defining those methods:
 
 * ``getId``: returns an ID which will be used by the Smart Picker to identify this provider
 * ``getTitle``: returns a (ideally translated) provider title visible in the Smart Picker provider list
-* ``getOrder``: returns an integer to help sorting the providers. The sort order is later superseded by last usage timestamp
+* ``getOrder``: returns an integer to help sorting the providers. The sort order is later superseded by last usage
+  timestamp
 * ``getIconUrl``: returns the URL of the provider icon, same as the title, the icon will be visible in the provider list
 
 Declare supported Unified Search providers
@@ -851,7 +871,8 @@ This function takes 3 parameters:
 
 The creation callback must return a ``NcCustomPickerRenderResult`` object to which you have to give the DOM element
 you just created and optionally an object (the Vue instance for example).
-This render result will be then be passed to the destroy callback to let you properly clean and delete your custom component.
+This render result will be then be passed to the destroy callback to let you properly clean and delete your custom
+component.
 
 To register a Vue component as a custom picker component:
 
@@ -906,5 +927,6 @@ To register anything else:
         renderResult.element.remove()
     })
 
-In your custom component, just emit the ``submit`` event with the result as the event's data to pass it back to the Smart Picker.
+In your custom component, just emit the ``submit`` event with the result as the event's data to pass it back to the
+Smart Picker.
 You can also emit the ``cancel`` event to abort and go back.

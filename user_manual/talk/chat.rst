@@ -88,7 +88,8 @@ You can also type `/` in the chat input to open the selector.
 .. image:: images/smart-picker.png
    :width: 400px
 
-Several integration apps can extend the Smart Picker with additional content types, such as GitHub and GitLab issues, Giphy GIFs, and more. Ask your administrator which integrations are available on your instance.
+Several integration apps can extend the Smart Picker with additional content types, such as GitHub and GitLab issues,
+Giphy GIFs, and more. Ask your administrator which integrations are available on your instance.
 
 Replying to messages and more
 -----------------------------
@@ -103,7 +104,8 @@ In the ``...`` menu you can also choose to reply privately. This will open a one
 .. image:: images/chat-message-menu.png
    :width: 600px
 
-Here you can also create a direct link to the message or mark it unread so you will scroll back there next time you enter the chat. When it is a file, you can view the file in Files.
+Here you can also create a direct link to the message or mark it unread so you will scroll back there next time you
+enter the chat. When it is a file, you can view the file in Files.
 
 Silent messages
 ---------------
@@ -117,12 +119,14 @@ While it is enabled, other participants will not receive notifications from your
 Scheduling messages
 -------------------
 
-If you want to send a message not right now, but at a specific time, you can schedule it. Just select the desired date and time in the quick actions next to the input field.
+If you want to send a message not right now, but at a specific time, you can schedule it. Just select the desired date
+and time in the quick actions next to the input field.
 
 .. image:: images/message-schedule-action.png
    :width: 600px
 
-You can find all your scheduled messages by clicking on the clock icon next to the input field. There you can edit, reschedule or delete currently prepared messages.
+You can find all your scheduled messages by clicking on the clock icon next to the input field. There you can edit,
+reschedule or delete currently prepared messages.
 
 .. image:: images/message-schedule-toggle.png
    :width: 400px

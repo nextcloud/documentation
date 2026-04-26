@@ -90,7 +90,10 @@ Configuring parallelism
 
 .. versionadded:: 27
 
-With resource-heavy background jobs that run for longer than a few minutes, be they ``QueuedJob`` and ``TimedJob`` instances, you may want to restrict parallelism to prevent multiple such jobs from clogging up the server's resources. You can do this with the ``setAllowParallelRuns`` method of ``OCP\BackgroundJob\Job`` (``QueuedJob`` and ``TimedJob`` both inherit from this class, so they also have this available).
+With resource-heavy background jobs that run for longer than a few minutes, be they ``QueuedJob`` and ``TimedJob``
+instances, you may want to restrict parallelism to prevent multiple such jobs from clogging up the server's resources.
+You can do this with the ``setAllowParallelRuns`` method of ``OCP\BackgroundJob\Job`` (``QueuedJob`` and ``TimedJob``
+both inherit from this class, so they also have this available).
 
 .. code-block:: php
 
@@ -166,9 +169,13 @@ jobs easily.
 Scheduling
 ^^^^^^^^^^
 
-A background job can be scheduled to run after a specific time and date. This avoids maintaining a time check inside a background job.
+A background job can be scheduled to run after a specific time and date. This avoids maintaining a time check inside a
+background job.
 
-Beware that the reliability of the execution time is limited. Systems that do not use system cron may have no active users and therefore no reliable cron trigger at the target time. System cron can also not guarantee that the job is picked up right away if the background job queue is full. The only guarantee you get is that the job is not picked up earlier than the specified time.
+Beware that the reliability of the execution time is limited. Systems that do not use system cron may have no active
+users and therefore no reliable cron trigger at the target time. System cron can also not guarantee that the job is
+picked up right away if the background job queue is full. The only guarantee you get is that the job is not picked up
+earlier than the specified time.
 
 .. code-block:: php
     :caption: lib/Service/ShareService.php

@@ -118,9 +118,11 @@ In the context of a class you can use the ``TTransactional`` trait and move the 
 Mappers
 -------
 
-The aforementioned example is the most basic way to write a simple database query but the more queries amass, the more code has to be written and the harder it will become to maintain it.
+The aforementioned example is the most basic way to write a simple database query but the more queries amass, the more
+code has to be written and the harder it will become to maintain it.
 
-To generalize and simplify the problem, split code into resources and create an **Entity** and a **Mapper** class for it. The mapper class provides a way to run SQL queries and maps the result onto the related entities.
+To generalize and simplify the problem, split code into resources and create an **Entity** and a **Mapper** class for
+it. The mapper class provides a way to run SQL queries and maps the result onto the related entities.
 
 
 To create a mapper, inherit from the mapper base class and call the parent constructor with the following parameters:
@@ -242,8 +244,10 @@ Table rows are mapped from lower case and underscore separated names to *lowerCa
 Types
 ^^^^^
 
-The following properties should be annotated by types, to not only assure that the types are converted correctly for storing them in the database
-(e.g. PHP casts false to the empty string which fails on PostgreSQL) but also for casting them when they are retrieved from the database.
+The following properties should be annotated by types, to not only assure that the types are converted correctly for
+storing them in the database
+(e.g. PHP casts false to the empty string which fails on PostgreSQL) but also for casting them when they are retrieved
+from the database.
 
 The following types (as part of ``OCP\DB\Types``) can be added for a field:
 
@@ -260,7 +264,8 @@ The following types (as part of ``OCP\DB\Types``) can be added for a field:
   * ``Types::DATETIME_IMMUTABLE`` - date and time are stored, but without timezone
   * ``Types::DATETIME_TZ_IMMUTABLE`` - date and time are stored with timezone information
   
-* ``Types::DATE``, ``Types::TIME``, ``Types::DATETIME``, ``Types::DATETIME_TZ`` - similar as the immutable variants, but these will be provided as ``\DateTime`` objects.
+* ``Types::DATE``, ``Types::TIME``, ``Types::DATETIME``, ``Types::DATETIME_TZ`` - similar as the immutable variants, but
+  these will be provided as ``\DateTime`` objects.
   It is recommended to use the immutable variants as the internal state tracking of the ``Entity`` class only work with re-assignments,
   so any changes on this mutable types will not be tracked and the update method will not write back the changes to the database.
 
@@ -338,7 +343,8 @@ mapping, simply override the **columnToProperty** and **propertyToColumn** metho
 Transient attributes
 ^^^^^^^^^^^^^^^^^^^^
 
-You can add attributes to an entity class that do not map to a database column. These are called *transient* because they are neither loaded from database rows nor are their values persisted.
+You can add attributes to an entity class that do not map to a database column. These are called *transient* because
+they are neither loaded from database rows nor are their values persisted.
 
 .. code-block:: php
     :caption: lib/Db/User.php
@@ -363,7 +369,8 @@ You can add attributes to an entity class that do not map to a database column. 
     }
 
 It is important to define getters and setters for any transient attributes.
-Do not use the :ref:`magic getters and setters<database-entity-attribute-access>` of attributes that map to database columns.
+Do not use the :ref:`magic getters and setters<database-entity-attribute-access>` of attributes that map to database
+columns.
 
 Slugs
 ^^^^^
@@ -383,9 +390,11 @@ Since the URL allows only certain values, the entity base class provides a slugi
 Table management tips
 ---------------------
 
-It makes sense to apply some general tips from the beginning, so you don't have to migrate your data and schema later on.
+It makes sense to apply some general tips from the beginning, so you don't have to migrate your data and schema later
+on.
 
-1. Don't use table name longer than 23 characters. As Oracle is limited to 30 chars and we need 3 more for ``oc_`` at the beginning and 5 for the primary key suffix ``_pkey``.
+1. Don't use table name longer than 23 characters. As Oracle is limited to 30 chars and we need 3 more for ``oc_`` at
+   the beginning and 5 for the primary key suffix ``_pkey``.
 
 2. Add an auto-incremented ``id`` column. This will ease the use of ``QBMapper`` + ``Entity`` approach:
 
@@ -409,7 +418,10 @@ It makes sense to apply some general tips from the beginning, so you don't have 
     <?php
     $table->setPrimaryKey(['id']);
 
-4. Manually set the name of your indexes. It will help you to manipulate them if needed in the future. Note that the names of the index are "global" database wide in some database platforms so having generic names can create conflicts. Since Nextcloud 28 uniqueness across all tables is ensured at installation time and during updates. This happens *regardless of the in-use database platform* to maintain broad compatibility and consistency.
+4. Manually set the name of your indexes. It will help you to manipulate them if needed in the future. Note that the
+   names of the index are "global" database wide in some database platforms so having generic names can create
+   conflicts. Since Nextcloud 28 uniqueness across all tables is ensured at installation time and during updates. This
+   happens *regardless of the in-use database platform* to maintain broad compatibility and consistency.
 
 .. code-block:: php
 
@@ -419,7 +431,8 @@ It makes sense to apply some general tips from the beginning, so you don't have 
 Querying the database provider
 ------------------------------
 
-If you would like to find out which database your app is running on, use the ``IDBConnection::getDatabaseProvider`` method.
+If you would like to find out which database your app is running on, use the ``IDBConnection::getDatabaseProvider``
+method.
 This can be helpful in cases where specific databases have their own
 requirements, such as Oracle limiting ``IN``- queries to 1000 expressions.
 
@@ -427,7 +440,8 @@ requirements, such as Oracle limiting ``IN``- queries to 1000 expressions.
 Supporting more databases
 -------------------------
 
-Most queries should run fine on all supported databases, but if scaling is required and a database is split into a cluster and for some special database types more rules apply.
+Most queries should run fine on all supported databases, but if scaling is required and a database is split into a
+cluster and for some special database types more rules apply.
 You can specify your supported databases in the ``appinfo/info.xml`` of your app in the dependencies section:
 
 
@@ -437,7 +451,8 @@ You can specify your supported databases in the ``appinfo/info.xml`` of your app
     <database>sqlite</database>
     <database>mysql</database>
 
-When Oracle (``oci``) is supported (also when you don't list any databases), Nextcloud performs some additional tests on the schema which apply to databases in this case:
+When Oracle (``oci``) is supported (also when you don't list any databases), Nextcloud performs some additional tests on
+the schema which apply to databases in this case:
 
 * Table names can not be longer than 27 characters (including the ``oc_`` prefix)
 * Primary keys must have a custom index name when the table name is longer than 23 characters
@@ -449,7 +464,8 @@ When Oracle (``oci``) is supported (also when you don't list any databases), Nex
 * String columns can not have a length longer than 4.000 characters, use text instead
 * Boolean columns can not be NotNull
 
-Additionally we assume that Oracle support means you are interested in scaling and therefore check additional restrictions of other databases in clustered setups:
+Additionally we assume that Oracle support means you are interested in scaling and therefore check additional
+restrictions of other databases in clustered setups:
 
 * Galera Cluster: All tables must have a primary key
 

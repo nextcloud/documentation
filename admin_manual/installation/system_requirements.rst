@@ -5,7 +5,8 @@ System requirements
 Server
 ------
 
-For best performance, stability and functionality we have documented some recommendations for running a Nextcloud server.
+For best performance, stability and functionality we have documented some recommendations for running a Nextcloud
+server.
 
 .. note:: If you plan a setup for your organization and you rely on professional deployment consulting (e.g. efficient and
           reliable scaling) and support, we strongly recommend you to check out our `enterprise support
@@ -44,7 +45,8 @@ For best performance, stability and functionality we have documented some recomm
 
 See :doc:`source_installation` for minimum PHP-modules and additional software for installing Nextcloud.
 
-To ensure the full functionality of your Nextcloud, please make sure that the server can reach the :ref:`required remote systems<connections_to_remote_servers>`. 
+To ensure the full functionality of your Nextcloud, please make sure that the server can reach the :ref:`required remote
+systems<connections_to_remote_servers>`.
 
 CPU Architecture and OS
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -82,9 +84,12 @@ The following is currently required if you're running Nextcloud together with a 
 Why we drop old PHP versions
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Every year, a new PHP version is added and old PHP versions are deprecated. This also affects our documented recommended PHP version.
+Every year, a new PHP version is added and old PHP versions are deprecated. This also affects our documented recommended
+PHP version.
 
-We try to support old PHP versions for as long as reasonably possible. However the list of security, performance, and bug fixes will only increase, some of those fixes might be considered critical and thus at some point the deprecation will be inevitable.
+We try to support old PHP versions for as long as reasonably possible. However the list of security, performance, and
+bug fixes will only increase, some of those fixes might be considered critical and thus at some point the deprecation
+will be inevitable.
 
 Thus it is recommended to keep your PHP version up to date.
 
@@ -102,7 +107,10 @@ Advantages of upgrading PHP
 Long term support
 =================
 
-If you are running Nextcloud for an organisation-critical use case, you could consider upgrading your subscription to a premium subscription which comes with 5 years of long term support. This means you continue to receive maintenance releases for high and critical security issues, data loss fixes, and regressions within version over this extended period of time.
+If you are running Nextcloud for an organisation-critical use case, you could consider upgrading your subscription to a
+premium subscription which comes with 5 years of long term support. This means you continue to receive maintenance
+releases for high and critical security issues, data loss fixes, and regressions within version over this extended
+period of time.
 
 Desktop client
 --------------
@@ -118,7 +126,8 @@ of our clients.
 Mobile apps
 -----------
 
-We strongly recommend using the latest version of your mobile operating system to get the full and most stable experience out
+We strongly recommend using the latest version of your mobile operating system to get the full and most stable
+experience out
 of our mobile apps.
 
 Files App

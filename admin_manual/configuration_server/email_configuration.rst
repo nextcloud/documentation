@@ -41,8 +41,10 @@ Mail Providers
 A mail provider is an app that provides outbound mail service to Nextcloud and allows the sending of system emails
 directly through a user's configured personal email account instead of the system email account.
 At present, this functionality is limited to calendar invitations.
-This feature automatically matches a users email address to a configured mail provider account, when a system message is sent.
-The only app that supports this functionality at present is Nextcloud Mail 4.1 or higher, a configured email account is required.
+This feature automatically matches a users email address to a configured mail provider account, when a system message is
+sent.
+The only app that supports this functionality at present is Nextcloud Mail 4.1 or higher, a configured email account is
+required.
 
 Configuring an SMTP server
 --------------------------
@@ -62,7 +64,8 @@ connect Nextcloud to a remote SMTP server:
 
 * Whether authentication is required
 
-* Authentication: when authentication is required, the underlying mailer will try the following authentication methods in the order they're listed:
+* Authentication: when authentication is required, the underlying mailer will try the following authentication methods
+  in the order they're listed:
 
     * CramMd5
     * Login
@@ -282,7 +285,8 @@ messages by enabling the ``mail_smtpdebug`` parameter and temporarily setting yo
     "mail_smtpdebug" => true,
     "loglevel" => 0,
 
-Be cautious setting your ``loglevel`` to DEBUG (``0``) since it'll apply to everything occurring on your NC instance, not just email. 
+Be cautious setting your ``loglevel`` to DEBUG (``0``) since it'll apply to everything occurring on your NC instance,
+not just email.
 And don't forget to set it back to a more reasonable level when you're done troubleshooting:
 
 ::

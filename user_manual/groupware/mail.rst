@@ -24,7 +24,8 @@ Use Compact Mode
 ~~~~~~~~~~~~~~~~
 .. versionadded:: 5.7.0
 
-Compact mode offers a cleaner and more efficient way to view your messages. Avatars are hidden, selection checkboxes are always visible, and the preview of messages is removed. It saves space allowing you to see more emails at once.
+Compact mode offers a cleaner and more efficient way to view your messages. Avatars are hidden, selection checkboxes are
+always visible, and the preview of messages is removed. It saves space allowing you to see more emails at once.
 
 1. Visit the mail settings
 2. Go to **Appearance**
@@ -39,9 +40,15 @@ Message Display / Operation Mode
 
 Mail has the ability to switch between two different message view and operation modes: *Threaded* and *Singleton*.
 
-In *Threaded* mode, messages are grouped by conversation. In the mailbox message list, related messages are stacked so only the most recent message is shown, and all relates messages are shown in message display panel after the stacked message is selected. This is useful for following discussions and understanding the context of replies. In this mode, message operation like move and delete apply to the entire thread, meaning that when you move or delete a thread, all messages within that thread are affected.
+In *Threaded* mode, messages are grouped by conversation. In the mailbox message list, related messages are stacked so
+only the most recent message is shown, and all relates messages are shown in message display panel after the stacked
+message is selected. This is useful for following discussions and understanding the context of replies. In this mode,
+message operation like move and delete apply to the entire thread, meaning that when you move or delete a thread, all
+messages within that thread are affected.
 
-In *Singleton* mode, messages are displayed individually, in both the mailbox message list and message display panel and operation like move and delete apply to only the selected message. This mode is useful when you want to manage messages separately without affecting the entire conversation.
+In *Singleton* mode, messages are displayed individually, in both the mailbox message list and message display panel and
+operation like move and delete apply to only the selected message. This mode is useful when you want to manage messages
+separately without affecting the entire conversation.
 
 1. Visit mail settings
 2. Choose between *Threaded*, *Singleton*
@@ -92,9 +99,11 @@ Scheduled messages
 Priority inbox
 ~~~~~~~~~~~~~~
 Priority inbox has 2 section *Important* and *Others*.
-Messages will automatically be marked as important based on which messages you interacted with or marked as important. In the beginning you might have to manually change the importance to teach the system, but it will improve over time.
+Messages will automatically be marked as important based on which messages you interacted with or marked as important.
+In the beginning you might have to manually change the importance to teach the system, but it will improve over time.
 
-The automatic classification is optional. You can opt-out when setting up an account. The classification can also be turned on and off in the account settings at any time.
+The automatic classification is optional. You can opt-out when setting up an account. The classification can also be
+turned on and off in the account settings at any time.
 
 
 .. figure:: images/priority-inbox.png
@@ -154,7 +163,9 @@ Search in mailbox
 
 .. versionadded:: 2.1
 
-At the top of the envelope list in any mail layout, there is a search field shortcut for searching email subjects. Starting from ``version 3.7``, this shortcut allows you to search by subject, recipient (to), or sender (from) by default.
+At the top of the envelope list in any mail layout, there is a search field shortcut for searching email subjects.
+Starting from ``version 3.7``, this shortcut allows you to search by subject, recipient (to), or sender (from) by
+default.
 
 
 Advanced search in mailbox
@@ -221,7 +232,8 @@ Minimize the composer modal
 
 .. versionadded:: 3.2
 
-The composer modal can be minimized while writing a new message, editing an existing draft or a message from the outbox. Simply click the minimize button on the top right of the modal or click anywhere outside the modal.
+The composer modal can be minimized while writing a new message, editing an existing draft or a message from the outbox.
+Simply click the minimize button on the top right of the modal or click anywhere outside the modal.
 
 .. figure:: images/mail-minimize-composer.png
 
@@ -229,7 +241,8 @@ You can resume your minimized message by clicking anywhere on the indicator on t
 
 .. figure:: images/mail-composer-indicator.png
 
-Press close button on the modal or the indicator in the bottom right corner to stop editing a message. A draft will be saved automatically into your draft mailbox.
+Press close button on the modal or the indicator in the bottom right corner to stop editing a message. A draft will be
+saved automatically into your draft mailbox.
 
 
 Recipient info on composer
@@ -237,9 +250,12 @@ Recipient info on composer
 
 .. versionadded:: 4.2
 
-When you add your first recipient or contact in the "To" field, a right pane will appear displaying the saved profile details of that contact.
-Adding a second contact will collapse the list, allowing you to select and expand any contact you added to view their details.
-If you prefer to focus solely on writing in the composer, you can hide the right pane by clicking the expand icon in the top-right corner.
+When you add your first recipient or contact in the "To" field, a right pane will appear displaying the saved profile
+details of that contact.
+Adding a second contact will collapse the list, allowing you to select and expand any contact you added to view their
+details.
+If you prefer to focus solely on writing in the composer, you can hide the right pane by clicking the expand icon in the
+top-right corner.
 To show the right pane again, simply click the minimize icon in the same location.
 
 Mention contacts
@@ -257,16 +273,21 @@ Text blocks
 
 .. versionadded:: 5.2
 
-Text blocks are predefined snippets of text that can be inserted into your email. They can be created and managed in the mail settings.
-They can be inserted into the composer by typing ``!`` and then selecting the block from the list or from the composer actions.
+Text blocks are predefined snippets of text that can be inserted into your email. They can be created and managed in the
+mail settings.
+They can be inserted into the composer by typing ``!`` and then selecting the block from the list or from the composer
+actions.
 Text blocks can be shared with users and user groups.
 
 Outbox
 ------
 
-When a message has been composed and the "Send" button was clicked, the message is added to the outbox which can be found in the bottom left corner of the left sidebar.
+When a message has been composed and the "Send" button was clicked, the message is added to the outbox which can be
+found in the bottom left corner of the left sidebar.
 
-You can also set the date and time for the send operation to a point in the future (see :ref:`Scheduled messages <mail-scheduled-messages>`)- the message will be kept in the outbox until your chosen date and time arrives, then it will be sent automatically.
+You can also set the date and time for the send operation to a point in the future (see :ref:`Scheduled messages
+<mail-scheduled-messages>`)- the message will be kept in the outbox until your chosen date and time arrives, then it
+will be sent automatically.
 
 The outbox is only visible when there is a message waiting to be handled by the outbox.
 
@@ -298,7 +319,8 @@ Add a submailbox
 
 Shared mailbox
 ~~~~~~~~~~~~~~~
-If a mailbox was shared with you with some specific rights, that mailbox will show as a new mailbox with a shared icon as below:
+If a mailbox was shared with you with some specific rights, that mailbox will show as a new mailbox with a shared icon
+as below:
 
 .. figure:: images/shared-mailbox-icon.png
 
@@ -341,7 +363,8 @@ Change color for tags
 
 .. figure:: images/change-tag-color.png
 
-Upon creating a tag, a randomly assigned color is automatically chosen. Once the tag is saved, you have the flexibility to customize its color according to your preferences. This feature can be found on the Tag modal action menu.
+Upon creating a tag, a randomly assigned color is automatically chosen. Once the tag is saved, you have the flexibility
+to customize its color according to your preferences. This feature can be found on the Tag modal action menu.
 
 Delete tags
 ~~~~~~~~~~~
@@ -371,8 +394,10 @@ Quick actions
 -------------
 .. versionadded:: 5.5 (Nextcloud 30)
 
-Allows you to group action steps that you would normally perform on envelopes such as tagging, moving, marking as read ... into quick actions that can be executed with a single click.
-Quick actions are scoped to one mail account and can be created and managed in the mail settings under "Quick actions" or directly from the envelope action menu.
+Allows you to group action steps that you would normally perform on envelopes such as tagging, moving, marking as read
+... into quick actions that can be executed with a single click.
+Quick actions are scoped to one mail account and can be created and managed in the mail settings under "Quick actions"
+or directly from the envelope action menu.
 
 .. note:: Some action steps such as `Mark as spam`, `Move thread` and `Delete thread` are mutually exclusive and cannot be part of the same quick action, they also can't be re-ordered and will always be executed last.
 
@@ -386,14 +411,16 @@ Unsubscribe from a mailing list
 
 .. versionadded:: 3.1
 
-Some mailing lists and newsletters allow to be unsubscribed easily. If the Mail app detects messages from such a sender, it will show an *Unsubscribe* button next to the sender information. Click and confirm to unsubscribe from the list.
+Some mailing lists and newsletters allow to be unsubscribed easily. If the Mail app detects messages from such a sender,
+it will show an *Unsubscribe* button next to the sender information. Click and confirm to unsubscribe from the list.
 
 Snooze
 ~~~~~~
 
 .. versionadded:: 3.4
 
-Snoozing a message or thread moves it into a dedicated mailbox until the selected snooze date is reached and the message or thread is moved back to the original mailbox.
+Snoozing a message or thread moves it into a dedicated mailbox until the selected snooze date is reached and the message
+or thread is moved back to the original mailbox.
 
 1. Open action menu of an envelope or thread
 2. Click *Snooze*
@@ -404,7 +431,8 @@ Smart replies
 
 .. versionadded:: 3.6
 
-When you open a message in the Mail app, it proposes AI-generated replies. By simply clicking on a suggested reply, the composer opens with the response pre-filled.
+When you open a message in the Mail app, it proposes AI-generated replies. By simply clicking on a suggested reply, the
+composer opens with the response pre-filled.
 
 .. note:: Please note that the feature has to be enabled by the administrator
 
@@ -435,14 +463,17 @@ The mail app supports summarizing message threads that contain 3 or more message
 Filtering and autoresponder
 ---------------------------
 
-The Mail app has a editor for Sieve scripts, an interface to configure autoresponders and an interface to configure filters. Sieve has to be enabled in the :ref:`account settings <mail-account-settings>`.
+The Mail app has a editor for Sieve scripts, an interface to configure autoresponders and an interface to configure
+filters. Sieve has to be enabled in the :ref:`account settings <mail-account-settings>`.
 
 Autoresponders
 ~~~~~~~~~~~~~~
 
 .. versionadded:: 3.5 Autoresponder can follow system settings.
 
-The autoresponder is off by default. It can be set manually, or follow the system settings. Following system settings means that the long absence message entered on the :ref:`Absence settings section <groupware-absence>` is applied automatically.
+The autoresponder is off by default. It can be set manually, or follow the system settings. Following system settings
+means that the long absence message entered on the :ref:`Absence settings section <groupware-absence>` is applied
+automatically.
 
 Filter
 ~~~~~~
@@ -474,11 +505,14 @@ How to Delete a Filter
 Conditions
 ^^^^^^^^^^
 
-Conditions are applied to incoming emails on your mail server, targeting fields such as Subject, Sender, and Recipient. You can use the following operators to define conditions for these fields:
+Conditions are applied to incoming emails on your mail server, targeting fields such as Subject, Sender, and Recipient.
+You can use the following operators to define conditions for these fields:
 
 - **is exactly**: An exact match. The field must be identical to the provided value.
-- **contains**: A substring match. The field matches if the provided value is contained within it. For example, "report" would match "port".
-- **matches**: A pattern match using wildcards. The "*" symbol represents any number of characters (including none), while "?" represents exactly one character. For example, "*report*" would match "Business report 2024".
+- **contains**: A substring match. The field matches if the provided value is contained within it. For example, "report"
+  would match "port".
+- **matches**: A pattern match using wildcards. The "*" symbol represents any number of characters (including none),
+  while "?" represents exactly one character. For example, "*report*" would match "Business report 2024".
 
 Actions
 ^^^^^^^
@@ -494,7 +528,8 @@ Create a filter from a message
 
 .. versionadded:: 5.2
 
-To create a filter from a given message, open the message and then open the menu by clicking on the three dots. Next, click on "More actions" followed by "Create mail filter."
+To create a filter from a given message, open the message and then open the menu by clicking on the three dots. Next,
+click on "More actions" followed by "Create mail filter."
 
 In the dialog, please select the conditions to match incoming messages and continue by clicking on "Create mail filter."
 
@@ -540,7 +575,8 @@ Internal addresses
 
 .. versionadded:: 4.0
 
-The Mail app allows adding internal addresses and domains, and will warn the user if the address is not in the list, when sending and upon receiving a message.
+The Mail app allows adding internal addresses and domains, and will warn the user if the address is not in the list,
+when sending and upon receiving a message.
 
 To add an internal address:
 
@@ -570,7 +606,8 @@ The Mail app integrates with the Calendar app to help you manage meeting invitat
 Meeting invitations
 ~~~~~~~~~~~~~~~~~~~
 
-When you receive a message containing a meeting invitation, the Mail app automatically detects the attached calendar file and displays a formatted action section to help you respond.
+When you receive a message containing a meeting invitation, the Mail app automatically detects the attached calendar
+file and displays a formatted action section to help you respond.
 
 You can:
 
@@ -590,11 +627,13 @@ You can also manually add a meeting invitation to a specific calendar:
 Meeting invitation automation
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-When a meeting organizer sends updates to an existing event (such as time changes or location updates), the Mail app processes these automatically and updates the corresponding event in your calendar.
+When a meeting organizer sends updates to an existing event (such as time changes or location updates), the Mail app
+processes these automatically and updates the corresponding event in your calendar.
 
 .. versionadded:: 5.7 (Nextcloud 32 or newer)
 
-You can also configure Mail to automatically add all new meeting invitations to your calendar without requiring manual acceptance. The invitations will be added to the calendar as tentative.
+You can also configure Mail to automatically add all new meeting invitations to your calendar without requiring manual
+acceptance. The invitations will be added to the calendar as tentative.
 
 To enable this feature:
 

@@ -2,7 +2,8 @@
 The LDAP configuration API
 ==========================
 
-All methods require that the "OCS-APIREQUEST" header be set to "true".  Methods take an optional "format" parameter, which may be "xml" (the default) or "json".
+All methods require that the "OCS-APIREQUEST" header be set to "true".  Methods take an optional "format" parameter,
+which may be "xml" (the default) or "json".
 
 
 Creating a configuration
@@ -79,7 +80,8 @@ XML output
 Reading a configuration
 -----------------------
 
-Returns all keys and values of the specified LDAP configuration. Authentication is done by sending a basic HTTP authentication header.
+Returns all keys and values of the specified LDAP configuration. Authentication is done by sending a basic HTTP
+authentication header.
 
 **Syntax: ocs/v2.php/apps/user_ldap/api/v1/config/{configID}**
 
@@ -173,7 +175,8 @@ Updates a configuration with the provided values. Authentication is done by send
 **Syntax: ocs/v2.php/apps/user_ldap/api/v1/config/{configID}**
 
 * HTTP method: PUT
-* url argument: configData - array, see table below for the fields. All fields are optional. The values must be url-encoded.
+* url argument: configData - array, see table below for the fields. All fields are optional. The values must be
+  url-encoded.
 
 Example
 ^^^^^^^

@@ -6,13 +6,16 @@ Translations
 
 .. sectionauthor:: Bernhard Posselt <dev@bernhard-posselt.com>, Kristof Hamann
 
-Nextcloud provides mechanisms for internationalization (make an application translatable) and localization (add translations for specific languages). This section provides detailed instructions for both aspects.
-In order to make your app translatable (internationalization), you should use Nextcloud's methods for translating strings. They are available for both the server-side (PHP, Templates) as well as for the client-side (JavaScript).
+Nextcloud provides mechanisms for internationalization (make an application translatable) and localization (add
+translations for specific languages). This section provides detailed instructions for both aspects.
+In order to make your app translatable (internationalization), you should use Nextcloud's methods for translating
+strings. They are available for both the server-side (PHP, Templates) as well as for the client-side (JavaScript).
 
 PHP Backend
 -----------
 
-If localized strings are used in the backend code, simply inject the ``\OCP\IL10N`` class into your service via type hinting it in the constructor. You will automatically get the language object containing the translations of your app:
+If localized strings are used in the backend code, simply inject the ``\OCP\IL10N`` class into your service via type
+hinting it in the constructor. You will automatically get the language object containing the translations of your app:
 
 
 .. code-block:: php
@@ -125,8 +128,10 @@ ExApps (Python)
 
 For ExApps, Python is currently only supported for automated Transifex translations.
 
-Alongside the usual ``l10n/*.json`` and ``l10n/*.js`` files, translation source files located in ``translationfiles/<lang>/*.po`` are also included in the Transifex sync.
-These ``.po`` files can be compiled into ``.mo`` files, which are typically used by the ExApp backend for runtime translations.
+Alongside the usual ``l10n/*.json`` and ``l10n/*.js`` files, translation source files located in
+``translationfiles/<lang>/*.po`` are also included in the Transifex sync.
+These ``.po`` files can be compiled into ``.mo`` files, which are typically used by the ExApp backend for runtime
+translations.
 
 For more details, see :ref:`ex_app_translations_page`.
 
@@ -194,7 +199,10 @@ Dos and Don'ts
 Correct plurals
 ^^^^^^^^^^^^^^^
 
-If you use a plural, you **must** also use the ``%n`` placeholder. The placeholder defines the plural and the word without the number preceding is wrong. If you don't know/have a number for your translation, e.g. because you don't know how many items are going to be selected, just use an undefined plural. They exist in every language and have one form. They do not follow the normal plural pattern.
+If you use a plural, you **must** also use the ``%n`` placeholder. The placeholder defines the plural and the word
+without the number preceding is wrong. If you don't know/have a number for your translation, e.g. because you don't know
+how many items are going to be selected, just use an undefined plural. They exist in every language and have one form.
+They do not follow the normal plural pattern.
 
 PHP Example:
 
@@ -232,7 +240,9 @@ Starting with the following example, improving it step by step:
 Step 1: String split
 """"""""""""""""""""
 
-You shall **never split** sentences and **never concatenate** two translations (e.g. "Enable" and "dark mode" can not be combined to "Enable dark mode", because languages might have to use different cases)! Translators lose the context and they have no chance to possibly re-arrange words/parts as needed.
+You shall **never split** sentences and **never concatenate** two translations (e.g. "Enable" and "dark mode" can not be
+combined to "Enable dark mode", because languages might have to use different cases)! Translators lose the context and
+they have no chance to possibly re-arrange words/parts as needed.
 
 Translators will translate:
 
@@ -241,7 +251,9 @@ Translators will translate:
 * ``or`` (with leading and trailing whitespace)
 * ``cloud``
 
-Translating these individual strings results in  ``local filesystem`` and ``cloud`` losing case. The two white spaces surrounding ``or`` will get lost while translating as well. For languages that have a different grammatical order it prevents the translators from reordering the sentence components.
+Translating these individual strings results in  ``local filesystem`` and ``cloud`` losing case. The two white spaces
+surrounding ``or`` will get lost while translating as well. For languages that have a different grammatical order it
+prevents the translators from reordering the sentence components.
 
 So the following code is a bit better, but suffers from another issue:
 
@@ -252,7 +264,8 @@ So the following code is a bit better, but suffers from another issue:
 Step 2: HTML Markup
 """""""""""""""""""
 
-In this case the translators can re-arrange as they like, but have to deal with your markup and can mess it up easily. It is better to **keep the markup out** of your code, so the following translation is even better:
+In this case the translators can re-arrange as they like, but have to deal with your markup and can mess it up easily.
+It is better to **keep the markup out** of your code, so the following translation is even better:
 
 .. code-block:: php
 
@@ -263,7 +276,8 @@ But there is one last problem with this.
 Step 3: Placeholders
 """"""""""""""""""""
 
-In case the language has to turn things around, your code will still insert the parameters in the given order and they can not re-order them. To prevent this last hurdle simply **use positioned placeholders** like ``%1$s``:
+In case the language has to turn things around, your code will still insert the parameters in the given order and they
+can not re-order them. To prevent this last hurdle simply **use positioned placeholders** like ``%1$s``:
 
 .. code-block:: php
 
@@ -278,7 +292,8 @@ Provide context hints for translators
 
 In case some translation strings may be translated wrongly because they have multiple meanings.
 Especially translations strings that only contain a single word often result in problems.
-The most famous example in the Nextcloud code base is ``Share`` which can which can be the verb and action ``To share something`` or the noun ``A share``.
+The most famous example in the Nextcloud code base is ``Share`` which can which can be the verb and action ``To share
+something`` or the noun ``A share``.
 The added hints will be shown in the Transifex web-interface:
 
 PHP
@@ -343,12 +358,14 @@ iOS
 Adding translations
 -------------------
 
-The steps how to set up translations for an app have been moved to it's own page in the "App development" chapter: :ref:`Translation`
+The steps how to set up translations for an app have been moved to it's own page in the "App development" chapter:
+:ref:`Translation`
 
 Testing translations
 --------------------
 
-You can use the query parameter ``forceLanguage`` to force a specific language for a web request (API or frontend). See :ref:`Forcing language for a given call<api-force-language>`.
+You can use the query parameter ``forceLanguage`` to force a specific language for a web request (API or frontend). See
+:ref:`Forcing language for a given call<api-force-language>`.
 
 Console commands
 ----------------

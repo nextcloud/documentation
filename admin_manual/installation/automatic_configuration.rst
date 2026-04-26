@@ -9,7 +9,8 @@ For this reason, Nextcloud provides an automatic configuration feature.
 
 To take advantage of this feature, you must create a configuration file, called
 :file:`config/autoconfig.php`, and set the file parameters as required.
-You can specify any number of parameters in this file.  Any unspecified parameters appear on the "Finish setup" screen when you first launch Nextcloud.
+You can specify any number of parameters in this file.  Any unspecified parameters appear on the "Finish setup" screen
+when you first launch Nextcloud.
 
 The :file:`config/autoconfig.php` is automatically removed after the initial configuration has been applied.
 
@@ -19,7 +20,8 @@ The :file:`config/autoconfig.php` is automatically removed after the initial con
 
 Parameters
 ----------
-When configuring parameters, you must understand that two parameters are named differently in this configuration file when compared to the standard :file:`config.php` file.
+When configuring parameters, you must understand that two parameters are named differently in this configuration file
+when compared to the standard :file:`config.php` file.
 
 +----------------+---------------+
 | autoconfig.php | config.php    |
@@ -32,7 +34,8 @@ When configuring parameters, you must understand that two parameters are named d
 Automatic configurations examples
 ---------------------------------
 
-The following sections provide sample automatic configuration examples and what information is requested at the end of the configuration.
+The following sections provide sample automatic configuration examples and what information is requested at the end of
+the configuration.
 
 Data Directory
 ^^^^^^^^^^^^^^
@@ -50,7 +53,8 @@ Using the following parameter settings, the "Finish setup" screen requests datab
 SQLite database
 ^^^^^^^^^^^^^^^
 
-Using the following parameter settings, the "Finish setup" screen requests data directory and admin credentials settings.
+Using the following parameter settings, the "Finish setup" screen requests data directory and admin credentials
+settings.
 
 ::
 
@@ -64,7 +68,8 @@ Using the following parameter settings, the "Finish setup" screen requests data 
 MySQL database
 ^^^^^^^^^^^^^^
 
-Using the following parameter settings, the "Finish setup" screen requests data directory and admin credentials settings.
+Using the following parameter settings, the "Finish setup" screen requests data directory and admin credentials
+settings.
 
 ::
 
@@ -81,7 +86,8 @@ Using the following parameter settings, the "Finish setup" screen requests data 
 PostgreSQL database
 ^^^^^^^^^^^^^^^^^^^
 
-Using the following parameter settings, the "Finish setup" screen requests data directory and admin credentials settings.
+Using the following parameter settings, the "Finish setup" screen requests data directory and admin credentials
+settings.
 
 ::
 
@@ -102,7 +108,8 @@ Using the following parameter settings, the "Finish setup" screen requests data 
 All parameters
 ^^^^^^^^^^^^^^
 
-Using the following parameter settings, because all parameters are already configured in the file, the Nextcloud installation skips the "Finish setup" screen.
+Using the following parameter settings, because all parameters are already configured in the file, the Nextcloud
+installation skips the "Finish setup" screen.
 
 ::
 

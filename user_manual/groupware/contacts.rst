@@ -133,25 +133,34 @@ order listed above.
 Managing multiple Contacts at a time
 ------------------------------------
 
-The Contacts app enables you to select multiple contacts and to perform batch actions on them. To select multiple contacts, either click on each contacts profile picture individually, or click on the profile picture on the first contact then while holding the shift key click on another contact in the list to select all contacts in between the first and second one.
+The Contacts app enables you to select multiple contacts and to perform batch actions on them. To select multiple
+contacts, either click on each contacts profile picture individually, or click on the profile picture on the first
+contact then while holding the shift key click on another contact in the list to select all contacts in between the
+first and second one.
 
 This will bring up a menu at the top of the contacts list with various actions you can perform on the selected contacts:
 
 .. figure:: images/contact_multiselect.png
     :alt: Contact multiselect actions
 
-In batch mode, the cross icon button will unselect all selected contacts, while the trash bin icon button will delete all selected contacts.
+In batch mode, the cross icon button will unselect all selected contacts, while the trash bin icon button will delete
+all selected contacts.
 
 .. note:: You might not be able to modify or delete certain contacts, for example if they are in a read-only address book. In that case, relevant actions will be disabled.
 
 Merging duplicate Contacts
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-To merge contacts, select two contacts then click the "Merge contacts" icon button at the top of the contacts list, this will open a dialog that helps you merge duplicate contacts. The merging dialog will show the details of both contacts side by side, and you can choose which details to keep in the merged contact.
+To merge contacts, select two contacts then click the "Merge contacts" icon button at the top of the contacts list, this
+will open a dialog that helps you merge duplicate contacts. The merging dialog will show the details of both contacts
+side by side, and you can choose which details to keep in the merged contact.
 
-Any properties with a Radio (circular) button can only have one value, so one of the two values must be selected (like the name of the contact, which can only have one value), meanwhile checkboxes (square buttons) allow you to keep both values if desired (like phone numbers or email addresses, which can have multiple values).
+Any properties with a Radio (circular) button can only have one value, so one of the two values must be selected (like
+the name of the contact, which can only have one value), meanwhile checkboxes (square buttons) allow you to keep both
+values if desired (like phone numbers or email addresses, which can have multiple values).
 
-If either of the contacts are part of a group(s), by default the merged contact will be part of all groups that the two contacts were part of. You can uncheck any groups while merging if you don't want the merged contact to be part of them.
+If either of the contacts are part of a group(s), by default the merged contact will be part of all groups that the two
+contacts were part of. You can uncheck any groups while merging if you don't want the merged contact to be part of them.
 
 .. note:: Currently you are only able to merge two contacts at a time, and you are naturally only able to merge contacts that can be modified by you. If the merging action is disabled, check that you selected contacts that match those conditions.
 
@@ -186,9 +195,13 @@ with iOS, macOS, Thunderbird and other CardDAV clients.
 Teams
 -----
 
-Informal collaboration takes place within organizations: an event to organize for a few weeks, a short ideation session between members from different entities, workshops, a place to joke around and support team building, or simply in very organic organizations where formal structure is kept to a minimum.
+Informal collaboration takes place within organizations: an event to organize for a few weeks, a short ideation session
+between members from different entities, workshops, a place to joke around and support team building, or simply in very
+organic organizations where formal structure is kept to a minimum.
 
-For all these reasons, Nextcloud supports Teams, a feature embedded in the Contacts app, where every user is able to create its own team, a user-defined aggregate of accounts. Teams can be used later on to share files and folders, added to Talk conversations, like a regular group.
+For all these reasons, Nextcloud supports Teams, a feature embedded in the Contacts app, where every user is able to
+create its own team, a user-defined aggregate of accounts. Teams can be used later on to share files and folders, added
+to Talk conversations, like a regular group.
 
 .. figure:: ./images/circle.png
 	:alt: Teams in the Contacts app left menu
@@ -215,7 +228,8 @@ Teams support 4 types of roles:
 
 **Member**
 
-Member is the role with the lowest permissions. A member can only access the resources shared with the team, and view the members of the team.
+Member is the role with the lowest permissions. A member can only access the resources shared with the team, and view
+the members of the team.
 
 **Moderator**
 
@@ -227,7 +241,8 @@ In addition to moderator permissions, an admin can configure team options.
 
 **Owner**
 
-In addition to admin permissions, an owner can transfer the team ownership to another member of the team. There can be only one single owner per team.
+In addition to admin permissions, an owner can transfer the team ownership to another member of the team. There can be
+only one single owner per team.
 
 Add members to a team
 ~~~~~~~~~~~~~~~~~~~~~
@@ -238,11 +253,14 @@ For a group or a team, the role applies to all members of the group or team.
 Team options
 ~~~~~~~~~~~~
 
-Various self-explanatory options are available to configure a team, to manage invites and membership, visibility of the team, allowance of other team membership and password protection.
+Various self-explanatory options are available to configure a team, to manage invites and membership, visibility of the
+team, allowance of other team membership and password protection.
 
 **Prevent teams from being a member of another team**
 
-When this option is enabled, the team can no longer be directly added as a member of another team. However, this restriction only applies to new direct additions. Existing memberships are kept, and inherited memberships are still possible if this team belongs to a parent team that gets added elsewhere.
+When this option is enabled, the team can no longer be directly added as a member of another team. However, this
+restriction only applies to new direct additions. Existing memberships are kept, and inherited memberships are still
+possible if this team belongs to a parent team that gets added elsewhere.
 
 Shared items
 ~~~~~~~~~~~~
@@ -250,4 +268,6 @@ Shared items
 
 .. figure:: ./images/shared-items.png
 
-Items that are shared between two contacts will be displayed in the contact app. This includes media, calendar events, chat rooms, and shared deck cards, all of which will be visible in the contact details. This functionality is limited to contacts listed in the system address book. Currently, our system only supports shared items between two contacts.
+Items that are shared between two contacts will be displayed in the contact app. This includes media, calendar events,
+chat rooms, and shared deck cards, all of which will be visible in the contact details. This functionality is limited to
+contacts listed in the system address book. Currently, our system only supports shared items between two contacts.

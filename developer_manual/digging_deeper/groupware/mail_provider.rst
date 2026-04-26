@@ -5,11 +5,15 @@
 Mail Provider Interface
 ========================================
 
-Nextcloud apps can use, and register the mail provider interface, to provide or consume mail service functionality to and from other apps. 
+Nextcloud apps can use, and register the mail provider interface, to provide or consume mail service functionality to
+and from other apps.
 
-Access to mail services from another app is provided by the Mail Manager class. Using this class your app can find available mail providers and services. Please see the appropriate section below for more details.
+Access to mail services from another app is provided by the Mail Manager class. Using this class your app can find
+available mail providers and services. Please see the appropriate section below for more details.
 
-The reverse is also possible, one can register an app to supply mail services to other apps. This is accomplished by implementing a custom Mail Provider class and Mail Service class then registering your provider with the system. Please see the appropriate section below for more details.
+The reverse is also possible, one can register an app to supply mail services to other apps. This is accomplished by
+implementing a custom Mail Provider class and Mail Service class then registering your provider with the system. Please
+see the appropriate section below for more details.
 
 .. _mail-provider-terminology:
 
@@ -18,15 +22,18 @@ Terminology
 
 For clarification this is a reference of terminology used.
 
-1. *Provider* - this is the app that provides mail services e.g. "BigHostingApp", this can be an app for a specific protocol
-2. *Service* - this is a configured mail service account e.g. "Big Email Hosting Co". Each mail provider may have multiple mail services configured for a user.
+1. *Provider* - this is the app that provides mail services e.g. "BigHostingApp", this can be an app for a specific
+   protocol
+2. *Service* - this is a configured mail service account e.g. "Big Email Hosting Co". Each mail provider may have
+   multiple mail services configured for a user.
 
 .. _mail-provider-consume:
 
 Consuming a Mail Service
 ------------------------
 
-To use mail as a service provided by another app, your app needs to instantiate the mail manager class, then use the built in methods to list or find an appropriate provider and service.
+To use mail as a service provided by another app, your app needs to instantiate the mail manager class, then use the
+built in methods to list or find an appropriate provider and service.
 
 .. code-block:: php
 
@@ -104,19 +111,22 @@ To use mail as a service provided by another app, your app needs to instantiate 
         }
     }
 
-For more detailed information of methods available, parameters and returns please see the mail providers directory in the server repository. (lib/public/Mail/Provider)
+For more detailed information of methods available, parameters and returns please see the mail providers directory in
+the server repository. (lib/public/Mail/Provider)
 
 .. _mail-provider-provide:
 
 Providing a Mail Service
 ------------------------
 
-For your app to provide mail service to other apps, your app needs to implement two main interfaces plus interfaces for the supported functionality.
+For your app to provide mail service to other apps, your app needs to implement two main interfaces plus interfaces for
+the supported functionality.
 
 Step 1: Create a Mail Provider Class
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The mail provider class is the main class that the mail manager uses to retrieve available services from your app. Each mail provider can have multiple mail services configured for a user.
+The mail provider class is the main class that the mail manager uses to retrieve available services from your app. Each
+mail provider can have multiple mail services configured for a user.
 
 This class needs to implement the `IProvider` interface and have all the required methods defined.
 
@@ -158,9 +168,12 @@ This class needs to implement the `IProvider` interface and have all the require
 Step 2: Create a Mail Service Class
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The mail service class is the main class that other apps use to access mail functionality in your app. This class is also returned by the mail provider class.
+The mail service class is the main class that other apps use to access mail functionality in your app. This class is
+also returned by the mail provider class.
 
-This class needs to implement the `IService` interface and have all the required methods defined. Because functionality varies between protocols this class also needs to be extended with the appropriate supported function interfaces like 'IMessageSend' which provides mail sending capabilities.  
+This class needs to implement the `IService` interface and have all the required methods defined. Because functionality
+varies between protocols this class also needs to be extended with the appropriate supported function interfaces like
+'IMessageSend' which provides mail sending capabilities.
 
 .. code-block:: php
     
@@ -214,7 +227,8 @@ This class needs to implement the `IService` interface and have all the required
 Step 3: Register the Mail Provider
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The registration is performed at the initial stages of your app being loaded by the Nextcloud system, inside the 'AppInfo/Application.php' file
+The registration is performed at the initial stages of your app being loaded by the Nextcloud system, inside the
+'AppInfo/Application.php' file
 
 .. code-block:: php
     

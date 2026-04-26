@@ -4,7 +4,8 @@ Configuration
 
 .. sectionauthor:: Bernhard Posselt <dev@bernhard-posselt.com>
 
-The config that allows the app to set global, app and user settings can be injected from the ServerContainer. All values are saved as strings and must be cast to the correct value.
+The config that allows the app to set global, app and user settings can be injected from the ServerContainer. All values
+are saved as strings and must be cast to the correct value.
 
 
 .. code-block:: php
@@ -39,7 +40,8 @@ The config that allows the app to set global, app and user settings can be injec
 System values
 -------------
 
-System values are saved in the :file:`config/config.php` and allow the app to modify and read the global configuration. Please note that ``setSystemValue`` might throw a ``OCP\HintException`` when the config file is read-only.
+System values are saved in the :file:`config/config.php` and allow the app to modify and read the global configuration.
+Please note that ``setSystemValue`` might throw a ``OCP\HintException`` when the config file is read-only.
 
 .. code-block:: php
 
@@ -78,7 +80,8 @@ Naming conventions
 
 For consistency there are conventions for config keys:
 
-* System config keys should only contain lower case letters, numbers and ``_``. This ensures that they can be used as environment variables.
+* System config keys should only contain lower case letters, numbers and ``_``. This ensures that they can be used as
+  environment variables.
 * Keys can be scoped to subsystems like ``<subsystem>_<key>``. This makes it easier to group related configuration.
 
 Here are some examples:

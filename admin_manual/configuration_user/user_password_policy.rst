@@ -2,7 +2,8 @@
 User password policy
 ====================
 
-A password policy is a set of rules designed to enhance computer security by encouraging users to employ strong passwords and use them properly.
+A password policy is a set of rules designed to enhance computer security by encouraging users to employ strong
+passwords and use them properly.
 
 In the security-section of your administrator-settings you can configure 
 
@@ -14,7 +15,8 @@ In the security-section of your administrator-settings you can configure
 * to enforce upper and lower case characters
 * to enforce numeric characters
 * to enforce special characters like ! or :
-* to check the password against the list of breached passwords from haveibeenpwnd.com (hashed check via haveibeenpwnd.com-API)
+* to check the password against the list of breached passwords from haveibeenpwnd.com (hashed check via
+  haveibeenpwnd.com-API)
 
 .. figure:: ../images/user_password_policy_configuration_app.png
 

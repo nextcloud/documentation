@@ -16,19 +16,22 @@ Nextcloud maintains a read-only address book containing contact information of a
 
 Disabled users are removed from this address book.
 
-You can disable or enable access to the system address book by using the administration interface or with a command line command.
+You can disable or enable access to the system address book by using the administration interface or with a command line
+command.
 
 Please note that this does not influence :ref:`Federated sharing<label-direct-share-link>`.
 
 Command Line
 ^^^^^^^^^^^^
 
-Run ``occ config:app:set dav system_addressbook_exposed --value="no"`` to disable access to the system address book for all users.
+Run ``occ config:app:set dav system_addressbook_exposed --value="no"`` to disable access to the system address book for
+all users.
 
 Administration interface
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-Navigate to *Administration Settings* -> *Groupware* -> *System Address Book* section and toggle the *Enable system address book* option.
+Navigate to *Administration Settings* -> *Groupware* -> *System Address Book* section and toggle the *Enable system
+address book* option.
 
 
 .. warning:: If clients have already connected to the CalDAV endpoint, the clients might experience sync issues after system address book access was disabled. This can often be remedied by choosing a different default address book on the client and forcing a resync.
@@ -36,13 +39,17 @@ Navigate to *Administration Settings* -> *Groupware* -> *System Address Book* se
 Privacy and User Property Scopes
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Contact information in the system address book is taken from users' :ref:`profile information<profile>`. Profile properties are only written to the system contact if the :ref:`scope<profile-property-scopes>` is set to *Local* or higher.
+Contact information in the system address book is taken from users' :ref:`profile information<profile>`. Profile
+properties are only written to the system contact if the :ref:`scope<profile-property-scopes>` is set to *Local* or
+higher.
 
-Users who set all their property scopes to *Private* are removed from the system address book and therefore not seen by other users.
+Users who set all their property scopes to *Private* are removed from the system address book and therefore not seen by
+other users.
 
 :ref:`File sharing settings<file-sharing-configuration>` controls the enumeration of other users.
 
-* If username autocompletion is not allowed, the system address book will only show user's own system contact but no other contacts.
+* If username autocompletion is not allowed, the system address book will only show user's own system contact but no
+  other contacts.
 * If username autocompletion is allowed, users will see contact cards for all other users.
 
   * If autocompletion is limited to users within the same groups, users will see contact cards for other users in shared groups.
@@ -52,7 +59,8 @@ Users who set all their property scopes to *Private* are removed from the system
 Address Book Sync
 ^^^^^^^^^^^^^^^^^
 
-The address book is updated automatically with every added, modified, disabled or removed user. Admins can also trigger a full rewrite of the address book :ref:`with occ<dav-sync-system-address-book>`.
+The address book is updated automatically with every added, modified, disabled or removed user. Admins can also trigger
+a full rewrite of the address book :ref:`with occ<dav-sync-system-address-book>`.
 
 Shared items
 ------------
@@ -117,6 +125,8 @@ The CardDAV backend keeps track of any modifications of address books. That is a
 
   sudo -E -u www-data php occ config:app:set totalNumberOfSyncTokensToKeep --value=30000
 
-The default is keeping 10,000 entries. This option should be set adequate to the number of users. E.g. on an installation with 5000 active synced addressbooks the system would only keep an average of 10 changes per sync. This will lead to premature data deletion and synchronization problems.
+The default is keeping 10,000 entries. This option should be set adequate to the number of users. E.g. on an
+installation with 5000 active synced addressbooks the system would only keep an average of 10 changes per sync. This
+will lead to premature data deletion and synchronization problems.
 
 .. warning:: This setting will also influence :ref:`CalDAV data retention<caldav-data-retention>`.

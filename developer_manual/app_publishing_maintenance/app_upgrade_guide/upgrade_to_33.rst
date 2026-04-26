@@ -16,14 +16,16 @@ This release includes breaking API changes, so you’ll need to update your code
 
 To improve developer experience, we’ve expanded the context object passed to file actions.
 It now includes additional fields such as the current folder and the current file list.
-Function signatures have also changed: Action handlers now use destructured parameters instead of positional array arguments.
+Function signatures have also changed: Action handlers now use destructured parameters instead of positional array
+arguments.
 
 You can find the full changelog and migration details in the repository: `nextcloud-files (4.0.0 beta) <https://github.com/nextcloud-libraries/nextcloud-files>`_.
 
 Sidebar
 """""""
 
-The files API was changed in this release to use the Node API (available since Nextcloud 27) instead of the legacy ``FileInfo`` API.
+The files API was changed in this release to use the Node API (available since Nextcloud 27) instead of the legacy
+``FileInfo`` API.
 For this the way to register sidebar tabs and actions has changed.
 The ``OCA.Files.Sidebar`` API was removed and replaced with a new sidebar API available from the `@nextcloud/files <https://www.npmjs.com/package/@nextcloud/files>`_ package.
 
@@ -32,7 +34,8 @@ for more details please refer to the changelog of the ``@nextcloud/files`` packa
 
 If you used the Files sidebar within your app you have to now use your own sidebar using the ``NcAppSidebar`` component from the `@nextcloud/vue <https://www.npmjs.com/package/@nextcloud/vue>`_ package.
 
-Otherwise if you already use your own sidebar implementation in your app but rely on the Viewer app to open the sidebar using the ``OCA.Files.Sidebar`` API,
+Otherwise if you already use your own sidebar implementation in your app but rely on the Viewer app to open the sidebar
+using the ``OCA.Files.Sidebar`` API,
 you now have to listen to the ``viewer:sidebar:open`` event-bus event from the Viewer app to open your sidebar.
 So enable the **open sidebar** action within the viewer you have to set ``enabledSidebar``
 when opening the viewer to allow opening the sidebar from within the viewer and listen for the mentioned event.
@@ -116,7 +119,8 @@ Removed APIs
   - To replace ``OC.getPort`` use ``window.location.port``.
   - To replace ``OC.getProtocol`` use ``window.location.protocol``.
 
-- The ``OCA.Core.ProfileSections`` API was removed and replaced with the framework agnostic ``OCA.Profile.ProfileSections`` API.
+- The ``OCA.Core.ProfileSections`` API was removed and replaced with the framework agnostic
+  ``OCA.Profile.ProfileSections`` API.
   See section about the profile app above.
 
 - The ``OCA.Files.Sidebar`` API is removed.
@@ -159,12 +163,14 @@ In this release support for PHP 8.1 was removed. Follow the steps below to make 
     }
   }
 
-3. If you have :ref:`continuous integration <app-ci>` set up, remove PHP 8.1 and add PHP 8.5 from the matrices of tests and linters.
+3. If you have :ref:`continuous integration <app-ci>` set up, remove PHP 8.1 and add PHP 8.5 from the matrices of tests
+   and linters.
 
 Default user agent for outgoing requests changed
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Starting with this release, the default user agent for requests done by the instance was changed from ``Nextcloud Server Crawler`` to ``Nextcloud-Server-Crawler/X.Y.Z``, where ``X.Y.Z`` is the current server version.
+Starting with this release, the default user agent for requests done by the instance was changed from ``Nextcloud Server
+Crawler`` to ``Nextcloud-Server-Crawler/X.Y.Z``, where ``X.Y.Z`` is the current server version.
 
 Snowflake IDS
 ^^^^^^^^^^^^^
@@ -175,7 +181,8 @@ The following tables are now using snowflake ids:
 - ``oc_jobs``
 - ``oc_share_external``
 
-The API related to these tables are now using a string instead of a int. See Changed APIs section and :doc:`/digging_deeper/snowflake_ids`.
+The API related to these tables are now using a string instead of a int. See Changed APIs section and
+:doc:`/digging_deeper/snowflake_ids`.
 
 Added Events
 ^^^^^^^^^^^^
@@ -203,16 +210,23 @@ Added APIs
 
 - ``ImageToTextOpticalCharacterRecognition`` TaskProcessing task type was added
 
-- ``ISynchronousWatermarkingProvider`` TaskProcessing provider interface was added to allow synchronous processing providers to react to the boolean includeWatermark flag
+- ``ISynchronousWatermarkingProvider`` TaskProcessing provider interface was added to allow synchronous processing
+  providers to react to the boolean includeWatermark flag
 
 Changed APIs
 ^^^^^^^^^^^^
 
-- The ``setId`` and ``getId`` methods of ``\OCP\BackgroundJob\IJob`` were changed to return/accept a string instead of an int. Same for ``\OCP\BackgroundJob\IJobList`` were some methods (``removedById``, ``getById`` and ``getDetailsById``) are now taking a string instead of an int. The string is suppose to be a snowflake id.
-- The ``setObjectId`` and ``getObjectId`` methods of ``\OCP\Activity\IEvent`` were changed to return/accept a string in addition to an int. The string is suppose to be a snowflake id.
-- The ``\OCP\TaskProcessing\Task`` class now has ``getIncludeWatermark`` and ``setIncludeWatermark`` methods for indicating whether the provider should add a watermark to the generated output.
+- The ``setId`` and ``getId`` methods of ``\OCP\BackgroundJob\IJob`` were changed to return/accept a string instead of
+  an int. Same for ``\OCP\BackgroundJob\IJobList`` were some methods (``removedById``, ``getById`` and
+  ``getDetailsById``) are now taking a string instead of an int. The string is suppose to be a snowflake id.
+- The ``setObjectId`` and ``getObjectId`` methods of ``\OCP\Activity\IEvent`` were changed to return/accept a string in
+  addition to an int. The string is suppose to be a snowflake id.
+- The ``\OCP\TaskProcessing\Task`` class now has ``getIncludeWatermark`` and ``setIncludeWatermark`` methods for
+  indicating whether the provider should add a watermark to the generated output.
 - The TaskProcessing OCS API now also accepts the ``includeWatermark`` flag when scheduling tasks
-- ``\OCP\Notification\INotification::setIcon``, ``\OCP\Notification\INotification::setLink`` and ``\OCP\Notification\IAction::setLink`` now throw ``\OCP\Notification\InvalidValueException`` when the provided link is not absolute as previously announced in :doc:`./upgrade_to_30`
+- ``\OCP\Notification\INotification::setIcon``, ``\OCP\Notification\INotification::setLink`` and
+  ``\OCP\Notification\IAction::setLink`` now throw ``\OCP\Notification\InvalidValueException`` when the provided link is
+  not absolute as previously announced in :doc:`./upgrade_to_30`
 
 Deprecated APIs
 ^^^^^^^^^^^^^^^
@@ -264,7 +278,8 @@ Should be replaced by the following code:
         // Do stuff
     }
 
-- The ``\OCP\Files::buildNotExistingFileName`` and related private helper ``\OC_Helper::buildNotExistingFileName`` were deprecated since Nextcloud 14 and were now removed. Use ``\OCP\Files\Folder::getNonExistingName`` instead.
+- The ``\OCP\Files::buildNotExistingFileName`` and related private helper ``\OC_Helper::buildNotExistingFileName`` were
+  deprecated since Nextcloud 14 and were now removed. Use ``\OCP\Files\Folder::getNonExistingName`` instead.
 
 - The ``WhatsNew`` feature was removed as such the ``OC\Updater\ChangesCheck`` class and related APIs.
   This also includes the ``whats_new`` database table and the ``WhatsNewController`` class which was serving the now removed ``/core/whatsnew`` endpoint.

@@ -90,7 +90,8 @@ Then add an external storage in the web UI using the following configuration:
 SMB external storage
 --------------------
 
-SMB external storage can be tested with Docker. The following commands create an SMB server with a public (shared) directory and user home directories for the credentials ``smb1:pwd1`` and ``smb2:pwd2``.
+SMB external storage can be tested with Docker. The following commands create an SMB server with a public (shared)
+directory and user home directories for the credentials ``smb1:pwd1`` and ``smb2:pwd2``.
 
 ::
 

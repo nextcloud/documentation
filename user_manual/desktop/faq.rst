@@ -4,7 +4,9 @@ FAQ
 
 How the "Edit locally" functionality works
 ------------------------------------------
-This functionality depends on the desktop client ability to register the mime to handle the nc:// scheme. That is the handler used by the server to open a file locally. This will allow the desktop client to open a document with the local editor when you click on the option "Edit locally" in your Nextcloud instance. 
+This functionality depends on the desktop client ability to register the mime to handle the nc:// scheme. That is the
+handler used by the server to open a file locally. This will allow the desktop client to open a document with the local
+editor when you click on the option "Edit locally" in your Nextcloud instance.
 
 .. note:: 
    Without properly registering the mime, independent of the browser and distro being used, the desktop client will fail to open a document with the local editor when you click on the option "Edit locally" in your Nextcloud instance.
@@ -14,7 +16,8 @@ This functionality depends on the desktop client ability to register the mime to
 How to enable it
 ^^^^^^^^^^^^^^^^^
 
-In order to do that, you need to install the desktop client with the MSI installer on Windows or use a third party software to integrate the AppImage in your system on Linux.
+In order to do that, you need to install the desktop client with the MSI installer on Windows or use a third party
+software to integrate the AppImage in your system on Linux.
 
 On Linux
 ^^^^^^^^
@@ -107,14 +110,16 @@ Then, click the Account drop-down menu again, and this time click "**Add new**".
    :alt: Replacement connection wizard
 
 This opens the Nextcloud Connection Wizard, which you can see above, *but* with an extra option.
-This option provides the ability to either: keep the existing data (synced by the previous connection) or to start a clean sync (erasing the existing data).
+This option provides the ability to either: keep the existing data (synced by the previous connection) or to start a
+clean sync (erasing the existing data).
 
 .. important::
 
   Be careful before choosing the "Start a clean sync" option. The old sync folder *may* contain a considerable amount of data, ranging into the gigabytes or terabytes. If it does, after the client creates the new connection, it will have to download **all** of that information again. Instead, first move or copy the old local sync folder, containing a copy of the existing files, to the new location. Then, when creating the new connection choose "*keep existing data*" instead. The Nextcloud client will check the files in the newly-added sync folder and find that they match what is on the server and not need to download anything.
 
 Make your choice and click "**Connect...**".
-This will then step you through the Connection Wizard, just as you did when you setup the previous sync connection, but giving you the opportunity to choose a new sync directory.
+This will then step you through the Connection Wizard, just as you did when you setup the previous sync connection, but
+giving you the opportunity to choose a new sync directory.
 
 I would like to change the language of the user interface
 ---------------------------------------------------------

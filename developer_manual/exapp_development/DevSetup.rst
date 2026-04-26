@@ -5,7 +5,8 @@ Setting up dev environment
 
 AppAPI development requires a Nextcloud development environment setup.
 We highly recommend using `Julius Knorr's Docker setup <https://github.com/juliusknorr/nextcloud-docker-dev>`_ for this.
-For an alternate environment without using Docker, please refer to the setup instructions in :doc:`Getting started <../getting_started/devenv>`.
+For an alternate environment without using Docker, please refer to the setup instructions in :doc:`Getting started
+<../getting_started/devenv>`.
 
 Suggested IDE: **PhpStorm**, though you can certainly use any IDE of your preference such as **VS Code** or **Vim**.
 

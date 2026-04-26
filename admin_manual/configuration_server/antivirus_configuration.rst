@@ -79,7 +79,8 @@ Docker, Docker-compose
   To install ClamAV via docker or docker compose you can take official image of ClamAV, or build one by yourself.
   This example is based on docker image from https://github.com/Cisco-Talos/clamav.
 
-You can mount ClamAV Socket from the Docker Container to the host System as volume. In this case you do not need to expose any port outside of container.
+You can mount ClamAV Socket from the Docker Container to the host System as volume. In this case you do not need to
+expose any port outside of container.
 
 For a Docker run this command::
   

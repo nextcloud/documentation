@@ -9,12 +9,15 @@ Text-To-Image
 .. deprecated:: 30
     Use the TaskProcessing API instead
 
-Nextcloud offers a **Text-To-Image** API. The overall idea is that there is a central OCP API that apps can use to prompt tasks to latent diffusion AI models and similar image generation tools. To be technology agnostic any app can provide this functionality by registering a Text-To-Image provider.
+Nextcloud offers a **Text-To-Image** API. The overall idea is that there is a central OCP API that apps can use to
+prompt tasks to latent diffusion AI models and similar image generation tools. To be technology agnostic any app can
+provide this functionality by registering a Text-To-Image provider.
 
 Consuming the Text-To-Image API
 -------------------------------
 
-To consume the Text-To-Image API, you will need to :ref:`inject<dependency-injection>` ``\OCP\TextToImage\IManager``. This manager offers the following methods:
+To consume the Text-To-Image API, you will need to :ref:`inject<dependency-injection>` ``\OCP\TextToImage\IManager``.
+This manager offers the following methods:
 
  * ``hasProviders()`` This method returns a boolean which indicates if any providers have been registered. If this is false you cannot use the image generation feature.
  * ``runTask(Task $task)`` This method provides the actual functionality. The task is defined using the Task class. This method runs the task synchronously, so depending on the implementation it is uncertain how long it will take (between 3s and several hours).
@@ -24,11 +27,14 @@ To consume the Text-To-Image API, you will need to :ref:`inject<dependency-injec
  * ``getUserTask(int $id, ?string $userId)`` This method fetches a task specified by its id and the user that is associated with it.
  * ``getUserTasksByApp(?string $userId, string $appId, ?string $identifier = null)`` This method fetches tasks by a user created by a specific app (optionally, you can also specify the task identifier as an additional filter)
 
-If you would like to use the image generation functionality in a client, there are also OCS endpoints available for this: :ref:`OCS Text-To-Image API<ocs-text2image-api>`
+If you would like to use the image generation functionality in a client, there are also OCS endpoints available for
+this: :ref:`OCS Text-To-Image API<ocs-text2image-api>`
 
 Tasks
 ^^^^^
-To create a task we use the ``\OCP\TextToImage\Task`` class. Its constructor takes the following arguments: ``new \OCP\TextToImage\Task(string $input, string $appId, int $numberOfImages, ?string $userId, string $identifier = '')``. For example:
+To create a task we use the ``\OCP\TextToImage\Task`` class. Its constructor takes the following arguments: ``new
+\OCP\TextToImage\Task(string $input, string $appId, int $numberOfImages, ?string $userId, string $identifier = '')``.
+For example:
 
 .. code-block:: php
 
@@ -45,7 +51,8 @@ The task class objects have the following methods available:
  * ``getUserId()`` This returns the originating user ID of the task.
  * ``getOutputImages()`` This method will return ``null`` unless the task is successful, if its, it will return a list of ``IImage`` objects
 
-You could run the task directly as follows. However, this will block the current PHP process until the task is done, which can sometimes take dozens of minutes, depending on which provider is used.
+You could run the task directly as follows. However, this will block the current PHP process until the task is done,
+which can sometimes take dozens of minutes, depending on which provider is used.
 
 .. code-block:: php
 
@@ -57,7 +64,8 @@ You could run the task directly as follows. However, this will block the current
     }
     // task was successful
 
-The wiser choice, when you are in the context of a HTTP controller, is to schedule the task for execution in a background job, as follows:
+The wiser choice, when you are in the context of a HTTP controller, is to schedule the task for execution in a
+background job, as follows:
 
 .. code-block:: php
 
@@ -68,7 +76,8 @@ The wiser choice, when you are in the context of a HTTP controller, is to schedu
     }
     // task was scheduled successfully
 
-Of course, you might want to schedule the task in a background job **only** if it takes longer than the request timeout. This is what runOrScheduleTask does.
+Of course, you might want to schedule the task in a background job **only** if it takes longer than the request timeout.
+This is what runOrScheduleTask does.
 
 .. code-block:: php
 
@@ -112,7 +121,8 @@ All tasks always have one of the below statuses:
 Listening to the image generation events
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Since ``scheduleTask`` does not block, you will need to listen to the following events in your app to obtain the resulting images or be notified of any failure.
+Since ``scheduleTask`` does not block, you will need to listen to the following events in your app to obtain the
+resulting images or be notified of any failure.
 
  * ``OCP\TextToImage\Events\TaskSuccessfulEvent`` This event class offers the ``getTask()`` method which returns the up-to-date task object, with the output from the model.
  * ``OCP\TextToImage\Events\TaskFailedEvent`` In addition to the ``getTask()`` method, this event class provides the ``getErrorMessage()`` method which returns the error message as a string (only in English and for debugging purposes, so don't show this to the user)
@@ -199,13 +209,19 @@ A **Text-To-Image provider** is a class that implements the interface ``OCP\Text
         }
     }
 
-The method ``getId`` returns a string to uniquely identify the registered provider. You can use the class name for this for example.
+The method ``getId`` returns a string to uniquely identify the registered provider. You can use the class name for this
+for example.
 
-The method ``getName`` returns a string to identify the registered provider in the user interface and should be localized.
+The method ``getName`` returns a string to identify the registered provider in the user interface and should be
+localized.
 
-The method ``generate`` implements the image generation step. It gets passed an array of ``resource`` values. The length of the array indicates how many images should be generated. Each image should be written to one of the resources, e.g. using ``fwrite()``. In case execution fails for some reason, you should throw a ``RuntimeException`` with an explanatory error message.
+The method ``generate`` implements the image generation step. It gets passed an array of ``resource`` values. The length
+of the array indicates how many images should be generated. Each image should be written to one of the resources, e.g.
+using ``fwrite()``. In case execution fails for some reason, you should throw a ``RuntimeException`` with an explanatory
+error message.
 
-The class would typically be saved into a file in ``lib/TextToImage`` of your app but you are free to put it elsewhere as long as it's loadable by Nextcloud's :ref:`dependency injection container<dependency-injection>`.
+The class would typically be saved into a file in ``lib/TextToImage`` of your app but you are free to put it elsewhere
+as long as it's loadable by Nextcloud's :ref:`dependency injection container<dependency-injection>`.
 
 
 Provider registration

@@ -5,7 +5,8 @@ Talk Integration
 `Nextcloud Talk <https://apps.nextcloud.com/apps/spreed>`_ is the chat, video and audio conferencing solution in Nextcloud. Apps can access Talk capabilities through a public API.
 
 
-All communication from an app to the Talk backend is handled through a *broker* ``\OCP\Talk\IBroker``. :ref:`Inject <dependency-injection>` the Talk broker into your class to make use of it.
+All communication from an app to the Talk backend is handled through a *broker* ``\OCP\Talk\IBroker``. :ref:`Inject
+<dependency-injection>` the Talk broker into your class to make use of it.
 
 
 Check for Talk existence

@@ -8,7 +8,8 @@ Configuration
 Anti-abuse alerts
 ^^^^^^^^^^^^^^^^^
 
-The app can write alerts to the logs when users send messages to a high number of recipients or sends a high number of messages for a short period of time. These events might indicate that the account is abused for sending spam messages.
+The app can write alerts to the logs when users send messages to a high number of recipients or sends a high number of
+messages for a short period of time. These events might indicate that the account is abused for sending spam messages.
 
 To enable anti-abuse alerts, you'll have to set a few configuration options :doc:`via occ  <../occ_command>` .
 
@@ -33,7 +34,8 @@ To enable anti-abuse alerts, you'll have to set a few configuration options :doc
 Attachment size limit
 ^^^^^^^^^^^^^^^^^^^^^
 
-Admins can prevent users from attaching large attachments to their emails. Users will be asked to use link shares instead.
+Admins can prevent users from attaching large attachments to their emails. Users will be asked to use link shares
+instead.
 
 ::
 
@@ -53,7 +55,8 @@ Configure how often Mail keeps users' mailboxes updated in the background in sec
 Disable TLS verification for IMAP/SMTP
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Turn off TLS verification for IMAP/SMTP. This happens globally for all accounts and is only needed in edge cases like with email servers that have a self-signed certificate.
+Turn off TLS verification for IMAP/SMTP. This happens globally for all accounts and is only needed in edge cases like
+with email servers that have a self-signed certificate.
 
 ::
 
@@ -62,15 +65,18 @@ Turn off TLS verification for IMAP/SMTP. This happens globally for all accounts 
 Google OAuth
 ^^^^^^^^^^^^
 
-This app can allow users to connect their Google accounts with OAuth. This makes it possible to use accounts without 2FA or app password.
+This app can allow users to connect their Google accounts with OAuth. This makes it possible to use accounts without 2FA
+or app password.
 
 1. `Create authorization credentials <https://developers.google.com/identity/protocols/oauth2/web-server#prerequisites>`_. You will receive a client ID and a client secret.
-2. Open the Nextcloud settings page. Navigate to *Groupware* and scroll down to *Gmail integration*. Enter and save the client ID and client secret.
+2. Open the Nextcloud settings page. Navigate to *Groupware* and scroll down to *Gmail integration*. Enter and save the
+   client ID and client secret.
 
 Local IMAP and SMTP servers
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-By default, Nextcloud does not allow local hostnames and IP addresses as remote servers. This includes IMAP, SMTP and Sieve servers
+By default, Nextcloud does not allow local hostnames and IP addresses as remote servers. This includes IMAP, SMTP and
+Sieve servers
 like ``localhost``, ``mx.local`` and ``10.0.0.3``. This check can be disabled with via ``config/config.php``.
 
 ::
@@ -118,7 +124,8 @@ You can use the php-mail function to send mails. This is needed for some web hos
 Account delegation
 ------------------
 
-The Mail app supports account delegation if the delegation is handled by the mail server. That means the mail server has to accept emails sent from an alias address.
+The Mail app supports account delegation if the delegation is handled by the mail server. That means the mail server has
+to accept emails sent from an alias address.
 
 In mailcow, for example, the setting is called *Also allowed to send as user*.
 
@@ -136,7 +143,9 @@ XOAUTH2 Authentication with Microsoft Azure AD
 
 .. versionadded:: 3.0.0
 
-The Mail app supports XOAUTH2 authentication with hosted Microsoft Outlook accounts. An app has to be registered in the Microsoft Azure web interface and its credentials have to be supplied to the Nextcloud instance. You can find relevant settings in the Groupware section of the admin settings.
+The Mail app supports XOAUTH2 authentication with hosted Microsoft Outlook accounts. An app has to be registered in the
+Microsoft Azure web interface and its credentials have to be supplied to the Nextcloud instance. You can find relevant
+settings in the Groupware section of the admin settings.
 
 **Step 1: Open the Azure AD Dashboard**
 
@@ -148,7 +157,9 @@ Visit the `Azure portal <https://portal.azure.com>`_ and navigate to the Azure A
 
 .. figure:: images/azure_xoauth2/2.png
 
-Chose a name, allow organizational and personal Microsoft accounts. Configure a web app and copy the redirect URI from the groupware settings of your Nextcloud instance. Have a look at step 8 on where to find the redirect URI. Finally, click on register to proceed.
+Chose a name, allow organizational and personal Microsoft accounts. Configure a web app and copy the redirect URI from
+the groupware settings of your Nextcloud instance. Have a look at step 8 on where to find the redirect URI. Finally,
+click on register to proceed.
 
 .. figure:: images/azure_xoauth2/3.png
 
@@ -168,13 +179,15 @@ Chose a descriptive name for the secret and set the an appropriate expiration da
 
 **Step 5: Copy the client secret**
 
-Copy the client secret manually or by clicking on the copy button. You can find it in the value column. The secret will also be needed later for the Nextcloud settings.
+Copy the client secret manually or by clicking on the copy button. You can find it in the value column. The secret will
+also be needed later for the Nextcloud settings.
 
 .. figure:: images/azure_xoauth2/7.png
 
 **Step 6: Configure Nextcloud**
 
-Open the groupware settings in the Nextcloud admin settings and fill in the client ID and client secret. Leave the tenant ID as is (common). You can also find the redirect URI here. Click on save to proceed.
+Open the groupware settings in the Nextcloud admin settings and fill in the client ID and client secret. Leave the
+tenant ID as is (common). You can also find the redirect URI here. Click on save to proceed.
 
 .. warning:: Using a custom tenant ID is not covered by this guide. Only configure it if you are an expert and changed the supported account types in step 2.
 
@@ -182,7 +195,9 @@ Open the groupware settings in the Nextcloud admin settings and fill in the clie
 
 **Step 7: Connect Microsoft Outlook accounts**
 
-Congratulations! You are now able to use hosted Microsoft Outlook accounts in the Mail app. Use your Microsoft account email and any password when adding your account. The password will be discarded and you will be prompted with a Microsoft consent popup to log in to your account.
+Congratulations! You are now able to use hosted Microsoft Outlook accounts in the Mail app. Use your Microsoft account
+email and any password when adding your account. The password will be discarded and you will be prompted with a
+Microsoft consent popup to log in to your account.
 
 .. figure:: images/azure_xoauth2/9.png
 
@@ -190,7 +205,8 @@ Congratulations! You are now able to use hosted Microsoft Outlook accounts in th
 
 Mailbox Share
 -------------
-Users can share mailboxes with each other. So far, there is no UI for users to change the ACL in the Mail app, but if you want to use it, you need to enable it on the IMAP sever and configure the shares there.
+Users can share mailboxes with each other. So far, there is no UI for users to change the ACL in the Mail app, but if
+you want to use it, you need to enable it on the IMAP sever and configure the shares there.
 
 .. _mail_ui_defaults:
 
@@ -199,7 +215,8 @@ User Interface Preference Defaults
 
 .. versionadded:: 5.2
 
-The Mail app allows administrators to set default user interface preferences for all users, these preferences can be changed by the user afterwards. This can be useful to ensure a consistent experience across the application.
+The Mail app allows administrators to set default user interface preferences for all users, these preferences can be
+changed by the user afterwards. This can be useful to ensure a consistent experience across the application.
 
 .. figure:: images/settings_mail-ui-defaults.png
    :alt: User Interface Preference Defaults
@@ -209,7 +226,8 @@ The Mail app allows administrators to set default user interface preferences for
 LLM Processing
 --------------
 
-The Mail app can optionally use large language models to process emails and offer assistance features like thread summaries, smart replies, event agendas and follow-up reminders.
+The Mail app can optionally use large language models to process emails and offer assistance features like thread
+summaries, smart replies, event agendas and follow-up reminders.
 
 .. note:: The supported languages depend on the used large language model.
 
@@ -251,4 +269,5 @@ Translation
 
 .. versionadded:: 4.2
 
-The mail app can optionally provide translations for messages if the :ref:`translation API <machine_translation>` is enabled.
+The mail app can optionally provide translations for messages if the :ref:`translation API <machine_translation>` is
+enabled.

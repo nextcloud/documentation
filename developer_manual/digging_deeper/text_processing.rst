@@ -10,12 +10,15 @@ Text Processing
     Use the TaskProcessing API instead
 
 
-Nextcloud offers a **Text Processing** API. The overall idea is that there is a central OCP API that apps can use to prompt tasks to Large Language Models and similar text processing tools. To be technology agnostic any app can provide this functionality by registering Text Processing providers.
+Nextcloud offers a **Text Processing** API. The overall idea is that there is a central OCP API that apps can use to
+prompt tasks to Large Language Models and similar text processing tools. To be technology agnostic any app can provide
+this functionality by registering Text Processing providers.
 
 Consuming the Text Processing API
 ---------------------------------
 
-To consume the  Language Model API, you will need to :ref:`inject<dependency-injection>` ``\OCP\TextProcessing\IManager``. This manager offers the following methods:
+To consume the  Language Model API, you will need to :ref:`inject<dependency-injection>`
+``\OCP\TextProcessing\IManager``. This manager offers the following methods:
 
  * ``hasProviders()`` This method returns a boolean which indicates if any providers have been registered. If this is false you cannot use the TextProcessing feature.
  * ``getAvailableTaskTypes()`` This method returns a list of class strings representing the tasks that are currently supported.
@@ -28,7 +31,8 @@ To consume the  Language Model API, you will need to :ref:`inject<dependency-inj
  * ``runOrScheduleTask(Task $task)`` This method also runs a task, but fist checks the expected runtime of the provider to be used. If the runtime fits inside the available processing time for the current request the task is run synchronously, otherwise it is scheduled as a background job. The task is defined using the Task class.
 
 
-If you would like to use the text processing functionality in a client, there are also OCS endpoints available for this: :ref:`OCS Text Processing API<ocs-textprocessing-api>`
+If you would like to use the text processing functionality in a client, there are also OCS endpoints available for this:
+:ref:`OCS Text Processing API<ocs-textprocessing-api>`
 
 Tasks types
 ^^^^^^^^^^^
@@ -41,7 +45,9 @@ The following task types are available:
 
 Tasks
 ^^^^^
-To create a task we use the ``\OCP\TextProcessing\Task`` class. Its constructor takes the following arguments: ``new \OCP\TextProcessing\Task(string $type, string $input, string $appId, ?string $userId, string $identifier = '')``. For example:
+To create a task we use the ``\OCP\TextProcessing\Task`` class. Its constructor takes the following arguments: ``new
+\OCP\TextProcessing\Task(string $type, string $input, string $appId, ?string $userId, string $identifier = '')``. For
+example:
 
 .. code-block:: php
 
@@ -62,7 +68,8 @@ The task class objects have the following methods available:
  * ``getIdentifier()`` This returns the original scheduler-defined identifier for the task
  * ``getUserId()`` This returns the originating user ID of the task.
 
-You could now run the task directly as follows. However, this will block the current PHP process until the task is done, which can sometimes take dozens of minutes, depending on which provider is used.
+You could now run the task directly as follows. However, this will block the current PHP process until the task is done,
+which can sometimes take dozens of minutes, depending on which provider is used.
 
 .. code-block:: php
 
@@ -74,7 +81,8 @@ You could now run the task directly as follows. However, this will block the cur
     }
     // task was successful
 
-The wiser choice, when you are in the context of a HTTP controller, is to schedule the task for execution in a background job, as follows:
+The wiser choice, when you are in the context of a HTTP controller, is to schedule the task for execution in a
+background job, as follows:
 
 .. code-block:: php
 
@@ -90,7 +98,8 @@ Conditional scheduling of tasks
 
 .. versionadded:: 28.0.0
 
-Of course, you might want to schedule the task in a background job **only** if it takes longer than the request timeout. This is what ``runOrScheduleTask`` does.
+Of course, you might want to schedule the task in a background job **only** if it takes longer than the request timeout.
+This is what ``runOrScheduleTask`` does.
 
 .. code-block:: php
 
@@ -132,7 +141,8 @@ All tasks always have one of the below statuses:
 Listening to the text processing events
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Since ``scheduleTask`` does not block, you will need to listen to the following events in your app to obtain the output or be notified of any failure.
+Since ``scheduleTask`` does not block, you will need to listen to the following events in your app to obtain the output
+or be notified of any failure.
 
  * ``OCP\TextProcessing\Events\TaskSuccessfulEvent`` This event class offers the ``getTask()`` method which returns the up-to-date task object, with the output from the model.
  * ``OCP\TextProcessing\Events\TaskFailedEvent`` In addition to the ``getTask()`` method, this event class provides the ``getErrorMessage()`` method which returns the error message as a string (only in English and for debugging purposes, so don't show this to the user)
@@ -220,16 +230,19 @@ A **Text processing provider** is a class that implements the interface ``OCP\Te
 
 The method ``getName`` returns a string to identify the registered provider in the user interface.
 
-The method ``process`` implements the text processing step, e.g. it passes the prompt to a language model. In case execution fails for some reason, you should throw a ``RuntimeException`` with an explanatory error message.
+The method ``process`` implements the text processing step, e.g. it passes the prompt to a language model. In case
+execution fails for some reason, you should throw a ``RuntimeException`` with an explanatory error message.
 
-The class would typically be saved into a file in ``lib/TextProcessing`` of your app but you are free to put it elsewhere as long as it's loadable by Nextcloud's :ref:`dependency injection container<dependency-injection>`.
+The class would typically be saved into a file in ``lib/TextProcessing`` of your app but you are free to put it
+elsewhere as long as it's loadable by Nextcloud's :ref:`dependency injection container<dependency-injection>`.
 
 Processing tasks in the context of a user
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 .. versionadded:: 28.0.0
 
-Sometimes the processing of a text processing task may depend upon which user requested the task. You can now obtain this information in your provider by additionally implementing the ``OCP\TextProcessing\IProviderWithUserId`` interface:
+Sometimes the processing of a text processing task may depend upon which user requested the task. You can now obtain
+this information in your provider by additionally implementing the ``OCP\TextProcessing\IProviderWithUserId`` interface:
 
 .. code-block:: php
     :emphasize-lines: 10,14,16,31,32,33
@@ -278,7 +291,10 @@ Streamlining processing for fast providers
 
 .. versionadded:: 28.0.0
 
-Downstream consumers of the TextProcessing API can optimize execution of tasks if they know how long a task will run with your provider. To allow this kind of optimization you can provide an estimate of how much time your provider typically takes. To do this you simply implement the additional ``OCP\TextProcessing\IProviderWithExpectedRuntime`` interface
+Downstream consumers of the TextProcessing API can optimize execution of tasks if they know how long a task will run
+with your provider. To allow this kind of optimization you can provide an estimate of how much time your provider
+typically takes. To do this you simply implement the additional ``OCP\TextProcessing\IProviderWithExpectedRuntime``
+interface
 
 .. code-block:: php
     :emphasize-lines: 10,14,29,30,31
@@ -323,7 +339,8 @@ Downstream consumers of the TextProcessing API can optimize execution of tasks i
 Providing more task types
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-If you would like to implement providers that handle additional task types, you can create your own TaskType classes implementing the ``OCP\TextProcessing\ITaskType``
+If you would like to implement providers that handle additional task types, you can create your own TaskType classes
+implementing the ``OCP\TextProcessing\ITaskType``
 interface:
 
 .. code-block:: php

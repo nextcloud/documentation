@@ -19,12 +19,14 @@ Conversion consists of two steps:
 Establishing the target database
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-First create up the target (new) database (along with its associated username and password) by following the manual database configuration instructions for your chosen target database type: 
+First create up the target (new) database (along with its associated username and password) by following the manual
+database configuration instructions for your chosen target database type:
 
 * :ref:`db-config-mysql-label`
 * :ref:`db-config-postgresql-label`
 
-Since the above db instructions uses the database name ``nextcloud`` for the newly created database we will do so here for consistency, but you are free to use whatever database name you prefer. Use
+Since the above db instructions uses the database name ``nextcloud`` for the newly created database we will do so here
+for consistency, but you are free to use whatever database name you prefer. Use
 the database name, database username, and database password you specified when creating the new database.
 
 Triggering the conversion
@@ -36,7 +38,8 @@ The ``occ db:convert-type`` command handles all the tasks of the conversion. The
 
   sudo -E -u www-data php occ db:convert-type [options] type username hostname database
 
-``type`` should be the target database type. The same values are available here as for the ``config.php`` ``dbtype`` parameter. It should be one of: ``mysql`` for MariaDB/MySQL, 
+``type`` should be the target database type. The same values are available here as for the ``config.php`` ``dbtype``
+parameter. It should be one of: ``mysql`` for MariaDB/MySQL,
 ``pgsql`` for PostgreSQL, or ``oci`` for Oracle.
 
 The options:
@@ -44,7 +47,8 @@ The options:
 * ``--port="3306"``                       the database port (optional) [defaults to "3306"]
 * ``--password="mysql_user_password"``    password for the new database. If omitted the tool will ask you (optional)
 * ``--clear-schema``                      clear schema (optional)
-* ``--all-apps``                          by default, tables for enabled apps are converted, use to convert also tables of deactivated apps (optional)
+* ``--all-apps``                          by default, tables for enabled apps are converted, use to convert also tables
+  of deactivated apps (optional)
 * ``-n, --no-interaction``                do not ask any interactive question
 
 .. note:: The conversion tool searches for apps in your configured app folders and uses
@@ -64,13 +68,15 @@ Let's convert our existing (functioning) sqlite3 installation to be MariaDB/MySQ
 On success the converter will automatically configure the new database in your
 Nextcloud config ``config.php``.
 
-If you are converting to a MySQL/MariaDB database, you will also want to set ``mysql.utf8mb4`` parameter to true in your ``config.php``:
+If you are converting to a MySQL/MariaDB database, you will also want to set ``mysql.utf8mb4`` parameter to true in your
+``config.php``:
 
 ::
 
    sudo -E -u www-data php occ config:system:set mysql.utf8mb4 --type boolean --value="true"
 
-If you like, you can view the changes that were made by looking for the ``db*`` parameters in your ``config.php`` (you could also use this command before 
+If you like, you can view the changes that were made by looking for the ``db*`` parameters in your ``config.php`` (you
+could also use this command before
 doing the conversion to compare your configuration before/after):
 
 ::

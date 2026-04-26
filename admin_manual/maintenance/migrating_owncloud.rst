@@ -43,7 +43,8 @@ See the table below for a version map, where migrating is easily possible:
 5. If system cron was used, please verify if crontab entry was using the command ``occ system:cron``.
    If yes, please adjust it to use the ``php`` command instead according to :ref:`the background jobs configuration documentation<system-cron-configuration-label>`
 
-6. As Nextcloud 25 is the last Nextcloud version supporting PHP 7 you need to upgrade your PHP installation afterwards to continue updating to current Nextcloud release.
+6. As Nextcloud 25 is the last Nextcloud version supporting PHP 7 you need to upgrade your PHP installation afterwards
+   to continue updating to current Nextcloud release.
    We recommend to update PHP to version 8.1 before continuing with the updates.
 
 7. Use the :doc:`Nextcloud built-in updater<update>` to update your instance to the newest version.

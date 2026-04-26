@@ -2,11 +2,16 @@
 Logging
 =======
 
-Use your Nextcloud log to review system status, or to help debug problems. You may adjust logging levels, and choose how and where log data is stored. If additional event logging is required, you can optionally activate the **admin_audit** app. 
+Use your Nextcloud log to review system status, or to help debug problems. You may adjust logging levels, and choose how
+and where log data is stored. If additional event logging is required, you can optionally activate the **admin_audit**
+app.
 
-When ``file`` based logging is utilized, both the Nextcloud log and, optionally, the **admin_audit** app log can be viewed within the Nextcloud interface under *Administration settings -> Logging* (this functionality is provided by the **logreader** app).
+When ``file`` based logging is utilized, both the Nextcloud log and, optionally, the **admin_audit** app log can be
+viewed within the Nextcloud interface under *Administration settings -> Logging* (this functionality is provided by the
+**logreader** app).
 
-Further configuration and usage details for both the standard Nextcloud log and the optional **admin_audit** app log can be found below. 
+Further configuration and usage details for both the standard Nextcloud log and the optional **admin_audit** app log can
+be found below.
 
 Log level
 ---------
@@ -19,7 +24,8 @@ Logging levels range from **DEBUG**, which logs all activity, to **FATAL**, whic
 * **3**: ERROR: An operation fails, but other services and operations continue, plus fatal errors.
 * **4**: FATAL: The server stops.
 
-By default the log level is set to **2** (WARN). Use **DEBUG** when you have a problem to diagnose, and then reset your log level to a less-verbose level as **DEBUG** outputs a lot of information, and can affect your server performance.
+By default the log level is set to **2** (WARN). Use **DEBUG** when you have a problem to diagnose, and then reset your
+log level to a less-verbose level as **DEBUG** outputs a lot of information, and can affect your server performance.
 
 Logging level parameters are set in the :file:`config/config.php` file.
 
@@ -140,7 +146,10 @@ Admin audit log (Optional)
 
 .. _config-admin-audit:
 
-By enabling the **admin_audit** app, additional information about various events can be logged. Similar to the normal logging, the audit log can be provided to any of the existing logging mechanisms in :file:`config/config.php`. The default behavior, if no parameters are specified after the app is enabled, is ``file`` based logging to a file called ``audit.log`` stored in the ``datadirectory``.
+By enabling the **admin_audit** app, additional information about various events can be logged. Similar to the normal
+logging, the audit log can be provided to any of the existing logging mechanisms in :file:`config/config.php`. The
+default behavior, if no parameters are specified after the app is enabled, is ``file`` based logging to a file called
+``audit.log`` stored in the ``datadirectory``.
 
 If you wish to override this and log to syslog instead the following would be one approach:
 
@@ -153,7 +162,8 @@ If you wish to override this and log to syslog instead the following would be on
 Log level interaction
 ~~~~~~~~~~~~~~~~~~~~~
 
-If system ``loglevel`` in ``config.php`` is set to ``2`` or higher, audit logging needs to be triggered explicitly by adding the following setting to ``config.php``:
+If system ``loglevel`` in ``config.php`` is set to ``2`` or higher, audit logging needs to be triggered explicitly by
+adding the following setting to ``config.php``:
 
 ::
 
@@ -166,7 +176,9 @@ Find detailed documentation on auditable events for enterprises in our `customer
 Integrating into the Web Interface
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-The built-in NC ``logreader`` app (which is what provides the *Administration settings->Logging* interface) only accesses the file-based ``nextcloud.log``. The **admin_audit** app log output, however, can be integrated into the web interface by configuring it to *also* log to the ``nextcloud.log``.
+The built-in NC ``logreader`` app (which is what provides the *Administration settings->Logging* interface) only
+accesses the file-based ``nextcloud.log``. The **admin_audit** app log output, however, can be integrated into the web
+interface by configuring it to *also* log to the ``nextcloud.log``.
 
 Add the following to your ``config.php`` (adjusting the path to your own ``nextcloud.log`` path):
 
@@ -180,7 +192,8 @@ Add the following to your ``config.php`` (adjusting the path to your own ``nextc
 Configuring through admin_audit app settings
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-Previously the audit logfile was defined in the app config. This config is still used when the system config is not provided, but is considered a legacy parameter.
+Previously the audit logfile was defined in the app config. This config is still used when the system config is not
+provided, but is considered a legacy parameter.
 
 ::
 

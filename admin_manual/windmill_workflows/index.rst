@@ -2,7 +2,8 @@
 Windmill Workflows
 ==================
 
-Nextcloud integrates the `Windmill workflow engine <https://www.windmill.dev/>`_ to allow advanced custom workflows interacting with your Nextcloud instance.
+Nextcloud integrates the `Windmill workflow engine <https://www.windmill.dev/>`_ to allow advanced custom workflows
+interacting with your Nextcloud instance.
 
 Installation
 ------------
@@ -23,30 +24,39 @@ Installation
 Setting up the workspace connection
 -----------------------------------
 
-In Windmill, you have separate workspaces available. To enable Windmill to react to events happening on your Nextcloud instance, you need to connect a workspace to your Nextcloud connection. This is only possible for workspace admins. 
+In Windmill, you have separate workspaces available. To enable Windmill to react to events happening on your Nextcloud
+instance, you need to connect a workspace to your Nextcloud connection. This is only possible for workspace admins.
 
 * In Windmill, open the workspace settings of the workspace you want to connect to Nextcloud via Settings -> Workspace
 * Go to the Native Triggers tab and choose Nextcloud -> Configure OAuth 
 * Follow the instructions to set up the OAuth connection
-* Click on "Connect" and accept the OAuth connection **with a Nextcloud admin account** or an account that has webhook admin privileges
+* Click on "Connect" and accept the OAuth connection **with a Nextcloud admin account** or an account that has webhook
+  admin privileges
 * If it shows "Connected", the workspace connection is successfully set up.
 
-Every Flow configured in this workspace can now add Nextcloud triggers and scripts based on the credentials of the account you accepted the OAuth connection with.
+Every Flow configured in this workspace can now add Nextcloud triggers and scripts based on the credentials of the
+account you accepted the OAuth connection with.
 
 
 Building a workflow
 -------------------
 
-To make a workflow react to a Nextcloud Webhook Event, you need to add a trigger. To do this, click on the Plus in the Triggers box of the Flow and select "Nextcloud"
+To make a workflow react to a Nextcloud Webhook Event, you need to add a trigger. To do this, click on the Plus in the
+Triggers box of the Flow and select "Nextcloud"
 
 .. image:: images/windmill_add_trigger.png
    :alt: Screenshot of adding a Nextcloud trigger in a workflow
 
-Now you can choose an event out of a drop-down list  of events that your flow should react to. You can additionally fill in some parameters: 
+Now you can choose an event out of a drop-down list  of events that your flow should react to. You can additionally fill
+in some parameters:
 
-* *Event filters* allows more fine grained filtering for which events should be used. The filter condition as well as the available events with their payloads is documented in the :ref:`webhook_listeners documentation<webhook_listeners>`.
-* The *User ID filter* allows to define the user that can trigger a flow with their actions in Nextcloud. The webhook will only be called by requests from this user. Empty or null means no filtering.
-* The *Headers* field allows to define an array of headers to be sent in a webhook call, which will mostly not be needed. 
+* *Event filters* allows more fine grained filtering for which events should be used. The filter condition as well as
+  the available events with their payloads is documented in the :ref:`webhook_listeners
+  documentation<webhook_listeners>`.
+* The *User ID filter* allows to define the user that can trigger a flow with their actions in Nextcloud. The webhook
+  will only be called by requests from this user. Empty or null means no filtering.
+* The *Headers* field allows to define an array of headers to be sent in a webhook call, which will mostly not be
+  needed.
 
 
 You can add more than one trigger to a flow. 
@@ -54,13 +64,16 @@ You can add more than one trigger to a flow.
 Nextcloud Scripts
 -----------------
 
-Nextcloud makes available a variety of scripts to be used in Windmill for interfacing with Nextcloud apps. You can find them
+Nextcloud makes available a variety of scripts to be used in Windmill for interfacing with Nextcloud apps. You can find
+them
 at https://hub.windmill.dev/integrations/nextcloud and https://hub.windmill.dev/integrations/nextcloud/approvals
 or in your windmill instance when selecting existing scripts for creating a new workflow.
 
 If you want to use a function that is not already represented there, you can easily write your own scripts using a skeleton script and our OCS API that provides lots of endpoints. You can check out the available endpoints in the `Nextcloud OCS API documentation <https://docs.nextcloud.com/server/latest/developer_manual/_static/openapi.html>`_ or you can install our `OCS API Viewer app <https://apps.nextcloud.com/apps/ocs_api_viewer>`_ and check it out directly in your Nextcloud.
 
-This is a skeleton for a script written in TypeScript (Bun). To use it, you have to add an action in Windmill and choose the correct script language. It includes everything necessary to use the Nextcloud OCS API, the parts marked like :code:`$THIS` have to be filled in with your data.
+This is a skeleton for a script written in TypeScript (Bun). To use it, you have to add an action in Windmill and choose
+the correct script language. It includes everything necessary to use the Nextcloud OCS API, the parts marked like
+:code:`$THIS` have to be filled in with your data.
 
 .. code-block:: javascript
 
@@ -117,26 +130,32 @@ This is a skeleton for a script written in TypeScript (Bun). To use it, you have
 
 The endpoint path you have to fill in is provided in the API documentation.
 
-OCS uses two kinds of parameters: Path parameters that are part of the endpoint URL, and body parameters that are transmitted in the request body. In the example script, you can provide both kinds in the function parameters.
+OCS uses two kinds of parameters: Path parameters that are part of the endpoint URL, and body parameters that are
+transmitted in the request body. In the example script, you can provide both kinds in the function parameters.
 
 Remember to also adapt the HTTP method (GET, POST, PUT etc.) if needed.
 
-The :code:`data` variable receives the response of the HTTP request, so any data or error messages coming from the Nextcloud instance is available in there.
+The :code:`data` variable receives the response of the HTTP request, so any data or error messages coming from the
+Nextcloud instance is available in there.
 
 Authentication
 ~~~~~~~~~~~~~~
 
-All the scripts we provide one input parameter in common: *nextcloud* needs to be an object of the type "Nextcloud" and contain what is necessary to authenticate against Nextcloud:
+All the scripts we provide one input parameter in common: *nextcloud* needs to be an object of the type "Nextcloud" and
+contain what is necessary to authenticate against Nextcloud:
 
 * baseUrl: the URL your instance is reachable at, e.g. :code:`https://example.cloud`
 * userId: the user id of the user the script should authenticate with
 * token: a password or token for that user
 
-We advise to either add these credentials as a resource of the Nextcloud type to your workspace and refer to the resource in your script, or use the authentication credentials that are provided in the webhook callback. 
+We advise to either add these credentials as a resource of the Nextcloud type to your workspace and refer to the
+resource in your script, or use the authentication credentials that are provided in the webhook callback.
 For every flow that is triggered by a Nextcloud event, there are 2 sets of temporary credentials included:
 
-* the credentials for the user account that is saved in the initial OAuth connection, available as :code:`flow_input.authentication.owner`
-* the credentials for the user account that triggered the event with their action, available as :code:`flow_input.authentication.trigger`
+* the credentials for the user account that is saved in the initial OAuth connection, available as
+  :code:`flow_input.authentication.owner`
+* the credentials for the user account that triggered the event with their action, available as
+  :code:`flow_input.authentication.trigger`
 
 These temporary authentication credentials are valid for one hour after triggering the event.
 
@@ -144,10 +163,13 @@ These temporary authentication credentials are valid for one hour after triggeri
 Passing values between blocks
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-When specifying script inputs you can either fill the parameters with static values or make references to the workflow input and the previous workflow steps.
+When specifying script inputs you can either fill the parameters with static values or make references to the workflow
+input and the previous workflow steps.
 
-In order to reference the workflow input (details about the event that triggered the webhook), use the ``flow_input`` variable.
-For example, ``flow_input.event.form.hash`` will reference the hash of a form from a nextcloud Forms event. As it is a JavaScript expression and not a static value, you have to switch the parameter input with the button next to it.
+In order to reference the workflow input (details about the event that triggered the webhook), use the ``flow_input``
+variable.
+For example, ``flow_input.event.form.hash`` will reference the hash of a form from a nextcloud Forms event. As it is a
+JavaScript expression and not a static value, you have to switch the parameter input with the button next to it.
 
 .. image:: images/windmill_js_expression.png
    :alt: Screenshot of adding a Nextcloud trigger in a workflow
@@ -155,19 +177,25 @@ For example, ``flow_input.event.form.hash`` will reference the hash of a form fr
 The fields available for each event are listed in the :ref:`webhook_listeners documentation<webhook_listeners>`.
 
 Each step in a workflow is automatically assigned a letter identifier.
-In order to reference results from previous steps in your parameters, use the ``results`` variable with the id of the step
-to reference as a sub property. For example, use ``results.e.submission.answers`` to use the answers of of a form submission
-retrieved via the "Get form submission from Nextcloud Forms" script identified with the letter "e". You can identify the letters in the flow overview diagram.
+In order to reference results from previous steps in your parameters, use the ``results`` variable with the id of the
+step
+to reference as a sub property. For example, use ``results.e.submission.answers`` to use the answers of of a form
+submission
+retrieved via the "Get form submission from Nextcloud Forms" script identified with the letter "e". You can identify the
+letters in the flow overview diagram.
 
 Approval/Suspend steps
 ~~~~~~~~~~~~~~~~~~~~~~
 
-Windmill allows using so-called approval steps, which are essentially asynchronous scripts that wait for the call to an additional webhook URL.
-The most prominent use case for this are approval workflows where you get automated input from somewhere which needs to be approved by a human.
+Windmill allows using so-called approval steps, which are essentially asynchronous scripts that wait for the call to an
+additional webhook URL.
+The most prominent use case for this are approval workflows where you get automated input from somewhere which needs to
+be approved by a human.
 Once the human approves or disapproves by triggering the webhook URL the workflow will resume.
 
 In order to turn a newly added step into an approval step, the workflow edit screen,
-select the script and in the bottom right pan, go in the "Advanced" tab, "Suspend" sub tab and check "Suspend/Approval/Prompt".
+select the script and in the bottom right pan, go in the "Advanced" tab, "Suspend" sub tab and check
+"Suspend/Approval/Prompt".
 
 .. image:: images/windmill_approval_step_config.png
    :alt: Screenshot of the workspace edit screen to turn a normal step into an Approval step

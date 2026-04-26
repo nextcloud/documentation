@@ -243,7 +243,8 @@ Once it's set it shouldn't be changed.
 
 Value must be an integer, comprised between 0 and 1023.
 
-When config.php is shared between different servers, this value should be overriden with "NC_serverid=<int>" on each server.
+When config.php is shared between different servers, this value should be overriden with "NC_serverid=<int>" on each
+server.
 Note that it must be overriden for CLI and for your webserver.
 
 Example for CLI: NC_serverid=42 occ config:list system
@@ -295,8 +296,10 @@ You can specify:
 
 - The exact hostname of your host or virtual host, e.g. ``demo.example.org``.
 - The exact hostname with permitted port, e.g. ``demo.example.org:443``. This disallows all other ports on this host
-- Use ``*`` as a wildcard, e.g., ``ubos-raspberry-pi*.local`` will allow ``ubos-raspberry-pi.local`` and ``ubos-raspberry-pi-2.local``
-- The IP address with or without permitted port, e.g. ``[2001:db8::1]:8080`` Using TLS certificates where ``commonName=<IP address>`` is deprecated
+- Use ``*`` as a wildcard, e.g., ``ubos-raspberry-pi*.local`` will allow ``ubos-raspberry-pi.local`` and
+  ``ubos-raspberry-pi-2.local``
+- The IP address with or without permitted port, e.g. ``[2001:db8::1]:8080`` Using TLS certificates where
+  ``commonName=<IP address>`` is deprecated
 
 cookie_domain
 ^^^^^^^^^^^^^
@@ -721,7 +724,8 @@ carddav_sync_request_timeout
 
 	'carddav_sync_request_timeout' => 30,
 
-The timeout in seconds for synchronizing address books, e.g., federated system address books (as run by ``occ federation:sync-addressbooks``).
+The timeout in seconds for synchronizing address books, e.g., federated system address books (as run by ``occ
+federation:sync-addressbooks``).
 
 Defaults to ``30`` seconds
 
@@ -733,7 +737,8 @@ carddav_sync_request_truncation
 
 	'carddav_sync_request_truncation' => 2500,
 
-The limit applied to the synchronization report request, e.g. federated system address books (as run by ``occ federation:sync-addressbooks``).
+The limit applied to the synchronization report request, e.g. federated system address books (as run by ``occ
+federation:sync-addressbooks``).
 
 session_relaxed_expiry
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -1756,10 +1761,12 @@ log_type
 
 This parameter determines where the Nextcloud logs are sent.
 
-- ``file``: the logs are written to file ``nextcloud.log`` in the default Nextcloud data directory. The log file can be changed with parameter ``logfile``.
+- ``file``: the logs are written to file ``nextcloud.log`` in the default Nextcloud data directory. The log file can be
+  changed with parameter ``logfile``.
 - ``syslog``: the logs are sent to the system log. This requires a syslog daemon to be active.
 - ``errorlog``: the logs are sent to the PHP ``error_log`` function.
-- ``systemd``: the logs are sent to the Systemd journal. This requires a system that runs Systemd and the Systemd journal. The PHP extension ``systemd`` must be installed and active.
+- ``systemd``: the logs are sent to the Systemd journal. This requires a system that runs Systemd and the Systemd
+  journal. The PHP extension ``systemd`` must be installed and active.
 
 Defaults to ``file``
 
@@ -2065,7 +2072,8 @@ Enable sampling-based profiling. This collects profiling data periodically rathe
 
 This requires the excimer extension to be installed. Be careful with this, as it can generate a lot of data.
 
-The profile data will be stored as a plain text file in the profiling.path directory that can be analyzed with speedscope.
+The profile data will be stored as a plain text file in the profiling.path directory that can be analyzed with
+speedscope.
 
 Defaults to ``false``
 
@@ -3781,7 +3789,8 @@ mounts in data/) is checked for changes made outside Nextcloud. This does not
 apply to external storage.
 
 - ``0`` -> Never check the filesystem for outside changes, improving performance when no external changes are expected.
-- ``1`` -> Check each file or folder at most once per request, recommended for general use if outside changes are possible.
+- ``1`` -> Check each file or folder at most once per request, recommended for general use if outside changes are
+  possible.
 
 Defaults to ``0``
 
@@ -4505,7 +4514,8 @@ default_certificates_bundle_path
 
 Change the default certificates bundle used for trusting certificates.
 
-Nextcloud ships its own up-to-date certificates bundle, but in certain cases admins may wish to specify a different bundle, for example the one shipped by their distro.
+Nextcloud ships its own up-to-date certificates bundle, but in certain cases admins may wish to specify a different
+bundle, for example the one shipped by their distro.
 
 Defaults to `\\OC::$SERVERROOT . '/resources/config/ca-bundle.crt'`.
 

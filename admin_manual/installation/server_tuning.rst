@@ -52,7 +52,10 @@ environments except during isolated troubleshooting.
 Caching
 -------
 
-Caching improves performance by storing data, code, and other objects in memory. Memory caching is not enabled by default because it requires optional extensions (such as APCu) and/or system components (e.g., Redis). Although these add-ons are generally not challenging to install and activate—at least in single-server deployments—you must install them before enabling their use in Nextcloud. See :doc:`../configuration_server/caching_configuration` for guidance.
+Caching improves performance by storing data, code, and other objects in memory. Memory caching is not enabled by
+default because it requires optional extensions (such as APCu) and/or system components (e.g., Redis). Although these
+add-ons are generally not challenging to install and activate—at least in single-server deployments—you must install
+them before enabling their use in Nextcloud. See :doc:`../configuration_server/caching_configuration` for guidance.
 
 Compression
 -----------
@@ -117,7 +120,8 @@ AES-NI extension:
   all cores: ``grep -m 1 '^flags' /proc/cpuinfo``. If the result contains
   ``aes``, the extension is present.
 
-* For Intel processors, you can search the Intel ARK database to check if your CPU supports AES-NI. Use the `Intel Processor Feature Filter
+* For Intel processors, you can search the Intel ARK database to check if your CPU supports AES-NI. Use the `Intel
+  Processor Feature Filter
   <https://ark.intel.com/MySearch.aspx?AESTech=true>`_, filtering by "AES New Instructions".
 
 * For versions of openssl >= 1.0.1, AES-NI does not work via an engine and
@@ -159,9 +163,12 @@ OPcache revalidation in PHP handles changes made to PHP application code stored 
 - Nextcloud or a Nextcloud app is upgraded 
 - a configuration change is made (e.g. when ``config.php`` is modified) 
 
-Nextcloud, as much as possible, handles cache revalidation internally when required. However, this is not foolproof. In a default PHP environment, revalidation is enabled, and cached scripts are checked for changes on disk every ``2`` seconds. In many environments, these default values are reasonable and may never need to be changed.
+Nextcloud, as much as possible, handles cache revalidation internally when required. However, this is not foolproof. In
+a default PHP environment, revalidation is enabled, and cached scripts are checked for changes on disk every ``2``
+seconds. In many environments, these default values are reasonable and may never need to be changed.
 
-However, the revalidation frequency can be adjusted and may *potentially* enhance performance. We make no recommendations here about appropriate values for revalidation (other than the PHP defaults).
+However, the revalidation frequency can be adjusted and may *potentially* enhance performance. We make no
+recommendations here about appropriate values for revalidation (other than the PHP defaults).
 
 .. danger::
     Increasing the time between revalidations (or disabling it completely) means that changes to scripts, including ``config.php``, will take longer to become active (or may never do so if revalidation is disabled completely). Increasing the interval also raises the risk of transient server and application upgrade problems and prevents the proper toggling of maintenance mode.
@@ -169,13 +176,15 @@ However, the revalidation frequency can be adjusted and may *potentially* enhanc
 .. warning::
     If you adjust these parameters, you are more likely to need to restart/reload your web server (``mod_php``) or PHP-FPM after making configuration changes or performing upgrades. If you forget to do so, you may experience unusual behavior due to a mismatch between what is on disk and what is in memory. These may appear to be bugs, but will go away as soon as you restart/reload ``mod_php`` / fpm.
 
-To change the default from ``2`` and check for changes on disk at most every ``60`` seconds, add the following setting to your ``php.ini`` file:
+To change the default from ``2`` and check for changes on disk at most every ``60`` seconds, add the following setting
+to your ``php.ini`` file:
 
 .. code:: ini
 
   opcache.revalidate_freq = 60
 
-Any Server/app upgrades or changes to ``config.php`` will then require restarting PHP (or otherwise manually clearing the cache or invalidating this particular script).
+Any Server/app upgrades or changes to ``config.php`` will then require restarting PHP (or otherwise manually clearing
+the cache or invalidating this particular script).
 
 .. warning::
    Please do not report bugs or odd behavior after upgrading Nextcloud or Nextcloud apps until after you've 
@@ -184,7 +193,8 @@ Any Server/app upgrades or changes to ``config.php`` will then require restartin
 Sizing
 ^^^^^^
 
-If any OPcache size limit exceeds 90% of its allocated size, the admin panel will show a related warning and suggest changes.
+If any OPcache size limit exceeds 90% of its allocated size, the admin panel will show a related warning and suggest
+changes.
 
 For more details, check the `official PHP documentation <https://php.net/manual/en/opcache.configuration.php>`_. To monitor OPcache usage and clear individual or all cache entries, you can use `opcache-gui <https://github.com/amnuts/opcache-gui>`_.
 
@@ -193,7 +203,8 @@ Comments
 
 .. NOTE: This is more a troubleshooting item than a tuning one IMO
 
-Nextcloud strictly requires code comments to be preserved in opcode, which is the default. If your PHP settings have changed, ensure the following is set in your ``php.ini``:
+Nextcloud strictly requires code comments to be preserved in opcode, which is the default. If your PHP settings have
+changed, ensure the following is set in your ``php.ini``:
 
 .. code:: ini
 
@@ -202,7 +213,8 @@ Nextcloud strictly requires code comments to be preserved in opcode, which is th
 JIT
 ^^^
 
-PHP ships with a JIT compiler that can be enabled on x86 platforms to benefit any CPU-intensive apps you might be running. To enable a tracing JIT with all optimizations, add to your ``php.ini``:
+PHP ships with a JIT compiler that can be enabled on x86 platforms to benefit any CPU-intensive apps you might be
+running. To enable a tracing JIT with all optimizations, add to your ``php.ini``:
 
 .. code:: ini
 

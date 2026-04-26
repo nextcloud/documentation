@@ -54,7 +54,8 @@ In any of the cases, the following connections should succeed:
 Nextcloud and Docker on the same host - with Nextcloud bare metal
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The simplest configuration is when Nextcloud is installed on the host and docker is on the same host and applications are deployed to it.
+The simplest configuration is when Nextcloud is installed on the host and docker is on the same host and applications
+are deployed to it.
 
 Create a HaRP container with either ``--network host`` option or expose the ports ``8780`` and ``8782`` to the host.
 
@@ -80,9 +81,11 @@ Finally, test the whole setup with "Test deploy" in the 3-dots menu of the deplo
 Nextcloud and Docker on the same host - with Nextcloud in Docker
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-When Nextcloud is installed in Docker, the HaRP container can be created in the same docker network as the Nextcloud instance.
+When Nextcloud is installed in Docker, the HaRP container can be created in the same docker network as the Nextcloud
+instance.
 
-Create a HaRP container with ``--network <nextcloud_docker_network_name>`` option, where ``<nextcloud_docker_network_name>`` is the name of the Docker network in which Nextcloud is accessible.
+Create a HaRP container with ``--network <nextcloud_docker_network_name>`` option, where
+``<nextcloud_docker_network_name>`` is the name of the Docker network in which Nextcloud is accessible.
 
 .. code-block:: bash
 
@@ -96,7 +99,8 @@ Create a HaRP container with ``--network <nextcloud_docker_network_name>`` optio
     --net <nextcloud_docker_network_name> \
     -d ghcr.io/nextcloud/nextcloud-appapi-harp:release
 
-Go to AppAPI admin settings and register a ``HaRP Proxy (Docker)`` daemon. Take note of the ``<nextcloud_docker_network_name>`` value in the ``Docker network`` field.
+Go to AppAPI admin settings and register a ``HaRP Proxy (Docker)`` daemon. Take note of the
+``<nextcloud_docker_network_name>`` value in the ``Docker network`` field.
 
 .. image:: ./img/harp_docker.png
 
@@ -105,11 +109,15 @@ Finally, test the whole setup with "Test deploy" in the 3-dots menu of the deplo
 Docker on a remote host - with HaRP container on the local host
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-This configuration is suited for deployments that want to offload the heavy lifting of the ExApps to a remote host, especially when using GPUs as compute devices. There can be multiple deploy daemons that can be used to deploy ExApps on different remote hosts for different compute capabilities.
-Here the HaRP container is deployed on the local host and the remote host tunnels the remote host's docker socket to the local host over the `FRP <https://github.com/fatedier/frp>`_ secure tunnel. The ExApps are deployed on the remote host.
+This configuration is suited for deployments that want to offload the heavy lifting of the ExApps to a remote host,
+especially when using GPUs as compute devices. There can be multiple deploy daemons that can be used to deploy ExApps on
+different remote hosts for different compute capabilities.
+Here the HaRP container is deployed on the local host and the remote host tunnels the remote host's docker socket to the
+local host over the `FRP <https://github.com/fatedier/frp>`_ secure tunnel. The ExApps are deployed on the remote host.
 A setup with the HaRP container itself on the remote is not supported.
 
-1. Create a HaRP container in the local host following :ref:`the above examples <ai-app_api_nc-harp-baremetal>` but without the docker socket mount.
+1. Create a HaRP container in the local host following :ref:`the above examples <ai-app_api_nc-harp-baremetal>` but
+   without the docker socket mount.
 
   .. code-block:: bash
 
@@ -127,8 +135,10 @@ A setup with the HaRP container itself on the remote is not supported.
 
   .. image:: ./img/harp_remote_24001.png
 
-3. The FRP generated client certificates should be present in the ``certs`` folder locally. Copy the files ``client.crt``, ``client.key`` and ``ca.crt`` inside the ``certs`` folder to the remote host.
-4. Create a folder structure on the remote host: ``mkdir -p certs/frp`` and copy the files ``client.crt``, ``client.key`` and ``ca.crt`` to the ``certs/frp`` folder.
+3. The FRP generated client certificates should be present in the ``certs`` folder locally. Copy the files
+   ``client.crt``, ``client.key`` and ``ca.crt`` inside the ``certs`` folder to the remote host.
+4. Create a folder structure on the remote host: ``mkdir -p certs/frp`` and copy the files ``client.crt``,
+   ``client.key`` and ``ca.crt`` to the ``certs/frp`` folder.
 5. Create a new file ``frpc.toml`` with the following contents. 
 
 	.. code-block:: toml
@@ -184,7 +194,8 @@ Docker Deploy Daemon (Docker Socket Proxy)
 NC & Docker on the Same-Host
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The simplest configuration is when Nextcloud is installed on the host and Docker is on the same host and applications are deployed to it.
+The simplest configuration is when Nextcloud is installed on the host and Docker is on the same host and applications
+are deployed to it.
 
 .. mermaid::
 
@@ -269,7 +280,8 @@ Suggested config values(template *Docker Socket Proxy*):
 Docker on a remote host
 ^^^^^^^^^^^^^^^^^^^^^^^
 
-Distributed configuration occurs when Nextcloud is installed on one host and Docker is located on a remote host, resulting in the deployment of applications on the remote host.
+Distributed configuration occurs when Nextcloud is installed on one host and Docker is located on a remote host,
+resulting in the deployment of applications on the remote host.
 
 Benefit: no performance impact on Nextcloud host.
 
@@ -403,7 +415,8 @@ In the case of AppAPI in Docker AIO setup (installed in Nextcloud container).
 		class ExApp2 python
 		class ExApp3 python
 
-AppAPI will automatically create the default DaemonConfig for AIO Docker Socket Proxy in order to use it as an orchestrator to create ExApp containers.
+AppAPI will automatically create the default DaemonConfig for AIO Docker Socket Proxy in order to use it as an
+orchestrator to create ExApp containers.
 
 .. note::
 
@@ -541,7 +554,8 @@ Now, let's take a look at the Docker Daemon implementation of ``resolveExAppUrl`
 		return sprintf('%s://%s:%s', $protocol, $exAppHost, $port);
 	}
 
-The route for HaRP setups remain the same here as in the previous example. All the requests are sent to the Nextcloud URL with the ``/exapps/`` route.
+The route for HaRP setups remain the same here as in the previous example. All the requests are sent to the Nextcloud
+URL with the ``/exapps/`` route.
 
 For Docker Socket Proxy, however, we have much more complex algorithm of detecting to where requests should be send.
 
@@ -552,13 +566,16 @@ Briefly, it will look like this (*haproxy_host==daemon host value*):
 
 NC --> *https* --> ``haproxy_host:ex_app_port`` --> *http* --> ``localhost:ex_app_port``
 
-When the protocol is not ``https`` but ``http``, then what will be the endpoint where to send requests is determined by ``$deployConfig['net']`` value.
+When the protocol is not ``https`` but ``http``, then what will be the endpoint where to send requests is determined by
+``$deployConfig['net']`` value.
 
-If ``net`` is defined and equal to ``host``, then AppAPI assumes that ExApp is installed somewhere in the current host network and will be available on ``localhost`` loop-back adapter.
+If ``net`` is defined and equal to ``host``, then AppAPI assumes that ExApp is installed somewhere in the current host
+network and will be available on ``localhost`` loop-back adapter.
 
 NC --> *http* --> ``localhost:ex_app_port``
 
-In all other cases, the ExApp should be available by it's name: e.g. when using docker **custom bridge** network all containers available by DNS.
+In all other cases, the ExApp should be available by it's name: e.g. when using docker **custom bridge** network all
+containers available by DNS.
 
 NC --> *http* --> ``app_container_name:ex_app_port``
 

@@ -50,7 +50,8 @@ If you get an error like:
 
 ``PATCH https://example.com/remote.php/dav HTTP/1.0 501 Not Implemented``
 
-it is likely because of a misconfigured web server. Please refer to :ref:`trouble-webdav-label` for troubleshooting steps.
+it is likely because of a misconfigured web server. Please refer to :ref:`trouble-webdav-label` for troubleshooting
+steps.
 
 Mail
 ----
@@ -64,7 +65,8 @@ If autoconfiguration for your domain fails, you can create an autoconfig file an
 Database insert problems on MySQL
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-If the mail app fails to insert new rows for messages (`oc_mail_messages`), recipients (`oc_mail_recipients`) or similar tables, you are possibly not using the 4 byte support.
+If the mail app fails to insert new rows for messages (`oc_mail_messages`), recipients (`oc_mail_recipients`) or similar
+tables, you are possibly not using the 4 byte support.
 
 See :doc:`../configuration_database/mysql_4byte_support` for how to update your database configuration.
 
@@ -72,7 +74,11 @@ See :doc:`../configuration_database/mysql_4byte_support` for how to update your 
 Export threading data
 ^^^^^^^^^^^^^^^^^^^^^
 
-If you encounter an issue with threading, e.g. messages that belong to the same conversation thread don't show up as one, you can export the data the algorithm will use to build threads. We are dealing with sensitive data here, but the command will optionally redact the data with the ``--redact`` switch. The exported data will then only keep the original database IDs, the rest of the data is randomized. This format does not the export message details, it still contains metadata about how many messages you have and how they relate. Please consider this before posting the data online.
+If you encounter an issue with threading, e.g. messages that belong to the same conversation thread don't show up as
+one, you can export the data the algorithm will use to build threads. We are dealing with sensitive data here, but the
+command will optionally redact the data with the ``--redact`` switch. The exported data will then only keep the original
+database IDs, the rest of the data is randomized. This format does not the export message details, it still contains
+metadata about how many messages you have and how they relate. Please consider this before posting the data online.
 
 ::
 
@@ -157,25 +163,32 @@ If you can not access your Outlook.com account try to enable the `Two-Factor Ver
 
 Logging the IMAP/SMTP/Sieve connections
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-The Nextcloud Mail app offers an extensive logging system to make it easier identifying and tracking down bugs. As this may include sensitive data, be sure to remove or mask them before posting them publicly.
+The Nextcloud Mail app offers an extensive logging system to make it easier identifying and tracking down bugs. As this
+may include sensitive data, be sure to remove or mask them before posting them publicly.
 
 Per mail account
 ~~~~~~~~~~~~~~~~
 .. versionadded:: 5.1.0
 
-Starting with version 5.1.0 of the mail app, you can enable logging of outgoing IMAP/SMTP/Sieve connections limited to a specific mail account. As that saves a lot of resources on your system, this is the preferred method for debugging issues regarding IMAP/SMTP/Sieve connections.
+Starting with version 5.1.0 of the mail app, you can enable logging of outgoing IMAP/SMTP/Sieve connections limited to a
+specific mail account. As that saves a lot of resources on your system, this is the preferred method for debugging
+issues regarding IMAP/SMTP/Sieve connections.
 
-First, you need to get the accountId for the mail account you like to enable debug logging on. Please see :ref:`mail_get_account_ids_groupware` for more.
+First, you need to get the accountId for the mail account you like to enable debug logging on. Please see
+:ref:`mail_get_account_ids_groupware` for more.
 
-Once you know the accountId of the mail account in question, you can use it to enable debug logging by running the following command on the server:
+Once you know the accountId of the mail account in question, you can use it to enable debug logging by running the
+following command on the server:
 
 ::
 
     sudo -E -u www-data php occ mail:account:debug <accountId> --on
 
-All subsequent outgoing connections made by the mail app will then be written to the ``data`` directory. The file naming follows the following format: ``mail-{{userId}}-{{accountId}}-{{protocol}}.log`` (e.g., `mail-admin-49-imap.log`).
+All subsequent outgoing connections made by the mail app will then be written to the ``data`` directory. The file naming
+follows the following format: ``mail-{{userId}}-{{accountId}}-{{protocol}}.log`` (e.g., `mail-admin-49-imap.log`).
 
-The debug logging for that specific account can be disabled once you've collected the necessary data by running the following command on the server:
+The debug logging for that specific account can be disabled once you've collected the necessary data by running the
+following command on the server:
 
 ::
 
@@ -183,7 +196,8 @@ The debug logging for that specific account can be disabled once you've collecte
 
 Globally
 ~~~~~~~~
-This enables logging of the IMAP/SMTP/Sieve connections for **all** mail accounts configured on the server. This should be used with caution as it can put a lot of strain on large environments.
+This enables logging of the IMAP/SMTP/Sieve connections for **all** mail accounts configured on the server. This should
+be used with caution as it can put a lot of strain on large environments.
 
 .. versionadded:: 5.1.0
 
@@ -193,9 +207,11 @@ To enable the global debug logging on versions 5.1.0 and above, just run the fol
 
     sudo -E -u www-data php occ config:system:set app.mail.debug --value true --type bool
 
-All subsequent outgoing connections made by the mail app will then be written to the ``data`` directory. The file naming follows the following format: ``mail-{{userId}}-{{accountId}}-{{protocol}}.log`` (e.g., `mail-admin-49-imap.log`).
+All subsequent outgoing connections made by the mail app will then be written to the ``data`` directory. The file naming
+follows the following format: ``mail-{{userId}}-{{accountId}}-{{protocol}}.log`` (e.g., `mail-admin-49-imap.log`).
 
-The global debug logging can be disabled once you've collected the necessary data by running the following command on the server:
+The global debug logging can be disabled once you've collected the necessary data by running the following command on
+the server:
 
 ::
 
@@ -204,16 +220,19 @@ The global debug logging can be disabled once you've collected the necessary dat
 .. note:: The following steps only apply to version 1.6.2 up to 5.0.8. Restrict logging of outgoing connections to a specific mail account is not available there.
 .. versionadded:: 1.6.2
 
-To enable the global debug logging, it's necessary to enable both the debug mode as well as debug logging for the whole nextcloud instance by running the following commands on the server:
+To enable the global debug logging, it's necessary to enable both the debug mode as well as debug logging for the whole
+nextcloud instance by running the following commands on the server:
 
 ::
 
     sudo -E -u www-data php occ config:system:set debug --value true --type bool
     sudo -E -u www-data php occ config:system:set loglevel --value 0 --type int
 
-All subsequent outgoing connections made by the mail app will then be written to the ``data`` directory. The file naming follows the following format: ``horde_{{protocol}}.log`` (e.g., `horde_imap.log`).
+All subsequent outgoing connections made by the mail app will then be written to the ``data`` directory. The file naming
+follows the following format: ``horde_{{protocol}}.log`` (e.g., `horde_imap.log`).
 
-Once you've collected the necessary data, it's highly recommended to disable the debug mode as well as resetting the loglevel to the default value by running the following commands:
+Once you've collected the necessary data, it's highly recommended to disable the debug mode as well as resetting the
+loglevel to the default value by running the following commands:
 
 ::
 
@@ -254,7 +273,8 @@ To troubleshoot synchronization or threading problems it's helpful to run the sy
 
 .. note:: 1393 represents the :ref:`account ID <mail_get_account_ids_groupware>`.
 
-The command offers a ``--force`` option. Use it wisely as it doesn't perform the same path a typical web triggered sync request would do.
+The command offers a ``--force`` option. Use it wisely as it doesn't perform the same path a typical web triggered sync
+request would do.
 
 The output will look similar to this::
 

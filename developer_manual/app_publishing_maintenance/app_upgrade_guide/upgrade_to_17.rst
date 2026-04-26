@@ -52,12 +52,14 @@ Removed from public namespace
 Deprecations
 ^^^^^^^^^^^^
 
-* ``\OCP\AppFramework\Http\EmptyContentSecurityPolicy::allowEvalScript``: This means apps should no longer use eval in their JavaScript. We aim to forbid this in general in a future version of Nextcloud.
+* ``\OCP\AppFramework\Http\EmptyContentSecurityPolicy::allowEvalScript``: This means apps should no longer use eval in
+  their JavaScript. We aim to forbid this in general in a future version of Nextcloud.
 * ``\OCP\AppFramework\Utility\IControllerMethodReflector::reflec``: Will be removed in 18.
 
 Behavioral changes
 ------------------
 
-* LDAP: default value for ``ldapGroupMemberAssocAttr`` changed from ``uniqueMember`` to unset. On scripted setups, it has to be set if LDAP groups should be used within Nextcloud.
+* LDAP: default value for ``ldapGroupMemberAssocAttr`` changed from ``uniqueMember`` to unset. On scripted setups, it
+  has to be set if LDAP groups should be used within Nextcloud.
 * Provisioning API: creating users will return the assigned user ID as dataset, as in ``['id' => $userid]``.
 

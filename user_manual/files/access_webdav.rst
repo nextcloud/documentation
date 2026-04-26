@@ -92,7 +92,8 @@ You can access files in Linux operating systems using the following methods.
 Nautilus file manager
 ^^^^^^^^^^^^^^^^^^^^^
 
-**When you configure your Nextcloud account in the** :doc:`GNOME Control Center <../groupware/sync_gnome>`, **your files will automatically be mounted
+**When you configure your Nextcloud account in the** :doc:`GNOME Control Center <../groupware/sync_gnome>`, **your files
+will automatically be mounted
 by Nautilus as a WebDAV share, unless you deselect file access**.
 
 You can also mount your Nextcloud files manually. Use the ``davs://``
@@ -121,7 +122,8 @@ Accessing files with KDE and Dolphin file manager
 #. After logging in, ensure you enable "Storage" in the "Use This Account For" section
 #. You can now access your files in Dolphin under "Network" in the sidebar
 #. (Optional) To add this as a shortcut in the sidebar, right click "Nextcloud Storage" then "Add to Places"
-#. (Optional) To customise the shortcut, right click the shortcut in the sidebar then "Edit..." and customise the icon and label as you please
+#. (Optional) To customise the shortcut, right click the shortcut in the sidebar then "Edit..." and customise the icon
+   and label as you please
 
 
 Creating WebDAV mounts on the Linux command line
@@ -326,7 +328,8 @@ Windows Explorer maps the network drive, making your Nextcloud instance availabl
 Accessing files using Cyberduck
 -------------------------------
 
-`Cyberduck <https://cyberduck.io/>`_ is an open source FTP, SFTP, WebDAV, OpenStack Swift, and Amazon S3 browser designed for file transfers on macOS and Windows.
+`Cyberduck <https://cyberduck.io/>`_ is an open source FTP, SFTP, WebDAV, OpenStack Swift, and Amazon S3 browser
+designed for file transfers on macOS and Windows.
 
 .. note:: This example uses Cyberduck version 4.2.1.
 
@@ -547,7 +550,8 @@ Accessing files using WinSCP
 
 You can `download <https://winscp.net/eng/downloads.php/>`_ the portable version of WinSCP and run it on Linux through `Wine <https://wiki.winehq.org/Main_Page/>`_.
 
-To run WinSCP on Linux, download wine through your distribution's package manager, then run it with the command: ``wine WinSCP.exe``.
+To run WinSCP on Linux, download wine through your distribution's package manager, then run it with the command: ``wine
+WinSCP.exe``.
 
 To connect to Nextcloud:
 

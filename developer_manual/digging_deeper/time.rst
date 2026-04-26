@@ -2,7 +2,8 @@
 Working with time
 =================
 
-You can inject the ``\OCP\AppFramework\Utility\ITimeFactory`` which wraps commonly used time functions for easier testability.
+You can inject the ``\OCP\AppFramework\Utility\ITimeFactory`` which wraps commonly used time functions for easier
+testability.
 
 Methods
 -------

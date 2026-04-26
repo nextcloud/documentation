@@ -12,7 +12,8 @@ In each operating system:
 
 2. *Uninstall* the desktop client.
 
-3. You may also need to take into consideration that uninstalling the desktop client will not remove the :doc:`user's configuration <configfile>` file and synced data.
+3. You may also need to take into consideration that uninstalling the desktop client will not remove the :doc:`user's
+   configuration <configfile>` file and synced data.
     
     For data removal (sync folders), consider using the server feature `remote wipe <https://nextcloud.com/de/blog/nextcloud-desktop-client-2-6-1-brings-remote-wipe-dark-mode-support-to-mac-os-x-and-more/>`_. This feature is available across all clients.
 
@@ -34,7 +35,8 @@ There are two ways of removing the desktop client:
 
 macOS
 ^^^^^
-Beyond deleting the desktop client from the *Applications* folder, you may also need to remove all related data, specially if you are using virtual files.
+Beyond deleting the desktop client from the *Applications* folder, you may also need to remove all related data,
+specially if you are using virtual files.
 
 1. To simply uninstall the software: you can do this from the `Launchpad or the Finder <https://support.apple.com/en-us/102610>`_.
 
@@ -53,7 +55,8 @@ Beyond deleting the desktop client from the *Applications* folder, you may also 
    rm -rf "$HOME/Library/Preferences/Nextcloud"  
    rm -f  "$HOME/Library/Preferences/com.nextcloud.desktopclient.plist"
 
-3. From version 33.0.0 the :doc:`user's configuration <configfile>` is located at ``$HOME/Library/Containers/com.nextcloud.desktopclient/Data/Library/Preferences/Nextcloud/nextcloud.cfg``.
+3. From version 33.0.0 the :doc:`user's configuration <configfile>` is located at
+   ``$HOME/Library/Containers/com.nextcloud.desktopclient/Data/Library/Preferences/Nextcloud/nextcloud.cfg``.
    On older versions it is located at ``$HOME/Library/Preferences/Nextcloud/nextcloud.cfg``.
 
 Linux
@@ -62,7 +65,8 @@ It depends on how you installed the desktop client:
 
 1. If you are running the Nextcloud AppImage, you can simply delete the AppImage file.
 
-2. If you have used your package manager to install the desktop client, you can use it to uninstall the desktop client as well. For example, on Ubuntu you can use the following command:
+2. If you have used your package manager to install the desktop client, you can use it to uninstall the desktop client
+   as well. For example, on Ubuntu you can use the following command:
 
 .. code-block:: bash
 

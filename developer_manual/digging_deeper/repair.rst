@@ -58,7 +58,8 @@ A repair step can generate information while running, using the
 Using the ``info`` and ``warning`` methods a message can be shown in the console.
 In order to show a progressbar, firstly call the ``startProgress`` method.
 The maximum number of steps can be adjusted by passing it as argument to the
-``startProgress`` method. After every step run the ``advance`` method. Once all steps are finished run the ``finishProgress``
+``startProgress`` method. After every step run the ``advance`` method. Once all steps are finished run the
+``finishProgress``
 method.
 
 The following function will sleep for 10 seconds and show the progress:
@@ -108,8 +109,12 @@ Repair-step types
 
 The following repair steps are available:
 
-* ``install`` This repair step will be executed when installing the app. This means it is executed every time the app is enabled (using the Web interface or the CLI).
+* ``install`` This repair step will be executed when installing the app. This means it is executed every time the app is
+  enabled (using the Web interface or the CLI).
 * ``uninstall`` This repair step will be executed when uninstalling the app, and when disabling the app.
 * ``pre-migration`` This repair step will be executed just before the database is migrated during an update of the app.
-* ``post-migration`` This repair step will be executed just after the database is migrated during an update of the app.  This repair step will also be executed when running the ``occ maintenance:repair`` command
-* ``live-migration`` This repair step will be scheduled to be run in the background (e.g. using cron), therefore it is unpredictable when it will run. If the job isn't required right after the update of the app and the job would take a long time this is the best choice.
+* ``post-migration`` This repair step will be executed just after the database is migrated during an update of the app. 
+  This repair step will also be executed when running the ``occ maintenance:repair`` command
+* ``live-migration`` This repair step will be scheduled to be run in the background (e.g. using cron), therefore it is
+  unpredictable when it will run. If the job isn't required right after the update of the app and the job would take a
+  long time this is the best choice.

@@ -196,9 +196,13 @@ The container works in the following way:
 * The **database connection** is returned from the server container
 * Now **AuthorMapper** has all of its dependencies and the object is returned
 * **AuthorService** gets the **AuthorMapper** and returns the object
-* **AuthorController** gets the **AuthorService** and finally the controller can be instantiated and the object is returned
+* **AuthorController** gets the **AuthorService** and finally the controller can be instantiated and the object is
+  returned
 
-So basically the container is used as a giant factory to build all the classes that are needed for the application. Because it centralizes all the creation of objects (the **new Class()** lines), it is very easy to add new constructor parameters without breaking existing code: only the **__construct** method and the container line where the **new** is being called need to be changed.
+So basically the container is used as a giant factory to build all the classes that are needed for the application.
+Because it centralizes all the creation of objects (the **new Class()** lines), it is very easy to add new constructor
+parameters without breaking existing code: only the **__construct** method and the container line where the **new** is
+being called need to be changed.
 
 
 Use automatic dependency assembly (recommended)
@@ -209,7 +213,8 @@ In Nextcloud it is possible to build classes and their dependencies without havi
 How does auto-wiring work
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Automatic assembly creates new instances of classes just by looking at the class name and its constructor parameters. For each constructor parameter the type or the argument name is used to query the container, e.g.:
+Automatic assembly creates new instances of classes just by looking at the class name and its constructor parameters.
+For each constructor parameter the type or the argument name is used to query the container, e.g.:
 
 * **SomeType $type** will use **$container->get(SomeType::class)**
 * **$variable** will use **$container->get('variable')**
@@ -257,7 +262,8 @@ How does it affect the request lifecycle
 
 * A request is matched for the route, e.g. with the name **page#index**
 * The appropriate container is being queried for the entry PageController (to keep backwards compatibility)
-* If the entry does not exist, the container is queried for OCA\\AppName\\Controller\\PageController and if no entry exists, the container tries to create the class by using `reflection`_ on its constructor parameters
+* If the entry does not exist, the container is queried for OCA\\AppName\\Controller\\PageController and if no entry
+  exists, the container tries to create the class by using `reflection`_ on its constructor parameters
 
 How does this affect controllers
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -298,7 +304,8 @@ There is no need to wire up anything in **lib/AppInfo/Application.php**. Everyth
 How to deal with interface and primitive type parameters
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Interfaces and primitive types can not be instantiated, so the container can not automatically assemble them. The actual implementation needs to be wired up in the container:
+Interfaces and primitive types can not be instantiated, so the container can not automatically assemble them. The actual
+implementation needs to be wired up in the container:
 
 .. code-block:: php
 
@@ -346,7 +353,8 @@ Interfaces and primitive types can not be instantiated, so the container can not
 Predefined core services
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-The following parameter names and type hints can be used to inject core services instead of using **$container->getServer()->getServiceX()**
+The following parameter names and type hints can be used to inject core services instead of using
+**$container->getServer()->getServiceX()**
 
 Parameters:
 
@@ -404,7 +412,10 @@ How to enable it
 
 To make use of this new feature, the following things have to be done:
 
-* **appinfo/info.xml** requires to provide another field called **namespace** where the namespace of the app is defined. The required namespace is the one which comes after the top level namespace **OCA\\**, e.g.: for **OCA\\MyBeautifulApp\\Some\\OtherClass** the needed namespace would be **MyBeautifulApp** and would be added to the info.xml in the following way:
+* **appinfo/info.xml** requires to provide another field called **namespace** where the namespace of the app is defined.
+  The required namespace is the one which comes after the top level namespace **OCA\\**, e.g.: for
+  **OCA\\MyBeautifulApp\\Some\\OtherClass** the needed namespace would be **MyBeautifulApp** and would be added to the
+  info.xml in the following way:
 
   .. code-block:: xml
 
@@ -429,7 +440,9 @@ To make use of this new feature, the following things have to be done:
 Which classes should be added
 -----------------------------
 
-In general all of the app's controllers need to be registered inside the container. Then the following question is: What goes into the constructor of the controller? Pass everything into the controller constructor that matches one of the following criteria:
+In general all of the app's controllers need to be registered inside the container. Then the following question is: What
+goes into the constructor of the controller? Pass everything into the controller constructor that matches one of the
+following criteria:
 
 * It does I/O (database, write/read to files)
 * It is a global (e.g. $_POST, etc. This is in the request class by the way)
@@ -448,7 +461,8 @@ Optional services
 
 .. versionadded:: 28
 
-If an injected dependency can't be found or build, an exception is thrown. This can be avoided by using the a nullable type notation for a dependency:
+If an injected dependency can't be found or build, an exception is thrown. This can be avoided by using the a nullable
+type notation for a dependency:
 
 .. code-block:: php
   :emphasize-lines: 6

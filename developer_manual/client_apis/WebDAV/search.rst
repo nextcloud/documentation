@@ -100,7 +100,8 @@ Search scope
 ------------
 
 All search queries are scoped to a single folder relative to the dav root.
-At the moment only search queries for files are supported meaning the the scope should always start with :code:`files/$username`.
+At the moment only search queries for files are supported meaning the the scope should always start with
+:code:`files/$username`.
 
 Inside the user's files, any existing folder can be used as search scope.
 

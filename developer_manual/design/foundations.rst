@@ -2,7 +2,9 @@
 Foundations
 ===========
 
-There are several design elements that are common to all Nextcloud apps. If you are developing for a platform that has its own design specifications, for example Android, it would be a good idea to keep those in mind while designing your app.
+There are several design elements that are common to all Nextcloud apps. If you are developing for a platform that has
+its own design specifications, for example Android, it would be a good idea to keep those in mind while designing your
+app.
 
 For web apps, there is the `Vue library <https://nextcloud-vue-components.netlify.app/>`_ and the `Penpot design kit <https://design.penpot.app/#/view/db3839da-807b-8052-8002-576401e9a375?page-id=db3839da-807b-8052-8002-576401e9a376&section=interactions&index=0&share-id=11fde340-21f4-802e-8002-8d8d305e7ab5>`_.
 
@@ -19,7 +21,8 @@ Primary color
 
    #0082C9
 
-While this is the primary color associated with Nextcloud and can be used to draw attention to an element, it is best to limit the usage of this to primary actions and other important elements.
+While this is the primary color associated with Nextcloud and can be used to draw attention to an element, it is best to
+limit the usage of this to primary actions and other important elements.
 
 .. note::
 	 The primary color can be customized by admins through theming, but the default experience will be Nextcloud blue. If the primary color is themed to something very light like a shade of yellow, the text or header icons will be inverted to dark automatically.
@@ -121,9 +124,11 @@ Status and indicators
 
            Warning: #ECA700
 
-Interface elements associated with a status like info, success, error, or warning may also be colored to communicate the action better.
+Interface elements associated with a status like info, success, error, or warning may also be colored to communicate the
+action better.
 
-While interface elements like buttons are colored differently depending on their action, the color of the text in that element is almost always either of the main text colors, that is light or dark.
+While interface elements like buttons are colored differently depending on their action, the color of the text in that
+element is almost always either of the main text colors, that is light or dark.
 
 
 * On web:
@@ -173,7 +178,8 @@ Icons
 
 Icons can be used to communicate the intent of an action, or to provide visual interest to the screen. We use monochrome icons on all platforms: `Material Symbols (not Material Icons, and 20 px default outlined) <https://fonts.google.com/icons?icon.set=Material+Symbols&selected=Material+Symbols+Outlined:search:FILL@0;wght@400;GRAD@0;opsz@20&icon.size=20>`_ for web, Android, Windows and Linux, and `SF Symbols (default weight, scale and variant) <https://developer.apple.com/sf-symbols/>`_ for iOS and macOS.
 
-This is except for the icon of the app itself, which can be a custom icon. Most use an app icon from Material Symbols as well though to keep consistency.
+This is except for the icon of the app itself, which can be a custom icon. Most use an app icon from Material Symbols as
+well though to keep consistency.
 
 Make sure to:
 
@@ -184,9 +190,11 @@ Make sure to:
 Naming
 ------
 
-To be immediately understandable, we choose app names which are generic and easily translatable. Additionally, they are short and easily fit in the top navigation without being cut off.
+To be immediately understandable, we choose app names which are generic and easily translatable. Additionally, they are
+short and easily fit in the top navigation without being cut off.
 
-Files, Contacts, Calendar, and Mail do not need further explanation, which is why we recommend to choose a self-explanatory app name.
+Files, Contacts, Calendar, and Mail do not need further explanation, which is why we recommend to choose a
+self-explanatory app name.
 
 Further good examples of this: Notes, Bookmarks, Maps, Forms, Tasks, Music.
 
@@ -198,14 +206,19 @@ The wording and language in your app sets the tone and approachability of your a
 
 * Nextcloud should always be written out, and only with a capital N. Not "NextCloud" or "Nc".
 * Be friendly and approachable, not condescending.
-* Use understandable language, not technical jargon. For example, "link" is much better than "URL", and explaining errors is better than showing error codes.
-* Don’t write in ALL CAPS, as it is not as readable and comes off as shouting and aggressive. Also use Sentence case and not Capital Case, with the exception of product names like Nextcloud Talk, Nextcloud Hub, etc.
+* Use understandable language, not technical jargon. For example, "link" is much better than "URL", and explaining
+  errors is better than showing error codes.
+* Don’t write in ALL CAPS, as it is not as readable and comes off as shouting and aggressive. Also use Sentence case and
+  not Capital Case, with the exception of product names like Nextcloud Talk, Nextcloud Hub, etc.
 * We are a community, so better write "We are happy to announce" instead of "I am happy to announce".
-* If your app content is empty, it can be helpful to add an engaging message. "Add or import your first bookmark!" is much nicer than "No bookmarks yet".
-* Try to avoid using "my" or "your" like in "My files" or "Your files", instead using "All files". For longer sentences where it cannot be avoided, use "your", never "my".
+* If your app content is empty, it can be helpful to add an engaging message. "Add or import your first bookmark!" is
+  much nicer than "No bookmarks yet".
+* Try to avoid using "my" or "your" like in "My files" or "Your files", instead using "All files". For longer sentences
+  where it cannot be avoided, use "your", never "my".
 * Use gender neutral language. This `international guide to gender-inclusive writing <https://uxcontent.com/the-international-guide-to-gender-inclusive-writing/>`_ contains info and examples on gender neutral wording for different languages.
 * Use full names instead of only first names while addressing the person using your app.
-* For any "Delete" action, give context to what it will delete, like "Delete conversation" or "Delete user" so that it is clear specifically for this destructive action.
+* For any "Delete" action, give context to what it will delete, like "Delete conversation" or "Delete user" so that it
+  is clear specifically for this destructive action.
 * Keep language short and concise, and keep in mind that it should be easily translatable.
 * Make sure to spellcheck anything you write.
 

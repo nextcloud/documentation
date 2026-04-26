@@ -7,7 +7,8 @@ Example installation on OpenBSD
 
     Nextcloud does not have official OpenBSD or other BSDs support
 
-In this install tutorial we will be deploying Nextcloud on a minimal OpenBSD with our own httpd(8), PHP, PostgreSQL and redis (for -stable or -current are the same steps).
+In this install tutorial we will be deploying Nextcloud on a minimal OpenBSD with our own httpd(8), PHP, PostgreSQL and
+redis (for -stable or -current are the same steps).
 
 From a base installed OpenBSD system you can just do::
 
@@ -95,9 +96,11 @@ Make sure that httpd(8) is enabled and started::
 PHP
 ---
 
-Assuming that you are on OpenBSD -current (or >= 6.8-stable) you could use PHP 8.2 so I will keep this version, but the concept is the same for other version.
+Assuming that you are on OpenBSD -current (or >= 6.8-stable) you could use PHP 8.2 so I will keep this version, but the
+concept is the same for other version.
 
-The PHP packages will be available since you installed Nextcloud with pkg_add, so you just need to adjust a bit your php.ini.
+The PHP packages will be available since you installed Nextcloud with pkg_add, so you just need to adjust a bit your
+php.ini.
 
 It is recommended to add opcache to it::
 

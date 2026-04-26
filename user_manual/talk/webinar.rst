@@ -2,7 +2,8 @@
 Webinar and lobby
 =================
 
-The lobby feature allows you to show guests a waiting screen until the call starts. This is ideal for webinars with external participants, for example.
+The lobby feature allows you to show guests a waiting screen until the call starts. This is ideal for webinars with
+external participants, for example.
 
 .. image:: images/lobby-in-talk.png
     :width: 600px

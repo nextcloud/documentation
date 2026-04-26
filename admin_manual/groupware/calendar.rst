@@ -38,13 +38,15 @@ Nextcloud can send invitations for event attendees if this option is activated.
 Be sure to have configured the email server first so that the invitations go through.
 See :doc:`../configuration_server/email_configuration`.
 
-You must also make sure the "Send invitations to attendees" setting is activated in the admin setting groupware section for the emails to be sent.
+You must also make sure the "Send invitations to attendees" setting is activated in the admin setting groupware section
+for the emails to be sent.
 
 Administrators can disable the sending of invitations to external participants with the following command::
 
  sudo -E -u www-data php occ config:app:set dav caldav_external_attendees_disabled --value yes
 
-This prevents invitations from being sent to attendees outside the instance and hides external contacts from the invitee search.
+This prevents invitations from being sent to attendees outside the instance and hides external contacts from the invitee
+search.
 
 Birthday calendar
 -----------------
@@ -62,12 +64,15 @@ Nextcloud currently handles two types of reminder notifications: Built-in Nextcl
 email notifications. For the emails to be send, you'll need a configured email server.
 See :doc:`../configuration_server/email_configuration`.
 
-Make sure the "Send notifications for events" and the "Enable notifications for events via push" are activated in the admin setting groupware section for this feature to work.
+Make sure the "Send notifications for events" and the "Enable notifications for events via push" are activated in the
+admin setting groupware section for this feature to work.
 
 Background jobs
 ~~~~~~~~~~~~~~~
-Running background jobs can be an expensive task when there are a large number of events, reminders, event sharees and attendees. However, this needs to happen
-often enough so that the notifications are sent on time. To accomplish this you should use a dedicated ``occ`` command that runs
+Running background jobs can be an expensive task when there are a large number of events, reminders, event sharees and
+attendees. However, this needs to happen
+often enough so that the notifications are sent on time. To accomplish this you should use a dedicated ``occ`` command
+that runs
 more often than the standard ``cron`` system::
 
  # crontab -u www-data -e
@@ -79,7 +84,8 @@ You'll also need to change the sending mode from ``background-job`` to ``occ``::
 
  sudo -E -u www-data php occ config:app:set dav sendEventRemindersMode --value occ
 
-If you don't use this dedicated command, the reminders will just be sent as soon as possible when the background jobs run.
+If you don't use this dedicated command, the reminders will just be sent as soon as possible when the background jobs
+run.
 
 Event alarm types
 -----------------
@@ -95,7 +101,8 @@ Allowed values are ``EMAIL`` (email) and ``DISPLAY`` (notification).
 FreeBusy
 --------
 
-When logged-in, Nextcloud can return FreeBusy information for all users of the instance, to know when they are available so that you can schedule an event at the right time.
+When logged-in, Nextcloud can return FreeBusy information for all users of the instance, to know when they are available
+so that you can schedule an event at the right time.
 If you don't wish for users to have this capability, you can disable FreeBusy for the whole instance with the following setting::
 
  sudo -E -u www-data php occ config:app:set dav disableFreeBusy --value yes
@@ -163,7 +170,8 @@ Trash bin
 
 Nextcloud supports a calendar, events and tasks trash bin.
 
-The default delay before objects are purged from the trash bin is 30 days. A background job runs every 6 hours to clean up expired objects.
+The default delay before objects are purged from the trash bin is 30 days. A background job runs every 6 hours to clean
+up expired objects.
 
 To set up a different retention period, change the ``calendarRetentionObligation`` option::
 
@@ -174,11 +182,15 @@ Where the value is the number of seconds for the period. Setting the value to ``
 Resources and rooms
 -------------------
 
-The Nextcloud CalDAV backend supports resources and rooms. Resources and rooms can be booked for appointments, and the system will schedule them so they can only be used once at a time. Those resources and rooms have to be provided by an app that provides a backend for this.
+The Nextcloud CalDAV backend supports resources and rooms. Resources and rooms can be booked for appointments, and the
+system will schedule them so they can only be used once at a time. Those resources and rooms have to be provided by an
+app that provides a backend for this.
 
-Once a backend app is installed, the app typically allows admins, or even users, to define the resources, but this is subject of the specific implementation.
+Once a backend app is installed, the app typically allows admins, or even users, to define the resources, but this is
+subject of the specific implementation.
 
-Nextcloud periodically queries all registered backends, therefore new/updated resources and rooms will show with a delay.
+Nextcloud periodically queries all registered backends, therefore new/updated resources and rooms will show with a
+delay.
 
 Known backends
 ~~~~~~~~~~~~~~
@@ -247,7 +259,9 @@ The CalDAV backend keeps track of any modifications of calendars. That is anythi
 
   sudo -E -u www-data php occ config:app:set totalNumberOfSyncTokensToKeep --value=30000
 
-The default is keeping 10,000 entries. This option should be set adequate to the number of users. E.g. on an installation with 5000 active synced calendars the system would only keep an average of 10 changes per calendar. This will lead to premature data deletion and synchronization problems.
+The default is keeping 10,000 entries. This option should be set adequate to the number of users. E.g. on an
+installation with 5000 active synced calendars the system would only keep an average of 10 changes per calendar. This
+will lead to premature data deletion and synchronization problems.
 
 
 .. warning:: This setting will also influence :ref:`CardDAV data retention<carddav-data-retention>`.

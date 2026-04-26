@@ -3,7 +3,8 @@
 ExApp overview
 ==============
 
-The basic concept of the AppAPI is to provide a way to develop/write an app for Nextcloud in any language, especially the backend part.
+The basic concept of the AppAPI is to provide a way to develop/write an app for Nextcloud in any language, especially
+the backend part.
 The frontend part is usually kept the same. You can think of the ExApp as a microservice.
 
 
@@ -12,7 +13,8 @@ ExApp structure
 
 The typical ExApp folder structure is the following:
 
-- **appinfo/**: contains the ExApp metadata, which is based on the regular :doc:`Nextcloud PHP appinfo <../../app_development/info>`,
+- **appinfo/**: contains the ExApp metadata, which is based on the regular :doc:`Nextcloud PHP appinfo
+  <../../app_development/info>`,
   but with additional new fields under the ``external-app`` key.
 - **ex_app/**: the ExApp specific folder, which contains the ExApp frontend and backend parts.
 	- **lib/**: contains the ExApp backend part, which can be written in any language.
@@ -52,19 +54,23 @@ Backend
 -------
 
 The ExApp backend part can be implemented in any language and framework you want.
-The only requirement here is to follow the microservice architecture and ExApp <-> Nextcloud :ref:`communication flow <ex_app_lifecycle_methods>`.
+The only requirement here is to follow the microservice architecture and ExApp <-> Nextcloud :ref:`communication flow
+<ex_app_lifecycle_methods>`.
 
 .. note::
 
 	There is a limitation of AppAPI ExApp proxy - the websocket connections are not supported.
 
-Each ExApp container has environment variables set by AppAPI; you can find out more about them :ref:`here <ex_app_env_vars>`.
+Each ExApp container has environment variables set by AppAPI; you can find out more about them :ref:`here
+<ex_app_env_vars>`.
 
 Persistent storage
 ******************
 
-For each ExApp, AppAPI creates a Docker volume (``nc_app_<app_id>_data``) that is attached to the ExApp container as persistent storage.
-It is available inside the container under the ``/nc_app_<app_id>_data`` path or via the ``APP_PERSISTENT_STORAGE`` environment variable passed by AppAPI.
+For each ExApp, AppAPI creates a Docker volume (``nc_app_<app_id>_data``) that is attached to the ExApp container as
+persistent storage.
+It is available inside the container under the ``/nc_app_<app_id>_data`` path or via the ``APP_PERSISTENT_STORAGE``
+environment variable passed by AppAPI.
 
 
 .. _ex_app_specific_frontend_changes:
@@ -208,7 +214,8 @@ It is recommended to use the following default set of commands:
 - ``build-push-rocm``: builds the Docker image for ROCm and uploads it to the Docker registry.
 - ``run``: installs the ExApp for Nextcloud latest via the ``occ app_api:app:register`` command, like from the UI.
 - ``register``: performs registration of running manually ExApp using the ``manual_install`` Deploy daemon.
-- ``translation_templates``: execute translationtool.phar to extract translation strings from sources (frontend and backend).
+- ``translation_templates``: execute translationtool.phar to extract translation strings from sources (frontend and
+  backend).
 - ``convert_translations_nc``: converts translations to Nextcloud format files (json, js).
 - ``compile_po_to_mo``: compiles the ``.po`` files to ``.mo`` files using the ``scripts/compile_po_to_mo.sh`` script.
 - ``copy_translations``: copies translations to needed location depending on your ExApp backend programming language.
@@ -217,4 +224,5 @@ It is recommended to use the following default set of commands:
 	These Makefiles are typically written to work in the `nextcloud-docker-dev <https://github.com/juliusknorr/nextcloud-docker-dev>`_ development environment.
 
 For a complete example, you can take a look at our `Makefile for the 3rd-party service example <https://github.com/cloud-py-api/visionatrix/blob/main/Makefile>`_.
-This example also requires the ``xmlstarlet`` program to be installed so that the Makefile can automatically detect the ExApp version from the info.xml file.
+This example also requires the ``xmlstarlet`` program to be installed so that the Makefile can automatically detect the
+ExApp version from the info.xml file.

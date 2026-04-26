@@ -12,4 +12,5 @@ Additional to specific errors of an API, there are a few generic errors Nextclou
 Maintenance Mode
 ****************
 
-If Nextcloud is down for maintenance, it sends a HTTP response with status code 503 and the header ``x-nextcloud-maintenance-mode: 1``.
+If Nextcloud is down for maintenance, it sends a HTTP response with status code 503 and the header
+``x-nextcloud-maintenance-mode: 1``.

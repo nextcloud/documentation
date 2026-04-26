@@ -2,7 +2,8 @@
 Installation
 ============
 
-Nextcloud Office is built on Collabora Online which requires a dedicated service running next to the Nextcloud webserver stack. There are several ways to run the coolwsd service.
+Nextcloud Office is built on Collabora Online which requires a dedicated service running next to the Nextcloud webserver
+stack. There are several ways to run the coolwsd service.
 
 - **Nextcloud All In One:** Nextcloud Office comes preinstalled out of the box in the `Nextcloud All In One <https://github.com/nextcloud/all-in-one>`_ setup and provides easy deployment and maintenance with most features included in this one Nextcloud instance.
 

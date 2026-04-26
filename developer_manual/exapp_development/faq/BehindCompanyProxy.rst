@@ -1,7 +1,8 @@
 Corporate Proxy - Permanent Settings for PHP CLI
 ================================================
 
-If you're using our application within a corporate network that requires proxy settings, you might encounter issues when running PHP CLI commands that attempt to access the Internet.
+If you're using our application within a corporate network that requires proxy settings, you might encounter issues when
+running PHP CLI commands that attempt to access the Internet.
 
 To resolve this, you need to configure permanent proxy settings for the PHP CLI environment.
 
@@ -23,12 +24,14 @@ You may receive an error similar to:
 Cause
 -----
 
-This issue occurs because the PHP CLI environment does not have the proxy settings configured, unlike the web PHP environment which may already be using proxy settings specified in your web server configuration.
+This issue occurs because the PHP CLI environment does not have the proxy settings configured, unlike the web PHP
+environment which may already be using proxy settings specified in your web server configuration.
 
 Permanent Solution
 ------------------
 
-To permanently configure proxy settings for PHP CLI, you can either modify the PHP CLI ``php.ini`` file or set environment variables system-wide.
+To permanently configure proxy settings for PHP CLI, you can either modify the PHP CLI ``php.ini`` file or set
+environment variables system-wide.
 
 Method 1: Edit PHP CLI php.ini File
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~

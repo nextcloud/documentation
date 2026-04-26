@@ -67,9 +67,12 @@ Included themes
 
 We offer several themes you can activate to aid accessibility:
 
-* **High contrast theme:** A high contrast mode to ease your navigation. Visual quality will be reduced but clarity will be increased.
-* **Dark theme:** A dark theme to ease your eyes by reducing the overall luminosity and brightness. It is still under development, so please report any issues you may find.
-* **Dyslexia font:** OpenDyslexic is a free typeface/font designed to mitigate some of the common reading errors caused by dyslexia.
+* **High contrast theme:** A high contrast mode to ease your navigation. Visual quality will be reduced but clarity will
+  be increased.
+* **Dark theme:** A dark theme to ease your eyes by reducing the overall luminosity and brightness. It is still under
+  development, so please report any issues you may find.
+* **Dyslexia font:** OpenDyslexic is a free typeface/font designed to mitigate some of the common reading errors caused
+  by dyslexia.
 
 To reach the accessibility settings:
 

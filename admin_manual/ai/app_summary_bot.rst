@@ -4,7 +4,8 @@ App: Summary Bot (Talk chat summarize bot)
 
 .. _ai-app-summary-bot:
 
-The *Summary Bot* app utilizes Large Language Model (LLM) providers in Nextcloud and can be added to a conversation in `Nextcloud Talk` to generate summaries from the chat messages of that room either on-demand or following a schedule.
+The *Summary Bot* app utilizes Large Language Model (LLM) providers in Nextcloud and can be added to a conversation in
+`Nextcloud Talk` to generate summaries from the chat messages of that room either on-demand or following a schedule.
 It can run on only open source or proprietary models either on-premises or in the cloud leveraging apps like `Local large language model app <https://apps.nextcloud.com/apps/llm2>`_ or `OpenAI and LocalAI integration app <https://apps.nextcloud.com/apps/integration_openai>`_.
 
 Nextcloud can provide customer support upon request, please talk to your account manager for the possibilities.
@@ -13,7 +14,8 @@ The app currently supports the following languages:
 
 * English (en)
 
-The quality of summaries depends directly on the quality of the underlying model. It is recommended to test the model for the desired use-case before applying it.
+The quality of summaries depends directly on the quality of the underlying model. It is recommended to test the model
+for the desired use-case before applying it.
 
 Requirements
 ------------
@@ -22,7 +24,8 @@ Requirements
 * Docker
 * AppAPI >= 3.0.0
 * Talk
-* Task Processing Provider like Local large language model app (llm2) or OpenAI and LocalAI integration app (integration_openai)
+* Task Processing Provider like Local large language model app (llm2) or OpenAI and LocalAI integration app
+  (integration_openai)
 
 Space usage
 ~~~~~~~~~~~
@@ -52,7 +55,8 @@ Setup (via App Store)
 
 1. Install the *Summary Bot* app via the "Apps" page in Nextcloud
 
-2. Enable the *Summary Bot* Bot for the selected Chatroom via the three dots menu of the Chatroom (The Bots settings are located inside the *Bots* section)
+2. Enable the *Summary Bot* Bot for the selected Chatroom via the three dots menu of the Chatroom (The Bots settings are
+   located inside the *Bots* section)
 
 Setup (Manual)
 ~~~~~~~~~~~~~~
@@ -76,7 +80,8 @@ After cloning this app *manually* (cloned via git to your apps directory) you wi
 
 - APP_VERSION environment variable should be equal to the version of the *Summary Bot* you are using
 
-- NEXTCLOUD_URL environment variable must be set to your Nextcloud instance's URL, ensuring it's reachable by the docker image.
+- NEXTCLOUD_URL environment variable must be set to your Nextcloud instance's URL, ensuring it's reachable by the docker
+  image.
 
 .. code-block:: bash
 
@@ -99,7 +104,8 @@ After cloning this app *manually* (cloned via git to your apps directory) you wi
    sudo -E -u www-data php occ app_api:app:register summary_bot manual_install --json-info '{ "id": "summary_bot", "name": "Summary Bot", "daemon_config_name": "manual_install", "version": "1.0.0", "secret": "12345", "host": "0.0.0.0", "port": 9031, "scopes": ["AI_PROVIDERS", "TALK", "TALK_BOT"], "protocol": "http"}' --force-scopes --wait-finish
 
 
-6. Enable the *Summary Bot* for the selected Chatroom via the three dots menu of the Chatroom (The Bots settings are located inside the *Bots* section)
+6. Enable the *Summary Bot* for the selected Chatroom via the three dots menu of the Chatroom (The Bots settings are
+   located inside the *Bots* section)
 
 Usage
 -----
@@ -123,17 +129,25 @@ Nextcloud customers should file bugs directly with our Customer Support.
 Ethical AI Rating
 -----------------
 
-The ethical rating of the *Summary Bot*, which utilizes a model for text processing through the Nextcloud Assistant app, is significantly influenced by the choice and implementation of the underlying model.
+The ethical rating of the *Summary Bot*, which utilizes a model for text processing through the Nextcloud Assistant app,
+is significantly influenced by the choice and implementation of the underlying model.
 
 Learn more about the Nextcloud Ethical AI Rating `in our blog <https://nextcloud.com/blog/nextcloud-ethical-ai-rating/>`_.
 
 Known Limitations
 -----------------
 
-* The Summary Bot cannot access previous conversations, it only recognizes messages from the moment it was enabled in the chatroom.
-* Summary of maximum 40000 characters is supported. This assumes the underlying model can handle this amount of text (which should be close to 16000 context length).
+* The Summary Bot cannot access previous conversations, it only recognizes messages from the moment it was enabled in
+  the chatroom.
+* Summary of maximum 40000 characters is supported. This assumes the underlying model can handle this amount of text
+  (which should be close to 16000 context length).
 * Languages other than English are not supported. The underlying model may still be able to understand other languages.
-* AI models may occasionally produce inaccurate information. Therefore, they should be employed with caution in non-critical scenarios. It's essential to verify the accuracy of the bot's output before application.
-* Be aware that AI models can consume a significant amount of energy. It's advisable to consider this factor in the planning and operation of AI systems if hosted on-premises or sustainability is a concern.
-* AI models can exhibit extended processing times when run on CPUs. For enhanced efficiency, utilizing GPU support is recommended to expedite request handling.
-* Customer support is available upon request, however we can't solve false or problematic output (hallucinations), most performance issues, or other problems caused by the underlying models. Support is thus limited only to bugs directly caused by the implementation of the app (connectors, API, front-end, AppAPI)
+* AI models may occasionally produce inaccurate information. Therefore, they should be employed with caution in
+  non-critical scenarios. It's essential to verify the accuracy of the bot's output before application.
+* Be aware that AI models can consume a significant amount of energy. It's advisable to consider this factor in the
+  planning and operation of AI systems if hosted on-premises or sustainability is a concern.
+* AI models can exhibit extended processing times when run on CPUs. For enhanced efficiency, utilizing GPU support is
+  recommended to expedite request handling.
+* Customer support is available upon request, however we can't solve false or problematic output (hallucinations), most
+  performance issues, or other problems caused by the underlying models. Support is thus limited only to bugs directly
+  caused by the implementation of the app (connectors, API, front-end, AppAPI)

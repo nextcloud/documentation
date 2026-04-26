@@ -20,7 +20,8 @@ are shipped with Nextcloud and can be enabled in the Apps menu:
 * **Trash bin** commands require the **Deleted files** app (``files_trashbin``) — enabled by default
 * **File versions** commands require the **Versions** app (``files_versions``) — enabled by default
 * **Federation sync** requires the **Federation** app (``federation``) — enabled by default
-* **External storage** commands require the **External storage support** app (``files_external``) — not enabled by default
+* **External storage** commands require the **External storage support** app (``files_external``) — not enabled by
+  default
 
 File operations
 ---------------

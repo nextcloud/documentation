@@ -17,7 +17,8 @@ Requirements
 ------------
 
 * Decide whether you wish to use MySQL / MariaDB, PostgreSQL, or Oracle as your database
-* Pick a recommended version of your database by checking the Nextcloud :doc:`System Requirements <../installation/system_requirements>`
+* Pick a recommended version of your database by checking the Nextcloud :doc:`System Requirements
+  <../installation/system_requirements>`
 * Install and set up the chosen database server software (and preferred version) before deploying Nextcloud Server
 
 .. note:: The steps for configuring a third party database are beyond the
@@ -38,7 +39,10 @@ for detailed information.
 
 Parameters
 ----------
-For setting up Nextcloud to use any database, use the instructions in :doc:`../installation/installation_wizard`. You should not have to edit the respective values in the :file:`config/config.php`.  However, in special cases (for example, if you want to connect your Nextcloud instance to a database created by a previous installation of Nextcloud), some modification might be required.
+For setting up Nextcloud to use any database, use the instructions in :doc:`../installation/installation_wizard`. You
+should not have to edit the respective values in the :file:`config/config.php`.  However, in special cases (for example,
+if you want to connect your Nextcloud instance to a database created by a previous installation of Nextcloud), some
+modification might be required.
 
 .. _db-config-mysql-label:
 
@@ -47,7 +51,8 @@ Configuring a MySQL or MariaDB database
 
 If you decide to use a MySQL or MariaDB database, ensure the following:
 
-* The transaction isolation level is set to "READ-COMMITTED" in your MariaDB server configuration :file:`/etc/mysql/my.cnf` to persist even after a restart of your database server.
+* The transaction isolation level is set to "READ-COMMITTED" in your MariaDB server configuration
+  :file:`/etc/mysql/my.cnf` to persist even after a restart of your database server.
 
   Verify the **transaction_isolation** and **binlog_format**:
 
@@ -137,7 +142,8 @@ When using MariaDB use::
 
   mariadb -uroot -p
 
-Then a **mysql>** or **MariaDB [root]>** prompt will appear. Now enter the following lines and confirm them with the enter key:
+Then a **mysql>** or **MariaDB [root]>** prompt will appear. Now enter the following lines and confirm them with the
+enter key:
 
 ::
 
@@ -175,7 +181,8 @@ SSL for MySQL Database
 
 Enabling SSL is only necessary if your database does not reside on the same server as your Nextcloud instance.
 If you do not connect over localhost and need to allow remote connections then you should enable SSL.
-This just covers the SSL database configuration on the Nextcloud server. First you need to configure your database server accordingly.
+This just covers the SSL database configuration on the Nextcloud server. First you need to configure your database
+server accordingly.
 
 ::
 
@@ -216,7 +223,8 @@ like this:
   pgsql.ignore_notice = 0
   pgsql.log_notice = 0
 
-The default configuration for PostgreSQL (at least in Ubuntu 14.04) is to use the peer authentication method. Check :file:`/etc/postgresql/9.3/main/pg_hba.conf` to find out which authentication method is used in your setup.
+The default configuration for PostgreSQL (at least in Ubuntu 14.04) is to use the peer authentication method. Check
+:file:`/etc/postgresql/9.3/main/pg_hba.conf` to find out which authentication method is used in your setup.
 To start the postgres command line mode use::
 
   sudo -u postgres psql -d template1

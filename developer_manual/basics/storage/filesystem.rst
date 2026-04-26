@@ -7,7 +7,8 @@ Nextcloud filesystem API
 
 High level guide to using the Nextcloud filesystem API.
 
-Because users can choose their storage backend, the filesystem should be accessed by using the appropriate filesystem classes. For a simplified filesystem for app specific data see :doc:`IAppData <appdata>`
+Because users can choose their storage backend, the filesystem should be accessed by using the appropriate filesystem
+classes. For a simplified filesystem for app specific data see :doc:`IAppData <appdata>`
 
 Node API
 ^^^^^^^^
@@ -53,13 +54,16 @@ From the root folder you can either access a user's home folder or access a file
         }
     }
 
-For more details on the specific methods provided by file and folder nodes see the method documentation from the ``OCP\Files\File`` and ``OCP\Files\Folder`` interfaces.
+For more details on the specific methods provided by file and folder nodes see the method documentation from the
+``OCP\Files\File`` and ``OCP\Files\Folder`` interfaces.
 
 
 Writing to a file
 -----------------
 
-All methods return a Folder object on which files and folders can be accessed, or filesystem operations can be performed relatively to their root. For instance for writing to :file:`nextcloud/data/myfile.txt` you should get the root folder and use:
+All methods return a Folder object on which files and folders can be accessed, or filesystem operations can be performed
+relatively to their root. For instance for writing to :file:`nextcloud/data/myfile.txt` you should get the root folder
+and use:
 
 .. code-block:: php
 
@@ -142,10 +146,12 @@ You can get access to the underlying storage of a file or folder by calling ``ge
 the mountpoint by calling ``getMountPoint`` and getting the storage from there.
 
 Once you have the storage instance you can use the storage api from ``OCP\Files\Storage\IStorage``, note however that
-all paths used in the storage api are internal to the storage, the ``IMountPoint`` returned from ``getMountPoint`` provides
+all paths used in the storage api are internal to the storage, the ``IMountPoint`` returned from ``getMountPoint``
+provides
 methods for translating between absolute filesystem paths and internal storage paths.
 
-If you need to query the cached metadata directory you can get the ``OCP\Files\Cache\ICache`` from the storage by calling ``getCache``.
+If you need to query the cached metadata directory you can get the ``OCP\Files\Cache\ICache`` from the storage by
+calling ``getCache``.
 
 Implementing a storage
 ----------------------
@@ -158,8 +164,10 @@ implementation of the method optimized for the abilities of the storage backend.
 Adding mounts to the filesystem
 -------------------------------
 
-The recommended way of adding your own mounts to the filesystem from an app is implementing ``OCP\Files\Config\IMountProvider``
+The recommended way of adding your own mounts to the filesystem from an app is implementing
+``OCP\Files\Config\IMountProvider``
 and registering the provider using ``OCP\Files\Config\IMountProviderCollection::registerProvider``.
 
-Once registered, your provider will be called every time the filesystem is being setup for a user and your mount provider
+Once registered, your provider will be called every time the filesystem is being setup for a user and your mount
+provider
 can return a list of mounts to add for that user.
