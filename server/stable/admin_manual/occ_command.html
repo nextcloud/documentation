@@ -638,7 +638,7 @@ the <strong>Cron</strong> section on your Nextcloud Admin page:</p>
 </div>
 <p>By default, passwords and other sensitive data are omitted from the report, so
 the output can be posted publicly (e.g. as part of a bug report). In order to
-generate a full backport of all configuration values the <code class="docutils literal notranslate"><span class="pre">--private</span></code> flag
+generate a full export of all configuration values the <code class="docutils literal notranslate"><span class="pre">--private</span></code> flag
 needs to be set:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="nb">list</span> <span class="o">--</span><span class="n">private</span>
 </pre></div>
@@ -786,8 +786,7 @@ before. If you want to be notified in that case, set the
 <code class="docutils literal notranslate"><span class="pre">--error-if-not-exists</span></code> flag:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">config</span><span class="p">:</span><span class="n">system</span><span class="p">:</span><span class="n">delete</span> <span class="n">doesnotexist</span>
 <span class="o">--</span><span class="n">error</span><span class="o">-</span><span class="k">if</span><span class="o">-</span><span class="ow">not</span><span class="o">-</span><span class="n">exists</span>
-<span class="n">Config</span> <span class="n">provisioning_api</span> <span class="n">of</span> <span class="n">app</span> <span class="n">appname</span> <span class="n">could</span> <span class="ow">not</span> <span class="n">be</span> <span class="n">deleted</span> <span class="n">because</span> <span class="n">it</span> <span class="n">did</span> <span class="ow">not</span>
-<span class="n">exist</span>
+<span class="n">System</span> <span class="n">config</span> <span class="n">value</span> <span class="n">doesnotexist</span> <span class="n">could</span> <span class="ow">not</span> <span class="n">be</span> <span class="n">deleted</span> <span class="n">because</span> <span class="n">it</span> <span class="n">did</span> <span class="ow">not</span> <span class="n">exist</span>
 </pre></div>
 </div>
 </section>
@@ -1862,9 +1861,9 @@ variable. This prevents the password from being exposed to all users via the
 process list, and will only be visible in the history of the user (root)
 running the command. This also permits creating scripts for adding multiple new
 users.</p>
-<p>To use <code class="docutils literal notranslate"><span class="pre">password-from-env</span></code> you must run as “real” root, rather than <code class="docutils literal notranslate"><span class="pre">sudo</span></code>,
-because <code class="docutils literal notranslate"><span class="pre">sudo</span></code> strips environment variables. This example adds new user Fred
-Jones:</p>
+<p>To use <code class="docutils literal notranslate"><span class="pre">password-from-env</span></code>, note that <code class="docutils literal notranslate"><span class="pre">sudo</span></code> strips environment variables
+by default; the <code class="docutils literal notranslate"><span class="pre">-E</span></code> flag preserves them, as shown in this example which adds
+new user Fred Jones:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">export</span> <span class="n">OC_PASS</span><span class="o">=</span><span class="n">newpassword</span>
 <span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">user</span><span class="p">:</span><span class="n">add</span> <span class="o">--</span><span class="n">password</span><span class="o">-</span><span class="n">from</span><span class="o">-</span><span class="n">env</span> <span class="o">--</span><span class="n">display</span><span class="o">-</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Fred Jones&quot;</span> <span class="o">--</span><span class="n">group</span><span class="o">=</span><span class="s2">&quot;users&quot;</span> <span class="n">fred</span>
 <span class="n">The</span> <span class="n">user</span> <span class="s2">&quot;fred&quot;</span> <span class="n">was</span> <span class="n">created</span> <span class="n">successfully</span>
