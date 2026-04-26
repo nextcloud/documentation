@@ -143,7 +143,7 @@ For example you could add or remove a certain job based on some controller:
 
     class SomeController extends Controller {
 
-        private IJobList $jobList
+        private IJobList $jobList;
 
         public function __construct(string $appName, IRequest $request, IJobList $jobList) {
             parent::__construct($appName, $request);
