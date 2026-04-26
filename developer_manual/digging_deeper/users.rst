@@ -218,10 +218,10 @@ Nextcloud users can be defined as managers of other users. This is an informatio
             $managers = array_map(function(string $uid) {
                 return $this->userManager->get($uid);
             }, $managerUids));
-            // Remove and managers that no longer exist as user
+            // Remove any managers that no longer exist as users
             $existingManagers = array_filter($managers);
             $user->setManagerUids(array_map(function(IUser $admin) {
-                return $user->getUID();
+                return $admin->getUID();
             }, $existingManagers));
         }
     }
