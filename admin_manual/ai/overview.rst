@@ -154,7 +154,7 @@ Backend apps
 
 * :ref:`translate2 (ExApp)<ai-app-translate2>` - Runs open source AI translation models locally on your own server hardware (Customer support available upon request)
 * `OpenAI and LocalAI integration (via OpenAI API) <https://apps.nextcloud.com/apps/integration_openai>`_ - Integrates with the OpenAI API to provide AI functionality from OpenAI servers  (Customer support available upon request; see :ref:`AI as a Service<ai-ai_as_a_service>`)
-* `DeepL integration <http://apps.nextcloud.com/apps/integration_deepl>`__ - Integrates with the deepl API to provide translation functionality from Deepl.com servers (Only community supported)
+* `DeepL integration <https://apps.nextcloud.com/apps/integration_deepl>`__ - Integrates with the deepl API to provide translation functionality from Deepl.com servers (Only community supported)
 
 Speech-To-Text
 ^^^^^^^^^^^^^^
@@ -342,13 +342,13 @@ Screen or tmux session
 Run the following occ command inside a screen or a tmux session, preferably 4 or more times for parallel processing of multiple requests by different or the same user (and as a requirement for some apps like context_chat).
 It would be best to run one command per screen session or per tmux window/pane to keep the logs visible and the worker easily restartable.
 
-.. code-block::
+.. code-block:: bash
 
    set -e; while true; do sudo -E -u www-data php occ taskprocessing:worker -v -t 60; done
 
 For Nextcloud-AIO you should use this command on the host server.
 
-.. code-block::
+.. code-block:: bash
 
    set -e; while true; do docker exec -it nextcloud-aio-nextcloud sudo -E -u www-data php occ taskprocessing:worker -v -t 60; done
 
@@ -360,7 +360,7 @@ Systemd service
 
 1. Create a systemd service file in ``/etc/systemd/system/nextcloud-ai-worker@.service`` with the following content:
 
-.. code-block::
+.. code-block:: ini
 
    [Unit]
    Description=Nextcloud AI worker %i
@@ -377,7 +377,7 @@ Systemd service
 
 2. Create a shell script in ``/opt/nextcloud-ai-worker/taskprocessing.sh`` with the following content and make sure to make it executable:
 
-.. code-block::
+.. code-block:: bash
 
    #!/bin/sh
    echo "Starting Nextcloud AI Worker $1"
@@ -388,25 +388,25 @@ You may want to adjust the timeout to your needs (in seconds).
 
 3. Enable and start the service 4 or more times:
 
-.. code-block::
+.. code-block:: bash
 
    for i in {1..4}; do systemctl enable --now nextcloud-ai-worker@$i.service; done
 
 The status of the workers can be checked with (replace 1 with the worker number):
 
-.. code-block::
+.. code-block:: bash
 
    systemctl status nextcloud-ai-worker@1.service
 
 The list of workers can be checked with:
 
-.. code-block::
+.. code-block:: bash
 
    systemctl list-units --type=service | grep nextcloud-ai-worker
 
 The complete logs of the workers can be checked with (replace 1 with the worker number):
 
-.. code-block::
+.. code-block:: bash
 
    journalctl -xeu nextcloud-ai-worker@1.service -f
 

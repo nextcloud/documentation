@@ -24,7 +24,7 @@ Before you start, make sure the following requirements are met:
 
   Install Psalm in your app as explained in `<https://psalm.dev/docs/running_psalm/installation>`_.
 
-  You need to Psalm >=``5.9.0``. Older versions contain a bug that prevents the changes in this tutorial from working.
+  You need Psalm >= ``5.9.0``. Older versions contain a bug that prevents the changes in this tutorial from working.
 
   Install and enable the required extensions as explained in :ref:`Required PHP extensions <psalm-php-extensions>`.
 

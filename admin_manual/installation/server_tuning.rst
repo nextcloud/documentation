@@ -52,7 +52,7 @@ environments except during isolated troubleshooting.
 Caching
 -------
 
-Caching improves performance by storing data, code, and other objects in memory. Memory caching is not enabled by default because it requires optional extensions (such as APCu) and/or system components (e.g., Redis). Although these add-ons are generally not challenging to install and activate—at least in single-server deployments—you must install them before enabling their use in Nextcloud. See :doc:../configuration_server/caching_configuration for guidance.
+Caching improves performance by storing data, code, and other objects in memory. Memory caching is not enabled by default because it requires optional extensions (such as APCu) and/or system components (e.g., Redis). Although these add-ons are generally not challenging to install and activate—at least in single-server deployments—you must install them before enabling their use in Nextcloud. See :doc:`../configuration_server/caching_configuration` for guidance.
 
 Compression
 -----------
@@ -230,7 +230,7 @@ external microservice: `Imaginary <https://github.com/h2non/imaginary>`_.
 We strongly recommend running our custom Docker image, which is more up to date than the official image.
 You can find the image at `<https://ghcr.io/nextcloud-releases/aio-imaginary>`_. When running it, map a port by adding `-p <port>:9000` to the `docker run` command (or Compose equivalent), e.g. 
 
-.. code::
+.. code-block:: bash
 
   docker run -d -p 9000:9000 --name nextcloud_imaginary --restart always ghcr.io/nextcloud-releases/aio-imaginary:latest
 

@@ -54,4 +54,4 @@ Credits
 Special thanks to this Reddit user for their post:
 https://www.reddit.com/r/Nextcloud/comments/5rcypb/using_the_windows_10_calendar_application_with/
 
-.. _must support TLSv1.2: https://docs.microsoft.com/en-us/windows/win32/secauthn/protocols-in-tls-ssl--schannel-ssp-
+.. _must support TLSv1.2: <https://docs.microsoft.com/en-us/windows/win32/secauthn/protocols-in-tls-ssl--schannel-ssp->

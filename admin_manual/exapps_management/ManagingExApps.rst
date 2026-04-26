@@ -99,7 +99,7 @@ Command: ``app_api:app:list``
 
 ListExApps command will show all ExApps:
 
-.. code-block::
+.. code-block:: text
 
     ExApps:
     appid (Display Name): version [enabled/disabled]

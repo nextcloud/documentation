@@ -476,10 +476,10 @@ to access removable media by connecting that interface:
 
 Further documentation, an extensive `Wiki <https://github.com/nextcloud-snap/nextcloud-snap/wiki>`_ and `FAQ's <https://github.com/nextcloud-snap/nextcloud-snap/wiki/FAQ's>`_  can be found on the `developers GitHub <https://github.com/nextcloud-snap/nextcloud-snap>`_.
 
-.. note:: The `snapd technology <http://snapcraft.io/docs/core/>`_ is the core
+.. note:: The `snapd technology <https://snapcraft.io/docs/core/>`_ is the core
    that powers snaps, and it offers a new way to package, distribute, update and
    run OS components and applications on a Linux system. See more about snaps on
-   `snapcraft.io <http://snapcraft.io/>`_.
+   `snapcraft.io <https://snapcraft.io/>`_.
 
 Installation via web installer on a VPS or web space
 ----------------------------------------------------

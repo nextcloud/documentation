@@ -44,7 +44,7 @@ Obtaining the login credentials
 
 On the final login the server will do a redirect to a url of the following format:
 
-.. code::
+.. code-block:: text
 
 	nc://login/server:<server>&user:<loginname>&password:<password>
 

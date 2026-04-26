@@ -95,7 +95,7 @@ To register an ExApp with it, you need to provide the app info as a JSON string 
 
 For all examples and applications we release, we usually add the ``manual_install`` command in it's Makefile for easier development.
 
-.. code-block::
+.. code-block:: bash
 
 	sudo -E -u www-data php occ app_api:app:register nc_py_api manual_install --json-info \
             "{\"id\":\"nc_py_api\",\"name\":\"nc_py_api\",\"daemon_config_name\":\"manual_install\",\"version\":\"1.0.0\",\"secret\":\"12345\",\"port\":$APP_PORT}" \

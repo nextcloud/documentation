@@ -318,7 +318,7 @@ You might need to restart apache and redis for the changes to take effect::
  systemctl restart redis-server
 
 Redis is very configurable; consult `the Redis documentation 
-<http://redis.io/documentation>`_ to learn more.
+<https://redis.io/documentation>`_ to learn more.
 
 Using the Redis session handler
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^

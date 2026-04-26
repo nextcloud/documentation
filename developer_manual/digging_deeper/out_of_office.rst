@@ -116,7 +116,7 @@ start and end dates are represented as UNIX timestamps.
 
 It can be serialized to a JSON object with the following structure:
 
-.. code-block::
+.. code-block:: text
 
     {
         id: string,

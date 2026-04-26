@@ -186,4 +186,4 @@ Here are some useful links about how to write unit tests with Jasmine and Sinon:
 
 - Karma test runner: https://karma-runner.github.io/
 - Jasmine: https://pivotal.github.io/jasmine
-- Sinon (for mocking and stubbing): http://sinonjs.org/
+- Sinon (for mocking and stubbing): https://sinonjs.org/

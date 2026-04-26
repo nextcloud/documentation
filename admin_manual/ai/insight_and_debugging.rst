@@ -16,13 +16,13 @@ has the power to change them.
 Get a task by id
 ----------------
 
-.. code-block::
+.. code-block:: console
 
    $ occ taskprocessing:task:get <task-id>
 
 For example
 
-.. code-block::
+.. code-block:: console
 
    $ occ taskprocessing:task:get --output=json_pretty 42
    {
@@ -69,7 +69,7 @@ Each task has the following fields:
 List and filter tasks
 ---------------------
 
-.. code-block::
+.. code-block:: console
 
    $ occ taskprocessing:task:list [options]
 
@@ -84,7 +84,7 @@ List and filter tasks
 
 For example
 
-.. code-block::
+.. code-block:: console
 
    $ occ taskprocessing:task:list --output=json_pretty --status=3 --scheduledAfter=1759740266 --endedBefore=1759743900
    [

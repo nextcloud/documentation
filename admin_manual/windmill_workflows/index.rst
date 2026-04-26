@@ -2,7 +2,7 @@
 Windmill Workflows
 ==================
 
-Nextcloud integrates the `Windmill workflow engine <https://www.windmill.dev/>` to allow advanced custom workflows interacting with your Nextcloud instance.
+Nextcloud integrates the `Windmill workflow engine <https://www.windmill.dev/>`_ to allow advanced custom workflows interacting with your Nextcloud instance.
 
 Installation
 ------------

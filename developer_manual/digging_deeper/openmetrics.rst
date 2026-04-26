@@ -80,7 +80,7 @@ Then you need to implement it:
 
 This exporter will add something like this on the ``/metrics`` endpoint:
 
-.. code-block::
+.. code-block:: text
 
    # TYPE nextcloud_myapp_metric gauge
    # UNIT nextcloud_myapp_metric units

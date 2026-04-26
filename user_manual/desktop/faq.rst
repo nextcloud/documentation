@@ -49,7 +49,7 @@ If the file is uses the ``.eml`` extension, Windows automatically and
 continually changes all files, unless you remove
 ``\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\PropertySystem\PropertyHandlers``
 from the windows registry.
-See http://petersteier.wordpress.com/2011/10/22/windows-indexer-changes-modification-dates-of-eml-files/ for more information.
+See https://petersteier.wordpress.com/2011/10/22/windows-indexer-changes-modification-dates-of-eml-files/ for more information.
 
 Syncing Stops When Attempting To Sync Deeper Than 100 Sub-directories.
 ----------------------------------------------------------------------

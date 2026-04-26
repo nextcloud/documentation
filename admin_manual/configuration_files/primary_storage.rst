@@ -358,7 +358,7 @@ a multi-instance configuration.
 S3 SSE-C encryption support
 ---------------------------
 
-Nextcloud supports server side encryption, also known as `SSE-C <http://docs.aws.amazon.com/AmazonS3/latest/dev/ServerSideEncryptionCustomerKeys.html>`_, with compatible S3 bucket provider. The encryption and decryption happens on the S3 bucket side with a key provided by the Nextcloud server.
+Nextcloud supports server side encryption, also known as `SSE-C <https://docs.aws.amazon.com/AmazonS3/latest/dev/ServerSideEncryptionCustomerKeys.html>`_, with compatible S3 bucket provider. The encryption and decryption happens on the S3 bucket side with a key provided by the Nextcloud server.
 
 The key can be specified with the :code:`sse_c_key` parameter which needs to be provided as a base64 encoded string with a maximum length of 32 bytes. A random key could be generated using the the following command:
 

@@ -41,7 +41,7 @@ configuration in your ``config.php`` file like this example::
         ),
 
 .. note:: For enhanced security it is recommended to configure Redis to require
-   a password. See http://redis.io/topics/security for more information.
+   a password. See https://redis.io/topics/security for more information.
 
 If you want to configure Redis to listen on an Unix socket (which is
 recommended if Redis is running on the same system as Nextcloud) use this example
@@ -57,7 +57,7 @@ recommended if Redis is running on the same system as Nextcloud) use this exampl
 See ``config.sample.php`` to see configuration examples for Redis, and for all
 supported memcaches.
 
-Learn more about Redis at `Redis <http://redis.io/>`_. Memcached, the popular
+Learn more about Redis at `Redis <https://redis.io/>`_. Memcached, the popular
 distributed memory caching system, is not suitable for the new file locking
 because it is not designed to store locks, and data can disappear from the cache
 at any time. Redis is a key-value store, and it guarantees that cached objects

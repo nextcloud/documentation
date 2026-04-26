@@ -87,7 +87,7 @@ This registers DaemonConfigs in Nextcloud for the default socket connection (``/
 Make sure that socket has enough permissions for Nextcloud and webserver user to access it
 and actually forwarded to the container:
 
-.. code-block::
+.. code-block:: yaml
 
 	...
 	volumes:

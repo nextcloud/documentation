@@ -32,7 +32,7 @@ ExApp metadata
 The ``<external-app>`` info.xml tag is required for the ExApp metadata.
 It should contain the following fields:
 
-.. code-block::
+.. code-block:: xml
 
 	<external-app>
 		<docker-install>
@@ -78,7 +78,7 @@ as they are being loaded via AppAPI proxy from the ExApp server.
 
 To simplify the usage, we declare a few constants:
 
-.. code-block::
+.. code-block:: javascript
 
     export const EX_APP_ID = 'ui_example'
     export const EX_APP_MENU_ENTRY_NAME = 'first_menu'
@@ -87,7 +87,7 @@ To simplify the usage, we declare a few constants:
 
 The bootstrap of the Vue app (`UI Example bootstrap <https://github.com/nextcloud/ui_example/blob/main/src/bootstrap.js>`_) is changed as follows:
 
-.. code-block::
+.. code-block:: javascript
 
     import Vue from 'vue'
     import { translate, translatePlural } from '@nextcloud/l10n'
@@ -110,7 +110,7 @@ Frontend routing
 The frontend routing base URL is also adjusted to be loaded via AppAPI proxy.
 For example, the **vuex** router has the following base URL configuration:
 
-.. code-block::
+.. code-block:: javascript
 
 	...
 	const router = new VueRouter({
@@ -121,7 +121,7 @@ For example, the **vuex** router has the following base URL configuration:
 
 The same applies to the frontend API requests to the ExApp backend API:
 
-.. code-block::
+.. code-block:: javascript
 
 	...
 	axios.get(generateUrl(`${APP_API_PROXY_URL_PREFIX}/${EX_APP_ID}/some_api_endpoint`))
@@ -140,7 +140,7 @@ and down below adjust the ``--language`` and ``keyword`` parameters.
 Currently only Python is supported as an additional language in translationtool for ExApps.
 Here is an example using translationtool adjusted for Python:
 
-.. code-block::
+.. code-block:: diff
 
     diff --git a/translations/translationtool/src/translationtool.php b/translations/translationtool/src/translationtool.php
     index 42513563..8aa06618 100644

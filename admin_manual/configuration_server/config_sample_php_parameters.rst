@@ -2790,7 +2790,7 @@ redis
 Connection details for Redis to use for memory caching in a single server configuration.
 
 For enhanced security, it is recommended to configure Redis
-to require a password. See http://redis.io/topics/security
+to require a password. See https://redis.io/topics/security
 for more information.
 
 We also support Redis SSL/TLS encryption as of version 6.
@@ -3397,7 +3397,7 @@ See:
  * https://dev.mysql.com/doc/refman/5.7/en/innodb-parameters.html#sysvar_innodb_large_prefix
  * https://mariadb.com/kb/en/mariadb/xtradbinnodb-server-system-variables/#innodb_large_prefix
  * http://www.tocker.ca/2013/10/31/benchmarking-innodb-page-compression-performance.html
- * http://mechanics.flite.com/blog/2014/07/29/using-innodb-large-prefix-to-avoid-error-1071/
+ * https://mechanics.flite.com/blog/2014/07/29/using-innodb-large-prefix-to-avoid-error-1071/
 
 mysql.collation
 ^^^^^^^^^^^^^^^

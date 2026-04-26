@@ -200,7 +200,7 @@ we can simply dispatch it when we render our main page template.
 
 In our Vue app, we can then render the pre-built projects picker available in the npm package ``nextcloud-vue-collections``.
 
-.. code-block::
+.. code-block:: html
 
     <template>
         <div>

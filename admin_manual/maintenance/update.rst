@@ -133,7 +133,7 @@ This is how the command line based update would continue:
 .. image:: images/updater-8-keep-maintenance.png
 
 
-.. code::
+.. code-block:: console
 
     $ sudo -E -u www-data php ./occ upgrade
     Nextcloud or one of the apps require upgrade - only a limited number of commands are available

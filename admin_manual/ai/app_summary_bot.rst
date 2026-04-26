@@ -60,13 +60,13 @@ Setup (Manual)
 After cloning this app *manually* (cloned via git to your apps directory) you will need to execute the following steps:
 
 1. Change to the folder you have cloned the source to:
-.. code-block::
+.. code-block:: bash
 
    cd  /path/to/your/nextcloud/webroot/apps/summary_bot/
 
 
 2. Build the docker image:
-.. code-block::
+.. code-block:: bash
 
    docker build --no-cache -f Dockerfile -t local_summary_bot .
 
@@ -78,14 +78,14 @@ After cloning this app *manually* (cloned via git to your apps directory) you wi
 
 - NEXTCLOUD_URL environment variable must be set to your Nextcloud instance's URL, ensuring it's reachable by the docker image.
 
-.. code-block::
+.. code-block:: bash
 
    sudo docker run -ti -v /etc/localtime:/etc/localtime:ro -v /etc/timezone:/etc/timezone:ro -e APP_ID=summary_bot -e APP_DISPLAY_NAME="Summary Bot" -e APP_HOST=0.0.0.0 -e APP_PORT=9031 -e APP_SECRET=12345 -e APP_VERSION=1.0.0 -e NEXTCLOUD_URL='<YOUR_NEXTCLOUD_URL_REACHABLE_FROM_INSIDE_DOCKER>' -p 9031:9031 local_summary_bot
 
 
 4. Un-register the Summary Bot if its already installed
 
-.. code-block::
+.. code-block:: bash
 
    sudo -E -u www-data php occ app_api:app:unregister summary_bot
    
@@ -94,7 +94,7 @@ After cloning this app *manually* (cloned via git to your apps directory) you wi
 
 *Info:* Adjust the host value in the following example to the IP address of the docker container (for added security)
 
-.. code-block::
+.. code-block:: bash
 
    sudo -E -u www-data php occ app_api:app:register summary_bot manual_install --json-info '{ "id": "summary_bot", "name": "Summary Bot", "daemon_config_name": "manual_install", "version": "1.0.0", "secret": "12345", "host": "0.0.0.0", "port": 9031, "scopes": ["AI_PROVIDERS", "TALK", "TALK_BOT"], "protocol": "http"}' --force-scopes --wait-finish
 
@@ -125,7 +125,7 @@ Ethical AI Rating
 
 The ethical rating of the *Summary Bot*, which utilizes a model for text processing through the Nextcloud Assistant app, is significantly influenced by the choice and implementation of the underlying model.
 
-Learn more about the Nextcloud Ethical AI Rating `in our blog<https://nextcloud.com/blog/nextcloud-ethical-ai-rating/>`.
+Learn more about the Nextcloud Ethical AI Rating `in our blog <https://nextcloud.com/blog/nextcloud-ethical-ai-rating/>`_.
 
 Known Limitations
 -----------------

@@ -12,7 +12,7 @@ The following values are available for ``computeDevice``: ``cpu``, ``cuda``, or 
 
 The suffix will be added as follows:
 
-.. code::
+.. code-block:: php
 
 	return $imageParams['image_src'] . '/' .
 		$imageParams['image_name'] . '-' . $daemonConfig['computeDevice']['id'] . ':' . $imageParams['image_tag'];

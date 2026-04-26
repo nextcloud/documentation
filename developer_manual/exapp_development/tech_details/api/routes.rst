@@ -16,7 +16,7 @@ The routes must be declared in the ``external-app`` - ``routes`` tag of the ``in
 Example
 *******
 
-.. code-block::
+.. code-block:: xml
 
 	...
 	<external-app>

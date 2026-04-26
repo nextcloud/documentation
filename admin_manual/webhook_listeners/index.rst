@@ -131,13 +131,13 @@ or more times, to enable parallel processing of multiple requests by different u
 or the same user. It is best to run one command per screen session or tmux window/pane
 to keep logs visible and make each worker easy to restart.
 
-.. code-block::
+.. code-block:: bash
 
    set -e; while true; do sudo -E -u www-data php occ background-job:worker -v -t 60 "OCA\WebhookListeners\BackgroundJobs\WebhookCall"; done
 
 For Nextcloud-AIO you should use this command on the host server.
 
-.. code-block::
+.. code-block:: bash
 
    set -e; while true; do sudo docker exec -it nextcloud-aio-nextcloud docker exec -it nextcloud-aio-nextcloud sudo -E -u www-data php occ background-job:worker -v -t 60 "OCA\WebhookListeners\BackgroundJobs\WebhookCall"; done
 
@@ -149,7 +149,7 @@ Systemd service
 
 1. Create a systemd service file in ``/etc/systemd/system/nextcloud-webhook-worker@.service`` with the following content:
 
-.. code-block::
+.. code-block:: ini
 
    [Unit]
    Description=Nextcloud Webhook worker %i
@@ -166,7 +166,7 @@ Systemd service
 
 2. Create a shell script in ``/opt/nextcloud-webhook-worker/taskprocessing.sh`` with the following content and make sure to make it executable:
 
-.. code-block::
+.. code-block:: bash
 
    #!/bin/sh
    echo "Starting Nextcloud Webhook Worker $1"
@@ -177,25 +177,25 @@ You may want to adjust the timeout to your needs (in seconds).
 
 3. Enable and start the service 4 or more times:
 
-.. code-block::
+.. code-block:: bash
 
    for i in {1..4}; do systemctl enable --now nextcloud-webhook-worker@$i.service; done
 
 The status of the workers can be checked with (replace 1 with the worker number):
 
-.. code-block::
+.. code-block:: bash
 
    systemctl status nextcloud-webhook-worker@1.service
 
 The list of workers can be checked with:
 
-.. code-block::
+.. code-block:: bash
 
    systemctl list-units --type=service | grep nextcloud-webhook-worker
 
 The complete logs of the workers can be checked with (replace 1 with the worker number):
 
-.. code-block::
+.. code-block:: bash
 
    sudo journalctl -xeu nextcloud-webhook-worker@1.service -f
 

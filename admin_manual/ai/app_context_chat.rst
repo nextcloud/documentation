@@ -51,13 +51,13 @@ Installation
 2. Setup a :ref:`Deploy Daemon <ai-app_api>` in AppAPI Admin settings
 3. Install the ``context_chat_backend`` ExApp via the "Apps" page in Nextcloud, or by executing (checkout the readme at https://github.com/nextcloud/context_chat_backend for manual install steps)
 
-.. code-block::
+.. code-block:: bash
 
    occ app_api:app:register context_chat_backend
 
 4. Install the ``context_chat`` app via the "Apps" page in Nextcloud, or by executing
 
-.. code-block::
+.. code-block:: bash
 
    occ app:enable context_chat
 
@@ -82,7 +82,7 @@ The indexing jobs are set up to run during the Nextcloud instance's maintenance 
 | You can set up a separate cron job to run every 30 minutes for Context Chat to avoid slowing down normal background job operation on larger instances.
 | The following command can bypass the maintenance window so it can either be set to run during the day even with a maintenance window set, or it can be set to run during the weekends 24/7 to speed up the indexing process.
 
-.. code-block::
+.. code-block:: bash
 
    php cron.php "OCA\\ContextChat\\BackgroundJobs\\IndexerJob" "OCA\\ContextChat\\BackgroundJobs\\ActionJob" "OCA\\ContextChat\\BackgroundJobs\\SubmitContentJob" "OCA\\ContextChat\\BackgroundJobs\\StorageCrawlJob" "OCA\\ContextChat\\BackgroundJobs\\InitialContentImportJob"
 
@@ -93,7 +93,7 @@ Synchronous indexing
 | To index all the files synchronously, use the following command:
 | Note: This does not interact with the auto-indexing feature and that list would remain unchanged. However, the indexed files would be skipped when the auto indexer runs.
 
-.. code-block::
+.. code-block:: bash
 
    occ context_chat:scan <user_id>
 
@@ -169,7 +169,7 @@ Configuration Options
 * ``auto_indexing`` string (default: 'true')
    To allow/disallow the IndexerJob from running in the background. Not required to be configured normally.
 
-.. code-block::
+.. code-block:: bash
 
    occ config:app:set context_chat auto_indexing --value='true' --type=string
 

@@ -242,17 +242,17 @@ helpful.
 
 See:
 
-* `SabreDAV FAQ <http://sabre.io/dav/faq/>`_
-* `Web servers <http://sabre.io/dav/webservers>`_ (Lists lighttpd as not
+* `SabreDAV FAQ <https://sabre.io/dav/faq/>`_
+* `Web servers <https://sabre.io/dav/webservers>`_ (Lists lighttpd as not
   recommended)
-* `Working with large files <http://sabre.io/dav/large-files/>`_ (Shows a PHP
+* `Working with large files <https://sabre.io/dav/large-files/>`_ (Shows a PHP
   bug in older SabreDAV versions and information for mod_security problems)
-* `0 byte files <http://sabre.io/dav/0bytes>`_ (Reasons for empty files on the
+* `0 byte files <https://sabre.io/dav/0bytes>`_ (Reasons for empty files on the
   server)
-* `Clients <http://sabre.io/dav/clients/>`_ (A comprehensive list of WebDAV
+* `Clients <https://sabre.io/dav/clients/>`_ (A comprehensive list of WebDAV
   clients, and possible problems with each one)
 * `Finder, OS X's built-in WebDAV client
-  <http://sabre.io/dav/clients/finder/>`_
+  <https://sabre.io/dav/clients/finder/>`_
   (Describes problems with Finder on various Web servers)
 
 There is also a well maintained FAQ thread available at the `ownCloud Forums
@@ -322,7 +322,7 @@ instead of e.g.
 ``https://example.com/nextcloud/remote.php/dav/principals/username``.
 
 There are also several techniques to remedy this, which are described extensively at
-the `Sabre DAV website <http://sabre.io/dav/service-discovery/>`_.
+the `Sabre DAV website <https://sabre.io/dav/service-discovery/>`_.
 
 Troubleshooting sharing
 -----------------------

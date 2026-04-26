@@ -15,7 +15,7 @@ Installation
 
 You can install the *assistant* app via the "Apps" page in Nextcloud, or by executing
 
-.. code-block::
+.. code-block:: bash
 
    sudo -E -u www-data php occ app:enable assistant
 
@@ -150,7 +150,7 @@ Assistant configuration
 
 1. Top-right Assistant
 
-.. code-block::
+.. code-block:: bash
 
    occ config:app:set assistant assistant_enabled --value=1 --type=string
 
@@ -158,7 +158,7 @@ To enable/disable the assistant button from the top-right corner for all the use
 
 2. AI text generation smart picker
 
-.. code-block::
+.. code-block:: bash
 
    occ config:app:set assistant free_prompt_picker_enabled --value=1 --type=string
 
@@ -166,7 +166,7 @@ To enable/disable the AI text generation smart picker for all the users.
 
 3. Text-to-image smart picker
 
-.. code-block::
+.. code-block:: bash
 
    occ config:app:set assistant text_to_image_picker_enabled --value=1 --type=string
 
@@ -174,7 +174,7 @@ To enable/disable the text-to-image smart picker for all the users.
 
 4. Speech-to-text smart picker
 
-.. code-block::
+.. code-block:: bash
 
    occ config:app:set assistant speech_to_text_picker_enabled --value=1 --type=string
 
@@ -185,7 +185,7 @@ Task processing
 
 1. List Tasks
 
-.. code-block::
+.. code-block:: bash
 
    occ taskprocessing:task:list
 
@@ -193,7 +193,7 @@ lists all task processing tasks.
 
 2. Get Task
 
-.. code-block::
+.. code-block:: bash
 
    occ taskprocessing:task:get $TASK_ID
 
@@ -201,7 +201,7 @@ shows all information for a specific task.
 
 3. Enable or disable a Task type
 
-.. code-block::
+.. code-block:: bash
 
    occ taskprocessing:task-type:set-enabled $TASK_TYPE_ID 1
 
@@ -209,7 +209,7 @@ Set 1 to enable and 0 to disable an implemented task type.
 
 4. Get Task statistics
 
-.. code-block::
+.. code-block:: bash
 
    occ taskprocessing:task:stats
 
@@ -217,7 +217,7 @@ shows statistics for all task processing Tasks.
 
 5. Clean-up old tasks
 
-.. code-block::
+.. code-block:: bash
 
    occ taskprocessing:task:cleanup
 
@@ -228,7 +228,7 @@ Image storage
 
 Days until generated images are deleted if they are not viewed.
 
-.. code-block::
+.. code-block:: bash
 
    occ config:app:set assistant max_image_generation_idle_time --value=90 --type=integer
 
@@ -237,7 +237,7 @@ Chat with AI
 
 1. Chat User Instructions for Chat Completions
 
-.. code-block::
+.. code-block:: bash
 
    occ config:app:set assistant chat_user_instructions --value="hello world"
 
@@ -247,7 +247,7 @@ The user instructions that are prepended before the chat messages for the AI mod
 
 2. Chat User Instructions for Title Generation
 
-.. code-block::
+.. code-block:: bash
 
    occ config:app:set assistant chat_user_instructions_title --value="hello title"
 
@@ -255,7 +255,7 @@ This field is appended to the block of chat messages, i.e. attached after the me
 
 3. Last N messages to consider for chat completions
 
-.. code-block::
+.. code-block:: bash
 
    occ config:app:set assistant chat_last_n_messages --value=10
 

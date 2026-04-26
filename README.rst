@@ -47,7 +47,7 @@ Style
 
 Source files are written using the `Sphinx Documentation Generator
 <https://www.sphinx-doc.org/en/master/>`_. The syntax follows the `reStructuredText
-<http://docutils.sourceforge.net/rst.html>`_ style, and can also be edited
+<https://docutils.sourceforge.net/rst.html>`_ style, and can also be edited
 from GitHub.
 
 Structure
