@@ -440,7 +440,7 @@ class implementing the ``OCP\\AppFramework\\Http\\Template\\IMenuAction`` interf
 
 As the public template is also some HTML template, the same argumentation as for :ref:`regular templates<controller_template>` regarding the CSRF checks hold true:
 The usage of ``#[NoCSRFRequired]`` for public pages is considered acceptable for some pages:
-Each page that the user should be able to directly access (by typing/pastig the URL in the browser or clicking on a link in a mail) should have this attribute set.
+Each page that the user should be able to directly access (by typing/pasting the URL in the browser or clicking on a link in a mail) should have this attribute set.
 For multi-page forms in the second and later stages, this should **not** be set as the user should follow the series of pages.
 
 Data-based responses
