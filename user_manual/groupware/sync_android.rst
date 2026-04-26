@@ -74,6 +74,8 @@ If you do not want to install the Nextcloud mobile app, the following steps are 
 .. note:: Using user name and password will not work if 2-Factor-Authentication
    is enabled and will throw a generic "Unknown resource" error.
    Use a :ref:`dedicated App password <managing_devices>` instead.
+   If you enabled 2FA after already configuring DAVx⁵, update your DAVx⁵ account
+   to replace your login password with an app password.
 
 
 .. tip:: DAVx⁵ lists the calendar subscriptions made through the Nextcloud Calendar app, but you need to install the `ICSx⁵ (formerly known as ICSDroid) <https://icsx5.bitfire.at/>`__ app on your Android device, `from the Google Play Store <https://play.google.com/store/apps/details?id=at.bitfire.icsdroid>`__ or `from F-Droid <https://f-droid.org/packages/at.bitfire.icsdroid/>`__ to sync them.

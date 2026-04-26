@@ -21,7 +21,7 @@ You have three options:
 
 - **Automatically assign participants**: Talk will automatically assign participants to the rooms.
 - **Manually assign participants**: You'll go through a participants editor where you can assign participants to rooms.
-- **Allow participants choose**: Participants will be able to join breakout rooms themselves.
+- **Allow participants to choose**: Participants will be able to join breakout rooms themselves.
 
 .. image:: images/talk-breakout-rooms-setup-dialog.png
     :width: 500px

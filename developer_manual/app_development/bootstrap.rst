@@ -109,8 +109,7 @@ interleaved. This should ensure that an app that ``boot``\s can rely on all othe
 The overall process is as follows:
 
 1) In each installed and enabled app that has an ``Application`` class that also implements ``IBootstrap``, the
-``register``
-   method will be called. This method receives a context argument via which the app can prime the dependency injection
+   ``register`` method will be called. This method receives a context argument via which the app can prime the dependency injection
    container and register other services lazily, e.g. by calling ``$context->registerService(...)``. The emphasis is on **laziness**. At this very early stage of the
    process lifetime, no other apps nor all of the server components are ready. Therefore the app **must not** try to use
    anything except the API provided by the context. That shall ensure that all apps can safely run their registration logic
@@ -118,8 +117,7 @@ The overall process is as follows:
 2) Nextcloud will load groups of certain apps early, e.g. filesystem or session apps, and other later.
 3) Nextcloud will query the app's ``Application`` class (again), no matter whether it implements ``IBootstrap`` or not.
 4) Nextcloud will invoke the :ref:`boot <app-bootstrap-boot>` method of every ``Application`` instance that implements
-``IBootstrap``. At this stage
-   you may assume that all registrations via ``IBootstrap::register`` have completed.
+   ``IBootstrap``. At this stage you may assume that all registrations via ``IBootstrap::register`` have completed.
 
 
 .. _app-bootstrap-boot:

@@ -378,13 +378,20 @@ Create a new group::
 group:adduser and group:removeuser
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-Add a user to a group::
+Add one or more existing users to the specified group with the ``group:adduser``
+command. The syntax is::
 
- sudo -E -u www-data php occ group:adduser milliways layla
+ group:adduser <gid> <uid1> [uid2 ... uidN]
 
-Remove a user from a group::
+This example adds the users "denis", "dora" and "daisy" to the existing group "milliways"::
 
- sudo -E -u www-data php occ group:removeuser milliways layla
+ sudo -E -u www-data php occ group:adduser milliways denis dora daisy
+
+You can remove one or more users from the group with the ``group:removeuser`` command.
+This example removes the existing users "denis", "dora" and "daisy" from the existing
+group "milliways"::
+
+ sudo -E -u www-data php occ group:removeuser milliways denis dora daisy
 
 group:delete
 ^^^^^^^^^^^^

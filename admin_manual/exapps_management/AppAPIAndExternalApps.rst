@@ -44,8 +44,7 @@ HaRP
 1. Setup a Docker container called `HaRP <https://github.com/nextcloud/HaRP?tab=readme-ov-file#how-to-install-it>`_ that proxies access to Docker and to the ExApps for your Nextcloud instance. Be mindful of changing the values of ``HP_SHARED_KEY`` and ``NC_INSTANCE_URL``.
 2. Go to AppAPI admin settings.
 3. Click on the "Register Daemon" button.
-4. | A filled form should appear. This default configuration ``HaRP Proxy (Host)`` should work for most setups. For
-   Nextcloud AIO, use ``HaRP All-in-One``.
+4. | A filled form should appear. This default configuration ``HaRP Proxy (Host)`` should work for most setups. For Nextcloud AIO, use ``HaRP All-in-One``.
    | If you are using Nextcloud in a custom docker network and would want the HaRP container to be limited to it, use the ``HaRP Proxy (Docker)`` option to have the fields pre-filled with the common options or change them manually.
    | Here, you should ensure the HaRP container itself is launched with the same network as your Nextcloud instance optionally with no ports exposed to the host in step 1, and the same docker network is mentioned in the ``Network`` field in the deploy config.
 5. Ensure the same shared key is used in the HaRP container and in the AppAPI settings.
@@ -107,14 +106,19 @@ FAQ
 
 * I have two graphics cards (e.g. NVIDIA RTX 3060) with 8 GB of VRAM each. How can I run something which does not fit
   into one graphics card?
+
     * Distributing models across multiple GPUs is currently not supported. You will need a GPU that fits all of the model you are trying to use.
 * I have a graphics card that does not support CUDA - can I use it and how?
+
     * No, our AI apps require GPUs with CUDA support to function at this time.
 * What is the minimum VRAM size requirement for the GPU if I want to install multiple apps?
+
     * When running multiple ExApps on the same GPU, the GPU must hold the largest model amongst the apps you install.
 * Is it possible to add more graphics cards for my instance to enable parallel requests or to speed up one request?
+
     * Parallel processing of AI workloads for the same app with multiple GPUs is currently not supported.
 * Can I use the CPU and GPU in parallel for AI processing?
+
     * No, you can only process AI workloads on either the CPU or GPU for one app. For different apps, you can decide whether to run them on CPU or GPU.
 
 Docker Socket Proxy vs HaRP

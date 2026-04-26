@@ -168,7 +168,7 @@ Handling settings storage
 There are two types of schema ``storage_type`` supported:
 
 1. internal ``OCP\Settings\DeclarativeSettingsTypes::STORAGE_TYPE_INTERNAL`` - settings values changes handled by core
-1. external ``OCP\Settings\DeclarativeSettingsTypes::STORAGE_TYPE_EXTERNAL`` - settings values changes handled by your
+2. external ``OCP\Settings\DeclarativeSettingsTypes::STORAGE_TYPE_EXTERNAL`` - settings values changes handled by your
    app handlers (event listeners).
 
 Internal storage type

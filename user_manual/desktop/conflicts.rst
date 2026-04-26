@@ -14,7 +14,7 @@ notify the user that a conflict occurred which needs attention.
 Example
 -------
 
-Imagine there is a file called ``mydata.txt`` your synchronized folder. It has
+Imagine there is a file called ``mydata.txt`` in your synchronized folder. It has
 not changed for a while and contains the text "contents" locally and remotely.
 Now, nearly at the same time you update it locally to say "local contents" while
 the file on the server gets updated to contain "remote contents" by someone else.

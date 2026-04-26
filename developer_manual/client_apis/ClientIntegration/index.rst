@@ -87,7 +87,8 @@ The app in question can then handle the request and can send two different respo
 
 Declarative UI response
 ^^^^^^^^^^^^^^^^^^^^^^^
-The declarative UI response allows the app to send back a new UI to be rendered by the client: 
+The declarative UI response allows the app to send back a new UI to be rendered by the client:
+
 - version: Indicates which version it is. Clients will be backwards compatible. If server sends a newer version than the
   client can understand the response will be ignored.
 - tooltip: Translated text, which will be shown as tooltip / snackbar.
@@ -126,6 +127,7 @@ At the moment only rows with text and url elements are supported, but in the fut
 Tooltip Response
 ^^^^^^^^^^^^^^^^
 The tooltip response is a regular DataResponse type, with payload:
+
 - version: Indicates which version it is. Clients will be backwards compatible. If server sends a newer version than the
   client can understand the response will be ignored.
 - tooltip: Translated text, which will be shown as tooltip / snackbar.

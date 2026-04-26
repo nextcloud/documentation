@@ -80,6 +80,7 @@ Rules and information
 * If you want to show **all** the checkboxes, apply the ``selection`` class to the ``app-content-list``.
 * You can **NOT** have more than one button in an entry. You need to create a :ref:`popover menu <popovermenu>` if
   multiple options are needed.
+
    * In case of a popovermenu, see the :ref:`popover menu <popovermenulist>`.
    * As always, the **JS** is still needed to toggle the ``open`` class on this menu
 * If you use the ``app-content-list`` standard, the ``app-content-details`` div will be hidden in mobile mode (full

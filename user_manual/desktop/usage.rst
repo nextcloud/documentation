@@ -184,7 +184,7 @@ depending on the used file manager. Available are e.g. ``nautilus-nextcloud``
 Nextcloud users the same way as in your Nextcloud Web interface.
 
 In your file explorer, click on a file and in the context menu go to
-**Nextcloud** and then lick on **Share options** to bring up the Share dialog.
+**Nextcloud** and then click on **Share options** to bring up the Share dialog.
 
 .. figure:: images/share_context_menu.png
    :alt: Sharing from Windows Explorer.

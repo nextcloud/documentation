@@ -11,8 +11,7 @@ The interface asks for the time of absence, a short and a long message and an op
 used for the following purposes:
 
 1) Your user status will change to the short message when your absence starts and reset when it ends.
-2) And event with status *busy* will be created in your personal calendar. This allows others to see that you are not
-available when they use the free/busy feature.
+2) An event with status *busy* will be created in your personal calendar. This allows others to see that you are not available when they use the free/busy feature.
 3) If enabled, the Mail app will apply an autoresponder using the long message.
 4) The Talk app will show the long out-of-office message to others when they try to reach you in a 1:1 chat during your
-absence as well as the replacement user if set.
+   absence as well as the replacement user if set.

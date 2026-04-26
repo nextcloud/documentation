@@ -210,10 +210,8 @@ By default, Nextcloud Talk will notify you about:
 
 You can change this behavior in the conversation settings. Additionally, you can configure:
 
-- **Important conversations**: you will be always notificed about new messages, even if you are in "Do Not Disturb"
-  mode;
-- **Sensitive conversations**: content of messages will not be shown in the conversation list and obscured from
-  notifications.
+- **Important conversations**: you will be always notified about new messages, even if you are in "Do Not Disturb" mode;
+- **Sensitive conversations**: content of messages will not be shown in the conversation list and obscured from notifications.
 
 .. image:: images/conversation-notifications.png
     :width: 300px

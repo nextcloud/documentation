@@ -169,9 +169,13 @@ Here is the list of available namespace:
 
 =========================================  ======
                    URI                     Prefix
-=========================================  ====== DAV:                                       d
-http://owncloud.org/ns                     oc http://nextcloud.org/ns                    nc
-http://open-collaboration-services.org/ns  ocs http://open-cloud-mesh.org/ns              ocm =========================================  ======
+=========================================  ======
+DAV:                                       d
+http://owncloud.org/ns                     oc
+http://nextcloud.org/ns                    nc
+http://open-collaboration-services.org/ns  ocs
+http://open-cloud-mesh.org/ns              ocm
+=========================================  ======
 
 And here is how it should look in your DAV request:
 

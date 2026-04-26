@@ -36,6 +36,7 @@ Legal and security
 * Irregular and unannounced security audits of all apps can and will take place.
 * If any indication of malicious intent or bad faith is found the developer(s) in question can count on a minimum 2 year
   ban from any Nextcloud infrastructure.
+
    * Malicious intent includes deliberate spying on users by leaking user data to a third party system or adding a back door (like a hard-coded user account) to Nextcloud. An unintentional security bug that gets fixed in time won't be considered bad faith.
 * Apps do not violate any laws; it has to comply with copyright- and trademark law.
 * App authors have to respond timely to security concerns and not make Nextcloud more vulnerable to attacks.
