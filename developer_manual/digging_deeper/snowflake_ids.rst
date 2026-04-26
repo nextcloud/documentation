@@ -98,7 +98,7 @@ It’s also possible to decode IDs in your code, for example to get the creation
 
     namespace OCA\MyApp;
 
-    use DateTimeImmutable
+    use DateTimeImmutable;
     use OCP\Snowflake\IDecoder;
 
     class MyObject {
