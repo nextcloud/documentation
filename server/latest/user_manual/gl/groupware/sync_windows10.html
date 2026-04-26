@@ -78,8 +78,9 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Sincronización con Windows 10</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#calendar">Calendario</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#contacts">Contactos</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#troubleshooting">Solución de problemas</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id1">Contactos</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#troubleshooting-2fa">Troubleshooting: 2FA</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#troubleshooting-tlsv1-2">Troubleshooting: TLSv1.2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#credits">Credits</a></li>
 </ul>
 </li>
 </ul>
@@ -120,7 +121,7 @@
   <section id="synchronizing-with-windows-10">
 <h1>Sincronización con Windows 10<a class="headerlink" href="#synchronizing-with-windows-10" title="Ligazón a este título"></a></h1>
 <section id="calendar">
-<h2>Calendario<a class="headerlink" href="#calendar" title="Ligazón a este título"></a></h2>
+<span id="calendar-section"></span><h2>Calendario<a class="headerlink" href="#calendar" title="Ligazón a este título"></a></h2>
 <ol class="arabic simple">
 <li><p>No seu navegador, desprácese ata a aplicación Calendario de Nextcloud. Baixo «Axustes de Calendario», copie o enderezo usando «Copiar o enderezo CalDAV do IOS/macOS» no portapapeis.</p></li>
 <li><p>Inicie a aplicación Calendario do Windows 10. Deseguido, prema na icona de axustes (icona de engrenaxe) e seleccione «Xestionar contas».</p></li>
@@ -135,37 +136,30 @@
 <section id="contacts">
 <h2>Contactos<a class="headerlink" href="#contacts" title="Ligazón a este título"></a></h2>
 <ol class="arabic simple">
-<li><p>Na parte inferior esquerda da vista de contactos (nos Contactos de Nextcloud) busque un pequeno símbolo de ligazón (cadea) que semelle como:</p></li>
-</ol>
-<img alt="../../_images/contacts_link.png" src="../../_images/contacts_link.png" />
-<p>que amosará un URL que se semellará como: <a class="reference external" href="https://cloud.nextcloud.com/remote.php/dav/addressbooks/users/daniel/Thunderbird/">https://cloud.nextcloud.com/remote.php/dav/addressbooks/users/daniel/Thunderbird/</a></p>
-<ol class="arabic simple" start="2">
-<li><p>Inicie a aplicación Calendario do Windows 10. Deseguido, prema na icona de axustes (icona de engrenaxe) e seleccione «Xestionar contas».</p></li>
-<li><p>Prema en «Engadir conta» e escolla «iCloud».</p></li>
-<li><p>Introduza un correo, un nome de usuario e un contrasinal. Ningunha desa información ten que ser válida, todo cambiará nos próximos pasos.</p></li>
-<li><p>Prema en «Autenticarse» e após en «Feito». Debería aparecer unha mensaxe indicando que os axustes foron gardados correctamente.</p></li>
-<li><p>No menú «Xestionar contas», prema na conta iCloud creada nos pasos anteriores e seleccione «Cambiar axustes». Deseguido, prema en «Cambiar os axustes de sincronización da caixa de correo».</p></li>
-<li><p>Desprácese ata a parte inferior do cadro de diálogo, seleccione «Axustes avanzados da caixa de correo». Desprácese unha vez máis ata a parte inferior da caixa de diálogo e pegue o seu URL de CardDAV no campo etiquetado como «Servidor de contactos (CalDAV)».</p></li>
-<li><p>Prema en «Feito». Introduza o seu nome de usuario e contrasinal de Nextcloud nos campos apropiados e cambie o nome da conta a calquera que prefira (p. ex. «Contactos de Nextcloud»). Prema en «Gardar».</p></li>
-</ol>
-</section>
-<section id="troubleshooting">
-<h2>Solución de problemas<a class="headerlink" href="#troubleshooting" title="Ligazón a este título"></a></h2>
-<p>Após seguir todos estes pasos, o seu calendario de Nextcloud debería sincronizarse. Se non, comprobe o seu nome de usuario e contrasinal. En caso contrario, repita estes pasos.</p>
-<p><strong>NOTA: Non poderá sincronizar o seu calendario se ten activado o segundo factor de autenticación. Siga os pasos de embaixo para obter un contrasinal da aplicación que se pode usar coa aplicación cliente de Calendario:</strong></p>
-<ol class="arabic simple">
-<li><p>Inicie sesión en Nextcloud. Prema na súa icona de usuario e logo en «Axustes».</p></li>
-<li><p>Prema en «Seguranza» e logo atope un botón etiquetado «Crear un novo contrasinal de aplicación». Xunto a este botón, introduza «Aplicación do calendario de Windows 10». Deseguido, prema no botón, copie e pegue o contrasinal. Use este contrasinal en troques do seu contrasinal de Nextcloud para o paso 8.</p></li>
-</ol>
-</section>
-<section id="id1">
-<h2>Contactos<a class="headerlink" href="#id1" title="Ligazón a este título"></a></h2>
-<ol class="arabic simple">
-<li><p>Repita os pasos 1-7 das instrucións do calendario. Se xa preparou a sincronización de calendario, pode usar a mesma conta para isto.</p></li>
-<li><p>En «Axustes avanzados da caixa de correo» pegue o seu URL de CalDAV no campo etiquetado «Contactar co servidor (CardDAV)».</p></li>
+<li><p>Repeat steps 1–7 from the <a class="reference internal" href="#calendar-section"><span class="std std-ref">Calendar instructions</span></a>. If you already have set up the Calendar synchronization, you can use the same account for this.</p></li>
+<li><p>From the «Advanced mailbox settings» screen, scroll to the bottom of the dialog box and paste your CardDAV URL in the field labelled «Contacts server (CardDAV)».</p></li>
 <li><p>Substitúa a ruta «principais» no URL por «cadernos de enderezos».</p></li>
 <li><p>Prema en «Feito». Introduza o seu nome de usuario e contrasinal de Nextcloud nos campos apropiados e cambie o nome da conta a calquera que prefira (p. ex. «Nextcloud»). Prema en «Gardar».</p></li>
 </ol>
+</section>
+<section id="troubleshooting-2fa">
+<h2>Troubleshooting: 2FA<a class="headerlink" href="#troubleshooting-2fa" title="Ligazón a este título"></a></h2>
+<p><strong>NOTA: Non poderá sincronizar o seu calendario se ten activado o segundo factor de autenticación. Siga os pasos de embaixo para obter un contrasinal da aplicación que se pode usar coa aplicación cliente de Calendario:</strong></p>
+<ol class="arabic simple">
+<li><p>Inicie sesión en Nextcloud. Prema na súa icona de usuario e logo en «Axustes».</p></li>
+<li><p>Click on «Security», then locate a button labeled «Create new app password». Next to this button, enter «Windows 10 Calendar app». Then, click the button, copy and paste the password. Use this password instead of your Nextcloud password when prompted for credentials during setup, for example in Calendar step 8 or Contacts step 4.</p></li>
+</ol>
+</section>
+<section id="troubleshooting-tlsv1-2">
+<h2>Troubleshooting: TLSv1.2<a class="headerlink" href="#troubleshooting-tlsv1-2" title="Ligazón a este título"></a></h2>
+<ul class="simple">
+<li><p>For Windows 10 your Nextcloud https server <a class="reference external" href="https://docs.microsoft.com/en-us/windows/win32/secauthn/protocols-in-tls-ssl--schannel-ssp-">must support TLSv1.2</a>.  This is apparent if no connection attempts are seen on the server, and the Windows client Event Viewer will display Schannel TLS errors under «Windows Logs -&gt; System».</p></li>
+</ul>
+</section>
+<section id="credits">
+<h2>Credits<a class="headerlink" href="#credits" title="Ligazón a este título"></a></h2>
+<p>Special thanks to this Reddit user for their post:
+<a class="reference external" href="https://www.reddit.com/r/Nextcloud/comments/5rcypb/using_the_windows_10_calendar_application_with/">https://www.reddit.com/r/Nextcloud/comments/5rcypb/using_the_windows_10_calendar_application_with/</a></p>
 </section>
 </section>
 
