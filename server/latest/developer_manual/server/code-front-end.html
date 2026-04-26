@@ -67,6 +67,7 @@
 <li class="toctree-l1"><a class="reference internal" href="../exapp_development/index.html">ExApp development</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Server development</a><ul class="current">
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Front-end code</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#prerequisites-node-js-and-npm">Prerequisites: Node.js and npm</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#building-vue-components-and-scripts">Building Vue components and scripts</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#building-styles">Building styles</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#committing-changes">Committing changes</a></li>
@@ -115,6 +116,40 @@
              
   <section id="front-end-code">
 <h1>Front-end code<a class="headerlink" href="#front-end-code" title="Link to this heading"></a></h1>
+<section id="prerequisites-node-js-and-npm">
+<h2>Prerequisites: Node.js and npm<a class="headerlink" href="#prerequisites-node-js-and-npm" title="Link to this heading"></a></h2>
+<p>Nextcloud uses the <strong>current active LTS</strong> version of Node.js and npm. You can check the schedule at
+<a class="reference external" href="https://endoflife.date/nodejs">endoflife.date/nodejs</a>.</p>
+<p>The required versions are declared in the <code class="docutils literal notranslate"><span class="pre">engines</span></code> field of the app’s <code class="docutils literal notranslate"><span class="pre">package.json</span></code>, for example:</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">    </span><span class="nt">&quot;engines&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;node&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;^24.0.0&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;npm&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;^11.0.0&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>We recommend using <a class="reference external" href="https://github.com/nvm-sh/nvm">nvm (Node Version Manager)</a> to install and switch between Node.js versions.
+Once nvm is installed, you can install and activate the required Node.js version with:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp"># </span>Install<span class="w"> </span>the<span class="w"> </span>Node.js<span class="w"> </span>version<span class="w"> </span>declared<span class="w"> </span><span class="k">in</span><span class="w"> </span>.nvmrc<span class="w"> </span>or<span class="w"> </span>package.json<span class="w"> </span>engines
+<span class="go">nvm install</span>
+<span class="go">nvm use</span>
+
+<span class="gp"># </span>Or<span class="w"> </span>install<span class="w"> </span>a<span class="w"> </span>specific<span class="w"> </span>version<span class="w"> </span>explicitly
+<span class="go">nvm install 24</span>
+<span class="go">nvm use 24</span>
+</pre></div>
+</div>
+<p>Then install or update npm to the version required by your app:</p>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">npm install -g npm@11</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For the full Nextcloud Node.js and npm version policy, see the
+<a class="reference external" href="https://github.com/nextcloud/standards/issues/5">Nextcloud standards</a>.</p>
+</div>
+</section>
 <section id="building-vue-components-and-scripts">
 <h2>Building Vue components and scripts<a class="headerlink" href="#building-vue-components-and-scripts" title="Link to this heading"></a></h2>
 <p>We are moving more and more toward using Vue.js in the front-end, starting with Settings. For building the code on changes, use these terminal commands in the root folder:</p>
