@@ -2,6 +2,8 @@
 Synchronizing with Windows 10
 =============================
 
+.. _calendar-section:
+
 Calendar
 --------
 
@@ -24,7 +26,7 @@ Calendar
 Contacts
 --------
 
-1. Repeat steps 1–7 from the Calendar instructions. If you already have set up the Calendar synchronization, you can use the same account for this.
+1. Repeat steps 1–7 from the :ref:`Calendar instructions <calendar-section>`. If you already have set up the Calendar synchronization, you can use the same account for this.
 
 2. From the "Advanced mailbox settings" screen, scroll to the bottom of the dialog box and paste your CardDAV URL in the field labelled "Contacts server (CardDAV)".
 
