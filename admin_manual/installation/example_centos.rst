@@ -5,8 +5,9 @@ Example installation on CentOS 8
 
 .. warning::
    CentOS 8 reached end-of-life on December 31, 2021 and no longer receives
-   security updates. This guide is preserved for reference only. For current
-   RHEL-based deployments, use CentOS Stream, AlmaLinux, or Rocky Linux instead.
+   security updates. This guide is preserved for reference only and may be
+   outdated. For production deployments, use a currently supported Linux
+   distribution.
 
 In this install tutorial we will be deploying CentOS 8, PHP 7.4, MariaDB, Redis as memcache and Nextcloud running on Apache.
 
