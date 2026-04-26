@@ -385,15 +385,15 @@ command. The syntax is::
 
  group:adduser <gid> <uid1> [uid2 ... uidN]
 
-This example adds the users "denis", "dora" and "daisy" to the existing group "beer"::
+This example adds the users "denis", "dora" and "daisy" to the existing group "milliways"::
 
- sudo -E -u www-data php occ group:adduser beer denis dora daisy
+ sudo -E -u www-data php occ group:adduser milliways denis dora daisy
 
 You can remove one or more users from the group with the ``group:removeuser`` command.
 This example removes the existing users "denis", "dora" and "daisy" from the existing
-group "beer"::
+group "milliways"::
 
- sudo -E -u www-data php occ group:removeuser beer denis dora daisy
+ sudo -E -u www-data php occ group:removeuser milliways denis dora daisy
 
 group:delete
 ^^^^^^^^^^^^
