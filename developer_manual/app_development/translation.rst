@@ -53,7 +53,7 @@ empty folder which later holds the translations.
 Branch selection ``.tx/backport``
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-The bot will run every night and only push commits to the following branches branch once there is an update to the translation:
+The bot will run every night and only push commits to the following branches once there is an update to the translation:
 
 * main
 * master
