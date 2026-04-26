@@ -42,8 +42,8 @@ Updating the status programmatically
 ------------------------------------
 
 A Nextcloud application can change the user status programmatically. This feature
-`setUserStatus` from the `OCP\\UserStatus\\IManager` interface when for example an
-user execute an action in the UI.
+`setUserStatus` from the `OCP\\UserStatus\\IManager` interface when for example a
+user executes an action in the UI.
 
 If the status is supposed to be reverted with an upcoming action from the
 user, `setUserStatus` will require to be called with `$createBackup = true`.
