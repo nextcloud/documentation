@@ -3,7 +3,7 @@ Front-end code
 ==============
 
 Prerequisites: Node.js and npm
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
 Nextcloud uses the **current active LTS** version of Node.js and npm. You can check the schedule at
 `endoflife.date/nodejs <https://endoflife.date/nodejs>`_.
