@@ -14,8 +14,8 @@ The required versions are declared in the ``engines`` field of the app's ``packa
 
     {
         "engines": {
-            "node": "^20.0.0",
-            "npm": "^10.0.0"
+            "node": "^24.0.0",
+            "npm": "^11.0.0"
         }
     }
 
@@ -29,14 +29,14 @@ Once nvm is installed, you can install and activate the required Node.js version
     nvm use
 
     # Or install a specific version explicitly
-    nvm install 20
-    nvm use 20
+    nvm install 24
+    nvm use 24
 
 Then install or update npm to the version required by your app:
 
 .. code-block:: console
 
-    npm install -g npm@10
+    npm install -g npm@11
 
 .. note::
 
