@@ -502,7 +502,8 @@ Please be aware:
   - Setting the global ``profile.enabled => false`` on ``config.php`` skips the code
 
 By calling ``sudo -E -u www-data php occ ldap:check-user --update <uid>`` the users data from LDAP will be displayed and
-the profile gets updated. To get the correct ``<uid>`` value for any user you can use ``php occ user:list``.
+the profile gets updated. To get the correct ``<uid>`` value for any user you can use
+``sudo -E -u www-data php occ user:list``.
 
 .. note:: After unsetting an attribute name here, the data won't be deleted from user profile. Setting an nonexisting attribute will empty the corresponding profile field.
 

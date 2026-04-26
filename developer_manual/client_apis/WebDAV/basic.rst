@@ -428,7 +428,7 @@ Listing folders (rfc4918_)
 
 The contents of a folder can be listed by sending a :code:`PROPFIND` request to the folder.
 
-.. code-block:: http
+.. code-block:: text
 
 	PROPFIND remote.php/dav/files/user/path/to/folder
 
@@ -445,7 +445,7 @@ Downloading files
 
 A file can be downloaded by sending a :code:`GET` request to the WebDAV url of the file.
 
-.. code-block:: http
+.. code-block:: text
 
 	GET remote.php/dav/files/user/path/to/file
 
@@ -461,7 +461,7 @@ A folder can be downloaded as an archive by sending a :code:`GET` request to the
 The :code:`Accept` header must be set and contain the MIME type for ZIP archives (:code:`application/zip`) or tarballs
 (:code:`application/x-tar`).
 
-.. code-block:: http
+.. code-block:: text
 
 	GET remote.php/dav/files/user/path/to/folder
 	Accept: application/zip
@@ -469,7 +469,7 @@ The :code:`Accept` header must be set and contain the MIME type for ZIP archives
 Optionally it is possible to only include some files from the folder in the archive by providing the files using the
 custom :code:`X-NC-Files` header:
 
-.. code-block:: http
+.. code-block:: text
 
 	GET remote.php/dav/files/user/path/to/folder
 	Accept: application/zip
@@ -482,7 +482,7 @@ Both full MIME types (:code:`application/zip`, :code:`application/x-tar`) and sh
 :code:`tar`) are accepted.
 The optional files list can be provided as a JSON encoded array through the :code:`files` query parameter.
 
-.. code-block:: http
+.. code-block:: text
 
 	GET remote.php/dav/files/user/path/to/folder?accept=zip&files=["image.png","document.txt"]
 
@@ -495,7 +495,7 @@ Uploading files
 A file can be uploaded by sending a :code:`PUT` request to the file and sending the raw file contents as the request
 body.
 
-.. code-block:: http
+.. code-block:: text
 
 	PUT remote.php/dav/files/user/path/to/file
 
@@ -506,7 +506,7 @@ Creating folders (rfc4918_)
 
 A folder can be created by sending a :code:`MKCOL` request to the folder.
 
-.. code-block:: http
+.. code-block:: text
 
 	MKCOL remote.php/dav/files/user/path/to/new/folder
 
@@ -515,7 +515,7 @@ Deleting files and folders (rfc4918_)
 
 A file or folder can be deleted by sending a :code:`DELETE` request to the file or folder.
 
-.. code-block:: http
+.. code-block:: text
 
 	DELETE remote.php/dav/files/user/path/to/file
 
@@ -527,7 +527,7 @@ Moving files and folders (rfc4918_)
 A file or folder can be moved by sending a :code:`MOVE` request to the file or folder and specifying the destination in
 the :code:`Destination` header as full url.
 
-.. code-block:: http
+.. code-block:: text
 
 	MOVE remote.php/dav/files/user/path/to/file
 	Destination: https://cloud.example/remote.php/dav/files/user/new/location
@@ -541,7 +541,7 @@ Copying files and folders (rfc4918_)
 A file or folder can be copied by sending a :code:`COPY` request to the file or folder and specifying the destination in
 the :code:`Destination` header as full url.
 
-.. code-block:: http
+.. code-block:: text
 
 	COPY remote.php/dav/files/user/path/to/file
 	Destination: https://cloud.example/remote.php/dav/files/user/new/location

@@ -48,7 +48,7 @@ Since: 11.0.2, 12.0.0
 This request returns the available metadata of a user. Admin users can see the information of all users, while a default
 user only can access their own metadata.
 
-.. code-block:: http
+.. code-block:: text
 
 	GET /ocs/v1.php/cloud/users/USERID
 
@@ -106,7 +106,7 @@ User metadata - List user IDs
 
 This request returns a list containing all user IDs. Only admin users can query the list.
 
-.. code-block:: http
+.. code-block:: text
 
 	GET /ocs/v1.php/cloud/users
 
@@ -139,7 +139,7 @@ Capabilities API
 
 Clients can obtain capabilities provided by the Nextcloud server and its apps via the capabilities OCS API.
 
-.. code-block:: http
+.. code-block:: text
 
 	GET /ocs/v1.php/cloud/capabilities
 
@@ -219,7 +219,7 @@ This link will be valid for 8 hours afterwards it will be removed.
 
 To obtain a direct link:
 
-.. code-block:: http
+.. code-block:: text
 
 	POST /ocs/v2.php/apps/dav/api/v1/direct
 

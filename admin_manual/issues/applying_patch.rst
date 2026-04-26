@@ -42,8 +42,8 @@ Patching server
 Patching apps
 ^^^^^^^^^^^^^
 
-1. Navigate to the root of the app (usually ``apps/[APPID]/``). If you cannot find the app there, use the ``sudo -E -u
-   www-data php occ app:getpath APPID`` command to find the path.
+1. Navigate to the root of the app (usually ``apps/[APPID]/``). If you cannot find the app there, use the
+   ``sudo -E -u www-data php occ app:getpath APPID`` command to find the path.
 2. Download the patch to your server e.g. via ``wget https://github.com/nextcloud/<app>/pull/26396.diff`` (this will place ``26396.diff`` in the local directory)
 3. Apply the patch with the same command as in `Patching server`_.
 
