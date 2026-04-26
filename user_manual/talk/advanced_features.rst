@@ -15,7 +15,7 @@ By default, Nextcloud Talk will notify you about:
 
 You can change this behavior in the conversation settings. Additionally, you can configure:
 
-- **Important conversations**: you will be always notificed about new messages, even if you are in "Do Not Disturb" mode;
+- **Important conversations**: you will be always notified about new messages, even if you are in "Do Not Disturb" mode;
 - **Sensitive conversations**: content of messages will not be shown in the conversation list and obscured from notifications.
 
 .. image:: images/conversation-notifications.png
@@ -163,7 +163,7 @@ Here you'll be presented with 3 options:
 
 - **Automatically assign participants**: Talk will automatically assign participants to the rooms.
 - **Manually assign participants**: You'll go through a participants editor where you can assign participants to rooms.
-- **Allow participants choose**: Participants will be able to join breakout rooms themselves.
+- **Allow participants to choose**: Participants will be able to join breakout rooms themselves.
 
 .. image:: images/talk-breakout-rooms-setup-dialog.png
     :width: 500px
