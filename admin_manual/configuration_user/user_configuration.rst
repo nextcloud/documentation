@@ -99,8 +99,8 @@ Nextcloud will automatically send them a notification with their new login
 information. You may edit this email using the email template editor on your
 Admin page (see :doc:`../configuration_server/email_configuration`).
 
-Set the **Send email to new user**-checkbox allows you to leave the **Password**
-field empty. The user will get an activation-email to set their own password.
+If you check the **Send email to new user** checkbox, you can leave the **Password**
+field empty. The user will receive an activation email to set their own password.
 
 Reset a user's password
 -----------------------
