@@ -184,7 +184,7 @@ The Save Log File window opens.
 .. figure:: images/save_log_file.png
    :alt: Save logfile
 
-4. Migrate to a location on your system where you want to save your log file.
+4. Navigate to a location on your system where you want to save your log file.
 
 5. Name the log file and click the 'Save' button.
 
