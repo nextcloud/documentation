@@ -541,12 +541,19 @@ configuration:</p>
 </section>
 <section id="group-adduser-and-group-removeuser">
 <h3>group:adduser and group:removeuser<a class="headerlink" href="#group-adduser-and-group-removeuser" title="Link to this heading"></a></h3>
-<p>Add a user to a group:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">group</span><span class="p">:</span><span class="n">adduser</span> <span class="n">milliways</span> <span class="n">layla</span>
+<p>Add one or more existing users to the specified group with the <code class="docutils literal notranslate"><span class="pre">group:adduser</span></code>
+command. The syntax is:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">group</span><span class="p">:</span><span class="n">adduser</span> <span class="o">&lt;</span><span class="n">gid</span><span class="o">&gt;</span> <span class="o">&lt;</span><span class="n">uid1</span><span class="o">&gt;</span> <span class="p">[</span><span class="n">uid2</span> <span class="o">...</span> <span class="n">uidN</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>Remove a user from a group:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">group</span><span class="p">:</span><span class="n">removeuser</span> <span class="n">milliways</span> <span class="n">layla</span>
+<p>This example adds the users “denis”, “dora” and “daisy” to the existing group “milliways”:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">group</span><span class="p">:</span><span class="n">adduser</span> <span class="n">milliways</span> <span class="n">denis</span> <span class="n">dora</span> <span class="n">daisy</span>
+</pre></div>
+</div>
+<p>You can remove one or more users from the group with the <code class="docutils literal notranslate"><span class="pre">group:removeuser</span></code> command.
+This example removes the existing users “denis”, “dora” and “daisy” from the existing
+group “milliways”:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="o">-</span><span class="n">E</span> <span class="o">-</span><span class="n">u</span> <span class="n">www</span><span class="o">-</span><span class="n">data</span> <span class="n">php</span> <span class="n">occ</span> <span class="n">group</span><span class="p">:</span><span class="n">removeuser</span> <span class="n">milliways</span> <span class="n">denis</span> <span class="n">dora</span> <span class="n">daisy</span>
 </pre></div>
 </div>
 </section>
