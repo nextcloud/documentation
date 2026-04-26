@@ -17,7 +17,10 @@ This repository hosts three manuals:
 
 Please work in the appropriate branch: ``stable``-branches are for the respective release (e.g. 14.0 or 15.0), ``master`` is the latest version.
 
-Please wrap lines at 80 characters.
+Wrap prose lines at **120 characters** where practical. Long URLs, code
+examples, and table cells may exceed this limit. See the
+`Style Guide <https://github.com/nextcloud/documentation/blob/master/style_guide.rst>`_
+for full guidance.
 
 .. note:: ``configuration_server/config_sample_php_parameters.rst`` is auto-generated from the core
    config.sample.php file; changes to this file must be made in core `<https://github.com/nextcloud/server/tree/master/config>`_

@@ -177,4 +177,6 @@ redirects = {
     "digging_deeper/changelog": "../app_publishing_maintenance/app_upgrade_guide/index.html",
     # Removed 2025-04
     "basics/front-end/l10n": "../translations.html",
+    # Moved 2026-04 - Upgrade to 34 moved to release notes
+    "app_publishing_maintenance/app_upgrade_guide/upgrade_to_34": "../../release_notes/critical_changes.html",
 }

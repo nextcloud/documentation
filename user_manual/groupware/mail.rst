@@ -20,6 +20,18 @@ Switch layout
 
 .. figure:: images/mail_layout.png
 
+Use Compact Mode
+~~~~~~~~~~~~~~~~
+.. versionadded:: 5.7.0
+
+Compact mode offers a cleaner and more efficient way to view your messages. Avatars are hidden, selection checkboxes are always visible, and the preview of messages is removed. It saves space allowing you to see more emails at once.
+
+1. Visit the mail settings
+2. Go to **Appearance**
+3. Toggle the Compact Mode
+
+.. figure:: images/use-compact-mode.png
+
 Message Display / Operation Mode
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
@@ -126,6 +138,16 @@ Refresh mailbox
 
 You can manually trigger a sync of your mailbox by clicking the refresh button located at the top of the mailbox list.
 Starting from ``version 5.7`` triggering the sync will also refresh the list of folders for the selected account.
+
+Unified search
+~~~~~~~~~~~~~~
+
+The Mail app integrates with Nextcloud's :ref:`unified search <unified-search>`
+feature (see :doc:`../webinterface` for details). You can search for emails across
+all your accounts using the search bar in the Nextcloud header.
+
+Mail searches email subjects and sender/recipient fields. To search email bodies,
+use the mailbox search feature in the app.
 
 Search in mailbox
 ~~~~~~~~~~~~~~~~~

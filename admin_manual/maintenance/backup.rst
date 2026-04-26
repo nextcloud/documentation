@@ -2,9 +2,10 @@
 Backup
 ======
 
-To backup a Nextcloud installation there are four main things you need to retain:
+To backup a Nextcloud installation there are five main things you need to retain:
 
 #. The config folder
+#. The custom apps folder (only if you have custom apps installed)
 #. The data folder
 #. The theme folder
 #. The database

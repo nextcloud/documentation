@@ -2,9 +2,10 @@
 Server tuning
 =============
 
-.. TODO: Add introductory paragraph
-.. TODO: Sort according to (generalized) difficulty
-.. TODO: Consider adding a category (or even table) with Impact vs Difficulty
+This page collects configuration changes that can improve the performance of
+your Nextcloud server. Most items only require editing a configuration file or
+installing a package, while a few involve additional services. Start with the
+ones that match your setup and revisit the rest as your instance grows.
 
 Using cron to perform background jobs
 -------------------------------------
@@ -96,7 +97,7 @@ For more details and help tuning your database:
 Using Redis-based transactional file locking
 --------------------------------------------
 
-Transactional File Focking uses the database as the default backend. This
+Transactional File Locking uses the database as the default backend. This places
 additional load on your database. See the section
 :doc:`../configuration_files/files_locking_transactional` for instructions on
 configuring Nextcloud to use Redis-based Transactional File Locking.
@@ -174,13 +175,7 @@ To change the default from ``2`` and check for changes on disk at most every ``6
 
   opcache.revalidate_freq = 60
 
-Alternatively, you can disable the revalidation completely:
-
-.. code:: ini
-
-  opcache.validate_timestamps = 0
-
-Any server or app upgrades, or changes to ``config.php``, will then require restarting PHP (or otherwise manually clearing the cache or invalidating this particular script).
+Any Server/app upgrades or changes to ``config.php`` will then require restarting PHP (or otherwise manually clearing the cache or invalidating this particular script).
 
 .. warning::
    Please do not report bugs or odd behavior after upgrading Nextcloud or Nextcloud apps until after you've 

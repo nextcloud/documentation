@@ -92,8 +92,7 @@ You can access files in Linux operating systems using the following methods.
 Nautilus file manager
 ^^^^^^^^^^^^^^^^^^^^^
 
-**When you configure your Nextcloud account in the** `GNOME Control Center
-<../groupware/sync_gnome.html>`_, **your files will automatically be mounted
+**When you configure your Nextcloud account in the** :doc:`GNOME Control Center <../groupware/sync_gnome>`, **your files will automatically be mounted
 by Nautilus as a WebDAV share, unless you deselect file access**.
 
 You can also mount your Nextcloud files manually. Use the ``davs://``
@@ -222,9 +221,7 @@ path of your certificate as in this example::
 Accessing files using macOS
 ---------------------------
 
-.. note:: The macOS Finder suffers from a `series of implementation problems <http://sabre.io/dav/clients/finder/>`_ and should only be used if the Nextcloud server runs on **Apache** and **mod_php**, or **Nginx 1.3.8+**. Alternative macOS-compatible clients capable of accessing WebDAV shares include open source apps like `Cyberduck <https://cyberduck.io/>`_ (see instructions `here <https://docs.nextcloud.com/server/latest/user_manual/files/access_webdav.html#accessing-files-using-cyberduck>`_) and `Filezilla <https://filezilla-project.org>`_. Commercial clients include `Mountain Duck <https://mountainduck.io/>`_, `Forklift <https://binarynights.com/>`_, `Transmit <https://panic.com/>`_, and `Commander One <https://mac.eltima.com/>`_.
-
-.. TODO ON RELEASE: Update version number above on release
+.. note:: The macOS Finder suffers from a `series of implementation problems <http://sabre.io/dav/clients/finder/>`_ and should only be used if the Nextcloud server runs on **Apache** and **mod_php**, or **Nginx 1.3.8+**. Alternative macOS-compatible clients capable of accessing WebDAV shares include open source apps like `Cyberduck <https://cyberduck.io/>`_ (see instructions `here <#accessing-files-using-cyberduck>`_) and `Filezilla <https://filezilla-project.org>`_. Commercial clients include `Mountain Duck <https://mountainduck.io/>`_, `Forklift <https://binarynights.com/>`_, `Transmit <https://panic.com/>`_, and `Commander One <https://mac.eltima.com/>`_.
 
 To access files through the macOS Finder:
 

@@ -96,6 +96,7 @@ Removed APIs
 
 - The global ``md5`` implementation is removed. It was deprecated since Nextcloud 20 and not used by Nextcloud anymore.
   If you still need a ``md5`` implementation you can just use some external package like `crypto-browserify <https://www.npmjs.com/package/crypto-browserify>`_.
+- ``OCP.WhatsNew`` was removed.
 - ``OC.AppConfig`` was deprecated since Nextcloud 16 and was now removed. Instead use ``OCP.AppConfig``.
 - The ``OC.Settings.UserSettings`` api was removed.
 - The ``OC.SystemTags`` api was removed. If you need to get the list of system tags,
@@ -196,11 +197,22 @@ Added APIs
     }
     $result->closeCursor();
 
+- This version allows to expose some Nextcloud related metrics using OpenMetrics format.
+  You can add your own exporters by implementing ``\OCP\OpenMetrics\IMetricFamily`` interface.
+  See :doc:`/digging_deeper/openmetrics` for more information.
+
+- ``ImageToTextOpticalCharacterRecognition`` TaskProcessing task type was added
+
+- ``ISynchronousWatermarkingProvider`` TaskProcessing provider interface was added to allow synchronous processing providers to react to the boolean includeWatermark flag
+
 Changed APIs
 ^^^^^^^^^^^^
 
 - The ``setId`` and ``getId`` methods of ``\OCP\BackgroundJob\IJob`` were changed to return/accept a string instead of an int. Same for ``\OCP\BackgroundJob\IJobList`` were some methods (``removedById``, ``getById`` and ``getDetailsById``) are now taking a string instead of an int. The string is suppose to be a snowflake id.
 - The ``setObjectId`` and ``getObjectId`` methods of ``\OCP\Activity\IEvent`` were changed to return/accept a string in addition to an int. The string is suppose to be a snowflake id.
+- The ``\OCP\TaskProcessing\Task`` class now has ``getIncludeWatermark`` and ``setIncludeWatermark`` methods for indicating whether the provider should add a watermark to the generated output.
+- The TaskProcessing OCS API now also accepts the ``includeWatermark`` flag when scheduling tasks
+- ``\OCP\Notification\INotification::setIcon``, ``\OCP\Notification\INotification::setLink`` and ``\OCP\Notification\IAction::setLink`` now throw ``\OCP\Notification\InvalidValueException`` when the provided link is not absolute as previously announced in :doc:`./upgrade_to_30`
 
 Deprecated APIs
 ^^^^^^^^^^^^^^^
@@ -253,3 +265,6 @@ Should be replaced by the following code:
     }
 
 - The ``\OCP\Files::buildNotExistingFileName`` and related private helper ``\OC_Helper::buildNotExistingFileName`` were deprecated since Nextcloud 14 and were now removed. Use ``\OCP\Files\Folder::getNonExistingName`` instead.
+
+- The ``WhatsNew`` feature was removed as such the ``OC\Updater\ChangesCheck`` class and related APIs.
+  This also includes the ``whats_new`` database table and the ``WhatsNewController`` class which was serving the now removed ``/core/whatsnew`` endpoint.
