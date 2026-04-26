@@ -173,19 +173,37 @@
         <span class="o">...</span><span class="p">;</span> <span class="c1">// More initial state that you might need in your view.</span>
 
         <span class="c1">// OpenGraph Support: http://ogp.me/</span>
-        <span class="nx">Util</span><span class="o">::</span><span class="na">addHeader</span><span class="p">(</span><span class="s1">&#39;meta&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;property&#39;</span> <span class="o">=&gt;</span> <span class="s2">&quot;og:title&quot;</span><span class="p">,</span> <span class="s1">&#39;content&#39;</span> <span class="o">=&gt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l10n</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s2">&quot;Encrypted share&quot;</span><span class="p">)]);</span>
-        <span class="nx">Util</span><span class="o">::</span><span class="na">addHeader</span><span class="p">(</span><span class="s1">&#39;meta&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;property&#39;</span> <span class="o">=&gt;</span> <span class="s2">&quot;og:description&quot;</span><span class="p">,</span> <span class="s1">&#39;content&#39;</span> <span class="o">=&gt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">defaults</span><span class="o">-&gt;</span><span class="na">getName</span><span class="p">()</span> <span class="o">.</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">defaults</span><span class="o">-&gt;</span><span class="na">getSlogan</span><span class="p">()</span> <span class="o">!==</span> <span class="s1">&#39;&#39;</span> <span class="o">?</span> <span class="s1">&#39; - &#39;</span> <span class="o">.</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">defaults</span><span class="o">-&gt;</span><span class="na">getSlogan</span><span class="p">()</span> <span class="o">:</span> <span class="s1">&#39;&#39;</span><span class="p">)]);</span>
-        <span class="nx">Util</span><span class="o">::</span><span class="na">addHeader</span><span class="p">(</span><span class="s1">&#39;meta&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;property&#39;</span> <span class="o">=&gt;</span> <span class="s2">&quot;og:site_name&quot;</span><span class="p">,</span> <span class="s1">&#39;content&#39;</span> <span class="o">=&gt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">defaults</span><span class="o">-&gt;</span><span class="na">getName</span><span class="p">()]);</span>
-        <span class="nx">Util</span><span class="o">::</span><span class="na">addHeader</span><span class="p">(</span><span class="s1">&#39;meta&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;property&#39;</span> <span class="o">=&gt;</span> <span class="s2">&quot;og:url&quot;</span><span class="p">,</span> <span class="s1">&#39;content&#39;</span> <span class="o">=&gt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">urlGenerator</span><span class="o">-&gt;</span><span class="na">linkToRouteAbsolute</span><span class="p">(</span><span class="s1">&#39;files_sharing.sharecontroller.showShare&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;token&#39;</span> <span class="o">=&gt;</span> <span class="nv">$token</span><span class="p">])]);</span>
-        <span class="nx">Util</span><span class="o">::</span><span class="na">addHeader</span><span class="p">(</span><span class="s1">&#39;meta&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;property&#39;</span> <span class="o">=&gt;</span> <span class="s2">&quot;og:type&quot;</span><span class="p">,</span> <span class="s1">&#39;content&#39;</span> <span class="o">=&gt;</span> <span class="s2">&quot;object&quot;</span><span class="p">]);</span>
-
-        <span class="nv">$csp</span><span class="o">-&gt;</span><span class="na">addAllowedFrameDomain</span><span class="p">(</span><span class="s1">&#39;\&#39;self\&#39;&#39;</span><span class="p">);</span>
-        <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">setContentSecurityPolicy</span><span class="p">(</span><span class="nv">$csp</span><span class="p">);</span>
+        <span class="nx">Util</span><span class="o">::</span><span class="na">addHeader</span><span class="p">(</span><span class="s1">&#39;meta&#39;</span><span class="p">,</span> <span class="p">[</span>
+            <span class="s1">&#39;property&#39;</span> <span class="o">=&gt;</span> <span class="s2">&quot;og:title&quot;</span><span class="p">,</span>
+            <span class="s1">&#39;content&#39;</span> <span class="o">=&gt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l10n</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s2">&quot;Encrypted share&quot;</span><span class="p">),</span>
+        <span class="p">]);</span>
+        <span class="nx">Util</span><span class="o">::</span><span class="na">addHeader</span><span class="p">(</span><span class="s1">&#39;meta&#39;</span><span class="p">,</span> <span class="p">[</span>
+            <span class="s1">&#39;property&#39;</span> <span class="o">=&gt;</span> <span class="s2">&quot;og:description&quot;</span><span class="p">,</span>
+            <span class="s1">&#39;content&#39;</span> <span class="o">=&gt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">defaults</span><span class="o">-&gt;</span><span class="na">getName</span><span class="p">()</span>
+                <span class="o">.</span> <span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">defaults</span><span class="o">-&gt;</span><span class="na">getSlogan</span><span class="p">()</span> <span class="o">!==</span> <span class="s1">&#39;&#39;</span> <span class="o">?</span> <span class="s1">&#39; - &#39;</span> <span class="o">.</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">defaults</span><span class="o">-&gt;</span><span class="na">getSlogan</span><span class="p">()</span> <span class="o">:</span> <span class="s1">&#39;&#39;</span><span class="p">),</span>
+        <span class="p">]);</span>
+        <span class="nx">Util</span><span class="o">::</span><span class="na">addHeader</span><span class="p">(</span><span class="s1">&#39;meta&#39;</span><span class="p">,</span> <span class="p">[</span>
+            <span class="s1">&#39;property&#39;</span> <span class="o">=&gt;</span> <span class="s2">&quot;og:site_name&quot;</span><span class="p">,</span>
+            <span class="s1">&#39;content&#39;</span> <span class="o">=&gt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">defaults</span><span class="o">-&gt;</span><span class="na">getName</span><span class="p">(),</span>
+        <span class="p">]);</span>
+        <span class="nx">Util</span><span class="o">::</span><span class="na">addHeader</span><span class="p">(</span><span class="s1">&#39;meta&#39;</span><span class="p">,</span> <span class="p">[</span>
+            <span class="s1">&#39;property&#39;</span> <span class="o">=&gt;</span> <span class="s2">&quot;og:url&quot;</span><span class="p">,</span>
+            <span class="s1">&#39;content&#39;</span> <span class="o">=&gt;</span> <span class="nv">$this</span><span class="o">-&gt;</span><span class="na">urlGenerator</span><span class="o">-&gt;</span><span class="na">linkToRouteAbsolute</span><span class="p">(</span>
+                <span class="s1">&#39;files_sharing.sharecontroller.showShare&#39;</span><span class="p">,</span>
+                <span class="p">[</span><span class="s1">&#39;token&#39;</span> <span class="o">=&gt;</span> <span class="nv">$token</span><span class="p">]</span>
+            <span class="p">),</span>
+        <span class="p">]);</span>
+        <span class="nx">Util</span><span class="o">::</span><span class="na">addHeader</span><span class="p">(</span><span class="s1">&#39;meta&#39;</span><span class="p">,</span> <span class="p">[</span>
+            <span class="s1">&#39;property&#39;</span> <span class="o">=&gt;</span> <span class="s2">&quot;og:type&quot;</span><span class="p">,</span>
+            <span class="s1">&#39;content&#39;</span> <span class="o">=&gt;</span> <span class="s2">&quot;object&quot;</span><span class="p">,</span>
+        <span class="p">]);</span>
 
         <span class="nv">$response</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">PublicTemplateResponse</span><span class="p">(</span><span class="nx">Application</span><span class="o">::</span><span class="na">APP_ID</span><span class="p">,</span> <span class="s1">&#39;myCustomTemplateFileName&#39;</span><span class="p">,</span> <span class="p">[]);</span>
         <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">setHeaderTitle</span><span class="p">(</span><span class="nv">$this</span><span class="o">-&gt;</span><span class="na">l10n</span><span class="o">-&gt;</span><span class="na">t</span><span class="p">(</span><span class="s2">&quot;My custom title&quot;</span><span class="p">));</span>
 
         <span class="nv">$csp</span> <span class="o">=</span> <span class="k">new</span> <span class="nx">ContentSecurityPolicy</span><span class="p">();</span>
+        <span class="nv">$csp</span><span class="o">-&gt;</span><span class="na">addAllowedFrameDomain</span><span class="p">(</span><span class="s1">&#39;\&#39;self\&#39;&#39;</span><span class="p">);</span>
+        <span class="nv">$response</span><span class="o">-&gt;</span><span class="na">setContentSecurityPolicy</span><span class="p">(</span><span class="nv">$csp</span><span class="p">);</span>
 
         <span class="k">return</span> <span class="nv">$response</span><span class="p">;</span>
     <span class="p">}</span>
@@ -206,7 +224,7 @@
 
   <div role="contentinfo">
     <p>&#169; Copyright 2016-2026 Nextcloud GmbH and Nextcloud contributors.
-      <span class="lastupdated">Last updated on Apr 23, 2026.
+      <span class="lastupdated">Last updated on Apr 26, 2026.
       </span></p>
   </div>
 

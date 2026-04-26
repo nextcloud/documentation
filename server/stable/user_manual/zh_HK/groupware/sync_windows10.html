@@ -77,8 +77,9 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">與 Windows 10 同步</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="#calendar">日曆</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#contacts">聯絡人</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#troubleshooting">疑難解答</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id1">聯絡人</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#troubleshooting-2fa">Troubleshooting: 2FA</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#troubleshooting-tlsv1-2">Troubleshooting: TLSv1.2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#credits">Credits</a></li>
 </ul>
 </li>
 </ul>
@@ -120,7 +121,7 @@
   <section id="synchronizing-with-windows-10">
 <h1>與 Windows 10 同步<a class="headerlink" href="#synchronizing-with-windows-10" title="Link to this heading"></a></h1>
 <section id="calendar">
-<h2>日曆<a class="headerlink" href="#calendar" title="Link to this heading"></a></h2>
+<span id="calendar-section"></span><h2>日曆<a class="headerlink" href="#calendar" title="Link to this heading"></a></h2>
 <ol class="arabic simple">
 <li><p>在瀏覽器中，導航到 Nextcloud 日曆應用。在「日曆設定」下，使用「複製 iOS/macOS CalDAV 地址」將地址複製到剪貼板。</p></li>
 <li><p>啟動 Windows 10 日曆應用。然後，點擊設定圖標（齒輪圖標），選擇「管理帳戶」。</p></li>
@@ -135,37 +136,30 @@
 <section id="contacts">
 <h2>聯絡人<a class="headerlink" href="#contacts" title="Link to this heading"></a></h2>
 <ol class="arabic simple">
-<li><p>在聯絡人視圖的左下角（在 Nextcloud 聯絡人中），尋找一個小的（連結）符號，如下所示：</p></li>
-</ol>
-<img alt="../../_images/contacts_link.png" src="../../_images/contacts_link.png" />
-<p>這將顯示一個類似於以下的 URL：<a class="reference external" href="https://cloud.nextcloud.com/remote.php/dav/addressbooks/users/daniel/Thunderbird/">https://cloud.nextcloud.com/remote.php/dav/addressbooks/users/daniel/Thunderbird/</a></p>
-<ol class="arabic simple" start="2">
-<li><p>啟動 Windows 10 日曆應用。然後，點擊設定圖標（齒輪圖標），選擇「管理帳戶」。</p></li>
-<li><p>點擊「添加帳戶」，然後選擇「iCloud」。</p></li>
-<li><p>輸入一個電郵地址、用戶名和密碼。這些資訊不必有效，因為在接下來的步驟中都會更改。</p></li>
-<li><p>點擊「登錄」，然後點擊「完成」。應顯示一條消息，指示設置已成功保存。</p></li>
-<li><p>在「管理帳戶」選項單中，點擊在前面的步驟中創建的 iCloud 帳戶，然後選擇「更改設定」。接下來，點擊「更改郵箱同步設定」。</p></li>
-<li><p>向下滾動對話框到底部，選擇「高級郵箱設置」。再向下滾動到對話框底部，將您的 CardDAV URL 粘貼到標記為「聯絡人伺服器（CardDAV）」的字段中。</p></li>
-<li><p>點擊「完成」。在適當的字段中輸入您的 Nextcloud 用戶名和密碼，並將帳戶名稱更改為您喜歡的名稱（例如「Nextcloud 聯絡人」）。點擊「保存」。</p></li>
-</ol>
-</section>
-<section id="troubleshooting">
-<h2>疑難解答<a class="headerlink" href="#troubleshooting" title="Link to this heading"></a></h2>
-<p>按照所有這些步驟後，您的 Nextcloud 日曆應該會同步。如果沒有，請檢查您的用戶名和密碼。否則，請重複這些步驟。</p>
-<p><strong>注意：如果您啟用了雙因素身份驗證，則無法同步日曆。請按照以下步驟獲取可用於日曆客戶端應用的應用密碼：</strong></p>
-<ol class="arabic simple">
-<li><p>登錄 Nextcloud。點擊您的用戶圖標，然後點擊「設置」。</p></li>
-<li><p>點擊「安全性」，然後找到標記為「創建新應用密碼」的按鈕。在此按鈕旁邊，輸入「Windows 10 日曆應用」。然後，點擊該按鈕，複製並粘貼密碼。在第 8 步中使用此密碼替代您的 Nextcloud 密碼。</p></li>
-</ol>
-</section>
-<section id="id1">
-<h2>聯絡人<a class="headerlink" href="#id1" title="Link to this heading"></a></h2>
-<ol class="arabic simple">
-<li><p>重複日曆說明中的第 1–7 步。如果您已經設置了日曆同步，則可以使用相同的帳戶。</p></li>
-<li><p>在「高級郵箱設置」中，將您的 CalDAV URL 粘貼到標記為「聯絡人伺服器（CardDAV）」的字段中。</p></li>
+<li><p>Repeat steps 1–7 from the <a class="reference internal" href="#calendar-section"><span class="std std-ref">Calendar instructions</span></a>. If you already have set up the Calendar synchronization, you can use the same account for this.</p></li>
+<li><p>From the &quot;Advanced mailbox settings&quot; screen, scroll to the bottom of the dialog box and paste your CardDAV URL in the field labelled &quot;Contacts server (CardDAV)&quot;.</p></li>
 <li><p>將 URL 中的路徑「principals」替換為「addressbooks」。</p></li>
 <li><p>點擊「完成」。在適當的字段中輸入您的 Nextcloud 用戶名和密碼，並將帳戶名稱更改為您喜歡的名稱（例如「Nextcloud」）。點擊「保存」。</p></li>
 </ol>
+</section>
+<section id="troubleshooting-2fa">
+<h2>Troubleshooting: 2FA<a class="headerlink" href="#troubleshooting-2fa" title="Link to this heading"></a></h2>
+<p><strong>注意：如果您啟用了雙因素身份驗證，則無法同步日曆。請按照以下步驟獲取可用於日曆客戶端應用的應用密碼：</strong></p>
+<ol class="arabic simple">
+<li><p>登錄 Nextcloud。點擊您的用戶圖標，然後點擊「設置」。</p></li>
+<li><p>Click on &quot;Security&quot;, then locate a button labeled &quot;Create new app password&quot;. Next to this button, enter &quot;Windows 10 Calendar app&quot;. Then, click the button, copy and paste the password. Use this password instead of your Nextcloud password when prompted for credentials during setup, for example in Calendar step 8 or Contacts step 4.</p></li>
+</ol>
+</section>
+<section id="troubleshooting-tlsv1-2">
+<h2>Troubleshooting: TLSv1.2<a class="headerlink" href="#troubleshooting-tlsv1-2" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>For Windows 10 your Nextcloud https server <a class="reference external" href="https://docs.microsoft.com/en-us/windows/win32/secauthn/protocols-in-tls-ssl--schannel-ssp-">must support TLSv1.2</a>.  This is apparent if no connection attempts are seen on the server, and the Windows client Event Viewer will display Schannel TLS errors under &quot;Windows Logs -&gt; System&quot;.</p></li>
+</ul>
+</section>
+<section id="credits">
+<h2>Credits<a class="headerlink" href="#credits" title="Link to this heading"></a></h2>
+<p>Special thanks to this Reddit user for their post:
+<a class="reference external" href="https://www.reddit.com/r/Nextcloud/comments/5rcypb/using_the_windows_10_calendar_application_with/">https://www.reddit.com/r/Nextcloud/comments/5rcypb/using_the_windows_10_calendar_application_with/</a></p>
 </section>
 </section>
 
