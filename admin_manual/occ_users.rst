@@ -54,9 +54,8 @@ Any groups that do not exist are created automatically::
 
 ``--password-from-env`` reads the password from the ``OC_PASS`` environment
 variable. This keeps the password out of the process list and allows scripting
-the creation of multiple users. Note that this requires running as the real
-``root`` user rather than ``sudo``, because ``sudo`` strips environment
-variables::
+the creation of multiple users. Note that ``sudo`` strips environment variables
+by default; the ``-E`` flag preserves them, as shown in the example below::
 
  export OC_PASS=newpassword
  sudo -E -u www-data php occ user:add --password-from-env \
