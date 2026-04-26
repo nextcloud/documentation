@@ -4,7 +4,7 @@ Hardening and security guidance
 
 Nextcloud aims to ship with secure defaults that do not need to get modified by 
 administrators. However, in some cases some additional security hardening can be 
-applied in scenarios were the administrator has complete control over 
+applied in scenarios where the administrator has complete control over 
 the Nextcloud instance. This page assumes that you run Nextcloud Server on Apache2 
 in a Linux environment.
 
@@ -392,7 +392,7 @@ you may do so by issuing::
 
   fail2ban-client unban 1.2.3.4
 
-There may be scenarios where you want to more permantently ban certain IP
+There may be scenarios where you want to more permanently ban certain IP
 addresses that repeatedly generate bad login attempts (or other attacks) by
 using fail2ban's ``recidive`` feature.
 
