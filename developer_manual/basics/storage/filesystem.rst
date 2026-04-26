@@ -32,7 +32,7 @@ From the root folder you can either access a user's home folder or access a file
         private IUserSession $userSession;
         private IRootFolder $rootFolder;
 
-        public function __constructor(IUserSession $userSession, IRootFolder $rootFolder) {
+        public function __construct(IUserSession $userSession, IRootFolder $rootFolder) {
             $this->userSession = $userSession;
             $this->rootFolder = $rootFolder;
         }
